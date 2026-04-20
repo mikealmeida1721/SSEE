@@ -345,9 +345,9 @@ $N_s=6000$ steps. After discarding $N_b=1500$ burn-in steps (the first
 $25\%$ of the chain), walkers are visually stable and the
 acceptance fraction lies in the range 0.25--0.50 for all models,
 consistent with optimal mixing. Effective sample sizes are
-$N_{\rm eff}\gtrsim2800$ for \LCDM\ and CPL; the \SSEE\ chain shows
-higher autocorrelation due to its constrained parameter space
-($N_{\rm eff}\sim2060$), which is robust for marginal and joint statistics.
+$N_{\rm eff}\gtrsim2500$ for all three models; the \SSEE\ chain achieves
+$N_{\rm eff}\approx4402$, the highest of the three, reflecting rapid
+mixing in its two-dimensional constrained parameter space.
 Convergence is assessed via the integrated autocorrelation time $\tau$
 per parameter (Table~\ref{tab:convergence}).
 
@@ -362,9 +362,9 @@ $N_{\rm eff}$: minimum effective sample size.}
 \toprule
 Model & $k$ & $\langle a\rangle$ & $\tau_{\rm max}$ & $N_s/\tau_{\rm max}$ & $N_{\rm eff}$ \\
 \midrule
-\SSEE-V3.6 & 2 & $\sim$0.38 & $\sim$70 & $\sim$86  & $\sim$2060 \\
-\LCDM      & 3 &      0.41  & 42.6     & 141.1    & 3380 \\
-CPL        & 5 &      0.35  & 51.2     & 117.2    & 2813 \\
+\SSEE-V3.6 & 2 & 0.38 & 32.7 & 183.5 & 4402 \\
+\LCDM      & 3 & 0.41 & 41.5 & 144.6 & 3471 \\
+CPL        & 5 & 0.35 & 57.3 & 104.7 & 2514 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -412,7 +412,7 @@ Note that $\wz$, $\wa$, and $\OmDE^{\SSEE}$ are algebraically fixed and
 do not appear as sampled columns in the \SSEE\ posterior; their values
 in Table~\ref{tab:posteriors} are listed for direct comparison only.
 The \SSEE\ $H_0=66.66^{+0.47}_{-0.46}$\,km\,s$^{-1}$\,Mpc$^{-1}$ is
-consistent with Planck~2018 ($67.36\pm0.54$) at $0.97\sigma$ and with
+consistent with Planck~2018 ($67.36\pm0.54$) at $0.95\sigma$ and with
 the BAO-only run ($65.8^{+1.2}_{-1.1}$) at $0.6\sigma$, confirming
 partial compatibility in the Hubble sector despite the background
 mismatch.
@@ -473,7 +473,7 @@ it drives an enlarged geometric sound horizon
 The BAO data partially compensate via a mild $H_0$ downshift
 ($H_0^{\SSEE}=66.66$ vs $H_0^{\LCDM}=67.99$\,km\,s$^{-1}$\,Mpc$^{-1}$),
 but this compensation is insufficient to absorb the full background
-discrepancy. The residual tension is $0.97\sigma$ in $H_0$ but
+discrepancy. The residual tension is $0.95\sigma$ in $H_0$ but
 $21.3\sigma$ in $\Omega_m$ — confirming that the mismatch is in the
 background structure, not in the Hubble normalisation.
 

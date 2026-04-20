@@ -14,7 +14,7 @@ build/
 # Jupyter
 .ipynb_checkpoints/
 
-# LaTeX
+# LaTeX — artefactos de compilación (no rastrear en git)
 *.aux
 *.log
 *.out
@@ -24,6 +24,7 @@ build/
 *.fdb_latexmk
 *.bbl
 *.blg
+manuscript/*.pdf
 
 # Data (large files — track separately or via DVC)
 data/raw/*.fits
@@ -32,6 +33,9 @@ data/raw/*.h5
 
 # Results (generated — reproducible from scripts)
 results/logs/*.txt
+
+# Virtual environments
+venv_*/
 
 # OS
 .DS_Store

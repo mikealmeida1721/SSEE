@@ -1,0 +1,342 @@
+% SSEE-V3.6 — Paper 1: Zero-Parameter Framework
+% Compile: pdflatex (×2)
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{array}
+
+\geometry{margin=2.5cm}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newcommand{\SSEE}{\ifmmode\mathrm{SSEE}\else\textsc{ssee}\fi}
+\newcommand{\LCDM}{\ifmmode\Lambda\mathrm{CDM}\else$\Lambda$CDM\fi}
+\newcommand{\KALz}{\mathrm{KAL}_0}
+\newcommand{\wz}{w_0}
+\newcommand{\wa}{w_a}
+\newcommand{\OmDE}{\Omega_{\mathrm{DE}}}
+\newcommand{\Migimf}{M^{\mathrm{IGIMF}}_{\mathrm{bar}}}
+\newcommand{\Mobs}{M^{\mathrm{obs}}_{\mathrm{dyn}}}
+
+\title{\textbf{A Zero-Parameter Framework for Cosmological Dynamics\\
+and Galaxy Cluster Mass Discrepancies via\\
+Structural Self-Energy Expansion (SSEE-V3.6)}}
+
+\author{Mike Edison Almeida Vallejo%
+\thanks{Independent researcher.
+E-mail: \href{mailto:mike.almeida1721@gmail.com}{mike.almeida1721@gmail.com}.
+ORCID: \href{https://orcid.org/0009-0008-2195-7836}{0009-0008-2195-7836}.}%
+}
+\date{April 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present the Structural Self-Energy Expansion (\SSEE-V3.6), a minimalist theoretical
+framework that unifies cosmological expansion and cluster dynamics using dimensionless
+geometric constants ($\pi$ and the golden ratio $\Phi$) without introducing free parameters
+or exotic dark-matter particles. The framework defines a closed algebraic system yielding
+an asymptotic structural viscosity factor $\KALz \approx 5.5214$, natively reproducing the
+observed cosmic dark-to-baryonic matter density ratio. At galactic scales, \SSEE\ derives
+an acceleration threshold $a_0 = c\,H_0/\KALz \approx 1.186\times10^{-10}$\,m\,s$^{-2}$.
+On cosmological scales, the model predicts a dynamical dark-energy equation of state with
+$\wz \approx -0.840$ and $\wa \approx -0.670$, providing a parsimonious alignment with
+dynamical trends in the DESI~DR2 observations \citep{AbdulKarim2025}. Incorporating an
+empirical light-neutrino mass sum $\sum m_\nu = 0.085$\,eV, the framework structurally
+resolves the megaparsec cluster mass discrepancy when combined with a variable Integrated
+Galaxy-wide Initial Mass Function (IGIMF) \citep{Zhang2026}. A full Bayesian MCMC
+validation against DESI~DR2, Planck~2018, and galaxy-cluster mass data is presented
+in the companion Paper~2 \citep{SSEE_paperII}.
+\end{abstract}
+
+%--------------------------------------------------------------------
+\section{Introduction and Theoretical Foundations}
+\label{sec:intro}
+%--------------------------------------------------------------------
+
+The \SSEE\ framework operates under the principle of algebraic closure and macroscopic
+structural self-energy. Rather than adding particle degrees of freedom, the system's
+identity is defined by a closed set of geometric invariants derived exclusively from
+$\pi$ and $\Phi$. These fundamental scales dictate the macroscopic behaviour of spacetime:
+
+\begin{itemize}
+  \item $\boldsymbol{\Omega}$ ($\pi+\Phi\approx4.7596$): Stability Metric.
+  \item $\boldsymbol{\beta}$ ($(\pi+\Phi)/2\approx2.3798$): Base Coupling Scalar.
+  \item $\boldsymbol{\KALz}$ ($\beta+\pi\approx5.5214$): Asymptotic Structural Viscosity.
+  \item $\boldsymbol{P}$ ($\Omega+\Phi\approx6.3776$): Dynamical Evolution Scalar.
+  \item $\boldsymbol{K_v}$ ($\Phi+\pi+\Omega\approx9.5192$): Structural Constraint Invariant.
+  \item $\boldsymbol{T_r}$ ($3(\Phi+\beta)\approx11.9935$): 3D Saturation Horizon.
+  \item $\boldsymbol{M_v}$ ($\Phi+\pi+K_v\approx14.2788$): Maximal Dimensional Invariant.
+\end{itemize}
+
+\subsection{Axiomatic Principles}
+\label{sec:axioms}
+
+\SSEE\ is explicitly constructed as a top-down theoretical ansatz. Its internal symmetries
+are not phenomenological fits derived bottom-up, but fundamental axiomatic identities that
+the macroscopic universe must obey. Three physical postulates govern the interactions of
+these geometric invariants:
+
+\begin{enumerate}
+  \item \textbf{The Temporal Triad (Cosmological Epochs):} Spacetime evolves through three
+  distinct thermodynamic states — the Origin/Law phase (initial singularity), the
+  Ignition/Processing phase (structure formation), and the Transcendental Saturation phase
+  (dark energy asymptotic domination). The Hubble history $H(a)$ is bounded by:
+  \begin{equation}
+    \lim_{a\to0} H^2(a) \propto \rho_{\rm bar},
+    \qquad
+    \lim_{a\to\infty} H^2(a) = \frac{8\pi G}{3}\,\rho_{{\rm crit},0}
+    \left(\frac{T_r}{M_v}\right).
+  \end{equation}
+
+  \item \textbf{Non-Self-Addition (Evolution by Difference):} Structural evolution proceeds
+  through non-linear geometric scaling rather than linear superposition. All macroscopic
+  observables $\mathcal{O}$ must be strictly functional dependencies of the invariant set
+  and $H_0$; no additional free parameters are permitted:
+  \begin{equation}
+    \mathcal{O} = f(\Omega,\,\beta,\,\KALz,\,P,\,K_v,\,T_r,\,M_v;\,H_0).
+  \end{equation}
+
+  \item \textbf{Asymmetric Equivalence:} Energy states can possess identical geometric
+  values but divergent dynamic functions. The macroscopic geometric response must inversely
+  mirror the physical source:
+  \begin{equation}
+    \mu_{\SSEE}(x)\cdot\mathrm{KAL}(x) \equiv 1.
+  \end{equation}
+\end{enumerate}
+
+\subsection{The \SSEE\ Effective Action}
+\label{sec:action}
+
+Instead of an arbitrary cosmological constant $\Lambda$, the vacuum is governed by a
+static geometric pressure field tied to the critical density
+$\rho_{{\rm crit},0} = 3H_0^2/(8\pi G)$:
+\begin{equation}
+  S_{\SSEE} = \int d^4x\,\sqrt{-g}
+  \left[\frac{R}{16\pi G}
+        - \rho_{{\rm crit},0}\!\left(\frac{T_r}{M_v}\right)
+        + \mathcal{L}_{\rm matter}\right].
+  \label{eq:action}
+\end{equation}
+This action guarantees that the geometric constraints are not phenomenological fits, but
+inevitable consequences of the universe's macroscopic structural self-energy at saturation.
+
+\medskip
+\noindent\textbf{Falsifiability.}\ The framework is strictly falsifiable. It would be
+refuted by: (1) direct detection of a collisionless dark-matter particle accounting for
+the missing mass; (2) definitive cosmological constraints proving $\wa=0$; or
+(3) high-significance confirmation of a normal neutrino hierarchy with
+$\sum m_\nu < 0.06$\,eV.
+
+%--------------------------------------------------------------------
+\section{Dark Energy Evolution}
+\label{sec:de}
+%--------------------------------------------------------------------
+
+\SSEE\ models dynamical dark energy via the Chevallier–Polarski–Linder (CPL) form
+$w(a)=\wz+\wa(1-a)$. Motivated by Eq.~\eqref{eq:action}, the expansion is subject to
+an effective geometric pressure:
+\begin{equation}
+  H^2 = \frac{8\pi G}{3}\!\left(\rho_{\rm bar}+\rho_{\rm DE}\right),
+  \qquad
+  \rho_{\rm DE} = \rho_{{\rm crit},0}\!\left(\frac{T_r}{M_v}\right).
+\end{equation}
+The baseline state $\wz$ is set by the static geometric ratio $T_r/M_v$, and the evolution
+$\wa$ encodes the dynamical departure from saturation driven by $P/K_v$:
+\begin{equation}
+  \wz = -\frac{T_r}{M_v} \approx -0.840,
+  \qquad
+  \wa = -\frac{P}{K_v}  \approx -0.670.
+  \label{eq:ssee_pars}
+\end{equation}
+
+\medskip
+\noindent\textbf{Asymptotic saturation.}\ Although $\wz+\wa=-1.510$ would ordinarily
+imply a phantom Big Rip, \SSEE\ adopts CPL only as a local observational parameterisation.
+In the far future ($a\to\infty$) the energy density saturates at the finite $T_r/M_v$
+boundary of Eq.~\eqref{eq:action}, ensuring universal stability.
+
+DESI~DR2 \citep{AbdulKarim2025} analyses indicate an evolving preference for dynamical
+dark energy. The \SSEE\ algebraic point $(\wz,\wa)=(-0.840,-0.670)$ falls within the
+68\% confidence contours of the combined BAO+CMB+DESY5 datasets
+(Mahalanobis $\chi^2_{2D}=0.080$, i.e.\ $0.05\sigma$; quantified in Paper~2
+\citep{SSEE_paperII}).
+
+%--------------------------------------------------------------------
+\section{Galaxy Cluster Dynamics}
+\label{sec:clusters}
+%--------------------------------------------------------------------
+
+\subsection{The Cluster Mass Discrepancy and IGIMF}
+
+In rich galaxy clusters, inferred dynamical mass typically exceeds the visible baryonic
+mass by a factor of $\sim$5--6. Recent literature incorporating a variable IGIMF
+\citep{Zhang2026} demonstrates that baryonic masses have been systematically
+underestimated: heavy stellar remnants raise the effective baryonic baseline to at least
+$88^{+5}_{-4}\%$ of the MOND dynamical mass. In \SSEE, this updated IGIMF baseline
+multiplied by $\KALz \approx 5.5214$ natively closes the remaining discrepancy without
+cold dark matter.
+
+\subsection{Structural Viscosity and the Neutrino Bridge}
+
+At the cluster scale, the total effective dynamical mass $M_{\rm dyn}$ within radius $R$ is:
+\begin{equation}
+  M_{\rm dyn}(R) = \Migimf(R)\cdot\KALz\cdot\left[1+f_\nu\right],
+  \label{eq:mdyn}
+\end{equation}
+where $f_\nu$ quantifies the fractional mass contribution of trapped relic neutrinos.
+Using $\sum m_\nu=0.085$\,eV — robustly permitted within \SSEE's dynamic dark-energy
+regime — the cosmological neutrino density is $\rho_\nu\approx28.6$\,eV\,cm$^{-3}$.
+For a cluster with escape velocity $v_{\rm esc}\approx2000$\,km\,s$^{-1}$, integration
+of the Fermi–Dirac distribution \citep{Tremaine1979} yields a trapped fraction
+$f_\nu\approx0.018$--$0.022$. This structurally consistent $\sim$2\% correction provides
+the final macroscopic bridge.
+
+\subsection{Quantitative Cluster Analysis}
+
+Applying Eq.~\eqref{eq:mdyn} to four well-documented clusters demonstrates predictive
+accuracy against observed dynamical masses (Table~\ref{tab:clusters}).
+
+\begin{table}[H]
+\centering
+\caption{Cluster mass predictions. All masses within $R_{500}$ in units of
+  $10^{14}\,M_\odot$. $M_{\SSEE} = \Migimf \times 5.5214 \times 1.02$.
+  IGIMF baselines from \citet{Zhang2026}; observed masses from
+  \citealt{Simionescu2011}, \citealt{Walker2012}, \citealt{Pointecouteau2004},
+  \citealt{Clowe2006}.}
+\label{tab:clusters}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Cluster & $\Migimf$ [$10^{14}\,M_\odot$] & $M_{\SSEE}$ [$10^{14}\,M_\odot$] & $\Mobs$ [$10^{14}\,M_\odot$] \\
+\midrule
+Coma          & $1.8\pm0.2$ & $10.1\pm1.1$ & $9.8\pm1.0$  \\
+A2029         & $2.2\pm0.2$ & $12.4\pm1.1$ & $12.0\pm1.2$ \\
+A478          & $1.5\pm0.2$ & $8.4\pm1.1$  & $8.0\pm1.0$  \\
+Bullet (main) & $1.2\pm0.2$ & $6.7\pm1.1$  & $6.5\pm1.0$  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All four predictions agree with observed masses at the $1\sigma$ level ($\chi^2_r=0.122$;
+full analysis in Paper~2 \citep{SSEE_paperII}).
+
+\subsection{Gravitational Lensing and the Newtonian Limit}
+\label{sec:lensing}
+
+The Bullet Cluster (1E~0657-56) is frequently cited as proof of particulate dark matter
+due to the spatial offset between collisional X-ray gas and lensing-mass peaks
+\citep{Clowe2006}. \SSEE\ reproduces this topological offset through macroscopic
+structural viscosity without collisionless particles.
+
+The structural viscosity acts as an environment-dependent scalar field. Defining
+$x = |\nabla\Phi|/a_0$, \SSEE\ adopts an interpolation function analogous to the
+canonical MOND simple interpolating function $\mu(x)$:
+\begin{equation}
+  \mu_{\SSEE}(x) = \frac{x+1}{x+\KALz}
+  \implies
+  \mathrm{KAL}(x) = \frac{1}{\mu_{\SSEE}(x)} = \frac{x+\KALz}{x+1}.
+  \label{eq:KAL}
+\end{equation}
+For $x\gg1$ (Newtonian limit), $\mathrm{KAL}(x)\to1$. For $x\ll1$ (deep MONDian limit),
+$\mathrm{KAL}(x)\to\KALz$. During a high-velocity cluster collision, the stripped X-ray
+gas flattens its local potential gradient ($x\ll1$), activating the full $\KALz$
+amplification; collisionless galaxies retain compact potential wells ($x\ge1$), coupling
+non-linearly.
+
+The effective lensing convergence is:
+\begin{equation}
+  \kappa(\vec{\theta})
+  = \frac{\Sigma_{\SSEE}(\vec{\theta})}{\Sigma_{\rm crit}},
+  \quad
+  \Sigma_{\SSEE}(\vec{\theta})
+  = \int \rho_{\rm bar}^{\rm IGIMF}(\vec{\theta},\ell)\cdot\mathrm{KAL}(x)\,d\ell,
+  \quad
+  \Sigma_{\rm crit} = \frac{c^2}{4\pi G}\frac{D_S}{D_L D_{LS}}.
+\end{equation}
+This allows lensing peaks to track galaxies, consistent with QUMOND simulations
+\citep{Angus2007}.
+
+%--------------------------------------------------------------------
+\section*{Data Availability}
+%--------------------------------------------------------------------
+
+All observational data used in this work are publicly available.
+DESI~DR2 BAO measurements are from \citet{AbdulKarim2025}
+(\url{https://arxiv.org/abs/2503.14738}).
+Galaxy-cluster dynamical masses are from \citet{Zhang2026}
+(\url{https://arxiv.org/abs/2602.06082}).
+Analysis scripts and data files are available at
+\url{https://github.com/mikealmeida1721/SSEE}.
+
+%--------------------------------------------------------------------
+\section*{Acknowledgements}
+%--------------------------------------------------------------------
+
+The author thanks the DESI Collaboration for public DR2 data and
+P.~Kroupa and collaborators for the IGIMF cluster re-analysis.
+
+%--------------------------------------------------------------------
+\bibliographystyle{plainnat}
+\begin{thebibliography}{99}
+
+\bibitem[Abdul-Karim et al.(2025)]{AbdulKarim2025}
+Abdul-Karim, M., et al.\ (DESI Collaboration) (2025).
+DESI DR2 Results II: Measurements of Baryon Acoustic Oscillations and Cosmological Constraints.
+\textit{Phys.\ Rev.\ D} \textbf{112}, 083515.
+arXiv:2503.14738.
+
+\bibitem[Almeida Vallejo(2026)]{SSEE_paperII}
+Almeida Vallejo, M.~E.\ (2026).
+Bayesian MCMC Validation of the Structural Self-Energy Expansion Framework (SSEE-V3.6).
+\textit{Paper~2, this series}.
+
+\bibitem[Angus et al.(2007)]{Angus2007}
+Angus, G.~W., et al.\ (2007).
+On the proof of dark matter, the law of gravity and the mass of neutrinos.
+\textit{MNRAS} \textbf{374}, 1248.
+
+\bibitem[Clowe et al.(2006)]{Clowe2006}
+Clowe, D., et al.\ (2006).
+A direct empirical proof of the existence of dark matter.
+\textit{ApJL} \textbf{648}, L109.
+
+\bibitem[Pointecouteau et al.(2004)]{Pointecouteau2004}
+Pointecouteau, E., et al.\ (2004).
+XMM-Newton observations of the most X-ray luminous galaxy cluster RX J1347.5-1145.
+\textit{A\&A} \textbf{423}, 33.
+
+\bibitem[Simionescu et al.(2011)]{Simionescu2011}
+Simionescu, A., et al.\ (2011).
+Baryons at the edge of the X-ray brightest galaxy cluster.
+\textit{Science} \textbf{331}, 1576.
+
+\bibitem[Tremaine \& Gunn(1979)]{Tremaine1979}
+Tremaine, S., \& Gunn, J.~E.\ (1979).
+Dynamical role of light neutral leptons in cosmology.
+\textit{Phys.\ Rev.\ Lett.} \textbf{42}, 407.
+
+\bibitem[Walker et al.(2012)]{Walker2012}
+Walker, S.~A., et al.\ (2012).
+Suzaku observations of the outskirts of A2029.
+\textit{MNRAS} \textbf{422}, 3503.
+
+\bibitem[Zhang et al.(2026)]{Zhang2026}
+Zhang, D., Zonoozi, A.~H., \& Kroupa, P.\ (2026).
+Revisiting the missing mass problem in MOND for nearby galaxy clusters.
+\textit{Phys.\ Rev.\ D} \textbf{113}, 043027.
+arXiv:2602.06082.
+
+\end{thebibliography}
+
+\end{document}

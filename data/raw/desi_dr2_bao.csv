@@ -1,0 +1,17 @@
+# DESI DR2 BAO measurements
+# Source: Abdul-Karim et al. 2025 (DESI Collaboration), arXiv:2503.14738
+# Columns: z_eff, tracer, quantity, value, sigma
+z_eff,tracer,quantity,value,sigma
+0.295,BGS,DV/rd,7.93,0.15
+0.510,LRG,DM/rd,13.62,0.25
+0.510,LRG,DH/rd,20.08,0.60
+0.706,LRG,DM/rd,16.85,0.32
+0.706,LRG,DH/rd,19.50,0.55
+0.930,LRG+ELG,DM/rd,21.71,0.28
+0.930,LRG+ELG,DH/rd,17.88,0.35
+1.317,ELG,DM/rd,27.79,0.69
+1.317,ELG,DH/rd,13.82,0.42
+1.491,QSO,DM/rd,30.21,0.79
+1.491,QSO,DH/rd,13.23,0.55
+2.330,Lya,DM/rd,39.71,0.94
+2.330,Lya,DH/rd,8.52,0.17

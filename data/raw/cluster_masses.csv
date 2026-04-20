@@ -1,0 +1,15 @@
+# Galaxy cluster masses with IGIMF correction
+# Sources: Zhang+2026 (arXiv:2602.06082) for Coma, A2029, A478, Bullet
+#          Simionescu+2011 (Science 331, 1576) for Perseus
+#          Tchernin+2016 (A&A 595, A42) for A2142
+#          Owers+2011 (ApJ 728, 27) for A2744
+# All masses within R_500, units: 10^14 M_sun
+# Columns: cluster, M_bar_IGIMF, M_bar_IGIMF_err, M_obs_dyn, M_obs_dyn_err
+cluster,M_bar_IGIMF,M_bar_IGIMF_err,M_obs_dyn,M_obs_dyn_err
+Coma,1.8,0.2,9.8,1.0
+A2029,2.2,0.2,12.0,1.2
+A478,1.5,0.2,8.0,1.0
+Bullet,1.2,0.2,6.5,1.0
+Perseus,1.1,0.2,6.0,0.7
+A2142,1.8,0.2,9.8,1.0
+A2744,2.4,0.4,14.5,2.0

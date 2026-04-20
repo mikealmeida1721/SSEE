@@ -190,8 +190,8 @@ def lpost_cpl(theta):
 # ─────────────────────────────────────────────────────────────
 
 N_WALKERS = 32
-N_STEPS   = 3000
-N_BURN    = 800
+N_STEPS   = 6000
+N_BURN    = 1500
 
 def run_mcmc(log_post, theta0, scales, ndim, label):
     print(f"\n  [{label}]  ndim={ndim}, {N_WALKERS}w × {N_STEPS}s")

@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software or results, please cite it as below."
+type: software
+title: "SSEE — Scalar Structural Evolution Equations (V3.6)"
+abstract: >
+  A parameter-free dark energy model derived algebraically from φ and π,
+  tested against DESI DR2 BAO, Planck 2018, and galaxy cluster masses.
+authors:
+  - family-names: Almeida
+    given-names: Mike Edison
+    email: mike.almeida1721@gmail.com
+version: "3.6"
+date-released: "2026-04-20"
+license: Apache-2.0
+repository-code: "https://github.com/mikealmeida1721/SSEE"
+keywords:
+  - dark energy
+  - cosmology
+  - w0-wa parametrization
+  - CPL
+  - DESI
+  - Planck
+  - Folding Symmetry
+  - parameter-free model

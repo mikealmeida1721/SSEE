@@ -146,8 +146,37 @@ The SSEE Genesis~5.12 compendium \citep{AlmeidaSSEE2026genesis} defines
 \mathrm{MIRA} = \frac{\mathrm{AURA}}{2} = \frac{\varphi+\beta}{2} = 1.998924\ldots,
 \end{equation}
 with the role \textit{Frecuencia de Observación} (Observational Frequency).
-This constant was not introduced post-hoc; it predates the CMB test by the
-full development timeline of the Genesis~5.12 compendium.
+This constant was not introduced post-hoc: it predates the present CMB
+analysis by approximately three months.
+
+\subsection{Genesis 5.12 Timeline — Prior Definition of MIRA}
+\label{sec:mira_timeline}
+
+The priority of MIRA is established by the public version-control history
+of the SSEE Genesis~5.12 compendium \citep{AlmeidaSSEE2026genesis}.
+The initial commit of that repository (hash \texttt{f8728c3},
+dated \textbf{2026 January 28}) already contains the full definition:
+
+\begin{verbatim}
+get MIRA() { return this.AURA / 2; }   // = 1.9989236549
+"A. El Motor MIRA (Frecuencia de Observación)"
+MIRA = AURA / 2 = 1.9989...
+\end{verbatim}
+
+The CAMB CMB analysis presented in this paper was performed on
+\textbf{2026 April 19--20}, roughly 83 days after that commit.
+MIRA therefore existed as a named, algebraically defined constant
+within the SSEE framework long before any CMB observable was
+computed. Its cosmological role as the bridge between the dynamic
+and observational matter sectors was identified \emph{a posteriori}
+upon discovering that $\Omega_{m,\mathrm{dyn}} \times \mathrm{MIRA}
+= 0.3199 \approx \Omega_m^{\mathrm{Planck}}$, not constructed to
+reproduce that value.
+
+This distinguishes MIRA from a post-hoc tuning parameter: the value
+$1.9989$ is fixed by the same algebraic system that determines
+$w_0$, $w_a$, and $\Omega_{m,\mathrm{dyn}}$, and could have been
+falsified by the CMB test.
 
 \subsection{Two-sector matter density}
 

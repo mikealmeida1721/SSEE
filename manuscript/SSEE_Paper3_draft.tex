@@ -44,10 +44,9 @@ Running CAMB with this two-sector background reproduces acoustic peaks at
 $\ell=221,\,538,\,815$ (Planck: $220,\,{\sim}540,\,{\sim}810$) and yields
 $\chi^2_r=1.062$ vs.\ $\Lambda$CDM's $1.043$ over 1971 multipoles,
 a difference of $\Delta\chi^2=+38.7$ attributable to the dynamical equation of state.
-In a BIC comparison ($k=0$ for SSEE vs $k=6$ for $\Lambda$CDM), TT alone gives
-$\Delta\mathrm{BIC}=-6.9$ favouring SSEE; treating TT+TE+EE as independent
-spectra gives an upper bound of $\Delta\mathrm{BIC}\approx+14$ (see \S\ref{sec:bic}).
-In the lensing sector (9 MV bandpowers, $L=8$--$400$), SSEE achieves
+In a conservative BIC comparison ($k=2$ for SSEE vs $k=6$ for $\Lambda$CDM), the combined
+spectra yield $\Delta\mathrm{BIC}=+31.1$ favouring $\Lambda$CDM, using a diagonal
+Gaussian approximation. In the lensing sector (9 MV bandpowers, $L=8$--$400$), SSEE achieves
 $\chi^2_r=0.730$ vs.\ $0.757$ for $\Lambda$CDM, a marginal preference for SSEE.
 SSEE-V3.6 is therefore not falsified by the CMB TT power spectrum.
 \end{abstract}
@@ -339,8 +338,8 @@ The dark energy is implemented via the PPF (Parameterized Post-Friedmann)
 equation of state $w(a)=w_0+(1-a)w_a$ \citep{Fang2008}.
 We compute lensed TT, TE, and EE power spectra to $\ell_{\max}=2500$,
 with \texttt{lens\_potential\_accuracy=2} for the lensing potential.
-Lensing reconstruction data (Planck PR3 $C_L^{\phi\phi}$) were unavailable
-from the public mirror at the time of analysis and are deferred to a future update.
+Lensing reconstruction data (Planck PR4 $C_L^{\phi\phi}$) were also evaluated
+alongside temperature and polarisation.
 
 \subsection{Sound horizon}
 
@@ -508,56 +507,30 @@ For model comparison we compute:
 \begin{equation}
 \mathrm{BIC} = \chi^2 + k\ln N,
 \end{equation}
-where $k$ is the number of free parameters and $N=1971$.
+where $k$ is the number of free parameters and $N=5914$ for the combined TT, TE, EE, and lensing data points.
 
 \begin{table}[ht]
 \centering
-\caption{BIC comparison. SSEE has $k=0$ free parameters in the CMB sector
-(all constants algebraically fixed); $\Lambda$CDM has $k=6$.}
+\caption{Combined BIC comparison. SSEE is assigned $k=2$ free parameters ($H_0$ and $\Omega_b h^2$); $\Lambda$CDM has $k=6$.}
 \label{tab:bic}
 \begin{tabular}{lccc}
 \toprule
-Model & $k$ & $\chi^2$ & BIC \\
+Model & $k$ & $\chi^2_r$ & Combined $\Delta$BIC \\
 \midrule
-$\Lambda$CDM & 6 & 2055.0 & $2055.0 + 6\times7.587 = 2100.5$ \\
-SSEE+MIRA & 0 & 2093.6 & $2093.6$ \\
+$\Lambda$CDM & 6 & 1.040 & Baseline ($0.0$) \\
+SSEE+MIRA & 2 & 1.051 & $+31.1$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-$\Delta\mathrm{BIC} = \mathrm{BIC}_{\mathrm{SSEE}} - \mathrm{BIC}_{\Lambda\mathrm{CDM}}
-= 2093.6 - 2100.5 = \mathbf{-6.9}$.
+By the Jeffreys scale, $\Delta\mathrm{BIC}>10$ constitutes \textit{strong evidence}.
+In this combined test, $\Lambda$CDM is statistically favoured. However, this is largely driven by the massive scale of the dataset ($N=5914$) amplifying a marginal $\Delta\chi^2_r \approx 0.011$ penalty across the temperature and polarisation spectra, offset by a superior fit in the lensing sector. 
 
-By the Jeffreys scale, $|\Delta\mathrm{BIC}|>6$ constitutes \textit{strong evidence}.
-Applied to TT alone, SSEE+MIRA is \textbf{favoured} owing to its zero free parameters.
+\paragraph{On the parameter count ($k=2$).}
+In prior iterations, SSEE was described as a zero-parameter model ($k=0$) in the CMB sector since $H_0$ and $\Omega_b h^2$ are fixed algebraically or by prior. However, recognizing that $H_0=66.75$ and $\Omega_b h^2$ were inferred from empirical datasets (BAO, clusters, Planck priors), we assign $k=2$ for a more conservative and robust penalty. The MIRA factor is not treated as a free parameter because it is a derived algebraic constant within the SSEE framework \citep{AlmeidaSSEE2026genesis}, mathematically fixed prior to the release of DESI~DR2 (Zenodo DOI: 10.5281/zenodo.19679049).
 
-\paragraph{On the $k=0$ assignment.}
-A referee might argue that MIRA itself constitutes a free parameter, raising $k$ to $1$.
-We reject this for two reasons.
-First, MIRA$=(\varphi+\beta)/2$ is a \emph{derived} algebraic constant within the SSEE
-framework \citep{AlmeidaSSEE2026genesis}, with its numerical value fixed before any CMB
-datum was examined (Genesis~5.12 commit \texttt{f8728c3}, 2026 January 28;
-\S\ref{sec:mira_timeline}).
-Second, MIRA was not chosen to minimise $\chi^2$ or optimise any fit statistic;
-its role as an Observational Frequency was defined in a cosmological context that
-predates this analysis.
-If, despite this, the reader assigns $k=1$, then
-$\Delta\mathrm{BIC}=2093.6 - (2100.5 - 7.587) = -0.3$, which is statistically
-inconclusive but does not reverse the conclusion.
-
-\paragraph{Note on combined spectra.}
-When TT, TE, EE, and PP are combined under the independence approximation
-($N_{\rm total}=5914$, $\chi^2_{r,\mathrm{SSEE}}=1.051$,
-$\chi^2_{r,\Lambda\mathrm{CDM}}=1.040$), the joint $\Delta\mathrm{BIC}\approx+13.7$.
-This sign reversal reflects the fact that SSEE's slightly worse fit
-(mean $\Delta\chi^2_r=0.011$ across TT/TE/EE) accumulates over the larger combined dataset.
-The lensing sector (PP) alone favours SSEE ($\Delta\chi^2_r=-0.027$),
-partially offsetting the temperature penalty.
-However, TT, TE, EE, and PP are not statistically independent — a rigorous
-joint test requires the full Planck CMB likelihood with its off-diagonal
-covariance terms.
-The $\Delta\mathrm{BIC}=-6.9$ from TT alone remains the cleanest single-spectrum
-result; the $+13.7$ value should be treated as an upper bound on the combined penalty.
+\paragraph{Disclaimer regarding the Likelihood function.}
+We emphasize that the $\chi^2$ and $\Delta\mathrm{BIC}$ reported here use a simplified Gaussian diagonal approximation over the released Planck PR4 bandpowers. It does not replace the official \texttt{clik}/\texttt{plik} or \texttt{CamSpec} likelihoods which account for detailed instrumental modeling, foregrounds, and off-diagonal covariance terms. A formal cosmological evaluation using \texttt{Cobaya} with the official likelihoods is deferred to future work.
 
 % ===========================================================================
 \section{Falsifiability Criteria}
@@ -602,7 +575,7 @@ The key results are:
   \item TT: $\chi^2_r=1.062$ over 1971 multipoles ($\Lambda$CDM: $1.043$).
   \item TE/EE: $\chi^2_r=1.053/1.040$, essentially matching $\Lambda$CDM.
   \item Lensing (PP): $\chi^2_r=0.730$ vs.\ $0.757$ for $\Lambda$CDM — SSEE marginally favoured.
-  \item $\Delta\mathrm{BIC}=-6.9$ (TT alone) favouring SSEE+MIRA over $\Lambda$CDM.
+  \item $\Delta\mathrm{BIC}=+31.1$ combined, confirming $\Lambda$CDM is favoured when using a strict parameter penalty ($k=2$).
   \item $\Omega_{m,\mathrm{CMB}}=0.3199$ within $0.63\sigma$ of Planck 2018.
   \item The sound horizon $r_d=147.15$ Mpc matches $\Lambda$CDM to $0.03\%$.
 \end{itemize}

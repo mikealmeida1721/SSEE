@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software or results, please cite it as below."
 type: software
-title: "SSEE — Scalar Structural Evolution Equations (V3.6)"
+title: "SSEE — Structural Self-Energy Expansion (V3.6)"
 abstract: >
   A parameter-free dark energy model derived algebraically from φ and π,
   tested against DESI DR2 BAO, Planck 2018, and galaxy cluster masses.

@@ -3,3 +3,4 @@ scipy>=1.10
 matplotlib>=3.7
 emcee>=3.1
 corner>=2.2
+camb>=1.5

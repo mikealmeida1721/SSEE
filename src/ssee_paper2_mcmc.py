@@ -11,14 +11,8 @@ from scipy import integrate, stats
 import warnings
 warnings.filterwarnings("ignore")
 
-try:
-    import emcee
-    import corner
-except ImportError:
-    import subprocess, sys
-    subprocess.check_call([sys.executable, "-m", "pip", "install",
-                           "emcee", "corner", "--break-system-packages", "-q"])
-    import emcee, corner
+import emcee
+import corner
 
 import matplotlib
 matplotlib.use("Agg")

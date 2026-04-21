@@ -435,8 +435,8 @@ def main():
     if total_N > 0:
         print(f"\n  COMBINADO:  SSEE χ²_r={total_chi2_s/total_N:.3f}  |  "
               f"ΛCDM χ²_r={total_chi2_l/total_N:.3f}  (N_total={total_N})")
-        # BIC (k=0 for SSEE since no free parameters; k_LCDM=6)
-        k_ssee  = 0
+        # BIC (k=2 for SSEE since H0 and Obh2 were inferred; k_LCDM=6)
+        k_ssee  = 2
         k_lcdm  = 6
         BIC_ssee = total_chi2_s + k_ssee  * np.log(total_N)
         BIC_lcdm = total_chi2_l + k_lcdm  * np.log(total_N)

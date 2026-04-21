@@ -7,11 +7,11 @@
 Trilogía de papers:
 - **Paper 1**: Framework teórico (publicado como preprint)
 - **Paper 2**: Validación Bayesiana MCMC (draft en progreso → submission-ready)
-- **Paper 3**: Confrontación CMB Planck PR4 (en construcción)
+- **Paper 3**: Confrontación CMB Planck PR4 (✅ completo — TT+TE+EE+lensing)
 
 ---
 
-## Estado actual de los documentos (al 2026-04-20)
+## Estado actual de los documentos (al 2026-04-21)
 
 ### docs/ — Documentos fuente
 
@@ -19,17 +19,17 @@ Trilogía de papers:
 |---|---|---|
 | `SSEE_Paper1_Framework_v3.6.pdf` | Paper 1 completo (5p) | ✅ Completo |
 | `SSEE_Paper2_MCMC_Validation_draft.pdf` | Paper 2 draft (15p) | 🟡 Draft — ver fixes pendientes abajo |
-| `SSEE_Paper2_Summary_ES_v1.pdf` | Resumen en español del P2 | ⚠️ Redundante — considerar integrar como Appendix |
-| `SSEE_Paper3_Ch1_Perturbations_v1.pdf` | Paper 3 Cap 1 solamente (2p) | 🔴 Incompleto — falta todo el cuerpo |
-| `SSEE_Paper3_Conclusion_PlanckPR4_v1.pdf` | Conclusión Paper 3 (2p) | 🔴 Solo cierre — sin cuerpo |
+| `SSEE_Paper3_CMB_Confrontation_v1.pdf` | Paper 3 completo (TT+TE+EE+lensing) | ✅ Completo — pendiente recompilar v2 |
 
 ### manuscript/ — Fuente LaTeX
 - `SSEE_Paper2_draft.tex` — fuente completa del Paper 2
+- `SSEE_Paper3_draft.tex` — fuente completa del Paper 3 (TT+TE+EE+PP)
 
 ### src/ — Scripts Python
 - `ssee_paper2_analysis.py` — análisis analítico (plano w0-wa, sigma, tabla sensibilidad)
 - `ssee_paper2_mcmc.py` — MCMC Bayesiano (SSEE vs ΛCDM vs CPL)
 - `ssee_paper2_figures.py` — generación de figuras → results/figures/
+- `ssee_paper3_cmb.py` — CAMB CMB spectrum TT+TE+EE+lensing vs Planck PR4
 
 ---
 
@@ -49,14 +49,23 @@ Trilogía de papers:
 
 ---
 
-## Fixes pendientes en Paper 3 (estructura)
+## Resultados clave Paper 3 (para referencia)
 
-Paper 3 tiene solo Cap 1 + Conclusión. Falta:
-- Cap 2: Implementación del background SSEE en CLASS o CAMB
-- Cap 3: Cálculo del espectro Cℓ con KAL₀
-- Cap 4: Comparación con Planck PR4 (TT, TE, EE + lensing)
-- Cap 5: Análisis χ² del espectro completo vs ΛCDM
-- Sección de falsificabilidad explícita
+| Espectro | SSEE χ²_r | ΛCDM χ²_r | N |
+|---|---|---|---|
+| TT | 1.062 | 1.043 | 1971 |
+| TE | 1.053 | 1.040 | 1967 |
+| EE | 1.040 | 1.039 | 1967 |
+| PP (lensing) | 0.730 | 0.757 | 9 |
+| ΔBIC (TT, k=0 vs k=6) | −6.9 (SSEE favorecido) | — | — |
+| ΔBIC (TT+TE+EE+PP, upper bound) | +13.7 | — | — |
+
+Datos lensing: `data/raw/planck_pr4_lensing.txt` (14 bins MV, fuente: Cobaya planck_supp_data_and_covmats)
+
+## Pendientes Paper 3
+
+- [ ] Recompilar PDF → `docs/SSEE_Paper3_CMB_Confrontation_v2.pdf`
+- [ ] Subir Genesis 5.12 a Zenodo → actualizar `AlmeidaSSEE2026genesis` en ssee_paper3.bib
 
 ---
 
@@ -109,10 +118,9 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 
 ---
 
-## Orden de trabajo acordado
+## Próximos pasos (2026-04-22)
 
-1. **Paper 2** → submission-ready (en progreso)
-2. **Paper 3** → construir cuerpo completo
-
-## Próximo paso inmediato
-Aplicar los fixes del Paper 2: graphicspath, referencia MNRAS2026, tabla CC H(z), y decidir si agregar más cúmulos.
+1. Zenodo deposit Genesis 5.12 → DOI → actualizar bib
+2. Abstracts arXiv (250 palabras × 3 papers)
+3. Recompilar Paper 3 PDF
+4. Fixes pendientes Paper 2 (full covariance DESI, Data Availability, ORCID)

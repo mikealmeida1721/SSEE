@@ -1,25 +1,16 @@
-# SSEE — Scalar Structural Evolution Equations
+# SSEE — Structural Self-Energy Expansion
 
-**A parameter-free dark energy model derived from algebraic constants (φ, π), tested against DESI DR2 BAO, Planck 2018, and galaxy cluster masses.**
-
----
-
-## What this repo shows
-
-SSEE V3.6 has two faces:
-
-- **Dynamic sector** (w₀, wₐ, Ωₘ_eff): competitive with CPL and ΛCDM on DESI BAO + cluster data — validated in Paper 2.
-- **Background sector** (CMB H₀ scale): tension with Planck 2018 is quantified explicitly — open problem for Paper 3.
-
-The model fixes *all* cosmological parameters algebraically from φ and π. There are no free parameters fitted from data.
+**A zero-free-parameter dark energy model derived from φ (golden ratio) and π, tested against DESI DR2 BAO, Planck 2018 CMB (TT+TE+EE+lensing), and galaxy cluster masses.**
 
 ---
 
-## What remains open
+## Three falsifiable predictions — all pass
 
-- CMB background tension via H₀ scale (SSEE fixes Ωₘ_eff = 0.160, shifting r_d relative to ΛCDM).
-- Full CMB power spectrum comparison (Paper 3).
-- Folding Symmetry interpretation in a quantum gravity context.
+| Observable | SSEE (algebraic) | Observed | Separation |
+|---|---|---|---|
+| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.827, −0.75) | 0.05σ |
+| CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
+| Ωm,CMB | 0.3199 (via MIRA) | Planck 2018: 0.3153 | 0.63σ |
 
 ---
 
@@ -27,72 +18,95 @@ The model fixes *all* cosmological parameters algebraically from φ and π. Ther
 
 ```
 SSEE/
-├── src/              # Analysis scripts (pipeline reproducible)
-├── notebooks/        # Exploratory notebooks
-├── data/
-│   ├── raw/          # Observational data (DESI, Planck, clusters)
-│   └── processed/    # Derived inputs
-├── results/
-│   ├── figures/      # All generated figures
-│   ├── tables/       # Statistical results
-│   └── logs/         # MCMC logs
-├── manuscript/       # Paper 2 LaTeX draft
-└── docs/             # Reference documents
+├── src/
+│   ├── ssee_paper2_mcmc.py        # Bayesian MCMC: SSEE vs ΛCDM vs CPL
+│   ├── ssee_paper2_analysis.py    # Analytical w₀-wₐ plane
+│   └── ssee_paper3_cmb.py         # CAMB CMB spectrum TT+TE+EE+lensing
+├── data/raw/
+│   ├── planck_pr4_lensing.txt     # Planck 2018 MV lensing bandpowers (14 bins)
+│   └── ...                        # Planck PR4 TT/TE/EE spectra
+├── results/figures/               # All generated figures (PDF/PNG)
+├── manuscript/
+│   ├── SSEE_Paper2_draft.tex      # Paper 2: MCMC validation
+│   ├── SSEE_Paper3_draft.tex      # Paper 3: CMB confrontation
+│   ├── ssee_paper2.bib
+│   └── ssee_paper3.bib
+├── docs/                          # Compiled PDFs
+├── AUDIT.md                       # Full reproducibility guide + known limitations
+└── archive/                       # Obsolete drafts
 ```
 
 ---
 
-## Installation
+## How to reproduce
 
 ```bash
-git clone https://github.com/mikealmeida1721/SSEE.git
-cd SSEE
-pip install -r requirements.txt
+pip install camb emcee scipy numpy matplotlib
 ```
 
----
-
-## How to reproduce Paper 2
-
-Run the three scripts in order:
-
+**Paper 2 — MCMC validation** (~10 min, N_s=6000):
 ```bash
-python src/ssee_paper2_analysis.py   # w0-wa plane, sigma deviations, sensitivity
-python src/ssee_paper2_mcmc.py       # Bayesian MCMC: SSEE vs ΛCDM vs CPL
-python src/ssee_paper2_figures.py    # Generate all figures → results/figures/
+python src/ssee_paper2_mcmc.py
 ```
+
+**Paper 3 — CMB power spectrum**:
+```bash
+python src/ssee_paper3_cmb.py
+```
+
+See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 
 ---
 
-## Key results (Paper 2)
+## Key results
 
-| Observable | SSEE (algebraic) | Observed | Tension |
+### Paper 2 (DESI DR2 + Planck 2018 + clusters)
+
+| Metric | Value |
+|---|---|
+| χ²_r clusters (7 clusters, IGIMF-corrected) | 0.131 |
+| χ²_2D (w₀-wₐ vs DESI DR2) | 0.080 → 0.05σ |
+| H₀ SSEE | 66.66⁺⁰·⁴⁷₋₀.₄₆ km/s/Mpc |
+| ΔBIC (dynamic sector isolated) | −13.5 (SSEE favoured) |
+
+### Paper 3 (Planck PR4 CMB)
+
+| Spectrum | SSEE χ²_r | ΛCDM χ²_r | N |
 |---|---|---|---|
-| w₀ | −0.840 | −0.838 ± 0.096 | < 0.03σ |
-| wₐ | −0.670 | −0.62 ± 0.39 | < 0.13σ |
-| Ω_DE | 0.840 | 0.685 ± 0.019 | ~8σ (background) |
+| TT | 1.062 | 1.043 | 1971 |
+| TE | 1.053 | 1.040 | 1967 |
+| EE | 1.040 | 1.039 | 1967 |
+| PP (lensing) | **0.730** | 0.757 | 9 |
+| ΔBIC (TT, k=0 vs k=6) | **−6.9** (SSEE favoured) | — | — |
 
 ---
 
-## What's hypothesis vs. result
+## Known limitations
 
-- **Algebraic (hypothesis):** All SSEE constants (w₀, wₐ, Ωₘ_eff, etc.) are derived from φ and π — no fitting.
-- **Result:** Bayesian MCMC comparison shows SSEE dynamic sector is statistically competitive with CPL on DESI + cluster data.
-- **Open:** Background CMB tension is a quantified discrepancy, not a resolved result.
+Documented honestly in the papers. Full disclosure in [AUDIT.md](AUDIT.md):
+
+1. **H(z) tension**: SSEE χ²_r=1.861 vs ΛCDM 0.458 — genuine tension, stated explicitly.
+2. **ΔBIC = +206** (Paper 2): applies ΛCDM's Friedmann framework to an SSEE background — acknowledged as a framework-internal penalty.
+3. **Two-sector Ωm**: Ωm,dyn=0.160 ≠ Ωm,CMB=0.3199. Physical justification via MIRA in Paper 3 §2.3.
+4. **No Lagrangian action**: SSEE is a phenomenological framework. Formal EFT connection is Level 3 work.
 
 ---
 
 ## Roadmap
 
-- [x] Paper 2: Dynamic sector validation (DESI BAO + clusters)
-- [ ] Paper 3: CMB background tension resolution
+- [x] Paper 1: Algebraic framework (φ, π → w₀, wₐ)
+- [x] Paper 2: MCMC validation against DESI DR2 + Planck 2018 + clusters
+- [x] Paper 3: CMB confrontation TT+TE+EE+lensing (Planck PR4)
+- [ ] Zenodo deposit of Genesis 5.12 (DOI in preparation)
+- [ ] arXiv submission
 
 ---
+
+## Author
+
+Mike Edison Almeida Vallejo — mike.almeida1721@gmail.com  
+ORCID: 0009-0008-2195-7836
 
 ## License
 
 Apache 2.0 — see [LICENSE](LICENSE).
-
-## Contact
-
-Mike Almeida — mike.almeida1721@gmail.com

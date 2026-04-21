@@ -66,7 +66,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 |---|---|
 | χ²_r clusters (7 clusters, IGIMF-corrected) | 0.131 |
 | χ²_2D (w₀-wₐ vs DESI DR2) | 0.080 → 0.05σ |
-| H₀ SSEE | 66.66⁺⁰·⁴⁷₋₀.₄₆ km/s/Mpc |
+| H₀ SSEE | 66.75⁺⁰·⁴⁴₋₀.₄⁴ km/s/Mpc |
 | ΔBIC (dynamic sector isolated) | −13.5 (SSEE favoured) |
 
 ### Paper 3 (Planck PR4 CMB)

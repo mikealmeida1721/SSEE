@@ -56,7 +56,7 @@ background is no longer applicable to SSEE. Isolating the dynamic sector
 (w_0, w_a fixed algebraically, one free parameter H_0) yields
 Delta_BIC(SSEE_dyn) = -13.5 relative to LCDM, demonstrating that the w_0-w_a
 prediction is genuinely favoured by current data. The H_0 posterior is
-66.66 (+0.47/-0.46) km/s/Mpc. The background-sector tension is addressed in
+66.75 (+0.44/-0.44) km/s/Mpc. The background-sector tension is addressed in
 the companion Paper 3 via a modified Friedmann CMB analysis.
 
 ============================================================

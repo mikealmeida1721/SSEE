@@ -62,7 +62,7 @@ Produces posterior chains for SSEE, ΛCDM, CPL against DESI DR2 + Planck 2018 pr
 Runtime: ~10 min (N_s=6000, N_w=32).
 
 Expected output:
-- H₀ = 66.66⁺⁰·⁴⁷₋₀.₄₆ km/s/Mpc
+- H₀ = 66.75⁺⁰·⁴⁴₋₀.₄⁴ km/s/Mpc
 - χ²_r clusters = 0.131 (7 clusters, IGIMF-corrected)
 - χ²_2D (w₀-wₐ vs DESI) = 0.080 → 0.05σ
 
@@ -94,7 +94,7 @@ These are documented honestly in the papers. Reviewers should verify they are ad
 ### 1. H(z) tension (Paper 2, §Results)
 SSEE χ²_r(H(z)) = 1.861 vs ΛCDM = 0.458.
 This is a **genuine tension** (4× worse), not a calibration artefact.
-Paper 2 states this explicitly. It reflects the fixed H₀=66.66 and modified background.
+Paper 2 states this explicitly. It reflects the fixed H₀=66.75 and modified background.
 
 ### 2. ΔBIC = +206 (Paper 2, §BIC)
 This applies BIC within the standard Friedmann framework, where SSEE's modified

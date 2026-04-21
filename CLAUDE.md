@@ -111,7 +111,7 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | χ²ᵣ cúmulos (SSEE+IGIMF) | 0.122 |
 | ΔBIC (modelo completo) | +206 (penalidad por background) |
 | ΔBIC (sector dinámico aislado) | −13.5 (favorecido) |
-| H₀ SSEE | 66.66⁺⁰·⁴⁷₋₀.₄₆ km/s/Mpc |
+| H₀ SSEE | 66.75⁺⁰·⁴⁴₋₀.₄⁴ km/s/Mpc |
 | Tensión Ωm | 21.3σ (background mismatch, no falsificación) |
 | r_d SSEE | 175.6 Mpc vs 147.6 Mpc (ΛCDM) |
 | r_d,eff (Folding Symmetry) | 147.2 Mpc (dentro de 1σ de Planck) |

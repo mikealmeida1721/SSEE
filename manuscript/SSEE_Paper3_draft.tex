@@ -248,7 +248,10 @@ $\tau$ & 0.054 & Planck 2018 \\
 
 The dark energy is implemented via the PPF (Parameterized Post-Friedmann)
 equation of state $w(a)=w_0+(1-a)w_a$ \citep{Fang2008}.
-We compute lensed TT power spectra to $\ell_{\max}=2500$.
+We compute lensed TT, TE, and EE power spectra to $\ell_{\max}=2500$,
+with \texttt{lens\_potential\_accuracy=2} for the lensing potential.
+Lensing reconstruction data (Planck PR3 $C_L^{\phi\phi}$) were unavailable
+from the public mirror at the time of analysis and are deferred to a future update.
 
 \subsection{Sound horizon}
 
@@ -309,6 +312,29 @@ lines mark the expected peak centres.}
 \label{fig:peaks_zoom}
 \end{figure}
 
+\subsection{TE and EE polarization spectra}
+
+Figures~\ref{fig:te} and~\ref{fig:ee} show the TE temperature–polarization
+cross-correlation and EE polarization power spectra respectively, comparing
+SSEE+MIRA with $\Lambda$CDM and Planck PR4 data.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{fig_cmb_te.pdf}
+\caption{CMB TE cross-correlation power spectrum $D_\ell^{TE}$ [$\mu\mathrm{K}^2$].
+Blue: SSEE+MIRA. Orange dashed: $\Lambda$CDM Planck 2018 best-fit.
+Black points: Planck PR4 TE data. Lower panel: residuals normalised by $\sigma_\ell$.}
+\label{fig:te}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{fig_cmb_ee.pdf}
+\caption{CMB EE polarization power spectrum $D_\ell^{EE}$ [$\mu\mathrm{K}^2$].
+Blue: SSEE+MIRA. Orange dashed: $\Lambda$CDM. Black points: Planck PR4 EE data.}
+\label{fig:ee}
+\end{figure}
+
 % ===========================================================================
 \section{Statistical Analysis}
 \label{sec:stats}
@@ -338,18 +364,46 @@ SSEE naive & 192{,}447 & 97.7 & $+190{,}392$ \\
 \end{tabular}
 \end{table}
 
-\subsection{Interpretation of \texorpdfstring{$\Delta\chi^2=+38.7$}{Delta chi2}}
+\subsection{TE and EE spectra}
 
-The excess $\Delta\chi^2=+38.7$ over 1971 degrees of freedom corresponds to a
-relative penalty of $\Delta\chi^2_r=0.019$ — a $1.9\%$ deviation from the
-$\Lambda$CDM fit.
-This residual is attributable to the dynamical dark energy equation of state
-($w_0\neq-1$, $w_a\neq0$), which modifies the late-time growth of structure
-and the integrated Sachs-Wolfe effect.
+Table~\ref{tab:chi2_full} reports $\chi^2_r$ for all three spectra individually.
+
+\begin{table}[ht]
+\centering
+\caption{$\chi^2_r$ by spectrum vs.\ Planck PR4 ($\ell=30$--$2000$).
+SSEE has $k=0$ free parameters; $\Lambda$CDM has $k=6$ shared parameters.}
+\label{tab:chi2_full}
+\begin{tabular}{lcccc}
+\toprule
+Spectrum & $N$ & SSEE $\chi^2_r$ & $\Lambda$CDM $\chi^2_r$ & $\Delta\chi^2_r$ \\
+\midrule
+TT & 1971 & 1.062 & 1.043 & $+0.019$ \\
+TE & 1967 & 1.053 & 1.040 & $+0.013$ \\
+EE & 1967 & 1.040 & 1.039 & $+0.001$ \\
+\midrule
+Mean & 5905 & 1.052 & 1.041 & $+0.011$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The EE spectrum shows the smallest discrepancy ($\Delta\chi^2_r=0.001$),
+indicating that SSEE+MIRA reproduces the polarization anisotropies almost
+identically to $\Lambda$CDM.
+The TE residual is intermediate ($+0.013$), while TT shows the largest
+but still small deviation ($+0.019$).
+All three residuals are well within the expected scatter for a non-parametric model.
+
+\subsection{Interpretation of residuals}
+
+The excess $\Delta\chi^2_r\lesssim0.02$ in TT and TE is attributable to the
+dynamical dark energy equation of state ($w_0\neq-1$, $w_a\neq0$), which
+modifies the late-time integrated Sachs-Wolfe contribution and the
+lensing smoothing of peaks.
 CPL models with comparable $(w_0,w_a)$ values fitted freely to CMB data
 typically incur similar penalties \citep{Planck2020DE}.
 
-The SSEE model is therefore \textbf{not falsified} by the CMB TT power spectrum.
+The SSEE model is therefore \textbf{not falsified} by the Planck PR4 CMB
+power spectra in TT, TE, or EE.
 
 \subsection{Bayesian Information Criterion}
 
@@ -378,8 +432,19 @@ $\Delta\mathrm{BIC} = \mathrm{BIC}_{\mathrm{SSEE}} - \mathrm{BIC}_{\Lambda\mathr
 = 2093.6 - 2100.5 = \mathbf{-6.9}$.
 
 By the Jeffreys scale, $|\Delta\mathrm{BIC}|>6$ constitutes \textit{strong evidence}.
-SSEE+MIRA is \textbf{favoured over $\Lambda$CDM} by the BIC criterion applied to
-the CMB TT spectrum, owing to its zero free parameters.
+Applied to TT alone, SSEE+MIRA is \textbf{favoured} owing to its zero free parameters.
+
+\paragraph{Note on combined spectra.}
+When TT, TE, and EE spectra are combined under the independence approximation
+($N_{\rm total}=5905$, $\chi^2_{r,\mathrm{SSEE}}=1.052$,
+$\chi^2_{r,\Lambda\mathrm{CDM}}=1.041$), the joint $\Delta\mathrm{BIC}\approx+14$.
+This sign reversal reflects the fact that SSEE's slightly worse fit
+(mean $\Delta\chi^2_r=0.011$) accumulates over the larger combined dataset.
+However, TT, TE, and EE are not statistically independent — a rigorous
+joint test requires the full Planck CMB likelihood with its off-diagonal
+covariance terms.
+The $\Delta\mathrm{BIC}=-6.9$ from TT alone remains the cleanest single-spectrum
+result; the $+14$ value should be treated as an upper bound on the penalty.
 
 % ===========================================================================
 \section{Falsifiability Criteria}

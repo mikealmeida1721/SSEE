@@ -1,6 +1,6 @@
 """
 SSEE-V3.6 — Paper 3: CMB Power Spectrum vs Planck PR4
-Computes Cl_TT under SSEE background, applies r_d,eff mapping,
+Computes Cl_TT/TE/EE/lensing under SSEE background, applies r_d,eff mapping,
 compares against Planck PR4 data, and produces chi2 + figures.
 """
 
@@ -54,7 +54,6 @@ os.makedirs(DAT_DIR, exist_ok=True)
 
 # ---------------------------------------------------------------------------
 # Download Planck PR4 TT spectrum (COM_PowerSpect_CMB-TT-full_R3.01.txt)
-# Public mirror via PLA (ESA)
 # ---------------------------------------------------------------------------
 PLANCK_FILE = os.path.join(DAT_DIR, "planck_pr4_TT.txt")
 PLANCK_URL  = (
@@ -62,154 +61,268 @@ PLANCK_URL  = (
     "cosmoparams/COM_PowerSpect_CMB-TT-full_R3.01.txt"
 )
 
-def download_planck():
-    if os.path.exists(PLANCK_FILE):
-        return
-    print("Descargando espectro Planck PR4 TT...")
-    try:
-        urllib.request.urlretrieve(PLANCK_URL, PLANCK_FILE)
-        print(f"  Guardado en {PLANCK_FILE}")
-    except Exception as e:
-        print(f"  Descarga fallida: {e}")
-        print("  Usando espectro sintético ΛCDM como referencia.")
+PLANCK_TE_FILE = os.path.join(DAT_DIR, "planck_pr4_TE.txt")
+PLANCK_TE_URL  = (
+    "https://irsa.ipac.caltech.edu/data/Planck/release_3/ancillary-data/"
+    "cosmoparams/COM_PowerSpect_CMB-TE-full_R3.01.txt"
+)
 
-def load_planck():
-    """Returns (ell, Dl, sigma) arrays from Planck TT file."""
-    if not os.path.exists(PLANCK_FILE):
+PLANCK_EE_FILE = os.path.join(DAT_DIR, "planck_pr4_EE.txt")
+PLANCK_EE_URL  = (
+    "https://irsa.ipac.caltech.edu/data/Planck/release_3/ancillary-data/"
+    "cosmoparams/COM_PowerSpect_CMB-EE-full_R3.01.txt"
+)
+
+PLANCK_LENS_FILE = os.path.join(DAT_DIR, "planck_pr4_lensing.txt")
+PLANCK_LENS_URL  = (
+    "https://irsa.ipac.caltech.edu/data/Planck/release_3/ancillary-data/"
+    "cosmoparams/COM_PowerSpect_CMB-lensing_R3.01.txt"
+)
+
+
+def _download(url, path, label):
+    if os.path.exists(path):
+        return
+    print(f"Descargando {label}...")
+    try:
+        urllib.request.urlretrieve(url, path)
+        print(f"  Guardado en {path}")
+    except Exception as e:
+        print(f"  Descarga fallida ({label}): {e}")
+
+
+def download_planck():
+    _download(PLANCK_URL,      PLANCK_FILE,      "Planck TT")
+    _download(PLANCK_TE_URL,   PLANCK_TE_FILE,   "Planck TE")
+    _download(PLANCK_EE_URL,   PLANCK_EE_FILE,   "Planck EE")
+    _download(PLANCK_LENS_URL, PLANCK_LENS_FILE, "Planck lensing")
+
+
+def _load_spectrum(path, label):
+    if not os.path.exists(path):
         return None, None, None
     try:
-        data = np.loadtxt(PLANCK_FILE, comments="#")
+        data = np.loadtxt(path, comments="#")
         ell   = data[:, 0].astype(int)
         Dl    = data[:, 1]
-        # Columns 2 and 3 are +sigma and -sigma; use mean
-        sigma = 0.5 * (data[:, 2] + data[:, 3])
+        sigma = 0.5 * (np.abs(data[:, 2]) + np.abs(data[:, 3]))
         return ell, Dl, sigma
     except Exception as e:
-        print(f"  Error leyendo Planck: {e}")
+        print(f"  Error leyendo {label}: {e}")
         return None, None, None
 
+
+def load_planck():
+    tt  = _load_spectrum(PLANCK_FILE,      "TT")
+    te  = _load_spectrum(PLANCK_TE_FILE,   "TE")
+    ee  = _load_spectrum(PLANCK_EE_FILE,   "EE")
+    # lensing file: columns ell, Cl_phiphi, sigma (dimensionless)
+    lens = _load_spectrum(PLANCK_LENS_FILE, "lensing")
+    return tt, te, ee, lens
+
+
 # ---------------------------------------------------------------------------
-# Compute SSEE Cl with CAMB
+# Compute SSEE / ΛCDM spectra with CAMB
 # ---------------------------------------------------------------------------
-def compute_ssee_spectrum(lmax=2500):
-    """SSEE+MIRA two-sector model: Ω_m,CMB = Ω_m,dyn × MIRA."""
+def _run_camb(H0_val, ombh2, omch2, mnu, w0_val, wa_val, As_val, ns_val, lmax):
     import camb
-
-    h = H0 / 100.0
-    omch2 = Omm_cmb * h**2 - Omb_h2
-    if omch2 < 0:
-        raise ValueError(f"omch2 negativo: Omm={Omm:.4f} implica omch2={omch2:.5f}")
-
     pars = camb.CAMBparams()
-    pars.set_cosmology(
-        H0=H0,
-        ombh2=Omb_h2,
-        omch2=omch2,
-        mnu=0.085,          # SSEE neutrino mass sum (eV)
-        omk=0,
-        tau=0.054,
-    )
-    pars.set_dark_energy(w=w0, wa=wa, dark_energy_model="ppf")
-    pars.InitPower.set_params(As=As, ns=ns)
-    pars.set_for_lmax(lmax, lens_potential_accuracy=1)
+    pars.set_cosmology(H0=H0_val, ombh2=ombh2, omch2=omch2,
+                       mnu=mnu, omk=0, tau=0.054)
+    pars.set_dark_energy(w=w0_val, wa=wa_val, dark_energy_model="ppf")
+    pars.InitPower.set_params(As=As_val, ns=ns_val)
+    pars.set_for_lmax(lmax, lens_potential_accuracy=2)
     pars.Want_CMB = True
-
+    pars.WantTensors = False
     results = camb.get_results(pars)
+    powers  = results.get_cmb_power_spectra(pars, CMB_unit="muK", raw_cl=False)
+    # lensed total: columns 0=TT, 1=EE, 2=BB, 3=TE
+    total   = powers["total"]
+    lens_p  = results.get_lens_potential_cls(lmax=lmax)  # cols: 0=phiphi, 1=Tphi, 2=Ephi
     derived = results.get_derived_params()
-    r_d_camb = derived["rdrag"]             # raw sound horizon from CAMB
-    r_d_eff  = r_d_camb * M_SSEE           # structural mapping
+    return total, lens_p, derived
 
-    powers = results.get_cmb_power_spectra(pars, CMB_unit="muK", raw_cl=False)
-    # total = lensed; shape (lmax+1, 4): TT, EE, BB, TE
-    Dl_TT = powers["total"][:, 0]          # Dl = l(l+1)Cl/2pi [muK^2]
-    ells  = np.arange(len(Dl_TT))
 
-    return ells, Dl_TT, r_d_camb, r_d_eff, derived
+def compute_ssee_spectrum(lmax=2500):
+    h      = H0 / 100.0
+    omch2  = Omm_cmb * h**2 - Omb_h2
+    if omch2 < 0:
+        raise ValueError(f"omch2={omch2:.5f} < 0 (Omm_cmb={Omm_cmb:.4f})")
+    total, lens_p, derived = _run_camb(
+        H0, Omb_h2, omch2, 0.085, w0, wa, As, ns, lmax)
+    r_d_camb = derived["rdrag"]
+    r_d_eff  = r_d_camb * M_SSEE
+    ells     = np.arange(total.shape[0])
+    return ells, total, lens_p, r_d_camb, r_d_eff, derived
 
 
 def compute_lcdm_spectrum(lmax=2500):
-    """ΛCDM reference: Planck 2018 best-fit parameters."""
-    import camb
+    total, lens_p, derived = _run_camb(
+        67.36, 0.02237, 0.1200, 0.06, -1.0, 0.0,
+        np.exp(3.044)*1e-10, 0.9649, lmax)
+    r_d = derived["rdrag"]
+    ells = np.arange(total.shape[0])
+    return ells, total, lens_p, r_d
 
-    pars = camb.CAMBparams()
-    pars.set_cosmology(H0=67.36, ombh2=0.02237, omch2=0.1200,
-                       mnu=0.06, omk=0, tau=0.054)
-    pars.set_dark_energy(w=-1.0)
-    pars.InitPower.set_params(As=np.exp(3.044)*1e-10, ns=0.9649)
-    pars.set_for_lmax(lmax, lens_potential_accuracy=1)
-    pars.Want_CMB = True
-
-    results = camb.get_results(pars)
-    powers  = results.get_cmb_power_spectra(pars, CMB_unit="muK", raw_cl=False)
-    Dl_TT   = powers["total"][:, 0]
-    ells    = np.arange(len(Dl_TT))
-    r_d     = results.get_derived_params()["rdrag"]
-    return ells, Dl_TT, r_d
 
 # ---------------------------------------------------------------------------
 # Chi2 calculation
 # ---------------------------------------------------------------------------
 def chi2_vs_planck(ell_obs, Dl_obs, sigma_obs, ell_model, Dl_model,
                    ell_min=30, ell_max=2000):
-    mask = (ell_obs >= ell_min) & (ell_obs <= ell_max)
-    ell_sel = ell_obs[mask]
-    Dl_sel  = Dl_obs[mask]
-    sig_sel = sigma_obs[mask]
-
+    mask      = (ell_obs >= ell_min) & (ell_obs <= ell_max)
+    ell_sel   = ell_obs[mask]
+    Dl_sel    = Dl_obs[mask]
+    sig_sel   = sigma_obs[mask]
     Dl_interp = np.interp(ell_sel, ell_model, Dl_model)
-    residuals  = (Dl_interp - Dl_sel) / sig_sel
-    chi2       = np.sum(residuals**2)
-    chi2_r     = chi2 / len(ell_sel)
+    residuals = (Dl_interp - Dl_sel) / sig_sel
+    chi2      = np.sum(residuals**2)
+    chi2_r    = chi2 / len(ell_sel)
     return chi2, chi2_r, len(ell_sel)
+
 
 # ---------------------------------------------------------------------------
 # Figures
 # ---------------------------------------------------------------------------
-def plot_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
+def _residual_panel(ax, ell_obs, Dl_obs, sigma_obs, ells_model, Dl_model,
+                    color="tab:blue"):
+    Dl_interp = np.interp(ell_obs, ells_model, Dl_model)
+    res = (Dl_interp - Dl_obs) / sigma_obs
+    ax.plot(ell_obs, res, ".", ms=2, alpha=0.5, color=color)
+    ax.axhline(0,  color="k",    lw=0.8)
+    ax.axhline(+1, color="gray", lw=0.6, ls="--")
+    ax.axhline(-1, color="gray", lw=0.6, ls="--")
+    ax.set_ylim(-5, 5)
+    ax.grid(True, alpha=0.3)
+
+
+def _spectrum_figure(ells_s, Dl_s, ells_l, Dl_l,
+                     ell_obs, Dl_obs, sigma_obs,
+                     ylabel, title, outname,
+                     xlim=(2, 2500), ylim=None,
+                     ssee_label=None, lcdm_label=None):
     fig, axes = plt.subplots(2, 1, figsize=(10, 8),
                              gridspec_kw={"height_ratios": [3, 1]})
-
     ax = axes[0]
     if ell_obs is not None:
         ax.errorbar(ell_obs, Dl_obs, yerr=sigma_obs,
-                    fmt="k.", ms=2, lw=0.5, alpha=0.6, label="Planck PR4 TT")
-    ax.plot(ells_l[2:], Dl_l[2:], color="tab:orange", lw=1.5,
-            ls="--", label=r"$\Lambda$CDM ($\Omega_m=0.315$)")
-    ax.plot(ells_s[2:], Dl_s[2:], color="tab:blue", lw=1.8,
-            label=r"SSEE-V3.6+MIRA ($\Omega_{m,\rm CMB}=\Omega_{m,\rm dyn}\times\mathrm{MIRA}=0.320$)")
-    ax.set_xlim(2, 2500)
-    ax.set_ylim(0, 6500)
-    ax.set_ylabel(r"$D_\ell^{TT}$ [$\mu$K$^2$]", fontsize=13)
-    ax.legend(fontsize=11)
-    ax.set_title("SSEE-V3.6 vs Planck PR4: CMB TT Power Spectrum", fontsize=13)
+                    fmt="k.", ms=2, lw=0.5, alpha=0.6, label="Planck PR4")
+    lbl_l = lcdm_label or r"$\Lambda$CDM"
+    lbl_s = ssee_label or r"SSEE-V3.6+MIRA"
+    ax.plot(ells_l[2:], Dl_l[2:], color="tab:orange", lw=1.5, ls="--", label=lbl_l)
+    ax.plot(ells_s[2:], Dl_s[2:], color="tab:blue",   lw=1.8, label=lbl_s)
+    ax.set_xlim(*xlim)
+    if ylim:
+        ax.set_ylim(*ylim)
+    ax.set_ylabel(ylabel, fontsize=13)
+    ax.legend(fontsize=10)
+    ax.set_title(title, fontsize=13)
     ax.grid(True, alpha=0.3)
 
     ax2 = axes[1]
     if ell_obs is not None:
-        Dl_interp_s = np.interp(ell_obs, ells_s, Dl_s)
-        res = (Dl_interp_s - Dl_obs) / sigma_obs
-        ax2.plot(ell_obs, res, "b.", ms=2, alpha=0.6)
-        ax2.axhline(0, color="k", lw=0.8)
+        _residual_panel(ax2, ell_obs, Dl_obs, sigma_obs, ells_s, Dl_s)
+        ax2.set_ylabel(r"$(D_\ell^{\rm SSEE}-D_\ell^{\rm Planck})/\sigma$", fontsize=10)
+        ax2.set_xlabel(r"Multipole $\ell$", fontsize=13)
+        ax2.set_xlim(*xlim)
+    else:
+        ax2.set_visible(False)
+
+    plt.tight_layout()
+    out = os.path.join(FIG_DIR, outname)
+    plt.savefig(out, bbox_inches="tight")
+    plt.close()
+    print(f"  Figura guardada: {out}")
+
+
+def plot_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
+    _spectrum_figure(
+        ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs,
+        ylabel=r"$D_\ell^{TT}$ [$\mu$K$^2$]",
+        title="SSEE-V3.6 vs Planck PR4: CMB TT Power Spectrum",
+        outname="fig_cmb_spectrum.pdf",
+        ylim=(0, 6500),
+        ssee_label=r"SSEE-V3.6+MIRA ($\Omega_{m,\rm CMB}=0.320$)",
+        lcdm_label=r"$\Lambda$CDM ($\Omega_m=0.315$)",
+    )
+
+
+def plot_te_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
+    _spectrum_figure(
+        ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs,
+        ylabel=r"$D_\ell^{TE}$ [$\mu$K$^2$]",
+        title="SSEE-V3.6 vs Planck PR4: CMB TE Power Spectrum",
+        outname="fig_cmb_te.pdf",
+        ssee_label=r"SSEE-V3.6+MIRA",
+        lcdm_label=r"$\Lambda$CDM",
+    )
+
+
+def plot_ee_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
+    _spectrum_figure(
+        ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs,
+        ylabel=r"$D_\ell^{EE}$ [$\mu$K$^2$]",
+        title="SSEE-V3.6 vs Planck PR4: CMB EE Power Spectrum",
+        outname="fig_cmb_ee.pdf",
+        ssee_label=r"SSEE-V3.6+MIRA",
+        lcdm_label=r"$\Lambda$CDM",
+    )
+
+
+def plot_lensing(ells_s, Cl_s, ells_l, Cl_l, ell_obs, Cl_obs, sigma_obs):
+    """Lensing potential power spectrum [L(L+1)]^2 C_L^phiphi / (2pi)."""
+    fig, axes = plt.subplots(2, 1, figsize=(10, 7),
+                             gridspec_kw={"height_ratios": [3, 1]})
+    ax = axes[0]
+    # Convert: CAMB returns raw C_L^phiphi; plot L^2(L+1)^2 C_L / (2pi)
+    def lens_Dl(ells, Cl):
+        with np.errstate(divide="ignore", invalid="ignore"):
+            L = ells.astype(float)
+            return L**2 * (L+1)**2 * Cl / (2 * np.pi)
+
+    if ell_obs is not None and Cl_obs is not None:
+        L_obs = ell_obs.astype(float)
+        Dl_obs_lens = L_obs**2 * (L_obs+1)**2 * Cl_obs / (2*np.pi)
+        sig_lens = L_obs**2 * (L_obs+1)**2 * sigma_obs / (2*np.pi)
+        ax.errorbar(ell_obs, Dl_obs_lens, yerr=sig_lens,
+                    fmt="k.", ms=2, lw=0.5, alpha=0.6, label="Planck PR4")
+
+    m_l = ells_l > 1
+    m_s = ells_s > 1
+    ax.plot(ells_l[m_l], lens_Dl(ells_l, Cl_l)[m_l],
+            color="tab:orange", lw=1.5, ls="--", label=r"$\Lambda$CDM")
+    ax.plot(ells_s[m_s], lens_Dl(ells_s, Cl_s)[m_s],
+            color="tab:blue", lw=1.8, label=r"SSEE-V3.6+MIRA")
+    ax.set_xlim(2, 2500)
+    ax.set_ylabel(r"$[L(L+1)]^2 C_L^{\phi\phi} / (2\pi)$ [$\times 10^7$]", fontsize=11)
+    ax.set_title("SSEE-V3.6 vs Planck PR4: CMB Lensing Potential", fontsize=13)
+    ax.legend(fontsize=10)
+    ax.grid(True, alpha=0.3)
+
+    ax2 = axes[1]
+    if ell_obs is not None and Cl_obs is not None and sigma_obs is not None:
+        Cl_s_interp = np.interp(ell_obs, ells_s, Cl_s)
+        res = (Cl_s_interp - Cl_obs) / sigma_obs
+        ax2.plot(ell_obs, res, "b.", ms=2, alpha=0.5)
+        ax2.axhline(0,  color="k",    lw=0.8)
         ax2.axhline(+1, color="gray", lw=0.6, ls="--")
         ax2.axhline(-1, color="gray", lw=0.6, ls="--")
-        ax2.set_xlim(2, 2500)
         ax2.set_ylim(-5, 5)
-        ax2.set_ylabel(r"$(D_\ell^{\rm SSEE}-D_\ell^{\rm Planck})/\sigma$",
-                       fontsize=11)
-        ax2.set_xlabel(r"Multipole $\ell$", fontsize=13)
+        ax2.set_ylabel(r"$(C_L^{\rm SSEE}-C_L^{\rm Planck})/\sigma$", fontsize=10)
+        ax2.set_xlabel(r"Multipole $L$", fontsize=13)
+        ax2.set_xlim(2, 2500)
         ax2.grid(True, alpha=0.3)
     else:
         ax2.set_visible(False)
 
     plt.tight_layout()
-    out = os.path.join(FIG_DIR, "fig_cmb_spectrum.pdf")
+    out = os.path.join(FIG_DIR, "fig_cmb_lensing.pdf")
     plt.savefig(out, bbox_inches="tight")
     plt.close()
     print(f"  Figura guardada: {out}")
 
 
 def plot_peak_zoom(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
-    """Zoom en los tres primeros picos acústicos."""
     fig, axes = plt.subplots(1, 3, figsize=(13, 4))
     ranges = [(150, 350, 220), (420, 650, 540), (700, 950, 810)]
     labels = ["1er pico", "2do pico", "3er pico"]
@@ -238,67 +351,117 @@ def plot_peak_zoom(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
     plt.close()
     print(f"  Figura guardada: {out}")
 
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
     print("=" * 60)
-    print("SSEE-V3.6 — Paper 3: CMB vs Planck PR4")
+    print("SSEE-V3.6 — Paper 3: CMB vs Planck PR4 (TT+TE+EE+lensing)")
     print("=" * 60)
     print(f"\nParámetros SSEE:")
     print(f"  w0={w0:.4f}  wa={wa:.4f}")
     print(f"  Ω_m,dyn={Omm:.4f}  Ω_DE={OmDE:.4f}  (sector dinámico: BAO/cúmulos)")
-    print(f"  MIRA={MIRA:.6f}  (AURA/2 — Frecuencia de Observación)")
+    print(f"  MIRA={MIRA:.6f}  (AURA/2 — Frecuencia de Observación, Genesis 5.12)")
     print(f"  Ω_m,CMB={Omm_cmb:.6f}  (sector observacional: CMB, Planck: 0.3153)")
     print(f"  M_SSEE=|w0|={M_SSEE:.4f}")
     print(f"  KAL0={KAL0:.4f}")
 
     # 1. Descargar datos Planck
     download_planck()
-    ell_obs, Dl_obs, sigma_obs = load_planck()
-    if ell_obs is not None:
-        print(f"\nDatos Planck PR4: {len(ell_obs)} puntos, ℓ={ell_obs[0]}–{ell_obs[-1]}")
-    else:
-        print("\nDatos Planck no disponibles — solo se generará el espectro SSEE.")
+    (ell_tt, Dl_tt, sig_tt), \
+    (ell_te, Dl_te, sig_te), \
+    (ell_ee, Dl_ee, sig_ee), \
+    (ell_lens, Cl_lens, sig_lens) = load_planck()
 
-    # 2. Calcular espectro SSEE
-    print("\nCalculando espectro SSEE con CAMB...")
-    ells_s, Dl_s, r_d_raw, r_d_eff, derived = compute_ssee_spectrum()
-    print(f"  r_d,SSEE (CAMB)  = {r_d_raw:.2f} Mpc")
+    if ell_tt is not None:
+        print(f"\nDatos Planck PR4 TT: {len(ell_tt)} puntos, ℓ={ell_tt[0]}–{ell_tt[-1]}")
+    if ell_te is not None:
+        print(f"Datos Planck PR4 TE: {len(ell_te)} puntos")
+    if ell_ee is not None:
+        print(f"Datos Planck PR4 EE: {len(ell_ee)} puntos")
+    if ell_lens is not None:
+        print(f"Datos Planck PR4 lensing: {len(ell_lens)} puntos")
+
+    # 2. Calcular espectros SSEE
+    print("\nCalculando espectros SSEE con CAMB (TT+TE+EE+lensing)...")
+    ells_s, total_s, lens_s, r_d_raw, r_d_eff, derived = compute_ssee_spectrum()
+    Dl_TT_s = total_s[:, 0]   # TT lensed
+    Dl_EE_s = total_s[:, 1]   # EE lensed
+    Dl_TE_s = total_s[:, 3]   # TE lensed
+    # lensing potential: CAMB lens_potential_cls col 0 = phiphi
+    Cl_pp_s = lens_s[:, 0]
+    ells_lens_s = np.arange(len(Cl_pp_s))
+
+    print(f"  r_d,SSEE (CAMB)   = {r_d_raw:.2f} Mpc")
     print(f"  r_d,eff (×M_SSEE) = {r_d_eff:.2f} Mpc  (Planck: ~147.1 Mpc)")
-    print(f"  D_A(z*)          = {derived.get('DA', 'N/A')}")
-    print(f"  z_drag           = {derived.get('zdrag', 'N/A'):.2f}")
-    print(f"  100θ_MC          = {derived.get('thetastar', derived.get('theta_MC_100', 'N/A'))}")
+    print(f"  z_drag            = {derived.get('zdrag', 'N/A'):.2f}")
+    print(f"  100θ_MC           = {derived.get('thetastar', derived.get('theta_MC_100', 'N/A'))}")
 
-    # 3. Calcular espectro ΛCDM
-    print("\nCalculando espectro ΛCDM con CAMB...")
-    ells_l, Dl_l, r_d_lcdm = compute_lcdm_spectrum()
+    # 3. Calcular espectros ΛCDM
+    print("\nCalculando espectros ΛCDM con CAMB...")
+    ells_l, total_l, lens_l, r_d_lcdm = compute_lcdm_spectrum()
+    Dl_TT_l = total_l[:, 0]
+    Dl_EE_l = total_l[:, 1]
+    Dl_TE_l = total_l[:, 3]
+    Cl_pp_l = lens_l[:, 0]
+    ells_lens_l = np.arange(len(Cl_pp_l))
     print(f"  r_d,ΛCDM = {r_d_lcdm:.2f} Mpc")
 
-    # 4. Chi2 vs Planck
-    if ell_obs is not None:
-        print("\nCalculando χ² vs Planck PR4 (ℓ=30–2000):")
-        chi2_s, chi2r_s, n = chi2_vs_planck(
-            ell_obs, Dl_obs, sigma_obs, ells_s, Dl_s)
-        chi2_l, chi2r_l, _ = chi2_vs_planck(
-            ell_obs, Dl_obs, sigma_obs, ells_l, Dl_l)
-        print(f"  SSEE:  χ²={chi2_s:.1f}, χ²_r={chi2r_s:.3f}  (N={n})")
-        print(f"  ΛCDM:  χ²={chi2_l:.1f}, χ²_r={chi2r_l:.3f}")
-        print(f"  Δχ²(SSEE−ΛCDM) = {chi2_s - chi2_l:.1f}")
+    # 4. Chi2 total por espectro
+    print("\n--- χ² vs Planck PR4 ---")
+    chi2_results = {}
+    total_chi2_s = 0
+    total_chi2_l = 0
+    total_N = 0
 
-    # 5. Posiciones de picos (máximos locales)
-    print("\nPosición de picos SSEE (primeros 3):")
+    for label, ell_o, Dl_o, sig_o, Dl_model_s, Dl_model_l, ell_model, \
+        ell_min, ell_max in [
+        ("TT", ell_tt,  Dl_tt,  sig_tt,  Dl_TT_s, Dl_TT_l, ells_s,      30, 2000),
+        ("TE", ell_te,  Dl_te,  sig_te,  Dl_TE_s, Dl_TE_l, ells_s,      30, 2000),
+        ("EE", ell_ee,  Dl_ee,  sig_ee,  Dl_EE_s, Dl_EE_l, ells_s,      30, 2000),
+        ("PP", ell_lens,Cl_lens,sig_lens,Cl_pp_s, Cl_pp_l, ells_lens_s,  8,  400),
+    ]:
+        if ell_o is None:
+            print(f"  {label}: datos no disponibles")
+            continue
+        chi2_s, chi2r_s, n = chi2_vs_planck(ell_o, Dl_o, sig_o, ell_model, Dl_model_s,
+                                              ell_min=ell_min, ell_max=ell_max)
+        chi2_l, chi2r_l, _ = chi2_vs_planck(ell_o, Dl_o, sig_o, ell_model, Dl_model_l,
+                                              ell_min=ell_min, ell_max=ell_max)
+        print(f"  {label}:  SSEE χ²_r={chi2r_s:.3f}  |  ΛCDM χ²_r={chi2r_l:.3f}  (N={n})")
+        chi2_results[label] = (chi2_s, chi2r_s, chi2_l, chi2r_l, n)
+        total_chi2_s += chi2_s
+        total_chi2_l += chi2_l
+        total_N += n
+
+    if total_N > 0:
+        print(f"\n  COMBINADO:  SSEE χ²_r={total_chi2_s/total_N:.3f}  |  "
+              f"ΛCDM χ²_r={total_chi2_l/total_N:.3f}  (N_total={total_N})")
+        # BIC (k=0 for SSEE since no free parameters; k_LCDM=6)
+        k_ssee  = 0
+        k_lcdm  = 6
+        BIC_ssee = total_chi2_s + k_ssee  * np.log(total_N)
+        BIC_lcdm = total_chi2_l + k_lcdm  * np.log(total_N)
+        dBIC = BIC_ssee - BIC_lcdm
+        print(f"  ΔBIC(SSEE−ΛCDM) = {dBIC:.1f}  (negativo = SSEE favorecido)")
+
+    # 5. Posiciones de picos TT
+    print("\nPosición de picos TT SSEE (primeros 3):")
     from scipy.signal import argrelmax
-    peaks_idx = argrelmax(Dl_s[50:1500], order=60)[0] + 50
+    peaks_idx = argrelmax(Dl_TT_s[50:1500], order=60)[0] + 50
     for i, idx in enumerate(peaks_idx[:3]):
-        print(f"  Pico {i+1}: ℓ={ells_s[idx]}  Dℓ={Dl_s[idx]:.1f} μK²")
+        print(f"  Pico {i+1}: ℓ={ells_s[idx]}  Dℓ={Dl_TT_s[idx]:.1f} μK²")
 
     # 6. Figuras
     print("\nGenerando figuras...")
-    plot_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs)
-    plot_peak_zoom(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs)
+    plot_spectrum(ells_s, Dl_TT_s, ells_l, Dl_TT_l, ell_tt, Dl_tt, sig_tt)
+    plot_te_spectrum(ells_s, Dl_TE_s, ells_l, Dl_TE_l, ell_te, Dl_te, sig_te)
+    plot_ee_spectrum(ells_s, Dl_EE_s, ells_l, Dl_EE_l, ell_ee, Dl_ee, sig_ee)
+    plot_lensing(ells_lens_s, Cl_pp_s, ells_lens_l, Cl_pp_l, ell_lens, Cl_lens, sig_lens)
+    plot_peak_zoom(ells_s, Dl_TT_s, ells_l, Dl_TT_l, ell_tt, Dl_tt, sig_tt)
 
-    print("\n✓ Listo.")
+    print("\n✓ Listo. TT + TE + EE + lensing completados.")
 
 
 if __name__ == "__main__":

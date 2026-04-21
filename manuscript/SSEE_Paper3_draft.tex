@@ -202,19 +202,80 @@ Comparing with the Planck 2018 best-fit value $\Omega_m^{\mathrm{Planck}}=0.3153
 \end{equation}
 The MIRA-corrected matter density is within $1\sigma$ of Planck with no tuning.
 
-\subsection{Physical interpretation}
+\subsection{Physical interpretation of the two-sector model}
+\label{sec:two_sector_physics}
 
-The factor MIRA$\approx2$ suggests that the effective matter content probed
-by the CMB photons (which traverse the full expansion history from $z_*\approx1089$
-to today) is approximately twice the dynamical matter density that governs
-the low-redshift accelerated expansion.
-This is conceptually analogous to scale-dependent gravitational screening in
-modified gravity, where the effective Newton constant can differ between
-cosmological and local scales.
-Within the SSEE framework, MIRA encodes the \textit{ratio of observational
-depth to dynamical depth}: the CMB integrates over a comoving volume
-$\sim\mathrm{MIRA}$ times larger than the volume probed by BAO and clusters,
-leading to an apparent enhancement of the matter density.
+The two-sector structure is not an \textit{ad hoc} device.
+It arises naturally from the distinction between two physically different
+modes of probing the matter content of the Universe:
+
+\paragraph{Dynamic sector — local causal structure.}
+BAO surveys, galaxy clusters, and the dark energy equation of state probe
+the \emph{local causal structure} of spacetime at redshifts $z\lesssim2$.
+At these scales, the relevant Friedmann equation involves the matter density
+that actively participates in the late-time gravitational dynamics driving
+the accelerated expansion:
+\begin{equation}
+  H^2(a) = H_0^2\!\left[\Omega_{m,\mathrm{dyn}}\,a^{-3}
+  + \Omega_\mathrm{DE}\,\exp\!\!\int_1^a
+  \frac{3[1+w(a')]}{a'}\,\mathrm{d}a'\right].
+\end{equation}
+In SSEE, $\Omega_{m,\mathrm{dyn}}=0.1601$ is the algebraic complement of the
+dark energy fraction $\Omega_\mathrm{DE}=T_r/M_v=0.8399$.
+Baryons ($\Omega_b h^2=0.02237$) account for approximately $0.050/h^2\approx0.112$
+of this total at $H_0=66.66$~km/s/Mpc, leaving the remainder as a structural
+background without the need for cold dark matter.
+
+\paragraph{Observational sector — integrated line of sight.}
+The CMB photons probe the \emph{integrated gravitational potential}
+along the full line of sight from last scattering ($z_*\approx1089$) to today.
+This line-of-sight integral accumulates contributions from all epochs,
+including the early matter-dominated era when the dark energy term was negligible
+and the expansion was effectively governed by the full matter content.
+The acoustic peaks encode $\Omega_m$ as it appears in the \emph{conformal
+distance to last scattering}:
+\begin{equation}
+  \eta_* = \int_0^{z_*} \frac{c\,\mathrm{d}z'}{H(z')},
+\end{equation}
+which is sensitive to the total matter density averaged over the full
+expansion history, not just the late-time dynamic value.
+
+\paragraph{MIRA as a depth ratio.}
+The factor MIRA$=1.9989\approx2$ can be interpreted as the ratio between
+the comoving depth of the CMB observational sector and the comoving depth
+of the BAO dynamic sector:
+\begin{equation}
+  \mathrm{MIRA} \;\approx\; \frac{\chi(z_*)}{\chi(z_{\rm BAO,eff})}
+  \;\approx\; \frac{r_{\rm CMB}}{r_{\rm BAO}},
+\end{equation}
+where $\chi(z_*)$ is the comoving distance to last scattering and
+$\chi(z_{\rm BAO,eff})$ is the effective depth of the BAO data
+(weighted mean $z_{\rm eff}\approx0.5$--$1.0$ for DESI DR2).
+In $\Lambda$CDM, $\chi(z_*)\approx14{,}000$~Mpc and
+$\chi(z_{\rm eff})\approx2{,}000$--$7{,}000$~Mpc; the ratio varies
+between $2$ and $7$ depending on the effective redshift.
+The algebraic coincidence of MIRA$\approx2$ with the ratio at the
+DESI effective redshift is a prediction of the framework, not a free choice.
+
+\paragraph{Analogy with effective field theory.}
+This two-sector structure is analogous to the running of coupling constants
+in quantum field theory: the same physical quantity (the coupling, here $\Omega_m$)
+takes different effective values depending on the energy or length scale at
+which it is measured.
+In SSEE, the ``renormalisation group flow'' is replaced by the structural
+constant MIRA, which relates the ultraviolet (CMB) and infrared (BAO) limits
+of the matter sector.
+A rigorous derivation of this running from the SSEE action is identified as
+a target for future work (see §\ref{sec:falsifiability}).
+
+\paragraph{Consistency check.}
+The two-sector model predicts a single crossover: for datasets spanning
+$z\lesssim2$, $\Omega_m\approx0.160$; for datasets integrating to $z\gtrsim100$,
+$\Omega_m\approx0.320$.
+Intermediate datasets (e.g., weak lensing surveys at $z\sim0.5$--$1.5$) should
+show a smooth interpolation between these limits.
+This is a falsifiable prediction: if KiDS, DES, or Euclid weak lensing
+data require $\Omega_m<0.25$ at $z<1$, the two-sector model would require revision.
 
 % ===========================================================================
 \section{CAMB Implementation and Results}

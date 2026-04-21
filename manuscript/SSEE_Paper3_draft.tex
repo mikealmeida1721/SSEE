@@ -96,11 +96,13 @@ w_a &= -\frac{P_{sc}}{K_v} = -0.6700, \label{eq:wa}\\
 \Omega_{\mathrm{DE}} &= \frac{T_r}{M_v} = 0.8399, \label{eq:OmDE}\\
 \Omega_{m,\mathrm{dyn}} &= 1 - \Omega_{\mathrm{DE}} = 0.1601. \label{eq:Omm}
 \end{align}
-No free parameters are tuned to data.
-The Hubble constant is set to $H_0=66.66$ km\,s$^{-1}$\,Mpc$^{-1}$,
-consistent with the algebraic estimate $H_0 = M_v\times\Omega = 67.96$ km\,s$^{-1}$\,Mpc$^{-1}$
-($M_v = \varphi+\pi+K_v \approx 14.279$, $\Omega=\pi+\varphi\approx4.760$)
-from the framework's dimensional constants \citep{AlmeidaSSEE2026a}.
+The Hubble constant $H_0=66.66^{+0.47}_{-0.46}$ km\,s$^{-1}$\,Mpc$^{-1}$
+is the MCMC posterior median from Paper~2 \citep{AlmeidaSSEE2026a},
+the sole free parameter of the SSEE model.
+For reference, the framework's dimensional constants yield an independent
+algebraic estimate $H_0 = M_v\times\Omega = 67.96$ km\,s$^{-1}$\,Mpc$^{-1}$
+($M_v = \varphi+\pi+K_v \approx 14.279$, $\Omega=\pi+\varphi\approx4.760$),
+consistent with the MCMC value at $\sim$2\%.
 
 % ===========================================================================
 \section{The CMB Falsification Problem}
@@ -244,22 +246,20 @@ distance to last scattering}:
 which is sensitive to the total matter density averaged over the full
 expansion history, not just the late-time dynamic value.
 
-\paragraph{MIRA as a depth ratio.}
-The factor MIRA$=1.9989\approx2$ can be interpreted as the ratio between
-the comoving depth of the CMB observational sector and the comoving depth
-of the BAO dynamic sector:
-\begin{equation}
-  \mathrm{MIRA} \;\approx\; \frac{\chi(z_*)}{\chi(z_{\rm BAO,eff})}
-  \;\approx\; \frac{r_{\rm CMB}}{r_{\rm BAO}},
-\end{equation}
-where $\chi(z_*)$ is the comoving distance to last scattering and
-$\chi(z_{\rm BAO,eff})$ is the effective depth of the BAO data
-(weighted mean $z_{\rm eff}\approx0.5$--$1.0$ for DESI DR2).
-In $\Lambda$CDM, $\chi(z_*)\approx14{,}000$~Mpc and
-$\chi(z_{\rm eff})\approx2{,}000$--$7{,}000$~Mpc; the ratio varies
-between $2$ and $7$ depending on the effective redshift.
-The algebraic coincidence of MIRA$\approx2$ with the ratio at the
-DESI effective redshift is a prediction of the framework, not a free choice.
+\paragraph{MIRA as a depth ratio — motivating analogy.}
+The value MIRA$=1.9989\approx2$ has a suggestive geometric interpretation.
+In a flat $\Lambda$CDM background, the comoving distance to last scattering
+is $\chi(z_*)\approx14{,}000$~Mpc, while the DESI BAO effective depths span
+$\chi(z_{\rm eff})\approx1{,}000$--$7{,}000$~Mpc over $z=0.3$--$2.3$.
+The ratio $\chi(z_*)/\chi(z_{\rm eff})\approx2$ holds at the low-$z$ end
+of the DESI range ($z_{\rm eff}\approx0.5$), but increases to $\sim7$ at
+$z_{\rm eff}\approx2.3$.
+\emph{This correspondence is a motivating analogy, not a derivation.}
+MIRA's numerical value is fixed algebraically by Genesis~5.12
+independently of any BAO dataset (\S\ref{sec:mira_timeline});
+the geometric picture provides physical intuition for why a factor of $\sim2$
+separates the two matter sectors, but a rigorous first-principles derivation
+is deferred to future work.
 
 \paragraph{Analogy with effective field theory.}
 This two-sector structure is analogous to the running of coupling constants
@@ -471,6 +471,7 @@ The SSEE model is therefore \textbf{not falsified} by the Planck PR4 CMB
 power spectra in TT, TE, or EE.
 
 \subsection{Bayesian Information Criterion}
+\label{sec:bic}
 
 For model comparison we compute:
 \begin{equation}
@@ -578,10 +579,13 @@ with zero tunable parameters.
 
 \bigskip
 \noindent\textbf{Data Availability.}
-All scripts and data products are publicly available at
-\url{https://github.com/mikealmeida1721/SSEE_UNIFICADO}.
-The Planck PR4 TT power spectrum is from the Planck Legacy Archive
-\citep{Planck2020}.
+All analysis scripts (\texttt{src/ssee\_paper3\_cmb.py}), generated figures,
+and reduced data products are publicly available at
+\url{https://github.com/mikealmeida1721/SSEE}.
+The Planck PR4 TT and TE/EE power spectra are from the Planck Legacy Archive
+(\url{https://irsa.ipac.caltech.edu/data/Planck/}) \citep{Planck2020}.
+CAMB v1.6.6 was used for all theoretical power spectrum calculations
+(\url{https://camb.info}).
 
 \bigskip
 \noindent\textbf{Acknowledgements.}

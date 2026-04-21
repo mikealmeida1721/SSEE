@@ -77,8 +77,12 @@ Expected output:
 TT: SSEE χ²_r=1.062  |  ΛCDM χ²_r=1.043  (N=1971)
 TE: SSEE χ²_r=1.053  |  ΛCDM χ²_r=1.040  (N=1967)
 EE: SSEE χ²_r=1.040  |  ΛCDM χ²_r=1.039  (N=1967)
+PP: SSEE χ²_r=0.730  |  ΛCDM χ²_r=0.757  (N=9)  [lensing, SSEE favoured]
 ΔBIC(TT, k=0 vs k=6) = -6.9
+ΔBIC(TT+TE+EE+PP combined, upper bound) = +13.7
 Peak positions: ℓ = 221, 538, 815
+Lensing data: Planck 2018 MV bandpowers (arXiv:1807.06209, Table 1)
+              sourced from CobayaSampler/planck_supp_data_and_covmats
 ```
 
 ---
@@ -116,11 +120,12 @@ SSEE is currently a phenomenological framework. A formal Lagrangian connecting
 it to known EFT of dark energy is identified as Level 3 work. The papers frame
 SSEE as a "zero-parameter phenomenological framework", not a theory from first principles.
 
-### 6. ΔBIC(TT+TE+EE) = +14 — upper bound
-When TT, TE, EE are combined ignoring correlations, ΔBIC ≈ +14 (ΛCDM favoured).
-This is an upper bound: the three spectra are not independent and a proper
-joint test requires the full Planck CMB likelihood. The TT-only result ΔBIC = −6.9
+### 6. ΔBIC(TT+TE+EE+PP) = +13.7 — upper bound
+When TT, TE, EE, PP are combined ignoring correlations, ΔBIC ≈ +13.7 (ΛCDM favoured).
+This is an upper bound: the four spectra are not independent and a proper
+joint test requires the full Planck CMB likelihood. The TT-only result ΔBIC ≈ −7
 is the clean primary result. Both are reported in Paper 3 §4.3.
+Note: in the lensing sector alone, SSEE has χ²_r=0.730 vs ΛCDM 0.757 (N=9 bins).
 
 ---
 

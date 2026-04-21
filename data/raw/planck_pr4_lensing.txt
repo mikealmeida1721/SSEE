@@ -1,0 +1,21 @@
+# Planck 2018 lensing power spectrum bandpowers (MV estimator)
+# Source: Cobaya planck_supp_data_and_covmats (CobayaSampler/planck_supp_data_and_covmats)
+# Original: smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_agr2_bandpowers.dat
+# Reference: Planck Collaboration 2020, A&A 641, A8 (arXiv:1807.06209)
+# Columns: L_eff  [L(L+1)]^2 C_L^phi / (2pi)  sigma_up  sigma_down
+#   L_eff = L_av (effective multipole of the bin)
+#   Units: dimensionless (typical values ~1e-7 at L~100)
+   15.26  1.33520e-07  2.526e-08  2.526e-08
+   30.98  1.48620e-07  1.481e-08  1.481e-08
+   53.12  1.43020e-07  1.023e-08  1.023e-08
+   83.02  1.16470e-07  6.140e-09  6.140e-09
+  121.52  8.71800e-08  4.700e-09  4.700e-09
+  169.17  6.13700e-08  4.369e-09  4.369e-09
+  227.53  4.64500e-08  4.034e-09  4.034e-09
+  298.39  4.20000e-08  3.625e-09  3.625e-09
+  381.17  2.82000e-08  3.781e-09  3.781e-09
+  473.45  2.02400e-08  3.078e-09  3.078e-09
+  577.24  1.30800e-08  2.990e-09  2.990e-09
+  697.07  5.49000e-09  2.805e-09  2.805e-09
+  827.58  7.24000e-09  2.604e-09  2.604e-09
+ 1202.37  3.61000e-09  1.574e-09  1.574e-09

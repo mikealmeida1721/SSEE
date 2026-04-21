@@ -47,6 +47,8 @@ a difference of $\Delta\chi^2=+38.7$ attributable to the dynamical equation of s
 In a BIC comparison ($k=0$ for SSEE vs $k=6$ for $\Lambda$CDM), TT alone gives
 $\Delta\mathrm{BIC}=-6.9$ favouring SSEE; treating TT+TE+EE as independent
 spectra gives an upper bound of $\Delta\mathrm{BIC}\approx+14$ (see \S\ref{sec:bic}).
+In the lensing sector (9 MV bandpowers, $L=8$--$400$), SSEE achieves
+$\chi^2_r=0.730$ vs.\ $0.757$ for $\Lambda$CDM, a marginal preference for SSEE.
 SSEE-V3.6 is therefore not falsified by the CMB TT power spectrum.
 \end{abstract}
 
@@ -435,7 +437,9 @@ Table~\ref{tab:chi2_full} reports $\chi^2_r$ for all three spectra individually.
 
 \begin{table}[ht]
 \centering
-\caption{$\chi^2_r$ by spectrum vs.\ Planck PR4 ($\ell=30$--$2000$).
+\caption{$\chi^2_r$ by spectrum vs.\ Planck PR4.
+TT/TE/EE: $\ell=30$--$2000$; PP (lensing): 9 MV bandpowers, $L=8$--$400$
+\citep[Table~1,][]{PlanckLensing2018}.
 SSEE has $k=0$ free parameters; $\Lambda$CDM has $k=6$ shared parameters.}
 \label{tab:chi2_full}
 \begin{tabular}{lcccc}
@@ -445,18 +449,23 @@ Spectrum & $N$ & SSEE $\chi^2_r$ & $\Lambda$CDM $\chi^2_r$ & $\Delta\chi^2_r$ \\
 TT & 1971 & 1.062 & 1.043 & $+0.019$ \\
 TE & 1967 & 1.053 & 1.040 & $+0.013$ \\
 EE & 1967 & 1.040 & 1.039 & $+0.001$ \\
+PP & 9    & 0.730 & 0.757 & $-0.027$ \\
 \midrule
-Mean & 5905 & 1.052 & 1.041 & $+0.011$ \\
+Combined$^{\dagger}$ & 5914 & 1.051 & 1.040 & $+0.011$ \\
 \bottomrule
 \end{tabular}
+{\footnotesize $^{\dagger}$Combined under independence approximation (upper bound; see \S\ref{sec:bic}).}
 \end{table}
 
 The EE spectrum shows the smallest discrepancy ($\Delta\chi^2_r=0.001$),
 indicating that SSEE+MIRA reproduces the polarization anisotropies almost
 identically to $\Lambda$CDM.
 The TE residual is intermediate ($+0.013$), while TT shows the largest
-but still small deviation ($+0.019$).
-All three residuals are well within the expected scatter for a non-parametric model.
+but still modest deviation ($+0.019$).
+Notably, in the lensing potential sector (PP), SSEE achieves
+$\chi^2_r=0.730$ vs.\ $0.757$ for $\Lambda$CDM --- the dark energy modification
+slightly improves agreement with the 9 Planck MV bandpowers.
+All residuals are consistent with a non-parametric model.
 
 \subsection{Interpretation of residuals}
 
@@ -515,16 +524,18 @@ $\Delta\mathrm{BIC}=2093.6 - (2100.5 - 7.587) = -0.3$, which is statistically
 inconclusive but does not reverse the conclusion.
 
 \paragraph{Note on combined spectra.}
-When TT, TE, and EE spectra are combined under the independence approximation
-($N_{\rm total}=5905$, $\chi^2_{r,\mathrm{SSEE}}=1.052$,
-$\chi^2_{r,\Lambda\mathrm{CDM}}=1.041$), the joint $\Delta\mathrm{BIC}\approx+14$.
+When TT, TE, EE, and PP are combined under the independence approximation
+($N_{\rm total}=5914$, $\chi^2_{r,\mathrm{SSEE}}=1.051$,
+$\chi^2_{r,\Lambda\mathrm{CDM}}=1.040$), the joint $\Delta\mathrm{BIC}\approx+13.7$.
 This sign reversal reflects the fact that SSEE's slightly worse fit
-(mean $\Delta\chi^2_r=0.011$) accumulates over the larger combined dataset.
-However, TT, TE, and EE are not statistically independent — a rigorous
+(mean $\Delta\chi^2_r=0.011$ across TT/TE/EE) accumulates over the larger combined dataset.
+The lensing sector (PP) alone favours SSEE ($\Delta\chi^2_r=-0.027$),
+partially offsetting the temperature penalty.
+However, TT, TE, EE, and PP are not statistically independent — a rigorous
 joint test requires the full Planck CMB likelihood with its off-diagonal
 covariance terms.
 The $\Delta\mathrm{BIC}=-6.9$ from TT alone remains the cleanest single-spectrum
-result; the $+14$ value should be treated as an upper bound on the penalty.
+result; the $+13.7$ value should be treated as an upper bound on the combined penalty.
 
 % ===========================================================================
 \section{Falsifiability Criteria}
@@ -566,8 +577,10 @@ The key results are:
 
 \begin{itemize}
   \item Acoustic peaks at $\ell=221,\,538,\,815$, within $\Delta\ell\leq5$ of Planck PR4.
-  \item $\chi^2_r=1.062$ over 1971 multipoles ($\Lambda$CDM: $1.043$).
-  \item $\Delta\mathrm{BIC}=-6.9$ favouring SSEE+MIRA over $\Lambda$CDM.
+  \item TT: $\chi^2_r=1.062$ over 1971 multipoles ($\Lambda$CDM: $1.043$).
+  \item TE/EE: $\chi^2_r=1.053/1.040$, essentially matching $\Lambda$CDM.
+  \item Lensing (PP): $\chi^2_r=0.730$ vs.\ $0.757$ for $\Lambda$CDM — SSEE marginally favoured.
+  \item $\Delta\mathrm{BIC}=-6.9$ (TT alone) favouring SSEE+MIRA over $\Lambda$CDM.
   \item $\Omega_{m,\mathrm{CMB}}=0.3199$ within $0.63\sigma$ of Planck 2018.
   \item The sound horizon $r_d=147.15$ Mpc matches $\Lambda$CDM to $0.03\%$.
 \end{itemize}

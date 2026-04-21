@@ -270,31 +270,28 @@ def plot_ee_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
 
 
 def plot_lensing(ells_s, Cl_s, ells_l, Cl_l, ell_obs, Cl_obs, sigma_obs):
-    """Lensing potential power spectrum [L(L+1)]^2 C_L^phiphi / (2pi)."""
+    """Lensing potential power spectrum [L(L+1)]^2 C_L^phiphi / (2pi).
+
+    Both CAMB outputs (Cl_s, Cl_l) and observed data (Cl_obs) are already in
+    [L(L+1)]^2 C_L^phiphi / (2pi) units — no additional transformation needed.
+    """
     fig, axes = plt.subplots(2, 1, figsize=(10, 7),
                              gridspec_kw={"height_ratios": [3, 1]})
     ax = axes[0]
-    # Convert: CAMB returns raw C_L^phiphi; plot L^2(L+1)^2 C_L / (2pi)
-    def lens_Dl(ells, Cl):
-        with np.errstate(divide="ignore", invalid="ignore"):
-            L = ells.astype(float)
-            return L**2 * (L+1)**2 * Cl / (2 * np.pi)
 
     if ell_obs is not None and Cl_obs is not None:
-        L_obs = ell_obs.astype(float)
-        Dl_obs_lens = L_obs**2 * (L_obs+1)**2 * Cl_obs / (2*np.pi)
-        sig_lens = L_obs**2 * (L_obs+1)**2 * sigma_obs / (2*np.pi)
-        ax.errorbar(ell_obs, Dl_obs_lens, yerr=sig_lens,
-                    fmt="k.", ms=2, lw=0.5, alpha=0.6, label="Planck PR4")
+        ax.errorbar(ell_obs, Cl_obs * 1e7, yerr=sigma_obs * 1e7,
+                    fmt="k.", ms=5, lw=1.0, alpha=0.8, label="Planck PR4",
+                    capsize=3)
 
     m_l = ells_l > 1
     m_s = ells_s > 1
-    ax.plot(ells_l[m_l], lens_Dl(ells_l, Cl_l)[m_l],
+    ax.plot(ells_l[m_l], Cl_l[m_l] * 1e7,
             color="tab:orange", lw=1.5, ls="--", label=r"$\Lambda$CDM")
-    ax.plot(ells_s[m_s], lens_Dl(ells_s, Cl_s)[m_s],
+    ax.plot(ells_s[m_s], Cl_s[m_s] * 1e7,
             color="tab:blue", lw=1.8, label=r"SSEE-V3.6+MIRA")
-    ax.set_xlim(2, 2500)
-    ax.set_ylabel(r"$[L(L+1)]^2 C_L^{\phi\phi} / (2\pi)$ [$\times 10^7$]", fontsize=11)
+    ax.set_xlim(2, 1300)
+    ax.set_ylabel(r"$[L(L+1)]^2 C_L^{\phi\phi} / (2\pi)\ [\times 10^{-7}]$", fontsize=11)
     ax.set_title("SSEE-V3.6 vs Planck PR4: CMB Lensing Potential", fontsize=13)
     ax.legend(fontsize=10)
     ax.grid(True, alpha=0.3)
@@ -303,14 +300,14 @@ def plot_lensing(ells_s, Cl_s, ells_l, Cl_l, ell_obs, Cl_obs, sigma_obs):
     if ell_obs is not None and Cl_obs is not None and sigma_obs is not None:
         Cl_s_interp = np.interp(ell_obs, ells_s, Cl_s)
         res = (Cl_s_interp - Cl_obs) / sigma_obs
-        ax2.plot(ell_obs, res, "b.", ms=2, alpha=0.5)
+        ax2.plot(ell_obs, res, "b.", ms=5, alpha=0.7)
         ax2.axhline(0,  color="k",    lw=0.8)
         ax2.axhline(+1, color="gray", lw=0.6, ls="--")
         ax2.axhline(-1, color="gray", lw=0.6, ls="--")
-        ax2.set_ylim(-5, 5)
+        ax2.set_ylim(-4, 4)
         ax2.set_ylabel(r"$(C_L^{\rm SSEE}-C_L^{\rm Planck})/\sigma$", fontsize=10)
         ax2.set_xlabel(r"Multipole $L$", fontsize=13)
-        ax2.set_xlim(2, 2500)
+        ax2.set_xlim(2, 1300)
         ax2.grid(True, alpha=0.3)
     else:
         ax2.set_visible(False)

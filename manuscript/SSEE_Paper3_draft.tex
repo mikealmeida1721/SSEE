@@ -44,6 +44,9 @@ Running CAMB with this two-sector background reproduces acoustic peaks at
 $\ell=221,\,538,\,815$ (Planck: $220,\,{\sim}540,\,{\sim}810$) and yields
 $\chi^2_r=1.062$ vs.\ $\Lambda$CDM's $1.043$ over 1971 multipoles,
 a difference of $\Delta\chi^2=+38.7$ attributable to the dynamical equation of state.
+In a BIC comparison ($k=0$ for SSEE vs $k=6$ for $\Lambda$CDM), TT alone gives
+$\Delta\mathrm{BIC}=-6.9$ favouring SSEE; treating TT+TE+EE as independent
+spectra gives an upper bound of $\Delta\mathrm{BIC}\approx+14$ (see \S\ref{sec:bic}).
 SSEE-V3.6 is therefore not falsified by the CMB TT power spectrum.
 \end{abstract}
 
@@ -95,8 +98,9 @@ w_a &= -\frac{P_{sc}}{K_v} = -0.6700, \label{eq:wa}\\
 \end{align}
 No free parameters are tuned to data.
 The Hubble constant is set to $H_0=66.66$ km\,s$^{-1}$\,Mpc$^{-1}$,
-consistent with the $H_0 = (\mathrm{MIKA}+\pi)\times\Omega = 67.96$ estimate
-derived from the framework's dimensional constants \citep{AlmeidaSSEE2026a}.
+consistent with the algebraic estimate $H_0 = M_v\times\Omega = 67.96$ km\,s$^{-1}$\,Mpc$^{-1}$
+($M_v = \varphi+\pi+K_v \approx 14.279$, $\Omega=\pi+\varphi\approx4.760$)
+from the framework's dimensional constants \citep{AlmeidaSSEE2026a}.
 
 % ===========================================================================
 \section{The CMB Falsification Problem}
@@ -494,6 +498,20 @@ $\Delta\mathrm{BIC} = \mathrm{BIC}_{\mathrm{SSEE}} - \mathrm{BIC}_{\Lambda\mathr
 
 By the Jeffreys scale, $|\Delta\mathrm{BIC}|>6$ constitutes \textit{strong evidence}.
 Applied to TT alone, SSEE+MIRA is \textbf{favoured} owing to its zero free parameters.
+
+\paragraph{On the $k=0$ assignment.}
+A referee might argue that MIRA itself constitutes a free parameter, raising $k$ to $1$.
+We reject this for two reasons.
+First, MIRA$=(\varphi+\beta)/2$ is a \emph{derived} algebraic constant within the SSEE
+framework \citep{AlmeidaSSEE2026genesis}, with its numerical value fixed before any CMB
+datum was examined (Genesis~5.12 commit \texttt{f8728c3}, 2026 January 28;
+\S\ref{sec:mira_timeline}).
+Second, MIRA was not chosen to minimise $\chi^2$ or optimise any fit statistic;
+its role as an Observational Frequency was defined in a cosmological context that
+predates this analysis.
+If, despite this, the reader assigns $k=1$, then
+$\Delta\mathrm{BIC}=2093.6 - (2100.5 - 7.587) = -0.3$, which is statistically
+inconclusive but does not reverse the conclusion.
 
 \paragraph{Note on combined spectra.}
 When TT, TE, and EE spectra are combined under the independence approximation

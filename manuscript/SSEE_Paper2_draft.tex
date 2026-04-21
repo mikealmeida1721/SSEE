@@ -60,8 +60,9 @@ predictive checks.
 The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, derived algebraically,
 lies within $0.05\sigma$ of the DESI~DR2 CPL free-fit posterior in the
 $\wz$--$\wa$ plane (note: \LCDM\ has $w_0=-1$, $w_a=0$ fixed and is
-not a free model in this plane; the relevant comparison is against CPL). The cluster-mass sector achieves $\chi^2_r=0.13$ across seven clusters with the IGIMF
-correction as the essential ingredient.
+not a free model in this plane; the relevant comparison is against CPL). The cluster-mass sector achieves $\chi^2_r=0.131$ across seven clusters
+(analytic forward-model) and $\chi^2_r=0.406$ in the 4-cluster MCMC subset,
+with the IGIMF correction as the essential ingredient.
 However, the fixed background $\OmDE^{\SSEE}\approx0.840$ implies
 $\Omega_{m,\mathrm{eff}}=0.160$, enlarging the sound horizon by
 $1.19\times$ relative to \LCDM\ and yielding $\Delta\mathrm{BIC}=+206$
@@ -72,8 +73,8 @@ Paper~I; it delimits the regime where the standard Friedmann background
 is no longer applicable to \SSEE. Under the \textit{Folding Symmetry}
 hypothesis, the acoustic-mapping operator $|\wz|$ reproduces a
 Planck-compatible effective scale,
-$\rdeff=\rdSSEE\cdot|\wz|\approx147.2$\,Mpc, consistent with the
-Planck~2018 value within $1\sigma$. This reinterpretation is a
+$\rdeff=\rdSSEE\cdot|\wz|\approx147.5$\,Mpc, consistent with the
+Planck~2018 value within $2\sigma$. This reinterpretation is a
 hypothesis to be tested, not a resolution of the tension, and motivates
 the modified Friedmann CMB analysis and semi-linear transfer function
 required in Paper~3.
@@ -205,7 +206,7 @@ $\KALz$ constraint, i.e.\ the fraction of the geometric horizon
 accessible to acoustic propagation in the coupled plasma. The resulting
 mapping is:
 \begin{equation}
-  \rdeff = \rdSSEE\cdot|\wz| \approx 175.2\times0.840 \approx 147.2\;\text{Mpc},
+  \rdeff = \rdSSEE\cdot|\wz| \approx 175.6\times0.840 \approx 147.5\;\text{Mpc},
   \label{eq:rd_mapping}
 \end{equation}
 which reproduces the Planck-compatible effective scale
@@ -240,7 +241,7 @@ $H_0$ normalisation. The BAO log-likelihood uses a diagonal covariance
   \ln\mathcal{L}_{\rm BAO}
   = -\tfrac{1}{2}\sum_i\!\left(\frac{q_i^{\rm pred}-q_i^{\rm obs}}{\sigma_i}\right)^2,
 \end{equation}
-with sound horizon from the Eisenstein \& Hu (1998) fitting formula,
+with sound horizon from the \citet{EisensteinHu1998} fitting formula,
 used here as an auxiliary approximation for model comparison:
 \begin{equation}
   r_d = 147.27\!\left(\frac{\Omega_m h^2}{0.1432}\right)^{\!-0.255}\!
@@ -517,7 +518,8 @@ suggest.  This is the most direct observational limitation of \SSEE\
 in its current form.  Resolving it likely requires either a modification
 of the background equation of state at $z\sim1$, or a reinterpretation
 of the matter sector analogous to the MIRA two-sector approach
-developed in Paper~3 for the CMB.
+developed in Paper~3 for the CMB
+($\mathrm{MIRA}\equiv(\varphi+\beta)/2=1.9989$; see \citealt{AlmeidaSSEE2026genesis}).
 The excess originates primarily from the fixed
 $\Omega_{m,\mathrm{eff}}=0.160$ term: at low redshift ($z\lesssim0.5$)
 the matter-dominated deceleration is too weak relative to data, while
@@ -628,7 +630,7 @@ do not require the neutrino bridge, but it maintains self-consistency
 with the cosmological $\sum m_\nu=0.085$\,eV.
 
 \paragraph{$\KALz$ alone insufficient.}
-$\chi^2_r=12.65$ without IGIMF. Geometric amplification requires
+$\chi^2_r=12.95$ without IGIMF. Geometric amplification requires
 the corrected baryonic baseline.
 
 \paragraph{Robustness to observational uncertainties.}
@@ -692,12 +694,12 @@ the Planck $\Omega_m$ prior — which is calibrated on the \LCDM\
 background — to an \SSEE\ universe is a non-equivalent prior
 calibration; it tests whether \SSEE\ \emph{is} \LCDM, not whether
 \SSEE\ is consistent with observations under its own background.
-The correct test is a full CMB power-spectrum likelihood with the \SSEE\
-Friedmann background built from first principles, which is the subject of
-Paper~3.  The fact that Paper~3 recovers $\chi^2_r=1.062$ with
-$\Delta\mathrm{BIC}=-6.9$ \emph{under the \SSEE\ background} provides
-the complementary evidence that this $+206$ penalty is a calibration
-artefact, not a physical falsification.
+The correct test is a full CMB power-spectrum likelihood under the \SSEE\
+background, which is carried out in the companion Paper~3.
+Preliminary results from that analysis ($\chi^2_r=1.062$, $\Delta\mathrm{BIC}=-6.9$
+for TT alone) are consistent with the hypothesis that the $+206$ penalty is a
+calibration artefact arising from applying an \LCDM-background prior to an
+\SSEE\ universe, rather than a physical falsification of the model.
 
 Critically, $\Delta\mathrm{BIC}(\mathrm{CPL})=+0.51$ confirms that
 \textit{dynamical dark energy is not disfavoured}. Isolating the dynamic
@@ -776,7 +778,7 @@ The Folding Symmetry (Section~\ref{sec:folding}) provides a structural
 resolution: the $21\sigma$ tension in $r_d$ is a diagnostic artefact of
 applying the unmodified Friedmann background to the \SSEE\ universe.
 Equation~\eqref{eq:rd_mapping} shows that once the acoustic-mapping
-operator $|\wz|$ is applied, $\rdeff\approx147.2$\,Mpc recovers the
+operator $|\wz|$ is applied, $\rdeff\approx147.5$\,Mpc recovers the
 Planck value within $1\sigma$, reducing the residual tension from
 $21\sigma$ to sub-$1\sigma$. The $21\sigma$ figure is therefore not a
 falsification of the dynamical ansatz, but a quantitative signal that
@@ -834,9 +836,9 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
     lies within $0.05\sigma$ of the DESI~DR2 free-fit CPL posterior —
     a strong result given the absence of any fitted parameter.
 
-  \item Cluster masses achieve $\chi^2_r=0.12$ with IGIMF; removing
-    the IGIMF correction raises $\chi^2_r$ to $11.93$
-    ($\Delta\chi^2\approx+47$), confirming its essential role.
+  \item Cluster masses achieve $\chi^2_r=0.131$ with IGIMF; removing
+    the IGIMF correction raises $\chi^2_r$ to $12.22$
+    ($\Delta\chi^2\approx+85$), confirming its essential role.
 
   \item The fixed $\Omega_{m,\mathrm{eff}}=0.160$ enlarges $r_d$
     by $19\%$, yielding $\Delta\mathrm{BIC}=+206$. The dynamic sector
@@ -845,8 +847,8 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
     not to the $\wz$--$\wa$ prediction.
 
   \item The Folding Symmetry hypothesis — $\rdeff=\rdSSEE\cdot|\wz|
-    \approx147.2$\,Mpc — would recover the Planck sound horizon within
-    $1\sigma$ if confirmed, reinterpreting the $21\sigma$ tension as a
+    \approx147.5$\,Mpc — would recover the Planck sound horizon within
+    $2\sigma$ if confirmed, reinterpreting the $21\sigma$ tension as a
     diagnostic of non-equivalent background calibration rather than a
     falsification of the dynamical ansatz.
 
@@ -856,8 +858,11 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
 \end{enumerate}
 
 \noindent\textbf{Central finding}: SSEE-V3.6 achieves a zero-parameter
-dark-energy prediction that the data cannot reject — the burden of proof
-now falls on the background geometry.
+dark-energy prediction whose \emph{dynamical sector} is not rejected by current data.
+The background geometry fails under standard Friedmann assumptions;
+whether this constitutes a physical falsification of the framework depends on
+the validity of applying \LCDM-calibrated priors to an \SSEE\ background,
+which is the subject of Paper~3.
 
 \section*{Data Availability}
 All observational data used in this work are publicly available.
@@ -911,10 +916,17 @@ Moresco, M., \& Marulli, F.\ (2017).
 Raising the bar: new constraints on $H(z)$.
 \textit{MNRAS} \textbf{471}, L82.
 
-\bibitem[Tremaine \& Gunn(1979)]{TremaineGunn}
-Tremaine, S., \& Gunn, J.~E.\ (1979).
-Dynamical role of light neutral leptons in cosmology.
-\textit{Phys.\ Rev.\ Lett.} \textbf{42}, 407.
+\bibitem[Eisenstein \& Hu(1998)]{EisensteinHu1998}
+Eisenstein, D.~J., \& Hu, W.\ (1998).
+Baryonic features in the matter transfer function.
+\textit{ApJ} \textbf{496}, 605.
+
+\bibitem[Almeida Vallejo(2026b)]{AlmeidaSSEE2026genesis}
+Almeida Vallejo, M.~E.\ (2026).
+\textit{SSEE Genesis 5.12: Unified Compendium of Irrational Constants}.
+GitHub repository, initial commit \texttt{f8728c3} (2026 January 28).
+\url{https://github.com/mikealmeida1721/SSEE_UNIFICADO}
+(Permanent DOI via Zenodo in preparation).
 
 \bibitem[Clowe et al.(2006)]{Clowe2006}
 Clowe, D., et al.\ (2006).

@@ -1,0 +1,89 @@
+============================================================
+PAPER 1 — arXiv Abstract (plain text)
+============================================================
+Title: A Zero-Parameter Framework for Cosmological Dynamics
+and Galaxy Cluster Mass Discrepancies via Structural
+Self-Energy Expansion (SSEE-V3.6)
+
+Authors: Mike Edison Almeida Vallejo
+ORCID: 0009-0008-2195-7836
+
+Abstract:
+We present the Structural Self-Energy Expansion (SSEE-V3.6), a minimalist
+theoretical framework that unifies cosmological expansion and cluster dynamics
+using dimensionless geometric constants (pi and the golden ratio phi) without
+introducing free parameters or exotic dark-matter particles. The framework
+defines a closed algebraic system yielding an asymptotic structural viscosity
+factor KAL_0 ≈ 5.5214, natively reproducing the observed cosmic
+dark-to-baryonic matter density ratio. At galactic scales, SSEE derives an
+acceleration threshold a_0 = c*H_0/KAL_0 ≈ 1.186e-10 m/s^2. On cosmological
+scales, the model predicts a dynamical dark-energy equation of state with
+w_0 ≈ -0.840 and w_a ≈ -0.670, providing a parsimonious alignment with
+dynamical trends in the DESI DR2 observations. Incorporating an empirical
+light-neutrino mass sum sum(m_nu) = 0.085 eV, the framework structurally
+resolves the megaparsec cluster mass discrepancy when combined with a variable
+Integrated Galaxy-wide Initial Mass Function (IGIMF). A full Bayesian MCMC
+validation against DESI DR2, Planck 2018, and galaxy-cluster mass data is
+presented in the companion Paper 2.
+
+============================================================
+PAPER 2 — arXiv Abstract (plain text)
+============================================================
+Title: Bayesian MCMC Validation of the Structural Self-Energy Expansion
+Framework (SSEE-V3.6): Model Comparison against LCDM and CPL using DESI DR2,
+Planck 2018, and Galaxy-Cluster Mass Data
+
+Authors: Mike Edison Almeida Vallejo
+ORCID: 0009-0008-2195-7836
+
+Abstract:
+We present a Bayesian validation of the dynamical sector of the Structural
+Self-Energy Expansion (SSEE-V3.6) framework against DESI DR2 baryon acoustic
+oscillation data, a compressed Planck 2018 prior, and galaxy-cluster dynamical
+masses derived under a variable IGIMF baryonic baseline. Using geometric
+constants fixed by pi and the golden ratio phi — with H_0 as the sole free
+parameter — we compare the fixed-geometry model against LCDM and a free CPL
+parameterisation via posterior constraints, information criteria, and predictive
+checks. The SSEE prediction (w_0, w_a) = (-0.840, -0.670), derived
+algebraically, lies within 0.05 sigma of the DESI DR2 CPL free-fit posterior
+in the w_0-w_a plane. The cluster-mass sector achieves chi^2_r = 0.406 across
+four clusters in the MCMC analysis, with the IGIMF correction as the essential
+ingredient. The fixed background Omega_DE^SSEE ≈ 0.840 implies
+Omega_m,eff = 0.160, enlarging the sound horizon by 1.19x relative to LCDM
+and yielding Delta_BIC = +206 under standard Friedmann assumptions — a
+background-sector tension that delimits the regime where the standard Friedmann
+background is no longer applicable to SSEE. Isolating the dynamic sector
+(w_0, w_a fixed algebraically, one free parameter H_0) yields
+Delta_BIC(SSEE_dyn) = -13.5 relative to LCDM, demonstrating that the w_0-w_a
+prediction is genuinely favoured by current data. The H_0 posterior is
+66.66 (+0.47/-0.46) km/s/Mpc. The background-sector tension is addressed in
+the companion Paper 3 via a modified Friedmann CMB analysis.
+
+============================================================
+PAPER 3 — arXiv Abstract (plain text)
+============================================================
+Title: CMB Power Spectrum Confrontation of the Structural Self-Energy Expansion
+(SSEE-V3.6) against Planck PR4: TT, TE, EE, and Lensing Analysis
+
+Authors: Mike Edison Almeida Vallejo
+ORCID: 0009-0008-2195-7836
+
+Abstract:
+The Structural Self-Energy Expansion model (SSEE-V3.6) proposes a
+zero-free-parameter dark energy framework algebraically derived from the golden
+ratio phi and pi. Previous work demonstrated that the SSEE dynamic sector
+(Omega_m,dyn = 0.160, w_0 = -0.840, w_a = -0.670) fits DESI DR2 BAO data at
+0.05 sigma and galaxy-cluster mass ratios with chi^2_r = 0.131. A naive
+application of this background to the CMB yields shifted acoustic peaks
+(l_1 = 242 vs. 220) and chi^2_r = 97.7, apparently falsifying the model. Here
+we show that a second algebraic constant, MIRA = AURA/2 = (phi+beta)/2 = 1.9989,
+already defined in the SSEE framework as the Observational Frequency and
+predating DESI DR2 (Zenodo deposit 2026-01-28, doi:10.5281/zenodo.19679049),
+bridges the two sectors: Omega_m,CMB = Omega_m,dyn x MIRA = 0.3199, within
+1 sigma of the Planck 2018 value (0.3153 +/- 0.0073). Running CAMB with this
+two-sector background reproduces acoustic peaks at l = 221, 538, 815 (Planck:
+220, ~540, ~810) and yields chi^2_r = 1.062 vs. LCDM's 1.043 over 1971
+multipoles. In a BIC comparison (k=0 for SSEE vs k=6 for LCDM), TT alone gives
+Delta_BIC = -6.9 favouring SSEE. In the lensing sector (9 MV bandpowers,
+L=8-400), SSEE achieves chi^2_r = 0.730 vs. 0.757 for LCDM. SSEE-V3.6 is
+therefore not falsified by the CMB TT, TE, EE, or lensing power spectra.

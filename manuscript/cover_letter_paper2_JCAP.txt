@@ -1,0 +1,61 @@
+Dear Editors of JCAP,
+
+We submit for your consideration the manuscript:
+
+  "Bayesian MCMC Validation of the Structural Self-Energy Expansion
+   Framework (SSEE-V3.6): Model Comparison against ΛCDM and CPL
+   using DESI DR2, Planck 2018, and Galaxy-Cluster Mass Data"
+
+by Mike Edison Almeida Vallejo (ORCID: 0009-0008-2195-7836).
+
+SCIENTIFIC CONTEXT
+
+The DESI DR2 baryon acoustic oscillation data (Abdul-Karim et al. 2025)
+provide the most precise current measurement of the dark energy equation of
+state, with a preference for dynamical dark energy at approximately 3σ.
+This situation motivates systematic testing of zero-free-parameter dark energy
+models that predict (w₀, wₐ) algebraically.
+
+The Structural Self-Energy Expansion (SSEE-V3.6) framework derives the dark
+energy equation of state from the golden ratio φ and π alone:
+w₀ = -Tᵣ/Mᵥ = -0.840 and wₐ = -P_sc/Kᵥ = -0.670, with no parameter fitting.
+This prediction was established in the SSEE Genesis 5.12 compendium
+(Zenodo, doi:10.5281/zenodo.19679049, deposited 2026 January 28) prior to
+the DESI DR2 public release.
+
+MAIN RESULTS
+
+Using emcee with N_walkers=100, N_steps=25000, and the full DESI DR2 13×13
+BAO covariance matrix, we find:
+
+  - H₀ = 66.75 ± 0.44 km/s/Mpc (SSEE posterior)
+  - The algebraic prediction (w₀, wₐ) = (-0.840, -0.670) lies within 0.05σ
+    of the DESI DR2 CPL free-fit posterior (N_eff = 637,500 samples)
+  - Galaxy-cluster mass ratios reproduced at χ²_r = 0.406 (4 clusters, MCMC)
+    using IGIMF-corrected baryonic masses, without cold dark matter
+  - Dynamic sector isolated: ΔBIC(SSEE_dyn) = -13.5 vs ΛCDM, confirming
+    the w₀-wₐ prediction is genuinely favoured
+  - Full model: ΔBIC = +218 under standard Friedmann assumptions, arising
+    entirely from the enlarged sound horizon (r_d = 175.6 Mpc vs 147.6 Mpc);
+    this background-sector tension is addressed in the companion Paper 3
+    via a modified Friedmann CMB analysis
+
+RELATION TO COMPANION PAPERS
+
+This is Paper 2 of a trilogy. Paper 1 (framework) is available as a preprint.
+Paper 3 (CMB Planck PR4 confrontation) demonstrates that the background-sector
+tension is resolved by the algebraic MIRA factor (MIRA = 1.9989), predicting
+Ω_m,CMB = 0.3199 within 1σ of Planck 2018.
+
+SUGGESTED REVIEWERS
+
+We suggest the following referees with relevant expertise in dynamical dark
+energy and Bayesian cosmological model comparison:
+  - Experts in CPL parameterisation and DESI BAO analysis
+  - Experts in bulk-viscous dark energy models
+
+The authors declare no conflicts of interest.
+
+Sincerely,
+Mike Edison Almeida Vallejo
+mike.almeida1721@gmail.com

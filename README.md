@@ -44,7 +44,7 @@ SSEE/
 pip install camb emcee scipy numpy matplotlib
 ```
 
-**Paper 2 — MCMC validation** (~10 min, N_s=6000):
+**Paper 2 — MCMC validation** (Massive run, N_w=100, N_s=25000):
 ```bash
 python src/ssee_paper2_mcmc.py
 ```

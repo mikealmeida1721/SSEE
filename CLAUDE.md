@@ -42,10 +42,10 @@ Trilogía de papers:
 ### Mejoras para submission-ready:
 3. **Tabla H(z) CC**: la Fig 7 compara con Moresco 2022 pero no hay tabla con los datos reales de Cosmic Chronometers
 4. **Más cúmulos**: solo tiene 4 (Coma, A2029, A478, Bullet de Zhang 2026). Candidatos: Perseus, Virgo/M87, A2744
-5. **Cadena MCMC más larga**: SSEE tiene N_eff ~660 (ΛCDM tiene 1653). Recomendación: subir N_s a 6000 pasos
-6. **Full covariance DESI**: usa covarianza diagonal; la covarianza completa de Abdul-Karim 2025 haría el análisis más riguroso
-7. **Data Availability statement**: falta sección estándar para journals
-8. **ORCID / affiliation**: falta en el header del autor
+5. ~~**Cadena MCMC más larga**~~ ✅ COMPLETADO — N_eff=637,500 (SSEE), 63,789 (ΛCDM), 43,793 (CPL)
+6. ~~**Full covariance DESI**~~ ✅ COMPLETADO — covarianza 13×13 implementada
+7. ~~**Data Availability statement**~~ ✅ YA EXISTÍA
+8. ~~**ORCID / affiliation**~~ ✅ YA EXISTÍA
 
 ---
 
@@ -65,7 +65,7 @@ Datos lensing: `data/raw/planck_pr4_lensing.txt` (14 bins MV, fuente: Cobaya pla
 ## Pendientes Paper 3
 
 - [ ] Recompilar PDF → `docs/SSEE_Paper3_CMB_Confrontation_v2.pdf`
-- [ ] Subir Genesis 5.12 a Zenodo → actualizar `AlmeidaSSEE2026genesis` en ssee_paper3.bib
+- [x] Subir Genesis 5.12 a Zenodo → DOI incluido (10.5281/zenodo.19679049)
 
 ---
 

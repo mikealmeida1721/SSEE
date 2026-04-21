@@ -33,6 +33,8 @@ data/raw/*.h5
 
 # Results (generated — reproducible from scripts)
 results/logs/*.txt
+results/logs/*.npz
+*.npz
 
 # Virtual environments
 venv_*/

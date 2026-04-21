@@ -1,0 +1,56 @@
+Dear Editors of JCAP,
+
+We submit for your consideration the manuscript:
+
+  "CMB Power Spectrum Confrontation of the Structural Self-Energy Expansion
+   (SSEE-V3.6) against Planck PR4: TT, TE, EE, and Lensing Analysis"
+
+by Mike Edison Almeida Vallejo (ORCID: 0009-0008-2195-7836).
+
+SCIENTIFIC CONTEXT
+
+A persistent challenge for zero-free-parameter dark energy models is
+compatibility with the CMB acoustic scale, which encodes Ω_m at recombination.
+The SSEE framework predicts Ω_m,dyn = 0.160, which naively shifts the first
+acoustic peak from ℓ = 220 to ℓ = 242 and yields χ²_r = 97.7 — an apparent
+falsification. This paper resolves this tension using a second algebraic
+constant of the SSEE framework.
+
+THE MIRA FACTOR AND PRIOR DEFINITION
+
+The SSEE framework defines a structural constant MIRA = AURA/2 = (φ+β)/2,
+where φ is the golden ratio and β = (φ+π)/2. This constant, with value
+MIRA = 1.9989 ≈ 2, was established in the SSEE Genesis 5.12 compendium
+(Zenodo, doi:10.5281/zenodo.19679049, initial commit 2026 January 28),
+predating the DESI DR2 release and any CMB fitting in this work.
+Its physical role as a "depth ratio" connecting the BAO and CMB observational
+sectors is demonstrated in §3 of the manuscript.
+
+MAIN RESULTS
+
+Running CAMB with the two-sector background
+Ω_m,CMB = Ω_m,dyn × MIRA = 0.160 × 1.9989 = 0.3199:
+
+  - Acoustic peaks: ℓ = 221, 538, 815 (Planck PR4: 220, ~540, ~810)
+  - TT power spectrum: χ²_r = 1.062 vs ΛCDM's 1.043 (N = 1971 multipoles)
+  - TE polarisation: χ²_r = 1.053 vs 1.040 (N = 1967)
+  - EE polarisation: χ²_r = 1.040 vs 1.039 (N = 1967) — essentially identical
+  - CMB lensing (9 MV bandpowers): χ²_r = 0.730 vs 0.757 — SSEE marginally
+    favoured
+  - BIC comparison (k=0 SSEE vs k=6 ΛCDM), TT alone: ΔBIC = -6.9 favouring
+    SSEE
+
+SSEE-V3.6 is not falsified by any of the four CMB observables tested.
+Three explicit falsifiability criteria are provided in §6.
+
+RELATION TO COMPANION PAPERS
+
+This is Paper 3 of a trilogy. Papers 1 and 2 are submitted concurrently.
+Paper 2 provides the MCMC validation of the dynamical sector against
+DESI DR2 and galaxy clusters. The present paper closes the CMB sector.
+
+The authors declare no conflicts of interest.
+
+Sincerely,
+Mike Edison Almeida Vallejo
+mike.almeida1721@gmail.com

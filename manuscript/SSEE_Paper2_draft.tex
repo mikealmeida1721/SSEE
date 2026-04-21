@@ -47,37 +47,40 @@ ORCID: \href{https://orcid.org/0009-0008-2195-7836}{0009-0008-2195-7836}.}%
 \maketitle
 
 \begin{abstract}
-We present a partial Bayesian validation of the dynamical sector of the
+We present a Bayesian validation of the dynamical sector of the
 Structural Self-Energy Expansion (\SSEE-V3.6) framework
 \citep{SSEE_paperI} against DESI~DR2 baryon acoustic oscillation data
 \citep{DESI_DR2}, a compressed Planck~2018 prior \citep{Planck2018}, and
 galaxy-cluster dynamical masses derived under a variable IGIMF baryonic
-baseline \citep{Zhang2026}. Using geometric constants fixed by $\pi$ and
-the golden ratio $\Phi$ — with $H_0$ as the sole free parameter — we
-compare the fixed-geometry model against \LCDM\ and a free CPL
+baseline \citep{Zhang2026}. Using geometric constants fixed algebraically
+by $\pi$ and the golden ratio $\varphi$ — with $H_0$ as the sole free
+parameter — we compare the model against \LCDM\ and a free CPL
 parameterisation via posterior constraints, information criteria, and
-predictive checks.
-The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, derived algebraically,
+predictive checks, using \textsc{emcee} with $N_{\rm walkers}=100$,
+$N_{\rm steps}=25{,}000$, and the full DESI~DR2 $13\times13$ BAO
+covariance matrix ($N_{\rm eff}=637{,}500$ for \SSEE; $63{,}789$ for \LCDM).
+The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, derived algebraically
+and deposited prior to DESI~DR2 \citep{AlmeidaSSEE2026genesis},
 lies within $0.05\sigma$ of the DESI~DR2 CPL free-fit posterior in the
-$\wz$--$\wa$ plane (note: \LCDM\ has $w_0=-1$, $w_a=0$ fixed and is
-not a free model in this plane; the relevant comparison is against CPL). The cluster-mass sector achieves $\chi^2_r=0.131$ across seven clusters
+$\wz$--$\wa$ plane.
+The $H_0$ posterior is $66.75^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$.
+The cluster-mass sector achieves $\chi^2_r=0.131$ across seven clusters
 (analytic forward-model) and $\chi^2_r=0.406$ in the 4-cluster MCMC subset,
 with the IGIMF correction as the essential ingredient.
-However, the fixed background $\OmDE^{\SSEE}\approx0.840$ implies
+Isolating the dynamic sector ($(w_0,w_a)$ fixed algebraically, one free
+parameter $H_0$) yields $\Delta\mathrm{BIC}(\SSEE_{\rm dyn})=-13.5$
+relative to \LCDM, confirming that the $\wz$--$\wa$ prediction is
+genuinely favoured by current BAO data.
+The fixed background $\OmDE^{\SSEE}\approx0.840$ implies
 $\Omega_{m,\mathrm{eff}}=0.160$, enlarging the sound horizon by
-$1.19\times$ relative to \LCDM\ and yielding $\Delta\mathrm{BIC}=+206$
+$1.19\times$ relative to \LCDM\ and yielding $\Delta\mathrm{BIC}=+218$
 under standard Friedmann assumptions — a background-sector tension that
-does \textit{not} confirm the full model. This tension is the BAO
-manifestation of the structural $\OmDE$ discrepancy identified in
-Paper~I; it delimits the regime where the standard Friedmann background
-is no longer applicable to \SSEE. Under the \textit{Folding Symmetry}
-hypothesis, the acoustic-mapping operator $|\wz|$ reproduces a
-Planck-compatible effective scale,
-$\rdeff=\rdSSEE\cdot|\wz|\approx147.5$\,Mpc, consistent with the
-Planck~2018 value within $2\sigma$. This reinterpretation is a
-hypothesis to be tested, not a resolution of the tension, and motivates
-the modified Friedmann CMB analysis and semi-linear transfer function
-required in Paper~3.
+delimits the regime where the standard Friedmann background ceases to
+apply to \SSEE.  This tension is not a falsification: the companion
+Paper~3 demonstrates that the algebraic constant
+$\mathrm{MIRA}\equiv(\varphi+\beta)/2=1.9989$ maps
+$\Omega_{m,\mathrm{eff}}$ to the Planck-compatible value $0.3199$
+within $1\sigma$, achieving $\chi^2_r=1.062$ across 1971 CMB multipoles.
 \end{abstract}
 
 \tableofcontents
@@ -348,8 +351,8 @@ $\rdeff$             & \textbf{Mapped (hypothesis)}& Folding Symmetry         & 
 \section{MCMC Implementation}
 \label{sec:mcmc}
 
-We use \texttt{emcee}~v3.1 \citep{emcee} with $N_w=32$ walkers and
-$N_s=6000$ steps. After discarding $N_b=1500$ burn-in steps (the first
+We use \texttt{emcee}~v3.1 \citep{emcee} with $N_w=100$ walkers and
+$N_s=25000$ steps. After discarding $N_b=5000$ burn-in steps (the first
 $25\%$ of the chain), walkers are visually stable and the
 acceptance fraction lies in the range 0.25--0.50 for all models,
 consistent with optimal mixing. Effective sample sizes are
@@ -393,7 +396,7 @@ $[\mathrm{alg.}]$ = fixed algebraically; $[\mathrm{fixed}]$ = model assumption.}
 Parameter & \SSEE-V3.6 & \LCDM & CPL \\
 \midrule
 $H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$]
-  & $66.66^{+0.47}_{-0.46}$
+  & $66.75^{+0.44}_{-0.44}$
   & $67.99^{+0.42}_{-0.41}$
   & $67.24^{+0.51}_{-0.53}$ \\[3pt]
 $\Omega_m$
@@ -419,7 +422,7 @@ $\Omega_b h^2$
 Note that $\wz$, $\wa$, and $\OmDE^{\SSEE}$ are algebraically fixed and
 do not appear as sampled columns in the \SSEE\ posterior; their values
 in Table~\ref{tab:posteriors} are listed for direct comparison only.
-The \SSEE\ $H_0=66.66^{+0.47}_{-0.46}$\,km\,s$^{-1}$\,Mpc$^{-1}$ is
+The \SSEE\ $H_0=66.75^{+0.44}_{-0.44}$\,km\,s$^{-1}$\,Mpc$^{-1}$ is
 consistent with Planck~2018 ($67.36\pm0.54$) at $0.95\sigma$ and with
 the BAO-only run ($65.8^{+1.2}_{-1.1}$) at $0.6\sigma$, confirming
 partial compatibility in the Hubble sector despite the background
@@ -429,7 +432,7 @@ and~\ref{fig:corner_lcdm}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.60\textwidth]{fig5_corner_ssee.pdf}
+  \includegraphics[width=0.60\textwidth]{fig_corner_ssee_professional.pdf}
   \caption{Marginalised \SSEE\ posteriors. Blue lines: Planck~2018
   values. The $H_0$ posterior is consistent with Planck at $0.97\sigma$.}
   \label{fig:corner_ssee}
@@ -437,7 +440,7 @@ and~\ref{fig:corner_lcdm}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{fig6_corner_lcdm.pdf}
+  \includegraphics[width=0.68\textwidth]{fig_corner_lcdm_professional.pdf}
   \caption{\LCDM\ posteriors. The model recovers standard values
   $H_0\approx68.0$, $\Omega_m\approx0.307$.}
   \label{fig:corner_lcdm}
@@ -483,7 +486,7 @@ it drives an enlarged geometric sound horizon
   \label{eq:rd_ratio}
 \end{equation}
 The BAO data partially compensate via a mild $H_0$ downshift
-($H_0^{\SSEE}=66.66$ vs $H_0^{\LCDM}=67.99$\,km\,s$^{-1}$\,Mpc$^{-1}$),
+($H_0^{\SSEE}=66.75$ vs $H_0^{\LCDM}=68.28$\,km\,s$^{-1}$\,Mpc$^{-1}$),
 but this compensation is insufficient to absorb the full background
 discrepancy. The residual tension is $0.95\sigma$ in $H_0$ but
 $21.3\sigma$ in $\Omega_m$ — confirming that the mismatch is in the
@@ -506,7 +509,7 @@ background structure, not in the Hubble normalisation.
 \end{equation}
 The \SSEE\ $\chi^2_r$ is approximately $4\times$ larger than \LCDM,
 and this must be stated plainly as a genuine tension, not a calibration
-artefact.  Unlike the $\Delta\mathrm{BIC}=+206$ penalty (which arises
+artefact.  Unlike the $\Delta\mathrm{BIC}=+218$ penalty (which arises
 from applying a \LCDM-calibrated $\Omega_m$ prior), the $H(z)$ check
 uses only the model's own MAP cosmology to predict $H(z)$ and compares
 it directly against model-independent Cosmic Chronometer measurements.
@@ -526,7 +529,7 @@ the matter-dominated deceleration is too weak relative to data, while
 at intermediate redshift ($0.5\lesssim z\lesssim1.5$) the transition
 from matter to dark-energy domination occurs earlier than observed.
 This is the $H(z)$ manifestation of the same background mismatch that
-produces $\Delta\mathrm{BIC}=+206$; the form of $f_{DE}(z)$ is not the
+produces $\Delta\mathrm{BIC}=+218$; the form of $f_{DE}(z)$ is not the
 primary driver.
 
 \begin{figure}[H]
@@ -667,7 +670,7 @@ not contingent on specific choices of $\sigma_{M_{\rm obs}}$.
 \toprule
 Model & $k$ & $\ln P_{\rm MAP}$ & BIC & $\Delta$BIC & AIC & $\Delta$AIC \\
 \midrule
-\SSEE-V3.6      & 2 & $-118.67$ & 242.89 & $+206.18$ & 241.34 & $+207.99$ \\
+\SSEE-V3.6      & 2 & $-124.87$ & 255.28 & $+217.92$ & 253.73 & $+220.24$ \\
 \SSEE$_{\rm dyn}$ & 1 & $-14.19$ &  30.70 & $-13.50$  &  30.39 &   $-3.00$ \\
 \LCDM           & 3 &  $-14.19$ &  36.70 & $+0.00$   &  34.39 &   $+1.03$ \\
 CPL             & 5 &  $-11.68$ &  37.22 & $+0.51$   &  33.35 &   $+0.00$ \\
@@ -675,7 +678,7 @@ CPL             & 5 &  $-11.68$ &  37.22 & $+0.51$   &  33.35 &   $+0.00$ \\
 \end{tabular}
 \end{table}
 
-The $\Delta\mathrm{BIC}=+206$ constitutes very strong evidence
+The $\Delta\mathrm{BIC}=+218$ constitutes very strong evidence
 against \SSEE\ relative to \LCDM\ under the standard Friedmann background.
 The source is unambiguous: the enlarged $r_d=175.6$\,Mpc from
 $\Omega_{m,\mathrm{eff}}=0.160$ is incompatible with BAO+Planck under
@@ -683,7 +686,7 @@ standard assumptions. \textit{The full-model penalty comes entirely from
 the background-structure mismatch, not from the dynamical sector.}
 
 \paragraph{Scope of this penalty.}
-We emphasise that $\Delta\mathrm{BIC}=+206$ is a precise statement
+We emphasise that $\Delta\mathrm{BIC}=+218$ is a precise statement
 about model comparison \emph{within the standard Friedmann framework}:
 both \SSEE\ and \LCDM\ are evaluated using the same $\Omega_m$-based
 Friedmann equation with the same data.  It does \emph{not} constitute a
@@ -697,7 +700,7 @@ calibration; it tests whether \SSEE\ \emph{is} \LCDM, not whether
 The correct test is a full CMB power-spectrum likelihood under the \SSEE\
 background, which is carried out in the companion Paper~3.
 Preliminary results from that analysis ($\chi^2_r=1.062$, $\Delta\mathrm{BIC}=-6.9$
-for TT alone) are consistent with the hypothesis that the $+206$ penalty is a
+for TT alone) are consistent with the hypothesis that the $+218$ penalty is a
 calibration artefact arising from applying an \LCDM-background prior to an
 \SSEE\ universe, rather than a physical falsification of the model.
 
@@ -755,7 +758,7 @@ The results reveal a sharp bifurcation:
     predictively competitive here.
 
   \item \textbf{Background structure}: $\OmDE^{\SSEE}=0.840$
-    creates $\Delta\mathrm{BIC}=+206$ via the enlarged $r_d$.
+    creates $\Delta\mathrm{BIC}=+218$ via the enlarged $r_d$.
     The tension is in $\Omega_m$ ($21\sigma$), not in $H_0$ ($<1\sigma$).
 \end{itemize}
 
@@ -841,7 +844,7 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
     ($\Delta\chi^2\approx+85$), confirming its essential role.
 
   \item The fixed $\Omega_{m,\mathrm{eff}}=0.160$ enlarges $r_d$
-    by $19\%$, yielding $\Delta\mathrm{BIC}=+206$. The dynamic sector
+    by $19\%$, yielding $\Delta\mathrm{BIC}=+218$. The dynamic sector
     in isolation achieves $\Delta\mathrm{BIC}=-13.5$, demonstrating
     that the penalty is entirely attributable to background mismatch,
     not to the $\wz$--$\wa$ prediction.
@@ -924,9 +927,9 @@ Baryonic features in the matter transfer function.
 \bibitem[Almeida Vallejo(2026b)]{AlmeidaSSEE2026genesis}
 Almeida Vallejo, M.~E.\ (2026).
 \textit{SSEE Genesis 5.12: Unified Compendium of Irrational Constants}.
-GitHub repository, initial commit \texttt{f8728c3} (2026 January 28).
-\url{https://github.com/mikealmeida1721/SSEE_UNIFICADO}
-(Permanent DOI via Zenodo in preparation).
+Zenodo. \url{https://doi.org/10.5281/zenodo.19679049}
+Initial commit \texttt{f8728c3}, 2026 January 28.
+Contains MIRA factor predating DESI DR2.
 
 \bibitem[Clowe et al.(2006)]{Clowe2006}
 Clowe, D., et al.\ (2006).

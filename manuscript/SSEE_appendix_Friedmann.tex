@@ -1,0 +1,193 @@
+%% SSEE-V3.6 — Apéndice Técnico: Tensor EMI y Ecuaciones de Friedmann
+%% Autor: Mike Edison Almeida Vallejo
+%% Derivación directa desde T_{\mu\nu} (complementa SSEE_EFT_section.tex)
+%% Correcciones aplicadas: (1) nota física Ec.7, (2) "traza espacial" en lugar de "ii",
+%%   (3) ecuación intermedia explicitada, (4) conclusión fenomenológica completada.
+
+\section*{Apéndice Técnico: Derivación del Tensor de Energía-Impulso SSEE
+          y Ecuaciones de Friedmann Modificadas}
+
+En este apéndice se formaliza la introducción de la constante de retención
+geométrica ($\mathrm{KAL}_{0}$) en la dinámica de expansión cósmica.
+Dado que la viscosidad \textit{bulk} introduce irreversibilidad temporal
+---los procesos disipativos aumentan la entropía--- no pueden derivarse de
+una acción variacional clásica, que es invariante bajo inversión temporal.
+Por eso, en lugar de forzar $\Pi$ en una Lagrangiana reversible, postulamos
+$T_{\mu\nu}^{\mathrm{SSEE}}$ directamente, adoptando una \emph{variante}
+del formalismo de Eckart para fluidos no perfectos en la que el coeficiente
+de viscosidad $\zeta$ es proporcional a la tasa de expansión $H$ (extensión
+respecto al formalismo de Eckart estándar, donde $\zeta$ es función de
+$\rho$ o constante \citep{Weinberg1971}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{1. El Tensor de Energía-Impulso Efectivo SSEE}
+
+El universo se modela como un fluido homogéneo e isotrópico.
+La contribución del sector oscuro geométrico SSEE se describe mediante un
+tensor que incluye una presión termodinámica estándar y una presión viscosa
+(\textit{bulk viscosity}):
+%
+\begin{equation}
+  T_{\mu\nu}^{\mathrm{SSEE}}
+    = \bigl(\rho_{\mathrm{SSEE}} + p_{\mathrm{eff}}\bigr)u_\mu u_\nu
+      + p_{\mathrm{eff}}\,g_{\mu\nu},
+  \label{eq:app_Tmunu}
+\end{equation}
+%
+donde la presión efectiva es $p_{\mathrm{eff}} = p_{\mathrm{SSEE}} + \Pi$.
+El sector de energía oscura obedece una ecuación de estado dictada
+algebraicamente por la geometría, $p_{\mathrm{SSEE}} = w_{0}\rho_{\mathrm{SSEE}}$
+(con $w_{0} \approx -0.840$).
+
+La presión viscosa $\Pi$ se define, siguiendo la estructura de Eckart,
+como proporcional a la expansión volumétrica del fluido
+($\nabla_{\!\mu}u^{\mu} = 3H$ en FLRW):
+%
+\begin{equation}
+  \Pi = -\zeta\,\nabla_{\!\mu}u^{\mu} = -3\zeta H.
+  \label{eq:app_Pi_def}
+\end{equation}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{2. La Condición de Retención SSEE (Sin Parámetros Fenomenológicos Adicionales)}
+
+A diferencia de los modelos cosmológicos estándar que tratan a $\zeta$ como
+un parámetro libre a ajustar con datos, el marco SSEE postula que todo el
+sector viscoso está codificado en la constante adimensional
+$\mathrm{KAL}_{0} = \beta + \pi \approx 5.521$, derivada algebraicamente
+de $\varphi$ y $\pi$ sin ningún ajuste numérico.
+Para satisfacer la consistencia dimensional exacta
+($[\zeta] = E^{3}$ en unidades naturales), acoplamos $\mathrm{KAL}_{0}$
+a la tasa de expansión y a la constante de gravitación:
+%
+\begin{equation}
+  \zeta = \mathrm{KAL}_{0}\,\frac{H}{8\pi G}.
+  \label{eq:app_zeta}
+\end{equation}
+%
+Todo factor en~(\ref{eq:app_zeta}) es o bien una constante fundamental ($G$)
+o bien un invariante algebraico SSEE ($\mathrm{KAL}_{0}$, $H$ determinado
+por las ecuaciones de fondo).
+En particular, no se introduce ningún parámetro fenomenológico adicional
+$\kappa$ del tipo $\zeta = \kappa\,\mathrm{KAL}_{0}\,H/8\pi G$;
+el único parámetro efectivo del sector disipativo es $\mathrm{KAL}_{0}$,
+cuyo valor está fijado algebraicamente antes de comparar con observaciones.
+
+Sustituyendo~(\ref{eq:app_zeta}) en~(\ref{eq:app_Pi_def}):
+%
+\begin{equation}
+  \Pi
+    = -3\!\left(\mathrm{KAL}_{0}\,\frac{H}{8\pi G}\right)\!H
+    = -\frac{3\,\mathrm{KAL}_{0}\,H^{2}}{8\pi G}.
+  \label{eq:app_Pi}
+\end{equation}
+%
+Nótese que $\Pi < 0$ (presión viscosa negativa), consistente con la
+retención disipativa de energía a alto $H$ \citep{Weinberg1971, Brevik2005}.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{3. Derivación de las Ecuaciones de Friedmann}
+
+Al inyectar $T_{\mu\nu}^{\mathrm{SSEE}}$ en las ecuaciones de campo de
+Einstein ($G_{\mu\nu} = 8\pi G\,T_{\mu\nu}$) sobre la métrica FLRW
+$ds^{2} = -dt^{2} + a^{2}(t)\,d\mathbf{x}^{2}$, se obtienen tres leyes
+de expansión.
+
+\paragraph{I. Ecuación de la Energía (componente $00$):}
+La densidad total determina la tasa de expansión:
+%
+\begin{equation}
+  H^{2} = \frac{8\pi G}{3}\bigl[\rho_{m} + \rho_{r} + \rho_{\mathrm{SSEE}}\bigr].
+  \label{eq:app_Friedmann_H}
+\end{equation}
+
+\paragraph{II. Ecuación de la Aceleración (traza de las componentes espaciales):}
+A partir de la ecuación de Raychaudhuri,
+$\ddot{a}/a = -(4\pi G/3)(\rho + 3p_{\mathrm{eff}})$, se obtiene:
+%
+\begin{equation}
+  \frac{\ddot{a}}{a}
+    = -\frac{4\pi G}{3}
+      \bigl[\rho_{m} + 2\rho_{r}
+            + \rho_{\mathrm{SSEE}}(1 + 3w_{0}) + 3\Pi\bigr].
+  \label{eq:app_acc_presubst}
+\end{equation}
+%
+Sustituyendo $3\Pi = -9\,\mathrm{KAL}_{0}H^{2}/8\pi G$, llegamos a la
+ecuación maestra de aceleración SSEE:
+%
+\begin{equation}
+  \frac{\ddot{a}}{a}
+    = -\frac{4\pi G}{3}
+      \!\left[\rho_{m} + 2\rho_{r}
+        + \rho_{\mathrm{SSEE}}(1 + 3w_{0})
+        - \frac{9\,\mathrm{KAL}_{0}\,H^{2}}{8\pi G}
+      \right].
+  \label{eq:app_Friedmann_a}
+\end{equation}
+
+\textit{Nota física:}
+El término viscoso $\Pi < 0$ actúa como presión efectiva negativa adicional.
+Su contribución al lado derecho de~(\ref{eq:app_Friedmann_a}) es
+$-(4\pi G/3)\cdot(-9\,\mathrm{KAL}_{0}H^{2}/8\pi G)
+ = +3\,\mathrm{KAL}_{0}H^{2}/2 > 0$,
+es decir, una contribución \emph{positiva} a $\ddot{a}/a$ que modera la
+deceleración gravitacional sin requerir partículas exóticas ni ajuste fino.
+
+\paragraph{Derivación del coeficiente 9.}
+De~(\ref{eq:app_Pi}): $\Pi = -3\,\mathrm{KAL}_{0}H^{2}/8\pi G$,
+por lo tanto $3\Pi = -9\,\mathrm{KAL}_{0}H^{2}/8\pi G$.
+El factor 9 proviene de $3\times|\Pi|/H^{2}
+= 3\times(3\,\mathrm{KAL}_{0}/8\pi G)$;
+un factor 3 en lugar de 9 correspondería a incluir $\Pi$ una sola vez
+en vez de como la traza del tensor de estrés viscoso.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection*{4. Ecuación de Continuidad y Generación Dinámica}
+
+La conservación del tensor de energía-impulso
+($\nabla_{\!\mu}T^{\mu\nu} = 0$) para el sector SSEE produce:
+%
+\begin{equation}
+  \dot{\rho}_{\mathrm{SSEE}}
+    + 3H\bigl(\rho_{\mathrm{SSEE}} + p_{\mathrm{eff}}\bigr) = 0.
+  \label{eq:app_cons_raw}
+\end{equation}
+%
+Separando $p_{\mathrm{eff}} = w_{0}\rho_{\mathrm{SSEE}} + \Pi$:
+%
+\begin{equation}
+  \dot{\rho}_{\mathrm{SSEE}}
+    + 3H\bigl[\rho_{\mathrm{SSEE}}(1 + w_{0}) + \Pi\bigr] = 0.
+  \label{eq:app_cons_split}
+\end{equation}
+%
+Sustituyendo la definición SSEE de $\Pi$ (Ec.~\ref{eq:app_Pi}),
+obtenemos la ecuación de continuidad modificada:
+%
+\begin{equation}
+  \dot{\rho}_{\mathrm{SSEE}}
+    + 3H\,\rho_{\mathrm{SSEE}}\,(1 + w_{0})
+    = \frac{9\,\mathrm{KAL}_{0}\,H^{3}}{8\pi G}.
+  \label{eq:app_continuity}
+\end{equation}
+
+\textit{Conclusión fenomenológica:}
+En el universo temprano ($H \gg H_{0}$), el término disipativo
+$9\,\mathrm{KAL}_{0}H^{3}/8\pi G$ domina el lado derecho de
+(\ref{eq:app_continuity}), actuando como una fuente que inyecta energía
+en el fluido oscuro y modifica su ecuación de estado efectiva.
+Este mecanismo de \emph{retención geométrica} es la base física del
+régimen CMB del modelo SSEE: en el límite $H \to \infty$ el término
+$\propto H^{3}$ actúa como una fuente inercial que reemplaza parcialmente
+la contribución de la materia oscura fría, permitiendo
+$\Omega_{m,\mathrm{eff}} = 1 - T_{r}/M_{v} \approx 0.160$
+compatible con la escala acústica del CMB a través del factor MIRA
+$\mathcal{M} = 2 - 1/\varphi^{2} \approx 1.999$ (Papel~3, §2.3).
+Una derivación cuantitativa de $\Omega_{m,\mathrm{eff}}(z)$ y de la
+función de crecimiento de estructuras, que conecta este límite con los
+datos Planck~PR4, se presenta en Papel~3.
+En el universo tardío ($H \approx H_{0}$) el término cúbico es
+despreciable y el sector SSEE se comporta esencialmente como un fluido
+k-essence con $w_{0} \approx -0.840$, en acuerdo con los datos DESI~DR2
+a $0.05\sigma$ (Papel~2).

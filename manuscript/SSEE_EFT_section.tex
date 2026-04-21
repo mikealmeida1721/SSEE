@@ -1,0 +1,265 @@
+%% SSEE-V3.6 — EFT Connection Section
+%% Author: Mike Edison Almeida Vallejo
+%% To include in Paper 1 or 2: \input{SSEE_EFT_section}
+%% All equations verified algebraically (see src/ssee_eft_verify.py)
+
+\section{Effective Field Theory Embedding}
+\label{sec:eft}
+
+\subsection{The SSEE Action}
+
+The SSEE dark-energy sector is described by a k-essence scalar field $\phi$
+minimally coupled to gravity and extended by a geometric bulk-viscosity term
+in the Eckart approximation \citep{Eckart1940, Weinberg1971}:
+%
+\begin{equation}
+  S = \int d^{4}x\,\sqrt{-g}
+      \left[\frac{R}{16\pi G} + P(X) - \zeta\bigl(\nabla_{\!\mu}u^{\mu}\bigr)^{2}
+            + \mathcal{L}_{m}\right],
+  \label{eq:eft_action}
+\end{equation}
+%
+where $X \equiv -\tfrac{1}{2}g^{\mu\nu}\partial_{\mu}\phi\,\partial_{\nu}\phi$
+is the canonical kinetic term.  The fluid four-velocity of the dark-energy
+component is identified with the normalised gradient of the field,
+%
+\begin{equation}
+  u_{\mu} = -\frac{\partial_{\mu}\phi}{\sqrt{2X}},
+  \label{eq:four_velocity}
+\end{equation}
+%
+so that $u_{\mu}u^{\mu}=-1$ is satisfied automatically, and the viscous and
+kinetic sectors remain self-consistently defined by the single degree of freedom
+$\phi$.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Algebraic Determination of \texorpdfstring{$P(X)$}{P(X)}}
+\label{sec:eft:PX}
+
+For a power-law k-essence Lagrangian
+$P(X) = \mathcal{A}\,X^{n}$ the equation of state is \emph{exactly} constant:
+%
+\begin{equation}
+  w_{\phi}
+    = \frac{P}{2X P_{X} - P}
+    = \frac{\mathcal{A}X^{n}}{(2n-1)\mathcal{A}X^{n}}
+    = \frac{1}{2n-1}.
+  \label{eq:w_kessence}
+\end{equation}
+%
+Imposing the SSEE algebraic constraint $w_{0} = -T_{r}/M_{v}$ uniquely fixes
+the kinetic exponent without any fitting:
+%
+\begin{equation}
+  \boxed{%
+    n = \frac{T_{r} - M_{v}}{2\,T_{r}}
+      = \frac{1 + w_{0}}{2w_{0}}
+      \approx -0.09527,}
+  \label{eq:n_ssee}
+\end{equation}
+%
+where $T_{r} = 3(\varphi+\beta)$ and $M_{v} = \varphi+\pi+K_{v}$ are the
+SSEE structural constants defined in Section~\ref{sec:constants}.
+One verifies immediately that $1/(2n-1) = -T_{r}/M_{v} = w_{0}$ identically.
+
+The overall normalisation is fixed by requiring that the present-day
+dark-energy density equals the SSEE prediction:
+%
+\begin{equation}
+  \rho_{\mathrm{DE},0}
+    = \frac{3H_{0}^{2}}{8\pi G}\,\frac{T_{r}}{M_{v}},
+  \label{eq:rho_de0}
+\end{equation}
+%
+with $H_{0}$ constrained observationally to
+$66.66^{+0.47}_{-0.46}$~km\,s$^{-1}$\,Mpc$^{-1}$ by the MCMC analysis of
+Paper~2.  Given the energy scale $\rho_{\mathrm{DE},0}$, the amplitude reads
+%
+\begin{equation}
+  \mathcal{A}
+    = \frac{\rho_{\mathrm{DE},0}^{1-n}}{2n-1},
+  \label{eq:amplitude}
+\end{equation}
+%
+which completes the specification of $P(X)$ with no free parameters beyond $H_{0}$.
+
+\paragraph{Remark on the CPL evolution.}
+The pure k-essence sector~(\ref{eq:w_kessence}) delivers a \emph{constant}
+$w = w_{0}$.  The time variation $w_{a} = -P_{sc}/K_{v}$ arises from the
+viscous source term (Section~\ref{sec:eft:viscosity}).  Demonstrating that
+the integrated source reproduces the exact CPL form is deferred to future work.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Geometric Bulk Viscosity}
+\label{sec:eft:viscosity}
+
+The retention constant $\mathrm{KAL}_{0} \equiv \beta + \pi \approx 5.521$
+governs the dissipative sector.  Following the Eckart first-order formalism,
+the bulk viscosity coefficient is coupled to the instantaneous expansion rate:
+%
+\begin{equation}
+  \zeta = \frac{\mathrm{KAL}_{0}}{8\pi G}\,H.
+  \label{eq:zeta}
+\end{equation}
+%
+Every factor in~(\ref{eq:zeta}) is either a fundamental constant ($G$) or an
+algebraic SSEE invariant ($\mathrm{KAL}_{0}$, $H$ via the background
+equations), so no new parameter is introduced.
+
+The viscous pressure is
+%
+\begin{equation}
+  \Pi
+    = -\zeta\,\nabla_{\!\mu}u^{\mu}
+    = -3\zeta H
+    = -\frac{3\,\mathrm{KAL}_{0}\,H^{2}}{8\pi G}.
+  \label{eq:Pi}
+\end{equation}
+%
+Note that $\Pi < 0$ (negative viscous pressure), consistent with the
+dissipative retention of energy at high $H$.
+
+\paragraph{Physical motivation for $\zeta \propto H$.}
+Bulk viscosity proportional to the Hubble rate arises naturally in
+kinetic theory when the dominant relaxation time is set by the expansion
+itself.  This form has been studied in the context of bulk-viscous dark
+energy by \citet{Weinberg1971} and, in a relativistic treatment, by
+\citet{Brevik2005}.  Within SSEE the coupling constant is not fitted but
+predicted geometrically as $\mathrm{KAL}_{0} = (\pi+\varphi)/2 + \pi$.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Modified Friedmann Equations}
+\label{sec:eft:friedmann}
+
+Applying the principle of least action ($\delta S = 0$) to the
+FLRW metric $ds^{2} = -dt^{2} + a^{2}(t)\,d\mathbf{x}^{2}$ yields
+three governing equations for the SSEE background.
+
+\paragraph{I. Energy equation:}
+\begin{equation}
+  H^{2}
+    = \frac{8\pi G}{3}
+      \bigl(\rho_{m} + \rho_{r} + \rho_{\mathrm{SSEE}}\bigr).
+  \label{eq:Friedmann_H}
+\end{equation}
+
+\paragraph{II. Acceleration equation:}
+\begin{equation}
+  \frac{\ddot{a}}{a}
+    = -\frac{4\pi G}{3}
+      \!\left[\rho_{m} + 2\rho_{r}
+        + \rho_{\mathrm{SSEE}}\!\left(1 + 3w_{0}\right)
+        - \frac{9\,\mathrm{KAL}_{0}\,H^{2}}{8\pi G}
+      \right].
+  \label{eq:Friedmann_a}
+\end{equation}
+
+\paragraph{III. Conservation equation with dissipative source:}
+\begin{equation}
+  \dot{\rho}_{\mathrm{SSEE}}
+    + 3H\,\rho_{\mathrm{SSEE}}\!\left(1 + w_{0}\right)
+    = \frac{9\,\mathrm{KAL}_{0}\,H^{3}}{8\pi G}.
+  \label{eq:continuity}
+\end{equation}
+
+\paragraph{Derivation of the coefficient 9.}
+From Eq.~(\ref{eq:Pi}), the viscous pressure is $\Pi = -3\mathrm{KAL}_{0}H^{2}/8\pi G$.
+In the Raychaudhuri equation the effective pressure of the SSEE sector enters as
+$p_{\mathrm{eff}} = w_{0}\rho_{\mathrm{SSEE}} + \Pi$, so the acceleration term becomes
+%
+\begin{align}
+  -\frac{4\pi G}{3}\bigl(\rho_{\mathrm{SSEE}} + 3p_{\mathrm{eff}}\bigr)
+  &= -\frac{4\pi G}{3}
+     \!\left[\rho_{\mathrm{SSEE}}(1+3w_{0}) + 3\Pi\right] \notag\\
+  &= -\frac{4\pi G}{3}
+     \!\left[\rho_{\mathrm{SSEE}}(1+3w_{0})
+             - \frac{9\,\mathrm{KAL}_{0}\,H^{2}}{8\pi G}\right],
+  \label{eq:deriv_coeff9}
+\end{align}
+which is exactly Eq.~(\ref{eq:Friedmann_a}).  The factor 9 arises from
+$3 \times |\Pi|/(H^{2}) = 3 \times 3\mathrm{KAL}_{0}/8\pi G$; a factor
+of 3 rather than 9 would correspond to including $\Pi$ only once instead
+of as the trace of the viscous stress.
+
+Similarly, the conservation law $\nabla_{\!\mu}T^{\mu\nu}=0$ for the effective
+fluid $(w_{0},\Pi)$ gives
+$\dot{\rho} + 3H(\rho + w_{0}\rho + \Pi) = 0$, hence
+$\dot{\rho} + 3H\rho(1+w_{0}) = 9\mathrm{KAL}_{0}H^{3}/8\pi G$,
+confirming that Eq.~(\ref{eq:Friedmann_a}) and Eq.~(\ref{eq:continuity})
+are mutually consistent.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Physical Regimes}
+\label{sec:eft:regimes}
+
+\paragraph{Late universe ($z \lesssim 2$, DESI~DR2).}
+At low redshift $H \approx H_{0}$, so the viscous source
+$\propto \mathrm{KAL}_{0}H^{3}/8\pi G$ is small compared to
+$\rho_{\mathrm{SSEE}}$.  The acceleration equation is dominated by
+$\rho_{\mathrm{SSEE}}(1+3w_{0}) < 0$
+(since $w_{0} \approx -0.840 < -1/3$), driving $\ddot{a} > 0$
+without dark matter.  This regime is the one tested against DESI~DR2
+in Paper~2, where the algebraic prediction $(w_{0},w_{a})$ matches
+the data at $0.05\sigma$.
+
+\paragraph{Early universe (CMB epoch, $z \sim 10^{3}$).}
+At recombination $H \gg H_{0}$, the geometric retention term
+$9\,\mathrm{KAL}_{0}H^{3}/8\pi G$ acts as a dissipative source in
+Eq.~(\ref{eq:continuity}), injecting energy into the dark-energy fluid
+and modifying its effective equation of state.  This structural
+viscosity provides the physical mechanism by which an effective
+matter density $\Omega_{m,\mathrm{eff}} = 1 - T_{r}/M_{v} \approx 0.160$
+yields the correct CMB acoustic scale through the MIRA factor
+$\mathcal{M} = 2 - 1/\varphi^{2} \approx 1.9989$ (Paper~3, \S2.3).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Summary and Open Problems}
+\label{sec:eft:status}
+
+Table~\ref{tab:eft_summary} summarises the EFT status.
+The action~(\ref{eq:eft_action}) with kinetic exponent~(\ref{eq:n_ssee})
+and viscosity~(\ref{eq:zeta}) constitutes a \emph{internally consistent},
+zero-free-parameter EFT description of the SSEE background.
+Every constant ($n$, $\mathrm{KAL}_{0}$, $\Omega_{\mathrm{DE}}$) is
+derived from $\varphi$ and $\pi$; only the overall energy scale $H_{0}$
+enters as an observational input.
+
+Three aspects require further development:
+%
+\begin{enumerate}
+  \item \textbf{Derivation of $w_{a}$ from EFT.}
+        The viscous source in Eq.~(\ref{eq:continuity}) generates a running
+        effective EOS $w_{\mathrm{eff}}(z)$.  Whether this running reproduces
+        the exact value $w_{a} = -P_{sc}/K_{v}$ algebraically requires
+        integrating Eq.~(\ref{eq:continuity}) numerically.
+
+  \item \textbf{Cosmological perturbation theory.}
+        The scalar power spectrum and CMB transfer functions in the presence
+        of bulk viscosity require the full Israel--Stewart formalism
+        \citep{IsraelStewart1979}.
+
+  \item \textbf{Radiative stability.}
+        The EFT cutoff scale $\Lambda_{\mathrm{UV}}$ and the quantum stability
+        of the $n < 0$ power-law sector are not yet established.
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\caption{EFT status summary for SSEE-V3.6.}
+\label{tab:eft_summary}
+\begin{tabular}{lll}
+\hline\hline
+Element & Status & Derivation \\
+\hline
+Action form $S$ & \checkmark Complete & Standard GR + k-essence + Eckart \\
+$u_{\mu}(\phi)$ coupling & \checkmark Complete & $u_{\mu} = -\partial_{\mu}\phi/\sqrt{2X}$ \\
+Kinetic exponent $n$ & \checkmark Algebraic & $n=(T_{r}-M_{v})/2T_{r}$ from $\varphi,\pi$ \\
+Equation of state $w_{0}$ & \checkmark Algebraic & $w_{0}=1/(2n-1)=-T_{r}/M_{v}$ \\
+Viscosity coupling $\zeta$ & \checkmark Algebraic & $\zeta=\mathrm{KAL}_{0}H/8\pi G$ \\
+Friedmann eqs.\ I--III & \checkmark Consistent & Factor 9 verified in \S\ref{sec:eft:friedmann} \\
+$w_{a}$ from EFT & $\circ$ Open & Requires numerical integration \\
+Perturbation spectrum & $\circ$ Open & Requires Israel--Stewart \\
+Radiative stability & $\circ$ Open & Future work \\
+\hline
+\end{tabular}
+\end{table}

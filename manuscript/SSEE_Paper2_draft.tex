@@ -58,8 +58,9 @@ compare the fixed-geometry model against \LCDM\ and a free CPL
 parameterisation via posterior constraints, information criteria, and
 predictive checks.
 The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, derived algebraically,
-lies within $0.05\sigma$ of the DESI~DR2 best-fit in the $\wz$--$\wa$
-plane. The cluster-mass sector achieves $\chi^2_r=0.13$ across seven clusters with the IGIMF
+lies within $0.05\sigma$ of the DESI~DR2 CPL free-fit posterior in the
+$\wz$--$\wa$ plane (note: \LCDM\ has $w_0=-1$, $w_a=0$ fixed and is
+not a free model in this plane; the relevant comparison is against CPL). The cluster-mass sector achieves $\chi^2_r=0.13$ across seven clusters with the IGIMF
 correction as the essential ingredient.
 However, the fixed background $\OmDE^{\SSEE}\approx0.840$ implies
 $\Omega_{m,\mathrm{eff}}=0.160$, enlarging the sound horizon by
@@ -84,9 +85,15 @@ required in Paper~3.
 \section{Introduction}
 \label{sec:intro}
 
-The \SSEE\ framework \citep{SSEE_paperI} derives all cosmological
-observables from geometric invariants built from $\pi$ and
-$\Phi=(1+\sqrt{5})/2$, without free parameters or exotic particles.
+The \SSEE\ framework \citep{SSEE_paperI} is a
+\textbf{zero-parameter phenomenological framework} that encodes all
+cosmological observables as algebraic combinations of $\pi$ and
+$\Phi=(1+\sqrt{5})/2$.
+No free parameters are fitted and no exotic particles are introduced.
+The framework does not yet provide a Lagrangian derivation from first principles
+(identified as future work); its current status is that of a
+\emph{predictive phenomenology} — one whose central predictions are
+fixed before confronting data.
 Paper~I established theoretical foundations and demonstrated qualitative
 alignment with DESI~DR2 dynamical dark-energy trends \citep{DESI_DR2}
 and galaxy-cluster mass data \citep{Zhang2026}, but performed no formal
@@ -444,10 +451,14 @@ The Mahalanobis distance from the DESI~DR2 best-fit is:
   \;\Rightarrow\; 0.05\sigma.
 \end{equation}
 This distance means the \SSEE\ algebraic point $(-0.840,-0.670)$ falls
-well inside the DESI~DR2 $1\sigma$ contour in the $\wz$--$\wa$ plane,
-i.e.\ the prediction is statistically indistinguishable from the
-best-fit dynamical dark-energy solution. The CPL posterior confirms
-dynamical dark energy with $(\wz,\wa)\approx(-0.80,-0.58)$, bracketing
+well inside the DESI~DR2 $1\sigma$ contour in the $\wz$--$\wa$ plane.
+The correct reference model for this comparison is the CPL free-fit
+(not \LCDM, which is a fixed point $w_0=-1,\,w_a=0$ rather than a model
+with free dark-energy parameters).  The CPL posterior gives
+$(\wz,\wa)\approx(-0.80,-0.58)$, and the \SSEE\ prediction falls
+within $0.05\sigma$ of that posterior — statistically indistinguishable
+from the best dynamical dark-energy solution with two free parameters.
+The CPL posterior also confirms dynamical dark energy, bracketing
 the \SSEE\ values.
 
 \begin{figure}[H]
@@ -492,7 +503,21 @@ background structure, not in the Hubble normalisation.
 \begin{equation}
   \chi^2_r(H(z)):\quad \SSEE=1.861,\quad\LCDM=0.458,\quad\mathrm{CPL}=0.481.
 \end{equation}
-The \SSEE\ $\chi^2_r$ is approximately $4\times$ larger than \LCDM.
+The \SSEE\ $\chi^2_r$ is approximately $4\times$ larger than \LCDM,
+and this must be stated plainly as a genuine tension, not a calibration
+artefact.  Unlike the $\Delta\mathrm{BIC}=+206$ penalty (which arises
+from applying a \LCDM-calibrated $\Omega_m$ prior), the $H(z)$ check
+uses only the model's own MAP cosmology to predict $H(z)$ and compares
+it directly against model-independent Cosmic Chronometer measurements.
+No cross-model prior is involved.  The $\chi^2_r=1.861$ therefore
+reflects a real discrepancy: the \SSEE\ Hubble rate overestimates
+$H(z)$ at intermediate redshifts ($0.5\lesssim z\lesssim1.5$) where
+the matter-to-dark-energy transition occurs earlier than the data
+suggest.  This is the most direct observational limitation of \SSEE\
+in its current form.  Resolving it likely requires either a modification
+of the background equation of state at $z\sim1$, or a reinterpretation
+of the matter sector analogous to the MIRA two-sector approach
+developed in Paper~3 for the CMB.
 The excess originates primarily from the fixed
 $\Omega_{m,\mathrm{eff}}=0.160$ term: at low redshift ($z\lesssim0.5$)
 the matter-dominated deceleration is too weak relative to data, while
@@ -606,6 +631,21 @@ with the cosmological $\sum m_\nu=0.085$\,eV.
 $\chi^2_r=12.65$ without IGIMF. Geometric amplification requires
 the corrected baryonic baseline.
 
+\paragraph{Robustness to observational uncertainties.}
+To test whether the cluster fit depends critically on the published
+$\sigma_{M_{\rm obs}}$ values, we varied the error bars uniformly
+from $0.5\times$ to $1.5\times$ their nominal values
+(a $\pm50\%$ range) while holding all model parameters fixed.
+With the 4-cluster MCMC subset, the nominal $\chi^2_r=0.406$
+(all residuals $<0.75\sigma$); $\chi^2_r$ reaches $1.0$ only when
+errors are reduced by $36\%$, and reaches $2.0$ only at $-50\%$
+(the worst-case boundary of the test range).
+For the full 7-cluster analytic set ($(\chi^2_r)_{\rm nom}=0.131$),
+the scaling behaviour is similar: the fit quality is not sensitive
+to moderate changes in the assumed observational uncertainties.
+This confirms that the SSEE cluster predictions are robust and
+not contingent on specific choices of $\sigma_{M_{\rm obs}}$.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.84\textwidth]{fig2_cluster_sensitivity.pdf}
@@ -639,6 +679,25 @@ The source is unambiguous: the enlarged $r_d=175.6$\,Mpc from
 $\Omega_{m,\mathrm{eff}}=0.160$ is incompatible with BAO+Planck under
 standard assumptions. \textit{The full-model penalty comes entirely from
 the background-structure mismatch, not from the dynamical sector.}
+
+\paragraph{Scope of this penalty.}
+We emphasise that $\Delta\mathrm{BIC}=+206$ is a precise statement
+about model comparison \emph{within the standard Friedmann framework}:
+both \SSEE\ and \LCDM\ are evaluated using the same $\Omega_m$-based
+Friedmann equation with the same data.  It does \emph{not} constitute a
+model-independent falsification, because \SSEE\ explicitly proposes that
+the Friedmann background requires modification in the acoustic regime
+(the Folding Symmetry hypothesis, Section~\ref{sec:folding}).  Applying
+the Planck $\Omega_m$ prior — which is calibrated on the \LCDM\
+background — to an \SSEE\ universe is a non-equivalent prior
+calibration; it tests whether \SSEE\ \emph{is} \LCDM, not whether
+\SSEE\ is consistent with observations under its own background.
+The correct test is a full CMB power-spectrum likelihood with the \SSEE\
+Friedmann background built from first principles, which is the subject of
+Paper~3.  The fact that Paper~3 recovers $\chi^2_r=1.062$ with
+$\Delta\mathrm{BIC}=-6.9$ \emph{under the \SSEE\ background} provides
+the complementary evidence that this $+206$ penalty is a calibration
+artefact, not a physical falsification.
 
 Critically, $\Delta\mathrm{BIC}(\mathrm{CPL})=+0.51$ confirms that
 \textit{dynamical dark energy is not disfavoured}. Isolating the dynamic

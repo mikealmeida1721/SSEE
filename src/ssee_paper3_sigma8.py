@@ -141,24 +141,70 @@ print(f"  S8_IS = σ8_IS × (Ωm/0.3)^0.5 = {S8_IS:.5f}")
 
 
 # ── 3. f(z)σ8(z) for RSD ────────────────────────────────────────────────────
-print(f"\n--- fσ8(z) for RSD surveys ---")
-z_rsd = [0.295, 0.510, 0.706, 0.934, 1.317, 2.330]  # DESI DR2 redshifts
-print(f"  {'z':>6}  {'Ωm(z)':>8}  {'f_ΛCDM':>8}  {'f_SSEE':>8}  {'fσ8_SSEE':>10}")
-print(f"  {'-'*55}")
+# Observed fσ8 measurements (used for comparison):
+# DESI DR1 full-shape RSD (arXiv:2411.12023, DESI Collaboration 2024)
+# eBOSS DR16 (Alam et al. 2021, PhysRevD 103 083533)
+# Format: (z_eff, fsig8, err, survey)
+fsig8_data = [
+    (0.150, 0.490, 0.145, "6dFGS (Beutler+2012)"),
+    (0.380, 0.477, 0.051, "BOSS DR12 (Alam+2017)"),
+    (0.510, 0.453, 0.057, "BOSS DR12 (Alam+2017)"),
+    (0.610, 0.436, 0.034, "BOSS DR12 (Alam+2017)"),
+    (0.978, 0.379, 0.176, "eBOSS DR16 QSO (Alam+2021)"),
+    (1.230, 0.385, 0.099, "eBOSS DR16 ELG (de Mattia+2021)"),
+    (1.480, 0.462, 0.045, "eBOSS DR16 QSO (Alam+2021)"),
+    # DESI DR1 RSD (arXiv:2411.12023)
+    (0.295, 0.448, 0.054, "DESI DR1 BGS"),
+    (0.510, 0.455, 0.033, "DESI DR1 LRG1"),
+    (0.706, 0.456, 0.034, "DESI DR1 LRG2"),
+    (0.930, 0.430, 0.040, "DESI DR1 LRG3+ELG1"),
+    (1.317, 0.462, 0.045, "DESI DR1 ELG2"),
+    (1.491, 0.387, 0.074, "DESI DR1 QSO"),
+]
 
-for z in z_rsd:
-    a = 1.0 / (1.0 + z)
-    rho_de = Ofld * (1 + z)**(3 * (1 + w0_s + wa_s)) * np.exp(-3 * wa_s * z / (1 + z))
-    rho_m  = Omm_cmb * (1 + z)**3
-    Omm_z_val = rho_m / (rho_m + rho_de)
-    f_lcdm = Omm_z_val**gamma_lcdm
+def Omm_of_z_ssee(zp):
+    rho_de = Ofld * (1 + zp)**(3 * (1 + w0_s + wa_s)) * np.exp(-3 * wa_s * zp / (1 + zp))
+    rho_m  = Omm_cmb * (1 + zp)**3
+    return rho_m / (rho_m + rho_de)
+
+def Omm_of_z_lcdm(zp):
+    rho_m  = Omm_lcdm * (1 + zp)**3
+    rho_de = (1 - Omm_lcdm)  # ΛCDM w=-1
+    return rho_m / (rho_m + rho_de)
+
+def compute_fsig8_ssee(z):
+    Omm_z_val = Omm_of_z_ssee(z)
     f_ssee = Omm_z_val**gamma_ssee
-    # rough σ8(z) ~ σ8_IS × D(z)/D(0), D(z)/D(0) ≈ (1+z)^(-(f-1)) crudely
-    # Use growth integral properly
-    ln_Dz, _ = quad(lambda zp: Omm_cmb**gamma_ssee / (1 + zp), 0, z)
+    # D(z)/D(0) = exp[-∫₀ᶻ f(z')/(1+z') dz'] properly with Ωm(z')
+    ln_Dz, _ = quad(lambda zp: Omm_of_z_ssee(zp)**gamma_ssee / (1 + zp), 0, z)
     Dz_ratio  = np.exp(-ln_Dz)
-    fsig8_ssee = f_ssee * sigma8_IS * Dz_ratio
-    print(f"  {z:>6.3f}  {Omm_z_val:>8.5f}  {f_lcdm:>8.4f}  {f_ssee:>8.4f}  {fsig8_ssee:>10.5f}")
+    return f_ssee * sigma8_IS * Dz_ratio, Omm_z_val
+
+def compute_fsig8_lcdm(z):
+    Omm_z_val = Omm_of_z_lcdm(z)
+    f_lcdm = Omm_z_val**gamma_lcdm
+    ln_Dz, _ = quad(lambda zp: Omm_of_z_lcdm(zp)**gamma_lcdm / (1 + zp), 0, z)
+    Dz_ratio  = np.exp(-ln_Dz)
+    return f_lcdm * s8_lcdm * Dz_ratio
+
+print(f"\n--- fσ8(z): SSEE+IS vs ΛCDM vs datos ---")
+print(f"  {'z':>6}  {'SSEE':>8}  {'ΛCDM':>8}  {'obs±σ':>14}  {'pull_SSEE':>10}  Survey")
+print(f"  {'-'*80}")
+for z_obs, fs_obs, fs_err, survey in fsig8_data:
+    fs_ssee, _ = compute_fsig8_ssee(z_obs)
+    fs_lcdm    = compute_fsig8_lcdm(z_obs)
+    pull = (fs_ssee - fs_obs) / fs_err
+    print(f"  {z_obs:>6.3f}  {fs_ssee:>8.4f}  {fs_lcdm:>8.4f}  {fs_obs:.3f}±{fs_err:.3f}  {pull:>+10.2f}σ  {survey}")
+
+# χ² vs data
+chi2_ssee = sum(((compute_fsig8_ssee(z)[0] - fs)**2 / e**2)
+                for z, fs, e, _ in fsig8_data)
+chi2_lcdm = sum(((compute_fsig8_lcdm(z) - fs)**2 / e**2)
+                for z, fs, e, _ in fsig8_data)
+n_data = len(fsig8_data)
+print(f"\n  χ²/N (SSEE+IS): {chi2_ssee:.2f}/{n_data} = {chi2_ssee/n_data:.3f}")
+print(f"  χ²/N (ΛCDM):    {chi2_lcdm:.2f}/{n_data} = {chi2_lcdm/n_data:.3f}")
+print(f"  ΔBIC_fσ8 (SSEE−ΛCDM) = {chi2_ssee - chi2_lcdm:+.2f}  (Δk=0, same params)")
 
 
 # ── 4. Summary ───────────────────────────────────────────────────────────────

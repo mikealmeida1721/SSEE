@@ -40,9 +40,12 @@ Omm_cmb = Omm * MIRA               # 0.3198 ≈ Planck 0.3153 (1.47% off, <1σ)
 
 H0       = 66.66
 Omb_h2   = 0.02237
-ns       = 0.9649
+# n_s: SSEE geometric prediction from Paper 4 (1 - phi^-7 = 0.96556)
+# Previously used Planck standard value (0.9649). Updated for internal consistency.
+ns       = 1.0 - (1.0 / phi)**7   # 0.96556 — algebraic SSEE prediction (Paper 4)
 ln_As    = 3.044
 As       = np.exp(ln_As) * 1e-10
+
 
 # ---------------------------------------------------------------------------
 # Output directories

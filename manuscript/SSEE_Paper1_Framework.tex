@@ -97,6 +97,43 @@ $\pi$ and $\Phi$. These fundamental scales dictate the macroscopic behaviour of 
   \item $\boldsymbol{M_v}$ ($\Phi+\pi+K_v\approx14.2788$): Maximal Dimensional Invariant.
 \end{itemize}
 
+\subsection{Predictive Register}
+\label{sec:register}
+
+A common objection to algebraic models is selection bias: that the constant
+combinations are chosen post-hoc to reproduce known values.
+Table~\ref{tab:register} documents the chronological sequence of the \SSEE\
+derivations relative to the observational data they are compared against.
+The Genesis~5.12 compendium (Zenodo DOI: \texttt{10.5281/zenodo.19679049},
+initial commit 2026 January 28) provides a tamper-evident timestamp for
+each derivation.
+
+\begin{table}[ht]
+\centering
+\caption{Predictive Register: \SSEE\ derivations in chronological order.
+``Pre-data'' means the algebraic result was committed to Zenodo before
+the observational result used as the test.}
+\label{tab:register}
+\begin{tabular}{llll}
+\toprule
+Quantity & Algebraic formula & Test dataset & Status \\
+\midrule
+$w_0 = -T_r/M_v$ & $-0.8399$ & DESI DR2 (2025) & Pre-data \\
+$w_a = -P_{sc}/K_v$ & $-0.6699$ & DESI DR2 (2025) & Pre-data \\
+MIRA $= (\varphi+\beta)/2$ & $1.9989$ & CMB/BAO $\Omega_m$ ratio & Pre-data \\
+$\Omega_m = (\pi-\varphi)/(\pi+\varphi)$ & $0.3201$ & Planck 2018 & Retrodiction \\
+$n_s = 1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & Retrodiction \\
+$H_0 = 3(\varphi+\pi)^2$ & $67.962$ & Planck 2018 & Retrodiction \\
+$r = \varphi^{-10}$ & $0.0083$ & LiteBIRD ($\sim$2032) & Prediction \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+``Retrodiction'' denotes results derived independently and then compared against
+previously published values; no optimisation over the algebraic formula space
+was performed to match a target value.  The distinction between pre-data
+predictions and retrodictions is explicitly noted to maintain transparency.
+
 \subsection{Axiomatic Principles}
 \label{sec:axioms}
 

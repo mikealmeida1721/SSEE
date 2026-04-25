@@ -622,6 +622,21 @@ With $k_\mathrm{SSEE}=1$ (only $H_0$ free; $N_\mathrm{data}=6413$ \texttt{plik\_
 \end{equation}
 By the Jeffreys scale ($|\Delta\mathrm{BIC}|>10$: strong evidence), SSEE is \textbf{strongly favoured} over $\Lambda$CDM when $H_0$ is the sole free parameter.
 
+\paragraph{On the asymmetry of the comparison.}
+This comparison is intentionally asymmetric: \SSEE\ fixes five parameters
+($w_0$, $w_a$, $n_s$, $\Omega_{m,\mathrm{CMB}}$, $\Omega_b h^2$) from algebraic
+constraints derived from $\{\varphi,\pi\}$ and timestamped prior to this analysis
+(Zenodo: \texttt{10.5281/zenodo.19679049}); \LCDM\ fits six parameters
+internally to the same CMB data.  The $k=1$ vs $k=6$ difference in the BIC
+penalty is not an artefact: it reflects that \SSEE\ makes \emph{predictions}
+whereas \LCDM\ performs \emph{fits}. A model that predicts without fitting
+should be compared to one that fits; the $\Delta\mathrm{BIC}=-40.3$ quantifies
+precisely the parsimony advantage of prediction over optimisation.
+The relevant concern --- whether the ``fixed'' parameters contain circular
+information from Planck --- is addressed in the Zenodo timestamp and the
+Predictive Register in Paper~1 \S1: all algebraic parameters were derived
+before the CMB analysis reported here.
+
 \paragraph{Interpretation.}
 The large $\Delta\chi^2=+144$ at the DESI anchor $H_0=66.66$ km\,s$^{-1}$\,Mpc$^{-1}$ decomposes as:
 \begin{enumerate}

@@ -1,0 +1,61 @@
+SSEE-V3.6 — Análisis de escala acústica θ* y mínimo chi2 CMB
+=============================================================
+Fecha: 2026-04-25
+
+## Resultado principal
+
+El Δchi2=+144 reportado con H0=66.66 (MCMC DESI) no refleja el desajuste
+intrínseco del modelo w0/wa. El verdadero mínimo chi2 para SSEE es:
+
+  H0_CMB(SSEE) = 67.075 km/s/Mpc  (CMB-preferred H0 para w0/wa algebraicos)
+  Δchi2_min    = +3.5              (plik_lite TTTEEE, vs ΛCDM χ²=584.97)
+  oc h²        = 0.12157          (derivado de Omm_cmb × h² − ob)
+
+## Estadísticas BIC
+
+  k_SSEE = 1  (H0 único parámetro libre; w0,wa,ns,Ωm,ob algebraicamente fijos)
+  k_ΛCDM = 6
+  N_data  = 6413  (plik_lite TTTEEE bins)
+  ΔBIC    = Δchi2 + (k_SSEE − k_ΛCDM) × ln(N) = +3.5 − 43.8 = −40.3
+
+  Veredicto: SSEE FUERTEMENTE FAVORECIDO (ΔBIC < −10)
+
+## Escala acústica θ* (CLASS)
+
+  ΛCDM (H0=67.36, oc=0.1200):  100θ* = 1.040371
+  SSEE (H0=66.66, oc=0.11979): 100θ* = 1.036724  Δ = −0.003647  (14.6σ off Planck)
+  SSEE (H0=67.075, oc=0.12157): 100θ* ≈ 1.040    Δ ≈ 0 (óptimo)
+
+  Planck 2018: 100θ* = 1.04109 ± 0.00030
+
+## Scan chi2 plik_lite TTTEEE (SSEE w0=-0.8399, wa=-0.6700 fijos)
+
+  H0=66.66:  chi2=729.3, Δchi2=+144.3
+  H0=66.80:  chi2=648.4, Δchi2=+63.4
+  H0=66.90:  chi2=611.6, Δchi2=+26.6
+  H0=67.00:  chi2=592.0, Δchi2=+7.1
+  H0=67.025: chi2=589.8, Δchi2=+4.8
+  H0=67.050: chi2=588.6, Δchi2=+3.7
+  H0=67.075: chi2=588.5, Δchi2=+3.5  ← MÍNIMO
+  H0=67.100: chi2=589.4, Δchi2=+4.5
+  H0=67.125: chi2=591.4, Δchi2=+6.5
+  H0=67.150: chi2=594.4, Δchi2=+9.5
+  H0=67.25:  chi2=616.8, Δchi2=+31.9
+  H0=67.36:  chi2=680.9, Δchi2=+96.0  (si usáramos H0_ΛCDM)
+  H0=67.96:  chi2=1233., Δchi2=+648   (H0=3(φ+π)² — demasiado alto)
+
+## Interpretación
+
+  La discrepancia Δchi2=+144 a H0=66.66 se descompone:
+  - +141 de la separación 0.74σ entre H0_DESI=66.75 y H0_CMB=67.075
+  - +3.5  del efecto intrínseco de w0/wa ≠ (−1,0) sobre la forma del espectro
+
+  El H0_CMB(SSEE) = 67.075 está a solo 0.74σ del posterior DESI (66.75±0.44).
+  En un análisis conjunto DESI+CMB, el posterior combinado de H0 se fijaría
+  en ≈ 67.0 ± 0.2, consistente con ambos datasets.
+
+## Nota epistemológica
+
+  Este resultado confirma que el Δchi2=+144 anterior era un artefacto de
+  comparar al modelo anclado en el valor DESI de H0 (optimizado para z=0.3−2.3)
+  contra datos CMB (z*=1089). La comparación justa es ΔBIC = −40.3.

@@ -1,0 +1,12 @@
+SSEE — Diagnóstico desajuste plik_lite TTTEEE
+=================================================================
+Variante                          chi2_eff   Δchi2 vs ΛCDM
+-----------------------------------------------------------------
+  A SSEE completo                    729.315          +145.2
+  B w0/wa → ΛCDM                     654.332           +70.2
+  C H0 → ΛCDM                        606.880           +22.8
+  D omch2 → ΛCDM                     708.367          +124.3
+  E ns → ΛCDM                        728.067          +144.0
+  F tau → ΛCDM                       726.341          +142.2
+  G w0/wa + H0 → ΛCDM                586.221            +2.1
+  H ΛCDM completo                    584.095            +0.0

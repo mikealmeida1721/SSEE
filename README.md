@@ -21,7 +21,7 @@
 
 | # | Title | Status | PDF |
 |---|---|---|---|
-| 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
+| 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
 | 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | arXiv-ready | [docs/](docs/SSEE_Paper2_draft.pdf) |
 | 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | arXiv-ready | [docs/](docs/SSEE_Paper3_draft.pdf) |
 | 4 | Theory of Everything — algebraic derivation from φ and π only | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
@@ -108,9 +108,8 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | H₀ | 3(φ+π)² = 67.96 km/s/Mpc | 67.36 ± 0.54 | 1.1σ |
 | Ωm | (π−φ)/(π+φ) = 0.3201 | 0.3153 ± 0.0073 | 0.66σ |
 | Ωb h² | (π−φ)/[6(φ+π)⁴] = 0.02260 | 0.02237 ± 0.00015 | 1.5σ |
-| Ωc h² | (φ+π)/[3(3φ+π)] = 0.1245 | 0.1200 ± 0.0012 | **3.7σ** |
-
-*Ωc h² 3.7σ tension is the principal open problem of Paper 4.*
+| Ωc h² (IS) | KAL₀ × Ωb h² × n_s = 0.11926 | 0.1200 ± 0.0012 | **−0.6σ** |
+| Y_p (BBN) | AlterBBN(Ωb h²=0.02260) = 0.2473 | 0.2449 ± 0.0040 | 0.7σ |
 
 ---
 
@@ -120,7 +119,7 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 
 1. **Diagonal CMB likelihood** (Paper 3): χ²_r uses diagonal covariance. Off-diagonal terms required for PRD/PRL.
 2. **Eckart viscosity** (EFT section): Eckart formulation violates causality (Hiscock-Lindblom 1985). Israel-Stewart formulation needed for perturbation predictions.
-3. **Ωc h² 3.7σ** (Paper 4): cold dark matter density is the model's main quantitative open problem.
+3. **Ωc h² (resolved)** (Paper 4): static Eckart gave 3.7σ; Israel-Stewart IS derivation KAL₀ × Ωb h² × n_s = 0.11926 reduces tension to −0.6σ.
 4. **Two-sector Ωm**: Ωm,dyn = 0.160 ≠ Ωm,CMB = 0.3199. Bridged by algebraic MIRA factor; physical mechanism needs formal development.
 5. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
 6. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
@@ -143,7 +142,8 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 - [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
 - [ ] Israel-Stewart viscosity formulation — blocker for perturbation predictions
 - [ ] Spanish translations of all 4 papers
-- [ ] arXiv submission (Papers 1–3 ready, Paper 4 pending Ωc h² resolution)
+- [ ] Zenodo v2 × 4 papers (prerequisite: remaining POA fixes 1A, 1C, 1E, 2A, 2B, 2D)
+- [ ] arXiv submission — blocker: first-time submitter needs endorser (strategy: Zenodo v2 DOIs → contact authors citing DESI DR2 + w₀/wₐ)
 
 ---
 

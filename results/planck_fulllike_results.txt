@@ -1,0 +1,21 @@
+SSEE-V3.6 — Planck 2018 full likelihood (Cobaya)
+=================================================================
+Likelihoods: plik_lite TTTEEE + lowT + lowE
+
+SSEE parameters:
+  H0=66.66  ombh2=0.02237  omch2=0.11979
+  w0=-0.8399  wa=-0.6700  ns=0.96556  tau=0.0540
+  k_SSEE = 0 (todos fijos algebraicamente)
+
+ΛCDM parameters (Planck 2018 best-fit):
+  H0=67.36  ombh2=0.02237  omch2=0.12000
+  w0=-1.0  wa=0.0  ns=0.9649  tau=0.0544
+  k_ΛCDM = 6
+
+Results:
+  chi2_eff SSEE   = 1148.5446
+  chi2_eff ΛCDM   = 1003.7601
+  delta_chi2      = +144.7845
+  delta_BIC       = +92.1359
+  N_data          = 6469
+  Veredicto       = SSEE fuertemente desfavorecido (ΔBIC = 92.1)

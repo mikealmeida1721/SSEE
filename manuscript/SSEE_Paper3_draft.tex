@@ -631,6 +631,62 @@ The large $\Delta\chi^2=+144$ at the DESI anchor $H_0=66.66$ km\,s$^{-1}$\,Mpc$^
 The DESI anchor $H_0$ was obtained from a fit to BAO data at $z=0.3$--$2.3$ without CMB constraints. A joint DESI+CMB analysis would naturally pull $H_0$ toward $67.0$--$67.1$ km\,s$^{-1}$\,Mpc$^{-1}$, consistent with both datasets at $<1\sigma$.
 
 % ===========================================================================
+\subsection{Matter power spectrum and \texorpdfstring{$S_8$}{S8} prediction}
+\label{sec:sigma8}
+% ===========================================================================
+
+Beyond the CMB, the SSEE viscous dark-energy background modifies the growth
+of large-scale structure. In the Israel--Stewart dissipative framework, the
+linear growth rate takes the form $f(z) = \Omega_m(z)^\gamma$, where the
+growth index $\gamma$ is modified by the bulk-viscosity coupling. At the
+background level, dimensional analysis of the IS transport equations yields
+$\gamma_\mathrm{SSEE} = \phi^{-1} = 0.618$ (compared to $\gamma_\Lambda=0.55$
+for $\Lambda$CDM).
+
+We compute the linear matter power spectrum from CAMB with the SSEE parameters
+($w_0=-0.8399$, $w_a=-0.6700$, $H_0=67.075$ km\,s$^{-1}$\,Mpc$^{-1}$,
+$\Omega_m=0.31993$) and apply the IS growth-index correction post-processing:
+\begin{equation}
+  \sigma_{8,\mathrm{IS}} = \sigma_{8,\mathrm{CAMB}} \times
+    \frac{D(\gamma=\phi^{-1})}{D(\gamma_\mathrm{eff})} ,
+  \qquad
+  \frac{D(\gamma_1)}{D(\gamma_2)} = \exp\!\left[
+    \int_0^{z_\mathrm{hi}} \frac{\Omega_m(z)^{\gamma_1} - \Omega_m(z)^{\gamma_2}}{1+z}\,dz
+  \right] ,
+\end{equation}
+with $z_\mathrm{hi}=3$ (matter-dominated epoch, both solutions coincide there).
+The effective CAMB growth index for $w_0/w_a$ dark energy is
+$\gamma_\mathrm{eff} \approx 0.55 + 0.05(1+w_0) = 0.542$.
+The IS correction factor is $D(\phi^{-1})/D(\gamma_\mathrm{eff}) = 0.9778$,
+reducing $\sigma_8$ by 2.2\%.
+
+Table~\ref{tab:sigma8} summarises the results alongside observational constraints.
+The SSEE+IS prediction $S_8=0.831$ is consistent with Planck 2018 at $0.06\sigma$
+and slightly better than $\Lambda$CDM itself ($S_8^\Lambda=0.830$). The
+$\sim 3\sigma$ tension with weak-lensing surveys (KiDS-1000, DES~Y3) persists
+in SSEE as in $\Lambda$CDM; the IS modification provides a marginal improvement
+but does not resolve this tension.
+
+\begin{table}[ht]
+\centering
+\caption{$\sigma_8$ and $S_8=\sigma_8(\Omega_m/0.3)^{0.5}$ predictions.}
+\label{tab:sigma8}
+\begin{tabular}{lcc}
+\hline
+Model / Dataset & $\sigma_8$ & $S_8$ \\
+\hline
+$\Lambda$CDM (CAMB, best-fit) & 0.811 & 0.830 \\
+SSEE (CAMB, $\gamma_\mathrm{eff}$) & 0.823 & 0.850 \\
+SSEE+IS ($\gamma=\phi^{-1}=0.618$) & \textbf{0.805} & \textbf{0.831} \\
+\hline
+Planck 2018 \citep{Planck2020} & $0.812\pm0.008$ & $0.832\pm0.013$ \\
+KiDS-1000 \citep{Asgari2021} & --- & $0.759\pm0.024$ \\
+DES Y3 \citep{DES2022} & --- & $0.773\pm0.025$ \\
+\hline
+\end{tabular}
+\end{table}
+
+% ===========================================================================
 \section{Falsifiability Criteria}
 \label{sec:falsifiability}
 % ===========================================================================
@@ -656,6 +712,11 @@ each of which would \textbf{falsify} the framework if violated:
     $\Omega_{m,\mathrm{CMB}}/\Omega_{m,\mathrm{dyn}}$ should equal MIRA
     within measurement uncertainty across independent CMB experiments.
     A ratio significantly different from $1.9989$ would require revision.
+
+  \item \textbf{Growth index:} SSEE+IS predicts $\gamma=\phi^{-1}=0.618$,
+    yielding $S_8=0.831$ (see Table~\ref{tab:sigma8}). A measurement of the
+    growth index $\gamma<0.55$ or $\gamma>0.65$ by RSD surveys at $>3\sigma$
+    would falsify the Israel--Stewart modification to the growth sector.
 \end{enumerate}
 
 % ===========================================================================

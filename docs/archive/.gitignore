@@ -1,0 +1,4 @@
+# Archivos de archivo histórico — solo para referencia local
+# No se suben a git
+*
+!.gitignore

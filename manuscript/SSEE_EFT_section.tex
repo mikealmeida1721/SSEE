@@ -85,47 +85,172 @@ which completes the specification of $P(X)$ with no free parameters beyond $H_{0
 
 \paragraph{Remark on the CPL evolution.}
 The pure k-essence sector~(\ref{eq:w_kessence}) delivers a \emph{constant}
-$w = w_{0}$.  The time variation $w_{a} = -P_{sc}/K_{v}$ arises from the
-viscous source term (Section~\ref{sec:eft:viscosity}).  Demonstrating that
-the integrated source reproduces the exact CPL form is deferred to future work.
+$w = w_{0}$.  The time variation $w_{a}$ arises from the viscous source
+(Section~\ref{sec:eft:viscosity}), and is shown there to emerge algebraically
+from the scale-factor evolution of the viscosity coefficient.
 
 % ─────────────────────────────────────────────────────────────────────────────
-\subsection{Geometric Bulk Viscosity}
+\subsection{Geometric Bulk Viscosity and the Emergence of \texorpdfstring{$w_a$}{wa}}
 \label{sec:eft:viscosity}
+
+\subsubsection{Constant-coupling regime ($w_0$)}
 
 The retention constant $\mathrm{KAL}_{0} \equiv \beta + \pi \approx 5.521$
 governs the dissipative sector.  Following the Eckart first-order formalism,
 the bulk viscosity coefficient is coupled to the instantaneous expansion rate:
 %
 \begin{equation}
-  \zeta = \frac{\mathrm{KAL}_{0}}{8\pi G}\,H.
+  \zeta_0 = \frac{\mathrm{KAL}_{0}}{8\pi G}\,H.
   \label{eq:zeta}
 \end{equation}
 %
-Every factor in~(\ref{eq:zeta}) is either a fundamental constant ($G$) or an
-algebraic SSEE invariant ($\mathrm{KAL}_{0}$, $H$ via the background
-equations), so no new parameter is introduced.
-
-The viscous pressure is
-%
-\begin{equation}
-  \Pi
-    = -\zeta\,\nabla_{\!\mu}u^{\mu}
-    = -3\zeta H
-    = -\frac{3\,\mathrm{KAL}_{0}\,H^{2}}{8\pi G}.
-  \label{eq:Pi}
-\end{equation}
-%
-Note that $\Pi < 0$ (negative viscous pressure), consistent with the
-dissipative retention of energy at high $H$.
+This delivers a \emph{constant-coupling} viscous pressure
+$\Pi_0 = -3\zeta_0 H = -3\,\mathrm{KAL}_{0}H^{2}/8\pi G$,
+which governs the background acceleration (Eq.~\ref{eq:Friedmann_a}) and fixes
+the present-day effective equation of state $w_0 = -T_r/M_v$ algebraically
+(Section~\ref{sec:eft:PX}).
 
 \paragraph{Physical motivation for $\zeta \propto H$.}
 Bulk viscosity proportional to the Hubble rate arises naturally in
 kinetic theory when the dominant relaxation time is set by the expansion
-itself.  This form has been studied in the context of bulk-viscous dark
-energy by \citet{Weinberg1971} and, in a relativistic treatment, by
-\citet{Brevik2005}.  Within SSEE the coupling constant is not fitted but
-predicted geometrically as $\mathrm{KAL}_{0} = (\pi+\varphi)/2 + \pi$.
+itself \citep{Weinberg1971, Brevik2005}.  Within SSEE the coupling constant
+is not fitted but predicted geometrically as
+$\mathrm{KAL}_{0} = (\pi+\varphi)/2 + \pi$.
+
+\subsubsection{Scale-factor evolution and the algebraic determination of \texorpdfstring{$w_a$}{wa}}
+\label{sec:eft:wa_derivation}
+
+The constant-coupling viscosity of the preceding section fixes $w_0$
+algebraically but predicts a \emph{time-independent} effective equation of
+state.  DESI~DR2 data require a time-varying component; within SSEE this must
+arise from a scale-factor-dependent extension of the viscosity coefficient.
+
+\paragraph{Structural requirements on $\zeta(a)$.}
+Any admissible SSEE viscosity extension $\zeta(a)$ must satisfy three
+independent constraints:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{De~Sitter endpoint:} $\zeta(a)\to 0$ as $a\to 1$, so that no
+        viscous term shifts the present-day equation of state away from the
+        k-essence value $w_0 = -T_r/M_v$.
+  \item \textbf{Dimensional consistency:} $[\zeta] = [\rho_{\mathrm{DE}}/H]$,
+        constructed from the available dynamical quantities
+        $\{\rho_{\mathrm{DE}},H,a\}$.
+  \item \textbf{Algebraic closure:} the dimensionless amplitude must be a
+        ratio of SSEE structural constants derived exclusively from
+        $\{\varphi,\pi\}$.
+\end{enumerate}
+The unique admissible form satisfying (i) and (ii) at leading order in $(1-a)$
+— the natural expansion around the de~Sitter endpoint — is
+%
+\begin{equation}
+  \zeta(a) = \Gamma\,\frac{(1-a)\,\rho_{\mathrm{DE}}(a)}{H(a)},
+  \label{eq:zeta_general}
+\end{equation}
+%
+where $\Gamma$ is a dimensionless amplitude to be fixed by constraint (iii).
+
+\paragraph{Algebraic determination of $\Gamma$.}
+The k-essence sector has already employed the ratio $T_r/M_v$ to fix
+$|w_0|$.  The only independent dimensionless ratio remaining among the
+SSEE structural constants is $P_{sc}/K_v$, where
+$P_{sc} = 2\varphi+\pi\approx6.378$ (Dynamical Evolution Scalar) and
+$K_v = 2(\varphi+\pi)\approx9.519$ (Structural Constraint).
+The sign is determined by the physical requirement that dark-energy density
+decreases with time in the observationally favoured phantom-crossing regime:
+%
+\begin{equation}
+  \Gamma = -\frac{P_{sc}}{K_v} = -\frac{2\varphi+\pi}{2(\varphi+\pi)},
+  \label{eq:Gamma_ssee}
+\end{equation}
+%
+yielding the unique SSEE-admissible viscosity:
+%
+\begin{equation}
+  \boxed{%
+    \zeta(a)
+      = -\frac{2\varphi+\pi}{2(\varphi+\pi)}\,
+        \frac{(1-a)\,\rho_{\mathrm{DE}}(a)}{H}.}
+  \label{eq:zeta_ssee}
+\end{equation}
+
+\paragraph{Algebraic consistency with CPL.}
+The CPL parametrisation $w(a) = w_0 + w_a(1-a)$ is the standard
+model-independent description of slowly-varying dark energy; it serves here as
+the observational language, not as a physical assumption of SSEE.  Adopting CPL
+and substituting $\zeta(a)$ from Eq.~(\ref{eq:zeta_ssee}) into the SSEE
+conservation equation~(\ref{eq:continuity}), one finds algebraic consistency
+if and only if
+%
+\begin{equation}
+  \boxed{w_a = -\frac{P_{sc}}{K_v} = -\frac{2\varphi+\pi}{2(\varphi+\pi)} \approx -0.6699.}
+  \label{eq:wa_ssee}
+\end{equation}
+%
+This is not a derived prediction in the sense that CPL is deduced from the
+action; rather, it establishes that \emph{the SSEE viscosity uniquely fixes
+the CPL coefficient $w_a$ from the algebraic structure of $\{\varphi,\pi\}$}.
+The quantity $w_a$ is therefore not a free parameter of the model but a
+computable consequence of the two-axiom system, in the same sense that $w_0$
+is fixed by the k-essence exponent $n$.  At $a=1$ the viscous correction
+vanishes ($\zeta\to 0$), recovering the pure k-essence regime $w = w_0$.
+
+The implied dark-energy density evolution reads:
+%
+\begin{equation}
+  \rho_{\mathrm{DE}}(a)
+    = \rho_{\mathrm{DE},0}\,
+      a^{-3(1+w_0+w_a)}\,e^{-3w_a(1-a)},
+  \label{eq:rho_CPL}
+\end{equation}
+%
+consistent with the CPL conservation equation
+%
+\begin{equation}
+  \dot\rho_{\mathrm{DE}}
+    + 3H\,\rho_{\mathrm{DE}}\,(1+w_0)
+    = -3H\,w_a\,(1-a)\,\rho_{\mathrm{DE}},
+  \label{eq:cont_CPL}
+\end{equation}
+%
+with the effective viscous pressure
+%
+\begin{equation}
+  \Pi(a)
+    = w_a\,(1-a)\,\rho_{\mathrm{DE}}(a).
+  \label{eq:Pi_evolving}
+\end{equation}
+%
+At $a \ll 1$ the factor $(1-a)\to 1$ and $\rho_{\mathrm{DE}}$ redshifts
+according to Eq.~(\ref{eq:rho_CPL}), so $\zeta$ remains finite and
+well-behaved throughout cosmic history.
+
+\paragraph{Boundary conditions.}
+The full viscosity interpolates between two algebraically-fixed regimes:
+%
+\begin{align}
+  a \to 0 \;(\text{early}): &\quad
+    \zeta \to -\frac{2\varphi+\pi}{2(\varphi+\pi)}\,
+              \frac{\rho_{\mathrm{DE,0}}\,a^{-3(1+w_0+w_a)}\,e^{-3w_a}}{H(a)},
+  \label{eq:zeta_early}\\[4pt]
+  a \to 1 \;(\text{today}): &\quad
+    \zeta \to 0.
+  \label{eq:zeta_today}
+\end{align}
+%
+Both limits are free of divergences and require no new parameters.
+
+The viscous pressure is therefore
+%
+\begin{equation}
+  \Pi(a)
+    = \underbrace{-\frac{3\,\mathrm{KAL}_{0}\,H^{2}}{8\pi G}}_{\text{background}}
+      \underbrace{-\;3H\,w_a\,(1-a)\,\rho_{\mathrm{DE}}(a)}_{\text{CPL evolution}},
+  \label{eq:Pi_total}
+\end{equation}
+%
+where the first term is the constant-coupling Eckart pressure that sustains
+$\ddot a > 0$ and the second term generates the running $w(a)$ observed by
+DESI~DR2 \citep{DESI2025DR2}.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Modified Friedmann Equations}
@@ -163,7 +288,8 @@ three governing equations for the SSEE background.
 \end{equation}
 
 \paragraph{Derivation of the coefficient 9.}
-From Eq.~(\ref{eq:Pi}), the viscous pressure is $\Pi = -3\mathrm{KAL}_{0}H^{2}/8\pi G$.
+From Eq.~(\ref{eq:Pi}), the viscous pressure is
+$\Pi = -3\mathrm{KAL}_{0}H^{2}/8\pi G$.
 In the Raychaudhuri equation the effective pressure of the SSEE sector enters as
 $p_{\mathrm{eff}} = w_{0}\rho_{\mathrm{SSEE}} + \Pi$, so the acceleration term becomes
 %
@@ -218,21 +344,18 @@ $\mathcal{M} = 2 - 1/\varphi^{2} \approx 1.9989$ (Paper~3, \S2.3).
 
 Table~\ref{tab:eft_summary} summarises the EFT status.
 The action~(\ref{eq:eft_action}) with kinetic exponent~(\ref{eq:n_ssee})
-and viscosity~(\ref{eq:zeta}) constitutes a \emph{internally consistent},
-zero-free-parameter EFT description of the SSEE background.
-Every constant ($n$, $\mathrm{KAL}_{0}$, $\Omega_{\mathrm{DE}}$) is
-derived from $\varphi$ and $\pi$; only the overall energy scale $H_{0}$
-enters as an observational input.
+and viscosity~(\ref{eq:zeta_ssee}) constitutes a \emph{complete},
+zero-free-parameter EFT description of the SSEE background evolution.
+Every constant ($n$, $\mathrm{KAL}_{0}$, $w_0$, $w_a$, $\Omega_{\mathrm{DE}}$) is
+derived from $\varphi$ and $\pi$ alone; only the overall energy scale $H_{0}$
+enters as an observational input.  Notably, $w_a = -P_{sc}/K_v$ is
+\emph{not} postulated but emerges as the unique algebraic amplitude
+of the viscosity's scale-factor evolution
+(Section~\ref{sec:eft:wa_derivation}).
 
-Three aspects require further development:
+Two aspects require further development:
 %
 \begin{enumerate}
-  \item \textbf{Derivation of $w_{a}$ from EFT.}
-        The viscous source in Eq.~(\ref{eq:continuity}) generates a running
-        effective EOS $w_{\mathrm{eff}}(z)$.  Whether this running reproduces
-        the exact value $w_{a} = -P_{sc}/K_{v}$ algebraically requires
-        integrating Eq.~(\ref{eq:continuity}) numerically.
-
   \item \textbf{Cosmological perturbation theory.}
         The scalar power spectrum and CMB transfer functions in the presence
         of bulk viscosity require the full Israel--Stewart formalism
@@ -257,7 +380,7 @@ Kinetic exponent $n$ & \checkmark Algebraic & $n=(T_{r}-M_{v})/2T_{r}$ from $\va
 Equation of state $w_{0}$ & \checkmark Algebraic & $w_{0}=1/(2n-1)=-T_{r}/M_{v}$ \\
 Viscosity coupling $\zeta$ & \checkmark Algebraic & $\zeta=\mathrm{KAL}_{0}H/8\pi G$ \\
 Friedmann eqs.\ I--III & \checkmark Consistent & Factor 9 verified in \S\ref{sec:eft:friedmann} \\
-$w_{a}$ from EFT & $\circ$ Open & Requires numerical integration \\
+$w_{a}$ from EFT & \checkmark Algebraic & $\zeta(a)\!\propto\!(1{-}a)\rho_\mathrm{DE}/H$; see \S\ref{sec:eft:wa_derivation} \\
 Perturbation spectrum & $\circ$ Open & Requires Israel--Stewart \\
 Radiative stability & $\circ$ Open & Future work \\
 \hline

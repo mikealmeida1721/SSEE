@@ -68,7 +68,7 @@ The cluster-mass sector achieves $\chi^2_r=0.131$ across seven clusters
 (analytic forward-model) and $\chi^2_r=0.406$ in the 4-cluster MCMC subset,
 with the IGIMF correction as the essential ingredient.
 Isolating the dynamic sector ($(w_0,w_a)$ fixed algebraically, one free
-parameter $H_0$) yields $\Delta\mathrm{BIC}(\SSEE_{\rm dyn})=-13.5$
+parameter $H_0$) yields $\Delta\mathrm{BIC}(\SSEE_{\rm dyn})=-5.55$
 relative to \LCDM, confirming that the $\wz$--$\wa$ prediction is
 genuinely favoured by current BAO data.
 The fixed background $\OmDE^{\SSEE}\approx0.840$ implies
@@ -492,6 +492,36 @@ discrepancy. The residual tension is $0.95\sigma$ in $H_0$ but
 $21.3\sigma$ in $\Omega_m$ — confirming that the mismatch is in the
 background structure, not in the Hubble normalisation.
 
+\paragraph{Interpretation of the $21.3\sigma$ $\Omega_m$ tension.}
+This is not a falsification of the model.
+It is a direct consequence of applying a prior on $\Omega_m$ that was
+calibrated entirely within \LCDM\ cosmology to a model (\SSEE) that
+assigns a fundamentally different physical role to $\Omega_{m,\rm eff}=0.160$.
+In \SSEE\ the matter fraction is not a free parameter but an algebraic
+theorem: $\Omega_{m,\rm eff} = 1 - T_r/M_v = 1 - (3\varphi+\pi)/[2(\varphi+\pi)]$.
+When the MCMC sampler is forced to compare this fixed prediction against the
+\LCDM-calibrated BAO $r_d$ formula (Eq.~\ref{eq:rd}), it cannot reconcile the
+two without generating a large residual in $\Omega_m$.
+The $21.3\sigma$ is therefore a measure of the \emph{incompatibility between
+the two background cosmologies}, not a measure of how wrong the \SSEE\
+prediction is.
+A fair comparison requires either (a) a self-consistent \SSEE\ $r_d$ formula
+or (b) an analysis restricted to the dynamical dark-energy sector, for which
+\SSEE\ achieves $\Delta\mathrm{BIC}=-5.55$ (Section~\ref{sec:bic}).
+
+\paragraph{H$_0$: algebraic prediction vs.\ MCMC posterior.}
+The \SSEE\ framework independently derives an algebraic estimate
+$H_0^{\rm alg} = M_v \times \Omega = 3(\varphi+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$,
+where $M_v$ and $\Omega$ are fixed structural constants.
+The MCMC posterior, $H_0^{\rm MCMC}=66.75\pm0.44$, is obtained by fitting
+the DESI~DR2 BAO data while applying the Planck~2018 prior.
+The two values measure different quantities: $H_0^{\rm alg}$ is the theoretical
+prediction of the background geometry; $H_0^{\rm MCMC}$ is the posterior after
+the DESI data pull the value downward to compensate for the enlarged $r_d$.
+The $\sim$1.2\,km\,s$^{-1}$\,Mpc$^{-1}$ difference (2.7\%) is an explicit
+consequence of the background-mismatch compensation, not an inconsistency
+within the model.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.88\textwidth]{fig8_tension_summary.pdf}
@@ -661,6 +691,7 @@ not contingent on specific choices of $\sigma_{M_{\rm obs}}$.
 
 \section{Model Comparison}
 \label{sec:model_comparison}
+\label{sec:bic}
 
 \begin{table}[H]
 \centering
@@ -671,7 +702,7 @@ not contingent on specific choices of $\sigma_{M_{\rm obs}}$.
 Model & $k$ & $\ln P_{\rm MAP}$ & BIC & $\Delta$BIC & AIC & $\Delta$AIC \\
 \midrule
 \SSEE-V3.6      & 2 & $-124.87$ & 255.28 & $+217.92$ & 253.73 & $+220.24$ \\
-\SSEE$_{\rm dyn}$ & 1 & $-14.19$ &  30.70 & $-13.50$  &  30.39 &   $-3.00$ \\
+\SSEE$_{\rm dyn}$ & 1 & $-14.19$ &  31.15 & $-5.55$   &  30.39 &   $-3.00$ \\
 \LCDM           & 3 &  $-14.19$ &  36.70 & $+0.00$   &  34.39 &   $+1.03$ \\
 CPL             & 5 &  $-11.68$ &  37.22 & $+0.51$   &  33.35 &   $+0.00$ \\
 \bottomrule
@@ -707,7 +738,7 @@ calibration artefact arising from applying an \LCDM-background prior to an
 Critically, $\Delta\mathrm{BIC}(\mathrm{CPL})=+0.51$ confirms that
 \textit{dynamical dark energy is not disfavoured}. Isolating the dynamic
 sector of \SSEE\ (fixing $\wz,\wa$ algebraically, one free parameter $H_0$)
-yields $\Delta\mathrm{BIC}(\SSEE_{\rm dyn})=-13.5$ relative to \LCDM,
+yields $\Delta\mathrm{BIC}(\SSEE_{\rm dyn})=-5.55$ relative to \LCDM,
 reflecting the parsimony gain from having zero CPL free parameters and
 demonstrating that the $\wz$--$\wa$ prediction is genuinely favoured by
 the data once the background penalty is removed.
@@ -845,7 +876,7 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
 
   \item The fixed $\Omega_{m,\mathrm{eff}}=0.160$ enlarges $r_d$
     by $19\%$, yielding $\Delta\mathrm{BIC}=+218$. The dynamic sector
-    in isolation achieves $\Delta\mathrm{BIC}=-13.5$, demonstrating
+    in isolation achieves $\Delta\mathrm{BIC}=-5.55$, demonstrating
     that the penalty is entirely attributable to background mismatch,
     not to the $\wz$--$\wa$ prediction.
 

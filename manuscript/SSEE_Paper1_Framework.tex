@@ -43,20 +43,34 @@ ORCID: \href{https://orcid.org/0009-0008-2195-7836}{0009-0008-2195-7836}.}%
 
 \begin{abstract}
 We present the Structural Self-Energy Expansion (\SSEE-V3.6), a minimalist theoretical
-framework that unifies cosmological expansion and cluster dynamics using dimensionless
-geometric constants ($\pi$ and the golden ratio $\Phi$) without introducing free parameters
-or exotic dark-matter particles. The framework defines a closed algebraic system yielding
-an asymptotic structural viscosity factor $\KALz \approx 5.5214$, natively reproducing the
-observed cosmic dark-to-baryonic matter density ratio. At galactic scales, \SSEE\ derives
-an acceleration threshold $a_0 = c\,H_0/\KALz \approx 1.186\times10^{-10}$\,m\,s$^{-2}$.
-On cosmological scales, the model predicts a dynamical dark-energy equation of state with
-$\wz \approx -0.840$ and $\wa \approx -0.670$, providing a parsimonious alignment with
-dynamical trends in the DESI~DR2 observations \citep{AbdulKarim2025}. Incorporating an
-empirical light-neutrino mass sum $\sum m_\nu = 0.085$\,eV, the framework structurally
-resolves the megaparsec cluster mass discrepancy when combined with a variable Integrated
-Galaxy-wide Initial Mass Function (IGIMF) \citep{Zhang2026}. A full Bayesian MCMC
-validation against DESI~DR2, Planck~2018, and galaxy-cluster mass data is presented
-in the companion Paper~2 \citep{SSEE_paperII}.
+framework that unifies cosmological expansion and galaxy-cluster dynamics using only two
+dimensionless geometric constants — $\pi$ and the golden ratio $\varphi$ — without
+introducing free parameters or exotic dark-matter particles.
+From these two axioms, a closed set of seven structural registers is derived algebraically,
+culminating in the dark-energy equation of state
+\begin{equation*}
+  w_0 = -\frac{3\varphi+\pi}{2(\varphi+\pi)} \approx -0.840,
+  \qquad
+  w_a = -\frac{2\varphi+\pi}{2(\varphi+\pi)} \approx -0.670.
+\end{equation*}
+No fitting procedure is involved: $w_0$ and $w_a$ are uniquely fixed by the geometry of
+$\varphi$ and $\pi$.
+The asymptotic structural viscosity factor $\KALz = \beta + \pi \approx 5.5214$
+natively reproduces the observed cosmic dark-to-baryonic matter density ratio.
+At galactic scales, \SSEE\ derives an acceleration threshold
+$a_0 = c\,H_0/\KALz \approx 1.186\times10^{-10}$\,m\,s$^{-2}$, consistent with
+the empirical MOND scale.
+Incorporating a light-neutrino mass sum $\sum m_\nu = 0.085$\,eV,
+the framework structurally resolves the megaparsec cluster mass discrepancy
+when combined with an IGIMF-corrected baryonic baseline \citep{Zhang2026}.
+The Hubble tension is addressed through a structural local correction
+$H_{0,\rm local} = H_{0,\rm global} + \KALz \approx 73.5$~km\,s$^{-1}$\,Mpc$^{-1}$,
+consistent with distance-ladder measurements.
+A full Bayesian MCMC validation against DESI~DR2 \citep{AbdulKarim2025},
+Planck~2018, and galaxy-cluster mass data ($\Delta\mathrm{BIC}=-5.55$ for the dynamic
+sector relative to $\Lambda$CDM) is presented in the companion Paper~2 \citep{SSEE_paperII}.
+The framework is falsifiable: a B-mode polarisation tensor-to-scalar ratio
+$r = \varphi^{-10} = 0.0083$ is predicted for LiteBIRD ($\sim$2032).
 \end{abstract}
 
 %--------------------------------------------------------------------
@@ -161,6 +175,24 @@ $\wa$ encodes the dynamical departure from saturation driven by $P/K_v$:
   \wa = -\frac{P}{K_v}  \approx -0.670.
   \label{eq:ssee_pars}
 \end{equation}
+
+\noindent\textbf{Explicit reduction to the two axioms.}
+Substituting the algebraic definitions
+$T_r = \tfrac{3(3\varphi+\pi)}{2}$ (TRIAL),
+$M_v = 3(\varphi+\pi)$ (MIKAEL\_V),
+$P_{sc} = 2\varphi+\pi$ (PYROS), and
+$K_v = 2(\varphi+\pi)$ (KRYSTOS), both
+dark-energy observables collapse to closed forms in $\varphi$ and $\pi$ alone:
+\begin{equation}
+  \boxed{w_0 = -\frac{3\varphi+\pi}{2(\varphi+\pi)} = -0.8399},
+  \qquad
+  \boxed{w_a = -\frac{2\varphi+\pi}{2(\varphi+\pi)} = -0.6699}.
+  \label{eq:w0wa_explicit}
+\end{equation}
+No fitting procedure is involved: these values are uniquely fixed by the geometry of $\varphi$ and $\pi$.
+The numerators $3\varphi+\pi$ and $2\varphi+\pi$ reflect the three- and two-fold
+contributions of $\varphi$ to the saturation horizon, while the common denominator
+$2(\varphi+\pi)$ is twice the Stability Metric $\Omega=\varphi+\pi$.
 
 \medskip
 \noindent\textbf{Asymptotic saturation.}\ Although $\wz+\wa=-1.510$ would ordinarily

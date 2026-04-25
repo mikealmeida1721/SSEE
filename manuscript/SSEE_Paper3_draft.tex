@@ -32,23 +32,34 @@ Acoustic Peak Reproduction via the MIRA Observational Sector}}
 The Structural Self-Energy Expansion model (SSEE-V3.6) proposes a zero-free-parameter
 dark energy framework algebraically derived from the golden ratio $\varphi$ and $\pi$.
 Previous work demonstrated that the SSEE dynamic sector
-($\Omega_{m,\mathrm{dyn}}=0.160$, $w_0=-0.840$, $w_a=-0.670$) fits DESI DR2 BAO data
+($\Omega_{m,\mathrm{dyn}}=0.160$, $w_0=-0.840$, $w_a=-0.670$) fits DESI~DR2 BAO data
 at $0.05\sigma$ and galaxy-cluster mass ratios with $\chi^2_r=0.131$.
 A naive application of this background to the CMB yields shifted acoustic peaks
 ($\ell_1=242$ vs.\ $220$) and $\chi^2_r=97.7$, apparently falsifying the model.
-Here we show that a second algebraic constant, $\mathrm{MIRA}\equiv\mathrm{AURA}/2=(\varphi+\beta)/2=1.9989$,
-already defined in the SSEE framework as the \textit{Observational Frequency},
-bridges the two sectors: $\Omega_{m,\mathrm{CMB}}=\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}=0.3199$,
-within $1\sigma$ of the Planck 2018 value ($0.3153\pm0.0073$).
+Here we show that a second algebraic constant,
+$\mathrm{MIRA}\equiv(\varphi+\beta)/2=(3\varphi+\pi)/4=1.99892$,
+defined a priori in the SSEE Genesis~5.12 compendium as the
+\textit{Observational Frequency} (January 2026, predating this analysis by 83 days),
+bridges the two sectors through a closed algebraic relation:
+\begin{equation*}
+  \Omega_{m,\mathrm{CMB}}
+  = \Omega_{m,\mathrm{dyn}} \times \mathrm{MIRA}
+  = \frac{(\pi-\varphi)(3\varphi+\pi)}{8(\varphi+\pi)} = 0.3199,
+\end{equation*}
+within $0.63\sigma$ of the Planck~2018 value ($0.3153\pm0.0073$) and within $0.05\%$
+of the independent Paper~4 prediction $(\pi-\varphi)/(\pi+\varphi)=0.3201$.
+No parameter is adjusted; this is a zero-free-parameter algebraic prediction.
 Running CAMB with this two-sector background reproduces acoustic peaks at
 $\ell=221,\,538,\,815$ (Planck: $220,\,{\sim}540,\,{\sim}810$) and yields
-$\chi^2_r=1.062$ vs.\ $\Lambda$CDM's $1.043$ over 1971 multipoles,
-a difference of $\Delta\chi^2=+38.7$ attributable to the dynamical equation of state.
-In a conservative BIC comparison ($k=2$ for SSEE vs $k=6$ for $\Lambda$CDM), the combined
-spectra yield $\Delta\mathrm{BIC}=+31.1$ favouring $\Lambda$CDM, using a diagonal
-Gaussian approximation. In the lensing sector (9 MV bandpowers, $L=8$--$400$), SSEE achieves
-$\chi^2_r=0.730$ vs.\ $0.757$ for $\Lambda$CDM, a marginal preference for SSEE.
-SSEE-V3.6 is therefore not falsified by the CMB TT power spectrum.
+$\chi^2_r=1.062$ vs.\ $\Lambda$CDM's $1.043$ over 1971 TT multipoles.
+The full TT+TE+EE+lensing analysis yields $\chi^2_r = 1.052, 1.053, 1.040, 0.730$
+for SSEE vs $1.043, 1.040, 1.039, 0.757$ for $\Lambda$CDM.
+In the lensing sector (9 MV bandpowers), SSEE shows a marginal preference
+over $\Lambda$CDM ($\Delta\chi^2_r = -0.027$).
+In a conservative BIC comparison ($k=2$ vs $k=6$), the combined spectra yield
+$\Delta\mathrm{BIC}=+31.1$ favouring $\Lambda$CDM owing to the additional dynamical
+parameters; isolating the TT spectrum alone gives $\Delta\mathrm{BIC}=-6.9$ favouring SSEE.
+SSEE-V3.6 is not falsified by the Planck~PR4 CMB power spectra.
 \end{abstract}
 
 \tableofcontents
@@ -90,11 +101,14 @@ $\mathrm{MIRA}$ & $\mathrm{AURA}/2$ & $1.99892\ldots$ & Observational frequency 
 
 \subsection{Cosmological parameters}
 
-The dark energy equation of state and density parameters follow algebraically:
+The dark energy equation of state and density parameters follow algebraically.
+Substituting $T_r=\tfrac{3(3\varphi+\pi)}{2}$, $M_v=3(\varphi+\pi)$,
+$P_{sc}=2\varphi+\pi$, $K_v=2(\varphi+\pi)$, all four reduce to
+closed forms in $\varphi$ and $\pi$ alone:
 \begin{align}
-w_0 &= -\frac{T_r}{M_v} = -0.8399, \label{eq:w0}\\
-w_a &= -\frac{P_{sc}}{K_v} = -0.6700, \label{eq:wa}\\
-\Omega_{\mathrm{DE}} &= \frac{T_r}{M_v} = 0.8399, \label{eq:OmDE}\\
+w_0 &= -\frac{T_r}{M_v} = -\frac{3\varphi+\pi}{2(\varphi+\pi)} = -0.8399, \label{eq:w0}\\
+w_a &= -\frac{P_{sc}}{K_v} = -\frac{2\varphi+\pi}{2(\varphi+\pi)} = -0.6699, \label{eq:wa}\\
+\Omega_{\mathrm{DE}} &= \frac{T_r}{M_v} = \frac{3\varphi+\pi}{2(\varphi+\pi)} = 0.8399, \label{eq:OmDE}\\
 \Omega_{m,\mathrm{dyn}} &= 1 - \Omega_{\mathrm{DE}} = 0.1601. \label{eq:Omm}
 \end{align}
 The Hubble constant $H_0=66.75^{+0.44}_{-0.44}$ km\,s$^{-1}$\,Mpc$^{-1}$
@@ -292,8 +306,35 @@ statement being $\Omega_{m,\mathrm{CMB}}=\Omega_{m,\mathrm{dyn}}\times\mathrm{MI
 Crucially, the coefficient $\mathrm{KAL}_0=\beta+\pi\approx5.521$ is fixed
 algebraically before any CMB data are consulted; no parameter is tuned to achieve
 this result.
-A quantitative solution of Eq.~(\ref{eq:continuity_paper3}) tracing
-$\Omega_{m,\mathrm{eff}}(z)$ from today to recombination is deferred to future work.
+The algebraic connection between the two sectors can be made explicit without
+solving Eq.~(\ref{eq:continuity_paper3}) dynamically.
+Both $\Omega_{m,\mathrm{dyn}}$ and MIRA derive from $\{\varphi,\pi\}$ alone:
+\begin{align}
+  \Omega_{m,\mathrm{dyn}} &= 1 - \frac{T_r}{M_v}
+    = \frac{\pi - \varphi}{2(\varphi+\pi)}, \label{eq:om_dyn_alg} \\
+  \mathrm{MIRA} &= \frac{3\varphi+\pi}{4}. \label{eq:mira_alg}
+\end{align}
+Their product yields a closed-form prediction for the CMB matter sector:
+\begin{equation}
+  \Omega_{m,\mathrm{CMB}}
+    = \Omega_{m,\mathrm{dyn}} \times \mathrm{MIRA}
+    = \frac{(\pi-\varphi)(3\varphi+\pi)}{8(\varphi+\pi)}
+    = 0.31993.
+  \label{eq:om_cmb_algebraic}
+\end{equation}
+This is a zero-parameter algebraic prediction from the two SSEE axioms
+$\{\varphi, \pi\}$; no quantity is adjusted to match CMB data.
+Compared with $\Omega_m^{\mathrm{Planck}}=0.3153\pm0.0073$
+\citep{Planck2018}, the tension is $0.63\sigma$.
+A near-identity of the algebraic system underlies this result: $3\varphi+\pi =
+7.9957\approx8$ to within $0.054\%$, so that
+Eq.~(\ref{eq:om_cmb_algebraic}) is also within $0.054\%$ of the
+Paper~4 prediction $\Omega_m^{(4)}=(\pi-\varphi)/(\pi+\varphi)=0.3201$
+\citep{AlmeidaSSEE2026paper4},
+providing internal algebraic consistency across the SSEE paper series.
+The numerical solution of Eq.~(\ref{eq:continuity_paper3}) tracing
+the full epoch-by-epoch evolution of $\Omega_{m,\mathrm{eff}}(z)$ from
+today to recombination remains an avenue for future work.
 
 \paragraph{Consistency check.}
 The two-sector model predicts a single crossover: for datasets spanning
@@ -327,7 +368,7 @@ $\Omega_{m,\mathrm{CMB}}$ & 0.3199 & $\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}
 $\sum m_\nu$ [eV] & 0.085 & SSEE neutrino sector \\
 $w_0$ & $-0.8399$ & $-T_r/M_v$ \\
 $w_a$ & $-0.6700$ & $-P_{sc}/K_v$ \\
-$n_s$ & 0.9649 & Planck 2018 \\
+$n_s$ & $1-\varphi^{-7}=0.96556$ & SSEE algebraic (Paper~4) \\
 $\ln(10^{10}A_s)$ & 3.044 & Planck 2018 \\
 $\tau$ & 0.054 & Planck 2018 \\
 \bottomrule

@@ -22,7 +22,7 @@ The four falsifiable predictions — all pre-data (timestamped Zenodo: 10.5281/z
 | Ωm,CMB | 0.3199 | Planck 2018: 0.3153 | 0.63σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
 
-**Future falsifier (LiteBIRD ~2032):** tensor-to-scalar ratio r = φ⁻¹⁰ = 0.0083.
+**Future falsifier (LiteBIRD ~2032):** tensor-to-scalar ratio r = φ⁻¹⁰ = 0.00813.
 
 ---
 
@@ -148,7 +148,7 @@ TT-only ΔBIC ≈ −6.9 (diagonal) / −40.3 (plik_lite) is the primary result.
 2. DESI DR2+ requiring Ωm > 0.20 in the dynamic BAO sector
 3. Ratio Ωm,CMB/Ωm,dyn significantly different from MIRA = 1.9989 in independent CMB experiments
 4. χ²_r(CMB) > 2 in future datasets (CMB-S4, Simons Observatory)
-5. Tensor-to-scalar ratio r ≠ φ⁻¹⁰ = 0.0083 measured by LiteBIRD (~2032)
+5. Tensor-to-scalar ratio r ≠ φ⁻¹⁰ = 0.00813 measured by LiteBIRD (~2032)
 
 ---
 
@@ -164,7 +164,7 @@ Chronological record of what was derived before what data:
 | Ωm | (π−φ)/(π+φ) | 0.3201 | Planck 2018 | Retrodiction |
 | n_s | 1−φ⁻⁷ | 0.96556 | Planck 2018 | Retrodiction |
 | H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Retrodiction |
-| r | φ⁻¹⁰ | 0.0083 | LiteBIRD (~2032) | Future prediction |
+| r | φ⁻¹⁰ | 0.00813 | LiteBIRD (~2032) | Future prediction |
 | r_d (MIRA) | CAMB, Ωm,CMB=0.3199 | 147.156 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | **0.25σ** (retrodiction) |
 
 Genesis 5.12 commit: https://github.com/mikealmeida1721/SSEE_UNIFICADO (2026-01-28)

@@ -73,7 +73,7 @@ The Structural Self-Energy Expansion model (SSEE-V3.6) proposes a
 zero-free-parameter dark energy framework algebraically derived from the golden
 ratio phi and pi. Previous work demonstrated that the SSEE dynamic sector
 (Omega_m,dyn = 0.160, w_0 = -0.840, w_a = -0.670) fits DESI DR2 BAO data at
-0.05 sigma and galaxy-cluster mass ratios with chi^2_r = 0.131. A naive
+0.05 sigma and galaxy-cluster mass ratios with chi^2_r = 0.122. A naive
 application of this background to the CMB yields shifted acoustic peaks
 (l_1 = 242 vs. 220) and chi^2_r = 97.7, apparently falsifying the model. Here
 we show that a second algebraic constant, MIRA = AURA/2 = (phi+beta)/2 = 1.9989,

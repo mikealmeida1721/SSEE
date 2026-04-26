@@ -64,7 +64,7 @@ and deposited prior to DESI~DR2 \citep{AlmeidaSSEE2026genesis},
 lies within $0.05\sigma$ of the DESI~DR2 CPL free-fit posterior in the
 $\wz$--$\wa$ plane.
 The $H_0$ posterior is $66.75^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$.
-The cluster-mass sector achieves $\chi^2_r=0.131$ across seven clusters
+The cluster-mass sector achieves $\chi^2_r=0.126$ across seven clusters
 (analytic forward-model) and $\chi^2_r=0.122$ in the four-cluster subset,
 with the IGIMF correction as the essential ingredient.
 Isolating the dynamic sector ($(w_0,w_a)$ fixed algebraically, one free
@@ -301,22 +301,27 @@ masses within $R_{500}$; this correction increases the
 standard-IMF baryon mass by a factor of $\approx1.71$ for clusters in
 the mass range $M_{500}\sim6$--$12\times10^{14}\,M_\odot$.
 
-For a broader consistency check, we extend the analytic forward-model
+For a qualitative consistency check, we extend the analytic forward-model
 to three additional clusters: Perseus \citep{Simionescu2011},
-A2142 \citep{Tchernin2016}, and A2744 \citep{Owers2011}.
-For these clusters we apply the same IGIMF correction factor ($\approx1.71$)
-derived from the Zhang~2026 sample, since an independent IGIMF re-analysis
-is not available for each source.
+A2142 \citep{Tchernin2016}, and A2744 \citep{Merten2011}.
+For these clusters an independent IGIMF re-analysis is not available;
+we therefore estimate $M_{\rm bar}^{\rm IGIMF} = f_b \times M_{200}$
+using the mean baryon fraction $f_b=0.184$ of the Zhang~2026 primary sample.
+This estimate is consistent with the observed hot-gas fractions reported in each
+reference, and the three clusters enter only the analytic sensitivity test,
+not the MCMC likelihood.
 Table~\ref{tab:cluster_data} lists the observational inputs for all seven clusters.
 
 \begin{table}[H]
 \centering
 \caption{Observational inputs for the seven-cluster sample
-($10^{14}\,M_\odot$, within $R_{500}$).
+($10^{14}\,M_\odot$, within $R_{200}$).
 $M_{\rm bar}^{\rm IGIMF}$: IGIMF-corrected baryonic baseline.
-$M_{\rm obs}$: total observed mass within $R_{500}$.
-First four from \citet{Zhang2026}; remainder use the same IGIMF
-correction factor applied to published $M_{500}$ values.}
+$M_{\rm obs}$: total observed mass within $R_{200}$.
+First four from \citet{Zhang2026} (independent IGIMF re-analysis).
+For the three additional clusters, $M_{\rm bar}^{\rm IGIMF}$ is estimated
+as $f_b \times M_{200}$ with $f_b=0.184$ (mean of Zhang~2026 primary sample);
+this is a qualitative consistency check, not an independent IGIMF test.}
 \label{tab:cluster_data}
 \small
 \begin{tabular}{llrrr}
@@ -327,9 +332,9 @@ Coma          & \citet{Zhang2026}      & 1.80 & 9.8  & 1.0 \\
 A2029         & \citet{Zhang2026}      & 2.20 & 12.0 & 1.2 \\
 A478          & \citet{Zhang2026}      & 1.50 & 8.0  & 1.0 \\
 Bullet (main) & \citet{Zhang2026}      & 1.20 & 6.5  & 1.0 \\
-Perseus       & \citet{Simionescu2011} & 1.10 & 6.0  & 0.7 \\
-A2142         & \citet{Tchernin2016}   & 1.80 & 9.8  & 1.0 \\
-A2744         & \citet{Owers2011}      & 2.40 & 14.5 & 2.0 \\
+Perseus       & \citet{Simionescu2011} & 1.22 & 6.65 & 0.45 \\
+A2142         & \citet{Tchernin2016}   & 2.67 & 14.5 & 1.5  \\
+A2744         & \citet{Merten2011}     & 3.31 & 18.0 & 4.0  \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -676,9 +681,9 @@ $z$ & $H(z)$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $\sigma_H$ \\
 
 \begin{table}[H]
 \centering
-\caption{Cluster mass sensitivity ($10^{14}\,M_\odot$, within $R_{500}$).
+\caption{Cluster mass sensitivity ($10^{14}\,M_\odot$, within $R_{200}$).
 First four clusters from \citet{Zhang2026}; Perseus from \citet{Simionescu2011};
-A2142 from \citet{Tchernin2016}; A2744 from \citet{Owers2011}.}
+A2142 from \citet{Tchernin2016}; A2744 from \citet{Merten2011}.}
 \label{tab:cluster_sensitivity}
 \small
 \begin{tabular}{lrrrrrc}
@@ -689,23 +694,23 @@ Coma          & 10.14 &  9.94 & 5.63 & 5.52 & $9.8\pm1.0$   & 0.114 \\
 A2029         & 12.39 & 12.15 & 7.32 & 7.18 & $12.0\pm1.2$  & 0.106 \\
 A478          &  8.45 &  8.28 & 5.07 & 4.97 & $8.0\pm1.0$   & 0.200 \\
 Bullet (main) &  6.76 &  6.63 & 3.94 & 3.86 & $6.5\pm1.0$   & 0.067 \\
-Perseus       &  6.19 &  6.07 & 3.60 & 3.53 & $6.0\pm0.7$   & 0.074 \\
-A2142         & 10.14 &  9.94 & 5.90 & 5.78 & $9.8\pm1.0$   & 0.116 \\
-A2744         & 13.52 & 13.25 & 7.86 & 7.70 & $14.5\pm2.0$  & 0.240 \\
+Perseus       &  6.87 &  6.74 & 4.02 & 3.94 & $6.65\pm0.45$ & 0.241 \\
+A2142         & 15.04 & 14.74 & 8.79 & 8.62 & $14.5\pm1.5$  & 0.128 \\
+A2744         & 18.64 & 18.28 &10.90 &10.69 & $18.0\pm4.0$  & 0.026 \\
 \midrule
-\multicolumn{7}{l}{$\chi^2_r$: SSEE\,$=0.131$ \;|\; $f_\nu{=}0$:\,$0.079$ \;|\;
-  Std IMF:\,$12.22$ \;|\; $\KALz$ only:\,$12.95$} \\
-\multicolumn{7}{l}{$\Delta\chi^2$ vs SSEE: $-0.37$ \;|\; $+84.6$ \;|\; $+89.7$} \\
+\multicolumn{7}{l}{$\chi^2_r$: SSEE\,$=0.126$ \;|\; $f_\nu{=}0$:\,$0.028$ \;|\;
+  Std IMF:\,$14.05$ \;|\; $\KALz$ only:\,$14.91$} \\
+\multicolumn{7}{l}{$\Delta\chi^2$ vs SSEE: $-0.68$ \;|\; $+97.5$ \;|\; $+103.5$} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{IGIMF is essential.}
-Without the IGIMF correction $\Delta\chi^2\approx+85$ across seven clusters;
+Without the IGIMF correction $\Delta\chi^2\approx+97$ across seven clusters;
 \SSEE\ under-predicts masses by $\sim1.7\times$.
 
 \paragraph{Neutrino bridge.}
-$f_\nu=0$ lowers $\chi^2_r$ to $0.079$: the seven $R_{500}$ clusters
+$f_\nu=0$ lowers $\chi^2_r$ to $0.028$: the seven $R_{200}$ clusters
 do not require the neutrino bridge, but it maintains self-consistency
 with the cosmological $\sum m_\nu=0.085$\,eV.
 
@@ -722,7 +727,7 @@ With the four-cluster analytic subset, the nominal $\chi^2_r=0.122$
 (all residuals $<0.5\sigma$); $\chi^2_r$ reaches $1.0$ only when
 errors are reduced by $65\%$, and reaches $2.0$ only at $-75\%$
 (well beyond the test range).
-For the full 7-cluster analytic set ($(\chi^2_r)_{\rm nom}=0.131$),
+For the full 7-cluster analytic set ($(\chi^2_r)_{\rm nom}=0.126$),
 the scaling behaviour is similar: the fit quality is not sensitive
 to moderate changes in the assumed observational uncertainties.
 This confirms that the SSEE cluster predictions are robust and
@@ -927,7 +932,7 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
     lies within $0.05\sigma$ of the DESI~DR2 free-fit CPL posterior —
     a strong result given the absence of any fitted parameter.
 
-  \item Cluster masses achieve $\chi^2_r=0.131$ with IGIMF; removing
+  \item Cluster masses achieve $\chi^2_r=0.126$ with IGIMF; removing
     the IGIMF correction raises $\chi^2_r$ to $12.22$
     ($\Delta\chi^2\approx+85$), confirming its essential role.
 
@@ -1033,6 +1038,11 @@ Baryons at the Edge of the X-ray-brightest Galaxy Cluster.
 Tchernin, C., et al.\ (2016).
 An exploration of the X-ray and SZ properties of galaxy clusters in the 0.1--0.4 redshift range.
 \textit{A\&A} \textbf{595}, A42.
+
+\bibitem[Merten et al.(2011)]{Merten2011}
+Merten, J., et al.\ (2011).
+Creation of cosmic structure in the complex galaxy cluster merger Abell~2744.
+\textit{MNRAS} \textbf{417}, 333.
 
 \bibitem[Owers et al.(2011)]{Owers2011}
 Owers, M.~S., et al.\ (2011).

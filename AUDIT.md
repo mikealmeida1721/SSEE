@@ -101,6 +101,27 @@ PP: SSEE χ²_r=0.730  |  ΛCDM χ²_r=0.757  (N=9)  [lensing — SSEE favoured]
 Peak positions: ℓ = 221, 538, 815
 ```
 
+### Paper 4 — Press-Schechter δc comparison (Task 2B)
+```bash
+python3 src/ssee_press_schechter.py
+```
+Computes Press-Schechter ratio n_SSEE/n_ΛCDM using growth factor D(z)/D(0) (numerical integration)
+and Eisenstein-Hu σ_M(M,z). Runtime: ~5 s.
+
+Expected output:
+```
+δc(SSEE)  = 1.6283850  (= δc,EdS × n_s)
+δc(ΛCDM)  = 1.6864702
+D(z=10)/D(0) = 0.11533
+
+M [M☉]      σ_M(z=10)    n_SSEE/n_ΛCDM
+1.00e+11      1.0103       1.061
+3.00e+11      0.7267       1.159
+1.00e+12      0.5064       1.406
+3.00e+12      0.3642       1.995
+```
+Figures → `results/figures/fig_press_schechter.{pdf,png}`
+
 ---
 
 ## Known limitations — full disclosure

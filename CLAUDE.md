@@ -12,16 +12,16 @@ Cuatro papers:
 
 ---
 
-## Estado actual de los documentos (al 2026-04-25)
+## Estado actual de los documentos (al 2026-04-26)
 
 ### docs/ — PDFs compilados (nombres reales)
 
 | Archivo | Contenido | Estado |
 |---|---|---|
 | `SSEE_Paper1_Framework.pdf` | Paper 1 (10 p) | ✅ Completo |
-| `SSEE_Paper2_draft.pdf` | Paper 2 (18 p) | ✅ Submission-ready |
-| `SSEE_Paper3_CMB_Confrontation_v2.pdf` | Paper 3 (15 p) | ✅ Completo v2 |
-| `SSEE_Paper4_ToE.pdf` | Paper 4 (12 p) | ✅ Preprint actualizado |
+| `SSEE_Paper2_draft.pdf` | Paper 2 (20 p) | ✅ Submission-ready |
+| `SSEE_Paper3_CMB_Confrontation_v2.pdf` | Paper 3 (17 p) | ✅ Completo v2 |
+| `SSEE_Paper4_ToE.pdf` | Paper 4 (13 p) | ✅ Preprint actualizado |
 
 ### manuscript/ — Fuente LaTeX
 - `SSEE_Paper1_Framework.tex` + `SSEE_EFT_section.tex`
@@ -35,6 +35,7 @@ Cuatro papers:
 - `ssee_paper2_figures.py` — generación de figuras
 - `ssee_paper3_cmb.py` — CAMB CMB spectrum TT+TE+EE+lensing vs Planck PR4
 - `ssee_verify_rd.py` — verificación numérica r_d vs Planck 2018 medido (tarea 2A ✅)
+- `ssee_press_schechter.py` — ratio PS n_SSEE/n_ΛCDM, δc=1.6284 vs 1.6865 (tarea 2B ✅)
 
 ---
 
@@ -124,7 +125,7 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | Tarea | Descripción | Prioridad |
 |---|---|---|
 | **1E** | Paper 2: añadir Perseus, A2142, A1689 | Alta |
-| **2B** | Press-Schechter δc=1.628 vs 1.686 | Alta |
+| ~~**2B**~~ | ~~Press-Schechter δc=1.628 vs 1.686~~ | ✅ sesión 12 |
 | **2D** | χ²_r con 7 cúmulos (tras 1E) | Depende de 1E |
 | **B1** | Full CMB likelihood Cobaya+plik (bloqueante PRD) | Semanas |
 | **B2** | IS perturbativo completo → cs², S8 | Semanas |

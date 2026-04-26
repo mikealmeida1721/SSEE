@@ -33,9 +33,11 @@
 ```
 SSEE/
 ├── src/
-│   ├── ssee_paper2_mcmc.py        # Bayesian MCMC: SSEE vs ΛCDM vs CPL
-│   ├── ssee_paper2_analysis.py    # Analytical w₀-wₐ plane
-│   └── ssee_paper3_cmb.py         # CAMB CMB spectrum TT+TE+EE+lensing
+│   ├── ssee_paper2_mcmc.py           # Bayesian MCMC: SSEE vs ΛCDM vs CPL
+│   ├── ssee_paper2_analysis.py       # Analytical w₀-wₐ plane
+│   ├── ssee_paper3_cmb.py            # CAMB CMB spectrum TT+TE+EE+lensing
+│   ├── ssee_verify_rd.py             # CAMB r_d verification vs Planck 2018
+│   └── ssee_press_schechter.py       # Press-Schechter δc=1.6284 vs 1.6865 (Paper 4)
 ├── data/raw/
 │   ├── planck_pr4_lensing.txt     # Planck 2018 MV lensing bandpowers (14 bins)
 │   └── ...                        # Planck PR4 TT/TE/EE spectra
@@ -110,6 +112,17 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | Ωb h² | 3(π−φ)/200 = 0.02285 | 0.02237 ± 0.00015 | 3.2σ |
 | Ωc h² (IS) | KAL₀ × Ωb h² × n_s = 0.11926 | 0.1200 ± 0.0012 | **−0.6σ** |
 | Y_p (BBN) | AlterBBN(Ωb h²=0.02285) = 0.2476 | 0.2449 ± 0.0040 | 0.7σ |
+| δc | δc,EdS × n_s = 1.6284 | 1.6865 (EdS) | — |
+
+**Press-Schechter halo-count enhancement** at z=10 (`src/ssee_press_schechter.py`):
+
+| Halo mass | σ_M(z=10) | n_SSEE/n_ΛCDM |
+|---|---|---|
+| 10^11 M☉ | 1.010 | ×1.06 |
+| 3×10^11 M☉ | 0.727 | ×1.16 |
+| 10^12 M☉ | 0.506 | **×1.41** |
+
+*Partially alleviates the JWST z>10 galaxy excess (ΛCDM deficit: ~10–100×); residual tension points to IS perturbation physics (Paper 5).*
 
 ---
 
@@ -142,7 +155,8 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 - [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
 - [ ] Israel-Stewart viscosity formulation — blocker for perturbation predictions
 - [ ] Spanish translations of all 4 papers
-- [ ] Zenodo v2 × 4 papers (prerequisite: remaining POA fixes 1A, 1C, 1E, 2A, 2B, 2D)
+- [x] Task 2B: Press-Schechter δc=1.6284 vs 1.6865 — quantitative table in Paper 4 §sec:deltac
+- [ ] Zenodo v2 × 4 papers (prerequisite: endorser resolved)
 - [ ] arXiv submission — blocker: first-time submitter needs endorser (strategy: Zenodo v2 DOIs → contact authors citing DESI DR2 + w₀/wₐ)
 
 ---

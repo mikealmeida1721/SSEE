@@ -1,5 +1,30 @@
 # Changelog
 
+## V3.6 — Session 12: Task 2B — Press-Schechter quantitative comparison (2026-04-26)
+
+- **Task 2B completed**: Paper 4 §sec:deltac replaces "deferred to Paper 5" with computed values
+  - New script `src/ssee_press_schechter.py`: numerically integrates D(z)/D(0), computes σ_M(M,z)
+    via Eisenstein-Hu fit, evaluates PS ratio n_SSEE/n_ΛCDM = (δc_SSEE/δc_ΛCDM) × exp[…]
+  - D(z=10)/D(0) = 0.1153 (Planck 2018 cosmology, flat ΛCDM)
+  - Correction: σ_M≈0.5 at z=10 corresponds to M~10^12 M☉ (not 10^11 M☉ as stated before)
+  - Results: M=10^11 M☉ → ×1.06; M=10^12 M☉ → ×1.41; M=3×10^12 M☉ → ×2.0
+  - Honest conclusion: SSEE partially alleviates JWST tension but ~10–100× ΛCDM deficit remains
+  - New figures: `results/figures/fig_press_schechter.{pdf,png}` (ratio vs σ_M and vs z)
+  - New reference in Paper 4.bib: Boylan-Kolchin2023 (Nature Astronomy 7, 728)
+  - Paper 4: 13 pages (was 12; +1 for Table 8 + eq:ps_ratio)
+- **Internal audit session 11** (commits 7fbe5bc + 3e2918d): fixes C3–C7 + bonus macros (see session 11 entry)
+
+## V3.6 — Session 11: Internal audit C3–C7 + bonus Paper 3 macros (2026-04-26)
+
+- **C3**: Paper 1 r=0.0083 → 0.00813 (abstract + Predictive Register table); AUDIT.md ×3; README.md ×1
+- **C4**: Paper 1 cluster table caption R_500 → R_200 (coherent with Paper 2 M1/M2 mass corrections)
+- **C5**: Paper 3 χ²_r=0.131 → 0.122 (abstract + conclusions + abstracts_arXiv.txt)
+- **C6**: Paper 2 prose "χ²_r=12.95" → 14.91 (KAL₀ only; coherent with sensitivity table)
+- **C7**: Paper 2 fig2 caption Δχ²≈+85 → ≈+97 (coherent with table)
+- **Bonus**: Paper 3 \SSEE and \LCDM macros undefined → added to preamble (silent pre-existing error)
+- Papers recompiled: Paper 1 (11 p), Paper 2 (20 p), Paper 3 (17 p) → docs/
+- All 4 papers audited; Paper 4 clean (r=0.00813 correct, M3 applied earlier)
+
 ## V3.6 — Session 9: Task 1C — Nine Sovereignties explicit table + Independence Appendix (2026-04-25)
 
 - **Task 1C completed** (Paper 4 Theorem 2): replaced `= \ldots` ellipsis with explicit table of all 9 paths

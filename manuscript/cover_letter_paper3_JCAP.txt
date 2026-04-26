@@ -45,9 +45,17 @@ Three explicit falsifiability criteria are provided in §6.
 
 RELATION TO COMPANION PAPERS
 
-This is Paper 3 of a trilogy. Papers 1 and 2 are submitted concurrently.
-Paper 2 provides the MCMC validation of the dynamical sector against
-DESI DR2 and galaxy clusters. The present paper closes the CMB sector.
+This is Paper 3 of a four-paper series. Papers 1 and 2 are submitted
+concurrently; Paper 4 extends the algebraic derivations to all CMB background
+observables. Paper 2 provides the MCMC validation of the dynamical sector
+against DESI DR2 and galaxy clusters. The present paper closes the CMB sector.
+
+We note that the ΔBIC comparison presented in §5 uses k=0 parameters for SSEE
+(zero free parameters) against k=6 for ΛCDM, making the ΔBIC = −6.9 result
+(and −40.3 via Cobaya/plik_lite) a conservative test in SSEE's favour. The
+companion Paper 2 reports a separate ΔBIC = +218 for the full background
+sector under ΛCDM-calibrated Friedmann priors; these two results address
+distinct physical questions and should not be conflated.
 
 The authors declare no conflicts of interest.
 

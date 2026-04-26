@@ -4,48 +4,54 @@
 
 **Structural Self-Energy Expansion (SSEE-V3.6)** — modelo cosmológico de energía oscura de cero parámetros libres, derivado algebraicamente de φ (razón áurea) y π. Autor: Mike Edison Almeida Vallejo.
 
-Trilogía de papers:
-- **Paper 1**: Framework teórico (publicado como preprint)
-- **Paper 2**: Validación Bayesiana MCMC (draft en progreso → submission-ready)
-- **Paper 3**: Confrontación CMB Planck PR4 (✅ completo — TT+TE+EE+lensing)
+Cuatro papers:
+- **Paper 1**: Framework teórico + EFT + Predictive Register (arXiv-ready)
+- **Paper 2**: Validación Bayesiana MCMC DESI DR2 + Planck + cúmulos (arXiv-ready)
+- **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready)
+- **Paper 4**: Derivación algebraica CMB desde φ,π — Nine Sovereignties (preprint)
 
 ---
 
-## Estado actual de los documentos (al 2026-04-21)
+## Estado actual de los documentos (al 2026-04-25)
 
-### docs/ — Documentos fuente
+### docs/ — PDFs compilados (nombres reales)
 
 | Archivo | Contenido | Estado |
 |---|---|---|
-| `SSEE_Paper1_Framework_v3.6.pdf` | Paper 1 completo (5p) | ✅ Completo |
-| `SSEE_Paper2_MCMC_Validation_draft.pdf` | Paper 2 draft (15p) | 🟡 Draft — ver fixes pendientes abajo |
-| `SSEE_Paper3_CMB_Confrontation_v1.pdf` | Paper 3 completo (TT+TE+EE+lensing) | ✅ Completo — pendiente recompilar v2 |
+| `SSEE_Paper1_Framework.pdf` | Paper 1 (10 p) | ✅ Completo |
+| `SSEE_Paper2_draft.pdf` | Paper 2 (18 p) | ✅ Submission-ready |
+| `SSEE_Paper3_CMB_Confrontation_v2.pdf` | Paper 3 (15 p) | ✅ Completo v2 |
+| `SSEE_Paper4_ToE.pdf` | Paper 4 (12 p) | ✅ Preprint actualizado |
 
 ### manuscript/ — Fuente LaTeX
-- `SSEE_Paper2_draft.tex` — fuente completa del Paper 2
-- `SSEE_Paper3_draft.tex` — fuente completa del Paper 3 (TT+TE+EE+PP)
+- `SSEE_Paper1_Framework.tex` + `SSEE_EFT_section.tex`
+- `SSEE_Paper2_draft.tex`
+- `SSEE_Paper3_draft.tex` + `ssee_paper3.bib`
+- `sandbox_unificado/SSEE_Paper4_ToE.tex` (submodule)
 
 ### src/ — Scripts Python
-- `ssee_paper2_analysis.py` — análisis analítico (plano w0-wa, sigma, tabla sensibilidad)
+- `ssee_paper2_analysis.py` — análisis analítico (plano w0-wa)
 - `ssee_paper2_mcmc.py` — MCMC Bayesiano (SSEE vs ΛCDM vs CPL)
-- `ssee_paper2_figures.py` — generación de figuras → results/figures/
+- `ssee_paper2_figures.py` — generación de figuras
 - `ssee_paper3_cmb.py` — CAMB CMB spectrum TT+TE+EE+lensing vs Planck PR4
+- `ssee_verify_rd.py` — verificación numérica r_d vs Planck 2018 medido (tarea 2A ✅)
 
 ---
 
-## Fixes pendientes en Paper 2 (.tex)
+## Fixes Paper 2 — estado
 
-### Críticos (rompen compilación o son errores factuales):
-1. **graphicspath incorrecto**: está `{../figures/}` debe ser `{../results/figures/}` (reorganizamos el repo)
-2. **Referencia MNRAS2026**: clave engañosa — el paper de Moresco & Marulli es de 2017, no 2026
+### ✅ Completados
+1. ~~**graphicspath incorrecto**~~ ✅ — corregido a `{../results/figures/}`
+2. ~~**Referencia MNRAS2026**~~ ✅ — clave Moresco2017 corregida
+3. ~~**Cadena MCMC más larga**~~ ✅ — N_eff=637,500 (SSEE), 63,789 (ΛCDM), 43,793 (CPL)
+4. ~~**Full covariance DESI**~~ ✅ — covarianza 13×13 implementada
+5. ~~**Data Availability statement**~~ ✅
+6. ~~**ORCID / affiliation**~~ ✅
+7. ~~**ΔBIC correcto**~~ ✅ — −13.5 → −5.55 (5 ocurrencias + tabla BIC)
 
-### Mejoras para submission-ready:
-3. **Tabla H(z) CC**: la Fig 7 compara con Moresco 2022 pero no hay tabla con los datos reales de Cosmic Chronometers
-4. **Más cúmulos**: solo tiene 4 (Coma, A2029, A478, Bullet de Zhang 2026). Candidatos: Perseus, Virgo/M87, A2744
-5. ~~**Cadena MCMC más larga**~~ ✅ COMPLETADO — N_eff=637,500 (SSEE), 63,789 (ΛCDM), 43,793 (CPL)
-6. ~~**Full covariance DESI**~~ ✅ COMPLETADO — covarianza 13×13 implementada
-7. ~~**Data Availability statement**~~ ✅ YA EXISTÍA
-8. ~~**ORCID / affiliation**~~ ✅ YA EXISTÍA
+### Pendientes (Paper 2)
+- [ ] **1E**: Añadir 3 cúmulos: Perseus (Simionescu 2011), A2142 (Tchernin 2016), A1689
+- [ ] **2D**: χ²_r con 7 cúmulos (tras completar 1E)
 
 ---
 
@@ -59,13 +65,9 @@ Trilogía de papers:
 | PP (lensing) | 0.730 | 0.757 | 9 |
 | ΔBIC (TT, k=0 vs k=6) | −6.9 (SSEE favorecido) | — | — |
 | ΔBIC (TT+TE+EE+PP, upper bound) | +13.7 | — | — |
+| ΔBIC (plik_lite, k=1 vs k=6) | −40.3 | — | — |
 
-Datos lensing: `data/raw/planck_pr4_lensing.txt` (14 bins MV, fuente: Cobaya planck_supp_data_and_covmats)
-
-## Pendientes Paper 3
-
-- [ ] Recompilar PDF → `docs/SSEE_Paper3_CMB_Confrontation_v2.pdf`
-- [x] Subir Genesis 5.12 a Zenodo → DOI incluido (10.5281/zenodo.19679049)
+Datos lensing: `data/raw/planck_pr4_lensing.txt` (14 bins MV)
 
 ---
 
@@ -75,18 +77,18 @@ Datos lensing: `data/raw/planck_pr4_lensing.txt` (14 bins MV, fuente: Cobaya pla
 φ = (1 + √5)/2 ≈ 1.6180   (razón áurea)
 π ≈ 3.1416
 
-Ω    = π + φ         ≈ 4.7596   (Stability Metric)
-β    = (π + φ)/2     ≈ 2.3798   (Base Coupling Scalar)
+Ω    = π + φ         ≈ 4.7596   (Stability Metric / OMEGA_DNAV)
+β    = (π + φ)/2     ≈ 2.3798   (Base Coupling Scalar / BIAL)
 KAL₀ = β + π        ≈ 5.5214   (Structural Viscosity)
-P_sc = Ω + φ        ≈ 6.3776   (Dynamical Evolution Scalar)
-Kᵥ   = φ + π + Ω   ≈ 9.5192   (Structural Constraint)
-Tᵣ   = 3(φ + β)    ≈ 11.9935  (3D Saturation Horizon)
-Mᵥ   = φ + π + Kᵥ ≈ 14.2788  (Maximal Dimensional Invariant)
+P_sc = Ω + φ        ≈ 6.3776   (Dynamical Evolution Scalar / PYROS)
+Kᵥ   = φ + π + Ω   ≈ 9.5192   (Structural Constraint / KRYSTOS)
+Tᵣ   = 3(φ + β)    ≈ 11.9935  (3D Saturation Horizon / TRIAL)
+Mᵥ   = φ + π + Kᵥ ≈ 14.2788  (Maximal Dimensional Invariant / Σ₉)
 
 w₀ = -Tᵣ/Mᵥ ≈ -0.840
 wₐ = -P_sc/Kᵥ ≈ -0.670
 Ω_DE = Tᵣ/Mᵥ ≈ 0.840
-Ω_m,eff = 0.160
+Ω_m,dyn = 0.160    MIRA = 1.9989    Ω_m,CMB = 0.3199
 ```
 
 ---
@@ -108,19 +110,22 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | Métrica | Valor |
 |---|---|
 | χ²₂D (plano w₀-wₐ vs DESI) | 0.080 → 0.05σ |
-| χ²ᵣ cúmulos (SSEE+IGIMF) | 0.122 |
-| ΔBIC (modelo completo) | +206 (penalidad por background) |
-| ΔBIC (sector dinámico aislado) | −13.5 (favorecido) |
-| H₀ SSEE | 66.75⁺⁰·⁴⁴₋₀.₄⁴ km/s/Mpc |
-| Tensión Ωm | 21.3σ (background mismatch, no falsificación) |
-| r_d SSEE | 175.6 Mpc vs 147.6 Mpc (ΛCDM) |
-| r_d,eff (Folding Symmetry) | 147.2 Mpc (dentro de 1σ de Planck) |
+| χ²ᵣ cúmulos (SSEE+IGIMF, 4 cúmulos) | 0.122 |
+| ΔBIC (modelo completo, k=0 vs ΛCDM k=6) | +218 (penalidad por background ΛCDM) |
+| ΔBIC (sector dinámico aislado, k=1) | −5.55 (SSEE favorecido) |
+| H₀ SSEE (MCMC best-fit) | 66.75⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc |
+| H₀ SSEE (algebraico Paper 4) | 67.96 km/s/Mpc = 3(φ+π)² |
+| r_d (SSEE+MIRA, CAMB) | 147.156 Mpc → **0.25σ** de Planck 2018 ✅ |
 
 ---
 
-## Próximos pasos (2026-04-22)
+## POA pendientes (próximas sesiones)
 
-1. Zenodo deposit Genesis 5.12 → DOI → actualizar bib
-2. Abstracts arXiv (250 palabras × 3 papers)
-3. Recompilar Paper 3 PDF
-4. Fixes pendientes Paper 2 (full covariance DESI, Data Availability, ORCID)
+| Tarea | Descripción | Prioridad |
+|---|---|---|
+| **1E** | Paper 2: añadir Perseus, A2142, A1689 | Alta |
+| **2B** | Press-Schechter δc=1.628 vs 1.686 | Alta |
+| **2D** | χ²_r con 7 cúmulos (tras 1E) | Depende de 1E |
+| **B1** | Full CMB likelihood Cobaya+plik (bloqueante PRD) | Semanas |
+| **B2** | IS perturbativo completo → cs², S8 | Semanas |
+| **B3** | MIRA mecanismo físico formal | Largo plazo |

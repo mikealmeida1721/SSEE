@@ -23,8 +23,8 @@
 |---|---|---|---|
 | 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
 | 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | arXiv-ready | [docs/](docs/SSEE_Paper2_draft.pdf) |
-| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | arXiv-ready | [docs/](docs/SSEE_Paper3_draft.pdf) |
-| 4 | Theory of Everything — algebraic derivation from φ and π only | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
+| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB_Confrontation_v2.pdf) |
+| 4 | Algebraic Derivation of the CMB Background from φ and π | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
 
 ---
 
@@ -86,7 +86,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | χ²_r clusters (4 clusters, IGIMF-corrected) | 0.122 |
 | H₀ SSEE (MCMC) | 66.75 ⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc |
 | ΔBIC (dynamic sector, k=1 vs ΛCDM k=3) | −5.55 (SSEE favoured) |
-| ΔBIC (full background, k=0 vs ΛCDM k=6) | +206 (ΛCDM favoured — framework penalty) |
+| ΔBIC (full background, k=0 vs ΛCDM k=6) | +218 (ΛCDM favoured — framework penalty) |
 
 ### Paper 3 (Planck PR4 CMB)
 

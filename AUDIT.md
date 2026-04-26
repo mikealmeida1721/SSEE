@@ -45,7 +45,8 @@ SSEE/
 │   ├── ssee_paper2_mcmc.py         — MCMC: SSEE vs ΛCDM vs CPL (emcee)
 │   ├── ssee_paper2_analysis.py     — Analytical w₀-wₐ plane
 │   ├── ssee_paper2_figures.py      — Figure generation
-│   └── ssee_paper3_cmb.py          — CAMB CMB spectrum (TT+TE+EE+lensing)
+│   ├── ssee_paper3_cmb.py          — CAMB CMB spectrum (TT+TE+EE+lensing)
+│   └── ssee_verify_rd.py           — CAMB r_d vs Planck 2018 measured (task 2A)
 ├── data/raw/                       — Observational data (CSV + Planck PR4 spectra)
 ├── results/
 │   ├── figures/                    — All paper figures (PDF+PNG)
@@ -54,7 +55,7 @@ SSEE/
 ├── docs/                           — Compiled PDFs for review (4 papers only)
 │   ├── SSEE_Paper1_Framework.pdf
 │   ├── SSEE_Paper2_draft.pdf
-│   ├── SSEE_Paper3_draft.pdf
+│   ├── SSEE_Paper3_CMB_Confrontation_v2.pdf
 │   └── SSEE_Paper4_ToE.pdf
 ├── archive/                        — Superseded versions (see archive/README.md)
 ├── submission_packages/            — arXiv-ready .tar.gz for each paper

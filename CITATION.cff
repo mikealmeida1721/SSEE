@@ -3,14 +3,18 @@ message: "If you use this software or results, please cite it as below."
 type: software
 title: "SSEE — Structural Self-Energy Expansion (V3.6)"
 abstract: >
-  A parameter-free dark energy model derived algebraically from φ and π,
-  tested against DESI DR2 BAO, Planck 2018, and galaxy cluster masses.
+  A zero-free-parameter dark energy model derived algebraically from φ (golden ratio)
+  and π. Tested against DESI DR2 BAO (0.05σ), Planck 2018 CMB (TT+TE+EE+lensing),
+  and galaxy cluster masses. Includes four papers: algebraic framework, Bayesian MCMC
+  validation, CMB confrontation (Planck PR4), and derivation of all CMB background
+  observables from φ and π only.
 authors:
-  - family-names: Almeida
+  - family-names: Almeida Vallejo
     given-names: Mike Edison
     email: mike.almeida1721@gmail.com
+    orcid: "https://orcid.org/0009-0008-2195-7836"
 version: "3.6"
-date-released: "2026-04-20"
+date-released: "2026-04-25"
 license: Apache-2.0
 repository-code: "https://github.com/mikealmeida1721/SSEE"
 keywords:
@@ -18,7 +22,10 @@ keywords:
   - cosmology
   - w0-wa parametrization
   - CPL
-  - DESI
-  - Planck
-  - Folding Symmetry
-  - parameter-free model
+  - DESI DR2
+  - Planck PR4
+  - Israel-Stewart viscosity
+  - golden ratio
+  - zero-parameter model
+  - CMB power spectrum
+  - Bayesian MCMC

@@ -134,8 +134,9 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 2. **Eckart viscosity** (EFT section): Eckart formulation violates causality (Hiscock-Lindblom 1985). Israel-Stewart formulation needed for perturbation predictions.
 3. **Ωc h² (resolved)** (Paper 4): static Eckart gave 3.7σ; Israel-Stewart IS derivation KAL₀ × Ωb h² × n_s = 0.11926 reduces tension to −0.6σ.
 4. **Two-sector Ωm**: Ωm,dyn = 0.160 ≠ Ωm,CMB = 0.3199. Bridged by algebraic MIRA factor; physical mechanism needs formal development.
-5. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
+5. **ΔBIC = +218** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
 6. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
+7. **ΔBIC(TT+TE+EE+PP) = +13.7** (Paper 3 upper bound): four spectra combined ignoring inter-spectrum correlations. TT-only ΔBIC = −6.9 (diagonal) / −40.3 (plik_lite) is the primary result.
 
 ---
 

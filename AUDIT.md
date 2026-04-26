@@ -133,6 +133,7 @@ formulation is implemented for Ωc h² derivation; full perturbation predictions
 ### 7. Ωc h² — IS-corrected to −0.6σ
 Static Eckart: 3.7σ. IS derivation: KAL₀ × Ωb h² × n_s = 0.11926 → −0.6σ from Planck.
 Physical justification: n_s = 1 − φ⁻⁷ acts as IS inflationary modulator (Paper 4).
+Note: Ωb h² IS = 3(π−φ)/200 = 0.02285 (3.2σ from Planck); formula documented in Paper 4 §sec:baryons.
 
 ### 8. ΔBIC(TT+TE+EE+PP) = +13.7 — upper bound
 Four spectra combined ignoring correlations. Full joint test requires Planck CMB likelihood.
@@ -163,6 +164,7 @@ Chronological record of what was derived before what data:
 | n_s | 1−φ⁻⁷ | 0.96556 | Planck 2018 | Retrodiction |
 | H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Retrodiction |
 | r | φ⁻¹⁰ | 0.0083 | LiteBIRD (~2032) | Future prediction |
+| r_d (MIRA) | CAMB, Ωm,CMB=0.3199 | 147.156 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | **0.25σ** (retrodiction) |
 
 Genesis 5.12 commit: https://github.com/mikealmeida1721/SSEE_UNIFICADO (2026-01-28)
 

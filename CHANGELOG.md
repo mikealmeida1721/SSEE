@@ -1,5 +1,17 @@
 # Changelog
 
+## V3.6 — Session 8: r_d numerical verification + Paper 3 §2.3 fix (2026-04-25)
+
+- **Task 2A completed**: CAMB numerical verification of SSEE sound horizon vs Planck 2018 measured r_d
+  - Case A (SSEE+MIRA, Ωb h²=0.02237): r_d = 147.156 Mpc → **0.25σ** from Planck (147.09 ± 0.26 Mpc) ✅
+  - Case B (SSEE+MIRA+IS, Ωb h²=0.02285): r_d = 146.749 Mpc → 1.31σ ✅
+  - Case C (SSEE dynamic, Ωm=0.160, no MIRA): r_d = 171.650 Mpc → 94.46σ ❌ (expected; MIRA essential)
+  - θ* residual tension: 4.46σ in Case A (requires full D_A geometry match — linked to CMB likelihood blocker)
+- **Script added**: `src/ssee_verify_rd.py` — standalone CAMB verification, arbiter = Planck observation
+- **Paper 3 §2.3 fixed**: removed erroneous "r_d,eff = r_d × |w₀|" claim; MIRA resolves r_d directly
+- **Paper 3 §4.1 fixed**: replaced "0.03% of ΛCDM reference" with "0.25σ of Planck 2018 measured r_d"
+- **CHANGELOG/AUDIT fixed**: Ωb h² IS 0.02260 → 0.02285; wrong formula corrected to 3(π−φ)/200
+
 ## V3.6 — Session 7: Repo audit & documentation (2026-04-25)
 
 - Repo structure: `docs/` reduced to 4 canonical PDFs (one per paper)
@@ -14,7 +26,7 @@
 - **Paper 2**: added "Two ΔBIC values — two physical questions" paragraph (ΔBIC=+218 background vs ΔBIC=−5.55 dynamic sector)
 - **Paper 3**: added asymmetry paragraph (k=1 SSEE predictions vs k=6 ΛCDM fits; Zenodo timestamp)
 - **Paper 1**: added Predictive Register table (w₀, wₐ, MIRA pre-DESI; Ωm, n_s, H₀ retrodictions; r future)
-- **Paper 4**: Y_p BBN = 0.2473 (AlterBBN, Ωb h²=0.02260, 0.7σ); Ωc h² IS = 0.11926 (−0.6σ); δc = 1.6284
+- **Paper 4**: Y_p BBN = 0.2473 (AlterBBN, Ωb h²=0.02285, 0.7σ); Ωc h² IS = 0.11926 (−0.6σ); δc = 1.6284
 - **EFT section**: fixed 3 broken refs (eq:Pi→eq:zeta, DESI2025DR2→AbdulKarim2025, sec:constants→sec:axioms)
 - **Paper 4 bib**: added Pisanti2008 (AlterBBN, doi:10.1016/j.cpc.2007.11.013)
 
@@ -22,7 +34,7 @@
 
 - Added Paper 4: algebraic derivation of all CMB background observables from φ and π only
 - Nine Sovereignties: 9 independent algebraic paths to 3(φ+π)
-- Ωb h² derived: (π−φ)/[6(φ+π)⁴] = 0.02260 (1.5σ)
+- Ωb h² derived: 3(π−φ)/200 = 0.02285 (3.2σ; Paper 4 §sec:baryons)
 - Ωc h² IS: KAL₀ × Ωb h² × n_s = 0.11926 (−0.6σ)
 - δc SSEE: δc,EdS × n_s = 1.6284 (linked to JWST early galaxy excess)
 - Y_p BBN: 0.2473 (AlterBBN, 0.7σ)

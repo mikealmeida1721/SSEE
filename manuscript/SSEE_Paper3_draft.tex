@@ -148,12 +148,13 @@ This constitutes a prima facie falsification.
 
 \subsection{Why the naive application fails}
 
-The Folding Symmetry introduced in Paper~1 corrects the \emph{sound horizon}:
-$r_{d,\mathrm{eff}} = r_d \times |w_0| \approx 147.2$ Mpc.
-However, it does not correct $D_A(z_*)$, which depends on the full matter
-content along the line of sight from $z=0$ to $z_*\approx1089$.
-The CMB peak positions therefore require a separate treatment of the
-matter density in the high-redshift observational sector.
+The naive background uses $\Omega_m=0.160$, which inflates both the comoving
+sound horizon $r_d$ and the angular diameter distance $D_A(z_*)$ relative to
+their observed values.  The Folding Symmetry factor $|w_0|$ introduced in
+Paper~1 belongs to the dark-energy sector and does \emph{not} directly correct
+the baryon-photon sound horizon computed from recombination physics.  The CMB
+sector requires a separate treatment of the matter density — provided by the
+MIRA two-sector mechanism (Section~\ref{sec:mira}).
 
 % ===========================================================================
 \section{The MIRA Two-Sector Solution}
@@ -386,12 +387,12 @@ alongside temperature and polarisation.
 
 With $\Omega_{m,\mathrm{CMB}}=0.3199$ and the parameters above, CAMB yields:
 \begin{equation}
-r_d^{\mathrm{SSEE+MIRA}} = 147.15 \;\mathrm{Mpc},
+r_d^{\mathrm{SSEE+MIRA}} = 147.156 \;\mathrm{Mpc},
 \end{equation}
-within $0.03\%$ of the $\Lambda$CDM reference ($r_d^{\Lambda\mathrm{CDM}}=147.10$ Mpc).
-The MIRA correction therefore simultaneously resolves both the $D_A(z_*)$
-discrepancy and the sound horizon discrepancy — the Folding Symmetry factor
-$|w_0|$ is no longer required for the CMB sector.
+in agreement with the Planck~2018 directly measured value
+$r_d^{\mathrm{obs}}=147.09\pm0.26$ Mpc \citep{Planck2020params} at $0.25\sigma$.
+No Folding Symmetry multiplier is applied; MIRA alone resolves the sound-horizon
+discrepancy by setting the correct CMB-sector matter density.
 
 \subsection{Acoustic peak positions}
 

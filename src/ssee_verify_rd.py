@@ -39,7 +39,7 @@ Omm_cmb = Omm_dyn * MIRA          # 0.31939 (sector CMB/alto-z)
 
 # H0 algebraico (Paper 4)
 H0_ssee = 3 * (phi + pi)**2        # ≈ 67.96 km/s/Mpc
-H0_run  = 66.66                    # valor MCMC Paper 2 (best-fit posterior)
+H0_run  = 66.75                    # valor MCMC Paper 2 (best-fit posterior, ±0.44)
 
 # Ωb h² — dos casos:
 #   Estándar: Planck 2018 prior (Paper 2)

@@ -1,5 +1,16 @@
 # Changelog
 
+## V3.6 — Session 9: Task 1C — Nine Sovereignties explicit table + Independence Appendix (2026-04-25)
+
+- **Task 1C completed** (Paper 4 Theorem 2): replaced `= \ldots` ellipsis with explicit table of all 9 paths
+  - Table~6 (`tab:sovereignties`): all 9 sovereignty names, named-constant formulas, expanded φ,π forms, values
+  - Appendix A (`app:independence`): formal statement of independence — hierarchy-level vs formula-level;
+    documents SOLAR=MAR and IGNIS=KRYSTOS algebraic equalities; explains why redundant pairs are retained
+- **Fixed**: ICEBERG formula in `ssee-data.json` corrected from "MIRA + PYROS" → "MAR + PYROS"
+- **Fixed**: Paper 4 params table — Ωb h² tension 2.1σ → 3.2σ; Y_p 0.2473 → 0.2476, tension 0.7σ → 1.7σ
+- **Fixed**: Conclusion section — Y_p 0.2473 → 0.2476, updated tensions
+- Paper 4 PDF recompiled → 12 pages (was 11) → `docs/SSEE_Paper4_ToE.pdf`
+
 ## V3.6 — Session 8: r_d numerical verification + Paper 3 §2.3 fix (2026-04-25)
 
 - **Task 2A completed**: CAMB numerical verification of SSEE sound horizon vs Planck 2018 measured r_d

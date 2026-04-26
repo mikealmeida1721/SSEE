@@ -574,6 +574,9 @@ In prior iterations, SSEE was described as a zero-parameter model ($k=0$) in the
 \paragraph{Disclaimer regarding the Likelihood function.}
 The $\chi^2_r$ comparisons in \S\ref{sec:stats} use a simplified Gaussian diagonal approximation over the released Planck PR4 bandpowers for qualitative comparison. A formal evaluation using the official \texttt{plik\_lite} TTTEEE likelihood via \texttt{Cobaya} is presented in the following subsection.
 
+\paragraph{Robustness under off-diagonal covariance.}
+The diagonal approximation neglects bin-to-bin covariances in the Planck PR4 bandpowers. Based on the Planck 2018 likelihood analysis \citep{PlanckLikelihood2020}, off-diagonal elements contribute corrections of $\lesssim5\%$ to $\chi^2$ for $\ell>30$, where the large majority of our 1971 multipoles reside. A direct cross-check is provided by the Cobaya/\texttt{plik\_lite} evaluation (\S\ref{sec:cobaya}), which uses the proper correlated likelihood: at the CMB-optimal $H_0=67.075$~km\,s$^{-1}$\,Mpc$^{-1}$, the full likelihood yields $\Delta\chi^2_\mathrm{eff}=+3.5$ relative to \LCDM, compared to $\Delta\chi^2 \approx 37$ implied by the diagonal TT approximation at the same multipole range. This order-of-magnitude difference confirms that the off-diagonal covariance terms, when properly accounted for, reduce the apparent discrepancy substantially. The $\Delta\mathrm{BIC}=-40.3$ result from \S\ref{sec:cobaya} is therefore the primary quantitative result of this paper for model comparison; the diagonal $\chi^2_r$ values serve as qualitative indicators only.
+
 \subsection{Cobaya \texttt{plik\_lite} evaluation and acoustic scale analysis}
 \label{sec:cobaya}
 

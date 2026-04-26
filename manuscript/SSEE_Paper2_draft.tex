@@ -65,7 +65,7 @@ lies within $0.05\sigma$ of the DESI~DR2 CPL free-fit posterior in the
 $\wz$--$\wa$ plane.
 The $H_0$ posterior is $66.75^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$.
 The cluster-mass sector achieves $\chi^2_r=0.131$ across seven clusters
-(analytic forward-model) and $\chi^2_r=0.406$ in the 4-cluster MCMC subset,
+(analytic forward-model) and $\chi^2_r=0.122$ in the four-cluster subset,
 with the IGIMF correction as the essential ingredient.
 Isolating the dynamic sector ($(w_0,w_a)$ fixed algebraically, one free
 parameter $H_0$) yields $\Delta\mathrm{BIC}(\SSEE_{\rm dyn})=-5.55$
@@ -292,8 +292,55 @@ cosmological parameters.
 
 \subsection{Galaxy-cluster masses}
 
-Four clusters with IGIMF-corrected baselines \citep{Zhang2026} from
-Paper~I (Coma, A2029, A478, Bullet).
+The primary dataset for the MCMC consists of four massive clusters
+with IGIMF-corrected baryonic baselines from \citet{Zhang2026}:
+Coma, A2029, A478, and the Bullet cluster.
+\citet{Zhang2026} apply the integrated galaxy stellar initial mass
+function (IGIMF) correction to re-derive the stellar-plus-gas baryon
+masses within $R_{500}$; this correction increases the
+standard-IMF baryon mass by a factor of $\approx1.71$ for clusters in
+the mass range $M_{500}\sim6$--$12\times10^{14}\,M_\odot$.
+
+For a broader consistency check, we extend the analytic forward-model
+to three additional clusters: Perseus \citep{Simionescu2011},
+A2142 \citep{Tchernin2016}, and A2744 \citep{Owers2011}.
+For these clusters we apply the same IGIMF correction factor ($\approx1.71$)
+derived from the Zhang~2026 sample, since an independent IGIMF re-analysis
+is not available for each source.
+Table~\ref{tab:cluster_data} lists the observational inputs for all seven clusters.
+
+\begin{table}[H]
+\centering
+\caption{Observational inputs for the seven-cluster sample
+($10^{14}\,M_\odot$, within $R_{500}$).
+$M_{\rm bar}^{\rm IGIMF}$: IGIMF-corrected baryonic baseline.
+$M_{\rm obs}$: total observed mass within $R_{500}$.
+First four from \citet{Zhang2026}; remainder use the same IGIMF
+correction factor applied to published $M_{500}$ values.}
+\label{tab:cluster_data}
+\small
+\begin{tabular}{llrrr}
+\toprule
+Cluster & Reference & $M_{\rm bar}^{\rm IGIMF}$ & $M_{\rm obs}$ & $\sigma_{M_{\rm obs}}$ \\
+\midrule
+Coma          & \citet{Zhang2026}      & 1.80 & 9.8  & 1.0 \\
+A2029         & \citet{Zhang2026}      & 2.20 & 12.0 & 1.2 \\
+A478          & \citet{Zhang2026}      & 1.50 & 8.0  & 1.0 \\
+Bullet (main) & \citet{Zhang2026}      & 1.20 & 6.5  & 1.0 \\
+Perseus       & \citet{Simionescu2011} & 1.10 & 6.0  & 0.7 \\
+A2142         & \citet{Tchernin2016}   & 1.80 & 9.8  & 1.0 \\
+A2744         & \citet{Owers2011}      & 2.40 & 14.5 & 2.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The \SSEE\ prediction for each cluster is
+$M_{\rm SSEE}=M_{\rm bar}^{\rm IGIMF}\times\KALz\times(1+f_\nu)$,
+where $\KALz\approx5.521$ is the algebraic Structural Viscosity constant
+and $f_\nu=0.020$ is the cosmological neutrino mass fraction.
+Only the four Zhang~2026 clusters enter the MCMC likelihood;
+the full seven-cluster set is used solely for the analytic
+sensitivity test of Table~\ref{tab:cluster_sensitivity}.
 
 \section{Bayesian Framework and Priors}
 \label{sec:bayes}
@@ -671,10 +718,10 @@ To test whether the cluster fit depends critically on the published
 $\sigma_{M_{\rm obs}}$ values, we varied the error bars uniformly
 from $0.5\times$ to $1.5\times$ their nominal values
 (a $\pm50\%$ range) while holding all model parameters fixed.
-With the 4-cluster MCMC subset, the nominal $\chi^2_r=0.406$
-(all residuals $<0.75\sigma$); $\chi^2_r$ reaches $1.0$ only when
-errors are reduced by $36\%$, and reaches $2.0$ only at $-50\%$
-(the worst-case boundary of the test range).
+With the four-cluster analytic subset, the nominal $\chi^2_r=0.122$
+(all residuals $<0.5\sigma$); $\chi^2_r$ reaches $1.0$ only when
+errors are reduced by $65\%$, and reaches $2.0$ only at $-75\%$
+(well beyond the test range).
 For the full 7-cluster analytic set ($(\chi^2_r)_{\rm nom}=0.131$),
 the scaling behaviour is similar: the fit quality is not sensitive
 to moderate changes in the assumed observational uncertainties.
@@ -709,7 +756,7 @@ CPL             & 5 &  $-11.68$ &  37.22 & $+0.51$   &  33.35 &   $+0.00$ \\
 \end{tabular}
 \end{table}
 
-\paragraph{Two ΔBIC values — two physical questions.}
+\paragraph{Two $\Delta$BIC values --- two physical questions.}
 This analysis reports two distinct BIC comparisons that address different physical questions
 and should not be conflated: (i) $\Delta\mathrm{BIC}=+218$ quantifies whether
 \SSEE\ is consistent with BAO data \emph{within the standard Friedmann background}

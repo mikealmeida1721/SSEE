@@ -112,7 +112,7 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 |---|---|
 | χ²₂D (plano w₀-wₐ vs DESI) | 0.080 → 0.05σ |
 | χ²ᵣ cúmulos (SSEE+IGIMF, 4 cúmulos) | 0.122 |
-| ΔBIC (modelo completo, k=0 vs ΛCDM k=6) | +218 (penalidad por background ΛCDM) |
+| ΔBIC (modelo completo, k=0 vs ΛCDM k=6) | +206 (penalidad por background ΛCDM) |
 | ΔBIC (sector dinámico aislado, k=1) | −5.55 (SSEE favorecido) |
 | H₀ SSEE (MCMC best-fit) | 66.75⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc |
 | H₀ SSEE (algebraico Paper 4) | 67.96 km/s/Mpc = 3(φ+π)² |

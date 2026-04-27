@@ -35,11 +35,11 @@ BAO covariance matrix, we find:
     using IGIMF-corrected baryonic masses, without cold dark matter
   - Dynamic sector isolated: ΔBIC(SSEE_dyn) = -5.55 vs ΛCDM (k=1 vs k=3),
     confirming the w₀-wₐ prediction is genuinely favoured
-  - Full model: ΔBIC = +218 under standard Friedmann assumptions (k=0 vs k=6),
+  - Full model: ΔBIC = +206 under standard Friedmann assumptions (k=0 vs k=6),
     arising from the enlarged sound horizon (r_d = 175.6 Mpc vs 147.6 Mpc);
     these are two distinct physical questions and must not be conflated
 
-We note that the ΔBIC = +218 background penalty reflects the strict application
+We note that the ΔBIC = +206 background penalty reflects the strict application
 of ΛCDM-calibrated Friedmann priors to the SSEE background, not a failure of
 the dynamical prediction. As demonstrated in the companion Paper 3, when the
 SSEE-consistent background is derived from first principles using the MIRA

@@ -130,7 +130,7 @@ Figures → `results/figures/fig_press_schechter.{pdf,png}`
 SSEE χ²_r(H(z)) = 1.861 vs ΛCDM = 0.458.
 Genuine tension (4× worse), not a calibration artefact. Paper 2 states this explicitly.
 
-### 2. ΔBIC = +218 (Paper 2, §BIC) — background penalty
+### 2. ΔBIC = +206 (Paper 2, §BIC) — background penalty
 Applies BIC within the standard Friedmann framework, penalising SSEE's modified background
 against ΛCDM's 6 fitted parameters. Paper 2 has an explicit paragraph distinguishing this
 from the dynamic-sector test (ΔBIC = −5.55, SSEE favoured). These are two different physical

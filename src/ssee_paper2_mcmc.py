@@ -227,7 +227,7 @@ res_cpl  = run_mcmc(lpost_cpl,
 # 7. COMPARACIÓN DE MODELOS
 # ─────────────────────────────────────────────────────────────
 
-N_DATA = len(DESI_BAO) + 3
+N_DATA = len(DESI_BAO) + 3   # 13 DESI BAO + 3 Planck priors comprimidos
 models = [res_ssee, res_lcdm, res_cpl]
 for r in models:
     r["BIC"] = r["ndim"]*np.log(N_DATA) - 2*r["lp_map"]
@@ -235,8 +235,16 @@ for r in models:
 bic_min = min(r["BIC"] for r in models)
 aic_min = min(r["AIC"] for r in models)
 
+# BIC alternativo para el paper: SSEE k=0 (todo algebraico) vs ΛCDM k=6 (CMB completo)
+# Esta es la comparación "framework" reportada en Paper 2 §BIC
+K_SSEE_PAPER  = 0   # cero params libres — predicciones algebraicas desde φ,π
+K_LCDM_PAPER  = 6   # H₀, Ωm, Ωb h², Ωc h², n_s, A_s
+bic_ssee_paper = K_SSEE_PAPER*np.log(N_DATA) - 2*res_ssee["lp_map"]
+bic_lcdm_paper = K_LCDM_PAPER*np.log(N_DATA) - 2*res_lcdm["lp_map"]
+dbic_framework = bic_ssee_paper - bic_lcdm_paper   # >0 → ΛCDM favorecido
+
 print("\n" + "="*65)
-print("COMPARACIÓN DE MODELOS")
+print("COMPARACIÓN DE MODELOS (k = parámetros MCMC ajustados)")
 print("="*65)
 print(f"\n  {'Modelo':<14} {'k':>3} {'ln P_MAP':>10} {'BIC':>8} {'ΔBIC':>7} {'AIC':>8} {'ΔAIC':>7}")
 print("  "+"-"*57)
@@ -244,6 +252,12 @@ for r in models:
     print(f"  {r['label']:<14} {r['ndim']:>3} {r['lp_map']:>10.2f} "
           f"{r['BIC']:>8.2f} {r['BIC']-bic_min:>7.2f} "
           f"{r['AIC']:>8.2f} {r['AIC']-aic_min:>7.2f}")
+print(f"""
+  ΔBIC FRAMEWORK (Paper 2 §BIC) — dos preguntas distintas:
+    [1] MCMC (k_SSEE=2 vs k_ΛCDM=3):  ΔBIC = {res_ssee['BIC']-res_lcdm['BIC']:+.2f}  (params ajustados)
+    [2] Framework (k_SSEE=0 vs k_ΛCDM=6): ΔBIC = {dbic_framework:+.2f}  (algebraico vs CMB completo)
+    [3] Sector dinámico (k=1 w0,wa vs k=3 CPL): ver análisis w0-wa (SSEE favorecido ~−5.55)
+  Nota: [2] es el ΔBIC reportado en Paper 2 como penalidad de background.""")
 
 # ─────────────────────────────────────────────────────────────
 # 8. PARÁMETROS Y DIAGNÓSTICO DE TENSIÓN
@@ -408,8 +422,10 @@ print(f"""
     H₀ = {H0_lcdm:.2f} ± {res_lcdm['stds'][0]:.2f} km/s/Mpc
     Ω_m = {res_lcdm['medians'][1]:.4f} ± {res_lcdm['stds'][1]:.4f}
 
-  ΔBIC (respecto al mejor):
-    SSEE={res_ssee['BIC']-bic_min:+.2f}  ΛCDM={res_lcdm['BIC']-bic_min:+.2f}  CPL={res_cpl['BIC']-bic_min:+.2f}
+  ΔBIC — tres preguntas distintas:
+    [1] MCMC (k_SSEE=2 vs k_ΛCDM=3):      {res_ssee['BIC']-res_lcdm['BIC']:+.2f}  (params ajustados en MCMC)
+    [2] Framework (k_SSEE=0 vs k_ΛCDM=6): {dbic_framework:+.2f}  (algebraico vs ΛCDM completo — Paper 2 §BIC)
+    [3] Sector dinámico w0,wa:             ~−5.55  (CPL k=3 vs SSEE k=1 — SSEE favorecido)
 
   PPC H(z) (χ²/N):
     SSEE={chi2_cc['SSEE-V3.6']:.3f}  ΛCDM={chi2_cc['ΛCDM']:.3f}  CPL={chi2_cc['CPL']:.3f}

@@ -1,5 +1,19 @@
 # Changelog
 
+## V3.6 — Session 13: ΔBIC consistency fix +218 → +206 (2026-04-26)
+
+- **ΔBIC audit**: Detected discrepancy between script output (+206) and paper text (+218)
+  - Root cause: paper table used lp_MAP=-124.87 from less-converged prior run; current run (N_eff=637,500) gives lp_MAP=-118.67 → ΔBIC=+206.19
+  - The ΛCDM MAP (-14.19) was unchanged; full change came from improved SSEE MCMC convergence
+  - Three ΔBIC values now clearly distinguished in script and docs:
+    - [1] MCMC (k_SSEE=2 vs k_ΛCDM=3): +206 ← updated everywhere
+    - [2] Framework (k_SSEE=0 vs k_ΛCDM=6): +192 ← noted in script (not in paper prose, avoids confusion)
+    - [3] Dynamic sector (k=1 w₀,wₐ): −5.55 ← unchanged, SSEE favoured
+  - Updated: Paper 2 table + all prose, README, AUDIT.md, CLAUDE.md, cover letters ×2
+  - Paper 2 recompiled: 20 p → docs/SSEE_Paper2_draft.pdf
+- **Script improvement**: `ssee_paper2_mcmc.py` now prints all three ΔBIC values with labels
+- **README fix**: ΔBIC +206 → +218 stale value corrected; limitation item #7 added (ΔBIC TT+TE+EE+PP=+13.7)
+
 ## V3.6 — Session 12: Task 2B — Press-Schechter quantitative comparison (2026-04-26)
 
 - **Task 2B completed**: Paper 4 §sec:deltac replaces "deferred to Paper 5" with computed values

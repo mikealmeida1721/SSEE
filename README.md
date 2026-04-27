@@ -37,7 +37,8 @@ SSEE/
 │   ├── ssee_paper2_analysis.py       # Analytical w₀-wₐ plane
 │   ├── ssee_paper3_cmb.py            # CAMB CMB spectrum TT+TE+EE+lensing
 │   ├── ssee_verify_rd.py             # CAMB r_d verification vs Planck 2018
-│   └── ssee_press_schechter.py       # Press-Schechter δc=1.6284 vs 1.6865 (Paper 4)
+│   ├── ssee_press_schechter.py       # Press-Schechter δc=1.6284 vs 1.6865 (Paper 4)
+│   └── ssee_inflation_connection.py  # α-attractor: α=φ⁴/3 exact, N=2φ⁷≈58.07 (Paper 1)
 ├── data/raw/
 │   ├── planck_pr4_lensing.txt     # Planck 2018 MV lensing bandpowers (14 bins)
 │   └── ...                        # Planck PR4 TT/TE/EE spectra
@@ -85,7 +86,8 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | Metric | Value |
 |---|---|
 | χ²_2D (w₀-wₐ vs DESI DR2) | 0.080 → 0.05σ |
-| χ²_r clusters (4 clusters, IGIMF-corrected) | 0.122 |
+| χ²_r clusters (7 clusters, analytic) | 0.126 |
+| χ²_r clusters (4 clusters, MCMC) | 0.122 |
 | H₀ SSEE (MCMC) | 66.75 ⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc |
 | ΔBIC (dynamic sector, k=1 vs ΛCDM k=3) | −5.55 (SSEE favoured) |
 | ΔBIC (full background, k=0 vs ΛCDM k=6) | +206 (ΛCDM favoured — framework penalty) |
@@ -99,8 +101,17 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | EE | 1.040 | 1.039 | 1967 |
 | PP (lensing) | **0.730** | 0.757 | 9 |
 | ΔBIC (TT, k=0 vs k=6) | **−6.9** (SSEE favoured) | — | — |
+| ΔBIC (plik\_lite, k=1 vs k=6) | **−40.3** (SSEE strongly favoured) | — | — |
 
 *Note: χ²_r computed with diagonal covariance. Full off-diagonal likelihood (Cobaya/plik) is a known open item — see AUDIT.md.*
+
+**Growth structure (Paper 3 §5.4–5.5):**
+
+| Metric | SSEE | ΛCDM |
+|---|---|---|
+| Growth index γ_IS (Paper 1 App.A) | 0.657 ± 0.002 | 0.55 |
+| S8 (IS numerical) | 0.818 | 0.830 |
+| fσ8 χ²/N (13 RSD surveys) | **0.524** | 0.596 |
 
 ### Paper 4 (Algebraic ToE)
 
@@ -122,7 +133,18 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | 3×10^11 M☉ | 0.727 | ×1.16 |
 | 10^12 M☉ | 0.506 | **×1.41** |
 
-*Partially alleviates the JWST z>10 galaxy excess (ΛCDM deficit: ~10–100×); residual tension points to IS perturbation physics (Paper 5).*
+*Partially alleviates the JWST z>10 galaxy excess (ΛCDM deficit: ~10–100×); residual tension points to IS perturbation physics.*
+
+**Inflationary embedding (Paper 1 App.A §A.5):**
+
+| Quantity | SSEE value | Relation |
+|---|---|---|
+| α-attractor parameter | φ⁴/3 = 2.285 | exact (0.00e+00) |
+| e-folds N | 2φ⁷ ≈ 58.07 | from n_s = 1 − φ⁻⁷ |
+| Kähler curvature R | −φ⁻⁴ ≈ −0.146 | R = −2/(3α) |
+| IS growth index γ_IS | 0.657 ± 0.002 | Paper 1 App.A |
+| IS relaxation time τ_Π H₀ | KAL₀/(3Ω_DE) ≈ 2.191 | algebraic |
+| MIRA algebraic identity | (3φ+π)/4 = 1.9989 | exact (0.00e+00) |
 
 ---
 
@@ -131,7 +153,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 
 1. **Diagonal CMB likelihood** (Paper 3): χ²_r uses diagonal covariance. Off-diagonal terms required for PRD/PRL.
-2. **Eckart viscosity** (EFT section): Eckart formulation violates causality (Hiscock-Lindblom 1985). Israel-Stewart formulation needed for perturbation predictions.
+2. **Israel-Stewart viscosity** (EFT section): IS growth index γ_IS=0.657 and τ_Π H₀=2.191 are derived (Paper 1 App.A). Full causal IS (Hiscock-Lindblom 1985) for B-mode perturbation predictions remains a blocker for LiteBIRD forecasts.
 3. **Ωc h² (resolved)** (Paper 4): static Eckart gave 3.7σ; Israel-Stewart IS derivation KAL₀ × Ωb h² × n_s = 0.11926 reduces tension to −0.6σ.
 4. **Two-sector Ωm**: Ωm,dyn = 0.160 ≠ Ωm,CMB = 0.3199. Bridged by algebraic MIRA factor; physical mechanism needs formal development.
 5. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
@@ -153,10 +175,12 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 - [x] Paper 3: CMB TT+TE+EE+lensing (Planck PR4)
 - [x] Paper 4: Algebraic derivation of CMB observables from φ and π only
 - [x] Genesis 5.12 — Zenodo DOI: 10.5281/zenodo.19679049
-- [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
-- [ ] Israel-Stewart viscosity formulation — blocker for perturbation predictions
-- [ ] Spanish translations of all 4 papers
+- [x] IS growth index γ_IS=0.657 ± 0.002, τ_Π H₀=2.191, S8=0.837 (Paper 1 App.A)
+- [x] MIRA algebraic identity: (3φ+π)/4 = 1.9989 exact — Paper 3 §2.4
+- [x] α-attractor embedding: α=φ⁴/3 exact, N=2φ⁷≈58.07, R_Kähler=−φ⁻⁴ — Paper 1 App.A §A.5
 - [x] Task 2B: Press-Schechter δc=1.6284 vs 1.6865 — quantitative table in Paper 4 §sec:deltac
+- [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
+- [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
 - [ ] Zenodo v2 × 4 papers (prerequisite: endorser resolved)
 - [ ] arXiv submission — blocker: first-time submitter needs endorser (strategy: Zenodo v2 DOIs → contact authors citing DESI DR2 + w₀/wₐ)
 

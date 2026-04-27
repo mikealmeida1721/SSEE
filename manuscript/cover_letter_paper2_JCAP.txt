@@ -31,8 +31,9 @@ BAO covariance matrix, we find:
   - H₀ = 66.75 ± 0.44 km/s/Mpc (SSEE posterior)
   - The algebraic prediction (w₀, wₐ) = (-0.840, -0.670) lies within 0.05σ
     of the DESI DR2 CPL free-fit posterior (N_eff = 637,500 samples)
-  - Galaxy-cluster mass ratios reproduced at χ²_r = 0.406 (4 clusters, MCMC)
-    using IGIMF-corrected baryonic masses, without cold dark matter
+  - Galaxy-cluster mass ratios reproduced at χ²_r = 0.122 (4-cluster MCMC subset)
+    and χ²_r = 0.126 (7-cluster analytic), using IGIMF-corrected baryonic masses,
+    without cold dark matter
   - Dynamic sector isolated: ΔBIC(SSEE_dyn) = -5.55 vs ΛCDM (k=1 vs k=3),
     confirming the w₀-wₐ prediction is genuinely favoured
   - Full model: ΔBIC = +206 under standard Friedmann assumptions (k=0 vs k=6),

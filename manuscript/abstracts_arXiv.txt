@@ -46,9 +46,9 @@ parameter — we compare the fixed-geometry model against LCDM and a free CPL
 parameterisation via posterior constraints, information criteria, and predictive
 checks. The SSEE prediction (w_0, w_a) = (-0.840, -0.670), derived
 algebraically, lies within 0.05 sigma of the DESI DR2 CPL free-fit posterior
-in the w_0-w_a plane. The cluster-mass sector achieves chi^2_r = 0.122 across
-four clusters in the MCMC analysis, with the IGIMF correction as the essential
-ingredient. The fixed background Omega_DE^SSEE ≈ 0.840 implies
+in the w_0-w_a plane. The cluster-mass sector achieves chi^2_r = 0.126 across seven clusters
+(analytic forward-model) and chi^2_r = 0.122 in the four-cluster MCMC subset,
+with the IGIMF correction as the essential ingredient. The fixed background Omega_DE^SSEE ≈ 0.840 implies
 Omega_m,eff = 0.160, enlarging the sound horizon by 1.19x relative to LCDM
 and yielding Delta_BIC = +206 under standard Friedmann assumptions — a
 background-sector tension that delimits the regime where the standard Friedmann

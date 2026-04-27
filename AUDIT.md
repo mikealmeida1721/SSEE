@@ -82,6 +82,9 @@ Expected output:
 - H₀ = 66.75⁺⁰·⁴⁴₋₀.₄⁴ km/s/Mpc
 - χ²_r clusters = 0.122 (4 clusters, IGIMF-corrected)
 - χ²_2D (w₀-wₐ vs DESI) = 0.080 → 0.05σ
+- ΔBIC [1] MCMC (k_SSEE=2 vs k_ΛCDM=3): +206
+- ΔBIC [2] Framework (k_SSEE=0 vs k_ΛCDM=6): +192
+- ΔBIC [3] Dynamic sector (k=1 w₀,wₐ vs CPL): −5.55 (SSEE favoured)
 
 ### Paper 3 — CMB power spectrum
 ```bash

@@ -431,6 +431,92 @@ yields the correct CMB acoustic scale through the MIRA factor
 $\mathcal{M} = 2 - 1/\varphi^{2} \approx 1.9989$ (Paper~3, \S2.3).
 
 % ─────────────────────────────────────────────────────────────────────────────
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Inflationary Embedding: \texorpdfstring{$\alpha$}{α}-Attractor with \texorpdfstring{$\alpha=\varphi^{4}/3$}{α=φ⁴/3}}
+\label{sec:eft:inflation}
+
+The SSEE algebraic predictions for the primordial scalar spectral index
+$n_s = 1 - \varphi^{-7}$ (Paper~1, \S\ref{sec:register}) and the
+tensor-to-scalar ratio $r = \varphi^{-10}$ (Paper~4) belong simultaneously
+to a well-defined class of inflationary models: the
+\emph{$\alpha$-attractors} of Kallosh \& Linde \citeyearpar{KalloshLinde2013}.
+
+\paragraph{$\alpha$-attractor predictions.}
+In the universal leading-order limit, $\alpha$-attractor models predict
+\begin{equation}
+  n_s = 1 - \frac{2}{N}, \qquad
+  r   = \frac{12\alpha}{N^{2}},
+  \label{eq:alpha_attractor}
+\end{equation}
+where $N$ is the number of inflationary e-folds and $\alpha > 0$
+parameterises the inverse curvature of the scalar field's K\"{a}hler target
+manifold \citep{KalloshLinde2013,Ferrara2013}.
+Setting $\alpha = 1$ recovers Starobinsky $R^{2}$ inflation exactly.
+
+\paragraph{SSEE identification.}
+Inserting $n_s = 1 - \varphi^{-7}$ into the first relation gives
+\begin{equation}
+  N = 2/\varphi^{-7} = 2\varphi^{7} \approx 58.07,
+  \label{eq:N_ssee}
+\end{equation}
+which lies squarely in the observationally required window $50\lesssim N\lesssim 60$.
+Substituting $N = 2\varphi^{7}$ and $r = \varphi^{-10}$ into the second relation:
+\begin{equation}
+  \alpha = \frac{r\,N^{2}}{12}
+         = \frac{\varphi^{-10}\cdot 4\varphi^{14}}{12}
+         = \frac{4\varphi^{4}}{12}
+         = \frac{\varphi^{4}}{3}.
+  \label{eq:alpha_ssee}
+\end{equation}
+This result is algebraically exact (verified numerically to machine precision;
+see \texttt{src/ssee\_inflation\_connection.py}).
+Using the Fibonacci identity $\varphi^{4} = 3\varphi + 2$:
+\begin{equation}
+  \alpha = \frac{3\varphi + 2}{3} = \varphi + \frac{2}{3} \approx 2.285.
+  \label{eq:alpha_fibonacci}
+\end{equation}
+
+\paragraph{Geometric interpretation.}
+In the $\alpha$-attractor framework the K\"{a}hler curvature of the
+inflaton's target space (a Poincar\'{e} disk of radius $\sqrt{3\alpha}$)
+is $\mathcal{R} = -2/(3\alpha)$.
+For $\alpha = \varphi^{4}/3$:
+\begin{equation}
+  \mathcal{R} = -\frac{2}{3 \cdot \varphi^{4}/3} = -\frac{2}{\varphi^{4}}
+               = -\varphi^{-4} \approx -0.146.
+  \label{eq:kahler_curvature}
+\end{equation}
+The inflaton therefore lives on a hyperbolic manifold whose curvature is
+set by $\varphi$ alone. This gives a \emph{geometric} origin for the
+appearance of $\varphi$ in inflationary observables: $\varphi$ enters not
+as a numerical coincidence but as the intrinsic length scale of the
+K\"{a}hler geometry of the SSEE inflaton sector.
+
+\paragraph{Slow-roll parameters.}
+The SSEE predictions $(n_s,\,r) = (1-\varphi^{-7},\,\varphi^{-10})$ fix the
+slow-roll parameters uniquely:
+\begin{align}
+  \varepsilon &= \frac{r}{16} = \frac{\varphi^{-10}}{16}, \label{eq:sr_eps} \\
+  \eta &= \frac{n_s - 1 + 6\varepsilon}{2}
+        = \frac{-\varphi^{-7} + 3\varphi^{-10}/8}{2}, \label{eq:sr_eta} \\
+  \frac{\eta}{\varepsilon} &= 3 - 8\varphi^{3} = -5 - 16\varphi \approx -30.9.
+  \label{eq:sr_ratio}
+\end{align}
+The ratio $\eta/\varepsilon = 3 - 8\varphi^{3}$ is a pure algebraic
+identity derived from the SSEE axioms $\{\varphi, \pi\}$; it defines a
+one-parameter family of inflationary potentials $V(\phi_{\rm inf})$ whose
+single element consistent with $\alpha$-attractors is $\alpha = \varphi^{4}/3$.
+
+\paragraph{Relation to Starobinsky.}
+Starobinsky ($\alpha = 1$) reproduces $n_s$ correctly for $N = 2\varphi^{7}$
+but gives $r_{\rm Staro} = 3/\varphi^{14} \approx 0.00356$, a factor of
+$\varphi^{4}/3\approx 2.28$ below the SSEE prediction $\varphi^{-10}$.
+SSEE is therefore \emph{not} Starobinsky inflation; it is a generalised
+$\alpha$-attractor that reduces to Starobinsky only in the limit
+$\varphi \to 1$ (i.e.\ $\alpha \to 1$, the fixed point of the golden-ratio
+recursion $x = 1 + 1/x$).
+
+% ─────────────────────────────────────────────────────────────────────────────
 \subsection{Summary and Open Problems}
 \label{sec:eft:status}
 
@@ -445,7 +531,7 @@ enters as an observational input.  Notably, $w_a = -P_{sc}/K_v$ is
 of the viscosity's scale-factor evolution
 (Section~\ref{sec:eft:wa_derivation}).
 
-Three aspects require further development:
+Four aspects require further development:
 %
 \begin{enumerate}
   \item \textbf{Growth index.}
@@ -465,6 +551,15 @@ Three aspects require further development:
   \item \textbf{Radiative stability.}
         The EFT cutoff scale $\Lambda_{\mathrm{UV}}$ and the quantum stability
         of the $n < 0$ power-law sector are not yet established.
+
+  \item \textbf{Inflation--dark energy unification.}
+        The $\alpha$-attractor sector (\S\ref{sec:eft:inflation}) and the
+        k-essence dark-energy sector (\S\ref{sec:eft:PX}) both originate
+        from $\varphi$, suggesting a single unified action.
+        Constructing the quintessential inflation potential $V(\phi)$
+        that reduces to $P(X) = \mathcal{A}X^n$ at late times
+        and to an $\alpha=\varphi^4/3$ attractor at early times
+        is identified as high-priority future work.
 \end{enumerate}
 
 \begin{table}[h]
@@ -486,7 +581,10 @@ IS relaxation time $\tau_\Pi$ & \checkmark Algebraic & $\tau_\Pi H_0 = \mathrm{K
 IS causality ($c_s^2 \leq 1$) & \checkmark Verified & Eq.~(\ref{eq:IS_causality}); $c_s^2 = 1$ at boundary \\
 Growth index $\gamma_\mathrm{IS}$ & \checkmark Numerical & $0.657 \pm 0.002$ (6\% above $\varphi^{-1}=0.618$) \\
 $S_8$ (CMB sector) & \checkmark Numerical & $0.837$, within $0.4\sigma$ of Planck \\
+$\alpha$-attractor ($\alpha=\varphi^4/3$) & \checkmark Algebraic & Eq.~(\ref{eq:alpha_ssee}); exact, $N=2\varphi^7$ \\
+K\"{a}hler curvature $\mathcal{R}=-\varphi^{-4}$ & \checkmark Algebraic & Eq.~(\ref{eq:kahler_curvature}) \\
 Full perturbation spectrum & $\circ$ Open & Off-diagonal CMB cov.\ + Stage-IV WL \\
+Inflation--DE unification & $\circ$ Open & Quintessential inflation potential \\
 Radiative stability & $\circ$ Open & Future work \\
 \hline
 \end{tabular}

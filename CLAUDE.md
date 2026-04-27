@@ -12,15 +12,15 @@ Cuatro papers:
 
 ---
 
-## Estado actual de los documentos (al 2026-04-26)
+## Estado actual de los documentos (al 2026-04-27)
 
 ### docs/ — PDFs compilados (nombres reales)
 
 | Archivo | Contenido | Estado |
 |---|---|---|
-| `SSEE_Paper1_Framework.pdf` | Paper 1 (10 p) | ✅ Completo |
+| `SSEE_Paper1_Framework.pdf` | Paper 1 (14 p) | ✅ Completo (B2+B3+α-attractor) |
 | `SSEE_Paper2_draft.pdf` | Paper 2 (20 p) | ✅ Submission-ready |
-| `SSEE_Paper3_CMB_Confrontation_v2.pdf` | Paper 3 (17 p) | ✅ Completo v2 |
+| `SSEE_Paper3_CMB_Confrontation_v2.pdf` | Paper 3 (18 p) | ✅ Completo v2 |
 | `SSEE_Paper4_ToE.pdf` | Paper 4 (13 p) | ✅ Preprint actualizado |
 
 ### manuscript/ — Fuente LaTeX
@@ -124,9 +124,12 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 
 | Tarea | Descripción | Prioridad |
 |---|---|---|
-| **1E** | Paper 2: añadir Perseus, A2142, A1689 | Alta |
+| ~~**1E**~~ | ~~Paper 2: añadir Perseus, A2142, A2744~~ | ✅ sesión 10 |
 | ~~**2B**~~ | ~~Press-Schechter δc=1.628 vs 1.686~~ | ✅ sesión 12 |
-| **2D** | χ²_r con 7 cúmulos (tras 1E) | Depende de 1E |
+| ~~**2D**~~ | ~~χ²_r con 7 cúmulos~~ | ✅ sesión 10 (χ²_r=0.126) |
+| ~~**B2**~~ | ~~IS perturbativo → γ_IS, S8~~ | ✅ sesión 13 |
+| ~~**B3**~~ | ~~MIRA mecanismo algebraico~~ | ✅ sesión 14 |
+| ~~**B4**~~ | ~~α-attractor α=φ⁴/3, Paper 1 EFT §A.5~~ | ✅ sesión 15 |
 | **B1** | Full CMB likelihood Cobaya+plik (bloqueante PRD) | Semanas |
-| **B2** | IS perturbativo completo → cs², S8 | Semanas |
-| **B3** | MIRA mecanismo físico formal | Largo plazo |
+| **B5** | Quintessential inflation V(φ) unificado | Largo plazo |
+| **Endorser** | Contactar investigador arXiv astro-ph.CO | Crítico |

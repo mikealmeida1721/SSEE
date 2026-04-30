@@ -38,7 +38,7 @@ AURA  = phi + BIAL
 MIRA  = AURA / 2                   # 1.998924
 Omm_cmb = Omm * MIRA               # 0.3198 ≈ Planck 0.3153 (1.47% off, <1σ)
 
-H0       = 66.66
+H0       = 66.75
 Omb_h2   = 0.02237
 # n_s: SSEE geometric prediction from Paper 4 (1 - phi^-7 = 0.96556)
 # Previously used Planck standard value (0.9649). Updated for internal consistency.
@@ -154,9 +154,8 @@ def compute_ssee_spectrum(lmax=2500):
     total, lens_p, derived = _run_camb(
         H0, Omb_h2, omch2, 0.085, w0, wa, As, ns, lmax)
     r_d_camb = derived["rdrag"]
-    r_d_eff  = r_d_camb * M_SSEE
     ells     = np.arange(total.shape[0])
-    return ells, total, lens_p, r_d_camb, r_d_eff, derived
+    return ells, total, lens_p, r_d_camb, derived
 
 
 def compute_lcdm_spectrum(lmax=2500):
@@ -385,7 +384,7 @@ def main():
 
     # 2. Calcular espectros SSEE
     print("\nCalculando espectros SSEE con CAMB (TT+TE+EE+lensing)...")
-    ells_s, total_s, lens_s, r_d_raw, r_d_eff, derived = compute_ssee_spectrum()
+    ells_s, total_s, lens_s, r_d_raw, derived = compute_ssee_spectrum()
     Dl_TT_s = total_s[:, 0]   # TT lensed
     Dl_EE_s = total_s[:, 1]   # EE lensed
     Dl_TE_s = total_s[:, 3]   # TE lensed
@@ -393,8 +392,7 @@ def main():
     Cl_pp_s = lens_s[:, 0]
     ells_lens_s = np.arange(len(Cl_pp_s))
 
-    print(f"  r_d,SSEE (CAMB)   = {r_d_raw:.2f} Mpc")
-    print(f"  r_d,eff (×M_SSEE) = {r_d_eff:.2f} Mpc  (Planck: ~147.1 Mpc)")
+    print(f"  r_d,SSEE (CAMB)   = {r_d_raw:.2f} Mpc  (Planck: ~147.1 Mpc)")
     print(f"  z_drag            = {derived.get('zdrag', 'N/A'):.2f}")
     print(f"  100θ_MC           = {derived.get('thetastar', derived.get('theta_MC_100', 'N/A'))}")
 

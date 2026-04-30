@@ -3,7 +3,7 @@
 **Author:** Mike Edison Almeida Vallejo  
 **ORCID:** 0009-0008-2195-7836  
 **Repo:** https://github.com/mikealmeida1721/SSEE  
-**Date:** 2026-04-25
+**Date:** 2026-04-30 (peer-review audit round 1 completed)
 
 ---
 

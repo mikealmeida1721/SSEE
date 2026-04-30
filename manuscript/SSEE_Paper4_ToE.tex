@@ -15,7 +15,7 @@
 \usepackage{array}
 \usepackage{tcolorbox}
 \usepackage{tabularx}
-\usepackage{microtype}
+\usepackage[protrusion=true,expansion=false]{microtype}
 
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -49,8 +49,9 @@ From these two axioms alone we derive, without fitting:
 \begin{enumerate}
 \item[(i)] $H_0 = 3(\varphi+\pi)^2 = 67.962$~km\,s$^{-1}$\,Mpc$^{-1}$ ($1.1\sigma$ from Planck~2018),
 confirmed by a Nine Sovereignties theorem — nine structurally distinct algebraic paths
-all converging to the same numerical value (two degenerate pairs arise from SOLAR$=$MAR and
-IGNIS$=$KRYSTOS; see Appendix~\ref{app:independence}), providing strong evidence against post-hoc tuning;
+(seven distinct at the $\varphi,\pi$ level; two degenerate pairs SOLAR$=$MAR and
+IGNIS$=$KRYSTOS; Appendix~\ref{app:independence}), all converging to the same numerical value,
+providing strong evidence against post-hoc tuning;
 \item[(ii)] the physical baryon density
 $\Omega_b h^2 = 3(\pi-\varphi)/200 = 0.02285$ ($3.2\sigma$ from Planck; documented tension);
 \item[(iii)] the primordial spectral index
@@ -65,9 +66,12 @@ The same two axioms simultaneously reproduce particle-sector information ratios
 (proton/neutron/electron signatures) and the dark-energy parameters
 $w_0=-0.840$, $w_a=-0.670$ derived in the companion Papers~1--3.
 In the static (Eckart) regime $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2 = 0.1235$ ($+2.9\sigma$);
-modulated by the IS inflationary factor $n_s = 1-\varphi^{-7}$ this becomes
-$\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s = 0.1193$ ($-0.6\sigma$ from Planck),
-within $1\sigma$ of the observed value.
+the IS inflationary factor $n_s = 1-\varphi^{-7}$ encodes a structural relation between
+baryon and cold dark matter densities: conditional on the Planck-measured $\Omega_b h^2=0.02237$,
+the IS formula yields $\Omega_c h^2 = 0.1193$ ($-0.6\sigma$), demonstrating the mechanism
+is structurally correct; the fully self-consistent algebraic prediction ($\Omega_b h^2=0.02285$)
+gives $\Omega_c h^2 = 0.1218$ ($+1.5\sigma$), with the residual tracing to the known
+$3.2\sigma$ tension in the baryon calibration.
 A falsifiable prediction $r = \varphi^{-10} = 0.00813$ is presented for the
 LiteBIRD satellite mission ($\sim$2032).
 \end{abstract}
@@ -295,7 +299,7 @@ Planck length and the Megaparsec, which is left for future work.
 The value $H_0^{\rm alg}=67.962$ is a pure geometric prediction.
 Independent Bayesian inference against DESI~DR2 BAO data yields
 $H_0^{\rm MCMC}=66.75\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ (Paper~2).
-The $\sim$1.2~km\,s$^{-1}$\,Mpc$^{-1}$ offset (2.7\%) is \emph{not} an
+The $\sim$1.2~km\,s$^{-1}$\,Mpc$^{-1}$ offset (1.8\%) is \emph{not} an
 internal inconsistency; it is a systematic consequence of the enlarged
 \SSEE\ sound horizon $r_d^{\rm SSEE}\approx175.6$~Mpc vs.\
 $r_d^{\rm \Lambda CDM}\approx147.6$~Mpc.
@@ -349,13 +353,34 @@ structural viscosity $K_{\rm AL} = \beta + \pi \approx 5.5214$:
 When the Israel--Stewart inflationary correction is applied, the primordial spectral
 factor $n_s = 1-\varphi^{-7}$ modulates the dark-matter density:
 \begin{equation}
-\boxed{\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s
-      = 5.5214\times 0.02237\times 0.96556 = 0.11926}
+\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s.
 \label{eq:omch2_IS}
 \end{equation}
-Planck~2018: $0.1200\pm0.0012$; deviation~$= -0.6\sigma$.
-The IS modulation reduces the tension from $+2.9\sigma$ (Eckart) to $-0.6\sigma$ (IS),
-within $1\sigma$ of the observed value and consistent with zero tension at $1\sigma$.
+The IS formula encodes a \emph{structural relation} between the baryon and cold
+dark matter densities, not an independent prediction of their absolute values.
+Two evaluations are therefore relevant:
+
+\textbf{(i) Conditional test} (mechanism correctness): substituting the
+Planck-measured value $\Omega_b h^2 = 0.02237$ to isolate the IS mechanism:
+\begin{equation}
+\boxed{\Omega_c h^2\big|_{\Omega_b^{\rm Planck}}
+      = 5.5214\times 0.02237\times 0.96556 = 0.11926 \quad (-0.6\sigma)}
+\label{eq:omch2_IS_cond}
+\end{equation}
+The IS modulation reduces the tension from $+2.9\sigma$ (Eckart static, \S\ref{eq:omch2_static})
+to $-0.6\sigma$, confirming that the structure of the mechanism is correct.
+
+\textbf{(ii) Self-consistent prediction}: using the algebraically derived
+$\Omega_b h^2 = 3(\pi-\varphi)/200 = 0.02285$ (\S\ref{sec:baryons}):
+\begin{equation}
+\Omega_c h^2\big|_{\Omega_b^{\rm SSEE}}
+      = 5.5214\times 0.02285\times 0.96556 = 0.12182 \quad (+1.5\sigma).
+\label{eq:omch2_IS_self}
+\end{equation}
+The $+1.5\sigma$ residual traces directly to the $3.2\sigma$ tension in the
+algebraic $\Omega_b h^2$ prediction (Table~\ref{tab:params}); improving the
+baryon calibration would simultaneously resolve both tensions.
+Planck~2018: $\Omega_c h^2 = 0.1200\pm0.0012$.
 
 \subsection{Primordial Spectral Index and the Seven-Level Hierarchy}
 \label{sec:ns}
@@ -529,14 +554,15 @@ $H_0$ [km/s/Mpc]   & 67.962 & $67.4\pm0.5$        & $1.1\sigma$ & algebraic \\
 $\Omega_b$          & 0.0495 & $0.0493$             & $0.4\%$     & algebraic \\
 $\Omega_b h^2$      & 0.02285& $0.02237\pm0.00015$ & $3.2\sigma$ & algebraic \\
 $\Omega_m$          & 0.3201 & $0.3153\pm0.0073$   & $0.7\sigma$ & algebraic \\
-$\Omega_c h^2$ (IS) & 0.11926& $0.1200\pm0.0012$   & $0.6\sigma$ & algebraic (IS) \\
+$\Omega_c h^2$ (IS, cond.)  & 0.11926& $0.1200\pm0.0012$   & $0.6\sigma$ & IS$|$$\Omega_b^{\rm Planck}$ \\
+$\Omega_c h^2$ (IS, self)  & 0.12182& $0.1200\pm0.0012$   & $1.5\sigma$ & IS$|$$\Omega_b^{\rm SSEE}$ \\
 $Y_p$               & 0.2476 & $0.2471\pm0.0003$   & $1.7\sigma$ & BBN (no fit) \\
 $n_s$               & 0.96556& $0.9649\pm0.0042$   & $0.16\sigma$& algebraic \\
 $A_s$               & $2.1\times10^{-9}$ & $2.10\times10^{-9}$ & $<0.5\sigma$ & standard \\
 $\tau$              & 0.054  & $0.054\pm0.007$     & $0\sigma$   & standard \\
 $\sum m_\nu$ [eV]  & 0.0840 & $0.085$ (input P1--3)& $1.2\%$     & algebraic (§\ref{sec:neutrino}) \\
 \midrule
-\multicolumn{5}{l}{\footnotesize IS = Israel--Stewart modulation by $n_s=1-\varphi^{-7}$; reduces tension from $+2.9\sigma$ (Eckart) to $-0.6\sigma$.}\\
+\multicolumn{5}{l}{\footnotesize IS = Israel--Stewart modulation by $n_s=1-\varphi^{-7}$. ``cond.'' uses Planck $\Omega_b h^2=0.02237$; ``self'' uses algebraic $\Omega_b h^2=0.02285$.}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -672,11 +698,14 @@ $\Omega_b = 100(\pi-\varphi)/[6(\varphi+\pi)^4] = 0.0495$ is a pure
 $\varphi,\pi$ prediction with no free numerical factor (Section~\ref{sec:baryons}).
 
 \paragraph{Remaining open problems.}
-The static (Eckart) $\Omega_c h^2$ prediction of $0.1235$ is $+2.9\sigma$
-from Planck, but the IS modulation $\Omega_c h^2 \times n_s = 0.1193$ reduces
-this to $-0.6\sigma$ — within $1\sigma$ of observation (Eq.~\ref{eq:omch2_IS}).
-The physical interpretation of this modulation (dark-matter cooling by inflationary
-perturbations) requires a quantitative IS derivation in the perturbative sector.
+The IS formula $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s$ encodes a structural
+relation between baryon and dark matter densities. Conditional on the Planck-measured
+$\Omega_b h^2=0.02237$, it yields $\Omega_c h^2=0.11926$ ($-0.6\sigma$), confirming
+the mechanism is structurally correct. The fully self-consistent algebraic prediction
+($\Omega_b h^2=0.02285$) gives $0.12182$ ($+1.5\sigma$), with the residual directly
+tracing to the $3.2\sigma$ tension in $\Omega_b h^2$ (Eq.~\ref{eq:omch2_IS_cond}--\ref{eq:omch2_IS_self}).
+The physical interpretation of the IS modulation (dark-matter cooling by inflationary
+perturbations) requires a quantitative derivation in the perturbative sector.
 The $\delta_c$ prediction and $A_s,\tau$ derivation are reserved for Paper~5.
 
 % ===========================================================================
@@ -688,7 +717,7 @@ We have presented a two-axiom ($\varphi$, $\pi$) algebraic system that predicts:
   \item $H_0 = 3(\varphi+\pi)^2 = 67.962$ ($1.1\sigma$ from Planck)
   \item $\Omega_b = 0.0495$ ($<0.4\%$ from Planck)
   \item $n_s = 1-\varphi^{-7} = 0.96556$ ($0.16\sigma$ from Planck)
-  \item $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s = 0.11926$ ($0.6\sigma$ from Planck, IS)
+  \item $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s$: $0.11926$ ($-0.6\sigma$, IS conditional on $\Omega_b^{\rm Planck}$); $0.12182$ ($+1.5\sigma$, IS self-consistent)
   \item $Y_p = 0.2476$ ($1.7\sigma$ from Planck CMB, $0.7\sigma$ from HII — no fit)
   \item $\delta_c = \delta_{c,\rm EdS}\times n_s = 1.6284$ (qualitative JWST link)
   \item $H_{0,\rm local} = H_0 + K = 73.48$ ($0.5\sigma$ from Riess~2022)

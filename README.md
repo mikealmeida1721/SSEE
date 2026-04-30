@@ -19,12 +19,12 @@
 
 ## Papers
 
-| # | Title | Status | PDF |
-|---|---|---|---|
-| 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
-| 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
-| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
-| 4 | Algebraic Derivation of the CMB Background from φ and π | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
+| # | Title | Pages | Status | PDF |
+|---|---|---|---|---|
+| 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | 14 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
+| 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 21 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
+| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 19 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
+| 4 | Algebraic Derivation of the CMB Background from φ and π | 15 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
 
 ---
 
@@ -101,7 +101,8 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | EE | 1.040 | 1.039 | 1967 |
 | PP (lensing) | **0.730** | 0.757 | 9 |
 | ΔBIC (TT, k=0 vs k=6) | **−6.9** (SSEE favoured) | — | — |
-| ΔBIC (plik\_lite, k=1 vs k=6) | **−40.3** (SSEE strongly favoured) | — | — |
+| ΔBIC (plik\_lite, k=1 vs k=6) | **−40.3** (SSEE strongly favoured, primary result) | — | — |
+| ΔBIC sensitivity (k=0..6) | −49.1 to +3.5; SSEE favoured for k≤4 | — | — |
 
 *Note: χ²_r computed with diagonal covariance. Full off-diagonal likelihood (Cobaya/plik) is a known open item — see AUDIT.md.*
 
@@ -179,6 +180,7 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 - [x] MIRA algebraic identity: (3φ+π)/4 = 1.9989 exact — Paper 3 §2.4
 - [x] α-attractor embedding: α=φ⁴/3 exact, N=2φ⁷≈58.07, R_Kähler=−φ⁻⁴ — Paper 1 App.A §A.5
 - [x] Task 2B: Press-Schechter δc=1.6284 vs 1.6865 — quantitative table in Paper 4 §sec:deltac
+- [x] Peer-review audit round 1 — all C1–C3, M1–M5, m1–m4 fixes applied across 4 papers
 - [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
 - [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
 - [ ] Zenodo v2 × 4 papers (prerequisite: endorser resolved)

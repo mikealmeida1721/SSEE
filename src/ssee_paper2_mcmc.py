@@ -340,7 +340,7 @@ fig5 = corner.corner(res_ssee["flat"], labels=[r"$H_0$",r"$\Omega_b h^2$"],
     title_kwargs={"fontsize":11}, color="#E6002B", plot_datapoints=False,
     truths=[PLANCK_H0[0], PLANCK_OBH2[0]], truth_color="#2166AC")
 fig5.suptitle("SSEE-V3.6 posteriors (azul = Planck 2018)", y=1.02, fontsize=11)
-fig5.savefig("fig5_corner_ssee.pdf"); fig5.savefig("fig5_corner_ssee.png")
+fig5.savefig("results/figures/fig5_corner_ssee.pdf"); fig5.savefig("results/figures/fig5_corner_ssee.png")
 plt.close(fig5); print("\nFig 5 guardada")
 
 # Fig 6: Corner ΛCDM
@@ -349,7 +349,7 @@ fig6 = corner.corner(res_lcdm["flat"],
     quantiles=[0.16,0.50,0.84], show_titles=True,
     title_kwargs={"fontsize":11}, color="#2166AC", plot_datapoints=False)
 fig6.suptitle("ΛCDM posteriors (DESI DR2 + Planck 2018)", y=1.02, fontsize=11)
-fig6.savefig("fig6_corner_lcdm.pdf"); fig6.savefig("fig6_corner_lcdm.png")
+fig6.savefig("results/figures/fig6_corner_lcdm.pdf"); fig6.savefig("results/figures/fig6_corner_lcdm.png")
 plt.close(fig6); print("Fig 6 guardada")
 
 # Fig 7: H(z)
@@ -369,7 +369,7 @@ ax7.set_xlabel("Redshift $z$"); ax7.set_ylabel(r"$H(z)$ [km s$^{-1}$ Mpc$^{-1}$]
 ax7.set_title("Posterior Predictive Check — $H(z)$")
 ax7.legend(fontsize=9); ax7.set_xlim(0,1.5)
 fig7.tight_layout()
-fig7.savefig("fig7_Hz_comparison.pdf"); fig7.savefig("fig7_Hz_comparison.png")
+fig7.savefig("results/figures/fig7_Hz_comparison.pdf"); fig7.savefig("results/figures/fig7_Hz_comparison.png")
 plt.close(fig7); print("Fig 7 guardada")
 
 # Fig 8: Tensiones — H0 posteriors + r_d
@@ -402,7 +402,7 @@ for bar, v in zip(bars, rd_vals):
     ax8b.text(v+0.5, bar.get_y()+bar.get_height()/2,
               f"{v:.1f}", va="center", fontsize=10)
 fig8.tight_layout()
-fig8.savefig("fig8_tension_summary.pdf"); fig8.savefig("fig8_tension_summary.png")
+fig8.savefig("results/figures/fig8_tension_summary.pdf"); fig8.savefig("results/figures/fig8_tension_summary.png")
 plt.close(fig8); print("Fig 8 guardada")
 
 # ─────────────────────────────────────────────────────────────

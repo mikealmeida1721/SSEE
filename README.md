@@ -181,10 +181,15 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 - [x] α-attractor embedding: α=φ⁴/3 exact, N=2φ⁷≈58.07, R_Kähler=−φ⁻⁴ — Paper 1 App.A §A.5
 - [x] Task 2B: Press-Schechter δc=1.6284 vs 1.6865 — quantitative table in Paper 4 §sec:deltac
 - [x] Peer-review audit round 1 — all C1–C3, M1–M5, m1–m4 fixes applied across 4 papers
+- [x] Zenodo manuscripts suite (v3) — DOI: 10.5281/zenodo.19932301 (all 4 PDFs archived)
+- [x] arXiv endorsement emails sent — Dr. Shafieloo (KASI), Dr. Lee (SKKU), Dr. Di Valentino (Sheffield)
+- [ ] Editorial round 2 (external audit): master derivation table φ,π → observables across 4 papers
+- [ ] Editorial round 2: unified notation table for DNAV, AURA, MIRA, KAL₀, Tr, Mv, Psc, Kv
+- [ ] Editorial round 2: explicit result-type separation (algebraic / MCMC / prior-dependent)
+- [ ] Editorial round 2: methodological note on MIRA and KAL₀ as constants vs. sector-mapping operators
 - [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
 - [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
-- [ ] Zenodo v2 × 4 papers (prerequisite: endorser resolved)
-- [ ] arXiv submission — blocker: first-time submitter needs endorser (strategy: Zenodo v2 DOIs → contact authors citing DESI DR2 + w₀/wₐ)
+- [ ] arXiv submission — pending endorser response
 
 ---
 

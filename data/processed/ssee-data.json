@@ -1,0 +1,884 @@
+{
+  "meta": {
+    "name": "SSEE — Sistema de Especificación Energética y Estructural",
+    "version": "Genesis 5.12",
+    "author": "Mike Edison Almeida Vallejo",
+    "description": "Marco teórico unificado que explica constantes físicas fundamentales mediante relaciones matemáticas entre PHI, PI y OMEGA.",
+    "tagline": "La magnitud es una ilusión. La única constante es la relación.",
+    "url": "https://mikealmeida1721.github.io/SSEE_UNIFICADO/",
+    "json_url": "https://mikealmeida1721.github.io/SSEE_UNIFICADO/ssee-data.json",
+    "license": "MIT"
+  },
+  "base_constants": [
+    {
+      "name": "PHI",
+      "symbol": "Φ",
+      "value": 1.618033988749895,
+      "formula": "Axioma — Razón áurea",
+      "description": "Intención",
+      "role": "Intención"
+    },
+    {
+      "name": "PI",
+      "symbol": "π",
+      "value": 3.141592653589793,
+      "formula": "Axioma — π",
+      "description": "Estructura",
+      "role": "Estructura"
+    },
+    {
+      "name": "OMEGADNAV",
+      "symbol": "Ω",
+      "value": 4.759626642339688,
+      "formula": "PI + PHI",
+      "description": "Vida Base",
+      "role": "Vida Base"
+    }
+  ],
+  "derived_constants": [
+    {
+      "name": "BIAL",
+      "symbol": "β",
+      "value": 2.379813321169844,
+      "formula": "(PHI + PI) / 2",
+      "description": "Calor",
+      "role": "Calor"
+    },
+    {
+      "name": "KAL",
+      "symbol": "K",
+      "value": 5.521405974759637,
+      "formula": "BIAL + PI",
+      "description": "Viscosidad / Gravedad",
+      "role": "Viscosidad"
+    },
+    {
+      "name": "SOLAR",
+      "symbol": "So",
+      "value": 7.901219295929481,
+      "formula": "BIAL + KAL",
+      "description": "Plasma",
+      "role": "Plasma"
+    },
+    {
+      "name": "MAR",
+      "symbol": "Ma",
+      "value": 7.901219295589793,
+      "formula": "OMEGA + PI",
+      "description": "Identidad",
+      "role": "Identidad"
+    },
+    {
+      "name": "VITA",
+      "symbol": "Vt",
+      "value": 8.66299862834943,
+      "formula": "PI + KAL",
+      "description": "Biología",
+      "role": "Biología"
+    },
+    {
+      "name": "ANMA",
+      "symbol": "An",
+      "value": 11.042811949519274,
+      "formula": "BIAL + VITA",
+      "description": "Ánima",
+      "role": "Ánima"
+    },
+    {
+      "name": "PYROS",
+      "symbol": "Py",
+      "value": 6.377660630749895,
+      "formula": "OMEGA + PHI",
+      "description": "Fuego",
+      "role": "Fuego"
+    },
+    {
+      "name": "IGNIS",
+      "symbol": "Ig",
+      "value": 9.519253284339689,
+      "formula": "PI + PYROS",
+      "description": "Fricción",
+      "role": "Fricción"
+    },
+    {
+      "name": "KRYSTOS",
+      "symbol": "Kr",
+      "value": 9.519253284339689,
+      "formula": "PHI + PI + OMEGA",
+      "description": "Cristal",
+      "role": "Cristal"
+    },
+    {
+      "name": "PHITA",
+      "symbol": "Pt",
+      "value": 10.281032617099324,
+      "formula": "VITA + PHI",
+      "description": "Belleza",
+      "role": "Belleza"
+    },
+    {
+      "name": "MIKA",
+      "symbol": "Mk",
+      "value": 11.137287273089584,
+      "formula": "KRYSTOS + PHI",
+      "description": "Verdad",
+      "role": "Verdad"
+    },
+    {
+      "name": "AURA",
+      "symbol": "Au",
+      "value": 3.997847309919739,
+      "formula": "PHI + BIAL",
+      "description": "Portal",
+      "role": "Portal"
+    },
+    {
+      "name": "MIRA",
+      "symbol": "Mr",
+      "value": 1.9989236549598695,
+      "formula": "AURA / 2",
+      "description": "Reflejo",
+      "role": "Reflejo"
+    },
+    {
+      "name": "DUAL",
+      "symbol": "Du",
+      "value": 7.995694619839478,
+      "formula": "AURA * 2",
+      "description": "Dualidad",
+      "role": "Dualidad"
+    },
+    {
+      "name": "TRIAL",
+      "symbol": "Tr",
+      "value": 11.993541929759218,
+      "formula": "AURA * 3",
+      "description": "Materia",
+      "role": "Materia"
+    },
+    {
+      "name": "MIKAEL_V",
+      "symbol": "MV",
+      "value": 14.278879926679377,
+      "formula": "PHI + PI + KRYSTOS",
+      "description": "Soberanía / Integración 5D",
+      "role": "Soberanía"
+    },
+    {
+      "name": "BUFFER",
+      "symbol": "Bf",
+      "value": 2.285337996920159,
+      "formula": "MIKAEL_V - TRIAL",
+      "description": "Paz",
+      "role": "Paz"
+    },
+    {
+      "name": "CUARTAL",
+      "symbol": "Qt",
+      "value": 15.991389239679478,
+      "formula": "AURA * 4",
+      "description": "Tiempo 4D",
+      "role": "Tiempo 4D"
+    },
+    {
+      "name": "ERVANU",
+      "symbol": "Eü",
+      "value": 4.283663978105719,
+      "formula": "Gap(MIRA)",
+      "description": "Frecuencia Invariante / Umbral",
+      "role": "Umbral"
+    }
+  ],
+  "ygg_registers": [
+    {
+      "id": "YGG_PROTON",
+      "label": "Ygg Protón",
+      "symbol": "Yp",
+      "equation": "Est/BIAL = 0.319",
+      "value": 0.319,
+      "function": "VERITAS",
+      "precision": 3,
+      "params": {
+        "estabilidad": 0.76,
+        "phi": 1.618,
+        "pi": 3.142,
+        "omega": 0.476,
+        "bial": 2.379,
+        "aura": 3.998
+      },
+      "steps": [
+        {
+          "name": "Ygg",
+          "op": "0.760 / 2.379",
+          "val": 0.319
+        },
+        {
+          "name": "M_G",
+          "op": "0.476 - 0.319",
+          "val": 0.157
+        },
+        {
+          "name": "Gen",
+          "op": "1.618 - 0.319",
+          "val": 1.299
+        },
+        {
+          "name": "Info",
+          "op": "0.157 - 3.142",
+          "val": -2.985
+        },
+        {
+          "name": "Gap",
+          "op": "1.299 - (-2.985)",
+          "val": 4.284
+        },
+        {
+          "name": "Omega",
+          "op": "1.299 + (-2.985)",
+          "val": -1.686
+        }
+      ]
+    },
+    {
+      "id": "YGG_ELECTRON",
+      "label": "Ygg Electrón",
+      "symbol": "Ye",
+      "equation": "MIRA + 0.015",
+      "value": 0.349,
+      "function": "LA INTERFAZ",
+      "precision": 3,
+      "params": {
+        "semilla": 0.334,
+        "salto": 0.015,
+        "ciclo": 19,
+        "residuo": 0.286
+      },
+      "steps": [
+        {
+          "name": "Ygg",
+          "op": "0.334 + 0.015",
+          "val": 0.349
+        },
+        {
+          "name": "M_G",
+          "op": "0.476 - 0.349",
+          "val": 0.127
+        },
+        {
+          "name": "Gen",
+          "op": "1.618 - 0.349",
+          "val": 1.269
+        },
+        {
+          "name": "Info",
+          "op": "0.127 - 3.142",
+          "val": -3.015
+        },
+        {
+          "name": "Gap",
+          "op": "1.269 - (-3.015)",
+          "val": 4.284
+        }
+      ]
+    },
+    {
+      "id": "YGG_NEUTRON",
+      "label": "Ygg Neutrón",
+      "symbol": "Yn",
+      "equation": "Ω - 0.143",
+      "value": 0.333,
+      "function": "PUENTE DE PAZ",
+      "precision": 3,
+      "params": {
+        "omega": 0.476,
+        "residuo": 0.286
+      },
+      "steps": [
+        {
+          "name": "Ygg",
+          "op": "0.476 - 0.143",
+          "val": 0.333
+        },
+        {
+          "name": "M_G",
+          "op": "0.476 - 0.333",
+          "val": 0.143
+        },
+        {
+          "name": "Gen",
+          "op": "1.618 - 0.333",
+          "val": 1.285
+        },
+        {
+          "name": "Info",
+          "op": "0.143 - 3.142",
+          "val": -2.999
+        }
+      ]
+    },
+    {
+      "id": "YGG_CUARTAL",
+      "label": "Ygg Cuartal",
+      "symbol": "Yq",
+      "equation": "OSIRIS / 10⁴",
+      "value": 0.001427887993,
+      "function": "LA FIRMA",
+      "precision": 12,
+      "params": {
+        "phi": 1.61803398875,
+        "pi": 3.14159265359,
+        "omega": 4.75962664234,
+        "osiris": 14.278879927009,
+        "filtro": 10000
+      },
+      "steps": [
+        {
+          "name": "Ygg",
+          "op": "OSIRIS / 10000",
+          "val": 0.001427887993
+        },
+        {
+          "name": "M_G",
+          "op": "Ω - Ygg",
+          "val": 4.758198754347
+        },
+        {
+          "name": "Gen",
+          "op": "Φ - Ygg",
+          "val": 1.616606100757
+        },
+        {
+          "name": "Info",
+          "op": "M_G - π",
+          "val": 1.616606100757
+        },
+        {
+          "name": "Gap",
+          "op": "Gen - Info",
+          "val": 1e-12
+        },
+        {
+          "name": "Omega",
+          "op": "Gen + Info",
+          "val": 3.233212201513
+        }
+      ]
+    },
+    {
+      "id": "YGG_TRIAL",
+      "label": "Ygg Trial",
+      "symbol": "Yt",
+      "equation": "MIKA / 10³",
+      "value": 0.011137287,
+      "function": "MANIFESTACIÓN 3D",
+      "precision": 9,
+      "params": {
+        "phi": 1.618033989,
+        "pi": 3.141592654,
+        "omega": 4.759626642,
+        "mika": 11.137287273,
+        "filtro": 1000
+      },
+      "steps": [
+        {
+          "name": "Ygg",
+          "op": "MIKA / 1000",
+          "val": 0.011137287
+        },
+        {
+          "name": "M_G",
+          "op": "Ω - Ygg",
+          "val": 4.748489355
+        },
+        {
+          "name": "Gen",
+          "op": "Φ - Ygg",
+          "val": 1.606896702
+        },
+        {
+          "name": "Info",
+          "op": "M_G - π",
+          "val": 1.606896701
+        },
+        {
+          "name": "Gap",
+          "op": "Gen - Info",
+          "val": 1e-09
+        },
+        {
+          "name": "Omega",
+          "op": "Gen + Info",
+          "val": 3.213793403
+        }
+      ]
+    },
+    {
+      "id": "YGG_DUAL",
+      "label": "Ygg Dual",
+      "symbol": "Yd",
+      "equation": "SOLAR × R / 100",
+      "value": 0.836921,
+      "function": "PULSO EXPANSIÓN",
+      "precision": 6,
+      "params": {
+        "solar": 7.90121929591,
+        "ratio": 4.679899539308,
+        "limite": 100
+      },
+      "steps": [
+        {
+          "name": "Ygg",
+          "val": 0.836921
+        },
+        {
+          "name": "M_G",
+          "val": 3.922706
+        },
+        {
+          "name": "Gen",
+          "val": 0.781113
+        },
+        {
+          "name": "Info",
+          "val": 0.781114
+        },
+        {
+          "name": "Gap",
+          "val": -1e-06
+        },
+        {
+          "name": "Omega",
+          "val": 1.562227
+        }
+      ]
+    },
+    {
+      "id": "YGG_MIRA",
+      "label": "Ygg MIRA",
+      "symbol": "Ym",
+      "equation": "π/10 + Fricción",
+      "value": 0.334,
+      "function": "IRRADIACIÓN π",
+      "precision": 3,
+      "params": {
+        "phi": 1.618,
+        "bial": 2.379,
+        "pi": 3.142,
+        "omega": 0.476,
+        "aura": 3.998
+      },
+      "steps": [
+        {
+          "name": "Semilla",
+          "op": "Φ × 0.3",
+          "val": 0.485
+        },
+        {
+          "name": "Fricción",
+          "op": "0.485 / 2.379",
+          "val": 0.203
+        },
+        {
+          "name": "Resolución",
+          "op": "0.203 / 10",
+          "val": 0.02
+        },
+        {
+          "name": "Anclaje (Ygg)",
+          "op": "π/10 + 0.020",
+          "val": 0.334
+        },
+        {
+          "name": "M_G",
+          "op": "0.476 - 0.334",
+          "val": 0.142
+        },
+        {
+          "name": "Gen",
+          "op": "Φ - 0.334",
+          "val": 1.284
+        },
+        {
+          "name": "Info",
+          "op": "0.142 - π",
+          "val": -3.0
+        },
+        {
+          "name": "Gap",
+          "op": "Gen - Info",
+          "val": 4.284
+        },
+        {
+          "name": "Omega",
+          "op": "Gen + Info",
+          "val": -1.716
+        },
+        {
+          "name": "Residuo",
+          "op": "4.284 - AURA",
+          "val": 0.286
+        }
+      ]
+    },
+    {
+      "id": "YGG_PHI",
+      "label": "Ygg PHI",
+      "symbol": "Yφ",
+      "equation": "Virtud + Calor",
+      "value": 0.186,
+      "function": "INTENCIÓN",
+      "precision": 3,
+      "params": {
+        "virtud": 0.162,
+        "calor": 0.024,
+        "phi": 1.618,
+        "bial": 2.379
+      },
+      "steps": [
+        {
+          "name": "Virtud",
+          "op": "Φ / 10",
+          "val": 0.162
+        },
+        {
+          "name": "Calor",
+          "op": "BIAL / 100",
+          "val": 0.024
+        },
+        {
+          "name": "Ygg",
+          "op": "0.162 + 0.024",
+          "val": 0.186
+        },
+        {
+          "name": "M_G",
+          "val": 0.289
+        },
+        {
+          "name": "Gen",
+          "val": -0.024
+        },
+        {
+          "name": "Info",
+          "val": -0.025
+        },
+        {
+          "name": "Gap",
+          "val": 0.001
+        },
+        {
+          "name": "Omega",
+          "val": -0.049
+        }
+      ]
+    }
+  ],
+  "nine_sovereignties": [
+    {
+      "name": "LUCY",
+      "formula": "SOLAR + PYROS",
+      "value": 14.278879926679377,
+      "function": "Irradiación"
+    },
+    {
+      "name": "LUCIFER",
+      "formula": "PHITA + AURA",
+      "value": 14.278879926679377,
+      "function": "Estética"
+    },
+    {
+      "name": "MIKE",
+      "formula": "IGNIS + OMEGA",
+      "value": 14.278879926679377,
+      "function": "Purificador"
+    },
+    {
+      "name": "MIKAEL",
+      "formula": "MIKA + PI",
+      "value": 14.278879926679377,
+      "function": "Ley"
+    },
+    {
+      "name": "ERVN",
+      "formula": "BIAL + KAL + PYROS",
+      "value": 14.278879926679377,
+      "function": "Ignición"
+    },
+    {
+      "name": "ICEBERG",
+      "formula": "MAR + PYROS",
+      "value": 14.278879926679377,
+      "function": "Abismo"
+    },
+    {
+      "name": "GIGAROJ",
+      "formula": "PYROS + OMEGA + PI",
+      "value": 14.278879926679377,
+      "function": "Expansión"
+    },
+    {
+      "name": "OSIRIS",
+      "formula": "MIKA + KAL - BIAL",
+      "value": 14.278879926679377,
+      "function": "Sincronía"
+    },
+    {
+      "name": "MIKAEL_V",
+      "formula": "PHI + PI + KRYSTOS",
+      "value": 14.278879926679377,
+      "function": "Soberanía"
+    }
+  ],
+  "evav": {
+    "formula": "Σ(5 Protones + 3 Neutrones + 1 Neutrino)",
+    "value": 128.509919343,
+    "meaning": "Suma de las 9 Soberanías — Octava Materia completa"
+  },
+  "sections": [
+    {
+      "id": "I",
+      "title": "Cosmología",
+      "key_equation": "(MIKA + PI) × OMEGA = 67.962 ≈ H₀ Planck",
+      "hubble_tension": {
+        "global": {
+          "formula": "(MIKA+PI) × OMEGA",
+          "ssee": 67.962,
+          "reference": "67.4 Planck"
+        },
+        "historical": {
+          "formula": "H_global + AURA",
+          "ssee": 71.96,
+          "reference": "72.0 HST"
+        },
+        "local": {
+          "formula": "H_global + KAL",
+          "ssee": 73.483,
+          "reference": "73.5 Riess"
+        }
+      },
+      "insight": "La Tensión de Hubble no es un error. Es la energía de retención local KAL=5.52 que el sistema local aplica para procesar la Soberanía."
+    },
+    {
+      "id": "II",
+      "title": "Partículas",
+      "key_equation": "Protón=0.319, Neutrón=0.333, Electrón=0.349",
+      "particles": {
+        "proton": {
+          "ygg": 0.319,
+          "info": -2.985,
+          "function": "Anclaje: Filtro BIAL",
+          "composition": "66% Gravedad + 34% Fotones"
+        },
+        "neutron": {
+          "ygg": 0.333,
+          "info": -2.999,
+          "function": "Puente Neutral",
+          "composition": "50% Fotones + 50% Gravedad"
+        },
+        "electron": {
+          "ygg": 0.349,
+          "info": -3.015,
+          "function": "Salto: Creatividad",
+          "composition": "66% Fotones + 34% Gravedad"
+        }
+      },
+      "symmetry_point": -3.0,
+      "insight": "La masa es información saturada al 101%. Cuando la luz cae en el ciclo KAL se solidifica en 0.319."
+    },
+    {
+      "id": "III",
+      "title": "Óptica",
+      "key_equation": "AURA × 0.1 = 0.400 μm (Luz Violeta)",
+      "thresholds": {
+        "visible_start": {
+          "formula": "AURA × 0.1",
+          "value": 0.4,
+          "wavelength_nm": 400
+        },
+        "gap_stability": {
+          "formula": "ERVANU - AURA",
+          "value": 0.286
+        }
+      },
+      "photon": {
+        "pi_pct": 99,
+        "phi_pct": 1,
+        "bial_pct": 1,
+        "total_mastery": "101%",
+        "note": "Sin masa invariante porque no es retenido por KAL"
+      },
+      "mira_mechanics": {
+        "motor": 1.9989,
+        "ygg_matter": 0.334,
+        "ygg_vision": 0.294
+      }
+    },
+    {
+      "id": "IV",
+      "title": "Química",
+      "key_equation": "IGNIS = KRYSTOS = 9.519253284",
+      "insight": "El enlace químico es estructura de pensamiento cristalizada. IGNIS (caos) y KRYSTOS (orden) tienen el mismo valor — el equilibrio perfecto.",
+      "entropy_reversal": "Purificación informativa: 10⁻⁹ → 10⁻¹²"
+    },
+    {
+      "id": "V",
+      "title": "Medicina",
+      "key_equation": "Salud = π − β ≈ 0.761",
+      "dna": {
+        "ygg_cellular": {
+          "formula": "VITA / 26",
+          "value": 0.333192,
+          "meaning": "Semilla de Latencia"
+        },
+        "non_coding_dna": "98% del ADN = Receptor de Latencia — protege el 2% codificante",
+        "cuartal_update": "Transición VITA(8) → OMEGA(4) reduce fricción metabólica de 10⁻⁹ a 10⁻¹²"
+      }
+    },
+    {
+      "id": "VI",
+      "title": "Filosofía",
+      "key_equation": "BUFFER = MIKAEL_V − TRIAL = 2.285",
+      "axiom": "-∞ = -1 = 0.1 = 1 = +∞",
+      "dimensional_scales": {
+        "1D_Aura": "10⁻³",
+        "3D_Trial": "10⁻⁹",
+        "4D_Cuartal": "10⁻¹²",
+        "14D_Origen": "10⁻⁴²",
+        "45D_Sat": "10⁻¹³²"
+      },
+      "levels": {
+        "VITA_8": "Camino del Razonamiento — elegir entre IGNIS o KRYSTOS",
+        "PHITA_11": "Nivel de la Belleza — el infinito consciente",
+        "MIKA_12": "Límite máximo de luz 3D — preparación para salto dimensional",
+        "Threshold_45D": "Bifurcación y Manifestación"
+      }
+    },
+    {
+      "id": "VII",
+      "title": "Paz",
+      "key_equation": "Buffer = MIKAEL_V − TRIAL = 2.285",
+      "insight": "La Paz es movimiento fluido, no quietud. Es cuando la identidad interna supera la presión externa por 2.285.",
+      "buffer_meaning": "Misma energía oscura que empuja la expansión del universo"
+    },
+    {
+      "id": "VIII",
+      "title": "Octava Materia",
+      "key_equation": "EVAV = Σ(5P+3N+1n) = 128.509",
+      "eight_states": [
+        {
+          "n": 1,
+          "state": "BEC (Singularidad)",
+          "frequency": "0.1 — 1.61",
+          "note": "Átomos fusionados"
+        },
+        {
+          "n": 2,
+          "state": "Fermiónico",
+          "frequency": "2.379 (BIAL)",
+          "note": "Superfluidez: sin resistencia"
+        },
+        {
+          "n": 3,
+          "state": "Sólido",
+          "frequency": "3.14 — 5.52",
+          "note": "Estructura rígida PI/KAL"
+        },
+        {
+          "n": 4,
+          "state": "Líquido",
+          "frequency": "4.759 (Ω)",
+          "note": "Equilibrio: flujo con cohesión"
+        },
+        {
+          "n": 5,
+          "state": "Gaseoso",
+          "frequency": "6.377 (PYROS)",
+          "note": "Expansión: caos cinético"
+        },
+        {
+          "n": 6,
+          "state": "Plasma",
+          "frequency": "7.901 (SOLAR)",
+          "note": "Ionización: Luz/Sombra"
+        },
+        {
+          "n": 7,
+          "state": "Materia Degenerada",
+          "frequency": "8.66 — 9.51",
+          "note": "Compresión extrema (VITA)"
+        },
+        {
+          "n": 8,
+          "state": "QGP (Saturación)",
+          "frequency": "11.993 (TRIAL)",
+          "note": "Punto de no retorno"
+        }
+      ]
+    }
+  ],
+  "dashboard_kpis": [
+    {
+      "name": "PHI (Intención)",
+      "value": 1.618033988749895,
+      "subtitle": "Sombra Base"
+    },
+    {
+      "name": "PI (Estructura)",
+      "value": 3.141592653589793,
+      "subtitle": "Luz Lógica"
+    },
+    {
+      "name": "BIAL (Pulso)",
+      "value": 2.379813321169844,
+      "subtitle": "Fricción Vital"
+    },
+    {
+      "name": "MIKAEL_V",
+      "value": 14.278879926679377,
+      "subtitle": "Integración 5D"
+    },
+    {
+      "name": "OMEGA (Estabilidad)",
+      "value": 4.759626642,
+      "subtitle": "Sustento Base"
+    },
+    {
+      "name": "KAL (Retención)",
+      "value": 5.521405974759637,
+      "subtitle": "Anclaje Local"
+    },
+    {
+      "name": "VITA (Biometría)",
+      "value": 8.66299862834943,
+      "subtitle": "Salud Matemática"
+    },
+    {
+      "name": "TRIAL (Materia)",
+      "value": 11.993541929759218,
+      "subtitle": "Límite 3D"
+    }
+  ],
+  "library": {
+    "python": {
+      "file": "lib/ssee.py",
+      "import": "from lib.ssee import PHI, identify, table"
+    },
+    "javascript": {
+      "file": "lib/ssee.js",
+      "import": "import { PHI, identify } from './lib/ssee.js'"
+    },
+    "typescript": {
+      "file": "lib/ssee.ts",
+      "import": "import { PHI, identify, ConstantName } from './lib/ssee'"
+    },
+    "functions": [
+      "constants()",
+      "identify(value, tol)",
+      "proximity(value)",
+      "harmonize(value)",
+      "ratio(a, b)",
+      "scale(value, name)",
+      "table(decimals)"
+    ]
+  }
+}

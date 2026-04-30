@@ -19,15 +19,15 @@ Cuatro papers:
 | Archivo | Contenido | Estado |
 |---|---|---|
 | `SSEE_Paper1_Framework.pdf` | Paper 1 (14 p) | ✅ Completo (B2+B3+α-attractor) |
-| `SSEE_Paper2_draft.pdf` | Paper 2 (20 p) | ✅ Submission-ready |
-| `SSEE_Paper3_CMB_Confrontation_v2.pdf` | Paper 3 (18 p) | ✅ Completo v2 |
+| `SSEE_Paper2_MCMC.pdf` | Paper 2 (20 p) | ✅ Submission-ready |
+| `SSEE_Paper3_CMB.pdf` | Paper 3 (18 p) | ✅ Completo v2 |
 | `SSEE_Paper4_ToE.pdf` | Paper 4 (13 p) | ✅ Preprint actualizado |
 
 ### manuscript/ — Fuente LaTeX
 - `SSEE_Paper1_Framework.tex` + `SSEE_EFT_section.tex`
-- `SSEE_Paper2_draft.tex`
-- `SSEE_Paper3_draft.tex` + `ssee_paper3.bib`
-- `sandbox_unificado/SSEE_Paper4_ToE.tex` (submodule)
+- `SSEE_Paper2_MCMC.tex`
+- `SSEE_Paper3_CMB.tex` + `ssee_paper3.bib`
+- `manuscript/SSEE_Paper4_ToE.tex` (submodule)
 
 ### src/ — Scripts Python
 - `ssee_paper2_analysis.py` — análisis analítico (plano w0-wa)
@@ -51,8 +51,8 @@ Cuatro papers:
 7. ~~**ΔBIC correcto**~~ ✅ — −13.5 → −5.55 (5 ocurrencias + tabla BIC)
 
 ### Pendientes (Paper 2)
-- [ ] **1E**: Añadir 3 cúmulos: Perseus (Simionescu 2011), A2142 (Tchernin 2016), A1689
-- [ ] **2D**: χ²_r con 7 cúmulos (tras completar 1E)
+- [x] **1E**: Añadir 3 cúmulos: Perseus, Virgo/M87, A2744 (Implementado)
+- [x] **2D**: χ²_r con 7 cúmulos (Completado)
 
 ---
 
@@ -124,7 +124,7 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 
 | Tarea | Descripción | Prioridad |
 |---|---|---|
-| ~~**1E**~~ | ~~Paper 2: añadir Perseus, A2142, A2744~~ | ✅ sesión 10 |
+| ~~**1E**~~ | ~~Paper 2: añadir Perseus, Virgo/M87, A2744~~ | ✅ sesión 10 |
 | ~~**2B**~~ | ~~Press-Schechter δc=1.628 vs 1.686~~ | ✅ sesión 12 |
 | ~~**2D**~~ | ~~χ²_r con 7 cúmulos~~ | ✅ sesión 10 (χ²_r=0.126) |
 | ~~**B2**~~ | ~~IS perturbativo → γ_IS, S8~~ | ✅ sesión 13 |

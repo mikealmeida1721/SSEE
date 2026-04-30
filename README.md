@@ -22,8 +22,8 @@
 | # | Title | Status | PDF |
 |---|---|---|---|
 | 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
-| 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | arXiv-ready | [docs/](docs/SSEE_Paper2_draft.pdf) |
-| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB_Confrontation_v2.pdf) |
+| 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
+| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
 
 ---
@@ -46,8 +46,8 @@ SSEE/
 ├── manuscript/
 │   ├── SSEE_Paper1_Framework.tex  # Paper 1 source
 │   ├── SSEE_EFT_section.tex       # EFT appendix (included by Paper 1)
-│   ├── SSEE_Paper2_draft.tex      # Paper 2 source
-│   ├── SSEE_Paper3_draft.tex      # Paper 3 source
+│   ├── SSEE_Paper2_MCMC.tex      # Paper 2 source
+│   ├── SSEE_Paper3_CMB.tex      # Paper 3 source
 │   └── ssee_paper3.bib
 ├── sandbox_unificado/
 │   └── SSEE_Paper4_ToE.tex        # Paper 4 source (git submodule)

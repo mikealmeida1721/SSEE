@@ -33,8 +33,8 @@ SSEE/
 ├── manuscript/                     — LaTeX source files (authoritative)
 │   ├── SSEE_Paper1_Framework.tex   — Paper 1: zero-parameter framework + EFT
 │   ├── SSEE_EFT_section.tex        — EFT appendix (input'd by Paper 1)
-│   ├── SSEE_Paper2_draft.tex       — Paper 2: MCMC validation
-│   ├── SSEE_Paper3_draft.tex       — Paper 3: CMB confrontation
+│   ├── SSEE_Paper2_MCMC.tex       — Paper 2: MCMC validation
+│   ├── SSEE_Paper3_CMB.tex       — Paper 3: CMB confrontation
 │   ├── SSEE_appendix_Friedmann.tex — Appendix
 │   ├── ssee_paper3.bib
 │   ├── abstracts_arXiv.txt
@@ -54,8 +54,8 @@ SSEE/
 │   └── *.txt                       — Diagnostic outputs
 ├── docs/                           — Compiled PDFs for review (4 papers only)
 │   ├── SSEE_Paper1_Framework.pdf
-│   ├── SSEE_Paper2_draft.pdf
-│   ├── SSEE_Paper3_CMB_Confrontation_v2.pdf
+│   ├── SSEE_Paper2_MCMC.pdf
+│   ├── SSEE_Paper3_CMB.pdf
 │   └── SSEE_Paper4_ToE.pdf
 ├── archive/                        — Superseded versions (see archive/README.md)
 ├── submission_packages/            — arXiv-ready .tar.gz for each paper

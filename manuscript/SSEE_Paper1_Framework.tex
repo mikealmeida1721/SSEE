@@ -443,4 +443,157 @@ arXiv:1307.7696.
 
 \end{thebibliography}
 
+%=====================================================================
+\appendix
+%=====================================================================
+
+\section{Master Derivation Chain: $\varphi,\pi \to$ Observables}
+\label{app:derivation_chain}
+
+Table~\ref{tab:derivation_chain} provides the complete, unambiguous
+derivation chain from the two axioms ($\varphi$, $\pi$) to every
+cosmological observable used in Papers~1--4.
+This table is the authoritative cross-reference for all four manuscripts.
+Each intermediate constant is labelled as either a \textit{primary register}
+(derived in one algebraic step from $\varphi$ and $\pi$) or a
+\textit{secondary register} (derived from primary registers).
+
+\begin{table}[H]
+\centering
+\caption{Master derivation chain for the \\SSEE\\ framework.
+  Result types: \textbf{A} = pure algebraic (no data input),
+  \textbf{M} = MCMC-validated (data-constrained posterior),
+  \textbf{P} = prior-dependent (requires external dataset anchor).
+  $\varphi = (1+\sqrt{5})/2 \approx 1.61803$;
+  $\pi \approx 3.14159$.}
+\label{tab:derivation_chain}
+\small
+\begin{tabular}{llllc}
+\toprule
+Symbol & Definition & Value & Observable link & Type \\
+\midrule
+\multicolumn{5}{l}{\textit{Level 0 — Axioms}} \\
+$\varphi$ & $(1+\sqrt{5})/2$ & $1.618034$ & All & A \\
+$\pi$     & Archimedes constant & $3.141593$ & All & A \\
+\midrule
+\multicolumn{5}{l}{\textit{Level 1 — Primary Registers}} \\
+$\Omega_{\rm DNAV}$ & $\varphi + \pi$ & $4.759627$ & Stability metric & A \\
+$\beta$   & $(\varphi+\pi)/2$ & $2.379814$ & Base coupling & A \\
+$P_{sc}$  & $\Omega_{\rm DNAV}+\varphi$ & $6.377661$ & Dyn.\ evolution & A \\
+AURA      & $2\varphi$ & $3.236068$ & Resonance scale & A \\
+\midrule
+\multicolumn{5}{l}{\textit{Level 2 — Secondary Registers}} \\
+$\mathrm{KAL}_0$ & $\beta+\pi$ & $5.521406$ & Viscosity; $M_{\rm cluster}$ & A \\
+$K_v$     & $\varphi+\pi+\Omega_{\rm DNAV}$ & $9.519254$ & Struct.\ constraint & A \\
+$T_r$     & $3(\varphi+\beta)$ & $11.993520$ & Saturation horizon & A \\
+MIRA      & AURA$/2 = \varphi$ & $1.618034$ & CMB--dyn.\ bridge & A$^*$ \\
+$M_v$     & $\varphi+\pi+K_v$ & $14.278880$ & Max.\ dim.\ invariant & A \\
+\midrule
+\multicolumn{5}{l}{\textit{Level 3 — Cosmological Observables}} \\
+$w_0$     & $-T_r/M_v$ & $-0.8399$ & DESI DR2 & A \\
+$w_a$     & $-P_{sc}/K_v$ & $-0.6699$ & DESI DR2 & A \\
+$H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & A \\
+$H_0^{\rm MCMC}$ & emcee posterior & $66.75\pm0.44$ & DESI+Planck & M \\
+$\Omega_m^{\rm CMB}$ & $(\pi-\varphi)/(\pi+\varphi)$ & $0.3201$ & Planck 2018 & A \\
+$n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
+$\Omega_b h^2$ & $3(\pi-\varphi)/200$ & $0.02285$ & Planck 2018 & A \\
+$\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.11926$ & Planck 2018 & A \\
+$r$       & $\varphi^{-10}$ & $0.00813$ & LiteBIRD 2032 & A \\
+$\sum m_\nu$ & (Acoustic Residue) & $0.084$ eV & Planck+BBN & A \\
+\bottomrule
+\end{tabular}
+\\[4pt]
+\small $^*$ MIRA serves a dual role: (i) as a \textit{derived constant}
+(MIRA $= \varphi$, exact algebraic identity), and (ii) as a
+\textit{sector-mapping operator} projecting $\Omega_{m,\rm dyn}=0.160$
+onto $\Omega_{m,\rm CMB}=0.3199$ via $\Omega_{m,\rm CMB} = 2 \times
+\mathrm{MIRA} \times \Omega_{m,\rm dyn}$.
+The dual role is physically meaningful: the same geometric ratio
+$\varphi$ governs both the internal structure of the hierarchy and the
+observational frequency of the CMB sector.
+Similarly, $\mathrm{KAL}_0$ is both a derived constant (Level~2) and
+a dynamical viscosity operator scaling cluster masses.
+\end{table}
+
+%---------------------------------------------------------------------
+\section{Unified Symbol Glossary}
+\label{app:notation}
+
+To avoid ambiguity across Papers~1--4, Table~\ref{tab:notation}
+provides the canonical definition of every non-standard symbol used
+in this series.
+
+\begin{table}[H]
+\centering
+\caption{Unified symbol glossary for the \\SSEE\\ four-paper series.
+  All symbols are dimensionless unless otherwise stated.}
+\label{tab:notation}
+\small
+\begin{tabular}{lll}
+\toprule
+Symbol & Full name & First defined \\
+\midrule
+$\varphi$ & Golden ratio $(1+\sqrt{5})/2$ & Paper 1 §1 \\
+$\Omega_{\rm DNAV}$ & Dark Navigation scalar ($\varphi+\pi$) & Paper 1 §1 \\
+$\beta$ & Base coupling scalar & Paper 1 §1 \\
+AURA & Acoustic Unified Resonance Amplitude ($2\varphi$) & Paper 1 §2 \\
+MIRA & Mapped Inference Resonance Amplitude (AURA/2 $=\varphi$) & Paper 3 §2.4 \\
+$\mathrm{KAL}_0$ & Asymptotic structural viscosity factor ($\beta+\pi$) & Paper 1 §1 \\
+$P_{sc}$ & Dynamical evolution scalar ($\Omega_{\rm DNAV}+\varphi$) & Paper 1 §1 \\
+$K_v$ & Structural constraint invariant & Paper 1 §1 \\
+$T_r$ & 3D saturation horizon ($3(\varphi+\beta)$) & Paper 1 §1 \\
+$M_v$ & Maximal dimensional invariant ($\varphi+\pi+K_v$) & Paper 1 §1 \\
+PYROS & Radiation sector coupling ($\pi^2/6$) & Paper 4 §3 \\
+ÎCËBÊRG & $M_v$ (Nine Sovereignties sum) & Paper 4 §4 \\
+$\Omega_{m,\rm dyn}$ & Dynamic matter density (SSEE sector) & Paper 2 §2 \\
+$\Omega_{m,\rm CMB}$ & CMB-observed matter density ($2\,\mathrm{MIRA}\,\Omega_{m,\rm dyn}$) & Paper 3 §2.4 \\
+$\gamma_{\rm IS}$ & Israel--Stewart growth index ($0.657\pm0.002$) & Paper 1 App.A \\
+$\tau_\Pi H_0$ & IS relaxation time (dimensionless, $\approx2.191$) & Paper 1 App.A \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%---------------------------------------------------------------------
+\section{Result-Type Classification Protocol}
+\label{app:result_types}
+
+A recurring risk in multi-paper series is that results of different
+epistemic status are compared without adequate labelling.
+To ensure methodological transparency across the four manuscripts,
+all numerical results in this series are classified into one of three
+categories (see also Table~\ref{tab:derivation_chain}, column ``Type''):
+
+\begin{itemize}
+  \item \textbf{Type A — Algebraic:} The value follows solely from
+  $\varphi$ and $\pi$ through the Level~1--3 chain in
+  Table~\ref{tab:derivation_chain}. No observational data enters the
+  computation. These results are \emph{prior-free predictions}.
+
+  \item \textbf{Type M — MCMC-validated:} The value is the median of
+  the posterior distribution from the 100-walker \texttt{emcee}
+  pipeline described in Paper~2, using DESI~DR2 BAO, Planck~2018
+  priors, and galaxy-cluster mass data. These results reflect the
+  empirical range accessible within the SSEE parameter family.
+
+  \item \textbf{Type P — Prior-dependent:} The value depends on an
+  external dataset anchor (e.g., Planck TT+TE+EE+lensing as a
+  likelihood) that is not internally derived by the SSEE framework.
+  Type~P results quantify the consistency of SSEE with standard
+  cosmological datasets; they are not Type~A predictions.
+\end{itemize}
+
+The distinction is particularly important for the $\Delta\mathrm{BIC}$
+comparisons in Papers~2 and~3.
+In Paper~2, the $\Delta\mathrm{BIC}=-5.55$ (dynamic sector) is a
+Type~M result: it reflects the MCMC posterior relative to $\Lambda$CDM
+under identical priors.
+In Paper~3, the $\Delta\mathrm{BIC}=-40.3$ (plik\_lite likelihood)
+is a Type~P result: it depends on the \texttt{plik\_lite} likelihood
+as an external CMB anchor.
+These two BIC values are \emph{not directly comparable} because they
+operate in different model spaces; the distinction is disclosed
+explicitly in Paper~3~§4.4.
+
+\end{thebibliography}
+
 \end{document}

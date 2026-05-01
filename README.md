@@ -21,7 +21,7 @@
 
 | # | Title | Pages | Status | PDF |
 |---|---|---|---|---|
-| 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | 14 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
+| 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | 22 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
 | 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 21 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
 | 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 19 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | 15 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
@@ -183,10 +183,13 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 - [x] Peer-review audit round 1 — all C1–C3, M1–M5, m1–m4 fixes applied across 4 papers
 - [x] Zenodo manuscripts suite (v3) — DOI: 10.5281/zenodo.19932301 (all 4 PDFs archived)
 - [x] arXiv endorsement emails sent — Dr. Shafieloo (KASI), Dr. Lee (SKKU), Dr. Di Valentino (Sheffield)
-- [ ] Editorial round 2 (external audit): master derivation table φ,π → observables across 4 papers
-- [ ] Editorial round 2: unified notation table for DNAV, AURA, MIRA, KAL₀, Tr, Mv, Psc, Kv
-- [ ] Editorial round 2: explicit result-type separation (algebraic / MCMC / prior-dependent)
-- [ ] Editorial round 2: methodological note on MIRA and KAL₀ as constants vs. sector-mapping operators
+- [x] External audit round 2 (PRD/JCAP level): C1–C4, M1–M5, Mod1–Mod6 — all resolved
+  - C1–C2: AURA/MIRA glosario corregido (AURA=β+φ, MIRA=AURA/2)
+  - C3: H₀=3(φ+π)² reclasificado Type P† con footnote dimensional
+  - M1: App D "Algebraic Prior Space" añadido a Paper 1 (ahora 22 pp.)
+  - M5: Phantom crossing a*=0.761 documentado explícitamente (Paper 1 §2)
+  - Mod2: Bullet Cluster hedge — masa proyectada, no fit κ(θ)
+  - Mod3: c²_s<0 caveat en EFT — deferred full IS treatment a Paper 4
 - [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
 - [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
 - [ ] arXiv submission — pending endorser response

@@ -444,6 +444,66 @@ arXiv:1307.7696.
 \end{thebibliography}
 
 %=====================================================================
+\section{Domain of Validity}
+\label{sec:domain}
+%=====================================================================
+
+A persistent risk in multi-sector theoretical models is that statements of
+validity or falsification are conflated across domains that probe different
+physical regimes. This section explicitly delineates the domain of validity
+of each SSEE sector and the dataset used to validate it. This delineation
+applies uniformly to Papers~1--4.
+
+\begin{description}
+
+  \item[\textbf{Dynamic sector} (low redshift, $z\lesssim2.3$).]
+  Governed by $\Omega_{m,\rm dyn}=0.1601$, $w_0=-0.8399$, $w_a=-0.6699$.
+  Validated against: DESI~DR2 BAO (13 measurements, $0.295\leq z\leq2.33$),
+  galaxy-cluster mass data (IGIMF baseline, Paper~2).
+  \textit{Result}: $\Delta\mathrm{BIC}=-5.55$ (dynamic sector, Paper~2),
+  $0.05\sigma$ from DESI~DR2 CPL posterior in the $w_0$--$w_a$ plane.
+  \textit{Known limitation}: under standard Friedmann background,
+  $\chi^2_r(H(z))=1.861$ (Cosmic Chronometers); this is a direct consequence of
+  the enlarged $r_d=175.6$~Mpc and is documented, not hidden (Paper~2~\S5.3).
+
+  \item[\textbf{Observational sector} (high redshift, CMB).]
+  Governed by $\Omega_{m,\rm CMB}=\Omega_{m,\rm dyn}\times\mathrm{MIRA}=0.3199$,
+  where MIRA~$=(3\varphi+\pi)/4=1.99892$ is algebraically pre-committed
+  (January 2026, Zenodo~\texttt{10.5281/zenodo.19679049}).
+  Validated against: Planck PR4 TT+TE+EE+lensing via CAMB; \texttt{plik\_lite}
+  TTTEEE likelihood via Cobaya (Paper~3).
+  \textit{Result}: $\chi^2_r=1.062$ (TT, 1971 multipoles);
+  $\Delta\mathrm{BIC}=-40.3$ at $H_0=67.075$~km\,s$^{-1}$\,Mpc$^{-1}$ ($k=1$
+  vs $k=6$ for $\Lambda$CDM).
+  \textit{Claim}: SSEE is \emph{not falsified} by the Planck PR4 CMB spectra.
+  This claim is sector-specific: it refers to the observational sector
+  (with MIRA applied), not the dynamic sector directly.
+
+  \item[\textbf{Algebraic sector} (purely geometric).]
+  All constants fixed from $\{\varphi,\pi\}$ with zero data input.
+  Cross-validated against: Planck 2018 ($n_s$, $\Omega_b h^2$, $H_0$),
+  LiteBIRD forecast ($r$), BBN ($\sum m_\nu$), Paper~4.
+  \textit{Result}: all Type~A predictions in Appendix~B,
+  Table~\ref{tab:derivation_chain} are within $2\sigma$ of published
+  observational values (see Paper~4 for full compilation).
+  \textit{Claim}: the algebraic sector is \emph{not falsified} by any
+  currently available dataset. A future falsification would require
+  $n_s\neq1-\varphi^{-7}$ at $>3\sigma$ from Planck~PR4,
+  or $r\neq\varphi^{-10}$ from LiteBIRD.
+
+\end{description}
+
+\paragraph{On cross-sector BIC comparisons.}
+The $\Delta\mathrm{BIC}=-5.55$ (Paper~2, dynamic sector) and
+$\Delta\mathrm{BIC}=-40.3$ (Paper~3, observational sector via
+\texttt{plik\_lite}) are \emph{not directly comparable}: they operate on
+different datasets ($N=16$ vs $N=6413$ data points), under different
+background assumptions (Friedmann vs MIRA-corrected CMB), and with
+different parameter counts ($k=1$ vs $k=1$, but $\Lambda$CDM has $k=3$
+and $k=6$ respectively). Both values are internally valid within their
+respective domains; neither generalises to the other.
+
+%=====================================================================
 \appendix
 %=====================================================================
 
@@ -480,13 +540,13 @@ $\pi$     & Archimedes constant & $3.141593$ & All & A \\
 $\Omega_{\rm DNAV}$ & $\varphi + \pi$ & $4.759627$ & Stability metric & A \\
 $\beta$   & $(\varphi+\pi)/2$ & $2.379814$ & Base coupling & A \\
 $P_{sc}$  & $\Omega_{\rm DNAV}+\varphi$ & $6.377661$ & Dyn.\ evolution & A \\
-AURA      & $2\varphi$ & $3.236068$ & Resonance scale & A \\
+AURA      & $\varphi+\beta$ & $3.997838$ & Resonance limit & A \\
 \midrule
 \multicolumn{5}{l}{\textit{Level 2 — Secondary Registers}} \\
 $\mathrm{KAL}_0$ & $\beta+\pi$ & $5.521406$ & Viscosity; $M_{\rm cluster}$ & A \\
 $K_v$     & $\varphi+\pi+\Omega_{\rm DNAV}$ & $9.519254$ & Struct.\ constraint & A \\
 $T_r$     & $3(\varphi+\beta)$ & $11.993520$ & Saturation horizon & A \\
-MIRA      & AURA$/2 = \varphi$ & $1.618034$ & CMB--dyn.\ bridge & A$^*$ \\
+MIRA      & $\mathrm{AURA}/2 = (\varphi+\beta)/2$ & $1.998924$ & CMB--dyn.\ bridge & A$^*$ \\
 $M_v$     & $\varphi+\pi+K_v$ & $14.278880$ & Max.\ dim.\ invariant & A \\
 \midrule
 \multicolumn{5}{l}{\textit{Level 3 — Cosmological Observables}} \\
@@ -503,14 +563,16 @@ $\sum m_\nu$ & (Acoustic Residue) & $0.084$ eV & Planck+BBN & A \\
 \bottomrule
 \end{tabular}
 \\[4pt]
-\small $^*$ MIRA serves a dual role: (i) as a \textit{derived constant}
-(MIRA $= \varphi$, exact algebraic identity), and (ii) as a
-\textit{sector-mapping operator} projecting $\Omega_{m,\rm dyn}=0.160$
-onto $\Omega_{m,\rm CMB}=0.3199$ via $\Omega_{m,\rm CMB} = 2 \times
-\mathrm{MIRA} \times \Omega_{m,\rm dyn}$.
-The dual role is physically meaningful: the same geometric ratio
-$\varphi$ governs both the internal structure of the hierarchy and the
-observational frequency of the CMB sector.
+\small $^*$ MIRA $= (\varphi+\beta)/2 = (3\varphi+\pi)/4 = 1.998924\ldots$
+is the canonical value used in all four manuscripts.
+It serves a dual role: (i) as a \textit{derived constant} (algebraically
+fixed from $\{\varphi,\pi\}$ via $\beta=(\varphi+\pi)/2$, committed January 2026
+before any CMB analysis; see Paper~3~\S\ref{sec:mira_timeline}), and (ii) as a
+\textit{sector-mapping operator} projecting $\Omega_{m,\rm dyn}=0.1601$
+onto $\Omega_{m,\rm CMB}=0.3199$ via
+$\Omega_{m,\rm CMB} = \Omega_{m,\rm dyn}\times\mathrm{MIRA} = 0.3199$.
+Note: in early internal documents MIRA was loosely approximated as
+$\varphi\approx1.618$; the canonical value is $1.998924$ throughout all four papers.
 Similarly, $\mathrm{KAL}_0$ is both a derived constant (Level~2) and
 a dynamical viscosity operator scaling cluster masses.
 \end{table}
@@ -593,7 +655,5 @@ as an external CMB anchor.
 These two BIC values are \emph{not directly comparable} because they
 operate in different model spaces; the distinction is disclosed
 explicitly in Paper~3~§4.4.
-
-\end{thebibliography}
 
 \end{document}

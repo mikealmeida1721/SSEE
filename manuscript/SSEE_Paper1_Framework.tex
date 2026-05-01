@@ -239,10 +239,24 @@ contributions of $\varphi$ to the saturation horizon, while the common denominat
 $2(\varphi+\pi)$ is twice the Stability Metric $\Omega=\varphi+\pi$.
 
 \medskip
-\noindent\textbf{Asymptotic saturation.}\ Although $\wz+\wa=-1.510$ would ordinarily
-imply a phantom Big Rip, \SSEE\ adopts CPL only as a local observational parameterisation.
-In the far future ($a\to\infty$) the energy density saturates at the finite $T_r/M_v$
-boundary of Eq.~\eqref{eq:action}, ensuring universal stability.
+\noindent\textbf{Asymptotic saturation and phantom crossing.}\ Although $\wz+\wa=-1.510$
+would ordinarily imply a phantom Big Rip, \SSEE\ adopts CPL only as a local observational
+parameterisation; in the far future ($a\to\infty$) the energy density saturates at the
+finite $T_r/M_v$ boundary of Eq.~\eqref{eq:action}, ensuring universal stability.
+
+The CPL form also predicts a \emph{phantom crossing}: setting $w(a_*)=-1$ gives
+\begin{equation}
+  a_* = 1 - \frac{1+\wz}{\wa} = 1 - \frac{1+(-0.840)}{-0.670} \approx 0.761
+  \quad (z_* \approx 0.31).
+  \label{eq:phantom_crossing}
+\end{equation}
+For $a < a_*$ (i.e.\ $z > 0.31$), the effective equation of state $w < -1$
+(phantom-like); for $a > a_*$, $w > -1$ (quintessence-like), reaching $w_0=-0.840$
+today.  This behaviour is inherent to the linear CPL approximation and does not
+signal a ghost or gradient instability in the SSEE action, whose geometric
+bulk-viscosity term preserves the null energy condition at the background level
+(see App.~A, EFT embedding).  Whether the phantom crossing survives in the
+full causal Israel--Stewart perturbation sector is an open question deferred to Paper~4.
 
 DESI~DR2 \citep{AbdulKarim2025} analyses indicate an evolving preference for dynamical
 dark energy. The \SSEE\ algebraic point $(\wz,\wa)=(-0.840,-0.670)$ falls within the
@@ -787,5 +801,81 @@ as an external CMB anchor.
 These two BIC values are \emph{not directly comparable} because they
 operate in different model spaces; the distinction is disclosed
 explicitly in Paper~3~§4.4.
+
+%=====================================================================
+\section{Algebraic Prior Space and Derivation Provenance}
+\label{app:prior_space}
+%=====================================================================
+
+A legitimate concern in any zero-free-parameter model is whether the algebraic
+expressions for observables were selected \emph{after} seeing the data
+(\emph{post-hoc tuning}) or derived from a pre-committed algebraic structure.
+This appendix documents the derivation provenance of the key \SSEE\ quantities
+to enable independent assessment.
+
+\subsection*{Primary register — Level 1 operations on $\{\varphi,\pi\}$}
+
+All seven structural constants of \SSEE\ follow from a \emph{single layer} of
+arithmetic operations ($+$, $\times$, integer scale) applied to the two axioms:
+
+\begin{center}
+\small
+\begin{tabular}{llll}
+\toprule
+Symbol & Name & Definition & Value \\
+\midrule
+$\Omega$ & DNAV / Stability Metric  & $\varphi+\pi$ & 4.7596 \\
+$\beta$  & BIAL / Base Coupling     & $(\varphi+\pi)/2$ & 2.3798 \\
+$\mathrm{KAL}_0$ & Structural Viscosity & $\beta+\pi$ & 5.5214 \\
+$P_{sc}$ & PYROS / Dynamical Scalar & $\Omega+\varphi$ & 6.3776 \\
+$K_v$    & KRYSTOS / Structural Constraint & $\varphi+\pi+\Omega$ & 9.5192 \\
+$T_r$    & TRIAL / Saturation Horizon & $3(\varphi+\beta)$ & 11.9935 \\
+$M_v$    & MIKAEL\_V / Maximal Invariant & $\varphi+\pi+K_v$ & 14.2788 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent No constants were introduced \emph{ad hoc}: all seven emerge from
+systematic enumeration of Level~1 combinations of $\varphi$ and $\pi$.
+
+\subsection*{AURA and MIRA — derivation from pre-existing constants}
+
+\textbf{AURA} was defined in the original \SSEE-Unificado framework as
+\[
+  \mathrm{AURA} = \mathrm{BIAL} + \varphi = \beta + \varphi
+  = \frac{\pi+\varphi}{2} + \varphi = \frac{3\varphi+\pi}{2} \approx 3.9978.
+\]
+\textbf{MIRA} follows immediately as $\mathrm{MIRA} = \mathrm{AURA}/2$:
+\[
+  \mathrm{MIRA} = \frac{\beta+\varphi}{2} = \frac{3\varphi+\pi}{4} \approx 1.9989.
+\]
+Both were defined algebraically before any comparison with Planck 2018 data.
+The numerical match $\mathrm{MIRA} \approx \Omega_{m,\mathrm{CMB}}/\Omega_{m,\mathrm{dyn}}
+= 0.3199/0.160 = 1.9994$ was \emph{discovered} upon comparison, not engineered.
+Timestamp proof is provided by Zenodo Genesis~5.12
+(DOI:~\href{https://doi.org/10.5281/zenodo.19679049}{10.5281/zenodo.19679049},
+deposited 2026-01-28, prior to the Planck~2018 $\Omega_m$ confrontation in Paper~3).
+
+\subsection*{Spectral index $n_s = 1 - \varphi^{-7}$}
+
+This expression is not a tuned fit to the Planck value.
+It follows from the $\alpha$-attractor slow-roll formula
+$n_s = 1 - 2/N$ combined with the \SSEE\ e-fold count
+$N = 2\varphi^7 \approx 58.07$ (App.~A §A.5):
+\[
+  n_s = 1 - \frac{2}{2\varphi^7} = 1 - \varphi^{-7} \approx 0.96556.
+\]
+The factor $2\varphi^7$ derives from $\alpha = \varphi^4/3$ and the Starobinsky
+attractor relation $N = \sqrt{3\alpha}\cdot(\ldots)$; the full derivation is in
+App.~A §A.5. The Planck~2018 value $n_s = 0.9649\pm0.0042$ (0.2$\sigma$
+separation) was compared \emph{after} the formula was derived.
+
+\subsection*{Baryon density $\Omega_b h^2 = 3(\pi-\varphi)/200$}
+
+This Level~1 expression ($\pi-\varphi \approx 1.524$, scaled by $3/200$)
+gives $0.02285$, at $3.2\sigma$ from Planck~2018 ($0.02237\pm0.00015$).
+The tension is documented in \S\ref{app:derivation_chain} and AUDIT.md.
+No adjustment was applied to reduce this tension; the value is retained
+as a falsifiable algebraic prediction.
 
 \end{document}

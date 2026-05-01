@@ -63,8 +63,8 @@ At galactic scales, \SSEE\ derives an acceleration threshold
 $a_0 = c\,H_0/\KALz \approx 1.186\times10^{-10}$\,m\,s$^{-2}$, consistent with
 the empirical MOND scale.
 Incorporating a light-neutrino mass sum $\sum m_\nu = 0.085$\,eV
-(algebraically predicted as $0.0840$\,eV in Paper~4 via the Acoustic Residue Theorem;
-error $1.2\%$),
+(algebraically predicted as $0.0840$\,eV in companion Paper~4 via the Acoustic Residue
+Theorem (Almeida Vallejo, in preparation); error $1.2\%$),
 the framework structurally resolves the megaparsec cluster mass discrepancy
 when combined with an IGIMF-corrected baryonic baseline \citep{Zhang2026}.
 The Hubble tension is addressed through a structural local correction:
@@ -484,11 +484,14 @@ applies uniformly to Papers~1--4.
   All constants fixed from $\{\varphi,\pi\}$ with zero data input.
   Cross-validated against: Planck 2018 ($n_s$, $\Omega_b h^2$, $H_0$),
   LiteBIRD forecast ($r$), BBN ($\sum m_\nu$), Paper~4.
-  \textit{Result}: all Type~A predictions in Appendix~B,
+  \textit{Result}: most Type~A predictions in Appendix~B,
   Table~\ref{tab:derivation_chain} are within $2\sigma$ of published
   observational values (see Paper~4 for full compilation).
+  One exception: $\Omega_b h^2 = 3(\pi-\varphi)/200 = 0.02285$ is at $3.2\sigma$
+  from Planck~2018 ($0.02237\pm0.00015$); this tension is documented in
+  Table~\ref{tab:derivation_chain} and in \texttt{AUDIT.md}.
   \textit{Claim}: the algebraic sector is \emph{not falsified} by any
-  currently available dataset. A future falsification would require
+  currently available dataset at the $>3\sigma$ level. A future falsification would require
   $n_s\neq1-\varphi^{-7}$ at $>3\sigma$ from Planck~PR4,
   or $r\neq\varphi^{-10}$ from LiteBIRD.
 
@@ -640,7 +643,7 @@ Each intermediate constant is labelled as either a \textit{primary register}
 
 \begin{table}[H]
 \centering
-\caption{Master derivation chain for the \\SSEE\\ framework.
+\caption{Master derivation chain for the \SSEE framework.
   Result types: \textbf{A} = pure algebraic (no data input),
   \textbf{M} = MCMC-validated (data-constrained posterior),
   \textbf{P} = prior-dependent (requires external dataset anchor).
@@ -672,14 +675,14 @@ $M_v$     & $\varphi+\pi+K_v$ & $14.278880$ & Max.\ dim.\ invariant & A \\
 \multicolumn{5}{l}{\textit{Level 3 — Cosmological Observables}} \\
 $w_0$     & $-T_r/M_v$ & $-0.8399$ & DESI DR2 & A \\
 $w_a$     & $-P_{sc}/K_v$ & $-0.6699$ & DESI DR2 & A \\
-$H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & A \\
+$H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & P$^\dagger$ \\
 $H_0^{\rm MCMC}$ & emcee posterior & $66.75\pm0.44$ & DESI+Planck & M \\
 $\Omega_m^{\rm CMB}$ & $(\pi-\varphi)/(\pi+\varphi)$ & $0.3201$ & Planck 2018 & A \\
 $n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
-$\Omega_b h^2$ & $3(\pi-\varphi)/200$ & $0.02285$ & Planck 2018 & A \\
+$\Omega_b h^2$ & $3(\pi-\varphi)/200$ & $0.02285$ ($3.2\sigma$) & Planck 2018 & A$^\ddagger$ \\
 $\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.11926$ & Planck 2018 & A \\
 $r$       & $\varphi^{-10}$ & $0.00813$ & LiteBIRD 2032 & A \\
-$\sum m_\nu$ & (Acoustic Residue) & $0.084$ eV & Planck+BBN & A \\
+$\sum m_\nu$ & (Acoustic Residue, Paper~4 in prep.) & $0.084$ eV & Planck+BBN & A \\
 \bottomrule
 \end{tabular}
 \\[4pt]
@@ -694,7 +697,16 @@ $\Omega_{m,\rm CMB} = \Omega_{m,\rm dyn}\times\mathrm{MIRA} = 0.3199$.
 Note: in early internal documents MIRA was loosely approximated as
 $\varphi\approx1.618$; the canonical value is $1.998924$ throughout all four papers.
 Similarly, $\mathrm{KAL}_0$ is both a derived constant (Level~2) and
-a dynamical viscosity operator scaling cluster masses.
+a dynamical viscosity operator scaling cluster masses.\\[2pt]
+\small $^\ddagger$ $\Omega_b h^2=3(\pi-\varphi)/200=0.02285$ is at $3.2\sigma$ from Planck 2018 ($0.02237\pm0.00015$).
+This is the largest tension in the algebraic sector; documented in \texttt{AUDIT.md}.
+The IS correction for $\Omega_c h^2$ uses this value as input.\\[2pt]
+\small $^\dagger$ $H_0^{\rm alg}=3(\varphi+\pi)^2\approx67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$
+is a \textbf{numerical coincidence} (Type~P): the adimensional combination $3(\varphi+\pi)^2$
+happens to match the Hubble constant in km\,s$^{-1}$\,Mpc$^{-1}$ units.
+No dimensional derivation linking $\{\varphi,\pi\}$ to the physical energy scale of
+Hubble expansion has been established; the formula is retained as an observed
+coincidence and is not used as input to any other result in this series.
 \end{table}
 
 %---------------------------------------------------------------------
@@ -707,7 +719,7 @@ in this series.
 
 \begin{table}[H]
 \centering
-\caption{Unified symbol glossary for the \\SSEE\\ four-paper series.
+\caption{Unified symbol glossary for the \SSEE four-paper series.
   All symbols are dimensionless unless otherwise stated.}
 \label{tab:notation}
 \small
@@ -718,8 +730,8 @@ Symbol & Full name & First defined \\
 $\varphi$ & Golden ratio $(1+\sqrt{5})/2$ & Paper 1 §1 \\
 $\Omega_{\rm DNAV}$ & Dark Navigation scalar ($\varphi+\pi$) & Paper 1 §1 \\
 $\beta$ & Base coupling scalar & Paper 1 §1 \\
-AURA & Acoustic Unified Resonance Amplitude ($2\varphi$) & Paper 1 §2 \\
-MIRA & Mapped Inference Resonance Amplitude (AURA/2 $=\varphi$) & Paper 3 §2.4 \\
+AURA & Acoustic Unified Resonance Amplitude ($\varphi+\beta=(3\varphi+\pi)/2\approx3.998$) & Paper 1 §2 \\
+MIRA & Mapped Inference Resonance Amplitude (AURA/2 $=(3\varphi+\pi)/4\approx1.9989$) & Paper 3 §2.4 \\
 $\mathrm{KAL}_0$ & Asymptotic structural viscosity factor ($\beta+\pi$) & Paper 1 §1 \\
 $P_{sc}$ & Dynamical evolution scalar ($\Omega_{\rm DNAV}+\varphi$) & Paper 1 §1 \\
 $K_v$ & Structural constraint invariant & Paper 1 §1 \\
@@ -728,7 +740,7 @@ $M_v$ & Maximal dimensional invariant ($\varphi+\pi+K_v$) & Paper 1 §1 \\
 PYROS & Radiation sector coupling ($\pi^2/6$) & Paper 4 §3 \\
 ÎCËBÊRG & $M_v$ (Nine Sovereignties sum) & Paper 4 §4 \\
 $\Omega_{m,\rm dyn}$ & Dynamic matter density (SSEE sector) & Paper 2 §2 \\
-$\Omega_{m,\rm CMB}$ & CMB-observed matter density ($2\,\mathrm{MIRA}\,\Omega_{m,\rm dyn}$) & Paper 3 §2.4 \\
+$\Omega_{m,\rm CMB}$ & CMB-observed matter density ($\mathrm{MIRA}\cdot\Omega_{m,\rm dyn}$) & Paper 3 §2.4 \\
 $\gamma_{\rm IS}$ & Israel--Stewart growth index ($0.657\pm0.002$) & Paper 1 App.A \\
 $\tau_\Pi H_0$ & IS relaxation time (dimensionless, $\approx2.191$) & Paper 1 App.A \\
 \bottomrule

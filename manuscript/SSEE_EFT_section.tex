@@ -309,8 +309,8 @@ three governing equations for the SSEE background.
   \label{eq:continuity}
 \end{equation}
 
-\paragraph{Derivation of the coefficient 9.}
-From Eq.~(\ref{eq:zeta}), the viscous pressure is
+\noindent\textbf{Derivation of the coefficient 9.}\par\smallskip
+\noindent From Eq.~(\ref{eq:zeta}), the viscous pressure is
 $\Pi = -3\mathrm{KAL}_{0}H^{2}/8\pi G$.
 In the Raychaudhuri equation the effective pressure of the SSEE sector enters as
 $p_{\mathrm{eff}} = w_{0}\rho_{\mathrm{SSEE}} + \Pi$, so the acceleration term becomes
@@ -393,7 +393,7 @@ equation~(\ref{eq:continuity}) and the linear-growth ODE
   \label{eq:growth_IS}
 \end{equation}
 %
-we solve the system numerically (\texttt{src/ssee\_is\_growth.py}) with
+we solve the system numerically (\texttt{ssee\_is\_growth.py}) with
 the IS background $\tilde{h}^{2}(a) = \Omega_{m,\mathrm{dyn}}\,a^{-3}+\rho_{\mathrm{DE}}(a)$.
 The growth rate $f \equiv \mathrm{d}\ln\delta/\mathrm{d}\ln a \approx \Omega_{m}(a)^{\gamma}$
 is well described by a power law over $0.1 \leq a \leq 1$ with
@@ -495,7 +495,7 @@ Substituting $N = 2\varphi^{7}$ and $r = \varphi^{-10}$ into the second relation
   \label{eq:alpha_ssee}
 \end{equation}
 This result is algebraically exact (verified numerically to machine precision;
-see \texttt{src/ssee\_inflation\_connection.py}).
+see \texttt{ssee\_inflation\_connection.py}).
 Using the Fibonacci identity $\varphi^{4} = 3\varphi + 2$:
 \begin{equation}
   \alpha = \frac{3\varphi + 2}{3} = \varphi + \frac{2}{3} \approx 2.285.

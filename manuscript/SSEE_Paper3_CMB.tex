@@ -223,9 +223,31 @@ $1.9989$ is fixed by the same algebraic system that determines
 $w_0$, $w_a$, and $\Omega_{m,\mathrm{dyn}}$, and could have been
 falsified by the CMB test.
 
+\paragraph{Status of the MIRA mapping.}
+\begin{tcolorbox}[colback=blue!4,colframe=blue!50,title=MIRA: Phenomenological Mapping Hypothesis]
+The relation $\Omega_{m,\mathrm{CMB}} = \Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$
+is a \textbf{phenomenological mapping hypothesis}, not a theorem derived from
+the SSEE field equations in this paper. The hypothesis is:\vspace{2pt}
+\begin{itemize}[nosep,leftmargin=*]
+  \item \textit{Algebraically consistent}: MIRA derives from $\{\varphi,\pi\}$
+        via $\mathrm{MIRA}=(3\varphi+\pi)/4$, the same axioms as $w_0$ and $w_a$.
+  \item \textit{Temporally pre-committed}: defined January 2026, 83 days before
+        any CMB computation (commit hash \texttt{f8728c3}, verified by Zenodo
+        \texttt{10.5281/zenodo.19679049}).
+  \item \textit{Predictively tested}: it was possible for the CMB result to
+        have been inconsistent with Planck; it was not.
+  \item \textit{Not yet physically derived}: a first-principles derivation of
+        the factor $1.9989$ from the Israel--Stewart transport equation is
+        an open problem identified in \S\ref{sec:falsifiability}. Until then,
+        MIRA should be treated as a testable structural hypothesis.
+\end{itemize}
+\end{tcolorbox}
+
+
 \subsection{Two-sector matter density}
 
-We propose that SSEE operates with two distinct matter density sectors:
+We state that SSEE operates with two distinct matter density sectors
+(as a phenomenological hypothesis; see box above):
 
 \begin{description}
   \item[Dynamic sector] governs low-redshift evolution (BAO, cluster dynamics,
@@ -615,6 +637,26 @@ The diagonal approximation neglects bin-to-bin covariances in the Planck PR4 ban
 
 \subsection{Cobaya \texttt{plik\_lite} evaluation and acoustic scale analysis}
 \label{sec:cobaya}
+
+\begin{tcolorbox}[colback=green!4,colframe=green!50!black,title=Reproducibility: Cobaya/plik\_lite Evaluation]
+\textbf{Code:} Cobaya v3.5.4 \citep{Torrado2021} + CAMB v1.6.6 \citep{Lewis2000}.
+\textbf{Likelihood:} \texttt{planck\_2018\_highl\_plik.TTTEEE\_lite} (official Planck 2018 release).\\[2pt]
+\textbf{Fixed parameter vector} (all derived algebraically or from DESI posterior; none fitted to CMB):
+\begin{align*}
+  w_0 &= -T_r/M_v = -0.8399, \quad
+  w_a = -P_{sc}/K_v = -0.6700, \\
+  n_s &= 1 - \varphi^{-7} = 0.96556, \quad
+  \Omega_{m,\mathrm{CMB}} = \Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA} = 0.31993,\\
+  \Omega_b h^2 &= 0.02237\ \text{(Planck 2018 prior)},\quad
+  \ln(10^{10}A_s) = 3.044,\quad \tau = 0.054.
+\end{align*}
+\textbf{Free parameter:} $H_0$ scanned over $[66, 68]$ km\,s$^{-1}$\,Mpc$^{-1}$
+($\Omega_c h^2$ derived consistently from $\Omega_{m,\mathrm{CMB}}$ at each $H_0$).\\[2pt]
+\textbf{Reference run:} $\Lambda$CDM best-fit (6 free parameters) gives
+$\chi^2_\mathrm{eff}=584.97$ (Table~\ref{tab:h0scan}).\\[2pt]
+\textbf{Reproducibility:} the full parameter file and run script are archived at
+Zenodo \texttt{10.5281/zenodo.19679049} alongside the SSEE codebase.
+\end{tcolorbox}
 
 We evaluate the Planck 2018 \texttt{plik\_lite} TTTEEE likelihood \citep{PlanckLikelihood2020} via \texttt{Cobaya} \citep{Torrado2021} at fixed SSEE parameters. All SSEE parameters are algebraically fixed ($w_0$, $w_a$, $n_s$, $\Omega_{m,\mathrm{CMB}}$, $\Omega_b h^2$); only $H_0$ is treated as a free parameter derived from the DESI posterior ($k=1$).
 

@@ -540,8 +540,23 @@ physical question stated in the table.
 \label{sec:falsification}
 %---------------------------------------------------------------------
 
+\paragraph{Global falsification rule (theory-level).}
+\begin{tcolorbox}[colback=red!8,colframe=red!70!black,title=Global Falsification Criterion]
+\SSEE-V3.6 is falsified \textbf{as a whole} if \textbf{any single} sector
+criterion in Table~\ref{tab:falsification_summary} is met at the stated
+significance threshold. No parameter re-adjustment is possible because
+all sectors derive from the same two axioms $\{\varphi,\pi\}$: a failure
+in one sector cannot be repaired without modifying the axioms, which would
+change the predictions in all other sectors simultaneously.\\[4pt]
+\textbf{Corollary:} the sector-specific structure (dynamic / observational /
+algebraic) exists to delineate which datasets test which part of the
+framework, not to create rescue mechanisms.  If DESI~DR5+ excludes
+$w_0=-0.840$ at $>3\sigma$, SSEE-V3.6 is rejected; the observational or
+algebraic sectors do not save it.
+\end{tcolorbox}
+
 To ensure the framework cannot absorb discrepancies via sector-switching,
-we state binding falsification criteria below. These apply uniformly across
+we also state sector-specific criteria below. These apply uniformly across
 all four papers and cannot be re-interpreted post-hoc.
 
 \begin{tcolorbox}[colback=red!4,colframe=red!60!black,title=SSEE Falsification Criteria]

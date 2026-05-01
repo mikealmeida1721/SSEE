@@ -14,7 +14,9 @@
 \usepackage{siunitx}
 \usepackage{tcolorbox}
 \usepackage{enumitem}
+\usepackage{tabularx}
 \geometry{margin=2.5cm}
+\emergencystretch=2em
 
 \graphicspath{{../results/figures/}}
 
@@ -228,8 +230,8 @@ $1.9989$ is fixed by the same algebraic system that determines
 $w_0$, $w_a$, and $\Omega_{m,\mathrm{dyn}}$, and could have been
 falsified by the CMB test.
 
-\paragraph{Status of the MIRA mapping.}
-\begin{tcolorbox}[colback=blue!4,colframe=blue!50,title=MIRA: Phenomenological Mapping Hypothesis]
+\noindent\textbf{Status of the MIRA mapping.}\par\smallskip
+\noindent\begin{tcolorbox}[colback=blue!4,colframe=blue!50,title=MIRA: Phenomenological Mapping Hypothesis,width=\linewidth]
 The relation $\Omega_{m,\mathrm{CMB}} = \Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$
 is a \textbf{phenomenological mapping hypothesis}, not a theorem derived from
 the SSEE field equations in this paper. The hypothesis is:\vspace{2pt}
@@ -419,21 +421,22 @@ We use CAMB v1.6.6 \citep{Lewis2000,Howlett2012} with the following input parame
 \centering
 \caption{SSEE+MIRA parameters passed to CAMB.}
 \label{tab:camb_params}
-\begin{tabular}{lll}
+\small
+\begin{tabularx}{\textwidth}{p{3.5cm}p{3.5cm}X}
 \toprule
 Parameter & Value & Source \\
 \midrule
 $H_0$ [km/s/Mpc] & 66.75 & SSEE algebraic \\
 $\Omega_b h^2$ & 0.02237 & Planck 2018 prior \\
 $\Omega_{m,\mathrm{CMB}}$ & 0.3199 & $\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$ \\
-$\sum m_\nu$ [eV] & 0.085 & SSEE (algebraic: 0.0840 eV, Paper~4 \S\,Neutrino Mass Sum) \\
+$\sum m_\nu$ [eV] & 0.085 & SSEE (algebraic: 0.0840 eV, Paper~4) \\
 $w_0$ & $-0.8399$ & $-T_r/M_v$ \\
 $w_a$ & $-0.6700$ & $-P_{sc}/K_v$ \\
 $n_s$ & $1-\varphi^{-7}=0.96556$ & SSEE algebraic (Paper~4) \\
 $\ln(10^{10}A_s)$ & 3.044 & Planck 2018 \\
 $\tau$ & 0.054 & Planck 2018 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 The dark energy is implemented via the PPF (Parameterized Post-Friedmann)
@@ -643,7 +646,7 @@ The diagonal approximation neglects bin-to-bin covariances in the Planck PR4 ban
 \subsection{Cobaya \texttt{plik\_lite} evaluation and acoustic scale analysis}
 \label{sec:cobaya}
 
-\begin{tcolorbox}[colback=green!4,colframe=green!50!black,title=Reproducibility: Cobaya/plik\_lite Evaluation]
+\noindent\begin{tcolorbox}[colback=green!4,colframe=green!50!black,title=Reproducibility: Cobaya/plik\_lite Evaluation,width=\linewidth]
 \textbf{Code:} Cobaya v3.5.4 \citep{Torrado2021} + CAMB v1.6.6 \citep{Lewis2000}.
 \textbf{Likelihood:} \texttt{planck\_2018\_highl\_plik.TTTEEE\_lite} (official Planck 2018 release).\\[2pt]
 \textbf{Fixed parameter vector} (all derived algebraically or from DESI posterior; none fitted to CMB):

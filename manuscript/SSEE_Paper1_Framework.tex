@@ -14,7 +14,8 @@
 \usepackage{float}
 \usepackage{array}
 \usepackage{enumitem}
-
+\usepackage{tcolorbox}
+\usepackage{float}
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
@@ -493,15 +494,91 @@ applies uniformly to Papers~1--4.
 
 \end{description}
 
+%---------------------------------------------------------------------
+\subsection{Unified Model-Comparison Table}
+\label{sec:bic_unified}
+%---------------------------------------------------------------------
+
+Table~\ref{tab:bic_unified} consolidates every BIC comparison reported
+across the four manuscripts into a single cross-comparable register.
+Each row specifies the dataset, $N$, the cosmological background assumed,
+$k$ for \SSEE\ and $\Lambda$CDM, and the physical hypothesis tested.
+No BIC result outside this table is claimed as a model-selection outcome.
+
+\begin{table}[H]
+\centering
+\caption{Unified BIC comparison register (all four papers).
+  $\Delta\mathrm{BIC} < 0$: \SSEE\ preferred; $>0$: $\Lambda$CDM preferred.
+  ``Fails'' denotes a domain-specific tension, not global falsification.}
+\label{tab:bic_unified}
+\small
+\begin{tabular}{p{2.8cm}rp{1.9cm}rrlp{2.2cm}}
+\toprule
+Dataset & $N$ & Background & $k_{\rm SSEE}$ & $k_{\Lambda}$ & $\Delta$BIC & Hypothesis \\
+\midrule
+DESI~DR2 + Planck prior & 16 & Std.\ Friedmann & 2 & 3 & $+206$ &
+  Full model; background incompatibility with LCDM-calibrated $\Omega_m$ \\[4pt]
+DESI~DR2 + Planck prior & 16 & Std.\ Friedmann & 1 & 3 & $-5.55$ &
+  Dynamic sector: $w_0,w_a$ fixed, $H_0$ free \\[4pt]
+Planck~PR4 diagonal & 5914 & MIRA-corrected & 2 & 6 & $+31.1$ &
+  CMB spectra, conservative $k$ upper bound \\[4pt]
+\texttt{plik\_lite} TTTEEE & 6413 & MIRA-corrected & 1 & 6 & $-40.3$ &
+  CMB parsimony: algebraic prediction vs $\Lambda$CDM free-fit \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{Reading guide.}
+The $+206$ and $-5.55$ use the same 16 data points but test different hypotheses:
+the former penalises background geometry; the latter isolates $w_0,w_a$.
+The $-40.3$ and $+31.1$ both use CMB data but differ in likelihood type and $k$.
+\emph{No single BIC summarises the entire framework}: each answers a specific
+physical question stated in the table.
+
+%---------------------------------------------------------------------
+\subsection{Falsification Manifesto}
+\label{sec:falsification}
+%---------------------------------------------------------------------
+
+To ensure the framework cannot absorb discrepancies via sector-switching,
+we state binding falsification criteria below. These apply uniformly across
+all four papers and cannot be re-interpreted post-hoc.
+
+\begin{tcolorbox}[colback=red!4,colframe=red!60!black,title=SSEE Falsification Criteria]
+\textbf{Algebraic sector} is falsified if:
+\begin{itemize}[nosep,leftmargin=*]
+  \item $n_s \neq 1-\varphi^{-7}$ at $>3\sigma$ from Planck~PR4 final; or
+  \item $r \neq \varphi^{-10}$ at $>2\sigma$ from LiteBIRD ($\sim$2032).
+\end{itemize}
+\textbf{Dynamic sector} is falsified if:
+\begin{itemize}[nosep,leftmargin=*]
+  \item DESI~DR5+ posterior excludes $(-0.840,-0.670)$ at $>3\sigma$; or
+  \item $\chi^2_r(H(z)) > 2.5$ with full systematic covariance and $\Omega_{m,\rm dyn}=0.160$.
+\end{itemize}
+\textbf{Observational sector} is falsified if:
+\begin{itemize}[nosep,leftmargin=*]
+  \item Euclid/KiDS/DES require $\Omega_m < 0.25$ at $z < 1$
+        (violates the MIRA two-sector crossover); or
+  \item $\Omega_{m,\rm CMB}/\Omega_{m,\rm dyn}$ deviates from
+        $\mathrm{MIRA}=1.998924$ at $>3\sigma$ from joint CMB+BAO analysis.
+\end{itemize}
+\textbf{What is NOT a falsification:}
+\begin{itemize}[nosep,leftmargin=*]
+  \item A $\Delta\mathrm{BIC} > 0$ from applying $\Lambda$CDM-calibrated priors
+        to the \SSEE\ background (see $+206$ in Table~\ref{tab:bic_unified}).
+  \item A $\chi^2_r > 1$ under a non-equivalent cosmological background.
+  \item The $\Omega_m$ tension between sectors, provided the MIRA bridge is
+        algebraically self-consistent (verified to 9 s.f., Table~\ref{tab:derivation_chain}).
+\end{itemize}
+\end{tcolorbox}
+
 \paragraph{On cross-sector BIC comparisons.}
-The $\Delta\mathrm{BIC}=-5.55$ (Paper~2, dynamic sector) and
-$\Delta\mathrm{BIC}=-40.3$ (Paper~3, observational sector via
-\texttt{plik\_lite}) are \emph{not directly comparable}: they operate on
-different datasets ($N=16$ vs $N=6413$ data points), under different
-background assumptions (Friedmann vs MIRA-corrected CMB), and with
-different parameter counts ($k=1$ vs $k=1$, but $\Lambda$CDM has $k=3$
-and $k=6$ respectively). Both values are internally valid within their
-respective domains; neither generalises to the other.
+The $\Delta\mathrm{BIC}=-5.55$ and $-40.3$ are not directly comparable
+(different $N$, backgrounds, and $\Lambda$CDM $k$ counts).
+The $\Delta\mathrm{BIC}=+31.1$ and $-40.3$ bracket the CMB result's sensitivity
+to the assumed $k_{\rm SSEE}$ (see Paper~3 Table~7).
+The authoritative reference is Table~\ref{tab:bic_unified}.
+
 
 %=====================================================================
 \appendix

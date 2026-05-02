@@ -69,12 +69,9 @@ Incorporating a light-neutrino mass sum $\sum m_\nu = 0.085$\,eV
 Theorem (Almeida Vallejo, in preparation); error $1.2\%$),
 the framework structurally resolves the megaparsec cluster mass discrepancy
 when combined with an IGIMF-corrected baryonic baseline \citep{Zhang2026}.
-The Hubble tension is addressed through a structural local correction:
-the dimensionless viscosity coupling $\KALz \approx 5.521$ reproduces the observed
-offset $H_{0,\rm local} - H_{0,\rm global} \approx 5.7$~km\,s$^{-1}$\,Mpc$^{-1}$
-at the $\sim\!3\%$ level.
-The dimensional completion of this coincidence — deriving the velocity-per-length scale
-from the IS viscosity equations — is reserved for a dedicated paper.
+The viscosity coupling $\KALz$ provides a qualitative structural mechanism for
+the local Hubble tension; a quantitative dimensional derivation linking $\KALz$
+to $H_{0,\rm local} - H_{0,\rm global}$ is deferred to a dedicated future work.
 A full Bayesian MCMC validation against DESI~DR2 \citep{AbdulKarim2025},
 Planck~2018, and galaxy-cluster mass data ($\Delta\mathrm{BIC}=-5.55$ for the dynamic
 sector relative to $\Lambda$CDM) is presented in the companion Paper~2 \citep{SSEE_paperII}.
@@ -90,16 +87,16 @@ $r = \varphi^{-10} = 0.00813$ is predicted for LiteBIRD ($\sim$2032).
 The \SSEE\ framework operates under the principle of algebraic closure and macroscopic
 structural self-energy. Rather than adding particle degrees of freedom, the system's
 identity is defined by a closed set of geometric invariants derived exclusively from
-$\pi$ and $\Phi$. These fundamental scales dictate the macroscopic behaviour of spacetime:
+$\pi$ and $\varphi$. These fundamental scales dictate the macroscopic behaviour of spacetime:
 
 \begin{itemize}
-  \item $\boldsymbol{\Omega}$ ($\pi+\Phi\approx4.7596$): Stability Metric.
-  \item $\boldsymbol{\beta}$ ($(\pi+\Phi)/2\approx2.3798$): Base Coupling Scalar.
+  \item $\boldsymbol{\Omega}$ ($\pi+\varphi\approx4.7596$): Stability Metric.
+  \item $\boldsymbol{\beta}$ ($(\pi+\varphi)/2\approx2.3798$): Base Coupling Scalar.
   \item $\boldsymbol{\KALz}$ ($\beta+\pi\approx5.5214$): Asymptotic Structural Viscosity.
-  \item $\boldsymbol{P}$ ($\Omega+\Phi\approx6.3776$): Dynamical Evolution Scalar.
-  \item $\boldsymbol{K_v}$ ($\Phi+\pi+\Omega\approx9.5192$): Structural Constraint Invariant.
-  \item $\boldsymbol{T_r}$ ($3(\Phi+\beta)\approx11.9935$): 3D Saturation Horizon.
-  \item $\boldsymbol{M_v}$ ($\Phi+\pi+K_v\approx14.2788$): Maximal Dimensional Invariant.
+  \item $\boldsymbol{P}$ ($\Omega+\varphi\approx6.3776$): Dynamical Evolution Scalar.
+  \item $\boldsymbol{K_v}$ ($\varphi+\pi+\Omega\approx9.5192$): Structural Constraint Invariant.
+  \item $\boldsymbol{T_r}$ ($3(\varphi+\beta)\approx11.9935$): 3D Saturation Horizon.
+  \item $\boldsymbol{M_v}$ ($\varphi+\pi+K_v\approx14.2788$): Maximal Dimensional Invariant.
 \end{itemize}
 
 \subsection{Predictive Register}
@@ -702,7 +699,7 @@ $w_0$     & $-T_r/M_v$ & $-0.8399$ & DESI DR2 & A \\
 $w_a$     & $-P_{sc}/K_v$ & $-0.6699$ & DESI DR2 & A \\
 $H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & P$^\dagger$ \\
 $H_0^{\rm MCMC}$ & emcee posterior & $66.75\pm0.44$ & DESI+Planck & M \\
-$\Omega_m^{\rm CMB}$ & $(\pi-\varphi)/(\pi+\varphi)$ & $0.3201$ & Planck 2018 & A \\
+$\Omega_m^{\rm CMB}$ & $(\pi-\varphi)/(\pi+\varphi)$ & $0.3201^\S$ & Planck 2018 & A \\
 $n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
 $\Omega_b h^2$ & $3(\pi-\varphi)/200$ & $0.02285$ ($3.2\sigma$) & Planck 2018 & A$^\ddagger$ \\
 $\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.12184$ ($2.1\sigma$) & Planck 2018 & A \\
@@ -730,6 +727,10 @@ $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ gives
 $\Omega_c h^2 = 5.5214\times0.02285\times0.96556 = 0.12184$ ($2.1\sigma$ from Planck $0.1200\pm0.0012$).
 The Israel--Stewart viscosity correction discussed in Paper~4 reduces this tension further;
 the corrected derivation is given there.\\[2pt]
+\small $^\S$ The formula $(\pi-\varphi)/(\pi+\varphi)$ gives $0.32010$; the canonical value
+from the derivation chain ($\Omega_{m,\rm dyn}\times\mathrm{MIRA}$) is $0.31993$.
+Both round to $0.320$ at the reported precision; the MIRA formula is the canonical
+value used throughout Papers~1--4.\\[2pt]
 \small $^\dagger$ $H_0^{\rm alg}=3(\varphi+\pi)^2\approx67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$
 is a \textbf{numerical coincidence} (Type~P): the adimensional combination $3(\varphi+\pi)^2$
 happens to match the Hubble constant in km\,s$^{-1}$\,Mpc$^{-1}$ units.

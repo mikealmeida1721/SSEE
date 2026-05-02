@@ -274,16 +274,19 @@ Table~\ref{tab:cross} demonstrates this consistency.
 \caption{Cross-domain predictions of the \SSEE\ two-axiom system.
   All entries use only $\varphi$ and $\pi$; no domain-specific parameters
   are introduced. Type: \textbf{A}~=~algebraic (zero data input),
-  \textbf{M}~=~MCMC-validated posterior; see Paper~1~\S\,Domain for protocol.}
+  \textbf{M}~=~MCMC-validated posterior,
+  \textbf{P}~=~numerical coincidence (dimensionless value matches physical units;
+  no first-principles dimensional derivation; see Paper~1, App.~B footnote~$\dagger$);
+  see Paper~1~\S\,Domain for full protocol.}
 \label{tab:cross}
 \begin{tabular}{llllll}
 \toprule
 Domain & SSEE formula & SSEE value & Observed & Deviation & Type \\
 \midrule
 \textbf{Cosmology} & & & & & \\
-\quad $H_0^{\rm alg}$ [km/s/Mpc] & $3(\varphi+\pi)^2$ & 67.962 & $67.4\pm0.5$ & $1.1\sigma$ & A \\
+\quad $H_0^{\rm alg}$ [km/s/Mpc] & $3(\varphi+\pi)^2$ & 67.962 & $67.4\pm0.5$ & $1.1\sigma$ & P$^\dagger$ \\
 \quad $H_0^{\rm MCMC}$ [km/s/Mpc] & emcee posterior & 66.75 & $66.75\pm0.44$ & $0.0\sigma$ & M \\
-\quad $H_{0,\rm local}$ [km/s/Mpc] & $3(\varphi+\pi)^2 + K$ & 73.48  & $73.0\pm1.0$ & $0.5\sigma$ & A \\
+\quad $H_{0,\rm local}$ [km/s/Mpc] & $3(\varphi+\pi)^2 + K$ & 73.48  & $73.0\pm1.0$ & $0.5\sigma$ & P$^\dagger$ \\
 \quad $\Omega_b$ & $\frac{100(\pi-\varphi)}{6(\varphi+\pi)^4}$ & 0.0495 & $0.0493$ & $0.4\%$ & A \\
 \quad $n_s$ (inflation) & $1-\varphi^{-7}$ & 0.96556 & $0.9649\pm0.0042$ & $0.16\sigma$ & A \\
 \textbf{Particle sector} & & & & & \\

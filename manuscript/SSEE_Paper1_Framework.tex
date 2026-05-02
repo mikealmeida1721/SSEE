@@ -255,10 +255,12 @@ The CPL form also predicts a \emph{phantom crossing}: setting $w(a_*)=-1$ gives
 For $a < a_*$ (i.e.\ $z > 0.31$), the effective equation of state $w < -1$
 (phantom-like); for $a > a_*$, $w > -1$ (quintessence-like), reaching $w_0=-0.840$
 today.  This behaviour is inherent to the linear CPL approximation and does not
-signal a ghost or gradient instability in the SSEE action, whose geometric
-bulk-viscosity term preserves the null energy condition at the background level
-(see App.~A, EFT embedding).  Whether the phantom crossing survives in the
-full causal Israel--Stewart perturbation sector is an open question deferred to Paper~4.
+signal a ghost or gradient instability in the SSEE action.
+However, the effective CPL equation of state implies NEC violation
+($\rho + p < 0$, equivalently $1 + w < 0$) for all $z > 0.31$ at the background
+level.  In the full SSEE action, the viscous pressure $\Pi$ partially compensates
+this violation at the perturbation level; a complete NEC analysis at the level of
+the Israel--Stewart stress tensor is deferred to Paper~4 (see App.~A, EFT embedding).
 
 DESI~DR2 \citep{AbdulKarim2025} analyses indicate an evolving preference for dynamical
 dark energy. The \SSEE\ algebraic point $(\wz,\wa)=(-0.840,-0.670)$ falls within the
@@ -330,8 +332,13 @@ full analysis in Paper~2 \citep{SSEE_paperII}).
 
 The Bullet Cluster (1E~0657-56) is frequently cited as proof of particulate dark matter
 due to the spatial offset between collisional X-ray gas and lensing-mass peaks
-\citep{Clowe2006}. \SSEE\ reproduces this topological offset through macroscopic
-structural viscosity without collisionless particles.
+\citep{Clowe2006}. \SSEE\ proposes a qualitative mechanism for this offset: the
+environment-dependent amplifier $\mathrm{KAL}(x)$ (Eq.~\ref{eq:KAL}) selectively
+enhances the effective surface mass density in compact galactic potential wells
+(high $x$) relative to the diffuse stripped gas (low $x$), displacing lensing peaks
+toward the galaxies without collisionless particles. A quantitative calculation of
+the projected convergence $\kappa(\vec{\theta})$ from first principles is deferred
+to future work.
 
 The structural viscosity acts as an environment-dependent scalar field. Defining
 $x = |\nabla\Phi|/a_0$, \SSEE\ adopts an interpolation function analogous to the
@@ -841,6 +848,12 @@ $M_v$    & MIKAEL\_V / Maximal Invariant & $\varphi+\pi+K_v$ & 14.2788 \\
 
 \noindent No constants were introduced \emph{ad hoc}: all seven emerge from
 systematic enumeration of Level~1 combinations of $\varphi$ and $\pi$.
+The \emph{closure criterion} is exhaustiveness at Level~1: the seven constants
+are the complete set of non-redundant, monotonically ordered elements generated
+by $\{\varphi,\pi\}$ under a single layer of arithmetic (addition, halving, integer
+scaling $\leq\!\times\!3$).  $M_v$ is the maximal element under these constraints.
+Level-2 operations (products, integer powers) are not part of the primary register
+and would introduce additional free structure not derivable from the axioms alone.
 
 \subsection*{AURA and MIRA — derivation from pre-existing constants}
 

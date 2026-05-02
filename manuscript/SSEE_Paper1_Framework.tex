@@ -705,7 +705,7 @@ $H_0^{\rm MCMC}$ & emcee posterior & $66.75\pm0.44$ & DESI+Planck & M \\
 $\Omega_m^{\rm CMB}$ & $(\pi-\varphi)/(\pi+\varphi)$ & $0.3201$ & Planck 2018 & A \\
 $n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
 $\Omega_b h^2$ & $3(\pi-\varphi)/200$ & $0.02285$ ($3.2\sigma$) & Planck 2018 & A$^\ddagger$ \\
-$\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.11926$ & Planck 2018 & A \\
+$\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.12184$ ($2.1\sigma$) & Planck 2018 & A \\
 $r$       & $\varphi^{-10}$ & $0.00813$ & LiteBIRD 2032 & A \\
 $\sum m_\nu$ & Acoustic Residue (Paper~4) & $0.084$ eV & Planck+BBN & A \\
 \bottomrule
@@ -725,7 +725,11 @@ Similarly, $\mathrm{KAL}_0$ is both a derived constant (Level~2) and
 a dynamical viscosity operator scaling cluster masses.\\[2pt]
 \small $^\ddagger$ $\Omega_b h^2=3(\pi-\varphi)/200=0.02285$ is at $3.2\sigma$ from Planck 2018 ($0.02237\pm0.00015$).
 This is the largest tension in the algebraic sector; documented in \texttt{AUDIT.md}.
-The IS correction for $\Omega_c h^2$ uses this value as input.\\[2pt]
+Using the SSEE algebraic input $\Omega_b h^2=0.02285$, the formula
+$\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ gives
+$\Omega_c h^2 = 5.5214\times0.02285\times0.96556 = 0.12184$ ($2.1\sigma$ from Planck $0.1200\pm0.0012$).
+The Israel--Stewart viscosity correction discussed in Paper~4 reduces this tension further;
+the corrected derivation is given there.\\[2pt]
 \small $^\dagger$ $H_0^{\rm alg}=3(\varphi+\pi)^2\approx67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$
 is a \textbf{numerical coincidence} (Type~P): the adimensional combination $3(\varphi+\pi)^2$
 happens to match the Hubble constant in km\,s$^{-1}$\,Mpc$^{-1}$ units.
@@ -824,36 +828,40 @@ expressions for observables were selected \emph{after} seeing the data
 This appendix documents the derivation provenance of the key \SSEE\ quantities
 to enable independent assessment.
 
-\subsection*{Primary register — Level 1 operations on $\{\varphi,\pi\}$}
+\subsection*{Primary register — arithmetic derivation from $\{\varphi,\pi\}$}
 
-All seven structural constants of \SSEE\ follow from a \emph{single layer} of
-arithmetic operations ($+$, $\times$, integer scale) applied to the two axioms:
+All seven structural constants of \SSEE\ are derived from the two axioms
+in at most two layers of arithmetic ($+$, $\times$, integer scale).
+Four constants ($\Omega$, $\beta$, $K_v$, $M_v$) are Level~1 — direct
+combinations of $\varphi$ and $\pi$; three ($\mathrm{KAL}_0$, $P_{sc}$, $T_r$)
+are Level~2 — using Level~1 constants ($\Omega$, $\beta$) as intermediates:
 
 \begin{center}
 \small
-\begin{tabular}{llll}
+\begin{tabular}{lllll}
 \toprule
-Symbol & Name & Definition & Value \\
+Symbol & Name & Definition & Value & Layer\\
 \midrule
-$\Omega$ & DNAV / Stability Metric  & $\varphi+\pi$ & 4.7596 \\
-$\beta$  & BIAL / Base Coupling     & $(\varphi+\pi)/2$ & 2.3798 \\
-$\mathrm{KAL}_0$ & Structural Viscosity & $\beta+\pi$ & 5.5214 \\
-$P_{sc}$ & PYROS / Dynamical Scalar & $\Omega+\varphi$ & 6.3776 \\
-$K_v$    & KRYSTOS / Structural Constraint & $\varphi+\pi+\Omega$ & 9.5192 \\
-$T_r$    & TRIAL / Saturation Horizon & $3(\varphi+\beta)$ & 11.9935 \\
-$M_v$    & MIKAEL\_V / Maximal Invariant & $\varphi+\pi+K_v$ & 14.2788 \\
+$\Omega$ & DNAV / Stability Metric  & $\varphi+\pi$ & 4.7596 & L1\\
+$\beta$  & BIAL / Base Coupling     & $(\varphi+\pi)/2$ & 2.3798 & L1\\
+$K_v$    & KRYSTOS / Structural Constraint & $2(\varphi+\pi)$ & 9.5192 & L1\\
+$M_v$    & MIKAEL\_V / Maximal Invariant & $3(\varphi+\pi)$ & 14.2788 & L1\\
+\midrule
+$\mathrm{KAL}_0$ & Structural Viscosity & $\beta+\pi$ & 5.5214 & L2\\
+$P_{sc}$ & PYROS / Dynamical Scalar & $\Omega+\varphi$ & 6.3776 & L2\\
+$T_r$    & TRIAL / Saturation Horizon & $3(\varphi+\beta)$ & 11.9935 & L2\\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \noindent No constants were introduced \emph{ad hoc}: all seven emerge from
-systematic enumeration of Level~1 combinations of $\varphi$ and $\pi$.
-The \emph{closure criterion} is exhaustiveness at Level~1: the seven constants
-are the complete set of non-redundant, monotonically ordered elements generated
-by $\{\varphi,\pi\}$ under a single layer of arithmetic (addition, halving, integer
-scaling $\leq\!\times\!3$).  $M_v$ is the maximal element under these constraints.
-Level-2 operations (products, integer powers) are not part of the primary register
-and would introduce additional free structure not derivable from the axioms alone.
+systematic enumeration of non-redundant, monotonically ordered arithmetic
+combinations of $\{\varphi,\pi\}$ up to two layers.
+The \emph{closure criterion} is exhaustiveness within this family: $M_v = 3(\varphi+\pi)$
+is the maximal element at Layer~1, and no additional Layer~2 combination
+yields a new structurally independent register.
+Products and integer powers of $\{\varphi,\pi\}$ are excluded from the primary
+register; they would introduce additional structure beyond the stated axioms.
 
 \subsection*{AURA and MIRA — derivation from pre-existing constants}
 
@@ -875,17 +883,16 @@ deposited 2026-01-28, prior to the Planck~2018 $\Omega_m$ confrontation in Paper
 
 \subsection*{Spectral index $n_s = 1 - \varphi^{-7}$}
 
-This expression is not a tuned fit to the Planck value.
-It follows from the $\alpha$-attractor slow-roll formula
-$n_s = 1 - 2/N$ combined with the \SSEE\ e-fold count
-$N = 2\varphi^7 \approx 58.07$ (App.~A §A.5):
-\[
-  n_s = 1 - \frac{2}{2\varphi^7} = 1 - \varphi^{-7} \approx 0.96556.
-\]
-The factor $2\varphi^7$ derives from $\alpha = \varphi^4/3$ and the Starobinsky
-attractor relation $N = \sqrt{3\alpha}\cdot(\ldots)$; the full derivation is in
-App.~A §A.5. The Planck~2018 value $n_s = 0.9649\pm0.0042$ (0.2$\sigma$
-separation) was compared \emph{after} the formula was derived.
+The SSEE algebraic commitment is $n_s = 1 - \varphi^{-7}$, pre-committed
+as part of the register structure independently of any inflationary framework
+(Zenodo Genesis~5.12, deposited 2026-01-28, prior to all Planck comparisons).
+It is not derived from the $\alpha$-attractor class; rather, compatibility with
+that class is established \emph{a posteriori} in App.~A §A.5: the two
+independent SSEE axioms ($n_s = 1-\varphi^{-7}$ and $r = \varphi^{-10}$)
+determine $N = 2\varphi^7\approx58.07$ and $\alpha = \varphi^4/3$ exactly
+as a consistency check, not as a derivation.
+The Planck~2018 value $n_s = 0.9649\pm0.0042$ is $0.2\sigma$ from the
+SSEE algebraic value; this comparison was made after the axiom was committed.
 
 \subsection*{Baryon density $\Omega_b h^2 = 3(\pi-\varphi)/200$}
 

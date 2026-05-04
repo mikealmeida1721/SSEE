@@ -1,0 +1,536 @@
+% SSEE-V3.6 — Paper 5: Israel-Stewart Causal Perturbative Analysis
+% Compile: pdflatex (×2) + bibtex
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\geometry{margin=2.5cm}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\emergencystretch=2em
+
+\newcommand{\SSEE}{\ifmmode\mathrm{SSEE}\else\textsc{ssee}\fi}
+\newcommand{\LCDM}{\ifmmode\Lambda\mathrm{CDM}\else$\Lambda$CDM\fi}
+\newcommand{\KALz}{\mathrm{KAL}_0}
+\newcommand{\wz}{w_0}
+\newcommand{\wa}{w_a}
+\newcommand{\OmDE}{\Omega_{\mathrm{DE}}}
+\newcommand{\Omm}{\Omega_{m}}
+\newcommand{\cs}{c_{s}}
+\newcommand{\tauPi}{\tau_\Pi}
+\newcommand{\ztilde}{\tilde{\zeta}}
+\newcommand{\Pitilde}{\tilde{\Pi}}
+
+\graphicspath{{../results/figures/}}
+
+\title{\textbf{Israel-Stewart Causal Viscous Perturbations\\
+in the SSEE Dark Energy Framework:\\
+Gradient Stability and the MIRA Factor}}
+
+\author{Mike Edison Almeida Vallejo%
+\thanks{Independent researcher.
+E-mail: \href{mailto:mike.almeida1721@gmail.com}{mike.almeida1721@gmail.com}.
+ORCID: \href{https://orcid.org/0009-0008-2195-7836}{0009-0008-2195-7836}.}%
+}
+
+\date{May 2026 \quad (SSEE-V3.6, Paper~5 of~5)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Structural Self-Energy Expansion (SSEE-V3.6) predicts a dark energy equation
+of state $\wz = -\KALz\,Tr/Mv \simeq -0.840$ from algebraic combinations of the
+golden ratio $\varphi$ and $\pi$, with zero free parameters.
+Because $\wz < -1/3$, a naive $k$-essence interpretation gives a bare sound speed
+$c^2_{s,\mathrm{bare}} = \wz \simeq -0.840 < 0$, implying exponential gradient
+instability at all sub-horizon scales.
+We analyse whether Israel-Stewart (IS) causal viscous hydrodynamics
+\citep{Israel1976,HiscockLindblom1985} regularises this instability within the SSEE
+parameter space, and whether the IS perturbation equations reproduce the MIRA factor
+$\mathrm{MIRA} = (3\varphi+\pi)/4 \simeq 1.9989$ that relates the dynamical and
+CMB matter densities.
+
+We show analytically that the SSEE IS parameters satisfy the identity
+$\ztilde/\tauPi H_0 = \Omega_{\mathrm{DE}} = |\wz|$ exactly (to machine precision),
+which forces $c^2_{s,\mathrm{eff}}(k\to\infty) = 0$:
+exact marginal stability is an algebraic consequence of the SSEE structure constants,
+not a tuned choice.
+The critical wavenumber is $k_\mathrm{crit} = 0.498\,H_0/c < H_0/c$, placing it
+outside the sub-horizon regime; consequently, all observationally relevant modes
+($k \gtrsim 10\,H_0/c$, i.e.\ BAO/CMB scales) are IS-stabilised.
+
+For the MIRA test, we integrate the linear IS perturbation ODE system
+(quasi-static approximation, $\delta_m,\,v_m,\,\delta_{\mathrm{DE}},\,v_{\mathrm{DE}}$)
+from $z=19$ to $z=0$ across the range $k = 10$--$100\,H_0/c$.
+We find $\delta_{\mathrm{DE}}/\delta_m \to 0^-$ at all scales,
+so $\Omega_{m,\mathrm{eff}} \approx \Omega_{m,\mathrm{dyn}} \approx 0.160$
+(MIRA$_\mathrm{num} = 0.989 \pm 0.017$), incompatible with MIRA$_\mathrm{alg} = 1.999$.
+This establishes that the MIRA factor is a background-level IS effect,
+not a linear perturbation phenomenon, and motivates a background-IS
+Friedmann analysis deferred to future work.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%======================================================================
+\section{Introduction}
+\label{sec:intro}
+%======================================================================
+
+The SSEE framework \citep{SSEE_Paper1} derives the dark energy CPL parameters
+\begin{equation}
+  \wz = -\frac{T_r}{M_v} \simeq -0.8399, \qquad
+  \wa = -\frac{P_{sc}}{K_v} \simeq -0.6700,
+\end{equation}
+purely from $\varphi = (1+\sqrt{5})/2$ and $\pi$, with no free parameters.
+These values agree with DESI DR2 at $0.05\sigma$ \citep{SSEE_Paper2,AbdulKarim2025}.
+
+However, a $k$-essence scalar with $\wz = -0.840 < -1/3$ has a Lagrangian kinetic
+exponent $n = \wz/2 \simeq -0.420$, giving the adiabatic sound speed
+\begin{equation}
+  c^2_{s,\mathrm{bare}} = \frac{1}{2n-1} = \wz \simeq -0.840.
+\end{equation}
+Negative $c^2_s$ signals a gradient instability: sub-horizon DE perturbations
+grow exponentially on a timescale $\sim (k|c_s|)^{-1}$ \citep{Hu1998,Caldwell2002},
+which generically ruins CMB and matter power spectra unless suppressed.
+
+Two independent mechanisms are known to regularise gradient instabilities
+in dark fluid models:
+\begin{enumerate}
+  \item \textbf{Israel-Stewart (IS) causal viscosity}
+    \citep{Israel1976,HiscockLindblom1985,Maartens1996}: adds a bulk viscous
+    pressure $\Pitilde$ with relaxation time $\tauPi$, modifying the
+    effective dispersion relation.
+  \item \textbf{EFT of dark energy / ghost condensate}
+    \citep{Cheung2008,Gubitosi2013}: higher-derivative operators produce
+    $c^2_s > 0$ even for $w < -1/3$.
+\end{enumerate}
+SSEE-V3.6 adopts mechanism (1), having identified in Paper~1 a structural viscosity
+$\KALz \equiv \beta+\pi \simeq 5.5214$ from the background IS steady-state condition.
+The present paper works out the perturbative consequences at linear order.
+
+A second open question in the SSEE framework is the origin of the
+\emph{MIRA factor} \citep{SSEE_Paper3}:
+\begin{equation}
+  \mathrm{MIRA} \equiv \frac{\Omega_{m,\mathrm{CMB}}}{\Omega_{m,\mathrm{dyn}}}
+  = \frac{3\varphi+\pi}{4} \simeq 1.9989,
+\end{equation}
+which maps the dynamical matter density ($\Omega_{m,\mathrm{dyn}} \simeq 0.160$,
+determined by $1+\wz$) to the CMB-inferred density
+($\Omega_{m,\mathrm{CMB}} \simeq 0.3199$, consistent with Planck 2018
+\citep{Planck2018}). Paper~3 showed that MIRA is needed to reconcile the SSEE
+background with the observed sound horizon. Its physical origin — whether
+perturbative or background IS — is addressed here.
+
+%======================================================================
+\section{Israel-Stewart Perturbation Equations}
+\label{sec:IS_eqs}
+%======================================================================
+
+\subsection{Background IS steady-state}
+\label{subsec:background_IS}
+
+At the background level, the Israel-Stewart bulk viscous pressure satisfies
+\citep{Maartens1996,Zimdahl1996}:
+\begin{equation}
+  \tauPi \dot{\Pi} + \Pi = -3\zeta H,
+\end{equation}
+where $\zeta$ is the bulk viscosity coefficient and $\Pi$ is the bulk pressure.
+In the SSEE steady state ($\dot{\Pi}=0$), $\Pi = -3\zeta H$.
+The structural viscosity identified in Papers 1 and~4 is
+\begin{equation}
+  \ztilde \equiv \frac{\zeta}{\rho_{\mathrm{DE}} H_0} = \frac{\KALz}{3} \simeq 1.8405,
+\end{equation}
+and the dimensionless relaxation time satisfies
+\begin{equation}
+  \tauPi H_0 = \frac{\KALz}{3\,\OmDE} \simeq 2.191,
+\end{equation}
+derived from the IS steady-state condition applied to the SSEE dark energy fluid
+(see Paper~1, Appendix~A).
+
+\subsection{Linearised perturbation equations}
+\label{subsec:perturb_eqs}
+
+In Newtonian gauge with $d/d\ln a$ derivatives, the linear perturbation equations
+for a two-fluid system (pressureless CDM + IS dark energy) in the sub-horizon
+limit are \citep{Hu1998,Maartens1996}:
+\begin{align}
+  \delta'_m &= -\frac{k}{aH}\,v_m, \label{eq:deltam} \\
+  v'_m      &= -v_m - \frac{k}{aH}\,\Phi, \label{eq:vm} \\
+  \delta'_{\mathrm{DE}} &= -(1+w)\frac{k}{aH}\,v_{\mathrm{DE}}, \label{eq:deltaDE} \\
+  v'_{\mathrm{DE}} &= -(1-3c^2_s)\,v_{\mathrm{DE}}
+    - \frac{k}{aH}\!\left[\frac{c^2_s\,\delta_{\mathrm{DE}}}{1+w}
+    + \frac{\Phi}{1+w}\right]
+    + \frac{k}{aH}\,\Pitilde, \label{eq:vDE} \\
+  \tauPi H\,\Pitilde' &= -\Pitilde - \ztilde\frac{k}{aH}\,v_{\mathrm{DE}}, \label{eq:Pi}
+\end{align}
+where primes denote $d/d\ln a$, $w = \wz + \wa(1-a)$ is the CPL equation of state,
+and the Newtonian potential satisfies the sub-horizon Poisson equation
+\begin{equation}
+  \Phi = -\frac{3}{2k^2\,aH^2}\!\left[\Omega_m\,\delta_m
+    + \OmDE\,f_{\mathrm{DE}}(a)\,\delta_{\mathrm{DE}}\right].
+  \label{eq:Poisson}
+\end{equation}
+
+\subsection{Quasi-static IS approximation}
+\label{subsec:QS}
+
+The IS relaxation eigenvalue is $\lambda_\Pi \simeq -(\tauPi H)^{-1}$.
+From the background cosmology (Table~\ref{tab:background}), $\tauPi H \geq 2.19$
+at all times $z \leq 0$, rising to $\tauPi H \simeq 877$ at $z=99$.
+The system is in the quasi-static IS regime whenever $\tauPi H \gg 1$.
+
+Setting $\Pitilde' = 0$ in Eq.~\eqref{eq:Pi} gives the algebraic relation
+\begin{equation}
+  \Pitilde_{\mathrm{QS}} = -\ztilde\,\frac{k}{aH}\,v_{\mathrm{DE}},
+  \label{eq:PiQS}
+\end{equation}
+which, substituted into Eq.~\eqref{eq:vDE}, yields an effective friction:
+\begin{equation}
+  v'_{\mathrm{DE}} = -\underbrace{\!\left[(1-3c^2_s)
+    + \ztilde\!\left(\frac{k}{aH}\right)^{\!2}\right]}_{\mathrm{eff.\ friction}}\!
+    v_{\mathrm{DE}}
+    - \frac{k}{aH}\,\frac{c^2_s\,\delta_{\mathrm{DE}}}{1+w}
+    - \frac{k}{aH}\,\frac{\Phi}{1+w}.
+  \label{eq:vDE_QS}
+\end{equation}
+This replaces the stiff 5-variable ODE system
+(Eqs.~\ref{eq:deltam}--\ref{eq:Pi}) with a 4-variable system
+($\delta_m, v_m, \delta_{\mathrm{DE}}, v_{\mathrm{DE}}$) that has no stiff
+eigenvalue and is integrable with standard Runge-Kutta methods.
+The approximation is valid at all redshifts since $\tauPi H \geq 2.19$
+throughout cosmic history.
+
+%======================================================================
+\section{Q1: IS Gradient Stability — Analytic Result}
+\label{sec:Q1_stability}
+%======================================================================
+
+\subsection{IS dispersion relation}
+\label{subsec:dispersion}
+
+In the short-wavelength limit ($k\tauPi \gg aH$), the IS dispersion relation
+for DE perturbations gives an effective sound speed \citep{HiscockLindblom1985}:
+\begin{equation}
+  c^2_{s,\mathrm{eff}}(k\to\infty) = c^2_{s,\mathrm{bare}} + \frac{\ztilde}{\tauPi H_0}.
+  \label{eq:cs2eff}
+\end{equation}
+The full $k$-dependent expression, interpolating between the
+Navier-Stokes ($k\to 0$) and IS ($k\to\infty$) limits, is
+\begin{equation}
+  c^2_{s,\mathrm{eff}}(k) = c^2_{s,\mathrm{bare}}
+  + \frac{\ztilde}{\tauPi H_0}\cdot\frac{x^2}{1+x^2},
+  \quad x \equiv \frac{k\,\tauPi H_0}{aH/H_0}.
+  \label{eq:cs2full}
+\end{equation}
+
+\subsection{Exact marginal stability identity}
+\label{subsec:identity}
+
+Substituting the SSEE values:
+\begin{equation}
+  \frac{\ztilde}{\tauPi H_0}
+  = \frac{\KALz/3}{\KALz/(3\,\OmDE)}
+  = \OmDE = |\wz|,
+  \label{eq:identity}
+\end{equation}
+so
+\begin{equation}
+  \boxed{c^2_{s,\mathrm{eff}}(k\to\infty)
+    = \wz + |\wz| = 0.}
+  \label{eq:cs2_zero}
+\end{equation}
+This is an \emph{exact algebraic identity}, not a numerical coincidence.
+The SSEE structure constants ($\KALz$, $\OmDE$) automatically place the IS system
+at marginal stability in the high-$k$ limit.
+The numerical verification gives $|c^2_{s,\mathrm{eff}}| < 10^{-16}$ (floating-point
+round-off), confirming Eq.~\eqref{eq:cs2_zero} to machine precision.
+
+\subsection{Critical wavenumber}
+\label{subsec:kcrit}
+
+The transition between unstable (Navier-Stokes) and stable (IS) regimes
+occurs at $x = 1$, i.e.\
+\begin{equation}
+  k_\mathrm{crit} = \frac{aH}{\tauPi H_0\,|c_s|}.
+\end{equation}
+At $z=0$ ($a=1$, $H=H_0$):
+\begin{equation}
+  \frac{k_\mathrm{crit}}{H_0/c}
+  = \frac{1}{\tauPi H_0 \cdot |c_s|}
+  = \frac{1}{2.191 \times 0.9165}
+  \simeq 0.498.
+\end{equation}
+Since $k_\mathrm{crit} < H_0/c$, this wavenumber lies \emph{outside} the
+sub-horizon regime. Every mode that has entered the Hubble horizon satisfies
+$k > aH$, i.e.\ $k > H_0/c$ at $z=0$, and is therefore in the IS-stabilised
+regime (Fig.~\ref{fig:cs2eff}).
+
+\begin{table}[h!]
+\centering
+\caption{Background cosmology and IS relaxation across redshift.}
+\label{tab:background}
+\begin{tabular}{cccc}
+\toprule
+$z$ & $a$ & $H/H_0$ & $\tauPi H$ \\
+\midrule
+99   & 0.01 & 400.1 & 876.6 \\
+9    & 0.10 & 12.66 & 27.73 \\
+4    & 0.20 & 4.513 & 9.888 \\
+1    & 0.50 & 1.441 & 3.156 \\
+0.25 & 0.80 & 1.098 & 2.405 \\
+0    & 1.00 & 1.000 & 2.191 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The effective sound speed is shown in Fig.~\ref{fig:cs2eff} as a function of
+$k/(H_0/c)$ at $z=0$.
+For $k \gg k_\mathrm{crit} = 0.498\,H_0/c$, $c^2_{s,\mathrm{eff}} \to 0^-$
+monotonically from the bare value $\wz \simeq -0.840$.
+At BAO/CMB scales ($k \gtrsim 40\,H_0/c$ in physical Mpc$^{-1}$ units),
+$|c^2_{s,\mathrm{eff}}| < 10^{-3}$: dark energy perturbations propagate as
+effectively pressureless dust.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{fig_paper5_IS_stability.pdf}
+\caption{\textbf{Left}: IS effective sound speed $c^2_{s,\mathrm{eff}}(k)$ at $z=0$
+  (blue solid), interpolating from the bare value $c^2_s = \wz \simeq -0.840$
+  (red dashed) to the IS limit $c^2_{s,\mathrm{eff}}=0$ (green dashed) at $k\to\infty$.
+  The red shaded region is gradient-unstable; the transition occurs at
+  $k_\mathrm{crit} = 0.498\,H_0/c$ (grey dash-dot), which lies below the
+  Hubble wavenumber $H_0/c$ (all sub-horizon modes are IS-stable).
+  \textbf{Right}: Evolution of $\delta_{\mathrm{DE}}/\delta_m$ with scale factor $a$
+  for representative wavenumbers $k$ in the sub-horizon IS-stabilised regime.
+  Dark energy perturbations remain small (IS-suppressed) compared to matter,
+  consistent with the Q2 result MIRA$_\mathrm{num} \approx 1$.}
+\label{fig:cs2eff}
+\end{figure}
+
+%======================================================================
+\section{Q2: MIRA Factor from Linear IS Perturbations}
+\label{sec:Q2_MIRA}
+%======================================================================
+
+\subsection{Numerical setup}
+\label{subsec:setup}
+
+We integrate Eqs.~\eqref{eq:deltam}--\eqref{eq:Poisson} with the quasi-static
+substitution \eqref{eq:PiQS} from $a_\mathrm{ini}=0.05$ ($z=19$) to $a=1$ ($z=0$).
+Initial conditions follow the adiabatic growing mode:
+\begin{equation}
+  \delta_m(a_\mathrm{ini}) = a_\mathrm{ini}, \quad
+  v_m(a_\mathrm{ini}) = -a_\mathrm{ini}, \quad
+  \delta_{\mathrm{DE}} = v_{\mathrm{DE}} = 0.
+\end{equation}
+The dark energy perturbation is sourced purely through the gravitational coupling
+$\Phi$ in Eqs.~\eqref{eq:deltaDE}--\eqref{eq:vDE_QS}.
+We restrict the analysis to $k \geq 10\,H_0/c$, where both the sub-horizon
+approximation and the IS quasi-static regime are firmly valid
+($k/(aH) \geq 10/35.8 \simeq 0.28$ at $a_\mathrm{ini}=0.05$,
+increasing to $k \geq 10$ at $z=0$).
+
+\subsection{Results}
+\label{subsec:results_MIRA}
+
+Table~\ref{tab:MIRA} summarises the growth results.
+The ratio $r \equiv \delta_{\mathrm{DE}}/\delta_m$ at $z=0$ is small and
+\emph{negative} at all scales, with $|r| \to 0$ as $k$ increases.
+This reflects IS suppression: the bulk viscous friction in Eq.~\eqref{eq:vDE_QS}
+dominates over gravitational sourcing for large $k$, preventing DE from clustering.
+
+\begin{table}[h!]
+\centering
+\caption{Linear IS perturbation growth from $z=19$ to $z=0$.
+  $r \equiv \delta_{\mathrm{DE}}/\delta_m$;
+  $\Omega_{m,\mathrm{eff}} = \Omega_{m,\mathrm{dyn}} + \OmDE\,r$;
+  MIRA$_\mathrm{num} = \Omega_{m,\mathrm{eff}}/\Omega_{m,\mathrm{dyn}}$.}
+\label{tab:MIRA}
+\begin{tabular}{ccccc}
+\toprule
+$k\,[H_0/c]$ & $\delta_m(z=0)$ & $r = \delta_{\mathrm{DE}}/\delta_m$
+  & $\Omega_{m,\mathrm{eff}}$ & MIRA$_\mathrm{num}$ \\
+\midrule
+10  & 0.369 & $-0.0076$ & 0.1537 & 0.960 \\
+20  & 0.699 & $-0.0004$ & 0.1597 & 0.998 \\
+50  & 1.688 & $-0.00005$ & 0.1600 & 1.000 \\
+100 & 3.337 & $-0.00001$ & 0.1600 & 1.000 \\
+\midrule
+\multicolumn{3}{l}{Mean ($k \geq 10$):}
+  & & $0.989 \pm 0.017$ \\
+\multicolumn{3}{l}{MIRA (algebraic):}
+  & & $1.9989$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The numerical MIRA is $0.989 \pm 0.017$ at $k \geq 10\,H_0/c$,
+compared to the algebraic value $1.9989$: a discrepancy of $50\%$.
+Linear IS perturbations suppress DE clustering and leave
+$\Omega_{m,\mathrm{eff}} \approx \Omega_{m,\mathrm{dyn}} \approx 0.160$.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\textwidth]{fig_paper5_MIRA_test.pdf}
+\caption{MIRA$_\mathrm{num} = \Omega_{m,\mathrm{eff}}/\Omega_{m,\mathrm{dyn}}$
+  (blue points) as a function of $k/(H_0/c)$.
+  The algebraic target MIRA $= (3\varphi+\pi)/4 \simeq 1.999$ (red dashed)
+  is not reproduced: linear IS perturbations yield
+  MIRA$_\mathrm{num} \to 1$ for $k \gg H_0/c$.
+  The upper grey dash-dot line marks full DE clustering
+  ($1/\Omega_{m,\mathrm{dyn}} \simeq 6.25$), ruled out by observations.
+  The correct MIRA origin lies at the background IS level (Section~\ref{sec:discussion}).}
+\label{fig:MIRA_test}
+\end{figure}
+
+\subsection{Physical interpretation}
+\label{subsec:interp}
+
+The IS friction term in Eq.~\eqref{eq:vDE_QS},
+$\ztilde\,(k/aH)^2 v_{\mathrm{DE}}$, grows as $k^2$, making DE perturbations
+increasingly damped at small scales.
+The gravitational source $\sim\Phi/(1+w)$ cannot overcome this damping for
+$k \gtrsim 10\,H_0/c$.
+As a consequence, in the linear IS regime:
+\begin{itemize}
+  \item $\delta_{\mathrm{DE}} \ll \delta_m$ at all sub-horizon scales,
+  \item $\Omega_{m,\mathrm{eff}} \approx \Omega_{m,\mathrm{dyn}}$, and
+  \item MIRA$_\mathrm{num} \approx 1 \neq \mathrm{MIRA}_\mathrm{alg}$.
+\end{itemize}
+This is a falsifiable prediction: if SSEE dark energy were to cluster
+significantly on sub-horizon scales, it would be inconsistent with the IS
+suppression derived here.
+
+%======================================================================
+\section{Discussion}
+\label{sec:discussion}
+%======================================================================
+
+\subsection{MIRA as a background IS effect}
+\label{subsec:MIRA_background}
+
+The failure of linear IS perturbations to reproduce MIRA points to a
+background-level origin.
+At the background level, the IS bulk viscous pressure modifies the Friedmann
+equations as \citep{Zimdahl1996,Maartens1996}:
+\begin{equation}
+  3H^2 = \rho_m + \rho_{\mathrm{DE}} + \Pi_{\mathrm{bulk}},
+\end{equation}
+where $\Pi_{\mathrm{bulk}} = -3\zeta H$ in steady state.
+This shifts the effective energy budget, potentially explaining why the
+BAO-inferred $\Omega_m$ (which uses the background distance-redshift relation)
+differs from $\Omega_{m,\mathrm{dyn}} = 1+\wz$.
+A full background IS Friedmann analysis is left for future work.
+
+\subsection{Marginal stability and JWST}
+\label{subsec:JWST}
+
+The exact marginal stability $c^2_{s,\mathrm{eff}} = 0$ has a specific implication
+for structure formation: DE perturbations propagate as pressureless fluid on scales
+$k \gg k_\mathrm{crit}$.
+This is equivalent to the SSEE prediction $\delta_c = \delta_{c,\mathrm{EdS}} \times n_s
+= 1.686 \times 0.96556 \simeq 1.628$ (derived in Paper~4 via IS collapse),
+boosting the halo mass function at high redshift.
+Combined with the Press-Schechter analysis of Paper~4, SSEE predicts an excess of
+massive halos at $z > 10$ by a factor $\times 1.4$--$\times 2.0$ relative to
+$\Lambda$CDM (depending on mass scale), potentially explaining JWST early galaxy
+counts \citep{BoylanKolchin2023}.
+This prediction will be testable when JWST halo mass functions become available
+at $z \gtrsim 12$.
+
+\subsection{Comparison with ghost condensate / EFT DE}
+\label{subsec:ghost}
+
+EFT-based ghost condensate models \citep{Arkani-Hamed2004,Cheung2008} also
+achieve $c^2_s > 0$ for $w < -1/3$ through higher-derivative operators.
+The SSEE IS mechanism differs in two key ways:
+(i)~stability is achieved at \emph{exactly} marginal ($c^2_{s,\mathrm{eff}} = 0$),
+not $c^2_s = 1$ as in canonical scalar fields, and
+(ii)~the IS relaxation time $\tauPi$ is algebraically fixed, with no freedom
+to tune the stabilisation scale.
+Both mechanisms remain compatible with current CMB constraints, which bound
+$c^2_s \geq 0$ at the level of a few percent \citep{Calabrese2011}.
+
+\subsection{Causal structure and Hiscock-Lindblom stability}
+\label{subsec:causal}
+
+The IS theory satisfies causality (perturbations propagate at speed
+$c_s \leq c$) and Hiscock-Lindblom stability \citep{HiscockLindblom1983,HiscockLindblom1985}
+(positivity of entropy production) provided $\tauPi > 0$ and $\zeta \geq 0$.
+Both conditions are satisfied in SSEE: $\tauPi H_0 = 2.191 > 0$ and
+$\ztilde = \KALz/3 = 1.841 > 0$.
+The Navier-Stokes limit ($\tauPi \to 0$) would restore the gradient instability;
+the finite SSEE relaxation time is essential for causal regularisation.
+
+%======================================================================
+\section{Conclusions}
+\label{sec:conclusions}
+%======================================================================
+
+We have performed a full linear Israel-Stewart causal viscous perturbation analysis
+of SSEE dark energy.
+The two central results are:
+
+\begin{enumerate}[leftmargin=*]
+
+\item \textbf{Q1 — Gradient stability (confirmed analytically):}
+  The SSEE IS parameters satisfy the algebraic identity
+  $\ztilde/(\tauPi H_0) = \OmDE = |\wz|$,
+  forcing $c^2_{s,\mathrm{eff}}(k\to\infty) = 0$ to machine precision.
+  The critical wavenumber $k_\mathrm{crit} = 0.498\,H_0/c < H_0/c$ lies
+  outside the sub-horizon regime, so all observationally relevant modes
+  are IS-stabilised.
+  This is an exact algebraic consequence of the SSEE structure constants,
+  not a tuned parameter choice.
+
+\item \textbf{Q2 — MIRA factor (not reproduced by linear IS):}
+  Linear IS perturbations suppress DE clustering ($\delta_{\mathrm{DE}}/\delta_m \to 0$
+  for $k \geq 10\,H_0/c$), yielding MIRA$_\mathrm{num} = 0.989 \pm 0.017$
+  versus MIRA$_\mathrm{alg} = 1.9989$.
+  The discrepancy is $50\%$, establishing that the MIRA factor is a
+  background-level IS effect, not a perturbative one.
+  A background IS Friedmann analysis is required to complete this derivation.
+
+\end{enumerate}
+
+Together these results establish that SSEE dark energy is causally stable at all
+observationally relevant scales (ruling out any gradient instability signature in
+CMB or LSS data), while motivating a non-perturbative derivation of the
+MIRA = $(3\varphi+\pi)/4$ identity.
+
+%======================================================================
+\section*{Data Availability}
+%======================================================================
+
+The Python script \texttt{src/ssee\_paper5\_IS\_perturbations.py} and output figures
+are available in the SSEE-V3.6 repository at \url{https://github.com/mikealmeida1721/SSEE}
+(Zenodo DOI: \href{https://doi.org/10.5281/zenodo.19679049}{10.5281/zenodo.19679049}).
+
+%======================================================================
+\section*{Acknowledgements}
+%======================================================================
+
+This research was carried out as an independent study.
+The author thanks the open-source communities behind NumPy, SciPy, Matplotlib,
+and CAMB, and acknowledges computational resources provided by a personal workstation.
+
+%======================================================================
+\bibliographystyle{plainnat}
+\bibliography{ssee_paper5}
+%======================================================================
+
+\end{document}

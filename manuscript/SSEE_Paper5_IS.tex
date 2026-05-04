@@ -790,9 +790,9 @@ $\sigma_8^{\mathrm{SSEE}} = 0.702$:
     = 0.725 \pm 0.005.}
   \label{eq:S8_SSEE}
 \end{equation}
-This is $7.7\sigma$ below Planck but only $2.0\sigma$ below KiDS-1000 and
-$2.8\sigma$ below DES-Y3 ($S_8 = 0.776\pm0.017$, 3$\times$2pt) — substantially
-improving on $\Lambda$CDM tensions of $3.3\sigma$ with KiDS and DES-Y3.
+This is $7.7\sigma$ below Planck, $2.0\sigma$ below KiDS-1000, and
+$2.8\sigma$ below DES-Y3 ($S_8 = 0.776\pm0.017$, 3$\times$2pt).
+While the amplitude is lower than Planck, tension with DES/KiDS remains at a significant level.
 
 \begin{table}[h!]
 \centering
@@ -814,8 +814,8 @@ SSEE (this work) & $0.725 \pm 0.005$ & — & — & — \\
 \end{tabular}
 \end{table}
 
-The SSEE prediction $S_8 = 0.725$ is within $2\sigma$ of both KiDS-1000 and DES-Y3
-(3$\times$2pt), a substantial improvement over $\Lambda$CDM ($>3\sigma$ with both).
+The SSEE prediction $S_8 = 0.725$ remains in $2.0\sigma$ and $2.8\sigma$ tension with KiDS-1000 and DES-Y3 respectively.
+The IS growth sector has been explored, but does not yet convincingly resolve the lensing tension.
 The primary driver is the growth suppression factor $\mathcal{G} = 0.866$,
 which is set by $\Omega_{m,\mathrm{dyn}} = 0.160$.
 Any future weak-lensing measurement of $S_8 < 0.73$ would be \emph{favoured}
@@ -996,11 +996,11 @@ effective $S_8$ inconsistent with current weak-lensing data.
 \label{sec:discussion}
 %======================================================================
 
-\subsection{Background IS origin of the MIRA factor}
+\subsection{Physical origin of the MIRA factor}
 \label{subsec:MIRA_background}
 
 The failure of linear IS perturbations to reproduce MIRA
-(Section~\ref{sec:Q2_MIRA}) points to a background-level origin.
+(Section~\ref{sec:Q2_MIRA}) raises the question of whether the factor arises at the background level.
 At the background level, the IS bulk viscous pressure modifies the Friedmann
 equations as \citep{Zimdahl1996,Maartens1996}:
 \begin{equation}
@@ -1008,21 +1008,9 @@ equations as \citep{Zimdahl1996,Maartens1996}:
   \label{eq:Friedmann_IS}
 \end{equation}
 where in the SSEE steady state $\Pi_{\mathrm{bulk}} = -3\zeta H = -\KALz\,\rho_{\mathrm{DE}}H/H_0$.
-This viscous term effectively shifts the observed matter density:
-an observer who measures $H(z)$ and infers $\Omega_m$ via
-$3H^2 = \rho_m^{\rm eff}/M_{\rm Pl}^2$ would assign a higher density
-than the bare $\Omega_{m,\mathrm{dyn}}$ because the viscous pressure
-contributes to the right-hand side.
-The full derivation of the background IS MIRA identity is presented in
-Appendix~\ref{app:background}; the key result is
-\begin{equation}
-  \Omega_{m,\mathrm{eff}}^{\mathrm{background}}
-  = \Omega_{m,\mathrm{dyn}} \times \frac{3\varphi+\pi}{4}
-  = \Omega_{m,\mathrm{dyn}} \times \mathrm{MIRA},
-  \label{eq:MIRA_background}
-\end{equation}
-which recovers the algebraic MIRA factor exactly when evaluated at the SSEE
-steady-state condition.
+This viscous term effectively shifts the observed matter density. However, numerical integration of the background IS transport equations reveals that fitting an effective $\Omega_m$ to the resulting $H(z)$ evolution yields $\Omega_{m,\mathrm{fit}} / \Omega_{m,\mathrm{dyn}} \approx 3.04$ when using the SSEE viscous constant $\zeta = \KALz/3$. 
+
+This is $52\%$ higher than the algebraic MIRA factor ($1.9989$). Consequently, we establish that MIRA \emph{cannot} be derived from the background Israel-Stewart viscous pressure. The physical origin of the MIRA factor therefore remains outside the scope of the classical IS fluid mechanics developed in this work. It stands as a fundamental, unexplained algebraic axiom of the SSEE framework, potentially pointing toward new physics such as non-minimal gravitational couplings (e.g., Kinetic Braiding in the EFT-DE).
 
 \subsection{Implications for JWST early galaxy counts}
 \label{subsec:JWST}
@@ -1137,7 +1125,7 @@ $\gamma_{\rm IS} = 0.554$ & $0.554 \pm 0.001$ & test via $f\sigma_8$; $\gamma$ d
 $f\sigma_8(z=0.5) = 0.341$ & $0.341 \pm 0.010$ & $28\%$ below $\Lambda$CDM; current RSD tension $2.67\sigma$ (6 surveys) & DESI full-shape / 2026 \\
 $D_1$ suppression $\mathcal{G} = 0.866$ & $0.866 \pm 0.005$ & $2\%$ precision & Euclid weak lensing / 2027 \\
 No DE clustering ($|\delta_{\mathrm{DE}}/\delta_m| < 10^{-3}$) & $< 10^{-3}$ at $k > 20\,H_0/c$ & cosmic variance & Future 21cm surveys / 2030+ \\
-MIRA $= (3\varphi+\pi)/4$ (background) & $1.9989$ & $\Omega_m$ direct measurement & Stage IV CMB / 2030 \\
+MIRA $= (3\varphi+\pi)/4$ (pure algebraic axiom) & $1.9989$ & $\Omega_m$ direct measurement & Stage IV CMB / 2030 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1162,16 +1150,14 @@ Moreover, the signal speed saturates the causality bound ($v_{\rm sig} = c$),
 placing SSEE at the maximally causal, minimally fine-tuned configuration
 consistent with thermodynamic stability.
 
-\paragraph{Q2 — MIRA factor (background IS effect, not perturbative).}
+\paragraph{Q2 — MIRA factor (pure algebraic axiom).}
 Linear IS perturbations yield
 $\mathrm{MIRA}_{\mathrm{num}} = 0.989 \pm 0.017$ versus
 $\mathrm{MIRA}_{\mathrm{alg}} = 1.9989$ at all sub-horizon scales.
 The discrepancy is $50\%$, establishing that the MIRA factor is not a
 perturbative phenomenon.
-We prove in Appendix~\ref{app:background} that it arises at the background level
-from the IS viscous modification of the Friedmann equation, and that the
-algebraic expression $\Omega_{m,\mathrm{eff}} = \Omega_{m,\mathrm{dyn}} \times (3\varphi+\pi)/4$
-is recovered exactly from the SSEE steady-state condition.
+Furthermore, numerical integration of the background IS Friedmann equations yields an effective ratio of $3.04$, failing to reproduce MIRA at the background level.
+We conclude that the MIRA factor does not emerge from classical Israel-Stewart fluid mechanics, but must be treated as a fundamental algebraic postulate of the framework, likely requiring an extension of the gravitational sector (e.g., EFT Kinetic Braiding) to be fully explained.
 
 \paragraph{Q3 — Growth rate and $S_8$ (partial resolution of lensing tension).}
 The IS growth index $\gamma_{\mathrm{IS}} = 0.554 \pm 0.001$
@@ -1182,10 +1168,9 @@ However, the \emph{growth rate itself} is suppressed because
 $\Omega_{m,\mathrm{dyn}} = 0.160$: the linear suppression is $\mathcal{G} = 0.866$, giving
 $\sigma_8^{\mathrm{SSEE}} = 0.702 \pm 0.005$ and
 $S_8^{\mathrm{SSEE}} = 0.725 \pm 0.005$.
-This places SSEE within $2.0\sigma$ of KiDS-1000 and $2.8\sigma$ of DES-Y3 —
-\emph{smaller} than the $3.3\sigma$ $\Lambda$CDM tensions in both cases —
-without any free parameter adjustment.
-The improvement arises from a structural consequence of IS dynamics with
+This leaves SSEE in $2.0\sigma$ and $2.8\sigma$ tension with KiDS-1000 and DES-Y3 respectively.
+The IS growth sector is fully explored, but tension with DES/KiDS remains an unresolved challenge.
+The lowered amplitude arises from a structural consequence of IS dynamics with
 $\Omega_{m,\mathrm{dyn}} = 1 + w_0 = T_r/M_v \simeq 0.160$.
 By contrast, the growth \emph{rate} $f(z) \approx \Omega_m(z)^\gamma$
 is suppressed at all redshifts by the same low $\Omega_{m,\mathrm{dyn}}$,
@@ -1196,18 +1181,15 @@ requires extension (Section~\ref{subsec:S8_fsigma8_split}).
 
 Together, these results establish that SSEE dark energy is:
 (i) causally and thermodynamically stable (Q1),
-(ii) predictive of an $S_8$ value within $2\sigma$ of current weak-lensing
-surveys, reducing the lensing tension without free parameters (Q3), and
-(iii) internally consistent: the MIRA factor, previously postulated algebraically,
-is derivable from the same IS steady-state condition that generates $\KALz$ (Q2 + Appendix~C).
+(ii) predictive of an $S_8$ value within $2.0\sigma$ and $2.8\sigma$ of KiDS and DES respectively, exploring the growth tension without free parameter adjustment (Q3), and
+(iii) strictly bounded: the MIRA factor cannot be derived from IS dynamics and remains a pure algebraic postulate requiring future theoretical extension (Q2).
 The primary falsifiable prediction is $f\sigma_8(z=0.5) = 0.341$, which is
 $28\%$ below $\Lambda$CDM.
 Comparison with current RSD data (6dFGRS, SDSS MGS, BOSS DR12, eBOSS DR16;
 Table~\ref{tab:fsigma8}) yields a mean tension of $2.67\sigma$ across six
-surveys — a genuine challenge that cannot be resolved by parameter tuning
-within the zero-free-parameter SSEE framework.
+surveys. Like the $H(z)$ chronometer tension, this $f\sigma_8$ suppression is a direct physical consequence of the low geometric matter density ($\Omega_{m,\mathrm{dyn}}=0.160$). It acts as a clear diagnostic, strongly suggesting that a future theoretical extension via Kinetic Braiding (EFT) is needed to dynamically enhance the effective gravitational clustering force without altering the underlying geometric axioms.
 This tension is reported transparently; a confirmed $>5\sigma$ discrepancy
-from DESI Year-1 full-shape analysis would directly falsify SSEE-V3.6.
+from DESI Year-1 full-shape analysis would directly falsify the current unbraided SSEE-V3.6 formulation.
 
 %======================================================================
 \section*{Data Availability}
@@ -1317,49 +1299,7 @@ $|\delta_{\mathrm{DE}}/\delta_m| \ll 1$ at $z=0$.
 No eigenvalue has a growth rate exceeding $\lambda_1$: the system is
 perturbatively stable with the matter growing mode dominating.
 
-%======================================================================
-\section{Background IS Friedmann Equation and the MIRA Identity}
-\label{app:background}
-%======================================================================
 
-At the background level, the modified Friedmann equation with IS bulk viscous pressure is
-\begin{equation}
-  3H^2 = \frac{\rho_m + \rho_{\mathrm{DE}} + \Pi_{\mathrm{bulk}}}{M_{\rm Pl}^2},
-  \label{app:eq:Friedmann}
-\end{equation}
-with $\Pi_{\mathrm{bulk}} = -3\zeta H = -\KALz\,\rho_{\mathrm{DE}}\,(H/H_0)$
-in the SSEE steady state.
-An observer who fits $H(z)$ data to the standard formula
-$3H^2 M_{\rm Pl}^2 = \rho_m + \rho_{\mathrm{DE}}^{\rm eff}$ would assign an
-effective DE density
-\begin{equation}
-  \rho_{\mathrm{DE}}^{\rm eff} = \rho_{\mathrm{DE}}
-  \left(1 - \KALz\,\frac{H}{H_0}\right).
-  \label{app:eq:rhoDE_eff}
-\end{equation}
-Correspondingly, the effective matter density inferred from Poisson clustering
-(which does not include the viscous pressure) is \emph{larger} than
-$\rho_{m,\mathrm{dyn}}$ by a compensating factor.
-Evaluating Eq.~\eqref{app:eq:Friedmann} at $z=0$ and solving for the
-effective $\Omega_{m,\mathrm{eff}}$:
-\begin{align}
-  \Omega_{m,\mathrm{eff}}
-  &= \Omega_{m,\mathrm{dyn}}
-    + \OmDE\!\left[1 - \left(1 - \KALz\right)\right] \notag \\
-  &= \Omega_{m,\mathrm{dyn}}
-    + \OmDE \cdot \KALz \notag \\
-  &= (1+\wz) + (1+|\wz|) \cdot \KALz.
-\end{align}
-Substituting $\KALz = \beta + \pi$, $\wz = -T_r/M_v$, $\OmDE = T_r/M_v$,
-and the SSEE algebraic relations yields, after reduction:
-\begin{equation}
-  \frac{\Omega_{m,\mathrm{eff}}}{\Omega_{m,\mathrm{dyn}}}
-  = \frac{3\varphi+\pi}{4} = \mathrm{MIRA} \simeq 1.9989.
-  \label{app:eq:MIRA_proof}
-\end{equation}
-This is the algebraic proof that MIRA arises at the background IS level.
-The derivation uses only the SSEE steady-state condition and the definitions
-of $\varphi$, $\pi$, $\beta$, $\KALz$ — no free parameters enter.
 
 %======================================================================
 \bibliographystyle{plainnat}

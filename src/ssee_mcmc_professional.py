@@ -1,7 +1,6 @@
 """
 SSEE-V3.6 — MCMC Profesional (overnight run)
-Mejoras sobre ssee_paper2_mcmc.py:
-  1. Covarianza DESI completa 13×13 (Abdul-Karim et al. 2025, arXiv:2503.14738)
+  1. Covarianza DESI block-diagonal 13×13 (Abdul-Karim et al. 2025, same-bin correlated)
   2. N_walkers=100, N_steps=25000, N_burn=5000  →  N_eff >> 1000 por parámetro
   3. Guardado incremental de cadenas (.npz) cada 500 pasos (no se pierde nada si se corta)
   4. Log en tiempo real con progress=False (para nohup)
@@ -96,7 +95,7 @@ DESI_TYPE = ["DV_rd","DM_rd","DH_rd","DM_rd","DH_rd","DM_rd","DH_rd",
 DESI_OBS  = np.array([7.93, 13.62, 20.08, 16.85, 19.50, 21.71, 17.88,
                       27.79, 13.82, 30.21, 13.23, 39.71,  8.52])
 
-# Covarianza DESI DR2 completa 13×13 (Abdul-Karim et al. 2025, arXiv:2503.14738, Table 3)
+# Covarianza DESI DR2 block-diagonal aproximada 13×13 (Abdul-Karim et al. 2025, Table 3)
 # Diagonal extraída de sigma_i, off-diagonal de los coeficientes de correlación publicados.
 # Los bloques cruzados entre redshifts distintos son ~0; los bloques DM-DH son correlacionados.
 DESI_SIGMA = np.array([0.15, 0.25, 0.60, 0.32, 0.55, 0.28, 0.35,
@@ -128,14 +127,12 @@ PLANCK_COV_INV = np.linalg.inv(np.array([
 ]))
 PLANCK_MU = np.array([PLANCK_H0[0], PLANCK_OM[0], PLANCK_OBH2[0]])
 
+# Primary dataset: only the 4 rigorous clusters (Zhang 2026). Estimated clusters moved to sensitivity analysis.
 CLUSTERS = [
     {"M_ig": 1.8, "dM_obs": 1.0, "M_obs": 9.8 },
     {"M_ig": 2.2, "dM_obs": 1.2, "M_obs": 12.0},
     {"M_ig": 1.5, "dM_obs": 1.0, "M_obs": 8.0 },
     {"M_ig": 1.2, "dM_obs": 1.0, "M_obs": 6.5 },
-    {"M_ig": 2.0, "dM_obs": 1.5, "M_obs": 11.0},  # Perseus (estimado de literature)
-    {"M_ig": 0.8, "dM_obs": 0.5, "M_obs": 4.2 },  # Virgo/M87 (estimado)
-    {"M_ig": 1.6, "dM_obs": 1.2, "M_obs": 8.5 },  # A2744  (estimado)
 ]
 
 CC_DATA = np.array([
@@ -314,7 +311,7 @@ bic_min = min(r["BIC"] for r in models)
 aic_min = min(r["AIC"] for r in models)
 
 log("\n" + "="*65)
-log("COMPARACIÓN DE MODELOS (covarianza DESI completa)")
+log("COMPARACIÓN DE MODELOS (covarianza DESI same-bin block-diagonal)")
 log("="*65)
 log(f"\n  {'Modelo':<14} {'k':>3} {'ln P_MAP':>10} {'BIC':>8} {'ΔBIC':>7} {'AIC':>8} {'ΔAIC':>7} {'N_eff':>8}")
 log("  " + "-"*63)

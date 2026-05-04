@@ -1,0 +1,8 @@
+SSEE-V3.6 — Planck 2018 Unified Evaluation (Cobaya)
+=================================================================
+Optimal SSEE H0 = 67.066
+chi2_eff SSEE   = 1007.5527
+chi2_eff ΛCDM   = 1003.7601
+delta_chi2      = +3.7926
+delta_BIC       = -31.3066
+k_SSEE = 2, k_ΛCDM = 6

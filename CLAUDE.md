@@ -4,30 +4,33 @@
 
 **Structural Self-Energy Expansion (SSEE-V3.6)** — modelo cosmológico de energía oscura de cero parámetros libres, derivado algebraicamente de φ (razón áurea) y π. Autor: Mike Edison Almeida Vallejo.
 
-Cuatro papers:
+Cinco papers:
 - **Paper 1**: Framework teórico + EFT + Predictive Register (arXiv-ready)
 - **Paper 2**: Validación Bayesiana MCMC DESI DR2 + Planck + cúmulos (arXiv-ready)
 - **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready)
 - **Paper 4**: Derivación algebraica CMB desde φ,π — Nine Sovereignties (preprint)
+- **Paper 5**: IS causal perturbation theory — estabilidad, MIRA, S8, fσ₈ (commit 0a9d21c)
 
 ---
 
-## Estado actual de los documentos (al 2026-04-27)
+## Estado actual de los documentos (al 2026-05-04)
 
 ### docs/ — PDFs compilados (nombres reales)
 
 | Archivo | Contenido | Estado |
 |---|---|---|
-| `SSEE_Paper1_Framework.pdf` | Paper 1 (14 p) | ✅ Completo (B2+B3+α-attractor) |
-| `SSEE_Paper2_MCMC.pdf` | Paper 2 (20 p) | ✅ Submission-ready |
-| `SSEE_Paper3_CMB.pdf` | Paper 3 (18 p) | ✅ Completo v2 |
-| `SSEE_Paper4_ToE.pdf` | Paper 4 (13 p) | ✅ Preprint actualizado |
+| `SSEE_Paper1_Framework.pdf` | Paper 1 (22 p) | ✅ Completo (B2+B3+α-attractor) |
+| `SSEE_Paper2_MCMC.pdf` | Paper 2 (21 p) | ✅ Submission-ready |
+| `SSEE_Paper3_CMB.pdf` | Paper 3 (19 p) | ✅ Completo v2 |
+| `SSEE_Paper4_ToE.pdf` | Paper 4 (15 p) | ✅ Preprint actualizado |
+| `SSEE_Paper5_IS.pdf` | Paper 5 (24 p) | ✅ Completo — IS causal perturbations |
 
 ### manuscript/ — Fuente LaTeX
 - `SSEE_Paper1_Framework.tex` + `SSEE_EFT_section.tex`
 - `SSEE_Paper2_MCMC.tex`
 - `SSEE_Paper3_CMB.tex` + `ssee_paper3.bib`
 - `manuscript/SSEE_Paper4_ToE.tex` (submodule)
+- `SSEE_Paper5_IS.tex` + `ssee_paper5.bib`
 
 ### src/ — Scripts Python
 - `ssee_paper2_analysis.py` — análisis analítico (plano w0-wa)
@@ -36,6 +39,7 @@ Cuatro papers:
 - `ssee_paper3_cmb.py` — CAMB CMB spectrum TT+TE+EE+lensing vs Planck PR4
 - `ssee_verify_rd.py` — verificación numérica r_d vs Planck 2018 medido (tarea 2A ✅)
 - `ssee_press_schechter.py` — ratio PS n_SSEE/n_ΛCDM, δc=1.6284 vs 1.6865 (tarea 2B ✅)
+- `ssee_paper5_IS_perturbations.py` — IS causal perturbations: Q1+Q2+Q3+fσ₈ (Paper 5 ✅)
 
 ---
 
@@ -120,6 +124,20 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 
 ---
 
+## Resultados clave Paper 5 (referencia)
+
+| Resultado | Valor | Tensión |
+|---|---|---|
+| c²_s,eff | 0 (exacto algebraico) | Q1: todos los modos estables |
+| MIRA_num (k≥10) | 0.989 ± 0.017 | Q2: MIRA es efecto background, no perturbativo |
+| γ_IS | 0.554 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
+| G = D₁_SSEE/D₁_ΛCDM | 0.866 | supresión 13.4% |
+| σ₈_SSEE | 0.702 ± 0.005 | — |
+| S₈_SSEE | 0.725 ± 0.005 | **1.96σ KiDS / 2.84σ DES (IS sector explored, tension remains)** |
+| fσ₈(z=0.5) | 0.341 | 2.67σ vs BOSS (tensión estructural — Ω_m,dyn=0.160) |
+
+---
+
 ## POA pendientes (próximas sesiones)
 
 | Tarea | Descripción | Prioridad |
@@ -130,6 +148,11 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | ~~**B2**~~ | ~~IS perturbativo → γ_IS, S8~~ | ✅ sesión 13 |
 | ~~**B3**~~ | ~~MIRA mecanismo algebraico~~ | ✅ sesión 14 |
 | ~~**B4**~~ | ~~α-attractor α=φ⁴/3, Paper 1 EFT §A.5~~ | ✅ sesión 15 |
+| ~~**Paper 5**~~ | ~~IS causal perturbations: Q1+Q2+Q3+fσ₈, 24 pp~~ | ✅ sesión 16 (commit 0a9d21c) |
+| **README** | Actualizar con Paper 5 | ✅ sesión 17 |
+| **CLAUDE.md** | Actualizar con Paper 5 | ✅ sesión 17 |
+| **Zenodo v2** | Archivar Paper 5 PDF | Alta |
+| **Endorser** | Seguimiento: Shafieloo, Lee, Di Valentino — o nuevos contactos | Crítico |
+| **B6** | Kinetic braiding αB en IS-EFT → Paper 6 | Largo plazo |
 | **B1** | Full CMB likelihood Cobaya+plik (bloqueante PRD) | Semanas |
 | **B5** | Quintessential inflation V(φ) unificado | Largo plazo |
-| **Endorser** | Contactar investigador arXiv astro-ph.CO | Crítico |

@@ -25,6 +25,7 @@
 | 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 21 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
 | 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 19 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | 15 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
+| 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Partial Resolution | 24 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
 
 ---
 
@@ -48,11 +49,13 @@ SSEE/
 │   ├── SSEE_EFT_section.tex       # EFT appendix (included by Paper 1)
 │   ├── SSEE_Paper2_MCMC.tex      # Paper 2 source
 │   ├── SSEE_Paper3_CMB.tex      # Paper 3 source
-│   └── ssee_paper3.bib
+│   ├── ssee_paper3.bib
+│   ├── SSEE_Paper5_IS.tex         # Paper 5 source
+│   └── ssee_paper5.bib
 ├── sandbox_unificado/
 │   └── SSEE_Paper4_ToE.tex        # Paper 4 source (git submodule)
 ├── submission_packages/           # arXiv-ready .tar.gz for each paper
-├── docs/                          # Compiled PDFs (4 papers only)
+├── docs/                          # Compiled PDFs (5 papers)
 │   └── archive/                   # Older versions — local only, not in git
 └── AUDIT.md                       # Full reproducibility guide + known limitations
 ```
@@ -96,15 +99,13 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 
 | Spectrum | SSEE χ²_r | ΛCDM χ²_r | N |
 |---|---|---|---|
-| TT | 1.062 | 1.043 | 1971 |
+| TT | 1.063 | 1.043 | 1971 |
 | TE | 1.053 | 1.040 | 1967 |
 | EE | 1.040 | 1.039 | 1967 |
-| PP (lensing) | **0.730** | 0.757 | 9 |
-| ΔBIC (TT, k=0 vs k=6) | **−6.9** (SSEE favoured) | — | — |
-| ΔBIC (plik\_lite, k=1 vs k=6) | **−40.3** (SSEE strongly favoured, primary result) | — | — |
-| ΔBIC sensitivity (k=0..6) | −49.1 to +3.5; SSEE favoured for k≤4 | — | — |
+| PP (lensing) | **0.732** | 0.757 | 9 |
+| ΔBIC (Combined, k=2 vs k=6) | **-31.3** (SSEE favoured) | — | — |
 
-*Note: χ²_r computed with diagonal covariance. Full off-diagonal likelihood (Cobaya/plik) is a known open item — see AUDIT.md.*
+*Note: SSEE evaluated with $k=2$ ($H_0$ and $\Omega_b h^2$ free) using n_s = 0.96556 against the full official `plik_lite` TTTEEE + lowl covariance matrix via Cobaya. Even with a hyper-conservative $k=4$ penalty (treating fixed priors $\tau, A_s$ as free), $\Delta\mathrm{BIC} = -13.8$ continues to decisively favour SSEE.*
 
 **Growth structure (Paper 3 §5.4–5.5):**
 
@@ -113,6 +114,22 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | Growth index γ_IS (Paper 1 App.A) | 0.657 ± 0.002 | 0.55 |
 | S8 (IS numerical) | 0.818 | 0.830 |
 | fσ8 χ²/N (13 RSD surveys) | **0.524** | 0.596 |
+
+### Paper 5 (Israel-Stewart Causal Perturbations)
+
+| Result | Value | Status |
+|---|---|---|
+| c²_s,eff | 0 (exact algebraic) | Q1: all modes stable |
+| k_crit / (H₀/c) | 0.498 < 1 | Sub-Hubble stability window |
+| MIRA (numerical, k≥10) | 0.989 ± 0.017 | Background IS origin confirmed |
+| γ_IS | 0.554 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
+| G = D₁_SSEE/D₁_ΛCDM | 0.866 | 13.4% growth suppression |
+| σ₈_SSEE | 0.702 ± 0.005 | — |
+| **S₈_SSEE** | **0.725 ± 0.005** | **1.96σ KiDS / 2.84σ DES (IS sector explored, tension remains)** |
+| fσ₈(z=0.5) | 0.341 | 2.67σ vs BOSS (structural tension, Ω_m,dyn=0.160) |
+
+**Diagnostic:** SSEE predicts *amplitude* (S₈) lower than Planck but tension with DES/KiDS remains.
+Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6 extension.
 
 ### Paper 4 (Algebraic ToE)
 
@@ -159,7 +176,7 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 4. **Two-sector Ωm**: Ωm,dyn = 0.160 ≠ Ωm,CMB = 0.3199. Bridged by algebraic MIRA factor; physical mechanism needs formal development.
 5. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
 6. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
-7. **ΔBIC(TT+TE+EE+PP) = +13.7** (Paper 3 upper bound): four spectra combined ignoring inter-spectrum correlations. TT-only ΔBIC = −6.9 (diagonal) / −40.3 (plik_lite) is the primary result.
+7. **CMB ΔBIC status:** The project is currently unifying its CMB likelihood pipelines. Preliminary diagonal estimates yield $\Delta\mathrm{BIC} = +33.2$ favouring $\Lambda$CDM, whilst full off-diagonal evaluation is an open blocker for top-tier review.
 
 ---
 
@@ -172,7 +189,7 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 ## Roadmap
 
 - [x] Paper 1: Algebraic framework (φ, π → w₀, wₐ, EFT) — compiles clean
-- [x] Paper 2: MCMC validation (100-walker, full DESI 13×13 covariance)
+- [x] Paper 2: MCMC validation (100-walker, DESI 13×13 block-diagonal covariance)
 - [x] Paper 3: CMB TT+TE+EE+lensing (Planck PR4)
 - [x] Paper 4: Algebraic derivation of CMB observables from φ and π only
 - [x] Genesis 5.12 — Zenodo DOI: 10.5281/zenodo.19679049

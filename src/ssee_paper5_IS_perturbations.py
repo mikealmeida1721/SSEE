@@ -824,7 +824,7 @@ if _q3_ok:
     ax4.set_xticks(x_pos)
     ax4.set_xticklabels(labels, fontsize=10)
     ax4.set_ylabel(r'$S_8 = \sigma_8\,(\Omega_m/0.3)^{0.5}$', fontsize=12)
-    ax4.set_title(r'$S_8$ Tension: SSEE IS partially resolves DES/KiDS tension',
+    ax4.set_title(r'$S_8$ Tension: SSEE IS predicts lowered amplitude',
                   fontsize=11)
     ax4.set_ylim(0.65, 0.90)
     ax4.axhline(S8_LCDM_val, color='tomato', ls=':', lw=1, alpha=0.5)

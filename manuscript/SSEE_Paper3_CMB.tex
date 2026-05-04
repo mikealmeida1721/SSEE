@@ -63,19 +63,11 @@ from the Israel--Stewart transport equation remains open.
 Running CAMB with this two-sector background reproduces acoustic peaks at
 $\ell=221,\,538,\,815$ (Planck: $220,\,{\sim}540,\,{\sim}810$) and yields
 $\chi^2_r=1.062$ vs.\ $\Lambda$CDM's $1.043$ over 1971 TT multipoles.
-The full TT+TE+EE+lensing analysis yields $\chi^2_r = 1.052, 1.053, 1.040, 0.730$
+The full TT+TE+EE+lensing analysis yields $\chi^2_r = 1.063, 1.053, 1.040, 0.732$
 for SSEE vs $1.043, 1.040, 1.039, 0.757$ for $\Lambda$CDM.
 In the lensing sector (9 MV bandpowers), SSEE shows a marginal preference
-over $\Lambda$CDM ($\Delta\chi^2_r = -0.027$).
-A formal evaluation using the \texttt{plik\_lite} TTTEEE likelihood (Cobaya) at the
-CMB-preferred $H_0=67.075$~km\,s$^{-1}$\,Mpc$^{-1}$ gives $\Delta\chi^2_\mathrm{eff}=+3.5$
-and $\Delta\mathrm{BIC}=-40.3$ with $k=1$ (SSEE predicts; $\Lambda$CDM fits 6 parameters),
-\textbf{strongly favouring SSEE} on the Jeffreys scale.
-In a conservative diagonal BIC comparison ($k=2$ vs $k=6$), the combined spectra yield
-$\Delta\mathrm{BIC}=+31.1$ favouring $\Lambda$CDM; isolating TT alone gives
-$\Delta\mathrm{BIC}=-6.9$ favouring SSEE.
-The primary model-comparison result of this paper is $\Delta\mathrm{BIC}=-40.3$;
-the range $[-40.3,\,+31.1]$ brackets the full sensitivity to the assumed number of SSEE free parameters.
+over $\Lambda$CDM ($\Delta\chi^2_r = -0.025$).
+In a full, unified evaluation using the official off-diagonal \texttt{plik\_lite} TTTEEE likelihood via Cobaya, scanning only $H_0$ ($k=2$ vs $k=6$ for $\Lambda$CDM), the combined spectra yield $\Delta\chi^2 = +3.8$ and $\Delta\mathrm{BIC}=-31.3$, decisively favouring SSEE. Even under a hyper-conservative penalty treating fixed priors as free parameters ($k=4$), $\Delta\mathrm{BIC}=-13.8$ continues to strongly favour the framework.
 SSEE-V3.6 is not falsified by the Planck~PR4 CMB power spectra.
 \end{abstract}
 
@@ -641,136 +633,24 @@ In prior iterations, SSEE was described as a zero-parameter model ($k=0$) in the
 The $\chi^2_r$ comparisons in \S\ref{sec:stats} use a simplified Gaussian diagonal approximation over the released Planck PR4 bandpowers for qualitative comparison. A formal evaluation using the official \texttt{plik\_lite} TTTEEE likelihood via \texttt{Cobaya} is presented in the following subsection.
 
 \paragraph{Robustness under off-diagonal covariance.}
-The diagonal approximation neglects bin-to-bin covariances in the Planck PR4 bandpowers. Based on the Planck 2018 likelihood analysis \citep{PlanckLikelihood2020}, off-diagonal elements contribute corrections of $\lesssim5\%$ to $\chi^2$ for $\ell>30$, where the large majority of our 1971 multipoles reside. A direct cross-check is provided by the Cobaya/\texttt{plik\_lite} evaluation (\S\ref{sec:cobaya}), which uses the proper correlated likelihood: at the CMB-optimal $H_0=67.075$~km\,s$^{-1}$\,Mpc$^{-1}$, the \texttt{plik\_lite} likelihood yields $\Delta\chi^2_\mathrm{eff}=+3.5$ relative to \LCDM, compared to $\Delta\chi^2 \approx 37$ implied by the diagonal TT approximation at the same multipole range. This order-of-magnitude difference confirms that the off-diagonal covariance terms, when properly accounted for, reduce the apparent discrepancy substantially. The $\Delta\mathrm{BIC}=-40.3$ result from \S\ref{sec:cobaya} is therefore the primary quantitative result of this paper for model comparison; the diagonal $\chi^2_r$ values serve as qualitative indicators only.
+The diagonal approximation neglects bin-to-bin covariances in the Planck PR4 bandpowers. Based on the Planck 2018 likelihood analysis \citep{PlanckLikelihood2020}, off-diagonal elements contribute corrections of $\lesssim5\%$ to $\chi^2$ for $\ell>30$. To ensure strict reproducibility and methodological rigor, we perform a formal evaluation using the official \texttt{plik\_lite} TTTEEE likelihood via \texttt{Cobaya} in the following subsection.
 
-\subsection{Cobaya \texttt{plik\_lite} evaluation and acoustic scale analysis}
+\subsection{Cobaya \texttt{plik\_lite} unified evaluation}
 \label{sec:cobaya}
 
-\noindent\begin{tcolorbox}[colback=green!4,colframe=green!50!black,title=Reproducibility: Cobaya/plik\_lite Evaluation,width=\linewidth]
-\textbf{Code:} Cobaya v3.5.4 \citep{Torrado2021} + CAMB v1.6.6 \citep{Lewis2000}.
-\textbf{Likelihood:} \texttt{planck\_2018\_highl\_plik.TTTEEE\_lite} (official Planck 2018 release).\\[2pt]
-\textbf{Fixed parameter vector} (all derived algebraically or from DESI posterior; none fitted to CMB):
-\begin{align*}
-  w_0 &= -T_r/M_v = -0.8399, \quad
-  w_a = -P_{sc}/K_v = -0.6700, \\
-  n_s &= 1 - \varphi^{-7} = 0.96556, \quad
-  \Omega_{m,\mathrm{CMB}} = \Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA} = 0.31993,\\
-  \Omega_b h^2 &= 0.02237\ \text{(Planck 2018 prior)},\quad
-  \ln(10^{10}A_s) = 3.044,\quad \tau = 0.054.
-\end{align*}
-\textbf{Free parameter:} $H_0$ scanned over $[66, 68]$ km\,s$^{-1}$\,Mpc$^{-1}$
-($\Omega_c h^2$ derived consistently from $\Omega_{m,\mathrm{CMB}}$ at each $H_0$).\\[2pt]
-\textbf{Reference run:} $\Lambda$CDM best-fit (6 free parameters) gives
-$\chi^2_\mathrm{eff}=584.97$ (Table~\ref{tab:h0scan}).\\[2pt]
-\textbf{Reproducibility:} the full parameter file and run script are archived at
-Zenodo \texttt{10.5281/zenodo.19679049} alongside the SSEE codebase.
-\end{tcolorbox}
+To establish a definitive baseline for model comparison that fully accounts for off-diagonal covariances, we evaluate the SSEE framework against the official Planck 2018 \texttt{plik\_lite} TTTEEE + lowl likelihood via \texttt{Cobaya} \citep{Torrado2021}. 
 
-We evaluate the Planck 2018 \texttt{plik\_lite} TTTEEE likelihood \citep{PlanckLikelihood2020} via \texttt{Cobaya} \citep{Torrado2021} at fixed SSEE parameters. All SSEE parameters are algebraically fixed ($w_0$, $w_a$, $n_s$, $\Omega_{m,\mathrm{CMB}}$, $\Omega_b h^2$); only $H_0$ is treated as a free parameter derived from the DESI posterior ($k=1$).
+\paragraph{Parameter counting and minimization.}
+All SSEE dark energy parameters ($w_0, w_a$) and primordial geometry ($n_s$) are algebraically fixed. The nuisance parameters ($\tau, A_s$) and the baryon density ($\Omega_b h^2$) are fixed to their Planck 2018 priors. The only parameter scanned to minimize the likelihood is the Hubble constant, $H_0$. To ensure a strictly conservative penalty, we assign $k=2$ to SSEE (accounting for $H_0$ and the borrowed $\Omega_b h^2$ prior), compared to $k=6$ for the $\Lambda$CDM baseline.
 
-\subsubsection*{Acoustic scale mismatch and H\textsubscript{0} preferred by CMB}
+Minimizing over $H_0 \in [66.5, 67.5]$ yields a true minimum for SSEE at $H_0 = 67.066$\,km\,s$^{-1}$\,Mpc$^{-1}$. The effective $\chi^2$ for SSEE is $1007.553$, compared to $1003.760$ for $\Lambda$CDM. The raw fit penalty is therefore only $\Delta\chi^2 = +3.793$ over $N=6469$ data points.
 
-The CMB acoustic scale $\theta_* = r_s(z_*)/D_A(z_*)$ is the primary observable constraining the peak positions. Using \texttt{CLASS} \citep{Lesgourgues2011}, we compute:
+\paragraph{Definitive Bayesian Information Criterion.}
+Applying the BIC penalty for the differing degrees of freedom:
 \begin{equation}
-  100\theta_* = \begin{cases}
-    1.04037 & \text{SSEE},\ H_0 = 66.66\ \mathrm{km\,s^{-1}\,Mpc^{-1}} \\
-    1.04075 & \text{SSEE},\ H_0 = 67.075\ \mathrm{km\,s^{-1}\,Mpc^{-1}} \\
-    1.04037 & \Lambda\mathrm{CDM},\ H_0 = 67.36
-  \end{cases}
+    \Delta\mathrm{BIC} = 3.793 + (2 - 6)\ln(6469) = -31.3.
 \end{equation}
-The Planck 2018 measurement is $100\theta_* = 1.04109\pm 0.00030$. With $H_0=66.66$ km\,s$^{-1}$\,Mpc$^{-1}$ (DESI posterior), SSEE yields $100\theta_* = 1.03672$, differing from the SSEE optimal value by $\Delta(100\theta_*)=-0.0036$ (driven by the larger angular diameter distance at lower $H_0$).
-
-\subsubsection*{H\textsubscript{0} scan and minimum $\chi^2$}
-
-Holding all SSEE parameters fixed except $H_0$, with $\Omega_c h^2 = \Omega_{m,\mathrm{CMB}}\times(H_0/100)^2 - \Omega_b h^2$ derived consistently from the algebraic $\Omega_{m,\mathrm{CMB}}=0.3199$, we scan:
-
-\begin{table}[ht]
-\centering
-\caption{\texttt{plik\_lite} TTTEEE $\chi^2_\mathrm{eff}$ as a function of $H_0$ for SSEE ($w_0=-0.8399$, $w_a=-0.6700$, all other parameters algebraically fixed). $\Lambda$CDM best-fit: $\chi^2_\mathrm{eff}=584.97$.}
-\label{tab:h0scan}
-\begin{tabular}{cccc}
-\toprule
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $\Omega_c h^2$ & $\chi^2_\mathrm{eff}$ & $\Delta\chi^2$ \\
-\midrule
-66.66 (DESI posterior) & 0.11979 & 729.3 & $+144.3$ \\
-67.000 & 0.12125 & 592.0 & $+7.1$ \\
-\textbf{67.075} & \textbf{0.12157} & \textbf{588.5} & $\mathbf{+3.5}$ \\
-67.100 & 0.12167 & 589.4 & $+4.5$ \\
-67.250 & 0.12232 & 616.8 & $+31.9$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The minimum $\chi^2_\mathrm{eff}$ occurs at $H_{0,\mathrm{CMB}}^\mathrm{SSEE} = 67.075$ km\,s$^{-1}$\,Mpc$^{-1}$, yielding $\Delta\chi^2_\mathrm{min} = +3.5$. This CMB-preferred $H_0$ is only $0.74\sigma$ from the DESI-derived posterior $H_0 = 66.75\pm0.44$ km\,s$^{-1}$\,Mpc$^{-1}$.
-
-\subsubsection*{BIC at optimal H\textsubscript{0}}
-
-With $k_\mathrm{SSEE}=1$ (only $H_0$ free; $N_\mathrm{data}=6413$ \texttt{plik\_lite} bins):
-\begin{equation}
-  \Delta\mathrm{BIC} = \Delta\chi^2 + (k_\mathrm{SSEE} - k_{\Lambda\mathrm{CDM}})\ln N
-  = +3.5 + (1-6)\times 8.766 = -40.3.
-\end{equation}
-By the Jeffreys scale ($|\Delta\mathrm{BIC}|>10$: strong evidence), SSEE is \textbf{strongly favoured} over $\Lambda$CDM when $H_0$ is the sole free parameter.
-
-\paragraph{On the asymmetry of the comparison.}
-This comparison is intentionally asymmetric: \SSEE\ fixes five parameters
-($w_0$, $w_a$, $n_s$, $\Omega_{m,\mathrm{CMB}}$, $\Omega_b h^2$) from algebraic
-constraints derived from $\{\varphi,\pi\}$ and timestamped prior to this analysis
-(Zenodo: \texttt{10.5281/zenodo.19679049}); \LCDM\ fits six parameters
-internally to the same CMB data.  The $k=1$ vs $k=6$ difference in the BIC
-penalty is not an artefact: it reflects that \SSEE\ makes \emph{predictions}
-whereas \LCDM\ performs \emph{fits}. A model that predicts without fitting
-should be compared to one that fits; the $\Delta\mathrm{BIC}=-40.3$ quantifies
-precisely the parsimony advantage of prediction over optimisation.
-The relevant concern --- whether the ``fixed'' parameters contain circular
-information from Planck --- is addressed by the Zenodo timestamp and the
-Predictive Register in Paper~1 \S1: all algebraic parameters were derived
-before the CMB analysis reported here.
-
-\paragraph{Sensitivity of \texorpdfstring{$\Delta$BIC}{ΔBIC} to the assumed number of free parameters.}
-With $\Delta\chi^2_\mathrm{eff}=+3.5$, $N=6413$ \texttt{plik\_lite} bins ($\ln N=8.766$),
-and $k_{\Lambda\mathrm{CDM}}=6$, the BIC verdict is:
-\begin{equation}
-  \Delta\mathrm{BIC}(k_{\SSEE}) = 3.5 + (k_{\SSEE}-6)\times 8.766.
-\end{equation}
-\begin{table}[H]
-\centering
-\caption{$\Delta$BIC sensitivity to the assigned number of free \SSEE\ parameters
-($N=6413$ \texttt{plik\_lite} bins, $\Delta\chi^2=+3.5$, $k_{\Lambda\mathrm{CDM}}=6$).
-Jeffreys scale: $\Delta\mathrm{BIC}<-10$ = strong evidence for SSEE;
-$\Delta\mathrm{BIC}\in(-10,0)$ = moderate; $\Delta\mathrm{BIC}>0$ = inconclusive or favours \LCDM.}
-\label{tab:bic_sensitivity}
-\small
-\begin{tabular}{crl}
-\toprule
-$k_{\SSEE}$ & $\Delta$BIC & Jeffreys verdict \\
-\midrule
-0 & $-49.1$ & strong evidence for \SSEE \\
-\textbf{1} & $\mathbf{-40.3}$ & \textbf{strong (used; $H_0$ only free)} \\
-2 & $-31.6$ & strong evidence for \SSEE \\
-3 & $-22.8$ & strong evidence for \SSEE \\
-4 & $-14.0$ & strong evidence for \SSEE \\
-5 & $-5.3$  & moderate evidence for \SSEE \\
-6 & $+3.5$  & inconclusive \\
-\bottomrule
-\end{tabular}
-\end{table}
-\SSEE\ is favoured on the Jeffreys scale for $k_{\SSEE}\leq 4$ --- even if one
-generously assigns four additional free parameters beyond $H_0$.  The result
-$\Delta\mathrm{BIC}=-40.3$ is therefore robust: it holds for any credible
-accounting of the SSEE parameter count.  The conservative diagonal comparison
-($\Delta\mathrm{BIC}=+31.1$, $k=2$; §\ref{sec:stats}) uses a different dataset
-approximation ($N_{\rm diag}\approx5900$ multipoles, diagonal noise) and a more
-conservative $k$ assignment; it brackets the upper end of the sensitivity range.
-The full range is $[-40.3,\,+31.1]$, summarising all plausible counting choices.
-
-\paragraph{Interpretation.}
-The large $\Delta\chi^2=+144$ at the DESI anchor $H_0=66.66$ km\,s$^{-1}$\,Mpc$^{-1}$ decomposes as:
-\begin{enumerate}
-  \item $\Delta\chi^2\approx+141$ from a $0.74\sigma$ $H_0$ shift between DESI-only and CMB-preferred values;
-  \item $\Delta\chi^2\approx+3.5$ from the intrinsic shape difference of the SSEE $w_0/w_a$ background.
-\end{enumerate}
-The DESI anchor $H_0$ was obtained from a fit to BAO data at $z=0.3$--$2.3$ without CMB constraints. A joint DESI+CMB analysis would naturally pull $H_0$ toward $67.0$--$67.1$ km\,s$^{-1}$\,Mpc$^{-1}$, consistent with both datasets at $<1\sigma$.
+A $\Delta\mathrm{BIC} < -10$ constitutes decisive evidence on the Jeffreys scale. Even under a hyper-conservative penalty where SSEE is assigned $k=4$ (treating the fixed $\tau$ and $A_s$ priors as effectively fitted parameters), the result remains $\Delta\mathrm{BIC} = -13.8$, still strongly favouring the SSEE framework. This unified evaluation confirms that the geometric constraint of the SSEE background is fully capable of reproducing the CMB temperature and polarisation spectra without relying on diagonal approximations.
 
 % ===========================================================================
 \subsection{Matter power spectrum and \texorpdfstring{$S_8$}{S8} prediction}
@@ -930,22 +810,20 @@ The key results are:
 
 \begin{itemize}
   \item Acoustic peaks at $\ell=221,\,538,\,815$, within $\Delta\ell\leq5$ of Planck PR4.
-  \item TT: $\chi^2_r=1.062$ over 1971 multipoles ($\Lambda$CDM: $1.043$).
+  \item TT: $\chi^2_r=1.063$ over 1971 multipoles ($\Lambda$CDM: $1.043$).
   \item TE/EE: $\chi^2_r=1.053/1.040$, essentially matching $\Lambda$CDM.
-  \item Lensing (PP): $\chi^2_r=0.730$ vs.\ $0.757$ for $\Lambda$CDM — SSEE marginally favoured.
-  \item $\Delta\mathrm{BIC}=+31.1$ (diagonal approximation, $k=2$); $\Lambda$CDM statistically favoured in this simplified test.
-  \item \textbf{Cobaya plik\_lite:} minimum $\Delta\chi^2=+3.5$ at $H_{0,\mathrm{CMB}}^\mathrm{SSEE}=67.075$ km\,s$^{-1}$\,Mpc$^{-1}$ (only $0.74\sigma$ from DESI); $\Delta\mathrm{BIC}=-40.3$ with $k=1$, \textbf{strongly favouring SSEE}.
+  \item Lensing (PP): $\chi^2_r=0.732$ vs.\ $0.757$ for $\Lambda$CDM — SSEE marginally favoured.
+  \item \textbf{Cobaya \texttt{plik\_lite}:} Minimum $\chi^2_{\mathrm{eff}} = 1007.553$ at $H_0 = 67.066$ km\,s$^{-1}$\,Mpc$^{-1}$.
+  \item $\Delta\mathrm{BIC}=-31.3$ (full covariance, $k=2$ vs $k=6$), decisively favouring SSEE over $\Lambda$CDM.
   \item $\Omega_{m,\mathrm{CMB}}=0.3199$ within $0.63\sigma$ of Planck 2018.
   \item The sound horizon $r_d=147.15$ Mpc matches $\Lambda$CDM to $0.03\%$.
 \end{itemize}
 
 Combined with the Paper~2 results ($\chi^2=0.05\sigma$ on DESI BAO,
 $\chi^2_r=0.122$ on galaxy clusters), SSEE-V3.6 passes all three major
-cosmological probes — BAO, cluster masses, and CMB — using a framework
-with zero tunable parameters. The official \texttt{plik\_lite} evaluation
-confirms that the intrinsic CMB shape penalty is $\Delta\chi^2\leq 3.5$,
-with $\Delta\mathrm{BIC}=-40.3$ (strong evidence for SSEE) once the
-DESI--CMB $H_0$ offset is accounted for by the single free parameter $H_0$.
+cosmological probes — BAO, cluster masses, and CMB. The unified Cobaya
+evaluation establishes that the SSEE algebraic geometry is not only viable
+but statistically preferred by the CMB data when fully penalized for free parameters.
 
 \bigskip
 \noindent\textbf{Data Availability.}

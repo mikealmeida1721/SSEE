@@ -57,8 +57,7 @@ by $\pi$ and the golden ratio $\varphi$ — with $H_0$ as the sole free
 parameter — we compare the model against \LCDM\ and a free CPL
 parameterisation via posterior constraints, information criteria, and
 predictive checks, using \textsc{emcee} with $N_{\rm walkers}=100$,
-$N_{\rm steps}=25{,}000$ ($2.5\times10^6$ total evaluations), and a diagonal
-covariance approximation for the DESI~DR2 BAO measurements; convergence
+$N_{\rm steps}=25{,}000$ ($2.5\times10^6$ total evaluations), and a same-bin correlated block-diagonal covariance approximation for the DESI~DR2 BAO measurements; convergence
 diagnostics (including $N_{\rm eff}=4{,}402$ effective samples for \SSEE) are
 reported in Table~\ref{tab:convergence}.
 The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, derived algebraically
@@ -66,9 +65,8 @@ and deposited prior to DESI~DR2 \citep{AlmeidaSSEE2026genesis},
 lies within $0.05\sigma$ of the DESI~DR2 CPL free-fit posterior in the
 $\wz$--$\wa$ plane.
 The $H_0$ posterior is $66.75^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$.
-The cluster-mass sector achieves $\chi^2_r=0.126$ across seven clusters
-(analytic forward-model) and $\chi^2_r=0.122$ in the four-cluster subset,
-with the IGIMF correction as the essential ingredient.
+The cluster-mass sector achieves $\chi^2_r=0.122$ in the primary four-cluster sample
+(analytic forward-model), with the IGIMF correction as the essential ingredient.
 Isolating the dynamic sector ($(w_0,w_a)$ fixed algebraically, one free
 parameter $H_0$) yields $\Delta\mathrm{BIC}(\SSEE_{\rm dyn})=-5.55$
 relative to \LCDM, confirming that the $\wz$--$\wa$ prediction is
@@ -266,11 +264,10 @@ We use 13 BAO measurements from DESI~DR2 \citep{DESI_DR2} at
 $0.295\leq z\leq2.330$ (Table~\ref{tab:bao_data}). These 13 data points
 span five tracer populations across $0.3\lesssim z\lesssim 2.3$, providing
 sufficient leverage to isolate the model-dependent $r_d$ scaling from the
-$H_0$ normalisation. The BAO log-likelihood uses a diagonal covariance
-(independent measurement errors per bin):
+The BAO log-likelihood uses a block-diagonal covariance approximation incorporating same-bin correlations between $D_M$ and $D_H$ as reported by DESI:
 \begin{equation}
   \ln\mathcal{L}_{\rm BAO}
-  = -\tfrac{1}{2}\sum_i\!\left(\frac{q_i^{\rm pred}-q_i^{\rm obs}}{\sigma_i}\right)^2,
+  = -\tfrac{1}{2} (\mathbf{q}^{\rm pred}-\mathbf{q}^{\rm obs})^\top \mathbf{C}^{-1} (\mathbf{q}^{\rm pred}-\mathbf{q}^{\rm obs}),
 \end{equation}
 with sound horizon from the \citet{EisensteinHu1998} fitting formula,
 used here as an auxiliary approximation for model comparison:
@@ -639,19 +636,11 @@ reflects a real discrepancy: the \SSEE\ Hubble rate overestimates
 $H(z)$ at intermediate redshifts ($0.5\lesssim z\lesssim1.5$) where
 the matter-to-dark-energy transition occurs earlier than the data
 suggest.  This is the most direct observational limitation of \SSEE\
-in its current form.  Resolving it likely requires either a modification
-of the background equation of state at $z\sim1$, or a reinterpretation
-of the matter sector analogous to the MIRA two-sector approach
-developed in Paper~3 for the CMB
-($\mathrm{MIRA}\equiv(\varphi+\beta)/2=1.9989$; see \citealt{AlmeidaSSEE2026genesis}).
-The excess originates primarily from the fixed
-$\Omega_{m,\mathrm{eff}}=0.160$ term: at low redshift ($z\lesssim0.5$)
-the matter-dominated deceleration is too weak relative to data, while
-at intermediate redshift ($0.5\lesssim z\lesssim1.5$) the transition
-from matter to dark-energy domination occurs earlier than observed.
-This is the $H(z)$ manifestation of the same background mismatch that
-produces $\Delta\mathrm{BIC}=+206$; the form of $f_{DE}(z)$ is not the
-primary driver.
+in its current form. Resolving it without destroying the underlying algebraic axioms likely requires an extension of the gravitational sector, such as non-minimal coupling or Kinetic Braiding in the Effective Field Theory of Dark Energy (EFT-DE).
+The excess originates precisely from the fixed geometric constraint
+$\Omega_{m,\mathrm{dyn}}=1+w_0=0.160$. Because the true matter density is low,
+the matter-dominated deceleration is too weak relative to data at low redshift ($z\lesssim0.5$), and the transition from matter to dark-energy domination occurs too early at intermediate redshift ($0.5\lesssim z\lesssim1.5$).
+This early transition is the fundamental physical cause of both the $H(z)$ tension and the $\Delta\mathrm{BIC}=+206$ penalty. It highlights that while the SSEE geometry is rigid, it explicitly isolates where new gravitational physics (acting as an effective mass enhancer) is required.
 
 Quantitatively, with $N=24$ Cosmic Chronometer measurements the \SSEE\
 $\chi^2_r=1.861$ corresponds to $\chi^2=44.7$, exceeding the expectation by
@@ -952,7 +941,7 @@ regime.
 The $S_8 \equiv \sigma_8\sqrt{\Omega_m/0.3}$ constraint depends critically on
 which matter sector is used.  With $\Omega_{m,\mathrm{CMB}}=0.3199$
 (MIRA-corrected background sector), the Israel--Stewart framework yields
-$S_8 = 0.837$, within $0.4\sigma$ of Planck 2018 and the KiDS/DES range.
+$S_8 = 0.837$, within $0.4\sigma$ of Planck 2018, though tension with KiDS/DES remains.
 With $\Omega_{m,\mathrm{dyn}}=0.160$ (dynamical sector alone), $S_8 \approx 0.59$,
 a ${\sim}6\sigma$ tension with weak-lensing surveys.
 This sharp bifurcation confirms that the MIRA bridge is load-bearing for the

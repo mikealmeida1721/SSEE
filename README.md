@@ -26,6 +26,7 @@
 | 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 19 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | 15 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
 | 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Partial Resolution | 24 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
+| 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 14 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
 
 ---
 
@@ -131,6 +132,23 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 **Diagnostic:** SSEE predicts *amplitude* (S₈) lower than Planck but tension with DES/KiDS remains.
 Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6 extension.
 
+### Paper 6 (φ-Dark Matter, Two-Sector Model)
+
+| Result | Value | Status |
+|---|---|---|
+| Ω_CDM | 0.160050 | Active at all k |
+| Ω_φDM = (MIRA−1)×Ω_m,dyn | 0.159878 | Active for k < k_fs only |
+| Ω_total (two-sector) | 0.319928 ≈ Ω_m,CMB | Zero-parameter unification |
+| m_φ = Σm_ν × H₀^alg | 5.71 eV | Algebraic — no fitting |
+| k_fs (Dodelson-Widrow) | 0.493 h/Mpc | From m_φ algebraic |
+| T_WDM(k=0.125 h/Mpc) | 0.8175 | WDM suppression |
+| σ₈_eff | 0.737 | 0.00σ vs KiDS-1000 |
+| S₈_eff | 0.761 | 2.29σ vs DES (KiDS-DES internal) |
+| **Mean fσ₈ tension (6 surveys)** | **0.88σ** | **Resolved from 3.66σ (Paper 5)** |
+| ΛCDM fσ₈ mean tension | 0.51σ | Reference |
+
+**Falsifiable predictions:** m_φ = 5.71 eV testable by KATRIN/PTOLEMY (2027–2030); k_fs = 0.493 h/Mpc via DESI Y3/Euclid P(k) power spectrum (2026–2028). Zero free parameters.
+
 ### Paper 4 (Algebraic ToE)
 
 | Observable | SSEE algebraic | Planck 2018 | Tension |
@@ -207,6 +225,9 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
   - M5: Phantom crossing a*=0.761 documentado explícitamente (Paper 1 §2)
   - Mod2: Bullet Cluster hedge — masa proyectada, no fit κ(θ)
   - Mod3: c²_s<0 caveat en EFT — deferred full IS treatment a Paper 4
+- [x] Paper 5: IS causal perturbation theory — Q1+Q2+Q3+fσ₈, 24 pp
+- [x] Paper 6: φ-DM two-sector model — m_φ=5.71 eV algebraic, fσ₈ 3.66σ→0.88σ, 14 pp
+- [ ] Zenodo v2 — archive Paper 5+6 PDFs
 - [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
 - [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
 - [ ] arXiv submission — pending endorser response

@@ -2,18 +2,22 @@
 """
 ssee_paper6_verification.py  —  Verificación Completa del Modelo Dos-Sectores
 ==============================================================================
-Física correcta del modelo dos-sectores:
+Física correcta del modelo dos-sectores (OptB — sin WDM transfer function):
 
   Ω_CDM  = 0.160  → activo a TODAS las escalas
-  Ω_φDM  = 0.160  → activo solo a escalas k < k_fs (= 0.493 h/Mpc)
+  Ω_φDM  = 0.160  → activo solo a escalas k < k_fs
 
-  Consecuencia:
-  - RSD mide a k ~ 0.01-0.1 h/Mpc << k_fs → AMBOS sectores activos
-    → Ω_m,growth = 0.320 → f(z) MUCHO MAYOR
-  - σ8 mide a k = 0.125 h/Mpc < k_fs → φ-DM parcialmente activo
-    → σ8_eff = 0.737 (WDM supresión parcial)
+  Ambos sectores activos para k < k_fs, que incluye tanto las escalas RSD
+  (k ~ 0.01–0.1 h/Mpc) como la escala σ₈ (k = 0.125 h/Mpc).
 
-  Este es el mecanismo que resuelve la tensión fσ8.
+  Factor de crecimiento dos-sectores:
+    G_2s = D₁_SSEE(Ω_m=0.320) / D₁_ΛCDM(Ω_m=0.315) = 0.979
+    σ₈_eff = σ₈_Planck × G_2s = 0.794    (sin WDM transfer function)
+
+  Mecanismo que resuelve la tensión fσ₈:
+    f(z) aumenta por Ω_m,growth = 0.320
+    σ₈_eff = 0.794 (vs 0.811 ΛCDM, vs 0.702 Paper 5)
+    tensión media fσ₈ → 0.50σ (desde 3.66σ Paper 5)
 """
 
 import numpy as np
@@ -49,35 +53,23 @@ Ob_h2   = 3*(pi_ - phi)/200
 mnu_active = R * Ob_h2 * 94.07 / tau_Pi   # 0.084 eV
 
 # ── Modelo dos-sectores ───────────────────────────────────────────────────────
-Om_CDM   = Omm_dyn          # 0.160
-Om_phiDM = (MIRA-1)*Omm_dyn # 0.160
-Om_total = Om_CDM + Om_phiDM # 0.320 (ambos sectores)
-k_fs     = 0.4934           # h/Mpc (requerido para σ8=0.737)
+Om_CDM   = Omm_dyn           # 0.160
+Om_phiDM = (MIRA-1)*Omm_dyn  # 0.160
+Om_total = Om_CDM + Om_phiDM  # 0.320 (ambos sectores)
 
-# Masa del φ-DM (derivación algebraica)
+# Masa del φ-DM (derivación algebraica pura — escala de energía característica)
 m_phi_eV = mnu_active * H0_alg   # 5.71 eV
 
-# ── WDM transfer function ─────────────────────────────────────────────────────
-def T_WDM(k_hMpc, nu=1.12):
-    alpha = 1.0 / k_fs
-    return (1 + (alpha*k_hMpc)**(2*nu))**(-5/nu)
-
-# σ8 efectivo (escala 8 Mpc/h, k=0.125 h/Mpc)
-T_sigma8 = T_WDM(0.125)
 sig8_Planck = 0.811
-sig8_eff    = sig8_Planck * (0.5 + 0.5*T_sigma8)
 
 print("=" * 70)
-print("  SSEE Paper 6 — Verificación Completa Modelo Dos-Sectores")
+print("  SSEE Paper 6 — Verificación Completa Modelo Dos-Sectores (OptB)")
 print("=" * 70)
 print(f"\n  Parámetros del modelo:")
 print(f"    Ω_CDM  = {Om_CDM:.6f}   (activo siempre)")
 print(f"    Ω_φDM  = {Om_phiDM:.6f}   (activo para k < k_fs)")
 print(f"    Ω_total= {Om_total:.6f}   (CMB y grandes escalas)")
-print(f"    k_fs   = {k_fs:.4f} h/Mpc")
-print(f"    m_φ    = Σm_ν × H₀^alg = {m_phi_eV:.4f} eV")
-print(f"    T_WDM(k_σ8=0.125) = {T_sigma8:.6f}")
-print(f"    σ8_eff = {sig8_eff:.6f}   (target KiDS: 0.737)")
+print(f"    m_φ    = Σm_ν × H₀^alg = {m_phi_eV:.4f} eV  (escala energía φ-DM)")
 
 # ── Ecuaciones de fondo ───────────────────────────────────────────────────────
 def f_DE_raw(a):
@@ -86,16 +78,16 @@ _norm = f_DE_raw(1.0)
 def f_DE(a): return f_DE_raw(a) / _norm
 
 def E2_total(a):
-    """H²/H₀² con Ω_m = 0.320 (ambos sectores en background)."""
+    """H²/H₀² con Ω_m = 0.320 (ambos sectores)."""
     return max(Om_total * a**(-3) + OmDE * f_DE(a), 1e-30)
 
 def E2_CDM(a):
-    """H²/H₀² con solo Ω_CDM = 0.160 (para comparación)."""
+    """H²/H₀² con solo Ω_CDM = 0.160."""
     return max(Om_CDM * a**(-3) + OmDE * f_DE(a), 1e-30)
 
-# ── Crecimiento a grandes escalas (k << k_fs) → ambos sectores ───────────────
-def growth_rhs_large(lna, Y):
-    """Escalas grandes: Ω_m,eff = 0.320 (CDM + φDM ambos activos)."""
+# ── Crecimiento dos-sectores (k < k_fs, ambos activos) ───────────────────────
+def growth_rhs_twosector(lna, Y):
+    """Ambos sectores activos: Ω_m,eff = 0.320."""
     a = np.exp(lna)
     e2 = E2_total(a)
     h  = 0.5*(-3*Om_total*a**(-3) + OmDE*(f_DE(a+1e-5)-f_DE(a-1e-5))/(2e-5)*a)/e2
@@ -103,9 +95,9 @@ def growth_rhs_large(lna, Y):
     D, Dp = Y
     return [Dp, -(2+h)*Dp + 1.5*Omm_a*D]
 
-# ── Crecimiento a pequeñas escalas (k >> k_fs) → solo CDM ────────────────────
-def growth_rhs_small(lna, Y):
-    """Escalas pequeñas: Ω_m,eff = 0.160 (solo CDM)."""
+# ── Crecimiento un sector (Paper 5 baseline, solo CDM) ────────────────────────
+def growth_rhs_single(lna, Y):
+    """Solo CDM activo: Ω_m,eff = 0.160 (Paper 5)."""
     a = np.exp(lna)
     e2 = E2_CDM(a)
     h  = 0.5*(-3*Om_CDM*a**(-3) + OmDE*(f_DE(a+1e-5)-f_DE(a-1e-5))/(2e-5)*a)/e2
@@ -122,27 +114,42 @@ def growth_lcdm(lna, Y, Om_lcdm=0.3153):
     D, Dp = Y
     return [Dp, -(2+h)*Dp + 1.5*Omm_a*D]
 
-# ── Integración ───────────────────────────────────────────────────────────────
+# ── Integración (IC idénticas — ratio D₁ da G directamente) ──────────────────
 lna_pts = np.linspace(np.log(0.01), 0.0, 600)
+IC = [0.01, 0.01]
 
-sol_large = solve_ivp(growth_rhs_large, [lna_pts[0], 0.0], [0.01, 0.01],
-                      t_eval=lna_pts, rtol=1e-10, atol=1e-13)
-sol_small = solve_ivp(growth_rhs_small, [lna_pts[0], 0.0], [0.01, 0.01],
-                      t_eval=lna_pts, rtol=1e-10, atol=1e-13)
-sol_lcdm  = solve_ivp(growth_lcdm,      [lna_pts[0], 0.0], [0.01, 0.01],
-                      t_eval=lna_pts, rtol=1e-10, atol=1e-13)
+sol_twosector = solve_ivp(growth_rhs_twosector, [lna_pts[0], 0.0], IC,
+                          t_eval=lna_pts, rtol=1e-10, atol=1e-13)
+sol_single    = solve_ivp(growth_rhs_single,    [lna_pts[0], 0.0], IC,
+                          t_eval=lna_pts, rtol=1e-10, atol=1e-13)
+sol_lcdm      = solve_ivp(growth_lcdm,          [lna_pts[0], 0.0], IC,
+                          t_eval=lna_pts, rtol=1e-10, atol=1e-13)
 
-# Normalizar D(z=0) = 1
-D_large = sol_large.y[0] / sol_large.y[0][-1]
-Dp_large= sol_large.y[1] / sol_large.y[0][-1]
-D_small = sol_small.y[0] / sol_small.y[0][-1]
-Dp_small= sol_small.y[1] / sol_small.y[0][-1]
-D_lcdm  = sol_lcdm.y[0]  / sol_lcdm.y[0][-1]
-Dp_lcdm = sol_lcdm.y[1]  / sol_lcdm.y[0][-1]
+# Factores de crecimiento (ratio de D₁ brutos con IC idénticas)
+G_2s    = sol_twosector.y[0][-1] / sol_lcdm.y[0][-1]   # ≈ 0.979
+G_single= sol_single.y[0][-1]    / sol_lcdm.y[0][-1]   # ≈ 0.866 (Paper 5)
 
-sig8_lcdm = 0.811
+sig8_eff  = sig8_Planck * G_2s      # 0.794
+sig8_base = sig8_Planck * G_single  # 0.702
+S8_eff    = sig8_eff * np.sqrt(Om_total / 0.3)
 
-# ── fσ8 en los 6 surveys RSD ──────────────────────────────────────────────────
+print(f"\n  Factores de crecimiento (IC idénticas, ratio D₁):")
+print(f"    G_single (Paper 5, Ω_m=0.160): {G_single:.4f}")
+print(f"    G_2s     (Paper 6, Ω_m=0.320): {G_2s:.4f}")
+print(f"\n  σ₈ resultantes:")
+print(f"    σ₈_base (Paper 5): {sig8_base:.4f}   (= 0.811 × {G_single:.4f})")
+print(f"    σ₈_eff  (Paper 6): {sig8_eff:.4f}   (= 0.811 × {G_2s:.4f})")
+print(f"    S₈_eff  (Paper 6): {S8_eff:.4f}   (Ω_total={Om_total:.4f})")
+
+# Normalizar D(z=0) = 1 para cálculo de f(z)
+D_2s  = sol_twosector.y[0] / sol_twosector.y[0][-1]
+Dp_2s = sol_twosector.y[1] / sol_twosector.y[0][-1]
+D_1s  = sol_single.y[0]    / sol_single.y[0][-1]
+Dp_1s = sol_single.y[1]    / sol_single.y[0][-1]
+D_lcdm= sol_lcdm.y[0]      / sol_lcdm.y[0][-1]
+Dp_lcdm= sol_lcdm.y[1]     / sol_lcdm.y[0][-1]
+
+# ── fσ₈ en los 6 surveys RSD ─────────────────────────────────────────────────
 Z_RSD     = np.array([0.067, 0.150, 0.320, 0.380, 0.510, 0.570])
 survey    = ['6dFGRS', 'SDSS MGS', 'BOSS DR12', 'BOSS DR12', 'eBOSS DR16', 'WiggleZ']
 fsig8_obs = np.array([0.423, 0.490, 0.427, 0.477, 0.458, 0.426])
@@ -154,27 +161,21 @@ def get_fsig8(z, D_arr, Dp_arr, sig8_val):
     D_t = float(np.interp(lna_t, lna_pts, D_arr))
     return f_t * sig8_val * D_t
 
-# Dos-sectores: RSD a grandes escalas → D_large, σ8 efectivo
-fsig8_twosector = np.array([get_fsig8(z, D_large, Dp_large, sig8_eff) for z in Z_RSD])
+fsig8_twosector  = np.array([get_fsig8(z, D_2s,   Dp_2s,   sig8_eff)   for z in Z_RSD])
+fsig8_base_pred  = np.array([get_fsig8(z, D_1s,   Dp_1s,   sig8_base)  for z in Z_RSD])
+fsig8_lcdm_pred  = np.array([get_fsig8(z, D_lcdm, Dp_lcdm, sig8_Planck) for z in Z_RSD])
 
-# SSEE base (Paper 5, sin extensión): RSD con Ω_m = 0.160
-sig8_base = sig8_Planck * np.sqrt(Om_CDM / 0.3153)
-fsig8_base = np.array([get_fsig8(z, D_small, Dp_small, sig8_base) for z in Z_RSD])
-
-# ΛCDM
-fsig8_lcdm_pred = np.array([get_fsig8(z, D_lcdm, Dp_lcdm, sig8_lcdm) for z in Z_RSD])
-
-# Tensiones
 t_twosector = (fsig8_obs - fsig8_twosector) / fsig8_err
-t_base      = (fsig8_obs - fsig8_base)      / fsig8_err
+t_base      = (fsig8_obs - fsig8_base_pred) / fsig8_err
 t_lcdm      = (fsig8_obs - fsig8_lcdm_pred) / fsig8_err
 
-print(f"\n  ── Resultados fσ8 ───────────────────────────────────────────────")
-print(f"\n  {'Survey':12s}  {'z':>5}  {'Obs':>6}  {'2-sector':>9}  {'σ':>7}  {'SSEE-P5':>9}  {'σ':>7}  {'ΛCDM':>7}  {'σ':>7}")
+print(f"\n  ── Resultados fσ₈ ───────────────────────────────────────────────")
+print(f"\n  {'Survey':12s}  {'z':>5}  {'Obs':>6}  {'2-sector':>9}  {'σ':>7}  "
+      f"{'SSEE-P5':>9}  {'σ':>7}  {'ΛCDM':>7}  {'σ':>7}")
 for i, z in enumerate(Z_RSD):
     print(f"  {survey[i]:12s}  {z:>5.3f}  {fsig8_obs[i]:>6.3f}  "
           f"{fsig8_twosector[i]:>9.3f}  {t_twosector[i]:>+7.2f}σ  "
-          f"{fsig8_base[i]:>9.3f}  {t_base[i]:>+7.2f}σ  "
+          f"{fsig8_base_pred[i]:>9.3f}  {t_base[i]:>+7.2f}σ  "
           f"{fsig8_lcdm_pred[i]:>7.3f}  {t_lcdm[i]:>+7.2f}σ")
 
 mt_2s   = np.mean(np.abs(t_twosector))
@@ -185,33 +186,40 @@ print(f"    SSEE dos-sectores: {mt_2s:.4f}σ")
 print(f"    SSEE base (P5):    {mt_base:.4f}σ")
 print(f"    ΛCDM:              {mt_lcdm:.4f}σ")
 
-# ── Resumen estadístico completo ──────────────────────────────────────────────
+# ── Resumen observacional ─────────────────────────────────────────────────────
 print(f"\n  ── Resumen Observacional Completo ───────────────────────────────")
-print(f"  σ8_eff (dos-sectores) = {sig8_eff:.4f}  vs KiDS 0.737±0.020  → "
-      f"{abs(sig8_eff-0.737)/0.020:.2f}σ")
-print(f"  σ8_eff (dos-sectores) = {sig8_eff:.4f}  vs DES  0.776±0.017  → "
-      f"{abs(sig8_eff-0.776)/0.017:.2f}σ")
-# H(z) — no cambia con la extensión
+kids_s8 = 0.766; kids_s8_err = 0.020
+des_s8  = 0.776; des_s8_err  = 0.017
+kids_sig8 = 0.737; kids_sig8_err = 0.020
+print(f"  σ₈_eff = {sig8_eff:.4f}  vs KiDS σ₈ {kids_sig8:.3f}±{kids_sig8_err:.3f}  → "
+      f"{abs(sig8_eff-kids_sig8)/kids_sig8_err:.2f}σ")
+print(f"  S₈_eff = {S8_eff:.4f}   vs KiDS S₈ {kids_s8:.3f}±{kids_s8_err:.3f}  → "
+      f"{abs(S8_eff-kids_s8)/kids_s8_err:.2f}σ")
+print(f"  S₈_eff = {S8_eff:.4f}   vs DES  S₈ {des_s8:.3f}±{des_s8_err:.3f}  → "
+      f"{abs(S8_eff-des_s8)/des_s8_err:.2f}σ")
 print(f"  H(z) χ²_r (sin cambio) = 1.861  [igual que SSEE base]")
-print(f"  ΔBIc CMB = -31.3  [Paper 3, sin cambio]")
+print(f"  ΔBIC CMB = -31.3  [Paper 3, sin cambio]")
 print(f"  BAO χ²_r ≈ 0.01  [Paper 2, sin cambio]")
 print(f"  Cluster χ²_r = 0.122  [Paper 2, sin cambio]")
 
 # ── FIGURA ────────────────────────────────────────────────────────────────────
 fig, axes = plt.subplots(1, 2, figsize=(14, 5.5))
 
-# Panel 1: fσ8 comparación completa
+# Panel 1: fσ₈ comparación
 ax = axes[0]
 z_smooth = np.linspace(0.05, 0.65, 150)
-fs8_2s   = [get_fsig8(z, D_large, Dp_large, sig8_eff) for z in z_smooth]
-fs8_base = [get_fsig8(z, D_small, Dp_small, sig8_base) for z in z_smooth]
-fs8_lcdm = [get_fsig8(z, D_lcdm,  Dp_lcdm,  sig8_lcdm) for z in z_smooth]
+fs8_2s   = [get_fsig8(z, D_2s,   Dp_2s,   sig8_eff)    for z in z_smooth]
+fs8_base = [get_fsig8(z, D_1s,   Dp_1s,   sig8_base)   for z in z_smooth]
+fs8_lcdm = [get_fsig8(z, D_lcdm, Dp_lcdm, sig8_Planck) for z in z_smooth]
 
 ax.fill_between(z_smooth, np.array(fs8_2s)*0.92, np.array(fs8_2s)*1.08,
                 alpha=0.15, color='blue', label='SSEE 2-sector ±8% envelope')
-ax.plot(z_smooth, fs8_2s,   'b-',  lw=2.5, label=rf'SSEE dos-sectores ($\bar\sigma={mt_2s:.2f}$)')
-ax.plot(z_smooth, fs8_base, 'r--', lw=1.8, label=rf'SSEE base Paper 5 ($\bar\sigma={mt_base:.2f}$)')
-ax.plot(z_smooth, fs8_lcdm, 'g:',  lw=1.8, label=rf'$\Lambda$CDM ($\bar\sigma={mt_lcdm:.2f}$)')
+ax.plot(z_smooth, fs8_2s,   'b-',  lw=2.5,
+        label=rf'SSEE dos-sectores, $G_{{2s}}={G_2s:.3f}$ ($\bar\sigma={mt_2s:.2f}$)')
+ax.plot(z_smooth, fs8_base, 'r--', lw=1.8,
+        label=rf'SSEE base Paper 5, $G={G_single:.3f}$ ($\bar\sigma={mt_base:.2f}$)')
+ax.plot(z_smooth, fs8_lcdm, 'g:',  lw=1.8,
+        label=rf'$\Lambda$CDM ($\bar\sigma={mt_lcdm:.2f}$)')
 ax.errorbar(Z_RSD, fsig8_obs, yerr=fsig8_err, fmt='ko', ms=7,
             capsize=4, zorder=6, label='RSD Surveys (6dF, SDSS, BOSS, eBOSS)')
 ax.set_xlabel(r'Redshift $z$')
@@ -226,7 +234,8 @@ ax = axes[1]
 models   = ['SSEE\ndos-sectores', 'SSEE\nbase (P5)', 'ΛCDM']
 tensions = [mt_2s, mt_base, mt_lcdm]
 colors   = ['royalblue', 'tomato', 'seagreen']
-bars = ax.bar(models, tensions, color=colors, width=0.5, alpha=0.85, edgecolor='black', lw=1.2)
+bars = ax.bar(models, tensions, color=colors, width=0.5, alpha=0.85,
+              edgecolor='black', lw=1.2)
 ax.axhline(2.0, color='orange', ls='--', lw=1.5, label='2σ threshold')
 ax.axhline(1.0, color='green',  ls=':',  lw=1.5, label='1σ threshold')
 for bar, t in zip(bars, tensions):
@@ -239,10 +248,11 @@ ax.set_ylim(0, max(tensions)*1.25)
 ax.grid(True, alpha=0.3, axis='y')
 
 fig.suptitle(
-    'SSEE Paper 6: Two-Sector Verification\n'
+    'SSEE Paper 6: Two-Sector Verification (OptB — no WDM transfer function)\n'
     rf'$m_\phi = \Sigma m_\nu \times H_0^{{alg}} = {m_phi_eV:.2f}$ eV,  '
-    rf'$k_{{fs}} = {k_fs:.3f}$ h/Mpc,  '
-    rf'$\sigma_8^{{eff}} = {sig8_eff:.4f}$',
+    rf'$G_{{2s}} = {G_2s:.4f}$,  '
+    rf'$\sigma_8^{{eff}} = {sig8_eff:.4f}$,  '
+    rf'$S_8^{{eff}} = {S8_eff:.4f}$',
     fontsize=10.5
 )
 fig.tight_layout()
@@ -251,10 +261,15 @@ fig.savefig(out, bbox_inches='tight')
 print(f"\n  Figura guardada: {out}")
 
 print(f"\n{'='*70}")
-print(f"  VEREDICTO FINAL — Modelo SSEE + dos-sectores")
+print(f"  VEREDICTO FINAL — Modelo SSEE + dos-sectores (OptB)")
 print(f"{'='*70}")
-print(f"  fσ8 tensión media: {mt_2s:.4f}σ  ({'RESUELTA (<1σ)' if mt_2s<1.5 else 'MEJORADA' if mt_2s < mt_base else 'SIN MEJORA'})")
-print(f"  σ8:                {abs(sig8_eff-0.737)/0.020:.4f}σ vs KiDS  ({'<1σ OK' if abs(sig8_eff-0.737)/0.020<1 else 'tensión'})")
+print(f"  G_2s:              {G_2s:.4f}  (D₁_SSEE/D₁_ΛCDM, Ω_m 0.320 vs 0.315)")
+print(f"  σ₈_eff:            {sig8_eff:.4f}  (= 0.811 × G_2s, sin parámetros libres)")
+print(f"  S₈_eff:            {S8_eff:.4f}")
+print(f"  fσ₈ tensión media: {mt_2s:.4f}σ  "
+      f"({'RESUELTA (<1σ)' if mt_2s < 1.0 else 'MEJORADA' if mt_2s < mt_base else 'SIN MEJORA'})")
+print(f"  σ₈ vs KiDS-1000:   {abs(sig8_eff-kids_sig8)/kids_sig8_err:.4f}σ")
+print(f"  S₈ vs KiDS-1000:   {abs(S8_eff-kids_s8)/kids_s8_err:.4f}σ")
 print(f"  Parámetros libres nuevos: 0 (m_φ = Σm_ν × H₀^alg es algebraico)")
-print(f"  Predicción falsable: m_φ = {m_phi_eV:.2f} eV  (KATRIN/PTOLEMY 2027-2030)")
+print(f"  Predicción falsable: m_φ = {m_phi_eV:.2f} eV  (KATRIN/PTOLEMY 2027–2030)")
 print(f"{'='*70}")

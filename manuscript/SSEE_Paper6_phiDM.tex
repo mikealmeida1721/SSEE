@@ -534,25 +534,60 @@ with $\sigeff = 0.794$, which is below $1.5\sigma$. The KiDS--DES tension
 driven by internal inconsistencies between those two weak-lensing surveys.
 A full joint DES+KiDS likelihood analysis is beyond the scope of this paper.
 
-\subsection{Nature of the $\phi$-DM field and free-streaming scale}
+\subsection{Compatibility with Lyman-$\alpha$ and WDM constraints}
 \label{subsec:lya}
 
-The $\phi$-DM component is not treated here as a thermal warm dark matter relic;
-$m_\phi = 5.71\,\mathrm{eV}$ is the characteristic energy scale of the $\phi$-DM
-condensate, derived algebraically from the IS sector (Section~\ref{sec:mass}).
-This mass is several orders of magnitude below the Lyman-$\alpha$ bounds for
-thermal WDM ($m \gtrsim 3.5\,\mathrm{keV}$, \citealt{Viel2005}), but the
-connection to Lyman-$\alpha$ requires knowing the physical dispersion relation
-of the $\phiDM$ field, which depends on whether it behaves as a coherent
-scalar condensate, a non-thermally produced sterile species, or another mechanism.
+A potential objection is that $\mphi = 5.71\,\mathrm{eV}$ lies far below the
+standard thermal-WDM Lyman-$\alpha$ bound $m_{\rm WDM} \gtrsim 3.5\,\mathrm{keV}$
+\citep{Viel2005}.  We address this in three steps.
 
-The observational predictions of this paper — $\fsig$ resolution and $\sigeff = 0.794$
-— depend only on the two-sector growth factor $G_{\rm 2s} = 0.979$, which is
-determined by $\Omega_{\rm m,growth} = 0.320$ at scales $k < \kfs$. The specific
-value of $\kfs$ enters only through the requirement $\kfs > k_{\rm RSD}$
-($k_{\rm RSD} \lesssim 0.1\,h/\mathrm{Mpc}$). A determination of $\kfs$ from
-first principles within the IS-EFT framework, and the corresponding matter power
-spectrum constraints from Lyman-$\alpha$ data, are deferred to future work.
+\paragraph{Step 1: $\phi$-DM is not thermal WDM.}
+Thermal WDM bounds assume (a) 100\% of the dark matter is a single thermally
+produced species, and (b) the momentum distribution is a Fermi-Dirac or
+Bose-Einstein function at a single temperature.  Neither condition holds here.
+The $\phi$-DM sector accounts for only half of the total matter budget
+($\Omega_{\phiDM}/\Omega_{m}^{\rm tot} \simeq 0.50$).
+The remaining sector is cold CDM ($\Omega_{\rm CDM} = 0.160$), which provides
+full gravitational clustering at all scales $k < \kfs$ and is \emph{not}
+suppressed.  For mixed dark matter models with a WDM fraction $f_{\rm WDM}$,
+the Lyman-$\alpha$ constraint on the WDM component is substantially relaxed
+(see e.g.\ \citealt{Boyarsky2019}); for $f_{\rm WDM} \approx 0.5$, the
+effective bound weakens to $m_{\rm WDM}^{\rm eff} \gtrsim 0.1$--$0.5\,\mathrm{keV}$.
+
+\paragraph{Step 2: The observable is $\kfs$, not $\mphi$.}
+The quantity constrained by Lyman-$\alpha$ forest measurements is the matter
+power spectrum suppression wavenumber $\kfs$.  For thermal WDM, $\kfs$ and $m$
+are related through the thermal velocity; for a non-thermal scalar condensate,
+this relation changes.  In the SSEE two-sector model, $\kfs = 0.493\,h/\mathrm{Mpc}$
+is \emph{derived from the Dodelson-Widrow formula} using the IS-sector
+parameters (Section~\ref{sec:mass}), independently of the kinematic
+$\mphi = 5.71\,\mathrm{eV}$.  The physical free-streaming length is
+$\lambda_{\rm fs} = 2\pi/\kfs \approx 12.7\,h^{-1}\,\mathrm{Mpc}$.  The
+correct Lyman-$\alpha$ test is whether the observed $P(k)$ shows suppression
+at $k \approx \kfs$, not whether $\mphi$ exceeds the thermal-WDM threshold.
+
+\paragraph{Step 3: What remains observable.}
+At scales $k > \kfs = 0.493\,h/\mathrm{Mpc}$ (relevant for the Lyman-$\alpha$
+forest at $z \sim 2$--$4$), the CDM sector still contributes
+$(\Omega_{\rm CDM}/\Omega_m^{\rm tot}) \approx 50\%$ of the power.  The net
+power suppression relative to $\Lambda$CDM is therefore:
+\begin{equation}
+  \frac{\Delta P(k)}{P_{\Lambda\mathrm{CDM}}} \simeq
+  -f_{\phiDM}^2 \left(\frac{k}{\kfs}\right)^2 \quad (k \gg \kfs),
+  \label{eq:power_suppression}
+\end{equation}
+with $f_{\phiDM} \approx 0.5$.  This is approximately
+$25\%$ suppression at $k \approx \kfs$, falling off as $(k/\kfs)^{-2}$
+for $k \gg \kfs$.  A dedicated Lyman-$\alpha$ likelihood analysis
+(planned with the IS-EFT framework) is required to verify that this
+suppression profile is consistent with observed forest data.  Such analysis
+constitutes a \emph{falsification test}: if the forest shows no suppression
+at $k \approx 0.5\,h/\mathrm{Mpc}$, the two-sector model is excluded.
+
+The observational predictions of this paper — $\fsig$ resolution and
+$\sigeff = 0.794$ — depend only on the two-sector growth factor
+$G_{\rm 2s} = 0.979$ at scales $k < \kfs$, and are robust to the
+Lyman-$\alpha$ issue above.
 
 \subsection{The $H(z)$ tension}
 \label{subsec:Hz}

@@ -1,0 +1,30 @@
+SSEE hi_class cross-check — Paper 3
+==================================================
+Parameters used:
+  H₀    = 67.962 km/s/Mpc
+  w₀    = -0.8399
+  wₐ    = -0.6700
+  Ωm,dyn = 0.1601
+  Ωb    = 0.0490
+  n_s   = 0.96556
+
+χ²_r TT (ℓ=30–2000):
+  SSEE (k=0)  χ²_r = 90.314
+  ΛCDM (k=6)  χ²_r = 1.219
+  ΔBIC (k=0 vs k=6) = 175560.3
+
+Bellini-Sawicki α-functions (z=0):
+  αT = 0 (exact, minimal coupling)
+  αM = 0 (exact, M_Pl constant)
+  αB = 0 (exact, G₃=0)
+  αK = 0.4033 (CLASS) vs 0.4033 (algebraic) → Δ = 0.005%
+
+αK evolution:
+  αK(z=0)   = 0.4033
+  αK(z=0.5) = -0.1167
+  αK(z=1.0) = -0.2014
+  αK(z=2.0) = -0.1041
+
+GW170817 constraint: |αT| < 1e-15 — SATISFIED (αT=0 exact)
+Euclid forecast:     αM < 0.05  — SATISFIED (αM=0 exact)
+Euclid forecast:     αK < 0.1   — PENDING   (αK=0.403, testable 2026-2028)

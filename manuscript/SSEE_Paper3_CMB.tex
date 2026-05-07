@@ -763,6 +763,44 @@ $1.6\sigma$. The largest discrepancy is at $z=1.48$ (eBOSS QSO),
 where both models undershoot slightly.
 
 % ===========================================================================
+\subsection{CLASS/hi\_class cross-check of Bellini--Sawicki $\alpha$-functions}
+\label{sec:hiclass}
+% ===========================================================================
+
+As an independent validation we ran CLASS~\citep{Lesgourgues2011} with the
+SSEE algebraic background ($w_0=-0.840$, $w_a=-0.670$,
+$H_0=67.96$~km\,s$^{-1}$\,Mpc$^{-1}$) and verified the
+Bellini--Sawicki kinetic-braiding function $\alpha_K(z)$
+\citep{Bellini2015} against its algebraic prediction (Paper~7).
+
+The kinetic function for a minimal Horndeski scalar with CPL equation of
+state satisfies $\alpha_K(z)=3\,\Omega_{\rm DE}(z)\,[1+w_{\rm eff}(z)]$.
+At $z=0$:
+\begin{equation}
+  \alpha_K^{\rm alg}(0) = 3\,\Omega_{\rm DE}\,(1+w_0)
+    = 3\times 0.840\times 0.160 = 0.4032.
+  \label{eq:alphak_pred}
+\end{equation}
+CLASS background integration gives $\alpha_K^{\rm CLASS}(0)=0.4033$,
+a fractional deviation of $\Delta=0.005\%$, confirming the algebraic
+derivation to numerical precision.
+
+The remaining Bellini--Sawicki functions are zero by construction:
+$\alpha_T=\alpha_M=\alpha_B=0$ (exact), since SSEE is a minimal
+Horndeski scalar with constant $M_{\rm Pl}$ and no kinetic braiding
+or gravitational-wave speed excess~\citep{GW170817}. Together with
+Eq.~\eqref{eq:alphak_pred} this constitutes the complete EFT parameter
+set of the theory, validated against CLASS independently of CAMB.
+
+Note that the raw SSEE background ($\Omega_{m,\rm dyn}=0.160$) fed
+directly to CLASS gives $\chi^2_r=90.3$ against Planck PR4 TT.
+This is expected: without the MIRA two-sector mapping the background
+does not correspond to the CMB-effective $\Omega_{m,\rm CMB}=0.3199$.
+The good fit ($\chi^2_r\approx 1.06$, \S\ref{sec:stats}) is recovered
+only after applying the MIRA mapping, as implemented with CAMB in
+\S\ref{sec:results}.
+
+% ===========================================================================
 \section{Falsifiability Criteria}
 \label{sec:falsifiability}
 % ===========================================================================

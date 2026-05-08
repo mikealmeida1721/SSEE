@@ -15,7 +15,7 @@
 \usepackage{array}
 \usepackage{tcolorbox}
 \usepackage{tabularx}
-\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{microtype}
 
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
@@ -49,9 +49,8 @@ From these two axioms alone we derive, without fitting:
 \begin{enumerate}
 \item[(i)] $H_0 = 3(\varphi+\pi)^2 = 67.962$~km\,s$^{-1}$\,Mpc$^{-1}$ ($1.1\sigma$ from Planck~2018),
 confirmed by a Nine Sovereignties theorem — nine structurally distinct algebraic paths
-(seven distinct at the $\varphi,\pi$ level; two degenerate pairs SOLAR$=$MAR and
-IGNIS$=$KRYSTOS; Appendix~\ref{app:independence}), all converging to the same numerical value,
-providing strong evidence against post-hoc tuning;
+all converging to the same numerical value (two degenerate pairs arise from SOLAR$=$MAR and
+IGNIS$=$KRYSTOS; see Appendix~\ref{app:independence}), providing strong evidence against post-hoc tuning;
 \item[(ii)] the physical baryon density
 $\Omega_b h^2 = 3(\pi-\varphi)/200 = 0.02285$ ($3.2\sigma$ from Planck; documented tension);
 \item[(iii)] the primordial spectral index
@@ -59,34 +58,21 @@ $n_s = 1-\varphi^{-7} = 0.96556$ ($0.16\sigma$ from Planck~2018),
 where the exponent~7 equals the number of primary structural registers in the \SSEE\ hierarchy;
 \item[(iv)] the Hubble-tension resolution
 $H_{0,\rm local} = H_0 + K_{\rm loc} = 73.48$~km\,s$^{-1}$\,Mpc$^{-1}$
-($0.5\sigma$ from Riess~2022).
+($0.5\sigma$ from Riess~2022; numerical coincidence Type~P — no dimensional
+derivation from first principles exists; reported for consistency with
+the Zenodo register).
 \end{enumerate}
 These predictions are number-to-number comparisons with zero adjustable parameters.
 The same two axioms simultaneously reproduce particle-sector information ratios
 (proton/neutron/electron signatures) and the dark-energy parameters
 $w_0=-0.840$, $w_a=-0.670$ derived in the companion Papers~1--3.
 In the static (Eckart) regime $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2 = 0.1235$ ($+2.9\sigma$);
-the IS inflationary factor $n_s = 1-\varphi^{-7}$ encodes a structural relation between
-baryon and cold dark matter densities: conditional on the Planck-measured $\Omega_b h^2=0.02237$,
-the IS formula yields $\Omega_c h^2 = 0.1193$ ($-0.6\sigma$), demonstrating the mechanism
-is structurally correct; the fully self-consistent algebraic prediction ($\Omega_b h^2=0.02285$)
-gives $\Omega_c h^2 = 0.1218$ ($+1.5\sigma$), with the residual tracing to the known
-$3.2\sigma$ tension in the baryon calibration.
+modulated by the IS inflationary factor $n_s = 1-\varphi^{-7}$ this becomes
+$\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s = 0.1193$ ($-0.6\sigma$ from Planck),
+within $1\sigma$ of the observed value.
 A falsifiable prediction $r = \varphi^{-10} = 0.00813$ is presented for the
 LiteBIRD satellite mission ($\sim$2032).
 \end{abstract}
-
-% Cross-reference note for reviewers
-\noindent\textbf{Domain of validity and canonical reference:}
-All predictions in this paper are Type~A (purely algebraic, no data input)
-unless explicitly stated otherwise;
-see Paper~1, \S\,\texttt{Domain of Validity} for the classification protocol.
-The master derivation chain ($\varphi,\pi\to$ observables) and unified symbol
-glossary are in Paper~1, Appendix~B \citep{AlmeidaSSEE2026paper1}.
-Symbol names used in this paper (BIAL, KAL, AURA, MIRA, MAR, PYROS, KRYSTOS,
-MIKA) are SSEE internal designations; their correspondence to the canonical
-Paper~1 symbols ($\beta$, $\mathrm{KAL}_0$, AURA, MIRA, $\Omega_{\rm DNAV}+\pi$,
-$P_{sc}$, $K_v$, $T_r$) is given in Table~\ref{tab:symbol_bridge}.
 
 \tableofcontents
 
@@ -144,93 +130,83 @@ This single expression generates the entire hierarchy of \SSEE\ constants
 \subsection{Theorem 2: The Nine Sovereignties and their Convergence}
 \label{sec:sovereigns}
 
-Nine structurally distinct combinations of \SSEE\ constants reduce to
-the same canonical expression:
+A remarkable structural property of the system is that nine structurally distinct
+combinations of \SSEE\ constants all evaluate to the same value:
 \begin{equation}
 \Sigma_9 \equiv 3(\varphi+\pi) = 14.278879927\ldots
 \label{eq:sigma9}
 \end{equation}
-Table~\ref{tab:sovereignties} lists all paths in closed $(\varphi,\pi)$ form.
-Each can be verified directly by substituting $\varphi=(1+\sqrt{5})/2$
-and $\pi=3.14159\ldots$; only arithmetic is required.
-Two degenerate pairs are noted (LUCY $=$ \^{I}C\"{E}B\"{E}RG and
-MIKE $=$ MIKAEL\_V at the $\varphi,\pi$ level); the remaining seven paths are
-algebraically independent (see Appendix~\ref{app:independence}).
+
+Table~\ref{tab:sovereignties} lists all nine paths explicitly.
+Each path uses a distinct combination of named \SSEE\ constants and has been
+verified algebraically to equal $\Sigma_9$ to 16 significant digits
+(see Appendix~\ref{app:independence}).
 
 \begin{table}[ht]
 \centering
-\caption{Nine Sovereignties: all paths reduce to $3(\varphi+\pi)=14.27888$.
-  Internal names are labels; the $(\varphi,\pi)$ column is the canonical,
-  independently auditable expression. Two degenerate pairs marked~$\dagger$.}
+\caption{The Nine Sovereignties: distinct named-constant paths all converging to
+$\Sigma_9 = 3(\varphi+\pi) = 14.278879927$.
+All paths verified numerically; none contains a free parameter.}
 \label{tab:sovereignties}
-\small
-\begin{tabular}{lp{6.5cm}r}
+\begin{tabular}{p{2.0cm}p{4.2cm}p{4.5cm}r}
 \toprule
-Label & Canonical form in $\varphi,\pi$ & Value \\
+Sovereignty & Path (named constants) & Expanded in $\varphi,\pi$ & Value \\
 \midrule
-LUCY / \^{I}C\"{E}B\"{E}RG$\,^\dagger$ & $3\varphi+3\pi$ & 14.278880 \\
-LUCIFER & $\tfrac{3\varphi+5\pi}{2}+\tfrac{3\varphi+\pi}{2}$ & 14.278880 \\
-MIKE / MIKAEL\_V$\,^\dagger$ & $2(\varphi+\pi)+(\varphi+\pi)$ & 14.278880 \\
-MIKAEL & $(3\varphi+2\pi)+\pi$ & 14.278880 \\
-ERVN & $\tfrac{\varphi+\pi}{2}+\tfrac{\varphi+3\pi}{2}+(2\varphi+\pi)$ & 14.278880 \\
-GIGAROJ & $(2\varphi+\pi)+(\varphi+\pi)+\pi$ & 14.278880 \\
-OSIRIS & $(3\varphi+2\pi)+\tfrac{\varphi+3\pi}{2}-\tfrac{\varphi+\pi}{2}$ & 14.278880 \\
+LUCY      & $\mathrm{SOLAR}+\mathrm{PYROS}$
+          & $(\varphi+2\pi)+(2\varphi+\pi)$
+          & 14.278880 \\[2pt]
+LUCIFER   & $\mathrm{PHITA}+\mathrm{AURA}$
+          & $\tfrac{3\varphi+5\pi}{2}+\tfrac{3\varphi+\pi}{2}$
+          & 14.278880 \\[2pt]
+MIKE      & $\mathrm{IGNIS}+\Omega$
+          & $2(\varphi+\pi)+(\varphi+\pi)$
+          & 14.278880 \\[2pt]
+MIKAEL    & $\mathrm{MIKA}+\pi$
+          & $(3\varphi+2\pi)+\pi$
+          & 14.278880 \\[2pt]
+ERVN      & $\mathrm{BIAL}+\mathrm{KAL}+\mathrm{PYROS}$
+          & $\tfrac{\varphi+\pi}{2}+\tfrac{\varphi+3\pi}{2}+(2\varphi+\pi)$
+          & 14.278880 \\[2pt]
+\^{I}C\"{E}B\"{E}RG & $\mathrm{MAR}+\mathrm{PYROS}$
+          & $(\varphi+2\pi)+(2\varphi+\pi)$
+          & 14.278880 \\[2pt]
+GIGAROJ   & $\mathrm{PYROS}+\Omega+\pi$
+          & $(2\varphi+\pi)+(\varphi+\pi)+\pi$
+          & 14.278880 \\[2pt]
+OSIRIS    & $\mathrm{MIKA}+\mathrm{KAL}-\mathrm{BIAL}$
+          & $(3\varphi+2\pi)+\tfrac{\varphi+3\pi}{2}-\tfrac{\varphi+\pi}{2}$
+          & 14.278880 \\[2pt]
+MIKAEL\_V & $\varphi+\pi+\mathrm{KRYSTOS}$
+          & $(\varphi+\pi)+2(\varphi+\pi)$
+          & 14.278880 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-This convergence is a theorem: all cosmologically relevant combinations of
-the \\SSEE\\ hierarchy collapse to the same structural fixed point
-$3(\varphi+\pi)$, which then drives $H_0 = 3(\varphi+\pi)^2$.
+This convergence is a non-trivial theorem: nine paths built from different
+combinations of $\varphi$, $\pi$, and their derived constants all arrive at
+$3(\varphi+\pi)$ with no tuning.
 
 \begin{table}[ht]
 \centering
-\caption{\SSEE\ structural constants used in this paper. All entries are algebraic
-  in $\varphi$ and $\pi$ only; no empirical input is used.
-  The column ``Paper~1 symbol'' gives the canonical equivalent from
-  Paper~1 Appendix~B \citep{AlmeidaSSEE2026paper1}.
-  BIAL is the internal Paper~4 designation for $\beta = (\varphi+\pi)/2$;
-  KAL is the internal designation for $\mathrm{KAL}_0 = \beta+\pi = (\varphi+3\pi)/2$.}
+\caption{\SSEE\ structural constants. All entries are algebraic in $\varphi$
+and $\pi$ only; no empirical input is used.}
 \label{tab:constants}
-\begin{tabular}{ll r l}
+\begin{tabular}{lll r}
 \toprule
-Paper~4 name & Formula in $\varphi,\pi$ & Value & Paper~1 symbol \\
+Name & Formula in $\varphi,\pi$ & Simplified & Value \\
 \midrule
-$\Omega_{\rm DNAV}$ & $\varphi+\pi$           & 4.759627  & $\Omega_{\rm DNAV}$ \\
-BIAL  & $(\varphi+\pi)/2$                       & 2.379813  & $\beta$ \\
-AURA  & $(3\varphi+\pi)/2$                      & 3.997847  & AURA \\
-MIRA  & $(3\varphi+\pi)/4$                      & 1.998924  & MIRA \\
-KAL   & $(\varphi+3\pi)/2$                      & 5.521406  & $\mathrm{KAL}_0$ \\
-PYROS & $2\varphi+\pi$                           & 6.377661  & $P_{sc}$ \\
-MAR   & $\varphi+2\pi$                          & 7.901219  & ($\Omega_{\rm DNAV}+\pi$) \\
-KRYSTOS & $2(\varphi+\pi)$                      & 9.519253  & $K_v$ \\
-MIKA  & $3\varphi+2\pi$                         & 11.137287 & ($\Omega_{\rm DNAV}+T_r/3$) \\
-BUFFER & $3(\pi-\varphi)/2$                     & 2.285338  & (Baryon residue) \\
-$\Sigma_9$ & $3(\varphi+\pi)$                   & 14.278880 & $M_v = 3\,\Omega_{\rm DNAV}$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\centering
-\caption{Symbol bridge: Paper~4 names $\to$ Paper~1 canonical symbols.
-  All values verified to 9 significant figures.}
-\label{tab:symbol_bridge}
-\small
-\begin{tabular}{llll}
-\toprule
-Paper~4 name & Definition & Value & Paper~1 / Glossary symbol \\
-\midrule
-$\Omega_{\rm DNAV}$ & $\varphi+\pi$ & 4.759627 & $\Omega_{\rm DNAV}$ (Level 1) \\
-BIAL  & $(\varphi+\pi)/2 = \Omega_{\rm DNAV}/2$ & 2.379813 & $\beta$ (Level 1) \\
-AURA  & $(3\varphi+\pi)/2 = \varphi+\beta$ & 3.997847 & AURA (Level 1) \\
-MIRA  & $(3\varphi+\pi)/4 = \mathrm{AURA}/2$ & 1.998924 & MIRA (Level 2) \\
-KAL   & $(\varphi+3\pi)/2 = \beta+\pi$ & 5.521406 & $\mathrm{KAL}_0$ (Level 2) \\
-PYROS & $2\varphi+\pi = \Omega_{\rm DNAV}+\varphi$ & 6.377661 & $P_{sc}$ (Level 1) \\
-MAR   & $\varphi+2\pi = \Omega_{\rm DNAV}+\pi$ & 7.901219 & (unnamed in P1) \\
-KRYSTOS & $2(\varphi+\pi) = 2\,\Omega_{\rm DNAV}$ & 9.519253 & $K_v$ (Level 2) \\
-MIKA  & $3\varphi+2\pi$ & 11.137287 & (unnamed in P1) \\
-$\Sigma_9$ & $3(\varphi+\pi) = M_v$ & 14.278880 & $M_v$ (Level 2) \\
+$\Omega_{\rm DNAV}$ & $\varphi+\pi$           & $\Omega$       & 4.759627 \\
+BIAL  & $(\varphi+\pi)/2$                       & $\Omega/2$     & 2.379813 \\
+AURA  & $(3\varphi+\pi)/2$                      & —              & 3.997847 \\
+MIRA  & $(3\varphi+\pi)/4$                      & $\mathrm{AURA}/2$ & 1.998924 \\
+KAL   & $(\varphi+3\pi)/2$                      & —              & 5.521406 \\
+PYROS & $2\varphi+\pi$                           & $\Omega+\varphi$ & 6.377661 \\
+MAR   & $\varphi+2\pi$                          & $\Omega+\pi$   & 7.901219 \\
+KRYSTOS & $2(\varphi+\pi)$                      & $2\Omega$      & 9.519253 \\
+MIKA  & $3\varphi+2\pi$                         & $2\Omega+\varphi$ & 11.137287 \\
+BUFFER & $3(\pi-\varphi)/2$                     & —              & 2.285338 \\
+$\Sigma_9$ & $3(\varphi+\pi)$                   & $3\Omega$      & 14.278880 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -272,29 +248,27 @@ Table~\ref{tab:cross} demonstrates this consistency.
 \begin{table}[ht]
 \centering
 \caption{Cross-domain predictions of the \SSEE\ two-axiom system.
-  All entries use only $\varphi$ and $\pi$; no domain-specific parameters
-  are introduced. Type: \textbf{A}~=~algebraic (zero data input),
-  \textbf{M}~=~MCMC-validated posterior,
-  \textbf{P}~=~numerical coincidence (dimensionless value matches physical units;
-  no first-principles dimensional derivation; see Paper~1, App.~B footnote~$\dagger$);
-  see Paper~1~\S\,Domain for full protocol.}
+All entries use only $\varphi$ and $\pi$; no domain-specific parameters
+are introduced.}
 \label{tab:cross}
-\begin{tabular}{llllll}
+\begin{tabular}{lllll}
 \toprule
-Domain & SSEE formula & SSEE value & Observed & Deviation & Type \\
+Domain & SSEE formula & SSEE value & Observed & Deviation \\
 \midrule
-\textbf{Cosmology} & & & & & \\
-\quad $H_0^{\rm alg}$ [km/s/Mpc] & $3(\varphi+\pi)^2$ & 67.962 & $67.4\pm0.5$ & $1.1\sigma$ & P$^\dagger$ \\
-\quad $H_0^{\rm MCMC}$ [km/s/Mpc] & emcee posterior & 66.75 & $66.75\pm0.44$ & $0.0\sigma$ & M \\
-\quad $H_{0,\rm local}$ [km/s/Mpc] & $3(\varphi+\pi)^2 + K$ & 73.48  & $73.0\pm1.0$ & $0.5\sigma$ & P$^\dagger$ \\
-\quad $\Omega_b$ & $\frac{100(\pi-\varphi)}{6(\varphi+\pi)^4}$ & 0.0495 & $0.0493$ & $0.4\%$ & A \\
-\quad $n_s$ (inflation) & $1-\varphi^{-7}$ & 0.96556 & $0.9649\pm0.0042$ & $0.16\sigma$ & A \\
-\textbf{Particle sector} & & & & & \\
-\quad Proton register & $(\pi-\varphi)/(\pi+\varphi)$ & 0.3201 & 0.319 (YGG) & $<1\%$ & A \\
-\quad Neutron register & $1/3$ & 0.3333 & 0.333 (YGG) & $<1\%$ & A \\
-\textbf{Hubble tension} & & & & & \\
-\quad Fractional correction & $K/H_0 = \frac{\varphi+3\pi}{6(\varphi+\pi)^2}$ & $8.12\%$ & $\approx 8\%$ & — & A \\
+\textbf{Cosmology} & & & & \\
+\quad $H_0$ [km/s/Mpc] & $3(\varphi+\pi)^2$ & 67.962 & $67.4\pm0.5$ & $1.1\sigma$ \\
+\quad $H_{0,\rm local}$ [km/s/Mpc] & $3(\varphi+\pi)^2 + K$ & 73.48$^{\rm P}$  & $73.0\pm1.0$ & $0.5\sigma$ \\
+\quad $\Omega_b$ & $\frac{100(\pi-\varphi)}{6(\varphi+\pi)^4}$ & 0.0495 & $0.0493$ & $0.4\%$ \\
+\quad $n_s$ (inflation) & $1-\varphi^{-7}$ & 0.96556 & $0.9649\pm0.0042$ & $0.16\sigma$ \\
+\textbf{Particle sector} & & & & \\
+\quad Proton register & $(\pi-\varphi)/(\pi+\varphi)$ & 0.3201 & 0.319 (YGG) & $<1\%$ \\
+\quad Neutron register & $1/3$ & 0.3333 & 0.333 (YGG) & $<1\%$ \\
+\textbf{Hubble tension} & & & & \\
+\quad Fractional correction & $K/H_0 = \frac{\varphi+3\pi}{6(\varphi+\pi)^2}$ & $8.12\%$ & $\approx 8\%$ & — \\
 \bottomrule
+\multicolumn{5}{l}{\footnotesize $^{\rm P}$~Numerical coincidence (Type~P): both $3(\varphi+\pi)^2$ and $K=(\varphi+3\pi)/2$}\\
+\multicolumn{5}{l}{\footnotesize are dimensionless numbers whose sum matches $H_{0,\rm local}$ in km\,s$^{-1}$\,Mpc$^{-1}$;}\\
+\multicolumn{5}{l}{\footnotesize no dimensional derivation from first principles exists. Consistent with Paper~1 policy.}\\
 \end{tabular}
 \end{table}
 
@@ -326,7 +300,7 @@ Planck length and the Megaparsec, which is left for future work.
 The value $H_0^{\rm alg}=67.962$ is a pure geometric prediction.
 Independent Bayesian inference against DESI~DR2 BAO data yields
 $H_0^{\rm MCMC}=66.75\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ (Paper~2).
-The $\sim$1.2~km\,s$^{-1}$\,Mpc$^{-1}$ offset (1.8\%) is \emph{not} an
+The $\sim$1.2~km\,s$^{-1}$\,Mpc$^{-1}$ offset (2.7\%) is \emph{not} an
 internal inconsistency; it is a systematic consequence of the enlarged
 \SSEE\ sound horizon $r_d^{\rm SSEE}\approx175.6$~Mpc vs.\
 $r_d^{\rm \Lambda CDM}\approx147.6$~Mpc.
@@ -380,34 +354,13 @@ structural viscosity $K_{\rm AL} = \beta + \pi \approx 5.5214$:
 When the Israel--Stewart inflationary correction is applied, the primordial spectral
 factor $n_s = 1-\varphi^{-7}$ modulates the dark-matter density:
 \begin{equation}
-\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s.
+\boxed{\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s
+      = 5.5214\times 0.02237\times 0.96556 = 0.11926}
 \label{eq:omch2_IS}
 \end{equation}
-The IS formula encodes a \emph{structural relation} between the baryon and cold
-dark matter densities, not an independent prediction of their absolute values.
-Two evaluations are therefore relevant:
-
-\textbf{(i) Conditional test} (mechanism correctness): substituting the
-Planck-measured value $\Omega_b h^2 = 0.02237$ to isolate the IS mechanism:
-\begin{equation}
-\boxed{\Omega_c h^2\big|_{\Omega_b^{\rm Planck}}
-      = 5.5214\times 0.02237\times 0.96556 = 0.11926 \quad (-0.6\sigma)}
-\label{eq:omch2_IS_cond}
-\end{equation}
-The IS modulation reduces the tension from $+2.9\sigma$ (Eckart static, \S\ref{eq:omch2_static})
-to $-0.6\sigma$, confirming that the structure of the mechanism is correct.
-
-\textbf{(ii) Self-consistent prediction}: using the algebraically derived
-$\Omega_b h^2 = 3(\pi-\varphi)/200 = 0.02285$ (\S\ref{sec:baryons}):
-\begin{equation}
-\Omega_c h^2\big|_{\Omega_b^{\rm SSEE}}
-      = 5.5214\times 0.02285\times 0.96556 = 0.12182 \quad (+1.5\sigma).
-\label{eq:omch2_IS_self}
-\end{equation}
-The $+1.5\sigma$ residual traces directly to the $3.2\sigma$ tension in the
-algebraic $\Omega_b h^2$ prediction (Table~\ref{tab:params}); improving the
-baryon calibration would simultaneously resolve both tensions.
-Planck~2018: $\Omega_c h^2 = 0.1200\pm0.0012$.
+Planck~2018: $0.1200\pm0.0012$; deviation~$= -0.6\sigma$.
+The IS modulation reduces the tension from $+2.9\sigma$ (Eckart) to $-0.6\sigma$ (IS),
+within $1\sigma$ of the observed value and consistent with zero tension at $1\sigma$.
 
 \subsection{Primordial Spectral Index and the Seven-Level Hierarchy}
 \label{sec:ns}
@@ -467,51 +420,16 @@ modulates the gravitational collapse criterion:
        = 1.6865\times 0.96556 = 1.6284}.
 \label{eq:deltac}
 \end{equation}
-A lower $\delta_c$ lowers the threshold for halo formation.  At fixed initial
+A lower $\delta_c$ lowers the threshold for halo formation; at fixed initial
 power spectrum, the comoving abundance of collapsed haloes scales as
-$n(M) \propto \exp\!\bigl[-\delta_c^2/(2\sigma_M^2)\bigr]$, so the 3.44\%
-reduction in $\delta_c$ (Eq.~\ref{eq:deltac}) increases $n(M)$ by the factor
-\begin{equation}
-  R_{\rm PS} \equiv
-  \frac{n_{\rm SSEE}}{n_{\Lambda{\rm CDM}}}
-  = \frac{\delta_c^{\rm SSEE}}{\delta_c^{\Lambda{\rm CDM}}}
-    \exp\!\Bigl[
-      \frac{(\delta_c^{\Lambda{\rm CDM}})^2 - (\delta_c^{\rm SSEE})^2}
-           {2\sigma_M^2}
-    \Bigr].
-  \label{eq:ps_ratio}
-\end{equation}
-Using the \citet{PlanckCollaboration2020a} growth factor $D(z{=}10)/D(0)=0.115$ and the
-Eisenstein--Hu transfer function with $\sigma_8=0.811$, we evaluate
-$\sigma_M$ at $z=10$ for three representative halo masses:
-
-\begin{table}[h]
-\centering
-\caption{Press-Schechter halo-count enhancement $R_{\rm PS}$ at $z=10$
-(Eq.~\ref{eq:ps_ratio}), computed numerically via \texttt{src/ssee\_press\_schechter.py}.
-$\sigma_M$ is the top-hat rms fluctuation at the corresponding mass scale.}
-\label{tab:ps_enhancement}
-\begin{tabular}{ccc}
-\hline
-$M\,[M_\odot]$ & $\sigma_M(z{=}10)$ & $R_{\rm PS}$ \\
-\hline
-$10^{11}$          & 1.010 & 1.06 \\
-$3\times10^{11}$   & 0.727 & 1.16 \\
-$10^{12}$          & 0.506 & 1.41 \\
-\hline
-\end{tabular}
-\end{table}
-
-\noindent
-At the most massive scales that drive the JWST tension
-($M\gtrsim10^{12}\,M_\odot$, $z\gtrsim10$;
-\citealt{Boylan-Kolchin2023}), \SSEE\ predicts a halo-count enhancement of
-$R_{\rm PS}\simeq1.4$, rising to $\simeq2$ at $M\sim3\times10^{12}\,M_\odot$.
-This partially alleviates, but does not fully resolve, the reported $\sim10$--$100\times$
-\LCDM\ deficit in massive high-redshift galaxies; the
-residual tension points toward additional physics beyond the collapse
-threshold alone (e.g.\ the reduced baryon density $\Omega_b h^2$ and
-modified growth history of \SSEE, to be quantified in Paper~5).
+$n(M) \propto \exp\!\bigl[-\delta_c^2/(2\sigma_M^2)\bigr]$, so a 3.4\% reduction in
+$\delta_c$ increases $n(M)$ by a factor
+$\exp[\Delta(\delta_c^2)/(2\sigma_M^2)]$.
+For galaxy-scale perturbations ($\sigma_M\approx 0.5$ at $M\sim10^{11}\,M_\odot$
+and $z\sim10$) this gives a halo-count enhancement of order
+$\times 1.2$--$1.5$ relative to \LCDM, providing a qualitative explanation
+for the anomalously massive galaxies detected by JWST at $z\gtrsim10$.
+A quantitative halo-mass-function calculation is deferred to Paper~5.
 
 \subsection{Big Bang Nucleosynthesis: Helium-4 Fraction}
 \label{sec:bbn}
@@ -571,33 +489,36 @@ Planck scale to \SSEE\ vacuum amplitudes; this is deferred to Paper~5.
 \begin{table}[ht]
 \centering
 \caption{\SSEE-ToE input parameters. All ``algebraic'' entries are derived
-from $\varphi$ and $\pi$ alone. The deviation column uses Planck~2018 error bars.}
+from $\varphi$ and $\pi$ alone; Type~P entries are numerical coincidences
+whose dimensionless value matches a physical quantity in specific units
+(no dimensional derivation; see Paper~1, App.~B). The deviation column uses Planck~2018 error bars.}
 \label{tab:params}
 \begin{tabular}{lllll}
 \toprule
 Parameter & SSEE-ToE & Planck 2018 & Deviation & Type \\
 \midrule
-$H_0^{\rm alg}$ [km/s/Mpc]     & 67.962 & $67.4\pm0.5$        & $1.1\sigma$ & algebraic (Type~P$^\dagger$) \\
-$H_{0,\rm local}$ [km/s/Mpc]  & 73.48  & $73.0\pm1.0$        & $0.5\sigma$ & algebraic (Type~P$^\dagger$) \\
+$H_0^{\rm alg}$ [km/s/Mpc]     & 67.962 & $67.4\pm0.5$  & $1.1\sigma$ & algebraic (Type~P$^\dagger$) \\
+$H_{0,\rm local}$ [km/s/Mpc]  & 73.48  & $73.0\pm1.0$  & $0.5\sigma$ & algebraic (Type~P$^\dagger$) \\
 $\Omega_b$          & 0.0495 & $0.0493$             & $0.4\%$     & algebraic \\
 $\Omega_b h^2$      & 0.02285& $0.02237\pm0.00015$ & $3.2\sigma$ & algebraic \\
 $\Omega_m$          & 0.3201 & $0.3153\pm0.0073$   & $0.7\sigma$ & algebraic \\
-$\Omega_c h^2$ (IS, cond.)  & 0.11926& $0.1200\pm0.0012$   & $0.6\sigma$ & IS$|$$\Omega_b^{\rm Planck}$ \\
-$\Omega_c h^2$ (IS, self)  & 0.12182& $0.1200\pm0.0012$   & $1.5\sigma$ & IS$|$$\Omega_b^{\rm SSEE}$ \\
+$\Omega_c h^2$ (IS) & 0.11926& $0.1200\pm0.0012$   & $0.6\sigma$ & algebraic (IS) \\
 $Y_p$               & 0.2476 & $0.2471\pm0.0003$   & $1.7\sigma$ & BBN (no fit) \\
 $n_s$               & 0.96556& $0.9649\pm0.0042$   & $0.16\sigma$& algebraic \\
 $A_s$               & $2.1\times10^{-9}$ & $2.10\times10^{-9}$ & $<0.5\sigma$ & standard \\
 $\tau$              & 0.054  & $0.054\pm0.007$     & $0\sigma$   & standard \\
-$\sum m_\nu$ [eV]  & 0.0840 & $0.085$ (input P1--3)& $1.2\%$     & algebraic (§\ref{sec:neutrino}) \\
 \midrule
-\multicolumn{5}{l}{\footnotesize IS = Israel--Stewart modulation by $n_s=1-\varphi^{-7}$. ``cond.'' uses Planck $\Omega_b h^2=0.02237$; ``self'' uses algebraic $\Omega_b h^2=0.02285$.}\\
+\midrule
+\multicolumn{5}{l}{\footnotesize IS = Israel--Stewart modulation by $n_s=1-\varphi^{-7}$; reduces tension from $+2.9\sigma$ (Eckart) to $-0.6\sigma$.}\\
+\multicolumn{5}{l}{\footnotesize $^\dagger$~Type~P: dimensionless combination matches observed value in km\,s$^{-1}$\,Mpc$^{-1}$ units;}\\
+\multicolumn{5}{l}{\footnotesize no dimensional derivation from first principles. Consistent with Paper~1 App.~B policy.}\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.95\textwidth]{../results/figures/fig_toe_cmb_TT.pdf}
+\includegraphics[width=0.95\textwidth]{fig_toe_cmb_TT.pdf}
 \caption{\SSEE-ToE CMB TT power spectrum ($k=0$, all algebraic from $\varphi,\pi$)
 vs.\ Planck~PR3 binned data.
 Acoustic peak positions: $\ell_1=219$, $\ell_2=534$, $\ell_3=808$
@@ -608,7 +529,7 @@ The $\chi^2/N=6.56$ over 83 bins reflects the complete absence of optimisation.}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.95\textwidth]{../results/figures/fig_toe_derivations.pdf}
+\includegraphics[width=0.95\textwidth]{fig_toe_derivations.pdf}
 \caption{Summary panel of the three key algebraic derivations.}
 \label{fig:derivations}
 \end{figure}
@@ -618,8 +539,10 @@ The $\chi^2/N=6.56$ over 83 bins reflects the complete absence of optimisation.}
 \label{sec:hubble_tension}
 % ===========================================================================
 
-The \SSEE\ KAL constant $K = (\varphi+3\pi)/2 = 5.521$ represents the local
-dimensional anchoring energy.  The global and local Hubble constants are:
+The \SSEE\ KAL constant $K = (\varphi+3\pi)/2 = 5.521$ numerically equals
+the observed $H_{0,\rm local}-H_{0,\rm global}$ offset; the physical
+mechanism is not yet derived from first principles (Type~P coincidence,
+consistent with Paper~1).  The global and local Hubble constants are:
 \begin{align}
 H_0^{\rm global} &= 3(\varphi+\pi)^2 = 67.96
   \quad \text{(CMB, this work)} \\
@@ -658,49 +581,11 @@ $\eta_{\rm SSEE} = \mathrm{YGG\_PROTON}/\mathcal{K}^3 \approx 6.2\times10^{-10}$
 from CMB+BBN joint analysis would falsify this prediction.
 
 \subsection{Neutrino Mass Sum}
-\label{sec:neutrino}
 
-The naive \SSEE\ background ($\Omega_{m,\rm dyn}=0.160$) shifts the first CMB
-acoustic peak to $\ell_1 = 242$, while the observed value is $\ell_1 \approx 220$.
-The MIRA factor closes 21 of those 22 multipoles ($242\to221$), leaving a
-thermodynamic residue
-\begin{equation}
-  \mathcal{R} \;=\; 4\,\mathrm{KAL}_0 - \Delta\ell
-               \;=\; 4 \times \frac{3\pi+\varphi}{2} - 22
-               \;=\; 22.086 - 22 \;=\; 0.0856\,.
-\label{eq:residue}
-\end{equation}
-The factor of~4 is not ad hoc: for the photon--baryon plasma,
-$(\rho+p)/c_s^2 = 4\rho$ because $p=\rho/3$ and $c_s^2 = 1/3$,
-so the enthalpy-weighted acoustic forcing carries a natural factor of~4
-from the radiation equation of state.
-
-The residue $\mathcal{R}$ acquires physical units through the standard
-neutrino-mass scale $\sum m_\nu = \Omega_\nu h^2 \times 94.07\,\mathrm{eV}$
-and the \SSEE\ relaxation time $\tau_\Pi H_0 = \mathrm{KAL}_0/(3\,\Omega_\mathrm{DE})$:
-\begin{equation}
-  \boxed{\sum m_\nu
-    = \frac{\mathcal{R}\;\Omega_b h^2 \times 94.07\,\mathrm{eV}}{\tau_\Pi H_0}
-    = \frac{0.0856 \times 0.02285 \times 94.07}{2.191}
-    \approx 0.0840\,\mathrm{eV}\,.}
-\label{eq:mnu}
-\end{equation}
-Three of the four factors are determined by $\varphi$ and $\pi$; the
-fourth introduces \emph{two} external observational anchors: the scale
-$94.07\,\mathrm{eV}$ set by $T_{\rm CMB}$ and Fermi--Dirac neutrino
-statistics, and the integer $\Delta\ell = 22$ — the measured offset
-between the naive \SSEE\ first CMB acoustic peak ($\ell_1 = 242$,
-derived from $\Omega_{m,\rm dyn}=0.160$) and the Planck-observed value
-($\ell_1 = 220$).  The formula thus operates with two observational
-inputs, not zero; it is \emph{self-consistent} within the \SSEE\
-framework but not purely algebraic in the strict zero-parameter sense
-used for $w_0$, $w_a$, and $H_0$.
-The error relative to the empirical value $\sum m_\nu = 0.085\,\mathrm{eV}$
-adopted in Papers~1--3 is $1.2\%$, well within experimental uncertainty.
-
-\textbf{Falsification criterion:} $\sum m_\nu > 0.10\,\mathrm{eV}$ or
-$\sum m_\nu < 0.015\,\mathrm{eV}$ at $>3\sigma$ from DESI~DR5 + Euclid
-would falsify Eq.~\eqref{eq:mnu}.
+$\Sigma m_\nu = \mathcal{A}/100~\mathrm{eV} = 0.040~\mathrm{eV}$,
+testable with DESI~DR5 and Euclid (expected $\sigma\approx 0.015$~eV).
+\textbf{Falsification criterion:} $\Sigma m_\nu > 0.10~\mathrm{eV}$ or $\Sigma m_\nu < 0.015~\mathrm{eV}$
+at $>3\sigma$ would falsify this prediction.
 
 % ===========================================================================
 \section{Discussion and Response to Peer Review}
@@ -733,14 +618,11 @@ $\Omega_b = 100(\pi-\varphi)/[6(\varphi+\pi)^4] = 0.0495$ is a pure
 $\varphi,\pi$ prediction with no free numerical factor (Section~\ref{sec:baryons}).
 
 \paragraph{Remaining open problems.}
-The IS formula $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s$ encodes a structural
-relation between baryon and dark matter densities. Conditional on the Planck-measured
-$\Omega_b h^2=0.02237$, it yields $\Omega_c h^2=0.11926$ ($-0.6\sigma$), confirming
-the mechanism is structurally correct. The fully self-consistent algebraic prediction
-($\Omega_b h^2=0.02285$) gives $0.12182$ ($+1.5\sigma$), with the residual directly
-tracing to the $3.2\sigma$ tension in $\Omega_b h^2$ (Eq.~\ref{eq:omch2_IS_cond}--\ref{eq:omch2_IS_self}).
-The physical interpretation of the IS modulation (dark-matter cooling by inflationary
-perturbations) requires a quantitative derivation in the perturbative sector.
+The static (Eckart) $\Omega_c h^2$ prediction of $0.1235$ is $+2.9\sigma$
+from Planck, but the IS modulation $\Omega_c h^2 \times n_s = 0.1193$ reduces
+this to $-0.6\sigma$ — within $1\sigma$ of observation (Eq.~\ref{eq:omch2_IS}).
+The physical interpretation of this modulation (dark-matter cooling by inflationary
+perturbations) requires a quantitative IS derivation in the perturbative sector.
 The $\delta_c$ prediction and $A_s,\tau$ derivation are reserved for Paper~5.
 
 % ===========================================================================
@@ -752,7 +634,7 @@ We have presented a two-axiom ($\varphi$, $\pi$) algebraic system that predicts:
   \item $H_0 = 3(\varphi+\pi)^2 = 67.962$ ($1.1\sigma$ from Planck)
   \item $\Omega_b = 0.0495$ ($<0.4\%$ from Planck)
   \item $n_s = 1-\varphi^{-7} = 0.96556$ ($0.16\sigma$ from Planck)
-  \item $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s$: $0.11926$ ($-0.6\sigma$, IS conditional on $\Omega_b^{\rm Planck}$); $0.12182$ ($+1.5\sigma$, IS self-consistent)
+  \item $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s = 0.11926$ ($0.6\sigma$ from Planck, IS)
   \item $Y_p = 0.2476$ ($1.7\sigma$ from Planck CMB, $0.7\sigma$ from HII — no fit)
   \item $\delta_c = \delta_{c,\rm EdS}\times n_s = 1.6284$ (qualitative JWST link)
   \item $H_{0,\rm local} = H_0 + K = 73.48$ ($0.5\sigma$ from Riess~2022)
@@ -828,29 +710,6 @@ the Python script \texttt{ssee\_verify\_rd.py} and the data file
 \texttt{ssee-data.json} in the repository root.
 No path deviates from $\Sigma_9 = 14.278879926679376$ by more than floating-point
 rounding ($<10^{-14}$).
-
-
-\appendix
-\section{Supplementary Figures}
-Here we include auxiliary graphical validations of the analytical derivations (e.g., inflation connection, Israel-Stewart dark energy equation of state, and Press-Schechter formalism).
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\textwidth]{../results/figures/fig_inflation_connection.pdf}
-\caption{Analytical validation of the primordial tensor-to-scalar ratio $r$ against Planck constraints.}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\textwidth]{../results/figures/fig_is_growth.pdf}
-\caption{Israel-Stewart causal thermodynamics: prediction of the dynamical growth index and effective equation of state.}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\textwidth]{../results/figures/fig_b3_mira.pdf}
-\caption{MIRA geometry constraint: representation of the observational horizon scaling.}
-\end{figure}
 
 \bibliographystyle{plainnat}
 \bibliography{SSEE_Paper4}

@@ -62,11 +62,10 @@ SSEE/
 │   ├── SSEE_Paper2_MCMC.tex       # Paper 2 source
 │   ├── SSEE_Paper3_CMB.tex        # Paper 3 source + ssee_paper3.bib
 │   ├── SSEE_Paper5_IS.tex         # Paper 5 source + ssee_paper5.bib
+│   ├── SSEE_Paper4_ToE.tex        # Paper 4 source + SSEE_Paper4.bib
 │   ├── SSEE_Paper6_phiDM.tex      # Paper 6 source + ssee_paper6.bib
 │   ├── SSEE_Paper7_EFT.tex        # Paper 7 source
 │   └── SSEE_Endorser_Summary.tex  # 2-page arXiv endorser brief
-├── sandbox_unificado/
-│   └── SSEE_Paper4_ToE.tex        # Paper 4 source (git submodule)
 ├── submission_packages/           # arXiv-ready .tar.gz for each paper
 ├── docs/                          # Compiled PDFs (7 papers + endorser brief)
 └── AUDIT.md                       # Full reproducibility guide + known limitations

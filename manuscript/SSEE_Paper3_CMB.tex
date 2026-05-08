@@ -662,10 +662,11 @@ of large-scale structure. In the Israel--Stewart dissipative framework, the
 linear growth rate takes the form $f(z) = \Omega_m(z)^\gamma$, where the
 growth index $\gamma$ is modified by the bulk-viscosity coupling.
 Dimensional analysis of the IS transport equations suggests the algebraic
-prediction $\gamma_\mathrm{alg} = \phi^{-1} = 0.618$; a full numerical
-solution of the IS growth ODE (Paper~1, Appendix~A) yields
-$\gamma_{\mathrm{IS}} = 0.657\pm0.002$, lying 6\% above the algebraic
-prediction (compared to $\gamma_\Lambda=0.55$ for $\Lambda$CDM).
+prediction $\gamma_\mathrm{alg} = \phi^{-1} = 0.618$.  A full numerical
+solution of the causal IS growth ODE (Paper~5, \S3) yields
+$\gamma_{\mathrm{IS}} = 0.554\pm0.001$, numerically indistinguishable from
+$\gamma_\Lambda=0.55$ for $\Lambda$CDM (earlier estimates from Paper~1,
+Appendix~A gave 0.657; Paper~5 supersedes that result).
 
 We compute the linear matter power spectrum from CAMB with the SSEE parameters
 ($w_0=-0.8399$, $w_a=-0.6700$, $H_0=67.075$ km\,s$^{-1}$\,Mpc$^{-1}$,
@@ -687,13 +688,12 @@ reducing $\sigma_8$ by 2.2\%.
 Table~\ref{tab:sigma8} summarises the results alongside observational constraints.
 Using the algebraic prediction $\gamma_\mathrm{alg}=\phi^{-1}=0.618$,
 $S_8=0.828$ (consistent with Planck 2018 at $0.3\sigma$).
-The IS numerical solution from Paper~1, Appendix~A gives
-$\gamma_\mathrm{IS}=0.657$, yielding $S_8=0.818$ (1.1\,$\sigma$ below Planck),
-with the 6\% discrepancy between $\gamma_\mathrm{alg}$ and $\gamma_\mathrm{IS}$
-translating to a $\sim 1\%$ change in $S_8$.
-Both predictions exceed $\Lambda$CDM ($S_8^\Lambda=0.830$) in matching Planck
-while maintaining the $\sim 3\sigma$ tension with KiDS-1000 and DES~Y3 that
-persists in $\Lambda$CDM.
+The full causal IS numerical solution (Paper~5) gives
+$\gamma_\mathrm{IS}=0.554\approx\gamma_\Lambda$, yielding a negligible IS
+correction and $S_8\approx0.847$ ($0.6\sigma$ below Planck),
+both predictions maintaining the $\sim 3\text{--}4\,\sigma$ tension with KiDS-1000
+and DES~Y3 that persists in $\Lambda$CDM; Paper~6 resolves this through the
+two-sector $\varphi$-DM mechanism ($S_{8,\mathrm{eff}}=0.761$).
 
 \begin{table}[ht]
 \centering
@@ -706,7 +706,7 @@ Model / Dataset & $\sigma_8$ & $S_8$ \\
 $\Lambda$CDM (CAMB, best-fit) & 0.811 & 0.830 \\
 SSEE (CAMB, $\gamma_\mathrm{eff}$) & 0.823 & 0.850 \\
 SSEE+IS ($\gamma_\mathrm{alg}=\phi^{-1}=0.618$) & 0.802 & 0.828 \\
-SSEE+IS ($\gamma_\mathrm{IS}=0.657$, Paper~1) & \textbf{0.792} & \textbf{0.818} \\
+SSEE+IS ($\gamma_\mathrm{IS}=0.554$, Paper~5) & \textbf{0.820} & \textbf{0.847} \\
 \hline
 Planck 2018 \citep{Planck2020} & $0.812\pm0.008$ & $0.832\pm0.013$ \\
 KiDS-1000 \citep{Asgari2021} & --- & $0.759\pm0.024$ \\

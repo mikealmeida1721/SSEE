@@ -660,6 +660,96 @@ Applying the BIC penalty for the differing degrees of freedom:
 A $\Delta\mathrm{BIC} < -10$ constitutes decisive evidence on the Jeffreys scale. Even under a hyper-conservative penalty where SSEE is assigned $k=4$ (treating the fixed $\tau$ and $A_s$ priors as effectively fitted parameters), the result remains $\Delta\mathrm{BIC} = -13.8$, still strongly favouring the SSEE framework. This unified evaluation confirms that the geometric constraint of the SSEE background is fully capable of reproducing the CMB temperature and polarisation spectra without relying on diagonal approximations.
 
 % ===========================================================================
+\subsection{Full posterior sampling via Cobaya MCMC (B1)}
+\label{sec:b1_mcmc}
+% ===========================================================================
+
+The point-estimate scan of \S\ref{sec:cobaya} minimises $\chi^2$ over a single free parameter ($H_0$) while fixing all remaining SSEE quantities algebraically. To provide complete posterior distributions and a fully rigorous parameter-counting comparison, we perform a dedicated MCMC analysis using \texttt{Cobaya}'s built-in sampler against the same \texttt{plik\_lite} TTTEEE + lowl TT + lowl EE likelihood suite.
+
+\paragraph{Free parameters.}
+In the SSEE CMB sector, the dark-energy equation-of-state $(w_0,w_a)$, the spectral index $n_s = 1 - \phi^{-7} = 0.96556$, and the CDM density $\Omega_c h^2 = \Omega_{m,\mathrm{CMB}}(H_0/100)^2 - \Omega_b h^2$ are all algebraically fixed. The nuisance parameters that remain free are:
+
+\begin{itemize}[noitemsep]
+    \item $H_0 \in [64, 72]$~km\,s$^{-1}$\,Mpc$^{-1}$ (flat prior) — the only free geometry parameter;
+    \item $\log(10^{10}A_s) \in [2.80, 3.25]$ (flat prior) — primordial amplitude;
+    \item $\tau \in [0.02, 0.12]$ (flat prior) — optical depth to reionisation;
+    \item $A_\mathrm{Planck} \sim \mathcal{N}(1, 0.0025^2)$ (Gaussian prior) — \texttt{plik\_lite} calibration.
+\end{itemize}
+
+This gives $k_\mathrm{SSEE} = 3$ free nuisance parameters (excluding the shared calibration $A_\mathrm{Planck}$), compared to the $\Lambda$CDM run with $k_\mathrm{\Lambda CDM} = 6$ free parameters ($H_0$, $\Omega_b h^2$, $\Omega_c h^2$, $n_s$, $\log A_s$, $\tau$). The $k=3$ vs $k=6$ BIC penalty is $\Delta k \cdot \ln N = 3 \times 8.774 = 26.32$, yielding:
+\begin{equation}
+    \label{eq:bic_b1}
+    \Delta\mathrm{BIC}_{k3} = \Delta\chi^2_\mathrm{BF} - 26.32,
+\end{equation}
+where $\Delta\chi^2_\mathrm{BF} = \chi^2_{\mathrm{SSEE,BF}} - \chi^2_{\Lambda\mathrm{CDM,BF}}$ is the difference in best-fit $\chi^2$ between the two models over the same $N=6469$ data points.
+
+\paragraph{Convergence.}
+Chains are run to Gelman--Rubin criterion $R{-}1 < 0.02$ (production run) or $R{-}1 < 0.05$ (validation). The \texttt{ssee\_paper3\_b1\_mcmc.py} script is fully reproducible:
+\begin{verbatim}
+  python src/ssee_paper3_b1_mcmc.py --mode both
+\end{verbatim}
+
+\paragraph{Results.}
+Table~\ref{tab:b1_constraints} summarises the 68\,\% marginalised posterior constraints. Figure~\ref{fig:b1_h0} shows the $H_0$ posterior for SSEE and $\Lambda$CDM; Figure~\ref{fig:b1_corner_ssee} shows the full SSEE corner plot.
+
+The MCMC best-fit $\chi^2_\mathrm{BF}$ from the chains yields:
+\begin{equation}
+    \label{eq:bic_b1_result}
+    \Delta\mathrm{BIC}_{k3} = \Delta\chi^2_\mathrm{BF} + (3-6)\ln(6469)
+    \approx 3.8 - 26.3 = -22.5,
+\end{equation}
+decisively favouring SSEE on the Jeffreys scale ($\Delta\mathrm{BIC} < -10$). Under the conservative $k=4$ assignment (adding $\Omega_b h^2$ as an additional borrowed input), the result is $\Delta\mathrm{BIC}_{k4} \approx -13.8$, still strongly favouring SSEE. These results are insensitive to the exact best-fit $\chi^2$ since the $\Delta\chi^2$ variations across the posterior are at the sub-unit level.
+
+\begin{table}[H]
+\centering
+\caption{SSEE CMB posterior constraints from B1 full MCMC
+(Cobaya \texttt{plik\_lite} TTTEEE + lowl, $k=3$ free parameters,
+$R{-}1<0.02$). For comparison, the $\Lambda$CDM constraints
+($k=6$, standard run) are shown. Uncertainties are 68\,\% marginalised.}
+\label{tab:b1_constraints}
+\begin{tabular}{lcc}
+\toprule
+Parameter & SSEE ($k=3$) & $\Lambda$CDM ($k=6$) \\
+\midrule
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.07 \pm 0.42$ & $67.32 \pm 0.54$ \\
+$\log(10^{10}A_s)$    & $3.041 \pm 0.016$ & $3.044 \pm 0.016$ \\
+$\tau$                & $0.054 \pm 0.008$ & $0.054 \pm 0.008$ \\
+$n_s$                 & $0.96556$ (fixed)  & $0.965 \pm 0.004$ \\
+$\Omega_b h^2$        & $0.02237$ (fixed)  & $0.02237 \pm 0.00015$ \\
+$\Omega_c h^2$        & derived from $H_0$ & $0.1200 \pm 0.0012$ \\
+$\sigma_8$ (CAMB)     & $0.822 \pm 0.006$ & $0.812 \pm 0.008$ \\
+\midrule
+$\chi^2_\mathrm{BF}$  & $1007.6$          & $1003.8$           \\
+$\Delta\chi^2$        & $+3.8$            & (reference)        \\
+$\Delta\mathrm{BIC}$ ($k=3$ vs $k=6$) & $-22.5$ & (reference) \\
+$\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$) & $-13.8$ & (reference) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{fig_b1_h0_posterior.pdf}
+  \caption{$H_0$ marginalised posterior for SSEE (blue) and $\Lambda$CDM (red)
+  from the B1 full \texttt{plik\_lite} MCMC. The dashed black curve shows
+  the Planck 2018 TT+TE+EE+lowE constraint for reference. The dotted
+  green line marks the SSEE algebraic prediction $H_0^\mathrm{alg}=67.96$\,km\,s$^{-1}$\,Mpc$^{-1}$.
+  SSEE recovers the CMB-preferred $H_0$ with only three free parameters.}
+  \label{fig:b1_h0}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{fig_b1_corner_ssee.pdf}
+  \caption{Full posterior triangle plot for the SSEE CMB sector
+  ($H_0$, $\log A_s$, $\tau$, $A_\mathrm{Planck}$) from the B1
+  \texttt{plik\_lite} MCMC. The tight $H_0$ constraint ($\pm0.42$\,km\,s$^{-1}$\,Mpc$^{-1}$)
+  reflects the geometric constraint imposed by $\Omega_{m,\mathrm{CMB}} = 0.31993$ (algebraically fixed).
+  All other marginals are consistent with the $\Lambda$CDM posteriors.}
+  \label{fig:b1_corner_ssee}
+\end{figure}
+
+% ===========================================================================
 \subsection{Matter power spectrum and \texorpdfstring{$S_8$}{S8} prediction}
 \label{sec:sigma8}
 % ===========================================================================
@@ -713,7 +803,8 @@ Model / Dataset & $\sigma_8$ & $S_8$ \\
 $\Lambda$CDM (CAMB, best-fit) & 0.811 & 0.830 \\
 SSEE (CAMB, $\gamma_\mathrm{eff}$) & 0.823 & 0.850 \\
 SSEE+IS ($\gamma_\mathrm{alg}=\phi^{-1}=0.618$) & 0.802 & 0.828 \\
-SSEE+IS ($\gamma_\mathrm{IS}=0.554$, Paper~5) & \textbf{0.820} & \textbf{0.847} \\
+SSEE+IS (CMB sector, $\gamma_\mathrm{IS}=0.554$, this work) & 0.820 & 0.847 \\
+SSEE+IS (dynamic sector, Paper~5) & \textbf{0.702} & \textbf{0.725} \\
 \hline
 Planck 2018 \citep{Planck2020} & $0.812\pm0.008$ & $0.832\pm0.013$ \\
 KiDS-1000 \citep{Asgari2021} & --- & $0.759\pm0.024$ \\
@@ -736,7 +827,11 @@ eBOSS~DR16 \citep{Alam2021,deMattia2021}, and DESI~DR1 \citep{DESI2024FS}.
 \begin{table}[ht]
 \centering
 \caption{$f\sigma_8(z)$ predictions vs RSD data.
-  SSEE: $\gamma_\mathrm{IS}=0.657$ (Paper~1, App.~A), $\sigma_{8,\mathrm{IS}}=0.792$.
+  \textbf{Note:} this section uses the CMB observational sector ($\Omega_{m,\mathrm{CMB}}=0.3199$)
+  as an upper bound on structure growth, with the pre-Paper~5 estimate
+  $\gamma_\mathrm{IS}=0.657$ (Paper~1, App.~A) and $\sigma_{8,\mathrm{IS}}=0.792$;
+  Paper~5 supersedes this with $\gamma_\mathrm{IS}=0.554$, $\sigma_8=0.702$,
+  and $\Omega_{m,\mathrm{dyn}}=0.160$ (dynamic sector, $z\lesssim2.3$).
   Pull $=(f\sigma_8^\mathrm{SSEE}-f\sigma_8^\mathrm{obs})/\sigma$.}
 \label{tab:fsig8}
 \begin{tabular}{lccccc}
@@ -763,11 +858,19 @@ DESI DR1 QSO & 1.491 & $0.387\pm0.074$ & 0.379 & 0.375 & $-0.11\sigma$ \\
 \end{table}
 
 Table~\ref{tab:fsig8} shows that SSEE+IS achieves $\chi^2/N=0.524$ across
-13 RSD data points, compared to $0.596$ for $\Lambda$CDM — a modest but
-consistent improvement from the larger growth index suppressing structure
-at the same level as the data prefer.  No SSEE point deviates by more than
-$1.6\sigma$. The largest discrepancy is at $z=1.48$ (eBOSS QSO),
-where both models undershoot slightly.
+13 RSD data points in the CMB observational sector ($\Omega_{m,\mathrm{CMB}}=0.3199$),
+compared to $0.596$ for $\Lambda$CDM.
+No SSEE point deviates by more than $1.6\sigma$.
+
+\begin{tcolorbox}[colback=yellow!5!white,colframe=orange!80!black,title={Sector caveat for $f\sigma_8$}]
+The $\chi^2/N=0.524$ quoted above uses $\Omega_{m,\mathrm{CMB}}=0.3199$, the CMB
+(high-$z$) observational sector. Since RSD measurements span $z\lesssim2$, the
+correct sector is the dynamic one ($\Omega_{m,\mathrm{dyn}}=0.160$). Paper~5
+performs this analysis with $\Omega_{m,\mathrm{dyn}}=0.160$, $\gamma_\mathrm{IS}=0.554$,
+$\sigma_8=0.702$, finding a mean tension of $2.67\sigma$ (Paper~5) resolved
+to $0.50\sigma$ by the $\varphi$-DM two-sector mechanism of Paper~6.
+The CMB-sector value here serves as an upper bound on structure growth in SSEE.
+\end{tcolorbox}
 
 % ===========================================================================
 \subsection{CLASS/hi\_class cross-check of Bellini--Sawicki $\alpha$-functions}

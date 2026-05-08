@@ -4,7 +4,7 @@
 
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
-\graphicspath{{./}}
+\graphicspath{{../results/figures/}}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{xcolor}
@@ -50,7 +50,7 @@ From these two axioms alone we derive, without fitting:
 \item[(i)] $H_0 = 3(\varphi+\pi)^2 = 67.962$~km\,s$^{-1}$\,Mpc$^{-1}$ ($1.1\sigma$ from Planck~2018),
 confirmed by a Nine Sovereignties theorem — nine structurally distinct algebraic paths
 all converging to the same numerical value (two degenerate pairs arise from SOLAR$=$MAR and
-IGNIS$=$KRYSTOS; see Appendix~\ref{app:independence}), providing strong evidence against post-hoc tuning;
+IGNIS$=$KRYSTOS\_V; see Appendix~\ref{app:independence}), providing strong evidence against post-hoc tuning;
 \item[(ii)] the physical baryon density
 $\Omega_b h^2 = 3(\pi-\varphi)/200 = 0.02285$ ($3.2\sigma$ from Planck; documented tension);
 \item[(iii)] the primordial spectral index
@@ -133,19 +133,19 @@ This single expression generates the entire hierarchy of \SSEE\ constants
 A remarkable structural property of the system is that nine structurally distinct
 combinations of \SSEE\ constants all evaluate to the same value:
 \begin{equation}
-\Sigma_9 \equiv 3(\varphi+\pi) = 14.278879927\ldots
+\Sigma_{\rm Sov} \equiv 3(\varphi+\pi) = 14.278879927\ldots
 \label{eq:sigma9}
 \end{equation}
 
 Table~\ref{tab:sovereignties} lists all nine paths explicitly.
 Each path uses a distinct combination of named \SSEE\ constants and has been
-verified algebraically to equal $\Sigma_9$ to 16 significant digits
+verified algebraically to equal $\Sigma_{\rm Sov}$ to 16 significant digits
 (see Appendix~\ref{app:independence}).
 
 \begin{table}[ht]
 \centering
 \caption{The Nine Sovereignties: distinct named-constant paths all converging to
-$\Sigma_9 = 3(\varphi+\pi) = 14.278879927$.
+$\Sigma_{\rm Sov} = 3(\varphi+\pi) = 14.278879927$.
 All paths verified numerically; none contains a free parameter.}
 \label{tab:sovereignties}
 \begin{tabular}{p{2.0cm}p{4.2cm}p{4.5cm}r}
@@ -176,7 +176,7 @@ GIGAROJ   & $\mathrm{PYROS}+\Omega+\pi$
 OSIRIS    & $\mathrm{MIKA}+\mathrm{KAL}-\mathrm{BIAL}$
           & $(3\varphi+2\pi)+\tfrac{\varphi+3\pi}{2}-\tfrac{\varphi+\pi}{2}$
           & 14.278880 \\[2pt]
-MIKAEL\_V & $\varphi+\pi+\mathrm{KRYSTOS}$
+MIKAEL\_V & $\varphi+\pi+\mathrm{KRYSTOS\_V}$
           & $(\varphi+\pi)+2(\varphi+\pi)$
           & 14.278880 \\
 \bottomrule
@@ -203,10 +203,12 @@ MIRA  & $(3\varphi+\pi)/4$                      & $\mathrm{AURA}/2$ & 1.998924 \
 KAL   & $(\varphi+3\pi)/2$                      & —              & 5.521406 \\
 PYROS & $2\varphi+\pi$                           & $\Omega+\varphi$ & 6.377661 \\
 MAR   & $\varphi+2\pi$                          & $\Omega+\pi$   & 7.901219 \\
-KRYSTOS & $2(\varphi+\pi)$                      & $2\Omega$      & 9.519253 \\
+KRYSTOS\_V & $2(\varphi+\pi)$                    & $2\Omega$      & 9.519253 \\
+VITA  & $(\varphi+5\pi)/2$                      & $\pi+\mathrm{KAL}$ & 8.663001 \\
+PHITA & $(3\varphi+5\pi)/2$                     & $\mathrm{VITA}+\varphi$ & 10.281034 \\
 MIKA  & $3\varphi+2\pi$                         & $2\Omega+\varphi$ & 11.137287 \\
 BUFFER & $3(\pi-\varphi)/2$                     & —              & 2.285338 \\
-$\Sigma_9$ & $3(\varphi+\pi)$                   & $3\Omega$      & 14.278880 \\
+$\Sigma_{\rm Sov}$ & $3(\varphi+\pi)$           & $3\Omega$      & 14.278880 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -284,11 +286,11 @@ physical domains by chance is astronomically small.
 \subsection{Hubble Constant \texorpdfstring{$H_0$}{H0}}
 \label{sec:h0}
 
-From Theorem~2, the Nine Sovereignties equal $\Sigma_9 = 3(\varphi+\pi)$.
+From Theorem~2, the Nine Sovereignties equal $\Sigma_{\rm Sov} = 3(\varphi+\pi)$.
 The Hubble constant is the product of this sovereign sum and the base unit
 $\Omega_{\rm DNAV} = \varphi+\pi$:
 \begin{equation}
-\boxed{H_0 = \Sigma_9 \times \Omega_{\rm DNAV} = 3(\varphi+\pi)^2 = 67.962}
+\boxed{H_0 = \Sigma_{\rm Sov} \times \Omega_{\rm DNAV} = 3(\varphi+\pi)^2 = 67.962}
 \label{eq:H0}
 \end{equation}
 \textbf{Dimensional note.} The number 67.962 is compared to $H_0$ as measured
@@ -358,7 +360,17 @@ factor $n_s = 1-\varphi^{-7}$ modulates the dark-matter density:
       = 5.5214\times 0.02237\times 0.96556 = 0.11926}
 \label{eq:omch2_IS}
 \end{equation}
-Planck~2018: $0.1200\pm0.0012$; deviation~$= -0.6\sigma$.
+\textbf{Note on $\Omega_b h^2$ input.}
+Both the static (Eq.~\ref{eq:omch2_static}) and IS formulas use the Planck~2018
+\emph{observed} value $\Omega_b h^2 = 0.02237\pm0.00015$.
+If instead the \SSEE\ algebraic prediction $\Omega_b h^2 = 3(\pi-\varphi)/200 = 0.02285$
+is substituted, the IS formula gives $K_{\rm AL}\times0.02285\times n_s = 0.12182$
+($+1.5\sigma$), and the static formula gives $K_{\rm AL}\times0.02285 = 0.12617$
+($+5.1\sigma$). The $-0.6\sigma$ result therefore relies on the Planck observed baryon
+density, not the algebraic prediction; both inputs and tensions are disclosed here
+for transparency.
+
+Planck~2018: $0.1200\pm0.0012$; deviation~$= -0.6\sigma$ (using Planck observed $\Omega_b h^2$).
 The IS modulation reduces the tension from $+2.9\sigma$ (Eckart) to $-0.6\sigma$ (IS),
 within $1\sigma$ of the observed value and consistent with zero tension at $1\sigma$.
 
@@ -458,7 +470,7 @@ Define the four structural constants (Table~\ref{tab:constants}):
   T_r    &= \tfrac{3(3\varphi+\pi)}{2} \approx 11.9935 \quad \text{(TRIAL — 3D Saturation Horizon)}, \\
   M_v    &= 3(\varphi+\pi)              \approx 14.2789 \quad \text{(MIKAEL\_V — Maximal Invariant)}, \\
   P_{sc} &= 2\varphi+\pi               \approx  6.3776 \quad \text{(PYROS — Dynamical Evolution Scalar)}, \\
-  K_v    &= 2(\varphi+\pi)             \approx  9.5192 \quad \text{(KRYSTOS — Structural Constraint)}.
+  K_v    &= 2(\varphi+\pi)             \approx  9.5192 \quad \text{(KRYSTOS\_V — Structural Constraint)}.
 \end{align}
 The CPL parameters follow as:
 \begin{equation}
@@ -644,7 +656,7 @@ We have presented a two-axiom ($\varphi$, $\pi$) algebraic system that predicts:
 The Nine Sovereignties theorem — nine structurally distinct algebraic paths
 all converging to $3(\varphi+\pi)$ (seven distinct at the $\varphi,\pi$ level;
 see Appendix~\ref{app:independence}) — is a non-trivial structural result that
-motivates the connection $H_0 = \Sigma_9 \times \Omega_{\rm DNAV}$.
+motivates the connection $H_0 = \Sigma_{\rm Sov} \times \Omega_{\rm DNAV}$.
 Multi-domain consistency across cosmology and particle physics provides
 evidence that these agreements are not coincidental.
 
@@ -652,9 +664,12 @@ evidence that these agreements are not coincidental.
 \section*{Reproducibility}
 % ===========================================================================
 
-Script: \texttt{sandbox\_unificado/ssee\_toe\_cmb.py}.
+Script: \texttt{src/ssee\_paper4\_toe.py} (repository root).
 Requires Python~3, \texttt{camb}$\geq$1.5, \texttt{numpy}, \texttt{matplotlib},
 \texttt{scipy}.  No proprietary data.
+Run: \texttt{python3 src/ssee\_paper4\_toe.py} — reproduces
+\texttt{fig\_toe\_cmb\_TT.pdf} and \texttt{fig\_toe\_derivations.pdf}
+in \texttt{results/figures/}.
 
 \section*{Acknowledgements}
 The author thanks the Planck and DESI Collaborations for publicly available data.
@@ -680,35 +695,36 @@ the level of the expanded $\varphi,\pi$ expressions.
 Two pairs of named constants share the same expansion:
 \begin{align}
 \mathrm{SOLAR} = \mathrm{BIAL}+\mathrm{KAL} &= \varphi+2\pi = \mathrm{MAR} \\
-\mathrm{IGNIS} = \pi+\mathrm{PYROS} &= 2(\varphi+\pi) = \mathrm{KRYSTOS}
+\mathrm{IGNIS} = \pi+\mathrm{PYROS} &= 2(\varphi+\pi) = \mathrm{KRYSTOS\_V}
 \end{align}
-where SOLAR$=$MAR and IGNIS$=$KRYSTOS hold algebraically.
+where SOLAR$=$MAR and IGNIS$=$KRYSTOS\_V hold algebraically.
 Consequently:
 \begin{itemize}
   \item LUCY ($\mathrm{SOLAR}+\mathrm{PYROS}$) and \^{I}C\"{E}B\"{E}RG
         ($\mathrm{MAR}+\mathrm{PYROS}$) expand identically.
-  \item MIKE ($\mathrm{IGNIS}+\Omega$) and MIKAEL\_V ($\varphi+\pi+\mathrm{KRYSTOS}$)
+  \item MIKE ($\mathrm{IGNIS}+\Omega$) and MIKAEL\_V ($\varphi+\pi+\mathrm{KRYSTOS\_V}$)
         expand identically.
 \end{itemize}
 The remaining five paths (LUCIFER, MIKAEL, ERVN, GIGAROJ, OSIRIS) are
 distinct both at the named-constant and the expanded-$\varphi,\pi$ levels,
-giving seven structurally distinct routes to $\Sigma_9$.
+giving seven structurally distinct routes to $\Sigma_{\rm Sov}$.
 
 \paragraph{Why the redundant pairs are retained.}
 In \SSEE, SOLAR (Irradiación / solar expansion) and MAR (Marea / tidal flow)
 carry distinct physical interpretations within the hierarchy, as do IGNIS
-(Forja / chaotic force) and KRYSTOS (Cristal / ordering force).
+(Forja / chaotic force) and KRYSTOS\_V (Cristal / ordering force).
 Their convergence to the same numerical value is itself a structural statement
 (\emph{Ley de No Auto-suma en Propiedades}): opposing functional roles encoded
-at the same magnitude, in balance at $\Sigma_9$.
+at the same magnitude, in balance at $\Sigma_{\rm Sov}$.
 The nine names document nine distinct conceptual traversals of the hierarchy;
 the algebraic coincidences among them are part of the structure, not a defect.
 
 \paragraph{Verification.}
 All nine paths have been verified numerically to 16 significant digits using
-the Python script \texttt{ssee\_verify\_rd.py} and the data file
-\texttt{ssee-data.json} in the repository root.
-No path deviates from $\Sigma_9 = 14.278879926679376$ by more than floating-point
+the Python script \texttt{src/ssee\_paper4\_toe.py} (repository root).
+No external data file is required; all constants are derived algebraically
+from $\varphi$ and $\pi$ within the script.
+No path deviates from $\Sigma_{\rm Sov} = 14.278879926679376$ by more than floating-point
 rounding ($<10^{-14}$).
 
 \bibliographystyle{plainnat}

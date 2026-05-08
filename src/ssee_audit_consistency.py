@@ -26,7 +26,7 @@ CANONICAL = {
     "mphi":   5.71,      # m_φ en eV
     "betac":  3.9978,    # |β_c| = AURA
     "sigma8_ssee": 0.702, # Paper 5
-    "fsig8_tension_before": 3.66,  # Paper 5 sin φ-DM
+    "fsig8_tension_before": 2.56,  # Paper 6 baseline corregido (σ8=0.702, 6 surveys)
     "fsig8_tension_after":  0.88,  # Paper 6 con φ-DM
 }
 

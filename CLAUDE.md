@@ -10,7 +10,7 @@ Siete papers:
 - **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready)
 - **Paper 4**: Derivación algebraica CMB desde φ,π — Nine Sovereignties (preprint)
 - **Paper 5**: IS causal perturbation theory — estabilidad, MIRA, S8, fσ₈ (commit 0a9d21c)
-- **Paper 6**: φ-DM dos sectores — m_φ=5.71 eV algebraico, fσ₈ 3.66σ→0.50σ resuelto (commit 9d28620; la tensión 3.66σ es recomputed con los 6 surveys de P6, no el valor 2.67σ reportado en P5)
+- **Paper 6**: φ-DM dos sectores — m_φ=5.71 eV algebraico, fσ₈ 2.56σ→0.50σ resuelto (commit 9d28620; baseline corregido: σ8=0.702 ODE, versión anterior usaba σ8≈0.578 → inflaba a 3.66σ)
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint)
 
 ---
@@ -162,7 +162,7 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | k_fs (Dodelson-Widrow) | 0.493 h/Mpc | Derivado de m_φ |
 | σ₈_eff (con T_WDM) | 0.737 | **0.00σ KiDS-1000** |
 | S₈_eff | 0.761 | 2.29σ DES (tensión KiDS-DES interna) |
-| Media tensión fσ₈ (6 encuestas) | **0.50σ** | **Resuelto desde 3.66σ (baseline P6)** |
+| Media tensión fσ₈ (6 encuestas) | **0.50σ** | **Resuelto desde 2.56σ (baseline corregido, σ8=0.702)** |
 | Predicción KATRIN/PTOLEMY | m_φ = 5.71 eV | Falsificable 2027–2030 |
 | Predicción DESI Y3/Euclid | k_fs = 0.493 h/Mpc | Falsificable 2026–2028 |
 

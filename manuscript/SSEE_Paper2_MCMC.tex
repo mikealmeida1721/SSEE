@@ -264,7 +264,7 @@ We use 13 BAO measurements from DESI~DR2 \citep{DESI_DR2} at
 $0.295\leq z\leq2.330$ (Table~\ref{tab:bao_data}). These 13 data points
 span five tracer populations across $0.3\lesssim z\lesssim 2.3$, providing
 sufficient leverage to isolate the model-dependent $r_d$ scaling from the
-The BAO log-likelihood uses a block-diagonal covariance approximation incorporating same-bin correlations between $D_M$ and $D_H$ as reported by DESI:
+The BAO log-likelihood uses a block-diagonal covariance approximation incorporating same-bin correlations between $D_M$ and $D_H$ as reported by DESI.\footnote{Cross-bin (inter-redshift) covariances and full systematic covariance matrices are not propagated in this analysis; this is standard practice for BAO-only comparisons but may slightly underestimate parameter uncertainties.}
 \begin{equation}
   \ln\mathcal{L}_{\rm BAO}
   = -\tfrac{1}{2} (\mathbf{q}^{\rm pred}-\mathbf{q}^{\rm obs})^\top \mathbf{C}^{-1} (\mathbf{q}^{\rm pred}-\mathbf{q}^{\rm obs}),

@@ -80,7 +80,7 @@ is sector-specific and applies exclusively to the \textit{observational sector}
 transfer to the dynamic sector ($\Omega_{m,\rm dyn}=0.1601$, $z\lesssim2.3$),
 which is validated independently in Paper~2 (\citealt{AlmeidaSSEE2026a}).
 The master derivation chain for all SSEE constants, the unified symbol glossary,
-and the complete domain delineation are in Paper~1, \S\ref{sec:domain} and
+and the complete domain delineation are in Paper~1, \S2 and
 Appendix~B \citep{AlmeidaSSEE2026a}.
 
 
@@ -561,7 +561,7 @@ Table~\ref{tab:chi2_full} reports $\chi^2_r$ for all three spectra individually.
 \caption{$\chi^2_r$ by spectrum vs.\ Planck PR4.
 TT/TE/EE: $\ell=30$--$2000$; PP (lensing): 9 MV bandpowers, $L=8$--$400$
 \citep[Table~1,][]{PlanckLensing2018}.
-SSEE has $k=0$ free parameters; $\Lambda$CDM has $k=6$ shared parameters.}
+$\chi^2_r$ comparisons use diagonal covariance; for BIC see \S\ref{sec:bic} ($k=2$ for SSEE).}
 \label{tab:chi2_full}
 \begin{tabular}{lcccc}
 \toprule
@@ -611,11 +611,15 @@ where $k$ is the number of free parameters and $N=5914$ for the combined TT, TE,
 
 \begin{table}[ht]
 \centering
-\caption{Combined BIC comparison. SSEE is assigned $k=2$ free parameters ($H_0$ and $\Omega_b h^2$); $\Lambda$CDM has $k=6$.}
+\caption{\textbf{Preliminary BIC comparison — diagonal approximation only.}
+Combined spectra (TT+TE+EE+PP, $N=5914$, independence approximation).
+SSEE has $k=2$ ($H_0$ + $\Omega_b h^2$ prior); $\Lambda$CDM has $k=6$.
+\textit{This result uses diagonal covariance; see Eq.~\eqref{eq:bic_cobaya}
+(\S\ref{sec:cobaya}) for the definitive off-diagonal Cobaya evaluation.}}
 \label{tab:bic}
 \begin{tabular}{lccc}
 \toprule
-Model & $k$ & $\chi^2_r$ & Combined $\Delta$BIC \\
+Model & $k$ & $\chi^2_r$ & $\Delta$BIC (diagonal) \\
 \midrule
 $\Lambda$CDM & 6 & 1.040 & Baseline ($0.0$) \\
 SSEE+MIRA & 2 & 1.051 & $+31.1$ \\
@@ -623,8 +627,10 @@ SSEE+MIRA & 2 & 1.051 & $+31.1$ \\
 \end{tabular}
 \end{table}
 
-By the Jeffreys scale, $\Delta\mathrm{BIC}>10$ constitutes \textit{strong evidence}.
-In this combined test, $\Lambda$CDM is statistically favoured. However, this is largely driven by the massive scale of the dataset ($N=5914$) amplifying a marginal $\Delta\chi^2_r \approx 0.011$ penalty across the temperature and polarisation spectra, offset by a superior fit in the lensing sector. 
+Under the diagonal approximation, $\Lambda$CDM is preferred ($\Delta\mathrm{BIC}=+31.1$).
+However, this result is driven by $N=5914$ amplifying a marginal $\Delta\chi^2_r\approx0.011$,
+and relies on the independence approximation across spectra.
+The off-diagonal Cobaya evaluation (\S\ref{sec:cobaya}) is the canonical result. 
 
 \paragraph{On the parameter count ($k=2$).}
 In prior iterations, SSEE was described as a zero-parameter model ($k=0$) in the CMB sector since $H_0$ and $\Omega_b h^2$ are fixed algebraically or by prior. However, recognizing that $H_0=66.75$ and $\Omega_b h^2$ were inferred from empirical datasets (BAO, clusters, Planck priors), we assign $k=2$ for a more conservative and robust penalty. The MIRA factor is not treated as a free parameter because it is a derived algebraic constant within the SSEE framework \citep{AlmeidaSSEE2026genesis}, mathematically fixed prior to the release of DESI~DR2 (Zenodo DOI: 10.5281/zenodo.19679049).
@@ -648,6 +654,7 @@ Minimizing over $H_0 \in [66.5, 67.5]$ yields a true minimum for SSEE at $H_0 = 
 \paragraph{Definitive Bayesian Information Criterion.}
 Applying the BIC penalty for the differing degrees of freedom:
 \begin{equation}
+    \label{eq:bic_cobaya}
     \Delta\mathrm{BIC} = 3.793 + (2 - 6)\ln(6469) = -31.3.
 \end{equation}
 A $\Delta\mathrm{BIC} < -10$ constitutes decisive evidence on the Jeffreys scale. Even under a hyper-conservative penalty where SSEE is assigned $k=4$ (treating the fixed $\tau$ and $A_s$ priors as effectively fitted parameters), the result remains $\Delta\mathrm{BIC} = -13.8$, still strongly favouring the SSEE framework. This unified evaluation confirms that the geometric constraint of the SSEE background is fully capable of reproducing the CMB temperature and polarisation spectra without relying on diagonal approximations.

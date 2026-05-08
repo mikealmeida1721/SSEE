@@ -27,7 +27,7 @@
 |---|---|---|---|---|
 | 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | 22 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
 | 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 21 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
-| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 19 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
+| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 18 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | 15 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
 | 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Partial Resolution | 24 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
 | 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 15 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
@@ -111,10 +111,10 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 
 | Spectrum | SSEE χ²_r | ΛCDM χ²_r | N |
 |---|---|---|---|
-| TT | 1.063 | 1.043 | 1971 |
+| TT | 1.062 | 1.043 | 1971 |
 | TE | 1.053 | 1.040 | 1967 |
 | EE | 1.040 | 1.039 | 1967 |
-| PP (lensing) | **0.732** | 0.757 | 9 |
+| PP (lensing) | **0.730** | 0.757 | 9 |
 | ΔBIC (Combined, k=2 vs k=6) | **-31.3** (SSEE favoured) | — | — |
 
 *Note: SSEE evaluated with $k=2$ ($H_0$ and $\Omega_b h^2$ free) using n_s = 0.96556 against the full official `plik_lite` TTTEEE + lowl covariance matrix via Cobaya. Even with a hyper-conservative $k=4$ penalty (treating fixed priors $\tau, A_s$ as free), $\Delta\mathrm{BIC} = -13.8$ continues to decisively favour SSEE.*
@@ -220,7 +220,7 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 4. **Two-sector Ωm**: Ωm,dyn = 0.160 ≠ Ωm,CMB = 0.3199. Bridged by algebraic MIRA factor; physical mechanism needs formal development.
 5. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
 6. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
-7. **CMB ΔBIC status:** The project is currently unifying its CMB likelihood pipelines. Preliminary diagonal estimates yield $\Delta\mathrm{BIC} = +33.2$ favouring $\Lambda$CDM, whilst full off-diagonal evaluation is an open blocker for top-tier review.
+7. **CMB ΔBIC status:** Diagonal approximation (TT+TE+EE+PP, k=2 vs k=6) yields $\Delta\mathrm{BIC}=+31.1$ favouring $\Lambda$CDM — driven by large N amplifying a small $\Delta\chi^2_r$. Full off-diagonal evaluation via Cobaya plik\_lite (TTTEEE) gives $\Delta\mathrm{BIC}=-31.3$ decisively favouring SSEE ($k_{\rm SSEE}=2$ vs $k_{\Lambda\rm CDM}=6$). Full plik/CamSpec likelihood remains a blocker for PRD/PRL.
 
 ---
 
@@ -255,10 +255,10 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 - [x] Paper 6: φ-DM two-sector model — m_φ=5.71 eV algebraic, fσ₈ 3.66σ→0.50σ, 15 pp (incl. Lyman-α defense)
 - [x] Paper 7: Canonical EFT — β_c=−AURA exact, αT=αM=αB=0, αK=0.403 algebraic, 14 pp
 - [x] Cross-paper parameter consistency audit — no critical inconsistencies (`src/ssee_audit_consistency.py`)
-- [ ] Paper 6 MCMC (running) — 64 walkers × 15000 steps: posterior (Ω_φDM, k_fs, σ₈_in)
+- [x] Paper 6 MCMC — 64 walkers × 15000 steps: Ω_φDM=0.161±0.011, ΔBIC=−12.1, χ²_r=0.497 ✓
 - [ ] Zenodo v2 — archive Papers 5+6+7 PDFs with DOI chaining
 - [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
-- [ ] hi_class cross-check Paper 3 — Bellini-Sawicki 4 α-functions with SSEE values
+- [x] hi_class/CLASS cross-check — αK(0)=0.4033, Δ=0.005% vs algebraic prediction ✓
 - [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
 - [ ] arXiv submission — pending endorser response (Shafieloo/KASI, Lee/SKKU, Di Valentino/Sheffield)
 

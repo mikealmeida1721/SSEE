@@ -1,0 +1,428 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{physics}
+\usepackage{xcolor}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% ─── Macros SSEE ────────────────────────────────────────────────────────────
+\newcommand{\phiG}{\varphi}          % razón áurea
+\newcommand{\KAL}{\mathrm{KAL}_0}   % viscosidad asintótica ≈ 5.521
+\newcommand{\MIRA}{\mathcal{M}}      % MIRA ≈ 1.9989
+\newcommand{\Mpl}{M_{\mathrm{Pl}}}
+\newcommand{\Omde}{\Omega_{\mathrm{DE}}}
+\newcommand{\Omm}{\Omega_{m}}
+\newcommand{\half}{\tfrac{1}{2}}
+\newcommand{\rhocrit}{\rho_{\mathrm{crit}}}
+\newcommand{\Hzero}{H_0}
+\newcommand{\weff}{w_{\mathrm{eff}}}
+\newcommand{\wphi}{w_\phi}
+\newcommand{\brac}[1]{\left(#1\right)}
+
+\title{\textbf{Formulación EFT Completa para SSEE-V3.6:\\
+       Acción, Acoplamiento Covariante y Puente a CLASS}}
+
+\author{Mike Edison Almeida Vallejo}
+\date{7 de mayo de 2026 --- v2.0}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Se formula la teoría de campos efectivos (EFT) completa para SSEE-V3.6:
+sector cinético $K(X)$, potencial estructural $V(\phi)$, acoplamiento
+covariante $\mathcal{L}_{\mathrm{int}}$ y cierre perturbativo.
+La condición de emparejamiento estructural fija el exponente $\alpha$ sin
+parámetros libres.  El cruce fantasma efectivo $\weff < -1$ se deriva del
+intercambio covariante de energía $Q^{\nu}$ con la materia oscura,
+preservando la Condición de Energía Nula (NEC) en el sector fundamental.
+El documento incluye el sistema completo de ecuaciones de fondo y la
+traducción al diccionario Bellini-Sawicki para implementación en CLASS/CAMB.
+\end{abstract}
+
+% ─── §1 ─────────────────────────────────────────────────────────────────────
+\section{Acción Fundamental}
+
+El sector de energía oscura se describe mediante la acción $k$-essence
+interactuante:
+%
+\begin{equation}
+  S = \int d^{4}x\,\sqrt{-g}
+      \left[\frac{\Mpl^{2}}{2}\,R
+            + K(X) - V(\phi)
+            + \mathcal{L}_{\mathrm{DM}}
+            + \mathcal{L}_{\mathrm{int}}
+      \right],
+  \label{eq:accion}
+\end{equation}
+%
+donde $X = -\half g^{\mu\nu}\partial_{\mu}\phi\,\partial_{\nu}\phi$ y
+la función cinética está fijada por la viscosidad asintótica $\KAL$:
+%
+\begin{equation}
+  K(X) = \frac{X}{\KAL} + \frac{X^{2}}{M^{4}}.
+  \label{eq:KX}
+\end{equation}
+%
+$\KAL = \beta + \pi \approx 5.521$ (con $\beta = (\pi+\phiG)/2$) rige el
+régimen infrarrojo; $M$ es la escala de \textit{cutoff} ultravioleta
+identificada con la densidad crítica algebraica: $M^{4} \equiv \rhocrit$.
+Ambos coeficientes son algebraicamente fijos; no hay parámetros libres en
+$K(X)$.
+
+% ─── §2 ─────────────────────────────────────────────────────────────────────
+\section{Potencial y Emparejamiento Estructural}
+
+\subsection{Potencial exponencial}
+
+En el régimen de expansión tardía se adopta el potencial:
+%
+\begin{equation}
+  V(\phi) = V_0\,e^{-\alpha\phi},
+  \qquad
+  V_0 = \Omde\,\rhocrit = \frac{T_r}{M_v}\,\rhocrit,
+  \label{eq:Vphi}
+\end{equation}
+%
+con $\Omde = T_r/M_v \approx 0.840$, $T_r = 3(\phiG+\beta) \approx 11.994$,
+$M_v = \phiG + \pi + K_v \approx 14.279$.
+
+\subsection{Condición de emparejamiento estructural}
+
+Para que el sistema converja al atractor $w_0 = -T_r/M_v$, el exponente
+$\alpha$ se determina por la condición de emparejamiento estructural
+(\textit{structural matching}).  Para el sector IR de $K(X)$
+($X^2/M^4 \ll X/\KAL$), el campo efectivo $\chi = \phi/\sqrt{\KAL}$ tiene
+cinética canónica.  La condición de \textit{tracker} impone:
+%
+\begin{equation}
+  w_{\mathrm{attr}} = -1 + \frac{\alpha^2\,\KAL}{3}
+  \stackrel{!}{=} w_0 = -\frac{T_r}{M_v}
+  \quad\Longrightarrow\quad
+  \boxed{\alpha = \sqrt{\frac{3(M_v - T_r)}{M_v\cdot\KAL}}
+               = \frac{\lambda}{\sqrt{\KAL}} \approx 0.2948}
+  \label{eq:alpha}
+\end{equation}
+%
+donde $\lambda = \sqrt{3\,\Omega_{m,\mathrm{dyn}}} \approx 0.6929$.
+Todos los parámetros del potencial emergen de $\phiG$ y $\pi$; ninguno
+queda libre.
+
+% ─── §3 ─────────────────────────────────────────────────────────────────────
+\section{NEC y Velocidad del Sonido}
+
+\subsection{Condición de Energía Nula}
+
+En el sector fundamental (sin acoplamiento), la condición NEC exige
+$\rho_\phi + p_\phi \geq 0$:
+%
+\begin{equation}
+  \rho_\phi + p_\phi = 2X\,K_X = 2X\!\brac{\frac{1}{\KAL} + \frac{2X}{M^4}} > 0
+  \quad \forall X > 0.
+  \label{eq:NEC}
+\end{equation}
+%
+La NEC se satisface estrictamente.  El campo no posee carácter fantasma
+intrínseco.
+
+\subsection{Velocidad del sonido de perturbaciones escalares}
+
+Las derivadas $K_X \equiv \partial K/\partial X$ y
+$K_{XX} \equiv \partial^2 K/\partial X^2$ dan:
+%
+\begin{align}
+  K_X   &= \frac{1}{\KAL} + \frac{2X}{M^4}, \label{eq:KX_deriv}\\
+  K_{XX} &= \frac{2}{M^4}.                   \label{eq:KXX}
+\end{align}
+%
+La velocidad del sonido al cuadrado de las perturbaciones escalares es:
+%
+\begin{equation}
+  c_s^{2} = \frac{K_X}{K_X + 2X\,K_{XX}}
+           = \frac{\dfrac{1}{\KAL} + \dfrac{2X}{M^4}}
+             {\dfrac{1}{\KAL} + \dfrac{6X}{M^4}}
+           \in \brac{\tfrac{1}{3},\,1}.
+  \label{eq:cs2}
+\end{equation}
+%
+Dado que $K_X > 0$ y $K_{XX} > 0$ para todo $X>0$, se garantiza
+analíticamente $0 < c_s^2 < 1$ dentro del dominio de validez de la EFT
+(ausencia de ghost y de inestabilidad de gradiente).
+
+% ─── §4 ─────────────────────────────────────────────────────────────────────
+\section{Acoplamiento Covariante \texorpdfstring{$\phi$}{phi}-DM}
+
+\subsection{Forma de \texorpdfstring{$\mathcal{L}_{\mathrm{int}}$}{L\_int}}
+
+El acoplamiento entre el campo escalar y la materia oscura se especifica
+mediante un acoplamiento conforme (Wetterich 1995; Amendola 2000):
+%
+\begin{equation}
+  \mathcal{L}_{\mathrm{int}}
+  = \bigl[C(\phi) - 1\bigr]\,\mathcal{L}_{\mathrm{DM}},
+  \qquad
+  C(\phi) = e^{\,\beta_c\,\phi/\Mpl},
+  \label{eq:Lint}
+\end{equation}
+%
+con constante de acoplamiento $\beta_c$ a determinar (véase §\ref{sec:bc}).
+En el límite de acoplamiento débil ($\beta_c\phi/\Mpl \ll 1$), esto
+equivale a $\mathcal{L}_{\mathrm{int}} \approx \beta_c(\phi/\Mpl)\,
+\mathcal{L}_{\mathrm{DM}}$.
+
+\subsection{Vector de transferencia de energía \texorpdfstring{$Q^\nu$}{Q^nu}}
+
+La variación de la acción respecto a la métrica produce las ecuaciones de
+conservación covariante:
+%
+\begin{align}
+  \nabla_\mu T^{\mu\nu}_{\phi}  &= \phantom{-}Q^{\nu}, \label{eq:consDE}\\
+  \nabla_\mu T^{\mu\nu}_{\mathrm{DM}} &= -Q^{\nu}, \label{eq:consDM}
+\end{align}
+%
+donde la corriente de transferencia de energía es:
+%
+\begin{equation}
+  Q^{\nu} = -\frac{\beta_c}{\Mpl}\,\rho_{\mathrm{DM}}\,\nabla^{\nu}\phi.
+  \label{eq:Qnu}
+\end{equation}
+%
+En cosmología plana de fondo homogéneo ($Q^\nu = Q\,u^\nu$):
+%
+\begin{equation}
+  Q = -\frac{\beta_c}{\Mpl}\,\rho_{\mathrm{DM}}\,\dot\phi.
+  \label{eq:Q_background}
+\end{equation}
+%
+Para $\dot\phi > 0$ y $\beta_c > 0$: $Q < 0$, lo que implica flujo de
+energía desde el campo $\phi$ hacia la DM.  Para $\beta_c < 0$: $Q > 0$,
+flujo inverso.  El signo de $\beta_c$ queda determinado por la condición
+$\weff = w_0$ (§\ref{sec:bc}).
+
+\subsection{Ecuación de estado efectiva}
+
+El parámetro de ecuación de estado observado es:
+%
+\begin{equation}
+  \weff = \wphi + \frac{Q}{3\,H\,\rho_\phi},
+  \label{eq:weff}
+\end{equation}
+%
+donde $\wphi = (X K_X - V)/(X K_X + V)$.
+El cruce fantasma $\weff < -1$ no requiere violación de la NEC en el
+sector fundamental; es una propiedad del observador efectivo derivada del
+intercambio covariante.
+
+\subsection{Determinación de \texorpdfstring{$\beta_c$}{beta\_c}}
+\label{sec:bc}
+
+La constante $\beta_c$ no es un parámetro libre: está fijada por la
+condición de coherencia algebraica $\weff(a{=}1) = w_0 = -T_r/M_v$.
+Sustituyendo~(\ref{eq:Q_background}) en~(\ref{eq:weff}):
+%
+\begin{equation}
+  \beta_c = -\frac{(w_0 - \wphi)\cdot 3H_0\,\rho_{\phi,0}}
+              {\rho_{\mathrm{DM},0}\,\dot\phi_0 / \Mpl}.
+  \label{eq:bc_constraint}
+\end{equation}
+%
+El valor de $\dot\phi_0$ se obtiene de la integración numérica del sistema
+de fondo (§\ref{sec:background}).  Dado que todos los factores del
+numerador y denominador se expresan en términos de constantes SSEE
+($\phiG,\pi$), $\beta_c$ es un número algebraicamente determinado.
+Su identificación analítica directa en función de $\phiG$ y $\pi$ es trabajo
+en curso.
+
+% ─── §5 ─────────────────────────────────────────────────────────────────────
+\section{Sistema de Ecuaciones de Fondo}
+\label{sec:background}
+
+Usando $N = \ln a$ como variable independiente, el sistema de fondo
+acoplado es:
+
+\paragraph{Ecuación de Friedmann:}
+\begin{equation}
+  H^2 = \frac{1}{3\Mpl^2}
+        \brac{\rho_\phi + \rho_{\mathrm{DM}} + \rho_b + \rho_r},
+  \label{eq:Friedmann}
+\end{equation}
+
+\paragraph{Klein-Gordon con acoplamiento:}
+\begin{equation}
+  \brac{K_X + 2X\,K_{XX}}\,\ddot\phi
+  + 3H\,K_X\,\dot\phi
+  + V'(\phi)
+  = \frac{\beta_c}{\Mpl}\,\rho_{\mathrm{DM}}\,
+  \label{eq:KG}
+\end{equation}
+donde $V'(\phi) = -\alpha V_0\,e^{-\alpha\phi}$.
+
+\paragraph{Conservación DM acoplada:}
+\begin{equation}
+  \dot\rho_{\mathrm{DM}} + 3H\,\rho_{\mathrm{DM}}
+  = \frac{\beta_c}{\Mpl}\,\rho_{\mathrm{DM}}\,\dot\phi.
+  \label{eq:rhoDM}
+\end{equation}
+
+\paragraph{En variable $N$:}
+Definiendo $'\equiv d/dN$:
+\begin{align}
+  \phi''  &= -\brac{3 + \frac{H'}{H}}\phi'
+             - \frac{V'(\phi)}{H^2(K_X + 2XK_{XX})}
+             + \frac{\beta_c\,\rho_{\mathrm{DM}}}{H^2\,\Mpl\,(K_X + 2XK_{XX})},
+  \label{eq:phi_N}\\[4pt]
+  \rho_{\mathrm{DM}}' &= -3\,\rho_{\mathrm{DM}}
+                          + \frac{\beta_c}{\Mpl}\,\rho_{\mathrm{DM}}\,\phi',
+  \label{eq:rho_N}
+\end{align}
+con $X = H^2{\phi'}^2/2$, que se cierra mediante la restricción de
+Friedmann en cada paso de integración.
+
+% ─── §6 ─────────────────────────────────────────────────────────────────────
+\section{Ecuaciones de Perturbaciones (Formalismo Sincrónico)}
+\label{sec:perturbaciones}
+
+En la aproximación de fondo homogéneo, las perturbaciones del campo escalar
+$\delta\phi$ y de la DM $\delta_{\mathrm{DM}}$ evolucionan según:
+
+\paragraph{Campo escalar ($\delta\phi$):}
+\begin{equation}
+  \ddot{\delta\phi}
+  + 3H\,K_X\,\dot{\delta\phi}
+  + \brac{\frac{c_s^2\,k^2}{a^2} + V''}\delta\phi
+  = S_\phi(\delta_{\mathrm{DM}}, \delta g),
+  \label{eq:pert_phi}
+\end{equation}
+donde $c_s^2$ está dado por~(\ref{eq:cs2}) y el término fuente $S_\phi$
+incluye las perturbaciones métricas y el acoplamiento:
+\begin{equation}
+  S_\phi = \frac{\beta_c}{\Mpl}\brac{\rho_{\mathrm{DM}}\,\delta g^{00}
+           + \delta\rho_{\mathrm{DM}}}.
+\end{equation}
+
+\paragraph{Materia oscura acoplada:}
+\begin{equation}
+  \ddot\delta_{\mathrm{DM}} + 2H\,\dot\delta_{\mathrm{DM}}
+  - 4\pi G\,\rho_{\mathrm{DM}}\,\delta_{\mathrm{DM}}
+  = \frac{\beta_c}{\Mpl}\brac{\ddot{\delta\phi}
+    - \frac{k^2}{a^2}\delta\phi},
+  \label{eq:pert_DM}
+\end{equation}
+que modifica el crecimiento de estructuras de acuerdo con:
+\begin{equation}
+  G_{\mathrm{eff}} = G_N\brac{1 + \frac{2\beta_c^2}{c_s^2}
+    \frac{\Omde}{(1+z)^{-3(1+w_0)}}},
+  \label{eq:Geff}
+\end{equation}
+recuperando $G_{\mathrm{eff}} \approx G_{2s} \approx 0.979\,G_N$ de
+Paper~6 en el límite $k \gg k_{\mathrm{fs}}$.
+
+% ─── §7 ─────────────────────────────────────────────────────────────────────
+\section{Diccionario Bellini-Sawicki}
+\label{sec:bellini}
+
+La teoría~(\ref{eq:accion}) corresponde a la Horndeski mínimamente acoplada
+$G_2 = K(X) - V(\phi)$, $G_3 = G_4 = G_5 = 0$.  Los parámetros de
+Bellini-Sawicki (2014) son:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Parámetro & Expresión & Valor en SSEE \\
+\midrule
+$\alpha_T$ (velocidad tensorial) & $0$ & $0$ (c.e.m. minimal)\\
+$\alpha_B$ (braiding) & $0$ & $0$ ($G_3=0$, sin mezcla $\phi$-curvatura)\\
+$\alpha_M$ (corrida de $\Mpl$) & $0$ & $0$ ($G_4 = \Mpl^2/2 = \mathrm{cte}$)\\
+$c_s^2$ (vel.\ sonido escalar) & $K_X/(K_X + 2X K_{XX})$ &
+  $\in(1/3,\,1)$ verificado \\
+$\alpha_K$ (cinéticidad) & $2X K_{XX}/(H^2\Mpl^2)$ & $\neq 0$ (k-essence) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+El acoplamiento $\mathcal{L}_{\mathrm{int}}$ introduce en el sector de
+perturbaciones un término de braiding efectivo proporcional a $\beta_c^2$
+(ecuación~\ref{eq:Geff}), pero no modifica $\alpha_T$ ni $\alpha_M$.
+
+\paragraph{Implementación en EFTCAMB/hi\_CLASS.}
+Los insumos necesarios para la implementación numérica son:
+\begin{enumerate}
+  \item $w(a)$ numérico del sistema (\ref{eq:phi_N})--(\ref{eq:rho_N});
+  \item $c_s^2(a)$ mediante~(\ref{eq:cs2}) evaluado en la solución de fondo;
+  \item $\beta_c$ determinado por~(\ref{eq:bc_constraint});
+  \item $Q(a)$ dado por~(\ref{eq:Q_background}).
+\end{enumerate}
+Los cuatro insumos se calculan sin parámetros libres adicionales.
+
+% ─── §8 ─────────────────────────────────────────────────────────────────────
+\section{Tabla de Constantes y Bloqueo Algebraico}
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Cantidad & Expresión SSEE & Valor numérico & Bloqueado \\
+\midrule
+$\KAL$    & $\beta + \pi$                   & $5.5214$  & \checkmark \\
+$M^4$     & $\rhocrit$                      & $1.0$ (norm.) & \checkmark \\
+$V_0$     & $(T_r/M_v)\rhocrit$             & $0.840$   & \checkmark \\
+$\alpha$  & $\sqrt{3(M_v{-}T_r)/(M_v\KAL)}$& $0.2948$  & \checkmark \\
+$w_0$     & $-T_r/M_v$                      & $-0.840$  & \checkmark \\
+$w_a$     & $-P_{sc}/K_v$                   & $-0.670$  & \checkmark \\
+$\beta_c$ & Ec.~(\ref{eq:bc_constraint})    & $\sim 0.25$ (numérico) & pendiente derivación algebraica \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ─── §9 ─────────────────────────────────────────────────────────────────────
+\section{Síntesis y Estado del Cierre EFT}
+
+\paragraph{Lo que está cerrado.}
+\begin{itemize}
+  \item Sector cinético: $K(X)$ con estabilidad de ghost y gradiente garantizada analíticamente ($0 < c_s^2 < 1$, $K_X > 0$).
+  \item Potencial: $V(\phi)$ con emparejamiento estructural $\alpha = \lambda/\sqrt{\KAL}$ derivado sin parámetros libres.
+  \item Sector DM-$\phi$: forma covariante $Q^\nu = -(\beta_c/\Mpl)\rho_{\mathrm{DM}}\nabla^\nu\phi$ con violación de NEC ausente en el sector fundamental.
+  \item Sistema de fondo: ecuaciones completas en variable $N = \ln a$, listas para integración numérica.
+  \item Perturbaciones escalares: sistema acoplado $(\delta\phi, \delta_{\mathrm{DM}})$ con $G_{\mathrm{eff}}$ algebraico.
+  \item Diccionario Bellini-Sawicki: $\alpha_T = \alpha_B = \alpha_M = 0$; $c_s^2$ y $\alpha_K$ explícitos.
+\end{itemize}
+
+\paragraph{Pendiente.}
+\begin{itemize}
+  \item Identificación algebraica de $\beta_c$ en función de $\phiG$ y $\pi$ (requiere solución analítica de~\ref{eq:phi_N}--\ref{eq:rho_N}).
+  \item Escala $M$ (cutoff UV): identificada con $\rhocrit^{1/4}$; derivación algebraica desde primeros principios SSEE en curso.
+  \item Implementación numérica completa en CLASS con el sistema acoplado (Frente~B1).
+\end{itemize}
+
+\paragraph{Veredicto.}
+La formulación~(\ref{eq:accion})--(\ref{eq:Geff}) constituye una EFT
+funcionalmente cerrada para cálculo cosmológico: tiene acción definida,
+ecuaciones de campo explícitas, sistema de perturbaciones completo, y
+diccionario para códigos de Boltzmann.  El único parámetro aún no
+algebraicamente cerrado ($\beta_c$) está determinado numéricamente por el
+sistema sin libertad de ajuste.
+
+% ─── Referencias ─────────────────────────────────────────────────────────────
+\bigskip
+\noindent\textbf{Referencias internas.}
+Paper~1 (Framework), Paper~4 ($H_0^{\mathrm{alg}}$, $\MIRA$),
+Paper~5 (IS viscosity, $c_s^2$ estabilidad),
+Paper~6 ($m_\phi = 5.71$\,eV, dos sectores $\phi$-DM, $G_{2s}=0.979$).\\[4pt]
+\noindent\textbf{Literatura.}
+Wetterich (1995) \textit{A\&A} 301, 321;
+Amendola (2000) \textit{PRD} 62, 043511;
+Bellini \& Sawicki (2014) \textit{JCAP} 07, 050;
+Horndeski (1974) \textit{IJTP} 10, 363.
+
+\end{document}

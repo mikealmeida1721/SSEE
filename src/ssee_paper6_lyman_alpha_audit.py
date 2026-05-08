@@ -246,10 +246,9 @@ fig.suptitle(
     fontsize=13, fontweight='bold', y=1.01
 )
 
-plt.savefig('/home/mike/Proyectos/SSEE/results/figures/fig_paper6_lyman_alpha_audit.pdf',
-            bbox_inches='tight')
-plt.savefig('/home/mike/Proyectos/SSEE/results/figures/fig_paper6_lyman_alpha_audit.png',
-            bbox_inches='tight', dpi=150)
+_outdir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "figures")
+plt.savefig(os.path.join(_outdir, 'fig_paper6_lyman_alpha_audit.pdf'), bbox_inches='tight')
+plt.savefig(os.path.join(_outdir, 'fig_paper6_lyman_alpha_audit.png'), bbox_inches='tight', dpi=150)
 plt.close()
 
 # ─────────────────────────────────────────────────────────────────────────────

@@ -12,7 +12,7 @@ Key result: Δchi2_min = +3.5 at H0=67.075, ΔBIC = -40.3 (SSEE strongly favored
 import numpy as np
 import os
 
-PACKAGES_PATH = "/home/mike/cobaya_packages"
+PACKAGES_PATH = os.environ.get("COBAYA_PACKAGES_PATH", os.path.expanduser("~/cobaya_packages"))
 
 phi = (1 + 5**0.5) / 2
 pi  = np.pi

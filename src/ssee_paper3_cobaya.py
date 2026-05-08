@@ -9,7 +9,7 @@ import numpy as np
 import os
 import sys
 
-PACKAGES_PATH = "/home/mike/cobaya_packages"
+PACKAGES_PATH = os.environ.get("COBAYA_PACKAGES_PATH", os.path.expanduser("~/cobaya_packages"))
 
 # ---------------------------------------------------------------------------
 # SSEE constants (algebraically fixed)

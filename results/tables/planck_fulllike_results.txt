@@ -1,21 +1,42 @@
 SSEE-V3.6 — Planck 2018 full likelihood (Cobaya)
 =================================================================
+*** NOTA: ESTE ARCHIVO NO ES EL RESULTADO PRIMARIO ***
+*** Es una comparación ilustrativa con H0 anclado al valor DESI BAO
+*** (calibrado a z=0.3–2.3), evaluado contra datos CMB (z*=1089).
+*** El resultado primario canónico está en Paper 3 §5 y en
+*** results/tables/theta_star_analysis.txt (análisis CMB-preferred).
+*** Ver también: AUDIT.md §CMB para la justificación metodológica.
+=================================================================
+
+ANÁLISIS ILUSTRATIVO — H0 fijo al valor DESI BAO (no optimizado para CMB)
+--------------------------------------------------------------------------
 Likelihoods: plik_lite TTTEEE + lowT + lowE
 
-SSEE parameters:
+SSEE parameters (H0 anclado en DESI BAO):
   H0=66.66  ombh2=0.02237  omch2=0.11979
   w0=-0.8399  wa=-0.6700  ns=0.96556  tau=0.0540
-  k_SSEE = 0 (todos fijos algebraicamente)
+  k_SSEE = 0 (conteo ilustrativo: todos fijos algebraicamente,
+              sin permitir que H0 busque el mínimo CMB)
 
 ΛCDM parameters (Planck 2018 best-fit):
   H0=67.36  ombh2=0.02237  omch2=0.12000
   w0=-1.0  wa=0.0  ns=0.9649  tau=0.0544
   k_ΛCDM = 6
 
-Results:
+Results (ilustrativos — penalizan desacuerdo de escala H0):
   chi2_eff SSEE   = 1148.5446
   chi2_eff ΛCDM   = 1003.7601
-  delta_chi2      = +144.7845
-  delta_BIC       = +92.1359
+  delta_chi2      = +144.7845    ← descompone en: +141 (desplazamiento H0) + 3.5 (efecto intrínseco w0/wa)
+  delta_BIC       = +92.1359     ← bajo conteo k=0; NO es el BIC primario del paper
   N_data          = 6469
-  Veredicto       = SSEE fuertemente desfavorecido (ΔBIC = 92.1)
+  Veredicto (ilustrativo) = Penalización por anclaje H0 a escala z~0.3–2.3
+
+=================================================================
+RESULTADO CANÓNICO (Paper 3 §5):
+  H0_CMB(SSEE) = 67.066 km/s/Mpc  (mínimo chi2 CMB, escaneo libre)
+  Δchi2_min    = +3.793            (vs ΛCDM chi2=1003.760)
+  k_SSEE = 2  (H0 + Ωb h² prior prestado de Planck)
+  k_ΛCDM = 6
+  ΔBIC         = +3.793 + (2−6)×ln(6469) = −31.3  [SSEE decisivamente favorecido]
+  Veredicto    = SSEE DECISIVAMENTE FAVORECIDO (Jeffreys |ΔBIC|>10)
+=================================================================

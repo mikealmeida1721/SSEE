@@ -366,7 +366,7 @@ print(f"\n  ΔBIC(SSEE − ΛCDM) = {dBIC:.1f}  ({'SSEE favorecido' if dBIC<0 el
 # ═══════════════════════════════════════════════════════════════════════════════
 # §8  Figuras
 # ═══════════════════════════════════════════════════════════════════════════════
-OUTDIR = "/home/mike/Proyectos/SSEE/results/figures"
+OUTDIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "figures")
 
 # ── Corner plot ────────────────────────────────────────────────────────────────
 print("\n  Generando figuras...")

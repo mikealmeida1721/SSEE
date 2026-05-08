@@ -29,7 +29,7 @@
 | 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 21 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
 | 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 18 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | 15 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
-| 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Partial Resolution | 24 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
+| 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Tension Characterization | 24 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
 | 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 15 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
 | 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 14 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
 
@@ -154,8 +154,10 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | T_WDM(k=0.125 h/Mpc) | 0.8175 | Soft cutoff (scalar condensate, not thermal WDM) |
 | σ₈_eff | 0.794 | — |
 | S₈_eff | 0.820 | 2.54σ KiDS (KiDS-DES internal tension) |
-| **Mean fσ₈ tension (6 surveys)** | **0.50σ** | **Resolved from 3.66σ (Paper 5)** |
+| **Mean fσ₈ tension (6 surveys)** | **0.50σ** | **Resolved from 3.66σ (baseline P6); fσ₈ only** |
 | ΛCDM fσ₈ mean tension | 0.51σ | Reference |
+
+> **Note:** The fσ₈ (growth rate) tension is resolved at 0.50σ. The S₈ (weak lensing amplitude) tension remains at ~2.3σ DES / ~3σ KiDS; it is not claimed to be solved.
 
 **Lyman-α compatibility:** φ-DM is a non-thermal condensate. f_φ≈0.50 → effective bound ~0.1–0.5 keV; k_fs=0.493 h/Mpc is the correct observable (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
 

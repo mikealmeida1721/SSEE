@@ -200,18 +200,53 @@ Applies BIC within the standard Friedmann framework, penalising SSEE's modified 
 against ΛCDM's 6 fitted parameters. Paper 2 explicitly distinguishes this from the
 dynamic-sector test (ΔBIC = −5.55, SSEE favoured). These address different physical questions.
 
-### 3. CMB diagonal vs full likelihood (Paper 3)
-Diagonal covariance gives ΔBIC = +31.1 (ΛCDM favoured — N amplifies small Δχ²_r ≈ 0.01).
-Full off-diagonal Cobaya/plik_lite gives ΔBIC = −31.3 (SSEE decisively favoured, k=2 vs k=6).
+### 3. CMB pipeline — canonical result and H0-anchoring sensitivity (Paper 3)
+
+**Canonical CMB result (Paper 3 §5):** H0 scanned freely over [66.5, 67.5]; minimum at
+H0=67.066 km/s/Mpc. Δχ²=+3.793, ΔBIC=−31.3 (k=2 vs k=6, N=6469). Decisively favours SSEE.
+
+**Illustrative H0-anchored comparison** (`results/tables/planck_fulllike_results.txt`):
+When H0 is fixed to the DESI BAO value (66.66, calibrated at z~0.3–2.3), Δχ²=+144.8,
+ΔBIC=+92.1. This is NOT a contradiction — it decomposes as: +141 from the 0.74σ
+H0 offset between DESI and CMB preferred values, +3.5 from the intrinsic w0/wa effect.
+The file is explicitly labelled as illustrative; the primary result is ΔBIC=−31.3.
+
+**k count fixed** (BC2): SSEE uses k=2 in all CMB comparisons (H0 + Ωb h² prior borrowed
+from Planck). k=0 counting appears only in the illustrative file with matching caveat.
+
+**Parameter table** (authoritative):
+
+| Parameter | Status in SSEE | k contribution |
+|---|---|---|
+| w₀, wₐ | algebraic (Zenodo pre-data) | 0 |
+| n_s | algebraic (1−φ⁻⁷) | 0 |
+| Ωm,CMB | algebraic (MIRA hypothesis) | 0 |
+| H₀ | scanned to CMB minimum | 1 |
+| Ωb h² | fixed to Planck prior | 1 (conservative) |
+| τ, As | fixed to Planck priors | 0 (conservative option: +2) |
+| **Total SSEE** | | **k=2** (k=4 hyper-conservative) |
+| **ΛCDM baseline** | | **k=6** |
+
+Diagonal covariance gives ΔBIC = +31.1 (N amplifies small Δχ²_r ≈ 0.01).
 Full plik/CamSpec likelihood with official Planck covariance matrix remains a blocker for PRD/PRL.
 
 ### 4. Two-sector Ωm (Papers 2, 3, 5, 6)
 Ωm,dyn = 0.160 ≠ Ωm,CMB = 0.3199. Bridged by algebraic MIRA = (3φ+π)/4 = 1.9989.
 Full derivation of MIRA from first-principles field equations is deferred (Level 3 work).
 
-### 5. MIRA — provenance documented
+### 5. MIRA — status and provenance (BC3)
+
+**Formal status:** MIRA = (3φ+π)/4 = 1.998924 is a **phenomenological auxiliary hypothesis**
+(not yet a derived quantity). It bridges Ωm,dyn=0.160 and Ωm,CMB=0.3199 algebraically,
+but its derivation from first-principles field equations (Blocker B3) remains open.
+It is NOT simultaneously a free parameter and a derived quantity — it is a fixed hypothesis
+with documented pre-data provenance:
+
 MIRA defined in Genesis 5.12 (Zenodo: 10.5281/zenodo.19679049, 2026-01-28),
 83 days before the CMB analysis (2026-04-19). Anti-post-hoc guarantee.
+
+This status (hypothesis pending formal derivation) is stated explicitly in Papers 1, 3, 5, 6.
+All MIRA-dependent claims are sector-specific and conditional on this hypothesis.
 
 ### 6. Israel-Stewart perturbations (Papers 5, 6)
 Full causal IS (Hiscock-Lindblom 1985) perturbation theory is implemented for background sector.

@@ -17,7 +17,7 @@ Variantes (un parámetro cambiado a la vez hacia ΛCDM):
 import numpy as np
 import os
 
-PACKAGES_PATH = "/home/mike/cobaya_packages"
+PACKAGES_PATH = os.environ.get("COBAYA_PACKAGES_PATH", os.path.expanduser("~/cobaya_packages"))
 
 # --- SSEE algebraico ---
 phi   = (1 + 5**0.5) / 2

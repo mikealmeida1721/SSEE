@@ -1,6 +1,12 @@
 SSEE-V3.6 — Análisis de escala acústica θ* y mínimo chi2 CMB
 =============================================================
-Fecha: 2026-04-25
+Fecha: 2026-04-25 | Actualizado: 2026-05-08 (etiquetado como análisis canónico)
+
+*** RESULTADO CANÓNICO CMB — ANÁLISIS PRIMARIO ***
+*** Este archivo documenta el scan de H0 que establece H0_CMB(SSEE).
+*** El resultado ΔBIC final del paper usa k=2 (no k=1); ver §5 Paper 3.
+*** planck_fulllike_results.txt = análisis ilustrativo NO canónico.
+=============================================================
 
 ## Resultado principal
 
@@ -11,14 +17,25 @@ intrínseco del modelo w0/wa. El verdadero mínimo chi2 para SSEE es:
   Δchi2_min    = +3.5              (plik_lite TTTEEE, vs ΛCDM χ²=584.97)
   oc h²        = 0.12157          (derivado de Omm_cmb × h² − ob)
 
-## Estadísticas BIC
+  Nota: Paper 3 §5 refina el mínimo a H0=67.066 con Δchi2=+3.793 usando
+  la cadena Cobaya completa con covarianza off-diagonal oficial.
 
-  k_SSEE = 1  (H0 único parámetro libre; w0,wa,ns,Ωm,ob algebraicamente fijos)
-  k_ΛCDM = 6
-  N_data  = 6413  (plik_lite TTTEEE bins)
-  ΔBIC    = Δchi2 + (k_SSEE − k_ΛCDM) × ln(N) = +3.5 − 43.8 = −40.3
+## Estadísticas BIC — comparación de conteos k
 
-  Veredicto: SSEE FUERTEMENTE FAVORECIDO (ΔBIC < −10)
+  Conteo conservador Paper 3 (canónico):
+    k_SSEE = 2  (H0 + Ωb h² prior prestado de Planck 2018)
+    k_ΛCDM = 6
+    N_data  = 6469  (plik_lite TTTEEE bins)
+    ΔBIC    = +3.793 + (2−6)×ln(6469) = −31.3  [SSEE DECISIVAMENTE FAVORECIDO]
+
+  Conteo mínimo (este scan):
+    k_SSEE = 1  (solo H0 libre; w0,wa,ns,Ωm,ob algebraicamente fijos)
+    k_ΛCDM = 6
+    N_data  = 6413  (plik_lite TTTEEE bins — versión anterior del scan)
+    ΔBIC    = +3.5 − (6−1)×ln(6413) = +3.5 − 43.8 = −40.3  [SSEE FUERTEMENTE FAVORECIDO]
+
+  Ambos conteos (k=1 y k=2) dan ΔBIC < −10: resultado robusto.
+  El paper usa k=2 para máxima conservatividad.
 
 ## Escala acústica θ* (CLASS)
 
@@ -28,15 +45,19 @@ intrínseco del modelo w0/wa. El verdadero mínimo chi2 para SSEE es:
 
   Planck 2018: 100θ* = 1.04109 ± 0.00030
 
+  Conclusión: El H0 DESI (66.66) desplaza θ* 14.6σ fuera de Planck.
+  El H0_CMB(SSEE) = 67.075 restaura la escala acústica correcta.
+  Esto explica por qué anclar H0 al valor DESI genera Δchi2=+144.
+
 ## Scan chi2 plik_lite TTTEEE (SSEE w0=-0.8399, wa=-0.6700 fijos)
 
-  H0=66.66:  chi2=729.3, Δchi2=+144.3
+  H0=66.66:  chi2=729.3, Δchi2=+144.3  ← artefacto del anclaje H0_DESI
   H0=66.80:  chi2=648.4, Δchi2=+63.4
   H0=66.90:  chi2=611.6, Δchi2=+26.6
   H0=67.00:  chi2=592.0, Δchi2=+7.1
   H0=67.025: chi2=589.8, Δchi2=+4.8
   H0=67.050: chi2=588.6, Δchi2=+3.7
-  H0=67.075: chi2=588.5, Δchi2=+3.5  ← MÍNIMO
+  H0=67.075: chi2=588.5, Δchi2=+3.5  ← MÍNIMO (este scan)
   H0=67.100: chi2=589.4, Δchi2=+4.5
   H0=67.125: chi2=591.4, Δchi2=+6.5
   H0=67.150: chi2=594.4, Δchi2=+9.5
@@ -44,7 +65,7 @@ intrínseco del modelo w0/wa. El verdadero mínimo chi2 para SSEE es:
   H0=67.36:  chi2=680.9, Δchi2=+96.0  (si usáramos H0_ΛCDM)
   H0=67.96:  chi2=1233., Δchi2=+648   (H0=3(φ+π)² — demasiado alto)
 
-## Interpretación
+## Descomposición del Δchi2=+144
 
   La discrepancia Δchi2=+144 a H0=66.66 se descompone:
   - +141 de la separación 0.74σ entre H0_DESI=66.75 y H0_CMB=67.075
@@ -58,4 +79,5 @@ intrínseco del modelo w0/wa. El verdadero mínimo chi2 para SSEE es:
 
   Este resultado confirma que el Δchi2=+144 anterior era un artefacto de
   comparar al modelo anclado en el valor DESI de H0 (optimizado para z=0.3−2.3)
-  contra datos CMB (z*=1089). La comparación justa es ΔBIC = −40.3.
+  contra datos CMB (z*=1089). La comparación justa es ΔBIC = −40.3 (k=1)
+  o ΔBIC = −31.3 (k=2, Paper 3 §5 — resultado canónico definitivo).

@@ -6,7 +6,7 @@ Detecta inconsistencias entre .tex y .py files.
 import re, os, glob
 from collections import defaultdict
 
-ROOT = "/home/mike/Proyectos/SSEE"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Valores canónicos (referencia algebraica Paper 1)
 CANONICAL = {

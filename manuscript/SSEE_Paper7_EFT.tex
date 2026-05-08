@@ -437,7 +437,7 @@ $\alpha_T$ (tensor speed excess)  & $0$ & $0$ & GW-safe \\
 $\alpha_B$ (braiding)             & $0$ & $0$ & ($G_3 = 0$) \\
 $\alpha_M$ (Planck-mass running)  & $0$ & $0$ & ($G_4 = \Mpl^2/2$) \\
 $c_s^2$ (scalar sound speed)     & $K_X/(K_X + 2XK_{XX})$ & $\in(1/3,1)$ & \\
-$\alpha_K$ (kineticity)           & $2XK_{XX}/(H^2\Mpl^2)$ & $\neq 0$ & k-essence \\
+$\alpha_K$ (kineticity)           & $3\Omde(1+w_\phi)$      & $0.403$    & algebraic \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -447,6 +447,67 @@ gravitational-wave observations \citep{gw170817_2017}.
 The coupling $\mathcal{L}_{\mathrm{int}}$ introduces an effective braiding
 $\propto \bc^2$ in the perturbation sector via equation~(\ref{eq:Geff}),
 but does not alter $\alpha_T$ or $\alpha_M$.
+
+\subsection{Algebraic determination of \texorpdfstring{$\alpha_K(a)$}{alphaK(a)}}
+\label{sec:alphak}
+
+For the canonical action $K(X) = X$ (so $K_X = 1$, $K_{XX} = 0$), the
+Bellini-Sawicki kineticity reduces from its general form
+$(2XK_X + 4X^2K_{XX})/(H^2\Mpl^2)$ to
+\begin{equation}
+  \alpha_K(a) = \frac{2X(a)}{H^2(a)\Mpl^2}.
+  \label{eq:alphak_raw}
+\end{equation}
+Using $X = \frac{1}{2}\dot\phi^2 = \rho_\phi(1+w_\phi)/2$ and
+$\rho_\phi = 3H^2\Mpl^2\Omde$, this becomes
+\begin{equation}
+  \boxed{\alpha_K(a) = 3\,\Omde(a)\,\bigl[1 + w_\phi(a)\bigr].}
+  \label{eq:alphak}
+\end{equation}
+At $a = 1$ the algebraic values $\Omde = T_r/M_v$ and
+$1 + w_0 = \Omega_{m,\rm dyn} = \mathrm{BUFFER}/M_v$ give
+\begin{equation}
+  \alpha_K^{(0)} = \frac{3\,T_r\cdot\mathrm{BUFFER}}{M_v^2}
+  = 3 \times 0.8400 \times 0.1601 = 0.4033,
+  \label{eq:alphak_numerical}
+\end{equation}
+with zero free parameters.  The redshift evolution follows directly from
+the CPL equation of state $w_\phi(a) = w_0 + w_a(1-a)$ combined with
+the background Friedmann equations; at high redshift ($a\to 0$)
+$\Omde\to 0$ and $\alpha_K\to 0$, so the EFT is well-behaved at all epochs.
+
+\paragraph{Observational status.}
+\begin{itemize}
+  \item $\alpha_T = \alpha_M = \alpha_B = 0$ \emph{exactly}.
+    The multi-messenger event GW170817\,/\,AT2017gfo constrains
+    $|\alpha_T| \lesssim 10^{-15}$ \citep{gw170817_2017}; SSEE satisfies
+    this to machine precision.
+  \item Euclid spectroscopic galaxy clustering will reach
+    $\sigma(\alpha_{M,0}) \approx 0.05$ and
+    $\sigma(\alpha_{B,0}) \approx 0.05$ \citep{euclid2024}.
+    SSEE predicts $\alpha_M = \alpha_B = 0$ exactly — any detection
+    above $2\sigma$ would \emph{falsify} the minimal-coupling sector.
+  \item $\alpha_K^{(0)} = 0.403$ is within the range accessible to
+    CMB-lensing cross-correlations and DESI power-spectrum measurements
+    \citep{hiclass2017}; this constitutes a testable prediction on
+    timescales of 2026–2028.
+\end{itemize}
+
+\begin{table}[ht]
+\centering
+\caption{SSEE $\alpha$-function predictions vs.\ current and forecast constraints.}
+\label{tab:alpha}
+\begin{tabular}{lcccc}
+\toprule
+Function & SSEE & Expression & Current limit & Euclid forecast \\
+\midrule
+$\alpha_T$ & $0$ (exact) & $G_5 = 0$ & $<10^{-15}$ \citep{gw170817_2017} & $<10^{-2}$ \\
+$\alpha_M$ & $0$ (exact) & $G_4 = \Mpl^2/2$ & $<0.3$ & $<0.05$ \\
+$\alpha_B$ & $0$ (exact) & $G_3 = 0$ & $<0.5$ & $<0.05$ \\
+$\alpha_K(z{=}0)$ & $0.403$ & $3\Omde(1+w_0)$ & unconstrained & $<0.1$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \paragraph{Inputs for \textsc{hi\_class}/\textsc{eftcamb}.}
 The four quantities required for numerical implementation are:

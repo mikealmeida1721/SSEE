@@ -112,29 +112,52 @@ each derivation.
 
 \begin{table}[ht]
 \centering
+\small
 \caption{Predictive Register: \SSEE\ derivations in chronological order.
-``Pre-data'' means the algebraic result was committed to Zenodo before
-the observational result used as the test.}
+``Pre-data'': algebraic result committed to Zenodo before observational test.
+``Prediction'': not yet observationally constrained.
+``Retrodiction'': derived independently, then compared to existing measurement.
+No optimisation over the algebraic formula space was performed.}
 \label{tab:register}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{llll}
 \toprule
-Quantity & Algebraic formula & Test dataset & Status \\
+Quantity (algebraic formula) & Value & Test / Falsifier & Status \\
 \midrule
+\multicolumn{4}{l}{\textit{Papers 1--2 (Genesis 5.12, Zenodo 2026-Jan-28)}} \\
 $w_0 = -T_r/M_v$ & $-0.8399$ & DESI DR2 (2025) & Pre-data \\
-$w_a = -P_{sc}/K_v$ & $-0.6699$ & DESI DR2 (2025) & Pre-data \\
-MIRA $= (\varphi+\beta)/2$ & $1.9989$ & CMB/BAO $\Omega_m$ ratio & Pre-data \\
+$w_a = -(\Omega+\varphi)/K_v$ & $-0.6699$ & DESI DR2 (2025) & Pre-data \\
+MIRA $= (3\varphi+\pi)/4$ & $1.9989$ & $\Omega_{m,\mathrm{CMB}}/\Omega_{m,\mathrm{dyn}}$ & Pre-data \\
 $\Omega_m = (\pi-\varphi)/(\pi+\varphi)$ & $0.3201$ & Planck 2018 & Retrodiction \\
 $n_s = 1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & Retrodiction \\
-$H_0 = 3(\varphi+\pi)^2$ & $67.962$ & Planck 2018 & Retrodiction \\
-$r = \varphi^{-10}$ & $0.00813$ & LiteBIRD ($\sim$2032) & Prediction \\
+$H_0 = 3(\varphi+\pi)^2$ & $67.96\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & Planck 2018 & Retrodiction \\
+\midrule
+\multicolumn{4}{l}{\textit{Paper 5 — IS causal perturbation theory}} \\
+$\gamma_{\mathrm{IS}} = 0.554$ & $\approx\gamma_{\Lambda\mathrm{CDM}}=0.55$ & RSD surveys & Retrodiction \\
+$f\sigma_8(z{=}0.5) = 0.341$ & $2.67\sigma$ below BOSS & BOSS/eBOSS & Retrodiction \\
+\midrule
+\multicolumn{4}{l}{\textit{Paper 6 — $\varphi$-Dark Matter, two-sector}} \\
+$m_\phi = \Sigma m_\nu \times H_0^{\mathrm{alg}}$ & $5.71\,\mathrm{eV}$ & KATRIN/PTOLEMY 2027--2030 & Prediction \\
+$k_{\mathrm{fs}}$ (Dodelson-Widrow from $m_\phi$) & $0.493\,h\,\mathrm{Mpc}^{-1}$ & DESI\,Y3 / Euclid $P(k)$, 2026--2028 & Prediction \\
+\midrule
+\multicolumn{4}{l}{\textit{Paper 7 — Canonical EFT, Bellini-Sawicki $\alpha$-functions}} \\
+$\alpha_T=\alpha_M=\alpha_B=0$ (minimal coupling) & $0$ exact & GW170817 $|\alpha_T|<10^{-15}$ & Retrodiction \\
+$\alpha_K = 3\,\Omega_{\mathrm{DE}}(1+w_\phi)$ & $0.403$ & Euclid weak lensing, 2026--2028 & Prediction \\
+$\beta_c = -\mathrm{AURA} = -(3\varphi+\pi)/2$ & $-3.9978$ & EFT plateau test (8 ICs, $\Delta=0.2\%$) & Retrodiction \\
+\midrule
+\multicolumn{4}{l}{\textit{Future}} \\
+$r = \varphi^{-10}$ & $0.00813$ & LiteBIRD ${\sim}2032$ & Prediction \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 ``Retrodiction'' denotes results derived independently and then compared against
 previously published values; no optimisation over the algebraic formula space
 was performed to match a target value.  The distinction between pre-data
 predictions and retrodictions is explicitly noted to maintain transparency.
+All entries with ``Prediction'' status are falsifiable by named experiments within
+the stated time horizon; a single null detection would rule out the \SSEE\ framework.
 
 \subsection{Axiomatic Principles}
 \label{sec:axioms}
@@ -685,7 +708,7 @@ $\pi$     & Archimedes constant & $3.141593$ & All & A \\
 $\Omega_{\rm DNAV}$ & $\varphi + \pi$ & $4.759627$ & Stability metric & A \\
 $\beta$   & $(\varphi+\pi)/2$ & $2.379814$ & Base coupling & A \\
 $P_{sc}$  & $\Omega_{\rm DNAV}+\varphi$ & $6.377661$ & Dyn.\ evolution & A \\
-AURA      & $\varphi+\beta$ & $3.997838$ & Resonance limit & A \\
+AURA      & $\varphi+\beta$ & $3.997847$ & Resonance limit & A \\
 \midrule
 \multicolumn{5}{l}{\textit{Level 2 — Secondary Registers}} \\
 $\mathrm{KAL}_0$ & $\beta+\pi$ & $5.521406$ & Viscosity; $M_{\rm cluster}$ & A \\

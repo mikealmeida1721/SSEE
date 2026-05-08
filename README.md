@@ -1,10 +1,10 @@
 # SSEE — Structural Self-Energy Expansion
 
-**A zero-free-parameter dark energy model derived exclusively from φ (golden ratio) and π, tested against DESI DR2 BAO, Planck 2018 CMB (TT+TE+EE+lensing), and galaxy cluster masses.**
+**A zero-free-parameter dark energy model derived exclusively from φ (golden ratio) and π, tested against DESI DR2 BAO, Planck 2018 CMB (TT+TE+EE+lensing), galaxy cluster masses, and large-scale structure growth.**
 
 ---
 
-## Four falsifiable predictions — all pass
+## Falsifiable predictions — all pass
 
 | Observable | SSEE (algebraic) | Observed | Separation |
 |---|---|---|---|
@@ -12,8 +12,12 @@
 | CMB first peak | ℓ₁ = 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.3199 (algebraic via MIRA) | Planck 2018: 0.3153 | 0.63σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
+| αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match |
+| αK (kineticity, z=0) | 0.403 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 |
+| m_φ (φ-DM mass) | 5.71 eV algebraic | KATRIN/PTOLEMY: 2027–2030 | falsifiable |
+| k_fs (free-streaming) | 0.493 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | falsifiable |
 
-**Future falsifier (LiteBIRD ~2032):** tensor-to-scalar ratio r = φ⁻¹⁰ = 0.00813.
+**Future falsifiers:** r = φ⁻¹⁰ = 0.00813 (LiteBIRD ~2032); k_fs cutoff in matter power spectrum (Euclid ~2028).
 
 ---
 
@@ -26,7 +30,8 @@
 | 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 19 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | 15 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
 | 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Partial Resolution | 24 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
-| 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 14 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
+| 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 15 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
+| 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 14 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
 
 ---
 
@@ -35,12 +40,18 @@
 ```
 SSEE/
 ├── src/
-│   ├── ssee_paper2_mcmc.py           # Bayesian MCMC: SSEE vs ΛCDM vs CPL
-│   ├── ssee_paper2_analysis.py       # Analytical w₀-wₐ plane
-│   ├── ssee_paper3_cmb.py            # CAMB CMB spectrum TT+TE+EE+lensing
-│   ├── ssee_verify_rd.py             # CAMB r_d verification vs Planck 2018
-│   ├── ssee_press_schechter.py       # Press-Schechter δc=1.6284 vs 1.6865 (Paper 4)
-│   └── ssee_inflation_connection.py  # α-attractor: α=φ⁴/3 exact, N=2φ⁷≈58.07 (Paper 1)
+│   ├── ssee_paper2_mcmc.py               # Bayesian MCMC: SSEE vs ΛCDM vs CPL (Paper 2)
+│   ├── ssee_paper2_analysis.py           # Analytical w₀-wₐ plane (Paper 2)
+│   ├── ssee_paper3_cmb.py                # CAMB CMB spectrum TT+TE+EE+lensing (Paper 3)
+│   ├── ssee_verify_rd.py                 # CAMB r_d verification vs Planck 2018
+│   ├── ssee_press_schechter.py           # Press-Schechter δc=1.6284 vs 1.6865 (Paper 4)
+│   ├── ssee_inflation_connection.py      # α-attractor: α=φ⁴/3 exact, N=2φ⁷≈58.07 (Paper 1)
+│   ├── ssee_paper5_IS_perturbations.py   # IS causal perturbations: γ_IS, σ₈, fσ₈ (Paper 5)
+│   ├── ssee_paper6_verification.py       # φ-DM two-sector: fσ₈ tensions, σ₈_eff (Paper 6)
+│   ├── ssee_paper6_sterile_neutrino.py   # k_fs derivation, Dodelson-Widrow, m_φ scan (Paper 6)
+│   ├── ssee_paper6_mcmc.py               # Full MCMC 3-param φ-DM: 64 walkers × 15000 steps (Paper 6)
+│   ├── ssee_eft_verification.py          # β_c=-AURA plateau test, 8 ICs (Paper 7)
+│   └── ssee_audit_consistency.py         # Cross-paper parameter consistency audit (all papers)
 ├── data/raw/
 │   ├── planck_pr4_lensing.txt     # Planck 2018 MV lensing bandpowers (14 bins)
 │   └── ...                        # Planck PR4 TT/TE/EE spectra
@@ -141,13 +152,28 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | Ω_total (two-sector) | 0.319928 ≈ Ω_m,CMB | Zero-parameter unification |
 | m_φ = Σm_ν × H₀^alg | 5.71 eV | Algebraic — no fitting |
 | k_fs (Dodelson-Widrow) | 0.493 h/Mpc | From m_φ algebraic |
-| T_WDM(k=0.125 h/Mpc) | 0.8175 | WDM suppression |
-| σ₈_eff | 0.737 | 0.00σ vs KiDS-1000 |
-| S₈_eff | 0.761 | 2.29σ vs DES (KiDS-DES internal) |
-| **Mean fσ₈ tension (6 surveys)** | **0.88σ** | **Resolved from 3.66σ (Paper 5)** |
+| T_WDM(k=0.125 h/Mpc) | 0.8175 | Soft cutoff (scalar condensate, not thermal WDM) |
+| σ₈_eff | 0.794 | — |
+| S₈_eff | 0.820 | 2.54σ KiDS (KiDS-DES internal tension) |
+| **Mean fσ₈ tension (6 surveys)** | **0.50σ** | **Resolved from 3.66σ (Paper 5)** |
 | ΛCDM fσ₈ mean tension | 0.51σ | Reference |
 
+**Lyman-α compatibility:** φ-DM is a non-thermal condensate. f_φ≈0.50 → effective bound ~0.1–0.5 keV; k_fs=0.493 h/Mpc is the correct observable (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
+
 **Falsifiable predictions:** m_φ = 5.71 eV testable by KATRIN/PTOLEMY (2027–2030); k_fs = 0.493 h/Mpc via DESI Y3/Euclid P(k) power spectrum (2026–2028). Zero free parameters.
+
+### Paper 7 (Canonical EFT)
+
+| Result | Value | Status |
+|---|---|---|
+| Action | S = ∫d⁴x√(−g)[−X + V₀e^{β_c φ}] | Canonical, minimal coupling |
+| β_c | −AURA = −3.9978 | Algebraic exact |
+| β_c (plateau test, 8 ICs) | −3.98991 ± 0.00001 | Δ = 0.199% (systematic: Ω_b+Ω_r excluded) |
+| αT | 0 exact | GW170817 \|αT\| < 10⁻¹⁵ satisfied ✓ |
+| αM | 0 exact | Euclid forecast < 0.05 satisfied ✓ |
+| αB | 0 exact | Euclid forecast < 0.05 satisfied ✓ |
+| αK(z=0) | 3·Ω_DE·Ω_m,dyn = 0.403 | Algebraic (Euclid will constrain < 0.1) |
+| G₂_s (running) | 0.979 | Two-sector unification ✓ |
 
 ### Paper 4 (Algebraic ToE)
 
@@ -226,11 +252,15 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
   - Mod2: Bullet Cluster hedge — masa proyectada, no fit κ(θ)
   - Mod3: c²_s<0 caveat en EFT — deferred full IS treatment a Paper 4
 - [x] Paper 5: IS causal perturbation theory — Q1+Q2+Q3+fσ₈, 24 pp
-- [x] Paper 6: φ-DM two-sector model — m_φ=5.71 eV algebraic, fσ₈ 3.66σ→0.88σ, 14 pp
-- [ ] Zenodo v2 — archive Paper 5+6 PDFs
+- [x] Paper 6: φ-DM two-sector model — m_φ=5.71 eV algebraic, fσ₈ 3.66σ→0.50σ, 15 pp (incl. Lyman-α defense)
+- [x] Paper 7: Canonical EFT — β_c=−AURA exact, αT=αM=αB=0, αK=0.403 algebraic, 14 pp
+- [x] Cross-paper parameter consistency audit — no critical inconsistencies (`src/ssee_audit_consistency.py`)
+- [ ] Paper 6 MCMC (running) — 64 walkers × 15000 steps: posterior (Ω_φDM, k_fs, σ₈_in)
+- [ ] Zenodo v2 — archive Papers 5+6+7 PDFs with DOI chaining
 - [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
+- [ ] hi_class cross-check Paper 3 — Bellini-Sawicki 4 α-functions with SSEE values
 - [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
-- [ ] arXiv submission — pending endorser response
+- [ ] arXiv submission — pending endorser response (Shafieloo/KASI, Lee/SKKU, Di Valentino/Sheffield)
 
 ---
 

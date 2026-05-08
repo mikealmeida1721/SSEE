@@ -4,17 +4,19 @@ type: software
 title: "SSEE — Structural Self-Energy Expansion (V3.6)"
 abstract: >
   A zero-free-parameter dark energy model derived algebraically from φ (golden ratio)
-  and π. Tested against DESI DR2 BAO (0.05σ), Planck 2018 CMB (TT+TE+EE+lensing),
-  and galaxy cluster masses. Includes four papers: algebraic framework, Bayesian MCMC
-  validation, CMB confrontation (Planck PR4), and derivation of all CMB background
-  observables from φ and π only.
+  and π. Seven papers spanning: algebraic framework (w₀, wₐ, EFT, Predictive Register),
+  Bayesian MCMC validation (DESI DR2 + Planck + clusters), CMB confrontation (Planck PR4
+  TT+TE+EE+lensing), algebraic derivation of all CMB observables from φ and π only,
+  Israel-Stewart causal perturbation theory (gradient stability, MIRA origin, S₈),
+  φ-Dark Matter two-sector model (m_φ=5.71 eV algebraic, fσ₈ 3.66σ→0.50σ), and
+  canonical EFT (β_c=−AURA exact, αT=αM=αB=0 exact, αK=0.403 algebraic).
 authors:
   - family-names: Almeida Vallejo
     given-names: Mike Edison
     email: mike.almeida1721@gmail.com
     orcid: "https://orcid.org/0009-0008-2195-7836"
 version: "3.6"
-date-released: "2026-04-25"
+date-released: "2026-05-07"
 license: Apache-2.0
 repository-code: "https://github.com/mikealmeida1721/SSEE"
 keywords:
@@ -29,3 +31,12 @@ keywords:
   - zero-parameter model
   - CMB power spectrum
   - Bayesian MCMC
+  - EFT of dark energy
+  - Horndeski scalar-tensor
+  - Bellini-Sawicki alpha functions
+  - phi dark matter
+  - free-streaming scale
+  - fσ₈ tension
+  - GW170817
+  - Euclid forecast
+  - alpha-attractor inflation

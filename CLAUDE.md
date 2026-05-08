@@ -10,7 +10,7 @@ Siete papers:
 - **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready)
 - **Paper 4**: Derivación algebraica CMB desde φ,π — Nine Sovereignties (preprint)
 - **Paper 5**: IS causal perturbation theory — estabilidad, MIRA, S8, fσ₈ (commit 0a9d21c)
-- **Paper 6**: φ-DM dos sectores — m_φ=5.71 eV algebraico, fσ₈ 3.66σ→0.88σ (commit 9d28620)
+- **Paper 6**: φ-DM dos sectores — m_φ=5.71 eV algebraico, fσ₈ 3.66σ→0.50σ resuelto (commit 9d28620; la tensión 3.66σ es recomputed con los 6 surveys de P6, no el valor 2.67σ reportado en P5)
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint)
 
 ---
@@ -37,7 +37,8 @@ Siete papers:
 - `manuscript/SSEE_Paper4_ToE.tex` (submodule)
 - `SSEE_Paper5_IS.tex` + `ssee_paper5.bib`
 - `SSEE_Paper6_phiDM.tex` + `ssee_paper6.bib`
-- `SSEE_EFT_Fundamental.tex` (Paper 7)
+- `SSEE_Paper7_EFT.tex` (Paper 7 — versión completa, 874 líneas, βc=-AURA al 0.2%)
+- `SSEE_EFT_Fundamental.tex` (borrador obsoleto de Paper 7 — NO usar)
 - `SSEE_Endorser_Summary.tex` (en docs/)
 
 ### src/ — Scripts Python

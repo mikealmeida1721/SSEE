@@ -81,9 +81,9 @@ Siete papers:
 | TE | 1.053 | 1.040 | 1967 |
 | EE | 1.040 | 1.039 | 1967 |
 | PP (lensing) | 0.730 | 0.757 | 9 |
-| ΔBIC (TT, k=0 vs k=6) | −6.9 (SSEE favorecido) | — | — |
-| ΔBIC (TT+TE+EE+PP, upper bound) | +13.7 | — | — |
-| ΔBIC (plik_lite, k=1 vs k=6) | −40.3 | — | — |
+| ΔBIC (TT+TE+EE+PP diagonal, k=2 vs k=6) | +31.1 (ΛCDM favorecido, N amplifica Δχ²_r pequeña) | — | — |
+| ΔBIC (plik_lite Cobaya, k=2 vs k=6) | −31.3 (SSEE decisivamente favorecido) | — | — |
+| ΔBIC (plik_lite conservador, k=4 vs k=6) | −13.8 (SSEE fuertemente favorecido) | — | — |
 
 Datos lensing: `data/raw/planck_pr4_lensing.txt` (14 bins MV)
 
@@ -162,7 +162,7 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | k_fs (Dodelson-Widrow) | 0.493 h/Mpc | Derivado de m_φ |
 | σ₈_eff (con T_WDM) | 0.737 | **0.00σ KiDS-1000** |
 | S₈_eff | 0.761 | 2.29σ DES (tensión KiDS-DES interna) |
-| Media tensión fσ₈ (6 encuestas) | **0.88σ** | **Resuelto desde 3.66σ (Paper 5)** |
+| Media tensión fσ₈ (6 encuestas) | **0.50σ** | **Resuelto desde 3.66σ (baseline P6)** |
 | Predicción KATRIN/PTOLEMY | m_φ = 5.71 eV | Falsificable 2027–2030 |
 | Predicción DESI Y3/Euclid | k_fs = 0.493 h/Mpc | Falsificable 2026–2028 |
 

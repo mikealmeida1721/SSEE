@@ -50,9 +50,8 @@
 
 % ─── Abstract ────────────────────────────────────────────────────────────────
 \begin{abstract}
-We present a working effective field theory (EFT) formulation of the
-Structural Self-Energy Expansion (SSEE-V3.6), closing the model at the
-background and linear-perturbation level.
+We present a working effective field theory (EFT) formulation of
+SSEE-V3.6 at the background and linear-perturbation level.
 The fundamental action is a $k$-essence scalar field with a non-canonical
 kinetic term $K(X) = X/\KAL + X^2/M^4$ and an exponential potential
 $V(\phi) = V_0\,e^{-\alpha\phi}$, minimally coupled to gravity and
@@ -62,9 +61,9 @@ $\pi$ with zero free parameters: the structural viscosity
 $\KAL = \beta + \pi \approx 5.521$, the tracker exponent
 $\alpha = \lambda/\sqrt{\KAL} \approx 0.2948$, and the dark-sector
 coupling constant $\bc = -\AURA \equiv -(3\varphi+\pi)/2 \approx -3.998$.
-We prove analytically that the Null Energy Condition is satisfied and
-that the scalar sound speed lies in $c_s^2 \in (1/3,\,1)$, guaranteeing
-ghost-free, gradient-stable perturbations.
+Within the model sector studied here, we derive analytic conditions under which
+the Null Energy Condition is satisfied and $c_s^2 \in (1/3,\,1)$, corresponding
+to ghost-free and gradient-stable perturbations in that regime.
 The phantom crossing $\weff < -1$ observed by DESI~DR2 is reproduced via
 the covariant energy-transfer four-vector $Q^\nu$, without any NEC violation
 in the fundamental sector.
@@ -73,8 +72,8 @@ construct the Bellini-Sawicki classification
 ($\alpha_T = \alpha_B = \alpha_M = 0$, $c_s^2\neq 1$, $\alpha_K \neq 0$),
 and provide all inputs required for numerical implementation in
 \textsc{hi\_class}/\textsc{eftcamb}.
-Numerical verification confirms $\Omega_\phi(a{=}1) = 0.840$ at the level
-of $10^{-12}$ and $c_s^2 \in [0.60,\,0.95]$ over $a \in [0.1,\,1]$.
+The numerical implementation reproduces $\Omega_\phi(a{=}1) = 0.840$ to
+$10^{-12}$ under the adopted initial conditions and yields $c_s^2 \in [0.60,\,0.95]$ over $a \in [0.1,\,1]$.
 \end{abstract}
 
 \tableofcontents
@@ -637,8 +636,8 @@ The result is:
   \label{eq:bc_plateau}
 \end{equation}
 The extracted coupling is \emph{completely flat} across two decades of initial
-redshift. This \textbf{rules out} any interpretation that the $0.199\%$
-discrepancy from $-\AURA$ arises from the finite starting time of the
+redshift. This \textbf{disfavors}, within the simplified setup used here, the interpretation that the $0.199\%$
+discrepancy from $-\AURA$ is driven primarily by the finite starting time of the
 integration. The discrepancy is structural — it belongs to the background
 model, not to the numerical precision or the choice of $a_i$.
 

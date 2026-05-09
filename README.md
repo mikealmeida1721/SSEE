@@ -4,7 +4,7 @@
 
 ---
 
-## Falsifiable predictions — all pass
+## Falsifiable predictions — current status
 
 | Observable | SSEE (algebraic) | Observed | Separation |
 |---|---|---|---|
@@ -84,9 +84,11 @@ pip install camb emcee scipy numpy matplotlib
 python src/ssee_paper2_mcmc.py
 ```
 
-**Paper 3 — CMB power spectrum** (CAMB, TT+TE+EE+lensing):
+**Paper 3 — CMB power spectrum** (Cobaya MCMC, TT+TE+EE+lowl):
+You can set the `COBAYA_PACKAGES_PATH` environment variable to point to your local Planck 2018 data:
 ```bash
-python src/ssee_paper3_cmb.py
+export COBAYA_PACKAGES_PATH=/path/to/your/cobaya_packages
+python src/ssee_paper3_cobaya_unified.py
 ```
 
 See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
@@ -116,7 +118,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | PP (lensing) | **0.730** | 0.757 | 9 |
 | ΔBIC (Combined, k=2 vs k=6) | **-31.3** (SSEE favoured) | — | — |
 
-*Note: SSEE evaluated with $k=2$ ($H_0$ and $\Omega_b h^2$ free) using n_s = 0.96556 against the full official `plik_lite` TTTEEE + lowl covariance matrix via Cobaya. Even with a hyper-conservative $k=4$ penalty (treating fixed priors $\tau, A_s$ as free), $\Delta\mathrm{BIC} = -13.8$ continues to decisively favour SSEE.*
+*Methodology Note on parameter counting ($k$): SSEE is evaluated with $k=2$ ($H_0$ and $\Omega_b h^2$ free) against the full official `plik_lite` TTTEEE + lowl covariance matrix via Cobaya. This is compared to the standard $\Lambda$CDM model which uses $k=6$. Even with a hyper-conservative $k=4$ penalty (treating fixed priors $\tau, A_s$ as free), $\Delta\mathrm{BIC} = -13.8$ continues to favour SSEE.*
 
 **Growth structure (Paper 3 §5.4–5.5):**
 

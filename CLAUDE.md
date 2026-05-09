@@ -181,8 +181,9 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | ~~**Paper 5**~~ | ~~IS causal perturbations: Q1+Q2+Q3+fσ₈, 24 pp~~ | ✅ sesión 16 (commit 0a9d21c) |
 | ~~**Paper 6**~~ | ~~φ-DM dos sectores — m_φ algebraico, fσ₈ resuelto~~ | ✅ sesión 18 (commit 9d28620) |
 | ~~**hi_class**~~ | ~~CLASS cross-check αK Bellini-Sawicki: αK(0)=0.4033, Δ=0.005%~~ | ✅ sesión 20 |
-| **Zenodo v2** | Archivar Papers 5+6+7 PDFs con DOI encadenado | Alta |
-| **Endorser** | Enviar SSEE_Endorser_Summary.pdf a Shafieloo, Lee, Di Valentino | Crítico |
+| **Zenodo v2** | Archivar Papers 1-7 PDFs en Zenodo | Alta |
+| **Tone/Overclaim** | Eliminar "Complete EFT" y bajar el tono en Paper 7 y Endorser | Crítico (En progreso) |
+| **Reproducibility** | Quitar rutas hardcodeadas y unificar requirements.txt | Alta |
 | ~~**B1**~~ | ~~Full CMB likelihood Cobaya+plik (bloqueante PRD)~~ | ✅ completado |
 | **B5** | Quintessential inflation V(φ) unificado | Largo plazo |
 

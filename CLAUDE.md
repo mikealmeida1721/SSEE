@@ -197,3 +197,62 @@ Guardado en memoria para futuras iteraciones teóricas (Auditoría Nivel Premio)
 3. **El Lagrangiano Exacto de $\varphi$-DM:** El modelo usa EFT (Paper 7) para describir el campo a bajas energías, pero falta deducir el Lagrangiano $P(X, \phi)$ fundamental derivado puramente de $\varphi$ y $\pi$.
 4. **Simulaciones N-body para el $S_8$:** La predicción de $S_8 = 0.820$ es lineal. Para resolver completamente la tensión contra KiDS ($0.766$), SSEE deberá correrse en supercomputadoras para incluir *Baryonic Feedback* y efectos no lineales.
 5. **El Horizonte de Sonido $r_d$:** Probar definitivamente que un $r_d \approx 175$ Mpc (en lugar de $147$ Mpc) es un modelo físico superior para el universo temprano a pesar de la penalización artificial del $\Delta\mathrm{BIC}$ bajo calibración $\Lambda$CDM.
+
+---
+
+## ✅ Sesión 2026-05-09 — Auditoría Final + Zenodo + CLASS Boltzmann
+
+### 1. Auditoría Editorial (Completada)
+Se aplicó una cirugía "hostil pero justa" de lenguaje a toda la suite. Commits aplicados:
+- `13b2226` — Papers 2, 4, 5, 6, 7 + Endorser Summary (overclaims eliminados)
+- `d1799d7` — Paper 1, 3, 4 (tabla mitológica → P1..P9, Hubble Tension como "Note", exponent 7 como ansatz, MIRA en Paper 3 como "discrete structural constraint")
+
+**Política de lenguaje definitiva adoptada:**
+- "derives" → resultados algebraicos fijos
+- "tests/shows" → confrontación con datos
+- "phenomenological proposal/ansatz" → extensiones no derivadas de primeros principios
+- "within the analyzed regime" → condiciones de estabilidad acotadas
+
+### 2. Publicación Zenodo
+- **DOI:** https://doi.org/10.5281/zenodo.20093447
+- **Contenido:** 7 preprints + código MCMC completo
+- **Descripción:** ajustada al tono fenomenológico post-auditoría
+
+### 3. Correos de Endorsement arXiv (Enviados)
+- **Dra. Eleonora Di Valentino** (e.divalentino@sheffield.ac.uk) — focus: phantom crossing + fσ₈
+- **Dr. Skylee Lee** (skylee@skku.edu) — focus: anclaje r_d y degeneración θ* vs r_d
+- **Código de endorsement:** `3XCDRE`
+- Adjunto: `SSEE_Endorser_Summary.pdf`
+- **Estado:** Enviados. Esperando respuesta.
+
+### 4. CLASS Boltzmann — Primera Corrida SSEE ✅
+- **Repositorio:** `/home/mike/Proyectos/SSEE/class_ssee/` (fork de class_public)
+- **Config:** `class_ssee/ssee_v36.ini` — parámetros SSEE algebraicos
+- **Outputs generados:**
+  - `output/ssee_v36__cl_lensed.dat` — Espectro CMB TT+TE+EE+lensing
+  - `output/ssee_v36__pk.dat` — Espectro de materia P(k)
+- **Gráfico:** `output/ssee_v36_CMB_TT_comparison.png`
+- **Script:** `class_ssee/plot_ssee_cmb.py`
+
+**Resultados primera corrida:**
+| Pico | Planck 2018 | SSEE-CLASS |
+|------|-------------|------------|
+| 1°   | ℓ = 220     | ℓ = **220** ✅ |
+| 2°   | ℓ ≈ 540     | ℓ = **535** ✅ |
+| 3°   | ℓ ≈ 810     | ℓ = **810** ✅ |
+| RMS vs ΛCDM | — | **1.5%** ✅ |
+
+> ⚠️ NOTA: Esta corrida usa `Ω_m = 0.3199` (MIRA-mapped como parámetro directo).
+> El test crítico pendiente es correr con `Ω_m = 0.160` (sin MIRA) para cuantificar
+> qué hace MIRA físicamente.
+
+### 5. POA Siguiente Sesión (CLASS)
+- [ ] **Fase 1A:** Correr CLASS con `Ω_m = 0.160` (sin MIRA) → cuantificar degradación
+- [ ] **Fase 1B:** Comparar P(k) SSEE vs ΛCDM en escala de k_fs = 0.493 h/Mpc
+- [ ] **Fase 2:** Implementar φ-DM (5.71 eV, free-streaming) en perturbations.c
+- [ ] **Fase 3:** IS viscosity en perturbations.c
+- [ ] **Fase 4:** MCMC completo CLASS+SSEE vs Planck+DESI simultáneo
+
+### 6. Limpieza repositorio
+- Eliminados archivos `.aux`, `.log`, `.out`, `.toc` de `docs/` y directorio raíz
+- Carpeta `docs/` ahora contiene únicamente los 8 PDFs finales

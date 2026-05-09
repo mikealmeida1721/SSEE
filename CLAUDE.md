@@ -247,11 +247,24 @@ Se aplicó una cirugía "hostil pero justa" de lenguaje a toda la suite. Commits
 > qué hace MIRA físicamente.
 
 ### 5. POA Siguiente Sesión (CLASS)
-- [ ] **Fase 1A:** Correr CLASS con `Ω_m = 0.160` (sin MIRA) → cuantificar degradación
+- [ ] **Fase 1A:** Correr CLASS con `Ω_m = 0.160` (sin MIRA) → cuantificar degradación ✅ COMPLETADO
 - [ ] **Fase 1B:** Comparar P(k) SSEE vs ΛCDM en escala de k_fs = 0.493 h/Mpc
 - [ ] **Fase 2:** Implementar φ-DM (5.71 eV, free-streaming) en perturbations.c
 - [ ] **Fase 3:** IS viscosity en perturbations.c
 - [ ] **Fase 4:** MCMC completo CLASS+SSEE vs Planck+DESI simultáneo
+
+### Resultado Fase 1A — Test MIRA Boltzmann (CRÍTICO)
+Config: `class_ssee/ssee_v36_nomira.ini` (Omega_b=0.048432, Omega_cdm=0.111568)
+
+| Modelo        | Pico 1° | Pico 2° | Pico 3° | RMS vs ΛCDM |
+|---------------|---------|---------|---------|-------------|
+| SSEE + MIRA   | ℓ=220   | ℓ=535   | ℓ=810   | **1.4%** ✅  |
+| SSEE sin MIRA | ℓ=240   | ℓ=597   | ℓ=922   | **31.5%** ❌ |
+| ΛCDM          | ℓ=221   | ℓ=537   | ℓ=814   | referencia  |
+
+**Conclusión científica:** Sin MIRA, los tres picos se desplazan ~10% hacia la derecha y el RMS
+sube 22x. CLASS confirma que MIRA no es cosmético — es físicamente necesario para reproducir
+el horizonte de sonido correcto con Omega_m,dyn=0.160. Argumento defensivo clave ante referees.
 
 ### 6. Limpieza repositorio
 - Eliminados archivos `.aux`, `.log`, `.out`, `.toc` de `docs/` y directorio raíz

@@ -183,5 +183,16 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | ~~**hi_class**~~ | ~~CLASS cross-check αK Bellini-Sawicki: αK(0)=0.4033, Δ=0.005%~~ | ✅ sesión 20 |
 | **Zenodo v2** | Archivar Papers 5+6+7 PDFs con DOI encadenado | Alta |
 | **Endorser** | Enviar SSEE_Endorser_Summary.pdf a Shafieloo, Lee, Di Valentino | Crítico |
-| **B1** | Full CMB likelihood Cobaya+plik (bloqueante PRD) | Semanas |
+| ~~**B1**~~ | ~~Full CMB likelihood Cobaya+plik (bloqueante PRD)~~ | ✅ completado |
 | **B5** | Quintessential inflation V(φ) unificado | Largo plazo |
+
+---
+
+## Roadmap Hacia la Excelencia (Vulnerabilidades a resolver a largo plazo)
+Guardado en memoria para futuras iteraciones teóricas (Auditoría Nivel Premio):
+
+1. **Derivación Cuántica Dimensional:** $H_0 \approx 67.96$ km/s/Mpc es un éxito numérico, pero falta el teorema que conecte la escala macroscópica (Megaparsec) con unidades fundamentales (escala de Planck).
+2. **QFT y la Diferencia del 0.05%:** La dualidad en $\Omega_{m,\mathrm{CMB}}$ (0.31993 vía MIRA vs 0.32010 geométrico) sugiere fuertemente una corrección de bucle (loop correction / self-energy) a nivel de campos cuánticos que aún no se ha escrito.
+3. **El Lagrangiano Exacto de $\varphi$-DM:** El modelo usa EFT (Paper 7) para describir el campo a bajas energías, pero falta deducir el Lagrangiano $P(X, \phi)$ fundamental derivado puramente de $\varphi$ y $\pi$.
+4. **Simulaciones N-body para el $S_8$:** La predicción de $S_8 = 0.820$ es lineal. Para resolver completamente la tensión contra KiDS ($0.766$), SSEE deberá correrse en supercomputadoras para incluir *Baryonic Feedback* y efectos no lineales.
+5. **El Horizonte de Sonido $r_d$:** Probar definitivamente que un $r_d \approx 175$ Mpc (en lugar de $147$ Mpc) es un modelo físico superior para el universo temprano a pesar de la penalización artificial del $\Delta\mathrm{BIC}$ bajo calibración $\Lambda$CDM.

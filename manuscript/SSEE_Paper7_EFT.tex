@@ -410,15 +410,15 @@ where the source term includes metric perturbations and the coupling:
   \label{eq:pert_DM}
 \end{equation}
 
-\paragraph{Effective gravitational coupling:}
-\begin{equation}
-  G_{\mathrm{eff}} = G_N\brac{1 + \frac{2\bc^2}{c_s^2}
-    \,\frac{\Omde}{(1+z)^{-3(1+w_0)}}},
-  \label{eq:Geff}
-\end{equation}
-recovering $G_{\mathrm{eff}} \approx G_{2s} \approx 0.979\,G_N$ from
-Paper~6 in the limit $k \gg k_{\mathrm{fs}}$, where
-$\bc^2 = \AURA^2 \approx 15.98$ and $c_s^2 \approx 0.65$ at $a = 1$.
+\paragraph{Sub-horizon growth modification.}
+In the quasi-static ($k \gg aH$) sub-horizon limit the coupling
+modifies the source term of equation~(\ref{eq:pert_DM}).
+The effective growth suppression at $a = 1$ is captured by the ratio
+$G_{2s} \equiv D_1^{\rm SSEE}(\Omega_m{=}0.320) /
+D_1^{\Lambda\rm CDM}(\Omega_m{=}0.315) = 0.979$
+derived in Paper~6 via the two-sector background (not from a
+perturbative $G_{\rm eff}$ formula), and leads to
+$\sigma_{8,\rm eff} = \sigma_{8,\rm in}\,G_{2s} = 0.811\times 0.979 = 0.794$.
 
 % ─── §8 Bellini-Sawicki Dictionary ──────────────────────────────────────────
 \section{Bellini-Sawicki Classification}
@@ -437,7 +437,7 @@ $\alpha_T$ (tensor speed excess)  & $0$ & $0$ & GW-safe \\
 $\alpha_B$ (braiding)             & $0$ & $0$ & ($G_3 = 0$) \\
 $\alpha_M$ (Planck-mass running)  & $0$ & $0$ & ($G_4 = \Mpl^2/2$) \\
 $c_s^2$ (scalar sound speed)     & $K_X/(K_X + 2XK_{XX})$ & $\in(1/3,1)$ & \\
-$\alpha_K$ (kineticity)           & $3\Omde(1+w_\phi)$      & $0.403$    & algebraic \\
+$\alpha_K$ (kineticity)           & $3\Omde(1+w_\phi)$      & $0.073$    & algebraic \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -464,16 +464,24 @@ $\rho_\phi = 3H^2\Mpl^2\Omde$, this becomes
   \boxed{\alpha_K(a) = 3\,\Omde(a)\,\bigl[1 + w_\phi(a)\bigr].}
   \label{eq:alphak}
 \end{equation}
-At $a = 1$ the algebraic values $\Omde = T_r/M_v$ and
-$1 + w_0 = \Omega_{m,\rm dyn} = \mathrm{BUFFER}/M_v$ give
+At $a = 1$ the bare-field result from the background integration
+(§\ref{sec:numerics}) gives $w_\phi(a{=}1) = -0.971$, hence
+$1+w_\phi = 0.029$, and therefore
 \begin{equation}
-  \alpha_K^{(0)} = \frac{3\,T_r\cdot\mathrm{BUFFER}}{M_v^2}
-  = 3 \times 0.8400 \times 0.1601 = 0.4033,
+  \alpha_K^{(0)} = 3\,\Omde\,(1+w_{\phi,0})
+  = 3 \times 0.840 \times 0.029 \approx 0.073.
   \label{eq:alphak_numerical}
 \end{equation}
-with zero free parameters.  The redshift evolution follows directly from
-the CPL equation of state $w_\phi(a) = w_0 + w_a(1-a)$ combined with
-the background Friedmann equations; at high redshift ($a\to 0$)
+\paragraph{Note on $w_\phi$ vs $w_0$.}
+The bare-field equation of state $w_\phi = -0.971$ differs from the
+\emph{effective} $w_0 = -0.840$ because the conformal coupling shifts
+$w_{\rm eff}$ through the energy-transfer current $Q^\nu$ (§\ref{sec:coupling}).
+The algebraic identity $1+w_0 = \Omega_{m,\rm dyn} = \mathrm{BUFFER}/M_v$
+applies to the \emph{observed effective} equation of state, not to the kinetic
+energy of the uncoupled field.  Using $w_0$ in place of $w_\phi$ would
+over-estimate $\alpha_K$ by a factor $\approx 5.5$.
+The redshift evolution follows directly from the background Friedmann
+equations; at high redshift ($a\to 0$)
 $\Omde\to 0$ and $\alpha_K\to 0$, so the EFT is well-behaved at all epochs.
 
 \paragraph{Observational status.}
@@ -487,10 +495,12 @@ $\Omde\to 0$ and $\alpha_K\to 0$, so the EFT is well-behaved at all epochs.
     $\sigma(\alpha_{B,0}) \approx 0.05$ \citep{euclid2024}.
     SSEE predicts $\alpha_M = \alpha_B = 0$ exactly — any detection
     above $2\sigma$ would \emph{falsify} the minimal-coupling sector.
-  \item $\alpha_K^{(0)} = 0.403$ is within the range accessible to
-    CMB-lensing cross-correlations and DESI power-spectrum measurements
-    \citep{hiclass2017}; this constitutes a testable prediction on
-    timescales of 2026–2028.
+  \item $\alpha_K^{(0)} \approx 0.073$ (bare-field kinetic contribution)
+    is below the Euclid forecast sensitivity of $\sigma(\alpha_{K,0}) < 0.1$
+    \citep{hiclass2017}, placing the SSEE kineticity in the
+    \emph{observationally consistent but not yet testable} regime.
+    A detection of $\alpha_K > 0.1$ by Euclid or CMB-lensing surveys
+    (2026--2030) would \emph{falsify} the SSEE EFT at the perturbation level.
 \end{itemize}
 
 \begin{table}[ht]
@@ -504,7 +514,7 @@ Function & SSEE & Expression & Current limit & Euclid forecast \\
 $\alpha_T$ & $0$ (exact) & $G_5 = 0$ & $<10^{-15}$ \citep{gw170817_2017} & $<10^{-2}$ \\
 $\alpha_M$ & $0$ (exact) & $G_4 = \Mpl^2/2$ & $<0.3$ & $<0.05$ \\
 $\alpha_B$ & $0$ (exact) & $G_3 = 0$ & $<0.5$ & $<0.05$ \\
-$\alpha_K(z{=}0)$ & $0.403$ & $3\Omde(1+w_0)$ & unconstrained & $<0.1$ \\
+$\alpha_K(z{=}0)$ & $0.073$ & $3\Omde(1+w_\phi)$ & $<0.1$ (Euclid) & $<0.1$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -718,7 +728,8 @@ The following components of the EFT are algebraically and numerically closed:
   \item \textbf{Background equations:} complete coupled system in $N = \ln a$,
     numerically verified with $\Omega_\phi(a{=}1) = 0.840$ at $10^{-12}$.
   \item \textbf{Perturbation equations:} $(\delta\phi, \delta_{\rm DM})$
-    system with $G_{\rm eff}$ recovering Paper~6 result $G_{2s} = 0.979\,G_N$.
+    system with sub-horizon growth suppression $G_{2s} = D_1^{\rm SSEE}/D_1^{\Lambda\rm CDM} = 0.979$
+    (Paper~6, two-sector background).
   \item \textbf{Bellini-Sawicki classification:}
     $\alpha_T = \alpha_B = \alpha_M = 0$, $c_s^2 \neq 1$, $\alpha_K \neq 0$.
 \end{itemize}
@@ -761,8 +772,9 @@ The EFT makes three direct falsifiable predictions:
   \item \textbf{Scalar sound speed:} $c_s^2(a) \in [0.60,\,0.95]$ — accessible
     via ISW-lensing cross-correlation and future 21~cm surveys.
   \item \textbf{Dark coupling:} $\bc = -3.998$ (fixed) produces
-    $G_{\rm eff}/G_N = 0.979$ at $k \gg k_{\rm fs}$ —
-    testable with Euclid weak lensing \citep{euclid2024} ($2026$--$2030$).
+    sub-horizon growth suppression $G_{2s} = 0.979$ (via the two-sector
+    $\Omega_m = 0.320$, Paper~6) — testable with Euclid weak lensing
+    \citep{euclid2024} ($2026$--$2030$).
 \end{enumerate}
 
 % ─── §12 Conclusions ─────────────────────────────────────────────────────────
@@ -791,8 +803,10 @@ the background cosmology (Papers~1--3) but the full perturbation sector.
 
 SSEE-V3.6 is no longer a phenomenological parametrization: it is a
 Lagrangian-based effective field theory with definite predictions for
-gravitational-wave speed, scalar sound speed, and the effective gravitational
-coupling — all three falsifiable with existing and forthcoming observations.
+gravitational-wave speed ($c_T = c$ exactly), scalar sound speed
+($c_s^2 \in [0.60, 0.95]$), and sub-horizon growth suppression
+($G_{2s} = 0.979$) — all three falsifiable with existing and forthcoming
+observations.
 
 % ─── References ──────────────────────────────────────────────────────────────
 \begin{thebibliography}{99}

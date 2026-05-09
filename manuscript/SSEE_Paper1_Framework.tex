@@ -65,8 +65,8 @@ At galactic scales, \SSEE\ derives an acceleration threshold
 $a_0 = c\,H_0/\KALz \approx 1.186\times10^{-10}$\,m\,s$^{-2}$, consistent with
 the empirical MOND scale.
 Incorporating a light-neutrino mass sum $\sum m_\nu = 0.085$\,eV
-(algebraically predicted as $0.0840$\,eV in companion Paper~4 via the Acoustic Residue
-Theorem (Almeida Vallejo, in preparation); error $1.2\%$),
+(algebraically predicted as $0.0840$\,eV in companion Paper~6 via the $\phi$-DM
+condensate mass relation $m_\phi/H_0^{\rm alg} = 5.71/67.96$\,eV; error $1.2\%$),
 the framework structurally resolves the megaparsec cluster mass discrepancy
 when combined with an IGIMF-corrected baryonic baseline \citep{Zhang2026}.
 The viscosity coupling $\KALz$ provides a qualitative structural mechanism for
@@ -142,7 +142,7 @@ $k_{\mathrm{fs}}$ (Dodelson-Widrow from $m_\phi$) & $0.493\,h\,\mathrm{Mpc}^{-1}
 \midrule
 \multicolumn{4}{l}{\textit{Paper 7 — Canonical EFT, Bellini-Sawicki $\alpha$-functions}} \\
 $\alpha_T=\alpha_M=\alpha_B=0$ (minimal coupling) & $0$ exact & GW170817 $|\alpha_T|<10^{-15}$ & Retrodiction \\
-$\alpha_K = 3\,\Omega_{\mathrm{DE}}(1+w_\phi)$ & $0.403$ & Euclid weak lensing, 2026--2028 & Prediction \\
+$\alpha_K = 3\,\Omega_{\mathrm{DE}}(1+w_\phi)$ & $0.073$ & Euclid weak lensing, 2026--2028 & Prediction \\
 $\beta_c = -\mathrm{AURA} = -(3\varphi+\pi)/2$ & $-3.9978$ & EFT plateau test (8 ICs, $\Delta=0.2\%$) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Future}} \\
@@ -268,7 +268,7 @@ finite $T_r/M_v$ boundary of Eq.~\eqref{eq:action}, ensuring universal stability
 
 The CPL form also predicts a \emph{phantom crossing}: setting $w(a_*)=-1$ gives
 \begin{equation}
-  a_* = 1 - \frac{1+\wz}{\wa} = 1 - \frac{1+(-0.840)}{-0.670} \approx 0.761
+  a_* = 1 + \frac{1+\wz}{\wa} = 1 + \frac{1+(-0.840)}{-0.670} \approx 0.761
   \quad (z_* \approx 0.31).
   \label{eq:phantom_crossing}
 \end{equation}
@@ -729,9 +729,9 @@ $H_0^{\rm MCMC}$ & emcee posterior & $66.75\pm0.44$ & DESI+Planck & M \\
 $\Omega_m^{\rm CMB}$ & $(\pi-\varphi)/(\pi+\varphi)$ & $0.3201^\S$ & Planck 2018 & A \\
 $n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
 $\Omega_b h^2$ & $3(\pi-\varphi)/200$ & $0.02285$ ($3.2\sigma$) & Planck 2018 & A$^\ddagger$ \\
-$\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.12184$ ($2.1\sigma$) & Planck 2018 & A \\
+$\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.12184$ ($1.5\sigma$) & Planck 2018 & A \\
 $r$       & $\varphi^{-10}$ & $0.00813$ & LiteBIRD 2032 & A \\
-$\sum m_\nu$ & Acoustic Residue (Paper~4) & $0.084$ eV & Planck+BBN & A \\
+$\sum m_\nu$ & $m_\phi/H_0^{\rm alg}$ (Paper~6) & $0.084$ eV & Planck+BBN & A \\
 \bottomrule
 \end{tabularx}
 \\[4pt]
@@ -751,7 +751,7 @@ a dynamical viscosity operator scaling cluster masses.\\[2pt]
 This is the largest tension in the algebraic sector; documented in \texttt{AUDIT.md}.
 Using the SSEE algebraic input $\Omega_b h^2=0.02285$, the formula
 $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ gives
-$\Omega_c h^2 = 5.5214\times0.02285\times0.96556 = 0.12184$ ($2.1\sigma$ from Planck $0.1200\pm0.0012$).
+$\Omega_c h^2 = 5.5214\times0.02285\times0.96556 = 0.12184$ ($1.5\sigma$ from Planck $0.1200\pm0.0012$).
 The Israel--Stewart viscosity correction discussed in Paper~4 reduces this tension further;
 the corrected derivation is given there.\\[2pt]
 \small $^\S$ The formula $(\pi-\varphi)/(\pi+\varphi)$ gives $0.32010$; the canonical value
@@ -798,7 +798,7 @@ PYROS & Radiation sector coupling ($\pi^2/6$) & Paper 4 §3 \\
 ÎCËBÊRG & $M_v$ (Nine Sovereignties sum) & Paper 4 §4 \\
 $\Omega_{m,\rm dyn}$ & Dynamic matter density (SSEE sector) & Paper 2 §2 \\
 $\Omega_{m,\rm CMB}$ & CMB-observed matter density ($\mathrm{MIRA}\cdot\Omega_{m,\rm dyn}$) & Paper 3 §2.4 \\
-$\gamma_{\rm IS}$ & Israel--Stewart growth index ($0.657\pm0.002$) & Paper 1 App.A \\
+$\gamma_{\rm IS}$ & Israel--Stewart growth index ($0.554\pm0.001$) & Paper 5 §6.1 \\
 $\tau_\Pi H_0$ & IS relaxation time (dimensionless, $\approx2.191$) & Paper 1 App.A \\
 \bottomrule
 \end{tabularx}

@@ -531,7 +531,8 @@ $\tau$              & 0.054  & $0.054\pm0.007$     & $0\sigma$   & standard \\
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_toe_cmb_TT.pdf}
-\caption{\SSEE-ToE CMB TT power spectrum ($k=0$, all algebraic from $\varphi,\pi$)
+\caption{\SSEE-ToE CMB TT power spectrum ($k=2$: $A_s$ and $\tau$ at standard
+values; all remaining parameters algebraic from $\varphi,\pi$ — zero fitted)
 vs.\ Planck~PR3 binned data.
 Acoustic peak positions: $\ell_1=219$, $\ell_2=534$, $\ell_3=808$
 (Planck: 220, $\sim$540, $\sim$810; agreement $<1\%$).
@@ -587,8 +588,13 @@ A null detection $r<0.001$ at $>5\sigma$ confidence would be a decisive falsific
 
 \subsection{Baryon-to-Photon Ratio}
 
-$\eta_{\rm SSEE} = \mathrm{YGG\_PROTON}/\mathcal{K}^3 \approx 6.2\times10^{-10}$
-(measured: $6.1\times10^{-10}$; deviation $<2\%$).
+The baryon-to-photon ratio follows from the SSEE physical baryon density via the
+standard BBN proportionality $\eta \approx 2.74\times10^{-8}\,\Omega_b h^2$:
+\begin{equation}
+  \eta_{\rm SSEE} = 2.74\times10^{-8}\times\frac{3(\pi-\varphi)}{200}
+    = 2.74\times10^{-8}\times0.02285 = 6.26\times10^{-10}.
+\end{equation}
+Measured value: $\eta = 6.1\times10^{-10}$ (Planck~2018); deviation $<3\%$.
 \textbf{Falsification criterion:} $\eta < 5.8\times10^{-10}$ or $\eta > 6.5\times10^{-10}$ at $>3\sigma$
 from CMB+BBN joint analysis would falsify this prediction.
 

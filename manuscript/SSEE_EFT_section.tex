@@ -399,20 +399,26 @@ The growth rate $f \equiv \mathrm{d}\ln\delta/\mathrm{d}\ln a \approx \Omega_{m}
 is well described by a power law over $0.1 \leq a \leq 1$ with
 %
 \begin{equation}
-  \gamma_{\mathrm{IS}} = 0.657 \pm 0.002
+  \gamma_{\mathrm{bg}} = 0.657 \pm 0.002
   \quad(\text{essentially independent of }\tau_{\Pi} H_{0}).
   \label{eq:gamma_IS}
 \end{equation}
 %
-This differs by 6\% from the algebraic sovereignty $\gamma = \varphi^{-1} = 0.618$.
-Paper~3 \S5.4 reports both values: the algebraic prediction $\gamma_\mathrm{alg}=0.618$
-and the IS numerical result $\gamma_\mathrm{IS}=0.657$.
-The IS formalism provides the causal theoretical structure; whether $\gamma = \varphi^{-1}$
-is the true attractor of the IS boundary conditions remains a target prediction
-for forthcoming Stage-IV weak-lensing surveys (LSST, Euclid).
-Note that the direct IS growth-factor integral (this Appendix) yields $S_8=0.837$,
-while Paper~3's CAMB post-processing method with the same $\gamma_\mathrm{IS}=0.657$
+This is the CDM growth index on the IS background, i.e.\ Eq.~(\ref{eq:growth_IS})
+without viscous perturbation feedback in the $\delta$ equation.
+It differs by 6\% from the algebraic prediction $\gamma = \varphi^{-1} = 0.618$.
+Paper~3 \S5.4 reports both values: $\gamma_\mathrm{alg}=0.618$ and $\gamma_\mathrm{bg}=0.657$.
+The full IS-coupled perturbation theory of Paper~5, which includes viscous
+feedback in the growth equation, yields
+$\gamma_{\mathrm{IS}} = 0.554 \pm 0.001$ — consistent with $\gamma_{\Lambda\mathrm{CDM}} \approx 0.55$
+and lower than the background-only estimate here.
+Whether $\gamma = \varphi^{-1}$ is the true attractor of the IS boundary conditions
+remains a target prediction for Stage-IV weak-lensing surveys (LSST, Euclid).
+Note that the direct IS background growth-factor integral (this Appendix) yields $S_8=0.837$,
+while Paper~3's CAMB post-processing method with $\gamma_\mathrm{bg}=0.657$
 gives $S_8=0.818$; both are consistent with Planck 2018 ($0.832\pm0.013$) within $1\sigma$.
+Paper~5's full IS-coupled perturbation theory (including viscous feedback in $\delta$)
+yields $\sigma_8=0.702$ and $S_8=0.725$ ($1.96\sigma$ KiDS) — the more rigorous estimate.
 
 \paragraph{$S_{8}$ constraint.}
 Using the IS growth factor $D_{\mathrm{IS}}(a)$ and the CMB-sector matter
@@ -572,12 +578,13 @@ Four aspects require further development:
 %
 \begin{enumerate}
   \item \textbf{Growth index.}
-        The IS-derived growth index $\gamma_{\mathrm{IS}} = 0.657$
+        The background IS growth index $\gamma_{\mathrm{bg}} = 0.657$
         (\S\ref{sec:eft:IS}) differs by 6\% from the algebraic prediction
-        $\varphi^{-1} = 0.618$.  A mechanism that would select
-        $\gamma = \varphi^{-1}$ from IS boundary conditions is not yet
-        identified; this constitutes a near-prediction testable by
-        LSST/Euclid Stage-IV weak lensing.
+        $\varphi^{-1} = 0.618$.  The full IS-coupled result (Paper~5)
+        gives $\gamma_{\mathrm{IS}} = 0.554$, closer to $\Lambda$CDM.
+        A mechanism selecting $\gamma = \varphi^{-1}$ from IS boundary
+        conditions is not yet identified; this constitutes a near-prediction
+        testable by LSST/Euclid Stage-IV weak lensing.
 
   \item \textbf{Full perturbation spectrum.}
         The IS growth ODE~(\ref{eq:growth_IS}) governs sub-Hubble dark-matter
@@ -616,8 +623,8 @@ Friedmann eqs.\ I--III & \checkmark Consistent & Factor 9 verified in \S\ref{sec
 $w_{a}$ from EFT & \checkmark Algebraic & $\zeta(a)\!\propto\!(1{-}a)\rho_\mathrm{DE}/H$; see \S\ref{sec:eft:wa_derivation} \\
 IS relaxation time $\tau_\Pi$ & \checkmark Algebraic & $\tau_\Pi H_0 = \mathrm{KAL}_0/(3\Omega_\mathrm{DE}) \approx 2.191$ \\
 IS causality ($c_s^2 \leq 1$) & \checkmark Verified & Eq.~(\ref{eq:IS_causality}); $c_s^2 = 1$ at boundary \\
-Growth index $\gamma_\mathrm{IS}$ & \checkmark Numerical & $0.657 \pm 0.002$ (6\% above $\varphi^{-1}=0.618$) \\
-$S_8$ (CMB sector) & \checkmark Numerical & $0.837$, within $0.4\sigma$ of Planck \\
+Growth index $\gamma_\mathrm{bg}$ & \checkmark Numerical & $0.657 \pm 0.002$ (IS background, CDM growth eq.); full IS: $0.554$ (Paper~5) \\
+$S_8$ (CMB sector) & \checkmark Numerical & $0.837$ (IS bkg); $0.725$ (full IS, Paper~5) \\
 $\alpha$-attractor ($\alpha=\varphi^4/3$) & \checkmark Algebraic & Eq.~(\ref{eq:alpha_ssee}); exact, $N=2\varphi^7$ \\
 K\"{a}hler curvature $\mathcal{R}=-\varphi^{-4}$ & \checkmark Algebraic & Eq.~(\ref{eq:kahler_curvature}) \\
 Full perturbation spectrum & $\circ$ Open & Off-diagonal CMB cov.\ + Stage-IV WL \\

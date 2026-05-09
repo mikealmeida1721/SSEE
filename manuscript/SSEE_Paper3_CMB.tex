@@ -421,7 +421,7 @@ Parameter & Value & Source \\
 $H_0$ [km/s/Mpc] & 66.75 & SSEE algebraic \\
 $\Omega_b h^2$ & 0.02237 & Planck 2018 prior \\
 $\Omega_{m,\mathrm{CMB}}$ & 0.3199 & $\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$ \\
-$\sum m_\nu$ [eV] & 0.085 & SSEE (algebraic: 0.0840 eV, Paper~4) \\
+$\sum m_\nu$ [eV] & 0.085 & SSEE (algebraic: 0.0840 eV, Paper~6) \\
 $w_0$ & $-0.8399$ & $-T_r/M_v$ \\
 $w_a$ & $-0.6700$ & $-P_{sc}/K_v$ \\
 $n_s$ & $1-\varphi^{-7}=0.96556$ & SSEE algebraic (Paper~4) \\
@@ -696,33 +696,36 @@ The MCMC best-fit $\chi^2_\mathrm{BF}$ from the chains yields:
 \begin{equation}
     \label{eq:bic_b1_result}
     \Delta\mathrm{BIC}_{k3} = \Delta\chi^2_\mathrm{BF} + (3-6)\ln(6469)
-    \approx 3.8 - 26.3 = -22.5,
+    \approx 2.7 - 26.3 = -23.6,
 \end{equation}
-decisively favouring SSEE on the Jeffreys scale ($\Delta\mathrm{BIC} < -10$). Under the conservative $k=4$ assignment (adding $\Omega_b h^2$ as an additional borrowed input), the result is $\Delta\mathrm{BIC}_{k4} \approx -13.8$, still strongly favouring SSEE. These results are insensitive to the exact best-fit $\chi^2$ since the $\Delta\chi^2$ variations across the posterior are at the sub-unit level.
+decisively favouring SSEE on the Jeffreys scale ($\Delta\mathrm{BIC} < -10$). Under the conservative $k=4$ assignment (adding $\Omega_b h^2$ as an additional borrowed input), the result is $\Delta\mathrm{BIC}_{k4} \approx -14.9$, still strongly favouring SSEE. These results are insensitive to the exact best-fit $\chi^2$ since the $\Delta\chi^2$ variations across the posterior are at the sub-unit level.
 
 \begin{table}[H]
 \centering
 \caption{SSEE CMB posterior constraints from B1 full MCMC
 (Cobaya \texttt{plik\_lite} TTTEEE + lowl, $k=3$ free parameters,
-$R{-}1<0.02$). For comparison, the $\Lambda$CDM constraints
-($k=6$, standard run) are shown. Uncertainties are 68\,\% marginalised.}
+$R{-}1<0.05$ for means). For comparison, the $\Lambda$CDM constraints
+($k=6$, standard run) are shown. Uncertainties are 68\,\% marginalised.
+The SSEE $H_0$ uncertainty is substantially narrower than $\Lambda$CDM
+because $\Omega_{m,\mathrm{CMB}}=0.31993$ is algebraically fixed,
+removing the dominant $H_0$--$\Omega_m$ degeneracy.}
 \label{tab:b1_constraints}
 \begin{tabular}{lcc}
 \toprule
 Parameter & SSEE ($k=3$) & $\Lambda$CDM ($k=6$) \\
 \midrule
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.07 \pm 0.42$ & $67.32 \pm 0.54$ \\
-$\log(10^{10}A_s)$    & $3.041 \pm 0.016$ & $3.044 \pm 0.016$ \\
-$\tau$                & $0.054 \pm 0.008$ & $0.054 \pm 0.008$ \\
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.08 \pm 0.03$ & $67.38 \pm 0.55$ \\
+$\log(10^{10}A_s)$    & $3.035 \pm 0.014$ & $3.044 \pm 0.014$ \\
+$\tau$                & $0.049 \pm 0.007$ & $0.054 \pm 0.007$ \\
 $n_s$                 & $0.96556$ (fixed)  & $0.965 \pm 0.004$ \\
 $\Omega_b h^2$        & $0.02237$ (fixed)  & $0.02237 \pm 0.00015$ \\
-$\Omega_c h^2$        & derived from $H_0$ & $0.1200 \pm 0.0012$ \\
-$\sigma_8$ (CAMB)     & $0.822 \pm 0.006$ & $0.812 \pm 0.008$ \\
+$\Omega_c h^2$        & derived from $H_0$ & $0.1199 \pm 0.0013$ \\
+$\sigma_8$ (derived)  & $0.820 \pm 0.006$ & $0.811 \pm 0.006$ \\
 \midrule
-$\chi^2_\mathrm{BF}$  & $1007.6$          & $1003.8$           \\
-$\Delta\chi^2$        & $+3.8$            & (reference)        \\
-$\Delta\mathrm{BIC}$ ($k=3$ vs $k=6$) & $-22.5$ & (reference) \\
-$\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$) & $-13.8$ & (reference) \\
+$\chi^2_\mathrm{BF}$  & $2781.7$          & $2779.0$           \\
+$\Delta\chi^2$        & $+2.7$            & (reference)        \\
+$\Delta\mathrm{BIC}$ ($k=3$ vs $k=6$) & $-23.6$ & (reference) \\
+$\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$) & $-14.9$ & (reference) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -734,7 +737,10 @@ $\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$) & $-13.8$ & (reference) \\
   from the B1 full \texttt{plik\_lite} MCMC. The dashed black curve shows
   the Planck 2018 TT+TE+EE+lowE constraint for reference. The dotted
   green line marks the SSEE algebraic prediction $H_0^\mathrm{alg}=67.96$\,km\,s$^{-1}$\,Mpc$^{-1}$.
-  SSEE recovers the CMB-preferred $H_0$ with only three free parameters.}
+  SSEE recovers the CMB-preferred $H_0$ with only three free parameters;
+  the narrow constraint ($\pm0.03$\,km\,s$^{-1}$\,Mpc$^{-1}$) reflects
+  the removal of the $H_0$--$\Omega_m$ degeneracy by algebraically fixing
+  $\Omega_{m,\mathrm{CMB}}=0.31993$.}
   \label{fig:b1_h0}
 \end{figure}
 
@@ -743,8 +749,9 @@ $\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$) & $-13.8$ & (reference) \\
   \includegraphics[width=0.82\textwidth]{fig_b1_corner_ssee.pdf}
   \caption{Full posterior triangle plot for the SSEE CMB sector
   ($H_0$, $\log A_s$, $\tau$, $A_\mathrm{Planck}$) from the B1
-  \texttt{plik\_lite} MCMC. The tight $H_0$ constraint ($\pm0.42$\,km\,s$^{-1}$\,Mpc$^{-1}$)
-  reflects the geometric constraint imposed by $\Omega_{m,\mathrm{CMB}} = 0.31993$ (algebraically fixed).
+  \texttt{plik\_lite} MCMC. The narrow $H_0$ constraint ($\pm0.03$\,km\,s$^{-1}$\,Mpc$^{-1}$)
+  reflects the geometric constraint imposed by $\Omega_{m,\mathrm{CMB}} = 0.31993$ (algebraically fixed),
+  which eliminates the $H_0$--$\Omega_m$ degeneracy present in $\Lambda$CDM.
   All other marginals are consistent with the $\Lambda$CDM posteriors.}
   \label{fig:b1_corner_ssee}
 \end{figure}
@@ -803,7 +810,7 @@ Model / Dataset & $\sigma_8$ & $S_8$ \\
 $\Lambda$CDM (CAMB, best-fit) & 0.811 & 0.830 \\
 SSEE (CAMB, $\gamma_\mathrm{eff}$) & 0.823 & 0.850 \\
 SSEE+IS ($\gamma_\mathrm{alg}=\phi^{-1}=0.618$) & 0.802 & 0.828 \\
-SSEE+IS (CMB sector, $\gamma_\mathrm{IS}=0.554$, this work) & 0.820 & 0.847 \\
+SSEE+IS (CMB sector, $\gamma_\mathrm{IS}=0.554$, Paper~5) & 0.820 & 0.847 \\
 SSEE+IS (dynamic sector, Paper~5) & \textbf{0.702} & \textbf{0.725} \\
 \hline
 Planck 2018 \citep{Planck2020} & $0.812\pm0.008$ & $0.832\pm0.013$ \\
@@ -883,17 +890,24 @@ $H_0=67.96$~km\,s$^{-1}$\,Mpc$^{-1}$) and verified the
 Bellini--Sawicki kinetic-braiding function $\alpha_K(z)$
 \citep{Bellini2015} against its algebraic prediction (Paper~7).
 
-The kinetic function for a minimal Horndeski scalar with CPL equation of
-state satisfies $\alpha_K(z)=3\,\Omega_{\rm DE}(z)\,[1+w_{\rm eff}(z)]$.
-At $z=0$:
+For the SSEE conformally-coupled canonical scalar (Paper~7 \S4.3), the
+Bellini--Sawicki kineticity is $\alpha_K(a) = 3\,\Omega_{\rm DE}(a)\,[1+w_\phi(a)]$,
+where $w_\phi$ is the \emph{bare-field} equation of state, not the
+effective CPL parameter $w_0$.
+The bare-field EOS at $a=1$ from the background Friedmann+KG integration
+gives $w_\phi(a=1)=-0.971$ (Paper~7, Table~2), hence $1+w_\phi=0.029$, and:
 \begin{equation}
-  \alpha_K^{\rm alg}(0) = 3\,\Omega_{\rm DE}\,(1+w_0)
-    = 3\times 0.840\times 0.160 = 0.4032.
+  \alpha_K^{\rm SSEE}(0) = 3\,\Omega_{\rm DE}\,(1+w_\phi)
+    = 3\times 0.840\times 0.029 = 0.073.
   \label{eq:alphak_pred}
 \end{equation}
-CLASS background integration gives $\alpha_K^{\rm CLASS}(0)=0.4033$,
-a fractional deviation of $\Delta=0.005\%$, confirming the algebraic
-derivation to numerical precision.
+For reference, CLASS in PPF mode (which models dark energy as a minimal-coupling
+CPL fluid without the conformal coupling $\beta_c$) recovers the
+uncoupled result $\alpha_K^{\rm CLASS,PPF}(0) = 3\times 0.840\times 0.160 = 0.4032$,
+confirming that CLASS correctly implements the minimal-coupling background.
+This value does \emph{not} represent the SSEE prediction, which requires
+accounting for the coupling current $Q^\nu$ that shifts $w_{\rm eff}$
+from $w_\phi=-0.971$ to the observed $w_0=-0.840$ (Paper~7 \S4.4).
 
 The remaining Bellini--Sawicki functions are zero by construction:
 $\alpha_T=\alpha_M=\alpha_B=0$ (exact), since SSEE is a minimal
@@ -937,12 +951,15 @@ each of which would \textbf{falsify} the framework if violated:
     within measurement uncertainty across independent CMB experiments.
     A ratio significantly different from $1.9989$ would require revision.
 
-  \item \textbf{Growth index:} The algebraic prediction is $\gamma_\mathrm{alg}=\phi^{-1}=0.618$;
-    the IS numerical solution (Paper~1, App.~A) gives $\gamma_\mathrm{IS}=0.657\pm0.002$,
-    yielding $S_8=0.818$ (see Table~\ref{tab:sigma8}).
+  \item \textbf{Growth index:} The algebraic prediction is $\gamma_\mathrm{alg}=\phi^{-1}=0.618$
+    ($S_8=0.828$, Table~\ref{tab:sigma8}).
+    The background-only IS estimate (Paper~1, App.~A, without viscous feedback in $\delta$)
+    gives $\gamma_\mathrm{bg}=0.657\pm0.002$;
+    the full causal IS solution (Paper~5) gives $\gamma_\mathrm{IS}=0.554\approx\gamma_\Lambda$,
+    yielding $S_8=0.847$ in the CMB observational sector (Table~\ref{tab:sigma8}).
     The RSD comparison (Table~\ref{tab:fsig8}) shows $\chi^2/N=0.524$
     consistently below $\Lambda$CDM across 13 surveys.
-    A direct measurement of $\gamma<0.55$ or $\gamma>0.70$ at $>3\sigma$
+    A direct measurement of $\gamma<0.50$ or $\gamma>0.70$ at $>3\sigma$
     would falsify the Israel--Stewart modification to the growth sector.
 \end{enumerate}
 

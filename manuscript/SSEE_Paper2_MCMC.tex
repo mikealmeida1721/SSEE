@@ -511,8 +511,10 @@ Note that $\wz$, $\wa$, and $\OmDE^{\SSEE}$ are algebraically fixed and
 do not appear as sampled columns in the \SSEE\ posterior; their values
 in Table~\ref{tab:posteriors} are listed for direct comparison only.
 The \SSEE\ $H_0=66.75^{+0.44}_{-0.44}$\,km\,s$^{-1}$\,Mpc$^{-1}$ is
-consistent with Planck~2018 ($67.36\pm0.54$) at $0.95\sigma$ and with
-the BAO-only run ($65.8^{+1.2}_{-1.1}$) at $0.6\sigma$, confirming
+consistent with Planck~2018 ($67.36\pm0.54$) at $0.88\sigma$
+[$\Delta H_0/\sqrt{\sigma_{\rm SSEE}^2+\sigma_{\rm Planck}^2}
+=0.61/\sqrt{0.44^2+0.54^2}=0.88\sigma$]
+and with the BAO-only run ($65.8^{+1.2}_{-1.1}$) at $0.6\sigma$, confirming
 partial compatibility in the Hubble sector despite the background
 mismatch.
 Marginalised posteriors are shown in Figures~\ref{fig:corner_ssee}
@@ -522,7 +524,7 @@ and~\ref{fig:corner_lcdm}.
   \centering
   \includegraphics[width=0.60\textwidth]{fig_corner_ssee_professional.pdf}
   \caption{Marginalised \SSEE\ posteriors. Blue lines: Planck~2018
-  values. The $H_0$ posterior is consistent with Planck at $0.97\sigma$.}
+  values. The $H_0$ posterior is consistent with Planck at $0.88\sigma$.}
   \label{fig:corner_ssee}
 \end{figure}
 
@@ -876,8 +878,9 @@ to the specific neutrino mass.
 \textit{The cluster constraint is therefore stable against current
 neutrino-mass uncertainties; the adopted $\sum m_\nu=0.085$\,eV is
 internally consistent but not a load-bearing assumption.
-Paper~4 derives $\sum m_\nu = 0.0840$\,eV algebraically via the
-Acoustic Residue Theorem (error $1.2\%$ vs the empirical input here).}
+Paper~6 derives $\sum m_\nu = 0.0840$\,eV algebraically via the
+$\phi$-DM condensate mass relation $m_\phi/H_0^{\rm alg}=5.71/67.96$\,eV
+(error $1.2\%$ vs the empirical input here).}
 
 \paragraph{IGIMF systematics.}
 The $^{+5}_{-4}\%$ systematic uncertainty in the IGIMF factor
@@ -953,9 +956,9 @@ The physical mechanism — viscous energy redistribution between matter and
 radiation sectors governed by the Israel--Stewart relaxation time
 $\tau_\Pi H_0 \approx 2.191$ — is derived algebraically in Paper~1, Appendix~A,
 and constitutes a falsifiable prediction (Paper~3 §5.4).
-\textbf{Note:} The values $\gamma_{\rm IS}=0.657$ and $S_8=0.837$ above use the
-CMB-sector ($\Omega_{m,\mathrm{CMB}}=0.3199$) and the preliminary Paper~1 growth
-index.  Paper~5 performs the full causal Israel--Stewart analysis with
+\textbf{Note:} The values $\gamma_{\rm bg}=0.657$ and $S_8=0.837$ above use the
+CMB-sector ($\Omega_{m,\mathrm{CMB}}=0.3199$) and the background-only IS growth
+index (CDM growth ODE on IS background, without viscous feedback in $\delta$).  Paper~5 performs the full causal Israel--Stewart analysis with
 $\Omega_{m,\mathrm{dyn}}=0.160$ and finds $\gamma_{\rm IS}=0.554$, $\sigma_8=0.702$,
 $S_8=0.725$; Paper~6 adds the $\varphi$-DM two-sector and finds $S_8^{\rm eff}=0.761$.
 

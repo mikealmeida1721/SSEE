@@ -269,3 +269,49 @@ el horizonte de sonido correcto con Omega_m,dyn=0.160. Argumento defensivo clave
 ### 6. Limpieza repositorio
 - Eliminados archivos `.aux`, `.log`, `.out`, `.toc` de `docs/` y directorio raíz
 - Carpeta `docs/` ahora contiene únicamente los 8 PDFs finales
+
+### 7. Fase 2 — φ-DM Two-Sector P(k) (En progreso)
+- Config: `class_ssee/ssee_v36_twosector.ini` (ncdm con m=5.71 eV, T_ncdm=0.716)
+- Script: `class_ssee/plot_ssee_twosector_pk.py` — WDM transfer function (Viel+2005)
+- **Resultado:** WDM alpha=1.0933 h/Mpc — supresión demasiado agresiva (86% en k_fs)
+- **Pendiente:** Recalibrar alpha usando relación exacta DW del Paper 6 para obtener σ₈≈0.702
+
+---
+
+## ✅ Sesión 2026-05-10 — Respuesta Dr. Lee + Nueva Estrategia de Publicación
+
+### Respuesta Dr. Lee (Skylee, skku.edu)
+El Dr. Lee respondió con consejo constructivo (no endorsement). Puntos clave:
+- arXiv astro-ph.CO está aplicando moderación muy estricta a investigadores independientes
+- Recomendó: **enviar primero a revista con revisión de pares**, luego arXiv
+- Esto es el camino correcto y más rápido para un investigador sin historial previo
+
+### Nueva Estrategia de Publicación
+**CAMBIO DE PLAN:** arXiv ya NO es el primer objetivo. El flujo correcto es:
+1. **Consolidar CLASS** → hacer el modelo más riguroso
+2. **Crear documento unificado** → un paper principal (journal-ready) que consolide los resultados más sólidos de los 7 preprints
+3. **Enviar a revista** → JCAP, PRD, o universe MDPI (más accesible para independientes)
+4. **Tras aceptación** → subir a arXiv automáticamente vía la revista
+
+### Revistas objetivo (en orden de prioridad)
+| Revista | Factor Impacto | Apertura | Estrategia |
+|---------|---------------|----------|------------|
+| JCAP | 5.3 | Media | Primer intento si CLASS valida bien |
+| PRD | 4.7 | Media | Alternativa a JCAP |
+| Universe (MDPI) | 2.9 | Alta | Más accesible para independientes |
+| MNRAS | 4.8 | Media | Requiere historial institucional |
+
+### Documento Unificado — Qué incluir
+El paper principal para la revista debe consolidar:
+- Derivación algebraica del background (Papers 1+4)
+- Validación MCMC DESI DR2 + Planck PR4 (Papers 2+3)
+- Validación CLASS Boltzmann (trabajo actual — más riguroso que CAMB parcheado)
+- φ-DM two-sector + reducción fσ₈ (Paper 6, con calibración CLASS)
+- Falsification table del Paper 1 (criterios cuantitativos pre-comprometidos)
+
+### POA Actualizado (prioridades)
+- [ ] **Fase 2 (continuar):** Recalibrar WDM alpha para σ₈≈0.702 usando relación DW exacta
+- [ ] **Fase 2b:** Calcular reducción fσ₈ 2.56σ → objetivo con CLASS
+- [ ] **Fase 3:** IS viscosity en CLASS background (verificar estabilidad)
+- [ ] **Doc unificado:** Estructura del paper journal con resultados CLASS integrados
+- [ ] **EFTCAMB:** Pendiente para después de CLASS (requiere gfortran + lapack)

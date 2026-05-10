@@ -248,7 +248,7 @@ Se aplicó una cirugía "hostil pero justa" de lenguaje a toda la suite. Commits
 
 ### 5. POA Siguiente Sesión (CLASS)
 - [ ] **Fase 1A:** Correr CLASS con `Ω_m = 0.160` (sin MIRA) → cuantificar degradación ✅ COMPLETADO
-- [ ] **Fase 1B:** Comparar P(k) SSEE vs ΛCDM en escala de k_fs = 0.493 h/Mpc
+- [x] **Fase 1B:** Comparar P(k) SSEE vs ΛCDM en escala de k_fs = 0.493 h/Mpc ✅ COMPLETADO
 - [ ] **Fase 2:** Implementar φ-DM (5.71 eV, free-streaming) en perturbations.c
 - [ ] **Fase 3:** IS viscosity en perturbations.c
 - [ ] **Fase 4:** MCMC completo CLASS+SSEE vs Planck+DESI simultáneo

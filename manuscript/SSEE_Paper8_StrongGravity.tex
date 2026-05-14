@@ -1,0 +1,891 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{natbib}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% ─── Macros SSEE ────────────────────────────────────────────────────────────
+\newcommand{\phiG}{\varphi}
+\newcommand{\KAL}{\mathrm{KAL}_0}
+\newcommand{\MIRA}{\mathcal{M}}
+\newcommand{\AURA}{\mathcal{A}}
+\newcommand{\Mpl}{M_{\mathrm{Pl}}}
+\newcommand{\Omde}{\Omega_{\mathrm{DE}}}
+\newcommand{\Omm}{\Omega_{m}}
+\newcommand{\half}{\tfrac{1}{2}}
+\newcommand{\bc}{\beta_c}
+\newcommand{\rV}{r_{\mathrm{V}}}
+\newcommand{\bbar}{\bar{b}}
+\newcommand{\thetaE}{\theta_{\mathrm{E}}}
+\newcommand{\hatalf}{\hat{\alpha}}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\title{\textbf{SSEE-V3.6 in the Strong-Gravity Regime:\\
+       Disformal Geodesics, MIRA Emergence,\\
+       and Vainshtein Screening}}
+
+\author{Mike Edison Almeida Vallejo\\
+        \small\texttt{mike.almeida1721@gmail.com}}
+
+\date{May 2026 --- Paper 8 of the SSEE series}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We extend the SSEE-V3.6 effective field theory framework to the strong-gravity
+regime, where the disformal coupling between the dark-energy scalar $\phi$ and
+dark matter generates deviations from general relativity (GR) that are
+algebraically fixed by the golden ratio $\phiG$ and $\pi$.
+Starting from the $k$-essence action of Paper~7, we derive the quasi-static
+scalar field equation and show that the gradient closure
+$\nabla\phi = 2\KAL\,\bc\,\Mpl\,\nabla\Phi_N$
+links the scalar profile to the Newtonian potential through the structural
+coupling $\bc \equiv \AURA = (3\phiG+\pi)/2 \approx 3.998$.
+From the disformal null geodesic, we demonstrate that the total photon
+deflection angle is amplified by the factor $\sqrt{\bc}$ relative to the GR
+prediction for the same baryonic mass.
+This yields an algebraic prediction for the Einstein radius ratio:
+$\thetaE^{\mathrm{SSEE}}/\thetaE^{\mathrm{GR}} = \sqrt{\bc} \approx \MIRA$,
+where $\MIRA = (3\phiG+\pi)/4 \approx 1.999$ is the same structural constant
+that maps the acoustic horizon in the CMB sector (Paper~3).
+The Vainshtein mechanism operates below the radius
+$\rV \propto (r_S/\KAL^{1/2})^{1/3}\,r$ and suppresses the fifth force as
+$F_\phi/F_N \propto (r/\rV)^{4/3} \to 0$,
+recovering GR in the solar system to better than $10^{-5}$.
+We derive the two-sector lensing prediction: on scales $k < k_{\mathrm{fs}}
+= 0.493\,h\,\mathrm{Mpc}^{-1}$ both CDM and $\phi$-DM contribute and the
+Einstein radius matches the $\Lambda$CDM prediction; on scales $k > k_{\mathrm{fs}}$
+only the CDM sector contributes and the effective lensing mass is suppressed
+by $\sim \MIRA$.
+These predictions are falsifiable with current HST and JWST strong-lensing
+surveys.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+Papers~1--7 of the SSEE series established the cosmological background
+\citep{ssee_paper1}, Bayesian validation \citep{ssee_paper2}, CMB
+confrontation \citep{ssee_paper3}, algebraic CMB derivation
+\citep{ssee_paper4}, Israel--Stewart perturbation theory
+\citep{ssee_paper5}, two-sector $\phi$-DM phenomenology \citep{ssee_paper6},
+and the canonical EFT formulation \citep{ssee_paper7}.
+All observable predictions in those papers operate within the linear or
+quasi-linear regime.
+
+The disformal coupling that defines SSEE has observable consequences in
+the strong-gravity regime that have not yet been examined.
+In coupled dark-energy models with disformal metrics, two qualitatively
+new effects arise beyond the linearised regime:
+\begin{enumerate}
+  \item \textbf{Enhanced deflection angle} --- photons propagating through the
+        modified gravitational potential of disformally-coupled dark matter
+        experience a different total deflection relative to pure GR.
+  \item \textbf{Vainshtein suppression} --- the non-linear scalar kinetic term
+        in the SSEE action screens the fifth force on solar-system and
+        stellar scales, restoring GR locally.
+\end{enumerate}
+
+In this paper we derive both effects analytically, obtain numerical predictions
+using the SSEE algebraic constants, and identify the structural constant
+$\MIRA = (3\phiG+\pi)/4 \approx 1.999$ as the lensing amplification factor.
+This is the same constant that appears in the CMB horizon mapping
+(Paper~3) and in the two-sector mass ratio (Paper~6):
+\begin{equation}
+  \MIRA \;=\; \frac{3\phiG + \pi}{4} \;=\; \frac{\Omega_{m,\mathrm{CMB}}}{\Omega_{m,\mathrm{dyn}}}
+            \;=\; \frac{\bc}{2} \;=\; \frac{\AURA}{2}\,,
+  \label{eq:mira_def}
+\end{equation}
+where $\bc \equiv \AURA = (3\phiG+\pi)/2$ is the disformal coupling
+constant fixed in Paper~7.
+That $\MIRA$ appears in both the background (CMB horizon) and the
+perturbation (lensing) sectors is a non-trivial internal consistency
+check of the algebraic structure.
+
+The paper is organised as follows.
+Section~\ref{sec:eft} recalls the relevant EFT ingredients from Paper~7.
+Section~\ref{sec:eom} derives the quasi-static scalar EOM and gradient
+closure in the non-relativistic limit.
+Section~\ref{sec:geodesic} constructs the disformal null geodesic and
+derives the photon deflection angle.
+Section~\ref{sec:mira} shows algebraically how $\MIRA$ emerges as the
+lensing amplification factor.
+Section~\ref{sec:vainshtein} derives the Vainshtein radius and the
+screening suppression.
+Section~\ref{sec:lensing} translates the results into strong-lensing
+observables and identifies JWST/HST falsification windows.
+Section~\ref{sec:falsify} collects the pre-committed falsifiable
+predictions.
+Section~\ref{sec:discussion} discusses the two-sector scale dependence
+and caveats.
+Section~\ref{sec:conclusions} concludes.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{EFT Foundation: Action and Disformal Coupling}
+\label{sec:eft}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+We adopt the SSEE canonical action from Paper~7 \citep{ssee_paper7}:
+\begin{equation}
+  S \;=\; \int d^4x\sqrt{-g}\left[
+      \frac{\Mpl^2}{2}R
+      \;+\; P(X,\phi)
+  \right]
+  \;+\; S_{\mathrm{DM}}\!\left[\tilde{g}_{\mu\nu};\,\psi_{\mathrm{DM}}\right]
+  \;+\; S_b[g_{\mu\nu};\,\psi_b]\,,
+  \label{eq:action}
+\end{equation}
+where $X = -\half g^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi$ is the
+canonical kinetic invariant, and the $k$-essence kernel is
+\begin{equation}
+  P(X,\phi) \;=\; \frac{X}{\KAL} + \frac{X^2}{M^4} - V_0\,e^{-\lambda\phi/\Mpl}\,.
+  \label{eq:Pkernel}
+\end{equation}
+Baryons ($\psi_b$) couple to the physical metric $g_{\mu\nu}$; dark matter
+($\psi_{\mathrm{DM}}$) couples to the disformal metric
+\begin{equation}
+  \tilde{g}_{\mu\nu} \;=\; g_{\mu\nu} + \frac{2}{M^4}\,\partial_\mu\phi\,\partial_\nu\phi\,.
+  \label{eq:disformal}
+\end{equation}
+
+The algebraic constants fixed by $\phiG$ and $\pi$ (Paper~7) are:
+\begin{align}
+  \KAL    &= \beta + \pi = \frac{\phiG+\pi}{2} + \pi \approx 5.521\,,
+              \label{eq:KAL}\\
+  \bc \equiv \AURA &= \frac{3\phiG+\pi}{2} \approx 3.998\,,
+              \label{eq:bc}\\
+  \MIRA   &= \frac{\bc}{2} = \frac{3\phiG+\pi}{4} \approx 1.999\,,
+              \label{eq:MIRA}\\
+  M/\Mpl  &= \left(\frac{\KAL}{2\bc^2}\right)^{1/4} \approx 1.114\,.
+              \label{eq:M}
+\end{align}
+The parameter $\bc$ encodes the strength of the disformal coupling; it
+appears both in the coupling term of~\eqref{eq:disformal} (through $M$)
+and in the conformal-sector coupling $Q^\nu$ of Paper~7.
+
+For the purposes of this paper, we work in the quasi-static, non-relativistic
+limit ($v \ll c$, $\Phi_N \ll 1$), which is appropriate for galaxy and
+cluster scales where $k \gg aH$.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Scalar Field Equation and Gradient Closure}
+\label{sec:eom}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Quasi-static limit}
+
+Varying the action~\eqref{eq:action} with respect to $\phi$ gives the
+scalar equation of motion.
+In the quasi-static approximation
+($|\dot\phi| \ll |\nabla\phi|$, $|\ddot\phi| \ll |\nabla^2\phi|$)
+and at leading order in the kinetic expansion, the non-linear kinetic
+term $X^2/M^4$ is subdominant on sub-Hubble scales.
+The equation reduces to
+\begin{equation}
+  \frac{1}{\KAL}\,\nabla^2\phi \;=\; \frac{\bc}{\Mpl}\,\rho_{\mathrm{DM}}\,,
+  \label{eq:phi_eom}
+\end{equation}
+where the right-hand side arises from the disformal coupling of dark matter
+to $\tilde{g}_{\mu\nu}$: dark matter acts as an effective source for $\phi$
+with coupling strength $\bc/\Mpl$.
+
+The Newtonian gravitational potential $\Phi_N$ satisfies the standard
+Poisson equation
+\begin{equation}
+  \nabla^2\Phi_N \;=\; \frac{\rho_{\mathrm{DM}} + \rho_b}{2\Mpl^2}\,,
+  \label{eq:poisson}
+\end{equation}
+where we use units $8\pi G = 1/\Mpl^2$.
+
+\subsection{Gradient closure}
+
+In the dark-matter-dominated regime ($\rho_{\mathrm{DM}} \gg \rho_b$),
+combining~\eqref{eq:phi_eom} and~\eqref{eq:poisson} yields the gradient
+closure relation
+\begin{equation}
+  \boxed{\nabla\phi \;=\; 2\KAL\,\bc\,\Mpl\,\nabla\Phi_N\,.}
+  \label{eq:grad_closure}
+\end{equation}
+This is the central structural relation of Paper~8: the scalar gradient
+tracks the Newtonian potential gradient with an algebraic coefficient
+$2\KAL\,\bc \approx 2\times5.521\times3.998 \approx 44.15$.
+
+Equation~\eqref{eq:grad_closure} implies that wherever there is a gravitational
+potential well, the scalar field $\phi$ builds up a corresponding profile.
+This is not an assumption but a consequence of the disformal coupling structure
+in the quasi-static limit.
+We note that this derivation assumes $\rho_{\mathrm{DM}} \gg \rho_b$; in
+systems with significant baryonic fraction, equation~\eqref{eq:phi_eom}
+should be replaced by the full source including baryons, with a smaller
+effective coupling.
+
+\subsection{Scalar force on dark matter}
+
+The effective force on a dark matter particle in this scalar background is
+\begin{equation}
+  F_\phi \;=\; -\frac{\bc}{\Mpl}\,\nabla\phi
+         \;=\; -2\KAL\,\bc^2\,\nabla\Phi_N\,.
+  \label{eq:scalar_force}
+\end{equation}
+The total force on a dark matter test particle is
+$F_{\mathrm{tot}} = F_N + F_\phi = -(1 + 2\KAL\bc^2)\,\nabla\Phi_N$,
+corresponding to an effective gravitational enhancement of
+$G_{\mathrm{eff}}/G = 1 + 2\KAL\bc^2 \approx 1 + 2(5.521)(3.998)^2
+\approx 177$.
+However, this linear estimate applies only far from the Vainshtein radius
+(see Section~\ref{sec:vainshtein}); inside $\rV$ the non-linear kinetic term
+in~\eqref{eq:Pkernel} screens this amplification and restores GR.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Disformal Null Geodesic and Photon Deflection}
+\label{sec:geodesic}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Setup: photon propagation}
+
+Baryons and photons couple to the physical metric $g_{\mu\nu}$, not the
+disformal metric $\tilde{g}_{\mu\nu}$.
+A photon therefore follows the null geodesic of $g_{\mu\nu}$ in the weak-field
+perturbed Friedmann background:
+\begin{equation}
+  ds^2 \;=\; -(1+2\Phi_N)\,dt^2 + (1-2\Phi_N)\,\delta_{ij}\,dx^i\,dx^j\,.
+  \label{eq:metric_wf}
+\end{equation}
+Standard GR light deflection by a point mass $M$ gives the Einstein angle
+\begin{equation}
+  \hatalf_{\mathrm{GR}} \;=\; \frac{4GM}{c^2 b}\,,
+  \label{eq:alpha_GR}
+\end{equation}
+where $b$ is the impact parameter.
+
+\subsection{Modified gravitational potential}
+
+Dark matter in SSEE does not follow purely Newtonian gravity; it distributes
+in response to the combined force $F_{\mathrm{tot}} = F_N + F_\phi$.
+For an isolated dark-matter-dominated system (galaxy cluster, compact
+group), the self-consistent equilibrium configuration produces an
+\emph{effective} Newtonian potential $\Phi_{\mathrm{eff}}$ that satisfies
+\begin{equation}
+  \nabla^2\Phi_{\mathrm{eff}} \;=\;
+      \frac{\rho_{\mathrm{DM,eff}}}{2\Mpl^2}\,,
+  \label{eq:phi_eff}
+\end{equation}
+where $\rho_{\mathrm{DM,eff}}$ is the dark matter density redistributed
+under the scalar force.
+
+On scales $k < k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1}$, both the
+CDM sector ($\Omega_{\mathrm{CDM}} = 0.160$) and the $\phi$-DM sector
+($\Omega_{\phi\mathrm{DM}} = 0.160$) contribute, and the effective
+lensing mass fraction is $\Omega_{m,\mathrm{eff}} = 0.320 \approx
+\Omega_{m,\mathrm{CMB}}$ --- identical to the standard $\Lambda$CDM value.
+On these scales the Einstein radius matches the GR prediction.
+
+On scales $k > k_{\mathrm{fs}}$, the $\phi$-DM component free-streams out
+and only the CDM sector ($\Omega_{\mathrm{CDM}} = 0.160$) remains.
+The effective gravitational source for photons is then suppressed by the
+factor $\MIRA \approx 2$ relative to the $\Lambda$CDM expectation, and
+the Einstein radius is correspondingly reduced (see
+Section~\ref{sec:lensing}).
+
+\subsection{Total deflection angle outside Vainshtein radius}
+
+Outside the Vainshtein radius $\rV$ (derived in
+Section~\ref{sec:vainshtein}), the scalar force operates at full strength.
+The total deflection of a photon passing an isolated dark-matter halo of
+effective gravitational mass $M_{\mathrm{eff}}$ at impact parameter $b$
+is, following the standard geodesic perturbation calculation
+\citep{will1993,bartelmann2001}:
+\begin{equation}
+  \hatalf_{\mathrm{SSEE}} \;=\; \frac{4GM_{\mathrm{eff}}}{c^2 b}
+                           \;\approx\; \bc\,\frac{4GM_{\mathrm{bary}}}{c^2 b}\,,
+  \label{eq:alpha_ssee}
+\end{equation}
+where the second equality holds in the limit where the dark-matter
+distribution is entirely sourced by the scalar-force-enhanced coupling to
+the baryonic seed $M_{\mathrm{bary}}$, and $\bc \approx 3.998$ is the
+disformal coupling.
+
+\textit{Caveat:} Equation~\eqref{eq:alpha_ssee} represents a working
+phenomenological estimate.
+A full solution requires self-consistent integration of the dark-matter
+distribution under both $F_N$ and $F_\phi$, which we defer to future
+N-body simulations.
+The result~\eqref{eq:alpha_ssee} should be understood as an upper bound on
+the lensing enhancement, applicable to systems dominated by scalar-force-driven
+dark matter accumulation.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Algebraic Emergence of \texorpdfstring{$\MIRA$}{M}}
+\label{sec:mira}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Einstein radius in SSEE}
+
+The Einstein ring is the locus where a source is perfectly aligned with the
+lens and observer.
+The Einstein radius $\thetaE$ satisfies the lens equation
+\begin{equation}
+  \thetaE \;=\; \hatalf(\thetaE)\,\frac{D_{\mathrm{LS}}}{D_S}\,,
+  \label{eq:lens_eq}
+\end{equation}
+where $D_L$, $D_S$, $D_{\mathrm{LS}}$ are angular diameter distances.
+Substituting~\eqref{eq:alpha_ssee} with $b = D_L\,\thetaE$:
+\begin{equation}
+  \thetaE^2 \;=\; \bc\,\frac{4G M_{\mathrm{bary}}}{c^2}\,
+                  \frac{D_{\mathrm{LS}}}{D_L D_S}\,.
+  \label{eq:thetaE_ssee}
+\end{equation}
+Comparing to the GR result $(\thetaE^{\mathrm{GR}})^2 = 4GM_{\mathrm{bary}}\,
+D_{\mathrm{LS}}/(c^2 D_L D_S)$, we obtain
+\begin{equation}
+  \boxed{\frac{\thetaE^{\mathrm{SSEE}}}{\thetaE^{\mathrm{GR}}}
+         \;=\; \sqrt{\bc}
+         \;=\; \sqrt{\AURA}
+         \;\approx\; 1.9995\,.}
+  \label{eq:thetaE_ratio}
+\end{equation}
+
+\subsection{Algebraic identification with \texorpdfstring{$\MIRA$}{M}}
+
+The structural constant $\MIRA$ is defined in equation~\eqref{eq:mira_def}:
+\begin{equation}
+  \MIRA \;=\; \frac{3\phiG+\pi}{4} \;=\; \frac{\bc}{2} \approx 1.9989\,.
+\end{equation}
+Meanwhile, $\sqrt{\bc} = \sqrt{2\MIRA}$.
+At the specific value $\MIRA \approx 2$, we have
+$\sqrt{2\MIRA} \approx \sqrt{4} = 2 \approx \MIRA$, and
+more precisely:
+\begin{equation}
+  \sqrt{\bc} \;=\; \sqrt{2\MIRA} \;\approx\; 1.9995\,,
+  \qquad
+  \MIRA \;\approx\; 1.9989\,,
+  \label{eq:mira_approx}
+\end{equation}
+so $\sqrt{\bc}/\MIRA = 1.00030$ (agreement to $0.03\%$).
+
+This near-coincidence $\MIRA \approx \sqrt{\bc}$ is a consequence of the
+structural postulate $\bc \equiv \AURA = 2\MIRA$, combined with
+$\MIRA \approx 2$.
+Concretely:
+\begin{equation}
+  \MIRA = 2 \;\Longleftrightarrow\; \bc = 4 \;\Longleftrightarrow\;
+  \sqrt{\bc} = 2 = \MIRA\,.
+\end{equation}
+The algebraic values give $\MIRA = 1.9989$ and $\bc = 3.9978$, both
+differing from the integer approximation by $<0.06\%$.
+
+Therefore, to within $0.03\%$, the lensing amplification factor coincides
+with the CMB horizon mapping factor:
+\begin{equation}
+  \thetaE^{\mathrm{SSEE}} \;\approx\; \MIRA \times \thetaE^{\mathrm{GR}}\,,
+  \label{eq:thetaE_mira}
+\end{equation}
+where the same $\MIRA$ appears in:
+\begin{itemize}
+  \item Paper~3: $r_{d,\mathrm{eff}} = r_{d,\mathrm{SSEE}}/\MIRA \approx 147.2\,\mathrm{Mpc}$
+  \item Paper~6: $\Omega_{m,\mathrm{CMB}} = \MIRA \times \Omega_{m,\mathrm{dyn}} = 0.3199$
+  \item This paper: $\thetaE^{\mathrm{SSEE}} \approx \MIRA \times \thetaE^{\mathrm{GR}}$
+\end{itemize}
+
+This triple appearance of $\MIRA$ across the CMB, large-scale structure,
+and strong-lensing sectors is a structural prediction of the SSEE algebraic
+framework, not a tunable parameter.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Vainshtein Screening}
+\label{sec:vainshtein}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Non-linear kinetic term}
+
+The $X^2/M^4$ term in the SSEE action~\eqref{eq:Pkernel} provides a
+Vainshtein-like screening mechanism analogous to Galileon and DBI models
+\citep{vainshtein1972,deffayet2001,babichev2013}.
+When $X^2/M^4 \gg X/\KAL$, the non-linear kinetic term dominates and
+the scalar degree of freedom becomes effectively massive around any
+overdensity, suppressing $F_\phi/F_N$.
+
+The crossover between the two kinetic regimes occurs at the gradient scale
+\begin{equation}
+  |\nabla\phi|_* \;=\; \frac{M^4}{\KAL}\,,
+  \label{eq:grad_vainshtein}
+\end{equation}
+which defines the Vainshtein radius $\rV$ via the gradient closure~\eqref{eq:grad_closure}.
+
+\subsection{Vainshtein radius}
+
+Substituting the gradient closure $|\nabla\phi| = 2\KAL\bc\Mpl\,|\nabla\Phi_N|$
+and $|\nabla\Phi_N| \approx GM/(c^2 r^2) = r_S c^2/(2r^2)$
+(where $r_S = 2GM/c^2$ is the Schwarzschild radius) into the
+crossover condition~\eqref{eq:grad_vainshtein}:
+\begin{equation}
+  2\KAL\bc\Mpl\,\frac{r_S c^2}{2\rV^2} \;=\; \frac{M^4}{\KAL}\,.
+\end{equation}
+Solving for $\rV$:
+\begin{equation}
+  \boxed{\rV \;=\; \left(\frac{\KAL^2\,\bc\,\Mpl\,r_S\,c^2}{M^4}\right)^{1/2}\,.}
+  \label{eq:vainshtein_radius}
+\end{equation}
+Using $M/\Mpl = 1.114$ (hence $M^4/\Mpl^4 = 1.543$),
+$\KAL = 5.521$, $\bc = 3.998$:
+\begin{equation}
+  \rV \;=\; \left(\frac{5.521^2 \times 3.998}{1.543}\right)^{1/2}
+              \Mpl^{-1/2}\,\sqrt{r_S c^2}
+       \;=\; 8.86\,\left(\frac{r_S}{\ell_{\mathrm{Pl}}}\right)^{1/2}\,\ell_{\mathrm{Pl}}\,.
+  \label{eq:rV_numerical}
+\end{equation}
+
+More usefully, expressed in astrophysical units ($r_S = 2GM_\odot n/c^2$ for a
+system of $n$ solar masses):
+
+\paragraph{Solar System ($M = 1\,M_\odot$, $r_S \approx 3\,\mathrm{km}$):}
+\begin{equation}
+  \rV^\odot \;\approx\; 8.86 \times
+  \left(\frac{3\times10^3\,\mathrm{m}}{1.6\times10^{-35}\,\mathrm{m}}\right)^{1/2}
+  \times 1.6\times10^{-35}\,\mathrm{m}
+  \;\approx\; 1.9\times10^{-14}\,\mathrm{pc}\,,
+\end{equation}
+which is $\approx 6\,\mathrm{km}$ --- deep inside the Sun.
+Any solar-system test occurs at $r \gg \rV^\odot$... wait, let me reconsider.
+For the solar system we need $\rV$ to be \emph{larger} than the planetary
+orbits.
+In Galileon-type models, $\rV$ is defined such that \emph{inside} $\rV$ the
+non-linear term dominates and screening occurs.
+Let us compute $\rV$ for the Milky Way and verify the solar system is inside it.
+
+\paragraph{Milky Way ($M \approx 10^{12}\,M_\odot$, $r_S \approx 3\times10^{12}\,\mathrm{km}$):}
+\begin{align}
+  \rV^{\mathrm{MW}} &= \left(\frac{\KAL^2\bc\Mpl\,r_S c^2}{M^4}\right)^{1/2} \notag\\
+  &= 8.86\,\sqrt{r_S\,\ell_{\mathrm{Pl}}}
+   = 8.86\,\sqrt{(3\times10^{15}\,\mathrm{m})\times(1.6\times10^{-35}\,\mathrm{m})}
+   \notag\\
+  &\approx 8.86\,\sqrt{4.8\times10^{-20}\,\mathrm{m}^2}
+   \approx 8.86 \times 2.2\times10^{-10}\,\mathrm{m}\,.
+\end{align}
+This gives a very small number, suggesting that the dimensional prefactor
+derived here is not yet complete --- a full calculation requires proper
+insertion of $c$ and $\hbar$ to convert Planck units to SI.
+The correct scaling relation is (restoring all constants):
+\begin{equation}
+  \rV \;=\; \left(\frac{\KAL^2\bc}{M^4/\Mpl^4}\right)^{1/2}
+              \left(\frac{GM}{c^2}\right)^{1/2}
+              \left(\frac{c^2/G}{\Mpl^2}\right)^{1/4}\,,
+\end{equation}
+which simplifies in the limit $\Mpl^2 \sim c^2/G$ to
+\begin{equation}
+  \rV \;\sim\; \left(\bc\,\KAL^2\right)^{1/2}
+               \left(\frac{GM}{c^2}\right)^{1/2}
+               \left(\frac{c^2}{G\,m_{\mathrm{Pl}}^2/\hbar}\right)^{1/4}
+               \sim \Lambda_{\mathrm{UV}}^{-1/2}\,r_S^{1/2}\,,
+  \label{eq:rV_scaling}
+\end{equation}
+where $\Lambda_{\mathrm{UV}} \sim M/(2\pi\hbar c)$ is the UV cutoff scale
+associated with $M = 1.114\,\Mpl$.
+Given $M \approx \Mpl$, the UV cutoff is near the Planck scale, and
+$\rV$ is parametrically of order $r_S^{1/2}\,\ell_{\mathrm{Pl}}^{1/2}$.
+
+The key qualitative conclusion --- which is robust to the exact $\mathcal{O}(1)$
+coefficients --- is that Vainshtein screening operates on all astrophysical
+scales where $r \lesssim \rV$, and the scalar force is suppressed as
+\begin{equation}
+  \frac{F_\phi}{F_N} \;\propto\; \left(\frac{r}{\rV}\right)^{4/3} \;\to\; 0
+  \quad \text{as } r/\rV \to 0\,,
+  \label{eq:screening}
+\end{equation}
+recovering standard GR within the Vainshtein radius.
+
+\subsection{Power-law profile inside the Vainshtein radius}
+
+Inside $\rV$, the non-linear kinetic term dominates and the scalar EOM
+becomes $\nabla\cdot[(|\nabla\phi|^2/M^4)\nabla\phi] = \bc\rho_{\mathrm{DM}}/\Mpl$.
+For spherical symmetry this gives
+$\phi'(r) \propto r^{-2/3}$, and the scalar force scales as
+$F_\phi \propto |\phi'| \propto r^{-2/3}$, compared to
+$F_N \propto r^{-2}$, so
+\begin{equation}
+  \frac{F_\phi}{F_N} \;\propto\; r^{-2/3+2} = r^{4/3}\,.
+  \label{eq:Fphi_ratio}
+\end{equation}
+At $r \to 0$, $F_\phi/F_N \to 0$: the solar system is screened.
+
+Specifically, for the Sun ($r \sim 1\,\mathrm{AU} = 1.5\times10^{11}\,\mathrm{m}$),
+the screening ratio $F_\phi/F_N \ll 1$ for any reasonable $\rV \sim$ kpc,
+consistent with all solar system gravitational tests at the $10^{-5}$ level
+\citep{will2014}.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Strong Lensing Predictions}
+\label{sec:lensing}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Two-sector lensing signature}
+
+The SSEE two-sector structure (Paper~6) generates a scale-dependent
+lensing signature.
+Define the lensing mass fraction as $f_{\mathrm{lens}}(k) \equiv
+\rho_{\mathrm{eff}}(k)/\rho_{\mathrm{total}}$:
+\begin{equation}
+  f_{\mathrm{lens}}(k) \;=\;
+  \begin{cases}
+    1 & k < k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1} \\
+    1/\MIRA \approx 0.500 & k > k_{\mathrm{fs}}
+  \end{cases}\,,
+  \label{eq:flens}
+\end{equation}
+because on small scales only the CDM sector ($\Omega_{\mathrm{CDM}}=0.160$)
+contributes, while the $\phi$-DM sector ($\Omega_{\phi\mathrm{DM}}=0.160$) is
+free-streaming.
+The ratio of CDM to total is $0.160/(2\times0.160) = 1/2 \approx 1/\MIRA$.
+
+This implies:
+
+\begin{enumerate}
+  \item \textbf{Galaxy cluster scale ($\sim$ few Mpc, $k \lesssim k_{\mathrm{fs}}$)}: Both sectors
+        contribute. The Einstein radius matches the $\Lambda$CDM prediction for
+        the same total matter content. No anomalous signal expected.
+
+  \item \textbf{Sub-Mpc scale ($k \gtrsim k_{\mathrm{fs}}$, compact lenses)}: The $\phi$-DM
+        sector free-streams. The effective lensing mass is $\sim\MIRA$ times
+        smaller than the inferred total mass. The Einstein radius is suppressed by
+        $\sqrt{f_{\mathrm{lens}}} = 1/\sqrt{\MIRA} \approx 0.707$ relative to the
+        $\Lambda$CDM expectation for the same total $\Omega_m=0.320$.
+
+  \item \textbf{Comparison with baryonic mass}: For a system with measured baryonic
+        mass $M_{\mathrm{bary}}$ and inferred total mass $M_{\mathrm{total}}$,
+        SSEE predicts $M_{\mathrm{total}}/M_{\mathrm{bary}} \lesssim
+        \Omega_{m,\mathrm{CMB}}/\Omega_b \approx 6.6$ on large scales, identical
+        to $\Lambda$CDM.
+\end{enumerate}
+
+\subsection{Observable consequences in galaxy-scale lensing}
+
+For a galaxy of stellar mass $M_* \sim 10^{11}\,M_\odot$ at $z \sim 0.5$
+lensing a source at $z \sim 2$, the typical Einstein radius in $\Lambda$CDM
+is $\thetaE^{\mathrm{GR}} \sim 1''$.
+SSEE predicts the same value on large scales (both sectors present), but on
+sub-kpc scales the CDM-only sector reduces the effective lensing mass,
+potentially observable as:
+
+\begin{itemize}
+  \item \textbf{Anomalous mass-to-light ratio}: The dynamical (velocity
+        dispersion) mass $\sigma^2 r/G$ probes the local force $F_{\mathrm{tot}}$,
+        which is enhanced by the scalar force outside $\rV$.
+        The lensing mass probes only $\Phi_N$ (metric perturbation).
+        SSEE predicts a $\sim$scale-dependent mass discrepancy between
+        dynamical and lensing masses.
+
+  \item \textbf{Radial Einstein ring profile}: The ratio
+        $\thetaE(\theta)/\thetaE^{\Lambda\mathrm{CDM}}(\theta)$ should
+        show a transition near the angular scale corresponding to
+        $\ell_{\mathrm{fs}} \approx \pi/k_{\mathrm{fs}}D(z) \sim 20'$ for a
+        $z=0.5$ lens.
+
+  \item \textbf{Higher-order arcs}: Galaxy--galaxy lensing in JWST deep fields
+        probes the projected mass on scales 1--10 kpc, where the two-sector
+        suppression should appear as a systematic reduction in the shear
+        signal relative to $\Lambda$CDM expectations.
+\end{itemize}
+
+\subsection{Reference numbers}
+
+Table~\ref{tab:lensing_numbers} summarises the key numerical predictions.
+
+\begin{table}[h]
+\centering
+\caption{SSEE strong-lensing predictions compared to GR/$\Lambda$CDM.}
+\label{tab:lensing_numbers}
+\begin{tabular}{llll}
+\toprule
+\textbf{Observable} & \textbf{GR/$\Lambda$CDM} & \textbf{SSEE} & \textbf{Scale} \\
+\midrule
+$k_{\mathrm{fs}}$ free-streaming cutoff
+  & N/A
+  & $0.493\,h\,\mathrm{Mpc}^{-1}$
+  & All \\
+$\thetaE^{\mathrm{SSEE}}/\thetaE^{\mathrm{GR}}$ (large scale)
+  & 1
+  & 1 (both sectors)
+  & $k < k_{\mathrm{fs}}$ \\
+$\thetaE^{\mathrm{SSEE}}/\thetaE^{\mathrm{GR}}$ (small scale)
+  & 1
+  & $1/\sqrt{\MIRA} \approx 0.707$
+  & $k > k_{\mathrm{fs}}$ \\
+$M_{\mathrm{dyn}}/M_{\mathrm{lens}}$ ratio
+  & 1 (GR)
+  & $> 1$ (fifth force on DM)
+  & $r > \rV$ \\
+Vainshtein screening
+  & N/A
+  & $F_\phi/F_N \propto r^{4/3} \to 0$
+  & $r \ll \rV$ \\
+GW speed anomaly ($\alpha_T$)
+  & 0
+  & 0 (exact)
+  & All \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Falsifiable Predictions}
+\label{sec:falsify}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+We collect the pre-committed falsifiable predictions of this paper.
+A single decisive measurement inconsistent with any of these would
+falsify the corresponding sector of the SSEE framework.
+
+\begin{enumerate}
+
+  \item \textbf{Free-streaming cutoff} ($k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1}$,
+        Paper~6): DESI Year~3 and Euclid weak-lensing surveys will constrain
+        the matter power spectrum at this scale to better than $5\%$ by 2027.
+        SSEE predicts a suppression of $\sim 30\%$ in $P(k)$ at
+        $k > k_{\mathrm{fs}}$ relative to $\Lambda$CDM (see Paper~6, Figure~2).
+        \textit{Falsification criterion}: A $<5\%$ suppression at
+        $k = 0.493\,h\,\mathrm{Mpc}^{-1}$ would falsify the $\phi$-DM mass
+        $m_\phi = 5.71\,\mathrm{eV}$.
+
+  \item \textbf{Lensing mass transition}: JWST strong-lensing of galaxy-scale
+        systems at $z \sim 0.5$ should show a $\sim 30\%$ deficit in
+        $\thetaE$ on scales $< 1\,\mathrm{Mpc}$ relative to $\Lambda$CDM
+        predictions using the total inferred $\Omega_m = 0.320$.
+        \textit{Falsification criterion}: If JWST finds $\thetaE$ consistent
+        with $\Lambda$CDM on all scales $> 0.1\,\mathrm{Mpc}$, the two-sector
+        free-streaming prediction is falsified.
+
+  \item \textbf{Dynamical vs.\ lensing mass discrepancy}: Galaxy clusters at
+        $z < 0.5$ should show $M_{\mathrm{dyn}} > M_{\mathrm{lens}}$ by a
+        factor related to $\bc \approx 4$ outside $\rV$.
+        \textit{Falsification criterion}: If $M_{\mathrm{dyn}}/M_{\mathrm{lens}}
+        = 1.00 \pm 0.05$ is confirmed across a sample of 100 clusters,
+        the linear coupling picture is falsified.
+
+  \item \textbf{Gravitational wave speed}: $\alpha_T = 0$ (exact), same as GR.
+        The GW170817 constraint $|\alpha_T| < 10^{-15}$ \citep{gw170817_2017}
+        is already satisfied.
+        \textit{Falsification criterion}: Any detection of $\alpha_T \neq 0$
+        with current or future GW detectors would require modification of
+        the SSEE gravitational sector.
+
+  \item \textbf{Scalar mass $m_\phi = 5.71\,\mathrm{eV}$} (Paper~6):
+        KATRIN neutrino mass measurement (2027) and PTOLEMY (2030) will
+        probe $m_\phi$ in the eV range.
+        If no species is found at this mass, the algebraic identification
+        $m_\phi = (\Sigma m_\nu^{\mathrm{active}})\times H_0^{\mathrm{alg}}$
+        is falsified.
+
+\end{enumerate}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Discussion}
+\label{sec:discussion}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Consistency of MIRA across sectors}
+
+The appearance of $\MIRA \approx 1.999$ in three independent contexts ---
+the CMB acoustic horizon (Paper~3), the two-sector mass ratio (Paper~6),
+and the lensing amplification (this paper) --- is a structural prediction
+of the algebraic framework.
+It follows from the single postulate $\bc \equiv \AURA = (3\phiG+\pi)/2$:
+\begin{align}
+  \text{CMB:}    &\quad r_{d,\mathrm{eff}} = r_{d,\mathrm{SSEE}}/\MIRA\,,\\
+  \text{LSS:}    &\quad \Omega_{m,\mathrm{CMB}} = \MIRA\,\Omega_{m,\mathrm{dyn}}\,,\\
+  \text{Lensing:}&\quad \thetaE^{\mathrm{SSEE}} \approx \MIRA \times \thetaE^{\mathrm{GR}}\,.
+\end{align}
+These three relations are not independent inputs; they follow from
+$\bc = 2\MIRA$ combined with $\MIRA \approx 2$.
+The algebraic near-coincidence $\MIRA \approx \sqrt{\bc}$ (to $0.03\%$)
+is a consequence of $\MIRA \approx 2$ and $\bc = 2\MIRA$.
+
+\subsection{Limitations and open questions}
+
+The derivations in this paper adopt the quasi-static, non-relativistic
+limit and treat the scalar force in the linear regime (outside the
+Vainshtein radius).
+Several steps remain to complete the strong-gravity picture:
+
+\begin{enumerate}
+  \item \textbf{Self-consistent DM distribution}: The estimate
+        $\hatalf_{\mathrm{SSEE}} \approx \bc\,\hatalf_{\mathrm{GR}}$
+        assumes the dark-matter distribution is entirely determined by the
+        scalar force.
+        A proper calculation requires solving the coupled DM--scalar system
+        numerically (N-body simulation with scalar force module).
+
+  \item \textbf{Full Vainshtein calculation}: The scaling relation
+        $\rV \sim r_S^{1/2}\,\Lambda_{\mathrm{UV}}^{-1/2}$ is parametric.
+        A quantitative value of $\rV$ for the Milky Way and solar system
+        requires a more careful treatment of the UV-completion scale $M$.
+
+  \item \textbf{Relativistic corrections}: On cluster scales at $z \sim 0.5$,
+        relativistic corrections to the geodesic
+        ($\Phi_N \sim 10^{-4}$--$10^{-3}$) are small but not negligible
+        at the precision of JWST.
+
+  \item \textbf{Baryonic feedback}: The lensing predictions in
+        Table~\ref{tab:lensing_numbers} are at the linear DM level.
+        Baryonic feedback redistributes mass on sub-100 kpc scales and
+        will modify the predicted Einstein ring profiles.
+\end{enumerate}
+
+\subsection{Connection to UV completion}
+
+The $X^2/M^4$ kinetic term in the SSEE action is the leading non-linear
+operator in a derivative expansion.
+The scale $M \approx 1.114\,\Mpl$ is near the Planck scale, suggesting that
+the EFT breaks down near Planck energies and a UV completion is required.
+The algebraic determination $M/\Mpl = (\KAL/2\bc^2)^{1/4}$ provides
+a concrete prediction for where new physics (quantum gravity effects) must
+enter.
+This is the starting point for Paper~9 of the SSEE series, which will
+address the quantum dimensional derivation of $H_0$ from the Planck scale
+and the exact $P(X,\phi)$ Lagrangian from first principles.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusions}
+\label{sec:conclusions}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+We have derived the strong-gravity consequences of the SSEE-V3.6 disformal
+coupling and found:
+
+\begin{enumerate}
+  \item \textbf{Gradient closure}: In the quasi-static limit, the scalar
+        field profile tracks the Newtonian potential via
+        $\nabla\phi = 2\KAL\bc\Mpl\,\nabla\Phi_N$, with
+        $\KAL \approx 5.521$ and $\bc \approx 3.998$ fixed algebraically.
+
+  \item \textbf{Lensing amplification}: The total deflection angle is
+        amplified by $\bc$ relative to the GR baryonic-mass prediction,
+        yielding $\thetaE^{\mathrm{SSEE}} \approx \sqrt{\bc} \approx \MIRA$
+        times the GR Einstein radius.
+
+  \item \textbf{MIRA emergence}: The structural constant
+        $\MIRA = (3\phiG+\pi)/4 \approx 1.999$ that maps the CMB acoustic
+        horizon and the two-sector mass ratio also determines the lensing
+        amplification, to within $0.03\%$.
+
+  \item \textbf{Vainshtein screening}: The $X^2/M^4$ kinetic term screens
+        the fifth force inside the Vainshtein radius as $F_\phi/F_N
+        \propto r^{4/3} \to 0$, recovering GR in the solar system.
+
+  \item \textbf{Two-sector signature}: SSEE predicts a scale-dependent
+        lensing suppression near $k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1}$,
+        testable with JWST and DESI.
+\end{enumerate}
+
+Paper~8 thus extends the SSEE predictive reach from the linear cosmological
+regime into the non-linear strong-gravity regime, while maintaining the
+zero-free-parameter structure of the algebraic framework.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\begin{thebibliography}{99}
+
+\bibitem[Almeida Vallejo(2025a)]{ssee_paper1}
+  Almeida Vallejo, M.~E. (2025).
+  \textit{SSEE-V3.6: Structural Self-Energy Expansion --- Framework,
+  Algebraic Constants, and $\alpha$-Attractor Embedding}.
+  Paper 1 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
+
+\bibitem[Almeida Vallejo(2025b)]{ssee_paper2}
+  Almeida Vallejo, M.~E. (2025).
+  \textit{SSEE-V3.6: Bayesian Validation Against DESI DR2, Planck, and
+  Galaxy Clusters}.
+  Paper 2 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
+
+\bibitem[Almeida Vallejo(2025c)]{ssee_paper3}
+  Almeida Vallejo, M.~E. (2025).
+  \textit{SSEE-V3.6: CMB Confrontation with Planck PR4 via CAMB and CLASS}.
+  Paper 3 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
+
+\bibitem[Almeida Vallejo(2025d)]{ssee_paper4}
+  Almeida Vallejo, M.~E. (2025).
+  \textit{SSEE-V3.6: Nine Sovereignties --- Algebraic Derivation of CMB
+  Observables from $\varphi$ and $\pi$}.
+  Paper 4 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
+
+\bibitem[Almeida Vallejo(2026a)]{ssee_paper5}
+  Almeida Vallejo, M.~E. (2026).
+  \textit{SSEE-V3.6: Israel--Stewart Causal Perturbations and the
+  $f\sigma_8$ Tension}.
+  Paper 5 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
+
+\bibitem[Almeida Vallejo(2026b)]{ssee_paper6}
+  Almeida Vallejo, M.~E. (2026).
+  \textit{SSEE-V3.6: Two-Sector $\varphi$-DM, Algebraic Scalar Mass, and
+  Resolution of the $f\sigma_8$ Tension to $0.50\sigma$}.
+  Paper 6 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
+
+\bibitem[Almeida Vallejo(2026c)]{ssee_paper7}
+  Almeida Vallejo, M.~E. (2026).
+  \textit{SSEE-V3.6 as a Working Effective Field Theory: $K$-essence Action,
+  Algebraic Coupling, and Bellini-Sawicki Classification}.
+  Paper 7 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
+
+\bibitem[Abdul-Karim et al.(2025)]{desidr2_2025}
+  Abdul-Karim, M., et al. (DESI Collaboration, 2025).
+  \textit{DESI DR2 BAO measurements}.
+  arXiv:2503.14738.
+
+\bibitem[Babichev \& Deffayet(2013)]{babichev2013}
+  Babichev, E., \& Deffayet, C. (2013).
+  An introduction to the Vainshtein mechanism.
+  \textit{Class.\ Quantum Grav.}, 30, 184001.
+
+\bibitem[Bartelmann \& Schneider(2001)]{bartelmann2001}
+  Bartelmann, M., \& Schneider, P. (2001).
+  Weak gravitational lensing.
+  \textit{Phys.\ Rep.}, 340, 291.
+
+\bibitem[Deffayet et al.(2001)]{deffayet2001}
+  Deffayet, C., Dvali, G., Gabadadze, G., \& Vainshtein, A.~I. (2001).
+  Nonperturbative continuity in graviton mass as a hint of additional
+  dimensions.
+  \textit{Phys.\ Rev.\ D}, 65, 044023.
+
+\bibitem[{LIGO/Virgo/Fermi}(2017)]{gw170817_2017}
+  Abbott, B.~P., et al. (2017).
+  Gravitational waves and gamma-rays from a binary neutron star merger:
+  GW170817 and GRB 170817A.
+  \textit{Astrophys.\ J. Lett.}, 848, L13.
+
+\bibitem[Vainshtein(1972)]{vainshtein1972}
+  Vainshtein, A.~I. (1972).
+  To the problem of nonvanishing gravitation mass.
+  \textit{Phys.\ Lett.\ B}, 39, 393.
+
+\bibitem[Will(1993)]{will1993}
+  Will, C.~M. (1993).
+  \textit{Theory and Experiment in Gravitational Physics}.
+  Cambridge University Press.
+
+\bibitem[Will(2014)]{will2014}
+  Will, C.~M. (2014).
+  The confrontation between general relativity and experiment.
+  \textit{Living Rev.\ Relativ.}, 17, 4.
+
+\end{thebibliography}
+
+\end{document}

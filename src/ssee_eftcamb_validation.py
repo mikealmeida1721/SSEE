@@ -42,7 +42,8 @@ OmDE  = 1 - Omm    # flat
 alphaK_ssee = 3.0 * abs(w0) * Omm_dyn   # = 0.4032
 print(f"αK algebraico SSEE: {alphaK_ssee:.6f}  (Paper 7: 0.4033)")
 print(f"Background MIRA: Ω_m,CMB={Omm_CMB:.4f}, Ω_cdm,MIRA={Omcdm_MIRA:.6f}")
-print(f"Phantom crossing CPL: z_cross = {abs(w0)/abs(wa) - 1:.4f}  (EFTCAMB diverge en z≈0.31)")
+z_cross = (-1 - w0) / (wa + 1 + w0)   # CPL: w(z*)=-1 → z*=(|w0|-1)/(wa-(|w0|-1))
+print(f"Phantom crossing CPL: z_cross = {z_cross:.4f}  (w(z*)=-1, correcta)")
 print(f"Estrategia: validar αK con w=w0={w0} constante (régimen z=0 físicamente relevante)")
 print()
 

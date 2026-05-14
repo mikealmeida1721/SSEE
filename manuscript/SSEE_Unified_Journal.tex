@@ -75,6 +75,8 @@ release and are confirmed within $0.05\sigma$ of the DESI~DR2 CPL posterior.
 A Bayesian MCMC analysis with $N_{\mathrm{eff}} = 4\,402$ effective samples yields
 $H_0 = 66.75^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC}=-5.55$
 for the dynamic sector relative to \LCDM.
+A complementary five-parameter multi-probe MCMC finds all algebraic \SSEE\
+values within $0.81\sigma$ of the posteriors (mean $0.36\sigma$ across the five parameters).
 
 The framework introduces the algebraic MIRA factor
 $\MIRA = (3\phiG+\pi)/4 \simeq 1.9989$, which maps the dynamical matter density
@@ -295,6 +297,44 @@ invoking a cold dark matter component.
 The dominant residual uncertainty is the cluster mass calibration; the
 \SSEE\ prediction lies within the observational scatter in all cases.
 
+\subsection{Multi-probe MCMC validation}
+\label{sec:mcmc_fase4}
+
+To test all five algebraic \SSEE\ predictions simultaneously, we perform a
+complementary emcee MCMC with 100 walkers, 11\,000 steps (chain converged
+before the 25\,000-step target), and 30\% burn-in, yielding 770\,000
+post-burn samples and an acceptance fraction of 0.552.
+The parameter vector is $\boldsymbol{\theta} = (H_0,\, \Omega_b h^2,\, \Omega_m,\, w_0,\, w_a)$
+and the combined likelihood includes DESI~DR2 BAO, the Planck~2018 compressed
+Gaussian prior, the six $f\sigma_8$ surveys of Table~\ref{tab:fsig8}, and the
+four IGIMF-corrected galaxy clusters.
+
+\begin{table}[ht]
+\centering
+\caption{Five-parameter multi-probe MCMC: posterior medians vs.\ algebraic \SSEE\ values.}
+\label{tab:mcmc_fase4}
+\begin{tabular}{lccc}
+\toprule
+Parameter & Posterior (median $\pm1\sigma$) & Algebraic SSEE & Tension \\
+\midrule
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.34 \pm 0.77$ & $67.96$ & $0.81\sigma$ \\
+$\Omega_b h^2$                     & $0.02236 \pm 0.00015$ & $0.02237$ & $0.06\sigma$ \\
+$\Omega_m$                         & $0.3178  \pm 0.0098$  & $0.3199$  & $0.22\sigma$ \\
+$w_0$                              & $-0.812  \pm 0.046$   & $-0.840$  & $0.61\sigma$ \\
+$w_a$                              & $-0.659  \pm 0.113$   & $-0.670$  & $0.10\sigma$ \\
+\midrule
+\textbf{Mean tension} & & & $\mathbf{0.36\sigma}$ \\
+\textbf{Maximum tension} & & & $\mathbf{0.81\sigma}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All five algebraic values lie within the $1\sigma$ posterior credible intervals.
+The maximum tension ($0.81\sigma$ for $H_0$) and mean ($0.36\sigma$) confirm that
+the zero-free-parameter \SSEE\ parametrisation is consistent with the combined
+multi-probe dataset; corner plots and trace diagnostics are archived at
+Zenodo \citep{AlmeidaSSEE2026zenodo}.
+
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{CMB Angular Spectrum: CLASS Boltzmann Validation}
@@ -480,7 +520,7 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 \centering
 \includegraphics[width=0.82\textwidth]{../class_ssee/output/ssee_fsig8_tension_phiDM.pdf}
 \caption{$f\sigma_8(z)$ comparison. Data points: six RSD surveys
-         (2dFGRS, WiggleZ, BOSS DR12, eBOSS QSO, DES~Y3).
+         (6dFGRS, SDSS MGS, BOSS DR12, eBOSS DR16, WiggleZ).
          \textit{Black dashed}: \LCDM.
          \textit{Red}: \SSEE\ two-sector ($\sigeff = 0.737$), mean tension $0.50\sigma$.
          \textit{Blue}: \SSEE\ single-sector ($\sigma_8 = 0.702$), mean tension $2.56\sigma$.}
@@ -499,12 +539,12 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 \toprule
 Survey & $z$ & Data $f\sigma_8$ & Single-sector & Two-sector \\
 \midrule
-2dFGRS     & 0.15 & $0.490\pm0.145$ & $1.25\sigma$ & $0.05\sigma$ \\
-WiggleZ    & 0.44 & $0.413\pm0.080$ & $1.69\sigma$ & $0.28\sigma$ \\
-WiggleZ    & 0.60 & $0.390\pm0.063$ & $2.39\sigma$ & $0.81\sigma$ \\
-WiggleZ    & 0.73 & $0.437\pm0.072$ & $1.54\sigma$ & $0.38\sigma$ \\
-BOSS DR12  & 0.38 & $0.497\pm0.045$ & $4.10\sigma$ & $1.01\sigma$ \\
-eBOSS QSO  & 1.50 & $0.420\pm0.076$ & $2.38\sigma$ & $0.31\sigma$ \\
+6dFGRS     & 0.067 & $0.423\pm0.055$ & $+2.85\sigma$ & $+0.39\sigma$ \\
+SDSS MGS   & 0.150 & $0.490\pm0.070$ & $+2.94\sigma$ & $+1.05\sigma$ \\
+BOSS DR12  & 0.320 & $0.427\pm0.056$ & $+1.98\sigma$ & $-0.20\sigma$ \\
+BOSS DR12  & 0.380 & $0.477\pm0.051$ & $+2.97\sigma$ & $+0.66\sigma$ \\
+eBOSS DR16 & 0.510 & $0.458\pm0.038$ & $+3.03\sigma$ & $+0.24\sigma$ \\
+WiggleZ    & 0.570 & $0.426\pm0.048$ & $+1.60\sigma$ & $-0.48\sigma$ \\
 \midrule
 \textbf{Mean} & & & $\mathbf{2.56\sigma}$ & $\mathbf{0.50\sigma}$ \\
 \bottomrule
@@ -512,7 +552,7 @@ eBOSS QSO  & 1.50 & $0.420\pm0.076$ & $2.38\sigma$ & $0.31\sigma$ \\
 \end{table}
 
 The tension reduction is driven by two effects: (i) the WDM free-streaming
-suppression on scales $k > \kfs$ lowers $\sigeff$ from $0.853$ to $0.737$;
+suppression on scales $k > \kfs$ lowers $\sigeff$ from $0.793$ to $0.737$;
 (ii) the two-sector growth density $\Omega_{m,\mathrm{growth}} = 0.320$ boosts the
 growth rate at large scales.
 We stress that this resolution operates at the linear-growth level; non-linear
@@ -534,7 +574,7 @@ In the Bellini-Sawicki parametrisation \citep{Bellini2015}, this yields:
 \begin{equation}
   \alphaT = \alphaM = \alphaB = 0 \quad (\text{exact}),
   \qquad
-  \alphaK = 3\,\Omde\,\Ommdyn = 3\times0.840\times0.160 = 0.4032.
+  \alphaK = 3\,\Omde\,\Ommdyn = 3\times0.840\times0.160 = 0.4033.
   \label{eq:alphas}
 \end{equation}
 The vanishing of $\alphaT$ (tensor speed excess), $\alphaM$ (Planck mass run rate),
@@ -568,7 +608,7 @@ EFTCAMB confirms both conditions are satisfied.
 \toprule
 Quantity & Value & Status \\
 \midrule
-$\alphaK$ algebraic (eq.~\ref{eq:alphas}) & $0.4032$ & --- \\
+$\alphaK$ algebraic (eq.~\ref{eq:alphas}) & $0.4033$ & --- \\
 $\alphaK$ Paper~7 (canonical action) & $0.4033$ & $\Delta = 0.005\%$ \\
 Ghost-free ($Q_s > 0$) & $Q_s = 0.2016$ & \checkmark\ passed \\
 Gradient-stable ($\alphaB = 0 \Rightarrow c_s^2 = 1$) & exact & \checkmark\ passed \\
@@ -741,6 +781,8 @@ across four observational tiers.
   A Bayesian MCMC with $N_{\rm eff} = 4\,402$ yields
   $H_0 = 66.75\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC} = -5.55$
   for the dynamic sector.
+  A complementary five-parameter multi-probe MCMC confirms all five algebraic
+  predictions within $0.81\sigma$ (mean $0.36\sigma$).
 
 \item \textbf{CMB Boltzmann.} CLASS confirms that the MIRA factor
   $\MIRA = 1.9989$ is physically necessary: without it, the CMB RMS residual

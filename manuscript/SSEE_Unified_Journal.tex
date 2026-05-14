@@ -400,9 +400,10 @@ and \LCDM.
 \caption{CMB TT power spectrum from CLASS\@. \textit{Black solid}: \LCDM\ Planck~2018.
          \textit{Blue dashed}: SSEE with $\OmmCMB=0.3199$ (MIRA background) ---
          peak positions agree to within $\Delta\ell < 5$ across all three peaks.
-         The SSEE noMIRA run ($\OmmCMB = 0.160$) is indistinguishable from the
-         SSEE+MIRA curve at this scale but has peaks shifted to
-         $\ell = 240, 597, 922$ (RMS $= 31.5\%$; not shown separately for clarity).}
+         The SSEE noMIRA run ($\OmmCMB = 0.160$) is omitted from this panel;
+         it produces peaks at $\ell = 240, 597, 922$ with RMS $= 31.5\%$
+         relative to \LCDM, confirming that MIRA is physically necessary
+         to reproduce the acoustic scale with $\Ommdyn = 0.160$.}
 \label{fig:cmb_tt}
 \end{figure}
 
@@ -414,7 +415,7 @@ $r_{d,\mathrm{SSEE}} \simeq 175.2$~Mpc.
 The MIRA factor maps this to an effective sound horizon
 $r_{d,\mathrm{eff}} = r_{d,\mathrm{SSEE}} \times |\wz| = 147.2$~Mpc,
 within $1\sigma$ of the Planck~2018 measurement
-$r_d = 147.21\pm0.23$~Mpc \citep{Planck2018}.
+$r_d = 147.09\pm0.26$~Mpc \citep{Planck2018} (TT,TE,EE+lowE, Table~2; no BAO prior).
 The acoustic saturation factor $M_{\rm SSEE} = |\wz| = 0.840$ acts
 as a geometric bridge between the enlarged \SSEE\ sound horizon and the
 observed angular acoustic scale, mirroring the role of MIRA in the
@@ -478,7 +479,7 @@ The characteristic scale $\kfs$ is set by the Dodelson-Widrow
 relation \citep{DodelsonWidrow1994} applied to the algebraically derived mass:
 \begin{equation}
   \mphi = \Sigma m_\nu^{\mathrm{active}} \times H_0^{\mathrm{alg}}
-        = 0.06\;\mathrm{eV} \times 67.96\,h^{-1}\simeq 5.71\;\mathrm{eV},
+        = 0.084\;\mathrm{eV} \times 67.96\,h^{-1}\simeq 5.71\;\mathrm{eV},
   \quad
   \kfs = 0.493\;h\,\mathrm{Mpc}^{-1}.
   \label{eq:mphi}
@@ -661,7 +662,7 @@ CMB peaks SSEE RPH & $\ell = 240, 585, 886$ & $\sim 10\%$ shift from $\alphaK$ \
 \label{sec:phantom}
 
 When the CPL EoS $w(z) = \wz + \wa z/(1+z)$ is used in the EFTCAMB run,
-the phantom boundary $w = -1$ is crossed at $z \simeq 0.25$.
+the phantom boundary $w = -1$ is crossed at $z \simeq 0.31$.
 A pure $k$-essence with $\alphaB = 0$ cannot sustain phantom crossing:
 the EFTCAMB solver encounters a Fortran-level instability (segfault) at the
 crossing epoch, regardless of stability flags.

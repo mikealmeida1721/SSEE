@@ -1149,6 +1149,96 @@ quality; the latter quantifies the cost of proposing a modified acoustic
 background.  The full CMB likelihood test (Paper~3) is required to resolve
 the background question under the correct priors.
 
+\section{Nested Bayes Factor and Predictive Cross-Validation}
+\label{app:sddr_cv}
+
+This appendix provides two additional model-comparison criteria that
+are independent of the $k$-counting schemes discussed in
+Appendix~\ref{app:dic}: the \emph{Savage--Dickey density ratio} (exact
+Bayes factor for nested models) and a \emph{predictive
+cross-validation} on the DESI~DR2 BAO data.
+
+\subsection*{B.1 Savage--Dickey density ratio}
+
+SSEE is nested within CPL: the SSEE dynamic sector is CPL evaluated at
+the algebraic point $(w_0,w_a)=(-0.840,-0.670)$.  For nested models,
+the marginal Bayes factor for the null hypothesis $\mathcal{H}_0:
+(w_0,w_a)=(-0.840,-0.670)$ versus the unconstrained CPL is given
+exactly by the Savage--Dickey density
+ratio~\cite{Verdinelli1995,Trotta2008}:
+\begin{equation}
+  B_{\rm SSEE/CPL} = \frac{p(w_0^{\rm S},w_a^{\rm S}\mid\text{data, CPL})}
+                          {\pi(w_0^{\rm S},w_a^{\rm S}\mid\text{CPL})}
+                   = 9.56, \qquad \ln B = +2.26.
+\end{equation}
+The CPL posterior is evaluated at $(w_0^{\rm S},w_a^{\rm S})$ using a
+Scott-bandwidth Gaussian KDE of $N=500\,000$ thinned CPL chain samples
+(columns 3--4 of the 5-dimensional CPL chain, shape $2.5\times10^6$).
+The marginal prior on $(w_0,w_a)$ is the truncated Gaussian
+$\mathcal{N}(-1,0.5^2)\times\mathcal{N}(0,1^2)$ clipped to the MCMC
+sampling box $w_0\in(-2.5,0.5)$, $w_a\in(-3,2)$; truncation factors
+are $(0.9973,0.9759)$, negligible corrections.
+
+On the Jeffreys scale~\cite{Trotta2008} $\ln B=+2.26$ ($>1.1$) constitutes
+\emph{substantial} evidence in favour of the SSEE dynamic sector within
+the CPL framework.  The CPL posterior median
+$(w_0^{\rm CPL}=-0.731\pm0.106,\;w_a^{\rm CPL}=-0.919\pm0.461)$ places
+the SSEE algebraic point at $(1.03\sigma,0.54\sigma)$, consistent with
+the $0.09\sigma$ joint tension quoted in Section~\ref{sec:w0wa}.
+
+\subsection*{B.2 Predictive cross-validation (LOO-$z$)}
+
+To test directly whether the parsimony advantage of SSEE is genuine
+and not a boundary artefact, we split the 13 DESI~DR2 measurements by
+redshift:
+\begin{itemize}
+\item \textbf{Training set} ($z<1.0$; 7 points, $z\in\{0.295,0.51,0.706,0.93\}$):
+  each model is fit to these data only.
+\item \textbf{Test set} ($z\geq1.0$; 6 points, $z\in\{1.317,1.491,2.33\}$):
+  the trained MAP parameters are used to predict these unseen data.
+\end{itemize}
+SSEE has $k=1$ free parameter ($H_0$, with $w_0$, $w_a$, $\Omega_m$
+fixed algebraically); \LCDM\ has $k=2$ ($H_0,\Omega_m$); CPL has
+$k=4$ ($H_0,\Omega_m,w_0,w_a$).  The $z$-split exploits the fact that
+the DESI covariance matrix has zero off-diagonal blocks between
+different $z$-bins, making the sub-matrix inversion exact.
+
+\begin{table}[h]
+\centering
+\caption{Predictive cross-validation results (LOO-$z$ split).
+$\Delta\ln L_{\rm test}=\ln L_{\rm test}^{\rm SSEE}-\ln L_{\rm test}^{\rm model}$.
+Positive values favour \textsc{ssee}.}
+\label{tab:cv}
+\begin{tabular}{lccc}
+\toprule
+Model & $k$ & $\chi^2_r$(train, $N=7$) & $\Delta\ln L_{\rm test}$ ($N=6$) \\
+\midrule
+\textsc{ssee} & 1 & 3.043 & --- \\
+\LCDM         & 2 & 3.217 & $-0.17$ \\
+CPL           & 4 & 1.055 & $+72.83$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The result is unambiguous:
+\begin{itemize}
+  \item \textbf{SSEE vs \LCDM}: $\Delta\ln L_{\rm test}=-0.17$ nats
+    ($\Delta\chi^2=0.34$ for 6 points).  This difference is negligible:
+    SSEE ($k=1$) and \LCDM\ ($k=2$) have \emph{identical} predictive
+    accuracy on the high-redshift test set despite SSEE having half the
+    free parameters.
+  \item \textbf{SSEE vs CPL}: $\Delta\ln L_{\rm test}=+72.83$; CPL
+    ($k=4$) overfits the 7-point training set ($\chi^2_r=1.06$) and
+    extrapolates catastrophically to the test set ($\chi^2_r=24.9$).
+    This confirms that the freedom in the CPL dark-energy sector is
+    \emph{not} informative about high-$z$ BAO.
+\end{itemize}
+
+Taken together, the Savage--Dickey ratio and the cross-validation
+demonstrate that the dynamic-sector BIC advantage of SSEE
+($\Delta\mathrm{BIC}_{\rm dyn}=-5.55$) reflects genuine algebraic
+predictive power, not an artefact of fewer sampled parameters.
+
 \section*{Acknowledgements}
 The author thanks the DESI Collaboration for public DR2 data and
 P.~Kroupa and collaborators for the IGIMF cluster re-analysis.
@@ -1232,6 +1322,16 @@ The Dissection of Abell 2744: A Rich Cluster Growing Through Major and Minor Mer
 Spiegelhalter, D.~J., Best, N.~G., Carlin, B.~P., \& van der Linde, A.\ (2002).
 Bayesian measures of model complexity and fit.
 \textit{J.~Roy.\ Statist.\ Soc.~B} \textbf{64}, 583.
+
+\bibitem[Verdinelli \& Wasserman(1995)]{Verdinelli1995}
+Verdinelli, I., \& Wasserman, L.\ (1995).
+Computing Bayes factors using a generalization of the Savage--Dickey density ratio.
+\textit{J.~Am.\ Statist.\ Assoc.} \textbf{90}, 614.
+
+\bibitem[Trotta(2008)]{Trotta2008}
+Trotta, R.\ (2008).
+Bayes in the sky: Bayesian inference and model selection in cosmology.
+\textit{Contemp.\ Phys.} \textbf{49}, 71. arXiv:0803.4089.
 
 \end{thebibliography}
 \end{document}

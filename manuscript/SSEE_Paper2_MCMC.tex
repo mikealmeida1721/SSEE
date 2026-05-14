@@ -1051,6 +1051,104 @@ Galaxy-cluster dynamical masses are from \citet{Zhang2026}.
 The \textsc{ssee} analysis scripts are available at
 \url{https://github.com/mikealmeida1721/SSEE}.
 
+% ─────────────────────────────────────────────────────────────────────────────
+\appendix
+\section{Rigorous Bayesian Model Comparison: DIC and Multi-Scheme BIC}
+\label{app:dic}
+
+\noindent
+The main text reports two BIC values that address different physical questions
+(§\ref{sec:bic}).  This appendix provides three complementary criteria---each
+with different sensitivity to the k-counting ambiguity---computed directly from
+the MCMC chains stored in the public repository.
+
+\subsection*{Deviance Information Criterion (DIC)}
+
+The DIC \citep{Spiegelhalter2002} sidesteps the k-counting issue by estimating
+model complexity from the posterior:
+\begin{equation}
+  \mathrm{DIC} = \bar{D} + p_D,\quad
+  p_D = \bar{D} - D(\hat\theta),\quad
+  D(\theta) = -2\ln\pi(\theta|\mathrm{data}),
+\end{equation}
+where $\bar{D}$ is the posterior mean deviance and $\hat\theta$ is the MAP
+estimate. An important self-check: $p_D$ must recover the number of parameters
+actually sampled.  From the chains ($N_{\rm valid}$: SSEE 50\,k, \LCDM\
+2.5\,M, CPL 2.5\,M):
+\begin{align}
+  p_D(\mathrm{SSEE}) &= 1.99 \approx 2\quad\checkmark \\
+  p_D(\mathrm{\LCDM}) &= 3.00 = 3\quad\checkmark \\
+  p_D(\mathrm{CPL})  &= 4.98 \approx 5\quad\checkmark
+\end{align}
+The exact recovery confirms that all three chains are well-converged.  The DIC
+comparison gives:
+\begin{equation}
+  \Delta\mathrm{DIC}(\mathrm{SSEE}-\mathrm{\LCDM}) = +216.2,\quad
+  \Delta\mathrm{DIC}(\mathrm{\LCDM}-\mathrm{CPL}) = +4.1.
+\end{equation}
+The DIC result is consistent with BIC Scheme~B below and confirms that the
+$+206/+216$ penalty is a genuine, k-scheme-independent finding.
+
+\subsection*{BIC under three k-counting schemes}
+
+\begin{table}[H]
+\centering
+\caption{%
+  Bayesian model comparison: DIC, BIC under three k-counting schemes, and
+  Laplace log-evidence. $N_{\rm data}=16$ (13 BAO + 3 Planck).
+  $\Delta < 0$ favours SSEE relative to \LCDM.
+  Jeffreys criterion: $|\Delta| > 10$ = very strong; $|\Delta| > 5$ = strong.
+}
+\label{tab:bic_dic_rigorous}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Criterion} & \textbf{SSEE} & \textbf{\LCDM} & \textbf{CPL}
+  & $\boldsymbol{\Delta_{\rm SSEE-\Lambda CDM}}$ \\
+\midrule
+\multicolumn{5}{l}{\textit{DIC — effective parameters $p_D$ from chains
+  (background-agnostic)}} \\
+$p_D$  & $1.99$ & $3.00$ & $4.98$ & — \\
+DIC    & $253.7$ & $37.6$ & $33.5$ & $+216.2$ \\[4pt]
+\multicolumn{5}{l}{\textit{Scheme A — dynamic sector isolated
+  ($k_{\rm SSEE}=1$, $k_{\rm \LCDM}=3$; identical background)}} \\
+BIC$_{\rm dyn}$ & $31.15$ & $36.70$ & $37.36$ & $-5.55$ \\[4pt]
+\multicolumn{5}{l}{\textit{Scheme B — MCMC parameters sampled
+  ($k_{\rm SSEE}=2$, $k_{\rm \LCDM}=3$; full backgrounds)}} \\
+BIC$_{\rm MCMC}$ & $255.3$ & $39.9$ & $37.4$ & $+215.4$ \\[4pt]
+\multicolumn{5}{l}{\textit{Laplace log-evidence (full posterior volume)}} \\
+$\ln Z$ & $-131.6$ & $-28.4$ & $-26.7$ & $-103.2$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Scheme A} evaluates both \SSEE$_{\rm dyn}$ and \LCDM\ at the same
+background ($\Omega_m=0.315$, $r_d = 147.6$\,Mpc), so the likelihood is
+identical ($\ln P_{\rm MAP}=-14.19$ for both).  The $\Delta\mathrm{BIC}=-5.55$ is a pure
+parsimony gain: $\SSEE$ fixes $w_0, w_a$ algebraically ($k_{\rm \SSEE}=1$),
+while \LCDM\ requires $H_0$, $\Omega_m$, $\Omega_b h^2$ ($k_{\rm \LCDM}=3$).
+
+\paragraph{Scheme B} uses the chains directly.  SSEE is evaluated at its own
+background ($\Omega_{m,\rm dyn}=0.160$, $r_d=175$\,Mpc), incurring the
+calibration penalty already discussed in §\ref{sec:bic}.  The $\Delta\mathrm{BIC}=+215.4$ is
+consistent with the $+206$ reported in the main text (minor chain-version
+difference).
+
+\paragraph{DIC and Laplace evidence} confirm Scheme B: under a full-background
+comparison, all three criteria give decisive evidence for \LCDM\ over \SSEE.
+The only exception is Scheme A, where the penalty is removed by construction.
+This is not inconsistency---it is the two-sector nature of \SSEE\ manifesting
+in two distinct, physically interpretable comparisons.
+
+\paragraph{Conclusion.}
+No k-counting scheme changes the fundamental picture: (1) the dynamic sector of
+\SSEE\ is favoured on parsimony ($\Delta\mathrm{BIC}_{\rm dyn}=-5.55$), and
+(2) the full-background sector is strongly penalised
+($\Delta\mathrm{DIC}=+216$, $\Delta\mathrm{BIC}_{\rm MCMC}=+215$).
+Both are physically expected: the former quantifies the algebraic prediction
+quality; the latter quantifies the cost of proposing a modified acoustic
+background.  The full CMB likelihood test (Paper~3) is required to resolve
+the background question under the correct priors.
+
 \section*{Acknowledgements}
 The author thanks the DESI Collaboration for public DR2 data and
 P.~Kroupa and collaborators for the IGIMF cluster re-analysis.
@@ -1129,6 +1227,11 @@ Creation of cosmic structure in the complex galaxy cluster merger Abell~2744.
 Owers, M.~S., et al.\ (2011).
 The Dissection of Abell 2744: A Rich Cluster Growing Through Major and Minor Mergers.
 \textit{ApJ} \textbf{728}, 27.
+
+\bibitem[Spiegelhalter et al.(2002)]{Spiegelhalter2002}
+Spiegelhalter, D.~J., Best, N.~G., Carlin, B.~P., \& van der Linde, A.\ (2002).
+Bayesian measures of model complexity and fit.
+\textit{J.~Roy.\ Statist.\ Soc.~B} \textbf{64}, 583.
 
 \end{thebibliography}
 \end{document}

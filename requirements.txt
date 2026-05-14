@@ -6,3 +6,5 @@ corner>=2.2
 camb>=1.5
 cobaya>=3.6
 classy>=3.3
+getdist>=1.4
+astropy>=5.3

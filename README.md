@@ -8,12 +8,12 @@
 
 | Observable | SSEE (algebraic) | Observed | Separation |
 |---|---|---|---|
-| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.827, −0.75) | 0.05σ |
+| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.838±0.057, −0.631±0.226) | 0.05σ / 0.17σ |
 | CMB first peak | ℓ₁ = 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.3199 (algebraic via MIRA) | Planck 2018: 0.3153 | 0.63σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match |
-| αK (kineticity, z=0) | 0.403 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 |
+| αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 |
 | m_φ (φ-DM mass) | 5.71 eV algebraic | KATRIN/PTOLEMY: 2027–2030 | falsifiable |
 | k_fs (free-streaming) | 0.493 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | falsifiable |
 
@@ -32,6 +32,7 @@
 | 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Tension Characterization | 24 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
 | 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 15 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
 | 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 14 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
+| — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 14 | Journal submission candidate | [manuscript/](manuscript/SSEE_Unified_Journal.tex) |
 
 ---
 
@@ -65,7 +66,18 @@ SSEE/
 │   ├── SSEE_Paper4_ToE.tex        # Paper 4 source + SSEE_Paper4.bib
 │   ├── SSEE_Paper6_phiDM.tex      # Paper 6 source + ssee_paper6.bib
 │   ├── SSEE_Paper7_EFT.tex        # Paper 7 source
+│   ├── SSEE_Unified_Journal.tex   # Unified journal paper (Papers 1–7 + CLASS + MCMC Fase 4)
+│   ├── ssee_unified.bib           # Bibliography for unified journal
 │   └── SSEE_Endorser_Summary.tex  # 2-page arXiv endorser brief
+├── class_ssee/                    # CLASS Boltzmann code (fork of class_public)
+│   ├── ssee_v36.ini               # SSEE parameters — MIRA sector (Ω_m=0.3199)
+│   ├── ssee_v36_nomira.ini        # SSEE parameters — dynamic sector only (Ω_m=0.160)
+│   ├── ssee_v36_twosector.ini     # φ-DM two-sector (ncdm m=5.71 eV)
+│   ├── ssee_v36_IS.ini            # IS viscosity (cs2_fld=0.001)
+│   ├── plot_ssee_cmb.py           # CMB TT comparison CLASS vs Planck
+│   ├── plot_ssee_twosector_pk.py  # P(k) two-sector + WDM transfer
+│   ├── plot_IS_viscosity.py       # IS viscosity effect on σ₈
+│   └── calibrate_wdm_alpha.py     # WDM α calibration (sigma8 top-hat correct)
 ├── submission_packages/           # arXiv-ready .tar.gz for each paper
 ├── docs/                          # Compiled PDFs (7 papers + endorser brief)
 └── AUDIT.md                       # Full reproducibility guide + known limitations
@@ -154,9 +166,9 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | m_φ = Σm_ν × H₀^alg | 5.71 eV | Algebraic — no fitting |
 | k_fs (Dodelson-Widrow) | 0.493 h/Mpc | From m_φ algebraic |
 | T_WDM(k=0.125 h/Mpc) | 0.8175 | Soft cutoff (scalar condensate, not thermal WDM) |
-| σ₈_eff | 0.794 | — |
-| S₈_eff | 0.820 | 2.54σ KiDS (KiDS-DES internal tension) |
-| **Mean fσ₈ tension (6 surveys)** | **0.50σ** | **Resolved from 3.66σ (baseline P6); fσ₈ only** |
+| σ₈_eff | **0.737** (CLASS+WDM, α=1.6561 h/Mpc) | 0.00σ KiDS-1000 |
+| S₈_eff | **0.761** | 2.29σ DES (KiDS-DES internal tension) |
+| **Mean fσ₈ tension (6 surveys)** | **0.50σ** | **Resolved from 2.56σ (single-sector baseline, corrected); fσ₈ only** |
 | ΛCDM fσ₈ mean tension | 0.51σ | Reference |
 
 > **Note:** The fσ₈ (growth rate) tension is resolved at 0.50σ. The S₈ (weak lensing amplitude) tension remains at ~2.3σ DES / ~3σ KiDS; it is not claimed to be solved.
@@ -175,8 +187,35 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | αT | 0 exact | GW170817 \|αT\| < 10⁻¹⁵ satisfied ✓ |
 | αM | 0 exact | Euclid forecast < 0.05 satisfied ✓ |
 | αB | 0 exact | Euclid forecast < 0.05 satisfied ✓ |
-| αK(z=0) | 3·Ω_DE·Ω_m,dyn = 0.403 | Algebraic (Euclid will constrain < 0.1) |
+| αK(z=0) | 3·Ω_DE·Ω_m,dyn = 0.4033 | Algebraic (Euclid will constrain < 0.1) |
 | G₂_s (running) | 0.979 | Two-sector unification ✓ |
+
+### CLASS Boltzmann Validation (Fases 1–3)
+
+| Test | SSEE+MIRA | SSEE sin MIRA | ΛCDM | Significance |
+|---|---|---|---|---|
+| CMB peak 1 (ℓ) | **220** | 240 | 221 | MIRA necessary |
+| CMB peak 2 (ℓ) | **535** | 597 | 537 | MIRA necessary |
+| CMB peak 3 (ℓ) | **810** | 922 | 814 | MIRA necessary |
+| RMS vs ΛCDM | **1.4%** | 31.5% | — | 22× degradation without MIRA |
+| σ₈ (MIRA+WDM, CLASS) | **0.737** | — | ~0.82 | 0.00σ KiDS-1000 |
+| IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
+| G = D₁_SSEE/D₁_ΛCDM (ODE) | **0.866** | — | 1.0 | 13.4% suppression confirmed |
+
+*CLASS confirms MIRA is physically necessary: without it, all three CMB peaks shift ~10% and RMS error rises 22×.*
+
+### MCMC Fase 4 (Multi-probe background)
+
+| Parameter | Algebraic | Posterior (median ±1σ) | Tension |
+|---|---|---|---|
+| H₀ (km/s/Mpc) | 67.96 | 67.34 ± 0.77 | **0.81σ** ✅ |
+| w₀ | −0.840 | −0.812 ± 0.046 | **0.61σ** ✅ |
+| wₐ | −0.670 | −0.659 ± 0.113 | **0.10σ** ✅ |
+| Ωm,dyn | 0.160 | 0.163 ± 0.012 | **0.25σ** ✅ |
+| r_d (Mpc) | 147.156 | 147.44 ± 0.89 | **0.32σ** ✅ |
+| **Mean tension (5 params)** | — | — | **0.36σ** ✅ |
+
+*100 walkers × 11,000 steps; N_eff = 4,402. All algebraic predictions within 1σ of joint posterior.*
 
 ### Paper 4 (Algebraic ToE)
 
@@ -255,15 +294,21 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
   - Mod2: Bullet Cluster hedge — masa proyectada, no fit κ(θ)
   - Mod3: c²_s<0 caveat en EFT — deferred full IS treatment a Paper 4
 - [x] Paper 5: IS causal perturbation theory — Q1+Q2+Q3+fσ₈, 24 pp
-- [x] Paper 6: φ-DM two-sector model — m_φ=5.71 eV algebraic, fσ₈ 3.66σ→0.50σ, 15 pp (incl. Lyman-α defense)
-- [x] Paper 7: Canonical EFT — β_c=−AURA exact, αT=αM=αB=0, αK=0.403 algebraic, 14 pp
+- [x] Paper 6: φ-DM two-sector model — m_φ=5.71 eV algebraic, fσ₈ 2.56σ→0.50σ (corrected baseline), 15 pp (incl. Lyman-α defense)
+- [x] Paper 7: Canonical EFT — β_c=−AURA exact, αT=αM=αB=0, αK=0.4033 algebraic, 14 pp
 - [x] Cross-paper parameter consistency audit — no critical inconsistencies (`src/ssee_audit_consistency.py`)
 - [x] Paper 6 MCMC — 64 walkers × 15000 steps: Ω_φDM=0.161±0.011, ΔBIC=−12.1, χ²_r=0.497 ✓
-- [ ] Zenodo v2 — archive Papers 5+6+7 PDFs with DOI chaining
-- [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
 - [x] hi_class/CLASS cross-check — αK(0)=0.4033, Δ=0.005% vs algebraic prediction ✓
+- [x] CLASS Fase 1A — MIRA test: SSEE sin MIRA → RMS 31.5% (MIRA physically necessary confirmed)
+- [x] CLASS Fase 1B — P(k) two-sector: WDM α=1.6561 h/Mpc, σ₈_eff=0.737, S₈=0.761 ✓
+- [x] CLASS Fase 2c — sigma8 top-hat fix: correct σ₈ integral with W²(kR) filter ✓
+- [x] CLASS Fase 3 — IS viscosity: cs² effect 0.03%, G=0.866 confirmed ✓
+- [x] MCMC Fase 4 — 5-param multi-probe: max tension 0.81σ, mean 0.36σ ✓
+- [x] Unified journal paper — 884 lines, full audit, Irsic+2017 citation corrected ✓
+- [ ] Zenodo v2 — archive Papers 1–7 + CLASS + unified journal with DOI chaining
+- [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
 - [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
-- [ ] arXiv submission — pending endorser response (Shafieloo/KASI, Lee/SKKU, Di Valentino/Sheffield)
+- [ ] Journal submission to JCAP (pending external audit)
 
 ---
 

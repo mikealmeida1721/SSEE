@@ -3,7 +3,7 @@
 **Author:** Mike Edison Almeida Vallejo  
 **ORCID:** 0009-0008-2195-7836  
 **Repo:** https://github.com/mikealmeida1721/SSEE  
-**Date:** 2026-05-08 (audit round 3 completed — 7 papers)
+**Date:** 2026-05-14 (audit round 4 completed — 7 papers + CLASS + MCMC Fase 4 + unified journal)
 
 ---
 
@@ -17,7 +17,7 @@ Falsifiable predictions — all pre-data (timestamped Zenodo: 10.5281/zenodo.196
 
 | Observable | SSEE prediction | Observed | Status |
 |---|---|---|---|
-| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.827, −0.75) | 0.05σ |
+| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.838±0.057, −0.631±0.226) | 0.05σ / 0.17σ |
 | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.3199 (algebraic via MIRA) | Planck 2018: 0.3153 | 0.63σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
@@ -41,7 +41,9 @@ SSEE/
 │   ├── ssee_paper5.bib
 │   ├── SSEE_Paper6_phiDM.tex                — Paper 6: φ-DM two-sector
 │   ├── ssee_paper6.bib
-│   └── SSEE_Paper7_EFT.tex                  — Paper 7: canonical EFT action
+│   ├── SSEE_Paper7_EFT.tex                  — Paper 7: canonical EFT action
+│   ├── SSEE_Unified_Journal.tex             — Unified journal paper (Papers 1–7 + CLASS + MCMC Fase 4)
+│   └── ssee_unified.bib                     — Bibliography for unified journal
 ├── sandbox_unificado/                        — Paper 4 LaTeX (submodule)
 │   └── SSEE_Paper4_ToE.tex
 ├── src/
@@ -58,6 +60,13 @@ SSEE/
 │   ├── ssee_paper6_mcmc.py                  — MCMC Paper 6: 64 walkers × 15000 steps
 │   ├── ssee_eft_verification.py             — βc=−AURA plateau test, 8 ICs (Paper 7)
 │   └── ssee_audit_consistency.py            — Cross-paper parameter consistency audit
+├── class_ssee/                              — CLASS Boltzmann code (fork of class_public)
+│   ├── ssee_v36.ini                         — SSEE MIRA sector (Ω_m=0.3199)
+│   ├── ssee_v36_nomira.ini                  — SSEE dynamic sector only (Ω_m=0.160)
+│   ├── ssee_v36_twosector.ini               — φ-DM two-sector (ncdm m=5.71 eV)
+│   ├── ssee_v36_IS.ini                      — IS viscosity (cs2_fld=0.001)
+│   ├── calibrate_wdm_alpha.py               — WDM α calibration (top-hat σ₈)
+│   └── plot_*.py                            — CMB, P(k), IS comparison scripts
 ├── data/raw/
 │   ├── planck_pr4_lensing.txt               — Planck 2018 MV lensing bandpowers (14 bins)
 │   └── ...                                  — Planck PR4 TT/TE/EE spectra
@@ -80,7 +89,7 @@ SSEE/
 
 ### Prerequisites
 ```bash
-pip install camb emcee scipy numpy matplotlib
+pip install camb emcee scipy numpy matplotlib corner cobaya classy getdist astropy
 ```
 
 ### Paper 2 — MCMC validation
@@ -164,7 +173,7 @@ k_fs = 0.493 h/Mpc
 Ω_φDM = 0.159878
 Ω_total = 0.319928 ≈ Ω_m,CMB
 σ₈_eff = 0.737  (S₈ = 0.761, 2.29σ DES)
-Mean fσ₈ tension: 0.50σ (was 3.66σ)
+Mean fσ₈ tension: 0.50σ (was 2.56σ, single-sector baseline corrected)
 ```
 Expected output (MCMC):
 ```
@@ -184,6 +193,50 @@ AURA = (3φ+π)/2 = 3.997847
 Gap = 0.199%  [attributed to Ωb+Ωr excluded from background]
 αT = αM = αB = 0 (exact)
 αK(0) = 0.4033 (algebraic)
+```
+
+### CLASS Boltzmann — MIRA test and two-sector P(k)
+
+```bash
+# Build CLASS (requires gfortran + python3-dev):
+cd class_ssee && make
+# Run MIRA vs no-MIRA comparison:
+./class ssee_v36.ini && ./class ssee_v36_nomira.ini
+python3 plot_ssee_cmb.py
+```
+
+Expected output (peak positions):
+```
+SSEE+MIRA:   ℓ₁=220  ℓ₂=535  ℓ₃=810   RMS vs ΛCDM = 1.4%
+SSEE no-MIRA: ℓ₁=240  ℓ₂=597  ℓ₃=922   RMS vs ΛCDM = 31.5%
+```
+*Without MIRA, all three CMB peaks shift ~10% and RMS rises 22×.*
+
+Two-sector P(k) calibration:
+```bash
+./class ssee_v36_twosector.ini
+python3 calibrate_wdm_alpha.py
+```
+Expected: α_WDM = 1.6561 h/Mpc, σ₈_eff = 0.737 (top-hat integral).
+
+IS viscosity test:
+```bash
+./class ssee_v36_IS.ini && python3 plot_IS_viscosity.py
+```
+Expected: cs² effect on σ₈ = 0.03% (negligible); G = D₁_SSEE/D₁_ΛCDM = 0.866.
+
+### MCMC Fase 4 — multi-probe background
+
+5 parameters (H₀, w₀, wₐ, Ωm, r_d); 100 walkers × 11,000 steps; N_eff = 4,402.
+
+Expected output:
+```
+H₀ = 67.34 ± 0.77  (algebraic: 67.96, tension: 0.81σ)
+w₀ = −0.812 ± 0.046  (algebraic: −0.840, tension: 0.61σ)
+wₐ = −0.659 ± 0.113  (algebraic: −0.670, tension: 0.10σ)
+Ωm = 0.163 ± 0.012   (algebraic: 0.160, tension: 0.25σ)
+r_d = 147.44 ± 0.89  (algebraic: 147.156, tension: 0.32σ)
+Mean tension (5 params): 0.36σ
 ```
 
 ---

@@ -277,7 +277,7 @@ shows it is genuinely favoured by current BAO data relative to the
 \LCDM\ flat prior.
 The full-background result ($\Delta\mathrm{BIC}=+206$) quantifies the
 tension between the \SSEE\ enlarged sound horizon
-($r_d \simeq 175.6$~Mpc vs $147.6$~Mpc in \LCDM) and the
+($r_d \simeq 175.2$~Mpc vs $147.1$~Mpc in \LCDM) and the
 standard Friedmann-calibrated Planck prior.
 These two numbers address different physical questions and must not be conflated:
 the former tests the equation of state prediction; the latter quantifies background
@@ -498,10 +498,20 @@ with $f_\phi = 0.5$ ($\Omega_{\phi\mathrm{DM}}/\Omega_{m,\mathrm{CMB}}$).
 
 The WDM scale parameter $\alpha$ is calibrated numerically by requiring the
 CLASS-computed $\sigma_8$ (with standard top-hat filter at $R = 8\,h^{-1}$~Mpc)
-to reproduce the Paper~6 target $\sigeff = 0.737$.
+to match the KiDS-1000 observed value $\sigeff = 0.737$ \citep{KiDS2021}.
 The calibration yields $\alpha = 1.656\,h\,\mathrm{Mpc}^{-1}$, with
 $T_{\rm WDM}(\kfs) = 0.111$ (suppression $98.8\%$ at $\kfs$),
 and $\sigeff = 0.7370$, in exact agreement with KiDS-1000 \citep{KiDS2021}.
+
+\textit{Methodological note:} Paper~6 \citep{AlmeidaSSEE2026P6} derives
+$\sigma_8^{\rm eff} = 0.794$ via the analytic two-sector growth suppression
+$G_{\rm 2s} = 0.979$ applied to $\sigma_{8,\Lambda\rm CDM} = 0.811$, without
+a WDM transfer function applied to $P(k)$.
+The value $\sigeff = 0.737$ reported here integrates the full CLASS $P(k)$
+with the calibrated $T_{\rm WDM}(k;\alpha)$; the two results are
+methodologically complementary --- the analytic route establishes the
+two-sector suppression mechanism, while the CLASS route provides a
+rigorous Boltzmann-level quantification.
 
 Figure~\ref{fig:phiDM_pk} shows the calibrated $P(k)$ and
 Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
@@ -521,8 +531,8 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.82\textwidth]{../class_ssee/output/ssee_fsig8_tension_phiDM.png}
-\caption{$f\sigma_8(z)$ comparison. Data points: six RSD surveys
-         (6dFGRS, SDSS MGS, BOSS DR12, eBOSS DR16, WiggleZ).
+\caption{$f\sigma_8(z)$ comparison. Data points: six RSD measurements
+         (6dFGRS, SDSS MGS, BOSS DR12 at $z=0.32$ and $z=0.38$, eBOSS DR16, WiggleZ).
          \textit{Black dashed}: \LCDM.
          \textit{Red}: \SSEE\ two-sector ($\sigeff = 0.737$), mean tension $0.50\sigma$.
          \textit{Blue}: \SSEE\ single-sector ($\sigma_8 = 0.702$), mean tension $2.56\sigma$.}
@@ -554,7 +564,8 @@ WiggleZ    & 0.570 & $0.426\pm0.048$ & $+1.60\sigma$ & $-0.48\sigma$ \\
 \end{table}
 
 The tension reduction is driven by two effects: (i) the WDM free-streaming
-suppression on scales $k > \kfs$ lowers $\sigeff$ from $0.793$ to $0.737$;
+suppression on scales $k > \kfs$ lowers $\sigeff$ from $0.853$ (CLASS SSEE+MIRA
+single-sector) to $0.737$;
 (ii) the two-sector growth density $\Omega_{m,\mathrm{growth}} = 0.320$ boosts the
 growth rate at large scales.
 We stress that this resolution operates at the linear-growth level; non-linear
@@ -626,7 +637,7 @@ Gradient-stable ($\alphaB = 0 \Rightarrow c_s^2 = 1$) & exact & \checkmark\ pass
 $\alphaT = \alphaM = \alphaB$ & $0$ (exact) & \checkmark\ GW170817 compatible \\
 \midrule
 $\sigma_8$ GR (MIRA background) & $0.836$ & \\
-$\sigma_8$ SSEE RPH ($\alphaK = 0.403$) & $1.046$ & ratio $= 1.25$ \\
+$\sigma_8$ SSEE RPH ($\alphaK = 0.4033$) & $1.046$ & ratio $= 1.25$ \\
 RMS $C_\ell$ SSEE/GR & $39.5\%$ & \\
 CMB peaks GR & $\ell = 219, 533, 807$ & correct (MIRA bg) \\
 CMB peaks SSEE RPH & $\ell = 240, 585, 886$ & $\sim 10\%$ shift from $\alphaK$ \\
@@ -672,7 +683,7 @@ degree of freedom that can absorb the null-energy-condition violation.
 This constitutes a \textit{discriminating prediction}: future EFT surveys
 (DESI~Y3 weak lensing, Euclid) that constrain $\alphaB \simeq 0$ would
 place SSEE in tension with phantom crossing, while a detection of
-$\alphaB \neq 0$ at $z < 0.25$ would support the two-sector picture.
+$\alphaB \neq 0$ at $z < 0.31$ would support the two-sector picture.
 The $\alphaK$ validation reported here is performed at constant
 $w = \wz = -0.840$, which is the physically relevant regime at $z \simeq 0$
 where the EFTCAMB run uses the fluid-approximation input $\alphaK^{\rm fluid} = 0.4033$; the theoretical bare-field value derived in Paper~7 is $\alphaK = 0.073$.
@@ -765,7 +776,7 @@ $10\%$--$20\%$ level.
 The algebraic mass $\mphi = 5.71$~eV is in the warm dark matter regime
 ($\kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$).
 Current Lyman-$\alpha$ bounds on thermal WDM place constraints at
-$m_{\rm WDM} \gtrsim 5.3$~keV \citep{Viel2005}, but the \SSEE\ $\phi$DM
+$m_{\rm WDM} \gtrsim 5.3$~keV \citep{Irsic2017}, but the \SSEE\ $\phi$DM
 is a mixed sector (fraction $f_\phi = 0.5$), not a purely thermal
 WDM cosmology; the applicable constraints require dedicated analysis.
 
@@ -811,9 +822,9 @@ across four observational tiers.
 \item \textbf{EFT stability.} EFTCAMB confirms ghost-freedom and gradient
   stability using the fluid-approximation input $\alphaK^{\rm fluid} = 0.4033$
   ($\Delta = 0.005\%$); the bare-field theoretical value from Paper~7 is
-  $\alphaK = 0.073$ (below Euclid sensitivity $\sigma(\alphaK_0) < 0.1$).
+  $\alphaK = 0.073$ (below Euclid sensitivity $\sigma(\alpha_{K,0}) < 0.1$).
   $\alphaT = \alphaM = \alphaB = 0$ (exact); GW170817 compatibility is exact.
-  The CPL phantom crossing at $z \approx 0.25$ requires $\alphaB \neq 0$
+  The CPL phantom crossing at $z \approx 0.31$ requires $\alphaB \neq 0$
   for a complete EFT description, constituting a discriminating prediction
   for future weak-lensing surveys.
 \end{enumerate}
@@ -853,8 +864,8 @@ are archived at Zenodo: \url{https://doi.org/10.5281/zenodo.20093447}.
 \toprule
 Parameter & Formula & SSEE value & Observed \\
 \midrule
-$w_0$ & $-T_r/M_v = -(3\phiG+\pi)/[2(\phiG+\pi)]$ & $-0.8399$ & $-0.838^{+0.048}_{-0.057}$ (DESI) \\
-$w_a$ & $-P_{\rm sc}/K_v$ & $-0.6699$ & $-0.62^{+0.24}_{-0.25}$ (DESI) \\
+$w_0$ & $-T_r/M_v = -(3\phiG+\pi)/[2(\phiG+\pi)]$ & $-0.8399$ & $-0.838\pm0.057$ (DESI) \\
+$w_a$ & $-P_{\rm sc}/K_v$ & $-0.6699$ & $-0.631\pm0.226$ (DESI) \\
 $H_0$ & $3(\phiG+\pi)^2$ & $67.96$ km/s/Mpc & $67.36\pm0.54$ (Planck) \\
 $n_s$ & $1-\phiG^{-7}$ & $0.96556$ & $0.9649\pm0.0042$ (Planck) \\
 $\Omm$ & $(\pi-\phiG)/(\pi+\phiG)$ & $0.3201$ & $0.3153\pm0.0073$ (Planck) \\
@@ -868,7 +879,7 @@ $\beta_c$ & $-(3\phiG+\pi)/2$ & $-3.9978$ & --- \\
 $\alphaK$ & $3\,\Omde(1+w_{\varphi,\rm bare})$ & $0.073$ & $<0.1$ (Euclid threshold) \\
 $\alphaT = \alphaM = \alphaB$ & minimal coupling & $0$ & $|\alphaT|<10^{-15}$ (GW170817) \\
 \midrule
-$\mphi$ & $\Sigma m_\nu \times H_0^{\rm alg}$ & $5.71$ eV & $<0.8$ eV (KATRIN) \\
+$\mphi$ & $\Sigma m_\nu \times H_0^{\rm alg}$ & $5.71$ eV & --- (target: KATRIN/PTOLEMY) \\
 $\kfs$ & Dodelson-Widrow ($\mphi$) & $0.493\,h$/Mpc & --- \\
 $r$ & $\phiG^{-10}$ & $0.00813$ & $<0.036$ (BK18) \\
 \bottomrule

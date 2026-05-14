@@ -92,8 +92,9 @@ active only on scales $k < \kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ --- reproduces
 $\sigeff = 0.737$ as measured directly from CLASS\@, reducing the mean
 $\fsig$ tension from $2.56\sigma$ to $0.50\sigma$ across six RSD surveys.
 
-An EFTCAMB validation at the Bellini-Sawicki level confirms $\alphaK = 0.4033$
-(algebraically predicted; $\Delta = 0.005\%$), with $\alphaT = \alphaM = \alphaB = 0$
+An EFTCAMB validation at the Bellini-Sawicki level uses the fluid-approximation
+input $\alphaK^{\rm fluid} = 0.4033$ ($\Delta = 0.005\%$), while the theoretical
+bare-field value is $\alphaK = 0.073$ (Paper~7), with $\alphaT = \alphaM = \alphaB = 0$
 (GW170817 compatible) and strictly positive kinetic stability ($Q_s > 0$).
 All model parameters are falsifiable by named forthcoming experiments.
 \end{abstract}
@@ -574,9 +575,17 @@ In the Bellini-Sawicki parametrisation \citep{Bellini2015}, this yields:
 \begin{equation}
   \alphaT = \alphaM = \alphaB = 0 \quad (\text{exact}),
   \qquad
-  \alphaK = 3\,\Omde\,\Ommdyn = 3\times0.840\times0.160 = 0.4033.
+  \alphaK = 3\,\Omde\,(1+w_{\varphi,\rm bare}) = 3\times0.840\times0.029 = 0.073.
   \label{eq:alphas}
 \end{equation}
+Here $w_{\varphi,\rm bare} = -0.971$ is the scalar-field equation of state in the
+thawing regime (Paper~7 \S\,\textsc{alphak}); it differs from the effective fluid
+EoS $w_0 = -0.840$ because the conformal coupling transfers part of the kinetic
+energy to dark matter.
+Using $w_0$ in place of $w_{\varphi,\rm bare}$ overestimates $\alphaK$ by a
+factor $\approx 5.5$ (see Paper~7); the EFTCAMB runs below use the fluid
+approximation $\alphaK^{\rm fluid} = 3\Omde(1+w_0) = 0.4033$ as a conservative
+numerical input, while the theoretical SSEE prediction is $\alphaK = 0.073$.
 The vanishing of $\alphaT$ (tensor speed excess), $\alphaM$ (Planck mass run rate),
 and $\alphaB$ (kinetic braiding) implies: (i) gravitational waves propagate at $c$
 (GW170817 compatible at $|\alphaT| < 10^{-15}$ \citep{GW170817,Monitor2017});
@@ -591,7 +600,8 @@ We validate \SSEE\ at the linear perturbation level using H-EFTCAMB~v1.6.5
 ($\texttt{EFTflag}=2$, $\texttt{AltParEFTmodel}=1$).
 The ghost-free stability condition requires $Q_s > 0$:
 \begin{equation}
-  Q_s = \frac{\alphaK + \frac{3}{2}\alphaB^2}{2} = \frac{\alphaK}{2} = 0.2016 > 0.
+  Q_s = \frac{\alphaK + \frac{3}{2}\alphaB^2}{2} = \frac{\alphaK}{2}
+  = \begin{cases} 0.037 & (\alphaK = 0.073,\ \text{bare-field}) \\ 0.2016 & (\alphaK = 0.4033,\ \text{fluid approx.}) \end{cases} > 0.
   \label{eq:Qs}
 \end{equation}
 With $\alphaB = 0$, the gradient stability condition reduces to $c_s^2 = 1$,
@@ -608,8 +618,8 @@ EFTCAMB confirms both conditions are satisfied.
 \toprule
 Quantity & Value & Status \\
 \midrule
-$\alphaK$ algebraic (eq.~\ref{eq:alphas}) & $0.4033$ & --- \\
-$\alphaK$ Paper~7 (canonical action) & $0.4033$ & $\Delta = 0.005\%$ \\
+$\alphaK$ Paper~7 bare-field ($w_\varphi=-0.971$) & $0.073$ & theoretical \\
+$\alphaK$ fluid approx.\ (EFTCAMB input) & $0.4033$ & $\Delta = 0.005\%$ \\
 Ghost-free ($Q_s > 0$) & $Q_s = 0.2016$ & \checkmark\ passed \\
 Gradient-stable ($\alphaB = 0 \Rightarrow c_s^2 = 1$) & exact & \checkmark\ passed \\
 $\alphaT = \alphaM = \alphaB$ & $0$ (exact) & \checkmark\ GW170817 compatible \\
@@ -664,7 +674,7 @@ place SSEE in tension with phantom crossing, while a detection of
 $\alphaB \neq 0$ at $z < 0.25$ would support the two-sector picture.
 The $\alphaK$ validation reported here is performed at constant
 $w = \wz = -0.840$, which is the physically relevant regime at $z \simeq 0$
-where Paper~7 derives $\alphaK = 0.4033$.
+where the EFTCAMB run uses the fluid-approximation input $\alphaK^{\rm fluid} = 0.4033$; the theoretical bare-field value derived in Paper~7 is $\alphaK = 0.073$.
 
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -717,7 +727,7 @@ $\sigma_8^{\rm SSEE}$ (single-sector ODE) & $0.702$ & Weak lensing surveys & Ret
 \multicolumn{4}{l}{\textit{Predictions (not yet observationally accessible)}} \\
 $\mphi = \Sigma m_\nu \times H_0^{\rm alg}$ & $5.71$ eV & KATRIN/PTOLEMY, 2027--2030 & Prediction \\
 $\kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ (DW from $\mphi$) & $0.493\,h/\mathrm{Mpc}$ & DESI Y3 / Euclid $P(k)$ & Prediction \\
-$\alphaK = 0.4033$ & $0.4033$ & Euclid weak lensing & Prediction \\
+$\alphaK = 0.073$ & $0.073$ & Euclid WL null test ($\alphaK < 0.1$ threshold) & Prediction \\
 $r = \phiG^{-10}$ & $0.00813$ & LiteBIRD $\sim$2032 & Prediction \\
 \bottomrule
 \end{tabular}%
@@ -797,10 +807,11 @@ across four observational tiers.
   (KiDS-1000 central value), reducing the mean $f\sigma_8$ tension from
   $2.56\sigma$ to $0.50\sigma$ across six surveys.
 
-\item \textbf{EFT stability.} EFTCAMB confirms $\alphaK = 0.4033$ (algebraic
-  prediction; $\Delta = 0.005\%$) with $\alphaT = \alphaM = \alphaB = 0$
-  (exact), satisfying ghost-freedom and gradient stability.
-  GW170817 compatibility is exact.
+\item \textbf{EFT stability.} EFTCAMB confirms ghost-freedom and gradient
+  stability using the fluid-approximation input $\alphaK^{\rm fluid} = 0.4033$
+  ($\Delta = 0.005\%$); the bare-field theoretical value from Paper~7 is
+  $\alphaK = 0.073$ (below Euclid sensitivity $\sigma(\alphaK_0) < 0.1$).
+  $\alphaT = \alphaM = \alphaB = 0$ (exact); GW170817 compatibility is exact.
   The CPL phantom crossing at $z \approx 0.25$ requires $\alphaB \neq 0$
   for a complete EFT description, constituting a discriminating prediction
   for future weak-lensing surveys.
@@ -808,7 +819,8 @@ across four observational tiers.
 
 The framework generates four near-term falsifiable predictions: $m_\phi = 5.71$~eV
 (KATRIN/PTOLEMY, 2027--2030), $\kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ (DESI~Y3/Euclid
-$P(k)$), $\alphaK = 0.4033$ (Euclid weak lensing), and $r = 0.00813$ (LiteBIRD).
+$P(k)$), $\alphaK = 0.073$ (Euclid WL null test; a detection $\alphaK > 0.1$ would
+falsify SSEE), and $r = 0.00813$ (LiteBIRD).
 All analytical scripts, CLASS configuration files, and EFTCAMB inputs are archived
 at Zenodo \citep{AlmeidaSSEE2026zenodo}.
 
@@ -852,7 +864,7 @@ $\OmmCMB$ & $\MIRA \times \Ommdyn$ & $0.3199$ & $0.3153$ (Planck) \\
 \midrule
 $\KAL$ & $\beta + \pi = (\phiG+3\pi)/2$ & $5.5214$ & --- \\
 $\beta_c$ & $-(3\phiG+\pi)/2$ & $-3.9978$ & --- \\
-$\alphaK$ & $3\,\Omde\,\Ommdyn$ & $0.4033$ & --- \\
+$\alphaK$ & $3\,\Omde(1+w_{\varphi,\rm bare})$ & $0.073$ & $<0.1$ (Euclid threshold) \\
 $\alphaT = \alphaM = \alphaB$ & minimal coupling & $0$ & $|\alphaT|<10^{-15}$ (GW170817) \\
 \midrule
 $\mphi$ & $\Sigma m_\nu \times H_0^{\rm alg}$ & $5.71$ eV & $<0.8$ eV (KATRIN) \\

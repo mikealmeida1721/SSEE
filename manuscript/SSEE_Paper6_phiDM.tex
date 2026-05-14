@@ -436,6 +436,24 @@ The DES Y3 value $S_8 = 0.776 \pm 0.017$
 \citep{DESY32022} gives a tension of $2.5\sigma$
 [$=(0.820-0.776)/\sqrt{0.017^2+0.005^2}$].
 
+\paragraph{Non-linear and WDM transfer-function robustness.}
+The $S_8$ estimate above uses only the two-sector growth factor $G_{\rm 2s}$,
+which is conservative: it treats the $\phi$-DM as fully clustering on scales
+$k < \kfs$ and ignores the smooth Viel+2005 WDM transfer function.
+Including $T_{\rm WDM}(k) = [1+(\alpha k)^{2\mu}]^{-5/\mu}$ ($\mu=1.12$, Viel+2005)
+with the CLASS-calibrated scale $\alpha_{\rm WDM} = 1.656\,h/\mathrm{Mpc}$
+and the mixing formula $P_{\rm mix} = P_{\rm lin}\,[(1-f_\phi) + f_\phi T_{\rm WDM}]^2$
+yields $\sigeff = 0.728$ (CAMB) or $0.737$ (CLASS), hence
+$S_8^{\rm WDM} = 0.752$--$0.761$ ($-0.72\sigma$ to $-0.25\sigma$ vs KiDS).
+A Halofit non-linear correction (CAMB Halofit) adds a $+7.5\%$ boost to $\sigeff$,
+reduced from the $\Lambda$CDM value of $+11.3\%$ because the WDM suppresses small-scale
+power at $k > \kfs$. The resulting non-linear estimate is $S_8^{\rm nl} = 0.808$
+($+2.1\sigma$ KiDS).
+Noting that KiDS-1000 constrains the \emph{linear} $\sigma_8$ (HMcode non-linear
+corrections are folded into the WL analysis pipeline), the primary comparison
+is with the linear result. The SSEE two-sector model thus brackets the KiDS
+measurement: $S_8 \in [0.752, 0.820]$, encompassing the KiDS value $0.766 \pm 0.020$.
+
 \subsection{Conserved background sectors}
 \label{subsec:unchanged}
 

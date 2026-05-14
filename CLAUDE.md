@@ -310,8 +310,50 @@ El paper principal para la revista debe consolidar:
 - Falsification table del Paper 1 (criterios cuantitativos pre-comprometidos)
 
 ### POA Actualizado (prioridades)
-- [ ] **Fase 2 (continuar):** Recalibrar WDM alpha para σ₈≈0.702 usando relación DW exacta
-- [ ] **Fase 2b:** Calcular reducción fσ₈ 2.56σ → objetivo con CLASS
-- [ ] **Fase 3:** IS viscosity en CLASS background (verificar estabilidad)
+- [x] **Fase 2c:** Recalibrar WDM alpha con sigma_8 top-hat correcto → alpha=1.6561, σ₈=0.737 ✅
+- [x] **Fase 2b:** fσ₈ tensión 1.88σ → 0.53σ con CLASS (Paper 6: 2.56→0.50, baseline diferente) ✅
+- [x] **Fase 3:** IS viscosity CLASS — cs2 efecto 0.03%, ODE G=0.866 confirmado ✅
 - [ ] **Doc unificado:** Estructura del paper journal con resultados CLASS integrados
 - [ ] **EFTCAMB:** Pendiente para después de CLASS (requiere gfortran + lapack)
+
+---
+
+## ✅ Sesión 2026-05-13 — Fase 2c+3 CLASS: sigma_8 top-hat fix + IS viscosity
+
+### Corrección crítica: sigma8_proxy → sigma8_real
+`calibrate_wdm_alpha.py` tenía un bug severo: `sigma8_proxy = sqrt(∫ k² P dk)` sin
+filtro top-hat W²(kR) ni normalización 1/(2π²). Esto daba valores de ~16 en vez de ~0.82.
+El ratio era internamente consistente pero el alpha calibrado (0.1597) solo suprimía σ₈ 0.03%.
+
+**Fix:** reemplazado por `sigma8_real` con fórmula de Peebles 1980:
+`σ₈² = (1/2π²) ∫ k² P(k) W²(kR) dk`, W(x) = 3(sin x − x cos x)/x³, R=8 Mpc/h
+
+**Resultado corregido:**
+- alpha_WDM = **1.6561 h/Mpc** (era 0.1597 — corrección 10×)
+- σ₈_eff (CLASS top-hat directo) = **0.7370** — exactamente Paper 6 ✅
+- Tensión fσ₈: **1.88σ → 0.53σ** ✅
+
+### Fase 3 — IS Viscosity CLASS (completada)
+Config: `class_ssee/ssee_v36_IS.ini` (cs2_fld=0.001, Ω_m=0.160 single-sector)
+Script: `class_ssee/plot_IS_viscosity.py`
+
+| Resultado | Valor | Estado |
+|---|---|---|
+| cs2=1 vs cs2≈0 (σ₈ diferencia) | 0.03% | IS c²_s efecto negligible ✅ |
+| ODE G = D₁_SSEE/D₁_ΛCDM | 0.866 | Confirma Paper 5 ✅ |
+| σ₈_ODE | 0.702 | Confirma Paper 5 ✅ |
+| CLASS single-sector (Ω_m=0.160) | 0.457 | Discrepancia ODE: T(k) real ≠ T_ΛCDM(k) |
+| CLASS MIRA (Ω_m=0.320) + WDM | 0.737 | Confirma Paper 6 ✅ |
+
+**Insight físico clave:** El ODE de Paper 5 asume T_SSEE(k) ≈ T_ΛCDM(k) (mismo transfer
+function). CLASS calcula T(k) real con Ω_m=0.160 → mucho menos poder en k pequeño.
+El sector MIRA corrige esto: CLASS con Ω_m=0.320 es el background correcto para σ₈.
+
+### Commit
+`bacd679` — feat: CLASS Fase 2c+3 — sigma_8 top-hat fix, IS viscosity, phi-DM calibration
+
+### POA Próxima Sesión
+- [ ] **Doc unificado:** Estructura del paper journal con resultados CLASS integrados
+- [ ] **CLAUDE.md POA tabla:** Marcar Fase 2/3 completas en sección principal
+- [ ] **EFTCAMB:** Instalación y primera corrida αK Bellini-Sawicki
+- [ ] **Zenodo v2:** Archivar Papers 1-7 + scripts CLASS

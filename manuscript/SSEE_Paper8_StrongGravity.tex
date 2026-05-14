@@ -61,12 +61,14 @@ deflection angle is amplified by the factor $\sqrt{\bc}$ relative to the GR
 prediction for the same baryonic mass.
 This yields an algebraic prediction for the Einstein radius ratio:
 $\thetaE^{\mathrm{SSEE}}/\thetaE^{\mathrm{GR}} = \sqrt{\bc} \approx \MIRA$,
-where $\MIRA = (3\phiG+\pi)/4 \approx 1.999$ is the same structural constant
-that maps the acoustic horizon in the CMB sector (Paper~3).
-The Vainshtein mechanism operates below the radius
-$\rV \propto (r_S/\KAL^{1/2})^{1/3}\,r$ and suppresses the fifth force as
-$F_\phi/F_N \propto (r/\rV)^{4/3} \to 0$,
-recovering GR in the solar system to better than $10^{-5}$.
+where $\MIRA = (3\phiG+\pi)/4 \approx 1.9989$ is the same structural constant
+that maps the acoustic horizon in the CMB sector (Paper~3); the 0.03\% gap
+$\sqrt{\bc}/\MIRA = 1.00030$ is a near-coincidence, not an algebraic identity
+(see Section~\ref{sec:mira}).
+Solar-system gravitational tests are automatically satisfied because the
+disformal coupling selects dark matter as the sole source of $\phi$: in
+the solar system $\rho_{\mathrm{DM}} \approx 0$, so $\phi$ is unsourced
+locally and the disformal modification to the metric is negligible.
 We derive the two-sector lensing prediction: on scales $k < k_{\mathrm{fs}}
 = 0.493\,h\,\mathrm{Mpc}^{-1}$ both CDM and $\phi$-DM contribute and the
 Einstein radius matches the $\Lambda$CDM prediction; on scales $k > k_{\mathrm{fs}}$
@@ -108,7 +110,8 @@ new effects arise beyond the linearised regime:
 
 In this paper we derive both effects analytically, obtain numerical predictions
 using the SSEE algebraic constants, and identify the structural constant
-$\MIRA = (3\phiG+\pi)/4 \approx 1.999$ as the lensing amplification factor.
+$\sqrt{\bc} \approx \MIRA$ (to $0.03\%$) as the lensing amplification factor,
+where $\MIRA = (3\phiG+\pi)/4 \approx 1.9989$.
 This is the same constant that appears in the CMB horizon mapping
 (Paper~3) and in the two-sector mass ratio (Paper~6):
 \begin{equation}
@@ -174,9 +177,9 @@ The algebraic constants fixed by $\phiG$ and $\pi$ (Paper~7) are:
               \label{eq:KAL}\\
   \bc \equiv \AURA &= \frac{3\phiG+\pi}{2} \approx 3.998\,,
               \label{eq:bc}\\
-  \MIRA   &= \frac{\bc}{2} = \frac{3\phiG+\pi}{4} \approx 1.999\,,
+  \MIRA   &= \frac{\bc}{2} = \frac{3\phiG+\pi}{4} \approx 1.9989\,,
               \label{eq:MIRA}\\
-  M/\Mpl  &= \left(\frac{\KAL}{2\bc^2}\right)^{1/4} \approx 1.114\,.
+  M       &\approx \Mpl\quad\text{(free EFT parameter; we adopt $M=\Mpl$ as reference)}\,.
               \label{eq:M}
 \end{align}
 The parameter $\bc$ encodes the strength of the disformal coupling; it
@@ -446,92 +449,73 @@ Solving for $\rV$:
   \boxed{\rV \;=\; \left(\frac{\KAL^2\,\bc\,\Mpl\,r_S\,c^2}{M^4}\right)^{1/2}\,.}
   \label{eq:vainshtein_radius}
 \end{equation}
-Using $M/\Mpl = 1.114$ (hence $M^4/\Mpl^4 = 1.543$),
-$\KAL = 5.521$, $\bc = 3.998$:
+Setting $M = \Mpl$ (reference value, see eq.~\eqref{eq:M}),
+$\KAL = 5.521$, $\bc = 3.998$, and using $\ell_{\mathrm{Pl}} = \sqrt{\hbar G/c^3}$:
 \begin{equation}
-  \rV \;=\; \left(\frac{5.521^2 \times 3.998}{1.543}\right)^{1/2}
-              \Mpl^{-1/2}\,\sqrt{r_S c^2}
-       \;=\; 8.86\,\left(\frac{r_S}{\ell_{\mathrm{Pl}}}\right)^{1/2}\,\ell_{\mathrm{Pl}}\,.
+  \rV \;=\; \sqrt{5.521^2 \times 3.998}\;\sqrt{r_S\,\ell_{\mathrm{Pl}}}
+       \;\approx\; 8.86\,\sqrt{r_S\,\ell_{\mathrm{Pl}}}\,.
   \label{eq:rV_numerical}
 \end{equation}
 
-More usefully, expressed in astrophysical units ($r_S = 2GM_\odot n/c^2$ for a
-system of $n$ solar masses):
-
-\paragraph{Solar System ($M = 1\,M_\odot$, $r_S \approx 3\,\mathrm{km}$):}
+The Vainshtein radius expressed in SI units is
+SI units is (restoring $c$ and $\hbar$ via $\ell_{\mathrm{Pl}} = \sqrt{\hbar G/c^3}$):
 \begin{equation}
-  \rV^\odot \;\approx\; 8.86 \times
-  \left(\frac{3\times10^3\,\mathrm{m}}{1.6\times10^{-35}\,\mathrm{m}}\right)^{1/2}
-  \times 1.6\times10^{-35}\,\mathrm{m}
-  \;\approx\; 1.9\times10^{-14}\,\mathrm{pc}\,,
+  \rV \;=\; \sqrt{\KAL^2\,\bc}\;\sqrt{r_S\,\ell_{\mathrm{Pl}}}\,,
+  \label{eq:rV_SI}
 \end{equation}
-which is $\approx 6\,\mathrm{km}$ --- deep inside the Sun.
-Any solar-system test occurs at $r \gg \rV^\odot$... wait, let me reconsider.
-For the solar system we need $\rV$ to be \emph{larger} than the planetary
-orbits.
-In Galileon-type models, $\rV$ is defined such that \emph{inside} $\rV$ the
-non-linear term dominates and screening occurs.
-Let us compute $\rV$ for the Milky Way and verify the solar system is inside it.
+where $r_S = 2GM_{\rm obj}/c^2$ is the Schwarzschild radius of the sourcing object.
 
-\paragraph{Milky Way ($M \approx 10^{12}\,M_\odot$, $r_S \approx 3\times10^{12}\,\mathrm{km}$):}
+\paragraph{Numerical estimates:}
 \begin{align}
-  \rV^{\mathrm{MW}} &= \left(\frac{\KAL^2\bc\Mpl\,r_S c^2}{M^4}\right)^{1/2} \notag\\
-  &= 8.86\,\sqrt{r_S\,\ell_{\mathrm{Pl}}}
-   = 8.86\,\sqrt{(3\times10^{15}\,\mathrm{m})\times(1.6\times10^{-35}\,\mathrm{m})}
-   \notag\\
-  &\approx 8.86\,\sqrt{4.8\times10^{-20}\,\mathrm{m}^2}
-   \approx 8.86 \times 2.2\times10^{-10}\,\mathrm{m}\,.
+  \rV^\odot   &= \sqrt{5.521^2\times3.998}\;\sqrt{(3\,\mathrm{km})(1.6\times10^{-35}\,\mathrm{m})}
+                \;\approx\; 6\,\mathrm{km}\,, \label{eq:rV_sun}\\
+  \rV^{10^{12}M_\odot}
+              &\approx \sqrt{5.521^2\times3.998}\;\sqrt{(3\times10^{12}\,\mathrm{km})(1.6\times10^{-35}\,\mathrm{m})}
+                \;\approx\; 2\times10^{-4}\,\mathrm{m}\,. \label{eq:rV_mw}
 \end{align}
-This gives a very small number, suggesting that the dimensional prefactor
-derived here is not yet complete --- a full calculation requires proper
-insertion of $c$ and $\hbar$ to convert Planck units to SI.
-The correct scaling relation is (restoring all constants):
-\begin{equation}
-  \rV \;=\; \left(\frac{\KAL^2\bc}{M^4/\Mpl^4}\right)^{1/2}
-              \left(\frac{GM}{c^2}\right)^{1/2}
-              \left(\frac{c^2/G}{\Mpl^2}\right)^{1/4}\,,
-\end{equation}
-which simplifies in the limit $\Mpl^2 \sim c^2/G$ to
-\begin{equation}
-  \rV \;\sim\; \left(\bc\,\KAL^2\right)^{1/2}
-               \left(\frac{GM}{c^2}\right)^{1/2}
-               \left(\frac{c^2}{G\,m_{\mathrm{Pl}}^2/\hbar}\right)^{1/4}
-               \sim \Lambda_{\mathrm{UV}}^{-1/2}\,r_S^{1/2}\,,
-  \label{eq:rV_scaling}
-\end{equation}
-where $\Lambda_{\mathrm{UV}} \sim M/(2\pi\hbar c)$ is the UV cutoff scale
-associated with $M = 1.114\,\Mpl$.
-Given $M \approx \Mpl$, the UV cutoff is near the Planck scale, and
-$\rV$ is parametrically of order $r_S^{1/2}\,\ell_{\mathrm{Pl}}^{1/2}$.
 
-The key qualitative conclusion --- which is robust to the exact $\mathcal{O}(1)$
-coefficients --- is that Vainshtein screening operates on all astrophysical
-scales where $r \lesssim \rV$, and the scalar force is suppressed as
-\begin{equation}
-  \frac{F_\phi}{F_N} \;\propto\; \left(\frac{r}{\rV}\right)^{4/3} \;\to\; 0
-  \quad \text{as } r/\rV \to 0\,,
-  \label{eq:screening}
-\end{equation}
-recovering standard GR within the Vainshtein radius.
+Both values are far below any astrophysical scale of interest.
+This means that for $M \approx \Mpl$ the kinetic expansion is dominated by the linear
+term $X/\KAL$ at all sub-Hubble scales; the non-linear term $X^2/M^4$ never
+activates on astrophysical or solar-system scales.
+Consequently, Vainshtein screening is \emph{not} the mechanism responsible for
+GR compliance in the SSEE model.
 
-\subsection{Power-law profile inside the Vainshtein radius}
+\subsection{GR compliance from selective coupling}
+\label{sec:gr_compliance}
 
-Inside $\rV$, the non-linear kinetic term dominates and the scalar EOM
-becomes $\nabla\cdot[(|\nabla\phi|^2/M^4)\nabla\phi] = \bc\rho_{\mathrm{DM}}/\Mpl$.
-For spherical symmetry this gives
-$\phi'(r) \propto r^{-2/3}$, and the scalar force scales as
-$F_\phi \propto |\phi'| \propto r^{-2/3}$, compared to
-$F_N \propto r^{-2}$, so
+Solar-system gravitational tests are nevertheless automatically satisfied by
+the \emph{selective coupling} structure of the action~\eqref{eq:action}:
+\begin{itemize}
+  \item \textbf{Baryons} couple to the physical metric $g_{\mu\nu}$ only.
+        They feel no direct force from the scalar gradient $\nabla\phi$.
+  \item \textbf{Dark matter} couples to the disformal metric $\tilde{g}_{\mu\nu}$.
+        It is the sole source of $\phi$ through the scalar EOM~\eqref{eq:phi_eom}.
+  \item In the solar system, the dark-matter density is
+        $\rho_{\mathrm{DM}} \approx 0.3\,\mathrm{GeV/cm^3}$, far below galactic
+        overdensities. The scalar field is barely sourced locally, so
+        $\nabla\phi \approx 0$ and $\tilde{g}_{\mu\nu} \approx g_{\mu\nu}$.
+\end{itemize}
+Therefore all standard solar-system tests (Cassini time delay, perihelion
+precession, lunar laser ranging \citep{will2014}) pass at leading order without
+requiring any non-linear screening.
+
+\subsection{Power-law profile and dark-matter self-force}
+
+In the non-linear regime (which would require $M \ll \Mpl$ or extreme dark-matter
+overdensities), the scalar EOM inside $\rV$ becomes
+$\nabla\cdot[(|\nabla\phi|^2/M^4)\nabla\phi] = \bc\rho_{\mathrm{DM}}/\Mpl$.
+For spherical symmetry this gives $\phi'(r) \propto r^{-2/3}$, and the
+dark-matter self-force scales as
 \begin{equation}
-  \frac{F_\phi}{F_N} \;\propto\; r^{-2/3+2} = r^{4/3}\,.
+  \frac{F_\phi}{F_N} \;\propto\; r^{4/3} \;\to\; 0
+  \quad (r \to 0)\,,
   \label{eq:Fphi_ratio}
 \end{equation}
-At $r \to 0$, $F_\phi/F_N \to 0$: the solar system is screened.
-
-Specifically, for the Sun ($r \sim 1\,\mathrm{AU} = 1.5\times10^{11}\,\mathrm{m}$),
-the screening ratio $F_\phi/F_N \ll 1$ for any reasonable $\rV \sim$ kpc,
-consistent with all solar system gravitational tests at the $10^{-5}$ level
-\citep{will2014}.
+suppressing the scalar contribution to dark-matter clustering relative to
+gravity at small scales.
+A full analysis of whether $M \ll \Mpl$ is physically motivated requires the
+UV completion of the action (beyond the scope of this paper).
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Strong Lensing Predictions}
@@ -704,7 +688,7 @@ falsify the corresponding sector of the SSEE framework.
 
 \subsection{Consistency of MIRA across sectors}
 
-The appearance of $\MIRA \approx 1.999$ in three independent contexts ---
+The appearance of $\MIRA \approx 1.9989$ in three independent contexts ---
 the CMB acoustic horizon (Paper~3), the two-sector mass ratio (Paper~6),
 and the lensing amplification (this paper) --- is a structural prediction
 of the algebraic framework.
@@ -754,11 +738,10 @@ Several steps remain to complete the strong-gravity picture:
 
 The $X^2/M^4$ kinetic term in the SSEE action is the leading non-linear
 operator in a derivative expansion.
-The scale $M \approx 1.114\,\Mpl$ is near the Planck scale, suggesting that
-the EFT breaks down near Planck energies and a UV completion is required.
-The algebraic determination $M/\Mpl = (\KAL/2\bc^2)^{1/4}$ provides
-a concrete prediction for where new physics (quantum gravity effects) must
-enter.
+The reference scale $M \approx \Mpl$ places the EFT cutoff near Planck energies,
+suggesting that a UV completion (quantum gravity) must enter at or before $M_{\rm Pl}$.
+The precise value of $M$ is a free parameter of the current EFT formulation;
+locking it algebraically to $\varphi$ and $\pi$ requires the UV completion.
 This is the starting point for Paper~9 of the SSEE series, which will
 address the quantum dimensional derivation of $H_0$ from the Planck scale
 and the exact $P(X,\phi)$ Lagrangian from first principles.
@@ -783,13 +766,17 @@ coupling and found:
         times the GR Einstein radius.
 
   \item \textbf{MIRA emergence}: The structural constant
-        $\MIRA = (3\phiG+\pi)/4 \approx 1.999$ that maps the CMB acoustic
+        $\MIRA = (3\phiG+\pi)/4 \approx 1.9989$ that maps the CMB acoustic
         horizon and the two-sector mass ratio also determines the lensing
-        amplification, to within $0.03\%$.
+        amplification to within $0.03\%$ (via the near-coincidence
+        $\sqrt{\bc} \approx \MIRA$).
 
-  \item \textbf{Vainshtein screening}: The $X^2/M^4$ kinetic term screens
-        the fifth force inside the Vainshtein radius as $F_\phi/F_N
-        \propto r^{4/3} \to 0$, recovering GR in the solar system.
+  \item \textbf{GR compliance}: With $M \approx \Mpl$, the Vainshtein radius
+        $\rV \sim \sqrt{r_S\,\ell_{\mathrm{Pl}}}$ is sub-nuclear for all
+        astrophysical objects; Vainshtein non-linear screening is not active.
+        GR tests are satisfied because baryons couple only to $g_{\mu\nu}$
+        and the scalar is unsourced in the low-$\rho_{\mathrm{DM}}$
+        solar-system environment.
 
   \item \textbf{Two-sector signature}: SSEE predicts a scale-dependent
         lensing suppression near $k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1}$,

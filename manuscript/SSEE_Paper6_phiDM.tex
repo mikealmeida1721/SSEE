@@ -697,23 +697,63 @@ the Lyman-$\alpha$ constraint on the WDM component is substantially relaxed
 (see e.g.\ \citealt{Boyarsky2019}); for $f_{\rm WDM} \approx 0.5$, the
 effective bound weakens to $m_{\rm WDM}^{\rm eff} \gtrsim 0.1$--$0.5\,\mathrm{keV}$.
 
-\paragraph{Step 2: The observable is $\kfs$, not $\mphi$.}
+\paragraph{Step 2: The observable is $\kfs$, not $\mphi$ — and the production mechanism determines the mapping.}
 The quantity constrained by Lyman-$\alpha$ forest measurements is the matter
-power spectrum suppression wavenumber $\kfs$.  For thermal WDM, $\kfs$ and $m$
-are related through the thermal velocity; for a non-thermal scalar condensate,
-this relation changes.  In the SSEE two-sector model, $\kfs = 0.493\,h/\mathrm{Mpc}$
-is \emph{derived from the Dodelson-Widrow formula} using the IS-sector
-parameters (Section~\ref{sec:mass}), independently of the kinematic
-$\mphi = 5.71\,\mathrm{eV}$.  The physical free-streaming length is
-$\lambda_{\rm fs} = 2\pi/\kfs \approx 12.7\,h^{-1}\,\mathrm{Mpc}$.
+power spectrum suppression wavenumber $\kfs$, not the particle mass directly.
+For a given mass $\mphi$, the inferred $\kfs$ depends critically on the
+production mechanism.
 
-We note a validity caveat: the DW formula was originally calibrated for
-non-resonantly produced sterile neutrinos at $m_s \sim \mathcal{O}(\mathrm{keV})$;
-applying it at $\mphi = 5.71\,\mathrm{eV}$ constitutes a three-order-of-magnitude
+For a \emph{thermally} produced relic at $\mphi = 5.71\,\mathrm{eV}$
+($= 5.71\times10^{-3}\,\mathrm{keV}$), the \citet{Viel2005}
+formula gives
+\begin{equation}
+  \kfs^{\rm thermal} = 23.7 \left(\frac{\mphi}{1\,\mathrm{keV}}\right)^{1.11}
+  \!\left(\frac{\Omega_{\phiDM}h^2}{0.12}\right)^{0.15}
+  \approx 0.073\;h/\mathrm{Mpc},
+  \quad \lambda_{\rm fs}^{\rm thermal} \approx 86\;h^{-1}\,\mathrm{Mpc}.
+  \label{eq:kfs_thermal}
+\end{equation}
+At this scale, the $\phi$-DM sector would behave essentially as cold dark matter
+on all observationally relevant scales ($k < 0.5\,h/\mathrm{Mpc}$), and the
+$\sigma_8$ tension would not be resolved.
+
+For a \emph{non-resonantly produced} (Dodelson-Widrow-like) component, the
+free-streaming scale is set not by the thermal velocity but by the typical
+production momentum; the approximate relation is \citep{Boyarsky2009}:
+\begin{equation}
+  \kfs^{\rm DW} = 7.68 \left(\frac{\mphi}{1\,\mathrm{keV}}\right)^{0.5}
+  \!\left(\frac{\Omega_{\phiDM}h^2}{0.1}\right)^{0.5}
+  \approx 0.535\;h/\mathrm{Mpc},
+  \quad \lambda_{\rm fs}^{\rm DW} \approx 11.7\;h^{-1}\,\mathrm{Mpc}.
+  \label{eq:kfs_DW}
+\end{equation}
+The ratio $\kfs^{\rm DW}/\kfs^{\rm thermal}\approx 7.3$ reflects the fact that
+non-resonant production gives a colder phase-space distribution per unit mass
+than thermal equilibrium.
+The SSEE two-sector value $\kfs = 0.493\,h/\mathrm{Mpc}$ is consistent with
+the DW estimate (Eq.~\ref{eq:kfs_DW}) to within $8\%$, well within the
+calibration uncertainty of both formulas.
+
+\textbf{Key point:} the choice of production mechanism is not arbitrary.
+The algebraic mass $\mphi = 5.71\,\mathrm{eV}$ (Section~\ref{sec:mass}),
+combined with the thermal formula, gives $\kfs^{\rm thermal}\approx 0.073$
+— too small to suppress $\sigma_8$ at $k_\sigma\approx 0.125\,h/\mathrm{Mpc}$.
+The same mass with the DW formula gives $\kfs^{\rm DW}\approx 0.535$, which
+lies exactly in the window required to resolve the $f\sigma_8$ tension.
+This non-trivial coincidence constitutes the primary predictive claim of the
+two-sector construction: a non-thermal production mechanism is required by
+the algebraic mass, and the required mechanism predicts a Lyman-$\alpha$
+signature within current observational reach.
+
+\textbf{Validity caveat.}  The DW formula was calibrated for non-resonantly
+produced sterile neutrinos at $m_s\sim\mathcal{O}(\mathrm{keV})$; applying it
+at $\mphi = 5.71\,\mathrm{eV}$ constitutes a three-order-of-magnitude
 extrapolation in mass.  In the absence of a full Boltzmann hierarchy for the
-$\phi$-DM phase-space distribution, $\kfs$ should be treated as an
-\emph{order-of-magnitude estimate} whose normalization will be refined by
-future IS-EFT Boltzmann calculations.  A direct Lyman-$\alpha$ test should be formulated in terms of the predicted suppression scale $\kfs$, while noting that the thermal-WDM mass bound does not apply straightforwardly to this non-thermal mixed-sector construction.
+$\phi$-DM phase-space distribution, $\kfs = 0.493\,h/\mathrm{Mpc}$ should
+be treated as an \emph{order-of-magnitude estimate} to be refined by future
+IS-EFT Boltzmann calculations.
+A direct Lyman-$\alpha$ test should be formulated in terms of the predicted
+suppression scale $\kfs$, not the thermal-WDM mass bound.
 
 \paragraph{Step 3: What remains observable.}
 At scales $k > \kfs = 0.493\,h/\mathrm{Mpc}$ (relevant for the Lyman-$\alpha$

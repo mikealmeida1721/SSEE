@@ -4,7 +4,7 @@
 
 **Structural Self-Energy Expansion (SSEE-V3.6)** — modelo cosmológico de energía oscura de cero parámetros libres, derivado algebraicamente de φ (razón áurea) y π. Autor: Mike Edison Almeida Vallejo.
 
-Ocho papers:
+Nueve papers:
 - **Paper 1**: Framework teórico + EFT + Predictive Register (arXiv-ready)
 - **Paper 2**: Validación Bayesiana MCMC DESI DR2 + Planck + cúmulos (arXiv-ready)
 - **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready)
@@ -13,6 +13,7 @@ Ocho papers:
 - **Paper 6**: φ-DM dos sectores — m_φ=5.71 eV algebraico, fσ₈ 2.56σ→0.50σ resuelto (commit 9d28620; baseline corregido: σ8=0.702 ODE, versión anterior usaba σ8≈0.578 → inflaba a 3.66σ)
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint)
 - **Paper 8**: Régimen de gravedad fuerte — geodésicas disformales, MIRA emergencia lensing, Vainshtein (commit d7f3b38)
+- **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente (DRAFT, 10 pp, 2026-05-14)
 
 ---
 
@@ -30,6 +31,7 @@ Ocho papers:
 | `SSEE_Paper6_phiDM.pdf` | Paper 6 (14 p) | ✅ Preprint — φ-DM, fσ₈ resuelto |
 | `SSEE_Paper7_EFT.pdf` | Paper 7 (14 p) | ✅ Preprint — EFT canónico, αK=0.4033, βc=−AURA |
 | `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (13 p) | ✅ Completo — gravedad fuerte, MIRA lensing, Vainshtein |
+| `SSEE_Paper9_HubbleTension.pdf` | Paper 9 (10 p) | 🟡 DRAFT — f_screen=αK/(3·MIRA), H₀,local=72.86 km/s/Mpc |
 | `SSEE_Endorser_Summary.pdf` | Síntesis 2 p para endorsers arXiv | ✅ Listo para envío |
 
 ### manuscript/ — Fuente LaTeX

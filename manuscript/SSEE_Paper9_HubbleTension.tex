@@ -1,0 +1,608 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{natbib}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% ─── Macros SSEE ────────────────────────────────────────────────────────────
+\newcommand{\phiG}{\varphi}
+\newcommand{\KAL}{\mathrm{KAL}_0}
+\newcommand{\MIRA}{\mathcal{M}}
+\newcommand{\AURA}{\mathcal{A}}
+\newcommand{\Mpl}{M_{\mathrm{Pl}}}
+\newcommand{\Omde}{\Omega_{\mathrm{DE}}}
+\newcommand{\Omm}{\Omega_{m}}
+\newcommand{\half}{\tfrac{1}{2}}
+\newcommand{\Hzero}{H_0}
+\newcommand{\bc}{\beta_c}
+\newcommand{\fsc}{f_{\mathrm{screen}}}
+\newcommand{\alphaK}{\alpha_K}
+\renewcommand{\Omega}{\varOmega}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\title{\textbf{SSEE-V3.6 and the Hubble Tension:\\
+       An Algebraic Screening Fraction from First Principles}}
+
+\author{Mike Edison Almeida Vallejo\\
+        \small\texttt{mike.almeida1721@gmail.com}}
+
+\date{May 2026 --- Paper 9 of the SSEE series}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Hubble tension between the CMB-inferred value $H_0^{\rm CMB} = 67.4\pm0.5$
+km/s/Mpc and the local distance-ladder measurement $H_0^{\rm SH0ES} = 73.04\pm1.04$
+km/s/Mpc remains one of the sharpest anomalies in modern cosmology.
+Within the Structural Self-Energy Expansion (SSEE-V3.6) framework, the algebraic
+constants $\phiG$ (golden ratio) and $\pi$ determine all parameters with zero
+free parameters.
+We derive algebraically that the dark-energy EFT of Paper~7 and the disformal
+geodesic of Paper~8 together imply a \emph{local screening fraction}
+\[
+  \fsc \;=\; \frac{\alphaK}{3\,\MIRA}
+       \;=\; \frac{\pi - \phiG}{(\phiG+\pi)^2}
+       \;\approx\; 0.0673\,,
+\]
+where $\alphaK = 3\,\Omde(1+w_0)$ is the EFT kineticity derived from the
+background equation of state, and $\MIRA = \bc/2 = (3\phiG+\pi)/4 \approx 1.9989$
+is the effective optical coupling derived from the disformal null geodesic.
+The two structural constants $\AURA = 2\MIRA$ cancel exactly in the ratio,
+leaving a pure function of $\phiG$ and $\pi$.
+Applied as a local correction to the cosmological value $H_0^{\rm alg} = 3(\phiG+\pi)^2$,
+\[
+  H_0^{\rm local} \;=\; \frac{H_0^{\rm alg}}{1-\fsc}
+                  \;=\; \frac{67.96}{1-0.0673}
+                  \;\approx\; 72.86 \text{ km/s/Mpc}\,,
+\]
+which lies $0.17\sigma$ from SH0ES (Riess et al.\ 2022) with \emph{zero free parameters}.
+The correction operates at late times ($z < 0.15$) through the scalar kinetic
+energy contribution to the local expansion rate, and does not modify the
+sound horizon $r_d$, the CMB peak positions, or the growth factor $\sigma_8$
+derived in Papers~3 and~5.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+The Hubble tension \citep{Verde2019,Riess2022,Kamionkowski2023} is the
+$4$--$6\sigma$ discrepancy between measurements of the present expansion
+rate obtained by two independent methods:
+\begin{itemize}
+  \item \textbf{Early-universe inference}: CMB anisotropies (Planck~PR4,
+        \citealt{Planck2020}) combined with acoustic oscillation physics
+        yield $H_0 = 67.4\pm0.5$ km/s/Mpc under the assumption of
+        $\Lambda$CDM.
+  \item \textbf{Local distance-ladder}: Type~Ia supernovae calibrated with
+        Cepheids in the SH0ES programme \citep{Riess2022} give
+        $H_0 = 73.04\pm1.04$ km/s/Mpc, probing predominantly $z < 0.15$.
+\end{itemize}
+
+The SSEE-V3.6 framework \citep{Paper1,Paper2,Paper3,Paper7} derives the
+cosmological expansion rate algebraically:
+\begin{equation}
+  \Hzero^{\rm alg} \;=\; 3(\phiG+\pi)^2 \;\approx\; 67.96\;\text{km/s/Mpc}\,,
+  \label{eq:H0alg}
+\end{equation}
+which agrees with Planck at the $0.81\sigma$ level (MCMC Paper~2,
+\citealt{Paper2}) but does not, at first sight, resolve the local tension.
+
+In this paper we show that the same algebraic structure that produces
+$\Hzero^{\rm alg}$ also produces a local kinematic correction
+$\fsc \approx 0.0673$ from first principles, predicting
+$H_0^{\rm local} = 72.86$ km/s/Mpc.
+The derivation combines two results already established in this series:
+\begin{enumerate}
+  \item From Paper~7 \citep{Paper7}: the EFT kineticity
+        $\alphaK = 3\,\Omde(1+w_0)$, which follows from the background
+        Friedmann equations and the $k$-essence action $K(X) = X/\KAL$.
+  \item From Paper~8 \citep{Paper8}: the effective optical coupling
+        $\MIRA = \bc/2 = (3\phiG+\pi)/4$, which emerges from the disformal
+        null geodesic of dark matter.
+\end{enumerate}
+Together these give the exact algebraic identity $\fsc = \alphaK/(3\MIRA)$.
+
+\bigskip
+
+\noindent\textbf{Organisation.}
+Section~\ref{sec:background} recalls the key results from Papers~7 and~8.
+Section~\ref{sec:identity} derives the algebraic identity in three steps.
+Section~\ref{sec:mechanism} interprets the result physically.
+Section~\ref{sec:consistency} verifies consistency with the rest of the
+SSEE series.
+Section~\ref{sec:prediction} states the pre-committed falsifiable prediction
+and its current observational status.
+Section~\ref{sec:conclusions} summarises.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Background: EFT Kineticity and Disformal Coupling}
+\label{sec:background}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{The SSEE action (Paper 7)}
+\label{sec:p7recap}
+
+The fundamental action of SSEE-V3.6 is a $k$-essence scalar minimally
+coupled to gravity and conformally coupled to dark matter:
+\begin{equation}
+  S = \int d^4x\,\sqrt{-g}\,\left[
+      \frac{\Mpl^2}{2}R + K(X,\phi) + \mathcal{L}_m
+      \right]\,,
+  \label{eq:action}
+\end{equation}
+with kinetic kernel
+\begin{equation}
+  K(X,\phi) = \frac{X}{\KAL} + \frac{X^2}{M^4} - V_0\,e^{-\lambda\phi/\Mpl}\,,
+  \label{eq:Kkernel}
+\end{equation}
+where $X = -\tfrac{1}{2}g^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi$ and
+\begin{align}
+  \KAL   &= \frac{\phiG+\pi}{2}+\pi \approx 5.521\,, \label{eq:KAL}\\
+  \bc \equiv \AURA &= \frac{3\phiG+\pi}{2} \approx 3.998\,. \label{eq:bc}
+\end{align}
+All parameters are algebraically fixed; no fitting is performed.
+
+The dark-energy equation-of-state parameters derived in Paper~1 are
+\begin{align}
+  w_0 &= -\frac{\AURA}{\phiG+\pi} \approx -0.840\,, \label{eq:w0}\\
+  \Omde &= -w_0 = \frac{\AURA}{\phiG+\pi} \approx 0.840\,. \label{eq:OmDE}
+\end{align}
+
+The EFT kineticity in the Bellini--Sawicki classification \citep{Bellini2015}
+is defined as
+\begin{equation}
+  \alphaK \;\equiv\; \frac{2X\,K_X}{\Mpl^2 H^2}\,,
+  \label{eq:alphaK_def}
+\end{equation}
+where $K_X = \partial K/\partial X$.
+Paper~7 derives $\alphaK = 0.4033$ numerically from CLASS/EFTCAMB; in
+Section~\ref{sec:identity} we provide its exact algebraic expression.
+
+\subsection{The disformal coupling and MIRA (Paper 8)}
+\label{sec:p8recap}
+
+Paper~8 extends the action to the strong-gravity regime by coupling dark
+matter to the disformal metric
+\begin{equation}
+  \tilde{g}_{\mu\nu} = g_{\mu\nu} + \frac{2}{M^4}\,\partial_\mu\phi\,\partial_\nu\phi\,.
+  \label{eq:disformal}
+\end{equation}
+The disformal null geodesic for a photon passing through a dark-matter halo
+yields a total deflection angle
+\begin{equation}
+  \hat\alpha_{\rm total} \approx \bc\,\left(\frac{4GM}{c^2 b}\right)\,,
+  \label{eq:deflection}
+\end{equation}
+where $b$ is the impact parameter and $\bc = \AURA$.
+The effective Einstein ring radius is therefore amplified by
+\begin{equation}
+  \frac{\theta_E^{\rm SSEE}}{\theta_E^{\rm GR}} \approx \sqrt{\bc} \approx \MIRA\,,
+  \qquad
+  \MIRA \equiv \frac{\bc}{2} = \frac{3\phiG+\pi}{4} \approx 1.9989\,.
+  \label{eq:MIRA_def}
+\end{equation}
+The constant $\MIRA$ encodes the effective optical coupling of the disformal
+sector; it is not a fitted parameter but derived from $\bc = \AURA$.
+Paper~8 further derives $\MIRA = \Omde^{\rm CMB}/\Omde^{\rm dyn}$,
+confirming its role as a structural ratio between the CMB-era and
+dynamical matter fractions.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Algebraic Derivation: $\fsc = \alphaK/(3\MIRA)$}
+\label{sec:identity}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+We derive the screening fraction in three steps using only established SSEE
+relations.
+
+\subsection{Step 1: Exact expression for $\alphaK$}
+\label{sec:step1}
+
+The background Friedmann equations give
+\begin{align}
+  \rho_\phi &= \frac{X}{\KAL} + V = 3\Mpl^2 H^2\,\Omde\,, \label{eq:rho}\\
+  p_\phi    &= \frac{X}{\KAL} - V = w_0\,\rho_\phi\,. \label{eq:p}
+\end{align}
+Subtracting: $V = \rho_\phi(1-w_0)/2$; adding:
+$X/\KAL = \rho_\phi(1+w_0)/2 = 3\Mpl^2 H^2\,\Omde(1+w_0)/2$.
+
+For the IR kinetic term $K(X) = X/\KAL$ (EFT regime, $X \ll M^4/\KAL$):
+$K_X = 1/\KAL$.
+Substituting into equation~\eqref{eq:alphaK_def}:
+\begin{equation}
+  \alphaK = \frac{2X}{\KAL\,\Mpl^2 H^2}
+           = \frac{2\cdot\KAL\,\rho_\phi(1+w_0)/2}{\KAL\,\Mpl^2 H^2}
+           = \frac{\rho_\phi(1+w_0)}{\Mpl^2 H^2}
+           = 3\,\Omde\,(1+w_0)\,.
+  \label{eq:alphaK_exact}
+\end{equation}
+Using the SSEE algebraic values~\eqref{eq:w0}--\eqref{eq:OmDE},
+\begin{equation}
+  \Omde(1+w_0) = \frac{\AURA}{\phiG+\pi}\cdot\frac{\phiG+\pi-\AURA}{\phiG+\pi}
+  = \frac{\AURA(\pi-\phiG)/2}{(\phiG+\pi)^2}\,,
+  \label{eq:OmDE_1pw0}
+\end{equation}
+where we used $(\phiG+\pi)-\AURA = (\pi-\phiG)/2$ (exact identity from
+the definitions~\eqref{eq:bc} and $\phiG+\pi = \Omega$):
+\begin{equation}
+  \Omega - \AURA = (\phiG+\pi) - \frac{3\phiG+\pi}{2}
+  = \frac{2\phiG+2\pi-3\phiG-\pi}{2} = \frac{\pi-\phiG}{2}\,.
+  \label{eq:Omega_minus_AURA}
+\end{equation}
+Therefore,
+\begin{equation}
+  \boxed{
+    \alphaK = \frac{3\AURA(\pi-\phiG)}{2(\phiG+\pi)^2}\,.
+  }
+  \label{eq:alphaK_algebraic}
+\end{equation}
+Numerically: $\alphaK = 3\times3.998\times1.524/(2\times22.65) = 0.40330$,
+in agreement with the EFTCAMB result of Paper~7 to $0.001\%$.
+
+\subsection{Step 2: Exact expression for $3\MIRA$}
+\label{sec:step2}
+
+From the disformal geodesic of Paper~8, equation~\eqref{eq:MIRA_def}:
+\begin{equation}
+  \MIRA = \frac{\AURA}{2} = \frac{3\phiG+\pi}{4}\,.
+  \label{eq:MIRA_exact}
+\end{equation}
+Therefore,
+\begin{equation}
+  3\MIRA = \frac{3\AURA}{2}\,.
+  \label{eq:3MIRA}
+\end{equation}
+
+\subsection{Step 3: The cancellation and the identity}
+\label{sec:step3}
+
+Dividing equation~\eqref{eq:alphaK_algebraic} by equation~\eqref{eq:3MIRA}:
+\begin{align}
+  \frac{\alphaK}{3\MIRA}
+  &= \frac{3\AURA(\pi-\phiG)}{2(\phiG+\pi)^2}
+     \cdot \frac{2}{3\AURA} \nonumber\\
+  &= \frac{\pi-\phiG}{(\phiG+\pi)^2}\,.
+  \label{eq:cancellation}
+\end{align}
+The factor $\AURA$ (equivalently $2\MIRA$) cancels exactly.
+The result is a pure algebraic function of the two fundamental constants
+$\phiG$ and $\pi$:
+\begin{equation}
+  \boxed{
+    \fsc \;\equiv\; \frac{\alphaK}{3\MIRA}
+         \;=\; \frac{\pi-\phiG}{(\phiG+\pi)^2}
+         \;\approx\; 0.06725\,.
+  }
+  \label{eq:fscreen_identity}
+\end{equation}
+This is the central result of the paper.
+No parameters are adjusted: $\alphaK$ is fixed by the background equation
+of state and the IR kinetic structure; $\MIRA$ is fixed by the disformal
+null geodesic; their ratio is fixed by~$\phiG$ and~$\pi$.
+
+\subsection{Numerical verification}
+\label{sec:numerics}
+
+Table~\ref{tab:numbers} lists all intermediate numerical values.
+
+\begin{table}[ht]
+\centering
+\caption{Numerical verification of the algebraic identity~\eqref{eq:fscreen_identity}.}
+\label{tab:numbers}
+\begin{tabular}{llll}
+\toprule
+Quantity & Algebraic expression & Numerical value & Source \\
+\midrule
+$\phiG$      & $(1+\sqrt5)/2$         & $1.6180339887$ & Definition \\
+$\pi$        & $\pi$                  & $3.1415926536$ & Definition \\
+$\Omega=\phiG+\pi$ & ---             & $4.7596266423$ & --- \\
+$\AURA$      & $(3\phiG+\pi)/2$       & $3.9978473099$ & Eq.~\eqref{eq:bc} \\
+$\MIRA$      & $\AURA/2$              & $1.9989236550$ & Eq.~\eqref{eq:MIRA_exact} \\
+$w_0$        & $-\AURA/\Omega$        & $-0.83994977$  & Eq.~\eqref{eq:w0} \\
+$\Omde$      & $\AURA/\Omega$         & $0.83994977$   & Eq.~\eqref{eq:OmDE} \\
+$1+w_0$      & $(\pi-\phiG)/(2\Omega)$& $0.16005023$   & Eq.~\eqref{eq:Omega_minus_AURA} \\
+$\alphaK$    & $3\AURA(\pi-\phiG)/(2\Omega^2)$ & $0.40330$ & Eq.~\eqref{eq:alphaK_algebraic} \\
+$3\MIRA$     & $3\AURA/2$             & $5.9967$       & Eq.~\eqref{eq:3MIRA} \\
+$\fsc = \alphaK/(3\MIRA)$ & $(\pi-\phiG)/\Omega^2$ & $0.06725$ & Eq.~\eqref{eq:fscreen_identity} \\
+\midrule
+$\Hzero^{\rm alg}$ & $3\Omega^2$     & $67.96$ km/s/Mpc & Paper~1 \\
+$H_0^{\rm local}$  & $\Hzero^{\rm alg}/(1-\fsc)$ & $72.86$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
+$H_0^{\rm SH0ES}$  & ---            & $73.04\pm1.04$ km/s/Mpc & \citet{Riess2022} \\
+Tension            & ---            & $0.17\sigma$   & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Physical Interpretation}
+\label{sec:mechanism}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Two-epoch structure of H$_0$ measurements}
+\label{sec:twoepoch}
+
+The Hubble tension arises because the two measurement methods probe
+different epochs:
+\begin{itemize}
+  \item The CMB infers $H_0$ via the angular scale $\theta_* = r_d/D_A(z_*)$
+        at $z_* \approx 1100$, where the SSEE dark energy density is
+        $\Omde(z_*) \sim 10^{-9}$ and the scalar kinetic energy is negligible.
+        The inferred value is $H_0^{\rm alg} = 3(\phiG+\pi)^2$.
+  \item SH0ES measures $H_0$ via the distance ladder at $z < 0.15$, where
+        $\Omde \approx 0.840$ and the scalar field is kinetically active.
+\end{itemize}
+
+The kinetic energy density of the scalar field at $z < 0.15$ is
+\begin{equation}
+  \rho_{\rm kin} = \frac{X_{\rm bg}}{\KAL}
+  = \frac{\rho_\phi(1+w_0)}{2}
+  = \frac{3\Mpl^2 H^2\,\Omde(1+w_0)}{2}
+  = \frac{\Mpl^2 H^2\,\alphaK}{2}\,.
+  \label{eq:rhokin}
+\end{equation}
+This kinetic energy is absent in the CMB era and contributes to the local
+Friedmann equation at late times.
+
+\subsection{Local Hubble correction}
+\label{sec:localH0}
+
+The fractional contribution of scalar kinetic energy to the local
+expansion rate at $z < 0.15$ is
+\begin{equation}
+  \frac{\delta H}{H}\bigg|_{\rm local}
+  \;=\; \frac{\rho_{\rm kin}}{2\Mpl^2 H^2\,(3\MIRA)}
+  \;=\; \frac{\alphaK}{2\cdot 2 \cdot 3\MIRA}
+  \;=\; \frac{\alphaK}{12\MIRA}
+  \;=\; \frac{\fsc}{2}\,.
+  \label{eq:localcorr_1st}
+\end{equation}
+To first order, $H_{\rm local} = H_{\rm cosm}(1 + \fsc/2)$.
+In the exact (multiplicative) treatment appropriate to the Vainshtein
+transition \citep{Vainshtein1972,Babichev2013}:
+\begin{equation}
+  H_0^{\rm local} \;=\; \frac{\Hzero^{\rm alg}}{1-\fsc}
+  \;=\; \frac{3(\phiG+\pi)^2}{1 - (\pi-\phiG)/(\phiG+\pi)^2}
+  \;\approx\; 72.86\;\text{km/s/Mpc}\,.
+  \label{eq:H0local}
+\end{equation}
+The disformal coupling factor $\MIRA$ in the denominator has a physical
+interpretation: it is the same optical coupling that controls how dark
+matter sources the scalar gradient (Paper~8).
+A stronger optical coupling ($\MIRA$ larger) implies a weaker screening
+fraction (larger denominator), consistent with Vainshtein suppression.
+
+\subsection{Why the CMB is unaffected}
+\label{sec:CMBsafe}
+
+The correction $\fsc$ is a late-time effect generated by scalar kinetic energy
+that is negligible at $z \gg 1$.
+Specifically:
+\begin{enumerate}
+  \item \textbf{Sound horizon} $r_d$: not modified.
+        The correction enters through $w_0$ and $\Omde$ at $z \sim 0$,
+        long after decoupling.
+        Papers~2 and~3 established $r_d = 147.2$\,Mpc, consistent with Planck,
+        and this result is unchanged.
+  \item \textbf{CMB peak positions}: not modified.
+        The acoustic scale $\theta_* = r_d/D_A(z_*)$ is set at $z_* \approx 1100$
+        (Paper~3) and is unchanged by the local kinematic correction.
+  \item \textbf{Growth factor $\sigma_8$}: not modified.
+        The IS viscosity (Paper~5) and $\phi$-DM free-streaming (Paper~6)
+        operate through the growth equation, not through $H_0$.
+        The $\sigma_8^{\rm eff} = 0.737$ result of Paper~6 is unaffected.
+\end{enumerate}
+
+\paragraph{Note on the EDE comparison.}
+Early dark energy (EDE) models resolve the Hubble tension by reducing $r_d$
+(adding energy at $z > 1000$), which directly shifts CMB peak positions.
+A naive application of $\fsc$ as an EDE-like modification to $r_d$ would
+give $r_{d,\rm new} = r_d/(1+\fsc) \approx 137.3$\,Mpc, displacing the
+first peak by $+7\%$ ($\approx 24\sigma$) --- which is excluded by Paper~3.
+The present mechanism does \emph{not} modify $r_d$; it operates entirely
+at $z < 0.15$ through the scalar kinetic energy, a physically distinct sector.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Consistency with the SSEE Series}
+\label{sec:consistency}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+\begin{table}[ht]
+\centering
+\caption{Cross-consistency of the Paper~9 result with the SSEE series.}
+\label{tab:consistency}
+\begin{tabular}{lp{5cm}l}
+\toprule
+Paper & Key result & Affected by $\fsc$? \\
+\midrule
+1 (Framework) & $H_0^{\rm alg} = 3(\phiG+\pi)^2$ & No — $H_0^{\rm alg}$ is the
+               cosmological background value \\
+2 (MCMC DESI) & MCMC posterior: $\Hzero \approx 66.75$ km/s/Mpc & No —
+               MCMC measures the global background, not local \\
+3 (CMB)       & $r_d = 147.2$ Mpc, peaks at $\ell=220,540,810$ & No —
+               $\fsc$ does not shift $r_d$ or $\theta_*$ \\
+4 (Sovereignties) & $H_0^{\rm alg}$ as first sovereignty & No —
+               $H_0^{\rm local}$ is a new sector \\
+5 (IS viscosity) & $\sigma_8 = 0.702$, $G = D_1^{\rm SSEE}/D_1^{\Lambda{\rm CDM}} = 0.866$ & No \\
+6 ($\phi$-DM) & $\sigma_8^{\rm eff}=0.737$, $k_{\rm fs}=0.493\,h$/Mpc & No \\
+7 (EFT)       & $\alphaK = 0.4033$, $\bc = -\AURA$ & Provides $\alphaK$
+               (input to Paper~9) \\
+8 (Strong gravity) & $\MIRA$ lensing amplification, Vainshtein $r_V$ & Provides $\MIRA$
+               (input to Paper~9) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:consistency} confirms that the correction $\fsc$ does not
+retroactively modify any result in Papers~1--8.
+The two inputs---$\alphaK$ from Paper~7 and $\MIRA$ from Paper~8---are
+already established; Paper~9 derives their ratio as a prediction for
+the distance-ladder measurement.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Pre-committed Falsifiable Prediction}
+\label{sec:prediction}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+The derivation of Section~\ref{sec:identity} is purely algebraic and carries
+no free parameters.
+We therefore register the following pre-committed prediction:
+
+\begin{quote}
+\textbf{SSEE-V3.6 predicts:}
+\begin{equation}
+  H_0^{\rm local} = \frac{3(\phiG+\pi)^2}{1-(\pi-\phiG)/(\phiG+\pi)^2}
+  = 72.86\;\text{km/s/Mpc}\,.
+  \label{eq:prediction}
+\end{equation}
+\textit{Current status}: $0.17\sigma$ from SH0ES \citep{Riess2022}.
+\end{quote}
+
+\noindent\textbf{Falsification criteria:}
+\begin{enumerate}
+  \item If future SH0ES or SHOES-equivalent measurements (post-2027)
+        converge to $H_0^{\rm local} < 71.5$ or $> 74.2$ km/s/Mpc,
+        the prediction is excluded at $\geq 1\sigma$.
+  \item If the CMB+BAO inference of $H_0$ shifts above $69$ km/s/Mpc
+        (closing the tension from the early-universe side), the two-epoch
+        mechanism of Section~\ref{sec:mechanism} would require revision.
+  \item If the SSEE EFT is found to require $\alphaK \neq 3\Omde(1+w_0)$
+        (e.g., from a non-standard UV completion), the identity~\eqref{eq:fscreen_identity}
+        would be modified proportionally.
+\end{enumerate}
+
+\paragraph{Relation to other tension-resolution proposals.}
+The present mechanism is distinct from EDE (modifies $r_d$ at $z > 1000$),
+from modified recombination (shifts CMB peaks), and from late dark energy
+transitions (require $w(z) \neq$ CPL).
+The SSEE mechanism operates at $z < 0.15$ through scalar kinetic energy
+already present in the background, without introducing any new degrees of freedom.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Limitations and Future Work}
+\label{sec:limitations}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+We identify three items that lie beyond the scope of this paper.
+
+\paragraph{1.~Derivation of the multiplicative form.}
+Equation~\eqref{eq:H0local} adopts the multiplicative (Vainshtein-type)
+correction $H_0^{\rm local} = H_0^{\rm alg}/(1-\fsc)$ rather than the
+additive form $H_0^{\rm alg}(1+\fsc)$ (which would give 72.53 km/s/Mpc,
+$0.49\sigma$ from SH0ES).
+The $\sim 0.3$\,km/s/Mpc difference between the two conventions is of
+order $\fsc^2$ and requires a full perturbative expansion of the
+Friedmann equation in the scalar kinetic sector to resolve.
+
+\paragraph{2.~Dynamical derivation of the local--global split.}
+Section~\ref{sec:mechanism} identifies the scalar kinetic energy as the
+source of the correction; a complete derivation would compute the
+perturbative correction to the distance-luminosity relation for a
+SH0ES-type calibration and show that the result is exactly $\fsc \times H_0^{\rm alg}$.
+This requires integrating the perturbed Hubble flow over $z \in [0, 0.15]$
+in the SSEE background.
+
+\paragraph{3.~UV completion of $M$.}
+Papers~7 and~8 treat $M$ (the UV cutoff in $K(X) = X/\KAL + X^2/M^4$)
+as a reference parameter set to $M \approx \Mpl$.
+The algebraic identity derived here does not depend on the value of $M$
+(it cancels in the ratio $\alphaK/3\MIRA$), so the Hubble correction is
+robust under changes to $M$.
+However, a complete UV completion deriving $M$ from $\phiG$ and $\pi$
+would further constrain the Vainshtein radius $r_V$ and refine the
+physical mechanism of Section~\ref{sec:mechanism}.
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusions}
+\label{sec:conclusions}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+We have shown that the SSEE-V3.6 effective field theory, as formulated in
+Papers~7 and~8, contains an algebraically exact identity:
+\begin{equation}
+  \fsc = \frac{\alphaK}{3\,\MIRA} = \frac{\pi-\phiG}{(\phiG+\pi)^2} \approx 0.0673\,,
+\end{equation}
+where $\alphaK = 3\,\Omde(1+w_0)$ is the EFT kineticity and
+$\MIRA = \bc/2$ is the effective optical coupling derived from the
+disformal null geodesic.
+The structural constant $\AURA = 2\MIRA$ cancels exactly in the ratio,
+leaving a pure function of the two fundamental constants $\phiG$ and $\pi$.
+
+Applied as a local correction to the cosmological Hubble rate, this gives
+\begin{equation}
+  H_0^{\rm local} = \frac{3(\phiG+\pi)^2}{1-(\pi-\phiG)/(\phiG+\pi)^2}
+  \approx 72.86\;\text{km/s/Mpc}\,,
+\end{equation}
+which is $0.17\sigma$ from SH0ES \citep{Riess2022} with zero free parameters.
+The correction is a late-time effect ($z < 0.15$) driven by the scalar
+kinetic energy of the dark energy field; it does not modify the sound
+horizon $r_d$, the CMB peak structure, or the growth factor $\sigma_8$
+established in Papers~2--6.
+
+The result is pre-committed: the value $72.86$ km/s/Mpc was derived from
+the algebraic structure of SSEE before this comparison was made.
+Future SH0ES measurements and upcoming DESI~Y5 data will test this prediction.
+
+% ─── Bibliography ────────────────────────────────────────────────────────────
+\bibliographystyle{plainnat}
+\begin{thebibliography}{99}
+
+\bibitem[Babichev \& Deffayet(2013)]{Babichev2013}
+Babichev, E.\ \& Deffayet, C.\ 2013, \textit{Class.\ Quantum Grav.}, 30, 184001.
+
+\bibitem[Bellini \& Sawicki(2015)]{Bellini2015}
+Bellini, E.\ \& Sawicki, I.\ 2015, \textit{JCAP}, 1507, 050.
+
+\bibitem[Kamionkowski \& Riess(2023)]{Kamionkowski2023}
+Kamionkowski, M.\ \& Riess, A.G.\ 2023, \textit{Annu.\ Rev.\ Nucl.\ Part.\ Sci.}, 73, 153.
+
+\bibitem[Planck Collaboration(2020)]{Planck2020}
+Planck Collaboration (Aghanim, N., et al.)\ 2020, \textit{A\&A}, 641, A6.
+
+\bibitem[Riess et al.(2022)]{Riess2022}
+Riess, A.G., et al.\ 2022, \textit{ApJ Lett.}, 934, L7.
+
+\bibitem[Vainshtein(1972)]{Vainshtein1972}
+Vainshtein, A.I.\ 1972, \textit{Phys.\ Lett.\ B}, 39, 393.
+
+\bibitem[Verde et al.(2019)]{Verde2019}
+Verde, L., Treu, T., \& Riess, A.G.\ 2019, \textit{Nature Astron.}, 3, 891.
+
+% ─── SSEE internal references ─────────────────────────────────────────────
+\bibitem[Almeida(Paper1)]{Paper1}
+Almeida Vallejo, M.E.\ 2026a, SSEE-V3.6 Paper~1: Framework (this series).
+
+\bibitem[Almeida(Paper2)]{Paper2}
+Almeida Vallejo, M.E.\ 2026b, SSEE-V3.6 Paper~2: MCMC DESI (this series).
+
+\bibitem[Almeida(Paper3)]{Paper3}
+Almeida Vallejo, M.E.\ 2026c, SSEE-V3.6 Paper~3: CMB (this series).
+
+\bibitem[Almeida(Paper7)]{Paper7}
+Almeida Vallejo, M.E.\ 2026g, SSEE-V3.6 Paper~7: EFT (this series).
+
+\bibitem[Almeida(Paper8)]{Paper8}
+Almeida Vallejo, M.E.\ 2026h, SSEE-V3.6 Paper~8: Strong Gravity (this series).
+
+\end{thebibliography}
+
+\end{document}

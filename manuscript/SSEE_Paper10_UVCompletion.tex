@@ -274,6 +274,42 @@ With $K_{XX} = 2/M^4$ and the self-consistent $X_{\rm bg}^{\rm UV}$:
 \end{equation}
 The UV correction is $+3.37\%$ over the IR value.
 
+\subsection{Ghost-free and gradient-stability conditions}
+\label{subsec:stability_UV}
+
+For a $K(X)$ theory, the two fundamental stability conditions are:
+\begin{enumerate}
+  \item \textbf{No-ghost (positive kinetic energy):} $K_X > 0$.
+  \item \textbf{Gradient stability (no gradient instability):} $c_s^2 > 0$,
+    equivalently $K_X + 2XK_{XX} > 0$.
+\end{enumerate}
+
+For $K(X) = X/\KAL + X^2/M^4$ with $\KAL, M^4 > 0$ and $X \geq 0$:
+\begin{equation}
+  K_X = \frac{1}{\KAL} + \frac{2X}{M^4} > 0 \quad \forall\, X \geq 0.
+  \label{eq:ghost_free_UV}
+\end{equation}
+The no-ghost condition holds \emph{for all} $X \geq 0$ in both IR and UV regimes.
+\begin{equation}
+  K_X + 2X K_{XX}
+  = \frac{1}{\KAL} + \frac{2X}{M^4} + \frac{4X}{M^4}
+  = \frac{1}{\KAL} + \frac{6X}{M^4}
+  > 0 \quad \forall\, X \geq 0.
+  \label{eq:gradient_stable_UV}
+\end{equation}
+The gradient stability condition also holds globally.
+Together, equations~(\ref{eq:ghost_free_UV})--(\ref{eq:gradient_stable_UV}) imply
+$c_s^2 = K_X/(K_X + 2XK_{XX}) \in (1/3,\,1)$ for all $X > 0$, with:
+\begin{alignat}{2}
+  X \to 0:    &\quad c_s^2 \to 1 \quad &\text{(IR limit)},\\
+  X \to \infty: &\quad c_s^2 \to 1/3 \quad &\text{(UV conformal limit)}.
+\end{alignat}
+At the cosmological background $\varepsilon = X_{\rm bg}/M^4 \approx 5.7\times10^{-4}$,
+the full K(X) formula gives $c_s^2 \approx 0.967$ (see \S\ref{sec:consistency}), well above $1/3$.
+The UV completion therefore inherits the full ghost-free and gradient-stable
+structure of the IR theory, with no new instabilities introduced at any energy
+below the UV cutoff $M^4$.
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.85\textwidth]{../results/figures/fig_paper10_KX_profile.pdf}

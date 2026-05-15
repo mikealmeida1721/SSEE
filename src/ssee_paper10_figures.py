@@ -1,0 +1,151 @@
+"""
+Figures for SSEE Paper 10: UV completion via K(X) = X/KAL + X^2/M^4.
+Generates:
+  - fig_paper10_KX_profile.pdf   : K(X)/X vs X/M^4 — IR vs UV kinetic regimes
+  - fig_paper10_alphaK_vs_alpha.pdf : H0_local vs alpha (cross-epoch falsification)
+"""
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import os
+
+OUT = os.path.join(os.path.dirname(__file__), '..', 'results', 'figures')
+os.makedirs(OUT, exist_ok=True)
+
+# ── SSEE algebraic constants ──────────────────────────────────────────────────
+phi   = (1 + 5**0.5) / 2
+pi    = np.pi
+Omega = phi + pi
+AURA  = (3*phi + pi) / 2
+MIRA  = AURA / 2
+KAL0  = (phi + 3*pi) / 2  # ≈ 5.5214
+alpha_att = phi**4 / 3     # ≈ 2.2847  (alpha-attractor)
+H0_alg = 3*Omega**2        # ≈ 67.96
+# UV cutoff: M^4 = 45 alpha^2 rho_c  (Paper 10 Postulate C.1)
+# alphaK_IR = (phi+pi-Omega) already ≈ 0 … use Bellini-Sawicki definition
+alphaK_IR  = 3*AURA*(pi - phi) / (2*Omega**2)   # ≈ 0.40330
+# alphaK_UV quadratic correction:
+# alphaK_full = alphaK_IR * (1 + delta), where delta = 3/(45*alpha_att^2) * (X_bg/rho_c)
+# For background X_bg/rho_c ≈ 2*KAL0*(1+w0)*Omega_DE*H0^2/(3*H0^2) ... algebraic route:
+# alphaK_full = alphaK_IR + (3/M^4) * X_bg^2  → Paper 10 gives 0.41691
+alphaK_UV = 0.41691
+
+fscreen_IR = alphaK_IR / (3*MIRA)   # 0.06725
+fscreen_UV = alphaK_UV / (3*MIRA)   # 0.06952
+H0_IR = H0_alg / (1 - fscreen_IR)   # 72.86
+H0_UV = H0_alg / (1 - fscreen_UV)   # 73.040
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Figure 1: K(X)/X vs X/M^4
+# ─────────────────────────────────────────────────────────────────────────────
+# K(X) = X/KAL0 + X^2/M^4
+# K(X)/X = 1/KAL0 + X/M^4
+# Let u = X/M^4 (dimensionless kinetic ratio)
+
+u = np.logspace(-5, 2, 500)
+KX_over_X = 1/KAL0 + u   # K(X)/X = 1/KAL0 + X/M^4
+
+# Mark regimes
+u_bg = 5.7e-4  # background value from Paper 10 (epsilon ~ 5.7e-4)
+
+fig, ax = plt.subplots(figsize=(7, 4.5))
+ax.loglog(u, KX_over_X, 'k-', lw=2, label=r'$K(X)/X = 1/\mathrm{KAL}_0 + X/M^4$')
+ax.loglog(u, np.ones_like(u)/KAL0, '--', color='#2166ac', lw=1.2,
+          label=fr'IR limit: $1/\mathrm{{KAL}}_0 = {1/KAL0:.4f}$')
+ax.loglog(u, u, ':', color='#d6604d', lw=1.2, label=r'UV limit: $X/M^4$')
+ax.axvline(u_bg, color='gray', lw=1, ls='-.', alpha=0.7,
+           label=fr'Background $\varepsilon={u_bg:.1e}$ (Paper 10)')
+ax.axvline(1.0, color='#1a9641', lw=0.9, ls='--', alpha=0.7,
+           label=r'Non-linear onset: $X = M^4$')
+ax.fill_betweenx([0.05, 1.5], 1e-5, u_bg*5, alpha=0.06, color='#2166ac',
+                 label='Linear (background) regime')
+ax.fill_betweenx([0.05, 1.5], 0.2, 100, alpha=0.06, color='#d6604d',
+                 label='Non-linear (Vainshtein) regime')
+
+ax.set_xlabel(r'$\varepsilon \equiv X/M^4$', fontsize=11)
+ax.set_ylabel(r'$K(X)/X$', fontsize=11)
+ax.set_title(r'SSEE kinetic function $K(X)=X/\mathrm{KAL}_0 + X^2/M^4$: IR$\to$UV crossover',
+             fontsize=9.5)
+ax.set_xlim(1e-5, 1e2)
+ax.set_ylim(5e-3, 1.5e2)
+ax.legend(fontsize=7.5, loc='upper left', ncol=2)
+ax.grid(which='both', lw=0.4, alpha=0.4)
+fig.tight_layout()
+out1 = os.path.join(OUT, 'fig_paper10_KX_profile.pdf')
+fig.savefig(out1, bbox_inches='tight')
+fig.savefig(out1.replace('.pdf', '.png'), dpi=150, bbox_inches='tight')
+plt.close(fig)
+print(f"Saved: {out1}")
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Figure 2: H0_local vs alpha (cross-epoch falsification test)
+# ─────────────────────────────────────────────────────────────────────────────
+# If LiteBIRD measures r, then alpha changes, M^4 changes, alphaK_full changes,
+# H0_local changes.
+# alphaK_full(alpha) = alphaK_IR + delta_alphaK(alpha)
+# where delta_alphaK ~ 3/(45*alpha^2) * (X_bg/M^4) * (alphaK_IR)
+# More precisely: alphaK_UV - alphaK_IR = 0.41691 - 0.40330 = 0.01361
+# at alpha = phi^4/3 = 2.2847.
+# Scaling: delta_alphaK ∝ 1/alpha^2  (since M^4 ∝ alpha^2 and X_bg is fixed)
+delta_IR = alphaK_UV - alphaK_IR   # 0.01361 at alpha = alpha_att
+
+alpha_range = np.linspace(0.5, 6, 400)
+delta_alpha = delta_IR * (alpha_att / alpha_range)**2
+alphaK_full_arr = alphaK_IR + delta_alpha
+fscreen_arr = alphaK_full_arr / (3*MIRA)
+H0_arr = H0_alg / (1 - fscreen_arr)
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(7, 6), sharex=True)
+
+ax1.plot(alpha_range, alphaK_full_arr, 'k-', lw=2)
+ax1.axvline(alpha_att, color='#1a9641', ls='--', lw=1.3, alpha=0.8,
+            label=fr'$\alpha=\varphi^4/3={alpha_att:.4f}$ (this work)')
+ax1.axhline(alphaK_UV, color='gray', ls=':', lw=1, alpha=0.7)
+ax1.axhline(alphaK_IR, color='#2166ac', ls='-.', lw=1, alpha=0.7,
+            label=fr'IR limit $\alpha_K^{{IR}}={alphaK_IR:.5f}$')
+ax1.set_ylabel(r'$\alpha_K^{\rm full}(\alpha)$', fontsize=10)
+ax1.legend(fontsize=8.5, loc='upper right')
+ax1.grid(lw=0.4, alpha=0.4)
+ax1.annotate(fr'UV value: {alphaK_UV:.5f}',
+             xy=(alpha_att, alphaK_UV), xytext=(alpha_att+0.5, alphaK_UV+0.003),
+             fontsize=8, arrowprops=dict(arrowstyle='->', lw=0.8), color='#1a9641')
+
+ax2.plot(alpha_range, H0_arr, color='#1a9641', lw=2,
+         label=r'$H_0^{\rm local}(\alpha)$')
+ax2.axvline(alpha_att, color='#1a9641', ls='--', lw=1.3, alpha=0.8)
+ax2.axhline(73.04, color='#d6604d', ls='-.', lw=1.2,
+            label=r'SH0ES $73.04\pm1.04$')
+ax2.fill_between(alpha_range, 73.04-1.04, 73.04+1.04, color='#d6604d', alpha=0.10)
+ax2.axhline(67.36, color='#2166ac', ls=':', lw=1.2,
+            label=r'Planck $67.36\pm0.54$')
+ax2.fill_between(alpha_range, 67.36-0.54, 67.36+0.54, color='#2166ac', alpha=0.10)
+ax2.set_xlabel(r'$\alpha$-attractor curvature parameter', fontsize=11)
+ax2.set_ylabel(r'$H_0^{\rm local}$ [km s$^{-1}$ Mpc$^{-1}$]', fontsize=10)
+ax2.set_ylim(65, 78)
+ax2.legend(fontsize=8.5, loc='upper right')
+ax2.grid(lw=0.4, alpha=0.4)
+ax2.annotate(fr'$H_0^{{UV}}={H0_UV:.3f}$',
+             xy=(alpha_att, H0_UV), xytext=(alpha_att+0.3, H0_UV+0.6),
+             fontsize=8.5, color='#1a9641',
+             arrowprops=dict(arrowstyle='->', lw=0.8, color='#1a9641'))
+
+fig.suptitle(r'Cross-epoch falsification: $H_0^{\rm local}$ vs inflationary $\alpha$'
+             r' (LiteBIRD measures $r \Rightarrow \alpha$; this shifts the UV prediction)',
+             fontsize=9.5)
+fig.tight_layout()
+out2 = os.path.join(OUT, 'fig_paper10_alphaK_vs_alpha.pdf')
+fig.savefig(out2, bbox_inches='tight')
+fig.savefig(out2.replace('.pdf', '.png'), dpi=150, bbox_inches='tight')
+plt.close(fig)
+print(f"Saved: {out2}")
+
+print(f"\nPaper 10 constants check:")
+print(f"  KAL0         = {KAL0:.6f}")
+print(f"  alpha_att    = {alpha_att:.7f}")
+print(f"  alphaK_IR    = {alphaK_IR:.5f}")
+print(f"  alphaK_UV    = {alphaK_UV:.5f}")
+print(f"  fscreen_IR   = {fscreen_IR:.6f}")
+print(f"  fscreen_UV   = {fscreen_UV:.6f}")
+print(f"  H0_IR        = {H0_IR:.4f}")
+print(f"  H0_UV        = {H0_UV:.4f}")

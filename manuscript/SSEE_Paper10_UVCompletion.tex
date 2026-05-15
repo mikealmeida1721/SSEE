@@ -39,7 +39,7 @@
 
 \title{\textbf{UV Completion of SSEE Dark Energy:\\
        $M^4 = 45\alpha^2\rho_{\rm crit} = 5\phiG^8\rho_{\rm crit}$\\
-       and the Exact Hubble Tension Resolution}}
+       and a Conditional Near-Exact Hubble Tension Resolution}}
 
 \author{Mike Edison Almeida Vallejo\\
         \small\texttt{mike.almeida1721@gmail.com}}
@@ -64,17 +64,23 @@ inflationary tensor-to-scalar ratio $r = 12\alpha/N^2 \approx 0.00813$
   \boxed{M^4 \;=\; 45\,\alpha^2\,\rhoc \;=\; 5\,\phiG^8\,\rhoc
          \;\approx\; 234.9\,\rhoc}\,,
 \end{equation*}
-where the algebraic identity $45\alpha^2 = 5\phiG^8$ is exact at machine precision
-($|45\alpha^2 - 5\phiG^8| = 0$).
+where the identity $45\alpha^2 = 5\phiG^8$ follows exactly from the definition
+$\alpha = \phiG^4/3$ (not a numerical coincidence, but an algebraic consequence).
 With this cutoff, the full Bellini--Sawicki parameter becomes
 $\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value), giving
-$H_0^{\rm local} = 73.040$ km/s/Mpc, within $0.001\,\sigma$ of the SH0ES
-central value ($73.04 \pm 1.04$ km/s/Mpc; Riess et~al.\ 2022).
+$H_0^{\rm local} = 73.040$ km/s/Mpc, consistent with the SH0ES
+central value ($73.04 \pm 1.04$ km/s/Mpc; Riess et~al.\ 2022) to within the
+rounding precision of the published SH0ES result.
+\textbf{This agreement is conditional on Postulate~C.1 (UV-IR $\varphi/\pi$
+separability; §\ref{sec:theorem})} and is not independent of SH0ES: the
+postulate was formulated with SH0ES as the target.  It should therefore be
+regarded as a self-consistency check, not an independent prediction.
 The same $\alpha$ that governs inflation at $z \sim 10^{60}$ thus fixes the
-dark-energy UV scale today, providing a cross-epoch consistency test:
-if LiteBIRD measures a tensor-to-scalar ratio $r \neq 0.00813$, both
-$\alpha$ and $M$ change, and the predicted $H_0^{\rm local}$ changes
-accordingly.
+dark-energy UV scale today, providing a falsifiable cross-epoch consistency test:
+if LiteBIRD measures $r \neq 0.00813$, both $\alpha$ and $M$ change, and the
+predicted $H_0^{\rm local}$ changes accordingly.  The IR prediction
+$H_0^{\rm IR} = 72.86$ km/s/Mpc ($0.17\sigma$ SH0ES) is independent of
+this postulate and stands on its own.
 \end{abstract}
 
 \tableofcontents
@@ -116,9 +122,11 @@ where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
 Paper~1, and the equality $45\alpha^2 = 5\phiG^8$ is an exact algebraic identity
 following from the definition of $\alpha$.
 With this value, the corrected Hubble constant is $H_0^{\rm UV} = 73.040$
-km/s/Mpc, matching the SH0ES central value to within $0.001$ km/s/Mpc ($< 0.001\sigma$).
+km/s/Mpc, consistent with the SH0ES central value $73.04 \pm 1.04$ km/s/Mpc
+to within the rounding precision of the published result (conditional on
+Postulate~C.1; see §\ref{sec:theorem}).
 
-The physical picture is compelling: the \emph{same curvature parameter $\alpha$
+The physical picture is intriguing: the \emph{same curvature parameter $\alpha$
 that shaped the inflationary plateau at $z \sim 10^{60}$} provides the speed
 limit $M$ for the dark-energy kinetic term today.
 Section~\ref{sec:cross} makes this a falsifiable cross-epoch prediction.
@@ -161,8 +169,9 @@ From the definition $\alpha = \phiG^4/3$:
      = 5\,\phiG^8\,.
   \label{eq:identity}
 \end{align}
-This is an exact algebraic identity; numerical verification yields
-$|45\alpha^2 - 5\phiG^8| = 0$ at machine precision.
+This is an exact algebraic consequence of the definition $\alpha = \phiG^4/3$,
+not a numerical coincidence: floating-point evaluation confirms $|45\alpha^2 - 5\phiG^8| = 0$
+to double precision, as expected for a closed-form algebraic identity.
 
 The factor 5 in $5\phiG^8$ is the same integer that generates the golden ratio,
 $\phiG = (1+\sqrt{5})/2$, so $5 = (2\phiG - 1)^2$.
@@ -297,7 +306,8 @@ The local Hubble constant is
 \caption{%
   IR vs.\ UV Hubble constant predictions.
   The UV completion with $M^4 = 45\alpha^2\rhoc$ reduces the residual $0.17\sigma$
-  gap of Papers~1--9 to $< 0.001\sigma$.
+  gap of Papers~1--9 to within the rounding precision of SH0ES
+  (conditional on Postulate~C.1; see §\ref{sec:theorem}).
 }
 \label{tab:H0}
 \begin{tabular}{lllll}
@@ -305,7 +315,7 @@ The local Hubble constant is
 Regime & $\alphaK$ & $\fsc$ & $H_0^{\rm local}$ [km/s/Mpc] & Tension SH0ES \\
 \midrule
 IR ($M\to\infty$, Papers 1--9) & 0.40330 & 0.06725 & 72.862 & $0.17\sigma$ \\
-UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{73.040} & $< 0.001\sigma$ \\
+UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{73.040} & $\sim0\sigma$ (rounding; cond.$^{a}$) \\
 \midrule
 SH0ES (Riess 2022) & --- & --- & $73.04 \pm 1.04$ & --- \\
 \bottomrule
@@ -313,9 +323,14 @@ SH0ES (Riess 2022) & --- & --- & $73.04 \pm 1.04$ & --- \\
 \end{table}
 
 Table~\ref{tab:H0} compares the IR and UV results.
-The UV cutoff $M^4 = 45\alpha^2\rhoc$ reduces the Hubble tension to $< 0.001\sigma$,
-with $H_0^{\rm UV} = 73.040$ km/s/Mpc differing from the SH0ES central value by
-$0.001$ km/s/Mpc --- below the resolution of the current measurement.
+Under Postulate~C.1 (§\ref{sec:theorem}), $M^4 = 45\alpha^2\rhoc$ gives
+$H_0^{\rm UV} = 73.040$ km/s/Mpc, matching the SH0ES central value $73.04$ to the
+4-digit precision reported by Riess et~al.\ (2022).  This agreement is a rounding
+coincidence in the last digit and should not be interpreted as a statistical
+precision test; the physical prediction is $H_0^{\rm UV} - H_0^{\rm SH0ES} < 0.01$ km/s/Mpc
+($\ll 1\sigma$), which is genuinely sub-dominant to the SH0ES uncertainty of $\pm1.04$ km/s/Mpc.
+\footnotesize{$^{a}$ Conditional on Postulate C.1 (UV-IR $\varphi/\pi$ separability);
+not an independent derivation from first principles.}
 
 \subsection{The UV ladder}
 
@@ -615,7 +630,8 @@ $\alpha$-attractor $K_\alpha$ is
 The UV ladder closes:
 $\phiG \to \alpha = \phiG^4/3 \to M^4 = 5\phiG^8\rhoc
 \to \alphaK^{\rm full} = 0.41691
-\to H_0^{\rm local} = 73.040\;\mathrm{km/s/Mpc}\,(<0.001\sigma\;\mathrm{SH0ES})$,
+\to H_0^{\rm local} = 73.040\;\mathrm{km/s/Mpc}$ (consistent with SH0ES to rounding;
+conditional on Postulate C.1),
 entirely within the $\{\phiG,\pi\}$ algebraic structure of SSEE.}
 \end{quote}
 
@@ -701,10 +717,13 @@ Paper 1 & $\alpha = \phiG^4/3$ → $r = 0.00813$ & \textbf{Direct input:} $M^4 =
 Paper 5 & IS: $c_s^2 \approx 0$ (bulk-viscosity mode) & Compatible: distinct from $c_{s,\rm ad}^2 \approx 0.967$ (field mode) \\
 Paper 7 & $\alphaK^{\rm IR} = 0.4033$ & Base for UV correction (+3.37\%) \\
 Paper 8 & $\MIRA = \AURA/2$; Vainshtein $r_V \propto 1/M^2$ & $r_V$ enlarged to $\sim 10^{44}$ m at UV; double GR protection \\
-Paper 9 & $H_0^{\rm IR} = 72.86$ (0.17$\sigma$) & UV closes to 73.040 ($< 0.001\sigma$) \\
+Paper 9 & $H_0^{\rm IR} = 72.86$ (0.17$\sigma$) & UV closes to 73.040 (rounding; conditional$^{a}$) \\
 Papers 2--4,6 & CMB, MCMC, $\sigma_8$, $f\sigma_8$ & $M$ only modifies $\alphaK$; background MIRA unchanged \\
 \bottomrule
 \end{tabular}
+\footnotesize{$^{a}$ UV result conditional on Postulate C.1 (UV-IR separability, §\ref{sec:theorem});
+the $H_0=73.040$ agreement with SH0ES $73.04$ km/s/Mpc is a rounding coincidence, not a
+statistically independent prediction.}
 \end{table}
 
 The AURA cancellation of Paper~9 ($\AURA$ drops out of $\alphaK/(3\MIRA)$
@@ -730,8 +749,8 @@ where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
 Paper~1.
 With this cutoff, the full Bellini--Sawicki kineticity is
 $\alphaK^{\rm full} = 0.41691$ and the local Hubble constant is
-$H_0^{\rm UV} = 73.040$ km/s/Mpc, within $0.001$ km/s/Mpc ($< 0.001\sigma$)
-of the SH0ES central value.
+$H_0^{\rm UV} = 73.040$ km/s/Mpc, matching the SH0ES central value $73.04$
+km/s/Mpc to rounding precision (conditional on Postulate~C.1).
 
 The key conclusions are:
 \begin{enumerate}
@@ -740,7 +759,8 @@ The key conclusions are:
   \item The UV correction to $\alphaK$ is perturbative
         ($\varepsilon \approx 5.7\times10^{-4}$) and shifts $\alphaK$ by $+3.37\%$.
   \item The residual $0.17\sigma$ Hubble tension of Papers~1--9 is reduced to
-        $< 0.001\sigma$ by the UV completion.
+        below the rounding precision of SH0ES by the UV completion,
+        conditional on Postulate~C.1 (§\ref{sec:theorem}).
   \item The same $\alpha$ predicts $r \approx 0.00813$ (LiteBIRD 2032),
         enabling a cross-epoch falsification test independent of Hubble tension
         measurements.

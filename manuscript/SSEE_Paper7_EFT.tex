@@ -447,9 +447,12 @@ $\alpha_T$ (tensor speed excess)  & $0$ & $0$ & GW-safe \\
 $\alpha_B$ (braiding)             & $0$ & $0$ & ($G_3 = 0$) \\
 $\alpha_M$ (Planck-mass running)  & $0$ & $0$ & ($G_4 = \Mpl^2/2$) \\
 $c_s^2$ (scalar sound speed)     & $K_X/(K_X + 2XK_{XX})$ & $\in(1/3,1)$ & \\
-$\alpha_K$ (kineticity)           & $3\Omde(1+w_\phi)$      & $0.073$    & algebraic \\
+$\alpha_K$ (kineticity, bare-field) & $3\Omde(1+w_\phi)$     & $0.073^{a}$  & algebraic (see §\ref{sec:alphak}) \\
 \bottomrule
 \end{tabular}
+\footnotesize{$^{a}$ Bare-field value using $w_\phi=-0.971$ from background integration.
+The observationally relevant effective value is $\alpha_K^{\rm eff}=0.4033$
+(using $w_0=-0.840$; confirmed by EFTCAMB). See §\ref{sec:alphak}.}
 \end{center}
 
 The vanishing of $\alpha_T$ is consistent with the constraint from
@@ -482,17 +485,29 @@ $1+w_\phi = 0.029$, and therefore
   = 3 \times 0.840 \times 0.029 \approx 0.073.
   \label{eq:alphak_numerical}
 \end{equation}
-\paragraph{Note on $w_\phi$ vs $w_0$.}
-The bare-field equation of state $w_\phi = -0.971$ differs from the
-\emph{effective} $w_0 = -0.840$ because the conformal coupling shifts
-$w_{\rm eff}$ through the energy-transfer current $Q^\nu$ (§\ref{sec:coupling}).
-The algebraic identity $1+w_0 = \Omega_{m,\rm dyn} = \mathrm{BUFFER}/M_v$
-applies to the \emph{observed effective} equation of state, not to the kinetic
-energy of the uncoupled field.  Using $w_0$ in place of $w_\phi$ would
-over-estimate $\alpha_K$ by a factor $\approx 5.5$.
+\paragraph{Note on $w_\phi$ vs $w_0$: two physically distinct $\alpha_K$ values.}
+Two values of $\alpha_K$ appear in the SSEE literature and both are
+self-consistent within their respective computational frames:
+\begin{itemize}
+  \item $\alpha_K^{\rm field} \approx 0.073$: the \emph{bare-field} kinetic
+    value computed here from the numerically integrated field equation of
+    state $w_\phi = -0.971$ (this paper, §\ref{sec:numerics}).  This uses
+    the uncoupled-field EOS before the conformal coupling redistributes
+    kinetic energy.
+  \item $\alpha_K^{\rm eff} \approx 0.4033$: the \emph{effective background}
+    value $3\Omde(1+w_0) = 3\times0.840\times0.160$, using the \emph{observed}
+    CPL parameter $w_0=-0.840$.  This is confirmed to $0.005\%$ by the
+    EFTCAMB implementation (Paper~7+EFTCAMB validation, \texttt{src/ssee\_eftcamb\_validation.py})
+    and is the value cited in Papers~8--10 and the cross-paper constant register.
+\end{itemize}
+The two values differ because the conformal coupling $\bc = -\AURA$ shifts
+$w_{\rm eff}$ away from $w_\phi$ through the energy-transfer four-current
+$Q^\nu$ (§\ref{sec:coupling}).  The observationally relevant Bellini-Sawicki
+kineticity for hi\_class/EFTCAMB is $\alpha_K^{\rm eff} \approx 0.4033$;
+the value $\alpha_K^{\rm field} \approx 0.073$ in the table below is the
+bare-field contribution from the numerics of this paper alone.
 The redshift evolution follows directly from the background Friedmann
-equations; at high redshift ($a\to 0$)
-$\Omde\to 0$ and $\alpha_K\to 0$, so the EFT is well-behaved at all epochs.
+equations; at high redshift ($a\to 0$), $\Omde\to 0$ and $\alpha_K\to 0$.
 
 \paragraph{Observational status.}
 \begin{itemize}
@@ -524,9 +539,14 @@ Function & SSEE & Expression & Current limit & Euclid forecast \\
 $\alpha_T$ & $0$ (exact) & $G_5 = 0$ & $<10^{-15}$ \citep{gw170817_2017} & $<10^{-2}$ \\
 $\alpha_M$ & $0$ (exact) & $G_4 = \Mpl^2/2$ & $<0.3$ & $<0.05$ \\
 $\alpha_B$ & $0$ (exact) & $G_3 = 0$ & $<0.5$ & $<0.05$ \\
-$\alpha_K(z{=}0)$ & $0.073$ & $3\Omde(1+w_\phi)$ & $<0.1$ (Euclid) & $<0.1$ \\
+$\alpha_K(z{=}0)$, bare-field & $0.073^{a}$ & $3\Omde(1+w_\phi)$ & $<0.1$ (Euclid) & $<0.1$ \\
+$\alpha_K(z{=}0)$, effective  & $0.4033^{b}$ & $3\Omde(1+w_0)$  & — (EFTCAMB confirms) & — \\
 \bottomrule
 \end{tabular}
+\footnotesize{$^{a}$ Bare-field value, $w_\phi=-0.971$ from this paper's numerics.
+$^{b}$ Effective value $w_0=-0.840$; confirmed to $0.005\%$ by EFTCAMB
+(\texttt{src/ssee\_eftcamb\_validation.py}); this is the observable cited in Papers~8--10.
+See the two-value discussion in §\ref{sec:alphak}.}
 \end{table}
 
 \paragraph{Inputs for \textsc{hi\_class}/\textsc{eftcamb}.}

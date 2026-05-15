@@ -146,7 +146,7 @@ treatment.
 \subsection{Algebraic constants}
 
 From $\pi$ and $\varphi=(1+\sqrt{5})/2$, the framework defines the
-structural viscosity $\KALz$ and the CPL parameters as:
+structural viscosity $\KALz$ and the CPL \citep{Chevallier2001,Linder2003} parameters as:
 \begin{align}
   \KALz &= \frac{\pi+\varphi}{2}+\pi \approx 5.5214, \label{eq:kal0} \\
   \wz^{\SSEE} &= -\frac{T_r}{M_v}\approx-0.840, \quad
@@ -202,48 +202,34 @@ fixed algebraically as described in Section~\ref{sec:model}.
   \label{eq:Mcluster}
 \end{equation}
 
-\subsection{Folding Symmetry and the acoustic-mapping operator}
+\subsection{Acoustic-scale hypothesis}
 \label{sec:folding}
 
-The \SSEE\ framework posits two structural regimes that carry physically
-distinct roles:
-\begin{itemize}
-  \item \textbf{AURA} ($\AURA$): the structural irradiation in the vacuum
-    (late-universe) regime. In this regime the fixed-geometry model
-    operates freely, generating the geometric horizon $\rdSSEE$.
-  \item \textbf{DUAL} ($\DUAL$): the structural response in the
-    strongly-coupled plasma (early-universe) regime, where the same
-    geometry is subject to the additional resistance of the coupled
-    matter–radiation fluid.
-\end{itemize}
-The relation $\DUAL = 2\AURA$ is treated here as an effective
-early-universe coupling multiplier, not as a free-fit parameter.
-Its value of~2 is an effective geometric approximation: the dimensionless ratio
-$\Omega_{m,\mathrm{CMB}}/\Omega_{m,\mathrm{dyn}} = \mathrm{MIRA} \approx 2$
-follows algebraically from the same $\{\varphi,\pi\}$ basis as $w_0$ and $w_a$
-(Paper~4, \S2), predating DESI~DR2 (Zenodo: \texttt{10.5281/zenodo.19679049}).
-The physical interpretation — viscous energy redistribution between matter and
-radiation sectors — is quantified in Paper~1, Appendix~A: the IS growth
-index $\gamma_{\rm IS}=0.657\pm0.002$ (Paper~1; superseded by $0.554$ in Paper~5)
-and relaxation time $\tau_\Pi H_0 = \mathrm{KAL}_0/(3\Omega_{\mathrm{DE}})\approx 2.191$
-are derived numerically from the $\{\varphi,\pi\}$ axioms, yielding
-$S_8 = 0.837$ (within $0.4\sigma$ of Planck; Paper~5 gives $S_8=0.725$ with
-$\gamma_{\rm IS}=0.554$ and $\Omega_{m,\mathrm{dyn}}=0.160$).
-
-The acoustic-mapping operator $|\wz|$ links the two regimes: it
-represents the effective sound-speed saturation fraction under the
-$\KALz$ constraint, i.e.\ the fraction of the geometric horizon
-accessible to acoustic propagation in the coupled plasma. The resulting
-mapping is:
+\SSEE\ predicts a geometric drag-epoch scale $\rdSSEE \approx 175.6$\,Mpc
+from the same $\{\varphi,\pi\}$ axioms that fix $w_0$ and $w_a$.
+We observe the \emph{numerical coincidence}
 \begin{equation}
-  \rdeff = \rdSSEE\cdot|\wz| \approx 175.6\times0.840 \approx 147.5\;\text{Mpc},
+  \rdSSEE \times |w_0| \approx 175.6\times 0.840 \approx 147.5\;\text{Mpc},
   \label{eq:rd_mapping}
 \end{equation}
-which reproduces the Planck-compatible effective scale
-$r_d=147.09\pm0.26$\,Mpc within $1\sigma$. We emphasise that
-Eq.~\eqref{eq:rd_mapping} is a \textit{structural hypothesis}: it
-requires verification via the full CMB likelihood in Paper~3, not
-a resolution of the background tension by reparametrisation.
+which is within $1\sigma$ of the Planck-inferred value $r_d = 147.09\pm0.26$\,Mpc.
+\textbf{This is a post-hoc numerical coincidence, not a derivation.}
+A first-principles acoustic derivation would require solving the
+Israel--Stewart fluid equations in the early universe (Paper~1,
+Appendix~A) to show that the effective drag scale is $|w_0|\,\rdSSEE$;
+that derivation is an open problem.  Equation~\eqref{eq:rd_mapping} is
+therefore presented here as a falsifiable hypothesis to be tested by
+the full CMB likelihood in Paper~3: if the plik\,lite fit in Paper~3
+yields $\chi^2_r \gg 1$ or rules out $\rdeff$, Eq.~\eqref{eq:rd_mapping}
+is falsified.
+
+The ratio $\Omega_{m,\mathrm{CMB}}/\Omega_{m,\mathrm{dyn}}
+= \mathrm{MIRA} \approx 1.999$ is a structural constant of the framework
+(Paper~4, \S2), predating DESI~DR2 (Zenodo: \texttt{10.5281/zenodo.19679049}).
+Its physical interpretation as a viscous energy redistribution factor
+between matter and radiation sectors is quantified in Paper~5, where it
+emerges numerically from the IS relaxation equations; a closed-form
+derivation from first principles remains open.
 
 \begin{figure}[H]
   \centering
@@ -251,8 +237,8 @@ a resolution of the background tension by reparametrisation.
   \caption{$\kal(x)$ interpolation between the Newtonian limit ($x\gg1$)
   and the MONDian limit ($x\ll1$). The fixed point $\KALz\approx5.521$
   marks the structural viscosity at $x=0$, which enters both the cluster
-  mass formula~\eqref{eq:Mcluster} and the Folding Symmetry
-  derivation~\eqref{eq:rd_mapping}.}
+  mass formula~\eqref{eq:Mcluster} and the acoustic-scale mapping
+  hypothesis~\eqref{eq:rd_mapping} (Section~\ref{sec:folding}).}
   \label{fig:kal_interp}
 \end{figure}
 
@@ -419,8 +405,7 @@ additionally sample $\Omega_m$ (and $\wz,\wa$ for CPL).
 \caption{Parameter hierarchy in the \SSEE\ MCMC. Categories:
 \textbf{Fixed by geometry} = algebraically determined, never sampled;
 \textbf{Sampled} = inferred via MCMC; \textbf{Derived} = computed from
-sampled values; \textbf{Mapped} = structural hypothesis (Folding
-Symmetry), to be validated in Paper~3.}
+sampled values; \textbf{Mapped} = structural hypothesis (acoustic-scale mapping), to be validated in Paper~3.}
 \label{tab:param_hierarchy}
 \begin{tabular}{@{}lllp{4.2cm}@{}}
 \toprule
@@ -431,7 +416,7 @@ $\OmDE,\,\KALz$      & \textbf{Fixed by geometry} & $T_r/M_v;\ \beta+\pi$     & 
 $H_0$                & \textbf{Sampled}           & $\mathcal{U}[60,80]$      & Only cosmological free parameter \\
 $\Omega_b h^2$       & \textbf{Sampled}           & BBN prior                 & Shared with \LCDM, CPL \\
 $r_d$                & \textbf{Derived}           & Friedmann background      & Eq.~\eqref{eq:rd}; carries background mismatch \\
-$\rdeff$             & \textbf{Mapped (hypothesis)}& Folding Symmetry         & Eq.~\eqref{eq:rd_mapping}; Paper~3 test \\
+$\rdeff$             & \textbf{Mapped (hypothesis)}& Acoustic-scale hypothesis & Eq.~\eqref{eq:rd_mapping}; Paper~3 test \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -595,7 +580,7 @@ However, \textbf{\SSEE\ has not yet resolved this tension from first principles}
 A self-consistent \SSEE\ $r_d$ formula derivable from the Israel--Stewart action
 (Paper~1, App.~A) is an open problem; until it exists, the $21.3\sigma$ residual
 stands as a documented, unresolved challenge to the full model.
-A fair comparison restricted to the dynamical dark-energy sector --- where the
+A comparison restricted to the dynamical dark-energy sector --- where the
 \LCDM\ $r_d$ calibration is not applied --- yields $\Delta\mathrm{BIC}=-5.55$
 (Section~\ref{sec:bic}).
 
@@ -841,7 +826,7 @@ both \SSEE\ and \LCDM\ are evaluated using the same $\Omega_m$-based
 Friedmann equation with the same data.  It does \emph{not} constitute a
 model-independent falsification, because \SSEE\ explicitly proposes that
 the Friedmann background requires modification in the acoustic regime
-(the Folding Symmetry hypothesis, Section~\ref{sec:folding}).  Applying
+(the acoustic-scale hypothesis, Section~\ref{sec:folding}).  Applying
 the Planck $\Omega_m$ prior — which is calibrated on the \LCDM\
 background — to an \SSEE\ universe is a non-equivalent prior
 calibration; it tests whether \SSEE\ \emph{is} \LCDM, not whether
@@ -942,16 +927,15 @@ adjusting $\Omega_m$ to fit: parameter adjustment within a
 \LCDM\ framework would not constitute a genuine test of the structural
 hypothesis.
 
-The Folding Symmetry (Section~\ref{sec:folding}) provides a structural
-resolution: the $21\sigma$ tension in $r_d$ is a diagnostic artefact of
-applying the unmodified Friedmann background to the \SSEE\ universe.
-Equation~\eqref{eq:rd_mapping} shows that once the acoustic-mapping
-operator $|\wz|$ is applied, $\rdeff\approx147.5$\,Mpc recovers the
+The acoustic-scale hypothesis (Section~\ref{sec:folding}) offers a
+tentative resolution: the $21\sigma$ tension in $r_d$ may be a diagnostic
+artefact of applying the unmodified Friedmann background to the \SSEE\
+universe.  If Eq.~\eqref{eq:rd_mapping} is confirmed by the CMB
+likelihood in Paper~3, then $\rdeff\approx147.5$\,Mpc recovers the
 Planck value within $1\sigma$, reducing the residual tension from
-$21\sigma$ to sub-$1\sigma$. The $21\sigma$ figure is therefore not a
-falsification of the dynamical ansatz, but a quantitative signal that
-the standard Friedmann background requires modification in the acoustic
-regime.
+$21\sigma$ to sub-$1\sigma$; if it is not confirmed, the $21\sigma$
+figure stands as a genuine falsification of the acoustic sector.
+The companion Paper~3 carries out this test.
 
 \subsection{Growth structure and $S_8$ sector sensitivity}
 
@@ -1008,7 +992,7 @@ would constitute decisive falsification:
     cluster-mass formula breaks and \SSEE\ loses its only mechanism
     for reconciling $\Omega_{m,\mathrm{eff}}$ with cluster observations.
   \item \textbf{If future BAO surveys at $z>3$ measure}
-    $r_d<160$\,Mpc directly, the Folding Symmetry hypothesis is
+    $r_d<160$\,Mpc directly, the acoustic-scale hypothesis is
     ruled out and the $21\sigma$ background tension becomes a
     genuine falsification rather than a calibration diagnostic.
 \end{itemize}
@@ -1035,11 +1019,13 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
     that the penalty is entirely attributable to background mismatch,
     not to the $\wz$--$\wa$ prediction.
 
-  \item The Folding Symmetry hypothesis — $\rdeff=\rdSSEE\cdot|\wz|
-    \approx147.5$\,Mpc — would recover the Planck sound horizon within
-    $2\sigma$ if confirmed, reinterpreting the $21\sigma$ tension as a
+  \item The acoustic-scale hypothesis — $\rdeff=\rdSSEE\cdot|\wz|
+    \approx147.5$\,Mpc (Eq.~\ref{eq:rd_mapping}) — would recover the
+    Planck sound horizon within $2\sigma$ if confirmed by the CMB
+    likelihood in Paper~3, reinterpreting the $21\sigma$ tension as a
     diagnostic of non-equivalent background calibration rather than a
-    falsification of the dynamical ansatz.
+    falsification of the dynamical ansatz.  If Paper~3 rules it out,
+    the acoustic sector is falsified.
 
   \item Paper~3 must derive and validate the \SSEE\ Friedmann background
     against CMB peak positions, the Silk-damping tail, and the joint
@@ -1354,6 +1340,16 @@ Riess, A.~G., et al.\ (2022).
 A Comprehensive Measurement of the Local Value of the Hubble Constant with
 1~HST Programs Using the Distance Ladder.
 \textit{ApJL} \textbf{934}, L7. arXiv:2112.04510.
+
+\bibitem[Chevallier \& Polarski(2001)]{Chevallier2001}
+Chevallier, M.\ \& Polarski, D.\ 2001,
+Accelerating universes with scaling dark matter.
+\textit{Int.\ J.\ Mod.\ Phys.\ D} \textbf{10}, 213. arXiv:gr-qc/0009008.
+
+\bibitem[Linder(2003)]{Linder2003}
+Linder, E.V.\ 2003,
+Exploring the expansion history of the universe.
+\textit{Phys.\ Rev.\ Lett.} \textbf{90}, 091301. arXiv:astro-ph/0208512.
 
 \end{thebibliography}
 \end{document}

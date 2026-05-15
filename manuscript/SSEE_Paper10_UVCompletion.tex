@@ -67,8 +67,8 @@ where the algebraic identity $45\alpha^2 = 5\phiG^8$ is exact at machine precisi
 ($|45\alpha^2 - 5\phiG^8| = 0$).
 With this cutoff, the full Bellini--Sawicki parameter becomes
 $\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value), giving
-$H_0^{\rm local} = 73.040$ km/s/Mpc, in exact agreement with SH0ES
-($\Delta = 0.0000\sigma$).
+$H_0^{\rm local} = 73.040$ km/s/Mpc, within $0.001\,\sigma$ of the SH0ES
+central value ($73.04 \pm 1.04$ km/s/Mpc; Riess et~al.\ 2022).
 The same $\alpha$ that governs inflation at $z \sim 10^{60}$ thus fixes the
 dark-energy UV scale today, providing a cross-epoch consistency test:
 if LiteBIRD measures a tensor-to-scalar ratio $r \neq 0.00813$, both
@@ -115,7 +115,7 @@ where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
 Paper~1, and the equality $45\alpha^2 = 5\phiG^8$ is an exact algebraic identity
 following from the definition of $\alpha$.
 With this value, the corrected Hubble constant is $H_0^{\rm UV} = 73.040$
-km/s/Mpc, exactly matching SH0ES.
+km/s/Mpc, matching the SH0ES central value to within $0.001$ km/s/Mpc ($< 0.001\sigma$).
 
 The physical picture is compelling: the \emph{same curvature parameter $\alpha$
 that shaped the inflationary plateau at $z \sim 10^{60}$} provides the speed
@@ -295,8 +295,8 @@ The local Hubble constant is
 \centering
 \caption{%
   IR vs.\ UV Hubble constant predictions.
-  The UV completion with $M^4 = 45\alpha^2\rhoc$ closes the residual $0.17\sigma$
-  gap of Papers~1--9 exactly.
+  The UV completion with $M^4 = 45\alpha^2\rhoc$ reduces the residual $0.17\sigma$
+  gap of Papers~1--9 to $< 0.001\sigma$.
 }
 \label{tab:H0}
 \begin{tabular}{lllll}
@@ -304,7 +304,7 @@ The local Hubble constant is
 Regime & $\alphaK$ & $\fsc$ & $H_0^{\rm local}$ [km/s/Mpc] & Tension SH0ES \\
 \midrule
 IR ($M\to\infty$, Papers 1--9) & 0.40330 & 0.06725 & 72.862 & $0.17\sigma$ \\
-UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{73.040} & \textbf{0.00$\sigma$} \\
+UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{73.040} & $< 0.001\sigma$ \\
 \midrule
 SH0ES (Riess 2022) & --- & --- & $73.04 \pm 1.04$ & --- \\
 \bottomrule
@@ -312,12 +312,13 @@ SH0ES (Riess 2022) & --- & --- & $73.04 \pm 1.04$ & --- \\
 \end{table}
 
 Table~\ref{tab:H0} compares the IR and UV results.
-The UV cutoff $M^4 = 45\alpha^2\rhoc$ closes the Hubble tension to exactly
-$0.00\sigma$, with $H_0^{\rm UV}$ matching SH0ES to four decimal places.
+The UV cutoff $M^4 = 45\alpha^2\rhoc$ reduces the Hubble tension to $< 0.001\sigma$,
+with $H_0^{\rm UV} = 73.040$ km/s/Mpc differing from the SH0ES central value by
+$0.001$ km/s/Mpc --- below the resolution of the current measurement.
 
 \subsection{The UV ladder}
 
-The chain of derivations that leads from the golden ratio to the exact SH0ES
+The chain of derivations that leads from the golden ratio to the SH0ES-consistent
 value is summarised in Table~\ref{tab:ladder}.
 
 \begin{table}[ht]
@@ -497,15 +498,25 @@ sensitivity ($\sigma_{w_0} \approx 0.01$), and could serve as an
 additional distinguishing test.
 
 \paragraph{Sound speed.}
-The adiabatic sound speed of the full theory is
+The adiabatic sound speed of scalar-field excitations around the homogeneous
+background is
 \begin{equation}
-  c_s^2 \;=\; \frac{K_X}{K_X + 2X K_{XX}}
+  c_{s,\rm ad}^2 \;=\; \frac{K_X}{K_X + 2X K_{XX}}
           \;=\; \frac{1/\KAL + 2X/M^4}{1/\KAL + 6X/M^4}
-          \;\approx\; 0.967\,,
+          \;\approx\; 0.967\,.
 \end{equation}
-deviating slightly from $c_s = 1$ (the IR IS value of Paper~5).
-The 3.3\% suppression is below current CMB constraints on dark-energy
-perturbations but may be detectable by next-generation surveys.
+This quantity governs how fast small adiabatic excitations of $\phi$ propagate
+on top of the smooth dark-energy background.
+It is \emph{not} the same as the causal-perturbation speed $c_s^2 \approx 0$
+reported in Paper~5, which is the Israel--Stewart bulk-viscosity transport
+speed in the hydrodynamic limit of the dark-fluid sector.
+The two quantities coexist without contradiction:
+$c_{s,\rm ad}^2$ applies to scalar-field modes at the background level,
+while Paper~5's $c_s^2 \approx 0$ is an IS closure condition that suppresses
+causal bulk modes at the perturbative level.
+The 3.3\% UV suppression of $c_{s,\rm ad}^2$ relative to unity is below
+current CMB constraints on dark-energy perturbations, but is in principle
+detectable by next-generation surveys (Euclid, CMB-S4).
 
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -525,10 +536,11 @@ with the nine preceding papers.
 Paper & Result used & UV impact \\
 \midrule
 Paper 1 & $\alpha = \phiG^4/3$ → $r = 0.00813$ & \textbf{Direct input:} $M^4 = 45\alpha^2\rhoc$ \\
+Paper 5 & IS: $c_s^2 \approx 0$ (bulk-viscosity mode) & Compatible: distinct from $c_{s,\rm ad}^2 \approx 0.967$ (field mode) \\
 Paper 7 & $\alphaK^{\rm IR} = 0.4033$ & Base for UV correction (+3.37\%) \\
-Paper 8 & $\MIRA = \AURA/2$ & Unchanged; AURA cancels at IR level \\
-Paper 9 & $H_0^{\rm IR} = 72.86$ (0.17$\sigma$) & UV closes to 73.040 (0.00$\sigma$) \\
-Papers 2--6 & CMB, MCMC, $\sigma_8$, $f\sigma_8$ & M only modifies $\alphaK$; background MIRA unchanged \\
+Paper 8 & $\MIRA = \AURA/2$; Vainshtein $r_V \propto 1/M^2$ & $r_V$ enlarged to $\sim 10^{44}$ m at UV; double GR protection \\
+Paper 9 & $H_0^{\rm IR} = 72.86$ (0.17$\sigma$) & UV closes to 73.040 ($< 0.001\sigma$) \\
+Papers 2--4,6 & CMB, MCMC, $\sigma_8$, $f\sigma_8$ & $M$ only modifies $\alphaK$; background MIRA unchanged \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -536,9 +548,10 @@ Papers 2--6 & CMB, MCMC, $\sigma_8$, $f\sigma_8$ & M only modifies $\alphaK$; ba
 The AURA cancellation of Paper~9 ($\AURA$ drops out of $\alphaK/(3\MIRA)$
 in the IR limit) is technically broken in the UV because $\alphaK^{\rm full}$
 acquires an AURA-dependent correction.
-However, the \emph{numerical result} $H_0^{\rm UV} = 73.040$ is exact to
-SH0ES, so the UV correction appears to be the physically correct completion
-rather than a destabilisation of the IR identity.
+The numerical result $H_0^{\rm UV} = 73.040$ km/s/Mpc agrees with the SH0ES
+central value to within $0.001$ km/s/Mpc, suggesting that the UV correction
+is the physically correct completion rather than a destabilisation of the IR
+identity.
 
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -555,7 +568,8 @@ where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
 Paper~1.
 With this cutoff, the full Bellini--Sawicki kineticity is
 $\alphaK^{\rm full} = 0.41691$ and the local Hubble constant is
-$H_0^{\rm UV} = 73.040$ km/s/Mpc, in exact agreement with SH0ES.
+$H_0^{\rm UV} = 73.040$ km/s/Mpc, within $0.001$ km/s/Mpc ($< 0.001\sigma$)
+of the SH0ES central value.
 
 The key conclusions are:
 \begin{enumerate}
@@ -563,8 +577,8 @@ The key conclusions are:
         connects the inflationary curvature $\alpha$ to the dark-energy UV scale.
   \item The UV correction to $\alphaK$ is perturbative
         ($\varepsilon \approx 5.7\times10^{-4}$) and shifts $\alphaK$ by $+3.37\%$.
-  \item The residual $0.17\sigma$ Hubble tension of Papers~1--9 is closed
-        exactly by the UV completion.
+  \item The residual $0.17\sigma$ Hubble tension of Papers~1--9 is reduced to
+        $< 0.001\sigma$ by the UV completion.
   \item The same $\alpha$ predicts $r \approx 0.00813$ (LiteBIRD 2032),
         enabling a cross-epoch falsification test independent of Hubble tension
         measurements.

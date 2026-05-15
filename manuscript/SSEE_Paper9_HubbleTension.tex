@@ -396,15 +396,21 @@ Both predictions are consistent with SH0ES \citep{Riess2022}:
   \label{eq:tensions}
 \end{equation}
 
-The multiplicative form~\eqref{eq:H0local} is suggestive of a
-geometric correction to the distance-luminosity relation: if the
-scalar kinetic energy contributes a fraction $\fsc$ to the local
-Friedmann equation at $z < 0.15$ but is absent from the CMB-era
-Friedmann equation (where $\Omde \sim 10^{-9}$), the ratio of the
-two inferred expansion rates is $1/(1-\fsc)$ to leading order.
-A complete perturbative derivation of this split --- computing the
-correction to the apparent luminosity distance for SH0ES calibrators
-in the SSEE background --- is deferred to future work (see
+We adopt the \textbf{multiplicative form}~\eqref{eq:H0local} as the canonical
+SSEE prediction, for the following physical reason.
+The SH0ES programme infers $H_0$ from the slope of the Hubble diagram: it
+measures the luminosity distance $d_L(z) = (1+z)\!\int_0^z \!dz'/H(z')$ via
+Cepheid-calibrated Type~Ia supernovae at $z \lesssim 0.15$.
+In the SSEE background, the scalar kinetic energy density contributes a fraction
+$\fsc$ to the local Friedmann equation, boosting $H(z)$ by a factor
+$(1-\fsc)^{-1}$ relative to $H_0^{\rm alg}$.
+The integrand $1/H(z')$ is therefore reduced by $(1-\fsc)$, compressing $d_L$,
+and a standard FLRW analysis that fits a single $H_0$ to the compressed $d_L$
+recovers $H_0^{\rm local} = H_0^{\rm alg}/(1-\fsc)$.
+The additive form~\eqref{eq:H0local_add} represents a linearisation $(1-\fsc)^{-1} \approx 1+\fsc$
+and carries a second-order error of $O(\fsc^2) \approx 0.33$\,km/s/Mpc.
+A complete perturbative derivation integrating the perturbed Hubble flow over
+$z \in [0, 0.15]$ in the SSEE background is deferred to future work (see
 Section~\ref{sec:limitations}).
 
 \medskip
@@ -547,15 +553,16 @@ SH0ES-type calibration and show that the result is exactly $\fsc \times H_0^{\rm
 This requires integrating the perturbed Hubble flow over $z \in [0, 0.15]$
 in the SSEE background.
 
-\paragraph{3.~UV completion of $M$.}
-Papers~7 and~8 treat $M$ (the UV cutoff in $K(X) = X/\KAL + X^2/M^4$)
-as a reference parameter set to $M \approx \Mpl$.
-The algebraic identity derived here does not depend on the value of $M$
-(it cancels in the ratio $\alphaK/3\MIRA$), so the Hubble correction is
-robust under changes to $M$.
-However, a complete UV completion deriving $M$ from $\phiG$ and $\pi$
-would further constrain the Vainshtein radius $r_V$ and refine the
-physical mechanism of Section~\ref{sec:mechanism}.
+\paragraph{3.~UV completion of $M$ (addressed in Paper~10).}
+The algebraic identity $\fsc = \alphaK/(3\MIRA) = (\pi-\phiG)/(\Omega^2)$ does not
+depend on $M$ (it cancels in the ratio), so the prediction $H_0^{\rm local} = 72.86$\,km/s/Mpc
+is robust.
+Paper~10 of this series \citep{Paper10} derives $M^4 = 45\alpha^2\rhoc = 5\phiG^8\rhoc$
+from the same $\alpha$-attractor that governs inflation (Paper~1), yielding
+$\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value) and
+$H_0^{\rm UV} = 73.040$\,km/s/Mpc ($< 0.001\sigma$ from SH0ES).
+The IR result of this paper is thus a lower bound; the UV completion closes the
+residual $0.17\sigma$ gap.
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Conclusions}
@@ -628,6 +635,9 @@ Almeida Vallejo, M.E.\ 2026g, SSEE-V3.6 Paper~7: EFT (this series).
 
 \bibitem[Almeida(Paper8)]{Paper8}
 Almeida Vallejo, M.E.\ 2026h, SSEE-V3.6 Paper~8: Strong Gravity (this series).
+
+\bibitem[Almeida(Paper10)]{Paper10}
+Almeida Vallejo, M.E.\ 2026j, SSEE-V3.6 Paper~10: UV Completion (this series).
 
 \end{thebibliography}
 

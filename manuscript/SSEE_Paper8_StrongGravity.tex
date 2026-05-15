@@ -449,37 +449,74 @@ Solving for $\rV$:
   \boxed{\rV \;=\; \left(\frac{\KAL^2\,\bc\,\Mpl\,r_S\,c^2}{M^4}\right)^{1/2}\,.}
   \label{eq:vainshtein_radius}
 \end{equation}
-Setting $M = \Mpl$ (reference value, see eq.~\eqref{eq:M}),
-$\KAL = 5.521$, $\bc = 3.998$, and using $\ell_{\mathrm{Pl}} = \sqrt{\hbar G/c^3}$:
-\begin{equation}
-  \rV \;=\; \sqrt{5.521^2 \times 3.998}\;\sqrt{r_S\,\ell_{\mathrm{Pl}}}
-       \;\approx\; 8.86\,\sqrt{r_S\,\ell_{\mathrm{Pl}}}\,.
-  \label{eq:rV_numerical}
-\end{equation}
+Equation~\eqref{eq:vainshtein_radius} shows that $\rV$ depends critically on the value of $M$,
+which is a free parameter in the IR EFT formulation of this paper but is fixed
+algebraically in Paper~10 \citep{SSEE10}.
+Using $\KAL = 5.521$, $\bc = 3.998$, and $r_S = 2GM_{\rm obj}/c^2$, we
+evaluate $\rV$ in the two physically motivated limits:
 
-The Vainshtein radius expressed in SI units is
-SI units is (restoring $c$ and $\hbar$ via $\ell_{\mathrm{Pl}} = \sqrt{\hbar G/c^3}$):
-\begin{equation}
-  \rV \;=\; \sqrt{\KAL^2\,\bc}\;\sqrt{r_S\,\ell_{\mathrm{Pl}}}\,,
-  \label{eq:rV_SI}
-\end{equation}
-where $r_S = 2GM_{\rm obj}/c^2$ is the Schwarzschild radius of the sourcing object.
-
-\paragraph{Numerical estimates:}
+\paragraph{IR limit ($M = \Mpl$, reference value):}
+With $M = \Mpl$ the prefactor reduces to $\sqrt{\KAL^2\bc} \approx 11.04$,
+giving
 \begin{align}
-  \rV^\odot   &= \sqrt{5.521^2\times3.998}\;\sqrt{(2953\,\mathrm{m})(1.616\times10^{-35}\,\mathrm{m})}
-                \;\approx\; 2.4\,\mathrm{fm}\,, \label{eq:rV_sun}\\
-  \rV^{10^{12}M_\odot}
-              &\approx \sqrt{5.521^2\times3.998}\;\sqrt{(2.95\times10^{15}\,\mathrm{m})(1.616\times10^{-35}\,\mathrm{m})}
-                \;\approx\; 2.4\,\mathrm{nm}\,. \label{eq:rV_mw}
+  \rV^\odot\big|_{M=\Mpl}
+    &\approx 11.04\;\sqrt{(2953\,\mathrm{m})(1.616\times10^{-35}\,\mathrm{m})}
+     \;\approx\; 2.4\,\mathrm{fm}\,, \label{eq:rV_sun_IR}\\
+  \rV^{10^{12}M_\odot}\big|_{M=\Mpl}
+    &\approx 11.04\;\sqrt{(2.95\times10^{15}\,\mathrm{m})(1.616\times10^{-35}\,\mathrm{m})}
+     \;\approx\; 2.4\,\mathrm{nm}\,. \label{eq:rV_gal_IR}
 \end{align}
+Both values are far below any astrophysical scale of interest.
+At $M = \Mpl$ the non-linear kinetic term $X^2/M^4$ never activates on
+sub-Hubble scales, and Vainshtein screening is absent.
 
-Both values are far below any astrophysical scale of interest — even sub-nuclear in the solar case.
-This means that for $M \approx \Mpl$ the kinetic expansion is dominated by the linear
-term $X/\KAL$ at all sub-Hubble scales; the non-linear term $X^2/M^4$ never
-activates on astrophysical or solar-system scales.
-Consequently, Vainshtein screening is \emph{not} the mechanism responsible for
-GR compliance in the SSEE model.
+\paragraph{UV completion ($M = 8.81\,\mathrm{meV}$, Paper~10):}
+Paper~10 fixes $M^4 = 45\alpha^2\rhoc = 5\phiG^8\rhoc$, giving $M \approx 8.81\,\mathrm{meV}$.
+Since $\rV \propto M^{-2}$, the Vainshtein radius scales as
+$(M_{\rm Pl}/M)^2 \approx 7.6\times10^{58}$
+relative to the $M = \Mpl$ case:
+\begin{align}
+  \rV^\odot\big|_{M=8.81\,\mathrm{meV}}
+    &\approx 1.8\times10^{44}\,\mathrm{m}
+     \;\approx\; 4\times10^{17}\,H_0^{-1}\,, \label{eq:rV_sun_UV}\\
+  \rV^{10^{12}M_\odot}\big|_{M=8.81\,\mathrm{meV}}
+    &\approx 1.8\times10^{50}\,\mathrm{m}
+     \;\approx\; 4\times10^{23}\,H_0^{-1}\,. \label{eq:rV_gal_UV}
+\end{align}
+Both values vastly exceed the Hubble radius $H_0^{-1} \approx 4.4\times10^{26}$\,m.
+Every astrophysical object therefore lies deep inside its own Vainshtein sphere,
+and the non-linear kinetic term dominates all local ($r \ll H_0^{-1}$) scalar
+dynamics.
+
+\paragraph{Physical interpretation:}
+Table~\ref{tab:vainshtein} summarises the two regimes.
+The key distinction is between the \emph{cosmological background} and \emph{local perturbations}.
+The background kinetic energy satisfies $\varepsilon \equiv X_{\rm bg}^2/M^4 \approx 5.7\times10^{-4}$
+(Paper~10), confirming that the Hubble flow is in the linear kinetic regime at both $M$ values.
+Local scalar gradients around overdensities, however, are in the non-linear regime once
+$M \ll \Mpl$, exactly as in DGP and Galileon theories.
+This split — cosmological linear / local non-linear — is the hallmark of Vainshtein
+mechanisms in the literature \citep{babichev2013}.
+
+\begin{table}[h]
+\centering
+\caption{Vainshtein radius and screening status for the two physically motivated
+         values of $M$. The UV value follows from Paper~10 ($M^4=45\alpha^2\rhoc$).}
+\label{tab:vainshtein}
+\begin{tabular}{llll}
+\toprule
+$M$ value & $\rV^\odot$ & $\rV^\odot / H_0^{-1}$ & Screening active? \\
+\midrule
+$M_{\rm Pl}$ (IR reference) & $2.4\,\mathrm{fm}$ & $\sim 10^{-57}$ & No \\
+$8.81\,\mathrm{meV}$ (UV, Paper~10) & $\sim 10^{44}\,\mathrm{m}$ & $\sim 4\times10^{17}$ & Yes — everywhere \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+When $M = 8.81\,\mathrm{meV}$, every solar-system and galactic object is at
+$r \ll \rV$; the scalar-force ratio (Section~\ref{sec:vainshtein_profile})
+$F_\phi/F_N \propto (r/\rV)^{4/3} \to 0$ and GR is recovered with negligible
+fifth-force correction at all astrophysical scales.
 
 \subsection{GR compliance from selective coupling}
 \label{sec:gr_compliance}
@@ -499,23 +536,50 @@ the \emph{selective coupling} structure of the action~\eqref{eq:action}:
 Therefore all standard solar-system tests (Cassini time delay, perihelion
 precession, lunar laser ranging \citep{will2014}) pass at leading order without
 requiring any non-linear screening.
+This mechanism operates independently of the value of $M$ and holds in both the
+IR ($M = \Mpl$) and UV ($M = 8.81\,\mathrm{meV}$) limits.
 
-\subsection{Power-law profile and dark-matter self-force}
+\subsection{Double GR protection at UV completion}
+\label{sec:double_protection}
 
-In the non-linear regime (which would require $M \ll \Mpl$ or extreme dark-matter
-overdensities), the scalar EOM inside $\rV$ becomes
-$\nabla\cdot[(|\nabla\phi|^2/M^4)\nabla\phi] = \bc\rho_{\mathrm{DM}}/\Mpl$.
-For spherical symmetry this gives $\phi'(r) \propto r^{-2/3}$, and the
-dark-matter self-force scales as
-\begin{equation}
-  \frac{F_\phi}{F_N} \;\propto\; r^{4/3} \;\to\; 0
-  \quad (r \to 0)\,,
-  \label{eq:Fphi_ratio}
-\end{equation}
-suppressing the scalar contribution to dark-matter clustering relative to
-gravity at small scales.
-A full analysis of whether $M \ll \Mpl$ is physically motivated requires the
-UV completion of the action (beyond the scope of this paper).
+With the UV value $M = 8.81\,\mathrm{meV}$ established in Paper~10,
+the SSEE model benefits from \emph{two independent mechanisms} that enforce GR
+compliance:
+
+\begin{enumerate}
+  \item \textbf{Selective coupling (always active):}
+        Baryons couple only to the physical metric $g_{\mu\nu}$ and feel
+        no direct scalar force, regardless of $M$.
+        This is the dominant mechanism in the IR limit.
+
+  \item \textbf{Vainshtein screening (active at UV completion):}
+        With $M = 8.81\,\mathrm{meV}$, every astrophysical object is
+        at $r \ll \rV$ (Table~\ref{tab:vainshtein}).
+        The scalar EOM inside $\rV$ is governed by the non-linear term
+        $\nabla\cdot[(|\nabla\phi|^2/M^4)\nabla\phi] = \bc\rho_{\mathrm{DM}}/\Mpl$.
+        For spherical symmetry this gives $\phi'(r) \propto r^{-2/3}$, and the
+        dark-matter self-force satisfies
+        \begin{equation}
+          \frac{F_\phi}{F_N} \;\propto\; \left(\frac{r}{\rV}\right)^{4/3} \;\to\; 0
+          \quad (r \ll \rV)\,,
+          \label{eq:Fphi_ratio}
+        \end{equation}
+        suppressing the scalar contribution to dark-matter clustering at all
+        sub-Hubble scales.
+        Since $r/\rV \lesssim 10^{-17}$ for any solar-system measurement, the
+        fifth-force correction is negligible at the level of current precision
+        tests.
+\end{enumerate}
+
+The two mechanisms are complementary: selective coupling protects baryonic matter
+unconditionally, while Vainshtein screening protects the dark-matter sector at
+UV completion.
+Importantly, the cosmological background Hubble flow remains in the linear kinetic
+regime ($\varepsilon = X_{\rm bg}^2/M^4 \approx 5.7\times10^{-4}$, Paper~10),
+so the background equations of motion are unchanged by the UV correction.
+This is the standard separation between the cosmological linear background and the
+locally non-linear Vainshtein sector seen in DGP and Galileon theories
+\citep{babichev2013}.
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Strong Lensing Predictions}
@@ -742,9 +806,10 @@ The reference scale $M \approx \Mpl$ places the EFT cutoff near Planck energies,
 suggesting that a UV completion (quantum gravity) must enter at or before $M_{\rm Pl}$.
 The precise value of $M$ is a free parameter of the current EFT formulation;
 locking it algebraically to $\varphi$ and $\pi$ requires the UV completion.
-This is the starting point for Paper~9 of the SSEE series, which will
-address the quantum dimensional derivation of $H_0$ from the Planck scale
-and the exact $P(X,\phi)$ Lagrangian from first principles.
+The UV cutoff is addressed in Paper~10 of the SSEE series, which derives
+$M^4 = 45\alpha^2\,\rhoc = 5\phiG^8\,\rhoc$ from the same $\alpha$-attractor
+parameter that governs inflation, locking $M$ algebraically to $\varphi$ and $\pi$
+without introducing new free parameters.
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Conclusions}
@@ -830,6 +895,12 @@ zero-free-parameter structure of the algebraic framework.
   \textit{SSEE-V3.6 as a Working Effective Field Theory: $K$-essence Action,
   Algebraic Coupling, and Bellini-Sawicki Classification}.
   Paper 7 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
+
+\bibitem[Almeida Vallejo(2026d)]{SSEE10}
+  Almeida Vallejo, M.~E. (2026).
+  \textit{SSEE-V3.6 UV Completion: $M^4 = 45\alpha^2\rho_{\rm crit}$ and
+  the Cross-Epoch Hubble Tension Resolution}.
+  Paper 10 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
 
 \bibitem[Abdul-Karim et al.(2025)]{desidr2_2025}
   Abdul-Karim, M., et al. (DESI Collaboration, 2025).

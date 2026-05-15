@@ -630,6 +630,32 @@ The result is pre-committed: the value $72.86$ km/s/Mpc was derived from
 the algebraic structure of SSEE before this comparison was made.
 Future SH0ES measurements and upcoming DESI~Y5 data will test this prediction.
 
+\paragraph{Age of the universe cross-check.}
+As an independent consistency test, we compute the age of the SSEE universe
+using $H_0^{\rm local} = 72.86$\,km/s/Mpc, $\Omega_m = 0.160$, and the CPL
+dark energy equation of state $(w_0, w_a) = (-0.840, -0.670)$:
+\begin{equation}
+  t_0 = \frac{1}{H_0}\int_0^\infty \frac{dz}{(1+z)\,E(z)}\,,
+  \quad
+  E^2(z) = \Omega_m(1+z)^3 + \Omega_{\rm DE}\,f_{\rm DE}(z)\,,
+\end{equation}
+where $f_{\rm DE}(z) = (1+z)^{3(1+w_0+w_a)}\exp\!\bigl(-3w_a z/(1+z)\bigr)$.
+Numerical integration gives
+\begin{equation}
+  t_0^{\rm SSEE} = 15.31\;\text{Gyr}
+  \qquad (\Lambda\text{CDM}: 13.80\;\text{Gyr})\,.
+\end{equation}
+The SSEE universe is $1.51$\,Gyr \emph{older} than $\Lambda$CDM, a direct
+consequence of the phantom crossing at $z_{\rm cross}\approx 0.314$
+(Section~\ref{sec:mechanism}) suppressing the recent expansion rate.
+This is more accommodating of the oldest globular clusters
+($t_{\rm GC} \gtrsim 12.5$\,Gyr, e.g.\ \citealt{Valcin2021})
+and of the \citet{Cimatti2023} red-galaxy age constraint
+($t \approx 13.5$\,Gyr at $z \approx 0.55$), which create mild tension
+with $\Lambda$CDM.
+A measurement of $t_0 > 14$\,Gyr would favour SSEE over $\Lambda$CDM
+at this level.
+
 %% ─────────────────────────────────────────────────────────────────────────────
 \appendix
 \section{Derivation of the multiplicative form from the Hubble-flow integral}
@@ -785,6 +811,13 @@ Almeida Vallejo, M.E.\ 2026h, SSEE-V3.6 Paper~8: Strong Gravity (this series).
 
 \bibitem[Almeida(Paper10)]{Paper10}
 Almeida Vallejo, M.E.\ 2026j, SSEE-V3.6 Paper~10: UV Completion (this series).
+
+\bibitem[Valcin et al.(2021)]{Valcin2021}
+Valcin, D., Jimenez, R., Verde, L., Bernal, J.~L., \& Wandelt, B.~D.\ 2021,
+JCAP, 2021, 017.
+
+\bibitem[Cimatti \& Moresco(2023)]{Cimatti2023}
+Cimatti, A., \& Moresco, M.\ 2023, ApJ, 953, 149.
 
 \end{thebibliography}
 

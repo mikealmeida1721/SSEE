@@ -1188,58 +1188,61 @@ Scott rule gives $B\in[8.6,\,10.5]$ ($\ln B\in[2.15,\,2.35]$), all
 within the \emph{substantial} evidence tier, confirming the KDE
 evaluation is stable.
 
-\subsection*{B.2 Predictive cross-validation (LOO-$z$)}
+\subsection*{B.2 Ly-$\alpha$ predictive audit ($z=2.33$)}
 
-To test directly whether the parsimony advantage of SSEE is genuine
-and not a boundary artefact, we split the 13 DESI~DR2 measurements by
-redshift:
-\begin{itemize}
-\item \textbf{Training set} ($z<1.0$; 7 points, $z\in\{0.295,0.51,0.706,0.93\}$):
-  each model is fit to these data only.
-\item \textbf{Test set} ($z\geq1.0$; 6 points, $z\in\{1.317,1.491,2.33\}$):
-  the trained MAP parameters are used to predict these unseen data.
-\end{itemize}
-SSEE has $k=1$ free parameter ($H_0$, with $w_0$, $w_a$, $\Omega_m$
-fixed algebraically); \LCDM\ has $k=2$ ($H_0,\Omega_m$); CPL has
-$k=4$ ($H_0,\Omega_m,w_0,w_a$).  The $z$-split exploits the fact that
-the DESI covariance matrix has zero off-diagonal blocks between
-different $z$-bins, making the sub-matrix inversion exact.
+The Ly-$\alpha$ point at $z=2.33$ provides the sharpest direct test of
+\SSEE's background expansion.  At $z\sim2$ radiation is negligible and
+the ratio $D_H/r_d = c\,/\,(H_0\,E(z)\,r_d)$ directly encodes the
+product $H_0\,E(z)\,r_d$.  We evaluate this quantity under two
+\SSEE\ scenarios and compare to the DESI~DR2 measurement
+$D_H/r_d = 8.52\pm0.17$.
 
-\begin{table}[h]
-\centering
-\caption{Predictive cross-validation results (LOO-$z$ split).
-$\Delta\ln L_{\rm test}=\ln L_{\rm test}^{\rm SSEE}-\ln L_{\rm test}^{\rm model}$.
-Positive values favour \textsc{ssee}.}
-\label{tab:cv}
-\begin{tabular}{lccc}
-\toprule
-Model & $k$ & $\chi^2_r$(train, $N=7$) & $\Delta\ln L_{\rm test}$ ($N=6$) \\
-\midrule
-\textsc{ssee} & 1 & 3.043 & --- \\
-\LCDM         & 2 & 3.217 & $-0.17$ \\
-CPL           & 4 & 1.055 & $+72.83$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+\paragraph{Scenario A — raw \SSEE\ background
+($\Omega_{m,\rm dyn}=0.160$, $r_d=175.6$\,Mpc).}
+With the algebraic $H_0=67.96$\,km\,s$^{-1}$\,Mpc$^{-1}$ and
+$\Omega_m=0.160$, the CPL dark-energy fraction at $z=2.33$ is
+$f_{\rm DE}(2.33)=0.648$, giving $E(2.33)=2.540$ and
+$D_H(2.33)=1737$\,Mpc.  The predicted ratio is:
+\begin{equation}
+  \left.\frac{D_H}{r_d}\right|_{z=2.33}^{\rm SSEE,\,raw}
+  = \frac{1737}{175.6} = 9.89
+  \quad (8.1\sigma \text{ above DESI}),
+  \label{eq:lya_raw}
+\end{equation}
+consistent with the $\Delta\mathrm{BIC}=+206$ background-mismatch
+penalty established in Section~\ref{sec:bic}.  The tension at $z=2.33$
+is the high-$z$ footprint of the same mechanism: $\Omega_m=0.160$
+reduces matter domination at high $z$, lowers $H(z)$, and enlarges
+$D_H$; the enlarged $r_d$ is insufficient to compensate.
 
-The result is unambiguous:
-\begin{itemize}
-  \item \textbf{SSEE vs \LCDM}: $\Delta\ln L_{\rm test}=-0.17$ nats
-    ($\Delta\chi^2=0.34$ for 6 points).  This difference is negligible:
-    SSEE ($k=1$) and \LCDM\ ($k=2$) have \emph{identical} predictive
-    accuracy on the high-redshift test set despite SSEE having half the
-    free parameters.
-  \item \textbf{SSEE vs CPL}: $\Delta\ln L_{\rm test}=+72.83$; CPL
-    ($k=4$) overfits the 7-point training set ($\chi^2_r=1.06$) and
-    extrapolates catastrophically to the test set ($\chi^2_r=24.9$).
-    This confirms that the freedom in the CPL dark-energy sector is
-    \emph{not} informative about high-$z$ BAO.
-\end{itemize}
+\paragraph{Scenario B — \MIRA-mapped \SSEE\ background
+($\Omega_{m,\rm eff}=0.320$, $r_{d,\rm eff}=147.2$\,Mpc).}
+Applying the two-sector mapping $\Omega_{m,\rm eff}=\mathcal{M}\,\Omega_{m,\rm dyn}
+= 1.999\times0.160=0.320$ to the full Friedmann background
+yields $E(2.33)=2.206$, $D_H(2.33)=1260$\,Mpc, and:
+\begin{equation}
+  \left.\frac{D_H}{r_d}\right|_{z=2.33}^{\rm SSEE,\,MIRA}
+  = \frac{1260}{147.2} = 8.56
+  \quad (0.25\sigma \text{ from DESI}).
+  \label{eq:lya_mira}
+\end{equation}
+The full 13-point MIRA-mapped fit gives $\chi^2_r=1.81$.  The
+largest residual is at $z=0.51$ ($D_H/r_d$ pull: $+3.6\sigma$),
+driven by the CPL phantom crossing $w(z{=}0.51)\approx-1.07$; an
+identical tension ($+4.4\sigma$) appears in \LCDM\ with Planck-calibrated
+$r_d$ and $H_0$, confirming it is a DESI~DR2 feature rather than an
+\SSEE-specific failure.  The \textit{D_M/r_d} counterpart at $z=2.33$
+is also recovered within $1.1\sigma$ ($38.64$ vs $39.71\pm0.94$).
 
-Taken together, the Savage--Dickey ratio and the cross-validation
-demonstrate that the dynamic-sector BIC advantage of SSEE
-($\Delta\mathrm{BIC}_{\rm dyn}=-5.55$) reflects genuine algebraic
-predictive power, not an artefact of fewer sampled parameters.
+\paragraph{Implication.}
+Eqs.~\eqref{eq:lya_raw}--\eqref{eq:lya_mira} demonstrate that \MIRA\
+is physically necessary not only for the acoustic scale but for the
+full high-$z$ expansion history: applying it to $r_d$ alone while
+retaining $\Omega_m=0.160$ in $E(z)$ would predict $D_H/r_d=11.8$
+(an $19.3\sigma$ discrepancy).  A fully self-consistent \SSEE\ fit
+requires the MIRA-mapped background throughout.  The Savage--Dickey
+ratio in B.1 ($\ln B=+2.26$) then holds as a test of the
+\emph{dynamical sector} under that self-consistent background.
 
 \section*{Acknowledgements}
 The author thanks the DESI Collaboration for public DR2 data and

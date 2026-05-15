@@ -31,6 +31,7 @@
 \newcommand{\DUAL}{\mathcal{D}}
 \newcommand{\rdSSEE}{r_{d,\mathrm{SSEE}}}
 \newcommand{\rdeff}{r_{d,\mathrm{eff}}}
+\newcommand{\MIRA}{\ifmmode\mathcal{M}\else$\mathcal{M}$\fi}
 
 \title{\textbf{Bayesian MCMC Validation of the Structural\\
 Self-Energy Expansion Framework (SSEE-V3.6)}:\\[6pt]
@@ -1027,6 +1028,16 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
     falsification of the dynamical ansatz.  If Paper~3 rules it out,
     the acoustic sector is falsified.
 
+  \item A cross-check on this MIRA hypothesis at high-$z$ is provided by
+    the Ly-$\alpha$ forest BAO from DESI~DR2 ($z=2.33$):
+    the raw \SSEE\ background predicts $D_H/r_d = 9.89$, a $8.1\sigma$
+    tension, while the MIRA-mapped prediction ($r_d \to r_{d,\rm eff}$
+    and $E(z)$ rescaled consistently) gives $D_H/r_d = 8.56$,
+    a $0.25\sigma$ agreement (Appendix~\ref{app:lya}).
+    The same MIRA factor that resolves the low-$z$ $r_d$ mismatch is
+    therefore also required at $z=2.33$, making the mapping falsifiable
+    independently of Paper~3.
+
   \item Paper~3 must derive and validate the \SSEE\ Friedmann background
     against CMB peak positions, the Silk-damping tail, and the joint
     $(H_0,\Omega_b h^2)$ posterior.
@@ -1189,6 +1200,7 @@ within the \emph{substantial} evidence tier, confirming the KDE
 evaluation is stable.
 
 \subsection*{B.2 Ly-$\alpha$ predictive audit ($z=2.33$)}
+\label{app:lya}
 
 The Ly-$\alpha$ point at $z=2.33$ provides the sharpest direct test of
 \SSEE's background expansion.  At $z\sim2$ radiation is negligible and
@@ -1231,7 +1243,7 @@ largest residual is at $z=0.51$ ($D_H/r_d$ pull: $+3.6\sigma$),
 driven by the CPL phantom crossing $w(z{=}0.51)\approx-1.07$; an
 identical tension ($+4.4\sigma$) appears in \LCDM\ with Planck-calibrated
 $r_d$ and $H_0$, confirming it is a DESI~DR2 feature rather than an
-\SSEE-specific failure.  The \textit{D_M/r_d} counterpart at $z=2.33$
+\SSEE-specific failure.  The $D_M/r_d$ counterpart at $z=2.33$
 is also recovered within $1.1\sigma$ ($38.64$ vs $39.71\pm0.94$).
 
 \paragraph{Implication.}

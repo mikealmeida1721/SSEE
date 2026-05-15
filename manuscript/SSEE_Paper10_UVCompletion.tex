@@ -69,7 +69,7 @@ $\alpha = \phiG^4/3$ (not a numerical coincidence, but an algebraic consequence)
 With this cutoff, the full Bellini--Sawicki parameter becomes
 $\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value), giving
 $H_0^{\rm local} = 73.040$ km/s/Mpc, consistent with the SH0ES
-central value ($73.04 \pm 1.04$ km/s/Mpc; Riess et~al.\ 2022) to within the
+central value ($73.04 \pm 1.04$ km/s/Mpc; \citep{Riess2022}) to within the
 rounding precision of the published SH0ES result.
 \textbf{This agreement is conditional on Postulate~C.1 (UV-IR $\varphi/\pi$
 separability; §\ref{sec:theorem})} and is not independent of SH0ES: the
@@ -123,7 +123,7 @@ Paper~1, and the equality $45\alpha^2 = 5\phiG^8$ is an exact algebraic identity
 following from the definition of $\alpha$.
 With this value, the corrected Hubble constant is $H_0^{\rm UV} = 73.040$
 km/s/Mpc, consistent with the SH0ES central value $73.04 \pm 1.04$ km/s/Mpc
-to within the rounding precision of the published result (conditional on
+\citep{Riess2022} to within the rounding precision of the published result (conditional on
 Postulate~C.1; see §\ref{sec:theorem}).
 
 The physical picture is intriguing: the \emph{same curvature parameter $\alpha$
@@ -317,7 +317,8 @@ Regime & $\alphaK$ & $\fsc$ & $H_0^{\rm local}$ [km/s/Mpc] & Tension SH0ES \\
 IR ($M\to\infty$, Papers 1--9) & 0.40330 & 0.06725 & 72.862 & $0.17\sigma$ \\
 UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{73.040} & $\sim0\sigma$ (rounding; cond.$^{a}$) \\
 \midrule
-SH0ES (Riess 2022) & --- & --- & $73.04 \pm 1.04$ & --- \\
+SH0ES \citep{Riess2022}       & --- & --- & $73.04 \pm 1.04$  & --- \\
+Freedman et al.\ \citep{Freedman2024} & --- & --- & $69.96 \pm 1.54$ & $1.9\sigma$ (UV) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -325,10 +326,20 @@ SH0ES (Riess 2022) & --- & --- & $73.04 \pm 1.04$ & --- \\
 Table~\ref{tab:H0} compares the IR and UV results.
 Under Postulate~C.1 (§\ref{sec:theorem}), $M^4 = 45\alpha^2\rhoc$ gives
 $H_0^{\rm UV} = 73.040$ km/s/Mpc, matching the SH0ES central value $73.04$ to the
-4-digit precision reported by Riess et~al.\ (2022).  This agreement is a rounding
+4-digit precision reported by \citet{Riess2022}.  This agreement is a rounding
 coincidence in the last digit and should not be interpreted as a statistical
 precision test; the physical prediction is $H_0^{\rm UV} - H_0^{\rm SH0ES} < 0.01$ km/s/Mpc
 ($\ll 1\sigma$), which is genuinely sub-dominant to the SH0ES uncertainty of $\pm1.04$ km/s/Mpc.
+
+\paragraph{Comparison with TRGB/JWST.}
+The TRGB+JWST measurement of \citet{Freedman2024} yields
+$H_0 = 69.96\pm1.54$\,km/s/Mpc.  The SSEE UV prediction $H_0^{\rm UV}=73.040$\,km/s/Mpc
+lies $\sim1.9\sigma$ above this anchor; the IR prediction $H_0^{\rm IR}=72.86$\,km/s/Mpc
+lies $\sim1.9\sigma$ above it as well.
+SSEE therefore aligns with the SH0ES branch of the tension, not with
+TRGB/JWST.  Whether this reflects a physical distinction between distance-ladder rungs
+or a systematic in either measurement is beyond the scope of this framework.
+
 \footnotesize{$^{a}$ Conditional on Postulate C.1 (UV-IR $\varphi/\pi$ separability);
 not an independent derivation from first principles.}
 
@@ -802,6 +813,13 @@ SSEE Paper~9 (2026).
 A.~G.~Riess et al.,
 \emph{A Comprehensive Measurement of the Local Value of the Hubble Constant},
 ApJL \textbf{934}, L7 (2022) [arXiv:2112.04510].
+
+\bibitem{Freedman2024}
+W.~L.~Freedman et al.,
+\emph{The Carnegie-Chicago Hubble Program. IX. Calibration of the Tip of the Red Giant
+Branch Method in the Near-Infrared and the Value of the Hubble Constant},
+ApJ \textbf{963}, 84 (2024) [arXiv:2308.02474].
+[$H_0 = 69.96\pm1.05\,(\mathrm{stat})\pm1.12\,(\mathrm{sys})$\,km/s/Mpc].
 
 \bibitem{BelliniSawicki2014}
 I.~Bellini \& I.~Sawicki,

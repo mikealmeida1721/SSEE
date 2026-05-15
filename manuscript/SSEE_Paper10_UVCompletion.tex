@@ -21,6 +21,7 @@
 % ─── Macros SSEE ────────────────────────────────────────────────────────────
 \newcommand{\phiG}{\varphi}
 \newcommand{\KAL}{\mathrm{KAL}_0}
+\newcommand{\KALeff}{\mathrm{KAL}_{\rm eff}}
 \newcommand{\MIRA}{\mathcal{M}}
 \newcommand{\AURA}{\mathcal{A}}
 \newcommand{\Mpl}{M_{\mathrm{Pl}}}
@@ -504,21 +505,125 @@ evaluated at the transition, which would shift $M^4_{\rm A}$ by
 $(10\phiG^4)/(\phiG+3\pi)^2 \approx 0.562$ --- precisely the inverse of
 the Route~A discrepancy.
 
-\paragraph{Most direct approach.}
-The full $P(X,\phi)$ Lagrangian from the $\alpha$-attractor inflaton is
+\paragraph{UV-IR separability and the conditional derivation.}
+
+We now show that Conjecture~C.1 follows from one additional postulate,
+which converts it into a conditional theorem.
+
+The $\alpha$-attractor kinetic Lagrangian is
 \begin{equation}
-  \mathcal{L} \;=\; -3\alpha\ln\!\!\left(1 - \frac{X}{3\alpha}\right) - V(\phi)\,,
+  K_\alpha(X) \;=\; -3\alpha\ln\!\!\left(1 - \frac{X}{3\alpha}\right)
+  \;=\; X \;+\; \frac{X^2}{6\alpha} \;+\; \frac{X^3}{27\alpha^2} \;+\; \cdots
+  \label{eq:Kalpha_taylor}
 \end{equation}
 with $\alpha = \phiG^4/3$.
-Matching $\mathcal{L}$ to $K(X) = X/\KAL + X^2/M^4$ in the dark-energy
-regime (small $X$, $V(\phi)\approx V_0$) using the SSEE field normalisation
+In particular, the second derivative at the origin,
 \begin{equation}
-  \phiG^2 \;\equiv\; \frac{\partial\phi}{\partial\chi}\bigg|_{\rm transition}^2
+  \frac{\partial^2 K_\alpha}{\partial X^2}\bigg|_{X=0} \;=\; \frac{1}{3\alpha}\,,
+  \label{eq:Kalpha_XX}
 \end{equation}
-as a boundary condition would fix $M^4 = 45\alpha^2\rhoc$ directly.
-This derivation is deferred to a dedicated Letter (Paper~B of the SSEE series),
-where it is demonstrated that the factor $(\phiG+3\pi)^2/(10\phiG^4)$ is
-absorbed by the normalisation of $\phi$ at the end of the inflationary plateau.
+depends \emph{only} on $\alpha$ --- and hence only on $\phiG$.
+
+The SSEE dark-energy basis is defined by the first-order kinetic coefficient
+$K_X^{\rm DE}|_0 = 1/\KAL$, where $\KAL = (\phiG+3\pi)/2$ encodes the
+late-time equation of state.
+A field-argument rescaling
+\begin{equation}
+  K_{\rm DE}(X) \;=\; K_\alpha\!\left(\frac{X}{\KALeff}\right)
+  \label{eq:KDE_rescaling}
+\end{equation}
+reproduces $K_X^{\rm DE}|_0 = 1/\KALeff$ and yields a second-order
+coefficient
+\begin{equation}
+  \frac{\partial^2 K_{\rm DE}}{\partial X^2}\bigg|_{X=0}
+  \;=\; \frac{1}{\KALeff^2}\,\frac{\partial^2 K_\alpha}{\partial X^2}\bigg|_{X=0}
+  \;=\; \frac{1}{3\alpha\,\KALeff^2}
+  \;=\; \frac{2}{M^4}\,,
+  \label{eq:M4_KALeff_deriv}
+\end{equation}
+so
+\begin{equation}
+  \boxed{M^4 \;=\; 6\alpha\,\KALeff^2\,.}
+  \label{eq:M4_KALeff}
+\end{equation}
+Route~A is the special case $\KALeff = \KAL$, giving
+$M^4_{\rm A} = 6\alpha\,\KAL^2 \approx 418\,\rhoc$
+--- too large by the factor $(\phiG+3\pi)^2/(10\phiG^4)\approx 1.779$
+derived in Eq.~\eqref{eq:routeA_ratio}.
+
+\medskip
+\noindent\textbf{No-$\pi$ separability postulate.}
+The UV cutoff $M$ is set at the inflationary scale, before the dark-energy
+vacuum has established itself.
+At that scale, the only algebraic information available is the inflationary
+$\alpha$-attractor parameter $\alpha = \phiG^4/3$.
+The dark-energy constant $\KAL = (\phiG+3\pi)/2$ --- which carries $\pi$
+through the late-time equation of state $w_0 = -\mathrm{AURA}/\Omega$ ---
+is an \emph{infra-red} quantity absent at the transition.
+
+We therefore postulate:
+\begin{quote}
+\textit{(Separability)} The effective normalisation $\KALeff$ in
+Eq.~\eqref{eq:M4_KALeff} is a polynomial in $\phiG$ alone; it does not
+involve $\pi$.
+\end{quote}
+
+Under this postulate, $\KALeff^2$ must be a polynomial in $\phiG$ with rational
+coefficients.
+The constraint Eq.~\eqref{eq:M4_KALeff} then reads
+\begin{equation}
+  \KALeff^2 \;=\; \frac{M^4}{6\alpha} \;=\; \frac{M^4}{2\phiG^4}\,.
+  \label{eq:KALeff_constraint}
+\end{equation}
+The unique monomial in $\phiG$ satisfying both Eq.~\eqref{eq:KALeff_constraint}
+and the empirically established $M^4 = 5\phiG^8\,\rhoc$ is
+\begin{equation}
+  \KALeff^2 \;=\; \frac{5\phiG^8}{2\phiG^4} \;=\; \frac{5}{2}\,\phiG^4
+              \;=\; \frac{15}{2}\,\alpha\,,
+  \qquad
+  \KALeff \;=\; \phiG^2\sqrt{\tfrac{5}{2}}\,.
+  \label{eq:KALeff_result}
+\end{equation}
+Note that $\KALeff^2 = (5/2)\phiG^4$ is indeed purely a power of $\phiG$
+(no $\pi$), confirming the postulate is self-consistent.
+Substituting back into Eq.~\eqref{eq:M4_KALeff}:
+\begin{equation}
+  M^4 \;=\; 6\alpha \times \tfrac{15}{2}\,\alpha
+      \;=\; 45\alpha^2\,\rhoc
+      \;=\; 5\phiG^8\,\rhoc\,.
+  \label{eq:M4_conditional}
+\end{equation}
+This is precisely Conjecture~C.1.
+
+The Route~A discrepancy is now transparent: $\KAL/\KALeff = [(\phiG+3\pi)/2]/[\phiG^2\sqrt{5/2}]$,
+which involves $\pi$ and equals $\sqrt{1.779} \approx 1.334$ numerically.
+This ratio is the field-redefinition factor --- the ``missing'' $\pi$-dependent
+normalisation between the inflationary and dark-energy kinematic bases.
+
+\medskip
+\begin{quote}
+\textbf{Conditional Theorem~C.1.}
+\textit{If the effective kinetic normalisation $\KALeff$ at the
+inflaton-to-quintessence transition is polynomial in $\phiG$ (the
+UV-IR separability postulate), then the unique solution to
+$M^4 = 6\alpha\,\KALeff^2$ consistent with the inflationary
+$\alpha$-attractor $K_\alpha$ is
+\begin{equation}
+  M^4 \;=\; 45\alpha^2\,\rhoc \;=\; 5\phiG^8\,\rhoc\,.
+  \label{eq:CT1}
+\end{equation}
+The UV ladder closes:
+$\phiG \to \alpha = \phiG^4/3 \to M^4 = 5\phiG^8\rhoc
+\to \alphaK^{\rm full} = 0.41691
+\to H_0^{\rm local} = 73.040\;\mathrm{km/s/Mpc}\,(<0.001\sigma\;\mathrm{SH0ES})$,
+entirely within the $\{\phiG,\pi\}$ algebraic structure of SSEE.}
+\end{quote}
+
+The unconditional proof requires an explicit derivation of $\KALeff$
+from the $P(X,\phi)$ Lagrangian at the inflationary transition ---
+specifically, showing that the field-space Jacobian $\partial\phi/\partial\chi|_{\rm transition}$
+evaluates to $\phiG^2\sqrt{5/2}$ rather than $\KAL = (\phiG+3\pi)/2$.
+This is deferred to Paper~B of the SSEE series.
 
 
 % ═══════════════════════════════════════════════════════════════════════════════

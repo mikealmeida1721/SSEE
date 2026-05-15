@@ -752,6 +752,27 @@ $\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$) & $-14.9$ & (reference) \\
   \label{fig:b1_corner_ssee}
 \end{figure}
 
+\begin{table}[ht]
+\centering
+\caption{\textbf{Summary: diagonal approximation vs.\ full covariance (plik\_lite Cobaya).}
+Comparison of SSEE vs.\ $\Lambda$CDM model selection under both likelihood treatments.
+The diagonal result ($\Delta\mathrm{BIC}=+31.1$) is driven by $N\approx5914$ amplifying
+a marginal $\Delta\chi^2_r\approx0.011$; the full covariance Cobaya result is the canonical evaluation.}
+\label{tab:bic_comparison}
+\begin{tabular}{llcccc}
+\toprule
+Method & Spectra & $N$ & $k_{\rm SSEE}$ & $k_{\Lambda\rm CDM}$ & $\Delta\mathrm{BIC}$ \\
+\midrule
+Diagonal (approx.) & TT+TE+EE+PP & 5914 & 2 & 6 & $+31.1$ ($\Lambda$CDM favoured) \\
+plik\_lite Cobaya & TTTEEE+lowl & 6469 & 2 & 6 & $-31.3$ (SSEE decisively favoured) \\
+plik\_lite Cobaya (conserv.) & TTTEEE+lowl & 6469 & 4 & 6 & $-13.8$ (SSEE strongly favoured) \\
+\bottomrule
+\end{tabular}
+{\footnotesize Diagonal approximation uses independence across spectra (upper bound on $\chi^2$).
+Cobaya uses the official Planck off-diagonal covariance; it is the canonical result.
+$k=2$: $H_0$ + $\Omega_b h^2$; $k=4$ adds $\tau$ and $A_s$ as effectively fitted (conservative bound).}
+\end{table}
+
 % ===========================================================================
 \subsection{Matter power spectrum and \texorpdfstring{$S_8$}{S8} prediction}
 \label{sec:sigma8}

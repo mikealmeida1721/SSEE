@@ -326,9 +326,11 @@ $3\MIRA$     & $3\AURA/2$             & $5.9967$       & Eq.~\eqref{eq:3MIRA} \\
 $\fsc = \alphaK/(3\MIRA)$ & $(\pi-\phiG)/\Omega^2$ & $0.06725$ & Eq.~\eqref{eq:fscreen_identity} \\
 \midrule
 $\Hzero^{\rm alg}$ & $3\Omega^2$     & $67.96$ km/s/Mpc & Paper~1 \\
-$H_0^{\rm local}$  & $\Hzero^{\rm alg}/(1-\fsc)$ & $72.86$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
+$H_0^{\rm local}$ (mult.)  & $\Hzero^{\rm alg}/(1-\fsc)$ & $72.86$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
+$H_0^{\rm local}$ (add.)   & $\Hzero^{\rm alg}(1+\fsc)$  & $72.53$ km/s/Mpc & Eq.~\eqref{eq:H0local_add} \\
 $H_0^{\rm SH0ES}$  & ---            & $73.04\pm1.04$ km/s/Mpc & \citet{Riess2022} \\
-Tension            & ---            & $0.17\sigma$   & --- \\
+Tension (mult.)    & ---            & $0.17\sigma$   & --- \\
+Tension (add.)     & ---            & $0.49\sigma$   & --- \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -366,30 +368,53 @@ Friedmann equation at late times.
 \subsection{Local Hubble correction}
 \label{sec:localH0}
 
-The fractional contribution of scalar kinetic energy to the local
-expansion rate at $z < 0.15$ is
-\begin{equation}
-  \frac{\delta H}{H}\bigg|_{\rm local}
-  \;=\; \frac{\rho_{\rm kin}}{2\Mpl^2 H^2\,(3\MIRA)}
-  \;=\; \frac{\alphaK}{2\cdot 2 \cdot 3\MIRA}
-  \;=\; \frac{\alphaK}{12\MIRA}
-  \;=\; \frac{\fsc}{2}\,.
-  \label{eq:localcorr_1st}
-\end{equation}
-To first order, $H_{\rm local} = H_{\rm cosm}(1 + \fsc/2)$.
-In the exact (multiplicative) treatment appropriate to the Vainshtein
-transition \citep{Vainshtein1972,Babichev2013}:
+The scalar kinetic energy density at $z < 0.15$ contributes a fraction
+$\fsc = \alphaK/(3\MIRA)$ of the total dark-energy budget.
+Depending on whether this contribution is treated as multiplicative
+(geometric correction to the expansion rate) or additive (linear
+superposition), the inferred local Hubble constant takes one of two values:
+
 \begin{equation}
   H_0^{\rm local} \;=\; \frac{\Hzero^{\rm alg}}{1-\fsc}
   \;=\; \frac{3(\phiG+\pi)^2}{1 - (\pi-\phiG)/(\phiG+\pi)^2}
-  \;\approx\; 72.86\;\text{km/s/Mpc}\,.
+  \;\approx\; 72.86\;\text{km/s/Mpc}
+  \quad[\text{multiplicative}]\,,
   \label{eq:H0local}
 \end{equation}
-The disformal coupling factor $\MIRA$ in the denominator has a physical
-interpretation: it is the same optical coupling that controls how dark
-matter sources the scalar gradient (Paper~8).
-A stronger optical coupling ($\MIRA$ larger) implies a weaker screening
-fraction (larger denominator), consistent with Vainshtein suppression.
+\begin{equation}
+  H_0^{\rm local} \;=\; \Hzero^{\rm alg}\,(1+\fsc)
+  \;=\; 3(\phiG+\pi)^2\!\left[1 + \frac{\pi-\phiG}{(\phiG+\pi)^2}\right]
+  \;\approx\; 72.53\;\text{km/s/Mpc}
+  \quad[\text{additive}]\,.
+  \label{eq:H0local_add}
+\end{equation}
+
+The difference between the two forms is of order $\fsc^2 \approx 0.33$ km/s/Mpc.
+Both predictions are consistent with SH0ES \citep{Riess2022}:
+\begin{equation}
+  \Delta_{\rm mult} = 0.17\sigma\,, \qquad \Delta_{\rm add} = 0.49\sigma\,.
+  \label{eq:tensions}
+\end{equation}
+
+The multiplicative form~\eqref{eq:H0local} is suggestive of a
+geometric correction to the distance-luminosity relation: if the
+scalar kinetic energy contributes a fraction $\fsc$ to the local
+Friedmann equation at $z < 0.15$ but is absent from the CMB-era
+Friedmann equation (where $\Omde \sim 10^{-9}$), the ratio of the
+two inferred expansion rates is $1/(1-\fsc)$ to leading order.
+A complete perturbative derivation of this split --- computing the
+correction to the apparent luminosity distance for SH0ES calibrators
+in the SSEE background --- is deferred to future work (see
+Section~\ref{sec:limitations}).
+
+\medskip
+\noindent\textit{Note on the role of $\MIRA$.}
+The factor $\MIRA = \AURA/2$ in the denominator of $\fsc$ originates from
+the disformal null geodesic of Paper~8: it quantifies how the dark matter
+sector couples optically to the scalar gradient.
+Its appearance here, through the algebraic cancellation of $\AURA$ in
+$\alphaK/(3\MIRA)$, connects the lensing amplification derived in Paper~8
+to the local Hubble bias --- without any additional assumptions.
 
 \subsection{Why the CMB is unaffected}
 \label{sec:CMBsafe}
@@ -504,14 +529,15 @@ already present in the background, without introducing any new degrees of freedo
 
 We identify three items that lie beyond the scope of this paper.
 
-\paragraph{1.~Derivation of the multiplicative form.}
-Equation~\eqref{eq:H0local} adopts the multiplicative (Vainshtein-type)
-correction $H_0^{\rm local} = H_0^{\rm alg}/(1-\fsc)$ rather than the
-additive form $H_0^{\rm alg}(1+\fsc)$ (which would give 72.53 km/s/Mpc,
-$0.49\sigma$ from SH0ES).
-The $\sim 0.3$\,km/s/Mpc difference between the two conventions is of
-order $\fsc^2$ and requires a full perturbative expansion of the
-Friedmann equation in the scalar kinetic sector to resolve.
+\paragraph{1.~Perturbative derivation of the local--global split.}
+Section~\ref{sec:localH0} presents both multiplicative
+($72.86$\,km/s/Mpc, $0.17\sigma$) and additive ($72.53$\,km/s/Mpc,
+$0.49\sigma$) forms; the difference is of order $\fsc^2 \approx 0.33$\,km/s/Mpc.
+Resolving which form applies requires computing the perturbative correction
+to the apparent luminosity distance for SH0ES calibrators integrated over
+$z \in [0, 0.15]$ in the SSEE background.
+Both forms are consistent with SH0ES, so the ambiguity does not affect
+the main result.
 
 \paragraph{2.~Dynamical derivation of the local--global split.}
 Section~\ref{sec:mechanism} identifies the scalar kinetic energy as the

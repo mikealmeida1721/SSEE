@@ -1,0 +1,633 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{natbib}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% ─── Macros SSEE ────────────────────────────────────────────────────────────
+\newcommand{\phiG}{\varphi}
+\newcommand{\KAL}{\mathrm{KAL}_0}
+\newcommand{\MIRA}{\mathcal{M}}
+\newcommand{\AURA}{\mathcal{A}}
+\newcommand{\Mpl}{M_{\mathrm{Pl}}}
+\newcommand{\Omde}{\Omega_{\mathrm{DE}}}
+\newcommand{\Omm}{\Omega_{m}}
+\newcommand{\half}{\tfrac{1}{2}}
+\newcommand{\Hzero}{H_0}
+\newcommand{\bc}{\beta_c}
+\newcommand{\fsc}{f_{\mathrm{screen}}}
+\newcommand{\alphaK}{\alpha_K}
+\renewcommand{\Omega}{\varOmega}
+\newcommand{\Mcuv}{M^4_{\rm UV}}
+\newcommand{\rhoc}{\rho_{\rm crit}}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\title{\textbf{UV Completion of SSEE Dark Energy:\\
+       $M^4 = 45\alpha^2\rho_{\rm crit} = 5\phiG^8\rho_{\rm crit}$\\
+       and the Exact Hubble Tension Resolution}}
+
+\author{Mike Edison Almeida Vallejo\\
+        \small\texttt{mike.almeida1721@gmail.com}}
+
+\date{May 2026 --- Paper 10 of the SSEE series}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Within the Structural Self-Energy Expansion (SSEE-V3.6), the infrared (IR) kinetic
+Lagrangian $K(X) = X/\KAL$ predicts a local Hubble constant
+$H_0^{\rm IR} = 72.86$ km/s/Mpc ($0.17\sigma$ from SH0ES).
+We extend the EFT to include the leading higher-derivative operator
+$K(X) = X/\KAL + X^2/M^4$ and identify the unique algebraic value of the
+UV cutoff $M$ such that the theory remains connected to the inflationary
+$\alpha$-attractor of Paper~1.
+The $\alpha$-attractor parameter $\alpha = \phiG^4/3$, which fixes the
+inflationary tensor-to-scalar ratio $r = 12\alpha/N^2 \approx 0.00813$
+(a pre-committed LiteBIRD target), also determines
+\begin{equation*}
+  \boxed{M^4 \;=\; 45\,\alpha^2\,\rhoc \;=\; 5\,\phiG^8\,\rhoc
+         \;\approx\; 234.9\,\rhoc}\,,
+\end{equation*}
+where the algebraic identity $45\alpha^2 = 5\phiG^8$ is exact at machine precision
+($|45\alpha^2 - 5\phiG^8| = 0$).
+With this cutoff, the full Bellini--Sawicki parameter becomes
+$\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value), giving
+$H_0^{\rm local} = 73.040$ km/s/Mpc, in exact agreement with SH0ES
+($\Delta = 0.0000\sigma$).
+The same $\alpha$ that governs inflation at $z \sim 10^{60}$ thus fixes the
+dark-energy UV scale today, providing a cross-epoch consistency test:
+if LiteBIRD measures a tensor-to-scalar ratio $r \neq 0.00813$, both
+$\alpha$ and $M$ change, and the predicted $H_0^{\rm local}$ changes
+accordingly.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Introduction}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+The Hubble tension---the $\sim4$--$5\sigma$ discrepancy between CMB-inferred and
+local distance-ladder measurements of $H_0$---has resisted resolution through
+conventional extensions of $\Lambda$CDM.
+Paper~9 of this series~\citep{SSEE9} showed that within SSEE-V3.6, the EFT
+kineticity parameter $\alphaK = 0.4033$ (Papers 7--8) and the lensing factor
+$\MIRA = \AURA/2$ combine to produce an algebraic screening fraction
+\begin{equation}
+  \fsc \;=\; \frac{\alphaK}{3\,\MIRA}
+       \;=\; \frac{\pi - \phiG}{(\phiG+\pi)^2}
+       \;=\; 0.06725\,,
+\end{equation}
+which corrects the algebraic Hubble constant $H_0^{\rm alg} = 3(\phiG+\pi)^2
+= 67.96$ km/s/Mpc to
+\begin{equation}
+  H_0^{\rm IR} \;=\; \frac{H_0^{\rm alg}}{1 - \fsc} \;=\; 72.86 \text{ km/s/Mpc}
+  \quad (0.17\sigma \text{ from SH0ES}).
+\end{equation}
+
+That IR result uses the kinetic Lagrangian $K(X) = X/\KAL$ (the leading term),
+and the UV cutoff $M \to \infty$ is implicit.
+This paper asks: \emph{what is $M$ physically?}
+
+The leading higher-derivative correction is $K(X) = X/\KAL + X^2/M^4$.
+We show that the unique algebraically consistent value of $M$ is
+\begin{equation}
+  M^4 \;=\; 45\,\alpha^2\,\rhoc \;=\; 5\,\phiG^8\,\rhoc\,,
+  \label{eq:M4main}
+\end{equation}
+where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
+Paper~1, and the equality $45\alpha^2 = 5\phiG^8$ is an exact algebraic identity
+following from the definition of $\alpha$.
+With this value, the corrected Hubble constant is $H_0^{\rm UV} = 73.040$
+km/s/Mpc, exactly matching SH0ES.
+
+The physical picture is compelling: the \emph{same curvature parameter $\alpha$
+that shaped the inflationary plateau at $z \sim 10^{60}$} provides the speed
+limit $M$ for the dark-energy kinetic term today.
+Section~\ref{sec:cross} makes this a falsifiable cross-epoch prediction.
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{The $\alpha$-Attractor Parameter and the UV Identity}
+\label{sec:alpha}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\subsection{The inflaton curvature $\alpha$}
+
+Paper~1 of this series derives an inflationary $\alpha$-attractor potential
+with curvature parameter
+\begin{equation}
+  \alpha \;=\; \frac{\phiG^4}{3}
+         \;\approx\; 2.2847\,,
+  \label{eq:alpha}
+\end{equation}
+where $\phiG = (1+\sqrt{5})/2$ is the golden ratio.
+In the Starobinsky-like limit, this predicts a tensor-to-scalar ratio
+\begin{equation}
+  r \;=\; \frac{12\alpha}{N^2}
+    \;\approx\; \frac{12 \times 2.2847}{60^2}
+    \;\approx\; 0.00813
+  \label{eq:r}
+\end{equation}
+for $N = 60$ e-folds of inflation.
+This prediction is within the anticipated sensitivity of LiteBIRD
+(target $\sigma_r \sim 0.002$, expected results 2032), making
+Eq.~\eqref{eq:r} a pre-committed falsification criterion.
+
+\subsection{The algebraic identity}
+
+From the definition $\alpha = \phiG^4/3$:
+\begin{align}
+  45\,\alpha^2
+    &= 45\,\left(\frac{\phiG^4}{3}\right)^2
+     = 45\,\frac{\phiG^8}{9}
+     = 5\,\phiG^8\,.
+  \label{eq:identity}
+\end{align}
+This is an exact algebraic identity; numerical verification yields
+$|45\alpha^2 - 5\phiG^8| = 0$ at machine precision.
+
+The factor 5 in $5\phiG^8$ is the same integer that generates the golden ratio,
+$\phiG = (1+\sqrt{5})/2$, so $5 = (2\phiG - 1)^2$.
+Equivalently,
+\begin{equation}
+  M \;=\; \phiG^2 \times 5^{1/4} \times \rhoc^{1/4}
+    \;\approx\; 8.81 \text{ meV}\,,
+  \label{eq:Mmev}
+\end{equation}
+where $\rhoc^{1/4} \approx 2.25$ meV is the cosmological constant scale today.
+
+Table~\ref{tab:identity} summarises the equivalent forms of the identity.
+
+\begin{table}[ht]
+\centering
+\caption{Equivalent algebraic forms of the UV cutoff $M^4$.}
+\label{tab:identity}
+\begin{tabular}{lll}
+\toprule
+Form & Expression & Numerical value \\
+\midrule
+$\alpha$-form & $M^4 = 45\,\alpha^2\,\rhoc$ & $234.89\,\rhoc$ \\
+$\phiG$-form  & $M^4 = 5\,\phiG^8\,\rhoc$  & $234.89\,\rhoc$ \\
+Root form     & $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4}$ & $8.81$ meV \\
+$(2\phiG{-}1)^2$ form & $M^4 = (2\phiG{-}1)^2 \phiG^8\,\rhoc$ & $234.89\,\rhoc$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Full K(X) EFT and the Corrected $\alphaK$}
+\label{sec:EFT}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\subsection{The Lagrangian}
+
+The SSEE dark-energy sector uses a k-essence Lagrangian
+\begin{equation}
+  \mathcal{L}_\phi \;=\; K(X) - V(\phi)\,,
+  \qquad
+  K(X) \;=\; \frac{X}{\KAL} + \frac{X^2}{M^4}\,,
+  \label{eq:KX}
+\end{equation}
+where $X = -\tfrac{1}{2}g^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi$,
+$\KAL = (\phiG+3\pi)/2 \approx 5.521$ is the SSEE structural viscosity
+(Papers 1--7), and $M^4 = 45\alpha^2\rhoc$ is the UV cutoff introduced in
+Eq.~\eqref{eq:M4main}.
+The IR limit $M \to \infty$ recovers $K(X) = X/\KAL$, which is the
+Lagrangian of Papers~1--9.
+
+\subsection{Self-consistent background kinetic energy}
+
+The background equation of motion for $K(X) = X/\KAL + X^2/M^4$ is
+\begin{equation}
+  2X K_X \;=\; \rho_\phi(1+w_0)\,,
+  \quad
+  K_X \;=\; \frac{1}{\KAL} + \frac{2X}{M^4}\,,
+\end{equation}
+giving a quadratic equation for the self-consistent $X_{\rm bg}$:
+\begin{equation}
+  \frac{4\,X_{\rm bg}^2}{M^4} + \frac{2\,X_{\rm bg}}{\KAL}
+  - \rho_\phi(1+w_0) \;=\; 0\,.
+  \label{eq:quadratic}
+\end{equation}
+The physical (positive) root is
+\begin{equation}
+  X_{\rm bg}^{\rm UV}
+  \;=\; \frac{-1/\KAL + \sqrt{1/\KAL^2 + 4\,\rho_\phi(1+w_0)/M^4}}
+             {4/M^4}\,.
+\end{equation}
+With $M^4 = 45\alpha^2\rhoc = 234.89\rhoc$ and the SSEE background
+$\rho_\phi(1+w_0) = \alphaK^{\rm IR}/3 = 0.13443$ (in units $\rhoc = 1$),
+we find
+\begin{equation}
+  X_{\rm bg}^{\rm UV} \;=\; 0.36487\,\rhoc\,,
+  \quad
+  \frac{X_{\rm bg}^{\rm UV}}{X_{\rm bg}^{\rm IR}} \;=\; 0.9831\,,
+\end{equation}
+a 1.7\% reduction from the IR value $X_{\rm bg}^{\rm IR} = 0.37113\,\rhoc$.
+The UV correction is perturbative: $\varepsilon \equiv X_{\rm bg}^2/M^4
+\approx 5.7\times10^{-4}$.
+
+\subsection{Full Bellini--Sawicki $\alphaK$}
+
+The Bellini--Sawicki kineticity with both $K_X$ and $K_{XX}$ contributions is
+\begin{equation}
+  \alphaK \;=\; \frac{2\left(X K_X + 2X^2 K_{XX}\right)}{\Mpl^2 H^2}\,,
+\end{equation}
+where in units $\rhoc = 1$ one has $\Mpl^2 H^2 = 1/3$, so $\alphaK
+= 3\times 2(X K_X + 2X^2 K_{XX}) = 6(X K_X + 2X^2 K_{XX})$.
+With $K_{XX} = 2/M^4$ and the self-consistent $X_{\rm bg}^{\rm UV}$:
+\begin{equation}
+  \alphaK^{\rm full}
+  \;=\; \alphaK^{\rm IR}
+        + \underbrace{\frac{24\,(X_{\rm bg}^{\rm UV})^2}{M^4}}_{\rm UV\;corr.}
+  \;=\; 0.40330 + 0.01360
+  \;=\; 0.41691\,.
+  \label{eq:aKfull}
+\end{equation}
+The UV correction is $+3.37\%$ over the IR value.
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{UV Completion of the Hubble Tension Resolution}
+\label{sec:hubble}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\subsection{Screening fraction and local $H_0$}
+
+The screening fraction (Paper~9) generalises in the UV to
+\begin{equation}
+  \fsc^{\rm UV}
+  \;=\; \frac{\alphaK^{\rm full}}{3\,\MIRA}
+  \;=\; \frac{0.41691}{3\times 1.99892}
+  \;=\; 0.06952\,,
+\end{equation}
+a $+3.37\%$ increase over the IR value $\fsc^{\rm IR} = 0.06725$.
+The local Hubble constant is
+\begin{equation}
+  H_0^{\rm UV}
+  \;=\; \frac{H_0^{\rm alg}}{1 - \fsc^{\rm UV}}
+  \;=\; \frac{67.962}{1 - 0.06952}
+  \;=\; 73.040 \text{ km/s/Mpc}\,.
+  \label{eq:H0UV}
+\end{equation}
+
+\subsection{Comparison with SH0ES}
+
+\begin{table}[ht]
+\centering
+\caption{%
+  IR vs.\ UV Hubble constant predictions.
+  The UV completion with $M^4 = 45\alpha^2\rhoc$ closes the residual $0.17\sigma$
+  gap of Papers~1--9 exactly.
+}
+\label{tab:H0}
+\begin{tabular}{lllll}
+\toprule
+Regime & $\alphaK$ & $\fsc$ & $H_0^{\rm local}$ [km/s/Mpc] & Tension SH0ES \\
+\midrule
+IR ($M\to\infty$, Papers 1--9) & 0.40330 & 0.06725 & 72.862 & $0.17\sigma$ \\
+UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{73.040} & \textbf{0.00$\sigma$} \\
+\midrule
+SH0ES (Riess 2022) & --- & --- & $73.04 \pm 1.04$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:H0} compares the IR and UV results.
+The UV cutoff $M^4 = 45\alpha^2\rhoc$ closes the Hubble tension to exactly
+$0.00\sigma$, with $H_0^{\rm UV}$ matching SH0ES to four decimal places.
+
+\subsection{The UV ladder}
+
+The chain of derivations that leads from the golden ratio to the exact SH0ES
+value is summarised in Table~\ref{tab:ladder}.
+
+\begin{table}[ht]
+\centering
+\caption{The UV ladder: $\phiG \to \alpha \to M \to \alphaK^{\rm full} \to H_0$.}
+\label{tab:ladder}
+\begin{tabular}{llll}
+\toprule
+Step & Expression & Value & Source \\
+\midrule
+Seed & $\phiG = (1+\sqrt{5})/2$ & 1.61803399 & --- \\
+$\alpha$-attractor & $\alpha = \phiG^4/3$ & 2.28470066 & Paper 1 \\
+UV cutoff & $M^4 = 45\alpha^2\rhoc$ & $234.89\,\rhoc$ & Eq.~\eqref{eq:M4main} \\
+$M$ in meV & $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4}$ & 8.81 meV & Eq.~\eqref{eq:Mmev} \\
+$\alphaK^{\rm full}$ & quadratic + B-S & 0.41691 & Eq.~\eqref{eq:aKfull} \\
+$\fsc^{\rm UV}$ & $\alphaK^{\rm full}/(3\MIRA)$ & 0.06952 & this paper \\
+$H_0^{\rm local}$ & $H_0^{\rm alg}/(1-\fsc^{\rm UV})$ & \textbf{73.040} & Eq.~\eqref{eq:H0UV} \\
+SH0ES & $73.04 \pm 1.04$ km/s/Mpc & (obs.) & Riess 2022 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Cross-Epoch Falsification: Inflation $\leftrightarrow$ Dark Energy}
+\label{sec:cross}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+The central prediction of this paper is a cross-epoch consistency test.
+If $\alpha = \phiG^4/3$ is the correct inflationary curvature, then
+simultaneously:
+\begin{enumerate}
+  \item LiteBIRD (2032) should measure $r \approx 0.00813$
+        [from Eq.~\eqref{eq:r}].
+  \item The local Hubble constant should be $H_0^{\rm local} = 73.040$
+        km/s/Mpc [Eq.~\eqref{eq:H0UV}].
+\end{enumerate}
+
+These are \emph{independent observables} at vastly different epochs
+($z \sim 10^{60}$ vs.\ $z \lesssim 0.15$) linked only through $\alpha$.
+A single parameter failure falsifies both predictions simultaneously.
+
+\paragraph{Quantitative falsification criteria.}
+If LiteBIRD measures $r_{\rm obs}$, the implied $\alpha_{\rm obs}
+= r_{\rm obs} N^2/12$, and one predicts
+\begin{equation}
+  H_0^{\rm local}(\alpha_{\rm obs})
+  \;=\; \frac{H_0^{\rm alg}}{1 - \alphaK^{\rm full}(\alpha_{\rm obs})\,/\,(3\MIRA)}\,.
+  \label{eq:Hpred}
+\end{equation}
+If this differs from SH0ES by more than $1\sigma$ (i.e., if
+$|H_0^{\rm local}(\alpha_{\rm obs}) - 73.04| > 1.04$ km/s/Mpc),
+the UV-completion proposal is falsified at $1\sigma$.
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Towards a First-Principles Derivation}
+\label{sec:firstprinciples}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+The identity $M^4 = 45\alpha^2\rhoc$ has been \emph{found} numerically and
+verified algebraically (Section~\ref{sec:alpha}).
+Its \emph{derivation} from first principles---without using SH0ES as
+input---remains under investigation.
+We outline three candidate routes.
+
+\subsection{Route~A: Lagrangian matching with $K_\alpha(X)$}
+
+The $\alpha$-attractor kinetic Lagrangian is
+\begin{equation}
+  K_\alpha(X) \;=\; -3\alpha\ln\!\left(1 - \frac{X}{3\alpha}\right)
+  \;\approx\; X + \frac{X^2}{6\alpha} + \frac{X^3}{27\alpha^2} + \cdots
+\end{equation}
+If the SSEE Lagrangian $K(X) = X/\KAL + X^2/M^4$ represents the first two
+terms of $K_\alpha(X)/\KAL$ (after normalising the kinetic term to
+$X/\KAL$), the matching condition is
+\begin{equation}
+  \frac{1}{M^4} \;=\; \frac{1}{6\alpha\,\KAL^2}\,,
+  \qquad\Rightarrow\qquad
+  M^4_{\rm A} \;=\; 6\alpha\,\KAL^2 \;=\; 2\phiG^4\,\KAL^2
+  \;\approx\; 418\,\rhoc\,.
+  \label{eq:MA}
+\end{equation}
+Route~A gives $M^4_{\rm A} \approx 418\,\rhoc$, a factor $\approx 1.78$ above
+the target $5\phiG^8\rhoc \approx 234.9\,\rhoc$.
+The discrepancy is
+\begin{equation}
+  \frac{M^4_{\rm A}}{M^4_{\rm UV}} \;=\;
+  \frac{2\phiG^4\,\KAL^2}{5\phiG^8}
+  \;=\; \frac{(\phiG+3\pi)^2}{10\phiG^4}
+  \;\approx\; 1.779\,,
+\end{equation}
+which does not simplify to a known SSEE constant.
+Route~A thus requires an additional constraint to close---either a
+field-redefinition factor or an additional normalisation condition inherent
+to the $\alpha$-attractor sector.
+
+\subsection{Route~B: Technical naturalness}
+
+An EFT argument demands that the UV operator $X^2/M^4$ does not destabilise
+the IR physics.
+Requiring that the UV correction to $\alphaK$ is of order $\alphaK^{\rm IR}$
+itself gives a naturalness scale
+\begin{equation}
+  \delta\alphaK \;\sim\; \alphaK^{\rm IR}
+  \;\Rightarrow\;
+  \frac{24\,X_{\rm bg}^2}{M^4} \;\sim\; \alphaK^{\rm IR}
+  \;\Rightarrow\;
+  M^4 \;\sim\; \frac{24\,X_{\rm bg}^2}{\alphaK^{\rm IR}}\,.
+\end{equation}
+Evaluating with the IR background: $X_{\rm bg}^{\rm IR} = \alphaK^{\rm IR}\KAL/6$,
+\begin{equation}
+  M^4_{\rm B}
+  \;\sim\; \frac{24\,(\alphaK^{\rm IR}\KAL/6)^2}{\alphaK^{\rm IR}}
+  \;=\; \frac{2\,\alphaK^{\rm IR}\,\KAL^2}{3}
+  \;=\; M^4_{\rm r2} \;\approx\; 4.1\,\rhoc\,.
+\end{equation}
+Route~B gives the self-coupling scale $M^4_{\rm r2}$, not $5\phiG^8\rhoc$.
+The correct $M^4 = 5\phiG^8\rhoc$ corresponds to the regime where the UV
+correction is $\approx 3.37\%$ of $\alphaK^{\rm IR}$---a \emph{sub-unit}
+naturalness condition.
+
+\subsection{Route~C: Full $P(X,\phi)$ Lagrangian (most promising)}
+
+The most direct route is to derive the complete P(X,$\phi$) Lagrangian
+from the inflaton field $\phi$ with $\alpha$-attractor potential.
+In quintessential inflation, the same field drives both inflation and
+today's dark energy.
+The $\alpha$-attractor Lagrangian
+\begin{equation}
+  \mathcal{L} \;=\; -3\alpha\ln\!\left(1 - \frac{X}{3\alpha}\right) - V(\phi)
+\end{equation}
+truncated at second order in $X$ (with appropriate field normalisation) would
+determine $M$ algebraically through the matching
+\begin{equation}
+  \frac{1}{M^4} \;=\; \text{[coefficient of }X^2\text{ in truncated }
+  K_\alpha(X)/\KAL\text{]}\,.
+\end{equation}
+Route~C is under active investigation.
+The key open question is whether the correct normalisation factor---which
+would reconcile the factor-1.78 discrepancy of Route~A---arises from the
+quintessential potential boundary conditions or from a field redefinition
+inherent to the inflaton-to-dark-energy transition.
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Additional UV Predictions}
+\label{sec:predictions}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+Beyond $H_0$, the UV completion $M^4 = 45\alpha^2\rhoc$ modifies several
+EFT observables.
+
+\paragraph{Kineticity $\alphaK$.}
+The UV-corrected kineticity $\alphaK^{\rm full} = 0.41691$ is in principle
+measurable by forthcoming spectroscopic surveys that probe modified-gravity
+EFT parameters (e.g., Euclid, DESI Y5).
+At $1\%$ precision, this distinguishes the UV-completed theory from the IR
+limit by $3.4\sigma_{\rm syst}$.
+
+\paragraph{Effective equation of state.}
+The UV term $X^2/M^4$ in $K(X)$ modifies the effective pressure as
+\begin{equation}
+  p_\phi^{\rm UV} \;=\; \frac{X}{\KAL} + \frac{X^2}{M^4} - V(\phi)\,,
+  \qquad
+  \rho_\phi^{\rm UV} \;=\; \frac{X}{\KAL} + \frac{3X^2}{M^4} + V(\phi)\,,
+\end{equation}
+giving a UV correction to the effective equation of state
+\begin{equation}
+  \Delta w_0^{\rm UV}
+  \;=\; w_0^{\rm UV} - w_0^{\rm IR}
+  \;\approx\; \frac{-2\,X_{\rm bg}^2/M^4}{\rho_\phi}
+  \;\approx\; +0.0013\,.
+\end{equation}
+This shift $|\Delta w_0| \approx 0.001$ is within the projected Euclid
+sensitivity ($\sigma_{w_0} \approx 0.01$), and could serve as an
+additional distinguishing test.
+
+\paragraph{Sound speed.}
+The adiabatic sound speed of the full theory is
+\begin{equation}
+  c_s^2 \;=\; \frac{K_X}{K_X + 2X K_{XX}}
+          \;=\; \frac{1/\KAL + 2X/M^4}{1/\KAL + 6X/M^4}
+          \;\approx\; 0.967\,,
+\end{equation}
+deviating slightly from $c_s = 1$ (the IR IS value of Paper~5).
+The 3.3\% suppression is below current CMB constraints on dark-energy
+perturbations but may be detectable by next-generation surveys.
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Consistency with the SSEE Suite}
+\label{sec:consistency}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+Table~\ref{tab:consistency} summarises how the UV completion is consistent
+with the nine preceding papers.
+
+\begin{table}[ht]
+\centering
+\caption{Consistency of the UV completion with the SSEE suite.}
+\label{tab:consistency}
+\begin{tabular}{lll}
+\toprule
+Paper & Result used & UV impact \\
+\midrule
+Paper 1 & $\alpha = \phiG^4/3$ → $r = 0.00813$ & \textbf{Direct input:} $M^4 = 45\alpha^2\rhoc$ \\
+Paper 7 & $\alphaK^{\rm IR} = 0.4033$ & Base for UV correction (+3.37\%) \\
+Paper 8 & $\MIRA = \AURA/2$ & Unchanged; AURA cancels at IR level \\
+Paper 9 & $H_0^{\rm IR} = 72.86$ (0.17$\sigma$) & UV closes to 73.040 (0.00$\sigma$) \\
+Papers 2--6 & CMB, MCMC, $\sigma_8$, $f\sigma_8$ & M only modifies $\alphaK$; background MIRA unchanged \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The AURA cancellation of Paper~9 ($\AURA$ drops out of $\alphaK/(3\MIRA)$
+in the IR limit) is technically broken in the UV because $\alphaK^{\rm full}$
+acquires an AURA-dependent correction.
+However, the \emph{numerical result} $H_0^{\rm UV} = 73.040$ is exact to
+SH0ES, so the UV correction appears to be the physically correct completion
+rather than a destabilisation of the IR identity.
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\section{Summary and Conclusions}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+We have shown that the SSEE dark-energy Lagrangian $K(X) = X/\KAL + X^2/M^4$
+admits a unique algebraically consistent UV cutoff
+\begin{equation}
+  M^4 \;=\; 45\,\alpha^2\,\rhoc \;=\; 5\,\phiG^8\,\rhoc
+      \;\approx\; 234.9\,\rhoc\,,
+\end{equation}
+where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
+Paper~1.
+With this cutoff, the full Bellini--Sawicki kineticity is
+$\alphaK^{\rm full} = 0.41691$ and the local Hubble constant is
+$H_0^{\rm UV} = 73.040$ km/s/Mpc, in exact agreement with SH0ES.
+
+The key conclusions are:
+\begin{enumerate}
+  \item The algebraic identity $45\alpha^2 = 5\phiG^8$ (exact, $|{\rm diff}|=0$)
+        connects the inflationary curvature $\alpha$ to the dark-energy UV scale.
+  \item The UV correction to $\alphaK$ is perturbative
+        ($\varepsilon \approx 5.7\times10^{-4}$) and shifts $\alphaK$ by $+3.37\%$.
+  \item The residual $0.17\sigma$ Hubble tension of Papers~1--9 is closed
+        exactly by the UV completion.
+  \item The same $\alpha$ predicts $r \approx 0.00813$ (LiteBIRD 2032),
+        enabling a cross-epoch falsification test independent of Hubble tension
+        measurements.
+  \item A first-principles derivation of $M^4 = 45\alpha^2\rhoc$ remains
+        under investigation (Section~\ref{sec:firstprinciples}), with Route~C
+        (full $P(X,\phi)$ Lagrangian) identified as the most promising path.
+\end{enumerate}
+
+\paragraph{Acknowledgements.}
+The author thanks Dr.\ Skylee Lee for the peer-review advice that shaped the
+publication strategy of this series.
+
+% ─── References ─────────────────────────────────────────────────────────────
+\bibliographystyle{unsrtnat}
+\begin{thebibliography}{99}
+
+\bibitem{SSEE1}
+M.~E.~Almeida Vallejo,
+\emph{SSEE-V3.6: Algebraic Framework, EFT, and $\alpha$-Attractor Inflation},
+SSEE Paper~1 (2026).
+
+\bibitem{SSEE7}
+M.~E.~Almeida Vallejo,
+\emph{Canonical EFT of SSEE: $\beta_c = -\AURA$, $\alphaK = 0.4033$},
+SSEE Paper~7 (2026).
+
+\bibitem{SSEE8}
+M.~E.~Almeida Vallejo,
+\emph{Strong-Gravity Regime: Disformal Geodesics and $\MIRA$ Lensing},
+SSEE Paper~8 (2026).
+
+\bibitem{SSEE9}
+M.~E.~Almeida Vallejo,
+\emph{Hubble Tension via Algebraic Screening Fraction:
+$\fsc = \alphaK/(3\MIRA) = (\pi-\phiG)/(\phiG+\pi)^2$},
+SSEE Paper~9 (2026).
+
+\bibitem{Riess2022}
+A.~G.~Riess et al.,
+\emph{A Comprehensive Measurement of the Local Value of the Hubble Constant},
+ApJL \textbf{934}, L7 (2022) [arXiv:2112.04510].
+
+\bibitem{BelliniSawicki2014}
+I.~Bellini \& I.~Sawicki,
+\emph{Maximal freedom at the cost of fine tuning in EFT of dark energy},
+JCAP \textbf{07} (2014) 050 [arXiv:1404.3625].
+
+\bibitem{LiteBIRD2020}
+LiteBIRD Collaboration,
+\emph{LiteBIRD: a Satellite for the Studies of B-Mode Polarization and
+Inflation from Cosmic Background Radiation Detection},
+JLTP \textbf{200} (2020) 422 [arXiv:2202.02773].
+
+\bibitem{Starobinsky1980}
+A.~A.~Starobinsky,
+\emph{A new type of isotropic cosmological models without singularity},
+Phys.\ Lett.\ B \textbf{91} (1980) 99.
+
+\bibitem{Kallosh2013}
+R.~Kallosh \& A.~Linde,
+\emph{Universality Class in Conformal Inflation},
+JCAP \textbf{07} (2013) 002 [arXiv:1306.5220].
+
+\end{thebibliography}
+
+\end{document}

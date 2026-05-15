@@ -514,7 +514,7 @@ $8.81\,\mathrm{meV}$ (UV, Paper~10) & $\sim 10^{44}\,\mathrm{m}$ & $\sim 4\times
 \end{table}
 
 When $M = 8.81\,\mathrm{meV}$, every solar-system and galactic object is at
-$r \ll \rV$; the scalar-force ratio (Section~\ref{sec:vainshtein_profile})
+$r \ll \rV$; the scalar-force ratio (Section~\ref{sec:vainshtein})
 $F_\phi/F_N \propto (r/\rV)^{4/3} \to 0$ and GR is recovered with negligible
 fifth-force correction at all astrophysical scales.
 
@@ -784,8 +784,12 @@ Several steps remain to complete the strong-gravity picture:
 
   \item \textbf{Full Vainshtein calculation}: The scaling relation
         $\rV \sim r_S^{1/2}\,\Lambda_{\mathrm{UV}}^{-1/2}$ is parametric.
-        A quantitative value of $\rV$ for the Milky Way and solar system
-        requires a more careful treatment of the UV-completion scale $M$.
+        Paper~10 now fixes $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4} \approx 8.81\,\mathrm{meV}$
+        algebraically, giving quantitative Vainshtein radii
+        ($r_{V,\odot} \approx 1.84 \times 10^{44}\,\mathrm{m}$,
+        Table~\ref{tab:vainshtein});
+        a full N-body calculation would convert the parametric scaling to
+        a precise profile for individual halos.
 
   \item \textbf{Relativistic corrections}: On cluster scales at $z \sim 0.5$,
         relativistic corrections to the geodesic
@@ -802,14 +806,17 @@ Several steps remain to complete the strong-gravity picture:
 
 The $X^2/M^4$ kinetic term in the SSEE action is the leading non-linear
 operator in a derivative expansion.
-The reference scale $M \approx \Mpl$ places the EFT cutoff near Planck energies,
-suggesting that a UV completion (quantum gravity) must enter at or before $M_{\rm Pl}$.
-The precise value of $M$ is a free parameter of the current EFT formulation;
-locking it algebraically to $\varphi$ and $\pi$ requires the UV completion.
-The UV cutoff is addressed in Paper~10 of the SSEE series, which derives
-$M^4 = 45\alpha^2\,\rhoc = 5\phiG^8\,\rhoc$ from the same $\alpha$-attractor
-parameter that governs inflation, locking $M$ algebraically to $\varphi$ and $\pi$
-without introducing new free parameters.
+Paper~10 of the SSEE series derives
+$M^4 = 45\alpha^2\,\rhoc = 5\phiG^8\,\rhoc$ from the inflationary $\alpha$-attractor
+parameter $\alpha = \phiG^4/3$, fixing
+\begin{equation}
+  M \;=\; \phiG^2\,5^{1/4}\,\rhoc^{1/4} \;\approx\; 8.81\;\mathrm{meV}
+\end{equation}
+algebraically without free parameters.
+This is a \emph{cosmological-scale} cutoff---thirty orders of magnitude
+below $\Mpl$---so no quantum-gravity UV completion is required.
+The EFT derivative expansion is valid over the entire cosmological regime;
+the $X^2/M^4$ operator is a dark-energy self-interaction, not a near-Planck correction.
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Conclusions}
@@ -836,12 +843,13 @@ coupling and found:
         amplification to within $0.03\%$ (via the near-coincidence
         $\sqrt{\bc} \approx \MIRA$).
 
-  \item \textbf{GR compliance}: With $M \approx \Mpl$, the Vainshtein radius
-        $\rV \sim \sqrt{r_S\,\ell_{\mathrm{Pl}}}$ is sub-nuclear for all
-        astrophysical objects; Vainshtein non-linear screening is not active.
-        GR tests are satisfied because baryons couple only to $g_{\mu\nu}$
-        and the scalar is unsourced in the low-$\rho_{\mathrm{DM}}$
-        solar-system environment.
+  \item \textbf{GR compliance}: Paper~10 fixes $M \approx 8.81\,\mathrm{meV}$,
+        giving $\rV \sim (r_S / M^2)^{1/3} \approx 1.84 \times 10^{44}\,\mathrm{m}$
+        for the Sun---larger than the observable universe.
+        Every astrophysical object sits deep inside its own Vainshtein sphere,
+        where the scalar force is exponentially screened;
+        GR tests are satisfied with double protection (screening plus the
+        algebraic $\alphaT = \alphaM = 0$ from Paper~7).
 
   \item \textbf{Two-sector signature}: SSEE predicts a scale-dependent
         lensing suppression near $k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1}$,

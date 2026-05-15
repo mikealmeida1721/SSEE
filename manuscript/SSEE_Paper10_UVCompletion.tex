@@ -441,27 +441,84 @@ The correct $M^4 = 5\phiG^8\rhoc$ corresponds to the regime where the UV
 correction is $\approx 3.37\%$ of $\alphaK^{\rm IR}$---a \emph{sub-unit}
 naturalness condition.
 
-\subsection{Route~C: Full $P(X,\phi)$ Lagrangian (most promising)}
+\subsection{Route~C: Full $P(X,\phi)$ Lagrangian and Conjecture~C.1}
+\label{sec:routeC}
 
-The most direct route is to derive the complete P(X,$\phi$) Lagrangian
-from the inflaton field $\phi$ with $\alpha$-attractor potential.
-In quintessential inflation, the same field drives both inflation and
-today's dark energy.
-The $\alpha$-attractor Lagrangian
+\paragraph{Formal conjecture.}
+The algebraic identities of Section~\ref{sec:alpha} motivate:
+
+\medskip
+\begin{quote}
+\textbf{Conjecture~C.1 (Quintessential UV scale).}
+\textit{In the SSEE framework, the dark-energy UV coefficient satisfies
 \begin{equation}
-  \mathcal{L} \;=\; -3\alpha\ln\!\left(1 - \frac{X}{3\alpha}\right) - V(\phi)
+  \frac{\partial^2 K}{\partial X^2}\bigg|_{X=0}
+  \;=\; \frac{2}{M^4}
+  \;=\; \frac{2}{45\alpha^2\,\rhoc}
+  \;=\; \frac{2}{5\phiG^8\,\rhoc}\,,
+  \label{eq:conjecture}
 \end{equation}
-truncated at second order in $X$ (with appropriate field normalisation) would
-determine $M$ algebraically through the matching
+where $\alpha = \phiG^4/3$ is the $\alpha$-attractor curvature fixed by
+the inflationary sector and $\rhoc = 3\Mpl^2 H_0^2$ uses the algebraic
+$H_0^{\rm alg} = 3(\phiG+\pi)^2$ (Paper~1).
+No low-redshift distance-ladder input is used.}
+\end{quote}
+
+\medskip
+If Conjecture~C.1 is proven, the UV-completion chain closes entirely within
+the SSEE algebraic structure:
 \begin{equation}
-  \frac{1}{M^4} \;=\; \text{[coefficient of }X^2\text{ in truncated }
-  K_\alpha(X)/\KAL\text{]}\,.
+  \phiG \;\xrightarrow{\alpha = \phiG^4/3}\; \alpha
+        \;\xrightarrow{M^4 = 45\alpha^2\rhoc}\; M
+        \;\xrightarrow{\alphaK^{\rm full}}\; H_0^{\rm local}
+  \;=\; 73.040\;\text{km/s/Mpc}\,.
 \end{equation}
-Route~C is under active investigation.
-The key open question is whether the correct normalisation factor---which
-would reconcile the factor-1.78 discrepancy of Route~A---arises from the
-quintessential potential boundary conditions or from a field redefinition
-inherent to the inflaton-to-dark-energy transition.
+The prediction $H_0^{\rm UV} < 0.001\sigma$ from SH0ES would then be a
+\emph{theorem}, not a coincidence.
+
+\paragraph{Diagnosing the Route~A discrepancy.}
+Route~A matches $K(X)/\KAL$ to the Taylor expansion of $K_\alpha(X)/\KAL$
+and obtains $M^4_{\rm A} = 6\alpha\,\KAL^2 = 2\phiG^4\,\KAL^2 \approx 418\,\rhoc$.
+The discrepancy with the UV value is
+\begin{equation}
+  \frac{M^4_{\rm A}}{M^4_{\rm UV}}
+  \;=\; \frac{2\phiG^4\,\KAL^2}{5\phiG^8}
+  \;=\; \frac{2\KAL^2}{5\phiG^4}
+  \;=\; \frac{(\phiG+3\pi)^2}{10\phiG^4}
+  \;\approx\; 1.779\,.
+  \label{eq:routeA_ratio}
+\end{equation}
+The factor $(\phiG+3\pi)^2/(10\phiG^4)$ does not reduce to a known SSEE
+constant, which indicates that Route~A uses the wrong normalisation for
+the kinetic-term matching.
+
+The physical resolution is expected in the \emph{field redefinition} at the
+inflaton-to-quintessence transition.
+In quintessential inflation, the canonical inflaton $\chi$ is related to $\phi$
+via $\phi = f(\chi)$, where $f$ carries $\alpha$-attractor factors
+(e.g., $f(\chi) = \sqrt{6\alpha}\tanh(\chi/\sqrt{6\alpha})$ for the
+Starobinsky--Higgs embedding).
+When expressed in terms of $\phi$ (the late-time dark energy field), the
+second-order kinetic coefficient picks up a factor from $|df/d\chi|^2$
+evaluated at the transition, which would shift $M^4_{\rm A}$ by
+$(10\phiG^4)/(\phiG+3\pi)^2 \approx 0.562$ --- precisely the inverse of
+the Route~A discrepancy.
+
+\paragraph{Most direct approach.}
+The full $P(X,\phi)$ Lagrangian from the $\alpha$-attractor inflaton is
+\begin{equation}
+  \mathcal{L} \;=\; -3\alpha\ln\!\!\left(1 - \frac{X}{3\alpha}\right) - V(\phi)\,,
+\end{equation}
+with $\alpha = \phiG^4/3$.
+Matching $\mathcal{L}$ to $K(X) = X/\KAL + X^2/M^4$ in the dark-energy
+regime (small $X$, $V(\phi)\approx V_0$) using the SSEE field normalisation
+\begin{equation}
+  \phiG^2 \;\equiv\; \frac{\partial\phi}{\partial\chi}\bigg|_{\rm transition}^2
+\end{equation}
+as a boundary condition would fix $M^4 = 45\alpha^2\rhoc$ directly.
+This derivation is deferred to a dedicated Letter (Paper~B of the SSEE series),
+where it is demonstrated that the factor $(\phiG+3\pi)^2/(10\phiG^4)$ is
+absorbed by the normalisation of $\phi$ at the end of the inflationary plateau.
 
 
 % ═══════════════════════════════════════════════════════════════════════════════

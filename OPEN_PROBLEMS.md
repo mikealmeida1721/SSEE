@@ -101,10 +101,22 @@ estándar N_* ∈ [50,65]. Los coeficientes {26,16} = {F₁₀, 2F₇} son núme
 n_s = 1+2η−6ε = 0.9645 ✓, r = 16ε = 0.00813 = φ⁻¹⁰ ✓.
 
 **Límite residual:** La derivación de N_* = 2φ⁷ desde el modelo de inflación quintaesencial
-SSEE (potencial V(φ_inf) con α=φ⁴/3, reheating gravitacional) cierra OP-2 incondicionalmente
-— programa de Paper B.
+SSEE (potencial V(φ_inf) con α=φ⁴/3) cierra OP-2 incondicionalmente — programa de Paper B.
 
-**Script:** `src/ssee_op2_spectral_index.py` (cálculo completo, todos los asserts pasan)
+**Resultado numérico Paper B (ssee_paperB_Nstar.py):**
+
+Script `src/ssee_paperB_Nstar.py` verifica la Conjetura B.1 numéricamente:
+- V_end^(1/4) = 2.27×10¹⁶ GeV  (φ_end = 1.382 Mpl, ε(φ_end) = 1.000 ✓)
+- T_rh que produce N_* = 2φ⁷ exacto: **9.345×10¹⁵ GeV**
+- Este T_rh corresponde a ρ_rh ≈ V_end → T_rh ≈ (30/π²g*)^(1/4) × V_end^(1/4) ≈ 0.41 × V_end^(1/4)
+- Elegante: si ρ_end/ρ_rh = 3 exacto (físicamente ρ_end = 3V_end con ε=1 y ρ_rh = V_end):
+  N_* = 58.25 − ln(3)/6 = 58.067 ≈ 2φ⁷ = 58.069 → Δ = 0.002 e-folds = O(1/N_*)
+
+**Nota:** T_rh(inflación) ≈ 9.4×10¹⁵ GeV es la temperatura de reheating para N_*;
+distinta de T_bary ~ 10⁻⁴ GeV del argumento Sakharov (OP-1), que corresponde al
+epoch de bariogénesis. Estas son dos temperaturas físicamente distintas.
+
+**Script:** `src/ssee_op2_spectral_index.py` (n_s, r) + `src/ssee_paperB_Nstar.py` (T_rh completo)
 
 ---
 

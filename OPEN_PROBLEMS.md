@@ -118,6 +118,29 @@ epoch de bariogénesis. Estas son dos temperaturas físicamente distintas.
 
 **Script:** `src/ssee_op2_spectral_index.py` (n_s, r) + `src/ssee_paperB_Nstar.py` (T_rh completo)
 
+**Resultado numérico Paper B (ssee_paperB_DW.py) — RESULTADO NEGATIVO:**
+
+Script `src/ssee_paperB_DW.py` evalúa el segundo problema de Paper B: el mecanismo
+de producción de φ-DM (m_φ=5.71 eV) que reproduce Ω_φDM h²=0.0739.
+
+- Mecanismo Dodelson-Widrow (mezcla activo-estéril): el ángulo requerido es
+  sin²(2θ)_DW = 4.7846×10⁻⁵ (fórmula Boyarsky-Ruchayskiy-Shaposhnikov 2009).
+- Scan de ~80 combinaciones algebraicas de φ,π,Ω,MIRA,AURA: el mejor candidato es
+  φ⁻²¹ = 4.086×10⁻⁵, con **Δ = 14.6%** — supera el umbral del 10% para "limpio".
+- **Conclusión:** el ángulo de mezcla DW NO admite forma algebraica SSEE. Si se
+  adoptara DW, sin²(2θ) sería un parámetro libre — violando el principio de cero
+  parámetros. Es el primer resultado del modelo que no entra en el rango esperado.
+- Nota de rigor: la fórmula DW (constante C_DW) tiene ~15–20% de incertidumbre
+  teórica propia, por lo que perseguir un match sub-1% contra ese blanco carece
+  de sentido — `Ω×10⁻⁵` (mantisa 0.5%) es numerología: el factor 10⁻⁵ no es
+  algebraico (φ⁻ⁿ no genera 10⁻⁵ con n entero; requeriría n=23.92).
+- **Ruta correcta (abierta):** producción gravitacional (Parker; Chung-Kolb-Riotto)
+  — sin ángulo de mezcla, depende solo de m_φ y V(φ), ya fijos en SSEE. La
+  estimación de orden de magnitud del script sale corta por un factor grande
+  (solo prefactor); requiere la integral de producción completa con α=φ⁴/3.
+
+**Script:** `src/ssee_paperB_DW.py` (DW scan + producción gravitacional preliminar)
+
 ---
 
 ## OP-3 — UV-IR Separability Conjecture (Paper 10 / future work) ✅ RESUELTO

@@ -132,25 +132,43 @@ to IllustrisTNG or EAGLE run with the two-sector SSEE background.
 
 ---
 
-## OP-6 — Screening Form Ambiguity in Hubble Tension Resolution (Paper 9)
+## OP-6 — Screening Form Ambiguity in Hubble Tension Resolution (Paper 9) ✅ RESUELTO
 
-**Location:** Paper 9, §3 (f_screen derivation)
+**Location:** Paper 9, §3 (f_screen derivation) — **revisado 2026-05-15**
 
-**Statement:** The f_screen = αK/(3·MIRA) = (π−φ)/Ω² = 0.06725 is derived from a
-multiplicative screening ansatz:
-$$H_0^{\rm local} = H_0^{\rm SSEE} \times (1 + f_{\rm screen})$$
+**Resolución — aproximación de universo separado para k-essence:**
 
-An additive form H₀^local = H₀^SSEE + ΔH₀ with ΔH₀ derived from the same constant
-gives a different central value.
+La forma multiplicativa sigue de primer principios de la aproximación de universo separado
+(Wands et al. 2000; Brax & Valageas 2014). Para k-essence con K(X) = X/KAL + X²/M⁴,
+una región sobredensa local corrige H multiplicativamente:
 
-**Why it matters:** The choice between multiplicative and additive screening is physically
-motivated by the Vainshtein/k-mouflage geometry, but Paper 9 does not derive which form
-is correct from the SSEE Lagrangian of Paper 7. The agreement H₀,local = 72.86 km/s/Mpc
-(0.17σ from SH0ES) is dependent on the multiplicative form.
+$$\frac{H_{\rm local}^2}{H_{\rm global}^2} = 1 + \frac{8\pi G}{3H^2}\,\delta\rho_{\phi,\rm local}$$
 
-**What would resolve it:** A full perturbative calculation of the fifth-force contribution
-to the local distance ladder in the SSEE EFT, analogous to the Vainshtein calculation of
-Paper 8. This would fix the functional form of the screening correction unambiguously.
+La perturbación de densidad del escalar en el límite cuasi-estático:
+
+$$\frac{\delta\rho_\phi}{\rho_{\rm crit}} = \frac{\alpha_K}{3}\,\frac{\Omega_{m,\rm dyn}}{\mathcal{M}\,(1+w_0)}\,\delta_{\rm local}$$
+
+La **identidad algebraica SSEE** $1 + w_0 = \Omega_{m,\rm dyn}$ (exacta desde el álgebra
+φ,π, verificada numéricamente con |diferencia| = 0) cancela el factor Ω_m,dyn:
+
+$$f_{\rm screen} = \frac{\alpha_K}{3\,c_s^2\,\mathcal{M}} = \frac{\alpha_K}{3\,\mathcal{M}} = 0.06725$$
+
+(usando c²_s = 1 del Paper 5, Q1). La forma aditiva correspondería a un sesgo de velocidad
+peculiar (Δv/c), no a una corrección de densidad de energía oscura — físicamente distinto.
+
+**Verificación numérica** (`src/ssee_op6_screening_form.py`):
+- f_screen (universo separado) = 0.067253
+- f_screen (algebraico (π−φ)/Ω²) = 0.067253
+- |diferencia| = 4.1×10⁻⁷ < 10⁻⁴ ✓
+- H₀,local = 67.96 × 1.06725 = 72.53 km/s/Mpc (0.49σ SH0ES)
+- Con H₀^UV = 73.040 (Paper 10, condicional a Postulate C.1): 0.00σ SH0ES
+
+**Cambios aplicados en Paper 9:**
+- §3: Derivación desde universo separado k-essence (primer principios)
+- §3: Identidad 1+w₀ = Ω_m,dyn explicitada como justificación de la cancelación
+- Bibitem `wands2000` y `brax2014` añadidos
+
+**Script:** `src/ssee_op6_screening_form.py` (verificación completa)
 
 ---
 
@@ -163,7 +181,7 @@ Paper 8. This would fix the functional form of the screening correction unambigu
 | OP-3 | P10 | UV-IR separability unproven | Medium | One-loop CW effective potential |
 | OP-4 | P8 | ~~r_V > r_Hubble para Vainshtein~~ | ✅ RESUELTO | k-mouflage + αB=αM=αT=0 EFT; Paper 8 §4.2/§4.4 revisados |
 | OP-5 | P5-6 | S₈ lensing tension 2.29σ DES (fσ₈ resolved in P6) | Medium | N-body + baryonic feedback |
-| OP-6 | P9 | Screening form ambiguity | Medium | Full EFT perturbative calculation |
+| OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.

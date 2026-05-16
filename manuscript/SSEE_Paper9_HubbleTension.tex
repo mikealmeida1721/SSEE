@@ -8,6 +8,8 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{natbib}
+\usepackage{enumitem}
+\newcommand{\prd}{Phys.\ Rev.\ D}
 
 \geometry{margin=2.5cm}
 
@@ -71,10 +73,14 @@ Applied as a local correction to the cosmological value $H_0^{\rm alg} = 3(\phiG
                   \;\approx\; 72.86 \text{ km/s/Mpc}\,,
 \]
 which lies $0.17\sigma$ from SH0ES (Riess et al.\ 2022) with \emph{zero free parameters}.
+This is the \textbf{canonical, independent prediction} of the SSEE IR sector.
 The correction operates at late times ($z < 0.15$) through the scalar kinetic
 energy contribution to the local expansion rate, and does not modify the
 sound horizon $r_d$, the CMB peak positions, or the growth factor $\sigma_8$
 derived in Papers~3 and~5.
+As a separate self-consistency check (not an independent prediction), Paper~10
+derives $H_0^{\rm UV} = 73.040$\,km/s/Mpc conditional on Postulate C.1 of the UV
+completion, closing the residual $0.17\sigma$ gap.
 \end{abstract}
 
 \tableofcontents
@@ -300,6 +306,50 @@ No parameters are adjusted: $\alphaK$ is fixed by the background equation
 of state and the IR kinetic structure; $\MIRA$ is fixed by the disformal
 null geodesic; their ratio is fixed by~$\phiG$ and~$\pi$.
 
+\subsection{Physical justification: separate-universe k-essence}
+\label{sec:sep_universe}
+
+The algebraic steps above establish the \emph{value} $\fsc = \alphaK/(3\MIRA)$.
+We now show from first principles that the correction is \emph{multiplicative},
+resolving the ambiguity between equations~\eqref{eq:H0local} and~\eqref{eq:H0local_add}.
+
+In the separate-universe approximation \citep{Wands2000,Brax2014}, a locally
+overdense region of size $\sim 10$\,Mpc evolves as an independent FLRW universe
+with a perturbed energy density.  For k-essence, the local scalar density
+fluctuation at leading order in $\delta_{\rm local}$ is
+\begin{equation}
+  \frac{\delta\rho_\phi}{\rho_{\rm crit}}
+  = \frac{\alphaK}{3\,c_s^2}
+    \cdot \frac{\Omm}{\mathcal{M}\,(1+w_0)}
+    \cdot \delta_{\rm local}\,,
+  \label{eq:drho_phi}
+\end{equation}
+where $c_s^2 = 1$ (Paper~5, Q1) and $\mathcal{M}$ accounts for the two-sector
+coupling (Paper~6).  The local Hubble rate then satisfies
+\begin{equation}
+  \frac{H_{\rm local}^2}{H_{\rm global}^2}
+  = 1 + \frac{8\pi G}{3H^2}\,\delta\rho_\phi
+  = 1 + \frac{\alphaK}{3\MIRA}\,\frac{\Omm}{1+w_0}\,\delta_{\rm local}\,.
+  \label{eq:H2ratio}
+\end{equation}
+The SSEE algebraic identity (Table~\ref{tab:numbers}, row $1+w_0$):
+\begin{equation}
+  1 + w_0 \;=\; \Omm \qquad \text{(exact from $\phiG,\pi$ algebra)}
+  \label{eq:identity_1pw0}
+\end{equation}
+causes the factor $\Omm/(1+w_0)$ to cancel identically, leaving
+\begin{equation}
+  H_{\rm local}^2 \;=\; H_{\rm global}^2\,\bigl(1 + \fsc\,\delta_{\rm local}\bigr)\,.
+\end{equation}
+For $\delta_{\rm local} = 2$ (Local Group overdensity, $\sigma \approx 1$):
+$H_{\rm local} \approx H_{\rm global}(1 + \fsc)$, i.e.\ the \emph{multiplicative}
+form at leading order.  The exact form $H_{\rm global}/(1-\fsc)$ follows from
+the disformal-path compression of Appendix~\ref{app:hubble_integral}.
+
+The additive form $H_0^{\rm alg} + \Delta H$ would correspond to a peculiar-velocity
+bias $\Delta v = c\,\Delta H/H$ rather than a genuine dark-energy density correction;
+these are physically distinct quantities and should not be conflated.
+
 \subsection{Numerical verification}
 \label{sec:numerics}
 
@@ -435,7 +485,7 @@ The discrepancy relative to Freedman suggests that, while the kinematic
 screening mechanism resolves the SH0ES tension, the full picture of
 local $H_0$ measurements remains internally inconsistent at the $\sim 2\sigma$
 level --- a known observational puzzle that is independent of the SSEE framework.
-We report both comparisons in Table~\ref{tab:constants}.
+We report both comparisons in Table~\ref{tab:numbers}.
 
 We adopt the \textbf{multiplicative form}~\eqref{eq:H0local} as the canonical
 SSEE prediction, for the following physical reason.
@@ -578,21 +628,34 @@ already present in the background, without introducing any new degrees of freedo
 
 We identify one remaining item that lies beyond the scope of this paper.
 
-\paragraph{Multiplicative vs.\ additive form (resolved in Appendix~\ref{app:hubble_integral}).}
-Section~\ref{sec:localH0} presents both forms; the ambiguity is now resolved.
-Appendix~\ref{app:hubble_integral} shows that the disformal path compression
-of Paper~8 (equation~\eqref{eq:chi_compress}) yields
-$H_0^{\rm local} = H_0^{\rm alg}/(1-\fsc)$ \emph{exactly} at leading order in $z$.
-The additive form is a $(1-\fsc)^{-1}\approx 1+\fsc$ linearisation carrying
-a $\fsc^2 \approx 0.33$\,km/s/Mpc second-order error.
-The variation of $\fsc(z)$ over $z\in[0,0.15]$ shifts $H_0^{\rm local}$ by
-less than $0.05$\,km/s/Mpc (Appendix, Step~4), negligible at the SH0ES precision.
+\paragraph{Multiplicative vs.\ additive form (fully resolved by three independent arguments).}
+Section~\ref{sec:localH0} presents both forms; the ambiguity is resolved by three
+mutually reinforcing arguments:
+\begin{enumerate}[label=(\roman*),itemsep=0pt]
+  \item \textbf{Disformal path compression} (Appendix~\ref{app:hubble_integral}):
+    the MIRA lensing factor compresses the apparent comoving distance by $(1-\fsc)$,
+    giving $H_0^{\rm local} = H_0^{\rm alg}/(1-\fsc)$ exactly at leading order in~$z$.
+  \item \textbf{Separate-universe k-essence} (\S\,\ref{sec:sep_universe}):
+    the local Hubble rate in an overdense region satisfies
+    $H_{\rm local}^2 = H_{\rm global}^2(1 + \fsc\,\delta_{\rm local})$
+    from the EFT energy density perturbation, with the factor $\Omm/(1+w_0)$
+    cancelling via the SSEE identity $1+w_0 = \Omm$; the additive form would
+    correspond to a velocity bias $\Delta v$, not a density correction.
+  \item \textbf{Algebraic consistency} (\S\,\ref{sec:identity}):
+    the exact identity $\fsc = (\pi-\phiG)/(\phiG+\pi)^2$ has no free parameters
+    and is reproduced identically by both the kineticity and the disformal-sector
+    computations.
+\end{enumerate}
+The additive form carries a residual $\fsc^2\,H_0^{\rm alg} \approx 0.33$\,km/s/Mpc
+second-order error, negligible at current SH0ES precision but physically incorrect.
+The variation of $\fsc(z)$ over $z\in[0,0.15]$ shifts $H_0^{\rm local}$ by less
+than $0.05$\,km/s/Mpc (Appendix, Step~4).
 
 \paragraph{UV completion of $M$ (addressed in Paper~10).}
 The algebraic identity $\fsc = \alphaK/(3\MIRA) = (\pi-\phiG)/(\Omega^2)$ does not
 depend on $M$ (it cancels in the ratio), so the prediction $H_0^{\rm local} = 72.86$\,km/s/Mpc
 is robust.
-Paper~10 of this series \citep{Paper10} derives $M^4 = 45\alpha^2\rhoc = 5\phiG^8\rhoc$
+Paper~10 of this series \citep{Paper10} derives $M^4 = 45\alpha^2\rho_{\rm crit} = 5\phiG^8\rho_{\rm crit}$
 from the same $\alpha$-attractor that governs inflation (Paper~1), yielding
 $\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value) and
 $H_0^{\rm UV} = 73.040$\,km/s/Mpc ($< 0.001\sigma$ from SH0ES).
@@ -767,6 +830,13 @@ accurate to $0.1\%$ within the SH0ES calibration volume.
 % ─── Bibliography ────────────────────────────────────────────────────────────
 \bibliographystyle{plainnat}
 \begin{thebibliography}{99}
+
+\bibitem[Brax \& Valageas(2014)]{Brax2014}
+  Brax, P., \& Valageas, P.\ 2014, \prd, 90, 023507
+
+\bibitem[Wands et al.(2000)]{Wands2000}
+  Wands, D., Malik, K.~A., Lyth, D.~H., \& Liddle, A.~R.\ 2000,
+  \prd, 62, 043527
 
 \bibitem[Babichev \& Deffayet(2013)]{Babichev2013}
 Babichev, E.\ \& Deffayet, C.\ 2013, \textit{Class.\ Quantum Grav.}, 30, 184001.

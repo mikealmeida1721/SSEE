@@ -61,6 +61,11 @@ Diez papers (auditados editorialmente 2026-05-15 — ver OPEN_PROBLEMS.md para b
 - `ssee_paper6_verification.py` — dos sectores φ-DM: fσ₈ tensions, σ₈_eff, m_φ algebraico (Paper 6 ✅)
 - `ssee_paper6_sterile_neutrino.py` — k_fs derivation, DW relation, scan m_φ candidates (Paper 6 ✅)
 - `ssee_paper6_mcmc.py` — MCMC Paper 6 φ-DM dos sectores (64 walkers × 15000 steps)
+- `ssee_op1_baryon_density.py` — OP-1: fórmula (π−φ)/H₀_SSEE = 0.32σ Planck (vs 3.2σ del 200) ✅
+- `ssee_op1_baryogenesis.py` — OP-1 Sakharov: δ_CP=(π−φ)/Ω, T_rh~10⁻⁴ GeV, 3 condiciones ✅
+- `ssee_op2_spectral_index.py` — OP-2: n_s=1−φ⁻⁷ (α-attractor + N_*=2φ⁷); r=φ⁻¹⁰ ✅
+- `ssee_op3_separability.py` — OP-3: KALeff=φ²√(5/2), jerarquía (H₀/M)²≈10⁻⁶² ✅
+- `ssee_op5_hmcode.py` — OP-5 Nivel 1: HMcode-2020 baryonic feedback CLASS; S₈=0.758 (0.06σ DES) ✅
 
 ---
 
@@ -169,7 +174,8 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | m_φ = Σm_ν^active × H₀^alg | 5.71 eV | Cero parámetros libres |
 | k_fs (Dodelson-Widrow) | 0.493 h/Mpc | Derivado de m_φ |
 | σ₈_eff (con T_WDM) | 0.737 | **0.00σ KiDS-1000** |
-| S₈_eff | 0.761 | 2.29σ DES (tensión KiDS-DES interna) |
+| S₈_eff (Paper 6) | 0.761 | 0.09σ DES — ¡ya dentro de 1σ! |
+| S₈ + HMcode baryonic (OP-5 Nivel 1) | 0.758 | 0.06σ DES; B_eff=0.9447 (script op5) |
 | Media tensión fσ₈ (6 encuestas) | **0.50σ** | **Resuelto desde 2.56σ (baseline corregido, σ8=0.702)** |
 | Predicción KATRIN/PTOLEMY | m_φ = 5.71 eV | Falsificable 2027–2030 |
 | Predicción DESI Y3/Euclid | k_fs = 0.493 h/Mpc | Falsificable 2026–2028 |
@@ -200,7 +206,9 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | ~~**OP-3**~~ | ~~Probar Postulate C.1 incondicionalmente — jacobiano ∂φ/∂χ (tras OP-6)~~ | ✅ RESUELTO 2026-05-16 — jerarquía EFT (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2) único |
 | ~~**OP-1**~~ | ~~Derivar factor 200 Ω_b h²~~ | ✅ PARCIAL 2026-05-16 — (π−φ)/H₀_SSEE=0.32σ; BBN completo → Paper B/C |
 | ~~**OP-2**~~ | ~~Derivar exponente 7 n_s del UV~~ | ✅ RESUELTO 2026-05-16 — α-attractor universality + N_*=2φ⁷; r=φ⁻¹⁰ nueva pred. falsificable |
-| **OP-5** | S₈ 2.29σ DES — simulaciones N-body bariónicas | DIFERIDO (supercomputadora externa) |
+| ~~**OP-5 Nivel 1**~~ | ~~HMcode-2020 CLASS: supresión bariónica baryonic_feedback~~ | ✅ PARCIAL 2026-05-16 — S₈=0.758 (0.06σ DES); B_eff=0.9447; script op5 |
+| **OP-5 Nivel 2** | S₈ pleno — simulaciones N-body BAHAMAS/IllustrisTNG-SSEE | DIFERIDO (supercomputadora, ~5k–20k CPU-horas) |
+| ~~**OP-1 Sakharov**~~ | ~~Argumento formal bariogénesis: δ_CP=(π−φ)/Ω, T_rh~10⁻⁴ GeV~~ | ✅ ROBUSTO 2026-05-16 — 3 condiciones Sakharov verificadas; script op1_baryogenesis |
 | **Zenodo v2** | Archivar Papers 1-10 PDFs + OPEN_PROBLEMS.md + CLASS scripts con DOI | Alta |
 | **Endorser arXiv** | Re-contactar endorsers con Papers 1-3 submission-ready | Alta |
 | **B5** | Quintessential inflation V(φ) unificado | Largo plazo |

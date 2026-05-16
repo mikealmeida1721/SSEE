@@ -89,6 +89,9 @@ surveys.
 \label{sec:intro}
 %% ─────────────────────────────────────────────────────────────────────────────
 
+The accelerated expansion of the Universe \citep{Riess1998,Perlmutter1999}
+motivates modifications to the concordance $\Lambda$CDM model whose
+parameters are precisely constrained by Planck CMB data \citep{Planck2018}.
 Papers~1--7 of the SSEE series established the cosmological background
 \citep{ssee_paper1}, Bayesian validation \citep{ssee_paper2}, CMB
 confrontation \citep{ssee_paper3}, algebraic CMB derivation
@@ -167,8 +170,10 @@ canonical kinetic invariant, and the $k$-essence kernel is
   P(X,\phi) \;=\; \frac{X}{\KAL} + \frac{X^2}{M^4} - V_0\,e^{-\lambda\phi/\Mpl}\,.
   \label{eq:Pkernel}
 \end{equation}
+Action~(\ref{eq:action}) is a $k$-essence model within the minimal
+Horndeski class \citep{horndeski1974,Crisostomi2018} ($G_3=G_4-\Mpl^2/2=G_5=0$).
 Baryons ($\psi_b$) couple to the physical metric $g_{\mu\nu}$; dark matter
-($\psi_{\mathrm{DM}}$) couples to the disformal metric
+($\psi_{\mathrm{DM}}$) couples to the disformal metric \citep{Bekenstein1993,Zumalacárregui2014}
 \begin{equation}
   \tilde{g}_{\mu\nu} \;=\; g_{\mu\nu} + \frac{2}{M^4}\,\partial_\mu\phi\,\partial_\nu\phi\,.
   \label{eq:disformal}
@@ -446,7 +451,9 @@ framework, not a tunable parameter.
 
 The $X^2/M^4$ term in the SSEE action~\eqref{eq:Pkernel} places SSEE in the
 \emph{k-mouflage} class of kinetic screening theories \citep{brax2014},
-distinct from Galileon (DGP) or Vainshtein screening \citep{babichev2013}.
+distinct from Galileon (DGP) \citep{deffayet2001} or Vainshtein
+screening \citep{vainshtein1972,babichev2013}; for a review of
+scalar screening mechanisms see \citet{Koyama2018}.
 When $X^2/M^4 \gg X/\KAL$, the non-linear kinetic term dominates and
 the scalar degree of freedom is self-suppressed around any
 overdensity, screening $F_\phi/F_N$ at small radii.
@@ -612,6 +619,10 @@ so the background equations of motion are unaffected by the UV completion.
 \section{Strong Lensing Predictions}
 \label{sec:lensing}
 %% ─────────────────────────────────────────────────────────────────────────────
+
+Gravitational lensing by dark matter halos was established observationally
+by \citet{Bradac2006} and \citet{Clowe2006} in cluster collisions;
+for the lensing formalism see \citet{Narayan1996} and \citet{Schneider1992}.
 
 \subsection{Two-sector lensing signature}
 
@@ -967,11 +978,6 @@ zero-free-parameter structure of the algebraic framework.
   the Cross-Epoch Hubble Tension Resolution}.
   Paper 10 of the SSEE series. Zenodo. \href{https://doi.org/10.5281/zenodo.20093447}{doi:10.5281/zenodo.20093447}
 
-\bibitem[Abdul-Karim et al.(2025)]{desidr2_2025}
-  Abdul-Karim, M., et al. (DESI Collaboration, 2025).
-  \textit{DESI DR2 BAO measurements}.
-  arXiv:2503.14738.
-
 \bibitem[Babichev \& Deffayet(2013)]{babichev2013}
   Babichev, E., \& Deffayet, C. (2013).
   An introduction to the Vainshtein mechanism.
@@ -1033,24 +1039,6 @@ zero-free-parameter structure of the algebraic framework.
   \textit{Astron.\ J.}, 116, 1009.
   arXiv:astro-ph/9805200.
 
-\bibitem[Copeland, Sami \& Tsujikawa(2006)]{Copeland2006}
-  Copeland, E.~J., Sami, M., \& Tsujikawa, S. (2006).
-  Dynamics of dark energy.
-  \textit{Int.\ J.\ Mod.\ Phys.\ D}, 15, 1753.
-  arXiv:hep-th/0603057.
-
-\bibitem[Clifton et al.(2012)]{Clifton2012}
-  Clifton, T., Ferreira, P.~G., Padilla, A., \& Skordis, C. (2012).
-  Modified gravity and cosmology.
-  \textit{Phys.\ Rep.}, 513, 1.
-  arXiv:1106.3999.
-
-\bibitem[Joyce et al.(2015)]{Joyce2015}
-  Joyce, A., Jain, B., Khoury, J., \& Trodden, M. (2015).
-  Beyond the cosmological standard model.
-  \textit{Phys.\ Rep.}, 568, 1.
-  arXiv:1407.0059.
-
 \bibitem[Bekenstein(1993)]{Bekenstein1993}
   Bekenstein, J.~D. (1993).
   Relation between physical and gravitational geometry.
@@ -1067,12 +1055,6 @@ zero-free-parameter structure of the algebraic framework.
   Horndeski, G.~W. (1974).
   Second-order scalar-tensor field equations in a four-dimensional space.
   \textit{Int.\ J.\ Theor.\ Phys.}, 10, 363.
-
-\bibitem[Gubitosi, Piazza \& Vernizzi(2013)]{Gubitosi2013}
-  Gubitosi, G., Piazza, F., \& Vernizzi, F. (2013).
-  The effective field theory of dark energy.
-  \textit{JCAP}, 2013, 032.
-  arXiv:1210.0201.
 
 \bibitem[Bellini \& Sawicki(2015)]{Bellini2015}
   Bellini, E., \& Sawicki, I. (2015).
@@ -1110,25 +1092,6 @@ zero-free-parameter structure of the algebraic framework.
   \textit{Astron.\ Astrophys.}, 641, A6.
   arXiv:1807.06209.
 
-\bibitem[Weinberg et al.(2013)]{Weinberg2013review}
-  Weinberg, D.~H., Mortonson, M.~J., Eisenstein, D.~J., Hirata, C.,
-  Riess, A.~G., \& Rozo, E. (2013).
-  Observational probes of cosmic acceleration.
-  \textit{Phys.\ Rep.}, 530, 87.
-  arXiv:1201.2434.
-
-\bibitem[Chevallier \& Polarski(2001)]{ChevallierPolarski2001}
-  Chevallier, M., \& Polarski, D. (2001).
-  Accelerating universes with scaling dark matter.
-  \textit{Int.\ J.\ Mod.\ Phys.\ D}, 10, 213.
-  arXiv:gr-qc/0009008.
-
-\bibitem[Linder(2003)]{Linder2003}
-  Linder, E.~V. (2003).
-  Exploring the expansion history of the universe.
-  \textit{Phys.\ Rev.\ Lett.}, 90, 091301.
-  arXiv:astro-ph/0208512.
-
 \bibitem[Koyama(2018)]{Koyama2018}
   Koyama, K. (2018).
   Cosmological tests of modified gravity.
@@ -1140,18 +1103,6 @@ zero-free-parameter structure of the algebraic framework.
   Vainshtein mechanism after GW170817.
   \textit{Phys.\ Rev.\ D}, 97, 021301.
   arXiv:1711.06661.
-
-\bibitem[Asgari et al.(2021)]{KiDS2021}
-  Asgari, M., et al. (KiDS Collaboration) (2021).
-  KiDS-1000 cosmology: Cosmic shear constraints.
-  \textit{Astron.\ Astrophys.}, 645, A104.
-  arXiv:2007.15633.
-
-\bibitem[Armendariz-Picon, Mukhanov \& Steinhardt(2001)]{ArmendarizPicon2001}
-  Armendariz-Picon, C., Mukhanov, V., \& Steinhardt, P.~J. (2001).
-  Essentials of k-essence.
-  \textit{Phys.\ Rev.\ D}, 63, 103510.
-  arXiv:astro-ph/0006373.
 
 \end{thebibliography}
 

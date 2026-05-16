@@ -86,7 +86,7 @@ $10^{-12}$ under the adopted initial conditions and yields $c_s^2 \in [0.60,\,0.
 The accelerated expansion of the universe
 \citep{Perlmutter1999,Riess1998} has motivated a broad landscape of
 dynamical dark energy models beyond the cosmological constant
-\citep{Copeland2006,Weinberg2013review}.
+\citep{Copeland2006,Weinberg2013review,Clifton2012,Joyce2015}.
 Within this landscape the Chevallier--Polarski--Linder (CPL)
 parametrization \citep{ChevallierPolarski2001,Linder2003} provides the
 standard observational proxy; its parameters $(w_0,w_a)$ are now
@@ -112,6 +112,9 @@ solely by $(w_0, w_a, \Omega_m)$ remains \emph{phenomenological}: it
 parametrizes dark energy without providing a Lagrangian from which the
 equations of motion, stability conditions, and perturbation spectrum can
 be derived.
+Foundational EFT frameworks for dark energy \citep{Cheung2008} address
+this gap for generic scalar fields; SSEE-V3.6 goes further by fixing all
+EFT coefficients algebraically from $\varphi$ and $\pi$.
 
 This paper closes that gap.  We present the working EFT architecture:
 the fundamental action (§\ref{sec:action}), structural matching of the
@@ -629,6 +632,8 @@ respectively (see §\ref{sec:synthesis}).
 We integrate the system~(\ref{eq:phi_N})--(\ref{eq:rho_N}) from
 $a_i = 0.1$ to $a = 1$ using a \texttt{DOP853} adaptive solver
 ($r_{\mathrm{tol}} = 10^{-9}$, $a_{\mathrm{tol}} = 10^{-12}$).
+Background parameters are consistent with the Planck~2018 best-fit
+cosmology \citep{Planck2018}.
 Initial conditions follow the slow-roll approximation:
 $\dot\phi_i \approx -V_\phi/(3H_i K_{X,i})$.
 The initial field value $\phi_i$ is calibrated by a shooting procedure
@@ -805,8 +810,8 @@ Two SSEE constants remain unidentified in the present EFT:
 \begin{enumerate}
   \item \textbf{CLASS implementation (Front B1):}
     The inputs of §\ref{sec:bellini} allow direct implementation in
-    \textsc{hi\_class} \citep{hiclass2017} via the \texttt{eft\_smg}
-    module or as an external dark fluid.
+    \textsc{class} \citep{Blas2011} and \textsc{hi\_class} \citep{hiclass2017}
+    via the \texttt{eft\_smg} module or as an external dark fluid.
   \item \textbf{Full CMB likelihood:}
     Integration with \textsc{cobaya}+\textsc{plik} to compute the full
     $C_\ell$ spectrum with the correct perturbation equations.
@@ -815,6 +820,11 @@ Two SSEE constants remain unidentified in the present EFT:
   \item \textbf{Quintessential inflation:}
     Connecting $V(\phi) = V_0 e^{-\alpha\phi}$ to an inflaton sector via
     the $\alpha$-attractor limit $\alpha = \phiG^4/3$.
+  \item \textbf{Vainshtein/k-mouflage screening:}
+    The Vainshtein mechanism \citep{Babichev2013} and its k-mouflage
+    analogue are analysed for SSEE in Paper~8 \citep{ssee_paper8};
+    the screening factor also enters the local $H_0$ derivation in
+    Paper~9 \citep{Verde2019,Kamionkowski2023}.
 \end{enumerate}
 
 \subsection{Falsifiability}
@@ -885,6 +895,11 @@ derivations.
   Almeida Vallejo, M.~E. (2026b).
   \textit{$\phi$-DM Two-Sector Model: Algebraic $m_\phi$, $k_{\rm fs}$,
   and Resolution of the $f\sigma_8$ Tension}. Zenodo. Paper~6.
+
+\bibitem[Almeida Vallejo(2026c)]{ssee_paper8}
+  Almeida Vallejo, M.~E. (2026c).
+  \textit{SSEE-V3.6 in the Strong-Gravity Regime: Disformal Geodesics,
+  MIRA Lensing Emergence, and Vainshtein Screening}. Zenodo. Paper~8.
 
 \bibitem[Abdul-Karim et al.(2025)]{desidr2_2025}
   Abdul-Karim, M., et al. (DESI Collaboration) (2025).
@@ -1060,31 +1075,6 @@ derivations.
   schemes.
   \textit{JCAP}, 2011, 034.
   arXiv:1104.2933.
-
-\bibitem[Israel(1976)]{Israel1976}
-  Israel, W. (1976).
-  Nonstationary irreversible thermodynamics: A causal relativistic theory.
-  \textit{Ann.\ Phys.}, 100, 310.
-
-\bibitem[Israel \& Stewart(1979)]{IsraelStewart1979}
-  Israel, W., \& Stewart, J.~M. (1979).
-  Transient relativistic thermodynamics and kinetic theory.
-  \textit{Ann.\ Phys.}, 118, 341.
-
-\bibitem[Hiscock \& Lindblom(1983)]{HiscockLindblom1983}
-  Hiscock, W.~A., \& Lindblom, L. (1983).
-  Stability and causality in dissipative relativistic fluids.
-  \textit{Ann.\ Phys.}, 151, 466.
-
-\bibitem[M{\"u}ller(1967)]{Muller1967}
-  M{\"u}ller, I. (1967).
-  Zum Paradoxon der W{\"a}rmeleitungstheorie.
-  \textit{Z.\ Phys.}, 198, 329.
-
-\bibitem[Maartens(1996)]{Maartens1996}
-  Maartens, R. (1996).
-  Causal thermodynamics in relativity.
-  arXiv:astro-ph/9609119.
 
 \bibitem[Babichev \& Deffayet(2013)]{Babichev2013}
   Babichev, E., \& Deffayet, C. (2013).

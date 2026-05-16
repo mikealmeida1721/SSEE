@@ -41,7 +41,7 @@ The Structural Self-Energy Expansion model (SSEE-V3.6) proposes a zero-free-para
 dark energy framework algebraically derived from the golden ratio $\varphi$ and $\pi$.
 Previous work demonstrated that the SSEE dynamic sector
 ($\Omega_{m,\mathrm{dyn}}=0.160$, $w_0=-0.840$, $w_a=-0.670$) fits DESI~DR2 BAO data
-at $0.05\sigma$ and galaxy-cluster mass ratios with $\chi^2_r=0.122$.
+at $0.05\sigma$ \citep{DESI_DR2} and galaxy-cluster mass ratios with $\chi^2_r=0.122$.
 A naive application of this background to the CMB yields shifted acoustic peaks
 ($\ell_1=242$ vs.\ $220$) and $\chi^2_r=97.7$, apparently falsifying the model.
 Here we show that a second algebraic constant,
@@ -91,6 +91,13 @@ Appendix~B \citep{AlmeidaSSEE2026a}.
 
 \subsection{Algebraic constants}
 
+The discovery of the accelerating expansion of the Universe
+\citep{Riess1998,Perlmutter1999} established that dark energy dominates the
+late-time cosmic energy budget, yet its physical origin remains one of the
+deepest open problems in physics \citep{Weinberg1989}.
+Baryon acoustic oscillations, imprinted in the CMB and detected in galaxy surveys
+\citep{Eisenstein2005}, provide a standard ruler that constrains both the
+background expansion and the nature of dark energy.
 SSEE-V3.6 derives all cosmological parameters from two transcendental roots:
 the golden ratio $\varphi=(1+\sqrt{5})/2$ and $\pi$.
 Table~\ref{tab:constants} lists the relevant constants.
@@ -151,7 +158,9 @@ The angular scale of the first acoustic peak is
 \end{equation}
 where $r_d$ is the sound horizon at baryon drag and $D_A(z_*)$ is the
 angular diameter distance to the last-scattering surface ($z_*\approx1089$).
-The first peak falls at $\ell_1 \approx \pi/\theta_*$.
+The first peak falls at $\ell_1 \approx \pi/\theta_*$ \citep{HuSugiyama1996,Dodelson2003}.
+Diffusion damping suppresses power at small angular scales
+$\ell\gtrsim1000$ through photon mean-free-path effects \citep{Silk1968}.
 
 With $\Omega_m=0.160$, the Hubble parameter at recombination scales as
 $H(z\sim1000)\propto\sqrt{\Omega_m}$, reducing $H$ by $\sim40\%$ relative to
@@ -403,7 +412,7 @@ data require $\Omega_m<0.25$ at $z<1$, the two-sector model would require revisi
 
 \subsection{CAMB setup}
 
-We use CAMB v1.6.6 \citep{Lewis2000,Howlett2012} with the following input parameters:
+We use CAMB v1.6.6 \citep{Seljak1996,Lewis2000,Howlett2012} with the following input parameters:
 
 \begin{table}[ht]
 \centering
@@ -428,7 +437,7 @@ $\tau$ & 0.054 & Planck 2018 \\
 \end{table}
 
 The dark energy is implemented via the PPF (Parameterized Post-Friedmann)
-equation of state $w(a)=w_0+(1-a)w_a$ \citep{Fang2008}.
+equation of state $w(a)=w_0+(1-a)w_a$ \citep{Chevallier2001,Linder2003,Fang2008}.
 Although $w_0+w_a=-1.510<-1$, this does not imply a phantom Big Rip:
 CPL is a local parametrisation only, and the \SSEE\ energy density saturates
 at the finite $T_r/M_v$ boundary at $a\to\infty$ (Paper~1 \S3.4 \citep{AlmeidaSSEE2026a}).
@@ -680,7 +689,7 @@ This gives $k_\mathrm{SSEE} = 3$ free nuisance parameters (excluding the shared 
 where $\Delta\chi^2_\mathrm{BF} = \chi^2_{\mathrm{SSEE,BF}} - \chi^2_{\Lambda\mathrm{CDM,BF}}$ is the difference in best-fit $\chi^2$ between the two models over the same $N=6469$ data points.
 
 \paragraph{Convergence.}
-Chains are run to Gelman--Rubin criterion $R{-}1 < 0.02$ (production run) or $R{-}1 < 0.05$ (validation). The \texttt{ssee\_paper3\_b1\_mcmc.py} script is fully reproducible:
+Chains are run to Gelman--Rubin criterion $R{-}1 < 0.02$ \citep{GelmanRubin1992} (production run) or $R{-}1 < 0.05$ (validation). The \texttt{ssee\_paper3\_b1\_mcmc.py} script is fully reproducible:
 \begin{verbatim}
   python src/ssee_paper3_b1_mcmc.py --mode both
 \end{verbatim}
@@ -885,6 +894,7 @@ Table~\ref{tab:fsig8} shows that SSEE+IS achieves $\chi^2/N=0.524$ across
 13 RSD data points in the CMB observational sector ($\Omega_{m,\mathrm{CMB}}=0.3199$),
 compared to $0.596$ for $\Lambda$CDM.
 No SSEE point deviates by more than $1.6\sigma$.
+The combination of independent growth-rate probes is reviewed in \citet{Moresco2022}.
 
 \begin{tcolorbox}[colback=yellow!5!white,colframe=orange!80!black,title={Sector caveat for $f\sigma_8$}]
 The $\chi^2/N=0.524$ quoted above uses $\Omega_{m,\mathrm{CMB}}=0.3199$, the CMB
@@ -955,7 +965,7 @@ each of which would \textbf{falsify} the framework if violated:
     would falsify the MIRA correction.
 
   \item \textbf{CMB $\chi^2_r$:} Must remain $<2$ when tested against future
-    CMB datasets (CMB-S4, Simons Observatory). A significant degradation
+    CMB datasets \citep{CMBS4_2016,SimonsObs2019}. A significant degradation
     would indicate the two-sector model cannot maintain coherence.
 
   \item \textbf{BAO consistency:} The dynamic sector ($\Omega_{m,\mathrm{dyn}}=0.160$)
@@ -1006,6 +1016,10 @@ $\chi^2_r=0.122$ on galaxy clusters), SSEE-V3.6 passes all three major
 cosmological probes — BAO, cluster masses, and CMB. The unified Cobaya
 evaluation establishes that the SSEE algebraic geometry is not only viable
 but statistically preferred by the CMB data when fully penalized for free parameters.
+The SSEE dynamic-sector value $H_0^{\mathrm{local}}=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$
+(Paper~9) addresses the persistent Hubble tension
+\citep{Verde2019,DiValentino2021,Riess2022} at the $0.17\sigma$ level,
+independent of the CMB-sector constraint reported here.
 
 \bigskip
 \noindent\textbf{Data Availability.}
@@ -1020,7 +1034,7 @@ CAMB v1.6.6 was used for all theoretical power spectrum calculations
 \bigskip
 \noindent\textbf{Acknowledgements.}
 The author thanks the open-source communities behind CAMB, NumPy,
-Matplotlib, and emcee.
+Matplotlib, and \texttt{emcee} \citep{emcee}.
 
 % ===========================================================================
 \bibliographystyle{plainnat}

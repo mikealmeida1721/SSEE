@@ -34,6 +34,7 @@
 | 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 14 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
 | 8 | Strong Gravity Regime — Disformal Geodesics, MIRA Lensing Emergence, Vainshtein Screening | 13 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
 | 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 10 | Draft | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
+| 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 8.81 meV | ~15 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
 | — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 14 | Journal submission candidate | [manuscript/](manuscript/SSEE_Unified_Journal.tex) |
 
 ---
@@ -322,10 +323,12 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 - [x] Editorial audit 10-paper suite (2026-05-15) — overclaims, nomenclature, BIC corrections across Papers 1–9 ✓
 - [x] Paper 4 nomenclature: mythological names (SOLAR, IGNIS, PYROS…) → algebraic symbols (φ, π, Ω, β, KAL, P_sc, K_v); bibliography 10→40 entries ✓
 - [x] OPEN_PROBLEMS.md — 6 physics gaps catalogued (OP-1..OP-6) with severity and resolution paths ✓
-- [ ] Zenodo v2 — archive Papers 1–9 + OPEN_PROBLEMS.md + CLASS scripts with DOI chaining
-- [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
-- [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
-- [ ] Resolve OP-4 (r_V solar): identify Λ_SSEE, recompute Vainshtein radius
+- [x] Paper 10: UV completion K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exact; M=8.81 meV=Λ_SSEE; αK_full=0.41691; Conditional Theorem C.1; H₀^UV=73.040 km/s/Mpc ✓
+- [ ] OP-4: Recompute solar r_V using Λ_SSEE=M=8.81 meV from Paper 10 (k-mouflage vs Galileon) — in progress
+- [ ] OP-6: Derive screening form H₀^local from SSEE Lagrangian perturbatively (after OP-4)
+- [ ] OP-3: Prove Postulate C.1 unconditionally — Jacobian ∂φ/∂χ|_transition = φ²√(5/2) (after OP-6)
+- [ ] OP-1+OP-2: Derive Ω_b h² factor 200 and n_s exponent 7 from UV structure (after OP-3)
+- [ ] Zenodo v2 — archive Papers 1–10 + OPEN_PROBLEMS.md + CLASS scripts with DOI chaining
 - [ ] Journal submission to JCAP (pending Zenodo v2 + endorser response)
 
 ---

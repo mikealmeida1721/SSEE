@@ -4,7 +4,7 @@
 
 **Structural Self-Energy Expansion (SSEE-V3.6)** — modelo cosmológico de energía oscura de cero parámetros libres, derivado algebraicamente de φ (razón áurea) y π. Autor: Mike Edison Almeida Vallejo.
 
-Nueve papers (todos auditados editorialmente 2026-05-15 — ver OPEN_PROBLEMS.md para brechas físicas abiertas):
+Diez papers (auditados editorialmente 2026-05-15 — ver OPEN_PROBLEMS.md para brechas físicas abiertas):
 - **Paper 1**: Framework teórico + EFT + Predictive Register (arXiv-ready) ✅
 - **Paper 2**: Validación Bayesiana MCMC DESI DR2 + Planck + cúmulos (arXiv-ready) ✅
 - **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready) ✅
@@ -14,6 +14,7 @@ Nueve papers (todos auditados editorialmente 2026-05-15 — ver OPEN_PROBLEMS.md
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint) ✅
 - **Paper 8**: Régimen de gravedad fuerte — geodésicas disformales, MIRA emergencia lensing, Vainshtein (commit d7f3b38) ✅
 - **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente (DRAFT, 10 pp, 2026-05-14) 🟡
+- **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=8.81 meV=Λ_SSEE; αK_full=0.41691; H₀^UV=73.040 km/s/Mpc (condicional C.1); 8/10 JCAP ✅
 
 ---
 
@@ -32,6 +33,7 @@ Nueve papers (todos auditados editorialmente 2026-05-15 — ver OPEN_PROBLEMS.md
 | `SSEE_Paper7_EFT.pdf` | Paper 7 (14 p) | ✅ Preprint — EFT canónico, αK=0.4033, βc=−AURA |
 | `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (13 p) | ✅ Completo — gravedad fuerte, MIRA lensing, Vainshtein |
 | `SSEE_Paper9_HubbleTension.pdf` | Paper 9 (10 p) | 🟡 DRAFT — f_screen=αK/(3·MIRA), H₀,local=72.86 km/s/Mpc |
+| `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (~15 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=8.81 meV=Λ_SSEE; αK_full=0.41691 |
 | `SSEE_Endorser_Summary.pdf` | Síntesis 2 p para endorsers arXiv | ✅ Listo para envío |
 
 ### manuscript/ — Fuente LaTeX
@@ -44,6 +46,7 @@ Nueve papers (todos auditados editorialmente 2026-05-15 — ver OPEN_PROBLEMS.md
 - `SSEE_Paper7_EFT.tex` (Paper 7 — versión completa, 874 líneas, βc=-AURA al 0.2%)
 - `SSEE_EFT_Fundamental.tex` (borrador obsoleto de Paper 7 — NO usar)
 - `SSEE_Paper8_StrongGravity.tex` (Paper 8 — 891 líneas, régimen fuerte, MIRA lensing)
+- `SSEE_Paper10_UVCompletion.tex` (Paper 10 — 1037 líneas, UV K(X), M=8.81 meV, Conditional Theorem C.1)
 - `SSEE_Endorser_Summary.tex` (en docs/)
 
 ### src/ — Scripts Python
@@ -190,12 +193,16 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | ~~**Audit 10-paper**~~ | ~~Auditoría editorial completa Papers 1–9: nomenclatura, overclaims, bib~~ | ✅ sesión 21 (2026-05-15) |
 | ~~**P4 nomenclatura**~~ | ~~Eliminar nombres mitológicos de Paper 4; bib 10→40 refs~~ | ✅ sesión 21 |
 | **OPEN_PROBLEMS.md** | Documento de brechas físicas abiertas (OP-1..OP-6) | ✅ sesión 21 |
-| **Zenodo v2** | Archivar Papers 1-9 PDFs en Zenodo (incluir OPEN_PROBLEMS) | Alta |
 | ~~**Reproducibility**~~ | ~~Quitar rutas hardcodeadas y unificar requirements.txt~~ | ✅ completado |
 | ~~**B1**~~ | ~~Full CMB likelihood Cobaya+plik (bloqueante PRD)~~ | ✅ completado |
-| **B5** | Quintessential inflation V(φ) unificado | Largo plazo |
-| **Zenodo v2 submit** | Subir PDFs actualizados a Zenodo + nuevo DOI | Alta |
+| **OP-4** | Recomputar r_V solar con Λ_SSEE=M=8.81 meV de Paper 10 | Alta (sesión actual) |
+| **OP-6** | Derivar forma screening multiplicativa vs aditiva del Lagrangiano (tras OP-4) | Alta |
+| **OP-3** | Probar Postulate C.1 incondicionalmente — jacobiano ∂φ/∂χ (tras OP-6) | Media |
+| **OP-1+OP-2** | Derivar factor 200 Ω_b h² y exponente 7 n_s del UV (tras OP-3) | Media |
+| **OP-5** | S₈ 2.29σ DES — simulaciones N-body bariónicas | DIFERIDO (supercomputadora externa) |
+| **Zenodo v2** | Archivar Papers 1-10 PDFs + OPEN_PROBLEMS.md + CLASS scripts con DOI | Alta |
 | **Endorser arXiv** | Re-contactar endorsers con Papers 1-3 submission-ready | Alta |
+| **B5** | Quintessential inflation V(φ) unificado | Largo plazo |
 
 ---
 

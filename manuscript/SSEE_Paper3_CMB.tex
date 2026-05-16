@@ -64,7 +64,7 @@ The full TT+TE+EE+lensing analysis yields $\chi^2_r = 1.062, 1.053, 1.040, 0.730
 for SSEE vs $1.043, 1.040, 1.039, 0.757$ for $\Lambda$CDM.
 In the lensing sector (9 MV bandpowers), SSEE shows a marginal preference
 over $\Lambda$CDM ($\Delta\chi^2_r = -0.025$).
-In a full, unified evaluation using the official off-diagonal \texttt{plik\_lite} TTTEEE likelihood via Cobaya, scanning only $H_0$ ($k=2$ vs $k=6$ for $\Lambda$CDM), the combined spectra yield $\Delta\chi^2 = +3.8$ and $\Delta\mathrm{BIC}=-31.3$, decisively favouring SSEE. Even under a hyper-conservative penalty treating fixed priors as free parameters ($k=4$), $\Delta\mathrm{BIC}=-13.8$ continues to strongly favour the framework.
+In a full, unified evaluation using the official off-diagonal \texttt{plik\_lite} TTTEEE likelihood via Cobaya, scanning only $H_0$ ($k=2$ vs $k=6$ for $\Lambda$CDM), the combined spectra yield $\Delta\chi^2 = +3.8$ (SSEE fits marginally worse in absolute $\chi^2$) and $\Delta\mathrm{BIC}=-31.3$, decisively favouring SSEE. The $\Delta\mathrm{BIC}$ is dominated by the parameter-count penalty ($\Delta k \times \ln N \approx 4\times\ln 6469 \approx 35.1$ BIC units) that rewards SSEE's zero-free-parameter design; the raw $\Delta\chi^2=+3.8$ penalty is more than offset by this parsimony gain. Even under a hyper-conservative penalty treating fixed priors as free parameters ($k=4$), $\Delta\mathrm{BIC}=-13.8$ continues to strongly favour the framework.
 SSEE-V3.6 is not falsified by the Planck~PR4 CMB power spectra.
 \end{abstract}
 
@@ -643,7 +643,7 @@ The diagonal approximation neglects bin-to-bin covariances in the Planck PR4 ban
 To establish a definitive baseline for model comparison that fully accounts for off-diagonal covariances, we evaluate the SSEE framework against the official Planck 2018 \texttt{plik\_lite} TTTEEE + lowl likelihood via \texttt{Cobaya} \citep{Torrado2021}. 
 
 \paragraph{Parameter counting and minimization.}
-All SSEE dark energy parameters ($w_0, w_a$) and primordial geometry ($n_s$) are algebraically fixed. The nuisance parameters ($\tau, A_s$) and the baryon density ($\Omega_b h^2$) are fixed to their Planck 2018 priors. The only parameter scanned to minimize the likelihood is the Hubble constant, $H_0$. To ensure a strictly conservative penalty, we assign $k=2$ to SSEE (accounting for $H_0$ and the borrowed $\Omega_b h^2$ prior), compared to $k=6$ for the $\Lambda$CDM baseline.
+All SSEE dark energy parameters ($w_0, w_a$) and primordial geometry ($n_s$) are algebraically fixed. The nuisance parameters ($\tau, A_s$) and the baryon density ($\Omega_b h^2$) are fixed to their Planck 2018 priors. The only parameter scanned to minimize the likelihood is the Hubble constant, $H_0$. To ensure a strictly conservative penalty, we assign $k=2$ to SSEE (accounting for $H_0$ and the borrowed $\Omega_b h^2$ prior). The standard $\Lambda$CDM baseline has $k=6$: the six simultaneously fitted parameters are $H_0$, $\Omega_b h^2$, $\Omega_c h^2$, $n_s$, $A_s$, and $\tau$ \citep{Planck2018}; all six are free in the CMB fit whereas SSEE fixes the last five algebraically or by prior.
 
 Minimizing over $H_0 \in [66.5, 67.5]$ yields a true minimum for SSEE at $H_0 = 67.066$\,km\,s$^{-1}$\,Mpc$^{-1}$. The effective $\chi^2$ for SSEE is $1007.553$, compared to $1003.760$ for $\Lambda$CDM. The raw fit penalty is therefore only $\Delta\chi^2 = +3.793$ over $N=6469$ data points.
 

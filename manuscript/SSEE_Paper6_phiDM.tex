@@ -469,6 +469,14 @@ parameter), yielding:
 \end{equation}
 This result is $0.06\sigma$ from DES~Y3 ($S_8 = 0.776\pm0.017$) and $0.40\sigma$ from
 KiDS-1000 ($S_8 = 0.766\pm0.020$).
+
+\textit{Calibration caveat.} HMcode-2020 \citep{Mead2021} was calibrated against
+$\Lambda$CDM N-body simulations with $w=-1$ and $\sigma_8\approx0.8$.  Applied to
+SSEE ($w_0=-0.840$, $w_a=-0.670$), the suppression factor $B_{\rm eff}$ carries an
+estimated systematic uncertainty of $\lesssim5\%$, propagating to
+$\Delta S_8^{\rm bar}\approx\pm0.02$.  The nominal result $S_8^{\rm bar}=0.758$
+should therefore be interpreted as a central estimate within the range
+$S_8^{\rm bar}\in[0.74,\,0.78]$ pending dedicated dark-energy N-body calibration.
 The Level~2 step — running dedicated N-body simulations (BAHAMAS/IllustrisTNG-SSEE
 with modified dark energy) — requires $\sim$5000--20000 CPU-hours and is deferred
 to a future HPC allocation.
@@ -500,7 +508,7 @@ so all background tests pass without modification.
     \textbf{$\fsig$ mean tension} & \textbf{$0.50\sigma$ (was $2.56\sigma$)} & \textbf{6} \\
     \textbf{$\sigeff$ ($G_{\rm 2s}=0.979$)} & \textbf{$0.790\pm0.013$; $S_8=0.817\pm0.013$ ($2.5\sigma$ KiDS)} & \textbf{6} \\
     \textbf{$S_8^{\rm WDM}$ (CLASS, $\alpha=1.656$)} & \textbf{$0.761$ ($-0.25\sigma$ KiDS; $0.09\sigma$ DES)} & \textbf{6} \\
-    \textbf{$S_8^{\rm bar}$ (HMcode-2020, $B_{\rm eff}=0.9447$)} & \textbf{$0.758$ ($0.06\sigma$ DES)} & \textbf{6} \\
+    \textbf{$S_8^{\rm bar}$ (HMcode-2020, $B_{\rm eff}=0.9447$)} & \textbf{$0.758\pm0.02^{\rm sys}$ ($0.06\sigma$ DES; range $[0.74,0.78]$)} & \textbf{6} \\
     \textbf{$m_\phi$ (algebraic)} & \textbf{$5.71\,\mathrm{eV}$ (zero parameters)} & \textbf{6} \\
     \textbf{MCMC $\chi^2_r$; $\Delta$BIC} & \textbf{$0.497$; $-12.1$ (SSEE favoured under this test)} & \textbf{6} \\
     \bottomrule

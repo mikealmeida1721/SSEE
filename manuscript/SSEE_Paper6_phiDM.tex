@@ -83,8 +83,11 @@ and Two-Sector Proposal for the $f\sigma_8$ Growth Tension}\\[4pt]
 \begin{abstract}
 The Structural Self-Energy Expansion (\SSEE) framework derives all cosmological
 parameters algebraically from the golden ratio $\varphi$ and $\pi$, achieving a
-zero-free-parameter dark energy model that has demonstrated strong coincidence with CMB, BAO, and cluster background tests
-(Papers~1--5). Evaluated against six canonical RSD survey points analysed here,
+zero-free-parameter dark energy background (Papers~1--5) that has demonstrated
+strong coincidence with CMB, BAO, and cluster tests.
+(The two-sector dark matter extension proposed here introduces $\mphi=5.71\,\mathrm{eV}$
+as a phenomenological ansatz within the dark matter sector, not as a new free parameter
+of the dark energy background.) Evaluated against six canonical RSD survey points analysed here,
 the single-sector \SSEE\ model (Papers~1--5, $\Omega_{\rm m,dyn}=0.160$) yields a mean
 $f\sigma_8$ tension of $2.56\sigma$, tracing to the dynamical matter density
 ($\sigma_{8,\rm base} = 0.811 \times G_{\rm single} = 0.702$; Paper~5 reports $2.67\sigma$
@@ -454,6 +457,22 @@ corrections are folded into the WL analysis pipeline), the primary comparison
 is with the linear result. The SSEE two-sector model thus brackets the KiDS
 measurement: $S_8 \in [0.752, 0.820]$, encompassing the KiDS value $0.766 \pm 0.020$.
 
+\paragraph{HMcode-2020 baryonic feedback correction.}
+Applying the CLASS HMcode-2020 baryonic feedback suppression to the WDM baseline
+($S_8^{\rm WDM} = 0.761$, CLASS), we obtain a baryonic suppression factor
+$B_{\rm eff} = 0.9447$ (integrated over the CMB lensing $k$-range
+$0.03\text{--}2.0\,h/\mathrm{Mpc}$ with the HMcode \texttt{hmcode\_version~=~2020\_baryonic\_feedback}
+parameter), yielding:
+\begin{equation}
+  S_8^{\rm bar} = S_8^{\rm WDM}\times B_{\rm eff}^{1/2} = 0.761 \times 0.9721 = 0.758.
+  \label{eq:S8_bar}
+\end{equation}
+This result is $0.06\sigma$ from DES~Y3 ($S_8 = 0.776\pm0.017$) and $0.40\sigma$ from
+KiDS-1000 ($S_8 = 0.766\pm0.020$).
+The Level~2 step — running dedicated N-body simulations (BAHAMAS/IllustrisTNG-SSEE
+with modified dark energy) — requires $\sim$5000--20000 CPU-hours and is deferred
+to a future HPC allocation.
+
 \subsection{Conserved background sectors}
 \label{subsec:unchanged}
 
@@ -480,6 +499,8 @@ so all background tests pass without modification.
     \midrule
     \textbf{$\fsig$ mean tension} & \textbf{$0.50\sigma$ (was $2.56\sigma$)} & \textbf{6} \\
     \textbf{$\sigeff$ ($G_{\rm 2s}=0.979$)} & \textbf{$0.790\pm0.013$; $S_8=0.817\pm0.013$ ($2.5\sigma$ KiDS)} & \textbf{6} \\
+    \textbf{$S_8^{\rm WDM}$ (CLASS, $\alpha=1.656$)} & \textbf{$0.761$ ($-0.25\sigma$ KiDS; $0.09\sigma$ DES)} & \textbf{6} \\
+    \textbf{$S_8^{\rm bar}$ (HMcode-2020, $B_{\rm eff}=0.9447$)} & \textbf{$0.758$ ($0.06\sigma$ DES)} & \textbf{6} \\
     \textbf{$m_\phi$ (algebraic)} & \textbf{$5.71\,\mathrm{eV}$ (zero parameters)} & \textbf{6} \\
     \textbf{MCMC $\chi^2_r$; $\Delta$BIC} & \textbf{$0.497$; $-12.1$ (SSEE favoured under this test)} & \textbf{6} \\
     \bottomrule

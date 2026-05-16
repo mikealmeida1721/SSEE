@@ -32,6 +32,8 @@
 | 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Tension Characterization | 24 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
 | 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 15 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
 | 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 14 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
+| 8 | Strong Gravity Regime — Disformal Geodesics, MIRA Lensing Emergence, Vainshtein Screening | 13 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
+| 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 10 | Draft | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
 | — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 14 | Journal submission candidate | [manuscript/](manuscript/SSEE_Unified_Journal.tex) |
 
 ---
@@ -252,17 +254,27 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 
 ---
 
-## Known limitations
+## Known limitations and open problems
 
-Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
+Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
+**Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (6 items, OP-1..OP-6).
 
+### Editorial/pipeline limitations
 1. **Diagonal CMB likelihood** (Paper 3): χ²_r uses diagonal covariance. Off-diagonal terms required for PRD/PRL.
-2. **Israel-Stewart viscosity** (EFT section): IS growth index γ_IS=0.657 and τ_Π H₀=2.191 are derived (Paper 1 App.A). Full causal IS (Hiscock-Lindblom 1985) for B-mode perturbation predictions remains a blocker for LiteBIRD forecasts.
-3. **Ωc h² (resolved)** (Paper 4): static Eckart gave 3.7σ; Israel-Stewart IS derivation KAL₀ × Ωb h² × n_s = 0.11926 reduces tension to −0.6σ.
-4. **Two-sector Ωm**: Ωm,dyn = 0.160 ≠ Ωm,CMB = 0.3199. Bridged by algebraic MIRA factor; physical mechanism needs formal development.
-5. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
-6. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
-7. **CMB ΔBIC status:** Diagonal approximation (TT+TE+EE+PP, k=2 vs k=6) yields $\Delta\mathrm{BIC}=+31.1$ favouring $\Lambda$CDM — driven by large N amplifying a small $\Delta\chi^2_r$. Full off-diagonal evaluation via Cobaya plik\_lite (TTTEEE) gives $\Delta\mathrm{BIC}=-31.3$ decisively favouring SSEE ($k_{\rm SSEE}=2$ vs $k_{\Lambda\rm CDM}=6$). Full plik/CamSpec likelihood remains a blocker for PRD/PRL.
+2. **Full causal IS** (Paper 5): IS growth index γ_IS=0.657 is derived analytically. Full Hiscock-Lindblom 1985 treatment for B-mode predictions remains a blocker for LiteBIRD forecasts.
+3. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
+4. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
+5. **CMB ΔBIC status:** Diagonal approximation (TT+TE+EE+PP, k=2 vs k=6) yields $\Delta\mathrm{BIC}=+31.1$ favouring $\Lambda$CDM. Full Cobaya plik\_lite (TTTEEE) gives $\Delta\mathrm{BIC}=-31.3$ decisively favouring SSEE.
+
+### Open physics problems (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md))
+| ID | Problem | Severity |
+|----|---------|----------|
+| OP-1 | Factor 200 in Ω_b h² = 3(π−φ)/200 — no first-principles derivation | High |
+| OP-2 | n_s = 1−φ⁻⁷ — exponent 7 motivated by hierarchy count, not V(φ) | High |
+| OP-3 | UV-IR separability conjecture (φ/π factorization) — unproven at loop level | Medium |
+| OP-4 | Vainshtein radius for Sun r_V > r_Hubble — EFT internal inconsistency | High |
+| OP-5 | S₈ weak-lensing tension 2.29σ DES (fσ₈ resolved in Paper 6 at 0.50σ) | Medium |
+| OP-6 | Screening form (multiplicative vs additive) not derived from EFT Lagrangian | Medium |
 
 ---
 
@@ -305,10 +317,16 @@ Disclosed honestly in the papers. Full treatment in [AUDIT.md](AUDIT.md):
 - [x] CLASS Fase 3 — IS viscosity: cs² effect 0.03%, G=0.866 confirmed ✓
 - [x] MCMC Fase 4 — 5-param multi-probe: max tension 0.81σ, mean 0.36σ ✓
 - [x] Unified journal paper — 884 lines, full audit, Irsic+2017 citation corrected ✓
-- [ ] Zenodo v2 — archive Papers 1–7 + CLASS + unified journal with DOI chaining
+- [x] Paper 8: Strong gravity regime — disformal geodesics, MIRA lensing emergence, Vainshtein (13 pp, commit d7f3b38) ✓
+- [x] Paper 9: Hubble tension via f_screen=αK/(3·MIRA)=(π−φ)/Ω²=0.06725, H₀,local=72.86 km/s/Mpc (0.17σ SH0ES) — draft 10 pp ✓
+- [x] Editorial audit 10-paper suite (2026-05-15) — overclaims, nomenclature, BIC corrections across Papers 1–9 ✓
+- [x] Paper 4 nomenclature: mythological names (SOLAR, IGNIS, PYROS…) → algebraic symbols (φ, π, Ω, β, KAL, P_sc, K_v); bibliography 10→40 entries ✓
+- [x] OPEN_PROBLEMS.md — 6 physics gaps catalogued (OP-1..OP-6) with severity and resolution paths ✓
+- [ ] Zenodo v2 — archive Papers 1–9 + OPEN_PROBLEMS.md + CLASS scripts with DOI chaining
 - [ ] Full CMB likelihood (Cobaya + plik/CamSpec) — blocker for PRD/PRL
 - [ ] Full causal Israel-Stewart (Hiscock-Lindblom 1985) — blocker for B-mode LiteBIRD forecasts
-- [ ] Journal submission to JCAP (pending external audit)
+- [ ] Resolve OP-4 (r_V solar): identify Λ_SSEE, recompute Vainshtein radius
+- [ ] Journal submission to JCAP (pending Zenodo v2 + endorser response)
 
 ---
 

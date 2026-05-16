@@ -95,26 +95,31 @@ correct M_eff. Alternatively, a transition from Vainshtein to k-mouflage screeni
 
 ---
 
-## OP-5 — fσ₈ Residual Tension with BOSS (Papers 5–6)
+## OP-5 — S₈ Weak-Lensing Tension (Papers 5–6)
 
 **Location:** Paper 5, Table 3; Paper 6, Table 2
 
-**Statement:** In the single-sector (CDM only) SSEE background with Ω_m,dyn = 0.160, the
-predicted fσ₈(z = 0.5) = 0.341, which is 2.67σ below the BOSS measurement.
+**Clarification — what IS and IS NOT resolved:**
+Paper 6 (two-sector φ-DM) resolves the **fσ₈ growth-rate** tension from 2.56σ → 0.50σ
+(mean over 6 RSD surveys). That problem is closed. The residual open problem is different:
 
-**Current mitigation:** Paper 6 introduces the φ-DM two-sector model, which reduces the
-mean tension across six RSD surveys from 2.56σ to 0.50σ (σ₈_eff = 0.737, S₈ = 0.761).
-The BOSS point at z = 0.5 specifically is reduced but not eliminated.
+**Statement:** The **S₈ = σ₈(Ω_m/0.3)^0.5 weak-lensing amplitude** remains at
+S₈_eff = 0.761, which is 2.29σ below DES Y3 and ~3σ below KiDS-1000.
 
-**Why the tension persists:** Ω_m,dyn = 0.160 is a fixed algebraic prediction. Any model
-with this effective matter density will produce suppressed growth at intermediate redshift
-relative to ΛCDM. The φ-DM suppression partially compensates but acts primarily on small
-scales (k > k_fs = 0.493 h/Mpc), not at the BAO/RSD scale.
+This is a different observable: fσ₈ is measured from galaxy peculiar velocities (RSD),
+while S₈ is measured from gravitational lensing shear. The two observables probe different
+scales and redshift ranges, and respond differently to the WDM transfer function suppression.
 
-**What would resolve it:** N-body simulations with baryonic feedback (AGN, supernova) that
-modify the effective σ₈ on the scales probed by BOSS. If baryonic suppression brings the
-ΛCDM prediction down by ~10%, the residual tension with SSEE narrows. This requires
-supercomputer time and is beyond the current analytical framework.
+**Why S₈ persists:** The WDM suppression in the φ-DM sector primarily reduces power at
+k > k_fs = 0.493 h/Mpc. The lensing signal integrates over all scales, so the improvement
+in σ₈_eff (0.702 → 0.737) is not sufficient to fully close the gap against DES/KiDS.
+Additionally, the KiDS-DES discrepancy (KiDS: S₈ ≈ 0.766, DES: S₈ ≈ 0.776) suggests the
+observational situation itself is not fully settled.
+
+**What would resolve it:** Non-linear N-body simulations with baryonic feedback (AGN winds,
+supernova) that suppress small-scale power by ~10–20%. These effects are not captured in
+the linear CLASS calculation. SSEE would need dedicated hydrodynamic simulations analogous
+to IllustrisTNG or EAGLE run with the two-sector SSEE background.
 
 ---
 
@@ -148,7 +153,7 @@ Paper 8. This would fix the functional form of the screening correction unambigu
 | OP-2 | P4 | n_s exponent 7 not derived from V(φ) | High | α-attractor inflation calculation |
 | OP-3 | P10 | UV-IR separability unproven | Medium | One-loop CW effective potential |
 | OP-4 | P8 | r_V > r_Hubble for Vainshtein | High | Identify Λ_SSEE, recompute r_V |
-| OP-5 | P5-6 | fσ₈ residual 2.67σ (single-sector) | Medium | N-body + baryonic feedback |
+| OP-5 | P5-6 | S₈ lensing tension 2.29σ DES (fσ₈ resolved in P6) | Medium | N-body + baryonic feedback |
 | OP-6 | P9 | Screening form ambiguity | Medium | Full EFT perturbative calculation |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;

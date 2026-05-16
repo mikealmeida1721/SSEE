@@ -1,7 +1,7 @@
 """
-Figures for SSEE Paper 8: Strong gravity, disformal lensing, Vainshtein.
+Figures for SSEE Paper 8: Strong gravity, disformal lensing, k-mouflage screening.
 Generates:
-  - fig_paper8_vainshtein.pdf : r_V vs M_obj for solar/stellar/galactic/cluster objects
+  - fig_paper8_vainshtein.pdf : r_km vs M_obj (k-mouflage, Brax & Valageas 2014)
   - fig_paper8_lensing_ratio.pdf : theta_E^SSEE / theta_E^GR vs k/k_fs
 """
 import numpy as np
@@ -18,49 +18,57 @@ phi  = (1 + 5**0.5) / 2
 pi   = np.pi
 AURA = (3*phi + pi) / 2    # ≈ 3.998
 MIRA = AURA / 2             # ≈ 1.999
-bc   = AURA                 # disformal coupling magnitude
-H0   = 67.962e3             # m/s/Mpc  (in SI: 67.96 km/s/Mpc)
-Mpc  = 3.0857e22            # m
-H0_si = H0 / Mpc            # 1/s ≈ 2.20e-18 s^-1
-G    = 6.674e-11            # m^3 kg^-1 s^-2
 c    = 3e8                  # m/s
 Msun = 1.989e30             # kg
+Mpc  = 3.0857e22            # m
 
-# ── Figure 1: Vainshtein radius r_V vs object mass ───────────────────────────
-# r_V = (G M / (3 c^2 H_0^2 / bc^2))^{1/3}
-# From Paper 8: r_V^3 = bc^2 G M / (3 c^2 H_0^2)
-# (SI units throughout)
+# K-mouflage constants (natural units: ℏ=c=1)
+# M = 8.81 meV = Λ_SSEE  (Paper 10: M^4 = 5φ^8 ρ_crit)
+M_eV   = 8.81e-3            # eV
+M_Pl_eV = 2.435e27          # eV  (reduced Planck mass)
+Msun_eV = Msun * c**2 / 1.602e-19  # kg→eV
+hbar_c_eVm = 1.9733e-7      # ℏc in eV·m  (1 eV^-1 = 1.9733e-7 m)
+
+# ── Figure 1: K-mouflage radius r_km vs object mass ──────────────────────────
+# r_km^3 = M_obj / (4π M_Pl M²)   [Brax & Valageas 2014, eq. for static source]
+# (natural units, then convert to meters via ℏc)
 
 M_range = np.logspace(-1, 18, 500)  # in Msun
-M_kg = M_range * Msun
+M_obj_eV = M_range * Msun_eV
 
-r_V_m = (bc**2 * G * M_kg / (3 * c**2 * H0_si**2))**(1/3)
-r_V_kpc = r_V_m / (Mpc * 1e-3)   # kpc
+r_km3_nu = M_obj_eV / (4 * pi * M_Pl_eV * M_eV**2)  # eV^-3
+r_km_nu  = r_km3_nu**(1/3)                            # eV^-1
+r_km_m   = r_km_nu * hbar_c_eVm                       # meters
+r_km_kpc = r_km_m / (Mpc * 1e-3)                      # kpc
 
 fig, ax = plt.subplots(figsize=(7, 5))
-ax.loglog(M_range, r_V_kpc, 'k-', lw=2)
+ax.loglog(M_range, r_km_kpc, 'k-', lw=2)
 
-# Annotate representative objects
+# Annotate representative objects with their physical radii for comparison
 objects = [
-    (1,        0.0047,   r'Sun ($1\,M_\odot$)', 'below'),
-    (1e6,      0.3,      r'BH ($10^6\,M_\odot$)', 'above'),
-    (1e11,     10,       r'Galaxy ($10^{11}\,M_\odot$)', 'above'),
-    (1e14,     100,      r'Cluster ($10^{14}\,M_\odot$)', 'above'),
+    (1,     r'Sun ($1\,M_\odot$)',           'below'),
+    (1e6,   r'M31 core ($10^6\,M_\odot$)',   'above'),
+    (1e12,  r'Milky Way ($10^{12}\,M_\odot$)', 'above'),
+    (1e15,  r'Cluster ($10^{15}\,M_\odot$)', 'above'),
 ]
-for m, r_ref, name, pos in objects:
-    r_obj_m = (bc**2 * G * m*Msun / (3*c**2*H0_si**2))**(1/3)
-    r_obj_kpc = r_obj_m / (Mpc*1e-3)
-    ax.plot(m, r_obj_kpc, 'o', color='#d6604d', ms=8, zorder=5)
+for m, name, pos in objects:
+    m_ev = m * Msun_eV
+    r_nu = (m_ev / (4*pi * M_Pl_eV * M_eV**2))**(1/3)
+    r_kpc = r_nu * hbar_c_eVm / (Mpc * 1e-3)
+    ax.plot(m, r_kpc, 'o', color='#d6604d', ms=8, zorder=5)
     dy = 0.6 if pos == 'above' else -0.6
-    ax.annotate(name, xy=(m, r_obj_kpc),
-                xytext=(m*1.5, r_obj_kpc * 10**dy),
+    ax.annotate(name, xy=(m, r_kpc),
+                xytext=(m*1.5, r_kpc * 10**dy),
                 fontsize=8.5, ha='left', color='#d6604d',
                 arrowprops=dict(arrowstyle='->', color='#d6604d', lw=0.8))
 
-ax.set_xlabel(r'Object mass $M$ [$M_\odot$]', fontsize=11)
-ax.set_ylabel(r'Vainshtein radius $r_V$ [kpc]', fontsize=11)
-ax.set_title(r'SSEE Vainshtein radius: $r_V = [\beta_c^2 G M\,/\,(3c^2 H_0^2)]^{1/3}$',
-             fontsize=10)
+# Mark 1 kpc reference line
+ax.axhline(1.0, color='#2166ac', lw=1.0, ls='--', alpha=0.7, label=r'$1\,\mathrm{kpc}$')
+ax.set_xlabel(r'Object mass $M_{\rm obj}$ [$M_\odot$]', fontsize=11)
+ax.set_ylabel(r'K-mouflage radius $r_{\rm km}$ [kpc]', fontsize=11)
+ax.set_title(r'SSEE k-mouflage: $r_{\rm km}^3 = M_{\rm obj}\,/\,(4\pi M_{\rm Pl} M^2)$,'
+             r'$\quad M=8.81\,\mathrm{meV}$', fontsize=10)
+ax.legend(fontsize=9)
 ax.grid(which='both', lw=0.4, alpha=0.4)
 ax.set_xlim(0.05, 1e18)
 fig.tight_layout()
@@ -69,6 +77,12 @@ fig.savefig(out1, bbox_inches='tight')
 fig.savefig(out1.replace('.pdf', '.png'), dpi=150, bbox_inches='tight')
 plt.close(fig)
 print(f"Saved: {out1}")
+
+# Print numerical check
+r_sun_m = (Msun_eV / (4*pi * M_Pl_eV * M_eV**2))**(1/3) * hbar_c_eVm
+print(f"  r_km(Sun)       = {r_sun_m:.3e} m  (R_sun = 6.96e8 m)")
+print(f"  r_km(MW 1e12)   = {r_sun_m * 1e4:.3e} m  (~1 AU = 1.50e11 m)")
+print(f"  r_km(cluster 1e15) = {r_sun_m * 1e5:.3e} m")
 
 # ── Figure 2: Lensing ratio theta_E^SSEE / theta_E^GR vs k/k_fs ─────────────
 # From Paper 8: the disformal correction amplifies lensing for k < k_fs.
@@ -108,6 +122,5 @@ plt.close(fig)
 print(f"Saved: {out2}")
 
 print(f"\nPaper 8 constants check:")
-print(f"  AURA = bc = {bc:.6f}")
-print(f"  MIRA    = {MIRA:.6f}")
-print(f"  r_V(Sun) = {(bc**2*G*1*Msun/(3*c**2*H0_si**2))**(1/3)/(Mpc*1e-3)*1e3:.4f} pc")
+print(f"  AURA = {AURA:.6f}")
+print(f"  MIRA = {MIRA:.6f}")

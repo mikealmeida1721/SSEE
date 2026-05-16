@@ -72,26 +72,35 @@ potential showing that φ-π cross-terms are suppressed by a large mass ratio.
 
 ---
 
-## OP-4 — Vainshtein Radius Exceeds Observable Universe (Paper 8)
+## OP-4 — Vainshtein Radius Exceeds Observable Universe (Paper 8) ✅ RESUELTO
 
-**Location:** Paper 8, §4.2 (solar system Vainshtein screening)
+**Location:** Paper 8, §4.2 (solar system screening) — **revisado 2026-05-15**
 
-**Statement:** The Vainshtein radius for the Sun computed from the SSEE EFT parameters gives
-$$r_V \sim 1.84 \times 10^{44}\ \text{m} \gg r_{\rm Hubble} \sim 1.3 \times 10^{26}\ \text{m}$$
+**Resolución (dos argumentos independientes):**
 
-**Why it matters:** If r_V is larger than the Hubble radius, the Vainshtein mechanism
-screens modifications everywhere, including at cosmological scales where SSEE predicts
-deviations from ΛCDM. This would make the EFT of Paper 7 (αK = 0.4033) internally
-inconsistent with the screening model of Paper 8.
+**Argumento primario — estructura EFT Bellini-Sawicki:**
+Paper 7 establece αB = αM = αT = 0 para SSEE, con αK = 0.4033 único. Esto implica:
+- μ − 1 = (αB + αM)²/αK = 0 (constante de Newton no modificada)
+- γ_PPN − 1 = −2αT/(1+αT) = 0 (sin lente gravitacional modificada)
 
-**Current status:** Flagged as a tension in Paper 8 footnote. The resolution depends on
-whether the effective EFT cutoff Λ_SSEE is identified with M_Pl or with a lower scale
-set by the SSEE hierarchy.
+La quinta fuerza en el límite quasi-estático se suprime como (H/k)²:
+$$\frac{F_\phi}{F_N}\bigg|_{\rm 1\,AU} \approx 1.6 \times 10^{-31} \ll 10^{-5}\ (\text{Cassini})$$
+Satisface la restricción solar por un factor de 6×10²⁵.
 
-**What would resolve it:** A careful identification of the EFT cutoff and the effective
-Planck mass M_eff in the SSEE Lagrangian, followed by recomputation of r_V with the
-correct M_eff. Alternatively, a transition from Vainshtein to k-mouflage screening
-(which has a different radius formula) may be more appropriate given αK ≠ 0.
+**Argumento secundario — k-mouflage (Brax & Valageas 2014):**
+K(X) = X/KAL + X²/M⁴ es k-mouflage, NO Galileon. La fórmula Galileon usada en Paper 8 §4.2 original era inaplicable. Radio k-mouflage correcto:
+$$r_{\rm km}^3 = \frac{M_{\rm obj}}{4\pi M_{\rm Pl} M^2}, \quad M = 8.81\ \text{meV}$$
+$$r_{\rm km}(\odot) = 1.54 \times 10^7\ \text{m} \approx 0.022\,R_\odot \ll r_{\rm Hubble}$$
+Todo objeto astrofísico tiene r_km ≪ 1 kpc → quinta fuerza DM activa a escalas cosmológicas.
+
+**Cambios aplicados en Paper 8:**
+- §4.1: "Vainshtein-like" → "k-mouflage" (Brax & Valageas 2014)
+- §4.2: Reemplazado fórmula Galileon con fórmula k-mouflage + Tabla revisada
+- §4.4: "Double GR protection" (Vainshtein) → "EFT suppression" (αB=αM=αT=0)
+- Bibitem `brax2014` añadido
+- `src/ssee_paper8_figures.py`: figura regenerada con fórmula k-mouflage
+
+**Scripts:** `src/ssee_op4_vainshtein.py` (cálculo completo), `src/ssee_paper8_figures.py` (figura)
 
 ---
 
@@ -152,7 +161,7 @@ Paper 8. This would fix the functional form of the screening correction unambigu
 | OP-1 | P4 | Factor 200 in Ω_b h² | High | UV completion or hierarchy derivation |
 | OP-2 | P4 | n_s exponent 7 not derived from V(φ) | High | α-attractor inflation calculation |
 | OP-3 | P10 | UV-IR separability unproven | Medium | One-loop CW effective potential |
-| OP-4 | P8 | r_V > r_Hubble for Vainshtein | High | Identify Λ_SSEE, recompute r_V |
+| OP-4 | P8 | ~~r_V > r_Hubble para Vainshtein~~ | ✅ RESUELTO | k-mouflage + αB=αM=αT=0 EFT; Paper 8 §4.2/§4.4 revisados |
 | OP-5 | P5-6 | S₈ lensing tension 2.29σ DES (fσ₈ resolved in P6) | Medium | N-body + baryonic feedback |
 | OP-6 | P9 | Screening form ambiguity | Medium | Full EFT perturbative calculation |
 

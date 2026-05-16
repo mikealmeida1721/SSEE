@@ -209,6 +209,9 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | ~~**OP-5 Nivel 1**~~ | ~~HMcode-2020 CLASS: supresión bariónica baryonic_feedback~~ | ✅ PARCIAL 2026-05-16 — S₈=0.758 (0.06σ DES); B_eff=0.9447; script op5 |
 | **OP-5 Nivel 2** | S₈ pleno — simulaciones N-body BAHAMAS/IllustrisTNG-SSEE | DIFERIDO (supercomputadora, ~5k–20k CPU-horas) |
 | ~~**OP-1 Sakharov**~~ | ~~Argumento formal bariogénesis: δ_CP=(π−φ)/Ω, T_rh~10⁻⁴ GeV~~ | ✅ ROBUSTO 2026-05-16 — 3 condiciones Sakharov verificadas; script op1_baryogenesis |
+| ~~**Bibliografía P1/P2/P3**~~ | ~~Llevar P1, P2, P3 a 40+ refs estándar JCAP/PRD~~ | ✅ 2026-05-16 — P1(40), P2(40), P3(41). Commits fc2e8ed + 5edcfc5 |
+| ~~**P9/P10 inconsistencia H₀**~~ | ~~Verificar que 72.86 es canónico y 73.040 es check condicional en cuerpo completo~~ | ✅ 2026-05-16 — Verificado. P9 L76 "canonical, independent prediction"; P10 marca "conditional on Postulate C.1" en L74/127/362/379/395. Sin ediciones necesarias. |
+| **OP-5 Nivel 2** | S₈ pleno — simulaciones N-body BAHAMAS/IllustrisTNG-SSEE | DIFERIDO (supercomputadora, ~5k–20k CPU-horas) |
 | **Zenodo v2** | Archivar Papers 1-10 PDFs + OPEN_PROBLEMS.md + CLASS scripts con DOI | Alta |
 | **Endorser arXiv** | Re-contactar endorsers con Papers 1-3 submission-ready | Alta |
 | **B5** | Quintessential inflation V(φ) unificado | Largo plazo |

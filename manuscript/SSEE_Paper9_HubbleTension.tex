@@ -91,16 +91,17 @@ completion, closing the residual $0.17\sigma$ gap.
 \label{sec:intro}
 %% ─────────────────────────────────────────────────────────────────────────────
 
-The Hubble tension \citep{Verde2019,Riess2022,Kamionkowski2023} is the
-$4$--$6\sigma$ discrepancy between measurements of the present expansion
+The Hubble tension \citep{Verde2019,Riess2022,Kamionkowski2023,DiValentino2021,Knox2020}
+is the $4$--$6\sigma$ discrepancy between measurements of the present expansion
 rate obtained by two independent methods:
 \begin{itemize}
   \item \textbf{Early-universe inference}: CMB anisotropies (Planck~PR4,
         \citealt{Planck2020}) combined with acoustic oscillation physics
         yield $H_0 = 67.4\pm0.5$ km/s/Mpc under the assumption of
         $\Lambda$CDM.
-  \item \textbf{Local distance-ladder}: Type~Ia supernovae calibrated with
-        Cepheids in the SH0ES programme \citep{Riess2022} give
+  \item \textbf{Local distance-ladder}: Type~Ia supernovae
+        \citep{Riess1998,Perlmutter1999} calibrated with
+        Cepheids in the SH0ES programme \citep{Riess2019,Riess2022} give
         $H_0 = 73.04\pm1.04$ km/s/Mpc, probing predominantly $z < 0.15$.
 \end{itemize}
 
@@ -148,7 +149,8 @@ Section~\ref{sec:conclusions} summarises.
 \subsection{The SSEE action (Paper 7)}
 \label{sec:p7recap}
 
-The fundamental action of SSEE-V3.6 is a $k$-essence scalar minimally
+The fundamental action of SSEE-V3.6 is a $k$-essence scalar
+\citep{ArmendarizPicon1999,ArmendarizPicon2001} minimally
 coupled to gravity and conformally coupled to dark matter:
 \begin{equation}
   S = \int d^4x\,\sqrt{-g}\,\left[
@@ -174,8 +176,9 @@ The dark-energy equation-of-state parameters derived in Paper~1 are
   \Omde &= -w_0 = \frac{\AURA}{\phiG+\pi} \approx 0.840\,. \label{eq:OmDE}
 \end{align}
 
-The EFT kineticity in the Bellini--Sawicki classification \citep{Bellini2015}
-is defined as
+The EFT kineticity in the Bellini--Sawicki classification \citep{Bellini2015},
+part of the broader effective field theory of dark energy
+\citep{Gubitosi2013,Gleyzes2013}, is defined as
 \begin{equation}
   \alphaK \;\equiv\; \frac{2X\,K_X}{\Mpl^2 H^2}\,,
   \label{eq:alphaK_def}
@@ -188,7 +191,7 @@ Section~\ref{sec:identity} we provide its exact algebraic expression.
 \label{sec:p8recap}
 
 Paper~8 extends the action to the strong-gravity regime by coupling dark
-matter to the disformal metric
+matter to the disformal metric \citep{Bekenstein1993,Zumalacarregui2014}
 \begin{equation}
   \tilde{g}_{\mu\nu} = g_{\mu\nu} + \frac{2}{M^4}\,\partial_\mu\phi\,\partial_\nu\phi\,.
   \label{eq:disformal}
@@ -484,7 +487,10 @@ $H_0^{\rm local} = 72.86$\,km/s/Mpc at $\sim 1.9\sigma$ from this anchor.
 The discrepancy relative to Freedman suggests that, while the kinematic
 screening mechanism resolves the SH0ES tension, the full picture of
 local $H_0$ measurements remains internally inconsistent at the $\sim 2\sigma$
-level --- a known observational puzzle that is independent of the SSEE framework.
+level.  Independent local probes --- strong-lensing time delays
+\citep{Wong2020} and water megamasers \citep{Pesce2020} --- span
+$H_0 \approx 70$--$74$\,km/s/Mpc, a known observational puzzle that is
+independent of the SSEE framework.
 We report both comparisons in Table~\ref{tab:numbers}.
 
 We adopt the \textbf{multiplicative form}~\eqref{eq:H0local} as the canonical
@@ -537,8 +543,10 @@ Specifically:
 \end{enumerate}
 
 \paragraph{Note on the EDE comparison.}
-Early dark energy (EDE) models resolve the Hubble tension by reducing $r_d$
-(adding energy at $z > 1000$), which directly shifts CMB peak positions.
+Early dark energy (EDE) models \citep{Karwal2016,Poulin2019,Smith2020}
+resolve the Hubble tension by reducing $r_d$
+(adding energy at $z > 1000$), which directly shifts CMB peak positions
+\citep{Hill2020}.
 A naive application of $\fsc$ as an EDE-like modification to $r_d$ would
 give $r_{d,\rm new} = r_d/(1+\fsc) \approx 137.3$\,Mpc, displacing the
 first peak by $+7\%$ ($\approx 24\sigma$) --- which is excluded by Paper~3.
@@ -615,9 +623,10 @@ We therefore register the following pre-committed prediction:
 \end{enumerate}
 
 \paragraph{Relation to other tension-resolution proposals.}
-The present mechanism is distinct from EDE (modifies $r_d$ at $z > 1000$),
-from modified recombination (shifts CMB peaks), and from late dark energy
-transitions (require $w(z) \neq$ CPL).
+The present mechanism is distinct from EDE \citep{Poulin2019} (modifies $r_d$
+at $z > 1000$), from modified recombination (shifts CMB peaks), and from late
+dark energy transitions (require $w(z) \neq$ CPL); see \citet{Schoneberg2022}
+for a systematic comparison of proposed solutions.
 The SSEE mechanism operates at $z < 0.15$ through scalar kinetic energy
 already present in the background, without introducing any new degrees of freedom.
 
@@ -691,12 +700,14 @@ established in Papers~2--6.
 
 The result is pre-committed: the value $72.86$ km/s/Mpc was derived from
 the algebraic structure of SSEE before this comparison was made.
-Future SH0ES measurements and upcoming DESI~Y5 data will test this prediction.
+Future SH0ES measurements and upcoming DESI \citep{DESI2025} data will test
+this prediction.
 
 \paragraph{Age of the universe cross-check.}
 As an independent consistency test, we compute the age of the SSEE universe
 using $H_0^{\rm local} = 72.86$\,km/s/Mpc, $\Omega_m = 0.160$, and the CPL
-dark energy equation of state $(w_0, w_a) = (-0.840, -0.670)$:
+dark energy equation of state \citep{Chevallier2001,Linder2003}
+$(w_0, w_a) = (-0.840, -0.670)$:
 \begin{equation}
   t_0 = \frac{1}{H_0}\int_0^\infty \frac{dz}{(1+z)\,E(z)}\,,
   \quad
@@ -711,8 +722,8 @@ Numerical integration gives
 The SSEE universe is $1.51$\,Gyr \emph{older} than $\Lambda$CDM, a direct
 consequence of the phantom crossing at $z_{\rm cross}\approx 0.314$
 (Section~\ref{sec:mechanism}) suppressing the recent expansion rate.
-This is more accommodating of the oldest globular clusters
-($t_{\rm GC} \gtrsim 12.5$\,Gyr, e.g.\ \citealt{Valcin2021})
+This is more accommodating of the oldest globular clusters and the oldest
+known halo stars ($t_{\rm GC} \gtrsim 12.5$\,Gyr, e.g.\ \citealt{Valcin2021,Bond2013})
 and of the \citet{Cimatti2023} red-galaxy age constraint
 ($t \approx 13.5$\,Gyr at $z \approx 0.55$), which create mild tension
 with $\Lambda$CDM.
@@ -831,37 +842,118 @@ accurate to $0.1\%$ within the SH0ES calibration volume.
 \bibliographystyle{plainnat}
 \begin{thebibliography}{99}
 
-\bibitem[Brax \& Valageas(2014)]{Brax2014}
-  Brax, P., \& Valageas, P.\ 2014, \prd, 90, 023507
+\bibitem[Armend\'ariz-Pic\'on et al.(1999)]{ArmendarizPicon1999}
+Armend\'ariz-Pic\'on, C., Damour, T., \& Mukhanov, V.\ 1999,
+\textit{Phys.\ Lett.\ B}, 458, 209.
 
-\bibitem[Wands et al.(2000)]{Wands2000}
-  Wands, D., Malik, K.~A., Lyth, D.~H., \& Liddle, A.~R.\ 2000,
-  \prd, 62, 043527
+\bibitem[Armend\'ariz-Pic\'on et al.(2001)]{ArmendarizPicon2001}
+Armend\'ariz-Pic\'on, C., Mukhanov, V., \& Steinhardt, P.~J.\ 2001,
+\prd, 63, 103510.
 
 \bibitem[Babichev \& Deffayet(2013)]{Babichev2013}
 Babichev, E.\ \& Deffayet, C.\ 2013, \textit{Class.\ Quantum Grav.}, 30, 184001.
 
+\bibitem[Bekenstein(1993)]{Bekenstein1993}
+Bekenstein, J.~D.\ 1993, \prd, 48, 3641.
+
 \bibitem[Bellini \& Sawicki(2015)]{Bellini2015}
 Bellini, E.\ \& Sawicki, I.\ 2015, \textit{JCAP}, 1507, 050.
 
+\bibitem[Bond et al.(2013)]{Bond2013}
+Bond, H.~E., Nelan, E.~P., VandenBerg, D.~A., Schaefer, G.~H., \&
+Harmer, D.\ 2013, \textit{ApJ Lett.}, 765, L12.
+
+\bibitem[Brax \& Valageas(2014)]{Brax2014}
+Brax, P., \& Valageas, P.\ 2014, \prd, 90, 023507.
+
+\bibitem[Chevallier \& Polarski(2001)]{Chevallier2001}
+Chevallier, M., \& Polarski, D.\ 2001,
+\textit{Int.\ J.\ Mod.\ Phys.\ D}, 10, 213.
+
+\bibitem[Cimatti \& Moresco(2023)]{Cimatti2023}
+Cimatti, A., \& Moresco, M.\ 2023, \textit{ApJ}, 953, 149.
+
+\bibitem[DESI Collaboration(2025)]{DESI2025}
+DESI Collaboration (Adame, A.~G., et al.)\ 2025, arXiv:2503.14738.
+
+\bibitem[Di Valentino et al.(2021)]{DiValentino2021}
+Di Valentino, E., Mena, O., Pan, S., et al.\ 2021,
+\textit{Class.\ Quantum Grav.}, 38, 153001.
+
+\bibitem[Freedman et al.(2024)]{Freedman2024}
+Freedman, W.~L., et al.\ 2024, \textit{ApJ}, 963, 84
+[TRGB+JWST: $H_0 = 69.96\pm1.05\,(\mathrm{stat})\pm1.12\,(\mathrm{sys})$\,km/s/Mpc].
+
+\bibitem[Gleyzes et al.(2013)]{Gleyzes2013}
+Gleyzes, J., Langlois, D., Piazza, F., \& Vernizzi, F.\ 2013,
+\textit{JCAP}, 1308, 025.
+
+\bibitem[Gubitosi et al.(2013)]{Gubitosi2013}
+Gubitosi, G., Piazza, F., \& Vernizzi, F.\ 2013, \textit{JCAP}, 1302, 032.
+
+\bibitem[Hill et al.(2020)]{Hill2020}
+Hill, J.~C., McDonough, E., Toomey, M.~W., \& Alexander, S.\ 2020,
+\prd, 102, 043507.
+
 \bibitem[Kamionkowski \& Riess(2023)]{Kamionkowski2023}
-Kamionkowski, M.\ \& Riess, A.G.\ 2023, \textit{Annu.\ Rev.\ Nucl.\ Part.\ Sci.}, 73, 153.
+Kamionkowski, M.\ \& Riess, A.~G.\ 2023,
+\textit{Annu.\ Rev.\ Nucl.\ Part.\ Sci.}, 73, 153.
+
+\bibitem[Karwal \& Kamionkowski(2016)]{Karwal2016}
+Karwal, T., \& Kamionkowski, M.\ 2016, \prd, 94, 103523.
+
+\bibitem[Knox \& Millea(2020)]{Knox2020}
+Knox, L., \& Millea, M.\ 2020, \prd, 101, 043533.
+
+\bibitem[Linder(2003)]{Linder2003}
+Linder, E.~V.\ 2003, \textit{Phys.\ Rev.\ Lett.}, 90, 091301.
+
+\bibitem[Perlmutter et al.(1999)]{Perlmutter1999}
+Perlmutter, S., Aldering, G., Goldhaber, G., et al.\ 1999, \textit{ApJ}, 517, 565.
+
+\bibitem[Pesce et al.(2020)]{Pesce2020}
+Pesce, D.~W., Braatz, J.~A., Reid, M.~J., et al.\ 2020,
+\textit{ApJ Lett.}, 891, L1.
 
 \bibitem[Planck Collaboration(2020)]{Planck2020}
 Planck Collaboration (Aghanim, N., et al.)\ 2020, \textit{A\&A}, 641, A6.
 
-\bibitem[Riess et al.(2022)]{Riess2022}
-Riess, A.G., et al.\ 2022, \textit{ApJ Lett.}, 934, L7.
+\bibitem[Poulin et al.(2019)]{Poulin2019}
+Poulin, V., Smith, T.~L., Karwal, T., \& Kamionkowski, M.\ 2019,
+\textit{Phys.\ Rev.\ Lett.}, 122, 221301.
 
-\bibitem[Freedman et al.(2024)]{Freedman2024}
-Freedman, W.L., et al.\ 2024, \textit{ApJ}, 963, 84
-[TRGB+JWST: $H_0 = 69.96\pm1.05\,(\mathrm{stat})\pm1.12\,(\mathrm{sys})$\,km/s/Mpc].
+\bibitem[Riess et al.(1998)]{Riess1998}
+Riess, A.~G., Filippenko, A.~V., Challis, P., et al.\ 1998, \textit{AJ}, 116, 1009.
+
+\bibitem[Riess et al.(2019)]{Riess2019}
+Riess, A.~G., Casertano, S., Yuan, W., Macri, L.~M., \& Scolnic, D.\ 2019,
+\textit{ApJ}, 876, 85.
+
+\bibitem[Riess et al.(2022)]{Riess2022}
+Riess, A.~G., et al.\ 2022, \textit{ApJ Lett.}, 934, L7.
+
+\bibitem[Sch\"oneberg et al.(2022)]{Schoneberg2022}
+Sch\"oneberg, N., Franco Abell\'an, G., P\'erez S\'anchez, A., et al.\ 2022,
+\textit{Phys.\ Rep.}, 984, 1.
+
+\bibitem[Smith et al.(2020)]{Smith2020}
+Smith, T.~L., Poulin, V., \& Amin, M.~A.\ 2020, \prd, 101, 063523.
 
 \bibitem[Vainshtein(1972)]{Vainshtein1972}
-Vainshtein, A.I.\ 1972, \textit{Phys.\ Lett.\ B}, 39, 393.
+Vainshtein, A.~I.\ 1972, \textit{Phys.\ Lett.\ B}, 39, 393.
 
 \bibitem[Verde et al.(2019)]{Verde2019}
-Verde, L., Treu, T., \& Riess, A.G.\ 2019, \textit{Nature Astron.}, 3, 891.
+Verde, L., Treu, T., \& Riess, A.~G.\ 2019, \textit{Nature Astron.}, 3, 891.
+
+\bibitem[Wands et al.(2000)]{Wands2000}
+Wands, D., Malik, K.~A., Lyth, D.~H., \& Liddle, A.~R.\ 2000, \prd, 62, 043527.
+
+\bibitem[Wong et al.(2020)]{Wong2020}
+Wong, K.~C., Suyu, S.~H., Chen, G.~C.-F., et al.\ 2020,
+\textit{MNRAS}, 498, 1420.
+
+\bibitem[Zumalac\'arregui \& Garc\'ia-Bellido(2014)]{Zumalacarregui2014}
+Zumalac\'arregui, M., \& Garc\'ia-Bellido, J.\ 2014, \prd, 89, 064046.
 
 % ─── SSEE internal references ─────────────────────────────────────────────
 \bibitem[Almeida(Paper1)]{Paper1}
@@ -884,10 +976,7 @@ Almeida Vallejo, M.E.\ 2026j, SSEE-V3.6 Paper~10: UV Completion (this series).
 
 \bibitem[Valcin et al.(2021)]{Valcin2021}
 Valcin, D., Jimenez, R., Verde, L., Bernal, J.~L., \& Wandelt, B.~D.\ 2021,
-JCAP, 2021, 017.
-
-\bibitem[Cimatti \& Moresco(2023)]{Cimatti2023}
-Cimatti, A., \& Moresco, M.\ 2023, ApJ, 953, 149.
+\textit{JCAP}, 2021, 017.
 
 \end{thebibliography}
 

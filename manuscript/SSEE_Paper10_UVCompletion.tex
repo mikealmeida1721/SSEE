@@ -7,7 +7,7 @@
 \usepackage{physics}
 \usepackage{xcolor}
 \usepackage{graphicx}
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 
 \geometry{margin=2.5cm}
 
@@ -147,16 +147,18 @@ with curvature parameter
   \label{eq:alpha}
 \end{equation}
 where $\phiG = (1+\sqrt{5})/2$ is the golden ratio.
-In the Starobinsky-like limit, this predicts a tensor-to-scalar ratio
+In the Starobinsky-like limit \citep{Galante2015}, this predicts a tensor-to-scalar ratio
 \begin{equation}
   r \;=\; \frac{12\alpha}{N^2}
     \;\approx\; \frac{12 \times 2.2847}{60^2}
     \;\approx\; 0.00813
   \label{eq:r}
 \end{equation}
-for $N = 60$ e-folds of inflation.
-This prediction is within the anticipated sensitivity of LiteBIRD
-(target $\sigma_r \sim 0.002$, expected results 2032), making
+for $N = 60$ e-folds of inflation \citep{LiddleLeach2003}.
+This prediction lies below the current upper bound $r < 0.036$
+\citep{Akrami2020} and is within the anticipated sensitivity of LiteBIRD
+\citep{LiteBIRD2020} (target $\sigma_r \sim 0.002$, expected results 2032)
+and a future CMB-S4 survey \citep{CMBS4_2016}, making
 Eq.~\eqref{eq:r} a pre-committed falsification criterion.
 
 \subsection{The algebraic identity}
@@ -277,7 +279,8 @@ The UV correction is $+3.37\%$ over the IR value.
 \subsection{Ghost-free and gradient-stability conditions}
 \label{subsec:stability_UV}
 
-For a $K(X)$ theory, the two fundamental stability conditions are:
+For a $K(X)$ theory, the two fundamental stability conditions are
+\citep{Garriga1999}:
 \begin{enumerate}
   \item \textbf{No-ghost (positive kinetic energy):} $K_X > 0$.
   \item \textbf{Gradient stability (no gradient instability):} $c_s^2 > 0$,
@@ -375,13 +378,13 @@ Freedman et al.\ \citep{Freedman2024} & --- & --- & $69.96 \pm 1.54$ & $1.9\sigm
 Table~\ref{tab:H0} compares the IR and UV results.
 Under Postulate~C.1 (§\ref{sec:theorem}), $M^4 = 45\alpha^2\rhoc$ gives
 $H_0^{\rm UV} = 73.040$ km/s/Mpc, matching the SH0ES central value $73.04$ to the
-4-digit precision reported by \citet{Riess2022}.  This agreement is a rounding
+4-digit precision reported by SH0ES \citep{Riess2022}.  This agreement is a rounding
 coincidence in the last digit and should not be interpreted as a statistical
 precision test; the physical prediction is $H_0^{\rm UV} - H_0^{\rm SH0ES} < 0.01$ km/s/Mpc
 ($\ll 1\sigma$), which is genuinely sub-dominant to the SH0ES uncertainty of $\pm1.04$ km/s/Mpc.
 
 \paragraph{Comparison with TRGB/JWST.}
-The TRGB+JWST measurement of \citet{Freedman2024} yields
+The TRGB+JWST measurement of Freedman et al.\ \citep{Freedman2024} yields
 $H_0 = 69.96\pm1.54$\,km/s/Mpc.  The SSEE UV prediction $H_0^{\rm UV}=73.040$\,km/s/Mpc
 lies $\sim1.9\sigma$ above this anchor; the IR prediction $H_0^{\rm IR}=72.86$\,km/s/Mpc
 lies $\sim1.9\sigma$ above it as well.
@@ -511,8 +514,8 @@ to the $\alpha$-attractor sector.
 
 \subsection{Route~B: Technical naturalness}
 
-An EFT argument demands that the UV operator $X^2/M^4$ does not destabilise
-the IR physics.
+An EFT argument based on technical naturalness \citep{tHooft1980} demands
+that the UV operator $X^2/M^4$ does not destabilise the IR physics.
 Requiring that the UV correction to $\alphaK$ is of order $\alphaK^{\rm IR}$
 itself gives a naturalness scale
 \begin{equation}
@@ -536,6 +539,7 @@ naturalness condition.
 
 \subsection{Route~C: Full $P(X,\phi)$ Lagrangian and Conjecture~C.1}
 \label{sec:routeC}
+\label{sec:theorem}
 
 \paragraph{Formal conjecture.}
 The algebraic identities of Section~\ref{sec:alpha} motivate:
@@ -907,6 +911,36 @@ Phys.\ Lett.\ B \textbf{91} (1980) 99.
 R.~Kallosh \& A.~Linde,
 \emph{Universality Class in Conformal Inflation},
 JCAP \textbf{07} (2013) 002 [arXiv:1306.5220].
+
+\bibitem{Galante2015}
+M.~Galante, R.~Kallosh, A.~Linde \& D.~Roest,
+\emph{Unity of Cosmological Inflation Attractors},
+Phys.\ Rev.\ Lett.\ \textbf{114} (2015) 141302 [arXiv:1412.3797].
+
+\bibitem{LiddleLeach2003}
+A.~R.~Liddle \& S.~M.~Leach,
+\emph{How long before the end of inflation were observable perturbations produced?},
+Phys.\ Rev.\ D \textbf{68} (2003) 103503 [arXiv:astro-ph/0305263].
+
+\bibitem{Akrami2020}
+Planck Collaboration (Y.~Akrami et al.),
+\emph{Planck 2018 results. X. Constraints on inflation},
+A\&A \textbf{641}, A10 (2020) [arXiv:1807.06211].
+
+\bibitem{CMBS4_2016}
+K.~N.~Abazajian et al.\ (CMB-S4 Collaboration),
+\emph{CMB-S4 Science Book, First Edition},
+arXiv:1610.02743 (2016).
+
+\bibitem{Garriga1999}
+J.~Garriga \& V.~F.~Mukhanov,
+\emph{Perturbations in k-inflation},
+Phys.\ Lett.\ B \textbf{458} (1999) 219 [arXiv:hep-th/9904176].
+
+\bibitem{tHooft1980}
+G.~'t~Hooft,
+\emph{Naturalness, chiral symmetry, and spontaneous chiral symmetry breaking},
+in \emph{Recent Developments in Gauge Theories}, NATO ASI Series B \textbf{59} (1980) 135.
 
 \bibitem{Perlmutter1999}
 S.~Perlmutter et al.,

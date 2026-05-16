@@ -40,6 +40,7 @@
 % ── Macros ────────────────────────────────────────────────────────────────────
 \newcommand{\SSEE}{\textsc{SSEE}-V3.6}
 \newcommand{\phiDM}{\phi\text{-DM}}
+\newcommand{\fphi}{f_\phi}
 \newcommand{\MIRA}{\mathcal{M}_{\rm SSEE}}
 \newcommand{\wz}{w_0}
 \newcommand{\wa}{w_a}
@@ -118,13 +119,13 @@ $(\wz, \wa) = (-0.840, -0.670)$ are derived algebraically from $\varphi$ (golden
 ratio) and $\pi$. The framework has passed four independent observational tests:
 
 \begin{enumerate}
-  \item \textbf{Paper~2} \citep{SSEE_Paper2}: DESI DR2 BAO ($0.05\sigma$) and
+  \item \textbf{Paper~2} \citep{SSEE_Paper2}: DESI DR2 \citep{AbdulKarim2025} BAO ($0.05\sigma$) and
     galaxy cluster mass discrepancies ($\chi^2_r = 0.122$).
   \item \textbf{Paper~3} \citep{SSEE_Paper3}: CMB Planck PR4 (plik\_lite
     $\Delta\mathrm{BIC} = -31.3$ in favour of \SSEE\ vs.\ $\Lambda$CDM).
   \item \textbf{Paper~4} \citep{SSEE_Paper4}: Algebraic derivation of $n_s$, $H_0$,
     $\Omega_m$, $\Omega_b h^2$ from the Nine Sovereignties.
-  \item \textbf{Paper~5} \citep{SSEE_Paper5}: Israel-Stewart causal gradient stability
+  \item \textbf{Paper~5} \citep{SSEE_Paper5}: Israel-Stewart \citep{IsraelStewart1979} causal gradient stability
     ($c^2_{s,\rm eff} = 0$ exact), $S_8 = 0.725$ ($1.96\sigma$ KiDS vs.\ $3.27\sigma$
     for $\Lambda$CDM).
 \end{enumerate}
@@ -137,7 +138,7 @@ $f\sigma_8$ tension of $2.56\sigma$ against the six RSD survey points analysed i
 paper \citep{Beutler2012,Howlett2015,Alam2017,Hou2021,Blake2012}
 ($\sigma_{8,\rm base}=0.702$; Paper~5 reports $2.67\sigma$ with a partially overlapping survey selection). The root cause is the dynamical
 matter density $\Omega_{\rm m,dyn} = 1 + w_0 = 0.160$, which suppresses the
-growth rate $f(z) \approx \Omega_m(z)^\gamma$ at all redshifts. Crucially,
+growth rate $f(z) \approx \Omega_m(z)^\gamma$ \citep{Linder2005} at all redshifts. Crucially,
 Paper~5 also showed that $S_8$ is \emph{better} predicted by \SSEE\ than by
 $\Lambda$CDM, creating an $S_8$--$f\sigma_8$ split: the framework predicts the
 amplitude of fluctuations correctly but underestimates the growth rate.
@@ -214,10 +215,10 @@ algebraic postulate pointing to new structure beyond the single-fluid background
 
 \textbf{Physical mechanism.}
 The SSEE background fixes $\Omega_{m,\rm dyn} = 0.160$ (zero free parameters),
-while Planck measures $\Omega_{m,\rm CMB} = 0.315$. The deficit
+while Planck \citep{Planck2018} measures $\Omega_{m,\rm CMB} = 0.315$. The deficit
 $\Delta\Omega_m = 0.155 \approx 0.160$ must be carried by an additional dark-sector
 component that couples to the CMB metric perturbations but undergoes free-streaming
-suppression in the growth sector. The $\varphi$-DM field (Sec.~\ref{subsec:two_sector})
+suppression in the growth sector \citep{Hu1998}. The $\varphi$-DM field (Sec.~\ref{subsec:two_sector})
 with algebraically fixed mass $\mphi = 5.71\,\mathrm{eV}$ provides exactly this
 component:
 \begin{equation}
@@ -229,7 +230,7 @@ component:
 which recovers $\Omega_{m,\rm CMB} = 0.3199$ without any free parameter.
 The condition $\Omega_{\phiDM} = \Omega_{\rm CDM}$ (two equal sectors, hence MIRA $\approx 2$)
 is equivalent to requiring that the $\varphi$-DM relic density computed from the
-Dodelson--Widrow production mechanism with $\mphi = 5.71\,\mathrm{eV}$ equals the
+Dodelson--Widrow \citep{DodelsonWidrow1994} production mechanism with $\mphi = 5.71\,\mathrm{eV}$ equals the
 CDM density $\Omega_{\rm CDM}\,h^2 = 0.0739$.
 
 \textbf{Open derivation step.}
@@ -246,7 +247,7 @@ mechanism, and whose \emph{testability} is the prediction $\kfs = 0.493\,h/\math
 \label{sec:eft}
 
 Before proposing the two-sector model we systematically rule out simpler EFT
-extensions within the Bellini-Sawicki \citep{Bellini2015} parameterisation,
+extensions within the Bellini-Sawicki \citep{Bellini2015,Gubitosi2013} parameterisation,
 which characterises modifications of gravity by four functions
 $(\alpha_K, \alpha_B, \alpha_M, \alpha_T)$.
 
@@ -293,8 +294,8 @@ $\varphi$ and $\pi$. We therefore do not adopt this route.
 
 We propose that the MIRA factor points to a second dark matter component —
 \emph{$\phi$-dark matter} ($\phiDM$) — coupled to the IS relaxation sector and
-decoupling at redshift $z_{\rm dec}$ to produce a warm dark matter component with
-free-streaming scale $\kfs$.
+decoupling at redshift $z_{\rm dec}$ to produce a warm dark matter component
+\citep{Bode2001} with free-streaming scale $\kfs$.
 
 \subsection{Two-sector structure}
 \label{subsec:two_sector}
@@ -387,7 +388,8 @@ contribute to the growth of structure. The relevant regime is:
   \item[Two-sector regime ($k < \kfs$):] $\Omega_{\rm m,growth} = 0.320$
     (both CDM and $\phiDM$ cluster). The Hubble function is
     $E^2(a) = 0.320\,a^{-3} + 0.840\,f_{\rm DE}(a)$
-    with $f_{\rm DE}(a) = a^{-3(1+w_0+w_a)}\,e^{-3w_a(1-a)}$.
+    with the Chevallier--Polarski--Linder \citep{ChevallierPolarski2001} form
+    $f_{\rm DE}(a) = a^{-3(1+w_0+w_a)}\,e^{-3w_a(1-a)}$.
     This regime covers both RSD surveys ($k \sim 0.01$--$0.1\,h/\mathrm{Mpc}$)
     and the $\sigma_8$ scale ($k = 0.125\,h/\mathrm{Mpc}$).
 \end{description}
@@ -399,7 +401,8 @@ $\Lambda$CDM solution ($\Omega_m = 0.315$) to obtain the two-sector growth facto
   \label{eq:G2s}
 \end{equation}
 giving $\sigeff = \sigma_{8,\Lambda{\rm CDM}} \times G_{\rm 2s} = 0.811 \times 0.979 = 0.794$.
-The growth rate is $f = d\ln D/d\ln a$ and the observable is
+The growth rate is $f = d\ln D/d\ln a$ and the redshift-space distortion
+observable \citep{Percival2009} is
 $\fsig(z) = f(z)\,\sigeff\,D(z)/D(0)$.
 
 \subsection{$f\sigma_8$ results}
@@ -465,9 +468,10 @@ $k < \kfs$ and ignores the smooth Viel+2005 WDM transfer function.
 Including $T_{\rm WDM}(k) = [1+(\alpha k)^{2\mu}]^{-5/\mu}$ ($\mu=1.12$, Viel+2005)
 with the CLASS-calibrated scale $\alpha_{\rm WDM} = 1.656\,h/\mathrm{Mpc}$
 and the mixing formula $P_{\rm mix} = P_{\rm lin}\,[(1-f_\phi) + f_\phi T_{\rm WDM}]^2$
-yields $\sigeff = 0.728$ (CAMB) or $0.737$ (CLASS), hence
+yields $\sigeff = 0.728$ (CAMB; \citealt{Lewis2000}) or $0.737$
+(CLASS; \citealt{Blas2011}), hence
 $S_8^{\rm WDM} = 0.752$--$0.761$ ($-0.72\sigma$ to $-0.25\sigma$ vs KiDS).
-A Halofit non-linear correction (CAMB Halofit) adds a $+7.5\%$ boost to $\sigeff$,
+A Halofit \citep{Takahashi2012} non-linear correction (CAMB Halofit) adds a $+7.5\%$ boost to $\sigeff$,
 reduced from the $\Lambda$CDM value of $+11.3\%$ because the WDM suppresses small-scale
 power at $k > \kfs$. The resulting non-linear estimate is $S_8^{\rm nl} = 0.808$
 ($+2.1\sigma$ KiDS).
@@ -496,8 +500,9 @@ estimated systematic uncertainty of $\lesssim5\%$, propagating to
 $\Delta S_8^{\rm bar}\approx\pm0.02$.  The nominal result $S_8^{\rm bar}=0.758$
 should therefore be interpreted as a central estimate within the range
 $S_8^{\rm bar}\in[0.74,\,0.78]$ pending dedicated dark-energy N-body calibration.
-The Level~2 step — running dedicated N-body simulations (BAHAMAS/IllustrisTNG-SSEE
-with modified dark energy) — requires $\sim$5000--20000 CPU-hours and is deferred
+The Level~2 step — running dedicated N-body simulations
+(BAHAMAS, \citealt{McCarthy2017}; IllustrisTNG, \citealt{Nelson2019};
+modified for SSEE dark energy) — requires $\sim$5000--20000 CPU-hours and is deferred
 to a future HPC allocation.
 
 \subsection{Conserved background sectors}
@@ -730,7 +735,7 @@ Euclid Wide Survey weak lensing — will provide a definitive test.
 
 A potential objection is that $\mphi = 5.71\,\mathrm{eV}$ lies far below the
 standard thermal-WDM Lyman-$\alpha$ bound $m_{\rm WDM} \gtrsim 3.3\text{--}3.5\,\mathrm{keV}$
-\citep{Viel2005,Viel2013}.  We address this in three steps.
+\citep{Viel2005,Viel2013,PalanqueDelabrouille2020}.  We address this in three steps.
 
 \paragraph{Step 1: $\phi$-DM is not thermal WDM.}
 Thermal WDM bounds assume (a) 100\% of the dark matter is a single thermally
@@ -742,7 +747,7 @@ The remaining sector is cold CDM ($\Omega_{\rm CDM} = 0.160$), which provides
 full gravitational clustering at all scales $k < \kfs$ and is \emph{not}
 suppressed.  For mixed dark matter models with a WDM fraction $f_{\rm WDM}$,
 the Lyman-$\alpha$ constraint on the WDM component is substantially relaxed
-(see e.g.\ \citealt{Boyarsky2019}); for $f_{\rm WDM} \approx 0.5$, the
+(see e.g.\ \citealt{Boyarsky2019,Adhikari2017}); for $f_{\rm WDM} \approx 0.5$, the
 effective bound weakens to $m_{\rm WDM}^{\rm eff} \gtrsim 0.1$--$0.5\,\mathrm{keV}$.
 
 \paragraph{Step 2: The observable is $\kfs$, not $\mphi$ — and the production mechanism determines the mapping.}
@@ -855,8 +860,8 @@ The relation $\mphi = \mnu \times \Halg$ connects two quantities derived indepen
 in Paper~4 via the acoustic residual operator. We note:
 
 \begin{enumerate}
-  \item $\mnu = 0.084\,\mathrm{eV}$ is the sum of active neutrino masses derived from
-    the IS thermal residual. It arises from the coupling of the IS sector to the
+  \item $\mnu = 0.084\,\mathrm{eV}$ is the sum of active neutrino masses
+    \citep{Lesgourgues2006} derived from the IS thermal residual. It arises from the coupling of the IS sector to the
     baryon-photon plasma.
   \item $\Halg = 67.96\,\mathrm{km/s/Mpc}$ is the expansion rate set by the IS
     relaxation horizon.
@@ -868,7 +873,7 @@ in Paper~4 via the acoustic residual operator. We note:
 
 The physical interpretation is: the $\phi$-DM field acquires a characteristic
 energy scale set by the same IS relaxation operator that governs active neutrino
-production. This is structurally similar to the seesaw mechanism (Minkowski, 1977),
+production. This is structurally similar to the seesaw mechanism \citep{Minkowski1977},
 where a sterile-sector mass is related to the active neutrino mass through a common
 operator. Here the characteristic scale is $5.71\,\mathrm{eV}$ and the coupling
 is $\Halg$. The physical nature of $\phiDM$ — whether it is a coherent condensate,
@@ -959,7 +964,8 @@ transfer function. However, as explicitly discussed, the mass coupling $m_\phi =
 is structural and traceable to $\Omega_{\rm m,dyn} = 0.160$.
 
 The \textbf{falsifiable predictions} of this paper are: (1) the $\phi$-dark matter
-energy scale $\mphi = 5.71\,\mathrm{eV}$, accessible to PTOLEMY (2027--2030);
+energy scale $\mphi = 5.71\,\mathrm{eV}$, accessible to PTOLEMY and
+KATRIN-class neutrino-mass experiments \citep{KATRIN2022} (2027--2030);
 and (2) $\sigeff = 0.794$ ($S_8 = 0.820$), testable by Euclid weak-lensing
 (2026--2028).
 

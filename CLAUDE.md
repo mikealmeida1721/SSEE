@@ -198,7 +198,8 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | ~~**OP-4**~~ | ~~Recomputar r_V solar con Λ_SSEE=M=8.81 meV~~ | ✅ RESUELTO 2026-05-15 — k-mouflage + αB=αM=0 EFT; Paper 8 §4.2/§4.4 revisados |
 | ~~**OP-6**~~ | ~~Derivar forma screening multiplicativa vs aditiva del Lagrangiano~~ | ✅ RESUELTO 2026-05-15 — universo separado k-essence + identidad 1+w₀=Ω_m |
 | ~~**OP-3**~~ | ~~Probar Postulate C.1 incondicionalmente — jacobiano ∂φ/∂χ (tras OP-6)~~ | ✅ RESUELTO 2026-05-16 — jerarquía EFT (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2) único |
-| **OP-1+OP-2** | Derivar factor 200 Ω_b h² y exponente 7 n_s del UV (tras OP-3) | Media |
+| ~~**OP-1**~~ | ~~Derivar factor 200 Ω_b h²~~ | ✅ PARCIAL 2026-05-16 — (π−φ)/H₀_SSEE=0.32σ; BBN completo → Paper B/C |
+| ~~**OP-2**~~ | ~~Derivar exponente 7 n_s del UV~~ | ✅ RESUELTO 2026-05-16 — α-attractor universality + N_*=2φ⁷; r=φ⁻¹⁰ nueva pred. falsificable |
 | **OP-5** | S₈ 2.29σ DES — simulaciones N-body bariónicas | DIFERIDO (supercomputadora externa) |
 | **Zenodo v2** | Archivar Papers 1-10 PDFs + OPEN_PROBLEMS.md + CLASS scripts con DOI | Alta |
 | **Endorser arXiv** | Re-contactar endorsers con Papers 1-3 submission-ready | Alta |

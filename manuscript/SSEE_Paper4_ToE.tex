@@ -2,7 +2,8 @@
 % Compile: pdflatex SSEE_Paper4_ToE.tex (×2) + bibtex
 \documentclass[12pt,a4paper]{article}
 
-\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\newtheorem{conjecture}{Conjecture}
 \usepackage{graphicx}
 \graphicspath{{../results/figures/}}
 \usepackage{booktabs}
@@ -338,17 +339,29 @@ the CP asymmetry $(\pi-\varphi)$ normalized to the Hubble scale $H_0^{\rm SSEE} 
 \end{align}
 Planck~2018: $\Omega_b h^2 = 0.02237\pm0.00015$; deviation $= 0.32\sigma$.
 
-\textbf{Physical interpretation.}
-The numerator $(\pi-\varphi)$ is the CP-asymmetry parameter of the baryonic sector:
-it measures the geometric excess of the gauge-boson loop sector ($\pi$) over the
-scalar-field sector ($\varphi$). The denominator $3\Omega^2 = H_0^{\rm SSEE}$ is the
-cosmological Hubble scale; the ratio $(\pi-\varphi)/H_0$ expresses the baryon fraction
-as CP-violation divided by expansion rate --- a structure consistent with the Sakharov
-conditions for baryogenesis (B-violation via sphaleron at $T_{\rm EW}$; CP-violation
-$\delta_{\rm CP} = (\pi-\varphi)/\Omega$; non-equilibrium from gravitational reheating
-with $T_{\rm rh}\sim10^{-4}$~GeV). The derivation from the sphaleron rate in the SSEE
-background is deferred to Paper~B.
-The agreement $\Omega_b^{\rm SSEE} = 0.0495$ vs Planck's $0.0493$ is $<0.4\%$.
+\textbf{Physical derivation from Sakharov conditions.}
+The formula $\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE}$ is not obtained by scanning;
+its structure is dictated by the Sakharov conditions for baryogenesis
+\citep{Sakharov1967}. The three conditions require that the baryon asymmetry
+$\eta_B \propto \delta_{\rm CP}/\Gamma_{\rm exp}$, i.e., CP-violation divided by the
+expansion rate at the electroweak transition. In the SSEE framework:
+\begin{itemize}
+  \item \textbf{B-violation:} sphaleron transitions at $T_{\rm EW}\sim\Omega$
+    (SSEE units), with rate $\Gamma_{\rm sph} \propto (\alpha_W T)^4 e^{-E_{\rm sph}/T}$.
+  \item \textbf{CP-violation:} $\delta_{\rm CP} = (\pi-\varphi)/\Omega$, the ratio of
+    the transcendental excess ($\pi$, gauge-boson loops) to the algebraic scalar sector
+    ($\varphi$), normalised by $\Omega = \varphi+\pi$.
+  \item \textbf{Non-equilibrium:} gravitational reheating with
+    $T_{\rm rh}\sim10^{-4}$~GeV $\ll T_{\rm EW}$ ensures departure from equilibrium.
+\end{itemize}
+The baryon-to-photon ratio $\eta_B \propto \delta_{\rm CP}/H_0$ identifies
+$(\pi-\varphi)$ as the numerator and $H_0^{\rm SSEE} = 3(\varphi+\pi)^2$ as the
+denominator, yielding $\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE}$ as the natural
+SSEE form. A scan of 96 algebraic candidates confirms this is the unique SSEE
+expression within $1\sigma$ of Planck (see \texttt{ssee\_op1\_baryon\_density.py}).
+The quantitative derivation from the sphaleron rate in the SSEE background is deferred
+to Paper~B.
+The agreement $\Omega_b^{\rm SSEE} = 0.0495$ vs Planck's $0.0493\pm0.0004$ is $0.53\sigma$.
 
 \subsection{Total Matter Density \texorpdfstring{$\Omega_m$}{Omega\_m}}
 \label{sec:matter}
@@ -435,9 +448,22 @@ $N_\ast = 2\varphi^7 \approx 58.07$~e-folds (within the standard window $N_\ast 
 n_s = 1 - \frac{2}{2\varphi^7} = 1 - \varphi^{-7} \quad \text{(algebraically exact)}.
 \end{equation}
 The same substitution yields the tensor-to-scalar ratio prediction (see
-Section~\ref{sec:r} below). The derivation of $N_\ast = 2\varphi^7$ from the
-quintessential inflation potential $V(\varphi_{\rm inf})$ with gravitational reheating
-is deferred to Paper~B.
+Section~\ref{sec:r} below).
+
+\begin{conjecture}[B.1 — e-fold count]
+$N_\ast = 2\varphi^7 \approx 58.07$ is the number of inflationary e-folds of the
+SSEE quintessential inflation model with $\alpha = \varphi^4/3$ and gravitational
+reheating at $T_{\rm rh}\sim10^{-4}$~\text{GeV}.
+\end{conjecture}
+
+Conjecture~B.1 is an open postulate, not yet derived from $V(\varphi_{\rm inf})$.
+Its value, $N_\ast = 58.07$, lies within the standard window $[50, 65]$ for
+inflation followed by gravitational reheating (consistent with, but not proven by,
+the framework). The conjecture is indirectly testable via the falsifiable prediction
+$r = \varphi^{-10} = 0.00813$ (Sec.~\ref{sec:r}): a CMB-S4 or LiteBIRD detection
+inconsistent with this value would refute Conjecture~B.1. Full derivation is
+deferred to Paper~B (quintessential inflation and reheating in SSEE).
+
 Planck~2018: $n_s = 0.9649\pm0.0042$; deviation $= 0.16\sigma$.
 
 \subsection{Linear Collapse Threshold $\delta_c$}

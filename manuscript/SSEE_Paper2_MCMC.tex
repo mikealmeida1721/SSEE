@@ -57,7 +57,7 @@ baseline \citep{Zhang2026}. Using geometric constants fixed algebraically
 by $\pi$ and the golden ratio $\varphi$ — with $H_0$ as the sole free
 parameter — we compare the model against \LCDM\ and a free CPL
 parameterisation via posterior constraints, information criteria, and
-predictive checks, using \textsc{emcee} with $N_{\rm walkers}=100$,
+predictive checks, using \textsc{emcee} \citep{emcee,GoodmanWeare2010} with $N_{\rm walkers}=100$,
 $N_{\rm steps}=25{,}000$ ($2.5\times10^6$ total evaluations), and a same-bin correlated block-diagonal covariance approximation for the DESI~DR2 BAO measurements; convergence
 diagnostics (including $N_{\rm eff}=4{,}402$ effective samples for \SSEE) are
 reported in Table~\ref{tab:convergence}.
@@ -106,6 +106,9 @@ in Paper~1 \citep{SSEE_paperI}.
 \section{Introduction}
 \label{sec:intro}
 
+The discovery of cosmic acceleration \citep{Perlmutter1999,Riess1998} has motivated
+a broad class of dark energy models, from the cosmological constant to dynamical
+scalar fields \citep{Weinberg2013,Clifton2012}.
 The \SSEE\ framework \citep{SSEE_paperI} is a
 \textbf{zero-parameter phenomenological framework} that encodes all
 cosmological observables as algebraic combinations of $\pi$ and
@@ -551,6 +554,20 @@ the \SSEE\ values.
   \label{fig:w0wa}
 \end{figure}
 
+\paragraph{CMB-only constraint on $w_0$.}
+The Planck~2018 CMB-alone posterior yields $w_0 = -1.03\pm0.03$
+(68\%~CL, \citealt{Planck2018}), which differs from the \SSEE\
+prediction $w_0=-0.840$ by $\sim6.3\sigma$ \emph{when evaluated against the
+CMB-only contour}.  This is not a failure of the model: the CMB-alone
+constraint on $w_0$ is driven by the acoustic-scale degeneracy
+$\theta_\ast \propto r_d/D_A$ and assumes $r_d \approx 147\ \mathrm{Mpc}$
+(calibrated to \LCDM).  In \SSEE, $r_d^{\mathrm{SSEE}}\approx 175\ \mathrm{Mpc}$
+mapped through the MIRA factor to $r_{d,\mathrm{eff}}\approx147\ \mathrm{Mpc}$
+changes the degeneracy direction entirely.  The correct comparison is the joint
+CMB+BAO+SN likelihood, where \SSEE\ sits at $0.05\sigma$ of the DESI~DR2 CPL
+best-fit (Fig.~\ref{fig:w0wa}).  Reporting the CMB-only tension without this
+context would constitute a misuse of the likelihood \citep{Verde2019}.
+
 \subsection{Sound horizon and $H_0$ posterior}
 
 The fixed $\Omega_{m,\mathrm{eff}}=0.160$ is the problematic quantity:
@@ -791,7 +808,7 @@ not contingent on specific choices of $\sigma_{M_{\rm obs}}$.
 
 \begin{table}[H]
 \centering
-\caption{BIC and AIC at MAP ($N_{\rm data}=16$). Jeffreys: $\Delta$BIC\,$>10$ = very strong evidence against.
+\caption{BIC \citep{Schwarz1978} and AIC at MAP ($N_{\rm data}=16$). Jeffreys scale \citep{Jeffreys1961}: $\Delta$BIC\,$>10$ = very strong evidence against.
 \textit{Note:} \SSEE-V3.6 ($\Delta\mathrm{BIC}=+206$) tests the full model within the standard
 \LCDM\ background calibration (background-structure mismatch penalty, not a dynamic-sector test).
 \SSEE$_{\rm dyn}$ ($\Delta\mathrm{BIC}=-5.55$) isolates the dynamic sector ($w_0$, $w_a$ fixed
@@ -896,7 +913,7 @@ consistent with Planck~2018 at $1.1\sigma$ and with the DESI~DR2+CMB joint infer
 \citep[$H_0\approx68$\,km\,s$^{-1}$\,Mpc$^{-1}$;][]{DESI_DR2}.
 The model does not resolve the SH0ES distance-ladder tension
 \citep[$H_0\approx73$\,km\,s$^{-1}$\,Mpc$^{-1}$;][]{Riess2022}; this is a known
-open problem shared by all smooth dark-energy models including \LCDM, and lies outside
+open problem shared by all smooth dark-energy models including \LCDM\ \citep{Verde2019,Kamionkowski2023}, and lies outside
 the scope of this paper's DESI~BAO + cluster validation.
 \textit{The algebraic $H_0$ prediction is CMB-consistent but not distance-ladder consistent;
 resolving the full $5\sigma$ Hubble tension requires either a modification of the
@@ -1372,6 +1389,51 @@ Accelerating universes with scaling dark matter.
 Linder, E.V.\ 2003,
 Exploring the expansion history of the universe.
 \textit{Phys.\ Rev.\ Lett.} \textbf{90}, 091301. arXiv:astro-ph/0208512.
+
+\bibitem[Perlmutter et al.(1999)]{Perlmutter1999}
+Perlmutter, S., et al.\ (1999).
+Measurements of $\Omega$ and $\Lambda$ from 42 High-Redshift Supernovae.
+\textit{ApJ} \textbf{517}, 565. arXiv:astro-ph/9812133.
+
+\bibitem[Riess et al.(1998)]{Riess1998}
+Riess, A.~G., et al.\ (1998).
+Observational Evidence from Supernovae for an Accelerating Universe and a Cosmological Constant.
+\textit{AJ} \textbf{116}, 1009. arXiv:astro-ph/9805200.
+
+\bibitem[Weinberg et al.(2013)]{Weinberg2013}
+Weinberg, D.~H., et al.\ (2013).
+Observational probes of cosmic acceleration.
+\textit{Phys.\ Rep.} \textbf{530}, 87. arXiv:1201.2434.
+
+\bibitem[Clifton et al.(2012)]{Clifton2012}
+Clifton, T., et al.\ (2012).
+Modified gravity and cosmology.
+\textit{Phys.\ Rep.} \textbf{513}, 1. arXiv:1106.3999.
+
+\bibitem[Verde et al.(2019)]{Verde2019}
+Verde, L., Treu, T., \& Riess, A.~G.\ (2019).
+Tensions between the early and late Universe.
+\textit{Nature Astron.} \textbf{3}, 891. arXiv:1907.10625.
+
+\bibitem[Kamionkowski \& Riess(2023)]{Kamionkowski2023}
+Kamionkowski, M., \& Riess, A.~G.\ (2023).
+The Hubble tension and early dark energy.
+\textit{Ann.\ Rev.\ Nucl.\ Part.\ Sci.} \textbf{73}, 153. arXiv:2211.04492.
+
+\bibitem[Goodman \& Weare(2010)]{GoodmanWeare2010}
+Goodman, J., \& Weare, J.\ (2010).
+Ensemble samplers with affine invariance.
+\textit{Commun.\ Appl.\ Math.\ Comput.\ Sci.} \textbf{5}, 65.
+
+\bibitem[Schwarz(1978)]{Schwarz1978}
+Schwarz, G.\ (1978).
+Estimating the dimension of a model.
+\textit{Ann.\ Statist.} \textbf{6}, 461.
+
+\bibitem[Jeffreys(1961)]{Jeffreys1961}
+Jeffreys, H.\ (1961).
+\textit{Theory of Probability}, 3rd ed.
+Oxford University Press.
 
 \end{thebibliography}
 \end{document}

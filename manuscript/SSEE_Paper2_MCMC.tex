@@ -109,6 +109,8 @@ in Paper~1 \citep{SSEE_paperI}.
 The discovery of cosmic acceleration \citep{Perlmutter1999,Riess1998} has motivated
 a broad class of dark energy models, from the cosmological constant to dynamical
 scalar fields \citep{Weinberg2013,Clifton2012}.
+Baryon acoustic oscillations, first detected in galaxy surveys by \citet{Eisenstein2005},
+have since become a primary geometric probe of the expansion history.
 The \SSEE\ framework \citep{SSEE_paperI} is a
 \textbf{zero-parameter phenomenological framework} that encodes all
 cosmological observables as algebraic combinations of $\pi$ and
@@ -216,7 +218,7 @@ We observe the \emph{numerical coincidence}
   \rdSSEE \times |w_0| \approx 175.6\times 0.840 \approx 147.5\;\text{Mpc},
   \label{eq:rd_mapping}
 \end{equation}
-which is within $1\sigma$ of the Planck-inferred value $r_d = 147.09\pm0.26$\,Mpc.
+which is within $1\sigma$ of the Planck-inferred value $r_d = 147.09\pm0.26$\,Mpc \citep{HuSugiyama1996}.
 \textbf{This is a post-hoc numerical coincidence, not a derivation.}
 A first-principles acoustic derivation would require solving the
 Israel--Stewart fluid equations in the early universe (Paper~1,
@@ -391,7 +393,7 @@ CPL        & $H_0,\;\Omega_m,\;\wz,\;\wa,\;\Omega_b h^2$ & --- & 5 \\
 \end{tabular}
 \end{table}
 
-All models share a BBN prior $\Omega_b h^2\sim\mathcal{N}(0.02218,\,0.00055^2)$.
+All models share a BBN prior $\Omega_b h^2\sim\mathcal{N}(0.02218,\,0.00055^2)$ \citep{Cooke2018}.
 For \LCDM\ and CPL, the full 3D Planck prior is applied. For \SSEE,
 the Planck prior reduces to a marginal Gaussian on $H_0$ only, since
 $\Omega_m$ is fixed. CPL carries weakly informative priors
@@ -549,7 +551,7 @@ the \SSEE\ values.
   \includegraphics[width=0.70\textwidth]{fig1_w0wa_plane.pdf}
   \caption{\SSEE-V3.6 (red star) in the $\wz$--$\wa$ plane.
   Ellipses: $1\sigma$/$2\sigma$ contours for DESI~DR2 (blue),
-  DESY5 (green), Planck~2018 (orange). \SSEE\ lies within
+  DES~Y5 \citep{DESY52024} (green), Planck~2018 (orange). \SSEE\ lies within
   $0.05\sigma$ of DESI~DR2.}
   \label{fig:w0wa}
 \end{figure}
@@ -649,7 +651,7 @@ reflects a real discrepancy: the \SSEE\ Hubble rate overestimates
 $H(z)$ at intermediate redshifts ($0.5\lesssim z\lesssim1.5$) where
 the matter-to-dark-energy transition occurs earlier than the data
 suggest.  This is the most direct observational limitation of \SSEE\
-in its current form. Resolving it without destroying the underlying algebraic axioms likely requires an extension of the gravitational sector, such as non-minimal coupling or Kinetic Braiding in the Effective Field Theory of Dark Energy (EFT-DE).
+in its current form. Resolving it without destroying the underlying algebraic axioms likely requires an extension of the gravitational sector, such as non-minimal coupling \citep{Amendola2000} or Kinetic Braiding \citep{Deffayet2010} in the Effective Field Theory of Dark Energy \citep[EFT-DE;][]{Gubitosi2013}.
 The excess originates precisely from the fixed geometric constraint
 $\Omega_{m,\mathrm{dyn}}=1+w_0=0.160$. Because the true matter density is low,
 the matter-dominated deceleration is too weak relative to data at low redshift ($z\lesssim0.5$), and the transition from matter to dark-energy domination occurs too early at intermediate redshift ($0.5\lesssim z\lesssim1.5$).
@@ -676,7 +678,7 @@ $z\sim1$ would resolve it without re-fitting.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.78\textwidth]{fig7_Hz_comparison.pdf}
-  \caption{MAP $H(z)$ vs Cosmic Chronometers \citep{Moresco2022}.
+  \caption{MAP $H(z)$ vs Cosmic Chronometers \citep{JimenezLoeb2002,Moresco2022}.
   Red band: \SSEE\ 68\% posterior interval.}
   \label{fig:Hz}
 \end{figure}
@@ -967,7 +969,7 @@ The companion Paper~3 carries out this test.
 The $S_8 \equiv \sigma_8\sqrt{\Omega_m/0.3}$ constraint depends critically on
 which matter sector is used.  With $\Omega_{m,\mathrm{CMB}}=0.3199$
 (MIRA-corrected background sector), the Israel--Stewart framework yields
-$S_8 = 0.837$, within $0.4\sigma$ of Planck 2018, though tension with KiDS/DES remains.
+$S_8 = 0.837$, within $0.4\sigma$ of Planck 2018, though tension with KiDS-1000 \citep{Heymans2021} and DES~Y3 \citep{Abbott2022} remains.
 With $\Omega_{m,\mathrm{dyn}}=0.160$ (dynamical sector alone), $S_8 \approx 0.59$,
 a ${\sim}6\sigma$ tension with weak-lensing surveys.
 This sharp bifurcation confirms that the MIRA bridge is load-bearing for the
@@ -991,7 +993,7 @@ Four ordered tests for \SSEE\ to survive a full CMB analysis:
     must reproduce the angular positions of all observed CMB acoustic
     peaks. Failure here would immediately falsify the background geometry.
   \item \textbf{Damping tail.} $\Omega_{m,\mathrm{eff}}=0.160$ must be
-    compatible with the Silk-damping scale and the third acoustic peak
+    compatible with the Silk-damping scale \citep{Silk1968} and the third acoustic peak
     height. This is the most constraining test for the low-matter fraction.
   \item \textbf{Joint posterior consistency.} The joint
     $(H_0,\Omega_b h^2)$ posterior derived from the \SSEE\ CMB background
@@ -1434,6 +1436,61 @@ Estimating the dimension of a model.
 Jeffreys, H.\ (1961).
 \textit{Theory of Probability}, 3rd ed.
 Oxford University Press.
+
+\bibitem[Cooke et al.(2018)]{Cooke2018}
+Cooke, R.~J., Pettini, M., \& Steidel, C.~C.\ (2018).
+One Percent Determination of the Primordial Deuterium Abundance.
+\textit{ApJ}, 855, 102.
+
+\bibitem[DES Collaboration(2024)]{DESY52024}
+DES Collaboration\ (2024).
+The Dark Energy Survey: Cosmology Results with 1500 deg$^2$ of Weak Gravitational Lensing and Galaxy Clustering (DES~Y5).
+\textit{arXiv:2401.02929}.
+
+\bibitem[Deffayet et al.(2010)]{Deffayet2010}
+Deffayet, C., Esposito-Farèse, G., \& Vikman, A.\ (2010).
+Covariant Galileon.
+\textit{Phys.~Rev.~D}, 79, 084003.
+
+\bibitem[Gubitosi et al.(2013)]{Gubitosi2013}
+Gubitosi, G., Piazza, F., \& Vernizzi, F.\ (2013).
+The Effective Field Theory of Dark Energy.
+\textit{JCAP}, 2013(02), 032.
+
+\bibitem[Heymans et al.(2021)]{Heymans2021}
+Heymans, C., et al.\ (2021).
+KiDS-1000 Cosmology: Multi-probe weak gravitational lensing and spectroscopic galaxy clustering constraints.
+\textit{A\&A}, 646, A140.
+
+\bibitem[Abbott et al.(2022)]{Abbott2022}
+Abbott, T.~M.~C., et al.\ (DES Collaboration) (2022).
+Dark Energy Survey Year 3 Results: Cosmological Constraints from Galaxy Clustering and Weak Lensing.
+\textit{Phys.~Rev.~D}, 105, 023520.
+
+\bibitem[Eisenstein et al.(2005)]{Eisenstein2005}
+Eisenstein, D.~J., et al.\ (2005).
+Detection of Baryon Acoustic Oscillations in the Correlation Function of a Sample of 46,748 Luminous Red Galaxies.
+\textit{ApJ}, 633, 560.
+
+\bibitem[Jimenez \& Loeb(2002)]{JimenezLoeb2002}
+Jimenez, R., \& Loeb, A.\ (2002).
+Constraining Cosmological Parameters Based on Relative Galaxy Ages.
+\textit{ApJ}, 573, 37.
+
+\bibitem[Silk(1968)]{Silk1968}
+Silk, J.\ (1968).
+Cosmic Black-Body Radiation and Galaxy Formation.
+\textit{ApJ}, 151, 459.
+
+\bibitem[Hu \& Sugiyama(1996)]{HuSugiyama1996}
+Hu, W., \& Sugiyama, N.\ (1996).
+Small-Scale Cosmological Perturbations: An Analytic Approach.
+\textit{ApJ}, 471, 542.
+
+\bibitem[Amendola(2000)]{Amendola2000}
+Amendola, L.\ (2000).
+Coupled quintessence.
+\textit{Phys.~Rev.~D}, 62, 043511.
 
 \end{thebibliography}
 \end{document}

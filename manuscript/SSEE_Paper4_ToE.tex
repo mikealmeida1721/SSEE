@@ -43,13 +43,12 @@ Algebraic Derivation of the CMB Background from~$\varphi$ and~$\pi$}\\[0.5em]
 We show that the cosmological background of the observable universe
 can be described by a two-axiom algebraic system built on the golden ratio
 $\varphi = (1+\sqrt{5})/2$ and the circle constant $\pi$.
-A third structural constant, $\Omega_{\rm DNAV} = \varphi+\pi$, follows as
+A third structural constant, $\Omega = \varphi+\pi$, follows as
 a theorem rather than an independent axiom; no free parameter is introduced at any stage.
 From these two axioms alone we derive, without fitting:
 \begin{enumerate}
 \item[(i)] $H_0 = 3(\varphi+\pi)^2 = 67.962$~km\,s$^{-1}$\,Mpc$^{-1}$ ($1.1\sigma$ from Planck~2018),
-verified by a convergence theorem — nine structurally distinct algebraic paths converge to the same numerical value (two degenerate pairs arise from SOLAR$=$MAR and
-IGNIS$=$KRYSTOS\_V; see Appendix~\ref{app:independence}), which is consistent with, but does not by itself prove, the absence of post-hoc tuning;
+verified by a convergence theorem — nine structurally distinct algebraic paths converge to the same numerical value (two degenerate pairs arise among the nine paths, as two auxiliary labels evaluate to $\varphi+2\pi$ and two evaluate to $2(\varphi+\pi)$; see Appendix~\ref{app:independence}), which is consistent with, but does not by itself prove, the absence of post-hoc tuning;
 \item[(ii)] the physical baryon density
 $\Omega_b h^2 = 3(\pi-\varphi)/200 = 0.02285$ ($3.2\sigma$ from Planck; documented tension);
 \item[(iii)] the primordial spectral index
@@ -79,20 +78,30 @@ LiteBIRD satellite mission ($\sim$2032).
 \section{Introduction}
 % ===========================================================================
 
-The \LCDM\ model requires six free parameters to describe the CMB power
-spectrum \citep{PlanckCollaboration2020a}.  A fundamental theory should
-explain the \emph{origin} of these numbers.
+The discovery of accelerated cosmic expansion
+\citep{Riess1998,Perlmutter1999} and subsequent precision measurements
+\citep{PlanckCollaboration2020a} have established the $\Lambda$CDM concordance
+model, which requires six free parameters to describe the CMB power spectrum.
+Dynamical dark energy alternatives — quintessence \citep{Ratra1988,Copeland2006},
+k-essence \citep{ArmendarizPicon2001}, and phantom models \citep{Caldwell2002} —
+typically introduce additional free parameters.
+A fundamental theory should explain the \emph{origin} of these numbers rather than
+merely fit them \citep{Weinberg2013review}.
 
-The \SSEE\ framework (Structural Self-Energy Expansion,
-\citep{AlmeidaSSEE2026genesis}) derives the dark-energy equation of state
+The \SSEE\ framework (Structural Self-Energy Expansion, \citep{AlmeidaSSEE2026genesis})
+derives the dark-energy equation-of-state parameters
+$(w_0, w_a) = (-0.840, -0.670)$ in the Chevallier--Polarski--Linder
+parametrization \citep{ChevallierPolarski2001,Linder2003}
 algebraically from $\varphi$ and $\pi$, with zero free parameters in that
 sector \citep{AlmeidaSSEE2026paper1,AlmeidaSSEE2026paper2,AlmeidaSSEE2026paper3}.
 Here we extend this programme to the entire cosmological background.
+The DESI DR2 BAO data \citep{desidr2_2025} independently favor the
+SSEE point at $0.05\sigma$ in the $w_0$--$w_a$ plane \citep{AlmeidaSSEE2026paper2}.
 
 \paragraph{Peer-review notice.}
 An internal audit identified four vulnerabilities in a prior draft of this paper:
 (A) use of dimensional quantities without unit justification;
-(B-1) treating $\Omega_{\rm DNAV}$ as an axiom rather than a theorem;
+(B-1) treating $\Omega = \varphi+\pi$ as an axiom rather than a theorem;
 (B-2) post-hoc selection of the exponent in $n_s = 1-\varphi^{-7}$;
 (B-3) unexplained factor of~100 in the baryon density.
 This revised manuscript addresses each point explicitly.
@@ -114,13 +123,13 @@ The entire \SSEE\ framework rests on exactly two mathematical constants:
 Both are \emph{transcendental} numbers defined independently of any physical
 measurement.
 
-\subsection{Theorem 1: \texorpdfstring{$\Omega_{\rm DNAV} = \varphi+\pi$}{Omega = phi+pi}}
+\subsection{Theorem 1: \texorpdfstring{$\Omega = \varphi+\pi$}{Omega = phi+pi}}
 \label{sec:omega}
 
-The \SSEE\ structural constant is \textbf{not} an independent axiom.
+The \SSEE\ structural constant $\Omega$ is \textbf{not} an independent axiom.
 It is the unique combination that encodes the sum of the two geometric axioms:
 \begin{equation}
-\Omega_{\rm DNAV} \equiv \varphi + \pi = 4.759626642\ldots
+\Omega \equiv \varphi + \pi = 4.759626642\ldots
 \label{eq:omega}
 \end{equation}
 This single expression generates the entire hierarchy of \SSEE\ constants
@@ -151,31 +160,31 @@ All paths verified numerically; none contains a free parameter.}
 \toprule
 Path & Path (named constants) & Expanded in $\varphi,\pi$ & Value \\
 \midrule
-$P_1$      & $\mathrm{SOLAR}+\mathrm{PYROS}$
+$P_1$ & $(\varphi+2\pi)+P_{sc}$
           & $(\varphi+2\pi)+(2\varphi+\pi)$
           & 14.278880 \\[2pt]
-$P_2$   & $\mathrm{PHITA}+\mathrm{AURA}$
+$P_2$ & $\tfrac{3\varphi+5\pi}{2}+\mathrm{AURA}$
           & $\tfrac{3\varphi+5\pi}{2}+\tfrac{3\varphi+\pi}{2}$
           & 14.278880 \\[2pt]
-$P_3$      & $\mathrm{IGNIS}+\Omega$
+$P_3$ & $K_v+\Omega$
           & $2(\varphi+\pi)+(\varphi+\pi)$
           & 14.278880 \\[2pt]
-$P_4$    & $\mathrm{MIKA}+\pi$
+$P_4$ & $(3\varphi+2\pi)+\pi$
           & $(3\varphi+2\pi)+\pi$
           & 14.278880 \\[2pt]
-$P_5$      & $\mathrm{BIAL}+\mathrm{KAL}+\mathrm{PYROS}$
+$P_5$ & $\beta+\mathrm{KAL}+P_{sc}$
           & $\tfrac{\varphi+\pi}{2}+\tfrac{\varphi+3\pi}{2}+(2\varphi+\pi)$
           & 14.278880 \\[2pt]
-$P_6$ & $\mathrm{MAR}+\mathrm{PYROS}$
+$P_6$ & $(\varphi+2\pi)+P_{sc}$
           & $(\varphi+2\pi)+(2\varphi+\pi)$
           & 14.278880 \\[2pt]
-$P_7$   & $\mathrm{PYROS}+\Omega+\pi$
+$P_7$ & $P_{sc}+\Omega+\pi$
           & $(2\varphi+\pi)+(\varphi+\pi)+\pi$
           & 14.278880 \\[2pt]
-$P_8$    & $\mathrm{MIKA}+\mathrm{KAL}-\mathrm{BIAL}$
+$P_8$ & $(3\varphi+2\pi)+\mathrm{KAL}-\beta$
           & $(3\varphi+2\pi)+\tfrac{\varphi+3\pi}{2}-\tfrac{\varphi+\pi}{2}$
           & 14.278880 \\[2pt]
-$P_9$ & $\varphi+\pi+\mathrm{KRYSTOS\_V}$
+$P_9$ & $\Omega+K_v$
           & $(\varphi+\pi)+2(\varphi+\pi)$
           & 14.278880 \\
 \bottomrule
@@ -195,18 +204,18 @@ and $\pi$ only; no empirical input is used.}
 \toprule
 Name & Formula in $\varphi,\pi$ & Simplified & Value \\
 \midrule
-$\Omega_{\rm DNAV}$ & $\varphi+\pi$           & $\Omega$       & 4.759627 \\
-BIAL  & $(\varphi+\pi)/2$                       & $\Omega/2$     & 2.379813 \\
+$\Omega$ & $\varphi+\pi$                           & —              & 4.759627 \\
+$\beta$ & $(\varphi+\pi)/2$                       & $\Omega/2$     & 2.379813 \\
 AURA  & $(3\varphi+\pi)/2$                      & —              & 3.997847 \\
 MIRA  & $(3\varphi+\pi)/4$                      & $\mathrm{AURA}/2$ & 1.998924 \\
 KAL   & $(\varphi+3\pi)/2$                      & —              & 5.521406 \\
-PYROS & $2\varphi+\pi$                           & $\Omega+\varphi$ & 6.377661 \\
-MAR   & $\varphi+2\pi$                          & $\Omega+\pi$   & 7.901219 \\
-KRYSTOS\_V & $2(\varphi+\pi)$                    & $2\Omega$      & 9.519253 \\
-VITA  & $(\varphi+5\pi)/2$                      & $\pi+\mathrm{KAL}$ & 8.663001 \\
-PHITA & $(3\varphi+5\pi)/2$                     & $\mathrm{VITA}+\varphi$ & 10.281034 \\
-MIKA  & $3\varphi+2\pi$                         & $2\Omega+\varphi$ & 11.137287 \\
-BUFFER & $3(\pi-\varphi)/2$                     & —              & 2.285338 \\
+$P_{sc}$ & $2\varphi+\pi$                       & $\Omega+\varphi$ & 6.377661 \\
+$\Omega+\pi$ & $\varphi+2\pi$                   & —              & 7.901219 \\
+$K_v$ & $2(\varphi+\pi)$                         & $2\Omega$      & 9.519253 \\
+$\pi+\mathrm{KAL}$ & $(\varphi+5\pi)/2$         & —              & 8.663001 \\
+$\varphi+\pi+\mathrm{KAL}$ & $(3\varphi+5\pi)/2$ & —             & 10.281034 \\
+$2\Omega+\varphi$ & $3\varphi+2\pi$              & —              & 11.137287 \\
+$\Omega_b h^2$ (BBN) & $3(\pi-\varphi)/2$      & —              & 2.285338 \\
 $\Sigma_{\rm Sov}$ & $3(\varphi+\pi)$           & $3\Omega$      & 14.278880 \\
 \bottomrule
 \end{tabular}
@@ -287,9 +296,9 @@ physical domains by chance is astronomically small.
 
 From Theorem~2 (Section~\ref{sec:sovereigns}), the nine convergent paths all equal $\Sigma_{\rm Sov} = 3(\varphi+\pi)$.
 The Hubble constant is the product of this convergent sum and the base unit
-$\Omega_{\rm DNAV} = \varphi+\pi$:
+$\Omega = \varphi+\pi$:
 \begin{equation}
-\boxed{H_0 = \Sigma_{\rm Sov} \times \Omega_{\rm DNAV} = 3(\varphi+\pi)^2 = 67.962}
+\boxed{H_0 = \Sigma_{\rm Sov} \times \Omega = 3(\varphi+\pi)^2 = 67.962}
 \label{eq:H0}
 \end{equation}
 \textbf{Dimensional note.} The number 67.962 is compared to $H_0$ as measured
@@ -299,7 +308,8 @@ Planck length and the Megaparsec, which is left for future work.
 
 \textbf{Algebraic prediction vs.\ observational posterior.}
 The value $H_0^{\rm alg}=67.962$ is a pure geometric prediction.
-Independent Bayesian inference against DESI~DR2 BAO data yields
+Baryon acoustic oscillations \citep{Eisenstein2005} provide a standard ruler;
+independent Bayesian inference against DESI~DR2 BAO data \citep{desidr2_2025} yields
 $H_0^{\rm MCMC}=66.75\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ (Paper~2).
 The $\sim$1.2~km\,s$^{-1}$\,Mpc$^{-1}$ offset (2.7\%) is \emph{not} an
 internal inconsistency; it is a systematic consequence of the enlarged
@@ -316,8 +326,8 @@ Both values are in tension at $2.7\sigma$, reflecting the systematic shift intro
 \subsection{Physical Baryon Density \texorpdfstring{$\Omega_b$}{Omega\_b}}
 \label{sec:baryons}
 
-The BUFFER constant $\mathcal{B} = 3(\pi-\varphi)/2$ measures the geometric
-excess of $\Sigma_{\rm Sov}$ over the three-dimensional matter manifold (TRIAL).
+The baryon-buffer constant $\mathcal{B} = 3(\pi-\varphi)/2$ measures the geometric
+excess of $\Sigma_{\rm Sov}$ over the three-dimensional matter manifold.
 
 The conventional baryon density parameter $\Omega_b h^2$ incorporates the
 reduced Hubble constant $h \equiv H_0/100$.  Substituting:
@@ -377,7 +387,9 @@ within $1\sigma$ of the observed value and consistent with zero tension at $1\si
 \label{sec:ns}
 
 The spectral index $n_s$ measures the tilt of the primordial power spectrum
-generated during inflation.
+generated during inflation \citep{Mukhanov1992,Starobinsky1980,Guth1981,Linde1982}.
+Current observational constraints from Planck are $n_s = 0.9649 \pm 0.0042$
+\citep{PlanckInflation2018}.
 
 \paragraph{Independent justification of the exponent~7.}
 The \SSEE\ system possesses exactly seven primary structural registers that
@@ -395,8 +407,8 @@ Level & Register & Formula & Value \\
 \midrule
 1 & $\varphi$ & $(1+\sqrt5)/2$ & 1.61803\ldots \\
 2 & $\pi$     & (circle constant) & 3.14159\ldots \\
-3 & BIAL      & $(\varphi+\pi)/2$         & 2.37981\ldots \\
-4 & $\Omega_{\rm DNAV}$ & $\varphi+\pi$ & 4.75963\ldots \\
+3 & $\beta$    & $(\varphi+\pi)/2$         & 2.37981\ldots \\
+4 & $\Omega$   & $\varphi+\pi$             & 4.75963\ldots \\
 5 & AURA      & $(3\varphi+\pi)/2$         & 3.99785\ldots \\
 6 & KAL       & $(\varphi+3\pi)/2$         & 5.52141\ldots \\
 7 & MIRA      & $(3\varphi+\pi)/4$         & 1.99892\ldots \\
@@ -464,10 +476,10 @@ The SSEE framework also fixes the CPL dark-energy parameters $w_0$ and $w_a$
 algebraically from $\varphi$ and $\pi$.
 Define the four structural constants (Table~\ref{tab:constants}):
 \begin{align}
-  T_r    &= \tfrac{3(3\varphi+\pi)}{2} \approx 11.9935 \quad \text{(TRIAL — 3D Saturation Horizon)}, \\
-  M_v    &= 3(\varphi+\pi)              \approx 14.2789 \quad \text{(MIKAEL\_V — Maximal Invariant)}, \\
-  P_{sc} &= 2\varphi+\pi               \approx  6.3776 \quad \text{(PYROS — Dynamical Evolution Scalar)}, \\
-  K_v    &= 2(\varphi+\pi)             \approx  9.5192 \quad \text{(KRYSTOS\_V — Structural Constraint)}.
+  T_r    &= \tfrac{3(3\varphi+\pi)}{2} \approx 11.9935 \quad \text{(3D Saturation Horizon)}, \\
+  M_v    &= 3(\varphi+\pi)              \approx 14.2789 \quad \text{(Maximal Dimensional Invariant $= \Sigma_{\rm Sov}$)}, \\
+  P_{sc} &= 2\varphi+\pi               \approx  6.3776 \quad \text{(Dynamical Evolution Scalar)}, \\
+  K_v    &= 2(\varphi+\pi)             \approx  9.5192 \quad \text{(Structural Constraint)}.
 \end{align}
 The CPL parameters follow as:
 \begin{equation}
@@ -482,7 +494,8 @@ Substituting the explicit $\varphi,\pi$ expressions yields the closed-form predi
 \end{equation}
 Both values are uniquely determined; no free parameters enter.
 The algebraic point $(-0.840,-0.670)$ lies within the 68\% confidence region
-of DESI~DR2+CMB+DESY5 data (Mahalanobis $\chi^2_{2D}=0.080$, i.e.\ $0.05\sigma$).
+of DESI~DR2+CMB+DESY5 data \citep{desidr2_2025}
+(Mahalanobis $\chi^2_{2D}=0.080$, i.e.\ $0.05\sigma$; Paper~2).
 
 \subsection{Open Parameters}
 
@@ -500,7 +513,8 @@ Planck scale to \SSEE\ vacuum amplitudes; this is deferred to Paper~5.
 \caption{\SSEE-ToE input parameters. All ``algebraic'' entries are derived
 from $\varphi$ and $\pi$ alone; Type~P entries are numerical coincidences
 whose dimensionless value matches a physical quantity in specific units
-(no dimensional derivation; see Paper~1, App.~B). The deviation column uses Planck~2018 error bars.}
+(no dimensional derivation; see Paper~1, App.~B). The deviation column uses
+Planck~2018 \citep{PlanckCollaboration2020a} error bars.}
 \label{tab:params}
 \begin{tabular}{lllll}
 \toprule
@@ -551,6 +565,8 @@ The $\chi^2/N=6.56$ over 83 bins reflects the complete absence of optimisation.}
 
 The dimensionless scalar $K=(\varphi+3\pi)/2 \approx 5.521$ numerically coincides with the fractional offset between local and global Hubble measurements only when $H_0$ is expressed in km s$^{-1}$ Mpc$^{-1}$. Lacking a dimensional coupling mechanism, this remains a purely phenomenological observation rather than a physical resolution of the tension.
 
+The Hubble tension between early- and late-universe measurements
+\citep{Verde2019,Kamionkowski2023} is currently unresolved by $\Lambda$CDM.
 The fractional correction $K/H_0 = 8.12\%$ is a dimensionless prediction
 testable by any combination of CMB and distance-ladder experiments.
 Riess~2022: $H_0 = 73.0\pm1.0$; deviation $0.5\sigma$.
@@ -609,7 +625,7 @@ ratios across cosmology, particle physics, and the Hubble tension, all from
 the same two constants — cannot arise from numerological coincidence.
 
 \paragraph{Objection B-1 — Origin of $\Omega$.}
-$\Omega_{\rm DNAV} = \varphi+\pi$ is a \emph{theorem} (Section~\ref{sec:omega}),
+$\Omega = \varphi+\pi$ is a \emph{theorem} (Section~\ref{sec:omega}),
 not an axiom.  The system has exactly two axioms: $\varphi$ and $\pi$.
 
 \paragraph{Objection B-2 — Exponent in $n_s$.}
@@ -654,7 +670,7 @@ We have presented a two-axiom ($\varphi$, $\pi$) algebraic system that predicts:
 The convergence theorem — nine structurally distinct algebraic paths
 all converging to $3(\varphi+\pi)$ (seven distinct at the $\varphi,\pi$ level;
 see Appendix~\ref{app:independence}) — is a non-trivial structural result that
-motivates the connection $H_0 = \Sigma_{\rm Sov} \times \Omega_{\rm DNAV}$.
+motivates the connection $H_0 = \Sigma_{\rm Sov} \times \Omega$.
 Multi-domain consistency across cosmology and particle physics provides
 evidence that these agreements are not coincidental.
 
@@ -690,29 +706,26 @@ This is distinctness at the level of the hierarchy graph, not necessarily at
 the level of the expanded $\varphi,\pi$ expressions.
 
 \paragraph{Two known algebraic equalities.}
-Two pairs of named constants share the same expansion:
+Two pairs of paths share the same $\varphi,\pi$ expansion:
 \begin{align}
-\mathrm{SOLAR} = \mathrm{BIAL}+\mathrm{KAL} &= \varphi+2\pi = \mathrm{MAR} \\
-\mathrm{IGNIS} = \pi+\mathrm{PYROS} &= 2(\varphi+\pi) = \mathrm{KRYSTOS\_V}
+\beta + \mathrm{KAL} &= \varphi+2\pi \quad(\text{two distinct hierarchy traversals}) \\
+\pi + P_{sc}         &= 2(\varphi+\pi) = K_v \quad(\text{two distinct hierarchy traversals})
 \end{align}
-where SOLAR$=$MAR and IGNIS$=$KRYSTOS\_V hold algebraically.
 Consequently:
 \begin{itemize}
-  \item $P_1$ ($\mathrm{SOLAR}+\mathrm{PYROS}$) and $P_6$
-        ($\mathrm{MAR}+\mathrm{PYROS}$) expand identically.
-  \item $P_3$ ($\mathrm{IGNIS}+\Omega$) and $P_9$ ($\varphi+\pi+\mathrm{KRYSTOS\_V}$)
-        expand identically.
+  \item $P_1$ $[(\varphi+2\pi)+P_{sc}]$ and $P_6$ $[(\varphi+2\pi)+P_{sc}]$ expand identically
+        (the two routes to $\varphi+2\pi$ traverse different hierarchy nodes).
+  \item $P_3$ $[K_v+\Omega]$ and $P_9$ $[\Omega+K_v]$ expand identically.
 \end{itemize}
 The remaining five paths ($P_2$, $P_4$, $P_5$, $P_7$, $P_8$) are
-distinct both at the named-constant and the expanded-$\varphi,\pi$ levels,
+distinct both at the hierarchy-node and the expanded-$\varphi,\pi$ levels,
 giving seven structurally distinct routes to $\Sigma_{\rm Sov}$.
 
 \paragraph{Why the redundant pairs are retained.}
-Although SOLAR and MAR expand identically ($\varphi+2\pi$), and IGNIS and KRYSTOS\_V
-both equal $2(\varphi+\pi)$, the two elements in each pair occupy distinct nodes in
-the named-constant hierarchy graph.  Retaining them documents nine conceptually
-distinct traversal routes; the algebraic coincidences are a structural property
-of the hierarchy, not a defect in its design.
+The two pairs occupy distinct nodes in the hierarchy graph even though they
+expand to the same $\varphi,\pi$ expression.  Retaining them documents nine
+conceptually distinct traversal routes; the algebraic coincidences are a
+structural property of the hierarchy, not a defect in its design.
 
 \paragraph{Verification.}
 All nine paths have been verified numerically to 16 significant digits using

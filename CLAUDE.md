@@ -4,20 +4,20 @@
 
 **Structural Self-Energy Expansion (SSEE-V3.6)** — modelo cosmológico de energía oscura de cero parámetros libres, derivado algebraicamente de φ (razón áurea) y π. Autor: Mike Edison Almeida Vallejo.
 
-Nueve papers:
-- **Paper 1**: Framework teórico + EFT + Predictive Register (arXiv-ready)
-- **Paper 2**: Validación Bayesiana MCMC DESI DR2 + Planck + cúmulos (arXiv-ready)
-- **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready)
-- **Paper 4**: Derivación algebraica CMB desde φ,π — Nine Sovereignties (preprint)
-- **Paper 5**: IS causal perturbation theory — estabilidad, MIRA, S8, fσ₈ (commit 0a9d21c)
-- **Paper 6**: φ-DM dos sectores — m_φ=5.71 eV algebraico, fσ₈ 2.56σ→0.50σ resuelto (commit 9d28620; baseline corregido: σ8=0.702 ODE, versión anterior usaba σ8≈0.578 → inflaba a 3.66σ)
-- **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint)
-- **Paper 8**: Régimen de gravedad fuerte — geodésicas disformales, MIRA emergencia lensing, Vainshtein (commit d7f3b38)
-- **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente (DRAFT, 10 pp, 2026-05-14)
+Nueve papers (todos auditados editorialmente 2026-05-15 — ver OPEN_PROBLEMS.md para brechas físicas abiertas):
+- **Paper 1**: Framework teórico + EFT + Predictive Register (arXiv-ready) ✅
+- **Paper 2**: Validación Bayesiana MCMC DESI DR2 + Planck + cúmulos (arXiv-ready) ✅
+- **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready) ✅
+- **Paper 4**: Derivación algebraica CMB desde φ,π — Nine Sovereignties; nombres mitológicos eliminados, bib 10→40 refs (preprint) ✅
+- **Paper 5**: IS causal perturbation theory — estabilidad, MIRA, S8, fσ₈ (commit 0a9d21c) ✅
+- **Paper 6**: φ-DM dos sectores — m_φ=5.71 eV algebraico, fσ₈ 2.56σ→0.50σ resuelto (commit 9d28620; baseline corregido: σ8=0.702 ODE) ✅
+- **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint) ✅
+- **Paper 8**: Régimen de gravedad fuerte — geodésicas disformales, MIRA emergencia lensing, Vainshtein (commit d7f3b38) ✅
+- **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente (DRAFT, 10 pp, 2026-05-14) 🟡
 
 ---
 
-## Estado actual de los documentos (al 2026-05-07)
+## Estado actual de los documentos (al 2026-05-15)
 
 ### docs/ — PDFs compilados (nombres reales)
 
@@ -186,11 +186,16 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | ~~**Paper 5**~~ | ~~IS causal perturbations: Q1+Q2+Q3+fσ₈, 24 pp~~ | ✅ sesión 16 (commit 0a9d21c) |
 | ~~**Paper 6**~~ | ~~φ-DM dos sectores — m_φ algebraico, fσ₈ resuelto~~ | ✅ sesión 18 (commit 9d28620) |
 | ~~**hi_class**~~ | ~~CLASS cross-check αK Bellini-Sawicki: αK(0)=0.4033, Δ=0.005%~~ | ✅ sesión 20 |
-| **Zenodo v2** | Archivar Papers 1-7 PDFs en Zenodo | Alta |
-| **Tone/Overclaim** | Eliminar "Complete EFT" y bajar el tono en Paper 7 y Endorser | Crítico (En progreso) |
-| **Reproducibility** | Quitar rutas hardcodeadas y unificar requirements.txt | Alta |
+| ~~**Tone/Overclaim**~~ | ~~Eliminar "Complete EFT" y bajar el tono en Paper 7 y Endorser~~ | ✅ sesión 21 (auditoría editorial 10-paper) |
+| ~~**Audit 10-paper**~~ | ~~Auditoría editorial completa Papers 1–9: nomenclatura, overclaims, bib~~ | ✅ sesión 21 (2026-05-15) |
+| ~~**P4 nomenclatura**~~ | ~~Eliminar nombres mitológicos de Paper 4; bib 10→40 refs~~ | ✅ sesión 21 |
+| **OPEN_PROBLEMS.md** | Documento de brechas físicas abiertas (OP-1..OP-6) | ✅ sesión 21 |
+| **Zenodo v2** | Archivar Papers 1-9 PDFs en Zenodo (incluir OPEN_PROBLEMS) | Alta |
+| ~~**Reproducibility**~~ | ~~Quitar rutas hardcodeadas y unificar requirements.txt~~ | ✅ completado |
 | ~~**B1**~~ | ~~Full CMB likelihood Cobaya+plik (bloqueante PRD)~~ | ✅ completado |
 | **B5** | Quintessential inflation V(φ) unificado | Largo plazo |
+| **Zenodo v2 submit** | Subir PDFs actualizados a Zenodo + nuevo DOI | Alta |
+| **Endorser arXiv** | Re-contactar endorsers con Papers 1-3 submission-ready | Alta |
 
 ---
 
@@ -362,3 +367,58 @@ El sector MIRA corrige esto: CLASS con Ω_m=0.320 es el background correcto para
 - [ ] **CLAUDE.md POA tabla:** Marcar Fase 2/3 completas en sección principal
 - [ ] **EFTCAMB:** Instalación y primera corrida αK Bellini-Sawicki
 - [ ] **Zenodo v2:** Archivar Papers 1-7 + scripts CLASS
+
+---
+
+## ✅ Sesión 2026-05-15 — Auditoría Editorial 10-Paper + P4 Renovación
+
+### Alcance de la auditoría
+Revisión editorial completa de Papers 1–9 orientada a estándares JCAP/PRD y Buchalter Prize.
+13 ítems completados a lo largo de sesión multi-compresión.
+
+### Cambios aplicados en esta sesión
+
+#### Paper 4 — Nomenclatura + Bibliografía
+- **Nombres mitológicos eliminados** de `manuscript/SSEE_Paper4_ToE.tex`:
+  SOLAR, IGNIS, PYROS, KRYSTOS_V, BIAL, MAR, MIKA, PHITA, VITA, BUFFER, TRIAL, MIKAEL_V, Ω_DNAV
+  → reemplazados por símbolos algebraicos estándar: φ, π, Ω, β, KAL, P_sc, K_v, Σ_Sov
+  (AURA, MIRA, KAL mantenidos como identificadores físicos establecidos en Papers 5–9)
+- **Bibliografía expandida** `manuscript/SSEE_Paper4.bib`: 10 → 40 entradas
+  (Perlmutter1999, Riess1998, CPL, Copeland2006, Verde2019, Kamionkowski2023,
+  desidr2_2025, ArmendarizPicon2001, Ratra1988, Caldwell2002, Starobinsky1980,
+  Guth1981, Linde1982, Mukhanov1992, Blas2011, KiDS2021, DESY32022, y otros)
+- **Citas en texto** añadidas en §Intro, §spectral index, §Hubble tension, §w₀wₐ, §H₀
+
+#### OPEN_PROBLEMS.md — creado
+Documento de 6 brechas físicas abiertas (OP-1..OP-6):
+| ID | Brecha | Severidad |
+|----|--------|-----------|
+| OP-1 | Factor 200 en Ω_b h² — sin derivación | Alta |
+| OP-2 | n_s = 1−φ⁻⁷ — exponente 7 no derivado de V(φ) | Alta |
+| OP-3 | Separabilidad UV-IR φ/π — conjetura no probada | Media |
+| OP-4 | r_V solar > r_Hubble — incoherencia Vainshtein-EFT | Alta |
+| OP-5 | fσ₈ 2.67σ BOSS (sector único) — tensión estructural | Media |
+| OP-6 | Forma de screening multiplicativa vs aditiva en P9 | Media |
+
+### Estado final de calidad (estimado post-auditoría)
+| Paper | Score JCAP/PRD | Score Buchalter |
+|-------|---------------|-----------------|
+| P1 | 8.5/10 | 8.0/10 |
+| P2 | 9.0/10 | 8.5/10 |
+| P3 | 8.5/10 | 8.0/10 |
+| P4 | 7.5/10 (bib OK; OP-1,OP-2 abiertas) | 7.0/10 |
+| P5 | 8.0/10 | 7.5/10 |
+| P6 | 8.0/10 | 7.5/10 |
+| P7 | 8.5/10 | 8.0/10 |
+| P8 | 7.5/10 (OP-4 abierta) | 7.0/10 |
+| P9 | 7.0/10 (DRAFT; OP-6) | 6.5/10 |
+
+### Commits de esta sesión
+Ver `git log` — commit final cubre P4 tex + bib + OPEN_PROBLEMS + CLAUDE.md
+
+### POA Siguiente Sesión
+- [ ] Compilar P4 PDF con nueva bib (pdflatex + bibtex) y verificar referencias resueltas
+- [ ] Zenodo v2: subir PDFs actualizados + OPEN_PROBLEMS.md
+- [ ] Re-contactar endorsers con papers 1–3 en estado submission-ready
+- [ ] B5: Quintessential inflation V(φ) — derivación ns desde α-attractor (largo plazo)
+- [ ] OP-4: Investigar cutoff Λ_SSEE para recalcular r_V solar

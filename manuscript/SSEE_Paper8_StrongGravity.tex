@@ -236,8 +236,19 @@ where we use units $8\pi G = 1/\Mpl^2$.
 \subsection{Gradient closure}
 
 In the dark-matter-dominated regime ($\rho_{\mathrm{DM}} \gg \rho_b$),
-combining~\eqref{eq:phi_eom} and~\eqref{eq:poisson} yields the gradient
-closure relation
+the Poisson equation~\eqref{eq:poisson} gives
+$\rho_{\mathrm{DM}} = 2\Mpl^2\,\nabla^2\Phi_N$. Substituting this into the
+scalar equation~\eqref{eq:phi_eom} yields a relation between the Laplacians,
+\begin{equation}
+  \nabla^2\phi \;=\; 2\KAL\,\bc\,\Mpl\,\nabla^2\Phi_N\,,
+  \label{eq:laplace_closure}
+\end{equation}
+that is, $\nabla^2\!\left(\phi - 2\KAL\,\bc\,\Mpl\,\Phi_N\right) = 0$.
+The bracketed quantity is therefore harmonic. Imposing the boundary conditions
+appropriate to an isolated lens --- both $\phi$ and $\Phi_N$ vanish at spatial
+infinity and the configuration contains no source-free harmonic component ---
+the harmonic residual reduces to a constant, whose gradient vanishes. This
+yields the gradient closure relation
 \begin{equation}
   \boxed{\nabla\phi \;=\; 2\KAL\,\bc\,\Mpl\,\nabla\Phi_N\,.}
   \label{eq:grad_closure}
@@ -248,8 +259,8 @@ $2\KAL\,\bc \approx 2\times5.521\times3.998 \approx 44.15$.
 
 Equation~\eqref{eq:grad_closure} implies that wherever there is a gravitational
 potential well, the scalar field $\phi$ builds up a corresponding profile.
-This is not an assumption but a consequence of the disformal coupling structure
-in the quasi-static limit.
+Given the stated boundary conditions, this follows from the disformal coupling
+structure in the quasi-static limit rather than being imposed independently.
 We note that this derivation assumes $\rho_{\mathrm{DM}} \gg \rho_b$; in
 systems with significant baryonic fraction, equation~\eqref{eq:phi_eom}
 should be replaced by the full source including baryons, with a smaller

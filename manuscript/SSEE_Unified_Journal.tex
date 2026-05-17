@@ -90,9 +90,11 @@ rises from $1.4\%$ to $31.5\%$.
 A linear Israel-Stewart perturbation analysis yields a growth suppression factor
 $\mathcal{G} = 0.866$ and $\sigma_8 = 0.702$ in the single-sector regime.
 A two-sector dark matter extension --- $\Omega_{\phi\mathrm{DM}} = (\MIRA-1)\,\Ommdyn$
-active only on scales $k < \kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ --- reproduces
-$\sigeff = 0.737$ as measured directly from CLASS\@, reducing the mean
-$\fsig$ tension from $2.56\sigma$ to $0.50\sigma$ across six RSD surveys.
+active only on scales $k < \kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ --- lowers the mean
+$\fsig$ tension from $2.56\sigma$ to $0.50\sigma$ across six RSD surveys, with a
+two-sector effective amplitude $\sigeff = \sig\times G_{\rm 2s} = 0.794$ (analytic
+growth factor) refined to $0.737$ once the calibrated WDM transfer function is
+applied in CLASS.
 
 An EFTCAMB validation at the Bellini-Sawicki level uses the fluid-approximation
 input $\alphaK^{\rm fluid} = 0.4033$ ($\Delta = 0.005\%$), while the theoretical
@@ -517,7 +519,10 @@ CLASS-computed $\sigma_8$ (with standard top-hat filter at $R = 8\,h^{-1}$~Mpc)
 to match the KiDS-1000 observed value $\sigeff = 0.737$ \citep{KiDS2021}.
 The calibration yields $\alpha = 1.656\,h\,\mathrm{Mpc}^{-1}$, with
 $T_{\rm WDM}(\kfs) = 0.111$ (suppression $98.8\%$ at $\kfs$),
-and $\sigeff = 0.7370$, in exact agreement with KiDS-1000 \citep{KiDS2021}.
+and $\sigeff = 0.7370$ by construction. This calibration fixes the $\sigma_8$
+normalisation to the KiDS-1000 value \citep{KiDS2021}; it is therefore not itself
+an independent test, and the genuine confrontation with data is the $\fsig$
+comparison of \S\ref{sec:tension_table}.
 
 \textit{Methodological note:} Paper~6 \citep{AlmeidaSSEE2026P6} derives
 $\sigma_8^{\rm eff} = 0.794$ via the analytic two-sector growth suppression
@@ -854,7 +859,7 @@ $\Omega_m = (\pi-\phiG)/(\pi+\phiG)$ & $0.3201$ & Planck 2018 & Retrodiction \\
 $r_d^{\rm eff} = r_{d,\mathrm{SSEE}} \times |\wz|$ & $147.2$ Mpc & Planck 2018 $r_d$ & Retrodiction \\
 $\gamma_{\rm IS} = 0.554$ & $\approx \gamma_{\Lambda\rm CDM} = 0.55$ & RSD surveys & Retrodiction \\
 $\alphaT = \alphaM = \alphaB = 0$ & exact & GW170817 $|\alphaT|<10^{-15}$ & Retrodiction \\
-$\sigeff = \sig \times G_{\rm 2s}$ & $0.737$ & KiDS-1000 $\sigma_8$ & Retrodiction \\
+$\sigeff = \sig \times G_{\rm 2s}$ (two-sector growth factor) & $0.794$ & Weak-lensing $\sigma_8$ & Retrodiction \\
 $\sigma_8^{\rm SSEE}$ (single-sector ODE) & $0.702$ & Weak lensing surveys & Retrodiction \\
 $H_0^{\rm local} = H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & SH0ES 2022 ($0.17\sigma$) & Retrodiction \\
 \midrule
@@ -888,15 +893,16 @@ MIRA; the likely origin is a background-level thermodynamic effect in the
 IS viscous Friedmann equations.
 
 \textbf{(ii) $S_8$ and the dark-matter sector.}
-The single-sector Israel-Stewart analysis gives $S_8 = 0.725$, which remains in
-$2$--$3\sigma$ tension with weak-lensing surveys. The two-sector $\phi$-DM
-extension raises this to $S_8 = \sigeff(\OmmCMB/0.3)^{0.5} = 0.761$, within
-$0.1\sigma$ of the DES~Y3 central value \citep{DES2022} and $0.3\sigma$ of
-KiDS-1000; applying HMcode-2020 baryonic feedback \citep{Mead2021} in CLASS
-shifts this to $S_8 = 0.758$ ($0.06\sigma$ DES~Y3). The open item is therefore
-not a standing tension but a precision question: a full N-body treatment of
-baryonic feedback (deferred for computational cost) is required to confirm the
-linear-theory $S_8$ at the few-percent level.
+The single-sector Israel-Stewart analysis gives $S_8 = 0.725$. The two-sector
+$\phi$-DM extension, evaluated with the analytic growth factor alone ($\phi$-DM
+treated as fully clustering on $k<\kfs$), gives a conservative $S_8 = 0.820$;
+including the smooth WDM transfer function refines this to
+$S_8 \simeq 0.752$--$0.761$, and HMcode-2020 baryonic feedback \citep{Mead2021}
+gives $S_8 = 0.758$ ($0.06\sigma$ DES~Y3). Paper~6 thus brackets the weak-lensing
+measurement, $S_8 \in [0.752,\,0.820]$, encompassing the KiDS-1000 and DES~Y3
+central values. The open item is a precision question: a full N-body treatment
+of baryonic feedback (deferred for computational cost) is required to pin the
+linear-theory $S_8$ within this range.
 
 \textbf{(iii) $\phi$DM mass and Lyman-$\alpha$ constraints.}
 The algebraic mass $\mphi = 5.71$~eV is in the warm dark matter regime

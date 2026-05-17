@@ -34,7 +34,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 | `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (16 p) | ✅ Completo — gravedad fuerte, MIRA lensing, Vainshtein |
 | `SSEE_Paper9_HubbleTension.pdf` | Paper 9 (18 p) | ✅ Preprint — f_screen + comparación EDE/SIDR/late-DE |
 | `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (14 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=8.81 meV=Λ_SSEE; αK_full=0.41691 |
-| `SSEE_Unified_Journal.pdf` | Consolidación Papers 1–10 (22 p) — §Extensions 8/9/10 | ✅ Candidato journal (10-paper, 2026-05-17) |
+| `SSEE_Unified_Journal.pdf` | Consolidación Papers 1–10 (23 p) — §Extensions 8/9/10 | ✅ Candidato journal (10-paper, 2026-05-17) |
 | `SSEE_Endorser_Summary.pdf` | Síntesis 2 p para endorsers arXiv — serie 10-paper | ✅ Listo para envío (2026-05-17) |
 
 ### manuscript/ — Fuente LaTeX

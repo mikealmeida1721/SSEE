@@ -43,17 +43,20 @@
 
 ```
 SSEE/
-├── manuscript/                     # LaTeX sources
+├── manuscript/                     # LaTeX sources, bibliographies, cover letters
 │   ├── SSEE_Paper1_Framework.tex … SSEE_Paper10_UVCompletion.tex  # the 10 papers
 │   ├── SSEE_EFT_section.tex        # EFT section (\input by Paper 1)
 │   ├── SSEE_appendix_Friedmann.tex # Friedmann-derivation appendix
 │   ├── SSEE_Unified_Journal.tex    # consolidated journal paper (Papers 1–7)
 │   ├── SSEE_Endorser_Summary.tex   # 2-page arXiv endorser brief
-│   └── *.bib                       # ssee_paper3/5/6, SSEE_Paper4, ssee_unified
-├── src/                            # 41 Python scripts — analysis & verification
-│   ├── ssee_paper2…paper10_*.py    # per-paper analysis, MCMC, figures
-│   ├── ssee_op1…op6_*.py           # OPEN_PROBLEMS resolution scripts (OP-1..OP-6)
-│   ├── ssee_paperB_DW.py, ssee_paperB_Nstar.py   # Paper B groundwork (baryogenesis, N_*)
+│   ├── *.bib                       # ssee_paper3/4/5/6 + ssee_unified bibliographies
+│   └── cover_letter_*.txt, abstracts_arXiv.txt
+├── src/                            # 42 Python scripts — analysis & verification
+│   ├── ssee_paper2_*.py … ssee_paper10_*.py  # per-paper analysis, MCMC, figures
+│   ├── ssee_op1_*.py … ssee_op6_*.py         # OPEN_PROBLEMS resolution (OP-1..OP-6)
+│   ├── ssee_paperB_DW.py, ssee_paperB_Nstar.py        # Paper B groundwork (baryogenesis, N_*)
+│   ├── ssee_phase_c_dic.py, ssee_phase_d_savage_cv.py # Bayesian model-selection phases
+│   ├── ssee_verify_rd.py, ssee_press_schechter.py, …  # standalone physics checks
 │   ├── ssee_audit_consistency.py   # cross-paper parameter consistency audit
 │   └── scratch/                    # exploratory scripts (not load-bearing)
 ├── class_ssee/                     # CLASS Boltzmann fork — SSEE .ini configs + plot scripts
@@ -63,6 +66,8 @@ SSEE/
 ├── docs/                           # compiled PDFs — 10 papers + endorser + unified journal
 ├── submission_packages/            # arXiv-ready .tar.gz bundles per paper
 ├── archive/                        # superseded drafts (historical)
+├── build_arxiv_packages.py         # regenerates submission_packages/
+├── requirements.txt · environment.yml   # reproducible Python environment
 ├── OPEN_PROBLEMS.md                # physics gaps OP-1..OP-6 with status
 ├── AUDIT.md                        # reproducibility guide + known limitations
 ├── CHANGELOG.md · CITATION.cff · LICENSE

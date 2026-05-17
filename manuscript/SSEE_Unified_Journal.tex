@@ -28,6 +28,8 @@
 \newcommand{\phiG}{\varphi}
 \newcommand{\KAL}{\mathrm{KAL}_0}
 \newcommand{\MIRA}{\mathcal{M}}
+\newcommand{\AURA}{\mathrm{AURA}}
+\newcommand{\fscr}{f_{\mathrm{scr}}}
 \newcommand{\Omde}{\Omega_{\mathrm{DE}}}
 \newcommand{\Omm}{\Omega_{m}}
 \newcommand{\Ommdyn}{\Omega_{m,\mathrm{dyn}}}
@@ -96,6 +98,16 @@ An EFTCAMB validation at the Bellini-Sawicki level uses the fluid-approximation
 input $\alphaK^{\rm fluid} = 0.4033$ ($\Delta = 0.005\%$), while the theoretical
 bare-field value is $\alphaK = 0.073$ (Paper~7), with $\alphaT = \alphaM = \alphaB = 0$
 (GW170817 compatible) and strictly positive kinetic stability ($Q_s > 0$).
+
+We additionally summarise three theoretical extensions of the framework.
+In the strong-field regime the disformal coupling amplifies photon deflection
+by $\sqrt{\AURA}\simeq\MIRA$, yielding a falsifiable strong-lensing signature
+(Paper~8). A late-time local screening fraction
+$f_{\rm scr}=\alphaK/(3\MIRA)=(\pi-\phiG)/(\phiG+\pi)^2\simeq0.067$ gives
+$H_0^{\rm local}=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$, $0.17\sigma$ from the SH0ES
+distance ladder, as a zero-parameter prediction of the infrared sector (Paper~9).
+A UV completion $K(X)=X/\KAL+X^2/M^4$ with algebraic cutoff $M=8.81$~meV
+connects the dark-energy EFT to the inflationary $\alpha$-attractor (Paper~10).
 All model parameters are falsifiable by named forthcoming experiments.
 \end{abstract}
 
@@ -122,9 +134,9 @@ committed to a public Zenodo archive \citep{AlmeidaSSEE2026genesis} on
 2026 January~28, prior to the DESI~DR2 public release on 2025 March~19.
 
 This paper consolidates the complete \SSEE\ validation programme across
-seven companion preprints \citep{AlmeidaSSEE2026P1,AlmeidaSSEE2026P2,
+ten companion preprints \citep{AlmeidaSSEE2026P1,AlmeidaSSEE2026P2,
 AlmeidaSSEE2026P3,AlmeidaSSEE2026P4,AlmeidaSSEE2026P5,AlmeidaSSEE2026P6,
-AlmeidaSSEE2026P7}
+AlmeidaSSEE2026P7,AlmeidaSSEE2026P8,AlmeidaSSEE2026P9,AlmeidaSSEE2026P10}
 into a single self-contained presentation.
 We report four independent validation tiers:
 \begin{enumerate}[leftmargin=*,itemsep=1pt]
@@ -141,6 +153,10 @@ We report four independent validation tiers:
   validation of kinetic stability ($\alphaK$) and gravitational wave compatibility
   ($\alphaT = \alphaM = \alphaB = 0$).
 \end{enumerate}
+Section~\ref{sec:extensions} then summarises three theoretical extensions of the
+framework --- the strong-field lensing regime, an algebraic resolution of the
+Hubble tension, and a UV completion --- which are developed in full in the
+companion Papers~8--10 and are presented here in condensed form.
 
 Throughout, we distinguish three epistemic statuses: \textit{pre-data}
 (algebraic result committed before the relevant observation),
@@ -690,6 +706,109 @@ where the EFTCAMB run uses the fluid-approximation input $\alphaK^{\rm fluid} = 
 
 
 % ─────────────────────────────────────────────────────────────────────────────
+\section{Extensions: Strong-Field Regime, Hubble Tension, and UV Completion}
+\label{sec:extensions}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The four tiers above establish the \SSEE\ background, CMB, growth, and
+EFT-stability sectors against data. We now summarise three theoretical
+extensions, developed in full in Papers~8--10 \citep{AlmeidaSSEE2026P8,
+AlmeidaSSEE2026P9,AlmeidaSSEE2026P10}. We label their epistemic status
+explicitly: the strong-field lensing signature (\S\ref{sec:ext-sg}) is a
+falsifiable prediction; the Hubble-tension screening fraction
+(\S\ref{sec:ext-ht}) is a zero-parameter algebraic result compared to existing
+data; and the UV completion (\S\ref{sec:ext-uv}) contains one quantity ---
+$H_0^{\rm UV} = 73.040$~km\,s$^{-1}$\,Mpc$^{-1}$ --- that is explicitly
+conditional on a separability postulate and is therefore presented as a
+self-consistency check, not an independent prediction.
+
+\subsection{Strong-field regime: disformal lensing amplification}
+\label{sec:ext-sg}
+
+Starting from the $k$-essence action of Paper~7, the disformal coupling between
+the dark-energy scalar $\phi$ and dark matter generates deviations from general
+relativity (GR) that are algebraically fixed by $\phiG$ and $\pi$. In the
+quasi-static limit the scalar field equation closes as a gradient relation,
+$\nabla\phi = 2\KAL\,\AURA\,M_{\rm Pl}\,\nabla\Phi_N$, linking the scalar
+profile to the Newtonian potential through the structural coupling
+$\AURA = (3\phiG+\pi)/2 \approx 3.998$ (the magnitude of the Paper~7 coupling
+$\beta_c = -\AURA$).
+
+From the disformal null geodesic, the total photon deflection angle is amplified
+by $\sqrt{\AURA}$ relative to the GR prediction for the same baryonic mass,
+giving an algebraic Einstein-radius ratio
+\begin{equation}
+\frac{\theta_E^{\rm SSEE}}{\theta_E^{\rm GR}} = \sqrt{\AURA}
+   \approx 1.9995 \approx \MIRA .
+\end{equation}
+The $0.03\%$ gap $\sqrt{\AURA}/\MIRA = 1.00030$ is a near-coincidence, not an
+algebraic identity. Solar-system gravitational tests are automatically satisfied:
+the disformal coupling selects dark matter as the sole source of $\phi$, so in
+the solar system ($\rho_{\rm DM}\approx0$) the field is locally unsourced and the
+disformal metric modification is negligible; equivalently, $K(X)$ is of
+$k$-mouflage type \citep{BraxValageas2014} with a screening radius
+$r_{\rm km}(\odot)\approx0.022\,R_\odot$. The framework predicts a two-sector
+lensing signature: on scales $k<\kfs=0.493\,h\,{\rm Mpc}^{-1}$ both CDM and
+$\phi$-DM contribute and the Einstein radius matches \LCDM; on scales $k>\kfs$
+only CDM contributes and the effective lensing mass is suppressed by $\sim\MIRA$.
+This is falsifiable with current HST and JWST strong-lensing surveys.
+
+\subsection{The Hubble tension: an algebraic local screening fraction}
+\label{sec:ext-ht}
+
+The dark-energy EFT of Paper~7 and the disformal geodesic of Paper~8 together
+imply a late-time \emph{local screening fraction}
+\begin{equation}
+\fscr = \frac{\alphaK}{3\,\MIRA}
+      = \frac{\pi-\phiG}{(\phiG+\pi)^2}
+      \approx 0.0673 ,
+\end{equation}
+where $\alphaK = 3\,\Omde(1+\wz)$ is the background-derived EFT kineticity and
+$\MIRA = (3\phiG+\pi)/4$. The structural constant $\AURA = 2\MIRA$ cancels
+exactly in the ratio, leaving a pure function of $\phiG$ and $\pi$. Applied as a
+local correction to the algebraic cosmological value $H_0^{\rm alg}=3(\phiG+\pi)^2$,
+\begin{equation}
+H_0^{\rm local} = \frac{H_0^{\rm alg}}{1-\fscr}
+                = \frac{67.96}{1-0.0673}
+                \approx 72.86~{\rm km\,s^{-1}\,Mpc^{-1}} ,
+\end{equation}
+which lies $0.17\sigma$ from the SH0ES distance-ladder measurement
+\citep{Riess2022} with zero free parameters. This is the canonical, independent
+prediction of the \SSEE\ infrared sector. The correction operates at late times
+($z<0.15$) through the scalar kinetic-energy contribution to the local expansion
+rate; it does not modify the sound horizon $r_d$, the CMB peak positions, or the
+growth factor $\sigma_8$ established in the tiers above.
+
+\subsection{UV completion: the \texorpdfstring{$X^2/M^4$}{X2/M4} operator}
+\label{sec:ext-uv}
+
+The infrared kinetic Lagrangian $K(X)=X/\KAL$ is extended by the leading
+higher-derivative operator, $K(X)=X/\KAL + X^2/M^4$. The inflationary
+$\alpha$-attractor parameter $\alpha=\phiG^4/3$ (Paper~1, Appendix~A.5), which
+fixes the tensor-to-scalar ratio $r=12\alpha/N_*^2\approx0.00813$, also fixes the
+UV cutoff:
+\begin{equation}
+M^4 = 45\,\alpha^2\,\rho_c = 5\,\phiG^8\,\rho_c \approx 234.9\,\rho_c ,
+\qquad M \approx 8.81~{\rm meV} ,
+\end{equation}
+where the identity $45\alpha^2 = 5\phiG^8$ follows exactly from
+$\alpha=\phiG^4/3$. With this cutoff the full Bellini-Sawicki kineticity becomes
+$\alphaK^{\rm full}=0.41691$ ($+3.37\%$ over the IR value), giving
+$H_0^{\rm UV}=73.040$~km\,s$^{-1}$\,Mpc$^{-1}$.
+
+We state the epistemic status of this last figure plainly: $H_0^{\rm UV}=73.040$
+is \emph{conditional on Postulate~C.1} (UV--IR $\phiG/\pi$ separability) and is
+\emph{not independent of SH0ES}, since the postulate was formulated with the
+SH0ES central value as its target. It is a self-consistency check, not a
+prediction. The independent prediction remains the IR value $H_0^{\rm local}
+=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.17\sigma$) of \S\ref{sec:ext-ht}, which does
+not rely on the postulate. The construction does, however, supply a falsifiable
+cross-epoch consistency test: the same $\alpha$ governs inflation at $z\sim10^{60}$
+and the dark-energy UV scale today, so a LiteBIRD measurement of $r\neq0.00813$
+would shift both $\alpha$ and $M$ and change the predicted $H_0^{\rm local}$
+accordingly.
+
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Falsifiability and Prediction Register}
 \label{sec:falsify}
 % ─────────────────────────────────────────────────────────────────────────────
@@ -707,7 +826,9 @@ refuted at the theory level if \textit{any} of the following were established:
 (ii) a future CLASS MCMC with Planck+DESI likelihoods requires
 $\Omega_m \neq 0.3199$ at $>3\sigma$;
 (iii) $m_\phi \neq 5.71$~eV as measured by KATRIN/PTOLEMY;
-(iv) $r \neq 0.00813$ as measured by LiteBIRD.
+(iv) $r \neq 0.00813$ as measured by LiteBIRD;
+(v) the strong-lensing Einstein-radius ratio is inconsistent with
+$\sqrt{\AURA}\approx\MIRA$ at $>3\sigma$ in HST/JWST surveys.
 
 \begin{table}[ht]
 \centering
@@ -735,12 +856,14 @@ $\gamma_{\rm IS} = 0.554$ & $\approx \gamma_{\Lambda\rm CDM} = 0.55$ & RSD surve
 $\alphaT = \alphaM = \alphaB = 0$ & exact & GW170817 $|\alphaT|<10^{-15}$ & Retrodiction \\
 $\sigeff = \sig \times G_{\rm 2s}$ & $0.737$ & KiDS-1000 $\sigma_8$ & Retrodiction \\
 $\sigma_8^{\rm SSEE}$ (single-sector ODE) & $0.702$ & Weak lensing surveys & Retrodiction \\
+$H_0^{\rm local} = H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & SH0ES 2022 ($0.17\sigma$) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Predictions (not yet observationally accessible)}} \\
 $\mphi = \Sigma m_\nu \times H_0^{\rm alg}$ & $5.71$ eV & KATRIN/PTOLEMY, 2027--2030 & Prediction \\
 $\kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ (DW from $\mphi$) & $0.493\,h/\mathrm{Mpc}$ & DESI Y3 / Euclid $P(k)$ & Prediction \\
 $\alphaK = 0.073$ & $0.073$ & Euclid WL null test ($\alphaK < 0.1$ threshold) & Prediction \\
 $r = \phiG^{-10}$ & $0.00813$ & LiteBIRD $\sim$2032 & Prediction \\
+$\theta_E^{\rm SSEE}/\theta_E^{\rm GR} = \sqrt{\AURA}$ & $\approx \MIRA$ & HST/JWST strong lensing & Prediction \\
 \bottomrule
 \end{tabular}%
 }
@@ -764,13 +887,16 @@ Paper~5 \citep{AlmeidaSSEE2026P5} shows that linear IS perturbations do not sour
 MIRA; the likely origin is a background-level thermodynamic effect in the
 IS viscous Friedmann equations.
 
-\textbf{(ii) $S_8$ tension.}
-The two-sector model resolves $f\sigma_8$ to $0.50\sigma$ but leaves
-$S_8 = \sigeff(\OmmCMB/0.3)^{0.5} = 0.761$, in $2.3\sigma$ tension
-with DES~Y3 \citep{DES2022}.
-Non-linear corrections (baryonic feedback, intrinsic alignment) not yet
-included in the linear-growth analysis could modify this at the
-$10\%$--$20\%$ level.
+\textbf{(ii) $S_8$ and the dark-matter sector.}
+The single-sector Israel-Stewart analysis gives $S_8 = 0.725$, which remains in
+$2$--$3\sigma$ tension with weak-lensing surveys. The two-sector $\phi$-DM
+extension raises this to $S_8 = \sigeff(\OmmCMB/0.3)^{0.5} = 0.761$, within
+$0.1\sigma$ of the DES~Y3 central value \citep{DES2022} and $0.3\sigma$ of
+KiDS-1000; applying HMcode-2020 baryonic feedback \citep{Mead2021} in CLASS
+shifts this to $S_8 = 0.758$ ($0.06\sigma$ DES~Y3). The open item is therefore
+not a standing tension but a precision question: a full N-body treatment of
+baryonic feedback (deferred for computational cost) is required to confirm the
+linear-theory $S_8$ at the few-percent level.
 
 \textbf{(iii) $\phi$DM mass and Lyman-$\alpha$ constraints.}
 The algebraic mass $\mphi = 5.71$~eV is in the warm dark matter regime
@@ -783,6 +909,9 @@ WDM cosmology; the applicable constraints require dedicated analysis.
 \textbf{(iv) Quantum field theory completion.}
 The algebraic connection $H_0 = 3(\phiG+\pi)^2$ is a successful numerical
 retrodiction but lacks a derivation from first-principles quantum field theory.
+Paper~10 supplies a UV completion at the EFT level --- the higher-derivative
+operator $X^2/M^4$ with algebraic cutoff $M = 8.81$~meV --- but a derivation of
+the full $P(X,\phi)$ Lagrangian from $\phiG$ and $\pi$ alone remains open.
 The ratio $\Omega_{m,\mathrm{CMB}} = 0.31993$ (MIRA) vs $0.32010$ (geometric
 $\Omega_m = (\pi-\phiG)/(\pi+\phiG)$) suggests a possible loop correction;
 this remains an open problem.
@@ -827,12 +956,24 @@ across four observational tiers.
   The CPL phantom crossing at $z \approx 0.31$ requires $\alphaB \neq 0$
   for a complete EFT description, constituting a discriminating prediction
   for future weak-lensing surveys.
+
+\item \textbf{Theoretical extensions.} The disformal strong-field regime predicts
+  an Einstein-radius amplification $\sqrt{\AURA}\approx\MIRA$, falsifiable with
+  HST/JWST strong lensing (Paper~8). An algebraic late-time screening fraction
+  $\fscr=(\pi-\phiG)/(\phiG+\pi)^2\approx0.067$ yields
+  $H_0^{\rm local}=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$, $0.17\sigma$ from SH0ES, with
+  zero free parameters (Paper~9). A UV completion $K(X)=X/\KAL+X^2/M^4$ with
+  algebraic cutoff $M=8.81$~meV connects the dark-energy EFT to the inflationary
+  $\alpha$-attractor; the associated $H_0^{\rm UV}=73.040$~km\,s$^{-1}$\,Mpc$^{-1}$
+  is a self-consistency check conditional on a separability postulate, not an
+  independent prediction (Paper~10).
 \end{enumerate}
 
-The framework generates four near-term falsifiable predictions: $m_\phi = 5.71$~eV
+The framework generates five near-term falsifiable predictions: $m_\phi = 5.71$~eV
 (KATRIN/PTOLEMY, 2027--2030), $\kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ (DESI~Y3/Euclid
 $P(k)$), $\alphaK = 0.073$ (Euclid WL null test; a detection $\alphaK > 0.1$ would
-falsify SSEE), and $r = 0.00813$ (LiteBIRD).
+falsify SSEE), $r = 0.00813$ (LiteBIRD), and a strong-lensing Einstein-radius
+amplification $\sqrt{\AURA}\approx\MIRA$ (HST/JWST).
 All analytical scripts, CLASS configuration files, and EFTCAMB inputs are archived
 at Zenodo \citep{AlmeidaSSEE2026zenodo}.
 
@@ -882,6 +1023,10 @@ $\alphaT = \alphaM = \alphaB$ & minimal coupling & $0$ & $|\alphaT|<10^{-15}$ (G
 $\mphi$ & $\Sigma m_\nu \times H_0^{\rm alg}$ & $5.71$ eV & --- (target: KATRIN/PTOLEMY) \\
 $\kfs$ & Dodelson-Widrow ($\mphi$) & $0.493\,h$/Mpc & --- \\
 $r$ & $\phiG^{-10}$ & $0.00813$ & $<0.036$ (BK18) \\
+\midrule
+$\fscr$ & $(\pi-\phiG)/(\phiG+\pi)^2$ & $0.0673$ & --- \\
+$H_0^{\rm local}$ & $H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & $73.04\pm1.04$ (SH0ES) \\
+$M$ (UV cutoff) & $(5\phiG^8\rho_c)^{1/4}$ & $8.81$ meV & --- \\
 \bottomrule
 \end{tabular}
 \end{table}

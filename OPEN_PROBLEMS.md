@@ -307,7 +307,7 @@ peculiar (Δv/c), no a una corrección de densidad de energía oscura — físic
 - f_screen (universo separado) = 0.067253
 - f_screen (algebraico (π−φ)/Ω²) = 0.067253
 - |diferencia| = 4.1×10⁻⁷ < 10⁻⁴ ✓
-- H₀,local = 67.96 × 1.06725 = 72.53 km/s/Mpc (0.49σ SH0ES)
+- H₀,local = 67.96 / (1 − 0.06725) = 72.86 km/s/Mpc (0.17σ SH0ES)
 - Con H₀^UV = 73.040 (Paper 10, condicional a Postulate C.1): 0.00σ SH0ES
 
 **Cambios aplicados en Paper 9:**

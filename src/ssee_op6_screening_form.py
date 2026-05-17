@@ -97,30 +97,30 @@ print(f"\nConsistencia: |f_derived - f_alg| = {abs(f_screen_derived - f_screen_a
 assert abs(f_screen_derived - f_screen_alg) < 1e-4, "Inconsistencia en f_screen!"
 print("✓ Valores consistentes a <10⁻⁴")
 
-# H₀ local
-H0_local_alg  = H0_alg  * (1 + f_screen_derived)
-H0_local_MCMC = H0_MCMC * (1 + f_screen_derived)
+# H₀ local — forma multiplicativa canónica (Paper 9): H_local = H_alg / (1 − f)
+H0_local_alg  = H0_alg  / (1 - f_screen_derived)
+H0_local_MCMC = H0_MCMC / (1 - f_screen_derived)
 H0_SH0ES      = 73.04
 sigma_SH0ES   = 1.04
-print(f"\nH₀ local (multiplicativo):")
-print(f"  H0_alg  × (1+f) = {H0_alg:.4f} × {1+f_screen_derived:.6f} = {H0_local_alg:.4f} km/s/Mpc")
-print(f"  H0_MCMC × (1+f) = {H0_MCMC:.4f} × {1+f_screen_derived:.6f} = {H0_local_MCMC:.4f} km/s/Mpc")
+print(f"\nH₀ local (multiplicativo, forma canónica Paper 9):")
+print(f"  H0_alg  / (1−f) = {H0_alg:.4f} / {1-f_screen_derived:.6f} = {H0_local_alg:.4f} km/s/Mpc")
+print(f"  H0_MCMC / (1−f) = {H0_MCMC:.4f} / {1-f_screen_derived:.6f} = {H0_local_MCMC:.4f} km/s/Mpc")
 print(f"  SH0ES target    = {H0_SH0ES:.4f} ± {sigma_SH0ES:.2f} km/s/Mpc")
 print(f"  Tensión (alg):  {abs(H0_local_alg - H0_SH0ES)/sigma_SH0ES:.2f}σ")
 print(f"  Tensión (MCMC): {abs(H0_local_MCMC - H0_SH0ES)/sigma_SH0ES:.2f}σ")
 
-# Contraste: forma aditiva (excluida)
-H0_local_additive = H0_alg + H0_alg * f_screen_derived  # idéntico a multiplicativo al 1er orden
+# Contraste: forma aditiva — linearización (1−f)^−1 ≈ 1+f (no canónica)
+H0_local_additive = H0_alg * (1 + f_screen_derived)
 DeltaH_additive   = H0_alg * f_screen_derived
-print(f"\nForma aditiva (excluida — ver razón abajo):")
-print(f"  H0_alg + ΔH₀ = {H0_alg:.4f} + {DeltaH_additive:.4f} = {H0_local_additive:.4f} km/s/Mpc")
-print(f"  (Numéricamente idéntico al 1er orden; diferencia semántica es física)")
+print(f"\nForma aditiva (linearización de 1er orden — no canónica):")
+print(f"  H0_alg × (1+f) = {H0_alg:.4f} × {1+f_screen_derived:.6f} = {H0_local_additive:.4f} km/s/Mpc")
+print(f"  (Aproximación O(f) de la forma multiplicativa; error O(f²) ≈ 0.33 km/s/Mpc)")
 
 print("\n" + "="*60)
 print("CONCLUSIÓN: OP-6 RESUELTO")
 print("="*60)
 print("""
-1. FORMA CORRECTA: Multiplicativa H_local = H_global × (1 + f)
+1. FORMA CORRECTA: Multiplicativa H_local = H_global / (1 − f)
    - Sigue de la aproximación de universo separado para k-essence
    - La forma aditiva correspondería a una corrección de velocidad (sesgos
      peculiares), no a una corrección de densidad de energía oscura
@@ -134,6 +134,6 @@ print("""
 3. CONSISTENCIA ALGEBRAICA: f = (π−φ)/Ω² es idéntico a αK/(3MIRA) cuando
    αK = 2KAL₀/(1+2KAL₀²) ≈ 0.4033 se expresa en términos de φ,π
 
-4. RESULTADO: H₀,local = 67.96 × 1.06725 = 72.53 km/s/Mpc (0.48σ SH0ES)
+4. RESULTADO: H₀,local = 67.96 / (1 − 0.06725) = 72.86 km/s/Mpc (0.17σ SH0ES)
    Si se usa H₀^UV = 73.040 (Paper 10, conditional): 0.00σ SH0ES
 """)

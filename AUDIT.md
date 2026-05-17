@@ -38,7 +38,7 @@ SSEE/
 │   ├── SSEE_Unified_Journal.tex     — consolidated journal paper (Papers 1–7)
 │   ├── SSEE_Endorser_Summary.tex    — 2-page arXiv endorser brief
 │   └── *.bib                        — ssee_paper3/5/6, SSEE_Paper4, ssee_unified
-├── src/                             — 41 Python scripts (analysis & verification)
+├── src/                             — 42 Python scripts (analysis & verification)
 │   ├── ssee_paper2…paper10_*.py     — per-paper analysis, MCMC, figures
 │   ├── ssee_op1…op6_*.py            — OPEN_PROBLEMS resolution scripts (OP-1..OP-6)
 │   ├── ssee_paperB_*.py             — Paper B groundwork (baryogenesis DW, N_*)
@@ -199,6 +199,18 @@ IS viscosity test:
 ./class ssee_v36_IS.ini && python3 plot_IS_viscosity.py
 ```
 Expected: cs² effect on σ₈ = 0.03% (negligible); G = D₁_SSEE/D₁_ΛCDM = 0.866.
+
+### OP-5 — HMcode-2020 baryonic feedback (requires CLASS + classy)
+
+`src/ssee_op5_hmcode.py` needs CLASS compiled with the Python wrapper and
+HMcode-2020 enabled. A bare `pip install classy` does **not** enable
+HMcode-2020 — the local CLASS build is required:
+```bash
+cd class_ssee && make
+cd python && python setup.py install
+# Verify HMcode-2020 is available:
+python -c "from classy import Class; c=Class(); c.set({'non_linear':'hmcode','hmcode_version':'2020_baryonic_feedback'})"
+```
 
 ### MCMC Fase 4 — multi-probe background
 

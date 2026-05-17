@@ -46,8 +46,7 @@ SSEE/
 ├── manuscript/                     # LaTeX sources, bibliographies, cover letters
 │   ├── SSEE_Paper1_Framework.tex … SSEE_Paper10_UVCompletion.tex  # the 10 papers
 │   ├── SSEE_EFT_section.tex        # EFT section (\input by Paper 1)
-│   ├── SSEE_appendix_Friedmann.tex # Friedmann-derivation appendix
-│   ├── SSEE_Unified_Journal.tex    # consolidated journal paper (Papers 1–7)
+│   ├── SSEE_Unified_Journal.tex    # consolidated journal paper (Papers 1–10)
 │   ├── SSEE_Endorser_Summary.tex   # 2-page arXiv endorser brief
 │   ├── *.bib                       # ssee_paper3/4/5/6 + ssee_unified bibliographies
 │   └── cover_letter_*.txt, abstracts_arXiv.txt
@@ -136,7 +135,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | Result | Value | Status |
 |---|---|---|
 | c²_s,eff | 0 (exact algebraic) | Q1: all modes stable |
-| k_crit / (H₀/c) | 0.498 < 1 | Sub-Hubble stability window |
+| k_crit / (H₀/c) | 0.456 < 1 | Sub-Hubble stability window |
 | MIRA (numerical, k≥10) | 0.989 ± 0.017 | Background IS origin confirmed |
 | γ_IS | 0.554 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
 | G = D₁_SSEE/D₁_ΛCDM | 0.866 | 13.4% growth suppression |
@@ -226,9 +225,9 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 
 | Halo mass | σ_M(z=10) | n_SSEE/n_ΛCDM |
 |---|---|---|
-| 10^11 M☉ | 1.010 | ×1.06 |
-| 3×10^11 M☉ | 0.727 | ×1.16 |
-| 10^12 M☉ | 0.506 | **×1.41** |
+| 10^11 M☉ | 1.010 | ×1.01 |
+| 3×10^11 M☉ | 0.727 | ×1.04 |
+| 10^12 M☉ | 0.506 | ×1.09 |
 
 *Partially alleviates the JWST z>10 galaxy excess (ΛCDM deficit: ~10–100×); residual tension points to IS perturbation physics.*
 

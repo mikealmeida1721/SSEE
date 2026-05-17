@@ -441,7 +441,7 @@ improvement in the dynamic BIC is not driven by overfitting.
 # ════════════════════════════════════════════════════════════════════════
 if __name__ == "__main__":
     import os
-    os.chdir("/home/mike/Proyectos/SSEE")
+    os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
     sddr_res = savage_dickey()
     cv_res   = cross_validation()

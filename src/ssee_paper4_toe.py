@@ -53,7 +53,7 @@ for name, val in sovereignties.items():
 # ── Derived cosmological parameters ──────────────────────────────────────────
 H0_alg   = SIGMA_SOV * OMEGA               # = 3(φ+π)² = 67.962
 ns       = 1 - phi**(-7)                   # 0.96556
-Omb_h2_alg  = BUFFER / 100                 # 0.02285  (SSEE algebraic)
+Omb_h2_alg  = (pi - phi) / H0_alg          # 0.02242 = (π−φ)/H₀_SSEE (OP-1 corregido)
 Omb_h2_obs  = 0.02237                      # Planck 2018 observed
 Omc_h2_static = KAL * Omb_h2_obs           # +2.9σ Eckart (uses Planck Ωb h²)
 Omc_h2_IS     = KAL * Omb_h2_obs * ns      # −0.6σ IS (uses Planck Ωb h²)

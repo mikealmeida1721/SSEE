@@ -132,7 +132,7 @@ epoch de bariogénesis. Estas son dos temperaturas físicamente distintas.
 **Resultado numérico Paper B (ssee_paperB_DW.py) — RESULTADO NEGATIVO:**
 
 Script `src/ssee_paperB_DW.py` evalúa el segundo problema de Paper B: el mecanismo
-de producción de φ-DM (m_φ=5.71 eV) que reproduce Ω_φDM h²=0.0739.
+de producción de φ-DM (m_φ=5.60 eV) que reproduce Ω_φDM h²=0.0739.
 
 - Mecanismo Dodelson-Widrow (mezcla activo-estéril): el ángulo requerido es
   sin²(2θ)_DW = 4.7846×10⁻⁵ (fórmula Boyarsky-Ruchayskiy-Shaposhnikov 2009).
@@ -257,7 +257,7 @@ Tensiones S₈ (aplicando supresión al baseline Paper 6 S₈=0.761):
 
 **El baseline Paper 6 ya está dentro de 1σ DES** (0.09σ). HMcode añade Δσ = 0.03σ de mejora.
 
-**Por qué el baseline está tan bien:** El two-sector φ-DM (m_φ=5.71 eV, k_fs=0.493 h/Mpc)
+**Por qué el baseline está tan bien:** El two-sector φ-DM (m_φ=5.60 eV, k_fs=0.493 h/Mpc)
 ya suprime P(k) en k > k_fs, combinado con MIRA (Ω_m=0.320). El HMcode añade supresión bariónica
 suave adicional, principalmente a k > 0.5 h/Mpc.
 

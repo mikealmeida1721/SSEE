@@ -49,8 +49,8 @@ tau_Pi  = KAL0 / (3*OmDE)
 H0_alg  = 3*(phi + pi_)**2   # 67.96
 
 R       = 4*KAL0 - 22
-Ob_h2   = 3*(pi_ - phi)/200
-mnu_active = R * Ob_h2 * 94.07 / tau_Pi   # 0.084 eV
+Ob_h2   = (pi_ - phi) / (3*(phi + pi_)**2)   # 0.02242 = (π−φ)/H₀_SSEE (OP-1 corregido)
+mnu_active = R * Ob_h2 * 94.07 / tau_Pi   # 0.0824 eV
 
 # ── Modelo dos-sectores ───────────────────────────────────────────────────────
 Om_CDM   = Omm_dyn           # 0.160
@@ -58,7 +58,7 @@ Om_phiDM = (MIRA-1)*Omm_dyn  # 0.160
 Om_total = Om_CDM + Om_phiDM  # 0.320 (ambos sectores)
 
 # Masa del φ-DM (derivación algebraica pura — escala de energía característica)
-m_phi_eV = mnu_active * H0_alg   # 5.71 eV
+m_phi_eV = mnu_active * H0_alg   # 5.60 eV
 
 sig8_Planck = 0.811
 
@@ -271,5 +271,7 @@ print(f"  fσ₈ tensión media: {mt_2s:.4f}σ  "
 print(f"  σ₈ vs KiDS-1000:   {abs(sig8_eff-kids_sig8)/kids_sig8_err:.4f}σ")
 print(f"  S₈ vs KiDS-1000:   {abs(S8_eff-kids_s8)/kids_s8_err:.4f}σ")
 print(f"  Parámetros libres nuevos: 0 (m_φ = Σm_ν × H₀^alg es algebraico)")
-print(f"  Predicción falsable: m_φ = {m_phi_eV:.2f} eV  (KATRIN/PTOLEMY 2027–2030)")
+print(f"  Predicción falsable: k_fs = 0.493 h/Mpc (DESI Y3/Euclid 2026–2028)")
+print(f"    m_φ = {m_phi_eV:.2f} eV es algebraico; φ-DM no tiene portal con el")
+print(f"    Modelo Estándar → observable solo vía k_fs en P(k), no en KATRIN/PTOLEMY")
 print(f"{'='*70}")

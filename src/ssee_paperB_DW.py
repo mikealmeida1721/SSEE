@@ -1,7 +1,7 @@
 """
 Paper B — Problema 2: Ángulo de mezcla Dodelson-Widrow para Ω_φDM = Ω_CDM.
 
-Pregunta: dado m_φ=5.71 eV y Ω_φDM h²=0.0739, ¿qué sin²(2θ) requiere
+Pregunta: dado m_φ=5.60 eV y Ω_φDM h²=0.0739, ¿qué sin²(2θ) requiere
 el mecanismo DW? ¿Tiene ese ángulo una expresión algebraica SSEE?
 
 Referencia principal: Boyarsky, Ruchayskiy & Shaposhnikov (2009) rev.
@@ -31,11 +31,11 @@ Om_phiDM = (MIRA - 1) * Omm_dyn   # ≈ 0.15987
 h_ssee   = 0.6796                  # H₀/100 (Paper 2 MCMC best-fit)
 Om_phiDM_h2 = Om_phiDM * h_ssee**2  # ≈ 0.0739
 
-m_phi_eV = 5.71                    # eV — derivado algebraicamente (Paper 6)
+m_phi_eV = 5.60                    # eV — derivado algebraicamente (Paper 6)
 m_phi_keV = m_phi_eV * 1e-3       # en keV
 
 print("=" * 70)
-print("Paper B — Problema 2: Ángulo de mezcla DW para m_φ=5.71 eV")
+print("Paper B — Problema 2: Ángulo de mezcla DW para m_φ=5.60 eV")
 print("=" * 70)
 print(f"\n  m_φ          = {m_phi_eV:.4f} eV  = {m_phi_keV:.6f} keV")
 print(f"  Ω_φDM h²     = {Om_phiDM_h2:.6f}")
@@ -83,7 +83,7 @@ print("""
     Ω_s h² ≈ 0.3 × (sin²2θ / 3×10⁻⁹) × (m_s / 3 keV)²
 
   Válida estrictamente para m_s ~ keV donde la producción ocurre cerca
-  de T_QCD ~ 150 MeV. Para m_φ=5.71 eV, la producción se desplaza a
+  de T_QCD ~ 150 MeV. Para m_φ=5.60 eV, la producción se desplaza a
   T_peak ~ GeV donde la corrección de QCD importa → usar BRS 2009.
 """)
 
@@ -93,9 +93,9 @@ sin2theta_DW94 = Om_phiDM_h2 / (C_DW94 * m_phi_keV**2)
 print(f"  sin²(2θ)_DW94 = {sin2theta_DW94:.4e}")
 print(f"  θ_DW94        = {np.degrees(0.5*np.arcsin(min(1,np.sqrt(sin2theta_DW94)))):.4f}°")
 
-# ── Bloque C: T_peak para m_φ=5.71 eV ───────────────────────────────────────
+# ── Bloque C: T_peak para m_φ=5.60 eV ───────────────────────────────────────
 print("\n" + "=" * 70)
-print("[C] Temperatura de producción pico T_peak(m_φ=5.71 eV)")
+print("[C] Temperatura de producción pico T_peak(m_φ=5.60 eV)")
 print("=" * 70)
 
 GF_eV2  = 1.1664e-5 * (1e-9)**2   # G_F en eV⁻²
@@ -107,9 +107,9 @@ mW_eV   = 80.4e9                    # m_W en eV
 # T_peak cuando d/dT [Γ×s/H] = 0 → T_peak ∝ (m_s² m_W² / G_F)^{1/5}
 T_peak_eV = (m_phi_eV**2 * mW_eV**2 / GF_eV2)**0.2
 
-print(f"\n  T_peak(m_φ=5.71 eV) ≈ {T_peak_eV:.3e} eV  = {T_peak_eV/1e9:.3f} GeV")
+print(f"\n  T_peak(m_φ=5.60 eV) ≈ {T_peak_eV:.3e} eV  = {T_peak_eV/1e9:.3f} GeV")
 print(f"  (Cf. T_peak para m_s=3 keV ≈ 130 MeV)")
-print(f"\n  → Producción DW para m_φ=5.71 eV ocurre a T ~ {T_peak_eV/1e9:.1f} GeV")
+print(f"\n  → Producción DW para m_φ=5.60 eV ocurre a T ~ {T_peak_eV/1e9:.1f} GeV")
 print(f"    (rango pre-QCD, donde g_* ≈ 106.75 — fórmula BRS válida)")
 
 # ── Bloque D: Estabilidad frente a decaimiento ────────────────────────────────

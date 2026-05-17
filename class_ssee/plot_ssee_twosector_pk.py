@@ -1,6 +1,6 @@
 """
 SSEE-V3.6 — Fase 2: Two-Sector phi-DM P(k) con WDM Transfer Function
-Aplica la supresión de free-streaming del phi-DM (m=5.71 eV, k_fs=0.493 h/Mpc)
+Aplica la supresión de free-streaming del phi-DM (m=5.60 eV, k_fs=0.493 h/Mpc)
 sobre el espectro SSEE+MIRA usando la función de transferencia de Viel et al. 2005
 """
 
@@ -28,7 +28,7 @@ k_ssee, P_ssee = ssee_pk[:,0], ssee_pk[:,1]
 k_lcdm, P_lcdm = lcdm_pk[:,0], lcdm_pk[:,1]
 
 # ── phi-DM Parameters (Paper 6) ───────────────────────────────────────────────
-m_phi  = 5.71    # eV
+m_phi  = 5.60    # eV
 k_fs   = 0.493   # h/Mpc (Dodelson-Widrow derivation)
 # Omega split: Omega_CDM = 0.160 / Omega_phiDM = 0.160 / Omega_total = 0.320
 f_phiDM = 0.160 / 0.320   # fraction of matter in phi-DM sector = 0.5
@@ -95,7 +95,7 @@ ax_main.grid(True, which="both", alpha=0.2)
 ax_main.legend(loc="lower left", fontsize=9, framealpha=0.3)
 ax_main.set_title(
     "SSEE-V3.6: Two-Sector $\\varphi$-DM Matter Power Spectrum (CLASS + WDM Transfer Function)\n"
-    r"$m_\varphi = 5.71\,\mathrm{eV}$,  $k_{fs} = 0.493\,h/\mathrm{Mpc}$,  $f_{\varphi\mathrm{DM}} = 0.5$",
+    r"$m_\varphi = 5.60\,\mathrm{eV}$,  $k_{fs} = 0.493\,h/\mathrm{Mpc}$,  $f_{\varphi\mathrm{DM}} = 0.5$",
     fontsize=12, pad=10)
 
 # Ratio panel

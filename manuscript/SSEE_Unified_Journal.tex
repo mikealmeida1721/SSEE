@@ -497,7 +497,7 @@ The characteristic scale $\kfs$ is set by the Dodelson-Widrow
 relation \citep{DodelsonWidrow1994} applied to the algebraically derived mass:
 \begin{equation}
   \mphi = \Sigma m_\nu^{\mathrm{active}} \times H_0^{\mathrm{alg}}
-        = 0.084\;\mathrm{eV} \times 67.96\,h^{-1}\simeq 5.71\;\mathrm{eV},
+        = 0.0824\;\mathrm{eV} \times 67.96\,h^{-1}\simeq 5.60\;\mathrm{eV},
   \quad
   \kfs = 0.493\;h\,\mathrm{Mpc}^{-1}.
   \label{eq:mphi}
@@ -830,7 +830,9 @@ falsified at the theory level if \textit{any} of the following were established:
 (i) $(\wz, \wa)$ is inconsistent with the DESI~DR2 posterior at $>3\sigma$;
 (ii) a future CLASS MCMC with Planck+DESI likelihoods requires
 $\Omega_m \neq 0.3199$ at $>3\sigma$;
-(iii) $m_\phi \neq 5.71$~eV as measured by KATRIN/PTOLEMY;
+(iii) the $\phi$-DM free-streaming scale $\kfs \neq 0.493\,h\,\mathrm{Mpc}^{-1}$
+as measured by DESI~Y3/Euclid $P(k)$ ($\phi$-DM has no Standard-Model portal,
+so its mass is not directly accessible to neutrino-mass experiments);
 (iv) $r \neq 0.00813$ as measured by LiteBIRD;
 (v) the strong-lensing Einstein-radius ratio is inconsistent with
 $\sqrt{\AURA}\approx\MIRA$ at $>3\sigma$ in HST/JWST surveys.
@@ -864,7 +866,7 @@ $\sigma_8^{\rm SSEE}$ (single-sector ODE) & $0.702$ & Weak lensing surveys & Ret
 $H_0^{\rm local} = H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & SH0ES 2022 ($0.17\sigma$) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Predictions (not yet observationally accessible)}} \\
-$\mphi = \Sigma m_\nu \times H_0^{\rm alg}$ & $5.71$ eV & KATRIN/PTOLEMY, 2027--2030 & Prediction \\
+$\mphi = \Sigma m_\nu \times H_0^{\rm alg}$ & $5.60$ eV & Matter $P(k)$ via $\kfs$ (no SM portal) & Prediction \\
 $\kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ (DW from $\mphi$) & $0.493\,h/\mathrm{Mpc}$ & DESI Y3 / Euclid $P(k)$ & Prediction \\
 $\alphaK = 0.073$ & $0.073$ & Euclid WL null test ($\alphaK < 0.1$ threshold) & Prediction \\
 $r = \phiG^{-10}$ & $0.00813$ & LiteBIRD $\sim$2032 & Prediction \\
@@ -905,7 +907,7 @@ of baryonic feedback (deferred for computational cost) is required to pin the
 linear-theory $S_8$ within this range.
 
 \textbf{(iii) $\phi$DM mass and Lyman-$\alpha$ constraints.}
-The algebraic mass $\mphi = 5.71$~eV is in the warm dark matter regime
+The algebraic mass $\mphi = 5.60$~eV is in the warm dark matter regime
 ($\kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$).
 Current Lyman-$\alpha$ bounds on thermal WDM place constraints at
 $m_{\rm WDM} \gtrsim 5.3$~keV \citep{Irsic2017}, but the \SSEE\ $\phi$DM
@@ -976,9 +978,10 @@ across four observational tiers.
 \end{enumerate}
 
 The framework generates five near-term falsifiable predictions, under the stated
-assumptions: $m_\phi = 5.71$~eV
-(KATRIN/PTOLEMY, 2027--2030), $\kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ (DESI~Y3/Euclid
-$P(k)$), $\alphaK = 0.073$ (Euclid WL null test; a detection $\alphaK > 0.1$ would
+assumptions: the $\phi$-DM free-streaming scale
+$\kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ (DESI~Y3/Euclid $P(k)$; the algebraic mass
+$m_\phi = 5.60$~eV enters observation only through $\kfs$, as $\phi$-DM has no
+Standard-Model portal), $\alphaK = 0.073$ (Euclid WL null test; a detection $\alphaK > 0.1$ would
 falsify SSEE), $r = 0.00813$ (LiteBIRD), and a strong-lensing Einstein-radius
 amplification $\sqrt{\AURA}\approx\MIRA$ (HST/JWST).
 All analytical scripts, CLASS configuration files, and EFTCAMB inputs are archived
@@ -1027,7 +1030,7 @@ $\beta_c$ & $-(3\phiG+\pi)/2$ & $-3.9978$ & --- \\
 $\alphaK$ & $3\,\Omde(1+w_{\varphi,\rm bare})$ & $0.073$ & $<0.1$ (Euclid threshold) \\
 $\alphaT = \alphaM = \alphaB$ & minimal coupling & $0$ & $|\alphaT|<10^{-15}$ (GW170817) \\
 \midrule
-$\mphi$ & $\Sigma m_\nu \times H_0^{\rm alg}$ & $5.71$ eV & --- (target: KATRIN/PTOLEMY) \\
+$\mphi$ & $\Sigma m_\nu \times H_0^{\rm alg}$ & $5.60$ eV & --- (target: $\kfs$ via DESI~Y3/Euclid) \\
 $\kfs$ & Dodelson-Widrow ($\mphi$) & $0.493\,h$/Mpc & --- \\
 $r$ & $\phiG^{-10}$ & $0.00813$ & $<0.036$ (BK18) \\
 \midrule

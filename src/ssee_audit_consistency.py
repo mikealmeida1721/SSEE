@@ -23,7 +23,7 @@ CANONICAL = {
     "ns":     0.9649,
     "rd_ssee": 147.156,  # r_d en Mpc (Paper 2 CAMB)
     "kfs":    0.493,     # k_fs h/Mpc (Paper 6)
-    "mphi":   5.71,      # m_φ en eV
+    "mphi":   5.60,      # m_φ en eV
     "betac":  3.9978,    # |β_c| = AURA
     "sigma8_ssee": 0.702, # Paper 5
     "fsig8_tension_before": 2.56,  # Paper 6 baseline corregido (σ8=0.702, 6 surveys)

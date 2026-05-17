@@ -1,7 +1,7 @@
 """
 SSEE Paper 6 — Lyman-α Audit: 3 Routes
 ========================================
-Evaluación cuantitativa de si m_φ = 5.71 eV puede sostenerse frente a
+Evaluación cuantitativa de si m_φ = 5.60 eV puede sostenerse frente a
 los límites observacionales de Lyman-α y estructura a gran escala.
 
 Rutas:
@@ -31,7 +31,7 @@ Omega_phiDM   = 0.159878
 Omega_m_CMB   = 0.319928
 MIRA          = 1.9989
 
-m_phi_eV  = 5.71             # masa algebraica φ-DM [eV]
+m_phi_eV  = 5.60             # masa algebraica φ-DM [eV]
 m_phi_keV = m_phi_eV / 1e3  # [keV]
 h         = 0.670
 H0        = h * 100          # [km/s/Mpc]
@@ -56,14 +56,14 @@ k_fs_paper = 0.493  # h/Mpc (del paper)
 
 m_fuzzy_needed_eV = (k_fs_paper / 66.5)**2 * 1e-22  # [eV]
 
-# k_J para m_φ = 5.71 eV (como campo escalar):
+# k_J para m_φ = 5.60 eV (como campo escalar):
 k_J_5p71eV = 66.5 * (m_phi_eV / 1e-22)**0.5  # h/Mpc — astronómicamente grande
 
-# Longitud de de Broglie para m = 5.71 eV moviéndose a velocidad virial típica
+# Longitud de de Broglie para m = 5.60 eV moviéndose a velocidad virial típica
 # v_vir ~ 100 km/s = 3.3×10^-4 c  →  λ_dB [Mpc] = ℏc / (m c² × v/c)
 # ℏc = 197.3 MeV·fm = 197.3×10^-15 MeV·m → en unidades cosmológicas:
 # λ_dB [Mpc] = 6.58×10^-22 eV·s × c / (m × v)
-# Para m=5.71 eV, v=100 km/s=3.33×10^5 m/s:
+# Para m=5.60 eV, v=100 km/s=3.33×10^5 m/s:
 hbar_eV_s = 6.582e-16      # [eV·s]
 c_m_s     = 3e8            # [m/s]
 v_vir     = 1e5            # [m/s] (100 km/s)
@@ -126,7 +126,7 @@ sigma8_HDM_lin   = sigma8_CDM_ref * (1 + delta_linear)
 # σ₈(f) ≈ σ₈,CDM × (1 − f_ν)²   [válida para k >> k_fs,ν]
 sigma8_HDM_Bond  = sigma8_CDM_ref * (1 - f_phiDM)**2
 
-# k_fs para HDM térmico a 5.71 eV (tipo neutrino activo):
+# k_fs para HDM térmico a 5.60 eV (tipo neutrino activo):
 # k_fs,ν [h/Mpc] ≈ 0.82 (m/eV)^0.5 (Ω_m h²/0.14)^0.5   [Lesgourgues & Pastor 2006]
 k_fs_HDM_thermal = 0.82 * m_phi_eV**0.5 * (Omega_m_h2 / 0.14)**0.5
 
@@ -242,7 +242,7 @@ ax_C2.grid(True, alpha=0.3, axis='x')
 
 # Título global
 fig.suptitle(
-    r'SSEE Paper 6 — Lyman-$\alpha$ Audit: $m_\phi = 5.71$ eV vs. observational limits',
+    r'SSEE Paper 6 — Lyman-$\alpha$ Audit: $m_\phi = 5.60$ eV vs. observational limits',
     fontsize=13, fontweight='bold', y=1.01
 )
 
@@ -271,7 +271,7 @@ print(f"    m_requerida = {m_fuzzy_needed_eV:.2e} eV  (~21 órdenes de magnitud 
 print(f"  Para m_φ = {m_phi_eV} eV como campo escalar:")
 print(f"    k_J = {k_J_5p71eV:.2e} h/Mpc  (mucho más allá de cualquier escala observable)")
 print(f"    λ_dB (v=100 km/s) = {lambda_dB_Mpc:.2e} Mpc  (escala sub-atómica cosmológica)")
-print(f"\n  VEREDICTO: ✗  A 5.71 eV, campo escalar → CDM puro. Sin supresión posible.")
+print(f"\n  VEREDICTO: ✗  A 5.60 eV, campo escalar → CDM puro. Sin supresión posible.")
 print(f"             Fuzzy DM requiere m ~ 10⁻²⁶ eV — incompatible con la derivación algebraica.")
 
 print(f"\n{'RUTA B — Validez relación DW extrapolada a eV':^70}")
@@ -293,7 +293,7 @@ print(f"             suprimiendo P(k) >99% en escalas BAO. Los datos BAO lo excl
 print(f"\n{'RUTA C — Aceptar HDM, impacto real en P(k)':^70}")
 print(sep)
 print(f"  f_φDM = {f_phiDM:.3f}  (50% de toda la materia oscura es HDM-like)")
-print(f"  k_fs,HDM térmico (5.71 eV) = {k_fs_HDM_thermal:.3f} h/Mpc")
+print(f"  k_fs,HDM térmico (5.60 eV) = {k_fs_HDM_thermal:.3f} h/Mpc")
 print(f"\n  Supresión σ₈:")
 print(f"    Lineal (Δσ₈/σ₈ = −8f):    σ₈ = {sigma8_HDM_lin:.3f}  [aproximación fuera de rango]")
 print(f"    Bond (1−f)²:               σ₈ = {sigma8_HDM_Bond:.3f}")
@@ -302,7 +302,7 @@ print(f"\n  Supresión P(k) para k >> k_fs,HDM:")
 print(f"    Lineal:  ΔP/P = {suppression_Lya_lin:.2f}  ({suppression_Lya_lin*100:.0f}%)")
 print(f"    Bond:    ΔP/P = {suppression_Lya_Bond:.2f}  ({suppression_Lya_Bond*100:.0f}%)")
 print(f"\n  Planck 2018: Σmν < {Sigma_mnu_Planck_max} eV  →  m_φ = {m_phi_eV} eV es {m_phi_eV/Sigma_mnu_Planck_max:.0f}× el límite")
-print(f"\n  VEREDICTO: ✗  50% HDM a 5.71 eV destruye la formación de estructura a gran escala.")
+print(f"\n  VEREDICTO: ✗  50% HDM a 5.60 eV destruye la formación de estructura a gran escala.")
 print(f"             Bond da σ₈ = {sigma8_HDM_Bond:.3f} — numéricamente cercano al claim del paper,")
 print(f"             pero el P(k) completo está catastrófico en k > {k_fs_HDM_thermal:.2f} h/Mpc.")
 
@@ -310,25 +310,25 @@ print(f"\n{SEP}")
 print(f"  DIAGNÓSTICO GLOBAL")
 print(SEP)
 print("""
-  Ruta A: ✗  5.71 eV como campo escalar → CDM puro. Sin supresión de k_fs.
+  Ruta A: ✗  5.60 eV como campo escalar → CDM puro. Sin supresión de k_fs.
              La interpretación fuzzy requiere m ~ 10⁻²⁶ eV.
 
   Ruta B: ✗  Empeora el problema. La fórmula DW extrapolada es inválida en eV.
              k_fs real (Viel) ~ 7 veces más pequeño → destruye P(k) en BAO.
 
-  Ruta C: ✗  50% HDM a 5.71 eV es incompatible con observaciones LSS existentes.
+  Ruta C: ✗  50% HDM a 5.60 eV es incompatible con observaciones LSS existentes.
              La relación DW usada en Paper 6 no aplica a este rango de masa.
 
   ─────────────────────────────────────────────────────────────────────────
   CONCLUSIÓN:
-  m_φ = 5.71 eV NO puede interpretarse como partícula DM free-streaming.
-  La derivación algebraica es correcta — el número 5.71 eV puede ser real.
+  m_φ = 5.60 eV NO puede interpretarse como partícula DM free-streaming.
+  La derivación algebraica es correcta — el número 5.60 eV puede ser real.
   Lo que necesita cambiar: la INTERPRETACIÓN FÍSICA.
 
   CANDIDATOS DE REINTERPRETACIÓN:
     (1) m_φ como escala de masa del potencial V(φ), no como masa del portador de DM.
         El sector φ-DM sería un condensado frío (CDM-like) cuya masa del campo
-        es 5.71 eV — observable en experimentos de campo escalar, no en Lyman-α.
+        es 5.60 eV — observable en experimentos de campo escalar, no en Lyman-α.
 
     (2) La unificación Ω_CDM + Ω_φDM = Ω_m,CMB es válida independientemente
         del mecanismo de supresión. σ₈ puede resolverse por IS viscosity (Paper 5)

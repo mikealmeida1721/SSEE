@@ -21,7 +21,7 @@ Falsifiable predictions — all pre-data (timestamped Zenodo: 10.5281/zenodo.196
 | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.3199 (algebraic via MIRA) | Planck 2018: 0.3153 | 0.63σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
-| m_φ (φ-DM mass) | 5.71 eV algebraic | gravitationally-produced scalar — probed via k_fs | Future prediction |
+| m_φ (φ-DM mass) | 5.60 eV algebraic | gravitationally-produced scalar — probed via k_fs | Future prediction |
 | k_fs | 0.493 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
 | r (tensor-to-scalar) | φ⁻¹⁰ = 0.00813 | LiteBIRD (~2032) | Future prediction |
 
@@ -47,7 +47,7 @@ SSEE/
 ├── class_ssee/                      — CLASS Boltzmann fork — SSEE .ini configs + plots
 │   ├── ssee_v36.ini                 — SSEE MIRA sector (Ω_m=0.3199)
 │   ├── ssee_v36_nomira.ini          — SSEE dynamic sector only (Ω_m=0.160)
-│   ├── ssee_v36_twosector.ini       — φ-DM two-sector (ncdm m=5.71 eV)
+│   ├── ssee_v36_twosector.ini       — φ-DM two-sector (ncdm m=5.60 eV)
 │   └── ssee_v36_IS.ini              — IS viscosity (cs2_fld=0.001)
 ├── data/                            — observational data (DESI DR2, Planck PR4, clusters)
 ├── results/                         — generated figures, tables, logs
@@ -142,7 +142,7 @@ python3 src/ssee_paper6_mcmc.py    # 64 walkers × 15000 steps
 ```
 Expected output (verification):
 ```
-m_φ = 5.71 eV (algebraic, zero free parameters)
+m_φ = 5.60 eV (algebraic, zero free parameters)
 k_fs = 0.493 h/Mpc
 Ω_CDM = 0.160050
 Ω_φDM = 0.159878
@@ -297,7 +297,7 @@ Static Eckart: 3.7σ tension. IS derivation: KAL₀ × Ωb h² × n_s = 0.11926 
 Note: Ωb h² algebraic = (π−φ)/(3Ω²) = 0.02242 (0.32σ from Planck — see OPEN_PROBLEMS OP-1; the earlier 3(π−φ)/200 form is superseded).
 
 ### 8. φ-DM mass scale and field content (Paper 6)
-m_φ = 5.71 eV is not keV-scale WDM; φ-DM is modelled as a real scalar field (explicit
+m_φ = 5.60 eV is not keV-scale WDM; φ-DM is modelled as a real scalar field (explicit
 Lagrangian in Paper 6 §4) populated by gravitational particle production. The
 Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no
 zero-parameter SSEE form. φ-DM has no Standard-Model portal, so it is not accessible
@@ -333,7 +333,7 @@ Chronological record of what was derived before what data:
 | n_s | 1 − φ⁻⁷ | 0.96556 | Planck 2018 | Retrodiction |
 | H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Retrodiction |
 | r_d (MIRA) | CAMB, Ωm,CMB=0.3199 | 147.156 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | 0.25σ (retrodiction) |
-| m_φ | Σm_ν × H₀^alg | 5.71 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction |
+| m_φ | Σm_ν × H₀^alg | 5.60 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction |
 | k_fs | free-streaming (m_φ) | 0.493 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction |
 | r | φ⁻¹⁰ | 0.00813 | LiteBIRD (~2032) | Future prediction |
 

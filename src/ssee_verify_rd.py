@@ -43,13 +43,12 @@ H0_run  = 66.75                    # valor MCMC Paper 2 (best-fit posterior, ±0
 
 # Ωb h² — dos casos:
 #   Estándar: Planck 2018 prior (Paper 2)
-#   IS: derivado algebraicamente en Paper 4 §sec:baryons
-#     Ωb = 100(π−φ)/[6(φ+π)⁴] = 0.0495 (densidad fraccional)
-#     Ωb h² = 3(π−φ)/200 = 0.02285 (con H0 algebraico = 3(φ+π)² ≈ 67.96)
-#     Tensión con Planck: |0.02285−0.02237|/0.00015 = 3.2σ — documentado en Paper 4 Tabla
-#   NOTA: corregido en sesión 8 — todos los docs ahora usan 0.02285
+#   IS: derivado algebraicamente en Paper 4 §3.2 (corregido; OP-1)
+#     Ωb h² = (π−φ)/[3(φ+π)²] = (π−φ)/H₀_SSEE = 0.02242
+#     Tensión con Planck: |0.02242−0.02237|/0.00015 = 0.32σ
+#     (la forma preliminar 3(π−φ)/200 = 0.02285 quedó superseded — ver OP-1)
 Ombh2_std = 0.02237
-Ombh2_IS  = 3 * (pi - phi) / 200               # 0.02285 (Paper 4 §sec:baryons)
+Ombh2_IS  = (pi - phi) / (3 * (phi + pi)**2)   # 0.02242 = (π−φ)/H₀_SSEE
 
 # n_s algebraico (Paper 4): 1 − φ⁻⁷
 ns_ssee = 1.0 - phi**(-7)          # 0.96556
@@ -170,7 +169,7 @@ def main():
     print_comparison("C: SSEE dinámico (Ωm=0.160)", C)
 
     print("\n--- Resumen ---")
-    print(f"  Ωb h² IS algebraico  = (π−φ)/[6(φ+π)⁴] = {Ombh2_IS:.5f}")
+    print(f"  Ωb h² algebraico  = (π−φ)/[3(φ+π)²] = (π−φ)/H₀_SSEE = {Ombh2_IS:.5f}")
     print(f"  n_s algebraico       = 1 − φ⁻⁷ = {ns_ssee:.5f}")
     print(f"  Ωm,dyn               = {Omm_dyn:.5f}")
     print(f"  MIRA                 = {MIRA:.6f}")

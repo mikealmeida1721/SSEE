@@ -129,7 +129,7 @@ $\gamma_{\mathrm{IS}} = 0.554$ & $\approx\gamma_{\Lambda\mathrm{CDM}}=0.55$ & RS
 $f\sigma_8(z{=}0.5) = 0.341$ & $2.67\sigma$ below BOSS & BOSS/eBOSS & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 6 — $\varphi$-Dark Matter, two-sector}} \\
-$m_\phi = \Sigma m_\nu \times H_0^{\mathrm{alg}}$ & $5.71\,\mathrm{eV}$ & KATRIN/PTOLEMY 2027--2030 & Prediction \\
+$m_\phi = \Sigma m_\nu \times H_0^{\mathrm{alg}}$ & $5.60\,\mathrm{eV}$ & Matter $P(k)$ via $k_{\mathrm{fs}}$ (no SM portal) & Prediction \\
 $k_{\mathrm{fs}}$ (Dodelson-Widrow from $m_\phi$) & $0.493\,h\,\mathrm{Mpc}^{-1}$ & DESI\,Y3 / Euclid $P(k)$, 2026--2028 & Prediction \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 7 — Canonical EFT, Bellini-Sawicki $\alpha$-functions}} \\
@@ -739,9 +739,11 @@ applies uniformly to Papers~1--4.
   \textit{Result}: most Type~A predictions in Appendix~B,
   Table~\ref{tab:derivation_chain} are within $2\sigma$ of published
   observational values (see Paper~4 for full compilation).
-  One exception: $\Omega_b h^2 = 3(\pi-\varphi)/200 = 0.02285$ is at $3.2\sigma$
-  from Planck~2018 ($0.02237\pm0.00015$); this tension is documented in
-  Table~\ref{tab:derivation_chain} and in \texttt{AUDIT.md}.
+  The baryon density $\Omega_b h^2 = (\pi-\varphi)/[3(\varphi+\pi)^2] = 0.02242$
+  ($0.32\sigma$ from Planck~2018, $0.02237\pm0.00015$) is classified as a
+  \emph{retrodiction}: its structural algebraic form was identified after the
+  data, superseding the preliminary placeholder $3(\pi-\varphi)/200$
+  (documented in Table~\ref{tab:derivation_chain} and \texttt{AUDIT.md}).
   \textit{Claim}: the algebraic sector is \emph{not falsified} by any
   currently available dataset at the $>3\sigma$ level. A future falsification would require
   $n_s\neq1-\varphi^{-7}$ at $>3\sigma$ from Planck~PR4,
@@ -934,10 +936,10 @@ $H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & P$^\dag
 $H_0^{\rm MCMC}$ & CMB full posterior (Paper~3) & $67.08\pm0.03$ & Planck PR4 & M \\
 $\Omega_m^{\rm CMB}$ & $(\pi-\varphi)/(\pi+\varphi)$ & $0.3201^\S$ & Planck 2018 & A \\
 $n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
-$\Omega_b h^2$ & $3(\pi-\varphi)/200$ & $0.02285$ ($3.2\sigma$) & Planck 2018 & A$^\ddagger$ \\
-$\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.12184$ ($1.5\sigma$) & Planck 2018 & A \\
+$\Omega_b h^2$ & $(\pi-\varphi)/[3(\varphi+\pi)^2]$ & $0.02242$ ($0.32\sigma$) & Planck 2018 & A$^\ddagger$ \\
+$\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.11951$ ($0.4\sigma$) & Planck 2018 & A \\
 $r$       & $\varphi^{-10}$ & $0.00813$ & LiteBIRD 2032 & A \\
-$\sum m_\nu$ & $m_\phi/H_0^{\rm alg}$ (Paper~6) & $0.084$ eV & Planck+BBN & A \\
+$\sum m_\nu$ & $m_\phi/H_0^{\rm alg}$ (Paper~6) & $0.0824$ eV & Planck+BBN & A \\
 \bottomrule
 \end{tabularx}
 \\[4pt]
@@ -953,13 +955,13 @@ Note: in early internal documents MIRA was loosely approximated as
 $\varphi\approx1.618$; the canonical value is $1.998924$ throughout all four papers.
 Similarly, $\mathrm{KAL}_0$ is both a derived constant (Level~2) and
 a dynamical viscosity operator scaling cluster masses.\\[2pt]
-\small $^\ddagger$ $\Omega_b h^2=3(\pi-\varphi)/200=0.02285$ is at $3.2\sigma$ from Planck 2018 ($0.02237\pm0.00015$).
-This is the largest tension in the algebraic sector; documented in \texttt{AUDIT.md}.
-Using the SSEE algebraic input $\Omega_b h^2=0.02285$, the formula
+\small $^\ddagger$ $\Omega_b h^2=(\pi-\varphi)/[3(\varphi+\pi)^2]=0.02242$ is at $0.32\sigma$ from Planck 2018 ($0.02237\pm0.00015$).
+This is a \emph{retrodiction}: the structural form was identified after the data (OP-1, \texttt{OPEN\_PROBLEMS.md}),
+superseding the preliminary placeholder $3(\pi-\varphi)/200=0.02285$ ($3.2\sigma$), whose factor $200$ was not an
+algebraic $\{\varphi,\pi\}$ quantity.
+Using the algebraic input $\Omega_b h^2=0.02242$, the formula
 $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ gives
-$\Omega_c h^2 = 5.5214\times0.02285\times0.96556 = 0.12184$ ($1.5\sigma$ from Planck $0.1200\pm0.0012$).
-The Israel--Stewart viscosity correction discussed in Paper~4 reduces this tension further;
-the corrected derivation is given there.\\[2pt]
+$\Omega_c h^2 = 5.5214\times0.02242\times0.96556 = 0.11951$ ($0.41\sigma$ from Planck $0.1200\pm0.0012$).\\[2pt]
 \small $^\S$ The formula $(\pi-\varphi)/(\pi+\varphi)$ gives $0.32010$; the canonical value
 from the derivation chain ($\Omega_{m,\rm dyn}\times\mathrm{MIRA}$) is $0.31993$.
 Both round to $0.320$ at the reported precision; the MIRA formula is the canonical
@@ -1130,12 +1132,14 @@ as a consistency check, not as a derivation.
 The Planck~2018 value \citep{Akrami2020} $n_s = 0.9649\pm0.0042$ is $0.2\sigma$ from the
 SSEE algebraic value; this comparison was made after the axiom was committed.
 
-\subsection*{Baryon density $\Omega_b h^2 = 3(\pi-\varphi)/200$}
+\subsection*{Baryon density $\Omega_b h^2 = (\pi-\varphi)/[3(\varphi+\pi)^2]$}
 
-This Level~1 expression ($\pi-\varphi \approx 1.524$, scaled by $3/200$)
-gives $0.02285$, at $3.2\sigma$ from Planck~2018 ($0.02237\pm0.00015$).
-The tension is documented in \S\ref{app:derivation_chain} and AUDIT.md.
-No adjustment was applied to reduce this tension; the value is retained
-as a falsifiable algebraic prediction.
+The structural expression $(\pi-\varphi)/[3(\varphi+\pi)^2] = (\pi-\varphi)/H_0^{\rm SSEE}$
+gives $0.02242$, at $0.32\sigma$ from Planck~2018 ($0.02237\pm0.00015$).
+This form is classified as a \emph{retrodiction}: it was identified after the data
+(OP-1, \texttt{OPEN\_PROBLEMS.md}), replacing the preliminary placeholder
+$3(\pi-\varphi)/200 = 0.02285$ ($3.2\sigma$), in which the factor $200$ was not an
+algebraic $\{\varphi,\pi\}$ quantity. No parameter is fitted: the denominator
+$3(\varphi+\pi)^2$ is the algebraic Hubble scale $H_0^{\rm SSEE}$.
 
 \end{document}

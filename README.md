@@ -14,7 +14,7 @@
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match |
 | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 |
-| m_φ (φ-DM mass) | 5.71 eV algebraic | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable |
+| m_φ (φ-DM mass) | 5.60 eV algebraic | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable |
 | k_fs (free-streaming) | 0.493 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | falsifiable |
 
 **Future falsifiers:** r = φ⁻¹⁰ = 0.00813 (LiteBIRD ~2032); k_fs cutoff in matter power spectrum (Euclid ~2028).
@@ -153,7 +153,7 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | Ω_CDM | 0.160050 | Active at all k |
 | Ω_φDM = (MIRA−1)×Ω_m,dyn | 0.159878 | Active for k < k_fs only |
 | Ω_total (two-sector) | 0.319928 ≈ Ω_m,CMB | Zero-parameter unification |
-| m_φ = Σm_ν × H₀^alg | 5.71 eV | Algebraic — no fitting |
+| m_φ = Σm_ν × H₀^alg | 5.60 eV | Algebraic — no fitting |
 | k_fs (free-streaming) | 0.493 h/Mpc | From m_φ algebraic |
 | T_WDM(k=0.125 h/Mpc) | 0.8175 | Soft cutoff (scalar condensate, not thermal WDM) |
 | σ₈_eff | **0.737** (CLASS+WDM, α=1.6561 h/Mpc) | 0.00σ KiDS-1000 |
@@ -167,7 +167,7 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 
 **φ-DM is a gravitationally-produced scalar** (explicit Lagrangian in Paper 6 §4): no Standard-Model portal, so it is *not* accessible to neutrino-mass experiments. The Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no zero-parameter SSEE form.
 
-**Falsifiable prediction:** k_fs = 0.493 h/Mpc — the free-streaming imprint of m_φ = 5.71 eV on the matter power spectrum — testable via the Lyman-α forest and DESI Y3/Euclid P(k) (2026–2028). Zero free parameters.
+**Falsifiable prediction:** k_fs = 0.493 h/Mpc — the free-streaming imprint of m_φ = 5.60 eV on the matter power spectrum — testable via the Lyman-α forest and DESI Y3/Euclid P(k) (2026–2028). Zero free parameters.
 
 ### Paper 7 (Canonical EFT)
 

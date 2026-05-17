@@ -264,7 +264,7 @@ print("[5] Tensión S₈ con supresión bariónica aplicada al baseline Paper 6"
 print("-"*70)
 
 print(f"\n  Baseline Paper 6: σ₈_eff = {sig8_Paper6}  →  S₈ = {S8_Paper6}")
-print(f"  [Incluye: MIRA Ω_m=0.320, WDM two-sector φ-DM 5.71 eV, k_fs=0.493 h/Mpc]")
+print(f"  [Incluye: MIRA Ω_m=0.320, WDM two-sector φ-DM 5.60 eV, k_fs=0.493 h/Mpc]")
 
 S8_bar_applied = S8_Paper6 * B_sigma8
 t_DES_bar  = (S8_bar_applied - S8_DES)  / sig_S8_DES

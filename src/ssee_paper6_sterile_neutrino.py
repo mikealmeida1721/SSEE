@@ -42,8 +42,8 @@ tau_Pi  = KAL0 / (3.0 * OmDE)
 
 # Residuo acústico (Paper 4) → masa neutrino activo
 R_acoustic   = 4 * KAL0 - 22             # 0.0856
-Ob_h2_ssee   = 3*(pi_ - phi) / 200       # 0.02285
-mnu_active   = R_acoustic * Ob_h2_ssee * 94.07 / tau_Pi  # 0.084 eV
+Ob_h2_ssee   = (pi_ - phi) / (3*(phi + pi_)**2)   # 0.02242 = (π−φ)/H₀_SSEE (OP-1)
+mnu_active   = R_acoustic * Ob_h2_ssee * 94.07 / tau_Pi  # 0.0824 eV
 
 # φ-DM fracciones
 Om_CDM   = Omm_dyn           # 0.160

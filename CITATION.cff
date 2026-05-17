@@ -4,19 +4,22 @@ type: software
 title: "SSEE — Structural Self-Energy Expansion (V3.6)"
 abstract: >
   A zero-free-parameter dark energy model derived algebraically from φ (golden ratio)
-  and π. Seven papers spanning: algebraic framework (w₀, wₐ, EFT, Predictive Register),
+  and π. Ten papers spanning: algebraic framework (w₀, wₐ, EFT, Predictive Register),
   Bayesian MCMC validation (DESI DR2 + Planck + clusters), CMB confrontation (Planck PR4
-  TT+TE+EE+lensing), algebraic derivation of all CMB observables from φ and π only,
+  TT+TE+EE+lensing), algebraic derivation of CMB observables from φ and π,
   Israel-Stewart causal perturbation theory (gradient stability, MIRA origin, S₈),
-  φ-Dark Matter two-sector model (m_φ=5.71 eV algebraic, fσ₈ 3.66σ→0.50σ), and
-  canonical EFT (β_c=−AURA exact, αT=αM=αB=0 exact, αK=0.403 algebraic).
+  φ-Dark Matter two-sector model (m_φ=5.71 eV algebraic, fσ₈ 2.56σ→0.50σ),
+  canonical EFT (β_c=−AURA exact, αT=αM=αB=0 exact, αK=0.403 algebraic),
+  strong-gravity regime (disformal geodesics, k-mouflage screening),
+  Hubble-tension screening fraction f_screen=αK/(3·MIRA), and UV completion
+  K(X)=X/KAL+X²/M⁴ with M=8.81 meV.
 authors:
   - family-names: Almeida Vallejo
     given-names: Mike Edison
     email: mike.almeida1721@gmail.com
     orcid: "https://orcid.org/0009-0008-2195-7836"
 version: "3.6"
-date-released: "2026-05-07"
+date-released: "2026-05-17"
 license: Apache-2.0
 repository-code: "https://github.com/mikealmeida1721/SSEE"
 keywords:

@@ -35,7 +35,7 @@
 | 8 | Strong Gravity Regime — Disformal Geodesics, MIRA Lensing Emergence, Vainshtein Screening | 16 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
 | 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 18 | Preprint | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
 | 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 8.81 meV | 14 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
-| — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 14 | Journal submission candidate | [manuscript/](manuscript/SSEE_Unified_Journal.tex) |
+| — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 19 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |
 
 ---
 
@@ -43,48 +43,30 @@
 
 ```
 SSEE/
-├── src/
-│   ├── ssee_paper2_mcmc.py               # Bayesian MCMC: SSEE vs ΛCDM vs CPL (Paper 2)
-│   ├── ssee_paper2_analysis.py           # Analytical w₀-wₐ plane (Paper 2)
-│   ├── ssee_paper3_cmb.py                # CAMB CMB spectrum TT+TE+EE+lensing (Paper 3)
-│   ├── ssee_verify_rd.py                 # CAMB r_d verification vs Planck 2018
-│   ├── ssee_press_schechter.py           # Press-Schechter δc=1.6284 vs 1.6865 (Paper 4)
-│   ├── ssee_inflation_connection.py      # α-attractor: α=φ⁴/3 exact, N=2φ⁷≈58.07 (Paper 1)
-│   ├── ssee_paper5_IS_perturbations.py   # IS causal perturbations: γ_IS, σ₈, fσ₈ (Paper 5)
-│   ├── ssee_paper6_verification.py       # φ-DM two-sector: fσ₈ tensions, σ₈_eff (Paper 6)
-│   ├── ssee_paper6_sterile_neutrino.py   # k_fs derivation, Dodelson-Widrow, m_φ scan (Paper 6)
-│   ├── ssee_paper6_mcmc.py               # Full MCMC 3-param φ-DM: 64 walkers × 15000 steps (Paper 6)
-│   ├── ssee_eft_verification.py          # β_c=-AURA plateau test, 8 ICs (Paper 7)
-│   └── ssee_audit_consistency.py         # Cross-paper parameter consistency audit (all papers)
-├── data/raw/
-│   ├── planck_pr4_lensing.txt     # Planck 2018 MV lensing bandpowers (14 bins)
-│   └── ...                        # Planck PR4 TT/TE/EE spectra
-├── results/figures/               # All generated figures (PDF/PNG)
-├── manuscript/
-│   ├── SSEE_Paper1_Framework.tex  # Paper 1 source
-│   ├── SSEE_EFT_section.tex       # EFT appendix (included by Paper 1)
-│   ├── SSEE_Paper2_MCMC.tex       # Paper 2 source
-│   ├── SSEE_Paper3_CMB.tex        # Paper 3 source + ssee_paper3.bib
-│   ├── SSEE_Paper5_IS.tex         # Paper 5 source + ssee_paper5.bib
-│   ├── SSEE_Paper4_ToE.tex        # Paper 4 source + SSEE_Paper4.bib
-│   ├── SSEE_Paper6_phiDM.tex      # Paper 6 source + ssee_paper6.bib
-│   ├── SSEE_Paper7_EFT.tex        # Paper 7 source
-│   ├── SSEE_Unified_Journal.tex   # Unified journal paper (Papers 1–7 + CLASS + MCMC Fase 4)
-│   ├── ssee_unified.bib           # Bibliography for unified journal
-│   └── SSEE_Endorser_Summary.tex  # 2-page arXiv endorser brief
-├── class_ssee/                    # CLASS Boltzmann code (fork of class_public)
-│   ├── ssee_v36.ini               # SSEE parameters — MIRA sector (Ω_m=0.3199)
-│   ├── ssee_v36_nomira.ini        # SSEE parameters — dynamic sector only (Ω_m=0.160)
-│   ├── ssee_v36_twosector.ini     # φ-DM two-sector (ncdm m=5.71 eV)
-│   ├── ssee_v36_IS.ini            # IS viscosity (cs2_fld=0.001)
-│   ├── plot_ssee_cmb.py           # CMB TT comparison CLASS vs Planck
-│   ├── plot_ssee_twosector_pk.py  # P(k) two-sector + WDM transfer
-│   ├── plot_IS_viscosity.py       # IS viscosity effect on σ₈
-│   └── calibrate_wdm_alpha.py     # WDM α calibration (sigma8 top-hat correct)
-├── submission_packages/           # arXiv-ready .tar.gz for each paper
-├── docs/                          # Compiled PDFs (10 papers + endorser brief)
-├── OPEN_PROBLEMS.md               # Physics gaps OP-1..OP-6 with status
-└── AUDIT.md                       # Full reproducibility guide + known limitations
+├── manuscript/                     # LaTeX sources
+│   ├── SSEE_Paper1_Framework.tex … SSEE_Paper10_UVCompletion.tex  # the 10 papers
+│   ├── SSEE_EFT_section.tex        # EFT section (\input by Paper 1)
+│   ├── SSEE_appendix_Friedmann.tex # Friedmann-derivation appendix
+│   ├── SSEE_Unified_Journal.tex    # consolidated journal paper (Papers 1–7)
+│   ├── SSEE_Endorser_Summary.tex   # 2-page arXiv endorser brief
+│   └── *.bib                       # ssee_paper3/5/6, SSEE_Paper4, ssee_unified
+├── src/                            # 41 Python scripts — analysis & verification
+│   ├── ssee_paper2…paper10_*.py    # per-paper analysis, MCMC, figures
+│   ├── ssee_op1…op6_*.py           # OPEN_PROBLEMS resolution scripts (OP-1..OP-6)
+│   ├── ssee_paperB_DW.py, ssee_paperB_Nstar.py   # Paper B groundwork (baryogenesis, N_*)
+│   ├── ssee_audit_consistency.py   # cross-paper parameter consistency audit
+│   └── scratch/                    # exploratory scripts (not load-bearing)
+├── class_ssee/                     # CLASS Boltzmann fork — SSEE .ini configs + plot scripts
+├── data/                           # observational data (DESI DR2, Planck PR4, clusters)
+├── results/                        # generated figures, tables, logs
+├── notebooks/                      # Jupyter exploration
+├── docs/                           # compiled PDFs — 10 papers + endorser + unified journal
+├── submission_packages/            # arXiv-ready .tar.gz bundles per paper
+├── archive/                        # superseded drafts (historical)
+├── OPEN_PROBLEMS.md                # physics gaps OP-1..OP-6 with status
+├── AUDIT.md                        # reproducibility guide + known limitations
+├── CHANGELOG.md · CITATION.cff · LICENSE
+└── (eftcamb_ssee/ — EFTCAMB fork, not versioned: clone separately)
 ```
 
 ---
@@ -168,7 +150,7 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | Ω_φDM = (MIRA−1)×Ω_m,dyn | 0.159878 | Active for k < k_fs only |
 | Ω_total (two-sector) | 0.319928 ≈ Ω_m,CMB | Zero-parameter unification |
 | m_φ = Σm_ν × H₀^alg | 5.71 eV | Algebraic — no fitting |
-| k_fs (Dodelson-Widrow) | 0.493 h/Mpc | From m_φ algebraic |
+| k_fs (free-streaming) | 0.493 h/Mpc | From m_φ algebraic |
 | T_WDM(k=0.125 h/Mpc) | 0.8175 | Soft cutoff (scalar condensate, not thermal WDM) |
 | σ₈_eff | **0.737** (CLASS+WDM, α=1.6561 h/Mpc) | 0.00σ KiDS-1000 |
 | S₈_eff | **0.761** | 2.29σ DES (KiDS-DES internal tension) |
@@ -232,7 +214,7 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | Ωm | (π−φ)/(π+φ) = 0.3201 | 0.3153 ± 0.0073 | 0.66σ |
 | Ωb h² | (π−φ)/(3Ω²) = 0.02242 | 0.02237 ± 0.00015 | 0.32σ |
 | Ωc h² (IS) | KAL₀ × Ωb h² × n_s = 0.11926 | 0.1200 ± 0.0012 | **−0.6σ** |
-| Y_p (BBN) | AlterBBN(Ωb h²=0.02285) = 0.2476 | 0.2449 ± 0.0040 | 0.7σ |
+| Y_p (BBN) | AlterBBN(Ωb h²=0.02242) = 0.2476 | 0.2449 ± 0.0040 | 0.7σ |
 | δc | δc,EdS × n_s = 1.6284 | 1.6865 (EdS) | — |
 
 **Press-Schechter halo-count enhancement** at z=10 (`src/ssee_press_schechter.py`):

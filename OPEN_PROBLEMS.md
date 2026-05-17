@@ -62,11 +62,22 @@ Cuando se normaliza con el denominador cosmológico H₀_SSEE = 3Ω², la depend
 η_B ∝ (π−φ)/Ω³ ∝ (π−φ)/(3Ω²) × (1/Ω) reproduce la fórmula empírica Ω_b h² = (π−φ)/H₀_SSEE
 a nivel de conteo de potencias en Ω.
 
-**Límite residual de OP-1 (programa Paper B/C):**
+**ESTATUS HONESTO (auditoría 2026-05-16):** lo anterior NO es una derivación de η_B.
+El script `ssee_op1_baryogenesis.py` calcula un η_B^naive ~ 5×10⁸ (no físico: η_B ≤ 1)
+y **retro-calcula** el factor de dilución f_dil ~ 10⁻¹⁸ exigiendo que el producto
+iguale el η_B observado. Es un *consistency check* (verifica que el T_rh implicado,
+~10⁻⁴ GeV, cae en el rango de reheating gravitacional), NO una predicción. El scan
+del paso [7] del script no discrimina entre candidatos δ_CP — todos "funcionan" con
+algún f_dil. La fórmula Ω_b h²=(π−φ)/(3Ω²) es un ansatz algebraico (Type-P, Postulado D
+de Paper 1); el mecanismo Sakharov motiva su FORMA, no deriva su valor. Paper 4 §3.2
+revisado en consecuencia (commit de la sesión).
+
+**Límite residual de OP-1 — la derivación genuina (programa Paper B/C):**
 1. Calcular T_rh exacto desde V(φ_inf) con α = φ⁴/3 (quintessential inflation)
 2. Integrar g*(T) desde T_rh hasta T_EW para obtener el factor de dilución exacto
 3. Evaluar Γ_sph(T_EW)/H(T_EW) en el background SSEE (no ΛCDM)
-4. Demostrar que el producto reproduce η_B = 6.12×10⁻¹⁰ (BBN observacional)
+4. Resolver la ecuación de Boltzmann para η_B sin f_dil retro-calculado y demostrar
+   que el producto reproduce η_B = 6.12×10⁻¹⁰ (BBN observacional) ab initio
 
 **Scripts:** `src/ssee_op1_baryon_density.py` + `src/ssee_op1_baryogenesis.py`
 

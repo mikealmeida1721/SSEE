@@ -341,12 +341,11 @@ the CP asymmetry $(\pi-\varphi)$ normalized to the Hubble scale $H_0^{\rm SSEE} 
 \end{align}
 Planck~2018: $\Omega_b h^2 = 0.02237\pm0.00015$; deviation $= 0.32\sigma$.
 
-\textbf{Physical derivation from Sakharov conditions.}
-The formula $\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE}$ is not obtained by scanning;
-its structure is dictated by the Sakharov conditions for baryogenesis
-\citep{Sakharov1967}. The three conditions require that the baryon asymmetry
-$\eta_B \propto \delta_{\rm CP}/\Gamma_{\rm exp}$, i.e., CP-violation divided by the
-expansion rate at the electroweak transition. In the SSEE framework:
+\textbf{Sakharov-mechanism motivation (not a quantitative derivation).}
+We are explicit about the status of Eq.~\eqref{eq:Obh2}: it is an algebraic
+ansatz whose \emph{form} is motivated by --- but not derived from --- the
+Sakharov conditions for baryogenesis \citep{Sakharov1967}. The three conditions
+are realised structurally in \SSEE\ as follows:
 \begin{itemize}
   \item \textbf{B-violation:} sphaleron transitions at $T_{\rm EW}\sim\Omega$
     (SSEE units), with rate $\Gamma_{\rm sph} \propto (\alpha_W T)^4 e^{-E_{\rm sph}/T}$.
@@ -356,13 +355,26 @@ expansion rate at the electroweak transition. In the SSEE framework:
   \item \textbf{Non-equilibrium:} gravitational reheating with
     $T_{\rm rh}\sim10^{-4}$~GeV $\ll T_{\rm EW}$ ensures departure from equilibrium.
 \end{itemize}
-The baryon-to-photon ratio $\eta_B \propto \delta_{\rm CP}/H_0$ identifies
-$(\pi-\varphi)$ as the numerator and $H_0^{\rm SSEE} = 3(\varphi+\pi)^2$ as the
-denominator, yielding $\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE}$ as the natural
-SSEE form. A scan of 96 algebraic candidates confirms this is the unique SSEE
-expression within $1\sigma$ of Planck (see \texttt{ssee\_op1\_baryon\_density.py}).
-The quantitative derivation from the sphaleron rate in the SSEE background is deferred
-to Paper~B.
+The Sakharov scaling $\eta_B \propto \delta_{\rm CP}/(\text{expansion rate})$
+motivates the \emph{shape} $\Omega_b h^2 \sim (\pi-\varphi)/(3\Omega^2)$, with
+$(\pi-\varphi)$ as the CP-asymmetry numerator and $3\Omega^2$ as the
+normalising denominator. Two caveats are stated openly. First, $3\Omega^2$
+enters as the dimensionless value $67.96$, i.e.\ $H_0^{\rm SSEE}$ expressed in
+$\mathrm{km\,s^{-1}\,Mpc^{-1}}$; this is a Type-P numerical coincidence in the
+sense of Postulate~D of Paper~1, not a dimensional identity. Second,
+$\eta_B$ and $\Omega_b h^2$ differ by the standard photon-entropy factor
+($\eta_B \simeq 2.73\times10^{-8}\,\Omega_b h^2$), so the proportionality fixes
+the algebraic \emph{form} only, not the absolute normalisation.
+A scan of 96 algebraic candidates (see \texttt{ssee\_op1\_baryon\_density.py})
+shows Eq.~\eqref{eq:Obh2} is the unique \SSEE\ monomial within $1\sigma$ of
+Planck --- a selection statement, not a dynamical derivation.
+The genuine quantitative test --- integrating the Boltzmann equation with the
+sphaleron rate and the SSEE reheating history to obtain $\eta_B$
+\emph{ab initio} --- is deferred to Paper~B; the companion framework script
+\texttt{ssee\_op1\_baryogenesis.py} currently only verifies that the required
+entropy-dilution factor is consistent with a quintessential-reheating
+temperature $T_{\rm rh}\sim10^{-4}$~GeV, which is a consistency check, not a
+prediction of $\eta_B$.
 The agreement $\Omega_b^{\rm SSEE} = 0.0495$ vs Planck's $0.0493\pm0.0004$ is $0.53\sigma$.
 
 \subsection{Total Matter Density \texorpdfstring{$\Omega_m$}{Omega\_m}}

@@ -277,56 +277,29 @@ pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1
 
 ## Roadmap
 
-- [x] Paper 1: Algebraic framework (φ, π → w₀, wₐ, EFT) — compiles clean
-- [x] Paper 2: MCMC validation (100-walker, DESI 13×13 block-diagonal covariance)
-- [x] Paper 3: CMB TT+TE+EE+lensing (Planck PR4)
-- [x] Paper 4: Algebraic derivation of CMB observables from φ and π only
-- [x] Genesis 5.12 — Zenodo DOI: 10.5281/zenodo.19679049
-- [x] IS growth index γ_IS=0.657 ± 0.002, τ_Π H₀=2.191, S8=0.837 (Paper 1 App.A)
-- [x] MIRA algebraic identity: (3φ+π)/4 = 1.9989 exact — Paper 3 §2.4
-- [x] α-attractor embedding: α=φ⁴/3 exact, N=2φ⁷≈58.07, R_Kähler=−φ⁻⁴ — Paper 1 App.A §A.5
-- [x] Task 2B: Press-Schechter δc=1.6284 vs 1.6865 — quantitative table in Paper 4 §sec:deltac
-- [x] Peer-review audit round 1 — all C1–C3, M1–M5, m1–m4 fixes applied across 4 papers
-- [x] Zenodo manuscripts suite (v3) — DOI: 10.5281/zenodo.19932301 (all 4 PDFs archived)
-- [x] arXiv endorsement emails sent — Dr. Shafieloo (KASI), Dr. Lee (SKKU), Dr. Di Valentino (Sheffield)
-- [x] External audit round 2 (PRD/JCAP level): C1–C4, M1–M5, Mod1–Mod6 — all resolved
-  - C1–C2: AURA/MIRA glosario corregido (AURA=β+φ, MIRA=AURA/2)
-  - C3: H₀=3(φ+π)² reclasificado Type P† con footnote dimensional
-  - M1: App D "Algebraic Prior Space" añadido a Paper 1 (ahora 22 pp.)
-  - M5: Phantom crossing a*=0.761 documentado explícitamente (Paper 1 §2)
-  - Mod2: Bullet Cluster hedge — masa proyectada, no fit κ(θ)
-  - Mod3: c²_s<0 caveat en EFT — deferred full IS treatment a Paper 4
-- [x] Paper 5: IS causal perturbation theory — Q1+Q2+Q3+fσ₈, 24 pp
-- [x] Paper 6: φ-DM two-sector model — m_φ=5.71 eV algebraic, fσ₈ 2.56σ→0.50σ (corrected baseline), 15 pp (incl. Lyman-α defense)
-- [x] Paper 7: Canonical EFT — β_c=−AURA exact, αT=αM=αB=0, αK=0.4033 algebraic, 14 pp
-- [x] Cross-paper parameter consistency audit — no critical inconsistencies (`src/ssee_audit_consistency.py`)
-- [x] Paper 6 MCMC — 64 walkers × 15000 steps: Ω_φDM=0.161±0.011, ΔBIC=−12.1, χ²_r=0.497 ✓
-- [x] hi_class/CLASS cross-check — αK(0)=0.4033, Δ=0.005% vs algebraic prediction ✓
-- [x] CLASS Fase 1A — MIRA test: SSEE sin MIRA → RMS 31.5% (MIRA physically necessary confirmed)
-- [x] CLASS Fase 1B — P(k) two-sector: WDM α=1.6561 h/Mpc, σ₈_eff=0.737, S₈=0.761 ✓
-- [x] CLASS Fase 2c — sigma8 top-hat fix: correct σ₈ integral with W²(kR) filter ✓
-- [x] CLASS Fase 3 — IS viscosity: cs² effect 0.03%, G=0.866 confirmed ✓
-- [x] MCMC Fase 4 — 5-param multi-probe: max tension 0.81σ, mean 0.36σ ✓
-- [x] Unified journal paper — 884 lines, full audit, Irsic+2017 citation corrected ✓
-- [x] Paper 8: Strong gravity regime — disformal geodesics, MIRA lensing emergence, Vainshtein (13 pp, commit d7f3b38) ✓
-- [x] Paper 9: Hubble tension via f_screen=αK/(3·MIRA)=(π−φ)/Ω²=0.06725, H₀,local=72.86 km/s/Mpc (0.17σ SH0ES) — draft 10 pp ✓
-- [x] Editorial audit 10-paper suite (2026-05-15) — overclaims, nomenclature, BIC corrections across Papers 1–9 ✓
-- [x] Paper 4 nomenclature: mythological names (SOLAR, IGNIS, PYROS…) → algebraic symbols (φ, π, Ω, β, KAL, P_sc, K_v); bibliography 10→40 entries ✓
-- [x] OPEN_PROBLEMS.md — 6 physics gaps catalogued (OP-1..OP-6) with severity and resolution paths ✓
-- [x] Paper 10: UV completion K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exact; M=8.81 meV=Λ_SSEE; αK_full=0.41691; Conditional Theorem C.1; H₀^UV=73.040 km/s/Mpc ✓
-- [x] OP-4 resolved — solar screening via k-mouflage (Brax-Valageas) + αB=αM=αT=0 EFT
-- [x] OP-6 resolved — screening form from separate-universe k-essence + identity 1+w₀=Ω_m
-- [x] OP-3 resolved — UV-IR separability from EFT hierarchy (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2)
-- [x] OP-2 resolved (conditional) — n_s=1−φ⁻⁷ from α-attractor universality + N_*=2φ⁷; r=φ⁻¹⁰
-- [x] OP-1 partial — Ω_b h²=(π−φ)/(3Ω²)=0.32σ Planck; ab-initio baryogenesis deferred to Paper B
-- [x] Bibliography audit — all 10 papers 36–42 refs, 0 orphan bibitems, 0 undefined citations
-- [x] D1/D2 formalized — Paper 1 Postulates D (dimensional anchor) & S (saturation correspondence)
-- [x] Paper 6 — explicit φ-DM scalar Lagrangian; Dodelson-Widrow route excluded
-- [x] Paper 9 — quantitative comparison vs EDE / SIDR / late-DE transitions (18 pp)
-- [ ] OP-1 closure — ab-initio baryogenesis (sphaleron Boltzmann integration) in Paper B
-- [ ] OP-5 closure — full N-body S₈ (BAHAMAS/IllustrisTNG-SSEE)
-- [ ] Zenodo v2 — archive Papers 1–10 + OPEN_PROBLEMS.md + CLASS scripts with DOI chaining
-- [ ] External audits → journal submission to JCAP (pending green light)
+**Status (2026-05-17):** all 10 papers complete and compile clean (0 LaTeX errors,
+0 orphan bibitems, 0 undefined citations). Foundational postulates D & S formalised
+in Paper 1; OPEN_PROBLEMS OP-2/3/4/6 resolved, OP-1/5 partial. Full development
+history in [CHANGELOG.md](CHANGELOG.md).
+
+**Done**
+- [x] Papers 1–10 — algebraic framework, Bayesian MCMC, CMB confrontation, algebraic
+      CMB derivation, IS causal perturbations, φ-DM two-sector, canonical EFT,
+      strong-gravity regime, Hubble-tension screening, UV completion
+- [x] CLASS Boltzmann validation — MIRA necessity (RMS 1.4% vs 31.5%), σ₈, IS viscosity
+- [x] Multi-probe MCMC (DESI DR2 + Planck + clusters) — mean tension 0.36σ
+- [x] Bibliography brought to JCAP/PRD standard — all papers 36–42 refs, 0 orphans
+- [x] OPEN_PROBLEMS OP-2/3/4/6 resolved; OP-1/5 partial
+- [x] Paper 1 Postulates D (dimensional anchor) & S (saturation correspondence)
+- [x] Hostile-referee overclaim sweep across all 10 papers
+- [x] Zenodo v1 — Papers 1–7 archived (DOI 10.5281/zenodo.20093447)
+
+**Pending**
+- [ ] External audits → green light
+- [ ] Zenodo v2 — archive Papers 1–10 + OPEN_PROBLEMS.md + CLASS scripts
+- [ ] Journal submission to JCAP (after external green light)
+- [ ] Paper B — ab-initio baryogenesis (OP-1 closure) + φ-DM relic abundance
+- [ ] OP-5 closure — full N-body S₈ (BAHAMAS / IllustrisTNG-SSEE)
 
 ---
 

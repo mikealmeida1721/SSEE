@@ -4,7 +4,7 @@
 
 **Structural Self-Energy Expansion (SSEE-V3.6)** — modelo cosmológico de energía oscura de cero parámetros libres, derivado algebraicamente de φ (razón áurea) y π. Autor: Mike Edison Almeida Vallejo.
 
-Diez papers (auditados editorialmente 2026-05-15 — ver OPEN_PROBLEMS.md para brechas físicas abiertas):
+Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD sin huérfanos, Postulados D y S formalizados en Paper 1, barrido de referee hostil — ver OPEN_PROBLEMS.md para brechas físicas abiertas):
 - **Paper 1**: Framework teórico + EFT + Predictive Register (arXiv-ready) ✅
 - **Paper 2**: Validación Bayesiana MCMC DESI DR2 + Planck + cúmulos (arXiv-ready) ✅
 - **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready) ✅
@@ -13,27 +13,28 @@ Diez papers (auditados editorialmente 2026-05-15 — ver OPEN_PROBLEMS.md para b
 - **Paper 6**: φ-DM dos sectores — m_φ=5.71 eV algebraico, fσ₈ 2.56σ→0.50σ resuelto (commit 9d28620; baseline corregido: σ8=0.702 ODE) ✅
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint) ✅
 - **Paper 8**: Régimen de gravedad fuerte — geodésicas disformales, MIRA emergencia lensing, Vainshtein (commit d7f3b38) ✅
-- **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente (DRAFT, 10 pp, 2026-05-14) 🟡
+- **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente; +sección comparación cuantitativa vs EDE/SIDR/late-DE (preprint, 18 pp) ✅
 - **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=8.81 meV=Λ_SSEE; αK_full=0.41691; H₀^UV=73.040 km/s/Mpc (condicional C.1); 8/10 JCAP ✅
 
 ---
 
-## Estado actual de los documentos (al 2026-05-15)
+## Estado actual de los documentos (al 2026-05-17)
 
-### docs/ — PDFs compilados (nombres reales)
+### docs/ — PDFs compilados (nombres reales; todos recompilan con 0 errores LaTeX)
 
 | Archivo | Contenido | Estado |
 |---|---|---|
-| `SSEE_Paper1_Framework.pdf` | Paper 1 (22 p) | ✅ Completo (B2+B3+α-attractor) |
-| `SSEE_Paper2_MCMC.pdf` | Paper 2 (21 p) | ✅ Submission-ready |
-| `SSEE_Paper3_CMB.pdf` | Paper 3 (18 p) | ✅ Completo v3 (+ CLASS/hi_class cross-check §5.x) |
-| `SSEE_Paper4_ToE.pdf` | Paper 4 (15 p) | ✅ Preprint actualizado |
-| `SSEE_Paper5_IS.pdf` | Paper 5 (24 p) | ✅ Completo — IS causal perturbations |
-| `SSEE_Paper6_phiDM.pdf` | Paper 6 (14 p) | ✅ Preprint — φ-DM, fσ₈ resuelto |
-| `SSEE_Paper7_EFT.pdf` | Paper 7 (14 p) | ✅ Preprint — EFT canónico, αK=0.4033, βc=−AURA |
-| `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (13 p) | ✅ Completo — gravedad fuerte, MIRA lensing, Vainshtein |
-| `SSEE_Paper9_HubbleTension.pdf` | Paper 9 (10 p) | 🟡 DRAFT — f_screen=αK/(3·MIRA), H₀,local=72.86 km/s/Mpc |
-| `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (~15 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=8.81 meV=Λ_SSEE; αK_full=0.41691 |
+| `SSEE_Paper1_Framework.pdf` | Paper 1 (25 p) | ✅ Completo — +Postulados D y S (§2.4) |
+| `SSEE_Paper2_MCMC.pdf` | Paper 2 (26 p) | ✅ Submission-ready |
+| `SSEE_Paper3_CMB.pdf` | Paper 3 (24 p) | ✅ Completo v3 (+ CLASS/hi_class cross-check §5.x) |
+| `SSEE_Paper4_ToE.pdf` | Paper 4 (16 p) | ✅ Preprint — bariogénesis calibrada (D3) |
+| `SSEE_Paper5_IS.pdf` | Paper 5 (25 p) | ✅ Completo — IS causal perturbations |
+| `SSEE_Paper6_phiDM.pdf` | Paper 6 (24 p) | ✅ Preprint — +Lagrangiano φ-DM escalar, DW excluido |
+| `SSEE_Paper7_EFT.pdf` | Paper 7 (16 p) | ✅ Preprint — EFT canónico, αK=0.4033, βc=−AURA |
+| `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (16 p) | ✅ Completo — gravedad fuerte, MIRA lensing, Vainshtein |
+| `SSEE_Paper9_HubbleTension.pdf` | Paper 9 (18 p) | ✅ Preprint — f_screen + comparación EDE/SIDR/late-DE |
+| `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (14 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=8.81 meV=Λ_SSEE; αK_full=0.41691 |
+| `SSEE_Unified_Journal.pdf` | Consolidación Papers 1–7 (19 p) | ✅ Candidato journal |
 | `SSEE_Endorser_Summary.pdf` | Síntesis 2 p para endorsers arXiv | ✅ Listo para envío |
 
 ### manuscript/ — Fuente LaTeX

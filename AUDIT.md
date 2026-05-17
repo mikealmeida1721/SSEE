@@ -3,7 +3,7 @@
 **Author:** Mike Edison Almeida Vallejo  
 **ORCID:** 0009-0008-2195-7836  
 **Repo:** https://github.com/mikealmeida1721/SSEE  
-**Date:** 2026-05-14 (audit round 4 completed — 7 papers + CLASS + MCMC Fase 4 + unified journal)
+**Date:** 2026-05-17 (10-paper suite — bibliography audit + Phase 1/2 hardening; Paper 1 Postulates D & S; OPEN_PROBLEMS OP-2/3/4/6 resolved, OP-1/5 partial)
 
 ---
 
@@ -21,7 +21,7 @@ Falsifiable predictions — all pre-data (timestamped Zenodo: 10.5281/zenodo.196
 | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.3199 (algebraic via MIRA) | Planck 2018: 0.3153 | 0.63σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
-| m_φ (φ-DM mass) | 5.71 eV algebraic | KATRIN/PTOLEMY: 2027–2030 | Future prediction |
+| m_φ (φ-DM mass) | 5.71 eV algebraic | gravitationally-produced scalar — probed via k_fs | Future prediction |
 | k_fs | 0.493 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
 | r (tensor-to-scalar) | φ⁻¹⁰ = 0.00813 | LiteBIRD (~2032) | Future prediction |
 
@@ -31,57 +31,32 @@ Falsifiable predictions — all pre-data (timestamped Zenodo: 10.5281/zenodo.196
 
 ```
 SSEE/
-├── manuscript/                              — LaTeX source files (authoritative)
-│   ├── SSEE_Paper1_Framework.tex            — Paper 1: zero-parameter framework + EFT
-│   ├── SSEE_EFT_section.tex                 — EFT appendix (input'd by Paper 1)
-│   ├── SSEE_Paper2_MCMC.tex                 — Paper 2: MCMC validation
-│   ├── SSEE_Paper3_CMB.tex                  — Paper 3: CMB confrontation
-│   ├── ssee_paper3.bib
-│   ├── SSEE_Paper5_IS.tex                   — Paper 5: IS causal perturbations
-│   ├── ssee_paper5.bib
-│   ├── SSEE_Paper6_phiDM.tex                — Paper 6: φ-DM two-sector
-│   ├── ssee_paper6.bib
-│   ├── SSEE_Paper7_EFT.tex                  — Paper 7: canonical EFT action
-│   ├── SSEE_Unified_Journal.tex             — Unified journal paper (Papers 1–7 + CLASS + MCMC Fase 4)
-│   └── ssee_unified.bib                     — Bibliography for unified journal
-├── sandbox_unificado/                        — Paper 4 LaTeX (submodule)
-│   └── SSEE_Paper4_ToE.tex
-├── src/
-│   ├── ssee_paper2_mcmc.py                  — MCMC: SSEE vs ΛCDM vs CPL (emcee)
-│   ├── ssee_paper2_analysis.py              — Analytical w₀-wₐ plane
-│   ├── ssee_paper2_figures.py               — Figure generation (Paper 2)
-│   ├── ssee_paper3_cmb.py                   — CAMB CMB spectrum (TT+TE+EE+lensing)
-│   ├── ssee_paper3_hiclass_check.py         — CLASS cross-check αK Bellini-Sawicki
-│   ├── ssee_verify_rd.py                    — CAMB r_d vs Planck 2018 (task 2A)
-│   ├── ssee_press_schechter.py              — PS δc=1.6284 vs 1.6865 (Paper 4)
-│   ├── ssee_paper5_IS_perturbations.py      — IS causal: γ_IS, σ₈, fσ₈ (Paper 5)
-│   ├── ssee_paper6_verification.py          — φ-DM two-sector: tensions, σ₈_eff (Paper 6)
-│   ├── ssee_paper6_sterile_neutrino.py      — k_fs derivation, DW relation, m_φ scan
-│   ├── ssee_paper6_mcmc.py                  — MCMC Paper 6: 64 walkers × 15000 steps
-│   ├── ssee_eft_verification.py             — βc=−AURA plateau test, 8 ICs (Paper 7)
-│   └── ssee_audit_consistency.py            — Cross-paper parameter consistency audit
-├── class_ssee/                              — CLASS Boltzmann code (fork of class_public)
-│   ├── ssee_v36.ini                         — SSEE MIRA sector (Ω_m=0.3199)
-│   ├── ssee_v36_nomira.ini                  — SSEE dynamic sector only (Ω_m=0.160)
-│   ├── ssee_v36_twosector.ini               — φ-DM two-sector (ncdm m=5.71 eV)
-│   ├── ssee_v36_IS.ini                      — IS viscosity (cs2_fld=0.001)
-│   ├── calibrate_wdm_alpha.py               — WDM α calibration (top-hat σ₈)
-│   └── plot_*.py                            — CMB, P(k), IS comparison scripts
-├── data/raw/
-│   ├── planck_pr4_lensing.txt               — Planck 2018 MV lensing bandpowers (14 bins)
-│   └── ...                                  — Planck PR4 TT/TE/EE spectra
-├── results/figures/                          — All generated figures (PDF+PNG)
-├── docs/                                     — Compiled PDFs (7 papers + endorser summary)
-│   ├── SSEE_Paper1_Framework.pdf
-│   ├── SSEE_Paper2_MCMC.pdf
-│   ├── SSEE_Paper3_CMB.pdf
-│   ├── SSEE_Paper4_ToE.pdf
-│   ├── SSEE_Paper5_IS.pdf
-│   ├── SSEE_Paper6_phiDM.pdf
-│   ├── SSEE_Paper7_EFT.pdf
-│   └── SSEE_Endorser_Summary.pdf
-└── AUDIT.md                                  — This file
+├── manuscript/                     — LaTeX sources (authoritative)
+│   ├── SSEE_Paper1_Framework.tex … SSEE_Paper10_UVCompletion.tex  — the 10 papers
+│   ├── SSEE_EFT_section.tex         — EFT section (\input by Paper 1)
+│   ├── SSEE_appendix_Friedmann.tex  — Friedmann-derivation appendix
+│   ├── SSEE_Unified_Journal.tex     — consolidated journal paper (Papers 1–7)
+│   ├── SSEE_Endorser_Summary.tex    — 2-page arXiv endorser brief
+│   └── *.bib                        — ssee_paper3/5/6, SSEE_Paper4, ssee_unified
+├── src/                             — 41 Python scripts (analysis & verification)
+│   ├── ssee_paper2…paper10_*.py     — per-paper analysis, MCMC, figures
+│   ├── ssee_op1…op6_*.py            — OPEN_PROBLEMS resolution scripts (OP-1..OP-6)
+│   ├── ssee_paperB_*.py             — Paper B groundwork (baryogenesis DW, N_*)
+│   ├── ssee_audit_consistency.py    — cross-paper parameter consistency audit
+│   └── scratch/                     — exploratory scripts (not load-bearing)
+├── class_ssee/                      — CLASS Boltzmann fork — SSEE .ini configs + plots
+│   ├── ssee_v36.ini                 — SSEE MIRA sector (Ω_m=0.3199)
+│   ├── ssee_v36_nomira.ini          — SSEE dynamic sector only (Ω_m=0.160)
+│   ├── ssee_v36_twosector.ini       — φ-DM two-sector (ncdm m=5.71 eV)
+│   └── ssee_v36_IS.ini              — IS viscosity (cs2_fld=0.001)
+├── data/                            — observational data (DESI DR2, Planck PR4, clusters)
+├── results/                         — generated figures, tables, logs
+├── docs/                            — compiled PDFs: 10 papers + endorser + unified journal
+├── notebooks/ · submission_packages/ · archive/
+├── README.md · CHANGELOG.md · OPEN_PROBLEMS.md · CITATION.cff
+└── AUDIT.md                         — this file
 ```
+*(`eftcamb_ssee/` — EFTCAMB fork — is not versioned; clone separately.)*
 
 ---
 
@@ -307,13 +282,18 @@ B-mode LiteBIRD forecasts requiring IS tensor perturbations remain future work.
 
 ### 7. Ωc h² (Paper 4)
 Static Eckart: 3.7σ tension. IS derivation: KAL₀ × Ωb h² × n_s = 0.11926 → −0.6σ.
-Note: Ωb h² algebraic = 3(π−φ)/200 = 0.02285 (3.2σ from Planck — acknowledged in Paper 4).
+Note: Ωb h² algebraic = (π−φ)/(3Ω²) = 0.02242 (0.32σ from Planck — see OPEN_PROBLEMS OP-1; the earlier 3(π−φ)/200 form is superseded).
 
-### 8. φ-DM mass scale (Paper 6)
-m_φ = 5.71 eV is not keV-scale WDM; φ-DM is a non-thermal scalar condensate.
-Free-streaming suppression enters via k_fs = 0.493 h/Mpc, not direct m_φ.
-Lyman-α bounds apply to thermal relics; condensate fraction f_φ ≈ 0.50 gives effective
-~0.1–0.5 keV equivalent — within observational bounds. Quantified in Paper 6 §Lyman-α.
+### 8. φ-DM mass scale and field content (Paper 6)
+m_φ = 5.71 eV is not keV-scale WDM; φ-DM is modelled as a real scalar field (explicit
+Lagrangian in Paper 6 §4) populated by gravitational particle production. The
+Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no
+zero-parameter SSEE form. φ-DM has no Standard-Model portal, so it is not accessible
+to neutrino-mass experiments; free-streaming suppression enters observation via
+k_fs = 0.493 h/Mpc, not direct m_φ. Lyman-α bounds apply to thermal relics; the
+scalar fraction f_φ ≈ 0.50 gives an effective ~0.1–0.5 keV equivalent — within
+observational bounds. Quantified in Paper 6 §Lyman-α. The ab-initio relic abundance
+from the gravitational-production integral is deferred to Paper B.
 
 ---
 
@@ -321,7 +301,7 @@ Lyman-α bounds apply to thermal relics; condensate fraction f_φ ≈ 0.50 gives
 
 1. CMB peak ℓ₁ outside 221 ± 3 by more than 2σ in a new measurement
 2. DESI DR2+ requiring Ωm > 0.20 in the dynamic BAO sector
-3. m_φ ≠ 5.71 eV confirmed by KATRIN (2027) or PTOLEMY (2030)
+3. S₈ measured above 0.85 by Euclid weak-lensing (two-sector φ-DM predicts S₈ ≈ 0.76)
 4. k_fs cutoff absent or at significantly different scale in Euclid/DESI Y3 P(k) (2026–28)
 5. Tensor-to-scalar ratio r ≠ φ⁻¹⁰ = 0.00813 measured by LiteBIRD (~2032)
 6. |w₀ + 0.840| > 3σ confirmed by DESI DR5 or Euclid
@@ -341,8 +321,8 @@ Chronological record of what was derived before what data:
 | n_s | 1 − φ⁻⁷ | 0.96556 | Planck 2018 | Retrodiction |
 | H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Retrodiction |
 | r_d (MIRA) | CAMB, Ωm,CMB=0.3199 | 147.156 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | 0.25σ (retrodiction) |
-| m_φ | Σm_ν × H₀^alg | 5.71 eV | KATRIN/PTOLEMY 2027–30 | Future prediction |
-| k_fs | Dodelson-Widrow (m_φ) | 0.493 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction |
+| m_φ | Σm_ν × H₀^alg | 5.71 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction |
+| k_fs | free-streaming (m_φ) | 0.493 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction |
 | r | φ⁻¹⁰ | 0.00813 | LiteBIRD (~2032) | Future prediction |
 
 Genesis 5.12 commit: https://github.com/mikealmeida1721/SSEE_UNIFICADO (2026-01-28)
@@ -352,9 +332,9 @@ Zenodo DOI: https://doi.org/10.5281/zenodo.19679049
 
 ## Open blockers (path to PRD/PRL)
 
-| Blocker | Description | Effort |
+| Blocker | Description | Status |
 |---|---|---|
-| **B1** | Full CMB likelihood — Cobaya + plik/CamSpec official off-diagonal | Weeks |
-| **B2** | Full causal IS tensor perturbations (Hiscock-Lindblom 1985) | Months |
-| **B3** | Formal derivation of MIRA from field equations (not algebraic postulate) | Months |
-| **B4** | arXiv endorsement — pending Shafieloo/Lee/Di Valentino response | External |
+| **B1** | plik_lite TTTEEE done (ΔBIC=−31.3); full CamSpec off-diagonal covariance pending | Weeks |
+| **B2** | Full causal IS tensor perturbations (Hiscock-Lindblom 1985) — B-mode forecasts | Months |
+| **B3** | MIRA: geometric derivation given in Paper 8 (disformal geodesic); full field-equation closure partial | Months |
+| **B4** | arXiv endorsement — deferred by choice (journal-first strategy, see README) | External |

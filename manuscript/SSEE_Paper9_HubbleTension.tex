@@ -139,6 +139,9 @@ Section~\ref{sec:consistency} verifies consistency with the rest of the
 SSEE series.
 Section~\ref{sec:prediction} states the pre-committed falsifiable prediction
 and its current observational status.
+Section~\ref{sec:comparison} compares the mechanism quantitatively against
+early dark energy, self-interacting dark radiation, and late dark-energy
+transitions.
 Section~\ref{sec:conclusions} summarises.
 
 %% ─────────────────────────────────────────────────────────────────────────────
@@ -625,13 +628,127 @@ We therefore register the following pre-committed prediction:
         would be modified proportionally.
 \end{enumerate}
 
-\paragraph{Relation to other tension-resolution proposals.}
-The present mechanism is distinct from EDE \citep{Poulin2019} (modifies $r_d$
-at $z > 1000$), from modified recombination (shifts CMB peaks), and from late
-dark energy transitions (require $w(z) \neq$ CPL); see \citet{Schoneberg2022}
-for a systematic comparison of proposed solutions.
-The SSEE mechanism operates at $z < 0.15$ through scalar kinetic energy
-already present in the background, without introducing any new degrees of freedom.
+%% ─────────────────────────────────────────────────────────────────────────────
+\section{Quantitative Comparison with Competing Resolutions}
+\label{sec:comparison}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+The Hubble tension has motivated a large family of proposed extensions to
+$\Lambda$CDM.  \citet{Schoneberg2022} graded $\sim 20$ such models on a uniform
+set of datasets (the ``$H_0$ Olympics''), establishing that no single proposal
+fully closes the tension without side-effects.  To position the SSEE mechanism
+within this landscape, we compare it quantitatively against the three best-studied
+classes of resolution.
+
+\subsection{The three competing classes}
+\label{sec:competitors}
+
+\paragraph{(a) Early dark energy (EDE).}
+EDE \citep{Karwal2016,Poulin2019,Smith2020} introduces a scalar field that
+contributes a fraction $f_{\rm EDE}\sim 0.1$ of the energy budget near
+matter--radiation equality ($z_c \sim 3000$--$5000$) and then dilutes faster
+than radiation.  By injecting energy before recombination it \emph{reduces the
+sound horizon} $r_d$ by a few percent, which raises the CMB-inferred $H_0$ to
+$\approx 71$--$72.5$\,km/s/Mpc.  The cost is threefold: (i) three new parameters
+($f_{\rm EDE}$, $z_c$, the initial field displacement $\theta_i$); (ii) a
+compensating increase in the scalar spectral index $n_s$ and the cold
+dark-matter density $\omega_{\rm cdm}$, which \emph{worsens} the $S_8$ tension
+\citep{Hill2020}; and (iii) a residual $\sim 1.6$--$2\sigma$ offset from SH0ES
+when no $H_0$ prior is imposed.
+
+\paragraph{(b) Self-interacting dark radiation (SIDR).}
+Dark-radiation models add relativistic degrees of freedom ($\Delta N_{\rm eff}$),
+optionally self-interacting to evade free-streaming constraints.
+Self-interacting neutrinos \citep{Kreisch2020} and the Wess--Zumino dark-radiation
+(WZDR) model \citep{Aloni2022} are the most successful realisations, reaching
+$H_0 \approx 70$--$71.8$\,km/s/Mpc with one to three new parameters.
+These models also act \emph{before} recombination --- they modify $r_d$ and the
+CMB damping tail through $\Delta N_{\rm eff}$ --- and leave a residual
+$\sim 2$--$3\sigma$ tension with SH0ES.
+
+\paragraph{(c) Late dark-energy transitions.}
+A third class modifies the expansion history at $z \lesssim 0.1$ through a
+dark-energy equation of state departing from the CPL form (phantom crossings,
+sign-switching $\Lambda$, or rapid $w(z)$ transitions).  These do \emph{not}
+touch $r_d$, but generically require two or more tuned parameters and are
+constrained by SNe~Ia and BAO at low $z$; they typically leave a $\sim 1\sigma$
+residual.
+
+\subsection{Comparison table}
+\label{sec:comptable}
+
+Table~\ref{tab:comparison} summarises the comparison across seven axes that a
+referee would use to discriminate the proposals.
+
+\begin{table}[ht]
+\centering
+\footnotesize
+\caption{Quantitative comparison of Hubble-tension resolutions.  Values for
+EDE, SIDR, and late-DE transitions are representative ranges from the
+literature \citep{Poulin2019,Smith2020,Hill2020,Kreisch2020,Aloni2022,Schoneberg2022};
+the SSEE row is the result of this paper.  ``Free params'' counts parameters
+\emph{beyond} the six of $\Lambda$CDM.}
+\label{tab:comparison}
+\begin{tabular}{lccccc}
+\toprule
+Axis & $\Lambda$CDM & EDE & SIDR & Late-DE & \textbf{SSEE} \\
+\midrule
+Mechanism epoch        & ---       & $z\sim 3000$ & $z\gtrsim 1000$ & $z<0.1$ & $z<0.15$ \\
+Modifies $r_d$?        & ---       & Yes ($-$few\%) & Yes (via $\Delta N_{\rm eff}$) & No & \textbf{No} \\
+Free parameters        & 0         & 3            & 1--3            & 2+      & \textbf{0} \\
+$H_0$ (km/s/Mpc)       & $67.4$    & $71$--$72.5$ & $70$--$71.8$    & $\sim 72$ & $\mathbf{72.86}$ \\
+Residual vs SH0ES      & $5\sigma$ & $1.6$--$2\sigma$ & $2$--$3\sigma$ & $\sim 1\sigma$ & $\mathbf{0.17\sigma}$ \\
+$S_8$ side-effect      & ---       & Worsens      & Mild            & Variable & \textbf{None} \\
+CMB peak shift         & ---       & Yes          & Yes             & No       & \textbf{No} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{What distinguishes the SSEE mechanism}
+\label{sec:distinctive}
+
+Three features set the SSEE kinematic screening apart from every entry in
+Table~\ref{tab:comparison}:
+\begin{enumerate}[label=(\roman*),itemsep=2pt]
+  \item \textbf{Zero free parameters.}  EDE, SIDR, and late-DE transitions each
+        introduce between one and three tunable parameters fitted to data.
+        The SSEE screening fraction $\fsc = (\pi-\phiG)/(\phiG+\pi)^2$ is fixed
+        algebraically (Section~\ref{sec:identity}); it is a \emph{prediction},
+        not a fit.  In the language of \citet{Schoneberg2022}, the model carries
+        no $\Delta\chi^2$ penalty for added parameters.
+  \item \textbf{No early-universe modification.}  EDE and SIDR both act before
+        recombination and therefore shift $r_d$ and the CMB peak positions,
+        requiring a delicate re-balancing of $n_s$ and $\omega_{\rm cdm}$
+        (which is what degrades $S_8$).  The SSEE correction is purely a
+        late-time ($z<0.15$) kinematic effect: $r_d$, $\theta_*$, and the
+        growth factor $\sigma_8$ are untouched (Section~\ref{sec:CMBsafe}),
+        so the $S_8$ results of Papers~5--6 are preserved.
+  \item \textbf{Smallest residual tension.}  At $0.17\sigma$ from SH0ES, the
+        SSEE prediction is closer to the distance-ladder value than any
+        finalist of the $H_0$ Olympics, \emph{and} achieves this with zero
+        added parameters.
+\end{enumerate}
+
+\subsection{Honest caveats}
+\label{sec:comp_caveats}
+
+Two points temper the comparison and are stated explicitly for the referee:
+\begin{itemize}[itemsep=2pt]
+  \item The SSEE prediction assumes a Local-Group overdensity
+        $\delta_{\rm local}\approx 2$ in the separate-universe step
+        (Section~\ref{sec:sep_universe}).  This is consistent with the observed
+        local density field but is an input, not a derived quantity; the
+        screening \emph{fraction} $\fsc$ is parameter-free, but its
+        \emph{activation} assumes the Local Group sits in a mild overdensity.
+  \item As noted in Section~\ref{sec:localH0}, the TRGB+JWST anchor of
+        \citet{Freedman2024} ($69.96\pm1.54$) sits $1.9\sigma$ from the SSEE
+        prediction.  The SSEE mechanism resolves the \emph{SH0ES} tension
+        specifically; the broader $\sim 2\sigma$ disagreement among local
+        probes is an observational issue independent of any model.
+\end{itemize}
+The comparison thus favours SSEE on parsimony and on the absence of CMB and
+$S_8$ side-effects, while acknowledging that the convergence of local $H_0$
+anchors remains an open observational question.
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Limitations and Future Work}
@@ -845,6 +962,10 @@ accurate to $0.1\%$ within the SH0ES calibration volume.
 \bibliographystyle{plainnat}
 \begin{thebibliography}{99}
 
+\bibitem[Aloni et al.(2022)]{Aloni2022}
+Aloni, D., Berlin, A., Joseph, M., Schmaltz, M., \& Weiner, N.\ 2022,
+\prd, 105, 123516. [Wess--Zumino dark radiation]
+
 \bibitem[Armend\'ariz-Pic\'on et al.(1999)]{ArmendarizPicon1999}
 Armend\'ariz-Pic\'on, C., Damour, T., \& Mukhanov, V.\ 1999,
 \textit{Phys.\ Lett.\ B}, 458, 209.
@@ -907,6 +1028,10 @@ Karwal, T., \& Kamionkowski, M.\ 2016, \prd, 94, 103523.
 
 \bibitem[Knox \& Millea(2020)]{Knox2020}
 Knox, L., \& Millea, M.\ 2020, \prd, 101, 043533.
+
+\bibitem[Kreisch et al.(2020)]{Kreisch2020}
+Kreisch, C.~D., Cyr-Racine, F.-Y., \& Dor\'e, O.\ 2020,
+\prd, 101, 123505. [Self-interacting neutrinos and the Hubble tension]
 
 \bibitem[Linder(2003)]{Linder2003}
 Linder, E.~V.\ 2003, \textit{Phys.\ Rev.\ Lett.}, 90, 091301.

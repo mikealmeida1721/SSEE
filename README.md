@@ -14,7 +14,7 @@
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match |
 | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 |
-| m_φ (φ-DM mass) | 5.71 eV algebraic | KATRIN/PTOLEMY: 2027–2030 | falsifiable |
+| m_φ (φ-DM mass) | 5.71 eV algebraic | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable |
 | k_fs (free-streaming) | 0.493 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | falsifiable |
 
 **Future falsifiers:** r = φ⁻¹⁰ = 0.00813 (LiteBIRD ~2032); k_fs cutoff in matter power spectrum (Euclid ~2028).
@@ -25,16 +25,16 @@
 
 | # | Title | Pages | Status | PDF |
 |---|---|---|---|---|
-| 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | 22 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
-| 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 21 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
-| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 18 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
-| 4 | Algebraic Derivation of the CMB Background from φ and π | 15 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
-| 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Tension Characterization | 24 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
-| 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 15 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
-| 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 14 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
-| 8 | Strong Gravity Regime — Disformal Geodesics, MIRA Lensing Emergence, Vainshtein Screening | 13 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
-| 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 10 | Draft | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
-| 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 8.81 meV | ~15 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
+| 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | 25 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
+| 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 26 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
+| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 24 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
+| 4 | Algebraic Derivation of the CMB Background from φ and π | 16 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
+| 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Tension Characterization | 25 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
+| 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 24 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
+| 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 16 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
+| 8 | Strong Gravity Regime — Disformal Geodesics, MIRA Lensing Emergence, Vainshtein Screening | 16 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
+| 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 18 | Preprint | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
+| 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 8.81 meV | 14 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
 | — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 14 | Journal submission candidate | [manuscript/](manuscript/SSEE_Unified_Journal.tex) |
 
 ---
@@ -82,7 +82,8 @@ SSEE/
 │   ├── plot_IS_viscosity.py       # IS viscosity effect on σ₈
 │   └── calibrate_wdm_alpha.py     # WDM α calibration (sigma8 top-hat correct)
 ├── submission_packages/           # arXiv-ready .tar.gz for each paper
-├── docs/                          # Compiled PDFs (7 papers + endorser brief)
+├── docs/                          # Compiled PDFs (10 papers + endorser brief)
+├── OPEN_PROBLEMS.md               # Physics gaps OP-1..OP-6 with status
 └── AUDIT.md                       # Full reproducibility guide + known limitations
 ```
 
@@ -178,7 +179,9 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 
 **Lyman-α compatibility:** φ-DM is a non-thermal condensate. f_φ≈0.50 → effective bound ~0.1–0.5 keV; k_fs=0.493 h/Mpc is the correct observable (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
 
-**Falsifiable predictions:** m_φ = 5.71 eV testable by KATRIN/PTOLEMY (2027–2030); k_fs = 0.493 h/Mpc via DESI Y3/Euclid P(k) power spectrum (2026–2028). Zero free parameters.
+**φ-DM is a gravitationally-produced scalar** (explicit Lagrangian in Paper 6 §4): no Standard-Model portal, so it is *not* accessible to neutrino-mass experiments. The Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no zero-parameter SSEE form.
+
+**Falsifiable prediction:** k_fs = 0.493 h/Mpc — the free-streaming imprint of m_φ = 5.71 eV on the matter power spectrum — testable via the Lyman-α forest and DESI Y3/Euclid P(k) (2026–2028). Zero free parameters.
 
 ### Paper 7 (Canonical EFT)
 
@@ -227,7 +230,7 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | n_s | 1 − φ⁻⁷ = 0.96556 | 0.9649 ± 0.0042 | 0.2σ |
 | H₀ | 3(φ+π)² = 67.96 km/s/Mpc | 67.36 ± 0.54 | 1.1σ |
 | Ωm | (π−φ)/(π+φ) = 0.3201 | 0.3153 ± 0.0073 | 0.66σ |
-| Ωb h² | 3(π−φ)/200 = 0.02285 | 0.02237 ± 0.00015 | 3.2σ |
+| Ωb h² | (π−φ)/(3Ω²) = 0.02242 | 0.02237 ± 0.00015 | 0.32σ |
 | Ωc h² (IS) | KAL₀ × Ωb h² × n_s = 0.11926 | 0.1200 ± 0.0012 | **−0.6σ** |
 | Y_p (BBN) | AlterBBN(Ωb h²=0.02285) = 0.2476 | 0.2449 ± 0.0040 | 0.7σ |
 | δc | δc,EdS × n_s = 1.6284 | 1.6865 (EdS) | — |
@@ -268,14 +271,19 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 5. **CMB ΔBIC status:** Diagonal approximation (TT+TE+EE+PP, k=2 vs k=6) yields $\Delta\mathrm{BIC}=+31.1$ favouring $\Lambda$CDM. Full Cobaya plik\_lite (TTTEEE) gives $\Delta\mathrm{BIC}=-31.3$ decisively favouring SSEE.
 
 ### Open physics problems (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md))
-| ID | Problem | Severity |
-|----|---------|----------|
-| OP-1 | Factor 200 in Ω_b h² = 3(π−φ)/200 — no first-principles derivation | High |
-| OP-2 | n_s = 1−φ⁻⁷ — exponent 7 motivated by hierarchy count, not V(φ) | High |
-| OP-3 | UV-IR separability conjecture (φ/π factorization) — unproven at loop level | Medium |
-| OP-4 | Vainshtein radius for Sun r_V > r_Hubble — EFT internal inconsistency | High |
-| OP-5 | S₈ weak-lensing tension 2.29σ DES (fσ₈ resolved in Paper 6 at 0.50σ) | Medium |
-| OP-6 | Screening form (multiplicative vs additive) not derived from EFT Lagrangian | Medium |
+| ID | Problem | Status (2026-05-16) |
+|----|---------|---------------------|
+| OP-1 | Baryon density Ω_b h² | **Partial** — formula (π−φ)/(3Ω²) = 0.32σ Planck; ab-initio baryogenesis → Paper B |
+| OP-2 | n_s = 1−φ⁻⁷ exponent | **Resolved** (conditional) — α-attractor universality + N_*=2φ⁷; new prediction r=φ⁻¹⁰ |
+| OP-3 | UV-IR separability | **Resolved** — EFT hierarchy (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2) unique |
+| OP-4 | Solar Vainshtein radius | **Resolved** — k-mouflage (not Galileon) + αB=αM=αT=0 EFT suppression |
+| OP-5 | S₈ weak-lensing tension | **Partial** — HMcode-2020 → S₈=0.758 (0.06σ DES); full N-body → future |
+| OP-6 | Screening form (mult. vs add.) | **Resolved** — separate-universe k-essence + identity 1+w₀=Ω_m |
+
+**Foundational postulates (Paper 1 §2.4, Postulates D & S):** the dimensional scale of
+H₀ is an explicit anchor input (zero *dimensionless* fitted parameters, like ΛCDM); the
+saturation correspondence (Ω_DE, w₀) = (s, −s) interpolates matter ↔ de Sitter. These are
+pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1.
 
 ---
 
@@ -324,12 +332,19 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 - [x] Paper 4 nomenclature: mythological names (SOLAR, IGNIS, PYROS…) → algebraic symbols (φ, π, Ω, β, KAL, P_sc, K_v); bibliography 10→40 entries ✓
 - [x] OPEN_PROBLEMS.md — 6 physics gaps catalogued (OP-1..OP-6) with severity and resolution paths ✓
 - [x] Paper 10: UV completion K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exact; M=8.81 meV=Λ_SSEE; αK_full=0.41691; Conditional Theorem C.1; H₀^UV=73.040 km/s/Mpc ✓
-- [ ] OP-4: Recompute solar r_V using Λ_SSEE=M=8.81 meV from Paper 10 (k-mouflage vs Galileon) — in progress
-- [ ] OP-6: Derive screening form H₀^local from SSEE Lagrangian perturbatively (after OP-4)
-- [ ] OP-3: Prove Postulate C.1 unconditionally — Jacobian ∂φ/∂χ|_transition = φ²√(5/2) (after OP-6)
-- [ ] OP-1+OP-2: Derive Ω_b h² factor 200 and n_s exponent 7 from UV structure (after OP-3)
+- [x] OP-4 resolved — solar screening via k-mouflage (Brax-Valageas) + αB=αM=αT=0 EFT
+- [x] OP-6 resolved — screening form from separate-universe k-essence + identity 1+w₀=Ω_m
+- [x] OP-3 resolved — UV-IR separability from EFT hierarchy (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2)
+- [x] OP-2 resolved (conditional) — n_s=1−φ⁻⁷ from α-attractor universality + N_*=2φ⁷; r=φ⁻¹⁰
+- [x] OP-1 partial — Ω_b h²=(π−φ)/(3Ω²)=0.32σ Planck; ab-initio baryogenesis deferred to Paper B
+- [x] Bibliography audit — all 10 papers 36–42 refs, 0 orphan bibitems, 0 undefined citations
+- [x] D1/D2 formalized — Paper 1 Postulates D (dimensional anchor) & S (saturation correspondence)
+- [x] Paper 6 — explicit φ-DM scalar Lagrangian; Dodelson-Widrow route excluded
+- [x] Paper 9 — quantitative comparison vs EDE / SIDR / late-DE transitions (18 pp)
+- [ ] OP-1 closure — ab-initio baryogenesis (sphaleron Boltzmann integration) in Paper B
+- [ ] OP-5 closure — full N-body S₈ (BAHAMAS/IllustrisTNG-SSEE)
 - [ ] Zenodo v2 — archive Papers 1–10 + OPEN_PROBLEMS.md + CLASS scripts with DOI chaining
-- [ ] Journal submission to JCAP (pending Zenodo v2 + endorser response)
+- [ ] External audits → journal submission to JCAP (pending green light)
 
 ---
 

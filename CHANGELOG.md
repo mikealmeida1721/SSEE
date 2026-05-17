@@ -1,5 +1,43 @@
 # Changelog
 
+## V3.6 — Bibliography audit + Phase 1/2 hardening + repo cleanup (2026-05-16)
+
+- **Bibliography audit (all 10 papers)**: 0 orphan bibitems, 0 undefined citations,
+  0 bibtex warnings. All papers compile clean (0 LaTeX errors).
+  - **P1 regression fixed**: a prior grep-based audit had deleted 10 bibitems flagged
+    as orphans — they were in fact cited in `SSEE_EFT_section.tex` (an `\input` file
+    the grep missed). All 10 restored (Eckart1940, Weinberg1971, Brevik2005,
+    HiscockLindblom1983/1985, Muller1967, Maartens1996, Guth1981, Linde1982,
+    Mukhanov1992); P1 back to 41 refs. Also fixed `\ref{app:derivation}` typo
+    and added missing `\label{sec:w0wa}` in P2.
+- **Phase 2 — foundational postulates (Paper 1 §2.4)**: D1/D2 analysed and formalised.
+  - **Postulate D (Dimensional Anchor)**: SSEE predicts only dimensionless quantities;
+    H₀ is the single dimensional input — identical status to ΛCDM. "Zero free
+    parameters" = zero *dimensionless fitted* parameters. 3(φ+π)²≈67.96 recorded as
+    a Type-P numerical coincidence; the absolute H₀ scale (H₀/M_Pl~10⁻⁶¹) is the
+    cosmological-constant problem, beyond any framework.
+  - **Postulate S (Saturation Correspondence)**: (Ω_DE, w₀) = (s, −s) with s=T_r/M_v;
+    endpoints physically forced (s→0 Einstein-de Sitter, s→1 de Sitter). The identity
+    1+w₀=Ω_m is the content of Postulate S, not an independent assumption.
+- **Paper 6 — explicit φ-DM Lagrangian**: φ-DM modelled as a real scalar χ with
+  S=∫√-g[-½(∂χ)²-½m_φ²χ²-½ξRχ²]. Dodelson-Widrow route excluded (mixing angle has
+  no zero-parameter SSEE form, script `ssee_paperB_DW.py`); gravitational production
+  adopted. Neutrino-detectability claims (KATRIN/PTOLEMY) removed — falsification
+  channel is k_fs on the matter power spectrum. 22→24 pp.
+- **Paper 9 — quantitative comparison section**: 7-axis comparison table vs EDE,
+  SIDR, and late-DE transitions; +Aloni2022, +Kreisch2020. 16→18 pp.
+- **Paper 4 — baryogenesis claim calibrated (D3)**: §3.2 header "Physical derivation"
+  → "Sakharov-mechanism motivation (not a quantitative derivation)". The companion
+  script back-computes the entropy-dilution factor — a consistency check, not a
+  prediction; ab-initio η_B deferred to Paper B. OPEN_PROBLEMS OP-1 updated.
+- **Hostile-referee sweep**: overclaim language reviewed across all 10 papers — suite
+  is honest (most "first-principles" mentions are admissions of open limits).
+  P5 Q1 consistency fix vs Postulate S.
+- **Repository cleanup**: removed stray LaTeX artifacts (root + docs/); docs/ now holds
+  exactly the 10 current paper PDFs + endorser brief; `.gitignore` adds `.obsidian/`,
+  `eftcamb_ssee/` (857 MB external fork), and root-level `*.pdf`; README.md refreshed
+  (page counts, OP-table status, m_φ channel, roadmap).
+
 ## V3.6 — Session 20: hi_class cross-check + Paper 3 update + endorser doc (2026-05-07)
 
 - **CLASS/hi_class cross-check** (`src/ssee_paper3_hiclass_check.py`):

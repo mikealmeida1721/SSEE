@@ -25,6 +25,15 @@ build/
 *.bbl
 *.blg
 manuscript/*.pdf
+# PDFs sueltos compilados en la raíz (las fuentes viven en manuscript/)
+/*.pdf
+
+# Boltzmann code forks — externos y voluminosos, no se versionan aquí
+# (clonar por separado: CLASS / EFTCAMB upstream)
+eftcamb_ssee/
+
+# Obsidian vault — notas personales, no parte del repo científico
+.obsidian/
 
 # Data (large files — track separately or via DVC)
 data/raw/*.fits

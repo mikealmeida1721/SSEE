@@ -33,26 +33,16 @@ OUTDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 os.makedirs(OUTDIR, exist_ok=True)
 
 # ── §1 Constantes algebraicas SSEE ───────────────────────────────────────────
-phi  = (1 + 5**0.5) / 2          # razón áurea ≈ 1.6180
-pi_  = np.pi                      # π ≈ 3.1416
-beta = (pi_ + phi) / 2            # BIAL ≈ 2.3798
-KAL0 = beta + pi_                 # viscosidad asintótica ≈ 5.5214
-Kv   = phi + pi_ + (pi_ + phi)   # KRYSTOS ≈ 9.5192
-Tr   = 3 * (phi + beta)           # TRIAL ≈ 11.9935
-Mv   = phi + pi_ + Kv             # Σ₉ ≈ 14.2788
-MIRA = (3*phi + pi_) / 4          # ≈ 1.9989
-AURA = phi + beta                 # = (3φ+π)/2 ≈ 3.9978  (contenedor dimensional)
-DUAL = 2 * AURA                   # ≈ 7.9957
-TRIAL_dim = 3 * AURA              # ≈ 11.9935  (= Tr ✓)
-
-w0   = -Tr / Mv                   # ≈ -0.840
-wa   = -(pi_ + phi + phi) / Kv    # ≈ -0.670
-Om_DE    = Tr / Mv                 # ≈ 0.840
-Om_m_dyn = 1.0 + w0               # ≈ 0.160
+from ssee_core import (
+    PHI as phi, PI as pi_, BETA as beta, KAL0, K_V as Kv, T_R as Tr,
+    M_V as Mv, MIRA, AURA, W0 as w0, WA as wa, OMEGA_DE as Om_DE,
+    OMEGA_M_DYN as Om_m_dyn, H0_ALG as H0_alg_kms,
+)
+DUAL      = 2 * AURA   # ≈ 7.9957
+TRIAL_dim = 3 * AURA   # ≈ 11.9935  (= Tr ✓)
 
 # ── §2 Parámetros EFT algebraicamente bloqueados ─────────────────────────────
-# H₀ algebraico (Paper 4): H₀ = 3(φ+π)² km/s/Mpc
-H0_alg_kms = 3 * (phi + pi_)**2              # ≈ 67.96 km/s/Mpc
+# H₀ algebraico (Paper 4): H₀ = 3(φ+π)² km/s/Mpc — importado de ssee_core
 H0_SI = H0_alg_kms * 1e3 / 3.0857e22        # en s⁻¹
 Mpl_SI = 2.435e18                            # GeV → convertir a unidades útiles
 

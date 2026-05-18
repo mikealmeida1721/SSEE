@@ -15,43 +15,23 @@ Casos evaluados:
 import numpy as np
 
 # ---------------------------------------------------------------------------
-# Constantes algebraicas SSEE (todas de φ y π, sin ajuste)
+# Constantes algebraicas SSEE — fuente única de verdad: src/ssee_core.py
 # ---------------------------------------------------------------------------
-phi   = (1 + 5**0.5) / 2          # 1.61803…
-pi    = np.pi
-Omega = pi + phi                   # 4.75963…  Stability Metric
-beta  = (pi + phi) / 2             # 2.37981…  Base Coupling Scalar
-KAL0  = beta + pi                  # 5.52141…  Structural Viscosity
-P_sc  = Omega + phi                # 6.37766…  Dynamical Evolution Scalar
-Kv    = phi + pi + Omega           # 9.51926…  Structural Constraint
-Tr    = 3 * (phi + beta)           # 11.99353… 3D Saturation Horizon
-Mv    = phi + pi + Kv              # 14.27889… Maximal Dimensional Invariant
+from ssee_core import (
+    PHI as phi, PI as pi, OMEGA as Omega, BETA as beta, KAL0,
+    P_SC as P_sc, K_V as Kv, T_R as Tr, M_V as Mv,
+    W0 as w0, WA as wa, OMEGA_DE as OmDE, OMEGA_M_DYN as Omm_dyn,
+    MIRA, AURA, OMEGA_M_CMB_MIRA as Omm_cmb,
+    H0_ALG as H0_ssee, N_S as ns_ssee, OMEGA_B_H2 as Ombh2_IS,
+)
 
-w0    = -Tr / Mv                   # -0.84027 (sector dinámico)
-wa    = -P_sc / Kv                 # -0.67030
-OmDE  = Tr / Mv                    # 0.84027
-Omm_dyn = 1.0 - OmDE              # 0.15973 (sector dinámico BAO/cúmulos)
+# Valores NO algebraicos — no pertenecen a ssee_core:
+H0_run    = 66.75     # H0 best-fit MCMC Paper 2 (posterior, ±0.44)
+Ombh2_std = 0.02237   # Ωb h² prior Planck 2018 (Planck Collaboration 2020, A&A 641 A6)
 
-BIAL  = (phi + pi) / 2
-AURA  = phi + BIAL
-MIRA  = AURA / 2                   # 1.99892 (Genesis 5.12, pre-data 2026-01-28)
-Omm_cmb = Omm_dyn * MIRA          # 0.31939 (sector CMB/alto-z)
-
-# H0 algebraico (Paper 4)
-H0_ssee = 3 * (phi + pi)**2        # ≈ 67.96 km/s/Mpc
-H0_run  = 66.75                    # valor MCMC Paper 2 (best-fit posterior, ±0.44)
-
-# Ωb h² — dos casos:
-#   Estándar: Planck 2018 prior (Paper 2)
-#   IS: derivado algebraicamente en Paper 4 §3.2 (corregido; OP-1)
-#     Ωb h² = (π−φ)/[3(φ+π)²] = (π−φ)/H₀_SSEE = 0.02242
-#     Tensión con Planck: |0.02242−0.02237|/0.00015 = 0.32σ
-#     (la forma preliminar 3(π−φ)/200 = 0.02285 quedó superseded — ver OP-1)
-Ombh2_std = 0.02237
-Ombh2_IS  = (pi - phi) / (3 * (phi + pi)**2)   # 0.02242 = (π−φ)/H₀_SSEE
-
-# n_s algebraico (Paper 4): 1 − φ⁻⁷
-ns_ssee = 1.0 - phi**(-7)          # 0.96556
+# Ωb h² IS = (π−φ)/[3(φ+π)²] = OMEGA_B_H2 (Paper 4 §3.2, OP-1) = 0.02242
+#   Tensión con Planck: |0.02242−0.02237|/0.00015 = 0.32σ
+#   (la forma preliminar 3(π−φ)/200 = 0.02285 quedó superseded — ver OP-1)
 
 # Observables Planck 2018 MEDIDOS (Planck 2020, Tabla 2, TT+TE+EE+lowE+lensing)
 # Estos son los árbitros — no ΛCDM

@@ -426,7 +426,7 @@ Parameter & Value & Source \\
 $H_0$ [km/s/Mpc] & 67.08 & SSEE MCMC (this work) \\
 $\Omega_b h^2$ & 0.02237 & Planck 2018 prior \\
 $\Omega_{m,\mathrm{CMB}}$ & 0.3199 & $\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$ \\
-$\sum m_\nu$ [eV] & 0.085 & SSEE (algebraic: 0.0824 eV, Paper~6) \\
+$\sum m_\nu^{\rm active}$ [eV] & 0.0824 & SSEE algebraic (Paper~4) \\
 $w_0$ & $-0.8399$ & $-T_r/M_v$ \\
 $w_a$ & $-0.6700$ & $-P_{sc}/K_v$ \\
 $n_s$ & $1-\varphi^{-7}=0.96556$ & SSEE algebraic (Paper~4) \\
@@ -435,6 +435,12 @@ $\tau$ & 0.054 & Planck 2018 \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+The baryon density is fixed to the Planck~2018 prior $\Omega_b h^2 = 0.02237$.
+The SSEE algebraic value derived in Paper~4, $\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE}
+= 0.02242$, agrees with this prior at $0.3\sigma$ ($0.02237\pm0.00015$); the $0.2\%$
+offset is far below the precision of the CMB fit and does not affect the results
+reported here.
 
 The dark energy is implemented via the PPF (Parameterized Post-Friedmann)
 equation of state $w(a)=w_0+(1-a)w_a$ \citep{Chevallier2001,Linder2003,Fang2008}.

@@ -55,11 +55,12 @@ $\Omega_b h^2 = (\pi-\varphi)/(3\Omega^2) = (\pi-\varphi)/H_0^{\rm SSEE} = 0.022
 \item[(iii)] the primordial spectral index
 $n_s = 1-\varphi^{-7} = 0.96556$ ($0.16\sigma$ from Planck~2018),
 where the exponent~7 equals the number of primary structural registers in the \SSEE\ hierarchy;
-\item[(iv)] the Hubble-tension resolution
+\item[(iv)] a preliminary local Hubble constant
 $H_{0,\rm local} = H_0 + K_{\rm loc} = 73.48$~km\,s$^{-1}$\,Mpc$^{-1}$
 ($0.5\sigma$ from \citet{Riess2022}; numerical coincidence Type~P — no dimensional
 derivation from first principles exists; reported for consistency with
-the Zenodo register).
+the Zenodo register and superseded by the screening derivation of Paper~9,
+see Section~\ref{sec:hubble_tension}).
 \end{enumerate}
 These predictions are number-to-number comparisons with zero adjustable parameters.
 The same two axioms simultaneously reproduce particle-sector information ratios
@@ -627,6 +628,19 @@ The fractional correction $K/H_0 = 8.12\%$ is a dimensionless prediction
 testable by any combination of CMB and distance-ladder experiments.
 \citet{Riess2022}: $H_0 = 73.0\pm1.0$\,km\,s$^{-1}$\,Mpc$^{-1}$; deviation $0.5\sigma$.
 
+\paragraph{Superseded by Papers~9 and~10.}
+The additive form $H_{0,\rm local} = H_0 + K$ adopted above is a preliminary
+Type-P coincidence and is \emph{not} the canonical \SSEE\ prediction for the
+local Hubble constant. A physical treatment is developed in Paper~9 of this
+series, where a structural screening fraction
+$f_{\rm scr} = \alpha_K/(3\,\mathrm{MIRA}) = (\pi-\varphi)/\Omega^2 = 0.0673$
+yields $H_{0,\rm local} = H_0^{\rm alg}/(1-f_{\rm scr}) = 72.86$~km\,s$^{-1}$\,Mpc$^{-1}$
+($0.17\sigma$ from \citet{Riess2022}). Paper~10 provides a UV-completion
+self-consistency check, $H_0^{\rm UV} = 73.04$~km\,s$^{-1}$\,Mpc$^{-1}$,
+conditional on the UV--IR separability postulate. The value $73.48$ quoted here
+is retained only for continuity with the Genesis~5.12 Zenodo register; the
+canonical value is the Paper~9 result $72.86$~km\,s$^{-1}$\,Mpc$^{-1}$.
+
 % ===========================================================================
 \section{Falsifiability Programme}
 \label{sec:falsifiability}
@@ -661,10 +675,24 @@ from CMB+BBN joint analysis would falsify this prediction.
 
 \subsection{Neutrino Mass Sum}
 
-$\Sigma m_\nu = \mathcal{A}/100~\mathrm{eV} = 0.040~\mathrm{eV}$,
-testable with DESI~DR5 and Euclid (expected $\sigma\approx 0.015$~eV).
-\textbf{Falsification criterion:} $\Sigma m_\nu > 0.10~\mathrm{eV}$ or $\Sigma m_\nu < 0.015~\mathrm{eV}$
-at $>3\sigma$ would falsify this prediction.
+The active neutrino mass sum follows from the acoustic residual operator
+$\mathcal{R} = 4\,\mathrm{KAL} - 22 = 0.0856$ combined with the Israel--Stewart
+relaxation time $\tau_\Pi H_0 = \mathrm{KAL}/(3\,\Omega_{\rm DE}) = 2.191$:
+\begin{equation}
+  \Sigma m_\nu^{\rm active}
+    = \mathcal{R}\,\Omega_b h^2\,\frac{94.07~\mathrm{eV}}{\tau_\Pi H_0}
+    = 0.0824~\mathrm{eV},
+\end{equation}
+testable with DESI~DR5 and Euclid (expected $\sigma\approx 0.015$~eV). This value
+lies above the normal-ordering oscillation floor $\Sigma m_\nu\gtrsim0.058$~eV and
+below the Planck~2018 upper bound $\Sigma m_\nu<0.12$~eV. It is the quantity used
+in the $\phi$-DM mass relation of Paper~6 ($m_\phi=\Sigma m_\nu^{\rm active}\times
+H_0^{\rm alg}$).
+The preliminary form $\Sigma m_\nu=\mathcal{A}/100=0.040~\mathrm{eV}$ used in
+earlier drafts is superseded: it lies below the oscillation floor and is therefore
+excluded by neutrino-oscillation data.
+\textbf{Falsification criterion:} $\Sigma m_\nu > 0.12~\mathrm{eV}$ or
+$\Sigma m_\nu < 0.058~\mathrm{eV}$ at $>3\sigma$ would falsify this prediction.
 
 % ===========================================================================
 \section{Discussion and Response to Peer Review}

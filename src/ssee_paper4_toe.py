@@ -9,22 +9,18 @@ import matplotlib.pyplot as plt
 import os
 
 # ── SSEE constants (zero free parameters) ───────────────────────────────────
-phi = (1 + 5**0.5) / 2
-pi  = np.pi
-
-OMEGA   = phi + pi                  # Ω_DNAV = 4.759627
-BIAL    = (phi + pi) / 2            # 2.379813
-AURA    = (3*phi + pi) / 2          # 3.997847
-MIRA    = (3*phi + pi) / 4          # 1.998924
-KAL     = (phi + 3*pi) / 2          # 5.521406
-PYROS   = 2*phi + pi                # 6.377661
-MAR     = phi + 2*pi                # 7.901219
-VITA    = (phi + 5*pi) / 2          # π + KAL = 8.663001
-PHITA   = (3*phi + 5*pi) / 2        # VITA + φ = 10.281034
-KRYSTOS_V = 2*(phi + pi)            # 9.519253
-MIKA    = 3*phi + 2*pi              # 11.137287
-BUFFER  = 3*(pi - phi) / 2          # 2.285338
-SIGMA_SOV = 3*(phi + pi)            # 14.278880  (Nine Sovereignties sum)
+from ssee_core import (
+    PHI as phi, PI as pi, OMEGA, BETA as BIAL, AURA, MIRA,
+    KAL0 as KAL, P_SC as PYROS, K_V as KRYSTOS_V, M_V as SIGMA_SOV,
+    W0 as w0, WA as wa, H0_ALG as H0_alg, N_S as ns,
+    OMEGA_B_H2 as Omb_h2_alg, OMEGA_M_CMB_GEOMETRIC as Om_m,
+)
+# Constantes intermedias (no presentes en ssee_core):
+MAR    = phi + 2*pi                 # 7.901219
+VITA   = (phi + 5*pi) / 2           # π + KAL = 8.663001
+PHITA  = (3*phi + 5*pi) / 2         # VITA + φ = 10.281034
+MIKA   = 3*phi + 2*pi               # 11.137287
+BUFFER = 3*(pi - phi) / 2           # 2.285338
 
 # ── Nine Sovereignties verification ─────────────────────────────────────────
 SOLAR = BIAL + KAL   # = MAR algebraically
@@ -51,15 +47,13 @@ for name, val in sovereignties.items():
     print(f"  {name:<12}  {val:.12f}   Δ={diff:.2e}")
 
 # ── Derived cosmological parameters ──────────────────────────────────────────
-H0_alg   = SIGMA_SOV * OMEGA               # = 3(φ+π)² = 67.962
-ns       = 1 - phi**(-7)                   # 0.96556
-Omb_h2_alg  = (pi - phi) / H0_alg          # 0.02242 = (π−φ)/H₀_SSEE (OP-1 corregido)
-Omb_h2_obs  = 0.02237                      # Planck 2018 observed
+# H0_alg, ns, Omb_h2_alg, Om_m, w0, wa importados de ssee_core (arriba).
+# Identidades verificadas: H₀^alg = 3(φ+π)² = SIGMA_SOV·OMEGA ;
+#   Ωb h² = (π−φ)/H₀^alg ; Ωm,geom = (π−φ)/(π+φ) ;
+#   w₀ = -(3φ+π)/[2(φ+π)] ; wₐ = -(2φ+π)/[2(φ+π)]
+Omb_h2_obs    = 0.02237                    # Planck 2018 observed (no algebraico)
 Omc_h2_static = KAL * Omb_h2_obs           # +2.9σ Eckart (uses Planck Ωb h²)
 Omc_h2_IS     = KAL * Omb_h2_obs * ns      # −0.6σ IS (uses Planck Ωb h²)
-Om_m     = (pi - phi) / (pi + phi)         # 0.3201
-w0       = -(3*phi + pi) / (2*(phi + pi))  # −0.8399
-wa       = -(2*phi + pi) / (2*(phi + pi))  # −0.6699
 
 print(f"\n{'='*55}")
 print("Derived cosmological parameters")

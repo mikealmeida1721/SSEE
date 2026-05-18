@@ -38,7 +38,7 @@ AURA  = phi + BIAL
 MIRA  = AURA / 2                   # 1.998924
 Omm_cmb = Omm * MIRA               # 0.3198 ≈ Planck 0.3153 (1.47% off, <1σ)
 
-H0       = 66.75
+H0       = 66.66
 Omb_h2   = 0.02237
 # n_s: SSEE geometric prediction from Paper 4 (1 - phi^-7 = 0.96556)
 # Previously used Planck standard value (0.9649). Updated for internal consistency.
@@ -152,7 +152,7 @@ def compute_ssee_spectrum(lmax=2500):
     if omch2 < 0:
         raise ValueError(f"omch2={omch2:.5f} < 0 (Omm_cmb={Omm_cmb:.4f})")
     total, lens_p, derived = _run_camb(
-        H0, Omb_h2, omch2, 0.085, w0, wa, As, ns, lmax)
+        H0, Omb_h2, omch2, 0.0824, w0, wa, As, ns, lmax)
     r_d_camb = derived["rdrag"]
     ells     = np.arange(total.shape[0])
     return ells, total, lens_p, r_d_camb, derived

@@ -13,6 +13,7 @@ Resultado esperado: diagnóstico de cuál (si alguna) ruta es viable, y
 qué reinterpretación física sobrevive.
 """
 
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec

@@ -172,7 +172,9 @@ print(f"""
 
   The same α that fixes the inflationary tensor-to-scalar ratio r = 12α/N² ≈ 0.00813
   (testable by LiteBIRD 2032) also fixes the dark-energy UV cutoff M = φ²×5^(1/4)×ρ_crit^(1/4),
-  closing the Hubble tension to 0.0000σ.
+  yielding H₀,local = 73.040 km/s/Mpc. This UV result is CONDITIONAL on Postulate C.1,
+  which is calibrated to SH0ES — a self-consistency check, not an independent prediction.
+  The IR result (H₀ = 72.86, 0.17σ) stands on its own.
 
   PENDING (Paper 10): first-principles derivation of M⁴ = 45α² without using SH0ES as input.
     Ruta A: K(X) Taylor matching with K_α(X) = −3α ln(1−X/(3α)) → M⁴ = 6αKAL² ≈ 418 ≠ 234.9

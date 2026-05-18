@@ -16,19 +16,11 @@ The UV ladder:
 import numpy as np
 
 # ── Fundamental constants ────────────────────────────────────────────────────
-phi  = (1 + 5**0.5) / 2          # golden ratio
-pi   = np.pi
-
-# ── SSEE derived constants ───────────────────────────────────────────────────
-Omega = phi + pi                  # Stability Metric   Ω = φ + π
-AURA  = (3*phi + pi) / 2          # Conformal coupling  A = (3φ+π)/2 = |βc|
-KAL   = (phi + pi) / 2 + pi      # Structural viscosity KAL = (φ+π)/2 + π
-MIRA  = AURA / 2                  # Lensing factor MIRA = AURA/2 (Paper 8)
-
-# ── Paper 1 background ────────────────────────────────────────────────────────
-w0      = -AURA / Omega
-Omega_DE = AURA / Omega
-H0_alg  = 3 * Omega**2            # H₀^alg = 3(φ+π)² [km/s/Mpc]
+from ssee_core import (
+    PHI as phi, PI as pi, OMEGA as Omega, AURA, KAL0 as KAL, MIRA,
+    W0 as w0, OMEGA_DE as Omega_DE, H0_ALG as H0_alg,
+)
+# Identidades: w₀ = -AURA/Ω = -Tr/Mv ;  Ω_DE = AURA/Ω ;  H₀^alg = 3(φ+π)²
 
 # ── Step 1: α-attractor parameter and UV identity ────────────────────────────
 # α = φ⁴/3 is the curvature of the inflationary Starobinsky-like plateau (Paper 1)

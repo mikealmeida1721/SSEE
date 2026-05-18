@@ -15,34 +15,18 @@ matplotlib.use("Agg")
 # ---------------------------------------------------------------------------
 # SSEE constants (algebraically fixed)
 # ---------------------------------------------------------------------------
-phi   = (1 + 5**0.5) / 2          # 1.6180
-pi    = np.pi
-Omega = pi + phi                   # 4.7596
-beta  = (pi + phi) / 2             # 2.3798
-KAL0  = beta + pi                  # 5.5214
-P_sc  = Omega + phi                # 6.3776
-Kv    = phi + pi + Omega           # 9.5192
-Tr    = 3 * (phi + beta)           # 11.9935
-Mv    = phi + pi + Kv              # 14.2788
-
-w0    = -Tr / Mv                   # -0.8403
-wa    = -P_sc / Kv                 # -0.6703
-OmDE  = Tr / Mv                    # 0.8403
-Omm   = 1.0 - OmDE                 # 0.1597  — sector dinámico (BAO/cúmulos)
-M_SSEE = abs(w0)                   # acoustic saturation factor
-
-# Sector de observación CMB: Ω_m,CMB = Ω_m,dyn × MIRA
-# MIRA = AURA/2 = (PHI+BIAL)/2 — "Frecuencia de Observación" (Genesis 5.12)
-BIAL  = (phi + pi) / 2
-AURA  = phi + BIAL
-MIRA  = AURA / 2                   # 1.998924
-Omm_cmb = Omm * MIRA               # 0.3198 ≈ Planck 0.3153 (1.47% off, <1σ)
+from ssee_core import (
+    PHI as phi, PI as pi, OMEGA as Omega, BETA as beta, KAL0,
+    P_SC as P_sc, K_V as Kv, T_R as Tr, M_V as Mv, W0 as w0, WA as wa,
+    OMEGA_DE as OmDE, OMEGA_M_DYN as Omm, AURA, MIRA,
+    OMEGA_M_CMB_MIRA as Omm_cmb, N_S as ns,
+)
+M_SSEE = abs(w0)   # acoustic saturation factor (= |w0|)
+# Sector de observación CMB: Ω_m,CMB = Ω_m,dyn × MIRA = Omm_cmb (Genesis 5.12)
 
 H0       = 67.08   # plik_lite MCMC posterior median (Paper 3 §b1_mcmc)
 Omb_h2   = 0.02237
-# n_s: SSEE geometric prediction from Paper 4 (1 - phi^-7 = 0.96556)
-# Previously used Planck standard value (0.9649). Updated for internal consistency.
-ns       = 1.0 - (1.0 / phi)**7   # 0.96556 — algebraic SSEE prediction (Paper 4)
+# n_s = 1 - phi^-7 = 0.96556 (predicción algebraica SSEE, Paper 4) — importado arriba
 ln_As    = 3.044
 As       = np.exp(ln_As) * 1e-10
 

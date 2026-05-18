@@ -41,25 +41,12 @@ plt.rcParams.update({
 })
 
 # ── 1. SSEE CONSTANTS (algebraic, zero free parameters) ─────────────────────
-phi  = (1 + 5**0.5) / 2          # golden ratio ≈ 1.618034
-pi_  = np.pi
-
-beta   = (pi_ + phi) / 2          # β   ≈ 2.3798
-KAL0   = beta + pi_               # KAL₀ ≈ 5.5214  Structural Viscosity
-P_sc   = (pi_ + phi) + phi        # P_sc ≈ 6.3776  Dynamical Evolution Scalar
-Kv     = phi + pi_ + (pi_ + phi)  # Kv   ≈ 9.5192
-Tr     = 3 * (phi + beta)         # Tr   ≈ 11.9935
-Mv     = phi + pi_ + Kv           # Mv   ≈ 14.2788
-
-w0     = -Tr / Mv                 # ≈ -0.8399
-wa     = -P_sc / Kv               # ≈ -0.6699
-H0_kms = 3 * (phi + pi_)**2      # ≈ 67.962 km/s/Mpc
-
-Omm_dyn = 1 + w0                  # Ω_m,dynamic ≈ 0.1601
-OmDE    = 1 - Omm_dyn             # Ω_DE ≈ 0.8399
-
-MIRA_alg = (3*phi + pi_) / 4     # ≈ 1.9989
-Omm_CMB  = Omm_dyn * MIRA_alg    # ≈ 0.3199
+from ssee_core import (
+    PHI as phi, PI as pi_, BETA as beta, KAL0, P_SC as P_sc,
+    K_V as Kv, T_R as Tr, M_V as Mv, W0 as w0, WA as wa,
+    H0_ALG as H0_kms, OMEGA_M_DYN as Omm_dyn, OMEGA_DE as OmDE,
+    MIRA as MIRA_alg, OMEGA_M_CMB_MIRA as Omm_CMB,
+)
 
 # IS relaxation time (dimensionless: τ_Π × H₀)
 # Derived from background IS steady state: τ_Π = KAL₀/(3 Ω_DE H₀)

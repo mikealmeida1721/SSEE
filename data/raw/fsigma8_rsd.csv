@@ -1,0 +1,20 @@
+# fsigma8(z) — RSD growth-rate measurements (canonical SSEE set, Paper 5 baseline)
+# 6-survey set. Each row verified against its primary reference (value AND error).
+# Columns: z_eff, fsigma8, sigma, survey, reference
+# ---
+# Provenance notes (do not edit values without re-checking the cited paper):
+#   z=0.067  6dFGRS    0.423 +/- 0.055  Beutler et al. 2012, MNRAS 423, 3430
+#   z=0.150  SDSS MGS  0.490 +/- 0.145  Howlett et al. 2015, MNRAS 449, 848
+#   z=0.380  BOSS DR12 0.497 +/- 0.045  Alam et al. 2017, MNRAS 470, 2617
+#   z=0.510  BOSS DR12 0.458 +/- 0.038  Alam et al. 2017, MNRAS 470, 2617
+#   z=0.610  BOSS DR12 0.436 +/- 0.034  Alam et al. 2017, MNRAS 470, 2617
+#   z=1.480  eBOSS DR16 QSO 0.462 +/- 0.045  Hou et al. 2021, MNRAS 500, 1201
+# Superseded (do NOT reintroduce): z=0.32 BOSS, WiggleZ points, and the
+#   erroneous z=0.38=0.477+/-0.051 / Howlett err=0.070 values used before 2026-05-18.
+z_eff,fsigma8,sigma,survey,reference
+0.067,0.423,0.055,6dFGRS,Beutler2012
+0.150,0.490,0.145,SDSS_MGS,Howlett2015
+0.380,0.497,0.045,BOSS_DR12,Alam2017
+0.510,0.458,0.038,BOSS_DR12,Alam2017
+0.610,0.436,0.034,BOSS_DR12,Alam2017
+1.480,0.462,0.045,eBOSS_DR16_QSO,Hou2021

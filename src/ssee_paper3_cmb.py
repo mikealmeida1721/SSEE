@@ -38,7 +38,7 @@ AURA  = phi + BIAL
 MIRA  = AURA / 2                   # 1.998924
 Omm_cmb = Omm * MIRA               # 0.3198 ≈ Planck 0.3153 (1.47% off, <1σ)
 
-H0       = 66.66
+H0       = 67.08   # plik_lite MCMC posterior median (Paper 3 §b1_mcmc)
 Omb_h2   = 0.02237
 # n_s: SSEE geometric prediction from Paper 4 (1 - phi^-7 = 0.96556)
 # Previously used Planck standard value (0.9649). Updated for internal consistency.

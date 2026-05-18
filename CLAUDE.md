@@ -91,11 +91,11 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 
 | Espectro | SSEE χ²_r | ΛCDM χ²_r | N |
 |---|---|---|---|
-| TT | 1.064 | 1.043 | 1971 |
-| TE | 1.054 | 1.040 | 1967 |
-| EE | 1.040 | 1.039 | 1967 |
-| PP (lensing) | 0.736 | 0.757 | 9 |
-| ΔBIC (TT+TE+EE+PP diagonal, k=2 vs k=6) | +37.1 (ΛCDM favorecido, N amplifica Δχ²_r pequeña; cross-check a H₀=66.66) | — | — |
+| TT | 1.047 | 1.043 | 1971 |
+| TE | 1.041 | 1.040 | 1967 |
+| EE | 1.041 | 1.039 | 1967 |
+| PP (lensing) | 0.837 | 0.757 | 9 |
+| ΔBIC (TT+TE+EE+PP diagonal, k=2 vs k=6) | −20.8 (SSEE favorecido; cross-check a H₀=67.08, = MCMC plik_lite) | — | — |
 | ΔBIC (plik_lite Cobaya, k=2 vs k=6) | −31.3 (SSEE decisivamente favorecido) | — | — |
 | ΔBIC (plik_lite conservador, k=4 vs k=6) | −13.8 (SSEE fuertemente favorecido) | — | — |
 

@@ -33,7 +33,7 @@ AURA    = phi + BIAL
 MIRA    = AURA / 2                  # 1.998924
 Omm_cmb = Omm_dyn * MIRA            # 0.3198
 
-H0_ssee    = 66.66
+H0_ssee    = 67.08   # plik_lite MCMC posterior median (Paper 3 §b1_mcmc)
 ombh2_ssee = 0.02237
 ns_ssee    = 1.0 - (1.0 / phi)**7   # 0.96556
 As_ssee    = np.exp(3.044) * 1e-10

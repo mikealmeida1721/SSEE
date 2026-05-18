@@ -41,20 +41,12 @@ log("=" * 65)
 # ─────────────────────────────────────────────────────────────
 # 1. CONSTANTES SSEE
 # ─────────────────────────────────────────────────────────────
-PHI   = (1 + np.sqrt(5)) / 2
-PI    = np.pi
-BETA  = (PI + PHI) / 2
-KAL0  = BETA + PI
-P_sc  = (PI + PHI) + PHI
-KV    = PHI + PI + (PI + PHI)
-TR    = 3 * (PHI + BETA)
-MV    = PHI + PI + KV
-
-W0_SSEE     = -TR / MV
-WA_SSEE     = -P_sc / KV
-OMDE_SSEE   = TR / MV
-OM_EFF_SSEE = 1.0 - OMDE_SSEE
-FNU_SSEE    = 0.020
+from ssee_core import (
+    PHI, PI, BETA, KAL0, P_SC as P_sc, K_V as KV, T_R as TR, M_V as MV,
+    W0 as W0_SSEE, WA as WA_SSEE, OMEGA_DE as OMDE_SSEE,
+    OMEGA_M_DYN as OM_EFF_SSEE,
+)
+FNU_SSEE = 0.020   # fracción de neutrinos — no algebraico, queda local
 
 log(f"w0={W0_SSEE:.4f}  wa={WA_SSEE:.4f}  Om_eff={OM_EFF_SSEE:.4f}  KAL0={KAL0:.4f}")
 

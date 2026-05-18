@@ -14,27 +14,16 @@ PACKAGES_PATH = os.environ.get("COBAYA_PACKAGES_PATH", os.path.expanduser("~/cob
 # ---------------------------------------------------------------------------
 # SSEE constants (algebraically fixed)
 # ---------------------------------------------------------------------------
-phi   = (1 + 5**0.5) / 2
-pi    = np.pi
-Omega = pi + phi
-beta  = (pi + phi) / 2
-KAL0  = beta + pi
-P_sc  = Omega + phi
-Kv    = phi + pi + Omega
-Tr    = 3 * (phi + beta)
-Mv    = phi + pi + Kv
+from ssee_core import (
+    PHI as phi, PI as pi, OMEGA as Omega, BETA as beta, KAL0,
+    P_SC as P_sc, K_V as Kv, T_R as Tr, M_V as Mv,
+    W0 as w0_ssee, WA as wa_ssee, OMEGA_DE as OmDE,
+    OMEGA_M_DYN as Omm_dyn, AURA, MIRA, OMEGA_M_CMB_MIRA as Omm_cmb,
+    N_S as ns_ssee,
+)
 
-w0_ssee = -Tr / Mv
-wa_ssee = -P_sc / Kv
-OmDE    = Tr / Mv
-Omm_dyn = 1.0 - OmDE
-BIAL    = (phi + pi) / 2
-AURA    = phi + BIAL
-MIRA    = AURA / 2                  # 1.998924
-Omm_cmb = Omm_dyn * MIRA            # 0.3198
-
-ombh2_ssee = 0.02237                # Planck 2018 prior
-ns_ssee    = 1.0 - (1.0 / phi)**7   # 0.96556
+ombh2_ssee = 0.02237                # Planck 2018 prior (no algebraico)
+# ns_ssee = 1 - phi^-7 = 0.96556 — importado de ssee_core
 As_ssee    = np.exp(3.044) * 1e-10
 tau_ssee   = 0.054
 

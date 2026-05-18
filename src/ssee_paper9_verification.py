@@ -14,18 +14,14 @@ compares against SH0ES.
 import numpy as np
 
 # ── Fundamental constants ────────────────────────────────────────────────────
-phi  = (1 + 5**0.5) / 2          # golden ratio
-pi   = np.pi
+from ssee_core import (
+    PHI as phi, PI as pi, OMEGA as Omega, AURA, KAL0 as KAL,
+    W0 as w0, OMEGA_DE as Omega_DE, H0_ALG as H0_alg, MIRA,
+)
 
-# ── SSEE derived constants ───────────────────────────────────────────────────
-Omega = phi + pi                  # Stability Metric   Ω = φ + π
-AURA  = (3*phi + pi) / 2          # Conformal coupling  A = (3φ+π)/2 = |βc|
-KAL   = (phi + pi) / 2 + pi      # Structural viscosity KAL = (φ+π)/2 + π
-
-# ── Paper 1 background quantities ────────────────────────────────────────────
-w0      = -AURA / Omega           # equation of state w₀ = -AURA/Ω
-Omega_DE = AURA / Omega           # dark energy fraction Ω_DE = AURA/Ω = |w₀|
-H0_alg  = 3 * Omega**2            # H₀^alg = 3(φ+π)²  [km/s/Mpc]
+# ── Paper 1 background quantities (importados de ssee_core) ──────────────────
+# Identidades verificadas: w₀ = -AURA/Ω = -Tr/Mv ;  Ω_DE = AURA/Ω ;
+#                          H₀^alg = 3(φ+π)²  [km/s/Mpc]
 
 # ── Step 1: exact alpha_K from Friedmann ────────────────────────────────────
 # Friedmann: X/KAL = rho_phi*(1+w0)/2  →  alpha_K = 3*Omega_DE*(1+w0)
@@ -37,8 +33,7 @@ alpha_K_formula = 3 * AURA * (pi - phi) / (2 * Omega**2)  # substituted
 alpha_K_eftcamb = 0.40330         # Paper 7 CLASS/EFTCAMB result
 
 # ── Step 2: MIRA from Paper 8 disformal null geodesic ───────────────────────
-# theta_E^SSEE / theta_E^GR = sqrt(beta_c) = MIRA,  MIRA = AURA/2
-MIRA = AURA / 2
+# theta_E^SSEE / theta_E^GR = sqrt(beta_c) = MIRA,  MIRA = AURA/2 (importado)
 
 # ── Step 3: cancellation ─────────────────────────────────────────────────────
 # alpha_K / (3*MIRA) = [3*AURA*(pi-phi)/(2*Omega^2)] / [3*AURA/2]

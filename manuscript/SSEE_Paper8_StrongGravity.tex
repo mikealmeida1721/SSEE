@@ -28,7 +28,7 @@
 \newcommand{\Omm}{\Omega_{m}}
 \newcommand{\half}{\tfrac{1}{2}}
 \newcommand{\bc}{\beta_c}
-\newcommand{\rV}{r_{\mathrm{V}}}
+\newcommand{\rV}{r_{\mathrm{km}}}
 \newcommand{\bbar}{\bar{b}}
 \newcommand{\thetaE}{\theta_{\mathrm{E}}}
 \newcommand{\hatalf}{\hat{\alpha}}
@@ -39,7 +39,7 @@
 
 \title{\textbf{SSEE-V3.6 in the Strong-Gravity Regime:\\
        Disformal Geodesics, MIRA Emergence,\\
-       and Vainshtein Screening}}
+       and k-mouflage Screening}}
 
 \author{Mike Edison Almeida Vallejo\\
         \small\texttt{mike.almeida1721@gmail.com}}
@@ -109,7 +109,7 @@ new effects arise beyond the linearised regime:
   \item \textbf{Enhanced deflection angle} --- photons propagating through the
         modified gravitational potential of disformally-coupled dark matter
         experience a different total deflection relative to pure GR.
-  \item \textbf{Vainshtein suppression} --- the non-linear scalar kinetic term
+  \item \textbf{K-mouflage suppression} --- the non-linear scalar kinetic term
         in the SSEE action screens the fifth force on solar-system and
         stellar scales, restoring GR locally.
 \end{enumerate}
@@ -139,7 +139,7 @@ Section~\ref{sec:geodesic} constructs the disformal null geodesic and
 derives the photon deflection angle.
 Section~\ref{sec:mira} shows algebraically how $\MIRA$ emerges as the
 lensing amplification factor.
-Section~\ref{sec:vainshtein} derives the Vainshtein radius and the
+Section~\ref{sec:vainshtein} derives the k-mouflage radius and the
 screening suppression.
 Section~\ref{sec:lensing} translates the results into strong-lensing
 observables and identifies JWST/HST falsification windows.
@@ -196,7 +196,7 @@ and in the conformal-sector coupling $Q^\nu$ of Paper~7.
 \textbf{Sign-convention note:} Paper~7 defines $\bc = -\AURA < 0$ for the
 conformal coupling (the negative sign encodes energy transfer from dark matter to dark energy).
 Here we adopt $\bc \equiv +\AURA > 0$ for the disformal lensing coupling, where only
-the magnitude $|\bc| = \AURA$ enters the deflection angle and Vainshtein radius.
+the magnitude $|\bc| = \AURA$ enters the deflection angle and k-mouflage radius.
 The two conventions are consistent: $|\bc|_{\rm Paper\,7} = |\bc|_{\rm Paper\,8} = \AURA \approx 3.998$.
 
 For the purposes of this paper, we work in the quasi-static, non-relativistic
@@ -279,7 +279,7 @@ $F_{\mathrm{tot}} = F_N + F_\phi = -(1 + 2\KAL\bc^2)\,\nabla\Phi_N$,
 corresponding to an effective gravitational enhancement of
 $G_{\mathrm{eff}}/G = 1 + 2\KAL\bc^2 \approx 1 + 2(5.521)(3.998)^2
 \approx 177$.
-However, this linear estimate applies only far from the Vainshtein radius
+However, this linear estimate applies only far from the k-mouflage radius
 (see Section~\ref{sec:vainshtein}); inside $\rV$ the non-linear kinetic term
 in~\eqref{eq:Pkernel} screens this amplification and restores GR.
 
@@ -334,9 +334,9 @@ factor $\MIRA \approx 2$ relative to the $\Lambda$CDM expectation, and
 the Einstein radius is correspondingly reduced (see
 Section~\ref{sec:lensing}).
 
-\subsection{Total deflection angle outside Vainshtein radius}
+\subsection{Total deflection angle outside the k-mouflage radius}
 
-Outside the Vainshtein radius $\rV$ (derived in
+Outside the k-mouflage radius $\rV$ (derived in
 Section~\ref{sec:vainshtein}), the scalar force operates at full strength.
 The total deflection of a photon passing an isolated dark-matter halo of
 effective gravitational mass $M_{\mathrm{eff}}$ at impact parameter $b$
@@ -456,7 +456,7 @@ $0.03\%$ level through the near-coincidence $\sqrt{\bc}\approx\MIRA$
 (Section~\ref{sec:mira}), not as an exact identity.
 
 %% ─────────────────────────────────────────────────────────────────────────────
-\section{Vainshtein Screening}
+\section{K-mouflage Screening}
 \label{sec:vainshtein}
 %% ─────────────────────────────────────────────────────────────────────────────
 
@@ -476,7 +476,7 @@ The crossover between the two kinetic regimes occurs at the gradient scale
   |\nabla\phi|_* \;=\; \frac{M^4}{\KAL}\,,
   \label{eq:grad_vainshtein}
 \end{equation}
-which defines the Vainshtein radius $\rV$ via the gradient closure~\eqref{eq:grad_closure}.
+which defines the k-mouflage radius $\rV$ via the gradient closure~\eqref{eq:grad_closure}.
 
 \subsection{K-mouflage screening radius}
 \label{sec:rkm}
@@ -733,7 +733,7 @@ $M_{\mathrm{dyn}}/M_{\mathrm{lens}}$ ratio
   & 1 (GR)
   & $> 1$ (fifth force on DM)
   & $r > \rV$ \\
-Vainshtein screening
+K-mouflage screening
   & N/A
   & $F_\phi/F_N \propto r^{4/3} \to 0$
   & $r \ll \rV$ \\
@@ -857,7 +857,7 @@ is a consequence of $\MIRA \approx 2$ and $\bc = 2\MIRA$.
 
 The derivations in this paper adopt the quasi-static, non-relativistic
 limit and treat the scalar force in the linear regime (outside the
-Vainshtein radius).
+k-mouflage radius).
 Several steps remain to complete the strong-gravity picture:
 
 \begin{enumerate}
@@ -868,14 +868,12 @@ Several steps remain to complete the strong-gravity picture:
         A proper calculation requires solving the coupled DM--scalar system
         numerically (N-body simulation with scalar force module).
 
-  \item \textbf{Full Vainshtein calculation}: The scaling relation
-        $\rV \sim r_S^{1/2}\,\Lambda_{\mathrm{UV}}^{-1/2}$ is parametric.
-        Paper~10 now fixes $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4} \approx 8.81\,\mathrm{meV}$
-        algebraically, giving quantitative Vainshtein radii
-        ($r_{V,\odot} \approx 1.84 \times 10^{44}\,\mathrm{m}$,
-        Table~\ref{tab:vainshtein});
-        a full N-body calculation would convert the parametric scaling to
-        a precise profile for individual halos.
+  \item \textbf{Full k-mouflage profile}: The screening radius
+        $\rV = [M_{\mathrm{obj}}/(4\pi\Mpl M^2)]^{1/3}$ is fixed
+        algebraically once Paper~10 sets $M \approx 8.81\,\mathrm{meV}$
+        (Section~\ref{sec:rkm}, Table~\ref{tab:vainshtein});
+        a full N-body calculation would convert this crossover scale into
+        a precise non-linear field profile for individual halos.
 
   \item \textbf{Relativistic corrections}: On cluster scales at $z \sim 0.5$,
         relativistic corrections to the geodesic
@@ -929,13 +927,16 @@ coupling and found:
         amplification to within $0.03\%$ (via the near-coincidence
         $\sqrt{\bc} \approx \MIRA$).
 
-  \item \textbf{GR compliance}: Paper~10 fixes $M \approx 8.81\,\mathrm{meV}$,
-        giving $\rV \sim (r_S / M^2)^{1/3} \approx 1.84 \times 10^{44}\,\mathrm{m}$
-        for the Sun---larger than the observable universe.
-        Every astrophysical object sits deep inside its own Vainshtein sphere,
-        where the scalar force is exponentially screened;
-        GR tests are satisfied with double protection (screening plus the
-        algebraic $\alphaT = \alphaM = 0$ from Paper~7).
+  \item \textbf{GR compliance}: Solar-system tests are satisfied by two
+        independent mechanisms: selective coupling, under which baryons
+        couple only to the physical metric $g_{\mu\nu}$
+        (Section~\ref{sec:gr_compliance}), and the Bellini-Sawicki EFT
+        structure $\alphaT = \alphaM = \alpha_B = 0$ from Paper~7, which
+        suppresses any residual fifth force to $F_\phi/F_N \sim 10^{-31}$
+        at $1\,\mathrm{AU}$ (Section~\ref{sec:double_protection}).
+        The k-mouflage radius $\rV \approx 0.022\,R_\odot$ for the Sun
+        (Table~\ref{tab:vainshtein}) provides supplementary non-linear
+        screening inside stellar bodies.
 
   \item \textbf{Two-sector signature}: SSEE predicts a scale-dependent
         lensing suppression near $k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1}$,

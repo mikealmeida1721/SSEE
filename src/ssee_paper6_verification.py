@@ -149,11 +149,12 @@ Dp_1s = sol_single.y[1]    / sol_single.y[0][-1]
 D_lcdm= sol_lcdm.y[0]      / sol_lcdm.y[0][-1]
 Dp_lcdm= sol_lcdm.y[1]     / sol_lcdm.y[0][-1]
 
-# ── fσ₈ en los 6 surveys RSD ─────────────────────────────────────────────────
-Z_RSD     = np.array([0.067, 0.150, 0.320, 0.380, 0.510, 0.570])
-survey    = ['6dFGRS', 'SDSS MGS', 'BOSS DR12', 'BOSS DR12', 'eBOSS DR16', 'WiggleZ']
-fsig8_obs = np.array([0.423, 0.490, 0.427, 0.477, 0.458, 0.426])
-fsig8_err = np.array([0.055, 0.070, 0.056, 0.051, 0.038, 0.048])
+# ── fσ₈ en los 6 surveys RSD (set canónico Paper 5: refs Beutler2012,
+#    Howlett2015, Alam2017, Hou2021 — valores idénticos a los citados) ──────────
+Z_RSD     = np.array([0.067, 0.150, 0.380, 0.510, 0.610, 1.480])
+survey    = ['6dFGRS', 'SDSS MGS', 'BOSS DR12', 'BOSS DR12', 'BOSS DR12', 'eBOSS DR16']
+fsig8_obs = np.array([0.423, 0.490, 0.497, 0.458, 0.436, 0.462])
+fsig8_err = np.array([0.055, 0.145, 0.045, 0.038, 0.034, 0.045])
 
 def get_fsig8(z, D_arr, Dp_arr, sig8_val):
     lna_t = np.log(1/(1+z))

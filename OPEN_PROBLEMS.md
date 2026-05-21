@@ -319,6 +319,105 @@ peculiar (Δv/c), no a una corrección de densidad de energía oscura — físic
 
 ---
 
+## OP-7 — QFT Derivation of Genesis Role Assignments (Transversal) — PARCIALMENTE RESUELTO
+
+**Location:** Transversal — Papers 4, 7, 8 principalmente; también Papers 1, 9, 10
+
+**Añadido:** 2026-05-19  
+**Actualizado:** 2026-05-21
+
+**Resolución parcial (2026-05-21):**
+
+El argumento de unicidad estructural para $\beta_c = -\mathrm{AURA}$ está ahora
+formalizado en dos lugares:
+
+1. **Paper 7 §5.2** (Eq.~`eq:phi_pi_duality`, añadida en esta sesión): el párrafo
+   "Discrete duality $\varphi\leftrightarrow\pi$" muestra que KAL₀ y AURA son imágenes
+   duales bajo la $\mathbb{Z}_2$ discreta, y que por lo tanto $\beta_c = -\mathrm{AURA}$
+   es la única elección consistente con esa simetría — no un parámetro libre.
+2. **Paper 1 §5.3** (Eqs.~`eq:id_kal`–`eq:id_aura`): las identidades algebraicas exactas
+   están enunciadas formalmente con nota explícita "The open question of whether this
+   discrete symmetry is an exact symmetry of the full $P(X,\varphi)$ action is catalogued
+   as OP-7."
+
+El argumento de unicidad a nivel EFT está cerrado. Lo que permanece abierto es el nivel
+QFT más profundo (puntos 1–3 abajo).
+
+**Statement:**
+
+SSEE Genesis 5.12 (sistema algebraico adimensional, preexistente a todos los papers)
+asigna roles funcionales a las constantes algebraicas:
+
+- **AURA = (3φ+π)/2** → "Portal / Contenedor dimensional" — límite umbral 1
+- **KAL₀ = (φ+3π)/2** → "Retención / Anclaje Local" — sector cinético escalar
+
+Los papers cosmológicos dan peso dimensional a estos roles vía observables:
+
+- Paper 7: βc = −AURA para el acoplamiento disformal del fotón
+- Paper 8: geodésicas disformales del fotón usan AURA
+- Papers 1–6: el sector cinético escalar usa KAL₀ como constante de viscosidad estructural
+
+**La dualidad φ↔π (establecida en esta sesión, 2026-05-19):**
+
+La intercambiabilidad exacta es verificable numéricamente con error = 0 en doble precisión:
+
+```
+KAL₀|_{φ↔π} = AURA      (error = 0.00e+00)
+AURA|_{φ↔π} = KAL₀      (error = 0.00e+00)
+```
+
+Los dos sectores son exactamente duales: el escalar φ usa la combinación π-dominada (KAL₀);
+el fotón usa la combinación φ-dominada (AURA). La cadena cierra:
+
+```
+Ω_m,CMB = MIRA × Ω_m,dyn = (AURA/2) × (π−φ)/(2Ω) = AURA(π−φ)/(4Ω) = 0.31993
+```
+
+(0.63σ de Planck 2018: 0.3153±0.0073)
+
+**El gap:**
+
+La dualidad es estructuralmente consistente y numéricamente verificada, pero **no existe un
+teorema que derive por qué la teoría cuántica de campos debe reproducir estas asignaciones
+de roles** desde primeros principios.
+
+Específicamente, falta demostrar:
+
+1. **Por qué el sector disformal (fotón) debe acoplarse con AURA y no con KAL₀:** El
+   argumento actual es la dualidad φ↔π — como el sector cinético usa la combinación
+   π-dominada (KAL₀), el sector fotónico debe usar la φ-dominada (AURA). Esta es una
+   restricción estructural plausible, pero no un teorema de QFT.
+
+2. **Por qué βc = −AURA es la única solución:** Paper 7 establece αT=αM=αB=0 y deriva βc
+   desde el Lagrangian P(X)=X/KAL₀+X²/M⁴. La derivación D=−P_{XX}/P_X²|_{X→0}=−2KAL₀²/M⁴
+   requiere que βc = −AURA para satisfacer la dualidad — pero la dualidad misma no está
+   derivada desde un principio de simetría de la acción.
+
+3. **La conexión escala Planck → escala cosmológica:** El sistema Genesis 5.12 es
+   adimensional. La dimensional weight se asigna vía cosmología (Papers 1–10). Falta el
+   teorema que muestre que la física de QFT en la escala de Planck reproduce inevitablemente
+   los roles de Genesis 5.12. Esta es la "Derivación Cuántica Dimensional" de la arquitectura.
+
+**Consecuencia si permanece abierto:**
+
+La predicción βc=−AURA es correcta (verificada por CAMB, CLASS, DESI a <0.2%) pero el
+argumento de unicidad descansa en la dualidad estructural φ↔π, no en una simetría explícita
+de la acción. Un referee podría aceptarlo como condición de consistencia pero no como
+derivación. Es el gap más profundo del modelo.
+
+**Programa de cierre (largo plazo):**
+
+Identificar la simetría en el espacio de parámetros de KAL₀ / AURA bajo φ↔π como una
+simetría discreta de la acción P(X,φ), y mostrar que esa simetría discreta — cuando se
+impone a nivel de QFT — fuerza βc=−AURA como valor único del acoplamiento disformal.
+Esto conectaría el sistema Genesis 5.12 con la física de campos desde primeros principios.
+
+**Severidad:** Alta — es el gap conceptual más profundo. No falsifica SSEE a la precisión
+observacional actual, pero es el requisito para que el modelo tenga derivación completa
+desde primeros principios (necesario para aspirar a nivel de premio).
+
+---
+
 ## Summary Table
 
 | ID | Paper | Problem | Severity | Path to Resolution |
@@ -329,6 +428,7 @@ peculiar (Δv/c), no a una corrección de densidad de energía oscura — físic
 | OP-4 | P8 | ~~r_V > r_Hubble para Vainshtein~~ | ✅ RESUELTO | k-mouflage + αB=αM=αT=0 EFT; Paper 8 §4.2/§4.4 revisados |
 | OP-5 | P5-6 | ~~S₈ 2.29σ DES (fσ₈ resuelto P6)~~ | ✅ PARCIAL | HMcode-2020 CLASS: S₈=0.758 (0.06σ DES); N-body full → Paper B/ext |
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
+| OP-7 | P4/7/8 | QFT derivation of Genesis role assignments | ✅ PARCIAL | EFT uniqueness formalizado P7 §5.2 + P1 §5.3; QFT desde primeros principios → largo plazo |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.

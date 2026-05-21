@@ -165,16 +165,16 @@ def fsig8_model(z, Om_phiDM, k_fs, sig8_in):
 # §3  Datos observacionales
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# fσ₈ — 6 encuestas RSD (z, valor, sigma)
+# fσ₈ — 6 encuestas RSD (z, valor, sigma) — set canónico Paper 5
 fsig8_data = np.array([
-    [0.067, 0.423, 0.055],   # 6dFGS    — Beutler+2012
-    [0.150, 0.490, 0.145],   # SDSS MGS — Howlett+2015
-    [0.380, 0.497, 0.045],   # BOSS LOWZ — Alam+2017
-    [0.510, 0.458, 0.038],   # BOSS CMASS — Alam+2017
-    [0.610, 0.436, 0.034],   # eBOSS LRG — Hou+2021
-    [0.978, 0.379, 0.040],   # eBOSS QSO — Hou+2021
+    [0.067, 0.423, 0.055],   # 6dFGRS    — Beutler+2012
+    [0.150, 0.490, 0.145],   # SDSS MGS  — Howlett+2015
+    [0.380, 0.497, 0.045],   # BOSS DR12 — Alam+2017
+    [0.510, 0.458, 0.038],   # BOSS DR12 — Alam+2017
+    [0.610, 0.436, 0.034],   # BOSS DR12 — Alam+2017
+    [1.480, 0.462, 0.045],   # eBOSS DR16 — Hou+2021
 ])
-fsig8_labels = ['6dFGS','SDSS MGS','BOSS LOWZ','BOSS CMASS','eBOSS LRG','eBOSS QSO']
+fsig8_labels = ['6dFGRS','SDSS MGS','BOSS DR12','BOSS DR12','BOSS DR12','eBOSS DR16']
 
 # KiDS-1000 σ₈ (Asgari+2021)
 sig8_kids   = 0.737;  sig8_kids_err  = 0.020
@@ -252,9 +252,9 @@ def log_posterior(theta):
 # §5  MCMC — setup y ejecución
 # ═══════════════════════════════════════════════════════════════════════════════
 ndim     = 3
-nwalkers = 64
-nsteps   = 15000
-burnin   = 4000
+nwalkers = 100
+nsteps   = 25000
+burnin   = 6000
 
 print("=" * 68)
 print("SSEE Paper 6 — MCMC sector φ-DM (completo)")

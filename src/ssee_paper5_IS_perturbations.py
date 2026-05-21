@@ -371,7 +371,8 @@ S8_KIDS       = 0.766;  S8_KIDS_err = 0.020   # KiDS-1000 (Asgari+2021)
 def H_ssee_exact(a):
     """Analytic SSEE H(a)/H₀ — CPL formula, valid for any a without grid."""
     rDE = a**(-3.0*(1.0+w0+wa)) * np.exp(-3.0*wa*(1.0-a))
-    return np.sqrt(Omm_dyn * a**(-3) + OmDE * rDE)
+    # Ω_m,cosm=0.320 en el fondo gravitacional (Ω_m,dyn=0.160 solo fija w₀ vía 1+w₀)
+    return np.sqrt(Omm_CMB * a**(-3) + (1.0 - Omm_CMB) * rDE)
 
 def H_lcdm(a):
     return np.sqrt(Omm_LCDM * a**(-3) + OmL_LCDM)
@@ -412,7 +413,7 @@ sol_lcdm_g = solve_ivp(
     method='DOP853', t_eval=x_g, rtol=1e-11, atol=1e-14)
 
 sol_ssee_g = solve_ivp(
-    lambda x, Y: growth_ode_system(x, Y, H_ssee_exact, Omm_dyn),
+    lambda x, Y: growth_ode_system(x, Y, H_ssee_exact, Omm_CMB),  # fuente Poisson = Ω_m,cosm
     [x_ini_g, x_fin_g], Y0_g,
     method='DOP853', t_eval=x_g, rtol=1e-11, atol=1e-14)
 
@@ -447,7 +448,7 @@ else:
 
     H_arr_s = np.array([H_ssee_exact(a) for a in a_g])
     H_arr_l = np.array([H_lcdm(a)       for a in a_g])
-    Om_a_ssee_arr = Omm_dyn  / (H_arr_s**2 * a_g**3)
+    Om_a_ssee_arr = Omm_CMB  / (H_arr_s**2 * a_g**3)  # Ω_m(a) con fondo correcto
     Om_a_lcdm_arr = Omm_LCDM / (H_arr_l**2 * a_g**3)
 
     def _gamma_model(lnOm, gamma):

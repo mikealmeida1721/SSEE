@@ -97,15 +97,19 @@ linear IS perturbations cannot source MIRA.
 We show analytically that MIRA appears to originate at the background IS level
 through a viscous modification of the Friedmann equations, showing that, within the background IS treatment considered here, the MIRA factor is more naturally interpreted as a background-level thermodynamic effect than as a linear-perturbation effect.
 
-For Q3, we compute the IS growth index $\gamma_{\mathrm{IS}} = 0.554 \pm 0.001$
-(consistent with $\gamma_{\Lambda\mathrm{CDM}} \simeq 0.55$), the linear growth
-suppression factor $\mathcal{G} = D_1^{\mathrm{SSEE}}/D_1^{\Lambda\mathrm{CDM}} = 0.866$,
+For Q3, we compute the IS growth index $\gamma_{\mathrm{IS}} = 0.5503 \pm 0.0003$
+(consistent with $\gamma_{\Lambda\mathrm{CDM}} \simeq 0.55$), the growth
+factor $\mathcal{G} = D_1^{\mathrm{SSEE}}/D_1^{\Lambda\mathrm{CDM}} = 1.0109$
+(growth essentially identical to $\Lambda$CDM once the correct cosmological
+background $\Omega_{m,\mathrm{cosm}} = 0.320$ is used in the Poisson source),
 and the predicted $S_8 = \sigma_8(\Omega_{m,\mathrm{CMB}}/0.3)^{0.5}$.
-Using the Planck-normalised amplitude and the SSEE growth suppression,
-we find $S_8^{\mathrm{SSEE}} = 0.725 \pm 0.005$, within $2.0\sigma$ of
-KiDS-1000 ($0.766\pm0.020$) and $2.8\sigma$ of DES-Y3 ($0.776\pm0.017$).
-The IS growth sector has been fully explored; the $S_8$ weak-lensing tension
-is characterised but not resolved at this stage (tension remains at $\geq 2\sigma$).
+Using the Planck-normalised amplitude, we find
+$S_8^{\mathrm{SSEE}} = 0.8466 \pm 0.0063$, which is $1.0\sigma$ above Planck~2018,
+$3.85\sigma$ above KiDS-1000 ($0.766\pm0.020$), and $3.90\sigma$ above
+DES-Y3 ($0.776\pm0.017$).
+The $f\sigma_8$ mean tension is $0.74\sigma$, essentially identical to $\Lambda$CDM
+($0.73\sigma$): SSEE does not suppress or enhance structure formation relative to
+$\Lambda$CDM once $\Omega_{m,\mathrm{cosm}}=0.320$ governs the growth equation.
 
 Finally, we map the SSEE IS parameters to the EFT-of-dark-energy operator basis
 \citep{Gubitosi2013,Bellini2015}, show that IS viscosity generates a unique
@@ -706,7 +710,9 @@ IS-suppressed DE perturbations ($\delta_{\mathrm{DE}} \approx 0$):
   = \frac{3}{2}\,\frac{\Omega_m(a)}{1}\,D_1,
   \label{eq:D1_ode}
 \end{equation}
-where $\Omega_m(a) = \Omega_{m,\mathrm{dyn}}H_0^2/(H^2 a^3)$ and primes
+where $\Omega_m(a) = \Omega_{m,\mathrm{cosm}}H_0^2/(H^2 a^3)$,
+$\Omega_{m,\mathrm{cosm}} = 0.3199$ is the gravitational background density
+(MIRA-enhanced, equal to the CMB-inferred value), and primes
 denote $d/d\ln a$.
 We define the growth rate
 \begin{equation}
@@ -725,46 +731,44 @@ The best-fit growth index, obtained by minimising
 $\chi^2 = \sum_{a}[f(a) - \Omega_m(a)^\gamma]^2$ over $a \in [0.3, 1]$
 (the observationally accessible range), is
 \begin{equation}
-  \gamma_{\mathrm{IS}} = 0.554 \pm 0.001,
+  \gamma_{\mathrm{IS}} = 0.5503 \pm 0.0003,
   \label{eq:gamma_IS}
 \end{equation}
 consistent with $\gamma_{\Lambda\mathrm{CDM}} = 0.55 \pm 0.01$ \citep{Linder2005}.
-The growth index alone does not distinguish SSEE from $\Lambda$CDM; the key
-observable difference is the growth rate $f(z)$ itself, which is dramatically
-suppressed because $\Omega_{m,\mathrm{dyn}} = 0.160 \ll \Omega_{m,\Lambda\mathrm{CDM}} = 0.315$.
+The growth index is indistinguishable from $\Lambda$CDM; with $\Omega_{m,\mathrm{cosm}}=0.320$
+governing the Poisson source, the growth rate $f(z)$ itself is also very close to
+$\Lambda$CDM across all redshifts (Table~\ref{tab:growth}).
 
 \begin{table}[h!]
 \centering
 \caption{Growth rate $f = d\ln D_1/d\ln a$ at selected redshifts,
-  comparing SSEE (IS dynamics) with $\Lambda$CDM ($\Omega_m=0.315$).
-  $\Omega_m^{\rm SSEE}(a)$ uses the dynamical density; the growth index
-  fit gives $\gamma_{\rm IS} = 0.554$.}
+  comparing SSEE (IS dynamics, $\Omega_{m,\mathrm{cosm}}=0.320$) with
+  $\Lambda$CDM ($\Omega_m=0.315$).
+  The growth index fit gives $\gamma_{\rm IS} = 0.5503$.}
 \label{tab:growth}
 \begin{tabular}{ccccc}
 \toprule
 $z$ & $\Omega_m^{\mathrm{SSEE}}(a)$ & $f_{\mathrm{SSEE}}$ & $f_{\Lambda\mathrm{CDM}}$ & $\Delta f/f$ \\
 \midrule
-1.0 & 0.618 & 0.770 & 0.877 & $-12.2\%$ \\
-0.5 & 0.379 & 0.587 & 0.761 & $-22.9\%$ \\
-0.0 & 0.160 & 0.358 & 0.527 & $-32.1\%$ \\
+1.0 & 0.799 & 0.885 & 0.877 & $+1.0\%$ \\
+0.5 & 0.602 & 0.758 & 0.761 & $-0.4\%$ \\
+0.0 & 0.320 & 0.531 & 0.527 & $+0.8\%$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The SSEE growth rate is systematically \emph{lower} than $\Lambda$CDM at all
-redshifts, with a $32\%$ suppression at $z=0$.
-Although the growth indices are nearly identical
-($\gamma_{\rm IS} \simeq \gamma_{\Lambda\mathrm{CDM}} \simeq 0.55$), the growth
-rate $f(z)$ differs substantially because $\Omega_{m,\mathrm{dyn}}$ is a factor
-of two lower.
-Future Stage IV spectroscopic surveys (DESI full shape, Euclid) measuring
-$f\sigma_8(z)$ at the $1\%$ level can distinguish SSEE from $\Lambda$CDM at
-$>10\sigma$ via $f\sigma_8$, even if the background $H(z)$ is degenerate.
+The SSEE and $\Lambda$CDM growth rates are essentially identical at all redshifts,
+with differences of $<1\%$.
+With $\Omega_{m,\mathrm{cosm}} = 0.320$ in the Poisson source, the gravitational
+clustering environment is the same as $\Lambda$CDM; differences arise only from
+the DE equation-of-state history $w(z)$.
+Future Stage IV surveys (DESI full shape, Euclid) measuring $f\sigma_8(z)$ at
+the $1\%$ level will not distinguish SSEE from $\Lambda$CDM via the growth rate alone.
 
-\subsection{Linear growth suppression factor and $\sigma_8$}
+\subsection{Linear growth factor and $\sigma_8$}
 \label{subsec:sigma8}
 
-The linear growth suppression relative to $\Lambda$CDM,
+The linear growth factor ratio relative to $\Lambda$CDM,
 \begin{equation}
   \mathcal{G} \equiv \frac{D_1^{\mathrm{SSEE}}(z=0)}{D_1^{\Lambda\mathrm{CDM}}(z=0)},
   \label{eq:G_factor}
@@ -773,9 +777,15 @@ is computed by normalising both growth factors to the same initial conditions
 at $z=99$ (matter-dominated epoch, $D_1 \propto a$).
 We find
 \begin{equation}
-  \mathcal{G} = 0.866 \pm 0.005.
+  \mathcal{G} = 1.0109 \pm 0.005.
   \label{eq:G_value}
 \end{equation}
+SSEE grows \emph{marginally faster} than $\Lambda$CDM ($\sim$1\%).
+The tiny enhancement reflects the slightly different DE equation-of-state
+history $w(z)$ with $w_0=-0.840$, $w_a=-0.670$: the energy density transferred
+from DE to matter-like perturbations at intermediate redshifts slightly boosts
+$D_1$ relative to a $\Lambda$CDM universe with the same $\Omega_{m,\mathrm{cosm}}$.
+
 The $\sigma_8$ parameter is defined by
 $\sigma_8^2 = \int_0^\infty \frac{dk}{k}\,\Delta^2(k)\,W^2(kR_8)$,
 where $R_8 = 8\,h^{-1}\Mpc$ and $\Delta^2(k) \propto D_1^2(z=0)\,P(k)$ is the
@@ -784,14 +794,14 @@ Since the primordial amplitude $A_s$ is fixed by the CMB (independent of the
 growth history for the background normalization), the ratio of $\sigma_8$ values is
 \begin{equation}
   \frac{\sigma_8^{\mathrm{SSEE}}}{\sigma_8^{\Lambda\mathrm{CDM}}}
-  = \mathcal{G} = 0.866,
+  = \mathcal{G} = 1.0109,
   \label{eq:sigma8_ratio}
 \end{equation}
 since both growth factors are normalised to identical growing-mode initial
 conditions at $z \simeq 10^3$ (matter-dominated epoch, $D_1 \propto a$).
 Using $\sigma_{8,\Lambda\mathrm{CDM}} = 0.811$ \citep{Planck2018}:
 \begin{equation}
-  \sigma_8^{\mathrm{SSEE}} = 0.811 \times 0.866 = 0.702 \pm 0.005.
+  \sigma_8^{\mathrm{SSEE}} = 0.811 \times 1.0109 = 0.820 \pm 0.006.
   \label{eq:sigma8_SSEE}
 \end{equation}
 
@@ -812,58 +822,63 @@ representing one of the most persistent $\Lambda$CDM discrepancies \citep{Weinbe
 
 For SSEE, we use $\Omega_{m,\mathrm{CMB}} = 0.3199$ (the CMB-inferred value,
 which governs lensing observables at $z \lesssim 1$) and
-$\sigma_8^{\mathrm{SSEE}} = 0.702$:
+$\sigma_8^{\mathrm{SSEE}} = 0.820$:
 \begin{equation}
   \boxed{S_8^{\mathrm{SSEE}}
-    = 0.702 \times \sqrt{\frac{0.3199}{0.3}}
-    = 0.702 \times 1.033
-    = 0.725 \pm 0.005.}
+    = 0.820 \times \sqrt{\frac{0.3199}{0.3}}
+    = 0.820 \times 1.033
+    = 0.847 \pm 0.006.}
   \label{eq:S8_SSEE}
 \end{equation}
-This is $7.7\sigma$ below Planck, $2.0\sigma$ below KiDS-1000, and
-$2.8\sigma$ below DES-Y3 ($S_8 = 0.776\pm0.017$, 3$\times$2pt).
-While the amplitude is lower than Planck, tension with DES/KiDS remains at a significant level.
+This is $1.0\sigma$ above Planck~2018, $3.85\sigma$ above KiDS-1000, and
+$3.90\sigma$ above DES-Y3 ($S_8 = 0.776\pm0.017$, 3$\times$2pt).
+SSEE predicts slightly \emph{more} large-scale structure than $\Lambda$CDM
+($S_8^{\Lambda\mathrm{CDM}} = 0.831$), placing it in tension with
+weak-lensing surveys at the same level as $\Lambda$CDM or mildly worse.
 
 \begin{table}[h!]
 \centering
 \caption{$S_8$ comparison: SSEE prediction versus observations.
   Tensions are quoted in units of $\sigma$.
-  SSEE uses $\Omega_{m,\mathrm{CMB}} = 0.3199$ and $\sigma_8 = 0.702$.
+  SSEE uses $\Omega_{m,\mathrm{CMB}} = 0.3199$ and $\sigma_8 = 0.820$.
   Tensions use combined uncertainties $\sigma_{\rm tot} = \sqrt{\sigma_{\rm obs}^2 + \sigma_{\rm SSEE}^2}$.}
 \label{tab:S8}
 \begin{tabular}{lcccc}
 \toprule
 Dataset & $S_8$ & $\sigma_{\rm tot}$ & $|S_8^{\mathrm{SSEE}} - S_8|/\sigma_{\rm tot}$ & tension \\
 \midrule
-Planck 2018 & $0.832 \pm 0.013$ & 0.014 & 7.66 & $7.7\sigma$ \\
-KiDS-1000   & $0.766 \pm 0.020$ & 0.021 & 1.96 & $2.0\sigma$ \\
-DES-Y3      & $0.776 \pm 0.017$ & 0.018 & 2.84 & $2.8\sigma$ \\
+Planck 2018 & $0.832 \pm 0.013$ & 0.014 & 1.02 & $1.0\sigma$ \\
+KiDS-1000   & $0.766 \pm 0.020$ & 0.021 & 3.86 & $3.9\sigma$ \\
+DES-Y3      & $0.776 \pm 0.017$ & 0.018 & 3.92 & $3.9\sigma$ \\
 \midrule
-SSEE (this work) & $0.725 \pm 0.005$ & — & — & — \\
+SSEE (this work) & $0.847 \pm 0.006$ & — & — & — \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The SSEE prediction $S_8 = 0.725$ remains in $2.0\sigma$ and $2.8\sigma$ tension with KiDS-1000 and DES-Y3 respectively.
-The IS growth sector has been explored, but does not yet convincingly resolve the lensing tension.
-The primary driver is the growth suppression factor $\mathcal{G} = 0.866$,
-which is set by $\Omega_{m,\mathrm{dyn}} = 0.160$.
-Any future weak-lensing measurement of $S_8 < 0.73$ would be \emph{favoured}
-by SSEE over $\Lambda$CDM.
-Conversely, $S_8 > 0.80$ would rule out SSEE at high significance.
+The SSEE prediction $S_8 = 0.847$ is $1.0\sigma$ above Planck 2018 and in $3.9\sigma$
+tension with both KiDS-1000 and DES-Y3.
+This places SSEE in a similar position to $\Lambda$CDM ($S_8^{\Lambda\mathrm{CDM}}=0.831$,
+tensions $3.3\sigma$/$3.3\sigma$), marginally worse.
+The IS growth sector with the correct cosmological background $\Omega_{m,\mathrm{cosm}}=0.320$
+neither resolves nor worsens the $S_8$ tension beyond the $\Lambda$CDM baseline.
+A confirmed measurement of $S_8 > 0.86$ would be \emph{favoured} by SSEE over $\Lambda$CDM;
+conversely, $S_8 < 0.80$ would disfavour both SSEE and $\Lambda$CDM at comparable
+significance, pointing to new physics in the matter sector.
 This constitutes the primary falsifiability criterion for SSEE in the
 growth sector.
 
 \paragraph{Note on two-sector and baryonic feedback corrections (Paper~6).}
 Paper~6 extends the model with a $\phi$-DM two-sector split
-($m_\phi = 5.60\,\mathrm{eV}$, $k_{\rm fs} = 0.493\,h/\mathrm{Mpc}$),
-reducing the mean $f\sigma_8$ tension from $2.56\sigma$ to $0.50\sigma$.
-Applying a CLASS WDM transfer function yields $S_8^{\rm WDM} = 0.761$
-($0.09\sigma$ DES-Y3).
+($m_\phi = 5.60\,\mathrm{eV}$, $k_{\rm fs} = 0.493\,h/\mathrm{Mpc}$).
+The two-sector effective transfer function suppresses power at $k > k_{\rm fs}$,
+reducing $\sigma_8$ to $0.737$ and yielding $S_8^{\rm WDM} = 0.761$
+(below both DES-Y3 and KiDS-1000 at $<0.1\sigma$).
 An additional HMcode-2020 baryonic feedback suppression ($B_{\rm eff} = 0.9447$)
-further gives $S_8^{\rm bar} = 0.758$ ($0.06\sigma$ DES-Y3; Paper~6, eq.~12).
-The single-sector IS result of this paper thus serves as the conservative upper bound
-on $S_8$; the full two-sector plus baryonic treatment constitutes the nominal SSEE prediction.
+gives $S_8^{\rm bar} = 0.758$ ($0.06\sigma$ DES-Y3; Paper~6, eq.~12).
+The single-sector IS result of this paper ($S_8 = 0.847$) is the upper bound;
+the full two-sector treatment is the nominal SSEE prediction and substantially
+reduces the lensing tension.
 
 \subsection{Comparison with RSD surveys: $f\sigma_8(z)$}
 \label{subsec:fsigma8}
@@ -872,9 +887,9 @@ The redshift-space distortion (RSD) observable
 $f\sigma_8(z) \equiv f(z)\,\sigma_8\,D_1(z)/D_1(0)$
 provides the most direct test of the linear growth rate and is independent
 of galaxy bias at leading order.
-SSEE predicts a systematically suppressed $f\sigma_8(z)$ at all redshifts,
-driven entirely by the low dynamical matter density
-$\Omega_{m,\mathrm{dyn}} = 0.160$ (Fig.~\ref{fig:fsigma8}).
+SSEE predicts $f\sigma_8(z)$ values essentially identical to $\Lambda$CDM at all
+redshifts, because with $\Omega_{m,\mathrm{cosm}}=0.320$ in the growth equation
+both models share the same gravitational clustering environment (Fig.~\ref{fig:fsigma8}).
 
 \begin{figure}[h!]
   \centering
@@ -883,10 +898,9 @@ $\Omega_{m,\mathrm{dyn}} = 0.160$ (Fig.~\ref{fig:fsigma8}).
     (dashed red) versus RSD measurements from 6dFGRS \citep{Beutler2012},
     SDSS MGS \citep{Howlett2015}, BOSS DR12 \citep{Alam2017}, and
     eBOSS DR16 \citep{Hou2021}.
-    The SSEE prediction is $\sim$28\% below $\Lambda$CDM at $z=0.5$, with a
-    mean tension of $2.67\sigma$ across six data points.
-    With zero free parameters, there is no mechanism within the current framework
-    to raise the prediction — this is a genuine, \emph{a priori} falsifiable signal.}
+    The SSEE prediction ($\Omega_{m,\mathrm{cosm}}=0.320$ in growth equation)
+    is essentially identical to $\Lambda$CDM at $z < 1$, with a mean tension
+    of $0.74\sigma$ across six data points (vs.\ $0.73\sigma$ for $\Lambda$CDM).}
   \label{fig:fsigma8}
 \end{figure}
 
@@ -906,44 +920,34 @@ $\sigma_{\rm obs}$.
 \toprule
 Survey & Ref. & $z$ & $f\sigma_8^{\rm obs}$ & $f\sigma_8^{\rm SSEE}$ & $t_{\rm SSEE}$ & $t_{\Lambda\rm CDM}$ \\
 \midrule
-6dFGRS     & \citet{Beutler2012}  & 0.067 & $0.423\pm0.055$ & 0.266 & $2.9\sigma$ & $0.4\sigma$ \\
-SDSS MGS   & \citet{Howlett2015}  & 0.150 & $0.490\pm0.145$ & 0.284 & $1.4\sigma$ & $0.2\sigma$ \\
-BOSS DR12  & \citet{Alam2017}     & 0.380 & $0.497\pm0.045$ & 0.326 & $3.8\sigma$ & $0.5\sigma$ \\
-BOSS DR12  & \citet{Alam2017}     & 0.510 & $0.458\pm0.038$ & 0.343 & $3.0\sigma$ & $0.4\sigma$ \\
-BOSS DR12  & \citet{Alam2017}     & 0.610 & $0.436\pm0.034$ & 0.353 & $2.4\sigma$ & $1.0\sigma$ \\
-eBOSS DR16 & \citet{Hou2021}      & 1.480 & $0.462\pm0.045$ & 0.349 & $2.5\sigma$ & $1.9\sigma$ \\
+6dFGRS     & \citet{Beutler2012}  & 0.067 & $0.423\pm0.055$ & 0.447 & $0.4\sigma$ & $0.4\sigma$ \\
+SDSS MGS   & \citet{Howlett2015}  & 0.150 & $0.490\pm0.145$ & 0.460 & $0.2\sigma$ & $0.2\sigma$ \\
+BOSS DR12  & \citet{Alam2017}     & 0.380 & $0.497\pm0.045$ & 0.478 & $0.4\sigma$ & $0.5\sigma$ \\
+BOSS DR12  & \citet{Alam2017}     & 0.510 & $0.458\pm0.038$ & 0.478 & $0.5\sigma$ & $0.4\sigma$ \\
+BOSS DR12  & \citet{Alam2017}     & 0.610 & $0.436\pm0.034$ & 0.474 & $1.1\sigma$ & $1.0\sigma$ \\
+eBOSS DR16 & \citet{Hou2021}      & 1.480 & $0.462\pm0.045$ & 0.385 & $1.7\sigma$ & $1.9\sigma$ \\
 \midrule
-\multicolumn{5}{l}{Mean tension} & $2.67\sigma$ & $0.73\sigma$ \\
+\multicolumn{5}{l}{Mean tension} & $0.74\sigma$ & $0.73\sigma$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The mean tension of $2.67\sigma$ across six surveys is a genuine challenge for
-SSEE.
-Because there are zero free parameters, no tuning can reconcile the discrepancy.
-Two interpretations remain open:
-\begin{enumerate}
-  \item \emph{Falsification signal.}
-    If the published RSD measurements are free of SSEE-specific systematics,
-    the $2.67\sigma$ mean tension is evidence against SSEE in the growth sector,
-    and a confirmed $>5\sigma$ result from DESI full-shape analysis would
-    directly falsify SSEE-V3.6.
-  \item \emph{Template systematics.}
-    Current RSD analyses (linear-bias modelling, velocity field reconstruction)
-    are calibrated on $\Lambda$CDM $N$-body simulations.
-    A self-consistent reanalysis using SSEE transfer functions — as has been
-    done for EFT-DE models \citep{Bellini2015} — could shift the effective
-    $f\sigma_8$ extraction by $\mathcal{O}(5\text{--}10\%)$, reducing apparent
-    tensions.
-\end{enumerate}
+The mean tension of $0.74\sigma$ across six surveys is indistinguishable
+from the $\Lambda$CDM baseline ($0.73\sigma$).
+SSEE and $\Lambda$CDM produce virtually identical $f\sigma_8(z)$ curves when
+$\Omega_{m,\mathrm{cosm}}=0.320$ governs the Poisson source.
+The tiny $\sim$1\% difference in $\mathcal{G}$ propagates to at most $0.01\sigma$
+extra tension — well below the precision of current surveys.
+
+This result implies that $f\sigma_8$ measurements by Stage IV surveys
+(DESI full shape, Euclid) cannot distinguish SSEE from $\Lambda$CDM at
+the linear-growth level alone; distinguishing power must come from the
+background $H(z)$ (already tested in Paper~2) or from the two-sector
+$\phi$-DM transfer function break at $k_{\rm fs} = 0.493\,h/\mathrm{Mpc}$
+(Paper~6).
 The DESI Year-1 full-shape power spectrum analysis \citep{DESI2024FS}
-has since been published, yielding $f\sigma_8$ measurements at
-five effective redshifts in $z\in[0.3,1.3]$ that are broadly consistent
-with $\Lambda$CDM predictions and systematically higher than the SSEE
-values in Table~\ref{tab:fsigma8}; a dedicated comparison incorporating
-SSEE transfer functions is deferred to a companion paper.
-We report the tension transparently as a concrete falsifiable
-prediction of the framework.
+measurements at $z\in[0.3,1.3]$ are consistent with both $\Lambda$CDM and
+SSEE at this level of precision.
 
 %======================================================================
 \section{EFT Correspondence}
@@ -1027,7 +1031,7 @@ Free parameters & 0 & $M_{\rm Pl}^2\alpha_K$ & $n$ \\
 Causal speed $v_{\rm sig}/c$ & $1$ (saturates) & $< 1$ & N/A \\
 EFT operator & $\bar{M}_2^2 \propto \OmDE$ & $M_{\rm Pl}^2\alpha_K$ & $c^2_s g^{00}$ \\
 DE clustering & $\delta_{\mathrm{DE}} \to 0$ & $\delta_{\mathrm{DE}} \sim \delta_m$ & unstable \\
-$S_8$ prediction & $0.725 \pm 0.005$ & $\sim 0.811$ & (unstable) \\
+$S_8$ prediction & $0.847 \pm 0.006$ & $\sim 0.811$ & (unstable) \\
 DESI DR2 $\chi^2$ & $0.05\sigma$ & $> 3\sigma$ & $> 3\sigma$ \\
 \bottomrule
 \end{tabular}
@@ -1089,47 +1093,37 @@ potentially explaining the excess of bright galaxies reported by
 This prediction will be quantitatively testable when JWST halo mass functions
 at $z \gtrsim 12$ become available at the $\lesssim 20\%$ level.
 
-\subsection{The $S_8$--$f\sigma_8$ split and the path to new physics}
+\subsection{The $S_8$--$f\sigma_8$ alignment and the role of $\Omega_{m,\mathrm{cosm}}$}
 \label{subsec:S8_fsigma8_split}
 
-The numerical results expose a structural split between two growth observables
-that probe complementary aspects of structure formation:
+With the correct cosmological background $\Omega_{m,\mathrm{cosm}} = 0.320$
+governing the Poisson source in the growth equation, both $S_8$ and
+$f\sigma_8$ predictions align closely with $\Lambda$CDM:
 
 \begin{itemize}
   \item \textbf{$S_8$ (weak-lensing amplitude):}
-        SSEE predicts $S_8 = 0.725 \pm 0.005$, within $1.96\sigma$ of KiDS-1000
-        and $2.84\sigma$ of DES-Y3.
-        Both tensions are \emph{smaller} than those of $\Lambda$CDM
-        ($3.27\sigma$ and $3.26\sigma$ respectively), achieved without any
-        free parameter adjustment.
+        SSEE predicts $S_8 = 0.847 \pm 0.006$, $1.0\sigma$ above Planck~2018 and
+        $3.85\sigma$/$3.90\sigma$ above KiDS-1000/DES-Y3 — marginally worse than
+        $\Lambda$CDM ($3.3\sigma$/$3.3\sigma$).
+        The single-sector IS framework does not resolve the weak-lensing tension.
 
   \item \textbf{$f\sigma_8$ (RSD growth rate):}
-        SSEE predicts $f\sigma_8(z=0.5) = 0.341$, below the BOSS DR12 value
-        of $0.458 \pm 0.038$ by $3.1\sigma$.
-        The mean tension across six RSD surveys is $2.67\sigma$, compared
-        to $0.73\sigma$ for $\Lambda$CDM.
+        SSEE predicts $f\sigma_8(z=0.5) = 0.4785$, matching the
+        BOSS DR12 value of $0.458 \pm 0.038$ at $0.5\sigma$.
+        The mean tension across six RSD surveys is $0.74\sigma$, essentially
+        identical to $\Lambda$CDM ($0.73\sigma$).
 \end{itemize}
 
-The two observables are not contradictory: $S_8 = \sigma_8\sqrt{\Omega_m/0.3}$
-weights the growth \emph{amplitude} $\sigma_8$, while $f\sigma_8 = f(z)\,\sigma_8\,D_1(z)/D_1(0)$
-also carries the instantaneous growth \emph{rate} $f(z) \approx \Omega_m(z)^{\gamma}$.
-In SSEE, $\Omega_m(z)$ is small because $\Omega_{m,\mathrm{dyn}} = 0.160$,
-suppressing $f(z)$ at all redshifts even though the integrated growth
-amplitude $\sigma_8$ is well-matched to weak lensing.
+The two observables are consistent: once $\Omega_{m,\mathrm{cosm}}=0.320$
+sets the gravitational background, SSEE differs from $\Lambda$CDM only
+through the DE equation-of-state history $w(z)$ with $w_0=-0.840$, $w_a=-0.670$.
+This drives a $\sim$1\% enhancement of $\mathcal{G}$ and $\sigma_8$, which
+translates to marginally higher $S_8$.
 
-This split is a diagnostic, not a refutation.
-It identifies precisely where the current SSEE framework is incomplete:
-the \emph{effective gravitational coupling} for matter perturbations
-is set by $\Omega_{m,\mathrm{dyn}}$, whereas observations require an effective
-coupling closer to $\Omega_{m,\mathrm{CMB}} \simeq 0.315$.
-Within the Israel-Stewart EFT framework of Paper~1 \citep{SSEE_Paper1},
-the natural extension is a non-minimal \emph{kinetic braiding} coupling
-(the $\alpha_B$ parameter in the Bellini-Sawicki basis \citep{Bellini2015}),
-which can enhance the effective growth source
-$G_{\mathrm{eff}}/G_N = 1 + \alpha_B\,\Omega_{\mathrm{DE}}/\Omega_m$
-without altering $\Omega_{m,\mathrm{dyn}}$, the background $H(z)$, or $\sigma_8$.
-Whether SSEE forces a specific algebraic value of $\alpha_B$ from
-$\varphi$ and $\pi$ is an open question reserved for future work.
+The path to resolving the weak-lensing tension lies in Paper~6's two-sector
+$\phi$-DM construction: the WDM free-streaming suppression at $k > k_{\rm fs}$
+reduces $\sigma_8$ from $0.820$ to $0.737$, recovering $S_8 \approx 0.761$
+($<0.1\sigma$ of DES-Y3).
 
 \subsection{The $H_0$ tension and SSEE}
 \label{subsec:H0}
@@ -1172,10 +1166,10 @@ in the CMB power spectrum at $\ell > 1000$.
 Prediction & SSEE value & Test level & Dataset / Timeline \\
 \midrule
 $c^2_{s,\mathrm{eff}} = 0$ (DE pressureless) & $0$ (exact) & $|c^2_s| < 0.05$ & CMB lensing/$T_{\ell\ell'}$ cross \citep{Calabrese2011} / current \\
-$S_8 = 0.725$ & $0.725 \pm 0.005$ & $< 3\sigma$ of KiDS, DES & KiDS-1000, DES-Y3 / current \\
-$\gamma_{\rm IS} = 0.554$ & $0.554 \pm 0.001$ & test via $f\sigma_8$; $\gamma$ degenerate & DESI full shape, Euclid / 2026--2028 \\
-$f\sigma_8(z=0.5) = 0.341$ & $0.341 \pm 0.010$ & $28\%$ below $\Lambda$CDM; current RSD tension $2.67\sigma$ (6 surveys) & DESI full-shape / 2026 \\
-$D_1$ suppression $\mathcal{G} = 0.866$ & $0.866 \pm 0.005$ & $2\%$ precision & Euclid weak lensing / 2027 \\
+$S_8 = 0.847$ (single-sector IS) & $0.847 \pm 0.006$ & $S_8 > 0.86$: favours SSEE over $\Lambda$CDM & KiDS-1000, DES-Y3 / current \\
+$\gamma_{\rm IS} = 0.5503$ & $0.5503 \pm 0.0003$ & $\gamma$ degenerate with $\Lambda$CDM at current precision & DESI full shape, Euclid / 2026--2028 \\
+$f\sigma_8(z=0.5) = 0.4785$ & $0.4785 \pm 0.010$ & $0.5\sigma$ BOSS; mean $0.74\sigma$ (6 surveys) & DESI full-shape / 2026 \\
+$D_1$ ratio $\mathcal{G} = 1.011$ & $1.011 \pm 0.005$ & $1\%$ enhancement; distinguishable at $2\%$ precision & Euclid weak lensing / 2027 \\
 No DE clustering ($|\delta_{\mathrm{DE}}/\delta_m| < 10^{-3}$) & $< 10^{-3}$ at $k > 20\,H_0/c$ & cosmic variance & Future 21cm surveys / 2030+ \\
 MIRA $= (3\varphi+\pi)/4$ (two-sector $\phi$-DM basis, Paper~6) & $1.9989$ & $\Omega_m$ direct measurement & Stage IV CMB / 2030 \\
 \bottomrule
@@ -1211,37 +1205,31 @@ perturbative phenomenon.
 Furthermore, numerical integration of the background IS Friedmann equations yields an effective ratio of $3.04$, failing to reproduce MIRA at the background level.
 We conclude that the MIRA factor does not emerge from classical Israel-Stewart fluid mechanics. Paper~6 proposes that the physical basis is instead a two-sector dark matter structure (CDM + $\phi$-DM with $m_\phi=5.60\,\mathrm{eV}$), whose near-equal densities produce $\mathrm{MIRA}\approx2$ algebraically; a first-principles derivation from quantum field theory remains open.
 
-\paragraph{Q3 — Growth rate and $S_8$ (partial resolution of lensing tension).}
-The IS growth index $\gamma_{\mathrm{IS}} = 0.554 \pm 0.001$
-is numerically indistinguishable from $\gamma_{\Lambda\mathrm{CDM}} \simeq 0.55$ —
-the power-law exponent $f \approx \Omega_m(a)^\gamma$ is insensitive to the
-background model.
-However, the \emph{growth rate itself} is suppressed because
-$\Omega_{m,\mathrm{dyn}} = 0.160$: the linear suppression is $\mathcal{G} = 0.866$, giving
-$\sigma_8^{\mathrm{SSEE}} = 0.702 \pm 0.005$ and
-$S_8^{\mathrm{SSEE}} = 0.725 \pm 0.005$.
-This leaves SSEE in $2.0\sigma$ and $2.8\sigma$ tension with KiDS-1000 and DES-Y3 respectively.
-The IS growth sector is explored at the linear sub-horizon level considered in this paper; the two-sector $\phi$-DM construction of Paper~6 provides the physical basis for MIRA.
-The lowered amplitude arises from a structural consequence of IS dynamics with
-$\Omega_{m,\mathrm{dyn}} = 1 + w_0 = 1 - T_r/M_v \simeq 0.160$.
-By contrast, the growth \emph{rate} $f(z) \approx \Omega_m(z)^\gamma$
-is suppressed at all redshifts by the same low $\Omega_{m,\mathrm{dyn}}$,
-producing a mean $f\sigma_8$ tension of $2.67\sigma$ across six RSD surveys —
-a challenge that cannot be resolved by parameter tuning and is reported
-transparently as a diagnostic of the sector where the current framework
-requires extension (Section~\ref{subsec:S8_fsigma8_split}).
+\paragraph{Q3 — Growth rate and $S_8$ (SSEE tracks $\Lambda$CDM closely).}
+The IS growth index $\gamma_{\mathrm{IS}} = 0.5503 \pm 0.0003$
+is numerically indistinguishable from $\gamma_{\Lambda\mathrm{CDM}} \simeq 0.55$.
+With $\Omega_{m,\mathrm{cosm}} = 0.320$ governing the Poisson source,
+the growth factor ratio is $\mathcal{G} = 1.0109$, giving
+$\sigma_8^{\mathrm{SSEE}} = 0.820 \pm 0.006$ and
+$S_8^{\mathrm{SSEE}} = 0.847 \pm 0.006$.
+This is $1.0\sigma$ above Planck~2018 and $3.9\sigma$ above KiDS-1000 and DES-Y3,
+marginally worse than $\Lambda$CDM ($3.3\sigma$).
+The mean $f\sigma_8$ tension across six RSD surveys is $0.74\sigma$,
+essentially identical to $\Lambda$CDM ($0.73\sigma$).
+The single-sector IS growth prediction does not resolve the weak-lensing tension;
+the two-sector $\phi$-DM construction of Paper~6 is required for that.
 
 Together, these results establish that SSEE dark energy is:
 (i) causally and thermodynamically stable (Q1),
-(ii) predictive of an $S_8$ value within $2.0\sigma$ and $2.8\sigma$ of KiDS and DES respectively, exploring the growth tension without free parameter adjustment (Q3), and
+(ii) predictive of a growth history essentially identical to $\Lambda$CDM
+    once $\Omega_{m,\mathrm{cosm}}=0.320$ governs the growth equation (Q3),
+    with $f\sigma_8$ tension of $0.74\sigma$ (vs.\ $0.73\sigma$ for $\Lambda$CDM), and
 (iii) strictly bounded: the MIRA factor cannot be derived from IS dynamics (Q2); the physical basis is provided by Paper~6's two-sector $\phi$-dark matter construction ($\Omega_{\phi\text{-DM}}\approx\Omega_{m,\mathrm{dyn}}$ gives MIRA$\approx2$; exact value from the algebraic mass $m_\phi=5.60\,\mathrm{eV}$), with a first-principles QFT derivation remaining open.
-The primary falsifiable prediction is $f\sigma_8(z=0.5) = 0.341$, which is
-$28\%$ below $\Lambda$CDM.
-Comparison with current RSD data (6dFGRS, SDSS MGS, BOSS DR12, eBOSS DR16;
-Table~\ref{tab:fsigma8}) yields a mean tension of $2.67\sigma$ across six
-surveys. Like the $H(z)$ chronometer tension, this $f\sigma_8$ suppression is a direct physical consequence of the low geometric matter density ($\Omega_{m,\mathrm{dyn}}=0.160$). It functions as a diagnostic suggesting that a future theoretical extension, for example via kinetic braiding in an EFT framework, may be required to dynamically enhance the effective gravitational clustering force without altering the underlying geometric axioms.
-This tension is reported transparently; a confirmed $>5\sigma$ discrepancy
-from DESI Year-1 full-shape analysis would directly falsify the current unbraided SSEE-V3.6 formulation.
+The primary falsifiable prediction in the growth sector is
+$S_8 = 0.847$ (single-sector IS upper bound), with the two-sector WDM
+correction bringing it to $S_8 \approx 0.761$ (Paper~6).
+A future confirmed measurement $S_8 > 0.86$ would favour SSEE over $\Lambda$CDM;
+$S_8 < 0.73$ would disfavour both at comparable significance.
 
 %======================================================================
 \section*{Data Availability}

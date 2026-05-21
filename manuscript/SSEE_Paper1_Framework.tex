@@ -934,6 +934,7 @@ $w_0$     & $-T_r/M_v$ & $-0.8399$ & DESI DR2 & A \\
 $w_a$     & $-P_{sc}/K_v$ & $-0.6699$ & DESI DR2 & A \\
 $H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & P$^\dagger$ \\
 $H_0^{\rm MCMC}$ & CMB full posterior (Paper~3) & $67.08\pm0.03$ & Planck PR4 & M \\
+$\Omega_{m,\rm dyn}$ & $(\pi-\varphi)/[2(\varphi+\pi)]$ & $0.1601$ & Dynamic sector; $1+w_0$ exact & A \\
 $\Omega_m^{\rm CMB}$ & $(\pi-\varphi)/(\pi+\varphi)$ & $0.3201^\S$ & Planck 2018 & A \\
 $n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
 $\Omega_b h^2$ & $(\pi-\varphi)/[3(\varphi+\pi)^2]$ & $0.02242$ ($0.32\sigma$) & Planck 2018 & A$^\ddagger$ \\
@@ -1117,6 +1118,29 @@ The numerical match $\mathrm{MIRA} \approx \Omega_{m,\mathrm{CMB}}/\Omega_{m,\ma
 Timestamp proof is provided by Zenodo Genesis~5.12
 (DOI:~\href{https://doi.org/10.5281/zenodo.19679049}{10.5281/zenodo.19679049},
 deposited 2026-01-28, prior to the Planck~2018 $\Omega_m$ confrontation in Paper~3).
+
+\subsection*{Five exact consistency identities}
+
+The following identities hold exactly in $\{\varphi,\pi\}$ algebra and are
+verified to machine precision ($<10^{-16}$ relative error):
+\begin{align}
+  w_0 &= -\frac{\mathrm{AURA}}{\Omega_{\rm DNAV}}
+       = -\frac{T_r}{M_v} \label{eq:id_w0} \\
+  \Omega_{m,\rm dyn} &= \frac{\pi-\varphi}{2(\varphi+\pi)}
+       = 1 + w_0 \label{eq:id_Omdyn} \\
+  \mathrm{MIRA} &= |w_0|\cdot\beta \label{eq:id_mira} \\
+  \mathrm{KAL}_0\big|_{\varphi\leftrightarrow\pi} &= \mathrm{AURA} \label{eq:id_kal} \\
+  \mathrm{AURA}\big|_{\varphi\leftrightarrow\pi} &= \mathrm{KAL}_0 \label{eq:id_aura}
+\end{align}
+Identity~\eqref{eq:id_kal}--\eqref{eq:id_aura} is the deepest structural result:
+under the discrete exchange $\varphi\leftrightarrow\pi$, the scalar-kinetic constant
+$\mathrm{KAL}_0=(\varphi+3\pi)/2$ maps \emph{exactly} to the photon-sector constant
+$\mathrm{AURA}=(3\varphi+\pi)/2$, and vice versa.
+This discrete duality is the algebraic origin of the disformal coupling
+$\beta_c = -\mathrm{AURA}$ derived in Paper~7~\S2.2: switching the $\varphi\leftrightarrow\pi$
+roles between the two sectors forces $\beta_c=-\mathrm{AURA}$ as the unique consistent value.
+The open question of whether this discrete symmetry is an exact symmetry of the full
+$P(X,\phi)$ action is catalogued as OP-7 (\texttt{OPEN\_PROBLEMS.md}).
 
 \subsection*{Spectral index $n_s = 1 - \varphi^{-7}$}
 

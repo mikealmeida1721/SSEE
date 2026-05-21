@@ -10,7 +10,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 - **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready) ✅
 - **Paper 4**: Derivación algebraica CMB desde φ,π — Nine Sovereignties; nombres mitológicos eliminados, bib 10→40 refs (preprint) ✅
 - **Paper 5**: IS causal perturbation theory — estabilidad, MIRA, S8, fσ₈ (commit 0a9d21c) ✅
-- **Paper 6**: φ-DM dos sectores — m_φ=5.60 eV algebraico, fσ₈ 2.56σ→0.50σ resuelto (commit 9d28620; baseline corregido: σ8=0.702 ODE) ✅
+- **Paper 6**: φ-DM dos sectores — m_φ=5.60 eV algebraico, fσ₈ 2.67σ→0.76σ (empata ΛCDM 0.73σ; datos fσ₈ corregidos a refs Alam2017 — 2026-05-18) ✅
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint) ✅
 - **Paper 8**: Régimen de gravedad fuerte — geodésicas disformales, MIRA emergencia lensing, Vainshtein (commit d7f3b38) ✅
 - **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente; +sección comparación cuantitativa vs EDE/SIDR/late-DE (preprint, 18 pp) ✅
@@ -61,7 +61,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 - `ssee_paper5_IS_perturbations.py` — IS causal perturbations: Q1+Q2+Q3+fσ₈ (Paper 5 ✅)
 - `ssee_paper6_verification.py` — dos sectores φ-DM: fσ₈ tensions, σ₈_eff, m_φ algebraico (Paper 6 ✅)
 - `ssee_paper6_sterile_neutrino.py` — k_fs derivation, DW relation, scan m_φ candidates (Paper 6 ✅)
-- `ssee_paper6_mcmc.py` — MCMC Paper 6 φ-DM dos sectores (64 walkers × 15000 steps)
+- `ssee_paper6_mcmc.py` — MCMC Paper 6 φ-DM dos sectores (100 walkers × 25000 steps; datos fσ₈ canónicos Paper 5)
 - `ssee_op1_baryon_density.py` — OP-1: fórmula (π−φ)/H₀_SSEE = 0.32σ Planck (vs 3.2σ del 200) ✅
 - `ssee_op1_baryogenesis.py` — OP-1 Sakharov: δ_CP=(π−φ)/Ω, T_rh~10⁻⁴ GeV, 3 condiciones ✅
 - `ssee_op2_spectral_index.py` — OP-2: n_s=1−φ⁻⁷ (α-attractor + N_*=2φ⁷); r=φ⁻¹⁰ ✅
@@ -174,10 +174,11 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | Ω_total (dos sectores) | 0.319928 ≈ Ω_m,CMB | Unificación algebraica |
 | m_φ = Σm_ν^active × H₀^alg | 5.60 eV | Cero parámetros libres |
 | k_fs (Dodelson-Widrow) | 0.493 h/Mpc | Derivado de m_φ |
-| σ₈_eff (con T_WDM) | 0.737 | **0.00σ KiDS-1000** |
-| S₈_eff (Paper 6) | 0.761 | 0.09σ DES — ¡ya dentro de 1σ! |
-| S₈ + HMcode baryonic (OP-5 Nivel 1) | 0.758 | 0.06σ DES; B_eff=0.9447 (script op5) |
-| Media tensión fσ₈ (6 encuestas) | **0.50σ** | **Resuelto desde 2.56σ (baseline corregido, σ8=0.702)** |
+| σ₈_eff (two-sector, G_2s=0.979) — **titular Paper 6** | 0.794 | 2.84σ vs KiDS σ₈ |
+| S₈_eff (two-sector) — **titular Paper 6** | 0.820 | 2.6σ KiDS / 2.6σ DES |
+| σ₈_eff / S₈_eff (rama WDM CLASS, secundario) | 0.737 / 0.761 | estimación alternativa, NO titular |
+| S₈ + HMcode baryonic (OP-5 Nivel 1, rama WDM) | 0.758 | 0.06σ DES; B_eff=0.9447 (script op5) |
+| Media tensión fσ₈ (6 encuestas canónicas Paper 5) | **0.76σ** | desde baseline 2.67σ (= Paper 5); empata ΛCDM 0.73σ. Antes 0.50σ con datos fσ₈ erróneos — corregido 2026-05-18 |
 | m_φ algebraico (φ-DM) | 5.60 eV | Sin portal SM — no observable en KATRIN/PTOLEMY |
 | Predicción DESI Y3/Euclid | k_fs = 0.493 h/Mpc (imprint de m_φ en P(k)) | Falsificable 2026–2028 |
 

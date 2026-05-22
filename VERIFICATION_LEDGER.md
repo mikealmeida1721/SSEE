@@ -51,8 +51,8 @@ paper vuelve a verificación.
 | Capa | Contenido | Estado |
 |------|-----------|--------|
 | **L1** | Axiomas y constantes algebraicas | re-verificado ✓ |
-| **L2** | Parámetros cosmológicos derivados | pendiente |
-| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | en progreso (OP-2, OP-7) |
+| **L2** | Parámetros cosmológicos derivados | re-verificado ✓ |
+| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | en progreso (OP-1..OP-7 ✓; faltan EFT, IS, dos-sectores, m_φ, K(X)) |
 | **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | pendiente |
 | **L5** | Papers (sellado) | pendiente |
 
@@ -310,17 +310,58 @@ no una derivación. **ABIERTO.**
 separabilidad no lo es (jacobiano diferido), y KALeff arrastra un ρ_crit
 dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
 
+## V-L3-OP5 — tensión S₈ weak-lensing / HMcode bariónico — **ABIERTO (anclado en rama secundaria)**
+
+*Claim CLAUDE.md:* "OP-5 PARCIAL — HMcode-2020 CLASS: S₈=0.758 (0.06σ DES)".
+
+1. **✓ definición:** S₈ = σ₈(Ω_m/0.3)^½ cierra para ambas ramas — rama
+   secundaria σ₈=0.737 → S₈=0.761; rama titular σ₈=0.794 → S₈=0.820.
+2. **✗ rama elegida:** `ssee_op5_hmcode.py` aplica la supresión bariónica
+   sobre `S8_Paper6 = 0.761` — la **rama WDM CLASS, marcada "secundario, NO
+   titular"** en CLAUDE.md. El resultado titular del Paper 6 es S₈_eff=0.820.
+3. **✗ magnitud del efecto:** HMcode da B_σ₈ ≈ 0.996 (supresión ~0.4% en
+   σ₈, porque R=8 Mpc/h cae en k~0.13 h/Mpc, donde el feedback AGN apenas
+   actúa). Aplicado a 0.761 → 0.758 (0.06σ); aplicado al titular 0.820 →
+   ~0.817 (~2.6σ). La "resolución" depende de anclar en la rama baja.
+4. **✗ N-body diferido:** el cierre real (<1σ) requiere simulaciones N-body
+   bariónicas SSEE (Nivel 2, ~5k–20k CPU-h) — diferido.
+
+**Veredicto:** HMcode reduce la tensión solo escogiendo el S₈ más bajo de
+dos valores internamente inconsistentes. El titular sigue a ~2.6σ. **ABIERTO.**
+
+## V-L3-OP6 — forma de screening f_screen / universo separado — **PARCIAL (forma derivada, valor con insumo)**
+
+*Claim CLAUDE.md:* "OP-6 ✅ RESUELTO — universo separado k-essence + identidad 1+w₀=Ω_m".
+
+1. **✓ valor:** f_screen = α_K/(3·MIRA) = (π−φ)/Ω² = 0.067253 — álgebra
+   exacta, ya verificada en V-L2-13 y en la identidad cruzada de Capa 2.
+   H₀,local = H₀^alg/(1−f_screen) = 72.86 km/s/Mpc cierra numéricamente.
+2. **✓ forma:** que la corrección sea **multiplicativa** sí sigue de la
+   aproximación de universo separado para k-essence (Wands 2000; Brax &
+   Valageas 2014) — ese paso es una derivación legítima.
+3. **✗ paso δρ_φ asertado:** `ssee_op6_screening_form.py` (L68) escribe
+   δρ_φ/ρ_crit = (α_K/3)(Ω_m,dyn/MIRA)δ_local/(1+w₀) sin derivarla; el
+   factor 1/MIRA se justifica con un argumento de plausibilidad, no un
+   cálculo. El c²_s aparece y desaparece entre L65 y L73.
+4. **✗ insumo δ_local=2:** el valor f_screen=α_K/(3·MIRA) exige fijar
+   δ_local=2 (sobredensidad del Grupo Local) para cancelar el δ_local/2.
+   Es un insumo astrofísico razonable, **no derivado de φ,π**.
+
+**Veredicto:** la forma multiplicativa está derivada; el valor f_screen es
+álgebra exacta *condicionada* a δ_local=2 y a una expresión δρ_φ asertada.
+No es "RESUELTO" pleno. **PARCIAL.**
+
 ## Pendientes de Capa 3
 
-OP-5 (S₈ no lineal), OP-6 (screening multiplicativo); la acción EFT; las
-perturbaciones Israel-Stewart; el modelo de dos sectores φ-DM; m_φ; la
-completación UV K(X); el bug dos-Ω_m.
+La acción EFT; las perturbaciones Israel-Stewart; el modelo de dos sectores
+φ-DM; m_φ; la completación UV K(X); el bug dos-Ω_m.
 
-**Estado Capa 3:** re-verificados OP-1, OP-2, OP-3, OP-4, OP-7, α=φ⁴/3.
+**Estado Capa 3:** re-verificados OP-1..OP-7 y α=φ⁴/3 (8 elementos).
 Resultado: α=φ⁴/3 **verificado** (consecuencia exacta de los axiomas n_s, r);
-OP-2 y OP-7 **PARCIAL** (álgebra cierra, insumo físico no); OP-1, OP-3, OP-4
-**ABIERTO**. 1 bug aritmético corregido de paso (curvatura de Kähler, P1).
-Patrón confirmado en 6/6: ninguna "✅ RESUELTO" de CLAUDE.md lo estaba.
+OP-2, OP-6, OP-7 **PARCIAL** (álgebra/forma cierra, insumo físico no);
+OP-1, OP-3, OP-4, OP-5 **ABIERTO**. 1 bug aritmético corregido de paso
+(curvatura de Kähler, P1). Patrón confirmado en 8/8: ninguna "✅ RESUELTO"
+de CLAUDE.md lo estaba sin reservas.
 
 # Capa 4 — Confrontaciones con datos — *pendiente*
 

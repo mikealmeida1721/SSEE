@@ -212,6 +212,34 @@ track_open("V-L3-OP3  separabilidad UV-IR no probada",
            "jerarquia (H0/M)^2~3e-62 real; prueba via jacobiano d phi/d chi "
            "diferida a Paper B; KALeff^2 = M^4/(6 alpha) dropea rho_crit")
 
+# OP-5 — tensión S8 weak-lensing (P5/P6). La definición S8 = sigma8*(Om/0.3)^0.5
+# cierra para ambas ramas; HMcode reduce la tensión solo anclando en la rama
+# secundaria sigma8=0.737, NO en el titular sigma8=0.794 (ABIERTO).
+Om_cosm_op5 = MIRA * (1 + w0)
+S8_sec = 0.737 * (Om_cosm_op5 / 0.3) ** 0.5   # rama WDM CLASS (secundaria)
+S8_tit = 0.794 * (Om_cosm_op5 / 0.3) ** 0.5   # titular dos sectores
+check("V-L3-OP5  identidad S8 = sigma8(Om/0.3)^0.5  rama secundaria = 0.761",
+      abs(S8_sec - 0.761) < 2e-3, f"S8 = {S8_sec:.4f}")
+check("V-L3-OP5  identidad S8 = sigma8(Om/0.3)^0.5  rama titular = 0.820",
+      abs(S8_tit - 0.820) < 2e-3, f"S8 = {S8_tit:.4f}")
+track_open("V-L3-OP5  S8 anclado en rama secundaria",
+           "HMcode da S8=0.758 (0.06sigma DES) partiendo de sigma8=0.737 "
+           "(rama WDM, NO titular); el titular sigma8=0.794 deja ~2.6sigma. "
+           "N-body Nivel 2 diferido")
+
+# OP-6 — forma de screening (P9). El valor f_screen es algebra exacta (ver
+# V-L2-13); la forma multiplicativa sigue del universo separado. El paso
+# delta_rho_phi y el insumo delta_local = 2 (sobredensidad Grupo Local) no
+# estan derivados de phi,pi (ABIERTO parcial).
+f_screen_op6 = (pi - phi) / Omega ** 2
+H0_local_op6 = (3 * Omega ** 2) / (1 - f_screen_op6)
+check("V-L3-OP6  H0_local = H0^alg/(1-f_screen) = 72.86",
+      abs(H0_local_op6 - 72.864) < 1e-2, f"H0_local = {H0_local_op6:.4f}")
+track_open("V-L3-OP6  forma multiplicativa: insumo delta_local = 2 no derivado",
+           "la forma multiplicativa sigue del universo separado, pero el valor "
+           "f_screen requiere delta_local=2 (sobredensidad Grupo Local) y una "
+           "expresion delta_rho_phi asertada, no derivada de phi,pi")
+
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
 # Cuando un paper se sella, se registra aquí su sha256. El harness lo

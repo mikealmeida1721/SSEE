@@ -305,6 +305,25 @@ track_open("V-L3-IS  c2_s,eff = 0 depende de tau_Pi no derivado en script",
            "el resultado se reduce a w0 = -Om_DE (V-L2). La derivacion de "
            "tau_Pi (steady-state IS) esta asertada, no mostrada")
 
+# c_s^2 del sector k-essence — extraccion T_munu^ef (2026-05-22). Para
+# K(X)=X/KAL0+X^2/M^4, Garriga-Mukhanov da c_s^2=(A+2BX)/(A+6BX) con
+# A=1/KAL0>0 y B=1/M^4>0. Es decreciente: c_s^2 in [1/3,1] para TODO X>=0,
+# cualquier M^4>0, cualquier KAL0>0 — depende solo de la FORMA de K.
+A_ke = 1.0 / KAL0
+cs2_vals = []
+for B_M4 in (1.0, 1.0 / 234.8936):       # M^4 = 1 (P7) y 5 phi^8 (P10)
+    for Xv in (0.0, 0.1, 1.0, 1e2, 1e6):
+        cs2_vals.append((A_ke + 2 * B_M4 * Xv) / (A_ke + 6 * B_M4 * Xv))
+check("V-L3-cs2  c_s^2 k-essence acotado en [1/3, 1] para todo X",
+      all(1 / 3 - 1e-9 <= c <= 1 + 1e-9 for c in cs2_vals),
+      f"min={min(cs2_vals):.5f} max={max(cs2_vals):.5f}")
+track_open("V-L3-cs2  el sector geometrico de SSEE no puede agruparse [CENTRAL]",
+           "extraccion T_munu^ef: c_s^2 de la k-essence in [1/3,1] siempre — "
+           "nunca baja de 1/3, no clusteriza como materia fria. El sector "
+           "geometrico tiene peso de FONDO (rho_phi existe) pero NO peso de "
+           "agrupamiento. El CMB exige materia que se agrupe -> la k-essence "
+           "actual no puede ser la '0.320'. MIRA no esta en la accion vigente")
+
 # dos-Ω_m — PROBLEMA CENTRAL ABIERTO. El algebra es exacta (Om_m,dyn=1+w0
 # derivado; Om_m,cosm=MIRA*Om_m,dyn) pero la REGLA fisica de uso no esta
 # derivada: no hay mecanismo para MIRA ni funcion Om_m(z) de transicion.

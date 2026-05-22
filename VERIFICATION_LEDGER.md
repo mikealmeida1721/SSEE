@@ -52,7 +52,7 @@ paper vuelve a verificación.
 |------|-----------|--------|
 | **L1** | Axiomas y constantes algebraicas | re-verificado ✓ |
 | **L2** | Parámetros cosmológicos derivados | re-verificado ✓ |
-| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | re-verificado ✓ (14 elementos; 1 verif., 6 PARCIAL, 7 ABIERTO — dos-Ω_m es el central) |
+| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | re-verificado ✓ (15 elementos; 1 verif., 6 PARCIAL, 8 ABIERTO — dos-Ω_m es el central) |
 | **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | re-verificado ✓ (pipelines re-corridos; CMB+MCMC reproducen, r_d/H₀ derivaron) |
 | **L5** | Papers (sellado) | pendiente |
 
@@ -511,6 +511,42 @@ P10 ya lo declara honestamente. **ABIERTO.**
 IS (ζ̃, τ_Π) está construido para reproducir esa identidad y su parte
 no-trivial (derivación de τ_Π) no se muestra. **PARCIAL.**
 
+## V-L3-cs2 — extracción del T_μν efectivo del sector k-essence — **ABIERTO (resultado clave)**
+
+*Origen:* el autor pidió extraer el tensor de energía efectivo de la
+acción para ver si el sector geométrico puede ser la materia que el CMB
+exige (la «0.320»). Extracción hecha 2026-05-22.
+
+**La extracción (k-essence estándar, Garriga–Mukhanov 1999).** Para la
+acción de SSEE P(X,φ) = X/KAL₀ + X²/M⁴ − V(φ):
+- ρ_φ = 2X·P_X − P = X/KAL₀ + 3X²/M⁴ + V
+- p_φ = P = X/KAL₀ + X²/M⁴ − V
+- w_φ = p_φ/ρ_φ
+- **c_s² = P_X/(P_X + 2X·P_XX) = (A + 2BX)/(A + 6BX)**, con A=1/KAL₀>0,
+  B=1/M⁴>0.
+
+**Resultado clave (exacto, analítico, parámetro-independiente).** c_s² es
+monótona decreciente en X: vale 1 en X=0, tiende a 1/3 en X→∞. Por tanto
+**c_s² ∈ [1/3, 1] para todo X≥0, cualquier M⁴>0, cualquier KAL₀>0.**
+Depende solo de la *forma* K = A·X + B·X² (suma de coeficientes
+positivos), no de los valores. La inconsistencia M⁴ P7↔P10 no lo afecta.
+
+**Qué significa — respuesta a «¿la geometría tiene peso?».**
+- **Peso de fondo: SÍ.** El sector tiene una densidad ρ_φ genuina; su
+  w_φ de fondo puede transitar (kinético→potencial).
+- **Peso de agrupamiento: NO.** Un fluido se agrupa como materia fría
+  solo si c_s² ≈ 0. La k-essence de SSEE **nunca baja de 1/3** — se
+  difumina, no forma pozos de potencial. No puede agruparse como CDM.
+
+**Veredicto.** El CMB necesita materia que se *agrupe* (que forme los
+pozos donde oscila el fluido fotón-barión). El sector k-essence de SSEE,
+tal como está la acción, **no puede hacerlo** — su c_s² es estructuralmente
+demasiado alto. **El mecanismo MIRA no está en la acción vigente.** Es un
+resultado negativo limpio: descarta «la k-essence es la materia geométrica»
+y dice qué hay que buscar — un sector cuyo c_s² pueda anularse a alto z
+(la viscosidad IS pretendía eso, pero V-L3-IS la halló decorativa).
+**ABIERTO.**
+
 ## V-L3-2Om — mecanismo MIRA / transición Ω_m(z) — **ABIERTO (problema central del modelo)**
 
 *Corrección de criterio (2026-05-22):* una versión anterior de esta entrada
@@ -548,14 +584,14 @@ modelo**. Todo lo demás (r_d, θ*, H₀) son síntomas de esta brecha. **ABIERT
 
 ## Estado final de Capa 3
 
-Re-verificados **14 elementos**: OP-1..OP-7, α=φ⁴/3, m_φ, dos sectores,
-EFT, K(X), IS, regla dos-Ω_m.
+Re-verificados **15 elementos**: OP-1..OP-7, α=φ⁴/3, m_φ, dos sectores,
+EFT, K(X), IS, c_s² (T_μν), dos-Ω_m.
 
 | Veredicto | Elementos |
 |---|---|
 | **verificado** | α=φ⁴/3 |
 | **PARCIAL** (álgebra/forma cierra, insumo físico no) | OP-2, OP-6, OP-7, dos sectores, EFT, IS |
-| **ABIERTO** | OP-1, OP-3, OP-4, OP-5, m_φ, K(X), **dos-Ω_m (central)** |
+| **ABIERTO** | OP-1, OP-3, OP-4, OP-5, m_φ, K(X), c_s² (T_μν), **dos-Ω_m (central)** |
 
 2 bugs corregidos/detectados de paso: curvatura de Kähler (P1, **corregido**)
 y M⁴ inconsistente P7↔P10 (**detectado**, pendiente de re-derivación).

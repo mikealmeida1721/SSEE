@@ -385,18 +385,54 @@ input abierto OP-1. **ABIERTO.**
 **Veredicto:** la suma Ω_total es un re-enunciado exacto de V-L2-05; el
 modelo físico de dos sectores hereda la apertura de m_φ y k_fs. **PARCIAL.**
 
+## V-L3-EFT — acción EFT canónica (Paper 7) — **PARCIAL (parámetros sí, M⁴ inconsistente)**
+
+*Claim CLAUDE.md:* "Paper 7: EFT canónico — λ/V₀/M/g² bloqueados".
+
+1. **✓ λ, α_pot, V₀:** son consecuencias algebraicas exactas de constantes
+   ya verificadas — λ²=3·Ω_m,dyn (λ=0.6929), α_pot=λ/√KAL₀ (=0.2949),
+   V₀=Ω_DE·ρ_crit (=0.8400). No son parámetros libres: re-enuncian
+   Ω_m,dyn (V-L2-04), KAL₀ (V-L1-07) y Ω_DE (V-L2-03).
+2. **✗ M⁴ inconsistente entre papers:** `ssee_eft_verification.py` (L70)
+   fija **M⁴ = ρ_crit = 1**; `ssee_paper10_verification.py` (L30) fija
+   **M⁴ = 5φ⁸·ρ_crit = 234.9**. Factor ~235 de diferencia en el mismo
+   término X²/M⁴ del mismo Lagrangiano K(X). Con M⁴=1 el término UV no es
+   perturbativo; con M⁴=234.9 sí. Es una incoherencia cruzada P7↔P10.
+
+**Veredicto:** los parámetros λ, α_pot, V₀ están algebraicamente fijados;
+M⁴ tiene dos valores incompatibles según el paper. **PARCIAL.**
+
+## V-L3-KX — completación UV K(X) (Paper 10) — **ABIERTO (M⁴ calibrado a SH0ES)**
+
+*Claim CLAUDE.md:* "Paper 10: M⁴=5φ⁸ρ_crit exacto; H₀^UV=73.040 (condicional C.1)".
+
+1. **✓ identidad 45α² = 5φ⁸:** exacta a precisión de máquina (α=φ⁴/3 →
+   45α²=45φ⁸/9=5φ⁸=234.89). El *valor numérico* de M⁴/ρ_crit cierra.
+2. **✗ normalización física no derivada:** el propio
+   `ssee_paper10_verification.py` (VERDICT, L167–175) admite — *"This UV
+   result is CONDITIONAL on Postulate C.1, which is calibrated to SH0ES —
+   not an independent prediction"* y *"PENDING: first-principles derivation
+   of M⁴ = 45α² without using SH0ES as input"*. La Ruta A da M⁴≈418 ≠ 234.9.
+   M⁴=5φ⁸ es el número que hace falta para llegar a H₀=73.04, expresado en
+   φ — mismo patrón que OP-1 (ajuste a objetivo conocido).
+3. αK_full=0.41691 y H₀^UV=73.040 son aguas abajo de este M⁴ **ABIERTO**.
+
+**Veredicto:** la forma algebraica 5φ⁸ es exacta, pero su identificación
+como el cutoff UV físico está calibrada a SH0ES, no derivada. El script de
+P10 ya lo declara honestamente. **ABIERTO.**
+
 ## Pendientes de Capa 3
 
-La acción EFT (Paper 7); las perturbaciones Israel-Stewart; la completación
-UV K(X) (Paper 10); el bug dos-Ω_m (uso de Ω_m,dyn vs Ω_m,cosm en E(z),
-Poisson y CMB).
+Las perturbaciones Israel-Stewart (Paper 5); el bug dos-Ω_m (uso de Ω_m,dyn
+vs Ω_m,cosm en E(z), Poisson y CMB).
 
-**Estado Capa 3:** re-verificados OP-1..OP-7, α=φ⁴/3, m_φ y dos sectores
-(10 elementos). Resultado: α=φ⁴/3 **verificado**; OP-2, OP-6, OP-7, dos
-sectores **PARCIAL** (álgebra/forma cierra, insumo físico no); OP-1, OP-3,
-OP-4, OP-5, m_φ **ABIERTO**. 1 bug aritmético corregido de paso (curvatura
-de Kähler, P1). Patrón confirmado en 10/10: ninguna "✅ RESUELTO" de
-CLAUDE.md lo estaba sin reservas.
+**Estado Capa 3:** re-verificados OP-1..OP-7, α=φ⁴/3, m_φ, dos sectores,
+EFT y K(X) (12 elementos). Resultado: α=φ⁴/3 **verificado**; OP-2, OP-6,
+OP-7, dos sectores, EFT **PARCIAL** (álgebra/forma cierra, insumo físico
+no); OP-1, OP-3, OP-4, OP-5, m_φ, K(X) **ABIERTO**. 2 bugs corregidos/
+detectados de paso: curvatura de Kähler (P1, corregido) y M⁴ inconsistente
+P7↔P10 (detectado, pendiente). Patrón confirmado en 12/12: ninguna
+"✅ RESUELTO" de CLAUDE.md lo estaba sin reservas.
 
 # Capa 4 — Confrontaciones con datos — *pendiente*
 

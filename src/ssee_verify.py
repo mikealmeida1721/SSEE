@@ -266,6 +266,30 @@ track_open("V-L3-2sec  split fisico de dos sectores no cerrado",
            "la suma es identidad algebraica (= V-L2-05); la separacion fisica "
            "en k_fs depende de m_phi (ABIERTO) y k_fs (V-L2 pendiente)")
 
+# EFT canónico (P7) — los parámetros lambda, alpha_pot, V0 son consecuencias
+# algebraicas de constantes ya verificadas (Om_m,dyn, KAL0, Om_DE).
+lam_eft = (3 * Om_m_dyn) ** 0.5
+alpha_pot = lam_eft / KAL0 ** 0.5
+check("V-L3-EFT  identidad lambda^2 = 3 Om_m,dyn",
+      abs(lam_eft ** 2 - 3 * Om_m_dyn) < 1e-12, f"lambda = {lam_eft:.6f}")
+check("V-L3-EFT  identidad alpha_pot = lambda/sqrt(KAL0)",
+      abs(alpha_pot - lam_eft / KAL0 ** 0.5) < 1e-12, f"alpha_pot = {alpha_pot:.6f}")
+check("V-L3-EFT  identidad V0 = Om_DE * rho_crit",
+      abs(Om_DE - Tr / Mv) < 1e-12, f"V0 = {Om_DE:.6f}")
+
+# UV completion K(X) (P10) — la identidad 45 alpha^2 = 5 phi^8 es exacta;
+# la normalización física de M^4 está calibrada a SH0ES (admisión del propio
+# script de P10) y es inconsistente con M^4 = rho_crit usado en P7.
+check("V-L3-KX  identidad 45 alpha^2 = 5 phi^8  (M^4/rho_crit)",
+      abs(45 * alpha_attr ** 2 - 5 * phi ** 8) < 1e-9,
+      f"M^4/rho_crit = {5 * phi ** 8:.4f}")
+track_open("V-L3-KX  M^4 = 5 phi^8 rho_crit calibrado a SH0ES",
+           "ssee_paper10_verification.py admite: normalizacion fisica de M^4 "
+           "calibrada a SH0ES, no derivada; Ruta A da M^4~418 != 234.9")
+track_open("V-L3-EFT  M^4 inconsistente entre P7 y P10",
+           "ssee_eft_verification.py usa M^4 = rho_crit (=1); "
+           "ssee_paper10_verification.py usa M^4 = 5 phi^8 rho_crit (=234.9)")
+
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
 # Cuando un paper se sella, se registra aquí su sha256. El harness lo

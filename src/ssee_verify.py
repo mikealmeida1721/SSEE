@@ -411,6 +411,47 @@ for relpath, expected in SEALS.items():
           else "ROTO — el archivo cambió después de sellarse")
 
 # ─────────────────────────────────────────────────────────────────────
+# FUENTE CANÓNICA — chequeo de src/ssee_core.py
+# ssee_core.py es el módulo del que TODOS los demás scripts importan sus
+# constantes algebraicas. Aquí se verifica que ese módulo coincide con la
+# recomputación independiente del guardián. Si ssee_core se edita mal, esto
+# se pone ROJO — y, por tanto, todo script que importe de él queda advertido.
+# ─────────────────────────────────────────────────────────────────────
+print("\nFuente canónica — ssee_core.py")
+import importlib.util as _ilu
+
+_core_path = ROOT / "src" / "ssee_core.py"
+_spec = _ilu.spec_from_file_location("ssee_core", _core_path)
+try:
+    _core = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_core)
+    CANON = {
+        "PHI":         (_core.PHI,         phi),
+        "PI":          (_core.PI,          pi),
+        "OMEGA":       (_core.OMEGA,       Omega),
+        "BETA":        (_core.BETA,        beta),
+        "KAL0":        (_core.KAL0,        KAL0),
+        "P_SC":        (_core.P_SC,        Psc),
+        "K_V":         (_core.K_V,         Kv),
+        "T_R":         (_core.T_R,         Tr),
+        "M_V":         (_core.M_V,         Mv),
+        "W0":          (_core.W0,          w0),
+        "WA":          (_core.WA,          -Psc / Kv),
+        "OMEGA_DE":    (_core.OMEGA_DE,    Om_DE),
+        "OMEGA_M_DYN": (_core.OMEGA_M_DYN, Om_m_dyn),
+        "MIRA":        (_core.MIRA,        MIRA),
+        "AURA":        (_core.AURA,        AURA),
+        "H0_ALG":      (_core.H0_ALG,      3 * Omega ** 2),
+        "N_S":         (_core.N_S,         1 - phi ** -7),
+        "OMEGA_B_H2":  (_core.OMEGA_B_H2,  (pi - phi) / (3 * Omega ** 2)),
+    }
+    for nm, (core_val, guard_val) in CANON.items():
+        check(f"canon  ssee_core.{nm}", abs(core_val - guard_val) < 1e-9,
+              f"core {core_val:.10f} / guardian {guard_val:.10f}")
+except Exception as e:
+    check("canon  ssee_core.py importable y consistente", False, str(e))
+
+# ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)

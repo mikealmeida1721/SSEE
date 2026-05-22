@@ -61,6 +61,74 @@ inferiores no están al menos `verificado`.
 
 ---
 
+# Valores Canónicos del Modelo SSEE
+
+**Esta es la fuente canónica.** "Canónico" no significa *permanente* —
+significa **el valor que refleja el estado real más actual del modelo**.
+Cuando un pipeline se re-corre y el número cambia, se actualiza **aquí
+primero** y luego se propaga a todo lo que lo use.
+
+**Regla estructural.** Si un resultado cambia, cambia en *todas* partes
+que lo usan. Cualquier script, paper o cálculo que use uno de estos
+números debe reflejar el valor de esta tabla. Un valor distinto sin
+justificación es un error que debe detectarse de inmediato.
+
+## A. Constantes algebraicas — invariantes (derivadas de φ, π)
+
+Fuente única: `src/ssee_core.py`. Todo script importa de ahí. El guardián
+(sección «Fuente canónica») re-computa cada una y verifica `ssee_core`
+contra esa recomputación — si el módulo se edita mal, el guardián → ROJO.
+
+| Símbolo | Valor | Identidad | Rol |
+|---|---|---|---|
+| φ | 1.6180339887 | (1+√5)/2 | Axioma generador |
+| π | 3.1415926536 | — | Axioma generador |
+| Ω | 4.7596266423 | φ+π | Métrica de Estabilidad |
+| β | 2.3798133212 | (φ+π)/2 | Escalar de Acoplamiento Base |
+| KAL₀ | 5.5214059748 | β+π | Viscosidad Estructural |
+| P_sc | 6.3776606311 | Ω+φ | Escalar de Evolución Dinámica |
+| K_v | 9.5192532847 | φ+π+Ω | Restricción Estructural |
+| T_r | 11.9935419298 | 3(φ+β) | Horizonte de Saturación 3D |
+| M_v | 14.2788799270 | φ+π+K_v | Invariante Dimensional Máximo |
+| AURA | 3.9978473099 | (3φ+π)/2 | = 2·MIRA = φ+β |
+| MIRA | 1.9989236550 | AURA/2 | Frecuencia de Observación |
+| w₀ | −0.8399497713 | −T_r/M_v | Ecuación de estado hoy |
+| wₐ | −0.6699748857 | −P_sc/K_v | Evolución de la EoS |
+| Ω_DE | 0.8399497713 | T_r/M_v | Densidad de energía oscura |
+| Ω_m,dyn | 0.1600502287 | 1+w₀ | Sector dinámico (fija w₀; **no** en E(z)) |
+| Ω_m,cosm | 0.3199281880 | MIRA·Ω_m,dyn | Fondo gravitacional (E(z)/Poisson/CMB) |
+| H₀^alg | 67.9621373234 | 3(φ+π)² | H₀ algebraico — **invariante** |
+| n_s | 0.9655581463 | 1−φ⁻⁷ | Índice espectral |
+| α_K | 0.4033024589 | 3·Ω_DE·Ω_m,dyn | Kineticity EFT |
+| Ω_b h² (alg) | 0.0224177568 | (π−φ)/(3Ω²) | Densidad bariónica OP-1 (**ABIERTO**) |
+
+## B. Valores de pipeline — dependientes de estado (script + datos + fecha)
+
+Estos **no** se derivan de φ,π — los calcula un pipeline (CAMB/CLASS/emcee).
+Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
+
+| Cantidad | Valor canónico | Fuente | Re-anclado |
+|---|---|---|---|
+| H₀ MCMC best-fit | 67.756 ± 0.442 | `ssee_paper2_mcmc.py` (seed 42) | 2026-05-22 |
+| ΔBIC MCMC (ΛCDM−SSEE) | +7.91 (SSEE favorecido) | `ssee_paper2_mcmc.py` | 2026-05-22 |
+| Ω_b h² (posterior MCMC) | 0.02183 ± 0.00048 | `ssee_paper2_mcmc.py` | 2026-05-22 |
+| r_d,SSEE (crudo) | 175.16 Mpc | `ssee_paper2_mcmc.py` | 2026-05-22 |
+| r_d,eff (CAMB) | ⚠ **sin reconciliar** (146.68 / 147.055) | — | pendiente |
+| χ²_r CMB TT (SSEE) | 1.047 | `ssee_paper3_cmb.py` | 2026-05-22 |
+| ΔBIC CMB (SSEE−ΛCDM) | −20.8 (SSEE favorecido) | `ssee_paper3_cmb.py` | 2026-05-22 |
+| θ* (SSEE) | 0.59501° (**tensión 3.63σ** — ABIERTO) | `ssee_verify_rd.py` | 2026-05-22 |
+| σ₈ / S₈ SSEE (Paper 5) | 0.702 / 0.725 | `ssee_paper5_IS_perturbations.py` | (sin re-correr) |
+| σ₈_eff / S₈_eff (Paper 6 titular) | 0.794 / 0.820 | `ssee_paper6_verification.py` | (sin re-correr) |
+
+**Historial de deriva de H₀ MCMC** (para entender por qué cambió): el MCMC
+es determinista (semilla fija 42) — *mismo script → mismo número*. La
+deriva 66.66 → 66.75 → **67.76** corresponde a **ediciones del script**,
+no a azar. El salto final (66.75→67.76) lo causó el commit `4892b53`
+(corrección dos-Ω_m). El valor 67.76 es el canónico actual; los anteriores
+están **obsoletos** y deben eliminarse de todo documento que los repita.
+
+---
+
 # Capa 1 — Axiomas y constantes algebraicas
 
 Verificación numérica: `python3` (2026-05-21). Todas las constantes son

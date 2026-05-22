@@ -144,10 +144,15 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | χ²₂D (plano w₀-wₐ vs DESI) | 0.080 → 0.05σ |
 | χ²ᵣ cúmulos (SSEE+IGIMF, 4 cúmulos) | 0.122 |
 | ΔBIC (modelo completo, k=0 vs ΛCDM k=6) | +206 (penalidad por background ΛCDM) |
-| ΔBIC (sector dinámico aislado, k=1) | −5.55 (SSEE favorecido) |
-| H₀ SSEE (MCMC best-fit) | 66.75⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc |
+| ΔBIC MCMC (ΛCDM−SSEE, k=2 vs k=3) | **+7.91** (SSEE favorecido) — re-run 2026-05-22 |
+| H₀ SSEE (MCMC best-fit) | **67.756⁺⁰·⁴⁴²₋₀.₄₄₂** km/s/Mpc — re-run 2026-05-22 (seed 42) |
 | H₀ SSEE (algebraico Paper 4) | 67.96 km/s/Mpc = 3(φ+π)² |
-| r_d (SSEE+MIRA, CAMB) | 147.156 Mpc → **0.25σ** de Planck 2018 ✅ |
+| r_d (SSEE+MIRA, CAMB) | ⚠ sin reconciliar — 146.68 / 147.055 / 175.16 según script (ver VERIFICATION_LEDGER.md §B) |
+
+> **Valores canónicos:** la tabla autoritativa de cada número (algebraico y
+> de pipeline, con procedencia) vive en `VERIFICATION_LEDGER.md` §«Valores
+> Canónicos». Esta tabla es un resumen; ante discrepancia, manda el Registro.
+> H₀ MCMC derivó de 66.75 → 67.76 por el commit `4892b53` (dos-Ω_m).
 
 ---
 

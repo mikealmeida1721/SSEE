@@ -171,6 +171,17 @@ track_open("V-L3-OP7  beta_c = -AURA",
            f"numerico {bc_num} vs -AURA {-AURA:.4f}: "
            f"brecha {abs(bc_num + AURA) / AURA * 100:.2f}%, identificacion no derivada")
 
+# alpha = phi^4/3 — consecuencia exacta de los axiomas n_s=1-phi^-7, r=phi^-10.
+alpha_attr = phi ** 4 / 3
+check("V-L3-alpha  alpha = r*N^2/12 = phi^4/3",
+      abs((phi ** -10) * (2 * phi ** 7) ** 2 / 12 - alpha_attr) < 1e-10)
+check("V-L3-alpha  identidad Fibonacci  phi^4/3 = phi + 2/3",
+      abs(alpha_attr - (phi + 2 / 3)) < 1e-12)
+# Curvatura de Kähler R = -2/(3 alpha) = -2 phi^-4 (P1 decía -phi^-4: error factor 2, corregido).
+check("V-L3-alpha  curvatura Kahler R = -2/(3 alpha) = -2 phi^-4",
+      abs(-2 / (3 * alpha_attr) - (-2 * phi ** -4)) < 1e-12,
+      f"R = {-2/(3*alpha_attr):.6f}")
+
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
 # Cuando un paper se sella, se registra aquí su sha256. El harness lo

@@ -221,6 +221,33 @@ no probada. OP-2 NO está "RESUELTO": es **condicional a la Conjecture B.1**.
 coincidencia numérica al 0.2 %, no una derivación; la dualidad Z₂ es álgebra
 real pero descriptiva, no generativa. **ABIERTO.**
 
+## V-L3-alpha — α = φ⁴/3 (parámetro α-attractor) — **verificado (como consecuencia de axiomas)**
+
+Al verificar de dónde sale α=φ⁴/3 se descubre la lógica real de P1
+(§Inflationary Embedding) — y es más honesta de lo que CLAUDE.md sugiere:
+
+1. **P1 declara explícitamente** que `n_s=1−φ⁻⁷` y `r=φ⁻¹⁰` son **AXIOMAS**
+   (postulados algebraicos de {φ,π}): *"Neither is derived from the
+   α-attractor framework"* (P1 EFT, L498). Son predicciones falsables.
+2. **✓** Dados esos dos axiomas: `N = 2/φ⁻⁷ = 2φ⁷`, y
+   `α = r·N²/12 = φ⁻¹⁰·(2φ⁷)²/12 = φ⁴/3` — consecuencia algebraica exacta
+   (guardián la recomputa). Identidad Fibonacci: φ⁴=3φ+2 ⇒ α=φ+2/3.
+3. El resultado genuino: los dos axiomas son **mutuamente consistentes** —
+   seleccionan una única geometría α-attractor. Eso es honesto y correcto.
+
+**Hallazgo nuevo — error aritmético en P1 (corregido):** la curvatura de
+Kähler. P1 escribía `R = −2/(3α) = −2/φ⁴ = −φ⁻⁴ ≈ −0.146`; el último paso
+perdía un factor 2. Correcto: `−2/φ⁴ = −2φ⁻⁴ ≈ −0.292`. Corregido en
+`SSEE_EFT_section.tex` (eq:kahler_curvature + tabla). El guardián lo comprueba.
+
+**Contradicción de framing detectada:** P1 dice que n_s es un AXIOMA;
+`ssee_op2_spectral_index.py` y CLAUDE.md dicen "exponent 7 → derivado" y
+marcan OP-2 "✅ RESUELTO". No pueden ser ambas ciertas. La honesta es la de
+P1: n_s y r son postulados. El error está en CLAUDE.md y el script, no en P1.
+
+**Veredicto:** α=φ⁴/3 `verificado` como consecuencia exacta de los axiomas
+n_s, r — no es derivación independiente, y P1 nunca afirmó que lo fuera.
+
 ## Pendientes de Capa 3
 
 OP-1 (Ω_b h², factor 200), OP-3 (separabilidad UV-IR), OP-4 (k-mouflage —

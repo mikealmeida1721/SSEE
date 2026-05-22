@@ -52,7 +52,7 @@ paper vuelve a verificación.
 |------|-----------|--------|
 | **L1** | Axiomas y constantes algebraicas | re-verificado ✓ |
 | **L2** | Parámetros cosmológicos derivados | pendiente |
-| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | pendiente |
+| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | en progreso (OP-2, OP-7) |
 | **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | pendiente |
 | **L5** | Papers (sellado) | pendiente |
 
@@ -166,13 +166,71 @@ apoya en mecanismos de Capa 3 aún no verificados — no pueden pasar de
 (k_fs). Ninguno pasa a `resuelto` todavía: la comprobación 3 (derivación) de
 varios alcanza la Capa 3.
 
-# Capa 3 — Mecanismos y derivaciones — *pendiente*
+# Capa 3 — Mecanismos y derivaciones
 
-Incluye la re-verificación de OP-1..OP-7 (todas marcadas `✅ RESUELTO` en
-CLAUDE.md — **a tratar como sospechosas hasta verificarlas**), la acción EFT, las
-perturbaciones Israel-Stewart, el modelo de dos sectores φ-DM, el screening
-k-mouflage / Vainshtein (fórmula rota confirmada), f_screen, la masa m_φ, y la
-completación UV K(X).
+Aquí vive la "nueva física". Cada OP-1..OP-7 está marcada `✅ RESUELTO` en
+CLAUDE.md — se re-verifican una por una, paso a paso. Estado por elemento:
+`verificado` (la derivación cierra), `ABIERTO` (coincidencia/conjetura vestida
+de derivación), o `PARCIAL` (mezcla — partes verificadas, partes abiertas).
+
+## V-L3-OP2 — n_s = 1 − φ⁻⁷ (índice espectral) — **PARCIAL**
+
+*Claim CLAUDE.md:* "✅ RESUELTO — α-attractor universality + N_*=2φ⁷".
+
+Cadena de derivación, paso a paso:
+
+1. **✓** Universalidad α-attractor: `n_s = 1 − 2/N_*` (Kallosh & Linde 2013).
+   Física estándar correcta.
+2. **⚠ pendiente** `α = φ⁴/3` — insumo de Paper 1, aún sin verificar
+   (elemento V-L3-alpha, pendiente en esta misma capa).
+3. **✓** Álgebra exacta: con `N_* = 2φ⁷` → `n_s = 1−2/(2φ⁷) = 1−φ⁻⁷`, y
+   `r = 12(φ⁴/3)/(2φ⁷)² = φ⁻¹⁰`. Ambas identidades exactas — el guardián
+   las recomputa.
+4. **✗** `N_* = 2φ⁷` — **NO derivado.** Es la Conjecture B.1. El script
+   `ssee_paperB_Nstar.py` es honesto: *invierte* la fórmula para hallar el
+   T_rh que da 2φ⁷; la cuasi-coincidencia ρ_end/ρ_rh≈3 necesita un ajuste
+   δ~O(1/N) en la constante 58.25 de la fórmula estándar para cerrar; y el
+   puente físico (eficiencia de reheating gravitacional con α=φ⁴/3 → ρ_rh=V_end)
+   está **ausente**. El argumento alterno "contar 7 constantes SSEE" es
+   racionalización post-hoc — el conteo depende de cómo se agrupen.
+
+**Veredicto:** dado N_*=2φ⁷, todo cierra exacto. Pero N_*=2φ⁷ es una conjetura
+no probada. OP-2 NO está "RESUELTO": es **condicional a la Conjecture B.1**.
+
+## V-L3-OP7 — βc = −AURA (acoplamiento EFT) — **PARCIAL**
+
+*Claim CLAUDE.md:* "PARCIALMENTE RESUELTO — unicidad EFT vía dualidad Z₂".
+
+1. **✓** Extracción numérica: integrar el fondo EFT (P7 §6, shooting con
+   Ω_φ(a=1)=Ω_DE) da `βc ≈ −3.990`, sin parámetros libres.
+2. **✗** Identificación `βc = −AURA`: −AURA = −3.99785; el valor extraído
+   −3.990 está a **0.2 %** (|Δ|/βc = 0.196 %). La ecuación `\boxed{βc=−AURA}`
+   de P7 lo presenta como exacto — no lo es. El origen del 0.2 % se atribuye
+   a la aproximación de shooting, pero el árbitro halló que el plateau test
+   muestra que NO viene de las condiciones iniciales. "Bariones+radiación lo
+   llevarían a −AURA dentro de 0.01 %" es una predicción no ejecutada.
+3. **✓** Dualidad Z₂: `KAL₀=(φ+3π)/2 ↔ AURA=(3φ+π)/2` bajo φ↔π es una
+   identidad algebraica exacta — el guardián la recomputa.
+4. **✗** Pero la dualidad **no genera** βc. Es una relación entre dos
+   constantes hechas con la misma plantilla, no una simetría de la acción EFT
+   (V₀e^{αφ}, K(X) no son φ↔π-invariantes). "βc queda determinado por KAL a
+   través de la dualidad" es un overclaim lógico: una coincidencia notacional
+   no es una derivación.
+
+**Veredicto:** el resultado numérico βc≈−3.990 es sólido; `βc=−AURA` es una
+coincidencia numérica al 0.2 %, no una derivación; la dualidad Z₂ es álgebra
+real pero descriptiva, no generativa. **ABIERTO.**
+
+## Pendientes de Capa 3
+
+OP-1 (Ω_b h², factor 200), OP-3 (separabilidad UV-IR), OP-4 (k-mouflage —
+fórmula rota confirmada), OP-5 (S₈ no lineal), OP-6 (screening multiplicativo);
+α=φ⁴/3; la acción EFT; las perturbaciones Israel-Stewart; el modelo de dos
+sectores φ-DM; m_φ; la completación UV K(X); el bug dos-Ω_m.
+
+**Estado Capa 3:** OP-2 y OP-7 re-verificados → ambos **PARCIAL** (las cadenas
+algebraicas cierran; los insumos físicos N_*=2φ⁷ y βc=−AURA son conjetura y
+coincidencia). Patrón confirmado: lo marcado "RESUELTO" no estaba resuelto.
 
 # Capa 4 — Confrontaciones con datos — *pendiente*
 

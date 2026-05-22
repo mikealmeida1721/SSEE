@@ -148,6 +148,30 @@ track_open("V-L2-10 m_phi dimensional",
            "Sigma_m_nu * H0 = [eV]*[km/s/Mpc] no es [eV] (numerología, P6)")
 
 # ─────────────────────────────────────────────────────────────────────
+# CAPA 3 — Mecanismos y derivaciones
+# ─────────────────────────────────────────────────────────────────────
+print("\nCapa 3 — mecanismos y derivaciones")
+
+# OP-2 — n_s = 1 - phi^-7 (índice espectral). La cadena algebraica cierra
+# exacto; el insumo físico N_* = 2phi^7 es conjetura (ABIERTO).
+N_star = 2 * phi ** 7
+check("V-L3-OP2  identidad n_s: 1-2/(2phi^7) = 1-phi^-7",
+      abs((1 - 2 / N_star) - (1 - phi ** -7)) < 1e-12)
+check("V-L3-OP2  identidad r: 12(phi^4/3)/(2phi^7)^2 = phi^-10",
+      abs(12 * (phi ** 4 / 3) / N_star ** 2 - phi ** -10) < 1e-12)
+track_open("V-L3-OP2  N_* = 2phi^7",
+           "Conjecture B.1 no derivada; falta el puente de reheating gravitacional")
+
+# OP-7 — beta_c = -AURA (acoplamiento EFT). La dualidad Z2 es álgebra exacta;
+# la identificacion beta_c=-AURA es coincidencia numerica al 0.2% (ABIERTO).
+check("V-L3-OP7  dualidad Z2: KAL0(phi<->pi) = AURA",
+      abs((pi + 3 * phi) / 2 - AURA) < 1e-12)
+bc_num = -3.990  # extraído numéricamente en P7 §6 (shooting)
+track_open("V-L3-OP7  beta_c = -AURA",
+           f"numerico {bc_num} vs -AURA {-AURA:.4f}: "
+           f"brecha {abs(bc_num + AURA) / AURA * 100:.2f}%, identificacion no derivada")
+
+# ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
 # Cuando un paper se sella, se registra aquí su sha256. El harness lo
 # recalcula: si el archivo cambió tras sellarse, el sello se rompe.

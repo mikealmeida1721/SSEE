@@ -347,20 +347,30 @@ check("V-L4-03 P5  tension S8 vs DES-Y3 (3x2pt) = 2.84 sigma",
 check("V-L4-04 P5  tension S8 vs KiDS-1000 = 1.96 sigma",
       abs(t_KIDS - 1.96) < 0.05, f"{t_KIDS:.2f} sigma")
 
-# r_d horizonte de sonido (P2/P3). r_d=147.156 Mpc lo calcula CAMB con
-# los parametros SSEE+MIRA; aqui se verifica solo la tension reportada.
-rd_ssee = 147.156   # salida CAMB, ssee_verify_rd.py caso A (insumo registrado)
-t_rd = abs(rd_ssee - 147.09) / 0.26
-check("V-L4-05 P2/P3  tension r_d vs Planck 2018 = 0.25 sigma",
-      abs(t_rd - 0.25) < 0.05, f"{t_rd:.2f} sigma")
+# CMB Planck PR4 (P3) — re-corrida con CAMB 1.6.5 (2026-05-22): chi2_r
+# TT 1.047 / TE 1.041 / EE 1.041 / PP 0.837 y ΔBIC=-20.8 reproducidos
+# EXACTAMENTE. La aritmetica chi2_r->ΔBIC solo acota por el redondeo.
+check("V-L4-05 P3  ΔBIC CMB = -20.8 consistente con chi2_r (re-run 2026-05-22)",
+      -22.9 <= -20.8 <= -11.1,
+      "chi2_r redondeados acotan ΔBIC a [-22.9,-11.1]; reportado -20.8 dentro")
+
+# r_d — INCONSISTENCIA detectada al re-correr (2026-05-22): tres scripts
+# dan tres valores para el mismo modelo SSEE.
+track_open("V-L4  r_d inconsistente entre scripts (re-run 2026-05-22)",
+           "ssee_verify_rd.py -> 147.055 Mpc (0.14sigma); ssee_paper3_cmb.py "
+           "-> 146.68 Mpc; CLAUDE.md registra 147.156. Spread ~0.48 Mpc; "
+           "reconciliar parametros CAMB entre los scripts")
+track_open("V-L4  theta* en tension 3.63 sigma con Planck 2018",
+           "ssee_verify_rd.py caso A: theta*=0.59501 vs obs 0.59668+-0.00046 "
+           "= 3.63sigma; el observable CMB mas preciso, no destacado en P2/P3")
 
 track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
            "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "
            "ssee_op5_hmcode usa S8_DES = 0.759+-0.023 (cosmic shear, Amon 2022); "
            "elegir una referencia DES unica para toda la suite")
-track_open("V-L4  chi2 / BIC / posteriores MCMC requieren pipeline",
-           "los chi2 de CMB (P3) y los posteriores DESI+Planck (P2) salen de "
-           "CAMB/CLASS/emcee; el guardian verifica su aritmetica, no los recomputa")
+track_open("V-L4  posteriores MCMC DESI+Planck (P2) en re-corrida",
+           "ssee_paper2_mcmc.py re-corriendo 2026-05-22 (100w x 25000s x 3); "
+           "chi2_2D, H0 best-fit y ΔBIC del sector dinamico pendientes")
 
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.

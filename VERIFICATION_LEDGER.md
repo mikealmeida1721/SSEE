@@ -501,20 +501,53 @@ la Ω_m correcta. **Verificado.**
 distintos, pero la suite debería fijar **una** referencia para que las
 tensiones reportadas sean comparables entre papers. Un árbitro lo marcaría.
 
-## V-L4-rd — horizonte de sonido r_d (Papers 2–3) — **verificado (aritmética)**
+## V-L4-CMB — espectro CMB Planck PR4 (Paper 3) — **verificado (re-run CAMB 2026-05-22)**
 
-r_d = 147.156 Mpc lo calcula CAMB (`ssee_verify_rd.py` caso A) con los
-parámetros SSEE+MIRA (Ω_m,cosm=0.32, Ω_b h²=0.02237). La tensión vs
-Planck 2018 (r_d=147.09±0.26 Mpc) es |147.156−147.09|/0.26 = **0.25σ** —
-coincide con CLAUDE.md. El *valor* 147.156 es salida de CAMB (insumo
-registrado); la *tensión* se recomputa y cierra.
+Re-corrido `ssee_paper3_cmb.py` con CAMB 1.6.5. Reproduce **exactamente**
+lo reportado en CLAUDE.md:
+
+| Espectro | SSEE χ²_r | ΛCDM χ²_r | N |
+|---|---|---|---|
+| TT | 1.047 | 1.043 | 1971 |
+| TE | 1.041 | 1.040 | 1967 |
+| EE | 1.041 | 1.039 | 1967 |
+| PP | 0.837 | 0.757 | 9 |
+| **ΔBIC(SSEE−ΛCDM)** | **−20.8** | — | N=5914 |
+
+Picos TT en ℓ = 220, 536, 812 — también reproducidos. La aritmética
+χ²_r→ΔBIC solo acota a [−22.9, −11.1] por el redondeo de χ²_r a 3
+decimales; el −20.8 del pipeline cae dentro. **El test de datos central
+de Paper 3 es reproducible. Verificado.**
+
+## V-L4-rd — horizonte de sonido r_d — **ABIERTO (3 valores incompatibles)**
+
+El re-run del 2026-05-22 destapó una inconsistencia: **tres scripts dan
+tres r_d distintos** para el mismo modelo SSEE+MIRA:
+
+| Script | r_d | tensión Planck (147.09±0.26) |
+|---|---|---|
+| `ssee_verify_rd.py` (caso A) | 147.055 Mpc | 0.14σ |
+| `ssee_paper3_cmb.py` | 146.68 Mpc | ~1.6σ |
+| CLAUDE.md (registrado) | 147.156 Mpc | 0.25σ |
+
+Spread ~0.48 Mpc — los scripts usan parámetros CAMB ligeramente distintos
+(Ω_b h², z_drag, settings). El valor registrado 147.156 está **obsoleto**.
+Hay que reconciliar y fijar un r_d canónico.
+
+## V-L4-θ* — escala acústica angular θ* — **ABIERTO (tensión 3.63σ)**
+
+`ssee_verify_rd.py` caso A reporta **θ* = 0.59501°** vs Planck 2018
+**0.59668±0.00046°** → **tensión 3.63σ** (caso B: 3.84σ). θ* es el
+observable CMB *más preciso* (~0.08%), y SSEE+MIRA está a 3.6σ de él
+aunque r_d encaje. Esto **no está destacado** en Papers 2–3 — un árbitro
+lo marcaría como problema de primer orden. Requiere investigación: θ*=
+r_d/D_A(z*), así que el problema está en D_A (expansión tardía: H₀, w₀wₐ).
 
 ## Pendientes de Capa 4
 
-χ²_r de CMB TT/TE/EE/PP (Paper 3), ΔBIC −20.8/−31.3 (Paper 3), χ²₂D y
-posteriores MCMC DESI+Planck (Paper 2), fσ₈ y su reducción de tensión
-(Papers 5–6). Estos requieren re-correr CAMB/CLASS/emcee; su aritmética
-se verifica, su recómputo es dependencia externa.
+Posteriores MCMC DESI+Planck (Paper 2 — χ²₂D, H₀ best-fit, ΔBIC sector
+dinámico): `ssee_paper2_mcmc.py` re-corriendo. fσ₈ y su reducción de
+tensión (Papers 5–6).
 
 # Capa 5 — Sellado de papers — *pendiente*
 

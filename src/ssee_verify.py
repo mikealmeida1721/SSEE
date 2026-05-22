@@ -354,15 +354,17 @@ check("V-L4-05 P3  ΔBIC CMB = -20.8 consistente con chi2_r (re-run 2026-05-22)"
       -22.9 <= -20.8 <= -11.1,
       "chi2_r redondeados acotan ΔBIC a [-22.9,-11.1]; reportado -20.8 dentro")
 
-# r_d — INCONSISTENCIA detectada al re-correr (2026-05-22): tres scripts
-# dan tres valores para el mismo modelo SSEE.
-track_open("V-L4  r_d inconsistente entre scripts (re-run 2026-05-22)",
-           "ssee_verify_rd.py -> 147.055 Mpc (0.14sigma); ssee_paper3_cmb.py "
-           "-> 146.68 Mpc; CLAUDE.md registra 147.156. Spread ~0.48 Mpc; "
-           "reconciliar parametros CAMB entre los scripts")
-track_open("V-L4  theta* en tension 3.63 sigma con Planck 2018",
-           "ssee_verify_rd.py caso A: theta*=0.59501 vs obs 0.59668+-0.00046 "
-           "= 3.63sigma; el observable CMB mas preciso, no destacado en P2/P3")
+# r_d / theta* — TENSION ENMASCARADA, destapada al propagar el H0 canonico.
+# Con el H0 obsoleto 66.75: r_d=147.055 (0.14sigma). Con el canonico
+# 67.756: r_d=145.93 (4.47sigma). r_d depende de h via omch2=Om*h^2-omb.
+track_open("V-L4  r_d en tension 4.47 sigma con H0 canonico",
+           "ssee_verify_rd.py con H0=67.756 da r_d=145.93 Mpc = 4.47sigma vs "
+           "Planck 147.09+-0.26. El '0.25sigma OK' previo dependia del H0 "
+           "obsoleto 66.75 — la tension estaba ENMASCARADA por un valor stale")
+track_open("V-L4  theta* en tension 5.62 sigma con H0 canonico",
+           "ssee_verify_rd.py con H0=67.756: theta*=0.59927 vs 0.59668+-0.00046 "
+           "= 5.62sigma (era 3.63sigma con el H0 obsoleto). El observable CMB "
+           "mas preciso esta a >5sigma — tension fisica real, no bookkeeping")
 
 track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
            "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "

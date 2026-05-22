@@ -25,8 +25,9 @@ from ssee_core import (
     H0_ALG as H0_ssee, N_S as ns_ssee, OMEGA_B_H2 as Ombh2_IS,
 )
 
-# Valores NO algebraicos — no pertenecen a ssee_core:
-H0_run    = 66.75     # H0 best-fit MCMC Paper 2 (posterior, ±0.44)
+# Valores NO algebraicos — no pertenecen a ssee_core.
+# CANÓNICO: ver VERIFICATION_LEDGER.md §"Valores Canónicos" tabla B.
+H0_run    = 67.756    # H0 MCMC best-fit Paper 2 — re-run 2026-05-22 (seed 42)
 Ombh2_std = 0.02237   # Ωb h² prior Planck 2018 (Planck Collaboration 2020, A&A 641 A6)
 
 # Ωb h² IS = (π−φ)/[3(φ+π)²] = OMEGA_B_H2 (Paper 4 §3.2, OP-1) = 0.02242

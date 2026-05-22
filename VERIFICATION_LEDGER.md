@@ -113,10 +113,10 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | ΔBIC MCMC (ΛCDM−SSEE) | +7.91 (SSEE favorecido) | `ssee_paper2_mcmc.py` | 2026-05-22 |
 | Ω_b h² (posterior MCMC) | 0.02183 ± 0.00048 | `ssee_paper2_mcmc.py` | 2026-05-22 |
 | r_d,SSEE (crudo) | 175.16 Mpc | `ssee_paper2_mcmc.py` | 2026-05-22 |
-| r_d,eff (CAMB) | ⚠ **sin reconciliar** (146.68 / 147.055) | — | pendiente |
+| r_d,eff (CAMB, H₀ canónico) | 145.93 Mpc — **tensión 4.47σ** | `ssee_verify_rd.py` | 2026-05-22 |
 | χ²_r CMB TT (SSEE) | 1.047 | `ssee_paper3_cmb.py` | 2026-05-22 |
 | ΔBIC CMB (SSEE−ΛCDM) | −20.8 (SSEE favorecido) | `ssee_paper3_cmb.py` | 2026-05-22 |
-| θ* (SSEE) | 0.59501° (**tensión 3.63σ** — ABIERTO) | `ssee_verify_rd.py` | 2026-05-22 |
+| θ* (SSEE, H₀ canónico) | 0.59927° — **tensión 5.62σ** | `ssee_verify_rd.py` | 2026-05-22 |
 | σ₈ / S₈ SSEE (Paper 5) | 0.702 / 0.725 | `ssee_paper5_IS_perturbations.py` | (sin re-correr) |
 | σ₈_eff / S₈_eff (Paper 6 titular) | 0.794 / 0.820 | `ssee_paper6_verification.py` | (sin re-correr) |
 
@@ -587,29 +587,39 @@ Picos TT en ℓ = 220, 536, 812 — también reproducidos. La aritmética
 decimales; el −20.8 del pipeline cae dentro. **El test de datos central
 de Paper 3 es reproducible. Verificado.**
 
-## V-L4-rd — horizonte de sonido r_d — **ABIERTO (3 valores incompatibles)**
+## V-L4-rd — horizonte de sonido r_d — **ABIERTO (tensión 4.47σ enmascarada)**
 
-El re-run del 2026-05-22 destapó una inconsistencia: **tres scripts dan
-tres r_d distintos** para el mismo modelo SSEE+MIRA:
+⚠ **Hallazgo crítico de la campaña.** El "r_d = 0.25σ ✅" titular de
+Papers 2–3 dependía de un H₀ **obsoleto**. Al propagar el H₀ canónico
+(67.756, re-run MCMC 2026-05-22) a `ssee_verify_rd.py`:
 
-| Script | r_d | tensión Planck (147.09±0.26) |
+| H₀ usado | r_d resultante | tensión Planck (147.09±0.26) |
 |---|---|---|
-| `ssee_verify_rd.py` (caso A) | 147.055 Mpc | 0.14σ |
-| `ssee_paper3_cmb.py` | 146.68 Mpc | ~1.6σ |
-| CLAUDE.md (registrado) | 147.156 Mpc | 0.25σ |
+| 66.75 (obsoleto) | 147.055 Mpc | 0.14σ — *valor que se reportaba* |
+| **67.756 (canónico)** | **145.93 Mpc** | **4.47σ** |
 
-Spread ~0.48 Mpc — los scripts usan parámetros CAMB ligeramente distintos
-(Ω_b h², z_drag, settings). El valor registrado 147.156 está **obsoleto**.
-Hay que reconciliar y fijar un r_d canónico.
+**Mecanismo:** la parametrización SSEE fija Ω_m,cosm=0.31993 (fracción) y
+deriva ω_c = Ω_m,cosm·h² − ω_b. Al subir H₀, sube h², sube ω_c (+3.6%),
+la igualdad materia-radiación se adelanta y r_d **cae**. r_d es genuinamente
+sensible a H₀ en esta parametrización. Con el H₀ real del modelo, r_d está
+a 4.47σ de Planck. La concordancia previa era un artefacto de un valor
+stale. **El "✅" de r_d queda retirado.**
 
-## V-L4-θ* — escala acústica angular θ* — **ABIERTO (tensión 3.63σ)**
+## V-L4-θ* — escala acústica angular θ* — **ABIERTO (tensión 5.62σ)**
 
-`ssee_verify_rd.py` caso A reporta **θ* = 0.59501°** vs Planck 2018
-**0.59668±0.00046°** → **tensión 3.63σ** (caso B: 3.84σ). θ* es el
-observable CMB *más preciso* (~0.08%), y SSEE+MIRA está a 3.6σ de él
-aunque r_d encaje. Esto **no está destacado** en Papers 2–3 — un árbitro
-lo marcaría como problema de primer orden. Requiere investigación: θ*=
-r_d/D_A(z*), así que el problema está en D_A (expansión tardía: H₀, w₀wₐ).
+Mismo re-run, mismo efecto. Con el H₀ canónico (67.756), `ssee_verify_rd.py`
+da **θ* = 0.59927°** vs Planck 2018 **0.59668±0.00046°** → **tensión
+5.62σ** (con el H₀ obsoleto era 3.63σ — ya alta, ahora >5σ). θ* es el
+observable CMB *más preciso* (~0.08%). Una tensión >5σ en θ* es, para un
+árbitro, **potencialmente falsadora** y exige resolución, no nota al pie.
+θ* = r_d/D_A(z*): el problema combina r_d (4.47σ, arriba) y D_A.
+
+**Lectura honesta de V-L4-rd + V-L4-θ*:** la campaña de verificación
+hizo exactamente lo que se diseñó — un valor stale (H₀=66.75) estaba
+**enmascarando** dos tensiones serias. Ahora visibles. Esto NO falsa el
+modelo por sí solo (la parametrización Ω_m,cosm vs ω_m podría revisarse),
+pero es la brecha más grave hallada y debe encararse antes de cualquier
+sellado o envío.
 
 ## V-L4-MCMC — MCMC DESI+Planck (Paper 2) — **re-run 2026-05-22; H₀ derivó**
 
@@ -650,15 +660,21 @@ Re-corridos los tres pipelines (CAMB r_d, CAMB CMB, emcee MCMC) el
 | Veredicto | Elemento |
 |---|---|
 | **verificado / reproducido** | S₈ (P5), χ²+ΔBIC del CMB (P3), BIC+ΔBIC del MCMC (P2) |
-| **ABIERTO — deriva de valor** | r_d (3 valores), H₀ MCMC (66.75→67.76) |
-| **ABIERTO — tensión física** | θ* 3.63σ, Ω_b h² −1.2σ vs OP-1 |
+| **ABIERTO — tensión grave (enmascarada)** | r_d 4.47σ, θ* 5.62σ — al usar el H₀ canónico |
+| **ABIERTO — deriva de valor (resuelta)** | H₀ MCMC 66.75→67.76 — re-anclado a 67.756 |
+| **ABIERTO — tensión física** | Ω_b h² −1.2σ vs OP-1 |
 | **ABIERTO — inconsistencia de referencia** | DES-Y3 (0.776 vs 0.759) |
 
-**Lo que reprodujo es sólido**: el ajuste al CMB y la preferencia
-estadística por SSEE (ΔBIC negativo en P2 y P3) se sostienen al
-re-correr. **Lo que derivó** (r_d, H₀) son valores de pipeline que nunca
-se re-anclaron tras cambios de script — el guardián ahora los rastrea.
-Pendiente menor: fσ₈ (Papers 5–6) — requiere el ODE de crecimiento.
+**Lo que reprodujo es sólido**: el ajuste al CMB (χ²_r) y la preferencia
+estadística por SSEE (ΔBIC negativo en P2 y P3) se sostienen al re-correr.
+
+**Lo que la campaña destapó** — y es lo más importante de toda Capa 4: el
+valor stale H₀=66.75 estaba **enmascarando** una tensión de 4.47σ en r_d
+y 5.62σ en θ*. Al re-anclar H₀ al canónico 67.756 y propagarlo, las
+tensiones aparecieron. El "r_d ✅ 0.25σ" era un artefacto. **Esta es la
+brecha más grave del modelo y bloquea el sellado de Papers 2, 3 y 9**
+hasta que se encare (revisar la parametrización Ω_m,cosm, o aceptar la
+tensión y reportarla). Pendiente menor: fσ₈ (Papers 5–6).
 
 # Capa 5 — Sellado de papers — *pendiente*
 

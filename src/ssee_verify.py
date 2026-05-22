@@ -318,6 +318,44 @@ track_open("V-L3-2Om  uso correcto de cada Om_m no auditado por paper",
            "Verificar que cada paper usa la correcta es tarea de Capa 5")
 
 # ─────────────────────────────────────────────────────────────────────
+# CAPA 4 — Confrontaciones con datos
+# Verifica la ARITMETICA que conecta cantidades reportadas (tensiones,
+# S8, chi2_r). Los chi2 de CMB y los posteriores MCMC en si requieren
+# re-correr CAMB/CLASS/emcee — se marcan como dependencia externa.
+# ─────────────────────────────────────────────────────────────────────
+print("\nCapa 4 — confrontaciones con datos")
+
+# S8 weak-lensing (P5). Cadena: sigma8_SSEE = sigma8_LCDM * G;
+# S8 = sigma8 * sqrt(Om_m,cosm/0.3). G = D1_SSEE/D1_LCDM (resultado ODE P5).
+sig8_LCDM = 0.811        # Planck 2018
+G_growth = 0.866         # D1_SSEE/D1_LCDM, resultado ODE Paper 5
+sig8_SSEE = sig8_LCDM * G_growth
+Om_cosm = MIRA * Om_m_dyn
+S8_P5 = sig8_SSEE * (Om_cosm / 0.3) ** 0.5
+check("V-L4-01 P5  sigma8_SSEE = sigma8_LCDM * G = 0.702",
+      abs(sig8_SSEE - 0.7023) < 1e-3, f"sigma8 = {sig8_SSEE:.4f}")
+check("V-L4-02 P5  S8_SSEE = sigma8 sqrt(Om_cosm/0.3) = 0.725",
+      abs(S8_P5 - 0.7253) < 1e-3, f"S8 = {S8_P5:.4f}")
+
+# Tensiones S8 (P5) — error en cuadratura modelo + observacional.
+sig8_SSEE_err = 0.006 * G_growth
+S8_P5_err = sig8_SSEE_err * (Om_cosm / 0.3) ** 0.5
+t_DES = abs(S8_P5 - 0.776) / (S8_P5_err ** 2 + 0.017 ** 2) ** 0.5
+t_KIDS = abs(S8_P5 - 0.766) / (S8_P5_err ** 2 + 0.020 ** 2) ** 0.5
+check("V-L4-03 P5  tension S8 vs DES-Y3 (3x2pt) = 2.84 sigma",
+      abs(t_DES - 2.84) < 0.05, f"{t_DES:.2f} sigma")
+check("V-L4-04 P5  tension S8 vs KiDS-1000 = 1.96 sigma",
+      abs(t_KIDS - 1.96) < 0.05, f"{t_KIDS:.2f} sigma")
+
+track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
+           "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "
+           "ssee_op5_hmcode usa S8_DES = 0.759+-0.023 (cosmic shear, Amon 2022); "
+           "elegir una referencia DES unica para toda la suite")
+track_open("V-L4  chi2 / BIC / posteriores MCMC requieren pipeline",
+           "los chi2 de CMB (P3) y los posteriores DESI+Planck (P2) salen de "
+           "CAMB/CLASS/emcee; el guardian verifica su aritmetica, no los recomputa")
+
+# ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
 # Cuando un paper se sella, se registra aquí su sha256. El harness lo
 # recalcula: si el archivo cambió tras sellarse, el sello se rompe.

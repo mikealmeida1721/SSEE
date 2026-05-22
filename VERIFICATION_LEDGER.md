@@ -53,7 +53,7 @@ paper vuelve a verificación.
 | **L1** | Axiomas y constantes algebraicas | re-verificado ✓ |
 | **L2** | Parámetros cosmológicos derivados | re-verificado ✓ |
 | **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | re-verificado ✓ (14 elementos; 2 verif., 6 PARCIAL, 6 ABIERTO) |
-| **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | pendiente |
+| **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | en progreso (S₈ ✓; falta χ²/ΔBIC/MCMC) |
 | **L5** | Papers (sellado) | pendiente |
 
 Regla: un elemento de una capa no pasa de `verificado` si sus insumos de capas
@@ -474,9 +474,39 @@ Patrón confirmado en 14/14: ninguna "✅ RESUELTO" de CLAUDE.md lo estaba
 sin reservas. **Ninguno es regresión** — todos son brechas preexistentes,
 ahora rastreadas por el guardián (67 comprobaciones, 15 ABIERTO).
 
-# Capa 4 — Confrontaciones con datos — *pendiente*
+# Capa 4 — Confrontaciones con datos — *en progreso*
 
-MCMC DESI+Planck, espectros CMB, ΔBIC, fσ₈, S₈, tensión de Hubble.
+Aquí se verifica la **aritmética** que conecta cantidades reportadas:
+tensiones (model−obs)/σ, S₈=σ₈√(Ω_m/0.3), χ²_r=χ²/N, ΔBIC. Los χ² de CMB
+y los posteriores MCMC en sí salen de CAMB/CLASS/emcee — el guardián
+verifica que los números encajen entre ellos, no re-corre los pipelines.
+
+## V-L4-S8 — cadena S₈ weak-lensing (Paper 5) — **verificado (aritmética)**
+
+1. **✓** σ₈_SSEE = σ₈_LCDM·G = 0.811·0.866 = 0.7023. G=0.866 es el
+   resultado del ODE de crecimiento de Paper 5 (insumo registrado).
+2. **✓** S₈_SSEE = σ₈_SSEE·√(Ω_m,cosm/0.3) = 0.7023·1.03268 = 0.7253.
+   Usa **Ω_m,cosm=0.31993** (correcto — S₈ es amplitud gravitacional).
+3. **✓** Tensiones con error en cuadratura modelo+obs: vs DES-Y3 = 2.85σ,
+   vs KiDS-1000 = 1.97σ. Coincide con CLAUDE.md (2.84σ / 1.96σ).
+
+**Veredicto:** la cadena S₈ de Paper 5 es aritméticamente correcta y usa
+la Ω_m correcta. **Verificado.**
+
+## V-L4-DES — referencia DES-Y3 inconsistente entre scripts — **ABIERTO**
+
+`ssee_paper5_IS_perturbations.py` usa **S₈_DES = 0.776±0.017** (DES-Y3
+3×2pt, Abbott et al. 2022). `ssee_op5_hmcode.py` usa **S₈_DES = 0.759±0.023**
+(DES-Y3 cosmic shear, Amon et al. 2022). Son dos análisis DES-Y3 reales y
+distintos, pero la suite debería fijar **una** referencia para que las
+tensiones reportadas sean comparables entre papers. Un árbitro lo marcaría.
+
+## Pendientes de Capa 4
+
+χ²_r de CMB TT/TE/EE/PP (Paper 3), ΔBIC −20.8/−31.3 (Paper 3), χ²₂D y
+posteriores MCMC DESI+Planck (Paper 2), fσ₈ y su reducción de tensión
+(Papers 5–6), r_d=147.16 Mpc. Estos requieren re-correr CAMB/CLASS/emcee;
+su aritmética se verifica, su recómputo es dependencia externa.
 
 # Capa 5 — Sellado de papers — *pendiente*
 

@@ -351,17 +351,52 @@ dos valores internamente inconsistentes. El titular sigue a ~2.6σ. **ABIERTO.**
 álgebra exacta *condicionada* a δ_local=2 y a una expresión δρ_φ asertada.
 No es "RESUELTO" pleno. **PARCIAL.**
 
+## V-L3-mphi — masa del campo φ-DM, m_φ = 5.60 eV — **ABIERTO (numerología + dimensión)**
+
+*Claim CLAUDE.md:* "m_φ = Σm_ν^active × H₀^alg = 5.60 eV — cero parámetros libres".
+
+1. **✓ numérico:** la cadena cierra — R=4·KAL₀−22=0.085624, Σm_ν^active =
+   R·Ω_b h²·94.07/τ_Π = 0.082407 eV, m_φ = Σm_ν^active·H₀^alg = 5.6005 eV.
+2. **✗ R = 4·KAL₀−22:** se resta el **entero pelado 22** a 4·KAL₀=22.0856
+   para extraer el remanente 0.0856. No hay derivación de por qué 4, ni de
+   por qué 22. Es ingeniería inversa de un número pequeño.
+3. **✗ dimensional:** m_φ = [eV]·H₀^alg. H₀^alg=3Ω²=67.96 se usa como
+   número adimensional (si fuese km/s/Mpc, m_φ no sería [eV] — V-L2-10).
+   Multiplicar una energía por 67.96 sin mecanismo físico no da una masa.
+4. **✗ insumo heredado:** Ω_b h² es la coincidencia escaneada de OP-1
+   (**ABIERTO**). m_φ se construye encima de un input no derivado.
+
+**Veredicto:** la cadena aritmética cierra a 5.60 eV, pero descansa en una
+resta de entero pelado, un producto dimensionalmente injustificado y el
+input abierto OP-1. **ABIERTO.**
+
+## V-L3-2sec — modelo dos sectores φ-DM — **PARCIAL (identidad sí, split físico no)**
+
+*Claim CLAUDE.md:* "Ω_total (dos sectores) = 0.319928 ≈ Ω_m,CMB — unificación algebraica".
+
+1. **✓ identidad:** Ω_CDM + Ω_φDM = Ω_m,dyn + (MIRA−1)·Ω_m,dyn =
+   MIRA·Ω_m,dyn = 0.319928. Diferencia con V-L2-05 = 0 exacto. Es una
+   **re-partición algebraica** de Ω_m,cosm en dos mitades casi iguales.
+2. **✗ split físico:** que un sector (φ-DM) free-streame para k>k_fs y el
+   otro (CDM) no, depende de m_φ (**ABIERTO**, ver arriba) y de k_fs
+   (**pendiente** en Capa 2). El mecanismo Dodelson-Widrow que fija k_fs
+   parte de m_φ.
+
+**Veredicto:** la suma Ω_total es un re-enunciado exacto de V-L2-05; el
+modelo físico de dos sectores hereda la apertura de m_φ y k_fs. **PARCIAL.**
+
 ## Pendientes de Capa 3
 
-La acción EFT; las perturbaciones Israel-Stewart; el modelo de dos sectores
-φ-DM; m_φ; la completación UV K(X); el bug dos-Ω_m.
+La acción EFT (Paper 7); las perturbaciones Israel-Stewart; la completación
+UV K(X) (Paper 10); el bug dos-Ω_m (uso de Ω_m,dyn vs Ω_m,cosm en E(z),
+Poisson y CMB).
 
-**Estado Capa 3:** re-verificados OP-1..OP-7 y α=φ⁴/3 (8 elementos).
-Resultado: α=φ⁴/3 **verificado** (consecuencia exacta de los axiomas n_s, r);
-OP-2, OP-6, OP-7 **PARCIAL** (álgebra/forma cierra, insumo físico no);
-OP-1, OP-3, OP-4, OP-5 **ABIERTO**. 1 bug aritmético corregido de paso
-(curvatura de Kähler, P1). Patrón confirmado en 8/8: ninguna "✅ RESUELTO"
-de CLAUDE.md lo estaba sin reservas.
+**Estado Capa 3:** re-verificados OP-1..OP-7, α=φ⁴/3, m_φ y dos sectores
+(10 elementos). Resultado: α=φ⁴/3 **verificado**; OP-2, OP-6, OP-7, dos
+sectores **PARCIAL** (álgebra/forma cierra, insumo físico no); OP-1, OP-3,
+OP-4, OP-5, m_φ **ABIERTO**. 1 bug aritmético corregido de paso (curvatura
+de Kähler, P1). Patrón confirmado en 10/10: ninguna "✅ RESUELTO" de
+CLAUDE.md lo estaba sin reservas.
 
 # Capa 4 — Confrontaciones con datos — *pendiente*
 

@@ -240,6 +240,32 @@ track_open("V-L3-OP6  forma multiplicativa: insumo delta_local = 2 no derivado",
            "f_screen requiere delta_local=2 (sobredensidad Grupo Local) y una "
            "expresion delta_rho_phi asertada, no derivada de phi,pi")
 
+# m_phi — masa del campo phi-DM (P6). La cadena cierra a 5.60 eV, pero el
+# insumo R = 4*KAL0 - 22 es una resta de entero pelado (numerologia) y el
+# producto Sigma_m_nu * H0_alg multiplica energia por un numero adimensional
+# sin mecanismo fisico; ademas hereda OP-1 (ABIERTO).
+R_p6 = 4 * KAL0 - 22
+Ob_h2_p6 = (pi - phi) / (3 * Omega ** 2)
+tau_Pi = KAL0 / (3 * Om_DE)
+mnu_active = R_p6 * Ob_h2_p6 * 94.07 / tau_Pi
+m_phi = mnu_active * (3 * Omega ** 2)
+check("V-L3-mphi  cadena m_phi = Sigma_m_nu * H0^alg = 5.60 eV",
+      abs(m_phi - 5.60) < 2e-2, f"m_phi = {m_phi:.4f} eV")
+track_open("V-L3-mphi  m_phi no derivado",
+           "R = 4*KAL0-22 resta un entero pelado para extraer 0.0856 "
+           "(numerologia); m_phi = [eV] * 67.96 adimensional sin mecanismo; "
+           "hereda OP-1 (Omega_b h^2 no derivado)")
+
+# Dos sectores phi-DM (P6) — Om_CDM + Om_phiDM = MIRA * Om_m,dyn es una
+# identidad algebraica exacta (re-particion de Om_m,cosm). El modelo fisico
+# del split en k_fs depende de m_phi (ABIERTO) y k_fs (pendiente).
+Om_phiDM = (MIRA - 1) * Om_m_dyn
+check("V-L3-2sec  identidad Om_CDM + Om_phiDM = MIRA * Om_m,dyn",
+      abs((Om_m_dyn + Om_phiDM) - MIRA * Om_m_dyn) < 1e-12)
+track_open("V-L3-2sec  split fisico de dos sectores no cerrado",
+           "la suma es identidad algebraica (= V-L2-05); la separacion fisica "
+           "en k_fs depende de m_phi (ABIERTO) y k_fs (V-L2 pendiente)")
+
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
 # Cuando un paper se sella, se registra aquí su sha256. El harness lo

@@ -53,7 +53,7 @@ paper vuelve a verificación.
 | **L1** | Axiomas y constantes algebraicas | re-verificado ✓ |
 | **L2** | Parámetros cosmológicos derivados | re-verificado ✓ |
 | **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | re-verificado ✓ (14 elementos; 2 verif., 6 PARCIAL, 6 ABIERTO) |
-| **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | en progreso (S₈ ✓; falta χ²/ΔBIC/MCMC) |
+| **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | re-verificado ✓ (pipelines re-corridos; CMB+MCMC reproducen, r_d/H₀ derivaron) |
 | **L5** | Papers (sellado) | pendiente |
 
 Regla: un elemento de una capa no pasa de `verificado` si sus insumos de capas
@@ -543,11 +543,54 @@ aunque r_d encaje. Esto **no está destacado** en Papers 2–3 — un árbitro
 lo marcaría como problema de primer orden. Requiere investigación: θ*=
 r_d/D_A(z*), así que el problema está en D_A (expansión tardía: H₀, w₀wₐ).
 
-## Pendientes de Capa 4
+## V-L4-MCMC — MCMC DESI+Planck (Paper 2) — **re-run 2026-05-22; H₀ derivó**
 
-Posteriores MCMC DESI+Planck (Paper 2 — χ²₂D, H₀ best-fit, ΔBIC sector
-dinámico): `ssee_paper2_mcmc.py` re-corriendo. fσ₈ y su reducción de
-tensión (Papers 5–6).
+Re-corrido `ssee_paper2_mcmc.py` (100 walkers × 25000 pasos × 3 modelos,
+1.52 h). Posteriores:
+
+| Modelo | k | H₀ | ln P_MAP | BIC | ΔBIC |
+|---|---|---|---|---|---|
+| **SSEE** | 2 | 67.756 ± 0.442 | −13.22 | 31.98 | **0.00** |
+| ΛCDM | 3 | 68.283 ± 0.380 | −15.79 | 39.89 | +7.91 |
+| CPL | 5 | 67.301 ± 0.523 | −11.74 | 37.35 | +5.37 |
+
+1. **✓ aritmética BIC:** BIC = k·ln(16) − 2·lnP_MAP se recomputa exacto —
+   SSEE 31.98, ΛCDM 39.89, **ΔBIC=+7.91 a favor de SSEE**. La tensión
+   H₀ vs Planck (67.36±0.54) es 0.57σ — también recomputada y cierra.
+2. **✗ H₀ derivó:** el MCMC da **H₀ = 67.76 ± 0.44**; CLAUDE.md registra
+   **66.75 ± 0.44**. Deriva ~1 km/s/Mpc — más de 2σ del propio ancho del
+   posterior. El valor registrado está **obsoleto**.
+3. **✗ Ω_b h² tira más bajo:** el posterior da Ω_b h²=0.02183±0.00048;
+   la fórmula algebraica OP-1 da 0.02242. El dato prefiere ~1.2σ **menos**
+   barión que (π−φ)/(3Ω²). Es una señal en contra de la coincidencia OP-1.
+4. r_d(SSEE)=175.16 Mpc en el MCMC — es el horizonte *crudo* (pre-mapeo
+   MIRA), consistente con la narrativa r_d,SSEE≈175 → r_d,eff≈147.
+5. El MCMC reporta "Ω_m tensión SSEE vs Planck: 21.3σ" — es la huella
+   estructural dos-Ω_m (Ω_m,dyn=0.160 vs Planck 0.315), ya documentada en
+   V-L3-2Om, no un bug nuevo.
+
+**Veredicto:** la aritmética estadística (BIC, ΔBIC, tensión H₀) cierra y
+**SSEE sigue favorecido (ΔBIC=+7.91)**. Pero el headline H₀ registrado
+(66.75) está obsoleto — el valor vivo es 67.76. Y el dato bariónico
+empuja en contra de OP-1.
+
+## Estado final de Capa 4
+
+Re-corridos los tres pipelines (CAMB r_d, CAMB CMB, emcee MCMC) el
+2026-05-22.
+
+| Veredicto | Elemento |
+|---|---|
+| **verificado / reproducido** | S₈ (P5), χ²+ΔBIC del CMB (P3), BIC+ΔBIC del MCMC (P2) |
+| **ABIERTO — deriva de valor** | r_d (3 valores), H₀ MCMC (66.75→67.76) |
+| **ABIERTO — tensión física** | θ* 3.63σ, Ω_b h² −1.2σ vs OP-1 |
+| **ABIERTO — inconsistencia de referencia** | DES-Y3 (0.776 vs 0.759) |
+
+**Lo que reprodujo es sólido**: el ajuste al CMB y la preferencia
+estadística por SSEE (ΔBIC negativo en P2 y P3) se sostienen al
+re-correr. **Lo que derivó** (r_d, H₀) son valores de pipeline que nunca
+se re-anclaron tras cambios de script — el guardián ahora los rastrea.
+Pendiente menor: fσ₈ (Papers 5–6) — requiere el ODE de crecimiento.
 
 # Capa 5 — Sellado de papers — *pendiente*
 

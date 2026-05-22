@@ -368,9 +368,29 @@ track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
            "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "
            "ssee_op5_hmcode usa S8_DES = 0.759+-0.023 (cosmic shear, Amon 2022); "
            "elegir una referencia DES unica para toda la suite")
-track_open("V-L4  posteriores MCMC DESI+Planck (P2) en re-corrida",
-           "ssee_paper2_mcmc.py re-corriendo 2026-05-22 (100w x 25000s x 3); "
-           "chi2_2D, H0 best-fit y ΔBIC del sector dinamico pendientes")
+
+# MCMC DESI+Planck (P2) — re-corrido 2026-05-22 (100w x 25000s x 3, 1.52h).
+# lnP_MAP: SSEE -13.22 (k=2), LCDM -15.79 (k=3). N_DATA = 16.
+# BIC = k*ln(N) - 2*lnP_MAP — esto SI se recomputa exacto.
+N_data_p2 = 16   # 13 BAO DESI DR2 + 3 constraints Planck
+bic_ssee = 2 * math.log(N_data_p2) - 2 * (-13.22)
+bic_lcdm = 3 * math.log(N_data_p2) - 2 * (-15.79)
+check("V-L4-06 P2  BIC SSEE = k ln(N) - 2 lnP = 31.98 (re-run MCMC)",
+      abs(bic_ssee - 31.98) < 0.05, f"BIC = {bic_ssee:.2f}")
+check("V-L4-07 P2  ΔBIC(LCDM-SSEE) = +7.91 (SSEE favorecido)",
+      abs((bic_lcdm - bic_ssee) - 7.91) < 0.05, f"ΔBIC = {bic_lcdm - bic_ssee:.2f}")
+H0_mcmc = 67.756
+t_H0 = abs(H0_mcmc - 67.36) / (0.442 ** 2 + 0.54 ** 2) ** 0.5
+check("V-L4-08 P2  tension H0 SSEE vs Planck = 0.57 sigma",
+      abs(t_H0 - 0.57) < 0.03, f"{t_H0:.2f} sigma")
+
+track_open("V-L4  H0 del MCMC derivo: 66.75 (registrado) -> 67.76 (re-run)",
+           "ssee_paper2_mcmc.py 2026-05-22 da H0=67.756+-0.442; CLAUDE.md "
+           "registra 66.75+-0.44. Deriva ~1 km/s/Mpc (>2sigma del posterior); "
+           "el valor registrado esta obsoleto")
+track_open("V-L4  Omega_b h^2: posterior MCMC < prediccion algebraica",
+           "MCMC da Om_b h^2 = 0.02183+-0.00048; OP-1 algebraico da 0.02242. "
+           "el dato prefiere ~1.2sigma menos barion que (pi-phi)/(3 Om^2)")
 
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.

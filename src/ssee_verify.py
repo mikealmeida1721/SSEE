@@ -290,6 +290,33 @@ track_open("V-L3-EFT  M^4 inconsistente entre P7 y P10",
            "ssee_eft_verification.py usa M^4 = rho_crit (=1); "
            "ssee_paper10_verification.py usa M^4 = 5 phi^8 rho_crit (=234.9)")
 
+# Israel-Stewart (P5) — c²_s,eff = 0. La corrección IS zeta/tau_Pi se reduce
+# a Om_DE porque el factor KAL0/3 se cancela (zeta = KAL0/3, tau_Pi =
+# KAL0/(3 Om_DE)). c²_s,eff = w0 + Om_DE = 0 es la identidad w0 = -Om_DE.
+zeta_tilde = KAL0 / 3.0
+tau_Pi_H0 = KAL0 / (3.0 * Om_DE)
+IS_corr = zeta_tilde / tau_Pi_H0
+check("V-L3-IS  identidad zeta/tau_Pi = Om_DE  (KAL0/3 se cancela)",
+      abs(IS_corr - Om_DE) < 1e-12, f"IS_corr = {IS_corr:.8f}")
+check("V-L3-IS  c2_s,eff = w0 + Om_DE = 0  (estabilidad marginal)",
+      abs(w0 + IS_corr) < 1e-12)
+track_open("V-L3-IS  c2_s,eff = 0 depende de tau_Pi no derivado en script",
+           "zeta/tau_Pi = Om_DE porque tau_Pi = zeta/Om_DE comparten KAL0/3; "
+           "el resultado se reduce a w0 = -Om_DE (V-L2). La derivacion de "
+           "tau_Pi (steady-state IS) esta asertada, no mostrada")
+
+# dos-Ω_m — regla de uso. Om_m,dyn = 0.160 fija w0 (1+w0 = Om_m,dyn) y NO
+# entra en E(z); Om_m,cosm = MIRA*Om_m,dyn = 0.320 es el fondo gravitacional
+# y SI entra en E(z)/Poisson/CMB. Aqui se verifica que son distintos y que
+# la relación es exacta; la auditoría de uso paper-por-paper es Capa 5.
+check("V-L3-2Om  Om_m,dyn != Om_m,cosm  (son cantidades distintas)",
+      abs(Om_m_dyn - MIRA * Om_m_dyn) > 0.15)
+check("V-L3-2Om  relacion exacta Om_m,cosm = MIRA * Om_m,dyn",
+      abs(MIRA * Om_m_dyn - 0.3199281880) < 1e-9)
+track_open("V-L3-2Om  uso correcto de cada Om_m no auditado por paper",
+           "regla: Om_m,dyn en 1+w0; Om_m,cosm en E(z)/Poisson/CMB. "
+           "Verificar que cada paper usa la correcta es tarea de Capa 5")
+
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
 # Cuando un paper se sella, se registra aquí su sha256. El harness lo

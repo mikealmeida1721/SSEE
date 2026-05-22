@@ -52,7 +52,7 @@ paper vuelve a verificación.
 |------|-----------|--------|
 | **L1** | Axiomas y constantes algebraicas | re-verificado ✓ |
 | **L2** | Parámetros cosmológicos derivados | re-verificado ✓ |
-| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | en progreso (OP-1..OP-7 ✓; faltan EFT, IS, dos-sectores, m_φ, K(X)) |
+| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | re-verificado ✓ (14 elementos; 2 verif., 6 PARCIAL, 6 ABIERTO) |
 | **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | pendiente |
 | **L5** | Papers (sellado) | pendiente |
 
@@ -421,18 +421,58 @@ M⁴ tiene dos valores incompatibles según el paper. **PARCIAL.**
 como el cutoff UV físico está calibrada a SH0ES, no derivada. El script de
 P10 ya lo declara honestamente. **ABIERTO.**
 
-## Pendientes de Capa 3
+## V-L3-IS — perturbaciones Israel-Stewart (Paper 5) — **PARCIAL (c²_s,eff=0 sí, mecanismo asertado)**
 
-Las perturbaciones Israel-Stewart (Paper 5); el bug dos-Ω_m (uso de Ω_m,dyn
-vs Ω_m,cosm en E(z), Poisson y CMB).
+*Claim CLAUDE.md:* "Paper 5: c²_s,eff = 0 (exacto algebraico) — todos los modos estables".
 
-**Estado Capa 3:** re-verificados OP-1..OP-7, α=φ⁴/3, m_φ, dos sectores,
-EFT y K(X) (12 elementos). Resultado: α=φ⁴/3 **verificado**; OP-2, OP-6,
-OP-7, dos sectores, EFT **PARCIAL** (álgebra/forma cierra, insumo físico
-no); OP-1, OP-3, OP-4, OP-5, m_φ, K(X) **ABIERTO**. 2 bugs corregidos/
-detectados de paso: curvatura de Kähler (P1, corregido) y M⁴ inconsistente
-P7↔P10 (detectado, pendiente). Patrón confirmado en 12/12: ninguna
-"✅ RESUELTO" de CLAUDE.md lo estaba sin reservas.
+1. **✓ c²_s,eff = 0:** la corrección IS es ζ̃/τ_Π = (KAL₀/3)/(KAL₀/(3Ω_DE))
+   = Ω_DE, y c²_s,eff = w₀ + Ω_DE = −0.8399 + 0.8399 = 0. Cierra exacto.
+2. **✗ el mecanismo IS no hace trabajo:** el factor KAL₀/3 **se cancela**
+   — ζ̃=KAL₀/3 y τ_Π=KAL₀/(3Ω_DE) comparten KAL₀/3, así que ζ̃/τ_Π=Ω_DE
+   para *cualquier* ζ̃. El resultado se reduce a la identidad ya verificada
+   w₀ = −Ω_DE (V-L2-01/03). La hipótesis ζ̃=KAL₀/3 es decorativa; la
+   derivación de τ_Π (estado estacionario IS) está **asertada, no mostrada**
+   en el script. Si τ_Π se deriva de verdad independientemente, el resultado
+   es no-trivial; tal como está, es la tautología w₀+|w₀|=0.
+3. **✓ Q2 reportado con honestidad:** el test MIRA perturbativo da
+   MIRA_num=0.989 (k≥10) vs MIRA_alg=1.999 — **no coinciden**. Paper 5
+   concluye correctamente que MIRA es un efecto de fondo, no perturbativo.
+   Es un resultado negativo bien reportado, no un problema.
+
+**Veredicto:** c²_s,eff=0 es cierto pero se reduce a w₀=−Ω_DE; el aparato
+IS (ζ̃, τ_Π) está construido para reproducir esa identidad y su parte
+no-trivial (derivación de τ_Π) no se muestra. **PARCIAL.**
+
+## V-L3-2Om — regla de uso de Ω_m,dyn vs Ω_m,cosm — **verificado (regla); auditoría por paper → Capa 5**
+
+*Contexto:* el "bug dos-Ω_m" — confundir Ω_m,dyn=0.160 con Ω_m,cosm=0.320.
+
+1. **✓** Son dos cantidades **distintas**: Ω_m,dyn=0.16005 fija w₀ vía la
+   identidad 1+w₀=Ω_m,dyn y **no** entra en E(z); Ω_m,cosm=MIRA·Ω_m,dyn=
+   0.31993 es el fondo gravitacional y **sí** entra en E(z), Poisson y CMB.
+2. **✓** La relación Ω_m,cosm = MIRA·Ω_m,dyn es exacta (V-L1, V-L2-05).
+3. **○ pendiente:** verificar que **cada paper** usa la Ω_m correcta en
+   cada ecuación es una auditoría paper-por-paper — se hace en **Capa 5**.
+
+**Veredicto:** la regla está clara y el álgebra verificada; la conformidad
+documento por documento se sella en Capa 5.
+
+## Estado final de Capa 3
+
+Re-verificados **14 elementos**: OP-1..OP-7, α=φ⁴/3, m_φ, dos sectores,
+EFT, K(X), IS, regla dos-Ω_m.
+
+| Veredicto | Elementos |
+|---|---|
+| **verificado** | α=φ⁴/3, regla dos-Ω_m |
+| **PARCIAL** (álgebra/forma cierra, insumo físico no) | OP-2, OP-6, OP-7, dos sectores, EFT, IS |
+| **ABIERTO** | OP-1, OP-3, OP-4, OP-5, m_φ, K(X) |
+
+2 bugs corregidos/detectados de paso: curvatura de Kähler (P1, **corregido**)
+y M⁴ inconsistente P7↔P10 (**detectado**, pendiente de re-derivación).
+Patrón confirmado en 14/14: ninguna "✅ RESUELTO" de CLAUDE.md lo estaba
+sin reservas. **Ninguno es regresión** — todos son brechas preexistentes,
+ahora rastreadas por el guardián (67 comprobaciones, 15 ABIERTO).
 
 # Capa 4 — Confrontaciones con datos — *pendiente*
 

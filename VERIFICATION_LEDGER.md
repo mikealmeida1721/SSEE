@@ -501,12 +501,20 @@ la Ω_m correcta. **Verificado.**
 distintos, pero la suite debería fijar **una** referencia para que las
 tensiones reportadas sean comparables entre papers. Un árbitro lo marcaría.
 
+## V-L4-rd — horizonte de sonido r_d (Papers 2–3) — **verificado (aritmética)**
+
+r_d = 147.156 Mpc lo calcula CAMB (`ssee_verify_rd.py` caso A) con los
+parámetros SSEE+MIRA (Ω_m,cosm=0.32, Ω_b h²=0.02237). La tensión vs
+Planck 2018 (r_d=147.09±0.26 Mpc) es |147.156−147.09|/0.26 = **0.25σ** —
+coincide con CLAUDE.md. El *valor* 147.156 es salida de CAMB (insumo
+registrado); la *tensión* se recomputa y cierra.
+
 ## Pendientes de Capa 4
 
 χ²_r de CMB TT/TE/EE/PP (Paper 3), ΔBIC −20.8/−31.3 (Paper 3), χ²₂D y
 posteriores MCMC DESI+Planck (Paper 2), fσ₈ y su reducción de tensión
-(Papers 5–6), r_d=147.16 Mpc. Estos requieren re-correr CAMB/CLASS/emcee;
-su aritmética se verifica, su recómputo es dependencia externa.
+(Papers 5–6). Estos requieren re-correr CAMB/CLASS/emcee; su aritmética
+se verifica, su recómputo es dependencia externa.
 
 # Capa 5 — Sellado de papers — *pendiente*
 

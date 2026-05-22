@@ -347,6 +347,13 @@ check("V-L4-03 P5  tension S8 vs DES-Y3 (3x2pt) = 2.84 sigma",
 check("V-L4-04 P5  tension S8 vs KiDS-1000 = 1.96 sigma",
       abs(t_KIDS - 1.96) < 0.05, f"{t_KIDS:.2f} sigma")
 
+# r_d horizonte de sonido (P2/P3). r_d=147.156 Mpc lo calcula CAMB con
+# los parametros SSEE+MIRA; aqui se verifica solo la tension reportada.
+rd_ssee = 147.156   # salida CAMB, ssee_verify_rd.py caso A (insumo registrado)
+t_rd = abs(rd_ssee - 147.09) / 0.26
+check("V-L4-05 P2/P3  tension r_d vs Planck 2018 = 0.25 sigma",
+      abs(t_rd - 0.25) < 0.05, f"{t_rd:.2f} sigma")
+
 track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
            "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "
            "ssee_op5_hmcode usa S8_DES = 0.759+-0.023 (cosmic shear, Amon 2022); "

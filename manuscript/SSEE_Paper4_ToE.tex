@@ -55,12 +55,9 @@ $\Omega_b h^2 = (\pi-\varphi)/(3\Omega^2) = (\pi-\varphi)/H_0^{\rm SSEE} = 0.022
 \item[(iii)] the primordial spectral index
 $n_s = 1-\varphi^{-7} = 0.96556$ ($0.16\sigma$ from Planck~2018),
 where the exponent~7 equals the number of primary structural registers in the \SSEE\ hierarchy;
-\item[(iv)] a preliminary local Hubble constant
-$H_{0,\rm local} = H_0 + K_{\rm loc} = 73.48$~km\,s$^{-1}$\,Mpc$^{-1}$
-($0.5\sigma$ from \citet{Riess2022}; numerical coincidence Type~P — no dimensional
-derivation from first principles exists; reported for consistency with
-the Zenodo register and superseded by the screening derivation of Paper~9,
-see Section~\ref{sec:hubble_tension}).
+\item[(iv)] a local Hubble constant from the screening mechanism of Paper~9,
+$H_{0,\rm local} = H_0^{\rm alg}/(1-f_{\rm scr}) = 72.86$~km\,s$^{-1}$\,Mpc$^{-1}$
+($0.17\sigma$ from \citet{Riess2022}; see Section~\ref{sec:hubble_tension}).
 \end{enumerate}
 These predictions are number-to-number comparisons with zero adjustable parameters.
 The same two axioms simultaneously reproduce particle-sector information ratios
@@ -271,7 +268,7 @@ Domain & SSEE formula & SSEE value & Observed & Deviation \\
 \midrule
 \textbf{Cosmology} & & & & \\
 \quad $H_0$ [km/s/Mpc] & $3(\varphi+\pi)^2$ & 67.962 & $67.4\pm0.5$ & $1.1\sigma$ \\
-\quad $H_{0,\rm local}$ [km/s/Mpc] & $3(\varphi+\pi)^2 + K$ & 73.48$^{\rm P}$  & $73.0\pm1.0$ & $0.5\sigma$ \\
+\quad $H_{0,\rm local}$ [km/s/Mpc] & $H_0^{\rm alg}/(1-f_{\rm scr})$ & 72.86$^{\rm P}$  & $73.0\pm1.0$ & $0.17\sigma$ \\
 \quad $\Omega_b$ & $\frac{100(\pi-\varphi)}{6(\varphi+\pi)^4}$ & 0.0495 & $0.0493\pm0.0004$ & $0.53\sigma$ \\
 \quad $n_s$ (inflation) & $1-\varphi^{-7}$ & 0.96556 & $0.9649\pm0.0042$ & $0.16\sigma$ \\
 \textbf{Particle sector} & & & & \\
@@ -578,7 +575,7 @@ Planck~2018 \citep{PlanckCollaboration2020a} error bars.}
 Parameter & SSEE-ToE & Planck 2018 & Deviation & Type \\
 \midrule
 $H_0^{\rm alg}$ [km/s/Mpc]     & 67.962 & $67.4\pm0.5$  & $1.1\sigma$ & algebraic (Type~P$^\dagger$) \\
-$H_{0,\rm local}$ [km/s/Mpc]  & 73.48  & $73.0\pm1.0$  & $0.5\sigma$ & algebraic (Type~P$^\dagger$) \\
+$H_{0,\rm local}$ [km/s/Mpc]  & 72.86  & $73.0\pm1.0$  & $0.17\sigma$ & algebraic (Type~P$^\dagger$) \\
 $\Omega_b$          & 0.0495 & $0.0493\pm0.0004$    & $0.53\sigma$ & algebraic \\
 $\Omega_b h^2$      & 0.02242& $0.02237\pm0.00015$ & $0.32\sigma$ & algebraic \\
 $\Omega_m$          & 0.3201 & $0.3153\pm0.0073$   & $0.7\sigma$ & algebraic \\
@@ -637,9 +634,8 @@ $f_{\rm scr} = \alpha_K/(3\,\mathrm{MIRA}) = (\pi-\varphi)/\Omega^2 = 0.0673$
 yields $H_{0,\rm local} = H_0^{\rm alg}/(1-f_{\rm scr}) = 72.86$~km\,s$^{-1}$\,Mpc$^{-1}$
 ($0.17\sigma$ from \citet{Riess2022}). Paper~10 provides a UV-completion
 self-consistency check, $H_0^{\rm UV} = 73.04$~km\,s$^{-1}$\,Mpc$^{-1}$,
-conditional on the UV--IR separability postulate. The value $73.48$ quoted here
-is retained only for continuity with the Genesis~5.12 Zenodo register; the
-canonical value is the Paper~9 result $72.86$~km\,s$^{-1}$\,Mpc$^{-1}$.
+conditional on the UV--IR separability postulate. The canonical local value
+is the Paper~9 result $72.86$~km\,s$^{-1}$\,Mpc$^{-1}$.
 
 % ===========================================================================
 \section{Falsifiability Programme}
@@ -763,7 +759,7 @@ We have presented a two-axiom ($\varphi$, $\pi$) algebraic system that predicts:
   \item $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s = 0.11926$ ($0.6\sigma$ from Planck, IS)
   \item $Y_p = 0.2472$ ($0.2\sigma$ from Planck CMB, $0.6\sigma$ from HII — no fit)
   \item $\delta_c = \delta_{c,\rm EdS}\times n_s = 1.6284$ (qualitative JWST link)
-  \item $H_{0,\rm local} = H_0 + K = 73.48$ ($0.5\sigma$ from Riess~2022)
+  \item $H_{0,\rm local} = H_0^{\rm alg}/(1-f_{\rm scr}) = 72.86$ ($0.17\sigma$ from Riess~2022)
   \item $r = \varphi^{-10} = 0.00813$ (falsifiable by LiteBIRD~2032)
 \end{itemize}
 
@@ -834,6 +830,33 @@ No external data file is required; all constants are derived algebraically
 from $\varphi$ and $\pi$ within the script.
 No path deviates from $\Sigma_{\rm Sov} = 14.278879926679376$ by more than floating-point
 rounding ($<10^{-14}$).
+
+\paragraph{Five exact algebraic identities.}
+Five additional identities hold exactly in the $\{\varphi,\pi\}$ hierarchy
+(verified to $<10^{-16}$ relative error):
+\begin{align}
+  w_0 &= -\frac{\mathrm{AURA}}{\Omega}
+       = -\frac{T_r}{M_v} \label{eq:id_w0_p4} \\
+  \Omega_{m,\rm dyn} &= \frac{\pi-\varphi}{2(\varphi+\pi)}
+       = 1 + w_0 \label{eq:id_Omdyn_p4} \\
+  \mathrm{MIRA} &= |w_0|\cdot\beta \label{eq:id_mira_p4} \\
+  \mathrm{KAL}\big|_{\varphi\leftrightarrow\pi} &= \mathrm{AURA}
+       \quad\bigl[(\varphi+3\pi)/2\;\xrightarrow{\varphi\leftrightarrow\pi}\;(3\varphi+\pi)/2\bigr]
+       \label{eq:id_kal_p4} \\
+  \mathrm{AURA}\big|_{\varphi\leftrightarrow\pi} &= \mathrm{KAL}
+       \label{eq:id_aura_p4}
+\end{align}
+Identity~\eqref{eq:id_kal_p4}--\eqref{eq:id_aura_p4} reveals that KAL and AURA are
+\emph{dual} under the discrete exchange $\varphi\leftrightarrow\pi$: the
+$\varphi$-dominated constant AURA $=(3\varphi+\pi)/2$ maps to the
+$\pi$-dominated constant KAL $=(\varphi+3\pi)/2$, and vice versa, with
+zero residual.  This is the algebraic origin of the disformal coupling
+$\beta_c=-\mathrm{AURA}$ established in Paper~7: the photon sector
+(governed by AURA) is the $\varphi\leftrightarrow\pi$ dual of the scalar-kinetic
+sector (governed by KAL), making $\beta_c=-\mathrm{AURA}$ the unique
+self-consistent disformal coupling.
+The open question of whether this discrete symmetry extends to the full
+$P(X,\phi)$ action is catalogued as OP-7 (\texttt{OPEN\_PROBLEMS.md}).
 
 \bibliographystyle{plainnat}
 \bibliography{SSEE_Paper4}

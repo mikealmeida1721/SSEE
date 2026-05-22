@@ -87,14 +87,16 @@ Full-sky CLASS Boltzmann runs confirm that MIRA is physically necessary:
 without it, the CMB peak positions shift by $\sim 10\%$ and the RMS residual
 rises from $1.4\%$ to $31.5\%$.
 
-A linear Israel-Stewart perturbation analysis yields a growth suppression factor
-$\mathcal{G} = 0.866$ and $\sigma_8 = 0.702$ in the single-sector regime.
-A two-sector dark matter extension --- $\Omega_{\phi\mathrm{DM}} = (\MIRA-1)\,\Ommdyn$
-active only on scales $k < \kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ --- lowers the mean
-$\fsig$ tension from $2.56\sigma$ to $0.50\sigma$ across six RSD surveys, with a
-two-sector effective amplitude $\sigeff = \sig\times G_{\rm 2s} = 0.794$ (analytic
-growth factor) refined to $0.737$ once the calibrated WDM transfer function is
-applied in CLASS.
+A linear Israel-Stewart perturbation analysis with $\Omega_{m,\mathrm{cosm}}=0.320$ in
+the Poisson equation yields a growth enhancement factor
+$\mathcal{G} = 1.011$ and $\sigma_8 = 0.820$ (Paper~5 corrected), giving a mean
+$\fsig$ tension of $0.74\sigma$ across six RSD surveys --- statistically identical
+to $\Lambda$CDM ($0.73\sigma$), resolving the growth-rate sector.
+A two-sector $\phi$-DM extension --- $\Omega_{\phi\mathrm{DM}} = (\MIRA-1)\,\Ommdyn$
+active only on scales $k < \kfs = 0.493\,h\,\mathrm{Mpc}^{-1}$ --- reduces the
+$S_8$ lensing tension from $3.9\sigma$ to $2.6\sigma$ (KiDS), with
+$\sigeff = 0.794$ (analytic two-sector growth factor, $G_{\rm 2s}=0.979$);
+a calibrated WDM transfer function in CLASS gives a complementary $\sigeff = 0.737$.
 
 An EFTCAMB validation at the Bellini-Sawicki level uses the fluid-approximation
 input $\alphaK^{\rm fluid} = 0.4033$ ($\Delta = 0.005\%$), while the theoretical
@@ -460,9 +462,9 @@ $c_{s,\mathrm{eff}}^2(k\to\infty) = 0$, to floating-point precision.
 Integrating the full IS linear growth ODE from $z=19$ to $z=0$
 with $\Omega_{m,\mathrm{dyn}} = 0.160$:
 \begin{equation}
-  \mathcal{G} = D_1^{\mathrm{SSEE}}/D_1^{\Lambda\mathrm{CDM}} = 0.866,
+  \mathcal{G} = D_1^{\mathrm{SSEE}}/D_1^{\Lambda\mathrm{CDM}} = 1.011,
   \qquad
-  \sigma_8^{\mathrm{SSEE}} = 0.811 \times \mathcal{G} = 0.702.
+  \sigma_8^{\mathrm{SSEE}} = 0.811 \times \mathcal{G} = 0.820.
   \label{eq:G_IS}
 \end{equation}
 The IS growth index $\gamma_{\mathrm{IS}} = 0.554\pm0.001$, consistent with
@@ -472,7 +474,7 @@ the different background.
 
 A CLASS run with $c_s^2 = 0.001$ (IS limit) and $\Omega_m = 0.160$ (single sector)
 yields $\sigma_8^{\mathrm{CLASS}} = 0.457$, substantially lower than the ODE result
-(0.702).
+(0.820).
 This discrepancy arises because the ODE analysis assumes
 $T_{\mathrm{SSEE}}(k) \approx T_{\Lambda\mathrm{CDM}}(k)$,
 whereas CLASS computes the full transfer function for $\Omega_m = 0.160$, which
@@ -484,8 +486,10 @@ with observations, as shown in \S\ref{sec:mira_test} and further examined in
 \subsection{$\phi$-Dark Matter two-sector and WDM suppression}
 \label{sec:phiDM}
 
-The single-sector $\sigma_8 = 0.702$ implies a mean $f\sigma_8$ tension of
-$2.56\sigma$ across six canonical RSD surveys (Table~\ref{tab:fsig8}).
+The corrected single-sector analysis (Paper~5, $\OmmCMB=0.320$ in Poisson) gives
+$\sigma_8 = 0.820$ and a mean $f\sigma_8$ tension of $0.74\sigma$ across six
+canonical RSD surveys (Table~\ref{tab:fsig8}), statistically indistinguishable
+from $\Lambda$CDM ($0.73\sigma$).
 Paper~6 \citep{AlmeidaSSEE2026P6} proposes a two-sector extension:
 a $\phi$-dark matter component
 $\Omega_{\phi\mathrm{DM}} = (\MIRA-1)\,\Ommdyn = 0.159878$,
@@ -552,11 +556,12 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.82\textwidth]{../class_ssee/output/ssee_fsig8_tension_phiDM.png}
-\caption{$f\sigma_8(z)$ comparison. Data points: six RSD measurements
-         (6dFGRS, SDSS MGS, BOSS DR12 at $z=0.32$ and $z=0.38$, eBOSS DR16, WiggleZ).
+\caption{$f\sigma_8(z)$ comparison. Data points: the six canonical RSD
+         measurements (6dFGRS, SDSS MGS, BOSS DR12 at $z=0.38,0.51,0.61$,
+         eBOSS DR16 at $z=1.48$; Paper~5 set).
          \textit{Black dashed}: \LCDM.
-         \textit{Red}: \SSEE\ two-sector ($\sigeff = 0.737$), mean tension $0.50\sigma$.
-         \textit{Blue}: \SSEE\ single-sector ($\sigma_8 = 0.702$), mean tension $2.56\sigma$.}
+         \textit{Red}: \SSEE\ two-sector, mean tension $0.76\sigma$.
+         \textit{Blue}: \SSEE\ single-sector ($\sigma_8 = 0.820$, Paper~5 corrected), mean tension $0.74\sigma$.}
 \label{fig:fsig8}
 \end{figure}
 
@@ -566,30 +571,39 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 \begin{table}[ht]
 \centering
 \caption{$f\sigma_8$ tension for six RSD surveys. $\sigma_{\rm pull}$:
-         number of standard deviations between model prediction and measurement.}
+         number of standard deviations between model prediction and measurement.
+         Single-sector individual pulls shown for pre-correction baseline
+         ($\sigma_8=0.702$, $\Omega_{m,\mathrm{dyn}}=0.160$ in Poisson); the
+         corrected Paper~5 mean ($\sigma_8=0.820$, $\OmmCMB=0.320$) is $0.74\sigma$.}
 \label{tab:fsig8}
 \begin{tabular}{lcccc}
 \toprule
-Survey & $z$ & Data $f\sigma_8$ & Single-sector & Two-sector \\
+Survey & $z$ & Data $f\sigma_8$ & Single-sector$^*$ & Two-sector \\
 \midrule
 6dFGRS     & 0.067 & $0.423\pm0.055$ & $+2.85\sigma$ & $+0.39\sigma$ \\
-SDSS MGS   & 0.150 & $0.490\pm0.070$ & $+2.94\sigma$ & $+1.05\sigma$ \\
-BOSS DR12  & 0.320 & $0.427\pm0.056$ & $+1.98\sigma$ & $-0.20\sigma$ \\
-BOSS DR12  & 0.380 & $0.477\pm0.051$ & $+2.97\sigma$ & $+0.66\sigma$ \\
-eBOSS DR16 & 0.510 & $0.458\pm0.038$ & $+3.03\sigma$ & $+0.24\sigma$ \\
-WiggleZ    & 0.570 & $0.426\pm0.048$ & $+1.60\sigma$ & $-0.48\sigma$ \\
+SDSS MGS   & 0.150 & $0.490\pm0.145$ & $+1.42\sigma$ & $+0.51\sigma$ \\
+BOSS DR12  & 0.380 & $0.497\pm0.045$ & $+3.81\sigma$ & $+1.20\sigma$ \\
+BOSS DR12  & 0.510 & $0.458\pm0.038$ & $+3.03\sigma$ & $+0.24\sigma$ \\
+BOSS DR12  & 0.610 & $0.436\pm0.034$ & $+2.44\sigma$ & $-0.38\sigma$ \\
+eBOSS DR16 & 1.480 & $0.462\pm0.045$ & $+2.50\sigma$ & $+1.84\sigma$ \\
 \midrule
-\textbf{Mean} & & & $\mathbf{2.56\sigma}$ & $\mathbf{0.50\sigma}$ \\
+\textbf{Mean} & & & $\mathbf{0.74\sigma}$ (corr.) & $\mathbf{0.76\sigma}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The tension reduction is driven by two effects: (i) the WDM free-streaming
-suppression on scales $k > \kfs$ lowers $\sigeff$ from $0.853$ (CLASS SSEE+MIRA
-single-sector) to $0.737$;
-(ii) the two-sector growth density $\Omega_{m,\mathrm{growth}} = 0.320$ boosts the
-growth rate at large scales.
-We stress that this resolution operates at the linear-growth level; non-linear
+The two-sector $f\sigma_8$ mean ($0.76\sigma$) is statistically indistinguishable
+from the corrected single-sector baseline ($0.74\sigma$, Paper~5) and from
+$\Lambda$CDM ($0.73\sigma$): the growth-rate sector is already resolved at the
+single-sector level; the two-sector extension adds no significant $f\sigma_8$
+improvement.
+The genuine gain of Paper~6 is in the $S_8$ lensing amplitude: the WDM
+free-streaming suppression on scales $k > \kfs$ lowers $\sigeff$ from the
+corrected single-sector $\sigma_8 = 0.820$ ($S_8 = 0.847$, $3.9\sigma$ KiDS)
+to $\sigeff = 0.820$ ($S_8 = 2.6\sigma$ KiDS) in the analytic two-sector route,
+and $\sigeff = 0.737$ ($S_8 \simeq 0.761$, $0.3\sigma$ DES~Y3) in the
+CLASS+WDM route.
+We stress that this analysis operates at the linear-growth level; non-linear
 effects (baryonic feedback, halo bias) are not modelled and may modify the
 predictions at the $10\%$--$20\%$ level.
 
@@ -862,7 +876,7 @@ $r_d^{\rm eff} = r_{d,\mathrm{SSEE}} \times |\wz|$ & $147.2$ Mpc & Planck 2018 $
 $\gamma_{\rm IS} = 0.554$ & $\approx \gamma_{\Lambda\rm CDM} = 0.55$ & RSD surveys & Retrodiction \\
 $\alphaT = \alphaM = \alphaB = 0$ & exact & GW170817 $|\alphaT|<10^{-15}$ & Retrodiction \\
 $\sigeff = \sig \times G_{\rm 2s}$ (two-sector growth factor) & $0.794$ & Weak-lensing $\sigma_8$ & Retrodiction \\
-$\sigma_8^{\rm SSEE}$ (single-sector ODE) & $0.702$ & Weak lensing surveys & Retrodiction \\
+$\sigma_8^{\rm SSEE}$ (single-sector ODE, Paper~5 corrected) & $0.820$ & Weak lensing surveys & Retrodiction \\
 $H_0^{\rm local} = H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & SH0ES 2022 ($0.17\sigma$) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Predictions (not yet observationally accessible)}} \\
@@ -895,16 +909,16 @@ MIRA; the likely origin is a background-level thermodynamic effect in the
 IS viscous Friedmann equations.
 
 \textbf{(ii) $S_8$ and the dark-matter sector.}
-The single-sector Israel-Stewart analysis gives $S_8 = 0.725$. The two-sector
-$\phi$-DM extension, evaluated with the analytic growth factor alone ($\phi$-DM
-treated as fully clustering on $k<\kfs$), gives a conservative $S_8 = 0.820$;
-including the smooth WDM transfer function refines this to
+The corrected single-sector Israel-Stewart analysis gives $\sigma_8 = 0.820$ and
+$S_8 = 0.847$ ($3.9\sigma$ KiDS, $3.9\sigma$ DES~Y3). The two-sector $\phi$-DM
+extension (Paper~6) reduces this tension: the analytic two-sector route gives
+$S_8 = 2.6\sigma$ (KiDS); including the smooth WDM transfer function refines this to
 $S_8 \simeq 0.752$--$0.761$, and HMcode-2020 baryonic feedback \citep{Mead2021}
 gives $S_8 = 0.758$ ($0.06\sigma$ DES~Y3). Paper~6 thus brackets the weak-lensing
-measurement, $S_8 \in [0.752,\,0.820]$, encompassing the KiDS-1000 and DES~Y3
-central values. The open item is a precision question: a full N-body treatment
-of baryonic feedback (deferred for computational cost) is required to pin the
-linear-theory $S_8$ within this range.
+measurement, $S_8 \in [0.752,\,0.847]$, with the two-sector WDM route landing within
+the KiDS-1000 and DES~Y3 uncertainty bands. The open item is a precision question:
+a full N-body treatment of baryonic feedback (deferred for computational cost) is
+required to pin the linear-theory $S_8$ within this range.
 
 \textbf{(iii) $\phi$DM mass and Lyman-$\alpha$ constraints.}
 The algebraic mass $\mphi = 5.60$~eV is in the warm dark matter regime
@@ -949,12 +963,14 @@ across four observational tiers.
   With MIRA, peak positions agree with \LCDM\ to within $\Delta\ell < 5$
   (RMS $= 1.4\%$).
 
-\item \textbf{Structure growth.} The IS perturbation analysis gives
-  $\mathcal{G} = 0.866$ and $\sigma_8 = 0.702$ in the single-sector regime.
-  The $\phi$DM two-sector extension with CLASS-calibrated WDM transfer function
-  ($\alpha = 1.656\,h\,\mathrm{Mpc}^{-1}$) yields $\sigeff = 0.737$
-  (KiDS-1000 central value), reducing the mean $f\sigma_8$ tension from
-  $2.56\sigma$ to $0.50\sigma$ across six surveys.
+\item \textbf{Structure growth.} The corrected IS perturbation analysis
+  ($\OmmCMB=0.320$ in Poisson) gives $\mathcal{G} = 1.011$ and $\sigma_8 = 0.820$,
+  with mean $f\sigma_8$ tension $0.74\sigma$ (Paper~5) --- statistically identical
+  to $\Lambda$CDM ($0.73\sigma$). The $\phi$DM two-sector extension with
+  CLASS-calibrated WDM transfer function ($\alpha = 1.656\,h\,\mathrm{Mpc}^{-1}$)
+  yields $\sigeff = 0.737$ and reduces $S_8$ from $3.9\sigma$ to $2.6\sigma$
+  (KiDS) in the analytic route, with $S_8 = 0.758$ ($0.06\sigma$ DES~Y3)
+  after HMcode baryonic feedback (Paper~6).
 
 \item \textbf{EFT stability.} EFTCAMB confirms ghost-freedom and gradient
   stability using the fluid-approximation input $\alphaK^{\rm fluid} = 0.4033$

@@ -248,16 +248,42 @@ P1: n_s y r son postulados. El error está en CLAUDE.md y el script, no en P1.
 **Veredicto:** α=φ⁴/3 `verificado` como consecuencia exacta de los axiomas
 n_s, r — no es derivación independiente, y P1 nunca afirmó que lo fuera.
 
+## V-L3-OP4 — radio de screening k-mouflage (P8) — **ABIERTO (fórmula rota)**
+
+*Claim CLAUDE.md:* "OP-4 ✅ RESUELTO 2026-05-15 — k-mouflage + αB=αM=0".
+
+`git blame` confirma que la fórmula `r_km³ = M_obj/(4π·M_pl·M²)` (P8
+eq:rkm) nació en el commit `295ed6e` ("OP-4 resolved — replace Galileon
+Vainshtein with k-mouflage") y pasó 7 auditorías posteriores sin detectarse.
+
+**✗ Comprobación dimensional (falla):** el lado derecho tiene dimensión
+`[GeV]/([GeV]·[GeV²]) = GeV⁻²`. Entonces `r_km = (RHS)^{1/3}` tiene dimensión
+`GeV^{−2/3}` — **no es una longitud** (una longitud es GeV⁻¹). La fórmula es
+dimensionalmente inconsistente. Toda la §4–5 de P8 (Tabla 2, Fig. 2, ejemplo
+A1689) descansa sobre ella.
+
+**Forma dimensionalmente correcta:** del propio Lagrangiano de P8
+(K(X)=X/KAL+X²/M⁴, cruce X=M⁴/KAL, cierre de gradiente
+∇φ=2·KAL·βc·M_pl·∇Φ_N) el cruce da `r_km⁴ ∝ M_obj²/(M_pl²·M⁴)` — raíz
+cuarta con escala M_obj², no la raíz cúbica de M_obj¹ del paper.
+
+**Veredicto:** OP-4 NO está resuelto. La "resolución" introdujo un error de
+derivación. Requiere re-derivar el radio k-mouflage desde cero y propagar a
+P8 §4–5 (tabla, figura, ejemplo A1689). **ABIERTO** — remediación grande,
+pendiente de sesión dedicada.
+
 ## Pendientes de Capa 3
 
-OP-1 (Ω_b h², factor 200), OP-3 (separabilidad UV-IR), OP-4 (k-mouflage —
-fórmula rota confirmada), OP-5 (S₈ no lineal), OP-6 (screening multiplicativo);
-α=φ⁴/3; la acción EFT; las perturbaciones Israel-Stewart; el modelo de dos
-sectores φ-DM; m_φ; la completación UV K(X); el bug dos-Ω_m.
+OP-1 (Ω_b h², factor 200), OP-3 (separabilidad UV-IR), OP-5 (S₈ no lineal),
+OP-6 (screening multiplicativo); la acción EFT; las perturbaciones
+Israel-Stewart; el modelo de dos sectores φ-DM; m_φ; la completación UV K(X);
+el bug dos-Ω_m.
 
-**Estado Capa 3:** OP-2 y OP-7 re-verificados → ambos **PARCIAL** (las cadenas
-algebraicas cierran; los insumos físicos N_*=2φ⁷ y βc=−AURA son conjetura y
-coincidencia). Patrón confirmado: lo marcado "RESUELTO" no estaba resuelto.
+**Estado Capa 3:** re-verificados OP-2, OP-7, α=φ⁴/3, OP-4. Resultado: OP-2 y
+OP-7 **PARCIAL** (álgebra cierra, insumo físico no); α=φ⁴/3 **verificado**
+(consecuencia exacta de los axiomas n_s, r); OP-4 **ABIERTO** (fórmula rota).
+1 bug aritmético corregido de paso (curvatura de Kähler en P1). Patrón
+confirmado en 4/4: lo marcado "RESUELTO" no lo estaba.
 
 # Capa 4 — Confrontaciones con datos — *pendiente*
 

@@ -182,6 +182,13 @@ check("V-L3-alpha  curvatura Kahler R = -2/(3 alpha) = -2 phi^-4",
       abs(-2 / (3 * alpha_attr) - (-2 * phi ** -4)) < 1e-12,
       f"R = {-2/(3*alpha_attr):.6f}")
 
+# OP-4 — radio k-mouflage (P8). La fórmula r_km^3 = M_obj/(4pi M_pl M^2)
+# es dimensionalmente inconsistente: exponentes GeV de (M_obj, M_pl, M^2).
+dim_rkm = (1 - 1 - 2) / 3   # dimensión GeV de r_km según la fórmula de P8
+track_open("V-L3-OP4  formula k-mouflage de P8 dimensionalmente rota",
+           f"r_km tiene dimension GeV^{dim_rkm:.3f}; una longitud es GeV^-1. "
+           "Introducida en commit 295ed6e; requiere re-derivacion")
+
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
 # Cuando un paper se sella, se registra aquí su sha256. El harness lo

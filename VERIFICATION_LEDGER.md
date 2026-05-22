@@ -108,10 +108,63 @@ Pendiente: barrido de la comprobación 5 (ubicación) en los 11 `.tex`.
 
 ---
 
-# Capa 2 — Parámetros cosmológicos derivados — *pendiente*
+# Capa 2 — Parámetros cosmológicos derivados
 
-Elementos a registrar: w₀, wₐ, Ω_DE, Ω_m,dyn, Ω_m,cosm, H₀^alg, n_s, αK, βc,
-m_φ, k_fs, r, r_d, f_screen, M⁴/M (cutoff UV).
+Verificación numérica: `python3` (2026-05-21), todas las identidades recomputadas
+desde las constantes de Capa 1. La columna **Dim.** indica si la comprobación
+dimensional pasa.
+
+| ID | Parámetro | Definición | Valor verificado | Dim. | Estado |
+|----|-----------|-----------|------------------|------|--------|
+| V-L2-01 | w₀ | −T_r/M_v | −0.8399497713 | ✓ | verificado |
+| V-L2-02 | wₐ | −P_sc/K_v  (P_sc=Ω+φ=6.3776617) | −0.6699748857 | ✓ | verificado |
+| V-L2-03 | Ω_DE | T_r/M_v | 0.8399497713 | ✓ | verificado |
+| V-L2-04 | Ω_m,dyn | 1+w₀ | 0.1600502287 | ✓ | verificado |
+| V-L2-05 | Ω_m,cosm | MIRA·Ω_m,dyn | 0.3199281880 | ✓ | verificado |
+| V-L2-06 | H₀^alg | 3Ω² | 67.9621373234 | ✗ | **ABIERTO** |
+| V-L2-07 | n_s | 1−φ⁻⁷ | 0.9655581463 | ✓ | verificado |
+| V-L2-08 | αK | 3·Ω_DE·Ω_m,dyn | 0.4033024589 | ✓ | verificado |
+| V-L2-09 | βc | −AURA | −3.9978473099 | ✓ | verificado |
+| V-L2-10 | m_φ | Σm_ν^act·H₀^alg (0.0824·67.96) | 5.6001 eV | ✗ | **ABIERTO** |
+| V-L2-11 | k_fs | free-streaming de m_φ (vía DW) | 0.493 h/Mpc | — | pendiente L3 |
+| V-L2-12 | r | 12α/N²  (α=φ⁴/3, N=2φ⁷) | 0.00813062 | ✓ | verificado |
+| V-L2-13 | f_screen | αK/(3·MIRA) = (π−φ)/Ω² | 0.0672532703 | ✓ | verificado |
+
+### Cross-checks de identidad (todas pasan)
+
+- **w₀**: dos rutas coinciden — `−T_r/M_v` y `1/(2n−1)` con `n=(T_r−M_v)/(2T_r)`.
+- **f_screen**: dos fórmulas coinciden exactamente — `αK/(3·MIRA)` y `(π−φ)/Ω²`.
+- **Ω_m,dyn + Ω_DE = 1** ✓; **Ω_m,cosm = MIRA·Ω_m,dyn** ✓.
+
+### Problemas ABIERTOS detectados en Capa 2
+
+- **V-L2-06 H₀^alg = 3Ω²** — numéricamente da 67.962, pero `3Ω²` es
+  **adimensional** mientras que H₀ tiene unidades km/s/Mpc. No es una
+  derivación dimensional; es una coincidencia numérica (Postulado D en P1).
+  El modelo lo admite a medias. **No puede pasar a `resuelto` como derivación.**
+- **V-L2-10 m_φ = Σm_ν·H₀^alg** — numéricamente da 5.60 eV, pero el producto
+  es `[eV]·[km/s/Mpc]`, que **no es [eV]**. Solo da "5.60 eV" si H₀ se trata
+  como el número puro 67.96. Es numerología dimensional (hallazgo crítico del
+  árbitro de P6). Hereda además el problema de H₀^alg. **ABIERTO.**
+
+### Dependencias hacia Capa 3 (derivación — comprobación 3)
+
+Estos parámetros pasan numérica y dimensionalmente, pero su **derivación** se
+apoya en mecanismos de Capa 3 aún no verificados — no pueden pasar de
+`verificado` a `resuelto` hasta que Capa 3 los sostenga:
+
+- **n_s** (V-L2-07): el exponente 7 depende de OP-2 (N_*=2φ⁷ + α-attractor).
+- **βc** (V-L2-09): depende de OP-7 (unicidad EFT; el árbitro lo llamó fit al 0.2 %).
+- **αK** (V-L2-08): depende de la acción EFT de P7.
+- **r** (V-L2-12): depende de α=φ⁴/3 y N=2φ⁷ (OP-2).
+- **f_screen** (V-L2-13): la *identidad algebraica* está verificada, pero el
+  *mecanismo* de screening depende de P9 (el árbitro lo llamó circular).
+- **k_fs** (V-L2-11): depende de m_φ (ABIERTO) y de la relación DW (L3).
+
+**Estado Capa 2:** 10/13 `verificado` (numérica + dimensional + identidades);
+2 `ABIERTO` (H₀^alg, m_φ — dimensionalmente inconsistentes); 1 `pendiente L3`
+(k_fs). Ninguno pasa a `resuelto` todavía: la comprobación 3 (derivación) de
+varios alcanza la Capa 3.
 
 # Capa 3 — Mecanismos y derivaciones — *pendiente*
 

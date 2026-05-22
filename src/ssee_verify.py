@@ -37,6 +37,22 @@ def check(name, ok, detail=""):
         fails.append(name)
 
 
+opens = []
+
+
+def track_open(name, detail=""):
+    """Problema abierto, conocido y documentado en VERIFICATION_LEDGER.md.
+
+    No es una regresión: se lista en CADA corrida para no olvidarlo nunca,
+    pero no pone el guardián en rojo. Sale del registro de abiertos solo
+    cuando una derivación real lo resuelve y se actualiza el Registro.
+    """
+    global checks
+    checks += 1
+    print(f"  [ABIERTO] {name}" + (f"  — {detail}" if detail else ""))
+    opens.append(name)
+
+
 # ─────────────────────────────────────────────────────────────────────
 # CAPA 1 — Axiomas y constantes algebraicas
 # Recomputa cada constante desde su definición y la coteja con el valor
@@ -89,8 +105,47 @@ check("L1 identidad  Om_m,cosm = MIRA * Om_m,dyn = 0.320",
       abs(MIRA * (1 + w0) - 0.3199281880) < 1e-9)
 
 # ─────────────────────────────────────────────────────────────────────
-# CAPA 2..4 — se añaden a medida que se verifican en el Registro.
+# CAPA 2 — Parámetros cosmológicos derivados
 # ─────────────────────────────────────────────────────────────────────
+print("\nCapa 2 — parámetros cosmológicos derivados")
+
+Psc = Omega + phi
+Om_DE = Tr / Mv
+Om_m_dyn = 1 + w0
+alpha_K = 3 * Om_DE * Om_m_dyn
+
+L2 = {
+    "V-L2-01 w0":        (-Tr / Mv,                      -0.8399497713),
+    "V-L2-02 wa":        (-Psc / Kv,                     -0.6699748857),
+    "V-L2-03 Om_DE":     (Om_DE,                          0.8399497713),
+    "V-L2-04 Om_m,dyn":  (Om_m_dyn,                       0.1600502287),
+    "V-L2-05 Om_m,cosm": (MIRA * Om_m_dyn,                0.3199281880),
+    "V-L2-06 H0^alg":    (3 * Omega ** 2,                 67.9621373234),
+    "V-L2-07 n_s":       (1 - phi ** -7,                  0.9655581463),
+    "V-L2-08 alpha_K":   (alpha_K,                        0.4033024589),
+    "V-L2-09 beta_c":    (-AURA,                         -3.9978473099),
+    "V-L2-12 r":         (12 * (phi ** 4 / 3) / (2 * phi ** 7) ** 2, 0.0081306227),
+    "V-L2-13 f_screen":  ((pi - phi) / Omega ** 2,        0.0672532703),
+}
+for name, (computed, ledger) in L2.items():
+    check(name, abs(computed - ledger) < 1e-6,
+          f"computado {computed:.10f} / registro {ledger:.10f}")
+
+check("V-L2-10 m_phi (numérico)  0.0824*H0^alg = 5.60 eV",
+      abs(0.0824 * (3 * Omega ** 2) - 5.6001) < 1e-3)
+
+# Identidades cruzadas — dos rutas independientes deben coincidir.
+n_kess = (Tr - Mv) / (2 * Tr)
+check("L2 identidad  w0 = 1/(2n-1)  (ruta k-essence)",
+      abs(1 / (2 * n_kess - 1) - (-Tr / Mv)) < 1e-10)
+check("L2 identidad  f_screen = alpha_K/(3*MIRA) = (pi-phi)/Om^2",
+      abs(alpha_K / (3 * MIRA) - (pi - phi) / Omega ** 2) < 1e-10)
+
+# Problemas ABIERTOS detectados en Capa 2 — comprobación dimensional.
+track_open("V-L2-06 H0^alg dimensional",
+           "3*Omega^2 es adimensional; H0 tiene unidades km/s/Mpc (Postulado D)")
+track_open("V-L2-10 m_phi dimensional",
+           "Sigma_m_nu * H0 = [eV]*[km/s/Mpc] no es [eV] (numerología, P6)")
 
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
@@ -120,5 +175,8 @@ if fails:
         print(f"   x  {f}")
     print("No commitear ni sellar hasta resolverlo.")
     sys.exit(1)
-print(f"VERDE — {checks}/{checks} comprobaciones pasaron. Modelo íntegro.")
+linea = f"VERDE — sin regresiones, {checks} comprobaciones."
+if opens:
+    linea += f"  {len(opens)} problema(s) ABIERTO(s) rastreado(s) — ver Registro."
+print(linea)
 sys.exit(0)

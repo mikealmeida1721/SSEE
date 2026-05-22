@@ -305,17 +305,20 @@ track_open("V-L3-IS  c2_s,eff = 0 depende de tau_Pi no derivado en script",
            "el resultado se reduce a w0 = -Om_DE (V-L2). La derivacion de "
            "tau_Pi (steady-state IS) esta asertada, no mostrada")
 
-# dos-Ω_m — regla de uso. Om_m,dyn = 0.160 fija w0 (1+w0 = Om_m,dyn) y NO
-# entra en E(z); Om_m,cosm = MIRA*Om_m,dyn = 0.320 es el fondo gravitacional
-# y SI entra en E(z)/Poisson/CMB. Aqui se verifica que son distintos y que
-# la relación es exacta; la auditoría de uso paper-por-paper es Capa 5.
+# dos-Ω_m — PROBLEMA CENTRAL ABIERTO. El algebra es exacta (Om_m,dyn=1+w0
+# derivado; Om_m,cosm=MIRA*Om_m,dyn) pero la REGLA fisica de uso no esta
+# derivada: no hay mecanismo para MIRA ni funcion Om_m(z) de transicion.
 check("V-L3-2Om  Om_m,dyn != Om_m,cosm  (son cantidades distintas)",
       abs(Om_m_dyn - MIRA * Om_m_dyn) > 0.15)
 check("V-L3-2Om  relacion exacta Om_m,cosm = MIRA * Om_m,dyn",
       abs(MIRA * Om_m_dyn - 0.3199281880) < 1e-9)
-track_open("V-L3-2Om  uso correcto de cada Om_m no auditado por paper",
-           "regla: Om_m,dyn en 1+w0; Om_m,cosm en E(z)/Poisson/CMB. "
-           "Verificar que cada paper usa la correcta es tarea de Capa 5")
+track_open("V-L3-2Om  mecanismo MIRA (0.160 -> 0.320) NO derivado [CENTRAL]",
+           "0.160=1+w0 es derivado; MIRA es hipotesis auxiliar (ssee_core L41 "
+           "'no derivada'). NO hay regla derivada de por que Om_m,cosm va en "
+           "E(z), ni funcion Om_m(z) de transicion CMB<->BAO. 0.320 en (1+z)^3 "
+           "es fenomenologicamente materia oscura -- choca con el postulado "
+           "'sin materia oscura, solo geometria y viscosidad'. Es el problema "
+           "central del modelo; r_d/theta*/H0 son sintomas de esta brecha")
 
 # ─────────────────────────────────────────────────────────────────────
 # CAPA 4 — Confrontaciones con datos

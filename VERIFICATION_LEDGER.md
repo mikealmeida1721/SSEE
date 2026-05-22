@@ -52,7 +52,7 @@ paper vuelve a verificación.
 |------|-----------|--------|
 | **L1** | Axiomas y constantes algebraicas | re-verificado ✓ |
 | **L2** | Parámetros cosmológicos derivados | re-verificado ✓ |
-| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | re-verificado ✓ (14 elementos; 2 verif., 6 PARCIAL, 6 ABIERTO) |
+| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | re-verificado ✓ (14 elementos; 1 verif., 6 PARCIAL, 7 ABIERTO — dos-Ω_m es el central) |
 | **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | re-verificado ✓ (pipelines re-corridos; CMB+MCMC reproducen, r_d/H₀ derivaron) |
 | **L5** | Papers (sellado) | pendiente |
 
@@ -511,19 +511,40 @@ P10 ya lo declara honestamente. **ABIERTO.**
 IS (ζ̃, τ_Π) está construido para reproducir esa identidad y su parte
 no-trivial (derivación de τ_Π) no se muestra. **PARCIAL.**
 
-## V-L3-2Om — regla de uso de Ω_m,dyn vs Ω_m,cosm — **verificado (regla); auditoría por paper → Capa 5**
+## V-L3-2Om — mecanismo MIRA / transición Ω_m(z) — **ABIERTO (problema central del modelo)**
 
-*Contexto:* el "bug dos-Ω_m" — confundir Ω_m,dyn=0.160 con Ω_m,cosm=0.320.
+*Corrección de criterio (2026-05-22):* una versión anterior de esta entrada
+marcaba esto «verificado (regla)». **Era una sobreafirmación.** Lo único
+verificado es el *álgebra*; la *regla física* de uso no está derivada.
 
-1. **✓** Son dos cantidades **distintas**: Ω_m,dyn=0.16005 fija w₀ vía la
-   identidad 1+w₀=Ω_m,dyn y **no** entra en E(z); Ω_m,cosm=MIRA·Ω_m,dyn=
-   0.31993 es el fondo gravitacional y **sí** entra en E(z), Poisson y CMB.
-2. **✓** La relación Ω_m,cosm = MIRA·Ω_m,dyn es exacta (V-L1, V-L2-05).
-3. **○ pendiente:** verificar que **cada paper** usa la Ω_m correcta en
-   cada ecuación es una auditoría paper-por-paper — se hace en **Capa 5**.
+1. **✓ álgebra:** Ω_m,dyn = 1+w₀ = 0.16005 **sí** se deriva de φ,π.
+   Ω_m,cosm = MIRA·Ω_m,dyn = 0.31993 — el número es algebraico, pero
+   **MIRA es hipótesis auxiliar no derivada** (lo dice `ssee_core.py` L41).
+2. **✗ la regla NO está derivada.** «Ω_m,dyn fija w₀ y no entra en E(z);
+   Ω_m,cosm va en E(z)/Poisson/CMB» es una **aserción**, no un teorema.
+   No existe:
+   - una derivación de *por qué* MIRA (≈2) amplifica la materia gravitante;
+   - una función Ω_m,eff(z) que conecte el régimen tardío (BAO: 0.160
+     funciona, 0.5σ DESI, cero parámetros libres) con el temprano (CMB:
+     0.320 encaja). El modelo usa 0.320 y 0.160 como dos regímenes sin
+     puente — **no se sabe qué pasa en la transición**.
+3. **✗ riesgo de fondo:** poner 0.320 como término ∝(1+z)³ en E(z) es,
+   fenomenológicamente, **materia oscura** — y el postulado fundacional de
+   SSEE es *sin materia oscura, solo geometría y viscosidad*. Usar 0.320 en
+   el fondo sin un mecanismo derivado puede estar contradiciendo el axioma
+   que el modelo dice no necesitar.
 
-**Veredicto:** la regla está clara y el álgebra verificada; la conformidad
-documento por documento se sella en Capa 5.
+**Por qué importa.** El resultado más fuerte de SSEE (DESI 0.5σ, cero
+parámetros) se construyó con 0.160 en el fondo. El commit `4892b53`
+(«corrección dos-Ω_m») cambió E(z) a 0.320 — y eso (a) movió H₀ 66.75→67.76
+y (b) **causó la tensión r_d/θ* de 4–5σ** (V-L4-rd/θ*). Fue un cambio a un
+sector bien soportado **sin análisis previo de impacto**. No debe llamarse
+«corrección»: es un cambio de configuración con consecuencias.
+
+**Veredicto.** Qué es MIRA físicamente, por qué la materia gravitante es 2×
+la dinámica sin partícula de materia oscura, qué papel cumple AURA (=2·MIRA),
+y cuál es Ω_m(z) entre CMB y BAO — **ése es el problema central abierto del
+modelo**. Todo lo demás (r_d, θ*, H₀) son síntomas de esta brecha. **ABIERTO.**
 
 ## Estado final de Capa 3
 
@@ -532,9 +553,9 @@ EFT, K(X), IS, regla dos-Ω_m.
 
 | Veredicto | Elementos |
 |---|---|
-| **verificado** | α=φ⁴/3, regla dos-Ω_m |
+| **verificado** | α=φ⁴/3 |
 | **PARCIAL** (álgebra/forma cierra, insumo físico no) | OP-2, OP-6, OP-7, dos sectores, EFT, IS |
-| **ABIERTO** | OP-1, OP-3, OP-4, OP-5, m_φ, K(X) |
+| **ABIERTO** | OP-1, OP-3, OP-4, OP-5, m_φ, K(X), **dos-Ω_m (central)** |
 
 2 bugs corregidos/detectados de paso: curvatura de Kähler (P1, **corregido**)
 y M⁴ inconsistente P7↔P10 (**detectado**, pendiente de re-derivación).

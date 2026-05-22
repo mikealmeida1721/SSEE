@@ -189,6 +189,29 @@ track_open("V-L3-OP4  formula k-mouflage de P8 dimensionalmente rota",
            f"r_km tiene dimension GeV^{dim_rkm:.3f}; una longitud es GeV^-1. "
            "Introducida en commit 295ed6e; requiere re-derivacion")
 
+# OP-1 — densidad bariónica (P4/Paper B). La cadena algebraica cierra exacto;
+# el insumo Omega_b h^2 = (pi-phi)/(3 Omega^2) es coincidencia hallada por scan
+# de 7 candidatos, no derivada de BBN (ABIERTO).
+Omb_h2_alg = (pi - phi) / (3 * Omega ** 2)
+check("V-L3-OP1  identidad (pi-phi)/(3 Om^2) = 0.0224178",
+      abs(Omb_h2_alg - 0.0224178) < 1e-6,
+      f"computado {Omb_h2_alg:.7f}")
+track_open("V-L3-OP1  Omega_b h^2 no derivado",
+           "coincidencia a 0.32sigma de Planck hallada por scan de 7 candidatos; "
+           "falta cadena BBN (eta_B -> Omega_b) — diferida a Paper B")
+
+# OP-3 — separabilidad UV-IR (P10). Las identidades algebraicas cierran exacto;
+# la jerarquia (H0/M)^2 es real, pero la prueba de separabilidad (jacobiano
+# d phi/d chi) esta diferida y KALeff dropea el factor rho_crit (ABIERTO).
+alpha_op3 = phi ** 4 / 3
+check("V-L3-OP3  identidad 6*alpha = 2 phi^4",
+      abs(6 * alpha_op3 - 2 * phi ** 4) < 1e-12)
+check("V-L3-OP3  identidad sqrt(6*alpha) = phi^2 sqrt(2)",
+      abs((6 * alpha_op3) ** 0.5 - phi ** 2 * 2 ** 0.5) < 1e-12)
+track_open("V-L3-OP3  separabilidad UV-IR no probada",
+           "jerarquia (H0/M)^2~3e-62 real; prueba via jacobiano d phi/d chi "
+           "diferida a Paper B; KALeff^2 = M^4/(6 alpha) dropea rho_crit")
+
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.
 # Cuando un paper se sella, se registra aquí su sha256. El harness lo

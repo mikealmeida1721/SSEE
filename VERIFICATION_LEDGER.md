@@ -272,18 +272,55 @@ derivación. Requiere re-derivar el radio k-mouflage desde cero y propagar a
 P8 §4–5 (tabla, figura, ejemplo A1689). **ABIERTO** — remediación grande,
 pendiente de sesión dedicada.
 
+## V-L3-OP1 — Ω_b h² = (π−φ)/(3Ω²) (densidad bariónica) — **ABIERTO (coincidencia escaneada)**
+
+*Claim CLAUDE.md:* "OP-1 PARCIAL — (π−φ)/H₀_SSEE = 0.32σ".
+
+1. **✓ numérico:** (π−φ)/(3Ω²) = 1.52356/67.962 = 0.022418; Planck
+   0.02237±0.00015 → tensión **0.32σ**. La identidad pura (número/número)
+   es dimensionalmente correcta.
+2. **✗ no derivado:** la fórmula sale de un **scan** — `ssee_op1_baryon_density.py`
+   Paso 5 prueba 7 expresiones {(π−φ)/(3Ω²), 3(π−φ)/200, (π−φ)/φ¹¹, …} y
+   elige la de menor tensión. Eso es ajuste a un objetivo conocido.
+3. **✗ interpretación rota:** el script reescribe (π−φ)/(3Ω²) como
+   "(π−φ)/H₀_SSEE" — pero con H₀ en km/s/Mpc eso tiene unidades, no es
+   adimensional. La "derivación desde la tasa de esfalerón" se difiere a
+   Paper B/C.
+
+**Veredicto:** una coincidencia numérica decente (0.32σ) hallada por scan,
+no una derivación. **ABIERTO.**
+
+## V-L3-OP3 — separabilidad UV-IR / KALeff = φ²√(5/2) — **ABIERTO (cota asertada, dimensión confusa)**
+
+*Claim CLAUDE.md:* "OP-3 RESUELTO — jerarquía EFT (H₀/M)²≈10⁻⁶²".
+
+1. **✓** La jerarquía es real: (H₀/M)² ≈ 2.7×10⁻⁶² (M=8.81 meV ≫ H₀).
+2. **✗** Que esa jerarquía *pruebe* la separabilidad (Postulate C.1 →
+   Theorem C.1) es una **aserción**: `ssee_op3_separability.py` (L176–179)
+   admite que el jacobiano ∂φ/∂χ que mide el mezclado real se difiere a
+   Paper B. "RESUELTO (cota EFT)" asevera la cota y aplaza el cálculo.
+3. **✗ dimensión confusa:** KALeff² = M⁴/(6α). Con M⁴=5φ⁸ρ_crit y 6α=2φ⁴
+   da KALeff² = (5/2)φ⁴·ρ_crit — el script escribe "5φ⁴/2", **dropeando
+   ρ_crit**. KALeff resulta dimensional (∝GeV²) pero se factoriza
+   `KAL₀=KALeff·F` contra KAL₀=(φ+3π)/2, que es adimensional.
+4. El script contiene una auto-corrección sin resolver
+   (√(6α)=φ² → "corrección: =φ²√2") — la derivación no está limpia.
+
+**Veredicto:** la jerarquía (H₀/M)²~10⁻⁶² es un hecho; la "prueba" de
+separabilidad no lo es (jacobiano diferido), y KALeff arrastra un ρ_crit
+dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
+
 ## Pendientes de Capa 3
 
-OP-1 (Ω_b h², factor 200), OP-3 (separabilidad UV-IR), OP-5 (S₈ no lineal),
-OP-6 (screening multiplicativo); la acción EFT; las perturbaciones
-Israel-Stewart; el modelo de dos sectores φ-DM; m_φ; la completación UV K(X);
-el bug dos-Ω_m.
+OP-5 (S₈ no lineal), OP-6 (screening multiplicativo); la acción EFT; las
+perturbaciones Israel-Stewart; el modelo de dos sectores φ-DM; m_φ; la
+completación UV K(X); el bug dos-Ω_m.
 
-**Estado Capa 3:** re-verificados OP-2, OP-7, α=φ⁴/3, OP-4. Resultado: OP-2 y
-OP-7 **PARCIAL** (álgebra cierra, insumo físico no); α=φ⁴/3 **verificado**
-(consecuencia exacta de los axiomas n_s, r); OP-4 **ABIERTO** (fórmula rota).
-1 bug aritmético corregido de paso (curvatura de Kähler en P1). Patrón
-confirmado en 4/4: lo marcado "RESUELTO" no lo estaba.
+**Estado Capa 3:** re-verificados OP-1, OP-2, OP-3, OP-4, OP-7, α=φ⁴/3.
+Resultado: α=φ⁴/3 **verificado** (consecuencia exacta de los axiomas n_s, r);
+OP-2 y OP-7 **PARCIAL** (álgebra cierra, insumo físico no); OP-1, OP-3, OP-4
+**ABIERTO**. 1 bug aritmético corregido de paso (curvatura de Kähler, P1).
+Patrón confirmado en 6/6: ninguna "✅ RESUELTO" de CLAUDE.md lo estaba.
 
 # Capa 4 — Confrontaciones con datos — *pendiente*
 

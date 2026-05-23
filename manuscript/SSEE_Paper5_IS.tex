@@ -62,8 +62,14 @@ ORCID: \href{https://orcid.org/0009-0008-2195-7836}{0009-0008-2195-7836}.}%
 \begin{abstract}
 The Structural Self-Energy Expansion (SSEE-V3.6) derives a dark energy
 equation of state $w_0 = -T_r/M_v \simeq -0.8399$ and $w_a \simeq -0.6699$
-purely from the golden ratio $\varphi$ and $\pi$, with zero free parameters,
+purely from the golden ratio $\varphi$ and $\pi$, with zero fitted
+dimensionless parameters in the dark-energy background sector,
 in agreement with DESI DR2 at $0.05\sigma$.
+(Following Paper~1 \S1.3, the broader SSEE programme carries a small set of
+phenomenological ans\"atze in the dark-matter sector --- in particular the
+$\phi$-DM mass and the MIRA dynamical mechanism --- tracked as OP-8/9/11/14
+in \texttt{OPEN\_PROBLEMS.md}; the present perturbation analysis is independent
+of those ans\"atze.)
 Because $w_0 < -1/3$, a naive $k$-essence interpretation gives a negative
 bare sound speed $c^2_{s,\mathrm{bare}} = w_0 \simeq -0.840$, implying catastrophic
 gradient instability on all sub-horizon scales.
@@ -82,13 +88,19 @@ algebraic identity $\ztilde/(\tauPi H_0) = |w_0|$, forcing
 $c^2_{s,\mathrm{eff}}(k\to\infty) = 0$ to floating-point precision
 (equivalently $\ztilde/(\tauPi H_0) = \OmDE$, since $\OmDE = |w_0|$ is the
 saturation correspondence of Paper~1, Postulate~S, not an independent identity).
-This is not a numerical coincidence but an algebraic theorem: any dark energy
-model whose IS parameters satisfy $\ztilde = |\wz|\,\tauPi H_0$ is
-exactly marginally stable, and SSEE is a zero-free-parameter model
-that satisfies this constraint.
+This is not a numerical coincidence but a construction-level identity:
+any IS embedding of a dark-energy fluid satisfying
+$\ztilde = |\wz|\,\tauPi H_0$ is exactly marginally stable, and the SSEE
+structure constants admit such an embedding. We do not claim this as an
+external theorem about all IS models, but as the consistency statement that
+SSEE supports a stable IS extension at the construction level.
 The critical wavenumber is $k_\mathrm{crit} = 0.456\,H_0/c$, placing the
 instability boundary \emph{outside} the sub-horizon regime;
-all modes with $k > H_0/c$ are causally stabilised.
+all modes with $k > H_0/c$ are causally stabilised. The margin
+($k_\mathrm{crit}/H_0 c^{-1} \simeq 0.46$, a factor $\sim 2.2$ inside the
+horizon) is comfortable at tree level. A future one-loop treatment would
+test whether the stability regime is robust to QFT corrections; we
+note this as an extension question rather than a current limitation.
 
 For Q2, integrating the full linear IS perturbation ODE from $z=19$ to $z=0$
 yields $\delta_{\mathrm{DE}}/\delta_m \to 0^-$ at all sub-horizon scales.
@@ -101,7 +113,9 @@ For Q3, we compute the IS growth index $\gamma_{\mathrm{IS}} = 0.5503 \pm 0.0003
 (consistent with $\gamma_{\Lambda\mathrm{CDM}} \simeq 0.55$), the growth
 factor $\mathcal{G} = D_1^{\mathrm{SSEE}}/D_1^{\Lambda\mathrm{CDM}} = 1.0109$
 (growth essentially identical to $\Lambda$CDM once the correct cosmological
-background $\Omega_{m,\mathrm{cosm}} = 0.320$ is used in the Poisson source),
+background $\Omega_{m,\mathrm{cosm}} = 0.320$ is used in the Poisson source;
+see Paper~1, Sec.~1.4 (Two-$\Omega_m$ Criterion) for the rule that selects this
+value over $\Omega_{m,\rm dyn}=0.160$ on clustering scales),
 and the predicted $S_8 = \sigma_8(\Omega_{m,\mathrm{CMB}}/0.3)^{0.5}$.
 Using the Planck-normalised amplitude, we find
 $S_8^{\mathrm{SSEE}} = 0.8466 \pm 0.0063$, which is $1.0\sigma$ above Planck~2018,
@@ -131,7 +145,8 @@ marginal stability ($c^2_s=0$), while ghost condensation gives $c^2_s=1$.
 \label{subsec:intro_ssee}
 
 The Structural Self-Energy Expansion (SSEE-V3.6) \citep{SSEE_Paper1} is a
-zero-free-parameter dark energy framework whose equation-of-state parameters
+minimal-parameter dark energy framework (zero fitted dimensionless parameters
+in the background sector; see Paper~1 \S1.3) whose equation-of-state parameters
 \begin{equation}
   w_0 = -\frac{T_r}{M_v}
   = -\frac{3(\varphi+\beta)}{\varphi+\pi+K_v}
@@ -483,8 +498,11 @@ wavenumber to the IS relaxation scale.
     = c^2_{s,\mathrm{bare}} + |\wz|
     = \wz + |\wz| = 0.
 \end{equation}
-\textit{This is an exact algebraic identity, not a numerical coincidence.
-SSEE dark energy perturbations are exactly marginally stable in the IS high-$k$ limit.}
+\textit{This is an exact algebraic identity within the SSEE constants, not a
+numerical coincidence. It expresses a construction-level consistency rather
+than a theorem constraining all IS models: SSEE supports an IS embedding for
+which dark-energy perturbations are exactly marginally stable in the
+high-$k$ limit.}
 \end{tcolorbox}
 
 \vspace{6pt}
@@ -1188,10 +1206,15 @@ analysis of SSEE dark energy, addressing three physically motivated questions.
 The SSEE structure constants satisfy the exact algebraic identity
 $\ztilde/(\tauPi H_0) = \OmDE = |\wz|$, which forces
 $c^2_{s,\mathrm{eff}}(k\to\infty) = \wz + |\wz| = 0$ to machine precision.
-This is a theorem — not a numerical coincidence or parameter tuning.
-The critical wavenumber $k_\mathrm{crit} \simeq 0.456\,H_0/c < H_0/c$
+This is a construction-level identity within the SSEE constants — not a
+numerical coincidence or parameter tuning, but also not a theorem about
+arbitrary IS models. The critical wavenumber $k_\mathrm{crit} \simeq 0.456\,H_0/c < H_0/c$
 lies outside the sub-horizon regime; all observationally relevant modes are
-causally stabilised.
+causally stabilised. The margin between $k_\mathrm{crit}$ and the horizon
+($\sim$ factor 2.2) is comfortable at tree level. A future one-loop
+treatment would test the robustness of this regime to QFT corrections;
+we record this as an extension question for the SSEE-V4.0 agenda rather
+than a current limitation.
 Moreover, the signal speed saturates the causality bound ($v_{\rm sig} = c$),
 placing SSEE at the maximally causal, minimally fine-tuned configuration
 consistent with thermodynamic stability.

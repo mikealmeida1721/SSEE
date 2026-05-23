@@ -48,6 +48,12 @@ results/logs/*.npz
 # Virtual environments
 venv_*/
 
+# Sandbox experimental separado (tiene su propio .git, no incluir aquí)
+sandbox_unificado/
+
+# MCMC checkpoint outputs en src/ (artefactos de runs, no source)
+src/results/
+
 # OS
 .DS_Store
 Thumbs.db

@@ -1,6 +1,6 @@
 # SSEE — Structural Self-Energy Expansion
 
-**A zero-free-parameter dark energy model derived exclusively from φ (golden ratio) and π, tested against DESI DR2 BAO, Planck 2018 CMB (TT+TE+EE+lensing), galaxy cluster masses, and large-scale structure growth.**
+**A minimal-parameter dark energy framework derived from φ (golden ratio) and π. The background sector $(w_0, w_a, \Omega_\mathrm{DE}, \Omega_{m,\mathrm{dyn}})$ carries zero fitted dimensionless parameters; the framework rests on 4 postulates (D, S fundamentals + M, I auxiliary register-level) plus open problems tracked in [`OPEN_PROBLEMS.md`](OPEN_PROBLEMS.md). Tested against DESI DR2 BAO, Planck 2018 CMB (TT+TE+EE+lensing), galaxy cluster masses, and large-scale structure growth.**
 
 ---
 
@@ -25,7 +25,7 @@
 
 | # | Title | Pages | Status | PDF |
 |---|---|---|---|---|
-| 1 | Zero-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register | 25 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
+| 1 | Minimal-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register + Two-Ω_m Criterion | 28 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
 | 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 26 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
 | 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 24 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | 16 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |

@@ -25,9 +25,14 @@ CANONICAL = {
     "kfs":    0.493,     # k_fs h/Mpc (Paper 6)
     "mphi":   5.60,      # m_φ en eV
     "betac":  3.9978,    # |β_c| = AURA
-    "sigma8_ssee": 0.702, # Paper 5
-    "fsig8_tension_before": 2.56,  # Paper 6 baseline corregido (σ8=0.702, 6 surveys)
-    "fsig8_tension_after":  0.50,  # Paper 6 con φ-DM (6 surveys)
+    "G_ssee":      1.011,  # Paper 5 con Ω_m,cosm=0.320 (leve enhancement)
+    "sigma8_p5":   0.820,  # Paper 5 single-sector (Ω_m,cosm=0.320)
+    "S8_p5":       0.847,  # Paper 5 S₈ (3.9σ KiDS/DES — lensing challenge)
+    "sigma8_p6":   0.794,  # Paper 6 two-sector (G_2s=0.979 × 0.811)
+    "S8_p6":       0.820,  # Paper 6 S₈ two-sector (2.6σ KiDS — reducción parcial)
+    "fsig8_p5":    0.74,   # Paper 5 tensión media fσ₈ (6 surveys) — ≈ ΛCDM 0.73σ
+    "fsig8_p6":    0.76,   # Paper 6 tensión media fσ₈ two-sector
+    "sigma8_wdm":  0.737,  # Paper 6 rama WDM CLASS (top-hat directo)
 }
 
 # Patrones a buscar en archivos
@@ -43,9 +48,14 @@ PATTERNS = {
     "ns":    [r"0\.9649"],
     "rd":    [r"147\.[0-9]", r"175\.[0-9]"],
     "kfs":   [r"0\.493"],
-    "mphi":  [r"5\.71"],
+    "mphi":  [r"5\.60"],
     "betac": [r"3\.99[78]", r"3\.998"],
-    "sigma8":[r"0\.70[0-9]", r"sigma_?8.*0\.7"],
+    "sigma8_p5":  [r"0\.820", r"sigma_?8.*0\.82"],
+    "S8_p5":      [r"0\.847", r"S_?8.*0\.847"],
+    "sigma8_p6":  [r"0\.794"],
+    "S8_p6":      [r"S_?8.*0\.820", r"2\.6.sigma"],
+    "sigma8_wdm": [r"0\.737"],
+    "G_ssee":     [r"1\.01[0-9]", r"mathcal.*G.*1\.01"],
 }
 
 tex_files = sorted(glob.glob(f"{ROOT}/manuscript/SSEE_Paper*.tex"))
@@ -129,4 +139,120 @@ print(f"  H₀_MCMC       = 66.75±0.44      (Paper 2 — best-fit a DESI+Planck
 print(f"  H₀_nominal    = 66.66            (scripts Paper 3,5,6 — valor redondo)")
 print(f"  → Son tres contextos distintos, NO inconsistencia ✓")
 print(f"  → Pero deben estar DOCUMENTADOS en cada paper como tal")
+
+print("\n" + "=" * 70)
+print("AUDITORÍA DE VALORES OBSOLETOS (dos-Ω_m correction 2026-05-19/21)")
+print("Busca texto con valores PRE-corrección que ya no deben aparecer")
+print("=" * 70)
+
+STALE_PATTERNS = {
+    # sigma8=0.702 era Paper 5 con Ω_m,dyn=0.160 — ahora es 0.820
+    "sigma8=0.702 [OBSOLETO P5]": (
+        [r"sigma_?8.*0\.702", r"0\.702.*sigma_?8"],
+        ["SSEE_Paper5_IS.tex"],  # archivos donde es un error
+    ),
+    # G=0.866 era Paper 5 old — ahora G=1.011
+    "G=0.866 [OBSOLETO P5]": (
+        [r"0\.866", r"G.*0\.866"],
+        ["SSEE_Paper5_IS.tex"],
+    ),
+    # fσ₈ 2.67σ baseline era Paper 5/6 old — ahora 0.74σ single-sector
+    "fσ₈-2.67σ [OBSOLETO]": (
+        [r"2\.67.*sigma", r"2\.67\s*\\sigma"],
+        ["SSEE_Paper5_IS.tex", "SSEE_Paper6_phiDM.tex"],
+    ),
+    # S8=0.725 era Paper 5 old IS-only
+    "S8=0.725 [OBSOLETO P5]": (
+        [r"0\.725", r"S_?8.*0\.725"],
+        ["SSEE_Paper5_IS.tex"],
+    ),
+    # fσ₈ 0.50σ era Paper 6 con datos erróneos — ahora 0.76σ
+    "fσ₈-0.50σ [OBSOLETO P6]": (
+        [r"0\.50.*sigma", r"0\.50\s*\\sigma.*f"],
+        ["SSEE_Paper6_phiDM.tex"],
+    ),
+    # fσ₈ 0.76σ reemplazó al anterior — verificar que P6 lo tiene
+    "fσ₈-0.76σ [DEBE ESTAR EN P6]": (
+        [r"0\.76.*\\sigma", r"0\.76\s*\\sigma"],
+        [],  # no es error si aparece
+    ),
+}
+
+stale_found = []
+for label, (pats, error_files) in STALE_PATTERNS.items():
+    hits = []
+    for f in tex_files:
+        fname = os.path.basename(f)
+        try:
+            text = open(f).read()
+        except:
+            continue
+        for pat in pats:
+            for m in re.finditer(pat, text):
+                ln = text[:m.start()].count('\n') + 1
+                snip = text[max(0,m.start()-25):m.end()+25].replace('\n',' ').strip()
+                is_error = (fname in error_files) if error_files else False
+                tag = "❌ ERROR" if is_error else "ℹ INFO"
+                hits.append((fname, ln, snip, tag))
+                if is_error:
+                    stale_found.append(f"{label} en {fname}:{ln}")
+    if hits:
+        print(f"\n[{label}]")
+        for fname, ln, snip, tag in hits[:3]:
+            print(f"  {tag}  {fname}:{ln}  →  ...{snip}...")
+
+print()
+if stale_found:
+    print(f"⚠️  ERRORES ENCONTRADOS: {len(stale_found)}")
+    for e in stale_found:
+        print(f"  → {e}")
+else:
+    print("✅  Sin valores obsoletos detectados en los archivos tex de error esperado")
+
+print("\n" + "=" * 70)
+print("AUDITORÍA LaTeX — referencias cruzadas y etiquetas")
+print("=" * 70)
+
+# Verificar que eq:phi_pi_duality existe en P7 y se cita
+p7 = open(f"{ROOT}/manuscript/SSEE_Paper7_EFT.tex").read()
+if r"\label{eq:phi_pi_duality}" in p7:
+    print("  ✅ Paper 7: \\label{eq:phi_pi_duality} definida")
+else:
+    print("  ❌ Paper 7: falta \\label{eq:phi_pi_duality}")
+
+if r"\eqref{eq:phi_pi_duality}" in p7:
+    print("  ✅ Paper 7: \\eqref{eq:phi_pi_duality} citada en texto")
+else:
+    print("  ❌ Paper 7: falta \\eqref{eq:phi_pi_duality} en texto")
+
+# Verificar que Paper 6 tiene el nuevo framing S8
+p6 = open(f"{ROOT}/manuscript/SSEE_Paper6_phiDM.tex").read()
+if "3.9" in p6 and "lensing" in p6.lower():
+    print("  ✅ Paper 6: contiene '3.9' + 'lensing' (nuevo framing S₈)")
+else:
+    print("  ❌ Paper 6: falta referencia a 3.9σ lensing tension")
+
+if "2.6" in p6:
+    print("  ✅ Paper 6: contiene '2.6' (S₈ reducida two-sector)")
+else:
+    print("  ❌ Paper 6: falta '2.6σ' two-sector S₈")
+
+if "k_{\\rm fs}" in p6 or r"k_{\rm fs}" in p6 or "kfs" in p6 or "k_{fs}" in p6:
+    print("  ✅ Paper 6: contiene k_fs (predicción falsificable)")
+else:
+    print("  ❌ Paper 6: falta k_fs como predicción falsificable")
+
+# Verificar OP-7 parcialmente resuelto
+op = open(f"{ROOT}/OPEN_PROBLEMS.md").read()
+if "PARCIALMENTE RESUELTO" in op and "OP-7" in op:
+    print("  ✅ OPEN_PROBLEMS.md: OP-7 marcado PARCIALMENTE RESUELTO")
+else:
+    print("  ❌ OPEN_PROBLEMS.md: OP-7 no actualizado")
+
+print("\n" + "=" * 70)
+print("RESUMEN FINAL")
+print("=" * 70)
+total_errors = len(stale_found)
+print(f"  Errores críticos (valores obsoletos en tex): {total_errors}")
+print(f"  Estado: {'✅ LIMPIO' if total_errors == 0 else '❌ REQUIERE CORRECCIÓN'}")
 

@@ -2,7 +2,7 @@
 
 ## Qué es este proyecto
 
-**Structural Self-Energy Expansion (SSEE-V3.6)** — modelo cosmológico de energía oscura de cero parámetros libres, derivado algebraicamente de φ (razón áurea) y π. Autor: Mike Edison Almeida Vallejo.
+**Structural Self-Energy Expansion (SSEE-V3.6)** — modelo cosmológico de energía oscura con ~3 parámetros efectivos (vs 6 ΛCDM), con el sector background derivado algebraicamente de φ (razón áurea) y π, sin partículas WIMP/axión-QCD/SUSY. Extensiones fenomenológicas en el sector DM (Paper 6) tratadas como ansätze y rastreadas en OPEN_PROBLEMS.md (OP-8, OP-9, OP-11, OP-14). Autor: Mike Edison Almeida Vallejo.
 
 Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD sin huérfanos, Postulados D y S formalizados en Paper 1, barrido de referee hostil — ver OPEN_PROBLEMS.md para brechas físicas abiertas):
 - **Paper 1**: Framework teórico + EFT + Predictive Register (arXiv-ready) ✅
@@ -448,3 +448,60 @@ Ver `git log` — commit final cubre P4 tex + bib + OPEN_PROBLEMS + CLAUDE.md
 - [ ] Re-contactar endorsers con papers 1–3 en estado submission-ready
 - [ ] B5: Quintessential inflation V(φ) — derivación ns desde α-attractor (largo plazo)
 - [ ] OP-4: Investigar cutoff Λ_SSEE para recalcular r_V solar
+
+---
+
+## ✅ Sesión 2026-05-23 — Reframe minimal-parameter + Postulados auxiliares + Auditoría hostil
+
+### Cambios principales
+
+**Slogan "0 free parameters" → "minimal-parameter framework"** en P1, P2, P3, P4, P5, P6, Endorser, Unified. Honest accounting documentado en P1 §1.3.
+
+**5 OPs nuevos** en OPEN_PROBLEMS.md:
+- OP-8: MIRA dynamical mechanism (7 mech ruled out → archive `src/mira_attempts/`)
+- OP-9: m_φ=5.60 eV phenomenological ansatz (Paper 6 admits)
+- OP-11: ξ non-minimal coupling free parameter
+- OP-13: θ_E factor 2 SLACS/BELLS not verified
+- OP-14: Σm_ν Type P, offset 22 ad hoc — eslabón más débil
+
+**Two-Ω_m criterion** (P1 §1.4) — tabla por paper con 18 filas + cross-refs en P4/P5/P6/P7/P8/P9. Cierra el "uso arbitrario" ante referee.
+
+**Postulados enumerados honestamente: 4 total** (D, S fundamentales + M, I auxiliares):
+- M (MIRA = (3φ+π)/4) — valor algebraico; mecanismo OP-8
+- I (α-attractor con α=φ⁴/3, forma N_*=2·φⁿ) — n=7 es **corolario** (única solución entera en [50,60] e-folds), no postulado
+- YGG_PROTON (π-φ)/(π+φ)=0.3201 disuelto como predicción algebraica independiente, no postulado adicional
+
+**Filosofía de auditoría guardada en memoria** (`feedback_audit_philosophy.md`): hostilidad sin resolución agrega debilidades. Aplicar fase 2 (buscar la salida) antes de reportar como vulnerabilidad. Aplicado en sesión a 4 hallazgos que terminaron siendo confirmaciones del modelo.
+
+**P5 'algebraic theorem' → 'construction-level identity'** en 3 lugares + nota margen k_crit comfortable tree-level.
+
+**β_c signo aclarado**: footnote en P8 explicita que β_c=+AURA (disformal) ≠ β_c=-AURA (conformal P7).
+
+### Auditoría hostil de 7 capas — resultado
+
+- **Capa 1** identidades algebraicas machine precision: 20+ verificadas, 1 hallazgo (dualidad Ω_m,CMB 0.054%) documentado como cross-confirmación, no contradicción.
+- **Capa 2** cross-implementación ssee_core↔LaTeX↔scripts: VERDE en 16 constantes × 10 papers.
+- **Capa 3-7** derivación/dimensional/física/asunciones/falsificabilidad: 3 fixes aplicados (H-3.1, H-5.1, H-5.2).
+
+### Estado del modelo tras sesión
+
+- **0 contradicciones internas identificadas**
+- **4 postulados** explícitos (vs presentación previa de "2")
+- **5 OPs catalogadas** con cadena de dependencias (OP-14→OP-9 conocida)
+- Guardián VERDE 102/102
+- Todos los papers recompilan limpio
+- Filosofía de auditoría documentada para sesiones futuras
+
+### Limpieza repo
+
+- `src/mira_attempts/` creado con 12 scripts archivados + README
+- `.gitignore` actualizado: sandbox_unificado/, src/results/
+- VERIFICATION_LEDGER paths actualizados
+- SEALED_STATUS.md actualizado con acciones completadas
+
+### POA siguiente
+
+- [ ] **Plan de ataque OPs** con cadena de dependencias (OP-14 primero por ser eslabón débil)
+- [ ] **OP-13** verificar literatura SLACS/BELLS θ_E factor 2
+- [ ] **Slim Journal v2** diseño estructural (~25 pp con framing minimal-parameter)
+- [ ] Re-compilar PDFs en `docs/` desde manuscripts actualizados

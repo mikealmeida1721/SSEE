@@ -101,8 +101,9 @@ lensing amplitude.
 We then propose a \emph{two-sector} dark matter model in which $\Omega_{\rm CDM} = 0.160$
 is supplemented by a $\phi$-dark matter component
 $\Omega_{\phiDM} = (\MIRA - 1)\,\Omega_{\rm m,dyn} = 0.160$, active only on scales $k < \kfs$.
-The characteristic mass $\mphi = \mnu \times \Halg = 5.60\,\mathrm{eV}$ is fixed with
-no free parameters by quantities derived in Paper~4.
+The characteristic mass $\mphi = \mnu \times \Halg = 5.60\,\mathrm{eV}$ is adopted
+as a phenomenological ansatz (OP-9 in \texttt{OPEN\_PROBLEMS.md}; not fitted to
+growth data) using quantities from Paper~4.
 On scales $k < \kfs$, both sectors cluster and the effective growth density is
 $\Omega_{\rm m,growth} = 0.320$; the WDM free-streaming suppression at $k > \kfs$ reduces
 the growth factor to $G_{\rm 2s} = 0.979$, giving
@@ -158,7 +159,9 @@ KiDS-1000 ($0.766 \pm 0.020$) \citep{KiDS2021} and $3.9\sigma$ above DES-Y3
 ($0.776 \pm 0.017$) \citep{DESY32022}.  This is the $S_8$--lensing tension.
 
 This paper presents a phenomenological two-sector model that reduces the $S_8$ lensing
-tension from $3.9\sigma$ to $2.6\sigma$ within the zero-parameter philosophy of \SSEE,
+tension from $3.9\sigma$ to $2.6\sigma$ within the minimal-parameter philosophy of
+\SSEE\ (no growth-data fit; new ans\"atze are explicit and tracked as OP-8/9/11/14
+in \texttt{OPEN\_PROBLEMS.md}),
 via a WDM free-streaming suppression at $k > \kfs = 0.493\,h/$Mpc.
 
 \subsection{Strategy}
@@ -177,10 +180,15 @@ We follow three steps, each falsifying hypotheses in sequence:
     $\MIRA = (\varphi+\beta)/2 \approx 2$ as motivation for a second dark-matter component, parameterized as
     with $\Omega_{\phiDM} = (\MIRA - 1)\,\Omega_{\rm m,dyn} = 0.160$, active only
     below a free-streaming wavenumber $\kfs$.
-  \item \textbf{Algebraic mass derivation}: combining the acoustic residual mass
+  \item \textbf{Mass ansatz}: combining the acoustic residual mass
     $\mnu = 0.0824\,\mathrm{eV}$ (Paper~4) with the algebraic Hubble constant
-    $\Halg = 3(\varphi+\pi)^2 = 67.96$ (Paper~4), we obtain
-    $\mphi = \mnu \times \Halg = 5.60\,\mathrm{eV}$ with no free parameters.
+    $\Halg = 3(\varphi+\pi)^2 = 67.96$ (Paper~4), we adopt the
+    phenomenological ansatz
+    $\mphi = \mnu \times \Halg = 5.60\,\mathrm{eV}$. This is not fitted to
+    growth data but it is not derived from first principles either: a Yukawa
+    or curvature-of-$V(\phi)$ origin is left for future work and tracked as
+    OP-9 (with OP-14 for the underlying Type~P status of $\Sigma m_\nu$) in
+    \texttt{OPEN\_PROBLEMS.md}.
 \end{enumerate}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -233,7 +241,8 @@ equation gives a ratio of $3.04$, $52\%$ off. $\MIRA$ therefore stands as an
 algebraic postulate pointing to new structure beyond the single-fluid background.
 
 \textbf{Physical mechanism.}
-The SSEE background fixes $\Omega_{m,\rm dyn} = 0.160$ (zero free parameters),
+The SSEE background fixes $\Omega_{m,\rm dyn} = 0.160$ (the dynamical-sector
+value of Paper~1, Sec.~1.4, \textit{Two-$\Omega_m$ Criterion}),
 while Planck \citep{Planck2018} measures $\Omega_{m,\rm CMB} = 0.315$. The deficit
 $\Delta\Omega_m = 0.155 \approx 0.160$ must be carried by an additional dark-sector
 component that couples to the CMB metric perturbations but undergoes free-streaming
@@ -376,14 +385,20 @@ sector) is to be derived in future work. The result is \emph{predictive}: the
 algebraic derivation gives a specific eV-scale mass for the $\phi$-DM field
 without any free parameters.
 
-\begin{tcolorbox}[result, title={Mass derivation — zero free parameters}]
+\begin{tcolorbox}[result, title={Mass ansatz — phenomenological, not yet derived}]
   \begin{equation*}
     \mphi = \mnu^{\rm active} \times \Halg
            = 0.0824\,\mathrm{eV} \times 67.96
            = 5.60\,\mathrm{eV}
   \end{equation*}
-  Both factors are fixed by the acoustic residual operator (Paper~4).
-  No new continuously fitted background parameters are introduced. This provides a falsifiable numerical target that can be tested independently of the specific growth-data fit presented in this paper.
+  Both factors are fixed by quantities computed in Paper~4. Note however that
+  $\Sigma m_\nu^{\rm active}$ itself is classified as a Type~P (phenomenological)
+  result in Paper~4 (the integer offset in $\mathcal{R}=4\,\mathrm{KAL}-22$ is not
+  derived from first principles); this dependency is tracked as OP-14, and the
+  present mass relation as OP-9, in \texttt{OPEN\_PROBLEMS.md}. The
+  expression therefore constitutes a falsifiable numerical \emph{ansatz} rather
+  than a parameter-free derivation: a Yukawa or curvature-of-$V(\phi)$ origin
+  is to be derived in future work.
 \end{tcolorbox}
 
 \subsection{Explicit Lagrangian and field content}
@@ -391,9 +406,10 @@ without any free parameters.
 
 The mass relation~\eqref{eq:mass_algebraic} fixes a number; it does not, by
 itself, specify the field.  We now make the field content explicit.
-We model $\phi$-dark matter as a single real scalar field $\chi$ (distinct
-from the SSEE background $k$-essence scalar $\phi$ of Paper~7), minimally
-coupled to gravity, with the action
+We model $\phi$-dark matter as a single real cosmological scalar field $\chi$
+(distinct from the SSEE background $k$-essence scalar $\phi$ of Paper~7; both
+are cosmological scalars and neither is a WIMP, QCD-axion, or SUSY relic),
+minimally coupled to gravity, with the action
 \begin{equation}
   S_{\phiDM} = \int d^4x\,\sqrt{-g}\,
     \left[
@@ -413,15 +429,19 @@ Standard Model is included: $\chi$ interacts only gravitationally.
 Two features of Eq.~\eqref{eq:phiDM_lagrangian} are essential below.
 First, $\chi$ is a \emph{boson}, not a fermion --- which excludes the
 active--sterile mixing production channel.
-Second, the action contains \emph{no} free continuous parameter other than
-$\xi$, whose role we now constrain by the production mechanism.
+Second, the action contains a single free continuous parameter, the
+non-minimal coupling $\xi$ (tracked as OP-11 in
+\texttt{OPEN\_PROBLEMS.md}); its role is constrained below by the production
+mechanism.
 
 \subsection{Production mechanism: the Dodelson--Widrow route is excluded}
 \label{subsec:production}
 
 A relic of mass $\mphi = 5.60\,\mathrm{eV}$ contributing
 $\Omega_{\phiDM}h^2 \simeq 0.074$ can in principle be populated by two
-mechanisms.  We tested both against the zero-parameter requirement.
+mechanisms.  We tested both against the requirement that no additional
+\emph{continuous} free parameter beyond those already admitted as open problems
+($m_\phi$ itself, OP-9; $\xi$, OP-11) be introduced.
 
 \paragraph{(a) Dodelson--Widrow (non-resonant mixing) --- tested, excluded.}
 The Dodelson--Widrow mechanism \citep{DodelsonWidrow1994} produces the relic
@@ -432,17 +452,20 @@ the Boyarsky--Ruchayskiy--Shaposhnikov relation \citep{Boyarsky2009} fixes
   \sin^2(2\theta)_{\rm DW} \;\simeq\; 4.78\times10^{-5}.
   \label{eq:sin2theta_DW}
 \end{equation}
-For SSEE to retain zero free parameters, $\sin^2(2\theta)_{\rm DW}$ would have
-to admit a closed algebraic form in $\varphi,\pi$.  A scan of $\sim 80$ monomial
-combinations of $\varphi,\pi,\Omega,\MIRA$ (script
+For the DW route to be consistent with the rest of the SSEE programme,
+$\sin^2(2\theta)_{\rm DW}$ would have to admit a closed algebraic form in
+$\varphi,\pi$ (otherwise it would constitute a \emph{new} continuous fitted
+parameter, in addition to the ones already admitted as open problems).
+A scan of $\sim 80$ monomial combinations of $\varphi,\pi,\Omega,\MIRA$ (script
 \texttt{ssee\_paperB\_DW.py}) returns a best candidate $\varphi^{-21} =
 4.09\times10^{-5}$, which differs from Eq.~\eqref{eq:sin2theta_DW} by
 $14.6\%$ --- beyond the $10\%$ threshold adopted for a ``clean'' SSEE
 identity.  \textbf{This is a negative result}: the DW mixing angle does
 \emph{not} reduce to the SSEE algebra.  Were $\phi$-DM a DW sterile neutrino,
-$\sin^2(2\theta)$ would be an irreducible free parameter, violating the
-zero-parameter principle.  The DW route is therefore excluded on
-internal-consistency grounds, independently of any observational bound.
+$\sin^2(2\theta)$ would be an irreducible free parameter, inconsistent with
+the minimal-parameter philosophy that already tolerates only the ans\"atze
+catalogued in \texttt{OPEN\_PROBLEMS.md}.  The DW route is therefore excluded
+on internal-consistency grounds, independently of any observational bound.
 
 \paragraph{(b) Gravitational particle production --- adopted.}
 The remaining channel consistent with the action~\eqref{eq:phiDM_lagrangian}
@@ -1012,26 +1035,37 @@ relic abundance integral, not the field's identity.
   \end{enumerate}
 \end{tcolorbox}
 
-\subsection{Status of the zero-parameter claim}
+\subsection{Status of the parameter count in the two-sector extension}
 \label{subsec:zero_params}
 
-The \SSEE\ philosophy requires that no number be \emph{fitted} to data. We verify:
+The \SSEE\ philosophy requires that no number be \emph{fitted} to data. We
+distinguish here between \emph{not fitted to data} (i.e., fixed prior to the
+comparison) and \emph{derived from first principles}. The two-sector observables
+of this paper are not fitted; their inputs include three phenomenological
+elements explicitly tracked as open problems:
 
 \begin{itemize}
   \item $\Omega_{\phiDM} = (\MIRA - 1)\,\Omega_{\rm m,dyn}$: derived from the
-    MIRA algebraic identity. Not fitted.
-  \item $\mphi = \mnu \times \Halg$: both factors derive from Paper~4 algebraic
-    operators. Not fitted.
+    MIRA algebraic identity. \emph{Not fitted.} (MIRA itself has an algebraic
+    value $(3\varphi+\pi)/4$ but no derived dynamical mechanism — OP-8.)
+  \item $\mphi = \mnu \times \Halg$: a phenomenological ansatz
+    (OP-9); $\Sigma m_\nu$ is itself Type~P (OP-14). Not fitted to growth data.
+  \item $\xi$: non-minimal coupling, currently treated as a free parameter
+    (OP-11). Constrained below by the production mechanism.
   \item $G_{\rm 2s} = 0.979$: computed by integrating the growth ODE with
-    $\Omega_{\rm m,growth} = 0.320$ (fixed by the two sectors above). Not fitted.
+    $\Omega_{\rm m,growth} = 0.320$ (fixed by the two sectors above). Not
+    fitted.
   \item $\sigeff = 0.794$: derived from $G_{\rm 2s}$ and the Planck reference
     $\sigma_{8,\Lambda{\rm CDM}} = 0.811$. Not fitted.
 \end{itemize}
 
-The two-sector extension adds zero free parameters to the model. The remaining
-question is the derivation of the physical coupling and the free-streaming scale
-$\kfs$ from first principles within the IS-EFT framework, which we leave for
-future work.
+The two-sector extension does not introduce new \emph{fitted} parameters
+relative to the background sector but it does introduce phenomenological
+ans\"atze ($m_\phi$, $\xi$, the MIRA dynamical mechanism). Resolution of
+OP-8/9/11/14 — in particular deriving the physical coupling, the
+free-streaming scale $\kfs$, and the offset $\mathcal{R}=4\,\mathrm{KAL}-22$ from
+first principles within the IS-EFT framework — would restore a strict
+zero-parameter status. This is left for future work.
 
 % ═══════════════════════════════════════════════════════════════════════════════
 \section{Conclusions}
@@ -1051,9 +1085,11 @@ We have proposed a phenomenological two-sector resolution for the $f\sigma_8$ gr
     $\Omega_{\phiDM} = (\MIRA-1)\,\Omega_{\rm m,dyn} = 0.160$, with a
     free-streaming cutoff at $\kfs$.
 
-  \item \textbf{Algebraic mass}: $\mphi = \mnu^{\rm active} \times \Halg =
-    0.0824 \times 67.96 = 5.60\,\mathrm{eV}$, fixed by the acoustic residual
-    operator and the algebraic Hubble constant of Paper~4. Zero new free parameters.
+  \item \textbf{Mass ansatz}: $\mphi = \mnu^{\rm active} \times \Halg =
+    0.0824 \times 67.96 = 5.60\,\mathrm{eV}$, fixed by quantities from
+    Paper~4 (\,$\Sigma m_\nu^{\rm active}$ is Type~P, OP-14)\, and the algebraic
+    Hubble constant. Phenomenological ansatz tracked as OP-9; not fitted to
+    growth data.
 
   \item \textbf{Verification}: two-sector growth factor $G_{\rm 2s} = 0.979$
     gives $\sigeff = 0.794$ ($S_8 = 0.820$, $2.62\sigma$ KiDS, better than

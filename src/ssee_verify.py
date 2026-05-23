@@ -324,6 +324,28 @@ track_open("V-L3-cs2  el sector geometrico de SSEE no puede agruparse [CENTRAL]"
            "agrupamiento. El CMB exige materia que se agrupe -> la k-essence "
            "actual no puede ser la '0.320'. MIRA no esta en la accion vigente")
 
+# Ruta B (gravedad disformal de P8) — auditada 2026-05-22. La accion de
+# P8 incluye un campo de materia oscura psi_DM: el mecanismo MIRA/lensing
+# se sostiene en rho_DM. Choca con el postulado no-DM de P1.
+track_open("V-L3-disf  mecanismo disformal de P8 presupone materia oscura",
+           "P8 accion eq.(1) incluye S_DM[g~;psi_DM]: campo de materia "
+           "oscura acoplado disformalmente. Todo el mecanismo MIRA/lensing "
+           "se sostiene en rho_DM (P8 L221,238,271). P1 prohibe DM (L51 "
+           "'without dark-matter particles'; L278 detectar DM falsa el "
+           "modelo) -> contradiccion interna P1<->P8. Ademas P8 L69 admite "
+           "sqrt(beta_c)/MIRA=1.00030 'near-coincidence, not an identity'. "
+           "Ruta B disformal NO deriva MIRA sin materia oscura")
+
+# Mecanismo de retencion conformal (Ruta B) — probado 2026-05-22 en
+# src/ssee_mira_mechanism.py. Acoplamiento beta_c=-AURA: negativo limpio.
+track_open("V-L3-mira  retencion conformal beta_c=AURA NO reproduce MIRA",
+           "test del fondo acoplado Friedmann+KG (ssee_mira_mechanism.py): "
+           "con beta_c=-AURA la excursion del campo es x18 excesiva, signo "
+           "invertido (drena la materia en vez de cargarla, R(z=2)~0.016), y "
+           "timing invertido (campo thawing). Cuarto mecanismo descartado "
+           "para el '0.320' tras cs2, Poisson-mu y disformal. MIRA sin "
+           "derivacion en el marco vigente por los 4 mecanismos naturales")
+
 # dos-Ω_m — PROBLEMA CENTRAL ABIERTO. El algebra es exacta (Om_m,dyn=1+w0
 # derivado; Om_m,cosm=MIRA*Om_m,dyn) pero la REGLA fisica de uso no esta
 # derivada: no hay mecanismo para MIRA ni funcion Om_m(z) de transicion.

@@ -52,7 +52,7 @@ paper vuelve a verificación.
 |------|-----------|--------|
 | **L1** | Axiomas y constantes algebraicas | re-verificado ✓ |
 | **L2** | Parámetros cosmológicos derivados | re-verificado ✓ |
-| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV) | re-verificado ✓ (15 elementos; 1 verif., 6 PARCIAL, 8 ABIERTO — dos-Ω_m es el central) |
+| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV, T_μν, disformal, retención MIRA) | re-verificado ✓ (17 elementos; 1 verif., 6 PARCIAL, 10 ABIERTO — dos-Ω_m es el central) |
 | **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | re-verificado ✓ (pipelines re-corridos; CMB+MCMC reproducen, r_d/H₀ derivaron) |
 | **L5** | Papers (sellado) | pendiente |
 
@@ -546,6 +546,225 @@ resultado negativo limpio: descarta «la k-essence es la materia geométrica»
 y dice qué hay que buscar — un sector cuyo c_s² pueda anularse a alto z
 (la viscosidad IS pretendía eso, pero V-L3-IS la halló decorativa).
 **ABIERTO.**
+
+## V-L3-disf — mecanismo disformal de Paper 8 (Ruta B) — **ABIERTO (inconsistencia interna P1↔P8)**
+
+*Origen:* tras el resultado negativo de V-L3-cs2 (la k-essence no se
+agrupa), se exploró la «Ruta B»: que el 0.320 no sea sustancia sino
+gravedad amplificada. Paper 8 ya invoca «MIRA emergence» vía geodésicas
+disformales — se auditó si ese mecanismo deriva MIRA sin materia oscura.
+Auditoría hecha 2026-05-22.
+
+**Lo que dice Paper 8.** La acción (P8 eq.1) es
+S = ∫√−g[M_pl²R/2 + P(X,φ)] + **S_DM[g̃_μν; ψ_DM]** + S_b[g_μν; ψ_b].
+Contiene un **campo de materia oscura ψ_DM** acoplado a la métrica
+disformal g̃_μν = g_μν + (2/M⁴)∂_μφ∂_νφ. Todo el mecanismo se sostiene
+en ρ_DM: la ecuación del escalar (1/KAL)∇²φ = (β_c/M_pl)·ρ_DM (P8 L221),
+el «régimen dominado por materia oscura» (L238), «la fuerza sobre una
+partícula de materia oscura» (L271).
+
+**La contradicción.** Paper 1 L51: el modelo se construye «without
+introducing free parameters or exotic dark-matter particles». Paper 1
+L278: SSEE «is refuted by direct detection of a collisionless
+dark-matter particle». **Paper 8 presupone exactamente lo que Paper 1
+declara falsador.** No es una extensión — es una violación del postulado
+fundacional.
+
+**Además, MIRA no «emerge».** El propio Paper 8 (L69) admite que
+√β_c/MIRA = 1.00030 es «a near-coincidence, **not an algebraic
+identity**». La «emergencia» de MIRA en el lensing es una coincidencia
+numérica al 0.03 %, no una derivación.
+
+**Veredicto.** La Ruta B tal como está escrita en Paper 8 **no deriva
+MIRA sin materia oscura** — la introduce. Con V-L3-cs2 (sustancia que se
+agrupa: descartada) y α_B=α_M=0 de Paper 7 (Poisson modificada μ>1:
+imposible, μ=1 exacto), **los tres mecanismos posibles para el 0.320 en
+un marco sin materia oscura fallan.** El 0.320/MIRA no está derivado en
+ninguno de los 10 papers.
+
+**Lo rescatable.** La ecuación (1/KAL)∇²φ = (β_c/M_pl)·ρ, con ρ → materia
+bariónica + dinámica real (0.160) en vez de ρ_DM, sería un modified
+gravity genuino sin materia oscura: el campo geométrico φ desarrolla
+perfiles alrededor de materia ordinaria y amplifica su gravedad. Pero
+(a) Paper 8 da G_eff/G ≈ 177 en cúmulos, no ≈2=MIRA en el fondo
+cosmológico — régimen distinto, sin verificar; (b) amplificar el
+agrupamiento no mueve las posiciones de los picos del CMB, fijadas por
+r_d/D_A del fondo. Rescate posible en principio, no hecho. **ABIERTO.**
+
+**Bloquea:** sellado de Paper 8 (inconsistencia con Paper 1); y deja a
+P3/P6/P9 sin un mecanismo válido para el 0.320.
+
+## V-L3-mira — test del mecanismo de retención conformal para MIRA — **ABIERTO (mecanismo candidato FALLA)**
+
+*Origen:* tras V-L3-cs2 y V-L3-disf se construyó y probó la «Ruta B» en su
+forma más concreta — MIRA como retención de energía vía un acoplamiento
+conformal de quintaesencia entre φ y la materia real (el L_int de Paper 7
+re-apuntado de materia oscura a materia real, como exige Paper 1).
+Cálculo: `src/mira_attempts/ssee_mira_mechanism.py`, 2026-05-22.
+
+**El mecanismo (física estándar, quintaesencia acoplada Amendola 2000).**
+Un acoplamiento conformal da, en el fondo:
+- ρ_m = ρ_m,0 a⁻³·exp[−β_c(φ−φ_0)]  ⟹  R(a) = exp[−β_c·Δφ(a)]
+- KG con fuente: (P_X+2X P_XX)φ̈ + 3H P_X φ̇ + V_φ = β_c ρ_m
+- Tasa de retención Γ = |β_c φ̇|; desacople en Γ = H.
+Para R_temprano = MIRA se requiere AURA·Δφ_total = ln(MIRA) = 0.693, i.e.
+una excursión del campo Δφ ≈ 0.173 M_pl.
+
+**El test (β_c = −AURA fijo, sin ajustar nada).** Integración del fondo
+acoplado Friedmann+KG hacia atrás desde hoy hasta z=1100:
+
+| | Necesario | Obtenido |
+|---|---|---|
+| R(hoy) | 1 | 1.00000 ✓ (maquinaria OK) |
+| R(z=1100) | MIRA ≈ 1.999 | ≈ 0 ✗ |
+| AURA·Δφ_total | +0.693 | **−12.3** ✗ |
+| signo | R>1 (carga materia) | R<1 (drena materia) ✗ |
+| timing | retención activa temprano | activa tarde (Γ/H≈3 hoy) ✗ |
+
+**Veredicto — negativo limpio.** β_c = AURA ≈ 4 es un acoplamiento
+cosmológico enorme (los límites realistas de quintaesencia acoplada dan
+β ≲ 0.1; AURA es ~40× ese techo). Con esa fuerza el término β_c ρ_m de la
+KG **golpea el campo** y lo hace rodar Δφ ≈ −3.1 (×18 lo necesario) con
+signo invertido: en vez de cargar el sector materia lo **drena** —
+R(z=2) ≈ 0.016, la materia casi desaparece. Además la KG empuja la
+k-essence a un régimen sin solución real de Friedmann en el 44 % de la
+trayectoria. Tres fallas independientes (magnitud, signo, timing) ⟹ no es
+«casi» — es el mecanismo equivocado.
+
+**Estado del problema MIRA.** Cuatro mecanismos probados para el «0.320»,
+cuatro negativos: sustancia que se agrupa (V-L3-cs2), Poisson modificada
+μ>1 (α_B=α_M=0, Paper 7), disformal (V-L3-disf, exige ψ_DM), y retención
+conformal (esta entrada). **MIRA no tiene derivación en el marco vigente
+de SSEE por ninguno de los cuatro mecanismos naturales.** El «0.320» de
+P3/P6/P8/P9 está insertado, no derivado. El núcleo w₀wₐ (DESI 0.5σ) no se
+ve afectado. Ver [[feedback-impact-analysis]] y V-L3-2Om. **ABIERTO.**
+
+## V-L3-saturacion — α por saturación φ-MDE (veta-2, Amendola-rescaled) — **PARCIAL: álgebra OK, dinámica FALLA**
+
+*Origen:* tras V-L3-mira (β_c=−AURA falla con tres modos independientes), se
+abrió la búsqueda de un **principio físico** que fije α en el L_int conformal
+sin recurrir a fits ni a numerología. Hipótesis: α toma el valor *saturado*
+de una desigualdad física estándar (veta-2 del programa de reconstrucción).
+Cálculo: `src/mira_attempts/ssee_alpha_saturation_stepD2.py`, 2026-05-22.
+
+**La desigualdad física (Amendola 2000, canonical).** En quintaesencia
+acoplada con K=X y conformal coupling, el φ-MDE (fixed-point y=0 durante era
+de materia) está en x = −α√6/3 y tiene Ω_φ = 2α²/3. La condición Ω_φ ≤ 1
+(la era de materia debe existir, *the universe must pass through matter
+domination*) impone:
+
+> α² ≤ 3/2 → α_sat,canonical = √(3/2) ≈ 1.2247
+
+**Traducción a SSEE.** Con K(X) = X/KAL + X²/M⁴, en el límite σ→0 (régimen
+X/KAL dominante, baja energía / σ = H²M_pl²/M⁴ ≪ 1), la renormalización
+natural del campo χ = φ/√KAL traduce la cota canónica a:
+
+> **α_sat = √(3/(2·KAL₀)) = √(3/(φ+3π)) ≈ 0.5212**
+
+Equivalente: **α² · 2·KAL₀ = 3**, o (α·√KAL₀)² = 3/2. Identidad estructural,
+no fit.
+
+**Verificación numérica.**
+
+| | Esperado (analítico) | Obtenido (numérico) | Desvío |
+|---|---|---|---|
+| α_sat canónico (σ=0, KAL=1) | √(3/2) = 1.22474487 | 1.22474487 | 1.4·10⁻⁷ % |
+| x_φMDE canónico (α=1.2) | −α√6/3 = −0.97980 | −0.97980 | exacto |
+| α_sat SSEE (σ→0, KAL=KAL₀) | √(3/(φ+3π)) = 0.521220 | 0.520674 | 0.10 % |
+
+**Las 6 comprobaciones:**
+
+1. **Numérica:** OK, 0.10 % de error al límite σ→0 (la diferencia es
+   suppresión por σ finito; en σ=10⁻⁹ ya converge).
+2. **Dimensional:** α adimensional (sale en exp(α·φ/M_pl)); 2·KAL₀ adimensional;
+   √(3/(2·KAL₀)) adimensional. OK.
+3. **Derivación:** Amendola 2000 (literatura física estándar, no ad-hoc),
+   aplicado a K(X) de Paper 7 con normalización canónica del campo.
+   *No es post-hoc, no es fit.*
+4. **Rol:** fija el coeficiente del L_int conformal en el sector φ-materia.
+   *Candidato* para mecanismo MIRA — pendiente test dinámico.
+5. **Ubicación:** *no aplicado todavía* en ningún paper. Esta entrada lo registra
+   como candidato derivado, no como resultado de un paper.
+6. **Conexiones:** depende de KAL₀ (V-L1) y de la estructura k-essence de Paper 7.
+   Sería insumo de V-L3-mira si reemplaza a β_c=−AURA.
+
+**Test dinámico (2026-05-22).** `src/mira_attempts/ssee_mira_saturated_diagnostic.py`:
+matriz 2×2 con β_c = ±α_sat y u₀ = ±|u_w₀|, integrando hacia atrás desde el
+estado de hoy (fijado por w_φ(hoy)=w₀=−0.840) hasta z=1100, régimen lineal
+puro K=X/KAL₀ (donde la derivación aplica):
+
+| β_c | u₀ signo | resultado |
+|---|---|---|
+| +α_sat | + | integración rompe ~z<1 (runaway u) |
+| +α_sat | − | rompe |
+| −α_sat | + | rompe |
+| −α_sat | − | rompe |
+
+Las cuatro fallan. **No existe trayectoria suave** desde el atractor tardío
+(estado de hoy, u₀≈+1.5) hasta el φ-MDE (u≈−2α_sat≈−1.04) con esta familia
+de modelos y esta normalización. Cualquier signo se vuelve runaway antes de
+cruzar la transición de régimen.
+
+**Interpretación física.** La cota Amendola garantiza que el φ-MDE *exista*
+como FP cuando α² < 3/(2KAL₀), pero **no garantiza** que la trayectoria
+backward desde el atractor tardío de DE alcance ese FP suavemente. Son dos
+preguntas distintas: (a) ¿hay FP físico? — sí. (b) ¿el atractor tardío
+desciende a él? — no, al menos no con la α y la inicialización canónicas
+del modelo. La veta-2 produjo un número honesto, pero la dinámica acoplada
+en SSEE no lo aprovecha.
+
+**Lo que sí queda como producto positivo:**
+
+- **Primer número derivado por saturación** en SSEE: α_sat=√(3/(φ+3π))
+  cumple las 6 comprobaciones de la entrada y no es numerología.
+- **Confirmación estructural:** Amendola 2000 generaliza limpiamente a
+  SSEE bajo la normalización inducida por KAL₀ — el método funciona, lo
+  que falla es la aplicación al mecanismo MIRA específico.
+- **Evidencia adicional** para V-L3-2Om: ni el coupling AURA-grande
+  (V-L3-mira) ni la cota Amendola-saturada conectan el background tardío
+  con z=1100. Quinto mecanismo descartado para MIRA.
+
+**Estado.** Álgebra **verificada**. Dinámica acoplada **falla** numéricamente
+en las cuatro variantes de signo — el bound es real pero no derivado en una
+forma constructiva del mecanismo MIRA. **PARCIAL.**
+
+### Extensión #6+#7 (2026-05-22) — derivativo + forward desde φ-MDE
+
+Tras V-L3-saturacion, se cazaron dos mecanismos adicionales:
+
+**Mecanismo #6 — acoplamiento derivativo** `L_int=(X/M⁴)·L_DM`.
+Script `src/mira_attempts/ssee_mira_derivative_test.py`. Coupling β_eff=u/√M⁴ depende
+de la *velocidad* del campo (no del valor), encendido en matter era y
+apagado hoy (lo que MIRA "necesita"). Barrido en M⁴_code:
+- M⁴ ∈ {0.01, 1, 10}: integración OK, **R(z=1100)∈[1.32, 1.41]** — ~70%
+  del log de MIRA, no llega.
+- M⁴ ∈ {100, 462 (físico M=8.81 meV), 10⁴}: integración rompe en z≈1–2.
+
+Diagnóstico: el mecanismo funciona como mecanismo, pero requiere M
+muchísimo más chico que Λ_SSEE para producir MIRA — UV-incompatible.
+
+**Mecanismo #7 — integración forward desde φ-MDE hacia hoy.** Script
+`src/mira_attempts/ssee_mira_phimde_forward_test.py`. Estado inicial Ω_m≈0.99 en
+matter era, integrar hasta N=0. Barrido α∈{0.295, 0.521, 0.8, 1.0, 1.5}:
+
+| α | w_φ(0) | Ω_m(0) | resultado |
+|---|---|---|---|
+| 0.295 (Copeland exp puro) | −0.88 ✓ | **0.00** ✗ | drenaje total |
+| 0.521 (α_sat veta-2)     | −0.70   | **0.00** ✗ | drenaje |
+| 0.8–1.5                  | crece   | **0.00** ✗ | drenaje |
+
+**Hallazgo central:** las trayectorias forward llegan a N=0, pero el
+coupling conformal drena *toda* la materia hacia el scalar en ~7 e-folds.
+Ningún α reproduce simultáneamente w₀=−0.840 y Ω_m=0.32.
+
+**Cierre matrix backward+forward.** Combinando #5 (backward) y #7 (forward):
+no existe coupling conformal canónico que conecte φ-MDE con el estado de
+hoy preservando materia. **6 mecanismos descartados para MIRA**, dos
+cualitativamente distintos (topología #5/#7, escala #6).
+
+Las dos lecturas siguen abiertas:
+- **A**: continuar caza (disformal velocity-dependent, screening, ...)
+- **B**: pivot a MIRA-como-etiqueta de transición, no engranaje.
 
 ## V-L3-2Om — mecanismo MIRA / transición Ω_m(z) — **ABIERTO (problema central del modelo)**
 

@@ -45,7 +45,7 @@ from ssee_core import (
     PHI, PI, BETA, KAL0, P_SC as P_sc, K_V as KV, T_R as TR, M_V as MV,
     W0 as W0_SSEE, WA as WA_SSEE, OMEGA_DE as OMDE_SSEE,
     OMEGA_M_DYN as OM_EFF_SSEE,
-    OMEGA_M_CMB_MIRA as OM_CMB_SSEE,   # Ω_m,cosm=0.320 — fondo gravitacional E(z)
+    OMEGA_M_CMB_MIRA as OM_CMB_SSEE,   # Ω_m,cosm=0.320 — solo para diagnóstico (NO entra al fondo)
 )
 FNU_SSEE = 0.020   # fracción de neutrinos — no algebraico, queda local
 
@@ -61,8 +61,10 @@ def f_de_cpl(z, w0, wa):
     return (1+z)**(3*(1+w0+wa)) * np.exp(-3*wa*(1-a))
 
 def E_ssee(z):
-    # Ω_m,cosm=0.320 en el fondo gravitacional; Ω_m,dyn=0.160 solo determina w₀ via 1+w₀
-    return np.sqrt(OM_CMB_SSEE*(1+z)**3 + (1.0-OM_CMB_SSEE)*f_de_cpl(z, W0_SSEE, WA_SSEE))
+    # SSEE canónico Paper 2: Ω_m,dyn=0.160 uniforme en E(z).
+    # MIRA NO entra al fondo gravitacional (es input observacional no derivado;
+    # ver SEALED_STATUS.md §Paper 2 y VERIFICATION_LEDGER §V-L3-2Om).
+    return np.sqrt(OM_EFF_SSEE*(1+z)**3 + (1.0-OM_EFF_SSEE)*f_de_cpl(z, W0_SSEE, WA_SSEE))
 
 def E_lcdm(z, Om):
     return np.sqrt(Om*(1+z)**3 + (1-Om))
@@ -174,7 +176,7 @@ def lpost_ssee(theta):
     if not (0.015 < ob_h2 < 0.030): return -np.inf
     lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
     lp_H0  = -0.5*((H0-PLANCK_H0[0])/PLANCK_H0[1])**2
-    om_h2  = OM_CMB_SSEE*(H0/100)**2   # r_d usa Ω_m,cosm=0.320 (fondo gravitacional)
+    om_h2  = OM_EFF_SSEE*(H0/100)**2   # SSEE canónico: r_d usa Ω_m,dyn=0.160
     lb = ll_bao_full(H0, om_h2, ob_h2, E_ssee)
     lc = ll_clusters(KAL0, FNU_SSEE)
     return lp_bbn + lp_H0 + lb + lc

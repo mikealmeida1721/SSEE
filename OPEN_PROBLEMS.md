@@ -418,6 +418,200 @@ desde primeros principios (necesario para aspirar a nivel de premio).
 
 ---
 
+## OP-8 — MIRA Dynamical Mechanism (Papers 3, 5, 7, 8, 9) — ABIERTO
+
+**Location:** Transversal — referenced in Papers 3, 5, 6, 7, 8, 9 as "the MIRA bridge."
+
+**Problem:** The MIRA factor $(3\varphi+\pi)/4 \approx 1.9989$ is **algebraically exact**
+and **observationally required** (CLASS validation 2026-05-09 showed CMB peaks shift
+10% wrong without MIRA, RMS 31.5% vs 1.4%). However, **no dynamical mechanism derives
+its value from first principles.** Seven candidate mechanisms have been tested and
+ruled out (VERIFICATION_LEDGER §V-L3-mira, V-L3-saturacion, derivative coupling,
+forward φ-MDE, etc.):
+
+1. $c_s^2$ clustering — fails by magnitude (~100× too small)
+2. $\mu>1$ Poisson modification — fails structurally (P7 forced $\alpha_B=\alpha_M=0$)
+3. Disformal P8 — fails axiomatically (requires $\psi_{DM}$, P1 originally prohibited)
+4. Conformal coupling $\beta_c = -$AURA — fails magnitude+sign+timing
+5. Conformal coupling $\beta_c = \pm\alpha_{\rm sat}$ (veta-2) — fails connectivity
+6. Derivative coupling $L_{\rm int} = (X/M^4) L_{DM}$ — fails UV scale
+7. Forward integration from φ-MDE — fails matter drainage
+
+**Current status:** MIRA enters the model as an **empirical input with exact algebraic
+value**, not as a derived consequence. The framework's working interpretation
+(two-sector dark matter, Paper 6) provides a phenomenological structure that
+reproduces MIRA's numerical value via $\Omega_{m,{\rm CMB}}/\Omega_{m,{\rm dyn}} \approx 2$,
+but this is a parametrization, not a dynamical derivation.
+
+**Path to resolution:** A first-principles QFT/UV derivation showing why MIRA must
+take this specific value. Possible candidates not yet tested: k-mouflage with
+matter-coupled velocity-dependent screening, two-scale UV completion with discrete
+self-similarity, holographic principle constraint.
+
+**Severity:** High — this is the central open problem of SSEE-V3.6. Until resolved,
+the model has ~3 effective free parameters (vs 6 in $\Lambda$CDM); when resolved,
+it returns to ≤2 (only $H_0$ and $\Omega_b h^2$ as observation-tunable).
+
+---
+
+## OP-9 — Phenomenological Mass m_φ = 5.60 eV (Paper 6) — PARCIAL
+
+**Location:** Paper 6, Eq. (mass_algebraic), §3.2.
+
+**Problem:** The mass relation $m_\phi = \Sigma m_\nu^{\rm active} \times H_0^{\rm alg}
+= 0.0824\,{\rm eV} \times 67.96 = 5.60\,{\rm eV}$ is **dimensionally inconsistent**
+when treated as eV (the product has units [eV·s⁻¹·Mpc⁻¹]). A proper dimensional analysis
+with $\hbar=c=1$ would yield $\sqrt{m_\nu \cdot H_0^{\rm alg}} \approx 10^{-17}$ eV
+(Fuzzy DM regime), not 5.60 eV.
+
+**Paper 6 honestly admits this (L371-377)** as a "numerological ansatz whose physical
+origin (a Yukawa coupling through the IS sector) is to be derived in future work."
+
+**Current status:** m_φ = 5.60 eV is adopted **phenomenologically** as the value that
+gives the required free-streaming scale $k_{\rm fs} = 0.493\,h/$Mpc. The numerical
+coincidence with Σm_ν × H_0 is presented as evidence of an underlying algebraic
+structure to be derived.
+
+**Path to resolution:** Derive m_φ from a proper field-theory mechanism — most likely
+a Yukawa coupling between χ and the IS-relaxation operator, or from the curvature
+of a unified potential $V(\phi)$ at its minimum (see OP-10).
+
+**Severity:** Medium — the falsifiable prediction is $k_{\rm fs} = 0.493\,h/$Mpc
+in DESI Y3 / Euclid, which is testable **independently of the mass formula's origin**.
+
+---
+
+## OP-10 — Unification of φ and χ into a Single Field (Papers 6, 7) — ABIERTO
+
+**Location:** Paper 6 introduces χ (the DM scalar) as **distinct** from Paper 7's φ
+(the DE k-essence scalar). L394-395: "We model φ-dark matter as a single real scalar
+field $\chi$ (distinct from the SSEE background k-essence scalar $\phi$ of Paper 7)."
+
+**Problem:** This historically arose post-hoc as a fix for the fσ8 tension in Paper 5.
+The current potential $V(\phi) = V_0 \exp(-\alpha\phi)$ of Paper 7 has **no minimum**,
+so the same field cannot also produce matter-mode oscillations. Hence χ was
+introduced as a separate species with its own mass term.
+
+**Consequence:** The "single field" philosophical claim of SSEE (one φ, derived from
+$\varphi,\pi$) is technically violated — there are two cosmological scalar fields.
+Both have parameters constrained by $(\varphi,\pi)$ but they are not the same entity.
+
+**Path to resolution:** Find a potential $V(\phi)$ with:
+- A slow-roll region (produces DE behavior at low energy)
+- A stable minimum (produces matter-mode oscillation, hence DM)
+- Both regions parametrized by $\varphi,\pi$ only
+
+If such a $V(\phi)$ exists, χ becomes the matter-phase of φ itself, m_φ emerges as
+the curvature at the minimum (resolving OP-9), and the "zero free parameters"
+philosophy is restored.
+
+**Severity:** Medium-High — does not affect observational predictions of SSEE-V3.6
+but is the natural next step toward genuine zero-parameter status.
+
+---
+
+## OP-11 — Free Non-Minimal Coupling ξ (Paper 6) — ABIERTO
+
+**Location:** Paper 6, Eq.~\eqref{eq:phiDM_lagrangian}, L406-407.
+
+**Problem:** The action of χ contains a non-minimal coupling $\xi R \chi^2/2$ where ξ
+is **explicitly a free continuous parameter** (P6 L416-417: "no free continuous
+parameter other than ξ"). No algebraic constraint from $(\varphi,\pi)$ is provided
+to fix ξ.
+
+**Current status:** ξ is treated as a free parameter, partially constrained by the
+production mechanism (gravitational particle production, OP-12).
+
+**Path to resolution:** Either derive ξ from the underlying field theory (e.g., a
+conformal symmetry requirement giving $\xi=1/6$, or a specific algebraic value), or
+absorb χ into φ (OP-10) so that ξ becomes a structural piece of $V(\phi)$ rather
+than a free input.
+
+**Severity:** Medium — contributes one free parameter to the current model count.
+
+---
+
+## OP-12 — Relic Abundance Ω_φ-DM h² Not Computed Ab Initio (Paper 6) — ABIERTO
+
+**Location:** Paper 6, §4.2 (gravitational particle production), L460-468.
+
+**Problem:** P6 admits explicitly:
+> "We have **not** computed the full gravitational-production integral that would
+> yield $\Omega_{\phi DM} h^2$ from $m_\phi$ and $V(\phi)$ ab initio; an order-of-magnitude
+> estimate is consistent with the required abundance, but the complete calculation
+> (including the ξ-dependence) is deferred to a dedicated study (Paper B)."
+
+**Current status:** Ω_φ-DM h² ≈ 0.074 is **imposed** to match the (MIRA−1)·Ω_dyn = 0.160
+algebraic identity. The gravitational-production calculation that should derive this
+abundance from inflationary parameters and m_φ is deferred.
+
+**Path to resolution:** Carry out the full Parker-Kolb-Riotto calculation with the
+SSEE α-attractor inflation potential and $m_\phi = 5.60$ eV. Should give
+Ω_φ-DM h² ≈ 0.074 without additional tuning.
+
+**Severity:** Medium — the relic abundance match is currently algebraic; the dynamical
+calculation would close the gap.
+
+---
+
+## OP-13 — Strong-Lensing θ_E Factor-2 Observational Status (Paper 8) — ABIERTO
+
+**Location:** Paper 8, §5 (MIRA emergence in lensing). Prediction: $\theta_E^{\rm SSEE}/
+\theta_E^{\rm GR} = \sqrt{\beta_c} \approx \mathrm{MIRA} \approx 1.999$.
+
+**Problem:** This predicts a **factor 2** amplification of Einstein radii in disformal-
+unscreened regimes. SLACS, BELLS, and H0LiCOW analyses generally calibrate $\theta_E$
+to a few percent assuming GR. A 100% systematic would have been noticed.
+
+**Possible reconciliation:** K-mouflage screening may apply at relevant cluster/galaxy
+scales, reducing the effective amplification. Paper 8 §6 argues that the disformal
+coupling is partially screened in dense environments.
+
+**Path to resolution:** A careful comparison against compiled SLACS+BELLS data, with
+the specific screening modulation factor computed for each system's density profile.
+
+**Severity:** Medium — could be the most observationally vulnerable prediction of
+the suite. Falsified by data if Einstein radii don't show any modulation beyond GR
+at any density regime.
+
+---
+
+## OP-14 — Σm_ν Phenomenological Derivation (Paper 4) — ABIERTO
+
+**Location:** Paper 4, §"Neutrino Mass Sum", L675-700.
+
+**Formula:**
+$$\Sigma m_\nu^{\rm active} = \mathcal{R}\,\Omega_b h^2 \cdot \frac{94.07~\mathrm{eV}}{\tau_\Pi H_0} = 0.0824~\mathrm{eV}$$
+
+con $\mathcal{R} = 4\cdot\mathrm{KAL} - 22 = 0.0856$.
+
+**Problem:** The paper itself classifies this as **Type P (phenomenological)** at L691-697,
+explicitly admitting it "has no independent φ,π derivation." Two weak elements:
+
+1. **Integer subtraction $4\cdot\mathrm{KAL} - 22$**: el offset 22 no se deriva — se ajusta
+   numéricamente para reproducir la cota cosmológica $\Sigma m_\nu \lesssim 0.12$ eV.
+2. **94.07 eV** es input del Modelo Estándar (relación entre densidad relíquica y masa
+   de neutrino), no de SSEE.
+
+**Why this matters (cascada):** Σm_ν alimenta directamente a $m_\phi = \Sigma m_\nu \cdot H_{\rm alg}$
+en P6, así que OP-9 depende de OP-14. **OP-14 es el eslabón más débil de la cadena
+de derivaciones.** Si se deriva $\mathcal{R}$ desde primeros principios, OP-9 cae casi
+automáticamente.
+
+**Path to resolution:**
+- Derivar el offset 22 desde teoría de Genesis Roles (¿conteo de grados de libertad?
+  ¿índice topológico?).
+- Reformular como cota saturada de una desigualdad física estándar (análogo al método
+  veta-2 de saturación que dio α_sat = √(3/(φ+3π)) — ver memoria
+  [[project-veta2-saturation]]).
+- Alternativa: aceptar Σm_ν como input experimental SM y solo derivar la **razón**
+  $m_\phi/\Sigma m_\nu = H_{\rm alg}$.
+
+**Severity:** Medium-High — bloquea el camino a cero parámetros porque rompe la
+narrativa "todo emerge de φ,π" en P6 y P4 simultáneamente.
+
+---
+
 ## Summary Table
 
 | ID | Paper | Problem | Severity | Path to Resolution |
@@ -429,6 +623,13 @@ desde primeros principios (necesario para aspirar a nivel de premio).
 | OP-5 | P5-6 | ~~S₈ 2.29σ DES (fσ₈ resuelto P6)~~ | ✅ PARCIAL | HMcode-2020 CLASS: S₈=0.758 (0.06σ DES); N-body full → Paper B/ext |
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
 | OP-7 | P4/7/8 | QFT derivation of Genesis role assignments | ✅ PARCIAL | EFT uniqueness formalizado P7 §5.2 + P1 §5.3; QFT desde primeros principios → largo plazo |
+| OP-8 | Transv. | **MIRA dynamical mechanism** | High | 7 mechs ruled out (Ledger §V-L3); future: k-mouflage matter-coupled, holographic |
+| OP-9 | P6 | m_φ=5.60 eV is numerological (dim. inconsistent) | Medium | Yukawa/IS-coupling derivation; or absorb into OP-10 |
+| OP-10 | P6/P7 | Unify χ into φ via richer V(φ) | Medium-High | V(φ) with slope (DE) + minimum (DM matter-mode); restores zero-param status |
+| OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
+| OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |
+| OP-13 | P8 | θ_E factor-2 observational status | Medium | Compile SLACS/BELLS with screening modulation |
+| OP-14 | P4 | Σm_ν phenomenological (Type P admitted L691-697); offset 22 ad hoc | Medium-High | Derivar $\mathcal{R}=4\cdot\mathrm{KAL}-22$ desde Genesis Roles o saturación; resuelve cascada con OP-9 |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.
@@ -444,4 +645,29 @@ directed to this document when evaluating the strength of the SSEE predictions.
 None of these problems falsify SSEE at the current observational precision — they define
 the boundary of what has been rigorously established versus what remains as working
 hypotheses. The resolution of OP-1 through OP-6 constitutes the research agenda for
-SSEE-V4.0.
+SSEE-V4.0; OP-8 through OP-13 constitute the agenda for SSEE-V5.0 (full unification
+of the dark sector).
+
+## Parameter-Count Status (2026-05-22)
+
+SSEE-V3.6 currently has **~3 effective free parameters** vs **6 for $\Lambda$CDM**:
+
+| Parameter | Status | Comment |
+|---|---|---|
+| $H_0$ | Sampled in MCMC | Algebraic prediction 67.96 vs posterior 66.75 |
+| $\Omega_b h^2$ | Sampled in MCMC | Algebraic 0.02242 vs Planck 0.02237 |
+| MIRA factor | Algebraic value $(3\varphi+\pi)/4$ but no derived mechanism | OP-8 |
+| $m_\phi$ | Phenomenological ansatz | OP-9 (paper admits) |
+| $\xi$ | **Free parameter** (P6 L416) | OP-11 |
+| $\Sigma m_\nu$ | **Phenomenological** (P4 L691-697 admite Type P) | offset 22 ad hoc — OP-14 |
+| $\alpha$ (attractor) | $\varphi^4/3$ derived | from $\varphi$ |
+| $V(\phi)$ form | Adopted exponential | locks DE-only behavior — OP-10 |
+
+**Path to zero parameters:** Resolve OP-8 (MIRA derivation) + OP-10 (unify χ into φ
+via richer $V(\phi)$) + OP-14 (Σm_ν offset 22). This would also resolve OP-9 (m_φ =
+curvature of V at min) and OP-11 (ξ becomes part of V structure). End state: $H_0$
+and $\Omega_b h^2$ as the only observation-tunable inputs.
+
+**Dependency chain (cascada):** OP-14 → OP-9 → (parte de) OP-10. Atacar OP-14
+primero es el camino más corto: si se deriva $\mathcal{R}=4\cdot\mathrm{KAL}-22$,
+$m_\phi$ pasa de ansatz a predicción automáticamente.

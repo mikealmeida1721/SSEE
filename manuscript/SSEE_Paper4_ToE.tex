@@ -45,7 +45,8 @@ We show that the cosmological background of the observable universe
 can be described by a two-axiom algebraic system built on the golden ratio
 $\varphi = (1+\sqrt{5})/2$ and the circle constant $\pi$.
 A third structural constant, $\Omega = \varphi+\pi$, follows as
-a theorem rather than an independent axiom; no free parameter is introduced at any stage.
+a theorem rather than an independent axiom; no free parameter is introduced at the background level.
+Phenomenological extensions (notably the neutrino mass sum $\Sigma m_\nu$, classified as Type~P later in the paper) are tracked as open problems (OP-14 in \texttt{OPEN\_PROBLEMS.md}).
 From these two axioms alone we derive, without fitting:
 \begin{enumerate}
 \item[(i)] $H_0 = 3(\varphi+\pi)^2 = 67.962$~km\,s$^{-1}$\,Mpc$^{-1}$ ($1.1\sigma$ from Planck~2018),
@@ -59,7 +60,7 @@ where the exponent~7 equals the number of primary structural registers in the \S
 $H_{0,\rm local} = H_0^{\rm alg}/(1-f_{\rm scr}) = 72.86$~km\,s$^{-1}$\,Mpc$^{-1}$
 ($0.17\sigma$ from \citet{Riess2022}; see Section~\ref{sec:hubble_tension}).
 \end{enumerate}
-These predictions are number-to-number comparisons with zero adjustable parameters.
+These background predictions are number-to-number comparisons with zero adjustable parameters in their respective sectors.
 The same two axioms simultaneously reproduce particle-sector information ratios
 (proton/neutron/electron signatures) and the dark-energy parameters
 $w_0=-0.840$, $w_a=-0.670$ derived in the companion Papers~1--3.
@@ -380,9 +381,14 @@ The agreement $\Omega_b^{\rm SSEE} = 0.0495$ vs Planck's $0.0493\pm0.0004$ is $0
 
 The YGG\_PROTON structural register gives the information signature of baryonic matter:
 \begin{equation}
-\Omega_m = \frac{\pi-\varphi}{\pi+\varphi} = 0.3201
+\Omega_{m,\rm CMB} = \frac{\pi-\varphi}{\pi+\varphi} = 0.3201
 \end{equation}
-Planck~2018: $\Omega_m = 0.3153\pm0.007$ ($0.7\sigma$ deviation).
+Planck~2018: $\Omega_m = 0.3153\pm0.007$ ($0.7\sigma$ deviation). This is the
+\emph{CMB-sector} value, applicable to early-universe observables where $\phi$-DM
+is non-relativistic (cf.\ Paper~1, Sec.~1.4, Two-$\Omega_m$ Criterion); the
+dynamical-sector value $\Omega_{m,\rm dyn} = (\pi-\varphi)/[2(\varphi+\pi)]
+\approx 0.160$, which governs the BAO chain and cluster dynamics in Paper~2,
+follows from the same identity divided by the MIRA factor.
 The cold dark matter density can be related to the baryon density through the
 structural viscosity $K_{\rm AL} = \beta + \pi \approx 5.5214$:
 \begin{equation}
@@ -578,7 +584,8 @@ $H_0^{\rm alg}$ [km/s/Mpc]     & 67.962 & $67.4\pm0.5$  & $1.1\sigma$ & algebrai
 $H_{0,\rm local}$ [km/s/Mpc]  & 72.86  & $73.0\pm1.0$  & $0.17\sigma$ & algebraic (Type~P$^\dagger$) \\
 $\Omega_b$          & 0.0495 & $0.0493\pm0.0004$    & $0.53\sigma$ & algebraic \\
 $\Omega_b h^2$      & 0.02242& $0.02237\pm0.00015$ & $0.32\sigma$ & algebraic \\
-$\Omega_m$          & 0.3201 & $0.3153\pm0.0073$   & $0.7\sigma$ & algebraic \\
+$\Omega_{m,\rm CMB}^{\rm geom}$ & 0.3201 & $0.3153\pm0.0073$   & $0.7\sigma$ & algebraic (CMB sector$^\ddagger$) \\
+$\Omega_{m,\rm CMB}^{\rm MIRA}$  & 0.3199 & $0.3153\pm0.0073$   & $0.6\sigma$ & MIRA$\cdot\Omega_{m,\rm dyn}$ (P3)$^\ddagger$ \\
 $\Omega_c h^2$ (IS) & 0.11926& $0.1200\pm0.0012$   & $0.6\sigma$ & algebraic (IS) \\
 $Y_p$               & 0.2472 & $0.2471\pm0.0003$   & $0.2\sigma$ & BBN (no fit) \\
 $n_s$               & 0.96556& $0.9649\pm0.0042$   & $0.16\sigma$& algebraic \\
@@ -589,6 +596,12 @@ $\tau$              & 0.054  & $0.054\pm0.007$     & $0\sigma$   & standard \\
 \multicolumn{5}{l}{\footnotesize IS = Israel--Stewart modulation by $n_s=1-\varphi^{-7}$; reduces tension from $+2.9\sigma$ (Eckart) to $-0.6\sigma$.}\\
 \multicolumn{5}{l}{\footnotesize $^\dagger$~Type~P: dimensionless combination matches observed value in km\,s$^{-1}$\,Mpc$^{-1}$ units;}\\
 \multicolumn{5}{l}{\footnotesize no dimensional derivation from first principles. Consistent with Paper~1 App.~B policy.}\\
+\multicolumn{5}{l}{\footnotesize $^\ddagger$~CMB sector: this is $\Omega_{m,\rm CMB} = \mathrm{MIRA}\times\Omega_{m,\rm dyn}$. The dynamical}\\
+\multicolumn{5}{l}{\footnotesize sector value $\Omega_{m,\rm dyn}=(\pi-\varphi)/[2(\varphi+\pi)]\approx 0.160$ governs late-time BAO and}\\
+\multicolumn{5}{l}{\footnotesize cluster dynamics; see Paper~1, Sec.~1.4 (Two-$\Omega_m$ Criterion) for the rule.}\\
+\multicolumn{5}{l}{\footnotesize The two CMB-sector forms are independent algebraic predictions on $\{\varphi,\pi\}$; they}\\
+\multicolumn{5}{l}{\footnotesize differ by $0.054\%$ ($0.3201$ geometric vs $0.3199$ MIRA-mapped) and both lie within $1\sigma$}\\
+\multicolumn{5}{l}{\footnotesize of Planck. See Paper~1 \S1.3 (Postulate~M) for the structural reading.}\\
 \bottomrule
 \end{tabular}
 \end{table}

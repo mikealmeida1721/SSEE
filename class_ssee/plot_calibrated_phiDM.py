@@ -149,11 +149,12 @@ def get_fsig8(z, D_arr, Dp_arr, sig8_val):
     D_t   = float(np.interp(lna_t, lna_pts, D_arr))
     return f_t * sig8_val * D_t
 
-# Datos observacionales fσ₈(z) — mismo set que Paper 6 verification
-Z_RSD     = np.array([0.067, 0.150, 0.320, 0.380, 0.510, 0.570])
-surveys   = ['6dFGRS', 'SDSS MGS', 'BOSS DR12', 'BOSS DR12', 'eBOSS DR16', 'WiggleZ']
-fsig_d    = np.array([0.423, 0.490, 0.427, 0.477, 0.458, 0.426])
-sigma_d   = np.array([0.055, 0.070, 0.056, 0.051, 0.038, 0.048])
+# Datos observacionales fσ₈(z) — set canónico Paper 5 (refs Beutler2012,
+# Howlett2015, Alam2017, Hou2021 — valores idénticos a los citados)
+Z_RSD     = np.array([0.067, 0.150, 0.380, 0.510, 0.610, 1.480])
+surveys   = ['6dFGRS', 'SDSS MGS', 'BOSS DR12', 'BOSS DR12', 'BOSS DR12', 'eBOSS DR16']
+fsig_d    = np.array([0.423, 0.490, 0.497, 0.458, 0.436, 0.462])
+sigma_d   = np.array([0.055, 0.145, 0.045, 0.038, 0.034, 0.045])
 z_d       = Z_RSD
 
 fsig8_base  = np.array([get_fsig8(z, D_1s,  Dp_1s,  sigma8_baseline) for z in z_d])
@@ -172,7 +173,6 @@ print(f"  σ₈_eff con T_WDM (Paper 6)    = {sigma8_phiDM:.3f}")
 print()
 print("── Análisis fσ₈ ────────────────────────────────────────────")
 print(f"{'Survey z':>8}  {'Obs':>6}  {'Base':>6}  {'φ-DM':>6}  {'σ_base':>7}  {'σ_φDM':>7}")
-surveys = ["6dFGRS", "WiggleZ", "MGS", "BOSS", "WiggleZ", "eBOSS"]
 for i, (z, fo, sb, sp, tb, tp) in enumerate(
         zip(z_d, fsig_d, fsig8_base, fsig8_phiDM, tension_base, tension_phiDM)):
     print(f"z={z:.2f}  {fo:.3f}  {sb:.3f}  {sp:.3f}  {tb:+.2f}σ  {tp:+.2f}σ  {surveys[i]}")
@@ -255,5 +255,5 @@ print("RESUMEN FASE 2c:")
 print(f"  alpha_WDM calibrado = {alpha_cal:.6f} h/Mpc")
 print(f"  sigma_8_eff         = {sigma8_phiDM:.3f}")
 print(f"  Tensión fσ₈ media   : {np.mean(np.abs(tension_base)):.2f}σ → {np.mean(np.abs(tension_phiDM)):.2f}σ")
-print(f"  (Paper 6 reporta: 2.56σ → 0.50σ con corrección sigma_8 corregida)")
+print(f"  (Paper 6 reporta: 2.67σ → 0.76σ con datos fσ₈ canónicos Paper 5)")
 print("=" * 60)

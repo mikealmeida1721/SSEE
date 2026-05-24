@@ -554,50 +554,25 @@ calculation would close the gap.
 
 ---
 
-## OP-13 — Strong-Lensing θ_E Factor-2 Observational Status (Paper 8) — PARCIAL (verificación literatura 2026-05-23)
+## OP-13 — Strong-Lensing θ_E Factor-2 Observational Status (Paper 8) — ABIERTO
 
 **Location:** Paper 8, §5 (MIRA emergence in lensing). Prediction: $\theta_E^{\rm SSEE}/
-\theta_E^{\rm GR} = \sqrt{\beta_c} \approx \mathrm{MIRA} \approx 1.999$ en régimen disformal-
-unscreened; con screening k-mouflage y dos sectores, P8 predice:
-- $k < k_{\rm fs}$ (cluster scale): $\theta_E^{\rm SSEE}/\theta_E^{\rm GR} = 1$ (ambos sectores)
-- $k > k_{\rm fs}$ (sub-Mpc): $\theta_E^{\rm SSEE}/\theta_E^{\rm GR} = 1/\sqrt{\mathrm{MIRA}} \approx 0.707$ (déficit 30%)
+\theta_E^{\rm GR} = \sqrt{\beta_c} \approx \mathrm{MIRA} \approx 1.999$.
 
-**Hallazgos en literatura (revisión 2026-05-23):**
+**Problem:** This predicts a **factor 2** amplification of Einstein radii in disformal-
+unscreened regimes. SLACS, BELLS, and H0LiCOW analyses generally calibrate $\theta_E$
+to a few percent assuming GR. A 100% systematic would have been noticed.
 
-SLACS (Sloan Lens ACS Survey, ~85 lenses), BELLS, BELLS GALLERY:
-- **Pendiente total promedio** $\gamma = 2.074 \pm 0.2$ (slightly super-isothermal, vs $\gamma_{\rm iso}=2$)
-  — Sonnenfeld et al. 2015; Auger et al. 2010
-- **NO desviaciones de factor 2** reportadas entre $\theta_E$ observado y modelos isotermos GR
-- **NO déficit de 30%** reportado sub-Mpc relativo a ΛCDM con $\Omega_m=0.320$
-- $f_{DM}$ dentro $R_{\rm eff}$: 12% (Chabrier IMF) — 31% (Salpeter IMF)
-- Modelos NFW + perfil estelar reproducen $\theta_E$ "within posterior distributions" (Sonnenfeld 2024,
-  A&A 690, A325; SLACS debiased v2, 2025)
+**Possible reconciliation:** K-mouflage screening may apply at relevant cluster/galaxy
+scales, reducing the effective amplification. Paper 8 §6 argues that the disformal
+coupling is partially screened in dense environments.
 
-**Veredicto:**
-1. **Factor 2 unscreened**: FALSIFICADO en escalas galácticas — consistente con k-mouflage screening
-   activo en SLACS/BELLS (estos sistemas viven en $r \ll r_V$).
-2. **0.707x suppression a $k > k_{\rm fs}$**: NO observado — TENSIÓN menor con P8 §6.2 item 2
-   (predicción "$\sim 30\%$ deficit in $\theta_E$ on scales $< 1\,\mathrm{Mpc}$").
-3. **k-mouflage operando como se predijo**: consistente con $\theta_E^{\rm SSEE}=\theta_E^{\rm GR}$
-   en régimen screened. P8 §4.4 (k-mouflage suppression $F_\phi/F_N \propto r^{4/3} \to 0$) NO falsificado.
+**Path to resolution:** A careful comparison against compiled SLACS+BELLS data, with
+the specific screening modulation factor computed for each system's density profile.
 
-**Estado del modelo tras OP-13:**
-- Núcleo P8 (mecanismo disformal + screening) sigue VIVO y consistente con datos.
-- Predicción "factor 2 visible en lensing" debe matizarse: solo observable donde el screening k-mouflage
-  está DESACTIVADO, lo cual requiere $\rho_{\rm DM}$ baja Y $r \gtrsim r_V$ — régimen difícil de aislar.
-- Predicción "30% déficit sub-Mpc en P8 §6.2 item 2" debe revisarse a la baja o reformularse como
-  **scale-dependent** dependiendo de la transición de screening.
-
-**Pendiente:**
-- Revisar P8 §6.2 item 2 (escala precisa donde el screening se rompe; el factor 0.707 puede aplicarse
-  solo en transición específica, no globalmente sub-Mpc).
-- Buscar régimen observacional limpio donde screening esté apagado: voids, halos de masa muy baja,
-  micro-lensing de fondo difuso. Pendiente para Paper 8 v2 o nota técnica.
-- Cluster cosmography (H0LiCOW, COSMOGRAIL): operan en $k < k_{\rm fs}$ → predicción es $1$ → ya consistente.
-
-**Severity:** Reducida de Medium a **Low-Medium**. La verificación no falsifica, ajusta el alcance
-de la predicción del factor 2 a un régimen observacionalmente difícil de aislar (no es vulnerabilidad
-nueva, es honestidad sobre dónde la predicción se puede testear).
+**Severity:** Medium — could be the most observationally vulnerable prediction of
+the suite. Falsified by data if Einstein radii don't show any modulation beyond GR
+at any density regime.
 
 ---
 
@@ -653,7 +628,7 @@ narrativa "todo emerge de φ,π" en P6 y P4 simultáneamente.
 | OP-10 | P6/P7 | Unify χ into φ via richer V(φ) | Medium-High | V(φ) with slope (DE) + minimum (DM matter-mode); restores zero-param status |
 | OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
 | OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |
-| OP-13 | P8 | ~~θ_E factor-2 observational status~~ | ✅ PARCIAL | SLACS γ=2.074, no factor-2 ni 30% deficit → k-mouflage screening confirmado; predicción factor 2 vive en régimen difícil de aislar (2026-05-23) |
+| OP-13 | P8 | θ_E factor-2 observational status | Medium | Compile SLACS/BELLS with screening modulation |
 | OP-14 | P4 | Σm_ν phenomenological (Type P admitted L691-697); offset 22 ad hoc | Medium-High | Derivar $\mathcal{R}=4\cdot\mathrm{KAL}-22$ desde Genesis Roles o saturación; resuelve cascada con OP-9 |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;

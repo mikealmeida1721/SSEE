@@ -554,7 +554,7 @@ calculation would close the gap.
 
 ---
 
-## OP-13 — Inconsistencia interna Paper 8: §3-4 (factor √β_c) vs §4.5 (B-S) — REABIERTO 2026-05-23
+## OP-13 — Inconsistencia interna Paper 8: §3-4 (factor √AURA) vs §4.5 (B-S) — ✅ RESUELTO 2026-05-23 (Opción A)
 
 **Location:** Paper 8, §3-4 ("Disformal null geodesic" + "MIRA emerges in lensing") vs
 §4.5 ("EFT suppression of fifth-force corrections") vs §6.2 item 3 (falsifiability).
@@ -618,6 +618,75 @@ añadir Capa 8 "consistencia inter-sección" al guardián.
 
 ---
 
+### Resolución aplicada (Opción A — 2026-05-23)
+
+**Insight clave (correctión de terminología señalada por Mike):** el factor
+derivado en P8 §3-4 NO es $\MIRA$ — es $\sqrt{\AURA}$. Son dos operaciones
+algebraicas distintas sobre $\AURA$ (división por 2 vs raíz cuadrada). Coinciden
+numéricamente al 0.03% porque $\AURA\approx 4$ hace que ambas rondan 2. Drafts
+previos de P8 conflated los dos bajo la etiqueta "$\MIRA$ emerges in lensing";
+esa identificación se retira.
+
+**Cambios aplicados (commit de la sesión):**
+
+1. **P8 abstract reescrito**: framing "dos límites" explícito (alternative MOND-like
+   vs canonical two-sector); $\sqrt{\AURA}$ en lugar de "√β_c ≈ MIRA"; canonical
+   limit prediction declarada como $\thetaE^{\rm SSEE}\approx\thetaE^{\rm GR-with-DM}$.
+
+2. **P8 §1 (Introduction) reescrito**: dos limits identificados explícitamente;
+   $\MIRA$ aparece estructuralmente solo en CMB y LSS, no en lensing; aclaración
+   $\sqrt{\AURA}\neq\MIRA$ algebraicamente.
+
+3. **P8 §3-4 (Disformal geodesic)** ahora titulado "Alternative MOND-like limit";
+   tcolorbox al inicio aclarando scope; sección retenida como pedagógica/histórica,
+   no canónica.
+
+4. **P8 §5 (formerly "MIRA emerges in lensing")** re-titulado "Lensing factor
+   $\sqrt{\AURA}$ in the Alternative Limit (and Its Numerical Near-Coincidence with
+   $\MIRA$)"; tcolorbox naming clarification explícito al inicio.
+
+5. **P8 §6.2 items 2 y 3 (Falsifiable predictions)** reformulados a predicción
+   canónica: $\thetaE^{\rm SSEE}\approx\thetaE^{\rm GR-with-DM}$ y
+   $M_{\rm dyn}/M_{\rm lens}\approx 1$, consistente con SLACS/BELLS observados
+   ($\gamma=2.078\pm 0.027$; $M_E/M_{\rm dyn}\approx 1.21$ SIS). Footnote retira
+   explícitamente la predicción "$\sim 30\%$ deficit" previa.
+
+6. **P8 §8.1 (Discussion)** reescrita: $\MIRA$ aparece exactly en 2 sectores
+   (no 3); la aparición en lensing era name-conflation de $\sqrt{\AURA}$ con
+   $\MIRA$ vía near-coincidence numérica, retirada en esta versión.
+
+7. **Unified Journal §2 + tabla predicciones**: framing dos-límites; entry de
+   lensing marcado como "Conditional prediction (not canonical; OP-13)".
+
+8. **Endorser Summary §IV (Paper 8 bullet)**: framing dos-límites; SLACS/BELLS
+   citado como evidencia del canonical limit.
+
+**PDFs regenerados:** P8 (18 pp, +1), Unified (21 pp), Endorser (2 pp).
+Guardián: VERDE 102/102.
+
+**Estado del modelo tras resolución:**
+- $\MIRA$ aparece exactly en 2 sectores estructurales: CMB horizon mapping
+  (Paper 3) y two-sector mass ratio (Paper 6). Ambos: $\MIRA=\AURA/2$ exacto.
+- $\sqrt{\AURA}$ aparece en lensing alternative-limit (P8 §3-4) — preservado como
+  derivación válida pero marcado explícitamente como no canónico.
+- Canonical SSEE lensing prediction: $\thetaE^{\rm SSEE}\approx\thetaE^{\rm GR-with-DM}$
+  (de EFT B-S structure P8 §4.5), consistente con datos SLACS/BELLS.
+- La "unificación CMB↔DM↔lensing via $\MIRA$" se degrada a "unificación CMB↔DM
+  via $\MIRA$ exacta; lensing es near-coincidence numérica con $\sqrt{\AURA}$".
+
+**Lo que NO cambia:**
+- Postulado M ($\MIRA=(3\phiG+\pi)/4$) sigue siendo central del framework.
+- Papers 1-7, 9, 10 no afectados.
+- EFT canonical (P7), Hubble tension (P9), UV completion (P10): intactos.
+
+**Lo que cambia (honesto):**
+- P8 ya no es "MIRA-in-lensing paper" sino "two-limit analysis paper": el factor
+  $\sqrt{\AURA}$ del alternative MOND-like limit es preservado como derivación
+  pedagógica; la predicción canónica observable es GR-with-DM.
+- El claim "MIRA aparece en 3 sectores" se retira de la narrativa cross-paper.
+
+---
+
 ## OP-14 — Σm_ν Phenomenological Derivation (Paper 4) — ABIERTO
 
 **Location:** Paper 4, §"Neutrino Mass Sum", L675-700.
@@ -670,7 +739,7 @@ narrativa "todo emerge de φ,π" en P6 y P4 simultáneamente.
 | OP-10 | P6/P7 | Unify χ into φ via richer V(φ) | Medium-High | V(φ) with slope (DE) + minimum (DM matter-mode); restores zero-param status |
 | OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
 | OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |
-| OP-13 | P8 | **Contradicción interna §3-4 vs §4.5** (datos confirman §4.5, refutan §3-4) | **High** | Reformular P8 §3-4 como límite alternativo, marcar §4.5 como canónico (2026-05-23) |
+| OP-13 | P8 | ~~Contradicción interna §3-4 vs §4.5~~ | ✅ RESUELTO | Opción A aplicada: framing dos-límites, retirado claim "MIRA en lensing", $\sqrt{\AURA}$ ≠ $\MIRA$ aclarado, canonical prediction = GR-with-DM (2026-05-23) |
 | OP-14 | P4 | Σm_ν phenomenological (Type P admitted L691-697); offset 22 ad hoc | Medium-High | Derivar $\mathcal{R}=4\cdot\mathrm{KAL}-22$ desde Genesis Roles o saturación; resuelve cascada con OP-9 |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;

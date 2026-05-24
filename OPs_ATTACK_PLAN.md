@@ -1,46 +1,66 @@
 # Plan de Ataque a Open Problems — SSEE-V3.6
 
-**Fecha:** 2026-05-23
+**Fecha:** 2026-05-23 (revisado tras ataque a OP-14)
 **Estado del modelo:** 4 postulados (D, S, M, I); cross-paper consistente; sin contradicciones.
-**OPs abiertas:** OP-8, OP-9, OP-10, OP-11, OP-12, OP-13, OP-14.
+**OPs abiertas:** OP-8, OP-9, OP-10, OP-11, OP-12, OP-14.
+**OPs cerradas recientemente:** OP-13 ✅ (Opción A, P8 → DRAFT pending OP-9).
 
 ---
 
-## Mapa de dependencias (cadenas)
+## Mapa de dependencias (REVISADO — 2026-05-23 tras ataque a OP-14)
 
 ```
-OP-14 (Σm_ν Type P, offset 22 ad hoc)
-    │
-    └──► OP-9 (m_φ = Σm_ν · H_alg ansatz)
-              │
-              └──► OP-12 (relic abundance Ω_φDM)
+ANTES (hipótesis original):
 
-OP-10 (unify χ into φ via richer V(φ))
-    │
-    ├──► OP-9  (m_φ = curvature V at minimum) ◄── resuelto por OP-10
-    ├──► OP-11 (ξ becomes part of V structure) ◄── resuelto por OP-10
-    └──► OP-12 (relic abundance from V dynamics) ◄── resuelto por OP-10
+  OP-14 (Σm_ν Type P, offset 22 ad hoc)
+      │
+      └──► OP-9 (m_φ = Σm_ν · H_alg ansatz)
+                │
+                └──► OP-12 (relic abundance Ω_φDM)
 
-OP-8 (MIRA dynamical mechanism — 7 mech ruled out)
-    │
-    └──► Papers 5,6,7,8,9 dejan de ser "condicionales a MIRA"
 
-OP-13 (θ_E factor 2 in SLACS/BELLS — observational)
-    │
-    └──► Self-contained: falsifica o confirma Paper 8
+AHORA (post-ataque OP-14, ver OPEN_PROBLEMS.md §OP-14):
+
+  OP-10  V(φ) unificador DE + DM
+     │
+     ├──► OP-9   (m_φ = curvatura V en mínimo)
+     │      │
+     │      └──► OP-14 (Σm_ν = m_φ / H_alg)    ← invertido
+     │
+     ├──► OP-11  (ξ acoplamiento → funcional de V)
+     │
+     └──► OP-12  (Ω_φDM h² desde dinámica de V)
+
+  OP-8   MIRA mecanismo (independiente)
+
+  OP-13  ✅ RESUELTO (Opción A: P8 → DRAFT pending OP-9)
 ```
 
-## Análisis de impacto vs esfuerzo
+**Por qué cambió la flecha OP-14 → OP-9:** El ataque directo a OP-14 (script
+`src/ssee_op14_neutrino_mass.py`, 2026-05-23) reveló que:
+- La forma $\mathcal{R}=4\cdot\text{KAL}-22$ es **estructuralmente frágil**
+  (perturbación 10⁻³ en φ,π → 25% drift en Σm_ν).
+- Scan algebraico de ~150 monomios no halla identidad exacta (mejor candidato
+  $1/[3(\text{KAL}-\varphi)]$ con error −0.27%, sigue siendo aproximación).
+- $\Sigma m_\nu$ y $m_\varphi$ comparten **el mismo grado de libertad**:
+  derivar uno deriva el otro vía $m_\varphi = \Sigma m_\nu \cdot H_0^{\text{alg}}$.
+
+→ La única salida es derivar $m_\varphi$ desde la curvatura de un $V(\varphi)$
+fundamental, que es lo que OP-10 ya pretendía atacar como Fase 3 de medio plazo.
+**OP-10 absorbe OP-9, OP-11, OP-12 Y OP-14 simultáneamente.**
+
+## Análisis de impacto vs esfuerzo (REVISADO 2026-05-23)
 
 | OP | Tipo | Esfuerzo estimado | Impacto si se resuelve | Notas |
 |----|------|---|---|---|
-| **OP-13** | Observacional | 1-2 sesiones (literatura) | Bajo si confirma, alto si falsifica P8 | Self-contained |
-| **OP-14** | Matemático | 2-4 sesiones | Resuelve OP-9 automáticamente | Eslabón más débil |
-| **OP-10** | Teórico | 5-10 sesiones | Resuelve OP-9 + OP-11 + OP-12 | Más ambicioso |
-| **OP-8**  | Físico | Indef. (7 mech ya fallaron) | Sella todos los condicionales | Más difícil |
-| OP-9      | (derivado) | Sale como corolario de OP-14 u OP-10 | — | No atacar directamente |
+| ~~**OP-13**~~ | ~~Observacional~~ | ~~1-2 sesiones~~ | ✅ RESUELTO (Opción A, 2026-05-23) | P8 → DRAFT pending OP-9 |
+| ~~**OP-14**~~ | ~~Matemático~~ | ~~Atacado 2026-05-23~~ | No derivable directamente | Blocked-by-OP-10 |
+| **OP-10** | Teórico | 5-10 sesiones | Resuelve OP-9 + OP-11 + OP-12 + **OP-14** | **Máxima prioridad** ahora |
+| **OP-8**  | Físico | Indef. (7 mech ya fallaron) | Sella todos los condicionales | Más difícil; dejar para último |
+| OP-9      | (derivado) | Sale como corolario de OP-10 | — | No atacar directamente |
 | OP-11     | (derivado) | Sale como corolario de OP-10 | — | No atacar directamente |
 | OP-12     | (derivado) | Sale como corolario de OP-10 | — | No atacar directamente |
+| OP-14     | (derivado) | Sale como corolario de OP-10 | — | No atacar directamente (ataque 2026-05-23 falló) |
 
 ## Orden recomendado de ataque
 
@@ -89,17 +109,41 @@ Candidatos a explorar:
 
 **Status pragmático:** la resolución de OP-8 sería extraordinaria pero el modelo es publicable sin ella (MIRA queda como Postulate M, valor algebraico exacto). Atacar después de OP-10/14 cuando haya más estructura teórica.
 
-## Decisión recomendada
+## Decisión recomendada (REVISADA 2026-05-23)
 
-**Empezar por OP-13** (Fase 1, una sesión) porque:
-- Es observacional, no requiere construcción teórica
-- Resultado binario: confirma o falsifica → cierra puerta
-- No bloquea las otras OPs
+**OP-13 ✅ resuelto** (Opción A: P8 → DRAFT pending OP-9, 2026-05-23, commit 89710b3).
 
-**Después OP-14** porque:
-- Eslabón más débil de la cadena
-- Resuelve OP-9 automáticamente
-- Es matemático puro (no requiere observación nueva)
-- Métodos: scan algebraico tipo `mira_attempts/`, o saturación tipo veta-2
+**OP-14 ✅ atacado y archivado** (script `src/ssee_op14_neutrino_mass.py`,
+2026-05-23): no derivable directamente, blocked-by-OP-10. Ver OPEN_PROBLEMS.md
+§OP-14 para evidencia (fragilidad H1, no DoF match H2, scan sin identidad H3).
 
-**OP-10 y OP-8 quedan para el largo plazo** — son los retos teóricos profundos. No bloquean publicación: las OPs están abiertas y catalogadas.
+**Próximo objetivo: OP-10 — Fase 1 (catálogo $V(\varphi)$)**
+
+Plan de ataque OP-10 en 6 fases:
+
+| Fase | Contenido | Esfuerzo | Salida |
+|---|---|---|---|
+| 1 | Catálogo de 3-5 familias $V(\varphi)$ | 1 sesión | Lista de candidatos viables |
+| 2 | Test consistencia background ($w_0, w_a$) | 1-2 sesiones | Subconjunto que pasa Fase 2 |
+| 3 | Mínimo y curvatura $m_\varphi$ | 1 sesión | Resuelve OP-9 o descarta |
+| 4 | α-attractor compatibility ($n_s$) | 1-2 sesiones | Conexión con OP-2 |
+| 5 | $\xi$ acoplamiento como funcional de $V$ | 1 sesión | Resuelve OP-11 |
+| 6 | Paper 10b o reescritura P6 §two-sector | 1 sesión | Cierre OP-9, 11, 12, 14 |
+
+Candidatos a explorar en Fase 1:
+- $V_1(\varphi) = V_0 e^{-\lambda\varphi/M_{pl}} + \frac{1}{2}m^2(\varphi-\varphi_0)^2$
+- $V_2(\varphi) = V_0\tanh^2(\varphi/f) + (m^2/2)\text{sech}^2(\varphi/f)$
+- $V_3(\varphi) = M^4[1 - \cos(\varphi/f)] + V_0 e^{-\lambda\varphi}$
+- $V_4(\varphi) = V_0(1 - e^{-\sqrt{2/3\alpha}\,\varphi/M_{pl}})^2 + V_{\min}$ (α-attractor puro Starobinsky)
+
+**Constraints duros** (de papers anteriores, no negociables):
+- $\alpha = \varphi^4/3$ (Paper 1)
+- $\lambda = 0.693$ (Paper 7)
+- $V_0$ bloqueado (Paper 7)
+- $M = 8.81$ meV (Paper 10)
+
+→ El espacio de búsqueda es pequeño: la forma del mínimo y la curvatura son
+casi los únicos grados de libertad libres. Si existe solución, debe ser única.
+
+**OP-8 sigue para el final** — la resolución sería extraordinaria pero el modelo
+es publicable sin ella (MIRA como Postulate M con valor algebraico exacto).

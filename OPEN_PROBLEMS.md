@@ -687,7 +687,7 @@ Guardián: VERDE 102/102.
 
 ---
 
-## OP-14 — Σm_ν Phenomenological Derivation (Paper 4) — ABIERTO
+## OP-14 — Σm_ν Phenomenological Derivation (Paper 4) — ABIERTO (atacado 2026-05-23, blocked-by-OP-10)
 
 **Location:** Paper 4, §"Neutrino Mass Sum", L675-700.
 
@@ -721,6 +721,73 @@ automáticamente.
 **Severity:** Medium-High — bloquea el camino a cero parámetros porque rompe la
 narrativa "todo emerge de φ,π" en P6 y P4 simultáneamente.
 
+### Ataque ejecutado (2026-05-23) — script `src/ssee_op14_neutrino_mass.py`
+
+Tres hipótesis testadas:
+
+**H1 — Fragilidad estructural: CONFIRMADA**
+
+| Perturbación δ(φ,π)/x | Drift en Σm_ν |
+|---|---|
+| 10⁻⁶ | −0.2% |
+| 10⁻⁴ | +2.4% |
+| 10⁻³ | **+25.5%** |
+| 10⁻² | +257% |
+
+La forma $\mathcal{R} = 4\cdot\text{KAL} - 22$ es una diferencia entre números casi
+iguales (22.086 vs 22.000). Pequeñas perturbaciones en (φ,π) se amplifican
+relativamente. Una predicción genuinamente estructural debería ser estable bajo
+perturbaciones de orden 10⁻³ — esta no lo es.
+
+**H2 — ¿22 = conteo físico de DoF?: SIN MATCH**
+
+- SM tiene 12 generadores gauge (≠22), 28 parámetros libres (≠22), 13 bosones (≠22).
+- "22 = 2 × 11 (dim M-theory)" o "22 = 2·rank(E11)" son post-hoc sin argumento físico
+  independiente.
+
+**H3 — Scan algebraico (~150 monomios): SIN IDENTIDAD EXACTA**
+
+Mejor candidato: $\mathcal{R} \approx 1/[3(\text{KAL}-\varphi)] = 2/[3(3\pi-\varphi)]$
+con error de **−0.27%**. Más limpio que "$4\text{KAL}-22$" pero sigue siendo
+aproximación numérica, no identidad. Si fuera estructural el error sería 0%.
+
+### Conclusión: OP-14 colapsa con OP-9
+
+Reformulación crítica: $\Sigma m_\nu$ y $m_\varphi$ comparten el **mismo grado de
+libertad fenomenológico** vía la identidad de Paper 6:
+$$m_\varphi = \Sigma m_\nu \cdot H_0^{\rm alg}$$
+
+OP-14 y OP-9 NO son problemas independientes — son **dos caras del mismo
+problema**. Atacar OP-14 directamente no produce derivación porque no hay
+ataque local: la única salida es derivar $m_\varphi$ desde la curvatura
+de un potencial $V(\varphi)$ fundamental.
+
+### Nueva cadena de dependencias (post-ataque)
+
+```
+OP-10  V(φ) unificador DE + DM
+   │
+   ├──► OP-9   (m_φ = curvatura V en mínimo)
+   │       │
+   │       └──► OP-14 (Σm_ν = m_φ / H_alg)    ← invertido: ya no flecha OP-14→OP-9
+   │
+   ├──► OP-11  (ξ acoplamiento → funcional de V)
+   │
+   └──► OP-12  (Ω_φDM h² desde dinámica de V)
+
+OP-8   MIRA mecanismo (independiente, eslabón duro)
+```
+
+Si OP-10 cae, **4 OPs caen juntas** (9, 11, 12, 14). El modelo pasa de 4 a 3
+postulados (D, S, I; M sigue abierto vía OP-8).
+
+### Acción inmediata sobre Paper 4
+
+El §"Neutrino Mass Sum" ya admite Type P en L704-711. **No requiere edición
+urgente** — el lenguaje actual es honesto. La acción es **catalogar OP-14 como
+blocked-by-OP-10** en el registro de OPs y dirigir el ataque siguiente a OP-10
+(Fase 1: catálogo de candidatos $V(\varphi)$).
+
 ---
 
 ## Summary Table
@@ -740,7 +807,7 @@ narrativa "todo emerge de φ,π" en P6 y P4 simultáneamente.
 | OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
 | OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |
 | OP-13 | P8 | ~~Contradicción interna §3-4 vs §4.5~~ | ✅ RESUELTO | Opción A aplicada: framing dos-límites, retirado claim "MIRA en lensing", $\sqrt{\AURA}$ ≠ $\MIRA$ aclarado, canonical prediction = GR-with-DM (2026-05-23) |
-| OP-14 | P4 | Σm_ν phenomenological (Type P admitted L691-697); offset 22 ad hoc | Medium-High | Derivar $\mathcal{R}=4\cdot\mathrm{KAL}-22$ desde Genesis Roles o saturación; resuelve cascada con OP-9 |
+| OP-14 | P4 | Σm_ν phenomenological (Type P admitted L691-697); offset 22 ad hoc | Medium-High | **Atacado 2026-05-23** (script op14): forma frágil (1‰→25% drift), sin DoF match, scan sin identidad exacta. **Blocked-by-OP-10**: $\Sigma m_\nu$ y $m_\varphi$ comparten DoF, derivar V(φ) los resuelve juntos |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.

@@ -12,7 +12,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 - **Paper 5**: IS causal perturbation theory — estabilidad, MIRA, S8, fσ₈ (commit 0a9d21c) ✅
 - **Paper 6**: φ-DM dos sectores — m_φ=5.60 eV algebraico, fσ₈ 2.67σ→0.76σ (empata ΛCDM 0.73σ; datos fσ₈ corregidos a refs Alam2017 — 2026-05-18) ✅
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint) ✅
-- **Paper 8**: Régimen de gravedad fuerte — geodésicas disformales, MIRA emergencia lensing, Vainshtein (commit d7f3b38) ✅
+- **Paper 8**: Régimen de gravedad fuerte — ⚠ DRAFT pendiente OP-9. Two-limit analysis (alt MOND-like vs canonical EFT B-S); predicción lensing canónica condicional a interpretación física de m_φ. Sirve hoy como consistency check; será paper real cuando OP-9 se resuelva vía OP-14 (ver OPs_ATTACK_PLAN.md). Papers fuertes de la suite: 1, 2, 4, 10. P8 esperando.
 - **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente; +sección comparación cuantitativa vs EDE/SIDR/late-DE (preprint, 18 pp) ✅
 - **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=8.81 meV=Λ_SSEE; αK_full=0.41691; H₀^UV=73.040 km/s/Mpc (condicional C.1); 8/10 JCAP ✅
 
@@ -31,7 +31,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 | `SSEE_Paper5_IS.pdf` | Paper 5 (25 p) | ✅ Completo — IS causal perturbations |
 | `SSEE_Paper6_phiDM.pdf` | Paper 6 (24 p) | ✅ Preprint — +Lagrangiano φ-DM escalar, DW excluido |
 | `SSEE_Paper7_EFT.pdf` | Paper 7 (16 p) | ✅ Preprint — EFT canónico, αK=0.4033, βc=−AURA |
-| `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (17 p) | ✅ Completo — gravedad fuerte, MIRA lensing, Vainshtein |
+| `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (~18 p) | ⚠ DRAFT — pendiente OP-9 (interpretación física m_φ); consistency-check hoy, predicción canónica luego |
 | `SSEE_Paper9_HubbleTension.pdf` | Paper 9 (18 p) | ✅ Preprint — f_screen + comparación EDE/SIDR/late-DE |
 | `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (14 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=8.81 meV=Λ_SSEE; αK_full=0.41691 |
 | `SSEE_Unified_Journal.pdf` | Consolidación Papers 1–10 (23 p) — §Extensions 8/9/10 | ✅ Candidato journal (10-paper, 2026-05-17) |

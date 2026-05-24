@@ -32,7 +32,7 @@
 | 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Tension Characterization | 25 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
 | 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 24 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
 | 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 16 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
-| 8 | Strong Gravity Regime — Disformal Geodesics, MIRA Lensing Emergence, Vainshtein Screening | 16 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
+| 8 | Strong Gravity Regime — Two-limit analysis (alt MOND-like vs canonical EFT B-S) | 18 | ⚠ DRAFT pending OP-9 | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
 | 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 18 | Preprint | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
 | 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 8.81 meV | 14 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
 | — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 19 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |

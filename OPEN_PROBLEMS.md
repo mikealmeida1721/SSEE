@@ -554,25 +554,67 @@ calculation would close the gap.
 
 ---
 
-## OP-13 — Strong-Lensing θ_E Factor-2 Observational Status (Paper 8) — ABIERTO
+## OP-13 — Inconsistencia interna Paper 8: §3-4 (factor √β_c) vs §4.5 (B-S) — REABIERTO 2026-05-23
 
-**Location:** Paper 8, §5 (MIRA emergence in lensing). Prediction: $\theta_E^{\rm SSEE}/
-\theta_E^{\rm GR} = \sqrt{\beta_c} \approx \mathrm{MIRA} \approx 1.999$.
+**Location:** Paper 8, §3-4 ("Disformal null geodesic" + "MIRA emerges in lensing") vs
+§4.5 ("EFT suppression of fifth-force corrections") vs §6.2 item 3 (falsifiability).
 
-**Problem:** This predicts a **factor 2** amplification of Einstein radii in disformal-
-unscreened regimes. SLACS, BELLS, and H0LiCOW analyses generally calibrate $\theta_E$
-to a few percent assuming GR. A 100% systematic would have been noticed.
+**Diagnóstico (revisión 2026-05-23):**
 
-**Possible reconciliation:** K-mouflage screening may apply at relevant cluster/galaxy
-scales, reducing the effective amplification. Paper 8 §6 argues that the disformal
-coupling is partially screened in dense environments.
+P8 contiene dos derivaciones que asumen físicas incompatibles:
 
-**Path to resolution:** A careful comparison against compiled SLACS+BELLS data, with
-the specific screening modulation factor computed for each system's density profile.
+| Sección | Asunción física | Predicción |
+|---|---|---|
+| §3-4 | "DM efectiva sourced enteramente por baryonic seed" (escenario MOND-like, sin DM real) | $\theta_E^{\rm SSEE}/\theta_E^{\rm GR-bary} = \sqrt{\beta_c} \approx 2$ |
+| §4.5 | DM real existe (Ω_CDM=0.16 + Ω_φDM=0.16), EFT con α_B=α_M=α_T=0 | $F_\phi/F_N \sim (H/k)^2 \sim 10^{-15}$ a escala kpc |
+| §6.2 item 3 | (saca de §3-4) | $M_{\rm dyn}/M_{\rm lens} \approx 4$ |
 
-**Severity:** Medium — could be the most observationally vulnerable prediction of
-the suite. Falsified by data if Einstein radii don't show any modulation beyond GR
-at any density regime.
+**El propio paper admite** (P8 L363-370) que §3-4 es "working phenomenological estimate"
+y difiere "full solution to future N-body simulations". Sin embargo §6.2 item 3 lo
+presenta como predicción rígida falsable.
+
+**Datos confrontados (revisión literatura 2026-05-23):**
+- SLACS γ = 2.078 ± 0.027 (Auger 2010; Sonnenfeld 2015)
+- M_E/M_dyn ≈ 1.207 (SIS, Cao et al. 2018, arXiv:1803.00819) — i.e., M_lens excede M_dyn ~20%
+- Power-law profiles: M_E/M_dyn within 1σ de 1
+- NO desviaciones factor 2 ni factor 4 reportadas en ningún sample
+
+**Confrontación:**
+- §3-4 predice $M_{\rm dyn}/M_{\rm lens}\approx 4$ → datos dan ≈ 0.83 (factor 5 wrong direction)
+- §4.5 predice $M_{\rm dyn}/M_{\rm lens}\approx 1$ → datos compatibles (offset ~20% atribuible
+  a contaminación línea-de-vista y errores de modelo)
+
+**Veredicto:**
+1. La física correcta para el modelo real (two-sector con DM existente) es §4.5
+2. §3-4 describe un escenario MOND-like que NO corresponde al modelo SSEE canónico
+3. La identidad "$\sqrt{\beta_c}\approx$ MIRA al 0.03%" es una near-coincidence
+   numérica entre dos cantidades de regímenes incompatibles, no derivación física
+
+**Implicaciones cross-paper:**
+- P8 título/abstract: "MIRA emerges in lensing" pierde fuerza si §3-4 no es la física canónica
+- P1 §1.4 / P8 introducción: la "unificación CMB↔lensing via MIRA" descansa en
+  near-coincidence numérica, no en identidad estructural
+- P6 y P7: no afectados directamente (no usan factor √β_c en lensing)
+
+**Path to resolution:**
+1. **Opción A (defensiva)**: Reformular P8 §3-4 como "alternative limit scenario", marcar
+   §4.5 como predicción canónica. §6.2 item 3 ajustado a $M_{\rm dyn}/M_{\rm lens}\approx 1$
+   (consistente con datos). Reescribir narrativa MIRA↔lensing como "near-coincidence
+   numérica" en lugar de "emergencia estructural".
+2. **Opción B (constructiva)**: Derivar consistentemente el lensing en el escenario
+   two-sector real (con DM existente + EFT B-S), determinar si hay alguna firma
+   observable distinta de ΛCDM, reformular P8 alrededor de eso.
+3. **Opción C (radical)**: Aceptar que P8 §3-4 fue overclaim y reescribir el paper
+   sin la afirmación factor 2.
+
+**Severity:** **High** — afecta la narrativa central de P8 ("MIRA emerges in lensing")
+y la cadena de argumentos de unificación. NO afecta la solidez del background
+SSEE (Papers 1-5, 7, 9, 10), solo el régimen de gravedad fuerte (Paper 8).
+
+**Cómo este OP escapó de la auditoría previa:** la auditoría hostil chequeó consistencia
+**dentro** de cada sección y entre paper↔scripts↔ssee_core, pero no consistencia
+**entre secciones del mismo paper** ni paper↔datos publicados. Patch metodológico:
+añadir Capa 8 "consistencia inter-sección" al guardián.
 
 ---
 
@@ -628,7 +670,7 @@ narrativa "todo emerge de φ,π" en P6 y P4 simultáneamente.
 | OP-10 | P6/P7 | Unify χ into φ via richer V(φ) | Medium-High | V(φ) with slope (DE) + minimum (DM matter-mode); restores zero-param status |
 | OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
 | OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |
-| OP-13 | P8 | θ_E factor-2 observational status | Medium | Compile SLACS/BELLS with screening modulation |
+| OP-13 | P8 | **Contradicción interna §3-4 vs §4.5** (datos confirman §4.5, refutan §3-4) | **High** | Reformular P8 §3-4 como límite alternativo, marcar §4.5 como canónico (2026-05-23) |
 | OP-14 | P4 | Σm_ν phenomenological (Type P admitted L691-697); offset 22 ad hoc | Medium-High | Derivar $\mathcal{R}=4\cdot\mathrm{KAL}-22$ desde Genesis Roles o saturación; resuelve cascada con OP-9 |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;

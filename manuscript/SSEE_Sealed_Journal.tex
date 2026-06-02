@@ -214,6 +214,19 @@ $z\simeq1100$ extrapolation with the $z\lesssim2$ measurement. We report the
 DESI agreement as what it is: a clean, parameter-free match to the dataset
 that directly probes the dark-energy-dominated epoch.
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.78\textwidth]{fig1_w0wa_plane.pdf}
+  \caption{The SSEE prediction in the $w_0$--$w_a$ plane. The single point
+  $(w_0,w_a)=(-T_r/M_v,\,-P_{\rm sc}/K_v)=(-0.840,-0.670)$ is fixed entirely by
+  $\varphi$ and $\pi$, with no dark-energy parameters adjusted to the data. The
+  shaded contours are the DESI DR2 $w_0w_a$CDM posterior
+  (BAO\,$+$\,CMB\,$+$\,DESY5). The SSEE point falls inside the $1\sigma$ region;
+  the joint Mahalanobis distance is $\chi^2_{\rm 2D}=0.080$, an equivalent
+  $0.05\sigma$ agreement (Eq.~\ref{eq:chi2}).}
+  \label{fig:w0wa}
+\end{figure}
+
 \subsection{A look-elsewhere test: how special are these two ratios?}
 \label{sec:look-elsewhere}
 A natural objection to any algebraic coincidence is the look-elsewhere
@@ -335,7 +348,7 @@ $H_0$ against the low-redshift BAO yields the posterior
 \begin{equation}
   H_0^{\mathrm{post}} = 66.553 \pm 0.442~\kms ,
   \qquad
-  \Omega_b h^2 = 0.02183 \pm 0.00048 ,
+  \Omega_b h^2 = 0.02261 \pm 0.00048 ,
   \label{eq:h0post}
 \end{equation}
 with $r_d = 147.28~\mathrm{Mpc}$ ($0.72\sigma$) at the posterior value. These
@@ -357,6 +370,20 @@ $0.59417^\circ$ ($5.46\sigma$); we quote this not as a tension but to make the
 category error explicit---the late-time expansion rate is not the early-time
 acoustic calibration, and conflating the two is precisely what the two-stage
 treatment avoids.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.62\textwidth]{fig_corner_ssee_professional.pdf}
+  \caption{Marginalised posterior from the MCMC analysis ($100$ walkers
+  $\times\,25{,}000$ steps). With the entire dark-energy sector fixed by
+  $\varphi$ and $\pi$, the chain samples only $H_0$ and $\Omega_b h^2$ against
+  DESI DR2 BAO with a CMB-derived (MIRA) prior. The posterior is
+  $H_0=66.553\pm0.442~\kms$ and $\Omega_b h^2 = 0.02261\pm0.00048$
+  (Eq.~\ref{eq:h0post}). Dashed lines mark the anchor inputs
+  $(H_0=67.068~\kms,\ \Omega_b h^2 = 0.02218)$; the $16/50/84\%$ quantiles are
+  indicated.}
+  \label{fig:corner}
+\end{figure}
 
 \section{The CMB and the effective field theory}
 \label{sec:eft}
@@ -455,6 +482,19 @@ Table~\ref{tab:cmb} reports the reduced $\chi^2$.
   two-parameter economy of the background.}
   \label{tab:cmb}
 \end{table}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.82\textwidth]{fig_cmb_spectrum.pdf}
+  \caption{CMB temperature angular power spectrum computed with \texttt{CLASS}
+  for the SSEE background and EFT functions (Eq.~\ref{eq:eft-alphas}), compared
+  against Planck PR4. With the dark-energy sector fixed by $\varphi$ and $\pi$,
+  SSEE reproduces the acoustic peaks at $\ell=220,\,536,\,812$ at a quality
+  indistinguishable from $\Lambda$CDM (Table~\ref{tab:cmb}). The two-$\Om$
+  structure is essential: replacing $\Om^{\mathrm{cosm}}=0.320$ with the bare
+  $\Om^{\mathrm{dyn}}=0.160$ shifts every peak by ${\sim}10\%$.}
+  \label{fig:cmb}
+\end{figure}
 
 \paragraph{MIRA is physically required, not cosmetic.} The two-$\Om$ structure
 of \S\ref{sec:two-omega} is decisively tested by the CMB. Running the Boltzmann

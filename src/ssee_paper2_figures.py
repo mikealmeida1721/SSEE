@@ -113,7 +113,7 @@ ax1.plot(w0_line, -1 - w0_line, "k--", lw=1.0, alpha=0.5,
 
 ax1.set_xlabel(r"$w_0$")
 ax1.set_ylabel(r"$w_a$")
-ax1.set_title("SSEE-V3.6 en el plano $w_0$-$w_a$ (DESI DR2 + Planck 2018 + DESY5)")
+ax1.set_title("SSEE-V3.6 in the $w_0$-$w_a$ plane (DESI DR2 + Planck 2018 + DESY5)")
 ax1.set_xlim(-1.35, -0.45)
 ax1.set_ylim(-1.6, 0.8)
 ax1.legend(loc="upper left", framealpha=0.9, fontsize=9)

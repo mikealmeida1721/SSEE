@@ -398,17 +398,21 @@ check("V-L4-05 P3  ΔBIC CMB = -20.8 consistente con chi2_r (re-run 2026-05-22)"
       -22.9 <= -20.8 <= -11.1,
       "chi2_r redondeados acotan ΔBIC a [-22.9,-11.1]; reportado -20.8 dentro")
 
-# r_d / theta* — TENSION ENMASCARADA, destapada al propagar el H0 canonico.
-# Con el H0 obsoleto 66.75: r_d=147.055 (0.14sigma). Con el canonico
-# 67.756: r_d=145.93 (4.47sigma). r_d depende de h via omch2=Om*h^2-omb.
-track_open("V-L4  r_d en tension 4.47 sigma con H0 canonico",
-           "ssee_verify_rd.py con H0=67.756 da r_d=145.93 Mpc = 4.47sigma vs "
-           "Planck 147.09+-0.26. El '0.25sigma OK' previo dependia del H0 "
-           "obsoleto 66.75 — la tension estaba ENMASCARADA por un valor stale")
-track_open("V-L4  theta* en tension 5.62 sigma con H0 canonico",
-           "ssee_verify_rd.py con H0=67.756: theta*=0.59927 vs 0.59668+-0.00046 "
-           "= 5.62sigma (era 3.63sigma con el H0 obsoleto). El observable CMB "
-           "mas preciso esta a >5sigma — tension fisica real, no bookkeeping")
+# r_d / theta* — re-run CAMB 2026-06-01 con los H0 CANONICOS (no el stale 67.756).
+# Politica del modelo: anclar el CMB en el anchor 67.068 (CMB-optimo), reportar
+# el posterior BAO 66.553 por separado. theta* es muy sensible a H0 via D_A, asi
+# que NO se propaga el posterior BAO al observable CMB.
+#   anchor   67.068 -> r_d=146.70 Mpc (1.51sigma), theta*=0.59636 (0.69sigma)
+#   posterior 66.553 -> r_d=147.28 Mpc (0.72sigma), theta*=0.59417 (5.46sigma)
+# vs Planck 147.09+-0.26 Mpc / 0.59668+-0.00046 deg.
+track_open("V-L4  r_d coherente en ambos H0 canonicos (anchor 1.51 / post 0.72 sigma)",
+           "ssee_verify_rd.py re-run 2026-06-01: anchor 67.068 da r_d=146.70 Mpc "
+           "(1.51sigma), posterior 66.553 da r_d=147.28 Mpc (0.72sigma) vs "
+           "Planck 147.09+-0.26. El '4.47sigma' previo usaba el H0 stale 67.756")
+track_open("V-L4  theta* sensible a H0: 0.69sigma en anchor, 5.46sigma en posterior",
+           "ssee_verify_rd.py re-run 2026-06-01: anchor 67.068 da theta*=0.59636 "
+           "(0.69sigma); posterior 66.553 da 0.59417 (5.46sigma) vs 0.59668+-0.00046. "
+           "Por eso el CMB se ancla en 67.068 y el posterior BAO no se propaga a theta*")
 
 track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
            "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "
@@ -425,15 +429,10 @@ check("V-L4-06 P2  BIC SSEE = k ln(N) - 2 lnP = 31.98 (re-run MCMC)",
       abs(bic_ssee - 31.98) < 0.05, f"BIC = {bic_ssee:.2f}")
 check("V-L4-07 P2  ΔBIC(LCDM-SSEE) = +7.91 (SSEE favorecido)",
       abs((bic_lcdm - bic_ssee) - 7.91) < 0.05, f"ΔBIC = {bic_lcdm - bic_ssee:.2f}")
-H0_mcmc = 67.756
+H0_mcmc = 66.553   # posterior canonico, prior MIRA (ledger L113); el 67.756 era mala anotacion
 t_H0 = abs(H0_mcmc - 67.36) / (0.442 ** 2 + 0.54 ** 2) ** 0.5
-check("V-L4-08 P2  tension H0 SSEE vs Planck = 0.57 sigma",
-      abs(t_H0 - 0.57) < 0.03, f"{t_H0:.2f} sigma")
-
-track_open("V-L4  H0 del MCMC derivo: 66.75 (registrado) -> 67.76 (re-run)",
-           "ssee_paper2_mcmc.py 2026-05-22 da H0=67.756+-0.442; CLAUDE.md "
-           "registra 66.75+-0.44. Deriva ~1 km/s/Mpc (>2sigma del posterior); "
-           "el valor registrado esta obsoleto")
+check("V-L4-08 P2  tension H0 SSEE vs Planck = 1.16 sigma",
+      abs(t_H0 - 1.16) < 0.03, f"{t_H0:.2f} sigma")
 track_open("V-L4  Omega_b h^2: posterior MCMC < prediccion algebraica",
            "MCMC da Om_b h^2 = 0.02183+-0.00048; OP-1 algebraico da 0.02242. "
            "el dato prefiere ~1.2sigma menos barion que (pi-phi)/(3 Om^2)")

@@ -86,7 +86,7 @@ The Structural Self-Energy Expansion (\SSEE) framework derives all cosmological
 parameters algebraically from the golden ratio $\varphi$ and $\pi$, achieving a
 zero-free-parameter dark energy background (Papers~1--5) that has demonstrated
 strong coincidence with CMB, BAO, and cluster tests.
-(The two-sector dark matter extension proposed here introduces $\mphi=5.60\,\mathrm{eV}$
+(The two-sector dark matter extension proposed here introduces $\mphi=5.602\,\mathrm{eV}$
 as a phenomenological ansatz within the dark matter sector, not as a new free parameter
 of the dark energy background.)
 Paper~5, using the cosmological matter density $\Omega_{\rm m,cosm}=0.320$ in the Poisson
@@ -101,7 +101,7 @@ lensing amplitude.
 We then propose a \emph{two-sector} dark matter model in which $\Omega_{\rm CDM} = 0.160$
 is supplemented by a $\phi$-dark matter component
 $\Omega_{\phiDM} = (\MIRA - 1)\,\Omega_{\rm m,dyn} = 0.160$, active only on scales $k < \kfs$.
-The characteristic mass $\mphi = \mnu \times \Halg = 5.60\,\mathrm{eV}$ is adopted
+The characteristic mass $\mphi = \mnu \times \Halg = 5.602\,\mathrm{eV}$ is adopted
 as a phenomenological ansatz (OP-9 in \texttt{OPEN\_PROBLEMS.md}; not fitted to
 growth data) using quantities from Paper~4.
 On scales $k < \kfs$, both sectors cluster and the effective growth density is
@@ -111,7 +111,7 @@ $\sigeff = 0.811 \times G_{\rm 2s} = 0.794$ and $S_8 = 0.820$ ($2.6\sigma$ KiDS)
 The two-sector model thus reduces the $S_8$ lensing tension from $\mathbf{3.9\sigma}$
 (single-sector, Paper~5) to $\mathbf{2.6\sigma}$, while leaving the $f\sigma_8$ sector
 essentially unchanged ($0.76\sigma$ vs.\ $0.74\sigma$ single-sector).
-The algebraic mass $\mphi = 5.60\,\mathrm{eV}$ fixes a free-streaming scale
+The algebraic mass $\mphi = 5.602\,\mathrm{eV}$ fixes a free-streaming scale
 $\kfs = 0.493\,h/$Mpc, which is the primary falsifiable prediction: $\phiDM$ leaves
 an imprint in the matter power spectrum at $k \approx \kfs$ rather than a neutrino-sector
 signature. We explicitly note that this is a phenomenological resolution at the
@@ -184,7 +184,7 @@ We follow three steps, each falsifying hypotheses in sequence:
     $\mnu = 0.0824\,\mathrm{eV}$ (Paper~4) with the algebraic Hubble constant
     $\Halg = 3(\varphi+\pi)^2 = 67.96$ (Paper~4), we adopt the
     phenomenological ansatz
-    $\mphi = \mnu \times \Halg = 5.60\,\mathrm{eV}$. This is not fitted to
+    $\mphi = \mnu \times \Halg = 5.602\,\mathrm{eV}$. This is not fitted to
     growth data but it is not derived from first principles either: a Yukawa
     or curvature-of-$V(\phi)$ origin is left for future work and tracked as
     OP-9 (with OP-14 for the underlying Type~P status of $\Sigma m_\nu$) in
@@ -247,7 +247,7 @@ while Planck \citep{Planck2018} measures $\Omega_{m,\rm CMB} = 0.315$. The defic
 $\Delta\Omega_m = 0.155 \approx 0.160$ must be carried by an additional dark-sector
 component that couples to the CMB metric perturbations but undergoes free-streaming
 suppression in the growth sector \citep{Hu1998}. The $\varphi$-DM field (Sec.~\ref{subsec:two_sector})
-with algebraically fixed mass $\mphi = 5.60\,\mathrm{eV}$ provides exactly this
+with algebraically fixed mass $\mphi = 5.602\,\mathrm{eV}$ provides exactly this
 component:
 \begin{equation}
   \Omega_{\rm m,total} = \Omega_{\rm CDM} + \Omega_{\phiDM}
@@ -258,7 +258,7 @@ component:
 which recovers $\Omega_{m,\rm CMB} = 0.3199$ without any free parameter.
 The condition $\Omega_{\phiDM} = \Omega_{\rm CDM}$ (two equal sectors, hence MIRA $\approx 2$)
 is equivalent to requiring that the $\varphi$-DM relic density computed from the
-Dodelson--Widrow \citep{DodelsonWidrow1994} production mechanism with $\mphi = 5.60\,\mathrm{eV}$ equals the
+Dodelson--Widrow \citep{DodelsonWidrow1994} production mechanism with $\mphi = 5.602\,\mathrm{eV}$ equals the
 CDM density $\Omega_{\rm CDM}\,h^2 = 0.0739$.
 
 \textbf{Open derivation step.}
@@ -356,12 +356,26 @@ different scales:
 \subsection{Connecting mass to algebraic constants}
 \label{subsec:mass_derivation}
 
-We define a characteristic mass scale for the $\phi$-DM field as a phenomenological ansatz fixed by quantities derived in Paper~4:
+We define a characteristic mass scale for the $\phi$-DM field as a phenomenological ansatz fixed by quantities derived in Papers~3--4:
 \begin{equation}
-  \boxed{\mphi = \mnu^{\rm active} \times \Halg
-    = 0.0824\,\mathrm{eV} \times 67.96 = 5.60\,\mathrm{eV},}
+  \boxed{\mphi \equiv \mnu^{\rm active} \times \Halg
+    = 0.0824\,\mathrm{eV} \times 67.96 = 5.602\,\mathrm{eV},}
   \label{eq:mass_algebraic}
 \end{equation}
+where $\Halg = 3(\varphi+\pi)^2 = 67.96$ is the \emph{algebraic} value of $H_0$
+in km\,s$^{-1}$\,Mpc$^{-1}$ (Paper~4, Type~P coincidence). \textbf{This relation is
+explicitly dimensionally inconsistent:} the product $[\mathrm{eV}]\times
+[\mathrm{km\,s^{-1}\,Mpc^{-1}}]$ does not have units of mass. The
+numerical value 5.602 eV arises only by treating $\Halg$ as a dimensionless
+number (its value in the conventional Hubble unit). This expression is therefore a
+\emph{numerological ansatz}, retained only as a placeholder pattern; a physically
+consistent derivation is an open problem (OP-9, see Section~\ref{subsec:origin}
+and \texttt{OPEN\_PROBLEMS.md}). \textbf{The CMB-derived physical scale
+$H_0^{\rm MIRA}=67.068$ km/s/Mpc cannot be substituted into
+Eq.~\eqref{eq:mass_algebraic}} without an explicit conversion factor carrying the
+missing units: doing so would propagate the dimensional inconsistency under the
+guise of physics. The search for the correct $\mphi(H_0^{\rm MIRA}, M_{\rm Pl},
+\ldots)$ relation is deferred to a follow-up dedicated to OP-9 (see also OP-10).
 
 \subsection{Physical interpretation}
 \label{subsec:mass_interpretation}
@@ -385,20 +399,21 @@ sector) is to be derived in future work. The result is \emph{predictive}: the
 algebraic derivation gives a specific eV-scale mass for the $\phi$-DM field
 without any free parameters.
 
-\begin{tcolorbox}[result, title={Mass ansatz — phenomenological, not yet derived}]
+\begin{tcolorbox}[result, title={Mass ansatz — numerological, not physical}]
   \begin{equation*}
-    \mphi = \mnu^{\rm active} \times \Halg
+    \mphi \stackrel{\text{ansatz}}{=} \mnu^{\rm active} \times \Halg
            = 0.0824\,\mathrm{eV} \times 67.96
-           = 5.60\,\mathrm{eV}
+           = 5.602\,\mathrm{eV}
   \end{equation*}
-  Both factors are fixed by quantities computed in Paper~4. Note however that
-  $\Sigma m_\nu^{\rm active}$ itself is classified as a Type~P (phenomenological)
-  result in Paper~4 (the integer offset in $\mathcal{R}=4\,\mathrm{KAL}-22$ is not
-  derived from first principles); this dependency is tracked as OP-14, and the
-  present mass relation as OP-9, in \texttt{OPEN\_PROBLEMS.md}. The
-  expression therefore constitutes a falsifiable numerical \emph{ansatz} rather
-  than a parameter-free derivation: a Yukawa or curvature-of-$V(\phi)$ origin
-  is to be derived in future work.
+  This relation is \emph{dimensionally inconsistent}: it treats the algebraic
+  number $\Halg=3(\varphi+\pi)^2$ as dimensionless. The expression therefore is
+  \textbf{not a physical derivation} but a numerical coincidence retained because
+  it predicts the correct order of magnitude for an eV-scale $\phi$-DM relic
+  (Sections~\ref{subsec:density}--\ref{sec:falsification}). It \emph{cannot} be
+  upgraded by substituting the physical $H_0^{\rm MIRA}=67.068$~km/s/Mpc, since
+  the units do not cancel either way. The physically correct relation
+  $\mphi = f(H_0^{\rm MIRA}, M_{\rm Pl}, \Lambda_{\rm SSEE}, \ldots)$ remains
+  open (OP-9; see also OP-14 for the parallel issue with $\Sigma m_\nu$).
 \end{tcolorbox}
 
 \subsection{Explicit Lagrangian and field content}
@@ -422,7 +437,7 @@ minimally coupled to gravity, with the action
 where $R$ is the Ricci scalar and $\xi$ is a non-minimal coupling
 ($\xi = 0$ for pure minimal coupling; $\xi = 1/6$ for conformal coupling).
 The mass term $\tfrac{1}{2}\mphi^2\chi^2$ is the standard quadratic term of a
-spin-0 boson; the \emph{value} $\mphi = 5.60\,\mathrm{eV}$ is the algebraic
+spin-0 boson; the \emph{value} $\mphi = 5.602\,\mathrm{eV}$ is the algebraic
 ansatz of Eq.~\eqref{eq:mass_algebraic}, not a quantity derived from
 Eq.~\eqref{eq:phiDM_lagrangian}.  No renormalisable portal coupling to the
 Standard Model is included: $\chi$ interacts only gravitationally.
@@ -437,7 +452,7 @@ mechanism.
 \subsection{Production mechanism: the Dodelson--Widrow route is excluded}
 \label{subsec:production}
 
-A relic of mass $\mphi = 5.60\,\mathrm{eV}$ contributing
+A relic of mass $\mphi = 5.602\,\mathrm{eV}$ contributing
 $\Omega_{\phiDM}h^2 \simeq 0.074$ can in principle be populated by two
 mechanisms.  We tested both against the requirement that no additional
 \emph{continuous} free parameter beyond those already admitted as open problems
@@ -657,7 +672,7 @@ so all background tests pass without modification.
     \textbf{$\sigeff$ ($G_{\rm 2s}=0.979$)} & \textbf{$0.794$; $S_8=0.820$ ($2.6\sigma$ KiDS)} & \textbf{6} \\
     \textbf{$S_8^{\rm WDM}$ (CLASS, $\alpha=1.656$)} & \textbf{$0.761$ ($-0.25\sigma$ KiDS; $0.09\sigma$ DES)} & \textbf{6} \\
     \textbf{$S_8^{\rm bar}$ (HMcode-2020, $B_{\rm eff}=0.9447$)} & \textbf{$0.758\pm0.02^{\rm sys}$ ($0.06\sigma$ DES; range $[0.74,0.78]$)} & \textbf{6} \\
-    \textbf{$m_\phi$ (ansatz)} & \textbf{$5.60\,\mathrm{eV}$ (phenomenological; OP-9)} & \textbf{6} \\
+    \textbf{$m_\phi$ (ansatz)} & \textbf{$5.602\,\mathrm{eV}$ (phenomenological; OP-9)} & \textbf{6} \\
     \textbf{MCMC $\chi^2_r$; $\Delta$BIC} & \textbf{$0.497$; $-12.1$ (SSEE favoured under this test)} & \textbf{6} \\
     \bottomrule
   \end{tabularx}
@@ -678,7 +693,7 @@ full redshift range and the tension summary for the three models.
     and $\Lambda$CDM (green dotted, $0.73\sigma$), compared to six RSD surveys (black
     points).
     \textbf{Right}: Mean $|f\sigma_8|$ tension bar chart for the three models.
-    Model parameters: $G_{\rm 2s} = 0.979$, $\sigeff = 0.794$, $m_\phi = 5.60\,\mathrm{eV}$.}
+    Model parameters: $G_{\rm 2s} = 0.979$, $\sigeff = 0.794$, $m_\phi = 5.602\,\mathrm{eV}$.}
   \label{fig:verification}
 \end{figure}
 
@@ -714,7 +729,7 @@ $\sigma_8 = 0.737 \pm 0.020$, and DES Y3 $S_8 = 0.776 \pm 0.017$.
       & $\mathcal{N}(0.160,\,0.015^2)$ \\
     $k_\mathrm{fs}$ [h/Mpc]
       & $0.491^{+0.089}_{-0.088}$
-      & $0.493$
+      & $0.490$
       & $0.0\sigma$
       & $\mathcal{U}(0.1,\,1.5)$ \\
     $\sigma_{8,\mathrm{in}}$
@@ -857,7 +872,7 @@ Euclid Wide Survey weak lensing — will provide a definitive test.
 \subsection{Compatibility with Lyman-$\alpha$ and WDM constraints}
 \label{subsec:lya}
 
-A potential objection is that $\mphi = 5.60\,\mathrm{eV}$ lies far below the
+A potential objection is that $\mphi = 5.602\,\mathrm{eV}$ lies far below the
 standard thermal-WDM Lyman-$\alpha$ bound $m_{\rm WDM} \gtrsim 3.3\text{--}3.5\,\mathrm{keV}$
 \citep{Viel2005,Viel2013,PalanqueDelabrouille2020}.  We address this in three steps.
 
@@ -880,8 +895,8 @@ power spectrum suppression wavenumber $\kfs$, not the particle mass directly.
 For a given mass $\mphi$, the inferred $\kfs$ depends critically on the
 production mechanism.
 
-For a \emph{thermally} produced relic at $\mphi = 5.60\,\mathrm{eV}$
-($= 5.60\times10^{-3}\,\mathrm{keV}$), the \citet{Viel2005}
+For a \emph{thermally} produced relic at $\mphi = 5.602\,\mathrm{eV}$
+($= 5.602\times10^{-3}\,\mathrm{keV}$), the \citet{Viel2005}
 formula gives
 \begin{equation}
   \kfs^{\rm thermal} = 23.7 \left(\frac{\mphi}{1\,\mathrm{keV}}\right)^{1.11}
@@ -912,7 +927,7 @@ the DW estimate (Eq.~\ref{eq:kfs_DW}) to within $1.2\%$, well within the
 calibration uncertainty of both formulas.
 
 \textbf{Key point:} the choice of production mechanism is not arbitrary.
-The algebraic mass $\mphi = 5.60\,\mathrm{eV}$ (Section~\ref{sec:mass}),
+The algebraic mass $\mphi = 5.602\,\mathrm{eV}$ (Section~\ref{sec:mass}),
 combined with the thermal formula, gives $\kfs^{\rm thermal}\approx 0.070$
 — too small to suppress $\sigma_8$ at $k_\sigma\approx 0.125\,h/\mathrm{Mpc}$.
 The same mass with the DW formula gives $\kfs^{\rm DW}\approx 0.487$, which
@@ -924,7 +939,7 @@ signature within current observational reach.
 
 \textbf{Validity caveat.}  The DW formula was calibrated for non-resonantly
 produced sterile neutrinos at $m_s\sim\mathcal{O}(\mathrm{keV})$; applying it
-at $\mphi = 5.60\,\mathrm{eV}$ constitutes a three-order-of-magnitude
+at $\mphi = 5.602\,\mathrm{eV}$ constitutes a three-order-of-magnitude
 extrapolation in mass.  In the absence of a full Boltzmann hierarchy for the
 $\phi$-DM phase-space distribution, $\kfs = 0.493\,h/\mathrm{Mpc}$ should
 be treated as an \emph{order-of-magnitude estimate} to be refined by future
@@ -987,12 +1002,24 @@ in Paper~4 via the acoustic residual operator. We note:
   \item $\mnu = 0.0824\,\mathrm{eV}$ is the sum of active neutrino masses
     \citep{Lesgourgues2006} derived from the IS thermal residual. It arises from the coupling of the IS sector to the
     baryon-photon plasma.
-  \item $\Halg = 67.96\,\mathrm{km/s/Mpc}$ is the expansion rate set by the IS
-    relaxation horizon.
-  \item The product $\mnu \times \Halg$ in natural units has dimensions
-    $[\mathrm{eV}]\times[\mathrm{km/s/Mpc}]$. The numerical value 5.60 in
-    electron-volts arises when $\Halg$ is taken as a dimensionless number — i.e., as
-    $H_0$ in units of $\mathrm{km\,s^{-1}\,Mpc^{-1}}$.
+  \item $\Halg = 67.96\,\mathrm{km/s/Mpc}$ is the algebraic value of $H_0$
+    from $3(\varphi+\pi)^2$ (Paper~4). In natural units, $\hbar\Halg \approx
+    1.436\times 10^{-33}$~eV.
+  \item The product $\mnu \times \Halg$ has dimensions $[\mathrm{eV}]\times
+    [\mathrm{km\,s^{-1}\,Mpc^{-1}}]$ — \emph{not} mass. The numerical value
+    5.602~eV is obtained only by stripping the units off $\Halg$ and reading it
+    as the pure number 67.96. This is the \emph{dimensional inconsistency}
+    discussed in Section~\ref{subsec:mass_derivation}; substituting the
+    physically derived $H_0^{\rm MIRA}=67.068$~km/s/Mpc would not repair it,
+    since the unit mismatch is identical.
+  \item Two physically consistent rewritings deserve mention as candidate
+    upgrades for OP-9: (a) $\mphi^2 \propto \mnu \cdot \hbar H_0$ (Hubble
+    seesaw), giving $\mphi \sim 10^{-17}$~eV (fuzzy-DM regime, incompatible
+    with the $k_{\rm fs}$ inferred here); (b) $\mphi \propto \Lambda_{\rm SSEE}
+    = M = 8.81$~meV (UV cutoff from Paper~10), giving a milli-eV scalar.
+    Neither matches the current eV-scale phenomenology, which is why the
+    ansatz~\eqref{eq:mass_algebraic} is retained \emph{provisionally} and
+    flagged as the central physical open problem of this paper.
 \end{enumerate}
 
 The physical interpretation is: the $\phi$-DM field acquires a characteristic
@@ -1011,7 +1038,7 @@ relic abundance integral, not the field's identity.
 
 \begin{tcolorbox}[falsifiable, title={Falsifiable predictions — Paper 6}]
   \begin{enumerate}
-    \item \textbf{$m_\phi = 5.60\,\mathrm{eV}$}: the characteristic $\phi$-DM
+    \item \textbf{$m_\phi = 5.602\,\mathrm{eV}$}: the characteristic $\phi$-DM
       energy scale, derived from the acoustic residual operator.  Because
       $\phiDM$ is a gravitationally produced scalar with no Standard-Model
       portal (Section~\ref{subsec:production}), it is \emph{not} accessible to
@@ -1085,11 +1112,12 @@ We have proposed a phenomenological two-sector resolution for the $f\sigma_8$ gr
     $\Omega_{\phiDM} = (\MIRA-1)\,\Omega_{\rm m,dyn} = 0.160$, with a
     free-streaming cutoff at $\kfs$.
 
-  \item \textbf{Mass ansatz}: $\mphi = \mnu^{\rm active} \times \Halg =
-    0.0824 \times 67.96 = 5.60\,\mathrm{eV}$, fixed by quantities from
-    Paper~4 (\,$\Sigma m_\nu^{\rm active}$ is Type~P, OP-14)\, and the algebraic
-    Hubble constant. Phenomenological ansatz tracked as OP-9; not fitted to
-    growth data.
+  \item \textbf{Mass ansatz (numerological, dim.\ inconsistent)}:
+    $\mphi = \mnu^{\rm active} \times \Halg = 0.0824 \times 67.96 = 5.602$~eV,
+    with $\Halg=3(\varphi+\pi)^2$ treated as a dimensionless number. Cannot be
+    upgraded by substituting the physical $H_0^{\rm MIRA}$ without an explicit
+    dimensional conversion. Tracked as OP-9 (mass relation), depending on
+    OP-14 (Type~P origin of $\Sigma m_\nu$); not fitted to growth data.
 
   \item \textbf{Verification}: two-sector growth factor $G_{\rm 2s} = 0.979$
     gives $\sigeff = 0.794$ ($S_8 = 0.820$, $2.62\sigma$ KiDS, better than
@@ -1108,7 +1136,7 @@ is structural and traceable to $\Omega_{\rm m,dyn} = 0.160$.
 
 The \textbf{falsifiable predictions} of this paper are: (1) the $\phi$-dark
 matter free-streaming scale $\kfs = 0.493\,h/$Mpc, set by the algebraic mass
-$\mphi = 5.60\,\mathrm{eV}$ and probed by the Lyman-$\alpha$ forest and by
+$\mphi = 5.602\,\mathrm{eV}$ and probed by the Lyman-$\alpha$ forest and by
 DESI~Y3 / Euclid galaxy clustering (2026--2028) --- the relevant channel
 because $\phiDM$ is a gravitationally produced scalar with no Standard-Model
 portal (Section~\ref{subsec:production}), and so leaves no neutrino-sector

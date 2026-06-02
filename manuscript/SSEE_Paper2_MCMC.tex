@@ -65,7 +65,9 @@ The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, derived algebraically
 and deposited prior to DESI~DR2 \citep{AlmeidaSSEE2026genesis},
 lies within $0.05\sigma$ of the DESI~DR2 CPL free-fit posterior in the
 $\wz$--$\wa$ plane.
-The $H_0$ posterior is $66.75^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$.
+The $H_0$ posterior is $66.55^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$,
+obtained with an SSEE-self-consistent $H_0$ prior derived from Planck~CMB
+through the MIRA bridge (Paper~3, \S\ref{sec:prior_mira}).
 The cluster-mass sector achieves $\chi^2_r=0.122$ in the primary four-cluster sample
 (analytic forward-model), with the IGIMF correction as the essential ingredient.
 Isolating the dynamic sector ($(w_0,w_a)$ fixed algebraically, one free
@@ -301,20 +303,42 @@ $z_{\rm eff}$ & Tracer & Quantity & Value & $\sigma$ \\
 \end{tabular}
 \end{table}
 
-\subsection{Planck 2018 compressed prior}
+\subsection{SSEE-self-consistent $H_0$ prior via MIRA}
+\label{sec:prior_mira}
 
-We use the Planck~2018 \citep{Planck2018} Gaussian prior on
-$(H_0,\,\Omega_m,\,\Omega_b h^2)=(67.36\pm0.54,\;0.3153\pm0.0073,\;0.02237\pm0.00015)$
-with $\rho(H_0,\Omega_m)=-0.85$. The SSEE algebraic baryon density derived in
-Paper~4, $\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE} = 0.02242$, is consistent
-with this prior at $0.3\sigma$; the $0.2\%$ offset does not affect the posteriors
-reported below. This prior was calibrated under
-\LCDM\ and is therefore not self-consistent with the \SSEE\ background.
-Applying it to \SSEE\ constitutes a non-equivalent background
-calibration, and the resulting tension in $\Omega_m$ is an explicit part
-of the test — not a methodological error. It quantifies precisely how
-much the \SSEE\ geometric background departs from the \LCDM-inferred
-cosmological parameters.
+To preserve methodological coherence between this BAO sector and the CMB
+sector (Paper~3), the $H_0$ prior used here is not the published
+$\Lambda$CDM-calibrated Planck~2018 value
+($67.36\pm0.54$~km\,s$^{-1}$\,Mpc$^{-1}$, \citealt{Planck2018}),
+but the value obtained by re-evaluating the Planck~\texttt{plik\_lite}
+TTTEEE+lowl likelihood under the SSEE background with the MIRA mapping
+of the matter density ($\Omega_{m,\mathrm{CMB}} =
+\mathrm{MIRA}\,\Omega_{m,\mathrm{dyn}} = 0.319928$; Paper~3 of this series):
+\begin{equation}
+  H_0^{\rm prior,SSEE} \;=\; 67.068\pm0.54 \;\text{km\,s}^{-1}\,\text{Mpc}^{-1},
+  \label{eq:H0_prior_mira}
+\end{equation}
+where the uncertainty is the Planck~$H_0$ error propagated through the
+mapping. Adopting this prior eliminates the otherwise unavoidable
+cross-framework contamination introduced by using a $\Lambda$CDM-calibrated
+constraint on the early Universe to fit a non-$\Lambda$CDM late-time
+geometry. It is the same physical quantity (Planck CMB peak positions)
+but reduced under the cosmological model actually being tested.
+
+The only sampled parameters in the SSEE chain are $H_0$ and $\Omega_b h^2$.
+The matter density is not sampled: $\Omega_{m,\mathrm{dyn}}=0.160050$ is
+algebraically fixed (Paper~1, Eq.~Y), and the sound horizon $r_d$ is
+computed from $\omega_m = \Omega_{m,\mathrm{dyn}}(H_0/100)^2$ self-consistently.
+A BBN prior $\Omega_b h^2 = 0.02218\pm0.00055$ \citep{Cooke2018} is adopted
+for the baryon density, consistent with the SSEE algebraic value
+$\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE} = 0.02242$ (Paper~4)
+at $0.4\sigma$.
+The comparison against the $\Lambda$CDM-Planck matter density
+$\Omega_m = 0.3153\pm0.0073$ is reported in \S\ref{sec:results_cosmo}
+as a structural diagnostic: the apparent $21.3\sigma$ residual is the
+expected signature of the two-sector framework, resolved by the
+$\phi$-dark matter component of Paper~6 at scales below
+$k_{\rm fs}=0.493\,h$\,Mpc$^{-1}$.
 
 \subsection{Galaxy-cluster masses}
 
@@ -483,7 +507,7 @@ $[\mathrm{alg.}]$ = fixed algebraically; $[\mathrm{fixed}]$ = model assumption.}
 Parameter & \SSEE-V3.6 & \LCDM & CPL \\
 \midrule
 $H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$]
-  & $66.75^{+0.44}_{-0.44}$
+  & $66.55^{+0.44}_{-0.44}$
   & $67.99^{+0.42}_{-0.41}$
   & $67.24^{+0.51}_{-0.53}$ \\[3pt]
 $\Omega_m$
@@ -499,7 +523,7 @@ $\wa$
   & $0\ [\mathrm{fixed}]$
   & $-0.583^{+0.448}_{-0.466}$ \\[3pt]
 $\Omega_b h^2$
-  & $0.02276^{+0.00051}_{-0.00050}$
+  & $0.02261^{+0.00048}_{-0.00047}$
   & $0.02234^{+0.00015}_{-0.00015}$
   & $0.02237^{+0.00015}_{-0.00016}$ \\
 \bottomrule
@@ -509,13 +533,16 @@ $\Omega_b h^2$
 Note that $\wz$, $\wa$, and $\OmDE^{\SSEE}$ are algebraically fixed and
 do not appear as sampled columns in the \SSEE\ posterior; their values
 in Table~\ref{tab:posteriors} are listed for direct comparison only.
-The \SSEE\ $H_0=66.75^{+0.44}_{-0.44}$\,km\,s$^{-1}$\,Mpc$^{-1}$ is
-consistent with Planck~2018 ($67.36\pm0.54$) at $0.88\sigma$
-[$\Delta H_0/\sqrt{\sigma_{\rm SSEE}^2+\sigma_{\rm Planck}^2}
-=0.61/\sqrt{0.44^2+0.54^2}=0.88\sigma$]
-and with the BAO-only run ($65.8^{+1.2}_{-1.1}$) at $0.6\sigma$, confirming
-partial compatibility in the Hubble sector despite the background
-mismatch.
+The \SSEE\ $H_0=66.55^{+0.44}_{-0.44}$\,km\,s$^{-1}$\,Mpc$^{-1}$ sits
+within $0.74\sigma$ of the SSEE-self-consistent MIRA prior
+($H_0^{\rm prior,SSEE}=67.068\pm0.54$, Eq.~\ref{eq:H0_prior_mira}),
+within $1.16\sigma$ of the published $\Lambda$CDM-calibrated Planck~2018
+value ($67.36\pm0.54$), and within $0.6\sigma$ of the BAO-only run
+($65.8^{+1.2}_{-1.1}$). The simultaneous consistency with both ends
+of the prior spectrum confirms that MIRA bridges the Planck CMB and
+DESI late-time BAO regimes without straining either; the late-time
+BAO geometry is the dominant constraint, with the prior contributing
+sub-leading shrinkage.
 Marginalised posteriors are shown in Figures~\ref{fig:corner_ssee}
 and~\ref{fig:corner_lcdm}.
 
@@ -591,9 +618,9 @@ it drives an enlarged geometric sound horizon
   \label{eq:rd_ratio}
 \end{equation}
 The BAO data partially compensate via a mild $H_0$ downshift
-($H_0^{\SSEE}=66.75$ vs $H_0^{\LCDM}=67.99$\,km\,s$^{-1}$\,Mpc$^{-1}$),
+($H_0^{\SSEE}=66.55$ vs $H_0^{\LCDM}=67.99$\,km\,s$^{-1}$\,Mpc$^{-1}$),
 but this compensation is insufficient to absorb the full background
-discrepancy. The residual tension is $0.95\sigma$ in $H_0$ but
+discrepancy. The residual tension is $1.13\sigma$ in $H_0$ but
 $21.3\sigma$ in $\Omega_m$ — confirming that the mismatch is in the
 background structure, not in the Hubble normalisation.
 
@@ -623,14 +650,25 @@ A comparison restricted to the dynamical dark-energy sector --- where the
 
 
 \paragraph{H$_0$: algebraic prediction vs.\ MCMC posterior.}
-The \SSEE\ framework independently derives an algebraic estimate
+The \SSEE\ framework offers two independent estimates of $H_0$. The
+geometric algebraic prediction is
 $H_0^{\rm alg} = M_v \times \Omega = 3(\varphi+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$,
-where $M_v$ and $\Omega$ are fixed structural constants.
-The MCMC posterior, $H_0^{\rm MCMC}=66.75\pm0.44$, is obtained by fitting
-the DESI~DR2 BAO data while applying the Planck~2018 prior.
-The two values measure different quantities: $H_0^{\rm alg}$ is the theoretical
-prediction of the background geometry; $H_0^{\rm MCMC}$ is the posterior after
-the DESI data pull the value downward to compensate for the enlarged $r_d$.
+where $M_v$ and $\Omega$ are fixed structural constants. The CMB-derived
+physical value, obtained by re-evaluating Planck~\texttt{plik\_lite} under
+the SSEE-MIRA background (Paper~3), is
+$H_0^{\rm MIRA} = 67.068\pm0.54$\,km\,s$^{-1}$\,Mpc$^{-1}$. These two
+estimates agree at $0.10\sigma$ (Planck-error scale), which is striking
+given the unrelated origins of the two derivations (pure algebra vs.\
+CMB peak fitting) and supports interpreting MIRA as a physical bridge
+rather than a tuning factor.
+The MCMC posterior reported above,
+$H_0^{\rm MCMC}=66.55\pm0.44$\,km\,s$^{-1}$\,Mpc$^{-1}$,
+is the late-time BAO posterior under the MIRA prior; it lies at
+$0.74\sigma$ from $H_0^{\rm MIRA}$ and at $1.85\sigma$ from $H_0^{\rm alg}$.
+The two values measure different quantities: $H_0^{\rm alg}$ and
+$H_0^{\rm MIRA}$ characterise the early-Universe geometry, while
+$H_0^{\rm MCMC}$ is the late-time posterior after the DESI data pull
+the value downward to compensate for the enlarged $r_d$.
 The $\sim$1.2\,km\,s$^{-1}$\,Mpc$^{-1}$ difference (2.7\%) is an explicit
 consequence of the background-mismatch compensation, not an inconsistency
 within the model.

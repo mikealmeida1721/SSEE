@@ -114,8 +114,10 @@ def main():
     print(f"   ΛCDM chi2_eff = {chi2_lcdm:.3f}")
 
     print("\n2. Scanning H0 for SSEE...")
+    print(f"   Usando Ω_m,CMB = {Omm_cmb:.10f}  (MIRA × Ω_m,dyn, exacto desde ssee_core)")
     # SciPy minimize_scalar with bounded method
-    res = minimize_scalar(get_ssee_chi2, bounds=(66.5, 67.5), method='bounded', options={'xatol': 0.05})
+    # Bounds ampliados (66.0, 68.0) para detectar shift si el exacto Ω_m,CMB mueve el óptimo
+    res = minimize_scalar(get_ssee_chi2, bounds=(66.0, 68.0), method='bounded', options={'xatol': 0.02})
     
     H0_opt = res.x
     chi2_ssee = res.fun

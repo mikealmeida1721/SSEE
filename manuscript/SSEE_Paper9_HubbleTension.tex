@@ -66,21 +66,27 @@ background equation of state, and $\MIRA = \bc/2 = (3\phiG+\pi)/4 \approx 1.9989
 is the effective optical coupling derived from the disformal null geodesic.
 The two structural constants $\AURA = 2\MIRA$ cancel exactly in the ratio,
 leaving a pure function of $\phiG$ and $\pi$.
-Applied as a local correction to the cosmological value $H_0^{\rm alg} = 3(\phiG+\pi)^2$,
+Applied as a local correction to the SSEE-self-consistent CMB-derived value
+$H_0^{\rm MIRA}=67.068$\,km\,s$^{-1}$\,Mpc$^{-1}$ (Paper~3),
 \[
-  H_0^{\rm local} \;=\; \frac{H_0^{\rm alg}}{1-\fsc}
-                  \;=\; \frac{67.96}{1-0.06725}
-                  \;\approx\; 72.86 \text{ km/s/Mpc}\,,
+  H_0^{\rm local} \;=\; \frac{H_0^{\rm MIRA}}{1-\fsc}
+                  \;=\; \frac{67.068}{1-0.06725}
+                  \;\approx\; 71.90 \text{ km/s/Mpc}\,,
 \]
-which lies $0.17\sigma$ from SH0ES (Riess et al.\ 2022) with \emph{zero free parameters}.
-This is the \textbf{canonical, independent prediction} of the SSEE IR sector.
+which lies $1.10\sigma$ from SH0ES (Riess et al.\ 2022) with \emph{zero free parameters}.
+Applied instead to the algebraic value $H_0^{\rm alg}=3(\phiG+\pi)^2=67.96$ (a Type~P
+coincidence; Paper~1) the same mechanism gives $H_0^{\rm local,\,alg}=72.86$~km/s/Mpc
+($0.17\sigma$ from SH0ES); we adopt the MIRA-derived value as the canonical IR prediction
+for methodological consistency with the rest of the suite (Papers~2--3,~6).
+The improved agreement obtained with the algebraic value is therefore a numerical
+coincidence rather than a physical prediction.
 The correction operates at late times ($z < 0.15$) through the scalar kinetic
 energy contribution to the local expansion rate, and does not modify the
 sound horizon $r_d$, the CMB peak positions, or the growth factor $\sigma_8$
 derived in Papers~3 and~5.
 As a separate self-consistency check (not an independent prediction), Paper~10
 derives $H_0^{\rm UV} = 73.040$\,km/s/Mpc conditional on Postulate C.1 of the UV
-completion, closing the residual $0.17\sigma$ gap.
+completion, closing the residual $1.10\sigma$ gap.
 \end{abstract}
 
 \tableofcontents
@@ -116,8 +122,9 @@ which agrees with Planck at the $1.1\sigma$ level
 
 In this paper we show that the same algebraic structure that produces
 $\Hzero^{\rm alg}$ also produces a local kinematic correction
-$\fsc \approx 0.06725$ from the SSEE algebra, predicting
-$H_0^{\rm local} = 72.86$ km/s/Mpc.
+$\fsc \approx 0.06725$ from the SSEE algebra. Applied to the
+SSEE-self-consistent CMB-derived value $H_0^{\rm MIRA}=67.068$~km/s/Mpc,
+this predicts $H_0^{\rm local} = 71.90$ km/s/Mpc ($1.10\sigma$ from SH0ES).
 The derivation combines two results already established in this series:
 \begin{enumerate}
   \item From Paper~7 \citep{Paper7}: the EFT kineticity
@@ -384,14 +391,15 @@ $\alphaK$    & $3\AURA(\pi-\phiG)/(2\Omega^2)$ & $0.40330$ & Eq.~\eqref{eq:alpha
 $3\MIRA$     & $3\AURA/2$             & $5.9967$       & Eq.~\eqref{eq:3MIRA} \\
 $\fsc = \alphaK/(3\MIRA)$ & $(\pi-\phiG)/\Omega^2$ & $0.06725$ & Eq.~\eqref{eq:fscreen_identity} \\
 \midrule
-$\Hzero^{\rm alg}$ & $3\Omega^2$     & $67.96$ km/s/Mpc & Paper~1 \\
-$H_0^{\rm local}$ (mult.)  & $\Hzero^{\rm alg}/(1-\fsc)$ & $72.86$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
-$H_0^{\rm local}$ (add.)   & $\Hzero^{\rm alg}(1+\fsc)$  & $72.53$ km/s/Mpc & Eq.~\eqref{eq:H0local_add} \\
-$H_0^{\rm SH0ES}$  & ---            & $73.04\pm1.04$ km/s/Mpc & \citet{Riess2022} \\
-$H_0^{\rm Freedman}$ & ---          & $69.96\pm1.54$ km/s/Mpc & \citet{Freedman2024} \\
-Tension vs SH0ES (mult.)    & ---   & $0.17\sigma$   & --- \\
-Tension vs SH0ES (add.)     & ---   & $0.49\sigma$   & --- \\
-Tension vs Freedman (mult.) & ---   & $1.9\sigma$    & --- \\
+$H_0^{\rm MIRA}$ (canonical) & Paper~3 CMB+MIRA & $67.068\pm0.54$ km/s/Mpc & Paper~3 \\
+$\Hzero^{\rm alg}$ (Type~P)  & $3\Omega^2$    & $67.96$ km/s/Mpc & Paper~1 \\
+$H_0^{\rm local}$ (canonical, mult.) & $H_0^{\rm MIRA}/(1-\fsc)$  & $71.90$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
+$H_0^{\rm local,\,alg}$ (Type~P comparison) & $\Hzero^{\rm alg}/(1-\fsc)$ & $72.86$ km/s/Mpc & --- \\
+$H_0^{\rm SH0ES}$            & ---            & $73.04\pm1.04$ km/s/Mpc & \citet{Riess2022} \\
+$H_0^{\rm Freedman}$         & ---            & $69.96\pm1.54$ km/s/Mpc & \citet{Freedman2024} \\
+Tension vs SH0ES (canonical) & ---            & $1.10\sigma$   & --- \\
+Tension vs SH0ES (Type~P)    & ---            & $0.17\sigma$   & numerical coincidence \\
+Tension vs Freedman (canonical) & ---         & $1.26\sigma$   & --- \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -402,9 +410,12 @@ Tension vs Freedman (mult.) & ---   & $1.9\sigma$    & --- \\
   \caption{%
     Hubble constant measurements from early-universe probes (blue), local
     distance-ladder probes (red), and the SSEE algebraic predictions (green).
-    The SSEE multiplicative IR prediction $H_0^{\rm local}=72.86$ km/s/Mpc
-    lies $0.17\sigma$ from SH0ES and $1.9\sigma$ from Freedman 2024
-    \citep{Freedman2024}.  Error bars show $\pm1\sigma$ uncertainties.
+    The SSEE canonical multiplicative IR prediction (applied to
+    $H_0^{\rm MIRA}=67.068$) is $H_0^{\rm local}=71.90$ km/s/Mpc, $1.10\sigma$
+    from SH0ES and $1.26\sigma$ from Freedman 2024 \citep{Freedman2024}.
+    The numerical-coincidence value $H_0^{\rm local,alg}=72.86$ obtained from
+    $H_0^{\rm alg}=67.96$ ($0.17\sigma$ SH0ES) is shown for comparison.
+    Error bars show $\pm1\sigma$ uncertainties.
   }
   \label{fig:h0_tension}
 \end{figure}
@@ -464,32 +475,44 @@ Depending on whether this contribution is treated as multiplicative
 (geometric correction to the expansion rate) or additive (linear
 superposition), the inferred local Hubble constant takes one of two values:
 
+Applied to the SSEE-self-consistent CMB-derived value
+$H_0^{\rm MIRA}=67.068$~km/s/Mpc (Paper~3, the canonical physical early-Universe
+Hubble scale in this suite):
 \begin{equation}
-  H_0^{\rm local} \;=\; \frac{\Hzero^{\rm alg}}{1-\fsc}
-  \;=\; \frac{3(\phiG+\pi)^2}{1 - (\pi-\phiG)/(\phiG+\pi)^2}
-  \;\approx\; 72.86\;\text{km/s/Mpc}
+  H_0^{\rm local} \;=\; \frac{H_0^{\rm MIRA}}{1-\fsc}
+  \;=\; \frac{67.068}{1 - (\pi-\phiG)/(\phiG+\pi)^2}
+  \;\approx\; 71.90\;\text{km/s/Mpc}
   \quad[\text{multiplicative}]\,,
   \label{eq:H0local}
 \end{equation}
 \begin{equation}
-  H_0^{\rm local} \;=\; \Hzero^{\rm alg}\,(1+\fsc)
-  \;=\; 3(\phiG+\pi)^2\!\left[1 + \frac{\pi-\phiG}{(\phiG+\pi)^2}\right]
-  \;\approx\; 72.53\;\text{km/s/Mpc}
+  H_0^{\rm local} \;=\; H_0^{\rm MIRA}\,(1+\fsc)
+  \;\approx\; 71.58\;\text{km/s/Mpc}
   \quad[\text{additive}]\,.
   \label{eq:H0local_add}
 \end{equation}
 
-The difference between the two forms is of order $\fsc^2 \approx 0.33$ km/s/Mpc.
-Both predictions are consistent with SH0ES \citep{Riess2022}:
+The difference between the two forms is of order $\fsc^2 \approx 0.32$ km/s/Mpc.
+Tension against SH0ES \citep{Riess2022} ($73.04\pm1.04$):
 \begin{equation}
-  \Delta_{\rm mult} = 0.17\sigma\,, \qquad \Delta_{\rm add} = 0.49\sigma\,.
+  \Delta_{\rm mult} = 1.10\sigma\,, \qquad \Delta_{\rm add} = 1.40\sigma\,.
   \label{eq:tensions}
 \end{equation}
 
+\paragraph{Comparison with the Type-P algebraic value.}
+Applying the same mechanism to $H_0^{\rm alg}=3(\phiG+\pi)^2=67.96$
+(a Type~P numerical coincidence; Paper~1) yields
+$H_0^{\rm local,alg}=72.86$~km/s/Mpc (multiplicative) and $72.53$
+(additive), with SH0ES tensions of $0.17\sigma$ and $0.49\sigma$ respectively.
+The sharper agreement obtained from $H_0^{\rm alg}$ is a numerical coincidence
+rather than a physical prediction; we report it for transparency but use
+$H_0^{\rm MIRA}$ as the canonical input throughout this paper.
+
 \paragraph{Comparison with TRGB/JWST.}
-We note that the TRGB+JWST measurement of \citet{Freedman2024} yields
-$H_0 = 69.96\pm1.54$\,km/s/Mpc, placing the SSEE multiplicative prediction
-$H_0^{\rm local} = 72.86$\,km/s/Mpc at $\sim 1.9\sigma$ from this anchor.
+The TRGB+JWST measurement of \citet{Freedman2024} yields
+$H_0 = 69.96\pm1.54$\,km/s/Mpc, placing the canonical SSEE multiplicative
+prediction $H_0^{\rm local} = 71.90$\,km/s/Mpc at $\sim 1.26\sigma$ from this
+anchor.
 The discrepancy relative to Freedman suggests that, while the kinematic
 screening mechanism is consistent with resolving the SH0ES tension, the full picture of
 local $H_0$ measurements remains internally inconsistent at the $\sim 2\sigma$
@@ -608,11 +631,16 @@ We therefore register the following pre-committed prediction:
 \begin{quote}
 \textbf{SSEE-V3.6 predicts:}
 \begin{equation}
-  H_0^{\rm local} = \frac{3(\phiG+\pi)^2}{1-(\pi-\phiG)/(\phiG+\pi)^2}
-  = 72.86\;\text{km/s/Mpc}\,.
+  H_0^{\rm local} = \frac{H_0^{\rm MIRA}}{1-(\pi-\phiG)/(\phiG+\pi)^2}
+  = \frac{67.068}{1-0.06725} = 71.90\;\text{km/s/Mpc}\,,
   \label{eq:prediction}
 \end{equation}
-\textit{Current status}: $0.17\sigma$ from SH0ES \citep{Riess2022}.
+where $H_0^{\rm MIRA}=67.068$~km/s/Mpc is derived in Paper~3 from
+Planck~\texttt{plik\_lite} under the SSEE background.
+\textit{Current status}: $1.10\sigma$ from SH0ES \citep{Riess2022}.
+\textit{Type-P comparison}: applied to $H_0^{\rm alg}=67.96$ the same mechanism
+gives $H_0^{\rm local,alg}=72.86$ km/s/Mpc ($0.17\sigma$ SH0ES); see
+\S\ref{sec:localH0} for discussion.
 \end{quote}
 
 \noindent\textbf{Falsification criteria:}
@@ -696,8 +724,8 @@ Axis & $\Lambda$CDM & EDE & SIDR & Late-DE & \textbf{SSEE} \\
 Mechanism epoch        & ---       & $z\sim 3000$ & $z\gtrsim 1000$ & $z<0.1$ & $z<0.15$ \\
 Modifies $r_d$?        & ---       & Yes ($-$few\%) & Yes (via $\Delta N_{\rm eff}$) & No & \textbf{No} \\
 Free parameters        & 0         & 3            & 1--3            & 2+      & \textbf{0} \\
-$H_0$ (km/s/Mpc)       & $67.4$    & $71$--$72.5$ & $70$--$71.8$    & $\sim 72$ & $\mathbf{72.86}$ \\
-Residual vs SH0ES      & $5\sigma$ & $1.6$--$2\sigma$ & $2$--$3\sigma$ & $\sim 1\sigma$ & $\mathbf{0.17\sigma}$ \\
+$H_0$ (km/s/Mpc)       & $67.4$    & $71$--$72.5$ & $70$--$71.8$    & $\sim 72$ & $\mathbf{71.90}$ \\
+Residual vs SH0ES      & $5\sigma$ & $1.6$--$2\sigma$ & $2$--$3\sigma$ & $\sim 1\sigma$ & $\mathbf{1.10\sigma}$ \\
 $S_8$ side-effect      & ---       & Worsens      & Mild            & Variable & \textbf{None} \\
 CMB peak shift         & ---       & Yes          & Yes             & No       & \textbf{No} \\
 \bottomrule

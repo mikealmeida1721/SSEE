@@ -52,7 +52,8 @@ from ssee_core import (
 # Derived from background IS steady state: τ_Π = KAL₀/(3 Ω_DE H₀)
 tau_Pi_H0 = KAL0 / (3.0 * OmDE)   # ≈ 2.191
 
-# Bare k-essence sound speed: c²_s = 1/(2n-1) with n = w₀/2 → c²_s = w₀
+# Bare k-essence sound speed: for L ∝ X^n both w and c²_s equal 1/(2n-1),
+# so c²_s,bare = w₀ (standard k-essence identity, Hu 1998). See Paper 5 §cs2_bare.
 cs2_bare = w0                       # = -0.8399
 
 # Bulk viscosity (dimensionless: ζ̃ = ζ/(ρ_DE H₀))
@@ -345,9 +346,10 @@ if results:
 # Growth equation (sub-horizon, log-a variable x = ln a):
 #   D₁'' + (2 + d ln H/d ln a) D₁' − (3/2) Ω_m(a) D₁ = 0
 #
-# Ω_m(a) = Ω_m,dyn × (H₀/H)² × a^{-3}   [true matter content, Poisson source]
-# MIRA is a background Friedmann effect on H(a), not a perturbative Poisson enhancement.
-# For ΛCDM: Ω_m(a) = 0.3153 / (H_Λ(a)² × a³)
+# Poisson source = Ω_m,CMB = MIRA × Ω_m,dyn ≈ 0.31988   (el fondo gravitacional real).
+# Ω_m,dyn=0.160 SOLO fija w₀ (vía 1+w₀); el contenido que gravita y siembra la
+# estructura es Ω_m,CMB. MIRA entra como factor de fondo en H(a) y en la fuente.
+# Ω_m(a) = Ω_m,CMB × (H₀/H)² × a^{-3}.   Para ΛCDM: Ω_m(a) = 0.3153 / (H_Λ(a)² × a³)
 #
 # IC (matter-dominated limit, a_ini = 10^{-4}): D₁ = a, D₁' = a  (growing mode)
 # ──────────────────────────────────────────────────────────────────────────────
@@ -418,7 +420,6 @@ sol_ssee_g = solve_ivp(
     method='DOP853', t_eval=x_g, rtol=1e-11, atol=1e-14)
 
 _q3_ok = sol_lcdm_g.success and sol_ssee_g.success
-fsig8_mira_arr = None   # set in Q3b; used in Figure 5
 if not _q3_ok:
     print("  WARNING: Q3 growth ODE failed")
     G_factor = gamma_IS_val = gamma_IS_err_val = None
@@ -535,86 +536,6 @@ else:
               f"{fs_s:.3f}    {t_s:.1f}σ   {fs_l:.3f}    {t_l:.1f}σ")
     print(f"\n  Mean tension SSEE: {np.mean(fsig8_tensions_ssee):.2f}σ")
     print(f"  Mean tension ΛCDM: {np.mean(fsig8_tensions_lcdm):.2f}σ")
-
-    # ── Q3b: IS-corrected growth — MIRA as effective gravitational coupling
-    # Hypothesis: IS bulk viscosity enhances the perturbation source term by MIRA,
-    # while the background H(z) remains the validated SSEE expansion history.
-    # Source: (3/2) Ω_m,eff(a)  with  Ω_m,eff = MIRA × Ω_m,dyn = Ω_m,CMB ≈ 0.320
-    print("\n" + "─" * 68)
-    print("  Q3b — IS-corrected growth (MIRA as effective gravitational coupling)")
-    print("  Hypothesis: IS viscosity enhances source by MIRA factor")
-    print(f"  Source uses Ω_m,eff = MIRA × Ω_m,dyn = {Omm_CMB:.6f}")
-    print("─" * 68)
-
-    sol_ssee_mira = solve_ivp(
-        lambda x, Y: growth_ode_system(x, Y, H_ssee_exact, Omm_CMB),
-        [x_ini_g, x_fin_g], Y0_g,
-        method='DOP853', t_eval=x_g, rtol=1e-11, atol=1e-14)
-
-    if not sol_ssee_mira.success:
-        print("  WARNING: Q3b ODE failed")
-    else:
-        D1_mira   = sol_ssee_mira.y[0]
-        u_mira    = sol_ssee_mira.y[1]
-        D1_mira_n = D1_mira / D1_mira[-1]
-        f_mira    = u_mira / D1_mira
-
-        G_mira = D1_mira[-1] / D1_lcdm[-1]
-
-        # γ fit for Q3b
-        popt_MI, pcov_MI = curve_fit(
-            _gamma_model,
-            np.log(Om_a_ssee_arr[mask_fit]),
-            np.log(np.clip(f_mira[mask_fit], 1e-10, None))
-        )
-        gamma_mira_val = float(popt_MI[0])
-
-        # σ₈ and S₈ for Q3b
-        sigma8_mira     = sigma8_LCDM * G_mira
-        S8_mira_val     = sigma8_mira * np.sqrt(Omm_CMB / 0.3)
-
-        # fσ₈ array
-        fsig8_mira_arr  = f_mira * sigma8_mira * D1_mira_n
-
-        print(f"\n  G_mira   = {G_mira:.4f}   (vs G_IS = {G_factor:.4f})")
-        print(f"  γ_mira   = {gamma_mira_val:.4f}   (vs γ_IS = {gamma_IS_val:.4f})")
-        print(f"  σ₈_mira  = {sigma8_mira:.4f}   (vs σ₈_IS = {sigma8_SSEE:.4f})")
-        print(f"  S₈_mira  = {S8_mira_val:.4f}   (vs S₈_IS = {S8_SSEE_val:.4f})")
-        print(f"  fσ₈(z=0.5) Q3b = {fsig8_mira_arr[idx_05]:.4f}   "
-              f"(vs Q3 = {fsig8_ssee_arr[idx_05]:.4f},  ΛCDM = {fsig8_lcdm_arr[idx_05]:.4f})")
-
-        print("\n  fσ₈ tensions Q3b vs RSD surveys:")
-        print(f"  {'Survey':22s}  {'obs':7s}  {'Q3b':6s}  {'t_Q3b':6s}  "
-              f"{'Q3':6s}  {'t_Q3':6s}  {'ΛCDM':6s}  {'t_L':5s}")
-        fsig8_tensions_mira = []
-        for i in range(len(fsig8_obs_z)):
-            idx_z  = np.argmin(np.abs(z_g - fsig8_obs_z[i]))
-            fs_m   = fsig8_mira_arr[idx_z]
-            fs_s   = fsig8_ssee_arr[idx_z]
-            fs_l   = fsig8_lcdm_arr[idx_z]
-            t_m    = abs(fs_m - fsig8_obs_val[i]) / fsig8_obs_err[i]
-            t_s    = fsig8_tensions_ssee[i]
-            t_l    = fsig8_tensions_lcdm[i]
-            fsig8_tensions_mira.append(t_m)
-            print(f"  {fsig8_obs_ref[i]:22s}  "
-                  f"{fsig8_obs_val[i]:.3f}±{fsig8_obs_err[i]:.3f}  "
-                  f"{fs_m:.3f}   {t_m:.1f}σ    "
-                  f"{fs_s:.3f}   {t_s:.1f}σ    "
-                  f"{fs_l:.3f}   {t_l:.1f}σ")
-
-        print(f"\n  Mean tension  Q3b  (IS+MIRA source): {np.mean(fsig8_tensions_mira):.2f}σ")
-        print(f"  Mean tension  Q3   (IS bare):         {np.mean(fsig8_tensions_ssee):.2f}σ")
-        print(f"  Mean tension  ΛCDM:                   {np.mean(fsig8_tensions_lcdm):.2f}σ")
-
-        # Verdict
-        delta_mean = np.mean(fsig8_tensions_ssee) - np.mean(fsig8_tensions_mira)
-        print(f"\n  Tension reduction from IS-MIRA coupling: Δ = {delta_mean:.2f}σ")
-        if np.mean(fsig8_tensions_mira) < 1.5:
-            print("  ✓ MIRA gravitational coupling resolves fσ₈ tension")
-        elif np.mean(fsig8_tensions_mira) < 2.5:
-            print("  ~ MIRA coupling partially reduces tension — further work needed")
-        else:
-            print("  ✗ MIRA coupling insufficient — fσ₈ tension is structural")
 
 # ── 10. FIGURES ──────────────────────────────────────────────────────────────
 
@@ -844,9 +765,6 @@ if _q3_ok:
              'b-', lw=2.5, label=r'SSEE-V3.6 IS  ($\Omega_{m,\rm dyn}=0.160$)')
     ax5.plot(z_g[z_plot_fsig], fsig8_lcdm_arr[z_plot_fsig],
              'r--', lw=2, label=r'$\Lambda$CDM  ($\Omega_m=0.315$)')
-    if fsig8_mira_arr is not None:
-        ax5.plot(z_g[z_plot_fsig], fsig8_mira_arr[z_plot_fsig],
-                 'g-.', lw=2, label=r'SSEE Q3b: IS+MIRA source  ($\Omega_{m,\rm eff}=0.320$)')
 
     # Observational data points
     survey_colors = {

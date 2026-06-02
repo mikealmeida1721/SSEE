@@ -9,9 +9,11 @@
 
 ## What this framework claims
 
-SSEE-V3.6 (Structural Self-Energy Expansion) is a **zero-free-parameter** dark energy model.
-All cosmological predictions are derived algebraically from two constants: the golden ratio φ
-and π. No fitting to data is performed to obtain the central predictions.
+SSEE-V3.6 (Structural Self-Energy Expansion) is a **minimal-parameter** dark energy model
+(~3 effective parameters vs. 6 for $\Lambda$CDM). The shape of the background sector is derived
+algebraically from two constants: the golden ratio φ and π. No fitting to data is performed to
+obtain the central predictions of that core; the absolute vacuum scale enters as a single measured
+input (Postulate D), and the dark-matter-origin extensions are tracked as open problems.
 
 Falsifiable predictions — all pre-data (timestamped Zenodo: 10.5281/zenodo.19679049, 2026-01-28):
 

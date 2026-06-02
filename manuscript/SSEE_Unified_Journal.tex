@@ -29,6 +29,7 @@
 \newcommand{\KAL}{\mathrm{KAL}_0}
 \newcommand{\MIRA}{\mathcal{M}}
 \newcommand{\AURA}{\mathrm{AURA}}
+\newcommand{\thetaE}{\theta_E}
 \newcommand{\fscr}{f_{\mathrm{scr}}}
 \newcommand{\Omde}{\Omega_{\mathrm{DE}}}
 \newcommand{\Omm}{\Omega_{m}}
@@ -80,8 +81,10 @@ against six fitted parameters in $\Lambda$CDM.
 The dark energy equation of state $\wz = -(3\phiG+\pi)/[2(\phiG+\pi)] \simeq -0.840$
 and $\wa \simeq -0.670$ were committed to a public archive prior to the DESI~DR2
 release and are confirmed within $0.05\sigma$ of the DESI~DR2 CPL posterior.
-A Bayesian MCMC analysis with $N_{\mathrm{eff}} = 4\,402$ effective samples yields
-$H_0 = 66.75^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC}=-5.55$
+A Bayesian MCMC analysis under the SSEE-self-consistent MIRA prior
+($H_0^{\rm prior,SSEE}=67.068\pm0.54$~km\,s$^{-1}$\,Mpc$^{-1}$, derived from
+Planck~\texttt{plik\_lite} under the SSEE background; Paper~3) yields
+$H_0 = 66.55^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC}=-5.55$
 for the dynamic sector relative to \LCDM.
 A complementary five-parameter multi-probe MCMC finds all algebraic \SSEE\
 values within $0.81\sigma$ of the posteriors (mean $0.36\sigma$ across the five parameters).
@@ -290,7 +293,7 @@ Table~\ref{tab:mcmc_results} summarises the key posteriors and information crite
 \toprule
 Quantity & \SSEE & \LCDM & CPL \\
 \midrule
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $66.75^{+0.44}_{-0.44}$ & $67.42\pm0.48$ & free \\
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $66.55^{+0.44}_{-0.44}$ & $67.42\pm0.48$ & free \\
 Free parameters $k$ & 1 & 3 & 5 \\
 $N_{\rm eff}$ & 4\,402 & 14\,380 & 7\,253 \\
 $\Delta\mathrm{BIC}$ (dynamic sector) & $-5.55$ & ref & — \\
@@ -973,8 +976,8 @@ across four observational tiers.
   $(\wz, \wa) = (-0.840, -0.670)$, committed before DESI~DR2, lies within
   $0.05\sigma$ of the DESI~DR2 CPL posterior.
   A Bayesian MCMC with $N_{\rm eff} = 4\,402$ yields
-  $H_0 = 66.75\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC} = -5.55$
-  for the dynamic sector.
+  $H_0 = 66.55\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ under the SSEE-self-consistent
+  MIRA prior, and $\Delta\mathrm{BIC} = -5.55$ for the dynamic sector.
   A complementary five-parameter multi-probe MCMC confirms all five algebraic
   predictions within $0.81\sigma$ (mean $0.36\sigma$).
 

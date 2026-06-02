@@ -36,6 +36,7 @@
 | 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 18 | Preprint | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
 | 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 8.81 meV | 14 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
 | — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 19 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |
+| ★ | **Sealed Journal** — consolidated late-universe dark-energy paper (φ → w₀, wₐ; closed-dictionary look-elsewhere; two-stage H₀; honest accounting of ~3 vs 6 parameters) | 10 | **Sealed — external-audit candidate** | [docs/](docs/SSEE_Sealed_Journal.pdf) |
 
 ---
 
@@ -65,6 +66,7 @@ SSEE/
 ├── docs/                           # compiled PDFs — 10 papers + endorser + unified journal
 ├── submission_packages/            # arXiv-ready .tar.gz bundles per paper
 ├── archive/                        # superseded drafts (historical)
+├── notes/                          # internal work-notes & attack plans (not load-bearing)
 ├── build_arxiv_packages.py         # regenerates submission_packages/
 ├── requirements.txt · environment.yml   # reproducible Python environment
 ├── OPEN_PROBLEMS.md                # physics gaps OP-1..OP-6 with status

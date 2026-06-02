@@ -36,6 +36,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 | `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (14 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=8.81 meV=Λ_SSEE; αK_full=0.41691 |
 | `SSEE_Unified_Journal.pdf` | Consolidación Papers 1–10 (23 p) — §Extensions 8/9/10 | ✅ Candidato journal (10-paper, 2026-05-17) |
 | `SSEE_Endorser_Summary.pdf` | Síntesis 2 p para endorsers arXiv — serie 10-paper | ✅ Listo para envío (2026-05-17) |
+| `SSEE_Sealed_Journal.pdf` | **Documento consolidado de energía oscura tardía** (10 p) — φ→w₀,wₐ; look-elsewhere sobre diccionario cerrado (1/245); H₀ en dos etapas; cuentas honestas ~3 vs 6 params; P5/P6/P8 y OP-8/9/14 como trabajo futuro | ✅ **SELLADO — candidato a auditoría externa (2026-06-02)** |
 
 ### manuscript/ — Fuente LaTeX
 - `SSEE_Paper1_Framework.tex` + `SSEE_EFT_section.tex`
@@ -144,15 +145,38 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | χ²₂D (plano w₀-wₐ vs DESI) | 0.080 → 0.05σ |
 | χ²ᵣ cúmulos (SSEE+IGIMF, 4 cúmulos) | 0.122 |
 | ΔBIC (modelo completo, k=0 vs ΛCDM k=6) | +206 (penalidad por background ΛCDM) |
-| ΔBIC MCMC (ΛCDM−SSEE, k=2 vs k=3) | **+7.91** (SSEE favorecido) — re-run 2026-05-22 |
-| H₀ SSEE (MCMC best-fit) | **67.756⁺⁰·⁴⁴²₋₀.₄₄₂** km/s/Mpc — re-run 2026-05-22 (seed 42) |
-| H₀ SSEE (algebraico Paper 4) | 67.96 km/s/Mpc = 3(φ+π)² |
-| r_d (SSEE+MIRA, CAMB) | ⚠ sin reconciliar — 146.68 / 147.055 / 175.16 según script (ver VERIFICATION_LEDGER.md §B) |
+| ΔBIC MCMC (ΛCDM−SSEE, dynamic sector, k=2 vs k=3) | **+7.91** (SSEE favorecido) |
+| ΔBIC MCMC structural (SSEE−ΛCDM full background) | +213 (Ω_m=0.160 vs 0.315; resuelve P6) |
+| **H₀ SSEE (MCMC, prior MIRA — canónico tras 2026-05-24)** | **66.55⁺⁰·⁴⁴/₋₀·₄⁴** km/s/Mpc (script `ssee_paper2_mcmc_mira.py`, 100w×25k, seed 42) |
+| H₀ SSEE (MCMC, prior Planck legacy — para comparación) | 66.75⁺⁰·⁴⁴/₋₀·₄⁴ km/s/Mpc (script original, valor en P2 antes del switch MIRA) |
+| H₀ MIRA (Planck plik_lite + SSEE bg) | 67.068 km/s/Mpc (script `ssee_paper3_cobaya_unified.py`) |
+| H₀ SSEE (algebraico Paper 4, Type P coincidence) | 67.962 km/s/Mpc = 3(φ+π)² |
+| r_d (SSEE pure, Ω_m,dyn=0.160) | 175.6 Mpc — coherente Eisenstein-Hu |
+| r_d (SSEE+MIRA mapping, Ω_m,CMB=0.31993) | 147.6 Mpc — matchea Planck |
+| **m_φ (P6, revert 2026-05-24 PM)** | **5.602 eV** con H_alg=67.96 — ansatz NUMEROLÓGICO, dimensionalmente inconsistente. Ver OP-9. NO sustituir H_MIRA en esta fórmula sin conversión dimensional explícita |
+| **k_fs (P6 revert)** | **0.493 h/Mpc** (consistente con m_φ=5.602) |
+| **H_local IR canónico (P9 cascada)** | **71.90 km/s/Mpc — 1.10σ SH0ES** (era 72.86 = 0.17σ Type-P) |
+| **H_local UV canónico (P10 cascada)** | **72.077 km/s/Mpc — 0.93σ SH0ES** (era 73.040 = 0σ Type-P) |
 
-> **Valores canónicos:** la tabla autoritativa de cada número (algebraico y
-> de pipeline, con procedencia) vive en `VERIFICATION_LEDGER.md` §«Valores
-> Canónicos». Esta tabla es un resumen; ante discrepancia, manda el Registro.
-> H₀ MCMC derivó de 66.75 → 67.76 por el commit `4892b53` (dos-Ω_m).
+> **Valores canónicos:** la tabla autoritativa de cada número vive en
+> `VERIFICATION_LEDGER.md` §«Valores Canónicos». Esta tabla es un resumen;
+> ante discrepancia, manda el Registro.
+>
+> **Historia H₀ MCMC (registro honesto):**
+> - 66.75 ± 0.44 — script original con prior Planck-ΛCDM (valor en P2 antes 2026-05-24)
+> - 66.55 ± 0.44 — script con prior MIRA (self-consistent, P2 actualizado 2026-05-24)
+> - El "67.756" anteriormente documentado aquí era MALA ANOTACIÓN, no corresponde a
+>   ninguna corrida real. Corregido 2026-05-24. Ver [[project-h0-mira-calibration]].
+>
+> **Validez de cascadas H_alg→H_MIRA (revisión 2026-05-24 PM):**
+> - **P9 (H_local = H_MIRA/(1−f_screen) = 71.90):** ✅ válida — H_MIRA dimensional
+>   y f_screen adimensional; la fórmula cierra unidades.
+> - **P10 (H_local^UV = 72.077):** ✅ válida por misma razón estructural.
+> - **P6 (m_φ = Σm_ν × H_0):** ❌ **NO VÁLIDA** — la fórmula es dimensionalmente
+>   inconsistente (eV × km/s/Mpc ≠ masa). Solo cierra como numerología cuando
+>   H_alg se trata como número adimensional. **Revertido a m_φ = 5.602 eV con
+>   H_alg.** Búsqueda de fórmula física correcta abierta en OP-9.
+>   Ver `src/op9_phi_dm_formula_search.py` para inventario de candidatas.
 
 ---
 

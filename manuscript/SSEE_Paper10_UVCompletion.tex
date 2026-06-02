@@ -51,8 +51,12 @@
 
 \begin{abstract}
 Within the Structural Self-Energy Expansion (SSEE-V3.6), the infrared (IR) kinetic
-Lagrangian $K(X) = X/\KAL$ predicts a local Hubble constant
-$H_0^{\rm IR} = 72.86$ km/s/Mpc ($0.17\sigma$ from SH0ES).
+Lagrangian $K(X) = X/\KAL$ produces a local Hubble correction
+$H_0^{\rm local} = H_0/(1-f_{\rm scr})$ with $f_{\rm scr}\approx 0.06725$ (Paper~9).
+Applied to the canonical CMB-derived value $H_0^{\rm MIRA}=67.068$ this gives
+$H_0^{\rm IR}=71.90$ km/s/Mpc ($1.10\sigma$ from SH0ES); applied to the Type~P
+algebraic value $H_0^{\rm alg}=67.96$ it gives $H_0^{\rm IR,alg}=72.86$
+km/s/Mpc ($0.17\sigma$ from SH0ES) as a numerical coincidence.
 We extend the EFT to include the leading higher-derivative operator
 $K(X) = X/\KAL + X^2/M^4$ and identify the unique algebraic value of the
 UV cutoff $M$ such that the theory remains connected to the inflationary
@@ -68,9 +72,12 @@ where the identity $45\alpha^2 = 5\phiG^8$ follows exactly from the definition
 $\alpha = \phiG^4/3$ (not a numerical coincidence, but an algebraic consequence).
 With this cutoff, the full Bellini--Sawicki parameter becomes
 $\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value), giving
-$H_0^{\rm local} = 73.040$ km/s/Mpc, consistent with the SH0ES
-central value ($73.04 \pm 1.04$ km/s/Mpc; \citep{Riess2022}) to within the
-rounding precision of the published SH0ES result.
+$H_0^{\rm local,alg} = 73.040$ km/s/Mpc when applied to $H_0^{\rm alg}$,
+matching the SH0ES central value $73.04\pm1.04$ km/s/Mpc \citep{Riess2022}
+to rounding precision (a numerical coincidence within the Type-P input).
+Applied to the canonical $H_0^{\rm MIRA}=67.068$, the corresponding UV
+prediction is $H_0^{\rm local,MIRA} \approx 72.077$ km/s/Mpc ($0.93\sigma$
+from SH0ES) --- the physically meaningful UV value within this paper.
 \textbf{This agreement is conditional on Postulate~C.1 (UV-IR $\varphi/\pi$
 separability; §\ref{sec:theorem})} and is not independent of SH0ES: the
 postulate was formulated with SH0ES as the target.  It should therefore be
@@ -79,8 +86,8 @@ The same $\alpha$ that governs inflation at $z \sim 10^{60}$ thus fixes the
 dark-energy UV scale today, providing a falsifiable cross-epoch consistency test:
 if LiteBIRD measures $r \neq 0.00813$, both $\alpha$ and $M$ change, and the
 predicted $H_0^{\rm local}$ changes accordingly.  The IR prediction
-$H_0^{\rm IR} = 72.86$ km/s/Mpc ($0.17\sigma$ SH0ES) is independent of
-this postulate and stands on its own.
+$H_0^{\rm IR,MIRA} = 71.90$ km/s/Mpc ($1.10\sigma$ SH0ES; Paper~9) is
+independent of this postulate and stands on its own.
 \end{abstract}
 
 \tableofcontents
@@ -185,11 +192,22 @@ The factor 5 in $5\phiG^8$ is the same integer that generates the golden ratio,
 $\phiG = (1+\sqrt{5})/2$, so $5 = (2\phiG - 1)^2$.
 Equivalently,
 \begin{equation}
-  M \;=\; \phiG^2 \times 5^{1/4} \times \rhoc^{1/4}
+  M \;=\; \phiG^2 \times 5^{1/4} \times \rho_\Lambda^{1/4}
     \;\approx\; 8.81 \text{ meV}\,,
   \label{eq:Mmev}
 \end{equation}
-where $\rhoc^{1/4} \approx 2.25$ meV is the cosmological constant scale today.
+where $\rho_\Lambda^{1/4} \approx 2.25$ meV is the canonical cosmological
+constant scale today.\footnote{Convention note: in the dimensionless formulation
+of §\ref{sec:full_KX} we work in units $\rhoc = 1$, where $M^4 = 5\phiG^8$ is a
+pure number ($\approx 234.89$) and all downstream observables ($\alpha_K$,
+$f_{\rm screen}$, $\varepsilon$) are dimensionless ratios. The conversion to
+physical units in Eq.~\eqref{eq:Mmev} uses the canonical $\Lambda$ scale
+$\rho_\Lambda^{1/4} = 2.25$~meV rather than the SSEE $\rho_{\rm crit}$ at
+$h=0.6796$ (which would give $M \approx 9.74$~meV); this choice makes $M$
+naturally invariant under the $H_{\rm alg} \leftrightarrow H_{\rm MIRA}$
+ambiguity and does not affect any predicted observable. The two presentations
+agree at the $\sim 10\%$ level and differ only in the chosen reference
+density.}
 
 Table~\ref{tab:identity} summarises the equivalent forms of the identity.
 

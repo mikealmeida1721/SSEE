@@ -454,30 +454,54 @@ it returns to ≤2 (only $H_0$ and $\Omega_b h^2$ as observation-tunable).
 
 ---
 
-## OP-9 — Phenomenological Mass m_φ = 5.60 eV (Paper 6) — PARCIAL
+## OP-9 — Phenomenological Mass m_φ = 5.602 eV (Paper 6) — ELEVADO 2026-05-24 PM
 
-**Location:** Paper 6, Eq. (mass_algebraic), §3.2.
+**Location:** Paper 6, Eq. (mass_algebraic), §3.2 + §6 (origin).
 
 **Problem:** The mass relation $m_\phi = \Sigma m_\nu^{\rm active} \times H_0^{\rm alg}
-= 0.0824\,{\rm eV} \times 67.96 = 5.60\,{\rm eV}$ is **dimensionally inconsistent**
-when treated as eV (the product has units [eV·s⁻¹·Mpc⁻¹]). A proper dimensional analysis
-with $\hbar=c=1$ would yield $\sqrt{m_\nu \cdot H_0^{\rm alg}} \approx 10^{-17}$ eV
-(Fuzzy DM regime), not 5.60 eV.
+= 0.0824\,{\rm eV} \times 67.96 = 5.602\,{\rm eV}$ is **dimensionally inconsistent**:
+the product has units $[{\rm eV}]\times[{\rm km\,s^{-1}\,Mpc^{-1}}]$, **not mass**. The
+numerical value 5.602 eV emerges only by treating $H_0^{\rm alg}=3(\varphi+\pi)^2$
+as a dimensionless number (its value in the conventional Hubble unit).
 
-**Paper 6 honestly admits this (L371-377)** as a "numerological ansatz whose physical
-origin (a Yukawa coupling through the IS sector) is to be derived in future work."
+**Strong rule (added 2026-05-24 PM):** The physical Hubble scale
+$H_0^{\rm MIRA}=67.068$~km/s/Mpc (Paper 3, Cobaya plik\_lite) **must NOT be
+substituted** into this formula. Doing so would propagate the dimensional
+inconsistency under the false appearance of a physical upgrade. The Paper 6
+manuscript explicitly states this prohibition in the boxed equation and the
+tcolorbox of §3.2 and in §6 (subsec:origin).
 
-**Current status:** m_φ = 5.60 eV is adopted **phenomenologically** as the value that
-gives the required free-streaming scale $k_{\rm fs} = 0.493\,h/$Mpc. The numerical
-coincidence with Σm_ν × H_0 is presented as evidence of an underlying algebraic
-structure to be derived.
+**Cascade audit (2026-05-24 PM):** Of the three H_alg→H_MIRA cascades attempted
+in the morning session:
+- **P9** $H_{\rm local} = H_0^{\rm MIRA}/(1-f_{\rm screen}) = 71.90$ km/s/Mpc — ✅ valid
+  ($H_0^{\rm MIRA}$ dimensional, $f_{\rm screen}$ dimensionless; units close).
+- **P10** UV cascade — ✅ valid by the same structural reason.
+- **P6** $m_\phi$ — ❌ **invalid**, reverted to 5.602 eV with $H_0^{\rm alg}$
+  and re-flagged as numerological ansatz only.
 
-**Path to resolution:** Derive m_φ from a proper field-theory mechanism — most likely
-a Yukawa coupling between χ and the IS-relaxation operator, or from the curvature
-of a unified potential $V(\phi)$ at its minimum (see OP-10).
+**Candidate physical formulas (none currently matches):**
+| Candidate | Scale | Status |
+|---|---|---|
+| $\sqrt{\Sigma m_\nu \cdot \hbar H_0^{\rm MIRA}}$ | $\sim 10^{-17}$ eV | Fuzzy-DM regime; $k_{\rm fs}$ wrong by 14 orders |
+| $\Lambda_{\rm SSEE} = M = 8.81$ meV (Paper 10) | milli-eV | Wrong by 3 orders |
+| $\sqrt{M_{\rm Pl}\cdot\hbar H_0^{\rm MIRA}}$ | $\sim 4$ meV | Same milli-eV scale, no match |
+| Curvature $V''(\phi_{\rm min})$ from unified $V(\phi)$ | TBD | Blocked-by-OP-10 |
 
-**Severity:** Medium — the falsifiable prediction is $k_{\rm fs} = 0.493\,h/$Mpc
-in DESI Y3 / Euclid, which is testable **independently of the mass formula's origin**.
+**Path to resolution:** Derive $V(\phi)$ unified (OP-10) such that $m_\phi^2 =
+V''(\phi_{\rm min})$ comes out at the eV scale required by phenomenology, or
+admit that the eV-scale ansatz is wrong and recompute $\phi$-DM observables
+with a milli-eV mass (changes $k_{\rm fs}$ by factor $\sim 10^3$, breaking the
+Lyman-$\alpha$ falsification channel).
+
+**Severity:** Medium-High — was Medium when m_φ was *suspected* numerological;
+now demoted-by-elevation to **the clear physical contradiction the model
+declares as open**, on equal footing with OP-14. The falsifiable
+$k_{\rm fs} = 0.493\,h/$Mpc remains the empirical anchor; if DESI Y3/Euclid
+disconfirms it, the ansatz dies cleanly.
+
+**Search file:** `src/op9_phi_dm_formula_search.py` — systematic inventory of
+dimensionally consistent combinations of $\{M_{\rm Pl}, \hbar H_0^{\rm MIRA},
+\Sigma m_\nu, \Lambda_{\rm SSEE}, \varphi, \pi\}$ giving an eV-scale mass.
 
 ---
 

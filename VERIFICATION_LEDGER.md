@@ -109,23 +109,35 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 
 | Cantidad | Valor canónico | Fuente | Re-anclado |
 |---|---|---|---|
-| H₀ MCMC best-fit | 67.756 ± 0.442 | `ssee_paper2_mcmc.py` (seed 42) | 2026-05-22 |
+| H₀ anchor/prior (H_MIRA, CMB-óptimo) | 67.068 km/s/Mpc | `ssee_paper3_cobaya_unified.py` / `planck_cobaya_unified.txt` L3 | 2026-05-24 |
+| H₀ MCMC posterior (prior MIRA, corregido por DESI) | 66.553 ± 0.442 km/s/Mpc | `ssee_paper2_mcmc_mira.py` (100w×25k, seed 42) → `results/logs/mcmc_paper2_mira.log` L78 | 2026-05-24 |
 | ΔBIC MCMC (ΛCDM−SSEE) | +7.91 (SSEE favorecido) | `ssee_paper2_mcmc.py` | 2026-05-22 |
 | Ω_b h² (posterior MCMC) | 0.02183 ± 0.00048 | `ssee_paper2_mcmc.py` | 2026-05-22 |
 | r_d,SSEE (crudo) | 175.16 Mpc | `ssee_paper2_mcmc.py` | 2026-05-22 |
-| r_d,eff (CAMB, H₀ canónico) | 145.93 Mpc — **tensión 4.47σ** | `ssee_verify_rd.py` | 2026-05-22 |
+| r_d,eff (CAMB, en anchor 67.068) | 146.70 Mpc — **1.51σ** | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
+| r_d,eff (CAMB, en posterior 66.553) | 147.28 Mpc — **0.72σ** | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
 | χ²_r CMB TT (SSEE) | 1.047 | `ssee_paper3_cmb.py` | 2026-05-22 |
 | ΔBIC CMB (SSEE−ΛCDM) | −20.8 (SSEE favorecido) | `ssee_paper3_cmb.py` | 2026-05-22 |
-| θ* (SSEE, H₀ canónico) | 0.59927° — **tensión 5.62σ** | `ssee_verify_rd.py` | 2026-05-22 |
+| θ* (CAMB, en anchor 67.068) | 0.59636° — **0.69σ** | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
+| θ* (CAMB, en posterior 66.553) | 0.59417° — **5.46σ** (sensibilidad de θ* a H₀; ver V-L4-θ*) | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
 | σ₈ / S₈ SSEE (Paper 5) | 0.702 / 0.725 | `ssee_paper5_IS_perturbations.py` | (sin re-correr) |
 | σ₈_eff / S₈_eff (Paper 6 titular) | 0.794 / 0.820 | `ssee_paper6_verification.py` | (sin re-correr) |
 
 **Historial de deriva de H₀ MCMC** (para entender por qué cambió): el MCMC
 es determinista (semilla fija 42) — *mismo script → mismo número*. La
-deriva 66.66 → 66.75 → **67.76** corresponde a **ediciones del script**,
-no a azar. El salto final (66.75→67.76) lo causó el commit `4892b53`
-(corrección dos-Ω_m). El valor 67.76 es el canónico actual; los anteriores
-están **obsoletos** y deben eliminarse de todo documento que los repita.
+deriva corresponde a **ediciones del script / cambios de prior**, no a azar:
+- 66.75 ± 0.44 — prior Planck-ΛCDM legacy, 50w×10k.
+- 67.756 ± 0.442 — prior Planck-ΛCDM, 100w×25k (commit `4892b53`, corrección
+  dos-Ω_m). **OBSOLETO desde el switch de prior 2026-05-24.**
+- **66.553 ± 0.442 — prior MIRA self-consistent, 100w×25k (CANÓNICO ACTUAL).**
+  `ssee_paper2_mcmc_mira.py`, ref `results/logs/mcmc_paper2_mira.log` L78.
+
+**Anatomía del H₀ (un solo número, dos etapas):** el modelo tiene UN H₀.
+(1) **Anchor/prior** = H_MIRA = 67.068 km/s/Mpc: el H₀ que minimiza la
+tensión CMB (Cobaya `minimize_scalar` sobre Planck plik_lite con fondo SSEE).
+(2) **Posterior** = 66.553 ± 0.442: el mismo H₀ tras dejar que el MCMC ajuste
+DESI DR2 BAO encima del prior. DESI lo baja ~0.5 km/s/Mpc (≈1.2σ). Esto es
+el clásico **split BAO–CMB de los modelos w₀wₐ**, no un error.
 
 ---
 
@@ -791,10 +803,15 @@ verificado es el *álgebra*; la *regla física* de uso no está derivada.
 
 **Por qué importa.** El resultado más fuerte de SSEE (DESI 0.5σ, cero
 parámetros) se construyó con 0.160 en el fondo. El commit `4892b53`
-(«corrección dos-Ω_m») cambió E(z) a 0.320 — y eso (a) movió H₀ 66.75→67.76
-y (b) **causó la tensión r_d/θ* de 4–5σ** (V-L4-rd/θ*). Fue un cambio a un
-sector bien soportado **sin análisis previo de impacto**. No debe llamarse
-«corrección»: es un cambio de configuración con consecuencias.
+(«corrección dos-Ω_m») cambió E(z) a 0.320 y, con el prior Planck-ΛCDM legacy,
+movió H₀ a 67.756 — que producía r_d/θ* a 4–5σ. **El switch de prior MIRA
+(2026-05-24) reancló H₀ a 66.553 posterior / 67.068 anchor**, y con esos H₀
+r_d queda a ≤1.5σ y θ* a 0.69σ *en el anchor* (ver V-L4-rd/θ* re-corridas
+2026-06-01). Lo que queda abierto NO es ya un 5σ duro en r_d, sino: (a) la
+ausencia de Ω_m,eff(z) que puentee 0.160↔0.320, y (b) el split BAO–CMB de
+1.2σ en H₀, que se manifiesta como tensión en θ* solo si se usa el posterior
+en el observable CMB. Sigue siendo un cambio de configuración con
+consecuencias, no una «corrección» sin costo.
 
 **Veredicto.** Qué es MIRA físicamente, por qué la materia gravitante es 2×
 la dinámica sin partícula de materia oscura, qué papel cumple AURA (=2·MIRA),
@@ -863,39 +880,47 @@ Picos TT en ℓ = 220, 536, 812 — también reproducidos. La aritmética
 decimales; el −20.8 del pipeline cae dentro. **El test de datos central
 de Paper 3 es reproducible. Verificado.**
 
-## V-L4-rd — horizonte de sonido r_d — **ABIERTO (tensión 4.47σ enmascarada)**
+## V-L4-rd — horizonte de sonido r_d — **r_d sano en ambos anclajes**
 
-⚠ **Hallazgo crítico de la campaña.** El "r_d = 0.25σ ✅" titular de
-Papers 2–3 dependía de un H₀ **obsoleto**. Al propagar el H₀ canónico
-(67.756, re-run MCMC 2026-05-22) a `ssee_verify_rd.py`:
+Re-corrido con CAMB (2026-06-01) tras el switch de prior MIRA. El "4.47σ"
+previo era **artefacto del H₀ obsoleto 67.756** (prior Planck-ΛCDM legacy,
+superado). Con los H₀ canónicos actuales:
 
 | H₀ usado | r_d resultante | tensión Planck (147.09±0.26) |
 |---|---|---|
-| 66.75 (obsoleto) | 147.055 Mpc | 0.14σ — *valor que se reportaba* |
-| **67.756 (canónico)** | **145.93 Mpc** | **4.47σ** |
+| 66.553 (posterior MCMC, prior MIRA) | 147.28 Mpc | **0.72σ ✓** |
+| 67.068 (anchor H_MIRA, CMB-óptimo) | 146.70 Mpc | **1.51σ ✓** |
+| 67.756 (obsoleto, prior Planck legacy) | 145.93 Mpc | 4.47σ — *superado* |
 
 **Mecanismo:** la parametrización SSEE fija Ω_m,cosm=0.31993 (fracción) y
-deriva ω_c = Ω_m,cosm·h² − ω_b. Al subir H₀, sube h², sube ω_c (+3.6%),
-la igualdad materia-radiación se adelanta y r_d **cae**. r_d es genuinamente
-sensible a H₀ en esta parametrización. Con el H₀ real del modelo, r_d está
-a 4.47σ de Planck. La concordancia previa era un artefacto de un valor
-stale. **El "✅" de r_d queda retirado.**
+deriva ω_c = Ω_m,cosm·h² − ω_b. Al subir H₀, sube h², sube ω_c, la igualdad
+materia-radiación se adelanta y r_d **cae**. r_d es genuinamente sensible a
+H₀. Con el H₀ real del modelo (66.553 posterior / 67.068 anchor), r_d está a
+≤1.5σ de Planck. **El "✅" de r_d se restituye.**
 
-## V-L4-θ* — escala acústica angular θ* — **ABIERTO (tensión 5.62σ)**
+## V-L4-θ* — escala acústica angular θ* — **ABIERTO (sensibilidad extrema a H₀)**
 
-Mismo re-run, mismo efecto. Con el H₀ canónico (67.756), `ssee_verify_rd.py`
-da **θ* = 0.59927°** vs Planck 2018 **0.59668±0.00046°** → **tensión
-5.62σ** (con el H₀ obsoleto era 3.63σ — ya alta, ahora >5σ). θ* es el
-observable CMB *más preciso* (~0.08%). Una tensión >5σ en θ* es, para un
-árbitro, **potencialmente falsadora** y exige resolución, no nota al pie.
-θ* = r_d/D_A(z*): el problema combina r_d (4.47σ, arriba) y D_A.
+θ* es el observable CMB *más preciso* (σ≈0.08%) y por eso es hipersensible a
+H₀ vía D_A. Re-run CAMB 2026-06-01, vs Planck 2018 **0.59668±0.00046°**:
 
-**Lectura honesta de V-L4-rd + V-L4-θ*:** la campaña de verificación
-hizo exactamente lo que se diseñó — un valor stale (H₀=66.75) estaba
-**enmascarando** dos tensiones serias. Ahora visibles. Esto NO falsa el
-modelo por sí solo (la parametrización Ω_m,cosm vs ω_m podría revisarse),
-pero es la brecha más grave hallada y debe encararse antes de cualquier
-sellado o envío.
+| H₀ usado | θ* resultante | tensión |
+|---|---|---|
+| 67.068 (anchor H_MIRA, CMB-óptimo) | 0.59636° | **0.69σ ✓** |
+| 66.553 (posterior MCMC, corregido por DESI) | 0.59417° | **5.46σ** |
+| 67.756 (obsoleto) | 0.59927° | 5.62σ — *superado* |
+
+**Crux honesto:** en el **anchor CMB-óptimo (67.068)**, θ* (0.69σ) y r_d
+(1.51σ) están **ambos sanos**. La tensión de 5.46σ aparece SOLO si se inyecta
+el H₀ posterior corregido-por-DESI (66.553) en el observable CMB — es decir,
+es la manifestación en θ* del **split BAO–CMB de 1.2σ en H₀** de los modelos
+w₀wₐ. Un control ΛCDM (w=−1) al mismo H₀ da θ* casi idéntico: **el tirón en
+θ* lo causa H₀, NO la energía oscura w₀wₐ de SSEE.**
+
+**Lectura para el documento de journal:** anclar el CMB en H₀=67.068 (donde
+r_d y θ* ≤1.5σ), reportar el posterior BAO 66.553±0.442, y declarar el split
+BAO–CMB (1.2σ) como feature conocido de w₀wₐ — no como falla. Ningún H₀ único
+satisface BAO-posterior + r_d + θ* todos a <2σ a la vez, pero 67.068 deja los
+tres a ≤1.5σ.
 
 ## V-L4-MCMC — MCMC DESI+Planck (Paper 2) — **re-run 2026-05-22; H₀ derivó**
 

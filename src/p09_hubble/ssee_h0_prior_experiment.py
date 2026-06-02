@@ -24,8 +24,8 @@ import emcee
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-
-sys.path.insert(0, os.path.dirname(__file__))
+import os as _reloc_os, sys as _reloc_sys  # reloc: anclar src/
+_reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_os.path.abspath(__file__))))
 from ssee_core import (
     PHI, PI, KAL0, W0, WA, OMEGA_M_DYN, H0_ALG
 )

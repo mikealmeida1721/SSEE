@@ -23,8 +23,8 @@ Las razones de pico son además invariantes bajo el factor e^-2τ de reionizaci�
 """
 import sys
 import os
-
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import os as _reloc_os, sys as _reloc_sys  # reloc: anclar src/
+_reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_os.path.abspath(__file__))))
 from ssee_core import W0, WA, N_S, OMEGA_M_DYN, OMEGA_M_CMB_MIRA
 
 import numpy as np

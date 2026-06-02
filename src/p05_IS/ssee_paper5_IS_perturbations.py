@@ -41,6 +41,8 @@ plt.rcParams.update({
 })
 
 # ── 1. SSEE CONSTANTS (algebraic, zero free parameters) ─────────────────────
+import os as _reloc_os, sys as _reloc_sys  # reloc: anclar src/
+_reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_os.path.abspath(__file__))))
 from ssee_core import (
     PHI as phi, PI as pi_, BETA as beta, KAL0, P_SC as P_sc,
     K_V as Kv, T_R as Tr, M_V as Mv, W0 as w0, WA as wa,
@@ -814,8 +816,7 @@ if _q3_ok:
 
     ax5.set_xlabel(r'redshift $z$', fontsize=12)
     ax5.set_ylabel(r'$f\sigma_8(z)$', fontsize=12)
-    ax5.set_title(r'$f\sigma_8(z)$: SSEE-V3.6 IS vs $\Lambda$CDM vs RSD data'
-                  '\n(falsifiable prediction: 28% suppression at $z=0.5$)', fontsize=11)
+    ax5.set_title(r'$f\sigma_8(z)$: SSEE-V3.6 IS vs $\Lambda$CDM vs RSD data', fontsize=11)
     ax5.legend(fontsize=9, loc='upper right')
     ax5.set_xlim(0, 2.0)
     ax5.set_ylim(0.15, 0.65)

@@ -12,7 +12,7 @@ import matplotlib.patches as mpatches
 from matplotlib.lines import Line2D
 import os
 
-OUT = os.path.join(os.path.dirname(__file__), '..', 'results', 'figures')
+OUT = os.path.join(os.path.dirname(__file__), '..', '..', 'results', 'figures')
 os.makedirs(OUT, exist_ok=True)
 
 # ── SSEE algebraic constants ──────────────────────────────────────────────────

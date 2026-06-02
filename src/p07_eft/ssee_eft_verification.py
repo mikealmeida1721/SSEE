@@ -33,6 +33,8 @@ OUTDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
 os.makedirs(OUTDIR, exist_ok=True)
 
 # ── §1 Constantes algebraicas SSEE ───────────────────────────────────────────
+import os as _reloc_os, sys as _reloc_sys  # reloc: anclar src/
+_reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_os.path.abspath(__file__))))
 from ssee_core import (
     PHI as phi, PI as pi_, BETA as beta, KAL0, K_V as Kv, T_R as Tr,
     M_V as Mv, MIRA, AURA, W0 as w0, WA as wa, OMEGA_DE as Om_DE,

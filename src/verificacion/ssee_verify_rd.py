@@ -17,6 +17,8 @@ import numpy as np
 # ---------------------------------------------------------------------------
 # Constantes algebraicas SSEE — fuente única de verdad: src/ssee_core.py
 # ---------------------------------------------------------------------------
+import os as _reloc_os, sys as _reloc_sys  # reloc: anclar src/
+_reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_os.path.abspath(__file__))))
 from ssee_core import (
     PHI as phi, PI as pi, OMEGA as Omega, BETA as beta, KAL0,
     P_SC as P_sc, K_V as Kv, T_R as Tr, M_V as Mv,

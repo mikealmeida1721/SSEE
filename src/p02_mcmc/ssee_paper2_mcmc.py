@@ -41,6 +41,8 @@ log("=" * 65)
 # ─────────────────────────────────────────────────────────────
 # 1. CONSTANTES SSEE
 # ─────────────────────────────────────────────────────────────
+import os as _reloc_os, sys as _reloc_sys  # reloc: anclar src/
+_reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_os.path.abspath(__file__))))
 from ssee_core import (
     PHI, PI, BETA, KAL0, P_SC as P_sc, K_V as KV, T_R as TR, M_V as MV,
     W0 as W0_SSEE, WA as WA_SSEE, OMEGA_DE as OMDE_SSEE,

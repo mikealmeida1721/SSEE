@@ -10,7 +10,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import os
 
-OUT = os.path.join(os.path.dirname(__file__), '..', 'results', 'figures')
+OUT = os.path.join(os.path.dirname(__file__), '..', '..', 'results', 'figures')
 os.makedirs(OUT, exist_ok=True)
 
 # ── SSEE constants ────────────────────────────────────────────────────────────

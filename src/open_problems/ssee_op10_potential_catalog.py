@@ -4,7 +4,7 @@ OP-10 Fase 1 — Catálogo de potenciales V(φ) candidatos
 
 OBJETIVO: encontrar V(φ) que satisfaga simultáneamente:
   (R1) Plateau a φ grande → reproduce w_0 = -0.840, w_a = -0.670
-  (R2) Mínimo con V''(φ_min) = m_φ² → reproduce m_φ = 5.60 eV  (resuelve OP-9)
+  (R2) Mínimo con V''(φ_min) = m_φ² → reproduce m_φ = 36.95 eV  (resuelve OP-9)
   (R3) α-attractor compatible (inflación) → preserva n_s = 1−φ⁻⁷
   (R4) Coeficientes algebraicos en φ, π, KAL, ...                (Postulado D)
 
@@ -13,7 +13,7 @@ CONSTRAINTS DUROS (ya bloqueados por papers previos, NO negociables):
   - λ      = √(3 Ω_m,dyn)  ≈ 0.6929    (Paper 7)
   - V₀     = 0.840 ρ_crit              (Paper 7)
   - M⁴     = 5 φ⁸ ρ_crit               (Paper 10)
-  - m_φ    = 5.60 eV (target a reproducir, OP-9)
+  - m_φ    = 36.95 eV (canónico, forward-derivation Σm_ν·MULT; target, OP-9)
 
 ESPACIO DE BÚSQUEDA: dado que P7 fija V_DE(φ) = V₀ e^(-λφ), la búsqueda real es
     V(φ) = V₀ e^(-λφ) + ΔV(φ)
@@ -47,8 +47,10 @@ V0_LOCK        = OM_DE * RHO_CRIT_eV4
 M4_LOCK        = 5 * PHI**8 * RHO_CRIT_eV4
 M_UV           = M4_LOCK**0.25      # ≈ 8.81 meV
 
-# Target
-M_PHI_TARGET   = 5.60               # eV (Paper 6, OP-9)
+# Target — m_φ canónico por forward-derivation (Paper 6 partícula canónica)
+#   Σm_ν = (Ω/(KAL·T_R))·0.960318 = 0.06903 eV ; MULT = Ω⁴ + AURA·KAL = 535.28
+AURA           = (3*PHI + PI) / 2
+M_PHI_TARGET   = (OMEGA/(KAL*T_R))*0.960318 * (OMEGA**4 + AURA*KAL)  # = 36.95 eV
 M_PHI2_TARGET  = M_PHI_TARGET**2    # eV²
 
 print("=" * 76)
@@ -134,8 +136,8 @@ print("=" * 76)
 # Free params: NINGUNO (V₀ y α ya bloqueados!)
 # Predicción única: m_φ² = (8/3α) V₀
 #
-# Esta es la opción más restrictiva — si NO da 5.60 eV, está descartada.
-# Si SÍ da 5.60 eV, sería el "milagro" (cero parámetros nuevos).
+# Esta es la opción más restrictiva — si NO da 36.95 eV, está descartada.
+# Si SÍ da 36.95 eV, sería el "milagro" (cero parámetros nuevos).
 # ----------------------------------------------------------------
 
 # ============================================================
@@ -159,7 +161,7 @@ print(f"    m_φ    = √m²_φ             = {m_F4_physical:.3e} eV")
 print(f"    Target = {M_PHI_TARGET} eV → ratio m_F4/target = {m_F4_physical/M_PHI_TARGET:.3e}")
 
 if m_F4_physical / M_PHI_TARGET < 1e-10 or m_F4_physical / M_PHI_TARGET > 1e10:
-    print("    ⚠ DESCARTADA: m_φ predicho ≠ 5.60 eV por orden(es) de magnitud.")
+    print("    ⚠ DESCARTADA: m_φ predicho ≠ 36.95 eV por orden(es) de magnitud.")
     print("    Familia 4 (cero parámetros) no funciona — necesitamos free param.")
 else:
     print("    ✓ Familia 4 candidata viable — investigar normalización canónica.")
@@ -176,7 +178,7 @@ print(f"""
 | 1 | (m²/2)(φ-φ₀)²                | m, φ₀ (2)    | Mínimo trivial          | NO → 0 a φ grande → cont. DE  |
 | 2 | (m²/2) sech²(φ/f)            | m, f (2)     | α-attractor ✓ R3        | Cambia V_DE forma (recomp w₀) |
 | 3 | M_UV⁴ [1−cos(φ/f)]           | f (1)        | M_UV ya bloqueado       | φ oscilante, no estático      |
-| 4 | NINGÚN ΔV (Starobinsky puro) | 0            | Cero params (milagro)   | Predice m_φ ≠ 5.60 eV ❌      |
+| 4 | NINGÚN ΔV (Starobinsky puro) | 0            | Cero params (milagro)   | Predice m_φ ≠ 36.95 eV ❌      |
 """)
 
 # ============================================================
@@ -197,7 +199,7 @@ print(f"""
               que P6 asume (P6 trata φ-DM como background coherente). Probable
               descarte tras análisis de coherencia.
 
-  FAMILIA 4 — DESCARTADA ya (predicción m_φ no coincide con 5.60 eV).
+  FAMILIA 4 — DESCARTADA ya (predicción m_φ no coincide con 36.95 eV).
               Excepto si la normalización canónica que asumí está mal.
 
   PRÓXIMO SCRIPT: ssee_op10_family2_dynamics.py
@@ -207,5 +209,5 @@ print(f"""
     - Test combinado: ¿algún (f, m) cumple las 3 restricciones?
 
   CRITERIO DE ÉXITO FASE 2: encontrar (f, m) ALGEBRAICOS tal que
-    |w₀ + 0.840| < 0.01 AND |w_a + 0.670| < 0.05 AND |m_φ − 5.60| < 0.1 eV
+    |w₀ + 0.840| < 0.01 AND |w_a + 0.670| < 0.05 AND |m_φ − 36.95| < 0.5 eV
 """)

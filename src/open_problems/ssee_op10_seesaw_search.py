@@ -2,8 +2,16 @@
 OP-10 Fase 2d — Búsqueda see-saw: el "punto medio" entre escalas SSEE
 ========================================================================
 
-INTUICIÓN (Mike, 2026-05-24): "para unificar dos extremos, ¿no se necesitaría
-un punto medio?" — la falla de las 4 familias single-field es precisamente que
+⚠ SUPERADO (2026-06-06): la masa canónica φ-DM ya NO se busca por see-saw.
+Tiene forward-derivation limpia con cero fiteo (Paper 6 partícula canónica):
+    m_φ = Σm_ν · MULT,   MULT = Ω⁴ + AURA·KAL = 535.26,   Σm_ν = 0.06903 eV
+    ⇒ m_φ = 36.95 eV  (Lagrangiano escalar libre — cierra OP-9)
+Este script se conserva como exploración histórica; el target se re-apuntó al
+valor canónico 36.95 eV para que sus conclusiones no queden contra el viejo
+5.60 eV (obsoleto). NO es una búsqueda viva ni una predicción.
+
+INTUICIÓN ORIGINAL (Mike, 2026-05-24): "para unificar dos extremos, ¿no se
+necesitaría un punto medio?" — la falla de las 4 familias single-field es que
 intentan saltar directo entre dos escalas separadas por 10³-10⁴, sin puente.
 
 MECANISMO SEE-SAW: m_intermediate² = m_light · m_heavy
@@ -14,10 +22,11 @@ ESCALAS PRESENTES EN SSEE:
   M_UV     = 8.81 meV            (cutoff Paper 10)
   V₀^(1/4) = 2.87 meV            (escala DE)
   H₀       = 1.45×10⁻³³ eV       (Hubble hoy)
-  Σm_ν     = 0.0824 eV           (neutrino sum)
-  m_φ_target = 5.60 eV           (φ-DM, OP-9)
+  Σm_ν     = 0.06903 eV          (neutrino sum, R2·0.960318)
+  m_φ      = 36.95 eV            (φ-DM canónico, forward-derivation)
 
-PREGUNTA: ¿alguna combinación see-saw de las escalas conocidas da 5.60 eV?
+PREGUNTA (histórica): ¿alguna combinación see-saw de las escalas conocidas
+reproduce el m_φ canónico? (Hoy moot: ya hay derivación directa.)
 """
 import numpy as np
 from itertools import combinations
@@ -25,6 +34,14 @@ from itertools import combinations
 PHI    = (1 + np.sqrt(5)) / 2
 PI     = np.pi
 KAL    = (PHI + 3*PI) / 2
+OMEGA  = PHI + PI
+AURA   = (3*PHI + PI) / 2
+TRIAL  = 3 * (PHI + (PHI + PI) / 2)
+
+# m_φ canónico por forward-derivation (Paper 6 partícula canónica), cero fiteo
+SIGMA_MNU = (OMEGA / (KAL * TRIAL)) * 0.960318     # = 0.06903 eV
+MULT      = OMEGA**4 + AURA * KAL                  # = 535.26
+M_PHI_CAN = SIGMA_MNU * MULT                       # = 36.95 eV
 
 # Escalas físicas SSEE (todas en eV)
 scales = {
@@ -32,17 +49,18 @@ scales = {
     "M_UV":           8.81e-3,
     "V0_quarter":     (0.840 * 8.10e-11)**0.25,   # ≈ 2.87 meV
     "H0":             1.45e-33,
-    "Sigma_mnu":      0.0824,
+    "Sigma_mnu":      SIGMA_MNU,
     "m_e":            5.11e5,                      # electron mass (BSM ref)
     "T_CMB":          2.35e-4,                     # 2.725 K en eV
     "Lambda_QCD":     0.220,                       # 220 MeV
     "M_W":            8.04e10,                     # 80.4 GeV
 }
 
-TARGET = 5.60  # eV
+TARGET = M_PHI_CAN  # eV (canónico 36.95)
 
 print("=" * 76)
-print("OP-10 FASE 2d — Búsqueda see-saw para m_φ = 5.60 eV")
+print(f"OP-10 FASE 2d — Búsqueda see-saw para m_φ canónico = {TARGET:.2f} eV")
+print("(SUPERADA: m_φ ya tiene forward-derivation Σm_ν·MULT, cero fiteo)")
 print("=" * 76)
 print("\nEscalas SSEE consideradas (eV):")
 for name, val in scales.items():
@@ -131,52 +149,28 @@ for combo in combinations(scales.items(), 3):
         print(f"  ∛({'·'.join(names)}):<25 {m_pred:<14.4e} {ratio:.4f}")
 
 # ============================================================
-# TEST 4 — Análisis dimensional Paper 6: m_φ = Σm_ν · H₀ con H₀ "no físico"
+# TEST 4 — Origen canónico: forward-derivation (NO see-saw, NO H₀)
 # ============================================================
 print("\n" + "=" * 76)
-print("TEST 4 — ¿Qué unidad de referencia rescata m_φ = Σm_ν · H₀?")
+print("TEST 4 — Origen canónico de m_φ: forward-derivation Σm_ν · MULT")
 print("=" * 76)
 
-# Si la fórmula de P6 m_φ = Σm_ν × H₀ funciona numéricamente como
-#     5.60 eV = 0.0824 eV × 67.96
-# entonces el "67.96" debería ser una razón adimensional. ¿Cuál?
-#
-# H₀_alg = 67.96 km/s/Mpc. Para que sea adimensional, dividir por una escala.
-
-# H₀ en eV: 1.45e-33. Razón H₀_eV / X = 67.96 → X = H₀_eV/67.96 = 2.13e-35 eV
-H0_eV = 1.45e-33
-unit_ref = H0_eV / 67.96
-print(f"\nSi m_φ = Σm_ν × (H₀/X) con X tal que (H₀/X) = 67.96:")
-print(f"  X = H₀/67.96     = {unit_ref:.3e} eV")
-print(f"  X·M_pl           = {unit_ref * 2.435e27:.3e}")
-print(f"  X/H₀             = {unit_ref/H0_eV:.6f}  (= 1/67.96 = {1/67.96:.6f})")
-
-# Equivalentemente: m_φ = Σm_ν · h adimensional (h = 0.6796)... pero 0.6796 ≠ 67.96.
-# El factor 100 viene de la conversión km/s/Mpc → unidades naturales.
-# Más probable: m_φ = Σm_ν × H₀_alg [km/s/Mpc] / (1 km/s/Mpc) en sistema CGS-like
-
+# La masa φ-DM canónica (Paper 6 partícula canónica) NO sale de un see-saw ni
+# de la vieja fórmula Σm_ν·H₀ (obsoleta). Sale de un producto algebraico limpio
+# con cero parámetros de ajuste:
+#     m_φ = Σm_ν · MULT
+#     Σm_ν = (Ω/(KAL·TRIAL))·0.960318 = R2·0.960318
+#     MULT = Ω⁴ + AURA·KAL
 print(f"""
-Diagnóstico: la fórmula m_φ = Σm_ν · H₀^alg (Paper 6) trata H₀ como número
-67.96, no como energía 1.45e-33 eV. Esto es físicamente inconsistente
-(viola análisis dimensional).
+Derivación canónica (cero fiteo, Lagrangiano escalar libre — cierra OP-9):
+  Σm_ν    = (Ω/(KAL·TRIAL))·0.960318 = {SIGMA_MNU:.5f} eV
+  MULT    = Ω⁴ + AURA·KAL            = {MULT:.4f}
+  m_φ     = Σm_ν · MULT              = {M_PHI_CAN:.4f} eV   ✓ canónico
 
-La fórmula tiene UN sentido si se reescribe como:
-  m_φ = Σm_ν · [H₀^alg / (km·s⁻¹·Mpc⁻¹)]
-      = 0.0824 eV · 67.96  [adimensional]
-      = 5.60 eV
-
-Pero entonces el "67.96" es un número específico de la convención de unidades
-cosmológicas, NO una constante algebraica universal. Esta es la raíz del
-problema dimensional de OP-9: m_φ depende de la convención.
-
-INSIGHT: si m_φ no es realmente "5.60 eV físicos" sino "Σm_ν × H₀/H_unit",
-entonces el target real para Fase 2 puede ser diferente.
-
-Tres posibles reinterpretaciones físicas:
-  (a) m_φ_real = 5.60 eV — el "número adimensional" 67.96 viene de algo
-      profundo (e.g., M_v = 3(φ+π) ≈ 14.28; M_v² ≈ 204; ratio M_v²/π ≈ 65)
-  (b) m_φ_real = 1.20e-34 eV — interpretación literal SI unidades
-  (c) m_φ_real = Σm_ν (unidades eV directas, sin H₀) — entonces m_φ ≈ 0.08 eV
+Esta es una predicción algebraica dimensionalmente consistente: una masa (eV)
+multiplicada por un número adimensional (MULT). NO depende de la convención de
+unidades de H₀. El see-saw de abajo es exploración histórica — el origen de la
+masa ya está fijado por la forward-derivation, no por estos productos.
 """)
 
 print("=" * 76)
@@ -188,11 +182,10 @@ if len(best_candidates) > 0:
     for name, val, ratio in best_candidates[:8]:
         print(f"    {name} = {val:.4e}  (ratio = {ratio:.4f})")
 else:
-    print("\n  ✗ Ningún see-saw simple (de 2 escalas × factor algebraico) alcanza")
-    print("    m_φ = 5.60 eV dentro de 5%.")
+    print(f"\n  ✗ Ningún see-saw simple (de 2 escalas × factor algebraico) alcanza")
+    print(f"    m_φ = {TARGET:.2f} eV dentro de 5%.")
     print()
-    print("  Esto sugiere que m_φ NO sale de un see-saw entre las escalas")
-    print("  fenomenológicas obvias. Posibilidades:")
-    print("    1) Se necesita una escala adicional (¿escala EW? ¿escala QCD?)")
-    print("    2) m_φ = 5.60 eV es interpretación incorrecta dimensionalmente")
-    print("    3) La estructura no es see-saw clásica sino algo más exótico")
+    print("  Resultado esperado y SIN consecuencia: el origen de m_φ NO es see-saw.")
+    print("  La masa canónica ya está fijada por forward-derivation limpia")
+    print(f"  (m_φ = Σm_ν·MULT = {M_PHI_CAN:.2f} eV, cero fiteo, Lagrangiano escalar")
+    print("  libre que cierra OP-9). Este script queda como nota histórica.")

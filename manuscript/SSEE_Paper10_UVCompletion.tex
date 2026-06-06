@@ -119,6 +119,12 @@ which corrects the algebraic Hubble constant $H_0^{\rm alg} = 3(\phiG+\pi)^2
   H_0^{\rm IR} \;=\; \frac{H_0^{\rm alg}}{1 - \fsc} \;=\; 72.86 \text{ km/s/Mpc}
   \quad (0.17\sigma \text{ from SH0ES}).
 \end{equation}
+We stress that the $0.17\sigma$ agreement reflects the algebraic anchor
+$H_0^{\rm alg} = 3(\phiG+\pi)^2$, a Type-P numerical coincidence rather than an
+independent prediction. The \emph{canonical} value of the series uses the
+MIRA-calibrated CMB anchor $H_0^{\rm MIRA} = 67.07$ km/s/Mpc, giving
+$H_0^{\rm IR,MIRA} = 71.90$ km/s/Mpc ($1.10\sigma$ from SH0ES) with zero free
+parameters. We carry both throughout and flag the Type-P values explicitly.
 
 That IR result uses the kinetic Lagrangian $K(X) = X/\KAL$ (the leading term),
 and the UV cutoff $M \to \infty$ is implicit.
@@ -134,9 +140,10 @@ where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
 Paper~1~\citep{SSEE1}, and the equality $45\alpha^2 = 5\phiG^8$ is an exact algebraic identity
 following from the definition of $\alpha$.
 With this value, the corrected Hubble constant is $H_0^{\rm UV} = 73.040$
-km/s/Mpc, consistent with the SH0ES central value $73.04 \pm 1.04$ km/s/Mpc
-\citep{Riess2022} to within the rounding precision of the published result (conditional on
-Postulate~C.1; see §\ref{sec:theorem}).
+km/s/Mpc on the Type-P anchor, numerically coincident with the SH0ES central
+value $73.04 \pm 1.04$ km/s/Mpc \citep{Riess2022}; on the canonical MIRA anchor
+it is $H_0^{\rm UV,MIRA} = 72.08$ km/s/Mpc ($0.93\sigma$ from SH0ES). Both UV
+results are conditional on Postulate~C.1 (see §\ref{sec:theorem}).
 
 The physical picture is intriguing: the \emph{same curvature parameter $\alpha$
 that shaped the inflationary plateau at $z \sim 10^{60}$} provides the speed
@@ -192,22 +199,24 @@ The factor 5 in $5\phiG^8$ is the same integer that generates the golden ratio,
 $\phiG = (1+\sqrt{5})/2$, so $5 = (2\phiG - 1)^2$.
 Equivalently,
 \begin{equation}
-  M \;=\; \phiG^2 \times 5^{1/4} \times \rho_\Lambda^{1/4}
-    \;\approx\; 8.81 \text{ meV}\,,
+  M \;=\; \phiG^2 \times 5^{1/4} \times \rhoc^{1/4}
+    \;\approx\; 9.62 \text{ meV}\,,
   \label{eq:Mmev}
 \end{equation}
-where $\rho_\Lambda^{1/4} \approx 2.25$ meV is the canonical cosmological
-constant scale today.\footnote{Convention note: in the dimensionless formulation
-of §\ref{sec:full_KX} we work in units $\rhoc = 1$, where $M^4 = 5\phiG^8$ is a
-pure number ($\approx 234.89$) and all downstream observables ($\alpha_K$,
-$f_{\rm screen}$, $\varepsilon$) are dimensionless ratios. The conversion to
-physical units in Eq.~\eqref{eq:Mmev} uses the canonical $\Lambda$ scale
-$\rho_\Lambda^{1/4} = 2.25$~meV rather than the SSEE $\rho_{\rm crit}$ at
-$h=0.6796$ (which would give $M \approx 9.74$~meV); this choice makes $M$
-naturally invariant under the $H_{\rm alg} \leftrightarrow H_{\rm MIRA}$
-ambiguity and does not affect any predicted observable. The two presentations
-agree at the $\sim 10\%$ level and differ only in the chosen reference
-density.}
+where $\rhoc^{1/4} \approx 2.46$ meV is the SSEE critical-density scale today,
+evaluated at the model's physical Hubble rate $H_{\rm MIRA} = 67.07$~km/s/Mpc
+(the CMB-anchored value of Paper~III).\footnote{Convention note: in the
+dimensionless formulation of §\ref{sec:EFT} we work in units $\rhoc = 1$, where
+$M^4 = 5\phiG^8$ is a pure number ($\approx 234.89$) and all downstream
+observables ($\alpha_K$, $f_{\rm screen}$, $\varepsilon$) are dimensionless
+ratios. The conversion to physical units in Eq.~\eqref{eq:Mmev} uses the SSEE
+$\rho_{\rm crit}$ consistently with the identity $M^4 = 5\phiG^8\,\rhoc$ of
+Table~\ref{tab:identity}; we do \emph{not} borrow the external $\Lambda$CDM
+scale $\rho_\Lambda^{1/4}\approx 2.25$~meV (which would give the inconsistent
+$M\approx 8.81$~meV). Crucially, the meV value of $M$ is a display scale only:
+the Hubble cascade of §\ref{sec:hubble} runs on the dimensionless ratio
+$M^4/\rhoc = 5\phiG^8 = 234.89$, so $H_0^{\rm UV} = 73.04$~km/s/Mpc is
+unchanged under any choice of reference density.}
 
 Table~\ref{tab:identity} summarises the equivalent forms of the identity.
 
@@ -221,7 +230,7 @@ Form & Expression & Numerical value \\
 \midrule
 $\alpha$-form & $M^4 = 45\,\alpha^2\,\rhoc$ & $234.89\,\rhoc$ \\
 $\phiG$-form  & $M^4 = 5\,\phiG^8\,\rhoc$  & $234.89\,\rhoc$ \\
-Root form     & $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4}$ & $8.81$ meV \\
+Root form     & $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4}$ & $9.62$ meV \\
 $(2\phiG{-}1)^2$ form & $M^4 = (2\phiG{-}1)^2 \phiG^8\,\rhoc$ & $234.89\,\rhoc$ \\
 \bottomrule
 \end{tabular}
@@ -436,7 +445,7 @@ Step & Expression & Value & Source \\
 Seed & $\phiG = (1+\sqrt{5})/2$ & 1.61803399 & --- \\
 $\alpha$-attractor & $\alpha = \phiG^4/3$ & 2.28470066 & Paper 1 \\
 UV cutoff & $M^4 = 45\alpha^2\rhoc$ & $234.89\,\rhoc$ & Eq.~\eqref{eq:M4main} \\
-$M$ in meV & $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4}$ & 8.81 meV & Eq.~\eqref{eq:Mmev} \\
+$M$ in meV & $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4}$ & 9.62 meV & Eq.~\eqref{eq:Mmev} \\
 $\alphaK^{\rm full}$ & quadratic + B-S & 0.41691 & Eq.~\eqref{eq:aKfull} \\
 $\fsc^{\rm UV}$ & $\alphaK^{\rm full}/(3\MIRA)$ & 0.06952 & this paper \\
 $H_0^{\rm local}$ & $H_0^{\rm alg}/(1-\fsc^{\rm UV})$ & \textbf{73.040} & Eq.~\eqref{eq:H0UV} \\
@@ -766,8 +775,6 @@ Current constraints from DESI DR2 BAO \citep{AbdulKarim2025} set the background
 context; forthcoming Euclid and DESI~Y5 data will probe $\alphaK$ at the
 $\sim1\%$ level, distinguishing the UV-completed theory from the IR limit by
 $3.4\,\sigma_{\rm syst}$.
-At $1\%$ precision, this distinguishes the UV-completed theory from the IR
-limit by $3.4\sigma_{\rm syst}$.
 
 \paragraph{Effective equation of state.}
 The UV term $X^2/M^4$ in $K(X)$ modifies the effective pressure as

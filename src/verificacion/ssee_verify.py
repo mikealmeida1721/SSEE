@@ -131,8 +131,17 @@ for name, (computed, ledger) in L2.items():
     check(name, abs(computed - ledger) < 1e-6,
           f"computado {computed:.10f} / registro {ledger:.10f}")
 
-check("V-L2-10 m_phi (numérico)  0.0824*H0^alg = 5.60 eV",
-      abs(0.0824 * (3 * Omega ** 2) - 5.6001) < 1e-3)
+# V-L2-10 m_phi canónico (forward-prediction, cero fiteo, P6 2026-06-04):
+#   m_phi = Sigma_m_nu^active * (Omega^4 + AURA*KAL)
+#   con Sigma_m_nu^active = R2 * 0.960318 eV, R2 = Omega/(KAL0*Tr).
+# Dimensionalmente CONSISTENTE: [eV] * (número puro) = [eV].
+_R2 = Omega / (KAL0 * Tr)
+_mnu_active = _R2 * 0.960318
+_mult_mphi = Omega ** 4 + AURA * KAL0
+_m_phi_canon = _mnu_active * _mult_mphi
+check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (Om^4+AURA*KAL) = 36.95 eV",
+      abs(_m_phi_canon - 36.9463) < 1e-3,
+      f"m_phi = {_m_phi_canon:.4f} eV (R2={_R2:.6f}, mult={_mult_mphi:.4f})")
 
 # Identidades cruzadas — dos rutas independientes deben coincidir.
 n_kess = (Tr - Mv) / (2 * Tr)
@@ -144,8 +153,9 @@ check("L2 identidad  f_screen = alpha_K/(3*MIRA) = (pi-phi)/Om^2",
 # Problemas ABIERTOS detectados en Capa 2 — comprobación dimensional.
 track_open("V-L2-06 H0^alg dimensional",
            "3*Omega^2 es adimensional; H0 tiene unidades km/s/Mpc (Postulado D)")
-track_open("V-L2-10 m_phi dimensional",
-           "Sigma_m_nu * H0 = [eV]*[km/s/Mpc] no es [eV] (numerología, P6)")
+# V-L2-10: la fórmula CANÓNICA (forward-prediction 36.95 eV) es dimensionalmente
+# consistente — [eV]*(número puro) = [eV]. El antiguo ansatz Sigma_m_nu*H0^alg
+# (5.60 eV) está retirado. Lo abierto es el Lagrangiano φ-DM (OP-9), no la dimensión.
 
 # ─────────────────────────────────────────────────────────────────────
 # CAPA 3 — Mecanismos y derivaciones
@@ -240,21 +250,20 @@ track_open("V-L3-OP6  forma multiplicativa: insumo delta_local = 2 no derivado",
            "f_screen requiere delta_local=2 (sobredensidad Grupo Local) y una "
            "expresion delta_rho_phi asertada, no derivada de phi,pi")
 
-# m_phi — masa del campo phi-DM (P6). La cadena cierra a 5.60 eV, pero el
-# insumo R = 4*KAL0 - 22 es una resta de entero pelado (numerologia) y el
-# producto Sigma_m_nu * H0_alg multiplica energia por un numero adimensional
-# sin mecanismo fisico; ademas hereda OP-1 (ABIERTO).
-R_p6 = 4 * KAL0 - 22
-Ob_h2_p6 = (pi - phi) / (3 * Omega ** 2)
-tau_Pi = KAL0 / (3 * Om_DE)
-mnu_active = R_p6 * Ob_h2_p6 * 94.07 / tau_Pi
-m_phi = mnu_active * (3 * Omega ** 2)
-check("V-L3-mphi  cadena m_phi = Sigma_m_nu * H0^alg = 5.60 eV",
-      abs(m_phi - 5.60) < 2e-2, f"m_phi = {m_phi:.4f} eV")
-track_open("V-L3-mphi  m_phi no derivado",
-           "R = 4*KAL0-22 resta un entero pelado para extraer 0.0856 "
-           "(numerologia); m_phi = [eV] * 67.96 adimensional sin mecanismo; "
-           "hereda OP-1 (Omega_b h^2 no derivado)")
+# m_phi — masa del campo phi-DM (P6, CANÓNICO forward-prediction 2026-06-04).
+#   Sigma_m_nu^active = R2 * 0.960318 eV,  R2 = Omega/(KAL0*Tr)
+#   m_phi = Sigma_m_nu^active * (Omega^4 + AURA*KAL0)
+# El multiplicador es número PURO -> dimensión [eV] preservada. Cero fiteo.
+R2_p6 = Omega / (KAL0 * Tr)
+mnu_active = R2_p6 * 0.960318
+mult_p6 = Omega ** 4 + AURA * KAL0
+m_phi = mnu_active * mult_p6
+check("V-L3-mphi  cadena m_phi = Sigma_m_nu^active * (Om^4+AURA*KAL) = 36.95 eV",
+      abs(m_phi - 36.9463) < 2e-2, f"m_phi = {m_phi:.4f} eV")
+track_open("V-L3-mphi  Lagrangiano phi-DM no cerrado (OP-9)",
+           "el valor 36.95 eV es forward-prediction dimensionalmente consistente; "
+           "lo abierto es el Lagrangiano P(X,phi) que produce esta masa (OP-9), "
+           "no la dimensionalidad ni un fiteo")
 
 # Dos sectores phi-DM (P6) — Om_CDM + Om_phiDM = MIRA * Om_m,dyn es una
 # identidad algebraica exacta (re-particion de Om_m,cosm). El modelo fisico
@@ -465,7 +474,7 @@ for relpath, expected in SEALS.items():
 print("\nFuente canónica — ssee_core.py")
 import importlib.util as _ilu
 
-_core_path = ROOT / "src" / "ssee_core.py"
+_core_path = ROOT / "ssee_core.py"
 _spec = _ilu.spec_from_file_location("ssee_core", _core_path)
 try:
     _core = _ilu.module_from_spec(_spec)

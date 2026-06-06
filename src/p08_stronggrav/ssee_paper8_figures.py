@@ -87,11 +87,11 @@ print(f"  r_km(cluster 1e15) = {r_sun_m * 1e5:.3e} m")
 # ── Figure 2: Lensing ratio theta_E^SSEE / theta_E^GR vs k/k_fs ─────────────
 # From Paper 8: the disformal correction amplifies lensing for k < k_fs.
 # Simple model: ratio = 1 + MIRA * T_WDM(k)  (qualitative illustration)
-# T_WDM(k) = [1 + (alpha_WDM * k)^{2mu}]^{-5/mu}, mu=1.12, alpha=1.6561 h/Mpc
-# k_fs = 0.493 h/Mpc (from Paper 6)
+# T_WDM(k) = [1 + (alpha_WDM * k)^{2mu}]^{-5/mu}, mu=1.12, alpha=1.243 Mpc/h
+# k_fs = 0.659 h/Mpc (Paper 6 canonical particle: m_phi=36.95 eV, forward-prediction)
 
-k_fs = 0.493  # h/Mpc
-alpha_wdm = 1.6561  # h/Mpc  (Paper 6 calibrated)
+k_fs = 0.659  # h/Mpc  (Paper 6 canonical)
+alpha_wdm = 1.243  # Mpc/h  (Paper 6 canonical CLASS output)
 mu = 1.12
 k = np.logspace(-3, 1, 500)  # h/Mpc
 

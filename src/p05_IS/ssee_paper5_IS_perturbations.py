@@ -106,15 +106,19 @@ elif cs2_eff_highk > 0:
 else:
     print(f"\n  Still unstable at high-k: c²_s,eff = {cs2_eff_highk:.2e} < 0")
 
-# Critical wavenumber (transition from unstable to stable regime)
-# At k τ_Π = 1: k_crit = (aH)/(τ_Π H₀ |c_s|) × H/H₀
-# At z=0, a=1, H=H₀: k_crit/H₀ = 1/(τ_Π H₀ × |c_s|)
+# Critical wavenumber (transition from unstable to stable regime).
+# The IS transition occurs at the dimensionless variable x ≡ k c τ_Π H₀/(aH) = 1
+# (see §IS k_crit derivation). At z=0, a=1, H=H₀:  k_crit/(H₀/c) = 1/(τ_Π H₀).
+# The naive Navier–Stokes form 1/(τ_Π H₀ |c_s|) carries an extra |c_s| factor that
+# does NOT enter the IS dispersion relation; we keep it only as an informational print.
+k_crit_H0 = 1.0 / tau_Pi_H0   # in units of H₀/c  (IS transition x=1)
 c_s_abs = abs(cs2_bare)**0.5
-k_crit_H0 = 1.0 / (tau_Pi_H0 * c_s_abs)   # in units of H₀/c
+k_crit_NS = 1.0 / (tau_Pi_H0 * c_s_abs)   # naive Navier–Stokes value (informational)
 k_crit_Mpc = k_crit_H0 * (H0_kms / 299792.458)   # Mpc⁻¹
 lambda_crit_Mpc = 2 * np.pi / k_crit_Mpc if k_crit_Mpc > 0 else np.inf
 
-print(f"\n  k_crit/H₀ = 1/(τ_Π H₀ × |c_s|) = {k_crit_H0:.4f}")
+print(f"\n  k_crit/H₀ = 1/(τ_Π H₀) = {k_crit_H0:.4f}  (IS transition, x=1)")
+print(f"  [naive NS 1/(τ_Π H₀|c_s|) = {k_crit_NS:.4f} — not the IS value]")
 print(f"  k_crit    = {k_crit_Mpc:.4e} Mpc⁻¹")
 print(f"  λ_crit    = {lambda_crit_Mpc:.1f} Mpc")
 

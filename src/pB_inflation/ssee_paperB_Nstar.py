@@ -95,7 +95,7 @@ beta    = Omega / 2
 KAL0    = beta + pi
 MIRA    = (3*phi + pi) / 4
 AURA    = (3*phi + pi) / 2
-m_phi   = 5.60                  # eV (masa φ-DM)
+m_phi   = 36.95                 # eV (masa φ-DM canónica — Σm_ν × (Ω⁴_DNAV + AURA·KAL))
 Lambda_SSEE = 8.81e-3           # eV (= M UV completion)
 
 # Escalas físicas conocidas
@@ -108,7 +108,7 @@ candidates = {
     "T_BBN (nucleosíntesis) 1 MeV":   T_BBN,
     "T_QCD (hadrónica) 150 MeV":      T_QCDH,
     "Λ_SSEE = M = 8.81 meV":          Lambda_SSEE,
-    "m_φ = 5.60 eV":                  m_phi,
+    "m_φ = 36.95 eV":                 m_phi,
     "H₀_SSEE (eV)":                   H0_eV,
     "Ω × H₀ (eV)":                   Omega * H0_eV,
     "φ¹² × H₀ (eV)":                 phi**12 * H0_eV,

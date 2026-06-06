@@ -52,7 +52,7 @@ paper vuelve a verificación.
 |------|-----------|--------|
 | **L1** | Axiomas y constantes algebraicas | re-verificado ✓ |
 | **L2** | Parámetros cosmológicos derivados | re-verificado ✓ |
-| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV, T_μν, disformal, retención MIRA) | re-verificado ✓ (17 elementos; 1 verif., 6 PARCIAL, 10 ABIERTO — dos-Ω_m es el central) |
+| **L3** | Mecanismos y derivaciones (OP-1..OP-7, EFT, IS, dos-sectores, k-mouflage, f_screen, m_φ, K(X) UV, T_μν, disformal, retención MIRA) | re-verificado ✓ (17 elementos; 1 verif., 7 PARCIAL, 9 ABIERTO — dos-Ω_m es el central) |
 | **L4** | Confrontaciones con datos (MCMC, CMB, ΔBIC, fσ₈, S₈) | re-verificado ✓ (pipelines re-corridos; CMB+MCMC reproducen, r_d/H₀ derivaron) |
 | **L5** | Papers (sellado) | pendiente |
 
@@ -121,7 +121,10 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | θ* (CAMB, en anchor 67.068) | 0.59636° — **0.69σ** | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
 | θ* (CAMB, en posterior 66.553) | 0.59417° — **5.46σ** (sensibilidad de θ* a H₀; ver V-L4-θ*) | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
 | σ₈ / S₈ SSEE (Paper 5) | 0.702 / 0.725 | `ssee_paper5_IS_perturbations.py` | (sin re-correr) |
-| σ₈_eff / S₈_eff (Paper 6 titular) | 0.794 / 0.820 | `ssee_paper6_verification.py` | (sin re-correr) |
+| σ_LS (Paper 6, amplitud RSD k<k_fs, fσ₈) | 0.811·G_2s = 0.794 | `ssee_paper6_verification.py` | 2026-06-04 (canónico) |
+| σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.742 / 0.766 — **0.01σ KiDS** | `ssee_paper6_verification.py` | 2026-06-04 (canónico) |
+| m_φ (Paper 6 forward-pred, dim. consistente) | 36.9463 eV | Σm_ν^act·(Ω⁴+AURA·KAL₀), `ssee_core` | 2026-06-04 (canónico) |
+| k_fs (Paper 6, output CLASS) | 0.659 h/Mpc | CLASS (`calibrate_wdm_alpha.py`, α=1.243 Mpc/h) | 2026-06-04 (canónico) |
 
 **Historial de deriva de H₀ MCMC** (para entender por qué cambió): el MCMC
 es determinista (semilla fija 42) — *mismo script → mismo número*. La
@@ -205,8 +208,8 @@ dimensional pasa.
 | V-L2-07 | n_s | 1−φ⁻⁷ | 0.9655581463 | ✓ | verificado |
 | V-L2-08 | αK | 3·Ω_DE·Ω_m,dyn | 0.4033024589 | ✓ | verificado |
 | V-L2-09 | βc | −AURA | −3.9978473099 | ✓ | verificado |
-| V-L2-10 | m_φ | Σm_ν^act·H₀^alg (0.0824·67.96) | 5.6001 eV | ✗ | **ABIERTO** |
-| V-L2-11 | k_fs | free-streaming de m_φ (vía DW) | 0.493 h/Mpc | — | pendiente L3 |
+| V-L2-10 | m_φ | Σm_ν^act·(Ω⁴+AURA·KAL₀) — forward-pred | 36.9463 eV | ✓ | verificado (dim.) |
+| V-L2-11 | k_fs | free-streaming de m_φ (output CLASS) | 0.659 h/Mpc | — | pendiente L3 |
 | V-L2-12 | r | 12α/N²  (α=φ⁴/3, N=2φ⁷) | 0.00813062 | ✓ | verificado |
 | V-L2-13 | f_screen | αK/(3·MIRA) = (π−φ)/Ω² | 0.0672532703 | ✓ | verificado |
 
@@ -222,10 +225,13 @@ dimensional pasa.
   **adimensional** mientras que H₀ tiene unidades km/s/Mpc. No es una
   derivación dimensional; es una coincidencia numérica (Postulado D en P1).
   El modelo lo admite a medias. **No puede pasar a `resuelto` como derivación.**
-- **V-L2-10 m_φ = Σm_ν·H₀^alg** — numéricamente da 5.60 eV, pero el producto
-  es `[eV]·[km/s/Mpc]`, que **no es [eV]**. Solo da "5.60 eV" si H₀ se trata
-  como el número puro 67.96. Es numerología dimensional (hallazgo crítico del
-  árbitro de P6). Hereda además el problema de H₀^alg. **ABIERTO.**
+- **V-L2-10 m_φ = Σm_ν^active · (Ω⁴+AURA·KAL₀)** — forward-prediction canónica:
+  `[eV]·(número puro)=[eV]`, dimensionalmente **consistente**. Con
+  Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV = 0.069023 eV y multiplicador
+  Ω⁴+AURA·KAL₀ = 535.2795 → m_φ = 36.9463 eV (cero fiteo). Reemplaza la vieja
+  cadena numerológica `Σm_ν·H₀^alg = 5.60 eV` (RETIRADA — sí era `[eV]·[km/s/Mpc]`).
+  Lo que queda **ABIERTO** es el Lagrangiano φ-DM que justifique el multiplicador
+  (OP-9), no la dimensión.
 
 ### Dependencias hacia Capa 3 (derivación — comprobación 3)
 
@@ -239,12 +245,13 @@ apoya en mecanismos de Capa 3 aún no verificados — no pueden pasar de
 - **r** (V-L2-12): depende de α=φ⁴/3 y N=2φ⁷ (OP-2).
 - **f_screen** (V-L2-13): la *identidad algebraica* está verificada, pero el
   *mecanismo* de screening depende de P9 (el árbitro lo llamó circular).
-- **k_fs** (V-L2-11): depende de m_φ (ABIERTO) y de la relación DW (L3).
+- **k_fs** (V-L2-11): depende de m_φ (canónico 36.95 eV) y del cómputo CLASS (L3).
 
-**Estado Capa 2:** 10/13 `verificado` (numérica + dimensional + identidades);
-2 `ABIERTO` (H₀^alg, m_φ — dimensionalmente inconsistentes); 1 `pendiente L3`
-(k_fs). Ninguno pasa a `resuelto` todavía: la comprobación 3 (derivación) de
-varios alcanza la Capa 3.
+**Estado Capa 2:** 11/13 `verificado` (numérica + dimensional + identidades);
+1 `ABIERTO` (H₀^alg — adimensional vs km/s/Mpc); 1 `pendiente L3` (k_fs).
+m_φ pasa a `verificado (dim.)` tras la cadena forward-prediction canónica; su
+derivación del multiplicador alcanza la Capa 3 (OP-9). Ninguno pasa a
+`resuelto` todavía: la comprobación 3 (derivación) de varios alcanza la Capa 3.
 
 # Capa 3 — Mecanismos y derivaciones
 
@@ -431,24 +438,26 @@ dos valores internamente inconsistentes. El titular sigue a ~2.6σ. **ABIERTO.**
 álgebra exacta *condicionada* a δ_local=2 y a una expresión δρ_φ asertada.
 No es "RESUELTO" pleno. **PARCIAL.**
 
-## V-L3-mphi — masa del campo φ-DM, m_φ = 5.60 eV — **ABIERTO (numerología + dimensión)**
+## V-L3-mphi — masa del campo φ-DM, m_φ = 36.95 eV — **PARCIAL (cadena dim. consistente, Lagrangiano abierto OP-9)**
 
-*Claim CLAUDE.md:* "m_φ = Σm_ν^active × H₀^alg = 5.60 eV — cero parámetros libres".
+*Claim CLAUDE.md (canónico 2026-06-04):* "m_φ = Σm_ν^active × (Ω⁴+AURA·KAL₀)
+= 36.95 eV — forward-prediction, cero fiteo".
 
-1. **✓ numérico:** la cadena cierra — R=4·KAL₀−22=0.085624, Σm_ν^active =
-   R·Ω_b h²·94.07/τ_Π = 0.082407 eV, m_φ = Σm_ν^active·H₀^alg = 5.6005 eV.
-2. **✗ R = 4·KAL₀−22:** se resta el **entero pelado 22** a 4·KAL₀=22.0856
-   para extraer el remanente 0.0856. No hay derivación de por qué 4, ni de
-   por qué 22. Es ingeniería inversa de un número pequeño.
-3. **✗ dimensional:** m_φ = [eV]·H₀^alg. H₀^alg=3Ω²=67.96 se usa como
-   número adimensional (si fuese km/s/Mpc, m_φ no sería [eV] — V-L2-10).
-   Multiplicar una energía por 67.96 sin mecanismo físico no da una masa.
-4. **✗ insumo heredado:** Ω_b h² es la coincidencia escaneada de OP-1
-   (**ABIERTO**). m_φ se construye encima de un input no derivado.
+1. **✓ numérico:** la cadena cierra — Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV
+   = 0.071875·0.960318 = 0.069023 eV; multiplicador Ω⁴+AURA·KAL₀ = 535.2795;
+   m_φ = 0.069023·535.2795 = 36.9463 eV.
+2. **✓ dimensional:** `[eV]·(número puro)=[eV]`. El multiplicador es
+   combinación de constantes adimensionales (Ω, AURA, KAL₀). Reemplaza la vieja
+   cadena `Σm_ν·H₀^alg` (RETIRADA — esa sí era `[eV]·[km/s/Mpc]`).
+3. **✓ cero entero pelado:** la razón Σm_ν usa R₂=Ω/(KAL₀·T_r), cociente puro
+   de constantes — ya no la resta `4·KAL₀−22` de la versión numerológica.
+4. **✗ Lagrangiano no cerrado:** falta la acción P(X,φ) que produzca el
+   multiplicador Ω⁴+AURA·KAL₀ desde primeros principios. Es forward-prediction
+   estructural, no derivación de mecanismo (**OP-9 ABIERTO**).
 
-**Veredicto:** la cadena aritmética cierra a 5.60 eV, pero descansa en una
-resta de entero pelado, un producto dimensionalmente injustificado y el
-input abierto OP-1. **ABIERTO.**
+**Veredicto:** la cadena es dimensionalmente consistente y sin fiteo (cero
+parámetros libres), pero su justificación desde un Lagrangiano sigue abierta
+(OP-9). **PARCIAL** (era ABIERTO bajo la cadena 5.60 eV retirada).
 
 ## V-L3-2sec — modelo dos sectores φ-DM — **PARCIAL (identidad sí, split físico no)**
 
@@ -457,13 +466,14 @@ input abierto OP-1. **ABIERTO.**
 1. **✓ identidad:** Ω_CDM + Ω_φDM = Ω_m,dyn + (MIRA−1)·Ω_m,dyn =
    MIRA·Ω_m,dyn = 0.319928. Diferencia con V-L2-05 = 0 exacto. Es una
    **re-partición algebraica** de Ω_m,cosm en dos mitades casi iguales.
-2. **✗ split físico:** que un sector (φ-DM) free-streame para k>k_fs y el
-   otro (CDM) no, depende de m_φ (**ABIERTO**, ver arriba) y de k_fs
-   (**pendiente** en Capa 2). El mecanismo Dodelson-Widrow que fija k_fs
-   parte de m_φ.
+2. **⚠ split físico:** que un sector (φ-DM) free-streame para k>k_fs y el
+   otro (CDM) no, descansa en m_φ=36.95 eV (canónico, cadena dim. consistente
+   — V-L3-mphi PARCIAL) y en k_fs=0.659 h/Mpc (output CLASS). El cierre del
+   Lagrangiano que justifique el split sigue en OP-9.
 
 **Veredicto:** la suma Ω_total es un re-enunciado exacto de V-L2-05; el
-modelo físico de dos sectores hereda la apertura de m_φ y k_fs. **PARCIAL.**
+modelo físico de dos sectores hereda la apertura del Lagrangiano de m_φ
+(OP-9). **PARCIAL.**
 
 ## V-L3-EFT — acción EFT canónica (Paper 7) — **PARCIAL (parámetros sí, M⁴ inconsistente)**
 
@@ -826,8 +836,8 @@ EFT, K(X), IS, c_s² (T_μν), dos-Ω_m.
 | Veredicto | Elementos |
 |---|---|
 | **verificado** | α=φ⁴/3 |
-| **PARCIAL** (álgebra/forma cierra, insumo físico no) | OP-2, OP-6, OP-7, dos sectores, EFT, IS |
-| **ABIERTO** | OP-1, OP-3, OP-4, OP-5, m_φ, K(X), c_s² (T_μν), **dos-Ω_m (central)** |
+| **PARCIAL** (álgebra/forma cierra, insumo físico no) | OP-2, OP-6, OP-7, dos sectores, EFT, IS, m_φ (cadena dim. consistente; Lagrangiano OP-9) |
+| **ABIERTO** | OP-1, OP-3, OP-4, OP-5, K(X), c_s² (T_μν), **dos-Ω_m (central)** |
 
 2 bugs corregidos/detectados de paso: curvatura de Kähler (P1, **corregido**)
 y M⁴ inconsistente P7↔P10 (**detectado**, pendiente de re-derivación).

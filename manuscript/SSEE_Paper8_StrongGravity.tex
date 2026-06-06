@@ -6,6 +6,7 @@
 \usepackage{booktabs}
 \usepackage{physics}
 \usepackage{xcolor}
+\usepackage{tcolorbox}
 \usepackage{graphicx}
 \usepackage{natbib}
 
@@ -52,7 +53,7 @@
 \begin{abstract}
 \noindent\textbf{PRELIMINARY DRAFT (2026-05-23):} The strong-gravity
 predictions presented in this paper are \emph{conditional on resolution
-of OP-9} (physical interpretation of $m_\phi=5.60$~eV; see
+of OP-9} (physical interpretation of $m_\phi=36.95$~eV; see
 \texttt{OPEN\_PROBLEMS.md}). The present version is a consistency-check
 note showing compatibility with current observations (solar-system tests,
 SLACS/BELLS lensing) under selective coupling plus EFT Bellini--Sawicki
@@ -103,7 +104,7 @@ Solar-system gravitational tests are automatically satisfied by selective
 coupling (baryons see only the physical metric $g_{\mu\nu}$) reinforced by
 the EFT suppression. We further discuss the scale-dependent contribution
 of the two SSEE matter sectors to strong-lensing observables on
-$k\lessgtr k_{\mathrm{fs}}=0.493\,h\,\mathrm{Mpc}^{-1}$, identifying
+$k\lessgtr k_{\mathrm{fs}}=0.659\,h\,\mathrm{Mpc}^{-1}$, identifying
 parameter regions where deviations from $\Lambda$CDM may become observable
 with HST/JWST strong-lensing surveys.
 \end{abstract}
@@ -170,7 +171,7 @@ The structural identities that \emph{do} use $\MIRA = \AURA/2$ exactly are:
 where $\bc \equiv \AURA = (3\phiG+\pi)/2$ is the disformal coupling
 constant fixed in Paper~7.
 $\MIRA$ is therefore exact and structural in two sectors (CMB horizon
-mapping, two-sector mass ratio). In the lensing sector the cantidad
+mapping, two-sector mass ratio). In the lensing sector the quantity
 naturally appearing in the alternative MOND-like derivation is
 $\sqrt{\AURA}$, not $\MIRA$, and the canonical limit (b) recovers GR
 lensing — see Section~\ref{sec:mira} for the explicit naming clarification
@@ -382,7 +383,7 @@ group), the self-consistent equilibrium configuration produces an
 where $\rho_{\mathrm{DM,eff}}$ is the dark matter density redistributed
 under the scalar force.
 
-On scales $k < k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1}$, both the
+On scales $k < k_{\mathrm{fs}} = 0.659\,h\,\mathrm{Mpc}^{-1}$, both the
 CDM sector ($\Omega_{\mathrm{CDM}} = 0.160$) and the $\phi$-DM sector
 ($\Omega_{\phi\mathrm{DM}} = 0.160$) contribute, and the effective
 lensing mass fraction is $\Omega_{m,\mathrm{eff}} = 0.320 \approx
@@ -431,7 +432,7 @@ dark matter accumulation.
   \caption{%
     Disformal lensing enhancement $\theta_E^{\rm SSEE}/\theta_E^{\rm GR}$
     as a function of wavenumber $k$ (h/Mpc).
-    For $k < k_{\rm fs}=0.493\,h/\mathrm{Mpc}$ (blue dashed), the $\phi$-DM sector
+    For $k < k_{\rm fs}=0.659\,h/\mathrm{Mpc}$ (blue dashed), the $\phi$-DM sector
     is active and the ratio approaches the algebraic limit $\sqrt{\bc}=\sqrt{\mathcal{A}}\approx1.9995$
     (dashed-dotted green), equivalent to $\mathcal{M}=1.999$.
     For $k > k_{\rm fs}$ the $\phi$-DM free-streams, the scalar gradient decouples,
@@ -447,11 +448,11 @@ dark matter accumulation.
 %% ─────────────────────────────────────────────────────────────────────────────
 
 \begin{tcolorbox}[colback=yellow!8,colframe=orange!60,title=Naming clarification]
-The cantidad derived in this section as the lensing factor is
+The quantity derived in this section as the lensing factor is
 $\sqrt{\bc}=\sqrt{\AURA}\approx 1.99947$ (an exact algebraic expression).
 This is \emph{not} the same as $\MIRA=\AURA/2\approx 1.9989$, which uses a
 different algebraic operation (division by 2 rather than square root). The
-two cantidades agree to $0.03\%$ because $\AURA\approx 4$, which makes both
+two quantities agree to $0.03\%$ because $\AURA\approx 4$, which makes both
 $\sqrt{\AURA}$ and $\AURA/2$ land near $2$. We retain the comparison below
 for completeness, but the \emph{lensing factor in the alternative limit is
 $\sqrt{\AURA}$, not $\MIRA$}. Earlier drafts of this paper conflated the two
@@ -570,7 +571,7 @@ defines the k-mouflage radius \citep{brax2014}:
   \label{eq:rkm}
 \end{equation}
 where $\Mpl = 2.435\times10^{18}\,\mathrm{GeV}$ is the reduced Planck mass
-and $M = 8.81\,\mathrm{meV}$ is the UV cutoff from Paper~10~\citep{SSEE10}.
+and $M = 9.62\,\mathrm{meV}$ is the UV cutoff from Paper~10~\citep{SSEE10}.
 This formula differs fundamentally from the Galileon (DGP) Vainshtein formula,
 which requires a gradient closure $\nabla\phi \propto \nabla\Phi_N$ that is
 inapplicable to k-mouflage theories.
@@ -587,7 +588,7 @@ Evaluating equation~\eqref{eq:rkm} with $M^4 = 5\phiG^8\rhoc$ from Paper~10:
 
 \begin{table}[h]
 \centering
-\caption{K-mouflage screening radius at the UV completion scale $M = 8.81\,\mathrm{meV}$
+\caption{K-mouflage screening radius at the UV completion scale $M = 9.62\,\mathrm{meV}$
          from Paper~10~\citep{SSEE10}.
          All values satisfy $r_{\rm km} \ll 1\,\mathrm{kpc}$: the DM fifth force
          is active at galactic and cosmological scales.}
@@ -609,7 +610,7 @@ Galaxy cluster   & $10^{15}\,M_\odot$    & $1.50\times10^{12}\,\mathrm{m} \appro
   \caption{%
     K-mouflage screening radius $r_{\rm km} = [M_{\rm obj}/(4\pi\Mpl M^2)]^{1/3}$
     as a function of object mass (in $M_\odot$) at the UV completion scale
-    $M = 8.81\,\mathrm{meV}$ \citep{SSEE10,brax2014}.
+    $M = 9.62\,\mathrm{meV}$ \citep{SSEE10,brax2014}.
     For all representative objects, $r_{\rm km}$ lies far below the galactic
     scale, so DM fifth-force dynamics are active at cosmological radii
     while baryons remain decoupled through selective coupling
@@ -646,7 +647,7 @@ Therefore all standard solar-system tests (Cassini time delay, perihelion
 precession, lunar laser ranging \citep{will2014}) pass at leading order without
 requiring any non-linear screening.
 This mechanism operates independently of the value of $M$ and holds in both the
-IR ($M = \Mpl$) and UV ($M = 8.81\,\mathrm{meV}$) limits.
+IR ($M = \Mpl$) and UV ($M = 9.62\,\mathrm{meV}$) limits.
 
 \subsection{EFT suppression of fifth-force corrections}
 \label{sec:double_protection}
@@ -727,7 +728,7 @@ Define the lensing mass fraction as $f_{\mathrm{lens}}(k) \equiv
 \begin{equation}
   f_{\mathrm{lens}}(k) \;=\;
   \begin{cases}
-    1 & k < k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1} \\
+    1 & k < k_{\mathrm{fs}} = 0.659\,h\,\mathrm{Mpc}^{-1} \\
     1/\MIRA \approx 0.500 & k > k_{\mathrm{fs}}
   \end{cases}\,,
   \label{eq:flens}
@@ -800,7 +801,7 @@ Table~\ref{tab:lensing_numbers} summarises the key numerical predictions.
 \midrule
 $k_{\mathrm{fs}}$ free-streaming cutoff
   & N/A
-  & $0.493\,h\,\mathrm{Mpc}^{-1}$
+  & $0.659\,h\,\mathrm{Mpc}^{-1}$
   & All \\
 $\thetaE^{\mathrm{SSEE}}/\thetaE^{\mathrm{GR}}$ (large scale)
   & 1
@@ -863,7 +864,7 @@ expressions.
 \begin{tcolorbox}[colback=red!5,colframe=red!50,title=Scope of falsifiability in this draft]
 \textbf{The predictions enumerated below are placeholders conditional on
 the resolution of OP-9} (\texttt{OPEN\_PROBLEMS.md}: physical interpretation
-of $m_\phi=5.60$~eV). Each interpretation of $m_\phi$ — as the mass of the
+of $m_\phi=36.95$~eV). Each interpretation of $m_\phi$ — as the mass of the
 $V(\phi)$ potential (CDM-like condensate), as a phenomenological HDM
 particle, or as a laboratory-accessible field excitation — leads to a
 \emph{different} canonical lensing prediction. Without OP-9 fixed, the
@@ -881,14 +882,14 @@ falsify the corresponding sector of the SSEE framework.
 
 \begin{enumerate}
 
-  \item \textbf{Free-streaming cutoff} ($k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1}$,
+  \item \textbf{Free-streaming cutoff} ($k_{\mathrm{fs}} = 0.659\,h\,\mathrm{Mpc}^{-1}$,
         Paper~6): DESI Year~3 and Euclid weak-lensing surveys will constrain
         the matter power spectrum at this scale to better than $5\%$ by 2027.
         SSEE predicts a suppression of $\sim 30\%$ in $P(k)$ at
         $k > k_{\mathrm{fs}}$ relative to $\Lambda$CDM (see Paper~6, Figure~2).
         \textit{Falsification criterion}: A $<5\%$ suppression at
-        $k = 0.493\,h\,\mathrm{Mpc}^{-1}$ would falsify the $\phi$-DM mass
-        $m_\phi = 5.60\,\mathrm{eV}$.
+        $k = 0.659\,h\,\mathrm{Mpc}^{-1}$ would falsify the $\phi$-DM mass
+        $m_\phi = 36.95\,\mathrm{eV}$.
 
   \item \textbf{Lensing mass transition (canonical limit prediction)}:
         In the canonical two-sector model with EFT B-S structure
@@ -941,11 +942,11 @@ falsify the corresponding sector of the SSEE framework.
         with current or future GW detectors would require modification of
         the SSEE gravitational sector.
 
-  \item \textbf{Scalar mass $m_\phi = 5.60\,\mathrm{eV}$} (Paper~6):
+  \item \textbf{Scalar mass $m_\phi = 36.95\,\mathrm{eV}$} (Paper~6):
         $\phi$-DM is a gravitationally produced scalar with no Standard-Model
         portal, so $m_\phi$ is \emph{not} accessible to neutrino-mass
         experiments. It enters observation only through the free-streaming
-        scale $k_{\rm fs}(m_\phi) = 0.493\,h/\mathrm{Mpc}$ imprinted on the
+        scale $k_{\rm fs}(m_\phi) = 0.659\,h/\mathrm{Mpc}$ imprinted on the
         matter power spectrum.
         \textit{Falsification criterion}: if DESI~Y3/Euclid $P(k)$ shows no
         free-streaming suppression near $k_{\rm fs}$, the algebraic
@@ -1006,7 +1007,7 @@ Several steps remain to complete the strong-gravity picture:
 
   \item \textbf{Full k-mouflage profile}: The screening radius
         $\rV = [M_{\mathrm{obj}}/(4\pi\Mpl M^2)]^{1/3}$ is fixed
-        algebraically once Paper~10 sets $M \approx 8.81\,\mathrm{meV}$
+        algebraically once Paper~10 sets $M \approx 9.62\,\mathrm{meV}$
         (Section~\ref{sec:rkm}, Table~\ref{tab:vainshtein});
         a full N-body calculation would convert this crossover scale into
         a precise non-linear field profile for individual halos.
@@ -1030,7 +1031,7 @@ Paper~10 of the SSEE series derives
 $M^4 = 45\alpha^2\,\rhoc = 5\phiG^8\,\rhoc$ from the inflationary $\alpha$-attractor
 parameter $\alpha = \phiG^4/3$, fixing
 \begin{equation}
-  M \;=\; \phiG^2\,5^{1/4}\,\rhoc^{1/4} \;\approx\; 8.81\;\mathrm{meV}
+  M \;=\; \phiG^2\,5^{1/4}\,\rhoc^{1/4} \;\approx\; 9.62\;\mathrm{meV}
 \end{equation}
 algebraically without free parameters.
 This is a \emph{cosmological-scale} cutoff---thirty orders of magnitude
@@ -1075,7 +1076,7 @@ coupling and found:
         screening inside stellar bodies.
 
   \item \textbf{Two-sector signature}: SSEE predicts a scale-dependent
-        lensing suppression near $k_{\mathrm{fs}} = 0.493\,h\,\mathrm{Mpc}^{-1}$,
+        lensing suppression near $k_{\mathrm{fs}} = 0.659\,h\,\mathrm{Mpc}^{-1}$,
         testable with JWST and DESI.
 \end{enumerate}
 

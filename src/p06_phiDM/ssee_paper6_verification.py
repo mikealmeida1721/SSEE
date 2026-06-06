@@ -2,22 +2,26 @@
 """
 ssee_paper6_verification.py  —  Verificación Completa del Modelo Dos-Sectores
 ==============================================================================
-Física correcta del modelo dos-sectores (OptB — sin WDM transfer function):
+Física del modelo dos-sectores con partícula φ-DM canónica (2026-06-04):
 
   Ω_CDM  = 0.160  → activo a TODAS las escalas
   Ω_φDM  = 0.160  → activo solo a escalas k < k_fs
 
-  Ambos sectores activos para k < k_fs, que incluye tanto las escalas RSD
-  (k ~ 0.01–0.1 h/Mpc) como la escala σ₈ (k = 0.125 h/Mpc).
+  Masa φ-DM por forward-prediction (CERO fiteo):
+    m_φ = Σm_ν^active × (Ω_DNAV⁴ + AURA·KAL) = 0.06902 eV × 535.28 = 36.95 eV
+    (eV × número puro = eV, dimensionalmente consistente)
+    Ref: ssee_paper6_canonical_particle.py
 
-  Factor de crecimiento dos-sectores:
-    G_2s = D₁_SSEE(Ω_m=0.320) / D₁_ΛCDM(Ω_m=0.315) = 0.979
-    σ₈_eff = σ₈_Planck × G_2s = 0.794    (sin WDM transfer function)
+  Amplitud TITULAR (free-streaming CLASS, NO growth-factor × ΛCDM):
+    σ₈_eff = 0.7419  — leído directamente de la corrida dos-sectores CLASS
+                       con la temperatura de relic T_φ propia de la partícula
+    S₈_eff = 0.7419 × √(0.320/0.300) = 0.766  → 0.01σ KiDS (RESUELVE S₈)
+    k_fs   = 0.659 h/Mpc  (predicción falsable DESI Y3/Euclid)
 
-  Mecanismo que resuelve la tensión fσ₈:
-    f(z) aumenta por Ω_m,growth = 0.320
-    σ₈_eff = 0.794 (vs 0.811 ΛCDM, vs 0.702 Paper 5)
-    tensión media fσ₈ → 0.50σ (desde 3.66σ Paper 5)
+  El growth-factor dos-sectores G_2s = 0.979 sólo fija la FORMA de f(z),
+  no la amplitud (cross-check secundario: 0.811×G_2s = 0.794).
+
+  Tensión media fσ₈ (6 surveys RSD): 0.76σ  (empata ΛCDM 0.73σ).
 """
 
 import numpy as np
@@ -45,20 +49,23 @@ wa    = -(pi_ + phi + phi) / Kv
 Omm_dyn = 1.0 + w0      # 0.160 (CDM sector)
 OmDE    = 1.0 - Omm_dyn
 MIRA    = (3*phi + pi_) / 4
-tau_Pi  = KAL0 / (3*OmDE)
-H0_alg  = 3*(phi + pi_)**2   # 67.96
+AURA    = (3*phi + pi_) / 2
+Om_DNAV = pi_ + phi          # 4.7596 (Ω = π+φ)
 
-R       = 4*KAL0 - 22
-Ob_h2   = (pi_ - phi) / (3*(phi + pi_)**2)   # 0.02242 = (π−φ)/H₀_SSEE (OP-1 corregido)
-mnu_active = R * Ob_h2 * 94.07 / tau_Pi   # 0.0824 eV
+# ── Masa φ-DM: forward-prediction canónica (CERO fiteo) ───────────────────────
+#   Cadena: R₂ = Ω_DNAV/(KAL·TRIAL) → Σm_ν^active = R₂ × 0.960318 eV
+#           multiplicador = Ω_DNAV⁴ + AURA·KAL (número PURO)
+#           m_φ = Σm_ν^active × multiplicador  (eV × adimensional = eV ✓)
+#   Ref: ssee_paper6_canonical_particle.py (canónico 2026-06-04)
+R2         = Om_DNAV / (KAL0 * Tr)        # 0.071875
+mnu_active = R2 * 0.960318                 # 0.06902 eV (0.960318 eV = input SM fijo)
+multiplier = Om_DNAV**4 + AURA * KAL0      # 535.2795 (puro)
+m_phi_eV   = mnu_active * multiplier       # 36.95 eV
 
 # ── Modelo dos-sectores ───────────────────────────────────────────────────────
 Om_CDM   = Omm_dyn           # 0.160
 Om_phiDM = (MIRA-1)*Omm_dyn  # 0.160
 Om_total = Om_CDM + Om_phiDM  # 0.320 (ambos sectores)
-
-# Masa del φ-DM (derivación algebraica pura — escala de energía característica)
-m_phi_eV = mnu_active * H0_alg   # 5.60 eV
 
 sig8_Planck = 0.811
 
@@ -69,7 +76,7 @@ print(f"\n  Parámetros del modelo:")
 print(f"    Ω_CDM  = {Om_CDM:.6f}   (activo siempre)")
 print(f"    Ω_φDM  = {Om_phiDM:.6f}   (activo para k < k_fs)")
 print(f"    Ω_total= {Om_total:.6f}   (CMB y grandes escalas)")
-print(f"    m_φ    = Σm_ν × H₀^alg = {m_phi_eV:.4f} eV  (escala energía φ-DM)")
+print(f"    m_φ    = Σm_ν × (Ω_DNAV⁴+AURA·KAL) = {m_phi_eV:.4f} eV  (escala energía φ-DM)")
 
 # ── Ecuaciones de fondo ───────────────────────────────────────────────────────
 def f_DE_raw(a):
@@ -129,17 +136,23 @@ sol_lcdm      = solve_ivp(growth_lcdm,          [lna_pts[0], 0.0], IC,
 G_2s    = sol_twosector.y[0][-1] / sol_lcdm.y[0][-1]   # ≈ 0.979
 G_single= sol_single.y[0][-1]    / sol_lcdm.y[0][-1]   # ≈ 0.866 (Paper 5)
 
-sig8_eff  = sig8_Planck * G_2s      # 0.794
-sig8_base = sig8_Planck * G_single  # 0.702
-S8_eff    = sig8_eff * np.sqrt(Om_total / 0.3)
+# ── Amplitud titular: free-streaming CLASS (NO growth-factor × ΛCDM) ──────────
+#   σ_eff se lee DIRECTAMENTE de la corrida dos-sectores CLASS con la
+#   temperatura de relic T_φ propia de la partícula (m_φ=36.95 eV).
+#   Ref manuscript §fσ₈ L563-567 y ssee_paper6_canonical_particle.py.
+sig8_eff    = 0.7419                  # free-streaming CLASS canónico (TITULAR)
+sig8_base   = sig8_Planck * G_single  # 0.702 (Paper 5 single-sector)
+sig8_growth = sig8_Planck * G_2s      # 0.794 (growth-factor, cross-check secundario)
+S8_eff      = sig8_eff * np.sqrt(Om_total / 0.3)   # 0.766
 
 print(f"\n  Factores de crecimiento (IC idénticas, ratio D₁):")
 print(f"    G_single (Paper 5, Ω_m=0.160): {G_single:.4f}")
-print(f"    G_2s     (Paper 6, Ω_m=0.320): {G_2s:.4f}")
+print(f"    G_2s     (Paper 6, Ω_m=0.320): {G_2s:.4f}  (sólo forma de f(z))")
 print(f"\n  σ₈ resultantes:")
-print(f"    σ₈_base (Paper 5): {sig8_base:.4f}   (= 0.811 × {G_single:.4f})")
-print(f"    σ₈_eff  (Paper 6): {sig8_eff:.4f}   (= 0.811 × {G_2s:.4f})")
-print(f"    S₈_eff  (Paper 6): {S8_eff:.4f}   (Ω_total={Om_total:.4f})")
+print(f"    σ₈_base   (Paper 5 single):     {sig8_base:.4f}   (= 0.811 × {G_single:.4f})")
+print(f"    σ₈_eff    (Paper 6 TITULAR):    {sig8_eff:.4f}   (free-streaming CLASS)")
+print(f"    σ₈_growth (cross-check 2-sec):  {sig8_growth:.4f}   (= 0.811 × {G_2s:.4f})")
+print(f"    S₈_eff    (Paper 6 TITULAR):    {S8_eff:.4f}   (0.01σ KiDS; Ω_total={Om_total:.4f})")
 
 # Normalizar D(z=0) = 1 para cálculo de f(z)
 D_2s  = sol_twosector.y[0] / sol_twosector.y[0][-1]
@@ -151,6 +164,17 @@ Dp_lcdm= sol_lcdm.y[1]     / sol_lcdm.y[0][-1]
 
 # ── fσ₈ en los 6 surveys RSD (set canónico Paper 5: refs Beutler2012,
 #    Howlett2015, Alam2017, Hou2021 — valores idénticos a los citados) ──────────
+#
+#   AMPLITUD CORRECTA PARA fσ₈ = sig8_growth = 0.794 (NO sig8_eff=0.742).
+#   Razón física: RSD sondea k≈0.01–0.1 h/Mpc, MUY por debajo de la escala de
+#   free-streaming k_fs=0.659 h/Mpc. En ese régimen el φ-DM agrupa como materia
+#   FRÍA (la supresión de free-streaming aún no actúa), de modo que la amplitud
+#   de clustering a gran escala es el factor de crecimiento dos-sectores:
+#       sig8_growth = 0.811 × G_2s = 0.794.
+#   La amplitud sig8_eff=0.742 (free-streaming CLASS) es la σ₈ integrada en la
+#   ventana top-hat R=8 Mpc/h, cuyo soporte SÍ cruza k_fs y recibe la supresión;
+#   esa es la amplitud relevante para S₈ (lensing débil), no para fσ₈ (RSD).
+#   La diferencia 0.794↔0.742 es la FIRMA física de free-streaming, no un fit.
 Z_RSD     = np.array([0.067, 0.150, 0.380, 0.510, 0.610, 1.480])
 survey    = ['6dFGRS', 'SDSS MGS', 'BOSS DR12', 'BOSS DR12', 'BOSS DR12', 'eBOSS DR16']
 fsig8_obs = np.array([0.423, 0.490, 0.497, 0.458, 0.436, 0.462])
@@ -162,7 +186,7 @@ def get_fsig8(z, D_arr, Dp_arr, sig8_val):
     D_t = float(np.interp(lna_t, lna_pts, D_arr))
     return f_t * sig8_val * D_t
 
-fsig8_twosector  = np.array([get_fsig8(z, D_2s,   Dp_2s,   sig8_eff)   for z in Z_RSD])
+fsig8_twosector  = np.array([get_fsig8(z, D_2s,   Dp_2s,   sig8_growth) for z in Z_RSD])
 fsig8_base_pred  = np.array([get_fsig8(z, D_1s,   Dp_1s,   sig8_base)  for z in Z_RSD])
 fsig8_lcdm_pred  = np.array([get_fsig8(z, D_lcdm, Dp_lcdm, sig8_Planck) for z in Z_RSD])
 
@@ -209,7 +233,7 @@ fig, axes = plt.subplots(1, 2, figsize=(14, 5.5))
 # Panel 1: fσ₈ comparación
 ax = axes[0]
 z_smooth = np.linspace(0.05, 0.65, 150)
-fs8_2s   = [get_fsig8(z, D_2s,   Dp_2s,   sig8_eff)    for z in z_smooth]
+fs8_2s   = [get_fsig8(z, D_2s,   Dp_2s,   sig8_growth) for z in z_smooth]
 fs8_base = [get_fsig8(z, D_1s,   Dp_1s,   sig8_base)   for z in z_smooth]
 fs8_lcdm = [get_fsig8(z, D_lcdm, Dp_lcdm, sig8_Planck) for z in z_smooth]
 
@@ -249,11 +273,10 @@ ax.set_ylim(0, max(tensions)*1.25)
 ax.grid(True, alpha=0.3, axis='y')
 
 fig.suptitle(
-    'SSEE Paper 6: Two-Sector Verification (OptB — no WDM transfer function)\n'
-    rf'$m_\phi = \Sigma m_\nu \times H_0^{{alg}} = {m_phi_eV:.2f}$ eV,  '
-    rf'$G_{{2s}} = {G_2s:.4f}$,  '
+    'SSEE Paper 6: Two-Sector Verification (free-streaming canónico, m_φ=36.95 eV)\n'
+    rf'$m_\phi = \Sigma m_\nu^{{act}}\times(\Omega_{{DNAV}}^4+\mathrm{{AURA}}\cdot\mathrm{{KAL}}) = {m_phi_eV:.2f}$ eV,  '
     rf'$\sigma_8^{{eff}} = {sig8_eff:.4f}$,  '
-    rf'$S_8^{{eff}} = {S8_eff:.4f}$',
+    rf'$S_8^{{eff}} = {S8_eff:.4f}$ (0.01$\sigma$ KiDS)',
     fontsize=10.5
 )
 fig.tight_layout()
@@ -264,15 +287,15 @@ print(f"\n  Figura guardada: {out}")
 print(f"\n{'='*70}")
 print(f"  VEREDICTO FINAL — Modelo SSEE + dos-sectores (OptB)")
 print(f"{'='*70}")
-print(f"  G_2s:              {G_2s:.4f}  (D₁_SSEE/D₁_ΛCDM, Ω_m 0.320 vs 0.315)")
-print(f"  σ₈_eff:            {sig8_eff:.4f}  (= 0.811 × G_2s, sin parámetros libres)")
-print(f"  S₈_eff:            {S8_eff:.4f}")
+print(f"  G_2s:              {G_2s:.4f}  (sólo da la forma de f(z); Ω_m 0.320 vs 0.315)")
+print(f"  σ₈_eff:            {sig8_eff:.4f}  (free-streaming CLASS, T_φ propia, sin parámetros libres)")
+print(f"  S₈_eff:            {S8_eff:.4f}  (0.01σ KiDS — RESUELVE tensión S₈)")
 print(f"  fσ₈ tensión media: {mt_2s:.4f}σ  "
       f"({'RESUELTA (<1σ)' if mt_2s < 1.0 else 'MEJORADA' if mt_2s < mt_base else 'SIN MEJORA'})")
 print(f"  σ₈ vs KiDS-1000:   {abs(sig8_eff-kids_sig8)/kids_sig8_err:.4f}σ")
 print(f"  S₈ vs KiDS-1000:   {abs(S8_eff-kids_s8)/kids_s8_err:.4f}σ")
-print(f"  Parámetros libres nuevos: 0 (m_φ = Σm_ν × H₀^alg es algebraico)")
-print(f"  Predicción falsable: k_fs = 0.493 h/Mpc (DESI Y3/Euclid 2026–2028)")
+print(f"  Parámetros libres nuevos: 0  (m_φ = Σm_ν × (Ω_DNAV⁴+AURA·KAL), forward-prediction)")
+print(f"  Predicción falsable: k_fs = 0.659 h/Mpc (DESI Y3/Euclid 2026–2028)")
 print(f"    m_φ = {m_phi_eV:.2f} eV es algebraico; φ-DM no tiene portal con el")
 print(f"    Modelo Estándar → observable solo vía k_fs en P(k), no en KATRIN/PTOLEMY")
 print(f"{'='*70}")

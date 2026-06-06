@@ -14,7 +14,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint) ✅
 - **Paper 8**: Régimen de gravedad fuerte — ⚠ DRAFT pendiente OP-9. Two-limit analysis (alt MOND-like vs canonical EFT B-S); predicción lensing canónica condicional a interpretación física de m_φ. Sirve hoy como consistency check; será paper real cuando OP-9 se resuelva vía OP-14 (ver OPs_ATTACK_PLAN.md). Papers fuertes de la suite: 1, 2, 4, 10. P8 esperando.
 - **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente; +sección comparación cuantitativa vs EDE/SIDR/late-DE (preprint, 18 pp) ✅
-- **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=8.81 meV=Λ_SSEE; αK_full=0.41691; H₀^UV=73.040 km/s/Mpc (condicional C.1); 8/10 JCAP ✅
+- **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=9.62 meV=Λ_SSEE; αK_full=0.41691; H₀^UV=73.040 km/s/Mpc (condicional C.1); 8/10 JCAP ✅
 
 ---
 
@@ -33,7 +33,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 | `SSEE_Paper7_EFT.pdf` | Paper 7 (16 p) | ✅ Preprint — EFT canónico, αK=0.4033, βc=−AURA |
 | `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (~18 p) | ⚠ DRAFT — pendiente OP-9 (interpretación física m_φ); consistency-check hoy, predicción canónica luego |
 | `SSEE_Paper9_HubbleTension.pdf` | Paper 9 (18 p) | ✅ Preprint — f_screen + comparación EDE/SIDR/late-DE |
-| `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (14 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=8.81 meV=Λ_SSEE; αK_full=0.41691 |
+| `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (14 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=9.62 meV=Λ_SSEE; αK_full=0.41691 |
 | `SSEE_Unified_Journal.pdf` | Consolidación Papers 1–10 (23 p) — §Extensions 8/9/10 | ✅ Candidato journal (10-paper, 2026-05-17) |
 | `SSEE_Endorser_Summary.pdf` | Síntesis 2 p para endorsers arXiv — serie 10-paper | ✅ Listo para envío (2026-05-17) |
 | `SSEE_Sealed_Journal.pdf` | **Documento consolidado de energía oscura tardía** (10 p) — φ→w₀,wₐ; look-elsewhere sobre diccionario cerrado (1/245); H₀ en dos etapas; cuentas honestas ~3 vs 6 params; P5/P6/P8 y OP-8/9/14 como trabajo futuro | ✅ **SELLADO — candidato a auditoría externa (2026-06-02)** |
@@ -48,7 +48,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 - `SSEE_Paper7_EFT.tex` (Paper 7 — versión completa, 874 líneas, βc=-AURA al 0.2%)
 - `SSEE_EFT_Fundamental.tex` (borrador obsoleto de Paper 7 — NO usar)
 - `SSEE_Paper8_StrongGravity.tex` (Paper 8 — 891 líneas, régimen fuerte, MIRA lensing)
-- `SSEE_Paper10_UVCompletion.tex` (Paper 10 — 1037 líneas, UV K(X), M=8.81 meV, Conditional Theorem C.1)
+- `SSEE_Paper10_UVCompletion.tex` (Paper 10 — 1037 líneas, UV K(X), M=9.62 meV, Conditional Theorem C.1)
 - `SSEE_Endorser_Summary.tex` (en docs/)
 
 ### src/ — Scripts Python
@@ -232,7 +232,7 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | **OPEN_PROBLEMS.md** | Documento de brechas físicas abiertas (OP-1..OP-6) | ✅ sesión 21 |
 | ~~**Reproducibility**~~ | ~~Quitar rutas hardcodeadas y unificar requirements.txt~~ | ✅ completado |
 | ~~**B1**~~ | ~~Full CMB likelihood Cobaya+plik (bloqueante PRD)~~ | ✅ completado |
-| ~~**OP-4**~~ | ~~Recomputar r_V solar con Λ_SSEE=M=8.81 meV~~ | ✅ RESUELTO 2026-05-15 — k-mouflage + αB=αM=0 EFT; Paper 8 §4.2/§4.4 revisados |
+| ~~**OP-4**~~ | ~~Recomputar r_V solar con Λ_SSEE=M=9.62 meV~~ | ✅ RESUELTO 2026-05-15 — k-mouflage + αB=αM=0 EFT; Paper 8 §4.2/§4.4 revisados |
 | ~~**OP-6**~~ | ~~Derivar forma screening multiplicativa vs aditiva del Lagrangiano~~ | ✅ RESUELTO 2026-05-15 — universo separado k-essence + identidad 1+w₀=Ω_m |
 | ~~**OP-3**~~ | ~~Probar Postulate C.1 incondicionalmente — jacobiano ∂φ/∂χ (tras OP-6)~~ | ✅ RESUELTO 2026-05-16 — jerarquía EFT (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2) único |
 | ~~**OP-1**~~ | ~~Derivar factor 200 Ω_b h²~~ | ✅ PARCIAL 2026-05-16 — (π−φ)/H₀_SSEE=0.32σ; BBN completo → Paper B/C |

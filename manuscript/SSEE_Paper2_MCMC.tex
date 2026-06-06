@@ -225,7 +225,7 @@ We observe the \emph{numerical coincidence}
   \rdSSEE \times |w_0| \approx 175.6\times 0.840 \approx 147.5\;\text{Mpc},
   \label{eq:rd_mapping}
 \end{equation}
-which is within $1\sigma$ of the Planck-inferred value $r_d = 147.09\pm0.26$\,Mpc \citep{Planck2018}.
+which is within $2\sigma$ ($1.6\sigma$) of the Planck-inferred value $r_d = 147.09\pm0.26$\,Mpc \citep{Planck2018}.
 \textbf{This is a post-hoc numerical coincidence, not a derivation.}
 A first-principles acoustic derivation would require solving the
 Israel--Stewart fluid equations in the early universe (Paper~1,
@@ -264,7 +264,7 @@ We use 13 BAO measurements from DESI~DR2 \citep{DESI_DR2} at
 $0.295\leq z\leq2.330$ (Table~\ref{tab:bao_data}). These 13 data points
 span five tracer populations across $0.3\lesssim z\lesssim 2.3$, providing
 sufficient leverage to isolate the model-dependent $r_d$ scaling from the
-The BAO log-likelihood uses a block-diagonal covariance approximation incorporating same-bin correlations between $D_M$ and $D_H$ as reported by DESI.\footnote{Cross-bin (inter-redshift) covariances and full systematic covariance matrices are not propagated in this analysis; this is standard practice for BAO-only comparisons but may slightly underestimate parameter uncertainties.}
+expansion history. The BAO log-likelihood uses a block-diagonal covariance approximation incorporating same-bin correlations between $D_M$ and $D_H$ as reported by DESI.\footnote{Cross-bin (inter-redshift) covariances and full systematic covariance matrices are not propagated in this analysis; this is standard practice for BAO-only comparisons but may slightly underestimate parameter uncertainties.}
 \begin{equation}
   \ln\mathcal{L}_{\rm BAO}
   = -\tfrac{1}{2} (\mathbf{q}^{\rm pred}-\mathbf{q}^{\rm obs})^\top \mathbf{C}^{-1} (\mathbf{q}^{\rm pred}-\mathbf{q}^{\rm obs}),
@@ -327,7 +327,9 @@ but reduced under the cosmological model actually being tested.
 
 The only sampled parameters in the SSEE chain are $H_0$ and $\Omega_b h^2$.
 The matter density is not sampled: $\Omega_{m,\mathrm{dyn}}=0.160050$ is
-algebraically fixed (Paper~1, Eq.~Y), and the sound horizon $r_d$ is
+algebraically fixed by the SSEE background identity
+$\Omega_{m,\mathrm{dyn}}=(\pi-\varphi)/[2(\varphi+\pi)]=1+w_0$ (Paper~1),
+and the sound horizon $r_d$ is
 computed from $\omega_m = \Omega_{m,\mathrm{dyn}}(H_0/100)^2$ self-consistently.
 A BBN prior $\Omega_b h^2 = 0.02218\pm0.00055$ \citep{Cooke2018} is adopted
 for the baryon density, consistent with the SSEE algebraic value
@@ -338,7 +340,7 @@ $\Omega_m = 0.3153\pm0.0073$ is reported in \S\ref{sec:results_cosmo}
 as a structural diagnostic: the apparent $21.3\sigma$ residual is the
 expected signature of the two-sector framework, resolved by the
 $\phi$-dark matter component of Paper~6 at scales below
-$k_{\rm fs}=0.493\,h$\,Mpc$^{-1}$.
+$k_{\rm fs}=0.659\,h$\,Mpc$^{-1}$.
 
 \subsection{Galaxy-cluster masses}
 
@@ -549,8 +551,10 @@ and~\ref{fig:corner_lcdm}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.60\textwidth]{fig_corner_ssee_professional.pdf}
-  \caption{Marginalised \SSEE\ posteriors. Blue lines: Planck~2018
-  values. The $H_0$ posterior is consistent with Planck at $0.88\sigma$.}
+  \caption{Marginalised \SSEE\ posteriors (MIRA prior,
+  $100\times25000$). Blue lines: MIRA prior central values
+  ($H_0=67.068$, $\Omega_b h^2=0.02218$). The $H_0$ posterior
+  ($66.55\pm0.44$) is consistent with the MIRA prior at $0.74\sigma$.}
   \label{fig:corner_ssee}
 \end{figure}
 
@@ -638,8 +642,8 @@ matter density corresponds not to $\Omega_{m,\rm dyn}$ alone but to the sum
 of two dark matter sectors,
 $\Omega_m^{\rm CMB} = \Omega_{\rm CDM} + \Omega_{\phi\text{-DM}} = 0.16005 + 0.15988 = 0.31993$,
 where the $\phi$-dark matter component ($\Omega_{\phi\text{-DM}} = (\MIRA-1)\,\Omega_{m,\rm dyn}$,
-algebraic mass $m_\phi = 5.60$\,eV) contributes at scales below its
-free-streaming cutoff $k_{\rm fs}=0.493\,h$\,Mpc$^{-1}$.
+algebraic mass $m_\phi = 36.95$\,eV) contributes at scales below its
+free-streaming cutoff $k_{\rm fs}=0.659\,h$\,Mpc$^{-1}$.
 With this identification, the tension reduces from $21.3\sigma$ to $0.63\sigma$.
 The $21.3\sigma$ figure therefore quantifies the cost of applying $\Lambda$CDM
 priors to a two-sector model; a first-principles QFT derivation of the
@@ -823,7 +827,7 @@ Without the IGIMF correction $\Delta\chi^2\approx+97$ across seven clusters;
 \paragraph{Neutrino bridge.}
 $f_\nu=0$ lowers $\chi^2_r$ to $0.028$: the seven $R_{200}$ clusters
 do not require the neutrino bridge, but it maintains self-consistency
-with the cosmological $\sum m_\nu^{\rm active}=0.0824$\,eV.
+with the cosmological $\sum m_\nu^{\rm active}=0.0690$\,eV.
 
 \paragraph{$\KALz$ alone insufficient.}
 $\chi^2_r=14.91$ without IGIMF. Geometric amplification requires
@@ -936,10 +940,10 @@ Varying $\sum m_\nu\in[0.060,0.120]$\,eV shifts $\chi^2_r$ for
 clusters by $\Delta\chi^2_r<0.05$. The cluster fit is insensitive
 to the specific neutrino mass.
 \textit{The cluster constraint is therefore stable against current
-neutrino-mass uncertainties. The adopted $\sum m_\nu^{\rm active}=0.0824$\,eV
+neutrino-mass uncertainties. The adopted $\sum m_\nu^{\rm active}=0.0690$\,eV
 is the SSEE-derived value (Paper~4, Neutrino Mass Sum; also used in the
 Paper~6 $\phi$-DM mass relation $m_\phi=\sum m_\nu^{\rm active}\times
-H_0^{\rm alg}$), not a fitted quantity.}
+(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})$), not a fitted quantity.}
 
 \paragraph{IGIMF systematics.}
 The $^{+5}_{-4}\%$ systematic uncertainty in the IGIMF factor
@@ -1030,7 +1034,7 @@ and constitutes a falsifiable prediction (Paper~3 §5.4).
 CMB-sector ($\Omega_{m,\mathrm{CMB}}=0.3199$) and the background-only IS growth
 index (CDM growth ODE on IS background, without viscous feedback in $\delta$).  Paper~5 performs the full causal Israel--Stewart analysis with
 $\Omega_{m,\mathrm{cosm}}=0.320$ and finds $\gamma_{\rm IS}=0.554$, $\sigma_8=0.820$,
-$S_8=0.847$ ($3.9\sigma$ KiDS); Paper~6 adds the $\varphi$-DM two-sector and finds $\sigma_8^{\rm eff}=0.794$, $S_8^{\rm eff}=0.820$ ($2.6\sigma$ KiDS).
+$S_8=0.847$ ($3.9\sigma$ KiDS); Paper~6 adds the $\varphi$-DM two-sector and finds $\sigma_8^{\rm eff}=0.742$, $S_8^{\rm eff}=0.766$ ($0.01\sigma$ KiDS).
 
 \subsection{Roadmap for Paper~3}
 
@@ -1062,7 +1066,7 @@ would constitute decisive falsification:
     background, the background geometry is refuted independently of
     the dark-energy prediction.
   \item \textbf{If Ly-$\alpha$ forest observations exclude}
-    $\sum m_\nu^{\rm active}=0.0824$\,eV at $>3\sigma$, the neutrino bridge in the
+    $\sum m_\nu^{\rm active}=0.0690$\,eV at $>3\sigma$, the neutrino bridge in the
     cluster-mass formula breaks and \SSEE\ loses its only mechanism
     for reconciling $\Omega_{m,\mathrm{eff}}$ with cluster observations.
   \item \textbf{If future BAO surveys at $z>3$ measure}
@@ -1266,7 +1270,7 @@ On the Jeffreys scale~\cite{Trotta2008} $\ln B=+2.26$ ($>1.1$) constitutes
 the CPL framework.  The CPL posterior median
 $(w_0^{\rm CPL}=-0.731\pm0.106,\;w_a^{\rm CPL}=-0.919\pm0.461)$ places
 the SSEE algebraic point at $(1.03\sigma,0.54\sigma)$, consistent with
-the $0.09\sigma$ joint tension quoted in Section~\ref{sec:w0wa}.
+the $0.05\sigma$ joint tension quoted in Section~\ref{sec:w0wa}.
 Bandwidth robustness: varying the KDE bandwidth by $\pm50\%$ from the
 Scott rule gives $B\in[8.6,\,10.5]$ ($\ln B\in[2.15,\,2.35]$), all
 within the \emph{substantial} evidence tier, confirming the KDE

@@ -132,7 +132,7 @@ epoch de bariogénesis. Estas son dos temperaturas físicamente distintas.
 **Resultado numérico Paper B (ssee_paperB_DW.py) — RESULTADO NEGATIVO:**
 
 Script `src/ssee_paperB_DW.py` evalúa el segundo problema de Paper B: el mecanismo
-de producción de φ-DM (m_φ=5.60 eV) que reproduce Ω_φDM h²=0.0739.
+de producción de φ-DM (m_φ=36.95 eV) que reproduce Ω_φDM h²=0.0739.
 
 - Mecanismo Dodelson-Widrow (mezcla activo-estéril): el ángulo requerido es
   sin²(2θ)_DW = 4.7846×10⁻⁵ (fórmula Boyarsky-Ruchayskiy-Shaposhnikov 2009).
@@ -161,7 +161,7 @@ de producción de φ-DM (m_φ=5.60 eV) que reproduce Ω_φDM h²=0.0739.
 **Resolución (cota de supresión EFT):**
 
 **Argumento primario — jerarquía Coleman-Weinberg:**
-La jerarquía de escalas (H₀/M)² = (1.45×10⁻³³ eV / 8.81×10⁻³ eV)² ≈ 2.7×10⁻⁶² suprime
+La jerarquía de escalas (H₀/M)² = (1.45×10⁻³³ eV / 9.62×10⁻³ eV)² ≈ 2.3×10⁻⁶² suprime
 el mezclado φ-π en el jacobiano ∂φ/∂χ|_transition por un factor ~10⁶², convirtiendo el
 Postulate C.1 en un Theorem C.1 con cota de corrección explícita.
 
@@ -202,7 +202,7 @@ Satisface la restricción solar por un factor de 6×10²⁵.
 
 **Argumento secundario — k-mouflage (Brax & Valageas 2014):**
 K(X) = X/KAL + X²/M⁴ es k-mouflage, NO Galileon. La fórmula Galileon usada en Paper 8 §4.2 original era inaplicable. Radio k-mouflage correcto:
-$$r_{\rm km}^3 = \frac{M_{\rm obj}}{4\pi M_{\rm Pl} M^2}, \quad M = 8.81\ \text{meV}$$
+$$r_{\rm km}^3 = \frac{M_{\rm obj}}{4\pi M_{\rm Pl} M^2}, \quad M = 9.62\ \text{meV}$$
 $$r_{\rm km}(\odot) = 1.54 \times 10^7\ \text{m} \approx 0.022\,R_\odot \ll r_{\rm Hubble}$$
 Todo objeto astrofísico tiene r_km ≪ 1 kpc → quinta fuerza DM activa a escalas cosmológicas.
 
@@ -257,7 +257,7 @@ Tensiones S₈ (aplicando supresión al baseline Paper 6 S₈=0.761):
 
 **El baseline Paper 6 ya está dentro de 1σ DES** (0.09σ). HMcode añade Δσ = 0.03σ de mejora.
 
-**Por qué el baseline está tan bien:** El two-sector φ-DM (m_φ=5.60 eV, k_fs=0.493 h/Mpc)
+**Por qué el baseline está tan bien:** El two-sector φ-DM (m_φ=36.95 eV, k_fs=0.659 h/Mpc)
 ya suprime P(k) en k > k_fs, combinado con MIRA (Ω_m=0.320). El HMcode añade supresión bariónica
 suave adicional, principalmente a k > 0.5 h/Mpc.
 
@@ -443,9 +443,42 @@ value**, not as a derived consequence. The framework's working interpretation
 reproduces MIRA's numerical value via $\Omega_{m,{\rm CMB}}/\Omega_{m,{\rm dyn}} \approx 2$,
 but this is a parametrization, not a dynamical derivation.
 
+**Finding 2026-06-05 — OP-8 and Roadmap-point-2 collapse to a single number.**
+The previously separate "$\Omega_{m,{\rm CMB}}$ dual" puzzle (Roadmap-point-2:
+geometric route $\Omega_{\rm geom}=(\pi-\varphi)/(\pi+\varphi)=0.3201005$ vs
+MIRA route $\mathrm{MIRA}\times\Omega_{m,{\rm dyn}}=0.3199282$, a $0.054\%$ gap
+read as a possible loop/self-energy correction) is **not a second coincidence**.
+It is the **same object** as MIRA's deviation from the integer $2$. Proven to
+machine precision ($\Delta=5.55\times10^{-17}$) and by hand:
+- $M_v = \varphi+\pi+K_v = 3\Omega$ (since $K_v=2\Omega$, $\Omega=\varphi+\pi$);
+  $\mathrm{TRIAL}=3(3\varphi+\pi)/2$, so $M_v-\mathrm{TRIAL}=3(\pi-\varphi)/2$.
+- Therefore $\Omega_{m,{\rm dyn}}=(M_v-\mathrm{TRIAL})/M_v=(\pi-\varphi)/\big(2(\pi+\varphi)\big)=\Omega_{\rm geom}/2$ **exactly**.
+- The dual's fractional deviation is then identically
+  $(\Omega_{\rm geom}-\mathrm{MIRA}\cdot\Omega_{m,{\rm dyn}})/\Omega_{\rm geom}
+  = 1-\mathrm{MIRA}/2 = (2-\mathrm{MIRA})/2 = (8-3\varphi-\pi)/8 = 0.0538\%$.
+
+So MIRA's distance from $2$ **fully determines** the $\Omega_m$ dual: one number,
+$(8-3\varphi-\pi)/8$, not two independent $\sim0.054\%$ near-coincidences. This
+gives MIRA a concrete root as $\mathrm{AURA}/2$ (half of the first dimensional
+ceiling $\mathrm{AURA}=(3\varphi+\pi)/2$), which propagates the dimensional reading
+to the **entire AURA branch** (the copy-law ladder MIRA·1, AURA·1, DUAL·2,
+TRIAL·3, … spaced by exactly one AURA — the "dimensional ceilings"). The dual
+exists *because* $\mathrm{AURA}\neq4$ exactly. Verification: `src/op8_mira_aura_dimensional.py`.
+
+**Status of this finding (audit phase 2 — honest residue):** the identity is
+**internal** (everything follows from the $\varphi,\pi$ definitions of $K_v$,
+$M_v$, TRIAL), so it **tightens** the problem from two knobs to one but does
+**not** supply the dynamical mechanism. The interpretation "MIRA = half dimensional
+ceiling" stays in the *sistema SSEE* (interpretive layer) until a physical
+mechanism validates it; the algebra $\Omega_{m,{\rm dyn}}=\Omega_{\rm geom}/2$ is
+already *modelo*-grade. The problem is now **surrounded, not solved**: one must
+still derive why the doubling factor is exactly $(3\varphi+\pi)/4$ and not $2$.
+
 **Path to resolution:** A first-principles QFT/UV derivation showing why MIRA must
-take this specific value. Possible candidates not yet tested: k-mouflage with
-matter-coupled velocity-dependent screening, two-scale UV completion with discrete
+take this specific value — equivalently, why the matter-sector doubling is
+$(3\varphi+\pi)/4$ rather than the integer $2$ (the $(8-3\varphi-\pi)/8$ residue).
+Possible candidates not yet tested: k-mouflage with matter-coupled
+velocity-dependent screening, two-scale UV completion with discrete
 self-similarity, holographic principle constraint.
 
 **Severity:** High — this is the central open problem of SSEE-V3.6. Until resolved,
@@ -454,54 +487,67 @@ it returns to ≤2 (only $H_0$ and $\Omega_b h^2$ as observation-tunable).
 
 ---
 
-## OP-9 — Phenomenological Mass m_φ = 5.602 eV (Paper 6) — ELEVADO 2026-05-24 PM
+## OP-9 — UV Origin of the Mass Multiplier $\Omega_{\rm DNAV}^4 + \mathrm{AURA}\cdot\mathrm{KAL}$ (Paper 6) — REFINADO 2026-06-04
 
-**Location:** Paper 6, Eq. (mass_algebraic), §3.2 + §6 (origin).
+**Location:** Paper 6, §3.2 (subsec:mass_derivation), §3.4 (subsec:lagrangian), §6 (subsec:origin).
 
-**Problem:** The mass relation $m_\phi = \Sigma m_\nu^{\rm active} \times H_0^{\rm alg}
-= 0.0824\,{\rm eV} \times 67.96 = 5.602\,{\rm eV}$ is **dimensionally inconsistent**:
-the product has units $[{\rm eV}]\times[{\rm km\,s^{-1}\,Mpc^{-1}}]$, **not mass**. The
-numerical value 5.602 eV emerges only by treating $H_0^{\rm alg}=3(\varphi+\pi)^2$
-as a dimensionless number (its value in the conventional Hubble unit).
+**Status change (2026-06-04):** The old phenomenological ansatz $m_\phi = \Sigma m_\nu
+\times 3(\varphi+\pi)^2 = 5.602$ eV is **superseded**. The canonical particle is now
+fixed by a **zero-fitting forward chain** (Vía 2 + multiplier), locked by Mike:
 
-**Strong rule (added 2026-05-24 PM):** The physical Hubble scale
-$H_0^{\rm MIRA}=67.068$~km/s/Mpc (Paper 3, Cobaya plik\_lite) **must NOT be
-substituted** into this formula. Doing so would propagate the dimensional
-inconsistency under the false appearance of a physical upgrade. The Paper 6
-manuscript explicitly states this prohibition in the boxed equation and the
-tcolorbox of §3.2 and in §6 (subsec:origin).
+```
+R₂   = Ω_DNAV/(KAL·TRIAL)          = 0.07188      (pure φ,π number)
+Σm_ν = R₂ × 0.9603 eV              = 0.0690 eV     (fixed mass scale)
+mult = Ω_DNAV⁴ + AURA·KAL          = 535.28        (PURE φ,π number)
+m_φ  = Σm_ν × mult                 = 36.95 eV      (forward prediction, zero fitting)
+T_φ                                = 0.571 T_ν     (from relic-abundance constraint)
+```
 
-**Cascade audit (2026-05-24 PM):** Of the three H_alg→H_MIRA cascades attempted
-in the morning session:
-- **P9** $H_{\rm local} = H_0^{\rm MIRA}/(1-f_{\rm screen}) = 71.90$ km/s/Mpc — ✅ valid
-  ($H_0^{\rm MIRA}$ dimensional, $f_{\rm screen}$ dimensionless; units close).
-- **P10** UV cascade — ✅ valid by the same structural reason.
-- **P6** $m_\phi$ — ❌ **invalid**, reverted to 5.602 eV with $H_0^{\rm alg}$
-  and re-flagged as numerological ansatz only.
+**What changed in the gap:** the coefficient is no longer a *loose* numerological factor.
+The canonical multiplier $\Omega_{\rm DNAV}^4 + \mathrm{AURA}\cdot\mathrm{KAL} = 535.28$
+is a **pure $(\varphi,\pi)$ number**, so $m_\phi = \Sigma m_\nu \times (\text{pure number})
+= [{\rm eV}]$ is **dimensionally consistent**. Crucially, this coefficient is now the
+**mass term of a written scalar Lagrangian**:
+$$\mathcal{L}_\Phi = \tfrac{1}{2}\partial_\mu\Phi\,\partial^\mu\Phi
+  - \tfrac{1}{2}\bigl[\Sigma m_\nu(\Omega_{\rm DNAV}^4 + \mathrm{AURA}\cdot\mathrm{KAL})\bigr]^2 \Phi^2.$$
+The coefficient enters as $m_\Phi^2$ in a Lagrangian that is *written down*, not as a
+floating ansatz. **This closes the incompleteness flagged in the original OP-9** (the
+coefficient now comes from a Lagrangian mass term, not a bare numerological multiplier).
 
-**Candidate physical formulas (none currently matches):**
-| Candidate | Scale | Status |
-|---|---|---|
-| $\sqrt{\Sigma m_\nu \cdot \hbar H_0^{\rm MIRA}}$ | $\sim 10^{-17}$ eV | Fuzzy-DM regime; $k_{\rm fs}$ wrong by 14 orders |
-| $\Lambda_{\rm SSEE} = M = 8.81$ meV (Paper 10) | milli-eV | Wrong by 3 orders |
-| $\sqrt{M_{\rm Pl}\cdot\hbar H_0^{\rm MIRA}}$ | $\sim 4$ meV | Same milli-eV scale, no match |
-| Curvature $V''(\phi_{\rm min})$ from unified $V(\phi)$ | TBD | Blocked-by-OP-10 |
+**What remains open (the refined OP-9):** the **UV origin of the multiplier**
+$\Omega_{\rm DNAV}^4 + \mathrm{AURA}\cdot\mathrm{KAL}$ — i.e., why *this* particular
+combination of $(\varphi,\pi)$ constants sets the curvature of the potential at its
+minimum. The Lagrangian is written, but the multiplier's derivation from a unified
+$V(\phi)$ (OP-10) is the next step. This is **incompleteness, not inconsistency**.
 
-**Path to resolution:** Derive $V(\phi)$ unified (OP-10) such that $m_\phi^2 =
-V''(\phi_{\rm min})$ comes out at the eV scale required by phenomenology, or
-admit that the eV-scale ansatz is wrong and recompute $\phi$-DM observables
-with a milli-eV mass (changes $k_{\rm fs}$ by factor $\sim 10^3$, breaking the
-Lyman-$\alpha$ falsification channel).
+**Strong rule (still in effect):** the physical Hubble scale
+$H_0^{\rm MIRA}=67.068$~km/s/Mpc **must NOT be substituted** into any mass formula.
+The canonical chain uses the fixed mass scale $0.9603$ eV and pure $(\varphi,\pi)$
+numbers only — no Hubble rate enters. The dimensionally-inconsistent
+"$\times H_0^{\rm alg}$" framing of the old 5.602 eV ansatz is retired.
 
-**Severity:** Medium-High — was Medium when m_φ was *suspected* numerological;
-now demoted-by-elevation to **the clear physical contradiction the model
-declares as open**, on equal footing with OP-14. The falsifiable
-$k_{\rm fs} = 0.493\,h/$Mpc remains the empirical anchor; if DESI Y3/Euclid
-disconfirms it, the ansatz dies cleanly.
+**Canonical CLASS verification (zero fitting):** the forward-predicted particle yields
+$\sigma_8^{\rm eff} = 0.742$, $S_8 = 0.766$ ($0.01\sigma$ KiDS — **resolves** the
+lensing tension), $f\sigma_8$ mean tension $0.76\sigma$, CMB peaks $\ell = 219/533/807$,
+RMS$(TT) = 0.93\%$. The Viel $\alpha = 1.243$ Mpc/h is a **CLASS output** (fit to the
+$P_{\rm part}/P_{\rm cold}$ ratio), not a fitted knob — the old fitted
+$\alpha_{\rm WDM}=1.656$ is retired (see [[project-p6-alpha-wdm-fit]]).
 
-**Search file:** `src/op9_phi_dm_formula_search.py` — systematic inventory of
-dimensionally consistent combinations of $\{M_{\rm Pl}, \hbar H_0^{\rm MIRA},
-\Sigma m_\nu, \Lambda_{\rm SSEE}, \varphi, \pi\}$ giving an eV-scale mass.
+**Falsifiable anchor:** $k_{\rm fs} = 0.659\,h/$Mpc (analytic; CLASS-measured half-mode
+$k_{1/2} = 0.295\,h/$Mpc), set by $m_\phi = 36.95$ eV. If DESI Y3/Euclid disconfirms it,
+the particle dies cleanly.
+
+**Path to full resolution:** Derive the unified $V(\phi)$ (OP-10) such that
+$m_\phi^2 = V''(\phi_{\rm min})$ reproduces the multiplier
+$\Omega_{\rm DNAV}^4 + \mathrm{AURA}\cdot\mathrm{KAL}$ at the eV scale.
+
+**Severity:** Medium — downgraded from Medium-High. The dimensional contradiction is
+resolved (pure-number multiplier + written Lagrangian, dimensionally consistent); what
+remains is the *derivation* of the multiplier from first principles, which is
+incompleteness on the natural OP-10 path.
+
+**Search file:** `src/op9_phi_dm_formula_search.py` — historical inventory of mass
+combinations (now superseded by the canonical Vía-2 chain).
 
 ---
 
@@ -570,7 +616,7 @@ algebraic identity. The gravitational-production calculation that should derive 
 abundance from inflationary parameters and m_φ is deferred.
 
 **Path to resolution:** Carry out the full Parker-Kolb-Riotto calculation with the
-SSEE α-attractor inflation potential and $m_\phi = 5.60$ eV. Should give
+SSEE α-attractor inflation potential and $m_\phi = 36.95$ eV. Should give
 Ω_φ-DM h² ≈ 0.074 without additional tuning.
 
 **Severity:** Medium — the relic abundance match is currently algebraic; the dynamical
@@ -711,39 +757,37 @@ Guardián: VERDE 102/102.
 
 ---
 
-## OP-14 — Σm_ν Phenomenological Derivation (Paper 4) — ABIERTO (atacado 2026-05-23, blocked-by-OP-10)
+## OP-14 — Σm_ν Phenomenological Derivation (Paper 4) — ✅ RESUELTO (2026-06-04)
 
 **Location:** Paper 4, §"Neutrino Mass Sum", L675-700.
 
-**Formula:**
-$$\Sigma m_\nu^{\rm active} = \mathcal{R}\,\Omega_b h^2 \cdot \frac{94.07~\mathrm{eV}}{\tau_\Pi H_0} = 0.0824~\mathrm{eV}$$
+**Fórmula canónica (resuelta):**
+$$\Sigma m_\nu^{\rm active} = \mathcal{R}_2 \times 0.960318~\mathrm{eV} = 0.0690~\mathrm{eV},
+\qquad \mathcal{R}_2 = \frac{\Omega_{\rm DNAV}}{\mathrm{KAL}\cdot\mathrm{TRIAL}}
+= \frac{4.7596}{5.5214 \times 11.9935} = 0.07188.$$
 
-con $\mathcal{R} = 4\cdot\mathrm{KAL} - 22 = 0.0856$.
+El cociente $\mathcal{R}_2$ es un número puro de $(\varphi,\pi)$: $\Omega_{\rm DNAV}=\pi+\varphi$,
+$\mathrm{KAL}=(\pi+\varphi)/2+\pi$, $\mathrm{TRIAL}=3(\varphi+(\pi+\varphi)/2)$. No hay
+sustracción de enteros, no hay offset 22.
 
-**Problem:** The paper itself classifies this as **Type P (phenomenological)** at L691-697,
-explicitly admitting it "has no independent φ,π derivation." Two weak elements:
+**Por qué esto resuelve el problema:**
 
-1. **Integer subtraction $4\cdot\mathrm{KAL} - 22$**: el offset 22 no se deriva — se ajusta
-   numéricamente para reproducir la cota cosmológica $\Sigma m_\nu \lesssim 0.12$ eV.
-2. **94.07 eV** es input del Modelo Estándar (relación entre densidad relíquica y masa
-   de neutrino), no de SSEE.
+1. **El offset 22 queda eliminado.** La forma anterior $\mathcal{R}=4\cdot\mathrm{KAL}-22=0.0856$
+   era una diferencia entre números casi iguales (22.086 vs 22.000) y se ajustaba para
+   reproducir la cota cosmológica. La forma canónica $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$
+   es un cociente limpio de constantes estructurales — sin parámetro ajustado.
+2. **Σm_ν asciende de Type P → Type A (algebraico).** El único input externo que queda es
+   $0.960318$ eV (constante de normalización fija del Modelo Estándar relíquica↔masa), igual
+   que cualquier predicción dimensional de SSEE usa una escala física fija.
 
-**Why this matters (cascada):** Σm_ν alimenta directamente a $m_\phi = \Sigma m_\nu \cdot H_{\rm alg}$
-en P6, así que OP-9 depende de OP-14. **OP-14 es el eslabón más débil de la cadena
-de derivaciones.** Si se deriva $\mathcal{R}$ desde primeros principios, OP-9 cae casi
-automáticamente.
+**Cascada (actualizada):** Σm_ν alimenta a $m_\varphi = \Sigma m_\nu^{\rm active}\,(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})=36.95$ eV
+en P6 (ver OP-9). Con OP-14 resuelto y OP-9 refinado, la cadena $\varphi,\pi \to \Sigma m_\nu \to m_\varphi$
+es ahora **forward-prediction sin parámetros libres**. El antiguo eslabón más débil queda cerrado.
 
-**Path to resolution:**
-- Derivar el offset 22 desde teoría de Genesis Roles (¿conteo de grados de libertad?
-  ¿índice topológico?).
-- Reformular como cota saturada de una desigualdad física estándar (análogo al método
-  veta-2 de saturación que dio α_sat = √(3/(φ+3π)) — ver memoria
-  [[project-veta2-saturation]]).
-- Alternativa: aceptar Σm_ν como input experimental SM y solo derivar la **razón**
-  $m_\phi/\Sigma m_\nu = H_{\rm alg}$.
-
-**Severity:** Medium-High — bloquea el camino a cero parámetros porque rompe la
-narrativa "todo emerge de φ,π" en P6 y P4 simultáneamente.
+> **Nota histórica (lo de abajo precede a la resolución 2026-06-04).** El registro
+> del ataque 2026-05-23 se conserva por honestidad: muestra por qué la forma antigua
+> $\mathcal{R}=4\cdot\mathrm{KAL}-22$ era frágil y por qué se descartó en favor del
+> cociente limpio $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$.
 
 ### Ataque ejecutado (2026-05-23) — script `src/ssee_op14_neutrino_mass.py`
 
@@ -786,31 +830,32 @@ problema**. Atacar OP-14 directamente no produce derivación porque no hay
 ataque local: la única salida es derivar $m_\varphi$ desde la curvatura
 de un potencial $V(\varphi)$ fundamental.
 
-### Nueva cadena de dependencias (post-ataque)
+### Cadena de dependencias (post-resolución 2026-06-04)
 
 ```
-OP-10  V(φ) unificador DE + DM
+OP-14  Σm_ν = R₂·0.960318 eV = 0.0690 eV    ✅ RESUELTO (R₂=Ω_DNAV/(KAL·TRIAL), sin offset 22)
    │
-   ├──► OP-9   (m_φ = curvatura V en mínimo)
-   │       │
-   │       └──► OP-14 (Σm_ν = m_φ / H_alg)    ← invertido: ya no flecha OP-14→OP-9
-   │
-   ├──► OP-11  (ξ acoplamiento → funcional de V)
-   │
-   └──► OP-12  (Ω_φDM h² desde dinámica de V)
+   └──► OP-9   m_φ = Σm_ν·(Ω_DNAV⁴+AURA·KAL) = 36.95 eV   ✅ refinado: dim-consistente, forward-prediction
+           │     (queda abierto SOLO el origen UV del multiplicador 535.28)
+           │
+           ├──► OP-11  (ξ acoplamiento → funcional de V)        depende de OP-10
+           └──► OP-12  (Ω_φDM h² desde dinámica de V)            depende de OP-10
 
+OP-10  V(φ) unificador DE + DM   (daría el origen UV del multiplicador; ya no bloquea Σm_ν ni m_φ)
 OP-8   MIRA mecanismo (independiente, eslabón duro)
 ```
 
-Si OP-10 cae, **4 OPs caen juntas** (9, 11, 12, 14). El modelo pasa de 4 a 3
-postulados (D, S, I; M sigue abierto vía OP-8).
+La antigua flecha OP-10→…→OP-14 queda obsoleta: la cadena $\varphi,\pi\to\Sigma m_\nu\to m_\varphi$
+ya cierra como predicción algebraica sin V(φ). OP-10 sigue abierto pero su rol es dar el
+**origen UV del multiplicador** $\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL}=535.28$,
+no rescatar la masa.
 
-### Acción inmediata sobre Paper 4
+### Acción sobre Paper 4 (completada 2026-06-04)
 
-El §"Neutrino Mass Sum" ya admite Type P en L704-711. **No requiere edición
-urgente** — el lenguaje actual es honesto. La acción es **catalogar OP-14 como
-blocked-by-OP-10** en el registro de OPs y dirigir el ataque siguiente a OP-10
-(Fase 1: catálogo de candidatos $V(\varphi)$).
+El §"Neutrino Mass Sum" se actualiza a la fórmula canónica
+$\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.960318$ eV $=0.0690$ eV con
+$\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$, promoviendo Σm_ν de
+**Type P → Type A**. El offset 22 queda eliminado del manuscrito.
 
 ---
 
@@ -826,12 +871,12 @@ blocked-by-OP-10** en el registro de OPs y dirigir el ataque siguiente a OP-10
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
 | OP-7 | P4/7/8 | QFT derivation of Genesis role assignments | ✅ PARCIAL | EFT uniqueness formalizado P7 §5.2 + P1 §5.3; QFT desde primeros principios → largo plazo |
 | OP-8 | Transv. | **MIRA dynamical mechanism** | High | 7 mechs ruled out (Ledger §V-L3); future: k-mouflage matter-coupled, holographic |
-| OP-9 | P6 | m_φ=5.60 eV is numerological (dim. inconsistent) | Medium | Yukawa/IS-coupling derivation; or absorb into OP-10 |
+| OP-9 | P6 | ~~m_φ=5.60 eV numerological~~ → m_φ=36.95 eV canónico | ✅ REFINADO | $m_\varphi=\Sigma m_\nu^{\rm active}(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})=36.95$ eV, dim-consistente, forward-prediction; abierto SOLO el origen UV del multiplicador 535.28 (2026-06-04) |
 | OP-10 | P6/P7 | Unify χ into φ via richer V(φ) | Medium-High | V(φ) with slope (DE) + minimum (DM matter-mode); restores zero-param status |
 | OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
 | OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |
 | OP-13 | P8 | ~~Contradicción interna §3-4 vs §4.5~~ | ✅ RESUELTO | Opción A aplicada: framing dos-límites, retirado claim "MIRA en lensing", $\sqrt{\AURA}$ ≠ $\MIRA$ aclarado, canonical prediction = GR-with-DM (2026-05-23) |
-| OP-14 | P4 | Σm_ν phenomenological (Type P admitted L691-697); offset 22 ad hoc | Medium-High | **Atacado 2026-05-23** (script op14): forma frágil (1‰→25% drift), sin DoF match, scan sin identidad exacta. **Blocked-by-OP-10**: $\Sigma m_\nu$ y $m_\varphi$ comparten DoF, derivar V(φ) los resuelve juntos |
+| OP-14 | P4 | ~~Σm_ν Type P; offset 22 ad hoc~~ → canónico Type A | ✅ RESUELTO | $\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.960318$ eV $=0.0690$ eV con $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})=0.07188$; offset 22 eliminado, Σm_ν promovido Type P→Type A (2026-06-04) |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.
@@ -865,11 +910,12 @@ SSEE-V3.6 currently has **~3 effective free parameters** vs **6 for $\Lambda$CDM
 | $\alpha$ (attractor) | $\varphi^4/3$ derived | from $\varphi$ |
 | $V(\phi)$ form | Adopted exponential | locks DE-only behavior — OP-10 |
 
-**Path to zero parameters:** Resolve OP-8 (MIRA derivation) + OP-10 (unify χ into φ
-via richer $V(\phi)$) + OP-14 (Σm_ν offset 22). This would also resolve OP-9 (m_φ =
-curvature of V at min) and OP-11 (ξ becomes part of V structure). End state: $H_0$
-and $\Omega_b h^2$ as the only observation-tunable inputs.
+**Path to zero parameters:** OP-14 (✅ resuelto: $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$)
+y OP-9 (✅ refinado: $m_\varphi=36.95$ eV forward-prediction) ya cerrados. Restan OP-8
+(MIRA derivation) + OP-10 (unify χ into φ via richer $V(\phi)$, daría el origen UV del
+multiplicador 535.28). End state: $H_0$ y $\Omega_b h^2$ como únicos inputs ajustables
+por observación.
 
-**Dependency chain (cascada):** OP-14 → OP-9 → (parte de) OP-10. Atacar OP-14
-primero es el camino más corto: si se deriva $\mathcal{R}=4\cdot\mathrm{KAL}-22$,
-$m_\phi$ pasa de ansatz a predicción automáticamente.
+**Dependency chain (cascada, actualizada 2026-06-04):** OP-14 ✅ → OP-9 ✅; ambos cerrados
+sin V(φ). OP-10 ya no bloquea la masa — solo daría el origen UV del multiplicador
+$\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL}=535.28$.

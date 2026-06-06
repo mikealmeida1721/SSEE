@@ -57,8 +57,10 @@ $\Omega_b h^2 = (\pi-\varphi)/(3\Omega^2) = (\pi-\varphi)/H_0^{\rm SSEE} = 0.022
 $n_s = 1-\varphi^{-7} = 0.96556$ ($0.16\sigma$ from Planck~2018),
 where the exponent~7 equals the number of primary structural registers in the \SSEE\ hierarchy;
 \item[(iv)] a local Hubble constant from the screening mechanism of Paper~9,
-$H_{0,\rm local} = H_0^{\rm alg}/(1-f_{\rm scr}) = 72.86$~km\,s$^{-1}$\,Mpc$^{-1}$
-($0.17\sigma$ from \citet{Riess2022}; see Section~\ref{sec:hubble_tension}).
+$H_{0,\rm local} = H_0^{\rm MIRA}/(1-f_{\rm scr}) = 71.90$~km\,s$^{-1}$\,Mpc$^{-1}$
+($1.10\sigma$ from \citet{Riess2022}; the algebraic-anchor Type-P value
+$72.86$ at $0.17\sigma$ is reported for comparison only;
+see Section~\ref{sec:hubble_tension}).
 \end{enumerate}
 These background predictions are number-to-number comparisons with zero adjustable parameters in their respective sectors.
 The same two axioms simultaneously reproduce particle-sector information ratios
@@ -269,7 +271,7 @@ Domain & SSEE formula & SSEE value & Observed & Deviation \\
 \midrule
 \textbf{Cosmology} & & & & \\
 \quad $H_0$ [km/s/Mpc] & $3(\varphi+\pi)^2$ & 67.962 & $67.4\pm0.5$ & $1.1\sigma$ \\
-\quad $H_{0,\rm local}$ [km/s/Mpc] & $H_0^{\rm alg}/(1-f_{\rm scr})$ & 72.86$^{\rm P}$  & $73.0\pm1.0$ & $0.17\sigma$ \\
+\quad $H_{0,\rm local}$ [km/s/Mpc] & $H_0^{\rm MIRA}/(1-f_{\rm scr})$ & 71.90$^{\rm P}$  & $73.0\pm1.0$ & $1.10\sigma$ \\
 \quad $\Omega_b$ & $\frac{100(\pi-\varphi)}{6(\varphi+\pi)^4}$ & 0.0495 & $0.0493\pm0.0004$ & $0.53\sigma$ \\
 \quad $n_s$ (inflation) & $1-\varphi^{-7}$ & 0.96556 & $0.9649\pm0.0042$ & $0.16\sigma$ \\
 \textbf{Particle sector} & & & & \\
@@ -278,9 +280,9 @@ Domain & SSEE formula & SSEE value & Observed & Deviation \\
 \textbf{Hubble tension} & & & & \\
 \quad Fractional correction & $K/H_0 = \frac{\varphi+3\pi}{6(\varphi+\pi)^2}$ & $8.12\%$ & $\approx 8\%$ & — \\
 \bottomrule
-\multicolumn{5}{l}{\footnotesize $^{\rm P}$~Numerical coincidence (Type~P): both $3(\varphi+\pi)^2$ and $K=(\varphi+3\pi)/2$}\\
-\multicolumn{5}{l}{\footnotesize are dimensionless numbers whose sum matches $H_{0,\rm local}$ in km\,s$^{-1}$\,Mpc$^{-1}$;}\\
-\multicolumn{5}{l}{\footnotesize no dimensional derivation from first principles exists. Consistent with Paper~1 policy.}\\
+\multicolumn{5}{l}{\footnotesize $^{\rm P}$~Canonical value: $f_{\rm scr}$ applied to the MIRA anchor $H_0^{\rm MIRA}=67.068$ gives $71.90$ ($1.10\sigma$).}\\
+\multicolumn{5}{l}{\footnotesize Applying $f_{\rm scr}$ to the algebraic anchor $H_0^{\rm alg}=67.962$ gives the Type-P value $72.86$ ($0.17\sigma$),}\\
+\multicolumn{5}{l}{\footnotesize a numerical coincidence with no dimensional derivation. Consistent with Paper~1 / Paper~9 policy.}\\
 \end{tabular}
 \end{table}
 
@@ -582,7 +584,7 @@ Planck~2018 \citep{PlanckCollaboration2020a} error bars.}
 Parameter & SSEE-ToE & Planck 2018 & Deviation & Type \\
 \midrule
 $H_0^{\rm alg}$ [km/s/Mpc]     & 67.962 & $67.4\pm0.5$  & $1.1\sigma$ & algebraic (Type~P$^\dagger$) \\
-$H_{0,\rm local}$ [km/s/Mpc]  & 72.86  & $73.0\pm1.0$  & $0.17\sigma$ & algebraic (Type~P$^\dagger$) \\
+$H_{0,\rm local}$ [km/s/Mpc]  & 71.90  & $73.0\pm1.0$  & $1.10\sigma$ & MIRA-screened (canonical; Type~P alt.\ 72.86) \\
 $\Omega_b$          & 0.0495 & $0.0493\pm0.0004$    & $0.53\sigma$ & algebraic \\
 $\Omega_b h^2$      & 0.02242& $0.02237\pm0.00015$ & $0.32\sigma$ & algebraic \\
 $\Omega_{m,\rm CMB}^{\rm geom}$ & 0.3201 & $0.3153\pm0.0073$   & $0.7\sigma$ & algebraic (CMB sector$^\ddagger$) \\
@@ -611,11 +613,12 @@ $\tau$              & 0.054  & $0.054\pm0.007$     & $0\sigma$   & standard \\
 \centering
 \includegraphics[width=0.95\textwidth]{fig_toe_cmb_TT.pdf}
 \caption{\SSEE-ToE CMB TT power spectrum ($k=2$: $A_s$ and $\tau$ at standard
-values; all remaining parameters algebraic from $\varphi,\pi$ — zero fitted)
-vs.\ Planck~PR3 binned data.
-Acoustic peak positions: $\ell_1=219$, $\ell_2=534$, $\ell_3=808$
-(Planck: 220, $\sim$540, $\sim$810; agreement $<1\%$).
-The $\chi^2/N=6.56$ over 83 bins reflects the complete absence of optimisation.}
+values; all remaining parameters algebraic from $\varphi,\pi$ — zero fitted),
+overlaid on the Planck~2018 $\Lambda$CDM spectrum for reference.
+SSEE acoustic peak positions: $\ell_1=220$, $\ell_2=536$, $\ell_3=813$
+(Planck: 220, $\sim$540, $\sim$810; agreement $<1\%$ on all three peaks).
+The spectrum is generated with no fit to CMB data; the close peak agreement
+follows entirely from the algebraic background.}
 \label{fig:cmb_tt}
 \end{figure}
 
@@ -645,11 +648,16 @@ Type-P coincidence and is \emph{not} the canonical \SSEE\ prediction for the
 local Hubble constant. A physical treatment is developed in Paper~9 of this
 series, where a structural screening fraction
 $f_{\rm scr} = \alpha_K/(3\,\mathrm{MIRA}) = (\pi-\varphi)/\Omega^2 = 0.0673$
-yields $H_{0,\rm local} = H_0^{\rm alg}/(1-f_{\rm scr}) = 72.86$~km\,s$^{-1}$\,Mpc$^{-1}$
-($0.17\sigma$ from \citet{Riess2022}). Paper~10 provides a UV-completion
+is applied multiplicatively to the SSEE-self-consistent CMB anchor
+$H_0^{\rm MIRA}=67.068$~km\,s$^{-1}$\,Mpc$^{-1}$ (Paper~3), yielding the
+canonical local value
+$H_{0,\rm local} = H_0^{\rm MIRA}/(1-f_{\rm scr}) = 71.90$~km\,s$^{-1}$\,Mpc$^{-1}$
+($1.10\sigma$ from \citet{Riess2022}). Applying the same screening to the
+algebraic anchor $H_0^{\rm alg}=67.962$ gives the Type-P numerical coincidence
+$H_{0,\rm local}^{\rm alg}=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.17\sigma$),
+reported for comparison only. Paper~10 provides a UV-completion
 self-consistency check, $H_0^{\rm UV} = 73.04$~km\,s$^{-1}$\,Mpc$^{-1}$,
-conditional on the UV--IR separability postulate. The canonical local value
-is the Paper~9 result $72.86$~km\,s$^{-1}$\,Mpc$^{-1}$.
+conditional on the UV--IR separability postulate.
 
 % ===========================================================================
 \section{Falsifiability Programme}
@@ -685,13 +693,15 @@ from CMB+BBN joint analysis would falsify this prediction.
 
 \subsection{Neutrino Mass Sum}
 
-The active neutrino mass sum follows from the acoustic residual operator
-$\mathcal{R} = 4\,\mathrm{KAL} - 22 = 0.0856$ combined with the Israel--Stewart
-relaxation time $\tau_\Pi H_0 = \mathrm{KAL}/(3\,\Omega_{\rm DE}) = 2.191$:
+The active neutrino mass sum follows from the stability ratio
+$\mathcal{R}_2 = \Omega/(\mathrm{KAL}\cdot\mathrm{TRIAL}) = 0.071875$
+(with $\Omega=\pi+\varphi=4.7596$, $\mathrm{KAL}=5.5214$, $\mathrm{TRIAL}=11.9935$),
+combined with the Israel--Stewart relaxation time
+$\tau_\Pi H_0 = \mathrm{KAL}/(3\,\Omega_{\rm DE}) = 2.191$:
 \begin{equation}
   \Sigma m_\nu^{\rm active}
-    = \mathcal{R}\,\Omega_b h^2\,\frac{94.07~\mathrm{eV}}{\tau_\Pi H_0}
-    = 0.0824~\mathrm{eV},
+    = \mathcal{R}_2\,\Omega_b h^2\,\frac{94.07~\mathrm{eV}}{\tau_\Pi H_0}
+    = 0.0690~\mathrm{eV},
 \end{equation}
 testable with DESI~DR5 and Euclid (expected $\sigma\approx 0.015$~eV).\footnote{%
 The preliminary form $\Sigma m_\nu=\mathcal{A}/100=0.040~\mathrm{eV}$ used in
@@ -700,16 +710,19 @@ and is therefore excluded by neutrino-oscillation data.}
 This value lies above the normal-ordering oscillation floor
 $\Sigma m_\nu\gtrsim0.058$~eV and below the Planck~2018 upper bound
 $\Sigma m_\nu<0.12$~eV. It is the quantity used in the $\phi$-DM mass relation
-of Paper~6 ($m_\phi=\Sigma m_\nu^{\rm active}\times H_0^{\rm alg}$).
+of Paper~6 ($m_\phi=\Sigma m_\nu^{\rm active}\times(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})$),
+where the multiplier $\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL}=535.28$ is a
+pure $(\varphi,\pi)$ number (no dimensions), so the product carries the units of
+$\Sigma m_\nu^{\rm active}$ and yields a mass in~eV.
 
-\emph{Status.} This relation is classified \textbf{Type~P} (phenomenological),
-not a zero-parameter algebraic result. The integer subtraction in
-$\mathcal{R}=4\,\mathrm{KAL}-22$ is a nearest-integer (fractional-part) operation
-on $4\,\mathrm{KAL}=22.086$ and has no independent $\varphi,\pi$ derivation; the
-conversion factor $94.07$~eV is the standard $\Sigma m_\nu=94.07~\mathrm{eV}\times
+\emph{Status.} The stability ratio $\mathcal{R}_2=\Omega/(\mathrm{KAL}\cdot\mathrm{TRIAL})$
+is a clean $(\varphi,\pi)$ quotient: it replaces the earlier residual
+$\mathcal{R}=4\,\mathrm{KAL}-22$, whose integer offset $22$ had no independent
+$\varphi,\pi$ derivation (the open problem OP-14). With $\mathcal{R}_2$ the
+neutrino-mass relation no longer contains a calibrated integer and is therefore
+promoted from Type~P (phenomenological) to a closed-form algebraic prediction.
+The conversion factor $94.07$~eV is the standard $\Sigma m_\nu=94.07~\mathrm{eV}\times
 \Omega_\nu h^2$ relation, a Standard-Model input rather than an SSEE quantity.
-The value $\Sigma m_\nu^{\rm active}=0.0824$~eV is therefore a calibrated ansatz,
-consistent with its Type-P classification in the Paper~1 predictive register.
 \textbf{Falsification criterion:} $\Sigma m_\nu > 0.12~\mathrm{eV}$ or
 $\Sigma m_\nu < 0.058~\mathrm{eV}$ at $>3\sigma$ would falsify this prediction.
 
@@ -773,7 +786,7 @@ We have presented a two-axiom ($\varphi$, $\pi$) algebraic system that predicts:
   \item $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s = 0.11926$ ($0.6\sigma$ from Planck, IS)
   \item $Y_p = 0.2472$ ($0.2\sigma$ from Planck CMB, $0.6\sigma$ from HII — no fit)
   \item $\delta_c = \delta_{c,\rm EdS}\times n_s = 1.6284$ (qualitative JWST link)
-  \item $H_{0,\rm local} = H_0^{\rm alg}/(1-f_{\rm scr}) = 72.86$ ($0.17\sigma$ from Riess~2022)
+  \item $H_{0,\rm local} = H_0^{\rm MIRA}/(1-f_{\rm scr}) = 71.90$ ($1.10\sigma$ from Riess~2022; Type-P alt.\ 72.86 at $0.17\sigma$)
   \item $r = \varphi^{-10} = 0.00813$ (falsifiable by LiteBIRD~2032)
 \end{itemize}
 

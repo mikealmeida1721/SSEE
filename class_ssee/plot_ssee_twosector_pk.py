@@ -1,6 +1,6 @@
 """
 SSEE-V3.6 — Fase 2: Two-Sector phi-DM P(k) con WDM Transfer Function
-Aplica la supresión de free-streaming del phi-DM (m=5.60 eV, k_fs=0.493 h/Mpc)
+Aplica la supresión de free-streaming del phi-DM (m=36.95 eV, k_fs=0.659 h/Mpc)
 sobre el espectro SSEE+MIRA usando la función de transferencia de Viel et al. 2005
 """
 
@@ -28,8 +28,8 @@ k_ssee, P_ssee = ssee_pk[:,0], ssee_pk[:,1]
 k_lcdm, P_lcdm = lcdm_pk[:,0], lcdm_pk[:,1]
 
 # ── phi-DM Parameters (Paper 6) ───────────────────────────────────────────────
-m_phi  = 5.60    # eV
-k_fs   = 0.493   # h/Mpc (Dodelson-Widrow derivation)
+m_phi  = 36.95   # eV
+k_fs   = 0.659   # h/Mpc (Dodelson-Widrow derivation)
 # Omega split: Omega_CDM = 0.160 / Omega_phiDM = 0.160 / Omega_total = 0.320
 f_phiDM = 0.160 / 0.320   # fraction of matter in phi-DM sector = 0.5
 
@@ -87,7 +87,7 @@ ax_T    = fig.add_subplot(gs[2], sharex=ax_main)
 # Main P(k) panel
 ax_main.loglog(k_lcdm, P_lcdm,       color="#58a6ff", lw=2.0, label=r"$\Lambda$CDM (CLASS)", alpha=0.85)
 ax_main.loglog(k_ssee, P_ssee,       color="#f78166", lw=1.8, ls="--", label=r"SSEE+MIRA (single sector)", alpha=0.8)
-ax_main.loglog(k_ssee, P_twosector,  color="#3fb950", lw=2.4, label=r"SSEE 2-sector ($\varphi$-DM, $k_{fs}=0.493$)", zorder=5)
+ax_main.loglog(k_ssee, P_twosector,  color="#3fb950", lw=2.4, label=r"SSEE 2-sector ($\varphi$-DM, $k_{fs}=0.659$)", zorder=5)
 ax_main.axvline(k_fs, color="#e3b341", lw=1.8, ls=":", alpha=0.9)
 ax_main.axvspan(k_fs, k_ssee[-1], alpha=0.06, color="#3fb950")
 ax_main.set_ylabel(r"$P(k)$ $[(h^{-1}\mathrm{Mpc})^3]$", fontsize=12)
@@ -95,7 +95,7 @@ ax_main.grid(True, which="both", alpha=0.2)
 ax_main.legend(loc="lower left", fontsize=9, framealpha=0.3)
 ax_main.set_title(
     "SSEE-V3.6: Two-Sector $\\varphi$-DM Matter Power Spectrum (CLASS + WDM Transfer Function)\n"
-    r"$m_\varphi = 5.60\,\mathrm{eV}$,  $k_{fs} = 0.493\,h/\mathrm{Mpc}$,  $f_{\varphi\mathrm{DM}} = 0.5$",
+    r"$m_\varphi = 36.95\,\mathrm{eV}$,  $k_{fs} = 0.659\,h/\mathrm{Mpc}$,  $f_{\varphi\mathrm{DM}} = 0.5$",
     fontsize=12, pad=10)
 
 # Ratio panel
@@ -118,7 +118,7 @@ k_plot = np.logspace(-3, 0.5, 300)
 ax_T.semilogx(k_plot, T_wdm(k_plot)**2, color="#e3b341", lw=2.0,
               label=r"$T^2_{WDM}(k)$ — φ-DM free-streaming suppression")
 ax_T.axvline(k_fs, color="#e3b341", lw=1.5, ls=":", alpha=0.9,
-             label=rf"$k_{{fs}}=0.493$ (T²=0.5)")
+             label=rf"$k_{{fs}}=0.659$ (T²=0.5)")
 ax_T.axhline(0.5, color="#8b949e", lw=1.0, ls="--", alpha=0.5)
 ax_T.set_xlabel(r"Wavenumber $k$ $[h\,\mathrm{Mpc}^{-1}]$", fontsize=12)
 ax_T.set_ylabel(r"$T^2_{WDM}(k)$", fontsize=10)

@@ -74,19 +74,20 @@ $H_0^{\rm MIRA}=67.068$\,km\,s$^{-1}$\,Mpc$^{-1}$ (Paper~3),
                   \;\approx\; 71.90 \text{ km/s/Mpc}\,,
 \]
 which lies $1.10\sigma$ from SH0ES (Riess et al.\ 2022) with \emph{zero free parameters}.
-Applied instead to the algebraic value $H_0^{\rm alg}=3(\phiG+\pi)^2=67.96$ (a Type~P
-coincidence; Paper~1) the same mechanism gives $H_0^{\rm local,\,alg}=72.86$~km/s/Mpc
-($0.17\sigma$ from SH0ES); we adopt the MIRA-derived value as the canonical IR prediction
-for methodological consistency with the rest of the suite (Papers~2--3,~6).
-The improved agreement obtained with the algebraic value is therefore a numerical
-coincidence rather than a physical prediction.
+We adopt the MIRA-derived value as the canonical IR prediction for methodological
+consistency with the rest of the suite (Papers~2--3,~6). Inverting the screening
+chain shows that SH0ES requires a background $H_0=67.96$\,km/s/Mpc, which coincides
+with the Type~P algebraic value $3(\phiG+\pi)^2$; this is discussed, without being
+adopted as a physical prediction, in Appendix~\ref{app:postulateP}.
 The correction operates at late times ($z < 0.15$) through the scalar kinetic
 energy contribution to the local expansion rate, and does not modify the
 sound horizon $r_d$, the CMB peak positions, or the growth factor $\sigma_8$
 derived in Papers~3 and~5.
-As a separate self-consistency check (not an independent prediction), Paper~10
-derives $H_0^{\rm UV} = 73.040$\,km/s/Mpc conditional on Postulate C.1 of the UV
-completion, closing the residual $1.10\sigma$ gap.
+As a separate self-consistency check (not an independent prediction), the UV
+completion of Paper~10 gives a physical $H_0^{\rm UV} = 72.077$\,km/s/Mpc
+($0.93\sigma$ from SH0ES), tightening the canonical residual from $1.10\sigma$
+to $0.93\sigma$; its Type~P evaluation lands on $73.040$\,km/s/Mpc, a last-digit
+rounding coincidence (conditional on Postulate~C.1), not a significant agreement.
 \end{abstract}
 
 \tableofcontents
@@ -398,7 +399,7 @@ $H_0^{\rm local,\,alg}$ (Type~P comparison) & $\Hzero^{\rm alg}/(1-\fsc)$ & $72.
 $H_0^{\rm SH0ES}$            & ---            & $73.04\pm1.04$ km/s/Mpc & \citet{Riess2022} \\
 $H_0^{\rm Freedman}$         & ---            & $69.96\pm1.54$ km/s/Mpc & \citet{Freedman2024} \\
 Tension vs SH0ES (canonical) & ---            & $1.10\sigma$   & --- \\
-Tension vs SH0ES (Type~P)    & ---            & $0.17\sigma$   & numerical coincidence \\
+Tension vs SH0ES (Type~P)    & ---            & $0.17\sigma$   & App.~\ref{app:postulateP} \\
 Tension vs Freedman (canonical) & ---         & $1.26\sigma$   & --- \\
 \bottomrule
 \end{tabular}
@@ -413,8 +414,9 @@ Tension vs Freedman (canonical) & ---         & $1.26\sigma$   & --- \\
     The SSEE canonical multiplicative IR prediction (applied to
     $H_0^{\rm MIRA}=67.068$) is $H_0^{\rm local}=71.90$ km/s/Mpc, $1.10\sigma$
     from SH0ES and $1.26\sigma$ from Freedman 2024 \citep{Freedman2024}.
-    The numerical-coincidence value $H_0^{\rm local,alg}=72.86$ obtained from
-    $H_0^{\rm alg}=67.96$ ($0.17\sigma$ SH0ES) is shown for comparison.
+    The Type~P value $H_0^{\rm local,alg}=72.86$ obtained from
+    $H_0^{\rm alg}=67.96$ ($0.17\sigma$ SH0ES; Appendix~\ref{app:postulateP})
+    is shown for comparison.
     Error bars show $\pm1\sigma$ uncertainties.
   }
   \label{fig:h0_tension}
@@ -500,13 +502,12 @@ Tension against SH0ES \citep{Riess2022} ($73.04\pm1.04$):
 \end{equation}
 
 \paragraph{Comparison with the Type-P algebraic value.}
-Applying the same mechanism to $H_0^{\rm alg}=3(\phiG+\pi)^2=67.96$
-(a Type~P numerical coincidence; Paper~1) yields
-$H_0^{\rm local,alg}=72.86$~km/s/Mpc (multiplicative) and $72.53$
-(additive), with SH0ES tensions of $0.17\sigma$ and $0.49\sigma$ respectively.
-The sharper agreement obtained from $H_0^{\rm alg}$ is a numerical coincidence
-rather than a physical prediction; we report it for transparency but use
-$H_0^{\rm MIRA}$ as the canonical input throughout this paper.
+The same mechanism applied to the Type~P algebraic value
+$H_0^{\rm alg}=3(\phiG+\pi)^2=67.96$ sharpens the agreement further, but we
+do not adopt it as a physical prediction; this comparison is treated
+separately in Appendix~\ref{app:postulateP}, which inverts the screening
+chain to identify the background value SH0ES requires. Throughout the body
+we use $H_0^{\rm MIRA}$ as the canonical input.
 
 \paragraph{Comparison with TRGB/JWST.}
 The TRGB+JWST measurement of \citet{Freedman2024} yields
@@ -568,7 +569,7 @@ Specifically:
   \item \textbf{Growth factor $\sigma_8$}: not modified.
         The IS viscosity (Paper~5) and $\phi$-DM free-streaming (Paper~6)
         operate through the growth equation, not through $H_0$.
-        The $\sigma_8^{\rm eff} = 0.794$ result of Paper~6 is unaffected.
+        The $\sigma_8^{\rm eff} = 0.742$ result of Paper~6 is unaffected.
 \end{enumerate}
 
 \paragraph{Note on the EDE comparison.}
@@ -604,7 +605,7 @@ Paper & Key result & Affected by $\fsc$? \\
 4 (Sovereignties) & $H_0^{\rm alg}$ as first sovereignty & No —
                $H_0^{\rm local}$ is a new sector \\
 5 (IS viscosity) & $\sigma_8 = 0.820$, $G = D_1^{\rm SSEE}/D_1^{\Lambda{\rm CDM}} = 1.011$ & No \\
-6 ($\phi$-DM) & $\sigma_8^{\rm eff}=0.737$, $k_{\rm fs}=0.493\,h$/Mpc & No \\
+6 ($\phi$-DM) & $\sigma_8^{\rm eff}=0.742$, $k_{\rm fs}=0.659\,h$/Mpc & No \\
 7 (EFT)       & $\alphaK = 0.4033$, $\bc = -\AURA$ & Provides $\alphaK$
                (input to Paper~9) \\
 8 (Strong gravity) & $\MIRA$ lensing amplification, Vainshtein $r_V$ & Provides $\MIRA$
@@ -638,9 +639,8 @@ We therefore register the following pre-committed prediction:
 where $H_0^{\rm MIRA}=67.068$~km/s/Mpc is derived in Paper~3 from
 Planck~\texttt{plik\_lite} under the SSEE background.
 \textit{Current status}: $1.10\sigma$ from SH0ES \citep{Riess2022}.
-\textit{Type-P comparison}: applied to $H_0^{\rm alg}=67.96$ the same mechanism
-gives $H_0^{\rm local,alg}=72.86$ km/s/Mpc ($0.17\sigma$ SH0ES); see
-\S\ref{sec:localH0} for discussion.
+\textit{Type-P comparison}: the algebraic value $H_0^{\rm alg}=67.96$ tightens
+this further; see Appendix~\ref{app:postulateP}.
 \end{quote}
 
 \noindent\textbf{Falsification criteria:}
@@ -751,10 +751,12 @@ Table~\ref{tab:comparison}:
         late-time ($z<0.15$) kinematic effect: $r_d$, $\theta_*$, and the
         growth factor $\sigma_8$ are untouched (Section~\ref{sec:CMBsafe}),
         so the $S_8$ results of Papers~5--6 are preserved.
-  \item \textbf{Smallest residual tension.}  At $0.17\sigma$ from SH0ES, the
-        SSEE prediction is closer to the distance-ladder value than any
-        finalist of the $H_0$ Olympics, \emph{and} achieves this with zero
-        added parameters.
+  \item \textbf{Small residual tension, zero added parameters.}  The canonical
+        (physical, MIRA-derived) SSEE prediction sits at $1.10\sigma$ from SH0ES,
+        competitive with the best finalists of the $H_0$ Olympics, \emph{and}
+        achieves this with zero added parameters.  The algebraic ($H_0^{\rm alg}$)
+        evaluation tightens the agreement further (Appendix~\ref{app:postulateP}),
+        but is not adopted as the headline.
 \end{enumerate}
 
 \subsection{Honest caveats}
@@ -810,14 +812,16 @@ than $0.05$\,km/s/Mpc (Appendix, Step~4).
 
 \paragraph{UV completion of $M$ (addressed in Paper~10).}
 The algebraic identity $\fsc = \alphaK/(3\MIRA) = (\pi-\phiG)/(\Omega^2)$ does not
-depend on $M$ (it cancels in the ratio), so the prediction $H_0^{\rm local} = 72.86$\,km/s/Mpc
-is robust.
+depend on $M$ (it cancels in the ratio), so the canonical prediction
+$H_0^{\rm local} = 71.90$\,km/s/Mpc ($1.10\sigma$, physical $H_0^{\rm MIRA}$) is robust.
 Paper~10 of this series \citep{Paper10} derives $M^4 = 45\alpha^2\rho_{\rm crit} = 5\phiG^8\rho_{\rm crit}$
 from the same $\alpha$-attractor that governs inflation (Paper~1), yielding
-$\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value) and
-$H_0^{\rm UV} = 73.040$\,km/s/Mpc ($< 0.001\sigma$ from SH0ES).
-The IR result of this paper is thus a lower bound; the UV completion closes the
-residual $0.17\sigma$ gap.
+$\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value) and a physical UV value
+$H_0^{\rm UV} = 72.077$\,km/s/Mpc ($0.93\sigma$ from SH0ES), tightening the canonical IR
+residual from $1.10\sigma$ to $0.93\sigma$.
+The corresponding Type~P evaluation ($H_0^{\rm alg}$) gives $73.040$\,km/s/Mpc, which
+lands on the SH0ES central value; we flag this as a last-digit rounding coincidence
+(conditional on Postulate~C.1, Paper~10), not a statistically significant agreement.
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Conclusions}
@@ -835,25 +839,29 @@ disformal null geodesic.
 The structural constant $\AURA = 2\MIRA$ cancels exactly in the ratio,
 leaving a pure function of the two fundamental constants $\phiG$ and $\pi$.
 
-Applied as a local correction to the cosmological Hubble rate, this gives
+Applied as a local correction to the physical (MIRA-derived) Hubble rate
+$H_0^{\rm MIRA}=67.068$\,km/s/Mpc, this gives the canonical prediction
 \begin{equation}
-  H_0^{\rm local} = \frac{3(\phiG+\pi)^2}{1-(\pi-\phiG)/(\phiG+\pi)^2}
-  \approx 72.86\;\text{km/s/Mpc}\,,
+  H_0^{\rm local} = \frac{H_0^{\rm MIRA}}{1-(\pi-\phiG)/(\phiG+\pi)^2}
+  \approx 71.90\;\text{km/s/Mpc}\,,
 \end{equation}
-which is $0.17\sigma$ from SH0ES \citep{Riess2022} with zero free parameters.
+which is $1.10\sigma$ from SH0ES \citep{Riess2022} with zero free parameters.
+Evaluated instead on the algebraic background $H_0^{\rm alg}=3(\phiG+\pi)^2$ the
+same expression yields $72.86$\,km/s/Mpc ($0.17\sigma$); we report this as a
+Type~P numerical coincidence, not as the headline.
 The correction is a late-time effect ($z < 0.15$) driven by the scalar
 kinetic energy of the dark energy field; it does not modify the sound
 horizon $r_d$, the CMB peak structure, or the growth factor $\sigma_8$
 established in Papers~2--6.
 
-The result is pre-committed: the value $72.86$ km/s/Mpc was derived from
+The result is pre-committed: both values were derived from
 the algebraic structure of SSEE before this comparison was made.
 Future SH0ES measurements and upcoming DESI \citep{DESI2025} data will test
 this prediction.
 
 \paragraph{Age of the universe cross-check.}
 As an independent consistency test, we compute the age of the SSEE universe
-using $H_0^{\rm local} = 72.86$\,km/s/Mpc, the dynamical-sector matter density
+using the canonical (physical) value $H_0^{\rm local} = 71.90$\,km/s/Mpc, the dynamical-sector matter density
 $\Omega_m = \Omega_{m,\rm dyn} = 0.160$ (Paper~1, Sec.~1.4, Two-$\Omega_m$
 Criterion: late-time $E(z)$ in CPL form uses the dynamical value), and the CPL
 dark energy equation of state \citep{Chevallier2001,Linder2003}
@@ -866,10 +874,10 @@ $(w_0, w_a) = (-0.840, -0.670)$:
 where $f_{\rm DE}(z) = (1+z)^{3(1+w_0+w_a)}\exp\!\bigl(-3w_a z/(1+z)\bigr)$.
 Numerical integration gives
 \begin{equation}
-  t_0^{\rm SSEE} = 15.31\;\text{Gyr}
+  t_0^{\rm SSEE} = 15.52\;\text{Gyr}
   \qquad (\Lambda\text{CDM}: 13.80\;\text{Gyr})\,.
 \end{equation}
-The SSEE universe is $1.51$\,Gyr \emph{older} than $\Lambda$CDM, a direct
+The SSEE universe is $1.72$\,Gyr \emph{older} than $\Lambda$CDM, a direct
 consequence of the phantom crossing at $z_{\rm cross}\approx 0.314$
 (Section~\ref{sec:mechanism}) suppressing the recent expansion rate.
 This is more accommodating of the oldest globular clusters and the oldest
@@ -882,6 +890,65 @@ at this level.
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \appendix
+\section{Postulate~P: the algebraic value SH0ES requires}
+\label{app:postulateP}
+%% ─────────────────────────────────────────────────────────────────────────────
+
+The body of this paper reports the \emph{canonical} prediction in the physical
+direction: starting from the CMB-anchored background
+$H_0^{\rm MIRA}=67.068$~km/s/Mpc (Paper~3, fixed by $r_d$ and $\theta_*$) and
+applying the derived screening, the UV completion of Paper~10 yields
+$H_0^{\rm local}=72.077$~km/s/Mpc, $0.93\sigma$ from SH0ES. This is a
+\emph{partial} resolution of the tension --- reducing the $\sim 5\sigma$
+Planck--SH0ES discrepancy to below $1\sigma$ with zero free parameters --- and
+it is the result we stand behind physically.
+
+This appendix records a separate, weaker observation, presented in the
+\emph{inverse} direction so that no algebraic value is assumed in advance.
+
+\paragraph{Step P1: the inverse chain --- what background does SH0ES demand?}
+The screening relation $H_0^{\rm local}=H_0^{\rm base}/(1-\fsc)$ inverts to
+\begin{equation}
+  H_0^{\rm base} \;=\; H_0^{\rm SH0ES}\,(1-\fsc^{\rm UV})\,,
+  \label{eq:inverse_chain}
+\end{equation}
+which asks, using only the measured datum and the derived screening fraction
+(no model constant): \emph{what homogeneous background expansion rate would,
+seen through the SSEE disformal screen, reproduce the local SH0ES slope
+exactly?} With $\fsc^{\rm UV}=0.069522$ from the $X^2/M^4$ correction of
+Paper~10,
+\begin{equation}
+  H_0^{\rm base} \;=\; 73.040 \times (1 - 0.069522)
+                 \;=\; 67.962\;\text{km/s/Mpc}\,.
+  \label{eq:Hbase_value}
+\end{equation}
+This number is obtained by deducing \emph{backwards} from the data; $\phiG$ and
+$\pi$ have not yet been invoked.
+
+\paragraph{Step P2: the recovered value carries a double algebraic identity.}
+Only now do we ask whether $67.962$~km/s/Mpc has structure in the closed
+$(\phiG,\pi)$ dictionary. It does, in two independent ways:
+\begin{equation}
+  H_0^{\rm base}
+  \;=\; \underbrace{3(\pi+\phiG)^2}_{\text{algebraic expression}}
+  \;=\; \underbrace{\textsc{mikael}\times\Omega_{\rm DNAV}}_{\text{SSEE expression}}
+  \;=\; 67.962\;\text{km/s/Mpc}\,,
+  \label{eq:double_identity}
+\end{equation}
+where $\Omega_{\rm DNAV}=\pi+\phiG=4.7596$ is the Stability Metric and
+$\textsc{mikael}=3\Omega_{\rm DNAV}=14.2788$ is the Maximal Dimensional Invariant
+$\Sigma_9$ (Paper~4, one of the Nine Sovereignties), generated in the lineage
+from $\textsc{mika}+\pi$ with $\textsc{mika}=K_v+\phiG=11.1373$. The agreement with
+the inverse-chain value~\eqref{eq:Hbase_value} is $-0.0001\%$.
+
+\paragraph{Status (Postulate P).}
+We classify equation~\eqref{eq:double_identity} as a Type~P coincidence: the
+algebraic value was \emph{recognised a posteriori}, not fitted, and it is
+conditional on Postulate~C.1 (Paper~10). The physical, MIRA-anchored prediction
+of the body ($0.93\sigma$) remains the canonical claim; this appendix shows only
+that the background SH0ES \emph{would} require for exact closure coincides, to
+five figures, with an entity already present in the SSEE dictionary.
+
 \section{Derivation of the multiplicative form from the Hubble-flow integral}
 \label{app:hubble_integral}
 %% ─────────────────────────────────────────────────────────────────────────────

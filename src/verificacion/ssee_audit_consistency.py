@@ -22,8 +22,8 @@ CANONICAL = {
     "Omb_h2": 0.02237,
     "ns":     0.9649,
     "rd_ssee": 147.156,  # r_d en Mpc (Paper 2 CAMB)
-    "kfs":    0.493,     # k_fs h/Mpc (Paper 6)
-    "mphi":   5.60,      # m_φ en eV
+    "kfs":    0.659,     # k_fs h/Mpc (Paper 6 — partícula canónica forward 2026-06-04)
+    "mphi":   36.95,     # m_φ en eV (Σm_ν × (Ω⁴_DNAV + AURA·KAL))
     "betac":  3.9978,    # |β_c| = AURA
     "G_ssee":      1.011,  # Paper 5 con Ω_m,cosm=0.320 (leve enhancement)
     "sigma8_p5":   0.820,  # Paper 5 single-sector (Ω_m,cosm=0.320)
@@ -47,8 +47,8 @@ PATTERNS = {
     "Omb_h2":[r"0\.0223[67]"],
     "ns":    [r"0\.9649"],
     "rd":    [r"147\.[0-9]", r"175\.[0-9]"],
-    "kfs":   [r"0\.493"],
-    "mphi":  [r"5\.60"],
+    "kfs":   [r"0\.659"],
+    "mphi":  [r"36\.95"],
     "betac": [r"3\.99[78]", r"3\.998"],
     "sigma8_p5":  [r"0\.820", r"sigma_?8.*0\.82"],
     "S8_p5":      [r"0\.847", r"S_?8.*0\.847"],

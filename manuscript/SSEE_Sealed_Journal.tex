@@ -477,7 +477,7 @@ Table~\ref{tab:cmb} reports the reduced $\chi^2$.
   \end{tabular}
   \caption{CMB confrontation against Planck PR4. SSEE reproduces the acoustic
   spectra at a quality indistinguishable from $\Lambda$CDM, with acoustic peaks
-  at $\ell=220,\,536,\,812$. The combined $\Delta\mathrm{BIC}
+  at $\ell=220,\,535,\,810$. The combined $\Delta\mathrm{BIC}
   (\text{SSEE}-\Lambda\text{CDM})=-20.8$ over $N=5914$ data points reflects the
   two-parameter economy of the background.}
   \label{tab:cmb}
@@ -489,7 +489,7 @@ Table~\ref{tab:cmb} reports the reduced $\chi^2$.
   \caption{CMB temperature angular power spectrum computed with \texttt{CLASS}
   for the SSEE background and EFT functions (Eq.~\ref{eq:eft-alphas}), compared
   against Planck PR4. With the dark-energy sector fixed by $\varphi$ and $\pi$,
-  SSEE reproduces the acoustic peaks at $\ell=220,\,536,\,812$ at a quality
+  SSEE reproduces the acoustic peaks at $\ell=220,\,535,\,810$ at a quality
   indistinguishable from $\Lambda$CDM (Table~\ref{tab:cmb}). The two-$\Om$
   structure is essential: replacing $\Om^{\mathrm{cosm}}=0.320$ with the bare
   $\Om^{\mathrm{dyn}}=0.160$ shifts every peak by ${\sim}10\%$.}
@@ -524,8 +524,8 @@ present-day amplitude
 in the single-sector treatment. This sits in $\sim2\sigma$--$2.8\sigma$ tension
 with weak-lensing measurements~\citep{KiDS2021,DESY32022}. A two-sector treatment, in which
 a free-streaming component reduces the effective suppression, raises the
-amplitude to $\sigma_8=0.794$, $S_8=0.820$, which remains in $\sim2.6\sigma$
-tension. Including baryonic feedback via HMcode-2020~\citep{Mead2021} brings the lensing
+amplitude to $\sigma_8=0.742$, $S_8=0.766$, within $0.01\sigma$ of the KiDS-1000
+value. Including baryonic feedback via HMcode-2020~\citep{Mead2021} brings the lensing
 amplitude to $S_8=0.758$, formally consistent with DES-Y3 ($0.06\sigma$), but we
 treat this as an indicative estimate rather than a clean prediction: the
 two-sector mass and the feedback amplitude are calibrated quantities, not
@@ -650,14 +650,16 @@ Seven candidate mechanisms have been examined and ruled out; the search
 continues. The value is not fitted, but its origin is open.
 
 \item \textbf{The $\varphi$-dark-matter mass (OP-9).} The mass
-$m_\varphi\simeq5.60$~eV used in the extension sector is a phenomenological
-ansatz. Its arithmetic closes numerically, but it rests on a dimensionally
-delicate combination and lacks a first-principles derivation from the field
-potential. The growth-sector predictions that would descend from it---notably a
-free-streaming step in the matter power spectrum near $k_{\rm fs}\simeq
-0.493~\hMpc$, testable by DESI Y3 and Euclid---are deferred to future work and
-deliberately excluded from the core register of Table~\ref{tab:predictions-core}
-until the ansatz is derived.
+$m_\varphi\simeq36.95$~eV used in the extension sector follows from the
+algebraic relation $m_\varphi=\Sigma m_\nu^{\rm active}\,(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})$,
+a dimensionally consistent product of a neutrino mass scale and a pure
+$(\varphi,\pi)$ number. What remains open is the UV origin of the
+multiplier---a first-principles derivation from the field potential. The
+growth-sector predictions that descend from it---notably a free-streaming step
+in the matter power spectrum near $k_{\rm fs}\simeq 0.659~\hMpc$, testable by
+DESI Y3 and Euclid---are deferred to future work and deliberately excluded from
+the core register of Table~\ref{tab:predictions-core} until the multiplier is
+derived.
 
 \item \textbf{The $\beta_c=-\mathrm{AURA}$ coupling (OP-7).} The conformal
 coupling agrees with $-\mathrm{AURA}=-3.998$ to $0.2\%$. We present this as a

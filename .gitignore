@@ -61,3 +61,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Claude Code — config y locks locales, no parte del repo
+.claude/

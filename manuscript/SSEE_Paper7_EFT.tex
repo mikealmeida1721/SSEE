@@ -473,8 +473,11 @@ The effective growth suppression at $a = 1$ is captured by the ratio
 $G_{2s} \equiv D_1^{\rm SSEE}(\Omega_m{=}0.320) /
 D_1^{\Lambda\rm CDM}(\Omega_m{=}0.315) = 0.979$
 derived in Paper~6 via the two-sector background (not from a
-perturbative $G_{\rm eff}$ formula), and leads to
+perturbative $G_{\rm eff}$ formula), and leads to the analytic estimate
 $\sigma_{8,\rm eff} = \sigma_{8,\rm in}\,G_{2s} = 0.811\times 0.979 = 0.794$.
+The canonical Paper~6 titular value, from the direct two-sector
+\textsc{class} run, is $\sigma_{8,\rm eff}=0.742$ ($S_{8,\rm eff}=0.766$,
+within $0.01\sigma$ of KiDS-1000).
 
 % ─── §8 Bellini-Sawicki Dictionary ──────────────────────────────────────────
 \section{Bellini-Sawicki Classification}
@@ -542,9 +545,12 @@ self-consistent within their respective computational frames:
     kinetic energy.
   \item $\alpha_K^{\rm eff} \approx 0.4033$: the \emph{effective background}
     value $3\Omde(1+w_0) = 3\times0.840\times0.160$, using the \emph{observed}
-    CPL parameter $w_0=-0.840$.  This is confirmed to $0.005\%$ by the
-    EFTCAMB implementation (Paper~7+EFTCAMB validation, \texttt{src/ssee\_eftcamb\_validation.py})
-    and is the value cited in Papers~8--10 and the cross-paper constant register.
+    CPL parameter $w_0=-0.840$.  This value is confirmed to $0.005\%$ by the
+    independent \textsc{hi\_class} cross-check (Paper~3,
+    \texttt{src/p03\_cmb/ssee\_paper3\_hiclass\_check.py}) and is reproduced with
+    ghost-free, gradient-stable evolution by the EFTCAMB validation
+    (\texttt{src/p07\_eft/ssee\_eftcamb\_validation.py});
+    it is the value cited in Papers~8--10 and the cross-paper constant register.
 \end{itemize}
 The two values differ because the conformal coupling $\bc = -\AURA$ shifts
 $w_{\rm eff}$ away from $w_\phi$ through the energy-transfer four-current
@@ -586,12 +592,14 @@ $\alpha_T$ & $0$ (exact) & $G_5 = 0$ & $<10^{-15}$ \citep{gw170817_2017} & $<10^
 $\alpha_M$ & $0$ (exact) & $G_4 = \Mpl^2/2$ & $<0.3$ & $<0.05$ \\
 $\alpha_B$ & $0$ (exact) & $G_3 = 0$ & $<0.5$ & $<0.05$ \\
 $\alpha_K(z{=}0)$, bare-field & $0.073^{a}$ & $3\Omde(1+w_\phi)$ & $<0.1$ (Euclid) & $<0.1$ \\
-$\alpha_K(z{=}0)$, effective  & $0.4033^{b}$ & $3\Omde(1+w_0)$  & — (EFTCAMB confirms) & — \\
+$\alpha_K(z{=}0)$, effective  & $0.4033^{b}$ & $3\Omde(1+w_0)$  & — (hi\_class confirms) & — \\
 \bottomrule
 \end{tabular}
 \footnotesize{$^{a}$ Bare-field value, $w_\phi=-0.971$ from this paper's numerics.
-$^{b}$ Effective value $w_0=-0.840$; confirmed to $0.005\%$ by EFTCAMB
-(\texttt{src/ssee\_eftcamb\_validation.py}); this is the observable cited in Papers~8--10.
+$^{b}$ Effective value $w_0=-0.840$; confirmed to $0.005\%$ by the
+\textsc{hi\_class} cross-check (Paper~3) and shown ghost-free/gradient-stable
+in EFTCAMB (\texttt{src/p07\_eft/ssee\_eftcamb\_validation.py});
+this is the observable cited in Papers~8--10.
 See the two-value discussion in §\ref{sec:alphak}.}
 \end{table}
 

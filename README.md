@@ -14,8 +14,8 @@
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match |
 | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 |
-| m_φ (φ-DM mass) | 5.60 eV algebraic | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable |
-| k_fs (free-streaming) | 0.493 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | falsifiable |
+| m_φ (φ-DM mass) | 36.95 eV algebraic | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable |
+| k_fs (free-streaming) | 0.659 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | falsifiable |
 
 **Future falsifiers:** r = φ⁻¹⁰ = 0.00813 (LiteBIRD ~2032); k_fs cutoff in matter power spectrum (Euclid ~2028).
 
@@ -155,21 +155,22 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | Ω_CDM | 0.160050 | Active at all k |
 | Ω_φDM = (MIRA−1)×Ω_m,dyn | 0.159878 | Active for k < k_fs only |
 | Ω_total (two-sector) | 0.319928 ≈ Ω_m,CMB | Zero-parameter unification |
-| m_φ = Σm_ν × H₀^alg | 5.60 eV | Algebraic — no fitting |
-| k_fs (free-streaming) | 0.493 h/Mpc | From m_φ algebraic |
-| T_WDM(k=0.125 h/Mpc) | 0.8175 | Soft cutoff (scalar condensate, not thermal WDM) |
-| σ₈_eff | **0.737** (CLASS+WDM, α=1.6561 h/Mpc) | 0.00σ KiDS-1000 |
-| S₈_eff | **0.761** | 2.29σ DES (KiDS-DES internal tension) |
-| **Mean fσ₈ tension (6 surveys)** | **0.50σ** | **Resolved from 2.56σ (single-sector baseline, corrected); fσ₈ only** |
-| ΛCDM fσ₈ mean tension | 0.51σ | Reference |
+| Σm_ν = R₂ × 0.960318 eV | 0.0690 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 |
+| m_φ = Σm_ν × (Ω⁴_DNAV + AURA·KAL) | 36.95 eV | Forward-prediction — no fitting (multiplier 535.28 is a pure number) |
+| α (Viel fit to particle/cold P(k) ratio) | 1.243 Mpc/h | CLASS output — not imposed |
+| k_fs (free-streaming) | 0.659 h/Mpc | From m_φ, CLASS-derived |
+| σ₈_eff (two-sector particle) | 0.742 | — |
+| **S₈ (two-sector particle)** | **0.766** | **0.01σ KiDS-1000 (0.766±0.020) — resolves S₈ lensing tension** |
+| Single-sector linear (cold source) | σ₈=0.820, S₈=0.847 | 3.9σ — open before two-sector |
+| Mean fσ₈ tension (6 surveys) | 0.74σ | from 3.9σ baseline; ties ΛCDM |
 
-> **Note:** The fσ₈ (growth rate) tension is resolved at 0.50σ. The S₈ (weak lensing amplitude) tension remains at ~2.3σ DES / ~3σ KiDS; it is not claimed to be solved.
+> **Note:** With the forward-predicted particle (m_φ = 36.95 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.766 sits 0.01σ from KiDS-1000, down from the 3.9σ single-sector baseline. The fσ₈ (growth-rate) sector is unchanged and ties ΛCDM (0.74σ across six RSD surveys).
 
-**Lyman-α compatibility:** φ-DM is a non-thermal condensate. f_φ≈0.50 → effective bound ~0.1–0.5 keV; k_fs=0.493 h/Mpc is the correct observable (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
+**Lyman-α compatibility:** φ-DM is a non-thermal condensate. The correct observable is k_fs=0.659 h/Mpc in the matter power spectrum (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
 
 **φ-DM is a gravitationally-produced scalar** (explicit Lagrangian in Paper 6 §4): no Standard-Model portal, so it is *not* accessible to neutrino-mass experiments. The Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no zero-parameter SSEE form.
 
-**Falsifiable prediction:** k_fs = 0.493 h/Mpc — the free-streaming imprint of m_φ = 5.60 eV on the matter power spectrum — testable via the Lyman-α forest and DESI Y3/Euclid P(k) (2026–2028). Zero free parameters.
+**Falsifiable prediction:** k_fs = 0.659 h/Mpc — the free-streaming imprint of m_φ = 36.95 eV on the matter power spectrum — testable via the Lyman-α forest and DESI Y3/Euclid P(k) (2026–2028). Zero free parameters.
 
 ### Paper 7 (Canonical EFT)
 

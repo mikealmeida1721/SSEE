@@ -60,7 +60,7 @@ bridges the two sectors through a closed algebraic relation:
 \end{equation*}
 within $0.63\sigma$ of the Planck~2018 value ($0.3153\pm0.0073$) and within $0.05\%$
 of the independent Paper~4 prediction $(\pi-\varphi)/(\pi+\varphi)=0.3201$.
-While the fundamental parameters $w_0$ and $w_a$ are algebraically fixed, bridging the low-redshift dynamic sector and the high-redshift CMB sector requires an explicit phenomenological scaling. We introduce the algebraic mapping factor MIRA, which acts as a discrete structural constraint to set the effective high-redshift matter density, rather than a continuously fitted parameter; Paper~5 of this series establishes that the factor $1.9989$ cannot be sourced by classical Israel--Stewart fluid mechanics: neither linear perturbations ($\mathrm{MIRA}_{\rm num}\approx1$ at all sub-horizon scales) nor the background IS Friedmann equation (effective ratio $\approx3.04$) reproduce it. Paper~6 provides the physical basis via a two-sector dark matter structure $\Omega_{m}^{\rm CMB}=\Omega_{\rm CDM}+\Omega_{\phi\text{-DM}}$, where $\Omega_{\phi\text{-DM}}=(\mathrm{MIRA}-1)\,\Omega_{m,\rm dyn}=0.160$ is derived algebraically from a second dark matter component with mass $m_\phi=5.60\,\mathrm{eV}$ (Section~\ref{sec:mira}).
+While the fundamental parameters $w_0$ and $w_a$ are algebraically fixed, bridging the low-redshift dynamic sector and the high-redshift CMB sector requires an explicit phenomenological scaling. We introduce the algebraic mapping factor MIRA, which acts as a discrete structural constraint to set the effective high-redshift matter density, rather than a continuously fitted parameter; Paper~5 of this series establishes that the factor $1.9989$ cannot be sourced by classical Israel--Stewart fluid mechanics: neither linear perturbations ($\mathrm{MIRA}_{\rm num}\approx1$ at all sub-horizon scales) nor the background IS Friedmann equation (effective ratio $\approx3.04$) reproduce it. Paper~6 provides the physical basis via a two-sector dark matter structure $\Omega_{m}^{\rm CMB}=\Omega_{\rm CDM}+\Omega_{\phi\text{-DM}}$, where $\Omega_{\phi\text{-DM}}=(\mathrm{MIRA}-1)\,\Omega_{m,\rm dyn}=0.160$ is derived algebraically from a second dark matter component with mass $m_\phi=36.95\,\mathrm{eV}$ (Section~\ref{sec:mira}).
 Running CAMB with this two-sector background reproduces acoustic peaks at
 $\ell=220,\,536,\,812$ (Planck: $220,\,{\sim}540,\,{\sim}810$) and yields
 $\chi^2_r=1.047$ vs.\ $\Lambda$CDM's $1.043$ over 1971 TT multipoles.
@@ -430,7 +430,7 @@ Parameter & Value & Source \\
 $H_0$ [km/s/Mpc] & 67.08 & SSEE MCMC (this work) \\
 $\Omega_b h^2$ & 0.02237 & Planck 2018 prior \\
 $\Omega_{m,\mathrm{CMB}}$ & 0.3199 & $\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$ \\
-$\sum m_\nu^{\rm active}$ [eV] & 0.0824 & SSEE algebraic (Paper~4) \\
+$\sum m_\nu^{\rm active}$ [eV] & 0.0690 & SSEE algebraic (Paper~4) \\
 $w_0$ & $-0.8399$ & $-T_r/M_v$ \\
 $w_a$ & $-0.6700$ & $-P_{sc}/K_v$ \\
 $n_s$ & $1-\varphi^{-7}=0.96556$ & SSEE algebraic (Paper~4) \\
@@ -673,7 +673,7 @@ Minimizing over $H_0 \in [66.5, 67.5]$ yields a true minimum for SSEE at $H_0 = 
 Applying the BIC penalty for the differing degrees of freedom:
 \begin{equation}
     \label{eq:bic_cobaya}
-    \Delta\mathrm{BIC} = 3.793 + (2 - 6)\ln(6469) = -31.3.
+    \Delta\mathrm{BIC} = 3.799 + (2 - 6)\ln(6469) = -31.3.
 \end{equation}
 A $\Delta\mathrm{BIC} < -10$ constitutes decisive evidence on the Jeffreys scale. Even under a hyper-conservative penalty where SSEE is assigned $k=4$ (treating the fixed $\tau$ and $A_s$ priors as effectively fitted parameters), the result remains $\Delta\mathrm{BIC} = -13.8$, still strongly favouring the SSEE framework. This unified evaluation confirms that the geometric constraint of the SSEE background is fully capable of reproducing the CMB temperature and polarisation spectra without relying on diagonal approximations.
 
@@ -836,7 +836,7 @@ $\gamma_\mathrm{IS}=0.554\approx\gamma_\Lambda$, yielding a negligible IS
 correction and $S_8\approx0.847$ ($0.6\sigma$ below Planck),
 both predictions maintaining the $\sim 3\text{--}4\,\sigma$ tension with KiDS-1000
 and DES~Y3 that persists in $\Lambda$CDM; Paper~6 resolves this through the
-two-sector $\varphi$-DM mechanism ($S_{8,\mathrm{eff}}=0.761$).
+two-sector $\varphi$-DM mechanism ($S_{8,\mathrm{eff}}=0.766$).
 
 \begin{table}[ht]
 \centering
@@ -1031,10 +1031,12 @@ $\chi^2_r=0.122$ on galaxy clusters), SSEE-V3.6 passes all three major
 cosmological probes — BAO, cluster masses, and CMB. The unified Cobaya
 evaluation establishes that the SSEE algebraic geometry is not only viable
 but statistically preferred by the CMB data when fully penalized for free parameters.
-The SSEE dynamic-sector value $H_0^{\mathrm{local}}=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$
-(Paper~9) addresses the persistent Hubble tension
-\citep{Verde2019,DiValentino2021,Riess2022} at the $0.17\sigma$ level,
-independent of the CMB-sector constraint reported here.
+The SSEE canonical dynamic-sector value $H_0^{\mathrm{local}}=71.90$~km\,s$^{-1}$\,Mpc$^{-1}$
+(Paper~9, MIRA-derived) addresses the persistent Hubble tension
+\citep{Verde2019,DiValentino2021,Riess2022} at the $1.10\sigma$ level,
+independent of the CMB-sector constraint reported here; the Type~P numerical
+coincidence $H_0^{\mathrm{local,\,alg}}=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$
+($0.17\sigma$) is reported there for comparison only.
 
 \bigskip
 \noindent\textbf{Data Availability.}

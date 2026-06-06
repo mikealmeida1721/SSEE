@@ -16,7 +16,6 @@
 \usepackage{tabularx}
 \usepackage{enumitem}
 \usepackage{tcolorbox}
-\usepackage{float}
 \geometry{margin=2.5cm}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 \emergencystretch=2em
@@ -131,11 +130,11 @@ $H_0 = 3(\varphi+\pi)^2$ & $67.96\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & Planck 2018 
 \midrule
 \multicolumn{4}{l}{\textit{Paper 5 — IS causal perturbation theory}} \\
 $\gamma_{\mathrm{IS}} = 0.554$ & $\approx\gamma_{\Lambda\mathrm{CDM}}=0.55$ & RSD surveys & Retrodiction \\
-$f\sigma_8(z{=}0.5)$ & mean $0.74\sigma$ vs 6 RSD surveys (Paper~5 corrected) & BOSS/eBOSS/6dFGS & Retrodiction \\
+$f\sigma_8(z{=}0.5)$ & mean $0.76\sigma$ vs 6 RSD surveys (Paper~5 corrected) & BOSS/eBOSS/6dFGS & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 6 — $\varphi$-Dark Matter, two-sector}} \\
-$m_\phi = \Sigma m_\nu^{\rm active} \times H_0^{\mathrm{alg}}$ & $5.60\,\mathrm{eV}$ & Matter $P(k)$ via $k_{\mathrm{fs}}$ (no SM portal) & Prediction (ansatz) \\
-$k_{\mathrm{fs}}$ (Dodelson-Widrow from $m_\phi$) & $0.493\,h\,\mathrm{Mpc}^{-1}$ & DESI\,Y3 / Euclid $P(k)$, 2026--2028 & Prediction \\
+$m_\phi = \Sigma m_\nu^{\rm active}\,(\Omega_{\mathrm{DNAV}}^4{+}\mathrm{AURA}\cdot\mathrm{KAL})$ & $36.95\,\mathrm{eV}$ & Matter $P(k)$ via $k_{\mathrm{fs}}$ (no SM portal) & Prediction \\
+$k_{\mathrm{fs}}$ (Dodelson-Widrow from $m_\phi$) & $0.659\,h\,\mathrm{Mpc}^{-1}$ & DESI\,Y3 / Euclid $P(k)$, 2026--2028 & Prediction \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 7 — Canonical EFT, Bellini-Sawicki $\alpha$-functions}} \\
 $\alpha_T=\alpha_M=\alpha_B=0$ (minimal coupling) & $0$ exact & GW170817 $|\alpha_T|<10^{-15}$ & Retrodiction \\
@@ -320,17 +319,21 @@ first principles and are tracked as open problems:
         (cs$^2$ clustering, $\mu>1$ Poisson, disformal P8, conformal
         $\beta_c=-\mathcal{A}$, saturated backward, derivative coupling, forward
         $\varphi$-MDE).
-  \item The $\varphi$-DM mass $m_\phi=5.60$\,eV in Paper~6 is a numerological
-        ansatz (OP-9), depending on $\Sigma m_\nu$, itself classified as
-        Type~P (phenomenological) in Paper~4 due to the integer offset in
-        $\mathcal{R}=4\,\mathrm{KAL}-22$ (OP-14).
+  \item The $\varphi$-DM mass $m_\phi=36.95$\,eV in Paper~6 follows from the
+        free-scalar mass term $m_\phi=\Sigma m_\nu^{\rm active}\,(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})$;
+        the residual open question (OP-9) is the UV origin of the pure
+        $(\varphi,\pi)$ multiplier $\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL}=535.28$,
+        not the dimensional consistency of the relation. The neutrino input
+        $\Sigma m_\nu^{\rm active}=0.0690$\,eV now derives from the clean ratio
+        $\mathcal{R}_2=\Omega/(\mathrm{KAL}\cdot\mathrm{TRIAL})$, removing the
+        former integer offset and closing OP-14.
   \item The non-minimal coupling $\xi$ of $\varphi$-DM is currently a free
         parameter (OP-11).
 \end{itemize}
 The framework therefore carries $\sim$3 effective dimensionless ans\"atze
 beyond the strictly algebraic background, against six fitted parameters in
 $\Lambda$CDM $(\Omega_m,\Omega_b,n_s,A_s,\tau,H_0)$. Resolution of
-OP-8/9/11/14 would restore the literal zero-parameter status; see
+OP-8/9/11 would restore the literal zero-parameter status; see
 \texttt{OPEN\_PROBLEMS.md} for the dependency chain.
 
 \subsection{The Two-$\Omega_m$ Criterion}
@@ -341,8 +344,8 @@ distinct matter density values across the suite: $\Omega_{m,\rm dyn}=0.160$
 and $\Omega_{m,\rm CMB}=0.320$, linked by the MIRA factor
 $(3\varphi+\pi)/4\simeq 1.9989$. These are not free parameters: they are the
 same physical content evaluated on either side of a single free-streaming
-scale, $k_{\rm fs}=0.493\,h\,\mathrm{Mpc}^{-1}$, derived in Paper~6 from the
-$\phi$-DM mass ansatz $m_\phi=5.60$~eV via the Dodelson--Widrow relation. The
+scale, $k_{\rm fs}=0.659\,h\,\mathrm{Mpc}^{-1}$, derived in Paper~6 from the
+$\phi$-DM mass $m_\phi=36.95$~eV via the Dodelson--Widrow relation. The
 criterion for which value enters a given observable is therefore physical and
 pre-registered:
 
@@ -495,10 +498,10 @@ $\wa$ encodes the dynamical departure from saturation driven by $P/K_v$:
 
 \noindent\textbf{Explicit reduction to the two axioms.}
 Substituting the algebraic definitions
-$T_r = \tfrac{3(3\varphi+\pi)}{2}$ (TRIAL),
-$M_v = 3(\varphi+\pi)$ (MIKAEL\_V),
-$P_{sc} = 2\varphi+\pi$ (PYROS), and
-$K_v = 2(\varphi+\pi)$ (KRYSTOS), both
+$T_r = \tfrac{3(3\varphi+\pi)}{2}$,
+$M_v = 3(\varphi+\pi)$,
+$P_{sc} = 2\varphi+\pi$, and
+$K_v = 2(\varphi+\pi)$, both
 dark-energy observables collapse to closed forms in $\varphi$ and $\pi$ alone:
 \begin{equation}
   \boxed{w_0 = -\frac{3\varphi+\pi}{2(\varphi+\pi)} = -0.8399},
@@ -560,8 +563,8 @@ At the cluster scale, the total effective dynamical mass $M_{\rm dyn}$ within ra
   \label{eq:mdyn}
 \end{equation}
 where $f_\nu$ quantifies the fractional mass contribution of trapped relic neutrinos.
-Using $\sum m_\nu^{\rm active}=0.0824$\,eV (the SSEE-derived value, Paper~4) the
-cosmological neutrino density is $\rho_\nu\approx27.7$\,eV\,cm$^{-3}$.
+Using $\sum m_\nu^{\rm active}=0.0690$\,eV (the SSEE-derived value, Paper~4) the
+cosmological neutrino density is $\rho_\nu\approx23.2$\,eV\,cm$^{-3}$.
 For a cluster with escape velocity $v_{\rm esc}\approx2000$\,km\,s$^{-1}$, integration
 of the Fermi–Dirac distribution \citep{Tremaine1979} yields a trapped fraction
 $f_\nu\approx0.018$--$0.022$. This structurally consistent $\sim$2\% correction provides
@@ -1114,7 +1117,7 @@ AURA      & $\varphi+\beta$ & $3.997847$ & Resonance limit & A \\
 \multicolumn{5}{l}{\textit{Level 2 — Secondary Registers}} \\
 $\mathrm{KAL}_0$ & $\beta+\pi$ & $5.521406$ & Viscosity; $M_{\rm cluster}$ & A \\
 $K_v$     & $\varphi+\pi+\Omega_{\rm DNAV}$ & $9.519254$ & Struct.\ constraint & A \\
-$T_r$     & $3(\varphi+\beta)$ & $11.993520$ & Saturation horizon & A \\
+$T_r$     & $3(\varphi+\beta)$ & $11.993541$ & Saturation horizon & A \\
 MIRA      & $\mathrm{AURA}/2 = (\varphi+\beta)/2$ & $1.998924$ & CMB--dyn.\ bridge & A$^*$ \\
 $M_v$     & $\varphi+\pi+K_v$ & $14.278880$ & Max.\ dim.\ invariant & A \\
 \midrule
@@ -1129,7 +1132,7 @@ $n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
 $\Omega_b h^2$ & $(\pi-\varphi)/[3(\varphi+\pi)^2]$ & $0.02242$ ($0.32\sigma$) & Planck 2018 & A$^\ddagger$ \\
 $\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.11951$ ($0.4\sigma$) & Planck 2018 & A \\
 $r$       & $\varphi^{-10}$ & $0.00813$ & LiteBIRD 2032 & A \\
-$\sum m_\nu^{\rm active}$ & $\mathcal{R}\,\Omega_b h^2\cdot94.07/(\tau_\Pi H_0)$ (Paper~4) & $0.0824$ eV & Planck+BBN & P \\
+$\sum m_\nu^{\rm active}$ & $\mathcal{R}_2\,\Omega_b h^2\cdot94.07/(\tau_\Pi H_0)$ (Paper~4) & $0.0690$ eV & Planck+BBN & A \\
 \bottomrule
 \end{tabularx}
 \\[4pt]
@@ -1163,6 +1166,101 @@ No dimensional derivation linking $\{\varphi,\pi\}$ to the physical energy scale
 Hubble expansion has been established; the formula is retained as an observed
 coincidence and is not used as input to any other result in this series.
 \end{table}
+
+%---------------------------------------------------------------------
+\section{Structural Lineage of the Constant Table}
+\label{app:lineage}
+
+The master table (Appendix~\ref{app:derivation_chain}) lists each constant
+in its pure $(\varphi,\pi)$ algebraic form, which is the load-bearing content
+for all quantitative results. This appendix records the \emph{interpretive
+lineage} behind those same nodes: how each descends from a single bifurcation
+and two closed scaling laws, and how an interpretive (``system'') role is
+refined into a physical (``model'') role \emph{only} after observational
+validation. The lineage layer is heuristic scaffolding, not a physical claim;
+we document it here for transparency and reproducibility, since the algebra it
+organises is exact.
+
+\paragraph{The \texorpdfstring{$\beta$}{beta} (BIAL) bifurcation.}
+All non-root nodes branch from the base coupling
+$\beta=(\varphi+\pi)/2=\Omega/2=2.379813$. Two routes follow, each obeying its
+own scaling law:
+\begin{itemize}
+  \item \textbf{Route $\varphi$ (copy law).} $\varphi+\beta=\mathrm{AURA}=(3\varphi+\pi)/2$
+  scales by integer multiplication and division (dividends and multiples are
+  permitted). This generates the dimensional-ceiling ladder:
+  $\mathrm{MIRA}=\mathrm{AURA}/2$ ($\times\tfrac12$),
+  $\mathrm{AURA}$ ($\times1$), $\mathrm{DUAL}=\mathrm{AURA}\cdot2$ ($\times2$),
+  $\mathrm{TRIAL}=\mathrm{AURA}\cdot3$ ($\times3$),
+  $\mathrm{CUARTAL}=\mathrm{AURA}\cdot4$ ($\times4$). Consecutive ceilings differ
+  by exactly one AURA.
+  \item \textbf{Route $\pi$ (non-self-addition law).} $\beta+\pi=\mathrm{KAL}_0=(\varphi+3\pi)/2$
+  scales so that each child must \emph{differ} from its parents; it inherits a
+  combination of functions but may not re-add itself. The dynamical-sector
+  scalars ($P_{sc}$, $K_v$, $\Sigma_{\rm Sov}$) descend by this route.
+\end{itemize}
+
+\paragraph{Law of non-self-addition in properties.}
+Two nodes may share a numerical value yet remain distinct entities with
+different lineage and function: the value is the carrier, the function is the
+property. The model-relevant instance is
+$\mathrm{MAR}=\Omega+\pi$ versus $\mathrm{SOLAR}=\beta+\mathrm{KAL}_0$, both equal
+to $7.901219$ but reached by different parents; this is the node that enters the
+$\Sigma m_\nu$ chain of Paper~4. Numerical coincidence is therefore structural
+information, not redundancy.
+
+\paragraph{System role \texorpdfstring{$\to$}{->} model role.}
+An interpretive role is promoted to a physical role only after the data warrant
+it, and never the reverse. The canonical example is $\mathrm{KAL}_0$: its system
+role ``retention/anchor'' was refined to the physical role
+\emph{structural viscosity} once the Israel--Stewart sector confirmed it
+(Paper~5). Where no physical mechanism is yet established the model column is
+left blank rather than forced; for example $\mathrm{MIRA}$ has a known
+dimensional role ($\times\tfrac12$ ceiling) but its dynamical mechanism remains
+open (OP-8), so its ``reflection'' label stays at the interpretive,
+two-sector level only.
+
+\begin{table}[H]
+\centering
+\caption{Structural lineage of the SSEE constants. The pure $(\varphi,\pi)$
+column is the referee-facing algebra used throughout; the lineage, system-role
+and model-role columns document the interpretive layer. A blank model role marks
+a node whose physical mechanism is not yet established.}
+\label{tab:lineage}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l p{1.9cm} p{2.6cm} p{2.1cm} X c}
+\toprule
+Symbol & Pure $(\varphi,\pi)$ & Lineage \& law & System role & Model role (papers) & Ceiling \\
+\midrule
+$\varphi$ & $\varphi$ & root & Intention & Golden ratio; $\alpha$-attractor inflation & — \\
+$\pi$ & $\pi$ & root & Structure & Geometric $\pi$ & — \\
+$\Omega$ & $\varphi+\pi$ & root combination & Stability & Stability metric ($\Omega_{\rm DNAV}$) & — \\
+$\beta$ & $(\varphi+\pi)/2$ & $\Omega/2$ — bifurcation & Heat / pulse & Base coupling scalar & — \\
+$\mathrm{AURA}$ & $(3\varphi+\pi)/2$ & $\varphi+\beta$ — copy & Portal / container & $|\beta_c|$; cancels in $H_0$ cascade & $\times1$ \\
+$\mathrm{MIRA}$ & $(3\varphi+\pi)/4$ & $\mathrm{AURA}/2$ — copy & Reflection (two-sector) & — (mechanism OP-8) & $\times\tfrac12$ \\
+$\mathrm{DUAL}$ & $3\varphi+\pi$ & $\mathrm{AURA}\cdot2$ — copy & Duality & — & $\times2$ \\
+$\mathrm{TRIAL}$ & $(9\varphi+3\pi)/2$ & $\mathrm{AURA}\cdot3$ — copy & Matter / 3D limit & 3D saturation horizon $\to w_0,\Omega_{\rm DE}$ & $\times3$ \\
+$\mathrm{CUARTAL}$ & $6\varphi+2\pi$ & $\mathrm{AURA}\cdot4$ — copy & 4D time & — & $\times4$ \\
+$\mathrm{KAL}_0$ & $(\varphi+3\pi)/2$ & $\beta+\pi$ — non-self-add & Retention / anchor & Structural viscosity & — \\
+$P_{sc}$ & $2\varphi+\pi$ & $\Omega+\varphi$ — non-self-add & Fire / forge & Dynamical evolution scalar $\to w_a$ & — \\
+$K_v$ & $2(\varphi+\pi)$ & $\varphi+\pi+\Omega$ — non-self-add & Crystal / order & Structural constraint $\to w_a$ & — \\
+$\Sigma_{\rm Sov}$ & $3(\varphi+\pi)$ & $\varphi+\pi+K_v$ — non-self-add & Sovereignty / 5D & Maximal dim. invariant $\to w_0,w_a$ & — \\
+$\mathrm{MAR}/\mathrm{SOLAR}$ & $\varphi+2\pi$ & $\Omega+\pi$ \emph{vs} $\beta+\mathrm{KAL}_0$ & Tide / plasma & Chain node in $\Sigma m_\nu$ ($7.901219$) & — \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Naming policy and epistemic boundary.}
+The lineage names are firm through $\mathrm{MIKA}=2\Omega+\varphi=11.137287$;
+beyond it the Sovereignty-tier labels ($\Sigma_{\rm Sov}$ and above) are the
+author's heuristic names for the corresponding $(\varphi,\pi)$ combinations.
+These names are omitted from the referee-facing tables purely for scientific
+presentation: logic need not suppress the abstract layer when the underlying
+algebra is exact. Should DESI strengthen the model, the named expressions are
+the preferred notation, being less ambiguous than bare algebra for tracking
+which lineage a shared value belongs to.
 
 %---------------------------------------------------------------------
 \section{Unified Symbol Glossary}

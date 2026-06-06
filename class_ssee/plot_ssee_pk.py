@@ -1,6 +1,6 @@
 """
 SSEE-V3.6 — Fase 1B: Matter Power Spectrum P(k) Comparison
-Compares SSEE vs ΛCDM P(k) and identifies the phi-DM free-streaming signature at k_fs = 0.493 h/Mpc
+Compares SSEE vs ΛCDM P(k) and identifies the phi-DM free-streaming signature at k_fs = 0.659 h/Mpc
 """
 
 import numpy as np
@@ -29,7 +29,7 @@ k_lcdm,  P_lcdm  = lcdm_pk[:,0],  lcdm_pk[:,1]
 k_nm,    P_nm    = nomira_pk[:,0], nomira_pk[:,1]
 
 # ── Key scales ────────────────────────────────────────────────────────────────
-k_fs   = 0.493   # phi-DM free-streaming scale (Paper 6)
+k_fs   = 0.659   # phi-DM free-streaming scale (Paper 6)
 k_eq   = 0.016   # matter-radiation equality
 k_bao  = 0.1     # BAO scale
 
@@ -50,7 +50,7 @@ ax_main.loglog(k_ssee, P_ssee,  color="#f78166", lw=2.4, label=r"SSEE+MIRA ($\Om
 ax_main.loglog(k_nm,   P_nm,    color="#e3b341", lw=1.4, ls="--", label=r"SSEE-noMIRA ($\Omega_m=0.160$)", alpha=0.8)
 
 # Vertical lines for key scales
-ax_main.axvline(k_fs,  color="#3fb950", lw=1.8, ls=":", alpha=0.9, label=rf"$k_{{fs}}=0.493\,h/\mathrm{{Mpc}}$ (φ-DM free-streaming)")
+ax_main.axvline(k_fs,  color="#3fb950", lw=1.8, ls=":", alpha=0.9, label=rf"$k_{{fs}}=0.659\,h/\mathrm{{Mpc}}$ (φ-DM free-streaming)")
 ax_main.axvline(k_bao, color="#d2a8ff", lw=1.2, ls="--", alpha=0.6, label=r"BAO scale $\sim 0.1\,h/\mathrm{Mpc}$")
 ax_main.axvline(k_eq,  color="#8b949e", lw=1.0, ls="--", alpha=0.5, label=r"$k_{eq} \sim 0.016\,h/\mathrm{Mpc}$")
 
@@ -64,7 +64,7 @@ ax_main.grid(True, which="both", alpha=0.2)
 ax_main.legend(loc="lower left", fontsize=8.5, framealpha=0.3, ncol=2)
 ax_main.set_title(
     "SSEE-V3.6 Matter Power Spectrum — CLASS Boltzmann (Fase 1B)\n"
-    r"Identifying the $\varphi$-DM free-streaming signature at $k_{fs}=0.493\,h/\mathrm{Mpc}$",
+    r"Identifying the $\varphi$-DM free-streaming signature at $k_{fs}=0.659\,h/\mathrm{Mpc}$",
     fontsize=12, pad=10)
 
 # Ratio panel
@@ -95,7 +95,7 @@ print("\n── P(k) Numerical Report ──────────────
 # Ratio at key scales
 for scale, label in [(0.01, "k=0.01 (large scale)"),
                      (0.1,  "k=0.10 (BAO scale)"),
-                     (0.493,"k=0.493 (k_fs)"),
+                     (0.659,"k=0.659 (k_fs)"),
                      (1.0,  "k=1.00 (non-linear)"),
                      (5.0,  "k=5.00 (deep non-linear)")]:
     if scale <= k_ssee[-1]:
@@ -104,6 +104,6 @@ for scale, label in [(0.01, "k=0.01 (large scale)"),
 
 # Suppression at k_fs
 supp = np.interp(k_fs, k_ssee, ratio)
-print(f"\n  ➤ Suppression at k_fs=0.493: {(1-supp)*100:.1f}% below ΛCDM")
+print(f"\n  ➤ Suppression at k_fs=0.659: {(1-supp)*100:.1f}% below ΛCDM")
 print(f"    This is the expected φ-DM free-streaming signature.")
 print("──────────────────────────────────────────────────────────────────")

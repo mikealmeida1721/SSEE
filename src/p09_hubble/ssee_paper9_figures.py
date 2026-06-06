@@ -23,11 +23,14 @@ AURA    = (3*phi + pi) / 2
 MIRA    = AURA / 2
 w0      = -AURA / Omega
 wa      = -(phi + pi + Omega) / (phi + pi + (phi + pi + Omega))  # ≈ -0.670
-H0_alg  = 3 * Omega**2                  # ≈ 67.96 km/s/Mpc
+H0_alg  = 3 * Omega**2                  # ≈ 67.96 km/s/Mpc  (Type-P, Postulate D)
+H0_MIRA = 67.068                        # km/s/Mpc  (physical: Planck plik_lite under SSEE bg, Paper 3)
 alphaK  = 3*AURA*(pi - phi) / (2*Omega**2)
 fscreen = alphaK / (3*MIRA)             # ≈ 0.06725
-H0_local_mult = H0_alg / (1 - fscreen)  # ≈ 72.86
-H0_local_add  = H0_alg * (1 + fscreen)  # ≈ 72.53
+# Canonical (physical) prediction: multiplicative screening on the physical H_MIRA
+H0_local_phys = H0_MIRA / (1 - fscreen)  # ≈ 71.90  (1.10σ SH0ES) ← titular
+# Type-P comparison: same mechanism on the algebraic H_alg
+H0_local_typeP = H0_alg / (1 - fscreen)  # ≈ 72.86  (0.17σ SH0ES) ← comparison only
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Figure 1: H0 tension ladder
@@ -45,12 +48,13 @@ measurements = [
     ("Masers\n(NGC 4258)",          73.9,  3.0,  3.0,   1),
     ("SH0ES\n(Riess 2022)",         73.04, 1.04, 1.04,  1),
     # SSEE predictions
-    ("SSEE IR\n(Papers 1–9, add.)", H0_local_add, 0.44, 0.44, 2),
-    ("SSEE IR\n(Papers 1–9, mult.)",H0_local_mult,0.44, 0.44, 2),
+    ("SSEE IR physical\n($H_{\\rm MIRA}$, 1.10$\\sigma$)", H0_local_phys, 0.44, 0.44, 2),
+    ("SSEE IR Type-P\n($H_{\\rm alg}$, 0.17$\\sigma$)",    H0_local_typeP, 0.44, 0.44, 3),
 ]
 
-colors = {0: '#2166ac', 1: '#d6604d', 2: '#1a9641'}
-labels_group = {0: 'CMB / BAO (early)', 1: 'Distance ladder (late)', 2: 'SSEE prediction'}
+colors = {0: '#2166ac', 1: '#d6604d', 2: '#1a9641', 3: '#7fbf7b'}
+labels_group = {0: 'CMB / BAO (early)', 1: 'Distance ladder (late)',
+                2: 'SSEE prediction (physical)', 3: 'SSEE Type-P (comparison)'}
 
 fig, ax = plt.subplots(figsize=(7, 5))
 
@@ -76,6 +80,7 @@ legend_handles = [
     mpatches.Patch(color=colors[0], label=labels_group[0]),
     mpatches.Patch(color=colors[1], label=labels_group[1]),
     mpatches.Patch(color=colors[2], label=labels_group[2]),
+    mpatches.Patch(color=colors[3], label=labels_group[3]),
 ]
 ax.legend(handles=legend_handles, loc='lower right', fontsize=8, framealpha=0.9)
 ax.invert_yaxis()
@@ -133,7 +138,7 @@ ax1.legend(fontsize=9, loc='upper right')
 
 ax2.plot(z, H0_local_z, color='#1a9641', lw=2,
          label=r'$H_0^{\rm local}(z)$ [SSEE mult.]')
-ax2.axhline(H0_local_mult, color='#1a9641', ls='--', lw=1, alpha=0.6)
+ax2.axhline(H0_local_typeP, color='#1a9641', ls='--', lw=1, alpha=0.6)
 ax2.axhline(H0_alg, color='#2166ac', ls=':', lw=1.2, alpha=0.8,
             label=fr'$H_0^{{\rm alg}}={H0_alg:.2f}$')
 ax2.axhline(73.04, color='#d6604d', ls='-.', lw=1.2, alpha=0.8,
@@ -158,6 +163,7 @@ print(f"  phi     = {phi:.10f}")
 print(f"  AURA    = {AURA:.10f}")
 print(f"  MIRA    = {MIRA:.10f}")
 print(f"  fscreen = {fscreen:.10f}")
-print(f"  H0_alg  = {H0_alg:.4f}")
-print(f"  H0_mult = {H0_local_mult:.4f}")
-print(f"  H0_add  = {H0_local_add:.4f}")
+print(f"  H0_alg       = {H0_alg:.4f}")
+print(f"  H0_MIRA      = {H0_MIRA:.4f}")
+print(f"  H0_phys (titular)  = {H0_local_phys:.4f}  (1.10 sigma SH0ES)")
+print(f"  H0_typeP (compare) = {H0_local_typeP:.4f}  (0.17 sigma SH0ES)")

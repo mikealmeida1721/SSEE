@@ -2,6 +2,19 @@
 OP-9 — Búsqueda sistemática de fórmula física dimensionalmente consistente
 para m_φ del sector φ-DM (Paper 6).
 
+⚠ SUPERADO (2026-06-04) — script histórico, no leer como estado actual.
+Esta búsqueda exploró la RUTA RETIRADA (target ~5 eV, k_fs=0.493) con valores
+hoy obsoletos: Σm_ν=0.0824 eV (viejo Type-P), Λ_SSEE=8.81 meV, m_φ≈5.60 eV.
+La partícula canónica φ-DM (Paper 6, 2026-06-04) cerró OP-9 por forward-prediction
+con CERO fiteo, dejando esta búsqueda moot:
+    R₂   = Ω_DNAV/(KAL·TRIAL) = 0.07188        (cantidad SSEE)
+    Σm_ν = R₂ · 0.9603 eV     = 0.0690 eV
+    m_φ  = Σm_ν · (Ω⁴_DNAV+AURA·KAL) = 0.0690 · 535.28 = 36.95 eV
+    k_fs = 0.659 h/Mpc
+Fuente autoritativa: VERIFICATION_LEDGER.md §Valores Canónicos + Paper 6.
+Se conserva como rastro de la exploración; los valores 0.0824/8.81/5.60 de abajo
+son del régimen retirado, NO canónicos.
+
 Contexto: La cascada H_alg→H_MIRA del 2026-05-24 AM intentó sustituir
 H_MIRA = 67.068 km/s/Mpc en m_φ = Σm_ν × H₀. Pero esa fórmula es
 DIMENSIONALMENTE INCONSISTENTE (eV × km/s/Mpc no es masa) — solo "funciona"

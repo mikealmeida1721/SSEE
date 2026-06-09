@@ -64,3 +64,6 @@ Thumbs.db
 
 # Claude Code — config y locks locales, no parte del repo
 .claude/
+
+# PDFs experimentales locales (no van al repo)
+archive/experimental/

@@ -38,10 +38,14 @@ PI           = np.pi
 KAL          = (PHI + 3*PI) / 2
 M_V          = 3*(PHI + PI)
 
-RHO_CRIT_eV4 = 8.10e-11
+# ρ_crit canónico SSEE: 8.10e-11 eV⁴ es el coeficiente pelado (h=1); la densidad
+# física se escala por h_MIRA² con h_MIRA=H_MIRA/100=0.67068 (Paper 3 Cobaya).
+H_MIRA       = 67.068                    # km/s/Mpc
+h_MIRA       = H_MIRA / 100.0            # 0.67068
+RHO_CRIT_eV4 = 8.10e-11 * h_MIRA**2     # ρ_crit en eV⁴ (SSEE, ×h²)
 V0           = 0.840 * RHO_CRIT_eV4
 LAMBDA_LOCK  = np.sqrt(3 * 0.160)
-M_UV         = 8.81e-3            # eV (valor canónico Paper 10)
+M_UV         = (5 * PHI**8 * RHO_CRIT_eV4)**0.25   # ≈ 9.62 meV (Paper 10)
 M4_UV        = M_UV**4
 
 H0_eV        = 1.45e-33

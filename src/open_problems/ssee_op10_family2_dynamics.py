@@ -22,12 +22,16 @@ import numpy as np
 
 # Constantes
 PHI          = (1 + np.sqrt(5)) / 2
-RHO_CRIT_eV4 = 8.10e-11
+# ρ_crit canónico SSEE: 8.10e-11 eV⁴ es el coeficiente pelado (h=1); la densidad
+# física se escala por h_MIRA² con h_MIRA=H_MIRA/100=0.67068 (Paper 3 Cobaya).
+H_MIRA       = 67.068                    # km/s/Mpc
+h_MIRA       = H_MIRA / 100.0            # 0.67068
+RHO_CRIT_eV4 = 8.10e-11 * h_MIRA**2     # ρ_crit en eV⁴ (SSEE, ×h²)
 V0           = 0.840 * RHO_CRIT_eV4
 M_PL_eV      = 2.435e27
 H0_eV        = 1.45e-33
 M_PHI_TARGET = 5.60   # eV
-M_UV         = (5 * PHI**8 * RHO_CRIT_eV4)**0.25
+M_UV         = (5 * PHI**8 * RHO_CRIT_eV4)**0.25   # ≈ 9.62 meV (Paper 10)
 
 print("=" * 76)
 print("OP-10 FASE 2 — Familia 2: consistency check jerárquico")

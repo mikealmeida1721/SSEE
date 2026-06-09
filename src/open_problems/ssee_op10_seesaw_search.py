@@ -19,8 +19,8 @@ Si los extremos son escalas SSEE definidas, el "punto medio" es derivable.
 
 ESCALAS PRESENTES EN SSEE:
   M_pl     = 2.435×10²⁷ eV       (Planck reducida)
-  M_UV     = 8.81 meV            (cutoff Paper 10)
-  V₀^(1/4) = 2.87 meV            (escala DE)
+  M_UV     = 9.62 meV            (cutoff Paper 10, ρ_crit×h_MIRA²)
+  V₀^(1/4) = 2.35 meV            (escala DE, ρ_crit×h_MIRA²)
   H₀       = 1.45×10⁻³³ eV       (Hubble hoy)
   Σm_ν     = 0.06903 eV          (neutrino sum, R2·0.960318)
   m_φ      = 36.95 eV            (φ-DM canónico, forward-derivation)
@@ -38,6 +38,13 @@ OMEGA  = PHI + PI
 AURA   = (3*PHI + PI) / 2
 TRIAL  = 3 * (PHI + (PHI + PI) / 2)
 
+# ρ_crit canónico SSEE: 8.10e-11 eV⁴ es el coeficiente pelado (h=1); la densidad
+# física se escala por h_MIRA²=0.67068² (Paper 3 Cobaya).
+H_MIRA       = 67.068
+h_MIRA       = H_MIRA / 100.0
+RHO_CRIT_eV4 = 8.10e-11 * h_MIRA**2
+M_UV_SSEE    = (5 * PHI**8 * RHO_CRIT_eV4)**0.25    # ≈ 9.62 meV (Paper 10)
+
 # m_φ canónico por forward-derivation (Paper 6 partícula canónica), cero fiteo
 SIGMA_MNU = (OMEGA / (KAL * TRIAL)) * 0.960318     # = 0.06903 eV
 MULT      = OMEGA**4 + AURA * KAL                  # = 535.26
@@ -46,8 +53,8 @@ M_PHI_CAN = SIGMA_MNU * MULT                       # = 36.95 eV
 # Escalas físicas SSEE (todas en eV)
 scales = {
     "M_pl":           2.435e27,
-    "M_UV":           8.81e-3,
-    "V0_quarter":     (0.840 * 8.10e-11)**0.25,   # ≈ 2.87 meV
+    "M_UV":           M_UV_SSEE,
+    "V0_quarter":     (0.840 * RHO_CRIT_eV4)**0.25,   # ≈ 2.35 meV
     "H0":             1.45e-33,
     "Sigma_mnu":      SIGMA_MNU,
     "m_e":            5.11e5,                      # electron mass (BSM ref)

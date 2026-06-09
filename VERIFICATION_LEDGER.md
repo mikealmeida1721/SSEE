@@ -422,7 +422,10 @@ dos valores internamente inconsistentes. El titular sigue a ~2.6σ. **ABIERTO.**
 
 1. **✓ valor:** f_screen = α_K/(3·MIRA) = (π−φ)/Ω² = 0.067253 — álgebra
    exacta, ya verificada en V-L2-13 y en la identidad cruzada de Capa 2.
-   H₀,local = H₀^alg/(1−f_screen) = 72.86 km/s/Mpc cierra numéricamente.
+   **Canónico (espeja Paper 9, Eq. H0local + Tabla L397):**
+   H₀,local = H₀^MIRA/(1−f_screen) = 67.068/0.93275 = **71.90 km/s/Mpc**
+   (1.10σ SH0ES). La ruta Type-P H₀^alg/(1−f_screen) = 72.86 km/s/Mpc es
+   **comparación** (Paper 9 Tabla L398), NO el valor canónico.
 2. **✓ forma:** que la corrección sea **multiplicativa** sí sigue de la
    aproximación de universo separado para k-essence (Wands 2000; Brax &
    Valageas 2014) — ese paso es una derivación legítima.

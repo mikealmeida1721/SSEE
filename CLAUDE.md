@@ -14,7 +14,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint) ✅
 - **Paper 8**: Régimen de gravedad fuerte — ✅ preprint (rescatado 2026-06-08). Interpretación física de m_φ fijada por P6 (escalar libre, 36.95 eV) → predicción lensing canónica **incondicional** (límite EFT B-S). Two-limit analysis conservado: límite (a) MOND-like pedagógico + contraste falsable, límite (b) canónico = modelo real. Residuo OP-9 (origen UV del multiplicador) NO entra en las predicciones. 20 pp.
 - **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 71.90 km/s/Mpc (1.10σ SH0ES) canónico vía H_MIRA (Type-P alt 72.86 = 0.17σ, reportado como coincidencia); AURA cancela exactamente; +sección comparación cuantitativa vs EDE/SIDR/late-DE (preprint, 18 pp) ✅
-- **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=9.62 meV=Λ_SSEE; αK_full=0.41691; H₀^UV=73.040 km/s/Mpc (condicional C.1); 8/10 JCAP ✅
+- **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=9.62 meV=Λ_SSEE; αK_full=0.41691; H₀^UV canónico=72.077 km/s/Mpc (MIRA, 0.93σ, condicional C.1; Type-P 73.040 = coincidencia numérica); 8/10 JCAP ✅
 
 ---
 

@@ -497,7 +497,7 @@ M⁴ tiene dos valores incompatibles según el paper. **PARCIAL.**
 
 ## V-L3-KX — completación UV K(X) (Paper 10) — **ABIERTO (M⁴ calibrado a SH0ES)**
 
-*Claim CLAUDE.md:* "Paper 10: M⁴=5φ⁸ρ_crit exacto; H₀^UV=73.040 (condicional C.1)".
+*Claim CLAUDE.md:* "Paper 10: M⁴=5φ⁸ρ_crit exacto; H₀^UV canónico=72.077 (MIRA, 0.93σ; condicional C.1). Type-P 73.040 es coincidencia numérica".
 
 1. **✓ identidad 45α² = 5φ⁸:** exacta a precisión de máquina (α=φ⁴/3 →
    45α²=45φ⁸/9=5φ⁸=234.89). El *valor numérico* de M⁴/ρ_crit cierra.
@@ -508,7 +508,8 @@ M⁴ tiene dos valores incompatibles según el paper. **PARCIAL.**
    of M⁴ = 45α² without using SH0ES as input"*. La Ruta A da M⁴≈418 ≠ 234.9.
    M⁴=5φ⁸ es el número que hace falta para llegar a H₀=73.04, expresado en
    φ — mismo patrón que OP-1 (ajuste a objetivo conocido).
-3. αK_full=0.41691 y H₀^UV=73.040 son aguas abajo de este M⁴ **ABIERTO**.
+3. αK_full=0.41691 y H₀^UV (canónico 72.077 vía MIRA; Type-P 73.040) son aguas
+   abajo de este M⁴ **ABIERTO**.
 
 **Veredicto:** la forma algebraica 5φ⁸ es exacta, pero su identificación
 como el cutoff UV físico está calibrada a SH0ES, no derivada. El script de

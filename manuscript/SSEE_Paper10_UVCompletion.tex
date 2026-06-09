@@ -71,13 +71,14 @@ inflationary tensor-to-scalar ratio $r = 12\alpha/N^2 \approx 0.00813$
 where the identity $45\alpha^2 = 5\phiG^8$ follows exactly from the definition
 $\alpha = \phiG^4/3$ (not a numerical coincidence, but an algebraic consequence).
 With this cutoff, the full Bellini--Sawicki parameter becomes
-$\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value), giving
-$H_0^{\rm local,alg} = 73.040$ km/s/Mpc when applied to $H_0^{\rm alg}$,
-matching the SH0ES central value $73.04\pm1.04$ km/s/Mpc \citep{Riess2022}
-to rounding precision (a numerical coincidence within the Type-P input).
-Applied to the canonical $H_0^{\rm MIRA}=67.068$, the corresponding UV
-prediction is $H_0^{\rm local,MIRA} \approx 72.077$ km/s/Mpc ($0.93\sigma$
-from SH0ES) --- the physically meaningful UV value within this paper.
+$\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value). Applied to the
+canonical $H_0^{\rm MIRA}=67.068$, the UV prediction is
+$H_0^{\rm local,MIRA} \approx 72.077$ km/s/Mpc ($0.93\sigma$ from SH0ES) ---
+the physically meaningful UV value within this paper. On the alternative
+Type-P anchor $H_0^{\rm alg}$, the same correction gives
+$H_0^{\rm local,alg} = 73.040$ km/s/Mpc, matching the SH0ES central value
+$73.04\pm1.04$ km/s/Mpc \citep{Riess2022} to rounding precision --- a numerical
+coincidence within the Type-P input, not a separate result.
 \textbf{This agreement is conditional on Postulate~C.1 (UV-IR $\varphi/\pi$
 separability; §\ref{sec:theorem})} and is not independent of SH0ES: the
 postulate was formulated with SH0ES as the target.  It should therefore be
@@ -139,11 +140,12 @@ We show that the unique algebraically consistent value of $M$ is
 where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
 Paper~1~\citep{SSEE1}, and the equality $45\alpha^2 = 5\phiG^8$ is an exact algebraic identity
 following from the definition of $\alpha$.
-With this value, the corrected Hubble constant is $H_0^{\rm UV} = 73.040$
-km/s/Mpc on the Type-P anchor, numerically coincident with the SH0ES central
-value $73.04 \pm 1.04$ km/s/Mpc \citep{Riess2022}; on the canonical MIRA anchor
-it is $H_0^{\rm UV,MIRA} = 72.08$ km/s/Mpc ($0.93\sigma$ from SH0ES). Both UV
-results are conditional on Postulate~C.1 (see §\ref{sec:theorem}).
+With this value, the corrected Hubble constant on the canonical MIRA anchor is
+$H_0^{\rm UV,MIRA} = 72.08$ km/s/Mpc ($0.93\sigma$ from SH0ES) --- the physically
+meaningful UV prediction. On the Type-P anchor $H_0^{\rm alg}$ it is
+$H_0^{\rm UV,alg} = 73.040$ km/s/Mpc, numerically coincident with the SH0ES
+central value $73.04 \pm 1.04$ km/s/Mpc \citep{Riess2022} as a last-digit
+coincidence. Both UV results are conditional on Postulate~C.1 (see §\ref{sec:theorem}).
 
 The physical picture is intriguing: the \emph{same curvature parameter $\alpha$
 that shaped the inflationary plateau at $z \sim 10^{60}$} provides the speed
@@ -215,7 +217,8 @@ Table~\ref{tab:identity}; we do \emph{not} borrow the external $\Lambda$CDM
 scale $\rho_\Lambda^{1/4}\approx 2.25$~meV (which would give the inconsistent
 $M\approx 8.81$~meV). Crucially, the meV value of $M$ is a display scale only:
 the Hubble cascade of §\ref{sec:hubble} runs on the dimensionless ratio
-$M^4/\rhoc = 5\phiG^8 = 234.89$, so $H_0^{\rm UV} = 73.04$~km/s/Mpc is
+$M^4/\rhoc = 5\phiG^8 = 234.89$, so the UV Hubble prediction
+($H_0^{\rm UV,MIRA}=72.08$, or $73.040$ on the Type-P anchor) is
 unchanged under any choice of reference density.}
 
 Table~\ref{tab:identity} summarises the equivalent forms of the identity.
@@ -378,50 +381,57 @@ The screening fraction (Paper~9) generalises in the UV to
 a $+3.37\%$ increase over the IR value $\fsc^{\rm IR} = 0.06725$.
 The local Hubble constant is
 \begin{equation}
-  H_0^{\rm UV}
-  \;=\; \frac{H_0^{\rm alg}}{1 - \fsc^{\rm UV}}
-  \;=\; \frac{67.962}{1 - 0.06952}
-  \;=\; 73.040 \text{ km/s/Mpc}\,.
+  H_0^{\rm UV,MIRA}
+  \;=\; \frac{H_0^{\rm MIRA}}{1 - \fsc^{\rm UV}}
+  \;=\; \frac{67.068}{1 - 0.06952}
+  \;=\; 72.08 \text{ km/s/Mpc}\,,
   \label{eq:H0UV}
 \end{equation}
+the canonical UV prediction ($0.93\sigma$ from SH0ES). On the Type-P anchor
+$H_0^{\rm alg}=67.962$ the same correction gives $H_0^{\rm UV,alg}=73.040$
+km/s/Mpc, a last-digit numerical coincidence with SH0ES (not the headline).
 
 \subsection{Comparison with SH0ES}
 
 \begin{table}[ht]
 \centering
 \caption{%
-  IR vs.\ UV Hubble constant predictions.
-  The UV completion with $M^4 = 45\alpha^2\rhoc$ reduces the residual $0.17\sigma$
-  gap of Papers~1--9 to within the rounding precision of SH0ES
-  (conditional on Postulate~C.1; see §\ref{sec:theorem}).
+  IR vs.\ UV Hubble constant predictions on the canonical MIRA anchor.
+  The UV completion with $M^4 = 45\alpha^2\rhoc$ improves the residual tension
+  from $1.10\sigma$ (IR) to $0.93\sigma$ (UV), conditional on Postulate~C.1
+  (see §\ref{sec:theorem}). The Type-P anchor $H_0^{\rm alg}$ gives
+  $72.86\!\to\!73.04$ km/s/Mpc ($\sim0\sigma$), reported as a numerical
+  coincidence, not the headline.
 }
 \label{tab:H0}
 \begin{tabular}{lllll}
 \toprule
 Regime & $\alphaK$ & $\fsc$ & $H_0^{\rm local}$ [km/s/Mpc] & Tension SH0ES \\
 \midrule
-IR ($M\to\infty$, Papers 1--9) & 0.40330 & 0.06725 & 72.862 & $0.17\sigma$ \\
-UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{73.040} & $\sim0\sigma$ (rounding; cond.$^{a}$) \\
+IR ($M\to\infty$, Papers 1--9) & 0.40330 & 0.06725 & 71.90 & $1.10\sigma$ \\
+UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{72.08} & $0.93\sigma$ (cond.$^{a}$) \\
 \midrule
 SH0ES \citep{Riess2022}       & --- & --- & $73.04 \pm 1.04$  & --- \\
-Freedman et al.\ \citep{Freedman2024} & --- & --- & $69.96 \pm 1.54$ & $1.9\sigma$ (UV) \\
+Freedman et al.\ \citep{Freedman2024} & --- & --- & $69.96 \pm 1.54$ & $1.4\sigma$ (UV) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Table~\ref{tab:H0} compares the IR and UV results.
-Under Postulate~C.1 (§\ref{sec:theorem}), $M^4 = 45\alpha^2\rhoc$ gives
-$H_0^{\rm UV} = 73.040$ km/s/Mpc, matching the SH0ES central value $73.04$ to the
-4-digit precision reported by SH0ES \citep{Riess2022}.  This agreement is a rounding
-coincidence in the last digit and should not be interpreted as a statistical
-precision test; the physical prediction is $H_0^{\rm UV} - H_0^{\rm SH0ES} < 0.01$ km/s/Mpc
-($\ll 1\sigma$), which is genuinely sub-dominant to the SH0ES uncertainty of $\pm1.04$ km/s/Mpc.
+Under Postulate~C.1 (§\ref{sec:theorem}), $M^4 = 45\alpha^2\rhoc$ gives, on the
+canonical MIRA anchor, $H_0^{\rm UV,MIRA} = 72.08$ km/s/Mpc ($0.93\sigma$ from
+SH0ES) --- the headline UV prediction, improving the IR value $71.90$
+($1.10\sigma$).  On the Type-P anchor $H_0^{\rm alg}=67.96$ the same correction
+gives $73.040$ km/s/Mpc, matching the SH0ES central value $73.04$ to the last
+digit; this is a rounding coincidence in the Type-P input, not a statistical
+precision test, and is not the headline.
 
 \paragraph{Comparison with TRGB/JWST.}
 The TRGB+JWST measurement of Freedman et al.\ \citep{Freedman2024} yields
-$H_0 = 69.96\pm1.54$\,km/s/Mpc.  The SSEE UV prediction $H_0^{\rm UV}=73.040$\,km/s/Mpc
-lies $\sim1.9\sigma$ above this anchor; the IR prediction $H_0^{\rm IR}=72.86$\,km/s/Mpc
-lies $\sim1.9\sigma$ above it as well.
+$H_0 = 69.96\pm1.54$\,km/s/Mpc.  The canonical SSEE UV prediction
+$H_0^{\rm UV,MIRA}=72.08$\,km/s/Mpc lies $\sim1.4\sigma$ above this anchor; the
+canonical IR prediction $H_0^{\rm IR,MIRA}=71.90$\,km/s/Mpc lies $\sim1.3\sigma$
+above it (the Type-P values $73.04/72.86$ lie $\sim1.9\sigma$ above).
 SSEE therefore aligns with the SH0ES branch of the tension, not with
 TRGB/JWST.  Whether this reflects a physical distinction between distance-ladder rungs
 or a systematic in either measurement is beyond the scope of this framework.
@@ -448,7 +458,8 @@ UV cutoff & $M^4 = 45\alpha^2\rhoc$ & $234.89\,\rhoc$ & Eq.~\eqref{eq:M4main} \\
 $M$ in meV & $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4}$ & 9.62 meV & Eq.~\eqref{eq:Mmev} \\
 $\alphaK^{\rm full}$ & quadratic + B-S & 0.41691 & Eq.~\eqref{eq:aKfull} \\
 $\fsc^{\rm UV}$ & $\alphaK^{\rm full}/(3\MIRA)$ & 0.06952 & this paper \\
-$H_0^{\rm local}$ & $H_0^{\rm alg}/(1-\fsc^{\rm UV})$ & \textbf{73.040} & Eq.~\eqref{eq:H0UV} \\
+$H_0^{\rm UV,MIRA}$ & $H_0^{\rm MIRA}/(1-\fsc^{\rm UV})$ & \textbf{72.08} & Eq.~\eqref{eq:H0UV} \\
+$H_0^{\rm UV,alg}$ (Type-P) & $H_0^{\rm alg}/(1-\fsc^{\rm UV})$ & 73.040 & coincidence \\
 SH0ES & $73.04 \pm 1.04$ km/s/Mpc & (obs.) & Riess 2022 \\
 \bottomrule
 \end{tabular}
@@ -466,8 +477,8 @@ simultaneously:
 \begin{enumerate}
   \item LiteBIRD (2032) should measure $r \approx 0.00813$
         [from Eq.~\eqref{eq:r}].
-  \item The local Hubble constant should be $H_0^{\rm local} = 73.040$
-        km/s/Mpc [Eq.~\eqref{eq:H0UV}].
+  \item The local Hubble constant should be $H_0^{\rm local} = 72.08$
+        km/s/Mpc (canonical MIRA anchor; Type-P $73.040$) [Eq.~\eqref{eq:H0UV}].
 \end{enumerate}
 
 These are \emph{independent observables} at vastly different epochs
@@ -479,7 +490,7 @@ If LiteBIRD measures $r_{\rm obs}$, the implied $\alpha_{\rm obs}
 = r_{\rm obs} N^2/12$, and one predicts
 \begin{equation}
   H_0^{\rm local}(\alpha_{\rm obs})
-  \;=\; \frac{H_0^{\rm alg}}{1 - \alphaK^{\rm full}(\alpha_{\rm obs})\,/\,(3\MIRA)}\,.
+  \;=\; \frac{H_0^{\rm MIRA}}{1 - \alphaK^{\rm full}(\alpha_{\rm obs})\,/\,(3\MIRA)}\,.
   \label{eq:Hpred}
 \end{equation}
 If this differs from SH0ES by more than $1\sigma$ (i.e., if
@@ -499,7 +510,8 @@ the UV-completion proposal is falsified at $1\sigma$.
     and Planck $67.36\pm0.54$ km/s/Mpc (blue).
     If LiteBIRD measures $r_{\rm obs}$, one reads off $\alpha_{\rm obs}=r_{\rm obs}N^2/12$
     and the $x$-axis gives the falsifiable $H_0$ prediction.
-    The current SSEE value $73.040$ km/s/Mpc falls inside the SH0ES band.
+    The canonical SSEE value $72.08$ km/s/Mpc falls inside the SH0ES band
+    (the Type-P value $73.040$ sits at its centre).
   }
   \label{fig:cross_epoch}
 \end{figure}
@@ -603,11 +615,12 @@ then closes within the SSEE algebraic structure:
   \phiG \;\xrightarrow{\alpha = \phiG^4/3}\; \alpha
         \;\xrightarrow{M^4 = 45\alpha^2\rhoc}\; M
         \;\xrightarrow{\alphaK^{\rm full}}\; H_0^{\rm local}
-  \;=\; 73.040\;\text{km/s/Mpc}\,.
+  \;=\; 72.08\;\text{km/s/Mpc}\,.
 \end{equation}
-Conditional on that postulate, the agreement $H_0^{\rm UV} < 0.001\sigma$ from
-SH0ES is a conditional theorem rather than a coincidence; it is not an
-unconditional result.
+Conditional on that postulate, the canonical UV prediction is
+$H_0^{\rm UV,MIRA}=72.08$ km/s/Mpc ($0.93\sigma$ from SH0ES). On the Type-P
+anchor the same chain gives $73.040$ km/s/Mpc, agreeing with SH0ES to
+$<0.001\sigma$ as a numerical coincidence; neither is an unconditional result.
 
 \paragraph{Diagnosing the Route~A discrepancy.}
 Route~A matches $K(X)/\KAL$ to the Taylor expansion of $K_\alpha(X)/\KAL$
@@ -748,8 +761,9 @@ $\alpha$-attractor $K_\alpha$ is
 The UV ladder closes:
 $\phiG \to \alpha = \phiG^4/3 \to M^4 = 5\phiG^8\rhoc
 \to \alphaK^{\rm full} = 0.41691
-\to H_0^{\rm local} = 73.040\;\mathrm{km/s/Mpc}$ (consistent with SH0ES to rounding;
-conditional on Postulate C.1),
+\to H_0^{\rm UV,MIRA} = 72.08\;\mathrm{km/s/Mpc}$ ($0.93\sigma$ from SH0ES;
+conditional on Postulate C.1; on the Type-P anchor the same ladder gives
+$73.040$ as a numerical coincidence),
 entirely within the $\{\phiG,\pi\}$ algebraic structure of SSEE.}
 \end{quote}
 
@@ -836,23 +850,26 @@ Paper 1 & $\alpha = \phiG^4/3$ → $r = 0.00813$ & \textbf{Direct input:} $M^4 =
 Paper 5 & IS: $c_s^2 \approx 0$ (bulk-viscosity mode) & Compatible: distinct from $c_{s,\rm ad}^2 \approx 0.967$ (field mode) \\
 Paper 7 & $\alphaK^{\rm IR} = 0.4033$ & Base for UV correction (+3.37\%) \\
 Paper 8 & $\MIRA = \AURA/2$; Vainshtein $r_V \propto 1/M^2$ & $r_V$ enlarged to $\sim 10^{44}$ m at UV; double GR protection \\
-Paper 9 & $H_0^{\rm IR} = 72.86$ (0.17$\sigma$) & UV closes to 73.040 (rounding; conditional$^{a}$) \\
+Paper 9 & $H_0^{\rm IR,MIRA} = 71.90$ (1.10$\sigma$) & UV closes to $72.08$ ($0.93\sigma$; conditional$^{a}$) \\
 Papers 2--4,6 & CMB, MCMC, $\sigma_8$, $f\sigma_8$ & $M$ only modifies $\alphaK$; the algebraic constant $\MIRA = (3\phiG+\pi)/4$ is scale-invariant and unchanged by UV flow \\
 \bottomrule
 \end{tabular}
-\footnotesize{$^{a}$ UV result conditional on Postulate C.1 (UV-IR separability, §\ref{sec:theorem});
-the $H_0=73.040$ agreement with SH0ES $73.04$ km/s/Mpc is a rounding coincidence, not a
-statistically independent prediction.}
+\footnotesize{$^{a}$ Canonical UV result $H_0^{\rm UV,MIRA}=72.08$ km/s/Mpc ($0.93\sigma$ from SH0ES),
+conditional on Postulate C.1 (UV-IR separability, §\ref{sec:theorem}). On the alternative Type-P anchor
+the same chain gives $73.040$, agreeing with SH0ES $73.04$ to rounding; that closer agreement is a
+numerical coincidence, not a statistically independent prediction.}
 \end{table}
 
 The AURA cancellation of Paper~9 ($\AURA$ drops out of $\alphaK/(3\MIRA)$
 in the IR limit) is technically broken in the UV because $\alphaK^{\rm full}$
 acquires an AURA-dependent correction.
-The numerical result $H_0^{\rm UV} = 73.040$ km/s/Mpc agrees with the SH0ES
-central value to within $0.001$ km/s/Mpc which, conditional on Postulate~C.1,
-indicates that the UV correction is a consistent completion rather than a
-destabilisation of the IR identity. As stressed throughout, this agreement is
-a self-consistency check, not an independent prediction.
+The canonical UV result $H_0^{\rm UV,MIRA} = 72.08$ km/s/Mpc ($0.93\sigma$ from
+SH0ES), conditional on Postulate~C.1, indicates that the UV correction is a
+consistent completion rather than a destabilisation of the IR identity. On the
+Type-P anchor the same chain gives $73.040$ km/s/Mpc, agreeing with the SH0ES
+central value to within $0.001$ km/s/Mpc; that closer agreement is a numerical
+coincidence. As stressed throughout, neither value is an independent prediction
+--- both are self-consistency checks.
 
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -868,9 +885,11 @@ admits a unique algebraically consistent UV cutoff
 where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
 Paper~1.
 With this cutoff, the full Bellini--Sawicki kineticity is
-$\alphaK^{\rm full} = 0.41691$ and the local Hubble constant is
-$H_0^{\rm UV} = 73.040$ km/s/Mpc, matching the SH0ES central value $73.04$
-km/s/Mpc to rounding precision (conditional on Postulate~C.1).
+$\alphaK^{\rm full} = 0.41691$ and the canonical local Hubble constant is
+$H_0^{\rm UV,MIRA} = 72.08$ km/s/Mpc ($0.93\sigma$ from SH0ES), conditional on
+Postulate~C.1. On the alternative Type-P anchor the same chain yields $73.040$
+km/s/Mpc, matching the SH0ES central value $73.04$ to rounding as a numerical
+coincidence.
 
 The key conclusions are:
 \begin{enumerate}
@@ -878,9 +897,10 @@ The key conclusions are:
         connects the inflationary curvature $\alpha$ to the dark-energy UV scale.
   \item The UV correction to $\alphaK$ is perturbative
         ($\varepsilon \approx 5.7\times10^{-4}$) and shifts $\alphaK$ by $+3.37\%$.
-  \item The residual $0.17\sigma$ Hubble tension of Papers~1--9 is reduced to
-        below the rounding precision of SH0ES by the UV completion,
-        conditional on Postulate~C.1 (§\ref{sec:theorem}).
+  \item The canonical IR Hubble residual of Paper~9
+        ($H_0^{\rm IR,MIRA}=71.90$, $1.10\sigma$) is reduced to
+        $H_0^{\rm UV,MIRA}=72.08$ ($0.93\sigma$ from SH0ES) by the UV
+        completion, conditional on Postulate~C.1 (§\ref{sec:theorem}).
   \item The same $\alpha$ predicts $r \approx 0.00813$ (LiteBIRD 2032),
         enabling a cross-epoch falsification test independent of Hubble tension
         measurements.

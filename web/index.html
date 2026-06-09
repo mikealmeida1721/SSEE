@@ -144,7 +144,7 @@
     <div class="card">
       <div id="recipe" style="font-variant-numeric:tabular-nums; font-size:1.05rem; line-height:2.1">
         <div>φ + π &nbsp;=&nbsp; <span class="gold big-num">4.76</span> &nbsp;<span style="color:var(--ink-dim)">→ la “fuerza” del modelo</span></div>
-        <div>(π − φ) &nbsp;=&nbsp; <span class="cyan big-num">1.52</span> &nbsp;<span style="color:var(--ink-dim)">→ la materia normal</span></div>
+        <div>(π−φ)/(π+φ) &nbsp;=&nbsp; <span class="cyan big-num">0.32</span> &nbsp;<span style="color:var(--ink-dim)">→ cuánta materia hay en total</span></div>
         <div>de φ &nbsp;=&nbsp; <span class="violet big-num">−0.84</span> &nbsp;<span style="color:var(--ink-dim)">→ cómo empuja la energía oscura</span></div>
       </div>
     </div>
@@ -212,7 +212,7 @@
         <div class="knobs" id="knobsS"></div>
       </div>
     </div>
-    <p style="text-align:center;margin-top:16px">Misma capacidad de explicar el cielo, <strong>con la mitad de ingredientes “mágicos”</strong>.</p>
+    <p style="text-align:center;margin-top:16px">SSEE solo <strong>mide</strong> tres cosas —la energía base, la materia normal y cuándo se encendieron las primeras estrellas (reionización)— y el resto lo <strong class="gold">deduce</strong> de φ y π. Misma capacidad de explicar el cielo, <strong>con la mitad de ingredientes “mágicos”</strong>.</p>
   </section>
 
   <!-- PREDICTIONS / honesty -->
@@ -329,7 +329,9 @@ document.querySelectorAll('.reveal').forEach(el=>{if(!el.classList.contains('in'
 /* ---------- occam knobs ---------- */
 (function(){
   const L=document.getElementById('knobsL'),S=document.getElementById('knobsS');
-  const names=['H₀','Ω materia','Ω bariones','aₛ','nₛ','τ'];
+  // ΛCDM mide las 6 a mano. SSEE mide solo las 3 primeras; las 3 últimas
+  // las DERIVA de φ y π (fuente: Sealed Journal §conclusión + Paper 1 §honest accounting).
+  const names=['Energía base','Materia normal','Reionización','Materia oscura','Eco del sonido','Inclinación'];
   names.forEach(n=>{const e=document.createElement('span');e.className='knob on';e.textContent=n;L.appendChild(e);});
   names.forEach((n,i)=>{const e=document.createElement('span');e.className='knob '+(i<3?'on':'off');e.textContent=n;S.appendChild(e);});
 })();

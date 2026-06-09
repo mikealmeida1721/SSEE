@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SSEE — El universo escrito con dos números</title>
+<meta name="description" content="Una explicación simple, visual e interactiva del modelo cosmológico SSEE: cómo dos números que ya conoces, φ y π, podrían explicar el universo." />
+<style>
+  :root{
+    --gold:#f3c969; --gold-soft:#e8b04b; --cyan:#5fd3e0; --violet:#a98bff;
+    --bg:#05060c; --bg2:#0b0e1c; --ink:#eef1ff; --ink-dim:#aab1d6; --line:rgba(255,255,255,.12);
+    --maxw:820px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink); overflow-x:hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji",sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  #stars{position:fixed; inset:0; z-index:0; display:block}
+  .wrap{position:relative; z-index:2}
+  section{padding:14vh 22px; max-width:var(--maxw); margin:0 auto; position:relative}
+  h1,h2,h3{line-height:1.12; font-weight:800; letter-spacing:-.02em}
+  h1{font-size:clamp(2.3rem,7vw,4.4rem)}
+  h2{font-size:clamp(1.8rem,5.2vw,3rem); margin-bottom:.6em}
+  p{font-size:clamp(1.06rem,2.5vw,1.28rem); color:var(--ink-dim); margin-bottom:1em}
+  p strong{color:var(--ink); font-weight:700}
+  .gold{color:var(--gold)} .cyan{color:var(--cyan)} .violet{color:var(--violet)}
+  .big-num{font-weight:800; font-variant-numeric:tabular-nums}
+
+  /* HERO */
+  .hero{min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding-top:8vh}
+  .hero .kicker{font-size:.95rem; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:1.4rem}
+  .hero h1 .l1{display:block; color:var(--ink)}
+  .hero h1 .l2{display:block; background:linear-gradient(100deg,var(--gold),var(--violet) 60%,var(--cyan)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+  .hero p.sub{max-width:600px; margin:1.6rem auto 0; font-size:clamp(1.1rem,2.8vw,1.4rem)}
+  .spiral-wrap{margin:2.4rem auto 0; width:min(340px,72vw); aspect-ratio:1}
+  #spiral{width:100%; height:100%; display:block}
+  .scroll-hint{margin-top:3rem; font-size:.85rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-dim); animation:bob 2.2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(8px);opacity:1}}
+
+  /* reveal */
+  .reveal{opacity:0; transform:translateY(34px); transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1; transform:none}
+
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015)); border:1px solid var(--line); border-radius:20px; padding:26px 24px; margin:18px 0; backdrop-filter:blur(6px)}
+  .pill{display:inline-block; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-soft); border:1px solid var(--line); border-radius:100px; padding:6px 14px; margin-bottom:1.2rem}
+
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media(max-width:620px){.duo{grid-template-columns:1fr}}
+  .num-hero{font-size:clamp(3rem,12vw,5.5rem); font-weight:800; line-height:1}
+  .num-cap{font-size:.95rem; color:var(--ink-dim); margin-top:.3rem}
+
+  /* interactive controls */
+  .ctrl{margin-top:18px}
+  .ctrl label{display:block; font-size:.92rem; color:var(--ink-dim); margin-bottom:8px}
+  input[type=range]{-webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:6px; background:rgba(255,255,255,.16); outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:26px; height:26px; border-radius:50%; background:var(--gold); cursor:pointer; box-shadow:0 0 0 6px rgba(243,201,105,.18)}
+  input[type=range]::-moz-range-thumb{width:26px;height:26px;border:none;border-radius:50%;background:var(--gold);cursor:pointer}
+  .btn{display:inline-flex; align-items:center; gap:.6em; background:var(--gold); color:#23180a; font-weight:700; border:none; border-radius:100px; padding:13px 24px; font-size:1rem; cursor:pointer; transition:transform .15s ease, filter .15s ease}
+  .btn:hover{transform:translateY(-2px); filter:brightness(1.07)}
+  .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
+
+  canvas.demo{width:100%; border-radius:16px; display:block; background:radial-gradient(120% 120% at 50% 0%,#101428,#070912)}
+
+  /* gauges */
+  .gauges{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px}
+  @media(max-width:560px){.gauges{grid-template-columns:1fr}}
+  .gauge{text-align:center}
+  .gauge .val{font-size:2.4rem; font-weight:800; font-variant-numeric:tabular-nums}
+  .gauge .lab{font-size:.92rem; color:var(--ink-dim)}
+
+  /* occam */
+  .knobs{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+  .knob{font-size:.86rem; padding:8px 14px; border-radius:100px; border:1px solid var(--line); color:var(--ink-dim); transition:all .4s ease}
+  .knob.on{background:rgba(243,201,105,.14); border-color:var(--gold-soft); color:var(--gold)}
+  .knob.off{opacity:.32; text-decoration:line-through}
+
+  /* timeline */
+  .tl{border-left:2px solid var(--line); margin-left:8px; padding-left:22px}
+  .tl .ev{position:relative; margin-bottom:22px}
+  .tl .ev::before{content:''; position:absolute; left:-29px; top:6px; width:12px; height:12px; border-radius:50%; background:var(--cyan); box-shadow:0 0 0 5px rgba(95,211,224,.16)}
+  .tl .yr{font-weight:800; color:var(--cyan)}
+
+  .foot{text-align:center; padding:10vh 22px 12vh; border-top:1px solid var(--line); color:var(--ink-dim); font-size:.95rem; max-width:680px; margin:0 auto}
+  .foot a{color:var(--gold)}
+  .disclaim{font-size:.9rem; color:var(--ink-dim); background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:14px; padding:16px; margin:22px auto 0; max-width:600px}
+  .progress{position:fixed; top:0; left:0; height:3px; width:0; background:linear-gradient(90deg,var(--gold),var(--violet)); z-index:50}
+  .emoji{font-size:1.15em}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<canvas id="stars"></canvas>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="kicker reveal in">Modelo cosmológico SSEE</div>
+    <h1 class="reveal in">
+      <span class="l1">El universo,</span>
+      <span class="l2">escrito con dos números</span>
+    </h1>
+    <div class="spiral-wrap reveal in"><canvas id="spiral"></canvas></div>
+    <p class="sub reveal in">¿Y si todo lo que ves —las estrellas, el espacio que crece, lo invisible que sostiene a las galaxias— se pudiera explicar con <strong class="gold">dos números que ya conoces</strong>?</p>
+    <div class="scroll-hint">Baja para descubrirlo ↓</div>
+  </section>
+
+  <!-- HOOK -->
+  <section class="reveal">
+    <h2>Imagina una receta.</h2>
+    <p>Para hacer un pastel necesitas ingredientes y cantidades. Los científicos creen que el universo también tiene una <strong>“receta”</strong>: un puñado de números que deciden cómo se ve todo.</p>
+    <p>El modelo más usado hoy necesita <strong>6 números</strong> que nadie sabe de dónde salen — simplemente se miden y se anotan.</p>
+    <p>SSEE propone algo atrevido: que esa receta se puede escribir con <strong class="gold">solo dos números que la naturaleza ya usa en todas partes</strong>. Vamos a conocerlos.</p>
+  </section>
+
+  <!-- φ and π -->
+  <section class="reveal">
+    <span class="pill">Los dos ingredientes</span>
+    <div class="duo">
+      <div class="card" style="text-align:center">
+        <div class="num-hero gold">φ</div>
+        <div class="big-num" style="font-size:1.4rem">1.618…</div>
+        <div class="num-cap">La <strong>proporción áurea</strong></div>
+        <p style="margin-top:14px;font-size:1rem">La ves en los girasoles, en los caracoles, en las galaxias en espiral y hasta en las proporciones de tu cara. Es el número favorito de la naturaleza para crecer con armonía.</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div class="num-hero cyan">π</div>
+        <div class="big-num" style="font-size:1.4rem">3.1416…</div>
+        <div class="num-cap">El número del <strong>círculo</strong></div>
+        <p style="margin-top:14px;font-size:1rem">El que aprendiste en la escuela. Aparece cada vez que algo es redondo: una rueda, una pizza, una órbita, una onda. Lo conoces de toda la vida.</p>
+      </div>
+    </div>
+    <p style="margin-top:22px;text-align:center">Eso es <strong>todo</strong>. Con <span class="gold">φ</span> y <span class="cyan">π</span> empieza la historia.</p>
+  </section>
+
+  <!-- THE RECIPE -->
+  <section class="reveal">
+    <span class="pill">La receta</span>
+    <h2>De dos números, las reglas del cosmos.</h2>
+    <p>Aquí está la idea central: SSEE <strong>combina</strong> φ y π —sumándolos, multiplicándolos— y de esas combinaciones salen las “perillas” que controlan el universo. No se inventan: se calculan.</p>
+    <div class="card">
+      <div id="recipe" style="font-variant-numeric:tabular-nums; font-size:1.05rem; line-height:2.1">
+        <div>φ + π &nbsp;=&nbsp; <span class="gold big-num">4.76</span> &nbsp;<span style="color:var(--ink-dim)">→ la “fuerza” del modelo</span></div>
+        <div>(π − φ) &nbsp;=&nbsp; <span class="cyan big-num">1.52</span> &nbsp;<span style="color:var(--ink-dim)">→ la materia normal</span></div>
+        <div>de φ &nbsp;=&nbsp; <span class="violet big-num">−0.84</span> &nbsp;<span style="color:var(--ink-dim)">→ cómo empuja la energía oscura</span></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:10px"><span class="emoji">✨</span> Cero números “a mano”. Todo nace de φ y π.</p>
+  </section>
+
+  <!-- DARK ENERGY interactive -->
+  <section class="reveal">
+    <span class="pill">Misterio #1 · 7 de cada 10</span>
+    <h2>El universo se acelera.</h2>
+    <p>Casi <strong>el 70% del universo</strong> es una energía invisible que lo hace crecer cada vez más rápido. Nadie sabe qué es. La llaman <strong class="gold">energía oscura</strong>.</p>
+    <p>Mueve el control y mira qué pasa con el espacio. SSEE dice que el valor real no es casualidad: <strong>sale de φ</strong>.</p>
+    <canvas id="expand" class="demo" height="220"></canvas>
+    <div class="ctrl">
+      <label>Empuje de la energía oscura: <span id="deLabel" class="gold big-num">SSEE (de φ)</span></label>
+      <input id="deSlider" type="range" min="0" max="100" value="62" />
+    </div>
+  </section>
+
+  <!-- HUBBLE interactive -->
+  <section class="reveal">
+    <span class="pill">Misterio #2 · la discusión del siglo</span>
+    <h2>Dos relojes que no coinciden.</h2>
+    <p>Para medir qué tan rápido crece el universo hay dos formas. El problema: <strong>dan números distintos</strong>, y eso trae locos a los físicos hace años.</p>
+    <div class="gauges">
+      <div class="gauge card">
+        <div class="val cyan" id="gA">67</div>
+        <div class="lab">Mirando el universo <strong>bebé</strong><br/>(la luz más antigua)</div>
+      </div>
+      <div class="gauge card">
+        <div class="val violet" id="gB">73</div>
+        <div class="lab">Mirando el universo <strong>de hoy</strong><br/>(estrellas cercanas)</div>
+      </div>
+    </div>
+    <p style="margin-top:18px">SSEE propone un puente: una especie de “filtro” —otra vez derivado de φ y π— que explica por qué los dos relojes marcan distinto. Su predicción cae en <strong class="gold">≈ 72</strong>, muy cerca de las mediciones cercanas.</p>
+  </section>
+
+  <!-- DARK MATTER -->
+  <section class="reveal">
+    <span class="pill">Misterio #3 · el pegamento invisible</span>
+    <h2>Lo invisible que abraza a las galaxias.</h2>
+    <p>Las galaxias giran tan rápido que <strong>deberían deshacerse</strong>… pero no lo hacen. Algo invisible las mantiene unidas: la <strong class="violet">materia oscura</strong>.</p>
+    <p>Durante décadas se buscaron partículas exóticas y carísimas para explicarla, sin éxito. SSEE no inventa nada raro: predice una partícula <strong>ligerísima</strong>, de masa</p>
+    <div class="card" style="text-align:center">
+      <div class="num-hero violet" style="font-size:clamp(2.4rem,9vw,3.6rem)">36.95 <span style="font-size:.4em;color:var(--ink-dim)">eV</span></div>
+      <div class="num-cap">calculada, otra vez, desde φ y π — sin ajustar a la medida</div>
+    </div>
+    <p style="margin-top:18px">Y con ella, una tensión famosa entre teoría y observaciones (la llaman “S₈”) <strong class="gold">se relaja casi por completo</strong>.</p>
+  </section>
+
+  <!-- OCCAM interactive -->
+  <section class="reveal">
+    <span class="pill">La navaja de Occam</span>
+    <h2>3 números contra 6.</h2>
+    <p>Hay una regla de oro en la ciencia: <strong>si dos explicaciones funcionan, gana la más simple</strong>. Compara cuántas “perillas libres” necesita cada modelo.</p>
+    <div class="duo">
+      <div class="card">
+        <h3 style="font-size:1.1rem">Modelo estándar</h3>
+        <div class="num-cap">necesita 6 perillas medidas a mano</div>
+        <div class="knobs" id="knobsL"></div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:1.1rem gold"><span class="gold">SSEE</span></h3>
+        <div class="num-cap">~3 perillas efectivas (el resto nace de φ y π)</div>
+        <div class="knobs" id="knobsS"></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:16px">Misma capacidad de explicar el cielo, <strong>con la mitad de ingredientes “mágicos”</strong>.</p>
+  </section>
+
+  <!-- PREDICTIONS / honesty -->
+  <section class="reveal">
+    <span class="pill">Lo más importante: ¿es verdad?</span>
+    <h2>Una idea bonita no basta.</h2>
+    <p>Lo que separa a la ciencia de un cuento es que se puede <strong>poner a prueba</strong>. SSEE hace predicciones concretas que telescopios reales comprobarán muy pronto. Si fallan, el modelo cae. Así de honesto.</p>
+    <div class="tl card">
+      <div class="ev"><span class="yr">2026–2027</span><br/>Los telescopios <strong>DESI</strong> y <strong>Euclid</strong> mapean millones de galaxias y miden una “huella” precisa que SSEE predice en el cielo.</div>
+      <div class="ev"><span class="yr">2028</span><br/>Si esa huella <strong>no aparece</strong> donde SSEE dice, el modelo queda descartado. Si aparece, gana mucha fuerza.</div>
+      <div class="ev"><span class="yr">Hoy</span><br/>SSEE ya reproduce la luz más antigua del universo, el eco de las galaxias y la aceleración cósmica — al mismo nivel que el modelo estándar, pero con menos ingredientes.</div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="reveal" style="text-align:center">
+    <h2>Un universo que cabe en una idea simple.</h2>
+    <p>No prometemos que SSEE sea la respuesta final. Prometemos algo mejor: una pregunta hermosa, puesta a prueba en público, escrita con <span class="gold">φ</span> y <span class="cyan">π</span> — dos números que la naturaleza ya tenía a la vista.</p>
+    <a class="btn" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Volver al principio</a>
+  </section>
+
+  <div class="foot">
+    <div class="disclaim">
+      <strong>Nota honesta:</strong> SSEE (<em>Structural Self-Energy Expansion</em>) es un modelo teórico
+      en evaluación científica, no un hecho establecido. Esta página es una explicación divulgativa y
+      simplificada — los detalles técnicos, las cuentas y las pruebas viven en los artículos científicos.
+    </div>
+    <p style="margin-top:22px">Creado por <strong style="color:var(--ink)">Mike Edison Almeida Vallejo</strong></p>
+    <p style="font-size:.88rem">Artículos, código y datos abiertos · Zenodo DOI: 10.5281/zenodo.20093447</p>
+  </div>
+</div>
+
+<script>
+/* ---------- progress bar ---------- */
+const prog=document.getElementById('prog');
+addEventListener('scroll',()=>{const h=document.documentElement;const s=h.scrollTop/(h.scrollHeight-h.clientHeight);prog.style.width=(s*100)+'%';},{passive:true});
+
+/* ---------- starfield ---------- */
+(function(){
+  const c=document.getElementById('stars'),x=c.getContext('2d');let w,h,stars;
+  function size(){w=c.width=innerWidth;h=c.height=innerHeight;stars=Array.from({length:Math.min(220,Math.floor(w*h/9000))},()=>({x:Math.random()*w,y:Math.random()*h,z:Math.random()*.8+.2,r:Math.random()*1.4+.2,t:Math.random()*6.28}))}
+  size();addEventListener('resize',size);
+  let off=0;addEventListener('scroll',()=>off=scrollY*.15,{passive:true});
+  (function loop(){x.clearRect(0,0,w,h);for(const s of stars){s.t+=.02;const tw=.5+.5*Math.sin(s.t);const yy=(s.y-off*s.z)%h;const Y=yy<0?yy+h:yy;x.globalAlpha=(.25+.75*tw)*s.z;x.fillStyle=s.z>.7?'#f3c969':'#cdd6ff';x.beginPath();x.arc(s.x,Y,s.r*s.z,0,6.29);x.fill();}x.globalAlpha=1;requestAnimationFrame(loop)})();
+})();
+
+/* ---------- golden spiral (always drawn + travelling glow + slow spin) ---------- */
+(function(){
+  const c=document.getElementById('spiral');if(!c)return;const x=c.getContext('2d');
+  const PHI=1.6180339887, TMAX=4.6*Math.PI;        // ~2.3 turns
+  function size(){const d=Math.max(120,c.clientWidth||300);c.width=d*devicePixelRatio;c.height=d*devicePixelRatio;return d}
+  let d=size();addEventListener('resize',()=>d=size());
+  let spin=0, head=0;
+  function pt(t,a,cx,cy){const r=a*Math.pow(PHI,t/(Math.PI/2));return [cx+r*Math.cos(t),cy+r*Math.sin(t),r];}
+  (function loop(){
+    d=Math.max(120,c.clientWidth||300);
+    x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    x.clearRect(0,0,d,d);
+    const cx=d*.5, cy=d*.5;
+    const Rmax=d*.44, a=Rmax/Math.pow(PHI,TMAX/(Math.PI/2));
+    x.save(); x.translate(cx,cy); x.rotate(spin); x.translate(-cx,-cy);
+    // full spiral
+    const grad=x.createLinearGradient(0,0,d,d);grad.addColorStop(0,'#f3c969');grad.addColorStop(.55,'#e8b04b');grad.addColorStop(1,'#a98bff');
+    x.strokeStyle=grad; x.lineWidth=Math.max(1.6,d*.0075); x.lineCap='round';
+    x.shadowColor='rgba(243,201,105,.35)'; x.shadowBlur=d*.03;
+    x.beginPath();
+    for(let t=0;t<=TMAX;t+=.04){const [px,py]=pt(t,a,cx,cy);t===0?x.moveTo(px,py):x.lineTo(px,py);}
+    x.stroke(); x.shadowBlur=0;
+    // travelling glow head
+    const [hx,hy]=pt(head,a,cx,cy);
+    x.fillStyle='#fff'; x.shadowColor='#fff'; x.shadowBlur=d*.06;
+    x.beginPath(); x.arc(hx,hy,Math.max(2.5,d*.014),0,6.29); x.fill(); x.shadowBlur=0;
+    x.restore();
+    spin+=.0016; head+=.05; if(head>TMAX)head=0;
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ---------- reveal on scroll ---------- */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.16});
+document.querySelectorAll('.reveal').forEach(el=>{if(!el.classList.contains('in'))io.observe(el)});
+
+/* ---------- dark energy expansion demo ---------- */
+(function(){
+  const c=document.getElementById('expand');if(!c)return;const x=c.getContext('2d');
+  const slider=document.getElementById('deSlider'),lab=document.getElementById('deLabel');
+  let W,H,dots;function size(){W=c.width=c.clientWidth*devicePixelRatio;H=c.height=220*devicePixelRatio;x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+  size();addEventListener('resize',size);
+  const N=70;dots=Array.from({length:N},()=>({a:Math.random()*6.28,r:Math.random()*.5+.04,c:Math.random()>.5?'#f3c969':'#9fb0ff'}));
+  let scale=0.2,push=0.62;
+  slider.addEventListener('input',()=>{push=slider.value/100; const p=Math.round(push*100);
+    lab.textContent = (push>0.55&&push<0.7)?'SSEE (de φ)':(push<.5?'débil — el cosmos casi se frena':'muy fuerte — todo se dispersa');
+  });
+  (function loop(){
+    const w=c.clientWidth,h=220,cx=w/2,cy=h/2;x.clearRect(0,0,w,h);
+    scale+= (push-0.5)*0.018; if(scale>1.15)scale=0.18; if(scale<0.12)scale=0.12;
+    const R=Math.min(w,h)*0.46*scale;
+    // connecting faint lines
+    for(const d of dots){const px=cx+Math.cos(d.a)*R*d.r*2.0,py=cy+Math.sin(d.a)*R*d.r*2.0;x.strokeStyle='rgba(255,255,255,.05)';x.beginPath();x.moveTo(cx,cy);x.lineTo(px,py);x.stroke();}
+    for(const d of dots){const px=cx+Math.cos(d.a)*R*d.r*2.0,py=cy+Math.sin(d.a)*R*d.r*2.0;x.fillStyle=d.c;x.globalAlpha=.9;x.beginPath();x.arc(px,py,2.4,0,6.29);x.fill();}
+    x.globalAlpha=1;x.fillStyle='#fff';x.shadowColor='#f3c969';x.shadowBlur=16;x.beginPath();x.arc(cx,cy,4,0,6.29);x.fill();x.shadowBlur=0;
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ---------- hubble gauges count up when visible ---------- */
+(function(){
+  const a=document.getElementById('gA'),b=document.getElementById('gB');let done=false;
+  const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting&&!done){done=true;ramp(a,67);ramp(b,73);}})},{threshold:.5});
+  obs.observe(a.closest('section'));
+  function ramp(el,to){let v=55;const id=setInterval(()=>{v+= (to-v)*.18; if(Math.abs(to-v)<.3){v=to;clearInterval(id)} el.textContent=Math.round(v)},32)}
+})();
+
+/* ---------- occam knobs ---------- */
+(function(){
+  const L=document.getElementById('knobsL'),S=document.getElementById('knobsS');
+  const names=['H₀','Ω materia','Ω bariones','aₛ','nₛ','τ'];
+  names.forEach(n=>{const e=document.createElement('span');e.className='knob on';e.textContent=n;L.appendChild(e);});
+  names.forEach((n,i)=>{const e=document.createElement('span');e.className='knob '+(i<3?'on':'off');e.textContent=n;S.appendChild(e);});
+})();
+</script>
+</body>
+</html>

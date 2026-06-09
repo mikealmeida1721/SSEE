@@ -116,13 +116,15 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 
 | Spectrum | SSEE χ²_r | ΛCDM χ²_r | N |
 |---|---|---|---|
-| TT | 1.062 | 1.043 | 1971 |
-| TE | 1.053 | 1.040 | 1967 |
+| TT | 1.045 | 1.043 | 1971 |
+| TE | 1.041 | 1.040 | 1967 |
 | EE | 1.040 | 1.039 | 1967 |
-| PP (lensing) | **0.730** | 0.757 | 9 |
-| ΔBIC (Combined, k=2 vs k=6) | **-31.3** (SSEE favoured) | — | — |
+| PP (lensing) | 0.880 | 0.757 | 9 |
+| Combined (diagonal) | **1.042** | 1.040 | 5914 |
+| ΔBIC (diagonal TT+TE+EE+PP, k=2 vs k=6) | **−24.7** (SSEE favoured) | — | — |
+| ΔBIC (plik_lite Cobaya TTTEEE+lowl, k=2 vs k=6) | **−31.3** (SSEE decisively favoured) | — | — |
 
-*Methodology Note on parameter counting ($k$): SSEE is evaluated with $k=2$ ($H_0$ and $\Omega_b h^2$ free) against the full official `plik_lite` TTTEEE + lowl covariance matrix via Cobaya. This is compared to the standard $\Lambda$CDM model which uses $k=6$. Even with a hyper-conservative $k=4$ penalty (treating fixed priors $\tau, A_s$ as free), $\Delta\mathrm{BIC} = -13.8$ continues to favour SSEE.*
+*Values reflect the canonical Σm_ν = 0.0690 eV CMB run (Paper 3 §results). Methodology note on parameter counting ($k$): the **−31.3** line evaluates SSEE with $k=2$ ($H_0$ and $\Omega_b h^2$ free) against the full official `plik_lite` TTTEEE + lowl covariance matrix via Cobaya, vs $\Lambda$CDM's $k=6$. Even with a hyper-conservative $k=4$ penalty (treating fixed priors $\tau, A_s$ as free), $\Delta\mathrm{BIC} = -13.8$ continues to favour SSEE. The **−24.7** line is the diagonal-covariance approximation over the per-spectrum table above.*
 
 **Growth structure (Paper 3 §5.4–5.5):**
 
@@ -257,7 +259,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 2. **Full causal IS** (Paper 5): IS growth index γ_IS=0.657 is derived analytically. Full Hiscock-Lindblom 1985 treatment for B-mode predictions remains a blocker for LiteBIRD forecasts.
 3. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
 4. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
-5. **CMB ΔBIC status:** Diagonal approximation (TT+TE+EE+PP, k=2 vs k=6) yields $\Delta\mathrm{BIC}=+31.1$ favouring $\Lambda$CDM. Full Cobaya plik\_lite (TTTEEE) gives $\Delta\mathrm{BIC}=-31.3$ decisively favouring SSEE.
+5. **CMB ΔBIC status:** Diagonal approximation (TT+TE+EE+PP, k=2 vs k=6) yields $\Delta\mathrm{BIC}=-24.7$ favouring SSEE; full Cobaya plik\_lite (TTTEEE+lowl) gives $\Delta\mathrm{BIC}=-31.3$ decisively favouring SSEE. Both treatments agree (Paper 3 §BIC, canonical Σm_ν = 0.0690 eV run).
 
 ### Open physics problems (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md))
 | ID | Problem | Status (2026-05-16) |

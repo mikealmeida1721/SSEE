@@ -2,6 +2,19 @@
 """
 ssee_paper6_sterile_neutrino.py — SSEE Paper 6: φ-DM como Neutrino Estéril
 ===========================================================================
+
+⚠ SUPERADO (2026-06-04) — scan exploratorio histórico, no es producción.
+Usa mnu_active=0.0824 eV (ruta vieja R_acoustic=4·KAL₀−22, el offset −22 de
+OP-14) y ESCANEA multiplicadores (×MIRA, ×KAL₀, ×(φ+π)²...) buscando m_φ.
+La partícula canónica φ-DM (2026-06-04) RESOLVIÓ esa búsqueda por forward-
+prediction con cero fiteo y la ruta R₂ (sin offset ad-hoc):
+    R₂   = Ω_DNAV/(KAL·TRIAL) = 0.07188
+    Σm_ν = R₂·0.9603 eV = 0.0690 eV
+    m_φ  = Σm_ν·(Ω⁴_DNAV+AURA·KAL) = 0.0690·535.28 = 36.95 eV  (k_fs=0.659)
+Script de producción canónico: ssee_paper6_canonical_particle.py.
+Fuente autoritativa: VERIFICATION_LEDGER.md §Valores Canónicos + Paper 6.
+Se conserva como rastro de la exploración; 0.0824/scan NO son canónicos.
+
 Vínculo: la masa del neutrino activo (Paper 4) y el φ-DM comparten
 el mismo operador τ_Π. ¿Puede un neutrino estéril SSEE resolver σ8?
 

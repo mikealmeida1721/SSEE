@@ -138,7 +138,7 @@ def compute_ssee_spectrum(lmax=2500):
     if omch2 < 0:
         raise ValueError(f"omch2={omch2:.5f} < 0 (Omm_cmb={Omm_cmb:.4f})")
     total, lens_p, derived = _run_camb(
-        H0, Omb_h2, omch2, 0.0824, w0, wa, As, ns, lmax)
+        H0, Omb_h2, omch2, 0.0690, w0, wa, As, ns, lmax)  # Σm_ν canónico R₂·0.9603 (antes 0.0824 Type-P)
     r_d_camb = derived["rdrag"]
     ells     = np.arange(total.shape[0])
     return ells, total, lens_p, r_d_camb, derived
@@ -413,7 +413,7 @@ def main():
                                               ell_min=ell_min, ell_max=ell_max)
         chi2_l, chi2r_l, _ = chi2_vs_planck(ell_o, Dl_o, sig_o, ell_model, Dl_model_l,
                                               ell_min=ell_min, ell_max=ell_max)
-        print(f"  {label}:  SSEE χ²_r={chi2r_s:.3f}  |  ΛCDM χ²_r={chi2r_l:.3f}  (N={n})")
+        print(f"  {label}:  SSEE χ²_r={chi2r_s:.3f} (χ²={chi2_s:.1f})  |  ΛCDM χ²_r={chi2r_l:.3f} (χ²={chi2_l:.1f})  (N={n})")
         chi2_results[label] = (chi2_s, chi2r_s, chi2_l, chi2r_l, n)
         total_chi2_s += chi2_s
         total_chi2_l += chi2_l

@@ -1,5 +1,12 @@
 # SEALED_STATUS — Auditoría paper por paper
 
+> ⚠️ **SUPERADO (2026-06-04) — snapshot histórico, no leer como estado actual.**
+> Anterior a la partícula canónica φ-DM. `m_φ = 5.60/5.602 eV`, `k_fs = 0.493 h/Mpc`
+> y el framing "dimensionalmente inválido/numerológico" están **obsoletos**. Canónico:
+> **m_φ = 36.95 eV** = Σm_ν·(Ω⁴_DNAV+AURA·KAL), forward-prediction dim-consistente;
+> **k_fs = 0.659 h/Mpc**; **S₈_eff = 0.766** (0.01σ KiDS). Fuente autoritativa:
+> `VERIFICATION_LEDGER.md` §Valores Canónicos + Paper 6. Se conserva como rastro de auditoría.
+
 **Creado:** 2026-05-22
 **Última actualización:** 2026-05-23
 **Propósito:** registrar para cada paper SSEE qué partes están **selladas**

@@ -10,9 +10,9 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 - **Paper 3**: Confrontación CMB Planck PR4 TT+TE+EE+lensing (arXiv-ready) ✅
 - **Paper 4**: Derivación algebraica CMB desde φ,π — Nine Sovereignties; nombres mitológicos eliminados, bib 10→40 refs (preprint) ✅
 - **Paper 5**: IS causal perturbation theory — estabilidad, MIRA, S8, fσ₈ (commit 0a9d21c) ✅
-- **Paper 6**: φ-DM dos sectores — m_φ=5.60 eV algebraico, fσ₈ 2.67σ→0.76σ (empata ΛCDM 0.73σ; datos fσ₈ corregidos a refs Alam2017 — 2026-05-18) ✅
+- **Paper 6**: φ-DM dos sectores — m_φ=36.95 eV (partícula canónica, forward-prediction Σm_ν·535.28, cero fiteo; canónico 2026-06-04, antes 5.60 eV obsoleto); S₈_eff=0.766 (0.01σ KiDS), fσ₈ 0.76σ (empata ΛCDM 0.73σ); Lagrangiano escalar libre cierra incompletitud OP-9 ✅
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint) ✅
-- **Paper 8**: Régimen de gravedad fuerte — ⚠ DRAFT pendiente OP-9. Two-limit analysis (alt MOND-like vs canonical EFT B-S); predicción lensing canónica condicional a interpretación física de m_φ. Sirve hoy como consistency check; será paper real cuando OP-9 se resuelva vía OP-14 (ver OPs_ATTACK_PLAN.md). Papers fuertes de la suite: 1, 2, 4, 10. P8 esperando.
+- **Paper 8**: Régimen de gravedad fuerte — ✅ preprint (rescatado 2026-06-08). Interpretación física de m_φ fijada por P6 (escalar libre, 36.95 eV) → predicción lensing canónica **incondicional** (límite EFT B-S). Two-limit analysis conservado: límite (a) MOND-like pedagógico + contraste falsable, límite (b) canónico = modelo real. Residuo OP-9 (origen UV del multiplicador) NO entra en las predicciones. 20 pp.
 - **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 72.86 km/s/Mpc (0.17σ SH0ES); AURA cancela exactamente; +sección comparación cuantitativa vs EDE/SIDR/late-DE (preprint, 18 pp) ✅
 - **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=9.62 meV=Λ_SSEE; αK_full=0.41691; H₀^UV=73.040 km/s/Mpc (condicional C.1); 8/10 JCAP ✅
 
@@ -31,7 +31,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 | `SSEE_Paper5_IS.pdf` | Paper 5 (25 p) | ✅ Completo — IS causal perturbations |
 | `SSEE_Paper6_phiDM.pdf` | Paper 6 (24 p) | ✅ Preprint — +Lagrangiano φ-DM escalar, DW excluido |
 | `SSEE_Paper7_EFT.pdf` | Paper 7 (16 p) | ✅ Preprint — EFT canónico, αK=0.4033, βc=−AURA |
-| `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (~18 p) | ⚠ DRAFT — pendiente OP-9 (interpretación física m_φ); consistency-check hoy, predicción canónica luego |
+| `SSEE_Paper8_StrongGravity.pdf` | Paper 8 (20 p) | ✅ Preprint — rescatado 2026-06-08: m_φ fijado por P6 → predicción lensing canónica incondicional; two-limit conservado |
 | `SSEE_Paper9_HubbleTension.pdf` | Paper 9 (18 p) | ✅ Preprint — f_screen + comparación EDE/SIDR/late-DE |
 | `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (14 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=9.62 meV=Λ_SSEE; αK_full=0.41691 |
 | `SSEE_Unified_Journal.pdf` | Consolidación Papers 1–10 (23 p) — §Extensions 8/9/10 | ✅ Candidato journal (10-paper, 2026-05-17) |
@@ -153,8 +153,8 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | H₀ SSEE (algebraico Paper 4, Type P coincidence) | 67.962 km/s/Mpc = 3(φ+π)² |
 | r_d (SSEE pure, Ω_m,dyn=0.160) | 175.6 Mpc — coherente Eisenstein-Hu |
 | r_d (SSEE+MIRA mapping, Ω_m,CMB=0.31993) | 147.6 Mpc — matchea Planck |
-| **m_φ (P6, revert 2026-05-24 PM)** | **5.602 eV** con H_alg=67.96 — ansatz NUMEROLÓGICO, dimensionalmente inconsistente. Ver OP-9. NO sustituir H_MIRA en esta fórmula sin conversión dimensional explícita |
-| **k_fs (P6 revert)** | **0.493 h/Mpc** (consistente con m_φ=5.602) |
+| **m_φ (P6, partícula canónica — canónico 2026-06-04)** | **36.95 eV** = Σm_ν^active·(Ω⁴_DNAV+AURA·KAL) = 0.0690 eV × 535.28. Forward-prediction, cero fiteo, dim-consistente (masa × número adimensional). Lagrangiano escalar libre. Antes 5.602 eV (obsoleto, fórmula Σm_ν·H_alg retirada) |
+| **k_fs (P6 canónico)** | **0.659 h/Mpc** (consistente con m_φ=36.95; antes 0.493 con 5.602) |
 | **H_local IR canónico (P9 cascada)** | **71.90 km/s/Mpc — 1.10σ SH0ES** (era 72.86 = 0.17σ Type-P) |
 | **H_local UV canónico (P10 cascada)** | **72.077 km/s/Mpc — 0.93σ SH0ES** (era 73.040 = 0σ Type-P) |
 
@@ -172,11 +172,13 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 > - **P9 (H_local = H_MIRA/(1−f_screen) = 71.90):** ✅ válida — H_MIRA dimensional
 >   y f_screen adimensional; la fórmula cierra unidades.
 > - **P10 (H_local^UV = 72.077):** ✅ válida por misma razón estructural.
-> - **P6 (m_φ = Σm_ν × H_0):** ❌ **NO VÁLIDA** — la fórmula es dimensionalmente
->   inconsistente (eV × km/s/Mpc ≠ masa). Solo cierra como numerología cuando
->   H_alg se trata como número adimensional. **Revertido a m_φ = 5.602 eV con
->   H_alg.** Búsqueda de fórmula física correcta abierta en OP-9.
->   Ver `src/op9_phi_dm_formula_search.py` para inventario de candidatas.
+> - **P6 (m_φ canónico = Σm_ν × MULT):** ✅ **VÁLIDA** (canónico 2026-06-04) —
+>   m_φ = Σm_ν^active · (Ω⁴_DNAV+AURA·KAL) = 0.0690 eV × 535.28 = 36.95 eV.
+>   Dim-consistente: masa (eV) × número adimensional puro (φ,π). Forward-prediction,
+>   cero fiteo, escrita en un Lagrangiano escalar libre → cierra la incompletitud
+>   de OP-9 (queda abierto SOLO el origen UV del multiplicador 535.28).
+>   La vieja fórmula `m_φ = Σm_ν × H_alg = 5.602 eV` (eV × km/s/Mpc, sí era
+>   dimensionalmente inválida) está **RETIRADA y obsoleta**.
 
 ---
 
@@ -201,15 +203,15 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | Ω_CDM | 0.160050 | Sector activo a todo k |
 | Ω_φDM = (MIRA−1)×Ω_m,dyn | 0.159878 | Solo k < k_fs |
 | Ω_total (dos sectores) | 0.319928 ≈ Ω_m,CMB | Unificación algebraica |
-| m_φ = Σm_ν^active × H₀^alg | 5.60 eV | Cero parámetros libres |
-| k_fs (Dodelson-Widrow) | 0.493 h/Mpc | Derivado de m_φ |
-| σ₈_eff (two-sector, G_2s=0.979) — **titular Paper 6** | 0.794 | 2.84σ vs KiDS σ₈ |
-| S₈_eff (two-sector) — **titular Paper 6** | 0.820 | 2.6σ KiDS / 2.6σ DES |
-| σ₈_eff / S₈_eff (rama WDM CLASS, secundario) | 0.737 / 0.761 | estimación alternativa, NO titular |
-| S₈ + HMcode baryonic (OP-5 Nivel 1, rama WDM) | 0.758 | 0.06σ DES; B_eff=0.9447 (script op5) |
+| m_φ = Σm_ν^active × (Ω⁴_DNAV+AURA·KAL) | 36.95 eV | Forward-prediction, cero fiteo (canónico 2026-06-04; antes 5.60 obsoleto) |
+| k_fs (free-streaming) | 0.659 h/Mpc | Derivado de m_φ=36.95 (antes 0.493 con 5.60) |
+| σ₈_eff (two-sector canónico) — **titular Paper 6** | 0.742 | cadena 0.811→×G_2s 0.794→free-streaming 0.742 |
+| S₈_eff (two-sector canónico) — **titular Paper 6** | 0.766 | **0.01σ KiDS — RESUELVE la tensión** |
+| Single-sector baseline (fuente Poisson Ω_m=0.320) | σ₈=0.820 / S₈=0.847 | 3.9σ KiDS — "el desafío" que el two-sector resuelve |
+| alpha (free-streaming, OUTPUT CLASS no fiteado) | 1.243 Mpc/h | forward del two-sector canónico |
 | Media tensión fσ₈ (6 encuestas canónicas Paper 5) | **0.76σ** | desde baseline 2.67σ (= Paper 5); empata ΛCDM 0.73σ. Antes 0.50σ con datos fσ₈ erróneos — corregido 2026-05-18 |
-| m_φ algebraico (φ-DM) | 5.60 eV | Sin portal SM — no observable en KATRIN/PTOLEMY |
-| Predicción DESI Y3/Euclid | k_fs = 0.493 h/Mpc (imprint de m_φ en P(k)) | Falsificable 2026–2028 |
+| m_φ algebraico (φ-DM) | 36.95 eV | Sin portal SM — no observable en KATRIN/PTOLEMY |
+| Predicción DESI Y3/Euclid | k_fs = 0.659 h/Mpc (imprint de m_φ en P(k)) | Falsificable 2026–2028 |
 
 ---
 

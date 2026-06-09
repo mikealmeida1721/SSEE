@@ -1,5 +1,11 @@
 # SSEE Constants Audit — Agua vs Aceite
 
+> ⚠️ **SUPERADO (2026-06-04) — snapshot histórico, no leer como estado actual.**
+> Anterior a la partícula canónica φ-DM. `m_φ = 5.602 eV` y el framing
+> "dimensionalmente inválido" están **obsoletos**. Canónico: **m_φ = 36.95 eV** =
+> Σm_ν·(Ω⁴_DNAV+AURA·KAL), forward-prediction dim-consistente. Fuente autoritativa:
+> `VERIFICATION_LEDGER.md` §Valores Canónicos + Paper 6. Se conserva como rastro de auditoría.
+
 **Fecha:** 2026-05-25
 **Motivo:** Clasificar HONESTAMENTE cada "constante" de SSEE por origen real,
 no por la unidad escrita al lado. Evitar usar valores con etiqueta física

@@ -1,5 +1,12 @@
 # Paper 6 — Notes para limpieza honesta
 
+> ⚠️ **SUPERADO (2026-06-04) — snapshot histórico, no leer como estado actual.**
+> Anterior a la partícula canónica φ-DM. `m_φ = 5.602 eV` (numerológico) y
+> `alpha_WDM fiteado` están **obsoletos**. Canónico: **m_φ = 36.95 eV** =
+> Σm_ν·(Ω⁴_DNAV+AURA·KAL), forward-prediction cero fiteo; **alpha = 1.243 Mpc/h**
+> es OUTPUT de CLASS, no fiteo. Fuente autoritativa: `VERIFICATION_LEDGER.md` + Paper 6.
+> Se conserva como rastro de auditoría.
+
 **Fecha:** 2026-05-25 (sesión nocturna)
 **Motivo:** Tras descubrir múltiples capas de fitting numerológico en P6,
 documentar los números CANÓNICOS reales del modelo y los ediciones necesarias.

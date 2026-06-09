@@ -1,5 +1,11 @@
 # H₀ Cascade Audit — SSEE-V3.6 (REVISADO)
 
+> ⚠️ **SUPERADO (2026-06-04) — snapshot histórico, no leer como estado actual.**
+> La parte de m_φ (`5.602 eV con disclaimer dimensional`) está **obsoleta**: el
+> canónico es **m_φ = 36.95 eV** = Σm_ν·(Ω⁴_DNAV+AURA·KAL), forward-prediction
+> dim-consistente. La cascada H₀ (P9 IR 71.90 / P10 UV 72.077) sigue vigente.
+> Fuente autoritativa: `VERIFICATION_LEDGER.md` §Valores Canónicos. Rastro de auditoría.
+
 **Fecha:** 2026-05-24 PM
 **Motivo:** Tras revertir P6 (m_φ) por inconsistencia dimensional, auditoría bloque
 por bloque para asegurar que NINGUNA otra cascada superficial ocultara errores.

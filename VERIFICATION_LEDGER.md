@@ -381,7 +381,7 @@ no una derivación. **ABIERTO.**
 
 *Claim CLAUDE.md:* "OP-3 RESUELTO — jerarquía EFT (H₀/M)²≈10⁻⁶²".
 
-1. **✓** La jerarquía es real: (H₀/M)² ≈ 2.7×10⁻⁶² (M=8.81 meV ≫ H₀).
+1. **✓** La jerarquía es real: (H₀/M)² ≈ 2.3×10⁻⁶² (M=9.62 meV ≫ H₀).
 2. **✗** Que esa jerarquía *pruebe* la separabilidad (Postulate C.1 →
    Theorem C.1) es una **aserción**: `ssee_op3_separability.py` (L176–179)
    admite que el jacobiano ∂φ/∂χ que mide el mezclado real se difiere a

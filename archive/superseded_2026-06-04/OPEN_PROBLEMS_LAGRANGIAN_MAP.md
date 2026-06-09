@@ -1,5 +1,12 @@
 # SSEE — Mapa de problemas abiertos con propuestas de Lagrangiano
 
+> ⚠️ **SUPERADO (2026-06-04) — snapshot histórico, no leer como estado actual.**
+> `m_φ = 5.602 eV (dimensional invalid / numerológica)` está **obsoleto**. Canónico:
+> **m_φ = 36.95 eV** = Σm_ν·(Ω⁴_DNAV+AURA·KAL), forward-prediction dim-consistente,
+> escrito en un Lagrangiano escalar libre que cierra la incompletitud de OP-9 (queda
+> abierto SOLO el origen UV del multiplicador 535.28). Fuente: `VERIFICATION_LEDGER.md`
+> + Paper 6. Se conserva como rastro de auditoría.
+
 **Fecha:** 2026-05-25
 **Propósito:** Inventario completo de OPs abiertos + **propuesta concreta de
 mecanismo/Lagrangiano para cada uno**. Documento de trabajo para Mike — no es

@@ -109,17 +109,18 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 
 | Cantidad | Valor canónico | Fuente | Re-anclado |
 |---|---|---|---|
-| H₀ anchor/prior (H_MIRA, CMB-óptimo) | 67.068 km/s/Mpc | `ssee_paper3_cobaya_unified.py` / `planck_cobaya_unified.txt` L3 | 2026-05-24 |
-| H₀ MCMC posterior (prior MIRA, corregido por DESI) | 66.553 ± 0.442 km/s/Mpc | `ssee_paper2_mcmc_mira.py` (100w×25k, seed 42) → `results/logs/mcmc_paper2_mira.log` L78 | 2026-05-24 |
+| H₀ anchor/prior (H_MIRA, CMB-óptimo) | 67.037 km/s/Mpc | `ssee_paper3_cobaya_unified.py` (SSEE@Σm_ν=0.069 self-consistente; era 67.068 con mnu=0.06 baseline) | 2026-06-09 |
+| H₀ MCMC posterior (prior MIRA 67.037, corregido por DESI) | 66.533 ± 0.442 km/s/Mpc | `ssee_paper2_mcmc_mira.py` (100w×25k, seed 42, prior 67.037) → `results/logs/mcmc_paper2_mira.log` | 2026-06-09 |
 | ΔBIC MCMC (ΛCDM−SSEE) | +7.91 (SSEE favorecido) | `ssee_paper2_mcmc.py` | 2026-05-22 |
 | Ω_b h² (posterior MCMC) | 0.02183 ± 0.00048 | `ssee_paper2_mcmc.py` | 2026-05-22 |
 | r_d,SSEE (crudo) | 175.16 Mpc | `ssee_paper2_mcmc.py` | 2026-05-22 |
-| r_d,eff (CAMB, en anchor 67.068) | 146.70 Mpc — **1.51σ** | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
-| r_d,eff (CAMB, en posterior 66.553) | 147.28 Mpc — **0.72σ** | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
-| χ²_r CMB TT (SSEE) | 1.047 | `ssee_paper3_cmb.py` | 2026-05-22 |
-| ΔBIC CMB (SSEE−ΛCDM) | −20.8 (SSEE favorecido) | `ssee_paper3_cmb.py` | 2026-05-22 |
-| θ* (CAMB, en anchor 67.068) | 0.59636° — **0.69σ** | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
-| θ* (CAMB, en posterior 66.553) | 0.59417° — **5.46σ** (sensibilidad de θ* a H₀; ver V-L4-θ*) | `ssee_verify_rd.py` (re-run 2026-06-01) | 2026-06-01 |
+| r_d,eff (CAMB, en anchor 67.037, mnu=0.069) | 146.73 Mpc — **1.38σ** | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |
+| r_d,eff (CAMB, en posterior 66.533, mnu=0.069) | 147.30 Mpc — **0.80σ** | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |
+| χ²_r CMB TT (SSEE) | 1.045 | `ssee_paper3_cmb.py` (Σm_ν=0.0690 canónico) | 2026-06-09 |
+| ΔBIC CMB diagonal (SSEE−ΛCDM) | −24.7 (SSEE favorecido) | `ssee_paper3_cmb.py` (Σm_ν=0.0690 canónico) | 2026-06-09 |
+| ΔBIC CMB plik_lite Cobaya (k=2) | −32.2 (ΛCDM@0.06·SSEE@0.069; H₀_opt=67.037) | `ssee_paper3_cobaya_unified.py` | 2026-06-09 |
+| θ* (CAMB, en anchor 67.037, mnu=0.069) | 0.59638° — **0.66σ** | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |
+| θ* (CAMB, en posterior 66.533, mnu=0.069) | 0.59423° — **5.33σ** (sensibilidad de θ* a H₀; ver V-L4-θ*) | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |
 | σ₈ / S₈ SSEE (Paper 5) | 0.702 / 0.725 | `ssee_paper5_IS_perturbations.py` | (sin re-correr) |
 | σ_LS (Paper 6, amplitud RSD k<k_fs, fσ₈) | 0.811·G_2s = 0.794 | `ssee_paper6_verification.py` | 2026-06-04 (canónico) |
 | σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.742 / 0.766 — **0.01σ KiDS** | `ssee_paper6_verification.py` | 2026-06-04 (canónico) |
@@ -132,13 +133,18 @@ deriva corresponde a **ediciones del script / cambios de prior**, no a azar:
 - 66.75 ± 0.44 — prior Planck-ΛCDM legacy, 50w×10k.
 - 67.756 ± 0.442 — prior Planck-ΛCDM, 100w×25k (commit `4892b53`, corrección
   dos-Ω_m). **OBSOLETO desde el switch de prior 2026-05-24.**
-- **66.553 ± 0.442 — prior MIRA self-consistent, 100w×25k (CANÓNICO ACTUAL).**
+- **66.533 ± 0.442 — prior MIRA self-consistent, 100w×25k (CANÓNICO ACTUAL).**
   `ssee_paper2_mcmc_mira.py`, ref `results/logs/mcmc_paper2_mira.log` L78.
+  *Re-run 2026-06-09:* corrido con el prior canónico nuevo 67.037 (mnu=0.069
+  self-consistente). El posterior pasó de 66.553 (prior 67.068) a **66.533**
+  (corrimiento −0.020, = 0.06σ del prior, como se predijo). N_eff≈77709,
+  acceptance 0.715. Este es el valor canónico actual.
 
 **Anatomía del H₀ (un solo número, dos etapas):** el modelo tiene UN H₀.
-(1) **Anchor/prior** = H_MIRA = 67.068 km/s/Mpc: el H₀ que minimiza la
-tensión CMB (Cobaya `minimize_scalar` sobre Planck plik_lite con fondo SSEE).
-(2) **Posterior** = 66.553 ± 0.442: el mismo H₀ tras dejar que el MCMC ajuste
+(1) **Anchor/prior** = H_MIRA = 67.037 km/s/Mpc: el H₀ que minimiza la
+tensión CMB (Cobaya `minimize_scalar` sobre Planck plik_lite con fondo SSEE,
+con Σm_ν=0.069 SSEE self-consistente; era 67.068 con mnu=0.06 baseline).
+(2) **Posterior** = 66.533 ± 0.442: el mismo H₀ tras dejar que el MCMC ajuste
 DESI DR2 BAO encima del prior. DESI lo baja ~0.5 km/s/Mpc (≈1.2σ). Esto es
 el clásico **split BAO–CMB de los modelos w₀wₐ**, no un error.
 
@@ -423,8 +429,8 @@ dos valores internamente inconsistentes. El titular sigue a ~2.6σ. **ABIERTO.**
 1. **✓ valor:** f_screen = α_K/(3·MIRA) = (π−φ)/Ω² = 0.067253 — álgebra
    exacta, ya verificada en V-L2-13 y en la identidad cruzada de Capa 2.
    **Canónico (espeja Paper 9, Eq. H0local + Tabla L397):**
-   H₀,local = H₀^MIRA/(1−f_screen) = 67.068/0.93275 = **71.90 km/s/Mpc**
-   (1.10σ SH0ES). La ruta Type-P H₀^alg/(1−f_screen) = 72.86 km/s/Mpc es
+   H₀,local = H₀^MIRA/(1−f_screen) = 67.037/0.93275 = **71.87 km/s/Mpc**
+   (1.12σ SH0ES). La ruta Type-P H₀^alg/(1−f_screen) = 72.86 km/s/Mpc es
    **comparación** (Paper 9 Tabla L398), NO el valor canónico.
 2. **✓ forma:** que la corrección sea **multiplicativa** sí sigue de la
    aproximación de universo separado para k-essence (Wands 2000; Brax &
@@ -497,7 +503,7 @@ M⁴ tiene dos valores incompatibles según el paper. **PARCIAL.**
 
 ## V-L3-KX — completación UV K(X) (Paper 10) — **ABIERTO (M⁴ calibrado a SH0ES)**
 
-*Claim CLAUDE.md:* "Paper 10: M⁴=5φ⁸ρ_crit exacto; H₀^UV canónico=72.077 (MIRA, 0.93σ; condicional C.1). Type-P 73.040 es coincidencia numérica".
+*Claim CLAUDE.md:* "Paper 10: M⁴=5φ⁸ρ_crit exacto; H₀^UV canónico=72.05 (MIRA=67.037, 0.96σ; condicional C.1). Type-P 73.040 es coincidencia numérica".
 
 1. **✓ identidad 45α² = 5φ⁸:** exacta a precisión de máquina (α=φ⁴/3 →
    45α²=45φ⁸/9=5φ⁸=234.89). El *valor numérico* de M⁴/ρ_crit cierra.
@@ -508,7 +514,7 @@ M⁴ tiene dos valores incompatibles según el paper. **PARCIAL.**
    of M⁴ = 45α² without using SH0ES as input"*. La Ruta A da M⁴≈418 ≠ 234.9.
    M⁴=5φ⁸ es el número que hace falta para llegar a H₀=73.04, expresado en
    φ — mismo patrón que OP-1 (ajuste a objetivo conocido).
-3. αK_full=0.41691 y H₀^UV (canónico 72.077 vía MIRA; Type-P 73.040) son aguas
+3. αK_full=0.41691 y H₀^UV (canónico 72.05 vía MIRA=67.037; Type-P 73.040) son aguas
    abajo de este M⁴ **ABIERTO**.
 
 **Veredicto:** la forma algebraica 5φ⁸ es exacta, pero su identificación
@@ -819,9 +825,9 @@ verificado es el *álgebra*; la *regla física* de uso no está derivada.
 parámetros) se construyó con 0.160 en el fondo. El commit `4892b53`
 («corrección dos-Ω_m») cambió E(z) a 0.320 y, con el prior Planck-ΛCDM legacy,
 movió H₀ a 67.756 — que producía r_d/θ* a 4–5σ. **El switch de prior MIRA
-(2026-05-24) reancló H₀ a 66.553 posterior / 67.068 anchor**, y con esos H₀
-r_d queda a ≤1.5σ y θ* a 0.69σ *en el anchor* (ver V-L4-rd/θ* re-corridas
-2026-06-01). Lo que queda abierto NO es ya un 5σ duro en r_d, sino: (a) la
+(2026-05-24) reancló H₀ a 66.533 posterior / 67.037 anchor**, y con esos H₀
+r_d queda a ≤1.5σ y θ* a 0.66σ *en el anchor* (ver V-L4-rd/θ* re-corridas
+2026-06-09). Lo que queda abierto NO es ya un 5σ duro en r_d, sino: (a) la
 ausencia de Ω_m,eff(z) que puentee 0.160↔0.320, y (b) el split BAO–CMB de
 1.2σ en H₀, que se manifiesta como tensión en θ* solo si se usa el posterior
 en el observable CMB. Sigue siendo un cambio de configuración con
@@ -902,14 +908,14 @@ superado). Con los H₀ canónicos actuales:
 
 | H₀ usado | r_d resultante | tensión Planck (147.09±0.26) |
 |---|---|---|
-| 66.553 (posterior MCMC, prior MIRA) | 147.28 Mpc | **0.72σ ✓** |
-| 67.068 (anchor H_MIRA, CMB-óptimo) | 146.70 Mpc | **1.51σ ✓** |
+| 66.533 (posterior MCMC, prior MIRA, mnu=0.069) | 147.30 Mpc | **0.80σ ✓** |
+| 67.037 (anchor H_MIRA, CMB-óptimo, mnu=0.069) | 146.73 Mpc | **1.38σ ✓** |
 | 67.756 (obsoleto, prior Planck legacy) | 145.93 Mpc | 4.47σ — *superado* |
 
 **Mecanismo:** la parametrización SSEE fija Ω_m,cosm=0.31993 (fracción) y
 deriva ω_c = Ω_m,cosm·h² − ω_b. Al subir H₀, sube h², sube ω_c, la igualdad
 materia-radiación se adelanta y r_d **cae**. r_d es genuinamente sensible a
-H₀. Con el H₀ real del modelo (66.553 posterior / 67.068 anchor), r_d está a
+H₀. Con el H₀ real del modelo (66.533 posterior / 67.037 anchor), r_d está a
 ≤1.5σ de Planck. **El "✅" de r_d se restituye.**
 
 ## V-L4-θ* — escala acústica angular θ* — **ABIERTO (sensibilidad extrema a H₀)**
@@ -919,21 +925,21 @@ H₀ vía D_A. Re-run CAMB 2026-06-01, vs Planck 2018 **0.59668±0.00046°**:
 
 | H₀ usado | θ* resultante | tensión |
 |---|---|---|
-| 67.068 (anchor H_MIRA, CMB-óptimo) | 0.59636° | **0.69σ ✓** |
-| 66.553 (posterior MCMC, corregido por DESI) | 0.59417° | **5.46σ** |
+| 67.037 (anchor H_MIRA, CMB-óptimo, mnu=0.069) | 0.59638° | **0.66σ ✓** |
+| 66.533 (posterior MCMC, corregido por DESI, mnu=0.069) | 0.59423° | **5.33σ** |
 | 67.756 (obsoleto) | 0.59927° | 5.62σ — *superado* |
 
-**Crux honesto:** en el **anchor CMB-óptimo (67.068)**, θ* (0.69σ) y r_d
-(1.51σ) están **ambos sanos**. La tensión de 5.46σ aparece SOLO si se inyecta
-el H₀ posterior corregido-por-DESI (66.553) en el observable CMB — es decir,
+**Crux honesto:** en el **anchor CMB-óptimo (67.037)**, θ* (0.66σ) y r_d
+(1.38σ) están **ambos sanos**. La tensión de 5.33σ aparece SOLO si se inyecta
+el H₀ posterior corregido-por-DESI (66.533) en el observable CMB — es decir,
 es la manifestación en θ* del **split BAO–CMB de 1.2σ en H₀** de los modelos
 w₀wₐ. Un control ΛCDM (w=−1) al mismo H₀ da θ* casi idéntico: **el tirón en
 θ* lo causa H₀, NO la energía oscura w₀wₐ de SSEE.**
 
-**Lectura para el documento de journal:** anclar el CMB en H₀=67.068 (donde
-r_d y θ* ≤1.5σ), reportar el posterior BAO 66.553±0.442, y declarar el split
+**Lectura para el documento de journal:** anclar el CMB en H₀=67.037 (donde
+r_d y θ* ≤1.5σ), reportar el posterior BAO 66.533±0.442, y declarar el split
 BAO–CMB (1.2σ) como feature conocido de w₀wₐ — no como falla. Ningún H₀ único
-satisface BAO-posterior + r_d + θ* todos a <2σ a la vez, pero 67.068 deja los
+satisface BAO-posterior + r_d + θ* todos a <2σ a la vez, pero 67.037 deja los
 tres a ≤1.5σ.
 
 ## V-L4-MCMC — MCMC DESI+Planck (Paper 2) — **re-run 2026-05-22; H₀ derivó**

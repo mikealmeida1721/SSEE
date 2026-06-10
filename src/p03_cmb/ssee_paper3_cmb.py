@@ -26,7 +26,7 @@ from ssee_core import (
 M_SSEE = abs(w0)   # acoustic saturation factor (= |w0|)
 # Sector de observación CMB: Ω_m,CMB = Ω_m,dyn × MIRA = Omm_cmb (Genesis 5.12)
 
-H0       = 67.08   # plik_lite MCMC posterior median (Paper 3 §b1_mcmc)
+H0       = 67.04   # H_MIRA anchor (SSEE@Σm_ν=0.069 self-consistente; era 67.08)
 Omb_h2   = 0.02237
 # n_s = 1 - phi^-7 = 0.96556 (predicción algebraica SSEE, Paper 4) — importado arriba
 ln_As    = 3.044

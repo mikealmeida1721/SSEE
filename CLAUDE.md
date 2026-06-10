@@ -13,8 +13,8 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 - **Paper 6**: φ-DM dos sectores — m_φ=36.95 eV (partícula canónica, forward-prediction Σm_ν·535.28, cero fiteo; canónico 2026-06-04, antes 5.60 eV obsoleto); S₈_eff=0.766 (0.01σ KiDS), fσ₈ 0.76σ (empata ΛCDM 0.73σ); Lagrangiano escalar libre cierra incompletitud OP-9 ✅
 - **Paper 7**: EFT canónico — βc=−AURA, αT=αM=αB=0, αK=0.4033, λ/V₀/M/g² bloqueados (preprint) ✅
 - **Paper 8**: Régimen de gravedad fuerte — ✅ preprint (rescatado 2026-06-08). Interpretación física de m_φ fijada por P6 (escalar libre, 36.95 eV) → predicción lensing canónica **incondicional** (límite EFT B-S). Two-limit analysis conservado: límite (a) MOND-like pedagógico + contraste falsable, límite (b) canónico = modelo real. Residuo OP-9 (origen UV del multiplicador) NO entra en las predicciones. 20 pp.
-- **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 71.90 km/s/Mpc (1.10σ SH0ES) canónico vía H_MIRA (Type-P alt 72.86 = 0.17σ, reportado como coincidencia); AURA cancela exactamente; +sección comparación cuantitativa vs EDE/SIDR/late-DE (preprint, 18 pp) ✅
-- **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=9.62 meV=Λ_SSEE; αK_full=0.41691; H₀^UV canónico=72.077 km/s/Mpc (MIRA, 0.93σ, condicional C.1; Type-P 73.040 = coincidencia numérica); 8/10 JCAP ✅
+- **Paper 9**: Tensión Hubble — f_screen = αK/(3·MIRA) = (π-φ)/Ω² = 0.06725; H₀,local = 71.87 km/s/Mpc (1.12σ SH0ES) canónico vía H_MIRA=67.037 (Σm_ν=0.0690 self-consistente; Type-P alt 72.86 = 0.17σ algebraico, reportado como coincidencia); AURA cancela exactamente; +sección comparación cuantitativa vs EDE/SIDR/late-DE (preprint, 18 pp) ✅
+- **Paper 10**: UV Completion — K(X)=X/KAL+X²/M⁴; M⁴=5φ⁸ρ_crit exacto; M=9.62 meV=Λ_SSEE; αK_full=0.41691; H₀^UV canónico=72.05 km/s/Mpc (MIRA=67.037, 0.96σ, condicional C.1; Type-P 73.040 = coincidencia numérica); 8/10 JCAP ✅
 
 ---
 
@@ -92,13 +92,13 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 
 | Espectro | SSEE χ²_r | ΛCDM χ²_r | N |
 |---|---|---|---|
-| TT | 1.045 | 1.043 | 1971 |
+| TT | 1.044 | 1.043 | 1971 |
 | TE | 1.041 | 1.040 | 1967 |
 | EE | 1.040 | 1.039 | 1967 |
-| PP (lensing) | 0.880 | 0.757 | 9 |
-| ΔBIC (TT+TE+EE+PP diagonal, k=2 vs k=6) | −24.7 (SSEE favorecido; cross-check a H₀=67.08; Σm_ν=0.0690 canónico) | — | — |
-| ΔBIC (plik_lite Cobaya, k=2 vs k=6) | −31.3 (SSEE decisivamente favorecido) | — | — |
-| ΔBIC (plik_lite conservador, k=4 vs k=6) | −13.8 (SSEE fuertemente favorecido) | — | — |
+| PP (lensing) | 0.866 | 0.757 | 9 |
+| ΔBIC (TT+TE+EE+PP diagonal, k=2 vs k=6) | −28.0 (SSEE favorecido; cross-check a H₀=67.04; Σm_ν=0.0690 canónico) | — | — |
+| ΔBIC (plik_lite Cobaya, k=2 vs k=6, ΛCDM@0.06 · SSEE@0.069) | −32.2 (SSEE decisivamente favorecido; H₀_opt=67.037, Δχ²=+2.875) | — | — |
+| ΔBIC (plik_lite conservador, k=4 vs k=6) | −14.7 (SSEE fuertemente favorecido) | — | — |
 
 Datos lensing: `data/raw/planck_pr4_lensing.txt` (14 bins MV)
 
@@ -147,16 +147,16 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | ΔBIC (modelo completo, k=0 vs ΛCDM k=6) | +206 (penalidad por background ΛCDM) |
 | ΔBIC MCMC (ΛCDM−SSEE, dynamic sector, k=2 vs k=3) | **+7.91** (SSEE favorecido) |
 | ΔBIC MCMC structural (SSEE−ΛCDM full background) | +213 (Ω_m=0.160 vs 0.315; resuelve P6) |
-| **H₀ SSEE (MCMC, prior MIRA — canónico tras 2026-05-24)** | **66.55⁺⁰·⁴⁴/₋₀·₄⁴** km/s/Mpc (script `ssee_paper2_mcmc_mira.py`, 100w×25k, seed 42) |
+| **H₀ SSEE (MCMC, prior MIRA 67.037 — canónico tras 2026-06-09)** | **66.53⁺⁰·⁴⁴/₋₀·₄⁴** km/s/Mpc (script `ssee_paper2_mcmc_mira.py`, 100w×25k, seed 42, prior 67.037; era 66.55 con prior 67.068) |
 | H₀ SSEE (MCMC, prior Planck legacy — para comparación) | 66.75⁺⁰·⁴⁴/₋₀·₄⁴ km/s/Mpc (script original, valor en P2 antes del switch MIRA) |
-| H₀ MIRA (Planck plik_lite + SSEE bg) | 67.068 km/s/Mpc (script `ssee_paper3_cobaya_unified.py`) |
+| H₀ MIRA (Planck plik_lite + SSEE bg) | 67.037 km/s/Mpc (script `ssee_paper3_cobaya_unified.py`, SSEE@Σm_ν=0.069 self-consistente; era 67.068 con mnu=0.06 baseline) |
 | H₀ SSEE (algebraico Paper 4, Type P coincidence) | 67.962 km/s/Mpc = 3(φ+π)² |
 | r_d (SSEE pure, Ω_m,dyn=0.160) | 175.6 Mpc — coherente Eisenstein-Hu |
 | r_d (SSEE+MIRA mapping, Ω_m,CMB=0.31993) | 147.6 Mpc — matchea Planck |
 | **m_φ (P6, partícula canónica — canónico 2026-06-04)** | **36.95 eV** = Σm_ν^active·(Ω⁴_DNAV+AURA·KAL) = 0.0690 eV × 535.28. Forward-prediction, cero fiteo, dim-consistente (masa × número adimensional). Lagrangiano escalar libre. Antes 5.602 eV (obsoleto, fórmula Σm_ν·H_alg retirada) |
 | **k_fs (P6 canónico)** | **0.659 h/Mpc** (consistente con m_φ=36.95; antes 0.493 con 5.602) |
-| **H_local IR canónico (P9 cascada)** | **71.90 km/s/Mpc — 1.10σ SH0ES** (era 72.86 = 0.17σ Type-P) |
-| **H_local UV canónico (P10 cascada)** | **72.077 km/s/Mpc — 0.93σ SH0ES** (era 73.040 = 0σ Type-P) |
+| **H_local IR canónico (P9 cascada)** | **71.87 km/s/Mpc — 1.12σ SH0ES** (vía H_MIRA=67.037; Type-P alt 72.86 = 0.17σ) |
+| **H_local UV canónico (P10 cascada)** | **72.05 km/s/Mpc — 0.96σ SH0ES** (vía H_MIRA=67.037; Type-P 73.040 = coincidencia) |
 
 > **Valores canónicos:** la tabla autoritativa de cada número vive en
 > `VERIFICATION_LEDGER.md` §«Valores Canónicos». Esta tabla es un resumen;
@@ -164,14 +164,15 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 >
 > **Historia H₀ MCMC (registro honesto):**
 > - 66.75 ± 0.44 — script original con prior Planck-ΛCDM (valor en P2 antes 2026-05-24)
-> - 66.55 ± 0.44 — script con prior MIRA (self-consistent, P2 actualizado 2026-05-24)
+> - 66.55 ± 0.44 — prior MIRA 67.068 (mnu=0.06 baseline, 2026-05-24)
+> - 66.53 ± 0.44 — prior MIRA 67.037 (mnu=0.069 self-consistente, re-run 2026-06-09) — CANÓNICO
 > - El "67.756" anteriormente documentado aquí era MALA ANOTACIÓN, no corresponde a
 >   ninguna corrida real. Corregido 2026-05-24. Ver [[project-h0-mira-calibration]].
 >
 > **Validez de cascadas H_alg→H_MIRA (revisión 2026-05-24 PM):**
-> - **P9 (H_local = H_MIRA/(1−f_screen) = 71.90):** ✅ válida — H_MIRA dimensional
+> - **P9 (H_local = H_MIRA/(1−f_screen) = 71.87):** ✅ válida — H_MIRA dimensional
 >   y f_screen adimensional; la fórmula cierra unidades.
-> - **P10 (H_local^UV = 72.077):** ✅ válida por misma razón estructural.
+> - **P10 (H_local^UV = 72.05):** ✅ válida por misma razón estructural.
 > - **P6 (m_φ canónico = Σm_ν × MULT):** ✅ **VÁLIDA** (canónico 2026-06-04) —
 >   m_φ = Σm_ν^active · (Ω⁴_DNAV+AURA·KAL) = 0.0690 eV × 535.28 = 36.95 eV.
 >   Dim-consistente: masa (eV) × número adimensional puro (φ,π). Forward-prediction,

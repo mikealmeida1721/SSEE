@@ -32,7 +32,7 @@ from ssee_core import (
 # meV⁴ units — no implicit ρ_crit = 1 (which would leave them ambiguous to a
 # referee even though the observable chain is invariant). Anchor: H_MIRA (the
 # physical CMB/Cobaya value, Paper 3), not H_alg.
-H_MIRA       = 67.068              # km/s/Mpc — physical anchor (Paper 3 Cobaya)
+H_MIRA       = 67.037              # km/s/Mpc — physical anchor (Paper 3 Cobaya, SSEE@Σm_ν=0.069)
 M_PL_eV      = 2.435323e27         # reduced Planck mass [eV]
 H0_PER_h_eV  = 2.1331951e-33       # 100 km/s/Mpc expressed in eV
 H_MIRA_eV    = (H_MIRA / 100.0) * H0_PER_h_eV

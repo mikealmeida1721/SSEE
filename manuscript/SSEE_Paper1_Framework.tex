@@ -916,10 +916,10 @@ applies uniformly to Papers~1--4.
   \href{https://doi.org/10.5281/zenodo.19679049}{Zenodo~10.5281/zenodo.19679049}).
   Validated against: Planck PR4 TT+TE+EE+lensing via CAMB; \texttt{plik\_lite}
   TTTEEE likelihood via Cobaya (Paper~3).
-  \textit{Result}: $\chi^2_r=1.062$ (TT, 1971 multipoles);
-  $\Delta\mathrm{BIC}=-31.3$ at $H_0=67.068$~km\,s$^{-1}$\,Mpc$^{-1}$ ($k=2$
+  \textit{Result}: $\chi^2_r=1.044$ (TT, 1971 multipoles);
+  $\Delta\mathrm{BIC}=-32.2$ at $H_0=67.037$~km\,s$^{-1}$\,Mpc$^{-1}$ ($k=2$
   vs $k=6$ for $\Lambda$CDM; canonical conservative estimate from Paper~3).
-  Aggressive lower bound with $k=1$: $\Delta\mathrm{BIC}=-40.3$.
+  Aggressive lower bound with $k=1$: $\Delta\mathrm{BIC}=-41.0$.
   \textit{Claim}: SSEE is \emph{not falsified} by the Planck PR4 CMB spectra.
   This claim is sector-specific: it refers to the observational sector
   (with MIRA applied), not the dynamic sector directly.
@@ -969,11 +969,11 @@ DESI DR2 + Planck prior & 16 & Std.\ Friedmann & 2 & 3 & $+206$ &
   Full model: background incompatibility with $\Lambda$CDM-calibrated $\Omega_m$ \\[3pt]
 DESI DR2 + Planck prior & 16 & Std.\ Friedmann & 1 & 3 & $-5.55$ &
   Dynamic sector: $w_0,w_a$ fixed, $H_0$ free \\[3pt]
-Planck PR4 diagonal & 5914 & MIRA-corr. & 2 & 6 & $+31.1$ &
-  CMB spectra, conservative $k$ upper bound \\[3pt]
-\texttt{plik\_lite} TTTEEE & 6469 & MIRA-corr. & 2 & 6 & $\mathbf{-31.3}$ &
+Planck PR4 diagonal & 5914 & MIRA-corr. & 2 & 6 & $-28.0$ &
+  CMB spectra, diagonal covariance (canonical $\Sigma m_\nu=0.0690$) \\[3pt]
+\texttt{plik\_lite} TTTEEE & 6469 & MIRA-corr. & 2 & 6 & $\mathbf{-32.2}$ &
   CMB parsimony: canonical conservative ($k=2$, Paper~3) \\[3pt]
-\texttt{plik\_lite} TTTEEE & 6469 & MIRA-corr. & 1 & 6 & $-40.3$ &
+\texttt{plik\_lite} TTTEEE & 6469 & MIRA-corr. & 1 & 6 & $-41.0$ &
   CMB parsimony: aggressive lower bound ($k=1$) \\
 \bottomrule
 \end{tabularx}
@@ -982,8 +982,9 @@ Planck PR4 diagonal & 5914 & MIRA-corr. & 2 & 6 & $+31.1$ &
 \noindent\textbf{Reading guide.}
 The $+206$ and $-5.55$ use the same 16 data points but test different hypotheses:
 the former penalises background geometry; the latter isolates $w_0,w_a$.
-The $-31.3$ (canonical, $k=2$) and $+31.1$ both use CMB data but differ in
-likelihood type and $k$; the aggressive $k=1$ estimate gives $-40.3$.
+The $-32.2$ (\texttt{plik\_lite}, $k=2$) and $-28.0$ (diagonal) both use CMB
+data and both favour SSEE, differing only in likelihood type (off-diagonal
+covariance vs diagonal); the aggressive $k=1$ estimate gives $-41.0$.
 \emph{No single BIC summarises the entire framework}: each answers a specific
 physical question stated in the table.
 
@@ -1060,18 +1061,19 @@ Sector & Validated by & Falsified by ($>3\sigma$) & Not a falsification \\
   DESI~DR5+ excludes $(-0.840,-0.670)$; or $\chi^2_r(H(z))>2.5$ with full cov. &
   $\Delta\mathrm{BIC}=+206$ from \LCDM-calibrated $\Omega_m$ prior \\[4pt]
 \textbf{Observational} &
-  Planck~PR4 $\Delta\mathrm{BIC}=-31.3$ (canonical, $k=2$); $r_d^{\rm SSEE+MIRA}=147.16$~Mpc ($0.25\sigma$) &
+  Planck~PR4 $\Delta\mathrm{BIC}=-32.2$ (canonical, $k=2$); $r_d^{\rm SSEE+MIRA}=147.16$~Mpc ($0.25\sigma$) &
   Euclid/KiDS $\Omega_m<0.25$ at $z<1$; or MIRA ratio $\neq1.999$ at $>3\sigma$ &
-  $\chi^2_r=1.062$ vs \LCDM's $1.043$ (non-equivalent background) \\
+  $\chi^2_r=1.044$ vs \LCDM's $1.043$ (non-equivalent background) \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \paragraph{On cross-sector BIC comparisons.}
-The $\Delta\mathrm{BIC}=-5.55$ and $-31.3$ are not directly comparable
+The $\Delta\mathrm{BIC}=-5.55$ and $-32.2$ are not directly comparable
 (different $N$, backgrounds, and $\Lambda$CDM $k$ counts).
-The $\Delta\mathrm{BIC}=+31.1$ and $-31.3$ ($-40.3$ aggressive) bracket the CMB
-result's sensitivity to the assumed $k_{\rm SSEE}$ (see Paper~3 Table~7).
+The diagonal $\Delta\mathrm{BIC}=-28.0$ and the \texttt{plik\_lite} $-32.2$
+($-41.0$ aggressive $k=1$) all favour SSEE; their spread reflects the
+likelihood treatment and the assumed $k_{\rm SSEE}$ (see Paper~3 Table~7).
 The authoritative reference is Table~\ref{tab:bic_unified}.
 
 
@@ -1125,7 +1127,7 @@ $M_v$     & $\varphi+\pi+K_v$ & $14.278880$ & Max.\ dim.\ invariant & A \\
 $w_0$     & $-T_r/M_v$ & $-0.8399$ & DESI DR2 & A \\
 $w_a$     & $-P_{sc}/K_v$ & $-0.6699$ & DESI DR2 & A \\
 $H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & P$^\dagger$ \\
-$H_0^{\rm MCMC}$ & CMB full posterior (Paper~3) & $67.08\pm0.03$ & Planck PR4 & M \\
+$H_0^{\rm MCMC}$ & CMB full posterior (Paper~3) & $67.04\pm0.03$ & Planck PR4 & M \\
 $\Omega_{m,\rm dyn}$ & $(\pi-\varphi)/[2(\varphi+\pi)]$ & $0.1601$ & Dynamic sector; $1+w_0$ exact & A \\
 $\Omega_m^{\rm CMB}$ & $(\pi-\varphi)/(\pi+\varphi)$ & $0.3201^\S$ & Planck 2018 & A \\
 $n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
@@ -1332,8 +1334,8 @@ comparisons in Papers~2 and~3.
 In Paper~2, the $\Delta\mathrm{BIC}=-5.55$ (dynamic sector) is a
 Type~M result: it reflects the MCMC posterior relative to $\Lambda$CDM
 under identical priors.
-In Paper~3, the $\Delta\mathrm{BIC}=-31.3$ (plik\_lite likelihood, canonical $k=2$;
-aggressive $k=1$ gives $-40.3$)
+In Paper~3, the $\Delta\mathrm{BIC}=-32.2$ (plik\_lite likelihood, canonical $k=2$;
+aggressive $k=1$ gives $-41.0$)
 is a Type~P result: it depends on the \texttt{plik\_lite} likelihood
 as an external CMB anchor.
 These two BIC values are \emph{not directly comparable} because they

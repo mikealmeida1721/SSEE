@@ -3,9 +3,9 @@ SSEE Paper 2 — MCMC PRODUCCIÓN bajo prior MIRA
 ================================================
 Variante del MCMC oficial de Paper 2 con un único cambio crítico:
 
-  Prior H₀:  Planck (67.36 ± 0.54)  →  MIRA (67.08 ± 0.54)
+  Prior H₀:  Planck (67.36 ± 0.54)  →  MIRA (67.04 ± 0.54)
 
-Donde 67.08 es el H₀ que sale de Paper 3 al aplicar MIRA a Planck CMB
+Donde 67.04 es el H₀ que sale de Paper 3 al aplicar MIRA a Planck CMB
 (Ω_m,CMB = MIRA × Ω_m,dyn). Es decir, "el H₀ que SSEE deriva de Planck
 vía MIRA" en vez del "H₀ algebraico puro" o "H₀ Planck estándar".
 
@@ -13,7 +13,7 @@ Tamaño producción: 100 walkers × 25000 steps (= original Paper 2).
 Solo corre SSEE (no ΛCDM ni CPL — ya están bien establecidos).
 
 Hipótesis a falsar:
-  Si posterior H₀ ≈ 67.08 ± ~0.4 → MIRA es un prior robusto, refuerza a
+  Si posterior H₀ ≈ 67.04 ± ~0.4 → MIRA es un prior robusto, refuerza a
   MIRA como pivote físico del modelo.
   Si posterior H₀ se aleja → MIRA-from-Planck no encaja con DESI tardío.
 """
@@ -45,7 +45,7 @@ def log(msg):
     with open(LOG, "a") as f: f.write(line + "\n")
 
 log("=" * 70)
-log("SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior MIRA (67.08)")
+log("SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior MIRA (67.04)")
 log("=" * 70)
 log(f"  Ω_m,dyn (exacto) = {OMEGA_M_DYN:.10f}")
 log(f"  Ω_m,CMB (MIRA)   = {OMEGA_M_CMB_MIRA:.10f}")
@@ -82,10 +82,11 @@ CLUSTERS = [
 # ─── PRIOR MIRA EXACTO ───
 # H₀ derivado de re-correr P3 (Cobaya plik_lite + CAMB) con Ω_m,CMB exacto
 # = MIRA × Ω_m,dyn = 0.319928188 (no el 0.320 redondeado).
-# Resultado óptimo del scan: H_MIRA = 67.068 km/s/Mpc.
+# Resultado óptimo del scan: H_MIRA = 67.037 km/s/Mpc (SSEE@Σm_ν=0.069
+# self-consistente; era 67.068 con mnu=0.06 baseline — 2026-06-09).
 # σ = 0.54 (error Planck H₀ propagado; el del minimize_scalar es subestimado
 # porque mantiene ns/As/τ/w0/wa fijos en vez de marginalizar).
-MIRA_H0 = (67.068, 0.54)
+MIRA_H0 = (67.037, 0.54)
 BBN_OBH2 = (0.02218, 0.00055)
 
 def f_de_cpl(z, w0, wa):
@@ -195,7 +196,7 @@ fig = corner.corner(flat,
     labels=[r"$H_0$ [km/s/Mpc]", r"$\Omega_b h^2$"],
     quantiles=[0.16, 0.5, 0.84], show_titles=True,
     title_kwargs={"fontsize": 10})
-fig.suptitle(f"SSEE-V3.6 posterior — Prior MIRA (67.08)\nH₀={H0_med:.3f}±{H0_std:.3f}, MAP={H0_map:.3f}", y=1.02)
+fig.suptitle(f"SSEE-V3.6 posterior — Prior MIRA (67.04)\nH₀={H0_med:.3f}±{H0_std:.3f}, MAP={H0_map:.3f}", y=1.02)
 fig.savefig(f"{OUT}/fig_corner_ssee_mira_prior.pdf", bbox_inches="tight")
 plt.close(fig)
 log(f"\nFigura: {OUT}/fig_corner_ssee_mira_prior.pdf")

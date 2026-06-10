@@ -28,6 +28,7 @@ ombh2_ssee = 0.02237                # Planck 2018 prior (no algebraico)
 # ns_ssee = 1 - phi^-7 = 0.96556 — importado de ssee_core
 As_ssee    = np.exp(3.044) * 1e-10
 tau_ssee   = 0.054
+mnu_ssee   = 0.0690                  # Σm_ν canónico SSEE (R₂=Ω/(KAL·TRIAL)×0.9603 eV)
 
 # ΛCDM Planck 2018 best-fit (TT+TE+EE+lowE, Table 2)
 H0_lcdm    = 67.36
@@ -36,8 +37,9 @@ omch2_lcdm = 0.1200
 ns_lcdm    = 0.9649
 As_lcdm    = np.exp(3.044) * 1e-10
 tau_lcdm   = 0.0544
+mnu_lcdm   = 0.06                    # baseline estándar Planck (mín. jerarquía normal)
 
-def build_cobaya_info(H0, ombh2, omch2, w0, wa, As, ns, tau):
+def build_cobaya_info(H0, ombh2, omch2, w0, wa, As, ns, tau, mnu=0.06):
     """Build a Cobaya model info dict for fixed-parameter likelihood evaluation."""
     return {
         "packages_path": PACKAGES_PATH,
@@ -63,7 +65,7 @@ def build_cobaya_info(H0, ombh2, omch2, w0, wa, As, ns, tau):
             "As":     As,
             "ns":     ns,
             "tau":    tau,
-            "mnu":    0.06,
+            "mnu":    mnu,
             "omk":    0.0,
             "w":      w0,
             "wa":     wa,
@@ -72,14 +74,14 @@ def build_cobaya_info(H0, ombh2, omch2, w0, wa, As, ns, tau):
         "debug": False,
     }
 
-def evaluate_model(H0, ombh2, omch2, w0, wa, As, ns, tau, quiet=False):
+def evaluate_model(H0, ombh2, omch2, w0, wa, As, ns, tau, mnu=0.06, quiet=False):
     from cobaya.model import get_model
     import logging
-    
+
     # Suppress cobaya output during scan
     logging.getLogger('cobaya').setLevel(logging.ERROR)
-    
-    info = build_cobaya_info(H0, ombh2, omch2, w0, wa, As, ns, tau)
+
+    info = build_cobaya_info(H0, ombh2, omch2, w0, wa, As, ns, tau, mnu)
     model = get_model(info)
 
     loglikes, derived = model.loglikes({})
@@ -101,7 +103,7 @@ def get_ssee_chi2(H0):
     omch2 = Omm_cmb * (H0 / 100)**2 - ombh2_ssee
     print(f"Evaluating SSEE at H0 = {H0:.3f} (omch2 = {omch2:.5f})... ", end='', flush=True)
     t0 = time.time()
-    chi2 = evaluate_model(H0, ombh2_ssee, omch2, w0_ssee, wa_ssee, As_ssee, ns_ssee, tau_ssee, quiet=True)
+    chi2 = evaluate_model(H0, ombh2_ssee, omch2, w0_ssee, wa_ssee, As_ssee, ns_ssee, tau_ssee, mnu=mnu_ssee, quiet=True)
     print(f"chi2_eff = {chi2:.3f} ({time.time()-t0:.1f}s)")
     return chi2
 
@@ -111,22 +113,23 @@ def main():
     print("  Minimizing chi2_eff over H0 via Cobaya (plik_lite TTTEEE + lowl)")
     print("="*65)
 
+    print(f"\n   Σm_ν: ΛCDM={mnu_lcdm} eV (baseline estándar) | SSEE={mnu_ssee} eV (canónico R₂)")
     print("\n1. Evaluating ΛCDM baseline...")
-    chi2_lcdm = evaluate_model(H0_lcdm, ombh2_lcdm, omch2_lcdm, -1.0, 0.0, As_lcdm, ns_lcdm, tau_lcdm, quiet=True)
+    chi2_lcdm = evaluate_model(H0_lcdm, ombh2_lcdm, omch2_lcdm, -1.0, 0.0, As_lcdm, ns_lcdm, tau_lcdm, mnu=mnu_lcdm, quiet=True)
     print(f"   ΛCDM chi2_eff = {chi2_lcdm:.3f}")
 
     print("\n2. Scanning H0 for SSEE...")
     print(f"   Usando Ω_m,CMB = {Omm_cmb:.10f}  (MIRA × Ω_m,dyn, exacto desde ssee_core)")
     # SciPy minimize_scalar with bounded method
     # Bounds ampliados (66.0, 68.0) para detectar shift si el exacto Ω_m,CMB mueve el óptimo
-    res = minimize_scalar(get_ssee_chi2, bounds=(66.0, 68.0), method='bounded', options={'xatol': 0.02})
+    res = minimize_scalar(get_ssee_chi2, bounds=(66.7, 67.4), method='bounded', options={'xatol': 0.003})
     
     H0_opt = res.x
     chi2_ssee = res.fun
     
     print("\n3. Re-evaluating SSEE at optimal H0 for detailed breakdown...")
     omch2_opt = Omm_cmb * (H0_opt / 100)**2 - ombh2_ssee
-    evaluate_model(H0_opt, ombh2_ssee, omch2_opt, w0_ssee, wa_ssee, As_ssee, ns_ssee, tau_ssee, quiet=False)
+    evaluate_model(H0_opt, ombh2_ssee, omch2_opt, w0_ssee, wa_ssee, As_ssee, ns_ssee, tau_ssee, mnu=mnu_ssee, quiet=False)
 
     N_data  = 6413 + 28 + 28   # 6469
     k_ssee  = 2                # H0, ombh2

@@ -82,9 +82,9 @@ The dark energy equation of state $\wz = -(3\phiG+\pi)/[2(\phiG+\pi)] \simeq -0.
 and $\wa \simeq -0.670$ were committed to a public archive prior to the DESI~DR2
 release and are confirmed within $0.05\sigma$ of the DESI~DR2 CPL posterior.
 A Bayesian MCMC analysis under the SSEE-self-consistent MIRA prior
-($H_0^{\rm prior,SSEE}=67.068\pm0.54$~km\,s$^{-1}$\,Mpc$^{-1}$, derived from
+($H_0^{\rm prior,SSEE}=67.037\pm0.54$~km\,s$^{-1}$\,Mpc$^{-1}$, derived from
 Planck~\texttt{plik\_lite} under the SSEE background; Paper~3) yields
-$H_0 = 66.55^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC}=-5.55$
+$H_0 = 66.53^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC}=-5.55$
 for the dynamic sector relative to \LCDM.
 A complementary five-parameter multi-probe MCMC finds all algebraic \SSEE\
 values within $0.81\sigma$ of the posteriors (mean $0.36\sigma$ across the five parameters).
@@ -123,8 +123,8 @@ suppressed to $F_\phi/F_N\sim 10^{-15}$ and the observable lensing recovers
 GR; current SLACS/BELLS data favour the canonical limit (Paper~8;
 OPEN\_PROBLEMS.md OP-13). A late-time local screening fraction
 $f_{\rm scr}=\alphaK/(3\MIRA)=(\pi-\phiG)/(\phiG+\pi)^2\simeq0.067$ applied to the
-physical $H_0^{\rm MIRA}=67.068$ gives
-$H_0^{\rm local}=71.90$~km\,s$^{-1}$\,Mpc$^{-1}$, $1.10\sigma$ from the SH0ES
+physical $H_0^{\rm MIRA}=67.037$ gives
+$H_0^{\rm local}=71.87$~km\,s$^{-1}$\,Mpc$^{-1}$, $1.12\sigma$ from the SH0ES
 distance ladder, as a zero-parameter prediction of the infrared sector (Paper~9).
 A UV completion $K(X)=X/\KAL+X^2/M^4$ with algebraic cutoff $M=9.62$~meV
 connects the dark-energy EFT to the inflationary $\alpha$-attractor (Paper~10).
@@ -295,7 +295,7 @@ Table~\ref{tab:mcmc_results} summarises the key posteriors and information crite
 \toprule
 Quantity & \SSEE & \LCDM & CPL \\
 \midrule
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $66.55^{+0.44}_{-0.44}$ & $67.42\pm0.48$ & free \\
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $66.53^{+0.44}_{-0.44}$ & $67.42\pm0.48$ & free \\
 Free parameters $k$ & 1 & 3 & 5 \\
 $N_{\rm eff}$ & 4\,402 & 14\,380 & 7\,253 \\
 $\Delta\mathrm{BIC}$ (dynamic sector) & $-5.55$ & ref & — \\
@@ -754,7 +754,7 @@ explicitly: the strong-field lensing signature (\S\ref{sec:ext-sg}) is a
 falsifiable prediction; the Hubble-tension screening fraction
 (\S\ref{sec:ext-ht}) is a zero-parameter algebraic result compared to existing
 data; and the UV completion (\S\ref{sec:ext-uv}) contains one quantity ---
-$H_0^{\rm UV,MIRA} = 72.08$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.93\sigma$; Type-P
+$H_0^{\rm UV,MIRA} = 72.05$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.96\sigma$; Type-P
 evaluation $73.040$, a numerical coincidence) --- that is explicitly
 conditional on a separability postulate and is therefore presented as a
 self-consistency check, not an independent prediction.
@@ -813,14 +813,14 @@ imply a late-time \emph{local screening fraction}
 where $\alphaK = 3\,\Omde(1+\wz)$ is the background-derived EFT kineticity and
 $\MIRA = (3\phiG+\pi)/4$. The structural constant $\AURA = 2\MIRA$ cancels
 exactly in the ratio, leaving a pure function of $\phiG$ and $\pi$. Applied as a
-local correction to the physical early-Universe value $H_0^{\rm MIRA}=67.068$
+local correction to the physical early-Universe value $H_0^{\rm MIRA}=67.037$
 (Paper~3),
 \begin{equation}
 H_0^{\rm local} = \frac{H_0^{\rm MIRA}}{1-\fscr}
-                = \frac{67.068}{1-0.0673}
-                \approx 71.90~{\rm km\,s^{-1}\,Mpc^{-1}} ,
+                = \frac{67.037}{1-0.0673}
+                \approx 71.87~{\rm km\,s^{-1}\,Mpc^{-1}} ,
 \end{equation}
-which lies $1.10\sigma$ from the SH0ES distance-ladder measurement
+which lies $1.12\sigma$ from the SH0ES distance-ladder measurement
 \citep{Riess2022} with zero free parameters. This is the canonical, independent
 prediction of the \SSEE\ infrared sector. (Applied instead to the algebraic
 value $H_0^{\rm alg}=3(\phiG+\pi)^2=67.96$ the same mechanism gives
@@ -845,8 +845,8 @@ M^4 = 45\,\alpha^2\,\rho_c = 5\,\phiG^8\,\rho_c \approx 234.9\,\rho_c ,
 where the identity $45\alpha^2 = 5\phiG^8$ follows exactly from
 $\alpha=\phiG^4/3$. With this cutoff the full Bellini-Sawicki kineticity becomes
 $\alphaK^{\rm full}=0.41691$ ($+3.37\%$ over the IR value). Applied to the
-canonical $H_0^{\rm MIRA}=67.068$ this gives
-$H_0^{\rm UV,MIRA}=72.08$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.93\sigma$ from SH0ES),
+canonical $H_0^{\rm MIRA}=67.037$ this gives
+$H_0^{\rm UV,MIRA}=72.05$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.96\sigma$ from SH0ES),
 the physically meaningful UV value; on the Type-P anchor $H_0^{\rm alg}=67.962$
 the same correction gives $73.040$~km\,s$^{-1}$\,Mpc$^{-1}$, agreeing with the
 SH0ES central value to rounding as a numerical coincidence.
@@ -856,7 +856,7 @@ We state the epistemic status of these figures plainly: the UV value is
 \emph{not independent of SH0ES}, since the postulate was formulated with the
 SH0ES central value as its target. It is a self-consistency check, not a
 prediction. The independent prediction remains the IR value $H_0^{\rm local}
-=71.90$~km\,s$^{-1}$\,Mpc$^{-1}$ ($1.10\sigma$) of \S\ref{sec:ext-ht}, which does
+=71.87$~km\,s$^{-1}$\,Mpc$^{-1}$ ($1.12\sigma$) of \S\ref{sec:ext-ht}, which does
 not rely on the postulate. The construction does, however, supply a falsifiable
 cross-epoch consistency test: the same $\alpha$ governs inflation at $z\sim10^{60}$
 and the dark-energy UV scale today, so a LiteBIRD measurement of $r\neq0.00813$
@@ -913,7 +913,7 @@ $\gamma_{\rm IS} = 0.554$ & $\approx \gamma_{\Lambda\rm CDM} = 0.55$ & RSD surve
 $\alphaT = \alphaM = \alphaB = 0$ & exact & GW170817 $|\alphaT|<10^{-15}$ & Retrodiction \\
 $\sigeff$ (two-sector CLASS, $S_8^{\rm eff}=0.766$) & $0.742$ & KiDS-1000 ($0.01\sigma$) & Retrodiction \\
 $\sigma_8^{\rm SSEE}$ (single-sector ODE, Paper~5 corrected) & $0.820$ & Weak lensing surveys & Retrodiction \\
-$H_0^{\rm local} = H_0^{\rm MIRA}/(1-\fscr)$ & $71.90$ km/s/Mpc & SH0ES 2022 ($1.10\sigma$) & Retrodiction \\
+$H_0^{\rm local} = H_0^{\rm MIRA}/(1-\fscr)$ & $71.87$ km/s/Mpc & SH0ES 2022 ($1.12\sigma$) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Predictions (not yet observationally accessible)}} \\
 $\mphi = \Sigma m_\nu^{\rm active}(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})$ & $36.95$ eV & Matter $P(k)$ via $\kfs$ (no SM portal) & Prediction \\
@@ -987,7 +987,7 @@ across four observational tiers.
   $(\wz, \wa) = (-0.840, -0.670)$, committed before DESI~DR2, lies within
   $0.05\sigma$ of the DESI~DR2 CPL posterior.
   A Bayesian MCMC with $N_{\rm eff} = 4\,402$ yields
-  $H_0 = 66.55\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ under the SSEE-self-consistent
+  $H_0 = 66.53\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ under the SSEE-self-consistent
   MIRA prior, and $\Delta\mathrm{BIC} = -5.55$ for the dynamic sector.
   A complementary five-parameter multi-probe MCMC confirms all five algebraic
   predictions within $0.81\sigma$ (mean $0.36\sigma$).
@@ -1020,12 +1020,12 @@ across four observational tiers.
 \item \textbf{Theoretical extensions.} The disformal strong-field regime predicts
   an Einstein-radius amplification $\sqrt{\AURA}\approx\MIRA$, falsifiable with
   HST/JWST strong lensing (Paper~8). An algebraic late-time screening fraction
-  $\fscr=(\pi-\phiG)/(\phiG+\pi)^2\approx0.067$ applied to $H_0^{\rm MIRA}=67.068$ yields
-  $H_0^{\rm local}=71.90$~km\,s$^{-1}$\,Mpc$^{-1}$, $1.10\sigma$ from SH0ES, with
+  $\fscr=(\pi-\phiG)/(\phiG+\pi)^2\approx0.067$ applied to $H_0^{\rm MIRA}=67.037$ yields
+  $H_0^{\rm local}=71.87$~km\,s$^{-1}$\,Mpc$^{-1}$, $1.12\sigma$ from SH0ES, with
   zero free parameters (Paper~9). A UV completion $K(X)=X/\KAL+X^2/M^4$ with
   algebraic cutoff $M=9.62$~meV connects the dark-energy EFT to the inflationary
-  $\alpha$-attractor; the associated $H_0^{\rm UV,MIRA}=72.08$~km\,s$^{-1}$\,Mpc$^{-1}$
-  ($0.93\sigma$; Type-P evaluation $73.040$, a numerical coincidence)
+  $\alpha$-attractor; the associated $H_0^{\rm UV,MIRA}=72.05$~km\,s$^{-1}$\,Mpc$^{-1}$
+  ($0.96\sigma$; Type-P evaluation $73.040$, a numerical coincidence)
   is a self-consistency check conditional on a separability postulate, not an
   independent prediction (Paper~10).
 \end{enumerate}
@@ -1088,7 +1088,7 @@ $\kfs$ & Dodelson-Widrow ($\mphi$) & $0.659\,h$/Mpc & --- \\
 $r$ & $\phiG^{-10}$ & $0.00813$ & $<0.036$ (BK18) \\
 \midrule
 $\fscr$ & $(\pi-\phiG)/(\phiG+\pi)^2$ & $0.0673$ & --- \\
-$H_0^{\rm local}$ & $H_0^{\rm MIRA}/(1-\fscr)$ & $71.90$ km/s/Mpc & $73.04\pm1.04$ (SH0ES) \\
+$H_0^{\rm local}$ & $H_0^{\rm MIRA}/(1-\fscr)$ & $71.87$ km/s/Mpc & $73.04\pm1.04$ (SH0ES) \\
 $M$ (UV cutoff) & $(5\phiG^8\rho_c)^{1/4}$ & $9.62$ meV & --- \\
 \bottomrule
 \end{tabular}

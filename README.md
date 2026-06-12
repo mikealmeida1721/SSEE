@@ -1,27 +1,50 @@
+<div align="center">
+
 # SSEE — Structural Self-Energy Expansion
+
+### A minimal-parameter dark energy framework derived from φ and π
+
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20093447-blue.svg)](https://doi.org/10.5281/zenodo.20093447)
+[![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10+-yellow.svg)](requirements.txt)
+[![Papers](https://img.shields.io/badge/Papers-10_+_2_consolidated-8A2BE2.svg)](docs/)
+[![Status](https://img.shields.io/badge/Audit-100%2F100_green-success.svg)](VERIFICATION_LEDGER.md)
+[![Prediction](https://img.shields.io/badge/Pre--registered-k__fs_%3D_0.659_h%2FMpc-critical.svg)](OPEN_PROBLEMS.md)
+
+<img src="results/figures/fig1_w0wa_plane.png" width="520" alt="SSEE algebraic point (w0, wa) vs DESI DR2 contours — 0.05σ"/>
+
+*The algebraic point (w₀, wₐ) = (−0.840, −0.670) — derived from φ and π with zero fitting — vs DESI DR2 BAO contours: **0.05σ**.*
+
+</div>
 
 **A minimal-parameter dark energy framework derived from φ (golden ratio) and π. The background sector $(w_0, w_a, \Omega_\mathrm{DE}, \Omega_{m,\mathrm{dyn}})$ carries zero fitted dimensionless parameters; the framework rests on 4 postulates (D, S fundamentals + M, I auxiliary register-level) plus open problems tracked in [`OPEN_PROBLEMS.md`](OPEN_PROBLEMS.md). Tested against DESI DR2 BAO, Planck 2018 CMB (TT+TE+EE+lensing), galaxy cluster masses, and large-scale structure growth.**
 
 ---
 
-## Falsifiable predictions — current status
+## 🎯 Falsifiable predictions — current status
 
-| Observable | SSEE (algebraic) | Observed | Separation |
-|---|---|---|---|
-| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.838±0.057, −0.631±0.226) | 0.05σ / 0.17σ |
-| CMB first peak | ℓ₁ = 221 | Planck PR4: ~220 | Δℓ = 1 |
-| Ωm,CMB | 0.3199 (algebraic via MIRA) | Planck 2018: 0.3153 | 0.63σ |
-| n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
-| αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match |
-| αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 |
-| m_φ (φ-DM mass) | 36.95 eV algebraic | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable |
-| k_fs (free-streaming) | 0.659 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | falsifiable |
+| Observable | SSEE (algebraic) | Observed | Separation | |
+|---|---|---|---|---|
+| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.838±0.057, −0.631±0.226) | 0.05σ / 0.17σ | ✅ |
+| CMB first peak | ℓ₁ = 221 | Planck PR4: ~220 | Δℓ = 1 | ✅ |
+| Ωm,CMB | 0.3199 (algebraic via MIRA) | Planck 2018: 0.3153 | 0.63σ | ✅ |
+| n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ | ✅ |
+| αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match | ✅ |
+| S₈ (two-sector φ-DM) | 0.766 | KiDS-1000: 0.766⁺⁰·⁰²⁰₋₀.₀₁₄ | 0.01σ | ✅ |
+| αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 | ⏳ |
+| m_φ (φ-DM mass) | 36.95 eV algebraic | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable | ⏳ |
+| **k_fs (free-streaming)** | **0.659 h/Mpc algebraic** | **DESI Y3/Euclid P(k): 2026–2028** | **pre-registered** | ⏳ |
 
 **Future falsifiers:** r = φ⁻¹⁰ = 0.00813 (LiteBIRD ~2032); k_fs cutoff in matter power spectrum (Euclid ~2028).
 
+> ⏱️ **Pre-registered prediction:** the free-streaming imprint at k_fs = 0.659 h/Mpc
+> (from m_φ = 36.95 eV, forward prediction, zero fitting) is timestamped on Zenodo
+> **before** the DESI Y3 / Euclid data releases. Either the data shows it, or the
+> φ-DM sector is falsified.
+
 ---
 
-## Papers
+## 📄 Papers
 
 | # | Title | Pages | Status | PDF |
 |---|---|---|---|---|
@@ -40,7 +63,10 @@
 
 ---
 
-## Repository structure
+## 🗂️ Repository structure
+
+<details>
+<summary><b>Click to expand the full repository tree</b></summary>
 
 ```
 SSEE/
@@ -75,9 +101,11 @@ SSEE/
 └── (eftcamb_ssee/ — EFTCAMB fork, not versioned: clone separately)
 ```
 
+</details>
+
 ---
 
-## How to reproduce
+## ⚙️ How to reproduce
 
 ```bash
 pip install camb emcee scipy numpy matplotlib
@@ -99,7 +127,11 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 
 ---
 
-## Key results
+## 📊 Key results
+
+<div align="center">
+<img src="results/figures/fig8_tension_summary.png" width="640" alt="Tension summary across observables"/>
+</div>
 
 ### Paper 2 (DESI DR2 + Planck 2018 + clusters)
 
@@ -249,7 +281,7 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 
 ---
 
-## Known limitations and open problems
+## ⚠️ Known limitations and open problems
 
 Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 **Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (6 items, OP-1..OP-6).
@@ -278,13 +310,13 @@ pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1
 
 ---
 
-## Provenance
+## 🧬 Provenance
 
 - **Genesis 5.12** (Zenodo DOI: [10.5281/zenodo.19679049](https://doi.org/10.5281/zenodo.19679049)): documents that MIRA = (3φ+π)/4 was defined on 2026-01-28, prior to Planck 2018 Ωm comparison.
 
 ---
 
-## Roadmap
+## 🗺️ Roadmap
 
 **Status (2026-06-12):** all 10 papers + consolidated journal documents complete and
 compile clean (0 LaTeX errors, 0 orphan bibitems, 0 undefined citations). Canonical
@@ -321,11 +353,11 @@ history in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
-## Author
+## 👤 Author
 
 Mike Edison Almeida Vallejo — mike.almeida1721@gmail.com
 ORCID: [0009-0008-2195-7836](https://orcid.org/0009-0008-2195-7836)
 
-## License
+## 📜 License
 
 Apache 2.0 — see [LICENSE](LICENSE).

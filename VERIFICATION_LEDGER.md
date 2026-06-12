@@ -231,6 +231,17 @@ dimensional pasa.
   **adimensional** mientras que H₀ tiene unidades km/s/Mpc. No es una
   derivación dimensional; es una coincidencia numérica (Postulado D en P1).
   El modelo lo admite a medias. **No puede pasar a `resuelto` como derivación.**
+  **Pregunta abierta CERRADA (2026-06-10):** se probó la hipótesis "H_alg es la
+  tasa física del fondo (la sábana desnuda) y MIRA es el observable curvado por
+  la materia". REFUTADA por dos vías independientes: (1) metiendo H_alg=67.962
+  como tasa de expansión real en el CMB da θ*=7.80σ y r_d=5.35σ fuera de Planck
+  → H_alg NO puede ser la tasa de fondo. (2) El signo está invertido: el límite
+  de Sitter (sábana solo-DE) da H_dS=H_MIRA·√Ω_DE=61.44 < H_MIRA, es decir
+  quitar materia BAJA H (no lo sube a 67.96); Friedmann ata H₀ al contenido
+  total, no hay "H de sábana vacía" separado a z=0. **Veredicto: la dualidad
+  H_alg≈SH0ES es COINCIDENCIA** de un número adimensional en la ventana de SH0ES.
+  La veta real abierta NO es el frenado por materia sino el origen dimensional
+  de H₀ (escala Mpc ↔ Planck, roadmap #1).
 - **V-L2-10 m_φ = Σm_ν^active · (Ω⁴+AURA·KAL₀)** — forward-prediction canónica:
   `[eV]·(número puro)=[eV]`, dimensionalmente **consistente**. Con
   Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV = 0.069023 eV y multiplicador

@@ -108,7 +108,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | χ²_2D (w₀-wₐ vs DESI DR2) | 0.080 → 0.05σ |
 | χ²_r clusters (7 clusters, analytic) | 0.126 |
 | χ²_r clusters (4 clusters, MCMC) | 0.122 |
-| H₀ SSEE (MCMC) | 66.75 ⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc |
+| H₀ SSEE (MCMC, prior MIRA 67.037) | 66.53 ⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc |
 | ΔBIC (dynamic sector, k=1 vs ΛCDM k=3) | −5.55 (SSEE favoured) |
 | ΔBIC (full background, k=0 vs ΛCDM k=6) | +206 (ΛCDM favoured — framework penalty) |
 

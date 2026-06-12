@@ -29,7 +29,12 @@ from ssee_core import (
 
 # Valores NO algebraicos — no pertenecen a ssee_core.
 # CANÓNICO: ver VERIFICATION_LEDGER.md §"Valores Canónicos" tabla B.
-H0_run    = 67.756    # H0 MCMC best-fit Paper 2 — re-run 2026-05-22 (seed 42)
+# H0_run = anchor H_MIRA canónico (2026-06-09, Σm_ν=0.069 self-consistente).
+# Override por CLI: `python ssee_verify_rd.py 66.531` para el posterior MCMC.
+H0_run    = 67.037    # km/s/Mpc — anchor H_MIRA canónico (era 67.756, mala anotación)
+import sys as _h0_sys
+if len(_h0_sys.argv) > 1:
+    H0_run = float(_h0_sys.argv[1])
 Ombh2_std = 0.02237   # Ωb h² prior Planck 2018 (Planck Collaboration 2020, A&A 641 A6)
 
 # Ωb h² IS = (π−φ)/[3(φ+π)²] = OMEGA_B_H2 (Paper 4 §3.2, OP-1) = 0.02242

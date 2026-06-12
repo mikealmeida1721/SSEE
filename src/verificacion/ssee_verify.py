@@ -407,21 +407,22 @@ check("V-L4-05 P3  ΔBIC CMB = -20.8 consistente con chi2_r (re-run 2026-05-22)"
       -22.9 <= -20.8 <= -11.1,
       "chi2_r redondeados acotan ΔBIC a [-22.9,-11.1]; reportado -20.8 dentro")
 
-# r_d / theta* — re-run CAMB 2026-06-01 con los H0 CANONICOS (no el stale 67.756).
-# Politica del modelo: anclar el CMB en el anchor 67.068 (CMB-optimo), reportar
-# el posterior BAO 66.553 por separado. theta* es muy sensible a H0 via D_A, asi
-# que NO se propaga el posterior BAO al observable CMB.
-#   anchor   67.068 -> r_d=146.70 Mpc (1.51sigma), theta*=0.59636 (0.69sigma)
-#   posterior 66.553 -> r_d=147.28 Mpc (0.72sigma), theta*=0.59417 (5.46sigma)
+# r_d / theta* — re-run CAMB 2026-06-11 con los H0 CANONICOS post-cascada
+# Sigma_mnu=0.069 (2026-06-09). Politica del modelo: anclar el CMB en el anchor
+# H_MIRA=67.037 (CMB-optimo), reportar el posterior BAO 66.531 por separado.
+# theta* es muy sensible a H0 via D_A, asi que NO se propaga el posterior BAO
+# al observable CMB.
+#   anchor   67.037 -> r_d=146.73 Mpc (1.38sigma), theta*=0.59623 (0.97sigma)
+#   posterior 66.531 -> r_d=147.30 Mpc (0.81sigma), theta*=0.59408 (5.66sigma)
 # vs Planck 147.09+-0.26 Mpc / 0.59668+-0.00046 deg.
-track_open("V-L4  r_d coherente en ambos H0 canonicos (anchor 1.51 / post 0.72 sigma)",
-           "ssee_verify_rd.py re-run 2026-06-01: anchor 67.068 da r_d=146.70 Mpc "
-           "(1.51sigma), posterior 66.553 da r_d=147.28 Mpc (0.72sigma) vs "
+track_open("V-L4  r_d coherente en ambos H0 canonicos (anchor 1.38 / post 0.81 sigma)",
+           "ssee_verify_rd.py re-run 2026-06-11: anchor 67.037 da r_d=146.73 Mpc "
+           "(1.38sigma), posterior 66.531 da r_d=147.30 Mpc (0.81sigma) vs "
            "Planck 147.09+-0.26. El '4.47sigma' previo usaba el H0 stale 67.756")
-track_open("V-L4  theta* sensible a H0: 0.69sigma en anchor, 5.46sigma en posterior",
-           "ssee_verify_rd.py re-run 2026-06-01: anchor 67.068 da theta*=0.59636 "
-           "(0.69sigma); posterior 66.553 da 0.59417 (5.46sigma) vs 0.59668+-0.00046. "
-           "Por eso el CMB se ancla en 67.068 y el posterior BAO no se propaga a theta*")
+track_open("V-L4  theta* sensible a H0: 0.97sigma en anchor, 5.66sigma en posterior",
+           "ssee_verify_rd.py re-run 2026-06-11: anchor 67.037 da theta*=0.59623 "
+           "(0.97sigma); posterior 66.531 da 0.59408 (5.66sigma) vs 0.59668+-0.00046. "
+           "Por eso el CMB se ancla en 67.037 y el posterior BAO no se propaga a theta*")
 
 track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
            "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "
@@ -438,13 +439,14 @@ check("V-L4-06 P2  BIC SSEE = k ln(N) - 2 lnP = 31.98 (re-run MCMC)",
       abs(bic_ssee - 31.98) < 0.05, f"BIC = {bic_ssee:.2f}")
 check("V-L4-07 P2  ΔBIC(LCDM-SSEE) = +7.91 (SSEE favorecido)",
       abs((bic_lcdm - bic_ssee) - 7.91) < 0.05, f"ΔBIC = {bic_lcdm - bic_ssee:.2f}")
-H0_mcmc = 66.553   # posterior canonico, prior MIRA (ledger L113); el 67.756 era mala anotacion
+H0_mcmc = 66.531   # posterior canonico, prior MIRA 67.037 (re-run 2026-06-09); el 67.756 era mala anotacion
 t_H0 = abs(H0_mcmc - 67.36) / (0.442 ** 2 + 0.54 ** 2) ** 0.5
-check("V-L4-08 P2  tension H0 SSEE vs Planck = 1.16 sigma",
-      abs(t_H0 - 1.16) < 0.03, f"{t_H0:.2f} sigma")
-track_open("V-L4  Omega_b h^2: posterior MCMC < prediccion algebraica",
-           "MCMC da Om_b h^2 = 0.02183+-0.00048; OP-1 algebraico da 0.02242. "
-           "el dato prefiere ~1.2sigma menos barion que (pi-phi)/(3 Om^2)")
+check("V-L4-08 P2  tension H0 SSEE vs Planck = 1.19 sigma",
+      abs(t_H0 - 1.19) < 0.03, f"{t_H0:.2f} sigma")
+track_open("V-L4  Omega_b h^2: posterior MCMC vs prediccion algebraica",
+           "MCMC re-run 2026-06-09 (prior MIRA 67.037) da Om_b h^2 = 0.02260+-0.00048; "
+           "OP-1 algebraico da 0.02242 -> 0.4sigma, compatible. "
+           "(El 0.02183 previo era de la cadena pre-canonica)")
 
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.

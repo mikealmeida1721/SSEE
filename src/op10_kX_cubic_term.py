@@ -17,7 +17,7 @@ from ssee_core import (
 )
 
 # ── anchor (same as Paper 10) ─────────────────────────────────────────────────
-H_MIRA      = 67.068
+H_MIRA      = 67.037
 H0_SH0ES    = 73.04
 sigma_SH0ES = 1.04
 M_PL_eV     = 2.435323e27
@@ -70,7 +70,7 @@ def report(label, aK):
           f"H_local(MIRA)={Hm:.4f} ({tm:.2f}σ)  H_local(alg)={Ha:.4f} ({ta:.2f}σ)")
 
 print("="*96)
-print("K(X) UV ladder — does the X³/M⁸ term add useful boost?  (base anchor = MIRA 67.068)")
+print("K(X) UV ladder — does the X³/M⁸ term add useful boost?  (base anchor = MIRA 67.037)")
 print("="*96)
 print(f"  M⁴/ρ_crit = 5φ⁸ = {5*phi**8:.4f}")
 print(f"  X₂/M⁴ = {X2/M4_UV:.4e}   X₃/M⁴ = {X3/M4_UV:.4e}   (perturbative ratio)")

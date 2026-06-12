@@ -31,7 +31,7 @@ from ssee_core import (PHI, PI, OMEGA, BETA, KAL0, OMEGA_DE, OMEGA_M_DYN,
 # ── Escalas físicas LIMPIAS ─────────────────────────────────────────────
 H_MIRA_EV    = 1.4306e-33                # ℏH_MIRA
 M_PL         = 1.220910e28                # Planck mass
-h_mira       = 0.67068
+h_mira       = 0.67037
 RHO_CRIT     = 8.10e-11 * h_mira**2       # eV⁴
 RHO_DE       = OMEGA_DE * RHO_CRIT
 RHO_CRIT_QR  = RHO_CRIT**0.25             # eV (= 2.5 meV approx)

@@ -48,7 +48,7 @@ M_PL = 1.220910e28   # eV (reduced Planck mass × √(8π) factor not applied; M
 # Standard reduced Planck mass: M_pl_red = M_Pl / sqrt(8π) ≈ 2.435e27 eV. Use full M_Pl.
 
 # SSEE physical inputs
-H0_MIRA_KMSMPC = 67.068           # km/s/Mpc — Paper 3 Cobaya plik_lite
+H0_MIRA_KMSMPC = 67.037           # km/s/Mpc — Paper 3 Cobaya plik_lite
 H0_ALG_KMSMPC  = 67.962           # km/s/Mpc — Type-P algebraic 3(φ+π)²
 SIGMA_MNU_EV   = 0.0824           # eV — Paper 4 derived (Type P)
 LAMBDA_SSEE_EV = 8.81e-3          # eV — Paper 10 UV cutoff M = 5φ⁸ρ_crit^(1/4)

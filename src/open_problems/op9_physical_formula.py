@@ -28,7 +28,7 @@ from ssee_core import PHI, PI, OMEGA, KAL0, MIRA
 # ──────────────────────────────────────────────────────────────────────────
 HBAR_EVS       = 6.582119569e-16
 KMSMPC_TO_INVS = 3.240779289e-20
-H0_MIRA_KMSMPC = 67.068
+H0_MIRA_KMSMPC = 67.037
 H_MIRA_EV      = HBAR_EVS * H0_MIRA_KMSMPC * KMSMPC_TO_INVS  # 1.43e-33 eV
 M_PL_EV        = 1.220910e28                                  # Planck mass
 LAMBDA_SSEE    = 8.81e-3                                      # eV (P10)

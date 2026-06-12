@@ -16,7 +16,7 @@ sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
 from ssee_core import OMEGA_DE, OMEGA_M_DYN, W0, WA
 
 # ─── Parámetros base SSEE ────────────────────────────────────────────────
-H0     = 67.068                  # H_MIRA
+H0     = 67.037                  # H_MIRA
 h      = H0 / 100.0
 Omb_h2 = 0.02242                 # algebraico SSEE (P1)
 n_s    = 0.96556                 # = 1 - φ⁻⁷

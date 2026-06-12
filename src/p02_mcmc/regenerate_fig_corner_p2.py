@@ -31,7 +31,7 @@ fig = corner.corner(
     show_titles=True,
     title_kwargs={"fontsize": 11},
     label_kwargs={"fontsize": 12},
-    truths=[67.068, 0.02218],         # prior MIRA + BBN
+    truths=[67.037, 0.02218],         # prior MIRA + BBN
     truth_color="#1f77b4",
     color="#333333",
     hist_kwargs={"density": True},
@@ -41,7 +41,7 @@ fig = corner.corner(
 )
 fig.suptitle(
     f"SSEE-V3.6 posterior (MIRA prior, $N_{{\\rm walkers}}\\times N_{{\\rm steps}}=100\\times25000$). "
-    f"Blue lines: MIRA $H_0$=67.068 km/s/Mpc, BBN $\\Omega_b h^2$=0.02218.",
+    f"Blue lines: MIRA $H_0$=67.037 km/s/Mpc, BBN $\\Omega_b h^2$=0.02218.",
     y=1.02, fontsize=11,
 )
 os.makedirs("results/figures", exist_ok=True)

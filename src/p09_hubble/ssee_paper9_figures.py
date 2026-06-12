@@ -24,11 +24,11 @@ MIRA    = AURA / 2
 w0      = -AURA / Omega
 wa      = -(phi + pi + Omega) / (phi + pi + (phi + pi + Omega))  # ≈ -0.670
 H0_alg  = 3 * Omega**2                  # ≈ 67.96 km/s/Mpc  (Type-P, Postulate D)
-H0_MIRA = 67.068                        # km/s/Mpc  (physical: Planck plik_lite under SSEE bg, Paper 3)
+H0_MIRA = 67.037                        # km/s/Mpc  (physical: Planck plik_lite, SSEE@Σm_ν=0.069 — canónico 2026-06-09)
 alphaK  = 3*AURA*(pi - phi) / (2*Omega**2)
 fscreen = alphaK / (3*MIRA)             # ≈ 0.06725
 # Canonical (physical) prediction: multiplicative screening on the physical H_MIRA
-H0_local_phys = H0_MIRA / (1 - fscreen)  # ≈ 71.90  (1.10σ SH0ES) ← titular
+H0_local_phys = H0_MIRA / (1 - fscreen)  # ≈ 71.87  (1.12σ SH0ES) ← titular
 # Type-P comparison: same mechanism on the algebraic H_alg
 H0_local_typeP = H0_alg / (1 - fscreen)  # ≈ 72.86  (0.17σ SH0ES) ← comparison only
 
@@ -48,7 +48,7 @@ measurements = [
     ("Masers\n(NGC 4258)",          73.9,  3.0,  3.0,   1),
     ("SH0ES\n(Riess 2022)",         73.04, 1.04, 1.04,  1),
     # SSEE predictions
-    ("SSEE IR physical\n($H_{\\rm MIRA}$, 1.10$\\sigma$)", H0_local_phys, 0.44, 0.44, 2),
+    ("SSEE IR physical\n($H_{\\rm MIRA}$, 1.12$\\sigma$)", H0_local_phys, 0.44, 0.44, 2),
     ("SSEE IR Type-P\n($H_{\\rm alg}$, 0.17$\\sigma$)",    H0_local_typeP, 0.44, 0.44, 3),
 ]
 
@@ -165,5 +165,5 @@ print(f"  MIRA    = {MIRA:.10f}")
 print(f"  fscreen = {fscreen:.10f}")
 print(f"  H0_alg       = {H0_alg:.4f}")
 print(f"  H0_MIRA      = {H0_MIRA:.4f}")
-print(f"  H0_phys (titular)  = {H0_local_phys:.4f}  (1.10 sigma SH0ES)")
+print(f"  H0_phys (titular)  = {H0_local_phys:.4f}  (1.12 sigma SH0ES)")
 print(f"  H0_typeP (compare) = {H0_local_typeP:.4f}  (0.17 sigma SH0ES)")

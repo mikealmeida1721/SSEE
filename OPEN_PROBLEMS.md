@@ -233,7 +233,7 @@ S₈_eff = 0.761 (Paper 6), que era 2.29σ por debajo de DES Y3 y ~3σ de KiDS-1
 Script `src/ssee_op5_hmcode.py` implementa retroalimentación bariónica AGN via
 HMcode-2020_baryonic_feedback en CLASS (Mead et al. 2020, log10T_heat=7.8):
 
-Resultados CLASS HMcode-2020 con parámetros SSEE (H₀=66.75, Ω_m=0.3199, w₀=−0.840, wₐ=−0.670):
+Resultados CLASS HMcode-2020 con parámetros SSEE (H₀=66.75 — input de la corrida 2026-05-16, anterior al posterior canónico 66.53 km/s/Mpc; Ω_m=0.3199, w₀=−0.840, wₐ=−0.670):
 
 | k [h/Mpc] | B(k) = P_bar/P_hm |
 |---|---|
@@ -950,7 +950,7 @@ SSEE-V3.6 currently has **~3 effective free parameters** vs **6 for $\Lambda$CDM
 
 | Parameter | Status | Comment |
 |---|---|---|
-| $H_0$ | Sampled in MCMC | Algebraic prediction 67.96 vs posterior 66.75 |
+| $H_0$ | Sampled in MCMC | Algebraic prediction 67.96 (coincidencia, V-L2-06) vs posterior canónico 66.53 |
 | $\Omega_b h^2$ | Sampled in MCMC | Algebraic 0.02242 vs Planck 0.02237 |
 | MIRA factor | Algebraic value $(3\varphi+\pi)/4$ but no derived mechanism | OP-8 |
 | $m_\phi$ | Phenomenological ansatz | OP-9 (paper admits) |

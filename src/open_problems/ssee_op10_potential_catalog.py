@@ -43,9 +43,9 @@ OM_M_DYN       = 0.160              # Paper 4/7
 LAMBDA_LOCK    = np.sqrt(3 * OM_M_DYN)  # ≈ 0.6929  (Paper 7)
 OM_DE          = 0.840
 # ρ_crit canónico SSEE: 8.10e-11 eV⁴ es el coeficiente pelado (h=1); la densidad
-# física se escala por h²=h_MIRA² con h_MIRA=H_MIRA/100=0.67068 (Paper 3 Cobaya).
-H_MIRA         = 67.068                       # km/s/Mpc
-h_MIRA         = H_MIRA / 100.0               # 0.67068
+# física se escala por h²=h_MIRA² con h_MIRA=H_MIRA/100=0.67037 (canónico 2026-06-09).
+H_MIRA         = 67.037                       # km/s/Mpc
+h_MIRA         = H_MIRA / 100.0               # 0.67037
 RHO_CRIT_eV4   = 8.10e-11 * h_MIRA**2        # ρ_crit en eV⁴ (SSEE, ×h²)
 V0_LOCK        = OM_DE * RHO_CRIT_eV4
 M4_LOCK        = 5 * PHI**8 * RHO_CRIT_eV4

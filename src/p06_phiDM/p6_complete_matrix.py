@@ -3,6 +3,12 @@ P6 complete matrix — σ₈/S₈ con y sin correcciones, single y two-sector
 ========================================================================
 Llena las celdas que faltaban en la tabla comparativa de Mike.
 Usa CLASS uniformemente para todos los escenarios.
+
+NOTA HISTÓRICA (2026-06-11): exploración archivada de la época pre-canónica.
+Usa H_MIRA=67.068 km/s/Mpc y m_φ=5.602 eV (valores de entonces, hoy obsoletos:
+canónicos 67.037 km/s/Mpc y 36.95 eV). NO actualizar — cambiarlos falsificaría
+la procedencia de los resultados registrados. Pipeline canónico vigente:
+p6_canonical_table.py.
 """
 import numpy as np
 import sys

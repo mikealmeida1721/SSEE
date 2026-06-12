@@ -32,7 +32,7 @@ from ssee_core import (PHI, PI, OMEGA, BETA, KAL0, OMEGA_DE, OMEGA_M_DYN,
 # ──────────────────────────────────────────────────────────────────────────
 # Escalas físicas LIMPIAS (verificadas como 🟢 PHYSICAL en SSEE_CONSTANTS_AUDIT)
 # ──────────────────────────────────────────────────────────────────────────
-H0_MIRA_KMSMPC = 67.068
+H0_MIRA_KMSMPC = 67.037
 H0_MIRA_INVS   = H0_MIRA_KMSMPC * 3.240779289e-20    # s⁻¹
 HBAR_EVS       = 6.582119569e-16
 H_MIRA_EV      = HBAR_EVS * H0_MIRA_INVS              # ≈ 1.43e-33 eV

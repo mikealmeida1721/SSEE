@@ -24,6 +24,12 @@ Esta investigación barre sistemáticamente:
   2. Si el cociente H_alg/H_MIRA = 1.0133 coincide con alguna razón
      algebraica SSEE conocida (1+f_screen, 1+ε, 1+MIRA-2, etc.)
   3. Si la diferencia Δ corresponde a alguna escala física del modelo
+
+NOTA HISTÓRICA (2026-06-11): investigación archivada con el H_MIRA de la época
+(67.068 km/s/Mpc; canónico actual 67.037). La pregunta quedó CERRADA en el
+ledger como V-L2-06: H_alg=3(φ+π)² como tasa física de background está
+refutado (θ*=7.80σ, r_d=5.35σ) → la cercanía H_alg≈H_MIRA es coincidencia
+Type-P. NO re-correr con valores nuevos — registro de procedencia.
 """
 import numpy as np
 import sys

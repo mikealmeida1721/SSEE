@@ -23,9 +23,9 @@ import numpy as np
 # Constantes
 PHI          = (1 + np.sqrt(5)) / 2
 # ρ_crit canónico SSEE: 8.10e-11 eV⁴ es el coeficiente pelado (h=1); la densidad
-# física se escala por h_MIRA² con h_MIRA=H_MIRA/100=0.67068 (Paper 3 Cobaya).
-H_MIRA       = 67.068                    # km/s/Mpc
-h_MIRA       = H_MIRA / 100.0            # 0.67068
+# física se escala por h_MIRA² con h_MIRA=H_MIRA/100=0.67037 (canónico 2026-06-09).
+H_MIRA       = 67.037                    # km/s/Mpc
+h_MIRA       = H_MIRA / 100.0            # 0.67037
 RHO_CRIT_eV4 = 8.10e-11 * h_MIRA**2     # ρ_crit en eV⁴ (SSEE, ×h²)
 V0           = 0.840 * RHO_CRIT_eV4
 M_PL_eV      = 2.435e27

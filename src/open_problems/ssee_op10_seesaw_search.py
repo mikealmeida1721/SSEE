@@ -39,8 +39,8 @@ AURA   = (3*PHI + PI) / 2
 TRIAL  = 3 * (PHI + (PHI + PI) / 2)
 
 # ρ_crit canónico SSEE: 8.10e-11 eV⁴ es el coeficiente pelado (h=1); la densidad
-# física se escala por h_MIRA²=0.67068² (Paper 3 Cobaya).
-H_MIRA       = 67.068
+# física se escala por h_MIRA²=0.67037² (Paper 3 Cobaya).
+H_MIRA       = 67.037
 h_MIRA       = H_MIRA / 100.0
 RHO_CRIT_eV4 = 8.10e-11 * h_MIRA**2
 M_UV_SSEE    = (5 * PHI**8 * RHO_CRIT_eV4)**0.25    # ≈ 9.62 meV (Paper 10)

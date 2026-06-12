@@ -6,11 +6,13 @@ Verifies, step by step:
   Step 1: Algebraic identity 45α² = 5φ⁸  (α = φ⁴/3, Paper 1 α-attractor)
   Step 2: Self-consistent X_bg from full K(X) = X/KAL + X²/M⁴
   Step 3: αK_full from Bellini-Sawicki with K_X and K_XX contributions
-  Step 4: f_screen_full = αK_full / (3·MIRA)  →  H₀,local = 73.040 km/s/Mpc
+  Step 4: f_screen_full = αK_full / (3·MIRA)  →  H₀,local
 
 The UV ladder:
   φ  →  α = φ⁴/3  →  M⁴ = 45α² ρ_crit = 5φ⁸ ρ_crit
-  →  αK_full = 0.41691  →  f_screen = 0.06952  →  H₀,local = 73.040 (0.00σ SH0ES)
+  →  αK_full = 0.41691  →  f_screen = 0.06952
+  →  H₀,local CANÓNICO = H_MIRA/(1−f_UV) = 72.05 km/s/Mpc (0.96σ SH0ES)
+     [la escalera base-H_alg → 73.040 se reporta solo como coincidencia Type-P, V-L2-06]
 """
 
 import numpy as np
@@ -157,7 +159,7 @@ print(f"")
 print(f"── UV ladder: φ → α → M⁴ → αK_full → H₀ ────────────────────────────")
 print(f"  φ = {phi:.8f}")
 print(f"  α = φ⁴/3 = {alpha_attr:.8f}  (inflaton curvature → r=0.00813)")
-# ρ_crit^(1/4) = RHO_qrt meV con H_MIRA=67.068 km/s/Mpc (ancla propia del modelo)
+# ρ_crit^(1/4) = RHO_qrt meV con H_MIRA=67.037 km/s/Mpc (ancla propia del modelo)
 print(f"  M⁴ = 45α² = 5φ⁸ ρ_crit = {M4_UV:.4f} meV⁴  →  M = {M4_UV**0.25:.3f} meV")
 print(f"  αK_full = {alpha_K_UV:.5f}  (+{UV_correction*100:.2f}% over αK_IR={alpha_K_IR:.5f})")
 print(f"  f_screen = {f_screen_UV:.5f}")
@@ -183,14 +185,19 @@ print(f"""
   Step 3: αK_full = {alpha_K_UV:.6f}  = αK_IR × {alpha_K_UV/alpha_K_IR:.6f}  (+{UV_correction*100:.2f}%)
   Step 4: f_screen_UV = {f_screen_UV:.6f}  (+{(f_screen_UV/f_screen_IR-1)*100:.2f}% over Paper 9)
 
-  IR:  H₀ = {H0_alg/(1-f_screen_IR):.4f} km/s/Mpc  ({tension_IR:.2f}σ SH0ES)  [Papers 1–9]
-  UV:  H₀ = {H0_UV:.4f} km/s/Mpc  ({tension_UV:.4f}σ SH0ES)  [Paper 10, M⁴=5φ⁸]
+  IR (base H_alg, Type-P):  H₀ = {H0_alg/(1-f_screen_IR):.4f} km/s/Mpc  ({tension_IR:.2f}σ SH0ES)
+  UV (base H_alg, Type-P):  H₀ = {H0_UV:.4f} km/s/Mpc  ({tension_UV:.4f}σ SH0ES)  [M⁴=5φ⁸]
+
+  CANÓNICO (2026-06-09, base H_MIRA={H_MIRA} km/s/Mpc):
+    IR:  H₀,local = H_MIRA/(1−f_IR) = {H_MIRA/(1-f_screen_IR):.4f} km/s/Mpc  ({(H0_SH0ES-H_MIRA/(1-f_screen_IR))/sigma_SH0ES:.2f}σ SH0ES)  ← titular Paper 9
+    UV:  H₀,local = H_MIRA/(1−f_UV) = {H_MIRA/(1-f_screen_UV):.4f} km/s/Mpc  ({(H0_SH0ES-H_MIRA/(1-f_screen_UV))/sigma_SH0ES:.2f}σ SH0ES)  ← titular Paper 10
 
   The same α that fixes the inflationary tensor-to-scalar ratio r = 12α/N² ≈ 0.00813
-  (testable by LiteBIRD 2032) also fixes the dark-energy UV cutoff M = φ²×5^(1/4)×ρ_crit^(1/4),
-  yielding H₀,local = 73.040 km/s/Mpc. This UV result is CONDITIONAL on Postulate C.1,
-  which is calibrated to SH0ES — a self-consistency check, not an independent prediction.
-  The IR result (H₀ = 72.86, 0.17σ) stands on its own.
+  (testable by LiteBIRD 2032) also fixes the dark-energy UV cutoff M = φ²×5^(1/4)×ρ_crit^(1/4).
+  The H_alg-based ladder (72.86 / 73.040 km/s/Mpc) is reported ONLY as a Type-P
+  numerical coincidence (V-L2-06: H_alg refuted as physical background rate).
+  The canonical prediction runs through H_MIRA and is CONDITIONAL on Postulate
+  C.1 for the UV step (Theorem C.1, Paper 10).
 
   PENDING (Paper 10): first-principles derivation of M⁴ = 45α² without using SH0ES as input.
     Ruta A: K(X) Taylor matching with K_α(X) = −3α ln(1−X/(3α)) → M⁴ = 6αKAL² ≈ 418 ≠ 234.9

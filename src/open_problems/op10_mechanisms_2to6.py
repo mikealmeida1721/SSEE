@@ -23,7 +23,7 @@ from ssee_core import PHI, PI, OMEGA, BETA, KAL0, MIRA, AURA, T_R, M_V
 H_MIRA = 1.4306e-33          # ℏH_MIRA
 M_PL   = 1.220910e28         # Planck (no reducida)
 M_PL_R = 2.435e27            # Planck reducida
-h_mira = 0.67068
+h_mira = 0.67037
 RHO_CRIT = 8.10e-11 * h_mira**2
 RHO_DE   = 0.840 * RHO_CRIT
 rho_qr   = RHO_CRIT**0.25

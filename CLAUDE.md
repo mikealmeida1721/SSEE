@@ -36,7 +36,7 @@ Diez papers (auditados y endurecidos hasta 2026-05-17: bibliografía JCAP/PRD si
 | `SSEE_Paper10_UVCompletion.pdf` | Paper 10 (14 p) | ✅ Preprint — K(X)=X/KAL+X²/M⁴; M=9.62 meV=Λ_SSEE; αK_full=0.41691 |
 | `SSEE_Unified_Journal.pdf` | Consolidación Papers 1–10 (23 p) — §Extensions 8/9/10 | ✅ Candidato journal (10-paper, 2026-05-17) |
 | `SSEE_Endorser_Summary.pdf` | Síntesis 2 p para endorsers arXiv — serie 10-paper | ✅ Listo para envío (2026-05-17) |
-| `SSEE_Sealed_Journal.pdf` | **Documento consolidado de energía oscura tardía** (10 p) — φ→w₀,wₐ; look-elsewhere sobre diccionario cerrado (1/245); H₀ en dos etapas; cuentas honestas ~3 vs 6 params; P5/P6/P8 y OP-8/9/14 como trabajo futuro | ✅ **SELLADO — candidato a auditoría externa (2026-06-02)** |
+| `SSEE_Sealed_Journal.pdf` | **Documento consolidado de energía oscura tardía** (11 p) — φ→w₀,wₐ; look-elsewhere sobre diccionario cerrado (1/245); H₀ en dos etapas; cuentas honestas ~3 vs 6 params; §growth canónico (single 0.820/0.847 desafío → two-sector 0.742/0.766 extensión); OP-8/9/14 como trabajo futuro | ✅ **RE-SELLADO 2026-06-12** (v1 2026-06-02 usaba narrativa Poisson retirada) |
 
 ### manuscript/ — Fuente LaTeX
 - `SSEE_Paper1_Framework.tex` + `SSEE_EFT_section.tex`
@@ -190,10 +190,10 @@ wₐ = -P_sc/Kᵥ ≈ -0.670
 | c²_s,eff | 0 (exacto algebraico) | Q1: todos los modos estables |
 | MIRA_num (k≥10) | 0.989 ± 0.017 | Q2: MIRA es efecto background, no perturbativo |
 | γ_IS | 0.554 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
-| G = D₁_SSEE/D₁_ΛCDM | 0.866 | supresión 13.4% |
-| σ₈_SSEE | 0.702 ± 0.005 | — |
-| S₈_SSEE | 0.725 ± 0.005 | **1.96σ KiDS / 2.84σ DES (IS sector explored, tension remains)** |
-| fσ₈(z=0.5) | 0.341 | 2.67σ vs BOSS (tensión estructural — Ω_m,dyn=0.160) |
+| G = D₁_SSEE/D₁_ΛCDM | 1.011 ± 0.005 | enhancement 1% (fuente Poisson Ω_m,CMB=0.320; el viejo 0.866 era era Ω_m,dyn=0.160, retirado) |
+| σ₈_SSEE (single-sector) | 0.820 ± 0.006 | baseline — el two-sector P6 lo baja a 0.742 |
+| S₈_SSEE (single-sector) | 0.847 | 3.9σ KiDS — "el desafío" que P6 two-sector resuelve (S₈_eff=0.766) |
+| fσ₈ media (6 encuestas) | — | 0.76σ con two-sector P6 (baseline single 2.67σ) |
 
 ---
 

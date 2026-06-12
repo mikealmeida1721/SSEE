@@ -56,8 +56,9 @@ $n_s=1-\varphi^{-7}=0.9656$ and a tensor-to-scalar ratio $r=\varphi^{-10}=
 calculation shows the two-$\Omega$ bridge constant MIRA is physically required:
 without it the acoustic-peak structure degrades by a factor of $\sim22$ in RMS.
 We are explicit about the framework's limits: the absolute vacuum scale enters
-as a single measured input, the growth amplitude $S_8$ remains in tension with
-weak-lensing surveys, and the dynamical origin of MIRA and the
+as a single measured input, the single-sector growth amplitude $S_8$ remains in
+tension with weak-lensing surveys (the two-sector extension that resolves it is
+kept outside the core register), and the dynamical origin of MIRA and the
 $\varphi$-dark-matter mass are open problems. The result is a falsifiable,
 parameter-frugal description of dark energy whose core predictions rest on
 $\varphi$ and $\pi$ alone.
@@ -512,31 +513,40 @@ remains an open problem (\S\ref{sec:open}).
 \section{Structure growth: an honest tension}
 \label{sec:growth}
 
-The same linear EFT predicts the growth of structure, and here we report a
-genuine, unresolved tension rather than a success. Solving the growth equation
-with the SSEE EFT functions gives a suppressed growth factor relative to
-$\Lambda$CDM, $G\equiv D_1^{\rm SSEE}/D_1^{\Lambda\rm CDM}=0.866$, and a
-present-day amplitude
+The same linear EFT predicts the growth of structure, and here we report the
+situation honestly: a genuine challenge in the minimal (single-sector)
+treatment, resolved only by an extension sector that we deliberately keep
+outside the core register. With the Poisson source evaluated at the
+CMB-calibrated density $\Om^{\mathrm{cosm}}=0.320$ (the same MIRA sector that
+the Boltzmann test of \S\ref{sec:eft} shows is physically required), the growth
+factor is essentially that of $\Lambda$CDM,
+$G\equiv D_1^{\rm SSEE}/D_1^{\Lambda\rm CDM}=1.011\pm0.005$, and the present-day
+amplitude is
 \begin{equation}
   \label{eq:s8}
-  \sigma_8=0.702\pm0.005 , \qquad S_8=0.725\pm0.005
+  \sigma_8=0.820\pm0.006 , \qquad S_8=0.847
 \end{equation}
-in the single-sector treatment. This sits in $\sim2\sigma$--$2.8\sigma$ tension
-with weak-lensing measurements~\citep{KiDS2021,DESY32022}. A two-sector treatment, in which
-a free-streaming component reduces the effective suppression, raises the
-amplitude to $\sigma_8=0.742$, $S_8=0.766$, within $0.01\sigma$ of the KiDS-1000
-value. Including baryonic feedback via HMcode-2020~\citep{Mead2021} brings the lensing
-amplitude to $S_8=0.758$, formally consistent with DES-Y3 ($0.06\sigma$), but we
-treat this as an indicative estimate rather than a clean prediction: the
-two-sector mass and the feedback amplitude are calibrated quantities, not
-algebraic outputs of $\varphi,\pi$.
+in the single-sector treatment---a $3.9\sigma$ tension with KiDS-1000
+weak lensing~\citep{KiDS2021,DESY32022}, comparable to the $\Lambda$CDM
+$S_8$ tension itself. A two-sector extension, in which a free-streaming
+$\varphi$-DM component suppresses small-scale power below
+$k_{\rm fs}\simeq0.659~\hMpc$, \emph{lowers} the amplitude to
+$\sigma_8=0.742$, $S_8=0.766$, within $0.01\sigma$ of the KiDS-1000 value. The
+mass that fixes the free-streaming scale,
+$m_\varphi=\Sigma m_\nu^{\rm active}\,(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})\simeq36.95$~eV,
+is a forward prediction with no parameter fitted to lensing data
+(\S\ref{sec:open}); the suppression scale is a CLASS output, not a calibrated
+input.
 
-\paragraph{The honest statement.} SSEE does not currently resolve the
-$S_8$/$\sigma_8$ tension from first principles. The linear prediction
-$\sigma_8\simeq0.70$--$0.79$ brackets the measured range but is not pinned down
-without calibrated nuisance ingredients, and a full non-linear treatment
-requires $N$-body simulations that lie beyond the scope of this work. We report
-this as an open challenge (\S\ref{sec:open}) rather than a claimed victory.
+\paragraph{The honest statement.} The single-sector core of SSEE does not
+resolve the $S_8$ tension---it inherits it at the $\Lambda$CDM level. The
+two-sector extension does resolve it ($0.01\sigma$ of KiDS-1000), but the UV
+origin of the algebraic multiplier that fixes $m_\varphi$ remains underived
+(OP-9), so we keep the extension outside the core predictive register, and a
+full non-linear treatment requires $N$-body simulations that lie beyond the
+scope of this work. We report the core-level tension as an open challenge
+(\S\ref{sec:open}) and the two-sector resolution as a falsifiable extension,
+not a claimed first-principles victory.
 
 \section{Falsifiability and the prediction register}
 \label{sec:falsifiability}
@@ -667,11 +677,14 @@ near-coincidence to be tested, not as a proven identity, pending a QFT-level
 derivation of the role assignments.
 \end{itemize}
 
-The growth-of-structure tension of \S\ref{sec:growth} is likewise unresolved:
-SSEE does not currently bring $S_8$ into agreement with weak-lensing surveys
-from first principles, and the non-linear treatment required to settle it
-demands $N$-body simulations beyond this work's scope. We record it as an open
-challenge.
+The growth-of-structure status of \S\ref{sec:growth} mirrors this structure:
+the single-sector core inherits an $S_8$ tension at the $\Lambda$CDM level
+($3.9\sigma$), and the two-sector extension that resolves it ($S_8=0.766$,
+$0.01\sigma$ of KiDS-1000) rests on the $m_\varphi$ multiplier whose UV origin
+is the open item above. The non-linear treatment required to settle the matter
+definitively demands $N$-body simulations beyond this work's scope. We record
+the core-level tension as an open challenge and the extension as falsifiable
+future-data territory (DESI~Y3, Euclid).
 
 None of these gaps touch the algebraic core of
 Table~\ref{tab:predictions-core}: the dark-energy equation of state, the

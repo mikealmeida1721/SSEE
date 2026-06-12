@@ -176,7 +176,9 @@ fsig8_data = np.array([
 ])
 fsig8_labels = ['6dFGRS','SDSS MGS','BOSS DR12','BOSS DR12','BOSS DR12','eBOSS DR16']
 
-# KiDS-1000 σ₈ (Asgari+2021)
+# KiDS-1000 cosmic shear (Asgari+2021, A&A 645 A104): el dato directo es
+# S₈ = 0.759⁺⁰·⁰²⁴₋₀.₀₂₁; aquí se expresa como σ₈ = S₈·(Ω_m/0.3)^(−1/2)
+# evaluado en Ω_m = 0.32 → 0.737 ± 0.020 (NO es una medición directa de σ₈)
 sig8_kids   = 0.737;  sig8_kids_err  = 0.020
 # DES Y3 S₈ (Amon+2022)
 S8_des      = 0.776;  S8_des_err     = 0.017

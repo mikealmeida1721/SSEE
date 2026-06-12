@@ -8,7 +8,7 @@ Potencial:
 Donde:
     V₀     = 0.840 ρ_crit          (bloqueado Paper 7)
     λ      = √(3·Ω_m,dyn) ≈ 0.693  (bloqueado Paper 7)
-    M_UV   ≈ 8.81 meV              (bloqueado Paper 10)
+    M_UV   ≈ 9.62 meV              (bloqueado Paper 10, vía ρ_crit canónico)
     f      = ÚNICO free param
 
 ANÁLISIS:
@@ -20,8 +20,8 @@ ANÁLISIS:
 (2) Para axion estándar, el término M_UV⁴/f² domina la curvatura:
     m_φ² ≈ M_UV⁴/f² (axion-like mass)
 
-(3) Para m_φ = 5.60 eV:
-    f = M_UV²/m_φ ≈ (8.81 meV)² / 5.60 eV ≈ 13.9 μeV
+(3) Para m_φ = 36.95 eV (canónico 2026-06-04):
+    f = M_UV²/m_φ ≈ (9.62 meV)² / 36.95 eV ≈ 2.5 μeV
 
 (4) PROBLEMA CRÍTICO — incompatibilidad DM-oscilante vs DE-dinámica:
     Campo se "engancha" en mínimo del coseno cuando m_eff² > H²
@@ -39,9 +39,9 @@ KAL          = (PHI + 3*PI) / 2
 M_V          = 3*(PHI + PI)
 
 # ρ_crit canónico SSEE: 8.10e-11 eV⁴ es el coeficiente pelado (h=1); la densidad
-# física se escala por h_MIRA² con h_MIRA=H_MIRA/100=0.67068 (Paper 3 Cobaya).
-H_MIRA       = 67.068                    # km/s/Mpc
-h_MIRA       = H_MIRA / 100.0            # 0.67068
+# física se escala por h_MIRA² con h_MIRA=H_MIRA/100=0.67037 (canónico 2026-06-09).
+H_MIRA       = 67.037                    # km/s/Mpc
+h_MIRA       = H_MIRA / 100.0            # 0.67037
 RHO_CRIT_eV4 = 8.10e-11 * h_MIRA**2     # ρ_crit en eV⁴ (SSEE, ×h²)
 V0           = 0.840 * RHO_CRIT_eV4
 LAMBDA_LOCK  = np.sqrt(3 * 0.160)
@@ -49,7 +49,7 @@ M_UV         = (5 * PHI**8 * RHO_CRIT_eV4)**0.25   # ≈ 9.62 meV (Paper 10)
 M4_UV        = M_UV**4
 
 H0_eV        = 1.45e-33
-M_PHI_TARGET = 5.60               # eV
+M_PHI_TARGET = 36.95              # eV (canónico 2026-06-04; antes 5.60 obsoleto)
 W0_TARGET    = -0.840
 
 print("=" * 76)
@@ -123,7 +123,7 @@ print(f"""
     A) f tan grande que m_eff < H₀ (axion frozen, no DM):
        Requiere f > {f_no_eng:.3e} eV ≈ {f_no_eng/M_UV:.3e} × M_UV
        Con ese f, m_φ = M_UV²/f = {M_UV**2/f_no_eng:.3e} eV
-       → m_φ ≈ H₀, contradice φ-DM con m_φ = 5.60 eV
+       → m_φ ≈ H₀, contradice φ-DM con m_φ = 36.95 eV
        ❌ Descartado.""")
 
 # Sub-caso B: usar el axion solo para DM y otro mecanismo para DE
@@ -138,7 +138,7 @@ print(f"""
 print(f"""
     C) Axion como DE oscilante:
        Requeriría m_φ ≲ H₀ ≈ 10⁻³³ eV (period mayor que edad universo).
-       Pero queremos m_φ = 5.60 eV, NO m_φ < H₀.
+       Pero queremos m_φ = 36.95 eV, NO m_φ < H₀.
        ❌ Descartado.""")
 
 # ============================================================
@@ -150,11 +150,11 @@ print("=" * 76)
 print(f"""
   ✗ DESCARTADA por mismo patrón estructural que Familia 2.
 
-  CAUSA: dos escalas separadas (V₀^(1/4) ≈ {V0**0.25:.2e} eV vs m_φ = 5.60 eV)
+  CAUSA: dos escalas separadas (V₀^(1/4) ≈ {V0**0.25:.2e} eV vs m_φ = {M_PHI_TARGET:.2f} eV)
   no pueden coexistir en un solo campo:
 
   - Si axion engancha (m_eff >> H): φ se fija → V_DE = const → w=-1 (no -0.84)
-  - Si axion no engancha (m_eff < H): m_φ ≈ H₀ (no 5.60 eV)
+  - Si axion no engancha (m_eff < H): m_φ ≈ H₀ (no 36.95 eV)
 
   El problema es topológico: el potencial periódico [1-cos] tiene mínimos
   discretos donde el campo se queda atrapado. Para que SSEE-DE funcione

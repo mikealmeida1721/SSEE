@@ -38,11 +38,11 @@ T_R   = 3 * (PHI + BETA)
 AURA  = (3*PHI + PI) / 2
 
 # ρ_crit canónico SSEE: el coeficiente 8.10e-11 eV⁴ es el valor PELADO (h=1);
-# la densidad crítica física se escala por h² con h_MIRA=H_MIRA/100=0.67068.
+# la densidad crítica física se escala por h² con h_MIRA=H_MIRA/100=0.67037.
 # Omitir h² (bug histórico) da ρ_crit^(1/4)=3.00 meV → M=11.7 meV; con h²
 # correcto da ρ_crit^(1/4)=2.46 meV → M=9.62 meV, idéntico a Paper 10.
-H_MIRA       = 67.068                            # km/s/Mpc (Paper 3 Cobaya)
-h_MIRA       = H_MIRA / 100.0                    # 0.67068
+H_MIRA       = 67.037                            # km/s/Mpc (canónico 2026-06-09, Σm_ν=0.069 self-consistente)
+h_MIRA       = H_MIRA / 100.0                    # 0.67037
 RHO_CRIT_eV4 = 8.10e-11 * h_MIRA**2             # ρ_crit en eV⁴ (SSEE, ×h²)
 OM_DE        = 0.840
 V0_LOCK      = OM_DE * RHO_CRIT_eV4              # Paper 7

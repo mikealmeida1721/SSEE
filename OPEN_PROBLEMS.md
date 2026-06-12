@@ -578,6 +578,55 @@ philosophy is restored.
 **Severity:** Medium-High — does not affect observational predictions of SSEE-V3.6
 but is the natural next step toward genuine zero-parameter status.
 
+### Registro de rutas exploradas (actualizado 2026-06-11)
+
+Protocolo en todas las fases: **forward, cero fiteo** — solo escalas ya bloqueadas
+por Papers 6/7/10 (V₀ = 0.840 ρ_crit, λ = √(3·0.160) ≈ 0.693, M_UV = 9.62 meV,
+m_φ = 36.95 eV). Requisitos declarados ANTES de calcular. Scripts en
+`src/open_problems/`.
+
+| Ruta | Mecanismo | Veredicto | Causa del descarte |
+|---|---|---|---|
+| F1 (pozo local) | mínimo cuadrático añadido al exponencial | ❌ | el pozo contamina el plateau DE — w₀ se aleja de −0.840 |
+| F2 (tanh²) | doble-escala suave | ❌ | jerarquía DE/DM exige 33 órdenes de magnitud en el parámetro de forma |
+| F3 (axion-like) | V₀e^(−λφ) + M_UV⁴[1−cos(φ/f)] | ❌ | atrapamiento topológico: si el axion engancha, φ se fija → w = −1; si no engancha, m_φ ≈ H₀ ≠ 36.95 eV (`ssee_op10_family3_axion.py`) |
+| F4 (see-saw escalas) | m_φ² = m_h·m_l con escalas SSEE | ❌ | predicción off por ~10³³ (`ssee_op10_seesaw_search.py`) |
+| Opción A (UV-inducido) | corrección de loop de K(X) genera el mínimo | ❌ | K(X) es φ-independiente a nivel árbol; curvatura de loop ~ M = 9.62 meV, factor ~3 842 bajo m_φ (`ssee_op10_uv_induced_minimum.py`) |
+| 2c (K-essence boost) | K_X renormaliza la masa efectiva | ❌ analítico | K_X ≥ 1/KAL acota el boost a √KAL ≈ 2.35× — insuficiente para 10³⁻⁴ |
+| 2e (masa tracking) | m_eff²(z) = ρ_m(z)/M_*², M_* = M_UV | ❌ estructural | ver R1–R3 abajo (`ssee_op10_phase2e_dynamic_mass.py`) |
+
+**Fase 2e en detalle** (cerrada 2026-06-10; idea sobreviviente de la propuesta
+"conversión DM→DE" de Mike): masa inducida por densidad ambiente, chameleon-like,
+con la única escala bloqueada M_* = M_UV. Hallazgo sugestivo: el cruce
+m_eff = 36.95 eV cae en z_x ≈ 2 212, época de igualdad materia-radiación
+(z_x/z_eq ≈ 0.64) sin ajustar nada. Pero falla los tres requisitos pre-declarados:
+
+- **R1 (estructural, independiente de M_*):** con m ∝ √ρ_m ∝ a^(−3/2) y el
+  invariante adiabático n ∝ a⁻³, la energía oscilante diluye como
+  ρ_osc = m·n ∝ a^(−4.5) → w_eff = +0.5: se evapora más rápido que la radiación,
+  no es CDM para NINGÚN M_*.
+- **R2:** m_eff(0) = 0.355 meV, factor ~10⁵ bajo el canónico 36.95 eV (rompe
+  k_fs = 0.659 h/Mpc de Paper 6).
+- **R3:** m_eff(0)/H₀ ~ 10²⁹ — el campo queda clavado hoy → w = −1, no −0.840.
+- Rescate M_* = 92.4 neV sería escala nueva fiteada (prohibido) y R1 persiste.
+
+### Teorema del escalón (lección estructural consolidada, 2026-06-10)
+
+Los 7 descartes consolidan un patrón: **ni un pozo estático ni una masa que
+trackea ρ_m de forma continua pueden unificar DE+DM en un solo campo SSEE.**
+R1 lo prohíbe estructuralmente: mientras la masa cambie durante las oscilaciones,
+la energía no diluye como materia.
+
+⇒ La transición DM↔DE, si existe en un solo campo, tiene que ser un **escalón**
+(transición de fase única): el potencial cambia de forma UNA sola vez cerca de
+z_eq, con masa constante = 36.95 eV en la fase oscilante. El escenario
+escalón + masa constante ES el misalignment frío ya estudiado (cierre Osiris
+2026-05-30): viable como DM, pero φ_i = 1.17×10⁻⁶ M_Pl no sale algebraico de
+(φ,π) → empata ΛCDM en conteo de parámetros, no lo supera.
+
+**Única ruta no excluida:** transición de fase única cerca de z_eq cuyo
+DISPARADOR esté bloqueado por (φ,π). Sin candidato a la fecha.
+
 ---
 
 ## OP-11 — Free Non-Minimal Coupling ξ (Paper 6) — ABIERTO

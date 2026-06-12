@@ -286,9 +286,12 @@ pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1
 
 ## Roadmap
 
-**Status (2026-05-17):** all 10 papers complete and compile clean (0 LaTeX errors,
-0 orphan bibitems, 0 undefined citations). Foundational postulates D & S formalised
-in Paper 1; OPEN_PROBLEMS OP-2/3/4/6 resolved, OP-1/5 partial. Full development
+**Status (2026-06-12):** all 10 papers + consolidated journal documents complete and
+compile clean (0 LaTeX errors, 0 orphan bibitems, 0 undefined citations). Canonical
+φ-DM particle m_φ = 36.95 eV (forward prediction, zero fitting) with pre-registered
+free-streaming imprint k_fs = 0.659 h/Mpc (DESI Y3 / Euclid testable). Full
+hostile-referee audit closed: verification guardian 100/100 green + figure-level
+pdftotext sweep (retired numbers purged from text AND figures). Full development
 history in [CHANGELOG.md](CHANGELOG.md).
 
 **Done**
@@ -301,14 +304,20 @@ history in [CHANGELOG.md](CHANGELOG.md).
 - [x] OPEN_PROBLEMS OP-2/3/4/6 resolved; OP-1/5 partial
 - [x] Paper 1 Postulates D (dimensional anchor) & S (saturation correspondence)
 - [x] Hostile-referee overclaim sweep across all 10 papers
-- [x] Zenodo v1 — Papers 1–7 archived (DOI 10.5281/zenodo.20093447)
+- [x] Zenodo v6 — Papers 1–7 archived (DOI 10.5281/zenodo.20093447)
+- [x] Canonical φ-DM particle (m_φ = 36.95 eV, forward prediction) + self-consistent
+      Hubble cascade (H_MIRA = 67.037 → local 71.87 / 72.05 km/s/Mpc)
+- [x] Internal hostile-referee audit — guardian 100/100 green; figure-level
+      pdftotext sweep across all compiled PDFs; arXiv source tarballs (10/10)
 
 **Pending**
-- [ ] External audits → green light
-- [ ] Zenodo v2 — archive Papers 1–10 + OPEN_PROBLEMS.md + CLASS scripts
-- [ ] Journal submission to JCAP (after external green light)
+- [ ] Zenodo v7 — Papers 1–10 + Unified + Sealed + OPEN_PROBLEMS.md +
+      VERIFICATION_LEDGER.md + arXiv source tarballs (in progress, 2026-06-12)
+- [ ] Journal submission — Sealed Journal (late-DE core) → JCAP / Universe;
+      Papers 5–7 second wave; P6/P8/P9 upgrade pending DESI Y3 (k_fs = 0.659 h/Mpc)
 - [ ] Paper B — ab-initio baryogenesis (OP-1 closure) + φ-DM relic abundance
 - [ ] OP-5 closure — full N-body S₈ (BAHAMAS / IllustrisTNG-SSEE)
+- [ ] OP-9 residual — UV origin of the multiplier 535.28 (Ω⁴ + AURA·KAL)
 
 ---
 

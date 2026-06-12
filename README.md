@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/banner_ssee.svg" width="100%" alt="SSEE — Structural Self-Energy Expansion: dark energy from φ and π. Animated banner: a golden logarithmic spiral draws itself over a starfield while a perfect φ/π lattice deforms into organic imperfection."/>
+
 # SSEE — Structural Self-Energy Expansion
 
 ### A minimal-parameter dark energy framework derived from φ and π

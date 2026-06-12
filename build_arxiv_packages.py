@@ -7,7 +7,13 @@ papers = [
     {"id": 1, "name": "SSEE_Paper1_Framework", "files": ["SSEE_Paper1_Framework.tex", "SSEE_EFT_section.tex"]},
     {"id": 2, "name": "SSEE_Paper2_MCMC", "files": ["SSEE_Paper2_MCMC.tex", "SSEE_Paper2_MCMC.bbl"]},
     {"id": 3, "name": "SSEE_Paper3_CMB", "files": ["SSEE_Paper3_CMB.tex", "SSEE_Paper3_CMB.bbl"]},
-    {"id": 4, "name": "SSEE_Paper4_ToE", "files": ["SSEE_Paper4_ToE.tex", "SSEE_Paper4_ToE.bbl"]}
+    {"id": 4, "name": "SSEE_Paper4_ToE", "files": ["SSEE_Paper4_ToE.tex", "SSEE_Paper4_ToE.bbl"]},
+    {"id": 5, "name": "SSEE_Paper5_IS", "files": ["SSEE_Paper5_IS.tex", "SSEE_Paper5_IS.bbl"]},
+    {"id": 6, "name": "SSEE_Paper6_phiDM", "files": ["SSEE_Paper6_phiDM.tex", "SSEE_Paper6_phiDM.bbl"]},
+    {"id": 7, "name": "SSEE_Paper7_EFT", "files": ["SSEE_Paper7_EFT.tex"]},
+    {"id": 8, "name": "SSEE_Paper8_StrongGravity", "files": ["SSEE_Paper8_StrongGravity.tex"]},
+    {"id": 9, "name": "SSEE_Paper9_HubbleTension", "files": ["SSEE_Paper9_HubbleTension.tex"]},
+    {"id": 10, "name": "SSEE_Paper10_UVCompletion", "files": ["SSEE_Paper10_UVCompletion.tex"]}
 ]
 
 os.makedirs("submission_packages", exist_ok=True)

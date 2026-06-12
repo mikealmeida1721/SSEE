@@ -684,7 +684,7 @@ ratio is further suppressed by $(H/k)^2$~\citep{Bellini2015}:
     \;\sim\; \frac{H^2}{k^2}\,|1+w_{\rm DE}|\,\Omega_{\rm DE}\,.
   \label{eq:fifth_force_qs}
 \end{equation}
-At the Earth--Sun separation ($k \sim 1/\mathrm{AU}$, $k/H_0 \approx 4.5\times10^4$):
+At the Earth--Sun separation ($k \sim 1/\mathrm{AU}$, $ck/H_0 \approx 9.2\times10^{14}$):
 \begin{equation}
   \frac{F_\phi}{F_N}\bigg|_{\rm 1\,AU}
     \;\approx\; 1.6\times10^{-31}
@@ -834,30 +834,42 @@ GW speed anomaly ($\alpha_T$)
 \subsection{Worked numerical example: cluster A1689}
 \label{sec:a1689}
 
-As a concrete verification of Eq.~\eqref{eq:alpha_ssee}, we compute the
-predicted deflection angle for cluster A1689, one of the most powerful
-gravitational lenses known, using the following reference values
-\citep{Limousin2007}: baryonic mass $M_{\rm bary} = 2.7\times10^{14}\,M_\odot$,
-effective lensing impact parameter $b = 250\,\mathrm{kpc}$ (corresponding
-to the observed Einstein radius $\thetaE\approx45''$ at $z_L=0.183$,
-$z_S=1.0$).
+As a concrete numerical test discriminating between the two limits of
+Section~\ref{sec:falsify}, we compute the deflection angle for cluster
+A1689, one of the most powerful gravitational lenses known, using the
+following reference values: total projected mass within the Einstein
+radius $M_{\rm tot} \approx 2.7\times10^{14}\,M_\odot$
+\citep{Limousin2007}, baryonic mass (gas + stars, $f_b\approx 0.14$)
+$M_{\rm bary} \approx 3.8\times10^{13}\,M_\odot$, effective lensing
+impact parameter $b = 250\,\mathrm{kpc}$ (corresponding to the observed
+Einstein radius $\thetaE\approx45''$ at $z_L=0.183$, $z_S=1.0$).
 
 Using $G = 4.302\times10^{-3}\,\mathrm{pc}\,M_\odot^{-1}\,(\mathrm{km/s})^2$
 and $c = 2.998\times10^5\,\mathrm{km/s}$:
 \begin{align}
-  \hatalf_{\rm GR} &= \frac{4GM_{\rm bary}}{c^2\,b}
+  \hatalf_{\rm canonical} &= \frac{4GM_{\rm tot}}{c^2\,b}
     = \frac{4 \times 4.302\times10^{-3} \times 2.7\times10^{14}}{(2.998\times10^5)^2 \times 250\times10^3}
-    \approx 8.2\times10^{-5}\,\mathrm{rad} = 16.9'', \\[4pt]
-  \hatalf_{\rm SSEE} &= \bc\,\hatalf_{\rm GR}
-    = 3.998 \times 8.2\times10^{-5}
-    \approx 3.3\times10^{-4}\,\mathrm{rad} = 67.5''.
+    \approx 2.07\times10^{-4}\,\mathrm{rad} = 42.6'', \\[4pt]
+  \hatalf_{\rm GR}^{\rm bary} &= \frac{4GM_{\rm bary}}{c^2\,b}
+    \approx 2.9\times10^{-5}\,\mathrm{rad} = 6.0'', \\[4pt]
+  \hatalf_{\rm alt} &= \bc\,\hatalf_{\rm GR}^{\rm bary}
+    = 3.998 \times 2.9\times10^{-5}
+    \approx 1.16\times10^{-4}\,\mathrm{rad} = 24.0''.
 \end{align}
-The SSEE prediction exceeds the GR baryonic baseline by a factor $\bc\approx4$.
-The observed Einstein radius ($45''$) lies between the two extremes, consistent
-with a partial contribution of $\phi$-DM sector (two-sector model,
-$\thetaE^{\rm obs}/\thetaE^{\rm SSEE} \approx 0.67$) or, equivalently,
-with the effective mass being a weighted combination of the two sectors.
-This example demonstrates that Eq.~\eqref{eq:alpha_ssee} produces
+The canonical limit (EFT B--S suppression, lensing sourced by the full
+two-sector matter content, \S\ref{sec:double_protection}) reproduces the
+observation: $\hatalf_{\rm canonical} = 42.6''$ versus the observed
+$\thetaE \approx 45''$, agreement at the $5\%$ level (the small residual
+is absorbed by the projection geometry and the mass-profile modelling of
+\citealp{Limousin2007}).
+The alternative MOND-like limit, in which lensing is sourced by baryons
+enhanced by $\bc \approx 4$, falls short of the observation by a factor
+$\approx 1.9$ --- precisely the well-known residual missing-mass problem
+that MOND-type theories face in galaxy clusters.
+A1689 therefore acts as a discriminating test between the two limits and
+selects the canonical one, consistent with the interpretation of
+$m_\phi$ fixed by Paper~6.
+This example also demonstrates that Eq.~\eqref{eq:alpha_ssee} produces
 physically reasonable deflection angles, not merely formal algebraic
 expressions.
 
@@ -957,7 +969,7 @@ falsify the corresponding sector of the SSEE framework.
         \textit{Falsification criterion}: if DESI~Y3/Euclid $P(k)$ shows no
         free-streaming suppression near $k_{\rm fs}$, the algebraic
         identification $m_\phi = (\Sigma m_\nu^{\mathrm{active}})\times
-        H_0^{\mathrm{alg}}$ is falsified.
+        (\Omega_{\rm DNAV}^4+\AURA\cdot\KAL)$ is falsified.
 
 \end{enumerate}
 

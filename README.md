@@ -130,7 +130,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 ## 📊 Key results
 
 <div align="center">
-<img src="results/figures/fig8_tension_summary.png" width="640" alt="Tension summary across observables"/>
+<img src="results/figures/fig_readme_tensions.png" width="680" alt="Canonical SSEE tension summary — all predictions below 1.2 sigma"/>
 </div>
 
 ### Paper 2 (DESI DR2 + Planck 2018 + clusters)
@@ -162,8 +162,8 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 
 | Metric | SSEE | ΛCDM |
 |---|---|---|
-| Growth index γ_IS (Paper 1 App.A) | 0.657 ± 0.002 | 0.55 |
-| S8 (IS numerical) | 0.818 | 0.830 |
+| Growth index γ_IS (Paper 5, supersedes App.A) | 0.554 ± 0.001 | 0.55 |
+| S₈ (IS, CMB sector) | 0.847 | 0.830 |
 | fσ8 χ²/N (13 RSD surveys) | **0.524** | 0.596 |
 
 ### Paper 5 (Israel-Stewart Causal Perturbations)
@@ -174,13 +174,13 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | k_crit / (H₀/c) | 0.456 < 1 | Sub-Hubble stability window |
 | MIRA (numerical, k≥10) | 0.989 ± 0.017 | Background IS origin confirmed |
 | γ_IS | 0.554 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
-| G = D₁_SSEE/D₁_ΛCDM | 0.866 | 13.4% growth suppression |
-| σ₈_SSEE | 0.702 ± 0.005 | — |
-| **S₈_SSEE** | **0.725 ± 0.005** | **1.96σ KiDS / 2.84σ DES (IS sector explored, tension remains)** |
-| fσ₈(z=0.5) | 0.341 | 2.67σ vs BOSS (structural tension, Ω_m,dyn=0.160) |
+| G = D₁_SSEE/D₁_ΛCDM | 1.011 ± 0.005 | ~1% enhancement (Poisson source Ω_m,CMB = 0.320) |
+| σ₈_SSEE (single-sector) | 0.820 ± 0.006 | — |
+| **S₈_SSEE (single-sector)** | **0.847** | **3.9σ KiDS — the challenge the Paper 6 two-sector resolves** |
+| Mean fσ₈ tension (6 surveys, single-sector) | 2.67σ | → 0.76σ with the Paper 6 two-sector |
 
-**Diagnostic:** SSEE predicts *amplitude* (S₈) lower than Planck but tension with DES/KiDS remains.
-Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6 extension.
+**Diagnostic:** the single-sector model predicts an S₈ *above* weak-lensing surveys (3.9σ KiDS).
+This is the open challenge that motivates the Paper 6 two-sector φ-DM extension, which resolves it (S₈ = 0.766, 0.01σ KiDS).
 
 ### Paper 6 (φ-Dark Matter, Two-Sector Model)
 
@@ -196,9 +196,9 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | σ₈_eff (two-sector particle) | 0.742 | — |
 | **S₈ (two-sector particle)** | **0.766** | **0.01σ KiDS-1000 (0.766±0.020) — resolves S₈ lensing tension** |
 | Single-sector linear (cold source) | σ₈=0.820, S₈=0.847 | 3.9σ — open before two-sector |
-| Mean fσ₈ tension (6 surveys) | 0.74σ | from 3.9σ baseline; ties ΛCDM |
+| Mean fσ₈ tension (6 surveys) | 0.76σ | from 2.67σ single-sector baseline; ties ΛCDM (0.73σ) |
 
-> **Note:** With the forward-predicted particle (m_φ = 36.95 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.766 sits 0.01σ from KiDS-1000, down from the 3.9σ single-sector baseline. The fσ₈ (growth-rate) sector is unchanged and ties ΛCDM (0.74σ across six RSD surveys).
+> **Note:** With the forward-predicted particle (m_φ = 36.95 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.766 sits 0.01σ from KiDS-1000, down from the 3.9σ single-sector baseline. The fσ₈ (growth-rate) sector ties ΛCDM (0.76σ vs 0.73σ across six RSD surveys).
 
 **Lyman-α compatibility:** φ-DM is a non-thermal condensate. The correct observable is k_fs=0.659 h/Mpc in the matter power spectrum (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
 
@@ -227,9 +227,9 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | CMB peak 2 (ℓ) | **535** | 597 | 537 | MIRA necessary |
 | CMB peak 3 (ℓ) | **810** | 922 | 814 | MIRA necessary |
 | RMS vs ΛCDM | **1.4%** | 31.5% | — | 22× degradation without MIRA |
-| σ₈ (MIRA+WDM, CLASS) | **0.737** | — | ~0.82 | 0.00σ KiDS-1000 |
+| α free-streaming (CLASS output, canonical particle) | **1.243 Mpc/h** | — | — | Yields k_fs = 0.659 h/Mpc |
+| S₈ (two-sector, canonical particle) | **0.766** | — | ~0.83 | 0.01σ KiDS-1000 |
 | IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
-| G = D₁_SSEE/D₁_ΛCDM (ODE) | **0.866** | — | 1.0 | 13.4% suppression confirmed |
 
 *CLASS confirms MIRA is physically necessary: without it, all three CMB peaks shift ~10% and RMS error rises 22×.*
 
@@ -275,7 +275,7 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 | α-attractor parameter | φ⁴/3 = 2.285 | exact (0.00e+00) |
 | e-folds N | 2φ⁷ ≈ 58.07 | from n_s = 1 − φ⁻⁷ |
 | Kähler curvature R | −φ⁻⁴ ≈ −0.146 | R = −2/(3α) |
-| IS growth index γ_IS | 0.657 ± 0.002 | Paper 1 App.A |
+| IS growth index γ_IS | 0.657 ± 0.002 | Paper 1 App.A (superseded by Paper 5: γ_IS = 0.554) |
 | IS relaxation time τ_Π H₀ | KAL₀/(3Ω_DE) ≈ 2.191 | algebraic |
 | MIRA algebraic identity | (3φ+π)/4 = 1.9989 | exact (0.00e+00) |
 
@@ -284,24 +284,32 @@ Split points to kinetic braiding (αB in Bellini-Sawicki) as the natural Paper 6
 ## ⚠️ Known limitations and open problems
 
 Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
-**Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (6 items, OP-1..OP-6).
+**Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (14 items, OP-1..OP-14).
 
 ### Editorial/pipeline limitations
 1. **Diagonal CMB likelihood** (Paper 3): χ²_r uses diagonal covariance. Off-diagonal terms required for PRD/PRL.
-2. **Full causal IS** (Paper 5): IS growth index γ_IS=0.657 is derived analytically. Full Hiscock-Lindblom 1985 treatment for B-mode predictions remains a blocker for LiteBIRD forecasts.
+2. **Full causal IS** (Paper 5): IS growth index γ_IS=0.554 is derived analytically. Full Hiscock-Lindblom 1985 treatment for B-mode predictions remains a blocker for LiteBIRD forecasts.
 3. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
 4. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
 5. **CMB ΔBIC status:** Diagonal approximation (TT+TE+EE+PP, k=2 vs k=6) yields $\Delta\mathrm{BIC}=-28.0$ favouring SSEE; full Cobaya plik\_lite (TTTEEE+lowl) gives $\Delta\mathrm{BIC}=-32.2$ decisively favouring SSEE. Both treatments agree (Paper 3 §BIC, canonical Σm_ν = 0.0690 eV; ΛCDM at baseline 0.06).
 
 ### Open physics problems (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md))
-| ID | Problem | Status (2026-05-16) |
+| ID | Problem | Status (2026-06-12) |
 |----|---------|---------------------|
 | OP-1 | Baryon density Ω_b h² | **Partial** — formula (π−φ)/(3Ω²) = 0.32σ Planck; ab-initio baryogenesis → Paper B |
 | OP-2 | n_s = 1−φ⁻⁷ exponent | **Resolved** (conditional) — α-attractor universality + N_*=2φ⁷; new prediction r=φ⁻¹⁰ |
 | OP-3 | UV-IR separability | **Resolved** — EFT hierarchy (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2) unique |
 | OP-4 | Solar Vainshtein radius | **Resolved** — k-mouflage (not Galileon) + αB=αM=αT=0 EFT suppression |
-| OP-5 | S₈ weak-lensing tension | **Partial** — HMcode-2020 → S₈=0.758 (0.06σ DES); full N-body → future |
+| OP-5 | S₈ weak-lensing tension | **Partial (Level 1)** — two-sector φ-DM resolves it (S₈ = 0.766, 0.01σ KiDS); full non-linear N-body → future |
 | OP-6 | Screening form (mult. vs add.) | **Resolved** — separate-universe k-essence + identity 1+w₀=Ω_m |
+| OP-7 | QFT derivation of genesis role assignments | **Partial** |
+| OP-8 | MIRA dynamical mechanism | **Open** — algebraic value (3φ+π)/4 exact; 7 candidate mechanisms ruled out |
+| OP-9 | UV origin of mass multiplier Ω⁴+AURA·KAL | **Refined (2026-06-04)** — m_φ = 36.95 eV is a forward prediction in a free scalar Lagrangian; only the multiplier's UV origin remains open |
+| OP-10 | Unification of φ and χ into a single field | **Open** — V(φ) search ongoing |
+| OP-11 | Free non-minimal coupling ξ | **Open** |
+| OP-12 | Relic abundance Ω_φDM h² ab initio | **Open** |
+| OP-13 | Paper 8 internal consistency (√AURA vs B-S) | **Resolved (2026-05-23)** — Option A |
+| OP-14 | Σm_ν phenomenological derivation | **Resolved (2026-06-04)** — Σm_ν = 0.0690 eV self-consistent cascade |
 
 **Foundational postulates (Paper 1 §2.4, Postulates D & S):** the dimensional scale of
 H₀ is an explicit anchor input (zero *dimensionless* fitted parameters, like ΛCDM); the

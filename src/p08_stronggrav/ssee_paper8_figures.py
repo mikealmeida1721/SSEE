@@ -23,8 +23,8 @@ Msun = 1.989e30             # kg
 Mpc  = 3.0857e22            # m
 
 # K-mouflage constants (natural units: ℏ=c=1)
-# M = 8.81 meV = Λ_SSEE  (Paper 10: M^4 = 5φ^8 ρ_crit)
-M_eV   = 8.81e-3            # eV
+# M = 9.62 meV = Λ_SSEE  (Paper 10: M^4 = 5φ^8 ρ_crit, display canónico)
+M_eV   = 9.62e-3            # eV
 M_Pl_eV = 2.435e27          # eV  (reduced Planck mass)
 Msun_eV = Msun * c**2 / 1.602e-19  # kg→eV
 hbar_c_eVm = 1.9733e-7      # ℏc in eV·m  (1 eV^-1 = 1.9733e-7 m)
@@ -67,7 +67,7 @@ ax.axhline(1.0, color='#2166ac', lw=1.0, ls='--', alpha=0.7, label=r'$1\,\mathrm
 ax.set_xlabel(r'Object mass $M_{\rm obj}$ [$M_\odot$]', fontsize=11)
 ax.set_ylabel(r'K-mouflage radius $r_{\rm km}$ [kpc]', fontsize=11)
 ax.set_title(r'SSEE k-mouflage: $r_{\rm km}^3 = M_{\rm obj}\,/\,(4\pi M_{\rm Pl} M^2)$,'
-             r'$\quad M=8.81\,\mathrm{meV}$', fontsize=10)
+             r'$\quad M=9.62\,\mathrm{meV}$', fontsize=10)
 ax.legend(fontsize=9)
 ax.grid(which='both', lw=0.4, alpha=0.4)
 ax.set_xlim(0.05, 1e18)

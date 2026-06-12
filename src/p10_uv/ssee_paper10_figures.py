@@ -21,7 +21,8 @@ AURA  = (3*phi + pi) / 2
 MIRA  = AURA / 2
 KAL0  = (phi + 3*pi) / 2  # ≈ 5.5214
 alpha_att = phi**4 / 3     # ≈ 2.2847  (alpha-attractor)
-H0_alg = 3*Omega**2        # ≈ 67.96
+H0_alg  = 3*Omega**2       # ≈ 67.96  (Type-P coincidence, comparison only)
+H0_MIRA = 67.037           # km/s/Mpc — canonical base (Paper 3 Cobaya, Σm_ν=0.069)
 # UV cutoff: M^4 = 45 alpha^2 rho_c  (Paper 10 Postulate C.1)
 # alphaK_IR = (phi+pi-Omega) already ≈ 0 … use Bellini-Sawicki definition
 alphaK_IR  = 3*AURA*(pi - phi) / (2*Omega**2)   # ≈ 0.40330
@@ -31,10 +32,10 @@ alphaK_IR  = 3*AURA*(pi - phi) / (2*Omega**2)   # ≈ 0.40330
 # alphaK_full = alphaK_IR + (3/M^4) * X_bg^2  → Paper 10 gives 0.41691
 alphaK_UV = 0.41691
 
-fscreen_IR = alphaK_IR / (3*MIRA)   # 0.06725
-fscreen_UV = alphaK_UV / (3*MIRA)   # 0.06952
-H0_IR = H0_alg / (1 - fscreen_IR)   # 72.86
-H0_UV = H0_alg / (1 - fscreen_UV)   # 73.040
+fscreen_IR = alphaK_IR / (3*MIRA)    # 0.06725
+fscreen_UV = alphaK_UV / (3*MIRA)    # 0.06952
+H0_UV      = H0_MIRA / (1 - fscreen_UV)  # 72.05 — CANONICAL (via H_MIRA)
+H0_UV_typeP = H0_alg / (1 - fscreen_UV)  # 73.040 — Type-P coincidence (comparison)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Figure 1: K(X)/X vs X/M^4
@@ -47,7 +48,13 @@ u = np.logspace(-5, 2, 500)
 KX_over_X = 1/KAL0 + u   # K(X)/X = 1/KAL0 + X/M^4
 
 # Mark regimes
-u_bg = 5.7e-4  # background value from Paper 10 (epsilon ~ 5.7e-4)
+# Background kinetic ratio on the x-axis u = X/M^4:
+#   X_bg^UV = 0.36490 (rho_crit units), M^4 = 5 phi^8 rho_crit = 234.887
+#   u_bg = X_bg/M^4 = 1.553e-3   (NOTE: the perturbativity parameter of the
+#   paper is eps = X_bg^2/M^4 = 5.67e-4 — a DIFFERENT quantity, not this axis)
+M4   = 5 * phi**8            # = 45*alpha_att^2 = 234.887 (rho_crit units)
+X_bg = 0.36490               # background X (rho_crit units, Paper 10 §4)
+u_bg = X_bg / M4             # = 1.553e-3
 
 fig, ax = plt.subplots(figsize=(7, 4.5))
 ax.loglog(u, KX_over_X, 'k-', lw=2, label=r'$K(X)/X = 1/\mathrm{KAL}_0 + X/M^4$')
@@ -55,7 +62,7 @@ ax.loglog(u, np.ones_like(u)/KAL0, '--', color='#2166ac', lw=1.2,
           label=fr'IR limit: $1/\mathrm{{KAL}}_0 = {1/KAL0:.4f}$')
 ax.loglog(u, u, ':', color='#d6604d', lw=1.2, label=r'UV limit: $X/M^4$')
 ax.axvline(u_bg, color='gray', lw=1, ls='-.', alpha=0.7,
-           label=fr'Background $\varepsilon={u_bg:.1e}$ (Paper 10)')
+           label=fr'Background $X_{{\rm bg}}/M^4={u_bg:.2e}$')
 ax.axvline(1.0, color='#1a9641', lw=0.9, ls='--', alpha=0.7,
            label=r'Non-linear onset: $X = M^4$')
 ax.fill_betweenx([0.05, 1.5], 1e-5, u_bg*5, alpha=0.06, color='#2166ac',
@@ -63,7 +70,7 @@ ax.fill_betweenx([0.05, 1.5], 1e-5, u_bg*5, alpha=0.06, color='#2166ac',
 ax.fill_betweenx([0.05, 1.5], 0.2, 100, alpha=0.06, color='#d6604d',
                  label='Non-linear (Vainshtein) regime')
 
-ax.set_xlabel(r'$\varepsilon \equiv X/M^4$', fontsize=11)
+ax.set_xlabel(r'$u \equiv X/M^4$', fontsize=11)
 ax.set_ylabel(r'$K(X)/X$', fontsize=11)
 ax.set_title(r'SSEE kinetic function $K(X)=X/\mathrm{KAL}_0 + X^2/M^4$: IR$\to$UV crossover',
              fontsize=9.5)
@@ -94,7 +101,7 @@ alpha_range = np.linspace(0.5, 6, 400)
 delta_alpha = delta_IR * (alpha_att / alpha_range)**2
 alphaK_full_arr = alphaK_IR + delta_alpha
 fscreen_arr = alphaK_full_arr / (3*MIRA)
-H0_arr = H0_alg / (1 - fscreen_arr)
+H0_arr = H0_MIRA / (1 - fscreen_arr)   # canonical cascade via H_MIRA
 
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(7, 6), sharex=True)
 
@@ -112,7 +119,7 @@ ax1.annotate(fr'UV value: {alphaK_UV:.5f}',
              fontsize=8, arrowprops=dict(arrowstyle='->', lw=0.8), color='#1a9641')
 
 ax2.plot(alpha_range, H0_arr, color='#1a9641', lw=2,
-         label=r'$H_0^{\rm local}(\alpha)$')
+         label=r'$H_0^{\rm local}(\alpha)$ (canonical, via $H_0^{\rm MIRA}$)')
 ax2.axvline(alpha_att, color='#1a9641', ls='--', lw=1.3, alpha=0.8)
 ax2.axhline(73.04, color='#d6604d', ls='-.', lw=1.2,
             label=r'SH0ES $73.04\pm1.04$')
@@ -147,5 +154,7 @@ print(f"  alphaK_IR    = {alphaK_IR:.5f}")
 print(f"  alphaK_UV    = {alphaK_UV:.5f}")
 print(f"  fscreen_IR   = {fscreen_IR:.6f}")
 print(f"  fscreen_UV   = {fscreen_UV:.6f}")
-print(f"  H0_IR        = {H0_IR:.4f}")
-print(f"  H0_UV        = {H0_UV:.4f}")
+print(f"  H0_UV (canonical, via H_MIRA) = {H0_UV:.4f}")
+print(f"  H0_UV (Type-P, comparison)    = {H0_UV_typeP:.4f}")
+print(f"  u_bg = X_bg/M^4               = {u_bg:.4e}")
+print(f"  eps  = X_bg^2/M^4             = {X_bg**2/M4:.4e}")

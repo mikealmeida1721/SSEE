@@ -46,7 +46,7 @@ ax.set_yticks(range(len(labels)))
 ax.set_yticklabels(labels, fontsize=10)
 ax.set_xlabel(r'Tension vs observation [$\sigma$]', fontsize=11)
 ax.set_xlim(0, 2.6)
-ax.set_title('SSEE-V3.6 — canonical predictions vs data (algebraic background + forward extensions)',
+ax.set_title('SSEE — canonical predictions vs data (algebraic background + forward extensions)',
              fontsize=10.5)
 ax.set_ylim(-0.9, len(sig)-0.4)
 ax.grid(axis='x', lw=0.4, alpha=0.4, zorder=0)

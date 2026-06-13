@@ -508,6 +508,29 @@ except Exception as e:
     check("canon  ssee_core.py importable y consistente", False, str(e))
 
 # ─────────────────────────────────────────────────────────────────────
+# CAPA MEMORIAS — coherencia entre las 3 memorias de SSEE.
+# Invoca memory_sync.py: revisa que CLAUDE.md, el Ledger y el vault Obsidian
+# no presenten valores RETIRADOS (CANONICAL_VALUES.yaml) como vigentes.
+# Reportado como ABIERTO mientras quede el drift conocido del Ledger (cadena
+# S₈ vieja, V-L3-OP5/V-L4-S8); cuando se reconcilie, subir a check() duro.
+# ─────────────────────────────────────────────────────────────────────
+print("\nCapa Memorias — coherencia de las 3 memorias")
+try:
+    import memory_sync
+    _drifts = memory_sync.run(verbose=False)
+    if not _drifts:
+        check("memoria  3 memorias sincronizadas con CANONICAL_VALUES.yaml", True)
+    else:
+        _by_mem = {}
+        for label, rel, ln, pat, _ in _drifts:
+            _by_mem.setdefault(label, []).append(f"{rel}:{ln}«{pat}»")
+        track_open("memoria  drift de valores retirados sin marcar",
+                   "; ".join(f"{m}: {len(v)}" for m, v in _by_mem.items())
+                   + " — correr memory_sync.py para detalle")
+except Exception as e:
+    check("memoria  memory_sync importable", False, str(e))
+
+# ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)

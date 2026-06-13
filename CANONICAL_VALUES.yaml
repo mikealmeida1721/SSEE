@@ -1,0 +1,113 @@
+# ════════════════════════════════════════════════════════════════════════
+# CANONICAL_VALUES.yaml — Fuente ÚNICA de verdad de los valores de SSEE.
+#
+# Las 3 memorias del modelo derivan de aquí:
+#   • Guardián  (VERIFICATION_LEDGER.md + ssee_verify.py) — recomputa y verifica
+#   • Obsidian  (/home/mike/SSEE-Vault) — conexiones y cadenas
+#   • CLAUDE.md — contexto/estado
+#
+# Regla de oro: si un número de SSEE cambia, se cambia AQUÍ primero. Luego
+# `memory_sync.py` revisa que ninguna memoria contradiga este archivo.
+# Correr:  .venv/bin/python3 src/verificacion/memory_sync.py
+#
+# Última actualización canónica: 2026-06-13
+# ════════════════════════════════════════════════════════════════════════
+
+# ── Valores canónicos vigentes ─────────────────────────────────────────
+# Cada uno con su unidad pegada en el nombre para no confundir escalas.
+canonical:
+  # Sector materia oscura φ-DM (Paper 6, forward — cero fiteo)
+  m_phi_eV:            36.95      # = Σm_ν^act × (Ω⁴+AURA·KAL) = 0.0690 × 535.28
+  k_fs_h_per_Mpc:      0.659      # free-streaming, derivado de m_φ vía DW
+  alpha_freestream_Mpc_per_h: 1.243   # OUTPUT de CLASS, no fiteado
+
+  # Amplitud de estructura (Paper 5 single / Paper 6 two-sector)
+  sigma8_single:       0.820      # baseline fuente Poisson Ω_m,CMB=0.320
+  S8_single:           0.847      # "el desafío" — 3.9σ KiDS
+  G_growth:            1.011      # D₁_SSEE/D₁_ΛCDM (Ω_m,CMB; viejo 0.866 retirado)
+  sigma8_two_sector:   0.742      # free-streaming CLASS forward
+  S8_two_sector:       0.766      # 0.01σ KiDS-1000 — RESUELVE
+  fsigma8_two_sector_sigma: 0.76  # media 6 encuestas; empata ΛCDM (0.73σ)
+  fsigma8_single_sigma:     2.67  # baseline Paper 5
+
+  # Cascada Hubble (canónico 2026-06-09, Σm_ν=0.0690 self-consistente)
+  H_MIRA_km_s_Mpc:     67.037     # ancla física (Planck plik_lite + bg SSEE)
+  H0_posterior_km_s_Mpc: 66.53    # posterior MCMC, prior MIRA (±0.44)
+  H0_local_IR_km_s_Mpc: 71.87     # Paper 9 — 1.12σ SH0ES
+  H0_local_UV_km_s_Mpc: 72.05     # Paper 10 — 0.96σ SH0ES
+  f_screen_IR:         0.06725    # (π−φ)/Ω² = αK/(3·MIRA)
+  f_screen_UV:         0.06952    # αK_full/(3·MIRA)
+
+  # EFT / UV completion
+  alpha_K:             0.4033     # Paper 7 (Bellini-Sawicki)
+  alpha_K_full:        0.41691    # Paper 10 (con corrección UV)
+  M_cutoff_meV:        9.62       # Λ_SSEE = (5φ⁸ρ_crit)^(1/4)
+
+  # Background (algebraico)
+  w0:                  -0.840
+  wa:                  -0.670
+  H0_alg_km_s_Mpc:     67.962     # 3(φ+π)² — conjetura Type-P, NO titular
+
+  # Estadística
+  Delta_BIC_cobaya:    -32.2      # plik_lite Cobaya (SSEE favorecido)
+  rd_MIRA_Mpc:         147.6      # MIRA-mapped vs Planck 147.09±0.26
+
+# ── Valores RETIRADOS ──────────────────────────────────────────────────
+# NO deben aparecer en ninguna memoria presentados como vigentes. Si
+# memory_sync.py los encuentra SIN una marca de contexto (retirado, viejo,
+# Type-P, coincidencia, superado, previo, sin re-correr…) → DRIFT.
+retired:
+  - {pattern: "5.71 eV",   reason: "m_φ via Σm_ν×H_alg — dimensionalmente inválida"}
+  - {pattern: "5.60 eV",   reason: "m_φ viejo (mismo ansatz retirado)"}
+  - {pattern: "5.602",     reason: "m_φ viejo"}
+  - {pattern: "0.493",     reason: "k_fs viejo (de m_φ=5.6)"}
+  - {pattern: "0.737",     reason: "σ₈_eff = fit de α_WDM a KiDS (no forward)"}
+  - {pattern: "0.702",     reason: "σ₈ IS-ODE fuente Ω_m,dyn — retirada"}
+  - {pattern: "0.725",     reason: "S₈ IS-ODE fuente Ω_m,dyn — retirada"}
+  - {pattern: "72.86",     reason: "H0_local IR vía H_alg — solo coincidencia Type-P"}
+  - {pattern: "73.040",    reason: "H0_local UV vía H_alg — solo coincidencia Type-P"}
+  - {pattern: "8.81 meV",  reason: "M cutoff viejo (normalización ρ_crit anterior)"}
+  - {pattern: "8.82 meV",  reason: "M cutoff viejo"}
+
+# Palabras que, si aparecen en la misma línea que un valor retirado, indican
+# que está citado como historia/coincidencia (NO como vigente) → no es drift.
+context_markers:
+  - retirad
+  - retira
+  - viejo
+  - vieja
+  - Type-P
+  - coincidencia
+  - superad
+  - previo
+  - previa
+  - anterior
+  - antes
+  - figuraba
+  - "fit "
+  - "fiteo"
+  - "era Ω_m,dyn"
+  - "ω_m,dyn"
+  - "sin re-correr"
+  - "sin recorrer"
+  - stale
+  - obsolet
+  - "~~"          # strikethrough markdown = tachado
+  - "≠"
+  - "73.04 ± 1.04"
+  - "73.04±1.04"
+  - "0.737±0.020"
+  - "0.737 ± 0.020"
+  - "Riess 2022"
+
+# Encabezados (## / ###) cuyas secciones son REGISTRO HISTÓRICO, no estado
+# vigente: todo lo que cuelga de ellos se omite (logs de sesión, POA, fases).
+historical_sections:
+  - "Sesión"
+  - "POA"
+  - "Fase 1"
+  - "Fase 2"
+  - "Fase 3"
+  - "Historia"
+  - "Roadmap"
+  - "Resultado Fase"

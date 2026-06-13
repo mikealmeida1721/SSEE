@@ -45,9 +45,9 @@ OMM_MIRA  = 0.3199
 OMB_H2    = 0.02237
 ns_SSEE   = 1 - phi**(-7)
 As_SSEE   = 2.1e-9
-alpha_WDM = 1.6561    # calibrated h/Mpc
+alpha_WDM = 1.243     # h/Mpc, OUTPUT CLASS canónico (P6 forward m_φ=36.95 eV)
 f_phiDM   = 0.5
-k_fs      = 0.493
+k_fs      = 0.659     # h/Mpc, canónico P6 (m_φ=36.95 eV vía DW; era 0.493 con m_φ=5.60 eV)
 
 # ── LCDM Planck 2018 ───────────────────────────────────────────────────────────
 H0_LCDM  = 67.36

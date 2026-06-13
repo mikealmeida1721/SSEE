@@ -1,4 +1,8 @@
 """
+⚠️  PRE-CANÓNICO / INVESTIGACIÓN CERRADA — OP-10 se cerró 2026-06-11 (7 rutas
+    descartadas: F1-F4, OpA, 2c, 2e). Los valores m_φ=5.60 eV usados aquí son
+    la ruta vieja (RETIRADA). Conservado como registro de exploración fallida.
+
 OP-10 Fase 2 — Familia 2: análisis de consistencia jerárquica
 ================================================================
 

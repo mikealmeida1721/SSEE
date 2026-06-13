@@ -7,8 +7,8 @@ Propósito (Camino 2 del OPs Attack Plan):
 
 Inputs estructurales:
   - Two-sector: Ω_CDM = Ω_φDM = 0.160 (P6)
-  - φ-DM mass: m_φ = 5.60 eV (P6 algebraico)
-  - k_fs = 0.493 h/Mpc (P6 derivado de m_φ vía Dodelson-Widrow)
+  - φ-DM mass: m_φ = 36.95 eV (P6 canónico forward: Σm_ν×535.28, cero fiteo)
+  - k_fs = 0.659 h/Mpc (P6 canónico, derivado de m_φ=36.95 vía DW)
   - EFT B-S: α_B = α_M = α_T = 0 (P7) → F_φ/F_N ~ (H/k)² (P8 §4.5)
 
 Predicción a derivar:
@@ -36,8 +36,8 @@ OMEGA_CDM   = OMEGA_M_DYN          # 0.16
 OMEGA_PHIDM = OMEGA_M_CMB - OMEGA_CDM  # 0.16 (la otra mitad)
 
 # Free-streaming
-M_PHI_EV = 5.60                   # P6 algebraico
-K_FS = 0.493                      # h/Mpc, P6 derivado vía DW
+M_PHI_EV = 36.95                  # P6 canónico forward (Σm_ν × 535.28)
+K_FS = 0.659                      # h/Mpc, P6 canónico derivado vía DW de m_φ=36.95
 
 # Cosmología
 RHO_CRIT = 2.775e11 * h**2        # M_sun/Mpc^3 (densidad crítica)

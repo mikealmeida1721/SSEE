@@ -138,7 +138,7 @@ H0_GeV = H0_SI * 6.582e-25   # s⁻¹ × ħ (GeV·s) → GeV
 rho_crit_nat = 3 * H0_GeV**2 * M_Pl_GeV**2 / (8*np.pi)      # GeV⁴
 M_from_rhocrit = rho_crit_nat**(1/4)                          # Paper 7 convention
 
-m_phi_eV  = 5.60          # eV
+m_phi_eV  = 36.95         # eV — canónico P6 forward (era 5.60 eV, fórmula retirada)
 m_phi_GeV = m_phi_eV * 1e-9
 
 # Geometric mean of M_Pl and m_phi
@@ -153,7 +153,7 @@ M_sq  = np.sqrt(H0_GeV * M_Pl_GeV)    # sqrt(H₀ × M_Pl) — crossover scale
 
 candidates = {
     "ρ_crit^(1/4)  [Paper 7 norm]"    : M_from_rhocrit,
-    "m_φ = 5.60 eV [φ-DM mass]"       : m_phi_GeV,
+    "m_φ = 36.95 eV [φ-DM mass, canónico P6]": m_phi_GeV,
     "√(M_Pl × m_φ) [geom. mean]"      : M_geomean_Pl_mphi,
     "√(M_Pl × ρ_crit^¼) [geom. mean]": M_geomean_Pl_rho,
     "√(H₀ × M_Pl) [crossover]"        : M_sq,

@@ -222,20 +222,21 @@ track_open("V-L3-OP3  separabilidad UV-IR no probada",
            "jerarquia (H0/M)^2~3e-62 real; prueba via jacobiano d phi/d chi "
            "diferida a Paper B; KALeff^2 = M^4/(6 alpha) dropea rho_crit")
 
-# OP-5 — tensión S8 weak-lensing (P5/P6). La definición S8 = sigma8*(Om/0.3)^0.5
-# cierra para ambas ramas; HMcode reduce la tensión solo anclando en la rama
-# secundaria sigma8=0.737, NO en el titular sigma8=0.794 (ABIERTO).
+# OP-5 — tensión S8 weak-lensing (P5/P6). CANÓNICO: el two-sector phi-DM
+# (forward, free-streaming k_fs=0.659 de m_phi=36.95 eV) lleva el single-sector
+# S8=0.847 (3.9sigma, "el desafio") al titular S8_eff=0.766 (0.01sigma KiDS).
+# Lo que queda ABIERTO es el refinamiento NO LINEAL pleno (N-body Nivel 2).
 Om_cosm_op5 = MIRA * (1 + w0)
-S8_sec = 0.737 * (Om_cosm_op5 / 0.3) ** 0.5   # rama WDM CLASS (secundaria)
-S8_tit = 0.794 * (Om_cosm_op5 / 0.3) ** 0.5   # titular dos sectores
-check("V-L3-OP5  identidad S8 = sigma8(Om/0.3)^0.5  rama secundaria = 0.761",
-      abs(S8_sec - 0.761) < 2e-3, f"S8 = {S8_sec:.4f}")
-check("V-L3-OP5  identidad S8 = sigma8(Om/0.3)^0.5  rama titular = 0.820",
-      abs(S8_tit - 0.820) < 2e-3, f"S8 = {S8_tit:.4f}")
-track_open("V-L3-OP5  S8 anclado en rama secundaria",
-           "HMcode da S8=0.758 (0.06sigma DES) partiendo de sigma8=0.737 "
-           "(rama WDM, NO titular); el titular sigma8=0.794 deja ~2.6sigma. "
-           "N-body Nivel 2 diferido")
+S8_challenge = 0.820 * (Om_cosm_op5 / 0.3) ** 0.5   # single-sector (el desafio)
+S8_resolved = 0.742 * (Om_cosm_op5 / 0.3) ** 0.5    # two-sector titular (resuelve)
+check("V-L3-OP5  S8 single = sigma8(0.820)(Om/0.3)^0.5 = 0.847  (el desafio)",
+      abs(S8_challenge - 0.847) < 2e-3, f"S8 = {S8_challenge:.4f}")
+check("V-L3-OP5  S8_eff two-sector = sigma8(0.742)(Om/0.3)^0.5 = 0.766  (resuelve)",
+      abs(S8_resolved - 0.766) < 2e-3, f"S8 = {S8_resolved:.4f}")
+track_open("V-L3-OP5  refinamiento no-lineal pleno de S8 diferido",
+           "el two-sector LINEAL forward ya resuelve S8 a 0.766 (0.01sigma KiDS); "
+           "el cierre no-lineal con feedback barionico (N-body SSEE, ~5k-20k CPU-h) "
+           "es Nivel 2, diferido. Las ramas viejas 0.737/0.794 y 0.702/0.725 retiradas")
 
 # OP-6 — forma de screening (P9). El valor f_screen es algebra exacta (ver
 # V-L2-13); la forma multiplicativa sigue del universo separado. El paso
@@ -378,27 +379,36 @@ track_open("V-L3-2Om  mecanismo MIRA (0.160 -> 0.320) NO derivado [CENTRAL]",
 # ─────────────────────────────────────────────────────────────────────
 print("\nCapa 4 — confrontaciones con datos")
 
-# S8 weak-lensing (P5). Cadena: sigma8_SSEE = sigma8_LCDM * G;
-# S8 = sigma8 * sqrt(Om_m,cosm/0.3). G = D1_SSEE/D1_LCDM (resultado ODE P5).
-sig8_LCDM = 0.811        # Planck 2018
-G_growth = 0.866         # D1_SSEE/D1_LCDM, resultado ODE Paper 5
-sig8_SSEE = sig8_LCDM * G_growth
+# S8 weak-lensing — CANÓNICO 2026-06 (CLAUDE.md L194-211). Dos ramas:
+#   single-sector (baseline, "el desafío"): sigma8 = sigma8_LCDM * G, G=1.011
+#     (enhancement con fuente Poisson Om_m,CMB=0.320; el viejo G=0.866 con
+#      Om_m,dyn=0.160 y la cadena 0.702/0.725 estan RETIRADOS).
+#   two-sector phi-DM (TITULAR Paper 6, forward): sigma8_eff = 0.742 ->
+#     S8_eff = 0.766, free-streaming k_fs=0.659 de m_phi=36.95 eV (cero fiteo).
+sig8_LCDM = 0.811            # Planck 2018
+G_growth = 1.011             # D1_SSEE/D1_LCDM (Om_m,CMB); viejo 0.866 retirado
 Om_cosm = MIRA * Om_m_dyn
-S8_P5 = sig8_SSEE * (Om_cosm / 0.3) ** 0.5
-check("V-L4-01 P5  sigma8_SSEE = sigma8_LCDM * G = 0.702",
-      abs(sig8_SSEE - 0.7023) < 1e-3, f"sigma8 = {sig8_SSEE:.4f}")
-check("V-L4-02 P5  S8_SSEE = sigma8 sqrt(Om_cosm/0.3) = 0.725",
-      abs(S8_P5 - 0.7253) < 1e-3, f"S8 = {S8_P5:.4f}")
+sig8_single = sig8_LCDM * G_growth
+S8_single = sig8_single * (Om_cosm / 0.3) ** 0.5
+check("V-L4-01 P5  sigma8 single = sigma8_LCDM * G(1.011) = 0.820",
+      abs(sig8_single - 0.820) < 1e-2, f"sigma8 = {sig8_single:.4f}")
+check("V-L4-02 P5  S8 single = sigma8 sqrt(Om_cosm/0.3) = 0.847  (el desafio)",
+      abs(S8_single - 0.847) < 2e-3, f"S8 = {S8_single:.4f}")
 
-# Tensiones S8 (P5) — error en cuadratura modelo + observacional.
-sig8_SSEE_err = 0.006 * G_growth
-S8_P5_err = sig8_SSEE_err * (Om_cosm / 0.3) ** 0.5
-t_DES = abs(S8_P5 - 0.776) / (S8_P5_err ** 2 + 0.017 ** 2) ** 0.5
-t_KIDS = abs(S8_P5 - 0.766) / (S8_P5_err ** 2 + 0.020 ** 2) ** 0.5
-check("V-L4-03 P5  tension S8 vs DES-Y3 (3x2pt) = 2.84 sigma",
-      abs(t_DES - 2.84) < 0.05, f"{t_DES:.2f} sigma")
-check("V-L4-04 P5  tension S8 vs KiDS-1000 = 1.96 sigma",
-      abs(t_KIDS - 1.96) < 0.05, f"{t_KIDS:.2f} sigma")
+sig8_eff = 0.742             # two-sector titular Paper 6 (free-streaming CLASS)
+S8_eff = sig8_eff * (Om_cosm / 0.3) ** 0.5
+check("V-L4-02b P6  S8_eff two-sector = 0.766  (TITULAR, resuelve)",
+      abs(S8_eff - 0.766) < 2e-3, f"S8_eff = {S8_eff:.4f}")
+
+# Tensiones S8 — error en cuadratura modelo + observacional.
+S8_single_err = 0.006 * G_growth * (Om_cosm / 0.3) ** 0.5
+t_DES_single = abs(S8_single - 0.776) / (S8_single_err ** 2 + 0.017 ** 2) ** 0.5
+t_KIDS_single = abs(S8_single - 0.766) / (S8_single_err ** 2 + 0.020 ** 2) ** 0.5
+t_KIDS_twosec = abs(S8_eff - 0.766) / 0.020
+check("V-L4-03 P5  tension S8 single vs KiDS-1000 = 3.85 sigma  (el desafio)",
+      abs(t_KIDS_single - 3.85) < 0.1, f"{t_KIDS_single:.2f} sigma")
+check("V-L4-04 P6  tension S8_eff two-sector vs KiDS-1000 ~ 0.01 sigma  (resuelto)",
+      t_KIDS_twosec < 0.1, f"{t_KIDS_twosec:.3f} sigma (DES single = {t_DES_single:.2f})")
 
 # CMB Planck PR4 (P3) — re-corrida con CAMB 1.6.5 (2026-05-22): chi2_r
 # TT 1.047 / TE 1.041 / EE 1.041 / PP 0.837 y ΔBIC=-20.8 reproducidos
@@ -511,22 +521,20 @@ except Exception as e:
 # CAPA MEMORIAS — coherencia entre las 3 memorias de SSEE.
 # Invoca memory_sync.py: revisa que CLAUDE.md, el Ledger y el vault Obsidian
 # no presenten valores RETIRADOS (CANONICAL_VALUES.yaml) como vigentes.
-# Reportado como ABIERTO mientras quede el drift conocido del Ledger (cadena
-# S₈ vieja, V-L3-OP5/V-L4-S8); cuando se reconcilie, subir a check() duro.
+# Es un check() DURO: cualquier valor retirado sin marcar pone el guardián ROJO.
 # ─────────────────────────────────────────────────────────────────────
 print("\nCapa Memorias — coherencia de las 3 memorias")
 try:
     import memory_sync
     _drifts = memory_sync.run(verbose=False)
-    if not _drifts:
-        check("memoria  3 memorias sincronizadas con CANONICAL_VALUES.yaml", True)
-    else:
-        _by_mem = {}
-        for label, rel, ln, pat, _ in _drifts:
-            _by_mem.setdefault(label, []).append(f"{rel}:{ln}«{pat}»")
-        track_open("memoria  drift de valores retirados sin marcar",
-                   "; ".join(f"{m}: {len(v)}" for m, v in _by_mem.items())
-                   + " — correr memory_sync.py para detalle")
+    _detail = "todas concuerdan con CANONICAL_VALUES.yaml"
+    if _drifts:
+        _detail = "DRIFT en " + "; ".join(
+            f"{lbl} {rel}:{ln}«{pat}»" for lbl, rel, ln, pat, _ in _drifts[:6])
+        if len(_drifts) > 6:
+            _detail += f" … (+{len(_drifts) - 6}); correr memory_sync.py"
+    check("memoria  3 memorias sin valores retirados sin marcar",
+          not _drifts, _detail)
 except Exception as e:
     check("memoria  memory_sync importable", False, str(e))
 

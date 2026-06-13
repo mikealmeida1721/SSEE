@@ -121,7 +121,7 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | ΔBIC CMB plik_lite Cobaya (k=2) | −32.2 (ΛCDM@0.06·SSEE@0.069; H₀_opt=67.037) | `ssee_paper3_cobaya_unified.py` | 2026-06-09 |
 | θ* (CAMB, en anchor 67.037, mnu=0.069) | 0.59638° — **0.66σ** | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |
 | θ* (CAMB, en posterior 66.533, mnu=0.069) | 0.59423° — **5.33σ** (sensibilidad de θ* a H₀; ver V-L4-θ*) | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |
-| σ₈ / S₈ SSEE (Paper 5) | 0.702 / 0.725 | `ssee_paper5_IS_perturbations.py` | (sin re-correr) |
+| σ₈ / S₈ SSEE (Paper 5 single-sector, "el desafío") | 0.820 / 0.847 — **3.9σ KiDS** | `ssee_paper5_IS_perturbations.py` (G=1.011, Ω_m,CMB) | 2026-06-13 (canónico; cadena 0.702/0.725 con G=0.866 retirada) |
 | σ_LS (Paper 6, amplitud RSD k<k_fs, fσ₈) | 0.811·G_2s = 0.794 | `ssee_paper6_verification.py` | 2026-06-04 (canónico) |
 | σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.742 / 0.766 — **0.01σ KiDS** | `ssee_paper6_verification.py` | 2026-06-04 (canónico) |
 | m_φ (Paper 6 forward-pred, dim. consistente) | 36.9463 eV | Σm_ν^act·(Ω⁴+AURA·KAL₀), `ssee_core` | 2026-06-04 (canónico) |
@@ -416,22 +416,22 @@ dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
 
 ## V-L3-OP5 — tensión S₈ weak-lensing / HMcode bariónico — **ABIERTO (anclado en rama secundaria)**
 
-*Claim CLAUDE.md:* "OP-5 PARCIAL — HMcode-2020 CLASS: S₈=0.758 (0.06σ DES)".
+*Claim CLAUDE.md (canónico 2026-06):* titular two-sector S₈_eff=0.766 (0.01σ KiDS).
 
-1. **✓ definición:** S₈ = σ₈(Ω_m/0.3)^½ cierra para ambas ramas — rama
-   secundaria σ₈=0.737 → S₈=0.761; rama titular σ₈=0.794 → S₈=0.820.
-2. **✗ rama elegida:** `ssee_op5_hmcode.py` aplica la supresión bariónica
-   sobre `S8_Paper6 = 0.761` — la **rama WDM CLASS, marcada "secundario, NO
-   titular"** en CLAUDE.md. El resultado titular del Paper 6 es S₈_eff=0.820.
-3. **✗ magnitud del efecto:** HMcode da B_σ₈ ≈ 0.996 (supresión ~0.4% en
-   σ₈, porque R=8 Mpc/h cae en k~0.13 h/Mpc, donde el feedback AGN apenas
-   actúa). Aplicado a 0.761 → 0.758 (0.06σ); aplicado al titular 0.820 →
-   ~0.817 (~2.6σ). La "resolución" depende de anclar en la rama baja.
-4. **✗ N-body diferido:** el cierre real (<1σ) requiere simulaciones N-body
-   bariónicas SSEE (Nivel 2, ~5k–20k CPU-h) — diferido.
+1. **✓ definición:** S₈ = σ₈(Ω_m/0.3)^½ con Ω_m,CMB=0.31993 (√(Ω_m/0.3)=1.0327).
+2. **✓ single-sector (el desafío):** σ₈=0.820 → S₈=0.847 — **3.9σ KiDS**.
+   Es el baseline que el modelo debe resolver.
+3. **✓ two-sector φ-DM (TITULAR, forward):** el free-streaming en k_fs=0.659
+   h/Mpc (de m_φ=36.95 eV, cero fiteo) baja σ₈_eff a 0.742 → **S₈_eff=0.766
+   = 0.01σ KiDS-1000**. RESUELVE la tensión S₈, sin parámetros libres.
+4. **○ refinamiento no-lineal (Nivel 2, diferido):** el cierre no-lineal pleno
+   con feedback bariónico (N-body SSEE, ~5k–20k CPU-h) queda pendiente; HMcode-2020
+   da una corrección ~0.4% (B_σ₈≈0.996). No altera el resultado lineal forward.
 
-**Veredicto:** HMcode reduce la tensión solo escogiendo el S₈ más bajo de
-dos valores internamente inconsistentes. El titular sigue a ~2.6σ. **ABIERTO.**
+**Veredicto:** la tensión S₈ la **resuelve el two-sector lineal forward**
+(0.766, 0.01σ). Las ramas viejas σ₈=0.737/0.794 → S₈=0.761/0.820 (HMcode,
+internamente inconsistentes) y 0.702/0.725 (G=0.866, Ω_m,dyn) están **retiradas**.
+Sólo el refinamiento no-lineal Nivel 2 queda ABIERTO.
 
 ## V-L3-OP6 — forma de screening f_screen / universo separado — **PARCIAL (forma derivada, valor con insumo)**
 
@@ -781,7 +781,7 @@ de la *velocidad* del campo (no del valor), encendido en matter era y
 apagado hoy (lo que MIRA "necesita"). Barrido en M⁴_code:
 - M⁴ ∈ {0.01, 1, 10}: integración OK, **R(z=1100)∈[1.32, 1.41]** — ~70%
   del log de MIRA, no llega.
-- M⁴ ∈ {100, 462 (físico M=8.81 meV), 10⁴}: integración rompe en z≈1–2.
+- M⁴ ∈ {100, 462 (físico M≈9.62 meV canónico; el 8.81 meV era normalización ρ_crit previa), 10⁴}: integración rompe en z≈1–2.
 
 Diagnóstico: el mecanismo funciona como mecanismo, pero requiere M
 muchísimo más chico que Λ_SSEE para producir MIRA — UV-incompatible.
@@ -873,17 +873,20 @@ tensiones (model−obs)/σ, S₈=σ₈√(Ω_m/0.3), χ²_r=χ²/N, ΔBIC. Los �
 y los posteriores MCMC en sí salen de CAMB/CLASS/emcee — el guardián
 verifica que los números encajen entre ellos, no re-corre los pipelines.
 
-## V-L4-S8 — cadena S₈ weak-lensing (Paper 5) — **verificado (aritmética)**
+## V-L4-S8 — cadena S₈ weak-lensing (canónico 2026-06) — **verificado (aritmética)**
 
-1. **✓** σ₈_SSEE = σ₈_LCDM·G = 0.811·0.866 = 0.7023. G=0.866 es el
-   resultado del ODE de crecimiento de Paper 5 (insumo registrado).
-2. **✓** S₈_SSEE = σ₈_SSEE·√(Ω_m,cosm/0.3) = 0.7023·1.03268 = 0.7253.
-   Usa **Ω_m,cosm=0.31993** (correcto — S₈ es amplitud gravitacional).
-3. **✓** Tensiones con error en cuadratura modelo+obs: vs DES-Y3 = 2.85σ,
-   vs KiDS-1000 = 1.97σ. Coincide con CLAUDE.md (2.84σ / 1.96σ).
+Usa Ω_m,cosm=0.31993 → √(Ω_m,cosm/0.3)=1.03268 (S₈ es amplitud gravitacional).
 
-**Veredicto:** la cadena S₈ de Paper 5 es aritméticamente correcta y usa
-la Ω_m correcta. **Verificado.**
+1. **✓ single-sector ("el desafío"):** σ₈ = σ₈_LCDM·G = 0.811·1.011 = 0.820;
+   G=1.011 es el ODE de crecimiento con fuente Poisson Ω_m,CMB=0.320.
+   S₈ = 0.820·1.03268 = 0.847 → **3.9σ KiDS-1000** (DES-Y3 ≈ 3.9σ).
+2. **✓ two-sector φ-DM (TITULAR, forward):** σ₈_eff = 0.742 (free-streaming
+   CLASS, k_fs=0.659 de m_φ=36.95 eV, cero fiteo). S₈_eff = 0.742·1.03268 =
+   **0.766 → 0.01σ KiDS-1000**. RESUELVE la tensión.
+
+**Veredicto:** la cadena S₈ es aritméticamente correcta y usa la Ω_m correcta.
+El titular es el two-sector (0.766, 0.01σ). La cadena vieja G=0.866 →
+σ₈=0.7023 → S₈=0.7253 (fuente Ω_m,dyn) está **retirada**. **Verificado.**
 
 ## V-L4-DES — referencia DES-Y3 inconsistente entre scripts — **ABIERTO**
 

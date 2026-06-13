@@ -67,3 +67,7 @@ Thumbs.db
 
 # PDFs experimentales locales (no van al repo)
 archive/experimental/
+
+# Interno — no va al repo público
+CLAUDE.md
+zenodo_v7_upload/

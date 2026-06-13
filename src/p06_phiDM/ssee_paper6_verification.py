@@ -134,22 +134,22 @@ sol_lcdm      = solve_ivp(growth_lcdm,          [lna_pts[0], 0.0], IC,
 
 # Factores de crecimiento (ratio de D₁ brutos con IC idénticas)
 G_2s    = sol_twosector.y[0][-1] / sol_lcdm.y[0][-1]   # ≈ 0.979
-G_single= sol_single.y[0][-1]    / sol_lcdm.y[0][-1]   # ≈ 0.866 (Paper 5)
+G_single= sol_single.y[0][-1]    / sol_lcdm.y[0][-1]   # ≈ 0.866 (minimal-CDM Ω_m=0.160; NO es el single-sector canónico)
 
 # ── Amplitud titular: free-streaming CLASS (NO growth-factor × ΛCDM) ──────────
 #   σ_eff se lee DIRECTAMENTE de la corrida dos-sectores CLASS con la
 #   temperatura de relic T_φ propia de la partícula (m_φ=36.95 eV).
 #   Ref manuscript §fσ₈ L563-567 y ssee_paper6_canonical_particle.py.
 sig8_eff    = 0.7419                  # free-streaming CLASS canónico (TITULAR)
-sig8_base   = sig8_Planck * G_single  # 0.702 (Paper 5 single-sector)
-sig8_growth = sig8_Planck * G_2s      # 0.794 (growth-factor, cross-check secundario)
+sig8_base   = sig8_Planck * G_single  # 0.702 (minimal-CDM Ω_m=0.160; NO canónico — Paper 5 usa Ω_m=0.31993→σ₈=0.820, fσ₈ 0.74σ)
+sig8_growth = sig8_Planck * G_2s      # 0.794 (growth-factor Ω_m=0.320, amplitud RSD canónica)
 S8_eff      = sig8_eff * np.sqrt(Om_total / 0.3)   # 0.766
 
 print(f"\n  Factores de crecimiento (IC idénticas, ratio D₁):")
-print(f"    G_single (Paper 5, Ω_m=0.160): {G_single:.4f}")
+print(f"    G_single (minimal-CDM Ω_m=0.160, NO canónico): {G_single:.4f}")
 print(f"    G_2s     (Paper 6, Ω_m=0.320): {G_2s:.4f}  (sólo forma de f(z))")
 print(f"\n  σ₈ resultantes:")
-print(f"    σ₈_base   (Paper 5 single):     {sig8_base:.4f}   (= 0.811 × {G_single:.4f})")
+print(f"    σ₈_base   (minimal-CDM Ω_m=0.160): {sig8_base:.4f}   (= 0.811 × {G_single:.4f}; NO canónico)")
 print(f"    σ₈_eff    (Paper 6 TITULAR):    {sig8_eff:.4f}   (free-streaming CLASS)")
 print(f"    σ₈_growth (cross-check 2-sec):  {sig8_growth:.4f}   (= 0.811 × {G_2s:.4f})")
 print(f"    S₈_eff    (Paper 6 TITULAR):    {S8_eff:.4f}   (0.01σ KiDS; Ω_total={Om_total:.4f})")
@@ -242,7 +242,7 @@ ax.fill_between(z_smooth, np.array(fs8_2s)*0.92, np.array(fs8_2s)*1.08,
 ax.plot(z_smooth, fs8_2s,   'b-',  lw=2.5,
         label=rf'SSEE dos-sectores, $G_{{2s}}={G_2s:.3f}$ ($\bar\sigma={mt_2s:.2f}$)')
 ax.plot(z_smooth, fs8_base, 'r--', lw=1.8,
-        label=rf'SSEE base Paper 5, $G={G_single:.3f}$ ($\bar\sigma={mt_base:.2f}$)')
+        label=rf'SSEE minimal-CDM ($\Omega_m=0.160$, no canónico), $G={G_single:.3f}$ ($\bar\sigma={mt_base:.2f}$)')
 ax.plot(z_smooth, fs8_lcdm, 'g:',  lw=1.8,
         label=rf'$\Lambda$CDM ($\bar\sigma={mt_lcdm:.2f}$)')
 ax.errorbar(Z_RSD, fsig8_obs, yerr=fsig8_err, fmt='ko', ms=7,

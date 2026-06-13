@@ -221,12 +221,17 @@ Todo objeto astrofísico tiene r_km ≪ 1 kpc → quinta fuerza DM activa a esca
 
 **Location:** Paper 5, Table 3; Paper 6, Table 2 — **revisado 2026-05-16**
 
-**Clarification — what IS and IS NOT resolved:**
-Paper 6 (two-sector φ-DM) resolves the **fσ₈ growth-rate** tension from 2.56σ → 0.50σ
-(mean over 6 RSD surveys). That problem is closed. The residual open problem is different:
+**Clarification — what IS and IS NOT resolved (canónico 2026-06-13, Ω_m=0.31993):**
+- **fσ₈ (growth-rate):** NO es donde el φ-DM ayuda. El single-sector canónico (Paper 5,
+  Ω_m=0.31993) ya da media 0.74σ; el two-sector da 0.76σ — ambos **empatan ΛCDM**
+  (0.73σ). A escalas RSD (k≪k_fs) el φ-DM agrupa como frío. (El viejo "2.56σ→0.50σ"
+  usaba datos fσ₈ erróneos y/o el baseline no-canónico Ω_m=0.160 — retirado.)
+- **S₈ (weak-lensing) — el desafío REAL:** single-sector S₈=0.847 (3.9σ KiDS). El
+  two-sector free-streaming lo baja a **S₈_eff=0.766 (0.01σ KiDS) — RESUELVE** a nivel
+  lineal/forward (m_φ=36.95 eV, cero fiteo; el viejo 0.761 era la rama WDM fiteada).
 
-**Statement:** The **S₈ = σ₈(Ω_m/0.3)^0.5 weak-lensing amplitude** tiene como baseline
-S₈_eff = 0.761 (Paper 6), que era 2.29σ por debajo de DES Y3 y ~3σ de KiDS-1000.
+**Residual abierto:** solo el refinamiento NO LINEAL pleno (N-body con feedback bariónico,
+Nivel 2). El cierre lineal/forward de S₈ ya está hecho (0.766).
 
 **Nivel 1 — HMcode-2020 baryonic feedback (CLASS, laptop) — COMPLETADO 2026-05-16:**
 

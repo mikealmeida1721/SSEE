@@ -28,11 +28,12 @@ CANONICAL = {
     "G_ssee":      1.011,  # Paper 5 con Ω_m,cosm=0.320 (leve enhancement)
     "sigma8_p5":   0.820,  # Paper 5 single-sector (Ω_m,cosm=0.320)
     "S8_p5":       0.847,  # Paper 5 S₈ (3.9σ KiDS/DES — lensing challenge)
-    "sigma8_p6":   0.794,  # Paper 6 two-sector (G_2s=0.979 × 0.811)
-    "S8_p6":       0.820,  # Paper 6 S₈ two-sector (2.6σ KiDS — reducción parcial)
+    "sigma8_p6":   0.742,  # Paper 6 two-sector TITULAR lensing (free-streaming CLASS, forward)
+    "S8_p6":       0.766,  # Paper 6 S₈ two-sector TITULAR (0.01σ KiDS — RESUELVE)
+    "sigma8_p6_rsd": 0.794,# amplitud RSD/fσ₈ (k<k_fs, agrupa frío); NO es la lensing
     "fsig8_p5":    0.74,   # Paper 5 tensión media fσ₈ (6 surveys) — ≈ ΛCDM 0.73σ
     "fsig8_p6":    0.76,   # Paper 6 tensión media fσ₈ two-sector
-    "sigma8_wdm":  0.737,  # Paper 6 rama WDM CLASS (top-hat directo)
+    "sigma8_wdm":  0.737,  # RETIRADO — era fit de alpha_WDM a KiDS (no forward)
 }
 
 # Patrones a buscar en archivos

@@ -1,6 +1,17 @@
-# Mapa de Cambios — Reframe MIRA→π/φ (factor materia) + H_alg global
+# Mapa de Cambios — Reframe MIRA→π/φ→ω_m-directo (factor materia) + H_alg global
 
-**Estado:** EN APLICACIÓN 1-por-1 (Mike adoptó 2026-06-17).
+> [!aviso] REFINADO 2026-06-18/19 — π/φ SUPERADO POR ω_m-DIRECTO (OP-8 DISUELTO)
+> El factor π/φ (0.31076) de abajo fue **superado**: ya NO hay factor materia.
+> Canónico actual: **Ω_m,CMB = ω_m/h² = 0.30889** (ω_c=KAL₀·ω_b·n_s, forward, sin factor).
+> Partícula: **SOLAR²·KRYSTOS = 41.02 eV** (no 42.47/36.95). CMB χ²=1005.50, ΔBIC=−23.93.
+> **HECHO:** código+CANONICAL+guardián(VERDE 119)+P6(25pp)+P3(24pp, tesis MIRA→ω_m-directo)
+> +memorias+vault(5)+11 papers (números partícula)+OPEN_PROBLEMS(OP-17 adoptado). commit ea07152.
+> **PENDIENTE:** P5/Unified reframe MIRA→ω_m; VERIFICATION_LEDGER (37 viejos)+AUDIT_V7(11)+
+> MEMORY_PROTOCOL(2); per-spectrum CAMB P3; MEMORY.md+MOCs vault.
+> Lo de abajo es el registro histórico de la fase π/φ (intermedia). Ver
+> [[project_halg_pifi_investigation]] (refinado a ω_m-directo).
+
+**Estado:** SUPERADO por ω_m-directo (ver banner). Historia fase π/φ (Mike adoptó 2026-06-17):
 - ✅ **Cambio #1 APLICADO — capa código + 3 memorias** (Ω_m,CMB π/φ=0.31076 + H global=H_alg=67.962):
   · código: `ssee_core.py` (PI_OVER_PHI, OMEGA_M_CMB, H0_GLOBAL; MIRA/AURA entidades intactas)
   · guardián: `ssee_verify.py` (V-L2-05 canónico + V-L2-05b identidad MIRA histórica)

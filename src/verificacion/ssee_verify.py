@@ -102,7 +102,7 @@ check("L1 identidad  w0 = -Tr/Mv = -0.840",
 check("L1 identidad  Om_m,dyn = 1 + w0 = 0.160",
       abs((1 + w0) - 0.1600502287) < 1e-9)
 # Identidad histórica MIRA (MIRA persiste como entidad = AURA/2; valor intacto).
-check("L1 identidad  MIRA * Om_m,dyn = 0.31993 (identidad histórica)",
+check("L1 identidad  MIRA * Om_m,dyn = 0.31993 (RETIRADO; solo aritmética, OP-8 disuelto)",
       abs(MIRA * (1 + w0) - 0.3199281880) < 1e-9)
 # Identidad histórica π/φ (factor-materia del reframe 2026-06-17, SUPERADO).
 check("L1 histórico  (pi/phi) * Om_m,dyn = 0.31076 (factor π/φ — superado)",
@@ -134,8 +134,8 @@ L2 = {
     "V-L2-05 Om_m,CMB":  (_omm / _h ** 2,                 0.3088931986),
     "V-L2-05b ω_c":      (_omc,                           0.1195144084),
     "V-L2-05c ω_m":      (_omm,                           0.1426732002),
-    "V-L2-05d π/φ·dyn":  ((pi / phi) * Om_m_dyn,          0.3107552907),
-    "V-L2-05e MIRA·dyn": (MIRA * Om_m_dyn,                0.3199281880),
+    "V-L2-05d π/φ·dyn [RETIRADO]":  ((pi / phi) * Om_m_dyn,  0.3107552907),
+    "V-L2-05e MIRA·dyn [RETIRADO]": (MIRA * Om_m_dyn,        0.3199281880),
     "V-L2-06 H0^alg":    (3 * Omega ** 2,                 67.9621373234),
     "V-L2-07 n_s":       (1 - phi ** -7,                  0.9655581463),
     "V-L2-08 alpha_K":   (alpha_K,                        0.4033024589),
@@ -400,20 +400,19 @@ track_open("V-L3-mira  retencion conformal beta_c=AURA NO reproduce MIRA",
            "para el '0.320' tras cs2, Poisson-mu y disformal. MIRA sin "
            "derivacion en el marco vigente por los 4 mecanismos naturales")
 
-# dos-Ω_m — PROBLEMA CENTRAL ABIERTO. El algebra es exacta (Om_m,dyn=1+w0
-# derivado; Om_m,cosm=MIRA*Om_m,dyn) pero la REGLA fisica de uso no esta
-# derivada: no hay mecanismo para MIRA ni funcion Om_m(z) de transicion.
-check("V-L3-2Om  Om_m,dyn != Om_m,cosm  (son cantidades distintas)",
-      abs(Om_m_dyn - MIRA * Om_m_dyn) > 0.15)
-check("V-L3-2Om  relacion exacta Om_m,cosm = MIRA * Om_m,dyn",
-      abs(MIRA * Om_m_dyn - 0.3199281880) < 1e-9)
-track_open("V-L3-2Om  mecanismo MIRA (0.160 -> 0.320) NO derivado [CENTRAL]",
-           "0.160=1+w0 es derivado; MIRA es hipotesis auxiliar (ssee_core L41 "
-           "'no derivada'). NO hay regla derivada de por que Om_m,cosm va en "
-           "E(z), ni funcion Om_m(z) de transicion CMB<->BAO. 0.320 en (1+z)^3 "
-           "es fenomenologicamente materia oscura -- choca con el postulado "
-           "'sin materia oscura, solo geometria y viscosidad'. Es el problema "
-           "central del modelo; r_d/theta*/H0 son sintomas de esta brecha")
+# dos-Ω_m — OP-8 DISUELTO (reframe ω_m-directo 2026-06-18). Ya NO hay factor
+# materia: Om_m,dyn=1+w0=0.160 (DESI) y Om_m,CMB=ω_m/h²=0.30889 (ω_c=KAL0·ω_b·n_s)
+# son DOS predicciones independientes, no ligadas por MIRA ni π/φ.
+check("V-L3-2Om  Om_m,dyn != Om_m,CMB  (dos predicciones independientes)",
+      abs(Om_m_dyn - _omm / _h ** 2) > 0.12)
+check("V-L3-2Om  Om_m,CMB = ω_m/h² (forward, sin factor) = 0.30889",
+      abs(_omm / _h ** 2 - 0.3088931986) < 1e-6)
+track_open("V-L3-2Om  OP-8 DISUELTO: residuo = ω_b (OP-1) e identidad ω_c",
+           "ya NO hay factor materia que derivar (era el problema central). "
+           "Om_m,CMB descansa ahora en que ω_b=(π−φ)/(3Ω²) (OP-1) y la identidad "
+           "forward ω_c=KAL0·ω_b·n_s (0.41σ Planck) sean correctos -- no es perilla "
+           "nueva. Las relaciones viejas MIRA·dyn=0.31993 y π/φ·dyn=0.31076 quedan "
+           "como aritmetica RETIRADA (cross-checks historicos V-L2-05d/e)")
 
 # ─────────────────────────────────────────────────────────────────────
 # CAPA 4 — Confrontaciones con datos

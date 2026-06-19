@@ -47,14 +47,38 @@ pasa, se aplica este mismo orden y lo viejo se conserva como prueba del esfuerzo
 
 ---
 
+## Contabilidad automática de propagación (el "dónde aparece cada canónico")
+
+El cambio de un canónico se propaga de forma **sistemática**, no como texto plano.
+La regla es: **DETECTAR todas las apariciones, recomputar/editar con cuidado cada una,
+y verificar que ninguna quedó vieja** — nunca un buscar-reemplazar a ciegas (eso produce
+el «1+1=3»: p. ej. un `sed 0.320→0.309` corrompe `0.3201→0.3091` y deja ecuaciones falsas
+como `0.1601×1.9989=0.3089`).
+
+**Cómo funciona la contabilidad:**
+1. Al cambiar un valor en `CANONICAL_VALUES.yaml`, su valor viejo va a `retired:`
+   (con un **patrón distintivo** — con unidad si el número suelto colisiona, p. ej.
+   `0.659\,h` para no chocar con `wₐ=−0.659`).
+2. `memory_sync.py` lee `retired:` y escanea **LEDGER + CLAUDE + `manuscript/*.tex` + vault**.
+   Una corrida lista **cada lugar** (archivo:línea) donde un valor retirado quedó como
+   vigente. Líneas con marca de contexto (`retired`, `superseded`, `earlier`, `superad`,
+   `~~`, sección histórica…) se omiten — son historia legítima, no drift.
+3. Se limpian en el **orden** de arriba (fuente → LEDGER → memorias → papers → vault).
+4. **`memory_sync` VERDE = propagación completa.** Ese es el criterio de "no quedó número viejo".
+
+Así, cambiar la fuente principal hace que el sistema **señale solo** dónde recomputar —
+la propagación es sistemática y verificable de punta a punta.
+
+---
+
 ## Cómo se revisa (rápido y barato)
 
 ```bash
 # ¿La física + memorias + procedencia + manuscritos + archivo siguen íntegros?
 .venv/bin/python3 src/verificacion/ssee_verify.py          # el guardián (una corrida, todas las capas)
 
-# ¿Las 3 memorias concuerdan con CANONICAL_VALUES.yaml?
-.venv/bin/python3 src/verificacion/memory_sync.py          # las 3
+# ¿Las 3 memorias Y los papers concuerdan con CANONICAL_VALUES.yaml?
+.venv/bin/python3 src/verificacion/memory_sync.py          # LEDGER + CLAUDE + manuscript/*.tex + vault
 
 # ¿El guardián mismo sigue detectando? (correr si TOCAS el guardián)
 .venv/bin/python3 src/verificacion/test_guardian.py        # el vigilante vigilado

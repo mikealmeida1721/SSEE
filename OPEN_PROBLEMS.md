@@ -1106,6 +1106,43 @@ These problems are documented here rather than concealed because scientific inte
 requires pre-registration of known limitations. Referees and collaborators should be
 directed to this document when evaluating the strength of the SSEE predictions.
 
+## OP-17 — Adoptar la partícula canónica $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ ($m_\phi=41.02$ eV, $S_8=0.00\sigma$) — DIFERIDO (implementación)
+
+**Status:** decisión TOMADA (Mike, 2026-06-19), implementación **DIFERIDA** para no
+acumular cambios a medio aplicar antes de subir el reframe ω_m-directo a Zenodo.
+Hacer DESPUÉS de cerrar la propagación actual (sin números viejos) y publicar.
+
+**Qué cambia:** la partícula canónica pasa de $m_\phi=42.47$ eV (PYROS·VITA·MIKA=615.33,
+triple-producto plano, sin mecanismo, $S_8=0.24\sigma$) a
+$$m_\phi = \mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\cdot\Sigma m_\nu = (\varphi+2\pi)^2\cdot 2\Omega\cdot 0.06902 = 41.02\ \text{eV},$$
+que **resuelve $S_8$ de lleno ($0.00\sigma$ KiDS)** — el valor que los datos prefieren
+(`ssee_paper6_particle_scan.py`, CLASS real). Esta era la finalidad del mecanismo.
+
+**Por qué es mejor partícula (peso, no certeza):**
+- $\mathrm{KRYSTOS}=2\Omega$ exacto, **anclado** por $w_a=-P_{sc}/K_v=-0.670$ (DESI).
+- $\mathrm{SOLAR}=\mathrm{BIAL}+\mathrm{KAL}$ = (primer-calor/pulso, radiativo) + (viscosidad
+  anclada P5). Rol radiativo **por linaje**, valor $\varphi+2\pi$ forzado.
+- Forma $m=g^2 v\,\Sigma m_\nu$ = masa generada estándar (enhancement, no loop).
+- **Peso vía KAL (clave):** KAL₀ aparece en 5 lugares — $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$
+  (¡la densidad de materia del CMB! → **"CMB prefiere KAL"**, igual que "CMB prefiere MIRA"),
+  $K(X)=X/\mathrm{KAL}_0$ (cinético que maneja la cascada Hubble), $\tilde\zeta=\mathrm{KAL}_0/3$
+  (viscosidad), y ahora el acoplamiento φ-DM. SOLAR hereda el peso del KAL que el CMB exige.
+
+**Lo honesto (no lo decidimos nosotros):** es una partícula **en camino a ser falseada**
+($k_{\rm fs}$ en DESI Y3/Euclid 2026–2028 decide). Le damos **más peso** por el multi-anclaje
+de KAL, NO certeza. El coeficiente $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ aún NO está derivado
+del transporte disipativo (ver el "mecanismo líder" en OP-9) — eso es lo que cerraría OP-9.
+
+**Trabajo de implementación (cuando se haga):**
+1. Correr CLASS exacto en $m_\phi=41.017$ → tomar $S_8/k_{\rm fs}/\sigma_8$ reales (no interpolados).
+2. Propagar 42.47→41.017 y 615.33→594.28 por: `ssee_core`, `CANONICAL_VALUES.yaml`, guardián,
+   3 memorias, vault (kfs/sigma8_eff/Cadena), Papers 1/6.
+3. Escribir el mecanismo del **Lagrangiano** ($m_\phi=g^2 v\,\Sigma m_\nu$, $g$=SOLAR disipativo,
+   $v$=KRYSTOS vacío) y **mostrar cómo resuelve $S_8$** en Paper 6.
+4. Guardián VERDE + memory_sync VERDE.
+
+---
+
 None of these problems falsify SSEE at the current observational precision — they define
 the boundary of what has been rigorously established versus what remains as working
 hypotheses. The resolution of OP-1 through OP-6 constitutes the research agenda for

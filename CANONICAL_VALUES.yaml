@@ -17,26 +17,33 @@
 # Cada uno con su unidad pegada en el nombre para no confundir escalas.
 canonical:
   # Sector materia oscura φ-DM (Paper 6, forward — cero fiteo)
-  m_phi_eV:            36.95      # = Σm_ν^act × (Ω⁴+AURA·KAL) = 0.0690 × 535.28
-  k_fs_h_per_Mpc:      0.659      # free-streaming, derivado de m_φ vía DW
-  alpha_freestream_Mpc_per_h: 1.243   # OUTPUT de CLASS, no fiteado
+  # INPUT FIJO (álgebra pura, reframe 2026-06-17):
+  m_phi_eV:            42.47      # = Σm_ν^act × (PYROS·VITA·MIKA) = 0.06902 × 615.33
+  # DEPENDIENTES de m_φ — Fase B HECHO (CLASS forward ω_m-directo, m_φ=42.47 @
+  # Ω_m=0.30889, Ω_φDM=0.14889). log: results/logs/p6_class_reframe_omega_m.log
+  k_fs_h_per_Mpc:      0.798      # analítico no-rel (era 0.659 con m_φ=36.95); falsable DESI/Euclid
+  k_half_CLASS_h_per_Mpc: 0.351   # borrado medido por CLASS (ratio P=0.5)
+  alpha_freestream_Mpc_per_h: 1.072  # OUTPUT CLASS fit Viel (era 1.243)
+  T_phi_over_T_nu:     0.5323     # relic constraint (T_φ=0.38118)
+  N_ur:                2.9657     # N_ur efectivo del two-sector
 
-  # Amplitud de estructura (Paper 5 single / Paper 6 two-sector)
-  sigma8_single:       0.820      # baseline fuente Poisson Ω_m,CMB=0.320
-  S8_single:           0.847      # "el desafío" — 3.9σ KiDS
-  G_growth:            1.011      # D₁_SSEE/D₁_ΛCDM (Ω_m,CMB; viejo 0.866 retirado)
-  sigma8_two_sector:   0.742      # free-streaming CLASS forward
-  S8_two_sector:       0.766      # 0.01σ KiDS-1000 — RESUELVE
-  fsigma8_two_sector_sigma: 0.76  # media 6 encuestas; empata ΛCDM (0.73σ)
+  # Amplitud de estructura — Fase B HECHO (σ8 forward de CLASS, NO fit alpha_WDM)
+  sigma8_two_sector:   0.7536     # σ8 forward CLASS two-sector (era 0.742)
+  S8_two_sector:       0.7647     # = σ8·√(Ω_m/0.3) → 0.24σ KiDS (RESUELVE; forward, falsable)
+  sigma8_single_ceiling: 0.8335   # σ8 todo-frío (techo CLASS; era 0.820 vía ODE P5)
+  S8_single_ceiling:   0.8458     # 3.5σ KiDS-1000 (0.759±0.024) — "el desafío" que el two-sector baja
+  G_growth:            1.011      # D₁_SSEE/D₁_ΛCDM (Paper 5; sin cambio, no depende de m_φ)
+  fsigma8_two_sector_sigma: 0.76  # PENDIENTE recompute Fase B (P5 fσ8 con Ω_m=0.30889)
   fsigma8_single_sigma:     2.67  # baseline Paper 5
 
-  # Cascada Hubble (canónico 2026-06-09, Σm_ν=0.0690 self-consistente)
-  H_MIRA_km_s_Mpc:     67.037     # ancla física (Planck plik_lite + bg SSEE)
-  H0_posterior_km_s_Mpc: 66.53    # posterior MCMC, prior MIRA (±0.44)
-  H0_local_IR_km_s_Mpc: 71.87     # Paper 9 — 1.12σ SH0ES
-  H0_local_UV_km_s_Mpc: 72.05     # Paper 10 — 0.96σ SH0ES
-  f_screen_IR:         0.06725    # (π−φ)/Ω² = αK/(3·MIRA)
-  f_screen_UV:         0.06952    # αK_full/(3·MIRA)
+  # Cascada Hubble (reframe 2026-06-17: H global = H_alg = 67.962; Fase B VERIFICADO)
+  H_global_km_s_Mpc:   67.962     # H global de fondo = H_alg (base de la cascada)
+  H0_local_IR_km_s_Mpc: 72.86     # Paper 9 — 0.17σ SH0ES (script ssee_paper9_verification, Fase B)
+  H0_local_UV_km_s_Mpc: 73.040    # Paper 10 — 0.00σ SH0ES (script ssee_paper10_verification, Fase B)
+  f_screen_IR:         0.06725    # (π−φ)/Ω² = αK/(3·MIRA)  [INVARIANTE]
+  f_screen_UV:         0.06952    # αK_full/(3·MIRA)        [INVARIANTE]
+  # H_MIRA 67.037 + posterior 66.53 = escenario viejo; PENDIENTE Fase B re-fit (P3 CMB / P2 MCMC con H=67.96)
+  H0_posterior_km_s_Mpc: 66.53    # PENDIENTE Fase B — posterior MCMC con prior H viejo (re-correr P2)
 
   # EFT / UV completion
   alpha_K:             0.4033     # Paper 7 (Bellini-Sawicki)
@@ -46,10 +53,22 @@ canonical:
   # Background (algebraico)
   w0:                  -0.840
   wa:                  -0.670
-  H0_alg_km_s_Mpc:     67.962     # 3(φ+π)² — conjetura Type-P, NO titular
+  # Densidad de materia CMB — ω_m DIRECTO (reframe 2026-06-18; OP-8 CERRADO).
+  # NO hay factor materia: Ω_m,CMB = ω_m/h² es el observable físico estándar,
+  # con cada pieza algebraica. Ω_m,dyn=0.160 (DESI) y ω_m (CMB) son dos
+  # predicciones INDEPENDIENTES de SSEE, ya no ligadas por factor (MIRA ni π/φ).
+  omega_b_h2:          0.02242    # (π−φ)/(3Ω²)        (OP-1)
+  omega_c_h2:          0.11951    # KAL₀·ω_b·n_s       (forward, ya en Paper 1; 0.41σ)
+  omega_nu_h2:         0.000741   # Σm_ν/93.14 eV
+  omega_m_h2:          0.14267    # ω_m físico = ω_b+ω_c+ω_ν
+  Omega_m_CMB:         0.30889    # = ω_m/h² @ H=67.962  (CANÓNICO, DERIVADO; era 0.31076 vía π/φ)
+  H0_alg_km_s_Mpc:     67.962     # 3(φ+π)² — H GLOBAL de fondo (titular tras reframe)
 
-  # Estadística
-  Delta_BIC_cobaya:    -32.2      # plik_lite Cobaya (SSEE favorecido)
+  # Estadística — CMB (Planck plik_lite TTTEEE, Fase B con ω_m-directo @ H=67.962)
+  # log: results/logs/p3_cmb_reframe_omega_m.log  (script run_p3_reframe.py)
+  chi2_CMB_SSEE:       1005.50    # SSEE ω_m-directo (vs ΛCDM 1003.76; Δχ²=+1.74)
+  Delta_BIC_CMB:       -23.93     # k2 vs k6 → SSEE fuertemente favorecido (era +29.4 con π/φ)
+  Delta_BIC_cobaya:    -32.2      # plik_lite Cobaya legacy (escenario viejo; PENDIENTE re-confirmar)
   rd_MIRA_Mpc:         147.6      # MIRA-mapped vs Planck 147.09±0.26
 
 # ── Valores RETIRADOS ──────────────────────────────────────────────────
@@ -64,10 +83,11 @@ retired:
   - {pattern: "0.737",     reason: "σ₈_eff = fit de α_WDM a KiDS (no forward)"}
   - {pattern: "0.702",     reason: "σ₈ IS-ODE fuente Ω_m,dyn — retirada"}
   - {pattern: "0.725",     reason: "S₈ IS-ODE fuente Ω_m,dyn — retirada"}
-  - {pattern: "72.86",     reason: "H0_local IR vía H_alg — solo coincidencia Type-P"}
-  - {pattern: "73.040",    reason: "H0_local UV vía H_alg — solo coincidencia Type-P"}
+  - {pattern: "71.87",     reason: "H0_local IR cascada H_MIRA viejo (1.12σ) — reframe usa H_alg→72.86"}
+  - {pattern: "72.05",     reason: "H0_local UV cascada H_MIRA viejo (0.96σ) — reframe usa H_alg→73.04"}
   - {pattern: "8.81 meV",  reason: "M cutoff viejo (normalización ρ_crit anterior)"}
   - {pattern: "8.82 meV",  reason: "M cutoff viejo"}
+  - {pattern: "31.3",      reason: "ΔBIC plik_lite viejo (pre-Σm_ν=0.069) → canónico −32.2"}
 
 # Palabras que, si aparecen en la misma línea que un valor retirado, indican
 # que está citado como historia/coincidencia (NO como vigente) → no es drift.

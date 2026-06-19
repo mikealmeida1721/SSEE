@@ -179,7 +179,7 @@ perturbatively stable}?
 \subsection{The gradient instability problem}
 \label{subsec:instability}
 
-A canonical scalar field $k$-essence model with Lagrangian $\mathcal{L} \propto X^n$
+A canonical-kinetic (constant-$w$) $k$-essence proxy with Lagrangian $\mathcal{L} \propto X^n$
 \citep{ArmendarizPicon2001},
 where $X = -\tfrac{1}{2}\partial_\mu\phi\partial^\mu\phi$, has an adiabatic sound
 speed $c^2_s = 1/(2n-1)$ and equation of state $w = 1/(2n-1)$, so $c^2_s = w$
@@ -197,6 +197,20 @@ Left unchecked, this instability would generate excessive DE density contrast
 $|\delta_{\mathrm{DE}}| \gg 1$, invalidating linear perturbation theory and
 producing observable signatures in the CMB lensing and matter power spectra
 inconsistent with data \citep{Calabrese2011}.
+
+We stress that this bare instability is an artefact of the \emph{effective-fluid}
+(constant-$w$) closure $c^2_s = w$, \emph{not} a property of the fundamental SSEE
+field: the canonical Lagrangian $K(X) = X/\KALz$ (Papers~7 and~10) is independently
+ghost-free and gradient-stable, with adiabatic sound speed
+$c^2_{s,\mathrm{ad}} \in [0.60,\,1]$ (the IR limit $X^2/M^4 \to 0$ gives
+$c^2_{s,\mathrm{ad}} = 1$; the UV term lowers it to $\sim 0.60$).
+The IS analysis below addresses the \emph{hydrodynamic} (fluid) description used
+by Boltzmann codes, where dark energy is parametrised by $(w, c^2_s)$ and the
+naive closure $c^2_s = w$ would be catastrophic.
+Remarkably, the same structural constant $\KALz$ that normalises $K(X)$ also fixes
+the IS bulk viscosity ($\ztilde = \KALz/3$), so the fluid-level regularisation
+introduces no new parameter --- the field-mode and fluid-mode descriptions are
+governed by a single algebraic constant.
 
 \subsection{The Israel-Stewart resolution}
 \label{subsec:IS_intro}
@@ -1280,7 +1294,7 @@ The Python script \texttt{src/ssee\_paper5\_IS\_perturbations.py} (including
 the growth rate and $S_8$ computations) and all output figures are available in
 the SSEE-V3.6 repository at
 \url{https://github.com/mikealmeida1721/SSEE}
-(Zenodo DOI: \href{https://doi.org/10.5281/zenodo.19679049}{10.5281/zenodo.19679049}).
+(Zenodo DOI: \href{https://doi.org/10.5281/zenodo.20093447}{10.5281/zenodo.20093447}).
 All computations use publicly available Python packages (NumPy, SciPy, Matplotlib).
 
 %======================================================================

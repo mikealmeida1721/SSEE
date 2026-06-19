@@ -61,10 +61,10 @@ predictive checks, using \textsc{emcee} \citep{emcee,GoodmanWeare2010} with $N_{
 $N_{\rm steps}=25{,}000$ ($2.5\times10^6$ total evaluations), and a same-bin correlated block-diagonal covariance approximation for the DESI~DR2 BAO measurements; convergence
 diagnostics (including $N_{\rm eff}=4{,}402$ effective samples for \SSEE) are
 reported in Table~\ref{tab:convergence}.
-The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, derived algebraically
-and deposited prior to DESI~DR2 \citep{AlmeidaSSEE2026genesis},
+The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, fixed algebraically by the
+closed dictionary \citep{AlmeidaSSEE2026genesis} and not fitted to the data,
 lies within $0.05\sigma$ of the DESI~DR2 CPL free-fit posterior in the
-$\wz$--$\wa$ plane.
+$\wz$--$\wa$ plane (a parameter-free postdiction).
 The $H_0$ posterior is $66.53^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$,
 obtained with an SSEE-self-consistent $H_0$ prior derived from Planck~CMB
 through the MIRA bridge (Paper~3, \S\ref{sec:prior_mira}).
@@ -238,7 +238,9 @@ is falsified.
 
 The ratio $\Omega_{m,\mathrm{CMB}}/\Omega_{m,\mathrm{dyn}}
 = \mathrm{MIRA} \approx 1.999$ is a structural constant of the framework
-(Paper~4, \S2), predating DESI~DR2 (Zenodo: \texttt{10.5281/zenodo.19679049}).
+(Paper~4, \S2), fixed by the algebraic construction independently of the data
+and introducing no free parameter (we make no claim of temporal priority over
+the public DESI or Planck releases).
 Its physical interpretation as a viscous energy redistribution factor
 between matter and radiation sectors is quantified in Paper~5, where it
 emerges numerically from the IS relaxation equations; a closed-form
@@ -333,7 +335,7 @@ and the sound horizon $r_d$ is
 computed from $\omega_m = \Omega_{m,\mathrm{dyn}}(H_0/100)^2$ self-consistently.
 A BBN prior $\Omega_b h^2 = 0.02218\pm0.00055$ \citep{Cooke2018} is adopted
 for the baryon density, consistent with the SSEE algebraic value
-$\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE} = 0.02242$ (Paper~4)
+$\Omega_b h^2 = (\pi-\varphi)/[3(\varphi+\pi)^2] = 0.02242$ (Paper~4)
 at $0.4\sigma$.
 The comparison against the $\Lambda$CDM-Planck matter density
 $\Omega_m = 0.3153\pm0.0073$ is reported in \S\ref{sec:results_cosmo}
@@ -511,19 +513,19 @@ Parameter & \SSEE-V3.6 & \LCDM & CPL \\
 $H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$]
   & $66.53^{+0.44}_{-0.44}$
   & $67.99^{+0.42}_{-0.41}$
-  & $67.24^{+0.51}_{-0.53}$ \\[3pt]
+  & $67.30^{+0.52}_{-0.53}$ \\[3pt]
 $\Omega_m$
   & $0.1601\ [\mathrm{alg.}]$
   & $0.307^{+0.006}_{-0.006}$
-  & $0.317^{+0.007}_{-0.007}$ \\[3pt]
+  & $0.316^{+0.007}_{-0.007}$ \\[3pt]
 $\wz$
   & $-0.840\ [\mathrm{alg.}]$
   & $-1\ [\mathrm{fixed}]$
-  & $-0.800^{+0.105}_{-0.104}$ \\[3pt]
+  & $-0.731^{+0.107}_{-0.103}$ \\[3pt]
 $\wa$
   & $-0.670\ [\mathrm{alg.}]$
   & $0\ [\mathrm{fixed}]$
-  & $-0.583^{+0.448}_{-0.466}$ \\[3pt]
+  & $-0.923^{+0.443}_{-0.474}$ \\[3pt]
 $\Omega_b h^2$
   & $0.02261^{+0.00048}_{-0.00047}$
   & $0.02234^{+0.00015}_{-0.00015}$
@@ -579,12 +581,16 @@ This distance means the \SSEE\ algebraic point $(-0.840,-0.670)$ falls
 well inside the DESI~DR2 $1\sigma$ contour in the $\wz$--$\wa$ plane.
 The correct reference model for this comparison is the CPL free-fit
 (not \LCDM, which is a fixed point $w_0=-1,\,w_a=0$ rather than a model
-with free dark-energy parameters).  The CPL posterior gives
-$(\wz,\wa)\approx(-0.80,-0.58)$, and the \SSEE\ prediction falls
-within $0.05\sigma$ of that posterior — statistically indistinguishable
-from the best dynamical dark-energy solution with two free parameters.
-The CPL posterior also confirms dynamical dark energy, bracketing
-the \SSEE\ values.
+with free dark-energy parameters).  The $0.05\sigma$ quoted above is the Mahalanobis distance of the \SSEE\
+point from the DESI~DR2 best-fit (the measurement itself). The full CPL
+free-fit posterior of this work has median
+$(\wz,\wa)=(-0.731^{+0.107}_{-0.103},\,-0.923^{+0.443}_{-0.474})$; the
+\SSEE\ algebraic point lies $1.0\sigma$ ($\wz$) and $0.55\sigma$ ($\wa$)
+from this median, i.e.\ $1.2\sigma$ in the joint two-dimensional significance
+(strong $w_0$--$w_a$ anticorrelation, $\rho=-0.95$), within the CPL posterior.
+\SSEE\ is therefore consistent both with the DESI~DR2 measurement (at
+$0.05\sigma$) and with the two-parameter CPL free-fit (at $1.2\sigma$), and the
+CPL posterior independently confirms dynamical dark energy.
 
 \begin{figure}[H]
   \centering
@@ -653,18 +659,21 @@ A comparison restricted to the dynamical dark-energy sector --- where the
 (Section~\ref{sec:bic}).
 
 
-\paragraph{H$_0$: algebraic prediction vs.\ MCMC posterior.}
-The \SSEE\ framework offers two independent estimates of $H_0$. The
-geometric algebraic prediction is
-$H_0^{\rm alg} = M_v \times \Omega = 3(\varphi+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$,
-where $M_v$ and $\Omega$ are fixed structural constants. The CMB-derived
-physical value, obtained by re-evaluating Planck~\texttt{plik\_lite} under
-the SSEE-MIRA background (Paper~3), is
-$H_0^{\rm MIRA} = 67.037\pm0.54$\,km\,s$^{-1}$\,Mpc$^{-1}$. These two
-estimates agree at $0.10\sigma$ (Planck-error scale), which is striking
-given the unrelated origins of the two derivations (pure algebra vs.\
-CMB peak fitting) and supports interpreting MIRA as a physical bridge
-rather than a tuning factor.
+\paragraph{H$_0$: algebraic coincidence vs.\ MCMC posterior.}
+The \SSEE\ framework offers two estimates of $H_0$. The geometric
+algebraic value
+$H_0^{\rm alg} = M_v \times \Omega = 3(\varphi+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$
+is a \emph{Type-P numerical coincidence} (Paper~1, \S1.4): a dimensionful
+match with no derivation bridging $\{\varphi,\pi\}$ to physical units, and it
+is \emph{not} used as a model prediction. The CMB-derived physical value,
+obtained by re-evaluating Planck~\texttt{plik\_lite} under the SSEE-MIRA
+background (Paper~3), is
+$H_0^{\rm MIRA} = 67.037\pm0.54$\,km\,s$^{-1}$\,Mpc$^{-1}$. The two differ by
+$0.93$\,km\,s$^{-1}$\,Mpc$^{-1}$ ($1.3\%$, $1.7\sigma$ at Planck-error scale);
+this mild offset is consistent with the coincidental status of
+$H_0^{\rm alg}$. The model's physical anchor is $H_0^{\rm MIRA}$; the evidence
+for MIRA as a structural bridge rests on the CMB fit and the two-sector
+identity (Papers~3 and~6), not on this coincidence.
 The MCMC posterior reported above,
 $H_0^{\rm MCMC}=66.53\pm0.44$\,km\,s$^{-1}$\,Mpc$^{-1}$,
 is the late-time BAO posterior under the MIRA prior; it lies at
@@ -673,9 +682,9 @@ The two values measure different quantities: $H_0^{\rm alg}$ and
 $H_0^{\rm MIRA}$ characterise the early-Universe geometry, while
 $H_0^{\rm MCMC}$ is the late-time posterior after the DESI data pull
 the value downward to compensate for the enlarged $r_d$.
-The $\sim$1.2\,km\,s$^{-1}$\,Mpc$^{-1}$ difference (2.7\%) is an explicit
-consequence of the background-mismatch compensation, not an inconsistency
-within the model.
+The $0.51$\,km\,s$^{-1}$\,Mpc$^{-1}$ downward shift from the MIRA prior
+($0.76\%$) is an explicit consequence of the background-mismatch
+compensation, not an inconsistency within the model.
 
 \begin{figure}[H]
   \centering
@@ -927,7 +936,7 @@ calibration; it tests whether \SSEE\ \emph{is} \LCDM, not whether
 \SSEE\ is consistent with observations under its own background.
 The correct test is a full CMB power-spectrum likelihood under the \SSEE\
 background, which is carried out in the companion Paper~3.
-The companion Paper~3 reports $\chi^2_r=1.062$ (TT, 1971 multipoles) and
+The companion Paper~3 reports $\chi^2_r=1.044$ (TT, 1971 multipoles) and
 $\Delta\mathrm{BIC}=-32.2$ (plik\_lite TTTEEE, $k_{\rm SSEE}=2$ vs $k_{\Lambda\rm CDM}=6$),
 decisive evidence consistent with the hypothesis that the $+206$ penalty is a
 calibration artefact arising from applying an \LCDM-background prior to an
@@ -975,15 +984,43 @@ with the full posterior at $0.6\sigma$.
 \textit{The $H_0$ estimate is therefore essentially independent of
 Planck and rests entirely on the DESI~DR2 BAO geometry.}
 
+\paragraph{Full-likelihood cross-check.}
+To confirm that the compressed-prior posteriors of §\ref{sec:results_cosmo} are not an
+artefact of the Planck distance-prior approximation, we ran an independent MCMC with the
+\emph{full} CMB likelihood (CAMB with Planck \texttt{plik\_lite} TTTEEE + lensing),
+combined with DESI~DR2 BAO and $f\sigma_8$, sampling $\wz,\wa$ \emph{freely}
+(four chains, $\sim$48k post-burn-in samples, Gelman--Rubin $R-1<0.003$).
+The free-fit posterior $(\wz,\wa)=(-0.69,-1.06)$ \emph{excludes} the cosmological
+constant $(-1,0)$ at $2.4\sigma$, independently confirming a dynamical equation of
+state. The \SSEE\ algebraic point $(-0.840,-0.670)$ lies at $0.68\sigma$ from this
+posterior --- more than three times closer than $\Lambda$CDM (Fig.~\ref{fig:degeneracy}).
+The $\wz$--$\wa$ posterior is strongly anticorrelated ($\rho=-0.92$) and \SSEE\ falls
+within its $1\sigma$ region. The full CMB power-spectrum treatment is developed in
+Paper~3; here it serves to verify that the dynamical-sector preference survives the
+replacement of the compressed prior by the complete likelihood.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{fig_w0wa_degeneracy.pdf}
+  \caption{Full-likelihood $\wz$--$\wa$ posterior (CAMB + Planck \texttt{plik\_lite}
+  + lensing + DESI~DR2 + $f\sigma_8$, with $\wz,\wa$ free; $R-1<0.003$). The \SSEE\
+  algebraic prediction (red star) lies at $0.68\sigma$, inside the $1\sigma$ contour,
+  while $\Lambda$CDM ($\wz=-1,\wa=0$; grey cross) is excluded at $2.4\sigma$. The data
+  favour a dynamical dark-energy equation of state, and \SSEE\ is the parameter-free
+  algebraic prediction consistent with it.}
+  \label{fig:degeneracy}
+\end{figure}
+
 \paragraph{Hubble tension.}
-\SSEE\ predicts $H_0^{\rm alg} = 3(\varphi+\pi)^2 = 67.96$\,km\,s$^{-1}$\,Mpc$^{-1}$,
-consistent with Planck~2018 at $1.1\sigma$ and with the DESI~DR2+CMB joint inference
+The \SSEE\ algebraic value $H_0^{\rm alg} = 3(\varphi+\pi)^2 = 67.96$\,km\,s$^{-1}$\,Mpc$^{-1}$
+--- a Type-P numerical coincidence (Paper~1, \S1.4), not a derived prediction ---
+lies within $1.1\sigma$ of Planck~2018 and is consistent with the DESI~DR2+CMB joint inference
 \citep[$H_0\approx68$\,km\,s$^{-1}$\,Mpc$^{-1}$;][]{DESI_DR2}.
 The model does not resolve the SH0ES distance-ladder tension
 \citep[$H_0\approx73$\,km\,s$^{-1}$\,Mpc$^{-1}$;][]{Riess2022}; this is a known
 open problem shared by all smooth dark-energy models including \LCDM\ \citep{Verde2019,Kamionkowski2023}, and lies outside
 the scope of this paper's DESI~BAO + cluster validation.
-\textit{The algebraic $H_0$ prediction is CMB-consistent but not distance-ladder consistent;
+\textit{The algebraic $H_0$ coincidence is CMB-consistent but not distance-ladder consistent;
 resolving the full $5\sigma$ Hubble tension requires either a modification of the
 early-Universe sound horizon or a systematic re-evaluation of the Cepheid distance scale.}
 
@@ -1357,7 +1394,7 @@ P.~Kroupa and collaborators for the IGIMF cluster re-analysis.
 
 \bibitem[Almeida Vallejo(2026)]{SSEE_paperI}
 Almeida Vallejo, M.~E.\ (2026).
-\textit{A Zero-Parameter Framework for Cosmological Dynamics and
+\textit{A Minimal-Parameter Framework for Cosmological Dynamics and
 Galaxy Cluster Mass Discrepancies via SSEE-V3.6}. Zenodo preprint.
 
 \bibitem[Abdul-Karim et al.(2025)]{DESI_DR2}
@@ -1397,10 +1434,10 @@ Baryonic features in the matter transfer function.
 
 \bibitem[Almeida Vallejo(2026b)]{AlmeidaSSEE2026genesis}
 Almeida Vallejo, M.~E.\ (2026).
-\textit{SSEE Genesis 5.12: Unified Compendium of Irrational Constants}.
-Zenodo. \url{https://doi.org/10.5281/zenodo.19679049}
-Initial commit \texttt{f8728c3}, 2026 January 28.
-Contains MIRA factor predating DESI DR2.
+\textit{SSEE Structural Constant Dictionary \& Prediction Register}.
+Zenodo. \url{https://doi.org/10.5281/zenodo.20684908}
+Closed algebraic constant dictionary; parameter-free postdiction, no claim of
+temporal priority over public data.
 
 \bibitem[Clowe et al.(2006)]{Clowe2006}
 Clowe, D., et al.\ (2006).

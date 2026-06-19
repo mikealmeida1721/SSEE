@@ -71,3 +71,6 @@ archive/experimental/
 # Interno — no va al repo público
 CLAUDE.md
 zenodo_v7_upload/
+*.env
+zenodo_token
+.zenodo_token

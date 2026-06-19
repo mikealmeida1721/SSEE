@@ -15,29 +15,49 @@ concuerdan con él, hay *drift*.
 
 ---
 
-## Cuando cambia un valor (orden obligatorio)
+## Cuando cambia un valor o se supera algo (orden obligatorio)
 
-El cambio toca **el principio y el fin** para que nada quede fuera:
+El cambio fluye en un solo sentido — **memorias → cajones → archivo** — para que
+nada quede fuera de la mesa de trabajo. Hasta lo canónico de hoy puede superarse
+mañana (si aparece algo más simple que cierre mejor sin abrir huecos); cuando eso
+pasa, se aplica este mismo orden y lo viejo se conserva como prueba del esfuerzo.
 
-1. **Verificar** la física (script que recomputa el nuevo valor).
-2. **`CANONICAL_VALUES.yaml`** ← se actualiza PRIMERO (la fuente de verdad).
-   - El valor viejo se mueve a la lista `retired:` con su razón.
-3. **Guardián** (`VERIFICATION_LEDGER.md` + check en `ssee_verify.py`) → recomputa.
-4. **Obsidian** (vault) → actualizar la nota del valor y **sus conexiones**
-   (qué cadenas dependían de él).
-5. **CLAUDE.md** → actualizar las tablas de estado (al cerrar el cambio o la sesión).
+**Fase A — Memorias primero (la fuente de verdad):**
+1. **Verificar** la física (script que recomputa el nuevo valor → log en `results/logs/`).
+2. **`CANONICAL_VALUES.yaml`** ← se actualiza PRIMERO. El valor viejo va a `retired:`
+   con su razón (así el guardián lo caza si reaparece en cualquier cajón).
+3. **Guardián** (`VERIFICATION_LEDGER.md` + check) → recomputa; el valor de pipeline
+   debe tener log de procedencia (R9).
+4. **Obsidian** (vault) → la nota del valor y **sus conexiones** (qué cadenas dependían).
+5. **CLAUDE.md** → tablas de estado.
+
+**Fase B — Cajones de trabajo (propagar y auditar):**
+6. **`manuscript/`, `src/`, `docs/`** → propagar el nuevo valor a todo lo que lo usa.
+   El guardián (Capas Manuscritos/Procedencia) verifica que no quede stale; los
+   PDFs recompilan de `manuscript/`.
+
+**Fase C — Archivar lo superado (con sello):**
+7. Si un **artefacto entero** quedó obsoleto (script, PDF, doc, derivación), se mueve a
+   `archive/` con **entrada en la Bitácora** (`archive/README.md`: qué, cuándo, por qué,
+   qué lo reemplaza). La Capa Archivo del guardián exige que cada cajón archivado tenga
+   entrada. Nada obsoleto se queda en un cajón vivo; nada se archiva en silencio.
+
+> **Regla de cobertura:** todo cajón está en el **Mapa de Vigencia** (`archive/README.md`)
+> como VIGENTE, ARCHIVO o TRABAJO. Si aparece un cajón nuevo, se clasifica.
 
 ---
 
 ## Cómo se revisa (rápido y barato)
 
 ```bash
-# ¿La física sigue íntegra?  (recomputa todas las constantes/identidades)
-.venv/bin/python3 src/verificacion/ssee_verify.py
+# ¿La física + memorias + procedencia + manuscritos + archivo siguen íntegros?
+.venv/bin/python3 src/verificacion/ssee_verify.py          # el guardián (una corrida, todas las capas)
 
 # ¿Las 3 memorias concuerdan con CANONICAL_VALUES.yaml?
 .venv/bin/python3 src/verificacion/memory_sync.py          # las 3
-.venv/bin/python3 src/verificacion/memory_sync.py --vault  # solo Obsidian
+
+# ¿El guardián mismo sigue detectando? (correr si TOCAS el guardián)
+.venv/bin/python3 src/verificacion/test_guardian.py        # el vigilante vigilado
 ```
 
 - `ssee_verify.py` → **VERDE/ROJO**: la física.

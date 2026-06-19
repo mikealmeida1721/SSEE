@@ -15,7 +15,7 @@ algebraically from two constants: the golden ratio φ and π. No fitting to data
 obtain the central predictions of that core; the absolute vacuum scale enters as a single measured
 input (Postulate D), and the dark-matter-origin extensions are tracked as open problems.
 
-Falsifiable predictions — all pre-data (timestamped Zenodo: 10.5281/zenodo.19679049, 2026-01-28):
+Falsifiable predictions — fixed by algebraic construction, not fitted (Structural Constant Dictionary, Zenodo: 10.5281/zenodo.20684908). Agreement with already-public data below is a parameter-free postdiction; no claim of temporal priority over public data is made.
 
 | Observable | SSEE prediction | Observed | Status |
 |---|---|---|---|
@@ -282,10 +282,12 @@ Full derivation of MIRA from first-principles field equations is deferred (Level
 (not yet a derived quantity). It bridges Ωm,dyn=0.160 and Ωm,CMB=0.3199 algebraically,
 but its derivation from first-principles field equations (Blocker B3) remains open.
 It is NOT simultaneously a free parameter and a derived quantity — it is a fixed hypothesis
-with documented pre-data provenance:
+whose anti-post-hoc guarantee rests on **algebraic rigidity, not chronology**:
 
-MIRA defined in Genesis 5.12 (Zenodo: 10.5281/zenodo.19679049, 2026-01-28),
-83 days before the CMB analysis (2026-04-19). Anti-post-hoc guarantee.
+MIRA = (3φ+π)/4 is fixed by construction (Structural Constant Dictionary,
+Zenodo: 10.5281/zenodo.20684908); it has no adjustable amplitude that could be tuned to
+the CMB fit. We make no claim of temporal priority over the public Planck/DESI releases,
+which predate this work.
 
 This status (hypothesis pending formal derivation) is stated explicitly in Papers 1, 3, 5, 6.
 All MIRA-dependent claims are sector-specific and conditional on this hypothesis.
@@ -339,8 +341,8 @@ Chronological record of what was derived before what data:
 | k_fs | free-streaming (m_φ) | 0.659 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction |
 | r | φ⁻¹⁰ | 0.00813 | LiteBIRD (~2032) | Future prediction |
 
-Genesis 5.12 commit: https://github.com/mikealmeida1721/SSEE_UNIFICADO (2026-01-28)
-Zenodo DOI: https://doi.org/10.5281/zenodo.19679049
+Constant dictionary repo: https://github.com/mikealmeida1721/SSEE-Constant-Dictionary
+Zenodo DOI (concept): https://doi.org/10.5281/zenodo.20684908
 
 ---
 

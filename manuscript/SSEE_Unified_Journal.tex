@@ -79,8 +79,9 @@ as open problems (OP-8/9/11/14, \texttt{OPEN\_PROBLEMS.md}); the framework
 therefore carries $\sim$3 effective ans\"atze beyond the algebraic background,
 against six fitted parameters in $\Lambda$CDM.
 The dark energy equation of state $\wz = -(3\phiG+\pi)/[2(\phiG+\pi)] \simeq -0.840$
-and $\wa \simeq -0.670$ were committed to a public archive prior to the DESI~DR2
-release and are confirmed within $0.05\sigma$ of the DESI~DR2 CPL posterior.
+and $\wa \simeq -0.670$ are fixed by the algebraic construction and agree with the
+DESI~DR2 CPL posterior within $0.05\sigma$---a parameter-free postdiction, with no
+claim of temporal priority over DESI~DR2.
 A Bayesian MCMC analysis under the SSEE-self-consistent MIRA prior
 ($H_0^{\rm prior,SSEE}=67.037\pm0.54$~km\,s$^{-1}$\,Mpc$^{-1}$, derived from
 Planck~\texttt{plik\_lite} under the SSEE background; Paper~3) yields
@@ -149,9 +150,11 @@ The \SSEE-V3.6 framework proposes that the macroscopic universe obeys an
 algebraic closure condition: all cosmological background parameters are uniquely
 determined by two dimensionless geometric constants, the golden ratio
 $\phiG = (1+\sqrt{5})/2 \simeq 1.6180$ and $\pi \simeq 3.1416$.
-No optimisation over formula space was performed; the parameter values were
-committed to a public Zenodo archive \citep{AlmeidaSSEE2026genesis} on
-2026 January~28, prior to the DESI~DR2 public release on 2025 March~19.
+No optimisation over formula space was performed: the parameter values are fixed
+by the algebraic construction \citep{AlmeidaSSEE2026genesis}, not adjusted to the
+data. We make no claim of temporal priority over DESI~DR2 (public from 2025 March);
+the agreement reported below is a parameter-free \emph{postdiction}, and the only
+timestamped predictions are those reserved for unreleased data (DESI~DR3, Euclid).
 
 This paper consolidates the complete \SSEE\ validation programme across
 ten companion preprints \citep{AlmeidaSSEE2026P1,AlmeidaSSEE2026P2,
@@ -178,10 +181,10 @@ framework --- the strong-field lensing regime, an algebraic resolution of the
 Hubble tension, and a UV completion --- which are developed in full in the
 companion Papers~8--10 and are presented here in condensed form.
 
-Throughout, we distinguish three epistemic statuses: \textit{pre-data}
-(algebraic result committed before the relevant observation),
+Throughout, we distinguish three epistemic statuses: \textit{postdiction}
+(algebraic result fixed by construction, then compared to data already public),
 \textit{retrodiction} (independently derived, then compared to existing data),
-and \textit{prediction} (not yet observationally accessible).
+and \textit{prediction} (fixed now, tested against not-yet-released data).
 Table~\ref{tab:register} in \S\ref{sec:falsify} lists all entries explicitly.
 
 
@@ -673,8 +676,10 @@ The ghost-free stability condition requires $Q_s > 0$:
   = \begin{cases} 0.037 & (\alphaK = 0.073,\ \text{bare-field}) \\ 0.2016 & (\alphaK = 0.4033,\ \text{fluid approx.}) \end{cases} > 0.
   \label{eq:Qs}
 \end{equation}
-With $\alphaB = 0$, the gradient stability condition reduces to $c_s^2 = 1$,
-which is exact for a pure $k$-essence when braiding vanishes \citep{Bellini2015}.
+With $\alphaB = 0$, the gradient stability condition reduces to $c_s^2 = 1$ in the
+linear (IR) limit of $K(X)$, where braiding vanishes \citep{Bellini2015}; the full
+$K(X)=X/\KAL+X^2/M^4$ lowers the adiabatic value to $c_s^2 \in [0.60,\,0.95]$
+(Papers~7 and~10), still gradient-stable ($c_s^2>0$).
 EFTCAMB confirms both conditions are satisfied.
 
 \begin{table}[ht]
@@ -690,7 +695,7 @@ Quantity & Value & Status \\
 $\alphaK$ Paper~7 bare-field ($w_\varphi=-0.971$) & $0.073$ & theoretical \\
 $\alphaK$ fluid approx.\ (EFTCAMB input) & $0.4033$ & $\Delta = 0.005\%$ \\
 Ghost-free ($Q_s > 0$) & $Q_s = 0.2016$ & \checkmark\ passed \\
-Gradient-stable ($\alphaB = 0 \Rightarrow c_s^2 = 1$) & exact & \checkmark\ passed \\
+Gradient-stable ($\alphaB = 0 \Rightarrow c_s^2 = 1$ IR; $[0.60,0.95]$ full) & $c_s^2>0$ & \checkmark\ passed \\
 $\alphaT = \alphaM = \alphaB$ & $0$ (exact) & \checkmark\ GW170817 compatible \\
 \midrule
 $\sigma_8$ GR (MIRA background) & $0.836$ & \\
@@ -875,10 +880,12 @@ accordingly.
 
 A common objection to algebraically derived frameworks is post-hoc selection:
 that combinations of $\phiG$ and $\pi$ are chosen to match known values.
-To address this, Table~\ref{tab:register} records every \SSEE\ derivation in
-chronological order relative to the observational data it is compared against.
-The Genesis~5.12 compendium \citep{AlmeidaSSEE2026genesis} provides a
-tamper-evident Zenodo timestamp (2026 January 28) for all derivations.
+The defence is \emph{structural}, not chronological: the constants are drawn from a
+closed dictionary fixed by construction, with no optimisation over formula space.
+Table~\ref{tab:register} classifies each derivation by epistemic status. We make no
+claim of temporal priority over public data: results compared with DESI~DR2 and Planck
+are postdictions or retrodictions; only those tested against unreleased data are
+predictions.
 
 \textbf{Global falsification criterion.} The \SSEE-V3.6 framework would be
 falsified at the theory level if \textit{any} of the following were established:
@@ -894,20 +901,21 @@ $\sqrt{\AURA}\approx\MIRA$ at $>3\sigma$ in HST/JWST surveys.
 
 \begin{table}[ht]
 \centering
-\caption{Predictive register: \SSEE\ derivations in chronological order.
-         \textit{Pre-data}: algebraic result committed to Zenodo before observational test.
+\caption{Predictive register: \SSEE\ derivations by epistemic status.
+         \textit{Postdiction}: algebraic result fixed by the closed dictionary, then
+         compared to data already public---no claim of temporal priority.
          \textit{Retrodiction}: derived independently, then compared to existing data.
-         \textit{Prediction}: not yet observationally accessible.}
+         \textit{Prediction}: fixed now, tested against not-yet-released data.}
 \label{tab:register}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{p{6.0cm}lp{4.0cm}l}
 \toprule
 Quantity (algebraic formula) & Value & Test / Instrument & Status \\
 \midrule
-\multicolumn{4}{l}{\textit{Genesis 5.12 Zenodo archive, 2026 January 28}} \\
-$w_0 = -T_r/M_v$ & $-0.8399$ & DESI DR2 CPL posterior & Pre-data \\
-$w_a = -P_{\rm sc}/K_v$ & $-0.6699$ & DESI DR2 CPL posterior & Pre-data \\
-$\MIRA = (3\phiG+\pi)/4$ & $1.9989$ & $\OmmCMB/\Ommdyn$ & Pre-data \\
+\multicolumn{4}{l}{\textit{Background sector (algebraic dictionary)}} \\
+$w_0 = -T_r/M_v$ & $-0.8399$ & DESI DR2 CPL posterior & Postdiction \\
+$w_a = -P_{\rm sc}/K_v$ & $-0.6699$ & DESI DR2 CPL posterior & Postdiction \\
+$\MIRA = (3\phiG+\pi)/4$ & $1.9989$ & $\OmmCMB/\Ommdyn$ & Postdiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Retrodictions (derived independently, compared to existing data)}} \\
 $H_0 = 3(\phiG+\pi)^2$ & $67.96$ km/s/Mpc & Planck 2018 & Retrodiction \\
@@ -989,7 +997,7 @@ across four observational tiers.
 
 \begin{enumerate}[leftmargin=*,itemsep=2pt]
 \item \textbf{Background sector.} The algebraic prediction
-  $(\wz, \wa) = (-0.840, -0.670)$, committed before DESI~DR2, lies within
+  $(\wz, \wa) = (-0.840, -0.670)$, fixed by construction (not fitted), lies within
   $0.05\sigma$ of the DESI~DR2 CPL posterior.
   A Bayesian MCMC with $N_{\rm eff} = 4\,402$ yields
   $H_0 = 66.53\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ under the SSEE-self-consistent

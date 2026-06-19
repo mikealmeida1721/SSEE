@@ -116,8 +116,8 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | r_d,SSEE (crudo) | 175.16 Mpc | `ssee_paper2_mcmc.py` | 2026-05-22 |
 | r_d,eff (CAMB, en anchor 67.037, mnu=0.069) | 146.73 Mpc — **1.38σ** | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |
 | r_d,eff (CAMB, en posterior 66.533, mnu=0.069) | 147.30 Mpc — **0.80σ** | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |
-| χ²_r CMB TT (SSEE) | 1.045 | `ssee_paper3_cmb.py` (Σm_ν=0.0690 canónico) | 2026-06-09 |
-| ΔBIC CMB diagonal (SSEE−ΛCDM) | −24.7 (SSEE favorecido) | `ssee_paper3_cmb.py` (Σm_ν=0.0690 canónico) | 2026-06-09 |
+| χ²_r CMB TT (SSEE) | 1.044 | `ssee_paper3_cmb.py` (Σm_ν=0.0690) → `results/logs/paper3_cmb_canonical.log` | 2026-06-14 |
+| ΔBIC CMB diagonal (SSEE−ΛCDM) | −28.0 (SSEE favorecido) | `ssee_paper3_cmb.py` (Σm_ν=0.0690) → `results/logs/paper3_cmb_canonical.log` | 2026-06-14 |
 | ΔBIC CMB plik_lite Cobaya (k=2) | −32.2 (ΛCDM@0.06·SSEE@0.069; H₀_opt=67.037) | `ssee_paper3_cobaya_unified.py` | 2026-06-09 |
 | θ* (CAMB, en anchor 67.037, mnu=0.069) | 0.59638° — **0.66σ** | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |
 | θ* (CAMB, en posterior 66.533, mnu=0.069) | 0.59423° — **5.33σ** (sensibilidad de θ* a H₀; ver V-L4-θ*) | `ssee_verify_rd.py` (re-run 2026-06-09) | 2026-06-09 |

@@ -1,0 +1,53 @@
+"""
+Fase B / P3 CMB — evaluar el punto CANÓNICO del reframe omega_m-DIRECTO (2026-06-18).
+  H global = 67.962. NO hay factor materia (OP-8 cerrado): Omega_m,CMB = omega_m/h²
+  con cada pieza algebraica de SSEE:
+    omega_b = (pi-phi)/(3 Omega^2)   (OP-1)
+    omega_c = KAL0 * omega_b * n_s   (forward, ya en Paper 1)
+    omega_nu = Sigma_m_nu / 93.14 eV
+Compara chi2 vs LCDM y reporta DeltaBIC. Marca claramente que As/tau son EXTERNOS
+(se mantienen fijos para ambos), todo lo demas es SSEE.
+"""
+import time, math, numpy as np
+import ssee_paper3_cobaya_unified as P3
+
+# --- ingredientes SSEE (reframe omega_m-directo) ---
+phi = (1+5**0.5)/2; pi = math.pi
+Omega = pi + phi
+KAL0  = (pi+phi)/2 + pi
+n_s   = 1 - phi**-7
+H0      = 3*Omega**2                 # 67.962  H global = H_alg
+ombh2   = (pi-phi)/(3*Omega**2)      # 0.02242  SSEE algebraico (OP-1)
+omch2   = KAL0 * ombh2 * n_s         # 0.11951  forward (Paper 1)
+mnu     = 0.06902                    # Sigma_m_nu activos
+omega_m = ombh2 + omch2 + mnu/93.14  # 0.14267  omega_m fisico
+Omm_cmb = omega_m / (H0/100)**2      # 0.30889  DERIVADO, sin factor
+
+print(f"=== Fase B / P3 CMB reframe omega_m-DIRECTO ===")
+print(f"H0={H0:.4f}  omega_b={ombh2:.5f}  omega_c={omch2:.5f}  omega_m={omega_m:.5f}")
+print(f"-> Omega_m,CMB = omega_m/h² = {Omm_cmb:.5f}   (sin factor; OP-8 cerrado)")
+
+t0=time.time()
+chi2_ssee = P3.evaluate_model(H0, ombh2, omch2, P3.w0_ssee, P3.wa_ssee,
+                              P3.As_ssee, P3.ns_ssee, P3.tau_ssee, mnu=mnu, quiet=True)
+print(f"SSEE omega_m-directo chi2_eff = {chi2_ssee:.3f}   ({time.time()-t0:.1f}s)")
+
+# comparacion: factor pi/phi (0.31076) con MISMO H/omega_b para aislar el efecto
+omch2_piphi = 0.31076*(H0/100)**2 - ombh2
+chi2_piphi = P3.evaluate_model(H0, ombh2, omch2_piphi, P3.w0_ssee, P3.wa_ssee,
+                               P3.As_ssee, P3.ns_ssee, P3.tau_ssee, mnu=mnu, quiet=True)
+print(f"SSEE factor pi/phi(0.31076)@H=67.962 chi2_eff = {chi2_piphi:.3f}  (superado)")
+
+t0=time.time()
+chi2_lcdm = P3.evaluate_model(P3.H0_lcdm, P3.ombh2_lcdm, P3.omch2_lcdm, -1.0, 0.0,
+                              P3.As_lcdm, P3.ns_lcdm, P3.tau_lcdm, mnu=P3.mnu_lcdm, quiet=True)
+print(f"LCDM chi2_eff = {chi2_lcdm:.3f}   ({time.time()-t0:.1f}s)")
+
+N_data = 613
+dchi2 = chi2_ssee - chi2_lcdm
+dbic  = dchi2 + (2-6)*np.log(N_data)
+print(f"\n--- RESULTADO ---")
+print(f"chi2 SSEE reframe = {chi2_ssee:.3f}")
+print(f"chi2 LCDM         = {chi2_lcdm:.3f}")
+print(f"Dchi2 (SSEE-LCDM) = {dchi2:+.3f}")
+print(f"DeltaBIC (k2 vs k6) = {dbic:+.3f}")

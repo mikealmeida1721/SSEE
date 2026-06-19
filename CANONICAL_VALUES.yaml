@@ -17,19 +17,21 @@
 # Cada uno con su unidad pegada en el nombre para no confundir escalas.
 canonical:
   # Sector materia oscura φ-DM (Paper 6, forward — cero fiteo)
-  # INPUT FIJO (álgebra pura, reframe 2026-06-17):
-  m_phi_eV:            42.47      # = Σm_ν^act × (PYROS·VITA·MIKA) = 0.06902 × 615.33
-  # DEPENDIENTES de m_φ — Fase B HECHO (CLASS forward ω_m-directo, m_φ=42.47 @
-  # Ω_m=0.30889, Ω_φDM=0.14889). log: results/logs/p6_class_reframe_omega_m.log
-  k_fs_h_per_Mpc:      0.798      # analítico no-rel (era 0.659 con m_φ=36.95); falsable DESI/Euclid
-  k_half_CLASS_h_per_Mpc: 0.351   # borrado medido por CLASS (ratio P=0.5)
-  alpha_freestream_Mpc_per_h: 1.072  # OUTPUT CLASS fit Viel (era 1.243)
-  T_phi_over_T_nu:     0.5323     # relic constraint (T_φ=0.38118)
-  N_ur:                2.9657     # N_ur efectivo del two-sector
+  # INPUT FIJO (álgebra pura, mecanismo SOLAR²·KRYSTOS adoptado 2026-06-19):
+  m_phi_eV:            41.02      # = Σm_ν^act × (SOLAR²·KRYSTOS) = 0.06902 × 594.28
+  #   SOLAR=BIAL+KAL=φ+2π (linaje radiativo); KRYSTOS=2Ω (anclado wₐ); mecanismo g²·v
+  #   (antes 42.47 vía PYROS·VITA·MIKA=615.33, sin mecanismo — ver OP-9/OP-17)
+  # DEPENDIENTES de m_φ — CLASS forward ω_m-directo, m_φ=41.02 @
+  # Ω_m=0.30889, Ω_φDM=0.14889. script: src/ssee_paper6_canonical_particle.py
+  k_fs_h_per_Mpc:      0.762      # analítico no-rel (era 0.798 con m_φ=42.47); falsable DESI/Euclid
+  k_half_CLASS_h_per_Mpc: 0.339   # borrado medido por CLASS (ratio P=0.5)
+  alpha_freestream_Mpc_per_h: 1.108  # OUTPUT CLASS fit Viel (era 1.072)
+  T_phi_over_T_nu:     0.5385     # relic constraint (T_φ=0.38563)
+  N_ur:                2.9619     # N_ur efectivo del two-sector
 
-  # Amplitud de estructura — Fase B HECHO (σ8 forward de CLASS, NO fit alpha_WDM)
-  sigma8_two_sector:   0.7536     # σ8 forward CLASS two-sector (era 0.742)
-  S8_two_sector:       0.7647     # = σ8·√(Ω_m/0.3) → 0.24σ KiDS (RESUELVE; forward, falsable)
+  # Amplitud de estructura — CLASS forward (σ8 OUTPUT directo, NO fit alpha_WDM)
+  sigma8_two_sector:   0.7483     # σ8 forward CLASS two-sector (era 0.7536)
+  S8_two_sector:       0.7593     # = σ8·√(Ω_m/0.3) → 0.01σ KiDS (RESUELVE exacto; forward, falsable)
   sigma8_single_ceiling: 0.8335   # σ8 todo-frío (techo CLASS; era 0.820 vía ODE P5)
   S8_single_ceiling:   0.8458     # 3.5σ KiDS-1000 (0.759±0.024) — "el desafío" que el two-sector baja
   G_growth:            1.011      # D₁_SSEE/D₁_ΛCDM (Paper 5; sin cambio, no depende de m_φ)

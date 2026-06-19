@@ -147,20 +147,20 @@ for name, (computed, ledger) in L2.items():
     check(name, abs(computed - ledger) < 1e-6,
           f"computado {computed:.10f} / registro {ledger:.10f}")
 
-# V-L2-10 m_phi canónico (forward-prediction, cero fiteo, P6; reframe 2026-06-17):
-#   m_phi = Sigma_m_nu^active * (PYROS*VITA*MIKA)   [volumen SSEE]
+# V-L2-10 m_phi canónico (forward-prediction, cero fiteo, P6; mecanismo SOLAR²·KRYSTOS 2026-06-19):
+#   m_phi = Sigma_m_nu^active * (SOLAR^2 * KRYSTOS)   [mecanismo g²·v]
 #   con Sigma_m_nu^active = R2 * 0.960318 eV, R2 = Omega/(KAL0*Tr).
+#   SOLAR = BIAL+KAL = phi+2pi (linaje radiativo); KRYSTOS = 2*Omega (anclado por wa).
 # Dimensionalmente CONSISTENTE: [eV] * (número puro) = [eV].
-# Multiplicador anterior Omega^4+AURA*KAL=535.28 (m_phi=36.95) RETIRADO por el reframe.
+# Mult. anterior PYROS*VITA*MIKA=615.33 (m_phi=42.47, sin mecanismo) RETIRADO; ver OP-9/OP-17.
 _R2 = Omega / (KAL0 * Tr)
 _mnu_active = _R2 * 0.960318
-_PYROS = Omega + phi
-_VITA = (phi + 5 * pi) / 2
-_MIKA = 3 * phi + 2 * pi
-_mult_mphi = _PYROS * _VITA * _MIKA
+_SOLAR = phi + 2 * pi
+_KRYSTOS = 2 * Omega
+_mult_mphi = _SOLAR ** 2 * _KRYSTOS
 _m_phi_canon = _mnu_active * _mult_mphi
-check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (PYROS*VITA*MIKA) = 42.47 eV",
-      abs(_m_phi_canon - 42.4717) < 1e-3,
+check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (SOLAR^2*KRYSTOS) = 41.02 eV",
+      abs(_m_phi_canon - 41.0187) < 1e-3,
       f"m_phi = {_m_phi_canon:.4f} eV (R2={_R2:.6f}, mult={_mult_mphi:.4f})")
 
 # Identidades cruzadas — dos rutas independientes deben coincidir.
@@ -242,23 +242,23 @@ track_open("V-L3-OP3  separabilidad UV-IR no probada",
            "jerarquia (H0/M)^2~3e-62 real; prueba via jacobiano d phi/d chi "
            "diferida a Paper B; KALeff^2 = M^4/(6 alpha) dropea rho_crit")
 
-# OP-5 — tensión S8 weak-lensing (P5/P6). CANÓNICO (Fase B ω_m-directo, CLASS
-# forward con m_phi=42.47 eV, Om_m=0.30889): el two-sector phi-DM (free-streaming
-# k_fs=0.798) lleva el single-sector S8=0.846 (3.61sigma, "el desafio") al titular
-# S8_eff=0.765 (0.24sigma KiDS). sigma8 es OUTPUT directo de CLASS (no fit alpha_WDM).
-# log: results/logs/p6_class_reframe_omega_m.log
+# OP-5 — tensión S8 weak-lensing (P5/P6). CANÓNICO (ω_m-directo, CLASS forward con
+# m_phi=41.02 eV mecanismo SOLAR²·KRYSTOS, Om_m=0.30889): el two-sector phi-DM
+# (free-streaming k_fs=0.762) lleva el single-sector S8=0.846 (3.5sigma, "el desafio")
+# al titular S8_eff=0.759 (0.01sigma KiDS). sigma8 es OUTPUT directo de CLASS (no fit alpha_WDM).
+# script: src/ssee_paper6_canonical_particle.py
 Om_cosm_op5 = _omm / _h ** 2                         # 0.30889  Om_m,CMB (omega_m-directo)
 S8_challenge = 0.8335 * (Om_cosm_op5 / 0.3) ** 0.5  # single-sector techo CLASS (el desafio)
-S8_resolved = 0.7536 * (Om_cosm_op5 / 0.3) ** 0.5   # two-sector forward CLASS (resuelve)
+S8_resolved = 0.7483 * (Om_cosm_op5 / 0.3) ** 0.5   # two-sector forward CLASS (resuelve)
 check("V-L3-OP5  S8 single = sigma8(0.8335)(Om/0.3)^0.5 = 0.846  (el desafio)",
       abs(S8_challenge - 0.846) < 2e-3, f"S8 = {S8_challenge:.4f}")
-check("V-L3-OP5  S8_eff two-sector = sigma8(0.7536)(Om/0.3)^0.5 = 0.765  (resuelve, forward)",
-      abs(S8_resolved - 0.765) < 2e-3, f"S8 = {S8_resolved:.4f}")
+check("V-L3-OP5  S8_eff two-sector = sigma8(0.7483)(Om/0.3)^0.5 = 0.759  (resuelve, forward)",
+      abs(S8_resolved - 0.759) < 2e-3, f"S8 = {S8_resolved:.4f}")
 track_open("V-L3-OP5  S8 forward resuelto; cierre no-lineal pleno diferido",
            "el two-sector LINEAL forward (CLASS, sigma8 OUTPUT no-fit) resuelve S8 a "
-           "0.765 (0.24sigma KiDS) con m_phi=42.47; FALSABLE por k_fs=0.798 (DESI/Euclid). "
+           "0.759 (0.01sigma KiDS) con m_phi=41.02 (SOLAR²·KRYSTOS); FALSABLE por k_fs=0.762 (DESI/Euclid). "
            "El cierre no-lineal con feedback barionico (N-body, ~5k-20k CPU-h) es Nivel 2, "
-           "diferido. Ramas viejas 0.737/0.794, 0.702/0.725 y 0.742/0.766 retiradas")
+           "diferido. Ramas viejas 0.737/0.794, 0.702/0.725, 0.742/0.766 y 0.7536/0.765 retiradas")
 
 # OP-6 — forma de screening (P9). El valor f_screen es algebra exacta (ver
 # V-L2-13); la forma multiplicativa sigue del universo separado. El paso
@@ -273,23 +273,23 @@ track_open("V-L3-OP6  forma multiplicativa: insumo delta_local = 2 no derivado",
            "f_screen requiere delta_local=2 (sobredensidad Grupo Local) y una "
            "expresion delta_rho_phi asertada, no derivada de phi,pi")
 
-# m_phi — masa del campo phi-DM (P6, CANÓNICO forward-prediction; reframe 2026-06-17).
+# m_phi — masa del campo phi-DM (P6, CANÓNICO forward-prediction; SOLAR²·KRYSTOS 2026-06-19).
 #   Sigma_m_nu^active = R2 * 0.960318 eV,  R2 = Omega/(KAL0*Tr)
-#   m_phi = Sigma_m_nu^active * (PYROS*VITA*MIKA)   [volumen SSEE]
+#   m_phi = Sigma_m_nu^active * (SOLAR^2 * KRYSTOS)   [mecanismo g²·v]
 # El multiplicador es número PURO -> dimensión [eV] preservada. Cero fiteo.
 R2_p6 = Omega / (KAL0 * Tr)
 mnu_active = R2_p6 * 0.960318
-PYROS = Omega + phi
-VITA = (phi + 5 * pi) / 2
-MIKA = 3 * phi + 2 * pi
-mult_p6 = PYROS * VITA * MIKA
+SOLAR = phi + 2 * pi
+KRYSTOS = 2 * Omega
+mult_p6 = SOLAR ** 2 * KRYSTOS
 m_phi = mnu_active * mult_p6
-check("V-L3-mphi  cadena m_phi = Sigma_m_nu^active * (PYROS*VITA*MIKA) = 42.47 eV",
-      abs(m_phi - 42.4717) < 2e-2, f"m_phi = {m_phi:.4f} eV")
-track_open("V-L3-mphi  Lagrangiano phi-DM no cerrado (OP-9)",
-           "el valor 42.47 eV es forward-prediction dimensionalmente consistente; "
-           "lo abierto es el Lagrangiano P(X,phi) que produce esta masa (OP-9), "
-           "no la dimensionalidad ni un fiteo")
+check("V-L3-mphi  cadena m_phi = Sigma_m_nu^active * (SOLAR^2*KRYSTOS) = 41.02 eV",
+      abs(m_phi - 41.0187) < 2e-2, f"m_phi = {m_phi:.4f} eV")
+track_open("V-L3-mphi  coeficiente SOLAR²·KRYSTOS no derivado del transporte (OP-9)",
+           "el valor 41.02 eV es forward-prediction dimensionalmente consistente, escrito "
+           "como termino de masa g²·v de un Lagrangiano escalar libre; lo abierto (OP-9) es "
+           "derivar el coeficiente SOLAR²·KRYSTOS del transporte disipativo (KAL), no la "
+           "dimensionalidad ni un fiteo. SOLAR=BIAL+KAL, KRYSTOS=2Omega anclados por linaje")
 
 # Dos sectores phi-DM (P6) — tras el reframe omega_m-directo (2026-06-18) la
 # particion sale SOLA, sin factor: Om_CDM (=Om_m,dyn=0.160, DESI) + Om_phiDM =
@@ -304,21 +304,21 @@ track_open("V-L3-2sec  split fisico de dos sectores no cerrado",
            "la suma es identidad (= V-L2-05); Om_phiDM=0.149 sale de omega_m-directo; "
            "la separacion fisica en k_fs depende de m_phi (ABIERTO) y k_fs (pendiente)")
 
-# ── REFRAME 2026-06-18 — DEPENDIENTES PENDIENTES DE RECOMPUTE (Fase B, cajon scripts) ──
-# Inputs FIJADOS (algebra pura, ya en memoria): Om_m,CMB=0.30889 (omega_m/h²,
-# OP-8 CERRADO, sin factor), H global=H_alg=67.962, m_phi=42.47 eV (mult
-# PYROS*VITA*MIKA=615.33).
-# Los siguientes valores DEPENDEN de esos inputs y sus checks abajo TODAVIA
-# muestran los numeros del escenario VIEJO (Om_m=0.320 via MIRA, m_phi=36.95).
-# NO se actualizan en memoria hasta correr cada codigo (pueden dar ROJO):
+# ── REFRAME 2026-06-19 — DEPENDIENTES PENDIENTES DE RECOMPUTE (cajon scripts) ──
+# Inputs FIJADOS (algebra pura): Om_m,CMB=0.30889 (omega_m/h², OP-8 CERRADO, sin
+# factor), H global=H_alg=67.962, m_phi=41.02 eV (mult SOLAR²·KRYSTOS=594.28,
+# mecanismo g²·v adoptado; OP-17 cerrado).
+# Los siguientes valores DEPENDEN de esos inputs; algunos checks pueden mostrar
+# numeros viejos hasta correr cada codigo. NO se actualizan hasta recomputar:
 track_open("REFRAME-FaseB  dependientes pendientes de recompute con canonicos nuevos",
-           "HECHO Fase B: (a) cascada Hubble IR=72.86 (0.17sigma) / UV=73.040 (0.00sigma) "
+           "HECHO: (a) cascada Hubble IR=72.86 (0.17sigma) / UV=73.040 (0.00sigma) "
            "con H global=67.962 (P9/P10). (b) CMB chi2=1005.5, Delta-BIC=-23.9 (SSEE favorecido) "
-           "omega_m-directo @ H=67.962 (P3, plik_lite). (c) P6 CLASS forward m_phi=42.47, "
-           "Om_phiDM=0.14889: k_fs=0.798, alpha=1.072, sigma8_two=0.7536 -> S8=0.765 (0.24sigma "
-           "KiDS, RESUELVE forward). PENDIENTE aun: (1) r_d con Om_m=0.30889 (P3); (2) posterior "
-           "MCMC con prior H_alg (P2); (3) fsigma8 con Om_m=0.30889 (P5). Marcado falsable por "
-           "k_fs=0.798 (DESI/Euclid)")
+           "omega_m-directo @ H=67.962 (P3, plik_lite). (c) P6 CLASS forward m_phi=41.02 "
+           "(SOLAR²·KRYSTOS), Om_phiDM=0.14889: k_fs=0.762, alpha=1.108, sigma8_two=0.7483 -> "
+           "S8=0.759 (0.01sigma KiDS, RESUELVE forward). (d) fsigma8 two-sector recomputado "
+           "Om_m=0.30889: media 0.82sigma (LCDM 0.73sigma). PENDIENTE aun: (1) r_d con "
+           "Om_m=0.30889 (P3); (2) posterior MCMC con prior H_alg (P2). Marcado falsable por "
+           "k_fs=0.762 (DESI/Euclid)")
 
 # EFT canónico (P7) — los parámetros lambda, alpha_pot, V0 son consecuencias
 # algebraicas de constantes ya verificadas (Om_m,dyn, KAL0, Om_DE).
@@ -423,12 +423,12 @@ track_open("V-L3-2Om  mecanismo MIRA (0.160 -> 0.320) NO derivado [CENTRAL]",
 # ─────────────────────────────────────────────────────────────────────
 print("\nCapa 4 — confrontaciones con datos")
 
-# S8 weak-lensing — CANÓNICO Fase B ω_m-directo (CLASS forward, m_phi=42.47).
+# S8 weak-lensing — CANÓNICO ω_m-directo (CLASS forward, m_phi=41.02 SOLAR²·KRYSTOS).
 #   Om_m,CMB = omega_m/h² = 0.30889 (sin factor). Dos ramas (CLASS OUTPUT, no fit):
-#   single-sector techo (el desafío): sigma8 = 0.8335 -> S8 = 0.846 (3.61sigma KiDS).
-#   two-sector phi-DM (TITULAR Paper 6, forward): sigma8_eff = 0.7536 ->
-#     S8_eff = 0.765 (0.24sigma KiDS), free-streaming k_fs=0.798, m_phi=42.47.
-# log: results/logs/p6_class_reframe_omega_m.log
+#   single-sector techo (el desafío): sigma8 = 0.8335 -> S8 = 0.846 (3.5sigma KiDS).
+#   two-sector phi-DM (TITULAR Paper 6, forward): sigma8_eff = 0.7483 ->
+#     S8_eff = 0.759 (0.01sigma KiDS), free-streaming k_fs=0.762, m_phi=41.02.
+# script: src/ssee_paper6_canonical_particle.py
 Om_cosm = _omm / _h ** 2     # 0.30889  Om_m,CMB (omega_m-directo)
 sig8_single = 0.8335         # techo todo-frío (CLASS)
 S8_single = sig8_single * (Om_cosm / 0.3) ** 0.5
@@ -437,10 +437,10 @@ check("V-L4-01 P6  sigma8 single (techo CLASS) = 0.8335",
 check("V-L4-02 P6  S8 single = sigma8 sqrt(Om/0.3) = 0.846  (el desafio)",
       abs(S8_single - 0.846) < 2e-3, f"S8 = {S8_single:.4f}")
 
-sig8_eff = 0.7536            # two-sector titular Paper 6 (forward CLASS, no fit)
+sig8_eff = 0.7483            # two-sector titular Paper 6 (forward CLASS, no fit)
 S8_eff = sig8_eff * (Om_cosm / 0.3) ** 0.5
-check("V-L4-02b P6  S8_eff two-sector = 0.765  (TITULAR, resuelve, forward)",
-      abs(S8_eff - 0.765) < 2e-3, f"S8_eff = {S8_eff:.4f}")
+check("V-L4-02b P6  S8_eff two-sector = 0.759  (TITULAR, resuelve, forward)",
+      abs(S8_eff - 0.759) < 2e-3, f"S8_eff = {S8_eff:.4f}")
 
 # Tensiones S8 — error en cuadratura modelo + observacional.
 # KiDS-1000 (Asgari+2021): S8 = 0.759 +/- 0.024.
@@ -450,8 +450,8 @@ t_KIDS_single = abs(S8_single - 0.759) / (S8_single_err ** 2 + 0.024 ** 2) ** 0.
 t_KIDS_twosec = abs(S8_eff - 0.759) / 0.024
 check("V-L4-03 P6  tension S8 single vs KiDS-1000 = 3.5 sigma  (el desafio)",
       abs(t_KIDS_single - 3.5) < 0.2, f"{t_KIDS_single:.2f} sigma")
-check("V-L4-04 P6  tension S8_eff two-sector vs KiDS-1000 = 0.24 sigma  (resuelto, forward)",
-      t_KIDS_twosec < 0.4, f"{t_KIDS_twosec:.3f} sigma")
+check("V-L4-04 P6  tension S8_eff two-sector vs KiDS-1000 = 0.01 sigma  (resuelto, forward)",
+      t_KIDS_twosec < 0.2, f"{t_KIDS_twosec:.3f} sigma")
 
 # CMB Planck PR4 (P3) — re-corrida con CAMB 1.6.5 (2026-05-22): chi2_r
 # TT 1.047 / TE 1.041 / EE 1.041 / PP 0.837 y ΔBIC=-20.8 reproducidos

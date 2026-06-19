@@ -24,10 +24,11 @@ KAL=(pi+phi)/2+pi             # KAL0
 TRIAL=3*(phi+(pi+phi)/2)      # TRIAL
 AURA=(3*phi+pi)/2             # AURA = 2*MIRA
 N_S=1-phi**-7                 # n_s = 0.96556
-# multiplicador canónico ω_m-directo (PYROS·VITA·MIKA)
-PYROS=OMEGA+phi               # 6.3776
-VITA=pi+KAL                   # 8.6630
-MIKA=3*phi+2*pi               # 11.1373
+# multiplicador canónico ω_m-directo (SOLAR²·KRYSTOS — mecanismo g²·v, OP-9/17)
+# SOLAR = BIAL+KAL = φ+2π (linaje radiativo);  KRYSTOS = 2Ω (anclado por wₐ)
+BIAL=(pi+phi)/2               # 2.3798
+SOLAR=BIAL+KAL                # 7.9012 (= φ+2π)
+KRYSTOS=2*OMEGA               # 9.5192 (= 2(π+φ))
 
 # --- fondo ω_m-directo (sin factor materia) ---
 Omega_b=(pi-phi)/(3*OMEGA**2)/H**2    # ω_b/h² algebraico = 0.04854
@@ -44,7 +45,7 @@ Om_cdm=Om_cold-Omega_b
 om_ncdm_h2=Om_hot*H**2
 mu=1.12
 
-MULT=PYROS*VITA*MIKA
+MULT=SOLAR**2*KRYSTOS
 m_phi=Smnu*MULT
 
 T_phi=T_NU*(om_ncdm_h2*93.14/m_phi)**(1.0/3.0)

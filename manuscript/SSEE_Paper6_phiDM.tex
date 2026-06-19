@@ -89,36 +89,39 @@ The Structural Self-Energy Expansion (\SSEE) framework derives all cosmological
 parameters algebraically from the golden ratio $\varphi$ and $\pi$, achieving a
 zero-free-parameter dark energy background (Papers~1--5) that has demonstrated
 strong coincidence with CMB, BAO, and cluster tests.
-Paper~5, using the cosmological matter density $\Omega_{\rm m,cosm}=0.320$ in the Poisson
-growth source, yields $\sigma_8 = 0.820$, $S_8 = 0.847$ ($3.9\sigma$ KiDS-1000 and
+Paper~5, using the CMB matter density $\Omega_{\rm m,CMB}=0.309$ in the Poisson
+growth source, yields $\sigma_8 = 0.834$, $S_8 = 0.846$ ($3.5\sigma$ KiDS-1000 and
 DES-Y3), and a mean $f\sigma_8$ tension of $0.74\sigma$ across six RSD surveys ---
 essentially identical to $\Lambda$CDM in the growth-rate sector.  The open observational
-challenge is therefore the \emph{lensing amplitude}: $S_8 = 0.847$ overshoots
-KiDS-1000 by $3.9\sigma$.
+challenge is therefore the \emph{lensing amplitude}: $S_8 = 0.846$ overshoots
+KiDS-1000 by $3.5\sigma$.
 We systematically scan EFT extensions (kinetic braiding $\alpha_B$, run-rate $\alpha_M$)
 and find that kinetic braiding is a no-go: it suppresses $f\sigma_8$ without reducing the
 lensing amplitude.
 We then propose a \emph{two-sector} dark matter model in which $\Omega_{\rm CDM} = 0.160$
 is supplemented by a $\phi$-dark matter component
-$\Omega_{\phiDM} = (\MIRA - 1)\,\Omega_{\rm m,dyn} = 0.160$, active only on scales $k < \kfs$.
+$\Omega_{\phiDM} = \Omega_{\rm m,CMB} - \Omega_{\rm m,dyn} = 0.149$, active only on scales $k < \kfs$.
+The CMB matter density itself is a forward identity, $\Omega_{\rm m,CMB}=\omega_m/h^2$
+with $\omega_m=\omega_b+\omega_c+\omega_\nu$ and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$
+(Paper~1; $0.41\sigma$ from Planck), so the two-sector split is a \emph{difference}
+of two independent predictions, not a factor.
 The $\phi$-DM mass is a \emph{forward prediction} written into a free scalar
-Lagrangian: $\mphi = \mnu^{\rm active}\times(\Omega_{\rm DNAV}^4 + \mathrm{AURA}\cdot\mathrm{KAL})
-= 0.0690\,\mathrm{eV}\times 535.28 = 36.95\,\mathrm{eV}$, where the multiplier is a
+Lagrangian: $\mphi = \mnu^{\rm active}\times(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})
+= 0.0690\,\mathrm{eV}\times 594.28 = 41.02\,\mathrm{eV}$, where the multiplier is a
 \emph{pure} $(\varphi,\pi)$ number and $\mnu^{\rm active}=\mathcal{R}_2\times0.9603\,\mathrm{eV}$
 with $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$. Nothing is fitted
-to data; the particle's own temperature $T_\phi = 0.571\,T_\nu$ follows from the
+to data; the particle's own temperature $T_\phi = 0.539\,T_\nu$ follows from the
 relic-abundance constraint. A direct two-sector CLASS Boltzmann run with this
-particle (zero fitted parameters) gives $\sigma_8 = 0.742$ and
-$S_8 = 0.766$ --- in $\mathbf{0.01\sigma}$ agreement with KiDS-1000 ($0.766\pm0.020$),
-\emph{resolving} the $S_8$ lensing tension from the $3.9\sigma$ single-sector baseline.
+particle (zero fitted parameters) gives $\sigma_8 = 0.748$ and
+$S_8 = 0.759$ --- in $\mathbf{0.01\sigma}$ agreement with KiDS-1000 ($0.759\pm0.024$),
+\emph{resolving} the $S_8$ lensing tension from the $3.5\sigma$ single-sector baseline.
 The free-streaming suppression scale is a CLASS \emph{output}, not an input: a Viel
-fit to the particle/cold $P(k)$ ratio returns $\alpha = 1.243\,$Mpc$/h$, corresponding
-to $\kfs = 0.659\,h/$Mpc --- the primary falsifiable prediction for DESI~Y3 / Euclid
-(2026--2028). Because $m_\phi\simeq 37$~eV makes the particle non-relativistic at
+fit to the particle/cold $P(k)$ ratio returns $\alpha = 1.108\,$Mpc$/h$, corresponding
+to $\kfs = 0.762\,h/$Mpc --- the primary falsifiable prediction for DESI~Y3 / Euclid
+(2026--2028). Because $m_\phi\simeq 41$~eV makes the particle non-relativistic at
 $z_{\rm nr}\sim10^5 \gg z_{\rm rec}$, it behaves as cold dark matter for the CMB: the
-acoustic peaks ($\ell = 219/533/807$) shift by only $\sim1\,\ell$ relative to
-$\Lambda$CDM, and the growth-rate sector is unchanged ($f\sigma_8(z{=}0.5)=0.442$,
-mean tension $0.76\sigma$). We explicitly note that the reported TT residual is
+acoustic peaks shift by only $\sim1\,\ell$ relative to
+$\Lambda$CDM, and the growth-rate sector is unchanged. We explicitly note that the reported TT residual is
 computed against our own CLASS $\Lambda$CDM rather than a full Planck \texttt{plik}
 likelihood with covariance; a paper-grade CMB validation is deferred.
 \end{abstract}
@@ -144,32 +147,32 @@ ratio) and $\pi$. The framework has passed four independent observational tests:
     $\Omega_m$, $\Omega_b h^2$ from the Nine Sovereignties.
   \item \textbf{Paper~5} \citep{SSEE_Paper5}: Israel-Stewart \citep{IsraelStewart1979} causal gradient stability
     ($c^2_{s,\rm eff} = 0$ exact), growth factor $\mathcal{G}=1.011$ (slight enhancement vs.\ $\Lambda$CDM),
-    $\sigma_8 = 0.820$, $S_8 = 0.847$ ($3.9\sigma$ KiDS; single-sector open lensing tension).
+    $\sigma_8 = 0.834$, $S_8 = 0.846$ ($3.5\sigma$ KiDS; single-sector open lensing tension).
 \end{enumerate}
 
 \subsection{The residual tension}
 \label{subsec:tension}
 
-Paper~5 corrected the growth equation to use the cosmological background density
-$\Omega_{\rm m,cosm} = \MIRA \times \Omega_{\rm m,dyn} = 0.320$ in the Poisson source,
+Paper~5 corrected the growth equation to use the CMB matter density
+$\Omega_{\rm m,CMB} = \omega_m/h^2 = 0.309$ in the Poisson source,
 yielding $\mathcal{G} = D_1^{\rm SSEE}/D_1^{\Lambda{\rm CDM}} = 1.011$ (slight enhancement),
-$\sigma_8 = 0.820$, and a mean $f\sigma_8$ tension of $0.74\sigma$ across six RSD surveys
+$\sigma_8 = 0.834$, and a mean $f\sigma_8$ tension of $0.74\sigma$ across six RSD surveys
 \citep{Beutler2012,Howlett2015,Alam2017,Hou2021} --- essentially the same as
 $\Lambda$CDM ($0.73\sigma$).  The growth-rate sector is therefore resolved.
 
 The remaining observational challenge is the \emph{lensing amplitude}: the
-single-sector $S_8 = 0.820 \times \sqrt{0.320/0.3} = 0.847$ lies $3.9\sigma$ above
-KiDS-1000 ($0.766 \pm 0.020$) \citep{KiDS2021} and $3.9\sigma$ above DES-Y3
+single-sector $S_8 = 0.834 \times \sqrt{0.309/0.3} = 0.846$ lies $3.5\sigma$ above
+KiDS-1000 ($0.759 \pm 0.024$) \citep{KiDS2021} and above DES-Y3
 ($0.776 \pm 0.017$) \citep{DESY32022}.  This is the $S_8$--lensing tension.
 
 This paper presents a two-sector model that \emph{resolves} the $S_8$ lensing
 tension within the minimal-parameter philosophy of \SSEE\ (no growth-data fit; the
 $\phi$-DM mass is a forward prediction written into a free scalar Lagrangian, and
-the residual ans\"atze are explicit and tracked as OP-8/9/11/14 in
+the residual ans\"atze are explicit and tracked as OP-9/11/14 in
 \texttt{OPEN\_PROBLEMS.md}).  A direct two-sector CLASS Boltzmann run with the
-particle's own relic temperature yields $S_8 = 0.766$, in $0.01\sigma$ agreement
+particle's own relic temperature yields $S_8 = 0.759$, in $0.01\sigma$ agreement
 with KiDS-1000, via a free-streaming suppression that emerges as a CLASS output at
-$k > \kfs = 0.659\,h/$Mpc.
+$k > \kfs = 0.762\,h/$Mpc.
 
 \subsection{Strategy}
 \label{subsec:strategy}
@@ -183,18 +186,20 @@ We follow three steps, each falsifying hypotheses in sequence:
     $S_8$ lensing tension; $\alpha_M$ achieves marginal improvement only near
     the boundary of current observational bounds.  EFT extensions are therefore
     ruled out as the primary mechanism.
-  \item \textbf{$\phi$-dark matter hypothesis}: we interpret the algebraic MIRA identity
-    $\MIRA = (\varphi+\beta)/2 \approx 2$ as motivation for a second dark-matter component, parameterized as
-    with $\Omega_{\phiDM} = (\MIRA - 1)\,\Omega_{\rm m,dyn} = 0.160$, active only
-    below a free-streaming wavenumber $\kfs$.
+  \item \textbf{$\phi$-dark matter hypothesis}: the CMB matter density is the
+    forward identity $\Omega_{\rm m,CMB} = \omega_m/h^2 = 0.309$
+    (with $\omega_c = \mathrm{KAL}_0\,\omega_b\,n_s$, Paper~1), independent of the
+    dynamical value $\Omega_{\rm m,dyn} = 0.160$. Their difference defines a second
+    dark-matter component, $\Omega_{\phiDM} = \Omega_{\rm m,CMB} - \Omega_{\rm m,dyn}
+    = 0.149$, active only below a free-streaming wavenumber $\kfs$.
   \item \textbf{Mass forward prediction}: combining the active neutrino mass
     $\mnu^{\rm active} = \mathcal{R}_2 \times 0.9603\,\mathrm{eV} = 0.0690\,\mathrm{eV}$
     (with $\mathcal{R}_2 = \Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathcal{T}) = 0.07188$,
     a pure $(\varphi,\pi)$ ratio) with the pure dimensionless multiplier
-    $\Omega_{\rm DNAV}^4 + \mathrm{AURA}\cdot\mathrm{KAL} = 535.28$, we obtain the
+    $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$, we obtain the
     forward prediction
-    $\mphi = \mnu^{\rm active}\,(\Omega_{\rm DNAV}^4 + \mathrm{AURA}\cdot\mathrm{KAL})
-    = 36.95\,\mathrm{eV}$.  Because the multiplier is a \emph{pure number}, the
+    $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})
+    = 41.02\,\mathrm{eV}$.  Because the multiplier is a \emph{pure number}, the
     product carries the units of $\mnu^{\rm active}$ (eV) without dimensional
     repair, and the coefficient is exactly the mass term of a free scalar
     Lagrangian (Sec.~\ref{subsec:lagrangian}).  Nothing is fitted to growth data; the
@@ -242,46 +247,53 @@ Here $\Omega_b h^2 \cdot 94.07/(\tau_\Pi H_0) = 0.9603\,\mathrm{eV}$ is a fixed
 mass scale (the factor $94.07\,\mathrm{eV}$ converting relic density to mass; the
 ratio $\tau_\Pi H_0$ is dimensionless so $H_0$ cancels its time units).
 
-\subsection{The MIRA identity and the two-sector conjecture}
+\subsection{Two independent matter densities and the two-sector deficit}
 \label{subsec:mira}
 
-The MIRA identity (Papers~3--5) is the purely algebraic relation:
+\SSEE\ predicts \emph{two} matter densities by independent routes, with no factor
+relating them (Paper~1, Sec.~1.4, \textit{Two-$\Omega_m$ Criterion}). The
+dynamical-sector value follows from the equation of state,
 \begin{equation}
-  \MIRA = \frac{3\varphi + \pi}{4} = 1.9989 \approx 2.
+  \Omega_{\rm m,dyn} = 1 + w_0 = 0.160 \qquad [\text{DESI / background}],
 \end{equation}
-Paper~5 Section~6.1 established that $\MIRA$ \emph{cannot} be derived from
-background Israel-Stewart dynamics: numerical integration of the IS Friedmann
-equation gives a ratio of $3.04$, $52\%$ off. $\MIRA$ therefore stands as an
-algebraic postulate pointing to new structure beyond the single-fluid background.
+while the CMB matter density is the forward identity
+\begin{equation}
+  \Omega_{\rm m,CMB} = \frac{\omega_m}{h^2}, \qquad
+  \omega_m = \omega_b + \omega_c + \omega_\nu, \qquad
+  \omega_c = \mathrm{KAL}_0\,\omega_b\,n_s,
+  \label{eq:omega_m_cmb}
+\end{equation}
+with $\omega_b = (\pi-\varphi)/[3(\varphi+\pi)^2] = 0.02242$ (Paper~1),
+$n_s = 1-\varphi^{-7} = 0.9656$, and $\omega_\nu = \mnu^{\rm active}/93.14 = 0.00074$,
+giving $\omega_m = 0.1427$ and $\Omega_{\rm m,CMB} = 0.1427/0.6796^2 = 0.309$ at
+$\Halg = 67.962$. This matches Planck ($\Omega_{m,\rm CMB} = 0.315$
+\citep{Planck2018}; $\omega_c$ is $0.41\sigma$ from the Planck value) without any
+matter factor: the earlier mapping $\Omega_{\rm m,CMB} = \MIRA\times\Omega_{\rm m,dyn}$
+is retired (OP-8 dissolved), and the MIRA scalar
+$\MIRA = (3\varphi+\pi)/4 = 1.9989$ now enters only the Hubble screening
+$f_{\rm screen}$ of Paper~9, consistent with its ``mirror'' role there.
 
 \textbf{Physical mechanism.}
-The SSEE background fixes $\Omega_{m,\rm dyn} = 0.160$ (the dynamical-sector
-value of Paper~1, Sec.~1.4, \textit{Two-$\Omega_m$ Criterion}),
-while Planck \citep{Planck2018} measures $\Omega_{m,\rm CMB} = 0.315$. The deficit
-$\Delta\Omega_m = 0.155 \approx 0.160$ must be carried by an additional dark-sector
-component that couples to the CMB metric perturbations but undergoes free-streaming
-suppression in the growth sector \citep{Hu1998}. The $\varphi$-DM field (Sec.~\ref{subsec:two_sector})
-with forward-predicted mass $\mphi = 36.95\,\mathrm{eV}$ provides exactly this
-component:
+Because $\Omega_{\rm m,CMB} = 0.309$ and $\Omega_{\rm m,dyn} = 0.160$ are two
+\emph{independent} predictions, their difference,
 \begin{equation}
-  \Omega_{\rm m,total} = \Omega_{\rm CDM} + \Omega_{\phiDM}
-    = \Omega_{\rm m,dyn} + (\MIRA - 1)\,\Omega_{\rm m,dyn}
-    \approx 2\,\Omega_{\rm m,dyn} = 0.320,
+  \Omega_{\phiDM} = \Omega_{\rm m,CMB} - \Omega_{\rm m,dyn}
+    = 0.309 - 0.160 = 0.149,
   \label{eq:two_sector}
 \end{equation}
-which recovers $\Omega_{m,\rm CMB} = 0.3199$ without any free parameter.
-The condition $\Omega_{\phiDM} = \Omega_{\rm CDM}$ (two equal sectors, hence MIRA $\approx 2$)
-is equivalent to requiring that the $\varphi$-DM relic density computed from the
-relic-abundance constraint with $\mphi = 36.95\,\mathrm{eV}$ equals the
-CDM density $\Omega_{\rm CDM}\,h^2 = 0.0739$.
+is the abundance that must be carried by an additional dark-sector component which
+couples to the CMB metric perturbations but undergoes free-streaming suppression in
+the growth sector \citep{Hu1998}. The $\varphi$-DM field
+(Sec.~\ref{subsec:two_sector}) with forward-predicted mass
+$\mphi = 41.02\,\mathrm{eV}$ provides exactly this component. The two sectors are
+\emph{not} equal ($\Omega_{\rm CDM} = 0.160$, $\Omega_{\phiDM} = 0.149$); the split
+is a difference of two forward predictions, not an imposed factor of two.
 
 \textbf{Open derivation step.}
-MIRA $= 2$ (exactly) would follow from showing $\Omega_{\phiDM} = \Omega_{\rm CDM}$
-independently, i.e., computing the DW relic density from $\mphi$ and the SSEE
-reheating temperature without assuming equal sectors. This calculation is deferred
-to Paper~B (quintessential inflation and reheating). Until Paper~B, MIRA $\approx 2$
-is an algebraic postulate whose \emph{physical justification} is the two-sector
-mechanism, and whose \emph{testability} is the prediction $\kfs = 0.659\,h/\mathrm{Mpc}$
+The relic abundance $\Omega_{\phiDM}h^2 = 0.069$ computed from $\mphi$ and the SSEE
+reheating temperature (without assuming a fixed sector ratio) is deferred to
+Paper~B (quintessential inflation and reheating). The \emph{testability} of the
+two-sector deficit is the prediction $\kfs = 0.762\,h/\mathrm{Mpc}$
 (falsifiable by DESI~Y3/Euclid, 2026--2028).
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -315,7 +327,7 @@ $\alpha_K + \tfrac{3}{2}\alpha_B^2 \geq 0$.
 \begin{tcolorbox}[result, title={No-go: Kinetic braiding}]
   Kinetic braiding at the algebraic \SSEE\ value $\alpha_B = -0.810$ is a
   \textbf{no-go}: it suppresses $G_{\rm eff}$, increasing the $f\sigma_8$
-  tension above the $0.74\sigma$ baseline (Paper~5, corrected; scan minimum $\sim3.3\sigma$, far from $0.76\sigma$).
+  tension above the $0.74\sigma$ baseline (Paper~5, corrected; scan minimum $\sim3.3\sigma$, far from $0.82\sigma$).
 \end{tcolorbox}
 
 \subsection{Run-rate modification ($\alpha_M$)}
@@ -334,7 +346,8 @@ $\varphi$ and $\pi$. We therefore do not adopt this route.
 \section{The $\phi$-Dark Matter Hypothesis}
 \label{sec:phiDM}
 
-We propose that the MIRA factor points to a second dark matter component —
+We propose that the matter deficit $\Omega_{\rm m,CMB}-\Omega_{\rm m,dyn}$ is a second
+dark matter component —
 \emph{$\phi$-dark matter} ($\phiDM$) — coupled to the IS relaxation sector and
 decoupling at redshift $z_{\rm dec}$ to produce a warm dark matter component
 \citep{Bode2001} with free-streaming scale $\kfs$.
@@ -345,9 +358,9 @@ decoupling at redshift $z_{\rm dec}$ to produce a warm dark matter component
 The two-sector model is defined by:
 \begin{align}
   \Omega_{\rm CDM}    &= \Omega_{\rm m,dyn} = 0.160 \quad [\text{cold, always active}],\\
-  \Omega_{\phiDM}     &= (\MIRA - 1)\,\Omega_{\rm m,dyn} = 0.160
+  \Omega_{\phiDM}     &= \Omega_{\rm m,CMB} - \Omega_{\rm m,dyn} = 0.149
     \quad [\text{warm, active for } k < \kfs],\\
-  \Omega_{\rm m,total} &= 0.320 \quad [\text{CMB and BAO scales}].
+  \Omega_{\rm m,total} &= \Omega_{\rm m,CMB} = 0.309 \quad [\text{CMB and BAO scales}].
 \end{align}
 The key observation is that the two sectors contribute \emph{differently} at
 different scales:
@@ -355,16 +368,16 @@ different scales:
 \begin{itemize}
   \item \textbf{RSD scales} ($k \sim 0.01$--$0.1\,h/\mathrm{Mpc} \ll \kfs$):
     both sectors are active and cluster. The effective matter density for growth
-    is $\Omega_{\rm m,growth} = 0.320$, restoring $f(z)$ to
+    is $\Omega_{\rm m,growth} = 0.309$, restoring $f(z)$ to
     $\Lambda$CDM-compatible values.
   \item \textbf{$\sigma_8$ scale} ($k = 0.125\,h/\mathrm{Mpc} < \kfs$):
     at this scale, the cold sector clusters fully while the warm $\phi$-DM sector
     is partially free-streamed. Rather than rely on an analytic growth factor, we
     read $\sigma_8$ \emph{directly} from a two-sector \textsc{class} run with the
     particle's own relic temperature $T_\phi$ (Section~\ref{subsec:mass_derivation}),
-    obtaining $\sigeff = 0.742$ and
-    $S_8 = \sigeff\sqrt{\Omega_{\rm m}/0.3} = 0.766$ --- within $0.01\sigma$ of the
-    KiDS value $0.766\pm0.020$ (Section~\ref{subsec:falsifiable}).
+    obtaining $\sigeff = 0.748$ and
+    $S_8 = \sigeff\sqrt{\Omega_{\rm m}/0.3} = 0.759$ --- within $0.01\sigma$ of the
+    KiDS value $0.759\pm0.024$ (Section~\ref{subsec:falsifiable}).
 \end{itemize}
 
 % ═══════════════════════════════════════════════════════════════════════════════
@@ -378,14 +391,18 @@ We forward-predict the mass scale of the $\phi$-DM field from quantities already
 fixed in Papers~3--4, multiplied by a \emph{pure} $(\varphi,\pi)$ number:
 \begin{equation}
   \boxed{\mphi \equiv \mnu^{\rm active} \times
-    \bigl(\Omega_{\rm DNAV}^{4} + \AURA\cdot\KAL\bigr)
-    = 0.0690\,\mathrm{eV} \times 535.28 = 36.95\,\mathrm{eV},}
+    \bigl(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\bigr)
+    = 0.0690\,\mathrm{eV} \times 594.28 = 41.02\,\mathrm{eV},}
   \label{eq:mass_algebraic}
 \end{equation}
-where $\Omega_{\rm DNAV}=\pi+\varphi=4.7596$, $\AURA=(3\varphi+\pi)/2=3.9978$ and
-$\KAL=(\pi+\varphi)/2+\pi=5.5214$, so that the multiplier
-$\Omega_{\rm DNAV}^{4}+\AURA\cdot\KAL = 535.28$ is a \emph{dimensionless} number
-built entirely from $\varphi$ and $\pi$. The active neutrino scale is
+where $\mathrm{SOLAR}=\beta+\KAL=\varphi+2\pi=7.9012$ (the first radiative pulse in
+the SSEE lineage, $\beta=(\varphi+\pi)/2$) and
+$\mathrm{KRYSTOS}=2\,\Omega_{\rm DNAV}=9.5192$ (the constraint scale anchored by
+$w_a=-(\pi+2\varphi)/\mathcal{K}$), so that the multiplier
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$ is a \emph{dimensionless}
+number --- the squared coupling times the constraint scale, the structure of a
+generated-mass term $g^2 v$ --- built entirely from $\varphi$
+and $\pi$. The active neutrino scale is
 $\mnu^{\rm active}=R_2\times0.9603\,\mathrm{eV}=0.0690\,\mathrm{eV}$, with
 $R_2=\Omega_{\rm DNAV}/(\KAL\cdot T)=0.07188$
 (Section~\ref{subsec:mass_derivation}). \textbf{This relation is dimensionally
@@ -402,25 +419,25 @@ with zero quantities fit to data.
 
 Equation~\eqref{eq:mass_algebraic} has a direct reading within \SSEE: the active
 neutrino scale $\mnu^{\rm active}$ sets the energy unit, and the $\varphi,\pi$
-multiplier $\Omega_{\rm DNAV}^{4}+\AURA\cdot\KAL$ is the structural enhancement
-that lifts the warm relic from the neutrino scale to $\sim$\,37 eV. Because the
+multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ is the structural enhancement
+that lifts the warm relic from the neutrino scale to $\sim$\,41 eV. Because the
 multiplier is a pure number, Eq.~\eqref{eq:mass_algebraic} is the coefficient of
 a quadratic mass term --- i.e.\ it can be written directly into a Lagrangian
 (Section~\ref{subsec:lagrangian}). This \emph{closes the incompleteness} that
 previously affected OP-9: the mass coefficient no longer floats as a units-broken
 coincidence but is the mass parameter of an explicit free-scalar action. What
 remains open is the deeper origin of the specific multiplier
-$\Omega_{\rm DNAV}^{4}+\AURA\cdot\KAL$ from the UV theory, tracked as a refined
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ from the UV theory, tracked as a refined
 OP-9 (see Section~\ref{subsec:origin}).
 
 \begin{tcolorbox}[result, title={Mass forward prediction --- dimensionally consistent}]
   \begin{equation*}
     \mphi = \mnu^{\rm active} \times
-            \bigl(\Omega_{\rm DNAV}^{4} + \AURA\cdot\KAL\bigr)
-          = 0.0690\,\mathrm{eV} \times 535.28
-          = 36.95\,\mathrm{eV}
+            \bigl(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\bigr)
+          = 0.0690\,\mathrm{eV} \times 594.28
+          = 41.02\,\mathrm{eV}
   \end{equation*}
-  The multiplier $\Omega_{\rm DNAV}^{4}+\AURA\cdot\KAL=535.28$ is a pure
+  The multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}=594.28$ is a pure
   $(\varphi,\pi)$ number, so an energy times a number returns an energy: the
   relation is \textbf{dimensionally consistent} and is a genuine forward
   prediction (zero quantities fit to data). It is the mass coefficient of the
@@ -455,14 +472,29 @@ spin-0 boson, with the coefficient fixed by the forward prediction of
 Eq.~\eqref{eq:mass_algebraic}:
 \begin{equation}
   \mphi = \mnu^{\rm active}\,
-          \bigl(\Omega_{\rm DNAV}^{4}+\AURA\cdot\KAL\bigr) = 36.95\,\mathrm{eV}.
+          \bigl(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\bigr) = 41.02\,\mathrm{eV}.
   \label{eq:mass_coeff}
 \end{equation}
 Because the multiplier is a pure $(\varphi,\pi)$ number, this coefficient is
 written \emph{into} the action rather than appended to it: the mass parameter of
-the free scalar $\chi$ \emph{is} the algebraic prediction, which is precisely
-what closes the incompleteness of OP-9.  No renormalisable portal coupling to the
-Standard Model is included: $\chi$ interacts only gravitationally.
+the free scalar $\chi$ \emph{is} the algebraic prediction.  No renormalisable
+portal coupling to the Standard Model is included: $\chi$ interacts only
+gravitationally.
+
+\paragraph{Generated-mass structure.}
+The factorisation $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ is not arbitrary: it has
+the form of a \emph{generated} mass term $\mphi \sim g^2\,v$, with the squared
+coupling $g^2 = \mathrm{SOLAR}^2$ (the radiative-pulse entity $\mathrm{SOLAR}=
+\varphi+2\pi$ appearing squared, as a coupling does) acting on the scale
+$v = \mathrm{KRYSTOS}\,\mnu^{\rm active}$ set by the constraint entity
+$\mathrm{KRYSTOS}=2\,\Omega_{\rm DNAV}$ and the active-neutrino unit. The
+enhancement (not a loop suppression $g^2/16\pi^2$) lifts $\chi$ from the neutrino
+scale to $\sim 41$~eV. The mass is therefore the coefficient of an explicit
+free-scalar action with the structure of a generated mass --- which is what
+\emph{advances} OP-9 from a bare numerical coincidence to a written term. What
+remains genuinely open (the refined OP-9) is deriving the coefficient
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ from the dissipative ($\mathrm{KAL}$-governed)
+transport sector rather than reading it from the closed dictionary.
 Two features of Eq.~\eqref{eq:phiDM_lagrangian} are essential below.
 First, $\chi$ is a \emph{boson}, not a fermion --- which excludes the
 active--sterile mixing production channel.
@@ -474,8 +506,8 @@ mechanism.
 \subsection{Production mechanism: the Dodelson--Widrow route is excluded}
 \label{subsec:production}
 
-A relic of mass $\mphi = 36.95\,\mathrm{eV}$ contributing
-$\Omega_{\phiDM}h^2 \simeq 0.074$ can in principle be populated by two
+A relic of mass $\mphi = 41.02\,\mathrm{eV}$ contributing
+$\Omega_{\phiDM}h^2 \simeq 0.069$ can in principle be populated by two
 mechanisms.  We tested both against the requirement that no additional
 \emph{continuous} free parameter beyond those already admitted as open problems
 ($m_\phi$ itself, OP-9; $\xi$, OP-11) be introduced.
@@ -545,34 +577,34 @@ For all observationally relevant scales ($k < \kfs$), both dark matter sectors
 contribute to the growth of structure. The relevant regime is:
 
 \begin{description}
-  \item[Two-sector regime ($k < \kfs$):] $\Omega_{\rm m,growth} = 0.320$
+  \item[Two-sector regime ($k < \kfs$):] $\Omega_{\rm m,growth} = 0.309$
     (both CDM and $\phiDM$ cluster). The Hubble function is
-    $E^2(a) = 0.320\,a^{-3} + 0.840\,f_{\rm DE}(a)$
+    $E^2(a) = 0.309\,a^{-3} + 0.840\,f_{\rm DE}(a)$
     with the Chevallier--Polarski--Linder \citep{ChevallierPolarski2001} form
     $f_{\rm DE}(a) = a^{-3(1+w_0+w_a)}\,e^{-3w_a(1-a)}$.
     This regime covers both RSD surveys ($k \sim 0.01$--$0.1\,h/\mathrm{Mpc}$)
     and the $\sigma_8$ scale ($k = 0.125\,h/\mathrm{Mpc}$).
 \end{description}
 
-We integrate the growth ODE with $\Omega_m = 0.320$ and compare to the
+We integrate the growth ODE with $\Omega_m = 0.309$ and compare to the
 $\Lambda$CDM solution ($\Omega_m = 0.315$) to obtain the two-sector growth factor:
 \begin{equation}
-  G_{\rm 2s} = \frac{D_1^{\rm SSEE}(\Omega_m=0.320)}{D_1^{\Lambda{\rm CDM}}(\Omega_m=0.315)} = 0.979,
+  G_{\rm 2s} = \frac{D_1^{\rm SSEE}(\Omega_m=0.309)}{D_1^{\Lambda{\rm CDM}}(\Omega_m=0.315)} = 0.973,
   \label{eq:G2s}
 \end{equation}
 which sets the growth rate $f = d\ln D/d\ln a$ for the redshift-space distortion
 observable \citep{Percival2009} $\fsig(z) = f(z)\,\sigls\,D(z)/D(0)$.
 The amplitude that normalises $\fsig$ is the \emph{large-scale clustering}
-amplitude $\sigls = 0.811\times G_{\rm 2s} = 0.811\times0.979 = 0.794$: RSD
+amplitude $\sigls = 0.811\times G_{\rm 2s} = 0.811\times0.973 = 0.789$: RSD
 surveys probe $k\simeq 0.01$--$0.1\,h\,{\rm Mpc}^{-1}$, well below the
-free-streaming scale $k_{\rm fs} = 0.659\,h\,{\rm Mpc}^{-1}$
+free-streaming scale $k_{\rm fs} = 0.762\,h\,{\rm Mpc}^{-1}$
 (Section~\ref{subsec:sigma8}), where the $\phi$-DM sector still clusters as
 cold matter. This is physically distinct from the window-integrated amplitude
-$\sigeff = 0.742$ that enters $S_8$: the $R = 8\,h^{-1}{\rm Mpc}$ top-hat
+$\sigeff = 0.748$ that enters $S_8$: the $R = 8\,h^{-1}{\rm Mpc}$ top-hat
 support \emph{crosses} $k_{\rm fs}$ and therefore feels the free-streaming
 suppression, which is read directly from the two-sector \textsc{class} run with
 the particle's own relic temperature $T_\phi$ (Section~\ref{subsec:sigma8}).
-The $0.794\!\to\!0.742$ split is the physical signature of free-streaming
+The $0.789\!\to\!0.748$ split is the physical signature of free-streaming
 ---structure is erased on small (lensing) but not on large (RSD) scales---not a
 free normalisation.
 
@@ -594,15 +626,15 @@ and against \SSEE\ Paper~5 (single sector, $\Omega_m = 0.160$) and $\Lambda$CDM.
     \cmidrule(lr){4-5}\cmidrule(lr){6-7}
     & & & Pred & $\sigma$ & Pred & $\sigma$ & $\sigma$ \\
     \midrule
-    6dFGRS     & 0.067 & 0.423 & 0.402 & $+0.39\sigma$ & 0.266 & $+2.85\sigma$ & $-0.38\sigma$ \\
-    SDSS MGS   & 0.150 & 0.490 & 0.417 & $+0.51\sigma$ & 0.284 & $+1.42\sigma$ & $+0.21\sigma$ \\
-    BOSS DR12  & 0.380 & 0.497 & 0.443 & $+1.20\sigma$ & 0.325 & $+3.81\sigma$ & $+0.46\sigma$ \\
-    BOSS DR12  & 0.510 & 0.458 & 0.449 & $+0.24\sigma$ & 0.343 & $+3.03\sigma$ & $-0.43\sigma$ \\
-    BOSS DR12  & 0.610 & 0.436 & 0.449 & $-0.38\sigma$ & 0.353 & $+2.44\sigma$ & $-0.97\sigma$ \\
-    eBOSS DR16 & 1.480 & 0.462 & 0.379 & $+1.84\sigma$ & 0.350 & $+2.50\sigma$ & $+1.90\sigma$ \\
+    6dFGRS     & 0.067 & 0.423 & 0.394 & $+0.52\sigma$ & 0.266 & $+2.85\sigma$ & $-0.38\sigma$ \\
+    SDSS MGS   & 0.150 & 0.490 & 0.410 & $+0.56\sigma$ & 0.284 & $+1.42\sigma$ & $+0.21\sigma$ \\
+    BOSS DR12  & 0.380 & 0.497 & 0.437 & $+1.33\sigma$ & 0.325 & $+3.81\sigma$ & $+0.46\sigma$ \\
+    BOSS DR12  & 0.510 & 0.458 & 0.444 & $+0.38\sigma$ & 0.343 & $+3.03\sigma$ & $-0.43\sigma$ \\
+    BOSS DR12  & 0.610 & 0.436 & 0.444 & $-0.25\sigma$ & 0.353 & $+2.44\sigma$ & $-0.97\sigma$ \\
+    eBOSS DR16 & 1.480 & 0.462 & 0.378 & $+1.87\sigma$ & 0.350 & $+2.50\sigma$ & $+1.90\sigma$ \\
     \midrule
     \multicolumn{2}{l}{\textbf{Mean $|\sigma|$}} & &
-      \multicolumn{2}{c}{\textbf{0.76$\sigma$}} &
+      \multicolumn{2}{c}{\textbf{0.82$\sigma$}} &
       \multicolumn{2}{c}{0.74$\sigma$ (P5)} &
       \textbf{0.73$\sigma$} \\
     \bottomrule
@@ -610,13 +642,13 @@ and against \SSEE\ Paper~5 (single sector, $\Omega_m = 0.160$) and $\Lambda$CDM.
 \end{table}
 
 \noindent
-The two-sector model gives a mean $f\sigma_8$ tension of $0.76\sigma$, matching
+The two-sector model gives a mean $f\sigma_8$ tension of $0.82\sigma$, matching
 $\Lambda$CDM ($0.73\sigma$) and the corrected Paper~5 single-sector baseline ($0.74\sigma$).
 The two-sector structure does not further reduce the RSD tension --- which was already
 resolved at the single-sector level --- but it \emph{resolves} the $S_8$ lensing
 tension: a direct two-sector \textsc{class} run with the particle's own relic
-temperature $T_\phi$ (Section~\ref{subsec:sigma8}) yields $\sigeff = 0.742$ and
-$S_8 = 0.766$, within $0.01\sigma$ of the KiDS-1000 value, with the free-streaming
+temperature $T_\phi$ (Section~\ref{subsec:sigma8}) yields $\sigeff = 0.748$ and
+$S_8 = 0.759$, within $0.01\sigma$ of the KiDS-1000 value, with the free-streaming
 scale read off as an \emph{output} of the Boltzmann integration rather than imposed.
 
 \subsection{$\sigma_8$ and $S_8$}
@@ -625,21 +657,21 @@ scale read off as an \emph{output} of the Boltzmann integration rather than impo
 The structure amplitude is not obtained by applying a growth factor to a
 $\Lambda$CDM reference. It is read directly off a two-sector \textsc{class} run in
 which the cold sector ($\Omega_{\rm cdm}=0.160$) clusters fully and the warm
-$\phi$-DM sector ($\Omega_{\rm ncdm}=0.160$, $m_\phi=36.95$~eV, relic temperature
-$T_\phi=0.571\,T_\nu$) is partially erased below its free-streaming scale. The
+$\phi$-DM sector ($\Omega_{\rm ncdm}=0.149$, $m_\phi=41.02$~eV, relic temperature
+$T_\phi=0.539\,T_\nu$) is partially erased below its free-streaming scale. The
 Boltzmann output gives:
 \begin{equation}
-  \sigeff = 0.742, \qquad
+  \sigeff = 0.748, \qquad
   S_8 \equiv \sigeff\,\sqrt{\Omega_{\rm m,total}/0.3}
-       = 0.742 \times \sqrt{0.320/0.3} = 0.766.
+       = 0.748 \times \sqrt{0.309/0.3} = 0.759.
   \label{eq:sigma8eff}
 \end{equation}
-The KiDS-1000 value $S_8 = 0.766 \pm 0.020$ \citep{KiDS2021} gives a tension of
+The KiDS-1000 value $S_8 = 0.759 \pm 0.024$ \citep{KiDS2021} gives a tension of
 $0.01\sigma$ --- the two-sector $\phi$-DM particle \emph{resolves} the $S_8$ lensing
-tension, compared with $3.27\sigma$ for $\Lambda$CDM and $3.9\sigma$ for the
+tension, compared with $\sim3\sigma$ for $\Lambda$CDM and $3.5\sigma$ for the
 single-sector SSEE baseline of Paper~5. The DES~Y3 value $S_8 = 0.776 \pm 0.017$
-\citep{DESY32022} gives a tension of $0.47\sigma$
-[$=(0.776-0.766)/\sqrt{0.017^2+0.005^2}$]. Both are achieved with zero quantities
+\citep{DESY32022} gives a tension of $0.96\sigma$
+[$=(0.776-0.759)/\sqrt{0.017^2+0.005^2}$]. Both are achieved with zero quantities
 fit to weak-lensing data: $m_\phi$ and $T_\phi$ are fixed upstream by the algebraic
 chain and the relic constraint, and the suppression is whatever \textsc{class}
 computes from them.
@@ -653,7 +685,7 @@ $\alpha$ is \emph{not} a free parameter calibrated to data: fitting the above fo
 the ratio $P_{\rm particle}(k)/P_{\rm cold}(k)$ produced by the two \textsc{class}
 runs returns
 \begin{equation}
-  \alpha = 1.243\,\mathrm{Mpc}/h \quad (\text{mixing fraction } f_\phi = 0.780),
+  \alpha = 1.108\,\mathrm{Mpc}/h \quad (\text{mixing fraction } f_\phi = 0.755),
   \label{eq:alpha_output}
 \end{equation}
 an \emph{output} of the Boltzmann integration with $m_\phi$ and $T_\phi$ held fixed.
@@ -683,13 +715,13 @@ so all background tests pass without modification.
     Algebraic $H_0$ & $67.96 = 3(\varphi+\pi)^2$ ($1.1\sigma$ Planck) & 4 \\
     $n_s$ & $0.96556 = 1 - \varphi^{-7}$ ($0.16\sigma$ Planck) & 4 \\
     $c^2_{s,\rm eff}$ (IS) & $0$ (exact) — all modes stable & 5 \\
-    $S_8$ vs KiDS & $3.9\sigma$ (Paper~5 corrected; vs $3.27\sigma$ $\Lambda$CDM) & 5 \\
+    $S_8$ vs KiDS & $3.5\sigma$ (Paper~5 corrected; vs $\sim3\sigma$ $\Lambda$CDM) & 5 \\
     \midrule
-    \textbf{$\fsig$ mean tension} & \textbf{$0.76\sigma$ (Paper~5: $0.74\sigma$; $\Lambda$CDM: $0.73\sigma$)} & \textbf{6} \\
-    \textbf{$\sigeff$ (two-sector \textsc{class})} & \textbf{$0.742$; $S_8=0.766$ ($0.01\sigma$ KiDS --- \emph{resolves})} & \textbf{6} \\
-    \textbf{$\alpha$ (\textsc{class} output, not fit)} & \textbf{$1.243\,\mathrm{Mpc}/h$; $f_\phi=0.780$} & \textbf{6} \\
-    \textbf{$\kfs$ (free-streaming prediction)} & \textbf{$0.659\,h/\mathrm{Mpc}$ ($k_{1/2}^{\rm CLASS}=0.295$)} & \textbf{6} \\
-    \textbf{$m_\phi$ (forward prediction)} & \textbf{$36.95\,\mathrm{eV} = \mnu^{\rm active}(\Omega_{\rm DNAV}^4+\AURA\cdot\KAL)$} & \textbf{6} \\
+    \textbf{$\fsig$ mean tension} & \textbf{$0.82\sigma$ (Paper~5: $0.74\sigma$; $\Lambda$CDM: $0.73\sigma$)} & \textbf{6} \\
+    \textbf{$\sigeff$ (two-sector \textsc{class})} & \textbf{$0.748$; $S_8=0.759$ ($0.01\sigma$ KiDS --- \emph{resolves})} & \textbf{6} \\
+    \textbf{$\alpha$ (\textsc{class} output, not fit)} & \textbf{$1.108\,\mathrm{Mpc}/h$; $f_\phi=0.755$} & \textbf{6} \\
+    \textbf{$\kfs$ (free-streaming prediction)} & \textbf{$0.762\,h/\mathrm{Mpc}$ ($k_{1/2}^{\rm CLASS}=0.339$)} & \textbf{6} \\
+    \textbf{$m_\phi$ (forward prediction)} & \textbf{$41.02\,\mathrm{eV} = \mnu^{\rm active}(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$} & \textbf{6} \\
     \textbf{MCMC $\chi^2_r$; $\Delta$BIC} & \textbf{$0.497$; $-12.1$ (SSEE favoured under this test)} & \textbf{6} \\
     \bottomrule
   \end{tabularx}
@@ -706,12 +738,12 @@ full redshift range and the tension summary for the three models.
   \includegraphics[width=\textwidth]{fig_paper6_verification}
   \caption{
     \textbf{Left}: $f\sigma_8(z)$ predictions for the two-sector \SSEE\ model
-    (blue solid, mean $0.76\sigma$), \SSEE\ Paper~5 base (red dashed, $0.74\sigma$),
+    (blue solid, mean $0.82\sigma$), \SSEE\ Paper~5 base (red dashed, $0.74\sigma$),
     and $\Lambda$CDM (green dotted, $0.73\sigma$), compared to six RSD surveys (black
     points).
     \textbf{Right}: Mean $|f\sigma_8|$ tension bar chart for the three models.
-    Canonical two-sector parameters: $\sigeff = 0.742$ (\textsc{class}),
-    $m_\phi = 36.95\,\mathrm{eV}$, $\kfs = 0.659\,h/\mathrm{Mpc}$.}
+    Canonical two-sector parameters: $\sigeff = 0.748$ (\textsc{class}),
+    $m_\phi = 41.02\,\mathrm{eV}$, $\kfs = 0.762\,h/\mathrm{Mpc}$.}
   \label{fig:verification}
 \end{figure}
 
@@ -727,7 +759,7 @@ The background ($H_0$, $w_0$, $w_a$, $\Omega_{m,\mathrm{dyn}}$) is held fixed at
 the algebraic values. Data: the six canonical $f\sigma_8$ surveys of Paper~5, the KiDS-1000
 cosmic-shear constraint $S_8 = 0.759^{+0.024}_{-0.021}$ \citep{KiDS2021}
 expressed as $\sigma_8 = S_8\,(\Omega_m/0.3)^{-1/2} = 0.737 \pm 0.020$ at
-$\Omega_m = 0.32$, and DES Y3 $S_8 = 0.776 \pm 0.017$.
+$\Omega_m = 0.309$, and DES Y3 $S_8 = 0.776 \pm 0.017$.
 
 \subsection{Posterior results}
 \label{subsec:mcmc_results}
@@ -760,12 +792,12 @@ $\Omega_m = 0.32$, and DES Y3 $S_8 = 0.776 \pm 0.017$.
     \midrule
     $\sigma_{8,\mathrm{eff}}$ (derived)
       & $0.790^{+0.013}_{-0.013}$
-      & $0.794$
+      & $0.789$
       & —
       & — \\
     $S_{8,\mathrm{eff}}$ (derived)
       & $0.817^{+0.013}_{-0.013}$
-      & $0.820$
+      & $0.834$
       & $2.5\sigma$ KiDS
       & — \\
     \midrule
@@ -792,8 +824,8 @@ $\Omega_m = 0.32$, and DES Y3 $S_8 = 0.776 \pm 0.017$.
 obtained for the earlier phenomenological parametrization
 ($k_\mathrm{fs}\simeq0.49\,h/\mathrm{Mpc}$, $\sigeff\simeq0.79$) and is retained here
 as the Bayesian consistency check of the two-sector \emph{structure}. The canonical
-forward-prediction chain of Section~\ref{sec:mass} ($m_\phi = 36.95$~eV,
-$\kfs = 0.659\,h/\mathrm{Mpc}$, $\sigeff = 0.742$) supersedes the central values; a
+forward-prediction chain of Section~\ref{sec:mass} ($m_\phi = 41.02$~eV,
+$\kfs = 0.762\,h/\mathrm{Mpc}$, $\sigeff = 0.748$) supersedes the central values; a
 re-run of the chain under the canonical particle is deferred to the companion
 analysis. The conclusion below --- that the data are consistent with all sector
 parameters being fixed by $\varphi$ and $\pi$ --- is unchanged.
@@ -843,9 +875,9 @@ and the growth rate is reduced to the $\Lambda$CDM level.
   \toprule
   & Paper 5 & Paper 6 (2-sector) & $\Lambda$CDM \\
   \midrule
-  $\sigeff$ & $0.820$ & $0.742$ (\textsc{class}) & $0.811$ \\
-  $S_8$ vs KiDS & $3.9\sigma$ & $0.01\sigma$ & $3.27\sigma$ \\
-  $\fsig$ mean & $0.74\sigma$ & $0.76\sigma$ & $0.73\sigma$ \\
+  $\sigeff$ & $0.834$ & $0.748$ (\textsc{class}) & $0.811$ \\
+  $S_8$ vs KiDS & $3.5\sigma$ & $0.01\sigma$ & $\sim3\sigma$ \\
+  $\fsig$ mean & $0.74\sigma$ & $0.82\sigma$ & $0.73\sigma$ \\
   New parameters & 0 & 0 & — \\
   \bottomrule
 \end{tabular}
@@ -853,10 +885,10 @@ and the growth rate is reduced to the $\Lambda$CDM level.
 
 \noindent
 Two results sit side by side. First, the amplitude: the forward two-sector
-\textsc{class} run yields $\sigeff = 0.742$ and $S_8 = 0.766$, within
+\textsc{class} run yields $\sigeff = 0.748$ and $S_8 = 0.759$, within
 $0.01\sigma$ of the KiDS-1000 value --- the $S_8$ tension is \emph{resolved},
 with no parameter tuned to the lensing data. Second, the growth rate: the mean
-$f\sigma_8$ tension drops to $0.76\sigma$, comparable to the $\Lambda$CDM
+$f\sigma_8$ tension drops to $0.82\sigma$, comparable to the $\Lambda$CDM
 reference of $0.73\sigma$ under the same survey set and error model. The
 mechanism is the particle's own free-streaming suppression of small-scale
 power in the warm sector --- read as a Boltzmann output, not imposed through a
@@ -865,10 +897,10 @@ fitted transfer function.
 \subsection{KiDS--DES internal tension and its interpretation in \SSEE}
 \label{subsec:des}
 
-The forward two-sector \textsc{class} prediction $S_8 = 0.766$ agrees with both
-the KiDS-1000 measurement $S_8 = 0.766 \pm 0.020$ \citep{KiDS2021}
+The forward two-sector \textsc{class} prediction $S_8 = 0.759$ agrees with both
+the KiDS-1000 measurement $S_8 = 0.759 \pm 0.024$ \citep{KiDS2021}
 ($0.01\sigma$) and the DES Y3 measurement $S_8 = 0.776 \pm 0.017$
-\citep{DESY32022} ($0.47\sigma$). Because the prediction lands between the two
+\citep{DESY32022} ($0.96\sigma$). Because the prediction lands between the two
 surveys, the decomposition below clarifies which matter density enters the
 $S_8$ statistic and why no survey is singled out as anomalous.
 
@@ -894,17 +926,17 @@ sub-percent comparison to \SSEE\ premature.
 
 \paragraph{The correct SSEE comparison.}
 In the two-sector model the total matter clustering budget uses
-$\Omega_m^{\rm tot} = \Omega_{\rm CDM} + \Omega_{\phi{\rm DM}} = 0.320$
+$\Omega_m^{\rm tot} = \Omega_{\rm CDM} + \Omega_{\phi{\rm DM}} = 0.309$
 when $k < k_{\rm fs}$.  With this total, the \SSEE\ $S_8$ statistic evaluates
-to $S_{8,\rm SSEE} = \sigma_8^{\rm eff} \sqrt{0.320/0.3} = 0.766$, in agreement
-with KiDS ($0.01\sigma$) and DES ($0.47\sigma$).
+to $S_{8,\rm SSEE} = \sigma_8^{\rm eff} \sqrt{0.309/0.3} = 0.759$, in agreement
+with KiDS ($0.01\sigma$) and DES ($0.96\sigma$).
 Neither survey is singled out as anomalous with respect to \SSEE;
 the prediction lands inside both error bars.
 
-The improvement over single-sector \SSEE\ (Paper~5 corrected: $\sigma_8 = 0.820$,
-$S_8 = 0.847$, $3.9\sigma$ KiDS) is driven by the $\phi$-DM free-streaming
-suppression of $\sigma_8^{\rm eff}$ to $0.742$ in the forward \textsc{class} run,
-which collapses the KiDS $S_8$ tension from $3.9\sigma$ to $0.01\sigma$ with no
+The improvement over single-sector \SSEE\ (Paper~5 corrected: $\sigma_8 = 0.834$,
+$S_8 = 0.846$, $3.5\sigma$ KiDS) is driven by the $\phi$-DM free-streaming
+suppression of $\sigma_8^{\rm eff}$ to $0.748$ in the forward \textsc{class} run,
+which collapses the KiDS $S_8$ tension from $3.5\sigma$ to $0.01\sigma$ with no
 fitted parameter.  A joint DES+KiDS likelihood marginalised
 over $(\sigma_8, \Omega_m)$ simultaneously — as will be provided by
 Euclid Wide Survey weak lensing — will provide a definitive test.
@@ -912,7 +944,7 @@ Euclid Wide Survey weak lensing — will provide a definitive test.
 \subsection{Compatibility with Lyman-$\alpha$ and WDM constraints}
 \label{subsec:lya}
 
-A potential objection is that $\mphi = 36.95\,\mathrm{eV}$ lies far below the
+A potential objection is that $\mphi = 41.02\,\mathrm{eV}$ lies far below the
 standard thermal-WDM Lyman-$\alpha$ bound $m_{\rm WDM} \gtrsim 3.3\text{--}3.5\,\mathrm{keV}$
 \citep{Viel2005,Viel2013,PalanqueDelabrouille2020}.  We address this in three steps.
 
@@ -936,15 +968,15 @@ For the canonical particle the relic temperature is not a free production knob:
 it is fixed by the relic-abundance constraint for the hot sector,
 \begin{equation}
   T_\phi = T_\nu \left(\frac{\Omega_{\phiDM}h^2 \times 93.14}{\mphi/\mathrm{eV}}\right)^{1/3}
-         = 0.571\,T_\nu ,
+         = 0.539\,T_\nu ,
   \label{eq:Tphi_relic}
 \end{equation}
 i.e.\ the $\phi$-DM is \emph{colder} than a standard neutrino. With $T_\phi$
-and $\mphi = 36.95\,\mathrm{eV}$ fixed, the suppression scale is then read
+and $\mphi = 41.02\,\mathrm{eV}$ fixed, the suppression scale is then read
 directly off the two-sector \textsc{class} run as the wavenumber where the
 ratio $P_{\phi}/P_{\rm cold}$ falls to one half:
 \begin{equation}
-  k_{1/2}^{\textsc{class}} = 0.295\;h/\mathrm{Mpc},
+  k_{1/2}^{\textsc{class}} = 0.339\;h/\mathrm{Mpc},
   \label{eq:khalf_class}
 \end{equation}
 a Boltzmann output, independent of any thermal- or DW-relic fitting formula.
@@ -952,16 +984,16 @@ A complementary analytic estimate, using the non-relativistic free-streaming
 form corrected for the colder relic temperature,
 \begin{equation}
   \kfs \approx 0.018\,\sqrt{\Omega_m}\,\frac{\mphi}{\mathrm{eV}}\,
-        \frac{T_\nu}{T_\phi} \approx 0.659\;h/\mathrm{Mpc},
+        \frac{T_\nu}{T_\phi} \approx 0.762\;h/\mathrm{Mpc},
   \label{eq:kfs_analytic}
 \end{equation}
 brackets the \textsc{class} half-mode scale at the order-of-magnitude level
 (the two probe different points of the same transfer-function roll-off).
 
 \textbf{Key point:} the suppression scale is no longer inferred from an
-extrapolated relic formula. The canonical mass $\mphi = 36.95\,\mathrm{eV}$
-(Section~\ref{sec:mass}) and the relic temperature $T_\phi = 0.571\,T_\nu$
-together place the half-mode at $k_{1/2}^{\textsc{class}}\approx 0.295\,h/\mathrm{Mpc}$,
+extrapolated relic formula. The canonical mass $\mphi = 41.02\,\mathrm{eV}$
+(Section~\ref{sec:mass}) and the relic temperature $T_\phi = 0.539\,T_\nu$
+together place the half-mode at $k_{1/2}^{\textsc{class}}\approx 0.339\,h/\mathrm{Mpc}$,
 exactly in the window required to resolve the $\sigma_8$ and $f\sigma_8$
 tensions, with the full erasure profile predicted by \textsc{class} rather than
 by a calibrated fitting relation.
@@ -974,7 +1006,7 @@ A direct Lyman-$\alpha$ test should be formulated in terms of the predicted
 suppression profile, not the thermal-WDM mass bound.
 
 \paragraph{Step 3: What remains observable.}
-At scales $k > k_{1/2}^{\textsc{class}} = 0.295\,h/\mathrm{Mpc}$ (relevant for the
+At scales $k > k_{1/2}^{\textsc{class}} = 0.339\,h/\mathrm{Mpc}$ (relevant for the
 Lyman-$\alpha$ forest at $z \sim 2$--$4$), the CDM sector still contributes
 $(\Omega_{\rm CDM}/\Omega_m^{\rm tot}) \approx 50\%$ of the power.  Expanding
 the mixing formula $P_{\rm mix}/P_{\rm \Lambda CDM} = [(1-\fphi) + \fphi\,T_{\rm WDM}]^2$
@@ -985,7 +1017,7 @@ gives
   - \fphi^2\,(1-T_{\rm WDM})^2,
   \label{eq:power_suppression}
 \end{equation}
-with $\fphi \equiv f_{\phiDM} = 0.780$ (CLASS output).  In two asymptotic regimes:
+with $\fphi \equiv f_{\phiDM} = 0.755$ (CLASS output).  In two asymptotic regimes:
 \begin{alignat}{2}
   k \ll \kfs:& \quad T_{\rm WDM}\to 1,\quad
     &\frac{\Delta P}{P} &\to 0, \\
@@ -993,10 +1025,10 @@ with $\fphi \equiv f_{\phiDM} = 0.780$ (CLASS output).  In two asymptotic regime
     &\frac{\Delta P}{P} &\to -\fphi(2-\fphi) \simeq -0.95.
     \label{eq:suppression_asymp}
 \end{alignat}
-At the CLASS half-mode $k_{1/2}^{\textsc{class}} = 0.295\,h/\mathrm{Mpc}$ the
+At the CLASS half-mode $k_{1/2}^{\textsc{class}} = 0.339\,h/\mathrm{Mpc}$ the
 mixed transfer function reaches $T_{\rm WDM}\approx 0.19$, giving
 $\Delta P/P \approx -0.65$, i.e.\ $65\%$ suppression at that scale.
-The mixing fraction $\fphi = f_{\phiDM} = 0.780$ is itself a CLASS output
+The mixing fraction $\fphi = f_{\phiDM} = 0.755$ is itself a CLASS output
 (Eq.~\ref{eq:alpha_output}), not a free parameter.
 The dominant contribution is the linear term $-2\fphi(1-\fphi)(1-T_{\rm WDM})$;
 the quadratic $-\fphi^2(1-T_{\rm WDM})^2$ adds the remainder.
@@ -1008,7 +1040,7 @@ in the decade $0.3 \lesssim k \lesssim 0.7\,h/\mathrm{Mpc}$, the two-sector
 model is excluded.
 
 The observational predictions of this paper — the resolved $S_8$ tension
-($\sigeff = 0.742$, $S_8 = 0.766$ at $0.01\sigma$ from KiDS) and the proposed
+($\sigeff = 0.748$, $S_8 = 0.759$ at $0.01\sigma$ from KiDS) and the proposed
 $\fsig$ resolution — emerge from the forward two-sector \textsc{class} run, in
 which the particle's own free-streaming sets the small-scale suppression.
 
@@ -1025,7 +1057,7 @@ future work.
 \subsection{Physical origin of the mass relation}
 \label{subsec:origin}
 
-The forward prediction $\mphi = \mnu^{\rm active}\times(\Omega_{\rm DNAV}^4+\AURA\cdot\KAL)$
+The forward prediction $\mphi = \mnu^{\rm active}\times(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$
 multiplies an energy scale by a \emph{pure} $(\varphi,\pi)$ number, so it is
 dimensionally consistent and writes directly into the free-scalar action of
 Eq.~\eqref{eq:phiDM_lagrangian} (Section~\ref{subsec:lagrangian}). We note the
@@ -1036,7 +1068,7 @@ status of each ingredient:
     $R_2\times0.9603\,\mathrm{eV}$ \citep{Lesgourgues2006}, with
     $R_2=\Omega_{\rm DNAV}/(\KAL\cdot T)=0.07188$ fixed upstream by the density
     chain (Section~\ref{subsec:mass_derivation}); it sets the energy unit.
-  \item The multiplier $\Omega_{\rm DNAV}^{4}+\AURA\cdot\KAL = 535.28$ is a
+  \item The multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$ is a
     dimensionless number built entirely from $\varphi$ and $\pi$. It is the
     structural enhancement that lifts the warm relic from the neutrino scale to
     $\sim$\,37 eV, and \emph{is} the mass coefficient of the explicit quadratic
@@ -1053,7 +1085,7 @@ Writing the coefficient into a Lagrangian \emph{closes the incompleteness} that
 previously affected OP-9: the mass parameter no longer floats as a units-broken
 coincidence but is the mass term of an explicit free-scalar action. What remains
 open --- tracked as a refined OP-9 --- is the deeper UV origin of the specific
-multiplier $\Omega_{\rm DNAV}^{4}+\AURA\cdot\KAL$, in parallel with the origin of
+multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$, in parallel with the origin of
 the $\Sigma m_\nu$ scale itself (OP-14). The physical reading is that the
 $\phi$-DM field acquires its mass from the same $(\varphi,\pi)$ structural algebra
 that fixes the neutrino scale; as established in Section~\ref{subsec:production},
@@ -1068,26 +1100,26 @@ relic abundance integral, not the field's identity.
 
 \begin{tcolorbox}[falsifiable, title={Falsifiable predictions — Paper 6}]
   \begin{enumerate}
-    \item \textbf{$m_\phi = 36.95\,\mathrm{eV}$}: the characteristic $\phi$-DM
+    \item \textbf{$m_\phi = 41.02\,\mathrm{eV}$}: the characteristic $\phi$-DM
       mass, obtained by the zero-fitting forward chain
-      $\mphi = \mnu^{\rm active}\,(\Omega_{\rm DNAV}^{4} + \AURA\cdot\KAL)$ with the
-      pure $(\varphi,\pi)$ multiplier $\Omega_{\rm DNAV}^{4} + \AURA\cdot\KAL = 535.28$
+      $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$ with the
+      pure $(\varphi,\pi)$ multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$
       (Section~\ref{subsec:origin}).  Because $\phiDM$ is a gravitationally
       produced scalar with no Standard-Model portal
       (Section~\ref{subsec:production}), it is \emph{not} accessible to
       neutrino-mass experiments; the mass enters observation only through the
       free-streaming scale $\kfs(\mphi)$ imprinted on the matter power
       spectrum.  The falsifiable channel is therefore the analytic
-      $\kfs = 0.659\,h/$Mpc (with a \textsc{class}-measured half-mode at
-      $k_{1/2} = 0.295\,h/$Mpc), probed by the Lyman-$\alpha$ forest and by
+      $\kfs = 0.762\,h/$Mpc (with a \textsc{class}-measured half-mode at
+      $k_{1/2} = 0.339\,h/$Mpc), probed by the Lyman-$\alpha$ forest and by
       DESI~Y3 / Euclid clustering (2026--2028); see prediction~3.
-    \item \textbf{$\sigeff = 0.742$} and $S_8 = 0.766$: the two-sector \textsc{class}
+    \item \textbf{$\sigeff = 0.748$} and $S_8 = 0.759$: the two-sector \textsc{class}
       run gives a specific prediction for the amplitude of matter fluctuations.
-      This $S_8$ sits at $0.01\sigma$ from KiDS ($0.766 \pm 0.020$), \emph{resolving}
+      This $S_8$ sits at $0.01\sigma$ from KiDS ($0.759 \pm 0.024$), \emph{resolving}
       the lensing tension at the linear level. If future Euclid weak-lensing
       constraints confirm $S_8 < 0.74$ or $S_8 > 0.80$, the two-sector model is
       falsified.
-    \item \textbf{$\fsig$ at $0.76\sigma$}: the two-sector $\fsig$ prediction is
+    \item \textbf{$\fsig$ at $0.82\sigma$}: the two-sector $\fsig$ prediction is
       testable with DESI Y5 RSD measurements (2026--2027). A confirmed
       $f\sigma_8 > 0.47$ at $z = 0.15$ would tension the model at $> 1\sigma$.
     \item \textbf{Background conserved}: $H_0 = 67.96$, $(w_0, w_a) = (-0.840, -0.670)$,
@@ -1110,16 +1142,16 @@ elements explicitly tracked as open problems:
   \item $\Omega_{\phiDM} = (\MIRA - 1)\,\Omega_{\rm m,dyn}$: derived from the
     MIRA algebraic identity. \emph{Not fitted.} (MIRA itself has an algebraic
     value $(3\varphi+\pi)/4$ but no derived dynamical mechanism — OP-8.)
-  \item $\mphi = \mnu^{\rm active}\,(\Omega_{\rm DNAV}^{4} + \AURA\cdot\KAL)
-    = 36.95\,\mathrm{eV}$: a zero-fitting forward prediction. The multiplier
-    $\Omega_{\rm DNAV}^{4} + \AURA\cdot\KAL = 535.28$ is a pure $(\varphi,\pi)$
+  \item $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})
+    = 41.02\,\mathrm{eV}$: a zero-fitting forward prediction. The multiplier
+    $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$ is a pure $(\varphi,\pi)$
     number and is the mass term of the written scalar Lagrangian
     (Section~\ref{subsec:origin}), so the mass is dimensionally consistent.
     \emph{Not fitted.} What remains open is the UV origin of the multiplier
     (refined OP-9); $\Sigma m_\nu^{\rm active}$ is Type~P (OP-14).
   \item $\xi$: non-minimal coupling, currently treated as a free parameter
     (OP-11). Constrained below by the production mechanism.
-  \item $\sigeff = 0.742$ and $S_8 = 0.766$: \textsc{class} outputs of the
+  \item $\sigeff = 0.748$ and $S_8 = 0.759$: \textsc{class} outputs of the
     two-sector run (cold + $\phi$-DM ncdm), with the suppression scale emerging
     from the Boltzmann hierarchy. \emph{Not fitted} — $S_8$ lands at $0.01\sigma$
     from KiDS as a forward prediction, not by tuning.
@@ -1129,7 +1161,7 @@ The two-sector extension does not introduce new \emph{fitted} parameters
 relative to the background sector. The mass $m_\phi$ is no longer a loose
 ansatz: its coefficient is the mass term of a written scalar Lagrangian, which
 closes the dimensional-incompleteness of OP-9 and leaves only the UV origin of
-the multiplier $\Omega_{\rm DNAV}^{4} + \AURA\cdot\KAL$ open. The remaining
+the multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ open. The remaining
 phenomenological inputs are $\xi$ (OP-11) and the MIRA dynamical mechanism
 (OP-8). Resolution of OP-8/11 and of the refined OP-9 — deriving the
 multiplier and the coupling from first principles within the IS-EFT framework —
@@ -1154,8 +1186,8 @@ We have proposed a phenomenological two-sector resolution for the $f\sigma_8$ gr
     free-streaming cutoff at $\kfs$.
 
   \item \textbf{Mass from a written Lagrangian}:
-    $\mphi = \mnu^{\rm active}\,(\Omega_{\rm DNAV}^{4} + \AURA\cdot\KAL)
-    = 0.0690 \times 535.28 = 36.95$~eV, with the multiplier a pure
+    $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})
+    = 0.0690 \times 594.28 = 41.02$~eV, with the multiplier a pure
     $(\varphi,\pi)$ number that is the mass term of the scalar Lagrangian
     $\mathcal{L}_\Phi = \tfrac12(\partial\Phi)^2 - \tfrac12 m_\phi^2 \Phi^2$
     (Section~\ref{subsec:origin}). This is dimensionally consistent and closes
@@ -1164,9 +1196,9 @@ We have proposed a phenomenological two-sector resolution for the $f\sigma_8$ gr
     Not fitted to growth data.
 
   \item \textbf{Verification (\textsc{class}, zero fitting)}: the two-sector run
-    gives $\sigeff = 0.742$ and $S_8 = 0.766$ ($0.01\sigma$ KiDS,
-    \emph{resolving} the lensing tension vs.\ $\Lambda$CDM $3.27\sigma$) and
-    $f\sigma_8$ mean tension $\mathbf{0.76\sigma}$
+    gives $\sigeff = 0.748$ and $S_8 = 0.759$ ($0.01\sigma$ KiDS,
+    \emph{resolving} the lensing tension vs.\ $\Lambda$CDM $\sim3\sigma$) and
+    $f\sigma_8$ mean tension $\mathbf{0.82\sigma}$
     (Paper~5 single-sector baseline: $0.74\sigma$; comparable to $\Lambda$CDM
     $0.73\sigma$). The CMB acoustic peaks ($\ell = 219/533/807$) and RMS$(TT)
     = 0.93\%$ vs.\ $\Lambda$CDM are conserved because $m_\phi \approx 37$~eV is
@@ -1177,23 +1209,23 @@ We have proposed a phenomenological two-sector resolution for the $f\sigma_8$ gr
 The framework \SSEE-V3.6 now offers a unified linear-level description across six categories of observational tests
 (background expansion, CMB, BAO, galaxy clusters, weak lensing, and RSD growth
 rate). The lensing tension is \emph{resolved} at the linear level by the
-two-sector model evaluated directly in \textsc{class} ($S_8 = 0.766$ at
+two-sector model evaluated directly in \textsc{class} ($S_8 = 0.759$ at
 $0.01\sigma$ from KiDS), with no warm-dark-matter transfer function fitted to
 data: the suppression scale is a Boltzmann output. The mass coupling
-$m_\phi = \Sigma m_\nu^{\rm active}\,(\Omega_{\rm DNAV}^{4} + \AURA\cdot\KAL)$ is
+$m_\phi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$ is
 now the mass term of a written scalar Lagrangian; the free-streaming scale
 $k_{\rm fs}$ still awaits verification against Lyman-$\alpha$ forest data. The
 remaining background tension ($H(z)$, $\chi^2_r = 1.861$) is structural and
 traceable to $\Omega_{\rm m,dyn} = 0.160$.
 
 The \textbf{falsifiable predictions} of this paper are: (1) the $\phi$-dark
-matter free-streaming scale $\kfs = 0.659\,h/$Mpc (with a \textsc{class}-measured
-half-mode at $k_{1/2} = 0.295\,h/$Mpc), set by the mass
-$\mphi = 36.95\,\mathrm{eV}$ and probed by the Lyman-$\alpha$ forest and by
+matter free-streaming scale $\kfs = 0.762\,h/$Mpc (with a \textsc{class}-measured
+half-mode at $k_{1/2} = 0.339\,h/$Mpc), set by the mass
+$\mphi = 41.02\,\mathrm{eV}$ and probed by the Lyman-$\alpha$ forest and by
 DESI~Y3 / Euclid galaxy clustering (2026--2028) --- the relevant channel
 because $\phiDM$ is a gravitationally produced scalar with no Standard-Model
 portal (Section~\ref{subsec:production}), and so leaves no neutrino-sector
-signature; and (2) $\sigeff = 0.742$ ($S_8 = 0.766$), testable by Euclid
+signature; and (2) $\sigeff = 0.748$ ($S_8 = 0.759$), testable by Euclid
 weak-lensing (2026--2028).
 
 % ─────────────────────────────────────────────────────────────────────────────

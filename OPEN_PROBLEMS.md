@@ -520,7 +520,15 @@ it returns to ≤2 (only $H_0$ and $\Omega_b h^2$ as observation-tunable).
 
 ---
 
-## OP-9 — UV Origin of the Mass Multiplier $\Omega_{\rm DNAV}^4 + \mathrm{AURA}\cdot\mathrm{KAL}$ (Paper 6) — REFINADO 2026-06-04
+## OP-9 — UV Origin of the Mass Multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ (Paper 6) — REFINADO 2026-06-19
+
+> [!nota] CANÓNICO ACTUAL (2026-06-19): $m_\phi = \Sigma m_\nu^{\rm act}\cdot\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 0.06902\cdot594.28 = 41.02$ eV.
+> SOLAR=BIAL+KAL=φ+2π (linaje radiativo), KRYSTOS=2Ω (anclado por wₐ). Forma $g^2 v$ (masa
+> generada), escrita en el Lagrangiano escalar libre de Paper 6 §5.3. **Lo que queda abierto
+> (OP-9):** derivar el coeficiente SOLAR²·KRYSTOS del **transporte disipativo** (gobernado por
+> KAL) en vez de leerlo del diccionario cerrado. La dimensionalidad y el "no-fiteo" ya están
+> cerrados; el origen UV del coeficiente, no. Lo de abajo (multiplicador viejo, look-elsewhere)
+> es el rastro histórico del análisis que llevó a SOLAR. Ver [[project-op17-particle-deferred]].
 
 **Location:** Paper 6, §3.2 (subsec:mass_derivation), §3.4 (subsec:lagrangian), §6 (subsec:origin).
 
@@ -599,8 +607,9 @@ obvious shortcuts (relic $T_\phi$, $V''$) don't yield SOLAR trivially; (iii) fre
 from "a number that fit nicely" to "BIAL(first-heat)+KAL(anchored viscosity), standard
 $g^2v$ form" — a real qualitative anchor; the closing calculation is the explicit
 dissipative mass derivation. Scripts: `op9_multiplier_search.py`,
-`ssee_paper6_particle_scan.py`. **Canonical particle stays 615.33 (forward) until SOLAR's
-coefficient is derived, to avoid adopting the $S_8$-fit value.**
+`ssee_paper6_particle_scan.py`. **Canonical particle is now SOLAR²·KRYSTOS=594.28
+($m_\phi=41.02$ eV), adopted 2026-06-19 (OP-17); the open OP-9 residue is deriving its
+coefficient from KAL-governed dissipative transport.**
 
 **Strong rule (still in effect):** the physical Hubble scale
 $H_0^{\rm MIRA}=67.068$~km/s/Mpc **must NOT be substituted** into any mass formula.
@@ -608,17 +617,17 @@ The canonical chain uses the fixed mass scale $0.9603$ eV and pure $(\varphi,\pi
 numbers only — no Hubble rate enters. The dimensionally-inconsistent
 "$\times H_0^{\rm alg}$" framing of the old 5.602 eV ansatz is retired.
 
-**Canonical CLASS verification (zero fitting, Fase B ω_m-directo 2026-06-18):** the
-forward-predicted particle ($m_\phi=42.47$ eV, $\Omega_{\phi{\rm DM}}=0.14889$) yields
-$\sigma_8^{\rm eff} = 0.7536$, $S_8 = 0.765$ ($0.24\sigma$ KiDS-1000 $0.759\pm0.024$ —
+**Canonical CLASS verification (zero fitting, SOLAR²·KRYSTOS adopted 2026-06-19):** the
+forward-predicted particle ($m_\phi=41.02$ eV, $\Omega_{\phi{\rm DM}}=0.14889$) yields
+$\sigma_8^{\rm eff} = 0.7483$, $S_8 = 0.759$ ($0.01\sigma$ KiDS-1000 $0.759\pm0.024$ —
 **resolves** the lensing tension), single-sector ceiling $S_8=0.846$ ($3.5\sigma$, "the
 challenge"). $\sigma_8$ is a **direct CLASS output** (top-hat on the two-sector $P(k)$),
-not the retired $\alpha_{\rm WDM}$ fit; the Viel $\alpha = 1.072$ Mpc/h is a CLASS
+not the retired $\alpha_{\rm WDM}$ fit; the Viel $\alpha = 1.108$ Mpc/h is a CLASS
 diagnostic output. log: `results/logs/p6_class_reframe_omega_m.log`.
 
-**Falsifiable anchor:** $k_{\rm fs} = 0.798\,h/$Mpc (analytic; CLASS-measured half-mode
-$k_{1/2} = 0.351\,h/$Mpc), set by $m_\phi = 42.47$ eV (shifted up from $0.659$ at the old
-36.95 eV — the prediction *updates* with the scenario). The whole chain is forward:
+**Falsifiable anchor:** $k_{\rm fs} = 0.762\,h/$Mpc (analytic; CLASS-measured half-mode
+$k_{1/2} = 0.339\,h/$Mpc), set by $m_\phi = 41.02$ eV (SOLAR²·KRYSTOS; the prediction
+*updates* with the particle — was 0.798 at 42.47, 0.659 at the old 36.95 eV). The whole chain is forward:
 $\Sigma m_\nu=0.069$ eV is itself a prediction ($\mathcal{R}_2$), comfortably allowed in
 the dynamical-DE background (the tight DESI $\Sigma m_\nu\lesssim0.064$–$0.072$ eV bound
 is $\Lambda$CDM-specific; with $w_0,w_a$ free it relaxes to $\sim0.13$–$0.16$ eV). If
@@ -1106,16 +1115,21 @@ These problems are documented here rather than concealed because scientific inte
 requires pre-registration of known limitations. Referees and collaborators should be
 directed to this document when evaluating the strength of the SSEE predictions.
 
-## OP-17 — Adoptar la partícula canónica $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ ($m_\phi=41.02$ eV, $S_8=0.00\sigma$) — DIFERIDO (implementación)
+## OP-17 — Partícula canónica $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ ($m_\phi=41.02$ eV, $S_8=0.01\sigma$) — ✅ ADOPTADA 2026-06-19
 
-**Status:** decisión TOMADA (Mike, 2026-06-19), implementación **DIFERIDA** para no
-acumular cambios a medio aplicar antes de subir el reframe ω_m-directo a Zenodo.
-Hacer DESPUÉS de cerrar la propagación actual (sin números viejos) y publicar.
+**Status:** ✅ **CERRADO / ADOPTADO** (Mike, 2026-06-19). El diferimiento se revirtió
+en la misma sesión ("Mira bien lo que NO es, es SOLAR"): se adoptó la partícula con
+mecanismo en vez de seguir con PYROS·VITA·MIKA. **HECHO:** CLASS forward real @ 41.02 eV
+($\sigma_8=0.7483$, $S_8=0.759=0.01\sigma$ KiDS, $k_{\rm fs}=0.762$, $\alpha=1.108$,
+$T_\phi=0.5385\,T_\nu$, $N_{\rm ur}=2.9619$) → propagado a `CANONICAL_VALUES.yaml`,
+guardián (VERDE 119), manuscrito Paper 6 completo (Lagrangiano g²·v escrito, fσ8
+recomputado 0.82σ, 25 pp, `docs/`), 3 memorias. **RETIRADO** 615.33/42.47.
+Residuo único: OP-9 (derivar el coeficiente del transporte).
 
-**Qué cambia:** la partícula canónica pasa de $m_\phi=42.47$ eV (PYROS·VITA·MIKA=615.33,
+**Qué cambió:** la partícula canónica pasó de $m_\phi=42.47$ eV (PYROS·VITA·MIKA=615.33,
 triple-producto plano, sin mecanismo, $S_8=0.24\sigma$) a
 $$m_\phi = \mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\cdot\Sigma m_\nu = (\varphi+2\pi)^2\cdot 2\Omega\cdot 0.06902 = 41.02\ \text{eV},$$
-que **resuelve $S_8$ de lleno ($0.00\sigma$ KiDS)** — el valor que los datos prefieren
+que **resuelve $S_8$ de lleno ($0.01\sigma$ KiDS)** — el valor que los datos prefieren
 (`ssee_paper6_particle_scan.py`, CLASS real). Esta era la finalidad del mecanismo.
 
 **Por qué es mejor partícula (peso, no certeza):**

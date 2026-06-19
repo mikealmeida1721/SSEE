@@ -59,13 +59,27 @@ Om_DNAV = pi_ + phi          # 4.7596 (Ω = π+φ)
 #   Ref: ssee_paper6_canonical_particle.py (canónico 2026-06-04)
 R2         = Om_DNAV / (KAL0 * Tr)        # 0.071875
 mnu_active = R2 * 0.960318                 # 0.06902 eV (0.960318 eV = input SM fijo)
-multiplier = Om_DNAV**4 + AURA * KAL0      # 535.2795 (puro)
-m_phi_eV   = mnu_active * multiplier       # 36.95 eV
+# multiplicador canónico (reframe 2026-06-18): producto de 3 ceilings PYROS·VITA·MIKA
+PYROS  = Om_DNAV + phi                     # 6.3776
+VITA   = pi_ + KAL0                        # 8.6630
+MIKA   = 3*phi + 2*pi_                     # 11.1372 (= Kv + phi)
+multiplier = PYROS * VITA * MIKA           # 615.33 (puro, volumen)
+m_phi_eV   = mnu_active * multiplier       # 42.47 eV
+
+# ── Densidad de materia CMB: ω_m-directo (sin factor; OP-8 disuelto) ───────────
+H0_GLOBAL = 67.962
+h_        = H0_GLOBAL / 100.0
+n_s       = 1.0 - phi**-7                  # 0.96556
+omega_b   = (pi_ - phi) / (3 * Om_DNAV**2) # 0.02242
+omega_c   = KAL0 * omega_b * n_s           # 0.11951 (forward, Paper 1)
+omega_nu  = mnu_active / 93.14             # 0.00074
+omega_m   = omega_b + omega_c + omega_nu   # 0.14267
+Om_m_CMB  = omega_m / h_**2                # 0.30889 (DERIVADO)
 
 # ── Modelo dos-sectores ───────────────────────────────────────────────────────
-Om_CDM   = Omm_dyn           # 0.160
-Om_phiDM = (MIRA-1)*Omm_dyn  # 0.160
-Om_total = Om_CDM + Om_phiDM  # 0.320 (ambos sectores)
+Om_CDM   = Omm_dyn                  # 0.160
+Om_phiDM = Om_m_CMB - Omm_dyn       # 0.14889 (DIFERENCIA, sin factor)
+Om_total = Om_m_CMB                 # 0.30889 (ambos sectores = densidad CMB)
 
 sig8_Planck = 0.811
 

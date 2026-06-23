@@ -48,6 +48,14 @@ def _targets(vault_only=False):
         out.append(("Guardián (Ledger)", [ROOT / "VERIFICATION_LEDGER.md"]))
         out.append(("CLAUDE.md", [ROOT / "CLAUDE.md"]))
         out.append(("Papers (cajón)", sorted((ROOT / "manuscript").glob("*.tex"))))
+        # Docs de ESTADO VIVO en la raíz (sin fecha, cara pública vigente).
+        # NO se incluyen los de REGISTRO/FECHADOS: CHANGELOG.md y
+        # HALG_PIFI_CHANGEMAP.md (documentan viejo→nuevo), AUDIT.md (deliverable
+        # fechado 2026-05-17, con banner de superación), MEMORY_PROTOCOL.md (usa
+        # valores viejos como ejemplos del drift), src/open_problems/*.py
+        # (exploraciones con inputs de su fecha) ni archive/.
+        estado = [ROOT / "README.md", ROOT / "RIGOR_CHECKLIST.md"]
+        out.append(("Estado raíz", [p for p in estado if p.exists()]))
     if VAULT.exists():
         out.append(("Obsidian (vault)",
                     sorted(VAULT.rglob("*.md"))))
@@ -99,9 +107,25 @@ def scan(vault_only=False):
                     continue
                 for item in retired:
                     pat = item["pattern"]
-                    if pat.lower() in low[i]:
-                        rel = path.relative_to(VAULT if label.startswith("Obsidian") else ROOT)
-                        drifts.append((label, str(rel), i + 1, pat, raw.strip()[:90]))
+                    if pat.lower() not in low[i]:
+                        continue
+                    # Discriminador de cantidad (opcional): un decimal pelado como
+                    # «0.766» puede ser un S₈ retirado O un χ²/N legítimo. El
+                    # patrón puede declarar tokens de desambiguación que se buscan
+                    # en la ventana ±1 (igual que los context_markers):
+                    #   `requires`  → sólo es drift si ALGÚN token co-ocurre.
+                    #   `excludes`  → NO es drift si ALGÚN token co-ocurre
+                    #                 (p. ej. «χ²» marca un goodness-of-fit, no un S₈).
+                    # Sin ninguno → comportamiento previo (substring puro).
+                    win = [low[j] for j in (i - 1, i, i + 1) if 0 <= j < len(low)]
+                    req = [r.lower() for r in item.get("requires", [])]
+                    if req and not any(tok in l for l in win for tok in req):
+                        continue
+                    exc = [e.lower() for e in item.get("excludes", [])]
+                    if exc and any(tok in l for l in win for tok in exc):
+                        continue
+                    rel = path.relative_to(VAULT if label.startswith("Obsidian") else ROOT)
+                    drifts.append((label, str(rel), i + 1, pat, raw.strip()[:90]))
     return drifts, scanned
 
 

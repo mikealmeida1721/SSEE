@@ -98,20 +98,27 @@ def f_DE_raw(a):
 _norm = f_DE_raw(1.0)
 def f_DE(a): return f_DE_raw(a) / _norm
 
+# OmDE debe hacer PLANO cada fondo por separado (E²(a=1)=1). Un OmDE global
+# (=1−Omm_dyn=0.840) sólo es plano para el fondo de 0.160; con Om_total=0.30889
+# daba E²(hoy)=1.149 → H 7% alto → ahogaba el crecimiento (bug del fσ₈ two-sector
+# 0.82σ, artefacto). Corregido 2026-06-22: cada E2 usa su propio Ω_DE=1−Ω_m.
+OmDE_total = 1.0 - Om_total        # 0.69111 (fondo de clustering, plano)
+OmDE_cdm   = 1.0 - Om_CDM          # 0.84000 (fondo minimal-CDM, plano)
+
 def E2_total(a):
-    """H²/H₀² con Ω_m = 0.320 (ambos sectores)."""
-    return max(Om_total * a**(-3) + OmDE * f_DE(a), 1e-30)
+    """H²/H₀² con Ω_m=0.30889 (clustering); PLANO: Ω_DE=1−Ω_m."""
+    return max(Om_total * a**(-3) + OmDE_total * f_DE(a), 1e-30)
 
 def E2_CDM(a):
-    """H²/H₀² con solo Ω_CDM = 0.160."""
-    return max(Om_CDM * a**(-3) + OmDE * f_DE(a), 1e-30)
+    """H²/H₀² con solo Ω_CDM=0.160 (baseline minimal); PLANO."""
+    return max(Om_CDM * a**(-3) + OmDE_cdm * f_DE(a), 1e-30)
 
 # ── Crecimiento dos-sectores (k < k_fs, ambos activos) ───────────────────────
 def growth_rhs_twosector(lna, Y):
     """Ambos sectores activos: Ω_m,eff = 0.320."""
     a = np.exp(lna)
     e2 = E2_total(a)
-    h  = 0.5*(-3*Om_total*a**(-3) + OmDE*(f_DE(a+1e-5)-f_DE(a-1e-5))/(2e-5)*a)/e2
+    h  = 0.5*(-3*Om_total*a**(-3) + OmDE_total*(f_DE(a+1e-5)-f_DE(a-1e-5))/(2e-5)*a)/e2
     Omm_a = Om_total * a**(-3) / e2
     D, Dp = Y
     return [Dp, -(2+h)*Dp + 1.5*Omm_a*D]
@@ -121,7 +128,7 @@ def growth_rhs_single(lna, Y):
     """Solo CDM activo: Ω_m,eff = 0.160 (Paper 5)."""
     a = np.exp(lna)
     e2 = E2_CDM(a)
-    h  = 0.5*(-3*Om_CDM*a**(-3) + OmDE*(f_DE(a+1e-5)-f_DE(a-1e-5))/(2e-5)*a)/e2
+    h  = 0.5*(-3*Om_CDM*a**(-3) + OmDE_cdm*(f_DE(a+1e-5)-f_DE(a-1e-5))/(2e-5)*a)/e2
     Omm_a = Om_CDM * a**(-3) / e2
     D, Dp = Y
     return [Dp, -(2+h)*Dp + 1.5*Omm_a*D]

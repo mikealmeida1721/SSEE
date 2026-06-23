@@ -224,21 +224,22 @@ dimensional pasa.
 
 ### Problemas ABIERTOS detectados en Capa 2
 
-- **V-L2-06 H₀^alg = 3Ω²** — numéricamente da 67.962, pero `3Ω²` es
-  **adimensional** mientras que H₀ tiene unidades km/s/Mpc. No es una
-  derivación dimensional; es una coincidencia numérica (Postulado D en P1).
-  El modelo lo admite a medias. **No puede pasar a `resuelto` como derivación.**
-  **Pregunta abierta CERRADA (2026-06-10):** se probó la hipótesis "H_alg es la
-  tasa física del fondo (la sábana desnuda) y MIRA es el observable curvado por
-  la materia". REFUTADA por dos vías independientes: (1) metiendo H_alg=67.962
-  como tasa de expansión real en el CMB da θ*=7.80σ y r_d=5.35σ fuera de Planck
-  → H_alg NO puede ser la tasa de fondo. (2) El signo está invertido: el límite
-  de Sitter (sábana solo-DE) da H_dS=H_MIRA·√Ω_DE=61.44 < H_MIRA, es decir
-  quitar materia BAJA H (no lo sube a 67.96); Friedmann ata H₀ al contenido
-  total, no hay "H de sábana vacía" separado a z=0. **Veredicto: la dualidad
-  H_alg≈SH0ES es COINCIDENCIA** de un número adimensional en la ventana de SH0ES.
-  La veta real abierta NO es el frenado por materia sino el origen dimensional
-  de H₀ (escala Mpc ↔ Planck, roadmap #1).
+- **V-L2-06 H₀^alg = 3Ω²** — numéricamente da 67.962. La lectura ANTERIOR
+  ("`3Ω²` es adimensional → unidades por fiat → coincidencia Type-P") queda
+  **DISUELTA** por la inversión de Mike: **H_alg es DERIVADO de SH0ES × f_screen.**
+  Se toma SH0ES (medido, CON unidades km/s/Mpc: 73.04±1.04, Riess+2022) y se le
+  quita el screening: H_global = SH0ES·(1−f_screen) = 73.04·0.93275 = 68.13±0.97,
+  y el número puro `3Ω²` = **67.962 coincide a 0.17σ**. Las unidades vienen de la
+  MEDICIÓN, el número adimensional del álgebra; es física normal (¿es f_screen
+  correcto? ¿precisión?), **no numerología**. (Ver [[project-h-alg-typeP-dissolved]].)
+  **Pregunta SEPARADA (CERRADA 2026-06-10):** H_alg NO es la *tasa física del
+  fondo a todo z* (la "sábana desnuda"): (1) metido como tasa de expansión real
+  en el CMB da θ*=7.80σ, r_d=5.35σ fuera de Planck; (2) límite de Sitter
+  H_dS=H_MIRA·√Ω_DE=61.44 < H_MIRA, signo invertido; Friedmann ata H₀ al
+  contenido total. Es decir: H_alg es un **anchor local derivado** (de-screened
+  SH0ES), NO la tasa de fondo dinámica — ambas cosas conviven sin contradicción.
+  La veta abierta restante es el origen dimensional de la escala Mpc↔Planck
+  (roadmap #1), no el estatus de coincidencia (ya disuelto).
 - **V-L2-10 m_φ = Σm_ν^active · (Ω⁴+AURA·KAL₀)** — forward-prediction canónica:
   `[eV]·(número puro)=[eV]`, dimensionalmente **consistente**. Con
   Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV = 0.069023 eV y multiplicador
@@ -440,8 +441,8 @@ Sólo el refinamiento no-lineal Nivel 2 queda ABIERTO.
    H₀,local = H₀^alg/(1−f_screen) = 67.962/0.93275 = **72.86 km/s/Mpc**
    (0.17σ SH0ES). La vieja ruta H₀^MIRA/(1−f_screen) = 71.87 (1.12σ) queda
    **superada** (el anchor pasó de H_MIRA a H_alg en el reframe; Paper 9 Tabla H0local).
-   El estatus epistémico de H_alg (¿coincidencia Type-P o anchor físico?) se sigue
-   discutiendo en la sección f_screen / V-L2-13 más arriba — independiente de este valor.
+   H_alg es un anchor **DERIVADO** (de-screened SH0ES × f_screen; el cargo Type-P
+   quedó disuelto, ver V-L2-06 arriba), no una coincidencia.
 2. **✓ forma:** que la corrección sea **multiplicativa** sí sigue de la
    aproximación de universo separado para k-essence (Wands 2000; Brax &
    Valageas 2014) — ese paso es una derivación legítima.

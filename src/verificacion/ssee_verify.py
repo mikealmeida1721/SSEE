@@ -173,7 +173,7 @@ check("L2 identidad  f_screen = alpha_K/(3*MIRA) = (pi-phi)/Om^2",
 # Problemas ABIERTOS detectados en Capa 2 — comprobación dimensional.
 track_open("V-L2-06 H0^alg dimensional",
            "3*Omega^2 es adimensional; H0 tiene unidades km/s/Mpc (Postulado D)")
-# V-L2-10: la fórmula CANÓNICA (forward-prediction 36.95 eV) es dimensionalmente
+# V-L2-10: la fórmula CANÓNICA (forward-prediction 41.02 eV SOLAR²·KRYSTOS) es dimensionalmente
 # consistente — [eV]*(número puro) = [eV]. El antiguo ansatz Sigma_m_nu*H0^alg
 # (5.60 eV) está retirado. Lo abierto es el Lagrangiano φ-DM (OP-9), no la dimensión.
 
@@ -443,7 +443,7 @@ check("V-L4-02b P6  S8_eff two-sector = 0.759  (TITULAR, resuelve, forward)",
 
 # Tensiones S8 — error en cuadratura modelo + observacional.
 # KiDS-1000 (Asgari+2021): S8 = 0.759 +/- 0.024.
-G_growth = 1.011             # D1_SSEE/D1_LCDM (Paper 5; no depende de m_phi)
+G_growth = 1.0032            # D1_SSEE/D1_LCDM (Paper 5 ODE @ Om_cosm=0.30889; era 1.011 @0.31983)
 S8_single_err = 0.006 * G_growth * (Om_cosm / 0.3) ** 0.5
 t_KIDS_single = abs(S8_single - 0.759) / (S8_single_err ** 2 + 0.024 ** 2) ** 0.5
 t_KIDS_twosec = abs(S8_eff - 0.759) / 0.024
@@ -460,21 +460,21 @@ check("V-L4-05 P3  ΔBIC CMB = -20.8 consistente con chi2_r (re-run 2026-05-22)"
       "chi2_r redondeados acotan ΔBIC a [-22.9,-11.1]; reportado -20.8 dentro")
 
 # r_d / theta* — re-run CAMB 2026-06-11 con los H0 CANONICOS post-cascada
-# Sigma_mnu=0.069 (2026-06-09). Politica del modelo: anclar el CMB en el anchor
-# H_MIRA=67.037 (CMB-optimo), reportar el posterior BAO 66.531 por separado.
-# theta* es muy sensible a H0 via D_A, asi que NO se propaga el posterior BAO
-# al observable CMB.
-#   anchor   67.037 -> r_d=146.73 Mpc (1.38sigma), theta*=0.59623 (0.97sigma)
-#   posterior 66.531 -> r_d=147.30 Mpc (0.81sigma), theta*=0.59408 (5.66sigma)
-# vs Planck 147.09+-0.26 Mpc / 0.59668+-0.00046 deg.
-track_open("V-L4  r_d coherente en ambos H0 canonicos (anchor 1.38 / post 0.81 sigma)",
-           "ssee_verify_rd.py re-run 2026-06-11: anchor 67.037 da r_d=146.73 Mpc "
-           "(1.38sigma), posterior 66.531 da r_d=147.30 Mpc (0.81sigma) vs "
-           "Planck 147.09+-0.26. El '4.47sigma' previo usaba el H0 stale 67.756")
-track_open("V-L4  theta* sensible a H0: 0.97sigma en anchor, 5.66sigma en posterior",
-           "ssee_verify_rd.py re-run 2026-06-11: anchor 67.037 da theta*=0.59623 "
-           "(0.97sigma); posterior 66.531 da 0.59408 (5.66sigma) vs 0.59668+-0.00046. "
-           "Por eso el CMB se ancla en 67.037 y el posterior BAO no se propaga a theta*")
+# Sigma_mnu=0.069. Reframe omega_m-directo (2026-06-19): anclar el CMB en el
+# anchor H_alg=67.962 (CMB minimiza ahi con omega_b,omega_c fijos), reportar el
+# posterior BAO 67.159 por separado. theta* es muy sensible a H0 via D_A, asi
+# que NO se propaga el posterior BAO al observable CMB.
+#   anchor    67.962 -> r_d=147.17 Mpc (0.32sigma), theta*=0.59668 (1.05sigma)
+#   posterior 67.159 -> r_d=147.17 Mpc (0.32sigma), theta*=0.59536 (6.66sigma)
+# vs Planck 147.09+-0.26 Mpc / 100theta*=1.04109+-0.00030.
+track_open("V-L4  r_d coherente en ambos H0 canonicos (anchor/post 0.32 sigma)",
+           "run_p3_rd_reframe.py 2026-06-19: anchor 67.962 y posterior 67.159 dan "
+           "ambos r_d=147.17 Mpc (0.32sigma) vs Planck 147.09+-0.26 (r_d es "
+           "H0-invariante a omega fijo). Anclas viejas 67.037/66.531 superadas")
+track_open("V-L4  theta* sensible a H0: 1.05sigma en anchor, 6.66sigma en posterior",
+           "run_p3_rd_reframe.py 2026-06-19: anchor 67.962 da theta*=0.59668 "
+           "(1.05sigma); posterior 67.159 da 0.59536 (6.66sigma) vs 100theta*=1.04109. "
+           "Por eso el CMB se ancla en 67.962 y el posterior BAO no se propaga a theta*")
 
 track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
            "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "

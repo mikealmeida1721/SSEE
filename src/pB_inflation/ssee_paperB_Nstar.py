@@ -95,8 +95,8 @@ beta    = Omega / 2
 KAL0    = beta + pi
 MIRA    = (3*phi + pi) / 4
 AURA    = (3*phi + pi) / 2
-m_phi   = 36.95                 # eV (masa φ-DM canónica — Σm_ν × (Ω⁴_DNAV + AURA·KAL))
-Lambda_SSEE = 9.62e-3           # eV (= M UV completion, canónico Paper 10 con H_MIRA=67.037)
+m_phi   = 41.02                 # eV (masa φ-DM canónica — Σm_ν × SOLAR²·KRYSTOS=594.28; reframe, era 36.95 vía Ω⁴+AURA·KAL)
+Lambda_SSEE = 9.68e-3           # eV (= M UV completion, canónico Paper 10 con H_alg=67.962 (reframe; era 9.62@67.037))
 
 # Escalas físicas conocidas
 T_EW    = 100e9                 # eV (transición electroweak)
@@ -107,8 +107,8 @@ candidates = {
     "T_EW (electroweak) 100 GeV":     T_EW,
     "T_BBN (nucleosíntesis) 1 MeV":   T_BBN,
     "T_QCD (hadrónica) 150 MeV":      T_QCDH,
-    "Λ_SSEE = M = 9.62 meV":          Lambda_SSEE,
-    "m_φ = 36.95 eV":                 m_phi,
+    "Λ_SSEE = M = 9.68 meV":          Lambda_SSEE,
+    "m_φ = 41.02 eV":                 m_phi,
     "H₀_SSEE (eV)":                   H0_eV,
     "Ω × H₀ (eV)":                   Omega * H0_eV,
     "φ¹² × H₀ (eV)":                 phi**12 * H0_eV,

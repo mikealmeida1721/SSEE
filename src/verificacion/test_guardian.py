@@ -70,7 +70,7 @@ _failed += (not _ok0)
 # F1 — valor de pipeline que NO coincide con su log de procedencia (R9)
 expect_red("R9 procedencia: ΔBIC −24.7 no está en el log → ROJO",
            "VERIFICATION_LEDGER.md",
-           lambda t: t.replace("−28.0 (SSEE favorecido)", "−24.7 (SSEE favorecido)"),
+           lambda t: t.replace("−34.9 (SSEE favorecido)", "−24.7 (SSEE favorecido)"),
            ["procedencia", "ROJO"])
 
 # R1 — claim de prioridad temporal

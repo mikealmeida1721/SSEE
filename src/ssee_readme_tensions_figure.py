@@ -18,9 +18,9 @@ entries = [
     (r'$n_s = 1-\varphi^{-7}$',                  0.20, 'Planck 2018'),
     (r'$r_d$ (joint posterior)',                 0.32, 'MCMC multi-probe'),
     (r'$\Omega_b h^2 = (\pi-\varphi)/3\Omega^2$', 0.32, 'Planck 2018'),
-    (r'$\Omega_m = (\pi-\varphi)/(\pi+\varphi)$', 0.66, 'Planck 2018'),
+    (r'$\Omega_{m,\rm CMB} = \omega_m/h^2 = 0.30889$', 0.88, 'Planck 2018'),
     (r'mean $f\sigma_8$ (6 RSD surveys)',        0.76, r'ties $\Lambda$CDM (0.73$\sigma$)'),
-    (r'$H_0^{\rm local}$ = 71.87 km/s/Mpc',      1.12, 'SH0ES'),
+    (r'$H_0^{\rm local}$ = 72.86 km/s/Mpc',      0.17, 'SH0ES'),
 ]
 entries = entries[::-1]  # smallest tension on top
 

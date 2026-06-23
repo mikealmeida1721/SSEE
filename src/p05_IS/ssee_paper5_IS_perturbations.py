@@ -47,7 +47,7 @@ from ssee_core import (
     PHI as phi, PI as pi_, BETA as beta, KAL0, P_SC as P_sc,
     K_V as Kv, T_R as Tr, M_V as Mv, W0 as w0, WA as wa,
     H0_ALG as H0_kms, OMEGA_M_DYN as Omm_dyn, OMEGA_DE as OmDE,
-    MIRA as MIRA_alg, OMEGA_M_CMB_MIRA as Omm_CMB,
+    MIRA as MIRA_alg, OMEGA_M_CMB as Omm_CMB,   # reframe ω_m-directo 0.30889 (era OMEGA_M_CMB_MIRA 0.31983)
 )
 
 # IS relaxation time (dimensionless: τ_Π × H₀)
@@ -374,12 +374,12 @@ OmL_LCDM        = 1.0 - Omm_LCDM
 
 # Weak-lensing S₈ measurements
 S8_DES        = 0.776;  S8_DES_err  = 0.017   # DES-Y3 (Abbott+2022)
-S8_KIDS       = 0.766;  S8_KIDS_err = 0.020   # KiDS-1000 (Asgari+2021)
+S8_KIDS       = 0.759;  S8_KIDS_err = 0.024   # KiDS-1000 (Asgari+2021, canónico)
 
 def H_ssee_exact(a):
     """Analytic SSEE H(a)/H₀ — CPL formula, valid for any a without grid."""
     rDE = a**(-3.0*(1.0+w0+wa)) * np.exp(-3.0*wa*(1.0-a))
-    # Ω_m,cosm=0.320 en el fondo gravitacional (Ω_m,dyn=0.160 solo fija w₀ vía 1+w₀)
+    # Ω_m,cosm=0.30889 en el fondo gravitacional (ω_m-directo; Ω_m,dyn=0.160 solo fija w₀ vía 1+w₀)
     return np.sqrt(Omm_CMB * a**(-3) + (1.0 - Omm_CMB) * rDE)
 
 def H_lcdm(a):
@@ -500,9 +500,16 @@ else:
     print(f"\n  Growth index fit (z = 0..2):")
     print(f"    γ_IS   = {gamma_IS_val:.4f} ± {gamma_IS_err_val:.4f}")
     print(f"    γ_ΛCDM = {gamma_LCDM_val:.4f}  (expected 0.55)")
+    # Growth-rate comparison table (Paper 5 Table tab:growth)
+    print(f"\n  Growth-rate table  z | Ω_m^SSEE(a) | f_SSEE | f_ΛCDM | Δf/f")
+    for _zt in (1.0, 0.5, 0.0):
+        _i = np.argmin(np.abs(z_g - _zt))
+        _Oma = Omm_CMB / (H_arr_s[_i]**2 * a_g[_i]**3)
+        _df = (f_ssee[_i] - f_lcdm[_i]) / f_lcdm[_i]
+        print(f"    z={_zt:.1f}  Om={_Oma:.4f}  f_S={f_ssee[_i]:.4f}  f_L={f_lcdm[_i]:.4f}  Δf/f={_df*100:+.1f}%")
     print(f"\n  σ₈  (Planck 2018 ΛCDM)  = {sigma8_LCDM:.4f} ± {sigma8_LCDM_err:.4f}")
     print(f"  σ₈  (SSEE IS)           = {sigma8_SSEE:.4f} ± {sigma8_SSEE_err:.4f}")
-    print(f"\n  Ω_m,CMB (MIRA-enhanced) = {Omm_CMB:.6f}")
+    print(f"\n  Ω_m,CMB (ω_m-direct)    = {Omm_CMB:.6f}")
     print(f"  S₈  (ΛCDM)              = {S8_LCDM_val:.4f}")
     print(f"  S₈  (SSEE IS)           = {S8_SSEE_val:.4f} ± {S8_SSEE_err_val:.4f}")
     print(f"  S₈  (DES-Y3)            = {S8_DES:.3f} ± {S8_DES_err:.3f}")

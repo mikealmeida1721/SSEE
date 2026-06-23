@@ -1,9 +1,10 @@
 """
-PARTÍCULA CANÓNICA φ-DM (Vía 2 + multiplicador PYROS·VITA·MIKA).
-Cadena forward, CERO fiteo (reframe ω_m-directo 2026-06-18, OP-8 cerrado):
+PARTÍCULA CANÓNICA φ-DM (Vía 2 + multiplicador SOLAR²·KRYSTOS).
+Cadena forward, CERO fiteo (reframe ω_m-directo 2026-06-18, OP-8 cerrado;
+mecanismo g²·v SOLAR²·KRYSTOS adoptado 2026-06-19, OP-17):
     R2 = Ω/(KAL·TRIAL)
     Σm_ν = R2 × 0.960318 eV
-    m_φ = Σm_ν × (PYROS·VITA·MIKA)        [= 615.33; antes Ω^4+AURA·KAL=535.28]
+    m_φ = Σm_ν × (SOLAR²·KRYSTOS)         [= 594.28; antes PYROS·VITA·MIKA=615.33]
     T_φ SALE del relic constraint.
 Escenario de fondo: NO hay factor materia. Ω_m,CMB = ω_m/h² = 0.30889; el sector
 φ-DM es la diferencia Ω_φDM = Ω_m,CMB − Ω_m,dyn = 0.149 (antes 0.160 vía MIRA).
@@ -85,7 +86,7 @@ print("  PARTÍCULA CANÓNICA φ-DM — alpha (OUTPUT) y k_fs")
 print("="*74)
 print(f"  R2 = Ω/(KAL·TRIAL)        = {R2:.6f}")
 print(f"  Σm_ν                      = {Smnu:.5f} eV")
-print(f"  multiplicador PYROS·VITA·MIKA = {MULT:.4f}")
+print(f"  multiplicador SOLAR²·KRYSTOS = {MULT:.4f}")
 print(f"  m_φ                       = {m_phi:.4f} eV")
 print(f"  Ω_m,CMB (ω_m/h², sin factor) = {Om_m:.5f}")
 print(f"  Ω_φDM = Ω_m,CMB − 0.160      = {Om_hot:.5f}")

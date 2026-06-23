@@ -23,8 +23,8 @@ Msun = 1.989e30             # kg
 Mpc  = 3.0857e22            # m
 
 # K-mouflage constants (natural units: ℏ=c=1)
-# M = 9.62 meV = Λ_SSEE  (Paper 10: M^4 = 5φ^8 ρ_crit, display canónico)
-M_eV   = 9.62e-3            # eV
+# M = 9.68 meV = Λ_SSEE  (Paper 10: M^4 = 5φ^8 ρ_crit, display canónico)
+M_eV   = 9.68e-3            # eV
 M_Pl_eV = 2.435e27          # eV  (reduced Planck mass)
 Msun_eV = Msun * c**2 / 1.602e-19  # kg→eV
 hbar_c_eVm = 1.9733e-7      # ℏc in eV·m  (1 eV^-1 = 1.9733e-7 m)
@@ -67,7 +67,7 @@ ax.axhline(1.0, color='#2166ac', lw=1.0, ls='--', alpha=0.7, label=r'$1\,\mathrm
 ax.set_xlabel(r'Object mass $M_{\rm obj}$ [$M_\odot$]', fontsize=11)
 ax.set_ylabel(r'K-mouflage radius $r_{\rm km}$ [kpc]', fontsize=11)
 ax.set_title(r'SSEE k-mouflage: $r_{\rm km}^3 = M_{\rm obj}\,/\,(4\pi M_{\rm Pl} M^2)$,'
-             r'$\quad M=9.62\,\mathrm{meV}$', fontsize=10)
+             r'$\quad M=9.68\,\mathrm{meV}$', fontsize=10)
 ax.legend(fontsize=9)
 ax.grid(which='both', lw=0.4, alpha=0.4)
 ax.set_xlim(0.05, 1e18)
@@ -87,11 +87,11 @@ print(f"  r_km(cluster 1e15) = {r_sun_m * 1e5:.3e} m")
 # ── Figure 2: Lensing ratio theta_E^SSEE / theta_E^GR vs k/k_fs ─────────────
 # From Paper 8: the disformal correction amplifies lensing for k < k_fs.
 # Simple model: ratio = 1 + MIRA * T_WDM(k)  (qualitative illustration)
-# T_WDM(k) = [1 + (alpha_WDM * k)^{2mu}]^{-5/mu}, mu=1.12, alpha=1.243 Mpc/h
-# k_fs = 0.659 h/Mpc (Paper 6 canonical particle: m_phi=36.95 eV, forward-prediction)
+# T_WDM(k) = [1 + (alpha_WDM * k)^{2mu}]^{-5/mu}, mu=1.12, alpha=1.108 Mpc/h
+# k_fs = 0.762 h/Mpc (Paper 6 canonical particle: m_phi=41.02 eV SOLAR²·KRYSTOS, forward-prediction)
 
-k_fs = 0.659  # h/Mpc  (Paper 6 canonical)
-alpha_wdm = 1.243  # Mpc/h  (Paper 6 canonical CLASS output)
+k_fs = 0.762  # h/Mpc  (Paper 6 canonical, m_phi=41.02 eV)
+alpha_wdm = 1.108  # Mpc/h  (Paper 6 canonical CLASS output, m_phi=41.02 eV)
 mu = 1.12
 k = np.logspace(-3, 1, 500)  # h/Mpc
 

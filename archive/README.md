@@ -73,3 +73,10 @@ candidatos). Conservadas como registro del proceso; ningún resultado canónico 
 ### `experimental/` — direcciones exploradas y no adoptadas
 - `SSEE_Paper6_Holographic_Amendment.pdf` (2026-05-19) · enmienda holográfica explorada,
   no adoptada en el Paper 6 canónico.
+
+### `chains_legacy_premira_reframe_2026/` — cadenas B1 CMB pre-reframe
+**Razón:** cadenas Cobaya MCMC SSEE (`ssee_cmb.*`, 2026-05-08) de la tabla B1 de Paper 3
+generadas con ingredientes pre-reframe (Ω_m,CMB=0.31993 vía MIRA, ω_b=0.02237, H₀≈67.04).
+Superadas por el reframe ω_m-directo (ω_b=0.02242, ω_c=0.11951 forward fijo, mnu=0.0690,
+ancla H_alg=67.962); re-corrida con `src/p03_cmb/ssee_paper3_b1_mcmc.py` actualizado.
+Las cadenas ΛCDM (`lcdm_cmb.*`) NO se archivan: sus ingredientes no cambiaron.

@@ -5,6 +5,14 @@
 **Repo:** https://github.com/mikealmeida1721/SSEE  
 **Date:** 2026-05-17 (10-paper suite — bibliography audit + Phase 1/2 hardening; Paper 1 Postulates D & S; OPEN_PROBLEMS OP-2/3/4/6 resolved, OP-1/5 partial)
 
+> ⚠️ **Superseded numbers (reframe 2026-06-19).** This dated snapshot predates the
+> **ω_m-direct reframe** (OP-8 dissolved: Ω_m,CMB = ω_m/h² = **0.30889**, no matter
+> factor) and the **SOLAR²·KRYSTOS particle** (m_φ = **41.02 eV**, k_fs = **0.762
+> h/Mpc**, S₈ = **0.759**). The Hubble cascade is now H_alg = 67.962 → H_local =
+> **72.86** (0.17σ). For canonical values see `README.md`, `CANONICAL_VALUES.yaml`,
+> and `VERIFICATION_LEDGER.md`. The headline table below is updated; deeper body
+> prose retains the 2026-05-17 figures as the record of that audit.
+
 ---
 
 ## What this framework claims
@@ -21,10 +29,10 @@ Falsifiable predictions — fixed by algebraic construction, not fitted (Structu
 |---|---|---|---|
 | (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.838±0.057, −0.631±0.226) | 0.05σ / 0.17σ |
 | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
-| Ωm,CMB | 0.3199 (algebraic via MIRA) | Planck 2018: 0.3153 | 0.63σ |
+| Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
-| m_φ (φ-DM mass) | 36.95 eV algebraic | gravitationally-produced scalar — probed via k_fs | Future prediction |
-| k_fs | 0.659 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
+| m_φ (φ-DM mass) | 41.02 eV algebraic (SOLAR²·KRYSTOS) | gravitationally-produced scalar — probed via k_fs | Future prediction |
+| k_fs | 0.762 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
 | r (tensor-to-scalar) | φ⁻¹⁰ = 0.00813 | LiteBIRD (~2032) | Future prediction |
 
 ---

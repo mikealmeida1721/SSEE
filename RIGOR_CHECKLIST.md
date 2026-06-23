@@ -57,9 +57,11 @@ sesgo. Mitigación: MCMC full con `plik_lite_native` + lensing + DESI + fσ₈ (
 ## R5 — Benchmark = ancla canónica, no conjetura obsoleta 🟠 ⛔
 **Regla:** comparar posteriores contra el valor canónico vigente, no contra valores
 heredados de iteraciones previas.
-**Por qué (caso real):** Fase 4 comparaba H₀ posterior contra la conjetura Type-P
-67.96 (tensión 0.81σ) en vez del ancla canónica H_MIRA=67.037 (0.39σ), porque se corrió
-antes de canonizar H_MIRA. Drift no detectado.
+**Por qué (caso real):** el ancla canónica ha cambiado con el modelo. Era H_MIRA=67.037
+(escenario MIRA), y el reframe ω_m-directo (2026-06-19) la movió a H_alg=67.962 (la CMB
+minimiza ahí con ω_b,ω_c fijos por álgebra). Cualquier benchmark de H₀ debe usar el
+canónico VIGENTE (hoy 67.962 ancla / 67.16 posterior), no un valor heredado. El guardián
++ memory_sync ahora cazan este drift automáticamente (lista `retired:` con 67.037/66.53).
 
 ## R6 — Conteo y valores exactos contra la fuente 🟡 ⛔
 **Regla:** todo número citado (nº de constantes, razones, valores) debe regenerarse

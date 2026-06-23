@@ -71,6 +71,9 @@ archive/experimental/
 # Interno — no va al repo público
 CLAUDE.md
 zenodo_v7_upload/
+# repo SEPARADO (SSEE-Constant-Dictionary + DOI 20684908) — se gestiona aparte
+zenodo_dictionary/
+zenodo_dictionary.zip
 *.env
 zenodo_token
 .zenodo_token

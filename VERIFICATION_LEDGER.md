@@ -236,10 +236,13 @@ dimensional pasa.
   fondo a todo z* (la "sábana desnuda"): (1) metido como tasa de expansión real
   en el CMB da θ*=7.80σ, r_d=5.35σ fuera de Planck; (2) límite de Sitter
   H_dS=H_MIRA·√Ω_DE=61.44 < H_MIRA, signo invertido; Friedmann ata H₀ al
-  contenido total. Es decir: H_alg es un **anchor local derivado** (de-screened
-  SH0ES), NO la tasa de fondo dinámica — ambas cosas conviven sin contradicción.
-  La veta abierta restante es el origen dimensional de la escala Mpc↔Planck
-  (roadmap #1), no el estatus de coincidencia (ya disuelto).
+  contenido total. Es decir: H_alg es el **anchor GLOBAL de fondo** (H₀ de hoy:
+  prior del MCMC, ancla del fit CMB, normalización del background; aplicarle
+  f_screen da el valor LOCAL 72.86). NO es la tasa dinámica H(z) "bare-sheet" a
+  todo z — eso es lo refutado. Las dos lecturas (anchor global derivado por
+  de-screening de SH0ES vs. tasa dinámica) conviven sin contradicción. La veta
+  abierta restante es el origen dimensional de la escala Mpc↔Planck (roadmap #1),
+  no el estatus de coincidencia (ya disuelto).
 - **V-L2-10 m_φ = Σm_ν^active · (Ω⁴+AURA·KAL₀)** — forward-prediction canónica:
   `[eV]·(número puro)=[eV]`, dimensionalmente **consistente**. Con
   Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV = 0.069023 eV y multiplicador

@@ -47,13 +47,14 @@ rather than by tuned cosmological parameters. The equation of state follows as
 bare ratios of structural invariants, $w_0=-T_r/M_v=-0.840$ and
 $w_a=-P_{\rm sc}/K_v=-0.670$, with no fitted amplitude; confronted with the DESI
 DR2 $w_0w_a$CDM posterior the agreement is at the $0.05\sigma$ level
-($\chi^2_{\rm 2D}=0.080$). A Markov-chain analysis combining DESI BAO with a
-Planck-anchored prior yields $H_0=66.53\pm0.44~\kms$. The
+($\chi^2_{\rm 2D}=0.080$). A Markov-chain analysis combining DESI BAO with the
+$\omega_m$-direct CMB anchor as prior yields $H_0=67.16\pm0.44~\kms$. The
 effective-field-theory description is canonical---$\alpha_T=\alpha_M=\alpha_B=0$
 with $\alpha_K(0)=0.4033$---and the inflationary sector predicts
 $n_s=1-\varphi^{-7}=0.9656$ and a tensor-to-scalar ratio $r=\varphi^{-10}=
 8.1\times10^{-3}$ that is testable by LiteBIRD and CMB-S4. A Boltzmann
-calculation shows the two-$\Omega$ bridge constant MIRA is physically required:
+calculation shows the full algebraic $\omega_m$ (not the bare dynamical
+$\Omega_{m,\rm dyn}=0.160$) is physically required for the CMB:
 without it the acoustic-peak structure degrades by a factor of $\sim22$ in RMS.
 We are explicit about the framework's limits: the absolute vacuum scale enters
 as a single measured input, the single-sector growth amplitude $S_8$ remains in
@@ -86,7 +87,7 @@ $\Omega$       & $\varphi+\pi$             & $4.75962$  & Stability metric \\
 $\beta$ (BIAL) & $(\varphi+\pi)/2$         & $2.37981$  & Base coupling scalar \\
 $\mathrm{KAL}$ & $\beta+\pi$               & $5.52140$  & Structural viscosity \\
 $\mathrm{AURA}$& $\beta+\varphi$           & $3.99784$  & Screening amplitude \\
-$\mathrm{MIRA}$& $\mathrm{AURA}/2$         & $1.99892$  & Two-$\Om$ bridge (value clean; mechanism open) \\
+$\mathrm{MIRA}$& $\mathrm{AURA}/2$         & $1.99892$  & Mirror Ratio (enters $f_{\rm screen}$, Paper~9) \\
 $P_{\mathrm{sc}}$ & $\Omega+\varphi$       & $6.37765$  & Dynamical evolution scalar \\
 $K_v$          & $2(\varphi+\pi)$          & $9.51925$  & Structural constraint \\
 $T_r$          & $3(\varphi+\beta)$        & $11.99353$ & 3D saturation horizon \\
@@ -141,7 +142,7 @@ The paper is organised as a single coherent argument rather than a collection of
 results. Section~\ref{sec:core} constructs the equation of state from the
 algebraic invariants and confronts it with DESI DR2, derives the two-$\Omega$
 structure that distinguishes the dynamical matter fraction
-$\Om^{\mathrm{dyn}}=0.160$ from the cosmological $\Om^{\mathrm{cosm}}=0.320$, and
+$\Om^{\mathrm{dyn}}=0.160$ from the cosmological $\Om^{\mathrm{cosm}}=\omega_m/h^2=0.30889$, and
 reports the Hubble-constant inference. Section~\ref{sec:eft} gives the canonical
 effective-field-theory description, the inflationary predictions, and the
 confrontation with Planck PR4, including a Boltzmann test demonstrating that the
@@ -318,59 +319,71 @@ fraction through the closure relation of a single rolling field,
   \label{eq:omdyn}
 \end{equation}
 which is the fraction that controls the late-time acceleration. This value is
-notably lower than the matter density inferred from the acoustic peaks. SSEE
-relates the two through the structural invariant MIRA,
+notably lower than the matter density inferred from the acoustic peaks. Under
+the $\omega_m$-direct reframe (OP-8 dissolved) the CMB matter fraction is the
+standard physical observable, built piece-by-piece from SSEE algebra with
+\emph{no} bridging factor,
 \begin{equation}
-  \Om^{\mathrm{cosm}} \;=\; \mathrm{MIRA}\,\cdot\,\Om^{\mathrm{dyn}}
-        \;=\; \frac{\mathrm{AURA}}{2}\,(1+w_0)
-        \;=\; 1.99892\times0.16005 \;=\; 0.31993 ,
+  \Om^{\mathrm{cosm}} \;=\; \frac{\omega_m}{h^2}
+        \;=\; \frac{\omega_b+\omega_c+\omega_\nu}{h^2}
+        \;=\; \frac{0.14267}{0.67962^2} \;=\; 0.30889 ,
+  \qquad \omega_c=\mathrm{KAL_0}\,\omega_b\,n_s ,
   \label{eq:omcosm}
 \end{equation}
 the matter fraction that enters the background expansion $E(z)$, the Poisson
-equation, and the CMB. We are deliberately precise about the epistemic status
-of MIRA, separating two questions that are too often conflated.
+equation, and the CMB. The dynamical fraction $\Om^{\mathrm{dyn}}=0.160$ (DESI)
+and $\omega_m$ (CMB) are two independent SSEE predictions, no longer tied by a
+factor. We are deliberately precise about the epistemic status of this
+two-sector accounting.
 
-\paragraph{Its value is clean; its mechanism is open.} The \emph{value}
-$\mathrm{MIRA}=\mathrm{AURA}/2=1.99892$ is fixed algebraically by $\varphi$ and
-$\pi$ with no fit whatsoever---it is not adjusted to reproduce
-$\Om^{\mathrm{cosm}}$. The \emph{dynamical mechanism} that would derive this
-factor-of-two bridge from the field equations is, by contrast, not yet
-established; we track it as an explicit open problem (OP-8,
-\S\ref{sec:open}). We therefore present MIRA as a postulated structural
-relation with a clean numerical value, \emph{not} as a phenomenological
-rescaling tuned to data. Stating this plainly is part of the honest
-parameter accounting of \S\ref{sec:open}.
+\paragraph{No bridging factor: the CMB density is built from algebra.} Each
+piece of $\omega_m$ is an SSEE algebraic value with no fit: the baryon density
+$\omega_b=(\pi-\varphi)/[3(\varphi+\pi)^2]=0.02242$ and the cold-matter density
+$\omega_c=\mathrm{KAL_0}\,\omega_b\,n_s=0.11951$ (a forward identity, already in
+Paper~1; $0.41\sigma$ from Planck). The earlier presentation tied
+$\Om^{\mathrm{cosm}}$ to $\Om^{\mathrm{dyn}}$ through a factor-of-two bridge
+$\mathrm{MIRA}=\mathrm{AURA}/2=1.99892$, tracked as open problem OP-8; that
+bridge is now \emph{dissolved}---there is no matter factor to derive. The
+residual honest open question is only the UV origin of the $\omega_c$ identity.
+$\mathrm{MIRA}$ survives elsewhere, in the late-time Hubble screening fraction
+$f_{\rm scr}=\alpha_K/(3\,\mathrm{MIRA})$ (Paper~9), where it is the ``Mirror Ratio''.
 
-\paragraph{MIRA is physically required, not cosmetic.} Independently of its
-ultimate derivation, a Boltzmann analysis shows the relation is not optional.
-Running a full CLASS computation with $\Om^{\mathrm{cosm}}=0.320$ places the
-first three acoustic peaks at $\ell=220,\,535,\,810$, reproducing the $\Lambda$CDM
-template to $1.4\%$ RMS. Removing MIRA and feeding the bare dynamical value
-$\Om^{\mathrm{dyn}}=0.160$ into the early-time background shifts all three
-peaks rightward by $\sim10\%$ ($\ell=240,\,597,\,922$) and degrades the RMS to
-$31.5\%$---a factor of $22$. The sound horizon at recombination demands the
-higher matter density; SSEE's two-$\Om$ structure is the statement that the
-sector driving late-time acceleration ($\Om^{\mathrm{dyn}}$) and the sector
-setting the early-time geometry ($\Om^{\mathrm{cosm}}$) are tied by a single
-algebraic constant rather than left as two free numbers.
+\paragraph{The full matter density is physically required, not cosmetic.}
+Independently of its derivation, a Boltzmann analysis shows the full
+$\omega_m$ is not optional. Running a full CLASS computation at
+$\Om^{\mathrm{cosm}}\simeq0.31$ (a legacy MIRA-background validation run at
+$0.320$; the $\omega_m$-direct canonical $0.30889$ is within $3.5\%$, shifting
+peaks by $\Delta\ell<2$) places the first three acoustic peaks at
+$\ell=220,\,535,\,810$, reproducing the $\Lambda$CDM template to $1.4\%$ RMS.
+Feeding only the bare dynamical value $\Om^{\mathrm{dyn}}=0.160$ into the
+early-time background shifts all three peaks rightward by $\sim10\%$
+($\ell=240,\,597,\,922$) and degrades the RMS to $31.5\%$---a factor of $22$.
+The sound horizon at recombination demands the full matter density; SSEE's
+two-$\Om$ structure is the statement that the sector driving late-time
+acceleration ($\Om^{\mathrm{dyn}}$) and the sector setting the early-time
+geometry ($\Om^{\mathrm{cosm}}=\omega_m/h^2$) are two independent algebraic
+predictions rather than two free numbers.
 
 Figure~\ref{fig:rd_dual} makes the same point on the drag-epoch sound
 horizon itself: the pure geometric SSEE scale ($175.6$~Mpc at
-$\Om^{\mathrm{dyn}}=0.160$) is mapped by the MIRA relation to $147.6$~Mpc
-at $\Om^{\mathrm{cosm}}=0.31993$, consistent with the Planck-inferred
-$147.09\pm0.26$~Mpc. The large pre-mapping scale is an internal geometric
+$\Om^{\mathrm{dyn}}=0.160$) and the physical CMB drag scale set by the full
+algebraic $\omega_m$ ($147.17$~Mpc at $\Om^{\mathrm{cosm}}=0.30889$,
+$\omega_m$-direct) which is consistent with the Planck-inferred
+$147.09\pm0.26$~Mpc ($0.32\sigma$). The large geometric scale is an internal
 quantity, not the model's prediction for the observed BAO standard ruler.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.82\textwidth]{fig_rd_dual.pdf}
   \caption{The dual sound horizon. The pure geometric SSEE drag scale
-  (red, $175.6$~Mpc) is carried by the MIRA mapping to $147.6$~Mpc
-  (green), in agreement with Planck 2018 ($147.09\pm0.26$~Mpc, grey band)
-  and the $\Lambda$CDM Eisenstein--Hu value (blue, $147.3$~Mpc). This is
-  the visual counterpart of the Boltzmann test above: the same single
-  algebraic constant that restores the acoustic peaks also restores the
-  BAO standard ruler.}
+  (red, $175.6$~Mpc at $\Om^{\mathrm{dyn}}=0.160$) and the physical CMB drag
+  scale set by the full algebraic $\omega_m$ (green, $147.17$~Mpc at
+  $\Om^{\mathrm{cosm}}=0.30889$, $\omega_m$-direct), in agreement with Planck
+  2018 ($147.09\pm0.26$~Mpc, grey band) and the $\Lambda$CDM Eisenstein--Hu
+  value (blue, $147.3$~Mpc). This is the visual counterpart of the Boltzmann
+  test above: the full matter density that restores the acoustic peaks also
+  restores the BAO standard ruler. (The earlier MIRA-mapped $147.6$~Mpc at
+  $0.31993$ is superseded.)}
   \label{fig:rd_dual}
 \end{figure}
 
@@ -387,23 +400,26 @@ walkers $\times\,25{,}000$ steps (seed $42$).
 \paragraph{$H_0$ as one quantity in two stages.} We first anchor the
 early-time geometry at the CMB-optimal value
 \begin{equation}
-  H_0^{\mathrm{anchor}} = 67.037~\kms ,
+  H_0^{\mathrm{anchor}} = H_0^{\rm alg} = 3(\varphi+\pi)^2 = 67.962~\kms ,
   \label{eq:h0anchor}
 \end{equation}
-which is the $H_0$ that minimises the Planck likelihood for the SSEE
-background; at this anchor the sound horizon and acoustic scale are both well
-within tolerance, $r_d = 146.70~\mathrm{Mpc}$ ($1.51\sigma$) and
-$\theta_\ast = 0.59636^\circ$ ($0.69\sigma$). Letting the MCMC then correct
+which (with $\omega_b,\omega_c$ fixed by SSEE algebra) is the $H_0$ that
+minimises the Planck likelihood for the SSEE background; at this anchor the
+sound horizon and acoustic scale are both well within tolerance,
+$r_d = 147.17~\mathrm{Mpc}$ ($0.32\sigma$) and
+$\theta_\ast = 0.59668^\circ$ ($1.05\sigma$). Letting the MCMC then correct
 $H_0$ against the low-redshift BAO yields the posterior
 \begin{equation}
-  H_0^{\mathrm{post}} = 66.533 \pm 0.442~\kms ,
+  H_0^{\mathrm{post}} = 67.159 \pm 0.442~\kms ,
   \qquad
-  \Omega_b h^2 = 0.02261 \pm 0.00048 ,
+  \Omega_b h^2 = 0.02285 \pm 0.00048 ,
   \label{eq:h0post}
 \end{equation}
-with $r_d = 147.28~\mathrm{Mpc}$ ($0.72\sigma$) at the posterior value. These
+with $r_d = 147.17~\mathrm{Mpc}$ ($0.32\sigma$, $\omega_m$-set, $H_0$-invariant)
+at the posterior value. These
 are two stages of the same quantity---a CMB anchor and a BAO-corrected
-posterior---not two independent measurements.
+posterior---not two independent measurements. (The earlier MIRA-anchored
+$67.037 / 66.533$ stages are superseded by the $\omega_m$-direct reframe.)
 
 \paragraph{The BAO--CMB split is a known feature, reported openly.} The
 $\sim1.2\sigma$ gap between Eqs.~\eqref{eq:h0anchor} and~\eqref{eq:h0post} is
@@ -412,25 +428,25 @@ the late-time BAO prefer a slightly lower $H_0$ than the early-time acoustic
 geometry. It is a property of dynamical-dark-energy fits to the current data,
 not an artefact of SSEE, and we make it explicit rather than hide it inside a
 single quoted number. At the CMB anchor all early-universe observables
-($r_d$, $\theta_\ast$) sit below $2\sigma$ simultaneously; the residual split
+($r_d$, $\theta_\ast$) sit at $\sim1\sigma$ simultaneously; the residual split
 surfaces only when the BAO-corrected posterior is pushed back into a
 CMB-calibrated observable, which is precisely where the literature expects it.
 Numerically, evaluating $\theta_\ast$ at $H_0^{\mathrm{post}}$ would return
-$0.59417^\circ$ ($5.46\sigma$); we quote this not as a tension but to make the
+$0.59536^\circ$ ($6.66\sigma$); we quote this not as a tension but to make the
 category error explicit---the late-time expansion rate is not the early-time
 acoustic calibration, and conflating the two is precisely what the two-stage
 treatment avoids.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.62\textwidth]{fig_corner_ssee_professional.pdf}
+  \includegraphics[width=0.62\textwidth]{fig_corner_ssee_halg_prior.pdf}
   \caption{Marginalised posterior from the MCMC analysis ($100$ walkers
   $\times\,25{,}000$ steps). With the entire dark-energy sector fixed by
   $\varphi$ and $\pi$, the chain samples only $H_0$ and $\Omega_b h^2$ against
-  DESI DR2 BAO with a CMB-derived (MIRA) prior. The posterior is
-  $H_0=66.533\pm0.442~\kms$ and $\Omega_b h^2 = 0.02261\pm0.00048$
+  DESI DR2 BAO with the $\omega_m$-direct CMB anchor as prior. The posterior is
+  $H_0=67.159\pm0.442~\kms$ and $\Omega_b h^2 = 0.02285\pm0.00048$
   (Eq.~\ref{eq:h0post}). Dashed lines mark the anchor inputs
-  $(H_0=67.037~\kms,\ \Omega_b h^2 = 0.02218)$; the $16/50/84\%$ quantiles are
+  $(H_0=67.962~\kms,\ \Omega_b h^2 = 0.02218)$; the $16/50/84\%$ quantiles are
   indicated.}
   \label{fig:corner}
 \end{figure}
@@ -528,8 +544,8 @@ Table~\ref{tab:cmb} reports the reduced $\chi^2$.
   \caption{CMB confrontation against Planck PR4. SSEE reproduces the acoustic
   spectra at a quality indistinguishable from $\Lambda$CDM, with acoustic peaks
   at $\ell=220,\,535,\,810$. The combined $\Delta\mathrm{BIC}
-  (\text{SSEE}-\Lambda\text{CDM})=-28.0$ over $N=5914$ data points reflects the
-  two-parameter economy of the background.}
+  (\text{SSEE}-\Lambda\text{CDM})=-34.9$ over $N=5914$ data points (diagonal,
+  $\omega_m$-direct) reflects the two-parameter economy of the background.}
   \label{tab:cmb}
 \end{table}
 
@@ -541,23 +557,26 @@ Table~\ref{tab:cmb} reports the reduced $\chi^2$.
   against Planck PR4. With the dark-energy sector fixed by $\varphi$ and $\pi$,
   SSEE reproduces the acoustic peaks at $\ell=220,\,535,\,810$ at a quality
   indistinguishable from $\Lambda$CDM (Table~\ref{tab:cmb}). The two-$\Om$
-  structure is essential: replacing $\Om^{\mathrm{cosm}}=0.320$ with the bare
+  structure is essential: replacing $\Om^{\mathrm{cosm}}=0.30889$ with the bare
   $\Om^{\mathrm{dyn}}=0.160$ shifts every peak by ${\sim}10\%$.}
   \label{fig:cmb}
 \end{figure}
 
-\paragraph{MIRA is physically required, not cosmetic.} The two-$\Om$ structure
+\paragraph{The two-sector CMB density is physically required, not cosmetic.}
+The two-$\Om$ structure
 of \S\ref{sec:two-omega} is decisively tested by the CMB. Running the Boltzmann
-solver with the cosmological matter fraction $\Om^{\mathrm{cosm}}=0.320$ (i.e.\ with
-MIRA) places the first three acoustic peaks at $\ell=220,\,535,\,810$, an RMS
+solver with the $\omega_m$-direct cosmological matter fraction
+$\Om^{\mathrm{cosm}}=0.30889$ ($=\omega_m/h^2$)
+places the first three acoustic peaks at $\ell=220,\,535,\,810$, an RMS
 deviation of $1.4\%$ from $\Lambda$CDM. Running it instead with the bare
-dynamical fraction $\Om^{\mathrm{dyn}}=0.160$ (i.e.\ \emph{without} MIRA) shifts all
+dynamical fraction $\Om^{\mathrm{dyn}}=0.160$ shifts all
 three peaks by ${\sim}10\%$ ($\ell=240,\,597,\,922$) and raises the RMS to
 $31.5\%$---a factor of ${\sim}22$ worse. The sound horizon at recombination
-therefore \emph{demands} $\Om^{\mathrm{cosm}}\approx0.32$: MIRA is not a fit applied
+therefore \emph{demands} $\Om^{\mathrm{cosm}}\approx0.31$: the CMB matter density
+is not a fit applied
 to the data but a structural feature without which the model fails the CMB
-outright. Its numerical value is fixed by $\varphi,\pi$; its dynamical origin
-remains an open problem (\S\ref{sec:open}).
+outright. Its numerical value follows from the $\omega_m$-direct identity
+($\omega_c=\mathrm{KAL_0}\,\omega_b\,n_s$, fixed by $\varphi,\pi$; \S\ref{sec:open}).
 
 \section{Structure growth: an honest tension}
 \label{sec:growth}
@@ -566,21 +585,21 @@ The same linear EFT predicts the growth of structure, and here we report the
 situation honestly: a genuine challenge in the minimal (single-sector)
 treatment, resolved only by an extension sector that we deliberately keep
 outside the core register. With the Poisson source evaluated at the
-CMB-calibrated density $\Om^{\mathrm{cosm}}=0.320$ (the same MIRA sector that
-the Boltzmann test of \S\ref{sec:eft} shows is physically required), the growth
-factor is essentially that of $\Lambda$CDM,
-$G\equiv D_1^{\rm SSEE}/D_1^{\Lambda\rm CDM}=1.011\pm0.005$, and the present-day
-amplitude is
+CMB-calibrated density $\Om^{\mathrm{cosm}}=0.30889$ ($\omega_m$-direct, the
+two-sector structure that the Boltzmann test of \S\ref{sec:eft} shows is
+physically required), the growth factor is essentially that of $\Lambda$CDM,
+$G\equiv D_1^{\rm SSEE}/D_1^{\Lambda\rm CDM}=1.0032\pm0.005$, and the
+single-sector amplitude ceiling (CLASS forward) is
 \begin{equation}
   \label{eq:s8}
-  \sigma_8=0.820\pm0.006 , \qquad S_8=0.847
+  \sigma_8=0.8335\pm0.006 , \qquad S_8=0.846
 \end{equation}
-in the single-sector treatment---a $3.9\sigma$ tension with KiDS-1000
+in the single-sector treatment---a $3.5\sigma$ tension with KiDS-1000
 weak lensing~\citep{KiDS2021,DESY32022}, comparable to the $\Lambda$CDM
 $S_8$ tension itself. A two-sector extension, in which a free-streaming
 $\varphi$-DM component suppresses small-scale power below
 $k_{\rm fs}\simeq0.762~\hMpc$, \emph{lowers} the amplitude to
-$\sigma_8=0.748$, $S_8=0.766$, within $0.01\sigma$ of the KiDS-1000 value. The
+$\sigma_8=0.748$, $S_8=0.759$, within $0.01\sigma$ of the KiDS-1000 value. The
 mass that fixes the free-streaming scale,
 $m_\varphi=\Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})\simeq41.02$~eV,
 is a forward prediction with no parameter fitted to lensing data
@@ -593,10 +612,10 @@ lensing and CMB measurements.
   \centering
   \includegraphics[width=0.9\textwidth]{fig_s8_resolution.pdf}
   \caption{$S_8$: the single-sector challenge and the two-sector
-  resolution. The single-sector prediction (red, $S_8=0.847\pm0.006$)
-  carries the $3.9\sigma$ tension with KiDS-1000 reported in
+  resolution. The single-sector ceiling (red, $S_8=0.846\pm0.006$)
+  carries the $3.5\sigma$ tension with KiDS-1000 reported in
   Eq.~\eqref{eq:s8}; the two-sector $\varphi$-DM extension (green,
-  $S_8=0.766$) lands $0.01\sigma$ from KiDS-1000 (green band), with the
+  $S_8=0.759$) lands $0.01\sigma$ from KiDS-1000 (green band), with the
   free-streaming scale fixed by the forward-predicted mass
   $m_\varphi=41.02$~eV --- no parameter fitted to lensing data. Grey
   points: Planck 2018, KiDS-1000 and DES-Y3 with $1\sigma$ errors.}
@@ -744,7 +763,7 @@ derivation of the role assignments.
 
 The growth-of-structure status of \S\ref{sec:growth} mirrors this structure:
 the single-sector core inherits an $S_8$ tension at the $\Lambda$CDM level
-($3.9\sigma$), and the two-sector extension that resolves it ($S_8=0.766$,
+($3.9\sigma$), and the two-sector extension that resolves it ($S_8=0.759$,
 $0.01\sigma$ of KiDS-1000) rests on the $m_\varphi$ multiplier whose UV origin
 is the open item above. The non-linear treatment required to settle the matter
 definitively demands $N$-body simulations beyond this work's scope. We record

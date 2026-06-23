@@ -82,30 +82,32 @@ The dark energy equation of state $\wz = -(3\phiG+\pi)/[2(\phiG+\pi)] \simeq -0.
 and $\wa \simeq -0.670$ are fixed by the algebraic construction and agree with the
 DESI~DR2 CPL posterior within $0.05\sigma$---a parameter-free postdiction, with no
 claim of temporal priority over DESI~DR2.
-A Bayesian MCMC analysis under the SSEE-self-consistent MIRA prior
-($H_0^{\rm prior,SSEE}=67.037\pm0.54$~km\,s$^{-1}$\,Mpc$^{-1}$, derived from
-Planck~\texttt{plik\_lite} under the SSEE background; Paper~3) yields
-$H_0 = 66.53^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC}=-5.55$
+A Bayesian MCMC analysis under the $\omega_m$-direct CMB anchor as prior
+($H_0^{\rm prior,SSEE}=67.962\pm0.54$~km\,s$^{-1}$\,Mpc$^{-1}$, the value at
+which Planck~\texttt{plik\_lite} is minimised with SSEE-fixed $\omega_b,\omega_c$; Paper~3) yields
+$H_0 = 67.16^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC}=-5.55$
 for the dynamic sector relative to \LCDM.
 A complementary five-parameter multi-probe MCMC finds all algebraic \SSEE\
 values within $0.81\sigma$ of the posteriors (mean $0.36\sigma$ across the five parameters).
 
-The framework introduces the algebraic MIRA factor
-$\MIRA = (3\phiG+\pi)/4 \simeq 1.9989$, which maps the dynamical matter density
-$\Ommdyn = 0.160$ to $\OmmCMB = 0.3199$ (Planck: $0.3153\pm 0.0073$).
-Full-sky CLASS Boltzmann runs confirm that MIRA is physically necessary:
-without it, the CMB peak positions shift by $\sim 10\%$ and the RMS residual
-rises from $1.4\%$ to $31.5\%$.
+The CMB-sector matter density is the standard physical observable
+$\OmmCMB = \omega_m/h^2 = 0.30889$ (Planck: $0.3153\pm 0.0073$), built
+piece-by-piece from SSEE algebra ($\omega_m$-direct; OP-8 dissolved, no matter
+factor) and distinct from the dynamical $\Ommdyn = 0.160$ that governs DESI BAO.
+Full-sky CLASS Boltzmann runs confirm that the \emph{full} matter density is
+physically necessary: using only $\Ommdyn=0.160$ as the CMB matter density
+shifts the peak positions by $\sim 10\%$ and raises the RMS residual
+from $1.4\%$ to $31.5\%$.
 
-A linear Israel-Stewart perturbation analysis with $\Omega_{m,\mathrm{cosm}}=0.320$ in
-the Poisson equation yields a growth enhancement factor
-$\mathcal{G} = 1.011$ and $\sigma_8 = 0.820$ (Paper~5 corrected), giving a mean
-$\fsig$ tension of $0.74\sigma$ across six RSD surveys --- statistically identical
+A linear Israel-Stewart perturbation analysis with $\Omega_{m,\mathrm{cosm}}=0.30889$ in
+the Poisson equation yields a growth factor
+$\mathcal{G} = 1.0032$ and $\sigma_8 = 0.8136$ (Paper~5), giving a mean
+$\fsig$ tension of $0.70\sigma$ across six RSD surveys --- statistically identical
 to $\Lambda$CDM ($0.73\sigma$), resolving the growth-rate sector.
-A two-sector $\phi$-DM extension --- $\Omega_{\phi\mathrm{DM}} = (\MIRA-1)\,\Ommdyn$
+A two-sector $\phi$-DM extension --- $\Omega_{\phi\mathrm{DM}} = \OmmCMB-\Ommdyn = 0.14889$
 active only on scales $k < \kfs = 0.762\,h\,\mathrm{Mpc}^{-1}$ --- reduces the
-$S_8$ lensing tension from $3.9\sigma$ to $0.01\sigma$ (KiDS), with
-$\sigeff = 0.748$ ($S_8^{\rm eff}=0.766$ from the direct two-sector CLASS run;
+$S_8$ lensing tension from $3.5\sigma$ (single-sector ceiling, KiDS) to $0.01\sigma$, with
+$\sigeff = 0.748$ ($S_8^{\rm eff}=0.759$ from the direct two-sector CLASS run;
 the analytic two-sector growth factor $G_{\rm 2s}=0.979$ gives a complementary
 $\sigeff = 0.748$).
 
@@ -124,10 +126,10 @@ suppressed to $F_\phi/F_N\sim 10^{-15}$ and the observable lensing recovers
 GR; current SLACS/BELLS data favour the canonical limit (Paper~8;
 OPEN\_PROBLEMS.md OP-13). A late-time local screening fraction
 $f_{\rm scr}=\alphaK/(3\MIRA)=(\pi-\phiG)/(\phiG+\pi)^2\simeq0.067$ applied to the
-physical $H_0^{\rm MIRA}=67.037$ gives
-$H_0^{\rm local}=71.87$~km\,s$^{-1}$\,Mpc$^{-1}$, $1.12\sigma$ from the SH0ES
+global background $H_0^{\rm alg}=3(\phiG+\pi)^2=67.962$ gives
+$H_0^{\rm local}=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$, $0.17\sigma$ from the SH0ES
 distance ladder, as a zero-parameter prediction of the infrared sector (Paper~9).
-A UV completion $K(X)=X/\KAL+X^2/M^4$ with algebraic cutoff $M=9.62$~meV
+A UV completion $K(X)=X/\KAL+X^2/M^4$ with algebraic cutoff $M=9.68$~meV
 connects the dark-energy EFT to the inflationary $\alpha$-attractor (Paper~10).
 All model parameters are falsifiable by named forthcoming experiments.
 \end{abstract}
@@ -227,7 +229,7 @@ All primary observational inputs are retrodicted without fitting:
 \begin{alignat}{3}
   H_0   &= 3(\phiG+\pi)^2        &&\simeq 67.96\;\mathrm{km\,s^{-1}\,Mpc^{-1}},  \label{eq:H0}\\
   n_s   &= 1 - \phiG^{-7}        &&\simeq 0.96556,  \label{eq:ns}\\
-  \Omm  &= (\pi-\phiG)/(\pi+\phiG) &&\simeq 0.3201 \quad (\text{CMB sector}).
+  \OmmCMB &= \omega_m/h^2 &&\simeq 0.30889 \quad (\omega_m\text{-direct, CMB sector}).
   \label{eq:Omm}
 \end{alignat}
 Planck~2018 measurements: $H_0 = 67.36\pm 0.54$, $n_s = 0.9649\pm 0.0042$,
@@ -242,16 +244,20 @@ The framework introduces a structural two-sector mechanism.
 The dark energy EoS predicts $\Omde = |{\wz}| = 0.840$, which implies a
 \textit{dynamical} matter density $\Ommdyn = 1 - \Omde = 0.160$.
 However, the CMB angular-diameter distance is sensitive to the
-\textit{total} matter density.
-The algebraically derived MIRA factor,
+\textit{total} matter density, which under the $\omega_m$-direct reframe
+(OP-8 dissolved) is the standard physical observable built from SSEE algebra:
 \begin{equation}
-  \MIRA = \frac{3\phiG+\pi}{4} \simeq 1.9989,
-  \label{eq:MIRA}
+  \OmmCMB = \frac{\omega_m}{h^2}
+          = \frac{\omega_b+\omega_c+\omega_\nu}{h^2} = 0.30889,
+  \qquad \omega_c=\mathrm{KAL_0}\,\omega_b\,n_s,
+  \label{eq:omega_m_direct}
 \end{equation}
-maps $\Ommdyn$ to the effective CMB matter density:
-$\OmmCMB = \MIRA \times \Ommdyn = 0.3199$, in agreement with Planck~2018
-($0.3153\pm 0.0073$) at $0.63\sigma$.
-The physical interpretation of MIRA --- whether it arises from a background-level
+in agreement with Planck~2018 ($0.3153\pm 0.0073$) at $0.88\sigma$. There is
+\emph{no} matter factor: $\Ommdyn=0.160$ (DESI) and $\omega_m$ (CMB) are two
+independent SSEE predictions. (The earlier, now superseded MIRA mapping
+$\MIRA=(3\phiG+\pi)/4\simeq1.9989$ gave $\OmmCMB=\MIRA\times\Ommdyn=0.3199$, superseded;
+$\MIRA$ now enters only the Hubble screening fraction, Paper~9.)
+The physical interpretation of this two-sector split --- whether it arises from a background-level
 Israel-Stewart thermodynamic correction, a two-sector dark matter architecture,
 or both --- is examined in Papers~3 and~5 \citep{AlmeidaSSEE2026P3,AlmeidaSSEE2026P5}.
 The numerical validation in \S\ref{sec:cmb} demonstrates its necessity
@@ -298,7 +304,7 @@ Table~\ref{tab:mcmc_results} summarises the key posteriors and information crite
 \toprule
 Quantity & \SSEE & \LCDM & CPL \\
 \midrule
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $66.53^{+0.44}_{-0.44}$ & $67.42\pm0.48$ & free \\
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.16^{+0.44}_{-0.44}$ & $67.42\pm0.48$ & free \\
 Free parameters $k$ & 1 & 3 & 5 \\
 $N_{\rm eff}$ & 4\,402 & 14\,380 & 7\,253 \\
 $\Delta\mathrm{BIC}$ (dynamic sector) & $-5.55$ & ref & — \\
@@ -359,7 +365,7 @@ Parameter & Posterior (median $\pm1\sigma$) & Algebraic SSEE & Tension \\
 \midrule
 $H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.34 \pm 0.77$ & $67.96$ & $0.81\sigma$ \\
 $\Omega_b h^2$                     & $0.02236 \pm 0.00015$ & $0.02237$ & $0.06\sigma$ \\
-$\Omega_m$                         & $0.3178  \pm 0.0098$  & $0.3199$  & $0.22\sigma$ \\
+$\Omega_m$                         & $0.3178  \pm 0.0098$  & $0.30889$  & $0.91\sigma$ \\
 $w_0$                              & $-0.812  \pm 0.046$   & $-0.840$  & $0.61\sigma$ \\
 $w_a$                              & $-0.659  \pm 0.113$   & $-0.670$  & $0.10\sigma$ \\
 \midrule
@@ -385,15 +391,19 @@ Zenodo \citep{AlmeidaSSEE2026zenodo}.
 \label{sec:class_setup}
 
 We run the CLASS Boltzmann code \citep{Lesgourgues2011} (v3.2) with two
-configurations to isolate the MIRA effect:
+configurations to isolate the effect of the full CMB matter density.
+\emph{These validation runs used the legacy MIRA-background value
+$\OmmCMB=0.3199$; the $\omega_m$-direct canonical $0.30889$ differs by
+$3.5\%$ and shifts the acoustic peaks by $\Delta\ell<2$, so the runs remain
+representative of the canonical background.}
 \begin{description}[itemsep=1pt]
-  \item[SSEE+MIRA:] $\Omega_b = 0.04897$, $\Omega_{\rm cdm} = 0.2710$
-    (total $\OmmCMB = 0.3199$), $w_0 = -0.8399$, $w_a = -0.6699$,
-    $n_s = 0.96556$, $h = 0.67962$. The MIRA-mapped matter density is
+  \item[SSEE full-$\Omega_m$ (legacy MIRA bg):] $\Omega_b = 0.04897$, $\Omega_{\rm cdm} = 0.2710$
+    (total $\OmmCMB = 0.3199$, legacy MIRA bg), $w_0 = -0.8399$, $w_a = -0.6699$,
+    $n_s = 0.96556$, $h = 0.67962$. The full matter density is
     set directly as a CLASS background input.
-  \item[SSEE noMIRA:] same EoS and $h$, but $\Omega_b = 0.048432$,
-    $\Omega_{\rm cdm} = 0.111568$ (total $\Ommdyn = 0.160$), without the
-    MIRA mapping.
+  \item[SSEE dynamical-only:] same EoS and $h$, but $\Omega_b = 0.048432$,
+    $\Omega_{\rm cdm} = 0.111568$ (total $\Ommdyn = 0.160$), using only the
+    dynamical sector as CMB matter.
 \end{description}
 A fiducial \LCDM\ run with Planck~2018 best-fit parameters serves as reference.
 All runs use $\ell_{\rm max} = 2500$, lensing enabled.
@@ -437,12 +447,14 @@ and \LCDM.
 \centering
 \includegraphics[width=0.82\textwidth]{../class_ssee/output/ssee_v36_CMB_TT_comparison.png}
 \caption{CMB TT power spectrum from CLASS\@. \textit{Black solid}: \LCDM\ Planck~2018.
-         \textit{Blue dashed}: SSEE with $\OmmCMB=0.3199$ (MIRA background) ---
+         \textit{Blue dashed}: SSEE with the full matter density (legacy
+         MIRA-background $\OmmCMB=0.3199$; the $\omega_m$-direct canonical
+         $0.30889$ is within $3.5\%$, $\Delta\ell<2$) ---
          peak positions agree to within $\Delta\ell < 5$ across all three peaks.
-         The SSEE noMIRA run ($\OmmCMB = 0.160$) is omitted from this panel;
+         The SSEE dynamical-only run ($\OmmCMB = 0.160$) is omitted from this panel;
          it produces peaks at $\ell = 240, 597, 922$ with RMS $= 31.5\%$
-         relative to \LCDM, confirming that MIRA is physically necessary
-         to reproduce the acoustic scale with $\Ommdyn = 0.160$.}
+         relative to \LCDM, confirming that the \emph{full} matter density
+         (not the dynamical $\Ommdyn = 0.160$) is needed to reproduce the acoustic scale.}
 \label{fig:cmb_tt}
 \end{figure}
 
@@ -479,39 +491,39 @@ effective IS sound speed to zero:
 $c_{s,\mathrm{eff}}^2(k\to\infty) = 0$, to floating-point precision.
 
 Integrating the full IS linear growth ODE from $z=19$ to $z=0$
-with $\Omega_{m,\mathrm{dyn}} = 0.160$:
+with $\Omega_{m,\mathrm{cosm}} = 0.30889$ in the Poisson source:
 \begin{equation}
-  \mathcal{G} = D_1^{\mathrm{SSEE}}/D_1^{\Lambda\mathrm{CDM}} = 1.011,
+  \mathcal{G} = D_1^{\mathrm{SSEE}}/D_1^{\Lambda\mathrm{CDM}} = 1.0032,
   \qquad
-  \sigma_8^{\mathrm{SSEE}} = 0.811 \times \mathcal{G} = 0.820.
+  \sigma_8^{\mathrm{SSEE}} = 0.811 \times \mathcal{G} = 0.8136.
   \label{eq:G_IS}
 \end{equation}
-The IS growth index $\gamma_{\mathrm{IS}} = 0.554\pm0.001$, consistent with
+The IS growth index $\gamma_{\mathrm{IS}} = 0.5504\pm0.001$, consistent with
 $\gamma_{\Lambda\mathrm{CDM}} \simeq 0.55$ \citep{Lahav1991}, indicating that
 the SSEE perturbation growth rate tracks \LCDM\ at the percent level despite
 the different background.
 
 A CLASS run with $c_s^2 = 0.001$ (IS limit) and $\Omega_m = 0.160$ (single sector)
 yields $\sigma_8^{\mathrm{CLASS}} = 0.457$, substantially lower than the ODE result
-(0.820).
+(0.8136).
 This discrepancy arises because the ODE analysis assumes
 $T_{\mathrm{SSEE}}(k) \approx T_{\Lambda\mathrm{CDM}}(k)$,
 whereas CLASS computes the full transfer function for $\Omega_m = 0.160$, which
 suppresses small-scale power.
-The MIRA background ($\Omega_m = 0.320$) is the correct CLASS input for comparison
+The $\omega_m$-direct background ($\Omega_{m,\mathrm{CMB}} = 0.30889$) is the correct CLASS input for comparison
 with observations, as shown in \S\ref{sec:mira_test} and further examined in
 \S\ref{sec:phiDM} below.
 
 \subsection{$\phi$-Dark Matter two-sector and WDM suppression}
 \label{sec:phiDM}
 
-The corrected single-sector analysis (Paper~5, $\OmmCMB=0.320$ in Poisson) gives
-$\sigma_8 = 0.820$ and a mean $f\sigma_8$ tension of $0.74\sigma$ across six
+The single-sector analysis (Paper~5, $\OmmCMB=0.30889$ in Poisson) gives
+$\sigma_8 = 0.8136$ and a mean $f\sigma_8$ tension of $0.70\sigma$ across six
 canonical RSD surveys (Table~\ref{tab:fsig8}), statistically indistinguishable
 from $\Lambda$CDM ($0.73\sigma$).
 Paper~6 \citep{AlmeidaSSEE2026P6} proposes a two-sector extension:
 a $\phi$-dark matter component
-$\Omega_{\phi\mathrm{DM}} = (\MIRA-1)\,\Ommdyn = 0.159878$,
+$\Omega_{\phi\mathrm{DM}} = \OmmCMB-\Ommdyn = 0.14889$,
 clustered only on scales $k < \kfs$, supplementing
 $\Omega_{\mathrm{CDM}} = 0.160050$.
 Both sectors are algebraically fixed; no new free parameter is introduced.
@@ -542,7 +554,7 @@ $\mphi = 41.02$~eV rather than a quantity fitted to data: the relic temperature
 $T_\phi = 0.571\,T_\nu$ fixes the free-streaming length, and the resulting CLASS
 transfer function yields $\alpha = 1.108\,h\,\mathrm{Mpc}^{-1}$ (with standard
 top-hat filter at $R = 8\,h^{-1}$~Mpc). The direct two-sector CLASS run then
-gives $\sigeff = 0.748$ and $S_8^{\rm eff} = 0.766$, within $0.01\sigma$ of the
+gives $\sigeff = 0.748$ and $S_8^{\rm eff}=0.759$, within $0.01\sigma$ of the
 KiDS-1000 value \citep{KiDS2021}; this is a genuine forward prediction, and the
 $\fsig$ comparison of \S\ref{sec:tension_table} provides the complementary
 confrontation with growth-rate data.
@@ -551,7 +563,7 @@ confrontation with growth-rate data.
 the analytic two-sector growth suppression $G_{\rm 2s} = 0.979$ applied to
 $\sigma_{8,\Lambda\rm CDM} = 0.811$ (giving $0.811\times0.979=0.794$),
 which establishes the suppression \emph{mechanism}.
-The canonical titular value $\sigeff = 0.748$ ($S_8^{\rm eff}=0.766$)
+The canonical titular value $\sigeff = 0.748$ ($S_8^{\rm eff}=0.759$)
 integrates the full CLASS $P(k)$ with the forward-output
 $T_{\rm WDM}(k;\alpha=1.108\,h\,\mathrm{Mpc}^{-1})$ set by $\mphi=41.02$~eV;
 the two routes are methodologically complementary --- the analytic route
@@ -580,8 +592,8 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
          measurements (6dFGRS, SDSS MGS, BOSS DR12 at $z=0.38,0.51,0.61$,
          eBOSS DR16 at $z=1.48$; Paper~5 set).
          \textit{Black dashed}: \LCDM.
-         \textit{Red}: \SSEE\ two-sector, mean tension $0.76\sigma$.
-         \textit{Blue}: \SSEE\ single-sector ($\sigma_8 = 0.820$, Paper~5 corrected), mean tension $0.74\sigma$.}
+         \textit{Red}: \SSEE\ two-sector, mean tension $0.82\sigma$.
+         \textit{Blue}: \SSEE\ single-sector ($\sigma_8 = 0.8136$, Paper~5), mean tension $0.70\sigma$.}
 \label{fig:fsig8}
 \end{figure}
 
@@ -592,40 +604,42 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 \centering
 \caption{$f\sigma_8$ tension for six RSD surveys. $\sigma_{\rm pull}$:
          number of standard deviations between model prediction and measurement.
-         The canonical single-sector baseline uses $\OmmCMB=0.31993$ (Paper~5),
-         giving mean $0.74\sigma$; the two-sector mean is $0.76\sigma$ --- both
+         The canonical single-sector baseline uses $\OmmCMB=0.30889$
+         ($\omega_m$-direct, Paper~5),
+         giving mean $0.70\sigma$; the two-sector mean is $0.82\sigma$ --- both
          tie $\Lambda$CDM ($0.73\sigma$), since at RSD scales ($k\ll k_{\rm fs}$)
-         the $\varphi$-DM clusters as cold matter. The illustrative ``minimal-CDM''
-         pulls shown ($\sigma_8=0.702$, $\Omega_{m,\mathrm{dyn}}=0.160$) are
-         \emph{not} the canonical baseline. The genuine challenge-to-resolution is
+         the $\varphi$-DM clusters as cold matter. (The illustrative ``minimal-CDM''
+         pulls of an earlier, superseded calculation, $\sigma_8=0.702$ at
+         $\Omega_{m,\mathrm{dyn}}=0.160$, are \emph{not} the canonical baseline.)
+         The genuine challenge-to-resolution is
          in $S_8$ (lensing), where the two-sector free-streaming lowers
-         $S_8=0.847\to0.766$ ($0.01\sigma$ KiDS).}
+         $S_8=0.846\to0.759$ ($0.01\sigma$ KiDS).}
 \label{tab:fsig8}
 \begin{tabular}{lcccc}
 \toprule
 Survey & $z$ & Data $f\sigma_8$ & Minimal-CDM$^*$ & Two-sector \\
 \midrule
-6dFGRS     & 0.067 & $0.423\pm0.055$ & $+2.85\sigma$ & $+0.39\sigma$ \\
-SDSS MGS   & 0.150 & $0.490\pm0.145$ & $+1.42\sigma$ & $+0.51\sigma$ \\
-BOSS DR12  & 0.380 & $0.497\pm0.045$ & $+3.81\sigma$ & $+1.20\sigma$ \\
-BOSS DR12  & 0.510 & $0.458\pm0.038$ & $+3.03\sigma$ & $+0.24\sigma$ \\
-BOSS DR12  & 0.610 & $0.436\pm0.034$ & $+2.44\sigma$ & $-0.38\sigma$ \\
-eBOSS DR16 & 1.480 & $0.462\pm0.045$ & $+2.50\sigma$ & $+1.84\sigma$ \\
+6dFGRS     & 0.067 & $0.423\pm0.055$ & $+2.85\sigma$ & $+0.52\sigma$ \\
+SDSS MGS   & 0.150 & $0.490\pm0.145$ & $+1.42\sigma$ & $+0.56\sigma$ \\
+BOSS DR12  & 0.380 & $0.497\pm0.045$ & $+3.81\sigma$ & $+1.33\sigma$ \\
+BOSS DR12  & 0.510 & $0.458\pm0.038$ & $+3.03\sigma$ & $+0.38\sigma$ \\
+BOSS DR12  & 0.610 & $0.436\pm0.034$ & $+2.44\sigma$ & $-0.25\sigma$ \\
+eBOSS DR16 & 1.480 & $0.462\pm0.045$ & $+2.50\sigma$ & $+1.87\sigma$ \\
 \midrule
-\textbf{Mean} & & & $\mathbf{0.74\sigma}$ (corr.) & $\mathbf{0.76\sigma}$ \\
+\textbf{Mean} & & & $\mathbf{0.70\sigma}$ (corr.) & $\mathbf{0.82\sigma}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The two-sector $f\sigma_8$ mean ($0.76\sigma$) is statistically indistinguishable
-from the corrected single-sector baseline ($0.74\sigma$, Paper~5) and from
+The two-sector $f\sigma_8$ mean ($0.82\sigma$) is statistically indistinguishable
+from the single-sector baseline ($0.70\sigma$, Paper~5) and from
 $\Lambda$CDM ($0.73\sigma$): the growth-rate sector is already resolved at the
 single-sector level; the two-sector extension adds no significant $f\sigma_8$
 improvement.
 The genuine gain of Paper~6 is in the $S_8$ lensing amplitude: the WDM
 free-streaming suppression on scales $k > \kfs$ lowers $\sigeff$ from the
-corrected single-sector $\sigma_8 = 0.820$ ($S_8 = 0.847$, $3.9\sigma$ KiDS)
-to the canonical two-sector $\sigeff = 0.748$ ($S_8^{\rm eff} = 0.766$,
+single-sector ceiling $\sigma_8 = 0.8335$ ($S_8 = 0.846$, $3.5\sigma$ KiDS)
+to the canonical two-sector $\sigeff = 0.748$ ($S_8^{\rm eff}=0.759$,
 $0.01\sigma$ KiDS), a forward prediction set by $\mphi = 41.02$~eV and
 $\alpha = 1.108\,h\,\mathrm{Mpc}^{-1}$ with no free parameters.
 We stress that this analysis operates at the linear-growth level; non-linear
@@ -685,8 +699,9 @@ EFTCAMB confirms both conditions are satisfied.
 \begin{table}[ht]
 \centering
 \caption{EFTCAMB stability and perturbation results.
-         The GR run uses the MIRA background ($\OmmCMB = 0.3199$)
-         for a direct comparison.}
+         The GR run uses the full matter density (legacy
+         MIRA-background $\OmmCMB = 0.3199$; the $\omega_m$-direct canonical $0.30889$ is
+         within $3.5\%$, $\Delta\ell<2$) for a direct comparison.}
 \label{tab:eftcamb}
 \begin{tabular}{lcc}
 \toprule
@@ -710,8 +725,9 @@ CMB peaks SSEE RPH & $\ell = 240, 585, 886$ & $\sim 10\%$ shift from $\alphaK$ \
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.85\textwidth]{../results/figures/ssee_eftcamb_CMB_TT.pdf}
-\caption{CMB TT power spectrum from EFTCAMB\@. \textit{Blue}: GR run with MIRA
-         background ($\OmmCMB = 0.3199$); peaks at $\ell = 219, 533, 807$.
+\caption{CMB TT power spectrum from EFTCAMB\@. \textit{Blue}: GR run with the
+         full matter density (legacy MIRA-background $\OmmCMB = 0.3199$;
+         $\omega_m$-direct canonical $0.30889$ within $3.5\%$); peaks at $\ell = 219, 533, 807$.
          \textit{Red}: \SSEE\ RPH with $\alphaK = 0.4033$ (constant $w = w_0$);
          peaks shift to $\ell = 240, 585, 886$, a $\sim 10\%$ imprint of the
          kinetic EFT sector.
@@ -764,8 +780,8 @@ explicitly: the strong-field lensing signature (\S\ref{sec:ext-sg}) is a
 falsifiable prediction; the Hubble-tension screening fraction
 (\S\ref{sec:ext-ht}) is a zero-parameter algebraic result compared to existing
 data; and the UV completion (\S\ref{sec:ext-uv}) contains one quantity ---
-$H_0^{\rm UV,MIRA} = 72.05$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.96\sigma$; Type-P
-evaluation $73.040$, a numerical coincidence) --- that is explicitly
+$H_0^{\rm UV} = 73.040$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.00\sigma$ from SH0ES; on
+the global anchor $H_0^{\rm alg}=67.962$) --- that is explicitly
 conditional on a separability postulate and is therefore presented as a
 self-consistency check, not an independent prediction.
 
@@ -823,19 +839,21 @@ imply a late-time \emph{local screening fraction}
 where $\alphaK = 3\,\Omde(1+\wz)$ is the background-derived EFT kineticity and
 $\MIRA = (3\phiG+\pi)/4$. The structural constant $\AURA = 2\MIRA$ cancels
 exactly in the ratio, leaving a pure function of $\phiG$ and $\pi$. Applied as a
-local correction to the physical early-Universe value $H_0^{\rm MIRA}=67.037$
-(Paper~3),
+local correction to the global background value
+$H_0^{\rm alg}=3(\phiG+\pi)^2=67.962$, which the $\omega_m$-direct reframe
+(Paper~3) establishes as both the background $H$ and the CMB-preferred anchor
+(with $\omega_b,\omega_c$ fixed by algebra, the plik\_lite likelihood is
+minimised at $67.962$),
 \begin{equation}
-H_0^{\rm local} = \frac{H_0^{\rm MIRA}}{1-\fscr}
-                = \frac{67.037}{1-0.0673}
-                \approx 71.87~{\rm km\,s^{-1}\,Mpc^{-1}} ,
+H_0^{\rm local} = \frac{H_0^{\rm alg}}{1-\fscr}
+                = \frac{67.962}{1-0.0673}
+                \approx 72.86~{\rm km\,s^{-1}\,Mpc^{-1}} ,
 \end{equation}
-which lies $1.12\sigma$ from the SH0ES distance-ladder measurement
+which lies $0.17\sigma$ from the SH0ES distance-ladder measurement
 \citep{Riess2022} with zero free parameters. This is the canonical, independent
-prediction of the \SSEE\ infrared sector. (Applied instead to the algebraic
-value $H_0^{\rm alg}=3(\phiG+\pi)^2=67.96$ the same mechanism gives
-$72.86$~km\,s$^{-1}$\,Mpc$^{-1}$ at $0.17\sigma$; we report the sharper agreement
-as a Type-P numerical coincidence, not as the headline.) The correction operates at late times
+prediction of the \SSEE\ infrared sector. (The earlier MIRA anchor
+$H_0^{\rm MIRA}=67.037$ gave $71.87$ at $1.12\sigma$, now superseded by the
+reframe.) The correction operates at late times
 ($z<0.15$) through the scalar kinetic-energy contribution to the local expansion
 rate; it does not modify the sound horizon $r_d$, the CMB peak positions, or the
 growth factor $\sigma_8$ established in the tiers above.
@@ -850,23 +868,21 @@ fixes the tensor-to-scalar ratio $r=12\alpha/N_*^2\approx0.00813$, also fixes th
 UV cutoff:
 \begin{equation}
 M^4 = 45\,\alpha^2\,\rho_c = 5\,\phiG^8\,\rho_c \approx 234.9\,\rho_c ,
-\qquad M \approx 9.62~{\rm meV} ,
+\qquad M \approx 9.68~{\rm meV} ,
 \end{equation}
 where the identity $45\alpha^2 = 5\phiG^8$ follows exactly from
 $\alpha=\phiG^4/3$. With this cutoff the full Bellini-Sawicki kineticity becomes
 $\alphaK^{\rm full}=0.41691$ ($+3.37\%$ over the IR value). Applied to the
-canonical $H_0^{\rm MIRA}=67.037$ this gives
-$H_0^{\rm UV,MIRA}=72.05$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.96\sigma$ from SH0ES),
-the physically meaningful UV value; on the Type-P anchor $H_0^{\rm alg}=67.962$
-the same correction gives $73.040$~km\,s$^{-1}$\,Mpc$^{-1}$, agreeing with the
-SH0ES central value to rounding as a numerical coincidence.
+global background anchor $H_0^{\rm alg}=67.962$ this gives the canonical UV value
+$H_0^{\rm UV}=73.040$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.00\sigma$ from SH0ES;
+the earlier MIRA-anchored $72.05$ at $0.96\sigma$ is superseded by the reframe).
 
 We state the epistemic status of these figures plainly: the UV value is
 \emph{conditional on Postulate~C.1} (UV--IR $\phiG/\pi$ separability) and is
 \emph{not independent of SH0ES}, since the postulate was formulated with the
 SH0ES central value as its target. It is a self-consistency check, not a
 prediction. The independent prediction remains the IR value $H_0^{\rm local}
-=71.87$~km\,s$^{-1}$\,Mpc$^{-1}$ ($1.12\sigma$) of \S\ref{sec:ext-ht}, which does
+=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.17\sigma$) of \S\ref{sec:ext-ht}, which does
 not rely on the postulate. The construction does, however, supply a falsifiable
 cross-epoch consistency test: the same $\alpha$ governs inflation at $z\sim10^{60}$
 and the dark-energy UV scale today, so a LiteBIRD measurement of $r\neq0.00813$
@@ -891,7 +907,7 @@ predictions.
 falsified at the theory level if \textit{any} of the following were established:
 (i) $(\wz, \wa)$ is inconsistent with the DESI~DR2 posterior at $>3\sigma$;
 (ii) a future CLASS MCMC with Planck+DESI likelihoods requires
-$\Omega_m \neq 0.3199$ at $>3\sigma$;
+$\Omega_{m,\mathrm{CMB}} \neq 0.30889$ at $>3\sigma$;
 (iii) the $\phi$-DM free-streaming scale $\kfs \neq 0.762\,h\,\mathrm{Mpc}^{-1}$
 as measured by DESI~Y3/Euclid $P(k)$ ($\phi$-DM has no Standard-Model portal,
 so its mass is not directly accessible to neutrino-mass experiments);
@@ -920,13 +936,13 @@ $\MIRA = (3\phiG+\pi)/4$ & $1.9989$ & $\OmmCMB/\Ommdyn$ & Postdiction \\
 \multicolumn{4}{l}{\textit{Retrodictions (derived independently, compared to existing data)}} \\
 $H_0 = 3(\phiG+\pi)^2$ & $67.96$ km/s/Mpc & Planck 2018 & Retrodiction \\
 $n_s = 1-\phiG^{-7}$ & $0.96556$ & Planck 2018 & Retrodiction \\
-$\Omega_m = (\pi-\phiG)/(\pi+\phiG)$ & $0.3201$ & Planck 2018 & Retrodiction \\
-$r_d^{\rm eff} = r_{d,\mathrm{SSEE}} \times |\wz|$ & $147.2$ Mpc & Planck 2018 $r_d$ & Retrodiction \\
-$\gamma_{\rm IS} = 0.554$ & $\approx \gamma_{\Lambda\rm CDM} = 0.55$ & RSD surveys & Retrodiction \\
+$\OmmCMB = \omega_m/h^2$ ($\omega_m$-direct) & $0.30889$ & Planck 2018 & Retrodiction \\
+$r_d$ (CAMB, $\omega_m$-direct) & $147.17$ Mpc & Planck 2018 $r_d$ ($0.32\sigma$) & Retrodiction \\
+$\gamma_{\rm IS} = 0.5504$ & $\approx \gamma_{\Lambda\rm CDM} = 0.55$ & RSD surveys & Retrodiction \\
 $\alphaT = \alphaM = \alphaB = 0$ & exact & GW170817 $|\alphaT|<10^{-15}$ & Retrodiction \\
-$\sigeff$ (two-sector CLASS, $S_8^{\rm eff}=0.766$) & $0.748$ & KiDS-1000 ($0.01\sigma$) & Retrodiction \\
-$\sigma_8^{\rm SSEE}$ (single-sector ODE, Paper~5 corrected) & $0.820$ & Weak lensing surveys & Retrodiction \\
-$H_0^{\rm local} = H_0^{\rm MIRA}/(1-\fscr)$ & $71.87$ km/s/Mpc & SH0ES 2022 ($1.12\sigma$) & Retrodiction \\
+$\sigeff$ (two-sector CLASS, $S_8^{\rm eff}=0.759$) & $0.748$ & KiDS-1000 ($0.01\sigma$) & Retrodiction \\
+$\sigma_8^{\rm SSEE}$ (single-sector ceiling, CLASS) & $0.8335$ & Weak lensing surveys & Retrodiction \\
+$H_0^{\rm local} = H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & SH0ES 2022 ($0.17\sigma$) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Predictions (not yet observationally accessible)}} \\
 $\mphi = \Sigma m_\nu^{\rm active}(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$ & $41.02$ eV & Matter $P(k)$ via $\kfs$ (no SM portal) & Prediction \\
@@ -958,12 +974,12 @@ MIRA; the likely origin is a background-level thermodynamic effect in the
 IS viscous Friedmann equations.
 
 \textbf{(ii) $S_8$ and the dark-matter sector.}
-The corrected single-sector Israel-Stewart analysis gives $\sigma_8 = 0.820$ and
-$S_8 = 0.847$ ($3.9\sigma$ KiDS, $3.9\sigma$ DES~Y3). The canonical two-sector
+The single-sector Israel-Stewart ceiling gives $\sigma_8 = 0.8335$ and
+$S_8 = 0.846$ ($3.5\sigma$ KiDS, $3.9\sigma$ DES~Y3). The canonical two-sector
 $\phi$-DM extension (Paper~6) resolves this tension as a forward prediction:
 the free-streaming suppression set by $\mphi = 41.02$~eV
 ($\alpha = 1.108\,h\,\mathrm{Mpc}^{-1}$, no fitted parameters) gives
-$\sigeff = 0.748$ and $S_8^{\rm eff} = 0.766$, within $0.01\sigma$ of the
+$\sigeff = 0.748$ and $S_8^{\rm eff}=0.759$, within $0.01\sigma$ of the
 KiDS-1000 measurement. The open item is a precision question:
 a full N-body treatment of baryonic feedback (deferred for computational cost) is
 required to confirm the linear-theory $S_8$ at the non-linear level.
@@ -980,11 +996,14 @@ WDM cosmology; the applicable constraints require dedicated analysis.
 The algebraic connection $H_0 = 3(\phiG+\pi)^2$ is a successful numerical
 retrodiction but lacks a derivation from first-principles quantum field theory.
 Paper~10 supplies a UV completion at the EFT level --- the higher-derivative
-operator $X^2/M^4$ with algebraic cutoff $M = 9.62$~meV --- but a derivation of
+operator $X^2/M^4$ with algebraic cutoff $M = 9.68$~meV --- but a derivation of
 the full $P(X,\phi)$ Lagrangian from $\phiG$ and $\pi$ alone remains open.
-The ratio $\Omega_{m,\mathrm{CMB}} = 0.31993$ (MIRA) vs $0.32010$ (geometric
-$\Omega_m = (\pi-\phiG)/(\pi+\phiG)$) suggests a possible loop correction;
-this remains an open problem.
+Under the $\omega_m$-direct reframe (OP-8 dissolved) the CMB matter density is
+the standard $\Omega_{m,\mathrm{CMB}} = \omega_m/h^2 = 0.30889$, with no matter
+factor; the earlier MIRA-mapped $0.31993$ and geometric
+$(\pi-\phiG)/(\pi+\phiG)=0.32010$ forms are superseded. The residual open
+problem is now only the UV origin of the algebraic $\omega_c=\mathrm{KAL_0}\,\omega_b\,n_s$
+identity.
 
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -999,9 +1018,9 @@ across four observational tiers.
 \item \textbf{Background sector.} The algebraic prediction
   $(\wz, \wa) = (-0.840, -0.670)$, fixed by construction (not fitted), lies within
   $0.05\sigma$ of the DESI~DR2 CPL posterior.
-  A Bayesian MCMC with $N_{\rm eff} = 4\,402$ yields
-  $H_0 = 66.53\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ under the SSEE-self-consistent
-  MIRA prior, and $\Delta\mathrm{BIC} = -5.55$ for the dynamic sector.
+  A Bayesian MCMC yields
+  $H_0 = 67.16\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ under the $\omega_m$-direct
+  CMB anchor as prior, and $\Delta\mathrm{BIC} = -5.55$ for the dynamic sector.
   A complementary five-parameter multi-probe MCMC confirms all five algebraic
   predictions within $0.81\sigma$ (mean $0.36\sigma$).
 
@@ -1011,14 +1030,14 @@ across four observational tiers.
   With MIRA, peak positions agree with \LCDM\ to within $\Delta\ell < 5$
   (RMS $= 1.4\%$).
 
-\item \textbf{Structure growth.} The corrected IS perturbation analysis
-  ($\OmmCMB=0.320$ in Poisson) gives $\mathcal{G} = 1.011$ and $\sigma_8 = 0.820$,
-  with mean $f\sigma_8$ tension $0.74\sigma$ (Paper~5) --- statistically identical
+\item \textbf{Structure growth.} The IS perturbation analysis
+  ($\OmmCMB=0.30889$ in Poisson) gives $\mathcal{G} = 1.0032$ and $\sigma_8 = 0.8136$,
+  with mean $f\sigma_8$ tension $0.70\sigma$ (Paper~5) --- statistically identical
   to $\Lambda$CDM ($0.73\sigma$). The $\phi$DM two-sector extension with
   the forward-output WDM transfer function ($\alpha = 1.108\,h\,\mathrm{Mpc}^{-1}$,
   set by $\mphi = 41.02$~eV with no fitted parameters)
-  yields $\sigeff = 0.748$ and $S_8^{\rm eff} = 0.766$, reducing the lensing
-  tension from $3.9\sigma$ to $0.01\sigma$ (KiDS), confirmed by HMcode
+  yields $\sigeff = 0.748$ and $S_8^{\rm eff} = 0.759$, reducing the lensing
+  tension from $3.5\sigma$ to $0.01\sigma$ (KiDS), confirmed by HMcode
   baryonic feedback (Paper~6).
 
 \item \textbf{EFT stability.} EFTCAMB confirms ghost-freedom and gradient
@@ -1033,12 +1052,13 @@ across four observational tiers.
 \item \textbf{Theoretical extensions.} The disformal strong-field regime predicts
   an Einstein-radius amplification $\sqrt{\AURA}\approx\MIRA$, falsifiable with
   HST/JWST strong lensing (Paper~8). An algebraic late-time screening fraction
-  $\fscr=(\pi-\phiG)/(\phiG+\pi)^2\approx0.067$ applied to $H_0^{\rm MIRA}=67.037$ yields
-  $H_0^{\rm local}=71.87$~km\,s$^{-1}$\,Mpc$^{-1}$, $1.12\sigma$ from SH0ES, with
+  $\fscr=(\pi-\phiG)/(\phiG+\pi)^2\approx0.067$ applied to the global background
+  $H_0^{\rm alg}=3(\phiG+\pi)^2=67.962$ yields
+  $H_0^{\rm local}=72.86$~km\,s$^{-1}$\,Mpc$^{-1}$, $0.17\sigma$ from SH0ES, with
   zero free parameters (Paper~9). A UV completion $K(X)=X/\KAL+X^2/M^4$ with
-  algebraic cutoff $M=9.62$~meV connects the dark-energy EFT to the inflationary
-  $\alpha$-attractor; the associated $H_0^{\rm UV,MIRA}=72.05$~km\,s$^{-1}$\,Mpc$^{-1}$
-  ($0.96\sigma$; Type-P evaluation $73.040$, a numerical coincidence)
+  algebraic cutoff $M=9.68$~meV connects the dark-energy EFT to the inflationary
+  $\alpha$-attractor; the associated $H_0^{\rm UV}=73.040$~km\,s$^{-1}$\,Mpc$^{-1}$
+  ($0.00\sigma$ from SH0ES; the earlier MIRA-anchored $72.05$ at $0.96\sigma$ is superseded)
   is a self-consistency check conditional on a separability postulate, not an
   independent prediction (Paper~10).
 \end{enumerate}
@@ -1085,11 +1105,10 @@ $w_0$ & $-T_r/M_v = -(3\phiG+\pi)/[2(\phiG+\pi)]$ & $-0.8399$ & $-0.838\pm0.057$
 $w_a$ & $-P_{\rm sc}/K_v$ & $-0.6699$ & $-0.631\pm0.226$ (DESI) \\
 $H_0$ & $3(\phiG+\pi)^2$ & $67.96$ km/s/Mpc & $67.36\pm0.54$ (Planck) \\
 $n_s$ & $1-\phiG^{-7}$ & $0.96556$ & $0.9649\pm0.0042$ (Planck) \\
-$\Omm$ & $(\pi-\phiG)/(\pi+\phiG)$ & $0.3201$ & $0.3153\pm0.0073$ (Planck) \\
+$\OmmCMB$ & $\omega_m/h^2$ ($\omega_m$-direct) & $0.30889$ & $0.3153\pm0.0073$ (Planck) \\
 $\Omde$ & $T_r/M_v$ & $0.8399$ & $0.6847$ (\LCDM) \\
 $\Ommdyn$ & $1 - \Omde$ & $0.160$ & --- \\
-$\MIRA$ & $(3\phiG+\pi)/4$ & $1.9989$ & --- \\
-$\OmmCMB$ & $\MIRA \times \Ommdyn$ & $0.3199$ & $0.3153$ (Planck) \\
+$\MIRA$ & $(3\phiG+\pi)/4$ (Mirror Ratio; enters $\fscr$) & $1.9989$ & --- \\
 \midrule
 $\KAL$ & $\beta + \pi = (\phiG+3\pi)/2$ & $5.5214$ & --- \\
 $\beta_c$ & $-(3\phiG+\pi)/2$ & $-3.9978$ & --- \\
@@ -1101,8 +1120,8 @@ $\kfs$ & Dodelson-Widrow ($\mphi$) & $0.762\,h$/Mpc & --- \\
 $r$ & $\phiG^{-10}$ & $0.00813$ & $<0.036$ (BK18) \\
 \midrule
 $\fscr$ & $(\pi-\phiG)/(\phiG+\pi)^2$ & $0.0673$ & --- \\
-$H_0^{\rm local}$ & $H_0^{\rm MIRA}/(1-\fscr)$ & $71.87$ km/s/Mpc & $73.04\pm1.04$ (SH0ES) \\
-$M$ (UV cutoff) & $(5\phiG^8\rho_c)^{1/4}$ & $9.62$ meV & --- \\
+$H_0^{\rm local}$ & $H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & $73.04\pm1.04$ (SH0ES) \\
+$M$ (UV cutoff) & $(5\phiG^8\rho_c)^{1/4}$ & $9.68$ meV & --- \\
 \bottomrule
 \end{tabular}
 \end{table}

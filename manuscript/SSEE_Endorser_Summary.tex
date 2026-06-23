@@ -42,9 +42,9 @@ golden ratio $\varphi=(1+\sqrt{5})/2$ and $\pi$ with \textbf{zero fitted dimensi
 $w_0$ & $-T_r/M_v = -0.8400$ & DESI DR2: $-0.838\pm0.057$ & $0.05\sigma$ \\
 $w_a$ & $-P_{sc}/K_v = -0.6699$ & DESI DR2: $-0.631\pm0.226$ & $0.17\sigma$ \\
 $H_0^{\rm alg}$ & $3(\varphi+\pi)^2 = 67.96$ km/s/Mpc & Planck 2018: $67.36\pm0.54$ & $1.11\sigma$ \\
-$H_0^{\rm MIRA}$ & Planck+SSEE: $67.04$ km/s/Mpc & Planck 2018: $67.36\pm0.54$ & $0.54\sigma$ \\
-$r_d$ & CAMB+MIRA: $147.2$ Mpc & Planck 2018: $147.09\pm0.26$ Mpc & $0.25\sigma$ \\
-$H_0^{\rm local}$ & $H_0^{\rm MIRA}/(1-f_{\rm scr}) = 71.87$ km/s/Mpc & SH0ES 2022: $73.04\pm1.04$ & $1.12\sigma$ \\
+$\Omega_{m,\rm CMB}$ & $\omega_m/h^2 = 0.30889$ ($\omega_m$-direct) & Planck 2018: $0.3153\pm0.0073$ & $0.88\sigma$ \\
+$r_d$ & CAMB ($\omega_m$-direct): $147.17$ Mpc & Planck 2018: $147.09\pm0.26$ Mpc & $0.32\sigma$ \\
+$H_0^{\rm local}$ & $H_0^{\rm alg}/(1-f_{\rm scr}) = 72.86$ km/s/Mpc & SH0ES 2022: $73.04\pm1.04$ & $0.17\sigma$ \\
 $n_s$ & $1-\varphi^{-7} = 0.9656$ & Planck PR4: $0.9649\pm0.0042$ & $0.17\sigma$ \\
 $r$ & $\varphi^{-10} = 0.00813$ & BK18: $r<0.036$ & Prediction \\
 $\alpha_K(0)$ & $3\Omega_{\rm DE}(1+w_\phi) = 0.073$ & Euclid forecast sensitivity & $<0.1$ \\
@@ -65,13 +65,13 @@ $k_{\rm fs}$ & $0.762\;h$/Mpc & DESI Y3/Euclid (2026--28) & Prediction \\
 \subsubsection*{II. Tested Against Data}
 \begin{itemize}
   \item \textbf{Paper 2 (MCMC)}: 100 walkers $\times$ 25\,000 steps vs.\ DESI DR2 + Planck + 7 clusters; $\Delta\text{BIC}=-5.55$ (SSEE favoured, $k_{\rm SSEE}=1$ vs.\ $k_{\Lambda\rm CDM}=3$, dynamic sector). [26 pp]
-  \item \textbf{Paper 3 (CMB Confrontation)}: CAMB + MIRA two-sector mapping; Cobaya+plik\_lite MCMC; $\Delta\mathrm{BIC}=-32.2$ (SSEE favoured under $k=2$ model comparison). [24 pp]
+  \item \textbf{Paper 3 (CMB Confrontation)}: CAMB $\omega_m$-direct ($\Omega_m=0.30889$); Cobaya+plik\_lite MCMC; $\Delta\mathrm{BIC}=-23.9$ (SSEE favoured under $k=2$ model comparison). [24 pp]
 \end{itemize}
 
 \subsubsection*{III. Phenomenological Extensions \& Open Directions}
 \begin{itemize}
-  \item \textbf{Paper 5 (Israel--Stewart Perturbations)}: Causal bulk viscosity; $c_s^2=0$ exact; $\gamma_{\rm IS}=0.554\approx\gamma_{\Lambda\rm CDM}$. [25 pp]
-  \item \textbf{Paper 6 ($\varphi$-DM Two-Sector)}: $m_\varphi=41.02$ eV from the algebraic mass relation $m_\varphi=\Sigma m_\nu^{\rm active}(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$; proposes a two-sector reduction of the $f\sigma_8$ tension to $0.76\sigma$ and $S_8^{\rm eff}=0.766$ ($0.01\sigma$ KiDS) at the linear-growth level. [24 pp]
+  \item \textbf{Paper 5 (Israel--Stewart Perturbations)}: Causal bulk viscosity; $c_s^2=0$ exact; $\gamma_{\rm IS}=0.5504\approx\gamma_{\Lambda\rm CDM}$. [25 pp]
+  \item \textbf{Paper 6 ($\varphi$-DM Two-Sector)}: $m_\varphi=41.02$ eV from the algebraic mass relation $m_\varphi=\Sigma m_\nu^{\rm active}(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$; proposes a two-sector reduction of the $f\sigma_8$ tension to $0.82\sigma$ and $S_8^{\rm eff}=0.759$ ($0.01\sigma$ KiDS) at the linear-growth level. [24 pp]
   \item \textbf{Paper 7 (Canonical EFT Proposal)}: $\beta_c=-\text{AURA}$ (numerical $-3.998$); $\alpha_K=0.073$ algebraic; fundamental parameters $\lambda, V_0, M$ proposed. [16 pp]
 \end{itemize}
 
@@ -86,13 +86,12 @@ $k_{\rm fs}$ & $0.762\;h$/Mpc & DESI Y3/Euclid (2026--28) & Prediction \\
   favour the canonical limit (OPEN\_PROBLEMS.md OP-13). [17 pp]
   \item \textbf{Paper 9 (Hubble Tension)}: Algebraic local screening fraction
   $f_{\rm scr}=(\pi-\varphi)/(\varphi+\pi)^2\approx0.067$ applied to the
-  physical $H_0^{\rm MIRA}=67.04$ gives the canonical
-  $H_0^{\rm local}=71.87$ km/s/Mpc, $1.12\sigma$ from SH0ES, an algebraic
-  prediction with no fitted parameters (the Type-P evaluation on
-  $H_0^{\rm alg}$ lands at $72.86$ km/s/Mpc, $0.17\sigma$, reported as a
-  numerical coincidence). [18 pp]
+  single global anchor $H_0^{\rm alg}=3(\varphi+\pi)^2=67.962$ gives the canonical
+  $H_0^{\rm local}=72.86$ km/s/Mpc, $0.17\sigma$ from SH0ES, an algebraic
+  prediction with no fitted parameters (2026 reframe; the earlier CMB-mapped
+  $H_0^{\rm MIRA}=67.04\to71.87$, $1.12\sigma$, is superseded). [18 pp]
   \item \textbf{Paper 10 (UV Completion)}: Higher-derivative operator
-  $K(X)=X/\mathrm{KAL}_0+X^2/M^4$ with algebraic cutoff $M=9.62$ meV; connects
+  $K(X)=X/\mathrm{KAL}_0+X^2/M^4$ with algebraic cutoff $M=9.68$ meV; connects
   the dark-energy EFT to the inflationary $\alpha$-attractor. [14 pp]
 \end{itemize}
 

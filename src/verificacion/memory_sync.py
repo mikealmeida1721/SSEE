@@ -37,11 +37,17 @@ def _load():
 
 
 def _targets(vault_only=False):
-    """Las memorias a escanear, como (etiqueta, lista de Paths)."""
+    """Los cajones a escanear, como (etiqueta, lista de Paths).
+
+    Cobertura completa de la propagación: las 3 memorias (Ledger, CLAUDE,
+    vault) MÁS el cajón de papers (manuscript/*.tex). Una corrida marca cada
+    lugar donde un canónico retirado quedó como vigente — la contabilidad
+    automática de propagación (detecta, no edita: nunca produce '1+1=3')."""
     out = []
     if not vault_only:
         out.append(("Guardián (Ledger)", [ROOT / "VERIFICATION_LEDGER.md"]))
         out.append(("CLAUDE.md", [ROOT / "CLAUDE.md"]))
+        out.append(("Papers (cajón)", sorted((ROOT / "manuscript").glob("*.tex"))))
     if VAULT.exists():
         out.append(("Obsidian (vault)",
                     sorted(VAULT.rglob("*.md"))))

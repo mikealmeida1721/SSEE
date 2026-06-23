@@ -23,14 +23,15 @@ AURA    = (3*phi + pi) / 2
 MIRA    = AURA / 2
 w0      = -AURA / Omega
 wa      = -(phi + pi + Omega) / (phi + pi + (phi + pi + Omega))  # ≈ -0.670
-H0_alg  = 3 * Omega**2                  # ≈ 67.96 km/s/Mpc  (Type-P, Postulate D)
-H0_MIRA = 67.037                        # km/s/Mpc  (physical: Planck plik_lite, SSEE@Σm_ν=0.069 — canónico 2026-06-09)
+H0_alg  = 3 * Omega**2                  # ≈ 67.96 km/s/Mpc  (global background anchor, Postulate D)
+H0_global = H0_alg                      # reframe 2026-06-17: H global de fondo = H_alg
+H0_MIRA = 67.037                        # km/s/Mpc  (ancla CMB-mapeada VIEJA, superada)
 alphaK  = 3*AURA*(pi - phi) / (2*Omega**2)
-fscreen = alphaK / (3*MIRA)             # ≈ 0.06725
-# Canonical (physical) prediction: multiplicative screening on the physical H_MIRA
-H0_local_phys = H0_MIRA / (1 - fscreen)  # ≈ 71.87  (1.12σ SH0ES) ← titular
-# Type-P comparison: same mechanism on the algebraic H_alg
-H0_local_typeP = H0_alg / (1 - fscreen)  # ≈ 72.86  (0.17σ SH0ES) ← comparison only
+fscreen = alphaK / (3*MIRA)             # ≈ 0.06725  (MIRA-valor invariante)
+# Canonical prediction (reframe): multiplicative screening on the global anchor H_alg
+H0_local_phys = H0_global / (1 - fscreen)  # ≈ 72.86  (0.17σ SH0ES) ← titular
+# Superseded MIRA-mapped value (old register)
+H0_local_old = H0_MIRA / (1 - fscreen)     # ≈ 71.87  (1.12σ SH0ES) ← superado
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Figure 1: H0 tension ladder
@@ -48,13 +49,13 @@ measurements = [
     ("Masers\n(NGC 4258)",          73.9,  3.0,  3.0,   1),
     ("SH0ES\n(Riess 2022)",         73.04, 1.04, 1.04,  1),
     # SSEE predictions
-    ("SSEE IR physical\n($H_{\\rm MIRA}$, 1.12$\\sigma$)", H0_local_phys, 0.44, 0.44, 2),
-    ("SSEE IR Type-P\n($H_{\\rm alg}$, 0.17$\\sigma$)",    H0_local_typeP, 0.44, 0.44, 3),
+    ("SSEE IR canonical\n($H_{\\rm alg}$, 0.17$\\sigma$)", H0_local_phys, 0.44, 0.44, 2),
+    ("SSEE IR superseded\n($H_{\\rm MIRA}$, 1.12$\\sigma$)", H0_local_old, 0.44, 0.44, 3),
 ]
 
 colors = {0: '#2166ac', 1: '#d6604d', 2: '#1a9641', 3: '#7fbf7b'}
 labels_group = {0: 'CMB / BAO (early)', 1: 'Distance ladder (late)',
-                2: 'SSEE prediction (physical)', 3: 'SSEE Type-P (comparison)'}
+                2: 'SSEE prediction (canonical, $H_{\\rm alg}$)', 3: 'SSEE (superseded MIRA)'}
 
 fig, ax = plt.subplots(figsize=(7, 5))
 
@@ -138,7 +139,7 @@ ax1.legend(fontsize=9, loc='upper right')
 
 ax2.plot(z, H0_local_z, color='#1a9641', lw=2,
          label=r'$H_0^{\rm local}(z)$ [SSEE mult.]')
-ax2.axhline(H0_local_typeP, color='#1a9641', ls='--', lw=1, alpha=0.6)
+ax2.axhline(H0_local_phys, color='#1a9641', ls='--', lw=1, alpha=0.6)
 ax2.axhline(H0_alg, color='#2166ac', ls=':', lw=1.2, alpha=0.8,
             label=fr'$H_0^{{\rm alg}}={H0_alg:.2f}$')
 ax2.axhline(73.04, color='#d6604d', ls='-.', lw=1.2, alpha=0.8,
@@ -165,5 +166,5 @@ print(f"  MIRA    = {MIRA:.10f}")
 print(f"  fscreen = {fscreen:.10f}")
 print(f"  H0_alg       = {H0_alg:.4f}")
 print(f"  H0_MIRA      = {H0_MIRA:.4f}")
-print(f"  H0_phys (titular)  = {H0_local_phys:.4f}  (1.12 sigma SH0ES)")
-print(f"  H0_typeP (compare) = {H0_local_typeP:.4f}  (0.17 sigma SH0ES)")
+print(f"  H0 canonical (H_alg) = {H0_local_phys:.4f}  (0.17 sigma SH0ES)")
+print(f"  H0 superseded (MIRA) = {H0_local_old:.4f}  (1.12 sigma SH0ES)")

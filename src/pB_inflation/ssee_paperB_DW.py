@@ -1,4 +1,8 @@
 """
+⚠️  PRE-CANÓNICO — usa m_φ=5.60 eV (fórmula Σm_ν×H_alg, RETIRADA 2026-06-04).
+    Valor canónico: m_φ=36.95 eV (Σm_ν×535.28, forward-prediction, dim-consistente).
+    Script conservado como registro de por qué la ruta DW con 5.60 eV fue descartada.
+
 Paper B — Problema 2: Ángulo de mezcla Dodelson-Widrow para Ω_φDM = Ω_CDM.
 
 Pregunta: dado m_φ=5.60 eV y Ω_φDM h²=0.0739, ¿qué sin²(2θ) requiere

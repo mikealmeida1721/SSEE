@@ -15,29 +15,73 @@ concuerdan con él, hay *drift*.
 
 ---
 
-## Cuando cambia un valor (orden obligatorio)
+## Cuando cambia un valor o se supera algo (orden obligatorio)
 
-El cambio toca **el principio y el fin** para que nada quede fuera:
+El cambio fluye en un solo sentido — **memorias → cajones → archivo** — para que
+nada quede fuera de la mesa de trabajo. Hasta lo canónico de hoy puede superarse
+mañana (si aparece algo más simple que cierre mejor sin abrir huecos); cuando eso
+pasa, se aplica este mismo orden y lo viejo se conserva como prueba del esfuerzo.
 
-1. **Verificar** la física (script que recomputa el nuevo valor).
-2. **`CANONICAL_VALUES.yaml`** ← se actualiza PRIMERO (la fuente de verdad).
-   - El valor viejo se mueve a la lista `retired:` con su razón.
-3. **Guardián** (`VERIFICATION_LEDGER.md` + check en `ssee_verify.py`) → recomputa.
-4. **Obsidian** (vault) → actualizar la nota del valor y **sus conexiones**
-   (qué cadenas dependían de él).
-5. **CLAUDE.md** → actualizar las tablas de estado (al cerrar el cambio o la sesión).
+**Fase A — Memorias primero (la fuente de verdad):**
+1. **Verificar** la física (script que recomputa el nuevo valor → log en `results/logs/`).
+2. **`CANONICAL_VALUES.yaml`** ← se actualiza PRIMERO. El valor viejo va a `retired:`
+   con su razón (así el guardián lo caza si reaparece en cualquier cajón).
+3. **Guardián** (`VERIFICATION_LEDGER.md` + check) → recomputa; el valor de pipeline
+   debe tener log de procedencia (R9).
+4. **Obsidian** (vault) → la nota del valor y **sus conexiones** (qué cadenas dependían).
+5. **CLAUDE.md** → tablas de estado.
+
+**Fase B — Cajones de trabajo (propagar y auditar):**
+6. **`manuscript/`, `src/`, `docs/`** → propagar el nuevo valor a todo lo que lo usa.
+   El guardián (Capas Manuscritos/Procedencia) verifica que no quede stale; los
+   PDFs recompilan de `manuscript/`.
+
+**Fase C — Archivar lo superado (con sello):**
+7. Si un **artefacto entero** quedó obsoleto (script, PDF, doc, derivación), se mueve a
+   `archive/` con **entrada en la Bitácora** (`archive/README.md`: qué, cuándo, por qué,
+   qué lo reemplaza). La Capa Archivo del guardián exige que cada cajón archivado tenga
+   entrada. Nada obsoleto se queda en un cajón vivo; nada se archiva en silencio.
+
+> **Regla de cobertura:** todo cajón está en el **Mapa de Vigencia** (`archive/README.md`)
+> como VIGENTE, ARCHIVO o TRABAJO. Si aparece un cajón nuevo, se clasifica.
+
+---
+
+## Contabilidad automática de propagación (el "dónde aparece cada canónico")
+
+El cambio de un canónico se propaga de forma **sistemática**, no como texto plano.
+La regla es: **DETECTAR todas las apariciones, recomputar/editar con cuidado cada una,
+y verificar que ninguna quedó vieja** — nunca un buscar-reemplazar a ciegas (eso produce
+el «1+1=3»: p. ej. un `sed 0.320→0.309` corrompe `0.3201→0.3091` y deja ecuaciones falsas
+como `0.1601×1.9989=0.3089`).
+
+**Cómo funciona la contabilidad:**
+1. Al cambiar un valor en `CANONICAL_VALUES.yaml`, su valor viejo va a `retired:`
+   (con un **patrón distintivo** — con unidad si el número suelto colisiona, p. ej.
+   `0.659\,h` para no chocar con `wₐ=−0.659`).
+2. `memory_sync.py` lee `retired:` y escanea **LEDGER + CLAUDE + `manuscript/*.tex` + vault**.
+   Una corrida lista **cada lugar** (archivo:línea) donde un valor retirado quedó como
+   vigente. Líneas con marca de contexto (`retired`, `superseded`, `earlier`, `superad`,
+   `~~`, sección histórica…) se omiten — son historia legítima, no drift.
+3. Se limpian en el **orden** de arriba (fuente → LEDGER → memorias → papers → vault).
+4. **`memory_sync` VERDE = propagación completa.** Ese es el criterio de "no quedó número viejo".
+
+Así, cambiar la fuente principal hace que el sistema **señale solo** dónde recomputar —
+la propagación es sistemática y verificable de punta a punta.
 
 ---
 
 ## Cómo se revisa (rápido y barato)
 
 ```bash
-# ¿La física sigue íntegra?  (recomputa todas las constantes/identidades)
-.venv/bin/python3 src/verificacion/ssee_verify.py
+# ¿La física + memorias + procedencia + manuscritos + archivo siguen íntegros?
+.venv/bin/python3 src/verificacion/ssee_verify.py          # el guardián (una corrida, todas las capas)
 
-# ¿Las 3 memorias concuerdan con CANONICAL_VALUES.yaml?
-.venv/bin/python3 src/verificacion/memory_sync.py          # las 3
-.venv/bin/python3 src/verificacion/memory_sync.py --vault  # solo Obsidian
+# ¿Las 3 memorias Y los papers concuerdan con CANONICAL_VALUES.yaml?
+.venv/bin/python3 src/verificacion/memory_sync.py          # LEDGER + CLAUDE + manuscript/*.tex + vault
+
+# ¿El guardián mismo sigue detectando? (correr si TOCAS el guardián)
+.venv/bin/python3 src/verificacion/test_guardian.py        # el vigilante vigilado
 ```
 
 - `ssee_verify.py` → **VERDE/ROJO**: la física.

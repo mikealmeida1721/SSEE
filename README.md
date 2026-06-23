@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10+-yellow.svg)](requirements.txt)
 [![Papers](https://img.shields.io/badge/Papers-10_+_2_consolidated-8A2BE2.svg)](docs/)
-[![Status](https://img.shields.io/badge/Audit-100%2F100_green-success.svg)](VERIFICATION_LEDGER.md)
+[![Status](https://img.shields.io/badge/Audit-guardian_green-success.svg)](VERIFICATION_LEDGER.md)
 [![Prediction](https://img.shields.io/badge/Pre--registered-k__fs_%3D_0.659_h%2FMpc-critical.svg)](OPEN_PROBLEMS.md)
 
 <img src="results/figures/fig1_w0wa_plane.png" width="520" alt="SSEE algebraic point (w0, wa) vs DESI DR2 contours — 0.05σ"/>
@@ -190,7 +190,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 |---|---|---|
 | Ω_CDM | 0.160050 | Active at all k |
 | Ω_φDM = (MIRA−1)×Ω_m,dyn | 0.159878 | Active for k < k_fs only |
-| Ω_total (two-sector) | 0.319928 ≈ Ω_m,CMB | Zero-parameter unification |
+| Ω_total (two-sector) | 0.319928 ≈ Ω_m,CMB | Parameter-free unification |
 | Σm_ν = R₂ × 0.960318 eV | 0.0690 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 |
 | m_φ = Σm_ν × (Ω⁴_DNAV + AURA·KAL) | 36.95 eV | Forward-prediction — no fitting (multiplier 535.28 is a pure number) |
 | α (Viel fit to particle/cold P(k) ratio) | 1.243 Mpc/h | CLASS output — not imposed |
@@ -204,7 +204,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 
 **Lyman-α compatibility:** φ-DM is a non-thermal condensate. The correct observable is k_fs=0.659 h/Mpc in the matter power spectrum (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
 
-**φ-DM is a gravitationally-produced scalar** (explicit Lagrangian in Paper 6 §4): no Standard-Model portal, so it is *not* accessible to neutrino-mass experiments. The Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no zero-parameter SSEE form.
+**φ-DM is a gravitationally-produced scalar** (explicit Lagrangian in Paper 6 §4): no Standard-Model portal, so it is *not* accessible to neutrino-mass experiments. The Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no parameter-free SSEE form.
 
 **Falsifiable prediction:** k_fs = 0.659 h/Mpc — the free-streaming imprint of m_φ = 36.95 eV on the matter power spectrum — testable via the Lyman-α forest and DESI Y3/Euclid P(k) (2026–2028). Zero free parameters.
 
@@ -322,7 +322,13 @@ pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1
 
 ## 🧬 Provenance
 
-- **Genesis 5.12** (Zenodo DOI: [10.5281/zenodo.19679049](https://doi.org/10.5281/zenodo.19679049)): documents that MIRA = (3φ+π)/4 was defined on 2026-01-28, prior to Planck 2018 Ωm comparison.
+- **Constant dictionary**: the closed algebraic set is documented in
+  [`docs/SSEE_Constant_Dictionary.md`](docs/SSEE_Constant_Dictionary.md) — 31 invariants
+  generated from φ and π by two lineage laws (copy / no-self-sum), fixed **independently
+  of any cosmological dataset**. MIRA = (3φ+π)/4 is one such structural invariant, derived,
+  not fitted. **No claim of temporal priority over public data** (DESI DR1/DR2, Planck 2018)
+  is made — the agreement is a parameter-free postdiction; timestamped predictions are
+  reserved for unreleased data (DESI DR3, Euclid).
 
 ---
 

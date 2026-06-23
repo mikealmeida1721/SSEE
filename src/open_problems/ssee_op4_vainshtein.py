@@ -10,7 +10,7 @@ References:
   - Barreira et al. (2013, 2015) — k-mouflage vs Vainshtein comparison
   - Brax & Valageas (2014) — k-mouflage general framework
   - Paper 7 (SSEE): K(X) canonical, αK = 0.4033
-  - Paper 10 (SSEE): M⁴ = 5φ⁸ρ_crit, M = 8.81 meV = Λ_SSEE
+  - Paper 10 (SSEE): M⁴ = 5φ⁸ρ_crit, M = 9.62 meV = Λ_SSEE (canónico; era 8.81 meV pre-cascada MIRA)
 """
 
 import numpy as np
@@ -44,7 +44,7 @@ eV4_SI = (eV_kg)**4 * c**6 / hbar**3        # 1 eV⁴ in SI energy density [J/m�
 # M in eV
 M_eV = (M4_SI / eV4_SI)**0.25 * c**(3/2) * hbar**(3/4) / eV_kg
 # Simpler: use the known result from Paper 10 directly
-M_eV_paper10 = 8.81e-3  # eV (meV)
+M_eV_paper10 = 9.62e-3  # eV (meV) — canónico Paper 10 con H_MIRA=67.037
 M_kg = M_eV_paper10 * eV_kg        # mass in kg
 M_J  = M_eV_paper10 * eV_J         # energy in J
 # M as wavenumber scale: M = ℏ·k_M / c  →  k_M = M·c/ℏ

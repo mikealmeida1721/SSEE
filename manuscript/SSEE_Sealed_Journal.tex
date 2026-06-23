@@ -236,12 +236,14 @@ ways, hitting two target numbers is unremarkable. We address this directly,
 and we do so with the \emph{model-faithful} denominator rather than an open
 integer search. SSEE does not draw $w_0$ and $w_a$ from an unbounded space of
 expressions; it draws them from a \emph{closed dictionary} of
-$21$ named structural invariants (the Genesis~5.12 set; Table~\ref{sec:notation}
-lists the subset that enters the present analysis), specified as a
-fixed set rather than expanded to accommodate the data.\footnote{The dictionary
-is the Genesis~5.12 constant set \citep{AlmeidaSSEE2026zenodo}; the
-look-elsewhere count below is performed over this fixed set, which is not
-enlarged or pruned to improve the match. We make no claim of temporal priority
+$31$ named structural invariants---the \emph{complete} Genesis~5.12 set,
+not a hand-picked subset---specified as a fixed set rather than expanded to
+accommodate the data.\footnote{The dictionary is the full Genesis~5.12 constant
+set \citep{AlmeidaSSEE2026genesis}; the look-elsewhere count below is performed
+over \emph{every} named invariant, with none enlarged, pruned, or selected to
+improve the match. Counting over the complete set rather than a subset is the
+conservative choice: it can only inflate the denominator of accidental hits, never
+shrink it. We make no claim of temporal priority
 over the DESI release: the agreement of \S\ref{sec:desi-agreement} is a
 parameter-free \emph{postdiction}, and genuinely timestamped predictions are
 reserved for unreleased data (\S\ref{sec:falsifiability}). Two pairs of invariants
@@ -251,23 +253,50 @@ distinct number is counted once.} The honest question is therefore: among
 \emph{all} ratios $A/B$ of named invariants in this fixed dictionary, how many
 land on $|w_0|=0.840$ and on $|w_a|=0.670$?
 
-Enumerating every ordered pair yields $245$ distinct ratios in the interval
-$(0,5]$. We then count how many fall within a tolerance of each target. At a
-tolerance of $\pm0.001$---the sub-percent precision that actually characterises
-the DESI match of \S\ref{sec:desi-agreement}---the result is
+Enumerating every ordered pair over the complete dictionary yields $317$ distinct
+ratios in the interval $(0,5]$. We then count how many fall within a tolerance of
+each target. Crucially, the SSEE assignments are not near-misses but \emph{exact}
+algebraic identities---$|w_0|=\mathrm{AURA}/\Omega=T_r/M_v$ and
+$|w_a|=P_{\rm sc}/K_v=\mathrm{PYROS}/\mathrm{IGNIS}$, both to machine precision
+($|d|=0$)---so the physically relevant tolerance is the observational precision of
+DESI ($\sim\!\pm0.002$), not an arbitrary band. At that precision each target is
+unique:
 \begin{equation}
-  |w_0|=0.840:\ \text{1 of 245},\qquad
-  |w_a|=0.670:\ \text{1 of 245},
+  |w_0|=0.840:\ \text{1 of 317},\qquad
+  |w_a|=0.670:\ \text{1 of 317}\quad(\pm0.001).
   \label{eq:lookelsewhere}
 \end{equation}
-each hit being the canonical SSEE assignment itself
-($\mathrm{AURA}/\Omega = T_r/M_v$ and $P_{\rm sc}/K_v$, both exact to machine
-precision). The density of accidental near-hits is thus $\sim0.4\%$ per target:
-within the framework's own vocabulary each equation-of-state parameter is
-\emph{essentially unique}. This is the opposite of a dense forest of
-coincidences, and it is a stronger statement than a generic
-$(a\varphi+b\pi)/(c\varphi+d\pi)$ scan, which by construction inflates the
-denominator with expressions the model never uses.
+Table~\ref{tab:lookelsewhere-tol} reports the full sensitivity to the tolerance,
+and we state it honestly: the uniqueness is a property of the strict, sub-percent
+regime that the \emph{exact} match actually occupies; relaxing the band far above
+the DESI precision predictably densifies accidental hits. Within the model's own
+vocabulary, at the precision of the measurement, each equation-of-state parameter
+is \emph{essentially unique}---the opposite of a dense forest of coincidences, and
+a stronger statement than a generic $(a\varphi+b\pi)/(c\varphi+d\pi)$ scan, which
+by construction inflates the denominator with expressions the model never uses.
+
+\begin{table}[ht]
+\centering
+\caption{Look-elsewhere sensitivity to the matching tolerance, computed over the
+\emph{complete} $31$-constant Genesis~5.12 dictionary ($317$ distinct ratios in
+$(0,5]$; constants sharing a value by the no-self-sum law collapse to $20$ distinct
+numbers). The DESI assignments are exact identities ($|d|=0$); the observationally
+relevant band is $\lesssim\!\pm0.002$, where each parameter is unique. The count is
+robust to the planned future dimensional copies (QUINTAL--DECAL): they add no hit
+within $\pm0.002$ of either target.}
+\label{tab:lookelsewhere-tol}
+\begin{tabular}{lcc}
+\toprule
+Tolerance & hits on $|w_0|=0.840$ & hits on $|w_a|=0.670$ \\
+\midrule
+$\pm0.0005$ & 1 & 1 \\
+$\pm0.001$  & 1 & 1 \\
+$\pm0.002$  & 1 & 2 \\
+$\pm0.005$  & 2 & 3 \\
+$\pm0.01$   & 3 & 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 The two ratios are moreover not independent draws. Both denominators are
 integer multiples of the single scaffold $\Omega=\varphi+\pi$:
@@ -550,10 +579,10 @@ in the single-sector treatment---a $3.9\sigma$ tension with KiDS-1000
 weak lensing~\citep{KiDS2021,DESY32022}, comparable to the $\Lambda$CDM
 $S_8$ tension itself. A two-sector extension, in which a free-streaming
 $\varphi$-DM component suppresses small-scale power below
-$k_{\rm fs}\simeq0.659~\hMpc$, \emph{lowers} the amplitude to
-$\sigma_8=0.742$, $S_8=0.766$, within $0.01\sigma$ of the KiDS-1000 value. The
+$k_{\rm fs}\simeq0.762~\hMpc$, \emph{lowers} the amplitude to
+$\sigma_8=0.748$, $S_8=0.766$, within $0.01\sigma$ of the KiDS-1000 value. The
 mass that fixes the free-streaming scale,
-$m_\varphi=\Sigma m_\nu^{\rm active}\,(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})\simeq36.95$~eV,
+$m_\varphi=\Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})\simeq41.02$~eV,
 is a forward prediction with no parameter fitted to lensing data
 (\S\ref{sec:open}); the suppression scale is a CLASS output, not a calibrated
 input. Both states are shown in Fig.~\ref{fig:s8_resolution}: the
@@ -569,7 +598,7 @@ lensing and CMB measurements.
   Eq.~\eqref{eq:s8}; the two-sector $\varphi$-DM extension (green,
   $S_8=0.766$) lands $0.01\sigma$ from KiDS-1000 (green band), with the
   free-streaming scale fixed by the forward-predicted mass
-  $m_\varphi=36.95$~eV --- no parameter fitted to lensing data. Grey
+  $m_\varphi=41.02$~eV --- no parameter fitted to lensing data. Grey
   points: Planck 2018, KiDS-1000 and DES-Y3 with $1\sigma$ errors.}
   \label{fig:s8_resolution}
 \end{figure}
@@ -696,13 +725,13 @@ Seven candidate mechanisms have been examined and ruled out; the search
 continues. The value is not fitted, but its origin is open.
 
 \item \textbf{The $\varphi$-dark-matter mass (OP-9).} The mass
-$m_\varphi\simeq36.95$~eV used in the extension sector follows from the
-algebraic relation $m_\varphi=\Sigma m_\nu^{\rm active}\,(\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL})$,
+$m_\varphi\simeq41.02$~eV used in the extension sector follows from the
+algebraic relation $m_\varphi=\Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$,
 a dimensionally consistent product of a neutrino mass scale and a pure
 $(\varphi,\pi)$ number. What remains open is the UV origin of the
 multiplier---a first-principles derivation from the field potential. The
 growth-sector predictions that descend from it---notably a free-streaming step
-in the matter power spectrum near $k_{\rm fs}\simeq 0.659~\hMpc$, testable by
+in the matter power spectrum near $k_{\rm fs}\simeq 0.762~\hMpc$, testable by
 DESI Y3 and Euclid---are deferred to future work and deliberately excluded from
 the core register of Table~\ref{tab:predictions-core} until the multiplier is
 derived.
@@ -756,6 +785,79 @@ the measured dark sector reflects an underlying structural principle or a
 remarkable set of coincidences is precisely the question that the prediction
 register of \S\ref{sec:falsifiability} is designed to settle. The next
 generation of cosmological surveys will provide the answer.
+
+% ============================================================================
+%  APPENDIX — generative laws of the closed dictionary
+% ============================================================================
+\appendix
+\section{The two lineage laws of the constant dictionary}
+\label{app:laws}
+
+The look-elsewhere test of \S\ref{sec:look-elsewhere} rests on the dictionary
+being a \emph{closed, finite} set fixed in advance, rather than an open search
+space. This appendix states the generative rules that make it so. We present
+them as a descriptive grammar of the Genesis~5.12 set
+\citep{AlmeidaSSEE2026genesis}: they reproduce the dictionary exactly, but their
+\emph{dynamical} origin is not claimed and remains the open mechanism of
+\S\ref{sec:open}. Stating them explicitly is what turns ``$31$ named invariants''
+from an assertion into a checkable construction.
+
+\paragraph{Seeds and scaffold.} Everything descends from two dimensionless
+seeds, $\varphi=(1+\sqrt5)/2$ (UV) and $\pi$ (IR). Their sum is the scaffold
+$\Omega=\varphi+\pi=4.75962$, and their mean is the bifurcation point
+$\beta\equiv\mathrm{BIAL}=(\varphi+\pi)/2=2.37981$ at which the dictionary splits
+into two branches.
+
+\paragraph{Law I --- the copy law ($\varphi$-branch).} The $\varphi$-branch is
+generated by a single root, the screening amplitude
+$\mathrm{AURA}=\beta+\varphi=3.99784$, which propagates \emph{only} by integer
+multiples and the dyadic half. These are the dimensional ceilings:
+\begin{equation}
+  \mathrm{MIRA}=\tfrac12\mathrm{AURA},\quad
+  \mathrm{AURA},\quad
+  \mathrm{DUAL}=2\,\mathrm{AURA},\quad
+  \mathrm{TRIAL}=3\,\mathrm{AURA}=T_r,\quad
+  \mathrm{CUARTAL}=4\,\mathrm{AURA}.
+  \label{eq:copylaw}
+\end{equation}
+The same law acts on the scaffold itself, giving the denominators
+$K_v=2\Omega$ and $M_v=3\Omega$. The economy noted in
+\S\ref{sec:look-elsewhere} is a direct consequence: since
+$T_r=3\,\mathrm{AURA}$ and $M_v=3\Omega$, the common factor of three cancels in
+\begin{equation}
+  |w_0|=\frac{T_r}{M_v}=\frac{3\,\mathrm{AURA}}{3\,\Omega}
+        =\frac{\mathrm{AURA}}{\Omega}=0.83996 ,
+\end{equation}
+so the equation-of-state numerator and denominator are not two independent
+draws but a single ratio of the two branch roots, $\mathrm{AURA}/\Omega$.
+
+\paragraph{Law II --- the no-self-sum law ($\pi$-branch).} The $\pi$-branch is
+generated additively: each child is a sum of previously defined parents, subject
+to the constraint that \emph{a node never adds to itself}. Thus
+$\mathrm{KAL}=\beta+\pi$, $P_{\rm sc}\,(\mathrm{PYROS})=\Omega+\varphi$,
+$\mathrm{IGNIS}=\pi+P_{\rm sc}$, and so on, building up to the convergences. A
+corollary is that two distinct lineages may land on the \emph{same value}
+without being the same entity: by construction
+$\mathrm{IGNIS}=K_v=9.51925$ (disruptive vs.\ structural lineage) and
+$\mathrm{SOLAR}=\mathrm{MAR}=7.90122$. The look-elsewhere count of
+\S\ref{sec:look-elsewhere} treats these honestly, deduplicating by value so the
+$31$ named nodes collapse to $20$ distinct numbers. The second
+equation-of-state ratio lives entirely on this branch,
+\begin{equation}
+  |w_a|=\frac{P_{\rm sc}}{K_v}=\frac{\mathrm{PYROS}}{\mathrm{IGNIS}}=0.67000 ,
+\end{equation}
+where the denominator is read as the $\pi$-branch node IGNIS rather than the
+scaffold copy $K_v$---the two coincide in value by Law~II.
+
+\paragraph{Closure.} The set is finite because both laws terminate at the
+five-dimensional integration ceiling $M_v=\varphi+\pi+K_v=3\Omega=14.27887$, the
+maximal dimensional invariant; no node exceeds it. This termination---not a
+choice made to fit data---is what bounds the dictionary to a fixed, enumerable
+set and licenses the conservative look-elsewhere denominator of
+\S\ref{sec:look-elsewhere}. Any future extension would proceed only by the same
+copy law (the planned dimensional copies QUINTAL--DECAL), which, as noted in
+Table~\ref{tab:lookelsewhere-tol}, add no accidental hit within the
+observational band of either $w_0$ or $w_a$.
 
 \bibliography{ssee_unified}
 

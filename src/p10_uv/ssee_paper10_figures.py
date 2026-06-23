@@ -21,8 +21,9 @@ AURA  = (3*phi + pi) / 2
 MIRA  = AURA / 2
 KAL0  = (phi + 3*pi) / 2  # ≈ 5.5214
 alpha_att = phi**4 / 3     # ≈ 2.2847  (alpha-attractor)
-H0_alg  = 3*Omega**2       # ≈ 67.96  (Type-P coincidence, comparison only)
-H0_MIRA = 67.037           # km/s/Mpc — canonical base (Paper 3 Cobaya, Σm_ν=0.069)
+H0_alg  = 3*Omega**2       # ≈ 67.96  (global background anchor, Postulate D)
+H0_global = H0_alg         # reframe 2026-06-17: H global de fondo = H_alg
+H0_MIRA = 67.037           # km/s/Mpc — ancla CMB-mapeada VIEJA (superada)
 # UV cutoff: M^4 = 45 alpha^2 rho_c  (Paper 10 Postulate C.1)
 # alphaK_IR = (phi+pi-Omega) already ≈ 0 … use Bellini-Sawicki definition
 alphaK_IR  = 3*AURA*(pi - phi) / (2*Omega**2)   # ≈ 0.40330
@@ -34,8 +35,8 @@ alphaK_UV = 0.41691
 
 fscreen_IR = alphaK_IR / (3*MIRA)    # 0.06725
 fscreen_UV = alphaK_UV / (3*MIRA)    # 0.06952
-H0_UV      = H0_MIRA / (1 - fscreen_UV)  # 72.05 — CANONICAL (via H_MIRA)
-H0_UV_typeP = H0_alg / (1 - fscreen_UV)  # 73.040 — Type-P coincidence (comparison)
+H0_UV      = H0_global / (1 - fscreen_UV)  # 73.040 — CANONICAL (via H_alg global)
+H0_UV_old  = H0_MIRA / (1 - fscreen_UV)    # 72.05 — superseded (via H_MIRA viejo)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Figure 1: K(X)/X vs X/M^4
@@ -101,7 +102,7 @@ alpha_range = np.linspace(0.5, 6, 400)
 delta_alpha = delta_IR * (alpha_att / alpha_range)**2
 alphaK_full_arr = alphaK_IR + delta_alpha
 fscreen_arr = alphaK_full_arr / (3*MIRA)
-H0_arr = H0_MIRA / (1 - fscreen_arr)   # canonical cascade via H_MIRA
+H0_arr = H0_global / (1 - fscreen_arr)   # canonical cascade via H_alg global
 
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(7, 6), sharex=True)
 
@@ -154,7 +155,7 @@ print(f"  alphaK_IR    = {alphaK_IR:.5f}")
 print(f"  alphaK_UV    = {alphaK_UV:.5f}")
 print(f"  fscreen_IR   = {fscreen_IR:.6f}")
 print(f"  fscreen_UV   = {fscreen_UV:.6f}")
-print(f"  H0_UV (canonical, via H_MIRA) = {H0_UV:.4f}")
-print(f"  H0_UV (Type-P, comparison)    = {H0_UV_typeP:.4f}")
+print(f"  H0_UV (canonical, via H_alg) = {H0_UV:.4f}")
+print(f"  H0_UV (superseded, via MIRA) = {H0_UV_old:.4f}")
 print(f"  u_bg = X_bg/M^4               = {u_bg:.4e}")
 print(f"  eps  = X_bg^2/M^4             = {X_bg**2/M4:.4e}")

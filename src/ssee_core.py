@@ -38,19 +38,38 @@ OMEGA_DE    = T_R / M_V         # ≈ 0.840
 OMEGA_M_DYN = 1.0 + W0          # ≈ 0.160  (sector dinámico: BAO, H(z), Paper 1/2)
 
 # ── MIRA / AURA ──────────────────────────────────────────────────────────────
-MIRA = (3.0*PHI + PI) / 4.0     # ≈ 1.9989  (hipótesis auxiliar, no derivada)
+# MIRA persiste como ENTIDAD (= AURA/2, valor 1.9989); conserva su rol en
+# f_screen y la identidad AURA = 2·MIRA. Lo que se reasignó (reframe 2026-06-17)
+# es su ROL de factor-materia → pasa a π/φ. Ver project_halg_pifi_investigation.
+MIRA = (3.0*PHI + PI) / 4.0     # ≈ 1.9989  (entidad; f_screen; = AURA/2)
 AURA = (3.0*PHI + PI) / 2.0     # ≈ 3.9978  (= 2*MIRA = PHI+BETA)
 
-# ── Ω_m para el CMB — DOS definiciones, ~0.05% de diferencia ─────────────────
-# NO unificar en silencio: la dualidad es un problema abierto (CLAUDE.md Roadmap pt.2).
-OMEGA_M_CMB_MIRA      = MIRA * OMEGA_M_DYN          # ≈ 0.31983  (vía MIRA)
-OMEGA_M_CMB_GEOMETRIC = (PI - PHI) / (PI + PHI)     # ≈ 0.32010  (geométrico)
-
-# ── Otros observables algebraicos ────────────────────────────────────────────
+# ── Observables algebraicos de fondo ─────────────────────────────────────────
 H0_ALG     = 3.0 * OMEGA**2          # ≈ 67.96 km/s/Mpc  = 3(phi+pi)^2
+H0_GLOBAL  = H0_ALG                  # CANÓNICO 2026-06-17: H global de fondo = H_alg
+H0_MIRA    = 67.037                  # ancla CMB-fit del escenario VIEJO (cascada pendiente re-run)
 N_S        = 1.0 - PHI**(-7)         # ≈ 0.96556
 R_TENSOR   = PHI**(-10)              # ≈ 0.00813
 OMEGA_B_H2 = (PI - PHI) / (3.0 * OMEGA**2)   # ≈ 0.02242  (OP-1)
+SUM_MNU_EV = 0.06902                          # Σm_ν activos (canónico)
+
+# ── Densidad de materia CMB — ω_m DIRECTO (reframe 2026-06-18) ────────────────
+# OP-8 CERRADO: no hay "factor materia" que derivar. Ω_m,CMB es el observable
+# físico estándar ω_m/h², con cada pieza algebraica de SSEE:
+#   ω_b = (π-φ)/(3Ω²)              (OP-1)
+#   ω_c = KAL₀·ω_b·n_s            (identidad forward, ya en Paper 1; 0.41σ)
+#   ω_ν = Σm_ν/93.14 eV           (neutrinos activos)
+# Ω_m,CMB = ω_m/h² es DERIVADO, no postulado. El viejo factor π/φ (y antes MIRA)
+# queda RETIRADO: Ω_m,dyn=0.160 (DESI) y ω_m (CMB) son dos predicciones
+# independientes, ya no ligadas por un factor. Ver project_halg_pifi_investigation.
+OMEGA_C_H2 = KAL0 * OMEGA_B_H2 * N_S           # ≈ 0.11952  (forward, Paper 1)
+OMEGA_NU_H2 = SUM_MNU_EV / 93.14               # ≈ 0.000741
+OMEGA_M_H2 = OMEGA_B_H2 + OMEGA_C_H2 + OMEGA_NU_H2   # ≈ 0.14268  (ω_m físico)
+OMEGA_M_CMB = OMEGA_M_H2 / (H0_GLOBAL/100.0)**2      # ≈ 0.30891  (CANÓNICO, derivado)
+# Identidades históricas (RETIRADAS como factor-materia, conservadas para trazar):
+OMEGA_M_CMB_PIPHI     = (PI / PHI) * OMEGA_M_DYN     # ≈ 0.31069  (factor π/φ — superado)
+OMEGA_M_CMB_MIRA      = MIRA * OMEGA_M_DYN           # ≈ 0.31983  (identidad MIRA — histórico)
+OMEGA_M_CMB_GEOMETRIC = (PI - PHI) / (PI + PHI)      # ≈ 0.32010  (geométrico)
 
 # ── Valores ΛCDM de referencia (Planck 2018, A&A 641 A6) ─────────────────────
 LCDM_OMEGA_M = 0.3153
@@ -114,7 +133,11 @@ def _sanity_checks():
     assert 0.0 < N_S < 1.0,         f"n_s no físico: {N_S}"
     assert 66.0 < H0_ALG < 69.0,    f"H0_alg fuera de rango: {H0_ALG}"
     assert abs(friedmann_E2(1.0, OMEGA_M_DYN) - 1.0) < 1e-9, "E^2(a=1) != 1"
-    assert abs(friedmann_E2(1.0, OMEGA_M_CMB_MIRA) - 1.0) < 1e-9, "E^2(a=1) != 1"
+    assert abs(friedmann_E2(1.0, OMEGA_M_CMB) - 1.0) < 1e-9, "E^2(a=1) != 1"
+    assert round(OMEGA_M_CMB, 4) == 0.3089, f"Omega_m,CMB canónico (ω_m/h²) fuera de rango: {OMEGA_M_CMB}"
+    assert abs(OMEGA_M_CMB - OMEGA_M_H2 / (H0_GLOBAL/100.0)**2) < 1e-12, "Omega_m,CMB debe ser ω_m/h²"
+    assert round(OMEGA_M_H2, 4) == 0.1427, f"ω_m algebraico fuera de rango: {OMEGA_M_H2}"
+    assert abs(OMEGA_C_H2 - KAL0 * OMEGA_B_H2 * N_S) < 1e-12, "ω_c debe ser KAL₀·ω_b·n_s"
 
 
 _sanity_checks()
@@ -127,8 +150,10 @@ def check():
     print("=" * 64)
     for name in ('PHI', 'PI', 'OMEGA', 'BETA', 'KAL0', 'P_SC', 'K_V', 'T_R',
                  'M_V', 'W0', 'WA', 'OMEGA_DE', 'OMEGA_M_DYN', 'MIRA', 'AURA',
-                 'OMEGA_M_CMB_MIRA', 'OMEGA_M_CMB_GEOMETRIC', 'H0_ALG', 'N_S',
-                 'R_TENSOR', 'OMEGA_B_H2'):
+                 'OMEGA_B_H2', 'OMEGA_C_H2', 'OMEGA_NU_H2', 'OMEGA_M_H2',
+                 'OMEGA_M_CMB', 'OMEGA_M_CMB_PIPHI', 'OMEGA_M_CMB_MIRA',
+                 'OMEGA_M_CMB_GEOMETRIC', 'H0_ALG', 'H0_GLOBAL', 'N_S',
+                 'R_TENSOR', 'SUM_MNU_EV'):
         print(f"  {name:24s} = {globals()[name]:.10f}")
     fs = load_fsigma8()
     print(f"\n  fsigma8 canónico: {len(fs)} puntos "

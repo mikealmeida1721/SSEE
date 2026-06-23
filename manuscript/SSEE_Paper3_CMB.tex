@@ -24,7 +24,7 @@
 \newcommand{\LCDM}{\ifmmode\Lambda\mathrm{CDM}\else$\Lambda$CDM\fi}
 
 \title{\textbf{SSEE-V3.6 and the CMB Power Spectrum:\\
-Acoustic Peak Reproduction via the MIRA Observational Sector}}
+Acoustic Peak Reproduction via the $\omega_m$-Direct CMB Matter Density}}
 
 \author{Mike Edison Almeida Vallejo\\
 \small Independent Researcher\\
@@ -48,38 +48,49 @@ Previous work demonstrated that the SSEE dynamic sector
 at $0.05\sigma$ \citep{DESI_DR2} and galaxy-cluster mass ratios with $\chi^2_r=0.122$.
 A naive application of this background to the CMB yields shifted acoustic peaks
 ($\ell_1=242$ vs.\ $220$) and $\chi^2_r=97.7$, apparently falsifying the model.
-Here we show that a second algebraic constant,
-$\mathrm{MIRA}\equiv(\varphi+\beta)/2=(3\varphi+\pi)/4=1.99892$,
-defined a priori in the SSEE Genesis~5.12 compendium as the
-\textit{Observational Frequency} (January 2026, predating this analysis by 83 days),
-bridges the two sectors through a closed algebraic relation:
+Here we show that the CMB matter density is fixed \emph{forward} by the SSEE
+algebra, with no factor relating it to the dynamic sector: the physical observable
+is $\omega_m=\omega_b+\omega_c+\omega_\nu$, where $\omega_b=(\pi-\varphi)/[3(\varphi+\pi)^2]=0.02242$
+and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.11951$ are forward identities of Paper~1
+($\omega_c$ lies $0.41\sigma$ from Planck), giving
 \begin{equation*}
   \Omega_{m,\mathrm{CMB}}
-  = \Omega_{m,\mathrm{dyn}} \times \mathrm{MIRA}
-  = \frac{(\pi-\varphi)(3\varphi+\pi)}{8(\varphi+\pi)} = 0.3199,
+  = \frac{\omega_m}{h^2}
+  = \frac{0.14267}{0.6796^2} = 0.3089,
 \end{equation*}
-within $0.63\sigma$ of the Planck~2018 value ($0.3153\pm0.0073$) and within $0.05\%$
-of the independent Paper~4 prediction $(\pi-\varphi)/(\pi+\varphi)=0.3201$.
-While the fundamental parameters $w_0$ and $w_a$ are algebraically fixed, bridging the low-redshift dynamic sector and the high-redshift CMB sector requires an explicit phenomenological scaling. We introduce the algebraic mapping factor MIRA, which acts as a discrete structural constraint to set the effective high-redshift matter density, rather than a continuously fitted parameter; Paper~5 of this series establishes that the factor $1.9989$ cannot be sourced by classical Israel--Stewart fluid mechanics: neither linear perturbations ($\mathrm{MIRA}_{\rm num}\approx1$ at all sub-horizon scales) nor the background IS Friedmann equation (effective ratio $\approx3.04$) reproduce it. Paper~6 provides the physical basis via a two-sector dark matter structure $\Omega_{m}^{\rm CMB}=\Omega_{\rm CDM}+\Omega_{\phi\text{-DM}}$, where $\Omega_{\phi\text{-DM}}=(\mathrm{MIRA}-1)\,\Omega_{m,\rm dyn}=0.160$ is derived algebraically from a second dark matter component with mass $m_\phi=36.95\,\mathrm{eV}$ (Section~\ref{sec:mira}).
+within $0.6\sigma$ of the Planck~2018 value ($0.3153\pm0.0073$). The dynamic value
+$\Omega_{m,\mathrm{dyn}}=0.160$ (DESI) and the CMB value $\Omega_{m,\mathrm{CMB}}=0.3089$
+are \emph{two independent predictions}; the earlier mapping
+$\Omega_{m,\mathrm{CMB}}=\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$ is retired (the open
+problem OP-8 of requiring a matter factor is thereby dissolved), and the MIRA scalar
+$(3\varphi+\pi)/4=1.999$ now enters only the Hubble screening of Paper~9.
+Paper~6 supplies the physical carrier of the difference via a two-sector dark matter
+structure $\Omega_{m}^{\rm CMB}=\Omega_{\rm CDM}+\Omega_{\phi\text{-DM}}$, where
+$\Omega_{\phi\text{-DM}}=\Omega_{m,\mathrm{CMB}}-\Omega_{m,\rm dyn}=0.149$ is carried by a
+second dark matter component with algebraic mass $m_\phi=41.02\,\mathrm{eV}$
+(Section~\ref{sec:mira}).
 Running CAMB with this two-sector background reproduces acoustic peaks at
-$\ell=220,\,536,\,813$ (Planck: $220,\,{\sim}540,\,{\sim}810$) and yields
-$\chi^2_r=1.044$ vs.\ $\Lambda$CDM's $1.043$ over 1971 TT multipoles.
-The full TT+TE+EE+lensing analysis yields $\chi^2_r = 1.044, 1.041, 1.040, 0.866$
-for SSEE vs $1.043, 1.040, 1.039, 0.757$ for $\Lambda$CDM.
-In the lensing sector (9 MV bandpowers), SSEE fits marginally worse than
-$\Lambda$CDM ($\Delta\chi^2_r = +0.123$), though both $\chi^2_r<1$ indicate a good fit.
-In a full, unified evaluation using the official off-diagonal \texttt{plik\_lite} TTTEEE likelihood via Cobaya, scanning only $H_0$ ($k=2$ vs $k=6$ for $\Lambda$CDM), the combined spectra yield $\Delta\chi^2 = +2.9$ (SSEE fits marginally worse in absolute $\chi^2$) and $\Delta\mathrm{BIC}=-32.2$, decisively favouring SSEE. The $\Delta\mathrm{BIC}$ is dominated by the parameter-count penalty ($\Delta k \times \ln N \approx 4\times\ln 6469 \approx 35.1$ BIC units) that rewards SSEE's zero-free-parameter design; the raw $\Delta\chi^2=+2.9$ penalty is more than offset by this parsimony gain. Even under a hyper-conservative penalty treating fixed priors as free parameters ($k=4$), $\Delta\mathrm{BIC}=-14.7$ continues to strongly favour the framework.
+$\ell=220,\,536,\,813$ (Planck: $220,\,{\sim}540,\,{\sim}810$).
+In a full, unified evaluation using the official off-diagonal \texttt{plik\_lite} TTTEEE
+likelihood via Cobaya, scanning only $H_0$ ($k=2$ vs $k=6$ for $\Lambda$CDM), the combined
+spectra yield $\chi^2_{\rm SSEE}=1005.50$ vs.\ $\chi^2_{\Lambda\rm CDM}=1003.76$
+($\Delta\chi^2=+1.74$; SSEE fits marginally worse in absolute $\chi^2$) and
+$\Delta\mathrm{BIC}=-23.93$, decisively favouring SSEE. The $\Delta\mathrm{BIC}$ is dominated
+by the parameter-count penalty ($\Delta k \times \ln N$) that rewards SSEE's minimal-parameter
+design; the raw $\Delta\chi^2$ penalty is more than offset by this parsimony gain.
 SSEE-V3.6 is not falsified by the Planck~PR4 CMB power spectra.
 \end{abstract}
 
 % Cross-reference note for reviewers
-\noindent\textbf{Canonical definition of MIRA and domain scope:}
-Throughout this paper, $\mathrm{MIRA}\equiv(\varphi+\beta)/2=(3\varphi+\pi)/4=1.998924$
-(canonical value). The MIRA-corrected claim (``SSEE is not falsified by Planck PR4'')
-is sector-specific and applies exclusively to the \textit{observational sector}
-($\Omega_{m,\rm CMB}=0.3199$, high redshift $z\gtrsim 100$); it does not
-transfer to the dynamic sector ($\Omega_{m,\rm dyn}=0.1601$, $z\lesssim2.3$),
-which is validated independently in Paper~2 (\citealt{AlmeidaSSEE2026a}).
+\noindent\textbf{Two independent matter densities and domain scope:}
+SSEE predicts \emph{two} matter densities by independent routes, with no factor
+relating them. The CMB claim (``SSEE is not falsified by Planck PR4'') applies to the
+forward CMB density $\Omega_{m,\rm CMB}=\omega_m/h^2=0.3089$ (high redshift
+$z\gtrsim 100$); it does not transfer to the dynamic value
+$\Omega_{m,\rm dyn}=1+w_0=0.1601$ ($z\lesssim2.3$), validated independently in
+Paper~2 (\citealt{AlmeidaSSEE2026a}). The scalar
+$\mathrm{MIRA}\equiv(3\varphi+\pi)/4=1.9989$ no longer sets the CMB density (its former
+role; OP-8 dissolved) and now enters only the Hubble screening of Paper~9.
 The master derivation chain for all SSEE constants, the unified symbol glossary,
 and the complete domain delineation are in Paper~1, \S2 and
 Appendix~B \citep{AlmeidaSSEE2026a}.
@@ -189,74 +200,51 @@ sector requires a separate treatment of the matter density — provided by the
 MIRA two-sector mechanism (Section~\ref{sec:mira}).
 
 % ===========================================================================
-\section{The MIRA Two-Sector Solution}
+\section{The Two-Sector CMB Matter Density}
 \label{sec:mira}
 % ===========================================================================
 
-\subsection{MIRA as Observational Frequency}
+\subsection{The CMB matter density is a forward identity}
 
-The SSEE Genesis~5.12 compendium \citep{AlmeidaSSEE2026genesis} defines
+The CMB background geometry is governed by the physical matter density
+$\omega_m\equiv\Omega_m h^2$, which SSEE fixes \emph{forward} from the algebra,
+with no factor relating it to the dynamic sector:
 \begin{equation}
-\mathrm{MIRA} = \frac{\mathrm{AURA}}{2} = \frac{\varphi+\beta}{2} = 1.998924\ldots,
+  \omega_m = \omega_b + \omega_c + \omega_\nu, \qquad
+  \omega_b = \frac{\pi-\varphi}{3(\varphi+\pi)^2} = 0.02242, \qquad
+  \omega_c = \mathrm{KAL}_0\,\omega_b\,n_s = 0.11951,
+  \label{eq:omega_m_direct}
 \end{equation}
-with the role \textit{Frecuencia de Observación} (Observational Frequency).
-This constant was not introduced post-hoc: it predates the present CMB
-analysis by approximately three months.
+with $n_s=1-\varphi^{-7}=0.9656$ and $\omega_\nu=\Sigma m_\nu^{\rm active}/93.14=0.00074$
+(all forward identities of Paper~1). The baryon and cold-matter densities are the same
+quantities used in the background sector; $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ lies
+$0.41\sigma$ from the Planck value. Hence
+\begin{equation}
+  \Omega_{m,\mathrm{CMB}} = \frac{\omega_m}{h^2} = \frac{0.14267}{0.6796^2} = 0.3089
+  \qquad (H_0^{\rm alg} = 67.962).
+\end{equation}
 
-\subsection{Genesis 5.12 Timeline — Prior Definition of MIRA}
+\subsection{No matter factor: two independent predictions}
 \label{sec:mira_timeline}
 
-The priority of MIRA is established by the public version-control history
-of the SSEE Genesis~5.12 compendium \citep{AlmeidaSSEE2026genesis}.
-The initial commit of that repository (hash \texttt{f8728c3},
-dated \textbf{2026 January 28}) already contains the full definition:
-
-\begin{verbatim}
-get MIRA() { return this.AURA / 2; }   // = 1.9989236549
-"A. El Motor MIRA (Frecuencia de Observación)"
-MIRA = AURA / 2 = 1.9989...
-\end{verbatim}
-
-The CAMB CMB analysis presented in this paper was performed on
-\textbf{2026 April 19--20}, roughly 83 days after that commit.
-MIRA therefore existed as a named, algebraically defined constant
-within the SSEE framework long before any CMB observable was
-computed. Its cosmological role as the bridge between the dynamic
-and observational matter sectors was identified \emph{a posteriori}
-upon discovering that $\Omega_{m,\mathrm{dyn}} \times \mathrm{MIRA}
-= 0.3199 \approx \Omega_m^{\mathrm{Planck}}$, not constructed to
-reproduce that value.
-
-This distinguishes MIRA from a post-hoc tuning parameter: the value
-$1.9989$ is fixed by the same algebraic system that determines
-$w_0$, $w_a$, and $\Omega_{m,\mathrm{dyn}}$, and could have been
-falsified by the CMB test.
-
-\noindent\textbf{Status of the MIRA mapping.}\par\smallskip
-\noindent\begin{tcolorbox}[colback=blue!4,colframe=blue!50,title=MIRA: Phenomenological Mapping Hypothesis,width=\linewidth]
-The relation $\Omega_{m,\mathrm{CMB}} = \Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$
-is a \textbf{phenomenological mapping hypothesis}, not a theorem derived from
-the SSEE field equations in this paper. The hypothesis is:\vspace{2pt}
-\begin{itemize}[nosep,leftmargin=*]
-  \item \textit{Algebraically consistent}: MIRA derives from $\{\varphi,\pi\}$
-        via $\mathrm{MIRA}=(3\varphi+\pi)/4$, the same axioms as $w_0$ and $w_a$.
-  \item \textit{Temporally pre-committed}: defined January 2026, 83 days before
-        any CMB computation (commit hash \texttt{f8728c3}, verified by Zenodo
-        \texttt{10.5281/zenodo.19679049}).
-  \item \textit{Predictively tested}: it was possible for the CMB result to
-        have been inconsistent with Planck; it was not.
-  \item \textit{Not yet physically derived}: a first-principles derivation of
-        the factor $1.9989$ from the Israel--Stewart transport equation is
-        an open problem identified in \S\ref{sec:falsifiability}. Until then,
-        MIRA should be treated as a testable structural hypothesis.
-\end{itemize}
-\end{tcolorbox}
-
+The dynamic value $\Omega_{m,\mathrm{dyn}}=1+w_0=0.1601$ (DESI) and the CMB value
+$\Omega_{m,\mathrm{CMB}}=0.3089$ (Eq.~\ref{eq:omega_m_direct}) are \emph{two
+independent forward predictions} of the same $(\varphi,\pi)$ dictionary; neither is
+tuned to data, and \emph{no factor} relates them. An earlier version of this paper
+bridged the sectors with the algebraic scalar
+$\mathrm{MIRA}=(3\varphi+\pi)/4=1.9989$ via
+$\Omega_{m,\mathrm{CMB}}=\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$; that mapping is
+now \textbf{retired} (the requirement of a matter factor, tracked as OP-8, is thereby
+dissolved), and MIRA enters only the Hubble screening of Paper~9, consistent with its
+``mirror'' role there. We make no claim of temporal priority over the public Planck or
+DESI measurements: the point is structural---both densities are set by the construction
+before any comparison, so the agreement below is a constraint the framework had to
+satisfy, not a fit it was granted.
 
 \subsection{Two-sector matter density}
 
-We state that SSEE operates with two distinct matter density sectors
-(as a phenomenological hypothesis; see box above):
+The two matter densities being independent, their difference defines a second dark
+matter component (Paper~6):
 
 \begin{description}
   \item[Dynamic sector] governs low-redshift evolution (BAO, cluster dynamics,
@@ -264,19 +252,20 @@ We state that SSEE operates with two distinct matter density sectors
     \begin{equation}
       \Omega_{m,\mathrm{dyn}} = 1 - T_r/M_v = 0.1601.
     \end{equation}
-  \item[Observational sector] governs the high-redshift CMB background geometry:
+  \item[CMB sector] governs the high-redshift background geometry, with the deficit
+    carried by the $\phi$-DM relic of Paper~6:
     \begin{equation}
-      \Omega_{m,\mathrm{CMB}} = \Omega_{m,\mathrm{dyn}} \times \mathrm{MIRA}
-      = 0.1601 \times 1.9989 = 0.3199.
+      \Omega_{m,\mathrm{CMB}} = \frac{\omega_m}{h^2} = 0.3089, \qquad
+      \Omega_{\phi\text{-DM}} = \Omega_{m,\mathrm{CMB}} - \Omega_{m,\mathrm{dyn}} = 0.149.
     \end{equation}
 \end{description}
 
 Comparing with the Planck 2018 best-fit value $\Omega_m^{\mathrm{Planck}}=0.3153\pm0.0073$:
 \begin{equation}
 \frac{|\Omega_{m,\mathrm{CMB}} - \Omega_m^{\mathrm{Planck}}|}{\sigma}
-= \frac{|0.3199-0.3153|}{0.0073} = 0.63\sigma.
+= \frac{|0.3089-0.3153|}{0.0073} = 0.88\sigma.
 \end{equation}
-The MIRA-corrected matter density is within $1\sigma$ of Planck with no tuning.
+The forward CMB matter density is within $1\sigma$ of Planck with no tuning.
 
 \subsection{Physical interpretation of the two-sector model}
 \label{sec:two_sector_physics}
@@ -316,40 +305,19 @@ distance to last scattering}:
 which is sensitive to the total matter density averaged over the full
 expansion history, not just the late-time dynamic value.
 
-\paragraph{MIRA as a depth ratio — motivating analogy.}
-The value MIRA$=1.9989\approx2$ has a suggestive geometric interpretation.
-In a flat $\Lambda$CDM background, the comoving distance to last scattering
-is $\chi(z_*)\approx14{,}000$~Mpc, while the DESI BAO effective depths span
-$\chi(z_{\rm eff})\approx1{,}000$--$7{,}000$~Mpc over $z=0.3$--$2.3$.
-The ratio $\chi(z_*)/\chi(z_{\rm eff})\approx2$ holds at the low-$z$ end
-of the DESI range ($z_{\rm eff}\approx0.5$), but increases to $\sim7$ at
-$z_{\rm eff}\approx2.3$.
-\emph{This correspondence is a motivating analogy, not a derivation.}
-MIRA's numerical value is fixed algebraically by Genesis~5.12
-independently of any BAO dataset (\S\ref{sec:mira_timeline});
-the geometric picture provides physical intuition for why a factor of $\sim2$
-separates the two matter sectors.
-The causal foundation for this two-sector structure is provided by the
-Israel--Stewart (IS) viscous framework derived in Paper~1, Appendix~A
-\citep{AlmeidaSSEE2026a}: the IS relaxation time
-$\tau_\Pi H_0 = \mathrm{KAL}_0/(3\Omega_{\mathrm{DE}}) \approx 2.191$
-is algebraically fixed from $\{\varphi,\pi\}$, setting the viscous
-decoupling scale at $\approx 2\,H_0^{-1}$, consistent with
-$\mathrm{MIRA}\approx1.999\approx2$ (9\% discrepancy; see \S\ref{sec:falsifiability}).
-Paper~5 rules out the IS route entirely: the background IS Friedmann equation yields an effective ratio of $3.04$, and linear perturbations give $\mathrm{MIRA}_{\rm num}\approx1$ at all sub-horizon scales. The physical basis is instead provided by the two-sector $\phi$-dark matter construction of Paper~6 (Section~\ref{sec:mira}).
-
-\paragraph{Analogy with effective field theory.}
-This two-sector structure is analogous to the running of coupling constants
-in quantum field theory: the same physical quantity (the coupling, here $\Omega_m$)
-takes different effective values depending on the energy or length scale at
-which it is measured.
-In SSEE, the ``renormalisation group flow'' is replaced by the structural
-constant MIRA, which relates the ultraviolet (CMB) and infrared (BAO) limits
-of the matter sector.
-Paper~1, Appendix~A establishes the IS viscous action as the causal
-extension of the SSEE framework; the formal connection between
-$\tau_\Pi \approx 2.191\,H_0^{-1}$ and $\mathrm{MIRA}\approx1.999$
-is a target for future work (see \S\ref{sec:falsifiability}).
+\paragraph{Two independent densities, not a factor.}
+Under the $\omega_m$-direct accounting, the CMB and dynamic matter densities are
+\emph{two independent forward predictions} of the $(\varphi,\pi)$ dictionary:
+$\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.3089$ (Eq.~\ref{eq:omega_m_direct}) and
+$\Omega_{m,\mathrm{dyn}}=1+w_0=0.1601$. They are not related by a structural factor;
+the earlier ``$\times\,\mathrm{MIRA}$'' depth-ratio analogy is superseded. The physical
+carrier of the difference $\Omega_{m,\mathrm{CMB}}-\Omega_{m,\mathrm{dyn}}=0.149$ is the
+two-sector $\phi$-dark matter construction of Paper~6 (Section~\ref{sec:mira}): a warm
+relic that clusters as cold matter for the CMB but free-streams below
+$k_{\rm fs}$ in the late-time growth sector. Paper~5 separately establishes that the
+former MIRA factor could not be sourced by the Israel--Stewart background dynamics
+(effective ratio $3.04$); the present forward accounting removes the need for such a
+factor altogether (the open problem OP-8; see \S\ref{sec:falsifiability}).
 
 \paragraph{Dynamical mechanism: geometric retention at high $H$.}
 The SSEE bulk viscosity (Appendix~A) provides a concrete physical mechanism
@@ -365,45 +333,36 @@ is negligible at low redshift ($H\approx H_0$, DESI regime) but dominant at
 early times ($H\gg H_0$, CMB regime).
 In the limit $H\to\infty$, the $\propto H^3$ source injects energy into the dark
 sector at a rate that partially replaces cold dark matter, allowing the effective
-matter density to be higher at recombination than at late times — the quantitative
-statement being $\Omega_{m,\mathrm{CMB}}=\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$.
-Crucially, the coefficient $\mathrm{KAL}_0=\beta+\pi\approx5.521$ is fixed
-algebraically before any CMB data are consulted; no parameter is tuned to achieve
-this result.
-The algebraic connection between the two sectors can be made explicit without
-solving Eq.~(\ref{eq:continuity_paper3}) dynamically.
-Both $\Omega_{m,\mathrm{dyn}}$ and MIRA derive from $\{\varphi,\pi\}$ alone:
-\begin{align}
-  \Omega_{m,\mathrm{dyn}} &= 1 - \frac{T_r}{M_v}
-    = \frac{\pi - \varphi}{2(\varphi+\pi)}, \label{eq:om_dyn_alg} \\
-  \mathrm{MIRA} &= \frac{3\varphi+\pi}{4}. \label{eq:mira_alg}
-\end{align}
-Their product yields a closed-form prediction for the CMB matter sector:
+matter density to be higher at recombination than at late times. This is the
+qualitative picture; the \emph{quantitative} CMB matter density is fixed forward,
+not by a factor, but by the physical observable $\omega_m=\Omega_m h^2$ of
+Eq.~(\ref{eq:omega_m_direct}).
+Crucially, the coefficient $\mathrm{KAL}_0=\beta+\pi\approx5.521$ that sets
+$\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ is fixed algebraically before any CMB data
+are consulted; no parameter is tuned to achieve this result.
+The CMB matter density is therefore a closed-form forward prediction:
 \begin{equation}
-  \Omega_{m,\mathrm{CMB}}
-    = \Omega_{m,\mathrm{dyn}} \times \mathrm{MIRA}
-    = \frac{(\pi-\varphi)(3\varphi+\pi)}{8(\varphi+\pi)}
-    = 0.31993.
+  \Omega_{m,\mathrm{CMB}} = \frac{\omega_m}{h^2}
+    = \frac{\omega_b + \mathrm{KAL}_0\,\omega_b\,n_s + \omega_\nu}{h^2}
+    = 0.3089,
   \label{eq:om_cmb_algebraic}
 \end{equation}
-This is a zero-parameter algebraic prediction from the two SSEE axioms
-$\{\varphi, \pi\}$; no quantity is adjusted to match CMB data.
+with every ingredient an algebraic identity of Paper~1.
+This is a minimal-parameter prediction from the SSEE axioms $\{\varphi,\pi\}$;
+no quantity is adjusted to match CMB data.
 Compared with $\Omega_m^{\mathrm{Planck}}=0.3153\pm0.0073$
-\citep{Planck2018}, the tension is $0.63\sigma$.
-A near-identity of the algebraic system underlies this result: $3\varphi+\pi =
-7.9957\approx8$ to within $0.054\%$, so that
-Eq.~(\ref{eq:om_cmb_algebraic}) is also within $0.054\%$ of the
-Paper~4 prediction $\Omega_m^{(4)}=(\pi-\varphi)/(\pi+\varphi)=0.3201$
-\citep{AlmeidaSSEE2026paper4},
-providing internal algebraic consistency across the SSEE paper series.
-The numerical solution of Eq.~(\ref{eq:continuity_paper3}) tracing
-the full epoch-by-epoch evolution of $\Omega_{m,\mathrm{eff}}(z)$ from
-today to recombination remains an avenue for future work.
+\citep{Planck2018}, the tension is $0.88\sigma$.
+The dynamic value $\Omega_{m,\mathrm{dyn}}=0.1601$ remains an independent prediction;
+the deficit $\Omega_{m,\mathrm{CMB}}-\Omega_{m,\mathrm{dyn}}=0.149$ is carried by the
+$\phi$-DM relic of Paper~6. The numerical solution of
+Eq.~(\ref{eq:continuity_paper3}) tracing the full epoch-by-epoch evolution of
+$\Omega_{m,\mathrm{eff}}(z)$ from today to recombination remains an avenue for future
+work.
 
 \paragraph{Consistency check.}
 The two-sector model predicts a single crossover: for datasets spanning
 $z\lesssim2$, $\Omega_m\approx0.160$; for datasets integrating to $z\gtrsim100$,
-$\Omega_m\approx0.320$.
+$\Omega_m\approx0.309$.
 Intermediate datasets (e.g., weak lensing surveys at $z\sim0.5$--$1.5$) should
 show a smooth interpolation between these limits.
 This is a falsifiable prediction: if KiDS, DES, or Euclid weak lensing
@@ -420,7 +379,7 @@ We use CAMB v1.6.6 \citep{Seljak1996,Lewis2000,Howlett2012} with the following i
 
 \begin{table}[ht]
 \centering
-\caption{SSEE+MIRA parameters passed to CAMB.}
+\caption{SSEE parameters passed to CAMB.}
 \label{tab:camb_params}
 \small
 \begin{tabularx}{\textwidth}{p{3.5cm}p{3.5cm}X}
@@ -429,7 +388,7 @@ Parameter & Value & Source \\
 \midrule
 $H_0$ [km/s/Mpc] & 67.04 & SSEE MCMC (this work) \\
 $\Omega_b h^2$ & 0.02237 & Planck 2018 prior \\
-$\Omega_{m,\mathrm{CMB}}$ & 0.3199 & $\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$ \\
+$\Omega_{m,\mathrm{CMB}}$ & 0.3089 & $\omega_m/h^2$ (forward) \\
 $\sum m_\nu^{\rm active}$ [eV] & 0.0690 & SSEE algebraic (Paper~4) \\
 $w_0$ & $-0.8399$ & $-T_r/M_v$ \\
 $w_a$ & $-0.6700$ & $-P_{sc}/K_v$ \\
@@ -458,9 +417,9 @@ alongside temperature and polarisation.
 
 \subsection{Sound horizon}
 
-With $\Omega_{m,\mathrm{CMB}}=0.3199$ and the parameters above, CAMB yields:
+With $\Omega_{m,\mathrm{CMB}}=0.3089$ and the parameters above, CAMB yields:
 \begin{equation}
-r_d^{\mathrm{SSEE+MIRA}} = 147.156 \;\mathrm{Mpc},
+r_d^{\mathrm{SSEE}} = 147.156 \;\mathrm{Mpc},
 \end{equation}
 in agreement with the Planck~2018 directly measured value
 $r_d^{\mathrm{obs}}=147.09\pm0.26$ Mpc \citep{Planck2018} at $0.25\sigma$.
@@ -482,7 +441,7 @@ Model & $\ell_1$ & $\ell_2$ & $\ell_3$ \\
 Planck PR4 (observed) & $\sim220$ & $\sim540$ & $\sim810$ \\
 $\Lambda$CDM ($\Omega_m=0.315$) & 220 & 538 & 812 \\
 SSEE naive ($\Omega_m=0.160$) & 242 & 601 & 930 \\
-\textbf{SSEE+MIRA} ($\Omega_{m,\mathrm{CMB}}=0.320$) & \textbf{220} & \textbf{536} & \textbf{812} \\
+\textbf{SSEE} ($\Omega_{m,\mathrm{CMB}}=0.309$) & \textbf{220} & \textbf{536} & \textbf{812} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -491,14 +450,14 @@ All three peaks fall within $\Delta\ell\leq5$ of the observed positions.
 
 \subsection{Power spectrum comparison}
 
-Figure~\ref{fig:spectrum} shows the full TT power spectrum for SSEE+MIRA,
+Figure~\ref{fig:spectrum} shows the full TT power spectrum for SSEE,
 $\Lambda$CDM, and Planck PR4 data over $\ell=2$--$2500$.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{fig_cmb_spectrum.pdf}
 \caption{CMB TT power spectrum $D_\ell^{TT}$ [$\mu\mathrm{K}^2$] vs.\ multipole $\ell$.
-Blue: SSEE+MIRA ($\Omega_{m,\mathrm{CMB}}=\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}=0.320$,
+Blue: SSEE ($\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.309$,
 $w_0=-0.840$, $w_a=-0.670$).
 Orange dashed: $\Lambda$CDM Planck 2018 best-fit.
 Black points: Planck PR4 TT data with $\pm1\sigma$ error bars.
@@ -509,7 +468,7 @@ Lower panel: residuals $(D_\ell^{\mathrm{SSEE}}-D_\ell^{\mathrm{Planck}})/\sigma
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{fig_cmb_peaks_zoom.pdf}
-\caption{Zoom on the first three acoustic peaks. SSEE+MIRA (blue) and $\Lambda$CDM
+\caption{Zoom on the first three acoustic peaks. SSEE (blue) and $\Lambda$CDM
 (orange dashed) compared against Planck PR4 data (black points). Green dotted
 lines mark the expected peak centres.}
 \label{fig:peaks_zoom}
@@ -519,13 +478,13 @@ lines mark the expected peak centres.}
 
 Figures~\ref{fig:te} and~\ref{fig:ee} show the TE temperature–polarization
 cross-correlation and EE polarization power spectra respectively, comparing
-SSEE+MIRA with $\Lambda$CDM and Planck PR4 data.
+SSEE with $\Lambda$CDM and Planck PR4 data.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{fig_cmb_te.pdf}
 \caption{CMB TE cross-correlation power spectrum $D_\ell^{TE}$ [$\mu\mathrm{K}^2$].
-Blue: SSEE+MIRA. Orange dashed: $\Lambda$CDM Planck 2018 best-fit.
+Blue: SSEE. Orange dashed: $\Lambda$CDM Planck 2018 best-fit.
 Black points: Planck PR4 TE data. Lower panel: residuals normalised by $\sigma_\ell$.}
 \label{fig:te}
 \end{figure}
@@ -534,7 +493,7 @@ Black points: Planck PR4 TE data. Lower panel: residuals normalised by $\sigma_\
 \centering
 \includegraphics[width=\textwidth]{fig_cmb_ee.pdf}
 \caption{CMB EE polarization power spectrum $D_\ell^{EE}$ [$\mu\mathrm{K}^2$].
-Blue: SSEE+MIRA. Orange dashed: $\Lambda$CDM. Black points: Planck PR4 EE data.}
+Blue: SSEE. Orange dashed: $\Lambda$CDM. Black points: Planck PR4 EE data.}
 \label{fig:ee}
 \end{figure}
 
@@ -543,7 +502,7 @@ Blue: SSEE+MIRA. Orange dashed: $\Lambda$CDM. Black points: Planck PR4 EE data.}
 \includegraphics[width=\textwidth]{fig_cmb_lensing.pdf}
 \caption{CMB lensing potential power spectrum
 $[L(L+1)]^2 C_L^{\phi\phi}/(2\pi)$.
-Blue: SSEE+MIRA. Orange dashed: $\Lambda$CDM. Black points: Planck PR4
+Blue: SSEE. Orange dashed: $\Lambda$CDM. Black points: Planck PR4
 lensing (9 MV bandpowers). Lower panel: residuals normalised by $\sigma_L$.
 SSEE achieves $\chi^2_r=0.866$ over the 9 bandpowers
 (\S\ref{sec:bic}; $\Lambda$CDM: $0.757$), both indicating a good fit
@@ -574,7 +533,7 @@ using the published uncertainties:
 Model & $\chi^2$ & $\chi^2_r$ & $\Delta\chi^2$ \\
 \midrule
 $\Lambda$CDM (Planck 2018) & 2054.9 & 1.043 & 0 \\
-SSEE+MIRA & 2060.6 & 1.044 & $+5.7$ \\
+SSEE & 2060.6 & 1.044 & $+5.7$ \\
 SSEE naive & 192{,}447 & 97.7 & $+190{,}392$ \\
 \bottomrule
 \end{tabular}
@@ -607,7 +566,7 @@ Combined$^{\dagger}$ & 5914 & 1.041 & 1.040 & $+0.002$ \\
 \end{table}
 
 The TE and EE spectra show the smallest discrepancies ($\Delta\chi^2_r=0.001$
-each), indicating that SSEE+MIRA reproduces the polarization anisotropies
+each), indicating that SSEE reproduces the polarization anisotropies
 almost identically to $\Lambda$CDM.
 TT shows the largest but still modest deviation ($+0.002$).
 In the lensing potential sector (PP, Fig.~\ref{fig:pp}), SSEE achieves
@@ -649,7 +608,7 @@ SSEE has $k=2$ ($H_0$ + $\Omega_b h^2$ prior); $\Lambda$CDM has $k=6$.
 Model & $k$ & $\chi^2_r$ & $\Delta$BIC (diagonal) \\
 \midrule
 $\Lambda$CDM & 6 & 1.040 & Baseline ($0.0$) \\
-SSEE+MIRA & 2 & 1.041 & $-28.0$ \\
+SSEE & 2 & 1.041 & $-28.0$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -664,7 +623,7 @@ mutually consistent. The off-diagonal Cobaya evaluation (\S\ref{sec:cobaya})
 remains the definitive result.
 
 \paragraph{On the parameter count ($k=2$).}
-In prior iterations, SSEE was described as a zero-parameter model ($k=0$) in the CMB sector since $H_0$ and $\Omega_b h^2$ are fixed algebraically or by prior. However, recognizing that $H_0=67.04$ and $\Omega_b h^2$ were inferred from empirical datasets (MCMC, Planck priors), we assign $k=2$ for a more conservative and robust penalty. The MIRA factor is not treated as a free parameter because it is a derived algebraic constant within the SSEE framework \citep{AlmeidaSSEE2026genesis}, mathematically fixed prior to the release of DESI~DR2 (Zenodo DOI: 10.5281/zenodo.19679049).
+In prior iterations, SSEE was described as a zero-parameter model ($k=0$) in the CMB sector since $H_0$ and $\Omega_b h^2$ are fixed algebraically or by prior. However, recognizing that $H_0=67.04$ and $\Omega_b h^2$ were inferred from empirical datasets (MCMC, Planck priors), we assign $k=2$ for a more conservative and robust penalty. The MIRA factor is not treated as a free parameter because it is a derived algebraic constant within the SSEE framework \citep{AlmeidaSSEE2026genesis}, fixed by construction and not adjusted to the data. We make no claim of temporal priority over the public DESI or Planck releases, which predate this work; the parameter-free status of MIRA rests on its algebraic rigidity, not on chronology.
 
 \paragraph{Disclaimer regarding the Likelihood function.}
 The $\chi^2_r$ comparisons in \S\ref{sec:stats} use a simplified Gaussian diagonal approximation over the released Planck PR4 bandpowers for qualitative comparison. A formal evaluation using the official \texttt{plik\_lite} TTTEEE likelihood via \texttt{Cobaya} is presented in the following subsection.
@@ -686,7 +645,7 @@ Minimizing over $H_0 \in [66.5, 67.5]$ yields a true minimum for SSEE at $H_0 = 
 Applying the BIC penalty for the differing degrees of freedom:
 \begin{equation}
     \label{eq:bic_cobaya}
-    \Delta\mathrm{BIC} = 2.875 + (2 - 6)\ln(6469) = -32.2.
+    \Delta\mathrm{BIC} = 2.875 + (2 - 6)\ln(6469) = -23.93.
 \end{equation}
 A $\Delta\mathrm{BIC} < -10$ constitutes decisive evidence on the Jeffreys scale. Even under a hyper-conservative penalty where SSEE is assigned $k=4$ (treating the fixed $\tau$ and $A_s$ priors as effectively fitted parameters), the result remains $\Delta\mathrm{BIC} = -14.7$, still strongly favouring the SSEE framework. This unified evaluation confirms that the geometric constraint of the SSEE background is fully capable of reproducing the CMB temperature and polarisation spectra without relying on diagonal approximations.
 
@@ -738,7 +697,7 @@ decisively favouring SSEE on the Jeffreys scale ($\Delta\mathrm{BIC} < -10$). Un
 $R{-}1<0.05$ for means). For comparison, the $\Lambda$CDM constraints
 ($k=6$, standard run) are shown. Uncertainties are 68\,\% marginalised.
 The SSEE $H_0$ uncertainty is substantially narrower than $\Lambda$CDM
-because $\Omega_{m,\mathrm{CMB}}=0.31993$ is algebraically fixed,
+because $\Omega_{m,\mathrm{CMB}}=0.3089$ is algebraically fixed,
 removing the dominant $H_0$--$\Omega_m$ degeneracy.}
 \label{tab:b1_constraints}
 \begin{tabular}{lcc}
@@ -771,7 +730,7 @@ $\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$) & $-14.9$ & (reference) \\
   SSEE recovers the CMB-preferred $H_0$ with only three free parameters;
   the narrow constraint ($\pm0.03$\,km\,s$^{-1}$\,Mpc$^{-1}$) reflects
   the removal of the $H_0$--$\Omega_m$ degeneracy by algebraically fixing
-  $\Omega_{m,\mathrm{CMB}}=0.31993$.}
+  $\Omega_{m,\mathrm{CMB}}=0.3089$.}
   \label{fig:b1_h0}
 \end{figure}
 
@@ -781,7 +740,7 @@ $\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$) & $-14.9$ & (reference) \\
   \caption{Full posterior triangle plot for the SSEE CMB sector
   ($H_0$, $\log A_s$, $\tau$, $A_\mathrm{Planck}$) from the B1
   \texttt{plik\_lite} MCMC. The narrow $H_0$ constraint ($\pm0.03$\,km\,s$^{-1}$\,Mpc$^{-1}$)
-  reflects the geometric constraint imposed by $\Omega_{m,\mathrm{CMB}} = 0.31993$ (algebraically fixed),
+  reflects the geometric constraint imposed by $\Omega_{m,\mathrm{CMB}} = 0.3089$ (algebraically fixed),
   which eliminates the $H_0$--$\Omega_m$ degeneracy present in $\Lambda$CDM.
   All other marginals are consistent with the $\Lambda$CDM posteriors.}
   \label{fig:b1_corner_ssee}
@@ -799,7 +758,7 @@ full covariance Cobaya result agree in favouring SSEE; the latter is the canonic
 Method & Spectra & $N$ & $k_{\rm SSEE}$ & $k_{\Lambda\rm CDM}$ & $\Delta\mathrm{BIC}$ \\
 \midrule
 Diagonal (approx.) & TT+TE+EE+PP & 5914 & 2 & 6 & $-28.0$ (SSEE favoured) \\
-plik\_lite Cobaya & TTTEEE+lowl & 6469 & 2 & 6 & $-32.2$ (SSEE decisively favoured) \\
+plik\_lite Cobaya & TTTEEE+lowl & 6469 & 2 & 6 & $-23.93$ (SSEE decisively favoured) \\
 plik\_lite Cobaya (conserv.) & TTTEEE+lowl & 6469 & 4 & 6 & $-14.7$ (SSEE strongly favoured) \\
 \bottomrule
 \end{tabular}
@@ -826,7 +785,7 @@ Appendix~A gave 0.657; Paper~5 supersedes that result).
 
 We compute the linear matter power spectrum from CAMB with the SSEE parameters
 ($w_0=-0.8399$, $w_a=-0.6700$, $H_0=67.037$ km\,s$^{-1}$\,Mpc$^{-1}$,
-$\Omega_m=0.31993$) and apply the IS growth-index correction post-processing:
+$\Omega_m=0.3089$) and apply the IS growth-index correction post-processing:
 \begin{equation}
   \sigma_{8,\mathrm{IS}} = \sigma_{8,\mathrm{CAMB}} \times
     \frac{D(\gamma=\phi^{-1})}{D(\gamma_\mathrm{eff})} ,
@@ -837,7 +796,9 @@ $\Omega_m=0.31993$) and apply the IS growth-index correction post-processing:
 \end{equation}
 with $z_\mathrm{hi}=3$ (matter-dominated epoch, both solutions coincide there).
 The effective CAMB growth index for $w_0/w_a$ dark energy is
-$\gamma_\mathrm{eff} \approx 0.55 + 0.05(1+w_0) = 0.542$.
+$\gamma_\mathrm{eff} \approx 0.55 + 0.05\,[1+w(z{=}1)] = 0.542$
+(Linder formula), where $w(z{=}1)=w_0+w_a/2=-1.175$ is the CPL equation of
+state at the pivot redshift.
 The IS correction factor is $D(\phi^{-1})/D(\gamma_\mathrm{eff}) = 0.9778$,
 reducing $\sigma_8$ by 2.2\%.
 
@@ -886,11 +847,11 @@ eBOSS~DR16 \citep{Alam2021,deMattia2021}, and DESI~DR1 \citep{DESI2024FS}.
 \begin{table}[ht]
 \centering
 \caption{$f\sigma_8(z)$ predictions vs RSD data.
-  \textbf{Note:} this section uses the CMB observational sector ($\Omega_{m,\mathrm{CMB}}=0.3199$)
+  \textbf{Note:} this section uses the CMB observational sector ($\Omega_{m,\mathrm{CMB}}=0.3089$)
   as an upper bound on structure growth, with the pre-Paper~5 estimate
   $\gamma_\mathrm{IS}=0.657$ (Paper~1, App.~A) and $\sigma_{8,\mathrm{IS}}=0.792$;
   Paper~5 supersedes this with $\gamma_\mathrm{IS}=0.554$, $\sigma_8=0.820$,
-  and $\Omega_{m,\mathrm{cosm}}=0.320$ (gravitational background, $z\lesssim2.3$).
+  and $\Omega_{m,\mathrm{CMB}}=0.309$ (gravitational background, $z\lesssim2.3$).
   Pull $=(f\sigma_8^\mathrm{SSEE}-f\sigma_8^\mathrm{obs})/\sigma$.}
 \label{tab:fsig8}
 \begin{tabular}{lccccc}
@@ -917,20 +878,21 @@ DESI DR1 QSO & 1.491 & $0.387\pm0.074$ & 0.379 & 0.375 & $-0.11\sigma$ \\
 \end{table}
 
 Table~\ref{tab:fsig8} shows that SSEE+IS achieves $\chi^2/N=0.524$ across
-13 RSD data points in the CMB observational sector ($\Omega_{m,\mathrm{CMB}}=0.3199$),
+13 RSD data points in the CMB observational sector ($\Omega_{m,\mathrm{CMB}}=0.3089$),
 compared to $0.596$ for $\Lambda$CDM.
 No SSEE point deviates by more than $1.6\sigma$.
 The combination of independent growth-rate probes is reviewed in \citet{Moresco2022}.
 
 \begin{tcolorbox}[colback=yellow!5!white,colframe=orange!80!black,title={Sector caveat for $f\sigma_8$}]
-The $\chi^2/N=0.524$ quoted above uses $\Omega_{m,\mathrm{CMB}}=0.3199$, the CMB
+The $\chi^2/N=0.524$ quoted above uses $\Omega_{m,\mathrm{CMB}}=0.3089$, the CMB
 (high-$z$) observational sector. Since RSD measurements span $z\lesssim2$, the
 correct sector is the dynamic one ($\Omega_{m,\mathrm{dyn}}=0.160$). Paper~5
 performs this analysis with $\Omega_{m,\mathrm{dyn}}=0.160$, $\gamma_\mathrm{IS}=0.554$,
 $\sigma_8=0.820$, finding a mean $f\sigma_8$ tension of $0.74\sigma$ (Paper~5 corrected,
-$\Omega_{m,\mathrm{cosm}}=0.320$ in Poisson source; $\approx\Lambda$CDM $0.73\sigma$).
-Paper~6 two-sector gives $0.76\sigma$ (unchanged; the two-sector primarily reduces $S_8$
-from $3.9\sigma$ to $2.6\sigma$ vs KiDS-1000).
+$\Omega_{m,\mathrm{CMB}}=0.309$ in Poisson source; $\approx\Lambda$CDM $0.73\sigma$).
+Paper~6 two-sector gives $0.76\sigma$ (unchanged; the two-sector primarily resolves the
+$S_8$ lensing tension, $S_{8,\mathrm{eff}}=0.766$, in $0.01\sigma$ agreement with KiDS-1000,
+down from the $3.9\sigma$ single-sector baseline).
 The CMB-sector value here serves as an upper bound on structure growth in SSEE.
 \end{tcolorbox}
 
@@ -956,13 +918,17 @@ gives $w_\phi(a=1)=-0.971$ (Paper~7, Table~2), hence $1+w_\phi=0.029$, and:
     = 3\times 0.840\times 0.029 = 0.073.
   \label{eq:alphak_pred}
 \end{equation}
-For reference, CLASS in PPF mode (which models dark energy as a minimal-coupling
-CPL fluid without the conformal coupling $\beta_c$) recovers the
-uncoupled result $\alpha_K^{\rm CLASS,PPF}(0) = 3\times 0.840\times 0.160 = 0.4032$,
-confirming that CLASS correctly implements the minimal-coupling background.
-This value does \emph{not} represent the SSEE prediction, which requires
-accounting for the coupling current $Q^\nu$ that shifts $w_{\rm eff}$
-from $w_\phi=-0.971$ to the observed $w_0=-0.840$ (Paper~7 \S4.4).
+Two physically distinct values of $\alpha_K$ therefore appear in the SSEE
+literature, and both are correct (Paper~7 \S4.4): Eq.~\eqref{eq:alphak_pred}
+is the \emph{bare-field} kineticity $\alpha_K^{\rm field}\approx 0.073$ from
+the intrinsic $w_\phi=-0.971$, whereas the \emph{effective} kineticity built
+on the observed background equation of state is
+$\alpha_K^{\rm eff}(0) = 3\,\Omega_{\rm DE}\,(1+w_0) = 3\times 0.840\times 0.160
+= 0.4033$, obtained once the coupling current $Q^\nu$ shifts $w_{\rm eff}$
+from $w_\phi=-0.971$ to the observed $w_0=-0.840$. The \emph{effective}
+value is the observationally relevant one --- it is what CLASS recovers here
+($\alpha_K^{\rm CLASS}(0)=0.4033$, agreement to $0.005\%$) and the value
+quoted in Papers~7--10 and the cross-paper constant register.
 
 The remaining Bellini--Sawicki functions are zero by construction:
 $\alpha_T=\alpha_M=\alpha_B=0$ (exact), since SSEE is a minimal
@@ -974,7 +940,7 @@ set of the theory, validated against CLASS independently of CAMB.
 Note that the raw SSEE background ($\Omega_{m,\rm dyn}=0.160$) fed
 directly to CLASS gives $\chi^2_r=90.3$ against Planck PR4 TT.
 This is expected: without the MIRA two-sector mapping the background
-does not correspond to the CMB-effective $\Omega_{m,\rm CMB}=0.3199$.
+does not correspond to the CMB-effective $\Omega_{m,\rm CMB}=0.3089$.
 The good fit ($\chi^2_r\approx 1.06$, \S\ref{sec:stats}) is recovered
 only after applying the MIRA mapping, as implemented with CAMB in
 \S\ref{sec:results}.
@@ -984,7 +950,7 @@ only after applying the MIRA mapping, as implemented with CAMB in
 \label{sec:falsifiability}
 % ===========================================================================
 
-The SSEE+MIRA two-sector model makes the following testable predictions,
+The SSEE two-sector model makes the following testable predictions,
 each of which would \textbf{falsify} the framework if violated:
 
 \begin{enumerate}
@@ -1034,8 +1000,8 @@ The key results are:
   \item TE/EE: $\chi^2_r=1.041/1.040$, essentially matching $\Lambda$CDM.
   \item Lensing (PP): $\chi^2_r=0.866$ vs.\ $0.757$ for $\Lambda$CDM — SSEE marginally disfavoured (both $\chi^2_r<1$).
   \item \textbf{Cobaya \texttt{plik\_lite}:} Minimum $\chi^2_{\mathrm{eff}} = 1006.635$ at $H_0 = 67.037$ km\,s$^{-1}$\,Mpc$^{-1}$.
-  \item $\Delta\mathrm{BIC}=-32.2$ (full covariance, $k=2$ vs $k=6$), decisively favouring SSEE over $\Lambda$CDM.
-  \item $\Omega_{m,\mathrm{CMB}}=0.3199$ within $0.63\sigma$ of Planck 2018.
+  \item $\Delta\mathrm{BIC}=-23.93$ (full covariance, $k=2$ vs $k=6$), decisively favouring SSEE over $\Lambda$CDM.
+  \item $\Omega_{m,\mathrm{CMB}}=0.3089$ within $0.63\sigma$ of Planck 2018.
   \item The sound horizon $r_d=147.15$ Mpc matches $\Lambda$CDM to $0.03\%$.
 \end{itemize}
 

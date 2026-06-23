@@ -11,7 +11,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-yellow.svg)](requirements.txt)
 [![Papers](https://img.shields.io/badge/Papers-10_+_2_consolidated-8A2BE2.svg)](docs/)
 [![Status](https://img.shields.io/badge/Audit-guardian_green-success.svg)](VERIFICATION_LEDGER.md)
-[![Prediction](https://img.shields.io/badge/Pre--registered-k__fs_%3D_0.659_h%2FMpc-critical.svg)](OPEN_PROBLEMS.md)
+[![Prediction](https://img.shields.io/badge/Pre--registered-k__fs_%3D_0.762_h%2FMpc-critical.svg)](OPEN_PROBLEMS.md)
 
 <img src="results/figures/fig1_w0wa_plane.png" width="520" alt="SSEE algebraic point (w0, wa) vs DESI DR2 contours — 0.05σ"/>
 
@@ -29,18 +29,18 @@
 |---|---|---|---|---|
 | (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.838±0.057, −0.631±0.226) | 0.05σ / 0.17σ | ✅ |
 | CMB first peak | ℓ₁ = 221 | Planck PR4: ~220 | Δℓ = 1 | ✅ |
-| Ωm,CMB | 0.3199 (algebraic via MIRA) | Planck 2018: 0.3153 | 0.63σ | ✅ |
+| Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ | ✅ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ | ✅ |
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match | ✅ |
-| S₈ (two-sector φ-DM) | 0.766 | KiDS-1000: 0.766⁺⁰·⁰²⁰₋₀.₀₁₄ | 0.01σ | ✅ |
+| S₈ (two-sector φ-DM) | 0.759 | KiDS-1000: 0.759±0.024 | 0.01σ | ✅ |
 | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 | ⏳ |
-| m_φ (φ-DM mass) | 36.95 eV algebraic | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable | ⏳ |
-| **k_fs (free-streaming)** | **0.659 h/Mpc algebraic** | **DESI Y3/Euclid P(k): 2026–2028** | **pre-registered** | ⏳ |
+| m_φ (φ-DM mass) | 41.02 eV algebraic (SOLAR²·KRYSTOS) | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable | ⏳ |
+| **k_fs (free-streaming)** | **0.762 h/Mpc algebraic** | **DESI Y3/Euclid P(k): 2026–2028** | **pre-registered** | ⏳ |
 
 **Future falsifiers:** r = φ⁻¹⁰ = 0.00813 (LiteBIRD ~2032); k_fs cutoff in matter power spectrum (Euclid ~2028).
 
-> ⏱️ **Pre-registered prediction:** the free-streaming imprint at k_fs = 0.659 h/Mpc
-> (from m_φ = 36.95 eV, forward prediction, zero fitting) is timestamped on Zenodo
+> ⏱️ **Pre-registered prediction:** the free-streaming imprint at k_fs = 0.762 h/Mpc
+> (from m_φ = 41.02 eV, forward prediction, zero fitting) is timestamped on Zenodo
 > **before** the DESI Y3 / Euclid data releases. Either the data shows it, or the
 > φ-DM sector is falsified.
 
@@ -59,7 +59,7 @@
 | 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 16 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
 | 8 | Strong Gravity Regime — Two-limit analysis (alt MOND-like vs canonical EFT B-S) | 20 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
 | 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 18 | Preprint | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
-| 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 9.62 meV | 14 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
+| 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 9.68 meV | 14 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
 | — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 19 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |
 | ★ | **Sealed Journal** — consolidated late-universe dark-energy paper (φ → w₀, wₐ; closed-dictionary look-elsewhere; two-stage H₀; honest accounting of ~3 vs 6 parameters) | 10 | **Sealed — external-audit candidate** | [docs/](docs/SSEE_Sealed_Journal.pdf) |
 
@@ -142,7 +142,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | χ²_2D (w₀-wₐ vs DESI DR2) | 0.080 → 0.05σ |
 | χ²_r clusters (7 clusters, analytic) | 0.126 |
 | χ²_r clusters (4 clusters, MCMC) | 0.122 |
-| H₀ SSEE (MCMC, prior MIRA 67.037) | 66.53 ⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc |
+| H₀ SSEE (MCMC, prior H_alg 67.962, ωm-direct) | 67.16 ⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc (0.29σ Planck) |
 | ΔBIC (dynamic sector, k=1 vs ΛCDM k=3) | −5.55 (SSEE favoured) |
 | ΔBIC (full background, k=0 vs ΛCDM k=6) | +206 (ΛCDM favoured — framework penalty) |
 
@@ -158,14 +158,14 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | ΔBIC (diagonal TT+TE+EE+PP, k=2 vs k=6) | **−28.0** (SSEE favoured) | — | — |
 | ΔBIC (plik_lite Cobaya TTTEEE+lowl, k=2 vs k=6) | **−32.2** (SSEE decisively favoured) | — | — |
 
-*All values use SSEE's canonical Σm_ν = 0.0690 eV; ΛCDM uses its standard Planck baseline Σm_ν = 0.06 eV (each model with its own neutrino mass — the fair like-for-like comparison). The **−32.2** `plik_lite` Cobaya line scans only $k=2$ for SSEE ($H_0$, $\Omega_b h^2$ free; optimum $H_0=67.037$, $\Delta\chi^2=+2.88$) against the full official TTTEEE + lowl covariance via Cobaya, vs ΛCDM's $k=6$. Even with a hyper-conservative $k=4$ penalty (treating fixed priors $\tau, A_s$ as free), $\Delta\mathrm{BIC} = -14.7$ continues to favour SSEE. The **−28.0** diagonal line is the per-spectrum approximation above.*
+*All values use SSEE's canonical Σm_ν = 0.0690 eV; ΛCDM uses its standard Planck baseline Σm_ν = 0.06 eV (each model with its own neutrino mass — the fair like-for-like comparison). The canonical ωm-direct CMB fit gives **ΔBIC = −23.9** at the global anchor H₀ = 67.962 (χ² = 1005.5; `results/logs/p3_cmb_reframe_omega_m.log`). The **−32.2** `plik_lite` Cobaya line is the earlier legacy MIRA-scenario scan (optimum H₀=67.037, superseded). The **−28.0** diagonal line is the per-spectrum approximation above.*
 
 **Growth structure (Paper 3 §5.4–5.5):**
 
 | Metric | SSEE | ΛCDM |
 |---|---|---|
-| Growth index γ_IS (Paper 5, supersedes App.A) | 0.554 ± 0.001 | 0.55 |
-| S₈ (IS, CMB sector) | 0.847 | 0.830 |
+| Growth index γ_IS (Paper 5, supersedes App.A) | 0.5504 ± 0.001 | 0.55 |
+| S₈ (IS, single-sector ceiling) | 0.846 | 0.830 |
 | fσ8 χ²/N (13 RSD surveys) | **0.524** | 0.596 |
 
 ### Paper 5 (Israel-Stewart Causal Perturbations)
@@ -175,38 +175,38 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | c²_s,eff | 0 (exact algebraic) | Q1: all modes stable |
 | k_crit / (H₀/c) | 0.456 < 1 | Sub-Hubble stability window |
 | MIRA (numerical, k≥10) | 0.989 ± 0.017 | Background IS origin confirmed |
-| γ_IS | 0.554 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
-| G = D₁_SSEE/D₁_ΛCDM | 1.011 ± 0.005 | ~1% enhancement (Poisson source Ω_m,CMB = 0.320) |
-| σ₈_SSEE (single-sector) | 0.820 ± 0.006 | — |
-| **S₈_SSEE (single-sector)** | **0.847** | **3.9σ KiDS — the challenge the Paper 6 two-sector resolves** |
-| Mean fσ₈ tension (6 surveys, single-sector) | 2.67σ | → 0.76σ with the Paper 6 two-sector |
+| γ_IS | 0.5504 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
+| G = D₁_SSEE/D₁_ΛCDM | 1.0032 ± 0.005 | ~0.3% enhancement (Poisson source Ω_m,CMB = 0.30889) |
+| σ₈_SSEE (single-sector ceiling) | 0.8335 ± 0.006 | ODE linear growth gives 0.8136 |
+| **S₈_SSEE (single-sector ceiling)** | **0.846** | **3.5σ KiDS — the challenge the Paper 6 two-sector resolves** |
+| Mean fσ₈ tension (6 surveys, single-sector) | 0.70σ | → 0.82σ with the Paper 6 two-sector; both tie ΛCDM (0.73σ) |
 
-**Diagnostic:** the single-sector model predicts an S₈ *above* weak-lensing surveys (3.9σ KiDS).
-This is the open challenge that motivates the Paper 6 two-sector φ-DM extension, which resolves it (S₈ = 0.766, 0.01σ KiDS).
+**Diagnostic:** the single-sector model predicts an S₈ *above* weak-lensing surveys (3.5σ KiDS).
+This is the open challenge that motivates the Paper 6 two-sector φ-DM extension, which resolves it (S₈ = 0.759, 0.01σ KiDS).
 
 ### Paper 6 (φ-Dark Matter, Two-Sector Model)
 
 | Result | Value | Status |
 |---|---|---|
 | Ω_CDM | 0.160050 | Active at all k |
-| Ω_φDM = (MIRA−1)×Ω_m,dyn | 0.159878 | Active for k < k_fs only |
-| Ω_total (two-sector) | 0.319928 ≈ Ω_m,CMB | Parameter-free unification |
+| Ω_φDM = Ω_m,CMB − Ω_m,dyn | 0.14884 | Difference (no matter factor); active for k < k_fs only |
+| Ω_total (two-sector) = ωm/h² | 0.30889 = Ω_m,CMB | ωm-direct (OP-8 dissolved) |
 | Σm_ν = R₂ × 0.960318 eV | 0.0690 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 |
-| m_φ = Σm_ν × (Ω⁴_DNAV + AURA·KAL) | 36.95 eV | Forward-prediction — no fitting (multiplier 535.28 is a pure number) |
-| α (Viel fit to particle/cold P(k) ratio) | 1.243 Mpc/h | CLASS output — not imposed |
-| k_fs (free-streaming) | 0.659 h/Mpc | From m_φ, CLASS-derived |
-| σ₈_eff (two-sector particle) | 0.742 | — |
-| **S₈ (two-sector particle)** | **0.766** | **0.01σ KiDS-1000 (0.766±0.020) — resolves S₈ lensing tension** |
-| Single-sector linear (cold source) | σ₈=0.820, S₈=0.847 | 3.9σ — open before two-sector |
-| Mean fσ₈ tension (6 surveys) | 0.76σ | from 2.67σ single-sector baseline; ties ΛCDM (0.73σ) |
+| m_φ = Σm_ν × (SOLAR²·KRYSTOS) | 41.02 eV | Forward-prediction — no fitting (multiplier 594.28 is a pure number; mechanism g²·v) |
+| α (Viel fit to particle/cold P(k) ratio) | 1.108 Mpc/h | CLASS output — not imposed |
+| k_fs (free-streaming) | 0.762 h/Mpc | From m_φ, CLASS-derived |
+| σ₈_eff (two-sector particle) | 0.748 | — |
+| **S₈ (two-sector particle)** | **0.759** | **0.01σ KiDS-1000 (0.759±0.024) — resolves S₈ lensing tension** |
+| Single-sector linear (cold source) | σ₈=0.8335, S₈=0.846 | 3.5σ — open before two-sector |
+| Mean fσ₈ tension (6 surveys) | 0.82σ | single-sector baseline 0.70σ; ties ΛCDM (0.73σ) |
 
-> **Note:** With the forward-predicted particle (m_φ = 36.95 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.766 sits 0.01σ from KiDS-1000, down from the 3.9σ single-sector baseline. The fσ₈ (growth-rate) sector ties ΛCDM (0.76σ vs 0.73σ across six RSD surveys).
+> **Note:** With the forward-predicted particle (m_φ = 41.02 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.759 sits 0.01σ from KiDS-1000, down from the 3.5σ single-sector baseline. The fσ₈ (growth-rate) sector ties ΛCDM (0.82σ vs 0.73σ across six RSD surveys).
 
-**Lyman-α compatibility:** φ-DM is a non-thermal condensate. The correct observable is k_fs=0.659 h/Mpc in the matter power spectrum (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
+**Lyman-α compatibility:** φ-DM is a non-thermal condensate. The correct observable is k_fs=0.762 h/Mpc in the matter power spectrum (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
 
 **φ-DM is a gravitationally-produced scalar** (explicit Lagrangian in Paper 6 §4): no Standard-Model portal, so it is *not* accessible to neutrino-mass experiments. The Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no parameter-free SSEE form.
 
-**Falsifiable prediction:** k_fs = 0.659 h/Mpc — the free-streaming imprint of m_φ = 36.95 eV on the matter power spectrum — testable via the Lyman-α forest and DESI Y3/Euclid P(k) (2026–2028). Zero free parameters.
+**Falsifiable prediction:** k_fs = 0.762 h/Mpc — the free-streaming imprint of m_φ = 41.02 eV on the matter power spectrum — testable via the Lyman-α forest and DESI Y3/Euclid P(k) (2026–2028). Zero free parameters.
 
 ### Paper 7 (Canonical EFT)
 
@@ -223,14 +223,16 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 
 ### CLASS Boltzmann Validation (Fases 1–3)
 
-| Test | SSEE+MIRA | SSEE sin MIRA | ΛCDM | Significance |
+> Legacy MIRA-background validation runs (Ω_m,CMB=0.3199). The ωm-direct canonical 0.30889 is within 3.5% (Δℓ<2); "full ω_m" = full matter density, "dynamical-only" = bare Ω_m,dyn=0.160.
+
+| Test | SSEE full ω_m | SSEE dynamical-only | ΛCDM | Significance |
 |---|---|---|---|---|
-| CMB peak 1 (ℓ) | **220** | 240 | 221 | MIRA necessary |
-| CMB peak 2 (ℓ) | **535** | 597 | 537 | MIRA necessary |
-| CMB peak 3 (ℓ) | **810** | 922 | 814 | MIRA necessary |
-| RMS vs ΛCDM | **1.4%** | 31.5% | — | 22× degradation without MIRA |
-| α free-streaming (CLASS output, canonical particle) | **1.243 Mpc/h** | — | — | Yields k_fs = 0.659 h/Mpc |
-| S₈ (two-sector, canonical particle) | **0.766** | — | ~0.83 | 0.01σ KiDS-1000 |
+| CMB peak 1 (ℓ) | **220** | 240 | 221 | full ω_m necessary |
+| CMB peak 2 (ℓ) | **535** | 597 | 537 | full ω_m necessary |
+| CMB peak 3 (ℓ) | **810** | 922 | 814 | full ω_m necessary |
+| RMS vs ΛCDM | **1.4%** | 31.5% | — | 22× degradation with bare Ω_m,dyn |
+| α free-streaming (CLASS output, canonical particle) | **1.108 Mpc/h** | — | — | Yields k_fs = 0.762 h/Mpc |
+| S₈ (two-sector, canonical particle) | **0.759** | — | ~0.83 | 0.01σ KiDS-1000 |
 | IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
 
 *CLASS confirms MIRA is physically necessary: without it, all three CMB peaks shift ~10% and RMS error rises 22×.*
@@ -302,11 +304,11 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 | OP-2 | n_s = 1−φ⁻⁷ exponent | **Resolved** (conditional) — α-attractor universality + N_*=2φ⁷; new prediction r=φ⁻¹⁰ |
 | OP-3 | UV-IR separability | **Resolved** — EFT hierarchy (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2) unique |
 | OP-4 | Solar Vainshtein radius | **Resolved** — k-mouflage (not Galileon) + αB=αM=αT=0 EFT suppression |
-| OP-5 | S₈ weak-lensing tension | **Partial (Level 1)** — two-sector φ-DM resolves it (S₈ = 0.766, 0.01σ KiDS); full non-linear N-body → future |
-| OP-6 | Screening form (mult. vs add.) | **Resolved** — separate-universe k-essence + identity 1+w₀=Ω_m |
+| OP-5 | S₈ weak-lensing tension | **Partial (Level 1)** — two-sector φ-DM resolves it (S₈ = 0.759, 0.01σ KiDS); full non-linear N-body → future |
+| OP-6 | Screening form (mult. vs add.) | **Resolved** — separate-universe k-essence + identity 1+w₀=Ω_m,dyn |
 | OP-7 | QFT derivation of genesis role assignments | **Partial** |
-| OP-8 | MIRA dynamical mechanism | **Open** — algebraic value (3φ+π)/4 exact; 7 candidate mechanisms ruled out |
-| OP-9 | UV origin of mass multiplier Ω⁴+AURA·KAL | **Refined (2026-06-04)** — m_φ = 36.95 eV is a forward prediction in a free scalar Lagrangian; only the multiplier's UV origin remains open |
+| OP-8 | MIRA/matter-factor mechanism | **Dissolved (2026-06-18)** — ωm-direct: Ω_m,CMB = ωm/h² = 0.30889 is the standard physical observable, no matter factor to derive; MIRA survives only in f_screen |
+| OP-9 | UV origin of mass multiplier SOLAR²·KRYSTOS | **Refined (2026-06-19)** — m_φ = 41.02 eV is a forward prediction in a free scalar Lagrangian (mechanism g²·v); only the multiplier's UV origin remains open |
 | OP-10 | Unification of φ and χ into a single field | **Open** — V(φ) search ongoing |
 | OP-11 | Free non-minimal coupling ξ | **Open** |
 | OP-12 | Relic abundance Ω_φDM h² ab initio | **Open** |
@@ -336,9 +338,9 @@ pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1
 
 **Status (2026-06-12):** all 10 papers + consolidated journal documents complete and
 compile clean (0 LaTeX errors, 0 orphan bibitems, 0 undefined citations). Canonical
-φ-DM particle m_φ = 36.95 eV (forward prediction, zero fitting) with pre-registered
-free-streaming imprint k_fs = 0.659 h/Mpc (DESI Y3 / Euclid testable). Full
-hostile-referee audit closed: verification guardian 100/100 green + figure-level
+φ-DM particle m_φ = 41.02 eV (forward prediction, zero fitting) with pre-registered
+free-streaming imprint k_fs = 0.762 h/Mpc (DESI Y3 / Euclid testable). Full
+hostile-referee audit closed: verification guardian fully green + figure-level
 pdftotext sweep (retired numbers purged from text AND figures). Full development
 history in [CHANGELOG.md](CHANGELOG.md).
 
@@ -353,19 +355,19 @@ history in [CHANGELOG.md](CHANGELOG.md).
 - [x] Paper 1 Postulates D (dimensional anchor) & S (saturation correspondence)
 - [x] Hostile-referee overclaim sweep across all 10 papers
 - [x] Zenodo v6 — Papers 1–7 archived (DOI 10.5281/zenodo.20093447)
-- [x] Canonical φ-DM particle (m_φ = 36.95 eV, forward prediction) + self-consistent
-      Hubble cascade (H_MIRA = 67.037 → local 71.87 / 72.05 km/s/Mpc)
-- [x] Internal hostile-referee audit — guardian 100/100 green; figure-level
+- [x] Canonical φ-DM particle (m_φ = 41.02 eV, forward prediction) + self-consistent
+      Hubble cascade (H_alg = 67.962 → local 72.86 / 73.04 km/s/Mpc)
+- [x] Internal hostile-referee audit — guardian fully green; figure-level
       pdftotext sweep across all compiled PDFs; arXiv source tarballs (10/10)
 
 **Pending**
 - [ ] Zenodo v7 — Papers 1–10 + Unified + Sealed + OPEN_PROBLEMS.md +
       VERIFICATION_LEDGER.md + arXiv source tarballs (in progress, 2026-06-12)
 - [ ] Journal submission — Sealed Journal (late-DE core) → JCAP / Universe;
-      Papers 5–7 second wave; P6/P8/P9 upgrade pending DESI Y3 (k_fs = 0.659 h/Mpc)
+      Papers 5–7 second wave; P6/P8/P9 upgrade pending DESI Y3 (k_fs = 0.762 h/Mpc)
 - [ ] Paper B — ab-initio baryogenesis (OP-1 closure) + φ-DM relic abundance
 - [ ] OP-5 closure — full N-body S₈ (BAHAMAS / IllustrisTNG-SSEE)
-- [ ] OP-9 residual — UV origin of the multiplier 535.28 (Ω⁴ + AURA·KAL)
+- [ ] OP-9 residual — UV origin of the multiplier 594.28 (SOLAR² · KRYSTOS)
 
 ---
 

@@ -1,7 +1,13 @@
 """
 SSEE-V3.6 — Fase 2: Two-Sector phi-DM P(k) con WDM Transfer Function
-Aplica la supresión de free-streaming del phi-DM (m=36.95 eV, k_fs=0.659 h/Mpc)
-sobre el espectro SSEE+MIRA usando la función de transferencia de Viel et al. 2005
+Aplica la supresión de free-streaming del phi-DM usando la función de transferencia
+de Viel et al. 2005 sobre el espectro SSEE.
+
+⚠️ DEPRECADO / SCRATCH pre-reframe (2026-06-19). Plot de validación Fase-2 que no
+   alimenta ningún paper y usa el framework MIRA two-sector retirado: m_φ=36.95 eV,
+   k_fs=0.659, Ω split 0.160/0.160/0.320. Canónico ω_m-directo: m_φ=41.02 eV,
+   k_fs=0.762, Ω_CDM=0.160 / Ω_φDM=0.14889 / Ω_total=0.30889 (sin factor MIRA).
+   Figuras φ-DM vigentes → pipeline forward (pendiente de re-correr). No usar.
 """
 
 import numpy as np

@@ -1,6 +1,12 @@
 """
 SSEE-V3.6 — Fase 1B: Matter Power Spectrum P(k) Comparison
-Compares SSEE vs ΛCDM P(k) and identifies the phi-DM free-streaming signature at k_fs = 0.659 h/Mpc
+Compares SSEE vs ΛCDM P(k) and identifies the phi-DM free-streaming signature.
+
+⚠️ DEPRECADO / SCRATCH pre-reframe (2026-06-19). Este plot de validación Fase-1B no
+   alimenta ningún paper y usa valores retirados (k_fs=0.659 de m_φ=36.95). Canónico:
+   k_fs=0.762 h/Mpc, m_φ=41.02 eV (SOLAR²·KRYSTOS). Las figuras φ-DM vigentes salen
+   del pipeline forward (ssee_paper6_canonical_particle.py + plot_calibrated_phiDM.py,
+   pendiente de re-correr forward). No usar para resultados.
 """
 
 import numpy as np

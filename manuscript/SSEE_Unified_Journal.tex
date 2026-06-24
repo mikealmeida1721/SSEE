@@ -172,8 +172,8 @@ We report four independent validation tiers:
   against DESI~DR2 BAO, a compressed Planck~2018 prior, and galaxy-cluster
   dynamical masses.
 \item \textbf{CMB angular spectrum} (\S\ref{sec:cmb}): Full-sky CLASS Boltzmann
-  integration demonstrating that the MIRA factor is physically necessary for
-  reproducing Planck~PR4 peak positions.
+  integration demonstrating that the full $\omega_m$-direct matter density
+  ($\OmmCMB=0.30889$) is physically necessary for reproducing Planck~PR4 peak positions.
 \item \textbf{Structure growth and $\sigma_8$} (\S\ref{sec:growth}): Israel-Stewart
   causal perturbation theory, $\phi$-DM two-sector extension, and CLASS-calibrated
   WDM transfer function reducing the $\fsig$ tension.
@@ -465,16 +465,16 @@ and \LCDM.
 \subsection{Acoustic-scale mapping and $r_d$}
 \label{sec:rd}
 
-The CAMB-based analysis of Paper~3 computes the \SSEE\ drag horizon directly:
-$r_{d,\mathrm{SSEE}} \simeq 175.2$~Mpc.
-The MIRA factor maps this to an effective sound horizon
-$r_{d,\mathrm{eff}} = r_{d,\mathrm{SSEE}} \times |\wz| = 147.2$~Mpc,
-within $1\sigma$ of the Planck~2018 measurement
+The CAMB-based analysis of Paper~3 computes the \SSEE\ drag horizon at two
+matter densities. At the pure dynamical $\Ommdyn=0.160$ it is
+$r_{d,\mathrm{SSEE}} \simeq 175.6$~Mpc---an internal geometric quantity, not the
+observed standard ruler. Evaluated at the full $\omega_m$-direct CMB density
+$\OmmCMB=0.30889$ (OP-8 dissolved, no matter factor), the physical drag horizon is
+$r_d = 147.17$~Mpc, within $1\sigma$ of the Planck~2018 measurement
 $r_d = 147.09\pm0.26$~Mpc \citep{Planck2018} (TT,TE,EE+lowE, Table~2; no BAO prior).
-The acoustic saturation factor $M_{\rm SSEE} = |\wz| = 0.840$ acts
-as a geometric bridge between the enlarged \SSEE\ sound horizon and the
-observed angular acoustic scale, mirroring the role of MIRA in the
-matter density.
+The same full CMB-sector matter density that restores the acoustic peaks
+(\S\ref{sec:cmb}) also sets the physical sound horizon; the earlier
+interpretation as a $|\wz|$ mapping of the geometric scale is superseded.
 
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -1029,9 +1029,10 @@ across four observational tiers.
   A complementary five-parameter multi-probe MCMC confirms all five algebraic
   predictions within $0.81\sigma$ (mean $0.36\sigma$).
 
-\item \textbf{CMB Boltzmann.} CLASS confirms that the MIRA factor
-  $\MIRA = 1.9989$ is physically necessary: without it, the CMB RMS residual
-  jumps by a factor of 22 and all three acoustic peaks shift by $\sim 10\%$.
+\item \textbf{CMB Boltzmann.} CLASS confirms that the full $\omega_m$-direct
+  matter density ($\OmmCMB=0.30889$) is physically necessary: with only the
+  dynamical $\Ommdyn=0.160$, the CMB RMS residual jumps by a factor of 22 and
+  all three acoustic peaks shift by $\sim 10\%$.
   With MIRA, peak positions agree with \LCDM\ to within $\Delta\ell < 5$
   (RMS $= 1.4\%$).
 

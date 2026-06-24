@@ -6,6 +6,13 @@ Calcula TODAS las constantes SSEE a doble precisión sin redondeos
 y compara contra los valores "canónicos" (redondeados) usados en los papers.
 
 Pregunta: ¿cuánto error de redondeo arrastramos? ¿afecta a H₀, r_d, Ω_m,CMB?
+
+⚠️ DEPRECADO / SUPERADO (2026-06-19). La línea `Omega_m_CMB = Omega_m_dyn × MIRA`
+   (= 0.3199) es la relación RETIRADA por el reframe ω_m-directo: hoy Ω_m,CMB =
+   ω_m/h² = 0.30889, sin factor materia (OP-8 disuelto), y Ω_m,dyn / Ω_m,CMB son dos
+   predicciones independientes. Las constantes φ/π puras (w₀, wₐ, H_alg, β_c) siguen
+   válidas. El verificador vigente es `ssee_verify.py` (lee `CANONICAL_VALUES.yaml`).
+   No correr para auditar Ω_m,CMB ni cantidades derivadas de la partícula.
 """
 import math
 

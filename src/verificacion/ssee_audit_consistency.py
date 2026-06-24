@@ -2,6 +2,13 @@
 """
 Auditoría cruzada de parámetros SSEE en todos los papers.
 Detecta inconsistencias entre .tex y .py files.
+
+⚠️ DEPRECADO / SUPERADO (2026-06-19). Los dicts CANONICAL y PATTERNS de abajo son
+   pre-reframe ω_m-directo (Om_cmb=0.3199, m_φ=36.95, k_fs=0.659, S8=0.766, etc.) y
+   NO se actualizan aquí para no duplicar la fuente única. El verificador vigente es
+   `src/verificacion/ssee_verify.py` (124 checks) que lee `CANONICAL_VALUES.yaml`.
+   Este script se conserva como referencia histórica; NO correrlo para auditar — sus
+   valores están retirados (ver CANONICAL_VALUES.yaml §retired_patterns).
 """
 import re, os, glob
 from collections import defaultdict

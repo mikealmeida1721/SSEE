@@ -4,6 +4,14 @@
 **Regla:** marcar lo NUEVO (no re-litigar lo ya señalado, p.ej. cronología).
 **GATE:** nada corregido todavía · **Zenodo NO se toca hasta luz verde de Mike.**
 
+> ⚠️ **SNAPSHOT histórico pre-reframe ω_m-directo (2026-06-19).** Este documento
+> es una foto de la auditoría al 2026-06-14 y lista como "canónicos" varios valores
+> que **fueron superados** por el reframe ω_m-directo (OP-8 disuelto): H_local IR/UV
+> 71.87/72.05 → **72.86/73.040**; ΔBIC CMB −32.2 → **−33.0** (full plik); m_φ 36.95 →
+> **41.02 eV** (SOLAR²·KRYSTOS); k_fs 0.659 → **0.762**; S₈/σ₈ two-sector 0.766/0.742
+> → **0.759/0.748**. No se reescribe (es registro de lo que se auditó entonces). Para
+> los valores vigentes manda `CANONICAL_VALUES.yaml` + `VERIFICATION_LEDGER.md`.
+
 > Protocolo: (1) marcar aquí → (2) Mike revisa → (3) corregir lo aprobado →
 > (4) solo entonces actualizar Zenodo V7 (nombre, descripción, conteo, resultados).
 

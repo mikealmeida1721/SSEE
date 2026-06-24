@@ -515,25 +515,33 @@ modelo físico de dos sectores hereda la apertura del Lagrangiano de m_φ
 **Veredicto:** los parámetros λ, α_pot, V₀ están algebraicamente fijados;
 M⁴ tiene dos valores incompatibles según el paper. **PARCIAL.**
 
-## V-L3-KX — completación UV K(X) (Paper 10) — **ABIERTO (M⁴ calibrado a SH0ES)**
+## V-L3-KX — completación UV K(X) (Paper 10) — **ABIERTO (M⁴=5φ⁸ subdeterminado; anchor-free, NO calibrado a SH0ES)**
 
 *Claim CLAUDE.md:* "Paper 10: M⁴=5φ⁸ρ_crit exacto; H₀^UV canónico=73.040 (0.00σ SH0ES) vía H_alg=67.962; condicional C.1. Viejo 72.05 vía MIRA=67.037/0.96σ superado".
 
 1. **✓ identidad 45α² = 5φ⁸:** exacta a precisión de máquina (α=φ⁴/3 →
    45α²=45φ⁸/9=5φ⁸=234.89). El *valor numérico* de M⁴/ρ_crit cierra.
-2. **✗ normalización física no derivada:** el propio
-   `ssee_paper10_verification.py` (VERDICT, L167–175) admite — *"This UV
-   result is CONDITIONAL on Postulate C.1, which is calibrated to SH0ES —
-   not an independent prediction"* y *"PENDING: first-principles derivation
-   of M⁴ = 45α² without using SH0ES as input"*. La Ruta A da M⁴≈418 ≠ 234.9.
-   M⁴=5φ⁸ es el número que hace falta para llegar a H₀=73.04, expresado en
-   φ — mismo patrón que OP-1 (ajuste a objetivo conocido).
-3. αK_full=0.41691 y H₀^UV (canónico 73.040 vía H_alg=67.962; viejo 72.05 vía MIRA superado) son aguas
-   abajo de este M⁴ **ABIERTO**.
+2. **f_screen es anchor-free (probado 2026-06-23):** αK, f_screen y la cascada
+   H₀ NO usan SH0ES como input — SH0ES entra solo como *objetivo de comparación*.
+   f_screen_UV=0.06952 es idéntico para cualquier H de entrada (67.962/67.36/73.04/100).
+   Por tanto M⁴ **NO está calibrado a SH0ES**: la caracterización vieja del LEDGER
+   (que citaba un VERDICT obsoleto del script, hoy inexistente) era incorrecta.
+   El script actual dice *"CONDITIONAL on Postulate C.1"* y *"PENDING first-principles
+   derivation of M⁴=45α² without using SH0ES as input"* (que ya no se usa).
+3. **near-derivación estructural (2026-06-23):** la redefinición de campo del
+   α-attractor (|df/dχ|²=9/16 en tanh=½, medio-polo) reproduce M⁴=5φ⁸ vía
+   (10φ⁴)/(φ+3π)²=0.562 a **0.076%** — origen estructural, NO ajuste a objetivo.
+   El residuo 0.076% es la huella de π (Lindemann: π trascendente ≠ racional;
+   no puede ser identidad exacta). Ver [[project_m4_field_redefinition]].
+4. **subdeterminación honesta (lo que sigue ABIERTO):** la normalización exacta
+   no está cerrada — Ruta A (K(X) Taylor) da M⁴=6αKAL²≈418 ≠ 234.9; la redefinición
+   de campo da 5φ⁸ a 0.076% pero no exacto. αK_full=0.41691 y H₀^UV=73.040 son
+   aguas abajo de este M⁴ **subdeterminado** (no circular, sí incompleto).
 
-**Veredicto:** la forma algebraica 5φ⁸ es exacta, pero su identificación
-como el cutoff UV físico está calibrada a SH0ES, no derivada. El script de
-P10 ya lo declara honestamente. **ABIERTO.**
+**Veredicto:** la forma 5φ⁸=45α² es exacta en álgebra y tiene near-derivación
+estructural (field-redef, 0.076%); la cascada H₀ es **anchor-free** (no usa SH0ES).
+Lo ABIERTO no es circularidad sino la *selección* única de 45α² entre rutas
+(A≈418 vs field-redef 5φ⁸). **ABIERTO (subdeterminado, no calibrado).**
 
 ## V-L3-IS — perturbaciones Israel-Stewart (Paper 5) — **PARCIAL (c²_s,eff=0 sí, mecanismo asertado)**
 

@@ -9,36 +9,38 @@ by Mike Edison Almeida Vallejo (ORCID: 0009-0008-2195-7836).
 
 SCIENTIFIC CONTEXT
 
-A persistent challenge for zero-free-parameter dark energy models is
+A persistent challenge for minimal-parameter dark energy models is
 compatibility with the CMB acoustic scale, which encodes Ω_m at recombination.
 The SSEE framework predicts Ω_m,dyn = 0.160, which naively shifts the first
-acoustic peak from ℓ = 220 to ℓ = 242 and yields χ²_r = 97.7 — an apparent
-falsification. This paper resolves this tension using a second algebraic
-constant of the SSEE framework.
+acoustic peak from ℓ = 220 to ℓ = 242 — which would apparently falsify the
+model. This paper shows that the CMB matter density is, instead, an
+independent algebraic prediction of the framework.
 
-THE MIRA FACTOR AND PRIOR DEFINITION
+THE ALGEBRAIC CMB MATTER DENSITY
 
-The SSEE framework defines a structural constant MIRA = AURA/2 = (φ+β)/2,
-where φ is the golden ratio and β = (φ+π)/2. This constant, with value
-MIRA = 1.9989 ≈ 2, was established in the SSEE Genesis 5.12 compendium
-(Zenodo, doi:10.5281/zenodo.19679049, initial commit 2026 January 28),
-predating the DESI DR2 release and any CMB fitting in this work.
-Its physical role as a "depth ratio" connecting the BAO and CMB observational
-sectors is demonstrated in §3 of the manuscript.
+The SSEE CMB matter density is fixed algebraically, not rescaled from the
+dynamic sector. It is the standard physical observable
+ω_m = ω_b + ω_c + ω_ν, with each piece given by φ and π:
+ω_b = (π − φ)/(3Ω²) = 0.02242 (Ω = π + φ), ω_c = KAL₀·ω_b·n_s = 0.11951
+(a forward identity, 0.41σ from Planck, with KAL₀ = β + π and n_s = 1 − φ⁻⁷),
+and ω_ν = Σm_ν/93.14 = 0.000741. This gives Ω_m,CMB = ω_m/h² = 0.30889 at the
+algebraic background H₀ = 3(φ+π)² = 67.962 km/s/Mpc, within 1σ of Planck 2018
+(0.3153 ± 0.0073). Crucially, Ω_m,dyn (DESI) and Ω_m,CMB (Planck) are two
+independent predictions of SSEE — there is no matter-rescaling factor linking
+them (the earlier "MIRA-mapping" of this manuscript has been retired; OP-8).
 
 MAIN RESULTS
 
-Running CAMB with the two-sector background
-Ω_m,CMB = Ω_m,dyn × MIRA = 0.160 × 1.9989 = 0.3199:
+With the algebraically-fixed background Ω_m,CMB = 0.30889:
 
-  - Acoustic peaks: ℓ = 221, 538, 815 (Planck PR4: 220, ~540, ~810)
-  - TT power spectrum: χ²_r = 1.062 vs ΛCDM's 1.043 (N = 1971 multipoles)
-  - TE polarisation: χ²_r = 1.053 vs 1.040 (N = 1967)
+  - TT power spectrum: χ²_r = 1.042 vs ΛCDM's 1.043 (N = 1971 multipoles)
+  - TE polarisation: χ²_r = 1.040 vs 1.040 (N = 1967) — essentially identical
   - EE polarisation: χ²_r = 1.040 vs 1.039 (N = 1967) — essentially identical
-  - CMB lensing (9 MV bandpowers): χ²_r = 0.730 vs 0.757 — SSEE marginally
+  - CMB lensing (9 MV bandpowers): χ²_r = 0.719 vs 0.757 — SSEE marginally
     favoured
-  - BIC comparison (k=0 SSEE vs k=6 ΛCDM), TT alone: ΔBIC = -6.9 favouring
-    SSEE
+  - Full Planck plik MCMC (k=2 SSEE vs k=6 ΛCDM, N = 2409): best-fit
+    χ² = 2771.3 vs 2773.1 — indistinguishable fits — ΔBIC = −33.0 favouring
+    SSEE by parsimony (cross-checked at ΔBIC = −23.9 on plik_lite TTTEEE)
 
 SSEE-V3.6 is not falsified by any of the four CMB observables tested.
 Three explicit falsifiability criteria are provided in §6.
@@ -50,12 +52,13 @@ concurrently; Paper 4 extends the algebraic derivations to all CMB background
 observables. Paper 2 provides the MCMC validation of the dynamical sector
 against DESI DR2 and galaxy clusters. The present paper closes the CMB sector.
 
-We note that the ΔBIC comparison presented in §5 uses k=0 parameters for SSEE
-(zero free parameters) against k=6 for ΛCDM, making the ΔBIC = −6.9 result
-(and −40.3 via Cobaya/plik_lite) a conservative test in SSEE's favour. The
-companion Paper 2 reports a separate ΔBIC = +206 for the full background
-sector under ΛCDM-calibrated Friedmann priors; these two results address
-distinct physical questions and should not be conflated.
+We note that the ΔBIC comparison presented in §5 uses k=2 parameters for SSEE
+({A_s, τ}; the remaining four ΛCDM parameters are fixed algebraically) against
+k=6 for ΛCDM, making the ΔBIC = −33.0 result (full plik; −23.9 via plik_lite)
+a parsimony-driven test in SSEE's favour at statistically indistinguishable
+fit quality. The companion Paper 2 reports a separate ΔBIC = +206 for the full
+background sector under ΛCDM-calibrated Friedmann priors; these two results
+address distinct physical questions and should not be conflated.
 
 The authors declare no conflicts of interest.
 

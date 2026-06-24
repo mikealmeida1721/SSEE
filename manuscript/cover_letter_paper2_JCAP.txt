@@ -13,7 +13,7 @@ SCIENTIFIC CONTEXT
 The DESI DR2 baryon acoustic oscillation data (Abdul-Karim et al. 2025)
 provide the most precise current measurement of the dark energy equation of
 state, with a preference for dynamical dark energy at approximately 3σ.
-This situation motivates systematic testing of zero-free-parameter dark energy
+This situation motivates systematic testing of minimal-parameter dark energy
 models that predict (w₀, wₐ) algebraically.
 
 The Structural Self-Energy Expansion (SSEE-V3.6) framework derives the dark
@@ -28,7 +28,8 @@ MAIN RESULTS
 Using emcee with N_walkers=100, N_steps=25000, and the full DESI DR2 13×13
 BAO covariance matrix, we find:
 
-  - H₀ = 66.75 ± 0.44 km/s/Mpc (SSEE posterior)
+  - H₀ = 67.16 ± 0.44 km/s/Mpc (SSEE posterior; algebraic background
+    prior H₀ = 3(φ+π)² = 67.962, lowered by DESI BAO)
   - The algebraic prediction (w₀, wₐ) = (-0.840, -0.670) lies within 0.05σ
     of the DESI DR2 CPL free-fit posterior (N_eff = 637,500 samples)
   - Galaxy-cluster mass ratios reproduced at χ²_r = 0.122 (4-cluster MCMC subset)
@@ -42,17 +43,21 @@ BAO covariance matrix, we find:
 
 We note that the ΔBIC = +206 background penalty reflects the strict application
 of ΛCDM-calibrated Friedmann priors to the SSEE background, not a failure of
-the dynamical prediction. As demonstrated in the companion Paper 3, when the
-SSEE-consistent background is derived from first principles using the MIRA
-factor, the acoustic scale tension is resolved and the framework becomes
-physically competitive with the standard Friedmann model.
+the dynamical prediction. As demonstrated in the companion Paper 3, the CMB
+matter density is itself an independent algebraic prediction —
+ω_m = ω_b + ω_c + ω_ν with ω_c = KAL₀·ω_b·n_s — giving Ω_m,CMB = ω_m/h² =
+0.30889 with no matter-rescaling factor; the acoustic-scale fit is then
+statistically indistinguishable from ΛCDM (ΔBIC = −33.0 favouring SSEE by
+parsimony), making the framework physically competitive with the standard
+Friedmann model.
 
 RELATION TO COMPANION PAPERS
 
 This is Paper 2 of a four-paper series. Paper 1 (framework) is available as a
 preprint. Paper 3 (CMB Planck PR4 confrontation) demonstrates that the
-background-sector tension is resolved by the algebraic MIRA factor
-(MIRA = 1.9989), predicting Ω_m,CMB = 0.3199 within 1σ of Planck 2018.
+background-sector tension is resolved by the algebraic CMB matter density
+ω_m = ω_b + ω_c + ω_ν, predicting Ω_m,CMB = ω_m/h² = 0.30889 within 1σ of
+Planck 2018 — an independent prediction, not a rescaling of Ω_m,dyn.
 Paper 4 derives all CMB background observables algebraically from φ and π.
 
 SUGGESTED REVIEWERS

@@ -54,7 +54,7 @@
 | 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 26 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
 | 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 24 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | 16 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
-| 5 | Israel-Stewart Causal Perturbation Theory — Gradient Stability, MIRA Origin, S₈ Tension Characterization | 25 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
+| 5 | Israel-Stewart Causal Viscous Perturbations — Exact Marginal Stability, ΛCDM-Consistent Structure Growth, Two-Sector Matter Structure | 25 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
 | 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 24 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
 | 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 16 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
 | 8 | Strong Gravity Regime — Two-limit analysis (alt MOND-like vs canonical EFT B-S) | 20 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
@@ -150,15 +150,16 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 
 | Spectrum | SSEE χ²_r | ΛCDM χ²_r | N |
 |---|---|---|---|
-| TT | 1.044 | 1.043 | 1971 |
-| TE | 1.041 | 1.040 | 1967 |
+| TT | 1.042 | 1.043 | 1971 |
+| TE | 1.040 | 1.040 | 1967 |
 | EE | 1.040 | 1.039 | 1967 |
-| PP (lensing) | 0.866 | 0.757 | 9 |
-| Combined (diagonal) | **1.041** | 1.040 | 5914 |
-| ΔBIC (diagonal TT+TE+EE+PP, k=2 vs k=6) | **−28.0** (SSEE favoured) | — | — |
-| ΔBIC (plik_lite Cobaya TTTEEE+lowl, k=2 vs k=6) | **−32.2** (SSEE decisively favoured) | — | — |
+| PP (lensing) | 0.719 | 0.757 | 9 |
+| Combined (diagonal) | **1.040** | 1.040 | 5914 |
+| ΔBIC (full plik MCMC, TTTEEE+lowl+lensing, k=2 vs k=6, N=2409) | **−33.0** (SSEE decisively favoured — **canonical**) | — | — |
+| ΔBIC (plik_lite point est., TTTEEE, k=2 vs k=6, N=613) | **−23.9** (cross-check) | — | — |
+| ΔBIC (diagonal TT+TE+EE+PP, k=2 vs k=6, N=5914) | **−34.9** (cross-check) | — | — |
 
-*All values use SSEE's canonical Σm_ν = 0.0690 eV; ΛCDM uses its standard Planck baseline Σm_ν = 0.06 eV (each model with its own neutrino mass — the fair like-for-like comparison). The canonical ωm-direct CMB fit gives **ΔBIC = −23.9** at the global anchor H₀ = 67.962 (χ² = 1005.5; `results/logs/p3_cmb_reframe_omega_m.log`). The **−32.2** `plik_lite` Cobaya line is the earlier legacy MIRA-scenario scan (optimum H₀=67.037, superseded). The **−28.0** diagonal line is the per-spectrum approximation above.*
+*All values are the canonical ωm-direct CMB fit at the global anchor H₀ = 3(φ+π)² = 67.962, with Ω_m,CMB = ω_m/h² = 0.30889 derived algebraically (no matter-rescaling factor; OP-8 dissolved). SSEE uses its canonical Σm_ν = 0.0690 eV; ΛCDM uses its standard Planck baseline Σm_ν = 0.06 eV (each model with its own neutrino mass — the fair like-for-like comparison). The **titular ΔBIC = −33.0** comes from the full `plik` MCMC (best-fit χ² = 2771.3 vs ΛCDM 2773.1, Δχ²=−1.8 — indistinguishable fits, parsimony-driven). The earlier `plik_lite` Cobaya legacy-MIRA scan (ΔBIC −32.2 at optimum H₀=67.037) is superseded.*
 
 **Growth structure (Paper 3 §5.4–5.5):**
 
@@ -219,7 +220,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | αM | 0 exact | Euclid forecast < 0.05 satisfied ✓ |
 | αB | 0 exact | Euclid forecast < 0.05 satisfied ✓ |
 | αK(z=0) | 3·Ω_DE·Ω_m,dyn = 0.4033 | Algebraic (Euclid will constrain < 0.1) |
-| G₂_s (running) | 0.979 | Two-sector unification ✓ |
+| G₂_s (running) | 1.003 | ΛCDM-consistent linear growth @ Ω_m=0.30889 ✓ |
 
 ### CLASS Boltzmann Validation (Fases 1–3)
 
@@ -235,7 +236,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | S₈ (two-sector, canonical particle) | **0.759** | — | ~0.83 | 0.01σ KiDS-1000 |
 | IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
 
-*CLASS confirms MIRA is physically necessary: without it, all three CMB peaks shift ~10% and RMS error rises 22×.*
+*CLASS confirms the full algebraic matter density ω_m (Ω_m,CMB=0.30889) is physically necessary: using the bare dynamical Ω_m,dyn=0.160 instead, all three CMB peaks shift ~10% and RMS error rises 22×.*
 
 ### MCMC Fase 4 (Multi-probe background)
 
@@ -295,7 +296,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 2. **Full causal IS** (Paper 5): IS growth index γ_IS=0.554 is derived analytically. Full Hiscock-Lindblom 1985 treatment for B-mode predictions remains a blocker for LiteBIRD forecasts.
 3. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
 4. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
-5. **CMB ΔBIC status:** Diagonal approximation (TT+TE+EE+PP, k=2 vs k=6) yields $\Delta\mathrm{BIC}=-28.0$ favouring SSEE; full Cobaya plik\_lite (TTTEEE+lowl) gives $\Delta\mathrm{BIC}=-32.2$ decisively favouring SSEE. Both treatments agree (Paper 3 §BIC, canonical Σm_ν = 0.0690 eV; ΛCDM at baseline 0.06).
+5. **CMB ΔBIC status:** The canonical full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6, N=2409) yields $\Delta\mathrm{BIC}=-33.0$ decisively favouring SSEE; cross-checked by the `plik_lite` point estimate ($-23.9$, N=613) and the diagonal approximation ($-34.9$, N=5914). All three agree (Paper 3 §BIC, canonical Σm_ν = 0.0690 eV; ΛCDM at baseline 0.06). The ΔBIC is parsimony-driven (best-fit χ² statistically indistinguishable from ΛCDM), not a claim of superior fit.
 
 ### Open physics problems (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md))
 | ID | Problem | Status (2026-06-12) |

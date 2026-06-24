@@ -1,5 +1,33 @@
 # Changelog
 
+## V3.6 — ω_m-direct reframe: MIRA matter factor dissolved (OP-8 closed) (2026-06-18)
+
+- **OP-8 dissolved — no matter-rescaling factor.** The CMB matter density is now
+  the standard physical observable ω_m = ω_b + ω_c + ω_ν, each piece algebraic in
+  (φ, π): ω_b = (π−φ)/(3Ω²) = 0.02242, ω_c = KAL₀·ω_b·n_s = 0.11951 (forward
+  identity, 0.41σ Planck), ω_ν = Σm_ν/93.14 = 0.000741. This gives the **derived**
+  Ω_m,CMB = ω_m/h² = 0.30889 at the global background anchor H_alg = 3(φ+π)² =
+  67.962. **Ω_m,dyn = 0.160 (DESI) and Ω_m,CMB (Planck) are now two independent
+  predictions**, no longer linked by the "MIRA factor" (the earlier mapping
+  Ω_m,CMB = Ω_m,dyn × MIRA = 0.3199 is retired). MIRA = 1.9989 survives only in the
+  P9 screening fraction f_screen.
+- **CMB ΔBIC (canonical):** full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6,
+  N=2409) gives χ²_BF = 2771.3 (SSEE) vs 2773.1 (ΛCDM) — indistinguishable fits —
+  and **ΔBIC = −33.0** (parsimony-driven). Cross-checks: −23.9 (plik_lite, N=613),
+  −34.9 (diagonal, N=5914). The earlier legacy-MIRA Cobaya −32.2 is superseded.
+- **φ-DM canonical particle:** m_φ = Σm_ν·(SOLAR²·KRYSTOS) = 0.06902 eV × 594.28 =
+  **41.02 eV** (retired 36.95 and 42.47); k_fs = **0.762 h/Mpc**; CLASS forward
+  σ₈_eff = 0.748, **S₈ = 0.759 (0.01σ KiDS-1000)**; fσ₈ mean tension 0.70σ.
+- **Growth:** G_growth = D₁_SSEE/D₁_ΛCDM = **1.003** (ΛCDM-consistent at the reframed
+  Ω_m=0.30889; the earlier 0.979 carried a non-flat-background bug).
+- **H₀ cascade (global anchor H_alg=67.962):** posterior 67.16±0.44; H_IR = 72.86
+  (0.17σ SH0ES); H_UV = 73.040 (0.00σ); M = 9.68 meV (retired 8.81). H_MIRA=67.037
+  dissolved.
+- Entries below this point predate the reframe and record the project's history as
+  it stood at the time (including the now-retired MIRA-mapping); they are left
+  unchanged as a faithful record. Canonical current values live in
+  `CANONICAL_VALUES.yaml`.
+
 ## V3.6 — Bibliography audit + Phase 1/2 hardening + repo cleanup (2026-05-16)
 
 - **Bibliography audit (all 10 papers)**: 0 orphan bibitems, 0 undefined citations,

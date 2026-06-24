@@ -9,17 +9,20 @@ All ~20 plik nuisance parameters (dust, SZ, CIB, calibration) are included
 automatically with their recommended Gaussian/uniform priors as defined by
 the Planck Collaboration (Aghanim et al. 2020, A&A 641 A5).
 
-SSEE free parameters (k=3):
-  H0       — Hubble constant (only free geometry parameter)
-  logA     — log(10^10 As) amplitude
-  tau      — reionization optical depth
+SSEE model parameters (k=2, with --k2):
+  logA     — log(10^10 As) amplitude   (genuinely sampled)
+  tau      — reionization optical depth (constrained by lowl EE / SimAll)
+  [default without --k2: H0 also floated as a k=3 validation chain that
+   recovers the anchor, confirming the k=2 count is sound]
+  Full plik TTTEEE + lowl TT + lowl EE + lensing.native via clipy (no clik needed).
 
-SSEE fixed (algebraically):
+SSEE fixed (algebraically — ω_m-directo reframe):
+  H0    = 3(φ+π)²  = 67.962   (SH0ES–f_screen inversion, Paper 9; derived)
   w0    = -Tr/Mv   ≈ -0.8399
   wa    = -P_sc/Kv ≈ -0.6700
   ns    = 1 − (1/φ)^7 ≈ 0.96556
-  ombh2 = 0.02237  (Planck 2018 baryon measurement, treated as input)
-  omch2 = Omm_cmb × (H0/100)² − ombh2  [derived from H0 algebraically]
+  ombh2 = (π−φ)/(3Ω²)        = 0.022423  (ω_b directo)
+  omch2 = KAL₀·ombh2·ns      = 0.11951   (ω_c forward, NOT derived from H0)
 
 ΛCDM free parameters (k=6):
   H0, ombh2, omch2, ns, logA, tau
@@ -80,10 +83,16 @@ w0_ssee    = -Tr / Mv                  # −0.83989
 wa_ssee    = -P_sc / Kv                # −0.66990
 OmDE_ssee  = Tr / Mv                   # 0.83989
 Omm_dyn    = 1.0 - OmDE_ssee          # 0.16011
-Omm_cmb    = Omm_dyn * MIRA           # 0.31993
 
-ombh2_ssee = 0.02237                   # Planck 2018 baryon density (input)
+# Reframe ω_m-DIRECTO (OP-8 cerrado, 2026-06-18): NO hay factor materia.
+# ω_b y ω_c son densidades físicas FIJAS algebraicamente; Ω_m,CMB = ω_m/h² es DERIVADO.
 ns_ssee    = 1.0 - (1.0 / phi) ** 7   # 0.96556 — algebraic spectral index
+KAL0       = beta + pi                 # 5.5214 — Structural Viscosity
+ombh2_ssee = (pi - phi) / (3.0 * Omega_ssee**2)   # 0.022423 — ω_b directo
+omch2_ssee = KAL0 * ombh2_ssee * ns_ssee          # 0.11951 — ω_c forward (KAL₀·ω_b·n_s)
+mnu_ssee   = 0.0690                    # Σm_ν canónico (R₂·0.960318 eV); ω_ν = Σm_ν/93.14
+# Ω_m,CMB derivado: (ω_b+ω_c+ω_ν)/h² → 0.30889 @ H_alg=67.962 (era 0.31993 vía MIRA, retirado)
+Omm_cmb    = (ombh2_ssee + omch2_ssee + mnu_ssee/93.14) / (67.962/100.0)**2  # ≈0.30889 (diagnóstico)
 
 # ΛCDM Planck 2018 best-fit (TT+TE+EE+lowE, Table 2, arXiv:1807.06209)
 H0_lcdm    = 67.36
@@ -100,11 +109,15 @@ tau_lcdm   = 0.0544
 # high-ℓ likelihood used in all Planck parameter papers.  The ~20 nuisance
 # parameters (dust TT/TE/EE, SZ, CIB, calibration) are defined automatically
 # by Cobaya from the likelihood defaults; we do NOT override them here.
+# clik no es necesario: Cobaya carga el plik FULL vía `clipy` (reimplementación
+# pura-python de clik, verificada got=expected −1172.47). Usamos el likelihood
+# completo off-diagonal — el mismo estándar de los papers de parámetros Planck.
+# lowl EE constriñe τ con datos reales (NO un prior prestado).
 LIKELIHOODS = {
-    "planck_2018_highl_plik.TTTEEE": None,   # full plik, NOT lite
-    "planck_2018_lowl.TT": None,
-    "planck_2018_lowl.EE": None,
-    "planck_2018_lensing.native": None,       # MV lensing, 9 bins
+    "planck_2018_highl_plik.TTTEEE": None,   # full plik TTTEEE (off-diagonal), ~6413 bins
+    "planck_2018_lowl.TT": None,             # commander lowl TT, 28 bins
+    "planck_2018_lowl.EE": None,             # SimAll lowl EE (constriñe τ), 28 bins
+    "planck_2018_lensing.native": None,      # MV lensing, 9 bins
 }
 
 THEORY_CAMB = {
@@ -118,8 +131,8 @@ THEORY_CAMB = {
     }
 }
 
-# Effective data points for BIC:
-#   plik full TTTEEE high-ℓ  ≈ 6413 multipole bins (TT+TE+EE, ℓ=30–2508/1996)
+# Effective data points for BIC (full plik suite):
+#   plik full TTTEEE high-ℓ  ≈ 6413 multipole bins (TT+TE+EE)
 #   lowl TT  (ℓ=2–29)          = 28 bins
 #   lowl EE  (ℓ=2–29)          = 28 bins
 #   lensing.native              = 9 bandpower bins
@@ -129,20 +142,29 @@ N_DATA = 6413 + 28 + 28 + 9  # = 6478
 # Build Cobaya info dicts
 # ---------------------------------------------------------------------------
 
-def _ssee_info(output_prefix, Rminus1_stop=0.02, burn_in=300):
-    """Cobaya MCMC info for SSEE CMB analysis."""
+def _ssee_info(output_prefix, Rminus1_stop=0.02, burn_in=300, h0_fixed=False):
+    """Cobaya MCMC info for SSEE CMB analysis.
+
+    h0_fixed=False  → k=3 validation chain: H0 floated on [64,72] (recovers anchor).
+    h0_fixed=True   → k=2 model chain: H0 fixed at 3(φ+π)²=67.962, only {logA,τ} free.
+    """
+    H0_block = (
+        67.962 if h0_fixed
+        else {
+            "prior": {"min": 64.0, "max": 72.0},
+            "ref":  {"dist": "norm", "loc": 67.96, "scale": 0.4},   # ancla reframe H_alg=67.962
+            "proposal": 0.3,
+            "latex": r"H_0",
+        }
+    )
     return {
         "packages_path": PACKAGES_PATH,
         "likelihood": LIKELIHOODS,
         "theory": THEORY_CAMB,
+        # τ se constriñe con lowl EE real (SimAll) — sin prior prestado.
         "params": {
-            # --- Sampled ---
-            "H0": {
-                "prior": {"min": 64.0, "max": 72.0},
-                "ref":  {"dist": "norm", "loc": 67.07, "scale": 0.4},
-                "proposal": 0.3,
-                "latex": r"H_0",
-            },
+            # --- Geometry anchor: derived (k=2) or floated for validation (k=3) ---
+            "H0": H0_block,
             "logA": {
                 "prior": {"min": 2.80, "max": 3.25},
                 "ref":  {"dist": "norm", "loc": 3.044, "scale": 0.015},
@@ -159,11 +181,12 @@ def _ssee_info(output_prefix, Rminus1_stop=0.02, burn_in=300):
             # A_planck and all other plik nuisance parameters (~20 total)
             # are defined automatically by the full plik likelihood defaults.
             # --- Fixed algebraic ---
-            "ombh2":  ombh2_ssee,
+            "ombh2":  ombh2_ssee,        # 0.02242 — ω_b directo (fijo)
+            "omch2":  omch2_ssee,        # 0.11951 — ω_c forward KAL₀·ω_b·n_s (fijo, NO derivado de H0)
             "ns":     ns_ssee,
             "w":      w0_ssee,
             "wa":     wa_ssee,
-            "mnu":    0.06,
+            "mnu":    mnu_ssee,          # 0.0690 — Σm_ν canónico
             "omk":    0.0,
             # --- Derived from sampled ---
             "As": {
@@ -171,11 +194,7 @@ def _ssee_info(output_prefix, Rminus1_stop=0.02, burn_in=300):
                 "derived": False,
                 "latex": r"A_s",
             },
-            "omch2": {
-                "value": lambda H0: Omm_cmb * (H0 / 100.0) ** 2 - ombh2_ssee,
-                "derived": False,
-                "latex": r"\Omega_c h^2",
-            },
+            # Ω_m,CMB = ω_m/h² es ahora un OUTPUT derivado (reframe), no un input.
             # --- Derived outputs (sigma8 only — Omega_m not a CAMB output param) ---
             "sigma8": {"derived": True, "latex": r"\sigma_8"},
         },
@@ -278,7 +297,11 @@ def run_mcmc(label, info_fn, output_prefix, args):
     Rminus1 = 0.05 if args.fast else 0.02
     burn_in  = 100 if args.fast else (300 if label == "SSEE" else 500)
 
-    info = info_fn(output_prefix, Rminus1_stop=Rminus1, burn_in=burn_in)
+    if label == "SSEE":
+        info = info_fn(output_prefix, Rminus1_stop=Rminus1, burn_in=burn_in,
+                       h0_fixed=getattr(args, "k2", False))
+    else:
+        info = info_fn(output_prefix, Rminus1_stop=Rminus1, burn_in=burn_in)
 
     print(f"\n{'='*65}")
     print(f"  Running MCMC: {label}")
@@ -542,11 +565,14 @@ def main():
                         help="Which model to run (default: both)")
     parser.add_argument("--fast", action="store_true",
                         help="Fast convergence (R−1<0.05) for debugging")
+    parser.add_argument("--k2", action="store_true",
+                        help="k=2 model run: fix H0 at the algebraic anchor 67.962 "
+                             "(only {logA,τ} sampled). Default off = k=3 validation chain.")
     parser.add_argument("--no-plots", action="store_true",
                         help="Skip figure generation")
     args = parser.parse_args()
 
-    ssee_prefix = os.path.join(CHAINS_DIR, "ssee_cmb")
+    ssee_prefix = os.path.join(CHAINS_DIR, "ssee_cmb_k2" if args.k2 else "ssee_cmb")
     lcdm_prefix = os.path.join(CHAINS_DIR, "lcdm_cmb")
 
     print("\n" + "="*65)
@@ -556,9 +582,9 @@ def main():
     print(f"\n  SSEE algebraic predictions:")
     print(f"    w₀    = {w0_ssee:.6f}  (−Tr/Mv)")
     print(f"    wₐ    = {wa_ssee:.6f}  (−P_sc/Kv)")
-    print(f"    Ωm_cmb= {Omm_cmb:.6f}  (Ωm_dyn × MIRA)")
+    print(f"    Ωm_cmb= {Omm_cmb:.6f}  (ω_m/h² derivado, ω_m-directo)")
     print(f"    ns    = {ns_ssee:.6f}  (1 − φ⁻⁷)")
-    print(f"    N_data= {N_DATA}  (plik full TTTEEE + lowl TT+EE + lensing)")
+    print(f"    N_data= {N_DATA}  (full plik TTTEEE + lowl TT+EE + lensing, via clipy)")
 
     # ---- Run MCMC chains ----
     if args.mode in ("ssee", "both"):

@@ -21,13 +21,14 @@ from ssee_core import (
     PHI as phi, PI as pi, OMEGA as Omega, BETA as beta, KAL0,
     P_SC as P_sc, K_V as Kv, T_R as Tr, M_V as Mv, W0 as w0, WA as wa,
     OMEGA_DE as OmDE, OMEGA_M_DYN as Omm, AURA, MIRA,
-    OMEGA_M_CMB_MIRA as Omm_cmb, N_S as ns,
+    OMEGA_M_CMB as Omm_cmb, N_S as ns,
 )
 M_SSEE = abs(w0)   # acoustic saturation factor (= |w0|)
-# Sector de observación CMB: Ω_m,CMB = Ω_m,dyn × MIRA = Omm_cmb (Genesis 5.12)
+# Reframe ω_m-DIRECTO (OP-8 cerrado): NO hay factor materia. ω_b y ω_c son densidades
+# físicas FIJAS algebraicamente (forward); Ω_m,CMB = ω_m/h² es DERIVADO (= Omm_cmb, diagnóstico).
 
-H0       = 67.04   # H_MIRA anchor (SSEE@Σm_ν=0.069 self-consistente; era 67.08)
-Omb_h2   = 0.02237
+H0       = 67.962  # ancla global H_alg = 3(φ+π)² (reframe 2026-06-17; era H_MIRA 67.04)
+Omb_h2   = (pi - phi) / (3.0 * Omega**2)   # 0.02242 — ω_b directo (era 0.02237 Planck input)
 # n_s = 1 - phi^-7 = 0.96556 (predicción algebraica SSEE, Paper 4) — importado arriba
 ln_As    = 3.044
 As       = np.exp(ln_As) * 1e-10
@@ -134,9 +135,7 @@ def _run_camb(H0_val, ombh2, omch2, mnu, w0_val, wa_val, As_val, ns_val, lmax):
 
 def compute_ssee_spectrum(lmax=2500):
     h      = H0 / 100.0
-    omch2  = Omm_cmb * h**2 - Omb_h2
-    if omch2 < 0:
-        raise ValueError(f"omch2={omch2:.5f} < 0 (Omm_cmb={Omm_cmb:.4f})")
+    omch2  = KAL0 * Omb_h2 * ns   # 0.11951 — ω_c FORWARD (KAL₀·ω_b·n_s); era Omm_cmb·h²−ω_b (MIRA)
     total, lens_p, derived = _run_camb(
         H0, Omb_h2, omch2, 0.0690, w0, wa, As, ns, lmax)  # Σm_ν canónico R₂·0.9603 (antes 0.0824 Type-P)
     r_d_camb = derived["rdrag"]

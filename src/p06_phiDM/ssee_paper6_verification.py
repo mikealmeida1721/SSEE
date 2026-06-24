@@ -116,7 +116,7 @@ def E2_CDM(a):
 
 # ── Crecimiento dos-sectores (k < k_fs, ambos activos) ───────────────────────
 def growth_rhs_twosector(lna, Y):
-    """Ambos sectores activos: Ω_m,eff = 0.320."""
+    """Ambos sectores activos: Ω_m,eff = Ω_total = 0.30889 (ω_m-directo)."""
     a = np.exp(lna)
     e2 = E2_total(a)
     h  = 0.5*(-3*Om_total*a**(-3) + OmDE_total*(f_DE(a+1e-5)-f_DE(a-1e-5))/(2e-5)*a)/e2
@@ -163,13 +163,13 @@ G_single= sol_single.y[0][-1]    / sol_lcdm.y[0][-1]   # ≈ 0.866 (minimal-CDM 
 #   temperatura de relic T_φ propia de la partícula (m_φ=41.02 eV).
 #   Ref manuscript §fσ₈ L563-567 y ssee_paper6_canonical_particle.py.
 sig8_eff    = 0.748                   # free-streaming CLASS canónico m_φ=41.02 (TITULAR)
-sig8_base   = sig8_Planck * G_single  # 0.702 (minimal-CDM Ω_m=0.160; NO canónico — Paper 5 usa Ω_m=0.31993→σ₈=0.820, fσ₈ 0.74σ)
-sig8_growth = sig8_Planck * G_2s      # 0.794 (growth-factor Ω_m=0.320, amplitud RSD canónica)
+sig8_base   = sig8_Planck * G_single  # 0.702 (minimal-CDM Ω_m=0.160; NO canónico — Paper 5 usa Ω_m=0.30889→σ₈=0.8136, fσ₈ 0.70σ)
+sig8_growth = sig8_Planck * G_2s      # 0.8136 (growth-factor Ω_m=0.30889, amplitud RSD canónica)
 S8_eff      = sig8_eff * np.sqrt(Om_total / 0.3)   # 0.759 (0.748×√(0.30889/0.3))
 
 print(f"\n  Factores de crecimiento (IC idénticas, ratio D₁):")
 print(f"    G_single (minimal-CDM Ω_m=0.160, NO canónico): {G_single:.4f}")
-print(f"    G_2s     (Paper 6, Ω_m=0.320): {G_2s:.4f}  (sólo forma de f(z))")
+print(f"    G_2s     (Paper 6, Ω_m=0.30889): {G_2s:.4f}  (sólo forma de f(z))")
 print(f"\n  σ₈ resultantes:")
 print(f"    σ₈_base   (minimal-CDM Ω_m=0.160): {sig8_base:.4f}   (= 0.811 × {G_single:.4f}; NO canónico)")
 print(f"    σ₈_eff    (Paper 6 TITULAR):    {sig8_eff:.4f}   (free-streaming CLASS)")

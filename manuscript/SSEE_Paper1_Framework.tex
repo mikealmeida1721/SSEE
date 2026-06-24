@@ -482,7 +482,9 @@ register pieces (Postulate~M, retired):
 A direct Planck \texttt{plik\_lite} TTTEEE evaluation at this configuration
 ($H_0=67.96$, $\Omega_{m,\rm CMB}=0.30889$, $\omega_b$ algebraic) gives
 $\chi^2_{\rm SSEE}=1005.5$ versus $\chi^2_{\Lambda\rm CDM}=1003.8$, i.e.\
-$\Delta\mathrm{BIC}=-23.9$ in favour of SSEE ($k=2$ vs $k=6$). The earlier
+$\Delta\mathrm{BIC}=-23.9$ in favour of SSEE ($k=2$ vs $k=6$); the full
+\texttt{plik} MCMC (off-diagonal TTTEEE\,$+$\,lowl\,$+$\,lensing, Paper~3) gives the
+canonical $\Delta\mathrm{BIC}=-33.0$. The earlier
 register recorded $\sim0.32$ expressions --- the geometric
 $(\pi-\varphi)/(\pi+\varphi)=0.32010$ and the MIRA mapping
 $\mathrm{MIRA}\cdot\Omega_{m,\rm dyn}=0.31993$ --- and an intermediate
@@ -1002,10 +1004,12 @@ applies uniformly to Papers~1--4.
   Validated against: Planck PR4 TT+TE+EE+lensing via CAMB; \texttt{plik\_lite}
   TTTEEE likelihood via Cobaya (Paper~3).
   \textit{Result}: $\chi^2_r=1.044$ (TT, 1971 multipoles);
-  the canonical $\omega_m$-direct CMB fit gives $\Delta\mathrm{BIC}=-23.9$ at the
-  global anchor $H_0^{\rm alg}=67.962$~km\,s$^{-1}$\,Mpc$^{-1}$ ($k=2$ vs $k=6$;
-  $\chi^2_{\rm SSEE}=1005.5$). The earlier legacy Cobaya scan gave
-  $\Delta\mathrm{BIC}=-32.2$ at the superseded MIRA anchor $H_0=67.037$.
+  the canonical $\omega_m$-direct CMB fit gives $\Delta\mathrm{BIC}=-33.0$
+  (full \texttt{plik} MCMC, $N=2409$) at the global anchor
+  $H_0^{\rm alg}=67.962$~km\,s$^{-1}$\,Mpc$^{-1}$ ($k=2$ vs $k=6$), with the
+  \texttt{plik\_lite} point estimate at $-23.9$ ($\chi^2_{\rm SSEE}=1005.5$). The
+  earlier legacy Cobaya scan gave $\Delta\mathrm{BIC}=-32.2$ at the superseded
+  MIRA anchor $H_0=67.037$.
   \textit{Claim}: SSEE is \emph{not falsified} by the Planck PR4 CMB spectra.
   This claim is sector-specific: it refers to the observational sector
   ($\omega_m$-direct, no matter factor; OP-8 closed), not the dynamic sector directly.
@@ -1055,13 +1059,15 @@ DESI DR2 + Planck prior & 16 & Std.\ Friedmann & 2 & 3 & $+206$ &
   Full model: background incompatibility with $\Lambda$CDM-calibrated $\Omega_m$ \\[3pt]
 DESI DR2 + Planck prior & 16 & Std.\ Friedmann & 1 & 3 & $-5.55$ &
   Dynamic sector: $w_0,w_a$ fixed, $H_0$ free \\[3pt]
-% Fase B: titular plik_lite TTTEEE omega_m-directo (Om_m=0.30889, N=613) -> DeltaBIC=-23.9 (log p3_cmb_reframe_omega_m). Diagonal recomputado omega_m-directo -> -34.9 (log paper3_cmb_reframe, N=5914). Fila Cobaya -32.2 sigue legacy MIRA (superseded).
-\texttt{plik\_lite} TTTEEE & 613 & $\omega_m$-direct & 2 & 6 & $\mathbf{-23.9}$ &
-  CMB parsimony, $\omega_m$-direct canonical ($\Omega_m{=}0.30889$, Paper~3 Fase~B) \\[3pt]
+% Titular canonico: full plik MCMC off-diag TTTEEE+lowl+lensing (Cobaya+clipy), chi2_BF SSEE 2771.3 vs LCDM 2773.1, N=2409 -> DeltaBIC=-33.0 (Paper 3 b1). plik_lite TTTEEE N=613 point est -> -23.9 cross-check. Diagonal N=5914 -> -34.9. Cobaya MIRA legacy -32.2 superseded.
+Full \texttt{plik} MCMC & 2409 & $\omega_m$-direct & 2 & 6 & $\mathbf{-33.0}$ &
+  CMB parsimony, \textbf{canonical} (off-diag.\ TTTEEE+lowl+lensing, Paper~3 §b1) \\[3pt]
+\texttt{plik\_lite} TTTEEE & 613 & $\omega_m$-direct & 2 & 6 & $-23.9$ &
+  Compressed-nuisance point est.\ (cross-check; $\Omega_m{=}0.30889$) \\[3pt]
 Planck PR4 diagonal & 5914 & $\omega_m$-direct & 2 & 6 & $-34.9$ &
-  CMB spectra, diagonal cov.\ (cross-check; $\Omega_m{=}0.30889$, $H_0{=}67.962$) \\[3pt]
+  CMB spectra, diagonal cov.\ (cross-check; $H_0{=}67.962$) \\[3pt]
 \texttt{plik\_lite} TTTEEE & 613 & MIRA bg (legacy) & 2 & 6 & $-32.2$ &
-  CMB parsimony; \emph{superseded by the $\omega_m$-direct row above} \\
+  CMB parsimony; \emph{superseded by the $\omega_m$-direct rows above} \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -1069,12 +1075,14 @@ Planck PR4 diagonal & 5914 & $\omega_m$-direct & 2 & 6 & $-34.9$ &
 \noindent\textbf{Reading guide.}
 The $+206$ and $-5.55$ use the same 16 data points but test different hypotheses:
 the former penalises background geometry; the latter isolates $w_0,w_a$.
-The canonical CMB result is the $\omega_m$-direct row, $\Delta\mathrm{BIC}=-23.9$
-(\texttt{plik\_lite}, $k=2$, $\Omega_m=0.30889$, no matter factor), which favours
-SSEE while matching $\Lambda$CDM in fit quality ($\chi^2_{\rm SSEE}=1005.5$ vs
-$1003.8$). The diagonal-covariance cross-check, also $\omega_m$-direct, gives
-$\Delta\mathrm{BIC}=-34.9$ (the larger magnitude reflects the inflated effective
-$N$ under the independence approximation). The legacy MIRA-background values
+The canonical CMB result is the full \texttt{plik} MCMC row, $\Delta\mathrm{BIC}=-33.0$
+($k=2$ vs $k=6$, $N=2409$, off-diagonal TTTEEE\,$+$\,lowl\,$+$\,lensing), with a
+best-fit $\chi^2$ statistically indistinguishable from $\Lambda$CDM
+($\Delta\chi^2_\mathrm{BF}=-1.8$); the preference is parsimony-driven, not a
+superior fit. The \texttt{plik\_lite} point estimate ($\Delta\mathrm{BIC}=-23.9$,
+$\chi^2_{\rm SSEE}=1005.5$ vs $1003.8$) and the diagonal-covariance spectra
+($\Delta\mathrm{BIC}=-34.9$, inflated effective $N$) are consistent
+$\omega_m$-direct cross-checks. The legacy MIRA-background values
 ($-32.2$ Cobaya, $-41.0$ aggressive $k{=}1$) used the superseded
 $\Omega_m=0.31993$ mapping and are retired.
 \emph{No single BIC summarises the entire framework}: each answers a specific
@@ -1157,7 +1165,7 @@ Sector & Validated by & Falsified by ($>3\sigma$) & Not a falsification \\
   DESI~DR5+ excludes $(-0.840,-0.670)$; or $\chi^2_r(H(z))>2.5$ with full cov. &
   $\Delta\mathrm{BIC}=+206$ from \LCDM-calibrated $\Omega_m$ prior \\[4pt]
 \textbf{Observational} &
-  Planck~PR4 $\Delta\mathrm{BIC}=-23.9$ ($\omega_m$-direct canonical, $k=2$); $r_d^{\rm SSEE}=147.17$~Mpc ($0.32\sigma$) &
+  Planck~PR4 $\Delta\mathrm{BIC}=-33.0$ (full \texttt{plik} MCMC, $\omega_m$-direct canonical, $k=2$); $r_d^{\rm SSEE}=147.17$~Mpc ($0.32\sigma$) &
   Euclid/KiDS $\Omega_m<0.25$ at $z<1$; or $k_{\rm fs}(m_\phi)$ excluded by DESI~Y3/Euclid $P(k)$ at $>3\sigma$ &
   $\chi^2_r=1.044$ vs \LCDM's $1.043$ (non-equivalent background) \\
 \bottomrule
@@ -1165,13 +1173,13 @@ Sector & Validated by & Falsified by ($>3\sigma$) & Not a falsification \\
 \end{table}
 
 \paragraph{On cross-sector BIC comparisons.}
-The $\Delta\mathrm{BIC}=-5.55$ (DESI dynamic) and $-23.9$ (CMB $\omega_m$-direct)
+The $\Delta\mathrm{BIC}=-5.55$ (DESI dynamic) and $-33.0$ (CMB $\omega_m$-direct)
 are not directly comparable (different $N$, backgrounds, and $\Lambda$CDM $k$ counts).
-The canonical CMB value is the $\omega_m$-direct $\Delta\mathrm{BIC}=-23.9$
-(\texttt{plik\_lite}, $k=2$, $N=613$), with the $\omega_m$-direct diagonal
-cross-check at $-34.9$ ($N=5914$). The legacy MIRA-background values
-($-32.2$ Cobaya, aggressive $k{=}1$ $-41.0$) used the superseded
-$\Omega_m=0.31993$ mapping and are retired (see Paper~3).
+The canonical CMB value is the $\omega_m$-direct $\Delta\mathrm{BIC}=-33.0$
+(full \texttt{plik} MCMC, $k=2$, $N=2409$), with the \texttt{plik\_lite} point
+estimate at $-23.9$ ($N=613$) and the diagonal cross-check at $-34.9$ ($N=5914$).
+The legacy MIRA-background values ($-32.2$ Cobaya, aggressive $k{=}1$ $-41.0$)
+used the superseded $\Omega_m=0.31993$ mapping and are retired (see Paper~3).
 The authoritative reference is Table~\ref{tab:bic_unified}.
 
 
@@ -1260,7 +1268,8 @@ $\Omega_{m,\rm CMB}=\omega_m/h^2=0.30889$ with $\omega_m=\Omega_b h^2+\Omega_c h
 +\omega_\nu=0.14267$ algebraic, at the single global anchor
 $H_0=3(\varphi+\pi)^2\simeq67.96$. No matter factor (OP-8 closed). A Planck
 \texttt{plik\_lite} TTTEEE evaluation gives $\chi^2_{\rm SSEE}=1005.5$ vs
-$\chi^2_{\Lambda\rm CDM}=1003.8$, $\Delta\mathrm{BIC}=-23.9$. Earlier register
+$\chi^2_{\Lambda\rm CDM}=1003.8$, $\Delta\mathrm{BIC}=-23.9$ (the full
+\texttt{plik} MCMC gives the canonical $-33.0$). Earlier register
 forms --- geometric $(\pi-\varphi)/(\pi+\varphi)=0.32010$, MIRA mapping
 $\Omega_{m,\rm dyn}\times\mathrm{MIRA}=0.31993$, and an intermediate factor
 $\pi/\varphi$ giving $0.31076$ --- are all superseded by the $\omega_m$-direct
@@ -1454,10 +1463,10 @@ comparisons in Papers~2 and~3.
 In Paper~2, the $\Delta\mathrm{BIC}=-5.55$ (dynamic sector) is a
 Type~M result: it reflects the MCMC posterior relative to $\Lambda$CDM
 under identical priors.
-In Paper~3, the $\Delta\mathrm{BIC}=-23.9$ ($\omega_m$-direct, \texttt{plik\_lite}
-likelihood, canonical $k=2$; the legacy MIRA-background $-32.2$ is superseded)
-is a Type~P result: it depends on the \texttt{plik\_lite} likelihood
-as an external CMB anchor.
+In Paper~3, the canonical $\Delta\mathrm{BIC}=-33.0$ ($\omega_m$-direct, full
+\texttt{plik} MCMC, $k=2$; \texttt{plik\_lite} point estimate $-23.9$; legacy
+MIRA-background $-32.2$ superseded) is a Type~P result: it depends on the Planck
+\texttt{plik} likelihood as an external CMB anchor.
 These two BIC values are \emph{not directly comparable} because they
 operate in different model spaces; the distinction is disclosed
 explicitly in Paper~3~§4.4.

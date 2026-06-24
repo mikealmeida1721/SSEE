@@ -352,9 +352,10 @@ if results:
 # Growth equation (sub-horizon, log-a variable x = ln a):
 #   D₁'' + (2 + d ln H/d ln a) D₁' − (3/2) Ω_m(a) D₁ = 0
 #
-# Poisson source = Ω_m,CMB = MIRA × Ω_m,dyn ≈ 0.31988   (el fondo gravitacional real).
+# Poisson source = Ω_m,CMB = ω_m/h² = 0.30889   (el fondo gravitacional real;
+# ω_m-directo, SIN factor materia — OP-8 disuelto; era MIRA×Ω_m,dyn=0.31988, retirado).
 # Ω_m,dyn=0.160 SOLO fija w₀ (vía 1+w₀); el contenido que gravita y siembra la
-# estructura es Ω_m,CMB. MIRA entra como factor de fondo en H(a) y en la fuente.
+# estructura es Ω_m,CMB, predicción algebraica independiente (ω_b+ω_c+ω_ν).
 # Ω_m(a) = Ω_m,CMB × (H₀/H)² × a^{-3}.   Para ΛCDM: Ω_m(a) = 0.3153 / (H_Λ(a)² × a³)
 #
 # IC (matter-dominated limit, a_ini = 10^{-4}): D₁ = a, D₁' = a  (growing mode)

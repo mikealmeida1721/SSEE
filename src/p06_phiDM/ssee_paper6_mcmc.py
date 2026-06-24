@@ -289,8 +289,7 @@ sampler.run_mcmc(p0, nsteps, progress=True)
 
 # Persistir la cadena cruda a disco INMEDIATAMENTE (robustez: si el guardado de
 # figuras falla, la cadena no se pierde y las figuras se regeneran sin re-muestrear).
-_CHAINDIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                         "results", "figures")
+_CHAINDIR = "/mnt/datos/SSEE_data/mcmc"   # HDD 3.6 TB (NO root: evita llenar la SSD)
 os.makedirs(_CHAINDIR, exist_ok=True)
 np.save(os.path.join(_CHAINDIR, "p6_mcmc_chain.npy"), sampler.get_chain())
 print(f"  Cadena cruda guardada: {_CHAINDIR}/p6_mcmc_chain.npy")
@@ -383,7 +382,7 @@ print(f"\n  ΔBIC(SSEE − ΛCDM) = {dBIC:.1f}  ({'SSEE favorecido' if dBIC<0 el
 # ═══════════════════════════════════════════════════════════════════════════════
 # §8  Figuras
 # ═══════════════════════════════════════════════════════════════════════════════
-OUTDIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "figures")
+OUTDIR = "/mnt/datos/SSEE_data/mcmc"   # HDD (figuras MCMC; se copian a results/figures/ al cerrar)
 
 # ── Corner plot ────────────────────────────────────────────────────────────────
 print("\n  Generando figuras...")

@@ -192,6 +192,6 @@ OP-10 abierta → P6 declarado fenomenológico
 
 2. Decidir basado en resultados
 
-3. Aplicar conclusiones a P6 cleanup (ver archive/superseded_2026-06-04/P6_CLEANUP_NOTES.md — SUPERADO, m_φ canónico 36.95 eV)
+3. Aplicar conclusiones a P6 cleanup (ver archive/superado/P6_CLEANUP_NOTES.md — SUPERADO; m_φ canónico hoy 41.02 eV, era 36.95 cuando se escribió esta nota)
 
-Ver también: archive/superseded_2026-06-04/{P6_CLEANUP_NOTES.md, SSEE_CONSTANTS_AUDIT.md} (snapshots superados), OPEN_PROBLEMS.md (vivo)
+Ver también: archive/superado/{P6_CLEANUP_NOTES.md, SSEE_CONSTANTS_AUDIT.md} (snapshots superados), OPEN_PROBLEMS.md (vivo)

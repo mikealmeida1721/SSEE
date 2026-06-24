@@ -56,13 +56,19 @@ wa_      = -(Omega_ + phi_) / Kv_   # -0.6700
 Om_DE    = Tr_ / Mv_                # 0.8400
 Om_dyn   = 1.0 - Om_DE              # 0.1600 = Ω_m,dyn (CDM puro)
 Om_b     = 0.02237 / h_alg**2       # Ω_b desde Planck Ω_b h²
-r_d      = 147.156                  # Mpc — CAMB SSEE+MIRA (Paper 3)
+r_d      = 147.17                   # Mpc — CAMB SSEE ω_m-directo (Paper 3 reframe)
 c_km     = 299792.458               # km/s
 
-# Predicciones algebraicas del sector φ-DM (priors MCMC)
+# Predicciones algebraicas del sector φ-DM (priors MCMC) — reframe ω_m-directo
+# Ω_φDM = Ω_m,CMB − Ω_m,dyn (DIFERENCIA, sin factor MIRA; OP-8 disuelto)
+KAL0_        = beta_ + pi_                       # 5.5214
+n_s_         = 1.0 - phi_**-7                    # 0.96556
+omega_b_     = (pi_ - phi_) / (3*Omega_**2)      # 0.02242
+omega_c_     = KAL0_ * omega_b_ * n_s_           # 0.11951 (forward, Paper 1)
+Om_m_CMB_    = (omega_b_ + omega_c_ + 0.00074) / h_alg**2   # 0.30889 (DERIVADO)
 Om_CDM_alg   = Om_dyn               # 0.160050
-Om_phiDM_alg = (MIRA_ - 1)*Om_dyn  # 0.159878
-k_fs_alg     = 0.493               # h/Mpc (DW formula, Paper 6)
+Om_phiDM_alg = Om_m_CMB_ - Om_dyn  # 0.14889 (diferencia, sin factor; era 0.159878 vía MIRA)
+k_fs_alg     = 0.762               # h/Mpc (DW, m_φ=41.02 SOLAR²·KRYSTOS; era 0.493 de m_φ=5.6)
 sig8_planck  = 0.811               # σ₈ Planck 2018 TT,TE,EE+lowE
 
 # γ_IS: índice de crecimiento causal IS (Paper 5, verificado numéricamente)

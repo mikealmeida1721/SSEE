@@ -716,7 +716,7 @@ but is the natural next step toward genuine zero-parameter status.
 Protocolo en todas las fases: **forward, cero fiteo** — solo escalas ya bloqueadas
 por Papers 6/7/10 (V₀ = 0.840 ρ_crit, λ = √(3·0.160) ≈ 0.693, M_UV = 9.68 meV,
 m_φ = 41.02 eV). Requisitos declarados ANTES de calcular. Scripts en
-`src/open_problems/`.
+`archive/codigo/investigacion/open_problems/`.
 
 | Ruta | Mecanismo | Veredicto | Causa del descarte |
 |---|---|---|---|
@@ -817,7 +817,7 @@ $\mathrm{SOLAR}=\mathrm{BIAL}+\mathrm{KAL}$ hereda el rol **radiativo-disipativo
 señala que el baño es la **radiación**. Esto empuja hacia la rama térmica y **revisa**
 el "sin portal SM" (φ pasaría a ser débilmente acoplado, casi invisible pero no nulo).
 
-**Paso 1 — VIABILIDAD (✅ hecho, `src/open_problems/op12_thermal_decoupling.py`):** si φ
+**Paso 1 — VIABILIDAD (✅ hecho, `archive/codigo/investigacion/open_problems/op12_thermal_decoupling.py`):** si φ
 es relic térmico, la dilución de entropía $(T_\phi/T_\nu)^3=10.75/g_{*s}(T_{\rm dec})$
 exige $g_{*s}\approx 68.8 \Rightarrow T_{\rm dec}\approx 217$ MeV — **justo la transición
 QCD**. Época física, no absurda: la rama térmica es **viable y falsable** (predice

@@ -654,7 +654,7 @@ P3/P6/P9 sin un mecanismo válido para el 0.320.
 forma más concreta — MIRA como retención de energía vía un acoplamiento
 conformal de quintaesencia entre φ y la materia real (el L_int de Paper 7
 re-apuntado de materia oscura a materia real, como exige Paper 1).
-Cálculo: `src/mira_attempts/ssee_mira_mechanism.py`, 2026-05-22.
+Cálculo: `archive/codigo/investigacion/mira_attempts/ssee_mira_mechanism.py`, 2026-05-22.
 
 **El mecanismo (física estándar, quintaesencia acoplada Amendola 2000).**
 Un acoplamiento conformal da, en el fondo:
@@ -699,7 +699,7 @@ ve afectado. Ver [[feedback-impact-analysis]] y V-L3-2Om. **ABIERTO.**
 abrió la búsqueda de un **principio físico** que fije α en el L_int conformal
 sin recurrir a fits ni a numerología. Hipótesis: α toma el valor *saturado*
 de una desigualdad física estándar (veta-2 del programa de reconstrucción).
-Cálculo: `src/mira_attempts/ssee_alpha_saturation_stepD2.py`, 2026-05-22.
+Cálculo: `archive/codigo/investigacion/mira_attempts/ssee_alpha_saturation_stepD2.py`, 2026-05-22.
 
 **La desigualdad física (Amendola 2000, canonical).** En quintaesencia
 acoplada con K=X y conformal coupling, el φ-MDE (fixed-point y=0 durante era
@@ -742,7 +742,7 @@ no fit.
 6. **Conexiones:** depende de KAL₀ (V-L1) y de la estructura k-essence de Paper 7.
    Sería insumo de V-L3-mira si reemplaza a β_c=−AURA.
 
-**Test dinámico (2026-05-22).** `src/mira_attempts/ssee_mira_saturated_diagnostic.py`:
+**Test dinámico (2026-05-22).** `archive/codigo/investigacion/mira_attempts/ssee_mira_saturated_diagnostic.py`:
 matriz 2×2 con β_c = ±α_sat y u₀ = ±|u_w₀|, integrando hacia atrás desde el
 estado de hoy (fijado por w_φ(hoy)=w₀=−0.840) hasta z=1100, régimen lineal
 puro K=X/KAL₀ (donde la derivación aplica):
@@ -787,7 +787,7 @@ forma constructiva del mecanismo MIRA. **PARCIAL.**
 Tras V-L3-saturacion, se cazaron dos mecanismos adicionales:
 
 **Mecanismo #6 — acoplamiento derivativo** `L_int=(X/M⁴)·L_DM`.
-Script `src/mira_attempts/ssee_mira_derivative_test.py`. Coupling β_eff=u/√M⁴ depende
+Script `archive/codigo/investigacion/mira_attempts/ssee_mira_derivative_test.py`. Coupling β_eff=u/√M⁴ depende
 de la *velocidad* del campo (no del valor), encendido en matter era y
 apagado hoy (lo que MIRA "necesita"). Barrido en M⁴_code:
 - M⁴ ∈ {0.01, 1, 10}: integración OK, **R(z=1100)∈[1.32, 1.41]** — ~70%
@@ -798,7 +798,7 @@ Diagnóstico: el mecanismo funciona como mecanismo, pero requiere M
 muchísimo más chico que Λ_SSEE para producir MIRA — UV-incompatible.
 
 **Mecanismo #7 — integración forward desde φ-MDE hacia hoy.** Script
-`src/mira_attempts/ssee_mira_phimde_forward_test.py`. Estado inicial Ω_m≈0.99 en
+`archive/codigo/investigacion/mira_attempts/ssee_mira_phimde_forward_test.py`. Estado inicial Ω_m≈0.99 en
 matter era, integrar hasta N=0. Barrido α∈{0.295, 0.521, 0.8, 1.0, 1.5}:
 
 | α | w_φ(0) | Ω_m(0) | resultado |

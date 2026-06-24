@@ -80,6 +80,17 @@ de `src/`, o experimentos exploratorios de un solo uso.
   canónico (2026-06-04).
 - **Scratch exploratorio:** sensibilidad de cúmulos, scans α_M/θ*/σ₈, IS growth, candidatos;
   ningún resultado canónico depende de ellos.
+- **Tooling deprecado (archivado 2026-06-24):** `ssee_audit_consistency.py`, `ssee_precision_audit.py`
+  (verificadores viejos, superados por `ssee_verify.py`+`CANONICAL_VALUES.yaml`);
+  `plot_ssee_pk.py`, `plot_ssee_twosector_pk.py` (plots Fase-1/2 huérfanos, no alimentan papers).
+
+#### `codigo/investigacion/` — registro de investigación/mecanismo (archivado 2026-06-24)
+**Razón:** material que documenta *cómo se construyó* el modelo pero que el modelo activo
+ya no usa. Movido de `src/` para que `src/` quede solo con módulos vigentes. Reversible.
+- `mira_attempts/` (8 scripts) — búsqueda del mecanismo MIRA (OP-8, **disuelto** por el reframe ω_m-directo).
+- `mecanismos/`, `open_problems/` — exploración de mecanismos y OPs.
+- Sueltos: `op8_mira_aura_dimensional.py`, `op10_kX_cubic_term.py`,
+  `h_alg_vs_mira_investigation.py`, `ssee_h0_mira_only.py`, `ssee_paper2_mcmc_mira.py` (variante MIRA legacy del MCMC P2).
 
 ### `superado/` — docs de trabajo plegados al Registro canónico
 **Archivados:** 2026-06-08 (lote inicial) y 2026-06-24 (snapshots de raíz) · **Razón:** su

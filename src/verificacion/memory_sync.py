@@ -50,10 +50,10 @@ def _targets(vault_only=False):
         out.append(("Papers (cajón)", sorted((ROOT / "manuscript").glob("*.tex"))))
         # Docs de ESTADO VIVO en la raíz (sin fecha, cara pública vigente).
         # NO se incluyen los de REGISTRO/FECHADOS: CHANGELOG.md y
-        # HALG_PIFI_CHANGEMAP.md (documentan viejo→nuevo), AUDIT.md (deliverable
-        # fechado 2026-05-17, con banner de superación), MEMORY_PROTOCOL.md (usa
-        # valores viejos como ejemplos del drift), src/open_problems/*.py
-        # (exploraciones con inputs de su fecha) ni archive/.
+        # AUDIT.md (deliverable fechado 2026-05-17, con banner de superación),
+        # MEMORY_PROTOCOL.md (usa valores viejos como ejemplos del drift) ni
+        # archive/ (incluye HALG_PIFI_CHANGEMAP.md y el material de investigación
+        # —open_problems, mira_attempts— movido a archive/codigo/investigacion/ el 2026-06-24).
         estado = [ROOT / "README.md", ROOT / "RIGOR_CHECKLIST.md"]
         out.append(("Estado raíz", [p for p in estado if p.exists()]))
     if VAULT.exists():

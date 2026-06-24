@@ -111,8 +111,8 @@ A two-sector $\phi$-DM extension --- $\Omega_{\phi\mathrm{DM}} = \OmmCMB-\Ommdyn
 active only on scales $k < \kfs = 0.762\,h\,\mathrm{Mpc}^{-1}$ --- reduces the
 $S_8$ lensing tension from $3.5\sigma$ (single-sector ceiling, KiDS) to $0.01\sigma$, with
 $\sigeff = 0.748$ ($S_8^{\rm eff}=0.759$ from the direct two-sector CLASS run;
-the analytic two-sector growth factor $G_{\rm 2s}=0.979$ gives a complementary
-$\sigeff = 0.748$).
+the analytic two-sector growth factor $G_{\rm 2s}=1.003$ is $\Lambda$CDM-consistent,
+the suppression to $\sigeff=0.748$ arising from $\phi$-DM free-streaming below $\kfs$).
 
 An EFTCAMB validation at the Bellini-Sawicki level uses the fluid-approximation
 input $\alphaK^{\rm fluid} = 0.4033$ ($\Delta = 0.005\%$), while the theoretical
@@ -240,10 +240,10 @@ $\Omm = 0.3153\pm 0.0073$ \citep{Planck2018}.
 All three \SSEE\ retrodictions lie within $1.5\sigma$ of the Planck values
 with no adjustment.
 
-\subsection{The MIRA factor and two-sector background}
+\subsection{The two-$\Omega_m$ structure and CMB matter density}
 \label{sec:mira}
 
-The framework introduces a structural two-sector mechanism.
+The framework predicts two independent matter densities.
 The dark energy EoS predicts $\Omde = |{\wz}| = 0.840$, which implies a
 \textit{dynamical} matter density $\Ommdyn = 1 - \Omde = 0.160$.
 However, the CMB angular-diameter distance is sensitive to the
@@ -330,8 +330,8 @@ standard Friedmann-calibrated Planck prior.
 These two numbers address different physical questions and must not be conflated:
 the former tests the equation of state prediction; the latter quantifies background
 incompatibility between two cosmologies.
-The MIRA mechanism (\S\ref{sec:mira}) is the proposed resolution
-of the background tension, validated in \S\ref{sec:cmb} below.
+The $\omega_m$-direct two-$\Omega_m$ construction (\S\ref{sec:mira}) resolves
+the background tension, validated in \S\ref{sec:cmb} below.
 
 \subsection{Galaxy-cluster mass sector}
 \label{sec:clusters}
@@ -427,18 +427,19 @@ RMS residual $\Delta C_\ell/C_\ell^{\Lambda\rm CDM}$ across $\ell = 30$--$2500$.
 Model & $\ell_1$ & $\ell_2$ & $\ell_3$ & RMS residual \\
 \midrule
 \LCDM\ (Planck 2018)    & 221 & 537 & 814 & reference \\
-\textbf{SSEE + MIRA}    & \textbf{220} & \textbf{535} & \textbf{810} & \textbf{1.4\%} \\
-SSEE noMIRA             & 240 & 597 & 922 & 31.5\% \\
+\textbf{SSEE ($\Omega_{m,\rm CMB}=0.309$)}    & \textbf{220} & \textbf{535} & \textbf{810} & \textbf{1.4\%} \\
+SSEE ($\Omega_{m,\rm dyn}=0.160$)             & 240 & 597 & 922 & 31.5\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Without MIRA, all three acoustic peaks shift by $\sim 10\%$ toward higher $\ell$
-and the RMS residual increases by a factor of 22.
-This demonstrates that MIRA is not a cosmetic rescaling but a physically necessary
-ingredient: the framework cannot reproduce the observed acoustic scale with
-$\Omm = 0.160$ alone.
-With MIRA, the peak positions agree with \LCDM\ to within $\Delta\ell = 1$--$4$,
+With the dynamical density $\Omm=0.160$ alone, all three acoustic peaks shift by
+$\sim 10\%$ toward higher $\ell$ and the RMS residual increases by a factor of 22.
+This demonstrates the \emph{two-$\Omega_m$ structure}: the CMB requires the full
+$\omega_m$-direct matter density $\Omega_{m,\rm CMB}=0.30889$ (built from
+$\omega_b+\omega_c+\omega_\nu$, no matter factor; OP-8 dissolved), and cannot be
+reproduced with $\Omega_{m,\rm dyn}=0.160$ alone.
+With $\Omega_{m,\rm CMB}=0.30889$, the peak positions agree with \LCDM\ to within $\Delta\ell = 1$--$4$,
 and the RMS residual is $1.4\%$, consistent with the $\chi^2_r \simeq 1.06$
 reported in the CAMB-based Planck~PR4 likelihood analysis of Paper~3
 \citep{AlmeidaSSEE2026P3}.
@@ -563,9 +564,10 @@ $\fsig$ comparison of \S\ref{sec:tension_table} provides the complementary
 confrontation with growth-rate data.
 
 \textit{Methodological note:} Paper~6 \citep{AlmeidaSSEE2026P6} reports
-the analytic two-sector growth suppression $G_{\rm 2s} = 0.979$ applied to
-$\sigma_{8,\Lambda\rm CDM} = 0.811$ (giving $0.811\times0.979=0.794$),
-which establishes the suppression \emph{mechanism}.
+the analytic two-sector growth factor $G_{\rm 2s} = 1.003$ applied to
+$\sigma_{8,\Lambda\rm CDM} = 0.811$ (giving $0.811\times1.003=0.814$),
+confirming that the linear growth is $\Lambda$CDM-consistent; the suppression
+to the titular value arises instead from $\phi$-DM free-streaming.
 The canonical titular value $\sigeff = 0.748$ ($S_8^{\rm eff}=0.759$)
 integrates the full CLASS $P(k)$ with the forward-output
 $T_{\rm WDM}(k;\alpha=1.108\,h\,\mathrm{Mpc}^{-1})$ set by $\mphi=41.02$~eV;

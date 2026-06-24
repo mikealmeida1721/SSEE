@@ -34,6 +34,7 @@ import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 from scipy.integrate import quad
 import warnings
+import os
 warnings.filterwarnings('ignore')
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -285,6 +286,14 @@ p0[:, 2] = np.clip(p0[:, 2], *BOUNDS['sig8_in'])
 sampler = emcee.EnsembleSampler(nwalkers, ndim, log_posterior)
 print("\nEjecutando MCMC...")
 sampler.run_mcmc(p0, nsteps, progress=True)
+
+# Persistir la cadena cruda a disco INMEDIATAMENTE (robustez: si el guardado de
+# figuras falla, la cadena no se pierde y las figuras se regeneran sin re-muestrear).
+_CHAINDIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "results", "figures")
+os.makedirs(_CHAINDIR, exist_ok=True)
+np.save(os.path.join(_CHAINDIR, "p6_mcmc_chain.npy"), sampler.get_chain())
+print(f"  Cadena cruda guardada: {_CHAINDIR}/p6_mcmc_chain.npy")
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # §6  Diagnóstico de convergencia

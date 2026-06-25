@@ -9,11 +9,17 @@ Last updated: 2026-05-16
 
 ---
 
-## OP-1 — Factor 200 in the Baryon Density (Paper 4) ✅ PARCIALMENTE RESUELTO
+## OP-1 — First-Principles Derivation of ω_b = (π−φ)/(3Ω²) (Paper 4 / baryogenesis) ✅ PARCIALMENTE RESUELTO
+
+> **El "factor 200" YA NO EXISTE en el modelo (corregido en el título 2026-06-24).**
+> El ω_b canónico es la fórmula algebraica `(π−φ)/(3Ω²) = 0.02242` (0.32σ Planck),
+> sin ningún 200. El viejo `3(π−φ)/200` (3.2σ) quedó retirado; φ¹¹≈199 mostró que 200
+> era solo una aproximación. Lo que permanece ABIERTO no es el factor — es derivar
+> `(π−φ)/(3Ω²)` desde primeros principios (bariogénesis Γ_sph, programa Paper B/C).
 
 **Location:** Paper 4, §3.2 (baryon buffer constant) — **revisado 2026-05-16**
 
-**Corrección (sustitución algebraica del factor 200):**
+**Corrección (sustitución algebraica del antiguo factor 200, ya retirado):**
 
 La fórmula de Paper 4 `3(π−φ)/200 = 0.022853` tiene un error de **3.2σ** respecto a
 Planck 2018 (Ω_b h² = 0.02237 ± 0.00015). La afirmación de "cuatro cifras significativas"

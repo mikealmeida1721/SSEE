@@ -57,7 +57,7 @@ SSEE/
 ├── class_ssee/                      — CLASS Boltzmann fork — SSEE .ini configs + plots
 │   ├── ssee_v36.ini                 — SSEE MIRA sector (Ω_m=0.3199)
 │   ├── ssee_v36_nomira.ini          — SSEE dynamic sector only (Ω_m=0.160)
-│   ├── ssee_v36_twosector.ini       — φ-DM two-sector (ncdm m=36.95 eV)
+│   ├── ssee_v36_twosector.ini       — φ-DM two-sector (ncdm m=41.02 eV)
 │   └── ssee_v36_IS.ini              — IS viscosity (cs2_fld=0.001)
 ├── data/                            — observational data (DESI DR2, Planck PR4, clusters)
 ├── results/                         — generated figures, tables, logs
@@ -205,7 +205,10 @@ Two-sector P(k) calibration:
 ./class ssee_v36_twosector.ini
 python3 calibrate_wdm_alpha.py
 ```
-Expected: α_WDM = 1.6561 h/Mpc, σ₈_eff = 0.737 (top-hat integral).
+Expected (legacy α_WDM fit-to-KiDS): α_WDM = 1.6561 h/Mpc, σ₈_eff = 0.737.
+> **Superado:** el valor canónico es el **forward** two-sector de CLASS
+> (σ₈_eff = 0.748, S₈ = 0.759), salida directa sin fitear α_WDM. La calibración
+> `calibrate_wdm_alpha.py` se conserva solo como registro del método retirado.
 
 IS viscosity test:
 ```bash
@@ -283,17 +286,22 @@ from Planck). k=0 counting appears only in the illustrative file with matching c
 Diagonal covariance gives ΔBIC = +31.1 (N amplifies small Δχ²_r ≈ 0.01).
 Full plik/CamSpec likelihood with official Planck covariance matrix remains a blocker for PRD/PRL.
 
-### 4. Two-sector Ωm (Papers 2, 3, 5, 6)
-Ωm,dyn = 0.160 ≠ Ωm,CMB = 0.3199. Bridged by algebraic MIRA = (3φ+π)/4 = 1.9989.
-Full derivation of MIRA from first-principles field equations is deferred (Level 3 work).
+### 4. Two-sector Ωm (Papers 2, 3, 5, 6) — ω_m-direct reframe (OP-8 dissolved)
+Ωm,dyn = 0.160 (DESI dynamic sector) and Ωm,CMB = 0.30889 (Planck) are **two independent
+algebraic predictions**, NOT linked by any matter factor. Ωm,CMB = ω_m/h² with
+ω_m = ω_b + ω_c + ω_ν, where ω_b = (π−φ)/(3Ω²) = 0.02242 and ω_c = KAL₀·ω_b·n_s = 0.11951
+(a forward identity already in Paper 1). The earlier MIRA-mapping bridge
+(Ωm,CMB = MIRA·Ωm,dyn = 0.3199) is **RETIRED** (OP-8 dissolved, 2026-06 reframe).
 
 ### 5. MIRA — status and provenance (BC3)
 
 **Formal status:** MIRA = (3φ+π)/4 = 1.998924 is a **phenomenological auxiliary hypothesis**
-(not yet a derived quantity). It bridges Ωm,dyn=0.160 and Ωm,CMB=0.3199 algebraically,
-but its derivation from first-principles field equations (Blocker B3) remains open.
-It is NOT simultaneously a free parameter and a derived quantity — it is a fixed hypothesis
-whose anti-post-hoc guarantee rests on **algebraic rigidity, not chronology**:
+(not yet a derived quantity). Following the ω_m-direct reframe it **no longer bridges Ωm**
+(OP-8 dissolved); it now enters only the Hubble screening of Paper 9,
+f_screen = αK/(3·MIRA) = 0.06725. Its derivation from first-principles field equations
+(OP-8) remains open. It is NOT simultaneously a free parameter and a derived quantity —
+it is a fixed hypothesis whose anti-post-hoc guarantee rests on **algebraic rigidity, not
+chronology**:
 
 MIRA = (3φ+π)/4 is fixed by construction (Structural Constant Dictionary,
 Zenodo: 10.5281/zenodo.20684908); it has no adjustable amplitude that could be tuned to
@@ -312,12 +320,12 @@ Static Eckart: 3.7σ tension. IS derivation: KAL₀ × Ωb h² × n_s = 0.11926 
 Note: Ωb h² algebraic = (π−φ)/(3Ω²) = 0.02242 (0.32σ from Planck — see OPEN_PROBLEMS OP-1; the earlier 3(π−φ)/200 form is superseded).
 
 ### 8. φ-DM mass scale and field content (Paper 6)
-m_φ = 36.95 eV is not keV-scale WDM; φ-DM is modelled as a real scalar field (explicit
+m_φ = 41.02 eV is not keV-scale WDM; φ-DM is modelled as a real scalar field (explicit
 Lagrangian in Paper 6 §4) populated by gravitational particle production. The
 Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no
 zero-parameter SSEE form. φ-DM has no Standard-Model portal, so it is not accessible
 to neutrino-mass experiments; free-streaming suppression enters observation via
-k_fs = 0.659 h/Mpc, not direct m_φ. Lyman-α bounds apply to thermal relics; the
+k_fs = 0.762 h/Mpc, not direct m_φ. Lyman-α bounds apply to thermal relics; the
 scalar fraction f_φ ≈ 0.50 gives an effective ~0.1–0.5 keV equivalent — within
 observational bounds. Quantified in Paper 6 §Lyman-α. The ab-initio relic abundance
 from the gravitational-production integral is deferred to Paper B.
@@ -335,21 +343,25 @@ from the gravitational-production integral is deferred to Paper B.
 
 ---
 
-## Predictive Register — anti-selection-bias defence
+## Predictive Register — structural-rigidity defence
 
-Chronological record of what was derived before what data:
+Agreement with **already-public** data is a parameter-free **postdiction**: the values
+are fixed by algebraic construction, but the data predate this work. **No claim of
+temporal priority over public data is made** — the defence is the structural rigidity of
+the closed dictionary. Genuine pre-committed predictions concern **unreleased** data
+(DESI DR3, Euclid, LiteBIRD); see the Prediction Register at the dictionary DOI.
 
 | Quantity | Algebraic formula | Value | Test dataset | Status |
 |---|---|---|---|---|
-| w₀ | −Tr/Mv | −0.8399 | DESI DR2 (2025) | Pre-data |
-| wₐ | −Psc/Kv | −0.6699 | DESI DR2 (2025) | Pre-data |
-| MIRA | (3φ+π)/4 | 1.9989 | CMB/BAO ratio | Pre-data (Zenodo 2026-01-28) |
-| Ωm | (π−φ)/(π+φ) | 0.3201 | Planck 2018 | Retrodiction |
-| n_s | 1 − φ⁻⁷ | 0.96556 | Planck 2018 | Retrodiction |
-| H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Retrodiction |
-| r_d (MIRA) | CAMB, Ωm,CMB=0.3199 | 147.156 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | 0.25σ (retrodiction) |
-| m_φ | Σm_ν × (Ω⁴_DNAV + AURA·KAL) | 36.95 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction |
-| k_fs | free-streaming (m_φ) | 0.659 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction |
+| w₀ | −Tr/Mv | −0.8399 | DESI DR2 (2025) | Parameter-free postdiction |
+| wₐ | −Psc/Kv | −0.6699 | DESI DR2 (2025) | Parameter-free postdiction |
+| MIRA | (3φ+π)/4 | 1.9989 | f_screen (P9) | Structural |
+| Ω_m,CMB | ω_m/h² (ω_m-direct) | 0.30889 | Planck 2018 | Postdiction |
+| n_s | 1 − φ⁻⁷ | 0.96556 | Planck 2018 | Postdiction |
+| H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Postdiction |
+| r_d | CAMB, ω_m-direct Ω_m,CMB=0.30889 | 147.17 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | 0.3σ postdiction |
+| m_φ | Σm_ν × SOLAR²·KRYSTOS | 41.02 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction (cond. OP-9) |
+| k_fs | free-streaming (m_φ) | 0.762 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction (cond. OP-9) |
 | r | φ⁻¹⁰ | 0.00813 | LiteBIRD (~2032) | Future prediction |
 
 Constant dictionary repo: https://github.com/mikealmeida1721/SSEE-Constant-Dictionary

@@ -38,8 +38,8 @@ With the algebraically-fixed background Ω_m,CMB = 0.30889:
   - EE polarisation: χ²_r = 1.040 vs 1.039 (N = 1967) — essentially identical
   - CMB lensing (9 MV bandpowers): χ²_r = 0.719 vs 0.757 — SSEE marginally
     favoured
-  - Full Planck plik MCMC (k=2 SSEE vs k=6 ΛCDM, N = 2409): best-fit
-    χ² = 2771.3 vs 2773.1 — indistinguishable fits — ΔBIC = −33.0 favouring
+  - Full Planck plik MCMC (k=2 SSEE vs k=6 ΛCDM, N = 2354): best-fit
+    χ² = 2771.3 vs 2773.1 — indistinguishable fits — ΔBIC = −32.9 favouring
     SSEE by parsimony (cross-checked at ΔBIC = −23.9 on plik_lite TTTEEE)
 
 SSEE-V3.6 is not falsified by any of the four CMB observables tested.
@@ -54,7 +54,7 @@ against DESI DR2 and galaxy clusters. The present paper closes the CMB sector.
 
 We note that the ΔBIC comparison presented in §5 uses k=2 parameters for SSEE
 ({A_s, τ}; the remaining four ΛCDM parameters are fixed algebraically) against
-k=6 for ΛCDM, making the ΔBIC = −33.0 result (full plik; −23.9 via plik_lite)
+k=6 for ΛCDM, making the ΔBIC = −32.9 result (full plik; −23.9 via plik_lite)
 a parsimony-driven test in SSEE's favour at statistically indistinguishable
 fit quality. The companion Paper 2 reports a separate ΔBIC = +206 for the full
 background sector under ΛCDM-calibrated Friedmann priors; these two results

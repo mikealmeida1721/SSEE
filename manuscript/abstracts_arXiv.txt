@@ -85,9 +85,9 @@ sum(m_nu)/93.14 = 0.000741. This yields Omega_m,CMB = omega_m/h^2 = 0.30889 at
 the algebraic background H_0 = 3(phi+pi)^2 = 67.962 km/s/Mpc, within 1 sigma of
 the Planck 2018 value (0.3153 +/- 0.0073) — with no matter-rescaling factor.
 Omega_m,dyn (DESI) and Omega_m,CMB (Planck) are thus two independent SSEE
-predictions. A full Planck plik MCMC (k=2 for SSEE vs k=6 for LCDM, N = 2409)
+predictions. A full Planck plik MCMC (k=2 for SSEE vs k=6 for LCDM, N = 2354)
 gives best-fit chi^2 = 2771.3 (SSEE) vs 2773.1 (LCDM) — statistically
-indistinguishable fits — and Delta_BIC = -33.0 favouring SSEE by parsimony
+indistinguishable fits — and Delta_BIC = -32.9 favouring SSEE by parsimony
 (cross-checked at Delta_BIC = -23.9 on the plik_lite TTTEEE likelihood).
 Per-spectrum reduced chi^2 are 1.042 (TT), 1.040 (TE), 1.040 (EE), and 0.719
 (lensing, 9 MV bandpowers) vs. LCDM's 0.757. SSEE-V3.6 is therefore not

@@ -19,9 +19,12 @@ models that predict (w₀, wₐ) algebraically.
 The Structural Self-Energy Expansion (SSEE-V3.6) framework derives the dark
 energy equation of state from the golden ratio φ and π alone:
 w₀ = -Tᵣ/Mᵥ = -0.840 and wₐ = -P_sc/Kᵥ = -0.670, with no parameter fitting.
-This prediction was established in the SSEE Genesis 5.12 compendium
-(Zenodo, doi:10.5281/zenodo.19679049, deposited 2026 January 28) prior to
-the DESI DR2 public release.
+These values are fixed by a closed algebraic dictionary of π and the golden
+ratio φ (archived at Zenodo, doi:10.5281/zenodo.20684908) with no fitting to
+the data. The agreement with the DESI DR2 dynamical-dark-energy trend is
+therefore a parameter-free postdiction; its strength lies in the structural
+rigidity of the closed dictionary, not in temporal priority. A genuinely
+pre-registered test is reserved for the not-yet-public DESI DR3 and Euclid data.
 
 MAIN RESULTS
 
@@ -47,7 +50,7 @@ the dynamical prediction. As demonstrated in the companion Paper 3, the CMB
 matter density is itself an independent algebraic prediction —
 ω_m = ω_b + ω_c + ω_ν with ω_c = KAL₀·ω_b·n_s — giving Ω_m,CMB = ω_m/h² =
 0.30889 with no matter-rescaling factor; the acoustic-scale fit is then
-statistically indistinguishable from ΛCDM (ΔBIC = −33.0 favouring SSEE by
+statistically indistinguishable from ΛCDM (ΔBIC = −32.9 favouring SSEE by
 parsimony), making the framework physically competitive with the standard
 Friedmann model.
 

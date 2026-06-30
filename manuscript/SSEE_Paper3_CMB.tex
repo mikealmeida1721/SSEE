@@ -76,8 +76,8 @@ In a full posterior evaluation with the official off-diagonal \texttt{plik} TTTE
 parameters (with $H_0$, $\omega_b$, $\omega_c$ and $n_s$ algebraically fixed) against
 the $k=6$ $\Lambda$CDM baseline, the two models reach statistically indistinguishable
 best fits ($\chi^2_{\rm SSEE}=2771.3$ vs.\ $\chi^2_{\Lambda\rm CDM}=2773.1$ over
-$N=2409$ data points, $\Delta\chi^2_{\rm BF}=-1.8$), while the parameter-count economy
-yields $\Delta\mathrm{BIC}=-33.0$, decisively favouring SSEE on the Jeffreys scale.
+$N=2354$ data points, $\Delta\chi^2_{\rm BF}=-1.8$), while the parameter-count economy
+yields $\Delta\mathrm{BIC}=-32.9$, decisively favouring SSEE on the Jeffreys scale.
 (A \texttt{plik\_lite} point-estimate cross-check gives a more conservative
 $\Delta\mathrm{BIC}=-23.9$.) The $\Delta\mathrm{BIC}$ is driven by parsimony, not by
 fit quality.
@@ -670,12 +670,12 @@ In the SSEE CMB sector, the dark-energy equation-of-state $(w_0,w_a)$, the spect
 \end{itemize}
 with the $\sim$20 \texttt{plik} nuisance parameters (dust, SZ, CIB, calibration $A_\mathrm{Planck}$) defined by the full likelihood and treated as nuisances common to both models, $\tau$ constrained by the lowl EE (SimAll) data. The likelihood is the full off-diagonal \texttt{plik} TTTEEE evaluated through the \texttt{clipy} pure-Python reimplementation of \texttt{clik} (validated to $|\Delta\ln\mathcal{L}|<10^{-5}$ against the released test point), so no \texttt{clik} binary is required. As an independent cross-check we also run a \emph{validation} chain in which $H_0$ is additionally floated on a flat prior $[64,72]$; that chain recovers $H_0$ at the algebraic anchor (see Fig.~\ref{fig:b1_h0}), confirming that fixing it incurs no loss of fit and that the model count is $k=2=\{A_s,\tau\}$, not $k=3$.
 
-This gives $k_\mathrm{SSEE} = 2$ model parameters ($\log A_s$, $\tau$ --- the only quantities genuinely sampled, with $H_0$ fixed at the algebraic anchor; the $\sim$20 \texttt{plik} nuisance parameters are common to both models and excluded from $\Delta k$), compared to the $\Lambda$CDM run with $k_\mathrm{\Lambda CDM} = 6$ free parameters ($H_0$, $\Omega_b h^2$, $\Omega_c h^2$, $n_s$, $\log A_s$, $\tau$). The $k=2$ vs $k=6$ BIC penalty over the $N=2409$ combined data points is $\Delta k \cdot \ln N = 4 \times \ln(2409) = 31.15$, yielding:
+This gives $k_\mathrm{SSEE} = 2$ model parameters ($\log A_s$, $\tau$ --- the only quantities genuinely sampled, with $H_0$ fixed at the algebraic anchor; the $\sim$20 \texttt{plik} nuisance parameters are common to both models and excluded from $\Delta k$), compared to the $\Lambda$CDM run with $k_\mathrm{\Lambda CDM} = 6$ free parameters ($H_0$, $\Omega_b h^2$, $\Omega_c h^2$, $n_s$, $\log A_s$, $\tau$). The $k=2$ vs $k=6$ BIC penalty over the $N=2354$ combined data points is $\Delta k \cdot \ln N = 4 \times \ln(2354) = 31.06$, yielding:
 \begin{equation}
     \label{eq:bic_b1}
-    \Delta\mathrm{BIC}_{k2} = \Delta\chi^2_\mathrm{BF} - 31.15,
+    \Delta\mathrm{BIC}_{k2} = \Delta\chi^2_\mathrm{BF} - 31.06,
 \end{equation}
-where $\Delta\chi^2_\mathrm{BF} = \chi^2_{\mathrm{SSEE,BF}} - \chi^2_{\Lambda\mathrm{CDM,BF}}$ is the difference in best-fit $\chi^2$ between the two models over the same $N=2409$ data points (evaluated through \texttt{clipy}; no \texttt{clik} binary required).
+where $\Delta\chi^2_\mathrm{BF} = \chi^2_{\mathrm{SSEE,BF}} - \chi^2_{\Lambda\mathrm{CDM,BF}}$ is the difference in best-fit $\chi^2$ between the two models over the same $N=2354$ data points (evaluated through \texttt{clipy}; no \texttt{clik} binary required).
 
 \paragraph{Convergence.}
 Chains are run to Gelman--Rubin criterion $R{-}1 < 0.02$ \citep{GelmanRubin1992} (production run) or $R{-}1 < 0.05$ (validation). The \texttt{ssee\_paper3\_b1\_mcmc.py} script is fully reproducible:
@@ -689,10 +689,10 @@ Table~\ref{tab:b1_constraints} summarises the 68\,\% marginalised posterior cons
 The MCMC best-fit $\chi^2_\mathrm{BF}$ from the full chains yields:
 \begin{equation}
     \label{eq:bic_b1_result}
-    \Delta\mathrm{BIC}_{k2} = \Delta\chi^2_\mathrm{BF} + (2-6)\ln(2409)
-    = \Delta\chi^2_\mathrm{BF} - 31.15,
+    \Delta\mathrm{BIC}_{k2} = \Delta\chi^2_\mathrm{BF} + (2-6)\ln(2354)
+    = \Delta\chi^2_\mathrm{BF} - 31.06,
 \end{equation}
-where $\Delta\chi^2_\mathrm{BF} = \chi^2_{\mathrm{SSEE,BF}} - \chi^2_{\Lambda\mathrm{CDM,BF}}$ over the $N=2409$ combined data points (full \texttt{plik} TTTEEE $2344$ + lowl\,TT $28$ + lowl\,EE $28$ + lensing $9$; the data-vector length, not the SimAll-normalised low-$\ell$ EE $\chi^2$). The production chains give $\chi^2_{\mathrm{SSEE,BF}}=2771.3$ and $\chi^2_{\Lambda\mathrm{CDM,BF}}=2773.1$, i.e.\ $\Delta\chi^2_\mathrm{BF}=-1.8$: SSEE attains a best-fit $\chi^2$ statistically \emph{indistinguishable} from $\Lambda$CDM (the small negative value lies within the chain-minimum uncertainty, and we do \emph{not} claim a superior fit). The $k=2$ versus $k=6$ comparison then gives $\Delta\mathrm{BIC}_{k2}=-33.0$, decisively below the Jeffreys threshold ($\Delta\mathrm{BIC}<-10$) and driven by parameter-count economy rather than fit quality. Even under a hyper-conservative $k=4$ assignment (additionally counting two of the algebraically-fixed inputs, $\omega_b$ and $H_0$, as if they were fitted), $\Delta\mathrm{BIC}_{k4}=\Delta\chi^2_\mathrm{BF}+(4-6)\ln(2409)=-17.4$, still decisively favouring SSEE.
+where $\Delta\chi^2_\mathrm{BF} = \chi^2_{\mathrm{SSEE,BF}} - \chi^2_{\Lambda\mathrm{CDM,BF}}$ over the $N=2354$ combined data points (full \texttt{plik} TTTEEE $2289$ + lowl\,TT $28$ + lowl\,EE $28$ + lensing $9$; the data-vector length, not the SimAll-normalised low-$\ell$ EE $\chi^2$). The production chains give $\chi^2_{\mathrm{SSEE,BF}}=2771.3$ and $\chi^2_{\Lambda\mathrm{CDM,BF}}=2773.1$, i.e.\ $\Delta\chi^2_\mathrm{BF}=-1.8$: SSEE attains a best-fit $\chi^2$ statistically \emph{indistinguishable} from $\Lambda$CDM (the small negative value lies within the chain-minimum uncertainty, and we do \emph{not} claim a superior fit). The $k=2$ versus $k=6$ comparison then gives $\Delta\mathrm{BIC}_{k2}=-32.9$, decisively below the Jeffreys threshold ($\Delta\mathrm{BIC}<-10$) and driven by parameter-count economy rather than fit quality. Even under a hyper-conservative $k=4$ assignment (additionally counting two of the algebraically-fixed inputs, $\omega_b$ and $H_0$, as if they were fitted), $\Delta\mathrm{BIC}_{k4}=\Delta\chi^2_\mathrm{BF}+(4-6)\ln(2354)=-17.3$, still decisively favouring SSEE.
 
 \begin{table}[H]
 \centering
@@ -719,8 +719,8 @@ $\sigma_8$ (derived)  & $0.814 \pm 0.006$  & $0.811 \pm 0.006$ \\
 \midrule
 $\chi^2_\mathrm{BF}$  & $2771.3$           & $2773.1$           \\
 $\Delta\chi^2_\mathrm{BF}$ & $-1.8$        & (reference)        \\
-$\Delta\mathrm{BIC}$ ($k=2$ vs $k=6$, $N=2409$) & $-33.0$ & (reference) \\
-$\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$, $N=2409$) & $-17.4$ & (reference) \\
+$\Delta\mathrm{BIC}$ ($k=2$ vs $k=6$, $N=2354$) & $-32.9$ & (reference) \\
+$\Delta\mathrm{BIC}$ ($k=4$ vs $k=6$, $N=2354$) & $-17.3$ & (reference) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -766,8 +766,8 @@ Method & Spectra & $N$ & $k_{\rm SSEE}$ & $k_{\Lambda\rm CDM}$ & $\Delta\mathrm{
 \midrule
 Diagonal (approx.)        & TT+TE+EE+PP          & 5914 & 2 & 6 & $-34.9$ (SSEE favoured) \\
 \texttt{plik\_lite} point est. & TTTEEE          & 613  & 2 & 6 & $-23.93$ (SSEE decisively favoured) \\
-Full \texttt{plik} MCMC   & TTTEEE+lowl+lensing  & 2409 & 2 & 6 & $\mathbf{-33.0}$ \emph{(canonical)} \\
-Full \texttt{plik} (conserv.) & TTTEEE+lowl+lensing & 2409 & 4 & 6 & $-17.4$ (SSEE strongly favoured) \\
+Full \texttt{plik} MCMC   & TTTEEE+lowl+lensing  & 2354 & 2 & 6 & $\mathbf{-32.9}$ \emph{(canonical)} \\
+Full \texttt{plik} (conserv.) & TTTEEE+lowl+lensing & 2354 & 4 & 6 & $-17.3$ (SSEE strongly favoured) \\
 \bottomrule
 \end{tabular}
 {\footnotesize Diagonal approximation assumes independence across spectra (upper bound on $\chi^2$).
@@ -897,10 +897,12 @@ the Poisson source. Paper~5
 performs this analysis with $\Omega_{m,\mathrm{CMB}}=0.30889$, $\gamma_\mathrm{IS}=0.554$,
 $\sigma_8=0.8136$, finding a mean $f\sigma_8$ tension of $0.70\sigma$ (Paper~5,
 $\approx\Lambda$CDM $0.73\sigma$).
-Paper~6 two-sector gives the same $0.70\sigma$ (at RSD scales $k\ll k_{\rm fs}$
-the $\varphi$-DM clusters as cold matter; the two-sector primarily resolves the
+Paper~6 two-sector gives $0.93\sigma$: the free-streaming that lowers $\sigma_8$
+to $0.748$ reaches inside the $\sigma_8(R{=}8)$ window probed by RSD (half-mode
+$k_{1/2}\simeq0.35\,h/$Mpc), raising the growth-rate tension modestly from the
+$0.70\sigma$ single-sector baseline while it \emph{resolves} the
 $S_8$ lensing tension, $S_{8,\mathrm{eff}}=0.759$, in $0.01\sigma$ agreement with KiDS-1000,
-down from the $3.5\sigma$ single-sector ceiling).
+down from the $3.5\sigma$ single-sector ceiling.
 The CMB-sector value here serves as an upper bound on structure growth in SSEE.
 \end{tcolorbox}
 

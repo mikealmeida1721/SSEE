@@ -78,6 +78,12 @@ de `src/`, o experimentos exploratorios de un solo uso.
   `ssee_paper3_docs_duplicate.bib`, `ssee_paper6_docs_duplicate.bib` (duplicados de `manuscript/`).
 - **Pre-canónico m_φ:** `p6_honest_matrix_PRECANONICAL_2026-06-02.py` (2026-05-25) → Paper 6
   canónico (2026-06-04).
+- **MCMC P6 toy superado (archivado 2026-06-30):** `ssee_paper6_mcmc_toy_superseded.py`
+  (antes `src/p06_phiDM/ssee_paper6_mcmc.py`). **Razón:** parametrización pre-reframe
+  θ=(Ω_φDM, k_fs=0.493, σ₈) con prior 0.1599 y Ω_m,dyn=0.160; daba S₈≈0.817 (2.5σ),
+  contradecía el titular two-sector. **Reemplazado por:** `src/p06_phiDM/ssee_paper6_mcmc_v2.py`
+  (emulador CLASS validado 0.06%, θ=(Ω_φDM, m_φ, A_s), priors planos; Ω_φDM 0.24σ, S₈=0.782,
+  ΔBIC=−14.3) — el que cita el Paper 6 §sec:mcmc.
 - **Scratch exploratorio:** sensibilidad de cúmulos, scans α_M/θ*/σ₈, IS growth, candidatos;
   ningún resultado canónico depende de ellos.
 - **Tooling deprecado (archivado 2026-06-24):** `ssee_audit_consistency.py`, `ssee_precision_audit.py`

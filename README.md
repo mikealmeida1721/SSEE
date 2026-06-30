@@ -155,11 +155,11 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | EE | 1.040 | 1.039 | 1967 |
 | PP (lensing) | 0.719 | 0.757 | 9 |
 | Combined (diagonal) | **1.040** | 1.040 | 5914 |
-| ΔBIC (full plik MCMC, TTTEEE+lowl+lensing, k=2 vs k=6, N=2409) | **−33.0** (SSEE decisively favoured — **canonical**) | — | — |
+| ΔBIC (full plik MCMC, TTTEEE+lowl+lensing, k=2 vs k=6, N=2354) | **−32.9** (SSEE decisively favoured — **canonical**) | — | — |
 | ΔBIC (plik_lite point est., TTTEEE, k=2 vs k=6, N=613) | **−23.9** (cross-check) | — | — |
 | ΔBIC (diagonal TT+TE+EE+PP, k=2 vs k=6, N=5914) | **−34.9** (cross-check) | — | — |
 
-*All values are the canonical ωm-direct CMB fit at the global anchor H₀ = 3(φ+π)² = 67.962, with Ω_m,CMB = ω_m/h² = 0.30889 derived algebraically (no matter-rescaling factor; OP-8 dissolved). SSEE uses its canonical Σm_ν = 0.0690 eV; ΛCDM uses its standard Planck baseline Σm_ν = 0.06 eV (each model with its own neutrino mass — the fair like-for-like comparison). The **titular ΔBIC = −33.0** comes from the full `plik` MCMC (best-fit χ² = 2771.3 vs ΛCDM 2773.1, Δχ²=−1.8 — indistinguishable fits, parsimony-driven). The earlier `plik_lite` Cobaya legacy-MIRA scan (ΔBIC −32.2 at optimum H₀=67.037) is superseded.*
+*All values are the canonical ωm-direct CMB fit at the global anchor H₀ = 3(φ+π)² = 67.962, with Ω_m,CMB = ω_m/h² = 0.30889 derived algebraically (no matter-rescaling factor; OP-8 dissolved). SSEE uses its canonical Σm_ν = 0.0690 eV; ΛCDM uses its standard Planck baseline Σm_ν = 0.06 eV (each model with its own neutrino mass — the fair like-for-like comparison). The **titular ΔBIC = −32.9** comes from the full `plik` MCMC (best-fit χ² = 2771.3 vs ΛCDM 2773.1, Δχ²=−1.8 — indistinguishable fits, parsimony-driven). The earlier `plik_lite` Cobaya legacy-MIRA scan (ΔBIC −32.2 at optimum H₀=67.037) is superseded.*
 
 **Growth structure (Paper 3 §5.4–5.5):**
 
@@ -180,7 +180,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | G = D₁_SSEE/D₁_ΛCDM | 1.0032 ± 0.005 | ~0.3% enhancement (Poisson source Ω_m,CMB = 0.30889) |
 | σ₈_SSEE (single-sector ceiling) | 0.8335 ± 0.006 | ODE linear growth gives 0.8136 |
 | **S₈_SSEE (single-sector ceiling)** | **0.846** | **3.5σ KiDS — the challenge the Paper 6 two-sector resolves** |
-| Mean fσ₈ tension (6 surveys, single-sector) | 0.70σ | → 0.82σ with the Paper 6 two-sector; both tie ΛCDM (0.73σ) |
+| Mean fσ₈ tension (6 surveys, single-sector) | 0.70σ | → 0.93σ with the Paper 6 two-sector (free-streaming lowers σ₈, reaching RSD scales); still <1σ, close to ΛCDM (0.73σ) |
 
 **Diagnostic:** the single-sector model predicts an S₈ *above* weak-lensing surveys (3.5σ KiDS).
 This is the open challenge that motivates the Paper 6 two-sector φ-DM extension, which resolves it (S₈ = 0.759, 0.01σ KiDS).
@@ -199,9 +199,9 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | σ₈_eff (two-sector particle) | 0.748 | — |
 | **S₈ (two-sector particle)** | **0.759** | **0.01σ KiDS-1000 (0.759±0.024) — resolves S₈ lensing tension** |
 | Single-sector linear (cold source) | σ₈=0.8335, S₈=0.846 | 3.5σ — open before two-sector |
-| Mean fσ₈ tension (6 surveys) | 0.82σ | single-sector baseline 0.70σ; ties ΛCDM (0.73σ) |
+| Mean fσ₈ tension (6 surveys) | 0.93σ | single-sector baseline 0.70σ; still <1σ, close to ΛCDM (0.73σ) |
 
-> **Note:** With the forward-predicted particle (m_φ = 41.02 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.759 sits 0.01σ from KiDS-1000, down from the 3.5σ single-sector baseline. The fσ₈ (growth-rate) sector ties ΛCDM (0.82σ vs 0.73σ across six RSD surveys).
+> **Note:** With the forward-predicted particle (m_φ = 41.02 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.759 sits 0.01σ from KiDS-1000, down from the 3.5σ single-sector baseline. The same free-streaming that lowers σ₈ also reaches the σ₈(R=8) window probed by RSD, so the fσ₈ (growth-rate) tension rises from the 0.70σ single-sector baseline to 0.93σ — still <1σ and close to ΛCDM (0.73σ). This is the deliberate trade: lowering σ₈ resolves S₈ (3.5σ→0.01σ) at a ~0.2σ cost in fσ₈.
 
 **Lyman-α compatibility:** φ-DM is a non-thermal condensate. The correct observable is k_fs=0.762 h/Mpc in the matter power spectrum (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
 
@@ -296,7 +296,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 2. **Full causal IS** (Paper 5): IS growth index γ_IS=0.554 is derived analytically. Full Hiscock-Lindblom 1985 treatment for B-mode predictions remains a blocker for LiteBIRD forecasts.
 3. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
 4. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
-5. **CMB ΔBIC status:** The canonical full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6, N=2409) yields $\Delta\mathrm{BIC}=-33.0$ decisively favouring SSEE; cross-checked by the `plik_lite` point estimate ($-23.9$, N=613) and the diagonal approximation ($-34.9$, N=5914). All three agree (Paper 3 §BIC, canonical Σm_ν = 0.0690 eV; ΛCDM at baseline 0.06). The ΔBIC is parsimony-driven (best-fit χ² statistically indistinguishable from ΛCDM), not a claim of superior fit.
+5. **CMB ΔBIC status:** The canonical full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6, N=2354) yields $\Delta\mathrm{BIC}=-32.9$ decisively favouring SSEE; cross-checked by the `plik_lite` point estimate ($-23.9$, N=613) and the diagonal approximation ($-34.9$, N=5914). All three agree (Paper 3 §BIC, canonical Σm_ν = 0.0690 eV; ΛCDM at baseline 0.06). The ΔBIC is parsimony-driven (best-fit χ² statistically indistinguishable from ΛCDM), not a claim of superior fit.
 
 ### Open physics problems (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md))
 | ID | Problem | Status (2026-06-12) |

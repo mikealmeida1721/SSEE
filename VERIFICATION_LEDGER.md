@@ -121,7 +121,7 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | θ* (CAMB, en anchor H_alg 67.962, mnu=0.069) | 0.59668° (100θ*=1.04140) — **1.05σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-06-19 |
 | θ* (CAMB, en posterior 67.159, mnu=0.069) | 0.59536° (100θ*=1.03909) — **6.66σ** (sensibilidad de θ* a H₀; ver V-L4-θ*) | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-06-19 |
 | σ₈ / S₈ SSEE (Paper 5 single-sector, "el desafío") | 0.8335 / 0.846 — **3.5σ KiDS** | `ssee_paper5_IS_perturbations.py` (G=1.011, Ω_m,CMB=0.30889) | 2026-06-19 (canónico; antes 0.820/0.847 @0.3199) |
-| σ_LS (Paper 6, amplitud RSD k<k_fs, fσ₈) | 0.811·G_2s = 0.794 | `ssee_paper6_verification.py` | 2026-06-04 (canónico) |
+| σ₈ para fσ₈ (Paper 6 two-sector) | **0.748** (R=8, CON free-streaming) → tensión media **0.93σ** | `ssee_paper6_verification.py`, `ssee_paper6_mcmc_v2.py` | 2026-06-29 (CORREGIDO: antes "0.811·G_2s=0.794, amplitud RSD k<k_fs" suponía supresión NO alcanza RSD — FALSO; k_half=0.351 muerde DENTRO de la ventana σ₈(R=8), σ₈ cae 6.9% ya a k=0.3; single-sector legítimo 0.70σ con σ₈=0.8136) |
 | σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.748 / 0.759 — **0.01σ KiDS** | `ssee_paper6_canonical_particle.py` (forward CLASS) | 2026-06-19 (canónico SOLAR; antes 0.742/0.766 @36.95) |
 | m_φ (Paper 6 forward-pred, dim. consistente) | 41.02 eV | Σm_ν^act·(SOLAR²·KRYSTOS=594.28), `ssee_core` | 2026-06-19 (canónico; era 36.9463 vía Ω⁴+AURA·KAL) |
 | k_fs (Paper 6, output CLASS) | 0.762 h/Mpc | CLASS (`calibrate_wdm_alpha.py`, α=1.108 Mpc/h) | 2026-06-19 (canónico) |

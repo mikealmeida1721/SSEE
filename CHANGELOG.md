@@ -12,8 +12,8 @@
   Ω_m,CMB = Ω_m,dyn × MIRA = 0.3199 is retired). MIRA = 1.9989 survives only in the
   P9 screening fraction f_screen.
 - **CMB ΔBIC (canonical):** full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6,
-  N=2409) gives χ²_BF = 2771.3 (SSEE) vs 2773.1 (ΛCDM) — indistinguishable fits —
-  and **ΔBIC = −33.0** (parsimony-driven). Cross-checks: −23.9 (plik_lite, N=613),
+  N=2354) gives χ²_BF = 2771.3 (SSEE) vs 2773.1 (ΛCDM) — indistinguishable fits —
+  and **ΔBIC = −32.9** (parsimony-driven). Cross-checks: −23.9 (plik_lite, N=613),
   −34.9 (diagonal, N=5914). The earlier legacy-MIRA Cobaya −32.2 is superseded.
 - **φ-DM canonical particle:** m_φ = Σm_ν·(SOLAR²·KRYSTOS) = 0.06902 eV × 594.28 =
   **41.02 eV** (retired 36.95 and 42.47); k_fs = **0.762 h/Mpc**; CLASS forward

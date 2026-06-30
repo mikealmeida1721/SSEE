@@ -121,7 +121,11 @@ to $\kfs = 0.762\,h/$Mpc --- the primary falsifiable prediction for DESI~Y3 / Eu
 (2026--2028). Because $m_\phi\simeq 41$~eV makes the particle non-relativistic at
 $z_{\rm nr}\sim10^5 \gg z_{\rm rec}$, it behaves as cold dark matter for the CMB: the
 acoustic peaks shift by only $\sim1\,\ell$ relative to
-$\Lambda$CDM, and the growth-rate sector is unchanged. We explicitly note that the reported TT residual is
+$\Lambda$CDM. The same free-streaming that resolves $S_8$ also reaches the
+$\sigma_8(R{=}8)$ window probed by RSD, so the two-sector $f\sigma_8$ tension rises
+modestly to $0.93\sigma$ (from the $0.70\sigma$ single-sector baseline), still
+$<1\sigma$ and close to $\Lambda$CDM ($0.73\sigma$): the deliberate cost of lowering
+$\sigma_8$ to fix the lensing amplitude. We explicitly note that the reported TT residual is
 computed against our own CLASS $\Lambda$CDM rather than a full Planck \texttt{plik}
 likelihood with covariance; a paper-grade CMB validation is deferred.
 \end{abstract}
@@ -158,7 +162,10 @@ $\Omega_{\rm m,CMB} = \omega_m/h^2 = 0.309$ in the Poisson source,
 yielding $\mathcal{G} = D_1^{\rm SSEE}/D_1^{\Lambda{\rm CDM}} = 1.0032$ (slight enhancement),
 $\sigma_8 = 0.834$, and a mean $f\sigma_8$ tension of $0.70\sigma$ across six RSD surveys
 \citep{Beutler2012,Howlett2015,Alam2017,Hou2021} --- essentially the same as
-$\Lambda$CDM ($0.73\sigma$).  The growth-rate sector is therefore resolved.
+$\Lambda$CDM ($0.73\sigma$).  The growth-rate sector is therefore already
+consistent at the single-sector level; the two-sector free-streaming introduced
+below lowers $\sigma_8$ to resolve $S_8$ and, since that suppression reaches RSD
+scales, raises the $f\sigma_8$ tension modestly to $0.93\sigma$ (still $<1\sigma$).
 
 The remaining observational challenge is the \emph{lensing amplitude}: the
 single-sector $S_8 = 0.834 \times \sqrt{0.309/0.3} = 0.846$ lies $3.5\sigma$ above
@@ -614,18 +621,21 @@ large (RSD) scales---not a free normalisation.
 \label{subsec:fsig8}
 
 Table~\ref{tab:fsig8} compares SSEE against six RSD surveys and $\Lambda$CDM.
-Because the $\phi$-DM clusters as cold matter on RSD scales ($k < k_{\rm fs}$),
-the single-sector and two-sector predictions coincide; we therefore quote a
-single SSEE column (amplitude $\sigls = 0.814$).
+The two-sector free-streaming lowers $\sigma_8$ to $0.748$; because this
+suppression reaches inside the $\sigma_8(R{=}8)$ window that RSD probes
+(half-mode $k_{1/2}\simeq0.35\,h/{\rm Mpc}$), the two-sector prediction is
+suppressed relative to the single-sector baseline ($\sigls = 0.814$). We quote
+the two-sector amplitude ($\sigma_8 = 0.748$) as the titular SSEE column.
 
 \begin{table}[htbp]
   \centering
   \caption{$f\sigma_8$ predictions vs.\ observations. Survey values from
     \citet{Beutler2012}, \citet{Howlett2015}, \citet{Alam2017},
     \citet{Hou2021} --- the same canonical six-point set used in Paper~5.
-    SSEE uses the large-scale clustering amplitude $\sigls = 0.814$
-    ($\Omega_m = 0.309$ flat background); single- and two-sector coincide on
-    RSD scales (the free-streaming suppression enters only $S_8$).}
+    SSEE column is the two-sector amplitude $\sigma_8 = 0.748$ (with
+    free-streaming; $\Omega_m = 0.309$ flat background); the single-sector
+    baseline ($\sigma_8 = 0.814$) gives $0.70\sigma$. The free-streaming
+    suppression reaches RSD scales, so the two-sector mean is $0.93\sigma$.}
   \label{tab:fsig8}
   \begin{tabularx}{\textwidth}{l c c X c X c}
     \toprule
@@ -633,25 +643,28 @@ single SSEE column (amplitude $\sigls = 0.814$).
     \cmidrule(lr){4-5}\cmidrule(lr){6-7}
     & & & Pred & $\sigma$ & Pred & $\sigma$ \\
     \midrule
-    6dFGRS     & 0.067 & 0.423 & 0.436 & $-0.24\sigma$ & 0.444 & $-0.38\sigma$ \\
-    SDSS MGS   & 0.150 & 0.490 & 0.449 & $+0.28\sigma$ & 0.459 & $+0.22\sigma$ \\
-    BOSS DR12  & 0.380 & 0.497 & 0.470 & $+0.61\sigma$ & 0.476 & $+0.46\sigma$ \\
-    BOSS DR12  & 0.510 & 0.458 & 0.471 & $-0.35\sigma$ & 0.474 & $-0.43\sigma$ \\
-    BOSS DR12  & 0.610 & 0.436 & 0.469 & $-0.96\sigma$ & 0.469 & $-0.97\sigma$ \\
-    eBOSS DR16 & 1.480 & 0.462 & 0.384 & $+1.73\sigma$ & 0.377 & $+1.90\sigma$ \\
+    6dFGRS     & 0.067 & 0.423 & 0.401 & $+0.40\sigma$ & 0.444 & $-0.38\sigma$ \\
+    SDSS MGS   & 0.150 & 0.490 & 0.413 & $+0.53\sigma$ & 0.459 & $+0.22\sigma$ \\
+    BOSS DR12  & 0.380 & 0.497 & 0.432 & $+1.44\sigma$ & 0.476 & $+0.46\sigma$ \\
+    BOSS DR12  & 0.510 & 0.458 & 0.433 & $+0.66\sigma$ & 0.474 & $-0.43\sigma$ \\
+    BOSS DR12  & 0.610 & 0.436 & 0.431 & $+0.15\sigma$ & 0.469 & $-0.97\sigma$ \\
+    eBOSS DR16 & 1.480 & 0.462 & 0.353 & $+2.42\sigma$ & 0.377 & $+1.90\sigma$ \\
     \midrule
     \multicolumn{2}{l}{\textbf{Mean $|\sigma|$}} & &
-      \multicolumn{2}{c}{\textbf{0.70$\sigma$}} &
+      \multicolumn{2}{c}{\textbf{0.93$\sigma$}} &
       \multicolumn{2}{c}{\textbf{0.73$\sigma$}} \\
     \bottomrule
   \end{tabularx}
 \end{table}
 
 \noindent
-SSEE gives a mean $f\sigma_8$ tension of $0.70\sigma$, marginally tighter than
-$\Lambda$CDM ($0.73\sigma$). The growth rate is essentially unchanged from
-$\Lambda$CDM: the two-sector structure does not further reduce the RSD tension
---- which was already low at the single-sector level --- but it \emph{resolves}
+At the single-sector level (no free-streaming) SSEE gives a mean $f\sigma_8$
+tension of $0.70\sigma$, marginally tighter than $\Lambda$CDM ($0.73\sigma$).
+The two-sector free-streaming lowers $\sigma_8$ from $0.834$ to $0.748$, and since
+this suppression reaches inside the $\sigma_8(R{=}8)$ window that RSD probes
+(half-mode $k_{1/2}\simeq0.35\,h/{\rm Mpc}$), the two-sector $f\sigma_8$ tension
+rises to $0.93\sigma$ --- still below $1\sigma$. This is the deliberate trade:
+the same lowering of $\sigma_8$ that costs $\sim0.2\sigma$ in RSD \emph{resolves}
 the $S_8$ lensing tension: a direct two-sector \textsc{class} run with the
 particle's own relic
 tension: a direct two-sector \textsc{class} run with the particle's own relic
@@ -725,12 +738,12 @@ so all background tests pass without modification.
     $c^2_{s,\rm eff}$ (IS) & $0$ (exact) — all modes stable & 5 \\
     $S_8$ vs KiDS & $3.5\sigma$ (Paper~5 corrected; vs $\sim3\sigma$ $\Lambda$CDM) & 5 \\
     \midrule
-    \textbf{$\fsig$ mean tension} & \textbf{$0.70\sigma$ (single $=$ two-sector; $\Lambda$CDM: $0.73\sigma$)} & \textbf{6} \\
+    \textbf{$\fsig$ mean tension} & \textbf{$0.93\sigma$ two-sector (single-sector $0.70\sigma$; $\Lambda$CDM: $0.73\sigma$)} & \textbf{6} \\
     \textbf{$\sigeff$ (two-sector \textsc{class})} & \textbf{$0.748$; $S_8=0.759$ ($0.01\sigma$ KiDS --- \emph{resolves})} & \textbf{6} \\
     \textbf{$\alpha$ (\textsc{class} output, not fit)} & \textbf{$1.108\,\mathrm{Mpc}/h$; $f_\phi=0.755$} & \textbf{6} \\
     \textbf{$\kfs$ (free-streaming prediction)} & \textbf{$0.762\,h/\mathrm{Mpc}$ ($k_{1/2}^{\rm CLASS}=0.339$)} & \textbf{6} \\
     \textbf{$m_\phi$ (forward prediction)} & \textbf{$41.02\,\mathrm{eV} = \mnu^{\rm active}(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$} & \textbf{6} \\
-    \textbf{MCMC $\chi^2_r$; $\Delta$BIC} & \textbf{$0.497$; $-12.1$ (SSEE favoured under this test)} & \textbf{6} \\
+    \textbf{MCMC $\chi^2$ (8 data); $\Delta$BIC} & \textbf{$7.65$; $-14.3$ (SSEE favoured; flat priors, validated \textsc{class} emulator)} & \textbf{6} \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -746,7 +759,7 @@ full redshift range and the tension summary for the three models.
   \includegraphics[width=\textwidth]{fig_paper6_verification}
   \caption{
     \textbf{Left}: $f\sigma_8(z)$ predictions for the two-sector \SSEE\ model
-    (blue solid, mean $0.70\sigma$), \SSEE\ Paper~5 base (red dashed, $0.70\sigma$),
+    (blue solid, mean $0.93\sigma$), \SSEE\ Paper~5 single-sector base (red dashed, $0.70\sigma$),
     and $\Lambda$CDM (green dotted, $0.73\sigma$), compared to six RSD surveys (black
     points).
     \textbf{Right}: Mean $|f\sigma_8|$ tension bar chart for the three models.
@@ -759,15 +772,23 @@ full redshift range and the tension summary for the three models.
 \section{Bayesian MCMC Validation}
 \label{sec:mcmc}
 
-To complement the algebraic derivation, we perform an \texttt{emcee}
-\citep{emcee} MCMC analysis with $N_w = 100$ walkers and $N_\mathrm{steps} =
-25000$ steps (burn-in 6000), sampling three parameters:
-$\theta = (\Omega_{\varphi\mathrm{DM}},\, k_\mathrm{fs},\, \sigma_{8,\mathrm{in}})$.
-The background ($H_0$, $w_0$, $w_a$, $\Omega_{m,\mathrm{dyn}}$) is held fixed at
-the algebraic values. Data: the six canonical $f\sigma_8$ surveys of Paper~5, the KiDS-1000
-cosmic-shear constraint $S_8 = 0.759^{+0.024}_{-0.021}$ \citep{KiDS2021}
-expressed as $\sigma_8 = S_8\,(\Omega_m/0.3)^{-1/2} = 0.748 \pm 0.020$ at
-$\Omega_m = 0.30889$, and DES Y3 $S_8 = 0.776 \pm 0.017$.
+To complement the algebraic derivation with a Bayesian consistency test, we
+perform an \texttt{emcee} \citep{emcee} MCMC in which the two-sector growth
+observables are computed from a \emph{validated \textsc{class} emulator} rather
+than a phenomenological transfer function. We build a $22\times20$ grid of
+direct \textsc{class} two-sector runs over $(\Omega_{\varphi\mathrm{DM}},\,m_\phi)$
+at the canonical $\omega_m$-direct background ($\Omega_{m,\mathrm{CMB}}=0.30889$,
+$w_0=-0.840$, $w_a=-0.670$), extracting $\sigma_8(z)$ by the top-hat integral;
+the primordial amplitude enters analytically ($\sigma_8\propto\sqrt{A_s}$, exact
+in linear theory). The emulator reproduces direct \textsc{class} to a mean error
+of $0.06\%$ (maximum $0.11\%$) at ten posterior samples. We float
+$\theta = (\Omega_{\varphi\mathrm{DM}},\, m_\phi,\, A_s)$ with \emph{flat} priors
+on the $\phi$-DM sector --- deliberately \emph{not} centred on the algebraic
+values, so the data alone decide where the posterior lands --- and a Planck prior
+on the amplitude ($10^9 A_s = 2.101\pm0.030$). Data: the six canonical $f\sigma_8$
+surveys of Paper~5, the KiDS-1000 constraint $S_8 = 0.759\pm0.0225$
+\citep{KiDS2021}, and DES Y3 $S_8 = 0.776\pm0.017$. The chain uses $N_w=60$
+walkers $\times\,N_\mathrm{steps}=12000$ (burn-in 3000).
 
 \subsection{Posterior results}
 \label{subsec:mcmc_results}
@@ -783,44 +804,49 @@ $\Omega_m = 0.30889$, and DES Y3 $S_8 = 0.776 \pm 0.017$.
     Parameter & Posterior & Algebraic & Tension & Prior \\
     \midrule
     $\Omega_{\varphi\mathrm{DM}}$
-      & $0.1614^{+0.0106}_{-0.0107}$
-      & $0.1599$
-      & $0.1\sigma$
-      & $\mathcal{N}(0.160,\,0.015^2)$ \\
-    $k_\mathrm{fs}$ [h/Mpc]
-      & $0.491^{+0.089}_{-0.088}$
-      & $0.490$
-      & $0.0\sigma$
-      & $\mathcal{U}(0.1,\,1.5)$ \\
-    $\sigma_{8,\mathrm{in}}$
-      & $0.8102^{+0.0058}_{-0.0058}$
-      & Planck: $0.811$
-      & $0.2\sigma$
-      & $\mathcal{N}(0.811,\,0.006^2)$ \\
+      & $0.165^{+0.059}_{-0.075}$
+      & $0.149$
+      & $0.24\sigma$
+      & $\mathcal{U}(0.04,\,0.25)$ \\
+    $m_\phi$ [eV]
+      & $51.9^{+13.8}_{-18.6}$
+      & $41.02$
+      & $0.67\sigma$
+      & $\mathcal{U}(8,\,100)$ \\
+    $10^9 A_s$
+      & $2.097^{+0.030}_{-0.030}$
+      & Planck: $2.101$
+      & —
+      & $\mathcal{N}(2.101,\,0.030^2)$ \\
     \midrule
     $\sigma_{8,\mathrm{eff}}$ (derived)
-      & $0.790^{+0.013}_{-0.013}$
-      & $0.789$
+      & $0.770^{+0.013}_{-0.013}$
+      & forward $0.748$
       & —
       & — \\
     $S_{8,\mathrm{eff}}$ (derived)
-      & $0.817^{+0.013}_{-0.013}$
-      & $0.834$
-      & $2.5\sigma$ KiDS
+      & $0.782^{+0.013}_{-0.013}$
+      & forward $0.759$
+      & $\sim1\sigma$ KiDS
+      & — \\
+    $k_\mathrm{fs}$ [h/Mpc] (derived)
+      & $0.763^{+0.10}_{-0.10}$
+      & $0.762$
+      & $0.01\sigma$
       & — \\
     \midrule
-    $\chi^2_r$ (8 data, 3 par.)
-      & $0.497$
-      & —
+    $\chi^2$ (8 data): forward / post.
+      & $9.94$ / $7.65$
+      & $\Lambda$CDM: $26.14$
       & —
       & — \\
-    $\Delta\mathrm{BIC}$ (SSEE$-\Lambda$CDM)
-      & $-12.1$
+    $\Delta\mathrm{BIC}$ (post.\ $k{=}3-\Lambda$CDM $k{=}1$)
+      & $-14.3$
       & —
       & SSEE favoured
       & — \\
     Acceptance fraction
-      & $0.513$
+      & $0.594$
       & —
       & —
       & — \\
@@ -828,40 +854,39 @@ $\Omega_m = 0.30889$, and DES Y3 $S_8 = 0.776 \pm 0.017$.
   \end{tabular}
 \end{table}
 
-\emph{Parametrization note.} The posterior summary of Table~\ref{tab:mcmc} was
-obtained for the earlier phenomenological parametrization
-($k_\mathrm{fs}\simeq0.49\,h/\mathrm{Mpc}$, $\sigeff\simeq0.79$) and is retained here
-as the Bayesian consistency check of the two-sector \emph{structure}. The canonical
-forward-prediction chain of Section~\ref{sec:mass} ($m_\phi = 41.02$~eV,
-$\kfs = 0.762\,h/\mathrm{Mpc}$, $\sigeff = 0.748$) supersedes the central values; a
-re-run of the chain under the canonical particle is deferred to the companion
-analysis. The conclusion below --- that the data are consistent with all sector
-parameters being fixed by $\varphi$ and $\pi$ --- is unchanged.
+With flat priors on the $\phi$-DM sector, the data \emph{independently} land on
+the algebraic forward point: $\Omega_{\varphi\mathrm{DM}}$ at $0.24\sigma$ and
+$m_\phi$ at $0.67\sigma$ of the values fixed by $\varphi$ and $\pi$. Because the
+priors are not centred on the answer, this is a genuine consistency (not
+fine-tuning) result; the derived free-streaming scale $k_\mathrm{fs}=0.763\,h/$Mpc
+recovers the algebraic $0.762$ at $0.01\sigma$.
 
-The posteriors recover the (phenomenological) algebraic predictions at
-$\lesssim 0.1\sigma$,
-confirming that the data are consistent with \emph{all} SSEE parameters
-being determined purely from $\varphi$ and $\pi$.  The $\Delta\mathrm{BIC} = -12.1$
-result (``decisive'' on the Jeffreys scale) favours SSEE over $\Lambda$CDM
-despite having $k_\mathrm{SSEE}=1$ free sector parameter vs $k_{\Lambda\mathrm{CDM}}=0$,
-because the lower $\chi^2_r = 0.497$ more than compensates the BIC penalty of
-$\ln(N_\mathrm{data}) \approx 2.1$.
+Two honest caveats. First, the MCMC --- free to float the amplitude --- prefers
+$\sigma_{8,\mathrm{eff}}=0.770$ and $S_{8,\mathrm{eff}}=0.782$, slightly above the
+zero-fit forward value $S_8 = 0.759$ (the joint fit raises $A_s$ marginally to
+balance $f\sigma_8$); both nonetheless resolve the $\Lambda$CDM $S_8 = 0.831$
+tension, landing near the KiDS-1000 value at $\sim1\sigma$. Second, against
+$\Lambda$CDM held at its Planck values on this growth$+$lensing dataset
+($\chi^2 = 26.14$, dominated by the $S_8$ tension), SSEE gives
+$\Delta\chi^2 = -16.2$ at the forward point and a parsimony-penalised
+$\Delta\mathrm{BIC} = -14.3$, favouring SSEE even after charging it the three
+floated parameters. The emulator error ($0.06\%$) is validated against direct
+\textsc{class} at posterior samples and reported explicitly, so the inference does
+not rest on an unverified surrogate.
 
-Figure~\ref{fig:mcmc_corner} shows the MCMC corner plot and the posterior
-$f\sigma_8(z)$ confidence bands.
+Figure~\ref{fig:mcmc_corner} shows the posterior corner plot.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.48\textwidth]{fig_paper6_mcmc}
-  \hfill
-  \includegraphics[width=0.48\textwidth]{fig_paper6_fsig8_mcmc}
-  \caption{\textbf{Left}: MCMC posterior corner plot for
-    $(\Omega_{\varphi\mathrm{DM}}, k_\mathrm{fs}, \sigma_{8,\mathrm{in}})$.
-    Vertical dashed lines mark the algebraic predictions; all three lie within
-    $0.1\sigma$ of the posterior medians.
-    \textbf{Right}: $f\sigma_8(z)$ posterior median (blue solid) with 68\%
-    and 95\% credible bands (shaded), compared to six RSD surveys (black
-    points) and $\Lambda$CDM (green dotted). $\chi^2_r = 0.497$.}
+  \includegraphics[width=0.72\textwidth]{fig_paper6_mcmc_v2_corner}
+  \caption{MCMC posterior for $(\Omega_{\varphi\mathrm{DM}},\, m_\phi,\, 10^9 A_s)$
+    from the validated \textsc{class} emulator with \emph{flat} $\phi$-DM priors.
+    Orange lines mark the algebraic forward predictions
+    ($\Omega_{\varphi\mathrm{DM}}=0.149$, $m_\phi=41.02$~eV); both lie inside the
+    $68\%$ credible region ($0.24\sigma$ and $0.67\sigma$). The posterior is
+    unimodal; the $\Omega_{\varphi\mathrm{DM}}$--$m_\phi$ degeneracy is physical
+    (higher mass $\approx$ lower fraction for equal small-scale suppression).
+    Emulator error vs.\ direct \textsc{class}: $0.06\%$ mean.}
   \label{fig:mcmc_corner}
 \end{figure}
 
@@ -885,7 +910,7 @@ and the growth rate is reduced to the $\Lambda$CDM level.
   \midrule
   $\sigeff$ & $0.834$ & $0.748$ (\textsc{class}) & $0.811$ \\
   $S_8$ vs KiDS & $3.5\sigma$ & $0.01\sigma$ & $\sim3\sigma$ \\
-  $\fsig$ mean & $0.70\sigma$ & $0.70\sigma$ & $0.73\sigma$ \\
+  $\fsig$ mean & $0.70\sigma$ & $0.93\sigma$ & $0.73\sigma$ \\
   New parameters & 0 & 0 & — \\
   \bottomrule
 \end{tabular}
@@ -895,11 +920,15 @@ and the growth rate is reduced to the $\Lambda$CDM level.
 Two results sit side by side. First, the amplitude: the forward two-sector
 \textsc{class} run yields $\sigeff = 0.748$ and $S_8 = 0.759$, within
 $0.01\sigma$ of the KiDS-1000 value --- the $S_8$ tension is \emph{resolved},
-with no parameter tuned to the lensing data. Second, the growth rate: the mean
-$f\sigma_8$ tension is $0.70\sigma$, comparable to the $\Lambda$CDM
-reference of $0.73\sigma$ under the same survey set and error model (the
-free-streaming suppression does not reach RSD scales, so $f\sigma_8$ is
-unchanged from the single-sector result). The
+with no parameter tuned to the lensing data. Second, the growth rate: the same
+free-streaming that lowers $\sigma_8$ also bites \emph{inside} the $\sigma_8(R=8\,h^{-1}{\rm Mpc})$
+window probed by RSD --- the half-mode $k_{1/2}\simeq0.35\,h/{\rm Mpc}$ lies within it,
+and $\sigma_8(R{=}8)$ is suppressed by $\sim7\%$ already at $k\lesssim0.3\,h/{\rm Mpc}$ ---
+so the two-sector $f\sigma_8$ tension rises modestly from the single-sector
+$0.70\sigma$ to $0.93\sigma$, still below $1\sigma$ and close to the
+$\Lambda$CDM reference of $0.73\sigma$ under the same survey set and error model.
+This is the honest cost of resolving $S_8$: lowering $\sigma_8$ helps the lensing
+amplitude decisively ($3.5\sigma\!\to\!0.01\sigma$) at a small price in RSD. The
 mechanism is the particle's own free-streaming suppression of small-scale
 power in the warm sector --- read as a Boltzmann output, not imposed through a
 fitted transfer function.
@@ -1129,7 +1158,7 @@ relic abundance integral, not the field's identity.
       the lensing tension at the linear level. If future Euclid weak-lensing
       constraints confirm $S_8 < 0.74$ or $S_8 > 0.80$, the two-sector model is
       falsified.
-    \item \textbf{$\fsig$ at $0.70\sigma$}: the two-sector $\fsig$ prediction is
+    \item \textbf{$\fsig$ at $0.93\sigma$}: the two-sector $\fsig$ prediction is
       testable with DESI Y5 RSD measurements (2026--2027). A confirmed
       $f\sigma_8 > 0.47$ at $z = 0.15$ would tension the model at $> 1\sigma$.
     \item \textbf{Background conserved}: $H_0 = 67.96$, $(w_0, w_a) = (-0.840, -0.670)$,
@@ -1210,8 +1239,9 @@ We have proposed a phenomenological two-sector resolution for the $f\sigma_8$ gr
   \item \textbf{Verification (\textsc{class}, zero fitting)}: the two-sector run
     gives $\sigeff = 0.748$ and $S_8 = 0.759$ ($0.01\sigma$ KiDS,
     \emph{resolving} the lensing tension vs.\ $\Lambda$CDM $\sim3\sigma$) and
-    $f\sigma_8$ mean tension $\mathbf{0.70\sigma}$
-    (Paper~5 single-sector baseline: $0.70\sigma$; comparable to $\Lambda$CDM
+    $f\sigma_8$ mean tension $\mathbf{0.93\sigma}$
+    (single-sector baseline: $0.70\sigma$; the free-streaming that resolves $S_8$
+    raises this modestly, still $<1\sigma$, close to $\Lambda$CDM
     $0.73\sigma$). The CMB acoustic peaks ($\ell = 219/533/807$) and RMS$(TT)
     = 0.93\%$ vs.\ $\Lambda$CDM are conserved because $m_\phi \approx 37$~eV is
     non-relativistic well before recombination. All background tests — BAO

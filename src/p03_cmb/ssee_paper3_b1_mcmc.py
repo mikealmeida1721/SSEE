@@ -132,11 +132,14 @@ THEORY_CAMB = {
 }
 
 # Effective data points for BIC (full plik suite):
-#   plik full TTTEEE high-ℓ  ≈ 6413 multipole bins (TT+TE+EE)
+#   plik full TTTEEE high-ℓ  = 2289 BINNED bandpowers (verificado de clipy:
+#     data_bandpowers.size=2289 y siginv shape (2289,2289). El 6413 anterior
+#     contaba multipolos SIN binnear (ℓ=30–2508 × espectros) — NO los datos
+#     que entran al χ². Medido 2026-06-28 del clik plik_rd12_HM_v22b_TTTEEE.)
 #   lowl TT  (ℓ=2–29)          = 28 bins
 #   lowl EE  (ℓ=2–29)          = 28 bins
 #   lensing.native              = 9 bandpower bins
-N_DATA = 6413 + 28 + 28 + 9  # = 6478
+N_DATA = 2289 + 28 + 28 + 9  # = 2354
 
 # ---------------------------------------------------------------------------
 # Build Cobaya info dicts

@@ -35,8 +35,8 @@ canonical:
   sigma8_single_ceiling: 0.8335   # σ8 todo-frío (techo CLASS; era 0.820 vía ODE P5)
   S8_single_ceiling:   0.8458     # 3.5σ KiDS-1000 (0.759±0.024) — "el desafío" que el two-sector baja
   G_growth:            1.0032     # D₁_SSEE/D₁_ΛCDM (Paper 5 ODE @ Ω_m,cosm=0.30889; era 1.011 @0.31983 — SÍ depende del fondo, que bajó en el reframe ω_m-directo)
-  fsigma8_two_sector_sigma: 0.70  # P6 fσ8 mean @ Ω_m,cosm=0.30889 (=single-sector; era 0.82 bug fondo no-plano, 0.76 viejo)
-  fsigma8_single_sigma:     0.70  # P5 single-sector ODE fσ8 mean @ 0.30889 (era 0.74 @0.31983; el 2.67 era Ω_m=0.160 no canónico)
+  fsigma8_two_sector_sigma: 0.93  # P6 fσ8 mean two-sector σ8=0.748 CON free-streaming (CORREGIDO 2026-06-29; forward ODE 0.933, MCMC v2 CLASS 0.946; antes 0.70 usaba σ8=0.8136 single = espurio)
+  fsigma8_single_sigma:     0.70  # P5 single-sector σ8=0.8136 SIN free-streaming (correcto; ≠ two-sector: el free-streaming sube fσ8 0.70→0.93)
 
   # Cascada Hubble (reframe 2026-06-17: H global = H_alg = 67.962; Fase B VERIFICADO)
   H_global_km_s_Mpc:   67.962     # H global de fondo = H_alg (base de la cascada)
@@ -80,8 +80,8 @@ canonical:
   # Cobaya+clipy, SSEE k=2 (H₀ FIJO 67.962) vs ΛCDM k=6. Chains: src/results/chains/ssee_cmb_k2.{1-4}, lcdm_cmb.{1-4}
   chi2_CMB_SSEE_fullplik: 2771.3  # SSEE k=2 best-fit (full likelihood)
   chi2_CMB_LCDM_fullplik: 2773.1  # ΛCDM k=6 best-fit; Δχ²_BF=−1.8 (indistinguible; NO se reclama mejor fit)
-  N_data_fullplik:        2409    # TTTEEE 2344 + lowlTT 28 + lowlEE 28 + lensing 9
-  Delta_BIC_CMB_fullplik: -33.0   # = −1.8 + (2−6)ln(2409) → TITULAR (parsimonia, Jeffreys decisivo)
+  N_data_fullplik:        2354    # TTTEEE 2289 (VERIFICADO clipy data_bandpowers/siginv 2289×2289, 2026-06-28) + lowlTT 28 + lowlEE 28 + lensing 9. (Antes 2409 con high-ℓ≈2344 estimado; 6478 del script b1 era multipolos sin binnear — bug corregido)
+  Delta_BIC_CMB_fullplik: -32.9   # = −1.81 + (2−6)ln(2354) → TITULAR (parsimonia, Jeffreys decisivo). Δχ²=−1.81 de cadenas reales (χ²_SSEE=2771.30, χ²_LCDM=2773.11). Robusto: con N∈[2289,2409] da −32.7..−33.0
   # r_d / θ* — CAMB en el punto reframe (ω_b,ω_c algebraicos FIJOS, H=67.962).
   # log: results/logs/p3_rd_reframe_omega_m.log  (script run_p3_rd_reframe.py)
   # SALE DIRECTO sin mapping MIRA: la dicotomía vieja "175 puro / 147.6 mapped" se disuelve con OP-8.

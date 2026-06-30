@@ -147,24 +147,27 @@ fσ₈(z=0.5) = 0.341                 [mean 2.67σ, 6 surveys — baseline for P
 
 ### Paper 6 — φ-DM two-sector
 ```bash
-python3 src/ssee_paper6_verification.py
-python3 src/ssee_paper6_mcmc.py    # 64 walkers × 15000 steps
+python3 src/p06_phiDM/ssee_paper6_verification.py
+python3 src/p06_phiDM/ssee_paper6_mcmc_grid.py   # grilla CLASS (Ω_φDM, m_φ)
+python3 src/p06_phiDM/ssee_paper6_mcmc_v2.py     # emulador; reemplaza al toy archivado
 ```
 Expected output (verification):
 ```
-m_φ = 36.95 eV (algebraic, zero free parameters)
-k_fs = 0.659 h/Mpc
+m_φ = 41.02 eV = Σm_ν × (SOLAR²·KRYSTOS)  (algebraic, zero free parameters)
+k_fs = 0.762 h/Mpc  (falsable DESI Y3/Euclid 2026–2028)
 Ω_CDM = 0.160050
-Ω_φDM = 0.159878
-Ω_total = 0.319928 ≈ Ω_m,CMB
-σ₈_eff = 0.737  (S₈ = 0.761, 2.29σ DES)
-Mean fσ₈ tension: 0.50σ (was 2.56σ, single-sector baseline corrected)
+Ω_φDM = 0.148844
+Ω_total = 0.308895 ≈ Ω_m,CMB (ω_m-directo)
+σ₈_eff = 0.7480  (CLASS forward two-sector, free-streaming)
+S₈_eff = 0.7590  (0.00σ KiDS-1000 — resuelve tensión S₈)
+Mean fσ₈ tension: 0.93σ two-sector (σ₈=0.748)  [single-sector 0.70σ; ΛCDM 0.73σ]
 ```
-Expected output (MCMC):
+Expected output (MCMC v2, emulador CLASS):
 ```
-Ω_φDM = 0.161 ± 0.011
-ΔBIC = −12.1  [SSEE favoured]
-χ²_r = 0.497
+Ω_φDM = 0.165  (0.24σ del algebraico 0.14889)
+m_φ   = 51.9 eV (0.67σ del algebraico 41.02)
+S₈    = 0.782
+ΔBIC = −14.3  [SSEE favoured]
 ```
 
 ### Paper 7 — Canonical EFT βc plateau test

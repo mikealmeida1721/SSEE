@@ -22,7 +22,10 @@ Física del modelo dos-sectores con partícula φ-DM canónica
   El growth-factor dos-sectores G_2s sólo fija la FORMA de f(z),
   no la amplitud (cross-check secundario: 0.811×G_2s).
 
-  Tensión media fσ₈ (6 surveys RSD): ~0.8σ  (empata ΛCDM 0.73σ).
+  Tensión media fσ₈ (6 surveys RSD), two-sector σ₈=0.748 (CON free-streaming):
+    0.93σ  (single-sector σ₈=0.8136 da 0.70σ; ΛCDM 0.73σ). El two-sector paga
+    ~0.2σ en fσ₈ por bajar σ₈, a cambio de resolver S₈ (0.00σ vs 3.2σ).
+    Corregido 2026-06-29: antes se usaba σ₈=0.8136 (single) para el two-sector → 0.70σ espurio.
 """
 
 import numpy as np
@@ -33,7 +36,7 @@ import matplotlib.pyplot as plt
 import os
 
 OUTDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                      '..', 'results', 'figures')
+                      '..', '..', 'results', 'figures')  # raíz results/figures (graphicspath del paper)
 os.makedirs(OUTDIR, exist_ok=True)
 plt.rcParams.update({'font.family': 'serif', 'font.size': 10, 'figure.dpi': 150})
 
@@ -155,7 +158,7 @@ sol_lcdm      = solve_ivp(growth_lcdm,          [lna_pts[0], 0.0], IC,
                           t_eval=lna_pts, rtol=1e-10, atol=1e-13)
 
 # Factores de crecimiento (ratio de D₁ brutos con IC idénticas)
-G_2s    = sol_twosector.y[0][-1] / sol_lcdm.y[0][-1]   # ≈ 0.979
+G_2s    = sol_twosector.y[0][-1] / sol_lcdm.y[0][-1]   # 1.0032 (fondo plano; el 0.979 era el bug fondo no-plano, corregido 2026-06-22)
 G_single= sol_single.y[0][-1]    / sol_lcdm.y[0][-1]   # ≈ 0.866 (minimal-CDM Ω_m=0.160; NO es el single-sector canónico)
 
 # ── Amplitud titular: free-streaming CLASS (NO growth-factor × ΛCDM) ──────────
@@ -187,16 +190,18 @@ Dp_lcdm= sol_lcdm.y[1]     / sol_lcdm.y[0][-1]
 # ── fσ₈ en los 6 surveys RSD (set canónico Paper 5: refs Beutler2012,
 #    Howlett2015, Alam2017, Hou2021 — valores idénticos a los citados) ──────────
 #
-#   AMPLITUD CORRECTA PARA fσ₈ = sig8_growth = 0.794 (NO sig8_eff=0.748).
-#   Razón física: RSD sondea k≈0.01–0.1 h/Mpc, MUY por debajo de la escala de
-#   free-streaming k_fs=0.762 h/Mpc. En ese régimen el φ-DM agrupa como materia
-#   FRÍA (la supresión de free-streaming aún no actúa), de modo que la amplitud
-#   de clustering a gran escala es el factor de crecimiento dos-sectores:
-#       sig8_growth = 0.811 × G_2s = 0.794.
-#   La amplitud sig8_eff=0.748 (free-streaming CLASS) es la σ₈ integrada en la
-#   ventana top-hat R=8 Mpc/h, cuyo soporte SÍ cruza k_fs y recibe la supresión;
-#   esa es la amplitud relevante para S₈ (lensing débil), no para fσ₈ (RSD).
-#   La diferencia 0.794↔0.748 es la FIRMA física de free-streaming, no un fit.
+#   AMPLITUD CORRECTA PARA fσ₈ = sig8_eff = 0.748 (CORREGIDO 2026-06-29).
+#   El uso previo de sig8_growth=0.8136 era OPTIMISTA e incorrecto: descansaba en
+#   suponer que RSD sondea sólo k≲0.1 h/Mpc, por debajo del free-streaming, donde
+#   el φ-DM agruparía como frío. VERIFICADO FALSO con CLASS: la supresión muerde
+#   DENTRO de la ventana top-hat de σ₈(R=8 Mpc/h) — σ₈ acumulado pierde 3.5% a
+#   k=0.2 y 6.9% a k=0.3 (k_half=0.351 cae en medio de la ventana). Además
+#   σ₈_cb (cold+baryon) = 0.748 = σ₈_total: no existe una σ₈ alta legítima para RSD.
+#   Por convención fσ₈ se normaliza a σ₈(R=8), que para este modelo es 0.748.
+#   ⇒ fσ₈ usa 0.748 (igual que S₈). Tensión media sube de 0.6958σ (espuria) a
+#   ~0.95σ (honesta), consistente con el MCMC v2 (emulador CLASS, ssee_paper6_mcmc_v2.py).
+#   Sigue <1σ y empata aprox. a ΛCDM (~0.73σ): el two-sector baja σ₈ → gana enorme
+#   en S₈ (0.00σ vs 3.2σ) y paga poco en fσ₈. El trade-off es real, no un fit.
 Z_RSD     = np.array([0.067, 0.150, 0.380, 0.510, 0.610, 1.480])
 survey    = ['6dFGRS', 'SDSS MGS', 'BOSS DR12', 'BOSS DR12', 'BOSS DR12', 'eBOSS DR16']
 fsig8_obs = np.array([0.423, 0.490, 0.497, 0.458, 0.436, 0.462])
@@ -208,30 +213,34 @@ def get_fsig8(z, D_arr, Dp_arr, sig8_val):
     D_t = float(np.interp(lna_t, lna_pts, D_arr))
     return f_t * sig8_val * D_t
 
-fsig8_twosector  = np.array([get_fsig8(z, D_2s,   Dp_2s,   sig8_growth) for z in Z_RSD])
-fsig8_base_pred  = np.array([get_fsig8(z, D_1s,   Dp_1s,   sig8_base)  for z in Z_RSD])
+# Dos escenarios canónicos, MISMA forma de crecimiento (D_2s, Ω_m=0.30889):
+#   - two-sector: amplitud σ₈=0.748 (CON free-streaming)  → titular Paper 6
+#   - single-sector P5: amplitud σ₈=0.8136 (SIN free-streaming) → baseline Paper 5
+# La ÚNICA diferencia es la amplitud — esa es la firma del free-streaming.
+fsig8_twosector  = np.array([get_fsig8(z, D_2s,   Dp_2s,   sig8_eff)    for z in Z_RSD])
+fsig8_single     = np.array([get_fsig8(z, D_2s,   Dp_2s,   sig8_growth) for z in Z_RSD])
 fsig8_lcdm_pred  = np.array([get_fsig8(z, D_lcdm, Dp_lcdm, sig8_Planck) for z in Z_RSD])
 
 t_twosector = (fsig8_obs - fsig8_twosector) / fsig8_err
-t_base      = (fsig8_obs - fsig8_base_pred) / fsig8_err
+t_single    = (fsig8_obs - fsig8_single)    / fsig8_err
 t_lcdm      = (fsig8_obs - fsig8_lcdm_pred) / fsig8_err
 
 print(f"\n  ── Resultados fσ₈ ───────────────────────────────────────────────")
 print(f"\n  {'Survey':12s}  {'z':>5}  {'Obs':>6}  {'2-sector':>9}  {'σ':>7}  "
-      f"{'SSEE-P5':>9}  {'σ':>7}  {'ΛCDM':>7}  {'σ':>7}")
+      f"{'1-sector':>9}  {'σ':>7}  {'ΛCDM':>7}  {'σ':>7}")
 for i, z in enumerate(Z_RSD):
     print(f"  {survey[i]:12s}  {z:>5.3f}  {fsig8_obs[i]:>6.3f}  "
           f"{fsig8_twosector[i]:>9.3f}  {t_twosector[i]:>+7.2f}σ  "
-          f"{fsig8_base_pred[i]:>9.3f}  {t_base[i]:>+7.2f}σ  "
+          f"{fsig8_single[i]:>9.3f}  {t_single[i]:>+7.2f}σ  "
           f"{fsig8_lcdm_pred[i]:>7.3f}  {t_lcdm[i]:>+7.2f}σ")
 
-mt_2s   = np.mean(np.abs(t_twosector))
-mt_base = np.mean(np.abs(t_base))
-mt_lcdm = np.mean(np.abs(t_lcdm))
+mt_2s     = np.mean(np.abs(t_twosector))
+mt_single = np.mean(np.abs(t_single))
+mt_lcdm   = np.mean(np.abs(t_lcdm))
 print(f"\n  Tensión media |σ|:")
-print(f"    SSEE dos-sectores: {mt_2s:.4f}σ")
-print(f"    SSEE base (P5):    {mt_base:.4f}σ")
-print(f"    ΛCDM:              {mt_lcdm:.4f}σ")
+print(f"    SSEE two-sector (σ₈=0.748, CON free-streaming):  {mt_2s:.4f}σ  ← titular")
+print(f"    SSEE single-sector (σ₈=0.8136, SIN free-stream): {mt_single:.4f}σ  ← baseline P5")
+print(f"    ΛCDM:                                            {mt_lcdm:.4f}σ")
 
 # ── Resumen observacional ─────────────────────────────────────────────────────
 print(f"\n  ── Resumen Observacional Completo ───────────────────────────────")
@@ -245,7 +254,7 @@ print(f"  S₈_eff = {S8_eff:.4f}   vs KiDS S₈ {kids_s8:.3f}±{kids_s8_err:.3f
 print(f"  S₈_eff = {S8_eff:.4f}   vs DES  S₈ {des_s8:.3f}±{des_s8_err:.3f}  → "
       f"{abs(S8_eff-des_s8)/des_s8_err:.2f}σ")
 print(f"  H(z) χ²_r (sin cambio) = 1.861  [igual que SSEE base]")
-print(f"  ΔBIC CMB = -31.3  [Paper 3, sin cambio]")
+print(f"  ΔBIC CMB = -32.9  [Paper 3 full plik N=2354, titular; cross-check plik_lite -23.93]")
 print(f"  BAO χ²_r ≈ 0.01  [Paper 2, sin cambio]")
 print(f"  Cluster χ²_r = 0.122  [Paper 2, sin cambio]")
 
@@ -255,16 +264,16 @@ fig, axes = plt.subplots(1, 2, figsize=(14, 5.5))
 # Panel 1: fσ₈ comparación
 ax = axes[0]
 z_smooth = np.linspace(0.05, 0.65, 150)
-fs8_2s   = [get_fsig8(z, D_2s,   Dp_2s,   sig8_growth) for z in z_smooth]
-fs8_base = [get_fsig8(z, D_1s,   Dp_1s,   sig8_base)   for z in z_smooth]
-fs8_lcdm = [get_fsig8(z, D_lcdm, Dp_lcdm, sig8_Planck) for z in z_smooth]
+fs8_2s     = [get_fsig8(z, D_2s, Dp_2s, sig8_eff)    for z in z_smooth]  # two-sector 0.748
+fs8_single = [get_fsig8(z, D_2s, Dp_2s, sig8_growth) for z in z_smooth]  # single-sector 0.8136
+fs8_lcdm   = [get_fsig8(z, D_lcdm, Dp_lcdm, sig8_Planck) for z in z_smooth]
 
 ax.fill_between(z_smooth, np.array(fs8_2s)*0.92, np.array(fs8_2s)*1.08,
                 alpha=0.15, color='blue', label='SSEE 2-sector ±8% envelope')
 ax.plot(z_smooth, fs8_2s,   'b-',  lw=2.5,
-        label=rf'SSEE dos-sectores, $G_{{2s}}={G_2s:.3f}$ ($\bar\sigma={mt_2s:.2f}$)')
-ax.plot(z_smooth, fs8_base, 'r--', lw=1.8,
-        label=rf'SSEE minimal-CDM ($\Omega_m=0.160$, no canónico), $G={G_single:.3f}$ ($\bar\sigma={mt_base:.2f}$)')
+        label=rf'SSEE two-sector ($\sigma_8=0.748$, free-stream) ($\bar\sigma={mt_2s:.2f}$)')
+ax.plot(z_smooth, fs8_single, 'r--', lw=1.8,
+        label=rf'SSEE single-sector ($\sigma_8=0.8136$, P5 baseline) ($\bar\sigma={mt_single:.2f}$)')
 ax.plot(z_smooth, fs8_lcdm, 'g:',  lw=1.8,
         label=rf'$\Lambda$CDM ($\bar\sigma={mt_lcdm:.2f}$)')
 ax.errorbar(Z_RSD, fsig8_obs, yerr=fsig8_err, fmt='ko', ms=7,
@@ -278,8 +287,8 @@ ax.set_xlim(0.04, 0.65)
 
 # Panel 2: Resumen de tensiones
 ax = axes[1]
-models   = ['SSEE\ndos-sectores', 'SSEE\nbase (P5)', 'ΛCDM']
-tensions = [mt_2s, mt_base, mt_lcdm]
+models   = ['SSEE\ntwo-sector', 'SSEE\nsingle (P5)', 'ΛCDM']
+tensions = [mt_2s, mt_single, mt_lcdm]
 colors   = ['royalblue', 'tomato', 'seagreen']
 bars = ax.bar(models, tensions, color=colors, width=0.5, alpha=0.85,
               edgecolor='black', lw=1.2)
@@ -312,8 +321,8 @@ print(f"{'='*70}")
 print(f"  G_2s:              {G_2s:.4f}  (sólo da la forma de f(z); Ω_m 0.320 vs 0.315)")
 print(f"  σ₈_eff:            {sig8_eff:.4f}  (free-streaming CLASS, T_φ propia, sin parámetros libres)")
 print(f"  S₈_eff:            {S8_eff:.4f}  (0.01σ KiDS — RESUELVE tensión S₈)")
-print(f"  fσ₈ tensión media: {mt_2s:.4f}σ  "
-      f"({'RESUELTA (<1σ)' if mt_2s < 1.0 else 'MEJORADA' if mt_2s < mt_base else 'SIN MEJORA'})")
+print(f"  fσ₈ tensión media: {mt_2s:.4f}σ (two-sector, σ₈=0.748)  "
+      f"[single-sector {mt_single:.4f}σ; ΛCDM {mt_lcdm:.4f}σ] {'(<1σ OK)' if mt_2s < 1.0 else ''}")
 print(f"  σ₈ vs KiDS-1000:   {abs(sig8_eff-kids_sig8)/kids_sig8_err:.4f}σ")
 print(f"  S₈ vs KiDS-1000:   {abs(S8_eff-kids_s8)/kids_s8_err:.4f}σ")
 print(f"  Parámetros libres nuevos: 0  (m_φ = Σm_ν × (SOLAR²·KRYSTOS), forward-prediction)")

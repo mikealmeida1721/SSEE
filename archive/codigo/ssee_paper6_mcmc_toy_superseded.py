@@ -123,7 +123,10 @@ def sigma8_eff(Om_phiDM, sig8_in, k_survey=0.125):
     σ₈_eff a z=0 para el modelo de dos sectores.
     k_survey = 0.125 h/Mpc: modo dominante de σ₈ (R=8 h⁻¹ Mpc)
     """
-    Om_m_eff  = Om_CDM_alg + Om_phiDM + Om_b
+    # Partición canónica dos-sectores: Ω_m,CMB = Ω_m,dyn + Ω_φDM = 0.30889.
+    # Ω_φDM ya es la DIFERENCIA respecto al total CMB (línea 71) y Ω_b está
+    # dentro de Ω_dyn=0.160 — NO sumar Ω_b aparte (doble conteo → S₈ inflado).
+    Om_m_eff  = Om_CDM_alg + Om_phiDM
     Om_m_lcdm = 0.3153  # Planck 2018
 
     # Ratio factor de crecimiento SSEE vs ΛCDM
@@ -142,7 +145,7 @@ def sigma8_eff(Om_phiDM, sig8_in, k_survey=0.125):
 
 def S8_eff(Om_phiDM, sig8_in):
     """S₈ = σ₈_eff × sqrt(Ω_m,eff/0.3)"""
-    Om_m_eff = Om_CDM_alg + Om_phiDM + Om_b
+    Om_m_eff = Om_CDM_alg + Om_phiDM  # canónico: total = dyn + φDM (Ω_b dentro de dyn)
     return sigma8_eff(Om_phiDM, sig8_in) * np.sqrt(Om_m_eff / 0.3)
 
 def fsig8_model(z, Om_phiDM, k_fs, sig8_in):
@@ -151,7 +154,7 @@ def fsig8_model(z, Om_phiDM, k_fs, sig8_in):
     f(z) = Ω_m(z)^γ_IS  con γ_IS = 0.554 (Paper 5)
     σ₈(z) = σ₈_eff × D₁(z)
     """
-    Om_m_eff = Om_CDM_alg + Om_phiDM + Om_b
+    Om_m_eff = Om_CDM_alg + Om_phiDM  # canónico: total = dyn + φDM (Ω_b dentro de dyn)
     f_phi    = Om_phiDM / Om_m_eff
     k_survey = 0.125  # h/Mpc
 
@@ -337,7 +340,7 @@ print(f"  Tensión k_fs  vs algebraico: {ten_kfs:.2f}σ")
 
 # Derivados en el best-fit (mediana posterior)
 Om_best  = Om_q[0]; kfs_best = kfs_q[0]; s8i_best = s8i_q[0]
-G2s_med  = np.median([growth_factor_ssee(0.0, Om_CDM_alg+Om_q[0]+Om_b) /
+G2s_med  = np.median([growth_factor_ssee(0.0, Om_CDM_alg+Om_q[0]) /
                       (0.3153/Om_q[0])**0.55 if Om_q[0]>0 else 1.0
                       for _ in range(1)])
 sig8_med = sigma8_eff(Om_best, s8i_best)

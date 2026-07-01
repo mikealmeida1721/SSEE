@@ -234,12 +234,12 @@ python -c "from classy import Class; c=Class(); c.set({'non_linear':'hmcode','hm
 
 Expected output:
 ```
-H₀ = 67.34 ± 0.77  (algebraic: 67.96, tension: 0.81σ)
-w₀ = −0.812 ± 0.046  (algebraic: −0.840, tension: 0.61σ)
-wₐ = −0.659 ± 0.113  (algebraic: −0.670, tension: 0.10σ)
-Ωm = 0.163 ± 0.012   (algebraic: 0.160, tension: 0.25σ)
-r_d = 147.44 ± 0.89  (algebraic: 147.156, tension: 0.32σ)
-Mean tension (5 params): 0.36σ
+H₀    = 67.08 ± 0.93    (algebraic: 67.96,   tension: 0.94σ)
+Ω_b h² = 0.02236 ± 0.00015 (algebraic: 0.02237, tension: 0.04σ)
+Ω_m   = 0.3214 ± 0.0124  (algebraic: 0.30889, tension: 1.01σ)
+w₀    = −0.733 ± 0.147   (algebraic: −0.840,  tension: 0.73σ)
+wₐ    = −0.974 ± 0.608   (algebraic: −0.670,  tension: 0.50σ)
+Mean tension (5 params): 0.64σ  (BLIND: flat w0/wa priors; max 1.01σ Ω_m)
 ```
 
 ---

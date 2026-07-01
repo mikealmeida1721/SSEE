@@ -91,7 +91,7 @@ which Planck~\texttt{plik\_lite} is minimised with SSEE-fixed $\omega_b,\omega_c
 $H_0 = 67.16^{+0.44}_{-0.44}$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC}=-5.55$
 for the dynamic sector relative to \LCDM.
 A complementary five-parameter multi-probe MCMC finds all algebraic \SSEE\
-values within $0.81\sigma$ of the posteriors (mean $0.36\sigma$ across the five parameters).
+values within $1.01\sigma$ of the posteriors (mean $0.64\sigma$ across the five parameters).
 
 The CMB-sector matter density is the standard physical observable
 $\OmmCMB = \omega_m/h^2 = 0.30889$ (Planck: $0.3153\pm 0.0073$), built
@@ -113,6 +113,10 @@ $S_8$ lensing tension from $3.5\sigma$ (single-sector ceiling, KiDS) to $0.01\si
 $\sigeff = 0.748$ ($S_8^{\rm eff}=0.759$ from the direct two-sector CLASS run;
 the analytic two-sector growth factor $G_{\rm 2s}=1.003$ is $\Lambda$CDM-consistent,
 the suppression to $\sigeff=0.748$ arising from $\phi$-DM free-streaming below $\kfs$).
+The same suppression reaches the $\sigma_8(R{=}8)$ window probed by RSD, so the
+two-sector $f\sigma_8$ tension rises modestly from the $0.70\sigma$ single-sector
+baseline to $0.93\sigma$ (still $<1\sigma$, close to $\Lambda$CDM $0.73\sigma$) ---
+the deliberate cost of lowering $\sigma_8$ to resolve the lensing amplitude.
 
 An EFTCAMB validation at the Bellini-Sawicki level uses the fluid-approximation
 input $\alphaK^{\rm fluid} = 0.4033$ ($\Delta = 0.005\%$), while the theoretical
@@ -175,8 +179,9 @@ We report four independent validation tiers:
   integration demonstrating that the full $\omega_m$-direct matter density
   ($\OmmCMB=0.30889$) is physically necessary for reproducing Planck~PR4 peak positions.
 \item \textbf{Structure growth and $\sigma_8$} (\S\ref{sec:growth}): Israel-Stewart
-  causal perturbation theory, $\phi$-DM two-sector extension, and CLASS-calibrated
-  WDM transfer function reducing the $\fsig$ tension.
+  causal perturbation theory and a $\phi$-DM two-sector extension that resolves the
+  $S_8$ lensing tension via free-streaming suppression (at a modest $\sim0.2\sigma$
+  cost in $\fsig$, which rises to $0.93\sigma$).
 \item \textbf{EFT stability} (\S\ref{sec:eft}): EFTCAMB Bellini-Sawicki
   validation of kinetic stability ($\alphaK$) and gravitational wave compatibility
   ($\alphaT = \alphaM = \alphaB = 0$).
@@ -350,13 +355,18 @@ The dominant residual uncertainty is the cluster mass calibration; the
 \label{sec:mcmc_fase4}
 
 To test all five algebraic \SSEE\ predictions simultaneously, we perform a
-complementary emcee MCMC with 100 walkers, 11\,000 steps (chain converged
-before the 25\,000-step target), and 30\% burn-in, yielding 770\,000
-post-burn samples and an acceptance fraction of 0.552.
+complementary emcee MCMC with 100 walkers, 25\,000 steps and a 2\,000-step
+burn-in, yielding $2.5\times10^{6}$ post-burn samples, an acceptance fraction
+of 0.537 and $N_{\rm eff}=4.0\times10^{4}$ (integrated autocorrelation
+$\tau_{\max}=62.3$).
 The parameter vector is $\boldsymbol{\theta} = (H_0,\, \Omega_b h^2,\, \Omega_m,\, w_0,\, w_a)$
 and the combined likelihood includes DESI~DR2 BAO, the Planck~2018 compressed
 Gaussian prior, the six $f\sigma_8$ surveys of Table~\ref{tab:fsig8}, and the
-four IGIMF-corrected galaxy clusters.
+four IGIMF-corrected galaxy clusters. Crucially, we impose \emph{flat}
+(uninformative) priors on $w_0$ and $w_a$ over $[-1.30,-0.40]\times[-2.0,0.5]$:
+this is a \emph{blind} test in which the data alone --- not a prior centred on the
+\SSEE\ values --- constrain the equation of state, so the recovered tensions are
+free of circularity.
 
 \begin{table}[ht]
 \centering
@@ -366,23 +376,28 @@ four IGIMF-corrected galaxy clusters.
 \toprule
 Parameter & Posterior (median $\pm1\sigma$) & Algebraic SSEE & Tension \\
 \midrule
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.34 \pm 0.77$ & $67.96$ & $0.81\sigma$ \\
-$\Omega_b h^2$                     & $0.02236 \pm 0.00015$ & $0.02237$ & $0.06\sigma$ \\
-$\Omega_m$                         & $0.3178  \pm 0.0098$  & $0.30889$  & $0.91\sigma$ \\
-$w_0$                              & $-0.812  \pm 0.046$   & $-0.840$  & $0.61\sigma$ \\
-$w_a$                              & $-0.659  \pm 0.113$   & $-0.670$  & $0.10\sigma$ \\
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.08 \pm 0.93$ & $67.96$ & $0.94\sigma$ \\
+$\Omega_b h^2$                     & $0.02236 \pm 0.00015$ & $0.02237$ & $0.04\sigma$ \\
+$\Omega_m$                         & $0.3214  \pm 0.0124$  & $0.30889$  & $1.01\sigma$ \\
+$w_0$                              & $-0.733  \pm 0.147$   & $-0.840$  & $0.73\sigma$ \\
+$w_a$                              & $-0.974  \pm 0.608$   & $-0.670$  & $0.50\sigma$ \\
 \midrule
-\textbf{Mean tension} & & & $\mathbf{0.36\sigma}$ \\
-\textbf{Maximum tension} & & & $\mathbf{0.81\sigma}$ \\
+\textbf{Mean tension} & & & $\mathbf{0.64\sigma}$ \\
+\textbf{Maximum tension} & & & $\mathbf{1.01\sigma}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-All five algebraic values lie within the $1\sigma$ posterior credible intervals.
-The maximum tension ($0.81\sigma$ for $H_0$) and mean ($0.36\sigma$) confirm that
-the zero-free-parameter \SSEE\ parametrisation is consistent with the combined
-multi-probe dataset; corner plots and trace diagnostics are archived at
-Zenodo \citep{AlmeidaSSEE2026zenodo}.
+Under flat $w_0,w_a$ priors the equation-of-state parameters are only loosely
+constrained (note the wide $w_a$ interval, reflecting the well-known
+$w_0$--$w_a$ degeneracy of the combined data), yet all five algebraic \SSEE\
+values still lie within $\simeq1\sigma$ of the data-driven posteriors: the
+maximum tension is $1.01\sigma$ ($\Omega_m$) and the mean is $0.64\sigma$.
+We stress that this joint result is \emph{conditional on the specific data
+combination} (DESI~DR2 + Planck compressed + six $f\sigma_8$ surveys + four
+clusters); a different combination --- which weights the early- and late-time
+probes differently --- would shift the numbers. Corner plots and trace
+diagnostics are archived at Zenodo \citep{AlmeidaSSEE2026zenodo}.
 
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -597,7 +612,7 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
          measurements (6dFGRS, SDSS MGS, BOSS DR12 at $z=0.38,0.51,0.61$,
          eBOSS DR16 at $z=1.48$; Paper~5 set).
          \textit{Black dashed}: \LCDM.
-         \textit{Red}: \SSEE\ two-sector, mean tension $0.70\sigma$.
+         \textit{Red}: \SSEE\ two-sector ($\sigma_8=0.748$, free-streaming), mean tension $0.93\sigma$.
          \textit{Blue}: \SSEE\ single-sector ($\sigma_8 = 0.8136$, Paper~5), mean tension $0.70\sigma$.}
 \label{fig:fsig8}
 \end{figure}
@@ -611,9 +626,11 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
          number of standard deviations between model prediction and measurement.
          The canonical single-sector baseline uses $\OmmCMB=0.30889$
          ($\omega_m$-direct, Paper~5),
-         giving mean $0.70\sigma$; at RSD scales ($k\ll k_{\rm fs}$) the
-         $\varphi$-DM clusters as cold matter, so the two-sector reproduces the
-         same mean $0.70\sigma$ --- both tie $\Lambda$CDM ($0.73\sigma$). (The
+         giving mean $0.70\sigma$ (single-sector). The two-sector free-streaming
+         lowers $\sigma_8$ to $0.748$ and, since the half-mode
+         $k_{1/2}\simeq0.35\,h/$Mpc lies inside the $\sigma_8(R{=}8)$ window
+         probed by RSD, raises the two-sector mean to $0.93\sigma$ --- still
+         $<1\sigma$ and close to $\Lambda$CDM ($0.73\sigma$). (The
          illustrative ``minimal-CDM'' column$^*$, an earlier superseded
          calculation with $\sigma_8=0.702$ at $\Omega_{m,\mathrm{dyn}}=0.160$
          giving a $2.68\sigma$ mean, is \emph{not} the canonical baseline.)
@@ -625,23 +642,24 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 \toprule
 Survey & $z$ & Data $f\sigma_8$ & Minimal-CDM$^*$ & Two-sector \\
 \midrule
-6dFGRS     & 0.067 & $0.423\pm0.055$ & $+2.85\sigma$ & $+0.24\sigma$ \\
-SDSS MGS   & 0.150 & $0.490\pm0.145$ & $+1.42\sigma$ & $-0.28\sigma$ \\
-BOSS DR12  & 0.380 & $0.497\pm0.045$ & $+3.81\sigma$ & $-0.61\sigma$ \\
-BOSS DR12  & 0.510 & $0.458\pm0.038$ & $+3.03\sigma$ & $+0.35\sigma$ \\
-BOSS DR12  & 0.610 & $0.436\pm0.034$ & $+2.44\sigma$ & $+0.95\sigma$ \\
-eBOSS DR16 & 1.480 & $0.462\pm0.045$ & $+2.50\sigma$ & $-1.75\sigma$ \\
+6dFGRS     & 0.067 & $0.423\pm0.055$ & $+2.85\sigma$ & $-0.40\sigma$ \\
+SDSS MGS   & 0.150 & $0.490\pm0.145$ & $+1.42\sigma$ & $-0.53\sigma$ \\
+BOSS DR12  & 0.380 & $0.497\pm0.045$ & $+3.81\sigma$ & $-1.44\sigma$ \\
+BOSS DR12  & 0.510 & $0.458\pm0.038$ & $+3.03\sigma$ & $-0.66\sigma$ \\
+BOSS DR12  & 0.610 & $0.436\pm0.034$ & $+2.44\sigma$ & $-0.15\sigma$ \\
+eBOSS DR16 & 1.480 & $0.462\pm0.045$ & $+2.50\sigma$ & $-2.42\sigma$ \\
 \midrule
-\textbf{Mean} & & & $2.68\sigma^*$ & $\mathbf{0.70\sigma}$ \\
+\textbf{Mean} & & & $2.68\sigma^*$ & $\mathbf{0.93\sigma}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The two-sector $f\sigma_8$ mean ($0.70\sigma$) is statistically indistinguishable
-from the single-sector baseline ($0.70\sigma$, Paper~5) and from
-$\Lambda$CDM ($0.73\sigma$): the growth-rate sector is already resolved at the
-single-sector level; the two-sector extension adds no significant $f\sigma_8$
-improvement.
+The two-sector $f\sigma_8$ mean ($0.93\sigma$) sits modestly above the
+single-sector baseline ($0.70\sigma$, Paper~5): the same free-streaming that
+lowers $\sigma_8$ from $0.834$ to $0.748$ also reaches inside the $\sigma_8(R{=}8)$
+window probed by RSD (half-mode $k_{1/2}\simeq0.35\,h/$Mpc), so it costs
+$\sim0.2\sigma$ in the growth rate while remaining $<1\sigma$ and close to
+$\Lambda$CDM ($0.73\sigma$).
 The genuine gain of Paper~6 is in the $S_8$ lensing amplitude: the WDM
 free-streaming suppression on scales $k > \kfs$ lowers $\sigeff$ from the
 single-sector ceiling $\sigma_8 = 0.8335$ ($S_8 = 0.846$, $3.5\sigma$ KiDS)
@@ -1028,7 +1046,7 @@ across four observational tiers.
   $H_0 = 67.16\pm0.44$~km\,s$^{-1}$\,Mpc$^{-1}$ under the $\omega_m$-direct
   CMB anchor as prior, and $\Delta\mathrm{BIC} = -5.55$ for the dynamic sector.
   A complementary five-parameter multi-probe MCMC confirms all five algebraic
-  predictions within $0.81\sigma$ (mean $0.36\sigma$).
+  predictions within $1.01\sigma$ (mean $0.64\sigma$).
 
 \item \textbf{CMB Boltzmann.} CLASS confirms that the full $\omega_m$-direct
   matter density ($\OmmCMB=0.30889$) is physically necessary: with only the

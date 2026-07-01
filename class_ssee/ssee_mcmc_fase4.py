@@ -56,12 +56,16 @@ MV   = PHI + PI + KV
 W0_ALG    = -TR / MV            # -0.83995
 WA_ALG    = -P_sc / KV          # -0.66997
 OMDE_ALG  = TR / MV             # 0.83995
-OM_DYN    = 1.0 - OMDE_ALG     # 0.16005
-MIRA      = (3*PHI + PI) / 4   # 1.99893
-OM_CMB    = OM_DYN * MIRA       # 0.31993
+OM_DYN    = 1.0 - OMDE_ALG     # 0.16005 (sector dinámico, DESI)
+MIRA      = (3*PHI + PI) / 4   # 1.99893 (entidad f_screen; NO es factor materia)
 H0_ALG    = 67.96
 NS_ALG    = 0.96556
 OMBH2_ALG = 0.02237
+# Ω_m,CMB ω_m-directo (reframe 2026-06, OP-8 disuelto — SIN factor MIRA):
+#   ω_m = ω_b+ω_c+ω_ν, con ω_c = KAL0·ω_b·n_s (forward, Paper 1); Ω_m,CMB = ω_m/h²
+_OMB_H2 = (PI - PHI)/(3*(PI+PHI)**2)                          # 0.02242
+_OMC_H2 = KAL0 * _OMB_H2 * NS_ALG                             # 0.11951
+OM_CMB  = (_OMB_H2 + _OMC_H2 + 0.000741)/(H0_ALG/100.0)**2    # 0.30889 (era 0.31993 vía MIRA)
 
 # CLASS Fase 1 calibración: r_d(CLASS) = 147.01 Mpc con params SSEE
 # vs. Planck 2018 medido = 147.09 Mpc (diferencia 0.05%)
@@ -71,8 +75,10 @@ RD_CLASS_SSEE = 147.01
 TEST_MODE    = "--test"    in sys.argv
 RESUME_MODE  = "--resume"  in sys.argv
 NO_FSIG8     = "--no-fsig8" in sys.argv
+FLAT_W0WA    = "--flat-w0wa" in sys.argv   # w0/wa con prior PLANO (test ciego), NO gaussiano centrado en SSEE
 
-OUT_DIR    = "output/mcmc_fase4"
+_SUF       = "_flat" if FLAT_W0WA else ""
+OUT_DIR    = f"/mnt/datos/SSEE_data/mcmc/fase4{_SUF}"   # HDD (regla de disco; NO root SSD)
 LOG_FILE   = f"{OUT_DIR}/mcmc_fase4.log"
 CHAIN_FILE = f"{OUT_DIR}/chains_fase4.npz"
 os.makedirs(OUT_DIR, exist_ok=True)
@@ -166,12 +172,12 @@ def chi2_planck(H0, Omm, ombh2):
 
 # ─── fσ8 — seis encuestas (idénticas a Paper 6) ─────────────────────────────
 # Dataset: mismos 6 surveys de ssee_paper6_verification.py
-# Datos: (z, fsig8_obs, sigma_fsig8)
-FSIG8_Z    = np.array([0.067, 0.150, 0.320, 0.380, 0.510, 0.570])
-FSIG8_OBS  = np.array([0.423, 0.490, 0.427, 0.477, 0.458, 0.426])
-FSIG8_ERR  = np.array([0.055, 0.070, 0.056, 0.051, 0.038, 0.048])
-# surveys: 6dFGRS, SDSS MGS, BOSS DR12 (x2), eBOSS DR16, WiggleZ
-SIG8_EFF_SSEE = 0.737   # CLASS Fase 2c (paper 6 two-sector, top-hat)
+# Datos: (z, fsig8_obs, sigma_fsig8) — set canónico Paper 5/6 (idéntico a verification.py)
+FSIG8_Z    = np.array([0.067, 0.150, 0.380, 0.510, 0.610, 1.480])
+FSIG8_OBS  = np.array([0.423, 0.490, 0.497, 0.458, 0.436, 0.462])
+FSIG8_ERR  = np.array([0.055, 0.145, 0.045, 0.038, 0.034, 0.045])
+# surveys: 6dFGRS, SDSS MGS, BOSS DR12, BOSS DR12, BOSS DR12, eBOSS DR16
+SIG8_EFF_SSEE = 0.748   # two-sector CON free-streaming (CLASS forward; era 0.737 = fit alpha_WDM retirado)
 
 def _growth_ode_ssee(Omm, w0, wa):
     """
@@ -286,6 +292,9 @@ def log_prior(theta):
     # Caja
     if np.any(theta < THETA_MIN) or np.any(theta > THETA_MAX):
         return -np.inf
+    if FLAT_W0WA:
+        # Test ciego: w0/wa SOLO con prior plano (caja) → posterior 100% del dato
+        return 0.0
     # Prior gaussiano algebraico sobre w0/wa (centro prediccion SSEE)
     lp_w0 = -0.5 * ((w0 - W0_ALG) / W0_SIGMA)**2
     lp_wa = -0.5 * ((wa - WA_ALG) / WA_SIGMA)**2
@@ -331,10 +340,13 @@ log("=" * 72)
 log(f"SSEE-V3.6 — Fase 4 MCMC Multi-Probe  {'[TEST]' if TEST_MODE else '[OVERNIGHT]'}")
 log("=" * 72)
 log(f"Algebraico: w0={W0_ALG:.5f}  wa={WA_ALG:.5f}  H0={H0_ALG}  Omega_m={OM_CMB:.5f}")
-log(f"Prior w0: N({W0_ALG:.4f},{W0_SIGMA}) | Prior wa: N({WA_ALG:.4f},{WA_SIGMA})")
+if FLAT_W0WA:
+    log(f"Prior w0: PLANO [{THETA_MIN[3]},{THETA_MAX[3]}] | Prior wa: PLANO [{THETA_MIN[4]},{THETA_MAX[4]}]  (TEST CIEGO)")
+else:
+    log(f"Prior w0: N({W0_ALG:.4f},{W0_SIGMA}) | Prior wa: N({WA_ALG:.4f},{WA_SIGMA})")
 log(f"Walkers={N_WALKERS}  Steps={N_STEPS}  Burn={N_BURN}")
 log(f"Likelihoods: DESI(13pts) + Planck(comprimido) + fσ8({'SI' if not NO_FSIG8 else 'NO'}) + Clusters(4)")
-log(f"sigma8_eff = {SIG8_EFF_SSEE} (CLASS Fase 2c calibrado)")
+log(f"sigma8_eff = {SIG8_EFF_SSEE} (CLASS forward two-sector, ω_m-directo)")
 log(f"MIRA = {MIRA:.5f}")
 
 # Test punto algebraico
@@ -427,8 +439,8 @@ log(f"  r_d (Planck)   = 147.09 Mpc")
 log(f"  r_d (CLASS F1) = {RD_CLASS_SSEE} Mpc")
 
 G_med = growth_factor_ssee(med[2], med[3], med[4])
-log(f"  G=D1_SSEE/D1_ΛCDM (mediana) = {G_med:.4f}  (Paper5: 0.866)")
-log(f"  σ8_eff (fijo CLASS) = {SIG8_EFF_SSEE}  (Fase 2c)")
+log(f"  G=D1_SSEE/D1_ΛCDM (mediana) = {G_med:.4f}  (Paper5 canónico: 1.0032)")
+log(f"  σ8_eff (fijo CLASS) = {SIG8_EFF_SSEE}  (forward two-sector)")
 
 # ΔBIC vs ΛCDM
 # ΛCDM tiene 6 parametros libres; SSEE tiene 5 (con w0/wa prior gaussiano ≈ prior fijo = k=1)

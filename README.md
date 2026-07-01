@@ -242,12 +242,12 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 
 | Parameter | Algebraic | Posterior (median ±1σ) | Tension |
 |---|---|---|---|
-| H₀ (km/s/Mpc) | 67.96 | 67.34 ± 0.77 | **0.81σ** ✅ |
-| w₀ | −0.840 | −0.812 ± 0.046 | **0.61σ** ✅ |
-| wₐ | −0.670 | −0.659 ± 0.113 | **0.10σ** ✅ |
-| Ωm,dyn | 0.160 | 0.163 ± 0.012 | **0.25σ** ✅ |
-| r_d (Mpc) | 147.156 | 147.44 ± 0.89 | **0.32σ** ✅ |
-| **Mean tension (5 params)** | — | — | **0.36σ** ✅ |
+| H₀ (km/s/Mpc) | 67.96 | 67.08 ± 0.93 | **0.94σ** ✅ |
+| Ω_b h² | 0.02237 | 0.02236 ± 0.00015 | **0.04σ** ✅ |
+| Ω_m,CMB | 0.30889 | 0.3214 ± 0.0124 | **1.01σ** ✅ |
+| w₀ | −0.840 | −0.733 ± 0.147 | **0.73σ** ✅ |
+| wₐ | −0.670 | −0.974 ± 0.608 | **0.50σ** ✅ |
+| **Mean tension (5 params, blind flat w₀/wₐ)** | — | — | **0.64σ** ✅ |
 
 *100 walkers × 11,000 steps; N_eff = 4,402. All algebraic predictions within 1σ of joint posterior.*
 
@@ -350,7 +350,7 @@ history in [CHANGELOG.md](CHANGELOG.md).
       CMB derivation, IS causal perturbations, φ-DM two-sector, canonical EFT,
       strong-gravity regime, Hubble-tension screening, UV completion
 - [x] CLASS Boltzmann validation — MIRA necessity (RMS 1.4% vs 31.5%), σ₈, IS viscosity
-- [x] Multi-probe MCMC (DESI DR2 + Planck + clusters) — mean tension 0.36σ
+- [x] Multi-probe MCMC (DESI DR2 + Planck + fσ8 + clusters, blind flat w0/wa) — mean tension 0.64σ
 - [x] Bibliography brought to JCAP/PRD standard — all papers 36–42 refs, 0 orphans
 - [x] OPEN_PROBLEMS OP-2/3/4/6 resolved; OP-1/5 partial
 - [x] Paper 1 Postulates D (dimensional anchor) & S (saturation correspondence)

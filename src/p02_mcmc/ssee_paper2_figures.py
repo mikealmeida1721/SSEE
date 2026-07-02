@@ -71,23 +71,22 @@ def covariance_ellipse(ax, w0c, wac, sig_w0, sig_wa, rho, n_sigma,
 
 fig1, ax1 = plt.subplots(figsize=(7, 6))
 
-# Contornos DESI DR2 (BAO+CMB+DESY5) — 1σ y 2σ
-desi_kw = dict(w0c=-0.827, wac=-0.750, sig_w0=0.060, sig_wa=0.290, rho=-0.60)
-covariance_ellipse(ax1, **desi_kw, n_sigma=2, color="#2166AC", alpha=0.18, zorder=1)
-covariance_ellipse(ax1, **desi_kw, n_sigma=1, color="#2166AC", alpha=0.35, zorder=2,
-                   label="DESI DR2 (BAO+CMB+DESY5) 1σ/2σ")
+# Contornos w0waCDM OFICIALES DESI DR2 (2503.14738 ecs. 25-28; ρ=-0.85 estimado
+# de contornos públicos). Valores DR1 viejos (-0.827/-0.750) RETIRADOS (V-L4-DESI).
+pant_kw = dict(w0c=-0.838, wac=-0.620, sig_w0=0.055, sig_wa=0.205, rho=-0.85)
+covariance_ellipse(ax1, **pant_kw, n_sigma=2, color="#2166AC", alpha=0.18, zorder=1)
+covariance_ellipse(ax1, **pant_kw, n_sigma=1, color="#2166AC", alpha=0.35, zorder=2,
+                   label="DESI DR2+CMB+Pantheon+ 1σ/2σ")
 
-# Contornos DESY5 — 1σ y 2σ
-desy_kw = dict(w0c=-0.980, wac=-0.350, sig_w0=0.120, sig_wa=0.520, rho=-0.55)
+desy_kw = dict(w0c=-0.752, wac=-0.860, sig_w0=0.057, sig_wa=0.215, rho=-0.85)
 covariance_ellipse(ax1, **desy_kw, n_sigma=2, color="#4DAF4A", alpha=0.12, zorder=1)
 covariance_ellipse(ax1, **desy_kw, n_sigma=1, color="#4DAF4A", alpha=0.28, zorder=2,
-                   label="DESY5 (WL+GC) 1σ/2σ")
+                   label="DESI DR2+CMB+DESY5 1σ/2σ")
 
-# Planck 2018 — solo 1σ (muy pequeño en w0)
-planck_kw = dict(w0c=-1.030, wac=0.000, sig_w0=0.030, sig_wa=0.250, rho=-0.40)
-covariance_ellipse(ax1, **planck_kw, n_sigma=2, color="#D95F02", alpha=0.12, zorder=1)
-covariance_ellipse(ax1, **planck_kw, n_sigma=1, color="#D95F02", alpha=0.30, zorder=2,
-                   label="Planck 2018 (CMB) 1σ/2σ")
+uni_kw = dict(w0c=-0.667, wac=-1.090, sig_w0=0.088, sig_wa=0.290, rho=-0.85)
+covariance_ellipse(ax1, **uni_kw, n_sigma=2, color="#D95F02", alpha=0.12, zorder=1)
+covariance_ellipse(ax1, **uni_kw, n_sigma=1, color="#D95F02", alpha=0.30, zorder=2,
+                   label="DESI DR2+CMB+Union3 1σ/2σ")
 
 # ΛCDM
 ax1.scatter(-1.0, 0.0, marker="+", s=120, color="black", linewidths=2.5,
@@ -100,7 +99,7 @@ ax1.scatter(W0_SSEE, WA_SSEE, marker="*", s=260, color="#E6002B",
 
 # Cruz de incertidumbre SSEE (algebraica → 0, pero indicamos con símbolo)
 ax1.annotate(
-    fr"SSEE: $\chi^2_{{2D}}=0.08$ (0.05$\sigma$)",
+    fr"SSEE: 0.16$\sigma$ (Pantheon+)",
     xy=(W0_SSEE, WA_SSEE), xytext=(W0_SSEE + 0.05, WA_SSEE + 0.15),
     fontsize=9, color="#E6002B",
     arrowprops=dict(arrowstyle="->", color="#E6002B", lw=1.2),
@@ -113,7 +112,7 @@ ax1.plot(w0_line, -1 - w0_line, "k--", lw=1.0, alpha=0.5,
 
 ax1.set_xlabel(r"$w_0$")
 ax1.set_ylabel(r"$w_a$")
-ax1.set_title("SSEE-V3.6 in the $w_0$-$w_a$ plane (DESI DR2 + Planck 2018 + DESY5)")
+ax1.set_title("SSEE-V3.6 in the $w_0$-$w_a$ plane — official DESI DR2 $w_0w_a$CDM (2503.14738)")
 ax1.set_xlim(-1.35, -0.45)
 ax1.set_ylim(-1.6, 0.8)
 ax1.legend(loc="upper left", framealpha=0.9, fontsize=9)

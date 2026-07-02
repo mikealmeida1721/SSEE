@@ -13,9 +13,9 @@
 [![Status](https://img.shields.io/badge/Audit-guardian_green-success.svg)](VERIFICATION_LEDGER.md)
 [![Prediction](https://img.shields.io/badge/Pre--registered-k__fs_%3D_0.762_h%2FMpc-critical.svg)](OPEN_PROBLEMS.md)
 
-<img src="results/figures/fig1_w0wa_plane.png" width="520" alt="SSEE algebraic point (w0, wa) vs DESI DR2 contours — 0.05σ"/>
+<img src="results/figures/fig1_w0wa_plane.png" width="520" alt="SSEE algebraic point (w0, wa) vs DESI DR2 contours — 0.16σ (Pantheon+)"/>
 
-*The algebraic point (w₀, wₐ) = (−0.840, −0.670) — derived from φ and π with zero fitting — vs DESI DR2 BAO contours: **0.05σ**.*
+*The algebraic point (w₀, wₐ) = (−0.840, −0.670) — derived from φ and π with zero fitting — vs the official DESI DR2 w₀wₐCDM contours: **0.16σ** (DESI+CMB+Pantheon+), and within **1.2–1.5σ** of the DESY5/Union3/no-SN combinations (arXiv:2503.14738, eqs. 25–28).*
 
 </div>
 
@@ -27,7 +27,7 @@
 
 | Observable | SSEE (algebraic) | Observed | Separation | |
 |---|---|---|---|---|
-| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.838±0.057, −0.631±0.226) | 0.05σ / 0.17σ | ✅ |
+| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2+CMB+Pantheon+: (−0.838±0.055, −0.62⁺⁰·²²₋₀.₁₉) | 0.16σ (2D); range 0.2–1.5σ across SN compilations | ✅ |
 | CMB first peak | ℓ₁ = 221 | Planck PR4: ~220 | Δℓ = 1 | ✅ |
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ | ✅ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ | ✅ |
@@ -139,10 +139,10 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 
 | Metric | Value |
 |---|---|
-| χ²_2D (w₀-wₐ vs DESI DR2) | 0.080 → 0.05σ |
+| χ²_2D (w₀-wₐ vs DESI DR2+CMB+Pantheon+) | 0.27 → 0.16σ (2D); 1.23σ DESY5, 1.50σ Union3 |
 | χ²_r clusters (7 clusters, analytic) | 0.126 |
 | χ²_r clusters (4 clusters, MCMC) | 0.122 |
-| H₀ SSEE (MCMC, prior H_alg 67.962, ωm-direct) | 67.16 ⁺⁰·⁴⁴₋₀.₄₄ km/s/Mpc (0.29σ Planck) |
+| H₀ SSEE (MCMC, prior H_alg 67.962, ωm-direct, DESI DR2) | 66.41 ± 0.39 km/s/Mpc (1.43σ Planck; DR1-era 67.16 superseded) |
 | ΔBIC (dynamic sector, k=1 vs ΛCDM k=3) | −5.55 (SSEE favoured) |
 | ΔBIC (full background, k=0 vs ΛCDM k=6) | +206 (ΛCDM favoured — framework penalty) |
 
@@ -242,14 +242,14 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 
 | Parameter | Algebraic | Posterior (median ±1σ) | Tension |
 |---|---|---|---|
-| H₀ (km/s/Mpc) | 67.96 | 67.08 ± 0.93 | **0.94σ** ✅ |
-| Ω_b h² | 0.02237 | 0.02236 ± 0.00015 | **0.04σ** ✅ |
-| Ω_m,CMB | 0.30889 | 0.3214 ± 0.0124 | **1.01σ** ✅ |
-| w₀ | −0.840 | −0.733 ± 0.147 | **0.73σ** ✅ |
-| wₐ | −0.670 | −0.974 ± 0.608 | **0.50σ** ✅ |
-| **Mean tension (5 params, blind flat w₀/wₐ)** | — | — | **0.64σ** ✅ |
+| H₀ (km/s/Mpc) | 67.96 | 66.84 ± 0.91 | **1.23σ** ✅ |
+| Ω_b h² | 0.02237 | 0.02237 ± 0.00015 | **0.01σ** ✅ |
+| Ω_m,CMB | 0.30889 | 0.3241 ± 0.0125 | **1.21σ** ✅ |
+| w₀ | −0.840 | −0.740 ± 0.126 | **0.79σ** ✅ |
+| wₐ | −0.670 | −0.839 ± 0.458 | **0.37σ** ✅ |
+| **Mean tension (5 params, blind flat w₀/wₐ)** | — | — | **0.72σ** ✅ |
 
-*100 walkers × 11,000 steps; N_eff = 4,402. All algebraic predictions within 1σ of joint posterior.*
+*100 walkers × 25,000 steps; N_eff = 42,721; corrected DESI DR2 vector (V-L4-DESI). All algebraic predictions within ≤1.25σ of the blind joint posterior.*
 
 ### Paper 4 (Algebraic ToE)
 
@@ -350,7 +350,7 @@ history in [CHANGELOG.md](CHANGELOG.md).
       CMB derivation, IS causal perturbations, φ-DM two-sector, canonical EFT,
       strong-gravity regime, Hubble-tension screening, UV completion
 - [x] CLASS Boltzmann validation — MIRA necessity (RMS 1.4% vs 31.5%), σ₈, IS viscosity
-- [x] Multi-probe MCMC (DESI DR2 + Planck + fσ8 + clusters, blind flat w0/wa) — mean tension 0.64σ
+- [x] Multi-probe MCMC (corrected DESI DR2 + Planck + fσ8 + clusters, blind flat w0/wa) — mean tension 0.72σ, max 1.23σ
 - [x] Bibliography brought to JCAP/PRD standard — all papers 36–42 refs, 0 orphans
 - [x] OPEN_PROBLEMS OP-2/3/4/6 resolved; OP-1/5 partial
 - [x] Paper 1 Postulates D (dimensional anchor) & S (saturation correspondence)

@@ -97,6 +97,10 @@ ya no usa. Movido de `src/` para que `src/` quede solo con módulos vigentes. Re
 - `mecanismos/`, `open_problems/` — exploración de mecanismos y OPs.
 - Sueltos: `op8_mira_aura_dimensional.py`, `op10_kX_cubic_term.py`,
   `h_alg_vs_mira_investigation.py`, `ssee_h0_mira_only.py`, `ssee_paper2_mcmc_mira.py` (variante MIRA legacy del MCMC P2).
+- `ssee_paper6_kinetic_braiding.py` (archivado 2026-07-02, auditoría de procedencia
+  post-hallazgo DESI DR1/DR2) — exploración αB con target G_eff=MIRA (física retirada
+  por el reframe) y set fσ₈ superseded (0.427/0.477, pre-2026-05-18). Sin referencias
+  desde manuscripts ni src/.
 
 ### `superado/` — docs de trabajo plegados al Registro canónico
 **Archivados:** 2026-06-08 (lote inicial) y 2026-06-24 (snapshots de raíz) · **Razón:** su

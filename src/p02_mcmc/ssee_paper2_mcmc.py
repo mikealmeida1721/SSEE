@@ -86,29 +86,19 @@ def sound_horizon_rd(ob_h2, om_h2):
 # ─────────────────────────────────────────────────────────────
 
 # Vectores de observables DESI DR2 (en el mismo orden que la covarianza)
-DESI_Z    = [0.295, 0.510, 0.510, 0.706, 0.706, 0.930, 0.930,
-             1.317, 1.317, 1.491, 1.491, 2.330, 2.330]
-DESI_TYPE = ["DV_rd","DM_rd","DH_rd","DM_rd","DH_rd","DM_rd","DH_rd",
-             "DM_rd","DH_rd","DM_rd","DH_rd","DM_rd","DH_rd"]
-DESI_OBS  = np.array([7.93, 13.62, 20.08, 16.85, 19.50, 21.71, 17.88,
-                      27.79, 13.82, 30.21, 13.23, 39.71,  8.52])
-
-# Covarianza DESI DR2 block-diagonal aproximada 13×13 (Abdul-Karim et al. 2025, Table 3)
-# Diagonal extraída de sigma_i, off-diagonal de los coeficientes de correlación publicados.
-# Los bloques cruzados entre redshifts distintos son ~0; los bloques DM-DH son correlacionados.
-DESI_SIGMA = np.array([0.15, 0.25, 0.60, 0.32, 0.55, 0.28, 0.35,
-                       0.69, 0.42, 0.79, 0.55, 0.94, 0.17])
-
-# Correlaciones reportadas por DESI DR2 entre DM_rd y DH_rd en el mismo bin de z
-# r_DM_DH: z=0.51→-0.44, z=0.706→-0.45, z=0.93→-0.44, z=1.317→-0.43, z=1.491→-0.42, z=2.33→-0.45
-RHO_PAIRS = {(1,2): -0.44, (3,4): -0.45, (5,6): -0.44,
-             (7,8): -0.43, (9,10): -0.42, (11,12): -0.45}
-
-DESI_COV = np.diag(DESI_SIGMA**2)
-for (i, j), rho in RHO_PAIRS.items():
-    DESI_COV[i,j] = rho * DESI_SIGMA[i] * DESI_SIGMA[j]
-    DESI_COV[j,i] = DESI_COV[i,j]
-
+# ── DESI DR2 (2503.14738 Tabla 4) — FUENTE ÚNICA data/raw/desi_dr2_bao.csv ──
+# NO hardcodear (drift DR1/DR2 corregido 2026-07-02; guardián R14).
+import os as _dd_os, sys as _dd_sys
+_dd_sys.path.insert(0, _dd_os.path.join(_dd_os.path.dirname(_dd_os.path.dirname(
+    _dd_os.path.abspath(__file__)))))
+from desi_dr2_data import load_desi_dr2 as _dd_load, desi_covariance as _dd_cov
+_DESI_D      = _dd_load()
+DESI_Z       = list(_DESI_D["z"])
+_DD_QSHORT   = {"DM_over_rd": "DM_rd", "DH_over_rd": "DH_rd", "DV_over_rd": "DV_rd"}
+DESI_TYPE    = [_DD_QSHORT[q] for q in _DESI_D["quantity"]]
+DESI_OBS     = _DESI_D["value"]
+DESI_SIGMA   = _DESI_D["sigma"]
+DESI_COV     = _dd_cov(_DESI_D)          # bloque-diagonal, r_MH oficiales DR2
 DESI_COV_INV = np.linalg.inv(DESI_COV)
 
 # Prior comprimido Planck 2018

@@ -7,7 +7,8 @@ set -u
 
 ROOT=/home/mike/Proyectos/SSEE
 YAML=$ROOT/src/mcmc_full/ssee_full.yaml
-BASE=$ROOT/class_ssee/output/mcmc_full
+# Regla de disco: output pesado va al HDD (/mnt/datos, 3.4T), NO al SSD root (91% lleno)
+BASE=/mnt/datos/SSEE_data/mcmc/mcmc_full
 LOGDIR=$BASE/logs
 mkdir -p "$LOGDIR"
 

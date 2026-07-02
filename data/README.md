@@ -6,17 +6,24 @@ Observational data used in Papers 2 and 3:
 
 | File | Content | Source |
 |------|---------|--------|
-| `desi_dr2_bao.csv` | DV/rd BAO measurements, z=0.295–2.330, 13 points | Abdul-Karim et al. 2025 (arXiv:2503.14738) |
-| `planck2018_prior.csv` | Compressed CMB prior (H₀, Ωm, Ωb h²); ρ(H₀,Ωm)=−0.85 | Planck 2018 TT+TE+EE+lowE |
-| `cluster_masses.csv` | 4 clusters, IGIMF-corrected baryonic + dynamical masses | Zhang et al. 2026 (arXiv:2602.06082) |
+| `desi_dr2_bao.csv` | **SINGLE SOURCE OF TRUTH** — DM/DH/DV over r_d, 13 points, z=0.295–2.330, + per-tracer DM–DH correlations r_MH; per-row release/arXiv/table provenance. Loaded by `src/desi_dr2_data.py`; scripts must NOT hardcode. **History:** pre-2026-07-01 this file held DESI **DR1** values mislabelled as DR2 (see file header) | DESI DR2, Abdul-Karim et al. 2025 (arXiv:2503.14738), **Table 4** — verified digit-by-digit 2026-07-01 (guardián R14) |
+| `fsigma8_rsd.csv` | fσ₈(z) canonical 6-survey set (6dFGRS, SDSS MGS, BOSS DR12 ×3, eBOSS DR16 QSO); per-row reference; superseded values listed in header — do not reintroduce | Beutler+2012; Howlett+2015; Alam+2017; Hou+2021 (each row checked against its primary reference, 2026-05-18) |
+| `planck2018_prior.csv` | Compressed CMB prior (H₀, Ωm, Ωb h²); ρ(H₀,Ωm)=−0.85 | Planck 2018 (A&A 641, A6) TT+TE+EE+lowE |
+| `cluster_masses.csv` | 4 base clusters (+3 extension), IGIMF-corrected baryonic + dynamical masses | Zhang et al. 2026 (arXiv:2602.06082); Simionescu+2011; Tchernin+2016; Owers+2011 |
 | `cosmic_chronometers.csv` | H(z) measurements, z=0.07–1.97, 23 points | Moresco et al. 2022 (Living Rev. Relativ. 25, 6) |
 | `planck_pr4_TT.txt` | CMB TT power spectrum Dℓ, ℓ=2–2508 | Planck PR4 Legacy Archive |
 | `planck_pr4_TE.txt` | CMB TE power spectrum Dℓ, ℓ=2–2508 | Planck PR4 Legacy Archive |
 | `planck_pr4_EE.txt` | CMB EE power spectrum Dℓ, ℓ=2–2508 | Planck PR4 Legacy Archive |
 | `planck_pr4_lensing.txt` | CMB lensing power spectrum (14 bins MV) | Cobaya planck_supp_data_and_covmats (arXiv:1807.06209) |
 
-**Clusters (4):** Coma, A2029, A478, Bullet — all IGIMF-corrected per Zhang et al. 2026.  
-*Planned expansion (POA item 1E):* add Perseus (Simionescu+2011), A2142 (Tchernin+2016), A1689.
+**Clusters (4 base):** Coma, A2029, A478, Bullet — all IGIMF-corrected per Zhang et al. 2026.
+Extension rows (Perseus, A2142, A2744) carry their own references in the csv header.
+
+**Provenance rule (post DR1/DR2 incident, 2026-07-01):** every observational number
+used by any script must trace to a csv in this directory (or a Cobaya-packaged
+likelihood), and each csv must declare its primary reference per row or in its
+header. The guardián (CAPA DESI, R14) enforces this for the BAO vector; scripts
+hardcoding data instead of loading the csv are treated as regressions.
 
 ## processed/
 

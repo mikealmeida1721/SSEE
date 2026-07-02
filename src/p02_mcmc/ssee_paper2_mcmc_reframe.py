@@ -35,7 +35,8 @@ from ssee_core import (
 
 t0 = time.time()
 LOG = "results/logs/mcmc_paper2_reframe.log"
-CKPT = "results/logs/mcmc_paper2_reframe_ckpt.npz"
+# Regla de disco: la cadena (~1 GB) va al HDD, NO al SSD root (91% lleno)
+CKPT = "/mnt/datos/SSEE_data/mcmc/paper2_reframe/mcmc_paper2_reframe_ckpt.npz"
 OUT = "results/figures"
 os.makedirs("results/logs", exist_ok=True)
 os.makedirs(OUT, exist_ok=True)
@@ -56,22 +57,15 @@ log(f"  H0_alg = {H0_ALG:.6f}")
 C_KM = 2.998e5
 FNU_SSEE = 0.020
 
-# ─── Datos DESI DR2 ───
-DESI_Z    = [0.295, 0.510, 0.510, 0.706, 0.706, 0.930, 0.930,
-             1.317, 1.317, 1.491, 1.491, 2.330, 2.330]
-DESI_TYPE = ["DV_rd","DM_rd","DH_rd","DM_rd","DH_rd","DM_rd","DH_rd",
-             "DM_rd","DH_rd","DM_rd","DH_rd","DM_rd","DH_rd"]
-DESI_OBS  = np.array([7.93, 13.62, 20.08, 16.85, 19.50, 21.71, 17.88,
-                      27.79, 13.82, 30.21, 13.23, 39.71,  8.52])
-DESI_SIGMA = np.array([0.15, 0.25, 0.60, 0.32, 0.55, 0.28, 0.35,
-                       0.69, 0.42, 0.79, 0.55, 0.94, 0.17])
-RHO_PAIRS = {(1,2): -0.44, (3,4): -0.45, (5,6): -0.44,
-             (7,8): -0.43, (9,10): -0.42, (11,12): -0.45}
-DESI_COV = np.diag(DESI_SIGMA**2)
-for (i, j), rho in RHO_PAIRS.items():
-    DESI_COV[i,j] = rho * DESI_SIGMA[i] * DESI_SIGMA[j]
-    DESI_COV[j,i] = DESI_COV[i,j]
-DESI_COV_INV = np.linalg.inv(DESI_COV)
+# ─── Datos DESI DR2 (2503.14738 Tabla 4) — FUENTE ÚNICA data/raw/desi_dr2_bao.csv ───
+# NO hardcodear (evita drift DR1/DR2). src/ ya está en path (línea ~29).
+from desi_dr2_data import load_desi_dr2, desi_covariance  # noqa: E402
+_DESI        = load_desi_dr2()
+DESI_Z       = list(_DESI["z"])
+_QSHORT      = {"DM_over_rd": "DM_rd", "DH_over_rd": "DH_rd", "DV_over_rd": "DV_rd"}
+DESI_TYPE    = [_QSHORT[q] for q in _DESI["quantity"]]
+DESI_OBS     = _DESI["value"]
+DESI_COV_INV = np.linalg.inv(desi_covariance(_DESI))   # bloque-diagonal (r_MH oficiales DR2)
 
 CLUSTERS = [
     {"M_ig": 1.8, "dM_obs": 1.0, "M_obs": 9.8 },

@@ -997,6 +997,46 @@ Re-corrido `ssee_paper2_mcmc.py` (100 walkers × 25000 pasos × 3 modelos,
 (66.75) está obsoleto — el valor vivo es 67.76. Y el dato bariónico
 empuja en contra de OP-1.
 
+## V-L4-DESI — datos BAO eran DR1 mal etiquetados como DR2 — **CORREGIDO (fuente única, 2026-07-01); re-runs PENDIENTES**
+
+**Hallazgo (2026-07-01, pre-flight del mcmc_full).** Los 13 puntos BAO usados
+por TODA la suite como "DESI DR2 (2503.14738)" eran en realidad **DESI DR1**
+(2404.03002): 11/13 coinciden dígito a dígito con la Tabla 1 de DR1 (verificado
+contra ambas tablas oficiales). Humo delator: LRG1 z=0.510 DH/rd = 20.98 (DR1)
+cuando DR2 da **21.863** — el punto que más se movió entre releases. Además el
+csv y los scripts ni coincidían entre sí (2 valores DH divergentes: el csv tenía
+20.08/19.50 donde el código tenía 20.98/20.08).
+
+**Punto QSO huérfano — EN REVISIÓN.** El vector viejo incluía un QSO
+anisotrópico en z=1.491 (DM/rd=30.21±0.79, DH/rd=13.23±0.55) que **no existe en
+ninguna fuente oficial**: DR1 solo publicó QSO isotrópico (DV/rd=26.07±0.67) y
+DR2 publica DM/DH pero en z=1.484 con otros valores (30.512/12.817). Origen
+desconocido (¿transcripción de una proyección? ¿preprint retirado?). Queda
+marcado para rastrear su procedencia; mientras tanto está EXCLUIDO de la
+fuente única (reemplazado por el QSO oficial DR2).
+
+**Impacto en el titular w₀wₐ (FASE 0, recomputado):** con DR2 real la tensión
+del punto algebraico (−0.840, −0.670) depende del compilado SN del contraste
+w0waCDM: **0.09σ (Pantheon+, verificado: −0.838±0.055/−0.62⁺⁰·²²)**, ~1.06σ
+(DES-Y5, lit.), ~1.62σ (Union3, lit.). El "0.05σ" histórico era DR1+Pantheon+.
+Titular honesto nuevo: *consistente con DR2 en 0.1–1.6σ según compilado SN,
+con w₀ casi exacto*. DESY5/Union3 exactos: pinnear de 2503.14738 §VII en F3.
+
+**Corrección estructural (anti-recurrencia):**
+1. `data/raw/desi_dr2_bao.csv` = fuente única: 13 valores DR2 Tabla 4 +
+   corr_MH oficiales + release/arXiv/tabla por fila + historia del error.
+2. `src/desi_dr2_data.py` = cargador único (`load_desi_dr2`,
+   `desi_covariance` bloque-diagonal 2×2). Prohibido hardcodear.
+3. Consumers wireados: `ssee_likelihoods.py` (mcmc_full), `ssee_mcmc_fase4.py`,
+   `ssee_paper2_mcmc_reframe.py` — los 3 con covarianza completa.
+4. Guardián CAPA DESI (R14, 6 checks): csv==Tabla 4 dígito a dígito, cero
+   centinelas DR1, consumers importan del loader, 6 pares correlacionados.
+
+**PENDIENTE (F3/F4):** re-correr Paper 2 MCMC reframe + Fase 4 + mcmc_full con
+DR2; re-derivar contorno CPL de `ssee_paper2_analysis.py`; propagar a
+manuscripts/figuras/README/AUDIT. Los headlines actuales (0.05σ, tabla Unified
+§8) siguen siendo DR1 hasta esos re-runs.
+
 ## Estado final de Capa 4
 
 Re-corridos los tres pipelines (CAMB r_d, CAMB CMB, emcee MCMC) el

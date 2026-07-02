@@ -1,17 +1,39 @@
-# DESI DR2 BAO measurements
-# Source: Abdul-Karim et al. 2025 (DESI Collaboration), arXiv:2503.14738
-# Columns: z_eff, tracer, quantity, value, sigma
-z_eff,tracer,quantity,value,sigma
-0.295,BGS,DV/rd,7.93,0.15
-0.510,LRG,DM/rd,13.62,0.25
-0.510,LRG,DH/rd,20.08,0.60
-0.706,LRG,DM/rd,16.85,0.32
-0.706,LRG,DH/rd,19.50,0.55
-0.930,LRG+ELG,DM/rd,21.71,0.28
-0.930,LRG+ELG,DH/rd,17.88,0.35
-1.317,ELG,DM/rd,27.79,0.69
-1.317,ELG,DH/rd,13.82,0.42
-1.491,QSO,DM/rd,30.21,0.79
-1.491,QSO,DH/rd,13.23,0.55
-2.330,Lya,DM/rd,39.71,0.94
-2.330,Lya,DH/rd,8.52,0.17
+# DESI DR2 BAO measurements — FUENTE ÚNICA DE VERDAD (single source of truth)
+#
+# Fuente: DESI Collaboration (Abdul-Karim et al. 2025), "DESI DR2 Results II:
+#   Measurements of Baryon Acoustic Oscillations and Cosmological Constraints",
+#   arXiv:2503.14738, Table 4.
+# Verificado 2026-07-01 contra https://ar5iv.labs.arxiv.org/html/2503.14738
+#   (valores + errores + correlaciones r_MH, todos de la Tabla 4).
+#
+# Vector BAO anisotrópico de 13 puntos: BGS usa DV/rd isotrópico; el resto de
+#   tracers usa DM/rd y DH/rd con correlación por tracer r_MH (columna corr_MH).
+#   La covarianza correcta es bloque-diagonal 2x2 por tracer (usar corr_MH),
+#   NO puramente diagonal.
+#
+# ─── HISTORIA DEL ERROR (corregido 2026-07-01) ───────────────────────────────
+# La versión previa de este archivo contenía valores de DESI DR1 (2404.03002)
+#   MAL ETIQUETADOS como DR2: BGS DV=7.93±0.15, LRG1 DH=20.98±0.61,
+#   LRG2 DH=20.08±0.60, etc. (11/13 puntos eran DR1 exacto). Además tenía un
+#   punto QSO anisotrópico en z=1.491 (DM=30.21, DH=13.23) SIN FUENTE OFICIAL
+#   (DR1 solo dio QSO isotrópico DV=26.07±0.67; DR2 da DM/DH pero en z=1.484).
+#   El csv y el código ni coincidían entre sí (2 valores DH divergentes).
+#   Cambio clave DR1→DR2: LRG1 DH pasó de 20.98 a 21.863 (se acercó a ΛCDM).
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# quantity: DV_over_rd | DM_over_rd | DH_over_rd
+# corr_MH : correlación entre DM/rd y DH/rd del mismo tracer (vacío para BGS isotrópico)
+z_eff,tracer,quantity,value,sigma,corr_MH,release,arxiv,table
+0.295,BGS,DV_over_rd,7.942,0.075,,DR2,2503.14738,Table4
+0.510,LRG1,DM_over_rd,13.588,0.167,-0.459,DR2,2503.14738,Table4
+0.510,LRG1,DH_over_rd,21.863,0.425,-0.459,DR2,2503.14738,Table4
+0.706,LRG2,DM_over_rd,17.351,0.177,-0.404,DR2,2503.14738,Table4
+0.706,LRG2,DH_over_rd,19.455,0.330,-0.404,DR2,2503.14738,Table4
+0.934,LRG3+ELG1,DM_over_rd,21.576,0.152,-0.416,DR2,2503.14738,Table4
+0.934,LRG3+ELG1,DH_over_rd,17.641,0.193,-0.416,DR2,2503.14738,Table4
+1.321,ELG2,DM_over_rd,27.601,0.318,-0.434,DR2,2503.14738,Table4
+1.321,ELG2,DH_over_rd,14.176,0.221,-0.434,DR2,2503.14738,Table4
+1.484,QSO,DM_over_rd,30.512,0.760,-0.500,DR2,2503.14738,Table4
+1.484,QSO,DH_over_rd,12.817,0.516,-0.500,DR2,2503.14738,Table4
+2.330,Lya,DM_over_rd,38.988,0.531,-0.431,DR2,2503.14738,Table4
+2.330,Lya,DH_over_rd,8.632,0.101,-0.431,DR2,2503.14738,Table4

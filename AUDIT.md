@@ -27,7 +27,7 @@ Falsifiable predictions — fixed by algebraic construction, not fitted (Structu
 
 | Observable | SSEE prediction | Observed | Status |
 |---|---|---|---|
-| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2: (−0.838±0.057, −0.631±0.226) | 0.05σ / 0.17σ |
+| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2+CMB+Pantheon+: (−0.838±0.055, −0.62⁺⁰·²²₋₀.₁₉) | 0.16σ (2D); 0.2–1.5σ across SN compilations |
 | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
@@ -88,7 +88,7 @@ Expected output:
 H₀ = 66.75 ± 0.44 km/s/Mpc
 χ²_r clusters = 0.122  (4 clusters, IGIMF-corrected, MCMC)
 χ²_r clusters = 0.126  (7 clusters, analytic sample)
-χ²_2D (w₀-wₐ vs DESI) = 0.080 → 0.05σ
+χ²_2D (w₀-wₐ vs DESI DR2+CMB+Pantheon+) = 0.27 → 0.16σ (rango 0.2–1.5σ según compilado SN; ver V-L4-DESI)
 ΔBIC (dynamic sector, k_SSEE=1 vs k_ΛCDM=3) = −5.55  [SSEE favoured]
 ΔBIC (full background, k=0 vs k_ΛCDM=6) = +206        [framework penalty]
 ```
@@ -232,14 +232,14 @@ python -c "from classy import Class; c=Class(); c.set({'non_linear':'hmcode','hm
 
 5 parameters (H₀, w₀, wₐ, Ωm, r_d); 100 walkers × 11,000 steps; N_eff = 4,402.
 
-Expected output:
+Expected output (corrected DESI DR2 vector, V-L4-DESI; run 2026-07-02):
 ```
-H₀    = 67.08 ± 0.93    (algebraic: 67.96,   tension: 0.94σ)
-Ω_b h² = 0.02236 ± 0.00015 (algebraic: 0.02237, tension: 0.04σ)
-Ω_m   = 0.3214 ± 0.0124  (algebraic: 0.30889, tension: 1.01σ)
-w₀    = −0.733 ± 0.147   (algebraic: −0.840,  tension: 0.73σ)
-wₐ    = −0.974 ± 0.608   (algebraic: −0.670,  tension: 0.50σ)
-Mean tension (5 params): 0.64σ  (BLIND: flat w0/wa priors; max 1.01σ Ω_m)
+H₀    = 66.84 ± 0.91    (algebraic: 67.96,   tension: 1.23σ)
+Ω_b h² = 0.02237 ± 0.00015 (algebraic: 0.02237, tension: 0.01σ)
+Ω_m   = 0.3241 ± 0.0125  (algebraic: 0.30889, tension: 1.21σ)
+w₀    = −0.740 ± 0.126   (algebraic: −0.840,  tension: 0.79σ)
+wₐ    = −0.839 ± 0.458   (algebraic: −0.670,  tension: 0.37σ)
+Mean tension (5 params): 0.72σ  (BLIND: flat w0/wa priors; max 1.23σ H₀)
 ```
 
 ---

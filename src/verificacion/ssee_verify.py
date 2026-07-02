@@ -766,6 +766,100 @@ except Exception as e:
     check("diccionario  capa operable", False, str(e))
 
 # ─────────────────────────────────────────────────────────────────────
+# CAPA DESI — procedencia de los datos BAO (R14, 2026-07-01).
+# Historia: la suite entera usó DESI DR1 (2404.03002) MAL ETIQUETADO como
+# DR2 durante meses (11/13 puntos DR1 exactos + un QSO z=1.491 sin fuente).
+# Un chequeador de física es ciego a esto (los números eran internamente
+# consistentes); solo un check de PROCEDENCIA contra la tabla oficial lo caza.
+# Tres candados:
+#   1. El csv canónico coincide dígito a dígito con DR2 Tabla 4 (2503.14738)
+#      — la tabla de cotejo vive AQUÍ, copiada independientemente del csv.
+#   2. Cero valores-centinela DR1 en el csv (20.98, 7.93, 13.62...).
+#   3. Los consumers importan del loader único; nadie re-hardcodea datos BAO.
+# ─────────────────────────────────────────────────────────────────────
+print("\nCapa DESI — procedencia BAO: csv == DR2 Tabla 4 oficial, sin DR1, sin hardcode")
+try:
+    _root = pathlib.Path(__file__).resolve().parents[2]
+    sys.path.insert(0, str(_root / "src"))
+    from desi_dr2_data import load_desi_dr2, desi_covariance
+    import numpy as _np
+
+    # 1) Cotejo independiente contra DESI DR2 (2503.14738, Tabla 4).
+    #    (z, quantity, value, sigma, corr_MH) — transcrito del paper, NO del csv.
+    _DR2_OFICIAL = [
+        (0.295, "DV_over_rd",  7.942, 0.075,  None),
+        (0.510, "DM_over_rd", 13.588, 0.167, -0.459),
+        (0.510, "DH_over_rd", 21.863, 0.425, -0.459),
+        (0.706, "DM_over_rd", 17.351, 0.177, -0.404),
+        (0.706, "DH_over_rd", 19.455, 0.330, -0.404),
+        (0.934, "DM_over_rd", 21.576, 0.152, -0.416),
+        (0.934, "DH_over_rd", 17.641, 0.193, -0.416),
+        (1.321, "DM_over_rd", 27.601, 0.318, -0.434),
+        (1.321, "DH_over_rd", 14.176, 0.221, -0.434),
+        (1.484, "DM_over_rd", 30.512, 0.760, -0.500),
+        (1.484, "DH_over_rd", 12.817, 0.516, -0.500),
+        (2.330, "DM_over_rd", 38.988, 0.531, -0.431),
+        (2.330, "DH_over_rd",  8.632, 0.101, -0.431),
+    ]
+    _d = load_desi_dr2()
+    _mism = []
+    for _k, (_z, _q, _v, _s, _c) in enumerate(_DR2_OFICIAL):
+        if not (abs(_d["z"][_k] - _z) < 1e-9 and _d["quantity"][_k] == _q
+                and abs(_d["value"][_k] - _v) < 1e-9
+                and abs(_d["sigma"][_k] - _s) < 1e-9
+                and ((_c is None and _np.isnan(_d["corr"][_k]))
+                     or (_c is not None and abs(_d["corr"][_k] - _c) < 1e-9))):
+            _mism.append(f"fila {_k}: z={_z} {_q}")
+    check("DESI  R14 csv == DR2 Tabla 4 oficial (13 pts, dígito a dígito)",
+          len(_d["value"]) == 13 and not _mism,
+          "idéntico" if not _mism else "DIFIERE: " + "; ".join(_mism[:3]))
+    check("DESI  R14 release/arXiv declarados en el csv",
+          _d.get("release") == "DR2" and _d.get("arxiv") == "2503.14738",
+          f"{_d.get('release')}/{_d.get('arxiv')}")
+
+    # 2) Cero centinelas DR1 (2404.03002) o del QSO huérfano en el csv.
+    _csv_txt = (_root / "data" / "raw" / "desi_dr2_bao.csv").read_text()
+    _data_lines = [l for l in _csv_txt.splitlines()
+                   if l.strip() and not l.startswith("#") and not l.startswith("z_eff")]
+    _DR1_SENT = ["20.98", "20.08", "16.85", "13.62", "27.79", "13.82",
+                 "39.71", "8.52", "17.88", "21.71", "30.21", "13.23", "1.491"]
+    _dr1_hits = [s for s in _DR1_SENT if any(s in l for l in _data_lines)]
+    check("DESI  R14 csv sin valores-centinela DR1/QSO-huérfano",
+          not _dr1_hits, "limpio" if not _dr1_hits else "DR1: " + ", ".join(_dr1_hits))
+
+    # 3) Consumers: importan del loader y no re-hardcodean datos BAO.
+    _consumers = [
+        _root / "src" / "mcmc_full" / "ssee_likelihoods.py",
+        _root / "class_ssee" / "ssee_mcmc_fase4.py",
+        _root / "src" / "p02_mcmc" / "ssee_paper2_mcmc_reframe.py",
+        _root / "src" / "p02_mcmc" / "ssee_paper2_mcmc.py",
+        _root / "src" / "p02_mcmc" / "ssee_paper2_mcmc_lcdm_baseline.py",
+        _root / "src" / "p02_mcmc" / "rerun_cpl_h0anchors.py",
+        _root / "src" / "p09_hubble" / "ssee_h0_prior_experiment.py",
+        _root / "src" / "estadistica" / "ssee_phase_d_savage_cv.py",
+    ]
+    _no_loader, _rehard = [], []
+    for _f in _consumers:
+        _t = _f.read_text(errors="ignore") if _f.exists() else ""
+        if "load_desi_dr2" not in _t:
+            _no_loader.append(_f.name)
+        if any(s in _t for s in ("20.98", "30.21, ", "[0.295,  7.93")):
+            _rehard.append(_f.name)
+    check("DESI  R14 consumers importan del loader único",
+          not _no_loader,
+          "los 8 wireados" if not _no_loader else "SIN loader: " + ", ".join(_no_loader))
+    check("DESI  R14 consumers sin datos BAO re-hardcodeados",
+          not _rehard, "limpio" if not _rehard else "HARDCODE: " + ", ".join(_rehard))
+
+    # 4) Covarianza bloque-diagonal: 6 pares DM-DH correlacionados.
+    _C = desi_covariance(_d)
+    _npairs = int((_np.abs(_C - _np.diag(_np.diag(_C))) > 0).sum() / 2)
+    check("DESI  R14 covarianza con 6 pares DM-DH (r_MH oficiales)",
+          _npairs == 6, f"{_npairs} pares")
+except Exception as e:
+    check("DESI  capa operable", False, str(e))
+
+# ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)

@@ -44,9 +44,10 @@ ORCID: \href{https://orcid.org/0009-0008-2195-7836}{0009-0008-2195-7836}.}%
 }
 \date{April 2026}
 
-% Posterior H0 del MCMC reframe (prior H_alg=67.962, DESI baja a 67.16).
+% Posterior H0 del MCMC reframe (prior H_alg=67.962, DESI DR2 baja a 66.41).
+% DR1-era 67.16 SUPERSEDED (V-L4-DESI): los datos eran DR1 mal etiquetados.
 % Fuente: results/logs/mcmc_paper2_reframe.log (100w×25k, seed 42, N_eff=80262).
-\newcommand{\HZeroPosterior}{67.16^{+0.44}_{-0.44}}
+\newcommand{\HZeroPosterior}{66.41^{+0.39}_{-0.39}}
 
 \begin{document}
 \maketitle
@@ -67,8 +68,10 @@ diagnostics (including $N_{\rm eff}=4{,}402$ effective samples for \SSEE) are
 reported in Table~\ref{tab:convergence}.
 The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, fixed algebraically by the
 closed dictionary \citep{AlmeidaSSEE2026genesis} and not fitted to the data,
-lies within $0.05\sigma$ of the DESI~DR2 CPL free-fit posterior in the
-$\wz$--$\wa$ plane (a parameter-free postdiction).
+lies within $0.16\sigma$ of the official DESI~DR2 $w_0w_a$CDM posterior
+(DESI+CMB+Pantheon+; arXiv:2503.14738, eq.~26) in the $\wz$--$\wa$ plane, and
+within $1.2$--$1.5\sigma$ of the DESY5/Union3/no-SN combinations
+(a parameter-free postdiction).
 The $H_0$ posterior is $\HZeroPosterior$~km\,s$^{-1}$\,Mpc$^{-1}$,
 obtained with the $\omega_m$-direct CMB anchor as the $H_0$ prior
 ($H_0^{\rm alg}=67.962$; Paper~3, \S\ref{sec:prior_mira}).
@@ -557,11 +560,13 @@ between the $\omega_m$-direct CMB anchor
 ($H_0^{\rm prior,SSEE}=67.962\pm0.54$, Eq.~\ref{eq:H0_prior_alg}),
 the published $\Lambda$CDM-calibrated Planck~2018
 value ($67.36\pm0.54$), and the BAO-only run
-($65.8^{+1.2}_{-1.1}$). The simultaneous consistency across both ends
-of the prior spectrum confirms that the algebraic anchor bridges the Planck CMB and
-DESI late-time BAO regimes without straining either; the late-time
-BAO geometry is the dominant constraint, with the prior contributing
-sub-leading shrinkage.
+($65.8^{+1.2}_{-1.1}$). With the DESI~DR2 uncertainties ($\sim$40\% tighter than DR1) the late-time
+BAO geometry dominates the posterior and pulls it $2.9\sigma$ below the
+algebraic anchor: the raw dynamic-sector background is strained by the DR2
+precision (the same two-$\Omega_m$ structural tension documented in
+\S\ref{sec:model_comparison}, amplified). We report this honestly rather than
+tuning the prior; the anchor-bridge reading that held at DR1 precision no
+longer holds unqualified at DR2 precision.
 Marginalised posteriors are shown in Figures~\ref{fig:corner_ssee}
 and~\ref{fig:corner_lcdm}.
 
@@ -571,8 +576,8 @@ and~\ref{fig:corner_lcdm}.
   \caption{Marginalised \SSEE\ posteriors ($\omega_m$-direct $H_0^{\rm alg}$ prior,
   $100\times25000$). Blue lines: prior central values
   ($H_0=67.962$, $\Omega_b h^2=0.02218$). The $H_0$ posterior
-  ($\HZeroPosterior$) sits $1.15\sigma$ below the CMB anchor (DESI BAO pulls it
-  down) and $0.29\sigma$ from Planck.}
+  ($\HZeroPosterior$) sits $2.9\sigma$ below the CMB anchor (the tighter
+  DESI~DR2 BAO errors pull it down strongly) and $1.4\sigma$ from Planck.}
   \label{fig:corner_ssee}
 \end{figure}
 
@@ -587,25 +592,35 @@ and~\ref{fig:corner_lcdm}.
 \subsection{Position in the $\wz$--$\wa$ plane}
 \label{sec:w0wa}
 
-The Mahalanobis distance from the DESI~DR2 best-fit is:
+The Mahalanobis distance from the official DESI~DR2 $w_0w_a$CDM best-fit
+(DESI+CMB+Pantheon+, $w_0=-0.838\pm0.055$, $w_a=-0.62^{+0.22}_{-0.19}$;
+arXiv:2503.14738, eq.~26; $\rho=-0.85$ estimated from the public contours) is:
 \begin{equation}
   \chi^2_{2\rm D}
-  = \Delta\mathbf{w}^\top\mathbf{C}^{-1}\Delta\mathbf{w} = 0.080
-  \;\Rightarrow\; 0.05\sigma.
+  = \Delta\mathbf{w}^\top\mathbf{C}^{-1}\Delta\mathbf{w} = 0.27
+  \;\Rightarrow\; 0.16\sigma.
 \end{equation}
+Against the other official DR2 combinations the distance is $1.23\sigma$
+(DESY5), $1.50\sigma$ (Union3) and $1.52\sigma$ (no-SN DESI+CMB): the
+algebraic point is consistent with all four, with the tension range
+$0.2$--$1.5\sigma$ set by the supernova compilation, and $w_0$ essentially
+exact against Pantheon+ ($\Delta w_0=-0.04\sigma$). The result is robust to
+the assumed correlation ($\rho\in[-0.92,-0.70]$ shifts Pantheon+ by
+$<0.2\sigma$).
 This distance means the \SSEE\ algebraic point $(-0.840,-0.670)$ falls
 well inside the DESI~DR2 $1\sigma$ contour in the $\wz$--$\wa$ plane.
 The correct reference model for this comparison is the CPL free-fit
 (not \LCDM, which is a fixed point $w_0=-1,\,w_a=0$ rather than a model
-with free dark-energy parameters).  The $0.05\sigma$ quoted above is the Mahalanobis distance of the \SSEE\
-point from the DESI~DR2 best-fit (the measurement itself). The full CPL
+with free dark-energy parameters).  The $0.16\sigma$ quoted above is the Mahalanobis distance of the \SSEE\
+point from the DESI~DR2+CMB+Pantheon+ best-fit (the measurement itself). The full CPL
 free-fit posterior of this work has median
 $(\wz,\wa)=(-0.731^{+0.107}_{-0.103},\,-0.923^{+0.443}_{-0.474})$; the
 \SSEE\ algebraic point lies $1.0\sigma$ ($\wz$) and $0.55\sigma$ ($\wa$)
 from this median, i.e.\ $1.2\sigma$ in the joint two-dimensional significance
 (strong $w_0$--$w_a$ anticorrelation, $\rho=-0.95$), within the CPL posterior.
 \SSEE\ is therefore consistent both with the DESI~DR2 measurement (at
-$0.05\sigma$) and with the two-parameter CPL free-fit (at $1.2\sigma$), and the
+$0.16\sigma$ Pantheon+; $1.2$--$1.5\sigma$ for the other compilations) and
+with the two-parameter CPL free-fit (at $1.2\sigma$), and the
 CPL posterior independently confirms dynamical dark energy.
 
 \begin{figure}[H]
@@ -614,7 +629,7 @@ CPL posterior independently confirms dynamical dark energy.
   \caption{\SSEE-V3.6 (red star) in the $\wz$--$\wa$ plane.
   Ellipses: $1\sigma$/$2\sigma$ contours for DESI~DR2 (blue),
   DES~Y5 \citep{DESY52024} (green), Planck~2018 (orange). \SSEE\ lies within
-  $0.05\sigma$ of DESI~DR2.}
+  $0.16\sigma$ of the DESI~DR2+CMB+Pantheon+ contour.}
   \label{fig:w0wa}
 \end{figure}
 
@@ -629,8 +644,8 @@ $\theta_\ast \propto r_d/D_A$ and assumes $r_d \approx 147\ \mathrm{Mpc}$
 mapped through the acoustic saturation factor $|w_0|=0.840$ to
 $r_{d,\mathrm{eff}}\approx147\ \mathrm{Mpc}$
 changes the degeneracy direction entirely.  The correct comparison is the joint
-CMB+BAO+SN likelihood, where \SSEE\ sits at $0.05\sigma$ of the DESI~DR2 CPL
-best-fit (Fig.~\ref{fig:w0wa}).  Reporting the CMB-only tension without this
+CMB+BAO+SN likelihood, where \SSEE\ sits at $0.16\sigma$ of the DESI~DR2
+$w_0w_a$CDM best-fit (Pantheon+; Fig.~\ref{fig:w0wa}).  Reporting the CMB-only tension without this
 context would constitute a misuse of the likelihood \citep{Verde2019}.
 
 \subsection{Sound horizon and $H_0$ posterior}
@@ -643,11 +658,11 @@ it drives an enlarged geometric sound horizon
   r_d^{\SSEE}/r_d^{\LCDM}\approx1.190.
   \label{eq:rd_ratio}
 \end{equation}
-The BAO data partially compensate via a mild $H_0$ downshift
-($H_0^{\SSEE}=67.16$ vs $H_0^{\LCDM}=67.99$\,km\,s$^{-1}$\,Mpc$^{-1}$),
-but this compensation is insufficient to absorb the full background
-discrepancy. The residual tension is $1.4\sigma$ in $H_0$ but
-$21.3\sigma$ in $\Omega_m$ — confirming that the mismatch is in the
+The BAO data partially compensate via an $H_0$ downshift
+($H_0^{\SSEE}=66.41$ vs $H_0^{\LCDM}=67.99$\,km\,s$^{-1}$\,Mpc$^{-1}$;
+the $\Lambda$CDM baseline re-run against the corrected DR2 vector is
+pending), but this compensation is insufficient to absorb the full
+background discrepancy. The mismatch is in the
 background structure, not in the Hubble normalisation.
 
 \paragraph{Interpretation of the $21.3\sigma$ $\Omega_m$ tension.}
@@ -693,14 +708,16 @@ superseding the earlier MIRA-mapped anchor $H_0^{\rm MIRA}=67.037$.
 The MCMC posterior reported above,
 $H_0^{\rm MCMC}=\HZeroPosterior$\,km\,s$^{-1}$\,Mpc$^{-1}$,
 is the late-time BAO posterior under this anchor as prior; it lies at
-$1.15\sigma$ from $H_0^{\rm alg}$ and at $0.29\sigma$ from the
+$2.9\sigma$ from $H_0^{\rm alg}$ (prior width) and at $1.4\sigma$ from the
 $\Lambda$CDM-calibrated Planck value. The two measure different quantities:
 $H_0^{\rm alg}$ characterises the early-Universe geometry, while
 $H_0^{\rm MCMC}$ is the late-time posterior after the DESI data pull
 the value downward to compensate for the enlarged $r_d$.
-The $0.80$\,km\,s$^{-1}$\,Mpc$^{-1}$ downward shift from the anchor
-($1.2\%$) is an explicit consequence of the background-mismatch
-compensation, not an inconsistency within the model.
+The $1.55$\,km\,s$^{-1}$\,Mpc$^{-1}$ downward shift from the anchor
+($2.3\%$) is an explicit consequence of the background-mismatch
+compensation, amplified by the tighter DESI~DR2 uncertainties; it is a
+quantified strain of the raw dynamic-sector background, not a silent
+inconsistency (see \S\ref{sec:model_comparison}).
 
 \begin{figure}[H]
   \centering
@@ -1057,7 +1074,7 @@ The results reveal a sharp bifurcation:
 
 \begin{itemize}
   \item \textbf{Dark-energy sector}: $(\wz,\wa)=(-0.840,-0.670)$
-    lies within $0.05\sigma$ of DESI~DR2. The CPL free-fit posterior
+    lies within $0.16\sigma$ of DESI~DR2 (Pantheon+). The CPL free-fit posterior
     $(-0.80,-0.58)$ confirms dynamical dark energy. \SSEE\ is
     predictively competitive here.
 
@@ -1162,7 +1179,8 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
 
 \begin{enumerate}
   \item The zero-free-parameter prediction $(\wz,\wa)=(-0.840,-0.670)$
-    lies within $0.05\sigma$ of the DESI~DR2 free-fit CPL posterior —
+    lies within $0.16\sigma$ of the official DESI~DR2 $w_0w_a$CDM posterior
+    (Pantheon+; $1.2$--$1.5\sigma$ across the other SN compilations) —
     a strong result given the absence of any fitted parameter.
 
   \item Cluster masses achieve $\chi^2_r=0.126$ with IGIMF; removing
@@ -1349,7 +1367,7 @@ On the Jeffreys scale~\cite{Trotta2008} $\ln B=+2.26$ ($>1.1$) constitutes
 the CPL framework.  The CPL posterior median
 $(w_0^{\rm CPL}=-0.731\pm0.106,\;w_a^{\rm CPL}=-0.919\pm0.461)$ places
 the SSEE algebraic point at $(1.03\sigma,0.54\sigma)$, consistent with
-the $0.05\sigma$ joint tension quoted in Section~\ref{sec:w0wa}.
+the $0.16\sigma$ joint tension quoted in Section~\ref{sec:w0wa}.
 Bandwidth robustness: varying the KDE bandwidth by $\pm50\%$ from the
 Scott rule gives $B\in[8.6,\,10.5]$ ($\ln B\in[2.15,\,2.35]$), all
 within the \emph{substantial} evidence tier, confirming the KDE

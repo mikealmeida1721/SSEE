@@ -44,10 +44,14 @@ canonical:
   H0_local_UV_km_s_Mpc: 73.040    # Paper 10 — 0.00σ SH0ES (script ssee_paper10_verification, Fase B)
   f_screen_IR:         0.06725    # (π−φ)/Ω² = αK/(3·MIRA)  [INVARIANTE]
   f_screen_UV:         0.06952    # αK_full/(3·MIRA)        [INVARIANTE]
-  # Posterior MCMC reframe: prior H_alg=67.962 (ancla CMB ω_m-directo), DESI baja a 67.16.
-  # log: results/logs/mcmc_paper2_reframe.log (100w×25k, seed 42, N_eff=80262, accept=0.715)
-  H0_posterior_km_s_Mpc: 67.16    # 67.159 ⁺⁰·⁴⁴³/₋₀·⁴⁴² — 0.29σ Planck (era 66.53 con prior MIRA 67.037)
-  Omega_b_h2_posterior: 0.02285   # posterior Ω_b·h² (BBN prior 0.02218)
+  # Posterior MCMC reframe: prior H_alg=67.962 (ancla CMB ω_m-directo) + DESI DR2 REAL.
+  # DESI DR2 baja el ancla a 66.41 (DR1 la bajaba a 67.16 — SUPERSEDED, era dato DR1
+  # mal etiquetado; ver V-L4-DESI). Los errores DR2 (~40% menores) tensan el fondo
+  # dinámico puro: χ²_BAO 239→795, Ω_bh² posterior +2.3σ sobre BBN. PENDIENTE
+  # interpretación en Paper 2 (huella dos-Ω_m amplificada, no bug).
+  # log: results/logs/mcmc_paper2_reframe_dr2.log (100w×25k, seed 42, N_eff=77785, accept=0.716)
+  H0_posterior_km_s_Mpc: 66.41   # 66.412 ± 0.387 — 1.43σ Planck (DR1 superseded: 67.16 ± 0.44 / 0.29σ)
+  Omega_b_h2_posterior: 0.02343   # posterior Ω_b·h² (BBN prior 0.02218; +2.3σ, señal de esfuerzo DR2)
 
   # EFT / UV completion
   alpha_K:             0.4033     # Paper 7 (Bellini-Sawicki)

@@ -50,28 +50,43 @@ print(f"  w0+wa = {W0_SSEE + WA_SSEE:.4f}")
 # 2. POSICIÓN EN PLANO w0-wa y DESVIACIONES EN SIGMA
 # ─────────────────────────────────────────────
 #
-# Contornos DESI DR2 (BAO+CMB+DESY5), extraídos de arXiv:2503.14738 Tabla 3:
-#   Best fit: w0 = -0.827 ± 0.060,  wa = -0.75 ± 0.29
-# Planck 2018 solo (TT+TE+EE+lowE+lensing):
-#   w0 = -1.03 ± 0.03,  wa ≈ 0 (prior ΛCDM)
-# DESY5 (weak lensing + clustering):
-#   w0 = -0.98 ± 0.12,  wa = -0.35 ± 0.52
+# Contornos w0waCDM oficiales de DESI DR2 (arXiv:2503.14738, ecs. 25-28),
+# verificados contra el HTML fuente el 2026-07-02:
+#   DESI+CMB           : w0 = -0.42  ± 0.21,   wa = -1.75 ± 0.58
+#   DESI+CMB+Pantheon+ : w0 = -0.838 ± 0.055,  wa = -0.62 (+0.22/-0.19)
+#   DESI+CMB+Union3    : w0 = -0.667 ± 0.088,  wa = -1.09 (+0.31/-0.27)
+#   DESI+CMB+DESY5     : w0 = -0.752 ± 0.057,  wa = -0.86 (+0.23/-0.20)
+# Errores asimétricos SIMETRIZADOS (media). El paper NO publica ρ(w0,wa) en
+# texto: se adopta ρ=-0.85 (banana w0-wa de las figuras públicas) y se reporta
+# sensibilidad ρ∈{-0.70,-0.85,-0.92} — la conclusión cualitativa no depende de ρ.
+#
+# HISTORIA (2026-07-01): la versión anterior usaba (-0.827±0.060, -0.75±0.29)
+# etiquetado "DR2 Tabla 3" — eran valores de DESI DR1 (2404.03002). El titular
+# 0.05σ era DR1+SN. Ver VERIFICATION_LEDGER.md § V-L4-DESI y guardián R14.
+
+RHO_FID  = -0.85          # estimado de contornos públicos (no publicado en texto)
+RHO_SENS = [-0.70, -0.85, -0.92]
 
 datasets = {
-    "DESI DR2 (BAO+CMB+DESY5)": {
-        "w0_bf": -0.827, "sigma_w0": 0.060,
-        "wa_bf": -0.750, "sigma_wa": 0.290,
-        "rho":   -0.60,  # correlación w0-wa (aproximada de contornos DESI)
+    "DESI+CMB (DR2 ec.25)": {
+        "w0_bf": -0.420, "sigma_w0": 0.210,
+        "wa_bf": -1.750, "sigma_wa": 0.580,
+        "rho":   RHO_FID,
     },
-    "Planck 2018 (CMB only)": {
-        "w0_bf": -1.030, "sigma_w0": 0.030,
-        "wa_bf":  0.000, "sigma_wa": 0.250,
-        "rho":   -0.40,
+    "DESI+CMB+Pantheon+ (DR2 ec.26)": {
+        "w0_bf": -0.838, "sigma_w0": 0.055,
+        "wa_bf": -0.620, "sigma_wa": 0.205,
+        "rho":   RHO_FID,
     },
-    "DESY5 (WL+GC)": {
-        "w0_bf": -0.980, "sigma_w0": 0.120,
-        "wa_bf": -0.350, "sigma_wa": 0.520,
-        "rho":   -0.55,
+    "DESI+CMB+Union3 (DR2 ec.27)": {
+        "w0_bf": -0.667, "sigma_w0": 0.088,
+        "wa_bf": -1.090, "sigma_wa": 0.290,
+        "rho":   RHO_FID,
+    },
+    "DESI+CMB+DESY5 (DR2 ec.28)": {
+        "w0_bf": -0.752, "sigma_w0": 0.057,
+        "wa_bf": -0.860, "sigma_wa": 0.215,
+        "rho":   RHO_FID,
     },
 }
 
@@ -120,6 +135,21 @@ for name, d in datasets.items():
     print(f"    SSEE pred:      w0={W0_SSEE:.4f}, wa={WA_SSEE:.4f}")
     print(f"    Δw0 = {delta_w0:+.3f}σ  |  Δwa = {delta_wa:+.3f}σ")
     print(f"    χ²(2D) = {chi2_2D:.3f}  →  {sigma_eq:.2f}σ equiv  (p={p_val:.4f})")
+
+# Sensibilidad a ρ (el paper no publica la correlación w0-wa en texto):
+print("\n  Sensibilidad a ρ(w0,wa) — tensión 2D equivalente por combinación:")
+print(f"  {'combinación':34s}" + "".join(f"  ρ={r:+.2f}" for r in RHO_SENS))
+for name, d in datasets.items():
+    row = f"  {name:34s}"
+    for r in RHO_SENS:
+        C_r = np.array([[d['sigma_w0']**2, r*d['sigma_w0']*d['sigma_wa']],
+                        [r*d['sigma_w0']*d['sigma_wa'], d['sigma_wa']**2]])
+        dv_r = np.array([W0_SSEE - d['w0_bf'], WA_SSEE - d['wa_bf']])
+        c2 = float(dv_r @ np.linalg.inv(C_r) @ dv_r)
+        p2 = stats.chi2.sf(c2, df=2)
+        s2 = stats.norm.isf(p2/2) if p2 > 0 else np.inf
+        row += f"  {s2:6.2f}σ"
+    print(row)
 
 
 # ─────────────────────────────────────────────
@@ -308,13 +338,17 @@ print("=" * 60)
 print("RESUMEN EJECUTIVO PARA PAPER 2")
 print("=" * 60)
 
-best_desi = results_sigma["DESI DR2 (BAO+CMB+DESY5)"]
+rango = [(n, r["sigma_eq"]) for n, r in results_sigma.items()]
+r_min = min(rango, key=lambda x: x[1]); r_max = max(rango, key=lambda x: x[1])
+best_desi = results_sigma["DESI+CMB+Pantheon+ (DR2 ec.26)"]
 print(f"""
-  POSICIÓN w0-wa:
+  POSICIÓN w0-wa (DESI DR2 oficial, 4 combinaciones w0waCDM):
     SSEE: (w0, wa) = ({W0_SSEE:.4f}, {WA_SSEE:.4f})
-    vs DESI DR2 best-fit (-0.827, -0.750):
+    vs DESI+CMB+Pantheon+ (-0.838, -0.62):
       Δw0 = {best_desi['delta_w0']:+.3f}σ,  Δwa = {best_desi['delta_wa']:+.3f}σ
       Distancia Mahalanobis: {best_desi['chi2_2D']:.3f} → {best_desi['sigma_eq']:.2f}σ equiv
+    RANGO honesto entre combinaciones (depende del compilado SN):
+      mínimo {r_min[1]:.2f}σ ({r_min[0]}) — máximo {r_max[1]:.2f}σ ({r_max[0]})
 
   MASAS EN CÚMULOS (χ² reducido):
     SSEE completo:  χ²_red = {chi2_totals['SSEE completo']['chi2_red']:.3f}

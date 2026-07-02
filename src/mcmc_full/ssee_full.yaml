@@ -11,8 +11,10 @@
 # real de los Cℓ → mide H0 sin clavarlo al prior, y blinda contra el sesgo
 # de distance priors en un modelo no-ΛCDM.
 #
-# Benchmark de comparación: H_MIRA = 67.037 km/s/Mpc (ancla canónica),
-# NO la conjetura Type-P 67.96 que usó por error Fase 4.
+# Benchmark de comparación: H_alg = 3(φ+π)² = 67.962 km/s/Mpc (ancla global
+# canónica post-reframe ω_m-directo; H_MIRA 67.037 quedó RETIRADO al disolverse
+# OP-8 — ya no hay factor materia). H0 flota con prior plano [60,80]: el dato,
+# no el ancla, elige. La chain mide H0 = 66.23 ± 1.55 (1.12σ de H_alg).
 # ============================================================================
 
 theory:

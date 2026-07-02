@@ -128,34 +128,27 @@ def rd_fit(H0, ombh2, Omm):
     rd = 147.05 * (omm_h2 / 0.14305)**(-0.252) * (ombh2 / 0.02236)**(-0.137)
     return rd
 
-# ─── DESI DR2 BAO (Abdul-Karim et al. 2025, arXiv:2503.14738) ─────────────────
-# tipo: 0=DM/rd  1=DH/rd  2=DV/rd
-DESI_DATA = np.array([
-    [0.295,  7.93,  0.15,  2],   # BGS     DV/rd
-    [0.510, 13.62,  0.25,  0],   # LRG1    DM/rd
-    [0.510, 20.98,  0.61,  1],   # LRG1    DH/rd
-    [0.706, 16.85,  0.32,  0],   # LRG2    DM/rd
-    [0.706, 20.08,  0.60,  1],   # LRG2    DH/rd
-    [0.930, 21.71,  0.28,  0],   # LRG3    DM/rd
-    [0.930, 17.88,  0.35,  1],   # LRG3    DH/rd
-    [1.317, 27.79,  0.69,  0],   # ELG     DM/rd
-    [1.317, 13.82,  0.42,  1],   # ELG     DH/rd
-    [1.491, 30.21,  0.79,  0],   # QSO     DM/rd
-    [1.491, 13.23,  0.55,  1],   # QSO     DH/rd
-    [2.330, 39.71,  0.94,  0],   # Lya     DM/rd
-    [2.330,  8.52,  0.17,  1],   # Lya     DH/rd
-])
+# ─── DESI DR2 BAO (Abdul-Karim et al. 2025, arXiv:2503.14738, Tabla 4) ────────
+# Cargado de la FUENTE ÚNICA data/raw/desi_dr2_bao.csv (NO hardcodear → drift DR1/DR2)
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
+from desi_dr2_data import load_desi_dr2, desi_covariance  # noqa: E402
+_DESI     = load_desi_dr2()
+DESI_Z    = _DESI["z"]
+DESI_OBS  = _DESI["value"]
+DESI_TYPE = _DESI["type"]                              # 0=DM/rd  1=DH/rd  2=DV/rd
+DESI_CINV = np.linalg.inv(desi_covariance(_DESI))     # bloque-diagonal (r_MH oficiales DR2)
 
 def chi2_desi(H0, Omm, w0, wa, ombh2):
     rd = rd_fit(H0, ombh2, Omm)
-    chi2 = 0.0
-    for row in DESI_DATA:
-        z, obs, sigma, tipo = row
-        if   tipo == 0: pred = DM(z, H0, Omm, w0, wa) / rd
-        elif tipo == 1: pred = DH(z, H0, Omm, w0, wa) / rd
-        else:           pred = DV(z, H0, Omm, w0, wa) / rd
-        chi2 += ((pred - obs) / sigma)**2
-    return chi2
+    pred = np.empty(len(DESI_OBS))
+    for k in range(len(pred)):
+        z = DESI_Z[k]
+        tipo = DESI_TYPE[k]
+        if   tipo == 0: pred[k] = DM(z, H0, Omm, w0, wa) / rd
+        elif tipo == 1: pred[k] = DH(z, H0, Omm, w0, wa) / rd
+        else:           pred[k] = DV(z, H0, Omm, w0, wa) / rd
+    r = pred - DESI_OBS
+    return float(r @ DESI_CINV @ r)
 
 # ─── Planck 2018 prior comprimido ─────────────────────────────────────────────
 P18_H0 = 67.36;  P18_SH0  = 0.54

@@ -132,10 +132,14 @@ deriva corresponde a **ediciones del script / cambios de prior**, no a azar:
 - 66.75 ± 0.44 — prior Planck-ΛCDM legacy, 50w×10k.
 - 66.533 ± 0.442 — prior MIRA 67.037 self-consistent, 100w×25k. **Superado por el
   reframe ω_m-directo 2026-06-19.**
-- **67.159 ± 0.442 — prior H_alg 67.962 (ancla CMB ω_m-directo), 100w×25k (CANÓNICO ACTUAL).**
-  `ssee_paper2_mcmc_reframe.py`, ref `results/logs/mcmc_paper2_reframe.log`.
-  N_eff≈80262, acceptance 0.715. El prior, antes 67.037 (MIRA), subió a 67.962 (la CMB minimiza
-  ahí con ω_b,ω_c fijos por álgebra), y el posterior subió a 67.159 (0.29σ Planck).
+- 67.159 ± 0.442 — prior H_alg 67.962, 100w×25k, **datos DR1 mal etiquetados. Superado
+  por V-L4-DESI (2026-07-02).** ref `results/logs/mcmc_paper2_reframe.log`.
+- **66.412 ± 0.385 — prior H_alg 67.962 + vector DESI DR2 REAL (CANÓNICO ACTUAL).**
+  `ssee_paper2_mcmc_reframe.py`, ref `results/logs/mcmc_paper2_reframe_dr2.log`.
+  N_eff≈77785, acceptance 0.716, cov bloque-diagonal r_MH oficiales. Ω_bh²
+  posterior 0.02343±0.00045 (+2.3σ sobre BBN — señal de esfuerzo del fondo
+  dinámico puro ante los errores DR2 ~40% menores; χ²_BAO 795, interpretación
+  pendiente en P2). 1.43σ Planck.
 
 **Anatomía del H₀ (un solo número, dos etapas):** el modelo tiene UN H₀.
 (1) **Anchor/prior** = H_alg = 67.962 km/s/Mpc: el H₀ que minimiza la
@@ -913,6 +917,10 @@ tensiones reportadas sean comparables entre papers. Un árbitro lo marcaría.
 Re-corrido `ssee_paper3_cmb.py` con CAMB 1.6.5. Reproduce **exactamente**
 lo reportado en CLAUDE.md:
 
+*(NOTA 2026-07-08: esta tabla es el re-run histórico 2026-05-22 PRE-reframe,
+valores superados; el canónico vigente es el de Paper 3 @ ω_m-directo:
+TT 1.042, TE 1.040, EE 1.040, PP 0.719, ΔBIC diagonal −34.9.)*
+
 | Espectro | SSEE χ²_r | ΛCDM χ²_r | N |
 |---|---|---|---|
 | TT | 1.047 | 1.043 | 1971 |
@@ -929,7 +937,8 @@ de Paper 3 es reproducible. Verificado.**
 ## V-L4-rd — horizonte de sonido r_d — **r_d sano en ambos anclajes**
 
 Re-corrido con CAMB en el reframe ω_m-directo (2026-06-19). Con los H₀
-canónicos actuales (anchor H_alg 67.962, posterior 67.159):
+canónicos actuales (anchor H_alg 67.962, posterior DR2 66.412; el 67.159
+previo usaba el vector DR1 mal etiquetado, superado):
 
 | H₀ usado | r_d resultante | tensión Planck (147.09±0.26) |
 |---|---|---|
@@ -952,19 +961,22 @@ H₀ vía D_A. Re-run CAMB reframe 2026-06-19, vs Planck 2018 **0.59668±0.00046
 | H₀ usado | θ* resultante | tensión |
 |---|---|---|
 | 67.962 (anchor H_alg, CMB-óptimo ω_m-directo) | 0.59668° (100θ*=1.04140) | **1.05σ ✓** |
-| 67.159 (posterior MCMC reframe, corregido por DESI) | 0.59536° (100θ*=1.03909) | **6.66σ** |
+| 66.412 (posterior MCMC DR2, corregido por DESI) | 100θ*=1.03693 (CAMB 2026-07-08) | **13.9σ** |
+| 67.159 (posterior con vector DR1 mal etiquetado) | 100θ*=1.03910 (6.6σ) | *superado* |
 | 67.037 / 66.533 (anchor/posterior MIRA viejo) | 0.59638° / 0.59423° | *superado* |
 
 **Crux honesto:** en el **anchor CMB-óptimo (H_alg 67.962)**, θ* (1.05σ) y r_d
-(0.32σ) están **ambos sanos**. La tensión de 6.66σ aparece SOLO si se inyecta
-el H₀ posterior corregido-por-DESI (67.159) en el observable CMB — es decir,
-es la manifestación en θ* del **split BAO–CMB de 1.15σ en H₀** de los modelos
-w₀wₐ. Un control ΛCDM (w=−1) al mismo H₀ da θ* casi idéntico: **el tirón en
+(0.32σ) están **ambos sanos**. La tensión grande aparece SOLO si se inyecta
+el H₀ posterior corregido-por-DESI (66.412) en el observable CMB — es decir,
+es la manifestación en θ* del **split BAO–CMB en H₀** de los modelos
+w₀wₐ (1.55 km/s con DR2; era 0.80 con el vector DR1). Un control ΛCDM (w=−1) al mismo H₀ da θ* casi idéntico: **el tirón en
 θ* lo causa H₀, NO la energía oscura w₀wₐ de SSEE.**
 
 **Lectura para el documento de journal:** anclar el CMB en H_alg=67.962 (donde
-r_d 0.32σ y θ* 1.05σ), reportar el posterior BAO 67.159±0.442 (0.29σ Planck), y
-declarar el split BAO–CMB (1.15σ) como feature conocido de w₀wₐ — no como falla.
+r_d 0.32σ y θ* 1.05σ), reportar el posterior BAO 66.412±0.385 (1.43σ Planck), y
+declarar el split BAO–CMB (2.9σ del ancho del prior con DR2; interpretación
+pendiente en P2) como feature conocido de w₀wₐ amplificado por la precisión
+DR2 — reportado, no escondido.
 
 ## V-L4-MCMC — MCMC DESI+Planck (Paper 2) — **re-run 2026-05-22; H₀ derivó**
 

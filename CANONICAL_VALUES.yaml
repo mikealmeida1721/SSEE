@@ -127,6 +127,8 @@ retired:
   - {pattern: "0.05\\sigma", reason: "titular w0wa DR1+SN → 0.16σ Pantheon+ / rango 0.2-1.5σ (ecs. 25-28 DR2)"}
   - {pattern: "-0.827",    reason: "contorno w0wa DR1 (2404.03002) → DR2 Pantheon+ -0.838±0.055"}
   - {pattern: "20.98",     reason: "LRG1 DH/rd DR1 → DR2 21.863 (centinela del mal etiquetado)"}
+  - {pattern: "67.159",    reason: "H0 posterior DR1-era (variante decimal de 67.16) → 66.412±0.385 DR2"}
+  - {pattern: "0.59536",   reason: "θ* evaluado en posterior DR1-era 67.159 → 100θ*=1.03693 (13.9σ) @ 66.412"}
   - {pattern: "66.533",    reason: "H0 posterior MCMC viejo (prior MIRA)"}
   - {pattern: "67.037",    reason: "H_MIRA ancla CMB vieja → H_alg=67.962 (ω_m-directo; CMB minimiza ahí)"}
   # ── reframe ω_m-directo + partícula SOLAR (2026-06-18/19) ──────────────

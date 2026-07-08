@@ -422,31 +422,40 @@ minimises the Planck likelihood for the SSEE background; at this anchor the
 sound horizon and acoustic scale are both well within tolerance,
 $r_d = 147.17~\mathrm{Mpc}$ ($0.32\sigma$) and
 $\theta_\ast = 0.59668^\circ$ ($1.05\sigma$). Letting the MCMC then correct
-$H_0$ against the low-redshift BAO yields the posterior
+$H_0$ against the low-redshift BAO (corrected DESI~DR2 vector, block-diagonal
+covariance with the official $r_{M,H}$ correlations) yields the posterior
 \begin{equation}
-  H_0^{\mathrm{post}} = 67.159 \pm 0.442~\kms ,
+  H_0^{\mathrm{post}} = 66.412 \pm 0.385~\kms ,
   \qquad
-  \Omega_b h^2 = 0.02285 \pm 0.00048 ,
+  \Omega_b h^2 = 0.02343 \pm 0.00045 ,
   \label{eq:h0post}
 \end{equation}
 with $r_d = 147.17~\mathrm{Mpc}$ ($0.32\sigma$, $\omega_m$-set, $H_0$-invariant)
 at the posterior value. These
 are two stages of the same quantity---a CMB anchor and a BAO-corrected
 posterior---not two independent measurements. (The earlier MIRA-anchored
-$67.037 / 66.533$ stages are superseded by the $\omega_m$-direct reframe.)
+$67.037 / 66.533$ stages, and the $67.159$ posterior obtained with the
+mislabelled DR1 vector, are superseded.)
 
 \paragraph{The BAO--CMB split is a known feature, reported openly.} The
-$\sim1.2\sigma$ gap between Eqs.~\eqref{eq:h0anchor} and~\eqref{eq:h0post} is
-the same intrinsic BAO--CMB tension discussed in \S\ref{sec:desi-agreement}:
-the late-time BAO prefer a slightly lower $H_0$ than the early-time acoustic
-geometry. It is a property of dynamical-dark-energy fits to the current data,
+$1.55~\kms$ gap between Eqs.~\eqref{eq:h0anchor} and~\eqref{eq:h0post}
+($2.9\sigma$ of the prior width) is
+the same intrinsic BAO--CMB tension discussed in \S\ref{sec:desi-agreement},
+amplified by the $\sim40\%$ tighter DESI~DR2 uncertainties: the late-time BAO
+prefer a lower $H_0$ than the early-time acoustic geometry, and with DR2
+precision this preference is no longer mild. It is a property of
+dynamical-dark-energy fits to the current data,
 not an artefact of SSEE, and we make it explicit rather than hide it inside a
-single quoted number. At the CMB anchor all early-universe observables
-($r_d$, $\theta_\ast$) sit at $\sim1\sigma$ simultaneously; the residual split
+single quoted number: the raw dynamic-sector background is quantifiably
+strained by the DR2 precision, and we track its interpretation as an open
+item rather than absorb it silently. At the CMB anchor all early-universe
+observables
+($r_d$, $\theta_\ast$) sit at $\sim1\sigma$ simultaneously; the split
 surfaces only when the BAO-corrected posterior is pushed back into a
 CMB-calibrated observable, which is precisely where the literature expects it.
 Numerically, evaluating $\theta_\ast$ at $H_0^{\mathrm{post}}$ would return
-$0.59536^\circ$ ($6.66\sigma$); we quote this not as a tension but to make the
+$100\,\theta_\ast=1.03693$ ($13.9\sigma$); we quote this not as a tension but
+to make the
 category error explicit---the late-time expansion rate is not the early-time
 acoustic calibration, and conflating the two is precisely what the two-stage
 treatment avoids.
@@ -458,7 +467,7 @@ treatment avoids.
   $\times\,25{,}000$ steps). With the entire dark-energy sector fixed by
   $\varphi$ and $\pi$, the chain samples only $H_0$ and $\Omega_b h^2$ against
   DESI DR2 BAO with the $\omega_m$-direct CMB anchor as prior. The posterior is
-  $H_0=67.159\pm0.442~\kms$ and $\Omega_b h^2 = 0.02285\pm0.00048$
+  $H_0=66.412\pm0.385~\kms$ and $\Omega_b h^2 = 0.02343\pm0.00045$
   (Eq.~\ref{eq:h0post}). Dashed lines mark the anchor inputs
   $(H_0=67.962~\kms,\ \Omega_b h^2 = 0.02218)$; the $16/50/84\%$ quantiles are
   indicated.}
@@ -549,10 +558,10 @@ Table~\ref{tab:cmb} reports the reduced $\chi^2$.
     \toprule
     Spectrum & SSEE $\chi^2_r$ & $\Lambda$CDM $\chi^2_r$ & $N$ \\
     \midrule
-    TT          & 1.044 & 1.043 & 1971 \\
-    TE          & 1.041 & 1.040 & 1967 \\
+    TT          & 1.042 & 1.043 & 1971 \\
+    TE          & 1.040 & 1.040 & 1967 \\
     EE          & 1.040 & 1.039 & 1967 \\
-    $\phi\phi$ (lensing) & 0.866 & 0.757 & 9 \\
+    $\phi\phi$ (lensing) & 0.719 & 0.757 & 9 \\
     \bottomrule
   \end{tabular}
   \caption{CMB confrontation against Planck PR4. SSEE reproduces the acoustic

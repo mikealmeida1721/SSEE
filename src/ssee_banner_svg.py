@@ -143,7 +143,7 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" font-fam
 <g text-anchor="middle">
   <text x="540" y="128" class="title" filter="url(#glow)">SSEE</text>
   <text x="540" y="166" class="sub">Structural Self-Energy Expansion · dark energy from φ and π</text>
-  <text x="540" y="200" class="nums">w₀ = −0.840 · wₐ = −0.670 · ~3 effective parameters · 0.16σ vs DESI DR2 (Pantheon+)</text>
+  <text x="540" y="200" class="nums">w₀ = −0.840 · wₐ = −0.670 · ~3 effective parameters · 0.24σ vs DESI DR2 (Pantheon+)</text>
   <text x="540" y="262" class="motto">geometric perfection underlies it — imperfection lets matter evolve</text>
 </g>
 </svg>

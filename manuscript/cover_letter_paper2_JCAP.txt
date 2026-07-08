@@ -33,8 +33,8 @@ BAO covariance matrix, we find:
 
   - H₀ = 66.41 ± 0.39 km/s/Mpc (SSEE posterior; algebraic background
     prior H₀ = 3(φ+π)² = 67.962, lowered by DESI BAO)
-  - The algebraic prediction (w₀, wₐ) = (-0.840, -0.670) lies within 0.16σ
-    (DESI+CMB+Pantheon+; 0.2–1.5σ across SN compilations)
+  - The algebraic prediction (w₀, wₐ) = (-0.840, -0.670) lies within 0.24σ
+    (DESI+CMB+Pantheon+; 0.2–1.8σ across SN compilations)
     of the DESI DR2 CPL free-fit posterior (N_eff = 637,500 samples)
   - Galaxy-cluster mass ratios reproduced at χ²_r = 0.122 (4-cluster MCMC subset)
     and χ²_r = 0.126 (7-cluster analytic), using IGIMF-corrected baryonic masses,

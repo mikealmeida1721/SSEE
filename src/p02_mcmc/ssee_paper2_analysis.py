@@ -56,37 +56,37 @@ print(f"  w0+wa = {W0_SSEE + WA_SSEE:.4f}")
 #   DESI+CMB+Pantheon+ : w0 = -0.838 ± 0.055,  wa = -0.62 (+0.22/-0.19)
 #   DESI+CMB+Union3    : w0 = -0.667 ± 0.088,  wa = -1.09 (+0.31/-0.27)
 #   DESI+CMB+DESY5     : w0 = -0.752 ± 0.057,  wa = -0.86 (+0.23/-0.20)
-# Errores asimétricos SIMETRIZADOS (media). El paper NO publica ρ(w0,wa) en
-# texto: se adopta ρ=-0.85 (banana w0-wa de las figuras públicas) y se reporta
-# sensibilidad ρ∈{-0.70,-0.85,-0.92} — la conclusión cualitativa no depende de ρ.
+# Momentos y ρ(w0,wa) EXACTOS medidos de las CADENAS OFICIALES DESI DR2
+# (Zenodo 10.5281/zenodo.16644577, cosmology_chains/cobaya/base_w_wa, burn-in
+# 30%, pesos de cadena; medido 2026-07-08). Sensibilidad a ρ conservada abajo
+# como verificación — la conclusión no depende de ρ.
 #
 # HISTORIA (2026-07-01): la versión anterior usaba (-0.827±0.060, -0.75±0.29)
 # etiquetado "DR2 Tabla 3" — eran valores de DESI DR1 (2404.03002). El titular
 # 0.05σ era DR1+SN. Ver VERIFICATION_LEDGER.md § V-L4-DESI y guardián R14.
 
-RHO_FID  = -0.85          # estimado de contornos públicos (no publicado en texto)
-RHO_SENS = [-0.70, -0.85, -0.92]
+RHO_SENS = [-0.70, -0.85, -0.92]   # sensibilidad (verificación; los ρ vigentes son los medidos)
 
 datasets = {
     "DESI+CMB (DR2 ec.25)": {
-        "w0_bf": -0.420, "sigma_w0": 0.210,
-        "wa_bf": -1.750, "sigma_wa": 0.580,
-        "rho":   RHO_FID,
+        "w0_bf": -0.4178, "sigma_w0": 0.2051,
+        "wa_bf": -1.7515, "sigma_wa": 0.5796,
+        "rho":   -0.978,   # medido de cadenas oficiales
     },
     "DESI+CMB+Pantheon+ (DR2 ec.26)": {
-        "w0_bf": -0.838, "sigma_w0": 0.055,
-        "wa_bf": -0.620, "sigma_wa": 0.205,
-        "rho":   RHO_FID,
+        "w0_bf": -0.8380, "sigma_w0": 0.0552,
+        "wa_bf": -0.6166, "sigma_wa": 0.2076,
+        "rho":   -0.894,
     },
     "DESI+CMB+Union3 (DR2 ec.27)": {
-        "w0_bf": -0.667, "sigma_w0": 0.088,
-        "wa_bf": -1.090, "sigma_wa": 0.290,
-        "rho":   RHO_FID,
+        "w0_bf": -0.6669, "sigma_w0": 0.0885,
+        "wa_bf": -1.0853, "sigma_wa": 0.2933,
+        "rho":   -0.933,
     },
     "DESI+CMB+DESY5 (DR2 ec.28)": {
-        "w0_bf": -0.752, "sigma_w0": 0.057,
-        "wa_bf": -0.860, "sigma_wa": 0.215,
-        "rho":   RHO_FID,
+        "w0_bf": -0.7521, "sigma_w0": 0.0572,
+        "wa_bf": -0.8611, "sigma_wa": 0.2213,
+        "rho":   -0.905,
     },
 }
 

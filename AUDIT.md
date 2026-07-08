@@ -27,7 +27,7 @@ Falsifiable predictions — fixed by algebraic construction, not fitted (Structu
 
 | Observable | SSEE prediction | Observed | Status |
 |---|---|---|---|
-| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2+CMB+Pantheon+: (−0.838±0.055, −0.62⁺⁰·²²₋₀.₁₉) | 0.16σ (2D); 0.2–1.5σ across SN compilations |
+| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2+CMB+Pantheon+: (−0.838±0.055, −0.617±0.208) | 0.24σ (2D); 0.2–1.8σ across SN compilations (official chains) |
 | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
@@ -88,7 +88,7 @@ Expected output:
 H₀ = 66.75 ± 0.44 km/s/Mpc
 χ²_r clusters = 0.122  (4 clusters, IGIMF-corrected, MCMC)
 χ²_r clusters = 0.126  (7 clusters, analytic sample)
-χ²_2D (w₀-wₐ vs DESI DR2+CMB+Pantheon+) = 0.27 → 0.16σ (rango 0.2–1.5σ según compilado SN; ver V-L4-DESI)
+χ²_2D (w₀-wₐ vs DESI DR2+CMB+Pantheon+) = 0.42 → 0.24σ (rango 0.2–1.8σ según compilado SN, ρ medidos de cadenas oficiales; ver V-L4-DESI)
 ΔBIC (dynamic sector, k_SSEE=1 vs k_ΛCDM=3) = −5.55  [SSEE favoured]
 ΔBIC (full background, k=0 vs k_ΛCDM=6) = +206        [framework penalty]
 ```

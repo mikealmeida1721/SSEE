@@ -19,7 +19,8 @@ for i in 1 2 3 4; do
   OUT=$BASE/c${i}/ssee_full
   mkdir -p "$BASE/c${i}"
   echo "$(date '+%H:%M:%S')  lanzando cadena $i  →  $OUT"
-  setsid nohup $ROOT/.venv/bin/cobaya-run "$YAML" --output "$OUT" --force \
+  # --resume: continúa del checkpoint si existe (NO usar --force: borra lo corrido)
+  setsid nohup $ROOT/.venv/bin/cobaya-run "$YAML" --output "$OUT" --resume \
      > "$LOGDIR/cadena_${i}.log" 2>&1 &
   echo "  PID=$!  log=$LOGDIR/cadena_${i}.log"
   sleep 20

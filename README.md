@@ -13,9 +13,9 @@
 [![Status](https://img.shields.io/badge/Audit-guardian_green-success.svg)](VERIFICATION_LEDGER.md)
 [![Prediction](https://img.shields.io/badge/Pre--registered-k__fs_%3D_0.762_h%2FMpc-critical.svg)](OPEN_PROBLEMS.md)
 
-<img src="results/figures/fig1_w0wa_plane.png" width="520" alt="SSEE algebraic point (w0, wa) vs DESI DR2 contours — 0.16σ (Pantheon+)"/>
+<img src="results/figures/fig1_w0wa_plane.png" width="520" alt="SSEE algebraic point (w0, wa) vs DESI DR2 contours — 0.24σ (Pantheon+)"/>
 
-*The algebraic point (w₀, wₐ) = (−0.840, −0.670) — derived from φ and π with zero fitting — vs the official DESI DR2 w₀wₐCDM contours: **0.16σ** (DESI+CMB+Pantheon+), and within **1.2–1.5σ** of the DESY5/Union3/no-SN combinations (arXiv:2503.14738, eqs. 25–28).*
+*The algebraic point (w₀, wₐ) = (−0.840, −0.670) — derived from φ and π with zero fitting — vs the official DESI DR2 w₀wₐCDM contours: **0.24σ** (DESI+CMB+Pantheon+), and within **1.2–1.5σ** of the DESY5/Union3/no-SN combinations (arXiv:2503.14738, eqs. 25–28).*
 
 </div>
 
@@ -27,7 +27,7 @@
 
 | Observable | SSEE (algebraic) | Observed | Separation | |
 |---|---|---|---|---|
-| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2+CMB+Pantheon+: (−0.838±0.055, −0.62⁺⁰·²²₋₀.₁₉) | 0.16σ (2D); range 0.2–1.5σ across SN compilations | ✅ |
+| (w₀, wₐ) | (−0.840, −0.670) | DESI DR2+CMB+Pantheon+: (−0.838±0.055, −0.617±0.208) | 0.24σ (2D); range 0.2–1.8σ across SN compilations (official chains) | ✅ |
 | CMB first peak | ℓ₁ = 221 | Planck PR4: ~220 | Δℓ = 1 | ✅ |
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ | ✅ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ | ✅ |
@@ -139,7 +139,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 
 | Metric | Value |
 |---|---|
-| χ²_2D (w₀-wₐ vs DESI DR2+CMB+Pantheon+) | 0.27 → 0.16σ (2D); 1.23σ DESY5, 1.50σ Union3 |
+| χ²_2D (w₀-wₐ vs DESI DR2+CMB+Pantheon+) | 0.42 → 0.24σ (2D); 1.47σ DESY5, 1.77σ Union3 (ρ medidos de cadenas oficiales) |
 | χ²_r clusters (7 clusters, analytic) | 0.126 |
 | χ²_r clusters (4 clusters, MCMC) | 0.122 |
 | H₀ SSEE (MCMC, prior H_alg 67.962, ωm-direct, DESI DR2) | 66.41 ± 0.39 km/s/Mpc (1.43σ Planck; DR1-era 67.16 superseded) |

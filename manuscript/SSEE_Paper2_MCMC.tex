@@ -68,7 +68,7 @@ diagnostics (including $N_{\rm eff}=4{,}402$ effective samples for \SSEE) are
 reported in Table~\ref{tab:convergence}.
 The \SSEE\ prediction $(\wz,\wa)=(-0.840,-0.670)$, fixed algebraically by the
 closed dictionary \citep{AlmeidaSSEE2026genesis} and not fitted to the data,
-lies within $0.16\sigma$ of the official DESI~DR2 $w_0w_a$CDM posterior
+lies within $0.24\sigma$ of the official DESI~DR2 $w_0w_a$CDM posterior
 (DESI+CMB+Pantheon+; arXiv:2503.14738, eq.~26) in the $\wz$--$\wa$ plane, and
 within $1.2$--$1.5\sigma$ of the DESY5/Union3/no-SN combinations
 (a parameter-free postdiction).
@@ -593,25 +593,27 @@ and~\ref{fig:corner_lcdm}.
 \label{sec:w0wa}
 
 The Mahalanobis distance from the official DESI~DR2 $w_0w_a$CDM best-fit
-(DESI+CMB+Pantheon+, $w_0=-0.838\pm0.055$, $w_a=-0.62^{+0.22}_{-0.19}$;
-arXiv:2503.14738, eq.~26; $\rho=-0.85$ estimated from the public contours) is:
+(DESI+CMB+Pantheon+, $w_0=-0.838\pm0.055$, $w_a=-0.617\pm0.208$;
+arXiv:2503.14738, eq.~26; moments and $\rho=-0.894$ measured directly from the
+official DESI chains, Zenodo record 16644577) is:
 \begin{equation}
   \chi^2_{2\rm D}
-  = \Delta\mathbf{w}^\top\mathbf{C}^{-1}\Delta\mathbf{w} = 0.27
-  \;\Rightarrow\; 0.16\sigma.
+  = \Delta\mathbf{w}^\top\mathbf{C}^{-1}\Delta\mathbf{w} = 0.42
+  \;\Rightarrow\; 0.24\sigma.
 \end{equation}
-Against the other official DR2 combinations the distance is $1.23\sigma$
-(DESY5), $1.50\sigma$ (Union3) and $1.52\sigma$ (no-SN DESI+CMB): the
+Against the other official DR2 combinations the distance is $1.47\sigma$
+(DESY5), $1.77\sigma$ (Union3) and $1.67\sigma$ (no-SN DESI+CMB; all with
+chain-measured correlations $\rho=-0.905$ to $-0.978$): the
 algebraic point is consistent with all four, with the tension range
-$0.2$--$1.5\sigma$ set by the supernova compilation, and $w_0$ essentially
+$0.2$--$1.8\sigma$ set by the supernova compilation, and $w_0$ essentially
 exact against Pantheon+ ($\Delta w_0=-0.04\sigma$). The result is robust to
-the assumed correlation ($\rho\in[-0.92,-0.70]$ shifts Pantheon+ by
-$<0.2\sigma$).
+the correlation ($\rho\in[-0.92,-0.70]$ would shift Pantheon+ by
+$<0.2\sigma$; the chain-measured value is used).
 This distance means the \SSEE\ algebraic point $(-0.840,-0.670)$ falls
 well inside the DESI~DR2 $1\sigma$ contour in the $\wz$--$\wa$ plane.
 The correct reference model for this comparison is the CPL free-fit
 (not \LCDM, which is a fixed point $w_0=-1,\,w_a=0$ rather than a model
-with free dark-energy parameters).  The $0.16\sigma$ quoted above is the Mahalanobis distance of the \SSEE\
+with free dark-energy parameters).  The $0.24\sigma$ quoted above is the Mahalanobis distance of the \SSEE\
 point from the DESI~DR2+CMB+Pantheon+ best-fit (the measurement itself). The full CPL
 free-fit posterior of this work has median
 $(\wz,\wa)=(-0.731^{+0.107}_{-0.103},\,-0.923^{+0.443}_{-0.474})$; the
@@ -619,7 +621,7 @@ $(\wz,\wa)=(-0.731^{+0.107}_{-0.103},\,-0.923^{+0.443}_{-0.474})$; the
 from this median, i.e.\ $1.2\sigma$ in the joint two-dimensional significance
 (strong $w_0$--$w_a$ anticorrelation, $\rho=-0.95$), within the CPL posterior.
 \SSEE\ is therefore consistent both with the DESI~DR2 measurement (at
-$0.16\sigma$ Pantheon+; $1.2$--$1.5\sigma$ for the other compilations) and
+$0.24\sigma$ Pantheon+; $1.2$--$1.5\sigma$ for the other compilations) and
 with the two-parameter CPL free-fit (at $1.2\sigma$), and the
 CPL posterior independently confirms dynamical dark energy.
 
@@ -629,7 +631,7 @@ CPL posterior independently confirms dynamical dark energy.
   \caption{\SSEE-V3.6 (red star) in the $\wz$--$\wa$ plane.
   Ellipses: $1\sigma$/$2\sigma$ contours for DESI~DR2 (blue),
   DES~Y5 \citep{DESY52024} (green), Planck~2018 (orange). \SSEE\ lies within
-  $0.16\sigma$ of the DESI~DR2+CMB+Pantheon+ contour.}
+  $0.24\sigma$ of the DESI~DR2+CMB+Pantheon+ contour.}
   \label{fig:w0wa}
 \end{figure}
 
@@ -644,7 +646,7 @@ $\theta_\ast \propto r_d/D_A$ and assumes $r_d \approx 147\ \mathrm{Mpc}$
 mapped through the acoustic saturation factor $|w_0|=0.840$ to
 $r_{d,\mathrm{eff}}\approx147\ \mathrm{Mpc}$
 changes the degeneracy direction entirely.  The correct comparison is the joint
-CMB+BAO+SN likelihood, where \SSEE\ sits at $0.16\sigma$ of the DESI~DR2
+CMB+BAO+SN likelihood, where \SSEE\ sits at $0.24\sigma$ of the DESI~DR2
 $w_0w_a$CDM best-fit (Pantheon+; Fig.~\ref{fig:w0wa}).  Reporting the CMB-only tension without this
 context would constitute a misuse of the likelihood \citep{Verde2019}.
 
@@ -1074,7 +1076,7 @@ The results reveal a sharp bifurcation:
 
 \begin{itemize}
   \item \textbf{Dark-energy sector}: $(\wz,\wa)=(-0.840,-0.670)$
-    lies within $0.16\sigma$ of DESI~DR2 (Pantheon+). The CPL free-fit posterior
+    lies within $0.24\sigma$ of DESI~DR2 (Pantheon+). The CPL free-fit posterior
     $(-0.80,-0.58)$ confirms dynamical dark energy. \SSEE\ is
     predictively competitive here.
 
@@ -1179,7 +1181,7 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
 
 \begin{enumerate}
   \item The zero-free-parameter prediction $(\wz,\wa)=(-0.840,-0.670)$
-    lies within $0.16\sigma$ of the official DESI~DR2 $w_0w_a$CDM posterior
+    lies within $0.24\sigma$ of the official DESI~DR2 $w_0w_a$CDM posterior
     (Pantheon+; $1.2$--$1.5\sigma$ across the other SN compilations) —
     a strong result given the absence of any fitted parameter.
 
@@ -1367,7 +1369,7 @@ On the Jeffreys scale~\cite{Trotta2008} $\ln B=+2.26$ ($>1.1$) constitutes
 the CPL framework.  The CPL posterior median
 $(w_0^{\rm CPL}=-0.731\pm0.106,\;w_a^{\rm CPL}=-0.919\pm0.461)$ places
 the SSEE algebraic point at $(1.03\sigma,0.54\sigma)$, consistent with
-the $0.16\sigma$ joint tension quoted in Section~\ref{sec:w0wa}.
+the $0.24\sigma$ joint tension quoted in Section~\ref{sec:w0wa}.
 Bandwidth robustness: varying the KDE bandwidth by $\pm50\%$ from the
 Scott rule gives $B\in[8.6,\,10.5]$ ($\ln B\in[2.15,\,2.35]$), all
 within the \emph{substantial} evidence tier, confirming the KDE

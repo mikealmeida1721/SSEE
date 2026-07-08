@@ -71,19 +71,19 @@ def covariance_ellipse(ax, w0c, wac, sig_w0, sig_wa, rho, n_sigma,
 
 fig1, ax1 = plt.subplots(figsize=(7, 6))
 
-# Contornos w0waCDM OFICIALES DESI DR2 (2503.14738 ecs. 25-28; ρ=-0.85 estimado
-# de contornos públicos). Valores DR1 viejos (-0.827/-0.750) RETIRADOS (V-L4-DESI).
-pant_kw = dict(w0c=-0.838, wac=-0.620, sig_w0=0.055, sig_wa=0.205, rho=-0.85)
+# Contornos w0waCDM OFICIALES DESI DR2 — momentos y ρ MEDIDOS de las cadenas
+# oficiales (Zenodo 16644577, burn-in 30%, pesos). DR1 viejos RETIRADOS (V-L4-DESI).
+pant_kw = dict(w0c=-0.838, wac=-0.617, sig_w0=0.055, sig_wa=0.208, rho=-0.894)
 covariance_ellipse(ax1, **pant_kw, n_sigma=2, color="#2166AC", alpha=0.18, zorder=1)
 covariance_ellipse(ax1, **pant_kw, n_sigma=1, color="#2166AC", alpha=0.35, zorder=2,
                    label="DESI DR2+CMB+Pantheon+ 1σ/2σ")
 
-desy_kw = dict(w0c=-0.752, wac=-0.860, sig_w0=0.057, sig_wa=0.215, rho=-0.85)
+desy_kw = dict(w0c=-0.752, wac=-0.861, sig_w0=0.057, sig_wa=0.221, rho=-0.905)
 covariance_ellipse(ax1, **desy_kw, n_sigma=2, color="#4DAF4A", alpha=0.12, zorder=1)
 covariance_ellipse(ax1, **desy_kw, n_sigma=1, color="#4DAF4A", alpha=0.28, zorder=2,
                    label="DESI DR2+CMB+DESY5 1σ/2σ")
 
-uni_kw = dict(w0c=-0.667, wac=-1.090, sig_w0=0.088, sig_wa=0.290, rho=-0.85)
+uni_kw = dict(w0c=-0.667, wac=-1.085, sig_w0=0.088, sig_wa=0.293, rho=-0.933)
 covariance_ellipse(ax1, **uni_kw, n_sigma=2, color="#D95F02", alpha=0.12, zorder=1)
 covariance_ellipse(ax1, **uni_kw, n_sigma=1, color="#D95F02", alpha=0.30, zorder=2,
                    label="DESI DR2+CMB+Union3 1σ/2σ")
@@ -99,7 +99,7 @@ ax1.scatter(W0_SSEE, WA_SSEE, marker="*", s=260, color="#E6002B",
 
 # Cruz de incertidumbre SSEE (algebraica → 0, pero indicamos con símbolo)
 ax1.annotate(
-    fr"SSEE: 0.16$\sigma$ (Pantheon+)",
+    fr"SSEE: 0.24$\sigma$ (Pantheon+)",
     xy=(W0_SSEE, WA_SSEE), xytext=(W0_SSEE + 0.05, WA_SSEE + 0.15),
     fontsize=9, color="#E6002B",
     arrowprops=dict(arrowstyle="->", color="#E6002B", lw=1.2),

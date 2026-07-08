@@ -48,7 +48,7 @@ from ssee_core import (
     PHI, PI, BETA, KAL0, P_SC as P_sc, K_V as KV, T_R as TR, M_V as MV,
     W0 as W0_SSEE, WA as WA_SSEE, OMEGA_DE as OMDE_SSEE,
     OMEGA_M_DYN as OM_EFF_SSEE,
-    OMEGA_M_CMB_MIRA as OM_CMB_SSEE,   # Ω_m,cosm=0.320 — solo para diagnóstico (NO entra al fondo)
+    OMEGA_M_CMB as OM_CMB_SSEE,   # Ω_m,cosm=0.30889 canónico ω_m-directo — solo diagnóstico (NO entra al fondo)
 )
 FNU_SSEE = 0.020   # fracción de neutrinos — no algebraico, queda local
 

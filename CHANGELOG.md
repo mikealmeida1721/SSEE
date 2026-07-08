@@ -1,5 +1,28 @@
 # Changelog
 
+## V3.6.1 — DESI DR2 vector correction: DR1 data mislabelled as DR2 (2026-07-02)
+
+- **CRITICAL data-provenance fix (V-L4-DESI).** The 13-point BAO vector used across
+  the entire suite as "DESI DR2 (arXiv:2503.14738)" was in fact **DESI DR1**
+  (arXiv:2404.03002): 11/13 points matched the DR1 table digit-for-digit, and the
+  anisotropic QSO point at z=1.491 had no official source at all (flagged, excluded).
+  Corrected to the official DR2 Table 4 (verified digit-by-digit), with per-tracer
+  DM–DH correlations. Single source of truth: `data/raw/desi_dr2_bao.csv` +
+  `src/desi_dr2_data.py`; guardián layer R14 (6 checks) makes recurrence impossible.
+- **Headline w₀wₐ tension recomputed** against the four official DR2 w₀wₐCDM
+  posteriors (eqs. 25–28): **0.16σ (DESI+CMB+Pantheon+)**, 1.23σ (DESY5), 1.50σ
+  (Union3), 1.52σ (no-SN) — honest range **0.2–1.5σ set by the SN compilation**
+  (the old 0.05σ was DR1-based). Δw₀ = −0.04σ vs Pantheon+: essentially exact.
+- **H₀ posterior (P2 reframe MCMC, corrected vector): 66.41 ± 0.39 km/s/Mpc**
+  (1.43σ Planck). The ~40% tighter DR2 errors strain the raw dynamic-sector
+  background (χ²_BAO 239→795); interpretation tracked for Paper 2.
+- **Blind Fase 4 (flat w₀/wₐ, corrected vector): mean 0.72σ, max 1.23σ** — the
+  rigidly fixed background still survives the blind five-parameter test.
+- Propagated to all 12 documents + README + AUDIT + CANONICAL (4 retired patterns)
+  + fig1_w0wa_plane regenerated with official DR2 contours. Old DR1-era chains
+  (~10 GB) preserved on HDD as `*_DR1_superseded`.
+
+
 ## V3.6 — ω_m-direct reframe: MIRA matter factor dissolved (OP-8 closed) (2026-06-18)
 
 - **OP-8 dissolved — no matter-rescaling factor.** The CMB matter density is now

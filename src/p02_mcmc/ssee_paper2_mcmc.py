@@ -23,7 +23,8 @@ t0 = time.time()
 
 LOG_FILE = "results/logs/mcmc_professional.log"
 OUT_DIR  = "results/figures"
-CHAIN_FILE = "results/logs/mcmc_chains_professional.npz"
+# Regla de disco: chains (~GB) al HDD, NO al SSD root
+CHAIN_FILE = "/mnt/datos/SSEE_data/mcmc/paper2_3models/mcmc_chains_professional.npz"
 os.makedirs("results/logs", exist_ok=True)
 os.makedirs(OUT_DIR, exist_ok=True)
 

@@ -20,7 +20,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 t0 = time.time()
 LOG = "results/logs/mcmc_paper2_lcdm_baseline.log"
-CKPT = "results/logs/mcmc_paper2_lcdm_baseline_ckpt.npz"
+# Regla de disco: chain al HDD
+CKPT = "/mnt/datos/SSEE_data/mcmc/paper2_3models/mcmc_paper2_lcdm_baseline_ckpt.npz"
 OUT = "results/figures"
 os.makedirs("results/logs", exist_ok=True)
 os.makedirs(OUT, exist_ok=True)

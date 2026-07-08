@@ -1002,10 +1002,10 @@ empuja en contra de OP-1.
 **Hallazgo (2026-07-01, pre-flight del mcmc_full).** Los 13 puntos BAO usados
 por TODA la suite como "DESI DR2 (2503.14738)" eran en realidad **DESI DR1**
 (2404.03002): 11/13 coinciden dígito a dígito con la Tabla 1 de DR1 (verificado
-contra ambas tablas oficiales). Humo delator: LRG1 z=0.510 DH/rd = 20.98 (DR1)
+contra ambas tablas oficiales). Humo delator: LRG1 z=0.510 DH/rd = 20.98 (DR1, retirado)
 cuando DR2 da **21.863** — el punto que más se movió entre releases. Además el
 csv y los scripts ni coincidían entre sí (2 valores DH divergentes: el csv tenía
-20.08/19.50 donde el código tenía 20.98/20.08).
+20.08/19.50 donde el código tenía 20.98/20.08 — todos valores viejos retirados).
 
 **Punto QSO huérfano — EN REVISIÓN.** El vector viejo incluía un QSO
 anisotrópico en z=1.491 (DM/rd=30.21±0.79, DH/rd=13.23±0.55) que **no existe en

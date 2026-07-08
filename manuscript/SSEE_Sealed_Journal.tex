@@ -46,9 +46,10 @@ dimensionless constants, the golden ratio $\varphi=(1+\sqrt5)/2$ and $\pi$,
 rather than by tuned cosmological parameters. The equation of state follows as
 bare ratios of structural invariants, $w_0=-T_r/M_v=-0.840$ and
 $w_a=-P_{\rm sc}/K_v=-0.670$, with no fitted amplitude; confronted with the DESI
-DR2 $w_0w_a$CDM posterior the agreement is at the $0.05\sigma$ level
-($\chi^2_{\rm 2D}=0.080$). A Markov-chain analysis combining DESI BAO with the
-$\omega_m$-direct CMB anchor as prior yields $H_0=67.16\pm0.44~\kms$. The
+DR2 $w_0w_a$CDM posterior the agreement is at the $0.16\sigma$ level
+(Pantheon+; $0.2$--$1.5\sigma$ across supernova compilations)
+($\chi^2_{\rm 2D}=0.27$). A Markov-chain analysis combining DESI BAO with the
+$\omega_m$-direct CMB anchor as prior yields $H_0=66.41\pm0.39~\kms$. The
 effective-field-theory description is canonical---$\alpha_T=\alpha_M=\alpha_B=0$
 with $\alpha_K(0)=0.4033$---and the inflationary sector predicts
 $n_s=1-\varphi^{-7}=0.9656$ and a tensor-to-scalar ratio $r=\varphi^{-10}=
@@ -185,34 +186,43 @@ projections of a single rolling field.
 
 \subsection{Agreement with DESI DR2}
 \label{sec:desi-agreement}
-We confront Eq.~\eqref{eq:w0wa} with the DESI DR2 $w_0w_a$CDM posterior
-(BAO\,$+$\,CMB\,$+$\,DESY5; \citealp{AbdulKarim2025}),
-$w_0^{\rm bf}=-0.827\pm0.060$, $w_a^{\rm bf}=-0.750\pm0.290$, with correlation
-$\rho=-0.60$. Because the two parameters are strongly correlated, the
-meaningful figure of merit is the \emph{joint} (Mahalanobis) distance rather
-than two separate one-dimensional offsets. Writing
+We confront Eq.~\eqref{eq:w0wa} with the four official DESI DR2 $w_0w_a$CDM
+posteriors \citep[eqs.~25--28]{AbdulKarim2025}. The tightest combination,
+DESI\,$+$\,CMB\,$+$\,Pantheon+, gives
+$w_0^{\rm bf}=-0.838\pm0.055$, $w_a^{\rm bf}=-0.62^{+0.22}_{-0.19}$
+(correlation $\rho\simeq-0.85$, estimated from the public contours; the paper
+does not quote it in text). Because the two parameters are strongly
+correlated, the meaningful figure of merit is the \emph{joint} (Mahalanobis)
+distance rather than two separate one-dimensional offsets. Writing
 $\mathbf{d}=(w_0-w_0^{\rm bf},\,w_a-w_a^{\rm bf})$ and the $2\times2$
 covariance $\mathsf{C}$,
 \begin{equation}
-  \chi^2_{\rm 2D}=\mathbf{d}^{\!\top}\mathsf{C}^{-1}\mathbf{d}=0.080,
+  \chi^2_{\rm 2D}=\mathbf{d}^{\!\top}\mathsf{C}^{-1}\mathbf{d}=0.27,
   \qquad
-  p=0.961,
+  p=0.87,
   \qquad
-  \text{equivalent } 0.05\sigma .
+  \text{equivalent } 0.16\sigma .
   \label{eq:chi2}
 \end{equation}
-The component offsets are $\Delta w_0=-0.22\sigma$ and $\Delta w_a=+0.28\sigma$;
-their joint distance is what reduces to $0.05\sigma$. We stress that this
-remarkable agreement is obtained with \emph{zero} hand-tuned dark-energy
-parameters: the only inputs are $\varphi$ and $\pi$.
+The component offsets are $\Delta w_0=-0.04\sigma$ (essentially exact) and
+$\Delta w_a=-0.24\sigma$. Against the other official combinations the joint
+distance is $1.23\sigma$ (DESY5), $1.50\sigma$ (Union3) and $1.52\sigma$
+(no-SN DESI$+$CMB): the algebraic point is consistent with all four, with the
+tension range $0.2$--$1.5\sigma$ set by the supernova compilation. The result
+is robust to the assumed correlation ($\rho\in[-0.92,-0.70]$ shifts the
+Pantheon+ figure by $<0.2\sigma$). We stress that this agreement is obtained
+with \emph{zero} hand-tuned dark-energy parameters: the only inputs are
+$\varphi$ and $\pi$.
 
-\paragraph{Honest caveat: this is agreement with BAO, not with CMB-only.}
-The $0.05\sigma$ figure is specific to the DESI DR2 dynamical-dark-energy
-posterior, which is dominated by low-redshift BAO ($z\simeq0.3$--$2.3$), where
-dark energy actually drives the expansion. Against a \emph{Planck CMB-only}
+\paragraph{Honest caveat: this is agreement with BAO$+$SN, not with CMB-only.}
+The $0.16\sigma$ figure is specific to the DESI DR2 dynamical-dark-energy
+posterior, which is dominated by low-redshift data ($z\simeq0.3$--$2.3$), where
+dark energy actually drives the expansion, and the quoted range
+$0.2$--$1.5\sigma$ reflects the known spread among supernova compilations.
+Against a \emph{Planck CMB-only}
 $w_0w_a$CDM contour ($w_0=-1.03\pm0.03$, $w_a=0.00$, extrapolated from
-$z\simeq1100$) the same $(w_0,w_a)$ sits at $\chi^2_{\rm 2D}=40.2$, i.e.\
-$6.0\sigma$; against DESY5 supernovae it is $0.67\sigma$. This spread is the
+$z\simeq1100$) the same $(w_0,w_a)$ sits at
+$6.0\sigma$. This spread is the
 well-known intrinsic BAO--CMB tension of dynamical-dark-energy models and is
 \emph{not} resolved by SSEE---no element of the framework reconciles the
 $z\simeq1100$ extrapolation with the $z\lesssim2$ measurement. We report the
@@ -225,10 +235,11 @@ that directly probes the dark-energy-dominated epoch.
   \caption{The SSEE prediction in the $w_0$--$w_a$ plane. The single point
   $(w_0,w_a)=(-T_r/M_v,\,-P_{\rm sc}/K_v)=(-0.840,-0.670)$ is fixed entirely by
   $\varphi$ and $\pi$, with no dark-energy parameters adjusted to the data. The
-  shaded contours are the DESI DR2 $w_0w_a$CDM posterior
-  (BAO\,$+$\,CMB\,$+$\,DESY5). The SSEE point falls inside the $1\sigma$ region;
-  the joint Mahalanobis distance is $\chi^2_{\rm 2D}=0.080$, an equivalent
-  $0.05\sigma$ agreement (Eq.~\ref{eq:chi2}).}
+  shaded contours are the official DESI DR2 $w_0w_a$CDM posteriors
+  (Pantheon+, DESY5, Union3). The SSEE point falls inside the Pantheon+
+  $1\sigma$ region; the joint Mahalanobis distance is $\chi^2_{\rm 2D}=0.27$,
+  an equivalent $0.16\sigma$ agreement (Eq.~\ref{eq:chi2}), and within
+  $1.2$--$1.5\sigma$ of the other compilations.}
   \label{fig:w0wa}
 \end{figure}
 
@@ -793,7 +804,7 @@ We have presented a minimal-parameter framework in which the shape of the dark
 sector is fixed by the two dimensionless constants $\varphi$ and $\pi$. The
 late-time equation of state emerges as bare ratios of structural invariants,
 $w_0=-0.840$ and $w_a=-0.670$, and matches the DESI DR2 posterior at
-$0.05\sigma$ without a single fitted dark-sector parameter. The
+$0.16\sigma$ (Pantheon+) without a single fitted dark-sector parameter. The
 effective-field-theory description is canonical, with vanishing tensor, running,
 and braiding functions and $\alpha_K(0)=0.4033$; the inflationary sector
 predicts $n_s=0.9656$ and $r=8.1\times10^{-3}$; and a Boltzmann calculation

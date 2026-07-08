@@ -121,7 +121,12 @@ retired:
   # NOTA: −20.8 NO se retira como patrón (es el ΔBIC diagonal histórico legítimo,
   # V-L4-05 en el Ledger lo valida). Solo estaba stale como TITULAR del Cover Letter,
   # corregido a −33.0 (full plik) in situ. Un patrón "20.8" daría falsos positivos.
-  - {pattern: "66.53",     reason: "H0 posterior MCMC con prior MIRA 67.037 → reframe prior H_alg da 67.16"}
+  - {pattern: "66.53",     reason: "H0 posterior MCMC con prior MIRA 67.037 — dos veces superseded (→67.16 DR1, →66.41 DR2)"}
+  # ── vector DESI DR2 real (V-L4-DESI, 2026-07-02) — era DR1 mal etiquetado ──
+  - {pattern: "67.16",     reason: "H0 posterior con datos DR1 mal etiquetados → 66.41±0.39 con DR2 real"}
+  - {pattern: "0.05\\sigma", reason: "titular w0wa DR1+SN → 0.16σ Pantheon+ / rango 0.2-1.5σ (ecs. 25-28 DR2)"}
+  - {pattern: "-0.827",    reason: "contorno w0wa DR1 (2404.03002) → DR2 Pantheon+ -0.838±0.055"}
+  - {pattern: "20.98",     reason: "LRG1 DH/rd DR1 → DR2 21.863 (centinela del mal etiquetado)"}
   - {pattern: "66.533",    reason: "H0 posterior MCMC viejo (prior MIRA)"}
   - {pattern: "67.037",    reason: "H_MIRA ancla CMB vieja → H_alg=67.962 (ω_m-directo; CMB minimiza ahí)"}
   # ── reframe ω_m-directo + partícula SOLAR (2026-06-18/19) ──────────────

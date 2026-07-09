@@ -856,6 +856,50 @@ try:
     _npairs = int((_np.abs(_C - _np.diag(_np.diag(_C))) > 0).sum() / 2)
     check("DESI  R14 covarianza con 6 pares DM-DH (r_MH oficiales)",
           _npairs == 6, f"{_npairs} pares")
+
+    # 5) CANARIO DE GEOMETRÍA — remache del bug χ²=726 (2026-07-09, V-L4-DESI).
+    #    La geometría de fondo (E(z), r_d, distancias) DEBE usar la materia
+    #    TOTAL Ω_m = ω_m/h² = 0.30889.  El sector frío 0.160 = 1+w0 NO es una
+    #    densidad de fondo (es perturbaciones P6 + factor EFT α_K) y NUNCA va
+    #    en un E(z).  Meterlo ahí fue el bug que dio χ²_BAO=726 en DESI DR2.
+    #    Este canario reconstruye la geometría BAO desde las MISMAS fuentes
+    #    (loader único + ssee_core) y ancla la invariante en los dos sentidos:
+    #    con la total el χ² es sano (~11); con el sector DEBE doler (~725).
+    #    Si una futura edición vuelve a meter 0.160 en E(z), esto se pone ROJO.
+    from ssee_core import (W0 as _W0, WA as _WA,
+                           OMEGA_M_TOTAL as _OMT, OMEGA_CDM_SECTOR as _OMS)
+    _Cinv = _np.linalg.inv(_C)
+    _Z, _Q, _OBS = list(_d["z"]), list(_d["quantity"]), _d["value"]
+    _CKM = 2.998e5
+    def _fde(z):
+        a = 1.0 / (1.0 + z)
+        return (1 + z) ** (3 * (1 + _W0 + _WA)) * _np.exp(-3 * _WA * (1 - a))
+    def _E(z, Om):
+        return _np.sqrt(Om * (1 + z) ** 3 + (1 - Om) * _fde(z))
+    def _DC(zm, Om, n=250):
+        zz = _np.linspace(0, zm, n)
+        return _np.trapezoid(1.0 / _E(zz, Om), zz)
+    def _rd(obh2, omh2):
+        return 147.27 * (omh2 / 0.1432) ** -0.255 * (obh2 / 0.02237) ** -0.134
+    def _chi2_bao(Om, obh2=0.02237):
+        best = 1e30
+        for _H0 in _np.linspace(55, 80, 150):   # min sobre H0: ni su mejor H0 salva al sector
+            _r = _rd(obh2, Om * (_H0 / 100) ** 2)
+            _p = []
+            for _z, _q in zip(_Z, _Q):
+                _dm = (_CKM / _H0) * _DC(_z, Om)
+                _dh = _CKM / (_H0 * _E(_z, Om))
+                _p.append(_dm / _r if _q == "DM_over_rd"
+                          else _dh / _r if _q == "DH_over_rd"
+                          else (_z * _dm ** 2 * _dh) ** (1 / 3) / _r)
+            _res = _np.array(_p) - _OBS
+            best = min(best, float(_res @ _Cinv @ _res))
+        return best
+    _c_total, _c_sector = _chi2_bao(_OMT), _chi2_bao(_OMS)
+    check("DESI  R14 canario-geometría: materia TOTAL (0.30889) da χ²_BAO sano",
+          _c_total < 50, f"χ²={_c_total:.1f} (<50) con Ω_m,total")
+    check("DESI  R14 canario-geometría: sector 0.160 en E(z) DEBE doler",
+          _c_sector > 300, f"χ²={_c_sector:.1f} (>300) — reproduce el bug χ²=726")
 except Exception as e:
     check("DESI  capa operable", False, str(e))
 

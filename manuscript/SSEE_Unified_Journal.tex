@@ -89,8 +89,9 @@ claim of temporal priority over DESI~DR2.
 A Bayesian MCMC analysis under the $\omega_m$-direct CMB anchor as prior
 ($H_0^{\rm prior,SSEE}=67.962\pm0.54$~km\,s$^{-1}$\,Mpc$^{-1}$, the value at
 which Planck~\texttt{plik\_lite} is minimised with SSEE-fixed $\omega_b,\omega_c$; Paper~3) yields
-$H_0 = 66.41^{+0.39}_{-0.39}$~km\,s$^{-1}$\,Mpc$^{-1}$ and $\Delta\mathrm{BIC}=-5.55$
-for the dynamic sector relative to \LCDM.
+$H_0 = 67.95^{+0.40}_{-0.40}$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.88\sigma$ from Planck,
+$0.04\sigma$ from the algebraic anchor) and $\Delta\mathrm{BIC}=5.68$ favouring
+\SSEE\ over \LCDM\ ($5.59$ over CPL).
 A complementary full-likelihood multi-probe MCMC (CAMB $+$ Planck
 \texttt{plik\_lite} $+$ lensing $+$ DESI~DR2 $+$ $f\sigma_8$, $w_0,w_a$ free)
 recovers every algebraic \SSEE\ value within $\le1.2\sigma$ and places the model
@@ -307,37 +308,34 @@ Table~\ref{tab:mcmc_results} summarises the key posteriors and information crite
 
 \begin{table}[ht]
 \centering
-\caption{Bayesian MCMC results. $N_{\rm eff}$: effective independent samples.
-         $\Delta\mathrm{BIC} = \mathrm{BIC}_{\rm SSEE} - \mathrm{BIC}_{\Lambda\rm CDM}$
-         (negative = SSEE favoured).}
+\caption{Bayesian MCMC results (three-model run, DESI DR2 + common Planck prior,
+         total matter density in the background geometry). $N_{\rm eff}$:
+         effective independent samples. Positive $\Delta$ favours SSEE.}
 \label{tab:mcmc_results}
 \begin{tabular}{lccc}
 \toprule
 Quantity & \SSEE & \LCDM & CPL \\
 \midrule
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $66.41^{+0.39}_{-0.39}$ & $67.42\pm0.48$ & free \\
-Free parameters $k$ & 1 & 3 & 5 \\
-$N_{\rm eff}$ & 4\,402 & 14\,380 & 7\,253 \\
-$\Delta\mathrm{BIC}$ (dynamic sector) & $-5.55$ & ref & — \\
-$\Delta\mathrm{BIC}$ (full background) & $+206$ & ref & — \\
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.62\pm0.40$ & $68.27\pm0.28$ & $67.26\pm0.51$ \\
+Free parameters $k$ & 2 & 3 & 5 \\
+$N_{\rm eff}$ & 78\,750 & 64\,505 & 44\,627 \\
+$\Delta\mathrm{BIC}$ relative to SSEE & ref & $+5.68$ & $+5.59$ \\
+$\Delta\mathrm{DIC}$ relative to SSEE & ref & $+4.91$ & $+3.27$ \\
 $\chi^2_r$ clusters & $0.126$ & $0.081$ & — \\
 $(w_0, w_a)$ vs DESI DR2 $w_0w_a$CDM (Pantheon+) & $0.24\sigma$ & $0.7\sigma$ & — \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Two distinct $\Delta\mathrm{BIC}$ values are reported.
-The dynamic-sector result ($\Delta\mathrm{BIC}=-5.55$, $k=1$ vs $k=3$) isolates
-the \SSEE\ dark energy prediction $(\wz,\wa)$ at fixed algebraic values and
-shows it is genuinely favoured by current BAO data relative to the
-\LCDM\ flat prior.
-The full-background result ($\Delta\mathrm{BIC}=+206$) quantifies the
-tension between the \SSEE\ enlarged sound horizon
-($r_d \simeq 175.2$~Mpc vs $147.1$~Mpc in \LCDM) and the
-standard Friedmann-calibrated Planck prior.
-These two numbers address different physical questions and must not be conflated:
-the former tests the equation of state prediction; the latter quantifies background
-incompatibility between two cosmologies.
+With the total gravitating matter density $\Omega_m=\omega_m/h^2=0.30889$ in the
+background geometry, \SSEE\ is favoured on every information criterion:
+$\Delta\mathrm{BIC}=5.68$ over \LCDM\ and $5.59$ over CPL, $\Delta\mathrm{DIC}=
+4.91$ and $3.27$. The \SSEE\ sound horizon then matches \LCDM\
+($r_d=148.2$~Mpc vs $147.8$~Mpc) and the $H_0$ posterior sits $0.39\sigma$ from
+Planck, so no background-structure penalty arises. An earlier ``$+206$''
+full-background penalty was an artefact of placing the cold sector
+$1+w_0=0.160$ in $E(z)$ where the total density belongs; with the correct total
+density it does not occur.
 The $\omega_m$-direct two-$\Omega_m$ construction (\S\ref{sec:mira}) resolves
 the background tension, validated in \S\ref{sec:cmb} below.
 
@@ -525,11 +523,9 @@ and \LCDM.
 \subsection{Acoustic-scale mapping and $r_d$}
 \label{sec:rd}
 
-The CAMB-based analysis of Paper~3 computes the \SSEE\ drag horizon at two
-matter densities. At the pure dynamical $\Ommdyn=0.160$ it is
-$r_{d,\mathrm{SSEE}} \simeq 175.6$~Mpc---an internal geometric quantity, not the
-observed standard ruler. Evaluated at the full $\omega_m$-direct CMB density
-$\OmmCMB=0.30889$ (OP-8 dissolved, no matter factor), the physical drag horizon is
+The CAMB-based analysis of Paper~3 computes the \SSEE\ drag horizon from the
+full $\omega_m$-direct CMB density $\OmmCMB=0.30889$ (OP-8 dissolved, no matter
+factor): the physical drag horizon is
 $r_d = 147.17$~Mpc, within $1\sigma$ of the Planck~2018 measurement
 $r_d = 147.09\pm0.26$~Mpc \citep{Planck2018} (TT,TE,EE+lowE, Table~2; no BAO prior).
 The same full CMB-sector matter density that restores the acoustic peaks
@@ -1088,8 +1084,8 @@ across four observational tiers.
   $(\wz, \wa) = (-0.840, -0.670)$, fixed by construction (not fitted), lies within
   $0.24\sigma$ of the official DESI~DR2 $w_0w_a$CDM posterior (Pantheon+).
   A Bayesian MCMC yields
-  $H_0 = 66.41\pm0.39$~km\,s$^{-1}$\,Mpc$^{-1}$ under the $\omega_m$-direct
-  CMB anchor as prior, and $\Delta\mathrm{BIC} = -5.55$ for the dynamic sector.
+  $H_0 = 67.95\pm0.40$~km\,s$^{-1}$\,Mpc$^{-1}$ under the $\omega_m$-direct
+  CMB anchor as prior ($0.04\sigma$ from the anchor), and $\Delta\mathrm{BIC} = 5.68$ favouring \SSEE\ over \LCDM.
   A complementary full-likelihood multi-probe MCMC ($w_0,w_a$ free) recovers all
   algebraic predictions within $\le1.2\sigma$ and places \SSEE\ at $0.68\sigma$
   in the $w_0$--$w_a$ plane, where \LCDM\ is excluded at $2.4\sigma$.

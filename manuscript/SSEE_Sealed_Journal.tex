@@ -49,7 +49,8 @@ $w_a=-P_{\rm sc}/K_v=-0.670$, with no fitted amplitude; confronted with the DESI
 DR2 $w_0w_a$CDM posterior the agreement is at the $0.24\sigma$ level
 (Pantheon+; $0.2$--$1.8\sigma$ across supernova compilations)
 ($\chi^2_{\rm 2D}=0.42$). A Markov-chain analysis combining DESI BAO with the
-$\omega_m$-direct CMB anchor as prior yields $H_0=66.41\pm0.39~\kms$. The
+$\omega_m$-direct CMB anchor as prior yields $H_0=67.95\pm0.40~\kms$
+($0.88\sigma$ from Planck, $0.04\sigma$ from the algebraic anchor). The
 effective-field-theory description is canonical---$\alpha_T=\alpha_M=\alpha_B=0$
 with $\alpha_K(0)=0.4033$---and the inflationary sector predicts
 $n_s=1-\varphi^{-7}=0.9656$ and a tensor-to-scalar ratio $r=\varphi^{-10}=
@@ -381,25 +382,25 @@ geometry ($\Om^{\mathrm{cosm}}=\omega_m/h^2$) are two independent algebraic
 predictions rather than two free numbers.
 
 Figure~\ref{fig:rd_dual} makes the same point on the drag-epoch sound
-horizon itself: the pure geometric SSEE scale ($175.6$~Mpc at
-$\Om^{\mathrm{dyn}}=0.160$) and the physical CMB drag scale set by the full
-algebraic $\omega_m$ ($147.17$~Mpc at $\Om^{\mathrm{cosm}}=0.30889$,
-$\omega_m$-direct) which is consistent with the Planck-inferred
-$147.09\pm0.26$~Mpc ($0.32\sigma$). The large geometric scale is an internal
-quantity, not the model's prediction for the observed BAO standard ruler.
+horizon itself: the physical CMB drag scale set by the full algebraic
+$\omega_m$ is $147.17$~Mpc at $\Om^{\mathrm{cosm}}=0.30889$
+($\omega_m$-direct), consistent with the Planck-inferred
+$147.09\pm0.26$~Mpc ($0.32\sigma$), and the BAO-distance run gives
+$148.2$~Mpc, matching $\Lambda$CDM to $0.2\%$. The $175.6$~Mpc value that
+appears if the cold sector $\Om^{\mathrm{dyn}}=0.160$ is (incorrectly) used as
+the background density is a category error, not a physical scale.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.82\textwidth]{fig_rd_dual.pdf}
-  \caption{The dual sound horizon. The pure geometric SSEE drag scale
-  (red, $175.6$~Mpc at $\Om^{\mathrm{dyn}}=0.160$) and the physical CMB drag
-  scale set by the full algebraic $\omega_m$ (green, $147.17$~Mpc at
-  $\Om^{\mathrm{cosm}}=0.30889$, $\omega_m$-direct), in agreement with Planck
-  2018 ($147.09\pm0.26$~Mpc, grey band) and the $\Lambda$CDM Eisenstein--Hu
-  value (blue, $147.3$~Mpc). This is the visual counterpart of the Boltzmann
-  test above: the full matter density that restores the acoustic peaks also
-  restores the BAO standard ruler. (The earlier MIRA-mapped $147.6$~Mpc at
-  $0.31993$ is superseded.)}
+  \caption{The physical sound horizon. Set by the full algebraic $\omega_m$
+  (green, $147.17$~Mpc at $\Om^{\mathrm{cosm}}=0.30889$, $\omega_m$-direct), in
+  agreement with Planck 2018 ($147.09\pm0.26$~Mpc, grey band) and the
+  $\Lambda$CDM Eisenstein--Hu value (blue, $147.3$~Mpc); the BAO-distance run
+  gives $148.2$~Mpc. This is the visual counterpart of the Boltzmann test above:
+  the full matter density that restores the acoustic peaks also restores the BAO
+  standard ruler. The $175.6$~Mpc scale (red) is the category error of using the
+  cold sector $\Om^{\mathrm{dyn}}=0.160$ as the background density.}
   \label{fig:rd_dual}
 \end{figure}
 
@@ -427,40 +428,31 @@ $\theta_\ast = 0.59668^\circ$ ($1.05\sigma$). Letting the MCMC then correct
 $H_0$ against the low-redshift BAO (corrected DESI~DR2 vector, block-diagonal
 covariance with the official $r_{M,H}$ correlations) yields the posterior
 \begin{equation}
-  H_0^{\mathrm{post}} = 66.412 \pm 0.385~\kms ,
+  H_0^{\mathrm{post}} = 67.9475 \pm 0.396~\kms ,
   \qquad
-  \Omega_b h^2 = 0.02343 \pm 0.00045 ,
+  \Omega_b h^2 = 0.02221 \pm 0.00045 ,
   \label{eq:h0post}
 \end{equation}
 with $r_d = 147.17~\mathrm{Mpc}$ ($0.32\sigma$, $\omega_m$-set, $H_0$-invariant)
-at the posterior value. These
-are two stages of the same quantity---a CMB anchor and a BAO-corrected
-posterior---not two independent measurements. (The earlier MIRA-anchored
-$67.037 / 66.533$ stages, and the $67.159$ posterior obtained with the
-mislabelled DR1 vector, are superseded.)
+at the posterior value. These are two stages of the same quantity---a CMB
+anchor and a BAO-corrected posterior---and with the total matter density in the
+background geometry they \emph{coincide}. (The earlier MIRA-anchored
+$67.037/66.533$ stages, the $67.159$ posterior from the mislabelled DR1 vector,
+and the $66.412$ obtained with the cold sector $0.160$ in the geometry, are all
+superseded.)
 
-\paragraph{The BAO--CMB split is a known feature, reported openly.} The
-$1.55~\kms$ gap between Eqs.~\eqref{eq:h0anchor} and~\eqref{eq:h0post}
-($2.9\sigma$ of the prior width) is
-the same intrinsic BAO--CMB tension discussed in \S\ref{sec:desi-agreement},
-amplified by the $\sim40\%$ tighter DESI~DR2 uncertainties: the late-time BAO
-prefer a lower $H_0$ than the early-time acoustic geometry, and with DR2
-precision this preference is no longer mild. It is a property of
-dynamical-dark-energy fits to the current data,
-not an artefact of SSEE, and we make it explicit rather than hide it inside a
-single quoted number: the raw dynamic-sector background is quantifiably
-strained by the DR2 precision, and we track its interpretation as an open
-item rather than absorb it silently. At the CMB anchor all early-universe
-observables
-($r_d$, $\theta_\ast$) sit at $\sim1\sigma$ simultaneously; the split
-surfaces only when the BAO-corrected posterior is pushed back into a
-CMB-calibrated observable, which is precisely where the literature expects it.
-Numerically, evaluating $\theta_\ast$ at $H_0^{\mathrm{post}}$ would return
-$100\,\theta_\ast=1.03693$ ($13.9\sigma$); we quote this not as a tension but
-to make the
-category error explicit---the late-time expansion rate is not the early-time
-acoustic calibration, and conflating the two is precisely what the two-stage
-treatment avoids.
+\paragraph{Anchor and posterior coincide.} With the total gravitating matter
+density $\Om^{\mathrm{cosm}}=0.30889$ in $E(z)$ and $r_d$, the BAO-corrected
+posterior ($67.9475$) and the CMB anchor ($67.962$) agree to $0.04\sigma$: DESI
+DR2 \emph{confirms} the algebraic value rather than pulling against it. All
+early-time observables are simultaneously healthy---$r_d=147.17$~Mpc
+($0.32\sigma$) and, evaluating the acoustic scale at the posterior,
+$100\,\theta_\ast=1.04136$ ($0.91\sigma$). The apparent $2.9\sigma$
+``BAO--CMB split'' and the $13.9\sigma$ $\theta_\ast$ figure reported in earlier
+drafts were the footprint of a single error---placing the cold dynamical sector
+$\Om^{\mathrm{dyn}}=0.160$ in the background geometry, where the total density
+belongs. With that corrected, there is no split to report: the late-time BAO and
+the early-time acoustic geometry point to the same $H_0$.
 
 \begin{figure}[t]
   \centering
@@ -469,10 +461,10 @@ treatment avoids.
   $\times\,25{,}000$ steps). With the entire dark-energy sector fixed by
   $\varphi$ and $\pi$, the chain samples only $H_0$ and $\Omega_b h^2$ against
   DESI DR2 BAO with the $\omega_m$-direct CMB anchor as prior. The posterior is
-  $H_0=66.412\pm0.385~\kms$ and $\Omega_b h^2 = 0.02343\pm0.00045$
-  (Eq.~\ref{eq:h0post}). Dashed lines mark the anchor inputs
-  $(H_0=67.962~\kms,\ \Omega_b h^2 = 0.02218)$; the $16/50/84\%$ quantiles are
-  indicated.}
+  $H_0=67.9475\pm0.396~\kms$ and $\Omega_b h^2 = 0.02221\pm0.00045$
+  (Eq.~\ref{eq:h0post}), coinciding with the anchor to $0.04\sigma$. Dashed lines
+  mark the anchor inputs $(H_0=67.962~\kms,\ \Omega_b h^2 = 0.02218)$; the
+  $16/50/84\%$ quantiles are indicated.}
   \label{fig:corner}
 \end{figure}
 

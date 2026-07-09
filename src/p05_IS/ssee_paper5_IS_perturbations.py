@@ -46,8 +46,8 @@ _reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_o
 from ssee_core import (
     PHI as phi, PI as pi_, BETA as beta, KAL0, P_SC as P_sc,
     K_V as Kv, T_R as Tr, M_V as Mv, W0 as w0, WA as wa,
-    H0_ALG as H0_kms, OMEGA_M_DYN as Omm_dyn, OMEGA_DE as OmDE,
-    MIRA as MIRA_alg, OMEGA_M_CMB as Omm_CMB,   # reframe ω_m-directo 0.30889 (era OMEGA_M_CMB_MIRA 0.31983)
+    H0_ALG as H0_kms, OMEGA_CDM_SECTOR as Omm_dyn, OMEGA_DE as OmDE,
+    MIRA as MIRA_alg, OMEGA_M_TOTAL as Omm_CMB,   # 0.30889 materia total (growth canónico usa ESTE)
 )
 
 # IS relaxation time (dimensionless: τ_Π × H₀)

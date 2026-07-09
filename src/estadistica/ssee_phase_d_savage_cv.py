@@ -29,7 +29,8 @@ PI    = 3.14159265358979
 
 W0_SSEE = -0.840                   # = −Tr/Mv algebraico
 WA_SSEE = -0.670                   # = −P_sc/Kv algebraico
-OM_DYN  = 0.160                    # sector dinámico (Ω_m,dyn)
+OM_DYN  = 0.160        # sector frío (NO geometría)
+OM_TOTAL = 0.30889     # materia total (ω_m/h²) — la que va en E(z)/r_d
 MIRA    = (3*phi + PI) / 4         # 1.9988976...
 
 # ─────────────────────────────────────────────────────────────
@@ -254,7 +255,7 @@ def cross_validation():
     def nll_train(params, model):
         if model == "ssee":
             H0, = params
-            Om, w0, wa = OM_DYN * MIRA, W0_SSEE, WA_SSEE
+            Om, w0, wa = OM_TOTAL, W0_SSEE, WA_SSEE   # geometría: materia total (era OM_DYN*MIRA=0.320 stale)
             ob_h2 = 0.02237
             om_h2 = Om * (H0/100)**2
             pred  = predict_subset(H0, ob_h2, om_h2, E_cpl, (Om, w0, wa), idx_train)
@@ -274,7 +275,7 @@ def cross_validation():
     def ll_test(params, model):
         if model == "ssee":
             H0, = params
-            Om, w0, wa = OM_DYN * MIRA, W0_SSEE, WA_SSEE
+            Om, w0, wa = OM_TOTAL, W0_SSEE, WA_SSEE   # geometría: materia total (era OM_DYN*MIRA=0.320 stale)
             ob_h2 = 0.02237
             om_h2 = Om * (H0/100)**2
             pred  = predict_subset(H0, ob_h2, om_h2, E_cpl, (Om, w0, wa), idx_test)

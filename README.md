@@ -143,9 +143,9 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | χ²_2D (w₀-wₐ vs DESI DR2+CMB+Pantheon+) | 0.42 → 0.24σ (2D); 1.47σ DESY5, 1.77σ Union3 (ρ medidos de cadenas oficiales) |
 | χ²_r clusters (7 clusters, analytic) | 0.126 |
 | χ²_r clusters (4 clusters, MCMC) | 0.122 |
-| H₀ SSEE (MCMC, prior H_alg 67.962, ωm-direct, DESI DR2) | 66.41 ± 0.39 km/s/Mpc (1.43σ Planck; DR1-era 67.16 superseded) |
-| ΔBIC (dynamic sector, k=1 vs ΛCDM k=3) | −5.55 (SSEE favoured) |
-| ΔBIC (full background, k=0 vs ΛCDM k=6) | +206 (ΛCDM favoured — framework penalty) |
+| H₀ SSEE (MCMC, prior H_alg 67.962, ωm-direct, DESI DR2) | 67.95 ± 0.40 km/s/Mpc (0.88σ Planck, **0.04σ del anchor** — DR2 confirma la predicción; geometría total Ω_m=0.30889) |
+| ΔBIC (SSEE k=2 vs ΛCDM k=3) | −5.68 (SSEE favoured; CPL −5.59; ΔDIC −4.91; cross-val SSEE predice mejor) |
+| r_d SSEE / χ²_r(H(z)) | 148.2 Mpc ≈ ΛCDM 147.8 (1.002×) / 0.482 ≈ ΛCDM 0.459 |
 
 ### Paper 3 (Planck PR4 CMB)
 
@@ -295,9 +295,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 ### Editorial/pipeline limitations
 1. **Diagonal CMB likelihood** (Paper 3): χ²_r uses diagonal covariance. Off-diagonal terms required for PRD/PRL.
 2. **Full causal IS** (Paper 5): IS growth index γ_IS=0.554 is derived analytically. Full Hiscock-Lindblom 1985 treatment for B-mode predictions remains a blocker for LiteBIRD forecasts.
-3. **ΔBIC = +206** (Paper 2 full model): applies ΛCDM Friedmann background to SSEE parameters — acknowledged as a framework-internal constraint.
-4. **H(z) tension** (Paper 2): SSEE χ²_r = 1.861 vs ΛCDM 0.458 on cosmic chronometers.
-5. **CMB ΔBIC status:** The canonical full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6, N=2354) yields $\Delta\mathrm{BIC}=-32.9$ decisively favouring SSEE; cross-checked by the `plik_lite` point estimate ($-23.9$, N=613) and the diagonal approximation ($-34.9$, N=5914). All three agree (Paper 3 §BIC, canonical Σm_ν = 0.0690 eV; ΛCDM at baseline 0.06). The ΔBIC is parsimony-driven (best-fit χ² statistically indistinguishable from ΛCDM), not a claim of superior fit.
+3. **CMB ΔBIC status:** The canonical full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6, N=2354) yields $\Delta\mathrm{BIC}=-32.9$ decisively favouring SSEE; cross-checked by the `plik_lite` point estimate ($-23.9$, N=613) and the diagonal approximation ($-34.9$, N=5914). All three agree (Paper 3 §BIC, canonical Σm_ν = 0.0690 eV; ΛCDM at baseline 0.06). The ΔBIC is parsimony-driven (best-fit χ² statistically indistinguishable from ΛCDM), not a claim of superior fit.
 
 ### Open physics problems (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md))
 | ID | Problem | Status (2026-06-12) |

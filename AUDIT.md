@@ -33,6 +33,7 @@ Falsifiable predictions — fixed by algebraic construction, not fitted (Structu
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
 | m_φ (φ-DM mass) | 41.02 eV algebraic (SOLAR²·KRYSTOS) | gravitationally-produced scalar — probed via k_fs | Future prediction |
 | k_fs | 0.762 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
+| (w₀, wₐ) vs DESI DR3 | same fixed point (−0.840, −0.670) | DR3 w₀wₐCDM (2027): trajectory 0.05σ (DR1) → 0.24σ (DR2, errors −40%); expect ~0.5σ if centrals persist; >3σ joint exclusion falsifies | **Pre-registered prediction** |
 | r (tensor-to-scalar) | φ⁻¹⁰ = 0.00813 | LiteBIRD (~2032) | Future prediction |
 
 ---

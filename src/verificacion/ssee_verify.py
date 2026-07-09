@@ -459,22 +459,24 @@ check("V-L4-05 P3  ΔBIC CMB = -20.8 consistente con chi2_r (re-run 2026-05-22)"
       -22.9 <= -20.8 <= -11.1,
       "chi2_r redondeados acotan ΔBIC a [-22.9,-11.1]; reportado -20.8 dentro")
 
-# r_d / theta* — re-run CAMB 2026-06-11 con los H0 CANONICOS post-cascada
-# Sigma_mnu=0.069. Reframe omega_m-directo (2026-06-19): anclar el CMB en el
-# anchor H_alg=67.962 (CMB minimiza ahi con omega_b,omega_c fijos), reportar el
-# posterior BAO 67.159 por separado. theta* es muy sensible a H0 via D_A, asi
-# que NO se propaga el posterior BAO al observable CMB.
-#   anchor    67.962 -> r_d=147.17 Mpc (0.32sigma), theta*=0.59668 (1.05sigma)
-#   posterior 67.159 -> r_d=147.17 Mpc (0.32sigma), theta*=0.59536 (6.66sigma)
+# r_d / theta* — re-run CAMB 2026-07-09 con geometria TOTAL corregida (V-L4-DESI).
+# Sigma_mnu=0.069. El posterior BAO subio 67.159/66.41 -> 67.9475 al usar la materia
+# total 0.30889 en E(z) (antes el sector 0.160 lo hundia). Ahora el posterior COINCIDE
+# con el anchor CMB 67.962 (0.04sigma): ya no hay gap, y el theta* del posterior cae
+# de 6.66sigma a 0.91sigma. El parche "no propagar el posterior a theta*" YA NO hace
+# falta -- posterior y anchor dan el mismo CMB.
+#   anchor    67.962  -> r_d=147.17 Mpc (0.32sigma), theta*=0.59668 (100th*=1.04140, 1.05sigma)
+#   posterior 67.9475 -> r_d=147.17 Mpc (0.32sigma), theta*=0.59666 (100th*=1.04136, 0.91sigma)
 # vs Planck 147.09+-0.26 Mpc / 100theta*=1.04109+-0.00030.
 track_open("V-L4  r_d coherente en ambos H0 canonicos (anchor/post 0.32 sigma)",
-           "run_p3_rd_reframe.py 2026-06-19: anchor 67.962 y posterior 67.159 dan "
+           "run_p3_rd_reframe.py 2026-07-09: anchor 67.962 y posterior 67.9475 dan "
            "ambos r_d=147.17 Mpc (0.32sigma) vs Planck 147.09+-0.26 (r_d es "
-           "H0-invariante a omega fijo). Anclas viejas 67.037/66.531 superadas")
-track_open("V-L4  theta* sensible a H0: 1.05sigma en anchor, 6.66sigma en posterior",
-           "run_p3_rd_reframe.py 2026-06-19: anchor 67.962 da theta*=0.59668 "
-           "(1.05sigma); posterior 67.159 da 0.59536 (6.66sigma) vs 100theta*=1.04109. "
-           "Por eso el CMB se ancla en 67.962 y el posterior BAO no se propaga a theta*")
+           "H0-invariante a omega fijo). Anclas viejas 67.037/66.531/67.159 superadas")
+track_open("V-L4  theta* posterior COINCIDE con anchor: 0.91sigma (era 6.66sigma con bug 0.160)",
+           "run_p3_rd_reframe.py 2026-07-09: anchor 67.962 da theta*=0.59668 (1.05sigma); "
+           "posterior 67.9475 (geometria total corregida) da 0.59666 (0.91sigma) vs "
+           "100theta*=1.04109. La tension 6.66sigma era el bug del sector 0.160 en E(z): "
+           "al coincidir posterior y anchor, el CMB es sano en ambos y ya no hay parche")
 
 track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
            "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "

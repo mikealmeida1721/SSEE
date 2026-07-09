@@ -38,8 +38,8 @@ print(f"-> omega_m={omega_m:.5f}  Omega_m,CMB={Omm_cmb:.5f}  (sin factor; OP-8 c
 
 t0 = time.time()
 print(f"\n--- RESULTADO ({0.0:.1f}s) ---")
-# Anchor (H_alg=67.962) y posterior MCMC (67.159): r_d y θ* (grados + 100θ*)
-for tag, H0v in (("anchor H_alg 67.962", 67.962), ("posterior MCMC 67.159", 67.159)):
+# Anchor (H_alg=67.962) y posterior MCMC (67.95, geometría total corregida): r_d y θ* (grados + 100θ*)
+for tag, H0v in (("anchor H_alg 67.962", 67.962), ("posterior MCMC 67.9475", 67.9475)):
     total, lens_p, derived = _run_camb(H0v, ombh2, omch2, mnu, w0, wa, As, ns, 2500)
     r_d = derived["rdrag"]
     th100 = derived["thetastar"]            # 100*theta_*

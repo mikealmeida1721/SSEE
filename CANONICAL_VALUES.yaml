@@ -45,13 +45,23 @@ canonical:
   f_screen_IR:         0.06725    # (π−φ)/Ω² = αK/(3·MIRA)  [INVARIANTE]
   f_screen_UV:         0.06952    # αK_full/(3·MIRA)        [INVARIANTE]
   # Posterior MCMC reframe: prior H_alg=67.962 (ancla CMB ω_m-directo) + DESI DR2 REAL.
-  # DESI DR2 baja el ancla a 66.41 (DR1 la bajaba a 67.16 — SUPERSEDED, era dato DR1
-  # mal etiquetado; ver V-L4-DESI). Los errores DR2 (~40% menores) tensan el fondo
-  # dinámico puro: χ²_BAO 239→795, Ω_bh² posterior +2.3σ sobre BBN. PENDIENTE
-  # interpretación en Paper 2 (huella dos-Ω_m amplificada, no bug).
-  # log: results/logs/mcmc_paper2_reframe_dr2.log (100w×25k, seed 42, N_eff=77785, accept=0.716)
-  H0_posterior_km_s_Mpc: 66.41   # 66.412 ± 0.387 — 1.43σ Planck (DR1 superseded: 67.16 ± 0.44 / 0.29σ)
-  Omega_b_h2_posterior: 0.02343   # posterior Ω_b·h² (BBN prior 0.02218; +2.3σ, señal de esfuerzo DR2)
+  # GEOMETRÍA CORREGIDA 2026-07-09 (V-L4-DESI): la geometría de fondo E(z)/r_d usa la
+  # materia TOTAL Ω_m=ω_m/h²=0.30889, NO el sector frío 0.160 (=1+w0). El χ²_BAO=726
+  # ("esfuerzo DR2"/"dos-Ω_m amplificada") era el bug de meter 0.160 en E(z); con la
+  # total baja a ~11 y el posterior sube 66.41→67.95, cayendo a 0.04σ de H_alg: DESI DR2
+  # CONFIRMA la predicción algebraica (no la tensa). Ω_b·h² baja a 0.02221 (≈BBN).
+  # Supersede 66.41 (bug 0.160) y 67.16 (DR1 mal etiquetado). Ver canario guardián R14.
+  # log: results/logs/mcmc_paper2_reframe.log (100w×25k, seed 42, N_eff=78170, accept=0.715, lnP=-5.6, BIC=16.6)
+  H0_posterior_km_s_Mpc: 67.95   # 67.9475 +0.396/-0.397 — 0.88σ Planck, 0.04σ H_alg (prior H_alg)
+  Omega_b_h2_posterior: 0.02221   # posterior Ω_b·h² ≈ BBN prior 0.02218 (geometría total; era 0.02343 con bug)
+  # Comparación de modelos (3-modelos, prior Planck común, mismo setup; log mcmc_paper2_3models_om308.log):
+  #   H0: SSEE 67.62±0.40 (0.39σ Planck) · ΛCDM 68.27±0.28 · CPL 67.26±0.51
+  #   ΔBIC(ΛCDM−SSEE)=+5.68, ΔBIC(CPL−SSEE)=+5.59 · ΔAIC +4.91/+3.27 · ΔDIC −4.91 (SSEE favorecido)
+  #   Savage-Dickey B=18.34 (lnB=2.91) · Bayes lnB10=7.42 (decisivo) · r_d(SSEE)=148.15≈ΛCDM 147.78 (1.002)
+  #   Cross-val LOO-z (z≥1.0): SSEE χ²_r=0.197 < ΛCDM 0.711 < CPL 39.64 (SSEE predice mejor)
+  H0_posterior_planckprior_km_s_Mpc: 67.62   # 3-modelos, prior Planck (para ΔBIC justo)
+  deltaBIC_lcdm_minus_ssee: 5.68   # >0 favorece SSEE (k=2 vs k=3); CPL−SSEE=5.59
+  deltaDIC_ssee_minus_lcdm: -4.91  # <0 favorece SSEE (DIC 15.69 vs 20.60)
 
   # EFT / UV completion
   alpha_K:             0.4033     # Paper 7 (Bellini-Sawicki)

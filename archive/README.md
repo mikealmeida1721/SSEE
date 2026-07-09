@@ -115,3 +115,12 @@ contenido se consolidó en `VERIFICATION_LEDGER.md`, `CANONICAL_VALUES.yaml` y l
 - `AUDIT_V7_PREFLIGHT.md` (archivado 2026-06-24) → snapshot de auditoría pre-vuelo del
   2026-06-14; lleva banner interno "pre-reframe ω_m-directo".
 - `HALG_PIFI_CHANGEMAP.md` (archivado 2026-06-24) → changemap del H_alg/π-φ ya ejecutado.
+
+### `manuscript_superseded/` — narrativas de paper retiradas
+**Archivado:** 2026-07-09 · **Razón:** el fix Ω_m-geometría (V-L4-DESI): el sector frío
+0.160 (=1+w₀) estaba en la geometría de fondo E(z)/r_d, donde va la materia TOTAL
+0.30889. El bug inflaba seis tensiones falsas; corregidas, la narrativa que las
+documentaba se retira.
+- `paper2_206_narrative_RETIRED.md` → narrativa "+206 / r_d=175.6 / two-Ω_m / H(z) 1.86 /
+  θ* 13.9σ" de Paper 2, con la tabla de las seis tensiones antes/después y las fuentes de
+  los valores nuevos. El detalle línea-a-línea vive en git (commits `076b435`+).

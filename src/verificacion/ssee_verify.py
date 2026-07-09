@@ -709,6 +709,43 @@ try:
           "limpio" if not _rov_hits else "; ".join(_rov_hits[:4]))
     check("manuscritos  R11 sin conteo de serie stale (<10 papers)", not _rser_hits,
           "limpio" if not _rser_hits else "; ".join(_rser_hits[:4]))
+
+    # ── R15 — coherencia de la tensión derivada de n_s ──────────────────
+    # Remache forjado en la auditoría 2026-07-09 (Paper 1 L334 decía «matches
+    # Planck PR4 at 0.24σ» — el 0.24 corresponde a un central 0.9665 que NO es
+    # PR4; el valor real es 0.16-0.17σ, y contradecía al Endorser). El guardián
+    # RECOMPUTA n_s = 1-φ⁻⁷ y su tensión, y escanea cualquier σ pegado (≤130
+    # chars) a «\varphi^{-7}» que se salga del valor real. Escaneo LOCAL a la
+    # fórmula → el 0.24σ legítimo de w0wa en otro lado no da falso positivo.
+    _phi = (1 + 5 ** 0.5) / 2
+    _ns_alg = 1 - _phi ** -7                       # 0.965558
+    _ns_planck, _ns_err = 0.9649, 0.0042           # Planck PR4 (mismo que Endorser)
+    _ns_tens = abs(_ns_alg - _ns_planck) / _ns_err  # 0.157σ
+    _ns_lo, _ns_hi = _ns_tens - 0.06, _ns_tens + 0.06  # ventana [0.10, 0.22]
+    _ns_hits = []
+    for t in _texs:
+        txt = t.read_text(errors="ignore")
+        for m in _re2.finditer(r"varphi\^\{-7\}", txt):
+            # Ventana LOCAL: cortada en el salto de fila LaTeX «\\» (no cruzar a
+            # la cantidad siguiente de una tabla) o 100 chars, lo que venga antes.
+            window = txt[m.end():m.end() + 100]
+            window = window.split(r"\\", 1)[0]
+            # Cuenta si la ventana es una comparación de n_s con el dato:
+            # contiene «Planck» o el propio n_s (0.96556) o el central (0.9649).
+            wl = window.lower()
+            if not ("planck" in wl or "0.96556" in window or "0.9649" in window):
+                continue
+            # σ con signo (+2.9σ, −0.6σ) = reducción de tensión de OTRA cantidad
+            # (p.ej. modulación IS-Eckart), no la tensión n_s-vs-dato: se excluye.
+            sm = _re2.search(r"([+\-−]?)([0-9]\.[0-9]{1,2})\s*\\?sigma", window)
+            if sm and not sm.group(1):
+                val = float(sm.group(2))
+                if not (_ns_lo <= val <= _ns_hi):
+                    _ns_hits.append(f"{t.name}:n_s@{val}σ (real {_ns_tens:.2f}σ)")
+    check("manuscritos  R15 tensión n_s coherente con 1-φ⁻⁷ recomputado",
+          not _ns_hits,
+          f"n_s={_ns_alg:.5f}, tensión {_ns_tens:.2f}σ (Planck PR4)"
+          if not _ns_hits else "; ".join(_ns_hits[:4]))
 except Exception as e:
     check("manuscritos  capa operable", False, str(e))
 

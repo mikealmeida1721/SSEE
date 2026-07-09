@@ -1,25 +1,25 @@
 Phase C — Rigorous Bayesian Model Comparison
 Generated from MCMC chains (mcmc_chains_professional.npz)
-N_data = 16, chains: SSEE 50,000, ΛCDM 2,500,000, CPL 2,500,000
+N_data = 16, chains: SSEE 2,500,000, ΛCDM 2,500,000, CPL 2,500,000
 
 === BIC SCHEME A (dynamic sector, k_SSEE=1) ===
-SSEE_dyn: BIC=31.15  LCDM: BIC=36.70  CPL: BIC=37.36
+SSEE_dyn: BIC=31.15  LCDM: BIC=36.70  CPL: BIC=22.83
 ΔBIC(SSEE_dyn − ΛCDM) = -5.55   → SSEE favoured
 
 === BIC SCHEME B (MCMC params, k_SSEE=2) ===
-SSEE: BIC=255.28  LCDM: BIC=39.89  CPL: BIC=37.36
-ΔBIC(SSEE − ΛCDM) = +215.39   → ΛCDM favoured (background mismatch dominates)
+SSEE: BIC=17.24  LCDM: BIC=22.92  CPL: BIC=22.83
+ΔBIC(SSEE − ΛCDM) = -5.68   → ΛCDM favoured (background mismatch dominates)
 
 === DIC (from full MCMC posterior) ===
-SSEE: DIC=253.72 (p_D=1.99)
-ΛCDM: DIC=37.57 (p_D=3.00)
-CPL:  DIC=33.46 (p_D=4.98)
-ΔDIC(SSEE−ΛCDM) = +216.15   → background mismatch captured
+SSEE: DIC=15.69 (p_D=2.00)
+ΛCDM: DIC=20.60 (p_D=3.00)
+CPL:  DIC=18.96 (p_D=4.99)
+ΔDIC(SSEE−ΛCDM) = -4.91   → background mismatch captured
 
 === LAPLACE BAYES FACTOR ===
-ln Z: SSEE=-131.56  ΛCDM=-28.41  CPL=-26.75
-ln B_10(SSEE vs ΛCDM) = -103.15 (decisive, ΛCDM favoured)
+ln Z: SSEE=-12.92  ΛCDM=-20.33  CPL=-20.57
+ln B_10(SSEE vs ΛCDM) = +7.42 (decisive, SSEE favoured)
 
 === H0 POSTERIOR ===
-SSEE: 66.776 ± 0.441 km/s/Mpc  (tension vs Planck: 0.84σ)
-ΛCDM: 68.281 ± 0.381 km/s/Mpc  (tension vs Planck: 1.39σ)
+SSEE: 67.621 ± 0.398 km/s/Mpc  (tension vs Planck: 0.39σ)
+ΛCDM: 68.270 ± 0.277 km/s/Mpc  (tension vs Planck: 1.50σ)

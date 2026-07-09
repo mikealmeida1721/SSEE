@@ -93,9 +93,10 @@ $H_0 = 67.95^{+0.40}_{-0.40}$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.88\sigma$ from Planck
 $0.04\sigma$ from the algebraic anchor) and $\Delta\mathrm{BIC}=5.68$ favouring
 \SSEE\ over \LCDM\ ($5.59$ over CPL).
 A complementary full-likelihood multi-probe MCMC (CAMB $+$ Planck
-\texttt{plik\_lite} $+$ lensing $+$ DESI~DR2 $+$ $f\sigma_8$, $w_0,w_a$ free)
-recovers every algebraic \SSEE\ value within $\le1.2\sigma$ and places the model
-at $0.68\sigma$ in the $w_0$--$w_a$ plane, where \LCDM\ is excluded at $2.4\sigma$.
+\texttt{plik\_lite} $+$ lensing $+$ DESI~DR2 $+$ $f\sigma_8$, $w_0,w_a$ free and
+$H_0$ under a flat prior) places the model at $1.31\sigma$ in the $w_0$--$w_a$
+plane, where \LCDM\ is excluded at $3.22\sigma$; under this uncompressed CMB
+likelihood $H_0$ relaxes to $65.87\pm1.17$ ($1.79\sigma$ below the anchor).
 
 The CMB-sector matter density is the standard physical observable
 $\OmmCMB = \omega_m/h^2 = 0.30889$ (Planck: $0.3153\pm 0.0073$), built
@@ -366,19 +367,21 @@ prior --- so that no \LCDM-like assumption is smuggled in through the
 compression.
 
 \paragraph{Free test (what the data prefer).}
-We run an MCMC with CAMB $+$ Planck \texttt{plik\_lite} TTTEEE $+$ lensing,
-combined with DESI~DR2 BAO and $f\sigma_8$, sampling
-$(H_0,\Omega_bh^2,\Omega_m,w_0,w_a)$ with \emph{flat} priors (four chains,
-$\sim$48k post-burn-in samples, Gelman--Rubin $R-1<0.003$).
-Table~\ref{tab:mcmc_full} lists the recovered posteriors: every algebraic value
-is reproduced within $\le1.2\sigma$, and the tightly constrained CMB
-combinations $\omega_b,\omega_c,r_{\rm drag}$ are recovered to $\le0.2\sigma$
---- an independent confirmation of the $\omega_m$-direct reframe from the full
-$C_\ell$ spectrum rather than from a compressed prior. In the dark-energy plane
-the free posterior $(w_0,w_a)=(-0.69,-1.06)$ \emph{excludes} the cosmological
-constant $(-1,0)$ at $2.4\sigma$, while the \SSEE\ algebraic point
-$(-0.840,-0.670)$ lies at only $0.68\sigma$ in the correlated ($\rho=-0.92$)
-$w_0$--$w_a$ plane --- more than three times closer than \LCDM.\footnote{The
+We run an MCMC with CAMB $+$ Planck \texttt{plik\_lite} TTTEEE $+$ lensing $+$ a
+$\tau$ prior, combined with DESI~DR2 BAO and $f\sigma_8$, sampling
+$(H_0,\Omega_bh^2,\Omega_c h^2,n_s,\tau,w_0,w_a)$ with \emph{flat} priors ($H_0$
+free in $[60,80]$; four chains, $\sim$53k post-burn-in samples, Gelman--Rubin
+$R-1<0.005$). Table~\ref{tab:mcmc_full} lists the recovered posteriors: the
+tightly constrained CMB combinations $\omega_b,\omega_c,r_{\rm drag}$ are
+recovered to $\le0.2\sigma$ --- an independent confirmation of the
+$\omega_m$-direct reframe from the full $C_\ell$ spectrum rather than from a
+compressed prior. The remaining parameters $(H_0,\Omega_m,w_0,w_a)$ sit
+$1.4$--$1.8\sigma$ from the algebraic values, the uncompressed CMB likelihood
+pulling $H_0$ down to $65.87\pm1.17$. In the dark-energy plane
+the free posterior $(w_0,w_a)=(-0.655,-1.104)$ \emph{excludes} the cosmological
+constant $(-1,0)$ at $3.22\sigma$, while the \SSEE\ algebraic point
+$(-0.840,-0.670)$ lies at only $1.31\sigma$ in the correlated ($\rho=-0.93$)
+$w_0$--$w_a$ plane --- more than twice as close as \LCDM.\footnote{The
 single-sector $\sigma_8=0.80$, $S_8=0.84$ recovered here is the known
 single-sector ceiling; the two-sector $\varphi$-DM free-streaming of Paper~VI
 (absent from this cold-CDM CAMB run) reduces it to $S_8=0.759$, and is not part
@@ -386,34 +389,42 @@ of this fit.}
 
 \begin{table}[ht]
 \centering
-% TODO-DR2: esta tabla usa las chains del mcmc_full corridas ANTES de la corrección
-% del vector DESI (V-L4-DESI). Re-correr con lanzar_mcmc_full.sh (ya wireado a DR2)
-% y actualizar posteriors. El pre-flight indica cambios pequeños (BAO subdominante al CMB).
 \caption{Full-likelihood multi-probe MCMC (CAMB $+$ Planck \texttt{plik\_lite}
-TTTEEE $+$ lensing $+$ DESI~DR2 $+$ $f\sigma_8$, with $w_0,w_a$ free):
-posteriors vs.\ algebraic \SSEE\ values.}
+TTTEEE $+$ lensing $+$ $\tau$ prior $+$ DESI~DR2 $+$ $f\sigma_8$, with $w_0,w_a$
+free and $H_0$ under a flat prior $[60,80]$): posteriors vs.\ algebraic \SSEE\
+values. Four independent chains, Gelman--Rubin $R-1<0.005$ for all parameters,
+$\sim7\times10^4$ effective samples. DESI~DR2-corrected vector (V-L4-DESI).}
 \label{tab:mcmc_full}
 \begin{tabular}{lccc}
 \toprule
 Parameter & Posterior (mean $\pm1\sigma$) & Algebraic SSEE & Tension \\
 \midrule
-$\Omega_b h^2$                     & $0.02240 \pm 0.00015$ & $0.02242$ & $0.08\sigma$ \\
-$\Omega_c h^2$                     & $0.1197  \pm 0.0010$  & $0.11951$ & $0.15\sigma$ \\
-$r_{\rm drag}$ [Mpc]               & $147.14  \pm 0.24$    & $147.09$  & $0.19\sigma$ \\
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$]   & $66.23   \pm 1.55$    & $67.96$   & $1.12\sigma$ \\
-$\Omega_m$                         & $0.326   \pm 0.015$   & $0.30889$ & $1.13\sigma$ \\
-$w_0$                              & $-0.69   \pm 0.13$    & $-0.840$  & $1.18\sigma$ \\
-$w_a$                              & $-1.06   \pm 0.38$    & $-0.670$  & $1.03\sigma$ \\
+$\Omega_b h^2$                     & $0.02243 \pm 0.00013$ & $0.02242$ & $0.08\sigma$ \\
+$\Omega_c h^2$                     & $0.11935 \pm 0.00082$ & $0.11951$ & $0.20\sigma$ \\
+$r_{\rm drag}$ [Mpc]               & $147.20  \pm 0.21$    & $147.17$  & $0.14\sigma$ \\
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$]   & $65.87   \pm 1.17$    & $67.96$   & $1.79\sigma$ \\
+$\Omega_m$                         & $0.3288  \pm 0.0118$  & $0.30889$ & $1.69\sigma$ \\
+$w_0$                              & $-0.655  \pm 0.107$   & $-0.840$  & $1.73\sigma$ \\
+$w_a$                              & $-1.104  \pm 0.304$   & $-0.670$  & $1.43\sigma$ \\
 \midrule
-\multicolumn{3}{l}{\textbf{Joint $w_0$--$w_a$ distance:} SSEE $0.68\sigma$ / \LCDM\ excluded $2.4\sigma$} \\
+\multicolumn{3}{l}{\textbf{Joint $w_0$--$w_a$ distance:} SSEE $1.31\sigma$ / \LCDM\ excluded $3.22\sigma$} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The $0.68\sigma$ joint distance is smaller than the individual $w_0,w_a$
-marginals ($1.18\sigma,\,1.03\sigma$) because the algebraic offset lies
-\emph{along} the strong $w_0$--$w_a$ degeneracy, not across it. Corner plots and
-trace diagnostics are archived at Zenodo \citep{AlmeidaSSEE2026zenodo}.
+Under the \emph{full} Planck $C_\ell$ likelihood --- with $H_0$ free under a
+flat prior rather than fixed to a compressed distance prior --- the posterior
+sits at $H_0=65.87\pm1.17$, some $1.79\sigma$ below the algebraic anchor
+$H_0^{\rm alg}=67.96$. This mild downward pull is a known feature of
+$w_0w_a$CDM under the uncompressed CMB likelihood and is stated openly. The key
+model-comparison statement is unchanged and in fact sharper: the fixed
+algebraic point $(-0.840,-0.670)$ lies $1.31\sigma$ from the joint $w_0$--$w_a$
+posterior, whereas the cosmological-constant point $(-1,0)$ is excluded at
+$3.22\sigma$. The joint distance is smaller than the individual $w_0,w_a$
+marginals ($1.73\sigma,\,1.43\sigma$) because the algebraic offset lies
+\emph{along} the strong $w_0$--$w_a$ degeneracy ($\rho=-0.93$), not across it.
+Corner plots and trace diagnostics are archived at Zenodo
+\citep{AlmeidaSSEE2026zenodo}.
 
 \paragraph{Fixed test (imposing \SSEE).}
 The complementary question --- how well the fixed algebraic model fits the CMB
@@ -425,8 +436,9 @@ decisively favouring \SSEE\ on the Jeffreys scale. The advantage is driven by
 parsimony ($k=2$ versus $k=6$), not by a lower $\chi^2$: the fixed model matches
 \LCDM\ spectrum-for-spectrum ($\chi^2_r\simeq1.04$) while spending four fewer
 parameters. The two tests are therefore mutually reinforcing --- the data
-independently prefer a point $0.68\sigma$ from \SSEE, and imposing \SSEE\ exactly
-costs no fit quality while gaining decisive parsimony.
+independently prefer a point $1.31\sigma$ from \SSEE\ (with \LCDM\ excluded at
+$3.22\sigma$), and imposing \SSEE\ exactly costs no fit quality while gaining
+decisive parsimony.
 
 \paragraph{The same fixed values in every reading.}
 Both tests share a decisive feature: the \SSEE\ background carries \emph{the
@@ -1086,9 +1098,10 @@ across four observational tiers.
   A Bayesian MCMC yields
   $H_0 = 67.95\pm0.40$~km\,s$^{-1}$\,Mpc$^{-1}$ under the $\omega_m$-direct
   CMB anchor as prior ($0.04\sigma$ from the anchor), and $\Delta\mathrm{BIC} = 5.68$ favouring \SSEE\ over \LCDM.
-  A complementary full-likelihood multi-probe MCMC ($w_0,w_a$ free) recovers all
-  algebraic predictions within $\le1.2\sigma$ and places \SSEE\ at $0.68\sigma$
-  in the $w_0$--$w_a$ plane, where \LCDM\ is excluded at $2.4\sigma$.
+  A complementary full-likelihood multi-probe MCMC ($w_0,w_a$ free, $H_0$
+  free under the uncompressed CMB likelihood) recovers the CMB combinations
+  $\omega_b,\omega_c,r_{\rm drag}$ to $\le0.2\sigma$ and places \SSEE\ at
+  $1.31\sigma$ in the $w_0$--$w_a$ plane, where \LCDM\ is excluded at $3.22\sigma$.
 
 \item \textbf{CMB Boltzmann.} CLASS confirms that the full $\omega_m$-direct
   matter density ($\OmmCMB=0.30889$) is physically necessary: with only the

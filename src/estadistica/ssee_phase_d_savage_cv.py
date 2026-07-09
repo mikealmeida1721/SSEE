@@ -226,8 +226,8 @@ def cross_validation():
 
     print(f"  Split: {len(idx_train)} puntos train (z < 1.0),  "
           f"{len(idx_test)} puntos test (z ≥ 1.0)")
-    print(f"  Train: z = {DESI_Z[idx_train]}")
-    print(f"  Test:  z = {DESI_Z[idx_test]}")
+    print(f"  Train: z = {np.array(DESI_Z)[idx_train]}")
+    print(f"  Test:  z = {np.array(DESI_Z)[idx_test]}")
 
     # Sub-matrices de covarianza (bloques independientes, off-diag=0 entre z-bins distintos)
     idx_tr = np.array(idx_train)

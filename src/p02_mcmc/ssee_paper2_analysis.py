@@ -136,6 +136,25 @@ for name, d in datasets.items():
     print(f"    Δw0 = {delta_w0:+.3f}σ  |  Δwa = {delta_wa:+.3f}σ")
     print(f"    χ²(2D) = {chi2_2D:.3f}  →  {sigma_eq:.2f}σ equiv  (p={p_val:.4f})")
 
+# ── Comparación like-for-like: punto FIJO ΛCDM (-1,0) vs punto FIJO SSEE ──
+# Ninguno de los dos se ajusta a los datos; ambos son predicciones. Tabla
+# tab:w0wa_ssee_vs_lcdm del Paper 2. (2026-07-09)
+W0_LCDM, WA_LCDM = -1.0, 0.0
+print("\n  Tabla SSEE(-0.840,-0.670) vs LCDM(-1,0) — ambos puntos FIJOS:")
+print(f"  {'combinación':34s} {'rho':>7} {'SSEE':>9} {'LCDM':>9}")
+for name, d in datasets.items():
+    C_l = np.array([[d['sigma_w0']**2, d['rho']*d['sigma_w0']*d['sigma_wa']],
+                    [d['rho']*d['sigma_w0']*d['sigma_wa'], d['sigma_wa']**2]])
+    C_linv = np.linalg.inv(C_l)
+    def _sig(w0p, wap):
+        dv = np.array([w0p - d['w0_bf'], wap - d['wa_bf']])
+        c2 = float(dv @ C_linv @ dv)
+        p = stats.chi2.sf(c2, df=2)
+        return stats.norm.isf(p/2) if p > 0 else np.inf
+    s_ssee = _sig(W0_SSEE, WA_SSEE)
+    s_lcdm = _sig(W0_LCDM, WA_LCDM)
+    print(f"  {name:34s} {d['rho']:+7.3f} {s_ssee:8.2f}σ {s_lcdm:8.2f}σ")
+
 # Sensibilidad a ρ (el paper no publica la correlación w0-wa en texto):
 print("\n  Sensibilidad a ρ(w0,wa) — tensión 2D equivalente por combinación:")
 print(f"  {'combinación':34s}" + "".join(f"  ρ={r:+.2f}" for r in RHO_SENS))

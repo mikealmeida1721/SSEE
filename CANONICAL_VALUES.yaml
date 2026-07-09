@@ -133,8 +133,8 @@ retired:
   # corregido a −33.0 (full plik) in situ. Un patrón "20.8" daría falsos positivos.
   - {pattern: "66.53",     reason: "H0 posterior MCMC con prior MIRA 67.037 — dos veces superseded (→67.16 DR1, →66.41 DR2)"}
   # ── vector DESI DR2 real (V-L4-DESI, 2026-07-02) — era DR1 mal etiquetado ──
-  - {pattern: "67.16",     reason: "H0 posterior con datos DR1 mal etiquetados → 66.41±0.39 con DR2 real"}
-  - {pattern: "0.05\\sigma", reason: "titular w0wa DR1+SN → 0.16σ Pantheon+ / rango 0.2-1.5σ (ecs. 25-28 DR2)"}
+  - {pattern: "67.16",     reason: "H0 posterior con datos DR1 mal etiquetados → 67.95±0.40 con DR2 real + geometría total 0.30889"}
+  - {pattern: "0.05\\sigma", reason: "titular w0wa DR1+SN → 0.24σ Pantheon+ / rango 0.2-1.8σ (ecs. 25-28 DR2)"}
   - {pattern: "-0.827",    reason: "contorno w0wa DR1 (2404.03002) → DR2 Pantheon+ -0.838±0.055"}
   - {pattern: "20.98",     reason: "LRG1 DH/rd DR1 → DR2 21.863 (centinela del mal etiquetado)"}
   - {pattern: "67.159",    reason: "H0 posterior DR1-era (variante decimal de 67.16) → 66.412±0.385 DR2"}

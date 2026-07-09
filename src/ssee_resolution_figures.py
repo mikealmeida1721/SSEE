@@ -2,9 +2,12 @@
 Resolution figures — visual closure of claims that previously lived only in text/tables.
 All values are canonical (VERIFICATION_LEDGER.md §Valores Canónicos); zero fitting.
 
-Figure A: fig_rd_dual.pdf       — sound horizon r_d: naive dynamic-sector 175.6 Mpc
-                                   (Omega_m,dyn=0.160) -> algebraic CMB density 147.17 Mpc
-                                   (Omega_m,CMB=0.30889, omega_m direct) vs Planck 147.09±0.26 Mpc.
+Figure A: fig_rd_dual.pdf       — sound horizon r_d: SSEE physical value 147.17 Mpc
+                                   (total matter Omega_m,CMB=0.30889, omega_m direct) vs
+                                   Planck 147.09±0.26 Mpc and LCDM 147.3 Mpc. The 175.6 Mpc
+                                   value is flagged as a CATEGORY ERROR: what one gets by
+                                   wrongly inserting the cold sector 1+w0=0.160 into the
+                                   background geometry (the DR2 bug, chi2_BAO=726).
 Figure B: fig_s8_resolution.pdf — S8: single-sector challenge 0.846 -> two-sector
                                    resolution 0.759 (0.01 sigma KiDS) vs data bands.
 
@@ -22,22 +25,24 @@ os.makedirs(OUT, exist_ok=True)
 # ════════════════════════════════════════════════════════════════════════════
 # Figure A — dual r_d
 # ════════════════════════════════════════════════════════════════════════════
-RD_PURE  = 175.6    # Mpc — SSEE naive dynamic-sector drag scale (Omega_m,dyn = 0.160)
-RD_CMB   = 147.17   # Mpc — algebraic CMB density (Omega_m,CMB = 0.30889, omega_m direct), CAMB reframe
+RD_BUG   = 175.6    # Mpc — CATEGORY ERROR: cold sector 1+w0=0.160 wrongly in geometry
+RD_CMB   = 147.17   # Mpc — SSEE physical value, total matter (Omega_m,CMB=0.30889, omega_m direct), CAMB
 RD_PLANCK, RD_PLANCK_ERR = 147.09, 0.26   # Mpc, Planck 2018
 RD_LCDM  = 147.3    # Mpc — LCDM Eisenstein-Hu at Omega_m = 0.315
 
 fig, ax = plt.subplots(figsize=(8.0, 4.2))
 
 bars = [
-    (r'SSEE naive dynamic' + '\n' + r'($\Omega_{m,\rm dyn}=0.160$)', RD_PURE,  '#d6604d'),
-    (r'SSEE algebraic CMB' + '\n' + r'($\Omega_{m,\rm CMB}=0.30889$)',  RD_CMB,  '#1a9641'),
+    (r'Category error' + '\n' + r'($1+w_0=0.160$ in geometry)', RD_BUG,  '#d6604d'),
+    (r'SSEE physical' + '\n' + r'($\Omega_{m,\rm CMB}=0.30889$)',  RD_CMB,  '#1a9641'),
     (r'$\Lambda$CDM (EH98,' + '\n' + r'$\Omega_m=0.315$)',            RD_LCDM,  '#4393c3'),
 ]
 ypos = np.arange(len(bars))[::-1]
 for y, (lab, val, col) in zip(ypos, bars):
-    ax.barh(y, val, color=col, height=0.55, edgecolor='black', lw=0.6, zorder=3)
-    ax.text(val + 1.2, y, f'{val:.1f} Mpc', va='center', fontsize=10.5,
+    hatch = '//' if col == '#d6604d' else None
+    ax.barh(y, val, color=col, height=0.55, edgecolor='black', lw=0.6, zorder=3, hatch=hatch)
+    tag = ' ✗' if col == '#d6604d' else (' ✓' if col == '#1a9641' else '')
+    ax.text(val + 1.2, y, f'{val:.1f} Mpc{tag}', va='center', fontsize=10.5,
             fontweight='bold', color='#222222')
 
 # Planck band
@@ -47,11 +52,11 @@ ax.axvline(RD_PLANCK, color='#444444', lw=1.2, ls='--', zorder=2)
 ax.text(RD_PLANCK, 2.62, r'Planck 2018: $147.09\pm0.26$ Mpc',
         ha='center', fontsize=9.5, color='#333333')
 
-# Arrow: naive dynamic -> algebraic CMB density (independent prediction, no MIRA factor)
-ax.annotate('', xy=(RD_CMB + 2, 1.42), xytext=(RD_PURE - 2, 2.0),
+# Arrow: the bug -> the physical value (total matter density enters the geometry)
+ax.annotate('', xy=(RD_CMB + 2, 1.42), xytext=(RD_BUG - 2, 2.0),
             arrowprops=dict(arrowstyle='-|>', lw=1.8, color='#222222',
                             connectionstyle='arc3,rad=0.25'))
-ax.text(163, 1.86, r'$\omega_m$ direct' + '\n' + r'($\omega_b+\omega_c+\omega_\nu$)',
+ax.text(163, 1.86, r'total $\omega_m$ in geometry' + '\n' + r'($\omega_b+\omega_c+\omega_\nu$)',
         fontsize=9.5, ha='center', color='#222222', style='italic')
 
 ax.set_yticks(ypos)
@@ -59,7 +64,7 @@ ax.set_yticklabels([b[0] for b in bars], fontsize=10)
 ax.set_xlabel(r'Drag-epoch sound horizon $r_d$ [Mpc]', fontsize=11)
 ax.set_xlim(140, 185)
 ax.set_ylim(-0.55, 2.95)
-ax.set_title(r'Sound horizon: naive dynamic-sector vs algebraic CMB-density SSEE value vs Planck',
+ax.set_title(r'Sound horizon: SSEE physical value matches Planck; $175.6$ Mpc is the $0.160$-in-geometry bug',
              fontsize=10.5)
 ax.grid(axis='x', lw=0.4, alpha=0.4, zorder=0)
 ax.spines[['top', 'right']].set_visible(False)

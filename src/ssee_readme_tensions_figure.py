@@ -14,12 +14,12 @@ os.makedirs(OUT, exist_ok=True)
 # (label, tension_sigma, reference dataset)
 entries = [
     (r'$S_8$ (two-sector $\varphi$-DM)',        0.01, 'KiDS-1000'),
-    (r'$w_0$–$w_a$ plane',                       0.05, 'DESI DR2 BAO'),
     (r'$n_s = 1-\varphi^{-7}$',                  0.20, 'Planck 2018'),
+    (r'$w_0$–$w_a$ plane',                       0.24, 'DESI DR2 (Pantheon+)'),
     (r'$r_d$ (joint posterior)',                 0.32, 'MCMC multi-probe'),
     (r'$\Omega_b h^2 = (\pi-\varphi)/3\Omega^2$', 0.32, 'Planck 2018'),
     (r'$\Omega_{m,\rm CMB} = \omega_m/h^2 = 0.30889$', 0.88, 'Planck 2018'),
-    (r'mean $f\sigma_8$ (6 RSD surveys)',        0.76, r'ties $\Lambda$CDM (0.73$\sigma$)'),
+    (r'mean $f\sigma_8$ (6 RSD surveys)',        0.93, r'ties $\Lambda$CDM (0.73$\sigma$)'),
     (r'$H_0^{\rm local}$ = 72.86 km/s/Mpc',      0.17, 'SH0ES'),
 ]
 entries = entries[::-1]  # smallest tension on top

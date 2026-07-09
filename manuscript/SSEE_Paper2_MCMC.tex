@@ -594,8 +594,8 @@ official DESI chains, Zenodo record 16644577) is:
   = \Delta\mathbf{w}^\top\mathbf{C}^{-1}\Delta\mathbf{w} = 0.42
   \;\Rightarrow\; 0.24\sigma.
 \end{equation}
-Against the other official DR2 combinations the distance is $1.47\sigma$
-(DESY5), $1.77\sigma$ (Union3) and $1.67\sigma$ (no-SN DESI+CMB; all with
+Against the other official DR2 combinations the distance is $1.46\sigma$
+(DESY5), $1.76\sigma$ (Union3) and $1.68\sigma$ (no-SN DESI+CMB; all with
 chain-measured correlations $\rho=-0.905$ to $-0.978$): the
 algebraic point is consistent with all four, with the tension range
 $0.2$--$1.8\sigma$ set by the supernova compilation, and $w_0$ essentially
@@ -617,6 +617,36 @@ within the CPL posterior.
 $0.24\sigma$ Pantheon+; $1.2$--$1.5\sigma$ for the other compilations) and
 with the two-parameter CPL free-fit (at $1.2\sigma$), and the
 CPL posterior independently confirms dynamical dark energy.
+
+A single, decisive summary of this section is that the \emph{fixed}
+$\Lambda$CDM point $(w_0,w_a)=(-1,0)$ is disfavoured against \emph{every}
+official DESI~DR2 supernova compilation, whereas the parameter-free \SSEE\
+algebraic point $(-0.840,-0.670)$ is consistent with all four. Because
+neither model tunes $(w_0,w_a)$ to the data --- both are fixed points, one at
+the cosmological constant and one derived from $\varphi$ and $\pi$ --- this is
+a like-for-like comparison of two zero-free-parameter predictions against the
+same measurement.
+
+\begin{table}[H]
+  \centering
+  \caption{Mahalanobis distance of the fixed \SSEE\ point $(-0.840,-0.670)$
+  and the fixed \LCDM\ point $(-1,0)$ from each official DESI~DR2
+  $w_0w_a$CDM best-fit (2$\times$2 covariance, correlation measured directly
+  from the public chains, Zenodo~16644577). Neither point is fitted; both are
+  predictions. \SSEE\ is closer to the data than \LCDM\ for all four
+  supernova compilations.}
+  \label{tab:w0wa_ssee_vs_lcdm}
+  \begin{tabular}{lccc}
+    \toprule
+    DESI~DR2 combination & $\rho$ & \SSEE\ distance & \LCDM\ distance \\
+    \midrule
+    DESI+CMB+Pantheon+ & $-0.894$ & $\mathbf{0.24\sigma}$ & $2.58\sigma$ \\
+    DESI+CMB+DES~Y5    & $-0.905$ & $\mathbf{1.46\sigma}$ & $3.93\sigma$ \\
+    DESI+CMB+Union3    & $-0.933$ & $\mathbf{1.76\sigma}$ & $3.38\sigma$ \\
+    DESI+CMB (no SN)   & $-0.978$ & $\mathbf{1.68\sigma}$ & $2.62\sigma$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \begin{figure}[H]
   \centering
@@ -716,11 +746,13 @@ inconsistency (see \S\ref{sec:model_comparison}).
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.88\textwidth]{fig8_tension_summary.pdf}
-  \caption{\textit{Left}: $H_0$ posteriors for all models. With the total
-  matter density in the background geometry the \SSEE\ posterior sits at
-  $0.88\sigma$ from Planck~2018 (and $0.04\sigma$ from the algebraic anchor).
-  \textit{Right}: MAP $r_d$ values; the \SSEE\ sound horizon
-  ($148.2$\,Mpc) matches \LCDM\ ($147.8$\,Mpc, ratio $1.002$).}
+  \caption{\textit{Left}: $H_0$ posteriors for all three models under a
+  \emph{common} Planck prior (the apples-to-apples model-comparison run); the
+  \SSEE\ posterior sits at $67.62\pm0.40$, $0.39\sigma$ from Planck~2018 and
+  fully consistent with the titular algebraic-anchor-prior value
+  $67.95\pm0.40$ ($0.88\sigma$ Planck, $0.04\sigma$ from the anchor
+  $H_0^{\rm alg}=67.962$). \textit{Right}: MAP $r_d$ values; the \SSEE\ sound
+  horizon ($148.2$\,Mpc) matches \LCDM\ ($147.8$\,Mpc, ratio $1.002$).}
   \label{fig:tension}
 \end{figure}
 

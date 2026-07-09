@@ -31,11 +31,20 @@ K_V   = PHI + PI + OMEGA        # Structural Constraint   ≈ 9.5192
 T_R   = 3.0 * (PHI + BETA)      # 3D Saturation Horizon   ≈ 11.9935
 M_V   = PHI + PI + K_V          # Maximal Dim. Invariant  ≈ 14.2788
 
-# ── Ecuación de estado y densidades del sector dinámico ──────────────────────
+# ── Ecuación de estado y densidades ──────────────────────────────────────────
 W0          = -T_R / M_V        # ≈ -0.840
 WA          = -P_SC / K_V       # ≈ -0.670
-OMEGA_DE    = T_R / M_V         # ≈ 0.840
-OMEGA_M_DYN = 1.0 + W0          # ≈ 0.160  (sector dinámico: BAO, H(z), Paper 1/2)
+OMEGA_DE    = T_R / M_V         # ≈ 0.840  (= |w0|; es la EoS, NO la fracción de densidad)
+#
+# ⚠️ REGLA DE Ω_m (2026-07-09, tras el hallazgo del χ²=726, V-L4-DESI):
+#   La GEOMETRÍA de fondo — E(z), distancias BAO, H(z), r_d, cualquier E²(z) —
+#   usa SIEMPRE la materia TOTAL:  OMEGA_M_TOTAL = ω_m/h² = 0.30889.
+#   El 0.160 NO es una densidad de materia: es el SECTOR frío dinámico (1+w0),
+#   componente de perturbaciones (Paper 6: 0.160 + φ-DM 0.149 = 0.308) y factor
+#   de la fórmula EFT α_K = 3|w0|·0.160. NUNCA va en un E(z).
+#   Meter el sector (0.160) en la geometría fue el bug que dio χ²=726 en DESI DR2.
+OMEGA_CDM_SECTOR = 1.0 + W0      # ≈ 0.160  sector frío dinámico (Paper 6 + α_K); NO es materia total
+OMEGA_M_DYN      = OMEGA_CDM_SECTOR   # [ALIAS DEPRECADO] usar OMEGA_CDM_SECTOR o, si es geometría, OMEGA_M_TOTAL
 
 # ── MIRA / AURA ──────────────────────────────────────────────────────────────
 # MIRA persiste como ENTIDAD (= AURA/2, valor 1.9989); conserva su rol en
@@ -65,10 +74,12 @@ SUM_MNU_EV = 0.06902                          # Σm_ν activos (canónico)
 OMEGA_C_H2 = KAL0 * OMEGA_B_H2 * N_S           # ≈ 0.11952  (forward, Paper 1)
 OMEGA_NU_H2 = SUM_MNU_EV / 93.14               # ≈ 0.000741
 OMEGA_M_H2 = OMEGA_B_H2 + OMEGA_C_H2 + OMEGA_NU_H2   # ≈ 0.14268  (ω_m físico)
-OMEGA_M_CMB = OMEGA_M_H2 / (H0_GLOBAL/100.0)**2      # ≈ 0.30891  (CANÓNICO, derivado)
+# MATERIA TOTAL — la ÚNICA densidad que entra en cualquier geometría de fondo:
+OMEGA_M_TOTAL = OMEGA_M_H2 / (H0_GLOBAL/100.0)**2    # ≈ 0.30889  (CANÓNICO, derivado, ω_m/h²)
+OMEGA_M_CMB   = OMEGA_M_TOTAL                         # [ALIAS] mismo número; usar OMEGA_M_TOTAL
 # Identidades históricas (RETIRADAS como factor-materia, conservadas para trazar):
-OMEGA_M_CMB_PIPHI     = (PI / PHI) * OMEGA_M_DYN     # ≈ 0.31069  (factor π/φ — superado)
-OMEGA_M_CMB_MIRA      = MIRA * OMEGA_M_DYN           # ≈ 0.31983  (identidad MIRA — histórico)
+OMEGA_M_CMB_PIPHI     = (PI / PHI) * OMEGA_CDM_SECTOR # ≈ 0.31069  (factor π/φ — superado)
+OMEGA_M_CMB_MIRA      = MIRA * OMEGA_CDM_SECTOR       # ≈ 0.31983  (identidad MIRA — histórico)
 OMEGA_M_CMB_GEOMETRIC = (PI - PHI) / (PI + PHI)      # ≈ 0.32010  (geométrico)
 
 # ── Valores ΛCDM de referencia (Planck 2018, A&A 641 A6) ─────────────────────
@@ -126,16 +137,18 @@ def load_fsigma8():
 def _sanity_checks():
     assert abs(PHI**2 - (PHI + 1.0)) < 1e-12, "identidad áurea phi^2=phi+1 rota"
     assert abs(AURA - 2.0*MIRA) < 1e-12,      "AURA debe ser 2*MIRA"
-    assert abs(OMEGA_M_DYN + OMEGA_DE - 1.0) < 1e-12, "Omega_m,dyn + Omega_DE != 1"
+    assert abs(OMEGA_CDM_SECTOR + OMEGA_DE - 1.0) < 1e-12, "sector frío + Omega_DE(|w0|) != 1"
     assert round(W0, 3) == -0.840,  f"w0 fuera de rango: {W0}"
     assert round(WA, 3) == -0.670,  f"wa fuera de rango: {WA}"
-    assert round(OMEGA_M_DYN, 3) == 0.160, f"Omega_m,dyn fuera de rango: {OMEGA_M_DYN}"
+    assert round(OMEGA_CDM_SECTOR, 3) == 0.160, f"sector frío fuera de rango: {OMEGA_CDM_SECTOR}"
+    assert OMEGA_M_DYN == OMEGA_CDM_SECTOR, "alias OMEGA_M_DYN roto"
     assert 0.0 < N_S < 1.0,         f"n_s no físico: {N_S}"
     assert 66.0 < H0_ALG < 69.0,    f"H0_alg fuera de rango: {H0_ALG}"
-    assert abs(friedmann_E2(1.0, OMEGA_M_DYN) - 1.0) < 1e-9, "E^2(a=1) != 1"
-    assert abs(friedmann_E2(1.0, OMEGA_M_CMB) - 1.0) < 1e-9, "E^2(a=1) != 1"
-    assert round(OMEGA_M_CMB, 4) == 0.3089, f"Omega_m,CMB canónico (ω_m/h²) fuera de rango: {OMEGA_M_CMB}"
-    assert abs(OMEGA_M_CMB - OMEGA_M_H2 / (H0_GLOBAL/100.0)**2) < 1e-12, "Omega_m,CMB debe ser ω_m/h²"
+    assert abs(friedmann_E2(1.0, OMEGA_CDM_SECTOR) - 1.0) < 1e-9, "E^2(a=1) != 1 (sector)"
+    assert abs(friedmann_E2(1.0, OMEGA_M_TOTAL) - 1.0) < 1e-9, "E^2(a=1) != 1 (total)"
+    assert round(OMEGA_M_TOTAL, 4) == 0.3089, f"Omega_m,total (ω_m/h²) fuera de rango: {OMEGA_M_TOTAL}"
+    assert OMEGA_M_CMB == OMEGA_M_TOTAL, "alias OMEGA_M_CMB roto"
+    assert abs(OMEGA_M_TOTAL - OMEGA_M_H2 / (H0_GLOBAL/100.0)**2) < 1e-12, "Omega_m,total debe ser ω_m/h²"
     assert round(OMEGA_M_H2, 4) == 0.1427, f"ω_m algebraico fuera de rango: {OMEGA_M_H2}"
     assert abs(OMEGA_C_H2 - KAL0 * OMEGA_B_H2 * N_S) < 1e-12, "ω_c debe ser KAL₀·ω_b·n_s"
 
@@ -149,7 +162,8 @@ def check():
     print("ssee_core.py — constantes canónicas SSEE-V3.6")
     print("=" * 64)
     for name in ('PHI', 'PI', 'OMEGA', 'BETA', 'KAL0', 'P_SC', 'K_V', 'T_R',
-                 'M_V', 'W0', 'WA', 'OMEGA_DE', 'OMEGA_M_DYN', 'MIRA', 'AURA',
+                 'M_V', 'W0', 'WA', 'OMEGA_DE', 'OMEGA_CDM_SECTOR', 'OMEGA_M_TOTAL',
+                 'OMEGA_M_DYN', 'MIRA', 'AURA',
                  'OMEGA_B_H2', 'OMEGA_C_H2', 'OMEGA_NU_H2', 'OMEGA_M_H2',
                  'OMEGA_M_CMB', 'OMEGA_M_CMB_PIPHI', 'OMEGA_M_CMB_MIRA',
                  'OMEGA_M_CMB_GEOMETRIC', 'H0_ALG', 'H0_GLOBAL', 'N_S',

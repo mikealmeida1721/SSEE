@@ -47,12 +47,12 @@ _reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_o
 from ssee_core import (
     PHI, PI, BETA, KAL0, P_SC as P_sc, K_V as KV, T_R as TR, M_V as MV,
     W0 as W0_SSEE, WA as WA_SSEE, OMEGA_DE as OMDE_SSEE,
-    OMEGA_M_DYN as OM_EFF_SSEE,
-    OMEGA_M_CMB as OM_CMB_SSEE,   # Ω_m,cosm=0.30889 canónico ω_m-directo — solo diagnóstico (NO entra al fondo)
+    OMEGA_M_TOTAL as OM_GEOM,      # 0.30889 — materia TOTAL: ÚNICA que entra en E(z)/r_d/distancias
+    OMEGA_CDM_SECTOR as OM_SECTOR, # 0.160 — sector frío (Paper 6 + α_K); NUNCA en geometría
 )
 FNU_SSEE = 0.020   # fracción de neutrinos — no algebraico, queda local
 
-log(f"w0={W0_SSEE:.4f}  wa={WA_SSEE:.4f}  Om_dyn={OM_EFF_SSEE:.4f}  Om_cosm={OM_CMB_SSEE:.4f}  KAL0={KAL0:.4f}")
+log(f"w0={W0_SSEE:.4f}  wa={WA_SSEE:.4f}  Om_total={OM_GEOM:.5f} (geometría)  Om_sector_frío={OM_SECTOR:.4f}  KAL0={KAL0:.4f}")
 
 # ─────────────────────────────────────────────────────────────
 # 2. FÍSICA DEL FONDO
@@ -64,10 +64,10 @@ def f_de_cpl(z, w0, wa):
     return (1+z)**(3*(1+w0+wa)) * np.exp(-3*wa*(1-a))
 
 def E_ssee(z):
-    # SSEE canónico Paper 2: Ω_m,dyn=0.160 uniforme en E(z).
-    # MIRA NO entra al fondo gravitacional (es input observacional no derivado;
-    # ver SEALED_STATUS.md §Paper 2 y VERIFICATION_LEDGER §V-L3-2Om).
-    return np.sqrt(OM_EFF_SSEE*(1+z)**3 + (1.0-OM_EFF_SSEE)*f_de_cpl(z, W0_SSEE, WA_SSEE))
+    # Geometría de fondo: usa la materia TOTAL Ω_m=0.30889 (ω_m-directo), como
+    # cualquier E(z). El sector frío 0.160 (=1+w0) NO va aquí — meterlo daba el
+    # χ²=726 espurio con DESI DR2 (V-L4-DESI, 2026-07-09). Ω_DE = 1-Ω_m = 0.691.
+    return np.sqrt(OM_GEOM*(1+z)**3 + (1.0-OM_GEOM)*f_de_cpl(z, W0_SSEE, WA_SSEE))
 
 def E_lcdm(z, Om):
     return np.sqrt(Om*(1+z)**3 + (1-Om))
@@ -169,7 +169,7 @@ def lpost_ssee(theta):
     if not (0.015 < ob_h2 < 0.030): return -np.inf
     lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
     lp_H0  = -0.5*((H0-PLANCK_H0[0])/PLANCK_H0[1])**2
-    om_h2  = OM_EFF_SSEE*(H0/100)**2   # SSEE canónico: r_d usa Ω_m,dyn=0.160
+    om_h2  = OM_GEOM*(H0/100)**2   # r_d usa la materia TOTAL 0.30889 (geometría)
     lb = ll_bao_full(H0, om_h2, ob_h2, E_ssee)
     lc = ll_clusters(KAL0, FNU_SSEE)
     return lp_bbn + lp_H0 + lb + lc
@@ -328,19 +328,20 @@ for r in models:
                                   r["medians"], r["p16"], r["p84"]):
         log(f"    {nm:<12} = {med:.5f}  +{p84-med:.5f}/-{med-p16:.5f}")
     if r["label"] == "SSEE-V3.6":
-        log(f"    {'Ω_m,eff':<12} = {OM_EFF_SSEE:.4f}  [algebraico]")
+        log(f"    {'Ω_m,total':<12} = {OM_GEOM:.5f}  [geometría; ω_m/h²]")
+        log(f"    {'Ω_cdm,sector':<12} = {OM_SECTOR:.4f}  [sector frío; Paper 6 + α_K]")
         log(f"    {'w₀,wₐ':<12} = {W0_SSEE:.4f}, {WA_SSEE:.4f}  [algebraico]")
 
 # Tensiones
 def get_rd(r):
     H0 = r["medians"][0]; ob = r["medians"][-1]
-    Om = OM_EFF_SSEE if r["label"]=="SSEE-V3.6" else r["medians"][1]
+    Om = OM_GEOM if r["label"]=="SSEE-V3.6" else r["medians"][1]
     return sound_horizon_rd(ob, Om*(H0/100)**2)
 
 rd_ssee = get_rd(res_ssee); rd_lcdm = get_rd(res_lcdm)
 H0_s    = res_ssee["medians"][0]; H0_s_std = res_ssee["stds"][0]
 t_H0    = abs(H0_s - PLANCK_H0[0]) / np.sqrt(H0_s_std**2 + PLANCK_H0[1]**2)
-t_Om    = abs(OM_EFF_SSEE - PLANCK_OM[0]) / PLANCK_OM[1]
+t_Om    = abs(OM_GEOM - PLANCK_OM[0]) / PLANCK_OM[1]   # ahora 0.9σ (era 21σ con el sector 0.160)
 log(f"\n  r_d(SSEE)={rd_ssee:.2f} Mpc  r_d(ΛCDM)={rd_lcdm:.2f} Mpc  ratio={rd_ssee/rd_lcdm:.3f}")
 log(f"  H₀(SSEE)={H0_s:.2f}±{H0_s_std:.2f}  Planck={PLANCK_H0[0]}±{PLANCK_H0[1]}  tensión={t_H0:.2f}σ")
 log(f"  Ω_m tensión SSEE vs Planck: {t_Om:.2f}σ")

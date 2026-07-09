@@ -29,7 +29,7 @@ import os as _reloc_os, sys as _reloc_sys  # reloc: anclar src/
 _reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_os.path.abspath(__file__))))
 from ssee_core import (
     PHI, PI, BETA, KAL0, P_SC, K_V, T_R, M_V,
-    W0, WA, OMEGA_DE, OMEGA_M_DYN,
+    W0, WA, OMEGA_DE, OMEGA_M_TOTAL, OMEGA_CDM_SECTOR,
     OMEGA_M_CMB_MIRA, H0_ALG,
 )
 
@@ -49,7 +49,7 @@ def log(msg):
 log("=" * 70)
 log("SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)")
 log("=" * 70)
-log(f"  Ω_m,dyn (exacto) = {OMEGA_M_DYN:.10f}")
+log(f"  Ω_m,total (geometría) = {OMEGA_M_TOTAL:.8f}  |  Ω_cdm,sector = {OMEGA_CDM_SECTOR:.8f}")
 log(f"  Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)")
 log(f"  w0 = {W0:.10f},  wa = {WA:.10f}")
 log(f"  H0_alg = {H0_ALG:.6f}")
@@ -89,7 +89,7 @@ def f_de_cpl(z, w0, wa):
     return (1+z)**(3*(1+w0+wa)) * np.exp(-3*wa*(1-a))
 
 def E_ssee(z):
-    return np.sqrt(OMEGA_M_DYN*(1+z)**3 + (1.0-OMEGA_M_DYN)*f_de_cpl(z, W0, WA))
+    return np.sqrt(OMEGA_M_TOTAL*(1+z)**3 + (1.0-OMEGA_M_TOTAL)*f_de_cpl(z, W0, WA))  # geometría: materia total 0.30889
 
 def DC(z_max, n=300):
     zz = np.linspace(0, z_max, n)
@@ -122,7 +122,7 @@ def lpost(theta):
     if not (0.015 < ob_h2 < 0.030): return -np.inf
     lp_H0  = -0.5*((H0-MIRA_H0[0])/MIRA_H0[1])**2
     lp_bbn = -0.5*((ob_h2-BBN_OBH2[0])/BBN_OBH2[1])**2
-    om_h2  = OMEGA_M_DYN*(H0/100)**2
+    om_h2  = OMEGA_M_TOTAL*(H0/100)**2   # r_d con materia total (geometría)
     return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2) + LL_CLUSTERS
 
 # ─── MCMC ───

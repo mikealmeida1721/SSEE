@@ -1,5 +1,32 @@
 # Changelog
 
+## V3.6.2 — Ω_m-geometry fix (V-L4-DESI) + ν-closure unification + full documentation audit (2026-07-10)
+
+- **CRITICAL geometry fix (V-L4-DESI, 2026-07-09).** The background geometry E(z)/r_d
+  was mistakenly fed the *cold dynamical sector* Ω_m,dyn=0.160 (=1+w₀, an equation-of-state
+  quantity) instead of the *total* matter density Ω_m=ω_m/h²=**0.30889**. The bug inflated
+  **six false tensions** that the suite documented as real; all corrected:
+  χ²_BAO **726→~11**, Ω_m **21.3σ→0.88σ**, r_d **175.6→148.2 Mpc** (1.002× ΛCDM),
+  θ* **6.66σ→0.91σ**, H₀ posterior **66.41→67.95 ± 0.40** (0.88σ Planck, **0.04σ from the
+  H_alg anchor** — DR2 *confirms* the prediction), χ²_r(H(z)) **1.86→0.482**. Guardian canary
+  R14 now watches for recurrence (0.160-in-E(z) must hurt: χ²=725; total must be sane: χ²=11).
+- **ν-closure constant unified to 93.14 (demonstrated from first principles, 2026-07-10).**
+  The neutrino closure ω_ν h² = Σm_ν/C was standardised on **C=93.14 eV** (N_eff=3.046, PDG/Planck;
+  derived C=ρ_crit/n_ν=94.06 at instantaneous decoupling as the cross-check). Propagated
+  suite-wide: **m_φ = 40.70 eV** (was 41.02), **k_fs = 0.754 h/Mpc** (was 0.762),
+  **σ₈ = 0.747**, **S₈ = 0.758** (0.01σ KiDS), **Σm_ν = 0.0685 eV**.
+- **Full documentation audit — 10 papers + 3 consolidation docs to 10/10.** Hostile
+  paper-by-paper pass (grammar + math + physics + coherence + figures + citations +
+  provenance); every finding the guardian missed became a permanent rivet (R15–R19).
+  The Unified Journal's three legacy figures (CLASS CMB TT, EFTCAMB CMB TT + P(k)) were
+  **regenerated at the canonical ω_m-direct background** (0.30889, no MIRA factor),
+  restyled to journal quality (white background, µK²), and their Spanish labels
+  translated to English; retired-live claims (MIRA=Ω_CMB/Ω_dyn, "MIRA derivation" open
+  problem) that contradicted the reframe were corrected.
+- **Root refresh.** README, AUDIT.md, CITATION.cff, RIGOR_CHECKLIST.md brought to the
+  canonical values (m_φ, k_fs, S₈, n_s tension 0.16σ, CMB ΔBIC −32.9/−23.9/−34.9,
+  OPEN_PROBLEMS 18 items). Guardian **VERDE, 139 checks**.
+
 ## V3.6.1 — DESI DR2 vector correction: DR1 data mislabelled as DR2 (2026-07-02)
 
 - **CRITICAL data-provenance fix (V-L4-DESI).** The 13-point BAO vector used across

@@ -30,7 +30,7 @@
 | (w₀, wₐ) | (−0.840, −0.670) | DESI DR2+CMB+Pantheon+: (−0.838±0.055, −0.617±0.208) | 0.24σ (2D); range 0.2–1.8σ across SN compilations (official chains) | ✅ |
 | CMB first peak | ℓ₁ = 221 | Planck PR4: ~220 | Δℓ = 1 | ✅ |
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ | ✅ |
-| n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ | ✅ |
+| n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.16σ | ✅ |
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match | ✅ |
 | S₈ (two-sector φ-DM) | 0.758 | KiDS-1000: 0.759±0.024 | 0.01σ | ✅ |
 | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 | ⏳ |
@@ -61,7 +61,7 @@
 | 8 | Strong Gravity Regime — Two-limit analysis (alt MOND-like vs canonical EFT B-S) | 20 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
 | 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 18 | Preprint | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
 | 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 9.68 meV | 14 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
-| — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 19 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |
+| — | **Unified Journal Paper** (consolidation of Papers 1–10 + CLASS + MCMC Fase 4) | 25 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |
 | ★ | **Sealed Journal** — consolidated late-universe dark-energy paper (φ → w₀, wₐ; closed-dictionary look-elsewhere; two-stage H₀; honest accounting of ~3 vs 6 parameters) | 10 | **Sealed — external-audit candidate** | [docs/](docs/SSEE_Sealed_Journal.pdf) |
 
 ---
@@ -190,10 +190,10 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 
 | Result | Value | Status |
 |---|---|---|
-| Ω_CDM | 0.160050 | Active at all k |
-| Ω_φDM = Ω_m,CMB − Ω_m,dyn | 0.14884 | Difference (no matter factor); active for k < k_fs only |
+| Ω_CDM | 0.160 | Active at all k |
+| Ω_φDM = Ω_m,CMB − Ω_m,dyn | 0.14889 | Difference (no matter factor); active for k < k_fs only |
 | Ω_total (two-sector) = ωm/h² | 0.30889 = Ω_m,CMB | ωm-direct (OP-8 dissolved) |
-| Σm_ν = R₂ × 0.960318 eV | 0.0685 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 |
+| Σm_ν = R₂ × 0.9530 eV | 0.0685 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 (ν-closure C=93.14) |
 | m_φ = Σm_ν × (SOLAR²·KRYSTOS) | 40.70 eV | Forward-prediction — no fitting (multiplier 594.28 is a pure number; mechanism g²·v) |
 | α (Viel fit to particle/cold P(k) ratio) | 1.117 Mpc/h | CLASS output — not imposed |
 | k_fs (free-streaming) | 0.754 h/Mpc | From m_φ, CLASS-derived |
@@ -225,19 +225,19 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 
 ### CLASS Boltzmann Validation (Fases 1–3)
 
-> Legacy MIRA-background validation runs (Ω_m,CMB=0.3199). The ωm-direct canonical 0.30889 is within 3.5% (Δℓ<2); "full ω_m" = full matter density, "dynamical-only" = bare Ω_m,dyn=0.160.
+> Canonical ωm-direct runs (Ω_m,CMB=0.30889, no matter factor). "full ω_m" = full matter density, "dynamical-only" = bare Ω_m,dyn=0.160. Independent-code cross-check: CLASS here, CAMB in Paper 3.
 
 | Test | SSEE full ω_m | SSEE dynamical-only | ΛCDM | Significance |
 |---|---|---|---|---|
-| CMB peak 1 (ℓ) | **220** | 240 | 221 | full ω_m necessary |
-| CMB peak 2 (ℓ) | **535** | 597 | 537 | full ω_m necessary |
-| CMB peak 3 (ℓ) | **810** | 922 | 814 | full ω_m necessary |
-| RMS vs ΛCDM | **1.4%** | 31.5% | — | 22× degradation with bare Ω_m,dyn |
+| CMB peak 1 (ℓ) | **221** | 240 | 221 | full ω_m necessary |
+| CMB peak 2 (ℓ) | **537** | 597 | 537 | full ω_m necessary |
+| CMB peak 3 (ℓ) | **814** | 922 | 814 | full ω_m necessary |
+| RMS vs ΛCDM | **0.14%** | 31.5% | — | ~220× degradation with bare Ω_m,dyn |
 | α free-streaming (CLASS output, canonical particle) | **1.117 Mpc/h** | — | — | Yields k_fs = 0.754 h/Mpc |
 | S₈ (two-sector, canonical particle) | **0.758** | — | ~0.83 | 0.01σ KiDS-1000 |
 | IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
 
-*CLASS confirms the full algebraic matter density ω_m (Ω_m,CMB=0.30889) is physically necessary: using the bare dynamical Ω_m,dyn=0.160 instead, all three CMB peaks shift ~10% and RMS error rises 22×.*
+*CLASS confirms the full algebraic matter density ω_m (Ω_m,CMB=0.30889) is physically necessary: using the bare dynamical Ω_m,dyn=0.160 instead, all three CMB peaks shift ~10% and the RMS residual jumps from 0.14% to 31.5% (~220×).*
 
 ### MCMC Fase 4 (Multi-probe background)
 
@@ -256,9 +256,9 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 
 | Observable | SSEE algebraic | Planck 2018 | Tension |
 |---|---|---|---|
-| n_s | 1 − φ⁻⁷ = 0.96556 | 0.9649 ± 0.0042 | 0.2σ |
+| n_s | 1 − φ⁻⁷ = 0.96556 | 0.9649 ± 0.0042 | 0.16σ |
 | H₀ | 3(φ+π)² = 67.96 km/s/Mpc | 67.36 ± 0.54 | 1.1σ |
-| Ωm | (π−φ)/(π+φ) = 0.3201 | 0.3153 ± 0.0073 | 0.66σ |
+| Ωm (geometric identity, *superseded* by ωm-direct 0.30889) | (π−φ)/(π+φ) = 0.3201 | 0.3153 ± 0.0073 | 0.66σ |
 | Ωb h² | (π−φ)/(3Ω²) = 0.02242 | 0.02237 ± 0.00015 | 0.32σ |
 | Ωc h² (IS) | KAL₀ × Ωb h² × n_s = 0.11926 | 0.1200 ± 0.0012 | **−0.6σ** |
 | Y_p (BBN) | AlterBBN(Ωb h²=0.02242) = 0.2476 | 0.2449 ± 0.0040 | 0.7σ |
@@ -290,7 +290,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 ## ⚠️ Known limitations and open problems
 
 Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
-**Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (14 items, OP-1..OP-14).
+**Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (18 items, OP-1..OP-18).
 
 ### Editorial/pipeline limitations
 1. **Diagonal CMB likelihood** (Paper 3): χ²_r uses diagonal covariance. Off-diagonal terms required for PRD/PRL.
@@ -298,7 +298,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 3. **CMB ΔBIC status:** The canonical full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6, N=2354) yields $\Delta\mathrm{BIC}=-32.9$ decisively favouring SSEE; cross-checked by the `plik_lite` point estimate ($-23.9$, N=613) and the diagonal approximation ($-34.9$, N=5914). All three agree (Paper 3 §BIC, canonical Σm_ν = 0.0685 eV; ΛCDM at baseline 0.06). The ΔBIC is parsimony-driven (best-fit χ² statistically indistinguishable from ΛCDM), not a claim of superior fit.
 
 ### Open physics problems (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md))
-| ID | Problem | Status (2026-06-12) |
+| ID | Problem | Status (2026-07-10) |
 |----|---------|---------------------|
 | OP-1 | Baryon density Ω_b h² | **Partial** — formula (π−φ)/(3Ω²) = 0.32σ Planck; ab-initio baryogenesis → Paper B |
 | OP-2 | n_s = 1−φ⁻⁷ exponent | **Resolved** (conditional) — α-attractor universality + N_*=2φ⁷; new prediction r=φ⁻¹⁰ |
@@ -313,7 +313,11 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 | OP-11 | Free non-minimal coupling ξ | **Open** |
 | OP-12 | Relic abundance Ω_φDM h² ab initio | **Open** |
 | OP-13 | Paper 8 internal consistency (√AURA vs B-S) | **Resolved (2026-05-23)** — Option A |
-| OP-14 | Σm_ν phenomenological derivation | **Resolved (2026-06-04)** — Σm_ν = 0.0685 eV self-consistent cascade |
+| OP-14 | Σm_ν phenomenological derivation | **Resolved (2026-06-04)** — Σm_ν = 0.0685 eV self-consistent cascade (ν-closure C=93.14 demonstrated) |
+| OP-15 | Bullet-cluster offset κ(θ) from KAL(x) | **Open** — not yet computed (Paper 1) |
+| OP-16 | (π−φ)/(π+φ)=0.3201 vs proton mass-energy fraction | **Open / speculative** (genesis; retired from Paper 4, zero cosmological impact) |
+| OP-17 | Canonical φ-DM particle SOLAR²·KRYSTOS | **Adopted (2026-06-19)** — m_φ = 40.70 eV, S₈ = 0.01σ KiDS; UV origin of multiplier = OP-9 |
+| OP-18 | Primordial amplitude A_s from (φ,π) | **Open (2026-06-20)** — inflation-scale residue (Paper 3) |
 
 **Foundational postulates (Paper 1 §2.4, Postulates D & S):** the dimensional scale of
 H₀ is an explicit anchor input (zero *dimensionless* fitted parameters, like ΛCDM); the
@@ -336,7 +340,7 @@ pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1
 
 ## 🗺️ Roadmap
 
-**Status (2026-06-12):** all 10 papers + consolidated journal documents complete and
+**Status (2026-07-10):** all 10 papers + consolidated journal documents complete and
 compile clean (0 LaTeX errors, 0 orphan bibitems, 0 undefined citations). Canonical
 φ-DM particle m_φ = 40.70 eV (forward prediction, zero fitting) with pre-registered
 free-streaming imprint k_fs = 0.754 h/Mpc (DESI Y3 / Euclid testable). Full

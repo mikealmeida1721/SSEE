@@ -1,0 +1,431 @@
+diff --git a/AUDIT.md b/AUDIT.md
+index c5b4417..1ab533c 100644
+--- a/AUDIT.md
++++ b/AUDIT.md
+@@ -5,11 +5,13 @@
+ **Repo:** https://github.com/mikealmeida1721/SSEE  
+ **Date:** 2026-05-17 (10-paper suite — bibliography audit + Phase 1/2 hardening; Paper 1 Postulates D & S; OPEN_PROBLEMS OP-2/3/4/6 resolved, OP-1/5 partial)
+ 
+-> ⚠️ **Superseded numbers (reframe 2026-06-19).** This dated snapshot predates the
+-> **ω_m-direct reframe** (OP-8 dissolved: Ω_m,CMB = ω_m/h² = **0.30889**, no matter
+-> factor) and the **SOLAR²·KRYSTOS particle** (m_φ = **41.02 eV**, k_fs = **0.762
+-> h/Mpc**, S₈ = **0.759**). The Hubble cascade is now H_alg = 67.962 → H_local =
+-> **72.86** (0.17σ). For canonical values see `README.md`, `CANONICAL_VALUES.yaml`,
++> ⚠️ **Superseded numbers (reframe 2026-06-19 + ν-closure 2026-07-10).** This dated
++> snapshot predates the **ω_m-direct reframe** (OP-8 dissolved: Ω_m,CMB = ω_m/h² =
++> **0.30889**, no matter factor) and the **SOLAR²·KRYSTOS particle** with the unified
++> ν-closure constant C=93.14: **m_φ = 40.70 eV, k_fs = 0.754 h/Mpc, S₈ = 0.758**
++> (0.01σ KiDS). The Hubble cascade is H_alg = 67.962 → H_local = **72.86** (0.17σ);
++> the canonical DR2 posterior is **H₀ = 67.95 ± 0.40** (geometry-total 0.30889, V-L4-DESI).
++> For canonical values see `README.md`, `CANONICAL_VALUES.yaml`,
+ > and `VERIFICATION_LEDGER.md`. The headline table below is updated; deeper body
+ > prose retains the 2026-05-17 figures as the record of that audit.
+ 
+@@ -30,9 +32,9 @@ Falsifiable predictions — fixed by algebraic construction, not fitted (Structu
+ | (w₀, wₐ) | (−0.840, −0.670) | DESI DR2+CMB+Pantheon+: (−0.838±0.055, −0.617±0.208) | 0.24σ (2D); 0.2–1.8σ across SN compilations (official chains) |
+ | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
+ | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ |
+-| n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ |
+-| m_φ (φ-DM mass) | 41.02 eV algebraic (SOLAR²·KRYSTOS) | gravitationally-produced scalar — probed via k_fs | Future prediction |
+-| k_fs | 0.762 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
++| n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.16σ |
++| m_φ (φ-DM mass) | 40.70 eV algebraic (SOLAR²·KRYSTOS) | gravitationally-produced scalar — probed via k_fs | Future prediction |
++| k_fs | 0.754 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
+ | (w₀, wₐ) vs DESI DR3 | same fixed point (−0.840, −0.670) | DR3 w₀wₐCDM (2027): trajectory 0.05σ (DR1) → 0.24σ (DR2, errors −40%); expect ~0.5σ if centrals persist; >3σ joint exclusion falsifies | **Pre-registered prediction** |
+ | r (tensor-to-scalar) | φ⁻¹⁰ = 0.00813 | LiteBIRD (~2032) | Future prediction |
+ 
+@@ -58,7 +60,7 @@ SSEE/
+ ├── class_ssee/                      — CLASS Boltzmann fork — SSEE .ini configs + plots
+ │   ├── ssee_v36.ini                 — SSEE MIRA sector (Ω_m=0.3199)
+ │   ├── ssee_v36_nomira.ini          — SSEE dynamic sector only (Ω_m=0.160)
+-│   ├── ssee_v36_twosector.ini       — φ-DM two-sector (ncdm m=41.02 eV)
++│   ├── ssee_v36_twosector.ini       — φ-DM two-sector (ncdm m=40.70 eV)
+ │   └── ssee_v36_IS.ini              — IS viscosity (cs2_fld=0.001)
+ ├── data/                            — observational data (DESI DR2, Planck PR4, clusters)
+ ├── results/                         — generated figures, tables, logs
+@@ -86,11 +88,11 @@ Runtime: ~30–60 min (N_eff ≈ 637,500 for SSEE, 100 walkers × 25,000 steps).
+ 
+ Expected output:
+ ```
+-H₀ = 66.75 ± 0.44 km/s/Mpc
++H₀ = 67.95 ± 0.40 km/s/Mpc  (DR2, geometry-total 0.30889; 0.88σ Planck, 0.04σ anchor)
+ χ²_r clusters = 0.122  (4 clusters, IGIMF-corrected, MCMC)
+ χ²_r clusters = 0.126  (7 clusters, analytic sample)
+ χ²_2D (w₀-wₐ vs DESI DR2+CMB+Pantheon+) = 0.42 → 0.24σ (rango 0.2–1.8σ según compilado SN, ρ medidos de cadenas oficiales; ver V-L4-DESI)
+-ΔBIC (dynamic sector, k_SSEE=1 vs k_ΛCDM=3) = −5.55  [SSEE favoured]
++ΔBIC (dynamic sector, k_SSEE=2 vs k_ΛCDM=3) = −5.68  [SSEE favoured; CPL −5.59]
+ ΔBIC (full background, k=0 vs k_ΛCDM=6) = +206        [framework penalty]
+ ```
+ 
+@@ -101,13 +103,13 @@ python3 src/ssee_paper3_cmb.py
+ 
+ Expected output:
+ ```
+-TT: SSEE χ²_r=1.062  |  ΛCDM χ²_r=1.043  (N=1971)
+-TE: SSEE χ²_r=1.053  |  ΛCDM χ²_r=1.040  (N=1967)
++TT: SSEE χ²_r=1.042  |  ΛCDM χ²_r=1.043  (N=1971)
++TE: SSEE χ²_r=1.040  |  ΛCDM χ²_r=1.040  (N=1967)
+ EE: SSEE χ²_r=1.040  |  ΛCDM χ²_r=1.039  (N=1967)
+-PP: SSEE χ²_r=0.730  |  ΛCDM χ²_r=0.757  (N=9)    [lensing — SSEE favoured]
+-ΔBIC (diagonal, TT+TE+EE+PP, k=2 vs k=6) = +31.1   [N amplifies small Δχ²_r]
+-ΔBIC (plik_lite Cobaya, TTTEEE, k=2 vs k=6)  = −31.3 [SSEE decisively favoured]
+-ΔBIC (conservative k=4 vs k=6) = −13.8              [SSEE strongly favoured]
++PP: SSEE χ²_r=0.719  |  ΛCDM χ²_r=0.757  (N=9)    [lensing — SSEE favoured]
++ΔBIC (full plik MCMC, TTTEEE+lowl+lensing, k=2 vs k=6, N=2354) = −32.9  [canonical — SSEE decisively favoured]
++ΔBIC (plik_lite point est., TTTEEE, k=2 vs k=6, N=613) = −23.9          [cross-check]
++ΔBIC (diagonal, TT+TE+EE+PP, k=2 vs k=6, N=5914) = −34.9                [cross-check]
+ Peak positions: ℓ = 221, 538, 815
+ ```
+ 
+@@ -139,11 +141,11 @@ Expected output:
+ ```
+ c²_s,eff = 0 (exact algebraic)
+ MIRA_num (k≥10) = 0.989 ± 0.017   [background effect, not perturbative]
+-γ_IS = 0.554 ± 0.001               [≈ γ_ΛCDM = 0.55]
+-G = D₁_SSEE/D₁_ΛCDM = 0.866      [13.4% growth suppression]
+-σ₈_SSEE = 0.702 ± 0.005
+-S₈_SSEE = 0.725 ± 0.005            [1.96σ KiDS / 2.84σ DES]
+-fσ₈(z=0.5) = 0.341                 [mean 2.67σ, 6 surveys — baseline for Paper 6]
++γ_IS = 0.5504 ± 0.0003             [≈ γ_ΛCDM = 0.55]
++G = D₁_SSEE/D₁_ΛCDM = 1.0032       [~0.3% enhancement; Poisson source Ω_m,CMB=0.30889]
++σ₈_SSEE = 0.8136 ± 0.006           [single-sector ODE; CLASS top-hat ceiling 0.8335]
++S₈_SSEE = 0.8256 ± 0.006           [single-sector; ceiling 0.846 — 3.5σ KiDS, resolved by Paper 6 two-sector]
++S₈ tension SSEE vs DES-Y3 = 2.74σ  [single-sector baseline; Paper 6 two-sector → S₈=0.758, 0.01σ KiDS]
+ ```
+ 
+ ### Paper 6 — φ-DM two-sector
+@@ -154,19 +156,19 @@ python3 src/p06_phiDM/ssee_paper6_mcmc_v2.py     # emulador; reemplaza al toy ar
+ ```
+ Expected output (verification):
+ ```
+-m_φ = 41.02 eV = Σm_ν × (SOLAR²·KRYSTOS)  (algebraic, zero free parameters)
+-k_fs = 0.762 h/Mpc  (falsable DESI Y3/Euclid 2026–2028)
++m_φ = 40.70 eV = Σm_ν × (SOLAR²·KRYSTOS)  (algebraic, zero free parameters)
++k_fs = 0.754 h/Mpc  (falsable DESI Y3/Euclid 2026–2028)
+ Ω_CDM = 0.160050
+ Ω_φDM = 0.148844
+ Ω_total = 0.308895 ≈ Ω_m,CMB (ω_m-directo)
+-σ₈_eff = 0.7480  (CLASS forward two-sector, free-streaming)
+-S₈_eff = 0.7590  (0.00σ KiDS-1000 — resuelve tensión S₈)
+-Mean fσ₈ tension: 0.93σ two-sector (σ₈=0.748)  [single-sector 0.70σ; ΛCDM 0.73σ]
++σ₈_eff = 0.7470  (CLASS forward two-sector, free-streaming)
++S₈_eff = 0.7580  (0.01σ KiDS-1000 — resuelve tensión S₈)
++Mean fσ₈ tension: 0.93σ two-sector (σ₈=0.747)  [single-sector 0.70σ; ΛCDM 0.73σ]
+ ```
+ Expected output (MCMC v2, emulador CLASS):
+ ```
+ Ω_φDM = 0.165  (0.24σ del algebraico 0.14889)
+-m_φ   = 51.9 eV (0.67σ del algebraico 41.02)
++m_φ   = 51.9 eV (0.67σ del algebraico 40.70)
+ S₈    = 0.782
+ ΔBIC = −14.3  [SSEE favoured]
+ ```
+@@ -208,14 +210,15 @@ python3 calibrate_wdm_alpha.py
+ ```
+ Expected (legacy α_WDM fit-to-KiDS): α_WDM = 1.6561 h/Mpc, σ₈_eff = 0.737.
+ > **Superado:** el valor canónico es el **forward** two-sector de CLASS
+-> (σ₈_eff = 0.748, S₈ = 0.759), salida directa sin fitear α_WDM. La calibración
++> (σ₈_eff = 0.747, S₈ = 0.758), salida directa sin fitear α_WDM. La calibración
+ > `calibrate_wdm_alpha.py` se conserva solo como registro del método retirado.
+ 
+ IS viscosity test:
+ ```bash
+ ./class ssee_v36_IS.ini && python3 plot_IS_viscosity.py
+ ```
+-Expected: cs² effect on σ₈ = 0.03% (negligible); G = D₁_SSEE/D₁_ΛCDM = 0.866.
++Expected: cs² effect on σ₈ = 0.03% (negligible); G = D₁_SSEE/D₁_ΛCDM = 1.0032
++(canonical Poisson source Ω_m,CMB=0.30889; the retired 0.866 used the bare Ω_m,dyn=0.160).
+ 
+ ### OP-5 — HMcode-2020 baryonic feedback (requires CLASS + classy)
+ 
+@@ -259,14 +262,18 @@ dynamic-sector test (ΔBIC = −5.55, SSEE favoured). These address different ph
+ 
+ ### 3. CMB pipeline — canonical result and H0-anchoring sensitivity (Paper 3)
+ 
+-**Canonical CMB result (Paper 3 §5):** H0 scanned freely over [66.5, 67.5]; minimum at
+-H0=67.066 km/s/Mpc. Δχ²=+3.793, ΔBIC=−31.3 (k=2 vs k=6, N=6469). Decisively favours SSEE.
++**Canonical CMB result (Paper 3 §5, ω_m-direct reframe):** at the algebraic global anchor
++H0 = 3(φ+π)² = 67.962, the full `plik` MCMC (TTTEEE+lowl+lensing, N=2354) gives
++ΔBIC = −32.9 (k=2 vs k=6) — decisively favours SSEE. Cross-checked by the `plik_lite`
++point estimate (−23.9, N=613) and the diagonal approximation (−34.9, N=5914); all three
++agree. *(The earlier legacy-MIRA `plik_lite` Cobaya scan — H0=67.066 optimum, ΔBIC≈−31.3 —
++is superseded by the reframe.)*
+ 
+ **Illustrative H0-anchored comparison** (`results/tables/planck_fulllike_results.txt`):
+-When H0 is fixed to the DESI BAO value (66.66, calibrated at z~0.3–2.3), Δχ²=+144.8,
+-ΔBIC=+92.1. This is NOT a contradiction — it decomposes as: +141 from the 0.74σ
+-H0 offset between DESI and CMB preferred values, +3.5 from the intrinsic w0/wa effect.
+-The file is explicitly labelled as illustrative; the primary result is ΔBIC=−31.3.
++When H0 is fixed to a DESI-BAO-calibrated value instead of the CMB-preferred anchor, ΔBIC
++rises sharply — this is NOT a contradiction, it decomposes into the H0-offset penalty plus
++the small intrinsic w0/wa effect. The file is explicitly labelled as illustrative; the
++primary result is the canonical ΔBIC = −32.9.
+ 
+ **k count fixed** (BC2): SSEE uses k=2 in all CMB comparisons (H0 + Ωb h² prior borrowed
+ from Planck). k=0 counting appears only in the illustrative file with matching caveat.
+@@ -277,15 +284,15 @@ from Planck). k=0 counting appears only in the illustrative file with matching c
+ |---|---|---|
+ | w₀, wₐ | algebraic (Zenodo pre-data) | 0 |
+ | n_s | algebraic (1−φ⁻⁷) | 0 |
+-| Ωm,CMB | algebraic (MIRA hypothesis) | 0 |
++| Ωm,CMB | algebraic (ω_m-direct = ω_m/h²; OP-8 dissolved) | 0 |
+ | H₀ | scanned to CMB minimum | 1 |
+ | Ωb h² | fixed to Planck prior | 1 (conservative) |
+ | τ, As | fixed to Planck priors | 0 (conservative option: +2) |
+ | **Total SSEE** | | **k=2** (k=4 hyper-conservative) |
+ | **ΛCDM baseline** | | **k=6** |
+ 
+-Diagonal covariance gives ΔBIC = +31.1 (N amplifies small Δχ²_r ≈ 0.01).
+-Full plik/CamSpec likelihood with official Planck covariance matrix remains a blocker for PRD/PRL.
++Diagonal covariance gives ΔBIC = −34.9 (canonical ω_m-direct fit, N=5914; cross-check of the −32.9 full-plik headline).
++Full plik/CamSpec likelihood with official off-diagonal Planck covariance matrix remains a refinement for PRD/PRL.
+ 
+ ### 4. Two-sector Ωm (Papers 2, 3, 5, 6) — ω_m-direct reframe (OP-8 dissolved)
+ Ωm,dyn = 0.160 (DESI dynamic sector) and Ωm,CMB = 0.30889 (Planck) are **two independent
+@@ -321,12 +328,12 @@ Static Eckart: 3.7σ tension. IS derivation: KAL₀ × Ωb h² × n_s = 0.11926
+ Note: Ωb h² algebraic = (π−φ)/(3Ω²) = 0.02242 (0.32σ from Planck — see OPEN_PROBLEMS OP-1; the earlier 3(π−φ)/200 form is superseded).
+ 
+ ### 8. φ-DM mass scale and field content (Paper 6)
+-m_φ = 41.02 eV is not keV-scale WDM; φ-DM is modelled as a real scalar field (explicit
++m_φ = 40.70 eV is not keV-scale WDM; φ-DM is modelled as a real scalar field (explicit
+ Lagrangian in Paper 6 §4) populated by gravitational particle production. The
+ Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no
+ zero-parameter SSEE form. φ-DM has no Standard-Model portal, so it is not accessible
+ to neutrino-mass experiments; free-streaming suppression enters observation via
+-k_fs = 0.762 h/Mpc, not direct m_φ. Lyman-α bounds apply to thermal relics; the
++k_fs = 0.754 h/Mpc, not direct m_φ. Lyman-α bounds apply to thermal relics; the
+ scalar fraction f_φ ≈ 0.50 gives an effective ~0.1–0.5 keV equivalent — within
+ observational bounds. Quantified in Paper 6 §Lyman-α. The ab-initio relic abundance
+ from the gravitational-production integral is deferred to Paper B.
+@@ -361,8 +368,8 @@ the closed dictionary. Genuine pre-committed predictions concern **unreleased**
+ | n_s | 1 − φ⁻⁷ | 0.96556 | Planck 2018 | Postdiction |
+ | H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Postdiction |
+ | r_d | CAMB, ω_m-direct Ω_m,CMB=0.30889 | 147.17 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | 0.3σ postdiction |
+-| m_φ | Σm_ν × SOLAR²·KRYSTOS | 41.02 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction (cond. OP-9) |
+-| k_fs | free-streaming (m_φ) | 0.762 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction (cond. OP-9) |
++| m_φ | Σm_ν × SOLAR²·KRYSTOS | 40.70 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction (cond. OP-9) |
++| k_fs | free-streaming (m_φ) | 0.754 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction (cond. OP-9) |
+ | r | φ⁻¹⁰ | 0.00813 | LiteBIRD (~2032) | Future prediction |
+ 
+ Constant dictionary repo: https://github.com/mikealmeida1721/SSEE-Constant-Dictionary
+@@ -374,7 +381,7 @@ Zenodo DOI (concept): https://doi.org/10.5281/zenodo.20684908
+ 
+ | Blocker | Description | Status |
+ |---|---|---|
+-| **B1** | plik_lite TTTEEE done (ΔBIC=−31.3); full CamSpec off-diagonal covariance pending | Weeks |
++| **B1** | full `plik` MCMC done (ΔBIC=−32.9, canonical); plik_lite cross-check −23.9; full CamSpec off-diagonal covariance pending | Weeks |
+ | **B2** | Full causal IS tensor perturbations (Hiscock-Lindblom 1985) — B-mode forecasts | Months |
+ | **B3** | MIRA: geometric derivation given in Paper 8 (disformal geodesic); full field-equation closure partial | Months |
+ | **B4** | arXiv endorsement — deferred by choice (journal-first strategy, see README) | External |
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index ac875c9..ac59a65 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,5 +1,32 @@
+ # Changelog
+ 
++## V3.6.2 — Ω_m-geometry fix (V-L4-DESI) + ν-closure unification + full documentation audit (2026-07-10)
++
++- **CRITICAL geometry fix (V-L4-DESI, 2026-07-09).** The background geometry E(z)/r_d
++  was mistakenly fed the *cold dynamical sector* Ω_m,dyn=0.160 (=1+w₀, an equation-of-state
++  quantity) instead of the *total* matter density Ω_m=ω_m/h²=**0.30889**. The bug inflated
++  **six false tensions** that the suite documented as real; all corrected:
++  χ²_BAO **726→~11**, Ω_m **21.3σ→0.88σ**, r_d **175.6→148.2 Mpc** (1.002× ΛCDM),
++  θ* **6.66σ→0.91σ**, H₀ posterior **66.41→67.95 ± 0.40** (0.88σ Planck, **0.04σ from the
++  H_alg anchor** — DR2 *confirms* the prediction), χ²_r(H(z)) **1.86→0.482**. Guardian canary
++  R14 now watches for recurrence (0.160-in-E(z) must hurt: χ²=725; total must be sane: χ²=11).
++- **ν-closure constant unified to 93.14 (demonstrated from first principles, 2026-07-10).**
++  The neutrino closure ω_ν h² = Σm_ν/C was standardised on **C=93.14 eV** (N_eff=3.046, PDG/Planck;
++  derived C=ρ_crit/n_ν=94.06 at instantaneous decoupling as the cross-check). Propagated
++  suite-wide: **m_φ = 40.70 eV** (was 41.02), **k_fs = 0.754 h/Mpc** (was 0.762),
++  **σ₈ = 0.747**, **S₈ = 0.758** (0.01σ KiDS), **Σm_ν = 0.0685 eV**.
++- **Full documentation audit — 10 papers + 3 consolidation docs to 10/10.** Hostile
++  paper-by-paper pass (grammar + math + physics + coherence + figures + citations +
++  provenance); every finding the guardian missed became a permanent rivet (R15–R19).
++  The Unified Journal's three legacy figures (CLASS CMB TT, EFTCAMB CMB TT + P(k)) were
++  **regenerated at the canonical ω_m-direct background** (0.30889, no MIRA factor),
++  restyled to journal quality (white background, µK²), and their Spanish labels
++  translated to English; retired-live claims (MIRA=Ω_CMB/Ω_dyn, "MIRA derivation" open
++  problem) that contradicted the reframe were corrected.
++- **Root refresh.** README, AUDIT.md, CITATION.cff, RIGOR_CHECKLIST.md brought to the
++  canonical values (m_φ, k_fs, S₈, n_s tension 0.16σ, CMB ΔBIC −32.9/−23.9/−34.9,
++  OPEN_PROBLEMS 18 items). Guardian **VERDE, 139 checks**.
++
+ ## V3.6.1 — DESI DR2 vector correction: DR1 data mislabelled as DR2 (2026-07-02)
+ 
+ - **CRITICAL data-provenance fix (V-L4-DESI).** The 13-point BAO vector used across
+diff --git a/CITATION.cff b/CITATION.cff
+index 0d6bbf7..2f14944 100644
+--- a/CITATION.cff
++++ b/CITATION.cff
+@@ -8,7 +8,7 @@ abstract: >
+   Bayesian MCMC validation (DESI DR2 + Planck + clusters), CMB confrontation (Planck PR4
+   TT+TE+EE+lensing; full plik MCMC ΔBIC=−32.9, k=2 vs k=6), algebraic derivation of CMB observables from φ and π,
+   Israel-Stewart causal perturbation theory (gradient stability, ΛCDM-consistent growth, S₈),
+-  φ-Dark Matter two-sector model (m_φ=41.02 eV algebraic via SOLAR²·KRYSTOS, S₈=0.759 at 0.01σ KiDS, fσ₈ 0.93σ two-sector),
++  φ-Dark Matter two-sector model (m_φ=40.70 eV algebraic via SOLAR²·KRYSTOS, S₈=0.758 at 0.01σ KiDS, fσ₈ 0.93σ two-sector),
+   canonical EFT (β_c=−AURA exact, αT=αM=αB=0 exact, αK=0.403 algebraic),
+   strong-gravity regime (disformal geodesics, k-mouflage screening),
+   Hubble-tension screening fraction f_screen=αK/(3·MIRA), and UV completion
+diff --git a/README.md b/README.md
+index 961c756..ce1b240 100644
+--- a/README.md
++++ b/README.md
+@@ -30,7 +30,7 @@
+ | (w₀, wₐ) | (−0.840, −0.670) | DESI DR2+CMB+Pantheon+: (−0.838±0.055, −0.617±0.208) | 0.24σ (2D); range 0.2–1.8σ across SN compilations (official chains) | ✅ |
+ | CMB first peak | ℓ₁ = 221 | Planck PR4: ~220 | Δℓ = 1 | ✅ |
+ | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ | ✅ |
+-| n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.2σ | ✅ |
++| n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.16σ | ✅ |
+ | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match | ✅ |
+ | S₈ (two-sector φ-DM) | 0.758 | KiDS-1000: 0.759±0.024 | 0.01σ | ✅ |
+ | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 | ⏳ |
+@@ -61,7 +61,7 @@
+ | 8 | Strong Gravity Regime — Two-limit analysis (alt MOND-like vs canonical EFT B-S) | 20 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
+ | 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 18 | Preprint | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
+ | 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 9.68 meV | 14 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
+-| — | **Unified Journal Paper** (consolidation of Papers 1–7 + CLASS + MCMC Fase 4) | 19 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |
++| — | **Unified Journal Paper** (consolidation of Papers 1–10 + CLASS + MCMC Fase 4) | 25 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |
+ | ★ | **Sealed Journal** — consolidated late-universe dark-energy paper (φ → w₀, wₐ; closed-dictionary look-elsewhere; two-stage H₀; honest accounting of ~3 vs 6 parameters) | 10 | **Sealed — external-audit candidate** | [docs/](docs/SSEE_Sealed_Journal.pdf) |
+ 
+ ---
+@@ -190,10 +190,10 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
+ 
+ | Result | Value | Status |
+ |---|---|---|
+-| Ω_CDM | 0.160050 | Active at all k |
+-| Ω_φDM = Ω_m,CMB − Ω_m,dyn | 0.14884 | Difference (no matter factor); active for k < k_fs only |
++| Ω_CDM | 0.160 | Active at all k |
++| Ω_φDM = Ω_m,CMB − Ω_m,dyn | 0.14889 | Difference (no matter factor); active for k < k_fs only |
+ | Ω_total (two-sector) = ωm/h² | 0.30889 = Ω_m,CMB | ωm-direct (OP-8 dissolved) |
+-| Σm_ν = R₂ × 0.960318 eV | 0.0685 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 |
++| Σm_ν = R₂ × 0.9530 eV | 0.0685 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 (ν-closure C=93.14) |
+ | m_φ = Σm_ν × (SOLAR²·KRYSTOS) | 40.70 eV | Forward-prediction — no fitting (multiplier 594.28 is a pure number; mechanism g²·v) |
+ | α (Viel fit to particle/cold P(k) ratio) | 1.117 Mpc/h | CLASS output — not imposed |
+ | k_fs (free-streaming) | 0.754 h/Mpc | From m_φ, CLASS-derived |
+@@ -225,19 +225,19 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
+ 
+ ### CLASS Boltzmann Validation (Fases 1–3)
+ 
+-> Legacy MIRA-background validation runs (Ω_m,CMB=0.3199). The ωm-direct canonical 0.30889 is within 3.5% (Δℓ<2); "full ω_m" = full matter density, "dynamical-only" = bare Ω_m,dyn=0.160.
++> Canonical ωm-direct runs (Ω_m,CMB=0.30889, no matter factor). "full ω_m" = full matter density, "dynamical-only" = bare Ω_m,dyn=0.160. Independent-code cross-check: CLASS here, CAMB in Paper 3.
+ 
+ | Test | SSEE full ω_m | SSEE dynamical-only | ΛCDM | Significance |
+ |---|---|---|---|---|
+-| CMB peak 1 (ℓ) | **220** | 240 | 221 | full ω_m necessary |
+-| CMB peak 2 (ℓ) | **535** | 597 | 537 | full ω_m necessary |
+-| CMB peak 3 (ℓ) | **810** | 922 | 814 | full ω_m necessary |
+-| RMS vs ΛCDM | **1.4%** | 31.5% | — | 22× degradation with bare Ω_m,dyn |
++| CMB peak 1 (ℓ) | **221** | 240 | 221 | full ω_m necessary |
++| CMB peak 2 (ℓ) | **537** | 597 | 537 | full ω_m necessary |
++| CMB peak 3 (ℓ) | **814** | 922 | 814 | full ω_m necessary |
++| RMS vs ΛCDM | **0.14%** | 31.5% | — | ~220× degradation with bare Ω_m,dyn |
+ | α free-streaming (CLASS output, canonical particle) | **1.117 Mpc/h** | — | — | Yields k_fs = 0.754 h/Mpc |
+ | S₈ (two-sector, canonical particle) | **0.758** | — | ~0.83 | 0.01σ KiDS-1000 |
+ | IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
+ 
+-*CLASS confirms the full algebraic matter density ω_m (Ω_m,CMB=0.30889) is physically necessary: using the bare dynamical Ω_m,dyn=0.160 instead, all three CMB peaks shift ~10% and RMS error rises 22×.*
++*CLASS confirms the full algebraic matter density ω_m (Ω_m,CMB=0.30889) is physically necessary: using the bare dynamical Ω_m,dyn=0.160 instead, all three CMB peaks shift ~10% and the RMS residual jumps from 0.14% to 31.5% (~220×).*
+ 
+ ### MCMC Fase 4 (Multi-probe background)
+ 
+@@ -256,9 +256,9 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
+ 
+ | Observable | SSEE algebraic | Planck 2018 | Tension |
+ |---|---|---|---|
+-| n_s | 1 − φ⁻⁷ = 0.96556 | 0.9649 ± 0.0042 | 0.2σ |
++| n_s | 1 − φ⁻⁷ = 0.96556 | 0.9649 ± 0.0042 | 0.16σ |
+ | H₀ | 3(φ+π)² = 67.96 km/s/Mpc | 67.36 ± 0.54 | 1.1σ |
+-| Ωm | (π−φ)/(π+φ) = 0.3201 | 0.3153 ± 0.0073 | 0.66σ |
++| Ωm (geometric identity, *superseded* by ωm-direct 0.30889) | (π−φ)/(π+φ) = 0.3201 | 0.3153 ± 0.0073 | 0.66σ |
+ | Ωb h² | (π−φ)/(3Ω²) = 0.02242 | 0.02237 ± 0.00015 | 0.32σ |
+ | Ωc h² (IS) | KAL₀ × Ωb h² × n_s = 0.11926 | 0.1200 ± 0.0012 | **−0.6σ** |
+ | Y_p (BBN) | AlterBBN(Ωb h²=0.02242) = 0.2476 | 0.2449 ± 0.0040 | 0.7σ |
+@@ -290,7 +290,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
+ ## ⚠️ Known limitations and open problems
+ 
+ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
+-**Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (14 items, OP-1..OP-14).
++**Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (18 items, OP-1..OP-18).
+ 
+ ### Editorial/pipeline limitations
+ 1. **Diagonal CMB likelihood** (Paper 3): χ²_r uses diagonal covariance. Off-diagonal terms required for PRD/PRL.
+@@ -298,7 +298,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
+ 3. **CMB ΔBIC status:** The canonical full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6, N=2354) yields $\Delta\mathrm{BIC}=-32.9$ decisively favouring SSEE; cross-checked by the `plik_lite` point estimate ($-23.9$, N=613) and the diagonal approximation ($-34.9$, N=5914). All three agree (Paper 3 §BIC, canonical Σm_ν = 0.0685 eV; ΛCDM at baseline 0.06). The ΔBIC is parsimony-driven (best-fit χ² statistically indistinguishable from ΛCDM), not a claim of superior fit.
+ 
+ ### Open physics problems (see [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md))
+-| ID | Problem | Status (2026-06-12) |
++| ID | Problem | Status (2026-07-10) |
+ |----|---------|---------------------|
+ | OP-1 | Baryon density Ω_b h² | **Partial** — formula (π−φ)/(3Ω²) = 0.32σ Planck; ab-initio baryogenesis → Paper B |
+ | OP-2 | n_s = 1−φ⁻⁷ exponent | **Resolved** (conditional) — α-attractor universality + N_*=2φ⁷; new prediction r=φ⁻¹⁰ |
+@@ -313,7 +313,11 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
+ | OP-11 | Free non-minimal coupling ξ | **Open** |
+ | OP-12 | Relic abundance Ω_φDM h² ab initio | **Open** |
+ | OP-13 | Paper 8 internal consistency (√AURA vs B-S) | **Resolved (2026-05-23)** — Option A |
+-| OP-14 | Σm_ν phenomenological derivation | **Resolved (2026-06-04)** — Σm_ν = 0.0685 eV self-consistent cascade |
++| OP-14 | Σm_ν phenomenological derivation | **Resolved (2026-06-04)** — Σm_ν = 0.0685 eV self-consistent cascade (ν-closure C=93.14 demonstrated) |
++| OP-15 | Bullet-cluster offset κ(θ) from KAL(x) | **Open** — not yet computed (Paper 1) |
++| OP-16 | (π−φ)/(π+φ)=0.3201 vs proton mass-energy fraction | **Open / speculative** (genesis; retired from Paper 4, zero cosmological impact) |
++| OP-17 | Canonical φ-DM particle SOLAR²·KRYSTOS | **Adopted (2026-06-19)** — m_φ = 40.70 eV, S₈ = 0.01σ KiDS; UV origin of multiplier = OP-9 |
++| OP-18 | Primordial amplitude A_s from (φ,π) | **Open (2026-06-20)** — inflation-scale residue (Paper 3) |
+ 
+ **Foundational postulates (Paper 1 §2.4, Postulates D & S):** the dimensional scale of
+ H₀ is an explicit anchor input (zero *dimensionless* fitted parameters, like ΛCDM); the
+@@ -336,7 +340,7 @@ pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1
+ 
+ ## 🗺️ Roadmap
+ 
+-**Status (2026-06-12):** all 10 papers + consolidated journal documents complete and
++**Status (2026-07-10):** all 10 papers + consolidated journal documents complete and
+ compile clean (0 LaTeX errors, 0 orphan bibitems, 0 undefined citations). Canonical
+ φ-DM particle m_φ = 40.70 eV (forward prediction, zero fitting) with pre-registered
+ free-streaming imprint k_fs = 0.754 h/Mpc (DESI Y3 / Euclid testable). Full
+diff --git a/RIGOR_CHECKLIST.md b/RIGOR_CHECKLIST.md
+index 342aef7..960ab28 100644
+--- a/RIGOR_CHECKLIST.md
++++ b/RIGOR_CHECKLIST.md
+@@ -60,7 +60,7 @@ heredados de iteraciones previas.
+ **Por qué (caso real):** el ancla canónica ha cambiado con el modelo. Era H_MIRA=67.037
+ (escenario MIRA), y el reframe ω_m-directo (2026-06-19) la movió a H_alg=67.962 (la CMB
+ minimiza ahí con ω_b,ω_c fijos por álgebra). Cualquier benchmark de H₀ debe usar el
+-canónico VIGENTE (hoy 67.962 ancla / 66.41 posterior DR2; el 67.16 previo usaba datos DR1 mal etiquetados), no un valor heredado. El guardián
++canónico VIGENTE (hoy 67.962 ancla / 67.95±0.40 posterior DR2 con geometría TOTAL 0.30889; el 66.41 previo metía el sector 0.160 en E(z) —bug V-L4-DESI, superseded 2026-07-09— y el 67.16 usaba datos DR1 mal etiquetados), no un valor heredado. El guardián
+ + memory_sync ahora cazan este drift automáticamente (lista `retired:` con 67.037/66.53).
+ 
+ ## R6 — Conteo y valores exactos contra la fuente 🟡 ⛔
+diff --git a/manuscript/SSEE_Paper9_HubbleTension.tex b/manuscript/SSEE_Paper9_HubbleTension.tex
+index d3a0e97..b13548d 100644
+--- a/manuscript/SSEE_Paper9_HubbleTension.tex
++++ b/manuscript/SSEE_Paper9_HubbleTension.tex
+@@ -417,7 +417,6 @@ Tension vs Freedman (canonical) & ---         & $1.88\sigma$   & --- \\
+     The superseded MIRA-mapped value ($H_0^{\rm MIRA}=67.037 \to 71.87$,
+     $1.12\sigma$) is shown for reference.
+     Error bars show $\pm1\sigma$ uncertainties.
+-    % TODO Fase B figura: regenerar fig_paper9_h0_tension.pdf con ssee_paper9_figures.py (cascada 72.86 canónica)
+   }
+   \label{fig:h0_tension}
+ \end{figure}
+@@ -599,8 +598,8 @@ Paper & Key result & Affected by $\fsc$? \\
+ 1 (Framework) & $H_0^{\rm alg} = 3(\phiG+\pi)^2$ & No — $H_0^{\rm alg}=67.962$ is
+                the global background anchor (Postulate~D); the superseded
+                MIRA-mapped $67.037$ is retired \\
+-2 (MCMC DESI) & MCMC posterior $\Hzero$ (prior $H_0^{\rm alg}$; PENDIENTE Fase B re-fit) & No —
+-               MCMC measures the global background, not local \\ % TODO Fase B: posterior con prior 67.96 (P2)
++2 (MCMC DESI) & MCMC posterior $\Hzero = 67.95 \pm 0.40$ (prior $H_0^{\rm alg}$) & No —
++               MCMC measures the global background, not local \\
+ 3 (CMB)       & $r_d = 147.2$ Mpc, peaks at $\ell=220,540,810$ & No —
+                $\fsc$ does not shift $r_d$ or $\theta_*$ \\
+ 4 (Sovereignties) & $H_0^{\rm alg}$ as first sovereignty & No —
+diff --git a/results/figures/fig_paper9_fscreen_z.pdf b/results/figures/fig_paper9_fscreen_z.pdf
+index 62ef19c..394c80c 100644
+Binary files a/results/figures/fig_paper9_fscreen_z.pdf and b/results/figures/fig_paper9_fscreen_z.pdf differ
+diff --git a/results/figures/fig_paper9_h0_tension.pdf b/results/figures/fig_paper9_h0_tension.pdf
+index 761d4c0..26634d4 100644
+Binary files a/results/figures/fig_paper9_h0_tension.pdf and b/results/figures/fig_paper9_h0_tension.pdf differ
+diff --git a/sandbox_unificado b/sandbox_unificado
+--- a/sandbox_unificado
++++ b/sandbox_unificado
+@@ -1 +1 @@
+-Subproject commit c832f7d80ba52145cd8b907db01c5b6b6d28ee34
++Subproject commit c832f7d80ba52145cd8b907db01c5b6b6d28ee34-dirty

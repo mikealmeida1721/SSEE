@@ -29,19 +29,17 @@ pi    = np.pi
 w0    = -0.840
 wa    = -0.670
 H0    = 67.962     # km/s/Mpc (algebraico: 3(φ+π)²)
-Omb   = 0.048432
-Omcdm_dyn  = 0.111568  # Ω_cdm,dyn = 0.160 - Ω_b (sin MIRA)
-MIRA       = 1.9989    # factor MIRA algebraico
-Omm_dyn    = Omb + Omcdm_dyn          # 0.160
-Omm_CMB    = MIRA * Omm_dyn           # 0.3198 ≈ 0.3199
-Omcdm_MIRA = Omm_CMB - Omb            # 0.2714 — background correcto para CMB
+Omb   = 0.02242 / (H0/100)**2          # ω_b-direct: Ω_b = ω_b/h² = 0.04854
+Omm_dyn    = 0.160                      # sector dinámico (fija αK; 1+w0)
+Omm_CMB    = 0.30889                    # ω_m-direct canónico (OP-8 disuelto; SIN factor MIRA)
+Omcdm_CMB  = Omm_CMB - Omb             # 0.26035 — background completo del CMB
 Omm   = Omm_CMB
 OmDE  = 1 - Omm    # flat
 
 # αK algebraico: 3·Ω_DE·Ω_m,dyn = 3×0.840×0.160  (usa Ω_m,dyn, no Ω_m,CMB)
 alphaK_ssee = 3.0 * abs(w0) * Omm_dyn   # = 0.4032
 print(f"αK algebraico SSEE: {alphaK_ssee:.6f}  (Paper 7: 0.4033)")
-print(f"Background MIRA: Ω_m,CMB={Omm_CMB:.4f}, Ω_cdm,MIRA={Omcdm_MIRA:.6f}")
+print(f"Background ω_m-direct: Ω_m,CMB={Omm_CMB:.5f}, Ω_cdm,CMB={Omcdm_CMB:.6f}")
 z_cross = (-1 - w0) / (wa + 1 + w0)   # CPL: w(z*)=-1 → z*=(|w0|-1)/(wa-(|w0|-1))
 print(f"Phantom crossing CPL: z_cross = {z_cross:.4f}  (w(z*)=-1, correcta)")
 print(f"Estrategia: validar αK con w=w0={w0} constante (régimen z=0 físicamente relevante)")
@@ -78,7 +76,7 @@ SSEE_RPH.update(stability)
 cosmo_base = dict(
     H0     = H0,
     ombh2  = Omb * (H0/100)**2,
-    omch2  = Omcdm_MIRA * (H0/100)**2,   # MIRA background: Ω_m,CMB=0.3199
+    omch2  = Omcdm_CMB * (H0/100)**2,   # ω_m-direct canónico: Ω_m,CMB=0.30889
     ns     = 0.96556,
     As     = 2.1e-9,
     tau    = 0.0543,
@@ -207,7 +205,7 @@ if Cl_TT_gr is not None and Cl_TT_ssee is not None:
     ax2.axhline(0.99, color='gray', lw=0.8, ls=':')
     ax2.set_xlabel(r'Multipole $\ell$', fontsize=12)
     ax2.set_ylabel(r'$C_\ell^{\rm SSEE}/C_\ell^{\rm GR}$', fontsize=11)
-    ax2.set_ylim(0.95, 1.05)
+    ax2.set_ylim(0.5, 1.5)
     ax2.grid(True, alpha=0.3)
 
     plt.tight_layout()
@@ -234,7 +232,7 @@ if Cl_TT_gr is not None and Cl_TT_ssee is not None:
     bx2.axvline(0.754, ls=':', color='orange', lw=1.5)
     bx2.set_xlabel(r'$k$ [$h$ Mpc$^{-1}$]', fontsize=12)
     bx2.set_ylabel(r'$P_{\rm SSEE}/P_{\rm GR}$', fontsize=11)
-    bx2.set_ylim(0.85, 1.15)
+    bx2.set_ylim(1.0, 1.7)
     bx2.grid(True, alpha=0.3)
 
     plt.tight_layout()

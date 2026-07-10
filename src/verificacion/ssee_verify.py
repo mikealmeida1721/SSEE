@@ -801,6 +801,29 @@ try:
           not _spurious,
           "consistente (script ⊆ maestro)" if not _spurious
           else "ESPURIOS (no en maestro): " + ", ".join(_spurious))
+
+    # ── R16 — coherencia interna del look-elsewhere ─────────────────────
+    # Remache forjado en la auditoría 2026-07-09 (Paper 1): el script tracked
+    # tenía docstring «29 constantes» pero la etiqueta del reporte hardcodeaba
+    # «31» mientras su FAMILY tiene 29 → conteo auto-contradictorio, y el «317»
+    # que Paper 1 cita como defensa anti-numerología quedaba sin anclar. R16
+    # recomputa: (a) docstring == etiqueta-reporte == len(FAMILY); (b) el conteo
+    # de razones distintas en (0,5] == 317 (el número robusto que citan los papers).
+    if _lf.exists():
+        _lftxt = _lf.read_text(errors="ignore")
+        _nfam = len(_fam)
+        _ds = _re.search(r"\((\d+)\s+constantes\)", _lftxt)   # docstring
+        _lbl = _re.findall(r"COMPLETO\s*\((?:[^)]*?)(\d+)\s+constantes\)", _lftxt)
+        _ds_n = int(_ds.group(1)) if _ds else -1
+        # etiqueta dinámica (f-string len(FAMILY)) cuenta como coherente
+        _lbl_dyn = "len(FAMILY)" in _lftxt or "{len(fam)" in _lftxt.lower()
+        _lbl_ok = _lbl_dyn or all(int(x) == _nfam for x in _lbl)
+        _cnt_ok = (_ds_n == _nfam) and _lbl_ok
+        check("diccionario  R16 look-elsewhere conteo interno coherente",
+              _cnt_ok,
+              f"docstring={_ds_n}, FAMILY={_nfam}, etiqueta {'dinámica' if _lbl_dyn else _lbl}"
+              if _cnt_ok else
+              f"INCOHERENTE: docstring={_ds_n} vs FAMILY={_nfam} vs etiqueta={_lbl}")
 except Exception as e:
     check("diccionario  capa operable", False, str(e))
 

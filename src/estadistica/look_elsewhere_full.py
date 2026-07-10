@@ -100,7 +100,7 @@ def report(fam, label):
 
 
 if __name__ == "__main__":
-    report(FAMILY, "Diccionario Génesis 5.12 COMPLETO (31 constantes)")
+    report(FAMILY, f"Diccionario Génesis 5.12 COMPLETO ({len(FAMILY)} constantes)")
     print("\nLectura: a ±0.001 (el match es identidad exacta, |d|=0), cada")
     print("parámetro de estado es único — 1 de 317. La densidad de coincidencias")
     print("accidentales sólo crece al relajar la tolerancia muy por encima de la")

@@ -803,6 +803,27 @@ try:
           not _v4_hits,
           "posterior coincide con anchor (0.04σ), geometría con Ω_m total"
           if not _v4_hits else "; ".join(_v4_hits[:4]))
+
+    # ── R19 — ningún manuscrito muestra los valores BAO DR1-mislabeled ──
+    # Remache forjado en la auditoría de Paper 2 (2026-07-10): la Tabla 1 de P2 y su
+    # §B.2 mostraban los valores DR1 (7.93±0.15, LRG DH 20.08, QSO 30.21/13.23 @z=1.491,
+    # Lya 39.71/8.52) aunque las cadenas jul-9 SÍ usaban DR2 (load_desi_dr2, csv fuente).
+    # Datos mostrados ≠ datos usados. R14 vigila el csv/loader; R19 vigila que la PROSA
+    # de los manuscritos no reintroduzca los valores DR1. Fingerprints inequívocos (DR2
+    # da 21.863/30.512/38.988/8.632):
+    _dr1_bao = {"20.08": "LRG DH DR1 (DR2=21.863)", "30.21": "QSO DM DR1 (DR2=30.512)",
+                "39.71": "Lya DM DR1 (DR2=38.988)", "8.52": "Lya DH DR1 (DR2=8.632)",
+                "16.85": "LRG2 DM DR1 (DR2=17.351)", "1.491": "z_QSO DR1 (DR2 z=1.484)"}
+    _bao_hits = []
+    for t in _texs:
+        txt = t.read_text(errors="ignore")
+        for pat, why in _dr1_bao.items():
+            if pat in txt:
+                _bao_hits.append(f"{t.name}«{pat}»={why}")
+    check("manuscritos  R19 sin valores BAO DR1-mislabeled (datos mostrados = usados)",
+          not _bao_hits,
+          "manuscritos muestran DR2 (data/raw/desi_dr2_bao.csv, la que usan las cadenas)"
+          if not _bao_hits else "; ".join(_bao_hits[:5]))
 except Exception as e:
     check("manuscritos  capa operable", False, str(e))
 

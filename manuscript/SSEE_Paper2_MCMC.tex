@@ -295,19 +295,19 @@ used here as an auxiliary approximation for model comparison:
 \toprule
 $z_{\rm eff}$ & Tracer & Quantity & Value & $\sigma$ \\
 \midrule
-0.295 & BGS        & $D_V/r_d$  &  7.93 & 0.15 \\
-0.510 & LRG        & $D_M/r_d$  & 13.62 & 0.25 \\
-0.510 & LRG        & $D_H/r_d$  & 20.08 & 0.60 \\
-0.706 & LRG        & $D_M/r_d$  & 16.85 & 0.32 \\
-0.706 & LRG        & $D_H/r_d$  & 19.50 & 0.55 \\
-0.930 & LRG+ELG    & $D_M/r_d$  & 21.71 & 0.28 \\
-0.930 & LRG+ELG    & $D_H/r_d$  & 17.88 & 0.35 \\
-1.317 & ELG        & $D_M/r_d$  & 27.79 & 0.69 \\
-1.317 & ELG        & $D_H/r_d$  & 13.82 & 0.42 \\
-1.491 & QSO        & $D_M/r_d$  & 30.21 & 0.79 \\
-1.491 & QSO        & $D_H/r_d$  & 13.23 & 0.55 \\
-2.330 & Ly$\alpha$ & $D_M/r_d$  & 39.71 & 0.94 \\
-2.330 & Ly$\alpha$ & $D_H/r_d$  &  8.52 & 0.17 \\
+0.295 & BGS         & $D_V/r_d$  &  7.942 & 0.075 \\
+0.510 & LRG1        & $D_M/r_d$  & 13.588 & 0.167 \\
+0.510 & LRG1        & $D_H/r_d$  & 21.863 & 0.425 \\
+0.706 & LRG2        & $D_M/r_d$  & 17.351 & 0.177 \\
+0.706 & LRG2        & $D_H/r_d$  & 19.455 & 0.330 \\
+0.934 & LRG3+ELG1   & $D_M/r_d$  & 21.576 & 0.152 \\
+0.934 & LRG3+ELG1   & $D_H/r_d$  & 17.641 & 0.193 \\
+1.321 & ELG2        & $D_M/r_d$  & 27.601 & 0.318 \\
+1.321 & ELG2        & $D_H/r_d$  & 14.176 & 0.221 \\
+1.484 & QSO         & $D_M/r_d$  & 30.512 & 0.760 \\
+1.484 & QSO         & $D_H/r_d$  & 12.817 & 0.516 \\
+2.330 & Ly$\alpha$  & $D_M/r_d$  & 38.988 & 0.531 \\
+2.330 & Ly$\alpha$  & $D_H/r_d$  &  8.632 & 0.101 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1329,7 +1329,7 @@ The Ly-$\alpha$ point at $z=2.33$ provides the sharpest direct test of
 the ratio $D_H/r_d = c\,/\,(H_0\,E(z)\,r_d)$ directly encodes the
 product $H_0\,E(z)\,r_d$.  We evaluate this quantity under two
 \SSEE\ scenarios and compare to the DESI~DR2 measurement
-$D_H/r_d = 8.52\pm0.17$.
+$D_H/r_d = 8.632\pm0.101$ (Table~\ref{tab:bao_data}).
 
 \paragraph{Scenario A — raw \SSEE\ background
 ($\Omega_{m,\rm dyn}=0.160$, $r_d=175.6$\,Mpc).}
@@ -1340,12 +1340,12 @@ $D_H(2.33)=1737$\,Mpc.  The predicted ratio is:
 \begin{equation}
   \left.\frac{D_H}{r_d}\right|_{z=2.33}^{\rm SSEE,\,raw}
   = \frac{1737}{175.6} = 9.89
-  \quad (8.1\sigma \text{ above DESI}),
+  \quad (12.5\sigma \text{ above DESI}),
   \label{eq:lya_raw}
 \end{equation}
 demonstrating the category error directly: using the cold sector
 $\Omega_m=0.160$ in $E(z)$ reduces matter domination at high $z$, lowers
-$H(z)$, and enlarges $D_H$ to an $8.1\sigma$ discrepancy. This is the same
+$H(z)$, and enlarges $D_H$ to a $12.5\sigma$ discrepancy. This is the same
 misplacement that produced the spurious background tensions in superseded
 drafts; the correct total density (Scenario~B) resolves it.
 
@@ -1361,23 +1361,24 @@ $E(2.33)=3.443$, $D_H(2.33)=1281$\,Mpc, and:
 \begin{equation}
   \left.\frac{D_H}{r_d}\right|_{z=2.33}^{\omega_m\text{-direct}}
   = \frac{1281}{147.17} = 8.71
-  \quad (1.1\sigma \text{ from DESI}).
+  \quad (0.7\sigma \text{ from DESI}).
   \label{eq:lya_mira}
 \end{equation}
 This supersedes the earlier MIRA-mapped value ($\Omega_m=0.320$, $D_H/r_d=8.56$):
 the matter factor is dissolved (OP-8). The $D_M/r_d$ counterpart at $z=2.33$
-is recovered within ${\sim}1\sigma$. The largest residual across the 13 points
-is at $z=0.51$ ($D_H/r_d$ pull ${\sim}+3.6\sigma$), driven by the CPL phantom
-crossing $w(z{=}0.51)\approx-1.07$; an identical tension ($+4.4\sigma$) appears
-in \LCDM\ with Planck-calibrated $r_d$ and $H_0$, confirming it is a DESI~DR2
-feature rather than an \SSEE-specific failure.
+is recovered within $0.1\sigma$. The full 13-point diagonal fit gives
+$\chi^2=12.0$, matching \LCDM\ ($\chi^2=12.0$): the two backgrounds describe
+DESI~DR2 equally well. The largest \SSEE\ residual is at $z=0.51$
+($D_M/r_d$ pull $-2.1\sigma$); \LCDM\ shows a comparable largest residual
+($+1.7\sigma$ at $z=0.706$, $D_H/r_d$) with the same total $\chi^2$, confirming
+the residual pattern is a DESI~DR2 feature rather than an \SSEE-specific failure.
 
 \paragraph{Implication.}
 Eqs.~\eqref{eq:lya_raw}--\eqref{eq:lya_mira} show that the high-$z$ expansion
 requires the full CMB-sector matter density $\Omega_{m,\mathrm{CMB}}=0.30889$,
 where $\phi$-DM counts as non-relativistic matter, rather than the dynamical
 $0.160$: retaining $\Omega_m=0.160$ in $E(z)$ with $r_d=147.17$ would predict
-$D_H/r_d=11.8$ (a $19.3\sigma$ discrepancy).  This is the same two-sector
+$D_H/r_d=11.8$ (a $31\sigma$ discrepancy).  This is the same two-sector
 structure that sets the low-$z$ sound horizon (\S\ref{sec:folding}), now with
 \emph{no} matter factor (OP-8 dissolved).  The Savage--Dickey ratio in B.1
 ($\ln B=+2.91$) then holds as a test of the \emph{dynamical sector} under this

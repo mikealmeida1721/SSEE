@@ -779,6 +779,30 @@ try:
           "univaluada 93.14 (94.07 solo vive en derive_nu_closure.py, la demostración)"
           if not _nu_9407 else "94.07 aún en: " + ", ".join(_nu_9407)
           + " — misma C; usar 93.14 PDG")
+
+    # ── R18 — sin narrativa H0-posterior stale del reframe Ω_m-geometría ──
+    # Remache forjado en la auditoría de Paper 2 (2026-07-10): el fix V-L4-DESI
+    # (2026-07-09, sector frío 0.160 fuera de E(z)) se propagó al abstract/§2.4/§6.3
+    # PERO dejó prosa stale en §3.2 y en el párrafo "algebraic anchor": afirmaba que
+    # el posterior H0 "lies at 2.9σ from anchor", "pull downward to compensate for
+    # the enlarged r_d", y "r_d = Ω_m,dyn(H0/100)²" — CONTRADICE el 0.04σ/coincide
+    # corregido en la misma sección. R14 vigila los SCRIPTS (canario E(z)); esto es
+    # PROSA. Los fragmentos siguientes solo existieron como la aserción retirada:
+    _stale_v4 = {
+        r"\Omega_{m,\mathrm{dyn}}(H_0/100)": "r_d desde el sector dinámico 0.160 (va la total 0.30889)",
+        "compensate for the enlarged": "narrativa vieja: no hay r_d agrandado (148.2≈ΛCDM)",
+        "downward to compensate": "posterior COINCIDE con anchor (0.04σ), no baja a compensar",
+    }
+    _v4_hits = []
+    for t in _texs:
+        txt = t.read_text(errors="ignore")
+        for pat, why in _stale_v4.items():
+            if pat in txt:
+                _v4_hits.append(f"{t.name}«{pat[:22]}»→{why}")
+    check("manuscritos  R18 sin narrativa H0-posterior stale (V-L4-DESI)",
+          not _v4_hits,
+          "posterior coincide con anchor (0.04σ), geometría con Ω_m total"
+          if not _v4_hits else "; ".join(_v4_hits[:4]))
 except Exception as e:
     check("manuscritos  capa operable", False, str(e))
 

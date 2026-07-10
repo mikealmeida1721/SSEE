@@ -341,11 +341,14 @@ geometry. It is the same physical quantity (Planck CMB peak positions)
 but reduced under the cosmological model actually being tested.
 
 The only sampled parameters in the SSEE chain are $H_0$ and $\Omega_b h^2$.
-The matter density is not sampled: $\Omega_{m,\mathrm{dyn}}=0.160050$ is
-algebraically fixed by the SSEE background identity
-$\Omega_{m,\mathrm{dyn}}=(\pi-\varphi)/[2(\varphi+\pi)]=1+w_0$ (Paper~1),
-and the sound horizon $r_d$ is
-computed from $\omega_m = \Omega_{m,\mathrm{dyn}}(H_0/100)^2$ self-consistently.
+The matter density is not sampled. The background geometry --- $E(z)$, the
+sound horizon $r_d$, and every BAO distance --- uses the \emph{total} algebraic
+matter density $\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.30889$
+(\S\ref{sec:folding}, \S\ref{sec:results_cosmo}); the dynamical value
+$\Omega_{m,\mathrm{dyn}}=(\pi-\varphi)/[2(\varphi+\pi)]=1+w_0=0.160$ labels the
+cold sector that clusters in the perturbations (Paper~6) and does \emph{not}
+enter $E(z)$. Thus $r_d$ is computed from
+$\omega_m = \Omega_{m,\mathrm{CMB}}(H_0/100)^2$ self-consistently.
 A BBN prior $\Omega_b h^2 = 0.02218\pm0.00055$ \citep{Cooke2018} is adopted
 for the baryon density, consistent with the SSEE algebraic value
 $\Omega_b h^2 = (\pi-\varphi)/[3(\varphi+\pi)^2] = 0.02242$ (Paper~4)
@@ -568,9 +571,11 @@ Figures~\ref{fig:corner_ssee} and~\ref{fig:corner_lcdm}.
   \includegraphics[width=0.60\textwidth]{fig_corner_ssee_halg_prior.pdf}
   \caption{Marginalised \SSEE\ posteriors ($\omega_m$-direct $H_0^{\rm alg}$ prior,
   $100\times25000$). Blue lines: prior central values
-  ($H_0=67.962$, $\Omega_b h^2=0.02218$). The $H_0$ posterior
-  ($\HZeroPosterior$) sits $2.9\sigma$ below the CMB anchor (the tighter
-  DESI~DR2 BAO errors pull it down strongly) and $1.4\sigma$ from Planck.}
+  ($H_0=67.962$, $\Omega_b h^2=0.02218$). With the total matter density
+  $\Omega_m=0.30889$ in $E(z)$, the $H_0$ posterior ($\HZeroPosterior$)
+  \emph{coincides} with the CMB anchor ($0.04\sigma$) and lies $0.88\sigma$ from
+  Planck; the earlier ``$2.9\sigma$ below anchor'' reading was the cold sector
+  $0.160$ misplaced in $E(z)$, now corrected.}
   \label{fig:corner_ssee}
 \end{figure}
 
@@ -729,19 +734,17 @@ algebra, the Planck~\texttt{plik\_lite} likelihood is minimised exactly at
 $H_0^{\rm alg}$ (Paper~3, \S\ref{sec:prior_mira}). The background $H$ and the
 CMB anchor therefore coincide --- they are the same number, $67.962\pm0.54$ ---
 superseding the earlier MIRA-mapped anchor $H_0^{\rm MIRA}=67.037$.
-The MCMC posterior reported above,
-$H_0^{\rm MCMC}=\HZeroPosterior$\,km\,s$^{-1}$\,Mpc$^{-1}$,
-is the late-time BAO posterior under this anchor as prior; it lies at
-$2.9\sigma$ from $H_0^{\rm alg}$ (prior width) and at $1.4\sigma$ from the
-$\Lambda$CDM-calibrated Planck value. The two measure different quantities:
-$H_0^{\rm alg}$ characterises the early-Universe geometry, while
-$H_0^{\rm MCMC}$ is the late-time posterior after the DESI data pull
-the value downward to compensate for the enlarged $r_d$.
-The $1.55$\,km\,s$^{-1}$\,Mpc$^{-1}$ downward shift from the anchor
-($2.3\%$) is an explicit consequence of the background-mismatch
-compensation, amplified by the tighter DESI~DR2 uncertainties; it is a
-quantified strain of the raw dynamic-sector background, not a silent
-inconsistency (see \S\ref{sec:model_comparison}).
+With the \emph{total} matter density $\Omega_m=0.30889$ in the background
+geometry, the MCMC posterior reported above,
+$H_0^{\rm MCMC}=\HZeroPosterior$\,km\,s$^{-1}$\,Mpc$^{-1}$, \emph{coincides}
+with the anchor: it lies only $0.04\sigma$ from $H_0^{\rm alg}$ and $0.88\sigma$
+from the $\Lambda$CDM-calibrated Planck value. The DESI~DR2 data therefore
+\emph{confirm} the algebraic anchor rather than pull against it. The earlier
+reading --- a $2.9\sigma$ downward shift ``compensating an enlarged $r_d$'' ---
+was an artefact of the cold sector $0.160$ misplaced in $E(z)$: with the correct
+total density there is no enlarged $r_d$
+($r_d^{\SSEE}=148.2\simeq r_d^{\LCDM}$) and no compensation to make
+(see \S\ref{sec:model_comparison}).
 
 \begin{figure}[H]
   \centering

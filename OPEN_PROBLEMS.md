@@ -265,7 +265,7 @@ Tensiones S₈ (aplicando supresión al baseline Paper 6 S₈=0.761):
 | Paper 6 baseline (φ-DM + WDM) | 0.761 | 0.09σ | −0.25σ |
 | + HMcode-2020 baryonic (Mead+20) | 0.758 | −0.06σ | −0.42σ |
 | DES Y3 (observado) | 0.758 | 0.00σ | — |
-| KiDS-1000 (observado) | 0.758 | — | 0.00σ |
+| KiDS-1000 (observado) | 0.759 | — | 0.01σ |
 
 **El baseline Paper 6 ya está dentro de 1σ DES** (0.09σ). HMcode añade Δσ = 0.03σ de mejora.
 
@@ -661,7 +661,7 @@ numbers only — no Hubble rate enters. The dimensionally-inconsistent
 
 **Canonical CLASS verification (zero fitting, SOLAR²·KRYSTOS adopted 2026-06-19):** the
 forward-predicted particle ($m_\phi=40.70$ eV, $\Omega_{\phi{\rm DM}}=0.14889$) yields
-$\sigma_8^{\rm eff} = 0.747$, $S_8 = 0.758$ ($0.01\sigma$ KiDS-1000 $0.758\pm0.024$ —
+$\sigma_8^{\rm eff} = 0.747$, $S_8 = 0.758$ ($0.01\sigma$ KiDS-1000 $0.759\pm0.024$ —
 **resolves** the lensing tension), single-sector ceiling $S_8=0.846$ ($3.5\sigma$, "the
 challenge"). $\sigma_8$ is a **direct CLASS output** (top-hat on the two-sector $P(k)$),
 not the retired $\alpha_{\rm WDM}$ fit; the Viel $\alpha = 1.108$ Mpc/h is a CLASS

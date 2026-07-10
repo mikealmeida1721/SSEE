@@ -241,16 +241,17 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 
 ### MCMC Fase 4 (Multi-probe background)
 
-| Parameter | Algebraic | Posterior (median ±1σ) | Tension |
+| Parameter | Algebraic | Posterior (mean ±1σ) | Tension |
 |---|---|---|---|
-| H₀ (km/s/Mpc) | 67.96 | 66.84 ± 0.91 | **1.23σ** ✅ |
-| Ω_b h² | 0.02237 | 0.02237 ± 0.00015 | **0.01σ** ✅ |
-| Ω_m,CMB | 0.30889 | 0.3241 ± 0.0125 | **1.21σ** ✅ |
-| w₀ | −0.840 | −0.740 ± 0.126 | **0.79σ** ✅ |
-| wₐ | −0.670 | −0.839 ± 0.458 | **0.37σ** ✅ |
-| **Mean tension (5 params, blind flat w₀/wₐ)** | — | — | **0.72σ** ✅ |
+| Ω_b h² | 0.02242 | 0.02243 ± 0.00013 | **0.08σ** ✅ |
+| Ω_c h² | 0.11951 | 0.11935 ± 0.00082 | **0.20σ** ✅ |
+| r_drag (Mpc) | 147.17 | 147.20 ± 0.21 | **0.14σ** ✅ |
+| H₀ (km/s/Mpc) | 67.96 | 65.87 ± 1.17 | **1.79σ** ✅ |
+| Ω_m,CMB | 0.30889 | 0.3288 ± 0.0118 | **1.69σ** ✅ |
+| w₀ | −0.840 | −0.655 ± 0.107 | **1.73σ** ✅ |
+| wₐ | −0.670 | −1.104 ± 0.304 | **1.43σ** ✅ |
 
-*100 walkers × 25,000 steps; N_eff = 42,721; corrected DESI DR2 vector (V-L4-DESI). All algebraic predictions within ≤1.25σ of the blind joint posterior.*
+*Full-likelihood MCMC (CAMB + Planck plik_lite + lensing + DESI DR2 + fσ8). The uncompressed CMB likelihood pulls H₀ down, but the key model comparison is preserved: the SSEE algebraic point lies 1.31σ from the joint w₀-wₐ posterior, while ΛCDM is excluded at 3.22σ.*
 
 ### Paper 4 (Algebraic ToE)
 
@@ -353,7 +354,7 @@ history in [CHANGELOG.md](CHANGELOG.md).
       CMB derivation, IS causal perturbations, φ-DM two-sector, canonical EFT,
       strong-gravity regime, Hubble-tension screening, UV completion
 - [x] CLASS Boltzmann validation — MIRA necessity (RMS 1.4% vs 31.5%), σ₈, IS viscosity
-- [x] Multi-probe MCMC (corrected DESI DR2 + Planck + fσ8 + clusters, blind flat w0/wa) — mean tension 0.72σ, max 1.23σ
+- [x] Multi-probe MCMC (corrected DESI DR2 + Planck + fσ8 + clusters, blind flat w0/wa) — SSEE algebraic point 1.31σ from joint w₀-wₐ posterior
 - [x] Bibliography brought to JCAP/PRD standard — all papers 36–42 refs, 0 orphans
 - [x] OPEN_PROBLEMS OP-2/3/4/6 resolved; OP-1/5 partial
 - [x] Paper 1 Postulates D (dimensional anchor) & S (saturation correspondence)

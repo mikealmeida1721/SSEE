@@ -43,8 +43,8 @@
 - **H₀ posterior (P2 reframe MCMC, corrected vector): 66.41 ± 0.39 km/s/Mpc**
   (1.43σ Planck). The ~40% tighter DR2 errors strain the raw dynamic-sector
   background (χ²_BAO 239→795); interpretation tracked for Paper 2.
-- **Blind Fase 4 (flat w₀/wₐ, corrected vector): mean 0.72σ, max 1.23σ** — the
-  rigidly fixed background still survives the blind five-parameter test.
+- **Full Fase 4 (flat w₀/wₐ, corrected vector): SSEE algebraic point 1.31σ from joint w₀-wₐ posterior** — the
+  rigidly fixed background still survives the blind full-likelihood test (where ΛCDM is excluded at 3.22σ).
 - Propagated to all 12 documents + README + AUDIT + CANONICAL (4 retired patterns)
   + fig1_w0wa_plane regenerated with official DR2 contours. Old DR1-era chains
   (~10 GB) preserved on HDD as `*_DR1_superseded`.

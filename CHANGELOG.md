@@ -37,7 +37,7 @@
   DM–DH correlations. Single source of truth: `data/raw/desi_dr2_bao.csv` +
   `src/desi_dr2_data.py`; guardián layer R14 (6 checks) makes recurrence impossible.
 - **Headline w₀wₐ tension recomputed** against the four official DR2 w₀wₐCDM
-  posteriors (eqs. 25–28): **0.16σ (DESI+CMB+Pantheon+)**, 1.23σ (DESY5), 1.50σ
+  posteriors (eqs. 25–28): **0.24σ (DESI+CMB+Pantheon+)**, 1.23σ (DESY5), 1.50σ
   (Union3), 1.52σ (no-SN) — honest range **0.2–1.5σ set by the SN compilation**
   (the old 0.05σ was DR1-based). Δw₀ = −0.04σ vs Pantheon+: essentially exact.
 - **H₀ posterior (P2 reframe MCMC, corrected vector): 66.41 ± 0.39 km/s/Mpc**

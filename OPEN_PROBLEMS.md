@@ -265,7 +265,7 @@ Tensiones S₈ (aplicando supresión al baseline Paper 6 S₈=0.761):
 | Paper 6 baseline (φ-DM + WDM) | 0.761 | 0.09σ | −0.25σ |
 | + HMcode-2020 baryonic (Mead+20) | 0.758 | −0.06σ | −0.42σ |
 | DES Y3 (observado) | 0.758 | 0.00σ | — |
-| KiDS-1000 (observado) | 0.759 | — | 0.01σ |
+| KiDS-1000 (observado) | 0.759 | — | 0.00σ |
 
 **El baseline Paper 6 ya está dentro de 1σ DES** (0.09σ). HMcode añade Δσ = 0.03σ de mejora.
 
@@ -661,7 +661,7 @@ numbers only — no Hubble rate enters. The dimensionally-inconsistent
 
 **Canonical CLASS verification (zero fitting, SOLAR²·KRYSTOS adopted 2026-06-19):** the
 forward-predicted particle ($m_\phi=40.70$ eV, $\Omega_{\phi{\rm DM}}=0.14889$) yields
-$\sigma_8^{\rm eff} = 0.747$, $S_8 = 0.758$ ($0.01\sigma$ KiDS-1000 $0.759\pm0.024$ —
+$\sigma_8^{\rm eff} = 0.747$, $S_8 = 0.758$ ($0.04\sigma$ KiDS-1000 $0.759\pm0.024$ —
 **resolves** the lensing tension), single-sector ceiling $S_8=0.846$ ($3.5\sigma$, "the
 challenge"). $\sigma_8$ is a **direct CLASS output** (top-hat on the two-sector $P(k)$),
 not the retired $\alpha_{\rm WDM}$ fit; the Viel $\alpha = 1.108$ Mpc/h is a CLASS
@@ -1242,7 +1242,7 @@ directed to this document when evaluating the strength of the SSEE predictions.
 **Status:** ✅ **CERRADO / ADOPTADO** (Mike, 2026-06-19). El diferimiento se revirtió
 en la misma sesión ("Mira bien lo que NO es, es SOLAR"): se adoptó la partícula con
 mecanismo en vez de seguir con PYROS·VITA·MIKA. **HECHO:** CLASS forward real @ 40.70 eV
-($\sigma_8=0.747$, $S_8=0.758=0.01\sigma$ KiDS, $k_{\rm fs}=0.754$, $\alpha=1.108$,
+($\sigma_8=0.747$, $S_8=0.758=0.04\sigma$ KiDS, $k_{\rm fs}=0.754$, $\alpha=1.108$,
 $T_\phi=0.5385\,T_\nu$, $N_{\rm ur}=2.9619$) → propagado a `CANONICAL_VALUES.yaml`,
 guardián (VERDE 119), manuscrito Paper 6 completo (Lagrangiano g²·v escrito, fσ8
 recomputado 0.82σ, 25 pp, `docs/`), 3 memorias. **RETIRADO** 615.33/42.47.
@@ -1251,7 +1251,7 @@ Residuo único: OP-9 (derivar el coeficiente del transporte).
 **Qué cambió:** la partícula canónica pasó de $m_\phi=42.47$ eV (PYROS·VITA·MIKA=615.33,
 triple-producto plano, sin mecanismo, $S_8=0.24\sigma$) a
 $$m_\phi = \mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\cdot\Sigma m_\nu = (\varphi+2\pi)^2\cdot 2\Omega\cdot 0.0685 = 40.70\ \text{eV},$$
-que **resuelve $S_8$ de lleno ($0.01\sigma$ KiDS)** — el valor que los datos prefieren
+que **resuelve $S_8$ de lleno ($0.04\sigma$ KiDS)** — el valor que los datos prefieren
 (`ssee_paper6_particle_scan.py`, CLASS real). Esta era la finalidad del mecanismo.
 
 **Por qué es mejor partícula (peso, no certeza):**

@@ -32,7 +32,7 @@
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ | ✅ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.16σ | ✅ |
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match | ✅ |
-| S₈ (two-sector φ-DM) | 0.758 | KiDS-1000: 0.759±0.024 | 0.01σ | ✅ |
+| S₈ (two-sector φ-DM) | 0.758 | KiDS-1000: 0.759±0.024 | 0.04σ | ✅ |
 | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 | ⏳ |
 | m_φ (φ-DM mass) | 40.70 eV algebraic (SOLAR²·KRYSTOS) | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable | ⏳ |
 | **k_fs (free-streaming)** | **0.754 h/Mpc algebraic** | **DESI Y3/Euclid P(k): 2026–2028** | **pre-registered** | ⏳ |
@@ -184,7 +184,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | Mean fσ₈ tension (6 surveys, single-sector) | 0.70σ | → 0.93σ with the Paper 6 two-sector (free-streaming lowers σ₈, reaching RSD scales); still <1σ, close to ΛCDM (0.73σ) |
 
 **Diagnostic:** the single-sector model predicts an S₈ *above* weak-lensing surveys (3.5σ KiDS).
-This is the open challenge that motivates the Paper 6 two-sector φ-DM extension, which resolves it (S₈ = 0.758, 0.01σ KiDS).
+This is the open challenge that motivates the Paper 6 two-sector φ-DM extension, which resolves it (S₈ = 0.758, 0.04σ KiDS).
 
 ### Paper 6 (φ-Dark Matter, Two-Sector Model)
 
@@ -198,11 +198,11 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | α (Viel fit to particle/cold P(k) ratio) | 1.117 Mpc/h | CLASS output — not imposed |
 | k_fs (free-streaming) | 0.754 h/Mpc | From m_φ, CLASS-derived |
 | σ₈_eff (two-sector particle) | 0.747 | — |
-| **S₈ (two-sector particle)** | **0.758** | **0.01σ KiDS-1000 (0.759±0.024) — resolves S₈ lensing tension** |
+| **S₈ (two-sector particle)** | **0.758** | **0.04σ KiDS-1000 (0.759±0.024) — resolves S₈ lensing tension** |
 | Single-sector linear (cold source) | σ₈=0.8335, S₈=0.846 | 3.5σ — open before two-sector |
 | Mean fσ₈ tension (6 surveys) | 0.93σ | single-sector baseline 0.70σ; still <1σ, close to ΛCDM (0.73σ) |
 
-> **Note:** With the forward-predicted particle (m_φ = 40.70 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.758 sits 0.01σ from KiDS-1000, down from the 3.5σ single-sector baseline. The same free-streaming that lowers σ₈ also reaches the σ₈(R=8) window probed by RSD, so the fσ₈ (growth-rate) tension rises from the 0.70σ single-sector baseline to 0.93σ — still <1σ and close to ΛCDM (0.73σ). This is the deliberate trade: lowering σ₈ resolves S₈ (3.5σ→0.01σ) at a ~0.2σ cost in fσ₈.
+> **Note:** With the forward-predicted particle (m_φ = 40.70 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.758 sits 0.04σ from KiDS-1000, down from the 3.5σ single-sector baseline. The same free-streaming that lowers σ₈ also reaches the σ₈(R=8) window probed by RSD, so the fσ₈ (growth-rate) tension rises from the 0.70σ single-sector baseline to 0.93σ — still <1σ and close to ΛCDM (0.73σ). This is the deliberate trade: lowering σ₈ resolves S₈ (3.5σ→0.01σ) at a ~0.2σ cost in fσ₈.
 
 **Lyman-α compatibility:** φ-DM is a non-thermal condensate. The correct observable is k_fs=0.754 h/Mpc in the matter power spectrum (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
 
@@ -234,7 +234,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | CMB peak 3 (ℓ) | **814** | 922 | 814 | full ω_m necessary |
 | RMS vs ΛCDM | **0.14%** | 31.5% | — | ~220× degradation with bare Ω_m,dyn |
 | α free-streaming (CLASS output, canonical particle) | **1.117 Mpc/h** | — | — | Yields k_fs = 0.754 h/Mpc |
-| S₈ (two-sector, canonical particle) | **0.758** | — | ~0.83 | 0.01σ KiDS-1000 |
+| S₈ (two-sector, canonical particle) | **0.758** | — | ~0.83 | 0.04σ KiDS-1000 |
 | IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
 
 *CLASS confirms the full algebraic matter density ω_m (Ω_m,CMB=0.30889) is physically necessary: using the bare dynamical Ω_m,dyn=0.160 instead, all three CMB peaks shift ~10% and the RMS residual jumps from 0.14% to 31.5% (~220×).*
@@ -305,7 +305,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 | OP-2 | n_s = 1−φ⁻⁷ exponent | **Resolved** (conditional) — α-attractor universality + N_*=2φ⁷; new prediction r=φ⁻¹⁰ |
 | OP-3 | UV-IR separability | **Resolved** — EFT hierarchy (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2) unique |
 | OP-4 | Solar Vainshtein radius | **Resolved** — k-mouflage (not Galileon) + αB=αM=αT=0 EFT suppression |
-| OP-5 | S₈ weak-lensing tension | **Partial (Level 1)** — two-sector φ-DM resolves it (S₈ = 0.758, 0.01σ KiDS); full non-linear N-body → future |
+| OP-5 | S₈ weak-lensing tension | **Partial (Level 1)** — two-sector φ-DM resolves it (S₈ = 0.758, 0.04σ KiDS); full non-linear N-body → future |
 | OP-6 | Screening form (mult. vs add.) | **Resolved** — separate-universe k-essence + identity 1+w₀=Ω_m,dyn |
 | OP-7 | QFT derivation of genesis role assignments | **Partial** |
 | OP-8 | MIRA/matter-factor mechanism | **Dissolved (2026-06-18)** — ωm-direct: Ω_m,CMB = ωm/h² = 0.30889 is the standard physical observable, no matter factor to derive; MIRA survives only in f_screen |
@@ -317,7 +317,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 | OP-14 | Σm_ν phenomenological derivation | **Resolved (2026-06-04)** — Σm_ν = 0.0685 eV self-consistent cascade (ν-closure C=93.14 demonstrated) |
 | OP-15 | Bullet-cluster offset κ(θ) from KAL(x) | **Open** — not yet computed (Paper 1) |
 | OP-16 | (π−φ)/(π+φ)=0.3201 vs proton mass-energy fraction | **Open / speculative** (genesis; retired from Paper 4, zero cosmological impact) |
-| OP-17 | Canonical φ-DM particle SOLAR²·KRYSTOS | **Adopted (2026-06-19)** — m_φ = 40.70 eV, S₈ = 0.01σ KiDS; UV origin of multiplier = OP-9 |
+| OP-17 | Canonical φ-DM particle SOLAR²·KRYSTOS | **Adopted (2026-06-19)** — m_φ = 40.70 eV, S₈ = 0.04σ KiDS; UV origin of multiplier = OP-9 |
 | OP-18 | Primordial amplitude A_s from (φ,π) | **Open (2026-06-20)** — inflation-scale residue (Paper 3) |
 
 **Foundational postulates (Paper 1 §2.4, Postulates D & S):** the dimensional scale of

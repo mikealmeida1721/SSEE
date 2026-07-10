@@ -31,7 +31,7 @@ MAIN RESULTS
 Using emcee with N_walkers=100, N_steps=25000, and the full DESI DR2 13×13
 BAO covariance matrix, we find:
 
-  - H₀ = 66.41 ± 0.39 km/s/Mpc (SSEE posterior; algebraic background
+  - H₀ = 67.95 ± 0.40 km/s/Mpc (SSEE posterior; algebraic background
     prior H₀ = 3(φ+π)² = 67.962, lowered by DESI BAO)
   - The algebraic prediction (w₀, wₐ) = (-0.840, -0.670) lies within 0.24σ
     (DESI+CMB+Pantheon+; 0.2–1.8σ across SN compilations)

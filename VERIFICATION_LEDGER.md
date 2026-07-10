@@ -122,7 +122,7 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | θ* (CAMB, en posterior 67.9475, mnu=0.069) | 0.59666° (100θ*=1.04136) — **0.91σ** (posterior coincide con anchor; la tensión 6.66σ era el bug del sector 0.160 en E(z), V-L4-DESI) | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-07-09 (geometría total corregida; posterior 67.159/66.41 superados) |
 | σ₈ / S₈ SSEE (Paper 5 single-sector, "el desafío") | 0.8335 / 0.846 — **3.5σ KiDS** | `ssee_paper5_IS_perturbations.py` (G=1.011, Ω_m,CMB=0.30889) | 2026-06-19 (canónico; antes 0.820/0.847 @0.3199) |
 | σ₈ para fσ₈ (Paper 6 two-sector) | **0.747** (R=8, CON free-streaming) → tensión media **0.93σ** | `ssee_paper6_verification.py`, `ssee_paper6_mcmc_v2.py` | 2026-06-29 (CORREGIDO: antes "0.811·G_2s=0.794, amplitud RSD k<k_fs" suponía supresión NO alcanza RSD — FALSO; k_half=0.351 muerde DENTRO de la ventana σ₈(R=8), σ₈ cae 6.9% ya a k=0.3; single-sector legítimo 0.70σ con σ₈=0.8136) |
-| σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.747 / 0.758 — **0.01σ KiDS** | `ssee_paper6_canonical_particle.py` (forward CLASS) | 2026-06-19 (canónico SOLAR; antes 0.742/0.766 @36.95) |
+| σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.747 / 0.758 — **0.04σ KiDS** | `ssee_paper6_canonical_particle.py` (forward CLASS) | 2026-06-19 (canónico SOLAR; antes 0.742/0.766 @36.95) |
 | m_φ (Paper 6 forward-pred, dim. consistente) | 40.70 eV | Σm_ν^act·(SOLAR²·KRYSTOS=594.28), `ssee_core` | 2026-06-19 (canónico; era 36.9463 vía Ω⁴+AURA·KAL) |
 | k_fs (Paper 6, output CLASS) | 0.754 h/Mpc | CLASS (`calibrate_wdm_alpha.py`, α=1.117 Mpc/h) | 2026-06-19 (canónico) |
 
@@ -425,14 +425,14 @@ dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
 
 ## V-L3-OP5 — tensión S₈ weak-lensing / HMcode bariónico — **ABIERTO (anclado en rama secundaria)**
 
-*Claim CLAUDE.md (canónico 2026-06-19):* titular two-sector S₈_eff=0.758 (0.01σ KiDS).
+*Claim CLAUDE.md (canónico 2026-06-19):* titular two-sector S₈_eff=0.758 (0.04σ KiDS).
 
 1. **✓ definición:** S₈ = σ₈(Ω_m/0.3)^½ con Ω_m,CMB=0.30889 (√(Ω_m/0.3)=1.0147).
 2. **✓ single-sector (el desafío):** σ₈=0.8335 → S₈=0.846 — **3.5σ KiDS**.
    Es el baseline que el modelo debe resolver.
 3. **✓ two-sector φ-DM (TITULAR, forward):** el free-streaming en k_fs=0.754
    h/Mpc (de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo) baja σ₈_eff a 0.7470 → **S₈_eff=0.758
-   = 0.01σ KiDS-1000**. RESUELVE la tensión S₈, sin parámetros libres.
+   = 0.04σ KiDS-1000**. RESUELVE la tensión S₈, sin parámetros libres.
 4. **○ refinamiento no-lineal (Nivel 2, diferido):** el cierre no-lineal pleno
    con feedback bariónico (N-body SSEE, ~5k–20k CPU-h) queda pendiente; HMcode-2020
    da una corrección ~0.4% (B_σ₈≈0.996). No altera el resultado lineal forward.
@@ -902,7 +902,7 @@ Usa Ω_m,CMB=0.30889 → √(Ω_m,CMB/0.3)=1.0147 (S₈ es amplitud gravitaciona
    S₈ = 0.8335·1.0147 = 0.846 → **3.5σ KiDS-1000** (DES-Y3 ≈ 3.5σ).
 2. **✓ two-sector φ-DM (TITULAR, forward):** σ₈_eff = 0.7470 (free-streaming
    CLASS, k_fs=0.754 de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo). S₈_eff = 0.7470·1.0147 =
-   **0.758 → 0.01σ KiDS-1000**. RESUELVE la tensión.
+   **0.758 → 0.04σ KiDS-1000**. RESUELVE la tensión.
 
 **Veredicto:** la cadena S₈ es aritméticamente correcta y usa la Ω_m correcta.
 El titular es el two-sector (0.758, 0.01σ). La cadena vieja G=0.866 →

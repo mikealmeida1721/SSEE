@@ -9,7 +9,7 @@
 > snapshot predates the **ω_m-direct reframe** (OP-8 dissolved: Ω_m,CMB = ω_m/h² =
 > **0.30889**, no matter factor) and the **SOLAR²·KRYSTOS particle** with the unified
 > ν-closure constant C=93.14: **m_φ = 40.70 eV, k_fs = 0.754 h/Mpc, S₈ = 0.758**
-> (0.01σ KiDS). The Hubble cascade is H_alg = 67.962 → H_local = **72.86** (0.17σ);
+> (0.04σ KiDS). The Hubble cascade is H_alg = 67.962 → H_local = **72.86** (0.17σ);
 > the canonical DR2 posterior is **H₀ = 67.95 ± 0.40** (geometry-total 0.30889, V-L4-DESI).
 > For canonical values see `README.md`, `CANONICAL_VALUES.yaml`,
 > and `VERIFICATION_LEDGER.md`. The headline table below is updated; deeper body
@@ -145,7 +145,7 @@ MIRA_num (k≥10) = 0.989 ± 0.017   [background effect, not perturbative]
 G = D₁_SSEE/D₁_ΛCDM = 1.0032       [~0.3% enhancement; Poisson source Ω_m,CMB=0.30889]
 σ₈_SSEE = 0.8136 ± 0.006           [single-sector ODE; CLASS top-hat ceiling 0.8335]
 S₈_SSEE = 0.8256 ± 0.006           [single-sector; ceiling 0.846 — 3.5σ KiDS, resolved by Paper 6 two-sector]
-S₈ tension SSEE vs DES-Y3 = 2.74σ  [single-sector baseline; Paper 6 two-sector → S₈=0.758, 0.01σ KiDS]
+S₈ tension SSEE vs DES-Y3 = 2.74σ  [single-sector baseline; Paper 6 two-sector → S₈=0.758, 0.04σ KiDS]
 ```
 
 ### Paper 6 — φ-DM two-sector
@@ -162,7 +162,7 @@ k_fs = 0.754 h/Mpc  (falsable DESI Y3/Euclid 2026–2028)
 Ω_φDM = 0.148844
 Ω_total = 0.308895 ≈ Ω_m,CMB (ω_m-directo)
 σ₈_eff = 0.7470  (CLASS forward two-sector, free-streaming)
-S₈_eff = 0.7580  (0.01σ KiDS-1000 — resuelve tensión S₈)
+S₈_eff = 0.7580  (0.04σ KiDS-1000 — resuelve tensión S₈)
 Mean fσ₈ tension: 0.93σ two-sector (σ₈=0.747)  [single-sector 0.70σ; ΛCDM 0.73σ]
 ```
 Expected output (MCMC v2, emulador CLASS):

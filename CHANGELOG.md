@@ -14,7 +14,7 @@
   The neutrino closure ω_ν h² = Σm_ν/C was standardised on **C=93.14 eV** (N_eff=3.046, PDG/Planck;
   derived C=ρ_crit/n_ν=94.06 at instantaneous decoupling as the cross-check). Propagated
   suite-wide: **m_φ = 40.70 eV** (was 41.02), **k_fs = 0.754 h/Mpc** (was 0.762),
-  **σ₈ = 0.747**, **S₈ = 0.758** (0.01σ KiDS), **Σm_ν = 0.0685 eV**.
+  **σ₈ = 0.747**, **S₈ = 0.758** (0.04σ KiDS), **Σm_ν = 0.0685 eV**.
 - **Full documentation audit — 10 papers + 3 consolidation docs to 10/10.** Hostile
   paper-by-paper pass (grammar + math + physics + coherence + figures + citations +
   provenance); every finding the guardian missed became a permanent rivet (R15–R19).
@@ -67,7 +67,7 @@
   −34.9 (diagonal, N=5914). The earlier legacy-MIRA Cobaya −32.2 is superseded.
 - **φ-DM canonical particle:** m_φ = Σm_ν·(SOLAR²·KRYSTOS) = 0.06902 eV × 594.28 =
   **41.02 eV** (retired 36.95 and 42.47); k_fs = **0.762 h/Mpc**; CLASS forward
-  σ₈_eff = 0.748, **S₈ = 0.759 (0.01σ KiDS-1000)**; fσ₈ mean tension 0.70σ.
+  σ₈_eff = 0.748, **S₈ = 0.759 (0.04σ KiDS-1000)**; fσ₈ mean tension 0.70σ.
 - **Growth:** G_growth = D₁_SSEE/D₁_ΛCDM = **1.003** (ΛCDM-consistent at the reframed
   Ω_m=0.30889; the earlier 0.979 carried a non-flat-background bug).
 - **H₀ cascade (global anchor H_alg=67.962):** posterior 67.16±0.44; H_IR = 72.86

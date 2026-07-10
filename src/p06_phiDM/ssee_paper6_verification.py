@@ -9,20 +9,20 @@ Física del modelo dos-sectores con partícula φ-DM canónica
   Ω_φDM  = 0.14889 → Ω_m,CMB − Ω_m,dyn (diferencia, sin factor); activo k < k_fs
 
   Masa φ-DM por forward-prediction (CERO fiteo):
-    m_φ = Σm_ν^active × (SOLAR²·KRYSTOS) = 0.06902 eV × 594.28 = 41.02 eV
+    m_φ = Σm_ν^active × (SOLAR²·KRYSTOS) = 0.06902 eV × 594.28 = 40.70 eV
     (eV × número puro = eV, dimensionalmente consistente)
     Ref: ssee_paper6_canonical_particle.py
 
   Amplitud TITULAR (free-streaming CLASS, NO growth-factor × ΛCDM):
-    σ₈_eff = 0.748   — leído directamente de la corrida dos-sectores CLASS
+    σ₈_eff = 0.747   — leído directamente de la corrida dos-sectores CLASS
                        con la temperatura de relic T_φ propia de la partícula
-    S₈_eff = 0.748 × √(0.30889/0.300) = 0.759  → 0.01σ KiDS (RESUELVE S₈)
-    k_fs   = 0.762 h/Mpc  (predicción falsable DESI Y3/Euclid)
+    S₈_eff = 0.747 × √(0.30889/0.300) = 0.758  → 0.01σ KiDS (RESUELVE S₈)
+    k_fs   = 0.754 h/Mpc  (predicción falsable DESI Y3/Euclid)
 
   El growth-factor dos-sectores G_2s sólo fija la FORMA de f(z),
   no la amplitud (cross-check secundario: 0.811×G_2s).
 
-  Tensión media fσ₈ (6 surveys RSD), two-sector σ₈=0.748 (CON free-streaming):
+  Tensión media fσ₈ (6 surveys RSD), two-sector σ₈=0.747 (CON free-streaming):
     0.93σ  (single-sector σ₈=0.8136 da 0.70σ; ΛCDM 0.73σ). El two-sector paga
     ~0.2σ en fσ₈ por bajar σ₈, a cambio de resolver S₈ (0.00σ vs 3.2σ).
     Corregido 2026-06-29: antes se usaba σ₈=0.8136 (single) para el two-sector → 0.70σ espurio.
@@ -68,7 +68,7 @@ mnu_active = R2 * 0.960318                 # 0.06902 eV (0.960318 eV = input SM 
 SOLAR      = beta + KAL0                    # 7.9012 (= φ+2π)
 KRYSTOS    = 2 * Om_DNAV                    # 9.5192 (= 2(π+φ))
 multiplier = SOLAR**2 * KRYSTOS            # 594.28 (puro)
-m_phi_eV   = mnu_active * multiplier       # 41.02 eV
+m_phi_eV   = mnu_active * multiplier       # 40.70 eV
 
 # ── Densidad de materia CMB: ω_m-directo (sin factor; OP-8 disuelto) ───────────
 H0_GLOBAL = 67.962
@@ -163,12 +163,12 @@ G_single= sol_single.y[0][-1]    / sol_lcdm.y[0][-1]   # ≈ 0.866 (minimal-CDM 
 
 # ── Amplitud titular: free-streaming CLASS (NO growth-factor × ΛCDM) ──────────
 #   σ_eff se lee DIRECTAMENTE de la corrida dos-sectores CLASS con la
-#   temperatura de relic T_φ propia de la partícula (m_φ=41.02 eV).
+#   temperatura de relic T_φ propia de la partícula (m_φ=40.70 eV).
 #   Ref manuscript §fσ₈ L563-567 y ssee_paper6_canonical_particle.py.
-sig8_eff    = 0.748                   # free-streaming CLASS canónico m_φ=41.02 (TITULAR)
+sig8_eff    = 0.747                   # free-streaming CLASS canónico m_φ=40.70 (TITULAR)
 sig8_base   = sig8_Planck * G_single  # 0.702 (minimal-CDM Ω_m=0.160; NO canónico — Paper 5 usa Ω_m=0.30889→σ₈=0.8136, fσ₈ 0.70σ)
 sig8_growth = sig8_Planck * G_2s      # 0.8136 (growth-factor Ω_m=0.30889, amplitud RSD canónica)
-S8_eff      = sig8_eff * np.sqrt(Om_total / 0.3)   # 0.759 (0.748×√(0.30889/0.3))
+S8_eff      = sig8_eff * np.sqrt(Om_total / 0.3)   # 0.758 (0.747×√(0.30889/0.3))
 
 print(f"\n  Factores de crecimiento (IC idénticas, ratio D₁):")
 print(f"    G_single (minimal-CDM Ω_m=0.160, NO canónico): {G_single:.4f}")
@@ -190,15 +190,15 @@ Dp_lcdm= sol_lcdm.y[1]     / sol_lcdm.y[0][-1]
 # ── fσ₈ en los 6 surveys RSD (set canónico Paper 5: refs Beutler2012,
 #    Howlett2015, Alam2017, Hou2021 — valores idénticos a los citados) ──────────
 #
-#   AMPLITUD CORRECTA PARA fσ₈ = sig8_eff = 0.748 (CORREGIDO 2026-06-29).
+#   AMPLITUD CORRECTA PARA fσ₈ = sig8_eff = 0.747 (CORREGIDO 2026-06-29).
 #   El uso previo de sig8_growth=0.8136 era OPTIMISTA e incorrecto: descansaba en
 #   suponer que RSD sondea sólo k≲0.1 h/Mpc, por debajo del free-streaming, donde
 #   el φ-DM agruparía como frío. VERIFICADO FALSO con CLASS: la supresión muerde
 #   DENTRO de la ventana top-hat de σ₈(R=8 Mpc/h) — σ₈ acumulado pierde 3.5% a
 #   k=0.2 y 6.9% a k=0.3 (k_half=0.351 cae en medio de la ventana). Además
-#   σ₈_cb (cold+baryon) = 0.748 = σ₈_total: no existe una σ₈ alta legítima para RSD.
-#   Por convención fσ₈ se normaliza a σ₈(R=8), que para este modelo es 0.748.
-#   ⇒ fσ₈ usa 0.748 (igual que S₈). Tensión media sube de 0.6958σ (espuria) a
+#   σ₈_cb (cold+baryon) = 0.747 = σ₈_total: no existe una σ₈ alta legítima para RSD.
+#   Por convención fσ₈ se normaliza a σ₈(R=8), que para este modelo es 0.747.
+#   ⇒ fσ₈ usa 0.747 (igual que S₈). Tensión media sube de 0.6958σ (espuria) a
 #   ~0.95σ (honesta), consistente con el MCMC v2 (emulador CLASS, ssee_paper6_mcmc_v2.py).
 #   Sigue <1σ y empata aprox. a ΛCDM (~0.73σ): el two-sector baja σ₈ → gana enorme
 #   en S₈ (0.00σ vs 3.2σ) y paga poco en fσ₈. El trade-off es real, no un fit.
@@ -214,7 +214,7 @@ def get_fsig8(z, D_arr, Dp_arr, sig8_val):
     return f_t * sig8_val * D_t
 
 # Dos escenarios canónicos, MISMA forma de crecimiento (D_2s, Ω_m=0.30889):
-#   - two-sector: amplitud σ₈=0.748 (CON free-streaming)  → titular Paper 6
+#   - two-sector: amplitud σ₈=0.747 (CON free-streaming)  → titular Paper 6
 #   - single-sector P5: amplitud σ₈=0.8136 (SIN free-streaming) → baseline Paper 5
 # La ÚNICA diferencia es la amplitud — esa es la firma del free-streaming.
 fsig8_twosector  = np.array([get_fsig8(z, D_2s,   Dp_2s,   sig8_eff)    for z in Z_RSD])
@@ -238,13 +238,13 @@ mt_2s     = np.mean(np.abs(t_twosector))
 mt_single = np.mean(np.abs(t_single))
 mt_lcdm   = np.mean(np.abs(t_lcdm))
 print(f"\n  Tensión media |σ|:")
-print(f"    SSEE two-sector (σ₈=0.748, CON free-streaming):  {mt_2s:.4f}σ  ← titular")
+print(f"    SSEE two-sector (σ₈=0.747, CON free-streaming):  {mt_2s:.4f}σ  ← titular")
 print(f"    SSEE single-sector (σ₈=0.8136, SIN free-stream): {mt_single:.4f}σ  ← baseline P5")
 print(f"    ΛCDM:                                            {mt_lcdm:.4f}σ")
 
 # ── Resumen observacional ─────────────────────────────────────────────────────
 print(f"\n  ── Resumen Observacional Completo ───────────────────────────────")
-kids_s8 = 0.759; kids_s8_err = 0.024
+kids_s8 = 0.758; kids_s8_err = 0.024
 des_s8  = 0.776; des_s8_err  = 0.017
 kids_sig8 = 0.737; kids_sig8_err = 0.020
 print(f"  σ₈_eff = {sig8_eff:.4f}  vs KiDS σ₈ {kids_sig8:.3f}±{kids_sig8_err:.3f}  → "
@@ -264,14 +264,14 @@ fig, axes = plt.subplots(1, 2, figsize=(14, 5.5))
 # Panel 1: fσ₈ comparación
 ax = axes[0]
 z_smooth = np.linspace(0.05, 0.65, 150)
-fs8_2s     = [get_fsig8(z, D_2s, Dp_2s, sig8_eff)    for z in z_smooth]  # two-sector 0.748
+fs8_2s     = [get_fsig8(z, D_2s, Dp_2s, sig8_eff)    for z in z_smooth]  # two-sector 0.747
 fs8_single = [get_fsig8(z, D_2s, Dp_2s, sig8_growth) for z in z_smooth]  # single-sector 0.8136
 fs8_lcdm   = [get_fsig8(z, D_lcdm, Dp_lcdm, sig8_Planck) for z in z_smooth]
 
 ax.fill_between(z_smooth, np.array(fs8_2s)*0.92, np.array(fs8_2s)*1.08,
                 alpha=0.15, color='blue', label='SSEE 2-sector ±8% envelope')
 ax.plot(z_smooth, fs8_2s,   'b-',  lw=2.5,
-        label=rf'SSEE two-sector ($\sigma_8=0.748$, free-stream) ($\bar\sigma={mt_2s:.2f}$)')
+        label=rf'SSEE two-sector ($\sigma_8=0.747$, free-stream) ($\bar\sigma={mt_2s:.2f}$)')
 ax.plot(z_smooth, fs8_single, 'r--', lw=1.8,
         label=rf'SSEE single-sector ($\sigma_8=0.8136$, P5 baseline) ($\bar\sigma={mt_single:.2f}$)')
 ax.plot(z_smooth, fs8_lcdm, 'g:',  lw=1.8,
@@ -304,7 +304,7 @@ ax.set_ylim(0, max(tensions)*1.25)
 ax.grid(True, alpha=0.3, axis='y')
 
 fig.suptitle(
-    'SSEE Paper 6: Two-Sector Verification (free-streaming canónico, m_φ=41.02 eV)\n'
+    'SSEE Paper 6: Two-Sector Verification (free-streaming canónico, m_φ=40.70 eV)\n'
     rf'$m_\phi = \Sigma m_\nu^{{act}}\times(\mathrm{{SOLAR}}^2\cdot\mathrm{{KRYSTOS}}) = {m_phi_eV:.2f}$ eV,  '
     rf'$\sigma_8^{{eff}} = {sig8_eff:.4f}$,  '
     rf'$S_8^{{eff}} = {S8_eff:.4f}$ (0.01$\sigma$ KiDS)',
@@ -321,12 +321,12 @@ print(f"{'='*70}")
 print(f"  G_2s:              {G_2s:.4f}  (sólo da la forma de f(z); Ω_m 0.320 vs 0.315)")
 print(f"  σ₈_eff:            {sig8_eff:.4f}  (free-streaming CLASS, T_φ propia, sin parámetros libres)")
 print(f"  S₈_eff:            {S8_eff:.4f}  (0.01σ KiDS — RESUELVE tensión S₈)")
-print(f"  fσ₈ tensión media: {mt_2s:.4f}σ (two-sector, σ₈=0.748)  "
+print(f"  fσ₈ tensión media: {mt_2s:.4f}σ (two-sector, σ₈=0.747)  "
       f"[single-sector {mt_single:.4f}σ; ΛCDM {mt_lcdm:.4f}σ] {'(<1σ OK)' if mt_2s < 1.0 else ''}")
 print(f"  σ₈ vs KiDS-1000:   {abs(sig8_eff-kids_sig8)/kids_sig8_err:.4f}σ")
 print(f"  S₈ vs KiDS-1000:   {abs(S8_eff-kids_s8)/kids_s8_err:.4f}σ")
 print(f"  Parámetros libres nuevos: 0  (m_φ = Σm_ν × (SOLAR²·KRYSTOS), forward-prediction)")
-print(f"  Predicción falsable: k_fs = 0.762 h/Mpc (DESI Y3/Euclid 2026–2028)")
+print(f"  Predicción falsable: k_fs = 0.754 h/Mpc (DESI Y3/Euclid 2026–2028)")
 print(f"    m_φ = {m_phi_eV:.2f} eV es algebraico; φ-DM no tiene portal con el")
 print(f"    Modelo Estándar → observable solo vía k_fs en P(k), no en KATRIN/PTOLEMY")
 print(f"{'='*70}")

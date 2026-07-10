@@ -18,21 +18,22 @@
 canonical:
   # Sector materia oscura φ-DM (Paper 6, forward — cero fiteo)
   # INPUT FIJO (álgebra pura, mecanismo SOLAR²·KRYSTOS adoptado 2026-06-19):
-  m_phi_eV:            41.02      # = Σm_ν^act × (SOLAR²·KRYSTOS) = 0.06902 × 594.28
+  m_phi_eV:            40.70      # = Σm_ν^act × (SOLAR²·KRYSTOS) = 0.06849 × 594.28
   #   SOLAR=BIAL+KAL=φ+2π (linaje radiativo); KRYSTOS=2Ω (anclado wₐ); mecanismo g²·v
-  #   (antes 42.47 vía PYROS·VITA·MIKA=615.33, sin mecanismo — ver OP-9/OP-17)
-  # DEPENDIENTES de m_φ — CLASS forward ω_m-directo, m_φ=41.02 @
-  # Ω_m=0.30889, Ω_φDM=0.14889. script: src/ssee_paper6_canonical_particle.py
-  k_fs_h_per_Mpc:      0.762      # analítico no-rel (era 0.798 con m_φ=42.47); falsable DESI/Euclid
-  k_half_CLASS_h_per_Mpc: 0.339   # borrado medido por CLASS (ratio P=0.5)
-  alpha_freestream_Mpc_per_h: 1.108  # OUTPUT CLASS fit Viel (era 1.072)
-  T_phi_over_T_nu:     0.5385     # relic constraint (T_φ=0.38563)
-  N_ur:                2.9619     # N_ur efectivo del two-sector
+  #   (antes 41.02 con C_ν=94.07 baked; unificado a C_ν=93.14 PDG demostrada 2026-07-10,
+  #    derive_nu_closure.py; antes 42.47 vía PYROS·VITA·MIKA=615.33 — ver OP-9/OP-17)
+  # DEPENDIENTES de m_φ — CLASS forward ω_m-directo, m_φ=40.70 @
+  # Ω_m=0.30888, Ω_φDM=0.14888. script: src/ssee_paper6_canonical_particle.py
+  k_fs_h_per_Mpc:      0.754      # analítico no-rel (era 0.762 con m_φ=41.02); falsable DESI/Euclid
+  k_half_CLASS_h_per_Mpc: 0.337   # borrado medido por CLASS (ratio P=0.5; era 0.339)
+  alpha_freestream_Mpc_per_h: 1.117  # OUTPUT CLASS fit Viel (era 1.108)
+  T_phi_over_T_nu:     0.5399     # relic constraint (T_φ=0.38661)
+  N_ur:                2.9610     # N_ur efectivo del two-sector
 
   # Amplitud de estructura — CLASS forward (σ8 OUTPUT directo, NO fit alpha_WDM)
-  sigma8_two_sector:   0.7483     # σ8 forward CLASS two-sector (era 0.7536)
-  S8_two_sector:       0.7593     # = σ8·√(Ω_m/0.3) → 0.01σ KiDS (RESUELVE exacto; forward, falsable)
-  sigma8_single_ceiling: 0.8335   # σ8 todo-frío (techo CLASS; era 0.820 vía ODE P5)
+  sigma8_two_sector:   0.7470     # σ8 forward CLASS two-sector (era 0.7483 @m_φ=41.02)
+  S8_two_sector:       0.7580     # = σ8·√(Ω_m/0.3) → 0.04σ KiDS (RESUELVE; forward, falsable; era 0.7593/0.01σ)
+  sigma8_single_ceiling: 0.8335   # σ8 todo-frío (techo CLASS; independiente de m_φ, sin cambio)
   S8_single_ceiling:   0.8458     # 3.5σ KiDS-1000 (0.759±0.024) — "el desafío" que el two-sector baja
   G_growth:            1.0032     # D₁_SSEE/D₁_ΛCDM (Paper 5 ODE @ Ω_m,cosm=0.30889; era 1.011 @0.31983 — SÍ depende del fondo, que bajó en el reframe ω_m-directo)
   fsigma8_two_sector_sigma: 0.93  # P6 fσ8 mean two-sector σ8=0.748 CON free-streaming (CORREGIDO 2026-06-29; forward ODE 0.933, MCMC v2 CLASS 0.946; antes 0.70 usaba σ8=0.8136 single = espurio)
@@ -147,26 +148,35 @@ retired:
   - {pattern: "0.31069",   reason: "Ω_m,CMB factor π/φ (variante) — superado"}
   - {pattern: "0.31993",   reason: "Ω_m,CMB factor MIRA — superado por ω_m-directo (OP-8 disuelto)"}
   - {pattern: "0.3199",    reason: "Ω_m,CMB factor MIRA — superado por ω_m/h²=0.3089"}
-  # Partícula φ-DM: 36.95 (Ω⁴+AURA·KAL) y 42.47 (PYROS·VITA·MIKA) → SOLAR²·KRYSTOS=41.02
-  - {pattern: "36.95",     reason: "m_φ viejo (mult Ω⁴+AURA·KAL=535.28) → 41.02 (SOLAR²·KRYSTOS)"}
-  - {pattern: "42.47",     reason: "m_φ viejo (mult PYROS·VITA·MIKA=615.33) → 41.02 (SOLAR²·KRYSTOS)"}
+  # Partícula φ-DM: 36.95 (Ω⁴+AURA·KAL) y 42.47 (PYROS·VITA·MIKA) → SOLAR²·KRYSTOS;
+  # y 41.02 (C_ν=94.07 baked) → 40.70 (C_ν=93.14 PDG demostrada, 2026-07-10)
+  - {pattern: "36.95",     reason: "m_φ viejo (mult Ω⁴+AURA·KAL=535.28) → 40.70 (SOLAR²·KRYSTOS)"}
+  - {pattern: "42.47",     reason: "m_φ viejo (mult PYROS·VITA·MIKA=615.33) → 40.70 (SOLAR²·KRYSTOS)"}
+  - {pattern: "41.02",     reason: "m_φ con C_ν=94.07 baked → 40.70 con C_ν=93.14 (derive_nu_closure.py)"}
   - {pattern: "535.28",    reason: "multiplicador viejo Ω⁴+AURA·KAL → SOLAR²·KRYSTOS=594.28"}
   - {pattern: "615.33",    reason: "multiplicador viejo PYROS·VITA·MIKA → SOLAR²·KRYSTOS=594.28"}
   - {pattern: "PYROS·VITA·MIKA", reason: "multiplicador viejo (sin mecanismo) → SOLAR²·KRYSTOS"}
+  - {pattern: "94.07",     reason: "C_ν desacople instantáneo → 93.14 PDG (misma constante, N_eff=3.046)"}
   # Dependientes de la partícula vieja (k_fs/alpha/σ8/S8)
-  - {pattern: "0.7536",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8 two-sector @42.47 → 0.7483 @41.02 (SOLAR²·KRYSTOS)"}
-  - {pattern: "0.766",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S8_eff two-sector viejo (@36.95/42.47) → 0.759 @41.02 (SOLAR)"}
-  - {pattern: "0.765",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S8_eff variante vieja → 0.759"}
-  - {pattern: "0.742",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8_eff two-sector viejo (@36.95) → 0.748 @41.02"}
-  - {pattern: "1.243\\,mpc", reason: "alpha free-streaming viejo (m_φ=36.95) → 1.108 (unidad para evitar arXiv)"}
+  - {pattern: "0.7536",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8 two-sector @42.47 → 0.7470 @40.70"}
+  - {pattern: "0.7483",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8 two-sector @41.02 (C_ν=94.07) → 0.7470 @40.70 (C_ν=93.14)"}
+  - {pattern: "0.766",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S8_eff two-sector viejo (@36.95/42.47) → 0.758 @40.70"}
+  - {pattern: "0.765",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S8_eff variante vieja → 0.758"}
+  - {pattern: "0.7593",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S8 two-sector @41.02 → 0.7580 @40.70 (C_ν=93.14)"}
+  - {pattern: "0.742",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8_eff two-sector viejo (@36.95) → 0.747 @40.70"}
+  - {pattern: "1.243\\,mpc", reason: "alpha free-streaming viejo (m_φ=36.95) → 1.117 (unidad para evitar arXiv)"}
   - {pattern: "1.243 mpc",   reason: "alpha free-streaming viejo (variante con espacio)"}
-  - {pattern: "1.072 mpc",   reason: "alpha free-streaming @42.47 → 1.108 @41.02"}
+  - {pattern: "1.072 mpc",   reason: "alpha free-streaming @42.47 → 1.117 @40.70"}
   - {pattern: "1.072\\,mpc", reason: "alpha @42.47 (variante)"}
+  - {pattern: "1.108\\,mpc", reason: "alpha @41.02 (C_ν=94.07) → 1.117 @40.70 (C_ν=93.14)"}
+  - {pattern: "1.108 mpc",   reason: "alpha @41.02 (variante con espacio)"}
   # Crecimiento single-sector ODE Paper 5 (reframe Poisson 0.31983→0.30889)
   - {pattern: "1.0109",    reason: "G_growth ODE viejo @Ω_m=0.31983 → 1.0032 @0.30889"}
   - {pattern: "0.8466",    reason: "S8 ODE single-sector viejo @0.320 → 0.8256 @0.30889 (techo CLASS 0.846 se mantiene)"}
-  - {pattern: "0.798\\,h", reason: "k_fs @42.47 (con unidad) → 0.762\\,h @41.02"}
-  - {pattern: "0.659\\,h", reason: "k_fs @36.95 (con unidad) → 0.762\\,h @41.02"}
+  - {pattern: "0.798\\,h", reason: "k_fs @42.47 (con unidad) → 0.754\\,h @40.70"}
+  - {pattern: "0.659\\,h", reason: "k_fs @36.95 (con unidad) → 0.754\\,h @40.70"}
+  - {pattern: "0.762\\,h", reason: "k_fs @41.02 (C_ν=94.07) → 0.754\\,h @40.70 (C_ν=93.14)"}
+  - {pattern: "0.762 h",   reason: "k_fs @41.02 (variante con espacio)"}
 
 # Palabras que, si aparecen en la misma línea que un valor retirado, indican
 # que está citado como historia/coincidencia (NO como vigente) → no es drift.

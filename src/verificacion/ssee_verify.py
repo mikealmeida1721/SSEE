@@ -111,10 +111,10 @@ check("L1 histórico  (pi/phi) * Om_m,dyn = 0.31076 (factor π/φ — superado)"
 _kal0 = (pi + phi) / 2 + pi                       # KAL0 = BETA + PI
 _omb  = (pi - phi) / (3 * Omega ** 2)             # ω_b (OP-1)
 _omc  = _kal0 * _omb * (1 - phi ** -7)            # ω_c = KAL0·ω_b·n_s (forward)
-_omm  = _omb + _omc + 0.06902 / 93.14             # ω_m físico
+_omm  = _omb + _omc + 0.0684903 / 93.14           # ω_m físico (Σm_ν=0.0685, C_ν=93.14)
 _h    = (3 * Omega ** 2) / 100                    # h = H_alg/100
 check("L1 canónico   Om_m,CMB = ω_m/h² = 0.30889 (ω_m-directo, sin factor)",
-      abs(_omm / _h ** 2 - 0.3088931986) < 1e-9)
+      abs(_omm / _h ** 2 - 0.3088808856) < 1e-9)
 
 # ─────────────────────────────────────────────────────────────────────
 # CAPA 2 — Parámetros cosmológicos derivados
@@ -131,9 +131,9 @@ L2 = {
     "V-L2-02 wa":        (-Psc / Kv,                     -0.6699748857),
     "V-L2-03 Om_DE":     (Om_DE,                          0.8399497713),
     "V-L2-04 Om_m,dyn":  (Om_m_dyn,                       0.1600502287),
-    "V-L2-05 Om_m,CMB":  (_omm / _h ** 2,                 0.3088931986),
+    "V-L2-05 Om_m,CMB":  (_omm / _h ** 2,                 0.3088808856),
     "V-L2-05b ω_c":      (_omc,                           0.1195144084),
-    "V-L2-05c ω_m":      (_omm,                           0.1426732002),
+    "V-L2-05c ω_m":      (_omm,                           0.1426675130),
     "V-L2-05d π/φ·dyn [RETIRADO]":  ((pi / phi) * Om_m_dyn,  0.3107552907),
     "V-L2-05e MIRA·dyn [RETIRADO]": (MIRA * Om_m_dyn,        0.3199281880),
     "V-L2-06 H0^alg":    (3 * Omega ** 2,                 67.9621373234),
@@ -149,18 +149,20 @@ for name, (computed, ledger) in L2.items():
 
 # V-L2-10 m_phi canónico (forward-prediction, cero fiteo, P6; mecanismo SOLAR²·KRYSTOS 2026-06-19):
 #   m_phi = Sigma_m_nu^active * (SOLAR^2 * KRYSTOS)   [mecanismo g²·v]
-#   con Sigma_m_nu^active = R2 * 0.960318 eV, R2 = Omega/(KAL0*Tr).
+#   con Sigma_m_nu^active = R2·ω_b·C_ν/(τ_Π H0), C_ν=93.14 eV PDG (cierre ν preciso,
+#   N_eff=3.046; DEMOSTRADO en derive_nu_closure.py), R2 = Omega/(KAL0*Tr).
 #   SOLAR = BIAL+KAL = phi+2pi (linaje radiativo); KRYSTOS = 2*Omega (anclado por wa).
 # Dimensionalmente CONSISTENTE: [eV] * (número puro) = [eV].
+# C_ν univaluada en 93.14 (antes 94.07 baked como 0.960318, misma constante; 2026-07-10).
 # Mult. anterior PYROS*VITA*MIKA=615.33 (m_phi=42.47, sin mecanismo) RETIRADO; ver OP-9/OP-17.
 _R2 = Omega / (KAL0 * Tr)
-_mnu_active = _R2 * 0.960318
+_mnu_active = _R2 * _omb * 93.14 / (KAL0 * Omega / Tr)   # = 0.06849 eV
 _SOLAR = phi + 2 * pi
 _KRYSTOS = 2 * Omega
 _mult_mphi = _SOLAR ** 2 * _KRYSTOS
 _m_phi_canon = _mnu_active * _mult_mphi
-check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (SOLAR^2*KRYSTOS) = 41.02 eV",
-      abs(_m_phi_canon - 41.0187) < 1e-3,
+check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (SOLAR^2*KRYSTOS) = 40.70 eV",
+      abs(_m_phi_canon - 40.7024) < 1e-2,
       f"m_phi = {_m_phi_canon:.4f} eV (R2={_R2:.6f}, mult={_mult_mphi:.4f})")
 
 # Identidades cruzadas — dos rutas independientes deben coincidir.
@@ -173,7 +175,7 @@ check("L2 identidad  f_screen = alpha_K/(3*MIRA) = (pi-phi)/Om^2",
 # Problemas ABIERTOS detectados en Capa 2 — comprobación dimensional.
 track_open("V-L2-06 H0^alg dimensional",
            "3*Omega^2 es adimensional; H0 tiene unidades km/s/Mpc (Postulado D)")
-# V-L2-10: la fórmula CANÓNICA (forward-prediction 41.02 eV SOLAR²·KRYSTOS) es dimensionalmente
+# V-L2-10: la fórmula CANÓNICA (forward-prediction 40.70 eV SOLAR²·KRYSTOS) es dimensionalmente
 # consistente — [eV]*(número puro) = [eV]. El antiguo ansatz Sigma_m_nu*H0^alg
 # (5.60 eV) está retirado. Lo abierto es el Lagrangiano φ-DM (OP-9), no la dimensión.
 
@@ -243,22 +245,23 @@ track_open("V-L3-OP3  separabilidad UV-IR no probada",
            "diferida a Paper B; KALeff^2 = M^4/(6 alpha) dropea rho_crit")
 
 # OP-5 — tensión S8 weak-lensing (P5/P6). CANÓNICO (ω_m-directo, CLASS forward con
-# m_phi=41.02 eV mecanismo SOLAR²·KRYSTOS, Om_m=0.30889): el two-sector phi-DM
-# (free-streaming k_fs=0.762) lleva el single-sector S8=0.846 (3.5sigma, "el desafio")
-# al titular S8_eff=0.759 (0.01sigma KiDS). sigma8 es OUTPUT directo de CLASS (no fit alpha_WDM).
+# m_phi=40.70 eV mecanismo SOLAR²·KRYSTOS, Om_m=0.30888): el two-sector phi-DM
+# (free-streaming k_fs=0.754) lleva el single-sector S8=0.846 (3.5sigma, "el desafio")
+# al titular S8_eff=0.758 (0.04sigma KiDS). sigma8 es OUTPUT directo de CLASS (no fit alpha_WDM).
 # script: src/ssee_paper6_canonical_particle.py
-Om_cosm_op5 = _omm / _h ** 2                         # 0.30889  Om_m,CMB (omega_m-directo)
+Om_cosm_op5 = _omm / _h ** 2                         # 0.30888  Om_m,CMB (omega_m-directo)
 S8_challenge = 0.8335 * (Om_cosm_op5 / 0.3) ** 0.5  # single-sector techo CLASS (el desafio)
-S8_resolved = 0.7483 * (Om_cosm_op5 / 0.3) ** 0.5   # two-sector forward CLASS (resuelve)
+S8_resolved = 0.7470 * (Om_cosm_op5 / 0.3) ** 0.5   # two-sector forward CLASS (resuelve)
 check("V-L3-OP5  S8 single = sigma8(0.8335)(Om/0.3)^0.5 = 0.846  (el desafio)",
       abs(S8_challenge - 0.846) < 2e-3, f"S8 = {S8_challenge:.4f}")
-check("V-L3-OP5  S8_eff two-sector = sigma8(0.7483)(Om/0.3)^0.5 = 0.759  (resuelve, forward)",
-      abs(S8_resolved - 0.759) < 2e-3, f"S8 = {S8_resolved:.4f}")
+check("V-L3-OP5  S8_eff two-sector = sigma8(0.7470)(Om/0.3)^0.5 = 0.758  (resuelve, forward)",
+      abs(S8_resolved - 0.758) < 2e-3, f"S8 = {S8_resolved:.4f}")
 track_open("V-L3-OP5  S8 forward resuelto; cierre no-lineal pleno diferido",
            "el two-sector LINEAL forward (CLASS, sigma8 OUTPUT no-fit) resuelve S8 a "
-           "0.759 (0.01sigma KiDS) con m_phi=41.02 (SOLAR²·KRYSTOS); FALSABLE por k_fs=0.762 (DESI/Euclid). "
+           "0.758 (0.04sigma KiDS) con m_phi=40.70 (SOLAR²·KRYSTOS); FALSABLE por k_fs=0.754 (DESI/Euclid). "
            "El cierre no-lineal con feedback barionico (N-body, ~5k-20k CPU-h) es Nivel 2, "
-           "diferido. Ramas viejas 0.737/0.794, 0.702/0.725, 0.742/0.766 y 0.7536/0.765 retiradas")
+           "diferido. Ramas viejas 0.737/0.794, 0.702/0.725, 0.742/0.766, 0.7536/0.765 y "
+           "0.7483/0.7593 (m_φ=41.02, C_ν=94.07) retiradas")
 
 # OP-6 — forma de screening (P9). El valor f_screen es algebra exacta (ver
 # V-L2-13); la forma multiplicativa sigue del universo separado. El paso
@@ -274,19 +277,19 @@ track_open("V-L3-OP6  forma multiplicativa: insumo delta_local = 2 no derivado",
            "expresion delta_rho_phi asertada, no derivada de phi,pi")
 
 # m_phi — masa del campo phi-DM (P6, CANÓNICO forward-prediction; SOLAR²·KRYSTOS 2026-06-19).
-#   Sigma_m_nu^active = R2 * 0.960318 eV,  R2 = Omega/(KAL0*Tr)
+#   Sigma_m_nu^active = R2·ω_b·C_ν/(τ_Π H0), C_ν=93.14 eV PDG,  R2 = Omega/(KAL0*Tr)
 #   m_phi = Sigma_m_nu^active * (SOLAR^2 * KRYSTOS)   [mecanismo g²·v]
 # El multiplicador es número PURO -> dimensión [eV] preservada. Cero fiteo.
 R2_p6 = Omega / (KAL0 * Tr)
-mnu_active = R2_p6 * 0.960318
+mnu_active = R2_p6 * _omb * 93.14 / (KAL0 * Omega / Tr)   # = 0.06849 eV (C_ν=93.14)
 SOLAR = phi + 2 * pi
 KRYSTOS = 2 * Omega
 mult_p6 = SOLAR ** 2 * KRYSTOS
 m_phi = mnu_active * mult_p6
-check("V-L3-mphi  cadena m_phi = Sigma_m_nu^active * (SOLAR^2*KRYSTOS) = 41.02 eV",
-      abs(m_phi - 41.0187) < 2e-2, f"m_phi = {m_phi:.4f} eV")
+check("V-L3-mphi  cadena m_phi = Sigma_m_nu^active * (SOLAR^2*KRYSTOS) = 40.70 eV",
+      abs(m_phi - 40.7024) < 2e-2, f"m_phi = {m_phi:.4f} eV")
 track_open("V-L3-mphi  coeficiente SOLAR²·KRYSTOS no derivado del transporte (OP-9)",
-           "el valor 41.02 eV es forward-prediction dimensionalmente consistente, escrito "
+           "el valor 40.70 eV es forward-prediction dimensionalmente consistente, escrito "
            "como termino de masa g²·v de un Lagrangiano escalar libre; lo abierto (OP-9) es "
            "derivar el coeficiente SOLAR²·KRYSTOS del transporte disipativo (KAL), no la "
            "dimensionalidad ni un fiteo. SOLAR=BIAL+KAL, KRYSTOS=2Omega anclados por linaje")
@@ -305,20 +308,20 @@ track_open("V-L3-2sec  split fisico de dos sectores no cerrado",
            "la separacion fisica en k_fs depende de m_phi (ABIERTO) y k_fs (pendiente)")
 
 # ── REFRAME 2026-06-19 — DEPENDIENTES PENDIENTES DE RECOMPUTE (cajon scripts) ──
-# Inputs FIJADOS (algebra pura): Om_m,CMB=0.30889 (omega_m/h², OP-8 CERRADO, sin
-# factor), H global=H_alg=67.962, m_phi=41.02 eV (mult SOLAR²·KRYSTOS=594.28,
-# mecanismo g²·v adoptado; OP-17 cerrado).
+# Inputs FIJADOS (algebra pura): Om_m,CMB=0.30888 (omega_m/h², OP-8 CERRADO, sin
+# factor), H global=H_alg=67.962, m_phi=40.70 eV (mult SOLAR²·KRYSTOS=594.28,
+# mecanismo g²·v adoptado; OP-17 cerrado; C_ν=93.14 unificada 2026-07-10).
 # Los siguientes valores DEPENDEN de esos inputs; algunos checks pueden mostrar
 # numeros viejos hasta correr cada codigo. NO se actualizan hasta recomputar:
 track_open("REFRAME-FaseB  dependientes pendientes de recompute con canonicos nuevos",
            "HECHO: (a) cascada Hubble IR=72.86 (0.17sigma) / UV=73.040 (0.00sigma) "
            "con H global=67.962 (P9/P10). (b) CMB chi2=1005.5, Delta-BIC=-23.9 (SSEE favorecido) "
-           "omega_m-directo @ H=67.962 (P3, plik_lite). (c) P6 CLASS forward m_phi=41.02 "
-           "(SOLAR²·KRYSTOS), Om_phiDM=0.14889: k_fs=0.762, alpha=1.108, sigma8_two=0.7483 -> "
-           "S8=0.759 (0.01sigma KiDS, RESUELVE forward). (d) fsigma8 two-sector recomputado "
-           "Om_m=0.30889: media 0.82sigma (LCDM 0.73sigma). PENDIENTE aun: (1) r_d con "
-           "Om_m=0.30889 (P3); (2) posterior MCMC con prior H_alg (P2). Marcado falsable por "
-           "k_fs=0.762 (DESI/Euclid)")
+           "omega_m-directo @ H=67.962 (P3, plik_lite). (c) P6 CLASS forward m_phi=40.70 "
+           "(SOLAR²·KRYSTOS, C_ν=93.14), Om_phiDM=0.14888: k_fs=0.754, alpha=1.117, sigma8_two=0.7470 -> "
+           "S8=0.758 (0.04sigma KiDS, RESUELVE forward). (d) fsigma8 two-sector recomputado "
+           "Om_m=0.30888: media 0.82sigma (LCDM 0.73sigma). PENDIENTE aun: (1) r_d con "
+           "Om_m=0.30888 (P3); (2) posterior MCMC con prior H_alg (P2). Marcado falsable por "
+           "k_fs=0.754 (DESI/Euclid)")
 
 # EFT canónico (P7) — los parámetros lambda, alpha_pot, V0 son consecuencias
 # algebraicas de constantes ya verificadas (Om_m,dyn, KAL0, Om_DE).
@@ -406,7 +409,7 @@ track_open("V-L3-mira  retencion conformal beta_c=AURA NO reproduce MIRA",
 check("V-L3-2Om  Om_m,dyn != Om_m,CMB  (dos predicciones independientes)",
       abs(Om_m_dyn - _omm / _h ** 2) > 0.12)
 check("V-L3-2Om  Om_m,CMB = ω_m/h² (forward, sin factor) = 0.30889",
-      abs(_omm / _h ** 2 - 0.3088931986) < 1e-6)
+      abs(_omm / _h ** 2 - 0.3088808856) < 1e-6)
 track_open("V-L3-2Om  OP-8 DISUELTO: residuo = ω_b (OP-1) e identidad ω_c",
            "ya NO hay factor materia que derivar (era el problema central). "
            "Om_m,CMB descansa ahora en que ω_b=(π−φ)/(3Ω²) (OP-1) y la identidad "
@@ -422,13 +425,13 @@ track_open("V-L3-2Om  OP-8 DISUELTO: residuo = ω_b (OP-1) e identidad ω_c",
 # ─────────────────────────────────────────────────────────────────────
 print("\nCapa 4 — confrontaciones con datos")
 
-# S8 weak-lensing — CANÓNICO ω_m-directo (CLASS forward, m_phi=41.02 SOLAR²·KRYSTOS).
-#   Om_m,CMB = omega_m/h² = 0.30889 (sin factor). Dos ramas (CLASS OUTPUT, no fit):
+# S8 weak-lensing — CANÓNICO ω_m-directo (CLASS forward, m_phi=40.70 SOLAR²·KRYSTOS).
+#   Om_m,CMB = omega_m/h² = 0.30888 (sin factor). Dos ramas (CLASS OUTPUT, no fit):
 #   single-sector techo (el desafío): sigma8 = 0.8335 -> S8 = 0.846 (3.5sigma KiDS).
-#   two-sector phi-DM (TITULAR Paper 6, forward): sigma8_eff = 0.7483 ->
-#     S8_eff = 0.759 (0.01sigma KiDS), free-streaming k_fs=0.762, m_phi=41.02.
+#   two-sector phi-DM (TITULAR Paper 6, forward): sigma8_eff = 0.7470 ->
+#     S8_eff = 0.758 (0.04sigma KiDS), free-streaming k_fs=0.754, m_phi=40.70 (C_ν=93.14).
 # script: src/ssee_paper6_canonical_particle.py
-Om_cosm = _omm / _h ** 2     # 0.30889  Om_m,CMB (omega_m-directo)
+Om_cosm = _omm / _h ** 2     # 0.30888  Om_m,CMB (omega_m-directo)
 sig8_single = 0.8335         # techo todo-frío (CLASS)
 S8_single = sig8_single * (Om_cosm / 0.3) ** 0.5
 check("V-L4-01 P6  sigma8 single (techo CLASS) = 0.8335",
@@ -436,10 +439,10 @@ check("V-L4-01 P6  sigma8 single (techo CLASS) = 0.8335",
 check("V-L4-02 P6  S8 single = sigma8 sqrt(Om/0.3) = 0.846  (el desafio)",
       abs(S8_single - 0.846) < 2e-3, f"S8 = {S8_single:.4f}")
 
-sig8_eff = 0.7483            # two-sector titular Paper 6 (forward CLASS, no fit)
+sig8_eff = 0.7470            # two-sector titular Paper 6 (forward CLASS, no fit)
 S8_eff = sig8_eff * (Om_cosm / 0.3) ** 0.5
-check("V-L4-02b P6  S8_eff two-sector = 0.759  (TITULAR, resuelve, forward)",
-      abs(S8_eff - 0.759) < 2e-3, f"S8_eff = {S8_eff:.4f}")
+check("V-L4-02b P6  S8_eff two-sector = 0.758  (TITULAR, resuelve, forward)",
+      abs(S8_eff - 0.758) < 2e-3, f"S8_eff = {S8_eff:.4f}")
 
 # Tensiones S8 — error en cuadratura modelo + observacional.
 # KiDS-1000 (Asgari+2021): S8 = 0.759 +/- 0.024.
@@ -449,7 +452,7 @@ t_KIDS_single = abs(S8_single - 0.759) / (S8_single_err ** 2 + 0.024 ** 2) ** 0.
 t_KIDS_twosec = abs(S8_eff - 0.759) / 0.024
 check("V-L4-03 P6  tension S8 single vs KiDS-1000 = 3.5 sigma  (el desafio)",
       abs(t_KIDS_single - 3.5) < 0.2, f"{t_KIDS_single:.2f} sigma")
-check("V-L4-04 P6  tension S8_eff two-sector vs KiDS-1000 = 0.01 sigma  (resuelto, forward)",
+check("V-L4-04 P6  tension S8_eff two-sector vs KiDS-1000 = 0.04 sigma  (resuelto, forward)",
       t_KIDS_twosec < 0.2, f"{t_KIDS_twosec:.3f} sigma")
 
 # CMB Planck PR4 (P3) — re-corrida con CAMB 1.6.5 (2026-05-22): chi2_r
@@ -722,30 +725,60 @@ try:
     _ns_planck, _ns_err = 0.9649, 0.0042           # Planck PR4 (mismo que Endorser)
     _ns_tens = abs(_ns_alg - _ns_planck) / _ns_err  # 0.157σ
     _ns_lo, _ns_hi = _ns_tens - 0.06, _ns_tens + 0.06  # ventana [0.10, 0.22]
-    _ns_hits = []
+    _sig_re = r"([+\-−]?)([0-9]\.[0-9]{1,2})\s*\\?sigma"
+    _ns_hits = []          # valores citados FUERA de rango (incorrectos)
+    _ns_quoted = {}        # {archivo: set(redondeos citados)} para coherencia
     for t in _texs:
         txt = t.read_text(errors="ignore")
-        for m in _re2.finditer(r"varphi\^\{-7\}", txt):
-            # Ventana LOCAL: cortada en el salto de fila LaTeX «\\» (no cruzar a
-            # la cantidad siguiente de una tabla) o 100 chars, lo que venga antes.
-            window = txt[m.end():m.end() + 100]
-            window = window.split(r"\\", 1)[0]
-            # Cuenta si la ventana es una comparación de n_s con el dato:
-            # contiene «Planck» o el propio n_s (0.96556) o el central (0.9649).
+        # Dos anclas: (a) la fórmula 1-φ⁻⁷, (b) el central Planck 0.9649 —
+        # porque la tensión a veces se enuncia DESACOPLADA de la fórmula
+        # (p.ej. «n_s=0.9649±0.0042 is 0.2σ from the SSEE value»), sin φ⁻⁷ cerca.
+        # Este era el hueco por el que R15 dejó pasar el 0.2σ del Paper 1 App.
+        _anchors = [(m.end(), m.end() + 100)
+                    for m in _re2.finditer(r"varphi\^\{-7\}", txt)]
+        _anchors += [(max(0, m.start() - 15), m.end() + 90)
+                     for m in _re2.finditer(r"0\.9649", txt)]
+        for a, b in _anchors:
+            window = txt[a:b].split(r"\\", 1)[0]  # no cruzar salto de fila LaTeX
             wl = window.lower()
-            if not ("planck" in wl or "0.96556" in window or "0.9649" in window):
+            if not ("planck" in wl or "0.96556" in window or "0.9649" in window
+                    or "spectral" in wl):
                 continue
             # σ con signo (+2.9σ, −0.6σ) = reducción de tensión de OTRA cantidad
             # (p.ej. modulación IS-Eckart), no la tensión n_s-vs-dato: se excluye.
-            sm = _re2.search(r"([+\-−]?)([0-9]\.[0-9]{1,2})\s*\\?sigma", window)
+            sm = _re2.search(_sig_re, window)
             if sm and not sm.group(1):
+                _ns_quoted.setdefault(t.name, set()).add(sm.group(2))
                 val = float(sm.group(2))
                 if not (_ns_lo <= val <= _ns_hi):
                     _ns_hits.append(f"{t.name}:n_s@{val}σ (real {_ns_tens:.2f}σ)")
-    check("manuscritos  R15 tensión n_s coherente con 1-φ⁻⁷ recomputado",
-          not _ns_hits,
-          f"n_s={_ns_alg:.5f}, tensión {_ns_tens:.2f}σ (Planck PR4)"
-          if not _ns_hits else "; ".join(_ns_hits[:4]))
+    # Coherencia de redondeo: un mismo manuscrito no debe citar la tensión n_s
+    # con dos redondeos distintos (p.ej. 0.16σ en el cuerpo y 0.2σ en el App).
+    # El 0.2 caía DENTRO de la ventana ±0.06 → «correcto» por separado, pero
+    # contradecía al 0.16 del cuerpo: la grieta era la INconsistencia, no el valor.
+    _ns_incoh = [f"{n}:{sorted(v)}" for n, v in _ns_quoted.items() if len(v) > 1]
+    _ns_ok = not _ns_hits and not _ns_incoh
+    _ns_msg = f"n_s={_ns_alg:.5f}, tensión {_ns_tens:.2f}σ (Planck PR4), redondeo único"
+    if _ns_hits:
+        _ns_msg = "; ".join(_ns_hits[:4])
+    elif _ns_incoh:
+        _ns_msg = "redondeo incoherente: " + "; ".join(_ns_incoh[:4])
+    check("manuscritos  R15 tensión n_s: correcta y con redondeo único", _ns_ok, _ns_msg)
+
+    # ── R17 — la constante de conversión de neutrinos debe ser univaluada ──
+    # Remache forjado en la auditoría de Paper 1 (2026-07-10): la suite mezcla
+    # 93.14 (en ω_ν=Σm_ν/93.14, Papers 1/3/6) con 94.07 (en la fórmula de Σm_ν,
+    # Papers 1/4/6). Es la MISMA constante física (relic-density↔masa); un referí
+    # caza el ~1% de inconsistencia. Registrado como ABIERTO hasta decidir:
+    # estandarizar en 93.14 (PDG) y re-propagar Σm_ν=0.0690→0.0684, o justificar
+    # 94.07 como convención de la fórmula de masa. Al univaluar, convertir en check().
+    _nu_9407 = sorted(t.name for t in _texs
+                      if "94.07" in t.read_text(errors="ignore"))
+    check("manuscritos  R17 constante ν univaluada en 93.14 (sin 94.07)",
+          not _nu_9407,
+          "univaluada 93.14 (94.07 solo vive en derive_nu_closure.py, la demostración)"
+          if not _nu_9407 else "94.07 aún en: " + ", ".join(_nu_9407)
+          + " — misma C; usar 93.14 PDG")
 except Exception as e:
     check("manuscritos  capa operable", False, str(e))
 

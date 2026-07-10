@@ -36,7 +36,13 @@ Omega_b=(pi-phi)/(3*OMEGA**2)/H**2    # ω_b/h² algebraico = 0.04854
 om_b_h2=(pi-phi)/(3*OMEGA**2)         # 0.02242
 om_c_h2=KAL*om_b_h2*N_S               # 0.11951 (forward, ya en Paper 1)
 R2=OMEGA/(KAL*TRIAL)
-Smnu=R2*0.960318
+# Σm_ν = R₂·ω_b·C/(τ_Π H₀), transparente. C=93.14 eV = constante de cierre ν
+# PRECISA (N_eff=3.046, la de Planck); demostrada desde 1ros principios en
+# derive_nu_closure.py (deriva 94.06 instantáneo; 93.14 con corrección e⁺e⁻).
+# Univaluada en toda la suite (antes convivía con 94.07; auditoría 2026-07-10).
+C_nu=93.14
+tau_Pi=KAL*OMEGA/TRIAL            # = KAL/(3·Ω_DE) = 2.191, número puro
+Smnu=R2*om_b_h2*C_nu/tau_Pi       # = 0.0685 eV (antes 0.06902 con C≈93.85 baked)
 om_nu_h2=Smnu/93.14
 om_m_h2=om_b_h2+om_c_h2+om_nu_h2      # 0.14267
 Om_m=om_m_h2/H**2                     # 0.30889  Ω_m,CMB (derivado)

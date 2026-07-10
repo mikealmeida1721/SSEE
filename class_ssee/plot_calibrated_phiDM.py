@@ -5,20 +5,20 @@ Reescrito 2026-06-25 (reframe ω_m-directo + partícula SOLAR²·KRYSTOS):
 ELIMINA el fit α_WDM (que estaba calibrado a KiDS, output/alpha_calibrated.npy)
 y CONSUME el forward canónico — cero parámetros libres:
 
-  • P(k):  salida CLASS real con la partícula m_φ=41.02 eV
+  • P(k):  salida CLASS real con la partícula m_φ=40.70 eV
            (output/can_part__pk.dat = dos sectores; output/can_cold__pk.dat = techo frío)
            generada por ../src/ssee_paper6_canonical_particle.py
   • fσ₈:   ODE de crecimiento con fondo PLANO Ω_m=0.30889 (Ω_DE=1−Ω_m=0.69111),
            idéntica a ../src/p06_phiDM/ssee_paper6_verification.py
 
-Amplitud σ₈ del two-sector = 0.748 (CON free-streaming), usada para fσ₈ Y S₈
+Amplitud σ₈ del two-sector = 0.747 (CON free-streaming), usada para fσ₈ Y S₈
 (CORREGIDO 2026-06-29):
-  σ₈ = 0.748 → tanto S₈/lensing como fσ₈/RSD. La supresión de free-streaming
+  σ₈ = 0.747 → tanto S₈/lensing como fσ₈/RSD. La supresión de free-streaming
        muerde DENTRO de la ventana σ₈(R=8) que mide RSD (k_half≈0.35 h/Mpc),
        no solo el lensing. El uso previo de σ₈=0.814 (sin supresión) para fσ₈
        suponía "k≪k_fs, φ-DM agrupa como frío" — VERIFICADO FALSO.
   σ₈_single = 0.811·G_2s = 0.814 → baseline single-sector (SIN free-streaming, 0.70σ).
-  k_fs = 0.762 h/Mpc (analítico DW, falseable DESI/Euclid)
+  k_fs = 0.754 h/Mpc (analítico DW, falseable DESI/Euclid)
 """
 import numpy as np
 import matplotlib
@@ -49,8 +49,8 @@ omega_nu= mnu / 93.14
 omega_m = omega_b + omega_c + omega_nu
 Om_total = omega_m / h_**2             # 0.30889 (Ω_m,CMB, clustering)
 Om_CDM   = 1.0 + w0                    # 0.160 (sector dinámico)
-m_phi    = 41.02
-k_fs     = 0.762
+m_phi    = 40.70
+k_fs     = 0.754
 sig8_Planck = 0.811
 
 # Cada fondo PLANO por separado: Ω_DE = 1 − Ω_m (corrige el artefacto fσ₈ 0.82σ)
@@ -87,7 +87,7 @@ sol_lcdm = solve_ivp(growth_lcdm,          [lna_pts[0],0.0], IC, t_eval=lna_pts,
 
 G_2s = sol_2s.y[0][-1] / sol_lcdm.y[0][-1]
 sig8_growth = sig8_Planck * G_2s       # amplitud RSD (fσ₈)
-sig8_eff    = 0.748                     # free-streaming CLASS (S₈/lensing)
+sig8_eff    = 0.747                     # free-streaming CLASS (S₈/lensing)
 S8_eff      = sig8_eff * np.sqrt(Om_total/0.3)
 
 D_2s  = sol_2s.y[0]/sol_2s.y[0][-1];   Dp_2s  = sol_2s.y[1]/sol_2s.y[0][-1]
@@ -96,7 +96,7 @@ D_lc  = sol_lcdm.y[0]/sol_lcdm.y[0][-1]; Dp_lc = sol_lcdm.y[1]/sol_lcdm.y[0][-1]
 # ── P(k) forward desde CLASS (cero fit) ───────────────────────────────────────
 def load(f):
     d = np.loadtxt(f, comments="#"); return d[:,0], d[:,1]
-k_p, P_p = load("output/can_part__pk.dat")   # dos sectores (partícula m_φ=41.02)
+k_p, P_p = load("output/can_part__pk.dat")   # dos sectores (partícula m_φ=40.70)
 k_c, P_c = load("output/can_cold__pk.dat")   # frío (techo σ₈=0.8335)
 k_l, P_l = load("output/lcdm_planck2018__pk.dat")
 
@@ -136,13 +136,13 @@ def get_fsig8(z, D, Dp, s8):
     D_t = float(np.interp(lna, lna_pts, D))
     return f_t * s8 * D_t
 
-# two-sector usa σ₈=0.748 (CON free-streaming); single-sector usa 0.814 (baseline)
+# two-sector usa σ₈=0.747 (CON free-streaming); single-sector usa 0.814 (baseline)
 fs_2s     = np.array([get_fsig8(z, D_2s, Dp_2s, sig8_eff)    for z in Z_RSD])
 fs_single = np.array([get_fsig8(z, D_2s, Dp_2s, sig8_growth) for z in Z_RSD])
 fs_lcdm   = np.array([get_fsig8(z, D_lc, Dp_lc, sig8_Planck) for z in Z_RSD])
 t_2s      = (fo - fs_2s)/fe
 t_single  = (fo - fs_single)/fe
-print(f"\n  fσ₈ tensión media two-sector (σ₈=0.748) = {np.mean(np.abs(t_2s)):.4f}σ  (<1σ)")
+print(f"\n  fσ₈ tensión media two-sector (σ₈=0.747) = {np.mean(np.abs(t_2s)):.4f}σ  (<1σ)")
 print(f"  fσ₈ tensión media single-sector (σ₈={sig8_growth:.4f}) = {np.mean(np.abs(t_single)):.4f}σ  (baseline)")
 
 # ═══════════════════════════════════════════════════════════════════════════════

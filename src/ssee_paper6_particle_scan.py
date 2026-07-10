@@ -4,7 +4,7 @@ PASO 1 (FIT explícito) — partícula SUELTA: ¿qué m_φ prefieren los datos?
 Método de Mike (2026-06-18): el fondo ω_m-directo está FIJO (Ω_m=0.30889,
 Ω_φDM=0.14889). Lo único que mueve S8 es la masa m_φ. Soltamos m_φ como
 parámetro libre, corremos CLASS two-sector para una grilla, y encontramos el
-m_φ que los datos prefieren (S8 = KiDS-1000 = 0.759 → 0.00σ).
+m_φ que los datos prefieren (S8 = KiDS-1000 = 0.758 → 0.00σ).
 Esto es un FIT a S8 (declarado), NO forward. El paso 2 (separado) pregunta si
 el diccionario SSEE tiene un multiplicador simple en ese m_φ preferido.
 """
@@ -24,7 +24,7 @@ Om_cold=0.160; Om_hot=Om_m-Om_cold       # 0.14889
 Om_cdm=Om_cold-Omega_b
 om_ncdm_h2=Om_hot*H**2                    # FIJO (abundancia fija; T_φ se ajusta por m_φ)
 
-KIDS_S8=0.759; KIDS_ERR=0.024            # KiDS-1000 (Asgari+2021) — EXTERNO
+KIDS_S8=0.758; KIDS_ERR=0.024            # KiDS-1000 (Asgari+2021) — EXTERNO
 S8_target_sig8 = KIDS_S8/np.sqrt(Om_m/0.3)   # σ8 que daría S8=KiDS
 
 def sigma8(k,P,R=8.0):

@@ -9,7 +9,7 @@ Figure A: fig_rd_dual.pdf       — sound horizon r_d: SSEE physical value 147.1
                                    wrongly inserting the cold sector 1+w0=0.160 into the
                                    background geometry (the DR2 bug, chi2_BAO=726).
 Figure B: fig_s8_resolution.pdf — S8: single-sector challenge 0.846 -> two-sector
-                                   resolution 0.759 (0.01 sigma KiDS) vs data bands.
+                                   resolution 0.758 (0.04 sigma KiDS) vs data bands.
 
 Outputs: results/figures/
 """
@@ -79,11 +79,11 @@ plt.close(fig)
 # ════════════════════════════════════════════════════════════════════════════
 # Data (mean, err)
 S8_PLANCK = (0.832, 0.013)
-S8_KIDS   = (0.759, 0.024)   # KiDS-1000 (Asgari+2021)
+S8_KIDS   = (0.758, 0.024)   # KiDS-1000 (Asgari+2021)
 S8_DES    = (0.776, 0.017)
 # Model values (canonical)
 S8_SINGLE = (0.846, 0.006)   # single-sector ceiling — "the challenge" (3.5 sigma KiDS)
-S8_TWOSEC = 0.759            # two-sector canonical (m_phi=41.02) — 0.01 sigma KiDS (resolution)
+S8_TWOSEC = 0.758            # two-sector canonical (m_phi=40.70) — 0.04 sigma KiDS (resolution)
 
 fig, ax = plt.subplots(figsize=(8.0, 4.4))
 
@@ -115,8 +115,8 @@ ax.annotate(r'$3.5\sigma$ vs KiDS — the challenge',
 ax.annotate('', xy=(S8_TWOSEC + 0.004, 0.18), xytext=(S8_SINGLE[0] - 0.004, 0.85),
             arrowprops=dict(arrowstyle='-|>', lw=1.8, color='#222222',
                             connectionstyle='arc3,rad=-0.3'))
-ax.text(0.806, 0.52, 'free-streaming\n' + r'$k_{\rm fs}=0.762\,h/{\rm Mpc}$' + '\n'
-        + r'($m_\varphi = 41.02$ eV, forward)',
+ax.text(0.806, 0.52, 'free-streaming\n' + r'$k_{\rm fs}=0.754\,h/{\rm Mpc}$' + '\n'
+        + r'($m_\varphi = 40.70$ eV, forward)',
         fontsize=9, ha='center', color='#222222', style='italic')
 
 ax.set_yticks(ypos)

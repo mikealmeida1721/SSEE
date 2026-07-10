@@ -115,16 +115,16 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | Ω_b h² (posterior MCMC reframe) | **0.02221 ± 0.00045** (≈BBN 0.02218) | `ssee_paper2_mcmc_reframe.py` (era 0.02285/0.02343 con geometría 0.160) | 2026-07-09 |
 | r_d,SSEE (MCMC, geometría total Ω_m=0.30889) | **148.15 Mpc** ≈ r_d(ΛCDM) 147.78 (ratio 1.002) | `ssee_paper2_mcmc.py` → `results/logs/mcmc_paper2_3models_om308.log` | 2026-07-09 (el 175.16 crudo era Ω_m,dyn=0.160 en E(z), bug superado) |
 | r_d (CAMB, reframe ω_m-directo @ H=67.962, Ω_m,CMB=0.30889) | 147.17 Mpc — **0.32σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` (sin mapping MIRA; era 146.73@67.037) | 2026-06-19 |
-| χ²_r CMB TT (SSEE) | 1.042 | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962, Σm_ν=0.0690) → `results/logs/paper3_cmb_reframe.log` | 2026-06-19 (era 1.044 @67.04 legacy) |
+| χ²_r CMB TT (SSEE) | 1.042 | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962, Σm_ν=0.0685) → `results/logs/paper3_cmb_reframe.log` | 2026-06-19 (era 1.044 @67.04 legacy) |
 | ΔBIC CMB diagonal (SSEE−ΛCDM) | −34.9 (SSEE favorecido) | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962) → `results/logs/paper3_cmb_reframe.log` | 2026-06-19 (era −28.0 @67.04 legacy MIRA superado) |
 | ΔBIC CMB plik_lite TTTEEE (ω_m-directo, k=2) | **−23.93** (χ²=1005.50 @ H_alg=67.962) | `run_p3_reframe.py` → `results/logs/p3_cmb_reframe_omega_m.log` | 2026-06-19 (canónico reframe; Cobaya legacy −32.2 @67.037 superado) |
 | θ* (CAMB, en anchor H_alg 67.962, mnu=0.069) | 0.59668° (100θ*=1.04140) — **1.05σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-06-19 |
 | θ* (CAMB, en posterior 67.9475, mnu=0.069) | 0.59666° (100θ*=1.04136) — **0.91σ** (posterior coincide con anchor; la tensión 6.66σ era el bug del sector 0.160 en E(z), V-L4-DESI) | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-07-09 (geometría total corregida; posterior 67.159/66.41 superados) |
 | σ₈ / S₈ SSEE (Paper 5 single-sector, "el desafío") | 0.8335 / 0.846 — **3.5σ KiDS** | `ssee_paper5_IS_perturbations.py` (G=1.011, Ω_m,CMB=0.30889) | 2026-06-19 (canónico; antes 0.820/0.847 @0.3199) |
-| σ₈ para fσ₈ (Paper 6 two-sector) | **0.748** (R=8, CON free-streaming) → tensión media **0.93σ** | `ssee_paper6_verification.py`, `ssee_paper6_mcmc_v2.py` | 2026-06-29 (CORREGIDO: antes "0.811·G_2s=0.794, amplitud RSD k<k_fs" suponía supresión NO alcanza RSD — FALSO; k_half=0.351 muerde DENTRO de la ventana σ₈(R=8), σ₈ cae 6.9% ya a k=0.3; single-sector legítimo 0.70σ con σ₈=0.8136) |
-| σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.748 / 0.759 — **0.01σ KiDS** | `ssee_paper6_canonical_particle.py` (forward CLASS) | 2026-06-19 (canónico SOLAR; antes 0.742/0.766 @36.95) |
-| m_φ (Paper 6 forward-pred, dim. consistente) | 41.02 eV | Σm_ν^act·(SOLAR²·KRYSTOS=594.28), `ssee_core` | 2026-06-19 (canónico; era 36.9463 vía Ω⁴+AURA·KAL) |
-| k_fs (Paper 6, output CLASS) | 0.762 h/Mpc | CLASS (`calibrate_wdm_alpha.py`, α=1.108 Mpc/h) | 2026-06-19 (canónico) |
+| σ₈ para fσ₈ (Paper 6 two-sector) | **0.747** (R=8, CON free-streaming) → tensión media **0.93σ** | `ssee_paper6_verification.py`, `ssee_paper6_mcmc_v2.py` | 2026-06-29 (CORREGIDO: antes "0.811·G_2s=0.794, amplitud RSD k<k_fs" suponía supresión NO alcanza RSD — FALSO; k_half=0.351 muerde DENTRO de la ventana σ₈(R=8), σ₈ cae 6.9% ya a k=0.3; single-sector legítimo 0.70σ con σ₈=0.8136) |
+| σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.747 / 0.758 — **0.01σ KiDS** | `ssee_paper6_canonical_particle.py` (forward CLASS) | 2026-06-19 (canónico SOLAR; antes 0.742/0.766 @36.95) |
+| m_φ (Paper 6 forward-pred, dim. consistente) | 40.70 eV | Σm_ν^act·(SOLAR²·KRYSTOS=594.28), `ssee_core` | 2026-06-19 (canónico; era 36.9463 vía Ω⁴+AURA·KAL) |
+| k_fs (Paper 6, output CLASS) | 0.754 h/Mpc | CLASS (`calibrate_wdm_alpha.py`, α=1.117 Mpc/h) | 2026-06-19 (canónico) |
 
 **Historial de deriva de H₀ MCMC** (para entender por qué cambió): el MCMC
 es determinista (semilla fija 42) — *mismo script → mismo número*. La
@@ -220,7 +220,7 @@ dimensional pasa.
 | V-L2-08 | αK | 3·Ω_DE·Ω_m,dyn | 0.4033024589 | ✓ | verificado |
 | V-L2-09 | βc | −AURA | −3.9978473099 | ✓ | verificado |
 | V-L2-10 | m_φ | Σm_ν^act·(Ω⁴+AURA·KAL₀) — forward-pred | 36.9463 eV | ✓ | verificado (dim.) |
-| V-L2-11 | k_fs | free-streaming de m_φ (output CLASS) | 0.762 h/Mpc | — | pendiente L3 |
+| V-L2-11 | k_fs | free-streaming de m_φ (output CLASS) | 0.754 h/Mpc | — | pendiente L3 |
 | V-L2-12 | r | 12α/N²  (α=φ⁴/3, N=2φ⁷) | 0.00813062 | ✓ | verificado |
 | V-L2-13 | f_screen | αK/(3·MIRA) = (π−φ)/Ω² | 0.0672532703 | ✓ | verificado |
 
@@ -271,7 +271,7 @@ apoya en mecanismos de Capa 3 aún no verificados — no pueden pasar de
 - **r** (V-L2-12): depende de α=φ⁴/3 y N=2φ⁷ (OP-2).
 - **f_screen** (V-L2-13): la *identidad algebraica* está verificada, pero el
   *mecanismo* de screening depende de P9 (el árbitro lo llamó circular).
-- **k_fs** (V-L2-11): depende de m_φ (canónico 41.02 eV) y del cómputo CLASS (L3).
+- **k_fs** (V-L2-11): depende de m_φ (canónico 40.70 eV) y del cómputo CLASS (L3).
 
 **Estado Capa 2:** 11/13 `verificado` (numérica + dimensional + identidades);
 1 `ABIERTO` (H₀^alg — adimensional vs km/s/Mpc); 1 `pendiente L3` (k_fs).
@@ -425,13 +425,13 @@ dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
 
 ## V-L3-OP5 — tensión S₈ weak-lensing / HMcode bariónico — **ABIERTO (anclado en rama secundaria)**
 
-*Claim CLAUDE.md (canónico 2026-06-19):* titular two-sector S₈_eff=0.759 (0.01σ KiDS).
+*Claim CLAUDE.md (canónico 2026-06-19):* titular two-sector S₈_eff=0.758 (0.01σ KiDS).
 
 1. **✓ definición:** S₈ = σ₈(Ω_m/0.3)^½ con Ω_m,CMB=0.30889 (√(Ω_m/0.3)=1.0147).
 2. **✓ single-sector (el desafío):** σ₈=0.8335 → S₈=0.846 — **3.5σ KiDS**.
    Es el baseline que el modelo debe resolver.
-3. **✓ two-sector φ-DM (TITULAR, forward):** el free-streaming en k_fs=0.762
-   h/Mpc (de m_φ=41.02 eV SOLAR²·KRYSTOS, cero fiteo) baja σ₈_eff a 0.7483 → **S₈_eff=0.759
+3. **✓ two-sector φ-DM (TITULAR, forward):** el free-streaming en k_fs=0.754
+   h/Mpc (de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo) baja σ₈_eff a 0.7470 → **S₈_eff=0.758
    = 0.01σ KiDS-1000**. RESUELVE la tensión S₈, sin parámetros libres.
 4. **○ refinamiento no-lineal (Nivel 2, diferido):** el cierre no-lineal pleno
    con feedback bariónico (N-body SSEE, ~5k–20k CPU-h) queda pendiente; HMcode-2020
@@ -469,10 +469,10 @@ Sólo el refinamiento no-lineal Nivel 2 queda ABIERTO.
 álgebra exacta *condicionada* a δ_local=2 y a una expresión δρ_φ asertada.
 No es "RESUELTO" pleno. **PARCIAL.**
 
-## V-L3-mphi — masa del campo φ-DM, m_φ = 41.02 eV — **PARCIAL (cadena dim. consistente, Lagrangiano abierto OP-9)**
+## V-L3-mphi — masa del campo φ-DM, m_φ = 40.70 eV — **PARCIAL (cadena dim. consistente, Lagrangiano abierto OP-9)**
 
 *Claim CLAUDE.md (canónico 2026-06-04):* "m_φ = Σm_ν^active × (Ω⁴+AURA·KAL₀)
-= 41.02 eV — forward-prediction, cero fiteo".
+= 40.70 eV — forward-prediction, cero fiteo".
 
 1. **✓ numérico:** la cadena cierra — Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV
    = 0.071875·0.960318 = 0.069023 eV; multiplicador Ω⁴+AURA·KAL₀ = 535.2795;
@@ -498,8 +498,8 @@ parámetros libres), pero su justificación desde un Lagrangiano sigue abierta
    MIRA·Ω_m,dyn = 0.30889. Diferencia con V-L2-05 = 0 exacto. Es una
    **re-partición algebraica** de Ω_m,cosm en dos mitades casi iguales.
 2. **⚠ split físico:** que un sector (φ-DM) free-streame para k>k_fs y el
-   otro (CDM) no, descansa en m_φ=41.02 eV (canónico, cadena dim. consistente
-   — V-L3-mphi PARCIAL) y en k_fs=0.762 h/Mpc (output CLASS). El cierre del
+   otro (CDM) no, descansa en m_φ=40.70 eV (canónico, cadena dim. consistente
+   — V-L3-mphi PARCIAL) y en k_fs=0.754 h/Mpc (output CLASS). El cierre del
    Lagrangiano que justifique el split sigue en OP-9.
 
 **Veredicto:** la suma Ω_total es un re-enunciado exacto de V-L2-05; el
@@ -900,12 +900,12 @@ Usa Ω_m,CMB=0.30889 → √(Ω_m,CMB/0.3)=1.0147 (S₈ es amplitud gravitaciona
 1. **✓ single-sector ("el desafío"):** σ₈ = 0.8335 (techo CLASS todo-frío,
    fuente Poisson Ω_m,CMB=0.30889).
    S₈ = 0.8335·1.0147 = 0.846 → **3.5σ KiDS-1000** (DES-Y3 ≈ 3.5σ).
-2. **✓ two-sector φ-DM (TITULAR, forward):** σ₈_eff = 0.7483 (free-streaming
-   CLASS, k_fs=0.762 de m_φ=41.02 eV SOLAR²·KRYSTOS, cero fiteo). S₈_eff = 0.7483·1.0147 =
-   **0.759 → 0.01σ KiDS-1000**. RESUELVE la tensión.
+2. **✓ two-sector φ-DM (TITULAR, forward):** σ₈_eff = 0.7470 (free-streaming
+   CLASS, k_fs=0.754 de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo). S₈_eff = 0.7470·1.0147 =
+   **0.758 → 0.01σ KiDS-1000**. RESUELVE la tensión.
 
 **Veredicto:** la cadena S₈ es aritméticamente correcta y usa la Ω_m correcta.
-El titular es el two-sector (0.759, 0.01σ). La cadena vieja G=0.866 →
+El titular es el two-sector (0.758, 0.01σ). La cadena vieja G=0.866 →
 σ₈=0.7023 → S₈=0.7253 (fuente Ω_m,dyn) está **retirada**. **Verificado.**
 
 ## V-L4-DES — referencia DES-Y3 inconsistente entre scripts — **ABIERTO**
@@ -1061,7 +1061,7 @@ Re-corridos los tres pipelines (CAMB r_d, CAMB CMB, emcee MCMC) el
 | **ABIERTO — tensión grave (enmascarada)** | r_d 4.47σ, θ* 5.62σ — al usar el H₀ canónico |
 | **ABIERTO — deriva de valor (resuelta)** | H₀ MCMC 66.75→67.76 — re-anclado a 67.756 |
 | **ABIERTO — tensión física** | Ω_b h² −1.2σ vs OP-1 |
-| **ABIERTO — inconsistencia de referencia** | DES-Y3 (0.776 vs 0.759) |
+| **ABIERTO — inconsistencia de referencia** | DES-Y3 (0.776 vs 0.758) |
 
 **Lo que reprodujo es sólido**: el ajuste al CMB (χ²_r) y la preferencia
 estadística por SSEE (ΔBIC negativo en P2 y P3) se sostienen al re-correr.

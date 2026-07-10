@@ -19,7 +19,7 @@ Anti-ambigüedad de archivos multi-z de CLASS: σ₈(z) es monótona decreciente
 ordeno σ₈ de todos los archivos y mapeo σ₈↓ ↔ z↑.  No dependo del orden de CLASS.
 
 Uso:
-  python ssee_paper6_mcmc_grid.py --test     # solo punto canónico, valida σ₈≈0.748
+  python ssee_paper6_mcmc_grid.py --test     # solo punto canónico, valida σ₈≈0.747
   python ssee_paper6_mcmc_grid.py --run       # grilla completa → .npz en HDD
 """
 import numpy as np, subprocess, os, sys, glob, time
@@ -51,11 +51,11 @@ om_nu_h2= Smnu/93.14
 om_m_h2 = om_b_h2 + om_c_h2 + om_nu_h2     # 0.14267
 Om_m    = om_m_h2 / h2                     # 0.30889  Ω_m,CMB (fijo, anclado CMB)
 
-# Punto canónico (forward): Ω_φDM=0.149, m_φ=41.02 eV
+# Punto canónico (forward): Ω_φDM=0.149, m_φ=40.70 eV
 SOLAR   = (pi + phi)/2 + KAL               # φ+2π = 7.9012
 KRYSTOS = 2*OMEGA
 MULT    = SOLAR**2 * KRYSTOS               # 594.28
-M_PHI_CAN = Smnu*MULT                      # 41.02 eV
+M_PHI_CAN = Smnu*MULT                      # 40.70 eV
 OM_PHIDM_CAN = Om_m - 0.160                # 0.149
 
 # ── Redshifts: 6 RSD + densos para derivar f(z) ──────────────────────────────
@@ -116,7 +116,7 @@ def run_class_multiz(tag, Om_phiDM, m_phi, z_list):
 
 def test_canonical():
     print("="*70)
-    print("  TEST punto canónico — debe reproducir σ₈(0)≈0.748 del forward")
+    print("  TEST punto canónico — debe reproducir σ₈(0)≈0.747 del forward")
     print("="*70)
     print(f"  Ω_m,CMB={Om_m:.5f}  Ω_φDM={OM_PHIDM_CAN:.5f}  m_φ={M_PHI_CAN:.4f} eV")
     t0 = time.time()
@@ -125,10 +125,10 @@ def test_canonical():
         print("  ✗ CLASS falló"); return
     s8z, T_phi, Nur, Om_cdm = res
     print(f"  T_φ={T_phi:.5f}  N_ur={Nur:.4f}  Ω_cdm={Om_cdm:.5f}  ({time.time()-t0:.1f}s)")
-    print(f"  σ₈(z=0)   = {s8z[0.0]:.4f}   (forward CLASS: 0.7483)")
+    print(f"  σ₈(z=0)   = {s8z[0.0]:.4f}   (forward CLASS: 0.7470)")
     s8_0 = s8z[0.0]
-    print(f"  S₈(z=0)   = {s8_0*np.sqrt(Om_m/0.3):.4f}   (forward: 0.759)")
-    ok = abs(s8_0 - 0.7483) < 0.01
+    print(f"  S₈(z=0)   = {s8_0*np.sqrt(Om_m/0.3):.4f}   (forward: 0.758)")
+    ok = abs(s8_0 - 0.7470) < 0.01
     print(f"  {'✓ COINCIDE' if ok else '✗ NO coincide'} con el forward (tol 0.01)")
     return ok
 
@@ -169,7 +169,7 @@ def run_grid():
     ic = np.argmin(abs(grid_phidm - OM_PHIDM_CAN))
     jc = np.argmin(abs(grid_mphi - M_PHI_CAN))
     print(f"  σ₈(0) vértice≈canónico (Ω_φDM={grid_phidm[ic]:.3f}, m_φ={grid_mphi[jc]:.1f}) "
-          f"= {s8z_grid[ic, jc, 0]:.4f}  (forward 0.748)")
+          f"= {s8z_grid[ic, jc, 0]:.4f}  (forward 0.747)")
 
 if __name__ == "__main__":
     if "--test" in sys.argv:

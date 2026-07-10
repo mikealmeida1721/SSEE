@@ -102,7 +102,7 @@ record('P4', 'H_alg = 3(φ+π)²', 'algebraico puro', H0_ALG_KMSMPC, H0_ALG_KMSM
        'km/s/Mpc', True, '✅ Type-P invariante',
        'Es el origen del 67.96 — no cascada (por definición).')
 
-record('P4', 'Σm_ν^active', 'R × Ω_b·h² × 94.07 / τ_Π',
+record('P4', 'Σm_ν^active', 'R × Ω_b·h² × 93.14 / τ_Π',
        0.0824, 0.0824, 'eV', True, '⚠ Type-P retenido',
        'Si Ω_b·h² cambia 1% bajo MCMC MIRA, Σm_ν cambia ~1%. NO recomputado.')
 

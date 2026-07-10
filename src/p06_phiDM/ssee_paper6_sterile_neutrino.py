@@ -56,7 +56,7 @@ tau_Pi  = KAL0 / (3.0 * OmDE)
 # Residuo acústico (Paper 4) → masa neutrino activo
 R_acoustic   = 4 * KAL0 - 22             # 0.0856
 Ob_h2_ssee   = (pi_ - phi) / (3*(phi + pi_)**2)   # 0.02242 = (π−φ)/H₀_SSEE (OP-1)
-mnu_active   = R_acoustic * Ob_h2_ssee * 94.07 / tau_Pi  # 0.0824 eV
+mnu_active   = R_acoustic * Ob_h2_ssee * 93.14 / tau_Pi  # 0.0824 eV
 
 # φ-DM fracciones
 Om_CDM   = Omm_dyn           # 0.160
@@ -135,8 +135,8 @@ candidates = {
     "Σm_ν × (φ+π)²":                     mnu_active * (phi+pi_)**2,
     "Σm_ν × (φ+π)³":                     mnu_active * (phi+pi_)**3,
     "Σm_ν × KAL₀³/MIRA":                mnu_active * KAL0**3 / MIRA,
-    "R_acoustic × 94.07 eV":             R_acoustic * 94.07,    # eV
-    "R² × 94.07 eV / Ω_b h²":           R_acoustic**2 * 94.07 / Ob_h2_ssee,
+    "R_acoustic × 93.14 eV":             R_acoustic * 93.14,    # eV
+    "R² × 93.14 eV / Ω_b h²":           R_acoustic**2 * 93.14 / Ob_h2_ssee,
 }
 
 m_th_meV = m_needed_thermal * 1e6  # meV (keV → meV: ×1e6... wait keV = 1e6 meV)

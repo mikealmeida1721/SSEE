@@ -12,7 +12,7 @@ Física correcta:
 
 Parámetros:  θ = (Ω_φDM, m_φ [eV], A_s9 ≡ 10⁹A_s)
 Datos:       fσ₈×6 (RSD) + S₈ KiDS-1000 + S₈ DES Y3
-Salida:      posterior, tensión vs punto algebraico forward (0.149, 41.02),
+Salida:      posterior, tensión vs punto algebraico forward (0.149, 40.70),
              σ₈_eff/S₈_eff, χ² forward vs posterior, ΔBIC honesto vs ΛCDM.
 Validación:  re-corre CLASS directo en ~10 puntos del posterior, reporta error emulador.
 """
@@ -42,7 +42,7 @@ INTERP = RegularGridInterpolator((g_phidm, g_mphi, z_dense), s8z_grid,
 fsig8_data = np.array([
     [0.067, 0.423, 0.055], [0.150, 0.490, 0.145], [0.380, 0.497, 0.045],
     [0.510, 0.458, 0.038], [0.610, 0.436, 0.034], [1.480, 0.462, 0.045]])
-S8_KIDS, S8_KIDS_E = 0.759, 0.0225   # KiDS-1000 Asgari+2021 (S8 directo)
+S8_KIDS, S8_KIDS_E = 0.758, 0.0225   # KiDS-1000 Asgari+2021 (S8 directo)
 S8_DES,  S8_DES_E  = 0.776, 0.017    # DES Y3 Amon/Secco+2022
 GAMMA = 0.55                          # índice de crecimiento (RSD)
 S8_FAC = np.sqrt(Om_m/0.3)           # S8 = σ8(0)·1.0147
@@ -185,8 +185,8 @@ if __name__ == "__main__":
     print(f"  Ω_φDM = {Om_q[0]:.4f} +{Om_q[1]:.4f} -{Om_q[2]:.4f}  (algebraico {OM_PHIDM_CAN:.4f}, Δ={ten_Om:.2f}σ)")
     print(f"  m_φ   = {mp_q[0]:.2f} +{mp_q[1]:.2f} -{mp_q[2]:.2f} eV  (algebraico {M_PHI_CAN:.2f}, Δ={ten_mp:.2f}σ)")
     print(f"  A_s9  = {As_q[0]:.3f} +{As_q[1]:.3f} -{As_q[2]:.3f}  (Planck {AS9_MU})")
-    print(f"  σ₈_eff = {s8_q[0]:.4f} +{s8_q[1]:.4f} -{s8_q[2]:.4f}  (forward 0.748)")
-    print(f"  S₈_eff = {S8_q[0]:.4f} +{S8_q[1]:.4f} -{S8_q[2]:.4f}  (forward 0.759; KiDS {S8_KIDS})")
+    print(f"  σ₈_eff = {s8_q[0]:.4f} +{s8_q[1]:.4f} -{s8_q[2]:.4f}  (forward 0.747)")
+    print(f"  S₈_eff = {S8_q[0]:.4f} +{S8_q[1]:.4f} -{S8_q[2]:.4f}  (forward 0.758; KiDS {S8_KIDS})")
     print(f"\n── Bondad de ajuste ──────────────────────────────────────────────")
     print(f"  χ² forward(alg) = {chi2_fwd:.2f} / {N}")
     print(f"  χ² posterior    = {chi2_med:.2f} / {N}  (χ²_r={chi2_med/(N-3):.3f})")

@@ -179,6 +179,7 @@ retired:
   - {pattern: "0.762\\,h", reason: "k_fs @41.02 (C_ν=94.07) → 0.754\\,h @40.70 (C_ν=93.14)"}
   - {pattern: "0.762 h",   reason: "k_fs @41.02 (variante con espacio)"}
   - {pattern: "147.156", reason: "r_d CAMB viejo (P3) → 147.17 canónico (0.32σ; log p3_rd_reframe); era outlier vs P2/Ledger"}
+  - {pattern: "147.15", reason: "r_d CAMB viejo redondeado (P3 conclusiones) → 147.17 canónico"}
 
 # Palabras que, si aparecen en la misma línea que un valor retirado, indican
 # que está citado como historia/coincidencia (NO como vigente) → no es drift.

@@ -1008,13 +1008,14 @@ To confirm that the compressed-prior posteriors of §\ref{sec:results_cosmo} are
 artefact of the Planck distance-prior approximation, we ran an independent MCMC with the
 \emph{full} CMB likelihood (CAMB with Planck \texttt{plik\_lite} TTTEEE + lensing),
 combined with DESI~DR2 BAO and $f\sigma_8$, sampling $\wz,\wa$ \emph{freely}
-(four chains, $\sim$48k post-burn-in samples, Gelman--Rubin $R-1<0.003$).
-The free-fit posterior $(\wz,\wa)=(-0.69,-1.06)$ \emph{excludes} the cosmological
-constant $(-1,0)$ at $2.4\sigma$, independently confirming a dynamical equation of
-state. The \SSEE\ algebraic point $(-0.840,-0.670)$ lies at $0.68\sigma$ from this
-posterior --- more than three times closer than $\Lambda$CDM (Fig.~\ref{fig:degeneracy}).
-The $\wz$--$\wa$ posterior is strongly anticorrelated ($\rho=-0.92$) and \SSEE\ falls
-within its $1\sigma$ region. The full CMB power-spectrum treatment is developed in
+(four chains, $\sim$53k post-burn-in samples, Gelman--Rubin $R-1<0.003$).
+The free-fit posterior $(\wz,\wa)=(-0.655,-1.104)$ \emph{excludes} the cosmological
+constant $(-1,0)$ at $3.22\sigma$, independently confirming a dynamical equation of
+state; under this uncompressed likelihood $H_0$ relaxes to $65.87\pm1.17$. The
+\SSEE\ algebraic point $(-0.840,-0.670)$ lies at $1.31\sigma$ from this posterior
+--- more than twice closer than $\Lambda$CDM (Fig.~\ref{fig:degeneracy}).
+The $\wz$--$\wa$ posterior is strongly anticorrelated ($\rho=-0.93$) and \SSEE\ falls
+within its $2\sigma$ region. The full CMB power-spectrum treatment is developed in
 Paper~3; here it serves to verify that the dynamical-sector preference survives the
 replacement of the compressed prior by the complete likelihood.
 
@@ -1023,8 +1024,8 @@ replacement of the compressed prior by the complete likelihood.
   \includegraphics[width=0.70\textwidth]{fig_w0wa_degeneracy.pdf}
   \caption{Full-likelihood $\wz$--$\wa$ posterior (CAMB + Planck \texttt{plik\_lite}
   + lensing + DESI~DR2 + $f\sigma_8$, with $\wz,\wa$ free; $R-1<0.003$). The \SSEE\
-  algebraic prediction (red star) lies at $0.68\sigma$, inside the $1\sigma$ contour,
-  while $\Lambda$CDM ($\wz=-1,\wa=0$; grey cross) is excluded at $2.4\sigma$. The data
+  algebraic prediction (red star) lies at $1.31\sigma$, inside the $2\sigma$ contour,
+  while $\Lambda$CDM ($\wz=-1,\wa=0$; grey cross) is excluded at $3.22\sigma$. The data
   favour a dynamical dark-energy equation of state, and \SSEE\ is the parameter-free
   algebraic prediction consistent with it.}
   \label{fig:degeneracy}

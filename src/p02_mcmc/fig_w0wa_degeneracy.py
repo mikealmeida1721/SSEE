@@ -13,7 +13,7 @@ from matplotlib.patches import Ellipse
 from scipy.stats import chi2 as chi2dist
 
 # ── Fase 4: pipeline completo (CAMB + plik_lite + lensing + DESI + fsigma8) ──
-files = sorted(glob.glob('class_ssee/output/mcmc_full/c*/ssee_full.1.txt'))
+files = sorted(glob.glob('/mnt/datos/SSEE_data/mcmc/mcmc_full/c*/ssee_full.1.txt'))
 proc = [np.loadtxt(f)[int(0.3 * len(np.loadtxt(f))):] for f in files]
 allc = np.vstack(proc)
 W, w0, wa = allc[:, 0], allc[:, 8], allc[:, 9]
@@ -55,7 +55,7 @@ ax.plot(*BAO_CPL, 's', ms=10, color='tab:orange', mec='k', zorder=5,
 ax.plot(*SSEE, '*', ms=22, color='crimson', mec='k', zorder=6,
         label='SSEE algebraic: %.3f, %.3f' % SSEE)
 ax.plot(*LCDM, 'X', ms=13, color='dimgray', mec='k', zorder=5,
-        label='$\\Lambda$CDM (excluded at 2.4$\\sigma$)')
+        label='$\\Lambda$CDM (excluded at 3.22$\\sigma$)')
 
 # significancia estandar (2 dof -> sigma equivalente via p-value, convencion DESI)
 Cinv = np.linalg.inv(C)

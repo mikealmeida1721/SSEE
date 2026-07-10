@@ -35,6 +35,7 @@ canonical:
   S8_two_sector:       0.7580     # = σ8·√(Ω_m/0.3) → 0.04σ KiDS (RESUELVE; forward, falsable; era 0.7593/0.01σ)
   sigma8_single_ceiling: 0.8335   # σ8 todo-frío (techo CLASS; independiente de m_φ, sin cambio)
   S8_single_ceiling:   0.8458     # 3.5σ KiDS-1000 (0.759±0.024) — "el desafío" que el two-sector baja
+  gamma_IS:             0.5504     # Paper 5 índice de crecimiento IS (fit ODE; ±0.0003; ≈ΛCDM 0.55)
   G_growth:            1.0032     # D₁_SSEE/D₁_ΛCDM (Paper 5 ODE @ Ω_m,cosm=0.30889; era 1.011 @0.31983 — SÍ depende del fondo, que bajó en el reframe ω_m-directo)
   fsigma8_two_sector_sigma: 0.93  # P6 fσ8 mean two-sector σ8=0.748 CON free-streaming (CORREGIDO 2026-06-29; forward ODE 0.933, MCMC v2 CLASS 0.946; antes 0.70 usaba σ8=0.8136 single = espurio)
   fsigma8_single_sigma:     0.70  # P5 single-sector σ8=0.8136 SIN free-streaming (correcto; ≠ two-sector: el free-streaming sube fσ8 0.70→0.93)

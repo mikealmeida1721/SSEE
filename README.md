@@ -80,14 +80,15 @@ SSEE/
 │   ├── SSEE_Endorser_Summary.tex   # 2-page arXiv endorser brief
 │   ├── *.bib                       # ssee_paper3/4/5/6 + ssee_unified bibliographies
 │   └── cover_letter_*.txt, abstracts_arXiv.txt
-├── src/                            # 42 Python scripts — analysis & verification
-│   ├── ssee_paper2_*.py … ssee_paper10_*.py  # per-paper analysis, MCMC, figures
-│   ├── ssee_op1_*.py … ssee_op6_*.py         # OPEN_PROBLEMS resolution (OP-1..OP-6)
-│   ├── ssee_paperB_DW.py, ssee_paperB_Nstar.py        # Paper B groundwork (baryogenesis, N_*)
-│   ├── ssee_phase_c_dic.py, ssee_phase_d_savage_cv.py # Bayesian model-selection phases
-│   ├── ssee_verify_rd.py, ssee_press_schechter.py, …  # standalone physics checks
-│   ├── ssee_audit_consistency.py   # cross-paper parameter consistency audit
-│   └── scratch/                    # exploratory scripts (not load-bearing)
+├── src/                            # Python scripts — organized per paper
+│   ├── p02_mcmc/ … p10_uv/         # per-paper analysis, MCMC, figures (p02_mcmc, p03_cmb,
+│   │                               #   p04_toe, p05_IS, p06_phiDM, p07_eft, p08_stronggrav,
+│   │                               #   p09_hubble, p10_uv)
+│   ├── pB_inflation/               # Paper B groundwork (baryogenesis, N_*)
+│   ├── estadistica/                # Bayesian model-selection phases (DIC, Savage-Dickey, cross-val)
+│   ├── mcmc_full/                  # full Cobaya CAMB+PPF pipeline (heavy chains → /mnt/datos)
+│   ├── verificacion/               # ssee_verify.py guardian + CANONICAL sync + core constants
+│   └── ssee_core.py                # single algebraic source (φ, π → all constants)
 ├── class_ssee/                     # CLASS Boltzmann fork — SSEE .ini configs + plot scripts
 ├── data/                           # observational data (DESI DR2, Planck PR4, clusters)
 ├── results/                        # generated figures, tables, logs
@@ -98,7 +99,7 @@ SSEE/
 ├── notes/                          # internal work-notes & attack plans (not load-bearing)
 ├── build_arxiv_packages.py         # regenerates submission_packages/
 ├── requirements.txt · environment.yml   # reproducible Python environment
-├── OPEN_PROBLEMS.md                # physics gaps OP-1..OP-6 with status
+├── OPEN_PROBLEMS.md                # physics gaps OP-1..OP-18 with status
 ├── AUDIT.md                        # reproducibility guide + known limitations
 ├── CHANGELOG.md · CITATION.cff · LICENSE
 └── (eftcamb_ssee/ — EFTCAMB fork, not versioned: clone separately)
@@ -116,14 +117,14 @@ pip install camb emcee scipy numpy matplotlib
 
 **Paper 2 — MCMC validation** (100-walker, N_eff ≈ 637,500 for SSEE):
 ```bash
-python src/ssee_paper2_mcmc.py
+python src/p02_mcmc/ssee_paper2_mcmc.py
 ```
 
 **Paper 3 — CMB power spectrum** (Cobaya MCMC, TT+TE+EE+lowl):
 You can set the `COBAYA_PACKAGES_PATH` environment variable to point to your local Planck 2018 data:
 ```bash
 export COBAYA_PACKAGES_PATH=/path/to/your/cobaya_packages
-python src/ssee_paper3_cobaya_unified.py
+python src/p03_cmb/ssee_paper3_cobaya_unified.py
 ```
 
 See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
@@ -202,7 +203,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | Single-sector linear (cold source) | σ₈=0.8335, S₈=0.846 | 3.5σ — open before two-sector |
 | Mean fσ₈ tension (6 surveys) | 0.93σ | single-sector baseline 0.70σ; still <1σ, close to ΛCDM (0.73σ) |
 
-> **Note:** With the forward-predicted particle (m_φ = 40.70 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.758 sits 0.04σ from KiDS-1000, down from the 3.5σ single-sector baseline. The same free-streaming that lowers σ₈ also reaches the σ₈(R=8) window probed by RSD, so the fσ₈ (growth-rate) tension rises from the 0.70σ single-sector baseline to 0.93σ — still <1σ and close to ΛCDM (0.73σ). This is the deliberate trade: lowering σ₈ resolves S₈ (3.5σ→0.01σ) at a ~0.2σ cost in fσ₈.
+> **Note:** With the forward-predicted particle (m_φ = 40.70 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.758 sits 0.04σ from KiDS-1000, down from the 3.5σ single-sector baseline. The same free-streaming that lowers σ₈ also reaches the σ₈(R=8) window probed by RSD, so the fσ₈ (growth-rate) tension rises from the 0.70σ single-sector baseline to 0.93σ — still <1σ and close to ΛCDM (0.73σ). This is the deliberate trade: lowering σ₈ resolves S₈ (3.5σ→0.04σ) at a ~0.2σ cost in fσ₈.
 
 **Lyman-α compatibility:** φ-DM is a non-thermal condensate. The correct observable is k_fs=0.754 h/Mpc in the matter power spectrum (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
 
@@ -265,7 +266,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | Y_p (BBN) | AlterBBN(Ωb h²=0.02242) = 0.2476 | 0.2449 ± 0.0040 | 0.7σ |
 | δc | δc,EdS × n_s = 1.6284 | 1.6865 (EdS) | — |
 
-**Press-Schechter halo-count enhancement** at z=10 (`src/ssee_press_schechter.py`):
+**Press-Schechter halo-count enhancement** at z=10 (`src/p02_mcmc/ssee_press_schechter.py`):
 
 | Halo mass | σ_M(z=10) | n_SSEE/n_ΛCDM |
 |---|---|---|

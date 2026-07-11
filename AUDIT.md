@@ -51,12 +51,13 @@ SSEE/
 │   ├── SSEE_Unified_Journal.tex     — consolidated journal paper (Papers 1–7)
 │   ├── SSEE_Endorser_Summary.tex    — 2-page arXiv endorser brief
 │   └── *.bib                        — ssee_paper3/5/6, SSEE_Paper4, ssee_unified
-├── src/                             — 42 Python scripts (analysis & verification)
-│   ├── ssee_paper2…paper10_*.py     — per-paper analysis, MCMC, figures
-│   ├── ssee_op1…op6_*.py            — OPEN_PROBLEMS resolution scripts (OP-1..OP-6)
-│   ├── ssee_paperB_*.py             — Paper B groundwork (baryogenesis DW, N_*)
-│   ├── ssee_audit_consistency.py    — cross-paper parameter consistency audit
-│   └── scratch/                     — exploratory scripts (not load-bearing)
+├── src/                             — Python scripts, organized per paper
+│   ├── p02_mcmc/ … p10_uv/          — per-paper analysis, MCMC, figures (one dir per paper)
+│   ├── pB_inflation/                — Paper B groundwork (baryogenesis DW, N_*)
+│   ├── estadistica/                 — Bayesian model-selection (DIC, Savage-Dickey, cross-val)
+│   ├── mcmc_full/                   — full Cobaya CAMB+PPF pipeline (heavy chains → /mnt/datos)
+│   ├── verificacion/                — ssee_verify.py guardian + CANONICAL sync
+│   └── ssee_core.py                 — single algebraic source (φ, π → all constants)
 ├── class_ssee/                      — CLASS Boltzmann fork — SSEE .ini configs + plots
 │   ├── ssee_v36.ini                 — SSEE MIRA sector (Ω_m=0.3199)
 │   ├── ssee_v36_nomira.ini          — SSEE dynamic sector only (Ω_m=0.160)
@@ -82,7 +83,7 @@ pip install camb emcee scipy numpy matplotlib corner cobaya classy getdist astro
 
 ### Paper 2 — MCMC validation
 ```bash
-python3 src/ssee_paper2_mcmc.py
+python3 src/p02_mcmc/ssee_paper2_mcmc.py
 ```
 Runtime: ~30–60 min (N_eff ≈ 637,500 for SSEE, 100 walkers × 25,000 steps).
 
@@ -98,7 +99,7 @@ H₀ = 67.95 ± 0.40 km/s/Mpc  (DR2, geometry-total 0.30889; 0.88σ Planck, 0.04
 
 ### Paper 3 — CMB power spectrum
 ```bash
-python3 src/ssee_paper3_cmb.py
+python3 src/p03_cmb/ssee_paper3_cmb.py
 ```
 
 Expected output:
@@ -115,13 +116,13 @@ Peak positions: ℓ = 221, 538, 815
 
 CLASS cross-check (αK Bellini-Sawicki):
 ```bash
-python3 src/ssee_paper3_hiclass_check.py
+python3 src/p03_cmb/ssee_paper3_hiclass_check.py
 ```
 Expected: αK(0) = 0.4033, Δ = 0.005% vs algebraic prediction.
 
 ### Paper 4 — Press-Schechter δc comparison
 ```bash
-python3 src/ssee_press_schechter.py
+python3 src/p02_mcmc/ssee_press_schechter.py
 ```
 Expected output:
 ```
@@ -135,7 +136,7 @@ M [M☉]      σ_M(z=10)    n_SSEE/n_ΛCDM
 
 ### Paper 5 — Israel-Stewart causal perturbations
 ```bash
-python3 src/ssee_paper5_IS_perturbations.py
+python3 src/p05_IS/ssee_paper5_IS_perturbations.py
 ```
 Expected output:
 ```
@@ -175,7 +176,7 @@ S₈    = 0.782
 
 ### Paper 7 — Canonical EFT βc plateau test
 ```bash
-python3 src/ssee_eft_verification.py
+python3 src/p07_eft/ssee_eft_verification.py
 ```
 Expected output:
 ```
@@ -222,7 +223,7 @@ Expected: cs² effect on σ₈ = 0.03% (negligible); G = D₁_SSEE/D₁_ΛCDM = 
 
 ### OP-5 — HMcode-2020 baryonic feedback (requires CLASS + classy)
 
-`src/ssee_op5_hmcode.py` needs CLASS compiled with the Python wrapper and
+`archive/codigo/investigacion/open_problems/ssee_op5_hmcode.py` needs CLASS compiled with the Python wrapper and
 HMcode-2020 enabled. A bare `pip install classy` does **not** enable
 HMcode-2020 — the local CLASS build is required:
 ```bash

@@ -8,7 +8,7 @@ abstract: >
   Bayesian MCMC validation (DESI DR2 + Planck + clusters), CMB confrontation (Planck PR4
   TT+TE+EE+lensing; full plik MCMC ΔBIC=−32.9, k=2 vs k=6), algebraic derivation of CMB observables from φ and π,
   Israel-Stewart causal perturbation theory (gradient stability, ΛCDM-consistent growth, S₈),
-  φ-Dark Matter two-sector model (m_φ=40.70 eV algebraic via SOLAR²·KRYSTOS, S₈=0.758 at 0.01σ KiDS, fσ₈ 0.93σ two-sector),
+  φ-Dark Matter two-sector model (m_φ=40.70 eV algebraic via SOLAR²·KRYSTOS, S₈=0.758 at 0.04σ KiDS, fσ₈ 0.93σ two-sector),
   canonical EFT (β_c=−AURA exact, αT=αM=αB=0 exact, αK=0.403 algebraic),
   strong-gravity regime (disformal geodesics, k-mouflage screening),
   Hubble-tension screening fraction f_screen=αK/(3·MIRA), and UV completion

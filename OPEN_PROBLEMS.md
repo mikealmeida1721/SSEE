@@ -564,12 +564,19 @@ The coefficient enters as $m_\Phi^2$ in a Lagrangian that is *written down*, not
 floating ansatz. **This closes the incompleteness flagged in the original OP-9** (the
 coefficient now comes from a Lagrangian mass term, not a bare numerological multiplier).
 
-**What remains open (the refined OP-9):** the **UV origin of the multiplier**
-$\mathrm{PYROS}\cdot\mathrm{VITA}\cdot\mathrm{MIKA}=615.33$ (reframe 2026-06-18;
-the old $\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL}=535.28$ is superseded) — i.e.,
+**What remains open (the refined OP-9):** the **UV origin of the canonical multiplier**
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}=594.28$ (adopted 2026-06-19; supersedes the
+intermediate $\mathrm{PYROS}\cdot\mathrm{VITA}\cdot\mathrm{MIKA}=615.33$ and the older
+$\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL}=535.28$) — i.e.,
 why *this* particular combination of $(\varphi,\pi)$ constants sets the curvature of the
 potential at its minimum. The Lagrangian is written, but the multiplier's derivation from
 a unified $V(\phi)$ (OP-10) is the next step. This is **incompleteness, not inconsistency**.
+
+> [!warning] Bloque histórico (615.33-era). El análisis look-elsewhere que sigue
+> (1/537, 1/192) corresponde al multiplicador **intermedio** $\mathrm{PYROS}\cdot
+> \mathrm{VITA}\cdot\mathrm{MIKA}=615.33$, hoy **superado** por $\mathrm{SOLAR}^2\cdot
+> \mathrm{KRYSTOS}=594.28$. La selección vigente bajo la gramática de linaje estricta
+> es **1/3**, no 1/cientos — ver «Methodological note» más abajo. Se conserva por registro.
 
 **Look-elsewhere of the multiplier (2026-06-18, `op9_particle_existence.py`).** Honest
 test before enshrining the particle: of all closed-dictionary constructions (21 named
@@ -652,6 +659,21 @@ measures how constrained the choice was, it does **not** prove the coefficient. 
 (ii) — deriving 594.28 as the *output* of the $\mathrm{KAL}_0$ transport equation —
 remains the deeper closure via OP-10. See [[project-op17-particle-deferred]],
 [[project-ssee-lineage-laws]].
+
+**Bounded transport-derivation attempt (2026-07-11, negative — do not re-run blind;
+`archive/codigo/investigacion/open_problems/op9_transport_derivation.py`).** A pre-committed
+attempt to derive $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ as the *output* of the
+$\mathrm{KAL}_0$-governed dissipative transport (cutoff: simple fraction + residue $<0.5\%$,
+no circular re-parametrization). Result: the **exact** identity $\mathrm{SOLAR}=(\varphi+
+4\,\mathrm{KAL}_0)/3$ was found (the $/3$ matching the bulk-viscosity normalization
+$\tilde\zeta=\mathrm{KAL}_0/3$), which is *structurally suggestive* — SOLAR as
+radiative-seed $+\,4\times$transport — but the factor $4$ has **no independently derived
+physical origin**, so it is re-parametrization, not derivation, and **fails the cutoff**.
+Simple-fraction probes against transport combinations ($\mathrm{KAL}_0^3$, etc.) returned
+only coincidental hits (24/11, 11/2), excluded by the anti-numerology lock (small residue
+$\wedge$ *simple* fraction, both required). **Verdict:** the $g^2v$ form remains the ceiling
+of what is derivable without solving the full $V(\phi)$; residue (ii) is genuinely OP-10-level,
+not a shortcut away. This confirms — does not weaken — the honest status above.
 
 **Strong rule (still in effect):** the physical Hubble scale
 $H_0^{\rm MIRA}=67.068$~km/s/Mpc **must NOT be substituted** into any mass formula.

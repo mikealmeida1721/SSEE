@@ -97,7 +97,7 @@ SSEE/
 ├── submission_packages/            # arXiv-ready .tar.gz bundles per paper
 ├── archive/                        # superseded drafts (historical)
 ├── notes/                          # internal work-notes & attack plans (not load-bearing)
-├── build_arxiv_packages.py         # regenerates submission_packages/
+├── archive/codigo/build_arxiv_packages.py  # regenerates submission_packages/ (moved to archive/)
 ├── requirements.txt · environment.yml   # reproducible Python environment
 ├── OPEN_PROBLEMS.md                # physics gaps OP-1..OP-18 with status
 ├── AUDIT.md                        # reproducibility guide + known limitations

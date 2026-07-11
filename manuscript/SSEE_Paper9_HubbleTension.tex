@@ -7,6 +7,7 @@
 \usepackage{physics}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{tabularx}
 \usepackage{natbib}
 \usepackage{enumitem}
 \newcommand{\prd}{Phys.\ Rev.\ D}
@@ -44,6 +45,7 @@
 
 \date{May 2026 --- Paper 9 of the SSEE series}
 
+\sloppy
 \begin{document}
 \maketitle
 
@@ -591,7 +593,7 @@ at $z < 0.15$ through the scalar kinetic energy, a physically distinct sector.
 \centering
 \caption{Cross-consistency of the Paper~9 result with the SSEE series.}
 \label{tab:consistency}
-\begin{tabular}{lp{5cm}l}
+\begin{tabularx}{\textwidth}{l p{4.5cm} X}
 \toprule
 Paper & Key result & Affected by $\fsc$? \\
 \midrule
@@ -611,7 +613,7 @@ Paper & Key result & Affected by $\fsc$? \\
 8 (Strong gravity) & $\MIRA$ lensing amplification, Vainshtein $r_V$ & Provides $\MIRA$
                (input to Paper~9) \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Table~\ref{tab:consistency} confirms that the correction $\fsc$ does not

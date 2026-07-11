@@ -31,15 +31,15 @@ VITA  = PI + KAL
 ANMA  = BIAL + VITA
 PYROS = OMEGA + PHI
 IGNIS = PI + PYROS             # caos disruptivo
-KRYSTOS = PHI + PI + OMEGA     # = IGNIS por valor (orden estructurante)
+KRYSTOS_V = PHI + PI + OMEGA     # = IGNIS por valor (orden estructurante)
 PHITA = VITA + PHI
-MIKA  = KRYSTOS + PHI
+MIKA  = KRYSTOS_V + PHI
 AURA  = PHI + BIAL            # rama φ: ley de la copia (umbral 1)
 MIRA  = AURA / 2              # copia ÷2
 DUAL  = AURA * 2              # copia ×2
 TRIAL = AURA * 3              # copia ×3
 CUARTAL = AURA * 4           # copia ×4
-MIKAEL_V = PHI + PI + KRYSTOS # integración 5D
+MIKAEL_V = PHI + PI + KRYSTOS_V # integración 5D
 BUFFER = MIKAEL_V - TRIAL
 LUCY    = SOLAR + PYROS       # soberanía (converge a MIKAEL_V por valor)
 ICEBERG = MAR + PYROS         # soberanía (converge a MIKAEL_V por valor)
@@ -53,7 +53,7 @@ ERVANU  = OMEGA * 0.9
 FAMILY = {
     "PHI": PHI, "PI": PI, "OMEGA": OMEGA, "BIAL": BIAL, "KAL": KAL,
     "SOLAR": SOLAR, "MAR": MAR, "VITA": VITA, "ANMA": ANMA, "PYROS": PYROS,
-    "IGNIS": IGNIS, "KRYSTOS": KRYSTOS, "PHITA": PHITA, "MIKA": MIKA,
+    "IGNIS": IGNIS, "KRYSTOS_V": KRYSTOS_V, "PHITA": PHITA, "MIKA": MIKA,
     "AURA": AURA, "MIRA": MIRA, "DUAL": DUAL, "TRIAL": TRIAL, "CUARTAL": CUARTAL,
     "MIKAEL_V": MIKAEL_V, "BUFFER": BUFFER,
     "LUCY": LUCY, "ICEBERG": ICEBERG,
@@ -62,7 +62,7 @@ FAMILY = {
 }
 
 W0 = TRIAL / MIKAEL_V          # = AURA/OMEGA, identidad exacta
-WA = PYROS / KRYSTOS           # = PYROS/IGNIS, identidad exacta
+WA = PYROS / KRYSTOS_V           # = PYROS/IGNIS, identidad exacta
 
 
 def distinct_ratios(fam):

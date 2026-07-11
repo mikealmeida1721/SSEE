@@ -7,7 +7,9 @@ como dos elecciones independientes.
 
 SSEE NO elige por separado. Construye UNA familia: un esqueleto comun de
 constantes derivadas de phi y pi, del cual salen los DOS numeros a la vez.
-Algebraicamente: M_v = 3*Omega, K_v = 2*Omega, con Omega = phi+pi. Los dos
+Esqueleto NULO (álgebra convencional): M_v = 3*Omega, K_v = 2*Omega, con Omega =
+phi+pi. (En álgebra SSEE el linaje es K_v = KRYSTOS_V = phi+pi+Omega, padres {φ,π,Ω},
+NO 2Ω; aquí el múltiplo entero es la hipótesis nula contra la que se mide.) Los dos
 denominadores son el MISMO Omega por un entero.
 
 Aqui contamos familias: fijamos una base compartida D = (c*phi + d*pi) y

@@ -27,10 +27,10 @@ TRIAL=3*(phi+(pi+phi)/2)      # TRIAL
 AURA=(3*phi+pi)/2             # AURA = 2*MIRA
 N_S=1-phi**-7                 # n_s = 0.96556
 # multiplicador canónico ω_m-directo (SOLAR²·KRYSTOS — mecanismo g²·v, OP-9/17)
-# SOLAR = BIAL+KAL = φ+2π (linaje radiativo);  KRYSTOS = 2Ω (anclado por wₐ)
+# SOLAR = BIAL+KAL = φ+2π (linaje radiativo);  KRYSTOS_V = φ+π+Ω (padres, anclado por wₐ)
 BIAL=(pi+phi)/2               # 2.3798
 SOLAR=BIAL+KAL                # 7.9012 (= φ+2π)
-KRYSTOS=2*OMEGA               # 9.5192 (= 2(π+φ))
+KRYSTOS_V=phi+pi+OMEGA        # 9.5192 — padres {φ,π,Ω}, NO 2Ω (colapso); gemelo IGNIS=π+PYROS
 
 # --- fondo ω_m-directo (sin factor materia) ---
 Omega_b=(pi-phi)/(3*OMEGA**2)/H**2    # ω_b/h² algebraico = 0.04854
@@ -53,7 +53,7 @@ Om_cdm=Om_cold-Omega_b
 om_ncdm_h2=Om_hot*H**2
 mu=1.12
 
-MULT=SOLAR**2*KRYSTOS
+MULT=SOLAR**2*KRYSTOS_V
 m_phi=Smnu*MULT
 
 T_phi=T_NU*(om_ncdm_h2*93.14/m_phi)**(1.0/3.0)
@@ -93,7 +93,7 @@ print("  PARTÍCULA CANÓNICA φ-DM — alpha (OUTPUT) y k_fs")
 print("="*74)
 print(f"  R2 = Ω/(KAL·TRIAL)        = {R2:.6f}")
 print(f"  Σm_ν                      = {Smnu:.5f} eV")
-print(f"  multiplicador SOLAR²·KRYSTOS = {MULT:.4f}")
+print(f"  multiplicador SOLAR²·KRYSTOS_V = {MULT:.4f}")
 print(f"  m_φ                       = {m_phi:.4f} eV")
 print(f"  Ω_m,CMB (ω_m/h², sin factor) = {Om_m:.5f}")
 print(f"  Ω_φDM = Ω_m,CMB − 0.160      = {Om_hot:.5f}")

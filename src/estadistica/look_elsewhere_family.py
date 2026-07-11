@@ -24,29 +24,28 @@ VITA    = PI + KAL
 ANMA    = BIAL + VITA
 PYROS   = OMEGA + PHI
 IGNIS   = PI + PYROS
-KRYSTOS = PHI + PI + OMEGA
-MIKA    = KRYSTOS + PHI
+KRYSTOS_V = PHI + PI + OMEGA    # padres {φ,π,Ω} — NO 2Ω (colapso); gemelo IGNIS por valor
+MIKA    = KRYSTOS_V + PHI
 AURA    = PHI + BIAL
 MIRA    = AURA / 2
 DUAL    = AURA * 2
 TRIAL   = AURA * 3
 CUARTAL = AURA * 4
-MIKAEL_V = PHI + PI + KRYSTOS
+MIKAEL_V = PHI + PI + KRYSTOS_V
 BUFFER  = MIKAEL_V - TRIAL
-KRYSTOS_V = 2 * OMEGA
 
 FAMILY = {
     "PHI": PHI, "PI": PI, "OMEGA": OMEGA, "BIAL": BIAL, "KAL": KAL,
     "SOLAR": SOLAR, "MAR": MAR, "VITA": VITA, "ANMA": ANMA, "PYROS": PYROS,
-    "IGNIS": IGNIS, "KRYSTOS": KRYSTOS, "MIKA": MIKA, "AURA": AURA,
+    "IGNIS": IGNIS, "MIKA": MIKA, "AURA": AURA,
     "MIRA": MIRA, "DUAL": DUAL, "TRIAL": TRIAL, "CUARTAL": CUARTAL,
     "MIKAEL_V": MIKAEL_V, "BUFFER": BUFFER, "KRYSTOS_V": KRYSTOS_V,
 }
 
 W0 = TRIAL / MIKAEL_V      # 0.83995
-WA = PYROS / KRYSTOS       # 0.66997
+WA = PYROS / KRYSTOS_V     # 0.66997
 print(f"w0 = TRIAL/MIKAEL_V = {W0:.9f}")
-print(f"wa = PYROS/KRYSTOS  = {WA:.9f}")
+print(f"wa = PYROS/KRYSTOS_V = {WA:.9f}")
 print(f"constantes en la familia: {len(FAMILY)}\n")
 
 # Razones unicas A/B (A != B por valor). Dedup por valor redondeado.

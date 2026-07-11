@@ -57,8 +57,8 @@ Om_m    = om_m_h2 / h2                     # 0.30889  Ω_m,CMB (fijo, anclado CM
 
 # Punto canónico (forward): Ω_φDM=0.149, m_φ=40.70 eV
 SOLAR   = (pi + phi)/2 + KAL               # φ+2π = 7.9012
-KRYSTOS = 2*OMEGA
-MULT    = SOLAR**2 * KRYSTOS               # 594.28
+KRYSTOS_V = phi + pi + OMEGA               # 9.5192 — padres {φ,π,Ω}, NO 2Ω (colapso)
+MULT    = SOLAR**2 * KRYSTOS_V             # 594.28
 M_PHI_CAN = Smnu*MULT                      # 40.70 eV
 OM_PHIDM_CAN = Om_m - 0.160                # 0.149
 

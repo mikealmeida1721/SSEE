@@ -64,10 +64,10 @@ Om_DNAV = pi_ + phi          # 4.7596 (Ω = π+φ)
 R2         = Om_DNAV / (KAL0 * Tr)        # 0.071875
 mnu_active = R2 * 0.960318                 # 0.06902 eV (0.960318 eV = input SM fijo)
 # multiplicador canónico (reframe SOLAR²·KRYSTOS, 2026-06-19, OP-17 adoptado):
-# SOLAR = BIAL+KAL = φ+2π (linaje radiativo); KRYSTOS = 2Ω (anclado por wₐ); forma g²·v
+# SOLAR = BIAL+KAL = φ+2π (linaje radiativo); KRYSTOS_V = φ+π+Ω (padres, anclado por wₐ); forma g²·v
 SOLAR      = beta + KAL0                    # 7.9012 (= φ+2π)
-KRYSTOS    = 2 * Om_DNAV                    # 9.5192 (= 2(π+φ))
-multiplier = SOLAR**2 * KRYSTOS            # 594.28 (puro)
+KRYSTOS_V  = phi + pi_ + Om_DNAV            # 9.5192 — padres {φ,π,Ω}, NO 2Ω (colapso)
+multiplier = SOLAR**2 * KRYSTOS_V          # 594.28 (puro)
 m_phi_eV   = mnu_active * multiplier       # 40.70 eV
 
 # ── Densidad de materia CMB: ω_m-directo (sin factor; OP-8 disuelto) ───────────

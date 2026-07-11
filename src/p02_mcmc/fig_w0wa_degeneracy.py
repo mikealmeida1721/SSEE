@@ -1,4 +1,6 @@
+import os
 #!/usr/bin/env python3
+_SSEE_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else "results/data")  # portable: HDD si existe, si no results/ local
 """
 Figura de robustez (Paper 2, 2026-06-14): la degeneracion w0-wa-H0.
 Muestra que tres analisis independientes (full-pipeline Cobaya, BAO+Planck CPL,
@@ -13,7 +15,7 @@ from matplotlib.patches import Ellipse
 from scipy.stats import chi2 as chi2dist
 
 # ── Fase 4: pipeline completo (CAMB + plik_lite + lensing + DESI + fsigma8) ──
-files = sorted(glob.glob('/mnt/datos/SSEE_data/mcmc/mcmc_full/c*/ssee_full.1.txt'))
+files = sorted(glob.glob(_SSEE_DATA + '/mcmc/mcmc_full/c*/ssee_full.1.txt'))
 proc = [np.loadtxt(f)[int(0.3 * len(np.loadtxt(f))):] for f in files]
 allc = np.vstack(proc)
 W, w0, wa = allc[:, 0], allc[:, 8], allc[:, 9]

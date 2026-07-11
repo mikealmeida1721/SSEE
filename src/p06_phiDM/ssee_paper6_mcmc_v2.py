@@ -1,4 +1,6 @@
+import os
 #!/usr/bin/env python3
+_SSEE_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else "results/data")  # portable: HDD si existe, si no results/ local
 """
 Paper 6 — MCMC two-sector φ-DM v2 (RIGUROSO, emulador CLASS validado).
 ======================================================================
@@ -22,8 +24,8 @@ import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import corner
 
-GRIDNPZ = "/mnt/datos/SSEE_data/mcmc/p6_grid.npz"
-OUTDIR  = "/mnt/datos/SSEE_data/mcmc/"
+GRIDNPZ = _SSEE_DATA + "/mcmc/p6_grid.npz"
+OUTDIR  = _SSEE_DATA + "/mcmc/"
 os.makedirs(OUTDIR, exist_ok=True)
 
 # ── Cargar grilla CLASS ───────────────────────────────────────────────────────

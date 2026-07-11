@@ -16,7 +16,8 @@ Fuente autoritativa: VERIFICATION_LEDGER.md + ssee_paper6_canonical_particle.py.
 import numpy as np, subprocess, os
 from scipy.interpolate import interp1d
 
-D="/home/mike/Proyectos/SSEE/class_ssee/"; OUT=D+"output/"; CLASS=D+"class"
+_REPO=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+D=os.path.join(_REPO,"class_ssee")+os.sep; OUT=D+"output"+os.sep; CLASS=os.path.join(D,"class")
 T_NU=0.71611; H=0.67962
 phi=(1+5**0.5)/2; pi=np.pi; OMEGA=pi+phi
 KAL=(pi+phi)/2+pi; N_S=1-phi**-7

@@ -78,8 +78,14 @@ SSEE/
 
 ### Prerequisites
 ```bash
-pip install camb emcee scipy numpy matplotlib corner cobaya classy getdist astropy
+pip install -r requirements.txt      # numpy scipy matplotlib emcee corner camb cobaya classy getdist astropy pyyaml
 ```
+
+**Portability.** All in-repo paths are derived from each script's own location — no
+hardcoded absolute paths, so the suite runs unchanged from any clone. Heavy MCMC
+outputs default to a large disk if one is mounted, else to `results/data/`; override
+with `export SSEE_DATA_DIR=/path/to/disk`. The optional Obsidian-vault sync
+(`memory_sync.py`) reads `SSEE_VAULT` (default `~/SSEE-Vault`) and is skipped if absent.
 
 ### Paper 2 — MCMC validation
 ```bash

@@ -20,6 +20,7 @@ Hipótesis a falsar:
 """
 import numpy as np
 import time, os, sys, warnings
+_SSEE_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else "results/data")  # portable: HDD si existe, si no results/ local
 warnings.filterwarnings("ignore")
 import emcee
 import matplotlib; matplotlib.use("Agg")
@@ -36,7 +37,7 @@ from ssee_core import (
 t0 = time.time()
 LOG = "results/logs/mcmc_paper2_reframe.log"
 # Regla de disco: la cadena (~1 GB) va al HDD, NO al SSD root (91% lleno)
-CKPT = "/mnt/datos/SSEE_data/mcmc/paper2_reframe/mcmc_paper2_reframe_ckpt.npz"
+CKPT = _SSEE_DATA + "/mcmc/paper2_reframe/mcmc_paper2_reframe_ckpt.npz"
 OUT = "results/figures"
 os.makedirs("results/logs", exist_ok=True)
 os.makedirs(OUT, exist_ok=True)

@@ -10,6 +10,7 @@ Para ΔBIC limpio vs SSEE-MIRA, corremos ΛCDM con:
 """
 import numpy as np
 import time, os, sys, warnings
+_SSEE_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else "results/data")  # portable: HDD si existe, si no results/ local
 warnings.filterwarnings("ignore")
 import emcee
 import matplotlib; matplotlib.use("Agg")
@@ -21,7 +22,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 t0 = time.time()
 LOG = "results/logs/mcmc_paper2_lcdm_baseline.log"
 # Regla de disco: chain al HDD
-CKPT = "/mnt/datos/SSEE_data/mcmc/paper2_3models/mcmc_paper2_lcdm_baseline_ckpt.npz"
+CKPT = _SSEE_DATA + "/mcmc/paper2_3models/mcmc_paper2_lcdm_baseline_ckpt.npz"
 OUT = "results/figures"
 os.makedirs("results/logs", exist_ok=True)
 os.makedirs(OUT, exist_ok=True)

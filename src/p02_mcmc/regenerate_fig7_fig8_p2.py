@@ -13,6 +13,7 @@ Salida: results/figures/fig7_Hz_comparison.{pdf,png}, fig8_tension_summary.{pdf,
 import os, sys
 import numpy as np
 import matplotlib
+_SSEE_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else "results/data")  # portable: HDD si existe, si no results/ local
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -22,7 +23,7 @@ from ssee_core import (
     OMEGA_M_TOTAL as OM_GEOM,   # 0.30889 — materia TOTAL, la ÚNICA que entra en E(z)/r_d
 )
 
-CHAIN_FILE = "/mnt/datos/SSEE_data/mcmc/paper2_3models/mcmc_chains_professional.npz"
+CHAIN_FILE = _SSEE_DATA + "/mcmc/paper2_3models/mcmc_chains_professional.npz"
 OUT = os.path.join(os.path.dirname(__file__), "..", "..", "results", "figures")
 os.makedirs(OUT, exist_ok=True)
 C_KM = 2.998e5

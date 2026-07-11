@@ -37,6 +37,7 @@ import numpy as np
 import emcee
 import corner
 import matplotlib
+_SSEE_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else "results/data")  # portable: HDD si existe, si no results/ local
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.integrate import quad
@@ -78,7 +79,7 @@ NO_FSIG8     = "--no-fsig8" in sys.argv
 FLAT_W0WA    = "--flat-w0wa" in sys.argv   # w0/wa con prior PLANO (test ciego), NO gaussiano centrado en SSEE
 
 _SUF       = "_flat" if FLAT_W0WA else ""
-OUT_DIR    = f"/mnt/datos/SSEE_data/mcmc/fase4{_SUF}"   # HDD (regla de disco; NO root SSD)
+OUT_DIR    = _SSEE_DATA + f"/mcmc/fase4{_SUF}"   # HDD (regla de disco; NO root SSD)
 LOG_FILE   = f"{OUT_DIR}/mcmc_fase4.log"
 CHAIN_FILE = f"{OUT_DIR}/chains_fase4.npz"
 os.makedirs(OUT_DIR, exist_ok=True)

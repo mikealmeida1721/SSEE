@@ -20,6 +20,7 @@ sólo se permite si en su misma línea hay una marca de contexto
 Diseñado para ser barato: correr tras cada cambio de valor. También lo invoca
 ssee_verify.py (el Guardián) como su capa de coherencia de memorias.
 """
+import os
 import pathlib
 import re
 import sys
@@ -27,7 +28,9 @@ import sys
 import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
-VAULT = pathlib.Path("/home/mike/SSEE-Vault")
+# Vault personal (Obsidian); configurable con SSEE_VAULT, default ~/SSEE-Vault.
+# Si no existe, el sync de vault se omite con gracia (no rompe en otra PC).
+VAULT = pathlib.Path(os.environ.get("SSEE_VAULT", pathlib.Path.home() / "SSEE-Vault"))
 CANON = ROOT / "CANONICAL_VALUES.yaml"
 
 

@@ -111,8 +111,16 @@ SSEE/
 
 ## ⚙️ How to reproduce
 
+Standard install (all dependencies pinned):
 ```bash
-pip install camb emcee scipy numpy matplotlib
+pip install -r requirements.txt
+```
+
+**Portability — runs from any machine.** Scripts derive all in-repo paths from their
+own location (no hardcoded absolute paths). Heavy MCMC chains (~GB) default to a
+large disk when present, else to `results/data/`. Override the output location with:
+```bash
+export SSEE_DATA_DIR=/path/to/large/disk    # optional; default is portable
 ```
 
 **Paper 2 — MCMC validation** (100-walker, N_eff ≈ 637,500 for SSEE):

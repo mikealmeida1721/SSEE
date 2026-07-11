@@ -3,7 +3,7 @@ PARTÍCULA CANÓNICA φ-DM (Vía 2 + multiplicador SOLAR²·KRYSTOS).
 Cadena forward, CERO fiteo (reframe ω_m-directo 2026-06-18, OP-8 cerrado;
 mecanismo g²·v SOLAR²·KRYSTOS adoptado 2026-06-19, OP-17):
     R2 = Ω/(KAL·TRIAL)
-    Σm_ν = R2 × 0.960318 eV
+    Σm_ν = R2 × ω_b × C_ν/τ_Π  (ν-closure C=93.14; ≈ R2 × 0.9530 eV)
     m_φ = Σm_ν × (SOLAR²·KRYSTOS)         [= 594.28; antes PYROS·VITA·MIKA=615.33]
     T_φ SALE del relic constraint.
 Escenario de fondo: NO hay factor materia. Ω_m,CMB = ω_m/h² = 0.30889; el sector
@@ -16,7 +16,8 @@ Calcula las DOS predicciones falseables (se ACTUALIZAN con el escenario nuevo):
 import numpy as np, subprocess, os
 from scipy.optimize import curve_fit
 
-D="/home/mike/Proyectos/SSEE/class_ssee/"; OUT=D+"output/"; CLASS=D+"class"
+_REPO=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # portable: raíz del repo
+D=os.path.join(_REPO,"class_ssee")+os.sep; OUT=D+"output"+os.sep; CLASS=os.path.join(D,"class")
 T_NU=0.71611; H=0.67962
 # --- constantes (φ,π) ---
 phi=(1+5**0.5)/2; pi=np.pi

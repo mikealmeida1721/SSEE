@@ -315,7 +315,7 @@ Table~\ref{tab:mcmc_results} summarises the key posteriors and information crite
          total matter density in the background geometry). $N_{\rm eff}$:
          effective independent samples. Positive $\Delta$ favours SSEE.}
 \label{tab:mcmc_results}
-\begin{tabularx}{\textwidth}{X c c c}
+\begin{tabular}{p{0.4\textwidth} c c c}
 \toprule
 Quantity & \SSEE & \LCDM & CPL \\
 \midrule
@@ -327,7 +327,7 @@ $\Delta\mathrm{DIC}$ relative to SSEE & ref & $+4.91$ & $+3.27$ \\
 $\chi^2_r$ clusters & $0.126$ & $0.081$ & — \\
 $(w_0, w_a)$ vs DESI DR2 $w_0w_a$CDM (Pantheon+) & $0.24\sigma$ & $0.7\sigma$ & — \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 With the total gravitating matter density $\Omega_m=\omega_m/h^2=0.30889$ in the
@@ -397,7 +397,7 @@ free and $H_0$ under a flat prior $[60,80]$): posteriors vs.\ algebraic \SSEE\
 values. Four independent chains, Gelman--Rubin $R-1<0.005$ for all parameters,
 $\sim7\times10^4$ effective samples. DESI~DR2-corrected vector (V-L4-DESI).}
 \label{tab:mcmc_full}
-egin{tabularx}{	extwidth}{X c c c}
+\begin{tabular}{p{0.3\textwidth} c c c}
 \toprule
 Parameter & Posterior (mean $\pm1\sigma$) & Algebraic SSEE & Tension \\
 \midrule
@@ -781,7 +781,7 @@ EFTCAMB confirms both conditions are satisfied.
          The GR run uses the full $\omega_m$-direct canonical matter density
          $\OmmCMB = 0.30889$ (OP-8 dissolved, no matter factor) for a direct comparison.}
 \label{tab:eftcamb}
-egin{tabularx}{	extwidth}{X c c}
+\begin{tabular}{p{0.6\textwidth} c c}
 \toprule
 Quantity & Value & Status \\
 \midrule
@@ -797,7 +797,7 @@ RMS $C_\ell$ SSEE/GR & $40.9\%$ & \\
 CMB peaks GR & $\ell = 220, 535, 811$ & correct ($\omega_m$-direct bg) \\
 CMB peaks SSEE RPH & $\ell = 242, 590, 893$ & $\sim 10\%$ shift from $\alphaK$ \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 \begin{figure}[htbp]
@@ -1180,7 +1180,7 @@ are archived at Zenodo: \url{https://doi.org/10.5281/zenodo.20093447}.
          performed. Planck 2018 values \citep{Planck2018} and DESI~DR2
          \citep{AbdulKarim2025} listed for comparison where applicable.}
 \label{tab:params}
-egin{tabularx}{	extwidth}{l X l X}
+\begin{tabular}{ll p{0.18\textwidth} p{0.35\textwidth}}
 \toprule
 Parameter & Formula & SSEE value & Observed \\
 \midrule
@@ -1206,11 +1206,18 @@ $\fscr$ & $(\pi-\phiG)/(\phiG+\pi)^2$ & $0.0673$ & --- \\
 $H_0^{\rm local}$ & $H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & $73.04\pm1.04$ (SH0ES) \\
 $M$ (UV cutoff) & $(5\phiG^8\rho_c)^{1/4}$ & $9.68$ meV & --- \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────
-\bibliographystyle{plainnat}
+% ----------------------------------------------------------------------------
+\section*{Acknowledgments}
+The author acknowledges the use of the cosmological codes \textsc{class} \citep{Blas2011}, \textsc{eftcamb} \citep{Hu2014}, and the Markov Chain Monte Carlo sampler \textsc{Cobaya} \citep{Torrado2021} for the numerical validation of the SSEE framework. The author also acknowledges the use of the \textsc{GetDist} package \citep{Lewis2019} for the analysis and plotting of posterior distributions.
+
+\section*{Data and Code Availability}
+The SSEE framework is fully transparent and reproducible. The complete code repository, including the \textsc{class} and \textsc{eftcamb} configuration files, the \textsc{Cobaya} MCMC chains, the explicit record of Open Theoretical Problems (OP), and the cosmological validation ledgers, are publicly available at the GitHub repository: \url{https://github.com/mikealmeida1721/SSEE}.
+
+\clearpage
 \bibliography{ssee_unified}
 % ─────────────────────────────────────────────────────────────────────────────
 

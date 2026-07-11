@@ -12,7 +12,11 @@ Sin interpretación. Solo los números honestos en cada categoría.
 """
 import numpy as np
 import sys
-sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
+import os as _os
+_r = _os.path.dirname(_os.path.abspath(__file__))
+while _r != _os.path.dirname(_r) and not _os.path.isdir(_os.path.join(_r, 'src')):
+    _r = _os.path.dirname(_r)
+sys.path.insert(0, _os.path.join(_r, 'src'))  # portable: sube hasta la raíz del repo
 from ssee_core import OMEGA_DE, OMEGA_M_DYN, MIRA
 
 # Constantes verificadas (de scripts existentes, no inventadas)

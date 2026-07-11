@@ -169,7 +169,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 |---|---|---|
 | Growth index γ_IS (Paper 5, supersedes App.A) | 0.5504 ± 0.001 | 0.55 |
 | S₈ (IS, single-sector ceiling) | 0.846 | 0.830 |
-| fσ8 χ²/N (13 RSD surveys) | **0.524** | 0.596 |
+| fσ8 χ²/N (6 canonical RSD surveys) | **0.766** | 0.860 |
 
 ### Paper 5 (Israel-Stewart Causal Perturbations)
 

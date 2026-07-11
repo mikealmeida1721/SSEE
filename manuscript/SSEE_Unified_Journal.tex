@@ -309,13 +309,13 @@ For \LCDM, $(H_0, \Omm)$ are free. For CPL, $(H_0,\Omm,\wz,\wa)$ are free.
 
 Table~\ref{tab:mcmc_results} summarises the key posteriors and information criteria.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \caption{Bayesian MCMC results (three-model run, DESI DR2 + common Planck prior,
          total matter density in the background geometry). $N_{\rm eff}$:
          effective independent samples. Positive $\Delta$ favours SSEE.}
 \label{tab:mcmc_results}
-\begin{tabular}{lccc}
+\begin{tabularx}{\textwidth}{X c c c}
 \toprule
 Quantity & \SSEE & \LCDM & CPL \\
 \midrule
@@ -327,7 +327,7 @@ $\Delta\mathrm{DIC}$ relative to SSEE & ref & $+4.91$ & $+3.27$ \\
 $\chi^2_r$ clusters & $0.126$ & $0.081$ & — \\
 $(w_0, w_a)$ vs DESI DR2 $w_0w_a$CDM (Pantheon+) & $0.24\sigma$ & $0.7\sigma$ & — \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 With the total gravitating matter density $\Omega_m=\omega_m/h^2=0.30889$ in the
@@ -389,7 +389,7 @@ single-sector ceiling; the two-sector $\varphi$-DM free-streaming of Paper~VI
 (absent from this cold-CDM CAMB run) reduces it to $S_8=0.758$, and is not part
 of this fit.}
 
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \caption{Full-likelihood multi-probe MCMC (CAMB $+$ Planck \texttt{plik\_lite}
 TTTEEE $+$ lensing $+$ $\tau$ prior $+$ DESI~DR2 $+$ $f\sigma_8$, with $w_0,w_a$
@@ -397,7 +397,7 @@ free and $H_0$ under a flat prior $[60,80]$): posteriors vs.\ algebraic \SSEE\
 values. Four independent chains, Gelman--Rubin $R-1<0.005$ for all parameters,
 $\sim7\times10^4$ effective samples. DESI~DR2-corrected vector (V-L4-DESI).}
 \label{tab:mcmc_full}
-\begin{tabular}{lccc}
+egin{tabularx}{	extwidth}{X c c c}
 \toprule
 Parameter & Posterior (mean $\pm1\sigma$) & Algebraic SSEE & Tension \\
 \midrule
@@ -486,7 +486,7 @@ All runs use $\ell_{\rm max} = 2500$, lensing enabled.
 Table~\ref{tab:cmb_peaks} presents the CMB acoustic peak positions and the
 RMS residual $\Delta C_\ell/C_\ell^{\Lambda\rm CDM}$ across $\ell = 30$--$2500$.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \caption{CMB TT acoustic peaks and RMS residual versus \LCDM.
          Peak positions identified from CLASS output $D_\ell = \ell(\ell+1)C_\ell/2\pi$.}
@@ -518,7 +518,7 @@ algebraic background.
 Figure~\ref{fig:cmb_tt} shows the TT power spectrum for both SSEE configurations
 and \LCDM.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.82\textwidth]{../class_ssee/output/ssee_v36_CMB_TT_comparison.png}
 \caption{CMB TT power spectrum from CLASS\@. \textit{Blue dashed}: \LCDM\ Planck~2018.
@@ -647,7 +647,7 @@ provides a rigorous Boltzmann-level quantification.
 Figure~\ref{fig:phiDM_pk} shows the calibrated $P(k)$ and
 Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.82\textwidth]{../class_ssee/output/ssee_phiDM_Pk_calibrated.png}
 \caption{Matter power spectrum from CLASS with $\varphi$-DM free-streaming (forward output, no fit).
@@ -660,7 +660,7 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 \label{fig:phiDM_pk}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.82\textwidth]{../class_ssee/output/ssee_fsig8_tension_phiDM.png}
 \caption{$f\sigma_8(z)$ comparison. Data points: the six canonical RSD
@@ -675,7 +675,7 @@ Figure~\ref{fig:fsig8} shows the resulting $f\sigma_8$ comparison.
 \subsection{$f\sigma_8$ tension summary}
 \label{sec:tension_table}
 
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \caption{$f\sigma_8$ tension for six RSD surveys. $\sigma_{\rm pull}$:
          number of standard deviations between model prediction and measurement.
@@ -775,13 +775,13 @@ $K(X)=X/\KAL+X^2/M^4$ lowers the adiabatic value to $c_s^2 \in [0.60,\,0.95]$
 (Papers~7 and~10), still gradient-stable ($c_s^2>0$).
 EFTCAMB confirms both conditions are satisfied.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \caption{EFTCAMB stability and perturbation results.
          The GR run uses the full $\omega_m$-direct canonical matter density
          $\OmmCMB = 0.30889$ (OP-8 dissolved, no matter factor) for a direct comparison.}
 \label{tab:eftcamb}
-\begin{tabular}{lcc}
+egin{tabularx}{	extwidth}{X c c}
 \toprule
 Quantity & Value & Status \\
 \midrule
@@ -797,10 +797,10 @@ RMS $C_\ell$ SSEE/GR & $40.9\%$ & \\
 CMB peaks GR & $\ell = 220, 535, 811$ & correct ($\omega_m$-direct bg) \\
 CMB peaks SSEE RPH & $\ell = 242, 590, 893$ & $\sim 10\%$ shift from $\alphaK$ \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{../results/figures/ssee_eftcamb_CMB_TT.pdf}
 \caption{CMB TT power spectrum from EFTCAMB\@. \textit{Black}: GR run with the
@@ -814,7 +814,7 @@ CMB peaks SSEE RPH & $\ell = 242, 590, 893$ & $\sim 10\%$ shift from $\alphaK$ \
 \label{fig:eftcamb_cmb}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\textwidth]{../results/figures/ssee_eftcamb_Pk.pdf}
 \caption{Matter power spectrum $P(k)$ from EFTCAMB\@. \SSEE\ RPH
@@ -993,7 +993,7 @@ so its mass is not directly accessible to neutrino-mass experiments);
 (v) the strong-lensing Einstein-radius ratio is inconsistent with
 $\sqrt{\AURA}\approx\MIRA$ at $>3\sigma$ in HST/JWST surveys.
 
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \caption{Predictive register: \SSEE\ derivations by epistemic status.
          \textit{Postdiction}: algebraic result fixed by the closed dictionary, then
@@ -1173,14 +1173,14 @@ are archived at Zenodo: \url{https://doi.org/10.5281/zenodo.20093447}.
 \label{app:params}
 % ─────────────────────────────────────────────────────────────────────────────
 
-\begin{table}[ht]
+\begin{table}[htbp]
 \centering
 \caption{Complete set of \SSEE-V3.6 algebraic parameters. All values are
          derived from $\phiG = (1+\sqrt{5})/2$ and $\pi$; no fitting was
          performed. Planck 2018 values \citep{Planck2018} and DESI~DR2
          \citep{AbdulKarim2025} listed for comparison where applicable.}
 \label{tab:params}
-\begin{tabular}{llll}
+egin{tabularx}{	extwidth}{l X l X}
 \toprule
 Parameter & Formula & SSEE value & Observed \\
 \midrule
@@ -1206,7 +1206,7 @@ $\fscr$ & $(\pi-\phiG)/(\phiG+\pi)^2$ & $0.0673$ & --- \\
 $H_0^{\rm local}$ & $H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & $73.04\pm1.04$ (SH0ES) \\
 $M$ (UV cutoff) & $(5\phiG^8\rho_c)^{1/4}$ & $9.68$ meV & --- \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────

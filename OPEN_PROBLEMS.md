@@ -664,11 +664,14 @@ remains the deeper closure via OP-10. See [[project-op17-particle-deferred]],
 `archive/codigo/investigacion/open_problems/op9_transport_derivation.py`).** A pre-committed
 attempt to derive $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ as the *output* of the
 $\mathrm{KAL}_0$-governed dissipative transport (cutoff: simple fraction + residue $<0.5\%$,
-no circular re-parametrization). Result: the **exact** identity $\mathrm{SOLAR}=(\varphi+
-4\,\mathrm{KAL}_0)/3$ was found (the $/3$ matching the bulk-viscosity normalization
-$\tilde\zeta=\mathrm{KAL}_0/3$), which is *structurally suggestive* — SOLAR as
-radiative-seed $+\,4\times$transport — but the factor $4$ has **no independently derived
-physical origin**, so it is re-parametrization, not derivation, and **fails the cutoff**.
+no circular re-parametrization). Result: the only exact rewrite found,
+$\mathrm{SOLAR}=(\varphi+4\,\mathrm{KAL}_0)/3$, is a **trivial algebraic restatement** of the
+natural form $\mathrm{SOLAR}=\mathrm{BIAL}+\mathrm{KAL}_0=\varphi+2\pi$: substituting
+$\pi=(2\mathrm{KAL}_0-\varphi)/3$ turns the $2\pi$ into $4\mathrm{KAL}_0/3$, so the factor
+$4=2\times2$ is a **substitution artifact with no physical content** — it carries no
+transport meaning and **fails the cutoff** (re-parametrization, not derivation). The natural
+two-term form $\mathrm{BIAL}+\mathrm{KAL}_0$ (radiative seed $+$ bulk viscosity) is the
+honest statement; no cleaner one exists.
 Simple-fraction probes against transport combinations ($\mathrm{KAL}_0^3$, etc.) returned
 only coincidental hits (24/11, 11/2), excluded by the anti-numerology lock (small residue
 $\wedge$ *simple* fraction, both required). **Verdict:** the $g^2v$ form remains the ceiling

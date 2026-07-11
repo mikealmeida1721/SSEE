@@ -7,6 +7,11 @@ parámetro libre, corremos CLASS two-sector para una grilla, y encontramos el
 m_φ que los datos prefieren (S8 = KiDS-1000 = 0.758 → 0.00σ).
 Esto es un FIT a S8 (declarado), NO forward. El paso 2 (separado) pregunta si
 el diccionario SSEE tiene un multiplicador simple en ese m_φ preferido.
+
+RESULTADO CANÓNICO de esta exploración (2026-07-10, ν-closure C=93.14):
+m_φ = 40.70 eV = Σm_ν·(SOLAR²·KRYSTOS), S8 = 0.758 (0.04σ KiDS-1000).
+Las referencias a 42.47/41.02 abajo son candidatos SUPERSEDED del linaje previo.
+Fuente autoritativa: VERIFICATION_LEDGER.md + ssee_paper6_canonical_particle.py.
 """
 import numpy as np, subprocess, os
 from scipy.interpolate import interp1d

@@ -13,8 +13,8 @@ os.makedirs(OUT, exist_ok=True)
 
 # (label, tension_sigma, reference dataset)
 entries = [
-    (r'$S_8$ (two-sector $\varphi$-DM)',        0.01, 'KiDS-1000'),
-    (r'$n_s = 1-\varphi^{-7}$',                  0.20, 'Planck 2018'),
+    (r'$S_8$ (two-sector $\varphi$-DM)',        0.04, 'KiDS-1000'),
+    (r'$n_s = 1-\varphi^{-7}$',                  0.16, 'Planck 2018'),
     (r'$w_0$–$w_a$ plane',                       0.24, 'DESI DR2 (Pantheon+)'),
     (r'$r_d$ (joint posterior)',                 0.32, 'MCMC multi-probe'),
     (r'$\Omega_b h^2 = (\pi-\varphi)/3\Omega^2$', 0.32, 'Planck 2018'),

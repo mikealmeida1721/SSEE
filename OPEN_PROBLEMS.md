@@ -1,11 +1,37 @@
 # SSEE-V3.6 — Open Problems and Known Limitations
 
-This document records physics gaps and open theoretical questions in the SSEE framework
-that are **acknowledged but not resolved** in the current preprint suite (Papers 1–9).
-These are not editorial issues; they are genuine scientific limitations that future work
-must address before the framework can claim completeness.
+This document records the open theoretical questions and **frontiers in progress** of the
+SSEE framework. These are **not** hidden flaws: they are declared, in-process work — the
+opposite of numerology (which would pretend they are solved). Ver `NUMEROLOGY_AUDIT.md`.
 
-Last updated: 2026-05-16
+Last updated: 2026-07-12
+
+---
+
+## Leyenda de estado — cómo leer este documento (FIJADO 2026-07-12, no re-frasear)
+
+Un problema abierto (OP) es una **frontera en proceso, NO una debilidad.** La distinción es
+referee-proof y se aplica a todo el documento:
+
+| Estado | Qué significa | ¿Bloquea publicación? |
+|---|---|---|
+| **CERRADO** | Derivado/verificado; se defiende ante un referí. Las afirmaciones titulares del modelo descansan aquí. | No |
+| **PARCIAL** (resource-gated) | Responde bien la pregunta **hasta donde los recursos actuales permiten**; la verificación PROFUNDA requiere recursos que hoy no tengo (supercómputo, datos futuros, N-body). El resultado inmediato suele ser **falseable**. | No |
+| **ABIERTO** (frontera) | Pregunta clara y bien planteada, en proceso. | No |
+| **DEBILIDAD** | Una afirmación **CERRADA** que **NO se puede defender** ante un referí, por razones claras. | **Sí** |
+
+**Regla anti-inconsistencia (para auditorías futuras — incluido Claude):** un OP **no es una
+debilidad**. Una debilidad es algo que ya *afirmamos como cerrado* y que **falla ante un
+referí**. El TEST para saber si un OP es debilidad: *¿alguna afirmación titular del modelo
+depende en secreto de que ese OP esté resuelto?* Si **no** → es frontera (el modelo se para sin
+él). Si **sí** → es carga, y hay que reclasificarla. **A hoy SSEE tiene 0 debilidades:** ningún
+titular (w₀wₐ validado por DESI, k_fs falseable, cascada H con unidades ancladas
+empíricamente) depende de un OP sin resolver. Los OPs son profundizaciones, no huecos que
+sostengan lo publicado.
+
+**Readiness para Zenodo:** publicable = **(0 debilidades) + (OPs declarados con honestidad)**.
+NO es *(0 OPs)* — eso es imposible: hasta ΛCDM tiene el problema de la constante cosmológica
+abierto. No encadenar la publicación al mecanismo (OP-9/OP-10) — ver [[project_publication_strategy]].
 
 ---
 

@@ -156,5 +156,44 @@ modelo científico y **no** un sistema numerológico.
 
 ---
 
+## 6. El hallazgo más fuerte de dos auditorías externas (2026-07-12): la gramática del multiplicador
+
+Dos auditorías externas independientes coincidieron en que el punto más vulnerable es el
+look-elsewhere del multiplicador de masa $m_\phi=\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.28$:
+**1/537** bajo gramática permisiva, **1/192** bajo "volúmenes", **1/3** bajo la gramática de
+linaje estricta — y el modelo *elige la gramática más restrictiva, aparentemente definida
+después de conocer la respuesta* (la crítica de "role-inheritance circular").
+
+**El cargo es justo. La respuesta NO es defender la estadística del coeficiente — es reubicar
+el peso.** La clave es una separación epistémica que el modelo ya hace estructuralmente (núcleo
+vs extensión) y que aquí se formaliza:
+
+| | **Núcleo** (w₀, wₐ) | **Extensión** (m_φ) |
+|---|---|---|
+| ¿El look-elsewhere ES el argumento? | **Sí** | **No** (y no lo reclamamos) |
+| Fuerza de la selección | 1/317 individual + conjunto restrictivo | débil, grammar-dependiente (1/3–1/537) — **CONCEDIDO** |
+| ¿Gramática fijada antes del dato? | **Sí** — por reglas de construcción del diccionario (no-auto-suma + copia), anteriores y ajenas a w₀wₐ | Irrelevante: el peso no está aquí |
+| ¿Cuál es el argumento real? | La rigidez estadística de un esqueleto que da los DOS números a la vez | **La falsabilidad**: k_fs=0.754 h/Mpc, pre-registrado, DESI Y3/Euclid |
+
+**El movimiento honesto:** un coeficiente débilmente seleccionado pero **falsable** no es
+numerología — es una **conjetura falsable**. Numerología sería reclamar que el 1/3 *prueba* la
+partícula; **NO lo reclamamos**. Pedimos que se la mate o confirme con k_fs, no que se le dé
+crédito estadístico. Esto es exactamente lo que separa una frontera declarada de una debilidad.
+
+**Principio de gramática-antes-del-dato (para el núcleo):** donde el look-elsewhere ES el
+argumento, la gramática se fija por las reglas de construcción del diccionario — las MISMAS que
+generan las 20 rutas al techo M_v=3Ω y que existen independientemente de los blancos w₀wₐ. No
+es una gramática elegida para acertar; es la gramática que ya rige todo el diccionario. Donde la
+gramática es débil (el multiplicador), el peso descansa en el dato. Esta separación es la
+respuesta referee-proof, y por eso m_φ vive **fuera del core register** del Sealed Journal.
+
+> **Nota de corpus:** este archivo (`NUMEROLOGY_AUDIT.md`) debe incluirse explícitamente en
+> cualquier paquete enviado a auditoría/Zenodo. Las dos auditorías de 2026-07-12 no lo vieron
+> (solo se subieron los PDFs) y tuvieron que reconstruir los criterios desde RIGOR_CHECKLIST +
+> OPEN_PROBLEMS + LEDGER. Adjuntarlo cierra ese gap de presentación.
+
+---
+
 *Última verificación: guardián VERDE 139; álgebra convencional y álgebra SSEE consistentes
-(linaje KRYSTOS_V=φ+π+Ω, M_v=φ+π+K_v restaurado en código, prosa y PDFs).*
+(linaje KRYSTOS_V=φ+π+Ω, M_v=φ+π+K_v restaurado en código, prosa y PDFs). Wave 1–2 de
+respuesta a auditorías externas aplicadas (2026-07-12).*

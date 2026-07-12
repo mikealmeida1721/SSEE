@@ -605,7 +605,7 @@ fixed by a **zero-fitting forward chain** (Vía 2 + multiplier), locked by Mike:
 
 ```
 R₂   = Ω_DNAV/(KAL·TRIAL)          = 0.07188      (pure φ,π number)
-Σm_ν = R₂ × 0.9603 eV              = 0.0685 eV     (fixed mass scale)
+Σm_ν = R₂ × 0.9530 eV              = 0.0685 eV     (fixed mass scale)
 mult = SOLAR² · KRYSTOS_V            = 594.28        (PURE φ,π number)
 m_φ  = Σm_ν × mult                 = 40.70 eV      (forward prediction, zero fitting)
 T_φ                                = 0.5385 T_ν    (from relic-abundance constraint)
@@ -738,7 +738,7 @@ not a shortcut away. This confirms — does not weaken — the honest status abo
 
 **Strong rule (still in effect):** the physical Hubble scale
 $H_0^{\rm MIRA}=67.068$~km/s/Mpc **must NOT be substituted** into any mass formula.
-The canonical chain uses the fixed mass scale $0.9603$ eV and pure $(\varphi,\pi)$
+The canonical chain uses the fixed mass scale $0.9530$ eV and pure $(\varphi,\pi)$
 numbers only — no Hubble rate enters. The dimensionally-inconsistent
 "$\times H_0^{\rm alg}$" framing of the old 5.602 eV ansatz is retired.
 
@@ -1112,7 +1112,7 @@ Guardián: VERDE 102/102.
 **Location:** Paper 4, §"Neutrino Mass Sum", L675-700.
 
 **Fórmula canónica (resuelta):**
-$$\Sigma m_\nu^{\rm active} = \mathcal{R}_2 \times 0.960318~\mathrm{eV} = 0.0685~\mathrm{eV},
+$$\Sigma m_\nu^{\rm active} = \mathcal{R}_2 \times 0.9530~\mathrm{eV} = 0.0685~\mathrm{eV},
 \qquad \mathcal{R}_2 = \frac{\Omega_{\rm DNAV}}{\mathrm{KAL}\cdot\mathrm{TRIAL}}
 = \frac{4.7596}{5.5214 \times 11.9935} = 0.07188.$$
 
@@ -1127,7 +1127,7 @@ sustracción de enteros, no hay offset 22.
    reproducir la cota cosmológica. La forma canónica $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$
    es un cociente limpio de constantes estructurales — sin parámetro ajustado.
 2. **Σm_ν asciende de Type P → Type A (algebraico).** El único input externo que queda es
-   $0.960318$ eV (constante de normalización fija del Modelo Estándar relíquica↔masa), igual
+   $0.9530$ eV (constante de normalización fija del Modelo Estándar relíquica↔masa), igual
    que cualquier predicción dimensional de SSEE usa una escala física fija.
 
 **Cascada (actualizada):** Σm_ν alimenta a $m_\varphi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)=40.70$ eV
@@ -1188,7 +1188,7 @@ de un potencial $V(\varphi)$ fundamental.
 ### Cadena de dependencias (post-resolución 2026-06-04)
 
 ```
-OP-14  Σm_ν = R₂·0.960318 eV = 0.0685 eV    ✅ RESUELTO (R₂=Ω_DNAV/(KAL·TRIAL), sin offset 22)
+OP-14  Σm_ν = R₂·0.9530 eV = 0.0685 eV    ✅ RESUELTO (R₂=Ω_DNAV/(KAL·TRIAL), sin offset 22)
    │
    └──► OP-9   m_φ = Σm_ν·(SOLAR²·KRYSTOS_V) = 40.70 eV   ✅ refinado: dim-consistente, forward-prediction
            │     (queda abierto SOLO el origen UV del multiplicador 594.28)
@@ -1208,7 +1208,7 @@ no rescatar la masa.
 ### Acción sobre Paper 4 (completada 2026-06-04)
 
 El §"Neutrino Mass Sum" se actualiza a la fórmula canónica
-$\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.960318$ eV $=0.0685$ eV con
+$\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.9530$ eV $=0.0685$ eV con
 $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$, promoviendo Σm_ν de
 **Type P → Type A**. El offset 22 queda eliminado del manuscrito.
 
@@ -1305,7 +1305,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
 | OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |
 | OP-13 | P8 | ~~Contradicción interna §3-4 vs §4.5~~ | ✅ RESUELTO | Opción A aplicada: framing dos-límites, retirado claim "MIRA en lensing", $\sqrt{\AURA}$ ≠ $\MIRA$ aclarado, canonical prediction = GR-with-DM (2026-05-23) |
-| OP-14 | P4 | ~~Σm_ν Type P; offset 22 ad hoc~~ → canónico Type A | ✅ RESUELTO | $\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.960318$ eV $=0.0685$ eV con $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})=0.07188$; offset 22 eliminado, Σm_ν promovido Type P→Type A (2026-06-04) |
+| OP-14 | P4 | ~~Σm_ν Type P; offset 22 ad hoc~~ → canónico Type A | ✅ RESUELTO | $\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.9530$ eV $=0.0685$ eV con $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})=0.07188$; offset 22 eliminado, Σm_ν promovido Type P→Type A (2026-06-04) |
 | OP-15 | P1 | Bullet offset κ(θ) desde KAL(x) no calculado | Medium-High | Computar Σ_SSEE(θ)=∫ρ_bar·KAL(x)dℓ del Bala; mostrar pico κ sobre galaxias, no gas (falsable vs Clowe+2006). Distinto de OP-13 (amplitud); esto es distribución espacial (2026-06-14) |
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
 

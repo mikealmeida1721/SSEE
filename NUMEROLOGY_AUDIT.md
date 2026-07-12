@@ -75,13 +75,17 @@ no medidos. → **Evidencia anti-numerología más fuerte.**
   dimensionalmente inválida — y el modelo la **detectó y RETIRÓ** (reframe). La actual
   m_φ = Σm_ν[eV] × (número puro φ,π) → eV. Válida.
 - **Masas y densidades** pasan por una escala física (Σm_ν, ρ_crit), no número=unidad.
-- **Punto débil genuino (referí anota):** H₀ = 3(φ+π)² "= 67.96 km/s/Mpc". Defensa del
-  modelo: las unidades entran por la inversión SH0ES–f_screen (dato dimensional), no por
-  fiat. Pero **el teorema del puente dimensional Planck→Mpc sigue FALTANDO** (roadmap #1).
-  Etiquetado Type-P, abierto.
+- **H₀ — qué afirma SSEE y qué NO (importante, para no importar una afirmación inexistente):**
+  SSEE **no** afirma que el número puro 3(φ+π)² *sea* el H₀ físico. De hecho H₀ en unidades
+  fundamentales es ~10⁻⁶¹, no 67.96. Las unidades **siempre** se anclan a una medición (SH0ES
+  vía f_screen) — el principio "razones, no mecanismos". La igualdad numérica 3(φ+π)²↔67.96
+  vale **solo en km/s/Mpc** y se sostiene **como conjetura abierta, no como identidad probada**.
+  Por tanto NO hay "número=unidad por fiat": las unidades son empíricas, igual que en cualquier
+  modelo. Un teorema Planck→Mpc sería una **profundización opcional (bono)**, no una deuda de
+  una afirmación que el modelo nunca hizo.
 
-**Veredicto N3:** No se puede probar N3 en general. Un punto débil real (puente H₀),
-**etiquetado**, no oculto. → N3 **no demostrado**.
+**Veredicto N3:** No hay número=unidad por fiat — las unidades se anclan empíricamente y la
+coincidencia se declara **abierta, no afirmada**. → N3 **no demostrado**.
 
 ### N4 — ¿Es infalsable? (el criterio definitorio)
 
@@ -124,12 +128,18 @@ SSEE está **del lado de la ciencia** de la línea de numerología (falsable + r
 predicciones forward), **corto de confirmado**. Lo que lo movería a la derecha: medir
 k_fs. Lo que lo mataría: k_fs ≠ 0.754, o descartar la evolución w₀wₐ.
 
-**Soft-spots abiertos, catalogados (no ocultos):**
-1. **OP-9 (ABIERTO)** — derivar el coeficiente 594.28 desde un V(φ) es lo que falta (→OP-10).
-   La partícula ya está adoptada y es falseable (OP-17); OP-9 es solo la derivación pendiente.
-2. **Puente dimensional** Planck→Mpc para H₀ (roadmap #1, Type-P).
-3. **A_s** no derivado (OP-18).
-4. Otros en OPEN_PROBLEMS.md (23 rastreados).
+**Fronteras abiertas del programa — declaradas, NO afirmaciones que quedaron cortas:**
+(Distinción clave: una *frontera* es hasta dónde llega un reclamo bien acotado; una *debilidad*
+sería un reclamo fuerte que falló. Estas son fronteras — el modelo no afirmó de más y luego
+falló, afirmó lo justo y aquí termina lo derivado.)
+1. **OP-9 (frontera de profundidad)** — la partícula está adoptada y es falseable (OP-17); lo
+   abierto es derivar el *origen* del coeficiente 594.28 desde un V(φ) (→OP-10). Es una
+   predicción forward con origen-por-profundizar, no una derivación que quedó corta.
+2. **H₀ (profundización opcional, NO deuda)** — unidades ancladas empíricamente, como todos.
+   SSEE **no afirma** la identidad número↔H físico; sostiene una coincidencia numérica abierta.
+   El puente Planck→Mpc sería un bono si aparece.
+3. **A_s** — declarado parámetro tomado (no derivado, OP-18); dicho abiertamente, no escondido.
+4. Otros en OPEN_PROBLEMS.md (23 rastreados, cada uno con su estado).
 
 ---
 

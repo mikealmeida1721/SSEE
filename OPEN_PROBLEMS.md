@@ -1514,6 +1514,34 @@ resultante lleva el prefactor $\mathrm{KAL_0}\cdot n_s$; (c) conectar con la
 UV-completion (OP-10) y la dualidad de transporte (OP-7). Es frontera abierta de la misma
 clase que OP-1/OP-9: puede no cerrar con los recursos actuales, y eso está declarado.
 
+**Cómo atacarlo — plan concreto para retomar EN FRÍO (imagen mental primero).**
+La relación se lee: *materia oscura = bariones × (transporte $\mathrm{KAL_0}$) × (inclinación
+del espectro $n_s$)*. El $n_s$ es la pista: es una propiedad del **espectro primordial**, así
+que si aparece en la abundancia de DM es porque esa abundancia **hereda las mismas semillas**
+que todo lo demás → **origen compartido** (cogénesis), no dos procesos separados.
+
+El truco que lo hace atacable (misma jugada que OP-17/$k_{fs}$): **$m_\phi=40.70$ eV ya está
+fijo** (forward), así que casi no queda libertad. Cada mecanismo de producción tiene una
+fórmula de abundancia $\Omega_{\rm DM}(\text{params})$; con los params ya clavados, **cada
+mecanismo predice un número** para $\omega_c/\omega_b$, y solo hay UNO que valga:
+$$\omega_c/\omega_b = \mathrm{KAL_0}\cdot n_s = 5.5214\times0.96556 = 5.331.$$
+Todo el problema colapsa a: *¿qué mecanismo da exactamente 5.331 sin meterlo a mano?*
+
+Pasos (papel + `op19_omega_c_mechanism.py`, factible en hardware actual):
+1. **Blanco:** target = número puro `ω_c/ω_b = 5.331`.
+2. **Mapa:** las ~4 rutas de producción de un bosón ligero — *misalignment* (tipo ALP/axión),
+   *freeze-in*, *producción gravitacional*, *cogénesis/ADM* — con su fórmula de abundancia.
+3. **Filtro:** meter $m_\phi=40.70$ eV fijo en cada fórmula → cada una predice un
+   $\omega_c/\omega_b$; comparar con 5.331. Los que fallan por órdenes de magnitud mueren.
+4. **Veredicto:** si sobrevive uno → derivar $\mathrm{KAL_0}\cdot n_s$ de su Lagrangiano (= el
+   paper). Si ninguno → resultado igual: no es relic estándar → empuja al origen primordial
+   compartido, liga OP-1/OP-18.
+
+**Referee honesto (cuenta gruesa ya hecha):** ADM con asimetrías iguales **NO cuadra** para
+40 eV — daría una razón de masas $m_{\rm DM}/m_p$, no un número $\sim10^8$ en $n_{\rm DM}/n_b$;
+falla por órdenes. La ruta viva es **misalignment/cogénesis** (donde $n_s$ tiene hogar
+natural), sin probar. Frontera real.
+
 **Severidad:** Media-Alta — es el residuo teórico del sector materia para nivel PRD. No
 falsa SSEE (la relación es forward y falsable), pero cerrar el mecanismo es lo que la
 llevaría de "relación predictiva" a "derivación desde una acción".

@@ -147,3 +147,19 @@ vive en la capa de linaje + el diccionario citado.
 **Por qué (caso real, 2026-06-14):** quité "MIKAEL_V" de la tabla de notación dejando a M_v
 como única fila sin nombre de sistema → inconsistente y con el hueco vacío. Revertido. Las
 leyes (copia / no-auto-suma) se pierden si se borra el nombre sin reemplazo que las preserve.
+
+## R14 — Covarianza BAO: justificar el bloque-diagonal, no solo declararlo 🟡 (documentación)
+**Regla:** al usar el vector comprimido de DESI DR2 con covarianza bloque-diagonal
+(2×2 $D_M$–$D_H$ por tracer, sin términos inter-tracer), NO basta con decir "puede
+subestimar errores": hay que **justificar** por qué es legítimo, o un referee lo lee como
+atajo.
+**Justificación (en acta, aplicada en Paper 2 nota al pie §III):** el producto público de
+DESI entrega correlaciones $r_{MH}$ **por tracer** (Tabla 4, 2503.14738) pero **no** una
+matriz inter-tracer, porque las cinco poblaciones ocupan cáscaras de redshift casi disjuntas
+($0.3\lesssim z\lesssim2.3$) → sus medidas BAO son casi independientes; el único par que
+solapa (LRG3+ELG) DESI ya lo reporta como bin combinado, absorbiendo esa correlación aguas
+arriba. Es **exactamente** como se debe usar el vector consenso comprimido. El término
+off-diagonal dominante ($D_M$–$D_H$ intra-tracer, $|r_{MH}|\!\sim\!0.4$) **sí** está incluido.
+**Estado:** ✅ documentado (no requiere re-correr; el código en `src/desi_dr2_data.py` ya
+construye esta covarianza). Si un referee insiste, un re-run con covarianza inflada cierra el
+punto, pero no es necesario para que la afirmación sea honesta.

@@ -1451,3 +1451,71 @@ por eso $\tau$ queda como residuo nuisance, no como OP de derivación.
 modelo; cerrarlo lleva el conteo a "0 parámetros del modelo + $\tau$ nuisance".
 **Relation:** depende de OP-2 (✅, da $\epsilon,N_*$) y de la escala $M$ de Paper 10.
 Script a crear: `op18_As_from_inflation.py`.
+
+---
+
+## OP-19 — Mecanismo de producción detrás de $\omega_c = \mathrm{KAL_0}\cdot\omega_b\cdot n_s$ (Papers 1, 6 / abundancia relic) — ABIERTO (2026-07-12)
+
+**Origen.** Tras el reframe $\omega_m$-directo (OP-8 disuelto), la densidad de materia
+oscura fría del CMB entra por la **identidad forward**
+$$\omega_c = \mathrm{KAL_0}\cdot\omega_b\cdot n_s = 5.5214\times0.02242\times0.96556 = 0.11951,$$
+que junto a $\omega_b$ (OP-1) y $\omega_\nu$ da $\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.30889$
+(**0.88σ** de Planck 2018). Hoy es una **relación observada que ajusta**, sin una acción de
+la que se **derive**. Una auditoría externa (2026-07-12) la señaló como el residuo teórico
+para nivel PRD. Esta OP fija la pregunta correcta.
+
+**La pregunta NO es "solo escribir un Lagrangiano".** Son **dos capas**, y la segunda es la
+difícil:
+
+1. **¿Por qué $\omega_c$ debe ser proporcional a $\omega_b$?** En ΛCDM, $\omega_b$ y
+   $\omega_c$ son **dos parámetros libres independientes**. El cociente $\omega_c/\omega_b
+   \approx5.3$ es la célebre *coincidencia cósmica* (¿por qué la materia oscura es solo
+   $\sim5\times$ los bariones, y no $10^5\times$ ni $10^{-5}\times$?), que el modelo estándar
+   **deja sin explicar**. SSEE afirma que ese cociente **no es libre**:
+   $\omega_c/\omega_b = \mathrm{KAL_0}\cdot n_s\approx5.33$. Esto es una afirmación física
+   **real y no trivial** sobre la razón barión–materia oscura. Requiere un **origen
+   compartido**: el proceso que fija la abundancia de bariones (bariogénesis, OP-1) debe
+   ser el mismo que fija la abundancia del $\varphi$-DM. La proporcionalidad **es** el
+   contenido físico.
+
+2. **¿Por qué la constante es exactamente $\mathrm{KAL_0}\cdot n_s$?** Esta es la parte que
+   necesita el cálculo de producción (freeze-out / freeze-in / misalignment / producción
+   gravitacional): un escenario cosmológico en el que la abundancia relic del $\varphi$-DM
+   salga proporcional a la bariónica **con coeficiente $\mathrm{KAL_0}\cdot n_s$**, sin
+   insertarlo a mano. $\mathrm{KAL_0}=\beta+\pi$ es la viscosidad estructural (transporte);
+   $n_s$ es el índice espectral (la inclinación del espectro primordial). Que el transporte
+   $\times$ la inclinación fijen la abundancia oscura es una hipótesis de mecanismo, no una
+   identidad de simetría de la acción.
+
+**Por qué es OP-19 y no parte de OP-7/OP-8.** OP-7 (ítem 3) pregunta por qué la QFT en la
+escala de Planck reproduce las **asignaciones de rol** ($\mathrm{KAL_0}$ vs AURA, dualidad
+$\varphi\leftrightarrow\pi$); OP-8 quedó **disuelto** (la $\Omega_m$ del CMB sale directa,
+sin factor materia). OP-19 es más específica y más física: el **mecanismo de abundancia
+relic** que produce el coeficiente. Liga fuerte a **OP-1** (origen de $\omega_b$ /
+bariogénesis, $\delta_{CP}=(\pi-\varphi)/\Omega$, $T_{\rm rh}\sim10^{-4}$ GeV) porque un
+origen compartido barión–DM es el camino natural a la capa 1.
+
+**Su garantía HOY (falsabilidad, como OP-9 con $k_{fs}$).** La relación ya es una
+**predicción forward de cero parámetros** que enlaza dos números medidos: dado
+$\omega_b$ y $n_s$, $\omega_c$ **está fijo**. Si datos futuros de CMB/BBN mueven
+$\omega_c/\omega_b$ fuera de $\mathrm{KAL_0}\cdot n_s$ más allá del error, la relación se
+**falsa**. No me apoyo en la estadística del coeficiente; me apoyo en que la relación es un
+candado medible. La **derivación** (esta OP) es el mecanismo; la **relación** ya es una
+predicción bloqueada a 0.88σ.
+
+**Consecuencia si permanece abierto.** El sector materia del CMB descansa en que $\omega_b$
+(OP-1) y esta identidad sean correctos — no es una perilla nueva (no se ajustó a Planck; es
+forward), pero **tampoco es una derivación desde una acción**. Un referee de PRD puede
+aceptarlo como relación fenomenológica predictiva y falsable, no como primeros principios.
+
+**Programa de cierre (largo plazo, no garantizado).** (a) Proponer el canal de producción
+del $\varphi$-DM ligado a la asimetría bariónica de OP-1; (b) mostrar que la abundancia relic
+resultante lleva el prefactor $\mathrm{KAL_0}\cdot n_s$; (c) conectar con la
+UV-completion (OP-10) y la dualidad de transporte (OP-7). Es frontera abierta de la misma
+clase que OP-1/OP-9: puede no cerrar con los recursos actuales, y eso está declarado.
+
+**Severidad:** Media-Alta — es el residuo teórico del sector materia para nivel PRD. No
+falsa SSEE (la relación es forward y falsable), pero cerrar el mecanismo es lo que la
+llevaría de "relación predictiva" a "derivación desde una acción".
+**Relación:** OP-1 (✅ parcial, $\omega_b$/bariogénesis), OP-7 (dualidad de transporte),
+OP-8 (disuelto), OP-10 (UV). Script a crear: `op19_omega_c_mechanism.py` (exploratorio).

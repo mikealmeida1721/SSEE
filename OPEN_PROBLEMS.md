@@ -545,13 +545,31 @@ it returns to ≤2 (only $H_0$ and $\Omega_b h^2$ as observation-tunable).
 >   dimensionalmente correcta, sin fiteo, escrita como término $g^2v$ de un Lagrangiano real, y
 >   es **falseable** ($k_{\rm fs}=0.754\,h/$Mpc, DESI Y3/Euclid). La *decisión* de usar esta
 >   partícula ya está tomada — eso es **OP-17**, no OP-9.
-> - **Lo que FALTA (esto SÍ es OP-9, y por eso ABIERTO):** derivar el coeficiente 594.28 desde
->   un $V(\phi)$ unificado. El intento acotado (Camino B, transporte KAL, 2026-07-11) dio
->   **CORTE** → diferido a **OP-10**, más allá del horizonte de saturación TRIAL.
+> - **Lo que FALTA — LA PREGUNTA ABIERTA, exacta (esto SÍ es OP-9):**
+>   > ¿Existe un potencial $V(\phi)$ construido **solo de φ,π** cuya **curvatura en el mínimo**
+>   > reproduzca el coeficiente 594.28 —es decir, $m_\phi=\Sigma m_\nu\cdot594.28$— **sin
+>   > meterlo a mano**?
+>   >
+>   > (Imagen: la masa = qué tan curvado está el fondo del valle del campo. La pregunta es si un
+>   > valle con forma pura φ,π se curva *exactamente* eso. $m_\phi^2 = V''(\phi_{\min})$.)
 >
-> Que OP-9 esté abierto **y declarado abierto** es lo CONTRARIO de numerología (que fingiría
-> tenerlo resuelto). Incompletitud, no inconsistencia. El bloque histórico (615.33, 1/537) es
-> rastro, no estado. Ver [[project-op17-particle-deferred]], [[project-nine-sovereigns-naming]].
+> **Relación OP-9 ↔ OP-10 (para NO marear la pregunta):** comparten la **misma respuesta** — el
+> potencial. **OP-10** = derivar el potencial completo (la *función*, el valle entero). **OP-9**
+> = el *número* que ese valle debe escupir (la curvatura del fondo). Resuelto OP-10, OP-9 **cae
+> solo**: son **un problema en dos resoluciones**, no dos problemas. Lo que le da nombre propio a
+> OP-9: es la parte del potencial **ya expuesta a datos** ($k_{\rm fs}=0.754$) → el programa se
+> puede **FALSAR por OP-9 antes** de tener OP-10. El intento acotado de derivarlo por transporte
+> (Camino B, KAL, 2026-07-11) dio **CORTE**; la vía viva es el $V(\phi)$ de OP-10, más allá del
+> horizonte TRIAL.
+>
+> **No confundir con OP-17** (¿la partícula sirve y es falseable?) → eso YA está decidido (sí).
+> OP-9 pregunta SOLO por el origen del coeficiente. Mezclarlas produce el falso vaivén
+> "falta/no-falta".
+>
+> Que OP-9 esté abierto **y declarado abierto con la pregunta exacta** es lo CONTRARIO de
+> numerología (que fingiría tenerlo resuelto). Incompletitud, no inconsistencia. El bloque
+> histórico (615.33, 1/537) es rastro, no estado. Ver [[project-op17-particle-deferred]],
+> [[project-nine-sovereigns-naming]].
 
 **Location:** Paper 6, §3.2 (subsec:mass_derivation), §3.4 (subsec:lagrangian), §6 (subsec:origin).
 

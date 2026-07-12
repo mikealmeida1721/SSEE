@@ -529,28 +529,29 @@ it returns to ≤2 (only $H_0$ and $\Omega_b h^2$ as observation-tunable).
 
 ---
 
-## OP-9 — UV Origin of the Mass Multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ (Paper 6) — CONGELADO (Camino A) 2026-07-11
+## OP-9 — UV Origin of the Mass Multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ (Paper 6) — **ABIERTO** (coeficiente UV)
 
-> [!nota] ESTADO CANÓNICO ÚNICO (2026-07-11) — leer esto, ignorar redacciones antiguas abajo.
+> [!nota] ESTADO CANÓNICO ÚNICO (2026-07-12) — leer esto, ignorar redacciones antiguas abajo.
+> **Estado en UNA palabra: OP-9 está ABIERTO.** No lo llamamos "cerrado" en ninguna mitad —
+> eso confundía. Lo que existe es una partícula usable y una derivación pendiente; solo la
+> segunda es OP-9.
+>
 > $m_\phi = \Sigma m_\nu^{\rm act}\cdot\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V = 0.0685\cdot594.28 = 40.70$ eV.
-> $\mathrm{SOLAR}=\mathrm{BIAL}+\mathrm{KAL}=\varphi+2\pi$ (linaje radiativo);
-> $\mathrm{KRYSTOS}_V=\varphi+\pi+\Omega$ (padres {φ,π,Ω}, ancla wₐ — **NO** "2Ω", que rompería
-> la no-auto-suma). Forma $g^2 v$ (masa generada), escrita en el Lagrangiano escalar libre de Paper 6.
+> $\mathrm{SOLAR}=\mathrm{BIAL}+\mathrm{KAL}=\varphi+2\pi$; $\mathrm{KRYSTOS}_V=\varphi+\pi+\Omega$
+> (padres {φ,π,Ω} — **NO** "2Ω"). Forma $g^2v$, escrita en el Lagrangiano escalar libre de Paper 6.
 >
-> **Un solo hecho, dos mitades — sin contradicción:**
-> 1. **CERRADO (contenido medible):** dimensionalidad (número puro × eV), no-fiteo (cadena
->    forward), y la *forma* (término de masa $m_\Phi^2$ de un Lagrangiano escrito). Falseable por
->    $k_{\rm fs}=0.754\,h/$Mpc (DESI Y3/Euclid). Esto es lo que se puede medir y está dentro del
->    horizonte de saturación TRIAL.
-> 2. **CONGELADO como ansatz falseable (Camino A):** la *derivación UV* del coeficiente 594.28
->    desde un $V(\phi)$ unificado. Se intentó derivarlo del transporte KAL (Camino B, acotado,
->    2026-07-11) → **CORTE**: el mejor cierre es la propia forma $g^2v$; más abajo vive fuera del
->    horizonte medible → diferido a **OP-10**. Esto es **incompletitud, NO inconsistencia**, y está
->    **catalogado a propósito** (el rasgo anti-numerología: se declara lo que no se derivó).
+> **Para que quede claro qué falta y qué no:**
+> - **Lo que YA funciona (esto NO es lo que OP-9 pregunta):** la partícula tiene masa
+>   dimensionalmente correcta, sin fiteo, escrita como término $g^2v$ de un Lagrangiano real, y
+>   es **falseable** ($k_{\rm fs}=0.754\,h/$Mpc, DESI Y3/Euclid). La *decisión* de usar esta
+>   partícula ya está tomada — eso es **OP-17**, no OP-9.
+> - **Lo que FALTA (esto SÍ es OP-9, y por eso ABIERTO):** derivar el coeficiente 594.28 desde
+>   un $V(\phi)$ unificado. El intento acotado (Camino B, transporte KAL, 2026-07-11) dio
+>   **CORTE** → diferido a **OP-10**, más allá del horizonte de saturación TRIAL.
 >
-> "OP-9 cerrado" = (1). "OP-9 abierto" = (2). No re-litigar: la mitad medible no se reabre; la
-> mitad UV es OP-10 por diseño. El bloque histórico (615.33, look-elsewhere 1/537) es rastro, no
-> estado. Ver [[project-op17-particle-deferred]], [[project-nine-sovereigns-naming]].
+> Que OP-9 esté abierto **y declarado abierto** es lo CONTRARIO de numerología (que fingiría
+> tenerlo resuelto). Incompletitud, no inconsistencia. El bloque histórico (615.33, 1/537) es
+> rastro, no estado. Ver [[project-op17-particle-deferred]], [[project-nine-sovereigns-naming]].
 
 **Location:** Paper 6, §3.2 (subsec:mass_derivation), §3.4 (subsec:lagrangian), §6 (subsec:origin).
 
@@ -1255,7 +1256,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
 | OP-7 | P4/7/8 | QFT derivation of Genesis role assignments | ✅ PARCIAL | EFT uniqueness formalizado P7 §5.2 + P1 §5.3; QFT desde primeros principios → largo plazo |
 | OP-8 | Transv. | ~~MIRA dynamical mechanism~~ → factor-materia DISUELTO | ✅ DISUELTO 2026-06-18 | Reframe ω_m-directo: Ω_m,CMB=ω_m/h²=0.30889 sin factor (ω_c=KAL₀·ω_b·n_s forward); MIRA persiste solo en f_screen; CMB χ²=1005.5/ΔBIC=−23.9 |
-| OP-9 | P6 | ~~m_φ=5.60 eV numerological~~ → m_φ=40.70 eV canónico | ✅ CERRADO (medible) · residuo = horizonte TRIAL | $m_\varphi=\Sigma m_\nu^{\rm active}\cdot(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS\_V})=40.70$ eV (SOLAR=φ+2π, **KRYSTOS_V=φ+π+Ω** padres {φ,π,Ω}, NO 2Ω; mult=594.28), término de masa $g^2v$ escrito, **falseable por $k_{\rm fs}=0.754$ (DESI/Euclid)** — contenido MEDIBLE cerrado (adoptado OP-17). El origen UV del coeficiente vive **más allá del horizonte de saturación TRIAL** (no es un hueco: es el borde de lo medible; la derivación dinámica es OP-10, gobernada por ley, no numerología). Intento de transporte 2026-07-11 → CORTE (ver §OP-9). Antes 36.95 (Ω⁴+AURA·KAL) y 42.47 (PYROS·VITA·MIKA), retirados |
+| OP-9 | P6 | ~~m_φ=5.60 eV numerological~~ → m_φ=40.70 eV canónico | 🔶 **ABIERTO** (derivar coef UV 594.28 → OP-10) · partícula ya adoptada [OP-17] y falseable (k_fs=0.754) | $m_\varphi=\Sigma m_\nu^{\rm active}\cdot(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS\_V})=40.70$ eV (SOLAR=φ+2π, **KRYSTOS_V=φ+π+Ω** padres {φ,π,Ω}, NO 2Ω; mult=594.28), término de masa $g^2v$ escrito, **falseable por $k_{\rm fs}=0.754$ (DESI/Euclid)** — contenido MEDIBLE cerrado (adoptado OP-17). El origen UV del coeficiente vive **más allá del horizonte de saturación TRIAL** (no es un hueco: es el borde de lo medible; la derivación dinámica es OP-10, gobernada por ley, no numerología). Intento de transporte 2026-07-11 → CORTE (ver §OP-9). Antes 36.95 (Ω⁴+AURA·KAL) y 42.47 (PYROS·VITA·MIKA), retirados |
 | OP-10 | P6/P7 | Unify χ into φ via richer V(φ) | Medium-High | V(φ) with slope (DE) + minimum (DM matter-mode); restores zero-param status |
 | OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
 | OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |

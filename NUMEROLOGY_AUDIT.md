@@ -125,7 +125,8 @@ predicciones forward), **corto de confirmado**. Lo que lo movería a la derecha:
 k_fs. Lo que lo mataría: k_fs ≠ 0.754, o descartar la evolución w₀wₐ.
 
 **Soft-spots abiertos, catalogados (no ocultos):**
-1. **OP-9** — coeficiente 594.28 débilmente seleccionado; mitad UV congelada (→OP-10).
+1. **OP-9 (ABIERTO)** — derivar el coeficiente 594.28 desde un V(φ) es lo que falta (→OP-10).
+   La partícula ya está adoptada y es falseable (OP-17); OP-9 es solo la derivación pendiente.
 2. **Puente dimensional** Planck→Mpc para H₀ (roadmap #1, Type-P).
 3. **A_s** no derivado (OP-18).
 4. Otros en OPEN_PROBLEMS.md (23 rastreados).

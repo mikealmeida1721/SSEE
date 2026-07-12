@@ -492,7 +492,13 @@ acceptance fraction lies in the range 0.25--0.50 for all models,
 consistent with optimal mixing. Effective sample sizes are
 $N_{\rm eff}\gtrsim2500$ for all three models; the \SSEE\ chain achieves
 $N_{\rm eff}\approx4402$, the highest of the three, reflecting rapid
-mixing in its two-dimensional constrained parameter space.
+mixing in its two-dimensional constrained parameter space.%
+\footnote{The diagnostics in Table~\ref{tab:convergence} are for the
+three-model comparison run (common Planck prior), used for the
+model-selection statistics. The headline posterior $H_0=67.95\pm0.40$ (with the
+$\omega_m$-direct $H_{\rm alg}$ prior) is drawn from a dedicated production chain of the
+same sampler ($100$ walkers $\times\,25{,}000$ steps, $N_{\rm eff}=78{,}170$); the two
+runs differ only in the prior, not the sampler or data.}
 Convergence is assessed via the integrated autocorrelation time $\tau$
 per parameter (Table~\ref{tab:convergence}).
 

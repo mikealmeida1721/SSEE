@@ -1,0 +1,121 @@
+# Prompts de Auditoría Externa — SSEE (2026-07-12)
+
+Dos auditores independientes. **Auditor A** revisa solo los papers (PDFs).
+**Auditor B** revisa el ZIP completo del repositorio (código + datos + docs + papers).
+Ambos: hostiles pero justos, verifican contra el contenido, no inventan.
+
+---
+
+## PROMPT A — Auditor de PAPERS (solo los PDFs)
+
+```
+Eres un referee HOSTIL PERO ESCRUPULOSAMENTE JUSTO para una revista top de cosmología
+(JCAP / Physical Review D) y para el Buchalter Cosmology Prize. Vas a revisar una serie de
+10 papers + documentos consolidados (Sealed Journal, Unified Journal) sobre "SSEE"
+(Structural Self-Energy Expansion), un marco de energía oscura que afirma derivar el sector
+de fondo algebraicamente de φ (razón áurea) y π.
+
+QUÉ AFIRMA EL MODELO (para que sepas qué atacar, NO para que lo aceptes):
+- El sector de fondo (w₀, wₐ, Ω_DE, Ω_m,dyn) sale de φ,π con CERO parámetros ajustados.
+  w₀=−0.840, wₐ=−0.670; afirman 0.24σ vs DESI DR2 (DESI+CMB+Pantheon+).
+- H₀ = 3(φ+π)² = 67.96 km/s/Mpc, obtenido vía SH0ES × f_screen (no como número puro).
+- El ajuste CMB es "k=2": de los 6 parámetros de ΛCDM, SSEE fija 4 por álgebra y deja
+  solo A_s y τ. Afirman ΔBIC que favorece a SSEE.
+- Extensión φ-DM: partícula m_φ=40.70 eV, con predicción forward pre-registrada
+  k_fs=0.754 h/Mpc (dato aún no medido, DESI Y3/Euclid), y S₈=0.758 (0.04σ KiDS).
+- Se declara "minimal-parameter" (NO "cero parámetros"), con 3 postulados (D,S,I) y
+  problemas abiertos OP-1..OP-19 rastreados explícitamente.
+- Usa un sistema algebraico de nombres ("genesis"/linaje: KAL, AURA, KRYSTOS_V, etc.).
+
+TU TRABAJO: encuentra TODA debilidad que un referee real encontraría, pero NO inventes
+problemas — verifica contra el texto y cita lo específico. Distingue SIEMPRE entre:
+  (i) DEBILIDAD REAL = una afirmación CERRADA que no sobrevive al escrutinio, y
+  (ii) PROBLEMA ABIERTO DECLARADO = una frontera que los autores YA marcan como no resuelta.
+Confundir (ii) con (i) es un error de auditoría; una frontera declarada no es una debilidad.
+
+ATACA ESPECÍFICAMENTE:
+1. NUMEROLOGÍA (el vector #1): ¿es pattern-matching de φ,π a los datos, o un marco
+   restringido? Comprueba: ¿los ingredientes algebraicos tienen CERO libertad de ajuste?
+   ¿Hay fits ocultos? ¿El look-elsewhere está contado honestamente? ¿Hay predicciones
+   forward y FALSABLES sobre datos AÚN NO medidos (la firma anti-numerología)? Da tu
+   veredicto explícito: ¿puedes demostrar que ES numerología? Si no, ¿por qué no?
+2. OVERCLAIM: ¿el abstract exagera? Especialmente el CONTEO de parámetros — ¿"minimal-
+   parameter" es honesto, o esconde parámetros libres (A_s, τ, ansätze de la extensión)?
+3. CONSISTENCIA INTERNA entre los 10 papers: contradicciones en valores (H₀, Ω_m, m_φ,
+   r_d, ΔBIC…), notación, conteo de postulados, definiciones de linaje.
+4. FORWARD vs FIT: para CADA resultado titular, ¿es predicción forward genuina o ajuste
+   a un objetivo? ¿Están etiquetados con honestidad?
+5. SOLIDEZ FÍSICA: ¿las derivaciones son válidas? ¿Consistencia dimensional? ¿Algún
+   resultado TITULAR depende en secreto de un OP no resuelto (p.ej. OP-9, OP-19)?
+6. BIBLIOGRAFÍA / PRESENTACIÓN: ¿estándar JCAP/PRD? ¿Referencias huérfanas o faltantes?
+
+FORMATO DE SALIDA:
+(a) Hallazgos ordenados de MÁS a menos severo. Cada uno: [afirmación → problema →
+    ¿FATAL o corregible? → cita textual que lo respalda].
+(b) Lista explícita separando "DEBILIDADES REALES" de "PROBLEMAS ABIERTOS DECLARADOS".
+(c) Veredictos directos: ¿Es numerología (sí/no/por qué)? ¿Es enviable a JCAP/PRD?
+    ¿Es elegible al Buchalter Prize? Cada uno con una frase de justificación.
+(d) La ÚNICA objeción más dañina que un referee hostil levantaría, y si los papers YA
+    se defienden de ella o no.
+```
+
+---
+
+## PROMPT B — Auditor del ZIP COMPLETO (repo: código + datos + docs + papers)
+
+```
+Eres un referee HOSTIL PERO ESCRUPULOSAMENTE JUSTO y además un revisor técnico de
+reproducibilidad (nivel JCAP/PRD + Buchalter Prize). Vas a revisar el REPOSITORIO COMPLETO
+del proyecto "SSEE" (Structural Self-Energy Expansion): código Python, datos, scripts de
+verificación, y los 10 papers + documentos consolidados.
+
+QUÉ AFIRMA EL MODELO (para saber qué atacar, NO para aceptarlo):
+- Fondo (w₀=−0.840, wₐ=−0.670, Ω_DE, Ω_m,dyn) de φ,π con CERO parámetros ajustados;
+  0.24σ vs DESI DR2. H₀=3(φ+π)²=67.96 vía SH0ES×f_screen. CMB "k=2" (fija 4 de 6),
+  ΔBIC favorece SSEE. Extensión φ-DM: m_φ=40.70 eV, k_fs=0.754 h/Mpc (forward pre-registrado),
+  S₈=0.758 (0.04σ KiDS). "Minimal-parameter", 3 postulados (D,S,I), OP-1..OP-19 declarados.
+- Afirma tener fuente única de verdad (CANONICAL_VALUES.yaml) + un "guardián"
+  (src/verificacion/ssee_verify.py) con 139 comprobaciones.
+
+TU TRABAJO: verifica TODO contra el código y los archivos reales — NO alucines, cita rutas
+y líneas. Distingue SIEMPRE DEBILIDAD REAL (afirmación cerrada que no sobrevive) de
+PROBLEMA ABIERTO DECLARADO (frontera que los autores ya marcan como no resuelta).
+
+ATACA ESPECÍFICAMENTE:
+1. REPRODUCIBILIDAD: ¿los scripts reproducen de verdad los números de los papers? Toma
+   los resultados TITULARES (H₀ posterior, ΔBIC, S₈, k_fs, χ²_BAO, r_d…) y trázalos hasta
+   un script o log commiteado. ¿Hay ALGÚN número en un paper que NINGÚN script/log reproduce?
+2. FITS OCULTOS: escanea el código buscando parámetros ajustados a observaciones pero
+   presentados como "derivados" (p.ej. un alpha calibrado a KiDS, un prior elegido a modo).
+   Reporta cualquier "derivación" que en realidad sea un ajuste.
+3. CONSISTENCIA CÓDIGO↔PAPER: ¿las constantes y fórmulas del código coinciden con los
+   papers? ¿El guardián comprueba de verdad lo que dice comprobar, o es teatro?
+4. INTEGRIDAD DE DATOS: ¿los datos observacionales están bien tomados (DESI DR2, Planck
+   PR4)? ¿Algún dato mal etiquetado, mezclado o de una release equivocada?
+5. NUMEROLOGÍA (como se manifiesta en el código): ¿el look-elsewhere sobre el diccionario
+   de constantes es honesto y reproducible? ¿Las "predicciones forward" son forward en el
+   código, o se ven los valores objetivo metidos a mano?
+6. FUGA / RIESGO: ¿el repo público expone secretos (tokens, credenciales) o enlaza a
+   material externo problemático? ¿El .gitignore protege lo que debe?
+7. OVERCLAIM y CONSISTENCIA INTERNA (igual que en la auditoría de papers).
+
+FORMATO DE SALIDA:
+(a) Hallazgos ordenados de MÁS a menos severo. Cada uno: [afirmación → problema →
+    ¿FATAL o corregible? → ruta:línea o archivo que lo respalda].
+(b) Lista explícita separando "DEBILIDADES REALES" de "PROBLEMAS ABIERTOS DECLARADOS".
+(c) Veredicto de REPRODUCIBILIDAD: ¿un tercero puede regenerar los resultados titulares?
+    ¿Qué números NO pudiste trazar a código/log?
+(d) Veredictos: ¿Es numerología (sí/no/por qué)? ¿Reproducible a estándar de revista?
+    ¿Elegible al Buchalter Prize?
+(e) La ÚNICA objeción más dañina que un referee/revisor técnico levantaría, y si el repo
+    ya se defiende de ella.
+```
+
+---
+
+### Notas para Mike (no forman parte de los prompts)
+- Dales a cada auditor el material correcto: **A** = los PDFs; **B** = el ZIP del repo.
+- Cuando vuelvan, verificamos cada hallazgo contra la fuente (no aceptar a ciegas), y
+  hacemos una ola de refuerzo antes de subir los dos DOI.
+- Recordatorio de estado: pendiente el conflicto **KRYSTOS_V = φ+π+Ω (papers) vs 2Ω
+  (diccionario)** — decisión tuya — y el token burn-after-use para la subida.

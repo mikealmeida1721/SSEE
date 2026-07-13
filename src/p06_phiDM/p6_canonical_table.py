@@ -1,3 +1,4 @@
+import os
 """
 TABLA CANÓNICA SSEE — σ₈, S₈, fσ₈
 ======================================
@@ -12,7 +13,7 @@ try:
 except ImportError:
     sys.exit("ERROR: classy not installed")
 
-sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from ssee_core import OMEGA_DE, OMEGA_M_DYN, W0, WA
 
 # ─── Parámetros base SSEE ────────────────────────────────────────────────

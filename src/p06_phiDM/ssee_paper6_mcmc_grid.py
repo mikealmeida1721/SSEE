@@ -1,3 +1,4 @@
+import os
 #!/usr/bin/env python3
 """
 Paper 6 — Generador de grilla CLASS para el MCMC two-sector φ-DM (rediseño riguroso).
@@ -24,11 +25,14 @@ Uso:
 """
 import numpy as np, subprocess, os, sys, glob, time
 
-# ── Rutas (HDD para outputs pesados; NUNCA root SSD) ──────────────────────────
-D      = "/home/mike/Proyectos/SSEE/class_ssee/"
-CLASS  = D + "class"
-OUTDIR = "/mnt/datos/SSEE_data/mcmc/grid_class/"   # P(k) temporales de la grilla
-GRIDNPZ= "/mnt/datos/SSEE_data/mcmc/p6_grid.npz"    # producto final
+# ── Rutas portables (HDD para outputs pesados si existe; NUNCA root SSD) ──────
+# CLASS relativo al repo; outputs vía SSEE_DATA_DIR (default: HDD si existe, si no results/)
+_REPO   = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+D       = os.path.join(_REPO, "class_ssee") + os.sep
+CLASS   = os.path.join(D, "class")
+_SSEE_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else os.path.join(_REPO, "results", "data"))
+OUTDIR  = os.path.join(_SSEE_DATA, "mcmc/grid_class") + os.sep   # P(k) temporales de la grilla
+GRIDNPZ = os.path.join(_SSEE_DATA, "mcmc/p6_grid.npz")           # producto final
 os.makedirs(OUTDIR, exist_ok=True)
 
 # ── Constantes (φ,π) y fondo ω_m-directo — idéntico al forward canónico ───────
@@ -53,8 +57,8 @@ Om_m    = om_m_h2 / h2                     # 0.30889  Ω_m,CMB (fijo, anclado CM
 
 # Punto canónico (forward): Ω_φDM=0.149, m_φ=40.70 eV
 SOLAR   = (pi + phi)/2 + KAL               # φ+2π = 7.9012
-KRYSTOS = 2*OMEGA
-MULT    = SOLAR**2 * KRYSTOS               # 594.28
+KRYSTOS_V = phi + pi + OMEGA               # 9.5192 — padres {φ,π,Ω}, NO 2Ω (colapso)
+MULT    = SOLAR**2 * KRYSTOS_V             # 594.28
 M_PHI_CAN = Smnu*MULT                      # 40.70 eV
 OM_PHIDM_CAN = Om_m - 0.160                # 0.149
 

@@ -3,7 +3,7 @@ PARTÍCULA CANÓNICA φ-DM (Vía 2 + multiplicador SOLAR²·KRYSTOS).
 Cadena forward, CERO fiteo (reframe ω_m-directo 2026-06-18, OP-8 cerrado;
 mecanismo g²·v SOLAR²·KRYSTOS adoptado 2026-06-19, OP-17):
     R2 = Ω/(KAL·TRIAL)
-    Σm_ν = R2 × 0.960318 eV
+    Σm_ν = R2 × ω_b × C_ν/τ_Π  (ν-closure C=93.14; ≈ R2 × 0.9530 eV)
     m_φ = Σm_ν × (SOLAR²·KRYSTOS)         [= 594.28; antes PYROS·VITA·MIKA=615.33]
     T_φ SALE del relic constraint.
 Escenario de fondo: NO hay factor materia. Ω_m,CMB = ω_m/h² = 0.30889; el sector
@@ -16,7 +16,8 @@ Calcula las DOS predicciones falseables (se ACTUALIZAN con el escenario nuevo):
 import numpy as np, subprocess, os
 from scipy.optimize import curve_fit
 
-D="/home/mike/Proyectos/SSEE/class_ssee/"; OUT=D+"output/"; CLASS=D+"class"
+_REPO=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # portable: raíz del repo
+D=os.path.join(_REPO,"class_ssee")+os.sep; OUT=D+"output"+os.sep; CLASS=os.path.join(D,"class")
 T_NU=0.71611; H=0.67962
 # --- constantes (φ,π) ---
 phi=(1+5**0.5)/2; pi=np.pi
@@ -26,10 +27,10 @@ TRIAL=3*(phi+(pi+phi)/2)      # TRIAL
 AURA=(3*phi+pi)/2             # AURA = 2*MIRA
 N_S=1-phi**-7                 # n_s = 0.96556
 # multiplicador canónico ω_m-directo (SOLAR²·KRYSTOS — mecanismo g²·v, OP-9/17)
-# SOLAR = BIAL+KAL = φ+2π (linaje radiativo);  KRYSTOS = 2Ω (anclado por wₐ)
+# SOLAR = BIAL+KAL = φ+2π (linaje radiativo);  KRYSTOS_V = φ+π+Ω (padres, anclado por wₐ)
 BIAL=(pi+phi)/2               # 2.3798
 SOLAR=BIAL+KAL                # 7.9012 (= φ+2π)
-KRYSTOS=2*OMEGA               # 9.5192 (= 2(π+φ))
+KRYSTOS_V=phi+pi+OMEGA        # 9.5192 — padres {φ,π,Ω}, NO 2Ω (colapso); gemelo IGNIS=π+PYROS
 
 # --- fondo ω_m-directo (sin factor materia) ---
 Omega_b=(pi-phi)/(3*OMEGA**2)/H**2    # ω_b/h² algebraico = 0.04854
@@ -52,7 +53,7 @@ Om_cdm=Om_cold-Omega_b
 om_ncdm_h2=Om_hot*H**2
 mu=1.12
 
-MULT=SOLAR**2*KRYSTOS
+MULT=SOLAR**2*KRYSTOS_V
 m_phi=Smnu*MULT
 
 T_phi=T_NU*(om_ncdm_h2*93.14/m_phi)**(1.0/3.0)
@@ -92,7 +93,7 @@ print("  PARTÍCULA CANÓNICA φ-DM — alpha (OUTPUT) y k_fs")
 print("="*74)
 print(f"  R2 = Ω/(KAL·TRIAL)        = {R2:.6f}")
 print(f"  Σm_ν                      = {Smnu:.5f} eV")
-print(f"  multiplicador SOLAR²·KRYSTOS = {MULT:.4f}")
+print(f"  multiplicador SOLAR²·KRYSTOS_V = {MULT:.4f}")
 print(f"  m_φ                       = {m_phi:.4f} eV")
 print(f"  Ω_m,CMB (ω_m/h², sin factor) = {Om_m:.5f}")
 print(f"  Ω_φDM = Ω_m,CMB − 0.160      = {Om_hot:.5f}")

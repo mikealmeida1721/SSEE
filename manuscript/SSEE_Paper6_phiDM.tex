@@ -103,7 +103,7 @@ with $\omega_m=\omega_b+\omega_c+\omega_\nu$ and $\omega_c=\mathrm{KAL}_0\,\omeg
 (Paper~1; $0.41\sigma$ from Planck), so the two-sector split is a \emph{difference}
 of two independent predictions, not a factor.
 The $\phi$-DM mass is a \emph{forward prediction} written into a free scalar
-Lagrangian: $\mphi = \mnu^{\rm active}\times(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})
+Lagrangian: $\mphi = \mnu^{\rm active}\times(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)
 = 0.0685\,\mathrm{eV}\times 594.28 = 40.70\,\mathrm{eV}$, where the multiplier is a
 \emph{pure} $(\varphi,\pi)$ number and $\mnu^{\rm active}=\mathcal{R}_2\times0.9530\,\mathrm{eV}$
 with $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$. Nothing is fitted
@@ -198,12 +198,21 @@ We follow three steps, each falsifying hypotheses in sequence:
     dark-matter component, $\Omega_{\phiDM} = \Omega_{\rm m,CMB} - \Omega_{\rm m,dyn}
     = 0.149$, active only below a free-streaming wavenumber $\kfs$.
   \item \textbf{Mass forward prediction}: combining the active neutrino mass
-    $\mnu^{\rm active} = \mathcal{R}_2 \times 0.9530\,\mathrm{eV} = 0.0685\,\mathrm{eV}$
+    $\mnu^{\rm active} = \mathcal{R}_2 \times 0.9530\,\mathrm{eV} = 0.0685\,\mathrm{eV}$%
+    \footnote{The $(\varphi,\pi)$ content here is the \emph{dimensionless} ratio
+    $\mathcal{R}_2 = 0.07188$; the eV scale ($0.9530$~eV) is \emph{inherited}, not derived,
+    from the standard cosmological relic-to-mass relation
+    $\Sigma m_\nu = 93.14\,\mathrm{eV}\,\Omega_\nu h^2$ --- a physical constant common to
+    all cosmologies, not a quantity fitted here. This is the same status as the Hubble
+    units, which are anchored to the SH0ES measurement (Paper~9): SSEE supplies the
+    algebraic ratio, while the physical scale is anchored externally. The forward
+    prediction is therefore of the dimensionless ratio $\mphi/\mnu^{\rm active}=594.28$,
+    not of the eV scale itself.}
     (with $\mathcal{R}_2 = \Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathcal{T}) = 0.07188$,
     a pure $(\varphi,\pi)$ ratio) with the pure dimensionless multiplier
-    $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$, we obtain the
+    $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V = 594.28$, we obtain the
     forward prediction
-    $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})
+    $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)
     = 40.70\,\mathrm{eV}$.  Because the multiplier is a \emph{pure number}, the
     product carries the units of $\mnu^{\rm active}$ (eV) without dimensional
     repair, and the coefficient is exactly the mass term of a free scalar
@@ -396,15 +405,15 @@ We forward-predict the mass scale of the $\phi$-DM field from quantities already
 fixed in Papers~3--4, multiplied by a \emph{pure} $(\varphi,\pi)$ number:
 \begin{equation}
   \boxed{\mphi \equiv \mnu^{\rm active} \times
-    \bigl(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\bigr)
+    \bigl(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V\bigr)
     = 0.0685\,\mathrm{eV} \times 594.28 = 40.70\,\mathrm{eV},}
   \label{eq:mass_algebraic}
 \end{equation}
 where $\mathrm{SOLAR}=\beta+\KAL=\varphi+2\pi=7.9012$ (the first radiative pulse in
 the SSEE lineage, $\beta=(\varphi+\pi)/2$) and
-$\mathrm{KRYSTOS}=2\,\Omega_{\rm DNAV}=9.5192$ (the constraint scale anchored by
+$\mathrm{KRYSTOS}_V=\varphi+\pi+\Omega_{\rm DNAV}=9.5192$ (the constraint scale anchored by
 $w_a=-(\pi+2\varphi)/\mathcal{K}$), so that the multiplier
-$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$ is a \emph{dimensionless}
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V = 594.28$ is a \emph{dimensionless}
 number --- the squared coupling times the constraint scale, the structure of a
 generated-mass term $g^2 v$ --- built entirely from $\varphi$
 and $\pi$. The active neutrino scale is
@@ -424,7 +433,7 @@ with zero quantities fit to data.
 
 Equation~\eqref{eq:mass_algebraic} has a direct reading within \SSEE: the active
 neutrino scale $\mnu^{\rm active}$ sets the energy unit, and the $\varphi,\pi$
-multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ is the structural enhancement
+multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ is the structural enhancement
 that lifts the warm relic from the neutrino scale to $\sim$\,41 eV. Because the
 multiplier is a pure number, Eq.~\eqref{eq:mass_algebraic} is the coefficient of
 a quadratic mass term --- i.e.\ it can be written directly into a Lagrangian
@@ -432,17 +441,17 @@ a quadratic mass term --- i.e.\ it can be written directly into a Lagrangian
 previously affected OP-9: the mass coefficient no longer floats as a units-broken
 coincidence but is the mass parameter of an explicit free-scalar action. What
 remains open is the deeper origin of the specific multiplier
-$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ from the UV theory, tracked as a refined
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ from the UV theory, tracked as a refined
 OP-9 (see Section~\ref{subsec:origin}).
 
 \begin{tcolorbox}[result, title={Mass forward prediction --- dimensionally consistent}]
   \begin{equation*}
     \mphi = \mnu^{\rm active} \times
-            \bigl(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\bigr)
+            \bigl(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V\bigr)
           = 0.0685\,\mathrm{eV} \times 594.28
           = 40.70\,\mathrm{eV}
   \end{equation*}
-  The multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}=594.28$ is a pure
+  The multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.28$ is a pure
   $(\varphi,\pi)$ number, so an energy times a number returns an energy: the
   relation is \textbf{dimensionally consistent} and is a genuine forward
   prediction (zero quantities fit to data). It is the mass coefficient of the
@@ -477,7 +486,7 @@ spin-0 boson, with the coefficient fixed by the forward prediction of
 Eq.~\eqref{eq:mass_algebraic}:
 \begin{equation}
   \mphi = \mnu^{\rm active}\,
-          \bigl(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\bigr) = 40.70\,\mathrm{eV}.
+          \bigl(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V\bigr) = 40.70\,\mathrm{eV}.
   \label{eq:mass_coeff}
 \end{equation}
 Because the multiplier is a pure $(\varphi,\pi)$ number, this coefficient is
@@ -487,18 +496,18 @@ portal coupling to the Standard Model is included: $\chi$ interacts only
 gravitationally.
 
 \paragraph{Generated-mass structure.}
-The factorisation $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ is not arbitrary: it has
+The factorisation $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ is not arbitrary: it has
 the form of a \emph{generated} mass term $\mphi \sim g^2\,v$, with the squared
 coupling $g^2 = \mathrm{SOLAR}^2$ (the radiative-pulse entity $\mathrm{SOLAR}=
 \varphi+2\pi$ appearing squared, as a coupling does) acting on the scale
-$v = \mathrm{KRYSTOS}\,\mnu^{\rm active}$ set by the constraint entity
-$\mathrm{KRYSTOS}=2\,\Omega_{\rm DNAV}$ and the active-neutrino unit. The
+$v = \mathrm{KRYSTOS}_V\,\mnu^{\rm active}$ set by the constraint entity
+$\mathrm{KRYSTOS}_V=\varphi+\pi+\Omega_{\rm DNAV}$ and the active-neutrino unit. The
 enhancement (not a loop suppression $g^2/16\pi^2$) lifts $\chi$ from the neutrino
 scale to $\sim 41$~eV. The mass is therefore the coefficient of an explicit
 free-scalar action with the structure of a generated mass --- which is what
 \emph{advances} OP-9 from a bare numerical coincidence to a written term. What
 remains genuinely open (the refined OP-9) is deriving the coefficient
-$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ from the dissipative ($\mathrm{KAL}$-governed)
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ from the dissipative ($\mathrm{KAL}$-governed)
 transport sector rather than reading it from the closed dictionary.
 Two features of Eq.~\eqref{eq:phiDM_lagrangian} are essential below.
 First, $\chi$ is a \emph{boson}, not a fermion --- which excludes the
@@ -740,7 +749,7 @@ so all background tests pass without modification.
     \textbf{$\sigeff$ (two-sector \textsc{class})} & \textbf{$0.747$; $S_8=0.758$ ($0.04\sigma$ KiDS --- \emph{resolves})} & \textbf{6} \\
     \textbf{$\alpha$ (\textsc{class} output, not fit)} & \textbf{$1.117\,\mathrm{Mpc}/h$; $f_\phi=0.755$} & \textbf{6} \\
     \textbf{$\kfs$ (free-streaming prediction)} & \textbf{$0.754\,h/\mathrm{Mpc}$ ($k_{1/2}^{\rm CLASS}=0.337$)} & \textbf{6} \\
-    \textbf{$m_\phi$ (forward prediction)} & \textbf{$40.70\,\mathrm{eV} = \mnu^{\rm active}(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$} & \textbf{6} \\
+    \textbf{$m_\phi$ (forward prediction)} & \textbf{$40.70\,\mathrm{eV} = \mnu^{\rm active}(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)$} & \textbf{6} \\
     \textbf{MCMC $\chi^2$ (8 data); $\Delta$BIC} & \textbf{$7.65$; $-14.3$ (SSEE favoured; flat priors, validated \textsc{class} emulator)} & \textbf{6} \\
     \bottomrule
   \end{tabularx}
@@ -1094,7 +1103,7 @@ future work.
 \subsection{Physical origin of the mass relation}
 \label{subsec:origin}
 
-The forward prediction $\mphi = \mnu^{\rm active}\times(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$
+The forward prediction $\mphi = \mnu^{\rm active}\times(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)$
 multiplies an energy scale by a \emph{pure} $(\varphi,\pi)$ number, so it is
 dimensionally consistent and writes directly into the free-scalar action of
 Eq.~\eqref{eq:phiDM_lagrangian} (Section~\ref{subsec:lagrangian}). We note the
@@ -1105,7 +1114,7 @@ status of each ingredient:
     $R_2\times0.9530\,\mathrm{eV}$ \citep{Lesgourgues2006}, with
     $R_2=\Omega_{\rm DNAV}/(\KAL\cdot T)=0.07188$ fixed upstream by the density
     chain (Section~\ref{subsec:mass_derivation}); it sets the energy unit.
-  \item The multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$ is a
+  \item The multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V = 594.28$ is a
     dimensionless number built entirely from $\varphi$ and $\pi$. It is the
     structural enhancement that lifts the warm relic from the neutrino scale to
     $\sim$\,37 eV, and \emph{is} the mass coefficient of the explicit quadratic
@@ -1122,7 +1131,7 @@ Writing the coefficient into a Lagrangian \emph{closes the incompleteness} that
 previously affected OP-9: the mass parameter no longer floats as a units-broken
 coincidence but is the mass term of an explicit free-scalar action. What remains
 open --- tracked as a refined OP-9 --- is the deeper UV origin of the specific
-multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$, in parallel with the origin of
+multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$, in parallel with the origin of
 the $\Sigma m_\nu$ scale itself (OP-14). The physical reading is that the
 $\phi$-DM field acquires its mass from the same $(\varphi,\pi)$ structural algebra
 that fixes the neutrino scale; as established in Section~\ref{subsec:production},
@@ -1139,8 +1148,8 @@ relic abundance integral, not the field's identity.
   \begin{enumerate}
     \item \textbf{$m_\phi = 40.70\,\mathrm{eV}$}: the characteristic $\phi$-DM
       mass, obtained by the zero-fitting forward chain
-      $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$ with the
-      pure $(\varphi,\pi)$ multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$
+      $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)$ with the
+      pure $(\varphi,\pi)$ multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V = 594.28$
       (Section~\ref{subsec:origin}).  Because $\phiDM$ is a gravitationally
       produced scalar with no Standard-Model portal
       (Section~\ref{subsec:production}), it is \emph{not} accessible to
@@ -1180,9 +1189,9 @@ elements explicitly tracked as open problems:
   \item $\Omega_{\phiDM} = (\MIRA - 1)\,\Omega_{\rm m,dyn}$: derived from the
     MIRA algebraic identity. \emph{Not fitted.} (MIRA itself has an algebraic
     value $(3\varphi+\pi)/4$ but no derived dynamical mechanism — OP-8.)
-  \item $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})
+  \item $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)
     = 40.70\,\mathrm{eV}$: a zero-fitting forward prediction. The multiplier
-    $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$ is a pure $(\varphi,\pi)$
+    $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V = 594.28$ is a pure $(\varphi,\pi)$
     number and is the mass term of the written scalar Lagrangian
     (Section~\ref{subsec:origin}), so the mass is dimensionally consistent.
     \emph{Not fitted.} What remains open is the UV origin of the multiplier
@@ -1199,7 +1208,7 @@ The two-sector extension does not introduce new \emph{fitted} parameters
 relative to the background sector. The mass $m_\phi$ is no longer a loose
 ansatz: its coefficient is the mass term of a written scalar Lagrangian, which
 closes the dimensional-incompleteness of OP-9 and leaves only the UV origin of
-the multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ open. The remaining
+the multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ open. The remaining
 phenomenological inputs are the non-minimal coupling $\xi$ (OP-11) and the UV
 origin of the multiplier (refined OP-9). (The former MIRA matter mechanism,
 OP-8, is dissolved under the $\omega_m$-direct reframe: there is no matter
@@ -1226,7 +1235,7 @@ We have proposed a phenomenological two-sector resolution for the $f\sigma_8$ gr
     free-streaming cutoff at $\kfs$.
 
   \item \textbf{Mass from a written Lagrangian}:
-    $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})
+    $\mphi = \mnu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)
     = 0.0685 \times 594.28 = 40.70$~eV, with the multiplier a pure
     $(\varphi,\pi)$ number that is the mass term of the scalar Lagrangian
     $\mathcal{L}_\Phi = \tfrac12(\partial\Phi)^2 - \tfrac12 m_\phi^2 \Phi^2$
@@ -1253,7 +1262,7 @@ rate). The lensing tension is \emph{resolved} at the linear level by the
 two-sector model evaluated directly in \textsc{class} ($S_8 = 0.758$ at
 $0.04\sigma$ from KiDS), with no warm-dark-matter transfer function fitted to
 data: the suppression scale is a Boltzmann output. The mass coupling
-$m_\phi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$ is
+$m_\phi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)$ is
 now the mass term of a written scalar Lagrangian; the free-streaming scale
 $k_{\rm fs}$ still awaits verification against Lyman-$\alpha$ forest data. The
 remaining background tension ($H(z)$, $\chi^2_r = 1.861$) is structural and

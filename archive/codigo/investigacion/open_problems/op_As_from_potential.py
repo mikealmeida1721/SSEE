@@ -20,7 +20,11 @@ Cero maquillaje: si solo salen flukes de alta densidad, A_s NO es de SSEE.
 import numpy as np
 import itertools
 import sys
-sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
+import os as _os
+_r = _os.path.dirname(_os.path.abspath(__file__))
+while _r != _os.path.dirname(_r) and not _os.path.isdir(_os.path.join(_r, 'src')):
+    _r = _os.path.dirname(_r)
+sys.path.insert(0, _os.path.join(_r, 'src'))  # portable: sube hasta la raíz del repo
 from ssee_core import PHI, PI, OMEGA, BETA, KAL0, MIRA, AURA, T_R, M_V
 
 A_S   = 2.1e-9

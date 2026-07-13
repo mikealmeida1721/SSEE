@@ -35,7 +35,11 @@ PARÁMETROS SSEE (algebraicos):
 """
 import numpy as np
 import sys
-sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
+import os as _os
+_r = _os.path.dirname(_os.path.abspath(__file__))
+while _r != _os.path.dirname(_r) and not _os.path.isdir(_os.path.join(_r, 'src')):
+    _r = _os.path.dirname(_r)
+sys.path.insert(0, _os.path.join(_r, 'src'))  # portable: sube hasta la raíz del repo
 from ssee_core import PHI, PI, KAL0, OMEGA_M_DYN, OMEGA_DE, MIRA, AURA, BETA
 from scipy.integrate import solve_ivp
 from scipy.optimize import brentq

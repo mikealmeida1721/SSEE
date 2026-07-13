@@ -8,3 +8,4 @@ cobaya>=3.6
 classy>=3.3
 getdist>=1.4
 astropy>=5.3
+pyyaml>=6.0

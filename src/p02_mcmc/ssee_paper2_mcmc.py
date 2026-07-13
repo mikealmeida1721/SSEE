@@ -23,10 +23,13 @@ t0 = time.time()
 
 LOG_FILE = "results/logs/mcmc_professional.log"
 OUT_DIR  = "results/figures"
-# Regla de disco: chains (~GB) al HDD, NO al SSD root
-CHAIN_FILE = "/mnt/datos/SSEE_data/mcmc/paper2_3models/mcmc_chains_professional.npz"
+# Portable: chains (~GB) al HDD si existe (regla de disco), a results/ en otra PC.
+# Override con:  export SSEE_DATA_DIR=/ruta/a/disco/grande
+_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else "results/data")
+CHAIN_FILE = os.path.join(_DATA, "mcmc/paper2_3models/mcmc_chains_professional.npz")
 os.makedirs("results/logs", exist_ok=True)
 os.makedirs(OUT_DIR, exist_ok=True)
+os.makedirs(os.path.dirname(CHAIN_FILE), exist_ok=True)
 
 def log(msg):
     elapsed = (time.time()-t0)/60

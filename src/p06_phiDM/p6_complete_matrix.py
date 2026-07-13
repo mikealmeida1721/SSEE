@@ -11,13 +11,13 @@ la procedencia de los resultados registrados. Pipeline canónico vigente:
 p6_canonical_table.py.
 """
 import numpy as np
-import sys
+import os, sys
 try:
     from classy import Class
 except ImportError:
     print("ERROR: classy not installed"); sys.exit(1)
 
-sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from ssee_core import PHI, PI, OMEGA_DE, OMEGA_M_DYN, MIRA
 
 # ── Parámetros base SSEE ─────────────────────────────────────────────────────

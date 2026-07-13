@@ -153,7 +153,7 @@ $\gamma_{\mathrm{IS}} = 0.550$ & $\approx\gamma_{\Lambda\mathrm{CDM}}=0.55$ & RS
 $f\sigma_8(z{=}0.5)$ & mean $0.70\sigma$ vs 6 RSD surveys (single-sector) & BOSS/eBOSS/6dFGS & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 6 — $\varphi$-Dark Matter, two-sector}} \\
-$m_\phi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$ & $40.70\,\mathrm{eV}$ & Matter $P(k)$ via $k_{\mathrm{fs}}$ (no SM portal) & Prediction \\
+$m_\phi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)$ & $40.70\,\mathrm{eV}$ & Matter $P(k)$ via $k_{\mathrm{fs}}$ (no SM portal) & Prediction \\
 $k_{\mathrm{fs}}$ (Dodelson-Widrow from $m_\phi$) & $0.754\,h\,\mathrm{Mpc}^{-1}$ & DESI\,Y3 / Euclid $P(k)$, 2026--2028 & Prediction \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 7 — Canonical EFT, Bellini-Sawicki $\alpha$-functions}} \\
@@ -366,9 +366,9 @@ first principles and are tracked as open problems:
         the algebraic $\omega_b$ (OP-1) and the forward identity
         $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ (OP-8 closed). What remains:
   \item The $\varphi$-DM mass $m_\phi=40.70$\,eV in Paper~6 follows from the
-        free-scalar mass term $m_\phi=\Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})$;
+        free-scalar mass term $m_\phi=\Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)$;
         the residual open question (OP-9) is the UV origin of the pure
-        $(\varphi,\pi)$ multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}=594.28$,
+        $(\varphi,\pi)$ multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.28$,
         not the dimensional consistency of the relation. The neutrino input
         $\Sigma m_\nu^{\rm active}=0.0685$\,eV now derives from the clean ratio
         $\mathcal{R}_2=\Omega/(\mathrm{KAL}\cdot\mathrm{TRIAL})$, removing the
@@ -1298,8 +1298,8 @@ Symbol & Name & Definition & Value & Layer\\
 \midrule
 $\Omega$ & DNAV / Stability Metric  & $\varphi+\pi$ & 4.7596 & L1\\
 $\beta$  & BIAL / Base Coupling     & $(\varphi+\pi)/2$ & 2.3798 & L1\\
-$K_v$    & KRYSTOS / Structural Constraint & $2(\varphi+\pi)$ & 9.5192 & L1\\
-$M_v$    & MIKAEL\_V / Maximal Invariant & $3(\varphi+\pi)$ & 14.2788 & L1\\
+$K_v$    & KRYSTOS$_V$ / Structural Constraint & $\varphi+\pi+\Omega$ & 9.5192 & L1\\
+$M_v$    & MIKAEL\_V / Maximal Invariant & $\varphi+\pi+K_v$ & 14.2788 & L1\\
 \midrule
 $\mathrm{KAL}_0$ & Structural Viscosity & $\beta+\pi$ & 5.5214 & L2\\
 $P_{sc}$ & PYROS / Dynamical Scalar & $\Omega+\varphi$ & 6.3776 & L2\\

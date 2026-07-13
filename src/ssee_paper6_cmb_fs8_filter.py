@@ -12,7 +12,8 @@ Dos pruebas que faltaban:
 """
 import numpy as np, subprocess, os
 
-D="/home/mike/Proyectos/SSEE/class_ssee/"; OUT=D+"output/"; CLASS=D+"class"
+_REPO=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+D=os.path.join(_REPO,"class_ssee")+os.sep; OUT=D+"output"+os.sep; CLASS=os.path.join(D,"class")
 T_NU=0.71611; H=0.67962; Om_m=0.3200; Omega_b=0.04897
 Om_cold=0.160; Om_hot=0.160
 Om_cdm=Om_cold-Omega_b

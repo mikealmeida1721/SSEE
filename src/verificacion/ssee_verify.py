@@ -151,17 +151,17 @@ for name, (computed, ledger) in L2.items():
 #   m_phi = Sigma_m_nu^active * (SOLAR^2 * KRYSTOS)   [mecanismo g²·v]
 #   con Sigma_m_nu^active = R2·ω_b·C_ν/(τ_Π H0), C_ν=93.14 eV PDG (cierre ν preciso,
 #   N_eff=3.046; DEMOSTRADO en derive_nu_closure.py), R2 = Omega/(KAL0*Tr).
-#   SOLAR = BIAL+KAL = phi+2pi (linaje radiativo); KRYSTOS = 2*Omega (anclado por wa).
+#   SOLAR = BIAL+KAL = phi+2pi (linaje radiativo); KRYSTOS_V = phi+pi+Omega (padres, NO 2Omega).
 # Dimensionalmente CONSISTENTE: [eV] * (número puro) = [eV].
 # C_ν univaluada en 93.14 (antes 94.07 baked como 0.960318, misma constante; 2026-07-10).
 # Mult. anterior PYROS*VITA*MIKA=615.33 (m_phi=42.47, sin mecanismo) RETIRADO; ver OP-9/OP-17.
 _R2 = Omega / (KAL0 * Tr)
 _mnu_active = _R2 * _omb * 93.14 / (KAL0 * Omega / Tr)   # = 0.06849 eV
 _SOLAR = phi + 2 * pi
-_KRYSTOS = 2 * Omega
-_mult_mphi = _SOLAR ** 2 * _KRYSTOS
+_KRYSTOS_V = phi + pi + Omega          # padres {φ,π,Ω} — NO 2Ω (colapso convencional)
+_mult_mphi = _SOLAR ** 2 * _KRYSTOS_V
 _m_phi_canon = _mnu_active * _mult_mphi
-check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (SOLAR^2*KRYSTOS) = 40.70 eV",
+check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (SOLAR^2*KRYSTOS_V) = 40.70 eV",
       abs(_m_phi_canon - 40.7024) < 1e-2,
       f"m_phi = {_m_phi_canon:.4f} eV (R2={_R2:.6f}, mult={_mult_mphi:.4f})")
 
@@ -283,16 +283,16 @@ track_open("V-L3-OP6  forma multiplicativa: insumo delta_local = 2 no derivado",
 R2_p6 = Omega / (KAL0 * Tr)
 mnu_active = R2_p6 * _omb * 93.14 / (KAL0 * Omega / Tr)   # = 0.06849 eV (C_ν=93.14)
 SOLAR = phi + 2 * pi
-KRYSTOS = 2 * Omega
-mult_p6 = SOLAR ** 2 * KRYSTOS
+KRYSTOS_V = phi + pi + Omega            # padres {φ,π,Ω} — NO 2Ω (colapso convencional)
+mult_p6 = SOLAR ** 2 * KRYSTOS_V
 m_phi = mnu_active * mult_p6
-check("V-L3-mphi  cadena m_phi = Sigma_m_nu^active * (SOLAR^2*KRYSTOS) = 40.70 eV",
+check("V-L3-mphi  cadena m_phi = Sigma_m_nu^active * (SOLAR^2*KRYSTOS_V) = 40.70 eV",
       abs(m_phi - 40.7024) < 2e-2, f"m_phi = {m_phi:.4f} eV")
-track_open("V-L3-mphi  coeficiente SOLAR²·KRYSTOS no derivado del transporte (OP-9)",
+track_open("V-L3-mphi  coeficiente SOLAR²·KRYSTOS_V no derivado del transporte (OP-9)",
            "el valor 40.70 eV es forward-prediction dimensionalmente consistente, escrito "
            "como termino de masa g²·v de un Lagrangiano escalar libre; lo abierto (OP-9) es "
-           "derivar el coeficiente SOLAR²·KRYSTOS del transporte disipativo (KAL), no la "
-           "dimensionalidad ni un fiteo. SOLAR=BIAL+KAL, KRYSTOS=2Omega anclados por linaje")
+           "derivar el coeficiente SOLAR²·KRYSTOS_V del transporte disipativo (KAL), no la "
+           "dimensionalidad ni un fiteo. SOLAR=BIAL+KAL, KRYSTOS_V=φ+π+Ω (padres, NO 2Ω) por linaje")
 
 # Dos sectores phi-DM (P6) — tras el reframe omega_m-directo (2026-06-18) la
 # particion sale SOLA, sin factor: Om_CDM (=Om_m,dyn=0.160, DESI) + Om_phiDM =
@@ -867,6 +867,8 @@ try:
                     _master.add(_c["name"].upper())
         if "OMEGADNAV" in _master:
             _master.add("OMEGA")          # alias scaffold
+        if "KRYSTOS" in _master:
+            _master.add("KRYSTOS_V")      # KRYSTOS_V = nombre correcto (φ+π+Ω); maestro aún usa "KRYSTOS" → v1.2 pendiente
     _lf = _root / "src" / "estadistica" / "look_elsewhere_full.py"
     _fam = set()
     if _lf.exists():

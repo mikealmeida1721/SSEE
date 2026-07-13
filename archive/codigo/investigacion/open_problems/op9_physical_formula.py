@@ -20,7 +20,11 @@ dé m_φ ∈ [1, 30] eV.
 """
 import numpy as np
 import sys
-sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
+import os as _os
+_r = _os.path.dirname(_os.path.abspath(__file__))
+while _r != _os.path.dirname(_r) and not _os.path.isdir(_os.path.join(_r, 'src')):
+    _r = _os.path.dirname(_r)
+sys.path.insert(0, _os.path.join(_r, 'src'))  # portable: sube hasta la raíz del repo
 from ssee_core import PHI, PI, OMEGA, KAL0, MIRA
 
 # ──────────────────────────────────────────────────────────────────────────

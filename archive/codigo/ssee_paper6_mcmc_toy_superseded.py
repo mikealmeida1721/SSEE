@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+_SSEE_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else "results/data")
 """
 Paper 6 — MCMC Bayesiano completo: sector φ-DM (SSEE-V3.6)
 ===========================================================
@@ -292,7 +293,7 @@ sampler.run_mcmc(p0, nsteps, progress=True)
 
 # Persistir la cadena cruda a disco INMEDIATAMENTE (robustez: si el guardado de
 # figuras falla, la cadena no se pierde y las figuras se regeneran sin re-muestrear).
-_CHAINDIR = "/mnt/datos/SSEE_data/mcmc"   # HDD 3.6 TB (NO root: evita llenar la SSD)
+_CHAINDIR = os.path.join(_SSEE_DATA, "mcmc")   # HDD 3.6 TB (NO root: evita llenar la SSD)
 os.makedirs(_CHAINDIR, exist_ok=True)
 np.save(os.path.join(_CHAINDIR, "p6_mcmc_chain.npy"), sampler.get_chain())
 print(f"  Cadena cruda guardada: {_CHAINDIR}/p6_mcmc_chain.npy")
@@ -385,7 +386,7 @@ print(f"\n  ΔBIC(SSEE − ΛCDM) = {dBIC:.1f}  ({'SSEE favorecido' if dBIC<0 el
 # ═══════════════════════════════════════════════════════════════════════════════
 # §8  Figuras
 # ═══════════════════════════════════════════════════════════════════════════════
-OUTDIR = "/mnt/datos/SSEE_data/mcmc"   # HDD (figuras MCMC; se copian a results/figures/ al cerrar)
+OUTDIR = os.path.join(_SSEE_DATA, "mcmc")   # HDD (figuras MCMC; se copian a results/figures/ al cerrar)
 
 # ── Corner plot ────────────────────────────────────────────────────────────────
 print("\n  Generando figuras...")

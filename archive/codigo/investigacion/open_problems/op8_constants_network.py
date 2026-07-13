@@ -26,7 +26,11 @@ TESTS:
      ¿MIRA = AURA/2 tiene interpretación natural?
 """
 import sys
-sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
+import os as _os
+_r = _os.path.dirname(_os.path.abspath(__file__))
+while _r != _os.path.dirname(_r) and not _os.path.isdir(_os.path.join(_r, 'src')):
+    _r = _os.path.dirname(_r)
+sys.path.insert(0, _os.path.join(_r, 'src'))  # portable: sube hasta la raíz del repo
 from ssee_core import PHI, PI, OMEGA, BETA, KAL0, MIRA, AURA
 
 print("=" * 78)

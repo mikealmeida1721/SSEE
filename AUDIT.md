@@ -7,7 +7,7 @@
 
 > ⚠️ **Superseded numbers (reframe 2026-06-19 + ν-closure 2026-07-10).** This dated
 > snapshot predates the **ω_m-direct reframe** (OP-8 dissolved: Ω_m,CMB = ω_m/h² =
-> **0.30889**, no matter factor) and the **SOLAR²·KRYSTOS particle** with the unified
+> **0.30889**, no matter factor) and the **SOLAR²·KRYSTOS_V particle** with the unified
 > ν-closure constant C=93.14: **m_φ = 40.70 eV, k_fs = 0.754 h/Mpc, S₈ = 0.758**
 > (0.04σ KiDS). The Hubble cascade is H_alg = 67.962 → H_local = **72.86** (0.17σ);
 > the canonical DR2 posterior is **H₀ = 67.95 ± 0.40** (geometry-total 0.30889, V-L4-DESI).
@@ -33,7 +33,7 @@ Falsifiable predictions — fixed by algebraic construction, not fitted (Structu
 | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.16σ |
-| m_φ (φ-DM mass) | 40.70 eV algebraic (SOLAR²·KRYSTOS) | gravitationally-produced scalar — probed via k_fs | Future prediction |
+| m_φ (φ-DM mass) | 40.70 eV algebraic (SOLAR²·KRYSTOS_V) | gravitationally-produced scalar — probed via k_fs | Future prediction |
 | k_fs | 0.754 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
 | (w₀, wₐ) vs DESI DR3 | same fixed point (−0.840, −0.670) | DR3 w₀wₐCDM (2027): trajectory 0.05σ (DR1) → 0.24σ (DR2, errors −40%); expect ~0.5σ if centrals persist; >3σ joint exclusion falsifies | **Pre-registered prediction** |
 | r (tensor-to-scalar) | φ⁻¹⁰ = 0.00813 | LiteBIRD (~2032) | Future prediction |
@@ -51,12 +51,13 @@ SSEE/
 │   ├── SSEE_Unified_Journal.tex     — consolidated journal paper (Papers 1–7)
 │   ├── SSEE_Endorser_Summary.tex    — 2-page arXiv endorser brief
 │   └── *.bib                        — ssee_paper3/5/6, SSEE_Paper4, ssee_unified
-├── src/                             — 42 Python scripts (analysis & verification)
-│   ├── ssee_paper2…paper10_*.py     — per-paper analysis, MCMC, figures
-│   ├── ssee_op1…op6_*.py            — OPEN_PROBLEMS resolution scripts (OP-1..OP-6)
-│   ├── ssee_paperB_*.py             — Paper B groundwork (baryogenesis DW, N_*)
-│   ├── ssee_audit_consistency.py    — cross-paper parameter consistency audit
-│   └── scratch/                     — exploratory scripts (not load-bearing)
+├── src/                             — Python scripts, organized per paper
+│   ├── p02_mcmc/ … p10_uv/          — per-paper analysis, MCMC, figures (one dir per paper)
+│   ├── pB_inflation/                — Paper B groundwork (baryogenesis DW, N_*)
+│   ├── estadistica/                 — Bayesian model-selection (DIC, Savage-Dickey, cross-val)
+│   ├── mcmc_full/                   — full Cobaya CAMB+PPF pipeline (heavy chains → /mnt/datos)
+│   ├── verificacion/                — ssee_verify.py guardian + CANONICAL sync
+│   └── ssee_core.py                 — single algebraic source (φ, π → all constants)
 ├── class_ssee/                      — CLASS Boltzmann fork — SSEE .ini configs + plots
 │   ├── ssee_v36.ini                 — SSEE MIRA sector (Ω_m=0.3199)
 │   ├── ssee_v36_nomira.ini          — SSEE dynamic sector only (Ω_m=0.160)
@@ -77,12 +78,18 @@ SSEE/
 
 ### Prerequisites
 ```bash
-pip install camb emcee scipy numpy matplotlib corner cobaya classy getdist astropy
+pip install -r requirements.txt      # numpy scipy matplotlib emcee corner camb cobaya classy getdist astropy pyyaml
 ```
+
+**Portability.** All in-repo paths are derived from each script's own location — no
+hardcoded absolute paths, so the suite runs unchanged from any clone. Heavy MCMC
+outputs default to a large disk if one is mounted, else to `results/data/`; override
+with `export SSEE_DATA_DIR=/path/to/disk`. The optional Obsidian-vault sync
+(`memory_sync.py`) reads `SSEE_VAULT` (default `~/SSEE-Vault`) and is skipped if absent.
 
 ### Paper 2 — MCMC validation
 ```bash
-python3 src/ssee_paper2_mcmc.py
+python3 src/p02_mcmc/ssee_paper2_mcmc.py
 ```
 Runtime: ~30–60 min (N_eff ≈ 637,500 for SSEE, 100 walkers × 25,000 steps).
 
@@ -98,7 +105,7 @@ H₀ = 67.95 ± 0.40 km/s/Mpc  (DR2, geometry-total 0.30889; 0.88σ Planck, 0.04
 
 ### Paper 3 — CMB power spectrum
 ```bash
-python3 src/ssee_paper3_cmb.py
+python3 src/p03_cmb/ssee_paper3_cmb.py
 ```
 
 Expected output:
@@ -115,13 +122,13 @@ Peak positions: ℓ = 221, 538, 815
 
 CLASS cross-check (αK Bellini-Sawicki):
 ```bash
-python3 src/ssee_paper3_hiclass_check.py
+python3 src/p03_cmb/ssee_paper3_hiclass_check.py
 ```
 Expected: αK(0) = 0.4033, Δ = 0.005% vs algebraic prediction.
 
 ### Paper 4 — Press-Schechter δc comparison
 ```bash
-python3 src/ssee_press_schechter.py
+python3 src/p02_mcmc/ssee_press_schechter.py
 ```
 Expected output:
 ```
@@ -135,7 +142,7 @@ M [M☉]      σ_M(z=10)    n_SSEE/n_ΛCDM
 
 ### Paper 5 — Israel-Stewart causal perturbations
 ```bash
-python3 src/ssee_paper5_IS_perturbations.py
+python3 src/p05_IS/ssee_paper5_IS_perturbations.py
 ```
 Expected output:
 ```
@@ -156,7 +163,7 @@ python3 src/p06_phiDM/ssee_paper6_mcmc_v2.py     # emulador; reemplaza al toy ar
 ```
 Expected output (verification):
 ```
-m_φ = 40.70 eV = Σm_ν × (SOLAR²·KRYSTOS)  (algebraic, zero free parameters)
+m_φ = 40.70 eV = Σm_ν × (SOLAR²·KRYSTOS_V)  (algebraic, zero free parameters)
 k_fs = 0.754 h/Mpc  (falsable DESI Y3/Euclid 2026–2028)
 Ω_CDM = 0.160050
 Ω_φDM = 0.148844
@@ -175,7 +182,7 @@ S₈    = 0.782
 
 ### Paper 7 — Canonical EFT βc plateau test
 ```bash
-python3 src/ssee_eft_verification.py
+python3 src/p07_eft/ssee_eft_verification.py
 ```
 Expected output:
 ```
@@ -222,7 +229,7 @@ Expected: cs² effect on σ₈ = 0.03% (negligible); G = D₁_SSEE/D₁_ΛCDM = 
 
 ### OP-5 — HMcode-2020 baryonic feedback (requires CLASS + classy)
 
-`src/ssee_op5_hmcode.py` needs CLASS compiled with the Python wrapper and
+`archive/codigo/investigacion/open_problems/ssee_op5_hmcode.py` needs CLASS compiled with the Python wrapper and
 HMcode-2020 enabled. A bare `pip install classy` does **not** enable
 HMcode-2020 — the local CLASS build is required:
 ```bash
@@ -368,7 +375,7 @@ the closed dictionary. Genuine pre-committed predictions concern **unreleased** 
 | n_s | 1 − φ⁻⁷ | 0.96556 | Planck 2018 | Postdiction |
 | H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Postdiction |
 | r_d | CAMB, ω_m-direct Ω_m,CMB=0.30889 | 147.17 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | 0.3σ postdiction |
-| m_φ | Σm_ν × SOLAR²·KRYSTOS | 40.70 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction (cond. OP-9) |
+| m_φ | Σm_ν × SOLAR²·KRYSTOS_V | 40.70 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction (cond. OP-9) |
 | k_fs | free-streaming (m_φ) | 0.754 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction (cond. OP-9) |
 | r | φ⁻¹⁰ | 0.00813 | LiteBIRD (~2032) | Future prediction |
 

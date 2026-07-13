@@ -26,7 +26,11 @@ teoría de RAZONES, no de escalas. Eso es un resultado, no una rendición.
 import numpy as np
 import itertools
 import sys
-sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
+import os as _os
+_r = _os.path.dirname(_os.path.abspath(__file__))
+while _r != _os.path.dirname(_r) and not _os.path.isdir(_os.path.join(_r, 'src')):
+    _r = _os.path.dirname(_r)
+sys.path.insert(0, _os.path.join(_r, 'src'))  # portable: sube hasta la raíz del repo
 from ssee_core import PHI, PI, OMEGA, BETA, KAL0, MIRA, AURA, T_R, M_V
 
 P_SC = OMEGA + PHI          # 6.3776

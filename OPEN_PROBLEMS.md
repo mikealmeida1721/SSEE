@@ -1,11 +1,37 @@
 # SSEE-V3.6 — Open Problems and Known Limitations
 
-This document records physics gaps and open theoretical questions in the SSEE framework
-that are **acknowledged but not resolved** in the current preprint suite (Papers 1–9).
-These are not editorial issues; they are genuine scientific limitations that future work
-must address before the framework can claim completeness.
+This document records the open theoretical questions and **frontiers in progress** of the
+SSEE framework. These are **not** hidden flaws: they are declared, in-process work — the
+opposite of numerology (which would pretend they are solved). Ver `NUMEROLOGY_AUDIT.md`.
 
-Last updated: 2026-05-16
+Last updated: 2026-07-12
+
+---
+
+## Leyenda de estado — cómo leer este documento (FIJADO 2026-07-12, no re-frasear)
+
+Un problema abierto (OP) es una **frontera en proceso, NO una debilidad.** La distinción es
+referee-proof y se aplica a todo el documento:
+
+| Estado | Qué significa | ¿Bloquea publicación? |
+|---|---|---|
+| **CERRADO** | Derivado/verificado; se defiende ante un referí. Las afirmaciones titulares del modelo descansan aquí. | No |
+| **PARCIAL** (resource-gated) | Responde bien la pregunta **hasta donde los recursos actuales permiten**; la verificación PROFUNDA requiere recursos que hoy no tengo (supercómputo, datos futuros, N-body). El resultado inmediato suele ser **falseable**. | No |
+| **ABIERTO** (frontera) | Pregunta clara y bien planteada, en proceso. | No |
+| **DEBILIDAD** | Una afirmación **CERRADA** que **NO se puede defender** ante un referí, por razones claras. | **Sí** |
+
+**Regla anti-inconsistencia (para auditorías futuras — incluido Claude):** un OP **no es una
+debilidad**. Una debilidad es algo que ya *afirmamos como cerrado* y que **falla ante un
+referí**. El TEST para saber si un OP es debilidad: *¿alguna afirmación titular del modelo
+depende en secreto de que ese OP esté resuelto?* Si **no** → es frontera (el modelo se para sin
+él). Si **sí** → es carga, y hay que reclasificarla. **A hoy SSEE tiene 0 debilidades:** ningún
+titular (w₀wₐ validado por DESI, k_fs falseable, cascada H con unidades ancladas
+empíricamente) depende de un OP sin resolver. Los OPs son profundizaciones, no huecos que
+sostengan lo publicado.
+
+**Readiness para Zenodo:** publicable = **(0 debilidades) + (OPs declarados con honestidad)**.
+NO es *(0 OPs)* — eso es imposible: hasta ΛCDM tiene el problema de la constante cosmológica
+abierto. No encadenar la publicación al mecanismo (OP-9/OP-10) — ver [[project_publication_strategy]].
 
 ---
 
@@ -529,15 +555,47 @@ it returns to ≤2 (only $H_0$ and $\Omega_b h^2$ as observation-tunable).
 
 ---
 
-## OP-9 — UV Origin of the Mass Multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ (Paper 6) — REFINADO 2026-06-19
+## OP-9 — UV Origin of the Mass Multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ (Paper 6) — **ABIERTO** (coeficiente UV)
 
-> [!nota] CANÓNICO ACTUAL (2026-06-19): $m_\phi = \Sigma m_\nu^{\rm act}\cdot\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 0.0685\cdot594.28 = 40.70$ eV.
-> SOLAR=BIAL+KAL=φ+2π (linaje radiativo), KRYSTOS=2Ω (anclado por wₐ). Forma $g^2 v$ (masa
-> generada), escrita en el Lagrangiano escalar libre de Paper 6 §5.3. **Lo que queda abierto
-> (OP-9):** derivar el coeficiente SOLAR²·KRYSTOS del **transporte disipativo** (gobernado por
-> KAL) en vez de leerlo del diccionario cerrado. La dimensionalidad y el "no-fiteo" ya están
-> cerrados; el origen UV del coeficiente, no. Lo de abajo (multiplicador viejo, look-elsewhere)
-> es el rastro histórico del análisis que llevó a SOLAR. Ver [[project-op17-particle-deferred]].
+> [!nota] ESTADO CANÓNICO ÚNICO (2026-07-12) — leer esto, ignorar redacciones antiguas abajo.
+> **Estado en UNA palabra: OP-9 está ABIERTO.** No lo llamamos "cerrado" en ninguna mitad —
+> eso confundía. Lo que existe es una partícula usable y una derivación pendiente; solo la
+> segunda es OP-9.
+>
+> $m_\phi = \Sigma m_\nu^{\rm act}\cdot\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V = 0.0685\cdot594.28 = 40.70$ eV.
+> $\mathrm{SOLAR}=\mathrm{BIAL}+\mathrm{KAL}=\varphi+2\pi$; $\mathrm{KRYSTOS}_V=\varphi+\pi+\Omega$
+> (padres {φ,π,Ω} — **NO** "2Ω"). Forma $g^2v$, escrita en el Lagrangiano escalar libre de Paper 6.
+>
+> **Para que quede claro qué falta y qué no:**
+> - **Lo que YA funciona (esto NO es lo que OP-9 pregunta):** la partícula tiene masa
+>   dimensionalmente correcta, sin fiteo, escrita como término $g^2v$ de un Lagrangiano real, y
+>   es **falseable** ($k_{\rm fs}=0.754\,h/$Mpc, DESI Y3/Euclid). La *decisión* de usar esta
+>   partícula ya está tomada — eso es **OP-17**, no OP-9.
+> - **Lo que FALTA — LA PREGUNTA ABIERTA, exacta (esto SÍ es OP-9):**
+>   > ¿Existe un potencial $V(\phi)$ construido **solo de φ,π** cuya **curvatura en el mínimo**
+>   > reproduzca el coeficiente 594.28 —es decir, $m_\phi=\Sigma m_\nu\cdot594.28$— **sin
+>   > meterlo a mano**?
+>   >
+>   > (Imagen: la masa = qué tan curvado está el fondo del valle del campo. La pregunta es si un
+>   > valle con forma pura φ,π se curva *exactamente* eso. $m_\phi^2 = V''(\phi_{\min})$.)
+>
+> **Relación OP-9 ↔ OP-10 (para NO marear la pregunta):** comparten la **misma respuesta** — el
+> potencial. **OP-10** = derivar el potencial completo (la *función*, el valle entero). **OP-9**
+> = el *número* que ese valle debe escupir (la curvatura del fondo). Resuelto OP-10, OP-9 **cae
+> solo**: son **un problema en dos resoluciones**, no dos problemas. Lo que le da nombre propio a
+> OP-9: es la parte del potencial **ya expuesta a datos** ($k_{\rm fs}=0.754$) → el programa se
+> puede **FALSAR por OP-9 antes** de tener OP-10. El intento acotado de derivarlo por transporte
+> (Camino B, KAL, 2026-07-11) dio **CORTE**; la vía viva es el $V(\phi)$ de OP-10, más allá del
+> horizonte TRIAL.
+>
+> **No confundir con OP-17** (¿la partícula sirve y es falseable?) → eso YA está decidido (sí).
+> OP-9 pregunta SOLO por el origen del coeficiente. Mezclarlas produce el falso vaivén
+> "falta/no-falta".
+>
+> Que OP-9 esté abierto **y declarado abierto con la pregunta exacta** es lo CONTRARIO de
+> numerología (que fingiría tenerlo resuelto). Incompletitud, no inconsistencia. El bloque
+> histórico (615.33, 1/537) es rastro, no estado. Ver [[project-op17-particle-deferred]],
+> [[project-nine-sovereigns-naming]].
 
 **Location:** Paper 6, §3.2 (subsec:mass_derivation), §3.4 (subsec:lagrangian), §6 (subsec:origin).
 
@@ -547,29 +605,36 @@ fixed by a **zero-fitting forward chain** (Vía 2 + multiplier), locked by Mike:
 
 ```
 R₂   = Ω_DNAV/(KAL·TRIAL)          = 0.07188      (pure φ,π number)
-Σm_ν = R₂ × 0.9603 eV              = 0.0685 eV     (fixed mass scale)
-mult = SOLAR² · KRYSTOS            = 594.28        (PURE φ,π number)
+Σm_ν = R₂ × 0.9530 eV              = 0.0685 eV     (fixed mass scale)
+mult = SOLAR² · KRYSTOS_V            = 594.28        (PURE φ,π number)
 m_φ  = Σm_ν × mult                 = 40.70 eV      (forward prediction, zero fitting)
 T_φ                                = 0.5385 T_ν    (from relic-abundance constraint)
 ```
 
 **What changed in the gap:** the coefficient is no longer a *loose* numerological factor.
-The canonical multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS} = 594.28$
+The canonical multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V = 594.28$
 is a **pure $(\varphi,\pi)$ number**, so $m_\phi = \Sigma m_\nu \times (\text{pure number})
 = [{\rm eV}]$ is **dimensionally consistent**. Crucially, this coefficient is now the
 **mass term of a written scalar Lagrangian**:
 $$\mathcal{L}_\Phi = \tfrac{1}{2}\partial_\mu\Phi\,\partial^\mu\Phi
-  - \tfrac{1}{2}\bigl[\Sigma m_\nu(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})\bigr]^2 \Phi^2.$$
+  - \tfrac{1}{2}\bigl[\Sigma m_\nu(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)\bigr]^2 \Phi^2.$$
 The coefficient enters as $m_\Phi^2$ in a Lagrangian that is *written down*, not as a
 floating ansatz. **This closes the incompleteness flagged in the original OP-9** (the
 coefficient now comes from a Lagrangian mass term, not a bare numerological multiplier).
 
-**What remains open (the refined OP-9):** the **UV origin of the multiplier**
-$\mathrm{PYROS}\cdot\mathrm{VITA}\cdot\mathrm{MIKA}=615.33$ (reframe 2026-06-18;
-the old $\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL}=535.28$ is superseded) — i.e.,
+**What remains open (the refined OP-9):** the **UV origin of the canonical multiplier**
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.28$ (adopted 2026-06-19; supersedes the
+intermediate $\mathrm{PYROS}\cdot\mathrm{VITA}\cdot\mathrm{MIKA}=615.33$ and the older
+$\Omega_{\rm DNAV}^4+\mathrm{AURA}\cdot\mathrm{KAL}=535.28$) — i.e.,
 why *this* particular combination of $(\varphi,\pi)$ constants sets the curvature of the
 potential at its minimum. The Lagrangian is written, but the multiplier's derivation from
 a unified $V(\phi)$ (OP-10) is the next step. This is **incompleteness, not inconsistency**.
+
+> [!warning] Bloque histórico (615.33-era). El análisis look-elsewhere que sigue
+> (1/537, 1/192) corresponde al multiplicador **intermedio** $\mathrm{PYROS}\cdot
+> \mathrm{VITA}\cdot\mathrm{MIKA}=615.33$, hoy **superado** por $\mathrm{SOLAR}^2\cdot
+> \mathrm{KRYSTOS}_V=594.28$. La selección vigente bajo la gramática de linaje estricta
+> es **1/3**, no 1/cientos — ver «Methodological note» más abajo. Se conserva por registro.
 
 **Look-elsewhere of the multiplier (2026-06-18, `op9_particle_existence.py`).** Honest
 test before enshrining the particle: of all closed-dictionary constructions (21 named
@@ -587,15 +652,15 @@ down is the substance of OP-7/OP-9). Versus the old 535.28: statistically simila
 Implication: OP-9 is **not** closed by the dictionary; the promising route is a UV
 completion whose $V''(\phi_{\rm min})$ is literally a 3-volume of structural scales.
 
-**Leading mechanism candidate (2026-06-19) — $M=\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$.**
+**Leading mechanism candidate (2026-06-19) — $M=\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$.**
 A data-driven probe (let $m_\phi$ float in CLASS, find what $S_8$ prefers;
 `ssee_paper6_particle_scan.py`) gives a data-preferred $m_\phi\simeq41.0$ eV
 ($M\simeq594$, $S_8=0.00\sigma$ vs the forward 615.33 at $0.24\sigma$). At that value the
-construction $M=\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}=(\varphi+2\pi)^2\cdot2\Omega=594.28$
+construction $M=\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=(\varphi+2\pi)^2\cdot(\varphi+\pi+\Omega)=594.28$
 ($m_\phi=40.70$ eV) is notable because — unlike a generic look-elsewhere hit — every
 ingredient is **lineage-anchored** to an *already-established* role (the standard set by
 KAL$\to$viscosity and MIRA$\to f_{\rm screen}$):
-- $\mathrm{KRYSTOS}=2\Omega$ exactly (Paper 4), already anchors $w_a=-P_{sc}/K_v=-0.670$
+- $\mathrm{KRYSTOS}_V=\varphi+\pi+\Omega$ (padres {φ,π,Ω}; Paper 4), already anchors $w_a=-P_{sc}/K_v=-0.670$
   (DESI). The vacuum scale is **not** assigned here.
 - $\mathrm{SOLAR}=\mathrm{BIAL}+\mathrm{KAL}$: BIAL ($=(\varphi+\pi)/2$, the genesis
   "first heat/pulse" — radiative seed) $+$ KAL ($=\beta+\pi$, the **established bulk
@@ -608,7 +673,7 @@ KAL$\to$viscosity and MIRA$\to f_{\rm screen}$):
 
 **Honest residue (why this is *candidate*, not *closed*):** (i) it was assembled after
 fitting $m_\phi$ to $S_8$ (timing — not forward); (ii) the quantitative coefficient
-$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ is dimensionally standard but **not yet derived** by
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ is dimensionally standard but **not yet derived** by
 solving the dissipative ($\mathrm{KAL}_0$-governed) free-streaming/mass equation — the
 obvious shortcuts (relic $T_\phi$, $V''$) don't yield SOLAR trivially; (iii) free-streaming
 (collisionless) vs IS bulk viscosity (fluid) are technically different dissipations, so the
@@ -616,7 +681,7 @@ obvious shortcuts (relic $T_\phi$, $V''$) don't yield SOLAR trivially; (iii) fre
 from "a number that fit nicely" to "BIAL(first-heat)+KAL(anchored viscosity), standard
 $g^2v$ form" — a real qualitative anchor; the closing calculation is the explicit
 dissipative mass derivation. Scripts: `op9_multiplier_search.py`,
-`ssee_paper6_particle_scan.py`. **Canonical particle is now SOLAR²·KRYSTOS=594.28
+`ssee_paper6_particle_scan.py`. **Canonical particle is now SOLAR²·KRYSTOS_V=594.28
 ($m_\phi=40.70$ eV), adopted 2026-06-19 (OP-17); the open OP-9 residue is deriving its
 coefficient from KAL-governed dissipative transport.**
 
@@ -626,7 +691,7 @@ The procedure was: (1) ask what *value* the physics requires (the $M$ that makes
 close, given our neutrino data + SSEE physics); (2) ask which construction the **lineage
 laws** emit *naturally* — i.e. constrained by rules that pre-exist the particle
 (no-self-sum, the AURA copy-law at the bifurcation, role-inheritance). SOLAR=BIAL+KAL and
-KRYSTOS=2Ω came out of step (2) because their *parents already had roles*, not because
+KRYSTOS_V=2Ω came out of step (2) because their *parents already had roles*, not because
 their numeric value was convenient. This is **lineage-restricted selection**, categorically
 different from a free fit: the admissible space is fixed by laws, not by the datum. The
 honest residue is therefore **not** "it was post-hoc" in the loose sense — it is that the
@@ -639,10 +704,10 @@ form) has **not** been counted. **DONE — residue (i) quantified (2026-06-20,
 $M\in[295,988]$ under each rule of the lineage grammar gives a sharp gradient:
 permissive → 1/hundreds; **L1** (physical form $g^2v$, $M=X^2Y$) → 1/143; **L1+L2**
 (+no-self-sum) → 1/80; **L1+L2+L4** (+prior role: coupling$^2\cdot$scale, with
-couplings $\{$BIAL,KAL,SOLAR,AURA$\}$ and scales $\{$KRYSTOS$=2\Omega$,OMEGA,PYROS$\}$,
+couplings $\{$BIAL,KAL,SOLAR,AURA$\}$ and scales $\{$KRYSTOS_V$=2\Omega$,OMEGA,PYROS$\}$,
 each role declared with paper provenance) → **1/3**. The three survivors all share
 $\mathrm{SOLAR}^2$ and differ only in the scale (SOLAR²·OMEGA=297, SOLAR²·PYROS=398,
-**SOLAR²·KRYSTOS=594**); of the three, KRYSTOS$=2\Omega$ is the only scale that already
+**SOLAR²·KRYSTOS_V=594**); of the three, KRYSTOS_V$=2\Omega$ is the only scale that already
 anchors $w_a$ (the DE vacuum scale) — a physical reason to prefer it within the 1/3.
 Crucially the old $\Omega^4+\mathrm{AURA}\cdot\mathrm{KAL}=535.28$ is a **sum**, so it
 **fails L1** ($g^2v$ form) and is excluded by physics, not by tuning. **Verdict:** the
@@ -653,13 +718,31 @@ measures how constrained the choice was, it does **not** prove the coefficient. 
 remains the deeper closure via OP-10. See [[project-op17-particle-deferred]],
 [[project-ssee-lineage-laws]].
 
+**Bounded transport-derivation attempt (2026-07-11, negative — do not re-run blind;
+`archive/codigo/investigacion/open_problems/op9_transport_derivation.py`).** A pre-committed
+attempt to derive $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ as the *output* of the
+$\mathrm{KAL}_0$-governed dissipative transport (cutoff: simple fraction + residue $<0.5\%$,
+no circular re-parametrization). Result: the only exact rewrite found,
+$\mathrm{SOLAR}=(\varphi+4\,\mathrm{KAL}_0)/3$, is a **trivial algebraic restatement** of the
+natural form $\mathrm{SOLAR}=\mathrm{BIAL}+\mathrm{KAL}_0=\varphi+2\pi$: substituting
+$\pi=(2\mathrm{KAL}_0-\varphi)/3$ turns the $2\pi$ into $4\mathrm{KAL}_0/3$, so the factor
+$4=2\times2$ is a **substitution artifact with no physical content** — it carries no
+transport meaning and **fails the cutoff** (re-parametrization, not derivation). The natural
+two-term form $\mathrm{BIAL}+\mathrm{KAL}_0$ (radiative seed $+$ bulk viscosity) is the
+honest statement; no cleaner one exists.
+Simple-fraction probes against transport combinations ($\mathrm{KAL}_0^3$, etc.) returned
+only coincidental hits (24/11, 11/2), excluded by the anti-numerology lock (small residue
+$\wedge$ *simple* fraction, both required). **Verdict:** the $g^2v$ form remains the ceiling
+of what is derivable without solving the full $V(\phi)$; residue (ii) is genuinely OP-10-level,
+not a shortcut away. This confirms — does not weaken — the honest status above.
+
 **Strong rule (still in effect):** the physical Hubble scale
 $H_0^{\rm MIRA}=67.068$~km/s/Mpc **must NOT be substituted** into any mass formula.
-The canonical chain uses the fixed mass scale $0.9603$ eV and pure $(\varphi,\pi)$
+The canonical chain uses the fixed mass scale $0.9530$ eV and pure $(\varphi,\pi)$
 numbers only — no Hubble rate enters. The dimensionally-inconsistent
 "$\times H_0^{\rm alg}$" framing of the old 5.602 eV ansatz is retired.
 
-**Canonical CLASS verification (zero fitting, SOLAR²·KRYSTOS adopted 2026-06-19):** the
+**Canonical CLASS verification (zero fitting, SOLAR²·KRYSTOS_V adopted 2026-06-19):** the
 forward-predicted particle ($m_\phi=40.70$ eV, $\Omega_{\phi{\rm DM}}=0.14889$) yields
 $\sigma_8^{\rm eff} = 0.747$, $S_8 = 0.758$ ($0.04\sigma$ KiDS-1000 $0.759\pm0.024$ —
 **resolves** the lensing tension), single-sector ceiling $S_8=0.846$ ($3.5\sigma$, "the
@@ -668,7 +751,7 @@ not the retired $\alpha_{\rm WDM}$ fit; the Viel $\alpha = 1.108$ Mpc/h is a CLA
 diagnostic output. log: `results/logs/p6_class_reframe_omega_m.log`.
 
 **Falsifiable anchor:** $k_{\rm fs} = 0.754\,h/$Mpc (analytic; CLASS-measured half-mode
-$k_{1/2} = 0.339\,h/$Mpc), set by $m_\phi = 40.70$ eV (SOLAR²·KRYSTOS; the prediction
+$k_{1/2} = 0.339\,h/$Mpc), set by $m_\phi = 40.70$ eV (SOLAR²·KRYSTOS_V; the prediction
 *updates* with the particle — was 0.798 at 42.47, 0.659 at the old 36.95 eV). The whole chain is forward:
 $\Sigma m_\nu=0.069$ eV is itself a prediction ($\mathcal{R}_2$), comfortably allowed in
 the dynamical-DE background (the tight DESI $\Sigma m_\nu\lesssim0.064$–$0.072$ eV bound
@@ -676,7 +759,7 @@ is $\Lambda$CDM-specific; with $w_0,w_a$ free it relaxes to $\sim0.13$–$0.16$ 
 DESI Y3/Euclid disconfirms $k_{\rm fs}$, the particle dies cleanly.
 
 **Path to full resolution:** Derive the unified $V(\phi)$ (OP-10) such that
-$m_\phi^2 = V''(\phi_{\rm min})$ reproduces the multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}=594.28$
+$m_\phi^2 = V''(\phi_{\rm min})$ reproduces the multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.28$
 ($g^2v$ form: coupling$^2\cdot$scale) as the curvature of the potential at its minimum,
 built from structural scales at the eV scale.
 
@@ -794,14 +877,14 @@ than a free input.
 **Location:** Paper 6, §4.2; pipeline CLASS `src/ssee_paper6_canonical_particle.py`.
 
 **Problem (actualizado):** la partícula canónica φ-DM ($m_\phi=\mathrm{SOLAR}^2\cdot
-\mathrm{KRYSTOS}\cdot\Sigma m_\nu=40.70$ eV; antes 36.95) entra en CLASS como especie
+\mathrm{KRYSTOS}_V\cdot\Sigma m_\nu=40.70$ eV; antes 36.95) entra en CLASS como especie
 **térmica** (ncdm) con temperatura $T_\phi$. Pero hoy $T_\phi$ se **despeja** de la
 fórmula del relic usando $m_\phi$ y $\Omega_{\phi DM}$:
 $$T_\phi = T_\nu\left(\Omega_{\phi DM}h^2\cdot 93.14/m_\phi\right)^{1/3}=0.5385\,T_\nu.$$
 Es **bookkeeping** (densidad = número × peso), no una temperatura derivada de física.
 Verificado en CLASS: con $(m_\phi,T_\phi)$ el Boltzmann completo reproduce
 $\Omega_{\phi DM}=0.14889$ ($\Omega h^2=0.06877$) a 5 cifras — el lazo cierra, pero
-porque se construyó así. $m_\phi$ descansa en una sola pata (SOLAR²·KRYSTOS, OP-9).
+porque se construyó así. $m_\phi$ descansa en una sola pata (SOLAR²·KRYSTOS_V, OP-9).
 
 **Bifurcación (cold vs thermal) — y una inconsistencia interna a corregir:** el texto
 de P6 asume la rama **FRÍA** (producción gravitacional Parker-Kolb-Riotto, "escalar
@@ -814,7 +897,7 @@ Esto hay que unificarlo.
   debe venir del potencial $V''(\phi_{\min})$ (ruta OP-10), no del freeze-out.
 - **Rama térmica** (freeze-out): $T_\phi$ es una temperatura real → el tratamiento
   ncdm de CLASS es consistente, y el freeze-out **podría derivar $T_\phi$** y cerrar
-  $m_\phi$ por una 2ª vía independiente de SOLAR²·KRYSTOS. Requiere un **portal**.
+  $m_\phi$ por una 2ª vía independiente de SOLAR²·KRYSTOS_V. Requiere un **portal**.
 
 **Insight (Mike, 2026-06-20):** el portal de la rama térmica **NO es nuevo** — es la
 **viscosidad** que ya está en el modelo ($\mathrm{KAL}_0$, $\tilde\zeta=\mathrm{KAL}_0/3$,
@@ -865,7 +948,7 @@ acoplamiento perturbativo ($g>1$) → el portal es casi seguro suprimido por esc
   ambas físicas. No hay número que sacar de $\varphi,\pi$; es la "sombra" de QCD+gravedad.
   La pregunta real se afila a: **¿el linaje de SOLAR pone a φ en el sector QCD?** (Ruta 1).
 - **2ª pata de $m_\phi$ (consistente, no cerrada):** si φ↔QCD, confinamiento $\to g_{*s}
-  \to T_\phi \to m_\phi$ (con $\Omega_{\phi DM}$), SIN SOLAR²·KRYSTOS. Coincide con 41 eV
+  \to T_\phi \to m_\phi$ (con $\Omega_{\phi DM}$), SIN SOLAR²·KRYSTOS_V. Coincide con 41 eV
   **solo si el desacople se completa en la cima del confinamiento** ($g_{*s}=69$, 217 MeV);
   más abajo baja hasta ~12 eV. Dos rutas independientes (linaje=41, térmica-en-onset=41)
   riman → alentador, PERO sub-asunción (punto de desacople) + Ruta 1 es rima no derivación.
@@ -878,7 +961,7 @@ acoplamiento perturbativo ($g>1$) → el portal es casi seguro suprimido por esc
   por Λ). **La historia "φ se desacopla en QCD gratis por la traza" NO sobrevive el
   cálculo** — caer en QCD exigiría ajustar Λ~8.8 TeV a mano (no derivado). El gatillo de
   confinamiento queda DEBILITADO. **Saldo:** la rama térmica NO cierra elegante; $m_\phi$=41
-  sigue en 1 pata (SOLAR²·KRYSTOS). 2ª pata regresa a $V''(\phi_{\min})$/OP-10 (rama fría) o
+  sigue en 1 pata (SOLAR²·KRYSTOS_V). 2ª pata regresa a $V''(\phi_{\min})$/OP-10 (rama fría) o
   admitir Λ sin explicar. (Corrige una narrativa previa optimista; el cálculo mandó.)
 
 **Path to resolution:** elegir rama (la viscosidad ya presente favorece la térmica) y
@@ -1029,7 +1112,7 @@ Guardián: VERDE 102/102.
 **Location:** Paper 4, §"Neutrino Mass Sum", L675-700.
 
 **Fórmula canónica (resuelta):**
-$$\Sigma m_\nu^{\rm active} = \mathcal{R}_2 \times 0.960318~\mathrm{eV} = 0.0685~\mathrm{eV},
+$$\Sigma m_\nu^{\rm active} = \mathcal{R}_2 \times 0.9530~\mathrm{eV} = 0.0685~\mathrm{eV},
 \qquad \mathcal{R}_2 = \frac{\Omega_{\rm DNAV}}{\mathrm{KAL}\cdot\mathrm{TRIAL}}
 = \frac{4.7596}{5.5214 \times 11.9935} = 0.07188.$$
 
@@ -1044,10 +1127,10 @@ sustracción de enteros, no hay offset 22.
    reproducir la cota cosmológica. La forma canónica $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$
    es un cociente limpio de constantes estructurales — sin parámetro ajustado.
 2. **Σm_ν asciende de Type P → Type A (algebraico).** El único input externo que queda es
-   $0.960318$ eV (constante de normalización fija del Modelo Estándar relíquica↔masa), igual
+   $0.9530$ eV (constante de normalización fija del Modelo Estándar relíquica↔masa), igual
    que cualquier predicción dimensional de SSEE usa una escala física fija.
 
-**Cascada (actualizada):** Σm_ν alimenta a $m_\varphi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})=40.70$ eV
+**Cascada (actualizada):** Σm_ν alimenta a $m_\varphi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)=40.70$ eV
 en P6 (ver OP-9). Con OP-14 resuelto y OP-9 refinado, la cadena $\varphi,\pi \to \Sigma m_\nu \to m_\varphi$
 es ahora **forward-prediction sin parámetros libres**. El antiguo eslabón más débil queda cerrado.
 
@@ -1090,7 +1173,7 @@ aproximación numérica, no identidad. Si fuera estructural el error sería 0%.
 
 Reformulación crítica: $\Sigma m_\nu$ y $m_\varphi$ comparten el **mismo grado de
 libertad fenomenológico** vía la identidad canónica de Paper 6:
-$$m_\varphi = \Sigma m_\nu^{\rm active}\cdot(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}) = 0.0685\,\text{eV}\times 594.28 = 40.70\ \text{eV}$$
+$$m_\varphi = \Sigma m_\nu^{\rm active}\cdot(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V) = 0.0685\,\text{eV}\times 594.28 = 40.70\ \text{eV}$$
 
 > **Nota (2026-06-14):** la forma previa $m_\varphi=\Sigma m_\nu\cdot H_0^{\rm alg}$
 > (que daba 5.602 eV) está **RETIRADA** — era dim-inconsistente (eV × km/s/Mpc).
@@ -1105,9 +1188,9 @@ de un potencial $V(\varphi)$ fundamental.
 ### Cadena de dependencias (post-resolución 2026-06-04)
 
 ```
-OP-14  Σm_ν = R₂·0.960318 eV = 0.0685 eV    ✅ RESUELTO (R₂=Ω_DNAV/(KAL·TRIAL), sin offset 22)
+OP-14  Σm_ν = R₂·0.9530 eV = 0.0685 eV    ✅ RESUELTO (R₂=Ω_DNAV/(KAL·TRIAL), sin offset 22)
    │
-   └──► OP-9   m_φ = Σm_ν·(SOLAR²·KRYSTOS) = 40.70 eV   ✅ refinado: dim-consistente, forward-prediction
+   └──► OP-9   m_φ = Σm_ν·(SOLAR²·KRYSTOS_V) = 40.70 eV   ✅ refinado: dim-consistente, forward-prediction
            │     (queda abierto SOLO el origen UV del multiplicador 594.28)
            │
            ├──► OP-11  (ξ acoplamiento → funcional de V)        depende de OP-10
@@ -1119,13 +1202,13 @@ OP-8   MIRA mecanismo (independiente, eslabón duro)
 
 La antigua flecha OP-10→…→OP-14 queda obsoleta: la cadena $\varphi,\pi\to\Sigma m_\nu\to m_\varphi$
 ya cierra como predicción algebraica sin V(φ). OP-10 sigue abierto pero su rol es dar el
-**origen UV del multiplicador** $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}=594.28$,
+**origen UV del multiplicador** $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.28$,
 no rescatar la masa.
 
 ### Acción sobre Paper 4 (completada 2026-06-04)
 
 El §"Neutrino Mass Sum" se actualiza a la fórmula canónica
-$\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.960318$ eV $=0.0685$ eV con
+$\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.9530$ eV $=0.0685$ eV con
 $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$, promoviendo Σm_ν de
 **Type P → Type A**. El offset 22 queda eliminado del manuscrito.
 
@@ -1217,12 +1300,12 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
 | OP-7 | P4/7/8 | QFT derivation of Genesis role assignments | ✅ PARCIAL | EFT uniqueness formalizado P7 §5.2 + P1 §5.3; QFT desde primeros principios → largo plazo |
 | OP-8 | Transv. | ~~MIRA dynamical mechanism~~ → factor-materia DISUELTO | ✅ DISUELTO 2026-06-18 | Reframe ω_m-directo: Ω_m,CMB=ω_m/h²=0.30889 sin factor (ω_c=KAL₀·ω_b·n_s forward); MIRA persiste solo en f_screen; CMB χ²=1005.5/ΔBIC=−23.9 |
-| OP-9 | P6 | ~~m_φ=5.60 eV numerological~~ → m_φ=40.70 eV canónico | 🔶 REFINADO | $m_\varphi=\Sigma m_\nu^{\rm active}\cdot(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS})=40.70$ eV (SOLAR=φ+2π, KRYSTOS=2Ω; mult=594.28), dim-consistente, forward-prediction; abierto SOLO el origen UV del multiplicador (adoptado OP-17, 2026-06-19; antes 36.95 vía Ω⁴+AURA·KAL=535.28 y 42.47 vía PYROS·VITA·MIKA=615.33) |
+| OP-9 | P6 | ~~m_φ=5.60 eV numerological~~ → m_φ=40.70 eV canónico | 🔶 **ABIERTO** (derivar coef UV 594.28 → OP-10) · partícula ya adoptada [OP-17] y falseable (k_fs=0.754) | $m_\varphi=\Sigma m_\nu^{\rm active}\cdot(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS\_V})=40.70$ eV (SOLAR=φ+2π, **KRYSTOS_V=φ+π+Ω** padres {φ,π,Ω}, NO 2Ω; mult=594.28), término de masa $g^2v$ escrito, **falseable por $k_{\rm fs}=0.754$ (DESI/Euclid)** — contenido MEDIBLE cerrado (adoptado OP-17). El origen UV del coeficiente vive **más allá del horizonte de saturación TRIAL** (no es un hueco: es el borde de lo medible; la derivación dinámica es OP-10, gobernada por ley, no numerología). Intento de transporte 2026-07-11 → CORTE (ver §OP-9). Antes 36.95 (Ω⁴+AURA·KAL) y 42.47 (PYROS·VITA·MIKA), retirados |
 | OP-10 | P6/P7 | Unify χ into φ via richer V(φ) | Medium-High | V(φ) with slope (DE) + minimum (DM matter-mode); restores zero-param status |
 | OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
 | OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |
 | OP-13 | P8 | ~~Contradicción interna §3-4 vs §4.5~~ | ✅ RESUELTO | Opción A aplicada: framing dos-límites, retirado claim "MIRA en lensing", $\sqrt{\AURA}$ ≠ $\MIRA$ aclarado, canonical prediction = GR-with-DM (2026-05-23) |
-| OP-14 | P4 | ~~Σm_ν Type P; offset 22 ad hoc~~ → canónico Type A | ✅ RESUELTO | $\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.960318$ eV $=0.0685$ eV con $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})=0.07188$; offset 22 eliminado, Σm_ν promovido Type P→Type A (2026-06-04) |
+| OP-14 | P4 | ~~Σm_ν Type P; offset 22 ad hoc~~ → canónico Type A | ✅ RESUELTO | $\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.9530$ eV $=0.0685$ eV con $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})=0.07188$; offset 22 eliminado, Σm_ν promovido Type P→Type A (2026-06-04) |
 | OP-15 | P1 | Bullet offset κ(θ) desde KAL(x) no calculado | Medium-High | Computar Σ_SSEE(θ)=∫ρ_bar·KAL(x)dℓ del Bala; mostrar pico κ sobre galaxias, no gas (falsable vs Clowe+2006). Distinto de OP-13 (amplitud); esto es distribución espacial (2026-06-14) |
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
 
@@ -1237,7 +1320,7 @@ These problems are documented here rather than concealed because scientific inte
 requires pre-registration of known limitations. Referees and collaborators should be
 directed to this document when evaluating the strength of the SSEE predictions.
 
-## OP-17 — Partícula canónica $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ ($m_\phi=40.70$ eV, $S_8=0.01\sigma$) — ✅ ADOPTADA 2026-06-19
+## OP-17 — Partícula canónica $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ ($m_\phi=40.70$ eV, $S_8=0.01\sigma$) — ✅ ADOPTADA 2026-06-19
 
 **Status:** ✅ **CERRADO / ADOPTADO** (Mike, 2026-06-19). El diferimiento se revirtió
 en la misma sesión ("Mira bien lo que NO es, es SOLAR"): se adoptó la partícula con
@@ -1250,12 +1333,12 @@ Residuo único: OP-9 (derivar el coeficiente del transporte).
 
 **Qué cambió:** la partícula canónica pasó de $m_\phi=42.47$ eV (PYROS·VITA·MIKA=615.33,
 triple-producto plano, sin mecanismo, $S_8=0.24\sigma$) a
-$$m_\phi = \mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}\cdot\Sigma m_\nu = (\varphi+2\pi)^2\cdot 2\Omega\cdot 0.0685 = 40.70\ \text{eV},$$
+$$m_\phi = \mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V\cdot\Sigma m_\nu = (\varphi+2\pi)^2\cdot (\varphi+\pi+\Omega)\cdot 0.0685 = 40.70\ \text{eV},$$
 que **resuelve $S_8$ de lleno ($0.04\sigma$ KiDS)** — el valor que los datos prefieren
 (`ssee_paper6_particle_scan.py`, CLASS real). Esta era la finalidad del mecanismo.
 
 **Por qué es mejor partícula (peso, no certeza):**
-- $\mathrm{KRYSTOS}=2\Omega$ exacto, **anclado** por $w_a=-P_{sc}/K_v=-0.670$ (DESI).
+- $\mathrm{KRYSTOS}_V=\varphi+\pi+\Omega$ (padres {φ,π,Ω}), **anclado** por $w_a=-P_{sc}/K_v=-0.670$ (DESI).
 - $\mathrm{SOLAR}=\mathrm{BIAL}+\mathrm{KAL}$ = (primer-calor/pulso, radiativo) + (viscosidad
   anclada P5). Rol radiativo **por linaje**, valor $\varphi+2\pi$ forzado.
 - Forma $m=g^2 v\,\Sigma m_\nu$ = masa generada estándar (enhancement, no loop).
@@ -1266,7 +1349,7 @@ que **resuelve $S_8$ de lleno ($0.04\sigma$ KiDS)** — el valor que los datos p
 
 **Lo honesto (no lo decidimos nosotros):** es una partícula **en camino a ser falseada**
 ($k_{\rm fs}$ en DESI Y3/Euclid 2026–2028 decide). Le damos **más peso** por el multi-anclaje
-de KAL, NO certeza. El coeficiente $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}$ aún NO está derivado
+de KAL, NO certeza. El coeficiente $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ aún NO está derivado
 del transporte disipativo (ver el "mecanismo líder" en OP-9) — eso es lo que cerraría OP-9.
 
 **Trabajo de implementación (cuando se haga):**
@@ -1274,7 +1357,7 @@ del transporte disipativo (ver el "mecanismo líder" en OP-9) — eso es lo que 
 2. Propagar 42.47→41.017 y 615.33→594.28 por: `ssee_core`, `CANONICAL_VALUES.yaml`, guardián,
    3 memorias, vault (kfs/sigma8_eff/Cadena), Papers 1/6.
 3. Escribir el mecanismo del **Lagrangiano** ($m_\phi=g^2 v\,\Sigma m_\nu$, $g$=SOLAR disipativo,
-   $v$=KRYSTOS vacío) y **mostrar cómo resuelve $S_8$** en Paper 6.
+   $v$=KRYSTOS_V vacío) y **mostrar cómo resuelve $S_8$** en Paper 6.
 4. Guardián VERDE + memory_sync VERDE.
 
 ---
@@ -1310,7 +1393,7 @@ son los únicos inputs ajustables por observación.
 
 **Dependency chain (cascada, actualizada 2026-06-04):** OP-14 ✅ → OP-9 ✅; ambos cerrados
 sin V(φ). OP-10 ya no bloquea la masa — solo daría el origen UV del multiplicador
-$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}=594.28$.
+$\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.28$.
 
 ---
 
@@ -1368,3 +1451,126 @@ por eso $\tau$ queda como residuo nuisance, no como OP de derivación.
 modelo; cerrarlo lleva el conteo a "0 parámetros del modelo + $\tau$ nuisance".
 **Relation:** depende de OP-2 (✅, da $\epsilon,N_*$) y de la escala $M$ de Paper 10.
 Script a crear: `op18_As_from_inflation.py`.
+
+---
+
+## OP-19 — Mecanismo de producción detrás de $\omega_c = \mathrm{KAL_0}\cdot\omega_b\cdot n_s$ (Papers 1, 6 / abundancia relic) — ABIERTO (2026-07-12)
+
+**Origen.** Tras el reframe $\omega_m$-directo (OP-8 disuelto), la densidad de materia
+oscura fría del CMB entra por la **identidad forward**
+$$\omega_c = \mathrm{KAL_0}\cdot\omega_b\cdot n_s = 5.5214\times0.02242\times0.96556 = 0.11951,$$
+que junto a $\omega_b$ (OP-1) y $\omega_\nu$ da $\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.30889$
+(**0.88σ** de Planck 2018). Hoy es una **relación observada que ajusta**, sin una acción de
+la que se **derive**. Una auditoría externa (2026-07-12) la señaló como el residuo teórico
+para nivel PRD. Esta OP fija la pregunta correcta.
+
+**La pregunta NO es "solo escribir un Lagrangiano".** Son **dos capas**, y la segunda es la
+difícil:
+
+1. **¿Por qué $\omega_c$ debe ser proporcional a $\omega_b$?** En ΛCDM, $\omega_b$ y
+   $\omega_c$ son **dos parámetros libres independientes**. El cociente $\omega_c/\omega_b
+   \approx5.3$ es la célebre *coincidencia cósmica* (¿por qué la materia oscura es solo
+   $\sim5\times$ los bariones, y no $10^5\times$ ni $10^{-5}\times$?), que el modelo estándar
+   **deja sin explicar**. SSEE afirma que ese cociente **no es libre**:
+   $\omega_c/\omega_b = \mathrm{KAL_0}\cdot n_s\approx5.33$. Esto es una afirmación física
+   **real y no trivial** sobre la razón barión–materia oscura. Requiere un **origen
+   compartido**: el proceso que fija la abundancia de bariones (bariogénesis, OP-1) debe
+   ser el mismo que fija la abundancia del $\varphi$-DM. La proporcionalidad **es** el
+   contenido físico.
+
+2. **¿Por qué la constante es exactamente $\mathrm{KAL_0}\cdot n_s$?** Esta es la parte que
+   necesita el cálculo de producción (freeze-out / freeze-in / misalignment / producción
+   gravitacional): un escenario cosmológico en el que la abundancia relic del $\varphi$-DM
+   salga proporcional a la bariónica **con coeficiente $\mathrm{KAL_0}\cdot n_s$**, sin
+   insertarlo a mano. $\mathrm{KAL_0}=\beta+\pi$ es la viscosidad estructural (transporte);
+   $n_s$ es el índice espectral (la inclinación del espectro primordial). Que el transporte
+   $\times$ la inclinación fijen la abundancia oscura es una hipótesis de mecanismo, no una
+   identidad de simetría de la acción.
+
+**Por qué es OP-19 y no parte de OP-7/OP-8.** OP-7 (ítem 3) pregunta por qué la QFT en la
+escala de Planck reproduce las **asignaciones de rol** ($\mathrm{KAL_0}$ vs AURA, dualidad
+$\varphi\leftrightarrow\pi$); OP-8 quedó **disuelto** (la $\Omega_m$ del CMB sale directa,
+sin factor materia). OP-19 es más específica y más física: el **mecanismo de abundancia
+relic** que produce el coeficiente. Liga fuerte a **OP-1** (origen de $\omega_b$ /
+bariogénesis, $\delta_{CP}=(\pi-\varphi)/\Omega$, $T_{\rm rh}\sim10^{-4}$ GeV) porque un
+origen compartido barión–DM es el camino natural a la capa 1.
+
+**Su garantía HOY (falsabilidad, como OP-9 con $k_{fs}$).** La relación ya es una
+**predicción forward de cero parámetros** que enlaza dos números medidos: dado
+$\omega_b$ y $n_s$, $\omega_c$ **está fijo**. Si datos futuros de CMB/BBN mueven
+$\omega_c/\omega_b$ fuera de $\mathrm{KAL_0}\cdot n_s$ más allá del error, la relación se
+**falsa**. No me apoyo en la estadística del coeficiente; me apoyo en que la relación es un
+candado medible. La **derivación** (esta OP) es el mecanismo; la **relación** ya es una
+predicción bloqueada a 0.88σ.
+
+**Consecuencia si permanece abierto.** El sector materia del CMB descansa en que $\omega_b$
+(OP-1) y esta identidad sean correctos — no es una perilla nueva (no se ajustó a Planck; es
+forward), pero **tampoco es una derivación desde una acción**. Un referee de PRD puede
+aceptarlo como relación fenomenológica predictiva y falsable, no como primeros principios.
+
+**Programa de cierre (largo plazo, no garantizado).** (a) Proponer el canal de producción
+del $\varphi$-DM ligado a la asimetría bariónica de OP-1; (b) mostrar que la abundancia relic
+resultante lleva el prefactor $\mathrm{KAL_0}\cdot n_s$; (c) conectar con la
+UV-completion (OP-10) y la dualidad de transporte (OP-7). Es frontera abierta de la misma
+clase que OP-1/OP-9: puede no cerrar con los recursos actuales, y eso está declarado.
+
+**Cómo atacarlo — plan concreto para retomar EN FRÍO (imagen mental primero).**
+La relación se lee: *materia oscura = bariones × (transporte $\mathrm{KAL_0}$) × (inclinación
+del espectro $n_s$)*. El $n_s$ es la pista: es una propiedad del **espectro primordial**, así
+que si aparece en la abundancia de DM es porque esa abundancia **hereda las mismas semillas**
+que todo lo demás → **origen compartido** (cogénesis), no dos procesos separados.
+
+El truco que lo hace atacable (misma jugada que OP-17/$k_{fs}$): **$m_\phi=40.70$ eV ya está
+fijo** (forward), así que casi no queda libertad. Cada mecanismo de producción tiene una
+fórmula de abundancia $\Omega_{\rm DM}(\text{params})$; con los params ya clavados, **cada
+mecanismo predice un número** para $\omega_c/\omega_b$, y solo hay UNO que valga:
+$$\omega_c/\omega_b = \mathrm{KAL_0}\cdot n_s = 5.5214\times0.96556 = 5.331.$$
+Todo el problema colapsa a: *¿qué mecanismo da exactamente 5.331 sin meterlo a mano?*
+
+Pasos (papel + `op19_omega_c_mechanism.py`, factible en hardware actual):
+1. **Blanco:** target = número puro `ω_c/ω_b = 5.331`.
+2. **Mapa:** las ~4 rutas de producción de un bosón ligero — *misalignment* (tipo ALP/axión),
+   *freeze-in*, *producción gravitacional*, *cogénesis/ADM* — con su fórmula de abundancia.
+3. **Filtro:** meter $m_\phi=40.70$ eV fijo en cada fórmula → cada una predice un
+   $\omega_c/\omega_b$; comparar con 5.331. Los que fallan por órdenes de magnitud mueren.
+4. **Veredicto:** si sobrevive uno → derivar $\mathrm{KAL_0}\cdot n_s$ de su Lagrangiano (= el
+   paper). Si ninguno → resultado igual: no es relic estándar → empuja al origen primordial
+   compartido, liga OP-1/OP-18.
+
+**Referee honesto (cuenta gruesa ya hecha):** ADM con asimetrías iguales **NO cuadra** para
+40 eV — daría una razón de masas $m_{\rm DM}/m_p$, no un número $\sim10^8$ en $n_{\rm DM}/n_b$;
+falla por órdenes. La ruta viva es **misalignment/cogénesis** (donde $n_s$ tiene hogar
+natural), sin probar. Frontera real.
+
+**Declaración de honestidad — la ventana de identidad del tercer factor (2026-07-12).**
+El ajuste fija el tercer factor a la ventana $[0.960,\,0.979]$ ($\pm1\sigma$ Planck en torno
+a $\omega_c=0.1200\pm0.0012$), un ancho de solo $\sim2\%$. **Cualquier** cantidad física en
+esa ventana reproduciría $\omega_c$ igual de bien: **el dato identifica un número
+($\sim0.965$), no una identidad.** Por tanto **NO** es correcto afirmar como hecho "el tercer
+factor es $n_s$"; $n_s$ es el **candidato líder**, no una certeza. Verificación numérica
+(`op19` inline): $n_s=1.0\to+3.2\sigma$, $n_s=0.99\to+2.1\sigma$, $n_s=0.9656\to-0.4\sigma$
+— el factor es **load-bearing** (sin él, $3.2\sigma$), no decoración.
+
+Lo que eleva a $n_s$ por encima de un $0.973$ arbitrario **NO es su valor** (eso es
+degenerado dentro de la ventana) sino **dos** propiedades que un número inventado no tendría:
+(a) **anclaje independiente** — Planck lo **mide** ($0.9649\pm0.0042$) y $\varphi^{-7}$ lo
+**deriva** ($0.96556$), y coinciden; (b) **doble función** — es observable primario del CMB
+y del sector inflación (OP-2), no un número acuñado para esta relación. Es el mismo criterio
+que legitima a $\mathrm{KAL_0}$ (carga peso en el EFT, no solo aquí). **El discriminador real
+entre candidatos de la ventana = este doble-deber + el mecanismo:** un cálculo de producción
+(cuerpo de OP-19) escupiría UNA cantidad específica, y ahí se sabría cuál es. Hasta entonces,
+lo honesto es **declarar la ventana** y llamar a $n_s$ *hipótesis-de-identidad-motivada*, no
+identidad probada.
+
+**Matiz (no es parámetro libre).** Un parámetro libre se ajustaría al centro **sin ancla**;
+aquí el valor está pinchado desde afuera (Planck + $\varphi^{-7}$) y la ventana es una
+**restricción**, no una perilla. La libertad que sí queda es **combinatoria** (qué cantidad
+de la ventana, y por qué el producto $\mathrm{KAL_0}\cdot\omega_b\cdot n_s$ y no otro) —
+la misma "libertad de gramática" fichada en el multiplicador de la partícula (§numerología).
+Cerrarla = OP-19.
+
+**Severidad:** Media-Alta — es el residuo teórico del sector materia para nivel PRD. No
+falsa SSEE (la relación es forward y falsable), pero cerrar el mecanismo es lo que la
+llevaría de "relación predictiva" a "derivación desde una acción".
+**Relación:** OP-1 (✅ parcial, $\omega_b$/bariogénesis), OP-7 (dualidad de transporte),
+OP-8 (disuelto), OP-10 (UV). Script a crear: `op19_omega_c_mechanism.py` (exploratorio).

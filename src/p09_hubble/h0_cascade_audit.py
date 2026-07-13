@@ -1,3 +1,4 @@
+import os
 """
 H0 Cascade Audit — Auditoría sistemática bloque por bloque
 ============================================================
@@ -18,7 +19,7 @@ NO-LINEAL (donde H₀ aparece dentro de ρ_crit, M, etc.).
 """
 import numpy as np
 import sys
-sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from ssee_core import (PHI, PI, OMEGA, BETA, KAL0, OMEGA_DE, OMEGA_M_DYN,
                        MIRA, AURA, H0_ALG, N_S)
 

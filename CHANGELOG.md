@@ -1,5 +1,31 @@
 # Changelog
 
+## V3.6.4 — Ola de refuerzo tras auditoría externa: reproducibilidad + dato KiDS + R20 (2026-07-13)
+
+Dos auditorías externas hostiles-pero-justas (una sobre los papers, otra sobre el repo
+completo). Veredicto de fondo: la **física sobrevive** (núcleo w₀wₐ NO es numerología por
+veredicto del auditor; integridad DESI DR2 "ejemplar"; sin fugas de tokens; sin fits ocultos
+vigentes). Lo que falló fue **fontanería + un typo de dato**. Cada hallazgo verificado contra
+la fuente antes de tocar nada.
+
+- **H1 — reproducibilidad (FATAL-corregible).** El `.gitignore` prohibía `results/logs/*.log`,
+  así que el guardián daba **VERDE en local pero ROJO en un clon limpio** (la capa de
+  procedencia exige que los logs referenciados en VERIFICATION_LEDGER §B existan). Negación
+  `!results/logs/*.log` re-incluye los **28 logs de procedencia** (texto, 3.2 MB). Binarios
+  pesados (`*.npz`, chains) siguen fuera → Zenodo/regeneración. **Verificado VERDE 142 en clon
+  limpio** (`git archive HEAD`).
+- **H2 — dato mal etiquetado (solo código).** `ssee_paper6_verification.py:247` tenía
+  `kids_s8=0.758` — que es la **predicción SSEE**, no la observación KiDS (**0.759**) —
+  imprimiendo 0.00σ en vez del **0.04σ** real. Corregido; etiquetas `0.01σ→0.04σ`. Los papers
+  ya eran correctos (0.04σ); el error vivía solo en el script.
+- **H4 — punto ciego → R20.** Nuevo bloque `observational_anchors` en CANONICAL_VALUES.yaml
+  (KiDS/DES = el DATO). Nueva **capa R20** del guardián: `kids_s8/kids_sig8/des_s8` en todo
+  `src/**.py` deben coincidir con las anclas → caza "predicción metida como dato". +3 checks
+  (**139→142**). Documentado en RIGOR_CHECKLIST **R20**.
+- **Audit A — Predictive Register completado.** Añadida la fila **S₈ two-sector = 0.758
+  (0.04σ KiDS, forward CLASS, Retrodiction)** a la tabla de estatus epistémico de Paper 1
+  (antes faltaba el titular "resuelve S₈"). PDF recompilado (32 pp).
+
 ## V3.6.3 — OP-19 + covarianza BAO justificada + pre-flight de puerta (2026-07-12)
 
 - **OP-19 formalizado (mecanismo detrás de ω_c = KAL₀·ω_b·n_s).** Nueva frontera abierta:

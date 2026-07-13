@@ -7,7 +7,7 @@
 
 > ⚠️ **Superseded numbers (reframe 2026-06-19 + ν-closure 2026-07-10).** This dated
 > snapshot predates the **ω_m-direct reframe** (OP-8 dissolved: Ω_m,CMB = ω_m/h² =
-> **0.30889**, no matter factor) and the **SOLAR²·KRYSTOS particle** with the unified
+> **0.30889**, no matter factor) and the **SOLAR²·KRYSTOS_V particle** with the unified
 > ν-closure constant C=93.14: **m_φ = 40.70 eV, k_fs = 0.754 h/Mpc, S₈ = 0.758**
 > (0.04σ KiDS). The Hubble cascade is H_alg = 67.962 → H_local = **72.86** (0.17σ);
 > the canonical DR2 posterior is **H₀ = 67.95 ± 0.40** (geometry-total 0.30889, V-L4-DESI).
@@ -33,7 +33,7 @@ Falsifiable predictions — fixed by algebraic construction, not fitted (Structu
 | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.16σ |
-| m_φ (φ-DM mass) | 40.70 eV algebraic (SOLAR²·KRYSTOS) | gravitationally-produced scalar — probed via k_fs | Future prediction |
+| m_φ (φ-DM mass) | 40.70 eV algebraic (SOLAR²·KRYSTOS_V) | gravitationally-produced scalar — probed via k_fs | Future prediction |
 | k_fs | 0.754 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
 | (w₀, wₐ) vs DESI DR3 | same fixed point (−0.840, −0.670) | DR3 w₀wₐCDM (2027): trajectory 0.05σ (DR1) → 0.24σ (DR2, errors −40%); expect ~0.5σ if centrals persist; >3σ joint exclusion falsifies | **Pre-registered prediction** |
 | r (tensor-to-scalar) | φ⁻¹⁰ = 0.00813 | LiteBIRD (~2032) | Future prediction |
@@ -163,7 +163,7 @@ python3 src/p06_phiDM/ssee_paper6_mcmc_v2.py     # emulador; reemplaza al toy ar
 ```
 Expected output (verification):
 ```
-m_φ = 40.70 eV = Σm_ν × (SOLAR²·KRYSTOS)  (algebraic, zero free parameters)
+m_φ = 40.70 eV = Σm_ν × (SOLAR²·KRYSTOS_V)  (algebraic, zero free parameters)
 k_fs = 0.754 h/Mpc  (falsable DESI Y3/Euclid 2026–2028)
 Ω_CDM = 0.160050
 Ω_φDM = 0.148844
@@ -375,7 +375,7 @@ the closed dictionary. Genuine pre-committed predictions concern **unreleased** 
 | n_s | 1 − φ⁻⁷ | 0.96556 | Planck 2018 | Postdiction |
 | H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Postdiction |
 | r_d | CAMB, ω_m-direct Ω_m,CMB=0.30889 | 147.17 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | 0.3σ postdiction |
-| m_φ | Σm_ν × SOLAR²·KRYSTOS | 40.70 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction (cond. OP-9) |
+| m_φ | Σm_ν × SOLAR²·KRYSTOS_V | 40.70 eV | Euclid/DESI Y3 P(k) via k_fs 2026–28 | Future prediction (cond. OP-9) |
 | k_fs | free-streaming (m_φ) | 0.754 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction (cond. OP-9) |
 | r | φ⁻¹⁰ | 0.00813 | LiteBIRD (~2032) | Future prediction |
 

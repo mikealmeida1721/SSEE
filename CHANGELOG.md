@@ -1,5 +1,26 @@
 # Changelog
 
+## V3.6.3 — OP-19 + covarianza BAO justificada + pre-flight de puerta (2026-07-12)
+
+- **OP-19 formalizado (mecanismo detrás de ω_c = KAL₀·ω_b·n_s).** Nueva frontera abierta:
+  la relación es forward y funciona (0.4σ Planck), pero falta el **mecanismo de abundancia
+  relic** que derive *por qué esa combinación*. Dos capas: (1) por qué ω_c∝ω_b (coincidencia
+  cósmica que ΛCDM deja libre; SSEE fija ω_c/ω_b=KAL₀·n_s≈5.33 → exige origen compartido
+  barión-DM, liga OP-1); (2) por qué el coeficiente es KAL₀·n_s. Incluye **plan de ataque**
+  (blanco/mapa/filtro/veredicto) y **declaración de honestidad**: el ajuste solo fija el 3er
+  factor a la ventana **[0.960, 0.979]** (~2%) — n_s es candidato **líder** (anclaje Planck +
+  φ⁻⁷, doble-deber), no una certeza. Garantía hoy = falsabilidad (k_fs=0.754).
+- **Covarianza DESI DR2 justificada (Wave 3 / auditoría externa F7).** La covarianza
+  bloque-diagonal 2×2 por tracer (r_MH oficiales, Tabla 4) YA es correcta = así se usa el
+  vector consenso comprimido (tracers en cáscaras z disjuntas → inter-tracer despreciable;
+  LRG3+ELG ya combinado upstream). Nota al pie de Paper 2 reescrita para **justificarlo**
+  (antes solo "puede subestimar"); registrado en RIGOR_CHECKLIST **R14**. PDF recompilado.
+- **Pre-flight de puerta de entrada (para auditoría externa + Zenodo + Buchalter).**
+  README: **postulados 4→3** (D, S, I; el factor-materia M quedó disuelto en el reframe
+  ωm-directo, OP-8), conteo OP **18→19** (+fila OP-19). Lineaje **KRYSTOS→KRYSTOS_V**
+  completado donde se había saltado la fuente de verdad: **CANONICAL_VALUES.yaml** (nombre +
+  linaje "2Ω"→"φ+π+Ω", que preserva no-auto-suma) y **AUDIT.md**. Guardián VERDE 139.
+
 ## V3.6.2 — Ω_m-geometry fix (V-L4-DESI) + ν-closure unification + full documentation audit (2026-07-10)
 
 - **CRITICAL geometry fix (V-L4-DESI, 2026-07-09).** The background geometry E(z)/r_d

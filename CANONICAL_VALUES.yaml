@@ -17,9 +17,10 @@
 # Cada uno con su unidad pegada en el nombre para no confundir escalas.
 canonical:
   # Sector materia oscura φ-DM (Paper 6, forward — cero fiteo)
-  # INPUT FIJO (álgebra pura, mecanismo SOLAR²·KRYSTOS adoptado 2026-06-19):
-  m_phi_eV:            40.70      # = Σm_ν^act × (SOLAR²·KRYSTOS) = 0.06849 × 594.28
-  #   SOLAR=BIAL+KAL=φ+2π (linaje radiativo); KRYSTOS=2Ω (anclado wₐ); mecanismo g²·v
+  # INPUT FIJO (álgebra pura, mecanismo SOLAR²·KRYSTOS_V adoptado 2026-06-19):
+  m_phi_eV:            40.70      # = Σm_ν^act × (SOLAR²·KRYSTOS_V) = 0.06849 × 594.28
+  #   SOLAR=BIAL+KAL=φ+2π (linaje radiativo); KRYSTOS_V=φ+π+Ω (padres {φ,π,Ω}, ancla wₐ;
+  #   NO "2Ω" — mismo valor pero esa forma rompe la ley de no-auto-suma); mecanismo g²·v
   #   (antes 41.02 con C_ν=94.07 baked; unificado a C_ν=93.14 PDG demostrada 2026-07-10,
   #    derive_nu_closure.py; antes 42.47 vía PYROS·VITA·MIKA=615.33 — ver OP-9/OP-17)
   # DEPENDIENTES de m_φ — CLASS forward ω_m-directo, m_φ=40.70 @
@@ -149,14 +150,14 @@ retired:
   - {pattern: "0.31069",   reason: "Ω_m,CMB factor π/φ (variante) — superado"}
   - {pattern: "0.31993",   reason: "Ω_m,CMB factor MIRA — superado por ω_m-directo (OP-8 disuelto)"}
   - {pattern: "0.3199",    reason: "Ω_m,CMB factor MIRA — superado por ω_m/h²=0.3089"}
-  # Partícula φ-DM: 36.95 (Ω⁴+AURA·KAL) y 42.47 (PYROS·VITA·MIKA) → SOLAR²·KRYSTOS;
+  # Partícula φ-DM: 36.95 (Ω⁴+AURA·KAL) y 42.47 (PYROS·VITA·MIKA) → SOLAR²·KRYSTOS_V;
   # y 41.02 (C_ν=94.07 baked) → 40.70 (C_ν=93.14 PDG demostrada, 2026-07-10)
-  - {pattern: "36.95",     reason: "m_φ viejo (mult Ω⁴+AURA·KAL=535.28) → 40.70 (SOLAR²·KRYSTOS)"}
-  - {pattern: "42.47",     reason: "m_φ viejo (mult PYROS·VITA·MIKA=615.33) → 40.70 (SOLAR²·KRYSTOS)"}
+  - {pattern: "36.95",     reason: "m_φ viejo (mult Ω⁴+AURA·KAL=535.28) → 40.70 (SOLAR²·KRYSTOS_V)"}
+  - {pattern: "42.47",     reason: "m_φ viejo (mult PYROS·VITA·MIKA=615.33) → 40.70 (SOLAR²·KRYSTOS_V)"}
   - {pattern: "41.02",     reason: "m_φ con C_ν=94.07 baked → 40.70 con C_ν=93.14 (derive_nu_closure.py)"}
-  - {pattern: "535.28",    reason: "multiplicador viejo Ω⁴+AURA·KAL → SOLAR²·KRYSTOS=594.28"}
-  - {pattern: "615.33",    reason: "multiplicador viejo PYROS·VITA·MIKA → SOLAR²·KRYSTOS=594.28"}
-  - {pattern: "PYROS·VITA·MIKA", reason: "multiplicador viejo (sin mecanismo) → SOLAR²·KRYSTOS"}
+  - {pattern: "535.28",    reason: "multiplicador viejo Ω⁴+AURA·KAL → SOLAR²·KRYSTOS_V=594.28"}
+  - {pattern: "615.33",    reason: "multiplicador viejo PYROS·VITA·MIKA → SOLAR²·KRYSTOS_V=594.28"}
+  - {pattern: "PYROS·VITA·MIKA", reason: "multiplicador viejo (sin mecanismo) → SOLAR²·KRYSTOS_V"}
   - {pattern: "94.07",     reason: "C_ν desacople instantáneo → 93.14 PDG (misma constante, N_eff=3.046)"}
   # Dependientes de la partícula vieja (k_fs/alpha/σ8/S8)
   - {pattern: "0.7536",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8 two-sector @42.47 → 0.7470 @40.70"}

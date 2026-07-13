@@ -19,7 +19,7 @@
 
 </div>
 
-**A minimal-parameter dark energy framework derived from φ (golden ratio) and π. The background sector $(w_0, w_a, \Omega_\mathrm{DE}, \Omega_{m,\mathrm{dyn}})$ carries zero fitted dimensionless parameters; the framework rests on 4 postulates (D, S fundamentals + M, I auxiliary register-level) plus open problems tracked in [`OPEN_PROBLEMS.md`](OPEN_PROBLEMS.md). Tested against DESI DR2 BAO, Planck 2018 CMB (TT+TE+EE+lensing), galaxy cluster masses, and large-scale structure growth.**
+**A minimal-parameter dark energy framework derived from φ (golden ratio) and π. The background sector $(w_0, w_a, \Omega_\mathrm{DE}, \Omega_{m,\mathrm{dyn}})$ carries zero fitted dimensionless parameters; the framework rests on 3 postulates (D, S fundamentals + I auxiliary register-level; the former matter-factor postulate M was dissolved in the ωm-direct reframe, OP-8 closed) plus open problems tracked in [`OPEN_PROBLEMS.md`](OPEN_PROBLEMS.md). Tested against DESI DR2 BAO, Planck 2018 CMB (TT+TE+EE+lensing), galaxy cluster masses, and large-scale structure growth.**
 
 ---
 
@@ -34,7 +34,7 @@
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match | ✅ |
 | S₈ (two-sector φ-DM) | 0.758 | KiDS-1000: 0.759±0.024 | 0.04σ | ✅ |
 | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 | ⏳ |
-| m_φ (φ-DM mass) | 40.70 eV algebraic (SOLAR²·KRYSTOS) | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable | ⏳ |
+| m_φ (φ-DM mass) | 40.70 eV algebraic (SOLAR²·KRYSTOS_V) | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable | ⏳ |
 | **k_fs (free-streaming)** | **0.754 h/Mpc algebraic** | **DESI Y3/Euclid P(k): 2026–2028** | **pre-registered** | ⏳ |
 | **(w₀, wₐ) vs DESI DR3** | **same fixed point (−0.840, −0.670)** | **DR3 w₀wₐCDM (2027)** — trajectory 0.05σ (DR1) → 0.24σ (DR2, errors −40%, still inside 68%); ~0.5σ expected if DR2 centrals persist; >3σ joint exclusion falsifies | **pre-registered** | ⏳ |
 
@@ -99,7 +99,7 @@ SSEE/
 ├── notes/                          # internal work-notes & attack plans (not load-bearing)
 ├── archive/codigo/build_arxiv_packages.py  # regenerates submission_packages/ (moved to archive/)
 ├── requirements.txt · environment.yml   # reproducible Python environment
-├── OPEN_PROBLEMS.md                # physics gaps OP-1..OP-18 with status
+├── OPEN_PROBLEMS.md                # physics gaps OP-1..OP-19 with status
 ├── AUDIT.md                        # reproducibility guide + known limitations
 ├── CHANGELOG.md · CITATION.cff · LICENSE
 └── (eftcamb_ssee/ — EFTCAMB fork, not versioned: clone separately)
@@ -203,7 +203,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | Ω_φDM = Ω_m,CMB − Ω_m,dyn | 0.14889 | Difference (no matter factor); active for k < k_fs only |
 | Ω_total (two-sector) = ωm/h² | 0.30889 = Ω_m,CMB | ωm-direct (OP-8 dissolved) |
 | Σm_ν = R₂ × 0.9530 eV | 0.0685 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 (ν-closure C=93.14) |
-| m_φ = Σm_ν × (SOLAR²·KRYSTOS) | 40.70 eV | Forward-prediction — no fitting (multiplier 594.28 is a pure number; mechanism g²·v) |
+| m_φ = Σm_ν × (SOLAR²·KRYSTOS_V) | 40.70 eV | Forward-prediction — no fitting (multiplier 594.28 is a pure number; mechanism g²·v) |
 | α (Viel fit to particle/cold P(k) ratio) | 1.117 Mpc/h | CLASS output — not imposed |
 | k_fs (free-streaming) | 0.754 h/Mpc | From m_φ, CLASS-derived |
 | σ₈_eff (two-sector particle) | 0.747 | — |
@@ -300,7 +300,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 ## ⚠️ Known limitations and open problems
 
 Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
-**Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (18 items, OP-1..OP-18).
+**Physics gaps that future work must address:** [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) (19 items, OP-1..OP-19).
 
 ### Editorial/pipeline limitations
 1. **Diagonal CMB likelihood** (Paper 3): χ²_r uses diagonal covariance. Off-diagonal terms required for PRD/PRL.
@@ -318,7 +318,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 | OP-6 | Screening form (mult. vs add.) | **Resolved** — separate-universe k-essence + identity 1+w₀=Ω_m,dyn |
 | OP-7 | QFT derivation of genesis role assignments | **Partial** |
 | OP-8 | MIRA/matter-factor mechanism | **Dissolved (2026-06-18)** — ωm-direct: Ω_m,CMB = ωm/h² = 0.30889 is the standard physical observable, no matter factor to derive; MIRA survives only in f_screen |
-| OP-9 | UV origin of mass multiplier SOLAR²·KRYSTOS | **Refined (2026-06-19)** — m_φ = 40.70 eV is a forward prediction in a free scalar Lagrangian (mechanism g²·v); only the multiplier's UV origin remains open |
+| OP-9 | UV origin of mass multiplier SOLAR²·KRYSTOS_V | **Refined (2026-06-19)** — m_φ = 40.70 eV is a forward prediction in a free scalar Lagrangian (mechanism g²·v); only the multiplier's UV origin remains open |
 | OP-10 | Unification of φ and χ into a single field | **Open** — V(φ) search ongoing |
 | OP-11 | Free non-minimal coupling ξ | **Open** |
 | OP-12 | Relic abundance Ω_φDM h² ab initio | **Open** |
@@ -326,8 +326,9 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 | OP-14 | Σm_ν phenomenological derivation | **Resolved (2026-06-04)** — Σm_ν = 0.0685 eV self-consistent cascade (ν-closure C=93.14 demonstrated) |
 | OP-15 | Bullet-cluster offset κ(θ) from KAL(x) | **Open** — not yet computed (Paper 1) |
 | OP-16 | (π−φ)/(π+φ)=0.3201 vs proton mass-energy fraction | **Open / speculative** (genesis; retired from Paper 4, zero cosmological impact) |
-| OP-17 | Canonical φ-DM particle SOLAR²·KRYSTOS | **Adopted (2026-06-19)** — m_φ = 40.70 eV, S₈ = 0.04σ KiDS; UV origin of multiplier = OP-9 |
+| OP-17 | Canonical φ-DM particle SOLAR²·KRYSTOS_V | **Adopted (2026-06-19)** — m_φ = 40.70 eV, S₈ = 0.04σ KiDS; UV origin of multiplier = OP-9 |
 | OP-18 | Primordial amplitude A_s from (φ,π) | **Open (2026-06-20)** — inflation-scale residue (Paper 3) |
+| OP-19 | Production mechanism behind ω_c = KAL₀·ω_b·n_s | **Open (2026-07-12)** — forward relation (0.4σ Planck) works; deriving why *this* combination = relic-abundance mechanism (links OP-1). n_s is the leading candidate, not a certainty (identity window [0.960, 0.979]) |
 
 **Foundational postulates (Paper 1 §2.4, Postulates D & S):** the dimensional scale of
 H₀ is an explicit anchor input (zero *dimensionless* fitted parameters, like ΛCDM); the
@@ -381,7 +382,7 @@ history in [CHANGELOG.md](CHANGELOG.md).
       Papers 5–7 second wave; P6/P8/P9 upgrade pending DESI Y3 (k_fs = 0.754 h/Mpc)
 - [ ] Paper B — ab-initio baryogenesis (OP-1 closure) + φ-DM relic abundance
 - [ ] OP-5 closure — full N-body S₈ (BAHAMAS / IllustrisTNG-SSEE)
-- [ ] OP-9 residual — UV origin of the multiplier 594.28 (SOLAR² · KRYSTOS)
+- [ ] OP-9 residual — UV origin of the multiplier 594.28 (SOLAR² · KRYSTOS_V)
 
 ---
 

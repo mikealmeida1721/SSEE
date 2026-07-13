@@ -1542,6 +1542,33 @@ Pasos (papel + `op19_omega_c_mechanism.py`, factible en hardware actual):
 falla por órdenes. La ruta viva es **misalignment/cogénesis** (donde $n_s$ tiene hogar
 natural), sin probar. Frontera real.
 
+**Declaración de honestidad — la ventana de identidad del tercer factor (2026-07-12).**
+El ajuste fija el tercer factor a la ventana $[0.960,\,0.979]$ ($\pm1\sigma$ Planck en torno
+a $\omega_c=0.1200\pm0.0012$), un ancho de solo $\sim2\%$. **Cualquier** cantidad física en
+esa ventana reproduciría $\omega_c$ igual de bien: **el dato identifica un número
+($\sim0.965$), no una identidad.** Por tanto **NO** es correcto afirmar como hecho "el tercer
+factor es $n_s$"; $n_s$ es el **candidato líder**, no una certeza. Verificación numérica
+(`op19` inline): $n_s=1.0\to+3.2\sigma$, $n_s=0.99\to+2.1\sigma$, $n_s=0.9656\to-0.4\sigma$
+— el factor es **load-bearing** (sin él, $3.2\sigma$), no decoración.
+
+Lo que eleva a $n_s$ por encima de un $0.973$ arbitrario **NO es su valor** (eso es
+degenerado dentro de la ventana) sino **dos** propiedades que un número inventado no tendría:
+(a) **anclaje independiente** — Planck lo **mide** ($0.9649\pm0.0042$) y $\varphi^{-7}$ lo
+**deriva** ($0.96556$), y coinciden; (b) **doble función** — es observable primario del CMB
+y del sector inflación (OP-2), no un número acuñado para esta relación. Es el mismo criterio
+que legitima a $\mathrm{KAL_0}$ (carga peso en el EFT, no solo aquí). **El discriminador real
+entre candidatos de la ventana = este doble-deber + el mecanismo:** un cálculo de producción
+(cuerpo de OP-19) escupiría UNA cantidad específica, y ahí se sabría cuál es. Hasta entonces,
+lo honesto es **declarar la ventana** y llamar a $n_s$ *hipótesis-de-identidad-motivada*, no
+identidad probada.
+
+**Matiz (no es parámetro libre).** Un parámetro libre se ajustaría al centro **sin ancla**;
+aquí el valor está pinchado desde afuera (Planck + $\varphi^{-7}$) y la ventana es una
+**restricción**, no una perilla. La libertad que sí queda es **combinatoria** (qué cantidad
+de la ventana, y por qué el producto $\mathrm{KAL_0}\cdot\omega_b\cdot n_s$ y no otro) —
+la misma "libertad de gramática" fichada en el multiplicador de la partícula (§numerología).
+Cerrarla = OP-19.
+
 **Severidad:** Media-Alta — es el residuo teórico del sector materia para nivel PRD. No
 falsa SSEE (la relación es forward y falsable), pero cerrar el mecanismo es lo que la
 llevaría de "relación predictiva" a "derivación desde una acción".

@@ -45,6 +45,14 @@ results/logs/*.txt
 results/logs/*.npz
 *.npz
 
+# EXCEPCIÓN de procedencia (auditoría externa H1, 2026-07-13):
+# los logs de texto de results/logs/ SÍ se versionan — son la prueba de
+# reproducibilidad que el guardián (capa procedencia, VERIFICATION_LEDGER §B)
+# exige que exista en un CLON LIMPIO. El blanket *.log (línea 19) es para
+# artefactos LaTeX; esta negación re-incluye solo la procedencia científica.
+# Los binarios pesados (*.npz, chains) siguen fuera → Zenodo / regeneración.
+!results/logs/*.log
+
 # Virtual environments
 venv_*/
 

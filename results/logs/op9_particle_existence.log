@@ -1,0 +1,28 @@
+==============================================================================
+  ¿EXISTE la partícula φ-DM en SSEE? — look-elsewhere del multiplicador
+==============================================================================
+  Diccionario cerrado: 21 entidades nombradas (+ raíces φ,π,Ω)
+  Ventana viable: M = m_φ/Σm_ν ∈ [295, 988]  (k_fs 0.3–1.5 h/Mpc)
+  NUEVO  PYROS·VITA·MIKA = 615.331 (m_φ=42.47 eV) — clase: VOLUMEN (prod3 puro)
+  VIEJO  Ω⁴ + AURA·KAL   = 535.280 (m_φ=36.94 eV) — clase: SUMA (pot4 + prod2)
+------------------------------------------------------------------------------
+  Gramática (regla de construcción)               #total  #ventana  1/N
+  A permisivo  (pot + prod2 + prod3 + suma)         2838       537  1/537
+  B productos  (prod2 + prod3, sin sumas/pot)        801       192  1/192
+  C volúmenes  (prod3 puro: 3 ceilings)              662       192  1/192
+  D sumas      (forma del viejo: pot4+prod2)        2022       342  1/342
+------------------------------------------------------------------------------
+  Vecindad de PYROS·VITA·MIKA entre los VOLÚMENES (prod3) de la ventana:
+    M= 610.112  m_φ= 42.11 eV   VITA·ANMA·PYROS             
+    M= 611.597  m_φ= 42.21 eV   PYROS·DUAL·TRIAL            
+    M= 615.331  m_φ= 42.47 eV   VITA·PYROS·MIKA               <== NUEVO
+    M= 622.928  m_φ= 42.99 eV   KAL·SOLAR·MIKAEL_V          
+    M= 630.377  m_φ= 43.51 eV   OMEGA·ANMA·TRIAL            
+==============================================================================
+  VEREDICTO:
+  · PYROS, VITA, MIKA son entidades REALES del diccionario (sí 'existe').
+  · Bajo gramática PERMISIVA es 1-de-cientos -> NO privilegiada por look-elsewhere.
+  · Su privilegio depende ENTERAMENTE de fijar la gramática legítima (lineage laws).
+  · vs VIEJO: estadísticamente similar; gramaticalmente más limpia (volumen puro
+    vs suma pot4+prod2) -> forma más derivable para OP-9, pero NO más única.
+==============================================================================

@@ -1,0 +1,26 @@
+==================================================================================
+  PASO 2 — multiplicador SIMPLE cerca del data-preferred M_best=593.8 (S8=0.00σ)
+==================================================================================
+  ACTUAL  PYROS·VITA·MIKA = 615.331 (m_φ=42.47 eV, 0.24σ), score=3 (volumen)
+  Buscamos: M cerca de 593.8 con score MENOR (más simple) o igual y más cerca.
+----------------------------------------------------------------------------------
+  Candidatos en M∈[584.9,602.7] (±1.5%), ordenados por SIMPLICIDAD:
+  score         M  m_φ(eV)   |ΔM|  construcción
+    3.0   594.280    41.02   0.47  SOLAR·MAR·IGNIS
+    3.0   588.756    40.64   5.05  OMEGA·VITA·MIKAEL_V
+    3.0   601.386    41.51   7.58  OMEGA·SOLAR·CUARTAL
+    3.0   585.372    40.40   8.44  OMEGA·ANMA·MIKA
+    3.0   602.537    41.59   8.73  PI·TRIAL·CUARTAL
+    4.0   592.045    40.86   1.76  OMEGA^4+KAL·MIKAEL_V
+    4.0   595.671    41.11   1.86  OMEGA^4+VITA·IGNIS
+    4.0   589.697    40.70   4.11  OMEGA^4+PYROS·TRIAL
+    4.0   589.319    40.67   4.49  OMEGA^4+OMEGA·CUARTAL
+    4.0   588.419    40.61   5.39  OMEGA^4+SOLAR·IGNIS
+    4.0   600.457    41.44   6.65  OMEGA^4+SOLAR·ANMA
+    4.0   601.204    41.50   7.39  OMEGA^4+SOLAR·MIKA
+    4.0   601.501    41.52   7.69  OMEGA^4+KAL·CUARTAL
+    4.0   602.256    41.57   8.45  OMEGA^4+MIKA·DUAL
+----------------------------------------------------------------------------------
+  MÁS SIMPLE cerca del data-preferred: SOLAR·MAR·IGNIS  (M=594.280, score=3)
+  → mismo nivel (volumen) pero ¿más cerca de 593.8 que 615.33 (Δ=21.5)?
+==================================================================================

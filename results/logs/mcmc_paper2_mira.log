@@ -1,0 +1,168 @@
+[   0.0m] ======================================================================
+[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior MIRA (67.08)
+[   0.0m] ======================================================================
+[   0.0m]   Ω_m,dyn (exacto) = 0.1600502287
+[   0.0m]   Ω_m,CMB (MIRA)   = 0.3199281880
+[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
+[   0.0m]   H0_alg = 67.962137
+[   0.0m] 
+Burn-in 5000 steps...
+[   5.1m] Burn-in OK. Producción...
+[   5.6m]   500/25000 steps  accept=0.713
+[   6.1m]   1000/25000 steps  accept=0.711
+[   6.6m]   1500/25000 steps  accept=0.713
+[   7.1m]   2000/25000 steps  accept=0.714
+[   7.7m]   2500/25000 steps  accept=0.714
+[   8.2m]   3000/25000 steps  accept=0.714
+[   8.7m]   3500/25000 steps  accept=0.714
+[   9.2m]   4000/25000 steps  accept=0.715
+[   9.7m]   4500/25000 steps  accept=0.715
+[  10.3m]   5000/25000 steps  accept=0.715
+[  10.8m]   5500/25000 steps  accept=0.715
+[  11.3m]   6000/25000 steps  accept=0.715
+[  11.8m]   6500/25000 steps  accept=0.714
+[  12.3m]   7000/25000 steps  accept=0.715
+[  12.8m]   7500/25000 steps  accept=0.714
+[  13.3m]   8000/25000 steps  accept=0.714
+[  13.9m]   8500/25000 steps  accept=0.714
+[  14.4m]   9000/25000 steps  accept=0.715
+[  14.9m]   9500/25000 steps  accept=0.715
+[  15.4m]   10000/25000 steps  accept=0.715
+[  15.9m]   10500/25000 steps  accept=0.715
+[  16.5m]   11000/25000 steps  accept=0.715
+[  17.0m]   11500/25000 steps  accept=0.715
+[  17.5m]   12000/25000 steps  accept=0.715
+[  18.0m]   12500/25000 steps  accept=0.715
+[  18.6m]   13000/25000 steps  accept=0.715
+[  19.1m]   13500/25000 steps  accept=0.715
+[  19.6m]   14000/25000 steps  accept=0.715
+[  20.1m]   14500/25000 steps  accept=0.715
+[  20.7m]   15000/25000 steps  accept=0.715
+[  21.2m]   15500/25000 steps  accept=0.715
+[  21.7m]   16000/25000 steps  accept=0.715
+[  22.2m]   16500/25000 steps  accept=0.715
+[  22.8m]   17000/25000 steps  accept=0.715
+[  23.3m]   17500/25000 steps  accept=0.715
+[  23.8m]   18000/25000 steps  accept=0.715
+[  24.4m]   18500/25000 steps  accept=0.715
+[  24.9m]   19000/25000 steps  accept=0.715
+[  25.5m]   19500/25000 steps  accept=0.715
+[  26.0m]   20000/25000 steps  accept=0.715
+[  26.5m]   20500/25000 steps  accept=0.715
+[  27.1m]   21000/25000 steps  accept=0.715
+[  27.6m]   21500/25000 steps  accept=0.715
+[  28.2m]   22000/25000 steps  accept=0.715
+[  28.7m]   22500/25000 steps  accept=0.715
+[  29.3m]   23000/25000 steps  accept=0.715
+[  29.8m]   23500/25000 steps  accept=0.715
+[  30.4m]   24000/25000 steps  accept=0.715
+[  30.9m]   24500/25000 steps  accept=0.715
+[  31.5m]   25000/25000 steps  accept=0.715
+[  31.5m] 
+======================================================================
+[  31.5m] RESULTADO MCMC PRODUCCIÓN — Prior MIRA
+[  31.5m] ======================================================================
+[  31.5m]   H₀     = 66.5527  +0.4405 / -0.4389  km/s/Mpc
+[  31.5m]   H₀ MAP = 66.5519
+[  31.5m]   Ω_b·h² = 0.02261
+[  31.5m]   ln P_MAP = -124.009
+[  31.5m]   τ_max = 31.8    N_eff ≈ 78660
+[  31.5m]   acceptance = 0.715
+[  31.5m] 
+  BIC (k=2, N=15): 253.435
+[  31.5m] 
+Comparación con resultados previos:
+[  31.5m]   CLAUDE.md doc (prior Planck, 100w×25k): H₀ = 67.756 ± 0.442
+[  31.5m]   Exploratorio (prior Planck, 50w×10k):   H₀ = 66.751 ± 0.445
+[  31.5m]   Exploratorio (prior MIRA,   50w×10k):   H₀ = 66.559 ± 0.440
+[  31.5m]   ESTE (prior MIRA, 100w×25k):            H₀ = 66.553 ± 0.442
+[  31.5m] 
+  Distancia a DESI-puro (65.530): 1.023 km/s/Mpc
+[  31.6m] 
+Figura: results/figures/fig_corner_ssee_mira_prior.pdf
+[  31.6m] Cadena: results/logs/mcmc_paper2_mira_ckpt.npz
+[  31.6m] Tiempo total: 31.6 min
+[   0.0m] ======================================================================
+[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior MIRA (67.08)
+[   0.0m] ======================================================================
+[   0.0m]   Ω_m,dyn (exacto) = 0.1600502287
+[   0.0m]   Ω_m,CMB (MIRA)   = 0.3199281880
+[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
+[   0.0m]   H0_alg = 67.962137
+[   0.0m] 
+Burn-in 5000 steps...
+[   5.2m] Burn-in OK. Producción...
+[   5.7m]   500/25000 steps  accept=0.712
+[   6.2m]   1000/25000 steps  accept=0.715
+[   6.8m]   1500/25000 steps  accept=0.713
+[   7.3m]   2000/25000 steps  accept=0.714
+[   7.8m]   2500/25000 steps  accept=0.714
+[   8.3m]   3000/25000 steps  accept=0.714
+[   8.8m]   3500/25000 steps  accept=0.715
+[   9.3m]   4000/25000 steps  accept=0.716
+[   9.9m]   4500/25000 steps  accept=0.716
+[  10.4m]   5000/25000 steps  accept=0.716
+[  10.9m]   5500/25000 steps  accept=0.716
+[  11.4m]   6000/25000 steps  accept=0.715
+[  12.0m]   6500/25000 steps  accept=0.715
+[  12.5m]   7000/25000 steps  accept=0.715
+[  13.0m]   7500/25000 steps  accept=0.715
+[  13.5m]   8000/25000 steps  accept=0.715
+[  14.0m]   8500/25000 steps  accept=0.715
+[  14.6m]   9000/25000 steps  accept=0.715
+[  15.1m]   9500/25000 steps  accept=0.715
+[  15.6m]   10000/25000 steps  accept=0.715
+[  16.1m]   10500/25000 steps  accept=0.715
+[  16.7m]   11000/25000 steps  accept=0.715
+[  17.2m]   11500/25000 steps  accept=0.715
+[  17.7m]   12000/25000 steps  accept=0.715
+[  18.2m]   12500/25000 steps  accept=0.715
+[  18.8m]   13000/25000 steps  accept=0.715
+[  19.3m]   13500/25000 steps  accept=0.715
+[  19.8m]   14000/25000 steps  accept=0.715
+[  20.3m]   14500/25000 steps  accept=0.715
+[  20.9m]   15000/25000 steps  accept=0.715
+[  21.4m]   15500/25000 steps  accept=0.715
+[  21.9m]   16000/25000 steps  accept=0.715
+[  22.5m]   16500/25000 steps  accept=0.715
+[  23.0m]   17000/25000 steps  accept=0.715
+[  23.5m]   17500/25000 steps  accept=0.715
+[  24.1m]   18000/25000 steps  accept=0.715
+[  24.6m]   18500/25000 steps  accept=0.715
+[  25.1m]   19000/25000 steps  accept=0.715
+[  25.7m]   19500/25000 steps  accept=0.715
+[  26.2m]   20000/25000 steps  accept=0.715
+[  26.8m]   20500/25000 steps  accept=0.715
+[  27.3m]   21000/25000 steps  accept=0.715
+[  27.8m]   21500/25000 steps  accept=0.715
+[  28.4m]   22000/25000 steps  accept=0.715
+[  28.9m]   22500/25000 steps  accept=0.715
+[  29.5m]   23000/25000 steps  accept=0.715
+[  30.0m]   23500/25000 steps  accept=0.715
+[  30.6m]   24000/25000 steps  accept=0.715
+[  31.1m]   24500/25000 steps  accept=0.715
+[  31.7m]   25000/25000 steps  accept=0.715
+[  31.7m] 
+======================================================================
+[  31.7m] RESULTADO MCMC PRODUCCIÓN — Prior MIRA
+[  31.7m] ======================================================================
+[  31.7m]   H₀     = 66.5330  +0.4405 / -0.4422  km/s/Mpc
+[  31.7m]   H₀ MAP = 66.5319
+[  31.7m]   Ω_b·h² = 0.02260
+[  31.7m]   ln P_MAP = -123.955
+[  31.7m]   τ_max = 32.2    N_eff ≈ 77709
+[  31.7m]   acceptance = 0.715
+[  31.7m] 
+  BIC (k=2, N=15): 253.326
+[  31.7m] 
+Comparación con resultados previos:
+[  31.7m]   CLAUDE.md doc (prior Planck, 100w×25k): H₀ = 67.756 ± 0.442
+[  31.7m]   Exploratorio (prior Planck, 50w×10k):   H₀ = 66.751 ± 0.445
+[  31.7m]   Exploratorio (prior MIRA,   50w×10k):   H₀ = 66.559 ± 0.440
+[  31.7m]   ESTE (prior MIRA, 100w×25k):            H₀ = 66.533 ± 0.444
+[  31.7m] 
+  Distancia a DESI-puro (65.530): 1.003 km/s/Mpc
+[  31.8m] 
+Figura: results/figures/fig_corner_ssee_mira_prior.pdf
+[  31.8m] Cadena: results/logs/mcmc_paper2_mira_ckpt.npz
+[  31.8m] Tiempo total: 31.8 min

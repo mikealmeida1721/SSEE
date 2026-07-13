@@ -1,0 +1,166 @@
+[   0.0m] =================================================================
+[   0.0m] SSEE-V3.6 — MCMC PROFESIONAL (overnight)
+[   0.0m] =================================================================
+[   0.0m] w0=-0.8399  wa=-0.6700  Om_dyn=0.1601  Om_cosm=0.3199  KAL0=5.5214
+[   0.0m] Cadena SSEE encontrada. Cargando desde checkpoint...
+[   1.0m] 
+[SSEE-V3.6] Cargado desde checkpoint: 29750000 muestras
+[   1.0m]   ln P_MAP ≈ -368.53  (evaluado en primeras 50k muestras)
+[   1.1m] 
+[ΛCDM]  ndim=3  100w × 25000s  (guardado cada 500)
+[   1.1m]   Burn-in: 5000 pasos...
+[   8.0m]   Burn-in completo. Iniciando producción...
+[   8.7m]   ΛCDM: 500/25000 pasos  aceptación=0.646
+[   9.3m]   ΛCDM: 1000/25000 pasos  aceptación=0.646
+[  10.0m]   ΛCDM: 1500/25000 pasos  aceptación=0.645
+[  10.7m]   ΛCDM: 2000/25000 pasos  aceptación=0.646
+[  11.3m]   ΛCDM: 2500/25000 pasos  aceptación=0.647
+[  12.0m]   ΛCDM: 3000/25000 pasos  aceptación=0.647
+[  12.7m]   ΛCDM: 3500/25000 pasos  aceptación=0.647
+[  13.4m]   ΛCDM: 4000/25000 pasos  aceptación=0.647
+[  14.0m]   ΛCDM: 4500/25000 pasos  aceptación=0.646
+[  14.7m]   ΛCDM: 5000/25000 pasos  aceptación=0.646
+[  15.4m]   ΛCDM: 5500/25000 pasos  aceptación=0.646
+[  16.1m]   ΛCDM: 6000/25000 pasos  aceptación=0.646
+[  16.8m]   ΛCDM: 6500/25000 pasos  aceptación=0.647
+[  17.5m]   ΛCDM: 7000/25000 pasos  aceptación=0.647
+[  18.2m]   ΛCDM: 7500/25000 pasos  aceptación=0.647
+[  18.9m]   ΛCDM: 8000/25000 pasos  aceptación=0.647
+[  19.6m]   ΛCDM: 8500/25000 pasos  aceptación=0.646
+[  20.3m]   ΛCDM: 9000/25000 pasos  aceptación=0.647
+[  20.9m]   ΛCDM: 9500/25000 pasos  aceptación=0.646
+[  21.6m]   ΛCDM: 10000/25000 pasos  aceptación=0.646
+[  22.3m]   ΛCDM: 10500/25000 pasos  aceptación=0.646
+[  23.0m]   ΛCDM: 11000/25000 pasos  aceptación=0.646
+[  23.7m]   ΛCDM: 11500/25000 pasos  aceptación=0.646
+[  24.4m]   ΛCDM: 12000/25000 pasos  aceptación=0.646
+[  25.1m]   ΛCDM: 12500/25000 pasos  aceptación=0.646
+[  25.9m]   ΛCDM: 13000/25000 pasos  aceptación=0.646
+[  26.6m]   ΛCDM: 13500/25000 pasos  aceptación=0.646
+[  27.3m]   ΛCDM: 14000/25000 pasos  aceptación=0.646
+[  28.0m]   ΛCDM: 14500/25000 pasos  aceptación=0.646
+[  28.8m]   ΛCDM: 15000/25000 pasos  aceptación=0.646
+[  29.6m]   ΛCDM: 15500/25000 pasos  aceptación=0.646
+[  30.3m]   ΛCDM: 16000/25000 pasos  aceptación=0.646
+[  31.1m]   ΛCDM: 16500/25000 pasos  aceptación=0.646
+[  31.9m]   ΛCDM: 17000/25000 pasos  aceptación=0.646
+[  32.7m]   ΛCDM: 17500/25000 pasos  aceptación=0.646
+[  33.5m]   ΛCDM: 18000/25000 pasos  aceptación=0.646
+[  34.3m]   ΛCDM: 18500/25000 pasos  aceptación=0.646
+[  35.1m]   ΛCDM: 19000/25000 pasos  aceptación=0.646
+[  35.9m]   ΛCDM: 19500/25000 pasos  aceptación=0.646
+[  36.7m]   ΛCDM: 20000/25000 pasos  aceptación=0.646
+[  37.6m]   ΛCDM: 20500/25000 pasos  aceptación=0.646
+[  38.4m]   ΛCDM: 21000/25000 pasos  aceptación=0.647
+[  39.3m]   ΛCDM: 21500/25000 pasos  aceptación=0.647
+[  40.2m]   ΛCDM: 22000/25000 pasos  aceptación=0.647
+[  41.1m]   ΛCDM: 22500/25000 pasos  aceptación=0.647
+[  42.0m]   ΛCDM: 23000/25000 pasos  aceptación=0.647
+[  42.9m]   ΛCDM: 23500/25000 pasos  aceptación=0.647
+[  43.8m]   ΛCDM: 24000/25000 pasos  aceptación=0.647
+[  44.8m]   ΛCDM: 24500/25000 pasos  aceptación=0.647
+[  45.7m]   ΛCDM: 25000/25000 pasos  aceptación=0.647
+[  46.0m]   τ_max=38.5  N_eff≈64869  ln P_MAP=-7.30
+[  46.0m] 
+[CPL]  ndim=5  100w × 25000s  (guardado cada 500)
+[  46.0m]   Burn-in: 5000 pasos...
+[  56.0m]   Burn-in completo. Iniciando producción...
+[  57.0m]   CPL: 500/25000 pasos  aceptación=0.553
+[  58.0m]   CPL: 1000/25000 pasos  aceptación=0.553
+[  59.0m]   CPL: 1500/25000 pasos  aceptación=0.551
+[  60.0m]   CPL: 2000/25000 pasos  aceptación=0.552
+[  61.0m]   CPL: 2500/25000 pasos  aceptación=0.552
+[  62.0m]   CPL: 3000/25000 pasos  aceptación=0.551
+[  63.0m]   CPL: 3500/25000 pasos  aceptación=0.551
+[  64.1m]   CPL: 4000/25000 pasos  aceptación=0.551
+[  65.1m]   CPL: 4500/25000 pasos  aceptación=0.551
+[  66.1m]   CPL: 5000/25000 pasos  aceptación=0.551
+[  67.1m]   CPL: 5500/25000 pasos  aceptación=0.551
+[  68.1m]   CPL: 6000/25000 pasos  aceptación=0.551
+[  69.2m]   CPL: 6500/25000 pasos  aceptación=0.551
+[  70.2m]   CPL: 7000/25000 pasos  aceptación=0.551
+[  71.3m]   CPL: 7500/25000 pasos  aceptación=0.551
+[  72.3m]   CPL: 8000/25000 pasos  aceptación=0.551
+[  73.4m]   CPL: 8500/25000 pasos  aceptación=0.551
+[  74.4m]   CPL: 9000/25000 pasos  aceptación=0.551
+[  75.5m]   CPL: 9500/25000 pasos  aceptación=0.551
+[  76.5m]   CPL: 10000/25000 pasos  aceptación=0.551
+[  77.5m]   CPL: 10500/25000 pasos  aceptación=0.551
+[  78.6m]   CPL: 11000/25000 pasos  aceptación=0.551
+[  79.7m]   CPL: 11500/25000 pasos  aceptación=0.551
+[  80.8m]   CPL: 12000/25000 pasos  aceptación=0.551
+[  81.9m]   CPL: 12500/25000 pasos  aceptación=0.550
+[  83.0m]   CPL: 13000/25000 pasos  aceptación=0.550
+[  84.2m]   CPL: 13500/25000 pasos  aceptación=0.550
+[  85.3m]   CPL: 14000/25000 pasos  aceptación=0.550
+[  86.4m]   CPL: 14500/25000 pasos  aceptación=0.550
+[  87.6m]   CPL: 15000/25000 pasos  aceptación=0.550
+[  88.8m]   CPL: 15500/25000 pasos  aceptación=0.550
+[  90.0m]   CPL: 16000/25000 pasos  aceptación=0.550
+[  91.1m]   CPL: 16500/25000 pasos  aceptación=0.550
+[  92.3m]   CPL: 17000/25000 pasos  aceptación=0.550
+[  93.6m]   CPL: 17500/25000 pasos  aceptación=0.550
+[  94.8m]   CPL: 18000/25000 pasos  aceptación=0.550
+[  96.1m]   CPL: 18500/25000 pasos  aceptación=0.550
+[  97.3m]   CPL: 19000/25000 pasos  aceptación=0.550
+[  98.6m]   CPL: 19500/25000 pasos  aceptación=0.550
+[  99.9m]   CPL: 20000/25000 pasos  aceptación=0.550
+[ 101.2m]   CPL: 20500/25000 pasos  aceptación=0.550
+[ 102.6m]   CPL: 21000/25000 pasos  aceptación=0.550
+[ 103.9m]   CPL: 21500/25000 pasos  aceptación=0.550
+[ 105.2m]   CPL: 22000/25000 pasos  aceptación=0.550
+[ 106.6m]   CPL: 22500/25000 pasos  aceptación=0.550
+[ 107.9m]   CPL: 23000/25000 pasos  aceptación=0.550
+[ 109.3m]   CPL: 23500/25000 pasos  aceptación=0.550
+[ 110.7m]   CPL: 24000/25000 pasos  aceptación=0.551
+[ 112.1m]   CPL: 24500/25000 pasos  aceptación=0.551
+[ 113.5m]   CPL: 25000/25000 pasos  aceptación=0.551
+[ 114.0m]   τ_max=57.0  N_eff≈43836  ln P_MAP=-4.49
+[ 114.0m] 
+=================================================================
+[ 114.0m] COMPARACIÓN DE MODELOS (covarianza DESI same-bin block-diagonal)
+[ 114.0m] =================================================================
+[ 114.0m] 
+  Modelo           k   ln P_MAP      BIC    ΔBIC      AIC    ΔAIC    N_eff
+[ 114.0m]   ---------------------------------------------------------------
+[ 114.0m]   SSEE-V3.6        2    -368.53   742.61  719.77   741.06  722.09   297500
+[ 114.0m]   ΛCDM             3      -7.30    22.92    0.08    20.60    1.63    64869
+[ 114.0m]   CPL              5      -4.49    22.84    0.00    18.97    0.00    43836
+[ 114.0m] 
+=================================================================
+[ 114.0m] PARÁMETROS POSTERIORES (mediana ± 1σ)
+[ 114.0m] =================================================================
+[ 114.0m] 
+  [SSEE-V3.6]  τ_max=nan  N_eff≈297500  accept=0.714
+[ 114.0m]     H₀           = 66.09931  +0.38725/-0.38661
+[ 114.0m]     Ω_b·h²       = 0.02320  +0.00045/-0.00045
+[ 114.0m]     Ω_m,eff      = 0.1601  [algebraico]
+[ 114.0m]     w₀,wₐ        = -0.8399, -0.6700  [algebraico]
+[ 114.0m] 
+  [ΛCDM]  τ_max=38.5  N_eff≈64869  accept=0.647
+[ 114.0m]     H₀           = 68.27037  +0.27729/-0.27656
+[ 114.0m]     Ω_m          = 0.30337  +0.00426/-0.00423
+[ 114.0m]     Ω_b·h²       = 0.02233  +0.00015/-0.00015
+[ 114.0m] 
+  [CPL]  τ_max=57.0  N_eff≈43836  accept=0.551
+[ 114.0m]     H₀           = 67.25733  +0.51388/-0.51387
+[ 114.0m]     Ω_m          = 0.31663  +0.00695/-0.00687
+[ 114.0m]     w₀           = -0.82566  +0.08070/-0.07815
+[ 114.0m]     wₐ           = -0.55751  +0.30232/-0.32147
+[ 114.0m]     Ω_b·h²       = 0.02237  +0.00015/-0.00015
+[ 114.0m] 
+  r_d(SSEE)=175.94 Mpc  r_d(ΛCDM)=147.78 Mpc  ratio=1.191
+[ 114.0m]   H₀(SSEE)=66.10±0.39  Planck=67.36±0.54  tensión=1.89σ
+[ 114.0m]   Ω_m tensión SSEE vs Planck: 21.27σ
+[ 114.0m] 
+  PPC — Cosmic Chronometers χ²_r:
+[ 114.0m]     SSEE-V3.6     : 2.014
+[ 114.0m]     ΛCDM          : 0.459
+[ 114.0m]     CPL           : 0.469
+[ 114.0m] 
+Generando figuras...
+[ 115.3m] 
+Figuras guardadas en results/figures/
+[ 115.3m] Cadenas guardadas en /mnt/datos/SSEE_data/mcmc/paper2_3models/mcmc_chains_professional.npz
+[ 115.3m] Tiempo total: 1.92h
+[ 115.3m] FIN MCMC PROFESIONAL

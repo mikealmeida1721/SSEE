@@ -1,0 +1,19 @@
+==========================================================================
+  PARTÍCULA CANÓNICA φ-DM — alpha (OUTPUT) y k_fs
+==========================================================================
+  R2 = Ω/(KAL·TRIAL)        = 0.071875
+  Σm_ν                      = 0.06902 eV
+  multiplicador SOLAR²·KRYSTOS = 594.2800
+  m_φ                       = 41.0187 eV
+  Ω_m,CMB (ω_m/h², sin factor) = 0.30889
+  Ω_φDM = Ω_m,CMB − 0.160      = 0.14889
+  T_φ (relic)               = 0.38563  (= 0.5385 T_ν)
+  N_ur                      = 2.9619
+--------------------------------------------------------------------------
+  alpha (OUTPUT fit Viel)   = 1.1085 Mpc/h   (frac=0.755)
+      [φ = 1.6180 — comparar]
+  k_half (CLASS, ratio=0.5) = 0.3394 h/Mpc   <-- borrado medido por el Boltzmann
+  k_fs (analítico no-rel)   = 0.7620 h/Mpc   <-- predicción falseable DESI/Euclid
+  σ8 (partícula)            = 0.7483
+  σ8 (frío, techo)          = 0.8335
+==========================================================================

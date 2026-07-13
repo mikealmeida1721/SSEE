@@ -41,6 +41,15 @@ canonical:
   fsigma8_two_sector_sigma: 0.93  # P6 fσ8 mean two-sector σ8=0.748 CON free-streaming (CORREGIDO 2026-06-29; forward ODE 0.933, MCMC v2 CLASS 0.946; antes 0.70 usaba σ8=0.8136 single = espurio)
   fsigma8_single_sigma:     0.70  # P5 single-sector σ8=0.8136 SIN free-streaming (correcto; ≠ two-sector: el free-streaming sube fσ8 0.70→0.93)
 
+  # ── Anclas OBSERVACIONALES (el DATO, no la predicción) ────────────────
+  # Fuente única para R20: cualquier constante observacional hardcodeada en
+  # src/ DEBE coincidir con estas. El bug H1/H2 (auditoría 2026-07-13) fue
+  # meter la PREDICCIÓN SSEE (S8=0.758) en el hueco de la OBSERVACIÓN KiDS
+  # (0.759), forzando 0.00σ en vez del 0.04σ real. R20 lo caza.
+  obs_KiDS_S8:         0.759   # KiDS-1000 S8 (Asgari+2021); ±0.024. NO confundir con S8_two_sector=0.758 (predicción)
+  obs_KiDS_sigma8:     0.737   # KiDS-1000 σ8; ±0.020
+  obs_DES_S8:          0.776   # DES-Y3 S8; ±0.017
+
   # Cascada Hubble (reframe 2026-06-17: H global = H_alg = 67.962; Fase B VERIFICADO)
   H_global_km_s_Mpc:   67.962     # H global de fondo = H_alg (base de la cascada)
   H0_local_IR_km_s_Mpc: 72.86     # Paper 9 — 0.17σ SH0ES (script ssee_paper9_verification, Fase B)

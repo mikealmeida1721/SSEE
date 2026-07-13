@@ -1,0 +1,16 @@
+[install] Installing external packages at '/home/mike/cobaya_packages'
+[install] The installation path has been written into the global config file: /home/mike/.config/cobaya/config.yaml
+
+================================================================================
+planck_2018_highl_plik.TTTEEE
+================================================================================
+
+[install] Checking if dependencies have already been installed...
+[install] External dependencies for this component already installed.
+[install] Doing nothing.
+
+================================================================================
+* Summary * 
+================================================================================
+
+[install] All requested components' dependencies correctly installed at /home/mike/cobaya_packages

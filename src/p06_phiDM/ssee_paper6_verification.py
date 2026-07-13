@@ -16,7 +16,7 @@ Física del modelo dos-sectores con partícula φ-DM canónica
   Amplitud TITULAR (free-streaming CLASS, NO growth-factor × ΛCDM):
     σ₈_eff = 0.747   — leído directamente de la corrida dos-sectores CLASS
                        con la temperatura de relic T_φ propia de la partícula
-    S₈_eff = 0.747 × √(0.30889/0.300) = 0.758  → 0.01σ KiDS (RESUELVE S₈)
+    S₈_eff = 0.747 × √(0.30889/0.300) = 0.758  → 0.04σ KiDS (RESUELVE S₈)
     k_fs   = 0.754 h/Mpc  (predicción falsable DESI Y3/Euclid)
 
   El growth-factor dos-sectores G_2s sólo fija la FORMA de f(z),
@@ -177,7 +177,7 @@ print(f"\n  σ₈ resultantes:")
 print(f"    σ₈_base   (minimal-CDM Ω_m=0.160): {sig8_base:.4f}   (= 0.811 × {G_single:.4f}; NO canónico)")
 print(f"    σ₈_eff    (Paper 6 TITULAR):    {sig8_eff:.4f}   (free-streaming CLASS)")
 print(f"    σ₈_growth (cross-check 2-sec):  {sig8_growth:.4f}   (= 0.811 × {G_2s:.4f})")
-print(f"    S₈_eff    (Paper 6 TITULAR):    {S8_eff:.4f}   (0.01σ KiDS; Ω_total={Om_total:.4f})")
+print(f"    S₈_eff    (Paper 6 TITULAR):    {S8_eff:.4f}   (0.04σ KiDS; Ω_total={Om_total:.4f})")
 
 # Normalizar D(z=0) = 1 para cálculo de f(z)
 D_2s  = sol_twosector.y[0] / sol_twosector.y[0][-1]
@@ -244,7 +244,7 @@ print(f"    ΛCDM:                                            {mt_lcdm:.4f}σ")
 
 # ── Resumen observacional ─────────────────────────────────────────────────────
 print(f"\n  ── Resumen Observacional Completo ───────────────────────────────")
-kids_s8 = 0.758; kids_s8_err = 0.024
+kids_s8 = 0.759; kids_s8_err = 0.024   # KiDS-1000 REAL (Asgari+2021); la predicción SSEE es 0.758 → 0.04σ. NO poner 0.758 (era el bug que forzaba 0.00σ)
 des_s8  = 0.776; des_s8_err  = 0.017
 kids_sig8 = 0.737; kids_sig8_err = 0.020
 print(f"  σ₈_eff = {sig8_eff:.4f}  vs KiDS σ₈ {kids_sig8:.3f}±{kids_sig8_err:.3f}  → "
@@ -307,7 +307,7 @@ fig.suptitle(
     'SSEE Paper 6: Two-Sector Verification (free-streaming canónico, m_φ=40.70 eV)\n'
     rf'$m_\phi = \Sigma m_\nu^{{act}}\times(\mathrm{{SOLAR}}^2\cdot\mathrm{{KRYSTOS}}) = {m_phi_eV:.2f}$ eV,  '
     rf'$\sigma_8^{{eff}} = {sig8_eff:.4f}$,  '
-    rf'$S_8^{{eff}} = {S8_eff:.4f}$ (0.01$\sigma$ KiDS)',
+    rf'$S_8^{{eff}} = {S8_eff:.4f}$ (0.04$\sigma$ KiDS)',
     fontsize=10.5
 )
 fig.tight_layout()
@@ -320,7 +320,7 @@ print(f"  VEREDICTO FINAL — Modelo SSEE + dos-sectores (OptB)")
 print(f"{'='*70}")
 print(f"  G_2s:              {G_2s:.4f}  (sólo da la forma de f(z); Ω_m 0.320 vs 0.315)")
 print(f"  σ₈_eff:            {sig8_eff:.4f}  (free-streaming CLASS, T_φ propia, sin parámetros libres)")
-print(f"  S₈_eff:            {S8_eff:.4f}  (0.01σ KiDS — RESUELVE tensión S₈)")
+print(f"  S₈_eff:            {S8_eff:.4f}  (0.04σ KiDS — RESUELVE tensión S₈)")
 print(f"  fσ₈ tensión media: {mt_2s:.4f}σ (two-sector, σ₈=0.747)  "
       f"[single-sector {mt_single:.4f}σ; ΛCDM {mt_lcdm:.4f}σ] {'(<1σ OK)' if mt_2s < 1.0 else ''}")
 print(f"  σ₈ vs KiDS-1000:   {abs(sig8_eff-kids_sig8)/kids_sig8_err:.4f}σ")

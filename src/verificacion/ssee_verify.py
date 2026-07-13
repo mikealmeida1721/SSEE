@@ -1046,6 +1046,45 @@ except Exception as e:
     check("DESI  capa operable", False, str(e))
 
 # ─────────────────────────────────────────────────────────────────────
+# CAPA R20 — anclas OBSERVACIONALES en código ⊆ CANONICAL_VALUES.yaml.
+# Punto ciego de la auditoría externa 2026-07-13 (H2): un script hardcodeaba
+# la PREDICCIÓN SSEE (S8=0.758) en el hueco de la OBSERVACIÓN KiDS (0.759),
+# forzando 0.00σ en vez del 0.04σ real. Ningún patrón "retirado" lo cazaba
+# porque 0.758 es un valor VIGENTE legítimo (la predicción). R20 verifica que
+# cada variable observacional del código coincida con el DATO canónico del YAML.
+# ─────────────────────────────────────────────────────────────────────
+print("\nCapa R20 — anclas observacionales (código ⊆ CANONICAL_VALUES.yaml)")
+try:
+    import re as _re20
+    _R20_ROOT = pathlib.Path(__file__).resolve().parents[2]
+    _yaml20 = (_R20_ROOT / "CANONICAL_VALUES.yaml").read_text(errors="ignore")
+    def _anchor20(key):
+        m = _re20.search(rf"^\s*{key}:\s*([0-9.]+)", _yaml20, _re20.M)
+        return m.group(1) if m else None
+    # (variable observacional en código  →  clave del DATO en CANONICAL_VALUES.yaml)
+    _R20_MAP = [("kids_s8", "obs_KiDS_S8"),
+                ("kids_sig8", "obs_KiDS_sigma8"),
+                ("des_s8", "obs_DES_S8")]
+    _R20_FILES = sorted((_R20_ROOT / "src").rglob("*.py"))
+    for _var, _key in _R20_MAP:
+        _canon = _anchor20(_key)
+        if _canon is None:
+            check(f"R20 ancla {_key} definida en YAML", False, "no encontrada en CANONICAL_VALUES.yaml")
+            continue
+        _bad = []
+        for _pf in _R20_FILES:
+            for _m in _re20.finditer(rf"\b{_re20.escape(_var)}\b\s*=\s*([0-9.]+)",
+                                     _pf.read_text(errors="ignore")):
+                if not _m.group(1).startswith(_canon):
+                    _bad.append(f"{_pf.name}:{_var}={_m.group(1)}")
+        check(f"R20 {_var} == {_key}={_canon} (dato, no predicción)",
+              not _bad,
+              "coincide con el ancla observacional" if not _bad
+              else "DESAJUSTE (predicción metida como dato?): " + "; ".join(_bad))
+except Exception as e:
+    check("R20 capa operable", False, str(e))
+
+# ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)

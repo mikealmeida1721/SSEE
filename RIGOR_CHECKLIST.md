@@ -163,3 +163,16 @@ off-diagonal dominante ($D_M$–$D_H$ intra-tracer, $|r_{MH}|\!\sim\!0.4$) **sí
 **Estado:** ✅ documentado (no requiere re-correr; el código en `src/desi_dr2_data.py` ya
 construye esta covarianza). Si un referee insiste, un re-run con covarianza inflada cierra el
 punto, pero no es necesario para que la afirmación sea honesta.
+
+## R20 — Ancla observacional en código ⊆ CANONICAL_VALUES.yaml 🔴 ⛔ (automatizada)
+**Regla:** ninguna constante **observacional** (el DATO medido: KiDS S₈, DES S₈, KiDS σ₈…)
+hardcodeada en `src/` puede diferir del ancla en `CANONICAL_VALUES.yaml §observational_anchors`.
+**Por qué existe:** punto ciego cazado por auditoría externa (2026-07-13, H2). El script
+`ssee_paper6_verification.py` tenía `kids_s8 = 0.758` — pero 0.758 es la **predicción SSEE**,
+no la observación KiDS (**0.759**). Metía la predicción en el hueco del dato, imprimiendo
+**0.00σ** en vez del **0.04σ** real. Ningún patrón "retirado" lo cazaba porque 0.758 es un valor
+vigente legítimo; la falla era **semántica** (dato vs predicción), no un valor obsoleto.
+**Automatización:** capa R20 del guardián — lee las anclas del YAML y verifica que
+`kids_s8`, `kids_sig8`, `des_s8` en todo `src/**.py` coincidan. Si alguien vuelve a meter la
+predicción como dato → ROJO. Los papers ya eran correctos (0.04σ); el error vivía solo en código.
+**Estado:** ✅ corregido + automatizado.

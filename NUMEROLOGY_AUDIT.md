@@ -35,7 +35,7 @@ con propiedades verificables. Siguiendo a Popper, su rasgo **definitorio** es la
 
 **Contra la acusación:**
 - **Conteo individual:** cada blanco (w₀, wₐ, …) es raro entre las expresiones simples de
-  (φ,π): **1/317** razones distintas (`src/estadistica/look_elsewhere_full.py`).
+  (φ,π): **1/378** razones distintas (`src/estadistica/look_elsewhere_full.py`).
 - **Conteo CONJUNTO (el que importa):** SSEE NO ajusta w₀ y wₐ por separado. El **mismo
   esqueleto** (Ω=φ+π y sus múltiplos enteros) debe dar **los DOS a la vez**: −0.840 y
   −0.670. El conteo de bases que aciertan AMBOS con la misma base es mucho menor
@@ -171,7 +171,7 @@ vs extensión) y que aquí se formaliza:
 | | **Núcleo** (w₀, wₐ) | **Extensión** (m_φ) |
 |---|---|---|
 | ¿El look-elsewhere ES el argumento? | **Sí** | **No** (y no lo reclamamos) |
-| Fuerza de la selección | 1/317 individual + conjunto restrictivo | débil, grammar-dependiente (1/3–1/537) — **CONCEDIDO** |
+| Fuerza de la selección | 1/378 individual + conjunto restrictivo | débil, grammar-dependiente (1/3–1/537) — **CONCEDIDO** |
 | ¿Gramática fijada antes del dato? | **Sí** — por reglas de construcción del diccionario (no-auto-suma + copia), anteriores y ajenas a w₀wₐ | Irrelevante: el peso no está aquí |
 | ¿Cuál es el argumento real? | La rigidez estadística de un esqueleto que da los DOS números a la vez | **La falsabilidad**: k_fs=0.754 h/Mpc, pre-registrado, DESI Y3/Euclid |
 

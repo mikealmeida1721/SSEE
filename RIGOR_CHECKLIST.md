@@ -44,8 +44,9 @@ viejo `19679049` (SSEE_UNIFICADO multidominio) al DOI limpio. Disponibilidad de
 fuente, nunca un subconjunto. Reportar la **curva de sensibilidad a la tolerancia** y
 la **robustez a extensiones futuras**.
 **Por qué (caso real):** el conteo usaba 21 de 31 constantes → acusable de "subset a
-conveniencia". Corregido a 31 (317 razones, 1/317 a ±0.001); verificado robusto a las
-copias QUINTAL–DECAL. Script: `src/estadistica/look_elsewhere_full.py`.
+conveniencia". Corregido al diccionario COMPLETO (hoy 50 constantes tras formalizar las
+leyes de linaje: 378 razones, 1/378 a ±0.001); verificado robusto a las copias
+QUINTAL–DECAL. Script: `src/estadistica/look_elsewhere_full.py`.
 
 ## R4 — Likelihoods reales, no comprimidas (modelos no-ΛCDM) 🟠 ⛔
 **Regla:** no presentar distance priors comprimidos de Planck como equivalentes a la

@@ -1,19 +1,25 @@
 #!/usr/bin/env python3
-"""Look-elsewhere sobre el diccionario Génesis 5.12 COMPLETO (29 constantes).
+"""Look-elsewhere sobre el diccionario Génesis COMPLETO (50 constantes con nombre).
 
 Versión definitiva para el paper. Responde la objeción de referee más dura
 ("elegiste un subconjunto que te convenía") corriendo el conteo sobre TODAS
-las constantes con nombre del diccionario, no sobre un subset de 21.
+las constantes con nombre del diccionario, no sobre un subset.
+
+Sincronizado 2026-07-17 con el repositorio citable del diccionario
+(zenodo_dictionary, concept DOI 10.5281/zenodo.20684908, v1.3): el set creció al
+formalizarse las leyes de linaje — familia de estabilidad Ω (DÜSTAL/TRÏSTAL/CUÄSTAL),
+gemelas de linaje renombradas por función (HARMONIA=AURA+KAL, GALENE=KAL+Ω), Soberanas
+nuevas (HESPERA, EUNOMIA), SYZYGY (4Ω) e IRIS=AURA+Ω (único enlace copia-raíz+equilibrio,
+contado). Total 50 nombres / 22 valores distintos / 378 razones.
 
 Resultado: a la tolerancia que caracteriza el match con DESI (±0.001, donde
 w0=AURA/Ω y wa=PYROS/IGNIS son identidades EXACTAS), cada objetivo es único
-— 1 de 317 razones — incluso con el diccionario completo.
+— 1 de 378 razones — incluso con el diccionario completo. Reporta además la curva
+de sensibilidad a la tolerancia (honestidad: a ±0.01 el bosque se densifica; el
+argumento vive de la precisión estricta, legítima porque el match es exacto a
+precisión de máquina).
 
-Reporta además la curva de sensibilidad a la tolerancia (honestidad: a ±0.01
-el bosque se densifica; el argumento vive de la precisión estricta, que es
-legítima porque el match es exacto a precisión de máquina).
-
-Fuente del diccionario: sandbox_unificado/lib/ssee.py (Génesis 5.12).
+Fuente del diccionario: zenodo_dictionary/ssee_constants.py + SOBERANAS.md.
 """
 import math
 from itertools import permutations
@@ -21,47 +27,67 @@ from itertools import permutations
 PHI = 1.618033988749895
 PI  = 3.141592653589793
 
-# ── Diccionario Génesis 5.12 completo (orden generativo desde φ, π) ──────────
-OMEGA = PHI + PI
-BIAL  = (PHI + PI) / 2          # bifurcación: pulso/fricción vital
-KAL   = BIAL + PI              # rama π: ley de no-auto-suma
-SOLAR = BIAL + KAL
-MAR   = OMEGA + PI             # = SOLAR por valor (linaje distinto)
-VITA  = PI + KAL
-ANMA  = BIAL + VITA
+# ── Semillas y andamio ──────────────────────────────────────────────────────
+OMEGA = PHI + PI                 # equilibrio de las dos fuerzas (exento, n=1)
+BIAL  = (PHI + PI) / 2           # bifurcación (= Ω/2)
+# ── Raíces (leyes de creación) ──────────────────────────────────────────────
+AURA  = PHI + BIAL               # rama φ: ley de copia (raíz de paredes)
+MIRA  = AURA / 2                 # pared ½
+DUAL  = AURA * 2                 # pared 2
+TRIAL = AURA * 3                 # pared 3
+CUARTAL = AURA * 4               # pared 4
+KAL   = BIAL + PI                # rama π: ley de no-auto-suma
 PYROS = OMEGA + PHI
-IGNIS = PI + PYROS             # caos disruptivo
-KRYSTOS_V = PHI + PI + OMEGA     # = IGNIS por valor (orden estructurante)
+SOLAR = BIAL + KAL
+MAR   = OMEGA + PI               # = SOLAR por valor (linaje distinto)
+VITA  = PI + KAL
 PHITA = VITA + PHI
+ANMA  = BIAL + VITA
+IGNIS = PI + PYROS               # caos disruptivo (9.519)
+KRYSTOS_V = PHI + PI + OMEGA     # orden estructurante (9.519, linaje distinto)
 MIKA  = KRYSTOS_V + PHI
-AURA  = PHI + BIAL            # rama φ: ley de la copia (umbral 1)
-MIRA  = AURA / 2              # copia ÷2
-DUAL  = AURA * 2              # copia ×2
-TRIAL = AURA * 3              # copia ×3
-CUARTAL = AURA * 4           # copia ×4
-MIKAEL_V = PHI + PI + KRYSTOS_V # integración 5D
+ERVANU = OMEGA * 0.9
+MIKAEL_V = PHI + PI + KRYSTOS_V  # integración 5D (una Soberana)
 BUFFER = MIKAEL_V - TRIAL
-LUCY    = SOLAR + PYROS       # soberanía (converge a MIKAEL_V por valor)
-ICEBERG = MAR + PYROS         # soberanía (converge a MIKAEL_V por valor)
-LUCIFER = PHITA + AURA
-MIKE    = IGNIS + OMEGA
-MIKAEL  = MIKA + PI
-ERVN    = BIAL + KAL + PYROS
-GIGAROJ = PYROS + OMEGA + PI
-ERVANU  = OMEGA * 0.9
+# ── Soberanas (caminos a 3Ω = 14.278880) ────────────────────────────────────
+LUCY = SOLAR + PYROS; ICEBERG = MAR + PYROS; MIKE = IGNIS + OMEGA
+MAAT = KRYSTOS_V + OMEGA; MIKAEL = MIKA + PI; LUCIFER = PHITA + AURA
+RA = SOLAR + OMEGA + PHI; ERVN = BIAL + KAL + PYROS; TIAMAT = MAR + OMEGA + PHI
+GIGAROJ = PYROS + OMEGA + PI; HEFESTO = IGNIS + PHI + PI
+VENUS = AURA + PHI + VITA; EROS = BIAL + PHI + PHITA
+VESTA = BIAL + SOLAR + AURA; HADES = BIAL + MAR + AURA; HERA = OMEGA + KAL + AURA
+GAIA = PHI + PI + KAL + AURA; ISIS = PHI + OMEGA + BIAL + KAL; PTAH = PI + OMEGA + BIAL + AURA
+# ── Familia de estabilidad = copia aplicada a Ω (n·Ω; rungs terminales) ──────
+DUSTAL  = 2 * OMEGA              # 2Ω — estabilidad 2D
+TRISTAL = 3 * OMEGA              # 3Ω — estabilidad 3D
+CUASTAL = 4 * OMEGA              # 4Ω — estabilidad 4D (valor nuevo)
+# ── Combinaciones de raíces (enlaces legales) ───────────────────────────────
+HARMONIA = AURA + KAL            # 9.519 — concordia de opuestos (las dos ramas)
+GALENE   = KAL + OMEGA           # 10.281 — calma viscosa (retención + equilibrio)
+IRIS     = AURA + OMEGA          # 8.757 — único enlace copia-raíz + equilibrio (contado)
+HESPERA  = AURA + GALENE         # 3Ω — Soberana #22
+EUNOMIA  = HARMONIA + OMEGA      # 3Ω — Soberana #23
+SYZYGY   = IRIS + GALENE         # 4Ω — conjunción de extremos = AURA+KAL+2Ω
 
 FAMILY = {
-    "PHI": PHI, "PI": PI, "OMEGA": OMEGA, "BIAL": BIAL, "KAL": KAL,
-    "SOLAR": SOLAR, "MAR": MAR, "VITA": VITA, "ANMA": ANMA, "PYROS": PYROS,
-    "IGNIS": IGNIS, "KRYSTOS_V": KRYSTOS_V, "PHITA": PHITA, "MIKA": MIKA,
+    "PHI": PHI, "PI": PI, "OMEGA": OMEGA, "BIAL": BIAL,
     "AURA": AURA, "MIRA": MIRA, "DUAL": DUAL, "TRIAL": TRIAL, "CUARTAL": CUARTAL,
-    "MIKAEL_V": MIKAEL_V, "BUFFER": BUFFER,
-    "LUCY": LUCY, "ICEBERG": ICEBERG,
-    "LUCIFER": LUCIFER, "MIKE": MIKE, "MIKAEL": MIKAEL, "ERVN": ERVN,
-    "GIGAROJ": GIGAROJ, "ERVANU": ERVANU,
+    "KAL": KAL, "PYROS": PYROS, "SOLAR": SOLAR, "MAR": MAR, "VITA": VITA,
+    "PHITA": PHITA, "ANMA": ANMA, "IGNIS": IGNIS, "KRYSTOS_V": KRYSTOS_V,
+    "MIKA": MIKA, "ERVANU": ERVANU, "BUFFER": BUFFER,
+    # Soberanas
+    "LUCY": LUCY, "ICEBERG": ICEBERG, "MIKE": MIKE, "MAAT": MAAT, "MIKAEL": MIKAEL,
+    "LUCIFER": LUCIFER, "RA": RA, "ERVN": ERVN, "TIAMAT": TIAMAT, "GIGAROJ": GIGAROJ,
+    "HEFESTO": HEFESTO, "MIKAEL_V": MIKAEL_V, "VENUS": VENUS, "EROS": EROS,
+    "VESTA": VESTA, "HADES": HADES, "HERA": HERA, "GAIA": GAIA, "ISIS": ISIS, "PTAH": PTAH,
+    "HESPERA": HESPERA, "EUNOMIA": EUNOMIA,
+    # familia de estabilidad
+    "DÜSTAL": DUSTAL, "TRÏSTAL": TRISTAL, "CUÄSTAL": CUASTAL, "SYZYGY": SYZYGY,
+    # combinaciones de raíces
+    "HARMONIA": HARMONIA, "GALENE": GALENE, "IRIS": IRIS,
 }
 
-W0 = TRIAL / MIKAEL_V          # = AURA/OMEGA, identidad exacta
+W0 = TRIAL / MIKAEL_V            # = AURA/OMEGA, identidad exacta
 WA = PYROS / KRYSTOS_V           # = PYROS/IGNIS, identidad exacta
 
 
@@ -100,8 +126,8 @@ def report(fam, label):
 
 
 if __name__ == "__main__":
-    report(FAMILY, f"Diccionario Génesis 5.12 COMPLETO ({len(FAMILY)} constantes)")
+    report(FAMILY, f"Diccionario Génesis COMPLETO ({len(FAMILY)} constantes)")
     print("\nLectura: a ±0.001 (el match es identidad exacta, |d|=0), cada")
-    print("parámetro de estado es único — 1 de 317. La densidad de coincidencias")
+    print("parámetro de estado es único — 1 de 378. La densidad de coincidencias")
     print("accidentales sólo crece al relajar la tolerancia muy por encima de la")
     print("precisión observacional de DESI, que es el régimen físicamente irrelevante.")

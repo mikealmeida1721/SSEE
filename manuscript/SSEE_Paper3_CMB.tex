@@ -768,6 +768,7 @@ SSEE vs.\ $\Lambda$CDM BIC under evaluations of increasing rigour. All favour SS
 the full off-diagonal \texttt{plik} MCMC (evaluated at the global anchor
 $H_0=67.962$, $\omega_m$-direct) is the canonical result.}
 \label{tab:bic_comparison}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llcccc}
 \toprule
 Method & Spectra & $N$ & $k_{\rm SSEE}$ & $k_{\Lambda\rm CDM}$ & $\Delta\mathrm{BIC}$ \\
@@ -777,7 +778,8 @@ Diagonal (approx.)        & TT+TE+EE+PP          & 5914 & 2 & 6 & $-34.9$ (SSEE 
 Full \texttt{plik} MCMC   & TTTEEE+lowl+lensing  & 2354 & 2 & 6 & $\mathbf{-32.9}$ \emph{(canonical)} \\
 Full \texttt{plik} (conserv.) & TTTEEE+lowl+lensing & 2354 & 4 & 6 & $-17.3$ (SSEE strongly favoured) \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 {\footnotesize Diagonal approximation assumes independence across spectra (upper bound on $\chi^2$).
 The full \texttt{plik} MCMC (Cobaya + \texttt{clipy}, official off-diagonal covariance) is the canonical result.
 $k=2=\{A_s,\tau\}$, the only sampled SSEE parameters; the conservative $k=4$ additionally counts two

@@ -1,5 +1,5 @@
 """
-SSEE-V3.6 — Likelihoods custom para el MCMC FULL con Cobaya.
+SSEE — Likelihoods custom para el MCMC FULL con Cobaya.
 
 Dos likelihoods que complementan a Planck (plik_lite_native + lensing.native):
 

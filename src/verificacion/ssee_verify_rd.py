@@ -1,5 +1,5 @@
 """
-SSEE-V3.6 — Verificación numérica del horizonte de sonido (task 2A)
+SSEE — Verificación numérica del horizonte de sonido (task 2A)
 
 Compara r_d y theta_* de SSEE contra los valores MEDIDOS por Planck 2018
 (Planck Collaboration 2020, A&A 641, A6, Tabla 2).
@@ -121,7 +121,7 @@ def print_comparison(label, res):
 
 def main():
     print("=" * 65)
-    print("SSEE-V3.6 — Verificación numérica del horizonte de sonido r_d")
+    print("SSEE — Verificación numérica del horizonte de sonido r_d")
     print("Referencia observacional: Planck 2018, Tabla 2")
     print(f"  r_d^obs   = {RD_OBS} ± {RD_SIGMA} Mpc")
     print(f"  θ*^obs    = {THETA_OBS} ± {THETA_SIGMA} °")

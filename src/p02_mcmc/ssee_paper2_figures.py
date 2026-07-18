@@ -1,5 +1,5 @@
 """
-SSEE-V3.6 — Paper 2 Figures
+SSEE — Paper 2 Figures
 Fig 1: w0-wa plane con contornos DESI DR2
 Fig 2: Sensibilidad de masas por escenario
 Fig 3: Omega_DE SSEE vs Lambda con contexto estructural
@@ -95,7 +95,7 @@ ax1.scatter(-1.0, 0.0, marker="+", s=120, color="black", linewidths=2.5,
 # Punto SSEE
 ax1.scatter(W0_SSEE, WA_SSEE, marker="*", s=260, color="#E6002B",
             edgecolors="black", linewidths=0.8, zorder=7,
-            label=fr"SSEE-V3.6 ($w_0={W0_SSEE:.3f},\,w_a={WA_SSEE:.3f}$)")
+            label=fr"SSEE ($w_0={W0_SSEE:.3f},\,w_a={WA_SSEE:.3f}$)")
 
 # Cruz de incertidumbre SSEE (algebraica → 0, pero indicamos con símbolo)
 ax1.annotate(
@@ -112,7 +112,7 @@ ax1.plot(w0_line, -1 - w0_line, "k--", lw=1.0, alpha=0.5,
 
 ax1.set_xlabel(r"$w_0$")
 ax1.set_ylabel(r"$w_a$")
-ax1.set_title("SSEE-V3.6 in the $w_0$-$w_a$ plane — official DESI DR2 $w_0w_a$CDM (2503.14738)")
+ax1.set_title("SSEE in the $w_0$-$w_a$ plane — official DESI DR2 $w_0w_a$CDM (2503.14738)")
 ax1.set_xlim(-1.35, -0.45)
 ax1.set_ylim(-1.6, 0.8)
 ax1.legend(loc="upper left", framealpha=0.9, fontsize=9)

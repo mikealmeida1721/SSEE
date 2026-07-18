@@ -1,5 +1,5 @@
 """
-SSEE-V3.6 — CMB Unified Likelihood Evaluation via Cobaya
+SSEE — CMB Unified Likelihood Evaluation via Cobaya
 Scans H0 to find the minimum chi2_eff against the full Planck 2018 plik_lite TTTEEE + lowT + lowE.
 Calculates Delta BIC correctly with k=2 for SSEE vs k=6 for LambdaCDM.
 """
@@ -109,7 +109,7 @@ def get_ssee_chi2(H0):
 
 def main():
     print("\n" + "="*65)
-    print("  SSEE-V3.6 — CMB Unified Likelihood Optimization")
+    print("  SSEE — CMB Unified Likelihood Optimization")
     print("  Minimizing chi2_eff over H0 via Cobaya (plik_lite TTTEEE + lowl)")
     print("="*65)
 
@@ -152,7 +152,7 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, "planck_cobaya_unified.txt")
     with open(out_path, "w") as f:
-        f.write("SSEE-V3.6 — Planck 2018 Unified Evaluation (Cobaya)\n")
+        f.write("SSEE — Planck 2018 Unified Evaluation (Cobaya)\n")
         f.write("="*65 + "\n")
         f.write(f"Optimal SSEE H0 = {H0_opt:.3f}\n")
         f.write(f"chi2_eff SSEE   = {chi2_ssee:.4f}\n")

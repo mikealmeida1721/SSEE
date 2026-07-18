@@ -48,7 +48,7 @@ def log(msg):
     with open(LOG, "a") as f: f.write(line + "\n")
 
 log("=" * 70)
-log("SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)")
+log("SSEE — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)")
 log("=" * 70)
 log(f"  Ω_m,total (geometría) = {OMEGA_M_TOTAL:.8f}  |  Ω_cdm,sector = {OMEGA_CDM_SECTOR:.8f}")
 log(f"  Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)")
@@ -190,7 +190,7 @@ fig = corner.corner(flat,
     labels=[r"$H_0$ [km/s/Mpc]", r"$\Omega_b h^2$"],
     quantiles=[0.16, 0.5, 0.84], show_titles=True,
     title_kwargs={"fontsize": 10})
-fig.suptitle(f"SSEE-V3.6 posterior — Prior H_alg (67.962, reframe)\nH₀={H0_med:.3f}±{H0_std:.3f}, MAP={H0_map:.3f}", y=1.02)
+fig.suptitle(f"SSEE posterior — Prior H_alg (67.962, reframe)\nH₀={H0_med:.3f}±{H0_std:.3f}, MAP={H0_map:.3f}", y=1.02)
 fig.savefig(f"{OUT}/fig_corner_ssee_halg_prior.pdf", bbox_inches="tight")
 plt.close(fig)
 log(f"\nFigura: {OUT}/fig_corner_ssee_halg_prior.pdf")

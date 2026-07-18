@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ssee_core.py — Fuente única de verdad para SSEE-V3.6
+ssee_core.py — Fuente única de verdad para SSEE
 =====================================================
 TODO script de SSEE (src/ y class_ssee/) DEBE importar de aquí sus constantes
 algebraicas, sus datos observacionales y la función de fondo de Friedmann.
@@ -159,7 +159,7 @@ _sanity_checks()
 def check():
     """Imprime todas las constantes y confirma los asserts. Paso de auditoría."""
     print("=" * 64)
-    print("ssee_core.py — constantes canónicas SSEE-V3.6")
+    print("ssee_core.py — constantes canónicas SSEE")
     print("=" * 64)
     for name in ('PHI', 'PI', 'OMEGA', 'BETA', 'KAL0', 'P_SC', 'K_V', 'T_R',
                  'M_V', 'W0', 'WA', 'OMEGA_DE', 'OMEGA_CDM_SECTOR', 'OMEGA_M_TOTAL',

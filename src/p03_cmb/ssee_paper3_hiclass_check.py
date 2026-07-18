@@ -248,7 +248,7 @@ ax.set_xlim(2, 2000)
 ax.set_ylim(0, 7500)
 ax.set_ylabel(r'$D_\ell^{TT}$ [$\mu$K$^2$]', fontsize=12)
 ax.legend(fontsize=9, loc='upper right')
-ax.set_title('hi_class cross-check — SSEE-V3.6 vs Planck PR4 TT', fontsize=11)
+ax.set_title('hi_class cross-check — SSEE vs Planck PR4 TT', fontsize=11)
 ax.grid(alpha=0.25)
 
 ax2 = axes[1]
@@ -280,7 +280,7 @@ ax3.axhline(0.1, color='gray', lw=1.0, ls=':', label='Euclid forecast limit (0.1
 ax3.fill_between(z_arr, 0, 0.1, alpha=0.08, color='gray')
 ax3.set_xlabel(r'Redshift $z$', fontsize=12)
 ax3.set_ylabel(r'$\alpha_K(z) = 3\,\Omega_{\rm DE}(z)\,[1+w_\phi(z)]$', fontsize=11)
-ax3.set_title(r'Bellini-Sawicki kineticity $\alpha_K(z)$ — SSEE-V3.6', fontsize=11)
+ax3.set_title(r'Bellini-Sawicki kineticity $\alpha_K(z)$ — SSEE', fontsize=11)
 ax3.legend(fontsize=10)
 ax3.set_xlim(0, 3)
 ax3.set_ylim(0, 0.6)

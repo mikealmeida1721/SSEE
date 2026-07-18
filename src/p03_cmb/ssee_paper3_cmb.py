@@ -1,5 +1,5 @@
 """
-SSEE-V3.6 — Paper 3: CMB Power Spectrum vs Planck PR4
+SSEE — Paper 3: CMB Power Spectrum vs Planck PR4
 Computes Cl_TT/TE/EE/lensing under SSEE background, applies r_d,eff mapping,
 compares against Planck PR4 data, and produces chi2 + figures.
 """
@@ -195,7 +195,7 @@ def _spectrum_figure(ells_s, Dl_s, ells_l, Dl_l,
         ax.errorbar(ell_obs, Dl_obs, yerr=sigma_obs,
                     fmt="k.", ms=2, lw=0.5, alpha=0.6, label="Planck PR4")
     lbl_l = lcdm_label or r"$\Lambda$CDM"
-    lbl_s = ssee_label or r"SSEE-V3.6"
+    lbl_s = ssee_label or r"SSEE"
     ax.plot(ells_l[2:], Dl_l[2:], color="tab:orange", lw=1.5, ls="--", label=lbl_l)
     ax.plot(ells_s[2:], Dl_s[2:], color="tab:blue",   lw=1.8, label=lbl_s)
     ax.set_xlim(*xlim)
@@ -226,10 +226,10 @@ def plot_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
     _spectrum_figure(
         ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs,
         ylabel=r"$D_\ell^{TT}$ [$\mu$K$^2$]",
-        title="SSEE-V3.6 vs Planck PR4: CMB TT Power Spectrum",
+        title="SSEE vs Planck PR4: CMB TT Power Spectrum",
         outname="fig_cmb_spectrum.pdf",
         ylim=(0, 6500),
-        ssee_label=r"SSEE-V3.6 ($\Omega_{m,\rm CMB}=0.30889$)",
+        ssee_label=r"SSEE ($\Omega_{m,\rm CMB}=0.30889$)",
         lcdm_label=r"$\Lambda$CDM ($\Omega_m=0.315$)",
     )
 
@@ -238,9 +238,9 @@ def plot_te_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
     _spectrum_figure(
         ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs,
         ylabel=r"$D_\ell^{TE}$ [$\mu$K$^2$]",
-        title="SSEE-V3.6 vs Planck PR4: CMB TE Power Spectrum",
+        title="SSEE vs Planck PR4: CMB TE Power Spectrum",
         outname="fig_cmb_te.pdf",
-        ssee_label=r"SSEE-V3.6",
+        ssee_label=r"SSEE",
         lcdm_label=r"$\Lambda$CDM",
     )
 
@@ -249,9 +249,9 @@ def plot_ee_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
     _spectrum_figure(
         ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs,
         ylabel=r"$D_\ell^{EE}$ [$\mu$K$^2$]",
-        title="SSEE-V3.6 vs Planck PR4: CMB EE Power Spectrum",
+        title="SSEE vs Planck PR4: CMB EE Power Spectrum",
         outname="fig_cmb_ee.pdf",
-        ssee_label=r"SSEE-V3.6",
+        ssee_label=r"SSEE",
         lcdm_label=r"$\Lambda$CDM",
     )
 
@@ -276,10 +276,10 @@ def plot_lensing(ells_s, Cl_s, ells_l, Cl_l, ell_obs, Cl_obs, sigma_obs):
     ax.plot(ells_l[m_l], Cl_l[m_l] * 1e7,
             color="tab:orange", lw=1.5, ls="--", label=r"$\Lambda$CDM")
     ax.plot(ells_s[m_s], Cl_s[m_s] * 1e7,
-            color="tab:blue", lw=1.8, label=r"SSEE-V3.6")
+            color="tab:blue", lw=1.8, label=r"SSEE")
     ax.set_xlim(2, 1300)
     ax.set_ylabel(r"$[L(L+1)]^2 C_L^{\phi\phi} / (2\pi)\ [\times 10^{-7}]$", fontsize=11)
-    ax.set_title("SSEE-V3.6 vs Planck PR4: CMB Lensing Potential", fontsize=13)
+    ax.set_title("SSEE vs Planck PR4: CMB Lensing Potential", fontsize=13)
     ax.legend(fontsize=10)
     ax.grid(True, alpha=0.3)
 
@@ -328,7 +328,7 @@ def plot_peak_zoom(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
         ax.grid(True, alpha=0.3)
 
     axes[0].set_ylabel(r"$D_\ell^{TT}$ [$\mu$K$^2$]")
-    plt.suptitle("SSEE-V3.6: Zoom en Picos Acústicos vs Planck PR4", fontsize=13)
+    plt.suptitle("SSEE: Zoom en Picos Acústicos vs Planck PR4", fontsize=13)
     plt.tight_layout()
     out = os.path.join(FIG_DIR, "fig_cmb_peaks_zoom.pdf")
     plt.savefig(out, bbox_inches="tight")
@@ -341,7 +341,7 @@ def plot_peak_zoom(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
 # ---------------------------------------------------------------------------
 def main():
     print("=" * 60)
-    print("SSEE-V3.6 — Paper 3: CMB vs Planck PR4 (TT+TE+EE+lensing)")
+    print("SSEE — Paper 3: CMB vs Planck PR4 (TT+TE+EE+lensing)")
     print("=" * 60)
     print(f"\nParámetros SSEE:")
     print(f"  w0={w0:.4f}  wa={wa:.4f}")

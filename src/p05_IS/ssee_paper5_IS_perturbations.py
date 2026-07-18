@@ -64,7 +64,7 @@ zeta_tilde = KAL0 / 3.0            # ≈ 1.8405
 
 # ── 2. PRINT HEADER ─────────────────────────────────────────────────────────
 print("=" * 68)
-print("SSEE-V3.6  Paper 5 — Israel-Stewart Causal Perturbative Analysis")
+print("SSEE  Paper 5 — Israel-Stewart Causal Perturbative Analysis")
 print("=" * 68)
 print(f"\n  φ               = {phi:.8f}")
 print(f"  KAL₀            = {KAL0:.8f}")
@@ -678,7 +678,7 @@ if _q3_ok:
     z_plot_mask = z_g <= 3.0
 
     ax.plot(z_g[z_plot_mask], f_ssee[z_plot_mask],
-            'b-', lw=2.5, label=r'SSEE-V3.6 IS  $(\gamma_{\rm IS}=%s)$' % f'{gamma_IS_val:.3f}')
+            'b-', lw=2.5, label=r'SSEE IS  $(\gamma_{\rm IS}=%s)$' % f'{gamma_IS_val:.3f}')
     ax.plot(z_g[z_plot_mask], f_lcdm[z_plot_mask],
             'r--', lw=2, label=r'$\Lambda$CDM  $(\gamma=%s)$' % f'{gamma_LCDM_val:.3f}')
 
@@ -735,7 +735,7 @@ if _q3_ok:
     # Figure 4: S₈ comparison bar chart
     fig4, ax4 = plt.subplots(figsize=(7, 5))
 
-    labels  = [r'Planck 2018 $\Lambda$CDM', r'SSEE-V3.6 IS', 'DES-Y3', 'KiDS-1000']
+    labels  = [r'Planck 2018 $\Lambda$CDM', r'SSEE IS', 'DES-Y3', 'KiDS-1000']
     vals    = [S8_LCDM_val,    S8_SSEE_val,    S8_DES,    S8_KIDS]
     errs    = [0.012,           S8_SSEE_err_val, S8_DES_err, S8_KIDS_err]
     colors_ = ['tomato', 'steelblue', 'forestgreen', 'darkorange']
@@ -776,7 +776,7 @@ if _q3_ok:
 
     z_plot_fsig = z_g <= 2.0
     ax5.plot(z_g[z_plot_fsig], fsig8_ssee_arr[z_plot_fsig],
-             'b-', lw=2.5, label=r'SSEE-V3.6 IS  ($\Omega_{m,\rm dyn}=0.160$)')
+             'b-', lw=2.5, label=r'SSEE IS  ($\Omega_{m,\rm dyn}=0.160$)')
     ax5.plot(z_g[z_plot_fsig], fsig8_lcdm_arr[z_plot_fsig],
              'r--', lw=2, label=r'$\Lambda$CDM  ($\Omega_m=0.315$)')
 
@@ -828,7 +828,7 @@ if _q3_ok:
 
     ax5.set_xlabel(r'redshift $z$', fontsize=12)
     ax5.set_ylabel(r'$f\sigma_8(z)$', fontsize=12)
-    ax5.set_title(r'$f\sigma_8(z)$: SSEE-V3.6 IS vs $\Lambda$CDM vs RSD data', fontsize=11)
+    ax5.set_title(r'$f\sigma_8(z)$: SSEE IS vs $\Lambda$CDM vs RSD data', fontsize=11)
     ax5.legend(fontsize=9, loc='upper right')
     ax5.set_xlim(0, 2.0)
     ax5.set_ylim(0.15, 0.65)

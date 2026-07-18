@@ -1,5 +1,5 @@
 """
-SSEE-V3.6 Paper 4 — Algebraic Derivation of CMB Background from φ and π
+SSEE Paper 4 — Algebraic Derivation of CMB Background from φ and π
 Reproduces: fig_toe_cmb_TT.pdf, fig_toe_derivations.pdf
 Run: python3 src/ssee_paper4_toe.py
 """

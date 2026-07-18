@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SSEE-V3.6 — B1: Full CMB Posterior Analysis via Cobaya + plik TTTEEE (full)
+SSEE — B1: Full CMB Posterior Analysis via Cobaya + plik TTTEEE (full)
 =============================================================================
 Runs full MCMC posteriors for SSEE and ΛCDM against the Planck 2018
 plik TTTEEE (full, plik_rd12_HM_v22b) + lowl TT + lowl EE + lensing.native.
@@ -518,7 +518,7 @@ def make_figures(ssee_prefix, lcdm_prefix, results):
 def write_table(results):
     """Write human-readable and machine-readable constraints."""
     lines = [
-        "SSEE-V3.6 — B1 Full CMB Posterior Constraints",
+        "SSEE — B1 Full CMB Posterior Constraints",
         "Cobaya MCMC + Planck 2018 plik TTTEEE (full) + lowl TT + lowl EE + lensing",
         "=" * 70,
         "",
@@ -579,7 +579,7 @@ def main():
     lcdm_prefix = os.path.join(CHAINS_DIR, "lcdm_cmb")
 
     print("\n" + "="*65)
-    print("  SSEE-V3.6 — B1 Full CMB Posterior Analysis")
+    print("  SSEE — B1 Full CMB Posterior Analysis")
     print(f"  Mode: {args.mode} | Fast: {args.fast}")
     print("="*65)
     print(f"\n  SSEE algebraic predictions:")

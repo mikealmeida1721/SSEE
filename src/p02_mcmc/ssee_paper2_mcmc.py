@@ -1,5 +1,5 @@
 """
-SSEE-V3.6 — MCMC Profesional (overnight run)
+SSEE — MCMC Profesional (overnight run)
   1. Covarianza DESI block-diagonal 13×13 (Abdul-Karim et al. 2025, same-bin correlated)
   2. N_walkers=100, N_steps=25000, N_burn=5000  →  N_eff >> 1000 por parámetro
   3. Guardado incremental de cadenas (.npz) cada 500 pasos (no se pierde nada si se corta)
@@ -39,7 +39,7 @@ def log(msg):
         f.write(line + "\n")
 
 log("=" * 65)
-log("SSEE-V3.6 — MCMC PROFESIONAL (overnight)")
+log("SSEE — MCMC PROFESIONAL (overnight)")
 log("=" * 65)
 
 # ─────────────────────────────────────────────────────────────
@@ -252,7 +252,7 @@ def run_mcmc_professional(log_post, theta0, scales, ndim, label):
         "acceptance": np.mean(sampler.acceptance_fraction),
     }
 
-def load_ssee_from_checkpoint(label="SSEE-V3.6"):
+def load_ssee_from_checkpoint(label="SSEE"):
     ckpt = CHAIN_FILE.replace(".npz", f"_{label.replace(' ','_')}_ckpt.npz")
     data = np.load(ckpt)
     flat2 = data["chain"]
@@ -276,13 +276,13 @@ def load_ssee_from_checkpoint(label="SSEE-V3.6"):
         "acceptance": 0.714,
     }
 
-SSEE_CKPT = CHAIN_FILE.replace(".npz", "_SSEE-V3.6_ckpt.npz")
+SSEE_CKPT = CHAIN_FILE.replace(".npz", "_SSEE_ckpt.npz")
 if os.path.exists(SSEE_CKPT):
     log("Cadena SSEE encontrada. Cargando desde checkpoint...")
     res_ssee = load_ssee_from_checkpoint()
 else:
     res_ssee = run_mcmc_professional(lpost_ssee,
-        np.array([62.0, 0.02237]), np.array([2.0, 0.0003]), 2, "SSEE-V3.6")
+        np.array([62.0, 0.02237]), np.array([2.0, 0.0003]), 2, "SSEE")
 
 res_lcdm = run_mcmc_professional(lpost_lcdm,
     np.array([67.4, 0.315, 0.02237]), np.array([1.5, 0.015, 0.0003]), 3, "ΛCDM")
@@ -318,7 +318,7 @@ for r in models:
 # ─────────────────────────────────────────────────────────────
 
 param_names = {
-    "SSEE-V3.6": ["H₀", "Ω_b·h²"],
+    "SSEE": ["H₀", "Ω_b·h²"],
     "ΛCDM":      ["H₀", "Ω_m", "Ω_b·h²"],
     "CPL":       ["H₀", "Ω_m", "w₀", "wₐ", "Ω_b·h²"],
 }
@@ -330,7 +330,7 @@ for r in models:
     for nm, med, p16, p84 in zip(param_names[r["label"]],
                                   r["medians"], r["p16"], r["p84"]):
         log(f"    {nm:<12} = {med:.5f}  +{p84-med:.5f}/-{med-p16:.5f}")
-    if r["label"] == "SSEE-V3.6":
+    if r["label"] == "SSEE":
         log(f"    {'Ω_m,total':<12} = {OM_GEOM:.5f}  [geometría; ω_m/h²]")
         log(f"    {'Ω_cdm,sector':<12} = {OM_SECTOR:.4f}  [sector frío; Paper 6 + α_K]")
         log(f"    {'w₀,wₐ':<12} = {W0_SSEE:.4f}, {WA_SSEE:.4f}  [algebraico]")
@@ -338,7 +338,7 @@ for r in models:
 # Tensiones
 def get_rd(r):
     H0 = r["medians"][0]; ob = r["medians"][-1]
-    Om = OM_GEOM if r["label"]=="SSEE-V3.6" else r["medians"][1]
+    Om = OM_GEOM if r["label"]=="SSEE" else r["medians"][1]
     return sound_horizon_rd(ob, Om*(H0/100)**2)
 
 rd_ssee = get_rd(res_ssee); rd_lcdm = get_rd(res_lcdm)
@@ -352,7 +352,7 @@ log(f"  Ω_m tensión SSEE vs Planck: {t_Om:.2f}σ")
 # PPC Cosmic Chronometers
 def H_pred(r, z):
     th = r["theta_map"]
-    if r["label"] == "SSEE-V3.6": return th[0]*E_ssee(z)
+    if r["label"] == "SSEE": return th[0]*E_ssee(z)
     if r["label"] == "ΛCDM":      return th[0]*E_lcdm(z, th[1])
     return th[0]*E_cpl(z, th[1], th[2], th[3])
 
@@ -372,7 +372,7 @@ fig_ssee = corner.corner(res_ssee["flat"],
     labels=[r"$H_0$", r"$\Omega_b h^2$"],
     quantiles=[0.16, 0.5, 0.84], show_titles=True,
     title_kwargs={"fontsize": 10})
-fig_ssee.suptitle("SSEE-V3.6 posterior (N=25000, covarianza DESI completa)", y=1.01)
+fig_ssee.suptitle("SSEE posterior (N=25000, covarianza DESI completa)", y=1.01)
 fig_ssee.savefig(f"{OUT_DIR}/fig_corner_ssee_professional.pdf", bbox_inches="tight")
 plt.close(fig_ssee)
 

@@ -1,4 +1,4 @@
-% SSEE-V3.6 — Paper 2: Bayesian MCMC Validation
+% SSEE — Paper 2: Bayesian MCMC Validation
 % Compile: pdflatex (×2)
 \documentclass[12pt,a4paper]{article}
 
@@ -33,7 +33,7 @@
 \newcommand{\MIRA}{\ifmmode\mathcal{M}\else$\mathcal{M}$\fi}
 
 \title{\textbf{Bayesian MCMC Validation of the Structural\\
-Self-Energy Expansion Framework (SSEE-V3.6)}:\\[6pt]
+Self-Energy Expansion Framework (SSEE)}:\\[6pt]
 \large Model Comparison against $\Lambda$CDM and CPL\\
 using DESI~DR2, Planck~2018, and Galaxy-Cluster Mass Data}
 
@@ -56,7 +56,7 @@ using DESI~DR2, Planck~2018, and Galaxy-Cluster Mass Data}
 
 \begin{abstract}
 We present a Bayesian validation of the dynamical sector of the
-Structural Self-Energy Expansion (\SSEE-V3.6) framework
+Structural Self-Energy Expansion (\SSEE) framework
 \citep{SSEE_paperI} against DESI~DR2 baryon acoustic oscillation data
 \citep{DESI_DR2}, a compressed Planck~2018 prior \citep{Planck2018}, and
 galaxy-cluster dynamical masses derived under a variable IGIMF baryonic
@@ -441,7 +441,7 @@ sensitivity test of Table~\ref{tab:cluster_sensitivity}.
 \toprule
 Model & Free parameters & Fixed & $k$ \\
 \midrule
-\SSEE-V3.6 & $H_0,\;\Omega_b h^2$ & $\wz,\wa,\OmDE,\KALz$ (algebraic) & 2 \\
+\SSEE & $H_0,\;\Omega_b h^2$ & $\wz,\wa,\OmDE,\KALz$ (algebraic) & 2 \\
 \LCDM      & $H_0,\;\Omega_m,\;\Omega_b h^2$ & $\wz=-1,\wa=0$ & 3 \\
 CPL        & $H_0,\;\Omega_m,\;\wz,\;\wa,\;\Omega_b h^2$ & --- & 5 \\
 \bottomrule
@@ -513,7 +513,7 @@ $N_{\rm eff}$: minimum effective sample size.}
 \toprule
 Model & $k$ & $\langle a\rangle$ & $\tau_{\rm max}$ & $N_s/\tau_{\rm max}$ & $N_{\rm eff}$ \\
 \midrule
-\SSEE-V3.6 & 2 & 0.38 & 32.7 & 183.5 & 4402 \\
+\SSEE & 2 & 0.38 & 32.7 & 183.5 & 4402 \\
 \LCDM      & 3 & 0.41 & 41.5 & 144.6 & 3471 \\
 CPL        & 5 & 0.35 & 57.3 & 104.7 & 2514 \\
 \bottomrule
@@ -533,7 +533,7 @@ $[\mathrm{alg.}]$ = fixed algebraically; $[\mathrm{fixed}]$ = model assumption.}
 \label{tab:posteriors}
 \begin{tabular}{lrrr}
 \toprule
-Parameter & \SSEE-V3.6 & \LCDM & CPL \\
+Parameter & \SSEE & \LCDM & CPL \\
 \midrule
 $H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$]
   & $67.62^{+0.40}_{-0.40}$
@@ -664,7 +664,7 @@ same measurement.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.70\textwidth]{fig1_w0wa_plane.pdf}
-  \caption{\SSEE-V3.6 (red star) in the $\wz$--$\wa$ plane.
+  \caption{\SSEE (red star) in the $\wz$--$\wa$ plane.
   Ellipses: $1\sigma$/$2\sigma$ contours for DESI~DR2 (blue),
   DES~Y5 \citep{DESY52024} (green), Planck~2018 (orange). \SSEE\ lies within
   $0.24\sigma$ of the DESI~DR2+CMB+Pantheon+ contour.}
@@ -945,7 +945,7 @@ $\Omega_m=0.30889$ in the background geometry). Jeffreys scale
 \toprule
 Model & $k$ & $\ln P_{\rm MAP}$ & BIC & $\Delta$BIC & $\Delta$AIC & DIC \\
 \midrule
-\SSEE-V3.6 & 2 & $-5.85$ & 17.24 & $0.00$  & $0.00$  & 15.69 \\
+\SSEE & 2 & $-5.85$ & 17.24 & $0.00$  & $0.00$  & 15.69 \\
 \LCDM      & 3 & $-7.30$ & 22.92 & $+5.68$ & $+4.91$ & 20.60 \\
 CPL        & 5 & $-4.49$ & 22.83 & $+5.59$ & $+3.27$ & 18.96 \\
 \bottomrule
@@ -1164,7 +1164,7 @@ would constitute decisive falsification:
 \section{Conclusions}
 \label{sec:conclusions}
 
-We have conducted a Bayesian MCMC validation of \SSEE-V3.6 against
+We have conducted a Bayesian MCMC validation of \SSEE against
 DESI~DR2, Planck~2018, and galaxy-cluster masses. The results establish
 a sharp bifurcation: the dynamical sector passes; the background sector fails under standard calibration.
 
@@ -1208,7 +1208,7 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
     $(H_0,\Omega_b h^2)$ posterior.
 \end{enumerate}
 
-\noindent\textbf{Central finding}: SSEE-V3.6 achieves a zero-parameter
+\noindent\textbf{Central finding}: SSEE achieves a zero-parameter
 dark-energy prediction whose \emph{dynamical sector} is not rejected by current data.
 The background geometry fails under standard Friedmann assumptions;
 whether this constitutes a physical falsification of the framework depends on
@@ -1403,7 +1403,7 @@ P.~Kroupa and collaborators for the IGIMF cluster re-analysis.
 \bibitem[Almeida Vallejo(2026)]{SSEE_paperI}
 Almeida Vallejo, M.~E.\ (2026).
 \textit{A Minimal-Parameter Framework for Cosmological Dynamics and
-Galaxy Cluster Mass Discrepancies via SSEE-V3.6}. Zenodo preprint.
+Galaxy Cluster Mass Discrepancies via SSEE}. Zenodo preprint.
 
 \bibitem[Abdul-Karim et al.(2025)]{DESI_DR2}
 Abdul-Karim, M., et al.\ (DESI Collaboration) (2025).

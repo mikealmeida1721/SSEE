@@ -1,5 +1,5 @@
 """
-SSEE-V3.6 — EFTCAMB Validation: αK=0.4033, αT=αM=αB=0
+SSEE — EFTCAMB Validation: αK=0.4033, αT=αM=αB=0
 Uses RPH (Reparametrized Horndeski) parametrization via H-EFTCAMB.
 
 Paper 7 predictions to validate:
@@ -191,7 +191,7 @@ if Cl_TT_gr is not None and Cl_TT_ssee is not None:
                     rf'$w_0={w0}$, $\alpha_T=\alpha_M=\alpha_B=0$)'))
     ax1.set_ylabel(r'$\ell(\ell+1)C_\ell^{TT}/2\pi$ [$\mu$K$^2$]', fontsize=12)
     ax1.set_title(
-        r'SSEE-V3.6 EFTCAMB — CMB TT: RPH $\alpha_K=0.4033$, '
+        r'SSEE EFTCAMB — CMB TT: RPH $\alpha_K=0.4033$, '
         r'$\alpha_T=\alpha_M=\alpha_B=0$, $w=-0.840$',
         fontsize=11)
     ax1.legend(fontsize=10)
@@ -222,7 +222,7 @@ if Cl_TT_gr is not None and Cl_TT_ssee is not None:
                label=rf'SSEE RPH ($\alpha_K={alphaK_ssee:.4f}$, $w={w0}$)')
     bx1.axvline(0.754, ls=':', color='orange', lw=1.5, label=r'$k_{\rm fs}=0.754$ h/Mpc')
     bx1.set_ylabel(r'$P(k)$ [$(h^{-1}$ Mpc$)^3$]', fontsize=12)
-    bx1.set_title(r'SSEE-V3.6 EFTCAMB — Matter $P(k)$: EFT kineticity effect', fontsize=12)
+    bx1.set_title(r'SSEE EFTCAMB — Matter $P(k)$: EFT kineticity effect', fontsize=12)
     bx1.legend(fontsize=10)
     bx1.grid(True, alpha=0.3, which='both')
 

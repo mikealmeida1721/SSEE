@@ -1,5 +1,5 @@
 """
-SSEE-V3.6 — Paper 2 Statistical Analysis
+SSEE — Paper 2 Statistical Analysis
 Analytic (no MCMC): w0-wa plane, sigma deviations, sensitivity table, Omega_DE chi2
 """
 
@@ -33,7 +33,7 @@ WA_LCDM       =  0.0
 OMEGA_LAMBDA  =  0.685               # Planck 2018
 
 print("=" * 60)
-print("SSEE-V3.6 — ANÁLISIS ESTADÍSTICO PAPER 2")
+print("SSEE — ANÁLISIS ESTADÍSTICO PAPER 2")
 print("=" * 60)
 print(f"\n{'Constantes algebraicas SSEE':}")
 print(f"  Φ  = {PHI:.6f}")

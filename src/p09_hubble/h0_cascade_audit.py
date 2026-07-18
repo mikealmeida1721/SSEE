@@ -198,7 +198,7 @@ record('Pos', 'Postulado I (α-attractor, n=2φ⁷)', 'adimensional', 7, 7, '—
 # REPORTE
 # ════════════════════════════════════════════════════════════════════════════
 print("=" * 100)
-print(" H0 CASCADE AUDIT — SSEE-V3.6  (2026-05-24 PM)")
+print(" H0 CASCADE AUDIT — SSEE  (2026-05-24 PM)")
 print("=" * 100)
 print(f"\n H_alg  = {H0_ALG_KMSMPC} km/s/Mpc  (algebraic, Type-P, P4)")
 print(f" H_MIRA = {H0_MIRA_KMSMPC} km/s/Mpc  (physical, Planck plik_lite + SSEE bg, P3)")

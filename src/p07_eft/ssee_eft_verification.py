@@ -1,7 +1,7 @@
 """
 ssee_eft_verification.py
 ========================
-Verificación numérica del Frente 2: Acción EFT k-essence interactuante SSEE-V3.6.
+Verificación numérica del Frente 2: Acción EFT k-essence interactuante SSEE.
 
 Pregunta central: ¿La acción S = ∫√-g [M²_Pl/2·R + K(X) - V(φ) + L_DM + L_int]
 con coeficientes algebraicamente fijados reproduce w(a) = w₀ + wₐ(1-a)?
@@ -541,7 +541,7 @@ ax.grid(True, alpha=0.3)
 ax.set_xlim(0.1, 1.0)
 
 fig.suptitle(
-    f'SSEE-V3.6 EFT Verificación: K(X)=X/KAL₀+X²/M⁴, V(φ)=V₀ exp(−α·φ), α=λ/√KAL₀\n'
+    f'SSEE EFT Verificación: K(X)=X/KAL₀+X²/M⁴, V(φ)=V₀ exp(−α·φ), α=λ/√KAL₀\n'
     rf'α={alpha_pot:.4f}, λ={lam:.4f}, V₀={V0:.4f}, M⁴={M4:.4f}, KAL₀={KAL0:.4f}',
     fontsize=10, fontweight='bold'
 )

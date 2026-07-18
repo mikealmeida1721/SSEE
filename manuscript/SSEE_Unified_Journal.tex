@@ -147,6 +147,7 @@ connects the dark-energy EFT to the inflationary $\alpha$-attractor (Paper~10).
 All model parameters are falsifiable by named forthcoming experiments.
 \end{abstract}
 
+\clearpage
 \tableofcontents
 \clearpage
 \newpage
@@ -604,10 +605,11 @@ Both sectors are algebraically fixed; no new free parameter is introduced.
 The characteristic scale $\kfs$ is set by the Dodelson-Widrow
 relation \citep{DodelsonWidrow1994} applied to the algebraically derived mass:
 \begin{equation}
-  \mphi = \Sigma m_\nu^{\mathrm{active}} \times (\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)
-        = 0.0685\;\mathrm{eV} \times 594.28 \simeq 40.70\;\mathrm{eV},
-  \quad
-  \kfs = 0.754\;h\,\mathrm{Mpc}^{-1}.
+\begin{aligned}
+  \mphi &= \Sigma m_\nu^{\mathrm{active}} \times (\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)
+        = 0.0685\;\mathrm{eV} \times 594.28 \simeq 40.70\;\mathrm{eV}, \\
+  \kfs &= 0.754\;h\,\mathrm{Mpc}^{-1}.
+\end{aligned}
   \label{eq:mphi}
 \end{equation}
 The WDM transfer function \citep{Viel2005,Bode2001}
@@ -781,6 +783,7 @@ EFTCAMB confirms both conditions are satisfied.
          The GR run uses the full $\omega_m$-direct canonical matter density
          $\OmmCMB = 0.30889$ (OP-8 dissolved, no matter factor) for a direct comparison.}
 \label{tab:eftcamb}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{p{0.6\textwidth} c c}
 \toprule
 Quantity & Value & Status \\
@@ -797,7 +800,8 @@ RMS $C_\ell$ SSEE/GR & $40.9\%$ & \\
 CMB peaks GR & $\ell = 220, 535, 811$ & correct ($\omega_m$-direct bg) \\
 CMB peaks SSEE RPH & $\ell = 242, 590, 893$ & $\sim 10\%$ shift from $\alphaK$ \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 \begin{figure}[htbp]
@@ -1157,17 +1161,6 @@ All analytical scripts, CLASS configuration files, and EFTCAMB inputs are archiv
 at Zenodo \citep{AlmeidaSSEE2026zenodo}.
 
 % ─────────────────────────────────────────────────────────────────────────────
-\section*{Data Availability}
-% ─────────────────────────────────────────────────────────────────────────────
-
-All DESI~DR2 BAO data used in this analysis are publicly available at
-\url{https://data.desi.lbl.gov/}.
-Planck~2018 cosmological parameter chains are available at the Planck Legacy
-Archive (\url{https://pla.esac.esa.int/}).
-All \SSEE\ scripts, CLASS configuration files, EFTCAMB inputs, and MCMC chains
-are archived at Zenodo: \url{https://doi.org/10.5281/zenodo.20093447}.
-
-% ─────────────────────────────────────────────────────────────────────────────
 \appendix
 \section{Complete Algebraic Parameter Table}
 \label{app:params}
@@ -1180,6 +1173,7 @@ are archived at Zenodo: \url{https://doi.org/10.5281/zenodo.20093447}.
          performed. Planck 2018 values \citep{Planck2018} and DESI~DR2
          \citep{AbdulKarim2025} listed for comparison where applicable.}
 \label{tab:params}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{ll p{0.18\textwidth} p{0.35\textwidth}}
 \toprule
 Parameter & Formula & SSEE value & Observed \\
@@ -1206,7 +1200,8 @@ $\fscr$ & $(\pi-\phiG)/(\phiG+\pi)^2$ & $0.0673$ & --- \\
 $H_0^{\rm local}$ & $H_0^{\rm alg}/(1-\fscr)$ & $72.86$ km/s/Mpc & $73.04\pm1.04$ (SH0ES) \\
 $M$ (UV cutoff) & $(5\phiG^8\rho_c)^{1/4}$ & $9.68$ meV & --- \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -1215,7 +1210,7 @@ $M$ (UV cutoff) & $(5\phiG^8\rho_c)^{1/4}$ & $9.68$ meV & --- \\
 The author acknowledges the use of the cosmological codes \textsc{class} \citep{Blas2011}, \textsc{eftcamb} \citep{Hu2014}, and the Markov Chain Monte Carlo sampler \textsc{Cobaya} \citep{Torrado2021} for the numerical validation of the SSEE framework. The author also acknowledges the use of the \textsc{GetDist} package \citep{Lewis2019} for the analysis and plotting of posterior distributions.
 
 \section*{Data and Code Availability}
-The SSEE framework is fully transparent and reproducible. The complete code repository, including the \textsc{class} and \textsc{eftcamb} configuration files, the \textsc{Cobaya} MCMC chains, the explicit record of Open Theoretical Problems (OP), and the cosmological validation ledgers, are publicly available at the GitHub repository: \url{https://github.com/mikealmeida1721/SSEE}.
+The \SSEE\ framework is fully transparent and reproducible. All DESI~DR2 BAO data used in this analysis are publicly available at \url{https://data.desi.lbl.gov/}, and the Planck~2018 cosmological parameter chains at the Planck Legacy Archive (\url{https://pla.esac.esa.int/}). The complete code repository --- including the \textsc{class} and \textsc{eftcamb} configuration files, the \textsc{Cobaya} MCMC chains, the explicit record of Open Theoretical Problems (OP), and the cosmological validation ledgers --- is publicly available at the GitHub repository \url{https://github.com/mikealmeida1721/SSEE} and archived at Zenodo: \url{https://doi.org/10.5281/zenodo.20093447}.
 
 \clearpage
 \bibliographystyle{plainnat}

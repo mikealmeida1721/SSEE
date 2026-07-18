@@ -1,8 +1,9 @@
-# Prompts de Auditoría Externa — SSEE (2026-07-12)
+# Prompts de Auditoría Externa — SSEE (2026-07-18, v1.4)
 
 Dos auditores independientes. **Auditor A** revisa solo los papers (PDFs).
 **Auditor B** revisa el ZIP completo del repositorio (código + datos + docs + papers).
-Ambos: hostiles pero justos, verifican contra el contenido, no inventan.
+Ambos: hostiles pero justos, verifican contra el contenido, no inventan. Los dos deben
+revisar **narrativa, física y matemática** por igual.
 
 ---
 
@@ -17,15 +18,29 @@ de fondo algebraicamente de φ (razón áurea) y π.
 
 QUÉ AFIRMA EL MODELO (para que sepas qué atacar, NO para que lo aceptes):
 - El sector de fondo (w₀, wₐ, Ω_DE, Ω_m,dyn) sale de φ,π con CERO parámetros ajustados.
-  w₀=−0.840, wₐ=−0.670; afirman 0.24σ vs DESI DR2 (DESI+CMB+Pantheon+).
+  w₀=−0.840, wₐ=−0.670; afirman 0.24σ vs DESI DR2 (Pantheon+; rango 0.2–1.8σ según
+  compilado SN — Union3 el más tenso).
 - H₀ = 3(φ+π)² = 67.96 km/s/Mpc, obtenido vía SH0ES × f_screen (no como número puro).
-- El ajuste CMB es "k=2": de los 6 parámetros de ΛCDM, SSEE fija 4 por álgebra y deja
-  solo A_s y τ. Afirman ΔBIC que favorece a SSEE.
+- CONTEO DE PARÁMETROS (verifícalo con lupa): el ajuste CMB es "k=2" — de los 6 de ΛCDM,
+  SSEE fija 4 por álgebra (ω_b, ω_c, n_s, H₀-derivado) y deja EXACTAMENTE 2 libres: A_s y τ.
+  Afirman ΔBIC que favorece a SSEE. OJO: m_φ (40.70 eV) y Ω_φDM (0.14889) NO se cuentan
+  como libres — se presentan como predicciones FORWARD; el MCMC de Paper 6 que las flota
+  con priors planos se declara TEST DE CONSISTENCIA (el dato aterriza en el punto forward a
+  0.24σ), no conteo de libres. Comprueba que este encuadre sea honesto y no doble-conteo.
 - Extensión φ-DM: partícula m_φ=40.70 eV, con predicción forward pre-registrada
   k_fs=0.754 h/Mpc (dato aún no medido, DESI Y3/Euclid), y S₈=0.758 (0.04σ KiDS).
+- LOOK-ELSEWHERE: el diccionario cerrado de constantes tiene 55 nombres / 25 valores
+  distintos / 490 razones; afirman que w₀ y wₐ son identidades EXACTAS (|d|=0) y cada una
+  1 de 490 a ±0.0005. Declaran ABIERTAMENTE un competidor near-miss para wₐ (SOLAR/NYX,
+  |d|=6.4e−4) que aparece solo si se afloja a ±0.001, y argumentan que la trascendencia de
+  π (2φ≠π) le prohíbe volverse identidad. Verifica que esta disclosure sea honesta y no un
+  afinamiento de tolerancia.
+- Diccionario regido por una LEY DE CARGA conservada (q(φ)=+1, q(π)=−1) + reglas de copia /
+  no-auto-suma / Ω-once, en 4 capas (Postulados/Leyes/Restricciones/Teoremas). Zenodo
+  concept DOI 10.5281/zenodo.20684908 (v1.4).
 - Se declara "minimal-parameter" (NO "cero parámetros"), con 3 postulados (D,S,I) y
   problemas abiertos OP-1..OP-19 rastreados explícitamente.
-- Usa un sistema algebraico de nombres ("genesis"/linaje: KAL, AURA, KRYSTOS_V, etc.).
+- Usa un sistema algebraico de nombres ("genesis"/linaje: KAL, AURA, KRYSTOS_V=φ+π+Ω, etc.).
 
 TU TRABAJO: encuentra TODA debilidad que un referee real encontraría, pero NO inventes
 problemas — verifica contra el texto y cita lo específico. Distingue SIEMPRE entre:
@@ -47,7 +62,11 @@ ATACA ESPECÍFICAMENTE:
    a un objetivo? ¿Están etiquetados con honestidad?
 5. SOLIDEZ FÍSICA: ¿las derivaciones son válidas? ¿Consistencia dimensional? ¿Algún
    resultado TITULAR depende en secreto de un OP no resuelto (p.ej. OP-9, OP-19)?
-6. BIBLIOGRAFÍA / PRESENTACIÓN: ¿estándar JCAP/PRD? ¿Referencias huérfanas o faltantes?
+6. NARRATIVA / PRESENTACIÓN: ¿la prosa es clara, sobria y de estándar JCAP/PRD, o tiene
+   tono grandioso, saltos lógicos o secciones que no fluyen? ¿La estructura es correcta
+   (orden de secciones, apéndices, agradecimientos, disponibilidad de datos, referencias)?
+   ¿Falta contenido, hay secciones duplicadas, tablas que se salen del margen, o el índice
+   mal paginado? ¿Referencias huérfanas o faltantes?
 
 FORMATO DE SALIDA:
 (a) Hallazgos ordenados de MÁS a menos severo. Cada uno: [afirmación → problema →
@@ -71,11 +90,18 @@ verificación, y los 10 papers + documentos consolidados.
 
 QUÉ AFIRMA EL MODELO (para saber qué atacar, NO para aceptarlo):
 - Fondo (w₀=−0.840, wₐ=−0.670, Ω_DE, Ω_m,dyn) de φ,π con CERO parámetros ajustados;
-  0.24σ vs DESI DR2. H₀=3(φ+π)²=67.96 vía SH0ES×f_screen. CMB "k=2" (fija 4 de 6),
-  ΔBIC favorece SSEE. Extensión φ-DM: m_φ=40.70 eV, k_fs=0.754 h/Mpc (forward pre-registrado),
+  0.24σ vs DESI DR2 (Pantheon+; rango 0.2–1.8σ según compilado). H₀=3(φ+π)²=67.96 vía
+  SH0ES×f_screen. CMB "k=2" (fija 4 de 6; EXACTAMENTE 2 libres {A_s, τ}), ΔBIC favorece SSEE.
+  Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 = predicciones FORWARD (no libres; el MCMC de
+  Paper 6 que las flota es test de consistencia, 0.24σ), k_fs=0.754 h/Mpc (forward pre-registrado),
   S₈=0.758 (0.04σ KiDS). "Minimal-parameter", 3 postulados (D,S,I), OP-1..OP-19 declarados.
+- Diccionario cerrado de constantes: 55 nombres / 25 valores / 490 razones, regido por ley de
+  carga q(φ)=+1,q(π)=−1 + copia/no-auto-suma/Ω-once; look-elsewhere w₀,wₐ = 1 de 490 a ±0.0005
+  (identidades exactas |d|=0); competidor wₐ (SOLAR/NYX) declarado abiertamente. Repo del
+  diccionario aparte (Zenodo concept DOI 20684908, v1.4) — verifica que sea reproducible con
+  `ssee_constants.py` y `look_elsewhere_full.py`.
 - Afirma tener fuente única de verdad (CANONICAL_VALUES.yaml) + un "guardián"
-  (src/verificacion/ssee_verify.py) con 139 comprobaciones.
+  (src/verificacion/ssee_verify.py) con 142 comprobaciones.
 
 TU TRABAJO: verifica TODO contra el código y los archivos reales — NO alucines, cita rutas
 y líneas. Distingue SIEMPRE DEBILIDAD REAL (afirmación cerrada que no sobrevive) de
@@ -116,6 +142,10 @@ FORMATO DE SALIDA:
 ### Notas para Mike (no forman parte de los prompts)
 - Dales a cada auditor el material correcto: **A** = los PDFs; **B** = el ZIP del repo.
 - Cuando vuelvan, verificamos cada hallazgo contra la fuente (no aceptar a ciegas), y
-  hacemos una ola de refuerzo antes de subir los dos DOI.
-- Recordatorio de estado: pendiente el conflicto **KRYSTOS_V = φ+π+Ω (papers) vs 2Ω
-  (diccionario)** — decisión tuya — y el token burn-after-use para la subida.
+  hacemos una ola de refuerzo si hace falta.
+- Estado al 2026-07-18: guardián **VERDE 142**; diccionario **v1.4** acuñado en Zenodo
+  (concept 20684908 → versión 21423603). **KRYSTOS_V = φ+π+Ω = 2Ω por valor** (mismo número,
+  linaje distinto) — ya consistente entre papers y diccionario, el "conflicto" quedó resuelto.
+- Para el ZIP: `git archive --format=zip -o /tmp/SSEE_repo.zip HEAD` (excluye lo gitignoreado:
+  chains pesadas, sandbox_unificado, zenodo_dictionary — si quieres que el auditor B vea el
+  diccionario, adjúntalo aparte desde su propio repo).

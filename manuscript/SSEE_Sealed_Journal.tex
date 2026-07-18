@@ -275,17 +275,17 @@ distinct number is counted once.} The honest question is therefore: among
 \emph{all} ratios $A/B$ of named invariants in this fixed dictionary, how many
 land on $|w_0|=0.840$ and on $|w_a|=0.670$?
 
-Enumerating every ordered pair over the complete dictionary yields $378$ distinct
+Enumerating every ordered pair over the complete dictionary yields $490$ distinct
 ratios in the interval $(0,5]$. We then count how many fall within a tolerance of
 each target. Crucially, the SSEE assignments are not near-misses but \emph{exact}
 algebraic identities---$|w_0|=\mathrm{AURA}/\Omega=T_r/M_v$ and
 $|w_a|=P_{\rm sc}/K_v=\mathrm{PYROS}/\mathrm{IGNIS}$, both to machine precision
-($|d|=0$)---so the physically relevant tolerance is the observational precision of
-DESI ($\sim\!\pm0.002$), not an arbitrary band. At that precision each target is
+($|d|=0$)---so the physically relevant tolerance is that of the exact identity
+($\pm0.0005$, $|d|=0$), not an arbitrary band. At that precision each target is
 unique:
 \begin{equation}
-  |w_0|=0.840:\ \text{1 of 378},\qquad
-  |w_a|=0.670:\ \text{1 of 378}\quad(\pm0.001).
+  |w_0|=0.840:\ \text{1 of 490},\qquad
+  |w_a|=0.670:\ \text{1 of 490}\quad(\pm0.0005).
   \label{eq:lookelsewhere}
 \end{equation}
 Table~\ref{tab:lookelsewhere-tol} reports the full sensitivity to the tolerance,
@@ -300,22 +300,22 @@ by construction inflates the denominator with expressions the model never uses.
 \begin{table}[ht]
 \centering
 \caption{Look-elsewhere sensitivity to the matching tolerance, computed over the
-\emph{complete} $50$-constant Genesis dictionary ($378$ distinct ratios in
-$(0,5]$; constants sharing a value collapse to $22$ distinct
-numbers). The DESI assignments are exact identities ($|d|=0$); the observationally
-relevant band is $\lesssim\!\pm0.002$, where each parameter is unique. The count is
+\emph{complete} $55$-constant Genesis dictionary ($490$ distinct ratios in
+$(0,5]$; constants sharing a value collapse to $25$ distinct
+numbers). The DESI assignments are exact identities ($|d|=0$); the relevant band is
+$\pm0.0005$ (the exact-identity precision), where each parameter is unique. The count is
 robust to the planned future dimensional copies (QUINTAL--DECAL): they add no hit
-within $\pm0.002$ of either target.}
+within $\pm0.0005$ of either target.}
 \label{tab:lookelsewhere-tol}
 \begin{tabular}{lcc}
 \toprule
 Tolerance & hits on $|w_0|=0.840$ & hits on $|w_a|=0.670$ \\
 \midrule
 $\pm0.0005$ & 1 & 1 \\
-$\pm0.001$  & 1 & 1 \\
-$\pm0.002$  & 1 & 2 \\
-$\pm0.005$  & 2 & 3 \\
-$\pm0.01$   & 3 & 5 \\
+$\pm0.001$  & 1 & 2 \\
+$\pm0.002$  & 1 & 4 \\
+$\pm0.005$  & 2 & 5 \\
+$\pm0.01$   & 4 & 9 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -894,7 +894,7 @@ space. This appendix states the generative rules that make it so. We present
 them as a descriptive grammar of the Genesis set
 \citep{AlmeidaSSEE2026genesis}: they reproduce the dictionary exactly, but their
 \emph{dynamical} origin is not claimed and remains the open mechanism of
-\S\ref{sec:open}. Stating them explicitly is what turns ``$31$ named invariants''
+\S\ref{sec:open}. Stating them explicitly is what turns ``$55$ named invariants''
 from an assertion into a checkable construction.
 
 \paragraph{Seeds and scaffold.} Everything descends from two dimensionless
@@ -936,7 +936,7 @@ without being the same entity: by construction
 $\mathrm{IGNIS}=K_v=9.51925$ (disruptive vs.\ structural lineage) and
 $\mathrm{SOLAR}=\mathrm{MAR}=7.90122$. The look-elsewhere count of
 \S\ref{sec:look-elsewhere} treats these honestly, deduplicating by value so the
-$31$ named nodes collapse to $20$ distinct numbers. The second
+$55$ named nodes collapse to $25$ distinct numbers. The second
 equation-of-state ratio lives entirely on this branch,
 \begin{equation}
   |w_a|=\frac{P_{\rm sc}}{K_v}=\frac{\mathrm{PYROS}}{\mathrm{IGNIS}}=0.67000 ,

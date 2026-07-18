@@ -875,8 +875,8 @@ try:
         _m = _re.search(r"FAMILY\s*=\s*\{(.*?)\}",
                         _lf.read_text(errors="ignore"), _re.S)
         if _m:
-            # incluye nombres con tilde (DÜSTAL/TRÏSTAL/CUÄSTAL) de la familia de estabilidad
-            _fam = {k.upper() for k in _re.findall(r'"([A-ZÄÖÜÏ_]+)"\s*:', _m.group(1))}
+            # incluye nombres con tilde (DÜSTAL/TRÏSTAL/CUÄSTAL) y acento agudo (ÁNGELOS)
+            _fam = {k.upper() for k in _re.findall(r'"([A-ZÁÉÍÓÚÄÖÜÏÑ_]+)"\s*:', _m.group(1))}
     _spurious = sorted(_fam - _master) if (_master and _fam) else []
     check("diccionario  R13 look_elsewhere sin nodos ausentes del maestro",
           not _spurious,
@@ -889,8 +889,8 @@ try:
     # «31» mientras su FAMILY tiene 29 → conteo auto-contradictorio, y el «378»
     # que Paper 1 cita como defensa anti-numerología quedaba sin anclar. R16
     # recomputa: (a) docstring == etiqueta-reporte == len(FAMILY); (b) el conteo
-    # de razones distintas en (0,5] == 378 (el número robusto que citan los papers,
-    # tras la expansión a 50 constantes con las leyes de linaje, 2026-07-17).
+    # de razones distintas en (0,5] == 490 (el número robusto que citan los papers,
+    # tras la completitud ≤TRIAL a 53 constantes, 2026-07-18).
     if _lf.exists():
         _lftxt = _lf.read_text(errors="ignore")
         _nfam = len(_fam)

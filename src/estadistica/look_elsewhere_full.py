@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Look-elsewhere sobre el diccionario Génesis COMPLETO (50 constantes con nombre).
+"""Look-elsewhere sobre el diccionario Génesis COMPLETO (55 constantes con nombre).
 
 Versión definitiva para el paper. Responde la objeción de referee más dura
 ("elegiste un subconjunto que te convenía") corriendo el conteo sobre TODAS
@@ -10,11 +10,11 @@ Sincronizado 2026-07-17 con el repositorio citable del diccionario
 formalizarse las leyes de linaje — familia de estabilidad Ω (DÜSTAL/TRÏSTAL/CUÄSTAL),
 gemelas de linaje renombradas por función (HARMONIA=AURA+KAL, GALENE=KAL+Ω), Soberanas
 nuevas (HESPERA, EUNOMIA), SYZYGY (4Ω) e IRIS=AURA+Ω (único enlace copia-raíz+equilibrio,
-contado). Total 50 nombres / 22 valores distintos / 378 razones.
+contado). Total 55 nombres / 25 valores distintos / 490 razones.
 
-Resultado: a la tolerancia que caracteriza el match con DESI (±0.001, donde
+Resultado: a la precisión de la identidad exacta (±0.0005, donde
 w0=AURA/Ω y wa=PYROS/IGNIS son identidades EXACTAS), cada objetivo es único
-— 1 de 378 razones — incluso con el diccionario completo. Reporta además la curva
+— 1 de 490 razones (a ±0.0005) — incluso con el diccionario completo. Reporta además la curva
 de sensibilidad a la tolerancia (honestidad: a ±0.01 el bosque se densifica; el
 argumento vive de la precisión estricta, legítima porque el match es exacto a
 precisión de máquina).
@@ -68,6 +68,11 @@ IRIS     = AURA + OMEGA          # 8.757 — único enlace copia-raíz + equilib
 HESPERA  = AURA + GALENE         # 3Ω — Soberana #22
 EUNOMIA  = HARMONIA + OMEGA      # 3Ω — Soberana #23
 SYZYGY   = IRIS + GALENE         # 4Ω — conjunción de extremos = AURA+KAL+2Ω
+HERMES   = PHI + KAL             # 7.139 = 1.5Ω (=Ω+BIAL) — neutrino 2ª gen (mensajero)
+ANGELOS  = PHI + OMEGA + KAL     # 11.899 = 2.5Ω (=Ω+HERMES) — neutrino 3ª gen (mensajero)
+NYX      = PI + VITA             # 11.805 — piso de retención q=−3 (π enlaza VITA; NO 2π+KAL)
+EIRENE   = HARMONIA + PI + PHI  # 3Ω — paz: concordia+reunión de semillas (Soberana #24)
+NEREUS   = BIAL + GALENE + PHI  # 3Ω — calma profunda: pulso+calma+copia (Soberana #25)
 
 FAMILY = {
     "PHI": PHI, "PI": PI, "OMEGA": OMEGA, "BIAL": BIAL,
@@ -85,6 +90,8 @@ FAMILY = {
     "DÜSTAL": DUSTAL, "TRÏSTAL": TRISTAL, "CUÄSTAL": CUASTAL, "SYZYGY": SYZYGY,
     # combinaciones de raíces
     "HARMONIA": HARMONIA, "GALENE": GALENE, "IRIS": IRIS,
+    "HERMES": HERMES, "ÁNGELOS": ANGELOS, "NYX": NYX,
+    "EIRENE": EIRENE, "NEREUS": NEREUS,
 }
 
 W0 = TRIAL / MIKAEL_V            # = AURA/OMEGA, identidad exacta
@@ -127,7 +134,7 @@ def report(fam, label):
 
 if __name__ == "__main__":
     report(FAMILY, f"Diccionario Génesis COMPLETO ({len(FAMILY)} constantes)")
-    print("\nLectura: a ±0.001 (el match es identidad exacta, |d|=0), cada")
-    print("parámetro de estado es único — 1 de 378. La densidad de coincidencias")
+    print("\nLectura: a ±0.0005 (el match es identidad exacta, |d|=0), cada")
+    print("parámetro de estado es único — 1 de 490 (a ±0.0005). La densidad de coincidencias")
     print("accidentales sólo crece al relajar la tolerancia muy por encima de la")
     print("precisión observacional de DESI, que es el régimen físicamente irrelevante.")

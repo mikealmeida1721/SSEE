@@ -9,11 +9,12 @@ Aqui el test honesto: de TODAS las razones A/B entre constantes con nombre,
 cuantas caen en 0.840 (=w0) y 0.670 (=wa). Ese es el look-elsewhere fiel al
 modelo: no inventamos vocabulario, usamos el que ya existia.
 
-NOTA (2026-07-17): este script cuenta el SUBSET CORE de 20 constantes (245 razones)
+NOTA (2026-07-18): este script cuenta el SUBSET CORE de 20 constantes (245 razones)
 como cota conservadora de robustez. El titular que citan los papers es el diccionario
-COMPLETO — ver look_elsewhere_full.py, hoy 50 constantes / 378 razones tras formalizar
-las leyes de linaje (sincronizado con zenodo_dictionary v1.3, DOI 10.5281/zenodo.20684908).
-El core (245) sigue siendo valido como cota inferior; el headline es 1 de 378.
+COMPLETO — ver look_elsewhere_full.py, hoy 55 constantes / 490 razones tras cerrar la
+carga conservada + Ω-once + completitud ≤TRIAL/tier-3Ω (sincronizado con zenodo_dictionary
+v1.4, DOI 10.5281/zenodo.20684908). El core (245) sigue siendo valido como cota inferior;
+el headline es 1 de 490 a ±0.0005.
 """
 import math
 from itertools import permutations

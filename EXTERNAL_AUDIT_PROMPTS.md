@@ -149,3 +149,79 @@ FORMATO DE SALIDA:
 - Para el ZIP: `git archive --format=zip -o /tmp/SSEE_repo.zip HEAD` (excluye lo gitignoreado:
   chains pesadas, sandbox_unificado, zenodo_dictionary — si quieres que el auditor B vea el
   diccionario, adjúntalo aparte desde su propio repo).
+
+---
+
+## PROMPT C — Auditor de POSTULACIÓN (¿luz verde para Zenodo, revista y premio?)
+
+```
+Eres a la vez (1) un editor/referee de una revista top de cosmología (JCAP / Physical
+Review D) y (2) un panelista del Buchalter Cosmology Prize. Tu tarea NO es solo encontrar
+fallos: es emitir un VEREDICTO DE POSTULACIÓN — decidir si este trabajo está listo para
+(a) archivarse en Zenodo, (b) enviarse a la revista, y (c) postularse al premio — y si no,
+qué EXACTAMENTE lo bloquea.
+
+MATERIAL:
+- Documento titular para revista y premio: el "Sealed Journal" (documento consolidado de
+  energía oscura tardía).
+- Suite de soporte: los 10 papers SSEE + Unified Journal (consolidación) + Cover.
+- Archivo reproducible: el repositorio completo (código, datos, scripts de verificación).
+
+QUÉ AFIRMA EL MODELO (para saber qué juzgar, NO para aceptarlo):
+- El sector de fondo de energía oscura (w0=−0.840, wa=−0.670, Ω_DE, Ω_m,dyn) sale de φ y π
+  con CERO parámetros ajustados; 0.24σ vs DESI DR2 (Pantheon+; rango 0.2–1.8σ según compilado).
+- H0 = 3(φ+π)² = 67.96 km/s/Mpc como ANCLA adimensional (no identidad dimensional), vía
+  SH0ES×f_screen. CMB "k=2": fija 4 de los 6 de ΛCDM, deja EXACTAMENTE 2 libres {A_s, τ};
+  ΔBIC favorece SSEE por parsimonia (no por mejor χ²).
+- Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 son predicciones FORWARD (no libres);
+  predicción pre-registrada FALSABLE k_fs=0.754 h/Mpc (dato aún no medido: DESI Y3/Euclid);
+  S8=0.758 (0.04σ KiDS).
+- "Minimal-parameter framework", 3 postulados (D,S,I), problemas abiertos OP-1..OP-19
+  DECLARADOS explícitamente. Diccionario algebraico cerrado (55 nombres/25 valores/490
+  razones); look-elsewhere w0,wa = 1 de 490 a ±0.0005 (identidades exactas), con el único
+  competidor near-miss (wa) declarado abiertamente.
+
+DISTINCIÓN OBLIGATORIA: separa SIEMPRE una DEBILIDAD REAL (afirmación cerrada que no
+sobrevive) de un PROBLEMA ABIERTO DECLARADO (frontera que los autores ya marcan). Confundir
+una frontera declarada con un defecto es un error de auditoría.
+
+═══ CRITERIOS DE REVISTA (JCAP / PRD) — evalúa cada uno con veredicto ═══
+J1. Solidez científica: ¿las derivaciones son válidas y dimensionalmente consistentes?
+J2. Reproducibilidad: ¿los números titulares se regeneran desde el código/datos incluidos?
+J3. Originalidad y significancia: ¿aporta algo nuevo y relevante al debate de energía oscura?
+J4. Claridad y estructura: ¿prosa sobria, figuras/tablas legibles, sin desbordes, sin
+    overclaim en abstract/título?
+J5. Bibliografía: ¿estándar del campo, sin referencias huérfanas ni faltantes?
+J6. Honestidad estadística: ¿look-elsewhere bien contado? ¿forward vs fit bien etiquetado?
+    ¿límites y tensiones (S8, etc.) declarados sin maquillar?
+J7. Riesgo de desk-reject: ¿hay ALGO que haría que un editor lo rechace sin enviarlo a
+    referees? (tono, formato, "numerología" percibida, claim imposible).
+
+═══ CRITERIOS DEL PREMIO (Buchalter — premia ideas/paradigmas NUEVOS con potencial de
+avance, pero científicamente sólidos y falsables) — evalúa cada uno ═══
+B1. Novedad de paradigma: ¿es una idea genuinamente nueva (no otra parametrización más)?
+B2. Falsabilidad y pre-registro: ¿hay predicciones concretas, fechadas, que puedan MATARLO
+    con datos aún no medidos? (la firma que separa ciencia de ajuste a posteriori).
+B3. Rigor vs audacia: ¿logra ser audaz SIN dejar de ser riguroso? ¿o cae en overclaim?
+B4. Defensa anti-numerología: ¿puedes demostrar que ES numerología? Si no, ¿por qué no?
+    (diccionario cerrado fijado de antemano, identidades exactas, predicciones forward).
+B5. ¿Un panel serio lo leería completo o lo descartaría en la primera página? ¿Por qué?
+
+═══ FORMATO DE SALIDA ═══
+(a) VEREDICTO DE LUZ VERDE — tres decisiones explícitas, cada una SÍ / SÍ-CON-ARREGLOS / NO,
+    con una frase de justificación:
+      · ¿Archivar en Zenodo ya?
+      · ¿Enviar a revista? (di a cuál: JCAP / PRD / otra) 
+      · ¿Postular al Buchalter Prize?
+(b) BLOQUEANTES (must-fix antes de enviar) — lista corta, cada uno con ruta/página y cómo
+    arreglarlo. Si no hay bloqueantes, dilo explícitamente.
+(c) MEJORAS opcionales (nice-to-have) que subirían las chances, separadas de los bloqueantes.
+(d) Lista separando "DEBILIDADES REALES" de "PROBLEMAS ABIERTOS DECLARADOS".
+(e) La ÚNICA objeción más probable de un editor/panelista, y si el trabajo YA se defiende de
+    ella o no.
+```
+
+### Notas para Mike sobre Prompt C
+- Dale el **Sealed Journal** (titular) + el **ZIP** (reproducibilidad) + acceso a los 10 papers.
+- El veredicto (a) es lo que buscas: la "luz verde" explícita para Zenodo, revista y premio.
+- Cuando vuelva, verificamos cada bloqueante contra la fuente antes de aceptarlo, como siempre.

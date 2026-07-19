@@ -776,6 +776,66 @@ that depend on the phenomenological $\varphi$-dark-matter sector and are
 therefore conditional on assumptions still under investigation
 (\S\ref{sec:open}).
 
+\subsection{Master register: one line per observable}
+\label{sec:master-register}
+
+Before the two tiers in detail, Table~\ref{tab:master} gives the entire suite
+on a single page: every confronted observable, the sector it belongs to, the
+paper that derives it, its algebraic value, and its epistemic status
+(postdiction / retrodiction / prediction / measured input). The horizontal rule
+separates the \emph{core} tier---fixed by $\varphi$ and $\pi$ alone---from the
+\emph{extension} tier, which depends on the phenomenological $\varphi$-dark-matter
+sector. This is the navigation map for the whole programme; each row is expanded
+in the paper named in its last-but-one column and in the Predictive Register of
+Paper~1.
+
+\begin{table}[h]
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Observable & Sector & Value & Paper & Status \\
+\midrule
+\multicolumn{5}{l}{\textit{Core tier --- clean from $\varphi,\pi$ (no fitted coefficient)}} \\
+$w_0=-T_r/M_v$                & Background (DE)   & $-0.840$                         & P1,2,4 & Postdiction \\
+$w_a=-P_{\rm sc}/K_v$         & Background (DE)   & $-0.670$                         & P1,2,4 & Postdiction \\
+$(w_0,w_a)$ vs DESI DR3       & Background (DE)   & same fixed point                & P1,2   & \textbf{Prediction (pre-reg.)} \\
+$H_0=3(\varphi+\pi)^2$        & Background (DE)   & $67.96\,\kms$                   & P1,2,9 & Global anchor (Post.~D) \\
+$\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ & CMB      & $0.11951$                       & P1,3   & Retrodiction \\
+$\Om^{\rm cosm}=\omega_m/h^2$ & CMB               & $0.30889$                       & P1,3   & Retrodiction \\
+$n_s=1-\varphi^{-7}$          & Inflation / CMB   & $0.96556$                       & P1,3   & Retrodiction \\
+$r=\varphi^{-10}$             & Inflation         & $8.1\times10^{-3}$              & P1     & \textbf{Prediction} \\
+$\alpha_T=\alpha_M=\alpha_B$  & EFT               & $0$ (exact)                     & P7     & Retrodiction \\
+$\alpha_K$ (bare field)       & EFT               & $0.073$                         & P7     & \textbf{Prediction} \\
+$\beta_c=-\mathrm{AURA}$      & EFT               & $-3.998$                        & P7     & Retrodiction \\
+$\gamma_{\rm IS}$             & Growth            & $0.550$                         & P5     & Retrodiction \\
+$f\sigma_8$ (single-sector)   & Growth            & $0.70\sigma$ (6 RSD)            & P5     & Retrodiction \\
+\midrule
+\multicolumn{5}{l}{\textit{Extension tier --- depends on the $\varphi$-dark-matter sector}} \\
+$m_\phi=\Sigma m_\nu^{\rm act}(\mathrm{SOLAR}^2 K_v)$ & $\varphi$-DM & $40.70\,$eV      & P6     & \textbf{Prediction} \\
+$k_{\rm fs}$ (Dodelson--Widrow) & $\varphi$-DM     & $0.754\,h\,\mathrm{Mpc}^{-1}$  & P6     & \textbf{Prediction} \\
+$S_8^{\rm eff}$ (two-sector)  & $\varphi$-DM      & $0.758$ ($0.04\sigma$ KiDS)    & P6     & Retrodiction \\
+$M=(5\varphi^8\rho_{\rm crit})^{1/4}$ & UV compl.  & $9.68\,$meV                    & P10    & Derived (UV) \\
+Lensing (canonical EFT)       & Strong gravity    & GR$+$DM (uncond.)              & P8     & Retrodiction \\
+\midrule
+\multicolumn{5}{l}{\textit{Measured input (not derived)}} \\
+$A_s,\ \tau$                  & CMB amplitude     & sampled ($k=2$)                & P1,3   & Measured \\
+$\rho_{\rm vac}$ (abs.\ scale) & Vacuum            & single measured input          & P1,10  & Measured \\
+\bottomrule
+\end{tabular}%
+}
+\caption{Suite-wide master register: one row per observable across the ten-paper
+programme. ``Postdiction'': algebraic result fixed by the closed dictionary, then
+compared to already-public data (no claim of temporal priority). ``Retrodiction'':
+derived independently, then compared to an existing measurement. ``Prediction'':
+fixed now, tested against not-yet-released data. ``Measured'': an input, not a
+derivation. No optimisation over the algebraic formula space was performed. The
+detailed per-sector registers follow below and in the Predictive Register of
+Paper~1.}
+\label{tab:master}
+\end{table}
+
 \subsection{Core predictions (clean from $\varphi,\pi$)}
 
 These quantities carry no fitted coefficient. They are bare ratios of the

@@ -12,7 +12,9 @@
 \usepackage{siunitx}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=red!70!black,citecolor=green!50!black,urlcolor=blue!80!black}
-\raggedbottom
+% Permitir que las footnotes largas se dividan entre páginas (evita que
+% desborden el folio); estilo de la propia Physical Review.
+\interfootnotelinepenalty=0
 
 \newcommand{\Msun}{M_\odot}
 \newcommand{\hMpc}{h\,\mathrm{Mpc}^{-1}}
@@ -70,7 +72,13 @@ $\varphi$ and $\pi$ alone.
 
 \maketitle
 
-{\small\tableofcontents}
+{\small
+ \begingroup
+ \let\oldaddvspace\addvspace
+ \renewcommand{\addvspace}[1]{\oldaddvspace{2.5pt}}%
+ \setlength{\parskip}{0pt}%
+ \tableofcontents
+ \endgroup}
 
 
 
@@ -262,21 +270,17 @@ ways, hitting two target numbers is unremarkable. We address this directly,
 and we do so with the \emph{model-faithful} denominator rather than an open
 integer search. SSEE does not draw $w_0$ and $w_a$ from an unbounded space of
 expressions; it draws them from a \emph{closed dictionary} of
-$50$ named structural invariants---the \emph{complete} Genesis set,
+$55$ named structural invariants---the \emph{complete} Genesis set,
 not a hand-picked subset---specified as a fixed set rather than expanded to
 accommodate the data.\footnote{The dictionary is the full Genesis constant
-set \citep{AlmeidaSSEE2026genesis}; the look-elsewhere count below is performed
-over \emph{every} named invariant, with none enlarged, pruned, or selected to
-improve the match. Counting over the complete set rather than a subset is the
-conservative choice: it can only inflate the denominator of accidental hits, never
-shrink it. We make no claim of temporal priority
-over the DESI release: the agreement of \S\ref{sec:desi-agreement} is a
-parameter-free \emph{postdiction}, and genuinely timestamped predictions are
-reserved for unreleased data (\S\ref{sec:falsifiability}). Many invariants
-share a value by construction---the $50$ names collapse to $22$ distinct numbers
-(e.g.\ $\mathrm{IGNIS}=K_v$, $\mathrm{SOLAR}=\mathrm{MAR}$, and the Sovereign
-convergence at $3\Omega$); the count below deduplicates by value, so each
-distinct number is counted once.} The honest question is therefore: among
+set \citep{AlmeidaSSEE2026genesis}; the count runs over \emph{every} named
+invariant, none pruned to improve the match---a conservative choice that can
+only inflate, never shrink, the accidental-hit denominator. We claim no temporal
+priority: \S\ref{sec:desi-agreement} is a parameter-free \emph{postdiction}, with
+timestamped predictions reserved for unreleased data (\S\ref{sec:falsifiability}).
+Many invariants share a value---the $55$ names collapse to $25$ distinct numbers
+(e.g.\ $\mathrm{IGNIS}=K_v$, $\mathrm{SOLAR}=\mathrm{MAR}$, Sovereign convergence
+at $3\Omega$)---so the count deduplicates by value.} The honest question is therefore: among
 \emph{all} ratios $A/B$ of named invariants in this fixed dictionary, how many
 land on $|w_0|=0.840$ and on $|w_a|=0.670$?
 

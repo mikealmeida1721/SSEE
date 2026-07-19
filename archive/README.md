@@ -16,6 +16,7 @@ archive/
   chains/    — cadenas MCMC legacy (datos pesados, pre-reframe)
   codigo/    — scripts y fuentes (.py/.tex/.bib) superados
   superado/  — docs de trabajo superados, plegados al Registro canónico
+  audio/     — grabaciones (reportes de auditoría), fuera del snapshot de envío
   zenodo_dictionary.zip — empaquetado histórico del diccionario
 ```
 
@@ -124,3 +125,10 @@ documentaba se retira.
 - `paper2_206_narrative_RETIRED.md` → narrativa "+206 / r_d=175.6 / two-Ω_m / H(z) 1.86 /
   θ* 13.9σ" de Paper 2, con la tabla de las seis tensiones antes/después y las fuentes de
   los valores nuevos. El detalle línea-a-línea vive en git (commits `076b435`+).
+
+### `audio/` — grabaciones de reportes
+**Archivado:** 2026-07-19 · **Razón:** activos de audio pesados que no forman parte del
+paquete de envío (revista/Zenodo); se mueven fuera de la raíz para dejar el snapshot limpio.
+- `auditoria_reporte.mp3` → reporte de auditoría en audio (4.2 MB). Movido desde la raíz
+  del repo por recomendación de auditoría externa (M-4): un snapshot Zenodo no debe llevar
+  binarios de audio en la raíz.

@@ -106,7 +106,7 @@ ax.axvspan(S8_KIDS[0] - S8_KIDS[1], S8_KIDS[0] + S8_KIDS[1],
 ax.axvline(S8_KIDS[0], color='#1a9641', lw=1.0, ls='--', zorder=2)
 
 # Annotations
-ax.annotate(r'$0.01\sigma$ vs KiDS-1000 — resolved',
+ax.annotate(r'$0.04\sigma$ vs KiDS-1000 — resolved',
             xy=(S8_TWOSEC, 0), xytext=(0.789, -0.32),
             fontsize=10, color='#1a9641', fontweight='bold')
 ax.annotate(r'$3.5\sigma$ vs KiDS — the challenge',

@@ -190,7 +190,8 @@ fig = corner.corner(flat,
     labels=[r"$H_0$ [km/s/Mpc]", r"$\Omega_b h^2$"],
     quantiles=[0.16, 0.5, 0.84], show_titles=True,
     title_kwargs={"fontsize": 10})
-fig.suptitle(f"SSEE posterior — Prior H_alg (67.962, reframe)\nH₀={H0_med:.3f}±{H0_std:.3f}, MAP={H0_map:.3f}", y=1.02)
+# Título en UNA línea, subido, sin duplicar H₀ (ya aparece en el título de cada panel)
+fig.suptitle(r"SSEE posterior — MCMC under the $H_{\rm alg}$ prior (DESI DR2, reframe)", y=1.06, fontsize=11)
 fig.savefig(f"{OUT}/fig_corner_ssee_halg_prior.pdf", bbox_inches="tight")
 plt.close(fig)
 log(f"\nFigura: {OUT}/fig_corner_ssee_halg_prior.pdf")

@@ -66,7 +66,12 @@ as a single measured input, the single-sector growth amplitude $S_8$ remains in
 tension with weak-lensing surveys (the two-sector extension that resolves it is
 kept outside the core register), and the algebraic origin of the CMB matter
 density ($\omega_b$, $\omega_c$) together with the $\varphi$-dark-matter mass
-coefficient are open problems. The result is a falsifiable,
+coefficient are open problems. Two of the framework's forward predictions bear
+on \emph{unreleased} data and are \emph{independent} of the $\varphi$-dark-matter
+extension: the fixed $(w_0,w_a)$ point, pre-registered to be excluded at
+$>3\sigma$ if DESI~DR3 shifts it, and $r=\varphi^{-10}=8.1\times10^{-3}$,
+testable by LiteBIRD---either alone can refute the framework without touching
+the extension sector. The result is a falsifiable,
 parameter-frugal description of dark energy whose core predictions rest on
 $\varphi$ and $\pi$ alone.
 \end{abstract}
@@ -401,7 +406,18 @@ two-sector accounting.
 piece of $\omega_m$ is an SSEE algebraic value with no fit: the baryon density
 $\omega_b=(\pi-\varphi)/[3(\varphi+\pi)^2]=0.02242$ and the cold-matter density
 $\omega_c=\mathrm{KAL_0}\,\omega_b\,n_s=0.11951$ (a forward identity, already in
-Paper~1; $0.41\sigma$ from Planck). The earlier presentation tied
+Paper~1; $0.41\sigma$ from Planck). The neutrino term completes the total,
+$\omega_\nu=\Sigma m_\nu/(93.14~\mathrm{eV})=0.000741$, so that
+\begin{equation}
+  \omega_m=\omega_b+\omega_c+\omega_\nu=0.14267,
+  \qquad
+  \Om^{\mathrm{cosm}}=\frac{\omega_m}{h^2}=0.30889
+  \quad (h=H_0^{\rm alg}/100=0.67962).
+  \label{eq:omcosm_breakdown}
+\end{equation}
+The neutrino piece is not optional: dropping it returns $0.30729$, a $0.6\%$
+shift, so a reader who reproduces the number must include all three terms
+(a three-second check ships in \texttt{ssee\_core.py}). The earlier presentation tied
 $\Om^{\mathrm{cosm}}$ to $\Om^{\mathrm{dyn}}$ through a factor-of-two bridge
 $\mathrm{MIRA}=\mathrm{AURA}/2=1.99892$, tracked as open problem OP-8; that
 bridge is now \emph{dissolved}---there is no matter factor to derive. The
@@ -485,6 +501,18 @@ $67.037/66.533$ stages, the $67.159$ posterior from the mislabelled DR1 vector,
 and the $66.412$ obtained with the cold sector $0.160$ in the geometry, are all
 superseded.)
 
+\paragraph{Status of the algebraic anchor.} We are explicit about what
+Eq.~\eqref{eq:h0anchor} is and is not. $H_0$ carries units; $3(\varphi+\pi)^2$
+is a pure number, so the equality holds \emph{numerically in
+$\mathrm{km\,s^{-1}\,Mpc^{-1}}$ only}---in Planck units $H_0\sim10^{-61}$ and no
+such coincidence appears. It is therefore not a dimensional identity but a
+dimensionless \emph{anchor}: the numerical value of $H_0$ \emph{in these units}
+equals $3(\varphi+\pi)^2$. Its physical justification is empirical, through the
+screening cascade $H_0^{\rm local}=H_0^{\rm alg}/(1-f_{\rm scr})$ calibrated to
+SH0ES (Paper~9); its formal status is an \emph{open numerical conjecture}---the
+Megaparsec-to-Planck dimensional bridge is unproven---not a derived theorem. We
+state this plainly so the anchor is not read as the stronger claim it is not.
+
 \paragraph{Anchor and posterior coincide.} With the total gravitating matter
 density $\Om^{\mathrm{cosm}}=0.30889$ in $E(z)$ and $r_d$, the BAO-corrected
 posterior ($67.9475$) and the CMB anchor ($67.962$) agree to $0.04\sigma$: DESI
@@ -497,6 +525,34 @@ drafts were the footprint of a single error---placing the cold dynamical sector
 $\Om^{\mathrm{dyn}}=0.160$ in the background geometry, where the total density
 belongs. With that corrected, there is no split to report: the late-time BAO and
 the early-time acoustic geometry point to the same $H_0$.
+
+\paragraph{Model comparison against the natural competitors.} Because the
+dark-energy sector carries no sampled parameters, the honest comparison is not
+against $\Lambda$CDM alone but against the whole family a referee would reach
+for. On the identical DESI~DR2 vector, the information criteria are:
+\begin{table}[h]
+\centering
+\caption{Bayesian model comparison on DESI~DR2 ($100$ walkers $\times\,25{,}000$
+steps). $\Delta$ values are relative to SSEE; positive favours SSEE.}
+\label{tab:modelcomp}
+\begin{tabular}{lccccc}
+\toprule
+Model & $k$ & $\ln P_{\rm MAP}$ & BIC & $\Delta$BIC & $\Delta$AIC \\
+\midrule
+SSEE          & 2 & $-5.85$ & $17.24$ & $0.00$  & $0.00$  \\
+$\Lambda$CDM  & 3 & $-7.30$ & $22.92$ & $+5.68$ & $+4.91$ \\
+CPL           & 5 & $-4.49$ & $22.83$ & $+5.59$ & $+3.27$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+SSEE is favoured over both $\Lambda$CDM ($\Delta\mathrm{BIC}=5.68$) and CPL
+($5.59$) by parsimony, with $\Delta\mathrm{DIC}=-4.91$, a Savage--Dickey factor
+$\ln B=2.91$, and a decisive $\ln B_{10}=7.42$; a leave-one-out
+cross-validation at $z\ge1$ ranks SSEE ahead of both ($\chi^2_r=0.20$ versus
+$0.71$ for $\Lambda$CDM and $39.6$ for CPL). The preference is driven by fewer
+parameters at equal fit, not by a superior $\chi^2$: the competitor that
+\emph{can} bend to the data (CPL, $k=5$) is penalised for the freedom SSEE does
+not use.
 
 \begin{figure}[t]
   \centering

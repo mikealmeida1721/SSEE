@@ -150,6 +150,14 @@ def _sanity_checks():
     assert OMEGA_M_CMB == OMEGA_M_TOTAL, "alias OMEGA_M_CMB roto"
     assert abs(OMEGA_M_TOTAL - OMEGA_M_H2 / (H0_GLOBAL/100.0)**2) < 1e-12, "Omega_m,total debe ser ω_m/h²"
     assert round(OMEGA_M_H2, 4) == 0.1427, f"ω_m algebraico fuera de rango: {OMEGA_M_H2}"
+    # Ω_m,CMB reproducible en 3 s: los TRES términos son necesarios.
+    # Omitir ω_ν devuelve 0.30729 (no 0.30889) — el ν NO es opcional (Sealed §two-omega).
+    _h2 = (H0_GLOBAL / 100.0) ** 2
+    _om_sin_nu = (OMEGA_B_H2 + OMEGA_C_H2) / _h2
+    assert round(_om_sin_nu, 4) == 0.3073, \
+        f"Ω_m,CMB sin ω_ν debe dar ~0.30729 (ν no opcional): {_om_sin_nu}"
+    assert round((OMEGA_B_H2 + OMEGA_C_H2 + OMEGA_NU_H2) / _h2, 4) == 0.3089, \
+        "Ω_m,CMB con los tres términos debe dar 0.30889"
     assert abs(OMEGA_C_H2 - KAL0 * OMEGA_B_H2 * N_S) < 1e-12, "ω_c debe ser KAL₀·ω_b·n_s"
 
 

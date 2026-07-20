@@ -109,7 +109,7 @@ $\mathrm{AURA}$& $\beta+\varphi$           & $3.99785$  & Screening amplitude \\
 $\mathrm{MIRA}$& $\mathrm{AURA}/2$         & $1.99892$  & Mirror Ratio (enters $f_{\rm screen}$, Paper~9) \\
 $P_{\mathrm{sc}}$ (PYROS) & $\Omega+\varphi$ & $6.37766$ & Dynamical evolution scalar ($w_a$ numerator) \\
 $\mathrm{IGNIS}$ & $\pi+P_{\mathrm{sc}}$   & $9.51925$  & Disruptive convergence ($w_a$ denominator) \\
-$K_v$ (KRYSTOS) & $\varphi+\pi+\Omega$     & $9.51925$  & Structural convergence (builds $M_v$; distinct lineage from IGNIS) \\
+$K_v$ (KRYSTOS) & $\varphi+\pi+\Omega$     & $9.51925$  & Structural (builds $M_v$; distinct from IGNIS) \\
 $T_r$          & $3(\varphi+\beta)$        & $11.99354$ & 3D saturation horizon \\
 $M_v$          & $\varphi+\pi+K_v$         & $14.27888$ & Maximal dimensional invariant ($w_0$ denominator) \\
 \bottomrule
@@ -185,13 +185,14 @@ The defining ansatz of SSEE is that the late-time dark-energy equation of
 state is fixed---without tuning---by ratios of the dimensionless structural
 invariants of Table~\ref{sec:notation}. Concretely,
 \begin{equation}
+\begin{gathered}
   w_0 \;=\; -\,\frac{T_r}{M_v}
         \;=\; -\,\frac{3(\varphi+\beta)}{\varphi+\pi+K_v}
-        \;=\; -0.83995,
-  \qquad
+        \;=\; -0.83995, \\[3pt]
   w_a \;=\; -\,\frac{P_{\mathrm{sc}}}{\mathrm{IGNIS}}
         \;=\; -\,\frac{P_{\mathrm{sc}}}{\pi+P_{\mathrm{sc}}}
         \;=\; -0.66997 .
+\end{gathered}
   \label{eq:w0wa}
 \end{equation}
 Both quantities are \emph{bare dimensionless numbers}: they are constructed
@@ -1089,7 +1090,7 @@ $\pi$-branch node IGNIS (not the structural $K_v$, though the two coincide in va
 \end{equation}
 
 \paragraph{Closure.} The set is finite because both laws terminate at the
-five-dimensional integration ceiling $M_v=\varphi+\pi+K_v=14.27888$ (a Sovereign
+four-dimensional integration invariant $M_v=\varphi+\pi+K_v=14.27888$ (a Sovereign
 convergence coinciding in value with $3\Omega$), the maximal dimensional
 invariant; no node exceeds it. This termination---not a
 choice made to fit data---is what bounds the dictionary to a fixed, enumerable

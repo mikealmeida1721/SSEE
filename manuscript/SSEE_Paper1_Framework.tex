@@ -146,7 +146,7 @@ Quantity (algebraic formula) & Value & Test / Falsifier & Status \\
 \midrule
 \multicolumn{4}{l}{\textit{Background sector (algebraic dictionary)}} \\
 $w_0 = -T_r/M_v$ & $-0.8399$ & DESI DR2 (2025) & Postdiction \\
-$w_a = -(\Omega+\varphi)/K_v$ & $-0.6699$ & DESI DR2 (2025) & Postdiction \\
+$w_a = -(\Omega+\varphi)/\mathrm{IGNIS}$ & $-0.66997$ & DESI DR2 (2025) & Postdiction \\
 $(w_0,w_a)$ vs DESI DR3 & same fixed point & DR3 $w_0w_a$CDM (2027); ${>}3\sigma$ joint excl.\ falsifies & \textbf{Prediction (pre-registered)} \\
 $\omega_c = \mathrm{KAL}_0\,\omega_b\,n_s$ & $0.11951$ & Planck 2018 & Retrodiction \\
 $\Omega_{m,\mathrm{CMB}} = \omega_m/h^2$ & $0.30889$ & Planck 2018 & Retrodiction \\
@@ -567,11 +567,11 @@ an effective geometric pressure:
   \rho_{\rm DE} = \rho_{{\rm crit},0}\!\left(\frac{T_r}{M_v}\right).
 \end{equation}
 The baseline state $\wz$ is set by the static geometric ratio $T_r/M_v$, and the evolution
-$\wa$ encodes the dynamical departure from saturation driven by $P/K_v$:
+$\wa$ encodes the dynamical departure from saturation driven by $P/\mathrm{IGNIS}$:
 \begin{equation}
   \wz = -\frac{T_r}{M_v} \approx -0.840,
   \qquad
-  \wa = -\frac{P}{K_v}  \approx -0.670.
+  \wa = -\frac{P}{\mathrm{IGNIS}}  \approx -0.670.
   \label{eq:ssee_pars}
 \end{equation}
 
@@ -1036,7 +1036,7 @@ $M_v$     & $\varphi+\pi+K_v$ & $14.278880$ & Max.\ dim.\ invariant & A \\
 \midrule
 \multicolumn{5}{l}{\textit{Level 3 — Cosmological Observables}} \\
 $w_0$     & $-T_r/M_v$ & $-0.8399$ & DESI DR2 & A \\
-$w_a$     & $-P_{sc}/K_v$ & $-0.6699$ & DESI DR2 & A \\
+$w_a$     & $-P_{sc}/\mathrm{IGNIS}$ & $-0.66997$ & DESI DR2 & A \\
 $H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & P$^\dagger$ \\
 $H_0^{\rm MCMC}$ & CMB fit at fixed anchor (Paper~3) & $67.96$ (anchor, fixed) & Planck PR4 & M \\
 $\Omega_{m,\rm dyn}$ & $(\pi-\varphi)/[2(\varphi+\pi)]$ & $0.1601$ & Dynamic sector; $1+w_0$ exact & A \\
@@ -1307,7 +1307,7 @@ Symbol & Name & Definition & Value & Layer\\
 $\Omega$ & DNAV / Stability Metric  & $\varphi+\pi$ & 4.7596 & L1\\
 $\beta$  & BIAL / Base Coupling     & $(\varphi+\pi)/2$ & 2.3798 & L1\\
 $K_v$    & KRYSTOS$_V$ / Structural Constraint & $\varphi+\pi+\Omega$ & 9.5192 & L1\\
-$M_v$    & MIKAEL\_V / Maximal Invariant & $\varphi+\pi+K_v$ & 14.2788 & L1\\
+$M_v$    & ATLAS / Maximal Invariant & $\varphi+\pi+K_v$ & 14.2788 & L1\\
 \midrule
 $\mathrm{KAL}_0$ & Structural Viscosity & $\beta+\pi$ & 5.5214 & L2\\
 $P_{sc}$ & PYROS / Dynamical Scalar & $\Omega+\varphi$ & 6.3776 & L2\\

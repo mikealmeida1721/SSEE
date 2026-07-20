@@ -49,7 +49,7 @@ We present a minimal-parameter framework for the dark sector in which the
 dimensionless constants, the golden ratio $\varphi=(1+\sqrt5)/2$ and $\pi$,
 rather than by tuned cosmological parameters. The equation of state follows as
 bare ratios of structural invariants, $w_0=-T_r/M_v=-0.840$ and
-$w_a=-P_{\rm sc}/K_v=-0.670$, with no fitted amplitude. The point was fixed in
+$w_a=-P_{\rm sc}/\mathrm{IGNIS}=-0.670$, with no fitted amplitude. The point was fixed in
 advance and survives \emph{two independent} DESI releases: it sits at
 $0.05\sigma$ from the DESI~DR1 $w_0w_a$CDM posterior and, after the uncertainties
 tightened, at $0.24\sigma$ from the newer DESI~DR2 posterior
@@ -104,23 +104,24 @@ Symbol & Definition & Value & Role \\
 \midrule
 $\varphi$      & $(1+\sqrt5)/2$            & $1.61803$  & Golden ratio (UV seed) \\
 $\pi$          & ---                       & $3.14159$  & Circle constant (IR seed) \\
-$\Omega$       & $\varphi+\pi$             & $4.75962$  & Stability metric \\
+$\Omega$       & $\varphi+\pi$             & $4.75963$  & Stability metric \\
 $\beta$ (BIAL) & $(\varphi+\pi)/2$         & $2.37981$  & Base coupling scalar \\
-$\mathrm{KAL}$ & $\beta+\pi$               & $5.52140$  & Structural viscosity \\
-$\mathrm{AURA}$& $\beta+\varphi$           & $3.99784$  & Screening amplitude \\
+$\mathrm{KAL}$ & $\beta+\pi$               & $5.52141$  & Structural viscosity \\
+$\mathrm{AURA}$& $\beta+\varphi$           & $3.99785$  & Screening amplitude \\
 $\mathrm{MIRA}$& $\mathrm{AURA}/2$         & $1.99892$  & Mirror Ratio (enters $f_{\rm screen}$, Paper~9) \\
-$P_{\mathrm{sc}}$ & $\Omega+\varphi$       & $6.37765$  & Dynamical evolution scalar \\
-$K_v$          & $\varphi+\pi+\Omega$      & $9.51925$  & Structural constraint \\
-$T_r$          & $3(\varphi+\beta)$        & $11.99353$ & 3D saturation horizon \\
-$M_v$          & $\varphi+\pi+K_v$         & $14.27887$ & Maximal dimensional invariant \\
+$P_{\mathrm{sc}}$ & $\Omega+\varphi$       & $6.37766$  & Dynamical evolution scalar \\
+$\mathrm{IGNIS}$ & $\pi+P_{\mathrm{sc}}$  & $9.51925$  & Disruptive convergence ($w_a$ denominator) \\
+$K_v$          & $\varphi+\pi+\Omega$      & $9.51925$  & Structural convergence (builds $M_v$; distinct lineage from IGNIS) \\
+$T_r$          & $3(\varphi+\beta)$        & $11.99354$ & 3D saturation horizon \\
+$M_v$          & $\varphi+\pi+K_v$         & $14.27888$ & Maximal dimensional invariant \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \noindent Derived background quantities (all dimensionless):
 \begin{equation*}
-w_0=-\frac{T_r}{M_v}=-0.83996,\qquad
-w_a=-\frac{P_{\mathrm{sc}}}{K_v}=-0.67000,\qquad
+w_0=-\frac{T_r}{M_v}=-0.83995,\qquad
+w_a=-\frac{P_{\mathrm{sc}}}{\mathrm{IGNIS}}=-0.66997,\qquad
 \Om^{\mathrm{dyn}}=1+w_0=0.16005 .
 \end{equation*}
 
@@ -188,11 +189,11 @@ invariants of Table~\ref{sec:notation}. Concretely,
 \begin{equation}
   w_0 \;=\; -\,\frac{T_r}{M_v}
         \;=\; -\,\frac{3(\varphi+\beta)}{\varphi+\pi+K_v}
-        \;=\; -0.83996,
+        \;=\; -0.83995,
   \qquad
-  w_a \;=\; -\,\frac{P_{\mathrm{sc}}}{K_v}
-        \;=\; -\,\frac{\Omega+\varphi}{2(\varphi+\pi)}
-        \;=\; -0.67000 .
+  w_a \;=\; -\,\frac{P_{\mathrm{sc}}}{\mathrm{IGNIS}}
+        \;=\; -\,\frac{\Omega+\varphi}{\pi+\Omega+\varphi}
+        \;=\; -0.66997 .
   \label{eq:w0wa}
 \end{equation}
 Both quantities are \emph{bare dimensionless numbers}: they are constructed
@@ -254,7 +255,7 @@ that directly probes the dark-energy-dominated epoch.
   \centering
   \includegraphics[width=0.78\textwidth]{fig1_w0wa_plane.pdf}
   \caption{The SSEE prediction in the $w_0$--$w_a$ plane. The single point
-  $(w_0,w_a)=(-T_r/M_v,\,-P_{\rm sc}/K_v)=(-0.840,-0.670)$ is fixed entirely by
+  $(w_0,w_a)=(-T_r/M_v,\,-P_{\rm sc}/\mathrm{IGNIS})=(-0.840,-0.670)$ is fixed entirely by
   $\varphi$ and $\pi$, with no dark-energy parameters adjusted to the data. The
   shaded contours are the official DESI DR2 $w_0w_a$CDM posteriors
   (Pantheon+, DESY5, Union3). The SSEE point falls inside the Pantheon+
@@ -294,7 +295,7 @@ Enumerating every ordered pair over the complete dictionary yields $490$ distinc
 ratios in the interval $(0,5]$. We then count how many fall within a tolerance of
 each target. Crucially, the SSEE assignments are not near-misses but \emph{exact}
 algebraic identities---$|w_0|=\mathrm{AURA}/\Omega=T_r/M_v$ and
-$|w_a|=P_{\rm sc}/K_v=\mathrm{PYROS}/\mathrm{IGNIS}$, both to machine precision
+$|w_a|=P_{\rm sc}/\mathrm{IGNIS}=\mathrm{PYROS}/(\pi+\mathrm{PYROS})$, both to machine precision
 ($|d|=0$)---so the physically relevant tolerance is that of the exact identity
 ($\pm0.0005$, $|d|=0$), not an arbitrary band. At that precision each target is
 unique:
@@ -799,7 +800,7 @@ Observable & Sector & Value & Paper & Status \\
 \midrule
 \multicolumn{5}{l}{\textit{Core tier --- clean from $\varphi,\pi$ (no fitted coefficient)}} \\
 $w_0=-T_r/M_v$                & Background (DE)   & $-0.840$                         & P1,2,4 & Postdiction \\
-$w_a=-P_{\rm sc}/K_v$         & Background (DE)   & $-0.670$                         & P1,2,4 & Postdiction \\
+$w_a=-P_{\rm sc}/\mathrm{IGNIS}$ & Background (DE)   & $-0.670$                     & P1,2,4 & Postdiction \\
 $(w_0,w_a)$ vs DESI DR3       & Background (DE)   & same fixed point                & P1,2   & \textbf{Prediction (pre-reg.)} \\
 $H_0=3(\varphi+\pi)^2$        & Background (DE)   & $67.96\,\kms$                   & P1,2,9 & Global anchor (Post.~D) \\
 $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ & CMB      & $0.11951$                       & P1,3   & Retrodiction \\
@@ -847,8 +848,8 @@ golden mean and $\pi$, and they cannot be adjusted to accommodate data.
 \toprule
 Observable & SSEE value & Algebraic form & Falsifying probe \\
 \midrule
-$w_0$            & $-0.83996$              & $-T_r/M_v$            & DESI Y3 / Euclid BAO+SNe \\
-$w_a$            & $-0.67000$              & $-P_{\rm sc}/K_v$     & DESI Y3 / Euclid BAO+SNe \\
+$w_0$            & $-0.83995$              & $-T_r/M_v$            & DESI Y3 / Euclid BAO+SNe \\
+$w_a$            & $-0.66997$              & $-P_{\rm sc}/\mathrm{IGNIS}$ & DESI Y3 / Euclid BAO+SNe \\
 $n_s$            & $0.96556$               & $1-\varphi^{-7}$      & Planck / CMB-S4 \\
 $r$              & $8.13\times10^{-3}$     & $\varphi^{-10}$       & LiteBIRD / CMB-S4 \\
 $\alpha_K(0)$    & $0.40330$               & $3\,\Omega_{\rm DE}\,\Om^{\mathrm{dyn}}$ & DESI / Euclid growth \\
@@ -1046,13 +1047,13 @@ from an assertion into a checkable construction.
 
 \paragraph{Seeds and scaffold.} Everything descends from two dimensionless
 seeds, $\varphi=(1+\sqrt5)/2$ (UV) and $\pi$ (IR). Their sum is the scaffold
-$\Omega=\varphi+\pi=4.75962$, and their mean is the bifurcation point
+$\Omega=\varphi+\pi=4.75963$, and their mean is the bifurcation point
 $\beta\equiv\mathrm{BIAL}=(\varphi+\pi)/2=2.37981$ at which the dictionary splits
 into two branches.
 
 \paragraph{Law I --- the copy law ($\varphi$-branch).} The $\varphi$-branch is
 generated by a single root, the screening amplitude
-$\mathrm{AURA}=\beta+\varphi=3.99784$, which propagates \emph{only} by integer
+$\mathrm{AURA}=\beta+\varphi=3.99785$, which propagates \emph{only} by integer
 multiples and the dyadic half. These are the dimensional ceilings:
 \begin{equation}
   \mathrm{MIRA}=\tfrac12\mathrm{AURA},\quad
@@ -1068,7 +1069,7 @@ $K_v=2\Omega$ and $M_v=3\Omega$. The economy noted in
 $T_r=3\,\mathrm{AURA}$ and $M_v=3\Omega$, the common factor of three cancels in
 \begin{equation}
   |w_0|=\frac{T_r}{M_v}=\frac{3\,\mathrm{AURA}}{3\,\Omega}
-        =\frac{\mathrm{AURA}}{\Omega}=0.83996 ,
+        =\frac{\mathrm{AURA}}{\Omega}=0.83995 ,
 \end{equation}
 so the equation-of-state numerator and denominator are not two independent
 draws but a single ratio of the two branch roots, $\mathrm{AURA}/\Omega$.
@@ -1086,13 +1087,13 @@ $\mathrm{SOLAR}=\mathrm{MAR}=7.90122$. The look-elsewhere count of
 $55$ named nodes collapse to $25$ distinct numbers. The second
 equation-of-state ratio lives entirely on this branch,
 \begin{equation}
-  |w_a|=\frac{P_{\rm sc}}{K_v}=\frac{\mathrm{PYROS}}{\mathrm{IGNIS}}=0.67000 ,
+  |w_a|=\frac{P_{\rm sc}}{\mathrm{IGNIS}}=\frac{\mathrm{PYROS}}{\pi+\mathrm{PYROS}}=0.66997 ,
 \end{equation}
 where the denominator is read as the $\pi$-branch node IGNIS rather than the
 scaffold copy $K_v$---the two coincide in value by Law~II.
 
 \paragraph{Closure.} The set is finite because both laws terminate at the
-five-dimensional integration ceiling $M_v=\varphi+\pi+K_v=3\Omega=14.27887$, the
+four-dimensional integration invariant $M_v=\varphi+\pi+K_v=14.27888$ (coinciding in value with $3\Omega$), the
 maximal dimensional invariant; no node exceeds it. This termination---not a
 choice made to fit data---is what bounds the dictionary to a fixed, enumerable
 set and licenses the conservative look-elsewhere denominator of

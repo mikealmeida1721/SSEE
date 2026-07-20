@@ -824,6 +824,108 @@ try:
           not _bao_hits,
           "manuscritos muestran DR2 (data/raw/desi_dr2_bao.csv, la que usan las cadenas)"
           if not _bao_hits else "; ".join(_bao_hits[:5]))
+
+    # Las R21-R24 también vigilan el PRD (submission_PRD), no solo manuscript/.
+    _prd = _REPO2 / "submission_PRD" / "SSEE_PRD.tex"
+    _texs2 = _texs + ([_prd] if _prd.exists() else [])
+
+    # ── R21 — el denominador de wₐ es IGNIS (π+PYROS), NUNCA K_v (2Ω) ──────
+    # Remache forjado 2026-07-19: la suite escribía wₐ = P_sc/K_v, colapsando el
+    # denominador al scaffold K_v (=KRYSTOS φ+π+Ω, 2Ω por valor) cuando la ENTIDAD
+    # es IGNIS = π+PYROS (rama-π, intra-linaje con el numerador PYROS=P_sc): mismo
+    # valor 9.519, entidad distinta. K_v SOLO es legítimo como sumando de M_v=φ+π+K_v;
+    # NUNCA como denominador → basta prohibir K_v en rol de denominador ("}{K_v" en
+    # \frac, "/K_v" inline). M_v=φ+π+K_v (K_v como "+K_v") no matchea.
+    _kvden = []
+    for t in _texs2:
+        txt = t.read_text(errors="ignore")
+        for pat in (r"\}\{K_v", r"/K_v"):
+            m = _re2.search(pat, txt)
+            if m:
+                _kvden.append(f"{t.name}«{txt[max(0, m.start()-8):m.end()][:20]}»")
+    check("manuscritos  R21 wₐ denominador = IGNIS(π+PYROS); K_v nunca es denominador",
+          not _kvden,
+          "wₐ = P_sc/IGNIS en toda la suite; K_v solo como +K_v en M_v"
+          if not _kvden else "; ".join(_kvden[:5]))
+
+    # ── R22 — precisión: sin 5-dec truncados/falsos de las constantes ─────
+    # Remache forjado 2026-07-19: el Sealed truncaba (no redondeaba) la tabla de
+    # notación y daba wₐ=-0.67000 (falso: es -0.66997) y w₀=-0.83996 (falso:
+    # -0.83995; 1+w₀=0.16005 lo exige). Un referí caza el 5º dígito. Se prohíben
+    # los 5-dec ERRÓNEOS exactos, con lookahead (?![0-9]) para no chocar con la
+    # precisión plena legítima (14.278879927, 4.759626642, …).
+    _badprec = {
+        r"0\.83996(?![0-9])": "w₀ falso (→ -0.83995)",
+        r"0\.67000(?![0-9])": "wₐ falso (→ -0.66997)",
+        r"4\.75962(?![0-9])": "Ω truncado (→ 4.75963)",
+        r"5\.52140(?![0-9])": "KAL truncado (→ 5.52141)",
+        r"3\.99784(?![0-9])": "AURA truncado (→ 3.99785)",
+        r"6\.37765(?![0-9])": "P_sc truncado (→ 6.37766)",
+        r"11\.99353(?![0-9])": "T_r truncado (→ 11.99354)",
+        r"14\.27887(?![0-9])": "M_v truncado (→ 14.27888)",
+    }
+    _prec_hits = []
+    for t in _texs2:
+        txt = t.read_text(errors="ignore")
+        for pat, why in _badprec.items():
+            if _re2.search(pat, txt):
+                _prec_hits.append(f"{t.name}:{why}")
+    check("manuscritos  R22 sin constantes 5-dec truncadas/falsas",
+          not _prec_hits,
+          "precisión canónica (w₀=-0.83995, wₐ=-0.66997, tabla redondeada)"
+          if not _prec_hits else "; ".join(_prec_hits[:6]))
+
+    # ── R23 — sin fósiles Σ₉ / "5D" / MIKAEL_V (nombres/símbolos retirados) ─
+    # Remache forjado 2026-07-19: Σ₉ (de las "9 Soberanías", hoy 25) sobrevivía en
+    # P7/P9; "five-dimensional integration ceiling" para M_v (que es 4D, dentro de
+    # CUARTAL=4·AURA) en Sealed/PRD; y MIKAEL_V (renombrado ATLAS por la Ley de
+    # Nombrado) como etiqueta de M_v en P1/P7. MIKAEL a secas (Soberana viva) NO
+    # matchea: el patrón exige el sufijo _V / \_V.
+    _fossils = {
+        r"Sigma_9": "Σ₉ fósil (9 Soberanías → 25); usar 3Ω/M_v",
+        r"Σ₉": "Σ₉ fósil; usar 3Ω/M_v",
+        r"five-dimensional integration": "M_v es 4D (dentro de CUARTAL), no 5D",
+        r"5D integration": "M_v es 4D, no 5D",
+        r"5-D integration": "M_v es 4D, no 5D",
+        r"MIKAEL\\?_V": "MIKAEL_V renombrado ATLAS (Ley de Nombrado)",
+    }
+    _fos_hits = []
+    for t in _texs2:
+        txt = t.read_text(errors="ignore")
+        for pat, why in _fossils.items():
+            if _re2.search(pat, txt):
+                _fos_hits.append(f"{t.name}:{why}")
+    check("manuscritos  R23 sin fósiles Σ₉ / 5D / MIKAEL_V",
+          not _fos_hits,
+          "Σ₉→3Ω, 5D→4D, MIKAEL_V→ATLAS aplicados"
+          if not _fos_hits else "; ".join(_fos_hits[:6]))
+
+    # ── R24 — conteo del diccionario univaluado: 55/25/490 (sin rezagos) ──
+    # Remache forjado 2026-07-19: el Sealed mezclaba "50 named / 22 distinct" (v1.3)
+    # con "490 ratios" (v1.4) en la MISMA zona; ni los 3 auditores externos ni el
+    # guardián lo cazaron. Canónico único: 55 nombres / 25 valores / 490 razones.
+    # Se prohíben los denominadores/counts RETIRADOS en contexto (no el bare "378"
+    # de 6.378=P_sc): "1 of 378", "1/378", "50 named", "22 distinct", etc.
+    _oldcount = {
+        r"1\s*(?:of|/)\s*378": "1/378 retirado (→ 1/490)",
+        r"1\s*(?:of|/)\s*245": "1/245 retirado (→ 1/490)",
+        r"1\s*(?:of|/)\s*337": "1/337 retirado (→ 1/490)",
+        r"1\s*(?:of|/)\s*317": "1/317 retirado (→ 1/490)",
+        r"\b50\s+named": "50 named retirado (→ 55)",
+        r"\b46\s+named": "46 named retirado (→ 55)",
+        r"\b22\s+distinct": "22 distinct retirado (→ 25)",
+        r"\b21\s+distinct": "21 distinct retirado (→ 25)",
+    }
+    _cnt_hits = []
+    for t in _texs2:
+        txt = t.read_text(errors="ignore")
+        for pat, why in _oldcount.items():
+            if _re2.search(pat, txt):
+                _cnt_hits.append(f"{t.name}:{why}")
+    check("manuscritos  R24 conteo diccionario 55/25/490 (sin rezagos 50/22/378)",
+          not _cnt_hits,
+          "55 named / 25 distinct / 490 ratios univaluado"
+          if not _cnt_hits else "; ".join(_cnt_hits[:6]))
 except Exception as e:
     check("manuscritos  capa operable", False, str(e))
 

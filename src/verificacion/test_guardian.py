@@ -97,6 +97,30 @@ expect_red("R11 conteo serie: 'Papers~3--7' → ROJO",
            lambda t: t + "\nextensions in Papers~3--7.\n",
            ["R11", "ROJO"])
 
+# R21 — wₐ con denominador K_v en vez de IGNIS
+expect_red("R21 wₐ/K_v: 'P_{sc}/K_v' → ROJO",
+           "manuscript/SSEE_Paper7_EFT.tex",
+           lambda t: t + "\n$-P_{sc}/K_v$\n",
+           ["R21", "ROJO"])
+
+# R22 — precisión falsa (wₐ = -0.67000)
+expect_red("R22 precisión: '-0.67000' → ROJO",
+           "manuscript/SSEE_Paper7_EFT.tex",
+           lambda t: t + "\n$w_a=-0.67000$\n",
+           ["R22", "ROJO"])
+
+# R23 — fósil Σ₉ / MIKAEL_V / 5D
+expect_red("R23 fósil: '\\Sigma_9' → ROJO",
+           "manuscript/SSEE_Paper7_EFT.tex",
+           lambda t: t + "\n$\\Sigma_9$\n",
+           ["R23", "ROJO"])
+
+# R24 — conteo del diccionario retirado (1 of 378)
+expect_red("R24 conteo: '1 of 378' → ROJO",
+           "manuscript/SSEE_Paper7_EFT.tex",
+           lambda t: t + "\n1 of 378 ratios.\n",
+           ["R24", "ROJO"])
+
 
 # ── Archivo: cajón sin entrada en la Bitácora → ROJO (caso especial dir) ─
 def test_archive_orphan():

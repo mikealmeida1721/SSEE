@@ -227,13 +227,38 @@ The component offsets are $\Delta w_0=-0.04\sigma$ (essentially exact) and
 $\Delta w_a=-0.26\sigma$. Against the other official combinations (moments and
 correlations likewise measured from the official chains: $\rho=-0.905$ to
 $-0.978$) the joint
-distance is $1.47\sigma$ (DESY5), $1.77\sigma$ (Union3) and $1.67\sigma$
+distance is $1.46\sigma$ (DESY5), $1.76\sigma$ (Union3) and $1.68\sigma$
 (no-SN DESI$+$CMB): the algebraic point is consistent with all four, with the
 tension range $0.2$--$1.8\sigma$ set by the supernova compilation. The result
 is robust to the correlation ($\rho\in[-0.92,-0.70]$ would shift the
 Pantheon+ figure by $<0.2\sigma$; the measured value is used). We stress that this agreement is obtained
 with \emph{zero} hand-tuned dark-energy parameters: the only inputs are
-$\varphi$ and $\pi$.
+$\varphi$ and $\pi$. The fixed $\Lambda$CDM point $(-1,0)$, by contrast, sits at
+$2.6$--$3.9\sigma$ from every official compilation
+(Table~\ref{tab:w0wa_ssee_vs_lcdm}): SSEE is closer to the data than
+$\Lambda$CDM for all four supernova compilations---a like-for-like comparison of
+two zero-parameter predictions against the same measurement, neither of which
+tunes $(w_0,w_a)$.
+
+\begin{table}[ht]
+  \centering
+  \caption{Mahalanobis distance of the fixed SSEE point $(-0.840,-0.670)$ and
+  the fixed $\Lambda$CDM point $(-1,0)$ from each official DESI~DR2 $w_0w_a$CDM
+  best-fit ($2\times2$ covariance, correlation measured directly from the public
+  chains, Zenodo~16644577). Neither point is fitted; both are predictions. SSEE
+  is closer to the data than $\Lambda$CDM for all four supernova compilations.}
+  \label{tab:w0wa_ssee_vs_lcdm}
+  \begin{tabular}{lccc}
+    \toprule
+    DESI~DR2 combination & $\rho$ & SSEE distance & $\Lambda$CDM distance \\
+    \midrule
+    DESI+CMB+Pantheon+ & $-0.894$ & $\mathbf{0.24\sigma}$ & $2.58\sigma$ \\
+    DESI+CMB+DES~Y5    & $-0.905$ & $\mathbf{1.46\sigma}$ & $3.93\sigma$ \\
+    DESI+CMB+Union3    & $-0.933$ & $\mathbf{1.76\sigma}$ & $3.38\sigma$ \\
+    DESI+CMB (no SN)   & $-0.978$ & $\mathbf{1.68\sigma}$ & $2.62\sigma$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \paragraph{Honest caveat: this is agreement with BAO$+$SN, not with CMB-only.}
 The $0.24\sigma$ figure is specific to the DESI DR2 dynamical-dark-energy
@@ -477,7 +502,9 @@ walkers $\times\,25{,}000$ steps (seed $42$).
 \paragraph{$H_0$ as one quantity in two stages.} We first anchor the
 early-time geometry at the CMB-optimal value
 \begin{equation}
-  H_0^{\mathrm{anchor}} = H_0^{\rm alg} = 3(\varphi+\pi)^2 = 67.962~\kms ,
+  H_0^{\mathrm{anchor}} = H_0^{\rm alg} = 67.962~\kms ,
+  \qquad
+  \frac{H_0^{\rm alg}}{\kms} = 3(\varphi+\pi)^2 ,
   \label{eq:h0anchor}
 \end{equation}
 which (with $\omega_b,\omega_c$ fixed by SSEE algebra) is the $H_0$ that
@@ -502,16 +529,25 @@ and the $66.412$ obtained with the cold sector $0.160$ in the geometry, are all
 superseded.)
 
 \paragraph{Status of the algebraic anchor.} We are explicit about what
-Eq.~\eqref{eq:h0anchor} is and is not. $H_0$ carries units; $3(\varphi+\pi)^2$
-is a pure number, so the equality holds \emph{numerically in
-$\mathrm{km\,s^{-1}\,Mpc^{-1}}$ only}---in Planck units $H_0\sim10^{-61}$ and no
-such coincidence appears. It is therefore not a dimensional identity but a
-dimensionless \emph{anchor}: the numerical value of $H_0$ \emph{in these units}
-equals $3(\varphi+\pi)^2$. Its physical justification is empirical, through the
-screening cascade $H_0^{\rm local}=H_0^{\rm alg}/(1-f_{\rm scr})$ calibrated to
-SH0ES (Paper~9); its formal status is an \emph{open numerical conjecture}---the
-Megaparsec-to-Planck dimensional bridge is unproven---not a derived theorem. We
-state this plainly so the anchor is not read as the stronger claim it is not.
+Eq.~\eqref{eq:h0anchor} is and is not. The anchor $67.962~\kms$ is a genuine
+dimensionful rate, and its units are physical rather than decreed by a formula:
+it is the global background rate carried down from the SH0ES \emph{local}
+measurement through the screening cascade
+$H_0^{\rm alg}=H_0^{\rm local}(1-f_{\rm scr})$ (Paper~9), where
+$f_{\rm scr}=\alpha_K/(3\,\mathrm{MIRA})=(\pi-\varphi)/\Om^2$ is a dimensionless
+factor shown not to be a fit. The units are inherited from the measured local
+rate through a dimensionless screening factor. Independently, the pre-registered
+dimensionless combination $3(\varphi+\pi)^2=67.962$ \emph{coincides numerically}
+with the value of this rate in these units. We state plainly that this is a
+numerical coincidence, not a dimensional identity: $3(\varphi+\pi)^2$ is a pure
+number, and we make no claim that a dimensionless quantity \emph{equals} a
+dimensionful rate---in Planck units $H_0\sim10^{-61}$ and no such coincidence
+appears. The physical anchor is the SH0ES-calibrated global rate; the algebraic
+match is a striking, pre-registered correspondence whose dimensional
+origin---the bridge from the megaparsec scale to fundamental units---remains an
+open problem. Because the anchor is the physical rate, the prediction is
+falsifiable through it, independently of the coincidence: a global $H_0$
+displaced from $67.96~\kms$ refutes the cascade.
 
 \paragraph{Anchor and posterior coincide.} With the total gravitating matter
 density $\Om^{\mathrm{cosm}}=0.30889$ in $E(z)$ and $r_d$, the BAO-corrected
@@ -793,7 +829,7 @@ Observable & Sector & Value & Paper & Status \\
 $w_0=-T_r/M_v$                & Background (DE)   & $-0.840$                         & P1,2,4 & Postdiction \\
 $w_a=-P_{\rm sc}/\mathrm{IGNIS}$ & Background (DE)   & $-0.670$                      & P1,2,4 & Postdiction \\
 $(w_0,w_a)$ vs DESI DR3       & Background (DE)   & same fixed point                & P1,2   & \textbf{Prediction (pre-reg.)} \\
-$H_0=3(\varphi+\pi)^2$        & Background (DE)   & $67.96\,\kms$                   & P1,2,9 & Global anchor (Post.~D) \\
+$H_0/\kms=3(\varphi+\pi)^2$   & Background (DE)   & $67.96\,\kms$                   & P1,2,9 & Global anchor (Post.~D) \\
 $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ & CMB      & $0.11951$                       & P1,3   & Retrodiction \\
 $\Om^{\rm cosm}=\omega_m/h^2$ & CMB               & $0.30889$                       & P1,3   & Retrodiction \\
 $n_s=1-\varphi^{-7}$          & Inflation / CMB   & $0.96556$                       & P1,3   & Retrodiction \\
@@ -928,8 +964,8 @@ honest accounting is the following. $\Lambda$CDM carries six fitted parameters
 $(\Omega_b h^2,\Omega_c h^2,\theta_*,\tau,n_s,A_s)$. SSEE fixes four of them
 algebraically from $\varphi$ and $\pi$: the baryon density $\omega_b$ (OP-1), the
 CDM density via the forward identity $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$, the
-spectral index $n_s=1-\varphi^{-7}$, and the expansion anchor $H_0=3(\varphi+\pi)^2$
-(derived, Paper~9). This leaves exactly two free CMB parameters---the primordial
+spectral index $n_s=1-\varphi^{-7}$, and the expansion anchor $H_0=67.96~\kms$
+(whose value in these units coincides with $3(\varphi+\pi)^2$; derived, Paper~9). This leaves exactly two free CMB parameters---the primordial
 amplitude $A_s$ and the optical depth $\tau$---a $k=2$ versus $k=6$ comparison,
 which is the count used in the Paper~3 Bayesian model selection. The dark-energy
 ratios $(w_0,w_a)$ and the EFT functions are predicted, not fitted. On the

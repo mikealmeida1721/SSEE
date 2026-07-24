@@ -627,6 +627,8 @@ SSEE fixes them algebraically:
   \alpha_{\rm T}=\alpha_{\rm M}=\alpha_{\rm B}=0,
   \qquad
   \alpha_{\rm K}(0)=3\,\Omega_{\rm DE}\,\Om^{\mathrm{dyn}}=0.40330 ,
+  \qquad
+  \Omega_{\rm DE}=\mathrm{AURA}/\Omega=1-\Om^{\mathrm{dyn}}=0.83995 ,
 \end{equation}
 so that gravitational waves propagate at the speed of light
 ($\alpha_{\rm T}=0$, consistent with GW170817~\citep{GW170817}) and the only non-trivial
@@ -835,7 +837,7 @@ $\Om^{\rm cosm}=\omega_m/h^2$ & CMB               & $0.30889$                   
 $n_s=1-\varphi^{-7}$          & Inflation / CMB   & $0.96556$                       & P1,3   & Retrodiction \\
 $r=\varphi^{-10}$             & Inflation         & $8.1\times10^{-3}$              & P1     & \textbf{Prediction} \\
 $\alpha_T=\alpha_M=\alpha_B$  & EFT               & $0$ (exact)                     & P7     & Retrodiction \\
-$\alpha_K$ (bare field)       & EFT               & $0.073$                         & P7     & \textbf{Prediction} \\
+$\alpha_K^{\rm field}$ (bare, pre-integration) & EFT & $0.073$                        & P7     & Internal check \\
 $\beta_c=-\mathrm{AURA}$      & EFT               & $-3.998$                        & P7     & Retrodiction \\
 $\gamma_{\rm IS}$             & Growth            & $0.550$                         & P5     & Retrodiction \\
 $f\sigma_8$ (single-sector)   & Growth            & $0.70\sigma$ (6 RSD)            & P5     & Retrodiction \\
@@ -858,9 +860,14 @@ programme. ``Postdiction'': algebraic result fixed by the closed dictionary, the
 compared to already-public data (no claim of temporal priority). ``Retrodiction'':
 derived independently, then compared to an existing measurement. ``Prediction'':
 fixed now, tested against not-yet-released data. ``Measured'': an input, not a
-derivation. No optimisation over the algebraic formula space was performed. The
-detailed per-sector registers follow below and in the Predictive Register of
-Paper~1.}
+derivation. ``Internal check'': a same-paper consistency quantity, not itself
+tested against external data. No optimisation over the algebraic formula space
+was performed. The bare-field $\alpha_K^{\rm field}=0.073$ (Paper~7) is the
+pre-integration kinetic contribution, distinct from the background-integrated
+$\alpha_K(0)=0.4033$ used and cross-checked against \texttt{hi\_class} in
+\S\ref{sec:eft-functions}: both are Paper~7 quantities at different stages of
+the same calculation, not competing values for the same object. The detailed
+per-sector registers follow below and in the Predictive Register of Paper~1.}
 \label{tab:master}
 \end{table}
 

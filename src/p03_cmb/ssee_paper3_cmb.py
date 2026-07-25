@@ -21,7 +21,7 @@ from ssee_core import (
     PHI as phi, PI as pi, OMEGA as Omega, BETA as beta, KAL0,
     P_SC as P_sc, K_V as Kv, T_R as Tr, M_V as Mv, W0 as w0, WA as wa,
     OMEGA_DE as OmDE, OMEGA_M_DYN as Omm, AURA, MIRA,
-    OMEGA_M_CMB as Omm_cmb, N_S as ns,
+    OMEGA_M_CMB as Omm_cmb, N_S as ns, SUM_MNU_EV,
 )
 M_SSEE = abs(w0)   # acoustic saturation factor (= |w0|)
 # Reframe ω_m-DIRECTO (OP-8 cerrado): NO hay factor materia. ω_b y ω_c son densidades
@@ -137,7 +137,7 @@ def compute_ssee_spectrum(lmax=2500):
     h      = H0 / 100.0
     omch2  = KAL0 * Omb_h2 * ns   # 0.11951 — ω_c FORWARD (KAL₀·ω_b·n_s); era Omm_cmb·h²−ω_b (MIRA)
     total, lens_p, derived = _run_camb(
-        H0, Omb_h2, omch2, 0.0690, w0, wa, As, ns, lmax)  # Σm_ν canónico R₂·0.9603 (antes 0.0824 Type-P)
+        H0, Omb_h2, omch2, SUM_MNU_EV, w0, wa, As, ns, lmax)  # Σm_ν canónico del core (0.06849; C_ν=93.14)
     r_d_camb = derived["rdrag"]
     ells     = np.arange(total.shape[0])
     return ells, total, lens_p, r_d_camb, derived

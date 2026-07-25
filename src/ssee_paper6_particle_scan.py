@@ -24,7 +24,7 @@ KAL=(pi+phi)/2+pi; N_S=1-phi**-7
 # fondo ω_m-directo FIJO
 Omega_b=(pi-phi)/(3*OMEGA**2)/H**2
 om_b_h2=(pi-phi)/(3*OMEGA**2); om_c_h2=KAL*om_b_h2*N_S
-Smnu=0.06902; om_nu_h2=Smnu/93.14
+Smnu=0.06849; om_nu_h2=Smnu/93.14   # C_nu=93.14 PDG (era 0.06902)
 Om_m=(om_b_h2+om_c_h2+om_nu_h2)/H**2     # 0.30889
 Om_cold=0.160; Om_hot=Om_m-Om_cold       # 0.14889
 Om_cdm=Om_cold-Omega_b

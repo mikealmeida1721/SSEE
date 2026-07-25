@@ -8,7 +8,7 @@ Variante de producción del MCMC de Paper 2 para el reframe ω_m-DIRECTO
 
 El ancla 67.962 NO es ad hoc: con ω_b=(π−φ)/(3Ω²) y ω_c=KAL₀·ω_b·n_s
 FIJOS por álgebra, la verosimilitud CMB plik_lite se MINIMIZA en
-H₀=67.962 (scan results/logs/p3_h0anchor_reframe.log; χ²=1005.50 mín).
+H₀=67.962 (scan results/logs/p3_h0anchor_reframe.log; χ²=1005.41 mín).
 Es decir, el H global de fondo y el ancla CMB coinciden: 67.962.
 
 Tamaño producción: 100 walkers × 25000 steps (= original Paper 2).
@@ -78,7 +78,7 @@ CLUSTERS = [
 # ─── PRIOR H_alg EXACTO (reframe ω_m-directo) ───
 # Ancla CMB del reframe: con ω_b y ω_c FIJOS por álgebra SSEE, la
 # verosimilitud plik_lite TTTEEE se minimiza en H₀ = 3(φ+π)² = 67.962
-# (scan: results/logs/p3_h0anchor_reframe.log; χ²=1005.50 mín, ΔBIC=−23.93).
+# (scan: results/logs/p3_h0anchor_reframe.log; χ²=1005.41 mín, ΔBIC=−24.02).
 # El H global de fondo y el ancla CMB coinciden — no son dos números.
 # σ = 0.54 (error Planck H₀ propagado, conservador).
 # (prior MIRA 67.037 RETIRADO: usaba Ω_m,CMB=MIRA×Ω_m,dyn, factor disuelto OP-8)

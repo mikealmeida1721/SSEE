@@ -60,7 +60,12 @@ H0_MIRA    = 67.037                  # ancla CMB-fit del escenario VIEJO (cascad
 N_S        = 1.0 - PHI**(-7)         # ≈ 0.96556
 R_TENSOR   = PHI**(-10)              # ≈ 0.00813
 OMEGA_B_H2 = (PI - PHI) / (3.0 * OMEGA**2)   # ≈ 0.02242  (OP-1)
-SUM_MNU_EV = 0.06902                          # Σm_ν activos (canónico)
+# Σm_ν^active = R₂·ω_b·C_ν/(τ_Π·H₀) con C_ν=93.14 eV PDG (N_eff=3.046).
+# 2026-07-25: era 0.06902, residuo de C_ν=94.07. El cambio C_ν 94.07→93.14
+# (2026-07-10) propagó a m_φ (41.02→40.70) pero NO a esta constante ni a sus
+# consumidores. Σm_ν es UNA sola cantidad: la misma que da m_φ y la que da ω_ν.
+# Coherencia vigilada por V-L2-11a/b/c en ssee_verify.py.
+SUM_MNU_EV = 0.06849                          # Σm_ν activos (canónico; = 40.70/594.28)
 
 # ── Densidad de materia CMB — ω_m DIRECTO (reframe 2026-06-18) ────────────────
 # OP-8 CERRADO: no hay "factor materia" que derivar. Ω_m,CMB es el observable
@@ -72,7 +77,7 @@ SUM_MNU_EV = 0.06902                          # Σm_ν activos (canónico)
 # queda RETIRADO: Ω_m,dyn=0.160 (DESI) y ω_m (CMB) son dos predicciones
 # independientes, ya no ligadas por un factor. Ver project_halg_pifi_investigation.
 OMEGA_C_H2 = KAL0 * OMEGA_B_H2 * N_S           # ≈ 0.11952  (forward, Paper 1)
-OMEGA_NU_H2 = SUM_MNU_EV / 93.14               # ≈ 0.000741
+OMEGA_NU_H2 = SUM_MNU_EV / 93.14               # ≈ 0.000735
 OMEGA_M_H2 = OMEGA_B_H2 + OMEGA_C_H2 + OMEGA_NU_H2   # ≈ 0.14268  (ω_m físico)
 # MATERIA TOTAL — la ÚNICA densidad que entra en cualquier geometría de fondo:
 OMEGA_M_TOTAL = OMEGA_M_H2 / (H0_GLOBAL/100.0)**2    # ≈ 0.30889  (CANÓNICO, derivado, ω_m/h²)

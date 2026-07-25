@@ -20,7 +20,7 @@ ombh2 = (pi - phi) / (3 * Omega**2)   # 0.02242  SSEE algebraico (OP-1)
 ns    = 1 - phi**-7
 KAL0  = (pi + phi)/2 + pi             # 5.5214
 omch2 = KAL0 * ombh2 * ns            # 0.11951  forward (ya en Paper 1)
-mnu   = 0.0690                        # Σm_ν canónico R₂·0.9603
+mnu   = 0.06849                       # Σm_ν canónico (C_ν=93.14 PDG; era 0.0690)
 omega_m = ombh2 + omch2 + mnu/93.14  # 0.14267
 h = H0/100.0
 Omm_cmb = omega_m / h**2             # 0.30889  DERIVADO, sin factor

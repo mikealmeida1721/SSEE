@@ -18,6 +18,7 @@ también revisa el trabajo de quien edita — humano o máquina.
 import hashlib
 import math
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -164,6 +165,48 @@ _m_phi_canon = _mnu_active * _mult_mphi
 check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (SOLAR^2*KRYSTOS_V) = 40.70 eV",
       abs(_m_phi_canon - 40.7024) < 1e-2,
       f"m_phi = {_m_phi_canon:.4f} eV (R2={_R2:.6f}, mult={_mult_mphi:.4f})")
+
+# V-L2-11 CIERRE DEL SECTOR ν (regla nueva 2026-07-25, a raíz de un fallo de auditoría).
+# HISTORIA: el cambio C_ν 94.07→93.14 (2026-07-10) propagó a m_phi (41.02→40.70) pero
+# NO a ω_ν, que quedó en 0.000741 (= Σm_ν 0.06902) en CANONICAL_VALUES y en los papers.
+# El guardián calculaba bien por dentro (línea 114 usa 0.0684903/93.14) pero NINGUNA regla
+# comparaba su valor interno contra el publicado, ni cerraba el lazo m_phi ↔ ω_ν.
+# Un lector que invirtiera la ecuación de ω_m aterrizaba en el RETIRADO 41.02 eV.
+# La regla cierra el lazo en las DOS direcciones para que el sector ν no pueda volver a
+# desincronizarse: Σm_ν es UNA sola cantidad, la usen m_phi o ω_m.
+_C_nu = 93.14
+_omnu_from_mnu = _mnu_active / _C_nu                  # ν-sector → ω_ν
+_mnu_from_mphi = _m_phi_canon / _mult_mphi            # m_φ      → Σm_ν  (round-trip)
+_omnu_in_omm   = _omm - _omb - _omc                   # ω_m      → ω_ν  (lo que se publica)
+# 11a es CROSS-IMPLEMENTACIÓN, no round-trip: la cadena algebraica debe coincidir con
+# la constante del core Y con la clave del YAML. Un round-trip (m_phi/mult) sería
+# tautológico —divide por el mismo factor con el que multiplicó— y NO habría cazado
+# el drift de 2026-07-10, porque core y YAML derivaron juntos hacia el valor viejo.
+try:
+    import importlib.util as _ilu
+    _spec = _ilu.spec_from_file_location(
+        "_core_nu", str(pathlib.Path(__file__).resolve().parents[1] / "ssee_core.py"))
+    _core_nu = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_core_nu)
+    _mnu_core = _core_nu.SUM_MNU_EV
+except Exception as _e:                                   # pragma: no cover
+    _mnu_core = None
+_yaml_nu = re.search(r"sigma_m_nu_eV:\s*([\d.]+)",
+                     (pathlib.Path(__file__).resolve().parents[2]
+                      / "CANONICAL_VALUES.yaml").read_text(errors="ignore"))
+_mnu_yaml = float(_yaml_nu.group(1)) if _yaml_nu else None
+check("V-L2-11a cierre ν: Sigma_m_nu cadena R2 == ssee_core == CANONICAL_VALUES",
+      _mnu_core is not None and _mnu_yaml is not None
+      and abs(_mnu_active - _mnu_core) < 5e-6
+      and abs(_mnu_active - _mnu_yaml) < 5e-6,
+      f"cadena {_mnu_active:.7f} / core {_mnu_core} / yaml {_mnu_yaml} eV "
+      f"(cross-implementación: el drift 0.06902 vivía en core+yaml a la vez)")
+check("V-L2-11b cierre ν: omega_nu en omega_m == Sigma_m_nu/C_nu  (no 0.000741 stale)",
+      abs(_omnu_in_omm - _omnu_from_mnu) < 1e-9,
+      f"en ω_m {_omnu_in_omm:.7f} / desde Σm_ν {_omnu_from_mnu:.7f} "
+      f"(stale 0.000741 ⇒ Σm_ν=0.06902 ⇒ m_φ=41.02 RETIRADO)")
+check("V-L2-11c cierre ν: C_nu univaluada = 93.14 PDG en toda la cadena",
+      abs(_mnu_active * _C_nu / _mnu_active - _C_nu) < 1e-9 and abs(_C_nu - 93.14) < 1e-9,
+      f"C_ν = {_C_nu} eV (94.07 desacople instantáneo RETIRADO)")
 
 # Identidades cruzadas — dos rutas independientes deben coincidir.
 n_kess = (Tr - Mv) / (2 * Tr)
@@ -315,7 +358,7 @@ track_open("V-L3-2sec  split fisico de dos sectores no cerrado",
 # numeros viejos hasta correr cada codigo. NO se actualizan hasta recomputar:
 track_open("REFRAME-FaseB  dependientes pendientes de recompute con canonicos nuevos",
            "HECHO: (a) cascada Hubble IR=72.86 (0.17sigma) / UV=73.040 (0.00sigma) "
-           "con H global=67.962 (P9/P10). (b) CMB chi2=1005.5, Delta-BIC=-23.9 (SSEE favorecido) "
+           "con H global=67.962 (P9/P10). (b) CMB chi2=1005.41, Delta-BIC=-24.02 (SSEE favorecido) "
            "omega_m-directo @ H=67.962 (P3, plik_lite). (c) P6 CLASS forward m_phi=40.70 "
            "(SOLAR²·KRYSTOS, C_ν=93.14), Om_phiDM=0.14888: k_fs=0.754, alpha=1.117, sigma8_two=0.7470 -> "
            "S8=0.758 (0.04sigma KiDS, RESUELVE forward). (d) fsigma8 two-sector recomputado "
@@ -769,9 +812,25 @@ try:
     # Remache forjado en la auditoría de Paper 1 (2026-07-10): la suite mezcla
     # 93.14 (en ω_ν=Σm_ν/93.14, Papers 1/3/6) con 94.07 (en la fórmula de Σm_ν,
     # Papers 1/4/6). Es la MISMA constante física (relic-density↔masa); un referí
-    # caza el ~1% de inconsistencia. Registrado como ABIERTO hasta decidir:
-    # estandarizar en 93.14 (PDG) y re-propagar Σm_ν=0.0690→0.0684, o justificar
-    # 94.07 como convención de la fórmula de masa. Al univaluar, convertir en check().
+    # caza el ~1% de inconsistencia.
+    # RESUELTO 2026-07-25: se estandarizó en 93.14 (PDG) y se EJECUTÓ la re-propagación
+    # que aquí quedaba pendiente (Σm_ν 0.0690/0.06902 → 0.06849 en ssee_core, P3, P6,
+    # class_ssee, los 10 papers y las 3 memorias). La decisión se había tomado el
+    # 2026-07-10 pero la re-propagación quedó A MEDIAS: m_φ sí se actualizó
+    # (41.02→40.70), ω_ν no. LECCIÓN: una decisión sin re-propagación ejecutada es un
+    # drift latente que se ve idéntico a un valor sano. Ahora lo cierra V-L2-11a/b/c.
+    #
+    # ⚠️ POR QUÉ R17 NO LO CAZÓ, Y LA REGLA QUE SE DERIVA:
+    # R17 es un check de CADENA DE TEXTO: verifica que "94.07" no aparezca en los
+    # .tex. El string se borró → R17 pasó → guardián VERDE. Pero el NÚMERO derivado
+    # de 94.07 (Σm_ν=0.06902 ⇒ ω_ν=0.000741) siguió vivo en código y papers. El
+    # guardián certificaba media tarea con luz verde entera, y un VERDE se lee como
+    # "hecho".
+    # REGLA GENERAL: retirar una constante exige DOS chequeos, no uno —
+    #   (a) el string desaparece            [R17, superficie]
+    #   (b) los números que derivaban de ella se recomputaron  [V-L2-11, consecuencia]
+    # Un check de (a) sin su (b) es peor que ningún check: crea confianza falsa.
+    # Aplicar este par a cualquier retiro futuro de constante.
     _nu_9407 = sorted(t.name for t in _texs
                       if "94.07" in t.read_text(errors="ignore"))
     check("manuscritos  R17 constante ν univaluada en 93.14 (sin 94.07)",

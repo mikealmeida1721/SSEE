@@ -9,7 +9,7 @@ Física del modelo dos-sectores con partícula φ-DM canónica
   Ω_φDM  = 0.14889 → Ω_m,CMB − Ω_m,dyn (diferencia, sin factor); activo k < k_fs
 
   Masa φ-DM por forward-prediction (CERO fiteo):
-    m_φ = Σm_ν^active × (SOLAR²·KRYSTOS) = 0.06902 eV × 594.28 = 40.70 eV
+    m_φ = Σm_ν^active × (SOLAR²·KRYSTOS) = 0.06849 eV × 594.28 = 40.70 eV
     (eV × número puro = eV, dimensionalmente consistente)
     Ref: ssee_paper6_canonical_particle.py
 
@@ -62,7 +62,7 @@ Om_DNAV = pi_ + phi          # 4.7596 (Ω = π+φ)
 #           m_φ = Σm_ν^active × multiplicador  (eV × adimensional = eV ✓)
 #   Ref: ssee_paper6_canonical_particle.py (canónico SOLAR²·KRYSTOS 2026-06-19, OP-17)
 R2         = Om_DNAV / (KAL0 * Tr)        # 0.071875
-mnu_active = R2 * 0.960318                 # 0.06902 eV (0.960318 eV = input SM fijo)
+mnu_active = R2 * 0.952874                 # 0.06849 eV (C_ν=93.14 PDG; era ×0.960318 → 0.06902 con C_ν=94.07)
 # multiplicador canónico (reframe SOLAR²·KRYSTOS, 2026-06-19, OP-17 adoptado):
 # SOLAR = BIAL+KAL = φ+2π (linaje radiativo); KRYSTOS_V = φ+π+Ω (padres, anclado por wₐ); forma g²·v
 SOLAR      = beta + KAL0                    # 7.9012 (= φ+2π)
@@ -254,7 +254,7 @@ print(f"  S₈_eff = {S8_eff:.4f}   vs KiDS S₈ {kids_s8:.3f}±{kids_s8_err:.3f
 print(f"  S₈_eff = {S8_eff:.4f}   vs DES  S₈ {des_s8:.3f}±{des_s8_err:.3f}  → "
       f"{abs(S8_eff-des_s8)/des_s8_err:.2f}σ")
 print(f"  H(z) χ²_r (sin cambio) = 1.861  [igual que SSEE base]")
-print(f"  ΔBIC CMB = -32.9  [Paper 3 full plik N=2354, titular; cross-check plik_lite -23.93]")
+print(f"  ΔBIC CMB = -32.9  [Paper 3 full plik N=2354, titular; cross-check plik_lite -24.02]")
 print(f"  BAO χ²_r ≈ 0.01  [Paper 2, sin cambio]")
 print(f"  Cluster χ²_r = 0.122  [Paper 2, sin cambio]")
 

@@ -1,0 +1,47 @@
+============================================================
+SSEE — Paper 3: CMB vs Planck PR4 (TT+TE+EE+lensing)
+============================================================
+
+Parámetros SSEE:
+  w0=-0.8399  wa=-0.6700
+  Ω_m,dyn=0.1601  Ω_DE=0.8399  (sector dinámico: BAO/cúmulos)
+  MIRA=1.998924  (AURA/2 — Frecuencia de Observación, Genesis 5.12)
+  Ω_m,CMB=0.308881  (sector observacional: CMB, Planck: 0.3153)
+  M_SSEE=|w0|=0.8399
+  KAL0=5.5214
+
+Datos Planck PR4 TT: 2507 puntos, ℓ=2–2508
+Datos Planck PR4 TE: 1995 puntos
+Datos Planck PR4 EE: 1995 puntos
+Datos Planck PR4 lensing: 14 puntos
+
+Calculando espectros SSEE con CAMB (TT+TE+EE+lensing)...
+  r_d,SSEE (CAMB)   = 147.17 Mpc  (Planck: ~147.1 Mpc)
+  z_drag            = 1060.03
+  100θ_MC           = 1.0413940847979533
+
+Calculando espectros ΛCDM con CAMB...
+  r_d,ΛCDM = 147.10 Mpc
+
+--- χ² vs Planck PR4 ---
+  TT:  SSEE χ²_r=1.042 (χ²=2054.5)  |  ΛCDM χ²_r=1.043 (χ²=2054.9)  (N=1971)
+  TE:  SSEE χ²_r=1.040 (χ²=2045.6)  |  ΛCDM χ²_r=1.040 (χ²=2045.7)  (N=1967)
+  EE:  SSEE χ²_r=1.040 (χ²=2044.9)  |  ΛCDM χ²_r=1.039 (χ²=2044.4)  (N=1967)
+  PP:  SSEE χ²_r=0.720 (χ²=6.5)  |  ΛCDM χ²_r=0.757 (χ²=6.8)  (N=9)
+
+  COMBINADO:  SSEE χ²_r=1.040  |  ΛCDM χ²_r=1.040  (N_total=5914)
+  ΔBIC(SSEE−ΛCDM) = -35.0  (negativo = SSEE favorecido)
+
+Posición de picos TT SSEE (primeros 3):
+  Pico 1: ℓ=220  Dℓ=5746.4 μK²
+  Pico 2: ℓ=536  Dℓ=2597.5 μK²
+  Pico 3: ℓ=813  Dℓ=2542.4 μK²
+
+Generando figuras...
+  Figura guardada: /home/mike/Proyectos/SSEE/src/p03_cmb/../../results/figures/fig_cmb_spectrum.pdf
+  Figura guardada: /home/mike/Proyectos/SSEE/src/p03_cmb/../../results/figures/fig_cmb_te.pdf
+  Figura guardada: /home/mike/Proyectos/SSEE/src/p03_cmb/../../results/figures/fig_cmb_ee.pdf
+  Figura guardada: /home/mike/Proyectos/SSEE/src/p03_cmb/../../results/figures/fig_cmb_lensing.pdf
+  Figura guardada: /home/mike/Proyectos/SSEE/src/p03_cmb/../../results/figures/fig_cmb_peaks_zoom.pdf
+
+✓ Listo. TT + TE + EE + lensing completados.

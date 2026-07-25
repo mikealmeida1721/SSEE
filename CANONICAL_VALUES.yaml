@@ -92,15 +92,21 @@ canonical:
   # predicciones INDEPENDIENTES de SSEE, ya no ligadas por factor (MIRA ni π/φ).
   omega_b_h2:          0.02242    # (π−φ)/(3Ω²)        (OP-1)
   omega_c_h2:          0.11951    # KAL₀·ω_b·n_s       (forward, ya en Paper 1; 0.41σ)
-  omega_nu_h2:         0.000741   # Σm_ν/93.14 eV
+  # Σm_ν es CLAVE DE PRIMERA CLASE (antes vivía solo en un comentario de m_phi_eV,
+  # por eso el cambio C_ν 94.07→93.14 no propagó a ω_ν y quedó 0.000741 stale).
+  # Toda pieza que use Σm_ν DEBE leer esta clave, no reconstruirla.
+  sigma_m_nu_eV:       0.06849    # Σm_ν^active = R₂·ω_b·C_ν/(τ_Π·H₀), C_ν=93.14 PDG
+  C_nu_eV:             93.14      # cierre ν PDG (N_eff=3.046); era 94.07 desacople instantáneo
+  omega_nu_h2:         0.000735   # = Σm_ν/C_ν = 0.06849/93.14 (era 0.000741 = Σm_ν 0.06902 stale)
   omega_m_h2:          0.14267    # ω_m físico = ω_b+ω_c+ω_ν
   Omega_m_CMB:         0.30889    # = ω_m/h² @ H=67.962  (CANÓNICO, DERIVADO; era 0.31076 vía π/φ)
   H0_alg_km_s_Mpc:     67.962     # 3(φ+π)² — H GLOBAL de fondo (titular tras reframe)
 
   # Estadística — CMB (Planck plik_lite TTTEEE, Fase B con ω_m-directo @ H=67.962)
   # log: results/logs/p3_cmb_reframe_omega_m.log  (script run_p3_reframe.py)
-  chi2_CMB_SSEE:       1005.50    # SSEE ω_m-directo (vs ΛCDM 1003.76; Δχ²=+1.74) — plik_lite point est.
-  Delta_BIC_CMB:       -23.93     # plik_lite TTTEEE, k2 vs k6 (cross-check; era +29.4 con π/φ)
+  chi2_CMB_SSEE:       1005.41    # SSEE ω_m-directo (vs ΛCDM 1003.76; Δχ²=+1.65) — plik_lite point est.
+                                 # re-corrido 2026-07-25 con Σm_ν=0.06849 (era 1005.50 con 0.06902)
+  Delta_BIC_CMB:       -24.02     # plik_lite TTTEEE, k2 vs k6 (cross-check; era -23.93 con Σm_ν stale)
   Delta_BIC_cobaya:    -32.2      # plik_lite Cobaya legacy (escenario viejo; PENDIENTE re-confirmar)
   # ── TITULAR canónico CMB: full plik MCMC (off-diagonal TTTEEE + lowl + lensing) ──
   # Cobaya+clipy, SSEE k=2 (H₀ FIJO 67.962) vs ΛCDM k=6. Chains: src/results/chains/ssee_cmb_k2.{1-4}, lcdm_cmb.{1-4}
@@ -115,6 +121,8 @@ canonical:
   theta_star_reframe:  1.04140    # 100θ* (Planck 1.04109±0.00030)
   # Ancla CMB del reframe = H global. Con ω fijos, χ²_CMB se MINIMIZA en H_alg=67.962
   # log: results/logs/p3_h0anchor_reframe.log  (66.5→1214, 67.5→1021, 67.962→1005.5 mín, 68.5→1044)
+  #      ↑ escaneo PREVIO (Σm_ν=0.06902 stale). La POSICIÓN del mínimo no se mueve
+  #      (67.962); el valor en el mínimo re-corrido es 1005.41 — ver p3_cmb_reframe_nu_fix.log.
   H0_CMB_anchor_km_s_Mpc: 67.962  # = H_alg; el H de fondo y el ancla CMB coinciden
 
 # ── Valores RETIRADOS ──────────────────────────────────────────────────
@@ -168,6 +176,12 @@ retired:
   - {pattern: "615.33",    reason: "multiplicador viejo PYROS·VITA·MIKA → SOLAR²·KRYSTOS_V=594.28"}
   - {pattern: "PYROS·VITA·MIKA", reason: "multiplicador viejo (sin mecanismo) → SOLAR²·KRYSTOS_V"}
   - {pattern: "94.07",     reason: "C_ν desacople instantáneo → 93.14 PDG (misma constante, N_eff=3.046)"}
+  # Residuos de C_ν=94.07 en el SECTOR ν (no propagados en 2026-07-10; cazados 2026-07-25).
+  # ω_ν quedó anclado a Σm_ν=0.06902, que al multiplicar por 594.28 devuelve el
+  # RETIRADO 41.02 eV. Un lector que invierta la ecuación de ω_m aterrizaba ahí.
+  - {pattern: "0.000741",  reason: "ω_ν con Σm_ν=0.06902 (C_ν=94.07) → 0.000735 con Σm_ν=0.06849"}
+  - {pattern: "0.06902",   reason: "Σm_ν implícito de ω_ν stale → 0.06849 (=40.70/594.28)"}
+  - {pattern: "0.069017",  reason: "Σm_ν implícito de ω_ν stale (variante) → 0.06849"}
   # Dependientes de la partícula vieja (k_fs/alpha/σ8/S8)
   - {pattern: "0.7536",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8 two-sector @42.47 → 0.7470 @40.70"}
   - {pattern: "0.7483",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8 two-sector @41.02 (C_ν=94.07) → 0.7470 @40.70 (C_ν=93.14)"}

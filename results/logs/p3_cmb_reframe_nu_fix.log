@@ -1,0 +1,36 @@
+=== Fase B / P3 CMB reframe omega_m-DIRECTO ===
+H0=67.9621  omega_b=0.02242  omega_c=0.11951  omega_m=0.14267
+-> Omega_m,CMB = omega_m/h² = 0.30888   (sin factor; OP-8 cerrado)
+[camb] `camb` module loaded successfully from /home/mike/Proyectos/SSEE/eftcamb_ssee/camb
+[planck_2018_highl_plik.ttteee_lite] `clipy` module loaded successfully from /home/mike/cobaya_packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/mike/cobaya_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik' on test data. got -292.286 expected -292.286 (diff -3.86217e-09)
+----
+before crop : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+after crop  : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+SSEE omega_m-directo chi2_eff = 1005.409   (3.0s)
+[camb] `camb` module loaded successfully from /home/mike/Proyectos/SSEE/eftcamb_ssee/camb
+[planck_2018_highl_plik.ttteee_lite] `clipy` module loaded successfully from /home/mike/cobaya_packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/mike/cobaya_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik' on test data. got -292.286 expected -292.286 (diff -3.86217e-09)
+----
+before crop : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+after crop  : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+SSEE factor pi/phi(0.31076)@H=67.962 chi2_eff = 1058.613  (superado)
+[camb] `camb` module loaded successfully from /home/mike/Proyectos/SSEE/eftcamb_ssee/camb
+[planck_2018_highl_plik.ttteee_lite] `clipy` module loaded successfully from /home/mike/cobaya_packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/mike/cobaya_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik' on test data. got -292.286 expected -292.286 (diff -3.86217e-09)
+----
+before crop : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+after crop  : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+LCDM chi2_eff = 1003.760   (1.3s)
+
+--- RESULTADO ---
+chi2 SSEE reframe = 1005.409
+chi2 LCDM         = 1003.760
+Dchi2 (SSEE-LCDM) = +1.649
+DeltaBIC (k2 vs k6) = -24.024

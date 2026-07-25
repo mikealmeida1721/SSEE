@@ -28,7 +28,7 @@ ombh2_ssee = 0.02237                # Planck 2018 prior (no algebraico)
 # ns_ssee = 1 - phi^-7 = 0.96556 — importado de ssee_core
 As_ssee    = np.exp(3.044) * 1e-10
 tau_ssee   = 0.054
-mnu_ssee   = 0.0690                  # Σm_ν canónico SSEE (R₂=Ω/(KAL·TRIAL)×0.9603 eV)
+mnu_ssee   = 0.06849                 # Σm_ν canónico (C_ν=93.14 PDG; era 0.0690 con C_ν=94.07 baked)
 
 # ΛCDM Planck 2018 best-fit (TT+TE+EE+lowE, Table 2)
 H0_lcdm    = 67.36

@@ -81,7 +81,7 @@ best fits ($\chi^2_{\rm SSEE}=2771.3$ vs.\ $\chi^2_{\Lambda\rm CDM}=2773.1$ over
 $N=2354$ data points, $\Delta\chi^2_{\rm BF}=-1.8$), while the parameter-count economy
 yields $\Delta\mathrm{BIC}=-32.9$, decisively favouring SSEE on the Jeffreys scale.
 (A \texttt{plik\_lite} point-estimate cross-check gives a more conservative
-$\Delta\mathrm{BIC}=-23.9$.) The $\Delta\mathrm{BIC}$ is driven by parsimony, not by
+$\Delta\mathrm{BIC}=-24.0$.) The $\Delta\mathrm{BIC}$ is driven by parsimony, not by
 fit quality.
 SSEE is not falsified by the Planck~PR4 CMB power spectra.
 \end{abstract}
@@ -516,7 +516,7 @@ Blue: SSEE. Orange dashed: $\Lambda$CDM. Black points: Planck PR4 EE data.}
 $[L(L+1)]^2 C_L^{\phi\phi}/(2\pi)$.
 Blue: SSEE. Orange dashed: $\Lambda$CDM. Black points: Planck PR4
 lensing (9 MV bandpowers). Lower panel: residuals normalised by $\sigma_L$.
-SSEE achieves $\chi^2_r=0.719$ over the 9 bandpowers
+SSEE achieves $\chi^2_r=0.720$ over the 9 bandpowers
 (\S\ref{sec:bic}; $\Lambda$CDM: $0.757$), both indicating a good fit
 ($\chi^2_r<1$).}
 \label{fig:pp}
@@ -569,7 +569,7 @@ Spectrum & $N$ & SSEE $\chi^2_r$ & $\Lambda$CDM $\chi^2_r$ & $\Delta\chi^2_r$ \\
 TT & 1971 & 1.042 & 1.043 & $-0.001$ \\
 TE & 1967 & 1.040 & 1.040 & $0.000$ \\
 EE & 1967 & 1.040 & 1.039 & $+0.001$ \\
-PP & 9    & 0.719 & 0.757 & $-0.038$ \\
+PP & 9    & 0.720 & 0.757 & $-0.037$ \\
 \midrule
 Combined$^{\dagger}$ & 5914 & 1.040 & 1.040 & $0.000$ \\
 \bottomrule
@@ -582,7 +582,7 @@ each), indicating that SSEE reproduces the polarization anisotropies
 almost identically to $\Lambda$CDM.
 TT is marginally better than $\Lambda$CDM ($\Delta\chi^2_r=-0.001$).
 In the lensing potential sector (PP, Fig.~\ref{fig:pp}), SSEE achieves
-$\chi^2_r=0.719$ vs.\ $0.757$ for $\Lambda$CDM --- slightly \emph{better} agreement
+$\chi^2_r=0.720$ vs.\ $0.757$ for $\Lambda$CDM --- slightly \emph{better} agreement
 with the 9 Planck MV bandpowers, both $\chi^2_r<1$ indicating a good fit.
 All residuals are consistent with a non-parametric model.
 
@@ -620,12 +620,12 @@ SSEE has $k=2$ ($H_0$ + $\Omega_b h^2$ prior); $\Lambda$CDM has $k=6$.
 Model & $k$ & $\chi^2_r$ & $\Delta$BIC (diagonal) \\
 \midrule
 $\Lambda$CDM & 6 & 1.040 & Baseline ($0.0$) \\
-SSEE & 2 & 1.040 & $-34.9$ \\
+SSEE & 2 & 1.040 & $-35.0$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Under the diagonal approximation, SSEE is favoured ($\Delta\mathrm{BIC}=-34.9$):
+Under the diagonal approximation, SSEE is favoured ($\Delta\mathrm{BIC}=-35.0$):
 the combined $\chi^2_r=1.040$ matches $\Lambda$CDM's $1.040$, so the
 parameter-count term ($\Delta k\,\ln N=-34.7$) dominates and rewards SSEE's
 smaller parameter set. This diagonal cross-check is evaluated at the global
@@ -652,15 +652,15 @@ To establish a definitive baseline for model comparison that fully accounts for 
 \paragraph{Parameter counting ($\omega_m$-direct).}
 All SSEE dark energy parameters ($w_0, w_a$), the spectral index $n_s$, and --- under the 2026 $\omega_m$-direct reframe --- the baryon and cold-matter densities $\omega_b=(\pi-\varphi)/(3\Omega^2)=0.02242$ and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.11951$ are algebraically fixed. The dimensional anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$ is itself \emph{derived} from the SH0ES--$f_{\rm screen}$ inversion (Paper~9), not fitted to the CMB; the amplitude $A_s$ and reionization $\tau$ are held fixed at their external Planck values (borrowed inputs, not derived from $\{\varphi,\pi\}$). The two quantities the framework borrows rather than derives are therefore $A_s$ and $\tau$, and we conservatively assign $k=2=\{A_s,\tau\}$. The standard $\Lambda$CDM baseline has $k=6$: $H_0$, $\Omega_b h^2$, $\Omega_c h^2$, $n_s$, $A_s$, and $\tau$ \citep{Planck2018}, all six free in the CMB fit. (The companion full MCMC of \S\ref{sec:b1_mcmc} additionally lets $H_0$ \emph{float} as a validation check: the chain recovers $H_0$ at the algebraic anchor, confirming that fixing it costs no fit quality and that the $k=2$ count is sound.)
 
-Evaluating at the single global anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$ (which is also the \texttt{plik\_lite}-preferred value, $\Omega_{m,\rm CMB}=\omega_m/h^2=0.30889$), the effective $\chi^2$ for SSEE is $1005.502$, compared to $1003.760$ for $\Lambda$CDM. The raw fit penalty is therefore only $\Delta\chi^2 = +1.742$ over $N=613$ bandpowers.
+Evaluating at the single global anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$ (which is also the \texttt{plik\_lite}-preferred value, $\Omega_{m,\rm CMB}=\omega_m/h^2=0.30889$), the effective $\chi^2$ for SSEE is $1005.409$, compared to $1003.760$ for $\Lambda$CDM. The raw fit penalty is therefore only $\Delta\chi^2 = +1.649$ over $N=613$ bandpowers.
 
 \paragraph{Definitive Bayesian Information Criterion.}
 Applying the BIC penalty for the differing degrees of freedom:
 \begin{equation}
     \label{eq:bic_cobaya}
-    \Delta\mathrm{BIC} = 1.742 + (2 - 6)\ln(613) = -23.93.
+    \Delta\mathrm{BIC} = 1.649 + (2 - 6)\ln(613) = -24.02.
 \end{equation}
-A $\Delta\mathrm{BIC} < -10$ constitutes decisive evidence on the Jeffreys scale. Even under a hyper-conservative penalty where SSEE is assigned $k=4$ (additionally counting two algebraically-fixed inputs, $\omega_b$ and $H_0$, as if they were fitted), the result remains $\Delta\mathrm{BIC} = 1.742 + (4-6)\ln(613) = -11.1$, still strongly favouring the SSEE framework. This evaluation confirms that the geometric constraint of the SSEE background reproduces the CMB temperature and polarisation spectra without relying on diagonal approximations. (The earlier legacy minimization, which found $H_0=67.037$ with $\Delta\chi^2=+2.875$ and $\Delta\mathrm{BIC}=-32.2$, is superseded by this $\omega_m$-direct evaluation.)
+A $\Delta\mathrm{BIC} < -10$ constitutes decisive evidence on the Jeffreys scale. Even under a hyper-conservative penalty where SSEE is assigned $k=4$ (additionally counting two algebraically-fixed inputs, $\omega_b$ and $H_0$, as if they were fitted), the result remains $\Delta\mathrm{BIC} = 1.649 + (4-6)\ln(613) = -11.2$, still strongly favouring the SSEE framework. This evaluation confirms that the geometric constraint of the SSEE background reproduces the CMB temperature and polarisation spectra without relying on diagonal approximations. (The earlier legacy minimization, which found $H_0=67.037$ with $\Delta\chi^2=+2.875$ and $\Delta\mathrm{BIC}=-32.2$, is superseded by this $\omega_m$-direct evaluation.)
 
 % ===========================================================================
 \subsection{Full posterior sampling via Cobaya MCMC (B1)}
@@ -773,8 +773,8 @@ $H_0=67.962$, $\omega_m$-direct) is the canonical result.}
 \toprule
 Method & Spectra & $N$ & $k_{\rm SSEE}$ & $k_{\Lambda\rm CDM}$ & $\Delta\mathrm{BIC}$ \\
 \midrule
-Diagonal (approx.)        & TT+TE+EE+PP          & 5914 & 2 & 6 & $-34.9$ (SSEE favoured) \\
-\texttt{plik\_lite} point est. & TTTEEE          & 613  & 2 & 6 & $-23.93$ (SSEE decisively favoured) \\
+Diagonal (approx.)        & TT+TE+EE+PP          & 5914 & 2 & 6 & $-35.0$ (SSEE favoured) \\
+\texttt{plik\_lite} point est. & TTTEEE          & 613  & 2 & 6 & $-24.02$ (SSEE decisively favoured) \\
 Full \texttt{plik} MCMC   & TTTEEE+lowl+lensing  & 2354 & 2 & 6 & $\mathbf{-32.9}$ \emph{(canonical)} \\
 Full \texttt{plik} (conserv.) & TTTEEE+lowl+lensing & 2354 & 4 & 6 & $-17.3$ (SSEE strongly favoured) \\
 \bottomrule
@@ -1022,9 +1022,9 @@ The key results are:
   \item Acoustic peaks at $\ell=220,\,536,\,813$, within $\Delta\ell\leq5$ of Planck PR4.
   \item TT: $\chi^2_r=1.042$ over 1971 multipoles ($\Lambda$CDM: $1.043$).
   \item TE/EE: $\chi^2_r=1.040/1.040$, essentially matching $\Lambda$CDM.
-  \item Lensing (PP): $\chi^2_r=0.719$ vs.\ $0.757$ for $\Lambda$CDM — SSEE marginally better (both $\chi^2_r<1$).
-  \item \textbf{\texttt{plik\_lite} TTTEEE ($\omega_m$-direct):} $\chi^2_{\mathrm{eff}} = 1005.50$ at $H_0 = 67.962$ km\,s$^{-1}$\,Mpc$^{-1}$ (the CMB-minimising value with SSEE-fixed $\omega_b,\omega_c$).
-  \item $\Delta\mathrm{BIC}=-23.93$ ($k=2$ vs $k=6$), decisively favouring SSEE over $\Lambda$CDM.
+  \item Lensing (PP): $\chi^2_r=0.720$ vs.\ $0.757$ for $\Lambda$CDM — SSEE marginally better (both $\chi^2_r<1$).
+  \item \textbf{\texttt{plik\_lite} TTTEEE ($\omega_m$-direct):} $\chi^2_{\mathrm{eff}} = 1005.41$ at $H_0 = 67.962$ km\,s$^{-1}$\,Mpc$^{-1}$ (the CMB-minimising value with SSEE-fixed $\omega_b,\omega_c$).
+  \item $\Delta\mathrm{BIC}=-24.02$ ($k=2$ vs $k=6$), decisively favouring SSEE over $\Lambda$CDM.
   \item $\Omega_{m,\mathrm{CMB}}=0.30889$ within $0.88\sigma$ of Planck 2018.
   \item The sound horizon $r_d=147.17$ Mpc matches $\Lambda$CDM to $0.03\%$.
 \end{itemize}

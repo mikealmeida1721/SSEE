@@ -71,7 +71,7 @@ la fuente antes de tocar nada.
   translated to English; retired-live claims (MIRA=Ω_CMB/Ω_dyn, "MIRA derivation" open
   problem) that contradicted the reframe were corrected.
 - **Root refresh.** README, AUDIT.md, CITATION.cff, RIGOR_CHECKLIST.md brought to the
-  canonical values (m_φ, k_fs, S₈, n_s tension 0.16σ, CMB ΔBIC −32.9/−23.9/−34.9,
+  canonical values (m_φ, k_fs, S₈, n_s tension 0.16σ, CMB ΔBIC −32.9/−24.0/−35.0,
   OPEN_PROBLEMS 18 items). Guardian **VERDE, 139 checks**.
 
 ## V3.6.1 — DESI DR2 vector correction: DR1 data mislabelled as DR2 (2026-07-02)
@@ -110,9 +110,9 @@ la fuente antes de tocar nada.
   P9 screening fraction f_screen.
 - **CMB ΔBIC (canonical):** full `plik` MCMC (TTTEEE+lowl+lensing, k=2 vs k=6,
   N=2354) gives χ²_BF = 2771.3 (SSEE) vs 2773.1 (ΛCDM) — indistinguishable fits —
-  and **ΔBIC = −32.9** (parsimony-driven). Cross-checks: −23.9 (plik_lite, N=613),
-  −34.9 (diagonal, N=5914). The earlier legacy-MIRA Cobaya −32.2 is superseded.
-- **φ-DM canonical particle:** m_φ = Σm_ν·(SOLAR²·KRYSTOS) = 0.06902 eV × 594.28 =
+  and **ΔBIC = −32.9** (parsimony-driven). Cross-checks: −24.0 (plik_lite, N=613),
+  −35.0 (diagonal, N=5914). The earlier legacy-MIRA Cobaya −32.2 is superseded.
+- **φ-DM canonical particle:** m_φ = Σm_ν·(SOLAR²·KRYSTOS) = 0.06849 eV × 594.28 =
   **41.02 eV** (retired 36.95 and 42.47); k_fs = **0.762 h/Mpc**; CLASS forward
   σ₈_eff = 0.748, **S₈ = 0.759 (0.04σ KiDS-1000)**; fσ₈ mean tension 0.70σ.
 - **Growth:** G_growth = D₁_SSEE/D₁_ΛCDM = **1.003** (ΛCDM-consistent at the reframed

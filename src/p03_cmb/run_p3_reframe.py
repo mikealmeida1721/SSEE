@@ -19,7 +19,7 @@ n_s   = 1 - phi**-7
 H0      = 3*Omega**2                 # 67.962  H global = H_alg
 ombh2   = (pi-phi)/(3*Omega**2)      # 0.02242  SSEE algebraico (OP-1)
 omch2   = KAL0 * ombh2 * n_s         # 0.11951  forward (Paper 1)
-mnu     = 0.06902                    # Sigma_m_nu activos
+mnu     = 0.06849                    # Sigma_m_nu activos (C_nu=93.14; era 0.06902)
 omega_m = ombh2 + omch2 + mnu/93.14  # 0.14267  omega_m fisico
 Omm_cmb = omega_m / (H0/100)**2      # 0.30889  DERIVADO, sin factor
 

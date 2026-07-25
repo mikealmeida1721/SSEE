@@ -90,7 +90,7 @@ ns_ssee    = 1.0 - (1.0 / phi) ** 7   # 0.96556 — algebraic spectral index
 KAL0       = beta + pi                 # 5.5214 — Structural Viscosity
 ombh2_ssee = (pi - phi) / (3.0 * Omega_ssee**2)   # 0.022423 — ω_b directo
 omch2_ssee = KAL0 * ombh2_ssee * ns_ssee          # 0.11951 — ω_c forward (KAL₀·ω_b·n_s)
-mnu_ssee   = 0.0690                    # Σm_ν canónico (R₂·0.960318 eV); ω_ν = Σm_ν/93.14
+mnu_ssee   = 0.06849                   # Σm_ν canónico (C_ν=93.14 PDG; era 0.0690); ω_ν = Σm_ν/C_ν
 # Ω_m,CMB derivado: (ω_b+ω_c+ω_ν)/h² → 0.30889 @ H_alg=67.962 (era 0.31993 vía MIRA, retirado)
 Omm_cmb    = (ombh2_ssee + omch2_ssee + mnu_ssee/93.14) / (67.962/100.0)**2  # ≈0.30889 (diagnóstico)
 
@@ -189,7 +189,7 @@ def _ssee_info(output_prefix, Rminus1_stop=0.02, burn_in=300, h0_fixed=False):
             "ns":     ns_ssee,
             "w":      w0_ssee,
             "wa":     wa_ssee,
-            "mnu":    mnu_ssee,          # 0.0690 — Σm_ν canónico
+            "mnu":    mnu_ssee,          # 0.06849 — Σm_ν canónico
             "omk":    0.0,
             # --- Derived from sampled ---
             "As": {

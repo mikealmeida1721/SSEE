@@ -474,8 +474,8 @@ desde primeros principios (necesario para aspirar a nivel de premio).
 > $\Omega_{m,{\rm dyn}}=0.160$ (DESI) y $\omega_m$ (CMB) son **dos predicciones
 > independientes**, ya no ligadas por ningún factor (ni MIRA ni π/φ).
 > Verificación CMB Fase B (Planck plik_lite, $H=67.962$, $\Omega_m=0.30889$):
-> $\chi^2_{\rm SSEE}=1005.50$ vs $\chi^2_{\Lambda{\rm CDM}}=1003.76$,
-> $\Delta\mathrm{BIC}=-23.93$ → SSEE favorecido
+> $\chi^2_{\rm SSEE}=1005.41$ vs $\chi^2_{\Lambda{\rm CDM}}=1003.76$,
+> $\Delta\mathrm{BIC}=-24.02$ → SSEE favorecido
 > (`results/logs/p3_cmb_reframe_omega_m.log`).
 >
 > **Residuo honesto (no es perilla nueva):** $\Omega_{m,{\rm CMB}}$ ahora descansa
@@ -1299,7 +1299,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-5 | P5-6 | ~~S₈ 2.29σ DES (fσ₈ resuelto P6)~~ | ✅ PARCIAL | HMcode-2020 CLASS: S₈=0.758 (0.06σ DES); N-body full → Paper B/ext |
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
 | OP-7 | P4/7/8 | QFT derivation of Genesis role assignments | ✅ PARCIAL | EFT uniqueness formalizado P7 §5.2 + P1 §5.3; QFT desde primeros principios → largo plazo |
-| OP-8 | Transv. | ~~MIRA dynamical mechanism~~ → factor-materia DISUELTO | ✅ DISUELTO 2026-06-18 | Reframe ω_m-directo: Ω_m,CMB=ω_m/h²=0.30889 sin factor (ω_c=KAL₀·ω_b·n_s forward); MIRA persiste solo en f_screen; CMB χ²=1005.5/ΔBIC=−23.9 |
+| OP-8 | Transv. | ~~MIRA dynamical mechanism~~ → factor-materia DISUELTO | ✅ DISUELTO 2026-06-18 | Reframe ω_m-directo: Ω_m,CMB=ω_m/h²=0.30889 sin factor (ω_c=KAL₀·ω_b·n_s forward); MIRA persiste solo en f_screen; CMB χ²=1005.41/ΔBIC=−24.02 |
 | OP-9 | P6 | ~~m_φ=5.60 eV numerological~~ → m_φ=40.70 eV canónico | 🔶 **ABIERTO** (derivar coef UV 594.28 → OP-10) · partícula ya adoptada [OP-17] y falseable (k_fs=0.754) | $m_\varphi=\Sigma m_\nu^{\rm active}\cdot(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS\_V})=40.70$ eV (SOLAR=φ+2π, **KRYSTOS_V=φ+π+Ω** padres {φ,π,Ω}, NO 2Ω; mult=594.28), término de masa $g^2v$ escrito, **falseable por $k_{\rm fs}=0.754$ (DESI/Euclid)** — contenido MEDIBLE cerrado (adoptado OP-17). El origen UV del coeficiente vive **más allá del horizonte de saturación TRIAL** (no es un hueco: es el borde de lo medible; la derivación dinámica es OP-10, gobernada por ley, no numerología). Intento de transporte 2026-07-11 → CORTE (ver §OP-9). Antes 36.95 (Ω⁴+AURA·KAL) y 42.47 (PYROS·VITA·MIKA), retirados |
 | OP-10 | P6/P7 | Unify χ into φ via richer V(φ) | Medium-High | V(φ) with slope (DE) + minimum (DM matter-mode); restores zero-param status |
 | OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |

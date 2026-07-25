@@ -116,8 +116,8 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | r_d,SSEE (MCMC, geometría total Ω_m=0.30889) | **148.15 Mpc** ≈ r_d(ΛCDM) 147.78 (ratio 1.002) | `ssee_paper2_mcmc.py` → `results/logs/mcmc_paper2_3models_om308.log` | 2026-07-09 (el 175.16 crudo era Ω_m,dyn=0.160 en E(z), bug superado) |
 | r_d (CAMB, reframe ω_m-directo @ H=67.962, Ω_m,CMB=0.30889) | 147.17 Mpc — **0.32σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` (sin mapping MIRA; era 146.73@67.037) | 2026-06-19 |
 | χ²_r CMB TT (SSEE) | 1.042 | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962, Σm_ν=0.0685) → `results/logs/paper3_cmb_reframe.log` | 2026-06-19 (era 1.044 @67.04 legacy) |
-| ΔBIC CMB diagonal (SSEE−ΛCDM) | −34.9 (SSEE favorecido) | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962) → `results/logs/paper3_cmb_reframe.log` | 2026-06-19 (era −28.0 @67.04 legacy MIRA superado) |
-| ΔBIC CMB plik_lite TTTEEE (ω_m-directo, k=2) | **−23.93** (χ²=1005.50 @ H_alg=67.962) | `run_p3_reframe.py` → `results/logs/p3_cmb_reframe_omega_m.log` | 2026-06-19 (canónico reframe; Cobaya legacy −32.2 @67.037 superado) |
+| ΔBIC CMB diagonal (SSEE−ΛCDM) | −35.0 (SSEE favorecido) | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962) → `results/logs/p3_pr4_diag_nu_fix.log` | 2026-07-25 (Σm_ν=0.06849 coherente; era −34.9 con 0.0690, −28.0 @67.04 legacy) |
+| ΔBIC CMB plik_lite TTTEEE (ω_m-directo, k=2) | **−24.02** (χ²=1005.41 @ H_alg=67.962) | `run_p3_reframe.py` → `results/logs/p3_cmb_reframe_nu_fix.log` | 2026-06-19 (canónico reframe; Cobaya legacy −32.2 @67.037 superado) |
 | θ* (CAMB, en anchor H_alg 67.962, mnu=0.069) | 0.59668° (100θ*=1.04140) — **1.05σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-06-19 |
 | θ* (CAMB, en posterior 67.9475, mnu=0.069) | 0.59666° (100θ*=1.04136) — **0.91σ** (posterior coincide con anchor; la tensión 6.66σ era el bug del sector 0.160 en E(z), V-L4-DESI) | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-07-09 (geometría total corregida; posterior 67.159/66.41 superados) |
 | σ₈ / S₈ SSEE (Paper 5 single-sector, "el desafío") | 0.8335 / 0.846 — **3.5σ KiDS** | `ssee_paper5_IS_perturbations.py` (G=1.011, Ω_m,CMB=0.30889) | 2026-06-19 (canónico; antes 0.820/0.847 @0.3199) |
@@ -254,7 +254,9 @@ dimensional pasa.
 - **V-L2-10 m_φ = Σm_ν^active · (Ω⁴+AURA·KAL₀)** — forward-prediction canónica:
   `[eV]·(número puro)=[eV]`, dimensionalmente **consistente**. Con
   Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV = 0.069023 eV y multiplicador
-  Ω⁴+AURA·KAL₀ = 535.2795 → m_φ = 36.9463 eV (cero fiteo). Reemplaza la vieja
+  Ω⁴+AURA·KAL₀ = 535.2795 → m_φ = 36.9463 eV (cero fiteo). *(Cadena **RETIRADA**:
+  C_ν=94.07 baked y multiplicador viejo; vigente = Σm_ν 0.06849 · SOLAR²·KRYSTOS_V
+  = 40.70 eV. Conservada para trazar el linaje.)* Reemplaza la vieja
   cadena numerológica `Σm_ν·H₀^alg = 5.60 eV` (RETIRADA — sí era `[eV]·[km/s/Mpc]`).
   Lo que queda **ABIERTO** es el Lagrangiano φ-DM que justifique el multiplicador
   (OP-9), no la dimensión.
@@ -474,9 +476,12 @@ No es "RESUELTO" pleno. **PARCIAL.**
 *Claim CLAUDE.md (canónico 2026-06-04):* "m_φ = Σm_ν^active × (Ω⁴+AURA·KAL₀)
 = 40.70 eV — forward-prediction, cero fiteo".
 
-1. **✓ numérico:** la cadena cierra — Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV
-   = 0.071875·0.960318 = 0.069023 eV; multiplicador Ω⁴+AURA·KAL₀ = 535.2795;
-   m_φ = 0.069023·535.2795 = 36.9463 eV.
+1. **✓ numérico:** *(cadena **RETIRADA** — registro histórico del multiplicador
+   viejo Ω⁴+AURA·KAL₀ y del C_ν=94.07 baked; superada por SOLAR²·KRYSTOS_V con
+   C_ν=93.14 PDG → Σm_ν=0.06849 eV, m_φ=40.70 eV. Conservada para trazar el linaje.)*
+   Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV
+   = 0.071875·0.960318 = 0.069023 eV (valor **anterior**, C_ν viejo); multiplicador
+   Ω⁴+AURA·KAL₀ = 535.2795; m_φ = 0.069023·535.2795 = 36.9463 eV.
 2. **✓ dimensional:** `[eV]·(número puro)=[eV]`. El multiplicador es
    combinación de constantes adimensionales (Ω, AURA, KAL₀). Reemplaza la vieja
    cadena `Σm_ν·H₀^alg` (RETIRADA — esa sí era `[eV]·[km/s/Mpc]`).
@@ -923,7 +928,7 @@ lo reportado en CLAUDE.md:
 
 *(NOTA 2026-07-08: esta tabla es el re-run histórico 2026-05-22 PRE-reframe,
 valores superados; el canónico vigente es el de Paper 3 @ ω_m-directo:
-TT 1.042, TE 1.040, EE 1.040, PP 0.719, ΔBIC diagonal −34.9.)*
+TT 1.042, TE 1.040, EE 1.040, PP 0.720, ΔBIC diagonal −35.0.)*
 
 | Espectro | SSEE χ²_r | ΛCDM χ²_r | N |
 |---|---|---|---|

@@ -14,9 +14,22 @@ Es decir, el H global de fondo y el ancla CMB coinciden: 67.962.
 Tamaño producción: 100 walkers × 25000 steps (= original Paper 2).
 Solo corre SSEE (no ΛCDM ni CPL — ya están bien establecidos).
 
-Hipótesis a falsar:
-  Posterior H₀ = compromiso entre el ancla CMB (67.962) y DESI tardío.
-  El sector DESI usa Ω_m,dyn=0.160 (INALTERADO por el reframe).
+PREGUNTA QUE CONTESTA ESTE SCRIPT (no confundir con otros MCMC del repo):
+  «Combinando la informacion del CMB (via el ancla, como prior) con los BAO de
+   DESI DR2, ¿donde queda H₀?»  El prior NO es una suposicion a soltar: es uno
+   de los DOS datasets que se estan combinando. Soltar H₀ contestaria otra
+   pregunta —«¿que prefiere DESI solo?»— que responde
+   src/p09_hubble/ssee_h0_prior_experiment.py (prior plano: 67.660 ± 0.465).
+
+GEOMETRIA (corregido 2026-07-09 V-L4-DESI, docstring actualizado 2026-07-25):
+  E(z), r_d y toda distancia BAO usan la materia TOTAL, y esta se construye
+  del ABSOLUTO algebraico, no de una fraccion congelada:
+      ω_m = ω_b + ω_c + ω_ν = 0.1426675     [fijo, sin H₀ adentro]
+      Ω_m = ω_m/h²                          [DERIVADO por muestra]
+  El sector frio Ω_m,dyn = 1+w₀ = 0.160 NUNCA entra en la geometria — meterlo
+  daba el χ²=726 espurio. Vive solo en las perturbaciones (Paper 6) y en α_K.
+  (La linea previa «El sector DESI usa Ω_m,dyn=0.160» era anterior a ese
+   arreglo y contradecia al codigo; retirada.)
 """
 import numpy as np
 import time, os, sys, warnings

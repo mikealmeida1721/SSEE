@@ -121,6 +121,69 @@ expect_red("R24 conteo: '1 of 378' → ROJO",
            lambda t: t + "\n1 of 378 ratios.\n",
            ["R24", "ROJO"])
 
+# ── Cobertura añadida 2026-07-25 ────────────────────────────────────────
+# Motivo: el drift de Σm_ν sobrevivió 15 días en VERDE porque R17 verificaba
+# el STRING "94.07" y no el NÚMERO derivado. Al medir la cobertura del propio
+# auto-test salió que de 16 reglas R con nombre, sólo 9 tenían mutación: las
+# otras 7 se asumían buenas — el mismo falso verde, un nivel más arriba.
+# Estas mutaciones cierran esa brecha. R14 (procedencia DESI) es la más
+# importante del repo: existe porque los BAO venían mal etiquetados DR1/DR2.
+
+# R15 — dos redondeos distintos de la MISMA tensión n_s en un manuscrito
+expect_red("R15 n_s redondeo incoherente: 0.16σ y 0.2σ juntos → ROJO",
+           "manuscript/SSEE_Paper7_EFT.tex",
+           # DEBE caer en la ventana de R15: ancla varphi^{-7} + mención Planck.
+           lambda t: t + ("\n$n_s=1-\\varphi^{-7}$ is $0.16\\sigma$ from Planck.\n"
+                          "\n$n_s=1-\\varphi^{-7}$ is $0.2\\sigma$ from Planck.\n"),
+           ["R15", "ROJO"])
+
+# R17 — la constante ν vuelve a bifurcarse (94.07 reaparece en un manuscrito)
+expect_red("R17 constante ν bifurcada: '94.07' reaparece → ROJO",
+           "manuscript/SSEE_Paper7_EFT.tex",
+           lambda t: t + "\n$\\Sigma m_\\nu = 94.07\\,\\mathrm{eV}\\,\\Omega_\\nu h^2$\n",
+           ["R17", "ROJO"])
+
+# R18 — narrativa H0-posterior stale (el r_d agrandado que V-L4-DESI retiró)
+expect_red("R18 narrativa stale: 'downward to compensate' → ROJO",
+           "manuscript/SSEE_Paper7_EFT.tex",
+           lambda t: t + "\nThe posterior shifts downward to compensate.\n",
+           ["R18", "ROJO"])
+
+# R19 — un valor BAO de DR1 se cuela en un manuscrito (el bug del mislabel)
+expect_red("R19 BAO DR1-mislabeled: D_H=20.08 (DR2=21.863) → ROJO",
+           "manuscript/SSEE_Paper7_EFT.tex",
+           lambda t: t + "\n$D_H/r_d = 20.08$ for the LRG sample.\n",
+           ["R19", "ROJO"])
+
+# R14 — procedencia DESI: alterar un dígito del csv oficial DEBE doler
+expect_red("R14 procedencia DESI: csv alterado ≠ Tabla 4 oficial → ROJO",
+           "data/raw/desi_dr2_bao.csv",
+           # OJO: "21.863" aparece antes en un COMENTARIO de cabecera; hay que
+           # mutar la FILA DE DATOS o la mutación no prueba nada (lección propia).
+           lambda t: t.replace("0.510,LRG1,DH_over_rd,21.863",
+                               "0.510,LRG1,DH_over_rd,21.860", 1),
+           ["R14", "ROJO"])
+
+# R20 — meter la PREDICCIÓN SSEE (0.758) en el hueco del DATO KiDS (0.759)
+expect_red("R20 ancla observacional: KiDS 0.759 → 0.758 (predicción) → ROJO",
+           "CANONICAL_VALUES.yaml",
+           lambda t: t.replace("obs_KiDS_S8:         0.759", "obs_KiDS_S8:         0.758", 1),
+           ["R20", "ROJO"])
+
+# V-L2-11 — el cierre del sector ν: desincronizar core vs YAML DEBE doler.
+# Ésta es la mutación que, de haber existido el 2026-07-10, habría delatado
+# el drift en el momento de escribirse la regla.
+expect_red("V-L2-11 cierre ν: Σm_ν del core desincronizado del YAML → ROJO",
+           "src/ssee_core.py",
+           lambda t: t.replace("SUM_MNU_EV = 0.06849", "SUM_MNU_EV = 0.06902", 1),
+           ["L2-11", "ROJO"])
+
+# Escáner de valores retirados: un valor RETIRADO presentado como vigente
+expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",
+           "VERIFICATION_LEDGER.md",
+           lambda t: t + "\n\nEl valor vigente de omega_nu es 0.000741 en toda la suite.\n",
+           ["memoria", "ROJO"])
+
 
 # ── Archivo: cajón sin entrada en la Bitácora → ROJO (caso especial dir) ─
 def test_archive_orphan():

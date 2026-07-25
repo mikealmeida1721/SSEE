@@ -9,7 +9,7 @@ They predate three sets of major corrections and MUST NOT be submitted as-is:
 - **Canonical φ-DM particle lineage** — the Paper 6 bundle still contains
   **m_φ = 36.95 eV** (the retired AURA·KAL era, two reframes before the canonical
   **40.70 eV** SOLAR²·KRYSTOS with the ν-closure constant C=93.14).
-- **V-L4-DESI geometry fix** (2026-07-09) — H₀ posterior 66.41 → **67.95 ± 0.40**,
+- **V-L4-DESI geometry fix** (2026-07-09) — H₀ posterior 66.41 → 67.95; luego **67.79 ± 0.35** (R25, ω_m fijo),
   r_d, θ*, χ²_BAO all corrected.
 - **Full 10-paper + consolidation audit** (2026-07-10) to 10/10.
 

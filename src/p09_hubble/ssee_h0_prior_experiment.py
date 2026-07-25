@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 import os as _reloc_os, sys as _reloc_sys  # reloc: anclar src/
 _reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_os.path.abspath(__file__))))
 from ssee_core import (
-    PHI, PI, KAL0, W0, WA, OMEGA_M_TOTAL, H0_ALG
+    PHI, PI, KAL0, W0, WA, OMEGA_M_TOTAL, OMEGA_M_H2, H0_ALG
 )
 
 # ───── Constantes ─────
@@ -63,29 +63,30 @@ def f_de_cpl(z, w0, wa):
     a = 1.0 / (1.0 + z)
     return (1+z)**(3*(1+w0+wa)) * np.exp(-3*wa*(1-a))
 
-def E_ssee(z):
-    return np.sqrt(OMEGA_M_TOTAL*(1+z)**3 + (1.0-OMEGA_M_TOTAL)*f_de_cpl(z, W0, WA))
+def E_ssee(z, Om):
+    # Om es ARGUMENTO: SSEE fija ω_m (absoluto); Ω_m = ω_m/h² es DERIVADO (R25).
+    return np.sqrt(Om*(1+z)**3 + (1.0-Om)*f_de_cpl(z, W0, WA))
 
-def DC(z_max, n=300):
+def DC(z_max, Om, n=300):
     zz = np.linspace(0, z_max, n)
-    return np.trapezoid(1.0/E_ssee(zz), zz)
+    return np.trapezoid(1.0/E_ssee(zz, Om), zz)
 
 def sound_horizon_rd(ob_h2, om_h2):
     return 147.27 * (om_h2/0.1432)**(-0.255) * (ob_h2/0.02237)**(-0.134)
 
-def predict_desi(H0, rd):
+def predict_desi(H0, rd, Om):
     preds = []
     for z, qty in zip(DESI_Z, DESI_TYPE):
-        dm = (C_KM/H0) * DC(z)
-        dh = C_KM / (H0 * E_ssee(z))
+        dm = (C_KM/H0) * DC(z, Om)
+        dh = C_KM / (H0 * E_ssee(z, Om))
         if qty == "DM_rd":   preds.append(dm / rd)
         elif qty == "DH_rd": preds.append(dh / rd)
         else:                preds.append((z*dm**2*dh)**(1/3) / rd)
     return np.array(preds)
 
-def ll_bao(H0, om_h2, ob_h2):
+def ll_bao(H0, om_h2, ob_h2, Om):
     rd = sound_horizon_rd(ob_h2, om_h2)
-    r  = predict_desi(H0, rd) - DESI_OBS
+    r  = predict_desi(H0, rd, Om) - DESI_OBS
     return -0.5 * (r @ DESI_COV_INV @ r)
 
 def ll_clusters_const():
@@ -108,8 +109,9 @@ def lpost_factory(prior_kind):
             if not (0.015 < ob_h2 < 0.030): return -np.inf
             lp_H0  = -0.5*((H0-mu)/sig)**2
             lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
-            om_h2  = OMEGA_M_TOTAL*(H0/100)**2
-            return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2) + LLC_CLUSTERS_CONST
+            om_h2  = OMEGA_M_H2                    # ω_m algebraico FIJO (R25)
+            Om     = OMEGA_M_H2/(H0/100)**2        # Ω_m DERIVADO por muestra
+            return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2, Om) + LLC_CLUSTERS_CONST
         return lp
     elif prior_kind == "mira":
         mu, sig = PRIOR_MIRA
@@ -119,8 +121,9 @@ def lpost_factory(prior_kind):
             if not (0.015 < ob_h2 < 0.030): return -np.inf
             lp_H0  = -0.5*((H0-mu)/sig)**2
             lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
-            om_h2  = OMEGA_M_TOTAL*(H0/100)**2
-            return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2) + LLC_CLUSTERS_CONST
+            om_h2  = OMEGA_M_H2                    # ω_m algebraico FIJO (R25)
+            Om     = OMEGA_M_H2/(H0/100)**2        # Ω_m DERIVADO por muestra
+            return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2, Om) + LLC_CLUSTERS_CONST
         return lp
     elif prior_kind == "ssee":
         mu, sig = PRIOR_SSEE
@@ -130,8 +133,9 @@ def lpost_factory(prior_kind):
             if not (0.015 < ob_h2 < 0.030): return -np.inf
             lp_H0  = -0.5*((H0-mu)/sig)**2
             lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
-            om_h2  = OMEGA_M_TOTAL*(H0/100)**2
-            return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2) + LLC_CLUSTERS_CONST
+            om_h2  = OMEGA_M_H2                    # ω_m algebraico FIJO (R25)
+            Om     = OMEGA_M_H2/(H0/100)**2        # Ω_m DERIVADO por muestra
+            return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2, Om) + LLC_CLUSTERS_CONST
         return lp
     else:  # flat
         def lp(theta):
@@ -139,8 +143,9 @@ def lpost_factory(prior_kind):
             if not (50 < H0 < 90): return -np.inf
             if not (0.015 < ob_h2 < 0.030): return -np.inf
             lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2  # BBN se mantiene
-            om_h2  = OMEGA_M_TOTAL*(H0/100)**2
-            return lp_bbn + ll_bao(H0, om_h2, ob_h2) + LLC_CLUSTERS_CONST
+            om_h2  = OMEGA_M_H2                    # ω_m algebraico FIJO (R25)
+            Om     = OMEGA_M_H2/(H0/100)**2        # Ω_m DERIVADO por muestra
+            return lp_bbn + ll_bao(H0, om_h2, ob_h2, Om) + LLC_CLUSTERS_CONST
         return lp
 
 # ───── Runner ─────
@@ -202,8 +207,8 @@ print("  " + "-"*64)
 for r in results:
     # ln L_BAO solo (sin prior H0) en MAP
     H0, ob = r["flat"][np.argmax(r["lp"])]
-    om_h2  = OMEGA_M_TOTAL*(H0/100)**2
-    ll_b   = ll_bao(H0, om_h2, ob)
+    om_h2  = OMEGA_M_H2                        # ω_m algebraico FIJO (R25)
+    ll_b   = ll_bao(H0, om_h2, ob, OMEGA_M_H2/(H0/100)**2)
     print(f"  {r['label']:<18} {r['H0_med']:>14.3f} {r['H0_std']:>10.3f}"
           f" {r['H0_map']:>10.3f} {ll_b:>10.2f}")
 

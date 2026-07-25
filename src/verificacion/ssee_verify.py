@@ -1248,6 +1248,70 @@ except Exception as e:
     check("R20 capa operable", False, str(e))
 
 # ─────────────────────────────────────────────────────────────────────
+# CAPA R25 — parametrización: ω_m es el ABSOLUTO que SSEE fija; Ω_m es DERIVADO.
+#
+# Hallazgo 2026-07-25. Los MCMC congelaban la FRACCIÓN Ω_m=0.30889 y derivaban
+# ω_m = Ω_m·h² en cada paso:
+#       om_h2 = OMEGA_M_TOTAL*(H0/100)**2        ← parametrización INVERTIDA
+# Pero SSEE predice el absoluto ω_m = ω_b+ω_c+ω_ν = 0.14267 (álgebra pura);
+# Ω_m = ω_m/h² es una CONSECUENCIA de H₀, no un ingrediente. Al congelar Ω_m y
+# variar H₀, el ω_m implícito se despegaba hasta ±1.8% de la predicción y sólo
+# coincidía EXACTAMENTE en H₀ = 67.962 — el ancla. Es decir: el MCMC evaluaba
+# SSEE fielmente SÓLO en el ancla y un modelo ligeramente distinto en el resto,
+# sesgando el posterior hacia ella (67.948 = 0.04σ). Con ω_m fijo da 67.783
+# (0.50σ) y el χ²_BAO MEJORA (10.72 → 10.33): el arreglo ajusta mejor los datos.
+#
+# La regla caza la FIRMA del error: multiplicar una Ω_m constante por h² para
+# fabricar ω_m dentro de código de SSEE. En ΛCDM/CPL es LEGÍTIMO (ahí Ω_m es un
+# parámetro muestreado, no una constante), así que sólo se marca cuando el
+# multiplicando es una CONSTANTE de Ω_m (OMEGA_M_TOTAL / OM_GEOM / 0.3088x).
+# ─────────────────────────────────────────────────────────────────────
+print("\nCapa R25 — parametrización ω_m absoluto (no congelar Ω_m en el MCMC)")
+try:
+    _R25_ROOT = pathlib.Path(__file__).resolve().parents[2]
+    _R25_PAT = re.compile(
+        r"(OMEGA_M_TOTAL|OM_GEOM|OMEGA_M_CMB|0\.3088\d*|0\.30889)\s*\*\s*\(\s*H0\s*/\s*100")
+    _R25_HITS = []
+    for _pf in sorted((_R25_ROOT / "src").rglob("*.py")) + \
+               sorted((_R25_ROOT / "class_ssee").rglob("*.py")):
+        # test_guardian.py contiene la cadena del error A PROPÓSITO (es la mutación
+        # que prueba que R25 dispara); marcarla sería morderse la cola.
+        if ("superseded" in str(_pf) or "archive" in str(_pf)
+                or _pf.name == "test_guardian.py"):
+            continue
+        for _i, _ln in enumerate(_pf.read_text(errors="ignore").splitlines(), 1):
+            if _ln.lstrip().startswith("#") or "R25-control" in _ln:
+                continue   # comentarios explicativos y el modo-control declarado
+            if _R25_PAT.search(_ln):
+                _R25_HITS.append(f"{_pf.name}:{_i}")
+    # (b) PUNTO CIEGO de (a), hallado el mismo día: en ssee_phase_d_savage_cv.py el
+    # patrón era `Om * (H0/100)**2` con `Om` una VARIABLE asignada desde la constante
+    # 0.30889 — la forma superficial no coincidía, el significado sí. Lección idéntica
+    # a la de las mutaciones: una regla que busca la superficie deja pasar el fondo.
+    # Este segundo pase marca cualquier archivo que DEFINA una constante Ω_m≈0.3088x
+    # y además fabrique ω_m con ·(H0/100)**2 en alguna línea — revisión obligatoria.
+    _R25_CONST = re.compile(r"^\s*\w+\s*=\s*0\.3088\d*", re.M)
+    _R25_MAKE = re.compile(r"\*\s*\(\s*H0\s*/\s*100\s*\)\s*\*\*\s*2")
+    for _pf in sorted((_R25_ROOT / "src").rglob("*.py")):
+        if ("superseded" in str(_pf) or "archive" in str(_pf)
+                or _pf.name == "test_guardian.py"):
+            continue
+        _txt = _pf.read_text(errors="ignore")
+        if not (_R25_CONST.search(_txt) and _R25_MAKE.search(_txt)):
+            continue
+        # exento si declara explícitamente que la constante es sólo diagnóstico
+        if "NO congelar" in _txt or "R25-control" in _txt or "R25-ok" in _txt:
+            continue
+        _R25_HITS.append(f"{_pf.name} (Ω_m constante + ω_m=Ω_m·h² en el archivo)")
+    check("R25 ningún ω_m fabricado como Ω_m·h² con Ω_m constante (SSEE)",
+          not _R25_HITS,
+          "ω_m = ω_b+ω_c+ω_ν algebraico; Ω_m se deriva por muestra"
+          if not _R25_HITS else
+          "PARAMETRIZACIÓN INVERTIDA en: " + "; ".join(_R25_HITS[:6]))
+except Exception as e:
+    check("R25 capa operable", False, str(e))
+
+# ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)

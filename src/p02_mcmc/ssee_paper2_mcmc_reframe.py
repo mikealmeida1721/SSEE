@@ -30,7 +30,7 @@ import os as _reloc_os, sys as _reloc_sys  # reloc: anclar src/
 _reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_os.path.abspath(__file__))))
 from ssee_core import (
     PHI, PI, BETA, KAL0, P_SC, K_V, T_R, M_V,
-    W0, WA, OMEGA_DE, OMEGA_M_TOTAL, OMEGA_CDM_SECTOR,
+    W0, WA, OMEGA_DE, OMEGA_M_TOTAL, OMEGA_CDM_SECTOR, OMEGA_M_H2,
     OMEGA_M_CMB_MIRA, H0_ALG,
 )
 
@@ -89,29 +89,36 @@ def f_de_cpl(z, w0, wa):
     a = 1.0/(1.0+z)
     return (1+z)**(3*(1+w0+wa)) * np.exp(-3*wa*(1-a))
 
-def E_ssee(z):
-    return np.sqrt(OMEGA_M_TOTAL*(1+z)**3 + (1.0-OMEGA_M_TOTAL)*f_de_cpl(z, W0, WA))  # geometría: materia total 0.30889
+def E_ssee(z, Om):
+    # PARAMETRIZACIÓN (corregida 2026-07-25): Om llega como ARGUMENTO. SSEE fija
+    # ω_m = ω_b+ω_c+ω_ν = 0.14267 (absoluto, algebraico); Ω_m = ω_m/h² es DERIVADO.
+    # Antes Ω_m=0.30889 estaba congelado: al mover H₀ el ω_m implícito se despegaba
+    # hasta ±1.8% de la predicción y sólo coincidía en H₀=67.962 (el ancla), de modo
+    # que el MCMC evaluaba SSEE fielmente SÓLO en el ancla → sesgo hacia ella
+    # (posterior 67.947 = 0.04σ). Con ω_m fijo da 67.783 = 0.50σ y χ²_BAO MEJORA
+    # (10.72→10.33). Ver ssee_paper2_mcmc_wmfix.py (control que reproduce el viejo).
+    return np.sqrt(Om*(1+z)**3 + (1.0-Om)*f_de_cpl(z, W0, WA))
 
-def DC(z_max, n=300):
+def DC(z_max, Om, n=300):
     zz = np.linspace(0, z_max, n)
-    return np.trapezoid(1.0/E_ssee(zz), zz)
+    return np.trapezoid(1.0/E_ssee(zz, Om), zz)
 
 def sound_horizon_rd(ob_h2, om_h2):
     return 147.27 * (om_h2/0.1432)**(-0.255) * (ob_h2/0.02237)**(-0.134)
 
-def predict_desi(H0, rd):
+def predict_desi(H0, rd, Om):
     preds = []
     for z, qty in zip(DESI_Z, DESI_TYPE):
-        dm = (C_KM/H0)*DC(z)
-        dh = C_KM/(H0*E_ssee(z))
+        dm = (C_KM/H0)*DC(z, Om)
+        dh = C_KM/(H0*E_ssee(z, Om))
         if qty == "DM_rd":   preds.append(dm/rd)
         elif qty == "DH_rd": preds.append(dh/rd)
         else:                preds.append((z*dm**2*dh)**(1/3)/rd)
     return np.array(preds)
 
-def ll_bao(H0, om_h2, ob_h2):
+def ll_bao(H0, om_h2, ob_h2, Om):
     rd = sound_horizon_rd(ob_h2, om_h2)
-    r  = predict_desi(H0, rd) - DESI_OBS
+    r  = predict_desi(H0, rd, Om) - DESI_OBS
     return -0.5 * (r @ DESI_COV_INV @ r)
 
 LL_CLUSTERS = -0.5 * sum(((c["M_ig"]*KAL0*(1+FNU_SSEE) - c["M_obs"])/c["dM_obs"])**2
@@ -123,8 +130,9 @@ def lpost(theta):
     if not (0.015 < ob_h2 < 0.030): return -np.inf
     lp_H0  = -0.5*((H0-MIRA_H0[0])/MIRA_H0[1])**2
     lp_bbn = -0.5*((ob_h2-BBN_OBH2[0])/BBN_OBH2[1])**2
-    om_h2  = OMEGA_M_TOTAL*(H0/100)**2   # r_d con materia total (geometría)
-    return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2) + LL_CLUSTERS
+    om_h2  = OMEGA_M_H2                  # ω_m ALGEBRAICO fijo — lo que SSEE predice
+    Om     = OMEGA_M_H2/(H0/100)**2      # Ω_m DERIVADO por muestra (no congelado)
+    return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2, Om) + LL_CLUSTERS
 
 # ─── MCMC ───
 N_W, N_S, N_B, SAVE = 100, 25000, 5000, 500

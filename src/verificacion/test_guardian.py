@@ -178,6 +178,14 @@ expect_red("V-L2-11 cierre ν: Σm_ν del core desincronizado del YAML → ROJO"
            lambda t: t.replace("SUM_MNU_EV = 0.06849", "SUM_MNU_EV = 0.06902", 1),
            ["L2-11", "ROJO"])
 
+# R25 — reintroducir la parametrización invertida (Ω_m congelado · h² para
+# fabricar ω_m dentro de código SSEE) DEBE doler. Es el error que sesgó el
+# posterior de H₀ hacia el ancla (0.04σ) hasta 2026-07-25.
+expect_red("R25 parametrización: ω_m = Ω_m·h² con Ω_m constante → ROJO",
+           "src/p02_mcmc/ssee_paper2_mcmc_reframe.py",
+           lambda t: t + "\n_bad_om = OMEGA_M_TOTAL*(H0/100)**2\n",
+           ["R25", "ROJO"])
+
 # Escáner de valores retirados: un valor RETIRADO presentado como vigente
 expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",
            "VERIFICATION_LEDGER.md",

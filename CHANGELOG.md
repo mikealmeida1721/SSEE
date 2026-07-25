@@ -54,7 +54,7 @@ la fuente antes de tocar nada.
   quantity) instead of the *total* matter density Ω_m=ω_m/h²=**0.30889**. The bug inflated
   **six false tensions** that the suite documented as real; all corrected:
   χ²_BAO **726→~11**, Ω_m **21.3σ→0.88σ**, r_d **175.6→148.2 Mpc** (1.002× ΛCDM),
-  θ* **6.66σ→0.91σ**, H₀ posterior **66.41→67.95 ± 0.40** (0.88σ Planck, **0.04σ from the
+  θ* **6.66σ→0.67σ**, H₀ posterior **66.41→67.79 ± 0.35** (0.66σ Planck, **0.50σ from the
   H_alg anchor** — DR2 *confirms* the prediction), χ²_r(H(z)) **1.86→0.482**. Guardian canary
   R14 now watches for recurrence (0.160-in-E(z) must hurt: χ²=725; total must be sane: χ²=11).
 - **ν-closure constant unified to 93.14 (demonstrated from first principles, 2026-07-10).**

@@ -1,0 +1,144 @@
+============================================================
+PARTE 1: SAVAGE-DICKEY DENSITY RATIO
+============================================================
+  Muestras CPL: 2,500,000
+  Rango w0: [-1.208, -0.436]
+  Rango wa: [-2.307, 0.838]
+
+  Factor truncación prior w0: 0.997300 (Gauss untruncada: 0.997300)
+  Factor truncación prior wa: 0.975900
+
+  Prior density en (w0=-0.84, wa=-0.67):
+    π(w0)  = 0.760113
+    π(wa)  = 0.326608
+    π(w0,wa) = 0.248259
+    N-sigmas w0 del centro prior: 0.320σ
+    N-sigmas wa del centro prior: 0.670σ
+
+  Ajustando KDE 2D con 500,000 muestras...
+  Densidad posterior en (w0=-0.84, wa=-0.67):
+    p(w0,wa | data, CPL) = 4.506367
+
+  ─────────────────────────────────────────────────────
+  SAVAGE-DICKEY: B(SSEE_dyn vs CPL_dyn) = 18.1519
+  ln B = 2.8988
+  → SSEE preferido sobre CPL en sector dinámico
+  → Evidencia SUSTANCIAL (Jeffreys: |ln B|>1.1)
+  → Evidencia FUERTE (Jeffreys: |ln B|>2.3)
+
+  Verificación: fracción CPL posterior dentro de 1σ DESI del punto SSEE:
+    |w0 - -0.84| < 0.057 AND |wa - -0.67| < 0.226
+    Fracción = 34.06%
+    (Esperado para distribución concentrada: ~10-20%)
+
+  Resumen CPL posterior (w0, wa):
+    w0 = -0.826 ± 0.080  (SSEE: -0.84  — 0.18σ)
+    wa = -0.556 ± 0.313  (SSEE: -0.67  — 0.36σ)
+
+============================================================
+PARTE 2: CROSS-VALIDATION PREDICTIVA (LOO-z)
+============================================================
+  Split: 7 puntos train (z < 1.0),  6 puntos test (z ≥ 1.0)
+  Train: z = [0.295 0.51  0.51  0.706 0.706 0.934 0.934]
+  Test:  z = [1.321 1.321 1.484 1.484 2.33  2.33 ]
+
+  [SSEE] k=1
+    Params MAP (train): H0=67.8736
+    χ²/(N_train=7) train:  1.3658
+    ln L test:             -0.6382
+    χ²/(N_test=6)  test:   0.2127
+
+  [LCDM] k=2
+    Params MAP (train): H0=68.9761  Om=0.3085
+    χ²/(N_train=7) train:  1.2613
+    ln L test:             -2.1343
+    χ²/(N_test=6)  test:   0.7114
+
+  [CPL] k=4
+    Params MAP (train): H0=50.0000  Om=0.2243  w0=-0.4060  wa=-0.7244
+    χ²/(N_train=7) train:  0.5942
+    ln L test:             -118.9210
+    χ²/(N_test=6)  test:   39.6403
+
+  ─────────────────────────────────────────────────────
+  RESUMEN CROSS-VALIDATION:
+  Modelo     k   χ²_r train    ln L test    χ²_r test
+  ──────── ─── ──────────── ──────────── ────────────
+  SSEE       1       1.3658      -0.6382       0.2127
+  LCDM       2       1.2613      -2.1343       0.7114
+  CPL        4       0.5942    -118.9210      39.6403
+
+  Δ ln L_test (SSEE − ΛCDM) = +1.4962  (SSEE mejor en test)
+  Δ ln L_test (SSEE − CPL)  = +118.2828  (SSEE mejor en test)
+
+  Interpretación: SSEE usa k=1 free param (solo H0).
+  Si Δ ln L_test(SSEE−ΛCDM) ≥ 0 → SSEE no overfittea DESI.
+
+============================================================
+PARTE 3: RESUMEN PARA PAPER 2 — APÉNDICE B
+============================================================
+
+Savage-Dickey Density Ratio (sector dinámico):
+  B(SSEE_dyn vs CPL_dyn) = 18.152
+  ln B = 2.899
+  → CPL posterior en (w0=-0.840, wa=-0.670): 4.506367
+  → Prior CPL en ese punto:                  0.248259
+
+Interpretación SDDR:
+  B > 1: datos favorecen el punto SSEE dentro de CPL
+  (Jeffreys: evidencia sustancial si |ln B| > 1.1)
+
+Cross-validation predictiva LOO-z (z_test ≥ 1.0):
+  SSEE  k=1: χ²_r test = 0.2127,  ln L_test = -0.6382
+  ΛCDM  k=2: χ²_r test = 0.7114,  ln L_test = -2.1343
+  CPL   k=4: χ²_r test = 39.6403,  ln L_test = -118.9210
+
+  Δ ln L_test (SSEE − ΛCDM) = +1.4962
+  Δ ln L_test (SSEE − CPL)  = +118.2828
+
+────────────────────────────────────────────────────────────
+BLOQUE LaTeX PARA APÉNDICE B:
+────────────────────────────────────────────────────────────
+
+\subsection*{B.1 Savage--Dickey density ratio}
+
+For nested models, the Bayes factor for the dynamic sector is given
+exactly by the Savage--Dickey density ratio~\cite{Verdinelli1995}:
+\begin{equation}
+  B_{\rm SSEE/CPL} = \frac{p(w_0^{\rm S},w_a^{\rm S}\,|\,\mathrm{data,CPL})}
+  {\pi(w_0^{\rm S},w_a^{\rm S}\,|\,\mathrm{CPL})} = 18.15
+  \quad (\ln B = +2.90).
+\end{equation}
+The CPL posterior is evaluated at the algebraic SSEE point
+$(w_0,w_a)=(-0.84,-0.67)$ using a Scott-bandwidth
+Gaussian KDE of the CPL chains ($N=500\,000$ thinned samples).
+The prior is the truncated Gaussian
+$\mathcal{N}(-1,0.5^2)\times\mathcal{N}(0,1^2)$ clipped to the
+sampling box used in the MCMC.
+
+\subsection*{B.2 Predictive cross-validation}
+
+We split the 13 DESI~DR2 BAO measurements into a
+training set ($z<1.0$; 7~points) and a test set ($z\geq1.0$;
+6~points) and fit each model on the training set only.
+SSEE has $k=1$ free parameter (H$_0$, with $w_0,w_a,\Omega_m$
+fixed algebraically); \LCDM has $k=2$ ($H_0,\Omega_m$);
+CPL has $k=4$.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Model & $k$ & $\chi^2_r$(train) & $\Delta\ln L_{\rm test}$\\
+\midrule
+SSEE     & 1 & 1.366  & ---\\
+\LCDM   & 2 & 1.261  & +1.50\\
+CPL      & 4 & 0.594   & +118.28\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$\Delta\ln L_{\rm test} = \ln L_{\rm test}^{\rm SSEE} - \ln L_{\rm test}^{\rm model}$.
+A positive value indicates that SSEE predicts the test set better
+despite having the fewest free parameters, confirming that the
+improvement in the dynamic BIC is not driven by overfitting.
+

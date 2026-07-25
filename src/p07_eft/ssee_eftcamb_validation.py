@@ -32,6 +32,9 @@ H0    = 67.962     # km/s/Mpc (algebraico: 3(φ+π)²)
 Omb   = 0.02242 / (H0/100)**2          # ω_b-direct: Ω_b = ω_b/h² = 0.04854
 Omm_dyn    = 0.160                      # sector dinámico (fija αK; 1+w0)
 Omm_CMB    = 0.30889                    # ω_m-direct canónico (OP-8 disuelto; SIN factor MIRA)
+# R25-ok: aquí H0 es CONSTANTE (67.962, línea 31), no un parámetro muestreado.
+# A H0 fijo, Ω_m·h² == ω_m exactamente: no hay deriva posible. El producto de
+# abajo es conversión de unidades para CAMB, no una parametrización de ajuste.
 Omcdm_CMB  = Omm_CMB - Omb             # 0.26035 — background completo del CMB
 Omm   = Omm_CMB
 OmDE  = 1 - Omm    # flat

@@ -50,7 +50,8 @@ _reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_o
 from ssee_core import (
     PHI, PI, BETA, KAL0, P_SC as P_sc, K_V as KV, T_R as TR, M_V as MV,
     W0 as W0_SSEE, WA as WA_SSEE, OMEGA_DE as OMDE_SSEE,
-    OMEGA_M_TOTAL as OM_GEOM,      # 0.30889 — materia TOTAL: ÚNICA que entra en E(z)/r_d/distancias
+    OMEGA_M_TOTAL as OM_GEOM,      # 0.30889 — Ω_m en el ancla (diagnóstico; NO congelar en el MCMC)
+    OMEGA_M_H2 as WM_ALG,          # 0.14267 — ω_m algebraico: lo que SSEE realmente fija
     OMEGA_CDM_SECTOR as OM_SECTOR, # 0.160 — sector frío (Paper 6 + α_K); NUNCA en geometría
 )
 FNU_SSEE = 0.020   # fracción de neutrinos — no algebraico, queda local
@@ -66,11 +67,17 @@ def f_de_cpl(z, w0, wa):
     a = 1.0 / (1.0 + z)
     return (1+z)**(3*(1+w0+wa)) * np.exp(-3*wa*(1-a))
 
-def E_ssee(z):
-    # Geometría de fondo: usa la materia TOTAL Ω_m=0.30889 (ω_m-directo), como
-    # cualquier E(z). El sector frío 0.160 (=1+w0) NO va aquí — meterlo daba el
-    # χ²=726 espurio con DESI DR2 (V-L4-DESI, 2026-07-09). Ω_DE = 1-Ω_m = 0.691.
-    return np.sqrt(OM_GEOM*(1+z)**3 + (1.0-OM_GEOM)*f_de_cpl(z, W0_SSEE, WA_SSEE))
+def E_ssee(z, Om):
+    # Geometría de fondo: usa la materia TOTAL, NUNCA el sector frío 0.160 (=1+w0);
+    # meterlo daba el χ²=726 espurio con DESI DR2 (V-L4-DESI, 2026-07-09).
+    #
+    # PARAMETRIZACIÓN (corregida 2026-07-25): Om llega como ARGUMENTO porque SSEE
+    # fija ω_m = ω_b+ω_c+ω_ν = 0.14267 (absoluto, algebraico) y Ω_m = ω_m/h² es
+    # DERIVADO. Antes Ω_m=0.30889 estaba congelado dentro de la función: al variar
+    # H₀ el ω_m implícito se despegaba hasta ±1.8% de la predicción de SSEE, y sólo
+    # coincidía en H₀=67.962 — el ancla. Eso evaluaba SSEE fielmente sólo ahí y un
+    # modelo ligeramente distinto en el resto, sesgando el posterior hacia el ancla.
+    return np.sqrt(Om*(1+z)**3 + (1.0-Om)*f_de_cpl(z, W0_SSEE, WA_SSEE))
 
 def E_lcdm(z, Om):
     return np.sqrt(Om*(1+z)**3 + (1-Om))
@@ -172,8 +179,9 @@ def lpost_ssee(theta):
     if not (0.015 < ob_h2 < 0.030): return -np.inf
     lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
     lp_H0  = -0.5*((H0-PLANCK_H0[0])/PLANCK_H0[1])**2
-    om_h2  = OM_GEOM*(H0/100)**2   # r_d usa la materia TOTAL 0.30889 (geometría)
-    lb = ll_bao_full(H0, om_h2, ob_h2, E_ssee)
+    om_h2  = WM_ALG                # ω_m ALGEBRAICO fijo — la predicción de SSEE
+    Om     = WM_ALG/(H0/100)**2    # Ω_m DERIVADO por muestra (no congelado)
+    lb = ll_bao_full(H0, om_h2, ob_h2, E_ssee, Om)
     lc = ll_clusters(KAL0, FNU_SSEE)
     return lp_bbn + lp_H0 + lb + lc
 
@@ -344,7 +352,8 @@ def get_rd(r):
 rd_ssee = get_rd(res_ssee); rd_lcdm = get_rd(res_lcdm)
 H0_s    = res_ssee["medians"][0]; H0_s_std = res_ssee["stds"][0]
 t_H0    = abs(H0_s - PLANCK_H0[0]) / np.sqrt(H0_s_std**2 + PLANCK_H0[1]**2)
-t_Om    = abs(OM_GEOM - PLANCK_OM[0]) / PLANCK_OM[1]   # ahora 0.9σ (era 21σ con el sector 0.160)
+_Om_post = WM_ALG/(H0_s/100)**2                        # Ω_m derivado en el posterior SSEE
+t_Om    = abs(_Om_post - PLANCK_OM[0]) / PLANCK_OM[1]  # (era con OM_GEOM del ancla congelado)
 log(f"\n  r_d(SSEE)={rd_ssee:.2f} Mpc  r_d(ΛCDM)={rd_lcdm:.2f} Mpc  ratio={rd_ssee/rd_lcdm:.3f}")
 log(f"  H₀(SSEE)={H0_s:.2f}±{H0_s_std:.2f}  Planck={PLANCK_H0[0]}±{PLANCK_H0[1]}  tensión={t_H0:.2f}σ")
 log(f"  Ω_m tensión SSEE vs Planck: {t_Om:.2f}σ")
@@ -352,7 +361,8 @@ log(f"  Ω_m tensión SSEE vs Planck: {t_Om:.2f}σ")
 # PPC Cosmic Chronometers
 def H_pred(r, z):
     th = r["theta_map"]
-    if r["label"] == "SSEE": return th[0]*E_ssee(z)
+    # SSEE: Ω_m se deriva del H₀ MAP (ω_m algebraico fijo), no se congela
+    if r["label"] == "SSEE": return th[0]*E_ssee(z, WM_ALG/(th[0]/100)**2)
     if r["label"] == "ΛCDM":      return th[0]*E_lcdm(z, th[1])
     return th[0]*E_cpl(z, th[1], th[2], th[3])
 

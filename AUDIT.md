@@ -10,7 +10,8 @@
 > **0.30889**, no matter factor) and the **SOLAR²·KRYSTOS_V particle** with the unified
 > ν-closure constant C=93.14: **m_φ = 40.70 eV, k_fs = 0.754 h/Mpc, S₈ = 0.758**
 > (0.04σ KiDS). The Hubble cascade is H_alg = 67.962 → H_local = **72.86** (0.17σ);
-> the canonical DR2 posterior is **H₀ = 67.95 ± 0.40** (geometry-total 0.30889, V-L4-DESI).
+> the canonical DR2 posterior is **H₀ = 67.79 ± 0.35** (ω_m algebraic fixed, R25 2026-07-25;
+> the 67.95 froze Ω_m and biased the posterior toward the anchor).
 > For canonical values see `README.md`, `CANONICAL_VALUES.yaml`,
 > and `VERIFICATION_LEDGER.md`. The headline table below is updated; deeper body
 > prose retains the 2026-05-17 figures as the record of that audit.
@@ -95,11 +96,11 @@ Runtime: ~30–60 min (N_eff ≈ 637,500 for SSEE, 100 walkers × 25,000 steps).
 
 Expected output:
 ```
-H₀ = 67.95 ± 0.40 km/s/Mpc  (DR2, geometry-total 0.30889; 0.88σ Planck, 0.04σ anchor)
+H₀ = 67.79 ± 0.35 km/s/Mpc  (DR2, ω_m algebraic fixed R25; 0.66σ Planck, 0.50σ anchor)
 χ²_r clusters = 0.122  (4 clusters, IGIMF-corrected, MCMC)
 χ²_r clusters = 0.126  (7 clusters, analytic sample)
 χ²_2D (w₀-wₐ vs DESI DR2+CMB+Pantheon+) = 0.42 → 0.24σ (rango 0.2–1.8σ según compilado SN, ρ medidos de cadenas oficiales; ver V-L4-DESI)
-ΔBIC (dynamic sector, k_SSEE=2 vs k_ΛCDM=3) = −5.68  [SSEE favoured; CPL −5.59]
+ΔBIC (dynamic sector, k_SSEE=2 vs k_ΛCDM=3) = −6.43  [SSEE favoured; CPL −6.35]
 ΔBIC (full background, k=0 vs k_ΛCDM=6) = +206        [framework penalty]
 ```
 

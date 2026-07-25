@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ssee_core import (
     W0 as W0_SSEE, WA as WA_SSEE,
-    OMEGA_M_TOTAL as OM_GEOM,   # 0.30889 — materia TOTAL, la ÚNICA que entra en E(z)/r_d
+    OMEGA_M_TOTAL as OM_GEOM, OMEGA_M_H2 as WM_ALG,   # 0.30889 — materia TOTAL, la ÚNICA que entra en E(z)/r_d
 )
 
 CHAIN_FILE = _SSEE_DATA + "/mcmc/paper2_3models/mcmc_chains_professional.npz"
@@ -126,7 +126,7 @@ ax8a.set_ylim(0, None)
 # r_d MAP por modelo (om_h2 de la materia TOTAL en cada caso)
 def rd_of(lab, m):
     if lab == "SSEE":
-        H0, ob = m[0], m[1]; om_h2 = OM_GEOM * (H0 / 100) ** 2
+        H0, ob = m[0], m[1]; om_h2 = WM_ALG   # ω_m algebraico fijo (R25), no Ω_m·h²
     elif lab == "ΛCDM":
         H0, Om, ob = m[0], m[1], m[2]; om_h2 = Om * (H0 / 100) ** 2
     else:

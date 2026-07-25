@@ -30,7 +30,11 @@ PI    = 3.14159265358979
 W0_SSEE = -0.840                   # = −Tr/Mv algebraico
 WA_SSEE = -0.670                   # = −P_sc/Kv algebraico
 OM_DYN  = 0.160        # sector frío (NO geometría)
-OM_TOTAL = 0.30889     # materia total (ω_m/h²) — la que va en E(z)/r_d
+OM_TOTAL = 0.30889     # Ω_m EN EL ANCLA (diagnóstico) — NO congelar en ajustes
+WM_ALG   = 0.1426675   # ω_m = ω_b+ω_c+ω_ν ALGEBRAICO — lo que SSEE realmente fija.
+# R25 (2026-07-25): SSEE predice el ABSOLUTO ω_m; Ω_m = ω_m/h² es DERIVADO. Congelar
+# Ω_m y derivar ω_m=Ω_m·h² despega el ω_m implícito hasta ±1.8% de la predicción y
+# sólo coincide en H₀=67.962 (el ancla), sesgando cualquier ajuste hacia ella.
 MIRA    = (3*phi + PI) / 4         # 1.9988976...
 
 # ─────────────────────────────────────────────────────────────
@@ -255,9 +259,9 @@ def cross_validation():
     def nll_train(params, model):
         if model == "ssee":
             H0, = params
-            Om, w0, wa = OM_TOTAL, W0_SSEE, WA_SSEE   # geometría: materia total (era OM_DYN*MIRA=0.320 stale)
+            om_h2 = WM_ALG                        # ω_m algebraico FIJO (R25)
+            Om, w0, wa = WM_ALG/(H0/100)**2, W0_SSEE, WA_SSEE   # Ω_m DERIVADO
             ob_h2 = 0.02237
-            om_h2 = Om * (H0/100)**2
             pred  = predict_subset(H0, ob_h2, om_h2, E_cpl, (Om, w0, wa), idx_train)
         elif model == "lcdm":
             H0, Om = params
@@ -275,9 +279,9 @@ def cross_validation():
     def ll_test(params, model):
         if model == "ssee":
             H0, = params
-            Om, w0, wa = OM_TOTAL, W0_SSEE, WA_SSEE   # geometría: materia total (era OM_DYN*MIRA=0.320 stale)
+            om_h2 = WM_ALG                        # ω_m algebraico FIJO (R25)
+            Om, w0, wa = WM_ALG/(H0/100)**2, W0_SSEE, WA_SSEE   # Ω_m DERIVADO
             ob_h2 = 0.02237
-            om_h2 = Om * (H0/100)**2
             pred  = predict_subset(H0, ob_h2, om_h2, E_cpl, (Om, w0, wa), idx_test)
         elif model == "lcdm":
             H0, Om = params

@@ -61,7 +61,7 @@ heredados de iteraciones previas.
 **Por qué (caso real):** el ancla canónica ha cambiado con el modelo. Era H_MIRA=67.037
 (escenario MIRA), y el reframe ω_m-directo (2026-06-19) la movió a H_alg=67.962 (la CMB
 minimiza ahí con ω_b,ω_c fijos por álgebra). Cualquier benchmark de H₀ debe usar el
-canónico VIGENTE (hoy 67.962 ancla / 67.95±0.40 posterior DR2 con geometría TOTAL 0.30889; el 66.41 previo metía el sector 0.160 en E(z) —bug V-L4-DESI, superseded 2026-07-09— y el 67.16 usaba datos DR1 mal etiquetados), no un valor heredado. El guardián
+canónico VIGENTE (hoy 67.962 ancla / 67.79±0.35 posterior DR2 con ω_m algebraico fijo R25 —el 67.95 congelaba Ω_m—; el 66.41 previo metía el sector 0.160 en E(z) —bug V-L4-DESI, superseded 2026-07-09— y el 67.16 usaba datos DR1 mal etiquetados), no un valor heredado. El guardián
 + memory_sync ahora cazan este drift automáticamente (lista `retired:` con 67.037/66.53).
 
 ## R6 — Conteo y valores exactos contra la fuente 🟡 ⛔

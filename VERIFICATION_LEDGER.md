@@ -255,7 +255,7 @@ dimensional pasa.
   `[eV]·(número puro)=[eV]`, dimensionalmente **consistente**. Con
   Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV = 0.069023 eV y multiplicador
   Ω⁴+AURA·KAL₀ = 535.2795 → m_φ = 36.9463 eV (cero fiteo). *(Cadena **RETIRADA**:
-  C_ν=94.07 baked y multiplicador viejo; vigente = Σm_ν 0.06849 · SOLAR²·KRYSTOS_V
+  factor 0.960318 ⇒ C_ν≈93.86 SIN FUENTE, y multiplicador viejo; vigente = Σm_ν 0.06849 · SOLAR²·KRYSTOS_V
   = 40.70 eV. Conservada para trazar el linaje.)* Reemplaza la vieja
   cadena numerológica `Σm_ν·H₀^alg = 5.60 eV` (RETIRADA — sí era `[eV]·[km/s/Mpc]`).
   Lo que queda **ABIERTO** es el Lagrangiano φ-DM que justifique el multiplicador
@@ -477,7 +477,7 @@ No es "RESUELTO" pleno. **PARCIAL.**
 = 40.70 eV — forward-prediction, cero fiteo".
 
 1. **✓ numérico:** *(cadena **RETIRADA** — registro histórico del multiplicador
-   viejo Ω⁴+AURA·KAL₀ y del C_ν=94.07 baked; superada por SOLAR²·KRYSTOS_V con
+   viejo Ω⁴+AURA·KAL₀ y del factor 0.960318 (C_ν≈93.86, sin fuente); superada por SOLAR²·KRYSTOS_V con
    C_ν=93.14 PDG → Σm_ν=0.06849 eV, m_φ=40.70 eV. Conservada para trazar el linaje.)*
    Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV
    = 0.071875·0.960318 = 0.069023 eV (valor **anterior**, C_ν viejo); multiplicador

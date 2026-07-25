@@ -62,7 +62,9 @@ Om_DNAV = pi_ + phi          # 4.7596 (Ω = π+φ)
 #           m_φ = Σm_ν^active × multiplicador  (eV × adimensional = eV ✓)
 #   Ref: ssee_paper6_canonical_particle.py (canónico SOLAR²·KRYSTOS 2026-06-19, OP-17)
 R2         = Om_DNAV / (KAL0 * Tr)        # 0.071875
-mnu_active = R2 * 0.952874                 # 0.06849 eV (C_ν=93.14 PDG; era ×0.960318 → 0.06902 con C_ν=94.07)
+mnu_active = R2 * 0.952874                 # 0.06849 eV = ω_b·C_ν/τ_Π con C_ν=93.14 PDG.
+# Era ×0.960318 → 0.06902. Ese 0.960318 codifica C_ν≈93.8638 eV: NI 94.07 (desacople
+# instantáneo) NI 93.14 (PDG). Número sin fuente documentada — ver OP-20.
 # multiplicador canónico (reframe SOLAR²·KRYSTOS, 2026-06-19, OP-17 adoptado):
 # SOLAR = BIAL+KAL = φ+2π (linaje radiativo); KRYSTOS_V = φ+π+Ω (padres, anclado por wₐ); forma g²·v
 SOLAR      = beta + KAL0                    # 7.9012 (= φ+2π)

@@ -9,7 +9,7 @@ OP-14) y ESCANEA multiplicadores (×MIRA, ×KAL₀, ×(φ+π)²...) buscando m_�
 La partícula canónica φ-DM (2026-06-04) RESOLVIÓ esa búsqueda por forward-
 prediction con cero fiteo y la ruta R₂ (sin offset ad-hoc):
     R₂   = Ω_DNAV/(KAL·TRIAL) = 0.07188
-    Σm_ν = R₂·0.9603 eV = 0.0690 eV          [RETIRADO: C_ν=94.07 baked]
+    Σm_ν = R₂·0.9603 eV = 0.0690 eV          [RETIRADO: factor sin fuente, C_ν≈93.86]
     m_φ  = Σm_ν·(Ω⁴_DNAV+AURA·KAL) = 0.0690·535.28 = 36.95 eV  (k_fs=0.659)
   VIGENTE (C_ν=93.14 PDG, mult SOLAR²·KRYSTOS_V):
     Σm_ν = 0.06849 eV → m_φ = 0.06849·594.28 = 40.70 eV  (k_fs=0.754)

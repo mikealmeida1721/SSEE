@@ -1574,3 +1574,42 @@ falsa SSEE (la relación es forward y falsable), pero cerrar el mecanismo es lo 
 llevaría de "relación predictiva" a "derivación desde una acción".
 **Relación:** OP-1 (✅ parcial, $\omega_b$/bariogénesis), OP-7 (dualidad de transporte),
 OP-8 (disuelto), OP-10 (UV). Script a crear: `op19_omega_c_mechanism.py` (exploratorio).
+
+---
+
+## OP-20 — El factor `0.960318` no tiene fuente (histórico, ya retirado del cálculo)
+
+**Estado:** CERRADO en el código (2026-07-25), ABIERTO como registro de procedencia.
+
+**Qué es.** Hasta 2026-07-25 la cadena del neutrino se escribía
+`Σm_ν^active = R₂ · 0.960318 eV`. Ese `0.960318` es dimensional (eV) y nunca
+tuvo derivación documentada.
+
+**Qué se verificó.** Si se lo lee como `ω_b · C_ν / τ_Π`, el C_ν implicado es
+
+    C_ν = 0.960318 · τ_Π / ω_b = 93.8638 eV
+
+que **no es ninguno de los dos valores documentados**: ni 94.07 eV (desacople
+instantáneo, N_eff=3) ni 93.14 eV (Mangano+2005 / PDG, N_eff=3.046). Es un
+tercer valor sin origen. Las notas previas que lo describían como «C_ν=94.07
+horneado» eran **incorrectas** (94.07 daría 0.962428) y se corrigieron.
+
+**Por qué importaba.** C_ν aparece arriba (cadena SSEE de Σm_ν) y abajo
+(conversión ω_ν = Σm_ν/C_ν), así que **se cancela**: ω_ν es INVARIANTE bajo la
+elección de C_ν. El único modo de obtener un ω_ν distinto era usar valores
+distintos en los dos lados — que es exactamente lo que ocurría (0.960318 arriba,
+93.14 abajo), dando ω_ν = 0.000741 en vez de 0.000735 (0.78%).
+
+**Resolución.** La cadena se escribe ahora explícita, `Σm_ν = R₂·ω_b·C_ν/τ_Π`
+con C_ν = 93.14 eV en ambos lados, y la cancelación se cumple. Vigilado por
+V-L2-11a/b/c.
+
+**Residuo abierto.** No se sabe de dónde salió el 93.86. Puede haber sido una
+constante de una versión intermedia de la relación relic, un ajuste, o un error
+de transcripción. Se registra porque el modelo no debe contener números sin
+origen, aunque estén retirados: el registro histórico también tiene que ser
+trazable.
+
+**Lección de método.** El valor sobrevivió porque su efecto era invisible
+(0.004% en ω_m) y porque quien lo revisó aceptó una explicación plausible
+—«es C_ν viejo»— sin comprobar la aritmética. Comprobarla toma una división.

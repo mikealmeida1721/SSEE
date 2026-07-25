@@ -154,7 +154,9 @@ for name, (computed, ledger) in L2.items():
 #   N_eff=3.046; DEMOSTRADO en derive_nu_closure.py), R2 = Omega/(KAL0*Tr).
 #   SOLAR = BIAL+KAL = phi+2pi (linaje radiativo); KRYSTOS_V = phi+pi+Omega (padres, NO 2Omega).
 # Dimensionalmente CONSISTENTE: [eV] * (número puro) = [eV].
-# C_ν univaluada en 93.14 (antes 94.07 baked como 0.960318, misma constante; 2026-07-10).
+# C_ν univaluada en 93.14 (PDG, derive_nu_closure.py). El viejo factor 0.960318 NO era
+# 94.07 horneado: implica C_ν≈93.8638 eV, que no es ninguna de las dos documentadas.
+# Número sin fuente — verificado 2026-07-25, registrado como OP-20.
 # Mult. anterior PYROS*VITA*MIKA=615.33 (m_phi=42.47, sin mecanismo) RETIRADO; ver OP-9/OP-17.
 _R2 = Omega / (KAL0 * Tr)
 _mnu_active = _R2 * _omb * 93.14 / (KAL0 * Omega / Tr)   # = 0.06849 eV

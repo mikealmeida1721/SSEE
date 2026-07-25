@@ -188,10 +188,15 @@ log(f"\nComparación con resultados previos:")
 log(f"  Retirado (prior MIRA 67.037, 100w×25k): H₀ = 66.53 ± 0.44")
 log(f"  ESTE (prior H_alg 67.962, 100w×25k):    H₀ = {H0_med:.3f} ± {H0_std:.3f}")
 
-# Tensión con DESI puro (resultado exploratorio H0=65.530)
-desi_pure_H0 = 65.530
+# Distancia al H0 que DESI prefiere SIN ningún prior informativo (prior plano
+# U(50,90)). MEDIDO, no exploratorio: 67.660 +0.462/-0.466 con la parametrización
+# ω_m algebraico fijo (R25). El 65.530 que figuraba aquí era un valor exploratorio
+# hardcodeado, nunca recalculado tras el reframe — misma familia de drift que R25
+# vigila. Fuente: src/p09_hubble/ssee_h0_prior_experiment.py (4 priors)
+#   → results/logs/h0_four_priors_wmfix.log
+desi_pure_H0 = 67.660
 delta = abs(H0_med - desi_pure_H0)
-log(f"\n  Distancia a DESI-puro (65.530): {delta:.3f} km/s/Mpc")
+log(f"\n  Distancia a DESI-puro (67.660, prior plano medido): {delta:.3f} km/s/Mpc")
 
 # Figura
 fig = corner.corner(flat,

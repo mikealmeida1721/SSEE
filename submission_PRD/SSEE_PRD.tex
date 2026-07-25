@@ -37,7 +37,7 @@ We present a minimal-parameter framework for the dark sector in which the
 dimensionless constants, the golden ratio $\varphi=(1+\sqrt5)/2$ and $\pi$,
 rather than by tuned cosmological parameters. The equation of state follows as
 bare ratios of structural invariants, $w_0=-T_r/M_v=-0.840$ and
-$w_a=-P_{\rm sc}/\mathrm{IGNIS}=-0.670$, with no fitted amplitude. The point was fixed in
+$w_a=-P_{\rm sc}/I_g=-0.670$, with no fitted amplitude. The point was fixed in
 advance and survives \emph{two independent} DESI releases: it sits at
 $0.05\sigma$ from the DESI~DR1 $w_0w_a$CDM posterior and, after the uncertainties
 tightened, at $0.24\sigma$ from the newer DESI~DR2 posterior
@@ -108,7 +108,7 @@ $\mathrm{KAL}$ & $\beta+\pi$               & $5.52141$  & Structural viscosity \
 $\mathrm{AURA}$& $\beta+\varphi$           & $3.99785$  & Screening amplitude \\
 $\mathrm{MIRA}$& $\mathrm{AURA}/2$         & $1.99892$  & Mirror Ratio (enters $f_{\rm screen}$, Paper~9) \\
 $P_{\mathrm{sc}}$ (PYROS) & $\Omega+\varphi$ & $6.37766$ & Dynamical evolution scalar ($w_a$ numerator) \\
-$\mathrm{IGNIS}$ & $\pi+P_{\mathrm{sc}}$   & $9.51925$  & Disruptive convergence ($w_a$ denominator) \\
+$I_g$ (IGNIS)  & $\pi+P_{\mathrm{sc}}$     & $9.51925$  & Disruptive convergence ($w_a$ denominator) \\
 $K_v$ (KRYSTOS) & $\varphi+\pi+\Omega$     & $9.51925$  & Structural (builds $M_v$; distinct from IGNIS) \\
 $T_r$          & $3(\varphi+\beta)$        & $11.99354$ & 3D saturation horizon \\
 $M_v$          & $\varphi+\pi+K_v$         & $14.27888$ & Maximal dimensional invariant ($w_0$ denominator) \\
@@ -119,7 +119,7 @@ $M_v$          & $\varphi+\pi+K_v$         & $14.27888$ & Maximal dimensional in
 \noindent Derived background quantities (all dimensionless):
 \begin{equation*}
 w_0=-\frac{T_r}{M_v}=-0.83995,\qquad
-w_a=-\frac{P_{\mathrm{sc}}}{\mathrm{IGNIS}}=-0.66997,\qquad
+w_a=-\frac{P_{\mathrm{sc}}}{I_g}=-0.66997,\qquad
 \Om^{\mathrm{dyn}}=1+w_0=0.16005 .
 \end{equation*}
 
@@ -189,7 +189,7 @@ invariants of Table~\ref{sec:notation}. Concretely,
   w_0 \;=\; -\,\frac{T_r}{M_v}
         \;=\; -\,\frac{3(\varphi+\beta)}{\varphi+\pi+K_v}
         \;=\; -0.83995, \\[3pt]
-  w_a \;=\; -\,\frac{P_{\mathrm{sc}}}{\mathrm{IGNIS}}
+  w_a \;=\; -\,\frac{P_{\mathrm{sc}}}{I_g}
         \;=\; -\,\frac{P_{\mathrm{sc}}}{\pi+P_{\mathrm{sc}}}
         \;=\; -0.66997 .
 \end{gathered}
@@ -279,7 +279,7 @@ that directly probes the dark-energy-dominated epoch.
   \centering
   \includegraphics[width=0.78\textwidth]{fig1_w0wa_plane.pdf}
   \caption{The SSEE prediction in the $w_0$--$w_a$ plane. The single point
-  $(w_0,w_a)=(-T_r/M_v,\,-P_{\rm sc}/\mathrm{IGNIS})=(-0.840,-0.670)$ is fixed entirely by
+  $(w_0,w_a)=(-T_r/M_v,\,-P_{\rm sc}/I_g)=(-0.840,-0.670)$ is fixed entirely by
   $\varphi$ and $\pi$, with no dark-energy parameters adjusted to the data. The
   shaded contours are the official DESI DR2 $w_0w_a$CDM posteriors
   (Pantheon+, DESY5, Union3). The SSEE point falls inside the Pantheon+
@@ -829,7 +829,7 @@ Observable & Sector & Value & Paper & Status \\
 \midrule
 \multicolumn{5}{l}{\textit{Core tier --- clean from $\varphi,\pi$ (no fitted coefficient)}} \\
 $w_0=-T_r/M_v$                & Background (DE)   & $-0.840$                         & P1,2,4 & Postdiction \\
-$w_a=-P_{\rm sc}/\mathrm{IGNIS}$ & Background (DE)   & $-0.670$                      & P1,2,4 & Postdiction \\
+$w_a=-P_{\rm sc}/I_g$ & Background (DE)   & $-0.670$                      & P1,2,4 & Postdiction \\
 $(w_0,w_a)$ vs DESI DR3       & Background (DE)   & same fixed point                & P1,2   & \textbf{Prediction (pre-reg.)} \\
 $H_0/\kms=3(\varphi+\pi)^2$   & Background (DE)   & $67.96\,\kms$                   & P1,2,9 & Global anchor (Post.~D) \\
 $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ & CMB      & $0.11951$                       & P1,3   & Retrodiction \\
@@ -883,7 +883,7 @@ golden mean and $\pi$, and they cannot be adjusted to accommodate data.
 Observable & SSEE value & Algebraic form & Falsifying probe \\
 \midrule
 $w_0$            & $-0.83995$              & $-T_r/M_v$            & DESI Y3 / Euclid BAO+SNe \\
-$w_a$            & $-0.66997$              & $-P_{\rm sc}/\mathrm{IGNIS}$ & DESI Y3 / Euclid BAO+SNe \\
+$w_a$            & $-0.66997$              & $-P_{\rm sc}/I_g$ & DESI Y3 / Euclid BAO+SNe \\
 $n_s$            & $0.96556$               & $1-\varphi^{-7}$      & Planck / CMB-S4 \\
 $r$              & $8.13\times10^{-3}$     & $\varphi^{-10}$       & LiteBIRD / CMB-S4 \\
 $\alpha_K(0)$    & $0.40330$               & $3\,\Omega_{\rm DE}\,\Om^{\mathrm{dyn}}$ & DESI / Euclid growth \\

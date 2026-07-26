@@ -186,6 +186,25 @@ expect_red("R25 parametrización: ω_m = Ω_m·h² con Ω_m constante → ROJO",
            lambda t: t + "\n_bad_om = OMEGA_M_TOTAL*(H0/100)**2\n",
            ["R25", "ROJO"])
 
+# R26a — un canónico SIN fuente declarada. Es la mutación que representa
+# directamente a OP-20: el 0.960318 existió porque no había campo que exigiera
+# declarar su origen.
+expect_red("R26 procedencia: canónico sin `source` → ROJO",
+           "CANONICAL_VALUES.yaml",
+           lambda t: t.replace(
+               '    source:     "Paper 1 (registro estructural); src/ssee_core.py:OMEGA"',
+               '    source:     ""'),
+           ["R26", "ROJO"])
+
+# R26b — documentación stale: el valor declarado deja de ser el vigente.
+# Es la otra mitad de la enfermedad (el docstring del MCMC de P2 que seguía
+# diciendo que el sector 0.160 iba en la geometría).
+expect_red("R26 procedencia: valor documentado ≠ recomputado → ROJO",
+           "CANONICAL_VALUES.yaml",
+           lambda t: t.replace("    value:      0.0224178",
+                               "    value:      0.0229999"),
+           ["R26", "ROJO"])
+
 # Escáner de valores retirados: un valor RETIRADO presentado como vigente
 expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",
            "VERIFICATION_LEDGER.md",

@@ -1314,6 +1314,66 @@ except Exception as e:
     check("R25 capa operable", False, str(e))
 
 # ─────────────────────────────────────────────────────────────────────
+# CAPA R26 — procedencia declarada: ningún canónico sin origen ni cadena.
+#
+# Causa raíz (OP-20, 2026-07-25): el factor 0.960318 vivió meses dentro del
+# modelo sin corresponder a ninguna constante documentada (implicaba C_ν≈93.86,
+# ni 94.07 ni 93.14). No lo cazó nadie porque NO HABÍA NINGÚN CAMPO donde
+# tuviera que declarar su origen: bastaba con que el número «se viera bien».
+# Y cuando C_ν pasó de 94.07 a 93.14, nada supo qué re-propagar porque la
+# cadena de dependencias no estaba escrita — vivía en la memoria de quien hizo
+# el cambio.
+#
+# Esta regla exige que cada nodo de `provenance:` declare las cuatro cosas:
+#   formula · origin · source · (depends_on | affects)
+# Un canónico sin `source` es, por definición, un número sin fuente.
+#
+# Verifica ADEMÁS que los valores declarados en provenance coincidan con lo
+# que recomputa el guardián: la procedencia tiene que describir el número
+# vigente, no uno de hace tres semanas (si no, es documentación stale, que es
+# la otra mitad de la enfermedad — ver el docstring del MCMC de P2).
+# ─────────────────────────────────────────────────────────────────────
+print("\nCapa R26 — procedencia declarada de los canónicos")
+try:
+    import yaml as _yaml26
+    _P26 = _yaml26.safe_load(
+        (pathlib.Path(__file__).resolve().parents[2]
+         / "CANONICAL_VALUES.yaml").read_text(encoding="utf-8")).get("provenance", {})
+    _REQ = ("formula", "origin", "source")
+    _incompletos = []
+    for _k, _v in _P26.items():
+        _falta = [c for c in _REQ if not _v.get(c)]
+        if not (_v.get("depends_on") is not None or _v.get("affects")):
+            _falta.append("depends_on/affects")
+        if _falta:
+            _incompletos.append(f"{_k}«falta {'+'.join(_falta)}»")
+    check("R26 todo canónico con procedencia declara formula+origin+source+cadena",
+          not _incompletos,
+          f"{len(_P26)} nodos completos"
+          if not _incompletos else "SIN FUENTE: " + "; ".join(_incompletos[:6]))
+
+    # El valor declarado debe ser el que el guardián recomputa (no doc stale).
+    _REC = {"Omega": Omega, "KAL0": KAL0, "omega_b": _omb, "omega_c": _omc,
+            "omega_nu": _omnu_from_mnu, "omega_m": _omm,
+            "sigma_m_nu": _mnu_active, "C_nu": _C_nu,
+            # OJO: NO usar _R2 aquí — ese nombre lo reasigna la regla R2
+            # (patrones del compendio multidominio, L~725) a una LISTA.
+            # Colisión de nombres real en el guardián; se recomputa local.
+            "R2": Omega / (KAL0 * Tr),
+            "tau_Pi_H0": KAL0 * Omega / Tr, "n_s": 1 - phi ** -7,
+            "Omega_m_cosm": _omm / _h ** 2}   # _h = H_alg/100, definido en Capa 1
+    _desfasados = [
+        f"{_k}: doc {_P26[_k]['value']} vs recomputado {_r:.7f}"
+        for _k, _r in _REC.items()
+        if _k in _P26 and abs(float(_P26[_k]["value"]) - _r) > 5e-6]
+    check("R26 los valores de procedencia == los que recomputa el guardián",
+          not _desfasados,
+          f"{len(_REC)} verificados contra el cómputo"
+          if not _desfasados else "DOC STALE: " + "; ".join(_desfasados[:5]))
+except Exception as e:
+    check("R26 capa operable", False, str(e))
+
+# ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 60)

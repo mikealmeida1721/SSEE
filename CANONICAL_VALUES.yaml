@@ -267,3 +267,167 @@ historical_sections:
   - "Historia"
   - "Roadmap"
   - "Resultado Fase"
+
+# ════════════════════════════════════════════════════════════════════════
+# PROCEDENCIA — la CADENA de cada canónico (añadido 2026-07-25)
+#
+# POR QUÉ EXISTE. El factor 0.960318 vivió meses en el modelo sin origen: no
+# correspondía a ninguna constante documentada (implicaba C_ν≈93.86, ni 94.07
+# ni 93.14 — ver OP-20). Sobrevivió porque NO HABÍA NINGÚN CAMPO donde tuviera
+# que declarar de dónde salía. Y cuando C_ν cambió de 94.07 a 93.14, nada supo
+# qué había que re-propagar, porque la cadena de dependencias no estaba escrita
+# en ninguna parte: vivía en la cabeza de quien hacía el cambio.
+#
+# REGLA. Todo canónico declara CUATRO cosas:
+#   formula      — cómo se construye (no el número: la construcción)
+#   origin       — de qué está hecho: algebraico (φ,π) | input SM | derivado
+#   source       — dónde se deriva y qué script/log lo reproduce
+#   depends_on / affects — la cadena hacia arriba y hacia abajo
+#
+# Un canónico sin `source` es un número sin fuente. Vigilado por R26.
+#
+# ESTA SECCIÓN ES DOCUMENTAL: los valores vigentes siguen siendo las claves
+# escalares de `canonical:` arriba. Aquí se registra su procedencia.
+# ════════════════════════════════════════════════════════════════════════
+provenance:
+
+  # ── Nivel 0: constantes de base ────────────────────────────────────────
+  Omega:
+    formula:    "phi + pi"
+    value:      4.7596266
+    origin:     algebraico
+    source:     "Paper 1 (registro estructural); src/ssee_core.py:OMEGA"
+    depends_on: [phi, pi]
+    affects:    [omega_b, R2, tau_Pi_H0, H0_alg]
+
+  KAL0:
+    formula:    "BIAL + pi   con BIAL = (phi+pi)/2"
+    value:      5.5214060
+    origin:     algebraico
+    source:     "Paper 1 (viscosidad estructural); src/ssee_core.py:KAL0"
+    depends_on: [phi, pi]
+    affects:    [omega_c, R2, tau_Pi_H0]
+
+  n_s:
+    formula:    "1 - phi^-7"
+    value:      0.9655581
+    origin:     algebraico
+    source:     "Paper 1 §OP-2 (alfa-attractor + N_*=2phi^7); src/ssee_core.py:N_S"
+    data_check: "Planck 2018: 0.9649 +- 0.0042  ->  0.16 sigma"
+    depends_on: [phi]
+    affects:    [omega_c]
+    status:     "OP-2 RESUELTO (exponente 7 = unica solucion entera en [50,60] e-folds)"
+
+  # ── Nivel 1: los tres ingredientes de omega_m ──────────────────────────
+  omega_b:
+    formula:    "(pi - phi) / (3 * Omega^2)"
+    value:      0.0224178
+    origin:     algebraico
+    source:     "Paper 1; PRD L433; src/ssee_core.py:OMEGA_B_H2"
+    data_check: "Planck 2018: 0.02237 +- 0.00015  ->  0.32 sigma"
+    depends_on: [phi, pi, Omega]
+    affects:    [omega_c, sigma_m_nu, omega_m]
+    status:     "OP-1 PARCIAL — el valor acierta; la derivacion de la forma sigue abierta"
+
+  omega_c:
+    formula:    "KAL0 * omega_b * n_s"
+    value:      0.1195144
+    origin:     algebraico
+    source:     "Paper 1 (identidad forward); PRD L422 (ec.) y L434 (valor)"
+    data_check: "Planck 2018: 0.1200 +- 0.0012  ->  0.40 sigma"
+    depends_on: [KAL0, omega_b, n_s]
+    affects:    [omega_m]
+
+  omega_nu:
+    formula:    "sigma_m_nu / C_nu"
+    value:      0.0007353
+    origin:     derivado
+    source:     "PRD L436; Paper 1 L499; src/ssee_core.py:OMEGA_NU_H2"
+    depends_on: [sigma_m_nu, C_nu]
+    affects:    [omega_m]
+    nota:       >
+      INVARIANTE bajo C_nu: la constante aparece arriba (en sigma_m_nu) y abajo
+      (aqui), y se cancela exactamente. Verificado con C_nu = 93.14 / 94.07 /
+      1000: omega_nu = 0.0007353 en los tres. Por eso un omega_nu distinto solo
+      puede venir de usar DOS valores distintos de C_nu en los dos lados — que
+      es exactamente lo que ocurria (0.960318 arriba con C_nu~93.86, 93.14
+      abajo), dando 0.0007411 en vez de 0.0007353. Ver OP-20.
+
+  # ── Nivel 1b: piezas del sector neutrino ───────────────────────────────
+  C_nu:
+    formula:    "constante de cierre relic:  Sigma_m_nu = C_nu * Omega_nu h^2"
+    value:      93.14
+    unit:       eV
+    origin:     input_SM
+    source:     >
+      Mangano+2005 (N_eff=3.046), el valor que usa Planck. DERIVADO desde
+      primeros principios en src/verificacion/derive_nu_closure.py, que obtiene
+      94.07 eV para desacople instantaneo (N_eff=3) y cita la correccion ~1%
+      por el calentamiento e+e- no instantaneo. AMBOS son el mismo objeto
+      fisico; se usa el preciso (93.14) porque es el que uso quien midio el dato.
+    depends_on: []
+    affects:    [sigma_m_nu, omega_nu, m_phi]
+    nota:       >
+      94.07 NO aparece en ningun paper — solo dentro de derive_nu_closure.py,
+      como paso intermedio de la demostracion. Usar 94.07 en un calculo es
+      un error. Vigilado por R17 (string) y V-L2-11 (numero).
+
+  R2:
+    formula:    "Omega / (KAL0 * T_r)   con T_r = 3*(phi + BIAL)"
+    value:      0.0718747
+    origin:     algebraico
+    source:     "Paper 4 §Sigma m_nu; reemplaza el residuo R=4*KAL-22 (offset 22 = OP-14, retirado)"
+    depends_on: [Omega, KAL0, T_r]
+    affects:    [sigma_m_nu]
+
+  tau_Pi_H0:
+    formula:    "KAL0 * Omega / T_r   (equivale a KAL0/(3*Omega_DE); coinciden porque M_v = 3*Omega)"
+    value:      2.191165
+    origin:     algebraico
+    source:     "Paper 4 L686 (tiempo de relajacion Israel-Stewart)"
+    depends_on: [KAL0, Omega, T_r]
+    affects:    [sigma_m_nu]
+    nota:       "Adimensional (es tau_Pi multiplicado por H0). Paper y codigo coinciden a 1e-6."
+
+  sigma_m_nu:
+    formula:    "R2 * omega_b * C_nu / tau_Pi_H0"
+    value:      0.0684903
+    unit:       eV
+    origin:     algebraico_x_input_SM
+    source:     "Paper 4 L689 (ecuacion); PRD L440 (nota al pie); src/ssee_core.py:SUM_MNU_EV"
+    data_check: >
+      Entre el piso de oscilaciones (orden normal, 0.058 eV) y la cota Planck
+      2018 (0.12 eV). Criterio de falsacion declarado en Paper 4: fuera de ese
+      rango a >3 sigma mata la prediccion. DESI DR5/Euclid esperan sigma~0.015 eV.
+      La cota estrecha de DESI (~0.06-0.07 eV) es especifica de LCDM; con
+      w0,wa libres se relaja a ~0.13-0.16 eV.
+    depends_on: [R2, omega_b, C_nu, tau_Pi_H0]
+    affects:    [omega_nu, m_phi]
+    status:     "sensible a C_nu (a diferencia de omega_nu, aqui NO se cancela)"
+
+  # ── Nivel 2: la suma y su fraccion ─────────────────────────────────────
+  omega_m:
+    formula:    "omega_b + omega_c + omega_nu"
+    value:      0.1426675
+    origin:     derivado
+    source:     "PRD ec. eq:omcosm_breakdown; Paper 1 L499; src/ssee_core.py:OMEGA_M_H2"
+    depends_on: [omega_b, omega_c, omega_nu]
+    affects:    [Omega_m_cosm, geometria_de_fondo]
+    nota:       >
+      ABSOLUTO: no contiene H0. Es LO QUE SSEE FIJA. En cualquier ajuste que
+      varie H0, esta es la cantidad que se mantiene fija — nunca Omega_m.
+      Vigilado por R25.
+
+  Omega_m_cosm:
+    formula:    "omega_m / h^2   con h = H0/100"
+    value:      0.3088821
+    origin:     derivado
+    source:     "PRD ec. eq:omcosm_breakdown (evaluado en H0_alg = 67.962)"
+    data_check: "Planck 2018: 0.3153 +- 0.0073  ->  0.88 sigma"
+    depends_on: [omega_m, H0]
+    affects:    [E_z, r_d, distancias_BAO]
+    nota:       >
+      NO ES UN INGREDIENTE: es un RESULTADO que depende de H0. El 0.30889 es su
+      valor evaluado en el ancla. Congelarlo mientras H0 varia fabrica un omega_m
+      que SSEE no predice (hasta +-1.8%) y sesga cualquier ajuste hacia el ancla.
+      Ese fue el hallazgo R25 del 2026-07-25.

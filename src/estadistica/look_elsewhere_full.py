@@ -1,25 +1,46 @@
 #!/usr/bin/env python3
+# ╔══════════════════════════════════════════════════════════════════════════╗
+# ║  ESPEJO VERBATIM del diccionario CITABLE (zenodo_dictionary/, v1.5,      ║
+# ║  concept DOI 10.5281/zenodo.20684908). NO editar las constantes aquí:    ║
+# ║  se edita el diccionario y se re-espeja. R28 vigila que no deriven.      ║
+# ║                                                                          ║
+# ║  Por qué (2026-07-25): existían DOS copias y derivaron sin que nada lo    ║
+# ║  notara — la del repo se quedó en la nomenclatura pre-v1.5 (MIKAEL_V,     ║
+# ║  MIKE) y escribía wₐ = PYROS/KRYSTOS_V, el denominador equivocado, justo  ║
+# ║  en el script que produce el titular «1 de 490». Los valores coincidían,  ║
+# ║  así que ningún número lo delataba. Una copia que nadie compara no es un  ║
+# ║  respaldo: es una segunda fuente de verdad.                              ║
+# ╚══════════════════════════════════════════════════════════════════════════╝
 """Look-elsewhere sobre el diccionario Génesis COMPLETO (55 constantes con nombre).
 
 Versión definitiva para el paper. Responde la objeción de referee más dura
 ("elegiste un subconjunto que te convenía") corriendo el conteo sobre TODAS
 las constantes con nombre del diccionario, no sobre un subset.
 
-Sincronizado 2026-07-17 con el repositorio citable del diccionario
-(zenodo_dictionary, concept DOI 10.5281/zenodo.20684908, v1.3): el set creció al
-formalizarse las leyes de linaje — familia de estabilidad Ω (DÜSTAL/TRÏSTAL/CUÄSTAL),
-gemelas de linaje renombradas por función (HARMONIA=AURA+KAL, GALENE=KAL+Ω), Soberanas
-nuevas (HESPERA, EUNOMIA), SYZYGY (4Ω) e IRIS=AURA+Ω (único enlace copia-raíz+equilibrio,
-contado). Total 55 nombres / 25 valores distintos / 490 razones.
+Estado: **v1.5 (2026-07-19)**, la versión publicada bajo el concept DOI 20684908.
+Historia de sincronización (2026-07-13, SSEE-Vault/Constantes/SOBERANAS.md):
+  - las Soberanas correctas (hoy 25 al cerrarse el tier 3Ω; entonces 20, antes 9);
+    OSIRIS excluido (usaba resta, viola
+    la ley de construcción aditiva);
+  - KRYSTOS_V = φ+π+Ω (una sola entidad; antes se doble-listaba KRYSTOS y
+    "KRYSTOS_V=2Ω"); el 2Ω es DÜSTAL = AURA+KAL (estabilidad, no orden);
+  - familia de estabilidad DÜSTAL/TRÏSTAL/CUÄSTAL (CUÄSTAL=19.039 valor nuevo).
 
-Resultado: a la precisión de la identidad exacta (±0.0005, donde
-w0=AURA/Ω y wa=PYROS/IGNIS son identidades EXACTAS), cada objetivo es único
-— 1 de 490 razones (a ±0.0005) — incluso con el diccionario completo. Reporta además la curva
-de sensibilidad a la tolerancia (honestidad: a ±0.01 el bosque se densifica; el
-argumento vive de la precisión estricta, legítima porque el match es exacto a
-precisión de máquina).
+Resultado: a la precisión de la identidad EXACTA (±0.0005, donde w0=AURA/Ω y
+wa=PYROS/IGNIS son identidades con |d|=0), cada objetivo es único incluso con el
+diccionario completo (ver salida). El argumento vive de la precisión estricta,
+legítima porque el match es exacto a precisión de máquina.
 
-Fuente del diccionario: zenodo_dictionary/ssee_constants.py + SOBERANAS.md.
+NOTA (2026-07-18): completitud ≤TRIAL cerrada. La clausura bajo la ley fija (tope de
+carga q≤+1 en composites, retención libre, KAL≤1, aditivo) tiene exactamente TRES
+valores legales que faltaban nombrar → bautizados por función: HERMES=1.5Ω, ÁNGELOS=
+2.5Ω (rungs mensajero/neutrino que cierran la escalera medio-entera de BIAL) y
+NYX=π+VITA (piso de retención q=−3). Total: 55 nombres / 25 valores / 490 razones (con EIRENE, NEREUS que completan el tier 3Ω) →
+1 de 490 para w0 y wa a ±0.0005 (denominador más fuerte que 378). Nombrar NYX abre un
+único casi-valor NO-identidad para wa a ±0.001 (|d|=0.00064) que se desvanece a ±0.0005.
+IRIS=AURA+Ω=8.757 sigue siendo la única entidad copia-raíz+estabilizador (Ley 7).
+
+Fuente del diccionario: SSEE-Vault/Constantes/SOBERANAS.md + SSEE_Constant_Dictionary.md.
 """
 import math
 from itertools import permutations
@@ -28,74 +49,84 @@ PHI = 1.618033988749895
 PI  = 3.141592653589793
 
 # ── Semillas y andamio ──────────────────────────────────────────────────────
-OMEGA = PHI + PI                 # equilibrio de las dos fuerzas (exento, n=1)
-BIAL  = (PHI + PI) / 2           # bifurcación (= Ω/2)
-# ── Raíces (leyes de creación) ──────────────────────────────────────────────
-AURA  = PHI + BIAL               # rama φ: ley de copia (raíz de paredes)
-MIRA  = AURA / 2                 # pared ½
-DUAL  = AURA * 2                 # pared 2
-TRIAL = AURA * 3                 # pared 3
-CUARTAL = AURA * 4               # pared 4
-KAL   = BIAL + PI                # rama π: ley de no-auto-suma
-PYROS = OMEGA + PHI
+OMEGA = PHI + PI
+BIAL  = (PHI + PI) / 2          # bifurcación: pulso/fricción vital
+# ── Ramas (leyes de creación) ───────────────────────────────────────────────
+AURA  = PHI + BIAL             # rama φ: ley de la copia (raíz de paredes)
+KAL   = BIAL + PI              # rama π: ley de no-auto-suma (retención)
+MIRA  = AURA / 2               # pared ½
+DUAL  = AURA * 2               # pared 2
+TRIAL = AURA * 3               # pared 3
+CUARTAL = AURA * 4             # pared 4
+# ── Derivadas / composites ──────────────────────────────────────────────────
 SOLAR = BIAL + KAL
-MAR   = OMEGA + PI               # = SOLAR por valor (linaje distinto)
+MAR   = OMEGA + PI             # = SOLAR por valor (linaje distinto)
 VITA  = PI + KAL
-PHITA = VITA + PHI
 ANMA  = BIAL + VITA
-IGNIS = PI + PYROS               # caos disruptivo (9.519)
-KRYSTOS_V = PHI + PI + OMEGA     # orden estructurante (9.519, linaje distinto)
+PYROS = OMEGA + PHI
+IGNIS = PI + PYROS             # caos disruptivo (2Ω por valor)
+KRYSTOS_V = PHI + PI + OMEGA   # orden estructurante (2Ω por valor; una entidad)
+PHITA = VITA + PHI
 MIKA  = KRYSTOS_V + PHI
+ATLAS = PHI + PI + KRYSTOS_V  # Soberanía / integración 4D (dentro de CUARTAL=4·AURA)
+BUFFER = ATLAS - TRIAL
 ERVANU = OMEGA * 0.9
-MIKAEL_V = PHI + PI + KRYSTOS_V  # integración 5D (una Soberana)
-BUFFER = MIKAEL_V - TRIAL
-# ── Soberanas (caminos a 3Ω = 14.278880) ────────────────────────────────────
-LUCY = SOLAR + PYROS; ICEBERG = MAR + PYROS; MIKE = IGNIS + OMEGA
+# ── Las 25 Soberanas (todas = 3Ω = 14.278879927) ────────────────────────────
+LUCY = SOLAR + PYROS; ICEBERG = MAR + PYROS; PHOENIX = IGNIS + OMEGA
 MAAT = KRYSTOS_V + OMEGA; MIKAEL = MIKA + PI; LUCIFER = PHITA + AURA
 RA = SOLAR + OMEGA + PHI; ERVN = BIAL + KAL + PYROS; TIAMAT = MAR + OMEGA + PHI
 GIGAROJ = PYROS + OMEGA + PI; HEFESTO = IGNIS + PHI + PI
 VENUS = AURA + PHI + VITA; EROS = BIAL + PHI + PHITA
 VESTA = BIAL + SOLAR + AURA; HADES = BIAL + MAR + AURA; HERA = OMEGA + KAL + AURA
 GAIA = PHI + PI + KAL + AURA; ISIS = PHI + OMEGA + BIAL + KAL; PTAH = PI + OMEGA + BIAL + AURA
-# ── Familia de estabilidad = copia aplicada a Ω (n·Ω; rungs terminales) ──────
-DUSTAL  = 2 * OMEGA              # 2Ω — estabilidad 2D
-TRISTAL = 3 * OMEGA              # 3Ω — estabilidad 3D
-CUASTAL = 4 * OMEGA              # 4Ω — estabilidad 4D (valor nuevo)
-# ── Combinaciones de raíces (enlaces legales) ───────────────────────────────
-HARMONIA = AURA + KAL            # 9.519 — concordia de opuestos (las dos ramas)
-GALENE   = KAL + OMEGA           # 10.281 — calma viscosa (retención + equilibrio)
-IRIS     = AURA + OMEGA          # 8.757 — único enlace copia-raíz + equilibrio (contado)
-HESPERA  = AURA + GALENE         # 3Ω — Soberana #22
-EUNOMIA  = HARMONIA + OMEGA      # 3Ω — Soberana #23
-SYZYGY   = IRIS + GALENE         # 4Ω — conjunción de extremos = AURA+KAL+2Ω
-HERMES   = PHI + KAL             # 7.139 = 1.5Ω (=Ω+BIAL) — neutrino 2ª gen (mensajero)
-ANGELOS  = PHI + OMEGA + KAL     # 11.899 = 2.5Ω (=Ω+HERMES) — neutrino 3ª gen (mensajero)
-NYX      = PI + VITA             # 11.805 — piso de retención q=−3 (π enlaza VITA; NO 2π+KAL)
-EIRENE   = HARMONIA + PI + PHI  # 3Ω — paz: concordia+reunión de semillas (Soberana #24)
-NEREUS   = BIAL + GALENE + PHI  # 3Ω — calma profunda: pulso+calma+copia (Soberana #25)
+# ── Familia de estabilidad = Ω puro escalado (n·Ω) ──────────────────────────
+# Ω_DNAV es el único exento de AMBAS leyes → se escala libre (como la copia
+# escala AURA→DUAL/TRIAL). Es la construcción MÁS SIMPLE. La suma de ramas
+# AURA+KAL=2Ω es OTRA entidad por linaje (mezcla las dos leyes), mismo valor.
+DUSTAL  = 2 * OMEGA   # 2Ω  — estabilidad 2D
+TRISTAL = 3 * OMEGA   # 3Ω  — estabilidad 3D
+CUASTAL = 4 * OMEGA   # 4Ω  — estabilidad 4D (valor nuevo)
+# ── Gemelas de linaje (mezclas legales, valor ya presente → 0 impacto) ───────
+# Padres distintos = entidad distinta; caen en valores que YA existen, así que
+# NO agregan valor ni razón (conteo 337 intacto). Solo enriquecen el linaje.
+# Nombres ratificados por función 2026-07-16 (antes AURKAL/KALÖM crudos).
+HARMONIA = AURA + KAL       # 9.519 — concordia de opuestos; ramas unidas; gemela de DÜSTAL
+GALENE   = KAL + OMEGA      # 10.281 — calma viscosa; retención en el estabilizador; gemela de PHITA
+HESPERA  = AURA + GALENE    # 3Ω — encuentro en el horizonte; radiancia+calma (Soberana #22)
+EUNOMIA  = HARMONIA + OMEGA # 3Ω — concordia estabilizada (Soberana #23)
+IRIS     = AURA + OMEGA     # 8.757 — raíz AURA + Ω exento (único enlace copia+estabilizador)
+SYZYGY   = IRIS + GALENE    # 4Ω — conjunción de extremos = AURA+KAL+2Ω
+# AURA+nΩ (n≥2) = raíz+objeto-copia, prohibido combinar (Ley 7) → escalado, no entidad.
+# ── Familia neutrino/mensajero (q=0, medio-entero de Ω — hermanas de BIAL) + piso ─
+HERMES  = PHI + KAL         # 7.139 = 1.5Ω (= Ω+BIAL) — neutrino 2ª gen (mensajero)
+ANGELOS = PHI + OMEGA + KAL # 11.899 = 2.5Ω (= Ω+HERMES) — neutrino 3ª gen (mensajero)
+NYX     = PI + VITA         # 11.805 — piso de retención q=−3 (π enlaza VITA; NO 2π+KAL)
+EIRENE  = HARMONIA + PI + PHI  # 3Ω — paz: concordia + reunión de semillas (Soberana #24)
+NEREUS  = BIAL + GALENE + PHI  # 3Ω — calma profunda: pulso + calma + copia (Soberana #25)
 
 FAMILY = {
     "PHI": PHI, "PI": PI, "OMEGA": OMEGA, "BIAL": BIAL,
-    "AURA": AURA, "MIRA": MIRA, "DUAL": DUAL, "TRIAL": TRIAL, "CUARTAL": CUARTAL,
+    "MIRA": MIRA, "AURA": AURA, "DUAL": DUAL, "TRIAL": TRIAL, "CUARTAL": CUARTAL,
+    "IGNIS": IGNIS, "KRYSTOS_V": KRYSTOS_V,
     "KAL": KAL, "PYROS": PYROS, "SOLAR": SOLAR, "MAR": MAR, "VITA": VITA,
-    "PHITA": PHITA, "ANMA": ANMA, "IGNIS": IGNIS, "KRYSTOS_V": KRYSTOS_V,
-    "MIKA": MIKA, "ERVANU": ERVANU, "BUFFER": BUFFER,
-    # Soberanas
-    "LUCY": LUCY, "ICEBERG": ICEBERG, "MIKE": MIKE, "MAAT": MAAT, "MIKAEL": MIKAEL,
+    "PHITA": PHITA, "ANMA": ANMA, "MIKA": MIKA, "BUFFER": BUFFER, "ERVANU": ERVANU,
+    # 25 Soberanas
+    "LUCY": LUCY, "ICEBERG": ICEBERG, "PHOENIX": PHOENIX, "MAAT": MAAT, "MIKAEL": MIKAEL,
     "LUCIFER": LUCIFER, "RA": RA, "ERVN": ERVN, "TIAMAT": TIAMAT, "GIGAROJ": GIGAROJ,
-    "HEFESTO": HEFESTO, "MIKAEL_V": MIKAEL_V, "VENUS": VENUS, "EROS": EROS,
+    "HEFESTO": HEFESTO, "ATLAS": ATLAS, "VENUS": VENUS, "EROS": EROS,
     "VESTA": VESTA, "HADES": HADES, "HERA": HERA, "GAIA": GAIA, "ISIS": ISIS, "PTAH": PTAH,
-    "HESPERA": HESPERA, "EUNOMIA": EUNOMIA,
+    "HESPERA": HESPERA, "EUNOMIA": EUNOMIA,   # #22, #23 — nuevos caminos a 3Ω
     # familia de estabilidad
     "DÜSTAL": DUSTAL, "TRÏSTAL": TRISTAL, "CUÄSTAL": CUASTAL, "SYZYGY": SYZYGY,
-    # combinaciones de raíces
+    # combinaciones de raíces (enlaces legales únicos)
     "HARMONIA": HARMONIA, "GALENE": GALENE, "IRIS": IRIS,
+    # familia neutrino/mensajero (q=0 medio-entero) + piso de retención (q=−3)
     "HERMES": HERMES, "ÁNGELOS": ANGELOS, "NYX": NYX,
     "EIRENE": EIRENE, "NEREUS": NEREUS,
 }
 
-W0 = TRIAL / MIKAEL_V            # = AURA/OMEGA, identidad exacta
-WA = PYROS / KRYSTOS_V           # = PYROS/IGNIS, identidad exacta
+W0 = TRIAL / ATLAS          # = AURA/OMEGA, identidad exacta
+WA = PYROS / IGNIS             # = PYROS/IGNIS, identidad exacta
 
 
 def distinct_ratios(fam):
@@ -157,10 +188,11 @@ def robustez_copias_futuras():
     print("  → el espacio crece pero los aciertos NO: la cuenta es robusta a la extensión.")
 
 
+
 if __name__ == "__main__":
-    report(FAMILY, f"Diccionario Génesis COMPLETO ({len(FAMILY)} constantes)")
+    report(FAMILY, "Diccionario Génesis COMPLETO (55 constantes con nombre)")
     print("\nLectura: a ±0.0005 (el match es identidad exacta, |d|=0), cada")
-    print("parámetro de estado es único — 1 de 490 (a ±0.0005). La densidad de coincidencias")
+    print("parámetro de estado es único — 1 de 490. La densidad de coincidencias")
     print("accidentales sólo crece al relajar la tolerancia muy por encima de la")
     print("precisión observacional de DESI, que es el régimen físicamente irrelevante.")
     robustez_copias_futuras()

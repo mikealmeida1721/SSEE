@@ -221,6 +221,15 @@ expect_red("R27 look-elsewhere: manuscrito cita 1-de-378 (denominador viejo) →
            lambda t: t + "\nThe target is unique: 1 of 378 ratios.\n",
            ["R27", "ROJO"])
 
+# R28 — las dos copias del script del diccionario vuelven a derivar. Es la
+# mutación de la falsa alarma del 2026-07-25: los valores coincidían (55/25/490)
+# y aun así el código era distinto, con el denominador de wₐ equivocado en la
+# copia del repo. Ningún check numérico podía verlo.
+expect_red("R28 espejo: la copia del repo deriva del diccionario citable → ROJO",
+           "src/estadistica/look_elsewhere_full.py",
+           lambda t: t.replace("HERMES  = PHI + KAL", "HERMES  = PHI + KAL + 0.0", 1),
+           ["R28", "ROJO"])
+
 # Escáner de valores retirados: un valor RETIRADO presentado como vigente
 expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",
            "VERIFICATION_LEDGER.md",

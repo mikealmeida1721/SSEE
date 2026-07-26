@@ -938,7 +938,13 @@ try:
         if "archive" in _py.parts or _py.name in ("ssee_verify.py", "test_guardian.py"):
             continue
         for _ln, _line in enumerate(_py.read_text(errors="ignore").splitlines(), 1):
-            if _re2.search(r"/\s*(KV|Kv|K_v|K_V)\b", _line):
+            # Se mira CÓDIGO, no prosa: un comentario que NOMBRA la forma prohibida
+            # está documentándola (esta regla misma lo hace). Se recorta desde el «#».
+            _line = _re2.sub(r"#.*$", "", _line)
+            # KRYSTOS_V entra a la lista 2026-07-25: la primera versión de R21b sólo
+            # miraba las abreviaturas (KV/Kv/K_v/K_V) y dejó pasar el nombre completo
+            # justo en look_elsewhere_full.py — el script que produce el «1 de 490».
+            if _re2.search(r"/\s*(KV|Kv|K_v|K_V|KRYSTOS_V)\b", _line):
                 _kvden_py.append(f"{_py.name}:{_ln}")
     check("código       R21b wₐ = −P_sc/IGNIS en los scripts (K_v nunca divide)",
           not _kvden_py,
@@ -1068,6 +1074,15 @@ try:
             _master.add("OMEGA")          # alias scaffold
         if "KRYSTOS" in _master:
             _master.add("KRYSTOS_V")      # KRYSTOS_V = nombre correcto (φ+π+Ω); maestro aún usa "KRYSTOS" → v1.2 pendiente
+        # Ley de Nombrado v1.5 (2026-07-19): MIKAEL_V→ATLAS, MIKE→PHOENIX. El maestro
+        # vive en sandbox_unificado/ (submódulo del repo PÚBLICO multidominio) y NO se
+        # toca antes del envío — así que la equivalencia se declara aquí, igual que
+        # con KRYSTOS_V. Es alias de NOMBRE, no de valor: el nodo es el mismo.
+        # Al re-sincronizar el maestro, estas dos líneas sobran.
+        if "MIKAEL_V" in _master:
+            _master.add("ATLAS")
+        if "MIKE" in _master:
+            _master.add("PHOENIX")
     _lf = _root / "src" / "estadistica" / "look_elsewhere_full.py"
     _fam = set()
     if _lf.exists():
@@ -1451,6 +1466,52 @@ try:
                f"manuscritos citan {sorted(_bad)}")
 except Exception as e:
     check("R27 capa operable", False, str(e))
+
+# ── R28 — la copia del repo == el diccionario CITABLE (sin deriva) ───────────
+# 2026-07-25: había DOS look_elsewhere_full.py. Los valores coincidían (55/25/490),
+# así que ningún check numérico podía notarlo — pero el código NO era el mismo: la
+# copia del repo se quedó en la nomenclatura pre-v1.5 (MIKAEL_V, MIKE) y escribía
+# wₐ = PYROS/KRYSTOS_V, el denominador equivocado, justo en el script del titular.
+# Una copia que nadie compara no es un respaldo: es una segunda fuente de verdad.
+# Se compara el CÓDIGO EJECUTABLE (sin comentarios/espacios): la prosa puede
+# diferir —la copia del repo añade la robustez QUINTAL…DECAL— pero las constantes
+# y las identidades no. Si zenodo_dictionary/ no está presente, se avisa sin ROJO:
+# está gitignoreado y un clon limpio no lo tiene.
+try:
+    _cit = _REPO2 / "zenodo_dictionary" / "look_elsewhere_full.py"
+    _mir = _REPO2 / "src" / "estadistica" / "look_elsewhere_full.py"
+
+    import ast as _ast
+
+    def _codigo(p):
+        """Asignaciones de constantes a nivel de módulo, vía AST.
+
+        Se usa AST y no regex de línea porque una frase de docstring como
+        «CUÄSTAL=4Ω; su continuación…» se parece a una asignación y hacía saltar
+        esta misma regla en falso — prosa disfrazada de código.
+        """
+        _out = []
+        for _n in _ast.parse(p.read_text(errors="ignore")).body:
+            if isinstance(_n, _ast.Assign):
+                for _t in _n.targets:
+                    if isinstance(_t, _ast.Name):
+                        _out.append(f"{_t.id}={_ast.dump(_n.value)}")
+        return _out
+
+    if not _cit.exists():
+        check("R28 espejo diccionario citable (zenodo_dictionary ausente)", True,
+              "gitignoreado; en un clon limpio no aplica — verificar en la máquina de trabajo")
+    else:
+        _a, _b = _codigo(_mir), _codigo(_cit)
+        _falta = [x for x in _b if x not in _a]
+        _sobra = [x for x in _a if x not in _b]
+        check("R28 look_elsewhere_full.py del repo == el del diccionario citable",
+              not _falta and not _sobra,
+              f"{len(_b)} definiciones idénticas (espejo verbatim de v1.5)"
+              if not _falta and not _sobra
+              else f"DERIVA: sólo-citable={_falta[:3]} sólo-repo={_sobra[:3]}")
+except Exception as e:
+    check("R28 capa operable", False, str(e))
 
 # ─────────────────────────────────────────────────────────────────────
 # VEREDICTO

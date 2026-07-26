@@ -50,9 +50,10 @@ FAMILY = {
 }
 
 W0 = TRIAL / MIKAEL_V      # 0.83995
-WA = PYROS / KRYSTOS_V     # 0.66997
+IGNIS_D = PI + PYROS       # denominador de wₐ: IGNIS, no KRYSTOS_V (R21b)
+WA = PYROS / IGNIS_D       # 0.66997
 print(f"w0 = TRIAL/MIKAEL_V = {W0:.9f}")
-print(f"wa = PYROS/KRYSTOS_V = {WA:.9f}")
+print(f"wa = PYROS/IGNIS = {WA:.9f}")
 print(f"constantes en la familia: {len(FAMILY)}\n")
 
 # Razones unicas A/B (A != B por valor). Dedup por valor redondeado.

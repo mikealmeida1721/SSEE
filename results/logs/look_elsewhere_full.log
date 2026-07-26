@@ -1,5 +1,5 @@
 
-=== Diccionario Génesis COMPLETO (55 constantes) ===
+=== Diccionario Génesis COMPLETO (55 constantes con nombre) ===
   constantes con nombre : 55
   valores distintos     : 25  (comparten valor por ley de no-auto-suma)
   razones A/B en (0,5]  : 490
@@ -12,7 +12,7 @@
       0.01 |        4 |        9
 
 Lectura: a ±0.0005 (el match es identidad exacta, |d|=0), cada
-parámetro de estado es único — 1 de 490 (a ±0.0005). La densidad de coincidencias
+parámetro de estado es único — 1 de 490. La densidad de coincidencias
 accidentales sólo crece al relajar la tolerancia muy por encima de la
 precisión observacional de DESI, que es el régimen físicamente irrelevante.
 

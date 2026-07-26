@@ -92,8 +92,8 @@ KAL0       = beta + pi                 # 5.5214 — Structural Viscosity
 ombh2_ssee = (pi - phi) / (3.0 * Omega_ssee**2)   # 0.022423 — ω_b directo
 omch2_ssee = KAL0 * ombh2_ssee * ns_ssee          # 0.11951 — ω_c forward (KAL₀·ω_b·n_s)
 mnu_ssee   = 0.06849                   # Σm_ν canónico (C_ν=93.14 PDG; era 0.0690); ω_ν = Σm_ν/C_ν
-# Ω_m,CMB derivado: (ω_b+ω_c+ω_ν)/h² → 0.30889 @ H_alg=67.962 (era 0.31993 vía MIRA, retirado)
-Omm_cmb    = (ombh2_ssee + omch2_ssee + mnu_ssee/93.14) / (67.962/100.0)**2  # ≈0.30889 (diagnóstico)
+# Ω_m,CMB derivado: (ω_b+ω_c+ω_ν)/h² → 0.308881 @ H_alg=67.962 (era 0.31993 vía MIRA, retirado)
+Omm_cmb    = (ombh2_ssee + omch2_ssee + mnu_ssee/93.14) / (67.962/100.0)**2  # ≈0.308881 (diagnóstico)
 
 # ΛCDM Planck 2018 best-fit (TT+TE+EE+lowE, Table 2, arXiv:1807.06209)
 H0_lcdm    = 67.36

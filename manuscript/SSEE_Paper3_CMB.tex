@@ -629,7 +629,7 @@ Under the diagonal approximation, SSEE is favoured ($\Delta\mathrm{BIC}=-35.0$):
 the combined $\chi^2_r=1.040$ matches $\Lambda$CDM's $1.040$, so the
 parameter-count term ($\Delta k\,\ln N=-34.7$) dominates and rewards SSEE's
 smaller parameter set. This diagonal cross-check is evaluated at the global
-anchor $H_0=67.962$ ($\omega_m$-direct, $\Omega_{m,\rm CMB}=0.30889$),
+anchor $H_0=67.962$ ($\omega_m$-direct, $\Omega_{m,\rm CMB}=0.308881$),
 consistent with the canonical \texttt{plik\_lite} evaluation
 (\S\ref{sec:cobaya}), so the diagonal and full-covariance treatments are
 mutually consistent. The off-diagonal Cobaya evaluation (\S\ref{sec:cobaya})
@@ -652,7 +652,7 @@ To establish a definitive baseline for model comparison that fully accounts for 
 \paragraph{Parameter counting ($\omega_m$-direct).}
 All SSEE dark energy parameters ($w_0, w_a$), the spectral index $n_s$, and --- under the 2026 $\omega_m$-direct reframe --- the baryon and cold-matter densities $\omega_b=(\pi-\varphi)/(3\Omega^2)=0.02242$ and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.11951$ are algebraically fixed. The dimensional anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$ is itself \emph{derived} from the SH0ES--$f_{\rm screen}$ inversion (Paper~9), not fitted to the CMB; the amplitude $A_s$ and reionization $\tau$ are held fixed at their external Planck values (borrowed inputs, not derived from $\{\varphi,\pi\}$). The two quantities the framework borrows rather than derives are therefore $A_s$ and $\tau$, and we conservatively assign $k=2=\{A_s,\tau\}$. The standard $\Lambda$CDM baseline has $k=6$: $H_0$, $\Omega_b h^2$, $\Omega_c h^2$, $n_s$, $A_s$, and $\tau$ \citep{Planck2018}, all six free in the CMB fit. (The companion full MCMC of \S\ref{sec:b1_mcmc} additionally lets $H_0$ \emph{float} as a validation check: the chain recovers $H_0$ at the algebraic anchor, confirming that fixing it costs no fit quality and that the $k=2$ count is sound.)
 
-Evaluating at the single global anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$ (which is also the \texttt{plik\_lite}-preferred value, $\Omega_{m,\rm CMB}=\omega_m/h^2=0.30889$), the effective $\chi^2$ for SSEE is $1005.409$, compared to $1003.760$ for $\Lambda$CDM. The raw fit penalty is therefore only $\Delta\chi^2 = +1.649$ over $N=613$ bandpowers.
+Evaluating at the single global anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$ (which is also the \texttt{plik\_lite}-preferred value, $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$), the effective $\chi^2$ for SSEE is $1005.409$, compared to $1003.760$ for $\Lambda$CDM. The raw fit penalty is therefore only $\Delta\chi^2 = +1.649$ over $N=613$ bandpowers.
 
 \paragraph{Definitive Bayesian Information Criterion.}
 Applying the BIC penalty for the differing degrees of freedom:
@@ -803,8 +803,8 @@ $\gamma_\Lambda=0.55$ for $\Lambda$CDM (earlier estimates from Paper~1,
 Appendix~A gave 0.657; Paper~5 supersedes that result).
 
 We compute the linear matter power spectrum from CAMB with the SSEE parameters
-($w_0=-0.8399$, $w_a=-0.6700$, $H_0=67.962$ km\,s$^{-1}$\,Mpc$^{-1}$,
-$\Omega_m=0.30889$) and apply the IS growth-index correction post-processing:
+($w_0=-0.839950$, $w_a=-0.6700$, $H_0=67.962$ km\,s$^{-1}$\,Mpc$^{-1}$,
+$\Omega_m=0.308881$) and apply the IS growth-index correction post-processing:
 \begin{equation}
   \sigma_{8,\mathrm{IS}} = \sigma_{8,\mathrm{CAMB}} \times
     \frac{D(\gamma=\phi^{-1})}{D(\gamma_\mathrm{eff})} ,
@@ -868,7 +868,7 @@ eBOSS~DR16 \citep{Alam2021,deMattia2021}, and DESI~DR1 \citep{DESI2024FS}.
 \centering
 \caption{$f\sigma_8(z)$ predictions vs the canonical Paper~5 RSD compilation
   (six peer-reviewed points), computed with the canonical Paper~5
-  Israel--Stewart growth ODE: $\Omega_{m,\mathrm{CMB}}=0.30889$
+  Israel--Stewart growth ODE: $\Omega_{m,\mathrm{CMB}}=0.308881$
   ($\omega_m$-direct) in both the gravitational background and the Poisson
   source, with $\gamma_\mathrm{IS}=0.554$ and $\sigma_8=0.8136$ (single-sector).
   Pull $=(f\sigma_8^\mathrm{SSEE}-f\sigma_8^\mathrm{obs})/\sigma$.}
@@ -891,7 +891,7 @@ eBOSS DR16 (Hou+2021)   & 1.480 & $0.462\pm0.045$ & 0.383 & 0.376 & $-1.76\sigma
 
 Table~\ref{tab:fsig8} shows that SSEE+IS achieves $\chi^2/N=0.766$ across the
 six canonical RSD points in the CMB observational sector
-($\Omega_{m,\mathrm{CMB}}=0.30889$), compared to $0.860$ for $\Lambda$CDM. The
+($\Omega_{m,\mathrm{CMB}}=0.308881$), compared to $0.860$ for $\Lambda$CDM. The
 mean tension is $0.70\sigma$ (SSEE) vs $0.73\sigma$ ($\Lambda$CDM); no SSEE point
 deviates by more than $1.8\sigma$. This is the identical dataset and method used
 in Paper~5; we do not include DESI DR1 full-shape $f\sigma_8$ here because no
@@ -900,11 +900,11 @@ public per-tracer $f\sigma_8$ release exists for DESI DR2 (DR2 is BAO-only,
 The combination of independent growth-rate probes is reviewed in \citet{Moresco2022}.
 
 \begin{tcolorbox}[colback=yellow!5!white,colframe=orange!80!black,title={Sector caveat for $f\sigma_8$}]
-The $\chi^2/N=0.766$ quoted above uses $\Omega_{m,\mathrm{CMB}}=0.30889$, the CMB
+The $\chi^2/N=0.766$ quoted above uses $\Omega_{m,\mathrm{CMB}}=0.308881$, the CMB
 (high-$z$) observational sector. On the clustering scales probed by RSD, the
 Two-$\Omega_m$ criterion (Paper~1, Sec.~1.4) selects the same CMB density as
 the Poisson source. Paper~5
-performs this analysis with $\Omega_{m,\mathrm{CMB}}=0.30889$, $\gamma_\mathrm{IS}=0.554$,
+performs this analysis with $\Omega_{m,\mathrm{CMB}}=0.308881$, $\gamma_\mathrm{IS}=0.554$,
 $\sigma_8=0.8136$, finding a mean $f\sigma_8$ tension of $0.70\sigma$ (Paper~5,
 $\approx\Lambda$CDM $0.73\sigma$).
 Paper~6 two-sector gives $0.93\sigma$: the free-streaming that lowers $\sigma_8$
@@ -992,7 +992,7 @@ each of which would \textbf{falsify} the framework if violated:
     $m_\phi=40.70$~eV (Paper~6), should imprint on the matter power spectrum.
     A DESI~Y3 / Euclid $P(k)$ excluding this $k_{\rm fs}$ at $>3\sigma$ would
     falsify the two-sector reconciliation of $\Omega_{m,\mathrm{dyn}}=0.160$ and
-    $\Omega_{m,\mathrm{CMB}}=0.30889$ (independent predictions, no matter factor).
+    $\Omega_{m,\mathrm{CMB}}=0.308881$ (independent predictions, no matter factor).
 
   \item \textbf{Growth index:} The algebraic prediction is $\gamma_\mathrm{alg}=\phi^{-1}=0.618$
     ($S_8=0.828$, Table~\ref{tab:sigma8}).
@@ -1013,7 +1013,7 @@ each of which would \textbf{falsify} the framework if violated:
 
 We have demonstrated that SSEE, with the CMB matter density set
 \emph{forward} by the SSEE algebra ($\omega_m$-direct,
-$\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.30889$, no matter factor),
+$\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.308881$, no matter factor),
 reproduces the Planck PR4 CMB TT power spectrum without introducing fitted
 dimensionless parameters.
 The key results are:
@@ -1025,7 +1025,7 @@ The key results are:
   \item Lensing (PP): $\chi^2_r=0.720$ vs.\ $0.757$ for $\Lambda$CDM — SSEE marginally better (both $\chi^2_r<1$).
   \item \textbf{\texttt{plik\_lite} TTTEEE ($\omega_m$-direct):} $\chi^2_{\mathrm{eff}} = 1005.41$ at $H_0 = 67.962$ km\,s$^{-1}$\,Mpc$^{-1}$ (the CMB-minimising value with SSEE-fixed $\omega_b,\omega_c$).
   \item $\Delta\mathrm{BIC}=-24.02$ ($k=2$ vs $k=6$), decisively favouring SSEE over $\Lambda$CDM.
-  \item $\Omega_{m,\mathrm{CMB}}=0.30889$ within $0.88\sigma$ of Planck 2018.
+  \item $\Omega_{m,\mathrm{CMB}}=0.308881$ within $0.88\sigma$ of Planck 2018.
   \item The sound horizon $r_d=147.17$ Mpc matches $\Lambda$CDM to $0.03\%$.
 \end{itemize}
 

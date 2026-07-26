@@ -16,7 +16,7 @@ Física del modelo dos-sectores con partícula φ-DM canónica
   Amplitud TITULAR (free-streaming CLASS, NO growth-factor × ΛCDM):
     σ₈_eff = 0.747   — leído directamente de la corrida dos-sectores CLASS
                        con la temperatura de relic T_φ propia de la partícula
-    S₈_eff = 0.747 × √(0.30889/0.300) = 0.758  → 0.04σ KiDS (RESUELVE S₈)
+    S₈_eff = 0.747 × √(0.308881/0.300) = 0.758  → 0.04σ KiDS (RESUELVE S₈)
     k_fs   = 0.754 h/Mpc  (predicción falsable DESI Y3/Euclid)
 
   El growth-factor dos-sectores G_2s sólo fija la FORMA de f(z),
@@ -80,12 +80,12 @@ omega_b   = (pi_ - phi) / (3 * Om_DNAV**2) # 0.02242
 omega_c   = KAL0 * omega_b * n_s           # 0.11951 (forward, Paper 1)
 omega_nu  = mnu_active / 93.14             # 0.00074
 omega_m   = omega_b + omega_c + omega_nu   # 0.14267
-Om_m_CMB  = omega_m / h_**2                # 0.30889 (DERIVADO)
+Om_m_CMB  = omega_m / h_**2                # 0.308881 (DERIVADO)
 
 # ── Modelo dos-sectores ───────────────────────────────────────────────────────
 Om_CDM   = Omm_dyn                  # 0.160
 Om_phiDM = Om_m_CMB - Omm_dyn       # 0.14889 (DIFERENCIA, sin factor)
-Om_total = Om_m_CMB                 # 0.30889 (ambos sectores = densidad CMB)
+Om_total = Om_m_CMB                 # 0.308881 (ambos sectores = densidad CMB)
 
 sig8_Planck = 0.811
 
@@ -105,14 +105,14 @@ _norm = f_DE_raw(1.0)
 def f_DE(a): return f_DE_raw(a) / _norm
 
 # OmDE debe hacer PLANO cada fondo por separado (E²(a=1)=1). Un OmDE global
-# (=1−Omm_dyn=0.840) sólo es plano para el fondo de 0.160; con Om_total=0.30889
+# (=1−Omm_dyn=0.840) sólo es plano para el fondo de 0.160; con Om_total=0.308881
 # daba E²(hoy)=1.149 → H 7% alto → ahogaba el crecimiento (bug del fσ₈ two-sector
 # 0.82σ, artefacto). Corregido 2026-06-22: cada E2 usa su propio Ω_DE=1−Ω_m.
 OmDE_total = 1.0 - Om_total        # 0.69111 (fondo de clustering, plano)
 OmDE_cdm   = 1.0 - Om_CDM          # 0.84000 (fondo minimal-CDM, plano)
 
 def E2_total(a):
-    """H²/H₀² con Ω_m=0.30889 (clustering); PLANO: Ω_DE=1−Ω_m."""
+    """H²/H₀² con Ω_m=0.308881 (clustering); PLANO: Ω_DE=1−Ω_m."""
     return max(Om_total * a**(-3) + OmDE_total * f_DE(a), 1e-30)
 
 def E2_CDM(a):
@@ -121,7 +121,7 @@ def E2_CDM(a):
 
 # ── Crecimiento dos-sectores (k < k_fs, ambos activos) ───────────────────────
 def growth_rhs_twosector(lna, Y):
-    """Ambos sectores activos: Ω_m,eff = Ω_total = 0.30889 (ω_m-directo)."""
+    """Ambos sectores activos: Ω_m,eff = Ω_total = 0.308881 (ω_m-directo)."""
     a = np.exp(lna)
     e2 = E2_total(a)
     h  = 0.5*(-3*Om_total*a**(-3) + OmDE_total*(f_DE(a+1e-5)-f_DE(a-1e-5))/(2e-5)*a)/e2
@@ -168,13 +168,13 @@ G_single= sol_single.y[0][-1]    / sol_lcdm.y[0][-1]   # ≈ 0.866 (minimal-CDM 
 #   temperatura de relic T_φ propia de la partícula (m_φ=40.70 eV).
 #   Ref manuscript §fσ₈ L563-567 y ssee_paper6_canonical_particle.py.
 sig8_eff    = 0.747                   # free-streaming CLASS canónico m_φ=40.70 (TITULAR)
-sig8_base   = sig8_Planck * G_single  # 0.702 (minimal-CDM Ω_m=0.160; NO canónico — Paper 5 usa Ω_m=0.30889→σ₈=0.8136, fσ₈ 0.70σ)
-sig8_growth = sig8_Planck * G_2s      # 0.8136 (growth-factor Ω_m=0.30889, amplitud RSD canónica)
-S8_eff      = sig8_eff * np.sqrt(Om_total / 0.3)   # 0.758 (0.747×√(0.30889/0.3))
+sig8_base   = sig8_Planck * G_single  # 0.702 (minimal-CDM Ω_m=0.160; NO canónico — Paper 5 usa Ω_m=0.308881→σ₈=0.8136, fσ₈ 0.70σ)
+sig8_growth = sig8_Planck * G_2s      # 0.8136 (growth-factor Ω_m=0.308881, amplitud RSD canónica)
+S8_eff      = sig8_eff * np.sqrt(Om_total / 0.3)   # 0.758 (0.747×√(0.308881/0.3))
 
 print(f"\n  Factores de crecimiento (IC idénticas, ratio D₁):")
 print(f"    G_single (minimal-CDM Ω_m=0.160, NO canónico): {G_single:.4f}")
-print(f"    G_2s     (Paper 6, Ω_m=0.30889): {G_2s:.4f}  (sólo forma de f(z))")
+print(f"    G_2s     (Paper 6, Ω_m=0.308881): {G_2s:.4f}  (sólo forma de f(z))")
 print(f"\n  σ₈ resultantes:")
 print(f"    σ₈_base   (minimal-CDM Ω_m=0.160): {sig8_base:.4f}   (= 0.811 × {G_single:.4f}; NO canónico)")
 print(f"    σ₈_eff    (Paper 6 TITULAR):    {sig8_eff:.4f}   (free-streaming CLASS)")
@@ -215,7 +215,7 @@ def get_fsig8(z, D_arr, Dp_arr, sig8_val):
     D_t = float(np.interp(lna_t, lna_pts, D_arr))
     return f_t * sig8_val * D_t
 
-# Dos escenarios canónicos, MISMA forma de crecimiento (D_2s, Ω_m=0.30889):
+# Dos escenarios canónicos, MISMA forma de crecimiento (D_2s, Ω_m=0.308881):
 #   - two-sector: amplitud σ₈=0.747 (CON free-streaming)  → titular Paper 6
 #   - single-sector P5: amplitud σ₈=0.8136 (SIN free-streaming) → baseline Paper 5
 # La ÚNICA diferencia es la amplitud — esa es la firma del free-streaming.

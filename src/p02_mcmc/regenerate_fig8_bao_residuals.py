@@ -36,7 +36,7 @@ def E(z, Om, w0, wa):
 
 # ── MAP de las 3 cadenas (paper2_3models, jul-9, DR2) ──
 models = {
-    "SSEE":  dict(H0=67.62, Om=0.30889, w0=-0.840,  wa=-0.670,  ob=0.02221, c="#c0392b"),
+    "SSEE":  dict(H0=67.62, Om=0.308881, w0=-0.840,  wa=-0.670,  ob=0.02221, c="#c0392b"),
     r"$\Lambda$CDM": dict(H0=68.27, Om=0.3034, w0=-1.0, wa=0.0, ob=0.02233, c="#2c6fbb"),
     "CPL":   dict(H0=67.26, Om=0.3167, w0=-0.8255, wa=-0.5576, ob=0.02237, c="#27ae60"),
 }

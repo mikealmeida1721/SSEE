@@ -1,7 +1,7 @@
 """
 PASO 1 (FIT explícito) — partícula SUELTA: ¿qué m_φ prefieren los datos?
 ========================================================================
-Método de Mike (2026-06-18): el fondo ω_m-directo está FIJO (Ω_m=0.30889,
+Método de Mike (2026-06-18): el fondo ω_m-directo está FIJO (Ω_m=0.308881,
 Ω_φDM=0.14889). Lo único que mueve S8 es la masa m_φ. Soltamos m_φ como
 parámetro libre, corremos CLASS two-sector para una grilla, y encontramos el
 m_φ que los datos prefieren (S8 = KiDS-1000 = 0.758 → 0.00σ).
@@ -25,7 +25,7 @@ KAL=(pi+phi)/2+pi; N_S=1-phi**-7
 Omega_b=(pi-phi)/(3*OMEGA**2)/H**2
 om_b_h2=(pi-phi)/(3*OMEGA**2); om_c_h2=KAL*om_b_h2*N_S
 Smnu=0.06849; om_nu_h2=Smnu/93.14   # C_nu=93.14 PDG (era 0.06902)
-Om_m=(om_b_h2+om_c_h2+om_nu_h2)/H**2     # 0.30889
+Om_m=(om_b_h2+om_c_h2+om_nu_h2)/H**2     # 0.308881
 Om_cold=0.160; Om_hot=Om_m-Om_cold       # 0.14889
 Om_cdm=Om_cold-Omega_b
 om_ncdm_h2=Om_hot*H**2                    # FIJO (abundancia fija; T_φ se ajusta por m_φ)
@@ -59,7 +59,7 @@ def kfs_analytic(m_phi, T_phi):
 print("="*78)
 print("  PASO 1 (FIT) — partícula SUELTA: ¿qué m_φ prefieren los datos (S8)?")
 print("="*78)
-print(f"  Fondo FIJO: Ω_m=0.30889, Ω_φDM=0.14889, Σm_ν=0.069 eV (todo SSEE)")
+print(f"  Fondo FIJO: Ω_m=0.308881, Ω_φDM=0.14889, Σm_ν=0.069 eV (todo SSEE)")
 print(f"  Objetivo (EXTERNO): KiDS-1000 S8={KIDS_S8}±{KIDS_ERR} → σ8_target={S8_target_sig8:.4f}")
 print(f"  Referencia: m_φ=42.47 (PYROS·VITA·MIKA) dio S8=0.765 (0.24σ)")
 print("-"*78)

@@ -21,7 +21,7 @@ ombh2   = (pi-phi)/(3*Omega**2)      # 0.02242  SSEE algebraico (OP-1)
 omch2   = KAL0 * ombh2 * n_s         # 0.11951  forward (Paper 1)
 mnu     = 0.06849                    # Sigma_m_nu activos (C_nu=93.14; era 0.06902)
 omega_m = ombh2 + omch2 + mnu/93.14  # 0.14267  omega_m fisico
-Omm_cmb = omega_m / (H0/100)**2      # 0.30889  DERIVADO, sin factor
+Omm_cmb = omega_m / (H0/100)**2      # 0.308881  DERIVADO, sin factor
 
 print(f"=== Fase B / P3 CMB reframe omega_m-DIRECTO ===")
 print(f"H0={H0:.4f}  omega_b={ombh2:.5f}  omega_c={omch2:.5f}  omega_m={omega_m:.5f}")

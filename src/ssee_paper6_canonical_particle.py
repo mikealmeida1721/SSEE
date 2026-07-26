@@ -6,7 +6,7 @@ mecanismo g²·v SOLAR²·KRYSTOS adoptado 2026-06-19, OP-17):
     Σm_ν = R2 × ω_b × C_ν/τ_Π  (ν-closure C=93.14; ≈ R2 × 0.9530 eV)
     m_φ = Σm_ν × (SOLAR²·KRYSTOS)         [= 594.28; antes PYROS·VITA·MIKA=615.33]
     T_φ SALE del relic constraint.
-Escenario de fondo: NO hay factor materia. Ω_m,CMB = ω_m/h² = 0.30889; el sector
+Escenario de fondo: NO hay factor materia. Ω_m,CMB = ω_m/h² = 0.308881; el sector
 φ-DM es la diferencia Ω_φDM = Ω_m,CMB − Ω_m,dyn = 0.149 (antes 0.160 vía MIRA).
 Calcula las DOS predicciones falseables (se ACTUALIZAN con el escenario nuevo):
     (1) alpha  — OUTPUT de CLASS: fit Viel al cociente P_partícula/P_frío.
@@ -46,7 +46,7 @@ tau_Pi=KAL*OMEGA/TRIAL            # = KAL/(3·Ω_DE) = 2.191, número puro
 Smnu=R2*om_b_h2*C_nu/tau_Pi       # = 0.0685 eV (antes 0.06902 con C≈93.85 baked)
 om_nu_h2=Smnu/93.14
 om_m_h2=om_b_h2+om_c_h2+om_nu_h2      # 0.14267
-Om_m=om_m_h2/H**2                     # 0.30889  Ω_m,CMB (derivado)
+Om_m=om_m_h2/H**2                     # 0.308881  Ω_m,CMB (derivado)
 Om_cold=0.160                         # sector dinámico (CDM frío + b), DESI
 Om_hot=Om_m-Om_cold                   # 0.149  Ω_φDM (diferencia; antes 0.160 vía MIRA)
 Om_cdm=Om_cold-Omega_b

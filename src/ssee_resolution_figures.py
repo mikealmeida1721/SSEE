@@ -3,7 +3,7 @@ Resolution figures — visual closure of claims that previously lived only in te
 All values are canonical (VERIFICATION_LEDGER.md §Valores Canónicos); zero fitting.
 
 Figure A: fig_rd_dual.pdf       — sound horizon r_d: SSEE physical value 147.17 Mpc
-                                   (total matter Omega_m,CMB=0.30889, omega_m direct) vs
+                                   (total matter Omega_m,CMB=0.308881, omega_m direct) vs
                                    Planck 147.09±0.26 Mpc and LCDM 147.3 Mpc. The 175.6 Mpc
                                    value is flagged as a CATEGORY ERROR: what one gets by
                                    wrongly inserting the cold sector 1+w0=0.160 into the
@@ -26,7 +26,7 @@ os.makedirs(OUT, exist_ok=True)
 # Figure A — dual r_d
 # ════════════════════════════════════════════════════════════════════════════
 RD_BUG   = 175.6    # Mpc — CATEGORY ERROR: cold sector 1+w0=0.160 wrongly in geometry
-RD_CMB   = 147.17   # Mpc — SSEE physical value, total matter (Omega_m,CMB=0.30889, omega_m direct), CAMB
+RD_CMB   = 147.17   # Mpc — SSEE physical value, total matter (Omega_m,CMB=0.308881, omega_m direct), CAMB
 RD_PLANCK, RD_PLANCK_ERR = 147.09, 0.26   # Mpc, Planck 2018
 RD_LCDM  = 147.3    # Mpc — LCDM Eisenstein-Hu at Omega_m = 0.315
 
@@ -34,7 +34,7 @@ fig, ax = plt.subplots(figsize=(8.0, 4.2))
 
 bars = [
     (r'Category error' + '\n' + r'($1+w_0=0.160$ in geometry)', RD_BUG,  '#d6604d'),
-    (r'SSEE physical' + '\n' + r'($\Omega_{m,\rm CMB}=0.30889$)',  RD_CMB,  '#1a9641'),
+    (r'SSEE physical' + '\n' + r'($\Omega_{m,\rm CMB}=0.308881$)',  RD_CMB,  '#1a9641'),
     (r'$\Lambda$CDM (EH98,' + '\n' + r'$\Omega_m=0.315$)',            RD_LCDM,  '#4393c3'),
 ]
 ypos = np.arange(len(bars))[::-1]

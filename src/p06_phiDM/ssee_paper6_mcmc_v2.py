@@ -33,7 +33,7 @@ G = np.load(GRIDNPZ)
 g_phidm, g_mphi, z_dense = G["grid_phidm"], G["grid_mphi"], G["z_dense"]
 s8z_grid = G["s8z_grid"]              # (nP, nM, nZ) σ₈(z) @ A_s=2.1e-9
 As_ref   = float(G["As_ref"])*1e9    # → en unidades de 10⁹
-Om_m     = float(G["Om_m"])          # 0.30889 fijo
+Om_m     = float(G["Om_m"])          # 0.308881 fijo
 M_PHI_CAN, OM_PHIDM_CAN = float(G["m_phi_can"]), float(G["om_phidm_can"])
 
 # Interpolador σ₈(Ω_φDM, m_φ, z)  (lineal, sobre grilla CLASS real)

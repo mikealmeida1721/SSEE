@@ -67,7 +67,7 @@ OMBH2_ALG = 0.02237
 #   ω_m = ω_b+ω_c+ω_ν, con ω_c = KAL0·ω_b·n_s (forward, Paper 1); Ω_m,CMB = ω_m/h²
 _OMB_H2 = (PI - PHI)/(3*(PI+PHI)**2)                          # 0.02242
 _OMC_H2 = KAL0 * _OMB_H2 * NS_ALG                             # 0.11951
-OM_CMB  = (_OMB_H2 + _OMC_H2 + 0.000735)/(H0_ALG/100.0)**2    # 0.30889 (era 0.31993 vía MIRA)
+OM_CMB  = (_OMB_H2 + _OMC_H2 + 0.000735)/(H0_ALG/100.0)**2    # 0.308881 (era 0.31993 vía MIRA)
 
 # CLASS Fase 1 calibración: r_d(CLASS) = 147.01 Mpc con params SSEE
 # vs. Planck 2018 medido = 147.09 Mpc (diferencia 0.05%)

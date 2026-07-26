@@ -31,7 +31,7 @@ wa    = -0.670
 H0    = 67.962     # km/s/Mpc (algebraico: 3(φ+π)²)
 Omb   = 0.02242 / (H0/100)**2          # ω_b-direct: Ω_b = ω_b/h² = 0.04854
 Omm_dyn    = 0.160                      # sector dinámico (fija αK; 1+w0)
-Omm_CMB    = 0.30889                    # ω_m-direct canónico (OP-8 disuelto; SIN factor MIRA)
+Omm_CMB    = 0.308881                    # ω_m-direct canónico (OP-8 disuelto; SIN factor MIRA)
 # R25-ok: aquí H0 es CONSTANTE (67.962, línea 31), no un parámetro muestreado.
 # A H0 fijo, Ω_m·h² == ω_m exactamente: no hay deriva posible. El producto de
 # abajo es conversión de unidades para CAMB, no una parametrización de ajuste.
@@ -79,7 +79,7 @@ SSEE_RPH.update(stability)
 cosmo_base = dict(
     H0     = H0,
     ombh2  = Omb * (H0/100)**2,
-    omch2  = Omcdm_CMB * (H0/100)**2,   # ω_m-direct canónico: Ω_m,CMB=0.30889
+    omch2  = Omcdm_CMB * (H0/100)**2,   # ω_m-direct canónico: Ω_m,CMB=0.308881
     ns     = 0.96556,
     As     = 2.1e-9,
     tau    = 0.0543,

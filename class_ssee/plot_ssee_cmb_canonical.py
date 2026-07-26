@@ -1,6 +1,6 @@
 """
 SSEE-V3.6 vs ΛCDM: CMB TT spectrum (CLASS Boltzmann) — JOURNAL-STYLE figure.
-ω_m-direct CANONICAL background Ω_m,CMB = 0.30889 (OP-8 dissolved, no MIRA factor).
+ω_m-direct CANONICAL background Ω_m,CMB = 0.308881 (OP-8 dissolved, no MIRA factor).
 Reads output/ssee_v36_canonical__cl_lensed.dat and the ΛCDM reference.
 """
 import numpy as np
@@ -61,7 +61,7 @@ ax_main.errorbar(planck_ell, planck_Dl, yerr=planck_err, fmt="o", ms=3.5,
 ax_main.plot(ell_lcdm, Dl_lcdm_TT, color="#1f77b4", lw=1.8, ls="--",
              label=r"$\Lambda$CDM (Planck 2018, CLASS)", zorder=3)
 ax_main.plot(ell_ssee, Dl_ssee_TT, color="#d62728", lw=2.0,
-             label=r"SSEE-V3.6 ($\Omega_{m,\rm CMB}=0.30889$, $w_0=-0.840$, $w_a=-0.670$)",
+             label=r"SSEE-V3.6 ($\Omega_{m,\rm CMB}=0.308881$, $w_0=-0.840$, $w_a=-0.670$)",
              zorder=4)
 ax_main.set_ylabel(r"$D_\ell^{TT}$ [$\mu$K$^2$]", fontsize=12)
 ax_main.set_xlim(2, 2500)

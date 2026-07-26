@@ -229,7 +229,7 @@ def plot_spectrum(ells_s, Dl_s, ells_l, Dl_l, ell_obs, Dl_obs, sigma_obs):
         title="SSEE vs Planck PR4: CMB TT Power Spectrum",
         outname="fig_cmb_spectrum.pdf",
         ylim=(0, 6500),
-        ssee_label=r"SSEE ($\Omega_{m,\rm CMB}=0.30889$)",
+        ssee_label=r"SSEE ($\Omega_{m,\rm CMB}=0.308881$)",
         lcdm_label=r"$\Lambda$CDM ($\Omega_m=0.315$)",
     )
 

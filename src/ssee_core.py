@@ -40,7 +40,7 @@ OMEGA_DE    = T_R / M_V         # ≈ 0.840  (= |w0|; es la EoS, NO la fracción
 #
 # ⚠️ REGLA DE Ω_m (2026-07-09, tras el hallazgo del χ²=726, V-L4-DESI):
 #   La GEOMETRÍA de fondo — E(z), distancias BAO, H(z), r_d, cualquier E²(z) —
-#   usa SIEMPRE la materia TOTAL:  OMEGA_M_TOTAL = ω_m/h² = 0.30889.
+#   usa SIEMPRE la materia TOTAL:  OMEGA_M_TOTAL = ω_m/h² = 0.308881.
 #   El 0.160 NO es una densidad de materia: es el SECTOR frío dinámico (1+w0),
 #   componente de perturbaciones (Paper 6: 0.160 + φ-DM 0.149 = 0.308) y factor
 #   de la fórmula EFT α_K = 3|w0|·0.160. NUNCA va en un E(z).
@@ -82,7 +82,7 @@ OMEGA_C_H2 = KAL0 * OMEGA_B_H2 * N_S           # ≈ 0.11952  (forward, Paper 1)
 OMEGA_NU_H2 = SUM_MNU_EV / 93.14               # ≈ 0.000735
 OMEGA_M_H2 = OMEGA_B_H2 + OMEGA_C_H2 + OMEGA_NU_H2   # ≈ 0.14268  (ω_m físico)
 # MATERIA TOTAL — la ÚNICA densidad que entra en cualquier geometría de fondo:
-OMEGA_M_TOTAL = OMEGA_M_H2 / (H0_GLOBAL/100.0)**2    # ≈ 0.30889  (CANÓNICO, derivado, ω_m/h²)
+OMEGA_M_TOTAL = OMEGA_M_H2 / (H0_GLOBAL/100.0)**2    # ≈ 0.308881  (CANÓNICO, derivado, ω_m/h²)
 OMEGA_M_CMB   = OMEGA_M_TOTAL                         # [ALIAS] mismo número; usar OMEGA_M_TOTAL
 # Identidades históricas (RETIRADAS como factor-materia, conservadas para trazar):
 OMEGA_M_CMB_PIPHI     = (PI / PHI) * OMEGA_CDM_SECTOR # ≈ 0.31069  (factor π/φ — superado)
@@ -158,13 +158,13 @@ def _sanity_checks():
     assert abs(OMEGA_M_TOTAL - OMEGA_M_H2 / (H0_GLOBAL/100.0)**2) < 1e-12, "Omega_m,total debe ser ω_m/h²"
     assert round(OMEGA_M_H2, 4) == 0.1427, f"ω_m algebraico fuera de rango: {OMEGA_M_H2}"
     # Ω_m,CMB reproducible en 3 s: los TRES términos son necesarios.
-    # Omitir ω_ν devuelve 0.30729 (no 0.30889) — el ν NO es opcional (Sealed §two-omega).
+    # Omitir ω_ν devuelve 0.30729 (no 0.308881) — el ν NO es opcional (Sealed §two-omega).
     _h2 = (H0_GLOBAL / 100.0) ** 2
     _om_sin_nu = (OMEGA_B_H2 + OMEGA_C_H2) / _h2
     assert round(_om_sin_nu, 4) == 0.3073, \
         f"Ω_m,CMB sin ω_ν debe dar ~0.30729 (ν no opcional): {_om_sin_nu}"
     assert round((OMEGA_B_H2 + OMEGA_C_H2 + OMEGA_NU_H2) / _h2, 4) == 0.3089, \
-        "Ω_m,CMB con los tres términos debe dar 0.30889"
+        "Ω_m,CMB con los tres términos debe dar 0.308881"
     assert abs(OMEGA_C_H2 - KAL0 * OMEGA_B_H2 * N_S) < 1e-12, "ω_c debe ser KAL₀·ω_b·n_s"
 
 

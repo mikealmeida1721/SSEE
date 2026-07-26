@@ -8,7 +8,7 @@ y CONSUME el forward canónico — cero parámetros libres:
   • P(k):  salida CLASS real con la partícula m_φ=40.70 eV
            (output/can_part__pk.dat = dos sectores; output/can_cold__pk.dat = techo frío)
            generada por ../src/ssee_paper6_canonical_particle.py
-  • fσ₈:   ODE de crecimiento con fondo PLANO Ω_m=0.30889 (Ω_DE=1−Ω_m=0.69111),
+  • fσ₈:   ODE de crecimiento con fondo PLANO Ω_m=0.308881 (Ω_DE=1−Ω_m=0.69111),
            idéntica a ../src/p06_phiDM/ssee_paper6_verification.py
 
 Amplitud σ₈ del two-sector = 0.747 (CON free-streaming), usada para fσ₈ Y S₈
@@ -47,7 +47,7 @@ R2      = Om_DNAV / (KAL0 * Tr)
 mnu     = R2 * 0.960318
 omega_nu= mnu / 93.14
 omega_m = omega_b + omega_c + omega_nu
-Om_total = omega_m / h_**2             # 0.30889 (Ω_m,CMB, clustering)
+Om_total = omega_m / h_**2             # 0.308881 (Ω_m,CMB, clustering)
 Om_CDM   = 1.0 + w0                    # 0.160 (sector dinámico)
 m_phi    = 40.70
 k_fs     = 0.754

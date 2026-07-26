@@ -114,13 +114,13 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | ΔBIC MCMC (ΛCDM−SSEE) | **+6.43** (SSEE favorecido; CPL−SSEE=+6.35; ΔDIC=−5.66; prior Planck común) | `ssee_paper2_mcmc.py` → `results/logs/mcmc_paper2_3models_wmfix.log` | 2026-07-25 (ω_m algebraico fijo R25; +5.68 con Ω_m congelado superado) |
 | Ω_b h² (posterior MCMC reframe) | **0.02207 ± 0.00045** (≈BBN 0.02218) | `ssee_paper2_mcmc_reframe.py` (R25; era 0.02221 con Ω_m congelado) | 2026-07-25 |
 | r_d,SSEE (MCMC, ω_m algebraico fijo R25) | **148.34 Mpc** ≈ r_d(ΛCDM) 147.78 (ratio 1.004) | `ssee_paper2_mcmc.py` → `results/logs/mcmc_paper2_3models_wmfix.log` | 2026-07-25 (148.15 con Ω_m congelado; el 175.16 era el bug 0.160 en E(z)) |
-| r_d (CAMB, reframe ω_m-directo @ H=67.962, Ω_m,CMB=0.30889) | 147.17 Mpc — **0.32σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` (sin mapping MIRA; era 146.73@67.037) | 2026-06-19 |
+| r_d (CAMB, reframe ω_m-directo @ H=67.962, Ω_m,CMB=0.308881) | 147.17 Mpc — **0.32σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` (sin mapping MIRA; era 146.73@67.037) | 2026-06-19 |
 | χ²_r CMB TT (SSEE) | 1.042 | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962, Σm_ν=0.0685) → `results/logs/paper3_cmb_reframe.log` | 2026-06-19 (era 1.044 @67.04 legacy) |
 | ΔBIC CMB diagonal (SSEE−ΛCDM) | −35.0 (SSEE favorecido) | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962) → `results/logs/p3_pr4_diag_nu_fix.log` | 2026-07-25 (Σm_ν=0.06849 coherente; era −34.9 con 0.0690, −28.0 @67.04 legacy) |
 | ΔBIC CMB plik_lite TTTEEE (ω_m-directo, k=2) | **−24.02** (χ²=1005.41 @ H_alg=67.962) | `run_p3_reframe.py` → `results/logs/p3_cmb_reframe_nu_fix.log` | 2026-06-19 (canónico reframe; Cobaya legacy −32.2 @67.037 superado) |
 | θ* (CAMB, en anchor H_alg 67.962, mnu=0.069) | 0.59668° (100θ*=1.04140) — **1.05σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-06-19 |
 | θ* (CAMB, en posterior 67.9475, mnu=0.069) | 0.59666° (100θ*=1.04136) — **0.91σ** (posterior coincide con anchor; la tensión 6.66σ era el bug del sector 0.160 en E(z), V-L4-DESI) | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-07-09 (geometría total corregida; posterior 67.159/66.41 superados) |
-| σ₈ / S₈ SSEE (Paper 5 single-sector, "el desafío") | 0.8335 / 0.846 — **3.5σ KiDS** | `ssee_paper5_IS_perturbations.py` (G=1.011, Ω_m,CMB=0.30889) | 2026-06-19 (canónico; antes 0.820/0.847 @0.3199) |
+| σ₈ / S₈ SSEE (Paper 5 single-sector, "el desafío") | 0.8335 / 0.846 — **3.5σ KiDS** | `ssee_paper5_IS_perturbations.py` (G=1.011, Ω_m,CMB=0.308881) | 2026-06-19 (canónico; antes 0.820/0.847 @0.3199) |
 | σ₈ para fσ₈ (Paper 6 two-sector) | **0.747** (R=8, CON free-streaming) → tensión media **0.93σ** | `ssee_paper6_verification.py`, `ssee_paper6_mcmc_v2.py` | 2026-06-29 (CORREGIDO: antes "0.811·G_2s=0.794, amplitud RSD k<k_fs" suponía supresión NO alcanza RSD — FALSO; k_half=0.351 muerde DENTRO de la ventana σ₈(R=8), σ₈ cae 6.9% ya a k=0.3; single-sector legítimo 0.70σ con σ₈=0.8136) |
 | σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.747 / 0.758 — **0.04σ KiDS** | `ssee_paper6_canonical_particle.py` (forward CLASS) | 2026-06-19 (canónico SOLAR; antes 0.742/0.766 @36.95) |
 | m_φ (Paper 6 forward-pred, dim. consistente) | 40.70 eV | Σm_ν^act·(SOLAR²·KRYSTOS=594.28), `ssee_core` | 2026-06-19 (canónico; era 36.9463 vía Ω⁴+AURA·KAL) |
@@ -135,7 +135,7 @@ deriva corresponde a **ediciones del script / cambios de prior**, no a azar:
 - 67.159 ± 0.442 — prior H_alg 67.962, 100w×25k, **datos DR1 mal etiquetados. Superado
   por V-L4-DESI (2026-07-02).** ref `results/logs/mcmc_paper2_reframe.log`.
 - 66.412 ± 0.385 — prior H_alg + DESI DR2 REAL pero con **geometría BUGGY**: el sector
-  frío Ω_m,dyn=0.160 (=1+w0) metido en E(z)/r_d (debía ser la materia TOTAL 0.30889).
+  frío Ω_m,dyn=0.160 (=1+w0) metido en E(z)/r_d (debía ser la materia TOTAL 0.308881).
   Daba χ²_BAO=726, Ω_bh² +2.3σ, θ*=13.9σ. **Superado por V-L4-DESI 2026-07-09.**
 - **67.7872 ⁺⁰·³⁵²/₋₀·³⁵¹ — prior H_alg 67.962 + DESI DR2 + ω_m algebraico FIJO (R25)
   (CANÓNICO ACTUAL).** `ssee_paper2_mcmc_reframe.py`, ref `results/logs/mcmc_paper2_reframe.log`.
@@ -429,7 +429,7 @@ dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
 
 *Claim CLAUDE.md (canónico 2026-06-19):* titular two-sector S₈_eff=0.758 (0.04σ KiDS).
 
-1. **✓ definición:** S₈ = σ₈(Ω_m/0.3)^½ con Ω_m,CMB=0.30889 (√(Ω_m/0.3)=1.0147).
+1. **✓ definición:** S₈ = σ₈(Ω_m/0.3)^½ con Ω_m,CMB=0.308881 (√(Ω_m/0.3)=1.0147).
 2. **✓ single-sector (el desafío):** σ₈=0.8335 → S₈=0.846 — **3.5σ KiDS**.
    Es el baseline que el modelo debe resolver.
 3. **✓ two-sector φ-DM (TITULAR, forward):** el free-streaming en k_fs=0.754
@@ -497,10 +497,10 @@ parámetros libres), pero su justificación desde un Lagrangiano sigue abierta
 
 ## V-L3-2sec — modelo dos sectores φ-DM — **PARCIAL (identidad sí, split físico no)**
 
-*Claim CLAUDE.md:* "Ω_total (dos sectores) = 0.30889 ≈ Ω_m,CMB — unificación algebraica".
+*Claim CLAUDE.md:* "Ω_total (dos sectores) = 0.308881 ≈ Ω_m,CMB — unificación algebraica".
 
 1. **✓ identidad:** Ω_CDM + Ω_φDM = Ω_m,dyn + (MIRA−1)·Ω_m,dyn =
-   MIRA·Ω_m,dyn = 0.30889. Diferencia con V-L2-05 = 0 exacto. Es una
+   MIRA·Ω_m,dyn = 0.308881. Diferencia con V-L2-05 = 0 exacto. Es una
    **re-partición algebraica** de Ω_m,cosm en dos mitades casi iguales.
 2. **⚠ split físico:** que un sector (φ-DM) free-streame para k>k_fs y el
    otro (CDM) no, descansa en m_φ=40.70 eV (canónico, cadena dim. consistente
@@ -900,10 +900,10 @@ verifica que los números encajen entre ellos, no re-corre los pipelines.
 
 ## V-L4-S8 — cadena S₈ weak-lensing (canónico 2026-06) — **verificado (aritmética)**
 
-Usa Ω_m,CMB=0.30889 → √(Ω_m,CMB/0.3)=1.0147 (S₈ es amplitud gravitacional).
+Usa Ω_m,CMB=0.308881 → √(Ω_m,CMB/0.3)=1.0147 (S₈ es amplitud gravitacional).
 
 1. **✓ single-sector ("el desafío"):** σ₈ = 0.8335 (techo CLASS todo-frío,
-   fuente Poisson Ω_m,CMB=0.30889).
+   fuente Poisson Ω_m,CMB=0.308881).
    S₈ = 0.8335·1.0147 = 0.846 → **3.5σ KiDS-1000** (DES-Y3 ≈ 3.5σ).
 2. **✓ two-sector φ-DM (TITULAR, forward):** σ₈_eff = 0.7470 (free-streaming
    CLASS, k_fs=0.754 de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo). S₈_eff = 0.7470·1.0147 =
@@ -956,7 +956,7 @@ previo usaba el vector DR1 mal etiquetado, superado):
 | 67.037 / 66.533 (anchor/posterior MIRA viejo) | 146.73 / 147.30 Mpc | *superado por reframe* |
 
 **Mecanismo (ω_m-directo):** la parametrización SSEE fija la densidad física
-ω_m = ω_b+ω_c+ω_ν = 0.14267 (forward, ω_c=KAL₀·ω_b·n_s), y Ω_m,CMB=ω_m/h²=0.30889
+ω_m = ω_b+ω_c+ω_ν = 0.14267 (forward, ω_c=KAL₀·ω_b·n_s), y Ω_m,CMB=ω_m/h²=0.308881
 es DERIVADO. Como r_d depende de ω_m y ω_b (ambos algebraicos, independientes de
 H₀), r_d es robusto: **147.17 Mpc (0.32σ) en ambas etapas**.
 **El "✅" de r_d se restituye, ahora a 0.32σ (mejor que el 1.38σ del anchor MIRA viejo).**
@@ -989,7 +989,7 @@ BAO–CMB" desaparece — no era feature de w₀wₐ, era el sector 0.160 en la 
 ## V-L4-MCMC — MCMC DESI+Planck (Paper 2) — **re-run 2026-07-09; geometría total corregida**
 
 Re-corrido `ssee_paper2_mcmc.py` (100 walkers × 25000 pasos × 3 modelos, 1.81 h,
-DESI DR2 + geometría total Ω_m=0.30889, prior Planck común). Posteriores:
+DESI DR2 + geometría total Ω_m=0.308881, prior Planck común). Posteriores:
 
 | Modelo | k | H₀ | ln P_MAP | BIC | ΔBIC |
 |---|---|---|---|---|---|
@@ -1007,7 +1007,7 @@ DESI DR2 + geometría total Ω_m=0.30889, prior Planck común). Posteriores:
    El "1.2σ menos barión" era el bug (0.02183/0.02285 con geometría 0.160).
 4. **✓ r_d(SSEE)=148.34 Mpc** ≈ r_d(ΛCDM) 147.78 (ratio 1.004). El 175.16 crudo
    era Ω_m,dyn=0.160 en E(z) — el bug de geometría; con la total es el estándar.
-5. **✓ Ω_m tensión = 0.88σ** (Ω_m,total=0.30889 vs Planck 0.315). La "21.3σ" era
+5. **✓ Ω_m tensión = 0.88σ** (Ω_m,total=0.308881 vs Planck 0.315). La "21.3σ" era
    comparar el sector frío 0.160 con Planck — el bug dos-Ω_m, ahora DISUELTO.
    Cross-val LOO-z (z≥1.0): SSEE χ²_r=0.197 < ΛCDM 0.711 < CPL 39.64 (SSEE predice mejor).
 

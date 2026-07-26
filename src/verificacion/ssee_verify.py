@@ -114,7 +114,7 @@ _omb  = (pi - phi) / (3 * Omega ** 2)             # ω_b (OP-1)
 _omc  = _kal0 * _omb * (1 - phi ** -7)            # ω_c = KAL0·ω_b·n_s (forward)
 _omm  = _omb + _omc + 0.0684903 / 93.14           # ω_m físico (Σm_ν=0.0685, C_ν=93.14)
 _h    = (3 * Omega ** 2) / 100                    # h = H_alg/100
-check("L1 canónico   Om_m,CMB = ω_m/h² = 0.30889 (ω_m-directo, sin factor)",
+check("L1 canónico   Om_m,CMB = ω_m/h² = 0.308881 (ω_m-directo, sin factor)",
       abs(_omm / _h ** 2 - 0.3088808856) < 1e-9)
 
 # ─────────────────────────────────────────────────────────────────────
@@ -349,7 +349,7 @@ track_open("V-L3-mphi  coeficiente SOLAR²·KRYSTOS_V no derivado del transporte
 
 # Dos sectores phi-DM (P6) — tras el reframe omega_m-directo (2026-06-18) la
 # particion sale SOLA, sin factor: Om_CDM (=Om_m,dyn=0.160, DESI) + Om_phiDM =
-# Om_m,CMB (=omega_m/h²=0.30889). El sector phi-DM es la DIFERENCIA entre la
+# Om_m,CMB (=omega_m/h²=0.308881). El sector phi-DM es la DIFERENCIA entre la
 # materia del CMB (omega_m) y la CDM dinamica. El split fisico en k_fs depende
 # de m_phi (ABIERTO) y k_fs (pendiente Fase B).
 Om_m_CMB = _omm / _h ** 2
@@ -457,11 +457,11 @@ track_open("V-L3-mira  retencion conformal beta_c=AURA NO reproduce MIRA",
            "derivacion en el marco vigente por los 4 mecanismos naturales")
 
 # dos-Ω_m — OP-8 DISUELTO (reframe ω_m-directo 2026-06-18). Ya NO hay factor
-# materia: Om_m,dyn=1+w0=0.160 (DESI) y Om_m,CMB=ω_m/h²=0.30889 (ω_c=KAL0·ω_b·n_s)
+# materia: Om_m,dyn=1+w0=0.160 (DESI) y Om_m,CMB=ω_m/h²=0.308881 (ω_c=KAL0·ω_b·n_s)
 # son DOS predicciones independientes, no ligadas por MIRA ni π/φ.
 check("V-L3-2Om  Om_m,dyn != Om_m,CMB  (dos predicciones independientes)",
       abs(Om_m_dyn - _omm / _h ** 2) > 0.12)
-check("V-L3-2Om  Om_m,CMB = ω_m/h² (forward, sin factor) = 0.30889",
+check("V-L3-2Om  Om_m,CMB = ω_m/h² (forward, sin factor) = 0.308881",
       abs(_omm / _h ** 2 - 0.3088808856) < 1e-6)
 track_open("V-L3-2Om  OP-8 DISUELTO: residuo = ω_b (OP-1) e identidad ω_c",
            "ya NO hay factor materia que derivar (era el problema central). "
@@ -499,7 +499,7 @@ check("V-L4-02b P6  S8_eff two-sector = 0.758  (TITULAR, resuelve, forward)",
 
 # Tensiones S8 — error en cuadratura modelo + observacional.
 # KiDS-1000 (Asgari+2021): S8 = 0.759 +/- 0.024.
-G_growth = 1.0032            # D1_SSEE/D1_LCDM (Paper 5 ODE @ Om_cosm=0.30889; era 1.011 @0.31983)
+G_growth = 1.0032            # D1_SSEE/D1_LCDM (Paper 5 ODE @ Om_cosm=0.308881; era 1.011 @0.31983)
 S8_single_err = 0.006 * G_growth * (Om_cosm / 0.3) ** 0.5
 t_KIDS_single = abs(S8_single - 0.759) / (S8_single_err ** 2 + 0.024 ** 2) ** 0.5
 t_KIDS_twosec = abs(S8_eff - 0.759) / 0.024
@@ -517,7 +517,7 @@ check("V-L4-05 P3  ΔBIC CMB = -20.8 consistente con chi2_r (re-run 2026-05-22)"
 
 # r_d / theta* — re-run CAMB 2026-07-09 con geometria TOTAL corregida (V-L4-DESI).
 # Sigma_mnu=0.069. El posterior BAO subio 67.159/66.41 -> 67.9475 al usar la materia
-# total 0.30889 en E(z) (antes el sector 0.160 lo hundia). Ahora el posterior COINCIDE
+# total 0.308881 en E(z) (antes el sector 0.160 lo hundia). Ahora el posterior COINCIDE
 # con el anchor CMB 67.962 (0.04sigma): ya no hay gap, y el theta* del posterior cae
 # de 6.66sigma a 0.91sigma. El parche "no propagar el posterior a theta*" YA NO hace
 # falta -- posterior y anchor dan el mismo CMB.
@@ -864,7 +864,7 @@ try:
     # corregido en la misma sección. R14 vigila los SCRIPTS (canario E(z)); esto es
     # PROSA. Los fragmentos siguientes solo existieron como la aserción retirada:
     _stale_v4 = {
-        r"\Omega_{m,\mathrm{dyn}}(H_0/100)": "r_d desde el sector dinámico 0.160 (va la total 0.30889)",
+        r"\Omega_{m,\mathrm{dyn}}(H_0/100)": "r_d desde el sector dinámico 0.160 (va la total 0.308881)",
         "compensate for the enlarged": "narrativa vieja: no hay r_d agrandado (148.2≈ΛCDM)",
         "downward to compensate": "posterior COINCIDE con anchor (0.04σ), no baja a compensar",
     }
@@ -1217,7 +1217,7 @@ try:
 
     # 5) CANARIO DE GEOMETRÍA — remache del bug χ²=726 (2026-07-09, V-L4-DESI).
     #    La geometría de fondo (E(z), r_d, distancias) DEBE usar la materia
-    #    TOTAL Ω_m = ω_m/h² = 0.30889.  El sector frío 0.160 = 1+w0 NO es una
+    #    TOTAL Ω_m = ω_m/h² = 0.308881.  El sector frío 0.160 = 1+w0 NO es una
     #    densidad de fondo (es perturbaciones P6 + factor EFT α_K) y NUNCA va
     #    en un E(z).  Meterlo ahí fue el bug que dio χ²_BAO=726 en DESI DR2.
     #    Este canario reconstruye la geometría BAO desde las MISMAS fuentes
@@ -1254,7 +1254,7 @@ try:
             best = min(best, float(_res @ _Cinv @ _res))
         return best
     _c_total, _c_sector = _chi2_bao(_OMT), _chi2_bao(_OMS)
-    check("DESI  R14 canario-geometría: materia TOTAL (0.30889) da χ²_BAO sano",
+    check("DESI  R14 canario-geometría: materia TOTAL (0.308881) da χ²_BAO sano",
           _c_total < 50, f"χ²={_c_total:.1f} (<50) con Ω_m,total")
     check("DESI  R14 canario-geometría: sector 0.160 en E(z) DEBE doler",
           _c_sector > 300, f"χ²={_c_sector:.1f} (>300) — reproduce el bug χ²=726")
@@ -1303,7 +1303,7 @@ except Exception as e:
 # ─────────────────────────────────────────────────────────────────────
 # CAPA R25 — parametrización: ω_m es el ABSOLUTO que SSEE fija; Ω_m es DERIVADO.
 #
-# Hallazgo 2026-07-25. Los MCMC congelaban la FRACCIÓN Ω_m=0.30889 y derivaban
+# Hallazgo 2026-07-25. Los MCMC congelaban la FRACCIÓN Ω_m=0.308881 y derivaban
 # ω_m = Ω_m·h² en cada paso:
 #       om_h2 = OMEGA_M_TOTAL*(H0/100)**2        ← parametrización INVERTIDA
 # Pero SSEE predice el absoluto ω_m = ω_b+ω_c+ω_ν = 0.14267 (álgebra pura);
@@ -1339,7 +1339,7 @@ try:
                 _R25_HITS.append(f"{_pf.name}:{_i}")
     # (b) PUNTO CIEGO de (a), hallado el mismo día: en ssee_phase_d_savage_cv.py el
     # patrón era `Om * (H0/100)**2` con `Om` una VARIABLE asignada desde la constante
-    # 0.30889 — la forma superficial no coincidía, el significado sí. Lección idéntica
+    # 0.308881 — la forma superficial no coincidía, el significado sí. Lección idéntica
     # a la de las mutaciones: una regla que busca la superficie deja pasar el fondo.
     # Este segundo pase marca cualquier archivo que DEFINA una constante Ω_m≈0.3088x
     # y además fabrique ω_m con ·(H0/100)**2 en alguna línea — revisión obligatoria.
@@ -1629,6 +1629,61 @@ try:
                f"tabla={_falta_tab[:3]} alias-Ω_DNAV={_alias} reducción={_pura_mal[:3]}")
 except Exception as e:
     check("R29 capa operable", False, str(e))
+
+# ── R30 — política de redondeo: lo mostrado es el redondeo CORRECTO ──────────
+# Decisión de Mike (2026-07-25): el redondeo se FIJA, no se decide caso por caso.
+# Álgebra SSEE a 12 decimales, cantidades del modelo a 6. Un redondeo suelto es
+# fuente de error propia — un decimal arrastra a los siguientes — y decir un
+# número mientras se usa otro ES un error, aunque el valor esté «casi bien».
+#
+# LA REGLA NO ES «la cadena mostrada reproduce»: las cadenas AMPLIFICAN. Con
+# ω_m=0.142668 (6 dec, correcto) la división mostrada da 0.308882 y el exacto es
+# 0.308881. Se exige lo verificable: |mostrado − exacto| ≤ media unidad del
+# último decimal mostrado.
+#
+# CASO QUE LA ORIGINÓ: Ω_m se publicaba como 0.3088'9' en 157 sitios / 14 docs.
+# Exacto 0.308880879 → correcto 0.308881. El dígito de más salía de redondear
+# ω_m a 0.14267 (sube desde 0.1426675) y dividir ESE número — intermedios
+# redondeados, ningún valor rancio. El literal viejo distaba 9.1e-6 del exacto,
+# más de media unidad del 5º decimal (5e-6) ⇒ R30 lo caza.
+# (El literal viejo NO se escribe aquí: el escáner de valores retirados lo vería.)
+try:
+    # Se ancla al SÍMBOLO, no al literal suelto: un número por sí solo no dice de
+    # quién es. La primera versión marcó en rojo 0.02237/0.1200/0.9649 — que son
+    # MEDIDAS de Planck, no predicciones SSEE. Un verificador que no distingue el
+    # dato de la predicción es peor que ninguno.
+    _ANCLAS = {
+        "Omega_m (=ω_m/h²)": (_core.OMEGA_M_TOTAL, [
+            r"\\omega_m/h\^2\s*(?:&|)\s*=\s*([\d.]+)",
+            r"\\Om\^\{\\mathrm\{cosm\}\}\s*=\s*([\d.]+)",
+            r"\\Omega_\{m,\\mathrm\{cosm\}\}\s*=\s*([\d.]+)",
+        ]),
+        "omega_m": (_core.OMEGA_M_H2, [r"\\omega_m\s*=\s*\\omega_b\+\\omega_c\+\\omega_\\nu\s*=\s*([\d.]+)"]),
+        "w0": (abs(_core.W0), [r"w_0\s*(?:&|)\s*=\s*-\s*([\d.]{6,})"]),
+        "wa": (abs(_core.WA), [r"w_a\s*(?:&|)\s*=\s*-\s*([\d.]{6,})"]),
+    }
+    _mal_red = []
+    for _nom, (_ex, _pats) in _ANCLAS.items():
+        for _t in _texs2:
+            _txt = _t.read_text(errors="ignore")
+            for _pat in _pats:
+                for _m in _re2.finditer(_pat, _txt):
+                    _lit = _m.group(1).rstrip(".")
+                    if "." not in _lit:
+                        continue
+                    _dec = len(_lit.split(".")[1])
+                    if _dec < 4:
+                        continue
+                    if abs(float(_lit) - _ex) > 0.5 * 10 ** (-_dec):
+                        _mal_red.append(f"{_t.name}«{_lit}»≠{_ex:.{_dec}f} ({_nom})")
+    _mal_red = sorted(set(_mal_red))
+    check("R30 redondeo: cada valor mostrado == redondeo correcto del exacto",
+          not _mal_red,
+          f"{len(_ANCLAS)} cantidades ancladas a su símbolo en {len(_texs2)} documentos "
+          f"(política: álgebra 12 dec, modelo 6 dec)"
+          if not _mal_red else f"MAL REDONDEADOS: {'; '.join(_mal_red[:6])}")
+except Exception as e:
+    check("R30 capa operable", False, str(e))
 
 # ─────────────────────────────────────────────────────────────────────
 # VEREDICTO

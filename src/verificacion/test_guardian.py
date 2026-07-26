@@ -239,14 +239,24 @@ expect_red("R28 espejo: la copia del repo deriva del diccionario citable → ROJ
 # —copiada y nunca verificada— la tabla mentiría justo donde promete transparencia.
 expect_red("R29 notación: la reducción en φ,π no da el valor de su fila → ROJO",
            "submission_PRD/SSEE_PRD.tex",
-           lambda t: t.replace(r"$2(\varphi+\pi)$            & $9.51925$",
-                               r"$2(\varphi+3\pi)$           & $9.51925$", 1),
+           lambda t: t.replace(r"$2(\varphi+\pi)$            & $9.519253$",
+                               r"$2(\varphi+3\pi)$           & $9.519253$", 1),
            ["R29", "ROJO"])
 
 expect_red("R29 notación: la tabla del PRD llama IGNIS a K_v → ROJO",
            "submission_PRD/SSEE_PRD.tex",
            lambda t: t.replace("$K_v$       & KRYSTOS$_V$", "$K_v$       & IGNIS      ", 1),
            ["R29", "ROJO"])
+
+# R30 — un valor mostrado deja de ser el redondeo correcto de su cantidad exacta.
+# Es el caso real de 2026-07-25: Ω_m arrastraba un dígito de más en 157 sitios
+# porque se redondeaba ω_m ANTES de dividir. Media unidad del último decimal es
+# el umbral: 0.30889 dista 9.1e-6 de 0.308881, más de 5e-6.
+expect_red("R30 redondeo: Ω_m mostrado ≠ redondeo correcto del exacto → ROJO",
+           "submission_PRD/SSEE_PRD.tex",
+           lambda t: t.replace(r"\omega_m/h^2\n        \;=\;", "XX", 1).replace(
+               "0.308881", "0.30889", 1),
+           ["R30", "ROJO"])
 
 # Escáner de valores retirados: un valor RETIRADO presentado como vigente
 expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",

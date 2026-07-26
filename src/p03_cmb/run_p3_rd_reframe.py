@@ -1,7 +1,7 @@
 """
 Fase B / P3 — r_d y θ* en el punto CANÓNICO del reframe ω_m-DIRECTO (2026-06-18).
   H global = H_alg = 67.962.  NO hay factor materia (OP-8 cerrado):
-  Ω_m,CMB = ω_m/h² = 0.30889 con cada pieza algebraica de SSEE.
+  Ω_m,CMB = ω_m/h² = 0.308881 con cada pieza algebraica de SSEE.
 
 Reusa _run_camb de ssee_paper3_cmb.py. Reporta r_d, θ*, 100θ* y los compara
 con Planck 2018 (r_d=147.09±0.26 Mpc, 100θ*=1.04109±0.00030).
@@ -23,7 +23,7 @@ omch2 = KAL0 * ombh2 * ns            # 0.11951  forward (ya en Paper 1)
 mnu   = 0.06849                       # Σm_ν canónico (C_ν=93.14 PDG; era 0.0690)
 omega_m = ombh2 + omch2 + mnu/93.14  # 0.14267
 h = H0/100.0
-Omm_cmb = omega_m / h**2             # 0.30889  DERIVADO, sin factor
+Omm_cmb = omega_m / h**2             # 0.308881  DERIVADO, sin factor
 
 # w0, wa algebraicos
 Tr = 3*(phi + (pi+phi)/2)            # 11.9935

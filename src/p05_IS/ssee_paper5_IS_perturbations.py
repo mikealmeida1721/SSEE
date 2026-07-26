@@ -47,7 +47,7 @@ from ssee_core import (
     PHI as phi, PI as pi_, BETA as beta, KAL0, P_SC as P_sc,
     K_V as Kv, T_R as Tr, M_V as Mv, W0 as w0, WA as wa,
     H0_ALG as H0_kms, OMEGA_CDM_SECTOR as Omm_dyn, OMEGA_DE as OmDE,
-    MIRA as MIRA_alg, OMEGA_M_TOTAL as Omm_CMB,   # 0.30889 materia total (growth canónico usa ESTE)
+    MIRA as MIRA_alg, OMEGA_M_TOTAL as Omm_CMB,   # 0.308881 materia total (growth canónico usa ESTE)
 )
 
 # IS relaxation time (dimensionless: τ_Π × H₀)
@@ -352,7 +352,7 @@ if results:
 # Growth equation (sub-horizon, log-a variable x = ln a):
 #   D₁'' + (2 + d ln H/d ln a) D₁' − (3/2) Ω_m(a) D₁ = 0
 #
-# Poisson source = Ω_m,CMB = ω_m/h² = 0.30889   (el fondo gravitacional real;
+# Poisson source = Ω_m,CMB = ω_m/h² = 0.308881   (el fondo gravitacional real;
 # ω_m-directo, SIN factor materia — OP-8 disuelto; era MIRA×Ω_m,dyn=0.31988, retirado).
 # Ω_m,dyn=0.160 SOLO fija w₀ (vía 1+w₀); el contenido que gravita y siembra la
 # estructura es Ω_m,CMB, predicción algebraica independiente (ω_b+ω_c+ω_ν).
@@ -380,7 +380,7 @@ S8_KIDS       = 0.759;  S8_KIDS_err = 0.024   # KiDS-1000 (Asgari+2021, canónic
 def H_ssee_exact(a):
     """Analytic SSEE H(a)/H₀ — CPL formula, valid for any a without grid."""
     rDE = a**(-3.0*(1.0+w0+wa)) * np.exp(-3.0*wa*(1.0-a))
-    # Ω_m,cosm=0.30889 en el fondo gravitacional (ω_m-directo; Ω_m,dyn=0.160 solo fija w₀ vía 1+w₀)
+    # Ω_m,cosm=0.308881 en el fondo gravitacional (ω_m-directo; Ω_m,dyn=0.160 solo fija w₀ vía 1+w₀)
     return np.sqrt(Omm_CMB * a**(-3) + (1.0 - Omm_CMB) * rDE)
 
 def H_lcdm(a):

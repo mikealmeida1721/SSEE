@@ -5,7 +5,7 @@ Recálculo Ly-α D_H/r_d @ z=2.33 bajo el reframe ω_m-directo (reemplaza el
 
 Física del reframe: la EXPANSIÓN de fondo E(z) cuenta TODA la materia no
 relativista. A z=2.33 la φ-DM (m=41 eV, no-rel desde z~4.5e5) cuenta como
-materia completa → E(z) usa Ω_m,CMB=0.30889 (CDM 0.160 + φ-DM 0.149).
+materia completa → E(z) usa Ω_m,CMB=0.308881 (CDM 0.160 + φ-DM 0.149).
 El free-streaming k_fs solo suprime el CLUSTERING a k>k_fs, NO el fondo.
 r_d sale directo de ω_m (CAMB) = 147.17 Mpc (no del mapeo ×|w_0|).
 """
@@ -35,7 +35,7 @@ scenarios = [
     ("A  dinámico crudo (0.160, r_d=175.6)", 0.160, 0.840, 175.6),
     ("A' dinámico, r_d ω_m-direct (0.160, r_d=147.17)", 0.160, 0.840, 147.17),
     ("B_viejo MIRA (0.320, r_d=147.2)  [RETIRADO]", 0.320, 0.680, 147.2),
-    ("B_nuevo ω_m-direct (0.30889, r_d=147.17)", 0.30889, 0.69111, 147.17),
+    ("B_nuevo ω_m-direct (0.308881, r_d=147.17)", 0.308881, 0.69111, 147.17),
 ]
 for name, Om, Ode, rd in scenarios:
     E, DH, ratio = DH_over_rd(Om, Ode, rd)

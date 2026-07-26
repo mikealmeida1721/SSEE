@@ -39,7 +39,7 @@ canonical:
   sigma8_single_ceiling: 0.8335   # σ8 todo-frío (techo CLASS; independiente de m_φ, sin cambio)
   S8_single_ceiling:   0.8458     # 3.5σ KiDS-1000 (0.759±0.024) — "el desafío" que el two-sector baja
   gamma_IS:             0.5504     # Paper 5 índice de crecimiento IS (fit ODE; ±0.0003; ≈ΛCDM 0.55)
-  G_growth:            1.0032     # D₁_SSEE/D₁_ΛCDM (Paper 5 ODE @ Ω_m,cosm=0.30889; era 1.011 @0.31983 — SÍ depende del fondo, que bajó en el reframe ω_m-directo)
+  G_growth:            1.0032     # D₁_SSEE/D₁_ΛCDM (Paper 5 ODE @ Ω_m,cosm=0.308881; era 1.011 @0.31983 — SÍ depende del fondo, que bajó en el reframe ω_m-directo)
   fsigma8_two_sector_sigma: 0.93  # P6 fσ8 mean two-sector σ8=0.748 CON free-streaming (CORREGIDO 2026-06-29; forward ODE 0.933, MCMC v2 CLASS 0.946; antes 0.70 usaba σ8=0.8136 single = espurio)
   fsigma8_single_sigma:     0.70  # P5 single-sector σ8=0.8136 SIN free-streaming (correcto; ≠ two-sector: el free-streaming sube fσ8 0.70→0.93)
 
@@ -60,14 +60,14 @@ canonical:
   f_screen_UV:         0.06952    # αK_full/(3·MIRA)        [INVARIANTE]
   # Posterior MCMC reframe: prior H_alg=67.962 (ancla CMB ω_m-directo) + DESI DR2 REAL.
   # GEOMETRÍA CORREGIDA 2026-07-09 (V-L4-DESI): la geometría de fondo E(z)/r_d usa la
-  # materia TOTAL Ω_m=ω_m/h²=0.30889, NO el sector frío 0.160 (=1+w0). El χ²_BAO=726
+  # materia TOTAL Ω_m=ω_m/h²=0.308881, NO el sector frío 0.160 (=1+w0). El χ²_BAO=726
   # ("esfuerzo DR2"/"dos-Ω_m amplificada") era el bug de meter 0.160 en E(z); con la
   # total baja a ~11 y el posterior sube 66.41→67.95, cayendo a 0.04σ de H_alg: DESI DR2
   # es COMPATIBLE con la predicción algebraica (no la tensa). Ω_b·h² = 0.02207 (≈BBN).
   # Supersede 66.41 (bug 0.160) y 67.16 (DR1 mal etiquetado). Ver canario guardián R14.
   # log: results/logs/mcmc_paper2_reframe.log (100w×25k, seed 42, N_eff=78170, accept=0.715, lnP=-5.6, BIC=16.6)
   # PARAMETRIZACIÓN R25 (2026-07-25): ω_m algebraico FIJO, Ω_m=ω_m/h² DERIVADO.
-  # El 67.9475/0.04σ previo congelaba Ω_m=0.30889 y sesgaba el posterior hacia el
+  # El 67.9475/0.04σ previo congelaba Ω_m=0.308881 y sesgaba el posterior hacia el
   # ancla (era el ÚNICO H₀ donde el ω_m implícito coincidía con la predicción).
   H0_posterior_km_s_Mpc: 67.79   # 67.7872 +0.352/-0.351 — 0.66σ Planck, 0.50σ H_alg
   Omega_b_h2_posterior: 0.02207   # posterior Ω_b·h² ≈ BBN prior 0.02218 (R25; era 0.02221 con Ω_m congelado)
@@ -105,7 +105,7 @@ canonical:
   C_nu_eV:             93.14      # cierre ν PDG (N_eff=3.046); era 94.07 desacople instantáneo
   omega_nu_h2:         0.000735   # = Σm_ν/C_ν = 0.06849/93.14 (era 0.000741 = Σm_ν 0.06902 stale)
   omega_m_h2:          0.14267    # ω_m físico = ω_b+ω_c+ω_ν
-  Omega_m_CMB:         0.30889    # = ω_m/h² @ H=67.962  (CANÓNICO, DERIVADO; era 0.31076 vía π/φ)
+  Omega_m_CMB:         0.308881    # = ω_m/h² @ H=67.962  (CANÓNICO, DERIVADO; era 0.31076 vía π/φ)
   H0_alg_km_s_Mpc:     67.962     # 3(φ+π)² — H GLOBAL de fondo (titular tras reframe)
 
   # Estadística — CMB (Planck plik_lite TTTEEE, Fase B con ω_m-directo @ H=67.962)
@@ -169,7 +169,7 @@ retired:
   - {pattern: "67.037",    reason: "H_MIRA ancla CMB vieja → H_alg=67.962 (ω_m-directo; CMB minimiza ahí)"}
   # ── reframe ω_m-directo + partícula SOLAR (2026-06-18/19) ──────────────
   # Densidad de materia CMB: factor π/φ y factor MIRA RETIRADOS (OP-8 disuelto)
-  - {pattern: "0.31076",   reason: "Ω_m,CMB factor π/φ — superado por ω_m-directo=0.30889"}
+  - {pattern: "0.31076",   reason: "Ω_m,CMB factor π/φ — superado por ω_m-directo=0.308881"}
   - {pattern: "0.31069",   reason: "Ω_m,CMB factor π/φ (variante) — superado"}
   - {pattern: "0.31993",   reason: "Ω_m,CMB factor MIRA — superado por ω_m-directo (OP-8 disuelto)"}
   - {pattern: "0.3199",    reason: "Ω_m,CMB factor MIRA — superado por ω_m/h²=0.3089"}
@@ -201,9 +201,9 @@ retired:
   - {pattern: "1.072\\,mpc", reason: "alpha @42.47 (variante)"}
   - {pattern: "1.108\\,mpc", reason: "alpha @41.02 (C_ν=94.07) → 1.117 @40.70 (C_ν=93.14)"}
   - {pattern: "1.108 mpc",   reason: "alpha @41.02 (variante con espacio)"}
-  # Crecimiento single-sector ODE Paper 5 (reframe Poisson 0.31983→0.30889)
-  - {pattern: "1.0109",    reason: "G_growth ODE viejo @Ω_m=0.31983 → 1.0032 @0.30889"}
-  - {pattern: "0.8466",    reason: "S8 ODE single-sector viejo @0.320 → 0.8256 @0.30889 (techo CLASS 0.846 se mantiene)"}
+  # Crecimiento single-sector ODE Paper 5 (reframe Poisson 0.31983→0.308881)
+  - {pattern: "1.0109",    reason: "G_growth ODE viejo @Ω_m=0.31983 → 1.0032 @0.308881"}
+  - {pattern: "0.8466",    reason: "S8 ODE single-sector viejo @0.320 → 0.8256 @0.308881 (techo CLASS 0.846 se mantiene)"}
   - {pattern: "0.798\\,h", reason: "k_fs @42.47 (con unidad) → 0.754\\,h @40.70"}
   - {pattern: "0.659\\,h", reason: "k_fs @36.95 (con unidad) → 0.754\\,h @40.70"}
   - {pattern: "0.762\\,h", reason: "k_fs @41.02 (C_ν=94.07) → 0.754\\,h @40.70 (C_ν=93.14)"}
@@ -289,6 +289,41 @@ historical_sections:
 # ESTA SECCIÓN ES DOCUMENTAL: los valores vigentes siguen siendo las claves
 # escalares de `canonical:` arriba. Aquí se registra su procedencia.
 # ════════════════════════════════════════════════════════════════════════
+# ════════════════════════════════════════════════════════════════════════
+# POLÍTICA DE REDONDEO  (decisión de Mike, 2026-07-25)
+# ════════════════════════════════════════════════════════════════════════
+# Un redondeo suelto es una fuente de error propia: un solo decimal arrastra a
+# los siguientes, y decir un número y usar otro ES un error aunque el valor esté
+# «casi bien». Peor: genera desconfianza justo donde el modelo promete precisión.
+# Por eso el redondeo se FIJA, no se decide caso por caso.
+#
+#   • Álgebra SSEE (φ, π y sus entidades):   12 decimales
+#     Son irracionales infinitos; 12 decimales evita que dos derivaciones del
+#     MISMO número discrepen por truncado.
+#   • Cantidades del modelo (ω_m, Ω_m, w₀, wₐ, n_s, …):   6 decimales
+#
+# REGLA DE VERIFICACIÓN (R30). El valor mostrado debe ser el redondeo CORRECTO
+# de la cantidad exacta: |mostrado − exacto| ≤ media unidad del último decimal.
+# NO se exige que «la cadena mostrada reproduzca»: las cadenas AMPLIFICAN. Con
+# ω_m = 0.142668 (6 dec, correcto) la división mostrada da Ω_m = 0.308882
+# mientras el valor exacto es 0.308881 — el redondeo de ω_m ya mueve el último
+# dígito. Por eso se verifica contra la cantidad exacta, no contra la división
+# de los dígitos exhibidos.
+#
+# CASO QUE ORIGINÓ LA POLÍTICA: Ω_m se publicaba con un 9 final (5 decimales) en
+# 157 sitios de 14 documentos. El exacto es 0.308880879 → correcto 0.308881. El
+# dígito de más salía de redondear ω_m a 0.14267 (sube desde 0.1426675) y dividir
+# ESE número: intermedios redondeados, ningún valor rancio. El literal viejo
+# distaba 9.1e-6 del exacto — más de media unidad del 5º decimal → R30 lo caza.
+#
+# OJO con los titulares: w₀ = −0.840 y wₐ = −0.670 también son redondeos
+# (−0.839950 y −0.669975). Son legítimos como titular; lo ilegítimo es USAR el
+# redondeo en un cálculo. Ver R22 (precisión falsa) y R30.
+rounding_policy:
+  algebra_ssee_decimals: 12
+  model_quantities_decimals: 6
+  rule: "|mostrado − exacto| <= media unidad del último decimal mostrado"
+
 provenance:
 
   # ── Nivel 0: constantes de base ────────────────────────────────────────
@@ -427,7 +462,7 @@ provenance:
     depends_on: [omega_m, H0]
     affects:    [E_z, r_d, distancias_BAO]
     nota:       >
-      NO ES UN INGREDIENTE: es un RESULTADO que depende de H0. El 0.30889 es su
+      NO ES UN INGREDIENTE: es un RESULTADO que depende de H0. El 0.308881 es su
       valor evaluado en el ancla. Congelarlo mientras H0 varia fabrica un omega_m
       que SSEE no predice (hasta +-1.8%) y sesga cualquier ajuste hacia el ancla.
       Ese fue el hallazgo R25 del 2026-07-25.

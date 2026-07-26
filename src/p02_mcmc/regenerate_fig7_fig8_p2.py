@@ -1,7 +1,7 @@
 """
 Regenerador standalone de fig7_Hz_comparison y fig8_tension_summary (Paper 2).
 
-Lee las cadenas CORREGIDAS de 3 modelos (geometría total Ω_m=0.30889, ω_m-directo;
+Lee las cadenas CORREGIDAS de 3 modelos (geometría total Ω_m=0.308881, ω_m-directo;
 el bug del sector frío 0.160 en E(z) quedó retirado, V-L4-DESI 2026-07-09) desde
 el .npz profesional en el HDD y reproduce las dos figuras con los valores canónicos:
   fig7 : H(z) MAP vs Cosmic Chronometers  (χ²_r SSEE=0.482 ≈ ΛCDM 0.459)
@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ssee_core import (
     W0 as W0_SSEE, WA as WA_SSEE,
-    OMEGA_M_TOTAL as OM_GEOM, OMEGA_M_H2 as WM_ALG,   # 0.30889 — materia TOTAL, la ÚNICA que entra en E(z)/r_d
+    OMEGA_M_TOTAL as OM_GEOM, OMEGA_M_H2 as WM_ALG,   # 0.308881 — materia TOTAL, la ÚNICA que entra en E(z)/r_d
 )
 
 CHAIN_FILE = _SSEE_DATA + "/mcmc/paper2_3models/mcmc_chains_professional.npz"
@@ -97,7 +97,7 @@ ax7.fill_between(z_plot, np.percentile(H_band, 16, 0), np.percentile(H_band, 84,
                  color="#E6002B", alpha=0.15, label="SSEE 68% posterior")
 ax7.set_xlabel("Redshift $z$")
 ax7.set_ylabel(r"$H(z)$ [km s$^{-1}$ Mpc$^{-1}$]")
-ax7.set_title(r"Posterior predictive check — $H(z)$ (total matter $\Omega_m=0.30889$ in geometry)")
+ax7.set_title(r"Posterior predictive check — $H(z)$ (total matter $\Omega_m=0.308881$ in geometry)")
 ax7.legend(fontsize=9)
 ax7.set_xlim(0, 1.5)
 fig7.tight_layout()

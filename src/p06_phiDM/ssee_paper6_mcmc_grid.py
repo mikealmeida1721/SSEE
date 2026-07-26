@@ -8,7 +8,7 @@ fσ₈(z) calculados con CLASS REAL + integral top-hat (fórmula de Peebles).
 
 Estrategia (gold-standard, validable):
   - Grilla 2D sobre (Ω_φDM, m_φ).  El background SSEE (H₀, w₀, wₐ, Ω_m,CMB) es FIJO.
-  - Ω_m,CMB = 0.30889 fijo (anclado por CMB, independiente).  Al flotar Ω_φDM,
+  - Ω_m,CMB = 0.308881 fijo (anclado por CMB, independiente).  Al flotar Ω_φDM,
     el sector frío Ω_cdm = Ω_m − Ω_φDM − Ω_b se ajusta (la partición es lo que se prueba).
   - m_φ fija T_φ vía relic constraint (idéntico al forward ssee_paper6_canonical_particle.py).
   - A_s NO va en la grilla: σ₈ ∝ √A_s exacto en teoría lineal → se escala analíticamente
@@ -53,7 +53,7 @@ R2      = OMEGA/(KAL*TRIAL)
 Smnu    = R2*0.960318
 om_nu_h2= Smnu/93.14
 om_m_h2 = om_b_h2 + om_c_h2 + om_nu_h2     # 0.14267
-Om_m    = om_m_h2 / h2                     # 0.30889  Ω_m,CMB (fijo, anclado CMB)
+Om_m    = om_m_h2 / h2                     # 0.308881  Ω_m,CMB (fijo, anclado CMB)
 
 # Punto canónico (forward): Ω_φDM=0.149, m_φ=40.70 eV
 SOLAR   = (pi + phi)/2 + KAL               # φ+2π = 7.9012

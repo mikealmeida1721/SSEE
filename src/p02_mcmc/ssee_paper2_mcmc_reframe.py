@@ -64,7 +64,7 @@ log("=" * 70)
 log("SSEE — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)")
 log("=" * 70)
 log(f"  Ω_m,total (geometría) = {OMEGA_M_TOTAL:.8f}  |  Ω_cdm,sector = {OMEGA_CDM_SECTOR:.8f}")
-log(f"  Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)")
+log(f"  Ω_m,CMB (ω_m/h², reframe) = 0.308881  (sin factor; OP-8 cerrado)")
 log(f"  w0 = {W0:.10f},  wa = {WA:.10f}")
 log(f"  H0_alg = {H0_ALG:.6f}")
 
@@ -105,7 +105,7 @@ def f_de_cpl(z, w0, wa):
 def E_ssee(z, Om):
     # PARAMETRIZACIÓN (corregida 2026-07-25): Om llega como ARGUMENTO. SSEE fija
     # ω_m = ω_b+ω_c+ω_ν = 0.14267 (absoluto, algebraico); Ω_m = ω_m/h² es DERIVADO.
-    # Antes Ω_m=0.30889 estaba congelado: al mover H₀ el ω_m implícito se despegaba
+    # Antes Ω_m=0.308881 estaba congelado: al mover H₀ el ω_m implícito se despegaba
     # hasta ±1.8% de la predicción y sólo coincidía en H₀=67.962 (el ancla), de modo
     # que el MCMC evaluaba SSEE fielmente SÓLO en el ancla → sesgo hacia ella
     # (posterior 67.947 = 0.04σ). Con ω_m fijo da 67.783 = 0.50σ y χ²_BAO MEJORA

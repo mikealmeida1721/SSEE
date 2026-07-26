@@ -5,7 +5,7 @@ Recálculo fσ8 para la tabla de Paper 3 con el MÉTODO CANÓNICO de Paper 5
 
 Verificación de datos (Mike: "siempre verifica los datos con que se calcula"):
  - Fondo SSEE = H_ssee_exact de ssee_paper5_IS_perturbations.py:
-     H/H0 = sqrt(Ω_m,CMB·a⁻³ + (1−Ω_m,CMB)·rDE_CPL), Ω_m,CMB=0.30889 (ω_m-directo)
+     H/H0 = sqrt(Ω_m,CMB·a⁻³ + (1−Ω_m,CMB)·rDE_CPL), Ω_m,CMB=0.308881 (ω_m-directo)
  - σ8_SSEE = σ8_LCDM·G (G = D1_SSEE/D1_LCDM, suppression de la ODE)
  - fσ8(z) = f(z)·σ8·D(z)/D(0), con f=dlnD/dlna de la ODE (no Ω_m^γ)
  - DATASET = los 6 puntos RSD canónicos de Paper 5 (peer-reviewed, citables):
@@ -18,7 +18,7 @@ from scipy.integrate import solve_ivp
 
 PHI = (1+np.sqrt(5))/2; PI = np.pi
 w0, wa = -0.8399, -0.6699
-Omm_CMB = 0.30889          # ω_m-directo (fondo gravitacional + fuente Poisson)
+Omm_CMB = 0.308881          # ω_m-directo (fondo gravitacional + fuente Poisson)
 Omm_LCDM = 0.3153
 sigma8_LCDM = 0.811        # Planck 2018
 

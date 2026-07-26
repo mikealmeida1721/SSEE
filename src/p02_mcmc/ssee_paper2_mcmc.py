@@ -50,7 +50,7 @@ _reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_o
 from ssee_core import (
     PHI, PI, BETA, KAL0, P_SC as P_sc, K_V as KV, T_R as TR, M_V as MV,
     W0 as W0_SSEE, WA as WA_SSEE, OMEGA_DE as OMDE_SSEE,
-    OMEGA_M_TOTAL as OM_GEOM,      # 0.30889 — Ω_m en el ancla (diagnóstico; NO congelar en el MCMC)
+    OMEGA_M_TOTAL as OM_GEOM,      # 0.308881 — Ω_m en el ancla (diagnóstico; NO congelar en el MCMC)
     OMEGA_M_H2 as WM_ALG,          # 0.14267 — ω_m algebraico: lo que SSEE realmente fija
     OMEGA_CDM_SECTOR as OM_SECTOR, # 0.160 — sector frío (Paper 6 + α_K); NUNCA en geometría
 )
@@ -73,7 +73,7 @@ def E_ssee(z, Om):
     #
     # PARAMETRIZACIÓN (corregida 2026-07-25): Om llega como ARGUMENTO porque SSEE
     # fija ω_m = ω_b+ω_c+ω_ν = 0.14267 (absoluto, algebraico) y Ω_m = ω_m/h² es
-    # DERIVADO. Antes Ω_m=0.30889 estaba congelado dentro de la función: al variar
+    # DERIVADO. Antes Ω_m=0.308881 estaba congelado dentro de la función: al variar
     # H₀ el ω_m implícito se despegaba hasta ±1.8% de la predicción de SSEE, y sólo
     # coincidía en H₀=67.962 — el ancla. Eso evaluaba SSEE fielmente sólo ahí y un
     # modelo ligeramente distinto en el resto, sesgando el posterior hacia el ancla.

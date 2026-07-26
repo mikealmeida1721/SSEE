@@ -5,7 +5,7 @@ ssee_paper2_mcmc_wmfix.py — MCMC con la parametrización CORRECTA de SSEE.
 QUÉ CORRIGE (hallazgo 2026-07-25)
 ---------------------------------
 Los MCMC previos (`ssee_paper2_mcmc_reframe.py`, `ssee_paper2_mcmc.py`) mantenían
-FIJA la FRACCIÓN Ω_m = 0.30889 y dejaban derivar ω_m = Ω_m·h² en cada paso:
+FIJA la FRACCIÓN Ω_m = 0.308881 y dejaban derivar ω_m = Ω_m·h² en cada paso:
 
     om_h2 = Omega_m_congelado x h^2           # <- parametrizacion invertida
 

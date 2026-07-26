@@ -302,6 +302,18 @@ historical_sections:
 #     MISMO número discrepen por truncado.
 #   • Cantidades del modelo (ω_m, Ω_m, w₀, wₐ, n_s, …):   6 decimales
 #
+# ⚠️ 6 y 12 son TECHOS, no relleno. Aplican a cantidades ALGEBRAICAS, que tienen
+# infinitos decimales y por tanto siempre hay un dígito más que mostrar. NO se
+# pueden aplicar a un número FINITO o MEDIDO: rellenar C_ν = 93.14 hasta
+# 93.140000 afirma cuatro decimales que nadie midió — falsa precisión, y encima
+# ATRAVIESA R30 porque numéricamente «es correcto» (|93.140000 − 93.14| = 0).
+# Regla: ningún valor se muestra con más decimales de los que tiene su fuente.
+#   - algebraico → hasta el techo (6 / 12)
+#   - medido     → la precisión del experimento (C_ν 2 dec, KiDS 3 dec, …)
+# Los titulares redondeados siguen siendo legítimos: w₀ = −0.840 a 3 decimales
+# PASA R30 (|0.840 − 0.839950| = 5.0e-5 ≤ 5e-4). Lo ilegítimo es usar el
+# redondeo dentro de un cálculo, no exhibirlo.
+#
 # REGLA DE VERIFICACIÓN (R30). El valor mostrado debe ser el redondeo CORRECTO
 # de la cantidad exacta: |mostrado − exacto| ≤ media unidad del último decimal.
 # NO se exige que «la cadena mostrada reproduzca»: las cadenas AMPLIFICAN. Con

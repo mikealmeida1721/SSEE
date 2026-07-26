@@ -1676,8 +1676,30 @@ try:
                         continue
                     if abs(float(_lit) - _ex) > 0.5 * 10 ** (-_dec):
                         _mal_red.append(f"{_t.name}«{_lit}»≠{_ex:.{_dec}f} ({_nom})")
+    # ── R30b — falsa precisión: rellenar un valor MEDIDO hasta el techo ──────
+    # Objeción de Mike (2026-07-25): «si el número es finito con 4 o 5 decimales
+    # esa regla no aplica, y peor si termina ahí». Cierto y verificado: 93.140000
+    # ATRAVIESA la prueba de redondeo (|93.140000 − 93.14| = 0) mientras afirma
+    # cuatro decimales que ningún experimento midió. El techo de 6/12 decimales
+    # vale para lo ALGEBRAICO —infinitos dígitos, siempre hay uno más— y NUNCA
+    # para lo medido: ahí manda la precisión del instrumento.
+    _MEDIDAS = {          # constante medida : (literal canónico, decimales reales)
+        "C_ν":      ("93.14", 2),
+        "KiDS S₈":  ("0.759", 3),
+        "KiDS σ₈":  ("0.737", 3),
+        "DES S₈":   ("0.776", 3),
+    }
+    for _nom, (_lit, _dec) in _MEDIDAS.items():
+        for _t in _texs2:
+            for _m in _re2.finditer(_re2.escape(_lit) + r"(\d+)",
+                                    _t.read_text(errors="ignore")):
+                # dígitos extra que son sólo ceros ⇒ relleno, no medida
+                if _m.group(1) and _m.group(1).strip("0") == "":
+                    _mal_red.append(f"{_t.name}«{_m.group(0)}» falsa precisión "
+                                    f"({_nom} se mide a {_dec} dec)")
+
     _mal_red = sorted(set(_mal_red))
-    check("R30 redondeo: cada valor mostrado == redondeo correcto del exacto",
+    check("R30 redondeo: valor mostrado == redondeo correcto, sin falsa precisión",
           not _mal_red,
           f"{len(_ANCLAS)} cantidades ancladas a su símbolo en {len(_texs2)} documentos "
           f"(política: álgebra 12 dec, modelo 6 dec)"

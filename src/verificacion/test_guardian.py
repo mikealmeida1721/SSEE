@@ -258,6 +258,15 @@ expect_red("R30 redondeo: Ω_m mostrado ≠ redondeo correcto del exacto → ROJ
                "0.308881", "0.30889", 1),
            ["R30", "ROJO"])
 
+# R30b — falsa precisión: una constante MEDIDA rellenada hasta el techo de 6
+# decimales. Es el caso que planteó Mike: el número es finito, la regla de
+# redondeo «no aplica» y de hecho la ATRAVIESA (|93.140000 − 93.14| = 0) mientras
+# afirma cuatro decimales que ningún experimento midió.
+expect_red("R30b falsa precisión: C_ν medido rellenado a 93.140000 → ROJO",
+           "submission_PRD/SSEE_PRD.tex",
+           lambda t: t.replace("93.14", "93.140000", 1),
+           ["R30", "ROJO"])
+
 # Escáner de valores retirados: un valor RETIRADO presentado como vigente
 expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",
            "VERIFICATION_LEDGER.md",

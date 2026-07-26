@@ -132,9 +132,35 @@ def report(fam, label):
         print(f"  {tol:>8} | {h0:>8} | {ha:>8}{star}")
 
 
+def robustez_copias_futuras():
+    """Robustez a las copias dimensionales planeadas QUINTAL…DECAL (5Ω…10Ω).
+
+    La serie de estabilidad dimensional ya nombrada es DÜSTAL=2Ω, TRÏSTAL=3Ω,
+    CUÄSTAL=4Ω; su continuación natural son seis copias más. El PRD (caption de
+    la tabla look-elsewhere) afirma que añadirlas no crea ningún acierto nuevo.
+    Hasta 2026-07-25 esa afirmación NO la computaba ningún script: estaba escrita
+    en el paper y en RIGOR_CHECKLIST §R3 apuntando aquí, y aquí no existía.
+    Se computa ahora — la afirmación resulta cierta, pero ahora tiene fuente.
+    """
+    ext = dict(FAMILY)
+    for _n, _k in zip(("QUINTAL", "SEXTAL", "SEPTAL", "OCTAL", "NONAL", "DECAL"),
+                      range(5, 11)):
+        ext[_n] = _k * OMEGA
+    r_base, r_ext = distinct_ratios(FAMILY), distinct_ratios(ext)
+    print(f"\n=== Robustez a copias dimensionales futuras (QUINTAL…DECAL = 5Ω…10Ω) ===")
+    print(f"  razones: {len(r_base)} (base)  ->  {len(r_ext)} (con las 6 copias)")
+    print(f"  {'tol':>8} | {'w0 base':>7} {'w0 ext':>7} | {'wa base':>7} {'wa ext':>7}")
+    for tol in (0.0005, 0.001, 0.002):
+        f = lambda rs, t: sum(1 for r, _ in rs if abs(r - t) <= tol)
+        print(f"  {tol:>8} | {f(r_base, W0):>7} {f(r_ext, W0):>7} |"
+              f" {f(r_base, WA):>7} {f(r_ext, WA):>7}")
+    print("  → el espacio crece pero los aciertos NO: la cuenta es robusta a la extensión.")
+
+
 if __name__ == "__main__":
     report(FAMILY, f"Diccionario Génesis COMPLETO ({len(FAMILY)} constantes)")
     print("\nLectura: a ±0.0005 (el match es identidad exacta, |d|=0), cada")
     print("parámetro de estado es único — 1 de 490 (a ±0.0005). La densidad de coincidencias")
     print("accidentales sólo crece al relajar la tolerancia muy por encima de la")
     print("precisión observacional de DESI, que es el régimen físicamente irrelevante.")
+    robustez_copias_futuras()

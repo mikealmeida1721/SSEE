@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
-"""Look-elsewhere CONJUNTO para (w0, wa) — la pregunta honesta de referee.
+"""[SUPERSEDIDO 2026-07-25] conteo conjunto por barrido de enteros.
+
+Este script barre razones (a·φ+b·π)/(c·φ+d·π) con coeficientes ENTEROS —
+el espacio abierto. El PRD §2.3 NO usa este conteo y explícitamente lo
+descarta: «a stronger statement than a generic (aφ+bπ)/(cφ+dπ) scan, which
+by construction inflates the denominator with expressions the model never
+uses». El conteo VIGENTE es sobre el diccionario CERRADO de 55 constantes
+con nombre → `look_elsewhere_full.py` (55/25/490, 1-de-490 a ±0.0005, R27).
+Se conserva como historia de cómo se llegó al denominador correcto.
+
 
 El conteo suelto (look_elsewhere_w0wa.py) pregunta cuantas razones dan 0.840
 y, por separado, cuantas dan 0.670. Eso sobreestima el azar: trata w0 y wa

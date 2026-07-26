@@ -1,0 +1,25 @@
+
+=== Diccionario Génesis COMPLETO (55 constantes) ===
+  constantes con nombre : 55
+  valores distintos     : 25  (comparten valor por ley de no-auto-suma)
+  razones A/B en (0,5]  : 490
+  w0 = AURA/Omega = 0.839949771   |   wa = PYROS/IGNIS = 0.669974886
+       tol |  hits w0 |  hits wa
+    0.0005 |        1 |        1  <- precisión sub-DESI
+     0.001 |        1 |        2  <- precisión sub-DESI
+     0.002 |        1 |        4  <- precisión sub-DESI
+     0.005 |        2 |        5
+      0.01 |        4 |        9
+
+Lectura: a ±0.0005 (el match es identidad exacta, |d|=0), cada
+parámetro de estado es único — 1 de 490 (a ±0.0005). La densidad de coincidencias
+accidentales sólo crece al relajar la tolerancia muy por encima de la
+precisión observacional de DESI, que es el régimen físicamente irrelevante.
+
+=== Robustez a copias dimensionales futuras (QUINTAL…DECAL = 5Ω…10Ω) ===
+  razones: 490 (base)  ->  664 (con las 6 copias)
+       tol | w0 base  w0 ext | wa base  wa ext
+    0.0005 |       1       1 |       1       1
+     0.001 |       1       1 |       2       2
+     0.002 |       1       1 |       4       4
+  → el espacio crece pero los aciertos NO: la cuenta es robusta a la extensión.

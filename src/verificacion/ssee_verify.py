@@ -1409,6 +1409,49 @@ try:
 except Exception as e:
     check("R26 capa operable", False, str(e))
 
+# ── R27 — el look-elsewhere que citan los papers == el que se recomputa ──────
+# El titular «1 de 490» es la defensa central contra la acusación de numerología,
+# y hasta 2026-07-25 vivía sin red: ningún check ataba el 55/25/490 ni la tabla de
+# tolerancias del PRD al script que los produce, y el script no tenía log. Si el
+# diccionario crece (ya pasó: 46→50→55 nombres), los papers quedarían citando un
+# denominador viejo y NADA lo delataría — el peor sitio posible para un número
+# stale, porque es el que un referee hostil va a querer reproducir.
+try:
+    _le_path = _REPO2 / "src" / "estadistica" / "look_elsewhere_full.py"
+    _le_ns: dict = {"__name__": "_le", "__file__": str(_le_path)}
+    exec(compile(_le_path.read_text(errors="ignore").split("if __name__")[0],
+                 str(_le_path), "exec"), _le_ns)
+    _fam = _le_ns["FAMILY"]
+    _rat = _le_ns["distinct_ratios"](_fam)
+    _n_names = len(_fam)
+    _n_vals = len({round(v, 6) for v in _fam.values()})
+    _n_rat = len(_rat)
+    _h0 = sum(1 for r, _ in _rat if abs(r - _le_ns["W0"]) <= 5e-4)
+    _ha = sum(1 for r, _ in _rat if abs(r - _le_ns["WA"]) <= 5e-4)
+    # Lo que los manuscritos AFIRMAN (PRD + Sealed + Paper 1 dicen los tres 490).
+    # OJO: se excluyen los rangos con «~» (p.ej. «$\sim$1-in-500»), que NO son el
+    # look-elsewhere del core sino la gramática del multiplicador φ-DM — una cuenta
+    # distinta que el propio PRD declara sin privilegio estadístico (§2.3, scope).
+    _claimed = set()
+    for _t in _texs2:
+        _txt = _t.read_text(errors="ignore")
+        for _m in _re2.finditer(r"1\$?[- ]in[- ]\$?(\d{3})|1 of (\d{3})|yields \$(\d{3})\$",
+                                _txt):
+            if "sim" in _txt[max(0, _m.start() - 10):_m.start()]:
+                continue
+            _claimed.add(int(next(g for g in _m.groups() if g)))
+    _bad = _claimed - {_n_rat}
+    check("R27 look-elsewhere: 55/25/490 y 1-de-490 == lo que recomputa el script",
+          _n_names == 55 and _n_vals == 25 and _n_rat == 490
+          and _h0 == 1 and _ha == 1 and not _bad,
+          f"{_n_names} nombres / {_n_vals} valores / {_n_rat} razones; "
+          f"aciertos a ±0.0005: w₀={_h0}, wₐ={_ha}; manuscritos citan {sorted(_claimed) or '—'}"
+          if not _bad and _n_rat == 490
+          else f"DESAJUSTE: script da {_n_names}/{_n_vals}/{_n_rat} (w₀={_h0},wₐ={_ha}); "
+               f"manuscritos citan {sorted(_bad)}")
+except Exception as e:
+    check("R27 capa operable", False, str(e))
+
 # ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────

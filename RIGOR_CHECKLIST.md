@@ -44,9 +44,17 @@ viejo `19679049` (SSEE_UNIFICADO multidominio) al DOI limpio. Disponibilidad de
 fuente, nunca un subconjunto. Reportar la **curva de sensibilidad a la tolerancia** y
 la **robustez a extensiones futuras**.
 **Por qué (caso real):** el conteo usaba 21 de 31 constantes → acusable de "subset a
-conveniencia". Corregido al diccionario COMPLETO (hoy 50 constantes tras formalizar las
-leyes de linaje: 490 razones, 1/490 a ±0.0005); verificado robusto a las copias
-QUINTAL–DECAL. Script: `src/estadistica/look_elsewhere_full.py`.
+conveniencia". Corregido al diccionario COMPLETO (hoy **55** constantes / 25 valores
+tras formalizar las leyes de linaje: 490 razones, 1/490 a ±0.0005); verificado robusto
+a las copias QUINTAL–DECAL (5Ω…10Ω): el espacio crece 490→664 razones y **no añade
+ningún acierto** a ±0.0005/±0.001/±0.002.
+Script: `src/estadistica/look_elsewhere_full.py` · log: `results/logs/look_elsewhere_full.log`.
+Vigilado por **R27** (el 55/25/490 recomputado debe coincidir con el que citan los .tex).
+
+> **2026-07-25:** hasta hoy este párrafo decía «50 constantes» (stale) y afirmaba la
+> robustez QUINTAL–DECAL apuntando a un script que **nunca las mencionaba**. La
+> afirmación resultó cierta al computarla, pero estaba escrita sin fuente — la misma
+> patología que OP-20. Ahora el script la calcula y deja log.
 
 ## R4 — Likelihoods reales, no comprimidas (modelos no-ΛCDM) 🟠 ⛔
 **Regla:** no presentar distance priors comprimidos de Planck como equivalentes a la

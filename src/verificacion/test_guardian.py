@@ -213,6 +213,14 @@ expect_red("R21b código: script divide por K_v en vez de IGNIS → ROJO",
            lambda t: t.replace("WA_SSEE = -P_sc / IGNIS", "WA_SSEE = -P_sc / KV", 1),
            ["R21b", "ROJO"])
 
+# R27 — el diccionario crece y los papers quedan citando el denominador viejo.
+# Ya pasó dos veces en la vida real (46→50→55 nombres); es el número que un
+# referee hostil va a querer reproducir primero.
+expect_red("R27 look-elsewhere: manuscrito cita 1-de-378 (denominador viejo) → ROJO",
+           "manuscript/SSEE_Paper7_EFT.tex",
+           lambda t: t + "\nThe target is unique: 1 of 378 ratios.\n",
+           ["R27", "ROJO"])
+
 # Escáner de valores retirados: un valor RETIRADO presentado como vigente
 expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",
            "VERIFICATION_LEDGER.md",

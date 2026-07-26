@@ -49,7 +49,7 @@ Mv   = phi + pi_ + Kv
 KAL0 = beta + pi_
 
 w0   = -Tr / Mv
-wa   = -(pi_ + phi + phi) / Kv
+wa   = -(pi_ + phi + phi) / (pi_ + (pi_ + phi + phi))   # −P_sc/IGNIS
 Omm_dyn = 1.0 + w0
 OmDE    = 1.0 - Omm_dyn
 MIRA    = (3*phi + pi_) / 4

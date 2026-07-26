@@ -33,7 +33,9 @@ M_V   = PHI + PI + K_V          # Maximal Dim. Invariant  ≈ 14.2788
 
 # ── Ecuación de estado y densidades ──────────────────────────────────────────
 W0          = -T_R / M_V        # ≈ -0.840
-WA          = -P_SC / K_V       # ≈ -0.670
+IGNIS       = PI + P_SC         # IGNIS = π+PYROS         ≈ 9.5192
+WA          = -P_SC / IGNIS     # ≈ -0.670  (denominador IGNIS, NUNCA el
+                                #  scaffold K_V: mismo valor 2Ω, otra entidad)
 OMEGA_DE    = T_R / M_V         # ≈ 0.840  (= |w0|; es la EoS, NO la fracción de densidad)
 #
 # ⚠️ REGLA DE Ω_m (2026-07-09, tras el hallazgo del χ²=726, V-L4-DESI):

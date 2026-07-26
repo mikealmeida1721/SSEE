@@ -19,7 +19,7 @@ SSEE model parameters (k=2, with --k2):
 SSEE fixed (algebraically — ω_m-directo reframe):
   H0    = 3(φ+π)²  = 67.962   (SH0ES–f_screen inversion, Paper 9; derived)
   w0    = -Tr/Mv   ≈ -0.8399
-  wa    = -P_sc/Kv ≈ -0.6700
+  wa    = -P_sc/IGNIS ≈ -0.6700   (IGNIS = π+PYROS; NO K_v)
   ns    = 1 − (1/φ)^7 ≈ 0.96556
   ombh2 = (π−φ)/(3Ω²)        = 0.022423  (ω_b directo)
   omch2 = KAL₀·ombh2·ns      = 0.11951   (ω_c forward, NOT derived from H0)
@@ -80,7 +80,8 @@ AURA       = phi + BIAL
 MIRA       = AURA / 2                  # 1.998924
 
 w0_ssee    = -Tr / Mv                  # −0.83989
-wa_ssee    = -P_sc / Kv                # −0.66990
+IGNIS      = pi + P_sc                 # IGNIS = π+PYROS (R21)
+wa_ssee    = -P_sc / IGNIS             # −0.66990  (denominador IGNIS, no K_v)
 OmDE_ssee  = Tr / Mv                   # 0.83989
 Omm_dyn    = 1.0 - OmDE_ssee          # 0.16011
 
@@ -584,7 +585,7 @@ def main():
     print("="*65)
     print(f"\n  SSEE algebraic predictions:")
     print(f"    w₀    = {w0_ssee:.6f}  (−Tr/Mv)")
-    print(f"    wₐ    = {wa_ssee:.6f}  (−P_sc/Kv)")
+    print(f"    wₐ    = {wa_ssee:.6f}  (−P_sc/IGNIS)")
     print(f"    Ωm_cmb= {Omm_cmb:.6f}  (ω_m/h² derivado, ω_m-directo)")
     print(f"    ns    = {ns_ssee:.6f}  (1 − φ⁻⁷)")
     print(f"    N_data= {N_DATA}  (full plik TTTEEE + lowl TT+EE + lensing, via clipy)")

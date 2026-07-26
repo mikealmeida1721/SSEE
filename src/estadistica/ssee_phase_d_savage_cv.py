@@ -28,7 +28,7 @@ phi   = (1 + 5**0.5) / 2          # 1.6180339887
 PI    = 3.14159265358979
 
 W0_SSEE = -0.840                   # = −Tr/Mv algebraico
-WA_SSEE = -0.670                   # = −P_sc/Kv algebraico
+WA_SSEE = -0.670                   # = −P_sc/IGNIS algebraico (IGNIS=π+PYROS)
 OM_DYN  = 0.160        # sector frío (NO geometría)
 OM_TOTAL = 0.30889     # Ω_m EN EL ANCLA (diagnóstico) — NO congelar en ajustes
 WM_ALG   = 0.1426675   # ω_m = ω_b+ω_c+ω_ν ALGEBRAICO — lo que SSEE realmente fija.

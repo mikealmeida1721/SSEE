@@ -97,10 +97,11 @@ print(f"Saved: {out1}")
 # ─────────────────────────────────────────────────────────────────────────────
 # SSEE: w(z) = w0 + wa * z/(1+z) (CPL)
 wa_ssee = -(phi + pi + Omega) / (phi + pi + (phi + pi + Omega))
-# Recalculate wa properly: wa = -P_sc/Kv where P_sc=Omega+phi, Kv=phi+pi+Omega
-P_sc = Omega + phi
-Kv   = phi + pi + Omega
-wa_ssee = -P_sc / Kv   # ≈ -0.670
+# wa = -P_sc/IGNIS, con P_sc=Omega+phi (PYROS) e IGNIS=pi+P_sc (rama-π).
+# El scaffold K_v vale lo mismo (2Ω) pero es otra entidad — guardián R21.
+P_sc  = Omega + phi
+IGNIS = pi + P_sc
+wa_ssee = -P_sc / IGNIS   # ≈ -0.670
 
 z = np.linspace(0, 3, 400)
 a = 1 / (1 + z)

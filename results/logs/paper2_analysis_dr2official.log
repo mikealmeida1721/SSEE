@@ -1,12 +1,12 @@
 ============================================================
-SSEE-V3.6 — ANÁLISIS ESTADÍSTICO PAPER 2
+SSEE — ANÁLISIS ESTADÍSTICO PAPER 2
 ============================================================
 
 Constantes algebraicas SSEE
   Φ  = 1.618034
   KAL0 = 5.521406
   Tr/Mv = 0.839950
-  P/Kv  = 0.669975
+  P_sc/IGNIS = 0.669975
 
 Predicciones CPL
   w0   = -0.8399
@@ -40,6 +40,13 @@ SECCIÓN 1 — DESVIACIONES EN SIGMA (plano w0-wa)
     SSEE pred:      w0=-0.8399, wa=-0.6700
     Δw0 = -1.536σ  |  Δwa = +0.864σ
     χ²(2D) = 3.889  →  1.46σ equiv  (p=0.1430)
+
+  Tabla SSEE(-0.840,-0.670) vs LCDM(-1,0) — ambos puntos FIJOS:
+  combinación                            rho      SSEE      LCDM
+  DESI+CMB (DR2 ec.25)                -0.978     1.68σ     2.62σ
+  DESI+CMB+Pantheon+ (DR2 ec.26)      -0.894     0.24σ     2.58σ
+  DESI+CMB+Union3 (DR2 ec.27)         -0.933     1.76σ     3.38σ
+  DESI+CMB+DESY5 (DR2 ec.28)          -0.905     1.46σ     3.93σ
 
   Sensibilidad a ρ(w0,wa) — tensión 2D equivalente por combinación:
   combinación                         ρ=-0.70  ρ=-0.85  ρ=-0.92

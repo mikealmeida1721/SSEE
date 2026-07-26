@@ -40,12 +40,13 @@ PI   = np.pi
 BETA = (PI + PHI) / 2
 KAL0 = BETA + PI
 P_sc = PI + PHI + PHI          # P = Ω + Φ = (π+Φ) + Φ
-KV   = PHI + PI + (PI + PHI)   # Kv = Φ+π+Ω
+KV   = PHI + PI + (PI + PHI)   # Kv = Φ+π+Ω  (scaffold: solo como sumando de M_v)
+IGNIS = PI + P_sc              # IGNIS = π+PYROS — denominador de wₐ (R21)
 TR   = 3 * (PHI + BETA)
 MV   = PHI + PI + KV
 
 W0_SSEE       = -TR / MV
-WA_SSEE       = -P_sc / KV
+WA_SSEE       = -P_sc / IGNIS   # denominador IGNIS, no el scaffold K_v: mismo valor, entidad distinta
 OMEGA_DE_SSEE = TR / MV
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

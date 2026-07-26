@@ -205,6 +205,14 @@ expect_red("R26 procedencia: valor documentado ≠ recomputado → ROJO",
                                "    value:      0.0229999"),
            ["R26", "ROJO"])
 
+# R21b — el linaje de wₐ se rompe en el CÓDIGO (no en el .tex). Ésta es la
+# mutación que representa la grieta hallada el 2026-07-25: como K_v e IGNIS son
+# iguales bit a bit, ningún número cambia — sólo un check de linaje la caza.
+expect_red("R21b código: script divide por K_v en vez de IGNIS → ROJO",
+           "src/p02_mcmc/ssee_paper2_analysis.py",
+           lambda t: t.replace("WA_SSEE = -P_sc / IGNIS", "WA_SSEE = -P_sc / KV", 1),
+           ["R21b", "ROJO"])
+
 # Escáner de valores retirados: un valor RETIRADO presentado como vigente
 expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",
            "VERIFICATION_LEDGER.md",

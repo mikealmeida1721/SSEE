@@ -55,7 +55,8 @@ TR   = 3 * (PHI + BETA)
 MV   = PHI + PI + KV
 
 W0_ALG    = -TR / MV            # -0.83995
-WA_ALG    = -P_sc / KV          # -0.66997
+IGNIS     = PI + P_sc           # IGNIS = π+PYROS (denominador de wₐ, R21)
+WA_ALG    = -P_sc / IGNIS       # -0.66997  (el scaffold K_v vale igual, otra entidad)
 OMDE_ALG  = TR / MV             # 0.83995
 OM_DYN    = 1.0 - OMDE_ALG     # 0.16005 (sector dinámico, DESI)
 MIRA      = (3*PHI + PI) / 4   # 1.99893 (entidad f_screen; NO es factor materia)

@@ -35,7 +35,7 @@ Tr    = 3 * (phi + beta)
 Mv    = phi + pi_ + Kv
 KAL0  = beta + pi_
 w0    = -Tr / Mv                       # -0.840
-wa    = -(pi_ + phi + phi) / Kv        # -0.670
+wa    = -(pi_ + phi + phi) / (pi_ + (pi_ + phi + phi))  # −P_sc/IGNIS        # -0.670
 Om_DNAV = pi_ + phi
 
 # Fondo ω_m-directo (sin factor materia)

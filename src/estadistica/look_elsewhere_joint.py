@@ -29,7 +29,8 @@ K_V   = PHI + PI + OMEGA
 T_R   = 3.0 * (PHI + BETA)
 M_V   = PHI + PI + K_V
 W0_TARGET = T_R / M_V          # 0.8399...
-WA_TARGET = P_SC / K_V         # 0.6699...
+IGNIS = PI + P_SC              # π+PYROS — denominador de wₐ (R21)
+WA_TARGET = P_SC / IGNIS       # 0.6699...
 
 print(f"objetivo w0 = {W0_TARGET:.9f}")
 print(f"objetivo wa = {WA_TARGET:.9f}")

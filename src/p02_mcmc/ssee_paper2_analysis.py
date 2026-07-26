@@ -18,13 +18,17 @@ OMEGA  = PI + PHI                     # Stability Metric         ≈ 4.7596
 BETA   = (PI + PHI) / 2              # Base Coupling Scalar     ≈ 2.3798
 KAL0   = BETA + PI                   # Structural Viscosity     ≈ 5.5214
 P_sc   = OMEGA + PHI                  # Dynamical Scalar         ≈ 6.3776
-KV     = PHI + PI + OMEGA            # Structural Constraint    ≈ 9.5192
+KV     = PHI + PI + OMEGA            # KRYSTOS_V (scaffold)     ≈ 9.5192
+IGNIS  = PI + P_sc                    # IGNIS = π+PYROS          ≈ 9.5192
 TR     = 3 * (PHI + BETA)            # 3D Saturation Horizon    ≈ 11.9935
 MV     = PHI + PI + KV               # Maximal Dimensional Inv  ≈ 14.2788
 
 # Predicciones CPL de SSEE
 W0_SSEE = -TR / MV                   # ≈ -0.840
-WA_SSEE = -P_sc / KV                 # ≈ -0.670
+# wₐ: el denominador es IGNIS (=π+PYROS, rama-π, intra-linaje con el numerador
+# PYROS), NO el scaffold K_v. Mismo valor bit a bit (ambos = 2Ω), entidad
+# distinta — ver guardián R21. K_v solo es legítimo como sumando de M_v.
+WA_SSEE = -P_sc / IGNIS              # ≈ -0.670
 OMEGA_DE_SSEE = TR / MV              # ≈ 0.840
 
 # Valores observacionales de referencia
@@ -39,7 +43,7 @@ print(f"\n{'Constantes algebraicas SSEE':}")
 print(f"  Φ  = {PHI:.6f}")
 print(f"  KAL0 = {KAL0:.6f}")
 print(f"  Tr/Mv = {TR/MV:.6f}")
-print(f"  P/Kv  = {P_sc/KV:.6f}")
+print(f"  P_sc/IGNIS = {P_sc/IGNIS:.6f}")
 print(f"\n{'Predicciones CPL':}")
 print(f"  w0   = {W0_SSEE:.4f}")
 print(f"  wa   = {WA_SSEE:.4f}")

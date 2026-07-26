@@ -184,12 +184,20 @@ _omnu_in_omm   = _omm - _omb - _omc                   # ω_m      → ω_ν  (lo
 # la constante del core Y con la clave del YAML. Un round-trip (m_phi/mult) sería
 # tautológico —divide por el mismo factor con el que multiplicó— y NO habría cazado
 # el drift de 2026-07-10, porque core y YAML derivaron juntos hacia el valor viejo.
+# ⚠️ SE COMPILA EL FUENTE, NO SE IMPORTA (hallazgo 2026-07-25).
+# `spec.loader.exec_module()` acepta el bytecode de `__pycache__` cuando su
+# (mtime, size) registrados parecen válidos. Este guardián leyó SUM_MNU_EV=0.06902
+# de un ssee_core.py que en disco decía 0.06849: un .pyc rancio le mintió sobre el
+# estado del repo. Un verificador que lee bytecode NO está verificando el archivo
+# que el humano lee ni el que se commitea — puede dar VERDE (o ROJO) sobre código
+# que ya no existe. Probablemente es la causa del ROJO transitorio irreproducible
+# de esta semana. `compile(texto_del_archivo)` no consulta ninguna caché.
 try:
-    import importlib.util as _ilu
-    _spec = _ilu.spec_from_file_location(
-        "_core_nu", str(pathlib.Path(__file__).resolve().parents[1] / "ssee_core.py"))
-    _core_nu = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_core_nu)
-    _mnu_core = _core_nu.SUM_MNU_EV
+    _core_path = pathlib.Path(__file__).resolve().parents[1] / "ssee_core.py"
+    _core_ns: dict = {"__name__": "_core_nu", "__file__": str(_core_path)}
+    exec(compile(_core_path.read_text(errors="ignore"), str(_core_path), "exec"),
+         _core_ns)
+    _mnu_core = _core_ns["SUM_MNU_EV"]
 except Exception as _e:                                   # pragma: no cover
     _mnu_core = None
 _yaml_nu = re.search(r"sigma_m_nu_eV:\s*([\d.]+)",
@@ -579,10 +587,16 @@ print("\nFuente canónica — ssee_core.py")
 import importlib.util as _ilu
 
 _core_path = ROOT / "ssee_core.py"
-_spec = _ilu.spec_from_file_location("ssee_core", _core_path)
+# Mismo motivo que en V-L2-11a: se COMPILA el fuente para que ningún .pyc rancio
+# de __pycache__ pueda contarle al guardián una versión del core que ya no existe.
+class _NS:                       # acceso por atributo, como el módulo que sustituye
+    def __init__(self, d): self.__dict__.update(d)
+
+
 try:
-    _core = _ilu.module_from_spec(_spec)
-    _spec.loader.exec_module(_core)
+    _ns: dict = {"__name__": "ssee_core", "__file__": str(_core_path)}
+    exec(compile(_core_path.read_text(errors="ignore"), str(_core_path), "exec"), _ns)
+    _core = _NS(_ns)
     CANON = {
         "PHI":         (_core.PHI,         phi),
         "PI":          (_core.PI,          pi),
@@ -908,6 +922,28 @@ try:
           not _kvden,
           "wₐ = P_sc/IGNIS en toda la suite; K_v solo como +K_v en M_v"
           if not _kvden else "; ".join(_kvden[:5]))
+
+    # ── R21b — la MISMA ley, pero en el CÓDIGO ────────────────────────────
+    # Hallazgo 2026-07-25 (revisión pregunta-por-pregunta del PRD, §2.2): R21
+    # sólo escaneaba .tex. Los .py seguían escribiendo `-P_sc / KV` en 10 sitios
+    # de 6 archivos — el paper decía IGNIS y el código decía K_v. Como K_v e
+    # IGNIS son iguales BIT A BIT (ambos 2Ω), ningún número delataba la grieta:
+    # exactamente el falso verde que el guardián existe para impedir. Un texto y
+    # su prueba no pueden declarar linajes distintos aunque coincidan en valor.
+    # OJO: sólo se prohíbe K_v en rol de DIVISOR; `MV = PHI + PI + KV` es legítimo.
+    _kvden_py = []
+    for _py in sorted(_REPO2.glob("src/**/*.py")) + sorted(_REPO2.glob("class_ssee/*.py")):
+        # test_guardian.py queda fuera: sus mutaciones CONTIENEN a propósito la
+        # forma prohibida (es su trabajo escribirla para probar que duele).
+        if "archive" in _py.parts or _py.name in ("ssee_verify.py", "test_guardian.py"):
+            continue
+        for _ln, _line in enumerate(_py.read_text(errors="ignore").splitlines(), 1):
+            if _re2.search(r"/\s*(KV|Kv|K_v|K_V)\b", _line):
+                _kvden_py.append(f"{_py.name}:{_ln}")
+    check("código       R21b wₐ = −P_sc/IGNIS en los scripts (K_v nunca divide)",
+          not _kvden_py,
+          "ningún script divide por K_v; el linaje del código = el del paper"
+          if not _kvden_py else "; ".join(_kvden_py[:5]))
 
     # ── R22 — precisión: sin 5-dec truncados/falsos de las constantes ─────
     # Remache forjado 2026-07-19: el Sealed truncaba (no redondeaba) la tabla de

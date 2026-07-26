@@ -1707,6 +1707,47 @@ try:
 except Exception as e:
     check("R30 capa operable", False, str(e))
 
+# ── R31 — el ssee_core IMPORTADO == el ssee_core del FUENTE ─────────────────
+# 2026-07-25, segunda vez en el día. Un `.pyc` rancio de `__pycache__` devolvió
+# SUM_MNU_EV=0.06902 mientras el archivo en disco decía 0.06849, y con él ω_m y
+# Ω_m quedaron en la cadena vieja. Esta vez llegó más lejos: el MCMC de
+# producción arrancó imprimiendo Ω_m,total = 0.30889320 (cadena rancia) en vez de
+# 0.30888088 — una corrida de 35 min silenciosamente corrupta, lanzada
+# precisamente para arreglar procedencia. Hubo que abortarla.
+#
+# El guardián ya compila el fuente para SUS lecturas (ver bloque «Fuente
+# canónica»), así que él no se engaña; pero CUALQUIER OTRO script del repo hace
+# `import ssee_core` y sí puede recibir bytecode viejo. R31 detecta la condición
+# desde fuera, sin importar la causa: compara el valor que da el IMPORT normal
+# contra el que da el AST del fuente. Si difieren, hay una caché mintiendo y
+# todo lo que se corra en ese estado es sospechoso.
+#   Nota: `python -B` NO sirve como defensa — impide ESCRIBIR bytecode, no LEERLO.
+try:
+    import ast as _ast31
+    import importlib as _il31
+    _src31 = (_REPO2 / "src" / "ssee_core.py").read_text(errors="ignore")
+    _fuente = {}
+    for _n in _ast31.parse(_src31).body:
+        if isinstance(_n, _ast31.Assign) and isinstance(_n.value, _ast31.Constant):
+            for _t in _n.targets:
+                if isinstance(_t, _ast31.Name) and isinstance(_n.value.value, float):
+                    _fuente[_t.id] = _n.value.value
+    _il31.invalidate_caches()
+    if str(_REPO2 / "src") not in sys.path:
+        sys.path.insert(0, str(_REPO2 / "src"))
+    _imp31 = _il31.import_module("ssee_core")
+    _discrepa = [f"{_k}: import={getattr(_imp31, _k)} fuente={_v}"
+                 for _k, _v in _fuente.items()
+                 if hasattr(_imp31, _k) and abs(getattr(_imp31, _k) - _v) > 1e-12]
+    check("R31 bytecode: ssee_core importado == ssee_core del fuente",
+          not _discrepa,
+          f"{len(_fuente)} constantes literales coinciden import↔fuente"
+          if not _discrepa
+          else "CACHÉ RANCIA (borrar __pycache__ y RE-CORRER lo que se haya "
+               "ejecutado en este estado): " + "; ".join(_discrepa[:4]))
+except Exception as e:
+    check("R31 capa operable", False, str(e))
+
 # ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────

@@ -1,0 +1,13 @@
+χ²_BAO en el posterior — DESI DR2, parametrización R25 (ω_m fijo, Ω_m derivado)
+  ω_m algebraico = 0.142668   (w₀=-0.839950, wₐ=-0.669975)
+  13 puntos, covarianza block-diagonal con los r_MH oficiales
+
+  escenario                                 H₀   ω_b h²  Ω_m deriv   χ²_BAO
+  posterior canónico (R25)             67.7872  0.02207   0.310477    10.33
+  ancla algebraica 3(φ+π)²             67.9621  0.02207   0.308881    10.86
+  posterior superado (Ω_m congelado)   67.9475  0.02221   0.309014    10.69
+
+  Lectura: corregir la parametrización MEJORA el ajuste BAO (10.68 → 10.33)
+  mientras aleja el posterior del ancla (0.04σ → 0.50σ). Ése es el patrón de
+  un sesgo retirado, no de un modelo dañado: el dato deja de ser arrastrado.
+  El contraste con χ²≈725 (sector frío 0.160 en E(z)) lo vigila R14.

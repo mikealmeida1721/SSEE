@@ -71,7 +71,13 @@ canonical:
   # ancla (era el ÚNICO H₀ donde el ω_m implícito coincidía con la predicción).
   H0_posterior_km_s_Mpc: 67.79   # 67.7872 +0.352/-0.351 — 0.66σ Planck, 0.50σ H_alg
   Omega_b_h2_posterior: 0.02207   # posterior Ω_b·h² ≈ BBN prior 0.02218 (R25; era 0.02221 con Ω_m congelado)
-  # Comparación de modelos (3-modelos, prior Planck común, mismo setup; log mcmc_paper2_3models_om308.log):
+  # Comparación de modelos (3-modelos, prior Planck común, mismo setup).
+  # log: results/logs/mcmc_paper2_3models_wmfix.log  (2026-07-25, parametrización
+  # R25 ω_m fijo). CORREGIDO 2026-07-25: este bloque apuntaba a
+  # mcmc_paper2_3models_om308.log (07-09, Ω_m congelado), que da ΔBIC=5.68,
+  # ΔAIC=4.91 y H₀=67.62 — NO los valores de abajo. Los números eran correctos;
+  # el puntero era el viejo, así que quien siguiera la fuente declarada habría
+  # encontrado 5.68 y concluido que este archivo miente.
   #   H0: SSEE 67.53±0.35 (0.26σ Planck) · ΛCDM 68.27±0.28 · CPL 67.26±0.51
   #   ΔBIC(ΛCDM−SSEE)=+6.43, ΔBIC(CPL−SSEE)=+6.35 · ΔAIC +5.65/+4.04 · ΔDIC −5.66 (SSEE favorecido)
   #   Savage-Dickey B=18.15 (lnB=2.90) · r_d(SSEE)=148.34≈ΛCDM 147.78 (1.004)

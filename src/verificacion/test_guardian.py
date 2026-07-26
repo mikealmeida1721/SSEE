@@ -274,6 +274,46 @@ expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",
            ["memoria", "ROJO"])
 
 
+# ── R31: un .pyc RANCIO miente sobre el estado del core (caso especial) ──
+# No es un replace de texto: hay que fabricar la condición. Se compila un core
+# con el valor viejo, se restaura el fuente correcto y se falsifica el header
+# del .pyc (mtime, size) para que Python lo dé por válido — exactamente lo que
+# ocurrió dos veces el 2026-07-25, la segunda arruinando un MCMC de producción
+# de 35 min que arrancó con Ω_m de la cadena rancia.
+def test_bytecode_rancio():
+    global _passed, _failed
+    import importlib.util
+    import py_compile
+    import shutil
+    import struct
+    core = REPO / "src" / "ssee_core.py"
+    orig = core.read_bytes()
+    try:
+        core.write_text(orig.decode().replace("SUM_MNU_EV = 0.06849",
+                                              "SUM_MNU_EV = 0.06902", 1),
+                        encoding="utf-8")
+        py_compile.compile(str(core), doraise=True)
+        core.write_bytes(orig)                     # fuente vuelve al correcto
+        st = core.stat()
+        pyc = pathlib.Path(importlib.util.cache_from_source(str(core)))
+        d = bytearray(pyc.read_bytes())
+        d[8:12] = struct.pack("<I", int(st.st_mtime))    # header: «soy válido»
+        d[12:16] = struct.pack("<I", st.st_size)
+        pyc.write_bytes(bytes(d))
+        rc, out = run_guardian()
+    finally:
+        core.write_bytes(orig)
+        shutil.rmtree(REPO / "src" / "__pycache__", ignore_errors=True)
+    ok = rc != 0 and "R31" in out
+    print(f"  [{'PASS' if ok else 'FALLA'}] R31 bytecode: .pyc rancio con header "
+          f"falsificado → ROJO")
+    _passed += ok
+    _failed += (not ok)
+
+
+test_bytecode_rancio()
+
+
 # ── Archivo: cajón sin entrada en la Bitácora → ROJO (caso especial dir) ─
 def test_archive_orphan():
     global _passed, _failed

@@ -679,7 +679,13 @@ print(f"\n  AURA = −{AURA:.6f}")
 print(f"  β_c(a_i=0.100)  = {bc_arr[0]:.6f}  (Δ = {(bc_arr[0]+AURA)/AURA*100:+.3f}%)")
 if finite[-1]:
     print(f"  β_c(a_i=0.005)  = {bc_arr[-1]:.6f}  (Δ = {(bc_arr[-1]+AURA)/AURA*100:+.3f}%)")
-print(f"  Tendencia: β_c → −AURA a medida que a_i → 0  ✓")
+_spread = (np.nanmax(bc_arr[finite]) - np.nanmin(bc_arr[finite])) / AURA * 100
+_gap = (bc_arr[finite][-1] + AURA) / AURA * 100
+print(f"  Plateau: β_c varía {_spread:.4f}% en 4 órdenes de a_i — NO converge a −AURA.")
+print(f"  Se estabiliza en {bc_arr[finite][-1]:.5f}, a {_gap:+.3f}% de −AURA, y ahí se queda.")
+print(f"  Lectura honesta: la brecha NO es un artefacto de condiciones iniciales")
+print(f"  (si lo fuera, se cerraría al bajar a_i). β_c = −AURA es una COINCIDENCIA")
+print(f"  cercana al 0.2%, no una identidad algebraica. Así se declara en el paper.")
 
 # ── Figura β_c vs a_i: plateau = la discrepancia NO es artefacto de IC ──────
 fig2, axes2 = plt.subplots(1, 2, figsize=(12, 4.5))

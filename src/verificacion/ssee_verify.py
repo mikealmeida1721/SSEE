@@ -1513,6 +1513,103 @@ try:
 except Exception as e:
     check("R28 capa operable", False, str(e))
 
+# ── R29 — símbolo ↔ entidad es BIYECCIÓN, y los padres cuadran ───────────────
+# Pedido de Mike (2026-07-25): la tabla de notación debe llevar
+#   símbolo | nombre | padres | fórmula algebraica | valor,
+# y «la simbología tampoco puede estar duplicada y debe pertenecer a una sola de
+# las entidades algebraicas». El motivo es operativo: I_g y K_v VALEN LO MISMO
+# (9.519253285), así que el número no distingue cuál usa una ecuación — sólo el
+# símbolo lo hace. Si el símbolo es único por entidad, ver K_v donde va I_g se
+# detecta a simple vista; si se duplica, vuelve el error de esta semana.
+# Se verifica: (a) ningún símbolo mapea a dos entidades; (b) el valor que la
+# tabla declara == el que se recomputa desde la FÓRMULA de sus padres.
+_SIMBOLOS = {
+    # símbolo LaTeX      (entidad,        fórmula evaluable con las de arriba)
+    r"\varphi":          ("—",           lambda d: (1 + 5 ** 0.5) / 2),
+    r"\pi":              ("—",           lambda d: _math.pi),
+    r"\Omega":           ("OMEGA",       lambda d: d["φ"] + d["π"]),
+    r"\beta":            ("BIAL",        lambda d: (d["φ"] + d["π"]) / 2),
+    "KAL":               ("KAL",         lambda d: d["β"] + d["π"]),
+    "AURA":              ("AURA",        lambda d: d["β"] + d["φ"]),
+    "MIRA":              ("MIRA",        lambda d: d["AURA"] / 2),
+    "P_{\\mathrm{sc}}":  ("PYROS",       lambda d: d["Ω"] + d["φ"]),
+    "I_g":               ("IGNIS",       lambda d: d["π"] + d["PYROS"]),
+    "K_v":               ("KRYSTOS_V",   lambda d: d["φ"] + d["π"] + d["Ω"]),
+    "T_r":               ("TRIAL",       lambda d: 3 * d["AURA"]),
+    "M_v":               ("ATLAS",       lambda d: d["φ"] + d["π"] + d["K_v"]),
+}
+try:
+    import math as _math
+    _ents = [e for e, _ in _SIMBOLOS.values() if e != "—"]
+    _dup_ent = {e for e in _ents if _ents.count(e) > 1}
+    _dup_sim = len(_SIMBOLOS) != len({s for s in _SIMBOLOS})
+
+    _d = {}
+    _d["φ"] = (1 + 5 ** 0.5) / 2
+    _d["π"] = _math.pi
+    _d["Ω"] = _d["φ"] + _d["π"]
+    _d["β"] = _d["Ω"] / 2
+    _d["AURA"] = _d["β"] + _d["φ"]
+    _d["PYROS"] = _d["Ω"] + _d["φ"]
+    _d["K_v"] = _d["φ"] + _d["π"] + _d["Ω"]
+    # el valor de cada símbolo, recomputado desde la fórmula de sus padres
+    _calc = {s: f(_d) for s, (e, f) in _SIMBOLOS.items()}
+    # contra el diccionario citable: la entidad nombrada debe valer eso mismo
+    _desaj = []
+    if _cit.exists():
+        _ns2: dict = {"__name__": "_c2", "__file__": str(_cit)}
+        exec(compile(_cit.read_text(errors="ignore").split("def distinct_ratios")[0],
+                     str(_cit), "exec"), _ns2)
+        _famc = _ns2["FAMILY"]
+        for _s, (_e, _f) in _SIMBOLOS.items():
+            if _e in ("—",):
+                continue
+            _ref = _famc.get(_e, _ns2.get(_e))
+            if _ref is None or abs(_ref - _calc[_s]) > 1e-9:
+                _desaj.append(f"{_s}→{_e}")
+    # (c) la TABLA del PRD debe declarar el mismo par (símbolo, nombre). Sin esto
+    # R29 sólo se auditaría a sí misma: el .tex podría derivar y nadie lo vería.
+    _tabla = []
+    _sealed = _REPO2 / "manuscript" / "SSEE_Sealed_Journal.tex"
+    for _doc in (_prd, _sealed):
+        if not _doc.exists():
+            continue
+        _sec = _doc.read_text(errors="ignore").split("Symbol & Name & Parents")
+        if len(_sec) > 1:
+            for _fila in _sec[1].split(r"\bottomrule")[0].splitlines():
+                _cols = [c.strip() for c in _fila.split("&")]
+                if len(_cols) >= 5 and _cols[1] not in ("", "---"):
+                    _sim = _cols[0].replace("$", "").replace(r"\mathrm{", "").rstrip("}")
+                    _nom = _cols[1].replace("$_V$", "_V").replace("$", "")
+                    _tabla.append((_sim, _nom))
+    _falta_tab = []
+    for _sim, _nom in _tabla:
+        _esp = {e for s, (e, _) in _SIMBOLOS.items()
+                if s.replace("\\", "").replace("_{\\mathrm{sc}}", "_sc") == _sim
+                or s.replace("\\", "") == _sim}
+        if _esp and _nom not in _esp:
+            _falta_tab.append(f"tabla dice {_sim}→{_nom}, guardián {_esp}")
+    # (d) el otro lado de la biyección: una ENTIDAD no puede llevar DOS símbolos.
+    # Ω y Ω_DNAV nombraban la misma entidad (φ+π) y llegaron a aparecer juntos en
+    # una misma fila de Paper 1 — un lector no puede saber que son lo mismo.
+    _alias = []
+    for _t in _texs2:
+        _txt = _t.read_text(errors="ignore")
+        if r"\Omega_{\rm DNAV}" in _txt and _t.name not in (
+                "SSEE_Paper6_phiDM.tex", "SSEE_Paper9_HubbleTension.tex"):
+            _alias.append(_t.name)
+    check("R29 símbolo↔entidad biyectivo, valor == fórmula, tablas conformes",
+          not _dup_ent and not _dup_sim and not _desaj and not _falta_tab
+          and not _alias,
+          f"{len(_SIMBOLOS)} símbolos → {len(set(_ents))} entidades; "
+          f"{len(_tabla)} filas de tabla conformes (PRD+Sealed); "
+          f"I_g≠K_v como entidades aunque compartan {_calc['I_g']:.9f}"
+          if not _dup_ent and not _desaj and not _falta_tab and not _alias
+          else f"duplicado={sorted(_dup_ent)} desajuste={_desaj} "
+               f"tabla={_falta_tab[:3]} alias-Ω_DNAV={_alias}")
+except Exception as e:
+    check("R29 capa operable", False, str(e))
+
 # ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────

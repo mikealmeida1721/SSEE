@@ -230,6 +230,15 @@ expect_red("R28 espejo: la copia del repo deriva del diccionario citable → ROJ
            lambda t: t.replace("HERMES  = PHI + KAL", "HERMES  = PHI + KAL + 0.0", 1),
            ["R28", "ROJO"])
 
+# R29 — la tabla de notación del PRD asigna un símbolo a la entidad equivocada.
+# Es EL error de esta semana escrito en la tabla: K_v e I_g valen lo mismo
+# (9.519253285), así que ningún check numérico puede distinguirlos — sólo la
+# correspondencia símbolo↔entidad lo hace.
+expect_red("R29 notación: la tabla del PRD llama IGNIS a K_v → ROJO",
+           "submission_PRD/SSEE_PRD.tex",
+           lambda t: t.replace("$K_v$       & KRYSTOS$_V$", "$K_v$       & IGNIS      ", 1),
+           ["R29", "ROJO"])
+
 # Escáner de valores retirados: un valor RETIRADO presentado como vigente
 expect_red("memorias: valor retirado (ω_ν=0.000741) sin marcar → ROJO",
            "VERIFICATION_LEDGER.md",

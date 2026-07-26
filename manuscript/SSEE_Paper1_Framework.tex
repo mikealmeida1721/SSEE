@@ -1022,14 +1022,15 @@ $\varphi$ & $(1+\sqrt{5})/2$ & $1.618034$ & All & A \\
 $\pi$     & Archimedes constant & $3.141593$ & All & A \\
 \midrule
 \multicolumn{5}{l}{\textit{Level 1 — Primary Registers}} \\
-$\Omega_{\rm DNAV}$ & $\varphi + \pi$ & $4.759627$ & Stability metric & A \\
+$\Omega$ & $\varphi + \pi$ & $4.759627$ & Stability metric & A \\
 $\beta$   & $(\varphi+\pi)/2$ & $2.379814$ & Base coupling & A \\
-$P_{sc}$  & $\Omega_{\rm DNAV}+\varphi$ & $6.377661$ & Dyn.\ evolution & A \\
+$P_{sc}$  & $\Omega+\varphi$ & $6.377661$ & Dyn.\ evolution & A \\
 AURA      & $\varphi+\beta$ & $3.997847$ & Resonance limit & A \\
 \midrule
 \multicolumn{5}{l}{\textit{Level 2 — Secondary Registers}} \\
 $\mathrm{KAL}_0$ & $\beta+\pi$ & $5.521406$ & Viscosity; $M_{\rm cluster}$ & A \\
-$K_v$     & $\varphi+\pi+\Omega_{\rm DNAV}$ & $9.519254$ & Struct.\ constraint & A \\
+$K_v$     & $\varphi+\pi+\Omega$ & $9.519254$ & Struct.\ constraint (entity KRYSTOS$_V$) & A \\
+$I_g$     & $\pi+P_{sc}$ & $9.519254$ & $w_a$ denominator (entity IGNIS; same value as $K_v$, distinct entity) & A \\
 $T_r$     & $3(\varphi+\beta)$ & $11.993541$ & Saturation horizon & A \\
 MIRA      & $\mathrm{AURA}/2 = (\varphi+\beta)/2$ & $1.998924$ & Screening amplitude (P9) & A$^*$ \\
 $M_v$     & $\varphi+\pi+K_v$ & $14.278880$ & Max.\ dim.\ invariant & A \\
@@ -1175,7 +1176,7 @@ Symbol & Pure $(\varphi,\pi)$ & Construction law & Functional role & Model role 
 \midrule
 $\varphi$ & $\varphi$ & root & Intention & Golden ratio; $\alpha$-attractor inflation & — \\
 $\pi$ & $\pi$ & root & Structure & Geometric $\pi$ & — \\
-$\Omega$ & $\varphi+\pi$ & root combination & Stability & Stability metric ($\Omega_{\rm DNAV}$) & — \\
+$\Omega$ & $\varphi+\pi$ & root combination & Stability & Stability metric (OMEGA) & — \\
 $\beta$ & $(\varphi+\pi)/2$ & $\Omega/2$ — bifurcation & Heat / pulse & Base coupling scalar & — \\
 $\mathrm{AURA}$ & $(3\varphi+\pi)/2$ & $\varphi+\beta$ — copy & Portal / coupling & $|\beta_c|$; cancels in $H_0$ cascade & $\times1$ \\
 $\mathrm{MIRA}$ & $(3\varphi+\pi)/4$ & $\mathrm{AURA}/2$ — copy & Reflection / mirror & Screening amplitude $f_{\rm screen}$ (P9) & $\times\tfrac12$ \\
@@ -1220,7 +1221,7 @@ in this series.
 Symbol & Full name & First defined \\
 \midrule
 $\varphi$ & Golden ratio $(1+\sqrt{5})/2$ & Paper 1 §1 \\
-$\Omega_{\rm DNAV}$ & Dark Navigation scalar ($\varphi+\pi$) & Paper 1 §1 \\
+$\Omega$ & Stability metric, entity OMEGA ($\varphi+\pi$) & Paper 1 §1 \\
 $\beta$ & Base coupling scalar & Paper 1 §1 \\
 AURA & Acoustic Unified Resonance Amplitude ($\varphi+\beta=(3\varphi+\pi)/2\approx3.998$) & Paper 1 §2 \\
 MIRA & Mapped Inference Resonance Amplitude ($\mathrm{AURA}/2=(3\varphi+\pi)/4\approx1.9989$) & Paper 3 §2.4 \\
@@ -1304,7 +1305,7 @@ are Level~2 — using Level~1 constants ($\Omega$, $\beta$) as intermediates:
 \toprule
 Symbol & Name & Definition & Value & Layer\\
 \midrule
-$\Omega$ & DNAV / Stability Metric  & $\varphi+\pi$ & 4.7596 & L1\\
+$\Omega$ & OMEGA / Stability Metric & $\varphi+\pi$ & 4.7596 & L1\\
 $\beta$  & BIAL / Base Coupling     & $(\varphi+\pi)/2$ & 2.3798 & L1\\
 $K_v$    & KRYSTOS$_V$ / Structural Constraint & $\varphi+\pi+\Omega$ & 9.5192 & L1\\
 $M_v$    & ATLAS / Maximal Invariant & $\varphi+\pi+K_v$ & 14.2788 & L1\\
@@ -1354,7 +1355,7 @@ claim of temporal priority over Planck~2018.
 The following identities hold exactly in $\{\varphi,\pi\}$ algebra and are
 verified to machine precision ($<10^{-16}$ relative error):
 \begin{align}
-  w_0 &= -\frac{\mathrm{AURA}}{\Omega_{\rm DNAV}}
+  w_0 &= -\frac{\mathrm{AURA}}{\Omega}
        = -\frac{T_r}{M_v} \label{eq:id_w0} \\
   \Omega_{m,\rm dyn} &= \frac{\pi-\varphi}{2(\varphi+\pi)}
        = 1 + w_0 \label{eq:id_Omdyn} \\

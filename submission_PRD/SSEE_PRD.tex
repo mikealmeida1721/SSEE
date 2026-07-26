@@ -95,26 +95,44 @@ ratio $\varphi=(1+\sqrt5)/2$ and $\pi$. Constants defined in earlier SSEE
 material but \emph{not used} in this submission (e.g.\ VITA) are deliberately
 omitted to keep the register honest.
 
+Each row gives the \emph{symbol} used in the equations, the \emph{name} of the
+entity in the constant dictionary~\citep{AlmeidaSSEE2026genesis}, its
+\emph{parents} (the entities it is generated from), the algebraic formula, and
+the value. Symbols are in one-to-one correspondence with entities: no symbol
+denotes two entities and no entity carries two symbols. This matters because two
+entities may share a \emph{value} while being structurally distinct---$I_g$ and
+$K_v$ both equal $9.51925$---so the symbol, not the number, identifies which one
+a given equation uses.
+
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lllll}
 \toprule
-Symbol & Definition & Value & Role \\
+Symbol & Name & Parents & Formula & Value \\
 \midrule
-$\varphi$      & $(1+\sqrt5)/2$            & $1.61803$  & Golden ratio (UV seed) \\
-$\pi$          & ---                       & $3.14159$  & Circle constant (IR seed) \\
-$\Omega$       & $\varphi+\pi$             & $4.75963$  & Stability metric \\
-$\beta$ (BIAL) & $(\varphi+\pi)/2$         & $2.37981$  & Base coupling scalar \\
-$\mathrm{KAL}$ & $\beta+\pi$               & $5.52141$  & Structural viscosity \\
-$\mathrm{AURA}$& $\beta+\varphi$           & $3.99785$  & Screening amplitude \\
-$\mathrm{MIRA}$& $\mathrm{AURA}/2$         & $1.99892$  & Mirror Ratio (enters $f_{\rm screen}$, Paper~9) \\
-$P_{\mathrm{sc}}$ (PYROS) & $\Omega+\varphi$ & $6.37766$ & Dynamical evolution scalar ($w_a$ numerator) \\
-$I_g$ (IGNIS)  & $\pi+P_{\mathrm{sc}}$     & $9.51925$  & Disruptive convergence ($w_a$ denominator) \\
-$K_v$ (KRYSTOS) & $\varphi+\pi+\Omega$     & $9.51925$  & Structural (builds $M_v$; distinct from IGNIS) \\
-$T_r$          & $3(\varphi+\beta)$        & $11.99354$ & 3D saturation horizon \\
-$M_v$          & $\varphi+\pi+K_v$         & $14.27888$ & Maximal dimensional invariant ($w_0$ denominator) \\
+$\varphi$   & ---               & seed (UV)              & $(1+\sqrt5)/2$        & $1.61803$  \\
+$\pi$       & ---               & seed (IR)              & ---                   & $3.14159$  \\
+$\Omega$    & OMEGA             & $\varphi,\pi$          & $\varphi+\pi$         & $4.75963$  \\
+$\beta$     & BIAL              & $\varphi,\pi$          & $(\varphi+\pi)/2$     & $2.37981$  \\
+$\mathrm{KAL}$  & KAL           & $\beta,\pi$            & $\beta+\pi$           & $5.52141$  \\
+$\mathrm{AURA}$ & AURA          & $\beta,\varphi$        & $\beta+\varphi$       & $3.99785$  \\
+$\mathrm{MIRA}$ & MIRA          & AURA                   & $\mathrm{AURA}/2$     & $1.99892$  \\
+$P_{\mathrm{sc}}$ & PYROS       & $\Omega,\varphi$       & $\Omega+\varphi$      & $6.37766$  \\
+$I_g$       & IGNIS             & $\pi,\mathrm{PYROS}$   & $\pi+P_{\mathrm{sc}}$ & $9.51925$  \\
+$K_v$       & KRYSTOS$_V$       & $\varphi,\pi,\Omega$   & $\varphi+\pi+\Omega$  & $9.51925$  \\
+$T_r$       & TRIAL             & AURA                   & $3\,\mathrm{AURA}=3(\varphi+\beta)$ & $11.99354$ \\
+$M_v$       & ATLAS             & $\varphi,\pi,K_v$      & $\varphi+\pi+K_v$     & $14.27888$ \\
 \bottomrule
 \end{tabular}
 \end{center}
+
+\noindent Roles in the equations: $\Omega$ is the stability metric; $\beta$ the
+base coupling; KAL the structural viscosity; AURA the screening amplitude; MIRA
+the mirror ratio entering $f_{\rm screen}$ (Paper~9); $P_{\mathrm{sc}}$ and $I_g$
+the numerator and denominator of $w_a$; $T_r$ and $M_v$ those of $w_0$; and $K_v$
+builds $M_v$ but---this is the point of the parent column---\emph{never} appears
+as a denominator: the denominator of $w_a$ is $I_g$, generated from its own
+numerator by $I_g=\pi+P_{\mathrm{sc}}$. The EFT coupling $\beta_c=-\mathrm{AURA}$
+(\S\ref{sec:eft}) is a distinct symbol with parent AURA, unrelated to $\beta$.
 
 \noindent Derived background quantities (all dimensionless):
 \begin{equation*}

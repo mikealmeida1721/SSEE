@@ -1581,9 +1581,28 @@ try:
                 if len(_cols) >= 5 and _cols[1] not in ("", "---"):
                     _sim = _cols[0].replace("$", "").replace(r"\mathrm{", "").rstrip("}")
                     _nom = _cols[1].replace("$_V$", "_V").replace("$", "")
-                    _tabla.append((_sim, _nom))
+                    _tabla.append((_sim, _nom, _cols[3], _cols[4]))
+
+    # (c2) la columna «reduced form in φ,π» debe EVALUAR al valor de la fila.
+    # Es la columna que Mike pidió para poder distinguir de un vistazo: I_g y K_v
+    # tienen PADRES distintos y la misma reducción 2(φ+π) — por eso comparten valor.
+    # Si la reducción fuera decorativa (copiada, no verificada) la tabla mentiría
+    # justo donde promete transparencia.
+    _pura_mal = []
+    for _sim, _nom, _pura, _val in _tabla:
+        _e = _pura.replace("$", "").replace(r"\varphi", "PHI").replace(r"\pi", "PI")
+        _e = _e.replace(r"\sqrt5", "(5**0.5)").replace(r"\sqrt{5}", "(5**0.5)")
+        _e = _re2.sub(r"(\d)\(", r"\1*(", _e)          # 2( -> 2*(
+        _e = _re2.sub(r"(\d)(PHI|PI)", r"\1*\2", _e)   # 3PHI -> 3*PHI
+        _e = _re2.sub(r"\)(PHI|PI)", r")*\1", _e)
+        try:
+            _got = eval(_e, {"__builtins__": {}}, {"PHI": _d["φ"], "PI": _d["π"]})
+            if abs(_got - float(_val.replace("$", "").replace("\\\\", "").strip())) > 5e-5:
+                _pura_mal.append(f"{_sim}: {_pura}={_got:.5f}≠{_val}")
+        except Exception:
+            _pura_mal.append(f"{_sim}: reducción ilegible «{_pura}»")
     _falta_tab = []
-    for _sim, _nom in _tabla:
+    for _sim, _nom, _pura, _val in _tabla:
         _esp = {e for s, (e, _) in _SIMBOLOS.items()
                 if s.replace("\\", "").replace("_{\\mathrm{sc}}", "_sc") == _sim
                 or s.replace("\\", "") == _sim}
@@ -1600,13 +1619,14 @@ try:
             _alias.append(_t.name)
     check("R29 símbolo↔entidad biyectivo, valor == fórmula, tablas conformes",
           not _dup_ent and not _dup_sim and not _desaj and not _falta_tab
-          and not _alias,
+          and not _alias and not _pura_mal,
           f"{len(_SIMBOLOS)} símbolos → {len(set(_ents))} entidades; "
-          f"{len(_tabla)} filas de tabla conformes (PRD+Sealed); "
+          f"{len(_tabla)} filas conformes (PRD+Sealed), reducción φ,π verificada; "
           f"I_g≠K_v como entidades aunque compartan {_calc['I_g']:.9f}"
           if not _dup_ent and not _desaj and not _falta_tab and not _alias
+             and not _pura_mal
           else f"duplicado={sorted(_dup_ent)} desajuste={_desaj} "
-               f"tabla={_falta_tab[:3]} alias-Ω_DNAV={_alias}")
+               f"tabla={_falta_tab[:3]} alias-Ω_DNAV={_alias} reducción={_pura_mal[:3]}")
 except Exception as e:
     check("R29 capa operable", False, str(e))
 

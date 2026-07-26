@@ -99,30 +99,32 @@ omitted to keep the register honest.
 
 Each row gives the \emph{symbol} used in the equations, the \emph{name} of the
 entity in the constant dictionary~\citep{AlmeidaSSEE2026genesis}, its
-\emph{parents} (the entities it is generated from), the algebraic formula, and
-the value. Symbols are in one-to-one correspondence with entities: no symbol
-denotes two entities and no entity carries two symbols. This matters because two
-entities may share a \emph{value} while being structurally distinct---$I_g$ and
-$K_v$ both equal $9.51925$---so the symbol, not the number, identifies which one
-a given equation uses.
+\emph{parents} (the entities it is generated from, i.e.\ its lineage), and the
+same quantity \emph{reduced to ordinary algebra} in $\varphi$ and $\pi$ alone.
+Symbols are in one-to-one correspondence with entities: no symbol denotes two
+entities and no entity carries two symbols. The two columns are not redundant---
+they are the point. $I_g$ and $K_v$ have \emph{different parents} but reduce to
+the \emph{same} expression $2(\varphi+\pi)$, which is why they share the value
+$9.51925$ while remaining structurally distinct. The value therefore cannot
+identify which one an equation uses; only the symbol can.
 
 \begin{center}
 \begin{tabular}{lllll}
 \toprule
-Symbol & Name & Parents & Formula & Value \\
+Symbol & Name & Parents & Reduced form in $\varphi,\pi$ & Value \\
 \midrule
-$\varphi$   & ---               & seed (UV)              & $(1+\sqrt5)/2$        & $1.61803$  \\
-$\pi$       & ---               & seed (IR)              & ---                   & $3.14159$  \\
-$\Omega$    & OMEGA             & $\varphi,\pi$          & $\varphi+\pi$         & $4.75963$  \\
-$\beta$     & BIAL              & $\varphi,\pi$          & $(\varphi+\pi)/2$     & $2.37981$  \\
-$\mathrm{KAL}$  & KAL           & $\beta,\pi$            & $\beta+\pi$           & $5.52141$  \\
-$\mathrm{AURA}$ & AURA          & $\beta,\varphi$        & $\beta+\varphi$       & $3.99785$  \\
-$\mathrm{MIRA}$ & MIRA          & AURA                   & $\mathrm{AURA}/2$     & $1.99892$  \\
-$P_{\mathrm{sc}}$ & PYROS       & $\Omega,\varphi$       & $\Omega+\varphi$      & $6.37766$  \\
-$I_g$       & IGNIS             & $\pi,\mathrm{PYROS}$   & $\pi+P_{\mathrm{sc}}$ & $9.51925$  \\
-$K_v$       & KRYSTOS$_V$       & $\varphi,\pi,\Omega$   & $\varphi+\pi+\Omega$  & $9.51925$  \\
-$T_r$       & TRIAL             & AURA                   & $3\,\mathrm{AURA}=3(\varphi+\beta)$ & $11.99354$ \\
-$M_v$       & ATLAS             & $\varphi,\pi,K_v$      & $\varphi+\pi+K_v$     & $14.27888$ \\
+$\varphi$   & ---               & seed (UV)              & $(1+\sqrt5)/2$              & $1.61803$  \\
+$\pi$       & ---               & seed (IR)              & $\pi$                       & $3.14159$  \\
+$\Omega$    & OMEGA             & $\varphi,\pi$          & $\varphi+\pi$               & $4.75963$  \\
+$\beta$     & BIAL              & $\varphi,\pi$          & $(\varphi+\pi)/2$           & $2.37981$  \\
+$\mathrm{KAL}$  & KAL           & $\beta,\pi$            & $(\varphi+3\pi)/2$          & $5.52141$  \\
+$\mathrm{AURA}$ & AURA          & $\beta,\varphi$        & $(3\varphi+\pi)/2$          & $3.99785$  \\
+$\mathrm{MIRA}$ & MIRA          & AURA                   & $(3\varphi+\pi)/4$          & $1.99892$  \\
+$P_{\mathrm{sc}}$ & PYROS       & $\Omega,\varphi$       & $2\varphi+\pi$              & $6.37766$  \\
+$I_g$       & IGNIS             & $\pi,\mathrm{PYROS}$   & $2(\varphi+\pi)$            & $9.51925$  \\
+$K_v$       & KRYSTOS$_V$       & $\varphi,\pi,\Omega$   & $2(\varphi+\pi)$            & $9.51925$  \\
+$T_r$       & TRIAL             & AURA                   & $3(3\varphi+\pi)/2$         & $11.99354$ \\
+$M_v$       & ATLAS             & $\varphi,\pi,K_v$      & $3(\varphi+\pi)$            & $14.27888$ \\
 \bottomrule
 \end{tabular}
 \end{center}

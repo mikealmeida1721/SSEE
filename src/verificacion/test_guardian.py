@@ -234,6 +234,15 @@ expect_red("R28 espejo: la copia del repo deriva del diccionario citable → ROJ
 # Es EL error de esta semana escrito en la tabla: K_v e I_g valen lo mismo
 # (9.519253285), así que ningún check numérico puede distinguirlos — sólo la
 # correspondencia símbolo↔entidad lo hace.
+# R29 (columna φ,π) — la reducción a álgebra ordinaria deja de dar el valor.
+# Esa columna existe para poder distinguir de un vistazo; si fuera decorativa
+# —copiada y nunca verificada— la tabla mentiría justo donde promete transparencia.
+expect_red("R29 notación: la reducción en φ,π no da el valor de su fila → ROJO",
+           "submission_PRD/SSEE_PRD.tex",
+           lambda t: t.replace(r"$2(\varphi+\pi)$            & $9.51925$",
+                               r"$2(\varphi+3\pi)$           & $9.51925$", 1),
+           ["R29", "ROJO"])
+
 expect_red("R29 notación: la tabla del PRD llama IGNIS a K_v → ROJO",
            "submission_PRD/SSEE_PRD.tex",
            lambda t: t.replace("$K_v$       & KRYSTOS$_V$", "$K_v$       & IGNIS      ", 1),

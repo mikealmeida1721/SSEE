@@ -15,7 +15,7 @@ Congelar Ω_m fabrica un ω_m que SSEE no predice y sesga el resultado hacia el
 ancla; ese fue el bug que R25 vigila.
 
 Se reportan tres puntos para que la comparación sea legible:
-  · el posterior canónico (67.7872, ω_b h² = 0.02207)
+  · el posterior canónico (67.7869, ω_b h² = 0.02207)
   · el ancla algebraica    (67.9621)
   · el posterior superado  (67.9475, Ω_m congelado) — para ver que el χ² MEJORA
     al corregir la parametrización, no empeora.
@@ -90,7 +90,7 @@ log(f"  {len(_Z)} puntos, covarianza block-diagonal con los r_MH oficiales")
 log("")
 log(f"  {'escenario':34s} {'H₀':>9s} {'ω_b h²':>8s} {'Ω_m deriv':>10s} {'χ²_BAO':>8s}")
 for _etq, _H0, _ob in (
-        ("posterior canónico (R25)", 67.7872, 0.02207),
+        ("posterior canónico (R25)", 67.7869, 0.02207),
         ("ancla algebraica 3(φ+π)²", 67.9621, 0.02207),
         ("posterior superado (Ω_m congelado)", 67.9475, 0.02221)):
     _c, _Om = chi2_bao(_H0, _ob)

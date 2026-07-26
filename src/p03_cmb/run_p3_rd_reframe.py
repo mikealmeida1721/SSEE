@@ -40,7 +40,7 @@ t0 = time.time()
 print(f"\n--- RESULTADO ({0.0:.1f}s) ---")
 # Anchor (H_alg=67.962) y posterior MCMC (67.787, parametrización ω_m-fijo R25;
 # el 67.9475 previo congelaba Ω_m y sesgaba hacia el ancla): r_d y θ* (grados + 100θ*)
-for tag, H0v in (("anchor H_alg 67.962", 67.962), ("posterior MCMC 67.7872", 67.7872)):
+for tag, H0v in (("anchor H_alg 67.962", 67.962), ("posterior MCMC 67.7869", 67.7869)):
     total, lens_p, derived = _run_camb(H0v, ombh2, omch2, mnu, w0, wa, As, ns, 2500)
     r_d = derived["rdrag"]
     th100 = derived["thetastar"]            # 100*theta_*

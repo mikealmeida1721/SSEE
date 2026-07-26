@@ -341,6 +341,24 @@ rounding_policy:
   algebra_ssee_decimals: 12
   model_quantities_decimals: 6
   rule: "|mostrado − exacto| <= media unidad del último decimal mostrado"
+  # Los techos de arriba valen para cantidades DETERMINISTAS (álgebra y modelo).
+  # Un posterior MCMC no lo es: dos corridas con semillas distintas difieren.
+  # Medido 2026-07-26 en ssee_paper2_mcmc_reframe.py (100w×25k): 67.7872 vs
+  # 67.7869 = 0.0003 = 0.0009σ. Publicar el 4º decimal de un número con barra
+  # ±0.35 era exhibir una cifra IRREPRODUCIBLE POR CONSTRUCCIÓN: la re-corrida
+  # limpia la movió y el guardián (Capa Procedencia) marcó ROJO — con razón.
+  mcmc_posterior_decimals: 2      # se publica 67.79 ± 0.35, no 67.7872 ± 0.352
+  mcmc_posterior_rule: >
+    Un posterior estocástico se publica hasta el dígito que fija su propia barra
+    de error. El valor largo vive en el log y en el Registro (procedencia
+    string-exacta contra results/logs/), NUNCA en el cuerpo del paper.
+  # NO se implementó una regla automática «decimales(valor) <= decimales(error)»
+  # sobre los .tex: barre 40 casos de los cuales la mayoría son datos AJENOS
+  # citados como sus autores los publicaron (SH0ES 73.04±1.04, Freedman
+  # 69.96±1.54, DESI w_a=−0.631±0.226). Reescribirlos falsearía la cita, y una
+  # alarma que grita en falso 40 veces se termina ignorando. Pendiente anotado:
+  # revisar a mano si 67.962±0.54 (ancla algebraica + anchura de Planck) debe
+  # seguir escribiéndose así.
 
 provenance:
 

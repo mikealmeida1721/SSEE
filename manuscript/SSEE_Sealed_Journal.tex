@@ -547,7 +547,7 @@ $\theta_\ast = 0.59667^\circ$ ($1.00\sigma$). Letting the MCMC then correct
 $H_0$ against the low-redshift BAO (corrected DESI~DR2 vector, block-diagonal
 covariance with the official $r_{M,H}$ correlations) yields the posterior
 \begin{equation}
-  H_0^{\mathrm{post}} = 67.7872 \pm 0.352~\kms ,
+  H_0^{\mathrm{post}} = 67.79 \pm 0.35~\kms ,
   \qquad
   \Omega_b h^2 = 0.02207 \pm 0.00045 ,
   \label{eq:h0post}
@@ -610,7 +610,7 @@ undermine it.
 
 \paragraph{Anchor and posterior agree.} With the total gravitating matter
 density $\Om^{\mathrm{cosm}}=0.308881$ in $E(z)$ and $r_d$, the BAO-corrected
-posterior ($67.7872$) and the CMB anchor ($67.962$) agree to $0.50\sigma$: DESI
+posterior ($67.79$) and the CMB anchor ($67.962$) agree to $0.50\sigma$: DESI
 DR2 is \emph{consistent with} the algebraic value rather than pulling against
 it. All early-time observables are simultaneously healthy---$r_d=147.17$~Mpc
 ($0.32\sigma$) and, evaluating the acoustic scale at the posterior,
@@ -656,7 +656,7 @@ not use.
   $\times\,25{,}000$ steps). With the entire dark-energy sector fixed by
   $\varphi$ and $\pi$, the chain samples only $H_0$ and $\Omega_b h^2$ against
   DESI DR2 BAO with the $\omega_m$-direct CMB anchor as prior. The posterior is
-  $H_0=67.7872\pm0.352~\kms$ and $\Omega_b h^2 = 0.02207\pm0.00045$
+  $H_0=67.79\pm0.35~\kms$ and $\Omega_b h^2 = 0.02207\pm0.00045$
   (Eq.~\ref{eq:h0post}), agreeing with the anchor to $0.50\sigma$. Dashed lines
   mark the anchor inputs $(H_0=67.962~\kms,\ \Omega_b h^2 = 0.02218)$; the
   $16/50/84\%$ quantiles are indicated.}
@@ -713,17 +713,25 @@ The primordial perturbations are described by an $\alpha$-attractor
 \citep{Kallosh2013} with curvature
 \begin{equation}
   \label{eq:alpha-attractor}
-  \alpha=\frac{\varphi^4}{3}=2.2847 .
+  \alpha=\frac{\varphi^4}{3}=2.284701 .
 \end{equation}
 For the attractor universality class, $n_s=1-2/N_\ast$ and
-$r=12\alpha/N_\ast^2$. Taking the number of $e$-folds to be $N_\ast=2\varphi^7
-=58.07$---the unique value in the observationally allowed window $[50,60]$ of
-the form $2\varphi^n$---yields the two exact identities
+$r=12\alpha/N_\ast^2$. We take the number of $e$-folds to be
+$N_\ast=2\varphi^7=58.068884$. The coefficient $2$ is not a free choice. Within
+the observationally allowed window $[50,60]$ the products $m\varphi^n$ with
+small integer $m$ are $2\varphi^7$, $3\varphi^6$, $5\varphi^5$ and $8\varphi^4$;
+of these, $m=2$ is the only one for which the spectral index comes out as a pure
+power of $\varphi$, precisely because that $2$ cancels against the $2$ in
+$n_s=1-2/N_\ast$ (the others give $1-\varphi^{-6.84}$, $1-\varphi^{-6.90}$ and
+$1-\varphi^{-6.88}$). The same coefficient simultaneously renders $r$ a pure
+power. $N_\ast=2\varphi^7$ is therefore the unique member of that family for
+which \emph{both} observables reduce to pure powers of $\varphi$, and the two
+resulting identities are exact:
 \begin{equation}
   \label{eq:ns-r}
-  n_s = 1-\varphi^{-7}=0.96556 ,
+  n_s = 1-\varphi^{-7}=0.965558 ,
   \qquad
-  r   = \varphi^{-10}=8.13\times10^{-3} .
+  r   = \varphi^{-10}=8.1306\times10^{-3} .
 \end{equation}
 The spectral index sits squarely on the Planck~2018 measurement
 ($n_s=0.9649\pm0.0042$;~\citealp{Planck2018}); the tensor-to-scalar ratio
@@ -901,7 +909,7 @@ $(w_0,w_a)$ vs DESI DR3       & Background (DE)   & same fixed point            
 $H_0/\kms=3(\varphi+\pi)^2$   & Background (DE)   & $67.96\,\kms$                   & P1,2,9 & Global anchor (Post.~D) \\
 $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ & CMB      & $0.11951$                       & P1,3   & Retrodiction \\
 $\Om^{\rm cosm}=\omega_m/h^2$ & CMB               & $0.308881$                       & P1,3   & Retrodiction \\
-$n_s=1-\varphi^{-7}$          & Inflation / CMB   & $0.96556$                       & P1,3   & Retrodiction \\
+$n_s=1-\varphi^{-7}$          & Inflation / CMB   & $0.965558$                       & P1,3   & Retrodiction \\
 $r=\varphi^{-10}$             & Inflation         & $8.1\times10^{-3}$              & P1     & \textbf{Prediction} \\
 $\alpha_T=\alpha_M=\alpha_B$  & EFT               & $0$ (exact)                     & P7     & Retrodiction \\
 $\alpha_K^{\rm field}$ (bare, pre-integration) & EFT & $0.073$                        & P7     & Internal check \\
@@ -951,8 +959,8 @@ Observable & SSEE value & Algebraic form & Falsifying probe \\
 \midrule
 $w_0$            & $-0.839950$              & $-T_r/M_v$            & DESI Y3 / Euclid BAO+SNe \\
 $w_a$            & $-0.66997$              & $-P_{\rm sc}/I_g$ & DESI Y3 / Euclid BAO+SNe \\
-$n_s$            & $0.96556$               & $1-\varphi^{-7}$      & Planck / CMB-S4 \\
-$r$              & $8.13\times10^{-3}$     & $\varphi^{-10}$       & LiteBIRD / CMB-S4 \\
+$n_s$            & $0.965558$               & $1-\varphi^{-7}$      & Planck / CMB-S4 \\
+$r$              & $8.1306\times10^{-3}$     & $\varphi^{-10}$       & LiteBIRD / CMB-S4 \\
 $\alpha_K(0)$    & $0.403302$               & $3\,\Omega_{\rm DE}\,\Om^{\mathrm{dyn}}$ & DESI / Euclid growth \\
 $\alpha_T,\alpha_M,\alpha_B$ & $0$        & exactly zero          & GW standard sirens, ISW \\
 \bottomrule

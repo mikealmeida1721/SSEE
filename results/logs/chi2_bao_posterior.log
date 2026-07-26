@@ -3,7 +3,7 @@
   13 puntos, covarianza block-diagonal con los r_MH oficiales
 
   escenario                                 H₀   ω_b h²  Ω_m deriv   χ²_BAO
-  posterior canónico (R25)             67.7872  0.02207   0.310477    10.33
+  posterior canónico (R25)             67.7869  0.02207   0.310480    10.33
   ancla algebraica 3(φ+π)²             67.9621  0.02207   0.308881    10.86
   posterior superado (Ω_m congelado)   67.9475  0.02221   0.309014    10.69
 

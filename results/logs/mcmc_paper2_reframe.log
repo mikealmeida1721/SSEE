@@ -1,427 +1,82 @@
 [   0.0m] ======================================================================
-[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,dyn (exacto) = 0.1600502287
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] 
-Burn-in 5000 steps...
-[   5.1m] Burn-in OK. Producción...
-[   5.6m]   500/25000 steps  accept=0.713
-[   6.2m]   1000/25000 steps  accept=0.714
-[   6.7m]   1500/25000 steps  accept=0.714
-[   7.2m]   2000/25000 steps  accept=0.714
-[   7.7m]   2500/25000 steps  accept=0.713
-[   8.2m]   3000/25000 steps  accept=0.714
-[   8.7m]   3500/25000 steps  accept=0.714
-[   9.2m]   4000/25000 steps  accept=0.715
-[   9.7m]   4500/25000 steps  accept=0.715
-[  10.2m]   5000/25000 steps  accept=0.715
-[  10.7m]   5500/25000 steps  accept=0.715
-[  11.2m]   6000/25000 steps  accept=0.715
-[  11.8m]   6500/25000 steps  accept=0.715
-[  12.3m]   7000/25000 steps  accept=0.716
-[  12.8m]   7500/25000 steps  accept=0.715
-[  13.3m]   8000/25000 steps  accept=0.715
-[  13.8m]   8500/25000 steps  accept=0.715
-[  14.3m]   9000/25000 steps  accept=0.715
-[  14.8m]   9500/25000 steps  accept=0.715
-[  15.3m]   10000/25000 steps  accept=0.715
-[  15.9m]   10500/25000 steps  accept=0.715
-[  16.4m]   11000/25000 steps  accept=0.716
-[  16.9m]   11500/25000 steps  accept=0.715
-[  17.4m]   12000/25000 steps  accept=0.715
-[  17.9m]   12500/25000 steps  accept=0.716
-[  18.4m]   13000/25000 steps  accept=0.716
-[  19.0m]   13500/25000 steps  accept=0.716
-[  19.5m]   14000/25000 steps  accept=0.716
-[  20.0m]   14500/25000 steps  accept=0.716
-[  20.6m]   15000/25000 steps  accept=0.716
-[  21.1m]   15500/25000 steps  accept=0.715
-[  21.6m]   16000/25000 steps  accept=0.715
-[  22.1m]   16500/25000 steps  accept=0.715
-[  22.7m]   17000/25000 steps  accept=0.715
-[  23.2m]   17500/25000 steps  accept=0.715
-[  23.7m]   18000/25000 steps  accept=0.715
-[  24.3m]   18500/25000 steps  accept=0.715
-[  24.8m]   19000/25000 steps  accept=0.715
-[  25.3m]   19500/25000 steps  accept=0.715
-[  25.9m]   20000/25000 steps  accept=0.715
-[  26.4m]   20500/25000 steps  accept=0.715
-[  26.9m]   21000/25000 steps  accept=0.715
-[  27.5m]   21500/25000 steps  accept=0.715
-[  28.1m]   22000/25000 steps  accept=0.715
-[  28.6m]   22500/25000 steps  accept=0.715
-[  29.2m]   23000/25000 steps  accept=0.715
-[  29.7m]   23500/25000 steps  accept=0.715
-[  30.3m]   24000/25000 steps  accept=0.715
-[  30.8m]   24500/25000 steps  accept=0.715
-[  31.4m]   25000/25000 steps  accept=0.715
-[  31.4m] 
-======================================================================
-[  31.4m] RESULTADO MCMC PRODUCCIÓN — Prior H_alg (67.962, reframe)
-[  31.4m] ======================================================================
-[  31.4m]   H₀     = 67.1591  +0.4427 / -0.4415  km/s/Mpc
-[  31.4m]   H₀ MAP = 67.1538
-[  31.4m]   Ω_b·h² = 0.02285
-[  31.4m]   ln P_MAP = -126.040
-[  31.4m]   τ_max = 31.1    N_eff ≈ 80262
-[  31.4m]   acceptance = 0.715
-[  31.4m] 
-  BIC (k=2, N=15): 257.496
-[  31.4m] 
-Comparación con resultados previos:
-[  31.4m]   Retirado (prior MIRA 67.037, 100w×25k): H₀ = 66.53 ± 0.44
-[  31.4m]   ESTE (prior H_alg 67.962, 100w×25k):    H₀ = 67.159 ± 0.444
-[  31.4m] 
-  Distancia a DESI-puro (65.530): 1.629 km/s/Mpc
-[  31.5m] 
-Figura: results/figures/fig_corner_ssee_halg_prior.pdf
-[  31.5m] Cadena: results/logs/mcmc_paper2_reframe_ckpt.npz
-[  31.5m] Tiempo total: 31.5 min
-[   0.0m] ======================================================================
-[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,dyn (exacto) = 0.1600502287
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] ======================================================================
-[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,dyn (exacto) = 0.1600502287
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] ======================================================================
-[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,dyn (exacto) = 0.1600502287
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] ======================================================================
-[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,dyn (exacto) = 0.1600502287
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] 
-Burn-in 5000 steps...
-[   5.2m] Burn-in OK. Producción...
-[   5.7m]   500/25000 steps  accept=0.722
-[   6.3m]   1000/25000 steps  accept=0.718
-[   6.8m]   1500/25000 steps  accept=0.715
-[   7.3m]   2000/25000 steps  accept=0.716
-[   7.9m]   2500/25000 steps  accept=0.716
-[   8.4m]   3000/25000 steps  accept=0.715
-[   8.9m]   3500/25000 steps  accept=0.715
-[   9.5m]   4000/25000 steps  accept=0.715
-[  10.0m]   4500/25000 steps  accept=0.715
-[  10.5m]   5000/25000 steps  accept=0.715
-[  11.1m]   5500/25000 steps  accept=0.715
-[  11.6m]   6000/25000 steps  accept=0.715
-[  12.1m]   6500/25000 steps  accept=0.715
-[  12.7m]   7000/25000 steps  accept=0.715
-[  13.2m]   7500/25000 steps  accept=0.715
-[  13.7m]   8000/25000 steps  accept=0.715
-[  14.3m]   8500/25000 steps  accept=0.715
-[  14.8m]   9000/25000 steps  accept=0.715
-[  15.4m]   9500/25000 steps  accept=0.715
-[  15.9m]   10000/25000 steps  accept=0.716
-[  16.5m]   10500/25000 steps  accept=0.716
-[  17.1m]   11000/25000 steps  accept=0.716
-[  17.6m]   11500/25000 steps  accept=0.716
-[  18.2m]   12000/25000 steps  accept=0.716
-[  18.7m]   12500/25000 steps  accept=0.716
-[  19.3m]   13000/25000 steps  accept=0.716
-[  19.9m]   13500/25000 steps  accept=0.716
-[  20.5m]   14000/25000 steps  accept=0.716
-[  21.0m]   14500/25000 steps  accept=0.716
-[  21.6m]   15000/25000 steps  accept=0.716
-[  22.2m]   15500/25000 steps  accept=0.716
-[  22.8m]   16000/25000 steps  accept=0.716
-[  23.4m]   16500/25000 steps  accept=0.716
-[  24.0m]   17000/25000 steps  accept=0.716
-[  24.6m]   17500/25000 steps  accept=0.716
-[  25.2m]   18000/25000 steps  accept=0.716
-[  25.8m]   18500/25000 steps  accept=0.716
-[  26.4m]   19000/25000 steps  accept=0.716
-[  27.0m]   19500/25000 steps  accept=0.716
-[  27.7m]   20000/25000 steps  accept=0.716
-[  28.3m]   20500/25000 steps  accept=0.716
-[  29.0m]   21000/25000 steps  accept=0.716
-[  29.6m]   21500/25000 steps  accept=0.716
-[  30.3m]   22000/25000 steps  accept=0.716
-[  30.9m]   22500/25000 steps  accept=0.716
-[  31.6m]   23000/25000 steps  accept=0.716
-[  32.3m]   23500/25000 steps  accept=0.716
-[  32.9m]   24000/25000 steps  accept=0.716
-[  33.6m]   24500/25000 steps  accept=0.716
-[  34.3m]   25000/25000 steps  accept=0.716
-[  34.5m] 
-======================================================================
-[  34.5m] RESULTADO MCMC PRODUCCIÓN — Prior H_alg (67.962, reframe)
-[  34.5m] ======================================================================
-[  34.5m]   H₀     = 66.4119  +0.3852 / -0.3847  km/s/Mpc
-[  34.5m]   H₀ MAP = 66.4102
-[  34.5m]   Ω_b·h² = 0.02343
-[  34.5m]   ln P_MAP = -371.434
-[  34.5m]   τ_max = 32.1    N_eff ≈ 77785
-[  34.5m]   acceptance = 0.716
-[  34.5m] 
-  BIC (k=2, N=15): 748.283
-[  34.5m] 
-Comparación con resultados previos:
-[  34.5m]   Retirado (prior MIRA 67.037, 100w×25k): H₀ = 66.53 ± 0.44
-[  34.5m]   ESTE (prior H_alg 67.962, 100w×25k):    H₀ = 66.412 ± 0.387
-[  34.5m] 
-  Distancia a DESI-puro (65.530): 0.882 km/s/Mpc
-[  34.5m] 
-Figura: results/figures/fig_corner_ssee_halg_prior.pdf
-[  34.5m] Cadena: /mnt/datos/SSEE_data/mcmc/paper2_reframe/mcmc_paper2_reframe_ckpt.npz
-[  34.5m] Tiempo total: 34.5 min
-[   0.0m] ======================================================================
-[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,dyn (exacto) = 0.1600502287
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] ======================================================================
-[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,total (geometría) = 0.30889320  |  Ω_cdm,sector = 0.16005023
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] ======================================================================
-[   0.0m] SSEE-V3.6 — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,total (geometría) = 0.30889320  |  Ω_cdm,sector = 0.16005023
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] 
-Burn-in 5000 steps...
-[   5.5m] Burn-in OK. Producción...
-[   6.1m]   500/25000 steps  accept=0.711
-[   6.6m]   1000/25000 steps  accept=0.715
-[   7.2m]   1500/25000 steps  accept=0.714
-[   7.7m]   2000/25000 steps  accept=0.713
-[   8.3m]   2500/25000 steps  accept=0.714
-[   8.8m]   3000/25000 steps  accept=0.715
-[   9.4m]   3500/25000 steps  accept=0.715
-[   9.9m]   4000/25000 steps  accept=0.715
-[  10.5m]   4500/25000 steps  accept=0.715
-[  11.1m]   5000/25000 steps  accept=0.715
-[  11.6m]   5500/25000 steps  accept=0.715
-[  12.2m]   6000/25000 steps  accept=0.714
-[  12.7m]   6500/25000 steps  accept=0.714
-[  13.3m]   7000/25000 steps  accept=0.714
-[  13.8m]   7500/25000 steps  accept=0.714
-[  14.4m]   8000/25000 steps  accept=0.715
-[  15.0m]   8500/25000 steps  accept=0.714
-[  15.5m]   9000/25000 steps  accept=0.714
-[  16.1m]   9500/25000 steps  accept=0.714
-[  16.7m]   10000/25000 steps  accept=0.715
-[  17.2m]   10500/25000 steps  accept=0.715
-[  17.8m]   11000/25000 steps  accept=0.715
-[  18.4m]   11500/25000 steps  accept=0.714
-[  19.0m]   12000/25000 steps  accept=0.715
-[  19.6m]   12500/25000 steps  accept=0.715
-[  20.1m]   13000/25000 steps  accept=0.714
-[  20.7m]   13500/25000 steps  accept=0.714
-[  21.3m]   14000/25000 steps  accept=0.715
-[  22.0m]   14500/25000 steps  accept=0.715
-[  22.6m]   15000/25000 steps  accept=0.715
-[  23.2m]   15500/25000 steps  accept=0.715
-[  23.8m]   16000/25000 steps  accept=0.715
-[  24.4m]   16500/25000 steps  accept=0.715
-[  25.1m]   17000/25000 steps  accept=0.715
-[  25.7m]   17500/25000 steps  accept=0.715
-[  26.4m]   18000/25000 steps  accept=0.715
-[  27.1m]   18500/25000 steps  accept=0.715
-[  27.8m]   19000/25000 steps  accept=0.715
-[  28.5m]   19500/25000 steps  accept=0.715
-[  29.3m]   20000/25000 steps  accept=0.715
-[  29.9m]   20500/25000 steps  accept=0.715
-[  30.6m]   21000/25000 steps  accept=0.715
-[  31.3m]   21500/25000 steps  accept=0.715
-[  32.0m]   22000/25000 steps  accept=0.715
-[  32.7m]   22500/25000 steps  accept=0.715
-[  33.4m]   23000/25000 steps  accept=0.715
-[  34.1m]   23500/25000 steps  accept=0.715
-[  34.8m]   24000/25000 steps  accept=0.715
-[  35.5m]   24500/25000 steps  accept=0.715
-[  36.2m]   25000/25000 steps  accept=0.715
-[  36.4m] 
-======================================================================
-[  36.4m] RESULTADO MCMC PRODUCCIÓN — Prior H_alg (67.962, reframe)
-[  36.4m] ======================================================================
-[  36.4m]   H₀     = 67.9475  +0.3956 / -0.3969  km/s/Mpc
-[  36.4m]   H₀ MAP = 67.9430
-[  36.4m]   Ω_b·h² = 0.02221
-[  36.4m]   ln P_MAP = -5.605
-[  36.4m]   τ_max = 32.0    N_eff ≈ 78170
-[  36.4m]   acceptance = 0.715
-[  36.4m] 
-  BIC (k=2, N=15): 16.625
-[  36.4m] 
-Comparación con resultados previos:
-[  36.4m]   Retirado (prior MIRA 67.037, 100w×25k): H₀ = 66.53 ± 0.44
-[  36.4m]   ESTE (prior H_alg 67.962, 100w×25k):    H₀ = 67.947 ± 0.398
-[  36.4m] 
-  Distancia a DESI-puro (65.530): 2.417 km/s/Mpc
-[  36.5m] 
-Figura: results/figures/fig_corner_ssee_halg_prior.pdf
-[  36.5m] Cadena: /mnt/datos/SSEE_data/mcmc/paper2_reframe/mcmc_paper2_reframe_ckpt.npz
-[  36.5m] Tiempo total: 36.5 min
-[   0.0m] ======================================================================
-[   0.0m] SSEE — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,total (geometría) = 0.30889320  |  Ω_cdm,sector = 0.16005023
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] 
-Burn-in 5000 steps...
-[   0.0m] ======================================================================
-[   0.0m] SSEE — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,total (geometría) = 0.30889320  |  Ω_cdm,sector = 0.16005023
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] 
-Burn-in 5000 steps...
-[   5.4m] Burn-in OK. Producción...
-[   5.9m]   500/25000 steps  accept=0.713
-[   6.4m]   1000/25000 steps  accept=0.716
-[   6.9m]   1500/25000 steps  accept=0.714
-[   7.5m]   2000/25000 steps  accept=0.715
-[   8.0m]   2500/25000 steps  accept=0.715
-[   8.5m]   3000/25000 steps  accept=0.715
-[   9.1m]   3500/25000 steps  accept=0.716
-[   9.6m]   4000/25000 steps  accept=0.717
-[  10.1m]   4500/25000 steps  accept=0.717
-[  10.7m]   5000/25000 steps  accept=0.717
-[   0.0m] ======================================================================
-[   0.0m] SSEE — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
-[   0.0m] ======================================================================
-[   0.0m]   Ω_m,total (geometría) = 0.30889320  |  Ω_cdm,sector = 0.16005023
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
-[   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
-[   0.0m]   H0_alg = 67.962137
-[   0.0m] 
-Burn-in 500 steps...
-[   0.4m] Burn-in OK. Producción...
-[   0.8m]   500/1500 steps  accept=0.711
-[   1.2m]   1000/1500 steps  accept=0.712
-[   1.7m]   1500/1500 steps  accept=0.714
-[   1.7m] 
-======================================================================
-[   1.7m] RESULTADO MCMC PRODUCCIÓN — Prior H_alg (67.962, reframe)
-[   1.7m] ======================================================================
-[   1.7m]   H₀     = 67.9428  +0.3898 / -0.3940  km/s/Mpc
-[   1.7m]   H₀ MAP = 67.9443
-[   1.7m]   Ω_b·h² = 0.02220
-[   1.7m]   ln P_MAP = -5.605
-[   1.7m]   τ_max = 29.1    N_eff ≈ 4122
-[   1.7m]   acceptance = 0.714
-[   1.7m] 
-  BIC (k=2, N=15): 16.625
-[   1.7m] 
-Comparación con resultados previos:
-[   1.7m]   Retirado (prior MIRA 67.037, 100w×25k): H₀ = 66.53 ± 0.44
-[   1.7m]   ESTE (prior H_alg 67.962, 100w×25k):    H₀ = 67.943 ± 0.397
-[   1.7m] 
-  Distancia a DESI-puro (65.530): 2.413 km/s/Mpc
-[   1.7m] 
-Figura: results/figures/fig_corner_ssee_halg_prior.pdf
-[   1.7m] Cadena: /mnt/datos/SSEE_data/mcmc/paper2_reframe/mcmc_paper2_reframe_ckpt.npz
-[   1.7m] Tiempo total: 1.7 min
-[   0.0m] ======================================================================
 [   0.0m] SSEE — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)
 [   0.0m] ======================================================================
 [   0.0m]   Ω_m,total (geometría) = 0.30888088  |  Ω_cdm,sector = 0.16005023
-[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.30889  (sin factor; OP-8 cerrado)
+[   0.0m]   Ω_m,CMB (ω_m/h², reframe) = 0.308881  (sin factor; OP-8 cerrado)
 [   0.0m]   w0 = -0.8399497713,  wa = -0.6699748857
 [   0.0m]   H0_alg = 67.962137
 [   0.0m] 
 Burn-in 5000 steps...
 [   5.3m] Burn-in OK. Producción...
 [   5.8m]   500/25000 steps  accept=0.717
-[   6.3m]   1000/25000 steps  accept=0.717
-[   6.9m]   1500/25000 steps  accept=0.718
+[   6.4m]   1000/25000 steps  accept=0.717
+[   6.9m]   1500/25000 steps  accept=0.717
 [   7.4m]   2000/25000 steps  accept=0.717
-[   7.9m]   2500/25000 steps  accept=0.716
+[   8.0m]   2500/25000 steps  accept=0.717
 [   8.5m]   3000/25000 steps  accept=0.715
 [   9.0m]   3500/25000 steps  accept=0.715
-[   9.5m]   4000/25000 steps  accept=0.715
-[  10.1m]   4500/25000 steps  accept=0.714
+[   9.6m]   4000/25000 steps  accept=0.716
+[  10.1m]   4500/25000 steps  accept=0.716
 [  10.6m]   5000/25000 steps  accept=0.715
-[  11.1m]   5500/25000 steps  accept=0.715
+[  11.2m]   5500/25000 steps  accept=0.715
 [  11.7m]   6000/25000 steps  accept=0.715
-[  12.2m]   6500/25000 steps  accept=0.715
-[  12.7m]   7000/25000 steps  accept=0.715
+[  12.3m]   6500/25000 steps  accept=0.715
+[  12.8m]   7000/25000 steps  accept=0.715
 [  13.3m]   7500/25000 steps  accept=0.715
-[  13.8m]   8000/25000 steps  accept=0.715
+[  13.9m]   8000/25000 steps  accept=0.715
 [  14.4m]   8500/25000 steps  accept=0.715
-[  14.9m]   9000/25000 steps  accept=0.715
-[  15.5m]   9500/25000 steps  accept=0.715
-[  16.0m]   10000/25000 steps  accept=0.715
-[  16.6m]   10500/25000 steps  accept=0.715
+[  15.0m]   9000/25000 steps  accept=0.715
+[  15.6m]   9500/25000 steps  accept=0.715
+[  16.1m]   10000/25000 steps  accept=0.715
+[  16.7m]   10500/25000 steps  accept=0.715
 [  17.2m]   11000/25000 steps  accept=0.715
-[  17.7m]   11500/25000 steps  accept=0.715
-[  18.3m]   12000/25000 steps  accept=0.715
+[  17.8m]   11500/25000 steps  accept=0.715
+[  18.4m]   12000/25000 steps  accept=0.715
 [  18.9m]   12500/25000 steps  accept=0.715
-[  19.4m]   13000/25000 steps  accept=0.715
-[  20.0m]   13500/25000 steps  accept=0.715
+[  19.5m]   13000/25000 steps  accept=0.715
+[  20.1m]   13500/25000 steps  accept=0.715
 [  20.6m]   14000/25000 steps  accept=0.715
 [  21.2m]   14500/25000 steps  accept=0.715
-[  21.8m]   15000/25000 steps  accept=0.716
-[  22.4m]   15500/25000 steps  accept=0.716
+[  21.8m]   15000/25000 steps  accept=0.715
+[  22.4m]   15500/25000 steps  accept=0.715
 [  23.0m]   16000/25000 steps  accept=0.715
 [  23.6m]   16500/25000 steps  accept=0.715
 [  24.2m]   17000/25000 steps  accept=0.715
 [  24.8m]   17500/25000 steps  accept=0.715
 [  25.4m]   18000/25000 steps  accept=0.715
-[  26.0m]   18500/25000 steps  accept=0.716
+[  26.0m]   18500/25000 steps  accept=0.715
 [  26.7m]   19000/25000 steps  accept=0.715
-[  27.3m]   19500/25000 steps  accept=0.716
+[  27.3m]   19500/25000 steps  accept=0.715
 [  27.9m]   20000/25000 steps  accept=0.715
 [  28.6m]   20500/25000 steps  accept=0.715
 [  29.2m]   21000/25000 steps  accept=0.715
 [  29.9m]   21500/25000 steps  accept=0.715
-[  30.5m]   22000/25000 steps  accept=0.715
-[  31.2m]   22500/25000 steps  accept=0.715
-[  31.9m]   23000/25000 steps  accept=0.715
-[  32.6m]   23500/25000 steps  accept=0.716
-[  33.2m]   24000/25000 steps  accept=0.716
-[  33.9m]   24500/25000 steps  accept=0.716
-[  34.6m]   25000/25000 steps  accept=0.716
-[  34.8m] 
-======================================================================
-[  34.8m] RESULTADO MCMC PRODUCCIÓN — Prior H_alg (67.962, reframe)
-[  34.8m] ======================================================================
-[  34.8m]   H₀     = 67.7872  +0.3524 / -0.3513  km/s/Mpc
-[  34.8m]   H₀ MAP = 67.7862
-[  34.8m]   Ω_b·h² = 0.02207
-[  34.8m]   ln P_MAP = -5.483
-[  34.8m]   τ_max = 32.1    N_eff ≈ 77934
-[  34.8m]   acceptance = 0.716
-[  34.8m] 
-  BIC (k=2, N=15): 16.382
-[  34.8m] 
-Comparación con resultados previos:
-[  34.8m]   Retirado (prior MIRA 67.037, 100w×25k): H₀ = 66.53 ± 0.44
-[  34.8m]   ESTE (prior H_alg 67.962, 100w×25k):    H₀ = 67.787 ± 0.353
-[  34.8m] 
-  Distancia a DESI-puro (65.530): 2.257 km/s/Mpc
+[  30.6m]   22000/25000 steps  accept=0.715
+[  31.3m]   22500/25000 steps  accept=0.715
+[  32.0m]   23000/25000 steps  accept=0.715
+[  32.7m]   23500/25000 steps  accept=0.715
+[  33.3m]   24000/25000 steps  accept=0.715
+[  34.0m]   24500/25000 steps  accept=0.715
+[  34.7m]   25000/25000 steps  accept=0.715
 [  34.9m] 
+======================================================================
+[  34.9m] RESULTADO MCMC PRODUCCIÓN — Prior H_alg (67.962, reframe)
+[  34.9m] ======================================================================
+[  34.9m]   H₀     = 67.7869  +0.3508 / -0.3516  km/s/Mpc
+[  34.9m]   H₀ MAP = 67.7854
+[  34.9m]   Ω_b·h² = 0.02207
+[  34.9m]   ln P_MAP = -5.483
+[  34.9m]   τ_max = 32.2    N_eff ≈ 77575
+[  34.9m]   acceptance = 0.715
+[  34.9m] 
+  BIC (k=2, N=15): 16.382
+[  34.9m] 
+Comparación con resultados previos:
+[  34.9m]   Retirado (prior MIRA 67.037, 100w×25k): H₀ = 66.53 ± 0.44
+[  34.9m]   ESTE (prior H_alg 67.962, 100w×25k):    H₀ = 67.787 ± 0.353
+[  34.9m] 
+  Distancia a DESI-puro (67.660, prior plano medido): 0.127 km/s/Mpc
+[  35.0m] 
 Figura: results/figures/fig_corner_ssee_halg_prior.pdf
-[  34.9m] Cadena: /mnt/datos/SSEE_data/mcmc/paper2_reframe/mcmc_paper2_reframe_ckpt.npz
-[  34.9m] Tiempo total: 34.9 min
+[  35.0m] Cadena: /mnt/datos/SSEE_data/mcmc/paper2_reframe/mcmc_paper2_reframe_ckpt.npz
+[  35.0m] Tiempo total: 35.0 min

@@ -244,6 +244,25 @@ check("V-L3-OP2  identidad n_s: 1-2/(2phi^7) = 1-phi^-7",
       abs((1 - 2 / N_star) - (1 - phi ** -7)) < 1e-12)
 check("V-L3-OP2  identidad r: 12(phi^4/3)/(2phi^7)^2 = phi^-10",
       abs(12 * (phi ** 4 / 3) / N_star ** 2 - phi ** -10) < 1e-12)
+# R32 — unicidad de m=2 en N_* = m·phi^n. El PRD §4.2 afirma que 2phi^7 es el
+# UNICO miembro de la familia m·phi^n dentro de [50,60] cuyo n_s (y su r) salen
+# potencia PURA de phi. Es una afirmación de unicidad publicada: se recomputa.
+import math as _math
+_cands, _puros = [], []
+for _m in range(1, 21):
+    for _n in range(1, 16):
+        _N = _m * phi ** _n
+        if not (50.0 <= _N <= 60.0):
+            continue
+        _cands.append((_m, _n))
+        _k = -_math.log(1 - (1 - 2 / _N)) / _math.log(phi)      # n_s = 1-phi^-k
+        _kr = -_math.log(12 * (phi ** 4 / 3) / _N ** 2) / _math.log(phi)
+        if abs(_k - round(_k)) < 1e-9 and abs(_kr - round(_kr)) < 1e-9:
+            _puros.append((_m, _n))
+check(f"R32 unicidad N_*: solo m=2,n=7 da n_s y r potencia pura de phi en [50,60]",
+      _puros == [(2, 7)] and len(_cands) >= 4,
+      f"{len(_cands)} candidatos m·phi^n en ventana, puros: {_puros}")
+
 track_open("V-L3-OP2  N_* = 2phi^7",
            "Conjecture B.1 no derivada; falta el puente de reheating gravitacional")
 

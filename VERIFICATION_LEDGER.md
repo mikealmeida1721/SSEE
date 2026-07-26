@@ -110,7 +110,7 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | Cantidad | Valor canónico | Fuente | Re-anclado |
 |---|---|---|---|
 | H₀ anchor/prior (H_alg, ω_m-directo, CMB-óptimo) | 67.962 km/s/Mpc | con ω_b,ω_c fijos por álgebra, plik_lite minimiza aquí → `results/logs/p3_h0anchor_reframe.log` (antes H_MIRA 67.037) | 2026-06-19 |
-| H₀ MCMC posterior (prior H_alg 67.962, DESI DR2, ω_m algebraico fijo R25) | **67.7872 ⁺⁰·³⁵²/₋₀·³⁵¹ km/s/Mpc** — 0.66σ Planck, 0.50σ H_alg | `ssee_paper2_mcmc_reframe.py` (100w×25k, prior 67.962, N_eff=77934) → `results/logs/mcmc_paper2_reframe.log` (67.9475 congelaba Ω_m y sesgaba al ancla; 66.41 bug 0.160 y 67.159 DR1 superados) | 2026-07-25 |
+| H₀ MCMC posterior (prior H_alg 67.962, DESI DR2, ω_m algebraico fijo R25) | **67.7869 ⁺⁰·³⁵¹/₋₀·³⁵² km/s/Mpc** — 0.66σ Planck, 0.50σ H_alg | `ssee_paper2_mcmc_reframe.py` (100w×25k, prior 67.962, N_eff=77934) → `results/logs/mcmc_paper2_reframe.log` (67.9475 congelaba Ω_m y sesgaba al ancla; 66.41 bug 0.160 y 67.159 DR1 superados) | 2026-07-25 |
 | ΔBIC MCMC (ΛCDM−SSEE) | **+6.43** (SSEE favorecido; CPL−SSEE=+6.35; ΔDIC=−5.66; prior Planck común) | `ssee_paper2_mcmc.py` → `results/logs/mcmc_paper2_3models_wmfix.log` | 2026-07-25 (ω_m algebraico fijo R25; +5.68 con Ω_m congelado superado) |
 | Ω_b h² (posterior MCMC reframe) | **0.02207 ± 0.00045** (≈BBN 0.02218) | `ssee_paper2_mcmc_reframe.py` (R25; era 0.02221 con Ω_m congelado) | 2026-07-25 |
 | r_d,SSEE (MCMC, ω_m algebraico fijo R25) | **148.34 Mpc** ≈ r_d(ΛCDM) 147.78 (ratio 1.004) | `ssee_paper2_mcmc.py` → `results/logs/mcmc_paper2_3models_wmfix.log` | 2026-07-25 (148.15 con Ω_m congelado; el 175.16 era el bug 0.160 en E(z)) |
@@ -137,7 +137,7 @@ deriva corresponde a **ediciones del script / cambios de prior**, no a azar:
 - 66.412 ± 0.385 — prior H_alg + DESI DR2 REAL pero con **geometría BUGGY**: el sector
   frío Ω_m,dyn=0.160 (=1+w0) metido en E(z)/r_d (debía ser la materia TOTAL 0.308881).
   Daba χ²_BAO=726, Ω_bh² +2.3σ, θ*=13.9σ. **Superado por V-L4-DESI 2026-07-09.**
-- **67.7872 ⁺⁰·³⁵²/₋₀·³⁵¹ — prior H_alg 67.962 + DESI DR2 + ω_m algebraico FIJO (R25)
+- **67.7869 ⁺⁰·³⁵¹/₋₀·³⁵² — prior H_alg 67.962 + DESI DR2 + ω_m algebraico FIJO (R25)
   (CANÓNICO ACTUAL).** `ssee_paper2_mcmc_reframe.py`, ref `results/logs/mcmc_paper2_reframe.log`.
   N_eff≈78170, acceptance 0.715, cov bloque-diagonal r_MH oficiales. **0.88σ Planck,
   0.04σ H_alg** (el dato DESI DR2 CONFIRMA la predicción algebraica, no la tensa). Ω_bh²
@@ -148,7 +148,7 @@ deriva corresponde a **ediciones del script / cambios de prior**, no a azar:
 (1) **Anchor/prior** = H_alg = 67.962 km/s/Mpc: el H₀ que minimiza la
 tensión CMB (con ω_b,ω_c fijos por álgebra, plik_lite minimiza ahí —
 `results/logs/p3_h0anchor_reframe.log`; superó al viejo H_MIRA 67.037).
-(2) **Posterior** = 67.7872 ± 0.352: el mismo H₀ tras dejar que el MCMC ajuste
+(2) **Posterior** = 67.7869 ± 0.351: el mismo H₀ tras dejar que el MCMC ajuste
 DESI DR2 BAO encima del prior. Con la geometría total, DESI DR2 lo deja a 0.04σ del
 anchor — anchor y posterior COINCIDEN. El "split BAO–CMB" que se veía antes (66.41)
 era el bug del sector 0.160 en E(z), no física.
@@ -970,20 +970,20 @@ vs Planck 2018 **0.59668±0.00046°** (100θ*=1.04109±0.00030):
 | H₀ usado | θ* resultante | tensión |
 |---|---|---|
 | 67.962 (anchor H_alg, CMB-óptimo ω_m-directo) | 0.59668° (100θ*=1.04140) | **1.05σ ✓** |
-| **67.7872 (posterior MCMC DR2, ω_m algebraico fijo R25)** | **0.59638° (100θ*=1.04089)** | **0.67σ ✓** |
+| **67.7869 (posterior MCMC DR2, ω_m algebraico fijo R25)** | **0.59638° (100θ*=1.04089)** | **0.67σ ✓** |
 | 66.412 (posterior con bug: sector 0.160 en E(z)) | 100θ*=1.03693 | ~~13.9σ~~ *bug superado* |
 | 67.159 (posterior con vector DR1 mal etiquetado) | 100θ*=1.03910 | ~~6.6σ~~ *superado* |
 
 **El giro (V-L4-DESI 2026-07-09):** la tensión de 13.9σ/6.66σ **era el bug de geometría** —
 el sector frío 0.160 metido en E(z) hundía el posterior a 66.41 y desalineaba el θ*.
-Con la materia TOTAL y ω_m algebraico fijo (R25), el posterior queda en 67.7872, **compatible con el anchor
+Con la materia TOTAL y ω_m algebraico fijo (R25), el posterior queda en 67.7869, **compatible con el anchor
 CMB 67.962** (0.04σ). El θ* del posterior es entonces 0.91σ — sano por sí solo.
 Ya NO hace falta el parche "no propagar el posterior a θ*": anchor y posterior dan
 el MISMO CMB. Un control ΛCDM (w=−1) al mismo H₀ da θ* casi idéntico: la escala
 acústica la fija H₀+ω, no la energía oscura w₀wₐ.
 
 **Lectura para el documento de journal:** el H₀ del CMB (anchor 67.962) y el H₀ de
-BAO (posterior 67.7872) coinciden; r_d 0.32σ y θ* 0.67–1.00σ en ambos. El "split
+BAO (posterior 67.7869) coinciden; r_d 0.32σ y θ* 0.67–1.00σ en ambos. El "split
 BAO–CMB" desaparece — no era feature de w₀wₐ, era el sector 0.160 en la geometría.
 
 ## V-L4-MCMC — MCMC DESI+Planck (Paper 2) — **re-run 2026-07-09; geometría total corregida**

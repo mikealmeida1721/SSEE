@@ -1,0 +1,63 @@
+# PROPAGACION.yaml — el mapa fuente → artefacto
+#
+# POR QUÉ EXISTE (2026-07-26)
+# ---------------------------
+# R33 y R34 cazan huellas de constantes que YO tengo que adivinar de antemano
+# ("0.06902", "94.07"). Sirven para el error ya conocido, no para el siguiente.
+# Este archivo habilita una señal GENÉRICA que no depende de adivinar nada:
+#
+#     si el script cambió DESPUÉS de generarse su log, el log es sospechoso
+#
+# Probado retrospectivamente contra el estado del 2026-07-25: habría marcado
+# 4 de los 5 logs rancios DOCE DÍAS antes, sin saber qué constante buscar.
+# El quinto (p3_h0anchor) no lo caza porque su script nunca cambió —tenía la
+# constante hardcodeada—, y ése es exactamente el caso que cubre R34.
+# Las dos reglas se complementan: R35 el artefacto viejo, R34 la fuente vieja.
+#
+# La comparación usa fechas de COMMIT (git), no mtime del sistema de archivos:
+# un checkout reescribe mtime y mentiría.
+#
+# CÓMO MANTENERLO: al crear un log nuevo, añadir su línea. Los que falten
+# aparecen contados como ABIERTO en el guardián (R35) — deuda visible y
+# medible, no una nota suelta que nadie relee.
+
+logs:
+  # ── Paper 2 — MCMC / BAO ────────────────────────────────────────────────
+  mcmc_paper2_reframe:        src/p02_mcmc/ssee_paper2_mcmc_reframe.py
+  mcmc_paper2_3models_wmfix:  src/p02_mcmc/ssee_paper2_mcmc_wmfix.py
+  chi2_bao_posterior:         src/p02_mcmc/chi2_bao_posterior.py
+
+  # ── Paper 3 — CMB ───────────────────────────────────────────────────────
+  p3_cmb_reframe_omega_m:     src/p03_cmb/run_p3_reframe.py
+  p3_rd_reframe_omega_m:      src/p03_cmb/run_p3_rd_reframe.py
+  p3_h0anchor_reframe:        src/p03_cmb/scan_omega_m.py
+  paper3_cmb_reframe:         src/p03_cmb/ssee_paper3_cmb.py
+  b1_full_run:                src/p03_cmb/ssee_paper3_b1_mcmc.py
+  b1_lcdm_run:                src/p03_cmb/ssee_paper3_b1_mcmc.py
+  b1_mcmc_reframe:            src/p03_cmb/ssee_paper3_b1_mcmc.py
+
+  # ── Paper 6 — φ-DM ──────────────────────────────────────────────────────
+  p6_class_reframe_omega_m:   src/ssee_paper6_canonical_particle.py
+
+# Logs SUPERADOS a propósito: se conservan como registro histórico y no se
+# re-corren. Declararlos aquí los saca del conteo de deuda (no del repo).
+historicos:
+  - mcmc_paper2_3models_om308
+  - mcmc_paper2_reframe_om308
+  - mcmc_paper2_reframe_dr2
+  - mcmc_professional
+  - mcmc_professional2
+  - mcmc_run
+  - mcmc_run2
+  - mcmc_om320_run
+  - mcmc_paper2_mira
+  - lcdm_baseline_om308
+  - lcdm_baseline_dr2
+  - p3_cmb_reframe_nu_fix
+  - p3_rd_reframe_nu_fix
+  - p3_pr4_diag_nu_fix
+  - paper3_cmb_canonical
+  - paper2_analysis_dr2real
+  - paper2_analysis_dr2official
+  - mcmc_paper2_3models_dr2
+  - clik_install          # instalación de dependencia, no un resultado

@@ -808,6 +808,89 @@ except Exception as e:
     check("R34 capa fuentes-vs-núcleo operable", False, str(e))
 
 # ─────────────────────────────────────────────────────────────────────
+# R35 — artefacto más viejo que su fuente (2026-07-26).
+# R33/R34 buscan huellas que hay que ADIVINAR de antemano ("0.06902", "94.07"):
+# sirven para el error ya conocido, no para el siguiente. Esta regla no adivina
+# nada — si el script cambió después de generarse su log, el log es sospechoso,
+# sea cual sea la constante. Probado retrospectivamente contra el estado del
+# 2026-07-25: habría marcado 4 de los 5 logs rancios DOCE días antes.
+# Usa fechas de COMMIT, no mtime: un checkout reescribe mtime y mentiría.
+# Mapa en PROPAGACION.yaml; los logs sin fuente declarada se CUENTAN como
+# deuda visible (ABIERTO), que es lo contrario de una nota suelta.
+print("\nCapa R35 — artefacto vs fuente: ningún log más viejo que su script")
+try:
+    import ast          # noqa: F401 — usado por el filtro de docstrings
+    import subprocess as _sp
+    import yaml as _yaml
+    _prop = _yaml.safe_load((_REPO / "PROPAGACION.yaml").read_text())
+    _mapa = _prop.get("logs") or {}
+    _hist35 = set(_prop.get("historicos") or [])
+
+    def _commit_ts(rel):
+        try:
+            _o = _sp.run(["git", "log", "-1", "--format=%at", "--", rel],
+                         cwd=_REPO, capture_output=True, text=True, timeout=20)
+            return int(_o.stdout.strip()) if _o.stdout.strip() else None
+        except Exception:
+            return None
+
+    _rancios, _sinmapa = [], []
+    for _lg in sorted((_REPO / "results" / "logs").glob("*.log")):
+        _nm = _lg.stem
+        if _nm in _hist35:
+            continue
+        _script = _mapa.get(_nm)
+        if not _script:
+            _sinmapa.append(_nm)
+            continue
+        _tl, _ts35 = _commit_ts(f"results/logs/{_nm}.log"), _commit_ts(_script)
+        if not (_tl and _ts35 and _ts35 > _tl):
+            continue
+        # El script es posterior — pero ¿cambió el CÓDIGO o sólo la prosa?
+        # Comparar el AST en ambos puntos: si es idéntico, el cambio fue de
+        # comentarios/docstring y el log sigue siendo válido. Sin esto la regla
+        # grita por documentación, y una alarma ruidosa se termina ignorando
+        # (comprobado: mcmc_paper2_3models_wmfix, cuyo único cambio fue la
+        # línea «Ω_m = 0.30889» → «0.308881» dentro del docstring).
+        try:
+            _sha_log = _sp.run(["git", "log", "-1", "--format=%H", "--",
+                                f"results/logs/{_nm}.log"], cwd=_REPO,
+                               capture_output=True, text=True, timeout=20).stdout.strip()
+            _viejo = _sp.run(["git", "show", f"{_sha_log}:{_script}"], cwd=_REPO,
+                             capture_output=True, text=True, timeout=20).stdout
+            _nuevo = (_REPO / _script).read_text(errors="ignore")
+            def _sin_docstrings(_txt):
+                _t = ast.parse(_txt)
+                for _nd in ast.walk(_t):
+                    if isinstance(_nd, (ast.Module, ast.FunctionDef,
+                                        ast.AsyncFunctionDef, ast.ClassDef)):
+                        _b = _nd.body
+                        if (_b and isinstance(_b[0], ast.Expr)
+                                and isinstance(_b[0].value, ast.Constant)
+                                and isinstance(_b[0].value.value, str)):
+                            _nd.body = _b[1:]           # fuera el docstring
+                return ast.dump(_t)
+            if _viejo and _sin_docstrings(_viejo) == _sin_docstrings(_nuevo):
+                continue                      # sólo cambió la prosa
+        except Exception as _e35:
+            # NUNCA tragarse el fallo: un `except: pass` aquí escondió un
+            # NameError propio (ast no estaba importado) y R35 reportó rancios
+            # que no lo eran. Ante la duda se reporta, PERO con la razón visible.
+            _rancios.append(f"{_nm} (no se pudo comparar AST: {type(_e35).__name__})")
+            continue
+        _rancios.append(f"{_nm} (script {(_ts35 - _tl) // 86400}d más nuevo)")
+    check("R35 ningún log committeado es más viejo que el script que lo produce",
+          not _rancios,
+          "; ".join(_rancios) if _rancios
+          else f"{len(_mapa)} logs mapeados al día, {len(_hist35)} históricos")
+    if _sinmapa:
+        track_open(f"R35 {len(_sinmapa)} logs sin fuente declarada en PROPAGACION.yaml",
+                   ", ".join(_sinmapa[:10]) + (" …" if len(_sinmapa) > 10 else "")
+                   + "  (añadir su script para que R35 los vigile)")
+except Exception as e:
+    check("R35 capa artefacto-vs-fuente operable", False, str(e))
+
+# ─────────────────────────────────────────────────────────────────────
 # CAPA MANUSCRITOS — reglas del RIGOR_CHECKLIST automatizadas (grep duro).
 # "El sistema solo se hace más capas": cada regla automatizable se vuelve un
 # check aquí, para que UNA corrida marque dónde y por qué.

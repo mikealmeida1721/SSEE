@@ -34,6 +34,7 @@ logs:
   paper3_cmb_reframe:         src/p03_cmb/ssee_paper3_cmb.py
   b1_full_run:                src/p03_cmb/ssee_paper3_b1_mcmc.py
   b1_lcdm_run:                src/p03_cmb/ssee_paper3_b1_mcmc.py
+  b1_analyse:                 src/p03_cmb/ssee_paper3_b1_mcmc.py
 
   # ── Paper 6 — φ-DM ──────────────────────────────────────────────────────
   p6_class_reframe_omega_m:   src/ssee_paper6_canonical_particle.py

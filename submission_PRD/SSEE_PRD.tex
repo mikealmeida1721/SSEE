@@ -784,11 +784,24 @@ free parameters---and
 \end{equation}
 This is the number the model comparison rests on; the diagonal $-35.0$ is
 retained for continuity with Paper~3 and should be read as illustrative. One
-residual dependence remains and we name it rather than hide it: \texttt{plik\_lite}
-marginalises its nuisance parameters within a $\Lambda$CDM analysis. A run of the
-full \texttt{plik} likelihood with the ${\sim}20$ nuisance parameters sampled
-explicitly, which removes that dependence, is under way and will be reported
-separately.
+residual dependence would remain---\texttt{plik\_lite} marginalises its nuisance
+parameters within a $\Lambda$CDM analysis---so we also ran the \emph{full}
+\texttt{plik} likelihood (TTTEEE $+$ lowl TT $+$ lowl EE $+$ lensing,
+$N=2354$) with the ${\sim}20$ nuisance parameters sampled explicitly. That chain
+has converged (Gelman--Rubin $R-1=0.017$) and it strengthens the result rather
+than softening it:
+\begin{equation}
+  \label{eq:dbic-full}
+  \chi^2_{\rm SSEE}=2770.44 , \quad \chi^2_{\Lambda\rm CDM}=2772.92 , \quad
+  \Delta\mathrm{BIC}=-25.77 \qquad (\texttt{plik full}, k=3 \text{ vs } 6) .
+\end{equation}
+With the nuisance parameters free, SSEE attains a \emph{better} fit than
+$\Lambda$CDM---by $\Delta\chi^2=-2.47$---using three fewer free parameters,
+where under \texttt{plik\_lite} it paid $+1.65$. Sampling $H_0$ freely in the
+same chain returns $H_0=67.88\pm0.10~\kms$, within $0.81\sigma$ of the algebraic
+anchor $3(\varphi+\pi)^2=67.962$: the chain \emph{recovers} the anchor rather
+than assuming it, and its uncertainty is $5.3\times$ tighter than the
+$\Lambda$CDM posterior on the same data, as the parameter economy predicts.
 
 \begin{figure}[t]
   \centering

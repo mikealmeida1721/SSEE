@@ -110,6 +110,8 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | Cantidad | Valor canónico | Fuente | Re-anclado |
 |---|---|---|---|
 | H₀ anchor/prior (H_alg, ω_m-directo, CMB-óptimo) | 67.962 km/s/Mpc | con ω_b,ω_c fijos por álgebra, plik_lite minimiza aquí → `results/logs/p3_h0anchor_reframe.log` (antes H_MIRA 67.037) | 2026-06-19 |
+| ΔBIC CMB (plik FULL, nuisances libres, k=3 vs 6) | **−25.766** — χ²_SSEE=2770.443 vs χ²_ΛCDM=2772.917, Δχ²=−2.474 (SSEE ajusta MEJOR con 3 params menos), N=2354 | `ssee_paper3_b1_mcmc.py --mode both` (Cobaya, R−1=0.017) → `results/logs/b1_analyse.log` | 2026-07-27 |
+| H₀ posterior CMB (plik FULL, H₀ flotado k=3) | **67.8809 ± 0.1005 km/s/Mpc** — 0.81σ del ancla 3(φ+π)²=67.9621; la cadena RECUPERA el ancla, no lo asume; σ 5.3× más chico que ΛCDM (67.394±0.528) | `ssee_paper3_b1_mcmc.py` → `results/logs/b1_analyse.log` | 2026-07-27 |
 | H₀ MCMC posterior (prior H_alg 67.962, DESI DR2, ω_m algebraico fijo R25) | **67.7869 ⁺⁰·³⁵¹/₋₀·³⁵² km/s/Mpc** — 0.66σ Planck, 0.50σ H_alg | `ssee_paper2_mcmc_reframe.py` (100w×25k, prior 67.962, N_eff=77934) → `results/logs/mcmc_paper2_reframe.log` (67.9475 congelaba Ω_m y sesgaba al ancla; 66.41 bug 0.160 y 67.159 DR1 superados) | 2026-07-25 |
 | ΔBIC MCMC (ΛCDM−SSEE) | **+6.43** (SSEE favorecido; CPL−SSEE=+6.35; ΔDIC=−5.66; prior Planck común) | `ssee_paper2_mcmc.py` → `results/logs/mcmc_paper2_3models_wmfix.log` | 2026-07-25 (ω_m algebraico fijo R25; +5.68 con Ω_m congelado superado) |
 | Ω_b h² (posterior MCMC reframe) | **0.02207 ± 0.00045** (≈BBN 0.02218) | `ssee_paper2_mcmc_reframe.py` (R25; era 0.02221 con Ω_m congelado) | 2026-07-25 |

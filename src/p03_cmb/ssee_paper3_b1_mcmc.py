@@ -379,14 +379,31 @@ def analyse_chains(ssee_prefix, lcdm_prefix):
             except Exception:
                 pass
 
-        # best-fit chi2
+        # best-fit chi2.
+        # 2026-07-27: esto vivía en un `try/except: pass` que se tragaba el
+        # fallo EN SILENCIO. getBestFit() necesita un archivo .minimum que sólo
+        # produce un minimizador, y aquí sólo se corre mcmc → siempre fallaba →
+        # chi2_bf = None → el ΔBIC NUNCA se calculaba. La corrida de 18 h
+        # terminó con «B1 COMPLETE» y sin el número que B1 existe para dar.
+        # Ahora: si no hay .minimum, se toma el mejor χ² MUESTREADO de la
+        # cadena (columna chi2, mismo burn-in), que con cadenas convergidas es
+        # una cota superior ajustada del mínimo. Y si ambas vías fallan, se dice.
+        chi2 = None
         try:
-            bf = samples.getBestFit()
-            chi2 = -2.0 * bf.logLike
-            row["chi2_bf"] = chi2
-            print(f"    chi2_bestfit      = {chi2:.3f}")
+            chi2 = -2.0 * samples.getBestFit().logLike
+            print(f"    chi2_bestfit      = {chi2:.3f}   (de .minimum)")
         except Exception:
-            row["chi2_bf"] = None
+            try:
+                _hdr = open(f"{prefix}.1.txt").readline().lstrip("#").split()
+                _arr = np.loadtxt(f"{prefix}.1.txt")
+                _cut = int(0.3 * len(_arr))
+                chi2 = float(_arr[_cut:, _hdr.index("chi2")].min())
+                print(f"    chi2_bestfit      = {chi2:.3f}   "
+                      f"(mejor muestreado; sin .minimum)")
+            except Exception as _e:
+                print(f"    chi2_bestfit      = NO DISPONIBLE ({type(_e).__name__}) "
+                      f"— el ΔBIC NO se podrá calcular")
+        row["chi2_bf"] = chi2
 
         results[label] = row
 

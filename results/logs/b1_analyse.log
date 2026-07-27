@@ -1,0 +1,60 @@
+preflight  [1/3] __pycache__ borrados: 102
+preflight  [2/3] núcleo(fuente) == CANONICAL_VALUES en 6 constantes
+preflight  [3/3] ingredientes de esta corrida:
+             SUM_MNU_EV       = 0.068490000
+             OMEGA_B_H2       = 0.022417757
+             OMEGA_C_H2       = 0.119514408
+             OMEGA_NU_H2      = 0.000735345
+             OMEGA_M_H2       = 0.142667510
+             OMEGA_M_TOTAL    = 0.308880879
+             W0               = -0.839949771
+             WA               = -0.669974886
+             H0_ALG           = 67.962137323
+preflight  OK — luz verde para el cómputo
+
+=================================================================
+  SSEE — B1 Full CMB Posterior Analysis
+  Mode: analyse | Fast: False
+=================================================================
+
+  SSEE algebraic predictions:
+    w₀    = -0.839950  (−Tr/Mv)
+    wₐ    = -0.669975  (−P_sc/IGNIS)
+    Ωm_cmb= 0.308882  (ω_m/h² derivado, ω_m-directo)
+    ns    = 0.965558  (1 − φ⁻⁷)
+    N_data= 2354  (full plik TTTEEE + lowl TT+EE + lensing, via clipy)
+
+=================================================================
+  POST-PROCESSING CHAINS
+=================================================================
+
+  [SSEE] Posterior constraints (68% CI):
+    H0              = 67.8809  [67.7817, 67.9828]
+    logA            = 3.0422  [3.0298, 3.0559]
+    tau             = 0.0536  [0.0474, 0.0602]
+    sigma8          = 0.8142  [0.8091, 0.8196]
+    chi2_bestfit      = 2770.443   (mejor muestreado; sin .minimum)
+
+  [LCDM] Posterior constraints (68% CI):
+    H0              = 67.3938  [66.8751, 67.9320]
+    logA            = 3.0445  [3.0306, 3.0584]
+    tau             = 0.0544  [0.0473, 0.0617]
+    sigma8          = 0.8110  [0.8051, 0.8166]
+    ombh2           = 0.0224  [0.0222, 0.0225]
+    omch2           = 0.1199  [0.1187, 0.1211]
+    ns              = 0.9654  [0.9613, 0.9695]
+    chi2_bestfit      = 2772.917   (mejor muestreado; sin .minimum)
+
+  Δχ²(SSEE−ΛCDM) = -2.474
+  ΔBIC (k_SSEE=3, k_ΛCDM=6) = -25.766
+  ΔBIC conservative (k_SSEE=4) = -18.002
+  Saved: /home/mike/Proyectos/SSEE/results/figures/fig_b1_h0_posterior.pdf
+  Saved: /home/mike/Proyectos/SSEE/results/figures/fig_b1_corner_ssee.pdf
+  Saved: /home/mike/Proyectos/SSEE/results/figures/fig_b1_corner_lcdm.pdf
+  Saved: /home/mike/Proyectos/SSEE/results/figures/fig_b1_h0_sigma8_ssee.pdf
+
+  Table saved: /home/mike/Proyectos/SSEE/results/tables/b1_mcmc_constraints.txt
+
+=================================================================
+  B1 COMPLETE
+=================================================================

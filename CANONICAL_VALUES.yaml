@@ -87,6 +87,17 @@ canonical:
   deltaBIC_lcdm_minus_ssee: 6.43   # >0 favorece SSEE (k=2 vs k=3); CPL−SSEE=6.35
   deltaDIC_ssee_minus_lcdm: -5.66  # <0 favorece SSEE (DIC 14.95 vs 20.61); log dic_from_chains.log
 
+  # ── Fase B / B1 — likelihood COMPLETA de Planck ───────────────────────
+  # plik TTTEEE full + lowl TT + lowl EE + lensing, con los ~20 nuisances
+  # MUESTREADOS, no marginalizados dentro de un análisis ΛCDM como hace
+  # plik_lite. Cobaya 18 h, convergida R−1=0.017 (objetivo 0.02).
+  # Responde la objeción de circularidad sobre el ΔBIC de plik_lite (−24.02):
+  # con nuisances libres SSEE ajusta MEJOR (Δχ²=−2.474), no peor (+1.65).
+  # log: results/logs/b1_analyse.log   (2026-07-27)
+  deltaBIC_cmb_plik_full: -25.766  # k=3 vs 6, N=2354 (2289 plik + 28 + 28 + 9)
+  H0_posterior_plik_full: 67.88    # ±0.10 — 0.81σ del ancla 67.9621, RECUPERADO no impuesto
+  sigma8_posterior_plik_full: 0.8142  # ±0.0053 (ΛCDM 0.8110±0.0058, mismo dato)
+
   # EFT / UV completion
   alpha_K:             0.4033     # Paper 7 (Bellini-Sawicki)
   alpha_K_full:        0.41691    # Paper 10 (con corrección UV)

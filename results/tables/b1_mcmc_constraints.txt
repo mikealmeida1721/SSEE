@@ -7,6 +7,7 @@ Cobaya MCMC + Planck 2018 plik TTTEEE (full) + lowl TT + lowl EE + lensing
   logA             3.04225  [3.02984, 3.05588]
   tau              0.05361  [0.04742, 0.06016]
   sigma8           0.81416  [0.80912, 0.81960]
+  chi2_bestfit     2770.443
 
 [LCDM]
   H0               67.39376  [66.87515, 67.93196]
@@ -16,4 +17,13 @@ Cobaya MCMC + Planck 2018 plik TTTEEE (full) + lowl TT + lowl EE + lensing
   ombh2            0.02239  [0.02225, 0.02253]
   omch2            0.11990  [0.11872, 0.12107]
   ns               0.96544  [0.96131, 0.96954]
+  chi2_bestfit     2772.917
 
+BIC COMPARISON (from MCMC best-fits)
+----------------------------------------
+  N_data          = 2354
+  Δχ²(SSEE−ΛCDM) = -2.474
+  ΔBIC (k=3 vs 6) = -25.766
+  ΔBIC (k=4 vs 6) = -18.002
+
+Jeffreys scale: ΔBIC < −10 → decisive evidence for SSEE

@@ -85,3 +85,9 @@ zenodo_dictionary.zip
 *.env
 zenodo_token
 .zenodo_token
+
+# ── Cadenas MCMC: binarios pesados, NUNCA al repo (2026-07-26) ────────────
+# archive/chains guarda cadenas superadas como registro local; 280 MB que no
+# tienen por qué viajar en el historial. Se regeneran desde el script + log.
+archive/chains/
+results/chains/

@@ -56,7 +56,14 @@ import logging
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 2026-07-26: subía DOS niveles desde src/p03_cmb/ y se quedaba en `src/`, no en
+# la raíz del repo. Consecuencia: escribía cadenas, figuras y tablas en
+# src/results/ (280 MB en el SSD de root, el directorio que la nota de
+# infraestructura marca como prohibido), y las cadenas viejas de ahí hacían
+# abortar a Cobaya con «Old and new run information not compatible».
+# El script se movió a p03_cmb/ en algún momento y nadie le subió el nivel.
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+assert os.path.isdir(os.path.join(ROOT, ".git")), f"ROOT mal resuelto: {ROOT}"
 PACKAGES_PATH = os.environ.get("COBAYA_PACKAGES_PATH", os.path.expanduser("~/cobaya_packages"))
 CHAINS_DIR = os.path.join(ROOT, "results", "chains")
 FIGS_DIR   = os.path.join(ROOT, "results", "figures")

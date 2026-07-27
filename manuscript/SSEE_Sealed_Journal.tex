@@ -771,6 +771,32 @@ Table~\ref{tab:cmb} reports the reduced $\chi^2$.
   \label{tab:cmb}
 \end{table}
 
+\paragraph{Which likelihood the model comparison rests on.} We are explicit
+about this because the two numbers differ and only one of them is a model
+comparison. The $\chi^2_r$ of Table~\ref{tab:cmb} and the associated
+$\Delta\mathrm{BIC}=-35.0$ use a \emph{diagonal} covariance. That is adequate
+for displaying spectral agreement, but not for selecting between models:
+neglecting the Planck bandpower correlations overstates the number of
+independent data points, and since the BIC penalty enters as $k\ln N$, it
+inflates precisely the term that rewards the smaller $k$. We therefore also
+evaluate the compressed Planck likelihood \texttt{plik\_lite}
+(TT+TE+EE, $N=613$ bandpowers, nuisance parameters marginalised by the Planck
+Collaboration), which gives $\chi^2_{\rm SSEE}=1005.41$ against
+$\chi^2_{\Lambda\rm CDM}=1003.76$---a penalty of $1.65$ in fit for four fewer
+free parameters---and
+\begin{equation}
+  \label{eq:dbic-cmb}
+  \Delta\mathrm{BIC}(\text{SSEE}-\Lambda\text{CDM}) = -24.02 \qquad
+  (\texttt{plik\_lite}, k=2 \text{ vs } 6) .
+\end{equation}
+This is the number the model comparison rests on; the diagonal $-35.0$ is
+retained for continuity with Paper~3 and should be read as illustrative. One
+residual dependence remains and we name it rather than hide it: \texttt{plik\_lite}
+marginalises its nuisance parameters within a $\Lambda$CDM analysis. A run of the
+full \texttt{plik} likelihood with the ${\sim}20$ nuisance parameters sampled
+explicitly, which removes that dependence, is under way and will be reported
+separately.
+
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.82\textwidth]{fig_cmb_spectrum.pdf}

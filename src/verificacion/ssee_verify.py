@@ -887,6 +887,65 @@ try:
         track_open(f"R35 {len(_sinmapa)} logs sin fuente declarada en PROPAGACION.yaml",
                    ", ".join(_sinmapa[:10]) + (" …" if len(_sinmapa) > 10 else "")
                    + "  (añadir su script para que R35 los vigile)")
+    # ── R36 — lo mismo para FIGURAS, priorizando las de submission ────────
+    # R35 vigila logs; una figura rancia pasaba igual. A diferencia de los logs,
+    # el script productor SÍ se deriva solo (el nombre del archivo aparece en el
+    # código), así que no hace falta mapa. Mismo filtro AST: 32 figuras salían
+    # "rancias" por timestamp y 10 eran sólo cambios de prosa.
+    # Se distingue por severidad: las figuras QUE ENTRAN AL PRD son ROJO —van al
+    # journal—; el resto se cuenta como deuda ABIERTA en vez de bloquear.
+    _prd_figs = set(_re.findall(r"includegraphics\[[^\]]*\]\{([^}]+)\}",
+                                (_REPO / "submission_PRD" / "SSEE_PRD.tex")
+                                .read_text(errors="ignore")))
+    _prd_figs = {f.rsplit(".", 1)[0] for f in _prd_figs}
+
+    def _ast_igual(_sha, _rel):
+        _v = _sp.run(["git", "show", f"{_sha}:{_rel}"], cwd=_REPO,
+                     capture_output=True, text=True, timeout=20).stdout
+        if not _v:
+            return False
+        _d = lambda _x: ast.dump(ast.parse(_x))          # noqa: E731
+        try:
+            _a = ast.parse(_v); _b = ast.parse((_REPO / _rel).read_text(errors="ignore"))
+            for _t in (_a, _b):
+                for _nd in ast.walk(_t):
+                    if isinstance(_nd, (ast.Module, ast.FunctionDef,
+                                        ast.AsyncFunctionDef, ast.ClassDef)):
+                        _bd = _nd.body
+                        if (_bd and isinstance(_bd[0], ast.Expr)
+                                and isinstance(_bd[0].value, ast.Constant)
+                                and isinstance(_bd[0].value.value, str)):
+                            _nd.body = _bd[1:]
+            return ast.dump(_a) == ast.dump(_b)
+        except Exception:
+            return False
+
+    _fig_prd, _fig_otras = [], []
+    for _fg in sorted((_REPO / "results" / "figures").glob("*.pdf")):
+        _nm36 = _fg.stem
+        _hits = [str(_p.relative_to(_REPO)) for _p in (_REPO / "src").rglob("*.py")
+                 if "archive" not in _p.parts and _nm36 in _p.read_text(errors="ignore")]
+        if not _hits:
+            continue
+        _scr = _hits[0]
+        _tf = _commit_ts(f"results/figures/{_fg.name}")
+        _ts36 = _commit_ts(_scr)
+        if not (_tf and _ts36 and _ts36 > _tf):
+            continue
+        _sha36 = _sp.run(["git", "log", "-1", "--format=%H", "--",
+                          f"results/figures/{_fg.name}"], cwd=_REPO,
+                         capture_output=True, text=True, timeout=20).stdout.strip()
+        if _ast_igual(_sha36, _scr):
+            continue                                     # sólo prosa
+        (_fig_prd if _nm36 in _prd_figs else _fig_otras).append(
+            f"{_nm36} ({(_ts36 - _tf) // 86400}d)")
+    check("R36 ninguna figura DEL PRD es más vieja que el script que la produce",
+          not _fig_prd,
+          "; ".join(_fig_prd) if _fig_prd
+          else f"{len(_prd_figs)} figuras del PRD al día")
+    if _fig_otras:
+        track_open(f"R36 {len(_fig_otras)} figuras rancias fuera del PRD",
+                   ", ".join(_fig_otras[:8]) + (" …" if len(_fig_otras) > 8 else ""))
 except Exception as e:
     check("R35 capa artefacto-vs-fuente operable", False, str(e))
 

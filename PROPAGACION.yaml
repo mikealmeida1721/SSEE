@@ -34,7 +34,6 @@ logs:
   paper3_cmb_reframe:         src/p03_cmb/ssee_paper3_cmb.py
   b1_full_run:                src/p03_cmb/ssee_paper3_b1_mcmc.py
   b1_lcdm_run:                src/p03_cmb/ssee_paper3_b1_mcmc.py
-  b1_mcmc_reframe:            src/p03_cmb/ssee_paper3_b1_mcmc.py
 
   # ── Paper 6 — φ-DM ──────────────────────────────────────────────────────
   p6_class_reframe_omega_m:   src/ssee_paper6_canonical_particle.py
@@ -61,6 +60,8 @@ historicos:
   - paper2_analysis_dr2official
   - mcmc_paper2_3models_dr2
   - clik_install          # instalación de dependencia, no un resultado
+  - b1_mcmc_reframe       # corrida --fast de validación (R−1<0.05), superada
+                          # por b1_full_run convergido a R−1=0.017 (2026-07-27)
 
 # Figuras REGENERADAS y verificadas byte-idénticas al PDF ya commiteado: el
 # script cambió, pero el cambio no afectaba a esta figura. R36 no puede saberlo

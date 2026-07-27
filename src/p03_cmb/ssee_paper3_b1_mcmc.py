@@ -366,8 +366,14 @@ def analyse_chains(ssee_prefix, lcdm_prefix):
         for p in params_of_interest:
             try:
                 m  = samples.mean(p)
+                # getdist: confidence(p, limfrac, upper) devuelve el límite que
+                # deja limfrac de la probabilidad FUERA por ese lado. Con
+                # upper=True hay que pasar 0.16, no 0.84: pasar 0.84 pedía «84%
+                # por encima» = percentil 16, o sea el MISMO valor que el límite
+                # inferior — por eso la tabla salía con [x, x] y el intervalo
+                # era inservible para citar (2026-07-27).
                 lo = samples.confidence(p, 0.16, upper=False)
-                hi = samples.confidence(p, 0.84, upper=True)
+                hi = samples.confidence(p, 0.16, upper=True)
                 print(f"    {p:15s} = {m:.4f}  [{lo:.4f}, {hi:.4f}]")
                 row[p] = (m, lo, hi)
             except Exception:

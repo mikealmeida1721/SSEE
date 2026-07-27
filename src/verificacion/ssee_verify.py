@@ -740,10 +740,17 @@ except Exception as e:
 # project_propagation_order (nivel 8, el que siempre se olvida).
 # Los históricos se declaran en _LOGS_HISTORICOS y quedan como ABIERTO, no ROJO.
 print("\nCapa R33 — logs vs núcleo: ningún log activo con constante retirada")
-_LOGS_HISTORICOS = {          # superados a propósito; se conservan como registro
-    "mcmc_paper2_3models_om308.log", "mcmc_paper2_reframe_om308.log",
-    "mcmc_professional.log", "mcmc_paper2_reframe_dr2.log",
-}
+# Los históricos se leen de PROPAGACION.yaml — UNA sola fuente de verdad.
+# Antes esta lista vivía hardcodeada aquí y en el YAML: dos listas del mismo
+# hecho divergen sin avisar (declarar b1_mcmc_reframe histórico en el YAML no
+# lo sacaba de R33, que seguía mirando su copia local).
+try:
+    import yaml as _y33
+    _LOGS_HISTORICOS = {f"{_n}.log" for _n in
+                        (_y33.safe_load((_REPO / "PROPAGACION.yaml").read_text())
+                         .get("historicos") or [])}
+except Exception:
+    _LOGS_HISTORICOS = set()
 # huella → (qué constante retirada la produce, con qué valor vigente NO sale)
 # OJO con la longitud de la huella: la primera versión de R33 buscaba solo
 # "0.3088932" (7 dec) y se le escapaban DIEZ logs que imprimen "0.30889" a 5 —

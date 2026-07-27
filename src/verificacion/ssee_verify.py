@@ -937,6 +937,14 @@ try:
                          capture_output=True, text=True, timeout=20).stdout.strip()
         if _ast_igual(_sha36, _scr):
             continue                                     # sólo prosa
+        # Regenerada y verificada byte-idéntica: el cambio de código no afectaba
+        # a ESTA figura. Vale mientras el script no vuelva a cambiar.
+        _ver = (_prop.get("figuras_verificadas") or {}).get(_nm36)
+        if _ver:
+            import datetime as _dt
+            _vts = _dt.datetime.strptime(str(_ver), "%Y-%m-%d").timestamp() + 86400
+            if _vts >= _ts36:
+                continue
         (_fig_prd if _nm36 in _prd_figs else _fig_otras).append(
             f"{_nm36} ({(_ts36 - _tf) // 86400}d)")
     check("R36 ninguna figura DEL PRD es más vieja que el script que la produce",

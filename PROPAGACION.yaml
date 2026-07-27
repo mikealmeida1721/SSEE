@@ -61,3 +61,11 @@ historicos:
   - paper2_analysis_dr2official
   - mcmc_paper2_3models_dr2
   - clik_install          # instalación de dependencia, no un resultado
+
+# Figuras REGENERADAS y verificadas byte-idénticas al PDF ya commiteado: el
+# script cambió, pero el cambio no afectaba a esta figura. R36 no puede saberlo
+# sin regenerar, así que la verificación se DECLARA aquí con el commit del
+# script contra el que se comprobó. Si el script vuelve a cambiar, R36 la marca
+# otra vez — que es lo correcto.
+figuras_verificadas:
+  fig1_w0wa_plane: 2026-07-26   # regenerada con preflight; PDF idéntico al de 07-18

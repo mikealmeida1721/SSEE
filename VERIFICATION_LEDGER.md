@@ -118,8 +118,8 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | χ²_r CMB TT (SSEE) | 1.042 | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962, Σm_ν=0.0685) → `results/logs/paper3_cmb_reframe.log` | 2026-06-19 (era 1.044 @67.04 legacy) |
 | ΔBIC CMB diagonal (SSEE−ΛCDM) | −35.0 (SSEE favorecido) | `ssee_paper3_cmb.py` (reframe ω_m-directo @ H=67.962) → `results/logs/p3_pr4_diag_nu_fix.log` | 2026-07-25 (Σm_ν=0.06849 coherente; era −34.9 con 0.0690, −28.0 @67.04 legacy) |
 | ΔBIC CMB plik_lite TTTEEE (ω_m-directo, k=2) | **−24.02** (χ²=1005.41 @ H_alg=67.962) | `run_p3_reframe.py` → `results/logs/p3_cmb_reframe_nu_fix.log` | 2026-06-19 (canónico reframe; Cobaya legacy −32.2 @67.037 superado) |
-| θ* (CAMB, en anchor H_alg 67.962, mnu=0.069) | 0.59668° (100θ*=1.04140) — **1.05σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-06-19 |
-| θ* (CAMB, en posterior 67.9475, mnu=0.069) | 0.59666° (100θ*=1.04136) — **0.91σ** (posterior coincide con anchor; la tensión 6.66σ era el bug del sector 0.160 en E(z), V-L4-DESI) | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-07-09 (geometría total corregida; posterior 67.159/66.41 superados) |
+| θ* (CAMB, en anchor H_alg 67.962, Σm_ν=0.06849) | 0.59667° (100θ*=1.04139) — **1.00σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-07-26 (re-corrido: el log previo usaba Σm_ν=0.06902 rancio → 0.59668/1.05σ) |
+| θ* (CAMB, en posterior 67.7869, Σm_ν=0.06849) | 0.59638° (100θ*=1.04089) — **0.68σ** (posterior y anchor coinciden; la tensión 6.66σ era el bug del sector 0.160 en E(z), V-L4-DESI) | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-07-26 (posterior 67.9475/66.41/67.159 superados; log previo Σm_ν rancio) |
 | σ₈ / S₈ SSEE (Paper 5 single-sector, "el desafío") | 0.8335 / 0.846 — **3.5σ KiDS** | `ssee_paper5_IS_perturbations.py` (G=1.011, Ω_m,CMB=0.308881) | 2026-06-19 (canónico; antes 0.820/0.847 @0.3199) |
 | σ₈ para fσ₈ (Paper 6 two-sector) | **0.747** (R=8, CON free-streaming) → tensión media **0.93σ** | `ssee_paper6_verification.py`, `ssee_paper6_mcmc_v2.py` | 2026-06-29 (CORREGIDO: antes "0.811·G_2s=0.794, amplitud RSD k<k_fs" suponía supresión NO alcanza RSD — FALSO; k_half=0.351 muerde DENTRO de la ventana σ₈(R=8), σ₈ cae 6.9% ya a k=0.3; single-sector legítimo 0.70σ con σ₈=0.8136) |
 | σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.747 / 0.758 — **0.04σ KiDS** | `ssee_paper6_canonical_particle.py` (forward CLASS) | 2026-06-19 (canónico SOLAR; antes 0.742/0.766 @36.95) |
@@ -969,7 +969,7 @@ vs Planck 2018 **0.59668±0.00046°** (100θ*=1.04109±0.00030):
 
 | H₀ usado | θ* resultante | tensión |
 |---|---|---|
-| 67.962 (anchor H_alg, CMB-óptimo ω_m-directo) | 0.59668° (100θ*=1.04140) | **1.05σ ✓** |
+| 67.962 (anchor H_alg, CMB-óptimo ω_m-directo) | 0.59667° (100θ*=1.04139) | **1.00σ ✓** |
 | **67.7869 (posterior MCMC DR2, ω_m algebraico fijo R25)** | **0.59638° (100θ*=1.04089)** | **0.67σ ✓** |
 | 66.412 (posterior con bug: sector 0.160 en E(z)) | 100θ*=1.03693 | ~~13.9σ~~ *bug superado* |
 | 67.159 (posterior con vector DR1 mal etiquetado) | 100θ*=1.03910 | ~~6.6σ~~ *superado* |

@@ -341,17 +341,25 @@ rounding_policy:
   algebra_ssee_decimals: 12
   model_quantities_decimals: 6
   rule: "|mostrado − exacto| <= media unidad del último decimal mostrado"
-  # Los techos de arriba valen para cantidades DETERMINISTAS (álgebra y modelo).
-  # Un posterior MCMC no lo es: dos corridas con semillas distintas difieren.
-  # Medido 2026-07-26 en ssee_paper2_mcmc_reframe.py (100w×25k): 67.7872 vs
-  # 67.7869 = 0.0003 = 0.0009σ. Publicar el 4º decimal de un número con barra
-  # ±0.35 era exhibir una cifra IRREPRODUCIBLE POR CONSTRUCCIÓN: la re-corrida
-  # limpia la movió y el guardián (Capa Procedencia) marcó ROJO — con razón.
+  # ⚠ CORRECCIÓN 2026-07-26. Aquí se escribió, y duró media hora, que el salto
+  # 67.7872 → 67.7869 era «ruido estocástico entre corridas». ERA FALSO:
+  # ssee_paper2_mcmc_reframe.py fija np.random.default_rng(42), o sea el MCMC es
+  # DETERMINISTA — con los mismos ingredientes devuelve el mismo dígito siempre.
+  # Un cambio de resultado NO puede ser ruido; prueba que cambió un ingrediente.
+  # Y cambió: el log viejo imprime Ω_m = 0.30889, que solo sale de Σm_ν = 0.06902
+  # (el valor RANCIO); el correcto 0.06849 da 0.308881 → se imprimiría 0.30888.
+  # Esa corrida estaba contaminada. Ver [[project-stale-constant-drift-mechanism]].
+  # LECCIÓN: «es ruido» es la excusa por defecto ante una discrepancia pequeña.
+  # Antes de usarla hay que probar que la fuente de ruido EXISTE. Con semilla
+  # fija no existe, y la discrepancia siempre significa algo.
   mcmc_posterior_decimals: 2      # se publica 67.79 ± 0.35, no 67.7872 ± 0.352
   mcmc_posterior_rule: >
-    Un posterior estocástico se publica hasta el dígito que fija su propia barra
-    de error. El valor largo vive en el log y en el Registro (procedencia
-    string-exacta contra results/logs/), NUNCA en el cuerpo del paper.
+    Un posterior se publica hasta el dígito que fija su propia barra de error
+    (±0.35 → dos decimales). La razón NO es estocasticidad —el muestreo es
+    determinista— sino convención de cifras significativas: los dígitos por
+    debajo del error no son información, y sí son superficie donde un ingrediente
+    equivocado se esconde a la vista. El valor largo vive en el log y en el
+    Registro (procedencia string-exacta), NUNCA en el cuerpo del paper.
   # NO se implementó una regla automática «decimales(valor) <= decimales(error)»
   # sobre los .tex: barre 40 casos de los cuales la mayoría son datos AJENOS
   # citados como sus autores los publicaron (SH0ES 73.04±1.04, Freedman

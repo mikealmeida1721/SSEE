@@ -1,19 +1,33 @@
+preflight  [1/3] __pycache__ borrados: 54
+preflight  [2/3] núcleo(fuente) == CANONICAL_VALUES en 6 constantes
+preflight  [3/3] ingredientes de esta corrida:
+             SUM_MNU_EV       = 0.068490000
+             OMEGA_B_H2       = 0.022417757
+             OMEGA_C_H2       = 0.119514408
+             OMEGA_NU_H2      = 0.000735345
+             OMEGA_M_H2       = 0.142667510
+             OMEGA_M_TOTAL    = 0.308880879
+             W0               = -0.839949771
+             WA               = -0.669974886
+             H0_ALG           = 67.962137323
+preflight  OK — luz verde para el cómputo
 ==========================================================================
   PARTÍCULA CANÓNICA φ-DM — alpha (OUTPUT) y k_fs
 ==========================================================================
   R2 = Ω/(KAL·TRIAL)        = 0.071875
-  Σm_ν                      = 0.06902 eV
-  multiplicador SOLAR²·KRYSTOS = 594.2800
-  m_φ                       = 41.0187 eV
-  Ω_m,CMB (ω_m/h², sin factor) = 0.30889
-  Ω_φDM = Ω_m,CMB − 0.160      = 0.14889
-  T_φ (relic)               = 0.38563  (= 0.5385 T_ν)
-  N_ur                      = 2.9619
+  Σm_ν                      = 0.06849 eV
+  multiplicador SOLAR²·KRYSTOS_V = 594.2800
+  m_φ                       = 40.7024 eV
+  Ω_m,CMB (ω_m/h², sin factor) = 0.30888
+  Ω_φDM = Ω_m,CMB − 0.160      = 0.14888
+  T_φ (relic)               = 0.38661  (= 0.5399 T_ν)
+  N_ur                      = 2.9610
 --------------------------------------------------------------------------
-  alpha (OUTPUT fit Viel)   = 1.1085 Mpc/h   (frac=0.755)
+  alpha (OUTPUT fit Viel)   = 1.1168 Mpc/h   (frac=0.756)
       [φ = 1.6180 — comparar]
-  k_half (CLASS, ratio=0.5) = 0.3394 h/Mpc   <-- borrado medido por el Boltzmann
-  k_fs (analítico no-rel)   = 0.7620 h/Mpc   <-- predicción falseable DESI/Euclid
-  σ8 (partícula)            = 0.7483
-  σ8 (frío, techo)          = 0.8335
+  k_half (CLASS, ratio=0.5) = 0.3368 h/Mpc   <-- borrado medido por el Boltzmann
+  k_fs (analítico no-rel)   = 0.7542 h/Mpc   <-- predicción falseable DESI/Euclid
+  σ8 (partícula)            = 0.7470
+  σ8 (frío, techo)          = 0.8334
 ==========================================================================
+___CORRIDA_OK___

@@ -730,6 +730,84 @@ except Exception as e:
     check("procedencia  capa de procedencia operable", False, str(e))
 
 # ─────────────────────────────────────────────────────────────────────
+# R33 — un LOG no puede contradecir al núcleo (2026-07-26).
+# La Capa Procedencia de arriba compara Registro ↔ log por string: si AMBOS
+# repiten el mismo valor rancio, coinciden y da VERDE. Valida coherencia, no
+# corrección — y cero reglas comparaban un log contra ssee_core. Ese hueco dejó
+# vivo Σm_ν=0.06902 en 8 logs, uno de ellos la corrida MCMC canónica del 07-25.
+# Un .log es un artefacto CONGELADO: guarda las constantes del día en que se
+# corrió. Borrar el string viejo de los .tex no lo toca. Ver la memoria
+# project_propagation_order (nivel 8, el que siempre se olvida).
+# Los históricos se declaran en _LOGS_HISTORICOS y quedan como ABIERTO, no ROJO.
+print("\nCapa R33 — logs vs núcleo: ningún log activo con constante retirada")
+_LOGS_HISTORICOS = {          # superados a propósito; se conservan como registro
+    "mcmc_paper2_3models_om308.log", "mcmc_paper2_reframe_om308.log",
+    "mcmc_professional.log", "mcmc_paper2_reframe_dr2.log",
+}
+# huella → (qué constante retirada la produce, con qué valor vigente NO sale)
+# OJO con la longitud de la huella: la primera versión de R33 buscaba solo
+# "0.3088932" (7 dec) y se le escapaban DIEZ logs que imprimen "0.30889" a 5 —
+# media tarea con luz verde, el mismo patrón que R33 existe para cazar. El
+# redondeo correcto de 0.308881 a 5 decimales es 0.30888, así que "0.30889"
+# es huella inequívoca del valor rancio y no puede dar falso positivo.
+_RETIRADAS = {"0.06902": "Σm_ν retirado (vigente 0.06849)",
+              "0.30889": "Ω_m de Σm_ν rancio (0.308881 imprime 0.30888)",
+              "94.07": "C_ν retirado (vigente 93.14)",
+              "41.0187": "m_φ de Σm_ν rancio (vigente 40.70)"}
+try:
+    _logdir = _REPO / "results" / "logs"
+    _sucios, _hist = [], []
+    for _lg in sorted(_logdir.glob("*.log")):
+        _txt = _lg.read_text(errors="ignore")
+        _hit33 = [f"{_k} ({_v})" for _k, _v in _RETIRADAS.items() if _k in _txt]
+        if not _hit33:
+            continue
+        (_hist if _lg.name in _LOGS_HISTORICOS else _sucios).append(
+            f"{_lg.name}: {', '.join(_hit33)}")
+    check("R33 ningún log ACTIVO arrastra una constante retirada",
+          not _sucios,
+          "; ".join(_sucios) if _sucios
+          else f"{len(list(_logdir.glob('*.log')))} logs barridos, "
+               f"{len(_hist)} históricos declarados")
+    if _hist:
+        track_open(f"R33 {len(_hist)} logs históricos con constante retirada",
+                   "; ".join(_hist) + "  (declarados en _LOGS_HISTORICOS)")
+except Exception as e:
+    check("R33 capa logs-vs-núcleo operable", False, str(e))
+
+# ─────────────────────────────────────────────────────────────────────
+# R34 — ningún .py ACTIVO hardcodea una constante retirada (2026-07-26).
+# R33 caza logs rancios; esto caza la causa AGUAS ARRIBA. scan_omega_m.py tenía
+# `mnu=0.069` en la línea 8 —el residuo de C_ν=94.07— mientras el resto de la
+# suite ya usaba 0.06849. No era un artefacto viejo: era el FUENTE, y producía
+# el barrido que justifica el ancla H₀. Re-correr su log no habría servido de
+# nada: habría vuelto a salir rancio. Regla: una constante se lee del núcleo,
+# no se re-teclea. Exclusiones = los sitios que NOMBRAN el valor retirado a
+# propósito (mutaciones del test, la derivación que compara 94.07 vs 93.14).
+print("\nCapa R34 — fuentes vs núcleo: ningún .py hardcodea constante retirada")
+try:
+    _EXCL = {"test_guardian.py", "derive_nu_closure.py", "ssee_verify.py",
+             "ssee_core.py"}
+    _pat34 = _re.compile(
+        r"(?:mnu|Smnu|SUM_MNU_EV|sigma_m_nu|m_nu|C_nu|C_NU)\s*=\s*"
+        r"(0\.069(?:0[0-9]*)?|94\.07[0-9]*)\s*(?:[^0-9.]|$)")
+    _malos = []
+    for _py in sorted((_REPO / "src").rglob("*.py")):
+        if _py.name in _EXCL or "archive" in _py.parts:
+            continue
+        for _i, _ln in enumerate(_py.read_text(errors="ignore").splitlines(), 1):
+            _code = _ln.split("#")[0]
+            _m34 = _pat34.search(_code)
+            if _m34:
+                _malos.append(f"{_py.relative_to(_REPO)}:{_i} → {_m34.group(1)}")
+    check("R34 ningún .py activo hardcodea Σm_ν/C_ν retirados",
+          not _malos,
+          "; ".join(_malos) if _malos
+          else "constantes leídas del núcleo, no re-tecleadas")
+except Exception as e:
+    check("R34 capa fuentes-vs-núcleo operable", False, str(e))
+
+# ─────────────────────────────────────────────────────────────────────
 # CAPA MANUSCRITOS — reglas del RIGOR_CHECKLIST automatizadas (grep duro).
 # "El sistema solo se hace más capas": cada regla automatizable se vuelve un
 # check aquí, para que UNA corrida marque dónde y por qué.

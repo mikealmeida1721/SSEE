@@ -49,8 +49,29 @@ Reglas que Mike fijó para esta lectura:
 | 1 | portada + **abstract** | ✅ |
 | 2 | índice | ✅ (sin contenido verificable) |
 | 3 | §1 las 7 constantes + §1.1 Predictive Register | ✅ |
-| 4 | **Tabla 1** — Predictive Register | 🔵 EN CURSO |
-| 5–33 | — | ⬜ |
+| 4 | **Tabla 1** — Predictive Register (17 filas) | ✅ |
+| 5 | — | 🔵 SIGUIENTE |
+| 6–33 | — | ⬜ |
+
+### Página 4 · Tabla 1 — Predictive Register (17 filas)
+Verificadas fila por fila contra `ssee_core`: w₀, wₐ, ωc, Ω_m,CMB, n_s, H₀, γ_IS,
+fσ₈, m_φ, k_fs, S₈, α_T/M/B, β_c, r. Todas correctas y con su clasificación
+epistémica sostenible (postdicción / predicción / retrodicción).
+
+**Falsa alarma bien cazada:** la fila de α_K decía **0.073** mientras toda la
+suite usa **0.403302**. Parecía contradicción — y NO lo es: son dos kineticidades
+físicamente distintas, α_K^bare = 3Ω_DE(1+w_φ) con w_φ=−0.971202 (el falsador de
+Euclid) frente a α_K^eff = 3Ω_DE(1+w₀). El paper lo explica… **20 líneas después
+de la tabla**. Un lector que compare con Paper 7 concluye «se contradicen» antes
+de llegar a la nota.
+→ La fila ahora se llama **α_K^bare**, autosuficiente. Símbolo distinto para
+entidad distinta, que es la misma ley que aplicamos a I_g vs K_v.
+
+**Y dos cadenas con intermedios redondeados:** `3×0.840×0.029 = 0.073` no
+reproduce el exacto (da 0.0731). Corregidas a `3×0.839950×0.028798 = 0.072567`
+en Paper 3 y Unified. R37 ampliada a 16 constantes (+α_K^bare) → 13 correcciones
+en 5 documentos más.
+→ **CERRADA**
 
 ### Página 1 · abstract
 Verificados: w₀ ≈ −0.840, wₐ ≈ −0.670, KAL₀ ≈ 5.5214 (los tres con «≈», cortos

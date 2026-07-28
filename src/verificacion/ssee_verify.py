@@ -818,7 +818,13 @@ try:
             # las constantes del diccionario. Son igual de puros en φ,π.
             "r": phi ** -10, "n_s": 1 - phi ** -7, "alpha_att": phi ** 4 / 3,
             "N_star": 2 * phi ** 7,
-            "alpha_K": 3 * (_core.AURA / _core.OMEGA) * (1 + _core.W0)}
+            "alpha_K": 3 * (_core.AURA / _core.OMEGA) * (1 + _core.W0),
+            # α_K BARE: 3·Ω_DE·(1+w_φ) con w_φ=−0.971202 (plateau EFT, 8 IC).
+            # NO confundir con el efectivo de arriba: son dos kineticidades
+            # físicamente distintas y el Paper 1 las tabula juntas. La tabla
+            # las escribía las dos como «α_K», que es la forma más segura de
+            # que un lector concluya que el modelo se contradice.
+            "alpha_K_bare": 3 * (_core.AURA / _core.OMEGA) * (1 - 0.971202)}
     _mal37 = []
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
                       + list((_REPO / "submission_PRD").glob("*.tex"))):

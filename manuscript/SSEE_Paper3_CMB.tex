@@ -52,8 +52,8 @@ A naive application of this background to the CMB yields shifted acoustic peaks
 ($\ell_1=242$ vs.\ $220$) and $\chi^2_r=97.7$, apparently falsifying the model.
 Here we show that the CMB matter density is fixed \emph{forward} by the SSEE
 algebra, with no factor relating it to the dynamic sector: the physical observable
-is $\omega_m=\omega_b+\omega_c+\omega_\nu$, where $\omega_b=(\pi-\varphi)/[3(\varphi+\pi)^2]=0.02242$
-and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.11951$ are forward identities of Paper~1
+is $\omega_m=\omega_b+\omega_c+\omega_\nu$, where $\omega_b=(\pi-\varphi)/[3(\varphi+\pi)^2]=0.022418$
+and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.119514$ are forward identities of Paper~1
 ($\omega_c$ lies $0.41\sigma$ from Planck), giving
 \begin{equation*}
   \Omega_{m,\mathrm{CMB}}
@@ -217,8 +217,8 @@ $\omega_m\equiv\Omega_m h^2$, which SSEE fixes \emph{forward} from the algebra,
 with no factor relating it to the dynamic sector:
 \begin{equation}
   \omega_m = \omega_b + \omega_c + \omega_\nu, \qquad
-  \omega_b = \frac{\pi-\varphi}{3(\varphi+\pi)^2} = 0.02242, \qquad
-  \omega_c = \mathrm{KAL}_0\,\omega_b\,n_s = 0.11951,
+  \omega_b = \frac{\pi-\varphi}{3(\varphi+\pi)^2} = 0.022418, \qquad
+  \omega_c = \mathrm{KAL}_0\,\omega_b\,n_s = 0.119514,
   \label{eq:omega_m_direct}
 \end{equation}
 with $n_s=1-\varphi^{-7}=0.965558$ and $\omega_\nu=\Sigma m_\nu^{\rm active}/93.14=0.00074$
@@ -407,7 +407,7 @@ $\tau$ & 0.054 & Planck 2018 \\
 
 The baryon density is fixed to the Planck~2018 prior $\Omega_b h^2 = 0.02237$.
 The SSEE algebraic value derived in Paper~4, $\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE}
-= 0.02242$, agrees with this prior at $0.3\sigma$ ($0.02237\pm0.00015$); the $0.2\%$
+= 0.022418$, agrees with this prior at $0.3\sigma$ ($0.02237\pm0.00015$); the $0.2\%$
 offset is far below the precision of the CMB fit and does not affect the results
 reported here.
 
@@ -650,7 +650,7 @@ The diagonal approximation neglects bin-to-bin covariances in the Planck PR4 ban
 To establish a definitive baseline for model comparison that fully accounts for off-diagonal covariances, we evaluate the SSEE framework against the official Planck 2018 \texttt{plik\_lite} TTTEEE likelihood via \texttt{clik}/\texttt{clipy} \citep{Torrado2021}, over its $N=613$ compressed bandpowers.
 
 \paragraph{Parameter counting ($\omega_m$-direct).}
-All SSEE dark energy parameters ($w_0, w_a$), the spectral index $n_s$, and --- under the 2026 $\omega_m$-direct reframe --- the baryon and cold-matter densities $\omega_b=(\pi-\varphi)/(3\Omega^2)=0.02242$ and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.11951$ are algebraically fixed. The dimensional anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$ is itself \emph{derived} from the SH0ES--$f_{\rm screen}$ inversion (Paper~9), not fitted to the CMB; the amplitude $A_s$ and reionization $\tau$ are held fixed at their external Planck values (borrowed inputs, not derived from $\{\varphi,\pi\}$). The two quantities the framework borrows rather than derives are therefore $A_s$ and $\tau$, and we conservatively assign $k=2=\{A_s,\tau\}$. The standard $\Lambda$CDM baseline has $k=6$: $H_0$, $\Omega_b h^2$, $\Omega_c h^2$, $n_s$, $A_s$, and $\tau$ \citep{Planck2018}, all six free in the CMB fit. (The companion full MCMC of \S\ref{sec:b1_mcmc} additionally lets $H_0$ \emph{float} as a validation check: the chain recovers $H_0$ at the algebraic anchor, confirming that fixing it costs no fit quality and that the $k=2$ count is sound.)
+All SSEE dark energy parameters ($w_0, w_a$), the spectral index $n_s$, and --- under the 2026 $\omega_m$-direct reframe --- the baryon and cold-matter densities $\omega_b=(\pi-\varphi)/(3\Omega^2)=0.022418$ and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.119514$ are algebraically fixed. The dimensional anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$ is itself \emph{derived} from the SH0ES--$f_{\rm screen}$ inversion (Paper~9), not fitted to the CMB; the amplitude $A_s$ and reionization $\tau$ are held fixed at their external Planck values (borrowed inputs, not derived from $\{\varphi,\pi\}$). The two quantities the framework borrows rather than derives are therefore $A_s$ and $\tau$, and we conservatively assign $k=2=\{A_s,\tau\}$. The standard $\Lambda$CDM baseline has $k=6$: $H_0$, $\Omega_b h^2$, $\Omega_c h^2$, $n_s$, $A_s$, and $\tau$ \citep{Planck2018}, all six free in the CMB fit. (The companion full MCMC of \S\ref{sec:b1_mcmc} additionally lets $H_0$ \emph{float} as a validation check: the chain recovers $H_0$ at the algebraic anchor, confirming that fixing it costs no fit quality and that the $k=2$ count is sound.)
 
 Evaluating at the single global anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$ (which is also the \texttt{plik\_lite}-preferred value, $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$), the effective $\chi^2$ for SSEE is $1005.409$, compared to $1003.760$ for $\Lambda$CDM. The raw fit penalty is therefore only $\Delta\chi^2 = +1.649$ over $N=613$ bandpowers.
 
@@ -670,7 +670,7 @@ A $\Delta\mathrm{BIC} < -10$ constitutes decisive evidence on the Jeffreys scale
 The point-estimate scan of \S\ref{sec:cobaya} evaluates $\chi^2$ at the fixed algebraic anchor $H_0 = 3(\varphi+\pi)^2$ while holding all remaining SSEE quantities algebraically fixed. To provide complete posterior distributions and a fully rigorous parameter-counting comparison, we perform a dedicated MCMC analysis using \texttt{Cobaya}'s built-in sampler against the full off-diagonal \texttt{plik} TTTEEE + lowl\,TT + lowl\,EE + lensing likelihood suite (evaluated through \texttt{clipy}).
 
 \paragraph{Free parameters.}
-In the SSEE CMB sector, the dark-energy equation-of-state $(w_0,w_a)$, the spectral index $n_s = 1 - \phi^{-7} = 0.965558$, the baryon density $\Omega_b h^2 = (\pi-\varphi)/(3\Omega^2) = 0.02242$, and the CDM density $\Omega_c h^2 = \mathrm{KAL}_0\,\Omega_b h^2\,n_s = 0.11951$ ($\omega_m$-direct) are all algebraically fixed, and the geometry anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$ is derived (Paper~9). The only two model parameters genuinely sampled are therefore:
+In the SSEE CMB sector, the dark-energy equation-of-state $(w_0,w_a)$, the spectral index $n_s = 1 - \phi^{-7} = 0.965558$, the baryon density $\Omega_b h^2 = (\pi-\varphi)/(3\Omega^2) = 0.022418$, and the CDM density $\Omega_c h^2 = \mathrm{KAL}_0\,\Omega_b h^2\,n_s = 0.119514$ ($\omega_m$-direct) are all algebraically fixed, and the geometry anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$ is derived (Paper~9). The only two model parameters genuinely sampled are therefore:
 
 \begin{itemize}[noitemsep]
     \item $\log(10^{10}A_s) \in [2.80, 3.25]$ (flat prior) — primordial amplitude;

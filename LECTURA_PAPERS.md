@@ -60,7 +60,42 @@ no es «el número es correcto» sino **«se comprueba de un vistazo»**.
 | 1 | portada + **abstract** | ✅ | ✅ **3 huecos hallados** |
 | 2 | índice | ✅ «sin contenido verificable» | ✅ **defecto de estructura** |
 | 3 | §1 las 7 constantes + §1.1 | ✅ | ✅ **4 valores mal redondeados** |
-| 4 | **Tabla 1** — Predictive Register | ✅→reabierta | ⬜ |
+| 4 | **Tabla 1** — Predictive Register | ✅→reabierta | ✅ **5 defectos + contradicción** |
+| 5 | §1.2 Principios axiomáticos | ✅ | 🔵 SIGUIENTE |
+
+### 🔁 Página 4 (2ª pasada) · Tabla 1 — Predictive Register
+**Primero, un defecto que introduje yo en la 1ª pasada:** al añadir el criterio de
+Euclid a la fila de α_K la celda quedó larguísima. Acortada a «Euclid weak lensing
+2026--2028; forecast σ(α_K,0)≈0.1» + estatus «Prediction (below sensitivity)»:
+dice lo mismo y cabe.
+
+**Una contradicción viva en la misma página.** El párrafo afirmaba que «*a single
+null detection would rule out the SSEE framework*» mientras la fila de α_K dice
+que el valor está por debajo de la sensibilidad del experimento. No puede ser
+falsable y no discriminante a la vez. Reescrito: donde la sensibilidad ya
+resuelve el valor, una exclusión refuta; donde no —α_K^field— la entrada se marca
+*below sensitivity* y una no-detección **no pesa en ninguna dirección**. La nota
+al pie decía además «this is the Euclid weak-lensing **falsifier**», contradiciendo
+a su propia tabla dos centímetros más arriba; corregida.
+
+**Dos filas tenían las columnas cruzadas:** `γ_IS = 0.550` llevaba el VALOR en la
+columna «Quantity» y una comparación en la columna «Value»; `fσ₈` igual. Un lector
+que recorre la tabla en columna encuentra un valor donde espera una fórmula.
+Reordenadas al contrato de la tabla.
+
+**Y dos de política:** `ω_c = 0.11951` (5 dec) y `H₀ = 67.96` frente al 67.962 que
+usa el resto de la suite. **ω_b y ω_c no estaban entre las constantes vigiladas** —
+sólo el diccionario y los observables inflacionarios— así que nadie los miraba:
+añadidos, y el barrido encontró **37 igualdades más** en 8 documentos (P1, P2, P3,
+P4, P6, Sealed, PRD). Los valores de Planck (0.02237, 0.1200) quedaron intactos:
+son datos medidos y llevan su propia precisión.
+
+> **Dos falsas alarmas de la herramienta, no del paper.** `pdftotext` mostraba la
+> fila de α_K partida en dos y un «p» suelto en S₈. Renderizando la página a
+> imagen y mirándola: la tabla está perfecta y el «p» era el signo `√`. Leer el
+> volcado de texto no es leer el PDF.
+
+→ **CERRADA**
 
 ### 🔁 Página 3 (2ª pasada) · §1 las siete constantes + §1.1 Predictive Register
 Las siete constantes de la lista: **todas correctas** con «≈» y bien redondeadas.

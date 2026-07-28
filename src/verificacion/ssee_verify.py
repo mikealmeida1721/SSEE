@@ -824,7 +824,15 @@ try:
             # físicamente distintas y el Paper 1 las tabula juntas. La tabla
             # las escribía las dos como «α_K», que es la forma más segura de
             # que un lector concluya que el modelo se contradice.
-            "alpha_K_bare": 3 * (_core.AURA / _core.OMEGA) * (1 - 0.971202)}
+            "alpha_K_bare": 3 * (_core.AURA / _core.OMEGA) * (1 - 0.971202),
+            # 2026-07-27, lectura Paper 1 pág. 4: el Predictive Register mostraba
+            # ω_c a 5 decimales y nadie lo veía — las densidades no estaban en la
+            # lista, sólo el diccionario y los observables inflacionarios. Son
+            # igual de algebraicas: ω_b sale de (π−φ)/(3Ω²) y ω_c de la identidad
+            # forward KAL₀·ω_b·n_s.
+            "omega_b": (pi - phi) / (3 * (pi + phi) ** 2),
+            "omega_c": ((pi + phi) / 2 + pi) * ((pi - phi) / (3 * (pi + phi) ** 2))
+                       * (1 - phi ** -7)}
     _mal37 = []
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
                       + list((_REPO / "submission_PRD").glob("*.tex"))):

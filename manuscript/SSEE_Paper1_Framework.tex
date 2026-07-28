@@ -169,14 +169,14 @@ Quantity (algebraic formula) & Value & Test / Falsifier & Status \\
 $w_0 = -T_r/M_v$ & $-0.839950$ & DESI DR2 (2025) & Postdiction \\
 $w_a = -(\Omega+\varphi)/I_g$ & $-0.669975$ & DESI DR2 (2025) & Postdiction \\
 $(w_0,w_a)$ vs DESI DR3 & same fixed point & DR3 $w_0w_a$CDM (2027); ${>}3\sigma$ joint excl.\ falsifies & \textbf{Prediction (pre-registered)} \\
-$\omega_c = \mathrm{KAL}_0\,\omega_b\,n_s$ & $0.11951$ & Planck 2018 & Retrodiction \\
+$\omega_c = \mathrm{KAL}_0\,\omega_b\,n_s$ & $0.119514$ & Planck 2018 & Retrodiction \\
 $\Omega_{m,\mathrm{CMB}} = \omega_m/h^2$ & $0.308881$ & Planck 2018 & Retrodiction \\
 $n_s = 1-\varphi^{-7}$ & $0.965558$ & Planck 2018 & Retrodiction \\
-$H_0 = 3(\varphi+\pi)^2$ & $67.96\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & Planck 2018 & Global background anchor (Post.~D) \\
+$H_0 = 3(\varphi+\pi)^2$ & $67.962\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & Planck 2018 & Global background anchor (Post.~D) \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 5 — IS causal perturbation theory}} \\
-$\gamma_{\mathrm{IS}} = 0.550$ & $\approx\gamma_{\Lambda\mathrm{CDM}}=0.55$ & RSD surveys & Retrodiction \\
-$f\sigma_8(z{=}0.5)$ & mean $0.70\sigma$ vs 6 RSD surveys (single-sector) & BOSS/eBOSS/6dFGS & Retrodiction \\
+$\gamma_{\mathrm{IS}}$ & $0.550$ & RSD surveys ($\gamma_{\Lambda\mathrm{CDM}}=0.55$) & Retrodiction \\
+$f\sigma_8(z{=}0.5)$ & $0.70\sigma$ mean tension & 6 RSD surveys, single-sector (BOSS/eBOSS/6dFGS) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 6 — $\varphi$-Dark Matter, two-sector}} \\
 $m_\phi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)$ & $40.70\,\mathrm{eV}$ & Matter $P(k)$ via $k_{\mathrm{fs}}$ (no SM portal) & Prediction \\
@@ -185,7 +185,7 @@ $S_8^{\mathrm{eff}}=\sigma_8\sqrt{\Omega_m/0.3}$ (two-sector, forward CLASS) & $
 \midrule
 \multicolumn{4}{l}{\textit{Paper 7 — Canonical EFT, Bellini-Sawicki $\alpha$-functions}} \\
 $\alpha_T=\alpha_M=\alpha_B=0$ (minimal coupling) & $0$ exact & GW170817 $|\alpha_T|<10^{-15}$ & Retrodiction \\
-$\alpha_K^{\rm field} = 3\,\Omega_{\mathrm{DE}}(1+w_\phi)$ & $0.072567$ & Euclid weak lensing, $\sigma(\alpha_{K,0})\!\approx\!0.1$ (2026--2028): value lies \emph{below} the forecast error bar & Prediction (not yet discriminating) \\
+$\alpha_K^{\rm field} = 3\,\Omega_{\mathrm{DE}}(1+w_\phi)$ & $0.072567$ & Euclid weak lensing 2026--2028; forecast $\sigma(\alpha_{K,0})\!\approx\!0.1$ & Prediction (below sensitivity) \\
 $\beta_c = -\mathrm{AURA} = -(3\varphi+\pi)/2$ & $-3.997847$ & EFT plateau test (8 ICs, $\Delta=0.2\%$) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Future}} \\
@@ -200,13 +200,19 @@ previously published values; no optimisation over the algebraic formula space
 was performed to match a target value.  The distinction between postdictions,
 retrodictions, and genuine predictions is explicitly noted to maintain transparency.
 All entries with ``Prediction'' status are falsifiable by named experiments within
-the stated time horizon; a single null detection would rule out the \SSEE\ framework.
+the stated time horizon. Where the forecast sensitivity already resolves the
+predicted value, a measurement excluding it at high significance refutes the
+framework; where it does not---as for $\alpha_K^{\rm field}$, whose forecast error
+bar exceeds the prediction---the entry is marked \emph{below sensitivity} and a
+non-detection carries no evidential weight either way.
 
 \noindent\emph{Note on the two $\alpha_K$ values.} Two physically distinct
 kineticities appear across the suite and must not be conflated: the
 \emph{bare-field} value $\alpha_K^{\rm field}=3\Omega_{\rm DE}(1+w_\phi)=0.072567$ tabulated above
-(with $w_\phi\approx-0.971$ the bare scalar equation of state; this is the Euclid
-weak-lensing falsifier), versus the \emph{effective background} value
+(with $w_\phi\approx-0.971$ the bare scalar equation of state; this is the quantity
+Euclid weak lensing will constrain, though its forecast error bar
+$\sigma(\alpha_{K,0})\!\approx\!0.1$ still exceeds the predicted value, so the entry is
+recorded as \emph{below sensitivity} rather than as a falsifier), versus the \emph{effective background} value
 $\alpha_K^{\rm eff}=3\Omega_{\rm DE}(1+w_0)=0.403302$ (with $w_0=-0.839950$) used for the
 hi\_class/EFTCAMB cross-check in Table~\ref{tab:two_omega}. Both are derived; see
 Paper~7 for the full $\alpha_K(a)$ derivation distinguishing them.
@@ -338,8 +344,8 @@ D+S and are introduced as algebraic-register declarations:
         matter factor. The CMB-sector matter density is the standard physical
         observable $\omega_m=\Omega_{m,\rm CMB}h^2=\omega_b+\omega_c+\omega_\nu$,
         with each piece an algebraic register quantity,
-        $\omega_b=(\pi-\varphi)/(3\Omega^2)=0.02242$ (OP-1),
-        $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.11951$ (a forward identity,
+        $\omega_b=(\pi-\varphi)/(3\Omega^2)=0.022418$ (OP-1),
+        $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.119514$ (a forward identity,
         matching Planck at $0.41\sigma$), and $\omega_\nu=\Sigma m_\nu/93.14$.
         The CMB matter fraction is then \emph{derived},
         $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ at the global anchor
@@ -838,7 +844,7 @@ applies uniformly to Papers~1--4.
   \textit{Result}: most Type~A predictions in Appendix~B,
   Table~\ref{tab:derivation_chain} are within $2\sigma$ of published
   observational values (see Paper~4 for full compilation).
-  The baryon density $\Omega_b h^2 = (\pi-\varphi)/[3(\varphi+\pi)^2] = 0.02242$
+  The baryon density $\Omega_b h^2 = (\pi-\varphi)/[3(\varphi+\pi)^2] = 0.022418$
   ($0.32\sigma$ from Planck~2018, $0.02237\pm0.00015$) is classified as a
   \emph{retrodiction}: its structural algebraic form was identified after the
   data, superseding the preliminary placeholder $3(\pi-\varphi)/200$
@@ -1100,13 +1106,13 @@ $\Omega_{m,\rm dyn}=0.160050$ (OP-8 closed).
 Similarly, $\mathrm{KAL}_0$ is both a derived constant (Level~2) and
 a dynamical viscosity operator scaling cluster masses.
 
-\footnotesize $^\ddagger$ $\Omega_b h^2=(\pi-\varphi)/[3(\varphi+\pi)^2]=0.02242$ is at $0.32\sigma$ from Planck 2018 ($0.02237\pm0.00015$).
+\footnotesize $^\ddagger$ $\Omega_b h^2=(\pi-\varphi)/[3(\varphi+\pi)^2]=0.022418$ is at $0.32\sigma$ from Planck 2018 ($0.02237\pm0.00015$).
 This is a \emph{retrodiction}: the structural form was identified after the data (OP-1, \texttt{OPEN\_PROBLEMS.md}),
 superseding the preliminary placeholder $3(\pi-\varphi)/200=0.02285$ ($3.2\sigma$), whose factor $200$ was not an
 algebraic $\{\varphi,\pi\}$ quantity.
-Using the algebraic input $\Omega_b h^2=0.02242$, the formula
+Using the algebraic input $\Omega_b h^2=0.022418$, the formula
 $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ gives
-$\Omega_c h^2 = 5.521406\times0.02242\times0.96556 = 0.11951$ ($0.41\sigma$ from Planck $0.1200\pm0.0012$).
+$\Omega_c h^2 = 5.521406\times0.02242\times0.96556 = 0.119514$ ($0.41\sigma$ from Planck $0.1200\pm0.0012$).
 
 \footnotesize $^\S$ Canonical CMB-sector matter density ($\omega_m$-direct reframe, 2026):
 $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ with $\omega_m=\Omega_b h^2+\Omega_c h^2

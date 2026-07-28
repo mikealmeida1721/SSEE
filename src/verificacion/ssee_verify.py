@@ -990,6 +990,77 @@ try:
 except Exception as e:
     check("R38 capa operable", False, str(e))
 
+# R41 — un mismo símbolo, UNA precisión por documento (2026-07-27).
+# Las cantidades CON UNIDAD están exentas de la política de 6 decimales: llevan la
+# precisión del dato con el que se comparan (R37). Pero esa exención no las exime
+# de ser coherentes CONSIGO MISMAS: el ancla algebraica H₀ = 3(φ+π)² aparecía como
+# «67.96» y como «67.962» dentro del MISMO documento, en 10 de 11 documentos de la
+# suite — 22 apariciones. Ninguna estaba «mal» (67.962137 redondea a las dos), y
+# justo por eso nadie las veía: R37 las exime por dimensionales y R30 valida cada
+# una por separado. Lo que falla es la coherencia interna, y quien compara dos
+# páginas ve dos números para el mismo objeto.
+print("\nCapa R41 — coherencia de precisión: un símbolo, una precisión por documento")
+try:
+    # (valor exacto, patrón que lo ancla al SÍMBOLO). Sólo dimensionales: las
+    # adimensionales ya las cubre R37 exigiendo 6 decimales en toda la suite.
+    _DIM = {"H_0^alg (=3(φ+π)²)": (3 * (phi + pi) ** 2,
+                                   r"3\s*\(\\(?:varphi|phiG)\s*\+\s*\\pi\)\s*\^?\{?2\}?"
+                                   r"[^0-9]{0,40}?(\d+\.\d+)")}
+    _mal41 = []
+    for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
+                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+        _cont = _tx.read_text(errors="ignore")
+        for _n41, (_e41, _pat41) in _DIM.items():
+            _vistos = set()
+            for _m in _re.finditer(_pat41, _cont):
+                _v = _m.group(1)
+                # sólo cuenta si de verdad es ese número (no un σ, ni un año)
+                if abs(float(_v) - _e41) >= 0.01:
+                    continue
+                # EXENCIÓN: cuando el texto declara la precisión ("reproducing the
+                # anchor … to four decimals"), mostrar más dígitos ES la afirmación.
+                # Recortarlo destruiría el argumento — el Sealed y el PRD usan
+                # 67.9621 justamente para demostrar que la cascada UV reproduce el
+                # ancla a cuatro decimales. Una regla que fuerza coherencia ciega
+                # rompe papers correctos.
+                if _re.search(r"to\s+(?:two|three|four|five|six|\d+)\s+decimal",
+                              _cont[max(0, _m.start() - 200):_m.end() + 200], _re.I):
+                    continue
+                _vistos.add(_v)
+            if len(_vistos) > 1:
+                _mal41.append(f"{_tx.name}: {_n41} aparece como "
+                              + " y ".join(sorted(_vistos)))
+    # Auto-test: la regla debe distinguir «dos precisiones» de «una repetida».
+    def _prec(txt, e, pat):
+        return {m.group(1) for m in _re.finditer(pat, txt)
+                if abs(float(m.group(1)) - e) < 0.01}
+    _p41 = _DIM["H_0^alg (=3(φ+π)²)"][1]
+    _t41 = [(r"$3(\varphi+\pi)^2 = 67.96$ y $3(\varphi+\pi)^2 \approx 67.962$", 2),
+            (r"$3(\varphi+\pi)^2 = 67.962$ y $3(\varphi+\pi)^2 \approx 67.962$", 1)]
+    _f41 = [t for t, esp in _t41
+            if len(_prec(t, 3 * (phi + pi) ** 2, _p41)) != esp]
+    # y la exención debe funcionar: con la precisión declarada, 67.9621 NO cuenta
+    # La segunda aparición va MUY separada: dentro de la ventana de ±200 caracteres
+    # ambas quedarían exentas y el test no probaría nada (así falló la 1.ª versión).
+    _ex = (r"reproducing the anchor $3(\varphi+\pi)^2=67.9621$ to four decimals."
+           + " relleno" * 60
+           + r" elsewhere $3(\varphi+\pi)^2=67.962$")
+    _n_ex = len({m.group(1) for m in _re.finditer(_p41, _ex)
+                 if abs(float(m.group(1)) - 3 * (phi + pi) ** 2) < 0.01
+                 and not _re.search(r"to\s+(?:two|three|four|five|six|\d+)\s+decimal",
+                                    _ex[max(0, m.start() - 200):m.end() + 200], _re.I)})
+    if _n_ex != 1:
+        _f41.append(f"exención «to four decimals» no aplica (vio {_n_ex})")
+    check("R41 el detector distingue dos precisiones de una repetida",
+          not _f41, "; ".join(_f41) if _f41
+          else "3 casos: «67.96 y 67.962» marcado, repetición limpia, "
+               "y precisión declarada («to four decimals») exenta")
+    check("R41 ninguna cantidad dimensional con dos precisiones en un documento",
+          not _mal41, "; ".join(_mal41[:5]) if _mal41
+          else "el ancla H₀ se muestra con una sola precisión en cada documento")
+except Exception as e:
+    check("R41 capa operable", False, str(e))
+
 # R40 — TIPO DE RELACIÓN: el signo dice qué clase de afirmación es (2026-07-27).
 # Las matemáticas son un lenguaje sin ambigüedad; «=» y «≈» no son dos grados de
 # lo mismo, son relaciones distintas:

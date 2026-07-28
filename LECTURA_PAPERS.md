@@ -91,7 +91,8 @@ no es «el número es correcto» sino **«se comprueba de un vistazo»**.
 | 3 | §1 las 7 constantes + §1.1 | ✅ | ✅ **4 valores mal redondeados** |
 | 4 | **Tabla 1** — Predictive Register | ✅→reabierta | ✅ **5 defectos + contradicción** |
 | 5 | §1.2 Principios axiomáticos | ✅ | ✅ **un axioma que era tautología** |
-| 6 | §1.3 Postulados D y S | ✅ | 🔵 SIGUIENTE |
+| 6 | §1.3 Postulados D y S | ✅ | ✅ **overclaim + 3 precisiones de H₀** |
+| 7 | §1.3 (cont.) Postulado I | ⬜ | 🔵 SIGUIENTE |
 
 ### 🔁 Página 3 · addendum — `=` vs `≈` (pregunta de Mike)
 Mike preguntó por qué las siete constantes llevan «casi igual» si él las lee como
@@ -115,6 +116,44 @@ Verificado que el patrón ambiguo **no** está en los otros papers: el Unified y
 
 Encaja con la política: tras `=` va lo exacto a 6 decimales; tras `≈` puede ir
 corto porque el signo ya avisa. Registrado en [[project_rounding_policy]].
+
+### 🔁 Página 6 (2ª pasada) · §1.3 Postulados D y S
+**Relaciones (dim. 2):** siete signos, todos correctos — `≡` define la fracción de
+saturación, `∼` para el orden `10⁻⁶¹`, `≈` para el decimal truncado, `=` en las
+identidades exactas. **Valores (dim. 1):** `s = T_r/M_v`, `Ω_DE = s`, `w₀ = −s`,
+`1+w₀ = 1−s = Ω_m,dyn = 0.160050` ✓; `H₀/M_Pl ∼ 10⁻⁶¹` ✓ (1.19×10⁻⁶¹).
+
+**Hallazgo (dim. 4): un overclaim que se acota 100 líneas después.** La página
+afirma «*SSEE carries one dimensional input (H₀) and **zero dimensionless** ones*».
+Pero L408 dice que eso «aplica **estrictamente al sector background**» y L439 que
+«quedan **exactamente dos libres**, A_s y τ». Las tres conviven, y sólo la primera
+está en la página 6: un lector se lleva «cero adimensionales» a secas, que es el
+overclaim exacto que un referee busca — *«usted dice cero y luego admite dos»*.
+Acotado **donde se hace la afirmación**, con el k=2 vs k=6 explícito.
+
+**Hallazgo (dim. 4, y el guardián lo amplió): TRES precisiones del mismo número.**
+El ancla `3(φ+π)²` aparecía como `67.96` y `67.962` en el mismo documento — y en
+**10 de 11 documentos** de la suite, 22 apariciones. Ninguna estaba «mal»
+(67.962137 redondea a ambas) y por eso nadie las veía: R37 exime las dimensionales
+y R30 valida cada una por separado. Unificadas a `67.962`.
+
+→ Nueva regla **R41** (coherencia de precisión: un símbolo, una precisión por
+documento). Y al correrla **encontró dos que mi barrido manual no vio**: `67.9621`
+en Sealed y PRD. Eran *tres* precisiones, no dos.
+
+> **Falso positivo instructivo.** Esos `67.9621` son **legítimos**: el texto dice
+> «`73.04×(1−0.069522)=67.9621`, reproducing the anchor `3(φ+π)²=67.9621` **to four
+> decimals**». Ahí mostrar cuatro decimales **es** la afirmación; recortarlo
+> destruiría el argumento. Verificada la aritmética (73.04×0.930478 = 67.96212 ✓).
+> R41 exenta ahora las precisiones **declaradas en el texto**. Una regla que fuerza
+> coherencia ciega rompe papers correctos.
+>
+> Y el auto-test de la exención falló en su primera versión porque mis dos casos
+> de prueba caían dentro de la misma ventana de ±200 caracteres: la exención se
+> aplicaba a los dos y el test no probaba nada. Separados como en el documento real.
+
+11 documentos + PRD recompilan exit=0. Guardián VERDE 179.
+→ **CERRADA**
 
 ### 🔁 Página 5 (2ª pasada) · §1.2 Principios Axiomáticos — leída en las SEIS dimensiones
 **Relaciones (dim. 2), lo primero ahora.** Los cuatro signos están bien tipados:

@@ -71,3 +71,15 @@ historicos:
 # otra vez — que es lo correcto.
 figuras_verificadas:
   fig1_w0wa_plane: 2026-07-26   # regenerada con preflight; PDF idéntico al de 07-18
+
+# Logs de MUESTREO cuya validez NO depende del post-procesado. Un cambio en el
+# bloque de análisis del script (cómo se lee la cadena, cómo se calcula el χ²)
+# no invalida las 18 h de muestreo ya hechas. R35 no puede distinguir muestreo
+# de análisis dentro del mismo archivo, así que se declara aquí — y sólo vale
+# porque la cadena está CERTIFICADA por postflight.py, no por confianza:
+#   ssee_cmb  R−1=0.0170 · 53872 muestras · χ² coherente 1.5e-4 · mínimo al 69%
+#   lcdm_cmb  R−1=0.0187 · 95760 muestras · χ² coherente 1.5e-4 · mínimo al 75%
+# El resultado del análisis vigente vive en b1_analyse.log, que SÍ vigila R35.
+muestreo_certificado:
+  b1_full_run: 2026-07-27
+  b1_lcdm_run: 2026-07-27

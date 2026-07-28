@@ -850,6 +850,10 @@ try:
         if not _script:
             _sinmapa.append(_nm)
             continue
+        # Muestreo certificado por postflight: un cambio en el bloque de
+        # ANÁLISIS del script no invalida la cadena ya muestreada.
+        if _nm in (_prop.get("muestreo_certificado") or {}):
+            continue
         _tl, _ts35 = _commit_ts(f"results/logs/{_nm}.log"), _commit_ts(_script)
         if not (_tl and _ts35 and _ts35 > _tl):
             continue
@@ -1915,6 +1919,25 @@ try:
         "omega_m": (_core.OMEGA_M_H2, [r"\\omega_m\s*=\s*\\omega_b\+\\omega_c\+\\omega_\\nu\s*=\s*([\d.]+)"]),
         "w0": (abs(_core.W0), [r"w_0\s*(?:&|)\s*=\s*-\s*([\d.]{6,})"]),
         "wa": (abs(_core.WA), [r"w_a\s*(?:&|)\s*=\s*-\s*([\d.]{6,})"]),
+        # Añadidas 2026-07-27. Regar el ÁRBOL, no la fruta: el PRD y el Sealed
+        # son resúmenes derivados; los Papers son la fuente. Si un Paper muestra
+        # un valor y el consolidado otro, quien compare ve al modelo
+        # contradiciéndose consigo mismo — y eso pesa más que cualquier acierto.
+        # Estas cinco se verificaron a mano en §4.1/§4.2 del PRD; aquí se
+        # exigen en TODOS los .tex, Papers incluidos.
+        "alpha_K(0)": (3 * (_core.AURA / _core.OMEGA) * (1 + _core.W0), [
+            r"\\alpha_\{?\\rm K\}?\(0\)\s*(?:&|)\s*=\s*([\d.]{5,})",
+            r"\\alpha_K\(0\)\s*(?:&|)\s*=\s*([\d.]{5,})",
+        ]),
+        "AURA": (_core.AURA, [r"\\mathrm\{AURA\}\s*(?:&|)\s*=\s*([\d.]{5,})"]),
+        "N_star (=2phi^7)": (2 * phi ** 7, [
+            r"N_\\ast\s*(?:&|)?\s*=\s*2\\varphi\^7\s*=?\s*([\d.]{4,})",
+            r"2\\varphi\^7\s*=\s*([\d.]{4,})",
+        ]),
+        "n_s (=1-phi^-7)": (1 - phi ** -7, [
+            r"1-\\varphi\^\{-7\}\s*(?:&|)\s*=\s*([\d.]{5,})"]),
+        "alpha (=phi^4/3)": (phi ** 4 / 3, [
+            r"\\frac\{\\varphi\^4\}\{3\}\s*(?:&|)\s*=\s*([\d.]{5,})"]),
     }
     _mal_red = []
     for _nom, (_ex, _pats) in _ANCLAS.items():

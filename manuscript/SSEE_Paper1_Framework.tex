@@ -356,8 +356,11 @@ as open theoretical work.
 \paragraph{Auxiliary structural postulates beyond D and S.}
 A careful audit of the derivation chain (this paper plus the companion
 Papers~3--10) reveals that beyond Postulates~D and~S, the framework rests on
-two additional auxiliary postulates that do not follow automatically from
-D+S and are introduced as algebraic-register declarations:
+\emph{one} additional auxiliary postulate that does not follow automatically
+from D+S and is introduced as an algebraic-register declaration. A second one,
+Postulate~M, was carried by earlier versions and is now retired; we keep it
+listed below, marked as such, so that the reduction of the assumption budget
+is auditable rather than silent:
 \begin{itemize}\itemsep1pt
   \item \textbf{Postulate~M (matter factor) --- retired.} Earlier versions
         postulated a factor mapping the dynamical-sector matter density to the
@@ -371,7 +374,7 @@ D+S and are introduced as algebraic-register declarations:
         The CMB matter fraction is then \emph{derived},
         $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ at the global anchor
         $H_0=3(\varphi+\pi)^2\,\kmsu\simeq67.962\,\kmsu$, and the dynamical fraction
-        $\Omega_{m,\rm dyn}=0.160$ (DESI) and $\omega_m$ (CMB) are two
+        $\Omega_{m,\rm dyn}=0.160050$ (DESI) and $\omega_m$ (CMB) are two
         \emph{independent} algebraic predictions rather than a postulated pair.
         This \textbf{closes OP-8}: there is no factor whose dynamical mechanism
         must be derived. The structural quantity
@@ -392,7 +395,9 @@ D+S and are introduced as algebraic-register declarations:
         not the integer~$n$ itself. The value $n=7$ is a corollary, not an
         assumption: among integer exponents, $N_*=2\varphi^n$ falls inside
         the canonical inflation window $[50,60]$ uniquely for $n=7$
-        ($2\varphi^6=35.9$, $2\varphi^7=58.068884$, $2\varphi^8=94.0$).
+        ($2\varphi^6=35.888544$, $2\varphi^7=58.068884$,
+        $2\varphi^8=93.957428$; the first falls below the window, the third
+        above it).
         Equivalently, the exponent is selected by an observational
         constraint external to SSEE (the standard inflation duration),
         not by an internal numerological choice. From these inputs follow
@@ -455,7 +460,7 @@ the dependency chain.
 \label{sec:two_omega_m}
 
 A persistent question — both internal and from referees — is the use of two
-distinct matter density values across the suite: $\Omega_{m,\rm dyn}=0.160$
+distinct matter density values across the suite: $\Omega_{m,\rm dyn}=0.160050$
 and $\Omega_{m,\rm CMB}=0.308881$. These are not free parameters and, since the
 retirement of Postulate~M, they are not even linked by a factor: each is an
 \emph{independent} algebraic prediction. The dynamical value is the background
@@ -472,7 +477,7 @@ pre-registered (Table~\ref{tab:two_omega}).
 \centering
 \caption{The Two-$\Omega_m$ criterion: which matter density enters each
   observable across the suite, and why. The two values
-  ($\Omega_{m,\rm dyn}=0.160$, $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$)
+  ($\Omega_{m,\rm dyn}=0.160050$, $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$)
   are independent algebraic predictions (no matter factor; Postulate~M retired);
   the selection rule is the free-streaming scale $k_{\rm fs}$ derived from
   $m_\phi=40.70$~eV.}
@@ -483,9 +488,9 @@ pre-registered (Table~\ref{tab:two_omega}).
 \textbf{Observable / context}                                       & \textbf{$\Omega_m$} & \textbf{Reason} \\
 \midrule
 \multicolumn{3}{l}{\textit{Paper 2 — late-time geometry, BAO, clusters:}} \\
-DESI DR2 BAO chain, low-$z$ $E(z)$                                  & $0.160$ & local geometry, $k\gg k_{\rm fs}$. \\
-$r_d$ inside the BAO chain                                          & $0.160$ & enters $E(z)$-consistent late-time mapping. \\
-Galaxy-cluster dynamical mass                                       & $0.160$ & non-linear scales, $\phi$-DM unbound. \\
+DESI DR2 BAO chain, low-$z$ $E(z)$                                  & $0.160050$ & local geometry, $k\gg k_{\rm fs}$. \\
+$r_d$ inside the BAO chain                                          & $0.160050$ & enters $E(z)$-consistent late-time mapping. \\
+Galaxy-cluster dynamical mass                                       & $0.160050$ & non-linear scales, $\phi$-DM unbound. \\
 \midrule
 \multicolumn{3}{l}{\textit{Paper 3 — CMB Boltzmann:}} \\
 CMB peak positions $\ell_n$                                         & $0.308881$ & $D_A(z_*)$ integrates $\phi$-DM, non-rel.\ at $z_*$. \\
@@ -493,30 +498,30 @@ $r_d$ from full CAMB Boltzmann                                      & $0.308881$
 \midrule
 \multicolumn{3}{l}{\textit{Paper 4 — algebraic identities:}} \\
 $\Omega_{m,\rm CMB}=\omega_m/h^2$, $\omega_m=\omega_b{+}\omega_c{+}\omega_\nu$ & $0.308881$ & CMB matter density, algebraic (no factor). \\
-$\Omega_{m,\rm dyn}=(\pi-\varphi)/[2(\varphi+\pi)]=1{+}w_0$         & $0.160$ & dyn-sector identity (independent of CMB). \\
+$\Omega_{m,\rm dyn}=(\pi-\varphi)/[2(\varphi+\pi)]=1{+}w_0$         & $0.160050$ & dyn-sector identity (independent of CMB). \\
 Tensor-to-scalar $r=\varphi^{-10}$                                  & --      & primordial, no $\Omega_m$ dependence. \\
 \midrule
 \multicolumn{3}{l}{\textit{Paper 5 — Israel--Stewart growth:}} \\
-SSEE Friedmann background $E(z)$                                    & $0.160$ & dynamical sector, $1+w_0=\Omega_{m,\rm dyn}$. \\
+SSEE Friedmann background $E(z)$                                    & $0.160050$ & dynamical sector, $1+w_0=\Omega_{m,\rm dyn}$. \\
 Poisson source in linear growth ODE                                 & $0.308881$ & full matter on $k<k_{\rm fs}$ scales. \\
-$\Omega_{m,\rm eff}=\Omega_{m,\rm dyn}+\Omega_{\rm DE}r$ (clustering)& $0.160$+ & DE clustering deviation, $r\ll1$. \\
+$\Omega_{m,\rm eff}=\Omega_{m,\rm dyn}+\Omega_{\rm DE}r$ (clustering)& $0.160050$+ & DE clustering deviation, $r\ll1$. \\
 \midrule
 \multicolumn{3}{l}{\textit{Paper 6 — two-sector dark matter:}} \\
-$\Omega_{\rm CDM}$ (always active)                                  & $0.160$ & dynamical CDM, all $k$. \\
+$\Omega_{\rm CDM}$ (always active)                                  & $0.160050$ & dynamical CDM, all $k$. \\
 $\Omega_{\phi\mathrm{DM}}=\Omega_{m,\rm CMB}-\Omega_{m,\rm dyn}$    & $0.149$ & active only $k<k_{\rm fs}$ (difference). \\
 $\Omega_{m,\rm growth}=\Omega_{\rm CDM}+\Omega_{\phi\mathrm{DM}}$    & $0.308881$ & sum on clustering scales $=\Omega_{m,\rm CMB}$. \\
 \midrule
 \multicolumn{3}{l}{\textit{Paper 7 — EFT canonical:}} \\
-EFT slope $\lambda=\sqrt{3\,\Omega_{m,\rm dyn}}\approx 0.693$        & $0.160$ & background scalar dynamics. \\
-$\alpha_K(0)=3\Omega_{\rm DE}(1+w_0)$                                & $0.160$ & $1+w_0=\Omega_{m,\rm dyn}$ identity. \\
+EFT slope $\lambda=\sqrt{3\,\Omega_{m,\rm dyn}}\approx 0.693$        & $0.160050$ & background scalar dynamics. \\
+$\alpha_K(0)=3\Omega_{\rm DE}(1+w_0)$                                & $0.160050$ & $1+w_0=\Omega_{m,\rm dyn}$ identity. \\
 Growth ratio $G_{2s}=D_1^{\rm SSEE}(\Omega_m{=}0.308881)/D_1^{\Lambda\rm CDM}$ & $0.308881$ & two-sector growth comparison. \\
 \midrule
 \multicolumn{3}{l}{\textit{Paper 8 — strong gravity, lensing:}} \\
-Small-scale photon deflection, CDM only                              & $0.160$ & only CDM clusters at $k\gg k_{\rm fs}$. \\
+Small-scale photon deflection, CDM only                              & $0.160050$ & only CDM clusters at $k\gg k_{\rm fs}$. \\
 Cluster/LSS lensing total, $\Omega_{m,\rm eff}=\Omega_{\rm CDM}+\Omega_{\phi\mathrm{DM}}$ & $0.308881$ & both sectors on $k<k_{\rm fs}$. \\
 \midrule
 \multicolumn{3}{l}{\textit{Paper 9 — Hubble tension:}} \\
-Late-time local CPL background $E(z)$                                & $0.160$ & local dynamical sector. \\
+Late-time local CPL background $E(z)$                                & $0.160050$ & local dynamical sector. \\
 AURA cancellation identity $f_{\rm scr}=(\pi-\varphi)/(\varphi+\pi)^2$ & --      & algebraic, no $\Omega_m$ argument. \\
 \midrule
 \multicolumn{3}{l}{\textit{Paper 10 — UV completion:}} \\
@@ -527,7 +532,7 @@ $\alpha_K^{\rm full}/(3\,\mathrm{MIRA})$, $r_V \propto 1/M^2$        & --      &
 
 The criterion is therefore: any observable whose relevant comoving scales lie
 \emph{below} $k_{\rm fs}^{-1}$ (i.e.\ probing $k>k_{\rm fs}$) at low redshift uses
-$\Omega_{m,\rm dyn}=0.160$; any observable that integrates over scales
+$\Omega_{m,\rm dyn}=0.160050$; any observable that integrates over scales
 $k<k_{\rm fs}$ \emph{or} originates in the early universe where $\phi$-DM is
 already non-relativistic and contributes to the matter density uses
 $\Omega_{m,\rm CMB}=0.308881$. The two values are not tied by a factor; each is
@@ -536,7 +541,7 @@ free-streaming scale.
 
 The dual appearance of $r_d$ in the table reflects the consistent application
 of this rule, not a duplication. The BAO chain in Paper~2 tests the late-time
-$E(z)$ geometry with $\Omega_{m,\rm dyn}=0.160$ and uses an $r_d$ value
+$E(z)$ geometry with $\Omega_{m,\rm dyn}=0.160050$ and uses an $r_d$ value
 consistent with that background; the CAMB Boltzmann integration in Paper~3
 computes the sound horizon from the recombination physics where $\phi$-DM is
 already non-relativistic and therefore enters with the full
@@ -840,7 +845,7 @@ applies uniformly to Papers~1--4.
   With the total gravitating matter density in the background geometry the
   Cosmic-Chronometer check gives $\chi^2_r(H(z))=0.482$, comparable to
   $\Lambda$CDM ($0.459$); the earlier $1.861$ was an artefact of the cold sector
-  $0.160$ in $E(z)$ (Paper~2~\S5.3).
+  $0.160050$ in $E(z)$ (Paper~2~\S5.3).
 
   \item[\textbf{Observational sector} (high redshift, CMB).]
   Governed by $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$, where
@@ -921,7 +926,7 @@ Planck PR4 diagonal & 5914 & $\omega_m$-direct & 2 & 6 & $-35.0$ &
 With the total gravitating matter density in the background geometry, the DESI
 DR2 comparison gives a single figure, $\Delta\mathrm{BIC}=-6.43$ favouring SSEE
 (the earlier ``$+206$'' penalty was an artefact of using the cold sector
-$1+w_0=0.160$ as the background density).
+$1+w_0=0.160050$ as the background density).
 The canonical CMB result is the full \texttt{plik} MCMC row, $\Delta\mathrm{BIC}=-32.9$
 ($k=2$ vs $k=6$, $N=2354$, off-diagonal TTTEEE\,$+$\,lowl\,$+$\,lensing), with a
 best-fit $\chi^2$ statistically indistinguishable from $\Lambda$CDM
@@ -970,22 +975,22 @@ all four papers and cannot be re-interpreted post-hoc.
 \textbf{Dynamic sector} is falsified if:
 \begin{itemize}[nosep,leftmargin=*]
   \item DESI~DR5+ posterior excludes $(-0.840,-0.670)$ at $>3\sigma$; or
-  \item $\chi^2_r(H(z)) > 2.5$ with full systematic covariance and $\Omega_{m,\rm dyn}=0.160$.
+  \item $\chi^2_r(H(z)) > 2.5$ with full systematic covariance and $\Omega_{m,\rm dyn}=0.160050$.
 \end{itemize}
 \textbf{Observational sector} is falsified if:
 \begin{itemize}[nosep,leftmargin=*]
   \item Euclid/KiDS/DES require $\Omega_m < 0.25$ at $z < 1$
-        (excludes the dynamical-sector value $\Omega_{m,\rm dyn}=0.160$); or
+        (excludes the dynamical-sector value $\Omega_{m,\rm dyn}=0.160050$); or
   \item the free-streaming scale $k_{\rm fs}$ predicted from $m_\phi=40.70$~eV
         (Paper~6) is excluded by DESI~Y3/Euclid $P(k)$ at $>3\sigma$, removing
         the two-sector structure that separates
-        $\Omega_{m,\rm dyn}=0.160$ from $\Omega_{m,\rm CMB}=0.308881$.
+        $\Omega_{m,\rm dyn}=0.160050$ from $\Omega_{m,\rm CMB}=0.308881$.
 \end{itemize}
 \textbf{What is NOT a falsification:}
 \begin{itemize}[nosep,leftmargin=*]
   \item A $\chi^2_r > 1$ under a non-equivalent cosmological background
         (i.e.\ evaluating SSEE with $\Lambda$CDM-calibrated priors it does not assume).
-  \item The $\Omega_m$ difference between sectors: $\Omega_{m,\rm dyn}=0.160$ and
+  \item The $\Omega_m$ difference between sectors: $\Omega_{m,\rm dyn}=0.160050$ and
         $\Omega_{m,\rm CMB}=0.308881$ are two \emph{independent} algebraic predictions
         separated by the free-streaming scale $k_{\rm fs}$ (no matter factor;
         OP-8 closed, Table~\ref{tab:derivation_chain}).

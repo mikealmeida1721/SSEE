@@ -1061,6 +1061,117 @@ try:
 except Exception as e:
     check("R41 capa operable", False, str(e))
 
+# ── FRONTERA DE LECTURA ──────────────────────────────────────────────────────
+# Las reglas nacidas de la lectura página-por-página (R42, R43, R44) se exigen
+# sobre los documentos YA LEÍDOS, y sobre el resto se CUENTAN como deuda. No es
+# «una excepción para un archivo» —eso el guardián no lo admite— sino el hecho de
+# que la suite se está leyendo en orden y una regla nueva no puede exigir hoy lo
+# que aún no se ha revisado. Dos condiciones para que esto sea honesto:
+#   1. la deuda se imprime siempre, con su recuento;
+#   2. el recuento sólo puede BAJAR — si sube, algo se escribió mal después.
+# Al cerrar un documento se añade aquí y su deuda debe ser cero.
+_LEIDOS = ("SSEE_Paper1_",)
+_DEUDA_MAX = {"R42": 49, "R43": 24, "R44": 100}   # medida 2026-07-28
+
+
+def _particiona(hallazgos):
+    """(los de documentos leídos, cuántos quedan en el resto)."""
+    _leidos = [h for h in hallazgos if h.startswith(_LEIDOS)]
+    return _leidos, len(hallazgos) - len(_leidos)
+
+
+# R44 — Ω_m,dyn con «=» va a 6 decimales, como toda constante SSEE (2026-07-28).
+# Caía en el hueco EXACTO entre dos reglas: R37 no lo miraba porque su lista de
+# constantes no lo incluía, y R41 lo saltaba porque sólo cubre cantidades CON
+# unidades. Resultado: el Paper 1 escribía «Ω_m,dyn = 0.160» (3 decimales) en la
+# misma frase que «Ω_m,CMB = 0.308881» (6), nueve veces, sin que nada sonara.
+print("\nCapa R44 — Ω_m,dyn con «=» a 6 decimales (hueco entre R37 y R41)")
+try:
+    _V44 = (pi - phi) / (2 * (phi + pi))
+
+    def _r44(tx: str):
+        _h = []
+        # Desde 2 decimales: a UNO, 0.160050 redondea a «0.2» y eso empareja
+        # cualquier «= 0.2» del texto. Probado, no supuesto — ver auto-test.
+        for _d in range(2, 6):
+            for _m in _re.finditer(r"=\s*" + _re.escape(f"{_V44:.{_d}f}") + r"(?![0-9])", tx):
+                _h.append(f"«{_m.group(0).strip()}» → {_V44:.6f}")
+        return _h
+
+    _t44 = [(r"$\Omega_{m,\rm dyn}=0.160$ (DESI)", True),
+            (r"$\Omega_{m,\rm dyn}=0.160050$ (DESI)", False),
+            # falso positivo REAL de la primera versión (rango desde 1 decimal)
+            (r"a fractional shift $\Delta=0.2$ in the amplitude", False)]
+    _f44 = [c for c, esp in _t44 if bool(_r44(c)) != esp]
+    check("R44 el detector distingue 3 decimales de 6", not _f44,
+          "; ".join(_f44) if _f44
+          else "caso real del Paper 1, su forma corregida y un «=0.2» ajeno")
+
+    _todos44 = []
+    for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
+                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+        _todos44 += [f"{_tx.name}: {x}" for x in _r44(_tx.read_text(errors="ignore"))]
+    _l44, _deuda44 = _particiona(_todos44)
+    check("R44 documentos leídos — Ω_m,dyn siempre a 6 decimales",
+          not _l44, "; ".join(_l44[:5]) if _l44
+          else f"leídos limpios; {_deuda44} sitios de deuda en el resto")
+    check("R44 la deuda no crece", _deuda44 <= _DEUDA_MAX["R44"],
+          f"{_deuda44} sitios (tope {_DEUDA_MAX['R44']})")
+except Exception as e:
+    check("R44 capa operable", False, str(e))
+
+# R43 — potencias de φ escritas con «=» y un decimal que no es su valor (2026-07-28).
+#
+# POR QUÉ EXISTE, y por qué NO se resolvió ampliando R37. El Paper 1 justificaba
+# n=7 con «(2φ⁶ = 35.9, 2φ⁷ = 58.068884, 2φ⁸ = 94.0)»: tres precisiones en un
+# renglón (1, 6, 1 decimales) y dos igualdades FALSAS — 2φ⁶ = 35.888544 y
+# 2φ⁸ = 93.957428. R37 no podía verlo: sólo mira las constantes de su lista, y
+# 2φ⁶/2φ⁸ no son constantes del diccionario sino los términos de comparación del
+# argumento de unicidad. Ampliar R37 a un decimal se probó y es INSERVIBLE: empareja
+# números sueltos, y a 1 decimal «= 12.0», «= 2.3», «= 1.0», «= 6.4» cazan χ², z_S y
+# tolerancias — 7 falsos positivos, 0 verdaderos. La regla correcta se ancla en la
+# EXPRESIÓN algebraica que precede al «=», no en el número.
+print("\nCapa R43 — potencias de φ: el decimal tras «=» es el valor")
+try:
+    def _r43(tx: str):
+        _h = []
+        for _m in _re.finditer(
+                r"(?P<coef>[0-9]*)\s*\\(?:varphi|phiG)\s*\^\s*\{?\s*(?P<exp>-?[0-9]+)\s*\}?"
+                r"\s*(?P<rel>=|\\simeq|\\approx)\s*(?P<val>[0-9]+\.[0-9]+)", tx):
+            _c = int(_m.group("coef")) if _m.group("coef") else 1
+            _ex = _c * phi ** int(_m.group("exp"))
+            _mo = _m.group("val")
+            _d = len(_mo.split(".")[1])
+            if f"{_ex:.{_d}f}" != _mo:            # ni siquiera es el redondeo correcto
+                _h.append(("valor incorrecto", f"{_m.group(0)} → {_ex:.6f}"))
+            elif _m.group("rel") == "=" and _d < 6:   # «=» exige 6 decimales (R37)
+                _h.append((f"«=» con {_d} dec", f"{_m.group(0)} → {_ex:.6f}"))
+        return _h
+
+    _t43 = [(r"($2\varphi^6=35.9$, $2\varphi^7=58.068884$, $2\varphi^8=94.0$)", True),
+            (r"($2\varphi^6=35.888544$, $2\varphi^7=58.068884$, $2\varphi^8=93.957428$)", False),
+            (r"$\varphi^{-10}=0.008131$", False),
+            (r"$\varphi^{-10}\simeq0.0081$", False),
+            (r"$\varphi^{-10}=0.00814$", True)]
+    _f43 = [c for c, esp in _t43 if bool(_r43(c)) != esp]
+    check("R43 el detector ancla en la expresión, no en el número",
+          not _f43, "; ".join(_f43) if _f43
+          else "5 casos: la línea real de n=7, su forma corregida y tres controles")
+
+    _mal43 = []
+    for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
+                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+        for _por, _frag in _r43(_tx.read_text(errors="ignore")):
+            _mal43.append(f"{_tx.name}: {_por} — «{_frag}»")
+    _l43, _deuda43 = _particiona(_mal43)
+    check("R43 documentos leídos — toda potencia de φ con «=» lleva su valor",
+          not _l43, "; ".join(_l43[:5]) if _l43
+          else f"leídos limpios; {_deuda43} sitios de deuda en el resto")
+    check("R43 la deuda no crece", _deuda43 <= _DEUDA_MAX["R43"],
+          f"{_deuda43} sitios (tope {_DEUDA_MAX['R43']})")
+except Exception as e:
+    check("R43 capa operable", False, str(e))
+
 # R42 — TIPO DIMENSIONAL: un número puro nunca IGUALA una cantidad física (2026-07-28).
 #
 #     H_0 = 3(φ+π)²            ✗  una tasa en km/s/Mpc igualada a un irracional puro
@@ -1125,11 +1236,12 @@ try:
                       + list((_REPO / "submission_PRD").glob("*.tex"))):
         for _por, _frag in _r42(_tx.read_text(errors="ignore")):
             _mal42.append(f"{_tx.name}: {_por} — «{_frag}»")
-    # Sólo Paper 1 está leído; el resto queda anotado en FP-6 y se cierra al llegar.
-    _mal42_p1 = [m for m in _mal42 if m.startswith("SSEE_Paper1_")]
-    check("R42 Paper 1 — ninguna igualdad entre número puro y cantidad física",
-          not _mal42_p1, "; ".join(_mal42_p1[:5]) if _mal42_p1
-          else f"Paper 1 limpio ({len(_mal42)} sitios pendientes en el resto, FP-6)")
+    _l42, _deuda42 = _particiona(_mal42)
+    check("R42 documentos leídos — ninguna igualdad número puro = cantidad física",
+          not _l42, "; ".join(_l42[:5]) if _l42
+          else f"leídos limpios; {_deuda42} sitios de deuda en el resto (FP-6)")
+    check("R42 la deuda no crece", _deuda42 <= _DEUDA_MAX["R42"],
+          f"{_deuda42} sitios (tope {_DEUDA_MAX['R42']})")
 except Exception as e:
     check("R42 capa operable", False, str(e))
 

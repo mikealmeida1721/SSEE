@@ -574,3 +574,53 @@ adimensional por H₀ físico. **No** cubre todo colapso dimensional posible
 —forward limpio, inverso inflado a «cuatro decimales»—, el `0.00σ` pelado de la
 tabla L411 de Paper 10 y el residuo `4×10⁻⁶` no reproducible. **41 sitios** de
 `=` sin unidad siguen abiertos en el resto de la suite.
+
+---
+
+## Segunda pasada — Paper 1, página 7 (Postulados auxiliares M e I) · CERRADA
+
+Cuatro hallazgos, en cuatro dimensiones distintas. Ninguno lo vio el guardián.
+
+**1 · Coherencia — el párrafo anuncia dos postulados y concluye uno.** El
+encabezado decía «the framework rests on **two** additional auxiliary postulates»
+y el cierre, catorce líneas después, «two foundational (D, S) plus **one**
+auxiliary (I) — three total». Residuo de haber retirado el Postulado M sin
+actualizar el encabezado. Reescrito a «*one* additional auxiliary postulate», con
+M conservado en la lista y marcado como retirado — para que la **reducción** del
+presupuesto de supuestos sea auditable en vez de silenciosa. *(Es el mismo defecto
+que Mike ya había cazado en la pág. 4/5: anunciar un número y listar otro.)*
+
+**2 · Relaciones y valores — dos igualdades falsas en el argumento de n=7.**
+Se escribía `(2φ⁶ = 35.9, 2φ⁷ = 58.068884, 2φ⁸ = 94.0)`: tres precisiones en un
+renglón (1, 6, 1 decimales) y dos afirmaciones falsas bajo `=` —
+`2φ⁶ = 35.888544` y `2φ⁸ = 93.957428`. Corregidas a 6 decimales, y añadido qué
+hace cada una («the first falls below the window, the third above it»), que era
+el contenido del paréntesis y no se decía.
+
+**3 · Precisión — `Ω_m,dyn = 0.160` junto a `Ω_m,CMB = 0.308881`.** Tres decimales
+contra seis, en la misma frase, **nueve veces** en el documento, con el apéndice
+dando `0.160050`. Las **22** apariciones pasan a `0.160050`.
+
+**4 · Mi propio texto** — escribí «we list it here, *struck*» y no está tachada.
+Corregido a «marked as such».
+
+### Por qué el guardián no vio nada, y qué se instaló
+
+`Ω_m,dyn` caía en el **hueco exacto entre dos reglas**: R37 no lo miraba (no estaba
+en su lista de constantes) y R41 lo saltaba (sólo cubre cantidades *con unidades*).
+Y las potencias de φ no las cubría nadie.
+
+- **R43** — potencias de φ con `=`: el decimal debe ser el valor a 6 decimales.
+  Anclada en la **expresión**, no en el número. *Se intentó primero ampliar R37 a
+  un decimal: **inservible** — «= 12.0», «= 2.3», «= 1.0», «= 6.4» cazan χ², z_S y
+  tolerancias; 7 falsos positivos y 0 verdaderos.*
+- **R44** — `Ω_m,dyn` con `=` a 6 decimales. Su primera versión también arrancaba
+  en un decimal y disparó al instante con «= 0.2» (a un decimal, 0.160050 redondea
+  a 0.2). Corregida y convertida en caso de prueba.
+- **Frontera de lectura** (`_LEIDOS`) — las reglas nacidas de la lectura se
+  **exigen** en los documentos ya leídos y se **cuentan como deuda** en el resto,
+  con dos condiciones: la deuda se imprime siempre y **sólo puede bajar**. Deuda
+  hoy: R42 49 · R43 24 · R44 100.
+
+Prueba hacia atrás (contra el commit anterior, no contra el corregido):
+R43 **2 → 0**, R44 **10 → 0**. Guardián **VERDE 188**. Paper 1: 34 pp, 0 errores.

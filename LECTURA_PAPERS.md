@@ -74,6 +74,28 @@ Corregidas en **14 sitios de 5 documentos** (P1, P4, P6, P9, Unified) — regar 
    explícita de por qué el orden importa.
 → **CERRADA**
 
+### Afirmación 3 · §1.1 — Predictive Register y el look-elsewhere
+**Dice:** el diccionario cerrado da 490 razones en (0,5]; cada valor de la
+ecuación de estado lo acierta UNA sola, a ±0.0005 — especificidad 1-en-490.
+**Verificado** corriendo `look_elsewhere_full.py`: 490 razones, **1 acierto**
+para w₀ y 1 para wₐ. Y la robustez: extendiendo el diccionario a 664 razones
+(QUINTAL…DECAL) los aciertos NO aumentan. La afirmación central se sostiene.
+→ **CERRADA**
+
+**Pero dos cifras acompañantes NO tenían respaldo:**
+
+1. **«DR1→DR2 shrank the uncertainties by ~40%»** — sin fuente localizable: no
+   está en logs, ni en CANONICAL_VALUES, ni hay datos DR1 en el repo, y la
+   búsqueda en la literatura no devolvió los valores con la precisión necesaria.
+   **RETIRADA.** El texto ahora afirma sólo lo respaldado: el punto es inmóvil y
+   el dato pasó dos veces sin excluirlo (0.05σ de DR1, 0.24σ de DR2), dentro del
+   68% en ambos.
+
+2. **«DR3 ~1.5× más preciso → ~0.5σ»** — no se deduce de su propia premisa. Con
+   el punto fijo la tensión escala con el inverso del error: 1.5 × 0.24 = **0.36σ**.
+   Para 0.5σ haría falta 2.1×. **CORREGIDA a 0.36σ**, y reescrita para mostrar la
+   aritmética (1.5× → 0.36σ, 3× → 0.7σ) en vez de una cifra suelta.
+
 ## Anotado al pasar (NO perseguir hasta cerrar la pregunta en curso)
 
 - Propagar a Paper 3 los ΔBIC verificados hoy: plik_lite −24.02 y plik full

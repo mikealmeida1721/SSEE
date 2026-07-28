@@ -58,9 +58,41 @@ no es «el número es correcto» sino **«se comprueba de un vistazo»**.
 | pág | contenido | 1ª pasada | 2ª pasada |
 |---|---|---|---|
 | 1 | portada + **abstract** | ✅ | ✅ **3 huecos hallados** |
-| 2 | índice | ✅ | ⬜ |
+| 2 | índice | ✅ «sin contenido verificable» | ✅ **defecto de estructura** |
 | 3 | §1 las 7 constantes + §1.1 | ✅ | ⬜ |
 | 4 | **Tabla 1** — Predictive Register | ✅→reabierta | ⬜ |
+
+### 🔁 Página 2 (2ª pasada) · índice
+La primera pasada lo despachó como **«sin contenido verificable»**. Un índice
+afirma la estructura del documento, y la estructura estaba mal.
+
+**Los agradecimientos estaban en medio del paper.** El orden real era:
+
+```
+§4 Galaxy Cluster Dynamics
+Data Availability          ← pág 22
+Acknowledgements           ← pág 22
+§5 Domain of Validity          (5.1 Model-Comparison Table, 5.2 Falsification Manifesto)
+Apéndices A–E                  (25–33)
+```
+
+Quien llega a «Acknowledgements» en la página 22 **asume que el paper terminó** —
+y lo que sigue es lo que un referee más busca: la tabla unificada de comparación
+de modelos y el **Manifiesto de Falsación**. El material más falsable del paper
+estaba enterrado detrás de lo que parecía el final.
+
+Reubicados al cierre y en el orden convencional (Acknowledgements → Data
+Availability), justo antes de `\appendix`. Ahora §5 va en la 22, el Manifiesto
+en la 23, y los cierres en la 25. 33 pp., exit=0, docs/ sincronizado.
+
+**Verificado además:** el índice lista todas las secciones del fuente; §2
+(EFT Embedding, 8 subsecciones, pp. 10–17) vive en `\input{SSEE_EFT_section}` —
+archivo aparte, a leer al llegar a esas páginas.
+
+**Anotado al pasar (no perseguir):** el título promete «*and* Galaxy Cluster Mass
+Discrepancies» y §4 ocupa ~2 páginas de 33, con 4.1/4.2/4.3 enteras en una sola
+página. Desbalance título↔contenido a evaluar al llegar a la pág. 20.
+→ **CERRADA**
 
 ### 🔁 Página 1 (2ª pasada) · portada + abstract
 Números todos correctos: `w₀ ≈ −0.840` (−0.839950), `wₐ ≈ −0.670` (−0.669975),

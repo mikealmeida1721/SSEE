@@ -63,6 +63,29 @@ no es «el número es correcto» sino **«se comprueba de un vistazo»**.
 | 4 | **Tabla 1** — Predictive Register | ✅→reabierta | ✅ **5 defectos + contradicción** |
 | 5 | §1.2 Principios axiomáticos | ✅ | 🔵 SIGUIENTE |
 
+### 🔁 Página 3 · addendum — `=` vs `≈` (pregunta de Mike)
+Mike preguntó por qué las siete constantes llevan «casi igual» si él las lee como
+igualdad: *«para mí φ+π = Ω = 4.7596…»*. Tenía razón, y el paper lo decía mal.
+
+Son **dos relaciones distintas** metidas bajo un solo signo:
+
+```
+Ω   =  π + φ      ← IGUALDAD EXACTA — es la definición, cero aproximación
+π+φ ≈  4.7596     ← APROXIMACIÓN, y sólo porque el decimal está CORTADO
+```
+
+El `≈` no señala una discrepancia oculta: señala que se muestran menos dígitos de
+los que hay. `4.7596…` con puntos suspensivos volvería a ser igualdad.
+
+La lista escribía `Ω (π+φ ≈ 4.7596)` — fórmula y decimal bajo un **único** `≈`,
+con lo que la definición exacta desaparecía de la vista. Reescritas las siete
+(y la nota de `I_g`) como `Ω = π+φ ≈ 4.7596`, más una frase que fija la convención.
+Verificado que el patrón ambiguo **no** está en los otros papers: el Unified ya usa
+`= … ≃ …` y P3/P4/P7 usan tablas con `\ldots`, que también dice la verdad.
+
+Encaja con la política: tras `=` va lo exacto a 6 decimales; tras `≈` puede ir
+corto porque el signo ya avisa. Registrado en [[project_rounding_policy]].
+
 ### 🔁 Página 4 (2ª pasada) · Tabla 1 — Predictive Register
 **Primero, un defecto que introduje yo en la 1ª pasada:** al añadir el criterio de
 Euclid a la fila de α_K la celda quedó larguísima. Acortada a «Euclid weak lensing

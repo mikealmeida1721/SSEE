@@ -71,7 +71,7 @@ construct the Bellini-Sawicki classification
 ($\alpha_T = \alpha_B = \alpha_M = 0$, $c_s^2\neq 1$, $\alpha_K \neq 0$),
 and provide all inputs required for numerical implementation in
 \textsc{hi\_class}/\textsc{eftcamb}.
-The numerical implementation reproduces $\Omega_\phi(a{=}1) = 0.840$ to
+The numerical implementation reproduces $\Omega_\phi(a{=}1) = 0.839950$ to
 $10^{-12}$ under the adopted initial conditions and yields $c_s^2 \in [0.60,\,0.95]$ over $a \in [0.1,\,1]$.
 \end{abstract}
 
@@ -325,7 +325,7 @@ The observed equation of state is:
 %
 where $\wphi = p_\phi/\rho_\phi$.  For a thawing scalar field near
 $\wphi \approx -1$ (early times), the coupling term $Q/(3H\rho_\phi)$
-shifts $\weff$ to the algebraically required value $w_0 = -0.840$,
+shifts $\weff$ to the algebraically required value $w_0 = -0.839950$,
 and can produce $\weff < -1$ without violating the NEC in the
 fundamental sector.
 
@@ -506,7 +506,7 @@ $\alpha_K$ (kineticity, bare-field) & $3\Omde(1+w_\phi)$     & $0.073^{a}$  & al
 \end{tabular}
 \footnotesize{$^{a}$ Bare-field value using $w_\phi=-0.971$ from background integration.
 The observationally relevant effective value is $\alpha_K^{\rm eff}=0.4033$
-(using $w_0=-0.840$; confirmed by EFTCAMB). See §\ref{sec:alphak}.}
+(using $w_0=-0.839950$; confirmed by EFTCAMB). See §\ref{sec:alphak}.}
 \end{center}
 
 The vanishing of $\alpha_T$ is consistent with the constraint from
@@ -550,7 +550,7 @@ self-consistent within their respective computational frames:
     kinetic energy.
   \item $\alpha_K^{\rm eff} \approx 0.4033$: the \emph{effective background}
     value $3\Omde(1+w_0) = 3\times0.840\times0.160$, using the \emph{observed}
-    CPL parameter $w_0=-0.840$.  This value is confirmed to $0.005\%$ by the
+    CPL parameter $w_0=-0.839950$.  This value is confirmed to $0.005\%$ by the
     independent \textsc{hi\_class} cross-check (Paper~3,
     \texttt{src/p03\_cmb/ssee\_paper3\_hiclass\_check.py}) and is reproduced with
     ghost-free, gradient-stable evolution by the EFTCAMB validation
@@ -603,7 +603,7 @@ $\alpha_K(z{=}0)$, effective  & $0.4033^{b}$ & $3\Omde(1+w_0)$  & — (hi\_class
 \end{tabular}%
 }
 \footnotesize{$^{a}$ Bare-field value, $w_\phi=-0.971$ from this paper's numerics.
-$^{b}$ Effective value $w_0=-0.840$; confirmed to $0.005\%$ by the
+$^{b}$ Effective value $w_0=-0.839950$; confirmed to $0.005\%$ by the
 \textsc{hi\_class} cross-check (Paper~3) and shown ghost-free/gradient-stable
 in EFTCAMB (\texttt{src/p07\_eft/ssee\_eftcamb\_validation.py});
 this is the observable cited in Papers~8--10.
@@ -694,7 +694,7 @@ $c_{s,\min}^2$ & $0.602$ & $> 0$ \checkmark \\
 $c_{s,\max}^2$ & $0.951$ & $< 1$ \checkmark \\
 $w_\phi(a{=}1)$ [bare field] & $-0.971$ & thawing regime \\
 $\Delta w = w_0 - w_\phi(a=1)$ & $+0.131$ & closed by $\bc$ \\
-$\bc$ [numerical] & $-3.990$ & $\approx -\AURA = -3.998$ \checkmark \\
+$\bc$ [numerical] & $-3.990$ & $\approx -\AURA = -3.997847$ \checkmark \\
 Discrepancy $|\bc^{\rm num}/\AURA - 1|$ & $0.199\%$ & systematic (see \S\ref{sec:betac_id}) \\
 \bottomrule
 \end{tabular}
@@ -706,7 +706,7 @@ The bare field equation of state $w_\phi(a{=}1) \approx -0.971$ reflects
 the \emph{thawing quintessence} regime: the field is released from near
 $w = -1$ and has not yet reached its tracker by $a = 1$.
 The coupling term $Q/(3H\rho_\phi)$ provides the energy flux required to
-shift $\weff$ from $-0.971$ to the algebraically required $w_0 = -0.840$.
+shift $\weff$ from $-0.971$ to the algebraically required $w_0 = -0.839950$.
 This is not a tuning: the entire shift $\Delta w = 0.131$ is determined by
 $\bc = -\AURA$, with no adjustable parameters.
 
@@ -779,7 +779,7 @@ quantified systematic of the simplified background.
     \textbf{Algebraic identification $\bc = -\AURA$: numerical evidence.}
     \textit{Left:} Extracted coupling $\bc(a_i)$ for eight values of the
     initial scale factor spanning $z_i = 9$--$199$ (shooting with
-    $\Omega_\phi(a{=}1) = 0.840$).  The result is flat to $<10^{-5}$,
+    $\Omega_\phi(a{=}1) = 0.839950$).  The result is flat to $<10^{-5}$,
     ruling out any initial-condition artifact.
     The $0.199\%$ gap to $-\AURA$ (dashed red) is a systematic of the
     simplified background (see error budget, right panel).
@@ -821,7 +821,7 @@ The following components of the EFT are algebraically and numerically closed:
   \item \textbf{Dark-sector coupling:} covariant $Q^\nu$ with
     $\bc = -\AURA = -(3\phiG+\pi)/2$; zero free parameters.
   \item \textbf{Background equations:} complete coupled system in $N = \ln a$,
-    numerically verified with $\Omega_\phi(a{=}1) = 0.840$ at $10^{-12}$.
+    numerically verified with $\Omega_\phi(a{=}1) = 0.839950$ at $10^{-12}$.
   \item \textbf{Perturbation equations:} $(\delta\phi, \delta_{\rm DM})$
     system with $\Lambda$CDM-consistent linear growth $G_{2s} = D_1^{\rm SSEE}/D_1^{\Lambda\rm CDM} = 1.003$
     (Paper~6, two-sector background); the distinctive signature is the
@@ -872,7 +872,7 @@ The EFT makes three direct falsifiable predictions:
     testable with future space-based GW detectors.
   \item \textbf{Scalar sound speed:} $c_s^2(a) \in [0.60,\,0.95]$ — accessible
     via ISW-lensing cross-correlation and future 21~cm surveys.
-  \item \textbf{Dark coupling:} $\bc = -3.998$ (fixed) yields a two-sector dark
+  \item \textbf{Dark coupling:} $\bc = -3.997847$ (fixed) yields a two-sector dark
     sector whose linear growth is $\Lambda$CDM-consistent ($G_{2s} = 1.003$ at
     $\Omega_m = 0.308881$, Paper~6); its distinctive falsifiable signature is the
     scale-dependent $\phi$-DM free-streaming feature at

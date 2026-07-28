@@ -791,6 +791,39 @@ except Exception as e:
 # nada: habría vuelto a salir rancio. Regla: una constante se lee del núcleo,
 # no se re-teclea. Exclusiones = los sitios que NOMBRAN el valor retirado a
 # propósito (mutaciones del test, la derivación que compara 94.07 vs 93.14).
+# ─────────────────────────────────────────────────────────────────────
+# R37 — toda IGUALDAD con una constante SSEE va a 6 decimales (2026-07-27).
+# La política de redondeo NO es de un documento: no existe ninguna regla en
+# este guardián dirigida a un archivo concreto, porque no hay excepciones. Se
+# había aplicado sólo a los consolidados, dejando conviviendo «9.5193» y
+# «9.519253» dentro de la misma suite — que es exactamente la ambigüedad que
+# la política existe para eliminar.
+# Criterio: el SIGNO dice qué lee el lector.
+#   «=»  es EL valor        → 6 decimales, sin excepción
+#   «≈»  es una lectura rápida → puede ir corto, pero NUNCA truncado (eso lo
+#        cubre R30, que exige redondeo correcto a cualquier precisión)
+print("\nCapa R37 — igualdades de constantes SSEE a 6 decimales")
+try:
+    _C37 = {"Omega": pi + phi, "beta": (pi + phi) / 2, "KAL0": (pi + phi) / 2 + pi,
+            "P_sc": pi + 2 * phi, "K_v": 2 * (phi + pi), "T_r": 3 * (phi + (pi + phi) / 2),
+            "M_v": 3 * (phi + pi), "w0": abs(_core.W0), "wa": abs(_core.WA),
+            "AURA": _core.AURA}
+    _mal37 = []
+    for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
+                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+        _cont = _tx.read_text(errors="ignore")
+        for _k37, _v37 in _C37.items():
+            for _d37 in range(2, 6):
+                _corto = f"{_v37:.{_d37}f}"
+                if _re.search(r"=\s*(?:-|\\!-)?\s*" + _re.escape(_corto) + r"(?![0-9])", _cont):
+                    _mal37.append(f"{_tx.name}: {_k37}={_corto} (debe ser {_v37:.6f})")
+    check("R37 ninguna igualdad de constante SSEE con menos de 6 decimales",
+          not _mal37,
+          "; ".join(_mal37[:6]) if _mal37
+          else f"{len(_C37)} constantes verificadas en los .tex de la suite")
+except Exception as e:
+    check("R37 capa operable", False, str(e))
+
 print("\nCapa R34 — fuentes vs núcleo: ningún .py hardcodea constante retirada")
 try:
     _EXCL = {"test_guardian.py", "derive_nu_closure.py", "ssee_verify.py",

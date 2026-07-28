@@ -125,7 +125,7 @@ baseline to $0.93\sigma$ (still $<1\sigma$, close to $\Lambda$CDM $0.73\sigma$) 
 the deliberate cost of lowering $\sigma_8$ to resolve the lensing amplitude.
 
 An EFTCAMB validation at the Bellini-Sawicki level uses the fluid-approximation
-input $\alphaK^{\rm fluid} = 0.4033$ ($\Delta = 0.005\%$), while the theoretical
+input $\alphaK^{\rm fluid} = 0.403302$ ($\Delta = 0.005\%$), while the theoretical
 bare-field value is $\alphaK = 0.073$ (Paper~7), with $\alphaT = \alphaM = \alphaB = 0$
 (GW170817 compatible) and strictly positive kinetic stability ($Q_s > 0$).
 
@@ -472,7 +472,7 @@ configurations to isolate the effect of the full CMB matter density.
   \item[SSEE full-$\Omega_m$ ($\omega_m$-direct canonical):] $\Omega_b = 0.04854$
     ($=\omega_b/h^2$), $\Omega_{\rm cdm} = 0.26035$
     (total $\OmmCMB = 0.308881$; OP-8 dissolved, no matter factor), $w_0 = -0.839950$,
-    $w_a = -0.669975$, $n_s = 0.96556$, $h = 0.67962$. The full matter density is
+    $w_a = -0.669975$, $n_s = 0.965558$, $h = 0.67962$. The full matter density is
     set directly as a CLASS background input.
   \item[SSEE dynamical-only:] same EoS and $h$, but $\Omega_b = 0.048432$,
     $\Omega_{\rm cdm} = 0.111568$ (total $\Ommdyn = 0.160$), using only the
@@ -751,7 +751,7 @@ EoS $w_0 = -0.839950$ because the conformal coupling transfers part of the kinet
 energy to dark matter.
 Using $w_0$ in place of $w_{\varphi,\rm bare}$ overestimates $\alphaK$ by a
 factor $\approx 5.5$ (see Paper~7); the EFTCAMB runs below use the fluid
-approximation $\alphaK^{\rm fluid} = 3\Omde(1+w_0) = 0.4033$ as a conservative
+approximation $\alphaK^{\rm fluid} = 3\Omde(1+w_0) = 0.403302$ as a conservative
 numerical input, while the theoretical SSEE prediction is $\alphaK = 0.073$.
 The vanishing of $\alphaT$ (tensor speed excess), $\alphaM$ (Planck mass run rate),
 and $\alphaB$ (kinetic braiding) implies: (i) gravitational waves propagate at $c$
@@ -768,7 +768,7 @@ We validate \SSEE\ at the linear perturbation level using H-EFTCAMB~v1.6.5
 The ghost-free stability condition requires $Q_s > 0$:
 \begin{equation}
   Q_s = \frac{\alphaK + \frac{3}{2}\alphaB^2}{2} = \frac{\alphaK}{2}
-  = \begin{cases} 0.037 & (\alphaK = 0.073,\ \text{bare-field}) \\ 0.2016 & (\alphaK = 0.4033,\ \text{fluid approx.}) \end{cases} > 0.
+  = \begin{cases} 0.037 & (\alphaK = 0.073,\ \text{bare-field}) \\ 0.2016 & (\alphaK = 0.403302,\ \text{fluid approx.}) \end{cases} > 0.
   \label{eq:Qs}
 \end{equation}
 With $\alphaB = 0$, the gradient stability condition reduces to $c_s^2 = 1$ in the
@@ -795,7 +795,7 @@ Gradient-stable ($\alphaB = 0 \Rightarrow c_s^2 = 1$ IR; $[0.60,0.95]$ full) & $
 $\alphaT = \alphaM = \alphaB$ & $0$ (exact) & \checkmark\ GW170817 compatible \\
 \midrule
 $\sigma_8$ GR ($\OmmCMB = 0.308881$) & $0.814$ & \\
-$\sigma_8$ SSEE RPH ($\alphaK = 0.4033$) & $1.026$ & ratio $= 1.26$ \\
+$\sigma_8$ SSEE RPH ($\alphaK = 0.403302$) & $1.026$ & ratio $= 1.26$ \\
 RMS $C_\ell$ SSEE/GR & $40.9\%$ & \\
 CMB peaks GR & $\ell = 220, 535, 811$ & correct ($\omega_m$-direct bg) \\
 CMB peaks SSEE RPH & $\ell = 242, 590, 893$ & $\sim 10\%$ shift from $\alphaK$ \\
@@ -810,7 +810,7 @@ CMB peaks SSEE RPH & $\ell = 242, 590, 893$ & $\sim 10\%$ shift from $\alphaK$ \
 \caption{CMB TT power spectrum from EFTCAMB\@. \textit{Black}: GR run with the
          full $\omega_m$-direct canonical matter density $\OmmCMB = 0.308881$;
          peaks at $\ell = 220, 535, 811$.
-         \textit{Red}: \SSEE\ RPH with $\alphaK = 0.4033$ (constant $w = w_0$);
+         \textit{Red}: \SSEE\ RPH with $\alphaK = 0.403302$ (constant $w = w_0$);
          peaks shift to $\ell = 242, 590, 893$, a $\sim 10\%$ imprint of the
          kinetic EFT sector.
          \textit{Lower panel}: ratio $D_\ell^{\rm SSEE}/D_\ell^{\rm GR}$;
@@ -822,7 +822,7 @@ CMB peaks SSEE RPH & $\ell = 242, 590, 893$ & $\sim 10\%$ shift from $\alphaK$ \
 \centering
 \includegraphics[width=0.85\textwidth]{../results/figures/ssee_eftcamb_Pk.pdf}
 \caption{Matter power spectrum $P(k)$ from EFTCAMB\@. \SSEE\ RPH
-         ($\alphaK = 0.4033$) amplifies $P(k)$ by a factor $\sim 1.59$ relative
+         ($\alphaK = 0.403302$) amplifies $P(k)$ by a factor $\sim 1.59$ relative
          to GR on all scales ($\sigma_8$ ratio $= 1.26$), motivating the
          $\phi$DM suppression mechanism of \S\ref{sec:phiDM}.
          The vertical dashed line marks $\kfs = 0.754\,h\,\mathrm{Mpc}^{-1}$.}
@@ -846,7 +846,7 @@ place SSEE in tension with phantom crossing, while a detection of
 $\alphaB \neq 0$ at $z < 0.31$ would support the two-sector picture.
 The $\alphaK$ validation reported here is performed at constant
 $w = \wz = -0.839950$, which is the physically relevant regime at $z \simeq 0$
-where the EFTCAMB run uses the fluid-approximation input $\alphaK^{\rm fluid} = 0.4033$; the theoretical bare-field value derived in Paper~7 is $\alphaK = 0.073$.
+where the EFTCAMB run uses the fluid-approximation input $\alphaK^{\rm fluid} = 0.403302$; the theoretical bare-field value derived in Paper~7 is $\alphaK = 0.073$.
 
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -1127,7 +1127,7 @@ across four observational tiers.
   baryonic feedback (Paper~6).
 
 \item \textbf{EFT stability.} EFTCAMB confirms ghost-freedom and gradient
-  stability using the fluid-approximation input $\alphaK^{\rm fluid} = 0.4033$
+  stability using the fluid-approximation input $\alphaK^{\rm fluid} = 0.403302$
   ($\Delta = 0.005\%$); the bare-field theoretical value from Paper~7 is
   $\alphaK = 0.073$ (below Euclid sensitivity $\sigma(\alpha_{K,0}) < 0.1$).
   $\alphaT = \alphaM = \alphaB = 0$ (exact); GW170817 compatibility is exact.
@@ -1155,7 +1155,7 @@ assumptions: the $\phi$-DM free-streaming scale
 $\kfs = 0.754\,h\,\mathrm{Mpc}^{-1}$ (DESI~Y3/Euclid $P(k)$; the algebraic mass
 $m_\phi = 40.70$~eV enters observation only through $\kfs$, as $\phi$-DM has no
 Standard-Model portal), $\alphaK = 0.073$ (Euclid WL null test; a detection $\alphaK > 0.1$ would
-falsify SSEE), $r = 0.00813$ (LiteBIRD), and a strong-lensing Einstein-radius
+falsify SSEE), $r = 0.008131$ (LiteBIRD), and a strong-lensing Einstein-radius
 amplification $\sqrt{\AURA}\approx\MIRA$ (HST/JWST).
 All analytical scripts, CLASS configuration files, and EFTCAMB inputs are archived
 at Zenodo \citep{AlmeidaSSEE2026zenodo}.

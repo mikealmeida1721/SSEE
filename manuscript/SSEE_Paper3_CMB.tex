@@ -221,7 +221,7 @@ with no factor relating it to the dynamic sector:
   \omega_c = \mathrm{KAL}_0\,\omega_b\,n_s = 0.11951,
   \label{eq:omega_m_direct}
 \end{equation}
-with $n_s=1-\varphi^{-7}=0.9656$ and $\omega_\nu=\Sigma m_\nu^{\rm active}/93.14=0.00074$
+with $n_s=1-\varphi^{-7}=0.965558$ and $\omega_\nu=\Sigma m_\nu^{\rm active}/93.14=0.00074$
 (all forward identities of Paper~1). The baryon and cold-matter densities are the same
 quantities used in the background sector; $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ lies
 $0.41\sigma$ from the Planck value. Hence
@@ -398,7 +398,7 @@ $\Omega_{m,\mathrm{CMB}}$ & 0.3089 & $\omega_m/h^2$ (forward) \\
 $\sum m_\nu^{\rm active}$ [eV] & 0.0685 & SSEE algebraic (Paper~4) \\
 $w_0$ & $-0.8399$ & $-T_r/M_v$ \\
 $w_a$ & $-0.66997$ & $-P_{sc}/I_g$ \\
-$n_s$ & $1-\varphi^{-7}=0.96556$ & SSEE algebraic (Paper~4) \\
+$n_s$ & $1-\varphi^{-7}=0.965558$ & SSEE algebraic (Paper~4) \\
 $\ln(10^{10}A_s)$ & 3.044 & Planck 2018 \\
 $\tau$ & 0.054 & Planck 2018 \\
 \bottomrule
@@ -670,7 +670,7 @@ A $\Delta\mathrm{BIC} < -10$ constitutes decisive evidence on the Jeffreys scale
 The point-estimate scan of \S\ref{sec:cobaya} evaluates $\chi^2$ at the fixed algebraic anchor $H_0 = 3(\varphi+\pi)^2$ while holding all remaining SSEE quantities algebraically fixed. To provide complete posterior distributions and a fully rigorous parameter-counting comparison, we perform a dedicated MCMC analysis using \texttt{Cobaya}'s built-in sampler against the full off-diagonal \texttt{plik} TTTEEE + lowl\,TT + lowl\,EE + lensing likelihood suite (evaluated through \texttt{clipy}).
 
 \paragraph{Free parameters.}
-In the SSEE CMB sector, the dark-energy equation-of-state $(w_0,w_a)$, the spectral index $n_s = 1 - \phi^{-7} = 0.96556$, the baryon density $\Omega_b h^2 = (\pi-\varphi)/(3\Omega^2) = 0.02242$, and the CDM density $\Omega_c h^2 = \mathrm{KAL}_0\,\Omega_b h^2\,n_s = 0.11951$ ($\omega_m$-direct) are all algebraically fixed, and the geometry anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$ is derived (Paper~9). The only two model parameters genuinely sampled are therefore:
+In the SSEE CMB sector, the dark-energy equation-of-state $(w_0,w_a)$, the spectral index $n_s = 1 - \phi^{-7} = 0.965558$, the baryon density $\Omega_b h^2 = (\pi-\varphi)/(3\Omega^2) = 0.02242$, and the CDM density $\Omega_c h^2 = \mathrm{KAL}_0\,\Omega_b h^2\,n_s = 0.11951$ ($\omega_m$-direct) are all algebraically fixed, and the geometry anchor $H_0 = 3(\varphi+\pi)^2 = 67.962$ is derived (Paper~9). The only two model parameters genuinely sampled are therefore:
 
 \begin{itemize}[noitemsep]
     \item $\log(10^{10}A_s) \in [2.80, 3.25]$ (flat prior) — primordial amplitude;
@@ -944,10 +944,10 @@ is the \emph{bare-field} kineticity $\alpha_K^{\rm field}\approx 0.073$ from
 the intrinsic $w_\phi=-0.971$, whereas the \emph{effective} kineticity built
 on the observed background equation of state is
 $\alpha_K^{\rm eff}(0) = 3\,\Omega_{\rm DE}\,(1+w_0) = 3\times 0.840\times 0.160
-= 0.4033$, obtained once the coupling current $Q^\nu$ shifts $w_{\rm eff}$
+= 0.403302$, obtained once the coupling current $Q^\nu$ shifts $w_{\rm eff}$
 from $w_\phi=-0.971$ to the observed $w_0=-0.839950$. The \emph{effective}
 value is the observationally relevant one --- it is what CLASS recovers here
-($\alpha_K^{\rm CLASS}(0)=0.4033$, agreement to $0.005\%$) and the value
+($\alpha_K^{\rm CLASS}(0)=0.403302$, agreement to $0.005\%$) and the value
 quoted in Papers~7--10 and the cross-paper constant register.
 
 The remaining Bellini--Sawicki functions are zero by construction:

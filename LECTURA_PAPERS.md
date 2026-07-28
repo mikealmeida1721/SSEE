@@ -42,7 +42,28 @@ Reglas que Mike fijó para esta lectura:
 | 9 — Hubble | 18 | ⬜ |
 | 10 — UV | 14 | ⬜ |
 
-## Bitácora — Paper 1
+## Bitácora — Paper 1  ·  recorrido POR PÁGINA (33 pp.)
+
+| pág | contenido | estado |
+|---|---|---|
+| 1 | portada + **abstract** | ✅ |
+| 2 | índice | ✅ (sin contenido verificable) |
+| 3 | §1 las 7 constantes + §1.1 Predictive Register | ✅ |
+| 4 | **Tabla 1** — Predictive Register | 🔵 EN CURSO |
+| 5–33 | — | ⬜ |
+
+### Página 1 · abstract
+Verificados: w₀ ≈ −0.840, wₐ ≈ −0.670, KAL₀ ≈ 5.5214 (los tres con «≈», cortos
+pero bien redondeados ✓); ωc = KAL₀·ωb·ns (identidad forward ✓);
+ΔBIC = −6.43 del sector dinámico (coincide con CANONICAL_VALUES, signo correcto:
+ΛCDM−SSEE = +6.43 ⟹ SSEE−ΛCDM = −6.43 ✓).
+**Hallazgo:** `r = φ⁻¹⁰ = 0.00813` lleva signo IGUAL y sólo 5 decimales →
+**0.008131**. R37 no lo cazaba: su lista tenía las constantes del diccionario
+pero no los OBSERVABLES algebraicos, que son igual de puros en φ,π.
+Ampliada de 10 a 15 constantes (+r, n_s, α, N_*, α_K) → **48 correcciones en 14
+documentos**. → **CERRADA**
+
+
 
 ### Afirmación 1 · §1 pág. 1 — la lista de las siete constantes fundacionales
 **Dice:** Ω≈4.7596, β≈2.3798, KAL₀≈5.5214, P≈6.3776, K_v≈9.5192, T_r≈11.9935,

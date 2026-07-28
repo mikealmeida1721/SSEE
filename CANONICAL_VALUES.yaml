@@ -178,7 +178,12 @@ retired:
   # ── vector DESI DR2 real (V-L4-DESI, 2026-07-02) — era DR1 mal etiquetado ──
   - {pattern: "67.16",     reason: "H0 posterior con datos DR1 mal etiquetados → 67.79±0.35 vigente (DR2 + geometría total + ω_m fijo R25; el 67.95 intermedio congelaba Ω_m)"}
   - {pattern: "0.05\\sigma", excludes: ["dr1", "legacy"], reason: "titular w0wa DR1+SN → 0.24σ Pantheon+ / rango 0.2-1.8σ (ecs. 25-28 DR2). Legítimo SÓLO si se atribuye a DR1 explícitamente (Paper 1 §Predictive Register, Sealed abstract): el punto sí estaba a 0.05σ de DR1 y a 0.24σ de DR2 — es evidencia honesta de dos releases, no el titular retirado. Drift únicamente si '0.05σ' se presenta como claim actual/DR2."}
-  - {pattern: "-0.827",    reason: "contorno w0wa DR1 (2404.03002) → DR2 Pantheon+ -0.838±0.055"}
+  # Mismo criterio que 94.07 y que "0.05\\sigma": el valor DR1 no es incorrecto,
+  # es el de OTRA release. Citarlo CON su atribución es correcto y necesario
+  # (Paper 1 §Predictive Register lo usa para mostrar cuánto se estrechó el
+  # contorno entre DR1 y DR2). Drift sólo si se presenta como valor actual.
+  - {pattern: "-0.827", excludes: ["dr1", "2404.03002", "desi2024vi", "legacy"],
+     reason: "contorno w0wa DR1 (2404.03002) → DR2 Pantheon+ -0.838±0.055; legítimo SÓLO atribuido a DR1"}
   - {pattern: "20.98",     reason: "LRG1 DH/rd DR1 → DR2 21.863 (centinela del mal etiquetado)"}
   - {pattern: "67.159",    reason: "H0 posterior DR1-era (variante decimal de 67.16) → 66.412±0.385 DR2"}
   - {pattern: "0.59536",   reason: "θ* evaluado en posterior DR1-era 67.159 → 100θ*=1.03693 (13.9σ) @ 66.412"}

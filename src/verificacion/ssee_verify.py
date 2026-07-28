@@ -811,7 +811,14 @@ try:
     _C37 = {"Omega": pi + phi, "beta": (pi + phi) / 2, "KAL0": (pi + phi) / 2 + pi,
             "P_sc": pi + 2 * phi, "K_v": 2 * (phi + pi), "T_r": 3 * (phi + (pi + phi) / 2),
             "M_v": 3 * (phi + pi), "w0": abs(_core.W0), "wa": abs(_core.WA),
-            "AURA": _core.AURA}
+            "AURA": _core.AURA,
+            # Añadidas 2026-07-27 (lectura P1 pág. 1): el abstract escribía
+            # «r = φ⁻¹⁰ = 0.00813» con signo IGUAL y sólo 5 decimales. R37 no lo
+            # cazaba porque su lista no incluía los observables algebraicos, sólo
+            # las constantes del diccionario. Son igual de puros en φ,π.
+            "r": phi ** -10, "n_s": 1 - phi ** -7, "alpha_att": phi ** 4 / 3,
+            "N_star": 2 * phi ** 7,
+            "alpha_K": 3 * (_core.AURA / _core.OMEGA) * (1 + _core.W0)}
     _mal37 = []
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
                       + list((_REPO / "submission_PRD").glob("*.tex"))):

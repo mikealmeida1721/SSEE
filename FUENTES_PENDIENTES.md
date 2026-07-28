@@ -105,3 +105,44 @@ conserva; la proyección numérica sin fuente, no.
 **Lección de método:** en los dos casos mi primer impulso —borrar el 40%,
 «corregir» el 0.5σ— habría empeorado el paper. Investigar antes de tocar no es
 lentitud: es la diferencia entre corregir y romper.
+
+---
+
+## FP-3 · ¿Cuál de los dos α_K es el falsador de Euclid?
+
+- **Dónde:** Paper 1 Tabla 1 (fila α_K^field, «Euclid weak lensing → Prediction»),
+  Paper 7 §504 y §600, PRD §4.1.
+- **Estado:** 🟡 **abierto — requiere decisión física, no de nomenclatura**
+
+**El problema.** La suite es consistente en que existen dos kineticidades, cada
+una válida en su marco (Paper 7 lo explica bien). Lo que NO queda resuelto es
+cuál de las dos confronta el dato:
+
+| | valor | qué es |
+|---|---|---|
+| `α_K^field` | 0.072567 | campo desnudo, antes del acoplamiento conformal |
+| `α_K^eff` | 0.403302 | fondo efectivo con el w₀ **observado**; confirmado por hi_class (0.005%) y EFTCAMB |
+
+- Paper 1 Tabla 1 y Paper 7 §600 ponen **α_K^field** frente al umbral de Euclid
+  (σ(α_K,0) < 0.1) → cómodo, 0.073 < 0.1.
+- Pero Paper 7 §508 dice, textual, que «the observationally relevant effective
+  value is α_K^eff = 0.403302».
+
+Si lo observacionalmente relevante es el efectivo y el umbral de Euclid es 0.1,
+**0.403 > 0.1** y la predicción se leería como ya excluida. Si Euclid mide el
+campo desnudo, no hay problema.
+
+**No se resuelve con grep ni redondeos:** depende de qué cantidad reconstruye el
+weak lensing de Euclid. Hay que fijarlo desde la definición de Bellini–Sawicki y
+declararlo en UN solo sitio, del que los demás documentos citen.
+
+**Riesgo si no se cierra:** es una fila marcada «Prediction» en el Predictive
+Register. Un referee que tire de ese hilo encuentra dos respuestas en el mismo
+paper.
+
+**Hecho mientras tanto (nomenclatura, sin tocar la física):** la misma cantidad
+se llamaba de tres formas (`α_K^field` ×7, `α_K^bare` ×2, `α_K` a secas ×7) y la
+otra de dos (`α_K^eff` ×5, `α_K^fluid` ×4). Unificado a los nombres de la fuente
+—**α_K^field** y **α_K^eff**— y retirada de Unified la frase «using w₀
+overestimates α_K by ≈5.5», que contradecía el marco de «dos frames
+autoconsistentes» de Paper 7 al presentar uno de los dos como error.

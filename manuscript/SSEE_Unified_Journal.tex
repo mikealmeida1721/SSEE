@@ -125,7 +125,7 @@ baseline to $0.93\sigma$ (still $<1\sigma$, close to $\Lambda$CDM $0.73\sigma$) 
 the deliberate cost of lowering $\sigma_8$ to resolve the lensing amplitude.
 
 An EFTCAMB validation at the Bellini-Sawicki level uses the fluid-approximation
-input $\alphaK^{\rm fluid} = 0.403302$ ($\Delta = 0.005\%$), while the theoretical
+input $\alphaK^{\rm eff} = 0.403302$ ($\Delta = 0.005\%$), while the theoretical
 bare-field value is $\alphaK = 0.072567$ (Paper~7), with $\alphaT = \alphaM = \alphaB = 0$
 (GW170817 compatible) and strictly positive kinetic stability ($Q_s > 0$).
 
@@ -749,10 +749,13 @@ Here $w_{\varphi,\rm bare} = -0.971$ is the scalar-field equation of state in th
 thawing regime (Paper~7 \S\,\textsc{alphak}); it differs from the effective fluid
 EoS $w_0 = -0.839950$ because the conformal coupling transfers part of the kinetic
 energy to dark matter.
-Using $w_0$ in place of $w_{\varphi,\rm bare}$ overestimates $\alphaK$ by a
-factor $\approx 5.5$ (see Paper~7); the EFTCAMB runs below use the fluid
-approximation $\alphaK^{\rm fluid} = 3\Omde(1+w_0) = 0.403302$ as a conservative
-numerical input, while the theoretical SSEE prediction is $\alphaK = 0.072567$.
+The two kineticities differ by a factor $\approx5.6$ and are \emph{not} a
+correct and an incorrect one: each is self-consistent in its own computational
+frame (Paper~7). $\alphaK^{\rm field} = 3\Omde(1+w_\varphi) = 0.072567$ uses the
+uncoupled-field equation of state $w_\varphi=-0.971202$, before the conformal
+coupling redistributes kinetic energy; $\alphaK^{\rm eff} = 3\Omde(1+w_0) =
+0.403302$ uses the \emph{observed} CPL parameter and is the one confirmed by the
+\textsc{hi\_class} cross-check and reproduced by the EFTCAMB runs below.
 The vanishing of $\alphaT$ (tensor speed excess), $\alphaM$ (Planck mass run rate),
 and $\alphaB$ (kinetic braiding) implies: (i) gravitational waves propagate at $c$
 (GW170817 compatible at $|\alphaT| < 10^{-15}$ \citep{GW170817,Monitor2017});
@@ -846,7 +849,7 @@ place SSEE in tension with phantom crossing, while a detection of
 $\alphaB \neq 0$ at $z < 0.31$ would support the two-sector picture.
 The $\alphaK$ validation reported here is performed at constant
 $w = \wz = -0.839950$, which is the physically relevant regime at $z \simeq 0$
-where the EFTCAMB run uses the fluid-approximation input $\alphaK^{\rm fluid} = 0.403302$; the theoretical bare-field value derived in Paper~7 is $\alphaK = 0.072567$.
+where the EFTCAMB run uses the fluid-approximation input $\alphaK^{\rm eff} = 0.403302$; the theoretical bare-field value derived in Paper~7 is $\alphaK = 0.072567$.
 
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -1127,7 +1130,7 @@ across four observational tiers.
   baryonic feedback (Paper~6).
 
 \item \textbf{EFT stability.} EFTCAMB confirms ghost-freedom and gradient
-  stability using the fluid-approximation input $\alphaK^{\rm fluid} = 0.403302$
+  stability using the fluid-approximation input $\alphaK^{\rm eff} = 0.403302$
   ($\Delta = 0.005\%$); the bare-field theoretical value from Paper~7 is
   $\alphaK = 0.072567$ (below Euclid sensitivity $\sigma(\alpha_{K,0}) < 0.1$).
   $\alphaT = \alphaM = \alphaB = 0$ (exact); GW170817 compatibility is exact.

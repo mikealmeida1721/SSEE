@@ -248,11 +248,22 @@ these geometric invariants:
   \end{equation}
 
   \item \textbf{Asymmetric Equivalence:} Energy states can possess identical geometric
-  values but divergent dynamic functions. The macroscopic geometric response must inversely
+  values but divergent dynamic functions. (This is the principle behind $I_g$ and $K_v$
+  sharing the value $9.519253$ while remaining distinct registers: what identifies a
+  register is its construction, not its number --- Appendix~\ref{app:lineage}.) The macroscopic geometric response must inversely
   mirror the physical source:
   \begin{equation}
     \mu_{\SSEE}(x)\cdot\mathrm{KAL}(x) \equiv 1.
+    \label{eq:asymmetric}
   \end{equation}
+  Here $\mu_{\SSEE}(x)$ is the interpolation function of the structural viscosity
+  and $\mathrm{KAL}(x)$ its environmental amplifier, both given explicitly in
+  Eq.~(\ref{eq:KAL}) of §\ref{sec:lensing}; $x=|\nabla\Phi|/a_0$. What the
+  principle asserts is that the reciprocity is \emph{exact}: no factor $f(x)\neq1$
+  is permitted between the geometric response and its physical source, which is
+  what fixes $\mathrm{KAL}(x)$ once $\mu_{\SSEE}(x)$ is chosen --- Eq.~(\ref{eq:KAL})
+  realises this identity rather than defining it into existence.
+
 \end{enumerate}
 
 These three statements fix the framework's \emph{physical} content. They are
@@ -755,7 +766,10 @@ from the cluster mass \emph{magnitude} of §\ref{sec:clusters}, which is reprodu
 
 The structural viscosity acts as an environment-dependent scalar field. Defining
 $x = |\nabla\Phi|/a_0$, \SSEE\ adopts an interpolation function analogous to the
-canonical MOND \citep{Milgrom1983,FamaeyMcGaugh2012} simple interpolating function $\mu(x)$:
+canonical MOND \citep{Milgrom1983,FamaeyMcGaugh2012} simple interpolating function $\mu(x)$.
+The exact reciprocity below is not a naming convention: it is Principle~3
+(Eq.~\ref{eq:asymmetric}) applied, which forbids any factor $f(x)\neq1$ between the two
+and therefore fixes $\mathrm{KAL}(x)$ once $\mu_{\SSEE}(x)$ is chosen:
 \begin{equation}
   \mu_{\SSEE}(x) = \frac{x+1}{x+\KALz}
   \implies

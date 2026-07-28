@@ -90,7 +90,8 @@ no es «el número es correcto» sino **«se comprueba de un vistazo»**.
 | 2 | índice | ✅ «sin contenido verificable» | ✅ **defecto de estructura** |
 | 3 | §1 las 7 constantes + §1.1 | ✅ | ✅ **4 valores mal redondeados** |
 | 4 | **Tabla 1** — Predictive Register | ✅→reabierta | ✅ **5 defectos + contradicción** |
-| 5 | §1.2 Principios axiomáticos | ✅ | 🔵 SIGUIENTE |
+| 5 | §1.2 Principios axiomáticos | ✅ | ✅ **un axioma que era tautología** |
+| 6 | §1.3 Postulados D y S | ✅ | 🔵 SIGUIENTE |
 
 ### 🔁 Página 3 · addendum — `=` vs `≈` (pregunta de Mike)
 Mike preguntó por qué las siete constantes llevan «casi igual» si él las lee como
@@ -114,6 +115,41 @@ Verificado que el patrón ambiguo **no** está en los otros papers: el Unified y
 
 Encaja con la política: tras `=` va lo exacto a 6 decimales; tras `≈` puede ir
 corto porque el signo ya avisa. Registrado en [[project_rounding_policy]].
+
+### 🔁 Página 5 (2ª pasada) · §1.2 Principios Axiomáticos — leída en las SEIS dimensiones
+**Relaciones (dim. 2), lo primero ahora.** Los cuatro signos están bien tipados:
+`∝` en el límite a→0 (la constante no se conoce), `=` en el límite a→∞ (sí se
+conoce), `=` en la dependencia funcional y `≡` en la ec. (3) — identidad, no
+ecuación. La asimetría `∝`/`=` dentro de la misma ecuación es deliberada y correcta.
+
+**Hallazgo (dim. 4-5): el Principio 3 era verdadero por definición.** La ec. (3)
+afirma `μ_SSEE(x)·KAL(x) ≡ 1` como axioma fundacional. Pero §4.4 (línea 771)
+define `KAL(x) = 1/μ_SSEE(x)` con un `\implies`. Es decir: uno de los tres
+principios del marco se cumple **trivialmente por la definición que viene 16
+páginas después**. Un referee lo dice en una línea: *«su Principio 3 no es un
+principio, es una definición reescrita»*.
+
+**La salida, buscada antes de reportarlo como debilidad** (según
+[[feedback_audit_philosophy]]): el contenido real del principio **sí existe** —
+es que la reciprocidad sea *exacta*, sin factor `f(x)≠1` entre respuesta y
+fuente. Eso restringe la teoría: fija `KAL(x)` una vez elegida `μ_SSEE(x)`. Lo
+que fallaba era que el texto no lo decía y la definición parecía salida de la
+nada. Ahora la ec. (3) lleva `\label`, §4.4 declara que **realiza** el principio
+en vez de definirlo, y la página 5 explica qué se está afirmando.
+
+**Legibilidad (dim. 6):** `μ_SSEE(x)` y `KAL(x)` se usaban en un principio
+fundacional y no se definían hasta 506 líneas después. Añadida la definición
+breve y el reenvío a Eq. (49) §4.4.
+
+**Entidades (dim. 3):** la primera frase del Principio 3 —«estados con idénticos
+valores geométricos pero funciones dinámicas divergentes»— **es literalmente** la
+doctrina `I_g ≠ K_v`, y no se aprovechaba. Enlazada: el principio ahora justifica
+explícitamente por qué dos registros comparten 9.519253 sin ser el mismo objeto.
+
+**Valores (dim. 1):** sin decimales sueltos en la página. `T_r/M_v` en el límite
+de Sitter = Ω_DE ✓. **Trazabilidad (dim. 5):** los tres principios se declaran
+como axiomas, no como derivaciones — correcto que así sea.
+→ **CERRADA**
 
 ### 🔁 Página 4 (2ª pasada) · Tabla 1 — Predictive Register
 **Primero, un defecto que introduje yo en la 1ª pasada:** al añadir el criterio de

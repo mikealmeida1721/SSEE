@@ -216,7 +216,11 @@ check("V-L2-11b cierre ν: omega_nu en omega_m == Sigma_m_nu/C_nu  (no 0.000741 
       f"(stale 0.000741 ⇒ Σm_ν=0.06902 ⇒ m_φ=41.02 RETIRADO)")
 check("V-L2-11c cierre ν: C_nu univaluada = 93.14 PDG en toda la cadena",
       abs(_mnu_active * _C_nu / _mnu_active - _C_nu) < 1e-9 and abs(_C_nu - 93.14) < 1e-9,
-      f"C_ν = {_C_nu} eV (94.07 desacople instantáneo RETIRADO)")
+      f"C_ν = {_C_nu} eV — el operativo. 94.07 eV NO está retirado ni es "
+      f"incorrecto: es el desacople INSTANTÁNEO (N_eff=3 exacto). 93.14 "
+      f"incluye el reheating e⁺e⁻ (N_eff=3.046) y es el que usa Planck. "
+      f"Además C_ν se CANCELA en ω_ν, así que la elección no mueve "
+      f"ninguna cosmología — sólo el Σm_ν reportado. Ver Paper 6 §cnu-cancels")
 
 # Identidades cruzadas — dos rutas independientes deben coincidir.
 n_kess = (Tr - Mv) / (2 * Tr)
@@ -333,7 +337,7 @@ track_open("V-L3-OP5  S8 forward resuelto; cierre no-lineal pleno diferido",
            "0.758 (0.04sigma KiDS) con m_phi=40.70 (SOLAR²·KRYSTOS); FALSABLE por k_fs=0.754 (DESI/Euclid). "
            "El cierre no-lineal con feedback barionico (N-body, ~5k-20k CPU-h) es Nivel 2, "
            "diferido. Ramas viejas 0.737/0.794, 0.702/0.725, 0.742/0.766, 0.7536/0.765 y "
-           "0.7483/0.7593 (m_φ=41.02, C_ν=94.07) retiradas")
+           "0.7483/0.7593 (rama con C_ν instantáneo 94.07 como operativo) retiradas")
 
 # OP-6 — forma de screening (P9). El valor f_screen es algebra exacta (ver
 # V-L2-13); la forma multiplicativa sigue del universo separado. El paso
@@ -759,7 +763,7 @@ except Exception:
 # es huella inequívoca del valor rancio y no puede dar falso positivo.
 _RETIRADAS = {"0.06902": "Σm_ν retirado (vigente 0.06849)",
               "0.30889": "Ω_m de Σm_ν rancio (0.308881 imprime 0.30888)",
-              "94.07": "C_ν retirado (vigente 93.14)",
+              "94.07": "C_ν INSTANTÁNEO usado como operativo (el operativo es 93.14, con reheating e⁺e⁻); 94.07 NO es incorrecto — es otra magnitud",
               "41.0187": "m_φ de Σm_ν rancio (vigente 40.70)"}
 try:
     _logdir = _REPO / "results" / "logs"
@@ -1171,13 +1175,46 @@ try:
     #   (b) los números que derivaban de ella se recomputaron  [V-L2-11, consecuencia]
     # Un check de (a) sin su (b) es peor que ningún check: crea confianza falsa.
     # Aplicar este par a cualquier retiro futuro de constante.
-    _nu_9407 = sorted(t.name for t in _texs
-                      if "94.07" in t.read_text(errors="ignore"))
-    check("manuscritos  R17 constante ν univaluada en 93.14 (sin 94.07)",
+    # MATIZADO 2026-07-27. La versión previa prohibía «94.07» en cualquier .tex,
+    # y eso era un error de fondo: 94.07 eV NO es un valor incorrecto ni
+    # retirado — es el desacople INSTANTÁNEO (N_eff=3 exacto), otra magnitud
+    # física. 93.14 incluye el reheating e⁺e⁻ (N_eff=3.046) y es el operativo.
+    # Explicar la diferencia en el paper es NECESARIO: un referee pregunta «¿por
+    # qué 93.14 y no 94?» en la primera lectura. La regla anterior habría
+    # obligado a borrar precisamente la respuesta.
+    # Lo que sí debe prohibirse es usarlo como C_ν OPERATIVO. Se distingue por
+    # contexto: si el documento explica la diferencia (menciona el desacople
+    # instantáneo o el reheating e⁺e⁻ cerca), la mención es legítima.
+    _CTX_OK = ("instantaneous", "instantáneo", "e^+e^-", "e^+e^-", "Mangano",
+               "N_{\\rm eff}=3", "reheat")
+    _nu_9407 = []
+    for _tx17 in _texs:
+        _c17 = _tx17.read_text(errors="ignore")
+        if "94.07" not in _c17:
+            continue
+        # TODAS las ocurrencias, no sólo la primera, y sin distinguir
+        # mayúsculas: la primera versión miraba _c17.index() (una sola) con
+        # ventana de 700 y case-sensitive, y marcaba como «sin explicación» un
+        # Paper 6 que SÍ la traía —empezaba con «Instantaneous», mayúscula—
+        # unas líneas más arriba. La regla acusaba al texto de su propio fallo.
+        _bajo = _c17.lower()
+        _ctx = tuple(_k.lower() for _k in _CTX_OK)
+        _sin = False
+        _pos17 = _bajo.find("94.07")
+        while _pos17 != -1:
+            _ventana = _bajo[max(0, _pos17 - 2500): _pos17 + 2500]
+            if not any(_k in _ventana for _k in _ctx):
+                _sin = True
+                break
+            _pos17 = _bajo.find("94.07", _pos17 + 1)
+        if _sin:
+            _nu_9407.append(_tx17.name)
+    check("manuscritos  R17 C_ν operativo = 93.14 (94.07 solo con su explicación)",
           not _nu_9407,
-          "univaluada 93.14 (94.07 solo vive en derive_nu_closure.py, la demostración)"
-          if not _nu_9407 else "94.07 aún en: " + ", ".join(_nu_9407)
-          + " — misma C; usar 93.14 PDG")
+          "93.14 operativo; 94.07 aparece únicamente donde se explica que es el "
+          "desacople instantáneo (y que C_ν se cancela en ω_ν)"
+          if not _nu_9407 else "94.07 SIN contexto explicativo en: "
+          + ", ".join(_nu_9407) + " — o se explica, o se usa 93.14")
 
     # ── R18 — sin narrativa H0-posterior stale del reframe Ω_m-geometría ──
     # Remache forjado en la auditoría de Paper 2 (2026-07-10): el fix V-L4-DESI

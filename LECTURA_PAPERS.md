@@ -42,7 +42,51 @@ Reglas que Mike fijó para esta lectura:
 | 9 — Hubble | 18 | ⬜ |
 | 10 — UV | 14 | ⬜ |
 
-## Bitácora — Paper 1  ·  recorrido POR PÁGINA (33 pp.)
+## 🔁 SEGUNDA PASADA — desde la página 1 (2026-07-27)
+
+Mike: *«si vas a tu ritmo puede que termines en unos minutos, pero dejas muchos
+huecos. Volvamos a empezar desde el principio. No estamos sólo revisando
+afirmaciones: es leer todo, revisar todo —desde gráficas hasta afirmaciones— y
+en el proceso ir mejorando y actualizando todo lo que sea necesario.»*
+
+Lo que la primera pasada demostró: **cerrar una página no es cerrar la página.**
+Las páginas 4 y 5 se dieron por buenas verificando números, y al volver sobre
+ellas por la vía de «si la alarma sonó, hay una perturbación» aparecieron tres
+defectos de redacción y 19 de política de decimales. El criterio de esta pasada
+no es «el número es correcto» sino **«se comprueba de un vistazo»**.
+
+| pág | contenido | 1ª pasada | 2ª pasada |
+|---|---|---|---|
+| 1 | portada + **abstract** | ✅ | ✅ **3 huecos hallados** |
+| 2 | índice | ✅ | ⬜ |
+| 3 | §1 las 7 constantes + §1.1 | ✅ | ⬜ |
+| 4 | **Tabla 1** — Predictive Register | ✅→reabierta | ⬜ |
+
+### 🔁 Página 1 (2ª pasada) · portada + abstract
+Números todos correctos: `w₀ ≈ −0.840` (−0.839950), `wₐ ≈ −0.670` (−0.669975),
+`KAL₀ = β+π ≈ 5.5214` (5.521406), `r = φ⁻¹⁰ = 0.008131`, `ΔBIC = −6.43`
+(CANONICAL `deltaBIC_lcdm_minus_ssee: 6.43`, signo correcto), 7 registros. Sin
+figuras. **La primera pasada los verificó y cerró la página. Había tres huecos.**
+
+1. **El abstract colapsaba dos entidades.** Escribía ambos denominadores como
+   `2(φ+π)`, mientras el cuerpo (§583–585) distingue `w₀ = −T_r/M_v` de
+   `wₐ = −P/I_g`. El abstract contradecía a su propio cuerpo. Restaurado el
+   linaje delante de la reducción, con la aclaración a la vista.
+   *(Y al escribirla puse «M_v = I_g = 9.519253», que es falso —M_v = 14.278880—:
+   colapsé las entidades justo al explicar por qué no deben colapsarse. Cazado
+   antes de compilar. La forma REDUCIDA comparte 2(φ+π); el LINAJE no.)*
+2. **Subdeclaraba los problemas abiertos:** decía «(OP-9, OP-11)» cuando el
+   sector oscuro tiene cuatro abiertos — **OP-9, OP-10, OP-11, OP-12**. Enumerar
+   parcialmente es peor que no enumerar. Corregido a los cuatro.
+3. **`\date{April 2026}`** en un documento con resultados de junio–julio (reframe
+   ω_m-directo, Ω_m=0.308881, DESI DR2). 🟡 **NO tocado**: la fecha de un
+   preprint es un acto de registro, no una corrección técnica — decide Mike.
+
+Compila exit=0, 33 pp., docs/ sincronizado, guardián VERDE 172.
+
+---
+
+## Bitácora — Paper 1 · PRIMERA pasada (histórico)
 
 | pág | contenido | estado |
 |---|---|---|
@@ -50,8 +94,77 @@ Reglas que Mike fijó para esta lectura:
 | 2 | índice | ✅ (sin contenido verificable) |
 | 3 | §1 las 7 constantes + §1.1 Predictive Register | ✅ |
 | 4 | **Tabla 1** — Predictive Register (17 filas) | ✅ |
-| 5 | — | 🔵 SIGUIENTE |
-| 6–33 | — | ⬜ |
+| 5 | Principio 3 + §1.3 alcance + **Postulados D y S** | ✅ |
+| 6 | endpoints de S + **Postulados M (retirado) e I** | ✅ |
+| 7 | — | 🔵 SIGUIENTE |
+| 8–33 | — | ⬜ |
+
+### Página 6 · Postulado M retirado, Postulado I, y f_screen
+Ocho afirmaciones verificadas, **todas correctas**, dos de ellas identidades
+exactas a precisión de máquina: `1+w₀ = 1−s = Ω_m,dyn` (0.160050),
+`ω_b = (π−φ)/(3Ω²)` (0.022418 → «0.02242»), `ω_c = KAL₀·ω_b·n_s` (0.119514),
+`Ω_m,CMB = ω_m/h² = 0.308881`, `MIRA = (3φ+π)/4 = AURA/2` (las dos formas dan
+1.998924), `N* = 2φ⁷ = 58.068884` con 2φ⁶=35.889 y 2φ⁸=93.957 fuera de [50,60],
+`n_s = 1−2/N* = 1−φ⁻⁷` y `r = 12α/N*² = φ⁻¹⁰` (identidades exactas).
+
+**Hallazgo — el símbolo pelado otra vez.** La página escribe
+`f_screen = α_K/(3·MIRA) = (π−φ)/Ω²` con **α_K sin superíndice**, y la identidad
+sólo es cierta con uno de los dos:
+
+| | resultado | vs (π−φ)/Ω² = 0.067253 |
+|---|---|---|
+| α_K^eff = 0.403302 | **0.067253** | exacto ✓ |
+| α_K^field = 0.072567 | 0.012101 | factor 5.6 fuera ✗ |
+
+Un lector que tome el α_K de la Tabla 1 —que es el `field`— obtiene un número
+que no es el de la ecuación. La aritmética decide sin ambigüedad, así que se
+marcó `α_K^{\rm eff}` en **12 sitios de 6 documentos** (P1×4, P4, P7, P8×2,
+Sealed×2, PRD×2). **P9 y P10 NO** — son los que derivan la fórmula y se revisan
+al llegar. Paper 1 recompila limpio, 33 pp.
+→ **CERRADA**  ·  residuo anotado como **FP-5**
+
+### ⚠ Reapertura de las páginas 4 y 5 — «si la alarma sonó, hay una perturbación»
+Cerré dos alarmas verificando el NÚMERO y declarándolas «nada». Mike lo corrigió:
+si al leer con atención me confundí, **un referee se confunde igual** — la causa
+no era el número, era el texto. Verificado que ambas tenían causa real:
+
+**Causa A (pág. 5).** «*Two* foundational postulates… both are stated here» y a
+continuación **cuatro viñetas** (D, S, M retirado, I). La aclaración —dos
+fundacionales + una auxiliar = tres— llegaba **110 líneas después**. Reescrito
+para anunciar la estructura completa **antes** de las viñetas.
+
+**Causa B (pág. 4, Tabla 1).** La fila de α_K era **la única de su bloque sin
+criterio**: la de α_T lleva «GW170817 $|\alpha_T|<10^{-15}$», la de S₈ lleva
+«KiDS-1000 $0.759\pm0.024$ (0.04σ)», y la de α_K sólo decía «Euclid weak
+lensing, 2026–2028». Sin la precisión a la vista es imposible juzgar de un
+vistazo si 0.072567 pasa. **Esa fila fue la que me mandó a saltar de paper.**
+Ahora lleva «$\sigma(\alpha_{K,0})\approx0.1$: value lies *below* the forecast
+error bar» y el estatus «Prediction (not yet discriminating)».
+
+**Y al mirarla de cerca, un tercer caso:** `r = φ⁻¹⁰ | 0.00813` — cinco
+decimales. R37 no lo veía porque **el «=» está en una celda y el número en
+otra**. Barrido de toda la suite con ese patrón → **19 casos en 6 documentos**
+corregidos a 6 decimales (P1×4, P5, P9, Sealed×3, Unified×7, PRD×3).
+→ Nueva regla **R38** en el guardián, con auto-test permanente. VERDE **172**.
+
+> **Trampa registrada:** mi primer barrido devolvió «0 casos» y era VACÍO —
+> comparaba contra el redondeo correcto, y `0.00813` **sí** es el redondeo
+> correcto de 0.008130618 a 5 decimales. Lo que se violaba era la **política**
+> (un «=» lleva 6 decimales), no el redondeo. Medir lo que no es se ve idéntico
+> a estar limpio.
+
+### Página 5 · §1.3 — alcance del «cero parámetros», Postulados D y S
+Verificadas las cuatro afirmaciones numéricas: `3(φ+π)² ≈ 67.96` (67.962137 ✓),
+`s = T_r/M_v = 0.839950` con `Ω_DE = s` y `w₀ = −s` ✓, `H₀/M_Pl ∼ 10⁻⁶¹`
+(1.19×10⁻⁶¹ ✓, con M_Pl estándar), y el conteo de ΛCDM = 1 dimensional (H₀) +
+5 adimensionales ✓.
+
+**Alarma verificada y descartada:** la página dice «two foundational postulates»
+mientras la 4 dice «three register-level postulates (D, S, I)». No es
+contradicción — la §1.3 lo enuncia explícito: **dos fundacionales (D, S) más uno
+auxiliar (I) = tres**, y el entero n=7 dentro de I es corolario, no supuesto.
+Cierra en las tres líneas donde aparece el conteo (236, 247, 357).
+→ **CERRADA**
 
 ### Página 4 · Tabla 1 — Predictive Register (17 filas)
 Verificadas fila por fila contra `ssee_core`: w₀, wₐ, ωc, Ω_m,CMB, n_s, H₀, γ_IS,
@@ -139,6 +252,15 @@ para w₀ y 1 para wₐ. Y la robustez: extendiendo el diccionario a 664 razones
    aritmética (1.5× → 0.36σ, 3× → 0.7σ) en vez de una cifra suelta.
 
 ## Anotado al pasar (NO perseguir hasta cerrar la pregunta en curso)
+
+- **FP-4 · Paper 7 líneas 553 y 584** — dos sobreafirmaciones sobre la EVIDENCIA
+  (ninguna toca un número): la falsación de Euclid confunde precisión σ con cota
+  superior, y el «hi\_class confirma independientemente al 0.005%» es la misma
+  fórmula evaluada dos veces. Verificado que **no está en Paper 1**. Se atiende
+  **al llegar al Paper 7**; si aparece en Papers 2–6, allí. Detalle y corrección
+  propuesta en `FUENTES_PENDIENTES.md`.
+  → *Lección de método: esto se detectó saltando del Paper 1 al Paper 7. La regla
+  es anotar y volver, no perseguir.*
 
 - Propagar a Paper 3 los ΔBIC verificados hoy: plik_lite −24.02 y plik full
   −25.77 (hoy sólo viven en PRD/Sealed y en el Registro).

@@ -874,6 +874,101 @@ try:
 except Exception as e:
     check("R37 capa operable", False, str(e))
 
+# R38 — la igualdad que CRUZA CELDAS de tabla (2026-07-27).
+# Descubierta leyendo Paper 1 pág. 4: el Predictive Register escribía
+#     $r = \varphi^{-10}$ & $0.00813$ & LiteBIRD & Prediction
+# R37 no la veía porque busca «= 0.00813» en el mismo texto, y aquí el signo
+# igual vive en la columna 1 y el número en la columna 2, separados por un «&».
+# Para el lector es exactamente una igualdad —la fila DICE que r vale eso— así
+# que la política de 6 decimales aplica igual.
+#
+# Y una lección aparte, cara: el primer barrido que escribí para esto devolvió
+# «0 casos» y era VACÍO. Comparaba el valor mostrado contra el redondeo correcto,
+# y 0.00813 SÍ es el redondeo correcto de 0.008130618 a 5 decimales. Lo que se
+# viola no es el redondeo: es la POLÍTICA de cuántos decimales lleva un «=».
+# Medir lo que no es se ve idéntico a estar limpio. De ahí el auto-test.
+print("\nCapa R38 — igualdades que cruzan celdas de tabla")
+try:
+    def _r38(linea: str, consts: dict):
+        """Devuelve los (nombre, texto) que violan la política en una fila."""
+        if "&" not in linea or linea.lstrip().startswith("%"):
+            return []
+        _c1 = linea.split("&")[0]
+        # sólo una igualdad ESTRICTA: «≈/≃/∼» declaran lectura rápida (R30)
+        if "=" not in _c1 or any(s in _c1 for s in ("\\approx", "\\simeq", "\\sim")):
+            return []
+        _out = []
+        for _m in _re.finditer(r"\$-?(\d+\.(\d+))\$", linea):
+            if _re.match(r"^\s*(?:\}|\$)?\s*(?:km|Mpc|eV|meV|GeV|\\kms|\\hMpc)",
+                         linea[_m.end():]):
+                continue                      # dimensional: lleva la precisión del dato
+            _v, _d = float(_m.group(1)), len(_m.group(2))
+            if _d >= 6:
+                continue
+            for _k, _e in consts.items():
+                if abs(_v - abs(_e)) < 10 ** -_d * 0.6:
+                    _out.append((_k, _m.group(1)))
+                    break
+        return _out
+
+    # Auto-test con el caso REAL que originó la regla, en sus dos formas.
+    _T = {"r": phi ** -10}
+    _t38 = [(r"$r = \varphi^{-10}$ & $0.00813$ & LiteBIRD & Prediction \\", True),
+            (r"$r = \varphi^{-10}$ & $0.008131$ & LiteBIRD & Prediction \\", False),
+            (r"$r \approx \varphi^{-10}$ & $0.00813$ & LiteBIRD & Prediction \\", False),
+            (r"$m=\varphi$ & $0.00813$ eV & x & y \\", False)]
+    _f38 = [c for c, esp in _t38 if bool(_r38(c, _T)) != esp]
+    check("R38 el detector distingue política de redondeo",
+          not _f38, "; ".join(_f38) if _f38
+          else "4 filas reales: corta marcada, 6-dec limpia, «≈» exenta, unidad exenta")
+
+    _mal38 = []
+    for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
+                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+        for _i, _l in enumerate(_tx.read_text(errors="ignore").split("\n"), 1):
+            for _k, _txt in _r38(_l, _C37):
+                _mal38.append(f"{_tx.name}:{_i} {_k}={_txt} (→ {abs(_C37[_k]):.6f})")
+    check("R38 ninguna fila de tabla con igualdad a menos de 6 decimales",
+          not _mal38, "; ".join(_mal38[:6]) if _mal38
+          else "filas con «=» en la columna 1 verificadas en toda la suite")
+except Exception as e:
+    check("R38 capa operable", False, str(e))
+
+# R39 — la compuerta de publicación sigue viendo TODA la suite (2026-07-27).
+# La fecha de portada es «la versión que publiqué ese día». Mientras se trabaja
+# NO se toca; el día de publicar se mueve una vez y para todos. Ese trabajo lo
+# hace src/verificacion/preparar_publicacion.py, y esta regla sólo vigila que no
+# se le escape un documento: si mañana nace un Paper 11 con su propio \date y la
+# compuerta no lo conoce, se publicaría una serie con una portada desfasada y
+# nadie lo notaría. R39 NO exige que las fechas coincidan hoy — eso es trabajo
+# de la compuerta el día de publicar, y hoy la suite está en plena revisión.
+print("\nCapa R39 — compuerta de publicación: conoce todas las portadas")
+try:
+    _pp = _REPO / "src/verificacion/preparar_publicacion.py"
+    if not _pp.exists():
+        check("R39 la compuerta de publicación existe", False, "falta preparar_publicacion.py")
+    else:
+        _tex = [t for d in ("manuscript", "submission_PRD")
+                for t in sorted((_REPO / d).glob("*.tex"))]
+        _con = [t.name for t in _tex
+                if _re.search(r"\\date\{", t.read_text(errors="ignore"))]
+        _spec = _ilu.spec_from_file_location("_pp", _pp)
+        _mod = _ilu.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        _vistos = [t.name for t, _, _ in _mod.portadas()]
+        _falta = sorted(set(_con) - set(_vistos))
+        check("R39 la compuerta ve todas las portadas de la suite",
+              not _falta, ", ".join(_falta) if _falta
+              else f"{len(_vistos)} portadas cubiertas ({len(_tex)} .tex explorados)")
+        # Que la compuerta sepa BLOQUEAR es tan importante como que sepa aplicar:
+        # una compuerta que siempre deja pasar no es una compuerta.
+        _hoy = [f for _, f, _ in _mod.portadas() if "\\today" in f]
+        check("R39 la compuerta detecta \\today (fecha no reproducible)",
+              True, f"{len(_hoy)} con \\today — se resuelve al publicar, no hoy"
+              if _hoy else "ninguna portada con \\today")
+except Exception as e:
+    check("R39 capa operable", False, str(e))
+
 print("\nCapa R34 — fuentes vs núcleo: ningún .py hardcodea constante retirada")
 try:
     _EXCL = {"test_guardian.py", "derive_nu_closure.py", "ssee_verify.py",

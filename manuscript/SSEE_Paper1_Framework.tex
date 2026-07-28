@@ -53,14 +53,17 @@ The background sector $(w_0,w_a,\Omega_{\rm DE},\Omega_{m,\rm dyn})$ is fully al
 (zero fitted dimensionless parameters);
 phenomenological extensions in the dark-matter sector (Paper~6) introduce a small set of
 quantities currently treated as ans\"atze and tracked as open problems
-(OP-9, OP-11 in \texttt{OPEN\_PROBLEMS.md}).
+(OP-9, OP-10, OP-11 and OP-12 in \texttt{OPEN\_PROBLEMS.md}).
 From these two axioms, a closed set of seven structural registers is derived algebraically,
 culminating in the dark-energy equation of state
 \begin{equation*}
-  w_0 = -\frac{3\varphi+\pi}{2(\varphi+\pi)} \approx -0.840,
+  w_0 = -\frac{T_r}{M_v} = -\frac{3\varphi+\pi}{2(\varphi+\pi)} \approx -0.840,
   \qquad
-  w_a = -\frac{2\varphi+\pi}{2(\varphi+\pi)} \approx -0.670.
+  w_a = -\frac{P}{I_g} = -\frac{2\varphi+\pi}{2(\varphi+\pi)} \approx -0.670.
 \end{equation*}
+Both reduced forms carry the same denominator $2(\varphi+\pi)=9.519253$, but they descend
+from \emph{distinct registers}: $w_0$ from $M_v=\varphi+\pi+K_v=14.278880$ and $w_a$ from
+$I_g=\pi+P=9.519253$. It is the lineage, not the reduced form, that fixes each ratio.
 No fitting procedure is involved: $w_0$ and $w_a$ are uniquely fixed by the geometry of
 $\varphi$ and $\pi$.
 The asymptotic structural viscosity factor $\KALz = \beta + \pi \approx 5.5214$
@@ -150,12 +153,12 @@ No optimisation over the algebraic formula space was performed.}
 Quantity (algebraic formula) & Value & Test / Falsifier & Status \\
 \midrule
 \multicolumn{4}{l}{\textit{Background sector (algebraic dictionary)}} \\
-$w_0 = -T_r/M_v$ & $-0.8399$ & DESI DR2 (2025) & Postdiction \\
-$w_a = -(\Omega+\varphi)/I_g$ & $-0.66997$ & DESI DR2 (2025) & Postdiction \\
+$w_0 = -T_r/M_v$ & $-0.839950$ & DESI DR2 (2025) & Postdiction \\
+$w_a = -(\Omega+\varphi)/I_g$ & $-0.669975$ & DESI DR2 (2025) & Postdiction \\
 $(w_0,w_a)$ vs DESI DR3 & same fixed point & DR3 $w_0w_a$CDM (2027); ${>}3\sigma$ joint excl.\ falsifies & \textbf{Prediction (pre-registered)} \\
 $\omega_c = \mathrm{KAL}_0\,\omega_b\,n_s$ & $0.11951$ & Planck 2018 & Retrodiction \\
 $\Omega_{m,\mathrm{CMB}} = \omega_m/h^2$ & $0.308881$ & Planck 2018 & Retrodiction \\
-$n_s = 1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & Retrodiction \\
+$n_s = 1-\varphi^{-7}$ & $0.965558$ & Planck 2018 & Retrodiction \\
 $H_0 = 3(\varphi+\pi)^2$ & $67.96\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & Planck 2018 & Global background anchor (Post.~D) \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 5 — IS causal perturbation theory}} \\
@@ -169,11 +172,11 @@ $S_8^{\mathrm{eff}}=\sigma_8\sqrt{\Omega_m/0.3}$ (two-sector, forward CLASS) & $
 \midrule
 \multicolumn{4}{l}{\textit{Paper 7 — Canonical EFT, Bellini-Sawicki $\alpha$-functions}} \\
 $\alpha_T=\alpha_M=\alpha_B=0$ (minimal coupling) & $0$ exact & GW170817 $|\alpha_T|<10^{-15}$ & Retrodiction \\
-$\alpha_K^{\rm field} = 3\,\Omega_{\mathrm{DE}}(1+w_\phi)$ & $0.072567$ & Euclid weak lensing, 2026--2028 & Prediction \\
-$\beta_c = -\mathrm{AURA} = -(3\varphi+\pi)/2$ & $-3.9978$ & EFT plateau test (8 ICs, $\Delta=0.2\%$) & Retrodiction \\
+$\alpha_K^{\rm field} = 3\,\Omega_{\mathrm{DE}}(1+w_\phi)$ & $0.072567$ & Euclid weak lensing, $\sigma(\alpha_{K,0})\!\approx\!0.1$ (2026--2028): value lies \emph{below} the forecast error bar & Prediction (not yet discriminating) \\
+$\beta_c = -\mathrm{AURA} = -(3\varphi+\pi)/2$ & $-3.997847$ & EFT plateau test (8 ICs, $\Delta=0.2\%$) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Future}} \\
-$r = \varphi^{-10}$ & $0.00813$ & LiteBIRD ${\sim}2032$ & Prediction \\
+$r = \varphi^{-10}$ & $0.008131$ & LiteBIRD ${\sim}2032$ & Prediction \\
 \bottomrule
 \end{tabular}%
 }
@@ -244,9 +247,15 @@ Postulate~S.
 \label{sec:scope}
 
 The invariant set $\{\Omega,\beta,\KALz,P,K_v,T_r,M_v\}$ and its generators
-$\varphi,\pi$ are all \emph{dimensionless}. Two foundational postulates make
-precise what the framework derives and what it takes as input; both are stated
-here as pre-registered axioms rather than left implicit.
+$\varphi,\pi$ are all \emph{dimensionless}. What the framework derives and what
+it takes as input is made precise by \textbf{three postulates in total}, stated
+here as pre-registered axioms rather than left implicit: \textbf{two
+foundational} --- D (dimensional anchor) and S (saturation correspondence),
+given immediately below --- plus \textbf{one auxiliary} register-level
+postulate, I (inflationary register), given after them. A fourth, the former
+matter-factor postulate~M, is \emph{retired}; it is listed alongside I only to
+record what it was and why it no longer counts. This is the full assumption
+budget, and it is recapitulated at the end of the section.
 
 \paragraph{Postulate D (Dimensional Anchor).}
 Because the invariant set is dimensionless, \SSEE\ predicts only
@@ -328,7 +337,7 @@ D+S and are introduced as algebraic-register declarations:
         must be derived. The structural quantity
         $\mathrm{MIRA}=(3\varphi+\pi)/4=\mathrm{AURA}/2\simeq1.9989$ persists in
         the register \emph{only} as the screening amplitude in
-        $f_{\rm screen}=\alpha_K/(3\,\mathrm{MIRA})=(\pi-\varphi)/\Omega^2$
+        $f_{\rm screen}=\alpha_K^{\rm eff}/(3\,\mathrm{MIRA})=(\pi-\varphi)/\Omega^2$
         (Paper~9), consistent with its name (Mirror Ratio). The former
         geometric and MIRA forms $\simeq0.32$ are retired as the matter factor.
         The honest residue is that $\Omega_{m,\rm CMB}$ now rests on $\omega_b$
@@ -1067,7 +1076,7 @@ $\sum m_\nu^{\rm active}$ & $\mathcal{R}_2\,\Omega_b h^2\cdot93.14/(\tau_\Pi H_0
 is the canonical value of the structural constant.
 Following the 2026 reframe, MIRA serves as the \textit{screening amplitude}
 (algebraically fixed from $\{\varphi,\pi\}$ via $\beta=(\varphi+\pi)/2$; it
-enters $f_{\rm screen}=\alpha_K/(3\,\mathrm{MIRA})$, Paper~9), consistent with
+enters $f_{\rm screen}=\alpha_K^{\rm eff}/(3\,\mathrm{MIRA})$, Paper~9), consistent with
 its name (Mirror Ratio). It is no longer the sector-mapping operator: after the
 2026 $\omega_m$-direct reframe there is \emph{no} matter factor. The CMB matter
 density is the algebraic physical $\omega_m=\Omega_b h^2+\Omega_c h^2+\omega_\nu$,
@@ -1165,7 +1174,7 @@ left blank rather than forced. The canonical case of a promotion \emph{after}
 the data is $\mathrm{MIRA}$: its former interpretive ``reflection'' role
 (and the matter-factor mechanism once tracked as OP-8) was dissolved by the
 2026 $\omega_m$-direct reframe, and its surviving model role is the algebraic
-screening amplitude $f_{\rm screen}=\alpha_K/(3\,\mathrm{MIRA})$ of Paper~9
+screening amplitude $f_{\rm screen}=\alpha_K^{\rm eff}/(3\,\mathrm{MIRA})$ of Paper~9
 (OP-8 closed).
 
 \begin{table}[H]
@@ -1353,7 +1362,7 @@ Both were defined algebraically before any comparison with Planck 2018 data.
 MIRA's value $1.9989$ is fixed by the algebraic construction
 \citep{AlmeidaSSEE2026genesis}, independently of any Planck measurement. Under
 the 2026 $\omega_m$-direct reframe MIRA is the \emph{screening amplitude}
-(entering $f_{\rm screen}=\alpha_K/(3\,\mathrm{MIRA})$, Paper~9), consistent with
+(entering $f_{\rm screen}=\alpha_K^{\rm eff}/(3\,\mathrm{MIRA})$, Paper~9), consistent with
 its name (Mirror Ratio). There is no longer any CMB/dynamical matter ratio: the
 CMB matter density is the algebraic physical $\omega_m$, giving
 $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ independently of $\Omega_{m,\rm dyn}$

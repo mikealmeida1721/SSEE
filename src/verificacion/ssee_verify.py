@@ -1083,12 +1083,15 @@ try:
 
     def _r42(tx: str):
         _h = []
-        # (a) «H_0 = 3(φ+π)^2» sin unidad pegada a la combinación
+        # (a) «H_0 = 3(φ+π)^2» sin unidad PEGADA a la combinación.
+        # «Pegada» = sólo espaciado en medio (\, ~ espacio). Una unidad que aparece
+        # tras un «&» (columna siguiente de una tabla) o tras un «\approx 67.962»
+        # NO cuenta: no se distribuye hacia atrás, y deja la igualdad desnuda.
         for _m in _re.finditer(
                 r"H_0(?:\^\{?\\rm\s*\w+\}?)?\s*(?:&\s*)?[=]\s*"
                 r"3\s*\(\s*\\(?:varphi|phiG)\s*\+\s*\\pi\s*\)\s*\^\s*\{?2\}?"
                 r"(?P<cola>.{0,28})", tx):
-            if not _re.search(_UNID, _m.group("cola")):
+            if not _re.match(r"\s*(?:\\,|~|\\;|\\quad)?\s*" + _UNID, _m.group("cola")):
                 _h.append(("igualdad sin unidad", _m.group(0).replace("\n", " ")[:62]))
         # (b) adimensional dividido por una cantidad FÍSICA (H_0 con unidades).
         # Exención de MENCIÓN: un texto que explica por qué esa forma es incorrecta
@@ -1107,7 +1110,11 @@ try:
             (r"$H_0 = 3(\varphi+\pi)^2\,\kmsu \approx 67.962\,\kmsu$", False),
             (r"expression $(\pi-\varphi)/H_0^{\rm SSEE}$ gives", True),
             (r"expression $(\pi-\varphi)/[3(\varphi+\pi)^2]$ gives", False),
-            (r"we do not write it as $(\pi-\varphi)/H_0^{\rm SSEE}$: that would", False)]
+            (r"we do not write it as $(\pi-\varphi)/H_0^{\rm SSEE}$: that would", False),
+            # Falsos negativos REALES que la primera versión de R42 dejó pasar:
+            # la unidad estaba cerca, pero no pegada a la combinación.
+            (r"$H_0 = 3(\varphi+\pi)^2$ & $67.962\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$", True),
+            (r"$H_0 = 3(\varphi+\pi)^2 \approx 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$", True)]
     _f42 = [c for c, esp in _t42 if bool(_r42(c)) != esp]
     check("R42 el detector distingue número puro de cantidad física",
           not _f42, "; ".join(_f42) if _f42

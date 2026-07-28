@@ -319,5 +319,16 @@ unidades no puede igualar un irracional adimensional— sino una **similitud
 estructural**, cierta a la precisión que el dato publica.
 
 **Contramedida instalada:** guardián **R42** (tipo dimensional). Paper 1 quedó
-limpio; **41 sitios** siguen abiertos en el resto de la suite y se cierran
-documento por documento conforme la lectura llegue a cada uno.
+limpio; **49 sitios** siguen abiertos en el resto de la suite (P9 14, P3 8, P4 8,
+Unified 7, P10 6, P2 3, P5 1, Cover 1, Endorser 1) y se cierran documento por
+documento conforme la lectura llegue a cada uno.
+
+**Primera versión de R42 tenía un falso negativo** (corregido el mismo día): daba
+por buena una unidad que apareciera en cualquier punto de los 28 caracteres
+siguientes, con lo que aceptaba `$H_0 = 3(\varphi+\pi)^2$ & $67.962\,\mathrm{km...}$`
+—unidad en la **columna siguiente** de una tabla— y
+`$H_0 = 3(\varphi+\pi)^2 \approx 67.962$\,km\,s...` —unidad tras el **decimal**—.
+Ninguna de las dos se distribuye hacia atrás. Ahora la unidad debe ir **pegada**
+(sólo `\,`, `~`, `\;` o espacio en medio). Con el arreglo, la versión previa del
+Paper 1 arroja **8** hallazgos en vez de 5, e incluye la fila de tabla de la
+**página 4**, que ya estaba dada por cerrada.

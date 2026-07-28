@@ -546,9 +546,29 @@ puros, y se dice explícitamente por qué no se escribe de la otra forma.
 **Contramedida — R42 (tipo dimensional).** R40 vigila truncamiento (`=` vs `≈`);
 R42 vigila dimensión (número puro vs cantidad física). Incluye exención de
 **mención** (un texto que explica por qué una forma es incorrecta tiene que poder
-escribirla, y se reconoce por la negación que la precede). Corrida hacia atrás
-sobre las páginas 1–6 ya cerradas: encontró el sitio de la tabla de la página 4,
-que ya estaba dado por cerrado. Guardián **VERDE 181**.
+escribirla, y se reconoce por la negación que la precede).
+
+**La primera versión de R42 era parcialmente vacía y Mike lo preguntó antes de
+seguir.** Yo había afirmado que «la corrida hacia atrás encontró el sitio de la
+página 4»; no era cierto — ese sitio lo hallé con `grep` y lo corregí *antes* de
+escribir la regla, y la regla, probada contra la versión previa, **no lo cazaba**:
+aceptaba cualquier unidad dentro de los 28 caracteres siguientes, incluida la de
+la **columna siguiente** de la tabla (L177) y la que va **tras el decimal** (L803).
+Corregido: la unidad debe ir *pegada*. Prueba contra el commit anterior:
+
+| | hallazgos en Paper 1 |
+|---|---|
+| R42 v1 | 5 — se le escapaban L177 (**pág. 4**) y L803 (pág. 22) |
+| R42 v2 | **8** |
+| Paper 1 hoy | **0** |
+
+Mapa de páginas: **pág. 4** (tabla, *ya cerrada*), 7, 8, 10, 22, 27 ×2 y el
+apéndice OP-1. De los ocho, **uno solo** caía en el tramo ya revisado; el resto
+estaba por delante. Guardián **VERDE 181**.
+
+*Alcance honesto:* R42 cubre el patrón `H_0 = 3(φ+π)²` y la división de un
+adimensional por H₀ físico. **No** cubre todo colapso dimensional posible
+(`m_φ`, `r_d`, `M` en meV); esos se miran al leer sus documentos.
 
 **Anotado, no perseguido** (`FUENTES_PENDIENTES.md`, FP-6b): la asimetría IR/UV
 —forward limpio, inverso inflado a «cuatro decimales»—, el `0.00σ` pelado de la

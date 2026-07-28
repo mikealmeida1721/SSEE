@@ -96,10 +96,10 @@ $\pi$ and $\varphi$. These fundamental scales dictate the macroscopic behaviour 
   \item $\boldsymbol{\Omega}$ ($\pi+\varphi\approx4.7596$): Stability Metric.
   \item $\boldsymbol{\beta}$ ($(\pi+\varphi)/2\approx2.3798$): Base Coupling Scalar.
   \item $\boldsymbol{\KALz}$ ($\beta+\pi\approx5.5214$): Asymptotic Structural Viscosity.
-  \item $\boldsymbol{P}$ ($\Omega+\varphi\approx6.3776$): Dynamical Evolution Scalar.
-  \item $\boldsymbol{K_v}$ ($\varphi+\pi+\Omega\approx9.5192$): Structural Constraint Invariant.
+  \item $\boldsymbol{P}$ ($\Omega+\varphi\approx6.3777$): Dynamical Evolution Scalar.
+  \item $\boldsymbol{K_v}$ ($\varphi+\pi+\Omega\approx9.5193$): Structural Constraint Invariant.
   \item $\boldsymbol{T_r}$ ($3(\varphi+\beta)\approx11.9935$): 3D Saturation Horizon.
-  \item $\boldsymbol{M_v}$ ($\varphi+\pi+K_v\approx14.2788$): Maximal Dimensional Invariant.
+  \item $\boldsymbol{M_v}$ ($\varphi+\pi+K_v\approx14.2789$): Maximal Dimensional Invariant.
 \end{itemize}
 
 \subsection{Predictive Register}
@@ -583,11 +583,18 @@ $P_{sc} = 2\varphi+\pi$, and
 $K_v = 2(\varphi+\pi)$, both
 dark-energy observables collapse to closed forms in $\varphi$ and $\pi$ alone:
 \begin{equation}
-  \boxed{w_0 = -\frac{3\varphi+\pi}{2(\varphi+\pi)} = -0.8399},
+  \boxed{w_0 = -\frac{T_r}{M_v} = -\frac{3\varphi+\pi}{2(\varphi+\pi)} = -0.8399},
   \qquad
-  \boxed{w_a = -\frac{2\varphi+\pi}{2(\varphi+\pi)} = -0.6699}.
+  \boxed{w_a = -\frac{P}{I_g} = -\frac{2\varphi+\pi}{2(\varphi+\pi)} = -0.6700}.
   \label{eq:w0wa_explicit}
 \end{equation}
+Each value is shown with its \emph{lineage} first and its reduction in
+$\varphi,\pi$ second, in that order and never the reduction alone. The two
+denominators reduce to the same number, $2(\varphi+\pi)=9.5193$, but they are
+\emph{different entities}: $M_v=\varphi+\pi+K_v$ is the maximal dimensional
+invariant, while $I_g=\pi+P$ (IGNIS) is the saturation partner of the dynamical
+scalar. No numerical check can tell them apart---only the construction can---so
+the construction is what the equation carries.
 No fitting procedure is involved: these values are uniquely fixed by the geometry of $\varphi$ and $\pi$.
 The numerators $3\varphi+\pi$ and $2\varphi+\pi$ reflect the three- and two-fold
 contributions of $\varphi$ to the saturation horizon, while the common denominator
@@ -1307,11 +1314,11 @@ Symbol & Name & Definition & Value & Layer\\
 \midrule
 $\Omega$ & OMEGA / Stability Metric & $\varphi+\pi$ & 4.7596 & L1\\
 $\beta$  & BIAL / Base Coupling     & $(\varphi+\pi)/2$ & 2.3798 & L1\\
-$K_v$    & KRYSTOS$_V$ / Structural Constraint & $\varphi+\pi+\Omega$ & 9.5192 & L1\\
-$M_v$    & ATLAS / Maximal Invariant & $\varphi+\pi+K_v$ & 14.2788 & L1\\
+$K_v$    & KRYSTOS$_V$ / Structural Constraint & $\varphi+\pi+\Omega$ & 9.5193 & L1\\
+$M_v$    & ATLAS / Maximal Invariant & $\varphi+\pi+K_v$ & 14.2789 & L1\\
 \midrule
 $\mathrm{KAL}_0$ & Structural Viscosity & $\beta+\pi$ & 5.5214 & L2\\
-$P_{sc}$ & PYROS / Dynamical Scalar & $\Omega+\varphi$ & 6.3776 & L2\\
+$P_{sc}$ & PYROS / Dynamical Scalar & $\Omega+\varphi$ & 6.3777 & L2\\
 $T_r$    & TRIAL / Saturation Horizon & $3(\varphi+\beta)$ & 11.9935 & L2\\
 \bottomrule
 \end{tabular}

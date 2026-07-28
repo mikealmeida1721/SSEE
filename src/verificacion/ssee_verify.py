@@ -1936,6 +1936,17 @@ try:
         ]),
         "n_s (=1-phi^-7)": (1 - phi ** -7, [
             r"1-\\varphi\^\{-7\}\s*(?:&|)\s*=\s*([\d.]{5,})"]),
+        # 2026-07-27, lectura Paper 1 pág. 1: TRES de las siete constantes de la
+        # lista fundacional estaban TRUNCADAS, no redondeadas — 6.3776 por
+        # 6.3777, 9.5192 por 9.5193, 14.2788 por 14.2789. Corregidas en 14
+        # sitios de 5 documentos. Están en la primera página del paper que
+        # define el diccionario: es lo primero que un referee comprueba.
+        "P_sc (=Omega+phi)": (pi + 2 * phi, [
+            r"\\Omega\+\\varphi\\approx([\d.]+)"]),
+        "K_v (=phi+pi+Omega)": (2 * (phi + pi), [
+            r"\\varphi\+\\pi\+\\Omega\\approx([\d.]+)"]),
+        "M_v (=phi+pi+K_v)": (3 * (phi + pi), [
+            r"\\varphi\+\\pi\+K_v\\approx([\d.]+)"]),
         "alpha (=phi^4/3)": (phi ** 4 / 3, [
             r"\\frac\{\\varphi\^4\}\{3\}\s*(?:&|)\s*=\s*([\d.]{5,})"]),
     }

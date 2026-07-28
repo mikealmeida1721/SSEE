@@ -821,11 +821,35 @@ try:
                 # contra SH0ES 73.04 (dos decimales publicados) es falsa
                 # precisión, no rigor. Por eso el patrón excluye una unidad
                 # inmediatamente detrás: km/s/Mpc, Mpc, eV, meV, GeV, \kms.
-                _UNID = (r"(?!\s*(?:km|Mpc|eV|meV|GeV|\\kms|\\,\s*(?:km|Mpc|eV))"
-                         r"|\$?\s*(?:km|Mpc|eV|meV|GeV|\\kms))")
+                # NO exigir 6 decimales a una cantidad CON UNIDADES: se compara
+                # con un dato medido y lleva la precisión de ESE dato. Escribir
+                # H₀ con seis decimales frente a SH0ES 73.04 —publicado con
+                # dos— es falsa precisión, y vuelve incomparables los números.
+                # SEP cubre los separadores LaTeX reales entre número y unidad
+                # ($, ~, \\,, \\;, \\quad): la primera versión sólo contemplaba
+                # "$ km" y dejaba pasar "40.70$~eV" y "73.04\\,\\kms" — probado
+                # contra texto real, no supuesto. Auto-test abajo.
+                _SEP = r"(?:[\s$~]|\\[,;:!\s]|\\quad|\\qquad)*"
+                _UNI = r"(?:km|Mpc|eV|meV|GeV|\\kms|\\hMpc)"
+                _UNID = r"(?!" + _SEP + _UNI + r")"
                 if _re.search(r"=\s*(?:-|\\!-)?\s*" + _re.escape(_corto)
                               + r"(?![0-9])" + _UNID, _cont):
                     _mal37.append(f"{_tx.name}: {_k37}={_corto} (debe ser {_v37:.6f})")
+    # Auto-test de la exclusión: si el patrón deja de distinguir dimensional
+    # de adimensional, R37 se vuelve silenciosamente inútil (o destructivo).
+    _S = r"(?:[\s$~]|\\[,;:!\s]|\\quad|\\qquad)*"
+    _U = r"(?:km|Mpc|eV|meV|GeV|\\kms|\\hMpc)"
+    _X = r"(?!" + _S + _U + r")"
+    _CASOS = [(r"$H_0=67.962$ km\,s$^{-1}$", "67.962", False),
+              (r"$m_\varphi=40.70$~eV", "40.70", False),
+              (r"$H_0 = 73.04\,\kms$", "73.04", False),
+              (r"$K_v=9.5193$", "9.5193", True),
+              (r"$w_a=-0.6700$,", "0.6700", True)]
+    _bad = [c[0] for c in _CASOS
+            if bool(_re.search(r"=\s*-?\s*" + _re.escape(c[1]) + r"(?![0-9])" + _X, c[0])) != c[2]]
+    check("R37 la exclusión de cantidades CON UNIDADES funciona",
+          not _bad, "; ".join(_bad) if _bad
+          else "5 casos LaTeX reales: dimensionales ignoradas, adimensionales marcadas")
     check("R37 ninguna igualdad de constante SSEE con menos de 6 decimales",
           not _mal37,
           "; ".join(_mal37[:6]) if _mal37

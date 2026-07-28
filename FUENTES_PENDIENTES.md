@@ -278,3 +278,46 @@ Paper 6 denuncia al retirar `m_φ = Σm_ν × H_alg` («sólo funcionaba quitán
 unidades»). La lógica de fondo del pasaje **sí es honesta** (no se afirma el número
 puro como físico: se parte del dato medido y se des-apantalla); lo que falla es la
 frase. Se corrige al leer el Sealed y el PRD, **no antes**.
+
+### FP-6b · La asimetría IR/UV — verificada 2026-07-28
+
+Mike señaló que el reparo anterior sólo aplica a **una** de las dos direcciones, y
+tenía razón. Lo primero que había que descartar era la **circularidad**: si
+`α_K^full` heredara H₀ por vía de `ρ_crit`, derivar 67.962 desde SH0ES sería dar
+vueltas. **No la hay** — Paper 10 trabaja en unidades `ρ_crit = 1` (L209), donde
+`M_Pl²H² = 1/3` y `M⁴/ρ_crit = 5φ⁸ = 234.89` es número puro: **H₀ se cancela**. El
+único sitio donde `ρ_crit` arrastra H_alg es la conversión cosmética a `M = 9.68`
+meV (L601), que no entra en `α_K`. La cadena UV es φ y π de punta a punta.
+
+| dirección | qué entra | qué sale | estado |
+|---|---|---|---|
+| **forward (UV)** | álgebra (6 cifras) | `3(φ+π)²/(1−f_scr^UV) = 73.0400` vs dato `73.04` | **limpio** — se comparan las 4 c.s. que el dato tiene |
+| **inverso** | dato `73.04` (**4 c.s.**) | «reproduce `67.9621` **a cuatro decimales**» | **inflado** — el dato no sostiene 6 c.s., sólo `67.96` |
+
+La frase inflada está justamente en la dirección que **no** es la derivación, así
+que corregirla no toca el resultado.
+
+**Tres correcciones pendientes (al leer Sealed/PRD y Paper 10):**
+
+1. **Sealed:580-581 / PRD:573-574** — «reproducing the anchor to four decimals»
+   se contradice con la frase siguiente («the input is quoted at two»). `73.04`
+   tiene 4 cifras significativas; el producto sostiene `67.96`, no `67.9621`.
+   Bajar a dos decimales, o decir «a las cuatro cifras significativas del dato».
+2. **Paper 10, tabla L411** — vende un `0.00σ` pelado. Con `σ = 1.04` ese 1σ va de
+   **72.0 a 74.1**: casi cualquier valor cae dentro. Lo fuerte no es la σ sino
+   *«reproduce las cuatro cifras significativas del valor central publicado»*. El
+   Sealed ya lo dice bien («'to the quoted precision' rather than 'exactly'»); la
+   tabla no. Sustituir la celda por «central value to 4 s.f. (cond.)».
+3. **Sealed:585 / PRD:578** — el residuo `4×10⁻⁶ km/s/Mpc` **no se reproduce desde
+   ningún número impreso**: reconstruido con las propias ecuaciones de Paper 10
+   (`X_bg^UV = 0.36487`, `M⁴ = 234.89`, `α_K^IR = 0.403302`) da **1.3×10⁻⁵**; con
+   la `f = 0.069522` que imprime el Sealed, **2.4×10⁻⁵**. Recomputar `α_K^full` a
+   precisión completa y decidir cuántos dígitos mostrar.
+
+**Fraseo adoptado (palabra de Mike):** no es una igualdad —una cantidad con
+unidades no puede igualar un irracional adimensional— sino una **similitud
+estructural**, cierta a la precisión que el dato publica.
+
+**Contramedida instalada:** guardián **R42** (tipo dimensional). Paper 1 quedó
+limpio; **41 sitios** siguen abiertos en el resto de la suite y se cierran
+documento por documento conforme la lectura llegue a cada uno.

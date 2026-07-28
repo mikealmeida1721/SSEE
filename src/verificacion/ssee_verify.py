@@ -1061,6 +1061,71 @@ try:
 except Exception as e:
     check("R41 capa operable", False, str(e))
 
+# R42 — TIPO DIMENSIONAL: un número puro nunca IGUALA una cantidad física (2026-07-28).
+#
+#     H_0 = 3(φ+π)²            ✗  una tasa en km/s/Mpc igualada a un irracional puro
+#     H_0 = 3(φ+π)² km/s/Mpc   ✓  el número puro MULTIPLICA la unidad
+#
+# POR QUÉ EXISTE. La prosa de la suite lo dice bien desde hace tiempo — Postulado D:
+# «the *dimensionless* value is fixed algebraically, while the *absolute* scale is
+# not claimed to be derived» — pero la NOTACIÓN lo contradecía en 31 sitios con un
+# «=» pelado. Lo señaló Mike: «uno tiene unidades y otro es un número irracional,
+# así que es imposible que sean iguales; más que una igualdad, es una SIMILITUD
+# ESTRUCTURAL». Es el eje que R40 no cubre: R40 vigila truncamiento (= vs ≈),
+# R42 vigila DIMENSIÓN (número puro vs cantidad física).
+#
+# También caza la forma inversa: dividir un adimensional por una cantidad física,
+# como el viejo «Ω_b h² = (π−φ)/H_0^SSEE», que además haría la identidad dependiente
+# de la unidad elegida para H_0.
+print("\nCapa R42 — tipo dimensional: número puro vs cantidad física")
+try:
+    _UNID = r"(?:\\kmsu|\\kms\b|km\s*\\,?\s*s|\\mathrm\{km|\\text\{km)"
+
+    def _r42(tx: str):
+        _h = []
+        # (a) «H_0 = 3(φ+π)^2» sin unidad pegada a la combinación
+        for _m in _re.finditer(
+                r"H_0(?:\^\{?\\rm\s*\w+\}?)?\s*(?:&\s*)?[=]\s*"
+                r"3\s*\(\s*\\(?:varphi|phiG)\s*\+\s*\\pi\s*\)\s*\^\s*\{?2\}?"
+                r"(?P<cola>.{0,28})", tx):
+            if not _re.search(_UNID, _m.group("cola")):
+                _h.append(("igualdad sin unidad", _m.group(0).replace("\n", " ")[:62]))
+        # (b) adimensional dividido por una cantidad FÍSICA (H_0 con unidades).
+        # Exención de MENCIÓN: un texto que explica por qué esa forma es incorrecta
+        # tiene que poder escribirla. Se reconoce por la negación que la precede.
+        for _m in _re.finditer(r"\(\s*\\pi\s*-\s*\\(?:varphi|phiG)\s*\)\s*/\s*H_0", tx):
+            if _re.search(r"\b(?:not|rather than|instead of|never)\b",
+                          tx[max(0, _m.start() - 90):_m.start()], _re.I):
+                continue
+            _h.append(("adimensional / cantidad física", _m.group(0)[:62]))
+        return _h
+
+    # Auto-test: los dos casos REALES que la originaron, y sus formas corregidas.
+    _t42 = [(r"anchor $H_0=3(\varphi+\pi)^2$ (derived, Paper~9) --- leaving", True),
+            (r"anchor $H_0=3(\varphi+\pi)^2\,\kmsu$ (derived, Paper~9)", False),
+            (r"$H_0 = 3(\varphi+\pi)^2 \approx 67.962$ and nothing else here", True),
+            (r"$H_0 = 3(\varphi+\pi)^2\,\kmsu \approx 67.962\,\kmsu$", False),
+            (r"expression $(\pi-\varphi)/H_0^{\rm SSEE}$ gives", True),
+            (r"expression $(\pi-\varphi)/[3(\varphi+\pi)^2]$ gives", False),
+            (r"we do not write it as $(\pi-\varphi)/H_0^{\rm SSEE}$: that would", False)]
+    _f42 = [c for c, esp in _t42 if bool(_r42(c)) != esp]
+    check("R42 el detector distingue número puro de cantidad física",
+          not _f42, "; ".join(_f42) if _f42
+          else "7 casos reales: «=» sin unidad, adimensional/H_0 físico y su mención negada")
+
+    _mal42 = []
+    for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
+                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+        for _por, _frag in _r42(_tx.read_text(errors="ignore")):
+            _mal42.append(f"{_tx.name}: {_por} — «{_frag}»")
+    # Sólo Paper 1 está leído; el resto queda anotado en FP-6 y se cierra al llegar.
+    _mal42_p1 = [m for m in _mal42 if m.startswith("SSEE_Paper1_")]
+    check("R42 Paper 1 — ninguna igualdad entre número puro y cantidad física",
+          not _mal42_p1, "; ".join(_mal42_p1[:5]) if _mal42_p1
+          else f"Paper 1 limpio ({len(_mal42)} sitios pendientes en el resto, FP-6)")
+except Exception as e:
+    check("R42 capa operable", False, str(e))
+
 # R40 — TIPO DE RELACIÓN: el signo dice qué clase de afirmación es (2026-07-27).
 # Las matemáticas son un lenguaje sin ambigüedad; «=» y «≈» no son dos grados de
 # lo mismo, son relaciones distintas:

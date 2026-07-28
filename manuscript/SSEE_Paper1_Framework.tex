@@ -27,6 +27,10 @@
 \newcommand{\OmDE}{\Omega_{\mathrm{DE}}}
 \newcommand{\Migimf}{M^{\mathrm{IGIMF}}_{\mathrm{bar}}}
 \newcommand{\Mobs}{M^{\mathrm{obs}}_{\mathrm{dyn}}}
+% Unidad del ancla de Hubble.  El anclaje dimensional se escribe SIEMPRE como el
+% numero puro 3(phi+pi)^2 MULTIPLICANDO esta unidad: escribir "H_0 = 3(phi+pi)^2"
+% a secas igualaria una tasa fisica con un irracional adimensional (guardian R42).
+\newcommand{\kmsu}{\mathrm{km\,s^{-1}\,Mpc^{-1}}}
 
 \title{\textbf{A Minimal-Parameter Framework for Cosmological Dynamics\\
 and Galaxy Cluster Mass Discrepancies via\\
@@ -174,7 +178,7 @@ $(w_0,w_a)$ vs DESI DR3 & same fixed point & DR3 $w_0w_a$CDM (2027); ${>}3\sigma
 $\omega_c = \mathrm{KAL}_0\,\omega_b\,n_s$ & $0.119514$ & Planck 2018 & Retrodiction \\
 $\Omega_{m,\mathrm{CMB}} = \omega_m/h^2$ & $0.308881$ & Planck 2018 & Retrodiction \\
 $n_s = 1-\varphi^{-7}$ & $0.965558$ & Planck 2018 & Retrodiction \\
-$H_0 = 3(\varphi+\pi)^2$ & $67.962\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & Planck 2018 & Global background anchor (Post.~D) \\
+$H_0 = 3(\varphi+\pi)^2\,\kmsu$ & $67.962\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & Planck 2018 & Global background anchor (Post.~D) \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 5 — IS causal perturbation theory}} \\
 $\gamma_{\mathrm{IS}}$ & $0.550$ & RSD surveys ($\gamma_{\Lambda\mathrm{CDM}}=0.55$) & Retrodiction \\
@@ -366,7 +370,7 @@ D+S and are introduced as algebraic-register declarations:
         matching Planck at $0.41\sigma$), and $\omega_\nu=\Sigma m_\nu/93.14$.
         The CMB matter fraction is then \emph{derived},
         $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ at the global anchor
-        $H_0=3(\varphi+\pi)^2\simeq67.962$, and the dynamical fraction
+        $H_0=3(\varphi+\pi)^2\,\kmsu\simeq67.962\,\kmsu$, and the dynamical fraction
         $\Omega_{m,\rm dyn}=0.160$ (DESI) and $\omega_m$ (CMB) are two
         \emph{independent} algebraic predictions rather than a postulated pair.
         This \textbf{closes OP-8}: there is no factor whose dynamical mechanism
@@ -439,7 +443,7 @@ In CMB-likelihood terms this is a $k=2$ fit: of $\Lambda$CDM's six fitted
 parameters $(\Omega_m,\Omega_b,n_s,A_s,\tau,H_0)$, SSEE fixes four
 algebraically --- $\Omega_b$ via $\omega_b$ (OP-1), $\Omega_m$ via
 $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$, $n_s=1-\varphi^{-7}$, and the expansion
-anchor $H_0=3(\varphi+\pi)^2$ (derived, Paper~9) --- leaving exactly two free,
+anchor $H_0=3(\varphi+\pi)^2\,\kmsu$ (derived, Paper~9) --- leaving exactly two free,
 the primordial amplitude $A_s$ and the optical depth $\tau$. This $k=2$ vs $k=6$
 count is the one used in the Paper~3 Bayesian model comparison. The two
 dark-sector ans\"atze listed above ($m_\phi$, OP-9; $\xi$, OP-11) are extension
@@ -540,7 +544,7 @@ $\Omega_{m,\rm CMB}\,h^2=\omega_m$. Matching the Planck-measured
 $r_d\simeq 147$~Mpc in \emph{both} contexts is a non-trivial consistency test.
 
 \paragraph{The CMB-sector matter density under the single global anchor.}
-With a single background anchor $H_0=3(\varphi+\pi)^2\simeq 67.962$, the CMB
+With a single background anchor $H_0=3(\varphi+\pi)^2\,\kmsu\simeq 67.962\,\kmsu$, the CMB
 matter density is the standard physical $\omega_m$, built from algebraic
 register pieces (Postulate~M, retired):
 \begin{equation}
@@ -800,7 +804,7 @@ This allows lensing peaks to track galaxies, consistent with QUMOND simulations
 \citep{Angus2007}.
 
 \paragraph{Open problem: dimensional connection to fundamental scales.}
-The algebraic prediction $H_0 = 3(\varphi+\pi)^2 \approx 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$
+The algebraic prediction $H_0 = 3(\varphi+\pi)^2\,\kmsu \approx 67.962\,\kmsu$
 fixes the \emph{dimensionless} Hubble value and serves as the single dimensional
 anchor of Postulate~D (see Appendix~\ref{app:derivation_chain}, footnote~$\dagger$);
 what is \emph{not} claimed is a derivation of its \emph{absolute} scale, since no
@@ -1137,7 +1141,7 @@ $\Omega_c h^2 = 5.521406\times0.02242\times0.96556 = 0.119514$ ($0.41\sigma$ fro
 \footnotesize $^\S$ Canonical CMB-sector matter density ($\omega_m$-direct reframe, 2026):
 $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ with $\omega_m=\Omega_b h^2+\Omega_c h^2
 +\omega_\nu=0.14267$ algebraic, at the single global anchor
-$H_0=3(\varphi+\pi)^2\simeq67.962$. No matter factor (OP-8 closed). A Planck
+$H_0=3(\varphi+\pi)^2\,\kmsu\simeq67.962\,\kmsu$. No matter factor (OP-8 closed). A Planck
 \texttt{plik\_lite} TTTEEE evaluation gives $\chi^2_{\rm SSEE}=1005.4$ vs
 $\chi^2_{\Lambda\rm CDM}=1003.8$, $\Delta\mathrm{BIC}=-24.0$ (the full
 \texttt{plik} MCMC gives the canonical $-32.9$). Earlier register
@@ -1146,7 +1150,7 @@ $\Omega_{m,\rm dyn}\times\mathrm{MIRA}=0.31993$, and an intermediate factor
 $\pi/\varphi$ giving $0.31076$ --- are all superseded by the $\omega_m$-direct
 construction.
 
-\footnotesize $^\dagger$ $H_0=3(\varphi+\pi)^2\approx67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$
+\footnotesize $^\dagger$ $H_0=3(\varphi+\pi)^2\,\kmsu\approx67.962\,\kmsu$
 is the \textbf{global background anchor} (Postulate~D): the adimensional
 combination $3(\varphi+\pi)^2$ supplies the Hubble constant in
 km\,s$^{-1}$\,Mpc$^{-1}$ units --- a single dimensionful input shared by every
@@ -1452,13 +1456,20 @@ SSEE algebraic value; this comparison was made after the axiom was committed.
 
 \subsection*{Baryon density $\Omega_b h^2 = (\pi-\varphi)/[3(\varphi+\pi)^2]$}
 
-The structural expression $(\pi-\varphi)/[3(\varphi+\pi)^2] = (\pi-\varphi)/H_0^{\rm SSEE}$
+The structural expression $(\pi-\varphi)/[3(\varphi+\pi)^2]$
 gives $0.02242$, at $0.32\sigma$ from Planck~2018 ($0.02237\pm0.00015$).
+Both sides are pure numbers, as they must be: $\Omega_b h^2$ is dimensionless and
+so is the ratio on the right.  The denominator is numerically the anchor read in
+$\kmsu$, $H_0^{\rm SSEE}/\kmsu = 3(\varphi+\pi)^2$, but we do \emph{not} write the
+relation as $(\pi-\varphi)/H_0^{\rm SSEE}$: that would divide a dimensionless
+number by a rate, and would make the identity depend on the unit chosen for
+$H_0$.  The content is the pure-number relation, not a division by a physical
+Hubble rate.
 This form is classified as a \emph{retrodiction}: it was identified after the data
 (OP-1, \texttt{OPEN\_PROBLEMS.md}), replacing the preliminary placeholder
 $3(\pi-\varphi)/200 = 0.02285$ ($3.2\sigma$), in which the factor $200$ was not an
 algebraic $\{\varphi,\pi\}$ quantity. No parameter is fitted: the denominator
-$3(\varphi+\pi)^2$ is the algebraic Hubble scale $H_0^{\rm SSEE}$.
+$3(\varphi+\pi)^2$ is the algebraic combination that supplies the Hubble anchor.
 
 
 %=====================================================================

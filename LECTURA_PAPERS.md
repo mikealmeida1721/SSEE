@@ -516,3 +516,41 @@ para w₀ y 1 para wₐ. Y la robustez: extendiendo el diccionario a 664 razones
 - Los Papers muestran menos decimales que los consolidados (0.4033 vs 0.403302).
   No es error —son redondeos correctos— pero R30 ya vigila las 9 anclas en los
   18 documentos.
+
+---
+
+## Segunda pasada — Paper 1, página 7 (aviso previo: el ancla H₀)
+
+Antes de entrar a la página 7 Mike hizo la pregunta que cerró un hueco de tipo
+**dimensional**, no numérico:
+
+> «Recuerda que está el H con unidades y el sin unidades — ese sí es el algebraico.
+> `3(φ+π)²` es un número puro; el que tiene unidades es el H_global derivado desde
+> SH0ES. No digo que sean iguales: más bien es una **similitud estructural**.»
+
+**Lo que quedó en pie.** La prosa ya lo dice desde el Postulado D («the
+*dimensionless* value is fixed algebraically, while the *absolute* scale is not
+claimed to be derived»). No había que corregir física.
+
+**Lo que cambió — la notación contradecía a la prosa.** Se escribía
+`H_0 = 3(φ+π)²` con «=» pelado: una tasa en km/s/Mpc igualada a un irracional
+adimensional. Corregido en **Paper 1** (7 sitios) a `H_0 = 3(φ+π)² km s⁻¹ Mpc⁻¹`,
+con macro `\kmsu` para que la unidad no se pierda al copiar la expresión.
+
+**Hallazgo adicional, apéndice OP-1 (L1458).** Se leía
+`Ω_b h² = (π−φ)/[3(φ+π)²] = (π−φ)/H_0^SSEE`: la segunda forma divide un
+adimensional por una tasa física, y además haría la identidad **dependiente de la
+unidad elegida para H₀**. Reescrito: el contenido es la relación entre números
+puros, y se dice explícitamente por qué no se escribe de la otra forma.
+
+**Contramedida — R42 (tipo dimensional).** R40 vigila truncamiento (`=` vs `≈`);
+R42 vigila dimensión (número puro vs cantidad física). Incluye exención de
+**mención** (un texto que explica por qué una forma es incorrecta tiene que poder
+escribirla, y se reconoce por la negación que la precede). Corrida hacia atrás
+sobre las páginas 1–6 ya cerradas: encontró el sitio de la tabla de la página 4,
+que ya estaba dado por cerrado. Guardián **VERDE 181**.
+
+**Anotado, no perseguido** (`FUENTES_PENDIENTES.md`, FP-6b): la asimetría IR/UV
+—forward limpio, inverso inflado a «cuatro decimales»—, el `0.00σ` pelado de la
+tabla L411 de Paper 10 y el residuo `4×10⁻⁶` no reproducible. **41 sitios** de
+`=` sin unidad siguen abiertos en el resto de la suite.

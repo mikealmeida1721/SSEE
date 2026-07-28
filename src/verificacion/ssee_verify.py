@@ -815,7 +815,16 @@ try:
         for _k37, _v37 in _C37.items():
             for _d37 in range(2, 6):
                 _corto = f"{_v37:.{_d37}f}"
-                if _re.search(r"=\s*(?:-|\\!-)?\s*" + _re.escape(_corto) + r"(?![0-9])", _cont):
+                # NO exigir 6 decimales a una cantidad CON UNIDADES: se
+                # compara con un dato medido y debe llevar la precisión de ESE
+                # dato, no la del álgebra. Comparar un número de 6 decimales
+                # contra SH0ES 73.04 (dos decimales publicados) es falsa
+                # precisión, no rigor. Por eso el patrón excluye una unidad
+                # inmediatamente detrás: km/s/Mpc, Mpc, eV, meV, GeV, \kms.
+                _UNID = (r"(?!\s*(?:km|Mpc|eV|meV|GeV|\\kms|\\,\s*(?:km|Mpc|eV))"
+                         r"|\$?\s*(?:km|Mpc|eV|meV|GeV|\\kms))")
+                if _re.search(r"=\s*(?:-|\\!-)?\s*" + _re.escape(_corto)
+                              + r"(?![0-9])" + _UNID, _cont):
                     _mal37.append(f"{_tx.name}: {_k37}={_corto} (debe ser {_v37:.6f})")
     check("R37 ninguna igualdad de constante SSEE con menos de 6 decimales",
           not _mal37,

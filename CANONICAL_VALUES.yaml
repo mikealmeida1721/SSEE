@@ -363,6 +363,17 @@ rounding_policy:
   # LECCIÓN: «es ruido» es la excusa por defecto ante una discrepancia pequeña.
   # Antes de usarla hay que probar que la fuente de ruido EXISTE. Con semilla
   # fija no existe, y la discrepancia siempre significa algo.
+  # ── DIMENSIONALES: la precisión la fija el DATO, no el álgebra ────────
+  # Los 6/12 decimales rigen para las constantes PURAS en φ,π (adimensionales:
+  # Ω, β, KAL₀, P_sc, K_v, T_r, M_v, w₀, wₐ, AURA). Una cantidad CON UNIDADES
+  # se compara contra una medición y debe llevar la precisión de ESA medición:
+  # escribir H₀ con seis decimales frente a SH0ES 73.04 —publicado con dos— no
+  # es rigor, es falsa precisión, y además hace incomparables los dos números.
+  # Regla: dimensional → hasta el decimal que el dato de comparación sostiene.
+  #   H₀ ancla algebraica  → 67.962   (3 dec; el dato Planck trae ±0.54)
+  #   H₀ local SH0ES       → 73.04    (2 dec, como lo publicó Riess+2022)
+  #   m_φ                  → 40.70 eV (2 dec)
+  # R37 no exige 6 decimales cuando detecta una unidad detrás del número.
   mcmc_posterior_decimals: 2      # se publica 67.79 ± 0.35, no 67.7872 ± 0.352
   mcmc_posterior_rule: >
     Un posterior se publica hasta el dígito que fija su propia barra de error

@@ -242,3 +242,39 @@ da 0.067253; α_K^field da 0.012101, factor 5.6 fuera— así que el símbolo se
 marcó `α_K^{\rm eff}` en P1(4), P4(1), P7(1), P8(2), Sealed(2), PRD(2).
 **Paper 9 y 10 NO se tocaron**: son los que *derivan* la fórmula, con el símbolo
 definido localmente, y se revisan al llegar a ellos.
+
+---
+
+## FP-6 · El ancla H₀: número puro vs cantidad física — SEPARAR AL LEER CADA DOCUMENTO
+
+- **Dónde:** las 123 apariciones de `67.962` en la suite; el pasaje crítico en
+  `SSEE_Sealed_Journal.tex:565-574` y su gemelo `SSEE_PRD.tex:558-567`.
+- **Estado:** 🟡 **abierto, decidido el criterio — se aplica leyendo, no barriendo**
+- **Decisión de Mike (2026-07-27):** separar los dos objetos.
+
+**Los dos objetos.** El Postulado D ya los distingue («the *dimensionless* value
+is fixed algebraically, while the *absolute* scale is not claimed to be derived»):
+
+| | qué es | precisión que le toca |
+|---|---|---|
+| `3(φ+π)² = 67.962137…` | **número puro**, álgebra SSEE | 6 decimales |
+| `H₀ = 67.96 km/s/Mpc` | cantidad **física**, vs Planck 67.36±0.54 | la del dato |
+
+**Por qué NO se barre automáticamente.** Se simuló con el criterio «¿lleva unidad
+detrás?» y clasificó **75 apariciones como adimensionales que no lo son**: son H₀
+físico con la unidad omitida por brevedad (la cascada `H_local=72.86`, la división
+`67.962/(1−0.0673)`, «the chain recovers the anchor»). El criterio sintáctico no
+distingue el *número* de la *cantidad*; hace falta leer. Forzarlo con una regex
+introduciría 75 errores para corregir uno. **Se separa documento por documento
+conforme la lectura llegue a cada uno.**
+
+**Hallazgo asociado — comparar un número puro con una cantidad dimensional.**
+El Sealed/PRD declara que `3(φ+π)²=67.962` «is a pure number with no units» y
+catorce líneas después escribe: «`H₀^SH0ES(1−f_scr)=68.13 km/s/Mpc`, within
+**0.17σ of the pure number** 67.962». La aritmética es correcta
+(0.168 / [1.04×(1−0.06725)] = 0.173σ), pero la comparación sólo cierra si al
+«número puro» se le adscriben calladamente las unidades — el mismo pecado que el
+Paper 6 denuncia al retirar `m_φ = Σm_ν × H_alg` («sólo funcionaba quitándoles las
+unidades»). La lógica de fondo del pasaje **sí es honesta** (no se afirma el número
+puro como físico: se parte del dato medido y se des-apantalla); lo que falla es la
+frase. Se corrige al leer el Sealed y el PRD, **no antes**.

@@ -890,47 +890,95 @@ except Exception as e:
 print("\nCapa R38 — igualdades que cruzan celdas de tabla")
 try:
     def _r38(linea: str, consts: dict):
-        """Devuelve los (nombre, texto) que violan la política en una fila."""
+        """(nombre, texto, motivo) de cada valor mal escrito en una fila de tabla.
+
+        Una fila afirma una igualdad de DOS formas, y las dos cuentan:
+          a) el signo «=» aparece en la columna 1  —  «$r = \\varphi^{-10}$ & …»
+          b) la columna 2 ES la fórmula            —  «$K_v$ & $\\varphi+\\pi+\\Omega$ & …»
+        La (b) no escribe ningún «=» y afirma exactamente lo mismo. R30 se la
+        perdía porque sus patrones exigen «\\approx» pegado a la fórmula, y R38
+        también, porque miraba sólo la columna 1: así sobrevivieron CUATRO
+        valores MAL REDONDEADOS en la tabla de símbolos del Paper 1
+        (β 2.379814→2.379813, K_v y I_g 9.519254→9.519253, T_r ...541→...542).
+        """
         if "&" not in linea or linea.lstrip().startswith("%"):
             return []
-        _c1 = linea.split("&")[0]
-        # sólo una igualdad ESTRICTA: «≈/≃/∼» declaran lectura rápida (R30)
-        if "=" not in _c1 or any(s in _c1 for s in ("\\approx", "\\simeq", "\\sim")):
+        _cols = linea.split("&")
+        _c1 = _cols[0]
+        # «≈/≃/∼» declaran lectura rápida: exentos de la política de 6 decimales
+        if any(s in _c1 for s in ("\\approx", "\\simeq", "\\sim")):
+            return []
+        # ¿La columna 2 es una FÓRMULA? No basta buscar \varphi/\pi literales: la
+        # fila «$w_0$ & $-T_r/M_v$ & — & $-0.8400$» del Paper 7 está escrita con
+        # símbolos DERIVADOS y se escapaba — y su valor está mal redondeado
+        # (exacto −0.839950 → −0.8399, no −0.8400). Se acepta como fórmula toda
+        # celda en modo matemático que lleve un operador o un símbolo de registro.
+        _c2 = _cols[1] if len(_cols) > 1 else ""
+        _formula = bool(
+            "$" in _c2 and _re.search(
+                r"\\varphi|\\phiG|\\pi\b|\\Omega|\\Omde|\\sqrt|\\AURA|\\MIRA|\\KAL"
+                r"|\\mathrm\{KAL|\\beta|T_r|M_v|K_v|P_\{sc\}|I_g|[+^]|(?<=[a-z}])/",
+                _c2))
+        if "=" not in _c1 and not _formula:
             return []
         _out = []
         for _m in _re.finditer(r"\$-?(\d+\.(\d+))\$", linea):
-            if _re.match(r"^\s*(?:\}|\$)?\s*(?:km|Mpc|eV|meV|GeV|\\kms|\\hMpc)",
-                         linea[_m.end():]):
+            _resto = linea[_m.end():]
+            if _re.match(r"^\s*(?:\}|\$)?\s*(?:km|Mpc|eV|meV|GeV|\\kms|\\hMpc)", _resto):
                 continue                      # dimensional: lleva la precisión del dato
+            if _resto.lstrip().startswith("\\ldots") or "\\ldots" in _m.group(0):
+                continue                      # truncamiento EXPLÍCITO: «2.37981\ldots» es honesto
             _v, _d = float(_m.group(1)), len(_m.group(2))
-            if _d >= 6:
-                continue
             for _k, _e in consts.items():
-                if abs(_v - abs(_e)) < 10 ** -_d * 0.6:
-                    _out.append((_k, _m.group(1)))
-                    break
+                # Ventana de IDENTIFICACIÓN (¿de qué constante habla esta celda?),
+                # no de aceptación. Iba en 0.6·10⁻ᵈ y por eso NO veía justo el
+                # error que busca: un valor mal redondeado en el último dígito
+                # dista hasta 1.5·10⁻ᵈ del exacto, y quedaba fuera de la ventana.
+                # Con 2·10⁻ᵈ entra, y el veredicto lo da la comparación de abajo.
+                if abs(_v - abs(_e)) >= 10 ** -_d * 2:
+                    continue
+                # (1) lo grave: el valor mostrado NO es el redondeo correcto
+                if f"{abs(_e):.{_d}f}" != _m.group(1):
+                    _out.append((_k, _m.group(1), f"MAL REDONDEADO → {abs(_e):.{_d}f}"))
+                # (2) la política: una igualdad se muestra a 6 decimales
+                elif _d < 6:
+                    _out.append((_k, _m.group(1), f"{_d} dec → {abs(_e):.6f}"))
+                break
         return _out
 
-    # Auto-test con el caso REAL que originó la regla, en sus dos formas.
-    _T = {"r": phi ** -10}
-    _t38 = [(r"$r = \varphi^{-10}$ & $0.00813$ & LiteBIRD & Prediction \\", True),
-            (r"$r = \varphi^{-10}$ & $0.008131$ & LiteBIRD & Prediction \\", False),
-            (r"$r \approx \varphi^{-10}$ & $0.00813$ & LiteBIRD & Prediction \\", False),
-            (r"$m=\varphi$ & $0.00813$ eV & x & y \\", False)]
+    # Auto-test con los casos REALES que originaron la regla y su ampliación.
+    _T = {"r": phi ** -10, "K_v": 2 * (phi + pi), "beta": (phi + pi) / 2}
+    _t38 = [
+        # (a) el «=» en la columna 1 — el caso original
+        (r"$r = \varphi^{-10}$ & $0.00813$ & LiteBIRD & Prediction \\", True),
+        (r"$r = \varphi^{-10}$ & $0.008131$ & LiteBIRD & Prediction \\", False),
+        (r"$r \approx \varphi^{-10}$ & $0.00813$ & LiteBIRD & Prediction \\", False),
+        (r"$m=\varphi$ & $0.00813$ eV & x & y \\", False),
+        # (b) sin «=»: la columna 2 ES la fórmula — el caso que se escapó
+        (r"$K_v$ & $\varphi+\pi+\Omega$ & $9.519254$ & x & A \\", True),   # mal redondeado
+        (r"$K_v$ & $\varphi+\pi+\Omega$ & $9.519253$ & x & A \\", False),  # correcto
+        (r"$\beta$ & $(\varphi+\pi)/2$ & $2.379814$ & x & A \\", True),    # mal redondeado
+        (r"$\beta$ & $(\varphi+\pi)/2$ & $2.37981\ldots$ & x \\", False),  # truncamiento explícito
+    ]
     _f38 = [c for c, esp in _t38 if bool(_r38(c, _T)) != esp]
-    check("R38 el detector distingue política de redondeo",
+    check("R38 el detector cubre las dos formas de igualdad en tabla",
           not _f38, "; ".join(_f38) if _f38
-          else "4 filas reales: corta marcada, 6-dec limpia, «≈» exenta, unidad exenta")
+          else "8 filas reales: «=» en col.1 y fórmula en col.2; «≈», unidad y "
+               "\\ldots exentos; distingue mal-redondeo de política")
 
     _mal38 = []
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
                       + list((_REPO / "submission_PRD").glob("*.tex"))):
         for _i, _l in enumerate(_tx.read_text(errors="ignore").split("\n"), 1):
-            for _k, _txt in _r38(_l, _C37):
-                _mal38.append(f"{_tx.name}:{_i} {_k}={_txt} (→ {abs(_C37[_k]):.6f})")
+            for _k, _txt, _por in _r38(_l, _C37):
+                _mal38.append(f"{_tx.name}:{_i} {_k}={_txt} [{_por}]")
+    _grave = [m for m in _mal38 if "MAL REDONDEADO" in m]
+    check("R38 ninguna fila de tabla con valor MAL REDONDEADO",
+          not _grave, "; ".join(_grave[:6]) if _grave
+          else "todas las filas símbolo|fórmula|valor reproducen su redondeo")
     check("R38 ninguna fila de tabla con igualdad a menos de 6 decimales",
           not _mal38, "; ".join(_mal38[:6]) if _mal38
-          else "filas con «=» en la columna 1 verificadas en toda la suite")
+          else "política de 6 decimales cumplida en las tablas de la suite")
 except Exception as e:
     check("R38 capa operable", False, str(e))
 

@@ -105,6 +105,16 @@ $\pi$ and $\varphi$. These fundamental scales dictate the macroscopic behaviour 
   \item $\boldsymbol{M_v}$ ($\varphi+\pi+K_v\approx14.2789$): Maximal Dimensional Invariant.
 \end{itemize}
 
+These seven are the structural registers proper. One further register is needed
+below and is introduced here so that no symbol appears before its definition:
+$\boldsymbol{I_g}=\pi+P\approx9.5193$, the \emph{saturation partner} of the
+dynamical scalar $P$, which is the denominator of $w_a$. It carries the same
+\emph{value} as $K_v$ ($9.519253$) while descending from a different
+construction, and the two are not interchangeable --- $K_v$ is a constraint
+invariant, $I_g$ a saturation partner. Sharing a value is not being the same
+object, and throughout this work the lineage, not the number, identifies a
+register (Appendix~\ref{app:lineage}).
+
 \subsection{Predictive Register}
 \label{sec:register}
 
@@ -113,10 +123,12 @@ combinations are chosen post-hoc to reproduce known values.
 The defence against this is \emph{structural}, not chronological: the constants are
 drawn from a closed dictionary fixed by construction---no optimisation over formula
 space is performed. A look-elsewhere scan over the \emph{complete} closed dictionary
-of named $(\varphi,\pi)$ constants yields $490$ distinct ratios in $(0,5]$, and each
-background equation-of-state value is matched by a \emph{unique} one at machine
-precision---a $1$-in-$490$ specificity (at $\pm0.0005$, the exact-identity tolerance
-$|d|=0$) that persists when the full dictionary,
+of named $(\varphi,\pi)$ constants yields $490$ distinct ratios in $(0,5]$. Each
+background equation-of-state value is then searched for with a \emph{deliberately
+generous} tolerance of $\pm0.0005$ --- and exactly \emph{one} of the $490$ ratios
+falls inside it, which moreover matches to machine precision ($|d|<10^{-16}$).
+The tolerance is generous and the hit is exact: that is the $1$-in-$490$
+specificity, and it persists when the full dictionary,
 not a hand-picked subset, is scanned (reproducible via
 \texttt{look\_elsewhere\_full.py}). Table~\ref{tab:register}
 classifies each derivation by epistemic status. We make no claim of temporal priority
@@ -129,7 +141,8 @@ is a test it must survive without adjustment. Between DR1 and DR2 the
 $(w_0,w_a)$ constraint tightened appreciably---from
 $w_0=-0.827\pm0.063$, $w_a=-0.75^{+0.29}_{-0.25}$ \citep{DESI2024VI} to
 $w_0=-0.838\pm0.055$, $w_a=-0.617\pm0.208$ \citep{AbdulKarim2025}, a reduction of
-${\sim}35\%$ in the area of the $68\%$ contour---and the fixed point stayed
+${\sim}33\%$ in the area of the $68\%$ contour (comparing $\sigma_{w_0}\!\times\!\sigma_{w_a}$
+with the mean of the asymmetric DR1 error on $w_a$: $0.063\times0.27\to0.055\times0.208$)---and the fixed point stayed
 inside it, moving from $0.05\sigma$ against DR1 to $0.24\sigma$ against the
 tighter DR2 (Pantheon+-class). Because the point is immobile, the tension scales
 as the inverse of the error bar, so the pre-registered arithmetic is explicit:
@@ -1046,29 +1059,29 @@ $\pi$     & Archimedes constant & $3.141593$ & All & A \\
 \midrule
 \multicolumn{5}{l}{\textit{Level 1 — Primary Registers}} \\
 $\Omega$ & $\varphi + \pi$ & $4.759627$ & Stability metric & A \\
-$\beta$   & $(\varphi+\pi)/2$ & $2.379814$ & Base coupling & A \\
+$\beta$   & $(\varphi+\pi)/2$ & $2.379813$ & Base coupling & A \\
 $P_{sc}$  & $\Omega+\varphi$ & $6.377661$ & Dyn.\ evolution & A \\
 AURA      & $\varphi+\beta$ & $3.997847$ & Resonance limit & A \\
 \midrule
 \multicolumn{5}{l}{\textit{Level 2 — Secondary Registers}} \\
 $\mathrm{KAL}_0$ & $\beta+\pi$ & $5.521406$ & Viscosity; $M_{\rm cluster}$ & A \\
-$K_v$     & $\varphi+\pi+\Omega$ & $9.519254$ & Struct.\ constraint (entity KRYSTOS$_V$) & A \\
-$I_g$     & $\pi+P_{sc}$ & $9.519254$ & $w_a$ denominator (entity IGNIS; same value as $K_v$, distinct entity) & A \\
-$T_r$     & $3(\varphi+\beta)$ & $11.993541$ & Saturation horizon & A \\
+$K_v$     & $\varphi+\pi+\Omega$ & $9.519253$ & Struct.\ constraint (entity KRYSTOS$_V$) & A \\
+$I_g$     & $\pi+P_{sc}$ & $9.519253$ & $w_a$ denominator (entity IGNIS; same value as $K_v$, distinct entity) & A \\
+$T_r$     & $3(\varphi+\beta)$ & $11.993542$ & Saturation horizon & A \\
 MIRA      & $\mathrm{AURA}/2 = (\varphi+\beta)/2$ & $1.998924$ & Screening amplitude (P9) & A$^*$ \\
 $M_v$     & $\varphi+\pi+K_v$ & $14.278880$ & Max.\ dim.\ invariant & A \\
 \midrule
 \multicolumn{5}{l}{\textit{Level 3 — Cosmological Observables}} \\
-$w_0$     & $-T_r/M_v$ & $-0.8399$ & DESI DR2 & A \\
-$w_a$     & $-P_{sc}/I_g$ & $-0.66997$ & DESI DR2 & A \\
+$w_0$     & $-T_r/M_v$ & $-0.839950$ & DESI DR2 & A \\
+$w_a$     & $-P_{sc}/I_g$ & $-0.669975$ & DESI DR2 & A \\
 $H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & P$^\dagger$ \\
 $H_0^{\rm MCMC}$ & CMB fit at fixed anchor (Paper~3) & $67.96$ (anchor, fixed) & Planck PR4 & M \\
-$\Omega_{m,\rm dyn}$ & $(\pi-\varphi)/[2(\varphi+\pi)]$ & $0.1601$ & Dynamic sector; $1+w_0$ exact & A \\
+$\Omega_{m,\rm dyn}$ & $(\pi-\varphi)/[2(\varphi+\pi)]$ & $0.160050$ & Dynamic sector; $1+w_0$ exact & A \\
 $\Omega_m^{\rm CMB}$ & $\omega_m/h^2=(\Omega_b h^2{+}\Omega_c h^2{+}\omega_\nu)/h^2$ & $0.308881^\S$ & Planck 2018 & A \\
-$n_s$     & $1-\varphi^{-7}$ & $0.96556$ & Planck 2018 & A \\
-$\Omega_b h^2$ & $(\pi-\varphi)/[3(\varphi+\pi)^2]$ & $0.02242$ ($0.32\sigma$) & Planck 2018 & A$^\ddagger$ \\
-$\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.11951$ ($0.4\sigma$) & Planck 2018 & A \\
-$r$       & $\varphi^{-10}$ & $0.00813$ & LiteBIRD 2032 & A \\
+$n_s$     & $1-\varphi^{-7}$ & $0.965558$ & Planck 2018 & A \\
+$\Omega_b h^2$ & $(\pi-\varphi)/[3(\varphi+\pi)^2]$ & $0.022418$ ($0.32\sigma$) & Planck 2018 & A$^\ddagger$ \\
+$\Omega_c h^2$ & $\mathrm{KAL}_0\times\Omega_b h^2\times n_s$ & $0.119514$ ($0.4\sigma$) & Planck 2018 & A \\
+$r$       & $\varphi^{-10}$ & $0.008131$ & LiteBIRD 2032 & A \\
 $\sum m_\nu^{\rm active}$ & $\mathcal{R}_2\,\Omega_b h^2\cdot93.14/(\tau_\Pi H_0)$ (Paper~4) & $0.0685$ eV & Planck+BBN & A \\
 \bottomrule
 \end{tabularx}

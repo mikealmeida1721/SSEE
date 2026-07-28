@@ -59,8 +59,63 @@ no es «el número es correcto» sino **«se comprueba de un vistazo»**.
 |---|---|---|---|
 | 1 | portada + **abstract** | ✅ | ✅ **3 huecos hallados** |
 | 2 | índice | ✅ «sin contenido verificable» | ✅ **defecto de estructura** |
-| 3 | §1 las 7 constantes + §1.1 | ✅ | ⬜ |
+| 3 | §1 las 7 constantes + §1.1 | ✅ | ✅ **4 valores mal redondeados** |
 | 4 | **Tabla 1** — Predictive Register | ✅→reabierta | ⬜ |
+
+### 🔁 Página 3 (2ª pasada) · §1 las siete constantes + §1.1 Predictive Register
+Las siete constantes de la lista: **todas correctas** con «≈» y bien redondeadas.
+
+**Hallazgo mayor — cuatro valores MAL REDONDEADOS en la tabla de símbolos**
+(Apéndice C, la tabla de referencia del paper). No es política: están mal.
+
+| | exacto | decía | correcto |
+|---|---|---|---|
+| β | 2.379813**321** | 2.379814 | **2.379813** |
+| K_v | 9.519253**285** | 9.519254 | **9.519253** |
+| I_g | 9.519253**285** | 9.519254 | **9.519253** |
+| T_r | 11.99354**1930** | 11.993541 | **11.993542** |
+
+Y en el Paper 7, misma tabla: `w₀ = −0.8400` y `Ω_DE = 0.8400` cuando el exacto
+−0.839**950** redondea a −0.8399.
+
+**Por qué sobrevivieron.** R30 ancla K_v con el patrón
+`\varphi+\pi+\Omega\approx([\d.]+)` — exige `\approx` **pegado**, que es la forma
+de la lista de §1. En la tabla la forma es `$K_v$ & $\varphi+\pi+\Omega$ &
+$9.519254$`, con `&` en medio: el patrón nunca llega. Y **β y T_r ni siquiera
+tenían ancla**. R38 tampoco, porque miraba sólo la columna 1.
+
+**R38 generalizada** — una fila afirma una igualdad de dos formas y ahora cubre
+las dos: (a) `=` en la columna 1, (b) **la columna 2 ES la fórmula**, sin ningún
+signo igual. Distingue *mal redondeado* (grave) de *política de 6 decimales*.
+Exentos: `≈`, unidades, y `\ldots` (truncamiento explícito, que es honesto).
+Auto-test de 8 filas reales. → **10 valores más** corregidos en P9 y Unified.
+
+> **Dos trampas del propio detector, cazadas por correrlo:**
+> 1. La ventana de identificación era `0.6·10⁻ᵈ` — **demasiado estrecha para ver
+>    justo el error que busca**: un valor mal redondeado en el último dígito
+>    dista hasta `1.5·10⁻ᵈ`. Subida a `2·10⁻ᵈ`.
+> 2. `$w_0$ & $-T_r/M_v$` no se reconocía como fórmula por no llevar φ ni π
+>    literales. Ampliado a cualquier expresión matemática.
+>
+> **Y una del método:** un script imprimió «Ω_m,dyn → 0.160050» y **no escribió
+> nada** — falló después y nunca llegó al `write`. Un `print` no es una
+> escritura; hay que verificar contra el archivo.
+
+**Otros tres huecos de la página:**
+- «reduction of ~35% in the area» → el área `σ_w0×σ_wa` con la media de los
+  errores asimétricos de DR1 da **32.7%**. El 35% sale sólo del extremo alto.
+  Corregido a **~33%** con la aritmética a la vista.
+- «unique at machine precision — a 1-in-490 specificity (at ±0.0005, the
+  exact-identity tolerance |d|=0)»: tres precisiones distintas en una frase.
+  Reescrito en el orden que se comprueba: tolerancia **generosa** ±0.0005, cae
+  **una** de 490 dentro, y esa una coincide a precisión de máquina.
+- **`I_g` se usaba sin estar definido**: aparece en el abstract y en la ecuación
+  central de wₐ, pero no en la lista de §1; se definía 500 líneas después.
+  *(Primero lo añadí a la lista — y eso rompía el conteo «siete registros», que
+  es coherente en 3 sitios y se desglosa 4 L1 + 3 L2 en el Apéndice E.
+  Verificado a tiempo:* ahora va como nota justo después de la lista, sin tocar
+  el conteo.*)*
+→ **CERRADA**
 
 ### 🔁 Página 2 (2ª pasada) · índice
 La primera pasada lo despachó como **«sin contenido verificable»**. Un índice

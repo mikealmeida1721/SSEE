@@ -990,6 +990,61 @@ try:
 except Exception as e:
     check("R38 capa operable", False, str(e))
 
+# R40 — TIPO DE RELACIÓN: el signo dice qué clase de afirmación es (2026-07-27).
+# Las matemáticas son un lenguaje sin ambigüedad; «=» y «≈» no son dos grados de
+# lo mismo, son relaciones distintas:
+#
+#     símbolo ↔ fórmula  →  SIEMPRE «=»   (Ω ES π+φ: definición, cero aproximación)
+#     fórmula ↔ decimal  →  «=» si va completo; «≈» o \ldots si está TRUNCADO
+#
+# El «≈» no denuncia una discrepancia: denuncia dígitos cortados. «4.7596…» con
+# puntos suspensivos vuelve a ser una igualdad.
+#
+# POR QUÉ EXISTE. El Paper 1 listaba sus siete registros como «Ω (π+φ ≈ 4.7596)»:
+# fórmula y decimal bajo un ÚNICO «≈», con lo que la definición exacta Ω = π+φ
+# desaparecía de la vista y el renglón entero se leía como aproximado. Lo detectó
+# Mike leyendo, no el guardián — yo venía verificando que los decimales fueran
+# correctos y pasé por encima de la relación que los une. De ahí la regla: R37/R38
+# vigilan CUÁNTOS dígitos se muestran; R40 vigila QUÉ SE ESTÁ AFIRMANDO.
+print("\nCapa R40 — tipo de relación: «=» exacto vs «≈» truncado")
+try:
+    _SIMB = r"(?:\\Omega|\\beta|\\varphi|\\phiG|\\pi|\\KALz?|\\AURA|\\MIRA|K_v|T_r|M_v|I_g|P_\{sc\}|P)"
+    _FORM = r"(?:\\varphi|\\phiG|\\pi|\\Omega|\\beta|K_v|\\AURA)"
+
+    def _r40(tx: str):
+        _h = []
+        # (a) «símbolo (fórmula ≈ valor)»: el paréntesis se traga la igualdad
+        for _m in _re.finditer(
+                r"\$\\boldsymbol\{" + _SIMB + r"\}\$\s*\(\$[^$]*" + _FORM
+                + r"[^$]*\\approx", tx):
+            _h.append(("igualdad oculta en paréntesis", _m.group(0)[:60]))
+        # (b) «símbolo ≈ fórmula»: una fórmula algebraica NUNCA es aproximada
+        for _m in _re.finditer(
+                _SIMB + r"\s*\\approx\s*(?:\$)?\s*" + _FORM + r"\s*[+\-]\s*" + _FORM, tx):
+            _h.append(("fórmula exacta escrita con ≈", _m.group(0)[:60]))
+        return _h
+
+    # Auto-test con el caso REAL que la originó y su forma corregida.
+    _t40 = [(r"\item $\boldsymbol{\Omega}$ ($\pi+\varphi\approx4.7596$): Stability", True),
+            (r"\item $\boldsymbol{\Omega} = \pi+\varphi \approx 4.7596$: Stability", False),
+            (r"$\Omega \approx \varphi + \pi$", True),
+            (r"$\Omega = \varphi + \pi \approx 4.7596$", False)]
+    _f40 = [c for c, esp in _t40 if bool(_r40(c)) != esp]
+    check("R40 el detector distingue el tipo de relación",
+          not _f40, "; ".join(_f40) if _f40
+          else "4 casos reales: paréntesis que oculta la igualdad y «≈» sobre fórmula exacta")
+
+    _mal40 = []
+    for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
+                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+        for _por, _frag in _r40(_tx.read_text(errors="ignore")):
+            _mal40.append(f"{_tx.name}: {_por} — «{_frag}»")
+    check("R40 ninguna igualdad exacta presentada como aproximación",
+          not _mal40, "; ".join(_mal40[:5]) if _mal40
+          else "símbolo↔fórmula con «=» y decimal truncado con «≈» en toda la suite")
+except Exception as e:
+    check("R40 capa operable", False, str(e))
+
 # R39 — la compuerta de publicación sigue viendo TODA la suite (2026-07-27).
 # La fecha de portada es «la versión que publiqué ese día». Mientras se trabaja
 # NO se toca; el día de publicar se mueve una vez y para todos. Ese trabajo lo

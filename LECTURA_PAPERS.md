@@ -27,6 +27,35 @@ Reglas que Mike fijó para esta lectura:
 - **Una pregunta abierta a la vez.** Lo lateral se anota aquí y NO se persigue
   hasta cerrar la actual.
 
+## ⚠ Las SEIS dimensiones — una página no se cierra hasta pasar las seis
+
+**Fijado 2026-07-27, tras el fallo del `=` vs `≈`.** Mike leyó la página 3 y vio
+que las siete constantes usaban «casi igual» donde correspondía una igualdad. Yo
+había pasado por esa lista **tres veces** sin verlo. Su diagnóstico:
+
+> «Lo dejaste pasar porque no lo leíste: te centraste en que los decimales fueran
+> correctos. Está bien eso, pero no podemos descuidar uno para tener otro bien, ya
+> que eso sólo deja otro hueco abierto. Las matemáticas son el lenguaje universal
+> porque en ellas no existe la ambigüedad — eso vale igual para ti.»
+
+El defecto de método: **revisar una página buscando UNA cosa**. Los decimales
+salían bien, así que la página parecía cerrada. Cada página se lee ahora en las
+seis dimensiones, explícitamente, y ninguna se cierra por llevar una bien:
+
+| # | dimensión | la pregunta |
+|---|---|---|
+| 1 | **Valores** | ¿cada número es el redondeo correcto de su fórmula? |
+| 2 | **Relaciones** | ¿el signo dice lo que afirma? `=` exacto, `≈` truncado, `∼` orden de magnitud (**R40**) |
+| 3 | **Entidades** | ¿cada símbolo es la entidad correcta, no otra con el mismo valor? (`I_g` ≠ `K_v`) |
+| 4 | **Coherencia** | ¿se contradice con otra parte del mismo documento, o con otro paper? |
+| 5 | **Trazabilidad** | ¿se puede señalar de dónde sale cada número y cada afirmación? |
+| 6 | **Legibilidad** | ¿un lector lo comprueba **de un vistazo**, sin reconstruirlo? |
+
+Regla derivada: **cada hueco que Mike encuentra y el guardián no, obliga a (a)
+crear la contramedida y (b) volver atrás a verificar que cubre lo ya revisado.**
+Una regla nueva no vale hasta correrla sobre las páginas que ya se dieron por
+cerradas.
+
 ## Estado
 
 | Paper | Páginas | Estado |

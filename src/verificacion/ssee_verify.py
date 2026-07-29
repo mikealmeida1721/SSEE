@@ -897,6 +897,31 @@ except Exception as e:
 # Medir lo que no es se ve idéntico a estar limpio. De ahí el auto-test.
 print("\nCapa R38 — igualdades que cruzan celdas de tabla")
 try:
+    # Identificación DECLARADA = símbolo Y fórmula, los dos en la columna 1.
+    # Sólo la fórmula no basta: «Ω_m,dyn = (π−φ)/[2(φ+π)]» lleva 2(φ+π) en el
+    # DENOMINADOR y hacía que la fila se leyera como K_v — falso positivo real,
+    # cazado al primer intento. El par símbolo|fórmula es la biyección de R29.
+    _SIMB38 = {
+        "n_s": r"n_s", "r": r"(?<![a-zA-Z])r(?![a-zA-Z_])", "w0": r"w_0",
+        "wa": r"w_a", "Omega": r"\\Omega(?![_^{a-zA-Z])", "K_v": r"K_v",
+        "M_v": r"M_v", "N_star": r"N_(?:\\ast|\*)", "alpha_att": r"\\alpha",
+        "omega_b": r"\\omega_b|\\Omega_b\s*h\^2", "omega_c": r"\\omega_c|\\Omega_c\s*h\^2",
+    }
+    # Fórmula tal como se escribe en LaTeX, por constante.
+    _FORM38 = {
+        "n_s":       r"1\s*-\s*\\varphi\^\{?-7\}?",
+        "r":         r"\\varphi\^\{?-10\}?",
+        "w0":        r"T_r\s*/\s*M_v",
+        "wa":        r"P_\{sc\}\s*/\s*I_g|\(\\Omega\+\\varphi\)\s*/\s*I_g",
+        "Omega":     r"\\pi\s*\+\s*\\varphi(?!\+)",
+        "K_v":       r"\\varphi\+\\pi\+\\Omega|2\s*\(\\varphi\+\\pi\)",
+        "M_v":       r"3\s*\(\\varphi\+\\pi\)|\\varphi\+\\pi\+K_v",
+        "N_star":    r"2\\varphi\^\{?7\}?",
+        "alpha_att": r"\\varphi\^4\s*/\s*3|\\frac\{\\varphi\^4\}\{3\}",
+        "omega_b":   r"\(\\pi\s*-\s*\\varphi\)\s*/\s*[\[(]?\s*3\s*\\Omega\^2",
+        "omega_c":   r"KAL\}?_0\s*\\,?\s*\\omega_b",
+    }
+
     def _r38(linea: str, consts: dict):
         """(nombre, texto, motivo) de cada valor mal escrito en una fila de tabla.
 
@@ -937,6 +962,27 @@ try:
             if _resto.lstrip().startswith("\\ldots") or "\\ldots" in _m.group(0):
                 continue                      # truncamiento EXPLÍCITO: «2.37981\ldots» es honesto
             _v, _d = float(_m.group(1)), len(_m.group(2))
+            # ¿La fila DECLARA de qué constante habla, escribiendo su fórmula?
+            # Entonces la identidad no se infiere por cercanía: está dicha. Sin
+            # ventana, y cualquier desvío es error — por grande que sea.
+            #
+            # POR QUÉ (prueba de mutación 2026-07-29): se inyectó
+            # «$n_s = 1-\varphi^{-7}$ & $0.965123$» —un valor sencillamente MAL,
+            # a 4.4e-4 del exacto— y el guardián siguió VERDE. R38 lo descartaba
+            # por la ventana de identificación (4.4e-4 ≫ 2e-6) y R30 no lo veía
+            # porque sus patrones exigen «fórmula = valor» y aquí el valor vive
+            # en otra celda. Dos reglas con su motivo, y el error grueso en medio.
+            _decl = next((_k for _k, _p in _FORM38.items()
+                          if _k in consts and _re.search(_p, _c1)
+                          and _re.search(_SIMB38[_k], _c1)), None)
+            if _decl is not None:
+                _e = consts[_decl]
+                if f"{abs(_e):.{_d}f}" != _m.group(1):
+                    _out.append((_decl, _m.group(1),
+                                 f"MAL (fórmula declarada) → {abs(_e):.{_d}f}"))
+                elif _d < 6:
+                    _out.append((_decl, _m.group(1), f"{_d} dec → {abs(_e):.6f}"))
+                break
             for _k, _e in consts.items():
                 # Ventana de IDENTIFICACIÓN (¿de qué constante habla esta celda?),
                 # no de aceptación. Iba en 0.6·10⁻ᵈ y por eso NO veía justo el

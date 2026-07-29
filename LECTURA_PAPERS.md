@@ -624,3 +624,54 @@ Y las potencias de φ no las cubría nadie.
 
 Prueba hacia atrás (contra el commit anterior, no contra el corregido):
 R43 **2 → 0**, R44 **10 → 0**. Guardián **VERDE 188**. Paper 1: 34 pp, 0 errores.
+
+---
+
+## Segunda pasada — Paper 1, página 8 (contabilidad honesta y §1.4) · CERRADA
+
+**1 · Coherencia — un OP abierto y cerrado en la misma página.** Arriba:
+«the remaining open problems **OP-9/11/14** for the dark-matter sector»; veinte
+líneas más abajo: «…**closing OP-14**». Y `OPEN_PROBLEMS.md` lo da **✅ RESUELTO
+desde 2026-06-04**. Corregido a «OP-9 and OP-11», con una frase que dice
+explícitamente que OP-14 está cerrado y dónde verificarlo.
+
+**2 · Precisión — `SOLAR²·KRYSTOS_V = 594.28`.** Dos decimales con signo igual,
+siendo un número puro en (φ,π) (SOLAR = φ+2π, KRYSTOS_V = 2Ω). Valor exacto
+**594.279999**; a 6 decimales por política. *(De paso: el multiplicador cae a
+1.1×10⁻⁶ de 594.28 redondo — el paper no lo comenta y no lo hemos añadido.)*
+
+**3 · Estructura — una lista de «parámetros efectivos» cuya primera entrada niega
+serlo.** La viñeta 1 decía «The CMB matter density is **no longer** an effective
+parameter … What remains:» — una negación dentro de la lista, terminada en dos
+puntos colgando. Sacada del `itemize` al párrafo introductorio: la lista queda con
+las dos entradas que sí son parámetros efectivos.
+
+**4 · Trazabilidad — «Ω_m via ω_c».** El conteo k=2 decía que SSEE fija Ω_m «via
+ω_c = KAL₀ω_b n_s», pero Ω_m,CMB = ω_m/h² necesita además ω_b, ω_ν y h. No era
+falso —todos están fijados— pero obligaba al lector a reconstruirlo. Explicitado.
+
+**Verificado y descartado (no eran defectos):** la referencia «Table 7» resuelve a
+la cadena de derivación, que **sí** contiene la fila de Σm_ν; y esa fila,
+`Σm_ν = R₂ ω_b · 93.14/(τ_Π H₀)`, **no** divide por un H₀ físico — `τ_Π H₀` está
+declarado adimensional (≈2.191), y la aritmética da 0.0685 eV. También la frase
+«zero-parameter status» está acotada en su propia oración al sector background.
+
+### Contramedidas
+
+- **R45 — estado de los OP**: la prosa se cruza contra `OPEN_PROBLEMS.md`, que es
+  la fuente. Ningún número estaba mal, y por eso ninguna regla numérica podía
+  verlo: era una contradicción de **coherencia**. *Su auto-test falló a la primera
+  y por el motivo que importaba: `OP-(\d+)` sólo leía el «9» de «OP-9/11/14» y se
+  perdía justo los dos de la lista con barras.*
+- **R44 generalizada** de una constante suelta a las **constantes de la lectura**
+  (Ω_m,dyn + SOLAR²·K_v). Nacen aquí y no en R37 porque R37 es global por diseño y
+  estas aún tienen deuda; cuando su deuda llegue a cero, su sitio es R37.
+- *Aviso de método:* el primer intento de generalizar R44 sólo alcanzó los
+  **mensajes** y no el código — el guardián quedó un momento diciendo «casos
+  reales de las págs. 7 y 8» mientras probaba sólo la 7. Un VERDE que describe
+  trabajo no hecho. Detectado al comparar la deuda esperada (112) con la impresa
+  (100).
+
+Prueba hacia atrás (commit anterior): R44 **1 → 0**, R45 **1 → 0**.
+Guardián **VERDE 191**. Paper 1: 34 pp, 0 errores. Deuda: R42 49 · R43 24 ·
+R44 112 · R45 8.

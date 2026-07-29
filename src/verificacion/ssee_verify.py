@@ -1071,7 +1071,8 @@ except Exception as e:
 #   2. el recuento sólo puede BAJAR — si sube, algo se escribió mal después.
 # Al cerrar un documento se añade aquí y su deuda debe ser cero.
 _LEIDOS = ("SSEE_Paper1_",)
-_DEUDA_MAX = {"R42": 49, "R43": 24, "R44": 100}   # medida 2026-07-28
+_DEUDA_MAX = {"R42": 49, "R43": 24, "R44": 112,   # medidas 2026-07-28
+               "R45": 8}                         # medida 2026-07-29
 
 
 def _particiona(hallazgos):
@@ -1080,39 +1081,105 @@ def _particiona(hallazgos):
     return _leidos, len(hallazgos) - len(_leidos)
 
 
-# R44 — Ω_m,dyn con «=» va a 6 decimales, como toda constante SSEE (2026-07-28).
-# Caía en el hueco EXACTO entre dos reglas: R37 no lo miraba porque su lista de
-# constantes no lo incluía, y R41 lo saltaba porque sólo cubre cantidades CON
-# unidades. Resultado: el Paper 1 escribía «Ω_m,dyn = 0.160» (3 decimales) en la
-# misma frase que «Ω_m,CMB = 0.308881» (6), nueve veces, sin que nada sonara.
-print("\nCapa R44 — Ω_m,dyn con «=» a 6 decimales (hueco entre R37 y R41)")
+# R45 — un OP resuelto no puede seguir citado como ABIERTO en la prosa (2026-07-29).
+#
+# POR QUÉ EXISTE. La página 8 del Paper 1 decía «the remaining open problems
+# OP-9/11/14 for the dark-matter sector» y, veinte líneas más abajo, «…closing
+# OP-14». En el mismo tramo de texto un problema estaba abierto y cerrado a la vez,
+# y `OPEN_PROBLEMS.md` —la fuente— lo da RESUELTO desde 2026-06-04. Es una
+# contradicción de COHERENCIA: ningún número está mal, y por eso ninguna regla
+# numérica podía verla. La fuente de verdad del estado de un OP es
+# `OPEN_PROBLEMS.md`; el .tex sólo lo cita.
+print("\nCapa R45 — estado de los OP: la prosa concuerda con OPEN_PROBLEMS.md")
 try:
-    _V44 = (pi - phi) / (2 * (phi + pi))
+    _op_txt = (_REPO / "OPEN_PROBLEMS.md").read_text(errors="ignore")
+    # Un OP está RESUELTO si su encabezado de sección lo declara así.
+    _RESUELTOS = set()
+    for _m in _re.finditer(r"^#+\s*OP-(\d+)[^\n]*", _op_txt, _re.M):
+        if _re.search(r"✅|RESUELT|CERRAD", _m.group(0), _re.I):
+            _RESUELTOS.add(_m.group(1))
+    # «abierto» en prosa: el OP aparece dentro de una frase que lo declara pendiente.
+    _ABRE = (r"(?:remaining open problems?|open problems?|still open|remains? open"
+             r"|currently a free parameter|tracked as open|unresolved)")
+
+    def _r45(tx: str):
+        _h = []
+        for _m in _re.finditer(_ABRE + r"[^.]{0,80}", tx, _re.I):
+            # «OP-9/11/14» escribe tres OPs y sólo el primero lleva prefijo.
+            # La primera versión leía OP-(\d+) y se perdía el 11 y el 14 — que era
+            # justamente el defecto buscado. Lo probó el auto-test, no yo.
+            for _run in _re.findall(r"OP-([\d/]+)", _m.group(0)):
+                for _n in _run.split("/"):
+                    if _n in _RESUELTOS:
+                        _h.append(f"OP-{_n} citado como abierto — «{_m.group(0)[:58].strip()}»")
+        return _h
+
+    _t45 = [("with the remaining open problems OP-9/11/14 for the dark-matter sector", True),
+            ("with the remaining open problems OP-9 and OP-11 for the dark sector", False)]
+    _f45 = [c for c, esp in _t45 if bool(_r45(c)) != esp]
+    check("R45 el detector cruza la prosa con el registro de OPs",
+          not _f45, "; ".join(_f45) if _f45
+          else f"caso real de la pág. 8 y su forma corregida ({len(_RESUELTOS)} OPs resueltos)")
+
+    _todos45 = []
+    for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
+                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+        _todos45 += [f"{_tx.name}: {x}" for x in _r45(_tx.read_text(errors="ignore"))]
+    _l45, _deuda45 = _particiona(_todos45)
+    check("R45 documentos leídos — ningún OP resuelto citado como abierto",
+          not _l45, "; ".join(_l45[:5]) if _l45
+          else f"leídos limpios; {_deuda45} sitios de deuda en el resto")
+    check("R45 la deuda no crece", _deuda45 <= _DEUDA_MAX["R45"],
+          f"{_deuda45} sitios (tope {_DEUDA_MAX['R45']})")
+except Exception as e:
+    check("R45 capa operable", False, str(e))
+
+# R44 — constantes que la LECTURA va incorporando, con «=» a 6 decimales.
+#
+# Nacen aquí y no en R37 porque R37 es global por diseño («no hay excepciones,
+# ninguna regla dirigida a un archivo concreto») y estas aún tienen deuda en
+# documentos no leídos. Cuando la deuda de una llegue a cero, su sitio es R37.
+#
+#   Ω_m,dyn     (pág. 7) — caía en el hueco EXACTO entre dos reglas: R37 no lo
+#               miraba (no estaba en su lista) y R41 lo saltaba (sólo cubre
+#               cantidades CON unidades). El Paper 1 escribía «Ω_m,dyn = 0.160»
+#               en la misma frase que «Ω_m,CMB = 0.308881», nueve veces.
+#   SOLAR²·K_v  (pág. 8) — el multiplicador de la masa φ-DM se escribía
+#               «= 594.28»: dos decimales con signo igual, siendo un número puro
+#               en (φ,π) — SOLAR = φ+2π, KRYSTOS_V = 2Ω.
+print("\nCapa R44 — constantes de la lectura con «=» a 6 decimales")
+try:
+    _C44 = {"Omega_m_dyn": (pi - phi) / (2 * (phi + pi)),
+            "SOLAR2_KRYSTOS_V": (phi + 2 * pi) ** 2 * 2 * (pi + phi)}
 
     def _r44(tx: str):
         _h = []
         # Desde 2 decimales: a UNO, 0.160050 redondea a «0.2» y eso empareja
         # cualquier «= 0.2» del texto. Probado, no supuesto — ver auto-test.
-        for _d in range(2, 6):
-            for _m in _re.finditer(r"=\s*" + _re.escape(f"{_V44:.{_d}f}") + r"(?![0-9])", tx):
-                _h.append(f"«{_m.group(0).strip()}» → {_V44:.6f}")
+        for _k44, _v44 in _C44.items():
+            for _d in range(2, 6):
+                for _m in _re.finditer(r"=\s*" + _re.escape(f"{_v44:.{_d}f}")
+                                       + r"(?![0-9])", tx):
+                    _h.append(f"{_k44}: «{_m.group(0).strip()}» → {_v44:.6f}")
         return _h
 
     _t44 = [(r"$\Omega_{m,\rm dyn}=0.160$ (DESI)", True),
             (r"$\Omega_{m,\rm dyn}=0.160050$ (DESI)", False),
             # falso positivo REAL de la primera versión (rango desde 1 decimal)
-            (r"a fractional shift $\Delta=0.2$ in the amplitude", False)]
+            (r"a fractional shift $\Delta=0.2$ in the amplitude", False),
+            (r"multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.28$", True),
+            (r"multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.279999$", False)]
     _f44 = [c for c, esp in _t44 if bool(_r44(c)) != esp]
     check("R44 el detector distingue 3 decimales de 6", not _f44,
           "; ".join(_f44) if _f44
-          else "caso real del Paper 1, su forma corregida y un «=0.2» ajeno")
+          else "casos reales de las págs. 7 y 8, sus formas corregidas y un «=0.2» ajeno")
 
     _todos44 = []
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
                       + list((_REPO / "submission_PRD").glob("*.tex"))):
         _todos44 += [f"{_tx.name}: {x}" for x in _r44(_tx.read_text(errors="ignore"))]
     _l44, _deuda44 = _particiona(_todos44)
-    check("R44 documentos leídos — Ω_m,dyn siempre a 6 decimales",
+    check("R44 documentos leídos — constantes de la lectura a 6 decimales",
           not _l44, "; ".join(_l44[:5]) if _l44
           else f"leídos limpios; {_deuda44} sitios de deuda en el resto")
     check("R44 la deuda no crece", _deuda44 <= _DEUDA_MAX["R44"],

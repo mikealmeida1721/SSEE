@@ -176,7 +176,14 @@ check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (SOLAR^2*KRYSTOS_V) = 40.70
 # Un lector que invirtiera la ecuación de ω_m aterrizaba en el RETIRADO 41.02 eV.
 # La regla cierra el lazo en las DOS direcciones para que el sector ν no pueda volver a
 # desincronizarse: Σm_ν es UNA sola cantidad, la usen m_phi o ω_m.
-_C_nu = 93.14
+# El valor NO se escribe aquí: se LEE de CANONICAL_VALUES.yaml. Escrito a mano,
+# la comprobación de más abajo comparaba la variable contra el mismo literal con
+# que se acababa de asignar — una tautología que no podía fallar nunca.
+# (Prueba de mutación, 2026-07-29: dos checks resultaron ser de esta forma.)
+_C_nu_yaml = re.search(r"C_nu_eV:\s*([\d.]+)",
+                        (pathlib.Path(__file__).resolve().parents[2]
+                         / "CANONICAL_VALUES.yaml").read_text(errors="ignore"))
+_C_nu = float(_C_nu_yaml.group(1)) if _C_nu_yaml else float("nan")
 _omnu_from_mnu = _mnu_active / _C_nu                  # ν-sector → ω_ν
 _mnu_from_mphi = _m_phi_canon / _mult_mphi            # m_φ      → Σm_ν  (round-trip)
 _omnu_in_omm   = _omm - _omb - _omc                   # ω_m      → ω_ν  (lo que se publica)
@@ -215,7 +222,7 @@ check("V-L2-11b cierre ν: omega_nu en omega_m == Sigma_m_nu/C_nu  (no 0.000741 
       f"en ω_m {_omnu_in_omm:.7f} / desde Σm_ν {_omnu_from_mnu:.7f} "
       f"(stale 0.000741 ⇒ Σm_ν=0.06902 ⇒ m_φ=41.02 RETIRADO)")
 check("V-L2-11c cierre ν: C_nu univaluada = 93.14 PDG en toda la cadena",
-      abs(_mnu_active * _C_nu / _mnu_active - _C_nu) < 1e-9 and abs(_C_nu - 93.14) < 1e-9,
+      _C_nu_yaml is not None and abs(_C_nu - 93.14) < 1e-9,
       f"C_ν = {_C_nu} eV — el operativo. 94.07 eV NO está retirado ni es "
       f"incorrecto: es el desacople INSTANTÁNEO (N_eff=3 exacto). 93.14 "
       f"incluye el reheating e⁺e⁻ (N_eff=3.046) y es el que usa Planck. "
@@ -508,10 +515,16 @@ print("\nCapa 4 — confrontaciones con datos")
 #     S8_eff = 0.758 (0.04sigma KiDS), free-streaming k_fs=0.754, m_phi=40.70 (C_ν=93.14).
 # script: src/ssee_paper6_canonical_particle.py
 Om_cosm = _omm / _h ** 2     # 0.30888  Om_m,CMB (omega_m-directo)
-sig8_single = 0.8335         # techo todo-frío (CLASS)
+# Igual que C_ν: se lee del YAML, no se escribe. Antes era «sig8_single = 0.8335»
+# seguido de «abs(sig8_single - 0.8335) < 1e-2» — imposible de fallar.
+_s8_yaml = re.search(r"sigma8_single_ceiling:\s*([\d.]+)",
+                      (pathlib.Path(__file__).resolve().parents[2]
+                       / "CANONICAL_VALUES.yaml").read_text(errors="ignore"))
+sig8_single = float(_s8_yaml.group(1)) if _s8_yaml else float("nan")  # techo todo-frío (CLASS)
 S8_single = sig8_single * (Om_cosm / 0.3) ** 0.5
 check("V-L4-01 P6  sigma8 single (techo CLASS) = 0.8335",
-      abs(sig8_single - 0.8335) < 1e-2, f"sigma8 = {sig8_single:.4f}")
+      _s8_yaml is not None and abs(sig8_single - 0.8335) < 1e-2,
+      f"sigma8 = {sig8_single:.4f} (leído de CANONICAL_VALUES.yaml)")
 check("V-L4-02 P6  S8 single = sigma8 sqrt(Om/0.3) = 0.846  (el desafio)",
       abs(S8_single - 0.846) < 2e-3, f"S8 = {S8_single:.4f}")
 

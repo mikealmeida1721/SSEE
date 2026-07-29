@@ -33,6 +33,81 @@ pueden compartir una de las dos, nunca las dos.
 TEX_MUTACION = "manuscript/SSEE_Paper1_Framework.tex"
 
 REGLAS = {
+    # ── capas de FÍSICA ──────────────────────────────────────────────────────
+    # No viven en un manuscrito: afirman identidades algebraicas. Se prueban
+    # tocando el archivo donde vive lo que afirman.
+    "canon": dict(
+        capa="Fuente canónica — ssee_core.py",
+        intencion="nucleo-vs-recomputacion",
+        ambito="src/ssee_core.py contra el álgebra rehecha por el guardián",
+        # Es el eslabón que conecta las capas de física con el MODELO: la Capa 2
+        # compara su propia recomputación contra literales; sola no notaría que
+        # ssee_core derivó. Esta sí, porque rehace el álgebra por su cuenta.
+        exenciones=[],
+        archivo="src/ssee_core.py",
+        mutacion=[("una constante del núcleo alterada",
+                   "W0          = -T_R / M_V", "W0          = -T_R / M_V * 1.0001")],
+    ),
+    "V-L2": dict(
+        capa="2 — parámetros cosmológicos derivados",
+        intencion="identidad-algebraica",
+        ambito="álgebra de fondo (w0, wa, Ω_DE, Ω_m, H_alg, n_s, α_K)",
+        # La mutación prueba VIVEZA —que la comprobación compara de verdad y está
+        # clavada a un número— no que el modelo sea correcto. El puente al modelo
+        # lo pone «canon»; el puente al registro publicado, R20/R26.
+        exenciones=[],
+        archivo="src/verificacion/ssee_verify.py",
+        # La primera versión movía el literal 7.7e-7 y NO enrojecía: la capa
+        # compara con tolerancia absoluta 1e-6, así que el defecto inyectado
+        # estaba dentro del margen. No era la regla, era mi caso — pero conviene
+        # tenerlo escrito: estas comprobaciones fijan el valor a ±1e-6 ABSOLUTO,
+        # que para r≈0.00813 son sólo ~1e-4 relativos.
+        mutacion=[("el valor esperado de w0 alterado por encima de la tolerancia",
+                   '"V-L2-01 w0":        (-Tr / Mv,                      -0.8399497713)',
+                   '"V-L2-01 w0":        (-Tr / Mv,                      -0.8300000000)')],
+    ),
+    "V-L3": dict(
+        capa="3 — mecanismos y derivaciones",
+        intencion="identidad-algebraica",
+        ambito="mecanismos (n_s/r, f_screen, m_φ, EFT, IS, dos sectores)",
+        exenciones=[],
+        archivo="src/verificacion/ssee_verify.py",
+        prefijos=["V-L3"],
+        # Se muta la AFIRMACIÓN, no la etiqueta: un primer caso añadía «[MUT]» al
+        # nombre del check y por supuesto no cambiaba nada — el rótulo no es lo
+        # que se comprueba. Y un segundo rompía f_screen, que resultó ser un
+        # check de la Capa 2 («L2 identidad»), no de la 3. Lo dijo la atribución,
+        # que existe justamente para eso.
+        mutacion=[("la identidad EFT lambda^2 = 3 Om_m,dyn rota",
+                   "abs(lam_eft ** 2 - 3 * Om_m_dyn) < 1e-12",
+                   "abs(lam_eft ** 2 - 4 * Om_m_dyn) < 1e-12")],
+    ),
+    "V-L4": dict(
+        capa="4 — confrontaciones con datos",
+        intencion="dato-vs-prediccion",
+        ambito="σ8/S8, tensiones KiDS, ΔBIC de P2/P3/P6",
+        exenciones=[],
+        archivo="CANONICAL_VALUES.yaml",
+        prefijos=["V-L4"],
+        # Se muta el YAML, no el guardián: desde 2026-07-29 estas comprobaciones
+        # LEEN el valor de la fuente en vez de llevarlo escrito. Antes σ8 se
+        # asignaba «= 0.8335» y se comprobaba «abs(σ8 − 0.8335) < 1e-2» — una
+        # tautología imposible de fallar. La mutación es la única forma en que
+        # eso salía a la luz: el check estaba VERDE y no miraba nada.
+        mutacion=[("el techo σ8 del YAML alterado",
+                   "sigma8_single_ceiling: 0.8335",
+                   "sigma8_single_ceiling: 0.7000")],
+    ),
+    "DESI": dict(
+        capa="DESI — procedencia BAO: csv == DR2 Tabla 4 oficial",
+        intencion="procedencia-del-dato",
+        ambito="data/raw/desi_dr2_bao.csv contra la tabla oficial 2503.14738",
+        exenciones=[],
+        archivo="data/raw/desi_dr2_bao.csv",
+        prefijos=["DESI"],
+        mutacion=[("un punto BAO alterado respecto a la tabla oficial",
+                   "0.295", "0.296")],
+    ),
     "R30": dict(
         capa="R30 — política de redondeo",
         intencion="redondeo-correcto",
@@ -142,9 +217,6 @@ REGLAS = {
 # lista de perdón: es la deuda visible, y sólo puede bajar. Mientras una capa
 # esté aquí, su VERDE no está demostrado — puede ser verde por vacío.
 SIN_COBERTURA = [
-    "Capa 2 — parámetros cosmológicos derivados",
-    "Capa 3 — mecanismos y derivaciones",
-    "Capa 4 — confrontaciones con datos",
     "Capa Memorias — coherencia de las 3 memorias",
     "Capa Procedencia — valores de pipeline vs log committeado",
     "Capa R33 — logs vs núcleo: ningún log activo con constante retirada",
@@ -154,7 +226,6 @@ SIN_COBERTURA = [
     "Capa Manuscritos — reglas R1 (cronología) y R2 (multidominio)",
     "Capa Archivo — bitácora cubre cada cajón archivado",
     "Capa Diccionario — integridad de nodos (script ⊆ maestro)",
-    "Capa DESI — procedencia BAO: csv == DR2 Tabla 4 oficial, sin DR1, sin hardcode",
     "Capa R20 — anclas observacionales (código ⊆ CANONICAL_VALUES.yaml)",
     "Capa R25 — parametrización ω_m absoluto (no congelar Ω_m en el MCMC)",
     "Capa R26 — procedencia declarada de los canónicos",

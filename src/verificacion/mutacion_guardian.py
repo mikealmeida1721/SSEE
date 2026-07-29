@@ -51,21 +51,28 @@ if not verde:
 
 problemas = []
 for regla, info in _reg.REGLAS.items():
-    for nombre, viejo, nuevo in info["mutacion"]:
+    for caso in info["mutacion"]:
+        # Un caso puede declarar el archivo que muta. Sin declararlo, es el .tex.
+        # Las capas de FÍSICA no viven en un manuscrito: se prueban tocando
+        # `ssee_core.py` o el propio guardián, que es donde vive lo que afirman.
+        arch, (nombre, viejo, nuevo) = ((info.get("archivo", _reg.TEX_MUTACION), caso)
+                                        if len(caso) == 3 else (caso[0], caso[1:]))
+        destino = REPO / arch
+        base = destino.read_text()
         etiqueta = f"{regla} · {nombre}"
-        if viejo not in orig:
-            problemas.append(f"{etiqueta}: el ancla ya no existe en el .tex")
+        if viejo not in base:
+            problemas.append(f"{etiqueta}: el ancla ya no existe en {arch}")
             print(f"  [ ANCLA?  ] {etiqueta}")
             continue
-        TEX.write_text(orig.replace(viejo, nuevo, 1))
+        destino.write_text(base.replace(viejo, nuevo, 1))
         try:
             _, fallos = corre()
         finally:
-            TEX.write_text(orig)          # restaurar SIEMPRE
+            destino.write_text(base)      # restaurar SIEMPRE
         if not fallos:
             problemas.append(f"{etiqueta}: nadie lo detecta (VERDE por vacío)")
             print(f"  [  PASA   ] {etiqueta}")
-        elif not any(f.startswith(regla) for f in fallos):
+        elif not any(f.startswith(tuple(info.get("prefijos", [regla]))) for f in fallos):
             problemas.append(f"{etiqueta}: lo detecta {fallos[0]}, no {regla}")
             print(f"  [ OTRA    ] {etiqueta} → lo caza {fallos[0]}")
         else:

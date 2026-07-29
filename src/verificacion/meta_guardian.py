@@ -30,7 +30,7 @@ import registro_reglas as _reg   # noqa: E402
 
 REPO = _AQUI.parent.parent
 GUARDIAN = _AQUI / "ssee_verify.py"
-DEUDA_MAX = 16          # medida 2026-07-29; sólo puede BAJAR
+DEUDA_MAX = 12          # medida 2026-07-29; sólo puede BAJAR
 
 _fallos, _avisos = [], []
 
@@ -72,12 +72,20 @@ chk("M1 toda capa del código está registrada o declarada en deuda",
 # dentro de otra capa— y exigir sólo lo primero daba un fallo espurio: la regla
 # existía y trabajaba. Lo que M2 persigue es la entrada FANTASMA: registrada aquí
 # y sin nada en el código que la respalde.
-ids_en_checks = {m.group(1) for m in re.finditer(r'check\(\s*"(R\d+)\b', src)}
-huerfanas = [r for cap, r in registradas.items()
-             if not any(_casa(c, cap) for c in capas_codigo) and r not in ids_en_checks]
+# La segunda huella son los PREFIJOS de sus comprobaciones. No basta con «R\d+»:
+# las capas de física rotulan «V-L2», «canon», «DESI», y exigir el formato R-número
+# las declaraba fantasma cuando existían y trabajaban.
+nombres_check = re.findall(r'check\(\s*(?:f)?"([^"{]+)', src)
+huerfanas = []
+for cap, r in registradas.items():
+    if any(_casa(c, cap) for c in capas_codigo):
+        continue
+    pref = tuple(_reg.REGLAS[r].get("prefijos", [r]))
+    if not any(n.startswith(pref) for n in nombres_check):
+        huerfanas.append(r)
 chk("M2 toda regla registrada existe en el código",
     not huerfanas, "; ".join(huerfanas) if huerfanas
-    else f"sin entradas fantasma ({len(ids_en_checks)} identificadores con checks)")
+    else f"sin entradas fantasma ({len(nombres_check)} comprobaciones inspeccionadas)")
 
 # ── M3 · nada entra sin poder probarse ───────────────────────────────────────
 sin_mut = [k for k, v in _reg.REGLAS.items() if not v["mutacion"]]

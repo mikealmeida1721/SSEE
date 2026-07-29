@@ -159,6 +159,20 @@ chk("M7 ninguna regla probada por las dos suites a la vez",
     not dobles, "duplicadas: " + ", ".join(dobles) if dobles
     else f"registro {len(_reg.REGLAS)} reglas · test_guardian {len(cubiertas_tg)} — sin solape")
 
+# ── M8 · toda regla tiene su sitio en la cadena de dependencia ────────────────
+# Una regla sin nivel cae al cajón «SIN CLASIFICAR» del veredicto: no se pierde,
+# pero deja de decir si es raíz o consecuencia — y esa era la mejora entera.
+_niv = re.search(r"_PREF_NIVEL = \[(.*?)\n\]", src, re.S)
+_clasificados = set(re.findall(r'"([^"]+)"', _niv.group(1))) if _niv else set()
+sin_nivel = []
+for k, v in _reg.REGLAS.items():
+    pref = v.get("prefijos", [k])
+    if not any(any(p.startswith(c) or c.startswith(p) for c in _clasificados) for p in pref):
+        sin_nivel.append(k)
+chk("M8 toda regla registrada tiene nivel de dependencia",
+    not sin_nivel, "sin nivel: " + ", ".join(sin_nivel) if sin_nivel
+    else f"{len(_clasificados)} prefijos clasificados en 6 niveles")
+
 # ── M6 · la deuda sólo baja ──────────────────────────────────────────────────
 chk("M6 la deuda de capas sin cobertura no crece",
     len(_reg.SIN_COBERTURA) <= DEUDA_MAX,

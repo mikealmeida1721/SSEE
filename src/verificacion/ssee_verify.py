@@ -2756,12 +2756,61 @@ except Exception as e:
 # ─────────────────────────────────────────────────────────────────────
 # VEREDICTO
 # ─────────────────────────────────────────────────────────────────────
+# ORDEN DE DIAGNÓSTICO (2026-07-29). El orden en que se EJECUTAN las capas no es
+# el orden en que dependen unas de otras: se fueron añadiendo según se creaban, y
+# hay 17 inversiones — se confronta con los datos DESI en la 3ª capa y su
+# procedencia se verifica en la 23ª; el núcleo `ssee_core`, que es el cimiento, se
+# comprueba después de las tres capas que se apoyan en él.
+#
+# Reordenar la EJECUCIÓN es arriesgado (las capas comparten variables ya
+# calculadas), y además no hace falta: el guardián ACUMULA los fallos —ningún
+# verde posterior borra un rojo anterior, comprobado inyectando un defecto en la
+# primera capa y viendo 146 OK después sin que el veredicto dejara de ser ROJO—.
+#
+# Lo que sí duele es el DIAGNÓSTICO: si la raíz está en el dato crudo y sólo se
+# ven las consecuencias río abajo, se arregla el síntoma. Así que el veredicto se
+# ordena por nivel de dependencia, y el primero que se nombra es el que hay que
+# mirar. Es la imagen del dominó: importa saber qué ficha se empujó, no cuántas
+# cayeron.
+_NIVEL = {1: "FUENTE — dato crudo, núcleo y procedencia",
+          2: "ÁLGEBRA — identidades de φ y π",
+          3: "ARTEFACTOS — logs y scripts contra el núcleo",
+          4: "CONFRONTACIÓN — dato medido contra predicción",
+          5: "ESCRITURA — manuscritos",
+          6: "GOBIERNO — memorias, archivo y publicación"}
+_PREF_NIVEL = [
+    (("DESI", "canon", "R26", "R31", "R20"), 1),
+    (("V-L2", "V-L3", "L1 ", "L2 ", "V-L3"), 2),
+    (("R33", "R34", "R35", "procedencia", "Procedencia"), 3),
+    (("V-L4", "R25"), 4),
+    (("R37", "R38", "R40", "R41", "R42", "R43", "R44", "R45",
+      "R1 ", "R2 ", "R9", "R10", "R11", "R13", "R14", "R15", "R17", "R18",
+      "R19", "R21", "R22", "R23", "R24", "R27", "R28", "R29", "R30",
+      "diccionario", "sello"), 5),
+    (("memoria", "archivo", "R12", "R39"), 6),
+]
+
+
+def _nivel_de(nombre):
+    for _p, _n in _PREF_NIVEL:
+        if nombre.startswith(_p):
+            return _n
+    return 9          # sin clasificar: se muestra al final, nunca se oculta
+
+
 print("\n" + "=" * 60)
 if fails:
-    print(f"ROJO — {len(fails)} de {checks} comprobaciones FALLARON:")
-    for f in fails:
-        print(f"   x  {f}")
-    print("No commitear ni sellar hasta resolverlo.")
+    print(f"ROJO — {len(fails)} de {checks} comprobaciones FALLARON.")
+    print("Ordenadas por dependencia: lo primero es la RAÍZ, lo de abajo puede")
+    print("ser consecuencia suya. Arreglar de arriba hacia abajo.\n")
+    _ult = None
+    for _f in sorted(fails, key=lambda x: (_nivel_de(x), x)):
+        _nv = _nivel_de(_f)
+        if _nv != _ult:
+            print(f"  ── nivel {_nv} · {_NIVEL.get(_nv, 'SIN CLASIFICAR')}")
+            _ult = _nv
+        print(f"   x  {_f}")
+    print("\nNo commitear ni sellar hasta resolverlo.")
     sys.exit(1)
 linea = f"VERDE — sin regresiones, {checks} comprobaciones."
 if opens:

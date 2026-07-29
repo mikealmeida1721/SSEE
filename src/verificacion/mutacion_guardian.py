@@ -55,6 +55,24 @@ def corre():
 _objetivos = sorted({_reg.TEX_MUTACION} |
                     {v["archivo"] for v in _reg.REGLAS.values() if v.get("archivo")} |
                     {"src/estadistica/look_elsewhere_full.py"})
+# CERROJO. La comprobación de árbol sucio mira el disco al ARRANCAR, y eso no
+# basta: si la otra suite ya está corriendo, este proceso arranca sobre un árbol
+# limpio y las dos se pisan los archivos a mitad. Pasó el 2026-07-29 — lanzar
+# `test_guardian.py` mientras esta suite corría dejó un valor mutado en
+# VERIFICATION_LEDGER.md, que la restauración de esta suite volvió a escribir
+# como si fuera el original, y el control negativo salió ROJO sin defecto.
+# Las dos suites mutan; sólo puede haber UNA viva a la vez.
+_LOCK = REPO / ".mutacion.lock"
+if _LOCK.exists():
+    print(f"otra suite de mutación está corriendo (cerrojo {_LOCK.name}).")
+    print("  Espera a que termine: dos suites a la vez se pisan los archivos")
+    print("  y la restauración de una sobrescribe el defecto de la otra.")
+    print("  Si sabes que ninguna corre, bórralo a mano.")
+    sys.exit(1)
+_LOCK.write_text(f"mutacion_guardian.py pid={__import__('os').getpid()}\n")
+import atexit as _atexit
+_atexit.register(lambda: _LOCK.exists() and _LOCK.unlink())
+
 _sucio = subprocess.run(["git", "status", "--porcelain", "--"] + _objetivos,
                         capture_output=True, text=True, cwd=REPO).stdout.strip()
 if _sucio:

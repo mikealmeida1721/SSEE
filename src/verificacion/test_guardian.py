@@ -26,6 +26,17 @@ GUARD = "src/verificacion/ssee_verify.py"
 PY = sys.executable
 _passed, _failed = 0, 0
 
+# CERROJO compartido con `mutacion_guardian.py`. Las dos suites mutan archivos
+# del repo; si corren a la vez se pisan, y la restauración de una escribe como
+# «original» el defecto que la otra acababa de inyectar. Pasó el 2026-07-29.
+_LOCK = REPO / ".mutacion.lock"
+if _LOCK.exists():
+    print(f"otra suite de mutación está corriendo (cerrojo {_LOCK.name}); espera.")
+    sys.exit(1)
+_LOCK.write_text("test_guardian.py\n")
+import atexit as _atexit
+_atexit.register(lambda: _LOCK.exists() and _LOCK.unlink())
+
 
 def run_guardian():
     r = subprocess.run([PY, GUARD], cwd=REPO, capture_output=True, text=True)

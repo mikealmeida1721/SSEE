@@ -91,3 +91,6 @@ zenodo_token
 # tienen por qué viajar en el historial. Se regeneran desde el script + log.
 archive/chains/
 results/chains/
+
+# cerrojo de las suites de mutación (efímero)
+.mutacion.lock

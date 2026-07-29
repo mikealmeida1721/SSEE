@@ -30,7 +30,7 @@ import registro_reglas as _reg   # noqa: E402
 
 REPO = _AQUI.parent.parent
 GUARDIAN = _AQUI / "ssee_verify.py"
-DEUDA_MAX = 12          # medida 2026-07-29; sólo puede BAJAR
+DEUDA_MAX = 2          # medida 2026-07-29; sólo puede BAJAR
 
 _fallos, _avisos = [], []
 
@@ -88,7 +88,29 @@ chk("M2 toda regla registrada existe en el código",
     else f"sin entradas fantasma ({len(nombres_check)} comprobaciones inspeccionadas)")
 
 # ── M3 · nada entra sin poder probarse ───────────────────────────────────────
-sin_mut = [k for k, v in _reg.REGLAS.items() if not v["mutacion"]]
+# La cobertura viene de DOS suites y hay que sumarlas, o el recuento miente.
+# `test_guardian.py` existía desde antes con 28 casos `expect_red(...)`, también
+# con atribución (espera el identificador de la regla en la salida). Al escribir
+# `mutacion_guardian.py` no lo comprobé: construí una segunda suite en paralelo,
+# que es exactamente el patrón «crear otra regla en vez de refinar la que hay»
+# —sólo que a nivel de PRUEBAS—. No se rehacen: se cuentan las dos, y M7 vigila
+# que no se dupliquen casos.
+_tg = (_AQUI / "test_guardian.py")
+cubiertas_tg = set()
+if _tg.exists():
+    for _et in re.findall(r'expect_red\(\s*"([^":]+)', _tg.read_text(errors="ignore")):
+        cubiertas_tg.add(_et.strip().split()[0])
+
+def _en_tg(k):
+    """¿La otra suite prueba esta regla? Se cruza por PREFIJOS, no por la clave:
+    test_guardian rotula «R1 cronología» y «R2 multidominio», que aquí son una
+    sola entrada llamada «manuscritos». Cruzar por clave la daba sin cobertura
+    cuando estaba probada dos veces."""
+    pref = [p.strip() for p in _reg.REGLAS[k].get("prefijos", [k])] + [k]
+    return any(p in cubiertas_tg for p in pref)
+
+
+sin_mut = [k for k, v in _reg.REGLAS.items() if not v["mutacion"] and not _en_tg(k)]
 chk("M3 toda regla registrada declara un caso de mutación",
     not sin_mut, "; ".join(sin_mut) if sin_mut
     else f"{sum(len(v['mutacion']) for v in _reg.REGLAS.values())} casos "
@@ -125,6 +147,17 @@ for inten, n in por_intencion.items():
     if n > 2:
         print(f"         · aviso: {n} reglas comparten la intención «{inten}» "
               f"en ámbitos distintos — candidatas a unificarse")
+
+# ── M7 · las dos suites no se pisan ──────────────────────────────────────────
+# Un caso duplicado no es sólo trabajo repetido: cuando una de las dos copias se
+# actualiza y la otra no, el guardián «demuestra» dos cosas distintas del mismo
+# punto y nadie sabe cuál manda. Se declara aquí qué regla vigila cada suite.
+# Delegar es legítimo: la regla declara `probada_en` y cede el caso. Lo que M7
+# prohíbe es que las DOS lleven caso propio del mismo punto.
+dobles = sorted(k for k in _reg.REGLAS if _en_tg(k) and _reg.REGLAS[k].get("mutacion"))
+chk("M7 ninguna regla probada por las dos suites a la vez",
+    not dobles, "duplicadas: " + ", ".join(dobles) if dobles
+    else f"registro {len(_reg.REGLAS)} reglas · test_guardian {len(cubiertas_tg)} — sin solape")
 
 # ── M6 · la deuda sólo baja ──────────────────────────────────────────────────
 chk("M6 la deuda de capas sin cobertura no crece",

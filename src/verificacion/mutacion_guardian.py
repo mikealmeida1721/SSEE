@@ -42,6 +42,29 @@ def corre():
     return ("VERDE" in r.stdout.split("=" * 40)[-1]), fallos
 
 
+# El árbol debe estar LIMPIO antes de mutar. Si una corrida anterior murió a
+# mitad —un timeout, un Ctrl-C— deja el defecto inyectado en el disco, y la
+# siguiente arranca sobre un repo roto sin saberlo. Pasó el 2026-07-29: matar
+# `test_guardian.py` a los 2 minutos dejó «HERMES = PHI + KAL + 0.0» escrito en
+# look_elsewhere_full.py, y el guardián amaneció en ROJO por una causa que no
+# estaba en ningún sitio.
+# Se vigilan SÓLO los archivos que alguna mutación toca —los declarados en el
+# registro más el .tex— y también los de `test_guardian.py`, que muta por su
+# cuenta. Vigilar el árbol entero marcaría el propio trabajo en curso sobre la
+# infraestructura de verificación y volvería inservible el aviso.
+_objetivos = sorted({_reg.TEX_MUTACION} |
+                    {v["archivo"] for v in _reg.REGLAS.values() if v.get("archivo")} |
+                    {"src/estadistica/look_elsewhere_full.py"})
+_sucio = subprocess.run(["git", "status", "--porcelain", "--"] + _objetivos,
+                        capture_output=True, text=True, cwd=REPO).stdout.strip()
+if _sucio:
+    print("árbol SUCIO antes de mutar — puede ser el resto de una corrida muerta:")
+    for _l in _sucio.splitlines():
+        print("   ", _l)
+    print("  revísalo y déjalo limpio; si no, no se distingue un defecto real")
+    print("  de un residuo, que es justo lo que la prueba existe para evitar.")
+    sys.exit(1)
+
 orig = TEX.read_text()
 verde, _ = corre()
 print(f"línea base: {'VERDE' if verde else 'ROJO'}")

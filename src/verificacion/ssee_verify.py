@@ -1472,8 +1472,13 @@ except Exception as e:
 
 print("\nCapa R34 — fuentes vs núcleo: ningún .py hardcodea constante retirada")
 try:
+    # La infraestructura de VERIFICACIÓN lleva valores retirados a propósito:
+    # el núcleo los define, el guardián los busca y el registro de reglas los
+    # usa como payload de mutación. R34 cazó `registro_reglas.py` en cuanto se
+    # escribió — true positive contra el propio andamio, no contra el modelo.
     _EXCL = {"test_guardian.py", "derive_nu_closure.py", "ssee_verify.py",
-             "ssee_core.py"}
+             "ssee_core.py", "registro_reglas.py", "meta_guardian.py",
+             "mutacion_guardian.py"}
     _pat34 = _re.compile(
         r"(?:mnu|Smnu|SUM_MNU_EV|sigma_m_nu|m_nu|C_nu|C_NU)\s*=\s*"
         r"(0\.069(?:0[0-9]*)?|94\.07[0-9]*)\s*(?:[^0-9.]|$)")

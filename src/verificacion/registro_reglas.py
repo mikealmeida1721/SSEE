@@ -109,15 +109,142 @@ REGLAS = {
         mutacion=[("un punto BAO alterado respecto a la tabla oficial",
                    "0.295", "0.296")],
     ),
+    # ── capas de PROCEDENCIA: artefacto contra su fuente ─────────────────────
+    "R33": dict(
+        capa="R33 — logs vs núcleo: ningún log activo con constante retirada",
+        intencion="artefacto-sin-constante-retirada",
+        ambito="results/logs/*.log",
+        exenciones=[("logs declarados históricos en PROPAGACION.yaml", None)],
+        archivo="results/logs/mcmc_paper2_reframe.log",
+        prefijos=["R33"],
+        mutacion=[("un log activo imprimiendo un Σm_ν retirado",
+                   "[   0.0m] ======================================================================",
+                   "[   0.0m] Sigma_m_nu = 0.06902 eV\n[   0.0m] ==================================")],
+    ),
+    "R34": dict(
+        capa="R34 — fuentes vs núcleo: ningún .py hardcodea constante retirada",
+        intencion="fuente-sin-constante-retirada",
+        ambito="src/**/*.py (salvo el núcleo y el propio guardián)",
+        # La infraestructura de verificación queda fuera porque lleva los valores
+        # retirados a propósito. Punto ciego DECLARADO: si un día un script de
+        # modelo se llamara igual que uno de estos, R34 no lo miraría.
+        exenciones=[("núcleo, guardián, registro y mutación (llevan los retirados a propósito)",
+                     None)],
+        archivo="src/desi_dr2_data.py",
+        prefijos=["R34"],
+        mutacion=[("un script activo con Σm_ν retirado escrito a mano",
+                   '"""\nDESI DR2 BAO',
+                   '"""\nDESI DR2 BAO"""\nC_nu = 94.07\n"""')],
+    ),
+    "Procedencia": dict(
+        capa="Procedencia — valores de pipeline vs log committeado",
+        intencion="valor-de-pipeline-con-log",
+        ambito="sección B del VERIFICATION_LEDGER contra results/logs/",
+        exenciones=[],
+        archivo="VERIFICATION_LEDGER.md",
+        prefijos=["procedencia", "Procedencia"],
+        mutacion=[("un valor de pipeline que su log no respalda",
+                   "**67.7869 ⁺⁰·³⁵¹/₋₀·³⁵² km/s/Mpc**",
+                   "**66.1234 ⁺⁰·³⁵¹/₋₀·³⁵² km/s/Mpc**")],
+    ),
+    "R20": dict(
+        capa="R20 — anclas observacionales (código ⊆ CANONICAL_VALUES.yaml)",
+        intencion="dato-observacional-desde-el-yaml",
+        ambito="constantes de datos en el código contra CANONICAL_VALUES.yaml",
+        exenciones=[],
+        archivo="CANONICAL_VALUES.yaml",
+        prefijos=["R20"],
+        # Ya la prueba `test_guardian.py`, que llegó antes y también atribuye.
+        # Duplicar el caso no es sólo trabajo repetido: cuando una copia se
+        # actualiza y la otra no, el guardián «demuestra» dos cosas del mismo
+        # punto y nadie sabe cuál manda. Lo detectó M7.
+        probada_en="test_guardian.py",
+        mutacion=[],
+    ),
+    "R26": dict(
+        capa="R26 — procedencia declarada de los canónicos",
+        intencion="canonico-con-procedencia-completa",
+        ambito="bloque `provenance` de CANONICAL_VALUES.yaml",
+        exenciones=[],
+        archivo="CANONICAL_VALUES.yaml",
+        prefijos=["R26"],
+        # Ya la prueba `test_guardian.py`, que llegó antes y también atribuye.
+        # Duplicar el caso no es sólo trabajo repetido: cuando una copia se
+        # actualiza y la otra no, el guardián «demuestra» dos cosas del mismo
+        # punto y nadie sabe cuál manda. Lo detectó M7.
+        probada_en="test_guardian.py",
+        mutacion=[],
+    ),
+    "archivo": dict(
+        capa="Archivo — bitácora cubre cada cajón archivado",
+        intencion="cajon-archivado-documentado",
+        ambito="subcarpetas de archive/ contra archive/README.md",
+        # Punto ciego DECLARADO: la capa comprueba «¿aparece el nombre del cajón
+        # en el texto?» como SUBCADENA. Un cajón llamado «chain» quedaría
+        # documentado por una mención de «chains», y una mención en prosa ajena
+        # cuenta igual que una entrada de bitácora. Lo descubrió esta mutación:
+        # el primer caso renombraba «audio», que sale 5 veces, así que quitar una
+        # no cambiaba nada. Se usa el cajón mencionado UNA sola vez.
+        exenciones=[("el nombre del cajón se busca como subcadena, no como entrada", None)],
+        archivo="archive/README.md",
+        prefijos=["archivo"],
+        mutacion=[("el único cajón mencionado una vez, borrado de la bitácora",
+                   "manuscript_superseded", "manuscript_XXXXXXXXXX")],
+    ),
+    "diccionario": dict(
+        capa="Diccionario — integridad de nodos (script ⊆ maestro)",
+        intencion="nodo-del-script-existe-en-el-maestro",
+        ambito="FAMILY de look_elsewhere_full.py contra el diccionario maestro",
+        # Se muta el CONSUMIDOR, nunca el maestro: vive en sandbox_unificado/, que
+        # es submódulo del repo público y no se toca antes del envío.
+        exenciones=[("alias de nombre declarados en el guardián "
+                     "(KRYSTOS_V, ATLAS, PHOENIX) mientras el maestro no se resincroniza",
+                     None)],
+        archivo="src/estadistica/look_elsewhere_full.py",
+        prefijos=["diccionario", "R13"],
+        mutacion=[("un nodo del script que no existe en el maestro",
+                   '"IGNIS": IGNIS, "KRYSTOS_V": KRYSTOS_V,',
+                   '"IGNIS": IGNIS, "KRYSTOS_V": KRYSTOS_V, "NODO_FANTASMA": IGNIS,')],
+    ),
+    "memorias": dict(
+        capa="Memorias — coherencia de las 3 memorias",
+        intencion="memoria-sin-valor-retirado",
+        ambito="CLAUDE.md, VERIFICATION_LEDGER.md y el vault Obsidian",
+        exenciones=[("valores retirados marcados explícitamente como tales", None)],
+        prefijos=["memoria"],
+        probada_en="test_guardian.py",
+        mutacion=[],
+    ),
+    "manuscritos": dict(
+        capa="Manuscritos — reglas R1 (cronología) y R2 (multidominio)",
+        intencion="prosa-sin-cronologia-ni-multidominio",
+        ambito="manuscript/*.tex y README.md",
+        exenciones=[],
+        prefijos=["R1 ", "R2 ", "manuscritos"],
+        probada_en="test_guardian.py",
+        mutacion=[],
+    ),
+    "R25": dict(
+        capa="R25 — parametrización ω_m absoluto (no congelar Ω_m en el MCMC)",
+        intencion="parametrizacion-correcta-del-mcmc",
+        ambito="src/**/*.py y class_ssee/**/*.py",
+        exenciones=[("test_guardian.py, que lleva la cadena del error a propósito", None)],
+        prefijos=["R25"],
+        probada_en="test_guardian.py",
+        mutacion=[],
+    ),
     "R30": dict(
         capa="R30 — política de redondeo",
         intencion="redondeo-correcto",
         ambito="prosa .tex, anclas símbolo↔patrón",
         exenciones=[("valores con menos de 4 decimales (no discriminan)", None),
                     ("medidas de Planck/SH0ES, que no son predicciones", None)],
-        mutacion=[("valor anclado que no es el redondeo correcto",
-                   "$\\Omega_{m,\\rm CMB}=\\omega_m/h^2=0.308881$ at the global anchor",
-                   "$\\Omega_{m,\\rm CMB}=\\omega_m/h^2=0.308999$ at the global anchor")],
+        # Ya la prueba `test_guardian.py`, que llegó antes y también atribuye.
+        # Duplicar el caso no es sólo trabajo repetido: cuando una copia se
+        # actualiza y la otra no, el guardián «demuestra» dos cosas del mismo
+        # punto y nadie sabe cuál manda. Lo detectó M7.
+        probada_en="test_guardian.py",
+        mutacion=[],
     ),
     "R41": dict(
         capa="R41 — coherencia de precisión",
@@ -218,16 +345,6 @@ REGLAS = {
 # lista de perdón: es la deuda visible, y sólo puede bajar. Mientras una capa
 # esté aquí, su VERDE no está demostrado — puede ser verde por vacío.
 SIN_COBERTURA = [
-    "Capa Memorias — coherencia de las 3 memorias",
-    "Capa Procedencia — valores de pipeline vs log committeado",
-    "Capa R33 — logs vs núcleo: ningún log activo con constante retirada",
     "Capa R39 — compuerta de publicación: conoce todas las portadas",
-    "Capa R34 — fuentes vs núcleo: ningún .py hardcodea constante retirada",
     "Capa R35 — artefacto vs fuente: ningún log más viejo que su script",
-    "Capa Manuscritos — reglas R1 (cronología) y R2 (multidominio)",
-    "Capa Archivo — bitácora cubre cada cajón archivado",
-    "Capa Diccionario — integridad de nodos (script ⊆ maestro)",
-    "Capa R20 — anclas observacionales (código ⊆ CANONICAL_VALUES.yaml)",
-    "Capa R25 — parametrización ω_m absoluto (no congelar Ω_m en el MCMC)",
-    "Capa R26 — procedencia declarada de los canónicos",
 ]

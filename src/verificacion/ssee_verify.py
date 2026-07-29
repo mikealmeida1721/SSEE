@@ -141,11 +141,20 @@ L2 = {
     "V-L2-07 n_s":       (1 - phi ** -7,                  0.9655581463),
     "V-L2-08 alpha_K":   (alpha_K,                        0.4033024589),
     "V-L2-09 beta_c":    (-AURA,                         -3.9978473099),
-    "V-L2-12 r":         (12 * (phi ** 4 / 3) / (2 * phi ** 7) ** 2, 0.0081306227),
+    # El literal decía 0.0081306227 y el exacto es 0.0081306188: MAL en la 9ª
+    # cifra. La tolerancia de 1e-6 lo tapaba (era 256× el peor residuo real).
+    # Ningún paper se vio afectado —ambos redondean a 0.008131— pero un
+    # registro con un dígito falso es justo lo que después se propaga.
+    "V-L2-12 r":         (12 * (phi ** 4 / 3) / (2 * phi ** 7) ** 2, 0.0081306188),
     "V-L2-13 f_screen":  ((pi - phi) / Omega ** 2,        0.0672532703),
 }
+# Tolerancia 1e-9, no 1e-6. Los dos lados son álgebra exacta y el registro se
+# escribe a 10 decimales: no hay medida de por medio que justifique holgura. Con
+# 1e-6 el margen era 256× el peor residuo real, y ahí dentro cabía —y cabía de
+# hecho— un literal equivocado en la 9ª cifra. El límite lo pone el redondeo del
+# propio literal a 10 decimales (5e-11), así que 1e-9 deja 20× de aire honesto.
 for name, (computed, ledger) in L2.items():
-    check(name, abs(computed - ledger) < 1e-6,
+    check(name, abs(computed - ledger) < 1e-9,
           f"computado {computed:.10f} / registro {ledger:.10f}")
 
 # V-L2-10 m_phi canónico (forward-prediction, cero fiteo, P6; mecanismo SOLAR²·KRYSTOS 2026-06-19):

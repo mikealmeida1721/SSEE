@@ -57,14 +57,15 @@ REGLAS = {
         # lo pone «canon»; el puente al registro publicado, R20/R26.
         exenciones=[],
         archivo="src/verificacion/ssee_verify.py",
-        # La primera versión movía el literal 7.7e-7 y NO enrojecía: la capa
-        # compara con tolerancia absoluta 1e-6, así que el defecto inyectado
-        # estaba dentro del margen. No era la regla, era mi caso — pero conviene
-        # tenerlo escrito: estas comprobaciones fijan el valor a ±1e-6 ABSOLUTO,
-        # que para r≈0.00813 son sólo ~1e-4 relativos.
-        mutacion=[("el valor esperado de w0 alterado por encima de la tolerancia",
+        # Historia de este caso, que enseña más que el caso: la primera versión
+        # movía el literal 7.7e-7 y NO enrojecía, porque la capa toleraba 1e-6
+        # absoluto. Al medir el residuo REAL (peor: 3.9e-9) resultó que la holgura
+        # era 256× — y dentro cabía un literal equivocado: r estaba escrito
+        # 0.0081306227 en vez de 0.0081306188. Se corrigió el literal y se apretó
+        # la tolerancia a 1e-9. Ahora basta con mover el último dígito.
+        mutacion=[("el valor esperado de w0 movido en su última cifra",
                    '"V-L2-01 w0":        (-Tr / Mv,                      -0.8399497713)',
-                   '"V-L2-01 w0":        (-Tr / Mv,                      -0.8300000000)')],
+                   '"V-L2-01 w0":        (-Tr / Mv,                      -0.8399497813)')],
     ),
     "V-L3": dict(
         capa="3 — mecanismos y derivaciones",

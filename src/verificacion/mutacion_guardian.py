@@ -1,72 +1,92 @@
-"""Prueba de MUTACIÓN del guardián.
+"""Prueba de MUTACIÓN del guardián, dirigida por el registro de reglas.
 
-Inyecta un defecto CONOCIDO en un manuscrito, corre el guardián y comprueba que
-se pone ROJO; después restaura el archivo y verifica que quedó idéntico.
+Inyecta un defecto CONOCIDO en un manuscrito, corre el guardián, y exige que
+falle **la regla que dice cubrirlo** — no cualquiera. Después restaura el archivo
+y verifica que quedó idéntico.
 
-POR QUÉ EXISTE (2026-07-29). Mike preguntó lo que había que preguntar: si las
-reglas se acumulan, ¿cómo sabemos que cada una funciona, que no se estorban entre
-sí, y que no estamos poniendo parches donde tocaba refinar? Un VERDE prueba que
-nada saltó; NO prueba que algo habría saltado. Esto último sólo se demuestra
-rompiendo el documento a propósito.
+POR QUÉ EXISTE (2026-07-29). Mike: «que el guardián me dé verde no significa que
+esté bien». Un VERDE demuestra que nada saltó; NO demuestra que algo habría
+saltado. Eso sólo se prueba rompiendo el documento a propósito.
 
-Y la primera corrida encontró el agujero: un valor sencillamente MAL
-(«n_s = 1−φ⁻⁷ & 0.965123», a 4.4e-4 del exacto) pasaba VERDE. R38 lo descartaba
-por su ventana de identificación —lo leía como «esta celda no habla de n_s»— y
-R30 no lo veía porque sus patrones esperan «fórmula = valor» y el valor vivía en
-otra celda. Dos reglas, cada una con su motivo, y el error grueso en medio.
-Se refinó R38 (identificación DECLARADA por el par símbolo|fórmula) en vez de
-añadir una regla más.
+POR QUÉ SE EXIGE LA REGLA CONCRETA. La primera versión sólo miraba si el guardián
+enrojecía. Eso deja pasar el peor caso: la regla nueva no funciona, pero otra
+salta por casualidad y el resultado parece correcto. Atribuir el fallo demuestra
+que la regla añadida es la que trabaja.
 
-REGLA DE USO: toda regla nueva entra con su caso aquí. Si añadir el caso no
-enrojece al guardián, la regla no sirve todavía."""
-import subprocess, pathlib, sys
-REPO = pathlib.Path("/home/mike/Proyectos/SSEE")
-TEX  = REPO / "manuscript/SSEE_Paper1_Framework.tex"
-orig = TEX.read_text()
+Así se destapó el agujero original: «$n_s = 1-\\varphi^{-7}$ & $0.965123$» —un
+valor sencillamente MAL, a 4.4e-4 del exacto— pasaba VERDE, porque la ventana de
+identificación de R38 lo leía como «esta celda no habla de n_s» y los patrones de
+R30 esperan «fórmula = valor» con el valor en la misma celda.
 
-CASOS = [
- ("R42 igualdad sin unidad",
-  "anchor $H_0=3(\\varphi+\\pi)^2\\,\\kmsu$ (derived, Paper~9)",
-  "anchor $H_0=3(\\varphi+\\pi)^2$ (derived, Paper~9)"),
- ("R43 potencia de φ truncada con «=»",
-  "$2\\varphi^7=58.068884$", "$2\\varphi^7=58.07$"),
- ("R44 Ω_m,dyn a 3 decimales",
-  "$\\Omega_{m,\\rm dyn}=0.160050$ (DESI)", "$\\Omega_{m,\\rm dyn}=0.160$ (DESI)"),
- ("R44 SOLAR²·K_v a 2 decimales",
-  "\\mathrm{KRYSTOS}_V=594.279999$", "\\mathrm{KRYSTOS}_V=594.28$"),
- ("R45 OP resuelto citado como abierto",
-  "with the remaining open problems OP-9 and OP-11",
-  "with the remaining open problems OP-9/11/14"),
- ("R37 constante SSEE a 5 decimales",
-  "$w_0 = -T_r/M_v$ & $-0.839950$", "$w_0 = -T_r/M_v$ & $-0.83995$"),
- ("valor MAL, error 4e-4 (el que se escapó)",
-  "$n_s = 1-\\varphi^{-7}$ & $0.965558$", "$n_s = 1-\\varphi^{-7}$ & $0.965123$"),
- ("valor MAL, error 1e-5 (último dígito)",
-  "$n_s = 1-\\varphi^{-7}$ & $0.965558$", "$n_s = 1-\\varphi^{-7}$ & $0.965548$"),
- ("valor MAL, error 3e-2 (grosero)",
-  "$n_s = 1-\\varphi^{-7}$ & $0.965558$", "$n_s = 1-\\varphi^{-7}$ & $0.935558$"),
- ("valor MAL en w_0 (otra fila, otra fórmula)",
-  "$w_0 = -T_r/M_v$ & $-0.839950$", "$w_0 = -T_r/M_v$ & $-0.812340$"),
- ("CONTROL: valor CORRECTO no debe disparar",
-  "$n_s = 1-\\varphi^{-7}$ & $0.965558$", "$n_s = 1-\\varphi^{-7}$ & $0.965558$"),
- ("CONFLICTO: R42 enmascarado por la exención de mención",
-  "anchor $H_0=3(\\varphi+\\pi)^2\\,\\kmsu$ (derived, Paper~9)",
-  "This is not a fitted quantity: the anchor $H_0=3(\\varphi+\\pi)^2$ (derived, Paper~9)"),
-]
+Uso:  python3 src/verificacion/mutacion_guardian.py
+"""
+import re
+import sys
+import pathlib
+import subprocess
 
-def verde():
-    r = subprocess.run([sys.executable, str(REPO/"src/verificacion/ssee_verify.py")],
+_AQUI = pathlib.Path(__file__).resolve().parent
+sys.path.insert(0, str(_AQUI))
+import registro_reglas as _reg   # noqa: E402
+
+REPO = _AQUI.parent.parent
+TEX = REPO / _reg.TEX_MUTACION
+GUARDIAN = _AQUI / "ssee_verify.py"
+
+
+def corre():
+    """(verde?, [nombres de los checks que fallaron])."""
+    r = subprocess.run([sys.executable, str(GUARDIAN)],
                        capture_output=True, text=True, cwd=REPO)
-    return "VERDE" in r.stdout.split("=" * 40)[-1]
+    fallos = re.findall(r"^\s*x\s+(\S+)", r.stdout, re.M)
+    return ("VERDE" in r.stdout.split("=" * 40)[-1]), fallos
 
-print("línea base:", "VERDE" if verde() else "ROJO")
-print()
-for nombre, viejo, nuevo in CASOS:
-    if viejo not in orig:
-        print(f"  [?] {nombre:52s} — patrón ancla no encontrado"); continue
-    TEX.write_text(orig.replace(viejo, nuevo, 1))
-    ok = not verde()          # queremos que se ponga ROJO
-    TEX.write_text(orig)
-    print(f"  [{'DETECTA' if ok else ' PASA  '}] {nombre}")
-assert TEX.read_text() == orig, "¡el archivo no volvió a su estado original!"
+
+orig = TEX.read_text()
+verde, _ = corre()
+print(f"línea base: {'VERDE' if verde else 'ROJO'}")
+if not verde:
+    print("  el guardián ya está en rojo: arréglalo antes de mutar.")
+    sys.exit(1)
+
+problemas = []
+for regla, info in _reg.REGLAS.items():
+    for nombre, viejo, nuevo in info["mutacion"]:
+        etiqueta = f"{regla} · {nombre}"
+        if viejo not in orig:
+            problemas.append(f"{etiqueta}: el ancla ya no existe en el .tex")
+            print(f"  [ ANCLA?  ] {etiqueta}")
+            continue
+        TEX.write_text(orig.replace(viejo, nuevo, 1))
+        try:
+            _, fallos = corre()
+        finally:
+            TEX.write_text(orig)          # restaurar SIEMPRE
+        if not fallos:
+            problemas.append(f"{etiqueta}: nadie lo detecta (VERDE por vacío)")
+            print(f"  [  PASA   ] {etiqueta}")
+        elif not any(f.startswith(regla) for f in fallos):
+            problemas.append(f"{etiqueta}: lo detecta {fallos[0]}, no {regla}")
+            print(f"  [ OTRA    ] {etiqueta} → lo caza {fallos[0]}")
+        else:
+            print(f"  [ DETECTA ] {etiqueta}")
+
+# Control negativo: sin defecto, nadie debe disparar. Una regla que se queja del
+# documento correcto es tan inútil como una que no se queja del roto.
+TEX.write_text(orig)
+verde, _ = corre()
+print(f"  [{' CONTROL ' if verde else ' FALLA   '}] documento intacto → "
+      f"{'VERDE, nadie dispara' if verde else 'ALGUIEN DISPARA SIN DEFECTO'}")
+if not verde:
+    problemas.append("control negativo: hay ruido sobre el documento correcto")
+
+assert TEX.read_text() == orig, "¡el archivo NO volvió a su estado original!"
 print("\narchivo restaurado idéntico ✓")
+
+if problemas:
+    print(f"\nMUTACIÓN-ROJO — {len(problemas)} caso(s):")
+    for p in problemas:
+        print("   x ", p)
+    sys.exit(1)
+print(f"\nMUTACIÓN-VERDE — {sum(len(v['mutacion']) for v in _reg.REGLAS.values())} "
+      f"defectos inyectados, cada uno detectado por SU regla.")

@@ -2787,7 +2787,7 @@ _PREF_NIVEL = [
       "R1 ", "R2 ", "R9", "R10", "R11", "R13", "R14", "R15", "R17", "R18",
       "R19", "R21", "R22", "R23", "R24", "R27", "R28", "R29", "R30",
       "diccionario", "sello"), 5),
-    (("memoria", "archivo", "R12", "R39"), 6),
+    (("memoria", "archivo", "R12", "R39", "R46"), 6),
 ]
 
 
@@ -2797,6 +2797,21 @@ def _nivel_de(nombre):
             return _n
     return 9          # sin clasificar: se muestra al final, nunca se oculta
 
+
+# ── R46 · piso de comprobaciones ──────────────────────────────────────────────
+# Catorce capas leen su archivo con `if ... exists()`. Si un .tex se renombra o
+# se mueve, sus comprobaciones no FALLAN: dejan de EJECUTARSE, y el guardián
+# sigue diciendo VERDE con menos trabajo hecho. Es la cuarta patología —el verde
+# por vacío— aplicada a una capa entera en vez de a una regla.
+# El piso se sube a mano al añadir capas; NUNCA se baja para tapar una corrida.
+print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
+_PISO_CHECKS = 192          # medido 2026-07-29; sólo puede SUBIR
+check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
+      checks + 1 >= _PISO_CHECKS,
+      f"{checks + 1} ejecutadas (piso {_PISO_CHECKS})"
+      if checks + 1 >= _PISO_CHECKS else
+      f"sólo {checks + 1} de {_PISO_CHECKS}: alguna capa no corrió "
+      f"(¿archivo renombrado o movido?)")
 
 print("\n" + "=" * 60)
 if fails:

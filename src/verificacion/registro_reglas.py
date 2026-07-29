@@ -370,6 +370,21 @@ REGLAS = {
                    "with the remaining open problems OP-9 and OP-11",
                    "with the remaining open problems OP-9/11/14")],
     ),
+    "R46": dict(
+        capa="R46 — el guardián hizo todo el trabajo que dice hacer",
+        intencion="cobertura-no-vacía",
+        ambito="el propio guardián: número de comprobaciones ejecutadas",
+        # Catorce capas leen su archivo con `if ... exists()` y varias recorren
+        # una SECCIÓN de un documento buscando su encabezado. Si el archivo se
+        # mueve o el encabezado se renombra, esas comprobaciones no fallan:
+        # desaparecen, y el guardián sigue en VERDE con menos trabajo hecho.
+        # R46 es el tripwire: el total sólo puede subir.
+        archivo="VERIFICATION_LEDGER.md",
+        exenciones=[("subir el piso al añadir capas es legítimo; bajarlo NO", None)],
+        mutacion=[("una sección entera del Registro deja de recorrerse",
+                   "## B. Valores de pipeline",
+                   "## B2. Valores de pipeline")],
+    ),
 }
 
 # Capas que EXISTEN en el código y todavía NO tienen entrada arriba. No es una

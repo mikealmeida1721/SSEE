@@ -30,7 +30,7 @@ import registro_reglas as _reg   # noqa: E402
 
 REPO = _AQUI.parent.parent
 GUARDIAN = _AQUI / "ssee_verify.py"
-DEUDA_MAX = 2          # medida 2026-07-29; sólo puede BAJAR
+DEUDA_MAX = 0          # medida 2026-07-29; sólo puede BAJAR
 
 _fallos, _avisos = [], []
 

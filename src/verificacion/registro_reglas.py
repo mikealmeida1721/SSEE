@@ -233,6 +233,37 @@ REGLAS = {
         probada_en="test_guardian.py",
         mutacion=[],
     ),
+    "R35": dict(
+        capa="R35 — artefacto vs fuente: ningún log más viejo que su script",
+        intencion="artefacto-no-anterior-a-su-fuente",
+        ambito="results/logs/*.log contra la fecha de commit de su script",
+        exenciones=[("logs históricos y muestreo certificado, declarados en PROPAGACION.yaml",
+                     None),
+                    ("cambios que sólo tocan prosa: se compara el AST, no el texto",
+                     None)],
+        archivo="PROPAGACION.yaml",
+        prefijos=["R35"],
+        # Se repunta un log a un script committeado DESPUÉS y con código distinto:
+        # es la forma exacta del defecto que la capa persigue —un resultado que
+        # dice venir de un código que ya no es el que corrió—.
+        mutacion=[("un log apuntado a un script posterior a él",
+                   "  chi2_bao_posterior:         src/p02_mcmc/chi2_bao_posterior.py",
+                   "  chi2_bao_posterior:         src/verificacion/ssee_verify.py")],
+    ),
+    "R39": dict(
+        capa="R39 — compuerta de publicación: conoce todas las portadas",
+        intencion="compuerta-ve-toda-la-suite",
+        ambito="preparar_publicacion.py contra los .tex con \\date{}",
+        exenciones=[],
+        archivo="src/verificacion/preparar_publicacion.py",
+        prefijos=["R39"],
+        # Si la compuerta deja de ver un directorio, publicaría dejando ese
+        # documento con la fecha vieja y nadie lo notaría: es un fallo silencioso
+        # en el único punto donde la suite sale al mundo.
+        mutacion=[("la compuerta deja de mirar un directorio de la suite",
+                   'for tx in sorted((_REPO / d).glob("*.tex")):',
+                   'for tx in sorted((_REPO / d).glob("NADA*.tex")):')],
+    ),
     "R30": dict(
         capa="R30 — política de redondeo",
         intencion="redondeo-correcto",
@@ -345,6 +376,4 @@ REGLAS = {
 # lista de perdón: es la deuda visible, y sólo puede bajar. Mientras una capa
 # esté aquí, su VERDE no está demostrado — puede ser verde por vacío.
 SIN_COBERTURA = [
-    "Capa R39 — compuerta de publicación: conoce todas las portadas",
-    "Capa R35 — artefacto vs fuente: ningún log más viejo que su script",
 ]

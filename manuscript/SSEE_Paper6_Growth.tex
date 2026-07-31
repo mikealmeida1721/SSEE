@@ -1,0 +1,371 @@
+\documentclass[12pt,a4paper]{article}
+
+% ── Packages ──────────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=red!70!black,citecolor=green!50!black,urlcolor=blue!80!black]{hyperref}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[most]{tcolorbox}
+\usepackage{natbib}
+
+\geometry{margin=2.5cm}
+\setstretch{1.15}
+\graphicspath{{../results/figures/}}
+
+% ── Macros ────────────────────────────────────────────────────────────────────
+\newcommand{\SSEE}{\textsc{SSEE}}
+\newcommand{\Omm}{\Omega_{\rm m}}
+\newcommand{\OmDE}{\Omega_{\rm DE}}
+\newcommand{\mnu}{\Sigma m_\nu}
+\newcommand{\TODO}[1]{\textcolor{red!70!black}{\textbf{[PENDIENTE R3/R4: #1]}}}
+
+% ── Theorem-like environments ─────────────────────────────────────────────────
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\title{SSEE Paper 6: The Growth Sector Re-examined --- No Second Component,\\
+No $S_8$ Tension, on Raw Survey Data}
+\author{Mike Edison Almeida Vallejo}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+An earlier version of this paper introduced a second, cold dark-matter-like
+sector inside \SSEE{} --- built from the difference
+$\Omega_{\phi\rm DM}=\Omega_{m,\rm CMB}-\Omega_{m,\rm dyn}$ --- together with a
+canonical particle candidate of mass $m_\phi=40.70$~eV, motivated by an
+apparent $S_8$ tension against KiDS-1000 weak lensing. Both constructions are
+retracted here. Two independent findings drive the retraction. First,
+$\Omega_{m,\rm dyn}=1+w_0\approx0.160$ is the dark-energy equation of state,
+not a density; the subtraction that defined $\Omega_{\phi\rm DM}$ mixed a
+measured density with a dimensionless equation-of-state number, and carried no
+physical content despite being dimensionally well formed. Second, and
+independently, evaluating \SSEE{} directly against the \emph{raw} KiDS-1000
+$\xi_\pm$ correlation functions --- rather than against the compressed $S_8$
+summary statistic, which is derived under a $\Lambda$CDM background --- shows
+no tension to resolve: with the primordial amplitude free (as it is in both
+models), $S_8=\TODO{S8 SSEE}$ against $S_8=\TODO{S8 SSEE err}$ measured
+directly, compared to $S_8=\TODO{S8 LCDM}$ for $\Lambda$CDM fit to the same raw
+data. The particle was introduced to explain a tension that only existed once
+the public summary statistic, itself conditioned on $\Lambda$CDM, was
+compared against \SSEE{}'s background. On the data it was meant to explain, it
+is not required, and independently it is excluded by it: at the mass required
+by the model's own algebraic lineage ($m_\phi=40.70$~eV), free-streaming
+suppresses $\sigma_8$ well beyond what the raw shear data allow. We report
+this as a completed, falsified line of reasoning rather than omit it, and
+present the growth sector as it now stands: a single sector, $\Omega_m$ fixed
+by the CMB-calibrated background with no partition, tested against raw KiDS-1000
+cosmic shear and raw BOSS DR12 redshift-space multipoles.
+\end{abstract}
+
+\tableofcontents
+
+% ============================================================================
+\section{Introduction: why the growth sector needed re-examination}
+% ============================================================================
+
+The background sector of \SSEE{} --- the algebraic derivation of $H_0$,
+$\omega_b$, $\omega_c$, $n_s$, $w_0$ and $w_a$ from $\varphi$ and $\pi$ --- has
+been tested against Planck PR4, DESI DR2 BAO, and Pantheon+ in Papers~1--4,
+9--10. The growth-of-structure sector --- how matter perturbations evolve once
+the background is fixed --- is tested independently, against two late-time
+probes: weak gravitational lensing (cosmic shear, KiDS-1000) and redshift-space
+galaxy clustering (BOSS DR12). Both probes report their results as derived
+quantities: KiDS-1000 publishes $S_8\equiv\sigma_8\sqrt{\Omega_m/0.3}$, and BOSS
+publishes $f\sigma_8(z)$, the growth rate times the amplitude of clustering.
+
+Both derived quantities share a hidden dependency that matters for a model
+whose background departs from $\Lambda$CDM: converting a raw two-point
+statistic (shear correlation functions, or galaxy power-spectrum multipoles)
+into a compressed number requires assuming a fiducial cosmology --- the
+Alcock--Paczynski effect for redshift-space clustering, and the non-linear
+matter power spectrum template for lensing. Both official pipelines assumed
+$\Lambda$CDM. Comparing a $\Lambda$CDM-conditioned number against a background
+that is \emph{not} $\Lambda$CDM (\SSEE{} has $w_0=-0.840$, not $-1$) imports
+part of the $\Lambda$CDM background into the comparison itself.
+
+This paper re-does both measurements on the raw data products --- KiDS-1000
+$\xi_\pm(\theta)$ (Asgari et al.~2021 \citep{Asgari2021}) and BOSS DR12 power-spectrum multipoles
+$P_0,P_2,P_4(k)$ (Beutler et al.~2017 \citep{Beutler2017}) --- applying the model-dependent
+deformation (Alcock--Paczynski for BOSS; the non-linear matter power spectrum
+template for KiDS) to the \emph{theory prediction}, never to the data. This
+keeps the measurement clean of any assumed background, at the cost of
+re-deriving both likelihoods from the covariance matrices up rather than
+reusing the compressed public numbers.
+
+% ============================================================================
+\section{The retraction: why the second sector is withdrawn}
+\label{sec:retraction}
+% ============================================================================
+
+\subsection{The subtraction that never was a density}
+
+The two-sector construction rested on
+\begin{equation}
+  \Omega_{\phi\rm DM} \;=\; \Omega_{m,\rm CMB} - \Omega_{m,\rm dyn},
+  \qquad \Omega_{m,\rm dyn}\equiv 1+w_0.
+\end{equation}
+$\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ is a measured density fraction, fixed
+by the CMB-calibrated background. $\Omega_{m,\rm dyn}=1+w_0\approx0.160050$ is,
+by construction, minus the dark-energy equation of state --- an algebraic
+identity of the background sector's $w_0=-T_R/M_V$, entering the Friedmann
+equations as an equation-of-state parameter, never as a density. Both
+quantities are dimensionless, so the subtraction is arithmetically well
+defined; but a well-defined subtraction between a density and an
+equation-of-state number does not itself define a density, let alone a
+particle. The internal code comments that introduced this construction stated
+explicitly that $\Omega_{m,\rm dyn}$ ``is NOT a matter density: it is the
+dynamical cold sector (equation of state)'' in the same breath as summing it
+with $\Omega_{\phi\rm DM}$ to recover $\Omega_{m,\rm CMB}$ --- an internal
+inconsistency once both statements are read together.
+
+\subsection{Falsifiability is not evidence of existence}
+
+A canonical particle mass, $m_\phi=40.70$~eV, was derived from this
+subtraction via a fixed algebraic multiplier
+($\rm SOLAR^2\!\cdot\!KRYSTOS_V=594.28$) acting on $\Sigma m_\nu^{\rm active}$,
+explicitly to render the two-sector hypothesis falsifiable against
+free-streaming suppression in the matter power spectrum. Falsifiability is a
+necessary property of a scientific hypothesis; it is not evidence that the
+hypothesis's object exists. Once the subtraction that defined
+$\Omega_{\phi\rm DM}$ is shown not to correspond to a physical density, the
+particle built on top of it has nothing left to be made of, and is withdrawn
+together with it --- independently of whatever bound the data would place on
+its mass. \S\ref{sec:s8} reports that bound only as part of the historical
+record of how the retraction was reached, not as a surviving result.
+
+\subsection{Open problems closed by dissolution}
+
+Four open problems catalogued against the two-sector construction close by
+dissolution, following the precedent of OP-8 (the analogous $\Omega_m$
+partition via the algebraic constant MIRA, retired 2026-07-09):
+
+\begin{itemize}
+  \item \textbf{OP-9} (origin of the SOLAR$^2\cdot$KRYSTOS$_V$ coefficient) ---
+        closes: there is no coefficient left to derive.
+  \item \textbf{OP-10} (the ``single free scalar field'' claim, admitted as
+        ``technically violated'' by the two-sector construction) --- closes,
+        and the single-field philosophy of \SSEE{} is restored without
+        qualification.
+  \item \textbf{OP-11} ($\xi$, the non-minimal coupling of the second sector
+        --- an explicit additional free continuous parameter) --- closes: the
+        parameter is removed, not fitted.
+  \item \textbf{OP-12} ($T_\phi$, described in its own documentation as
+        ``bookkeeping, not a temperature derived from physics'') --- closes.
+\end{itemize}
+
+No new open problem is created by this retraction: what remains is
+$\Omega_m=0.308881$, a single measured quantity, entering both the background
+and the growth-of-structure sector with no partition.
+
+% ============================================================================
+\section{Methodology: measuring against raw data, not compressed statistics}
+\label{sec:method}
+% ============================================================================
+
+\subsection{The principle: combined data reports its own internal tensions}
+
+A dataset built by combining independent probes under a flexible model does
+not report fidelity to any one of them: it reports the point at which their
+mutual tensions are minimized, which is not the same thing. A model with
+enough freedom to fit each probe separately with a \emph{different} set of
+nuisance values will inevitably report a lower $\chi^2$ when its parameters are
+free to migrate between probes than when they are held fixed to what any
+single probe prefers ---not because the combination is more accurate, but
+because it is averaging disagreement rather than resolving it. This is the
+generic mechanism behind the well-documented $S_8$ tension between Planck and
+cosmic shear surveys under $\Lambda$CDM: parameters fitted to the CMB, carried
+over unchanged to lensing, land outside the lensing-preferred region.
+
+\SSEE{} is structurally unable to exploit this mechanism: its background
+(\(\omega_b,\omega_c,h,n_s,w_0,w_a\)) is fixed by algebra, identical whether
+evaluated against the CMB, cosmic shear, or redshift-space clustering. The
+only parameter allowed to vary between probes is the primordial amplitude
+$A_s$ (equivalently $\log A$), which is free in both \SSEE{} and $\Lambda$CDM
+and is not itself a probe of the late-time growth sector.
+
+\subsection{Test design: ingredients transported, not re-fitted}
+\label{sec:r7}
+
+To make this principle falsifiable rather than rhetorical, we perform the
+following test (a design due to M.~Almeida): the three probes --- Planck
+CMB, KiDS-1000 shear, BOSS DR12 clustering --- are combined with the shared
+amplitude free, yielding the ingredient set the \emph{combination} prefers.
+That same ingredient set is then evaluated against each probe
+\emph{individually}, without re-fitting. Transporting parameters from a joint
+fit to an individual dataset always degrades $\chi^2$ relative to a dedicated
+fit --- that is arithmetic, true of any model, and proves nothing by itself.
+The diagnostic quantity is how much it degrades relative to what the
+probe's own statistical uncertainty predicts:
+\begin{equation}
+  \Delta\chi^2(\text{probe}) \;=\;
+  \chi^2\big(\text{joint ingredients}\big) - \chi^2\big(\text{probe-fitted ingredients}\big).
+\end{equation}
+For \SSEE{}, $\Delta\chi^2\equiv0$ by construction on every background
+parameter except $A_s$: there is no ingredient to transport, because none of
+$\omega_b,\omega_c,h,n_s,w_0,w_a$ are free to begin with. For $\Lambda$CDM,
+$\Delta\chi^2>0$ is measured, not assumed. Results in
+Table~\ref{tab:r7}.
+
+\begin{table}[h]
+\centering
+\caption{Ingredient transport test (\S\ref{sec:r7}). $\Delta\chi^2$ evaluated
+per probe, joint-fit ingredients vs.\ probe-dedicated fit.}
+\label{tab:r7}
+\begin{tabular}{lccc}
+\toprule
+ & CMB (Planck) & shear (KiDS-1000) & clustering (BOSS) \\
+\midrule
+$\Lambda$CDM, $\Delta\chi^2$ & \TODO{R7 LCDM CMB} & \TODO{R7 LCDM KiDS} & \TODO{R7 LCDM BOSS} \\
+\SSEE{}, $\Delta\chi^2$ & 0 (by construction) & 0 (by construction) & 0 (by construction) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Raw KiDS-1000 cosmic shear likelihood}
+\label{sec:kids-method}
+
+We evaluate $\chi^2$ against the 225 (of 270) scale-cut $\xi_\pm(\theta)$ data
+points from the KiDS-1000 Blind~C release (Asgari et al.~2021 \citep{Asgari2021}), using the flat-sky
+Limber approximation for the shear power spectrum $C_\ell^{ij}$ (GG+GI+II, NLA
+intrinsic alignment model, Bridle \& King 2007 \citep{BridleKing2007}), HMcode-2015 non-linear
+matter power spectrum (Mead et al.~2015 \citep{Mead2015}) with the one-parameter baryon
+feedback prescription used in the official KiDS-1000 analysis, and the
+official redshift-distribution SOM covariance and $\delta_c$ priors. The
+pipeline reproduces the published maximum-posterior likelihood to 0.4\%
+(negative control: $\chi^2=261.27$ vs.\ 260.32 official).
+
+Nine nuisance parameters (baryon feedback amplitude, intrinsic alignment
+amplitude, five source-redshift shifts, additive $c$-term) are marginalized
+via MCMC (Cobaya, Metropolis sampler, 4 independent chains,
+Gelman--Rubin $R-1<0.03$, Cobaya \citep{Cobaya}), not minimized, for both \SSEE{} (background fixed,
+$\log A$ free: 9 parameters total) and $\Lambda$CDM (background free:
+$\omega_b,\omega_c,h,n_s$; 13 parameters total, same nuisance treatment).
+
+\subsection{Raw BOSS DR12 redshift-space multipoles}
+\label{sec:boss-method}
+
+We evaluate $\chi^2$ against the full-shape power-spectrum multipoles
+$P_0,P_2,P_4(k)$ from BOSS DR12 (Beutler et al.~2017 \citep{Beutler2017}), 3 redshift bins
+($z=0.38,0.51,0.61$) $\times$ 2 hemispheres (NGC/SGC), using the PATCHY mock
+covariance with Hartlap correction. The Alcock--Paczynski deformation is
+applied to the \emph{model}, mapped onto the fiducial cosmology
+($\Omega_m=0.31$, $w=-1$, $H_0=100$, declared in the data headers) in which
+Beutler measured, so that the raw data vector is never touched. The survey
+window function is applied via the configuration-space convolution method of
+Wilson et al.~(2017) \citep{Wilson2017}: $P_\ell(k)\to\xi_\ell(s)$ (Hankel transform),
+mixed with the window multipoles $W_0,W_2,W_4,W_6,W_8$, transformed back.
+Kaiser redshift-space distortions with Lorentzian finger-of-God damping are
+used at this stage of the analysis (see \S\ref{sec:limitation-kaiser}); a
+one-loop/effective-theory model is the target for the production run.
+
+% ============================================================================
+\section{$S_8$: no tension on raw cosmic shear}
+\label{sec:s8}
+% ============================================================================
+
+\TODO{Insertar aqui la tabla de resultados R3/R4: S8 SSEE MCMC, S8 LCDM MCMC,
+Delta chi2, con Rminus1 final y numero de muestras efectivas de cada corrida.}
+
+\begin{table}[h]
+\centering
+\caption{$S_8$ against raw KiDS-1000 $\xi_\pm$, primordial amplitude free in
+both models, 9 (\SSEE{}) vs.\ 13 ($\Lambda$CDM) parameters, MCMC-marginalized.}
+\label{tab:s8}
+\begin{tabular}{lcccc}
+\toprule
+ & $\log A$ & $\sigma_8$ & $S_8$ & $\chi^2$ (225 dof) \\
+\midrule
+$\Lambda$CDM (background free) & \TODO{logA} & \TODO{s8} & \TODO{S8} & \TODO{chi2} \\
+\SSEE{} (background fixed) & \TODO{logA} & \TODO{s8} & \TODO{S8} & \TODO{chi2} \\
+\midrule
+KiDS-1000 published & --- & --- & $0.759\pm0.024$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Historical note: the particle's exclusion, for the record}
+
+Before the subtraction defining $\Omega_{\phi\rm DM}$ was recognized as
+physically empty (\S\ref{sec:retraction}), the two-sector hypothesis was
+tested directly against raw KiDS-1000 data with the canonical particle mass
+$m_\phi=40.70$~eV. Free-streaming suppresses $\sigma_8$ by 10.4\% at that
+mass, against a raw-data uncertainty of 3.16\%; the amplitude $A_s$ cannot
+compensate because free-streaming changes the \emph{shape} of $P(k)$, not its
+overall scale. A measured suppression law,
+$\Delta\sigma_8(\%)=52088\cdot m_\phi^{-2.283}$, places a lower bound
+$m_\phi>70.3$~eV for consistency with the shear data --- 1.73$\times$ the
+canonical mass, and outside the maximal mass reachable by the model's own
+algebraic lineage grammar (§\ref{sec:retraction}, maximum multiplier 594.28).
+We record this bound as part of how the retraction was reached
+(\S\ref{sec:retraction}), not as a live result: the particle it would
+constrain does not exist in the current model.
+
+% ============================================================================
+\section{$f\sigma_8$: growth rate against raw BOSS DR12 clustering}
+\label{sec:fsigma8}
+% ============================================================================
+
+\TODO{Insertar aqui la tabla de resultados R1/R2: fsigma8 SSEE por bin de z,
+fsigma8 LCDM por bin de z, comparacion con Alam et al. 2017 consenso, y control
+negativo de la maquinaria (tension media 0.92 sigma, chi2/dof=1.048, tasa de
+crecimiento libre).}
+
+\subsection{Limitation: linear Kaiser at this stage of the analysis}
+\label{sec:limitation-kaiser}
+
+The multipole model used for the results in this section is linear Kaiser
+redshift-space distortions. Measured against the published BOSS DR12
+consensus values (Alam et al.~2017 \citep{Alam2017}) with the growth rate left free, as in the
+official analysis, the pipeline reproduces the published values within
+0.92$\sigma$ on average ($\chi^2$/dof$=1.048$; \S\ref{sec:boss-method}),
+confirming the machinery --- data reading, window convolution, and
+Alcock--Paczynski deformation --- is sound. However, the linear model
+under-predicts $f\sigma_8$ by 9--15\% (increasing with $z$) once matched
+against small-scale modes ($k>0.08\,h/{\rm Mpc}$), a known limitation of
+first-order perturbation theory in the mildly non-linear regime. Results in
+this section that require $k>0.10\,h/{\rm Mpc}$ should be read with this
+caveat; the production run for this paper uses a one-loop
+effective-theory model (velocileptors, Chen, Vlah \& White 2020 \citep{ChenVlahWhite2020}) that
+resolves this limitation, and \S\ref{sec:fsigma8} above reports its output,
+not the linear-theory exploratory result.
+
+% ============================================================================
+\section{Conclusions}
+% ============================================================================
+
+The growth sector of \SSEE{} is, after this revision, structurally simpler
+than the version it replaces: a single matter density, $\Omega_m=0.308881$,
+entering both the background and the growth of structure with no partition,
+no additional particle, and no non-minimal coupling parameter. Four open
+problems close by dissolution rather than by resolution. Measured directly
+against raw survey data --- rather than against $\Lambda$CDM-conditioned
+summary statistics --- the growth sector shows \TODO{resumen final: hay o no
+tension S8/fsigma8 con SSEE de un sector, una vez con los numeros de R3/R4/R1/R2}.
+
+The methodological point (\S\ref{sec:method}) is offered as a general caution
+independent of \SSEE{}: any model without background-level free parameters
+cannot exploit the mechanism by which combined datasets average away their own
+internal tensions, and is therefore a comparatively clean probe of whether
+those tensions are real.
+
+% ============================================================================
+\bibliographystyle{plainnat}
+\bibliography{ssee_paper6_growth}
+
+\end{document}

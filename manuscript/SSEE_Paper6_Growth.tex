@@ -93,11 +93,14 @@ Both derived quantities share a hidden dependency that matters for a model
 whose background departs from $\Lambda$CDM: converting a raw two-point
 statistic (shear correlation functions, or galaxy power-spectrum multipoles)
 into a compressed number requires assuming a fiducial cosmology --- the
-Alcock--Paczynski effect for redshift-space clustering, and the non-linear
-matter power spectrum template for lensing. Both official pipelines assumed
-$\Lambda$CDM. Comparing a $\Lambda$CDM-conditioned number against a background
-that is \emph{not} $\Lambda$CDM (\SSEE{} has $w_0=-0.840$, not $-1$) imports
-part of the $\Lambda$CDM background into the comparison itself.
+Alcock--Paczynski effect \citep{AlcockPaczynski1979} for redshift-space
+clustering, and the non-linear matter power spectrum template for lensing.
+Both official pipelines assumed $\Lambda$CDM calibrated to Planck
+\citep{Planck2020}. Comparing a $\Lambda$CDM-conditioned number against a
+background that is \emph{not} $\Lambda$CDM (\SSEE{} has a
+Chevallier--Polarski--Linder \citep{ChevallierPolarski2001,Linder2003}
+equation of state $w_0=-0.840$, not $-1$) imports part of the $\Lambda$CDM
+background into the comparison itself.
 
 This paper re-does both measurements on the raw data products --- KiDS-1000
 $\xi_\pm(\theta)$ (Asgari et al.~2021 \citep{Asgari2021}) and BOSS DR12 power-spectrum multipoles
@@ -130,9 +133,11 @@ defined; but a well-defined subtraction between a density and an
 equation-of-state number does not itself define a density, let alone a
 particle. The internal code comments that introduced this construction stated
 explicitly that $\Omega_{m,\rm dyn}$ ``is NOT a matter density: it is the
-dynamical cold sector (equation of state)'' in the same breath as summing it
+dynamical cold sector ($1+w_0$)'' in the same breath as summing it
 with $\Omega_{\phi\rm DM}$ to recover $\Omega_{m,\rm CMB}$ --- an internal
-inconsistency once both statements are read together.
+inconsistency once both statements are read together. ($1+w_0$ is
+dimensionless and is, by construction, minus the dark-energy equation of
+state; the parenthetical gloss is ours, not the source comment's.)
 
 \subsection{Falsifiability is not evidence of existence}
 
@@ -189,8 +194,10 @@ free to migrate between probes than when they are held fixed to what any
 single probe prefers ---not because the combination is more accurate, but
 because it is averaging disagreement rather than resolving it. This is the
 generic mechanism behind the well-documented $S_8$ tension between Planck and
-cosmic shear surveys under $\Lambda$CDM: parameters fitted to the CMB, carried
-over unchanged to lensing, land outside the lensing-preferred region.
+cosmic shear surveys under $\Lambda$CDM \citep{DiValentino2021}: parameters
+fitted to the CMB \citep{Planck2020}, carried over unchanged to lensing, land
+outside the region preferred by KiDS-1000 \citep{Asgari2021,Heymans2021} and
+DES Y3 \citep{Amon2022} alike.
 
 \SSEE{} is structurally unable to exploit this mechanism: its background
 (\(\omega_b,\omega_c,h,n_s,w_0,w_a\)) is fixed by algebra, identical whether
@@ -248,12 +255,13 @@ matter power spectrum (Mead et al.~2015 \citep{Mead2015}) with the one-parameter
 feedback prescription used in the official KiDS-1000 analysis, and the
 official redshift-distribution SOM covariance and $\delta_c$ priors. The
 pipeline reproduces the published maximum-posterior likelihood to 0.4\%
-(negative control: $\chi^2=261.27$ vs.\ 260.32 official).
+(negative control: $\chi^2=261.27$ vs.\ 260.32 official, the latter from the
+public nested-sampling chain, MultiNest \citep{Feroz2009}).
 
 Nine nuisance parameters (baryon feedback amplitude, intrinsic alignment
 amplitude, five source-redshift shifts, additive $c$-term) are marginalized
-via MCMC (Cobaya, Metropolis sampler, 4 independent chains,
-Gelman--Rubin $R-1<0.03$, Cobaya \citep{Cobaya}), not minimized, for both \SSEE{} (background fixed,
+via MCMC (Cobaya \citep{Cobaya}, Metropolis sampler, 4 independent chains,
+Gelman--Rubin $R-1<0.03$), not minimized, for both \SSEE{} (background fixed,
 $\log A$ free: 9 parameters total) and $\Lambda$CDM (background free:
 $\omega_b,\omega_c,h,n_s$; 13 parameters total, same nuisance treatment).
 
@@ -271,8 +279,10 @@ window function is applied via the configuration-space convolution method of
 Wilson et al.~(2017) \citep{Wilson2017}: $P_\ell(k)\to\xi_\ell(s)$ (Hankel transform),
 mixed with the window multipoles $W_0,W_2,W_4,W_6,W_8$, transformed back.
 Kaiser redshift-space distortions with Lorentzian finger-of-God damping are
-used at this stage of the analysis (see \S\ref{sec:limitation-kaiser}); a
-one-loop/effective-theory model is the target for the production run.
+used at this stage of the analysis (see \S\ref{sec:limitation-kaiser}); the
+one-loop Taruya--Nishimichi--Saito model \citep{Taruya2010}, in its
+effective-field-theory implementation \citep{Baumann2012,ChenVlahWhite2020},
+is the target for the production run.
 
 % ============================================================================
 \section{$S_8$: no tension on raw cosmic shear}

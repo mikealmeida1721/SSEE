@@ -117,9 +117,13 @@ print(f"  Difference               = {abs(IS_correction - abs(w0)):.2e}  (round-
 print(f"\n  c²_s,eff (k→∞)  = {cs2_bare:.6f} + {IS_correction:.6f} = {cs2_eff_highk:.2e}")
 
 if abs(cs2_eff_highk) < 1e-12:
-    print("\n  *** EXACT MARGINAL STABILITY  c²_s,eff = 0  (algebraic identity) ***")
-    print("  The SSEE IS parameters conspire to exactly neutralize c²_s < 0.")
-    print("  DE perturbations at k >> k_crit behave as pressureless (c²_s = 0).")
+    print("\n  *** c²_s,eff = 0  —  CONDICIONAL A OP-22, no identidad exacta ***")
+    print("  ATENCION: este 0 sale de dividir zeta_tilde (normalizada a rho_crit)")
+    print("  por el tau_Pi que SSEE_EFT_section.tex derivo normalizando a rho_DE.")
+    print("  La MISMA cantidad zeta/(rho*tau_Pi) vale 1 alli (asi se fijo tau_Pi,")
+    print("  poniendo c2_s=1 en la frontera de causalidad) y 0.8399 aqui.")
+    print("  Con una sola normalizacion:  c2_s,eff = w0 + 1 = 1+w0 = 0.160050.")
+    print("  Ver OP-22 en OPEN_PROBLEMS.md. NO citar este 0 como resultado firme.")
 elif cs2_eff_highk > 0:
     print(f"\n  IS stabilizes gradient: c²_s,eff = +{cs2_eff_highk:.2e} > 0")
 else:

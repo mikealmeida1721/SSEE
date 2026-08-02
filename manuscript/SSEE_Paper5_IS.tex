@@ -340,36 +340,52 @@ sound speed, with no residual factors.
 
 \begin{tcolorbox}[colback=orange!5,colframe=orange!60!black,
   title={\textbf{Open issue: the form of the steady-state ansatz (OP-22)}}]
-The value of $\ztilde$ below follows from a steady-state condition
-$\Pi = -\KALz\,\rho_{\mathrm{DE}}H$, which combined with $\Pi=-3\zeta H$ gives
-$\zeta = \KALz\rho_{\mathrm{DE}}/3$. \textbf{Two problems, found on review
-(2026-08-02) and stated here rather than papered over.}
+The $c^2_{s,\mathrm{eff}}=0$ reported below is \textbf{not an exact identity}.
+It is the result of a normalisation mismatch \emph{between documents}, found on
+review (2026-08-02) and stated here rather than papered over.
 
-\emph{First}, with the enthalpy inertia established above --- which the Euler
-equation of Appendix~\ref{app:dispersion} requires --- that $\zeta$ gives
+\emph{Where $\tauPi$ comes from.} It is derived --- in the EFT appendix of
+Paper~1 \citep{SSEE_Paper1}, not here --- by imposing the Israel--Stewart
+causality bound at its boundary:
 \begin{equation*}
-  c^2_{s,\mathrm{eff}} = \wz + \frac{\zeta}{(\rho+p)\tauPi}
-  = -0.839950 + 5.248 = +4.41 ,
+  c^2_s = \frac{\zeta}{\rho_{\rm DE}\,\tauPi} \le 1
+  \;\;\xrightarrow{\;=\,1\;}\;\;
+  \tauPi H_0 = \frac{\KALz}{3\,\OmDE} \simeq 2.191 .
 \end{equation*}
-which is superluminal. The marginal-stability result $c^2_{s,\mathrm{eff}}=0$
-quoted throughout this paper implicitly used $\rho$ in place of $\rho+p$ in
-that denominator.
+Note what this means: \emph{by construction}, the quantity
+$\zeta/(\rho_{\rm DE}\tauPi)$ equals $1$.
 
-\emph{Second}, the ansatz is attributed to Paper~1, but Paper~1 does not
-contain it: its glossary lists $\tauPi H_0\simeq2.191$ pointing to an appendix
-that does not derive the steady-state condition.
+\emph{The mismatch.} This paper computes the same quantity as
+$\ztilde/(\tauPi H_0) = \OmDE = 0.839950$, because its $\ztilde=\KALz/3$ is
+normalised to $\rho_{\rm crit}$ while $\tauPi$ was derived normalising to
+$\rho_{\rm DE}$. One physical quantity, two values, differing by exactly
+$\OmDE$:
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+document & $\zeta/(\rho\,\tauPi)$ \\
+\midrule
+Paper~1, EFT appendix (where $\tauPi$ is fixed) & $1.000000$ \\
+this paper & $0.839950$ \\
+\bottomrule
+\end{tabular}
+\end{center}
 
-The condition \emph{would} close exactly if the ansatz read
-$\Pi = -\KALz(\rho+p)H$, giving $\zeta=\KALz(\rho+p)/3$ and
-$c^2_{s,\mathrm{eff}} = 0$ identically. There is an independent argument for
-that form: for $w=-1$ exactly one has $\rho+p=0$ and a cosmological constant
-has no fluid degrees of freedom, so its bulk viscous pressure must vanish ---
-which $\Pi\propto(\rho+p)$ delivers and $\Pi\propto\rho$ does not.
+\emph{Consequence.} Carrying one normalisation throughout gives
+\begin{equation*}
+  c^2_{s,\mathrm{eff}} = \wz + 1 = 1+\wz = 0.160050 ,
+\end{equation*}
+positive, subluminal, and equal to a quantity that already appears elsewhere in
+the framework as an equation-of-state combination (it is the same $1+\wz$ that
+enters $\alpha_K$ and $\lambda$ in Paper~7). \textbf{The $0$ is the artefact};
+it comes from dividing by $\OmDE$ once too often.
 
-We do \emph{not} adopt that resolution here on our own authority: it changes a
-structural ansatz of the framework, not a convention. It is registered as
-\textbf{OP-22} and the results below are to be read as conditional on it.
-\end{tcolorbox}
+\emph{A separate issue, still open.} Independently of the normalisation, the
+relativistic inertia of a sound wave is the enthalpy $\rho+p$, not $\rho$
+(Appendix~\ref{app:dispersion}). Using it changes the numbers again. Resolving
+which combination of ansatz, normalisation and inertia is correct is
+\textbf{OP-22}; we do not settle it here, and the stability results of this
+section are to be read as conditional on it.\end{tcolorbox}
 
 \noindent With the steady-state condition as currently written, and combined
 with the IS equation, one obtains \citep{SSEE_Paper1}:

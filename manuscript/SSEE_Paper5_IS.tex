@@ -142,7 +142,7 @@ Finally, we map the SSEE IS parameters to the EFT-of-dark-energy operator basis
 combination of the $\bar{M}_2^4$ braiding operator and a non-minimal kinetic
 term, and demonstrate that the ghost condensate \citep{Arkani-Hamed2004}
 and SSEE IS mechanisms are physically inequivalent: SSEE achieves \emph{exact}
-marginal stability ($c^2_s=0$), while ghost condensation gives $c^2_s=1$.
+marginal stability ($c^2_s=0$, the minimal-viscosity solution), while ghost condensation gives $c^2_s=1$.
 \end{abstract}
 
 \clearpage
@@ -258,7 +258,7 @@ IS parameters exactly neutralise the gradient instability}.
 Section~\ref{sec:theory} derives the IS perturbation equations from the entropy
 current divergence, establishes thermodynamic consistency, and introduces
 the quasi-static approximation.
-Section~\ref{sec:Q1_stability} proves the exact marginal stability identity and
+Section~\ref{sec:Q1_stability} establishes the marginal stability identity (under minimality) and
 characterises the critical wavenumber.
 Section~\ref{sec:Q2_MIRA} presents numerical integration results for the MIRA test.
 Section~\ref{sec:growth} derives the growth index, $\sigma_8$, and $S_8$
@@ -311,7 +311,9 @@ This is the form used throughout this paper.
 Two properties follow immediately from Eq.~\eqref{eq:entropy_prod}:
 \begin{enumerate}
   \item \textbf{Causality}: the IS relaxation limits signal propagation to
-    $v_{\rm sig} = \sqrt{\zeta/(\tauPi\rho_{\mathrm{DE}})} < c$ \citep{HiscockLindblom1983}.
+    $v_{\rm sig} = \sqrt{\zeta/[\tauPi(\rho_{\mathrm{DE}}+p_{\mathrm{DE}})]} < c$
+    \citep{HiscockLindblom1983} --- the enthalpy again, as the inertia of the
+    propagating mode.
   \item \textbf{Stability}: the entropy production rate is non-negative for all
     $\Pi$ provided $\tauPi > 0$ and $\zeta \geq 0$.
 \end{enumerate}
@@ -323,21 +325,42 @@ Both conditions are satisfied in SSEE (established in Section~\ref{sec:Q1_stabil
 In the SSEE steady state $\dot{\Pi}=0$, Eq.~\eqref{eq:IS_simple} gives
 $\Pi = -3\zeta H$.
 The dimensionless viscosity and relaxation time are defined by normalising to
-the dark energy density and Hubble rate:
+the dark-energy \emph{enthalpy} and the Hubble rate:
 \begin{align}
-  \ztilde &\equiv \frac{\zeta}{\rho_{\mathrm{DE}}H_0}, \\
+  \ztilde &\equiv \frac{\zeta}{(\rho_{\mathrm{DE}}+p_{\mathrm{DE}})\,H_0}
+           = \frac{\zeta}{\rho_{\mathrm{DE}}(1+\wz)\,H_0}, \\
   \tauPi H_0 &\equiv \text{dimensionless IS relaxation time}.
 \end{align}
+The enthalpy $\rho+p$, not the density $\rho$, is the correct normalisation:
+it is the inertia that appears in the relativistic Euler equation
+(Appendix~\ref{app:dispersion}, second line) and the origin of the $1/(1+w)$
+factor multiplying the pressure gradient in the standard fluid perturbation
+equations. Normalising this way makes $\ztilde/(\tauPi H_0)$ directly a squared
+sound speed, with no residual factors.\footnote{An earlier version of this paper
+wrote $\ztilde\equiv\zeta/(\rho_{\mathrm{DE}}H_0)$ and correspondingly set
+$\rho=\rho_{\mathrm{DE}}$ when solving the dispersion relation, dropping a
+factor $(1+\wz)$ between the Euler equation and the result. With that reading
+the same $\ztilde$ would give $c^2_{s,\mathrm{eff}}=+4.41$, i.e.\ superluminal.
+No numerical result of this paper changes: what changes is the meaning of the
+symbol $\ztilde$, and hence the physical $\zeta$, which is
+$\rho_{\mathrm{DE}}(1+\wz)H_0\ztilde = 0.2946\,\rho_{\mathrm{DE}}H_0$ ---
+a factor $1/(1+\wz)=6.25$ smaller than previously stated.}
 Paper~1 identifies the IS steady-state condition for SSEE dark energy as
 $\Pi = -\KALz\,\rho_{\mathrm{DE}}H$, which, combined with the IS equation,
 fixes \citep{SSEE_Paper1}:
 \begin{equation}
-  \boxed{\ztilde = \frac{\KALz}{3} \simeq 1.8405, \qquad
-  \tauPi H_0 = \frac{\KALz}{3\,\OmDE} \simeq 2.191.}
+  \boxed{\ztilde = \frac{\KALz\,\Omega}{M_v} = \frac{\KALz}{3} \simeq 1.8405,
+  \qquad
+  \tauPi H_0 = \frac{\KALz\,\Omega}{T_r} \simeq 2.191.}
   \label{eq:IS_params}
 \end{equation}
-Both parameters are determined solely by $\KALz = \beta+\pi$ and
-$\OmDE = T_r/M_v = |\wz|$ — no freedom remains.
+Written this way the two are manifestly the \emph{same} construction, built
+from the same parents $(\KALz,\Omega)$ and differing only in which sovereignty
+sits in the denominator: $T_r$ (TRIAL) for the relaxation time, $M_v$ (ATLAS)
+for the viscosity. The factor $3$ in $\KALz/3$, which looks arbitrary in
+isolation, is simply $M_v = 3\Omega$. Both parameters are determined solely by
+$\KALz = \beta+\pi$, $\Omega=\varphi+\pi$ and the sovereignties — no freedom
+remains.
 The ratio
 \begin{equation}
   \frac{\ztilde}{\tauPi H_0} = \frac{\KALz/3}{\KALz/(3\OmDE)} = \OmDE = |\wz|
@@ -513,10 +536,10 @@ IS ($k\to\infty$) limits is
 where $x$ is the dimensionless IS parameter measuring the ratio of the mode
 wavenumber to the IS relaxation scale.
 
-\subsection{Exact marginal stability theorem}
+\subsection{Marginal stability under minimality}
 \label{subsec:identity}
 
-\begin{tcolorbox}[colback=blue!5!white,colframe=blue!60!black,title={\textbf{Theorem: SSEE Exact Marginal Stability}}]
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!60!black,title={\textbf{SSEE Marginal Stability (given minimality)}}]
 \textit{In the SSEE dark energy framework, the IS parameters satisfy}
 \begin{equation}
   \frac{\ztilde}{\tauPi H_0}
@@ -553,18 +576,31 @@ The physical significance is the following:
     background-level constants in SSEE.
 \end{itemize}
 
-\subsection{Uniqueness of exact marginal stability}
+\subsection{Uniqueness of the minimal-viscosity solution}
 \label{subsec:uniqueness}
 
 The condition $c^2_{s,\mathrm{eff}} = 0$ requires $\ztilde/(\tauPi H_0) = |c^2_{s,\mathrm{bare}}|$.
 For a general dark fluid with $w_0 < 0$, this is a \emph{fine-tuning} condition
 relating the viscosity to the equation of state.
-In SSEE, both sides equal $\OmDE = |\wz|$ independently — no fine-tuning is needed.
-This is the consequence of the algebraic structure: $\KALz$ appears in both
-$\ztilde = \KALz/3$ and $\tauPi H_0 = \KALz/(3\OmDE)$ in a ratio that
-cancels the $\KALz$ dependence, leaving only $\OmDE = |\wz|$.
-In SSEE this cancellation is an algebraic consequence of the framework's structure
-rather than a parameter choice.
+In SSEE both sides equal $\OmDE = |\wz|$, and the $\KALz$ dependence cancels
+in the ratio $\ztilde/(\tauPi H_0) = (\KALz\Omega/M_v)/(\KALz\Omega/T_r) = T_r/M_v$.
+No number is tuned.
+
+We are explicit about what does the work, because it is easy to overclaim here.
+The relaxation time $\tauPi H_0 = \KALz\Omega/T_r$ is fixed independently in
+Paper~1 \citep{SSEE_Paper1}, and $\wz = -T_r/M_v$ is fixed independently in the
+background sector. Given those two, requiring $c^2_{s,\mathrm{eff}}=0$ leaves
+\emph{no} freedom in $\ztilde$: it must equal $|\wz|\,\tauPi H_0
+= \KALz\Omega/M_v$, with the $T_r$ cancelling identically. So $\ztilde$ is not
+an independent input.
+
+What remains an input is the \emph{requirement} of marginal stability itself,
+and it is a selection principle rather than a fitted number. Its justification
+is minimality: since $c^2_{s,\mathrm{bare}} = \wz < 0$ is a gradient
+instability, some viscosity is mandatory, and $\ztilde = \KALz\Omega/M_v$ is
+the \emph{smallest} value that removes it --- any less leaves the instability,
+any more is unmotivated surplus. We therefore state the result as a consequence
+of minimality, not as a prediction free of assumptions.
 
 \subsection{Critical wavenumber and observational window}
 \label{subsec:kcrit}
@@ -1120,8 +1156,8 @@ DESI DR2 $\chi^2$ & $0.24\sigma$ & $> 3\sigma$ & $> 3\sigma$ \\
 \end{tabular}
 \end{table}
 
-The key distinction is that SSEE IS achieves \emph{exact marginal stability}
-($c^2_s = 0$), which is the only value consistent simultaneously with
+The key distinction is that SSEE IS sits at \emph{marginal stability}
+($c^2_s = 0$) --- the minimal-viscosity solution --- which is the only value consistent simultaneously with
 causal propagation at speed $c$ (Section~\ref{subsec:thermodynamic}) and
 zero free parameters.
 Ghost condensation with $c^2_s = 1$ predicts DE clustering at the level of
@@ -1154,7 +1190,7 @@ Paper~6 of this series provides the physical basis: a \emph{two-sector} dark mat
 \subsection{Implications for JWST early galaxy counts}
 \label{subsec:JWST}
 
-The exact marginal stability $c^2_{s,\mathrm{eff}} = 0$ has a specific prediction
+The marginal-stability condition $c^2_{s,\mathrm{eff}} = 0$ has a specific prediction
 for structure formation: DE perturbations at sub-horizon scales effectively
 vanish, leaving matter to cluster in a background with effective matter density
 $\Omega_{m,\mathrm{dyn}} = 0.160$.
@@ -1376,18 +1412,21 @@ For modes $e^{i(\mathbf{k}\cdot\mathbf{x} - \omega t)}$:
 where $v_\parallel = \mathbf{k}\cdot\mathbf{v}/k$ is the longitudinal velocity.
 
 \paragraph{Effective sound speed.}
-Combining with the Euler equation:
+Combining with the Euler equation --- whose inertia is the enthalpy
+$\bar\rho+\bar p$, as written above, \emph{not} $\bar\rho$:
 \begin{equation}
   \omega^2 = \left[c^2_{s,\mathrm{bare}}
-  + \frac{(\zeta/\tauPi\rho)}{1+(\omega\tauPi)^{-2}}\right]k^2.
+  + \frac{\zeta/[\tauPi(\bar\rho+\bar p)]}{1+(\omega\tauPi)^{-2}}\right]k^2.
 \end{equation}
 In the IS limit $|\omega|\tauPi \gg 1$ (short wavelengths):
 \begin{equation}
-  \omega^2 \approx \left(c^2_{s,\mathrm{bare}} + \frac{\zeta}{\tauPi\,\rho}\right)k^2
+  \omega^2 \approx \left(c^2_{s,\mathrm{bare}}
+  + \frac{\zeta}{\tauPi\,(\bar\rho+\bar p)}\right)k^2
   = c^2_{s,\mathrm{eff}}\,k^2.
 \end{equation}
-Using the SSEE normalisation $\zeta = \ztilde\,\rho_{\mathrm{DE}}H_0$ and
-$\rho = \rho_{\mathrm{DE}}$:
+Using the SSEE normalisation
+$\zeta = \ztilde\,(\rho_{\mathrm{DE}}+p_{\mathrm{DE}})H_0$
+(Section~\ref{subsec:IS_params}):
 \begin{equation}
   c^2_{s,\mathrm{eff}} = c^2_{s,\mathrm{bare}} + \frac{\ztilde H_0}{\tauPi}
   = c^2_{s,\mathrm{bare}} + \frac{\ztilde}{\tauPi H_0},

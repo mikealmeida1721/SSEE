@@ -58,7 +58,21 @@ tau_Pi_H0 = KAL0 / (3.0 * OmDE)   # ≈ 2.191
 # so c²_s,bare = w₀ (standard k-essence identity, Hu 1998). See Paper 5 §cs2_bare.
 cs2_bare = w0                       # = -0.8399
 
-# Bulk viscosity (dimensionless: ζ̃ = ζ/(ρ_DE H₀))
+# Bulk viscosity, adimensional. NORMALIZADA POR LA ENTALPÍA (corregido 2026-08-02):
+#
+#     ζ̃ ≡ ζ / ((ρ_DE + p_DE)·H₀) = ζ / (ρ_DE(1+w₀)H₀)
+#
+# NO por ρ_DE. La entalpía ρ+p es la inercia de una onda de sonido relativista:
+# es la que aparece en la ecuación de Euler y la que produce el 1/(1+w) del
+# término de presión en las ecuaciones estándar de perturbaciones de fluido.
+# Así normalizada, ζ̃/(τ_Π H₀) ES directamente una velocidad del sonido al
+# cuadrado, sin factores sueltos.
+#
+# La versión previa decía ζ̃ = ζ/(ρ_DE H₀) y el Apéndice A ponía ρ = ρ_DE al
+# despejar, perdiendo un (1+w₀) entre la ecuación de Euler y el resultado. Con
+# esa lectura el MISMO ζ̃ da c²_s,eff = +4.41: superlumínico. Ningún número de
+# este script cambia; cambia qué significa ζ̃, y por tanto la ζ FÍSICA, que es
+# 0.294567·ρ_DE·H₀ — un factor 6.25 menor que la antes declarada.
 #
 # ζ̃ = KAL₀·Ω/M_v  (= KAL₀/3, porque M_v = 3Ω)
 #

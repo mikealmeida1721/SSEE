@@ -50,9 +50,9 @@
 | # | Qué | Estado |
 |---|---|---|
 | ~~3.1a~~ | **OP-21 REDUCIDO** — ζ̃ ya no es un número libre: la fijan τ_Π (P4) + w₀ (P1) + minimalidad. `ζ̃ = KAL₀·Ω/M_v` es **hermana** de `τ_Π = KAL₀·Ω/T_r`; el «3» era M_v=3Ω. Medido que la estabilidad marginal es el **mínimo** (menos rompe, más sobra) | 🟡 reducido |
-| 3.1b-i | 🔴 **HALLAZGO**: el Ap. A de Paper 5 escribe bien la ecuación de Euler (inercia = ρ+p) pero al despejar la sustituye por ρ. Con la ζ̃ *tal como la define el paper*, c²_s,eff = **+4.41 → superlumínico**. Resolución: ζ̃ debe normalizarse por la **entalpía** (ρ+p); entonces c²_s = 0 exacto y todo se sostiene. Corregir el TEXTO, no el número | ⬜ pendiente |
+| ~~3.1b-i~~ | ✅ **HALLAZGO CORREGIDO**: el Ap. A de Paper 5 escribe bien la ecuación de Euler (inercia = ρ+p) pero al despejar la sustituye por ρ. Con la ζ̃ *tal como la define el paper*, c²_s,eff = **+4.41 → superlumínico**. Resolución: ζ̃ debe normalizarse por la **entalpía** (ρ+p); entonces c²_s = 0 exacto y todo se sostiene. Corregido en P5 (§IS params, causalidad, Ap. A) y en el código. **El resultado numérico NO cambia** (verificado: el script sigue dando c²_s,eff = 0.00e+00) | ✅ |
 | 3.1b-ii | Derivar `τ_Π H₀ = KAL₀·Ω/T_r` del Lagrangiano, y justificar el principio de minimalidad | 🔴 abierto |
-| 3.1c | **Papers**: cambiar «c²_s=0 exacto» por «c²_s=0 por minimalidad» donde se presente como predicción sin supuestos (P5, P7, Unified, Sealed, PRD) | ⬜ pendiente |
+| ~~3.1c~~ | Papers: «c²_s=0 exacto» → «c²_s=0 por minimalidad» | 8 ediciones en P5 (títulos de §, teorema, §unicidad con el párrafo que separa lo determinado de lo supuesto) + Endorser. Barrido en P7/Unified/Sealed/PRD: **sin claims que corregir**. Extra: el Unified llamaba «single sector» a Ω_m=0.160 en una corrida de diagnóstico — reetiquetada | ✅ |
 | 3.2 | **Veta A_s** — las tres determinaciones (CMB / cizalla / clustering). Requiere R1/R2 | ⏳ bloqueado por corridas |
 | 3.3 | **OP-18** — derivar A_s. Bloqueado *por* 3.2: no se puede validar una derivación contra un blanco que tiene dos valores | ⏳ bloqueado |
 

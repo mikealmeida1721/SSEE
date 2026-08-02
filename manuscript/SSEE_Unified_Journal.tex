@@ -574,13 +574,15 @@ $\gamma_{\Lambda\mathrm{CDM}} \simeq 0.55$ \citep{Lahav1991}, indicating that
 the SSEE perturbation growth rate tracks \LCDM\ at the percent level despite
 the different background.
 
-A CLASS run with $c_s^2 = 0.001$ (IS limit) and $\Omega_m = 0.160$ (single sector)
-yields $\sigma_8^{\mathrm{CLASS}} = 0.457$, substantially lower than the ODE result
-(0.8136).
-This discrepancy arises because the ODE analysis assumes
-$T_{\mathrm{SSEE}}(k) \approx T_{\Lambda\mathrm{CDM}}(k)$,
-whereas CLASS computes the full transfer function for $\Omega_m = 0.160$, which
-suppresses small-scale power.
+As a diagnostic, a CLASS run with $c_s^2 = 0.001$ (IS limit) in which the
+matter density input is set to $0.160$ yields
+$\sigma_8^{\mathrm{CLASS}} = 0.457$, far below the ODE result (0.8136).
+The run is retained only to show how badly that substitution fails: $0.160$ is
+$1+\wz$, an equation-of-state parameter, and is not a matter density at all
+(\S\ref{sec:growth_raw}). Feeding it to a Boltzmann code as one produces a
+transfer function that suppresses small-scale power for no physical reason; the
+ODE comparison additionally assumes
+$T_{\mathrm{SSEE}}(k) \approx T_{\Lambda\mathrm{CDM}}(k)$.
 The $\omega_m$-direct background ($\Omega_{m,\mathrm{CMB}} = 0.308881$) is the correct CLASS input for comparison
 with observations, as shown in \S\ref{sec:mira_test} and further examined in
 \S\ref{sec:growth_raw} below.

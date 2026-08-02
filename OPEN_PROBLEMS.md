@@ -1539,6 +1539,49 @@ contradicción interna**. Retirado; el problema real queda declarado aquí.
    fijada por el ansatz, así que el $+4.41$ no se mueve. Mi nota al pie quedaba
    además contradiciendo al párrafo siguiente. Retirada.
 
+### 🔎 LA FUENTE APARECIÓ — y no dice lo que Paper 5 le atribuye (2026-08-02)
+
+Mike: *«¿por qué no buscas en archive a qué Paper 1 apuntaba? … lo que yo
+recuerdo de viscosidad es KAL»*. **Tenía razón en las dos cosas.** La
+derivación existe, en `archive/codigo/SSEE_appendix_Friedmann.tex`, y la
+viscosidad **sí** es KAL:
+
+    ζ = KAL₀·H/(8πG)                     [ec. app_zeta de la fuente]
+    Π = −3ζH = −3·KAL₀·H²/(8πG)          [ec. app_Pi]
+
+Como $\rho_{\rm crit}\equiv 3H^2/(8\pi G)$, eso es **Π = −KAL₀·ρ_crit** — la
+densidad **crítica total**, no la de energía oscura.
+
+**Paper 5 afirma otra cosa:** «Paper~1 identifies … $\Pi = -\mathrm{KAL_0}\rho_{\rm DE}H$».
+Dos discrepancias: $\rho_{\rm crit}$ vs $\rho_{\rm DE}$, y un $H$ suelto de más.
+
+**Consecuencia numérica.** Adimensionalizando $\tilde\zeta \equiv \zeta H_0/\rho_{\rm DE}$:
+
+    ζ̃ de la fuente  = KAL₀/(3·Ω_DE) = 2.191165
+    ζ̃ de Paper 5    = KAL₀/3        = 1.840469
+    difieren por exactamente Ω_DE
+
+**Y algo notable que la fuente sí da:** con su valor, $\tilde\zeta = \tau_\Pi H_0$
+**exactamente** (ambos son KAL₀/(3Ω_DE); diferencia 0.00e+00), así que la razón
+vale 1 y
+
+    c²_s,eff = w₀ + 1 = 1 + w₀ = 0.160050
+
+Positivo, estable, subluminal, y sale limpio. **Pero no es el 0 que publica
+Paper 5.**
+
+### Los tres valores en circulación
+
+| origen | ζ̃ | c²_s,eff | inercia usada |
+|---|---|---|---|
+| fuente archivada (ρ_crit) | 2.191165 | **+0.160050** = 1+w₀ | ρ |
+| Paper 5 publicado (ρ_DE) | 1.840469 | +0.000000 | ρ |
+| lo que pide estab. marginal | 0.294567 | 0 | ρ+p |
+
+**Ninguna combinación da a la vez la inercia correcta (ρ+p) y un c²_s causal
+con los ansätze hoy en el registro.** Ése es el problema, y es más profundo que
+la normalización de un símbolo.
+
 ### La resolución candidata (NO adoptada)
 
     Π = −KAL₀·(ρ+p)·H     ⟹   ζ = KAL₀(ρ+p)/3   ⟹   c²_s,eff = 0 idénticamente
@@ -1625,7 +1668,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-15 | P1 | Bullet offset κ(θ) desde KAL(x) no calculado | Medium-High | Computar Σ_SSEE(θ)=∫ρ_bar·KAL(x)dℓ del Bala; mostrar pico κ sobre galaxias, no gas (falsable vs Clowe+2006). Distinto de OP-13 (amplitud); esto es distribución espacial (2026-06-14) |
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
 | OP-21 | P5 | ~~ζ̃ hipótesis no derivada~~ → ζ̃ = KAL₀·Ω/M_v, **hermana de τ_Π = KAL₀·Ω/T_r** | 🟡 **REDUCIDO 2026-08-02** | No es número libre: lo fijan τ_Π (P4) + w₀ (P1) + minimalidad. Queda abierto el PRINCIPIO (minimalidad) y derivar τ_Π del Lagrangiano. Look-elsewhere intentado y RETIRADO (valor forzado por identidad) |
-| OP-22 | P5, P1 | Forma del ansatz IS: Π ∝ ρ (actual, da c²_s=+4.41 SUPERLUMÍNICO con la inercia correcta) vs Π ∝ (ρ+p) (cierra exacto) | 🔴 **ABIERTO 2026-08-02** | Encontrado en el REPASO, retirando un arreglo prematuro mío. La atribución a Paper 1 es huérfana: P1 no contiene la ecuación. Resultados Q1 de P5 marcados condicionales |
+| OP-22 | P5, P1 | Ansatz IS: la FUENTE (`archive/.../SSEE_appendix_Friedmann.tex`) dice Π=−KAL₀·ρ_**crit**, Paper 5 dice Π=−KAL₀·ρ_**DE**·H. Tres valores de ζ̃ en circulación (2.191 / 1.840 / 0.295) | 🔴 **ABIERTO 2026-08-02** | La fuente da c²_s = 1+w₀ = 0.160050 (estable y subluminal), NO el 0 publicado. Con la inercia correcta (ρ+p) ninguna versión del registro da un c²_s causal. Encontrada gracias a Mike: «busca en archive; la viscosidad es KAL» |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.

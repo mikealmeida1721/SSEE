@@ -8,8 +8,8 @@ Figure A: fig_rd_dual.pdf       — sound horizon r_d: SSEE physical value 147.1
                                    value is flagged as a CATEGORY ERROR: what one gets by
                                    wrongly inserting the cold sector 1+w0=0.160 into the
                                    background geometry (the DR2 bug, chi2_BAO=726).
-Figure B: fig_s8_resolution.pdf — S8: single-sector challenge 0.846 -> two-sector
-                                   resolution 0.758 (0.04 sigma KiDS) vs data bands.
+Figure B: fig_s8_resolution.pdf — S8 con A_s fijado (0.846, techo) vs A_s libre
+                                   ajustado al dato CRUDO (0.7555, 0.11 sigma KiDS).
 
 Outputs: results/figures/
 """
@@ -77,22 +77,27 @@ plt.close(fig)
 # ════════════════════════════════════════════════════════════════════════════
 # Figure B — S8: challenge -> resolution
 # ════════════════════════════════════════════════════════════════════════════
-# Data (mean, err)
+# Data (mean, err) — OBSERVACIONES. Ojo: el valor de KiDS es 0.759, NO 0.758.
+# El 0.758 era la PREDICCION del sector retirado; tenerlo aqui era el bug H1/H2
+# (meter la prediccion en el hueco del dato, forzando 0.00 sigma). Corregido
+# 2026-08-01 junto con la retraccion. Ver CANONICAL_VALUES.yaml (obs_KiDS_S8).
 S8_PLANCK = (0.832, 0.013)
-S8_KIDS   = (0.758, 0.024)   # KiDS-1000 (Asgari+2021)
+S8_KIDS   = (0.759, 0.024)   # KiDS-1000 (Asgari+2021) — el DATO
 S8_DES    = (0.776, 0.017)
-# Model values (canonical)
-S8_SINGLE = (0.846, 0.006)   # single-sector ceiling — "the challenge" (3.5 sigma KiDS)
-S8_TWOSEC = 0.758            # two-sector canonical (m_phi=40.70) — 0.04 sigma KiDS (resolution)
+# Model values (canonical 2026-08-01)
+S8_FIXED_AS = (0.846, 0.006)  # A_s FIJADO a Planck: techo, no prediccion.
+                              # El viejo "3.5 sigma desafio" era artefacto de fijarlo.
+S8_MCMC     = (0.7555, 0.0192)  # A_s LIBRE, MCMC vs 225 puntos xi_pm CRUDOS de KiDS.
+                                # Un solo sector. 0.11 sigma. log R3_ssee_kids_S8.json
 
 fig, ax = plt.subplots(figsize=(8.0, 4.4))
 
 entries = [
-    (r'SSEE two-sector $\varphi$-DM' + '\n' + r'(canonical, Paper 6)', S8_TWOSEC, 0.0,   '#1a9641'),
-    (r'SSEE single-sector' + '\n' + r'(baseline challenge)',           S8_SINGLE[0], S8_SINGLE[1], '#d6604d'),
-    (r'DES-Y3 (3$\times$2pt)',                                          S8_DES[0],  S8_DES[1],  '#888888'),
-    (r'KiDS-1000',                                                      S8_KIDS[0], S8_KIDS[1], '#888888'),
-    (r'Planck 2018 (CMB)',                                              S8_PLANCK[0], S8_PLANCK[1], '#888888'),
+    (r'SSEE, $A_s$ free' + '\n' + r'(MCMC vs raw $\xi_\pm$, 1 sector)', S8_MCMC[0], S8_MCMC[1], '#1a9641'),
+    (r'SSEE, $A_s$ fixed to Planck' + '\n' + r'(ceiling, not a prediction)', S8_FIXED_AS[0], S8_FIXED_AS[1], '#d6604d'),
+    (r'DES-Y3 (3$\times$2pt)',   S8_DES[0],  S8_DES[1],  '#888888'),
+    (r'KiDS-1000',               S8_KIDS[0], S8_KIDS[1], '#888888'),
+    (r'Planck 2018 (CMB)',       S8_PLANCK[0], S8_PLANCK[1], '#888888'),
 ]
 ypos = np.arange(len(entries))
 for y, (lab, val, err, col) in zip(ypos, entries):
@@ -105,26 +110,25 @@ ax.axvspan(S8_KIDS[0] - S8_KIDS[1], S8_KIDS[0] + S8_KIDS[1],
            color='#b8d8b8', alpha=0.5, zorder=1)
 ax.axvline(S8_KIDS[0], color='#1a9641', lw=1.0, ls='--', zorder=2)
 
-# Annotations
-ax.annotate(r'$0.04\sigma$ vs KiDS-1000 — resolved',
-            xy=(S8_TWOSEC, 0), xytext=(0.789, -0.32),
+ax.annotate(r'$0.11\sigma$ vs KiDS-1000 — no tension',
+            xy=(S8_MCMC[0], 0), xytext=(0.782, -0.34),
             fontsize=10, color='#1a9641', fontweight='bold')
-ax.annotate(r'$3.5\sigma$ vs KiDS — the challenge',
-            xy=(S8_SINGLE[0], 1), xytext=(0.852, 1.25),
+ax.annotate(r'the old "$3.5\sigma$ challenge"',
+            xy=(S8_FIXED_AS[0], 1), xytext=(0.852, 1.28),
             fontsize=10, color='#d6604d')
-ax.annotate('', xy=(S8_TWOSEC + 0.004, 0.18), xytext=(S8_SINGLE[0] - 0.004, 0.85),
+ax.annotate('', xy=(S8_MCMC[0] + 0.004, 0.18), xytext=(S8_FIXED_AS[0] - 0.004, 0.85),
             arrowprops=dict(arrowstyle='-|>', lw=1.8, color='#222222',
                             connectionstyle='arc3,rad=-0.3'))
-ax.text(0.806, 0.52, 'free-streaming\n' + r'$k_{\rm fs}=0.754\,h/{\rm Mpc}$' + '\n'
-        + r'($m_\varphi = 40.70$ eV, forward)',
+ax.text(0.806, 0.52, 'fit $A_s$ to the RAW data\n'
+        + r'(single sector, no particle)',
         fontsize=9, ha='center', color='#222222', style='italic')
 
 ax.set_yticks(ypos)
 ax.set_yticklabels([e[0] for e in entries], fontsize=10)
 ax.set_xlabel(r'$S_8 \equiv \sigma_8\,(\Omega_m/0.3)^{0.5}$', fontsize=11)
-ax.set_xlim(0.735, 0.905)
-ax.set_ylim(-0.65, 4.6)
-ax.set_title(r'$S_8$: single-sector challenge $\rightarrow$ two-sector resolution (zero fitted parameters)',
+ax.set_xlim(0.720, 0.905)
+ax.set_ylim(-0.70, 4.6)
+ax.set_title(r'$S_8$: fixing $A_s$ imports the Planck--KiDS tension; fitting it removes it',
              fontsize=10.5)
 ax.grid(axis='x', lw=0.4, alpha=0.4, zorder=0)
 ax.spines[['top', 'right']].set_visible(False)

@@ -69,9 +69,12 @@ under a $\Lambda$CDM background assumption. Evaluated instead directly
 against the \emph{raw} KiDS-1000 $\xi_\pm$ correlation functions, with the
 primordial amplitude free (as it is in both models), \SSEE{} yields
 $S_8=0.7555\pm0.0192$, in agreement with the KiDS-1000 published value
-$S_8=0.759\pm0.024$ at $0.11\sigma$: the tension
-the particle was built to close is a property of the derived statistic, not
-of the underlying measurement. Separately, at the retracted mass fixed by
+$S_8=0.759\pm0.024$ at $0.11\sigma$. We are explicit about what this does not
+claim: the model has one free amplitude, and asking the CMB rather than the
+shear data to fix it gives $S_8=0.8262\pm0.0054$, $2.7\sigma$ away. That
+separation is a disagreement between the datasets --- present in
+$\Lambda$CDM too, and unresolved here --- not a property of \SSEE{}. The
+error the retracted construction rested on was attributing it to the model. Separately, at the retracted mass fixed by
 the model's own algebraic lineage ($m_\phi=40.70$~eV), free-streaming suppresses
 $\sigma_8$ well beyond what the raw shear data allow --- the particle is also
 directly disfavoured by the same data it was meant to explain. Both
@@ -323,14 +326,42 @@ that carry astrophysical meaning land in unremarkable places
 being rescued by a nuisance parameter running to the edge of its prior.
 
 Compared against the KiDS-1000 published value $S_8=0.759\pm0.024$, this is a
-$0.11\sigma$ agreement. There is no $S_8$ tension in \SSEE{} once the
-comparison is made against the raw shear data rather than against the
-compressed statistic. We stress what does the work here: the background is
-\emph{more} constrained in \SSEE{} than in $\Lambda$CDM, not less --- the
-single amplitude $A_s$ is the only quantity free to move, and it moves to a
-value that fits. The earlier reported tension of $3.5\sigma$ came from holding
-$A_s$ at the Planck-preferred value, which imports the Planck--KiDS tension
-into a model that does not otherwise have it.
+$0.11\sigma$ agreement.
+
+\paragraph{What this does and does not claim.} It would be wrong to read this
+as \SSEE{} having carried a $3.5\sigma$ tension and then reduced it to
+$0.11\sigma$. \SSEE{} never carried that tension. At this level the model has
+exactly \emph{one} free quantity, the primordial amplitude $A_s$; the
+background is fixed by the algebra and is identical in every fit reported here.
+What varies between determinations is only \emph{which dataset is asked to fix
+$A_s$}, and the datasets do not agree with each other:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+$A_s$ determined by & $S_8$ & vs.\ KiDS-1000 \\
+\midrule
+raw KiDS-1000 $\xi_\pm$ (this work) & $0.7555\pm0.0192$ & $0.11\sigma$ \\
+\SSEE{} fit to raw Planck \texttt{plik\_lite} & $0.8262\pm0.0054$ & $2.73\sigma$ \\
+$\Lambda$CDM-fitted Planck value (borrowed) & $0.8229\pm0.0059$ & $2.59\sigma$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The first two rows are the same model with the same background, differing only
+in the data used to set one number, and they sit $2.7\sigma$ apart. That
+separation is a disagreement \emph{between the datasets}, not a property of
+\SSEE{}: it persists when $A_s$ is fixed by \SSEE{}'s \emph{own} CMB fit rather
+than borrowed from $\Lambda$CDM, and it is the same Planck--shear discrepancy
+that $\Lambda$CDM also carries. \textbf{We do not claim to resolve it.}
+
+What the earlier version of this paper did wrong was to attribute that
+data--data disagreement to the model --- reporting it as ``\SSEE{}'s $S_8$
+tension'' --- and then to build a second matter sector and a particle to close
+it. The disagreement was never the model's to close. Section~\ref{sec:fsigma8}
+adds a third independent determination of the same $A_s$, from galaxy
+clustering, which is the natural next test of whether the discrepancy is
+between early- and late-time probes or specific to cosmic shear.
 
 \begin{table}[h]
 \centering
@@ -414,10 +445,13 @@ entering both the background and the growth of structure with no partition,
 no additional particle, and no non-minimal coupling parameter. Four open
 problems close by dissolution rather than by resolution. Measured directly
 against raw survey data --- rather than against $\Lambda$CDM-conditioned
-summary statistics --- the growth sector shows no $S_8$ tension: against the
+summary statistics --- the model has no $S_8$ tension of its own: against the
 225 raw KiDS-1000 $\xi_\pm$ points, with the background fixed by algebra and
 only the primordial amplitude free, \SSEE{} gives $S_8=0.7555\pm0.0192$,
-agreeing with the KiDS-1000 published value at $0.11\sigma$. The
+agreeing with the KiDS-1000 published value at $0.11\sigma$. The residual
+$2.7\sigma$ between the amplitude preferred by the CMB and the amplitude
+preferred by cosmic shear is a disagreement between those datasets, which this
+work reports but does not claim to resolve. The
 $f\sigma_8$ result is reported in \S\ref{sec:fsigma8}. \TODO{cerrar esta
 frase con la conclusion conjunta cuando esten R1/R2 (fsigma8) y R4.}
 

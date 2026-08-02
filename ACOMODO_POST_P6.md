@@ -57,9 +57,13 @@
 
 ## Lo que NO hay que hacer
 
-- **No** tocar Paper 8 más: su predicción quedó **restaurada a incondicional**
-  sobre base mejor (ω_c de OP-8 + α_B=α_M=0 de Paper 7). Verificado que ninguna
-  de las dos patas venía de la partícula.
+- Paper 8: predicción **incondicional** (ω_c de OP-8 + α_B=α_M=0 de Paper 7).
+  ⚠️ **Aviso**: el 2026-08-02 dije «no tocar más» tras arreglar SÓLO el abstract
+  y la caja de falsabilidad. Mike preguntó «¿ya quedó sólido?» y el barrido
+  mostró **6 sitios más** con la construcción viva en el CUERPO (incluida una
+  subsección entera y una referencia colgante a la §1.4 que yo mismo disolví).
+  Arreglado en la misma sesión. **Lección: arreglar el abstract no es arreglar
+  el paper**, y «lo dejé listo» sin barrido es una afirmación, no un hecho.
 - **No** publicar ni sellar hasta que Mike termine la lectura página por página
   (regla R39, `project_publication_gate`).
 - **No** buscar mecanismo para la veta A_s antes de R1/R2.
@@ -72,4 +76,5 @@
 |---|---|
 | 2026-08-02 | Lista abierta. Inventario levantado por barrido del repo, no de memoria. Guardián VERDE 194/194. |
 | 2026-08-02 | **Bloque 1 cerrado** (5/5). 3 defectos reales + 2 falsos positivos de mi propio barrido. |
+| 2026-08-02 | **Paper 8 cerrado DE VERDAD**: el arreglo previo era cosmético (abstract + caja). El cuerpo tenía 6 sitios vivos: definición del límite (b) sobre «Ω_CDM=0.160, Ω_φDM=0.149», la falla de categoría otra vez, referencia colgante a Paper 1 §1.4 (disuelta), subsección entera «Two-sector lensing signature», dos filas de la tabla de referencia y el ejemplo de A1689. Barrido final: sólo queda prosa de retracción. 0 err / 0 refs / 19 pp. |
 | 2026-08-02 | **Bloque 2 cerrado** (2/2). Guardián **VERDE 197/197** (piso 194→197). Hallazgo extra: OP-5 tenía el encabezado desfasado respecto a su fila del resumen — lo destapó el detector nuevo al dar un falso positivo sobre él. |

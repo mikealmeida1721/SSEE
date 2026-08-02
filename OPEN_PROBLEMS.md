@@ -1398,6 +1398,53 @@ Menos viscosidad rompe la teoría; más sobra sin razón. **«Viscosidad mínima
 compatible con estabilidad»** es un principio de selección —como
 «acoplamiento mínimo»— y fija ζ̃ **unívocamente**.
 
+### 🔴 HALLAZGO 2026-08-02: la derivación del apéndice pierde un factor (1+w)
+
+Atacando 3.1b («derivar τ_Π del Lagrangiano») se rederivó la relación de
+dispersión desde **las propias ecuaciones del Apéndice A de Paper 5**. El
+apéndice escribe la ecuación de Euler **correctamente**, con la inercia
+relativista igual a la entalpía:
+
+    (ρ̄+p̄)·v̇ + ∇(δp + δΠ) = 0        ← correcto
+
+pero al despejar ω² sustituye esa inercia por ρ:
+
+    ω² = [c²_bare + (ζ/τ_Π·ρ)/(1+(ωτ_Π)⁻²)]k²        ← aquí aparece ρ, no ρ+p
+
+y remata: *«Using the SSEE normalisation ζ = ζ̃ρ_DE H₀ and ρ = ρ_DE»*.
+La rederivación simbólica da inequívocamente
+
+    c²_eff = c²_bare + ζ /((ρ+p)·τ_Π),      ρ+p = ρ_DE(1+w₀)
+
+**Consecuencia numérica.** Con la ζ̃ tal como el paper la DEFINE:
+
+| lectura | c²_s,eff | veredicto |
+|---|---|---|
+| (A) ζ̃ ≡ ζ/(ρ_DE H₀) — *lo que dice el paper* | **+4.408** | **SUPERLUMÍNICO**, viola causalidad |
+| (B) ζ̃ ≡ ζ/((ρ_DE+p_DE)H₀) — normalización por entalpía | **+0.000000** | exacto, todo se sostiene |
+
+El cociente entre ambas es exactamente 1/(1+w₀) = 6.248: el factor perdido.
+
+**Resolución propuesta: (B), y no es un rescate.** En hidrodinámica relativista
+la inercia de una onda de sonido *es* la entalpía — aparece así en la ecuación
+de Euler que el propio apéndice escribe bien, y en el término de presión
+1/(1+w) de la ecuación de θ del formalismo estándar de perturbaciones. Definir
+ζ̃ por la entalpía es lo que hace que ζ̃/(τ_Π H₀) sea directamente una velocidad
+del sonido al cuadrado, sin factores sueltos.
+
+**Lo que hay que corregir:** la *frase* del apéndice y del código
+(«ζ̃ = ζ/(ρ_DE H₀)», «ρ = ρ_DE»), **no** el número ni la estructura. Bajo (B),
+ζ̃ = KAL₀·Ω/M_v = 1.840469 sigue siendo el valor, la hermandad con τ_Π sigue en
+pie, y la ζ física es 0.294567·ρ_DE·H₀ (6.25× menor que la declarada).
+
+**Estado:** ⬜ pendiente de corregir en `SSEE_Paper5_IS.tex` (Ap. A + §Q1) y en
+`ssee_paper5_IS_perturbations.py`. **No cambia ningún resultado numérico
+publicado**, pero sí lo que significa el símbolo ζ̃.
+
+**Cómo se encontró:** no por el guardián. Rederivando a mano desde las
+ecuaciones del propio apéndice, al intentar cerrar 3.1b. Es el mismo patrón que
+OP-21 y R47: coherente consigo mismo, y por eso invisible.
+
 ### Lo que NO se estableció (honestidad)
 
 - **La forma hermana NO es evidencia independiente.** Es consecuencia

@@ -122,11 +122,9 @@ Cambian si el script o los datos cambian. Cada uno lleva su **procedencia**.
 | ΔBIC CMB plik_lite TTTEEE (ω_m-directo, k=2) | **−24.02** (χ²=1005.41 @ H_alg=67.962) | `run_p3_reframe.py` → `results/logs/p3_cmb_reframe_nu_fix.log` | 2026-06-19 (canónico reframe; Cobaya legacy −32.2 @67.037 superado) |
 | θ* (CAMB, en anchor H_alg 67.962, Σm_ν=0.06849) | 0.59667° (100θ*=1.04139) — **1.00σ** | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-07-26 (re-corrido: el log previo usaba Σm_ν=0.06902 rancio → 0.59668/1.05σ) |
 | θ* (CAMB, en posterior 67.7869, Σm_ν=0.06849) | 0.59638° (100θ*=1.04089) — **0.68σ** (posterior y anchor coinciden; la tensión 6.66σ era el bug del sector 0.160 en E(z), V-L4-DESI) | `run_p3_rd_reframe.py` → `results/logs/p3_rd_reframe_omega_m.log` | 2026-07-26 (posterior 67.9475/66.41/67.159 superados; log previo Σm_ν rancio) |
-| σ₈ / S₈ SSEE (Paper 5 single-sector, "el desafío") | 0.8335 / 0.846 — **3.5σ KiDS** | `ssee_paper5_IS_perturbations.py` (G=1.011, Ω_m,CMB=0.308881) | 2026-06-19 (canónico; antes 0.820/0.847 @0.3199) |
-| σ₈ para fσ₈ (Paper 6 two-sector) | **0.747** (R=8, CON free-streaming) → tensión media **0.93σ** | `ssee_paper6_verification.py`, `ssee_paper6_mcmc_v2.py` | 2026-06-29 (CORREGIDO: antes "0.811·G_2s=0.794, amplitud RSD k<k_fs" suponía supresión NO alcanza RSD — FALSO; k_half=0.351 muerde DENTRO de la ventana σ₈(R=8), σ₈ cae 6.9% ya a k=0.3; single-sector legítimo 0.70σ con σ₈=0.8136) |
-| σ_eff / S₈ (Paper 6 titular lensing, R=8 cruza k_fs) | 0.747 / 0.758 — **0.04σ KiDS** | `ssee_paper6_canonical_particle.py` (forward CLASS) | 2026-06-19 (canónico SOLAR; antes 0.742/0.766 @36.95) |
-| m_φ (Paper 6 forward-pred, dim. consistente) | 40.70 eV | Σm_ν^act·(SOLAR²·KRYSTOS=594.28), `ssee_core` | 2026-06-19 (canónico; era 36.9463 vía Ω⁴+AURA·KAL) |
-| k_fs (Paper 6, output CLASS) | 0.754 h/Mpc | CLASS (`calibrate_wdm_alpha.py`, α=1.117 Mpc/h) | 2026-06-19 (canónico) |
+| σ₈ / S₈ con A_s FIJADO a Planck (techo) | 0.8335 / 0.846 | `ssee_paper5_IS_perturbations.py` (Ω_m,CMB=0.308881) | 2026-08-01: ya NO se llama "el desafío 3.5σ" — ese 3.5σ es artefacto de fijar A_s a Planck (importar la tensión Planck–KiDS). A_s es libre en el modelo |
+| **σ₈ / S₈ (Paper 6, MCMC R3 contra KiDS CRUDO) — CANÓNICO** | **0.7446±0.0189 / 0.7555±0.0192 — 0.11σ KiDS** | Cobaya+CAMB, 4 cadenas MPI, R−1=0.0189, N_eff=42033; log `results/logs/growth_2026-07/R3_ssee_kids_S8.json` | 2026-08-01 (un sector, A_s libre, fondo fijo por álgebra; χ²_min=265.4/216 dof) |
+| ~~σ₈/S₈ two-sector 0.747/0.758~~ · ~~m_φ=40.70 eV~~ · ~~k_fs=0.754~~ · ~~α=1.117~~ | **RETIRADOS 2026-08-01** | — | La resta Ω_φDM=0.308881−0.160 mezclaba densidad con ecuación de estado (0.160=1+w₀); histórico, no citar |
 
 **Historial de deriva de H₀ MCMC** (para entender por qué cambió): el MCMC
 es determinista (semilla fija 42) — *mismo script → mismo número*. La
@@ -275,7 +273,7 @@ apoya en mecanismos de Capa 3 aún no verificados — no pueden pasar de
 - **r** (V-L2-12): depende de α=φ⁴/3 y N=2φ⁷ (OP-2).
 - **f_screen** (V-L2-13): la *identidad algebraica* está verificada, pero el
   *mecanismo* de screening depende de P9 (el árbitro lo llamó circular).
-- **k_fs** (V-L2-11): depende de m_φ (canónico 40.70 eV) y del cómputo CLASS (L3).
+- ~~**k_fs** (V-L2-11)~~: **RETIRADO 2026-08-01** junto con la partícula — no hay free-streaming que caracterizar.
 
 **Estado Capa 2:** 11/13 `verificado` (numérica + dimensional + identidades);
 1 `ABIERTO` (H₀^alg — adimensional vs km/s/Mpc); 1 `pendiente L3` (k_fs).
@@ -473,7 +471,15 @@ Sólo el refinamiento no-lineal Nivel 2 queda ABIERTO.
 álgebra exacta *condicionada* a δ_local=2 y a una expresión δρ_φ asertada.
 No es "RESUELTO" pleno. **PARCIAL.**
 
-## V-L3-mphi — masa del campo φ-DM, m_φ = 40.70 eV — **PARCIAL (cadena dim. consistente, Lagrangiano abierto OP-9)**
+## V-L3-mphi — masa del campo φ-DM — 🔴 **RETIRADO 2026-08-01 (histórico)**
+
+> **La partícula no existe.** Esta entrada se conserva como registro de cómo se
+> llegó a retirarla, NO como verificación viva. La cadena dimensional era
+> correcta (masa × número adimensional cierra unidades) — lo que falla es que
+> su densidad Ω_φDM salía de restar 0.308881 − 0.160, y ese 0.160 es 1+w₀, un
+> número de la ecuación de estado, no una densidad. **Lección:** verificar
+> unidades no sustituye verificar que cada término sea la clase de cosa que
+> dice ser. Todo lo que sigue en esta sección es histórico.
 
 *Claim CLAUDE.md (canónico 2026-06-04):* "m_φ = Σm_ν^active × (Ω⁴+AURA·KAL₀)
 = 40.70 eV — forward-prediction, cero fiteo".
@@ -504,10 +510,10 @@ parámetros libres), pero su justificación desde un Lagrangiano sigue abierta
 1. **✓ identidad:** Ω_CDM + Ω_φDM = Ω_m,dyn + (MIRA−1)·Ω_m,dyn =
    MIRA·Ω_m,dyn = 0.308881. Diferencia con V-L2-05 = 0 exacto. Es una
    **re-partición algebraica** de Ω_m,cosm en dos mitades casi iguales.
-2. **⚠ split físico:** que un sector (φ-DM) free-streame para k>k_fs y el
-   otro (CDM) no, descansa en m_φ=40.70 eV (canónico, cadena dim. consistente
-   — V-L3-mphi PARCIAL) y en k_fs=0.754 h/Mpc (output CLASS). El cierre del
-   Lagrangiano que justifique el split sigue en OP-9.
+2. **🔴 split físico: RETIRADO 2026-08-01 (histórico).** El split descansaba en
+   m_φ y k_fs, ambos retirados con la partícula. Y la re-partición del punto 1
+   es exactamente el problema: restar 0.308881 − 0.160 mezcla una densidad con
+   un número de la ecuación de estado. No hay dos sectores.
 
 **Veredicto:** la suma Ω_total es un re-enunciado exacto de V-L2-05; el
 modelo físico de dos sectores hereda la apertura del Lagrangiano de m_φ

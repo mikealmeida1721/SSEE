@@ -16,32 +16,41 @@
 # ── Valores canónicos vigentes ─────────────────────────────────────────
 # Cada uno con su unidad pegada en el nombre para no confundir escalas.
 canonical:
-  # Sector materia oscura φ-DM (Paper 6, forward — cero fiteo)
-  # INPUT FIJO (álgebra pura, mecanismo SOLAR²·KRYSTOS_V adoptado 2026-06-19):
-  m_phi_eV:            40.70      # = Σm_ν^act × (SOLAR²·KRYSTOS_V) = 0.06849 × 594.28
-  #   SOLAR=BIAL+KAL=φ+2π (linaje radiativo); KRYSTOS_V=φ+π+Ω (padres {φ,π,Ω}, ancla wₐ;
-  #   NO "2Ω" — mismo valor pero esa forma rompe la ley de no-auto-suma); mecanismo g²·v
-  #   (antes 41.02 vía el factor 0.960318, que codifica C_ν≈93.8638 eV — un valor SIN
-  #    FUENTE, ni 94.07 (desacople instantáneo) ni 93.14 (PDG); verificado 2026-07-25.
-  #    Unificado a C_ν=93.14 PDG demostrada 2026-07-10,
-  #    derive_nu_closure.py; antes 42.47 vía PYROS·VITA·MIKA=615.33 — ver OP-9/OP-17)
-  # DEPENDIENTES de m_φ — CLASS forward ω_m-directo, m_φ=40.70 @
-  # Ω_m=0.30888, Ω_φDM=0.14888. script: src/ssee_paper6_canonical_particle.py
-  k_fs_h_per_Mpc:      0.754      # analítico no-rel (era 0.762 con m_φ=41.02); falsable DESI/Euclid
-  k_half_CLASS_h_per_Mpc: 0.337   # borrado medido por CLASS (ratio P=0.5; era 0.339)
-  alpha_freestream_Mpc_per_h: 1.117  # OUTPUT CLASS fit Viel (era 1.108)
-  T_phi_over_T_nu:     0.5399     # relic constraint (T_φ=0.38661)
-  N_ur:                2.9610     # N_ur efectivo del two-sector
+  # NOTA 2026-08-01: aquí vivía `m_phi_eV: 40.70`, la masa de la partícula φ-DM.
+  # RETIRADA — ya no es un valor canónico del modelo. Su historia completa
+  # (SOLAR²·KRYSTOS_V=594.28, y antes 41.02 / 42.47 / 36.95 / 5.60) queda en
+  # `historical_sections` y en el Paper 6, que narra la retracción.
+  # ══════════════════════════════════════════════════════════════════════
+  # RETIRADO 2026-08-01 — SECTOR φ-DM Y PARTÍCULA (m_φ, k_fs, α, T_φ, N_ur,
+  # sigma8/S8 two-sector). NO son canónicos. Motivo doble:
+  #   (1) Ω_φDM = Ω_m,CMB − Ω_m,dyn restaba una densidad medida (0.308881)
+  #       menos un número de la ECUACIÓN DE ESTADO (0.160 = 1+w₀). La resta
+  #       no tenía contenido físico ⟹ la partícula no tenía de qué estar hecha.
+  #   (2) La tensión S8 que motivaba el sector se medía contra el estadístico
+  #       COMPRIMIDO S8, que se deriva asumiendo ΛCDM. Contra el dato CRUDO
+  #       de cizalla no hay tensión (ver S8_kids_mcmc abajo).
+  # Valores retirados, sólo para trazabilidad histórica (NO citar):
+  #   m_φ=40.70 eV · k_fs=0.754 · k_half=0.337 · α=1.117 · T_φ/T_ν=0.5399
+  #   N_ur=2.9610 · sigma8_two_sector=0.7470 · S8_two_sector=0.7580
+  # Ver: archive/manuscript_superseded/SSEE_Paper6_phiDM_TWOSECTOR_RETIRED.tex
+  # ══════════════════════════════════════════════════════════════════════
 
-  # Amplitud de estructura — CLASS forward (σ8 OUTPUT directo, NO fit alpha_WDM)
-  sigma8_two_sector:   0.7470     # σ8 forward CLASS two-sector (era 0.7483 @m_φ=41.02)
-  S8_two_sector:       0.7580     # = σ8·√(Ω_m/0.3) → 0.04σ KiDS (RESUELVE; forward, falsable; era 0.7593/0.01σ)
-  sigma8_single_ceiling: 0.8335   # σ8 todo-frío (techo CLASS; independiente de m_φ, sin cambio)
-  S8_single_ceiling:   0.8458     # 3.5σ KiDS-1000 (0.759±0.024) — "el desafío" que el two-sector baja
+  # Amplitud de estructura — CANÓNICO 2026-08-01: MCMC R3 contra dato CRUDO.
+  # SSEE un sector, fondo FIJO por álgebra (Ω_m=0.308881), 9 parámetros libres
+  # (logA + 8 nuisance KiDS) marginalizados contra los 225 puntos de ξ± de
+  # KiDS-1000. Cobaya 4 cadenas MPI, converged, R−1=0.0189, N_eff=42033.
+  # log: results/logs/growth_2026-07/R3_ssee_kids_S8.json
+  sigma8_kids_mcmc:    0.7446     # ±0.0189 — un sector, A_s libre, dato crudo
+  S8_kids_mcmc:        0.7555     # ±0.0192 → 0.11σ KiDS-1000 (0.759±0.024): NO hay tensión
+  chi2_min_kids_mcmc:  265.4      # 225 puntos, 9 libres → 216 dof, χ²/dof=1.23
+  sigma8_single_ceiling: 0.8335   # σ8 con A_s FIJADO a Planck (techo CLASS)
+  S8_single_ceiling:   0.8458     # el viejo "3.5σ KiDS" — artefacto de fijar A_s
+                                  # a Planck, o sea de IMPORTAR la tensión Planck–KiDS.
+                                  # A_s es libre en el modelo (k=2); fijarlo no es rigor.
   gamma_IS:             0.5504     # Paper 5 índice de crecimiento IS (fit ODE; ±0.0003; ≈ΛCDM 0.55)
   G_growth:            1.0032     # D₁_SSEE/D₁_ΛCDM (Paper 5 ODE @ Ω_m,cosm=0.308881; era 1.011 @0.31983 — SÍ depende del fondo, que bajó en el reframe ω_m-directo)
-  fsigma8_two_sector_sigma: 0.93  # P6 fσ8 mean two-sector σ8=0.748 CON free-streaming (CORREGIDO 2026-06-29; forward ODE 0.933, MCMC v2 CLASS 0.946; antes 0.70 usaba σ8=0.8136 single = espurio)
-  fsigma8_single_sigma:     0.70  # P5 single-sector σ8=0.8136 SIN free-streaming (correcto; ≠ two-sector: el free-streaming sube fσ8 0.70→0.93)
+  fsigma8_single_sigma:     0.70  # P5 single-sector σ8=0.8136 SIN free-streaming
+  # fsigma8 canónico un-sector contra BOSS crudo: PENDIENTE R1/R2
 
   # ── Anclas OBSERVACIONALES (el DATO, no la predicción) ────────────────
   # Fuente única para R20: cualquier constante observacional hardcodeada en
@@ -217,26 +226,50 @@ retired:
   - {pattern: "0.000741",  reason: "ω_ν con Σm_ν=0.06902 (C_ν=94.07) → 0.000735 con Σm_ν=0.06849"}
   - {pattern: "0.06902",   reason: "Σm_ν implícito de ω_ν stale → 0.06849 (=40.70/594.28)"}
   - {pattern: "0.069017",  reason: "Σm_ν implícito de ω_ν stale (variante) → 0.06849"}
-  # Dependientes de la partícula vieja (k_fs/alpha/σ8/S8)
-  - {pattern: "0.7536",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8 two-sector @42.47 → 0.7470 @40.70"}
-  - {pattern: "0.7483",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8 two-sector @41.02 (C_ν=94.07) → 0.7470 @40.70 (C_ν=93.14)"}
-  - {pattern: "0.766",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S8_eff two-sector viejo (@36.95/42.47) → 0.758 @40.70"}
-  - {pattern: "0.765",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S8_eff variante vieja → 0.758"}
-  - {pattern: "0.7593",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S8 two-sector @41.02 → 0.7580 @40.70 (C_ν=93.14)"}
-  - {pattern: "0.742",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ8_eff two-sector viejo (@36.95) → 0.747 @40.70"}
-  - {pattern: "1.243\\,mpc", reason: "alpha free-streaming viejo (m_φ=36.95) → 1.117 (unidad para evitar arXiv)"}
-  - {pattern: "1.243 mpc",   reason: "alpha free-streaming viejo (variante con espacio)"}
-  - {pattern: "1.072 mpc",   reason: "alpha free-streaming @42.47 → 1.117 @40.70"}
-  - {pattern: "1.072\\,mpc", reason: "alpha @42.47 (variante)"}
-  - {pattern: "1.108\\,mpc", reason: "alpha @41.02 (C_ν=94.07) → 1.117 @40.70 (C_ν=93.14)"}
-  - {pattern: "1.108 mpc",   reason: "alpha @41.02 (variante con espacio)"}
+  # ── SECTOR φ-DM Y PARTÍCULA: RETIRADOS EN BLOQUE (2026-08-01) ──────────
+  # Antes estas reglas redirigían los valores viejos de la partícula HACIA los
+  # canónicos @40.70 eV. Ahora el destino también está retirado: no hay
+  # partícula, ni sector frío, ni free-streaming. Toda esta familia de números
+  # es drift, incluidos los que hasta ayer eran canónicos.
+  # Sólo se permiten con calificativo explícito de retracción/histórico, porque
+  # el Paper 6 DEBE poder narrar qué retira y por qué.
+  - {pattern: "0.7470", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ^2"],
+     reason: "σ8 two-sector RETIRADO (no hay partícula) → canónico un-sector 0.7446 (MCMC crudo KiDS)"}
+  - {pattern: "0.7580", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ^2"],
+     reason: "S8 two-sector RETIRADO → canónico un-sector 0.7555 ± 0.0192 (0.11σ KiDS)"}
+  - {pattern: "40.70", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "excluid", "exclud", "bound", "cota"],
+     reason: "m_φ RETIRADO: la partícula no existe (la resta que la definía no era física)"}
+  - {pattern: "594.28", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "techo", "ceiling", "grammar", "gramática"],
+     reason: "multiplicador SOLAR²·KRYSTOS de la partícula retirada"}
+  - {pattern: "0.14889", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed"],
+     reason: "Ω_φDM RETIRADO: era resta de una densidad menos un número de la EoS"}
+  - {pattern: "0.14888", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed"],
+     reason: "Ω_φDM RETIRADO (variante de redondeo)"}
+  # Valores viejos de la partícula (pre-40.70): siguen siendo drift, con destino
+  # actualizado — ya no apuntan al canónico @40.70, apuntan a la retracción.
+  - {pattern: "0.7536",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "σ8 two-sector @42.47 — cadena entera RETIRADA"}
+  - {pattern: "0.7483",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "σ8 two-sector @41.02 — cadena entera RETIRADA"}
+  - {pattern: "0.766",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "S8_eff two-sector viejo — cadena entera RETIRADA"}
+  - {pattern: "0.765",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "S8_eff variante vieja — cadena entera RETIRADA"}
+  - {pattern: "0.7593",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "S8 two-sector @41.02 — cadena entera RETIRADA"}
+  - {pattern: "0.742",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "σ8_eff two-sector viejo — cadena entera RETIRADA"}
+  - {pattern: "1.243\\,mpc", reason: "alpha free-streaming — el free-streaming entero está RETIRADO"}
+  - {pattern: "1.243 mpc",   reason: "alpha free-streaming (variante) — RETIRADO"}
+  - {pattern: "1.072 mpc",   reason: "alpha free-streaming — RETIRADO"}
+  - {pattern: "1.072\\,mpc", reason: "alpha (variante) — RETIRADO"}
+  - {pattern: "1.108\\,mpc", reason: "alpha @41.02 — RETIRADO"}
+  - {pattern: "1.108 mpc",   reason: "alpha @41.02 (variante) — RETIRADO"}
+  - {pattern: "1.117\\,mpc", reason: "alpha @40.70 — RETIRADO (era el canónico hasta 2026-08-01)"}
+  - {pattern: "1.117 mpc",   reason: "alpha @40.70 (variante) — RETIRADO"}
   # Crecimiento single-sector ODE Paper 5 (reframe Poisson 0.31983→0.308881)
   - {pattern: "1.0109",    reason: "G_growth ODE viejo @Ω_m=0.31983 → 1.0032 @0.308881"}
   - {pattern: "0.8466",    reason: "S8 ODE single-sector viejo @0.320 → 0.8256 @0.308881 (techo CLASS 0.846 se mantiene)"}
-  - {pattern: "0.798\\,h", reason: "k_fs @42.47 (con unidad) → 0.754\\,h @40.70"}
-  - {pattern: "0.659\\,h", reason: "k_fs @36.95 (con unidad) → 0.754\\,h @40.70"}
-  - {pattern: "0.762\\,h", reason: "k_fs @41.02 (C_ν=94.07) → 0.754\\,h @40.70 (C_ν=93.14)"}
-  - {pattern: "0.762 h",   reason: "k_fs @41.02 (variante con espacio)"}
+  - {pattern: "0.798\\,h", reason: "k_fs @42.47 — el free-streaming entero está RETIRADO"}
+  - {pattern: "0.659\\,h", reason: "k_fs @36.95 — RETIRADO"}
+  - {pattern: "0.762\\,h", reason: "k_fs @41.02 — RETIRADO"}
+  - {pattern: "0.762 h",   reason: "k_fs @41.02 (variante) — RETIRADO"}
+  - {pattern: "0.754\\,h", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed"],
+     reason: "k_fs @40.70 — RETIRADO (era el canónico hasta 2026-08-01)"}
   - {pattern: "147.156", reason: "r_d CAMB viejo (P3) → 147.17 canónico (0.32σ; log p3_rd_reframe); era outlier vs P2/Ledger"}
   - {pattern: "147.15", reason: "r_d CAMB viejo redondeado (P3 conclusiones) → 147.17 canónico"}
 
@@ -288,6 +321,11 @@ context_markers:
 # Encabezados (## / ###) cuyas secciones son REGISTRO HISTÓRICO, no estado
 # vigente: todo lo que cuelga de ellos se omite (logs de sesión, POA, fases).
 historical_sections:
+  # Encabezado que declara TODO lo que cuelga de él como registro histórico.
+  # Sirve para conservar íntegra una narración retirada (una nota del vault, una
+  # sección de un paper) sin tener que censurar cada número que la compone: el
+  # trabajo de un registro histórico ES nombrar el valor retirado.
+  - "CONTENIDO HISTÓRICO"
   - "Sesión"
   - "POA"
   - "Fase 1"
@@ -479,7 +517,7 @@ provenance:
       por el calentamiento e+e- no instantaneo. AMBOS son el mismo objeto
       fisico; se usa el preciso (93.14) porque es el que uso quien midio el dato.
     depends_on: []
-    affects:    [sigma_m_nu, omega_nu, m_phi]
+    affects:    [sigma_m_nu, omega_nu]   # m_phi RETIRADO 2026-08-01 (partícula disuelta)
     nota:       >
       94.07 NO aparece en ningun paper — solo dentro de derive_nu_closure.py,
       como paso intermedio de la demostracion. Usar 94.07 en un calculo es
@@ -515,7 +553,7 @@ provenance:
       La cota estrecha de DESI (~0.06-0.07 eV) es especifica de LCDM; con
       w0,wa libres se relaja a ~0.13-0.16 eV.
     depends_on: [R2, omega_b, C_nu, tau_Pi_H0]
-    affects:    [omega_nu, m_phi]
+    affects:    [omega_nu]   # m_phi RETIRADO 2026-08-01 (partícula disuelta)
     status:     "sensible a C_nu (a diferencia de omega_nu, aqui NO se cancela)"
 
   # ── Nivel 2: la suma y su fraccion ─────────────────────────────────────

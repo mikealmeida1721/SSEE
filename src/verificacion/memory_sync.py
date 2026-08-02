@@ -60,8 +60,13 @@ def _targets(vault_only=False):
         estado = [ROOT / "README.md", ROOT / "RIGOR_CHECKLIST.md"]
         out.append(("Estado raíz", [p for p in estado if p.exists()]))
     if VAULT.exists():
+        # `Archivo/` es el cajón de retirados del vault — el equivalente exacto
+        # del `archive/` del repo, que ya se excluye arriba. Una nota archivada
+        # DEBE poder narrar el valor retirado con todas sus letras: ése es su
+        # trabajo. Escanearla obligaría a censurar la historia que se conserva.
         out.append(("Obsidian (vault)",
-                    sorted(VAULT.rglob("*.md"))))
+                    sorted(p for p in VAULT.rglob("*.md")
+                           if "Archivo" not in p.relative_to(VAULT).parts)))
     elif not vault_only:
         print(f"  [aviso] vault no encontrado en {VAULT} — se omite Obsidian")
     return out

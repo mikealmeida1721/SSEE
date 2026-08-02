@@ -32,18 +32,21 @@
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ | ✅ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.16σ | ✅ |
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match | ✅ |
-| S₈ (two-sector φ-DM) | 0.758 | KiDS-1000: 0.759±0.024 | 0.04σ | ✅ |
+| **S₈ (single sector, A_s free, MCMC vs raw ξ±)** | **0.7555 ± 0.0192** | KiDS-1000: 0.759±0.024 | **0.11σ** | ✅ |
 | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 | ⏳ |
-| m_φ (φ-DM mass) | 40.70 eV algebraic (SOLAR²·KRYSTOS_V) | gravitationally-produced scalar — observable via k_fs, not neutrino experiments | falsifiable | ⏳ |
-| **k_fs (free-streaming)** | **0.754 h/Mpc algebraic** | **DESI Y3/Euclid P(k): 2026–2028** | **pre-registered** | ⏳ |
 | **(w₀, wₐ) vs DESI DR3** | **same fixed point (−0.840, −0.670)** | **DR3 w₀wₐCDM (2027)** — trajectory 0.05σ (DR1) → 0.24σ (DR2, errors −40%, still inside 68%); ~0.5σ expected if DR2 centrals persist; >3σ joint exclusion falsifies | **pre-registered** | ⏳ |
 
-**Future falsifiers:** r = φ⁻¹⁰ = 0.00813 (LiteBIRD ~2032); k_fs cutoff in matter power spectrum (Euclid ~2028).
+**Future falsifiers:** r = φ⁻¹⁰ = 0.00813 (LiteBIRD ~2032).
 
-> ⏱️ **Pre-registered prediction:** the free-streaming imprint at k_fs = 0.754 h/Mpc
-> (from m_φ = 40.70 eV, forward prediction, zero fitting) is timestamped on Zenodo
-> **before** the DESI Y3 / Euclid data releases. Either the data shows it, or the
-> φ-DM sector is falsified.
+> 🔴 **Retracted 2026-08-01 — the φ-DM sector and its particle (m_φ = 40.70 eV,
+> k_fs = 0.754 h/Mpc).** Two independent reasons. (1) The subtraction defining its
+> density, Ω_φDM = Ω_m,CMB − Ω_m,dyn = 0.308881 − 0.160, mixed a measured density
+> with a number from the **equation of state** (0.160 = 1+w₀) — dimensionally well
+> formed, physically empty, so the particle had nothing to be made of. (2) The S₈
+> tension it was built to close does not exist in the raw data: it appeared only
+> against the *compressed* S₈ statistic (itself derived under ΛCDM) with A_s fixed
+> to Planck. Fitted directly to the 225 raw KiDS-1000 ξ± points with A_s free and a
+> **single** matter sector, SSEE gives S₈ = 0.7555 ± 0.0192 — **0.11σ**. See Paper 6.
 
 ---
 
@@ -207,17 +210,23 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | α (Viel fit to particle/cold P(k) ratio) | 1.117 Mpc/h | CLASS output — not imposed |
 | k_fs (free-streaming) | 0.754 h/Mpc | From m_φ, CLASS-derived |
 | σ₈_eff (two-sector particle) | 0.747 | — |
-| **S₈ (two-sector particle)** | **0.758** | **0.04σ KiDS-1000 (0.759±0.024) — resolves S₈ lensing tension** |
-| Single-sector linear (cold source) | σ₈=0.8335, S₈=0.846 | 3.5σ — open before two-sector |
-| Mean fσ₈ tension (6 surveys) | 0.93σ | single-sector baseline 0.70σ; still <1σ, close to ΛCDM (0.73σ) |
+| **σ₈, S₈ (single sector, A_s free, MCMC vs raw KiDS-1000 ξ±)** | **0.7446±0.0189, 0.7555±0.0192** | **0.11σ — no S₈ tension.** Converged Cobaya+CAMB run, R−1=0.019, N_eff=4.2×10⁴, χ²=265.4/216 dof |
+| Same background with A_s **fixed** to Planck | σ₈=0.8335, S₈=0.846 | the old "3.5σ challenge" — an artefact of fixing A_s, i.e. of importing the Planck–KiDS tension |
+| fσ₈ vs raw BOSS DR12 multipoles | pending (R1/R2) | single-sector baseline 0.70σ |
 
-> **Note:** With the forward-predicted particle (m_φ = 40.70 eV) and its own relic temperature, the two-sector model **resolves** the S₈ lensing tension: S₈ = 0.758 sits 0.04σ from KiDS-1000, down from the 3.5σ single-sector baseline. The same free-streaming that lowers σ₈ also reaches the σ₈(R=8) window probed by RSD, so the fσ₈ (growth-rate) tension rises from the 0.70σ single-sector baseline to 0.93σ — still <1σ and close to ΛCDM (0.73σ). This is the deliberate trade: lowering σ₈ resolves S₈ (3.5σ→0.04σ) at a ~0.2σ cost in fσ₈.
-
-**Lyman-α compatibility:** φ-DM is a non-thermal condensate. The correct observable is k_fs=0.754 h/Mpc in the matter power spectrum (not m_φ directly); ΔP/P ≈ −f²(k/k_fs)² — quantified falsifiable prediction.
-
-**φ-DM is a gravitationally-produced scalar** (explicit Lagrangian in Paper 6 §4): no Standard-Model portal, so it is *not* accessible to neutrino-mass experiments. The Dodelson-Widrow (sterile-neutrino) route is excluded — its mixing angle has no parameter-free SSEE form.
-
-**Falsifiable prediction:** k_fs = 0.754 h/Mpc — the free-streaming imprint of m_φ = 40.70 eV on the matter power spectrum — testable via the Lyman-α forest and DESI Y3/Euclid P(k) (2026–2028). Zero free parameters.
+> **Note (2026-08-01):** there is **one** matter sector, Ω_m = 0.308881, with no
+> partition — no second φ-DM sector and no particle. What closes S₈ is not extra
+> freedom but the opposite: the background is *more* constrained here than in
+> ΛCDM, and A_s — one of the model's two free CMB-level parameters — is the only
+> quantity allowed to move. Fixing it to Planck's preferred value, as earlier
+> versions did, imports the Planck–KiDS tension into a model that does not
+> otherwise have it; that, and not new physics, produced the "3.5σ challenge".
+>
+> **Methodological point:** the earlier tension was measured against the
+> *compressed* S₈ statistic, whose data-reduction pipeline itself assumes a ΛCDM
+> background. A published number with an error bar can still be the output of
+> fitting a fiducial template — before treating one as a target, ask whether it is
+> a raw observable or a model-conditioned summary.
 
 ### Paper 7 (Canonical EFT)
 
@@ -318,9 +327,9 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 | OP-6 | Screening form (mult. vs add.) | **Resolved** — separate-universe k-essence + identity 1+w₀=Ω_m,dyn |
 | OP-7 | QFT derivation of genesis role assignments | **Partial** |
 | OP-8 | MIRA/matter-factor mechanism | **Dissolved (2026-06-18)** — ωm-direct: Ω_m,CMB = ωm/h² = 0.30889 is the standard physical observable, no matter factor to derive; MIRA survives only in f_screen |
-| OP-9 | UV origin of mass multiplier SOLAR²·KRYSTOS_V | **Refined (2026-06-19)** — m_φ = 40.70 eV is a forward prediction in a free scalar Lagrangian (mechanism g²·v); only the multiplier's UV origin remains open |
-| OP-10 | Unification of φ and χ into a single field | **Open** — V(φ) search ongoing |
-| OP-11 | Free non-minimal coupling ξ | **Open** |
+| OP-9 | ~~UV origin of the mass multiplier~~ | **Closed by dissolution (2026-08-01)** — no multiplier to derive: the particle is retracted |
+| OP-10 | ~~Unification of φ and χ into a single field~~ | **Closed by dissolution (2026-08-01)** — there is no second field χ to unify |
+| OP-11 | ~~Free non-minimal coupling ξ~~ | **Closed by dissolution (2026-08-01)** — ξ lived in the retracted φ-DM sector |
 | OP-12 | Relic abundance Ω_φDM h² ab initio | **Open** |
 | OP-13 | Paper 8 internal consistency (√AURA vs B-S) | **Resolved (2026-05-23)** — Option A |
 | OP-14 | Σm_ν phenomenological derivation | **Resolved (2026-06-04)** — Σm_ν = 0.0685 eV self-consistent cascade (ν-closure C=93.14 demonstrated) |

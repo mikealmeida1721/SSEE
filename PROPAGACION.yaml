@@ -36,12 +36,15 @@ logs:
   b1_lcdm_run:                src/p03_cmb/ssee_paper3_b1_mcmc.py
   b1_analyse:                 src/p03_cmb/ssee_paper3_b1_mcmc.py
 
-  # ── Paper 6 — φ-DM ──────────────────────────────────────────────────────
-  p6_class_reframe_omega_m:   src/ssee_paper6_canonical_particle.py
+  # ── Paper 6 — sector de crecimiento (un solo sector) ────────────────────
+  # El cajón φ-DM (dos sectores + partícula) se RETIRÓ el 2026-08-01; su log
+  # p6_class_reframe_omega_m pasa a `historicos` y su script vive ahora en
+  # archive/codigo/p06_phiDM_RETIRADO_2026-08-01/.
 
 # Logs SUPERADOS a propósito: se conservan como registro histórico y no se
 # re-corren. Declararlos aquí los saca del conteo de deuda (no del repo).
 historicos:
+  - p6_class_reframe_omega_m   # sector φ-DM retirado 2026-08-01 (script en archive/)
   - mcmc_paper2_3models_om308
   - mcmc_paper2_reframe_om308
   - mcmc_paper2_reframe_dr2

@@ -1457,7 +1457,25 @@ These problems are documented here rather than concealed because scientific inte
 requires pre-registration of known limitations. Referees and collaborators should be
 directed to this document when evaluating the strength of the SSEE predictions.
 
-## OP-17 — Partícula canónica $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ ($m_\phi=40.70$ eV, $S_8=0.01\sigma$) — ✅ ADOPTADA 2026-06-19
+## OP-17 — Partícula canónica — ⚫ **RETIRADA 2026-08-01** (la adopción de 2026-06-19 queda revertida)
+
+> 🔴 **DECISIÓN REVERTIDA.** El 2026-06-19 esta partícula se **adoptó**. El
+> 2026-08-01 se **retira**, junto con todo el sector φ-DM: la resta que definía
+> su densidad, Ω_φDM = Ω_m,CMB − Ω_m,dyn = 0.308881 − 0.160, restaba una
+> densidad medida menos un número de la **ecuación de estado** (0.160 = 1+w₀).
+> Bien formada aritméticamente, vacía de física ⟹ la partícula no tenía de qué
+> estar hecha. Y la tensión S₈ que la motivaba no existe contra el dato crudo
+> (S₈ = 0.7555 ± 0.0192, 0.11σ).
+>
+> **Cómo se escapó esta entrada en la ola de propagación del 2026-08-01:** el
+> guardián busca **números** retirados, no **decisiones** revertidas. Un
+> encabezado que dice «✅ ADOPTADA» sin citar ninguna cifra retirada pasa
+> invisible. Contramedida pendiente: extender R45 (que ya cruza «OP resuelto
+> citado como abierto») al caso simétrico, «OP adoptado que fue revertido».
+>
+> Lo de abajo es registro histórico. **No citar como vigente.**
+
+### Contenido histórico (la adopción, tal como se decidió en su momento)
 
 **Status:** ✅ **CERRADO / ADOPTADO** (Mike, 2026-06-19). El diferimiento se revirtió
 en la misma sesión ("Mira bien lo que NO es, es SOLAR"): se adoptó la partícula con

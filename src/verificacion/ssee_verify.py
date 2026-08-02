@@ -2808,8 +2808,79 @@ def _nivel_de(nombre):
 # sigue diciendo VERDE con menos trabajo hecho. Es la cuarta patología —el verde
 # por vacío— aplicada a una capa entera en vez de a una regla.
 # El piso se sube a mano al añadir capas; NUNCA se baja para tapar una corrida.
+# ════════════════════════════════════════════════════════════════════════════
+# R47 — TODA PIEZA DECLARADA COMO SUPUESTO TIENE QUE ESTAR RASTREADA (2026-08-02)
+#
+# POR QUÉ EXISTE (metáfora de Mike, y es literal): «una pieza floja en el
+# chasis y la computadora nunca la marcó como problema».
+#
+# El caso real: `ssee_paper5_IS_perturbations.py` fija
+#     zeta_tilde = KAL0/3      # SSEE hypothesis
+# y de ahí sale el resultado c²_s = 0 EXACTO de Paper 5. El 0 es álgebra
+# limpia — pero cuelga de esa hipótesis, que nunca se derivó ni se puso a
+# prueba. Vivió meses sin que nada la señalara: no es drift (ningún número
+# está mal), no es incoherencia (todo concuerda consigo mismo), así que
+# ninguna capa previa podía verla. Se encontró a mano, tirando de un hilo.
+#
+# La regla: si el código ACTIVO etiqueta algo como hypothesis/ansatz/supuesto,
+# ese algo debe estar (a) registrado en OPEN_PROBLEMS.md, o (b) llevar al lado
+# el puntero a dónde se deriva. Si no está ninguna de las dos, es una pieza
+# floja y R47 la marca.
+#
+# Coherencia ≠ corrección; y AUSENCIA DE ALARMA ≠ ausencia de problema.
+print("\nCapa R47 — piezas declaradas como supuesto: ¿rastreadas?")
+try:
+    _MARCAS = ("hypothesis", "hipótesis", "hipotesis", "ansatz",
+               "conjetura", "we posit", "assumed:")
+    # Falsos positivos que NO son supuestos del modelo:
+    #  - «hipótesis nula» / «null hypothesis»: estadística estándar, no un
+    #    supuesto físico sin derivar.
+    #  - «no se asume» / «not assumed»: dice justo lo contrario.
+    _NO_ES = ("nula", "null", "no se asume", "not assumed", "se mide para saberlo")
+    # Un supuesto está RASTREADO si su línea (o vecinas ±2) cita un OP, o
+    # apunta a dónde se deriva.
+    _RASTRO = _re.compile(r"OP-\d+|OPEN_PROBLEMS|deriv|demostr|proof|teorema|theorem",
+                          _re.I)
+    _sueltas = []
+    for _py in sorted((_REPO / "src").rglob("*.py")):
+        if "__pycache__" in str(_py) or "verificacion" in str(_py):
+            continue
+        _ls = _py.read_text(errors="ignore").splitlines()
+        for _i, _ln in enumerate(_ls):
+            _low = _ln.lower()
+            if not any(_m in _low for _m in _MARCAS):
+                continue
+            if any(_n in _low for _n in _NO_ES):
+                continue
+            _win = "\n".join(_ls[max(0, _i - 2):_i + 3])
+            if _RASTRO.search(_win):
+                continue
+            _sueltas.append(f"{_py.relative_to(_REPO)}:{_i+1} «{_ln.strip()[:58]}»")
+    # Auto-test: el detector tiene que ver un supuesto sin rastro y NO ver uno con rastro.
+    _t47 = [("# SSEE hypothesis: zeta = KAL0/3", True),
+            ("# ansatz, sin derivar aun (OP-9)", False),
+            ("el multiplo entero es la hipotesis nula contra la que se mide", False),
+            ("se mide para saberlo, no se asume", False)]
+    _f47 = []
+    for _c, _esp in _t47:
+        _cl = _c.lower()
+        _visto = (any(_m in _cl for _m in _MARCAS)
+                  and not any(_n in _cl for _n in _NO_ES)
+                  and not _RASTRO.search(_c))
+        if _visto != _esp:
+            _f47.append(_c)
+    check("R47 el detector distingue supuesto rastreado de suelto",
+          not _f47, "; ".join(_f47) if _f47
+          else "4 casos: «SSEE hypothesis» pelado marcado; «ansatz (OP-9)», «hipótesis nula» y «no se asume» exentos")
+    check("R47 ningún supuesto del código activo sin OP ni derivación",
+          not _sueltas,
+          "; ".join(_sueltas[:4]) + (f" … (+{len(_sueltas)-4})" if len(_sueltas) > 4 else "")
+          if _sueltas else f"todos los supuestos declarados llevan OP o puntero a derivación")
+except Exception as _e:
+    check("R47 escaneo de supuestos", False, str(_e))
+
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 192          # medido 2026-07-29; sólo puede SUBIR
+_PISO_CHECKS = 194          # 192 (2026-07-29) + 2 de R47 (2026-08-02); sólo puede SUBIR
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,
       f"{checks + 1} ejecutadas (piso {_PISO_CHECKS})"

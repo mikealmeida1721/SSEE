@@ -1348,6 +1348,46 @@ distribution in a merging cluster.
 
 ---
 
+## OP-21 — La viscosidad estructural ζ̃ = KAL₀/3 es una hipótesis no derivada (Paper 5) — 🔴 ABIERTO (2026-08-02)
+
+**Cómo se encontró.** Mike preguntó, sobre el resultado `c²_s = 0` de Paper 5:
+*«si está ahí tiene su origen y puedes rastrearlo»*. Al rastrearlo apareció que
+el 0 es álgebra exacta, pero cuelga de un supuesto que el propio código etiqueta
+como tal y que nunca se derivó ni se puso a prueba. Su metáfora, y es literal:
+**«una pieza floja en el chasis, y la computadora nunca la marcó como problema».**
+
+**La cadena, en `src/p05_IS/ssee_paper5_IS_perturbations.py`:**
+
+```
+τ_Π·H₀  = KAL₀/(3·Ω_DE) ≈ 2.191      ← definido
+ζ̃       = KAL₀/3        ≈ 1.8405     ← "SSEE hypothesis"  (línea 62)
+ζ̃/(τ_Π·H₀) = Ω_DE = |w₀|
+c²_s,eff = w₀ + |w₀| = 0             ← EXACTO, pero condicionado a la hipótesis
+```
+
+**Qué falta.** Derivar ζ̃ = KAL₀/3 del Lagrangiano, o mostrar que la
+estabilidad marginal (c²_s = 0) la exige — en cuyo caso la hipótesis deja de
+serlo y pasa a ser consecuencia. Mientras tanto, `c²_s = 0` es un resultado
+**condicional**, no una predicción del modelo.
+
+**Por qué importa ahora.** Es el único ingrediente de SSEE con la *época*
+correcta para tocar la veta de A_s (ver `project_as_drift_growth_veta`):
+τ_Π·H(a) va de 2.19 hoy a 43821 en recombinación, o sea actúa en la era de
+materia, donde ocurre el 86.5% del crecimiento. **Advertencia:** c²_s es la
+velocidad del sonido de la ENERGÍA OSCURA, no del crecimiento de materia —
+antes de usarlo hay que establecer si el sector IS toca δ_m más allá del fondo
+(hoy el efecto medido es 0.3%, sólo vía E(a)).
+
+**Severidad:** Media. No invalida ningún número publicado (el 0 es exacto dado
+el supuesto, y está declarado). Sí impide llamar «predicción» a c²_s = 0.
+
+**Contramedida instalada:** regla **R47** del guardián — todo lo que el código
+activo etiquete como hypothesis/ansatz debe estar registrado en este documento
+o llevar puntero a su derivación. Antes no existía ninguna regla para esta clase
+de fallo: no es drift (ningún número está mal) ni incoherencia (todo concuerda
+consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
+
+---
 ## OP-16 — ¿Coincide $(\pi-\varphi)/(\pi+\varphi)=0.3201$ con una fracción medida de la descomposición masa-energía del protón? (origen génesis) — ABIERTO / ESPECULATIVO
 
 **Origen.** El sistema fenomenológico génesis (`SSEE_UNIFICADO`, "Resolución Física de
@@ -1404,6 +1444,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-14 | P4 | ~~Σm_ν Type P; offset 22 ad hoc~~ → canónico Type A | ✅ RESUELTO | $\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.9530$ eV $=0.0685$ eV con $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})=0.07188$; offset 22 eliminado, Σm_ν promovido Type P→Type A (2026-06-04) |
 | OP-15 | P1 | Bullet offset κ(θ) desde KAL(x) no calculado | Medium-High | Computar Σ_SSEE(θ)=∫ρ_bar·KAL(x)dℓ del Bala; mostrar pico κ sobre galaxias, no gas (falsable vs Clowe+2006). Distinto de OP-13 (amplitud); esto es distribución espacial (2026-06-14) |
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
+| OP-21 | P5 | ζ̃=KAL₀/3 es hipótesis no derivada (de ella sale c²_s=0) | 🔴 **ABIERTO 2026-08-02** | Encontrado tirando del hilo, no por el guardián. Contramedida: regla R47. Único ingrediente con la época correcta para la veta de A_s |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.

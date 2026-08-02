@@ -60,6 +60,12 @@ cs2_bare = w0                       # = -0.8399
 
 # Bulk viscosity (dimensionless: ζ̃ = ζ/(ρ_DE H₀))
 # SSEE hypothesis: ζ̃ = KAL₀/3 (structural viscosity normalized to DE density)
+#
+# ⚠ NO DERIVADA — rastreada como OP-21 en OPEN_PROBLEMS.md (2026-08-02).
+# De este supuesto sale el c²_s = 0 exacto de más abajo: el álgebra es limpia,
+# pero el 0 es CONDICIONAL a esta línea. Llamarlo "predicción" sería
+# sobre-afirmar. Falta: derivar KAL₀/3 del Lagrangiano, o mostrar que la
+# estabilidad marginal lo exige (en cuyo caso deja de ser hipótesis).
 zeta_tilde = KAL0 / 3.0            # ≈ 1.8405
 
 # ── 2. PRINT HEADER ─────────────────────────────────────────────────────────

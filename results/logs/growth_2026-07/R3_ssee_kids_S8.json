@@ -1,0 +1,98 @@
+{
+  "corrida": "R3 \u2014 S8 KiDS-1000, SSEE fondo fijo, un sector",
+  "fecha_analisis": "2026-08-01T22:27:51",
+  "muestreador": "Cobaya mcmc, 4 cadenas MPI, CAMB 1.6.5 + HMcode-2015",
+  "datos": "KiDS-1000 xi_pm crudo, 225 puntos tras mascara de escalas (270 totales)",
+  "n_parametros_libres": 9,
+  "parametros_libres": [
+    "logA",
+    "halo_A",
+    "A_IA",
+    "dz1",
+    "dz2",
+    "dz3",
+    "dz4",
+    "dz5",
+    "delta_c"
+  ],
+  "fondo_fijo": {
+    "Omega_m": 0.3088808787787524,
+    "nota": "omega_b, omega_c, h, n_s, w0, wa fijados por algebra SSEE; ninguno ajustado"
+  },
+  "convergencia": {
+    "Rminus1_final": 0.0189529230864604,
+    "Rminus1_stop": 0.03,
+    "converged": true
+  },
+  "lineas_por_cadena": [
+    4260,
+    4388,
+    4320,
+    4364
+  ],
+  "burn_in_frac": 0.3,
+  "n_filas_post_burnin": 12133,
+  "n_efectivas": 42033.0,
+  "logA": {
+    "media": 2.8627107488616086,
+    "sigma": 0.0507836451061848
+  },
+  "sigma8": {
+    "media": 0.7445921790951743,
+    "sigma": 0.01891242416693503
+  },
+  "S8": {
+    "media": 0.7555328554033626,
+    "sigma": 0.019190314153994838
+  },
+  "chi2": {
+    "media": 273.31629881688195,
+    "sigma": 3.8685572605917193
+  },
+  "halo_A": {
+    "media": 2.5721489747055886,
+    "sigma": 0.30615246729974654
+  },
+  "A_IA": {
+    "media": 0.5495113593393629,
+    "sigma": 0.29286218229359295
+  },
+  "dz1": {
+    "media": 0.0010522543533882068,
+    "sigma": 0.010362299216703171
+  },
+  "dz2": {
+    "media": 0.004836953501814719,
+    "sigma": 0.008475904140688044
+  },
+  "dz3": {
+    "media": -0.020218013210659577,
+    "sigma": 0.009387669047184907
+  },
+  "dz4": {
+    "media": -0.013613180370462899,
+    "sigma": 0.00832432446099071
+  },
+  "dz5": {
+    "media": 0.006965665684438633,
+    "sigma": 0.009509861176856656
+  },
+  "delta_c": {
+    "media": -3.945981565672686e-06,
+    "sigma": 0.00016566675219512194
+  },
+  "chi2_min": 265.43987,
+  "dof": 216,
+  "chi2_min_por_dof": 1.228888287037037,
+  "comparacion_KiDS": {
+    "S8_publicado": 0.759,
+    "err_publicado": 0.024,
+    "tension_sigma": 0.11282992043640651,
+    "fuente": "Asgari et al. 2021, KiDS-1000 cosmic shear band powers"
+  },
+  "sigma8_ref_calibracion": {
+    "sigma8_ref": 0.8151890867584094,
+    "As_ref": 2.1e-09,
+    "nota": "sigma8 escalado como sqrt(As) desde una corrida CAMB de referencia; valido porque el fondo es fijo"
+  }
+}

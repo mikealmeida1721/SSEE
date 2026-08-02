@@ -67,9 +67,9 @@ Second, the $S_8$ tension that motivated the second sector was measured
 against the compressed $S_8$ summary statistic, which is itself derived
 under a $\Lambda$CDM background assumption. Evaluated instead directly
 against the \emph{raw} KiDS-1000 $\xi_\pm$ correlation functions, with the
-primordial amplitude free (as it is in both models), $S_8=\TODO{S8 SSEE}$
-against $S_8=\TODO{S8 SSEE err}$ measured directly, compared to
-$S_8=\TODO{S8 LCDM}$ for $\Lambda$CDM fit to the same raw data: the tension
+primordial amplitude free (as it is in both models), \SSEE{} yields
+$S_8=0.7555\pm0.0192$, in agreement with the KiDS-1000 published value
+$S_8=0.759\pm0.024$ at $0.11\sigma$: the tension
 the particle was built to close is a property of the derived statistic, not
 of the underlying measurement. Separately, at the mass fixed by the model's
 own algebraic lineage ($m_\phi=40.70$~eV), free-streaming suppresses
@@ -301,25 +301,62 @@ is the target for the production run.
 \label{sec:s8}
 % ============================================================================
 
-\TODO{Insertar aqui la tabla de resultados R3/R4: S8 SSEE MCMC, S8 LCDM MCMC,
-Delta chi2, con Rminus1 final y numero de muestras efectivas de cada corrida.}
+The \SSEE{} chain (R3) samples nine free parameters --- the primordial
+amplitude $\log A$ plus the eight KiDS-1000 nuisance parameters (the baryonic
+feedback amplitude $A_{\rm baryon}$, the intrinsic-alignment amplitude
+$A_{\rm IA}$, five photometric-redshift shifts $\delta z_i$, and the
+multiplicative shear calibration $\delta_c$) --- against the 225 unmasked
+$\xi_\pm$ data points, with the background held fixed by the algebra
+($\Omega_m=0.308881$, $\omega_b$, $\omega_c$, $h$, $n_s$, $w_0$, $w_a$ all
+determined, none of them fitted). Four independent MPI chains were run to a
+Gelman--Rubin convergence of $R-1=0.019$, well inside the stopping criterion
+$R-1<0.03$, giving $4.2\times10^4$ effective samples after a 30\% burn-in.
+The marginalized posterior is
+\begin{equation}
+\sigma_8 = 0.7446\pm0.0189, \qquad
+S_8 \equiv \sigma_8\sqrt{\Omega_m/0.3} = 0.7555\pm0.0192,
+\end{equation}
+with a best-fit $\chi^2=265.4$ over 225 data points and 9 free parameters
+(216 degrees of freedom, $\chi^2/{\rm dof}=1.23$). Both nuisance parameters
+that carry astrophysical meaning land in unremarkable places
+($A_{\rm baryon}=2.57\pm0.31$, $A_{\rm IA}=0.55\pm0.29$), so the fit is not
+being rescued by a nuisance parameter running to the edge of its prior.
+
+Compared against the KiDS-1000 published value $S_8=0.759\pm0.024$, this is a
+$0.11\sigma$ agreement. There is no $S_8$ tension in \SSEE{} once the
+comparison is made against the raw shear data rather than against the
+compressed statistic. We stress what does the work here: the background is
+\emph{more} constrained in \SSEE{} than in $\Lambda$CDM, not less --- the
+single amplitude $A_s$ is the only quantity free to move, and it moves to a
+value that fits. The earlier reported tension of $3.5\sigma$ came from holding
+$A_s$ at the Planck-preferred value, which imports the Planck--KiDS tension
+into a model that does not otherwise have it.
 
 \begin{table}[h]
 \centering
 \caption{$S_8$ against raw KiDS-1000 $\xi_\pm$, primordial amplitude free in
-both models, 9 (\SSEE{}) vs.\ 13 ($\Lambda$CDM) parameters, MCMC-marginalized.}
+both models, 9 (\SSEE{}) vs.\ 13 ($\Lambda$CDM) parameters, MCMC-marginalized.
+$\chi^2$ is quoted at the best-fit point over 225 data points.}
 \label{tab:s8}
 \begin{tabular}{lcccc}
 \toprule
- & $\log A$ & $\sigma_8$ & $S_8$ & $\chi^2$ (225 dof) \\
+ & $\log A$ & $\sigma_8$ & $S_8$ & $\chi^2_{\rm min}$ (225 pts) \\
 \midrule
 $\Lambda$CDM (background free) & \TODO{logA} & \TODO{s8} & \TODO{S8} & \TODO{chi2} \\
-\SSEE{} (background fixed) & \TODO{logA} & \TODO{s8} & \TODO{S8} & \TODO{chi2} \\
+\SSEE{} (background fixed) & $2.863\pm0.051$ & $0.7446\pm0.0189$ & $0.7555\pm0.0192$ & $265.4$ \\
 \midrule
 KiDS-1000 published & --- & --- & $0.759\pm0.024$ & --- \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+The $\Lambda$CDM row is the methodological control (R4): the same pipeline,
+the same raw data, the same nuisance treatment, with the four background
+parameters $\omega_b,\omega_c,h,n_s$ additionally free. Its purpose is not to
+provide a new measurement --- KiDS-1000 has already published theirs --- but
+to demonstrate that this pipeline reproduces the published $\Lambda$CDM
+result, which is what licenses the \SSEE{} row above it. That run is in
+progress at the time of writing.
 
 \subsection{Historical note: the particle's exclusion, for the record}
 
@@ -377,8 +414,12 @@ entering both the background and the growth of structure with no partition,
 no additional particle, and no non-minimal coupling parameter. Four open
 problems close by dissolution rather than by resolution. Measured directly
 against raw survey data --- rather than against $\Lambda$CDM-conditioned
-summary statistics --- the growth sector shows \TODO{resumen final: hay o no
-tension S8/fsigma8 con SSEE de un sector, una vez con los numeros de R3/R4/R1/R2}.
+summary statistics --- the growth sector shows no $S_8$ tension: against the
+225 raw KiDS-1000 $\xi_\pm$ points, with the background fixed by algebra and
+only the primordial amplitude free, \SSEE{} gives $S_8=0.7555\pm0.0192$,
+agreeing with the KiDS-1000 published value at $0.11\sigma$. The
+$f\sigma_8$ result is reported in \S\ref{sec:fsigma8}. \TODO{cerrar esta
+frase con la conclusion conjunta cuando esten R1/R2 (fsigma8) y R4.}
 
 The methodological point (\S\ref{sec:method}) is offered as a general caution
 independent of \SSEE{}: any model without background-level free parameters

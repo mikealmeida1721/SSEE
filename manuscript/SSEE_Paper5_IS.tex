@@ -336,18 +336,43 @@ it is the inertia that appears in the relativistic Euler equation
 (Appendix~\ref{app:dispersion}, second line) and the origin of the $1/(1+w)$
 factor multiplying the pressure gradient in the standard fluid perturbation
 equations. Normalising this way makes $\ztilde/(\tauPi H_0)$ directly a squared
-sound speed, with no residual factors.\footnote{An earlier version of this paper
-wrote $\ztilde\equiv\zeta/(\rho_{\mathrm{DE}}H_0)$ and correspondingly set
-$\rho=\rho_{\mathrm{DE}}$ when solving the dispersion relation, dropping a
-factor $(1+\wz)$ between the Euler equation and the result. With that reading
-the same $\ztilde$ would give $c^2_{s,\mathrm{eff}}=+4.41$, i.e.\ superluminal.
-No numerical result of this paper changes: what changes is the meaning of the
-symbol $\ztilde$, and hence the physical $\zeta$, which is
-$\rho_{\mathrm{DE}}(1+\wz)H_0\ztilde = 0.2946\,\rho_{\mathrm{DE}}H_0$ ---
-a factor $1/(1+\wz)=6.25$ smaller than previously stated.}
-Paper~1 identifies the IS steady-state condition for SSEE dark energy as
-$\Pi = -\KALz\,\rho_{\mathrm{DE}}H$, which, combined with the IS equation,
-fixes \citep{SSEE_Paper1}:
+sound speed, with no residual factors.
+
+\begin{tcolorbox}[colback=orange!5,colframe=orange!60!black,
+  title={\textbf{Open issue: the form of the steady-state ansatz (OP-22)}}]
+The value of $\ztilde$ below follows from a steady-state condition
+$\Pi = -\KALz\,\rho_{\mathrm{DE}}H$, which combined with $\Pi=-3\zeta H$ gives
+$\zeta = \KALz\rho_{\mathrm{DE}}/3$. \textbf{Two problems, found on review
+(2026-08-02) and stated here rather than papered over.}
+
+\emph{First}, with the enthalpy inertia established above --- which the Euler
+equation of Appendix~\ref{app:dispersion} requires --- that $\zeta$ gives
+\begin{equation*}
+  c^2_{s,\mathrm{eff}} = \wz + \frac{\zeta}{(\rho+p)\tauPi}
+  = -0.839950 + 5.248 = +4.41 ,
+\end{equation*}
+which is superluminal. The marginal-stability result $c^2_{s,\mathrm{eff}}=0$
+quoted throughout this paper implicitly used $\rho$ in place of $\rho+p$ in
+that denominator.
+
+\emph{Second}, the ansatz is attributed to Paper~1, but Paper~1 does not
+contain it: its glossary lists $\tauPi H_0\simeq2.191$ pointing to an appendix
+that does not derive the steady-state condition.
+
+The condition \emph{would} close exactly if the ansatz read
+$\Pi = -\KALz(\rho+p)H$, giving $\zeta=\KALz(\rho+p)/3$ and
+$c^2_{s,\mathrm{eff}} = 0$ identically. There is an independent argument for
+that form: for $w=-1$ exactly one has $\rho+p=0$ and a cosmological constant
+has no fluid degrees of freedom, so its bulk viscous pressure must vanish ---
+which $\Pi\propto(\rho+p)$ delivers and $\Pi\propto\rho$ does not.
+
+We do \emph{not} adopt that resolution here on our own authority: it changes a
+structural ansatz of the framework, not a convention. It is registered as
+\textbf{OP-22} and the results below are to be read as conditional on it.
+\end{tcolorbox}
+
+\noindent With the steady-state condition as currently written, and combined
+with the IS equation, one obtains \citep{SSEE_Paper1}:
 \begin{equation}
   \boxed{\ztilde = \frac{\KALz\,\Omega}{M_v} = \frac{\KALz}{3} \simeq 1.8405,
   \qquad

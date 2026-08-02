@@ -1509,6 +1509,65 @@ consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
 </details>
 
 ---
+## OP-22 — La forma del ansatz de estado estacionario IS: ¿Π ∝ ρ o Π ∝ (ρ+p)? — 🔴 ABIERTO (2026-08-02)
+
+**Cómo se encontró.** Mike pidió *«primero dale una leída y revisa todo que esté
+bien, si se aplicaron los cambios bien»* antes de seguir. El repaso encontró que
+mi propio arreglo del mismo día (3.1b-i) era **prematuro y creaba una
+contradicción interna**. Retirado; el problema real queda declarado aquí.
+
+### Los hechos
+
+1. **La inercia correcta es la entalpía.** La ecuación de Euler relativista —que
+   el Apéndice A de Paper 5 escribe bien— lleva $(\bar\rho+\bar p)$, no
+   $\bar\rho$. Rederivado simbólicamente:
+   $c^2_{s,\rm eff} = c^2_{s,\rm bare} + \zeta/[(\rho+p)\tau_\Pi]$.
+   *(Esta parte sí es corrección firme y ya está aplicada al Apéndice A.)*
+
+2. **Con la ζ que fija el ansatz actual, sale superlumínico.** De
+   $\Pi=-\mathrm{KAL_0}\rho_{\rm DE}H$ y $\Pi=-3\zeta H$ sale
+   $\zeta=\mathrm{KAL_0}\rho_{\rm DE}/3$, y entonces
+   $c^2_{s,\rm eff} = -0.840 + 5.248 = \mathbf{+4.41}$.
+
+3. **La atribución es huérfana.** Paper 5 dice «Paper~1 identifies the IS
+   steady-state condition as $\Pi=-\mathrm{KAL_0}\rho_{\rm DE}H$». **Paper 1 no
+   la contiene**: su glosario lista $\tau_\Pi H_0\simeq2.191$ apuntando a un
+   apéndice que no la deriva. ($\Pi$ aparece 3 veces en todo Paper 1.)
+
+4. **Renombrar el símbolo NO arregla nada.** Intenté redefinir
+   $\tilde\zeta \equiv \zeta/[(\rho+p)H_0]$; pero la $\zeta$ **física** está
+   fijada por el ansatz, así que el $+4.41$ no se mueve. Mi nota al pie quedaba
+   además contradiciendo al párrafo siguiente. Retirada.
+
+### La resolución candidata (NO adoptada)
+
+    Π = −KAL₀·(ρ+p)·H     ⟹   ζ = KAL₀(ρ+p)/3   ⟹   c²_s,eff = 0 idénticamente
+
+**Argumento independiente a su favor:** con $w=-1$ exacto se tiene $\rho+p=0$, y
+una constante cosmológica no tiene grados de libertad de fluido, así que su
+presión viscosa **debe** anularse. $\Pi\propto(\rho+p)$ lo da; $\Pi\propto\rho$
+no —predice viscosidad para una Λ pura, que es absurdo.
+
+**Por qué no se adopta aquí:** cambia un **ansatz estructural** del marco, no una
+convención de escritura. Es decisión de Mike, y además obliga a escribir en
+Paper 1 la derivación que hoy falta (punto 3).
+
+### Qué hacer
+
+1. Decidir la forma del ansatz (o derivarla del Lagrangiano — es 3.1b-ii).
+2. Escribir en Paper 1 la derivación de $\tau_\Pi H_0$ y del estado
+   estacionario, que hoy sólo existen como entrada de glosario.
+3. Si se adopta $(\rho+p)$: todo cierra y $c^2_s=0$ vuelve a ser exacto, con la
+   ζ física $=0.2946\,\rho_{\rm DE}H_0$ en vez de $1.8405$.
+
+**Estado de Paper 5 mientras tanto:** lleva una caja naranja declarando que sus
+resultados de estabilidad son **condicionales a OP-22**. Ningún número impreso
+cambió; cambió lo que se afirma de ellos.
+
+**Severidad:** Alta. Toca el resultado Q1 (estabilidad), que es el central del paper.
+
+---
+
 ## OP-16 — ¿Coincide $(\pi-\varphi)/(\pi+\varphi)=0.3201$ con una fracción medida de la descomposición masa-energía del protón? (origen génesis) — ABIERTO / ESPECULATIVO
 
 **Origen.** El sistema fenomenológico génesis (`SSEE_UNIFICADO`, "Resolución Física de
@@ -1566,6 +1625,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-15 | P1 | Bullet offset κ(θ) desde KAL(x) no calculado | Medium-High | Computar Σ_SSEE(θ)=∫ρ_bar·KAL(x)dℓ del Bala; mostrar pico κ sobre galaxias, no gas (falsable vs Clowe+2006). Distinto de OP-13 (amplitud); esto es distribución espacial (2026-06-14) |
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
 | OP-21 | P5 | ~~ζ̃ hipótesis no derivada~~ → ζ̃ = KAL₀·Ω/M_v, **hermana de τ_Π = KAL₀·Ω/T_r** | 🟡 **REDUCIDO 2026-08-02** | No es número libre: lo fijan τ_Π (P4) + w₀ (P1) + minimalidad. Queda abierto el PRINCIPIO (minimalidad) y derivar τ_Π del Lagrangiano. Look-elsewhere intentado y RETIRADO (valor forzado por identidad) |
+| OP-22 | P5, P1 | Forma del ansatz IS: Π ∝ ρ (actual, da c²_s=+4.41 SUPERLUMÍNICO con la inercia correcta) vs Π ∝ (ρ+p) (cierra exacto) | 🔴 **ABIERTO 2026-08-02** | Encontrado en el REPASO, retirando un arreglo prematuro mío. La atribución a Paper 1 es huérfana: P1 no contiene la ecuación. Resultados Q1 de P5 marcados condicionales |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.

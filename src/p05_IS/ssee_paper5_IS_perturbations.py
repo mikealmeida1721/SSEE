@@ -58,39 +58,27 @@ tau_Pi_H0 = KAL0 / (3.0 * OmDE)   # ≈ 2.191
 # so c²_s,bare = w₀ (standard k-essence identity, Hu 1998). See Paper 5 §cs2_bare.
 cs2_bare = w0                       # = -0.8399
 
-# Bulk viscosity, adimensional. NORMALIZADA POR LA ENTALPÍA (corregido 2026-08-02):
+# Bulk viscosity, adimensional.
 #
-#     ζ̃ ≡ ζ / ((ρ_DE + p_DE)·H₀) = ζ / (ρ_DE(1+w₀)H₀)
+# ⚠ OP-22 (2026-08-02) — CONDICIONAL, no resuelto.
 #
-# NO por ρ_DE. La entalpía ρ+p es la inercia de una onda de sonido relativista:
-# es la que aparece en la ecuación de Euler y la que produce el 1/(1+w) del
-# término de presión en las ecuaciones estándar de perturbaciones de fluido.
-# Así normalizada, ζ̃/(τ_Π H₀) ES directamente una velocidad del sonido al
-# cuadrado, sin factores sueltos.
+# El valor KAL0/3 sale de la condición de estado estacionario Π = −KAL₀·ρ_DE·H
+# (atribuida a Paper 1, que NO la contiene: su glosario apunta a un apéndice
+# que no la deriva). Con Π = −3ζH eso da ζ = KAL₀·ρ_DE/3.
 #
-# La versión previa decía ζ̃ = ζ/(ρ_DE H₀) y el Apéndice A ponía ρ = ρ_DE al
-# despejar, perdiendo un (1+w₀) entre la ecuación de Euler y el resultado. Con
-# esa lectura el MISMO ζ̃ da c²_s,eff = +4.41: superlumínico. Ningún número de
-# este script cambia; cambia qué significa ζ̃, y por tanto la ζ FÍSICA, que es
-# 0.294567·ρ_DE·H₀ — un factor 6.25 menor que la antes declarada.
+# PROBLEMA: la inercia de una onda de sonido relativista es la ENTALPÍA ρ+p,
+# no ρ — está en la ecuación de Euler del propio Apéndice A. Con ella:
+#     c²_s,eff = w₀ + ζ/((ρ+p)τ_Π) = −0.840 + 5.248 = +4.41   SUPERLUMÍNICO
+# El c²_s = 0 que imprime este script usa ρ en vez de ρ+p en ese denominador.
 #
-# ζ̃ = KAL₀·Ω/M_v  (= KAL₀/3, porque M_v = 3Ω)
+# CERRARÍA (OP-22) si el ansatz fuera Π = −KAL₀·(ρ+p)·H ⟹ c²_s,eff = 0 idéntico.
+# Hay argumento independiente: con w=−1 exacto, ρ+p=0 y una constante
+# cosmológica no tiene grados de libertad de fluido, así que su presión viscosa
+# debe anularse — lo que Π∝(ρ+p) da y Π∝ρ no.
 #
-# NO es un número libre (OP-21, reducido 2026-08-02). Queda DETERMINADA por:
-#   1. τ_Π H₀ = KAL₀·Ω/T_r          (Paper 4, independiente)
-#   2. w₀     = −T_r/M_v            (Paper 1, independiente)
-#   3. estabilidad marginal c²_s,eff = 0
-# porque  ζ̃ = |w₀|·(τ_Π H₀) = (T_r/M_v)(KAL₀Ω/T_r) = KAL₀Ω/M_v  — T_r se cancela.
+# NO se adopta esa resolución aquí: cambia un ansatz estructural del marco, no
+# una convención. Ver OP-22. Lo que este script imprime es CONDICIONAL a ello.
 #
-# ζ̃ y τ_Π son la MISMA construcción con el denominador cambiado de una
-# soberanía a la otra (T_r=TRIAL -> M_v=ATLAS), y su razón ES Ω_DE = |w₀|.
-# El "3" que parecía arbitrario es sólo M_v = 3Ω.
-#
-# El único supuesto que queda es (3), y es MINIMALIDAD, no un ajuste:
-# c²_s,bare = w₀ < 0 es inestabilidad de gradiente; menos viscosidad rompe la
-# teoría, más sobra sin razón. Declararlo así en el paper: c²_s=0 es
-# CONSECUENCIA DE LA MINIMALIDAD, no "predicción sin supuestos".
-# Sigue abierto: derivar τ_Π del Lagrangiano y justificar la minimalidad.
 zeta_tilde = KAL0 / 3.0            # ≈ 1.8405  = KAL₀·Ω/M_v
 
 # ── 2. PRINT HEADER ─────────────────────────────────────────────────────────

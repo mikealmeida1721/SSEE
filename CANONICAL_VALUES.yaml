@@ -335,6 +335,44 @@ historical_sections:
   - "Roadmap"
   - "Resultado Fase"
 
+
+# ════════════════════════════════════════════════════════════════════════
+# CANTIDADES QUE SE CALCULAN EN MÁS DE UN DOCUMENTO (añadido 2026-08-02)
+#
+# POR QUÉ EXISTE. OP-22: la corrección viscosa ζ/(ρ·τ_Π) vale 1 en
+# SSEE_EFT_section.tex (es así como se DERIVÓ τ_Π, poniendo c²_s=1 en la
+# frontera de causalidad) y 0.839950 en SSEE_Paper5_IS.tex. Es la MISMA
+# cantidad física con dos valores. De ahí sale el c²_s=0 de Paper 5, que es
+# un artefacto de mezclar normalizaciones entre documentos.
+#
+# Ninguna capa lo veía porque CADA NÚMERO, POR SEPARADO, ES CORRECTO Y
+# TRAZABLE. R26 verifica que la fórmula de un canónico recompute su valor;
+# nadie preguntaba «esta cantidad, calculada en el documento A y en el B,
+# ¿da lo mismo?».
+#
+# Mike lo había pedido al crear el sistema de procedencia: que todo valor
+# tenga origen, fórmula, verificación de dónde sale Y dónde se cita.
+# Esta sección cierra la última parte.
+#
+# Vigilado por R48. Una entrada con `op_abierto` cuenta como DEUDA
+# declarada (no rompe el guardián, pero el contador sólo puede BAJAR).
+# Una sin `op_abierto` y con valores discrepantes es ROJO.
+# ════════════════════════════════════════════════════════════════════════
+cross_document:
+  - id: IS_viscous_correction
+    que_es: "zeta/(rho*tau_Pi) — la correccion viscosa que se suma a c2_s_bare"
+    tolerancia: 1.0e-4
+    documentos:
+      - archivo: "manuscript/SSEE_EFT_section.tex"
+        ancla:   "eq:IS_causality"
+        valor:   1.000000
+        nota:    "c2_s=1 en la frontera de causalidad; ASI SE DERIVO tau_Pi"
+      - archivo: "manuscript/SSEE_Paper5_IS.tex"
+        ancla:   "eq:ratio_identity"
+        valor:   0.839950
+        nota:    "zeta_tilde/(tau_Pi H0) = Omega_DE; difiere por normalizar zeta a rho_crit"
+    op_abierto: "OP-22"
+
 # ════════════════════════════════════════════════════════════════════════
 # PROCEDENCIA — la CADENA de cada canónico (añadido 2026-07-25)
 #
@@ -535,7 +573,14 @@ provenance:
     formula:    "KAL0 * Omega / T_r   (equivale a KAL0/(3*Omega_DE); coinciden porque M_v = 3*Omega)"
     value:      2.191165
     origin:     algebraico
-    source:     "Paper 4 L686 (tiempo de relajacion Israel-Stewart)"
+    source:     >
+      ORIGEN REAL: manuscript/SSEE_EFT_section.tex (apendice EFT de Paper 1),
+      ec. eq:tau_IS — se fija poniendo c2_s = 1 en la condicion de causalidad
+      IS (eq:IS_causality, Hiscock-Lindblom 1985). Commit 6248350, 2026-04-26.
+      Paper 4 L686 la USA (para Sigma m_nu); NO la deriva. La atribucion previa
+      apuntaba al CONSUMIDOR, no al ORIGEN. Corregido 2026-08-02 al localizarlo
+      (ver OP-22). Paper 5 dice "derived from background IS steady state" — eso
+      tampoco es exacto: el estado estacionario Pi=-3*zeta*H no contiene tau_Pi.
     depends_on: [KAL0, Omega, T_r]
     affects:    [sigma_m_nu]
     nota:       "Adimensional (es tau_Pi multiplicado por H0). Paper y codigo coinciden a 1e-6."

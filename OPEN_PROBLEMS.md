@@ -1617,6 +1617,54 @@ Si $\tau_\Pi$ fuese $\mathrm{KAL_0}/3$ en vez de $\mathrm{KAL_0}/(3\Omega_{\rm D
 $\Sigma m_\nu$ subiría **+19.1%** a 0.0815 eV, arrastrando $\omega_\nu$,
 $\omega_m$ y $\Omega_{m,\rm CMB}$.
 
+### ✅ LOCALIZADO: τ_Π SÍ está derivada — y ahí está el bug (2026-08-02)
+
+**Origen real:** `manuscript/SSEE_EFT_section.tex` (apéndice EFT de Paper 1),
+commit `6248350` del **2026-04-26**, *anterior* a que existiera Paper 5:
+
+```
+c²_s = ζ/(ρ_DE·τ_Π) = KAL₀/(3·Ω_DE·τ_Π H₀) ≤ 1     [eq:IS_causality]
+
+Poniendo c²_s = 1 (frontera de causalidad, Hiscock-Lindblom 1985):
+τ_Π H₀ = KAL₀/(3·Ω_DE) = KAL₀·M_v/(3·T_r) ≈ 2.191   [eq:tau_IS]
+```
+
+**No era arbitraria.** Se fija exigiendo que la señal viscosa no supere a la luz.
+
+### El bug, exacto
+
+La MISMA cantidad física ζ/(ρ·τ_Π) tiene **dos valores** en la suite:
+
+| documento | valor | por qué |
+|---|---|---|
+| `SSEE_EFT_section.tex` | **1.000000** | es así como se DERIVÓ τ_Π |
+| `SSEE_Paper5_IS.tex` | **0.839950** | ζ̃/(τ_Π H₀) = Ω_DE |
+
+Difieren por exactamente Ω_DE. **Causa:** EFT_section normaliza ζ a ρ_DE y con
+eso fija τ_Π; Paper 5 normaliza ζ a ρ_crit (por eso obtiene KAL₀/3) pero luego
+divide ese ζ̃ por el τ_Π derivado con la *otra* normalización.
+
+**Consecuencia:**
+
+    consistente (una sola normalización):  c²_s,eff = w₀ + 1     = 1+w₀ = 0.160050
+    Paper 5 (normalizaciones mezcladas):   c²_s,eff = w₀ + Ω_DE  = 0
+
+**El «0» es el artefacto.** Si τ_Π se fijó poniendo c²_s = 1, entonces por
+construcción la corrección viscosa vale 1, no 0.84. Y el resultado consistente,
+$c^2_{s,\rm eff}=1+w_0=0.160050$, es **positivo, subluminal y ya vive en el
+modelo** (es el mismo número que α_K y λ usan legítimamente como cantidad de la
+ecuación de estado).
+
+### Contramedida instalada: R48 y R49
+
+- **R48** — sección `cross_document:` en `CANONICAL_VALUES.yaml`: la misma
+  cantidad calculada en dos documentos debe dar el mismo valor. **Probada
+  contra el estado previo a esta declaración: la caza en ROJO.** Con OP-22
+  declarada cuenta como deuda (tope 1, sólo baja); al resolverse, cae a 0.
+- **R49** — el campo `source` de un canónico debe apuntar a un documento que
+  contenga el valor. El de τ_Π decía «Paper 4 L686» — que la **usa**, no la
+  deriva. Corregido al origen real.
+
 ### Por qué esto pasó todas las auditorías (la pregunta de Mike)
 
 Porque **no hay ningún número mal**. $\tilde\zeta$ está derivada, $\tau_\Pi$ es

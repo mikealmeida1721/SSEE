@@ -2959,8 +2959,106 @@ try:
 except Exception as _e:
     check("R47 escaneo de supuestos", False, str(_e))
 
+# ════════════════════════════════════════════════════════════════════════════
+# R48 — LA MISMA CANTIDAD, CALCULADA EN DOS DOCUMENTOS, DEBE DAR LO MISMO
+#
+# POR QUÉ EXISTE (OP-22, y Mike lo había pedido al crear la procedencia).
+# La corrección viscosa ζ/(ρ·τ_Π) vale 1 en SSEE_EFT_section.tex —es así como
+# se DERIVÓ τ_Π, poniendo c²_s=1 en la frontera de causalidad— y 0.839950 en
+# SSEE_Paper5_IS.tex. Misma cantidad física, dos valores. De ahí sale el
+# c²_s = 0 de Paper 5: un artefacto de mezclar normalizaciones ENTRE documentos.
+#
+# Ninguna capa lo veía porque CADA NÚMERO, POR SEPARADO, ES CORRECTO Y
+# TRAZABLE. R26 verifica que la fórmula de un canónico recompute su valor;
+# nadie preguntaba «esta cantidad, en el documento A y en el B, ¿da lo mismo?».
+# Coherencia dentro de cada documento ≠ coherencia entre documentos.
+print("\nCapa R48 — misma cantidad en dos documentos: ¿mismo valor?")
+try:
+    _CD = _yaml26.safe_load(
+        (_REPO / "CANONICAL_VALUES.yaml").read_text(encoding="utf-8")
+    ).get("cross_document", []) or []
+    _cd_rotos, _cd_deuda, _cd_anclas = [], [], []
+    for _e in _CD:
+        _docs = _e.get("documentos", [])
+        _tol = float(_e.get("tolerancia", 1e-4))
+        _vals = [float(_d["valor"]) for _d in _docs]
+        # (a) el archivo citado existe y contiene su ancla
+        for _d in _docs:
+            _f = _REPO / _d["archivo"]
+            if not _f.exists():
+                _cd_anclas.append(f"{_e['id']}: no existe {_d['archivo']}")
+            elif _d.get("ancla") and _d["ancla"] not in _f.read_text(errors="ignore"):
+                _cd_anclas.append(f"{_e['id']}: {_d['archivo']} sin «{_d['ancla']}»")
+        # (b) todos los valores coinciden
+        if _vals and (max(_vals) - min(_vals)) > _tol:
+            _msg = (f"{_e['id']}: " +
+                    " vs ".join(f"{_d['archivo'].split('/')[-1]}={_d['valor']}"
+                                for _d in _docs))
+            (_cd_deuda if _e.get("op_abierto") else _cd_rotos).append(
+                _msg + (f" [{_e['op_abierto']}]" if _e.get("op_abierto") else ""))
+    check("R48 los documentos citados existen y contienen su ancla",
+          not _cd_anclas, "; ".join(_cd_anclas[:4]) if _cd_anclas
+          else f"{sum(len(e.get('documentos', [])) for e in _CD)} anclas resueltas")
+    check("R48 ninguna cantidad con dos valores SIN OP que lo declare",
+          not _cd_rotos, "; ".join(_cd_rotos[:4]) if _cd_rotos
+          else f"{len(_CD)} cantidades cruzadas revisadas")
+    _TOPE_CD = 1          # medido 2026-08-02; sólo puede BAJAR
+    check(f"R48 la deuda de discrepancias no crece (tope {_TOPE_CD})",
+          len(_cd_deuda) <= _TOPE_CD,
+          f"{len(_cd_deuda)} discrepancia(s) declarada(s) con OP: "
+          + "; ".join(_cd_deuda[:3]) if _cd_deuda else "sin discrepancias")
+    # Auto-test: el detector tiene que ver una discrepancia real y no inventar una.
+    _t48 = [([1.0, 0.839950], 1e-4, True), ([1.0, 1.00005], 1e-4, False)]
+    _f48 = [v for v, t, esp in _t48 if ((max(v) - min(v)) > t) != esp]
+    check("R48 el detector distingue discrepancia real de ruido de redondeo",
+          not _f48, str(_f48) if _f48
+          else "2 casos: 1 vs 0.839950 marcado; 1 vs 1.00005 dentro de tolerancia")
+except Exception as _e:
+    check("R48 capa operable", False, str(_e))
+
+# ════════════════════════════════════════════════════════════════════════════
+# R49 — EL CAMPO `source` DE UN CANÓNICO TIENE QUE APUNTAR A ALGO REAL
+#
+# POR QUÉ EXISTE. La procedencia de tau_Pi_H0 declara
+#   source: "Paper 4 L686 (tiempo de relajacion Israel-Stewart)"
+# pero Paper 4 sólo la USA; la derivación real (c²_s=1 en la frontera de
+# causalidad) está en SSEE_EFT_section.tex. Y Paper 1 remite a un «App. A»
+# que no existe. R26 verificaba que el campo ESTUVIERA; no que dijera verdad.
+print("\nCapa R49 — el `source` declarado apunta a un documento real")
+try:
+    _TEX = {f.name: f.read_text(errors="ignore")
+            for f in (_REPO / "manuscript").glob("*.tex")}
+    _malas = []
+    for _k, _v in _P26.items():
+        _src = str(_v.get("source", ""))
+        _m = _re.search(r"Paper\s*(\d+)", _src)
+        if not _m:
+            continue                      # sin puntero a paper: fuera de alcance
+        _cands = [n for n in _TEX if f"Paper{_m.group(1)}" in n]
+        if not _cands:
+            _malas.append(f"{_k}: cita «Paper {_m.group(1)}» y no hay .tex")
+            continue
+        # el valor declarado debe aparecer en ese paper (aunque sea redondeado)
+        _val = _v.get("value")
+        if _val is None:
+            continue
+        # Un paper puede escribir el mismo número a distinta precisión
+        # (4.76 · 4.7596 · 4.759627). Basta que APAREZCA en alguna forma:
+        # buscar «no aparece a 3 decimales» daba falsos positivos en Omega,
+        # n_s, R2 y omega_m — todos escritos con más cifras. Medido, no supuesto.
+        _formas = {f"{float(_val):.{_d}f}".rstrip("0").rstrip(".")
+                   for _d in range(2, 8)}
+        if not any(_f in _TEX[c] for _f in _formas for c in _cands):
+            _malas.append(f"{_k}: {_val} no aparece en {_cands[0]} "
+                          f"(probadas {len(_formas)} precisiones)")
+    check("R49 todo `source` que cita un paper apunta a uno que contiene el valor",
+          not _malas, "; ".join(_malas[:4]) if _malas
+          else f"{len(_P26)} procedencias con puntero verificado")
+except Exception as _e:
+    check("R49 capa operable", False, str(_e))
+
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 197          # 192 (07-29) +2 R47 +2 R45-reversión +1 R20-alias (08-02); sólo SUBE
+_PISO_CHECKS = 202          # 197 + 4 de R48 + 1 de R49 (2026-08-02); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,
       f"{checks + 1} ejecutadas (piso {_PISO_CHECKS})"

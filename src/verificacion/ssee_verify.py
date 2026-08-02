@@ -1139,8 +1139,17 @@ except Exception as e:
 #   2. el recuento sólo puede BAJAR — si sube, algo se escribió mal después.
 # Al cerrar un documento se añade aquí y su deuda debe ser cero.
 _LEIDOS = ("SSEE_Paper1_",)
-_DEUDA_MAX = {"R42": 49, "R43": 24, "R44": 112,   # medidas 2026-07-28
-               "R45": 8}                         # medida 2026-07-29
+# TOPES APRETADOS 2026-08-02. Un trinquete sólo sirve si se aprieta: R44 tenía
+# tope 112 con 79 sitios reales — 33 de holgura por la que podían colarse 33
+# violaciones nuevas en verde. (El 112 venía de subir el tope 100→112 al
+# endurecer el detector de 1 a 2 decimales: razón legítima, pero nadie lo
+# volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
+# Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
+_DEUDA_MAX = {"R42": 49, "R43": 22, "R44": 79,
+               "R45": 8}
+# Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
+# compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
+_DEUDA_REAL = {}
 
 
 def _particiona(hallazgos):
@@ -1255,6 +1264,7 @@ try:
     check("R45 documentos leídos — ningún OP resuelto citado como abierto",
           not _l45, "; ".join(_l45[:5]) if _l45
           else f"leídos limpios; {_deuda45} sitios de deuda en el resto")
+    _DEUDA_REAL["R45"] = _deuda45
     check("R45 la deuda no crece", _deuda45 <= _DEUDA_MAX["R45"],
           f"{_deuda45} sitios (tope {_DEUDA_MAX['R45']})")
 except Exception as e:
@@ -1308,6 +1318,7 @@ try:
     check("R44 documentos leídos — constantes de la lectura a 6 decimales",
           not _l44, "; ".join(_l44[:5]) if _l44
           else f"leídos limpios; {_deuda44} sitios de deuda en el resto")
+    _DEUDA_REAL["R44"] = _deuda44
     check("R44 la deuda no crece", _deuda44 <= _DEUDA_MAX["R44"],
           f"{_deuda44} sitios (tope {_DEUDA_MAX['R44']})")
 except Exception as e:
@@ -1360,6 +1371,7 @@ try:
     check("R43 documentos leídos — toda potencia de φ con «=» lleva su valor",
           not _l43, "; ".join(_l43[:5]) if _l43
           else f"leídos limpios; {_deuda43} sitios de deuda en el resto")
+    _DEUDA_REAL["R43"] = _deuda43
     check("R43 la deuda no crece", _deuda43 <= _DEUDA_MAX["R43"],
           f"{_deuda43} sitios (tope {_DEUDA_MAX['R43']})")
 except Exception as e:
@@ -1433,6 +1445,7 @@ try:
     check("R42 documentos leídos — ninguna igualdad número puro = cantidad física",
           not _l42, "; ".join(_l42[:5]) if _l42
           else f"leídos limpios; {_deuda42} sitios de deuda en el resto (FP-6)")
+    _DEUDA_REAL["R42"] = _deuda42
     check("R42 la deuda no crece", _deuda42 <= _DEUDA_MAX["R42"],
           f"{_deuda42} sitios (tope {_DEUDA_MAX['R42']})")
 except Exception as e:
@@ -3057,8 +3070,40 @@ try:
 except Exception as _e:
     check("R49 capa operable", False, str(_e))
 
+# ════════════════════════════════════════════════════════════════════════════
+# R50 — EL TRINQUETE DE DEUDA TIENE QUE ESTAR APRETADO (2026-08-02)
+#
+# POR QUÉ EXISTE. Los contadores de deuda (R42-R45, R48) declaran «el recuento
+# sólo puede BAJAR». Pero nada lo hacía cumplir: R44 llegó a tener tope 112 con
+# 79 sitios reales — 33 de holgura por la que podían entrar 33 violaciones
+# nuevas sin que el guardián dijera nada. El trinquete existía y estaba flojo.
+#
+# Un tope con holgura no es un trinquete: es un permiso. Esta regla exige que
+# cada tope sea EXACTAMENTE la cuenta actual cuando la cuenta ha bajado, así
+# arreglar algo obliga a apretar y el terreno ganado no se puede perder.
+print("\nCapa R50 — el trinquete de deuda está apretado")
+try:
+    _flojos = []
+    for _r, _real in _DEUDA_REAL.items():
+        _tope = _DEUDA_MAX.get(_r)
+        if _tope is not None and _real < _tope:
+            _flojos.append(f"{_r}: {_real} reales pero tope {_tope} "
+                           f"({_tope - _real} de holgura → bajar a {_real})")
+    check("R50 ningún tope de deuda con holgura", not _flojos,
+          "; ".join(_flojos) if _flojos
+          else f"{len(_DEUDA_REAL)} topes ajustados a su cuenta real")
+    # Auto-test: ve la holgura y no inventa holgura donde no la hay.
+    _t50 = [({"X": 79}, {"X": 112}, True), ({"X": 49}, {"X": 49}, False)]
+    _f50 = [str(a) for a, b, esp in _t50
+            if any(a[k] < b[k] for k in a) != esp]
+    check("R50 el detector distingue tope holgado de tope ajustado",
+          not _f50, "; ".join(_f50) if _f50
+          else "2 casos: 79 con tope 112 marcado; 49 con tope 49 exento")
+except Exception as _e:
+    check("R50 capa operable", False, str(_e))
+
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 202          # 197 + 4 de R48 + 1 de R49 (2026-08-02); sólo SUBE
+_PISO_CHECKS = 204          # 202 + 2 de R50 (2026-08-02); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,
       f"{checks + 1} ejecutadas (piso {_PISO_CHECKS})"

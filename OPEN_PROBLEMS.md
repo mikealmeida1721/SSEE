@@ -555,7 +555,29 @@ it returns to ≤2 (only $H_0$ and $\Omega_b h^2$ as observation-tunable).
 
 ---
 
-## OP-9 — UV Origin of the Mass Multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V$ (Paper 6) — **ABIERTO** (coeficiente UV)
+## OP-9 — UV Origin of the Mass Multiplier — ⚫ CERRADO POR DISOLUCIÓN (2026-08-01)
+
+> 🔴 **CERRADO POR DISOLUCIÓN — 2026-08-01.** El objeto del que trataba este OP
+> ya no existe: el sector φ-DM y su partícula fueron **retirados** en el Paper 6,
+> por dos razones independientes.
+> **(1)** Su densidad se definía como Ω_φDM = Ω_m,CMB − Ω_m,dyn = 0.308881 − 0.160,
+> restando una densidad medida menos un número de la **ecuación de estado**
+> (0.160 = 1+w₀). La resta está bien formada aritméticamente y vacía de física
+> ⟹ la partícula no tenía de qué estar hecha.
+> **(2)** La tensión S₈ que motivaba todo el sector no existe en el dato crudo:
+> con un solo sector y A_s libre, el MCMC contra los 225 puntos de ξ± de
+> KiDS-1000 da **S₈ = 0.7555 ± 0.0192 → 0.11σ**.
+>
+> **No está resuelto: dejó de ser una pregunta.** Se conserva lo de abajo como
+> registro de qué se preguntaba y por qué. **No citar como abierto.**
+>
+> **Lección durable:** la falsabilidad es requisito mínimo para que una hipótesis
+> sea científica, **no evidencia de que la entidad exista**. Y una cadena puede
+> ser dimensionalmente impecable y aun así no significar nada.
+
+
+<details><summary>Registro histórico (la pregunta tal como estaba planteada)</summary>
+
 
 > [!nota] ESTADO CANÓNICO ÚNICO (2026-07-12) — leer esto, ignorar redacciones antiguas abajo.
 > **Estado en UNA palabra: OP-9 está ABIERTO.** No lo llamamos "cerrado" en ninguna mitad —
@@ -773,7 +795,31 @@ combinations (now superseded by the canonical Vía-2 chain).
 
 ---
 
-## OP-10 — Unification of φ and χ into a Single Field (Papers 6, 7) — ABIERTO
+</details>
+
+## OP-10 — Unification of φ and χ into a Single Field — ⚫ CERRADO POR DISOLUCIÓN (2026-08-01)
+
+> 🔴 **CERRADO POR DISOLUCIÓN — 2026-08-01.** El objeto del que trataba este OP
+> ya no existe: el sector φ-DM y su partícula fueron **retirados** en el Paper 6,
+> por dos razones independientes.
+> **(1)** Su densidad se definía como Ω_φDM = Ω_m,CMB − Ω_m,dyn = 0.308881 − 0.160,
+> restando una densidad medida menos un número de la **ecuación de estado**
+> (0.160 = 1+w₀). La resta está bien formada aritméticamente y vacía de física
+> ⟹ la partícula no tenía de qué estar hecha.
+> **(2)** La tensión S₈ que motivaba todo el sector no existe en el dato crudo:
+> con un solo sector y A_s libre, el MCMC contra los 225 puntos de ξ± de
+> KiDS-1000 da **S₈ = 0.7555 ± 0.0192 → 0.11σ**.
+>
+> **No está resuelto: dejó de ser una pregunta.** Se conserva lo de abajo como
+> registro de qué se preguntaba y por qué. **No citar como abierto.**
+>
+> **Lección durable:** la falsabilidad es requisito mínimo para que una hipótesis
+> sea científica, **no evidencia de que la entidad exista**. Y una cadena puede
+> ser dimensionalmente impecable y aun así no significar nada.
+
+
+<details><summary>Registro histórico (la pregunta tal como estaba planteada)</summary>
+
 
 **Location:** Paper 6 introduces χ (the DM scalar) as **distinct** from Paper 7's φ
 (the DE k-essence scalar). L394-395: "We model φ-dark matter as a single real scalar
@@ -851,7 +897,31 @@ DISPARADOR esté bloqueado por (φ,π). Sin candidato a la fecha.
 
 ---
 
-## OP-11 — Free Non-Minimal Coupling ξ (Paper 6) — ABIERTO
+</details>
+
+## OP-11 — Free Non-Minimal Coupling ξ — ⚫ CERRADO POR DISOLUCIÓN (2026-08-01)
+
+> 🔴 **CERRADO POR DISOLUCIÓN — 2026-08-01.** El objeto del que trataba este OP
+> ya no existe: el sector φ-DM y su partícula fueron **retirados** en el Paper 6,
+> por dos razones independientes.
+> **(1)** Su densidad se definía como Ω_φDM = Ω_m,CMB − Ω_m,dyn = 0.308881 − 0.160,
+> restando una densidad medida menos un número de la **ecuación de estado**
+> (0.160 = 1+w₀). La resta está bien formada aritméticamente y vacía de física
+> ⟹ la partícula no tenía de qué estar hecha.
+> **(2)** La tensión S₈ que motivaba todo el sector no existe en el dato crudo:
+> con un solo sector y A_s libre, el MCMC contra los 225 puntos de ξ± de
+> KiDS-1000 da **S₈ = 0.7555 ± 0.0192 → 0.11σ**.
+>
+> **No está resuelto: dejó de ser una pregunta.** Se conserva lo de abajo como
+> registro de qué se preguntaba y por qué. **No citar como abierto.**
+>
+> **Lección durable:** la falsabilidad es requisito mínimo para que una hipótesis
+> sea científica, **no evidencia de que la entidad exista**. Y una cadena puede
+> ser dimensionalmente impecable y aun así no significar nada.
+
+
+<details><summary>Registro histórico (la pregunta tal como estaba planteada)</summary>
+
 
 **Location:** Paper 6, Eq.~\eqref{eq:phiDM_lagrangian}, L406-407.
 
@@ -872,7 +942,31 @@ than a free input.
 
 ---
 
-## OP-12 — Origen físico de T_φ y de Ω_φ-DM h² (Paper 6) — ABIERTO (reframe 2026-06-20)
+</details>
+
+## OP-12 — Origen físico de T_φ y de Ω_φ-DM h² — ⚫ CERRADO POR DISOLUCIÓN (2026-08-01)
+
+> 🔴 **CERRADO POR DISOLUCIÓN — 2026-08-01.** El objeto del que trataba este OP
+> ya no existe: el sector φ-DM y su partícula fueron **retirados** en el Paper 6,
+> por dos razones independientes.
+> **(1)** Su densidad se definía como Ω_φDM = Ω_m,CMB − Ω_m,dyn = 0.308881 − 0.160,
+> restando una densidad medida menos un número de la **ecuación de estado**
+> (0.160 = 1+w₀). La resta está bien formada aritméticamente y vacía de física
+> ⟹ la partícula no tenía de qué estar hecha.
+> **(2)** La tensión S₈ que motivaba todo el sector no existe en el dato crudo:
+> con un solo sector y A_s libre, el MCMC contra los 225 puntos de ξ± de
+> KiDS-1000 da **S₈ = 0.7555 ± 0.0192 → 0.11σ**.
+>
+> **No está resuelto: dejó de ser una pregunta.** Se conserva lo de abajo como
+> registro de qué se preguntaba y por qué. **No citar como abierto.**
+>
+> **Lección durable:** la falsabilidad es requisito mínimo para que una hipótesis
+> sea científica, **no evidencia de que la entidad exista**. Y una cadena puede
+> ser dimensionalmente impecable y aun así no significar nada.
+
+
+<details><summary>Registro histórico (la pregunta tal como estaba planteada)</summary>
+
 
 **Location:** Paper 6, §4.2; pipeline CLASS `src/ssee_paper6_canonical_particle.py`.
 
@@ -973,6 +1067,8 @@ cerrada, lo vuelve dinámico. La inconsistencia cold/thermal del pipeline es **a
 corregir sí o sí** (independiente de qué rama gane).
 
 ---
+
+</details>
 
 ## OP-13 — Inconsistencia interna Paper 8: §3-4 (factor √AURA) vs §4.5 (B-S) — ✅ RESUELTO 2026-05-23 (Opción A)
 
@@ -1296,14 +1392,14 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-2 | P4 | ~~n_s exponent 7 not derived from V(φ)~~ | ✅ RESUELTO | α-attractor universality + N_*=2φ⁷; r=φ⁻¹⁰ nueva predicción; script op2 |
 | OP-3 | P10 | ~~UV-IR separability unproven~~ | ✅ RESUELTO | Jerarquía EFT (H₀/M)²≈10⁻⁶² + KALeff=φ²√(5/2) único; Paper 10 TC.1; script op3 |
 | OP-4 | P8 | ~~r_V > r_Hubble para Vainshtein~~ | ✅ RESUELTO | k-mouflage + αB=αM=αT=0 EFT; Paper 8 §4.2/§4.4 revisados |
-| OP-5 | P5-6 | ~~S₈ 2.29σ DES (fσ₈ resuelto P6)~~ | ✅ PARCIAL | HMcode-2020 CLASS: S₈=0.758 (0.06σ DES); N-body full → Paper B/ext |
+| OP-5 | P5-6 | ~~S₈ weak-lensing tension~~ | ✅ **DISUELTO 2026-08-01** | No hay tensión: con un sector y A_s libre, MCMC contra ξ± crudo da S₈=0.7555±0.0192 (0.11σ KiDS). El 3.5σ era artefacto de fijar A_s a Planck |
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
 | OP-7 | P4/7/8 | QFT derivation of Genesis role assignments | ✅ PARCIAL | EFT uniqueness formalizado P7 §5.2 + P1 §5.3; QFT desde primeros principios → largo plazo |
 | OP-8 | Transv. | ~~MIRA dynamical mechanism~~ → factor-materia DISUELTO | ✅ DISUELTO 2026-06-18 | Reframe ω_m-directo: Ω_m,CMB=ω_m/h²=0.30889 sin factor (ω_c=KAL₀·ω_b·n_s forward); MIRA persiste solo en f_screen; CMB χ²=1005.41/ΔBIC=−24.02 |
-| OP-9 | P6 | ~~m_φ=5.60 eV numerological~~ → m_φ=40.70 eV canónico | 🔶 **ABIERTO** (derivar coef UV 594.28 → OP-10) · partícula ya adoptada [OP-17] y falseable (k_fs=0.754) | $m_\varphi=\Sigma m_\nu^{\rm active}\cdot(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS\_V})=40.70$ eV (SOLAR=φ+2π, **KRYSTOS_V=φ+π+Ω** padres {φ,π,Ω}, NO 2Ω; mult=594.28), término de masa $g^2v$ escrito, **falseable por $k_{\rm fs}=0.754$ (DESI/Euclid)** — contenido MEDIBLE cerrado (adoptado OP-17). El origen UV del coeficiente vive **más allá del horizonte de saturación TRIAL** (no es un hueco: es el borde de lo medible; la derivación dinámica es OP-10, gobernada por ley, no numerología). Intento de transporte 2026-07-11 → CORTE (ver §OP-9). Antes 36.95 (Ω⁴+AURA·KAL) y 42.47 (PYROS·VITA·MIKA), retirados |
-| OP-10 | P6/P7 | Unify χ into φ via richer V(φ) | Medium-High | V(φ) with slope (DE) + minimum (DM matter-mode); restores zero-param status |
-| OP-11 | P6 | ξ (non-minimal coupling) is free parameter | Medium | Algebraic constraint or absorb via OP-10 |
-| OP-12 | P6 | Ω_φ-DM h² not computed ab initio | Medium | Parker-Kolb-Riotto with α-attractor + m_φ |
+| OP-9 | P6 | ~~UV origin of mass multiplier~~ | ⚫ **CERRADO POR DISOLUCIÓN 2026-08-01** | La partícula fue retirada (la resta que definía Ω_φDM mezclaba densidad con ecuación de estado); no queda multiplicador que derivar. No resuelto: dejó de ser pregunta |
+| OP-10 | P6/P7 | ~~Unify χ into φ via richer V(φ)~~ | ⚫ **CERRADO POR DISOLUCIÓN 2026-08-01** | No hay segundo campo χ que unificar |
+| OP-11 | P6 | ~~ξ (non-minimal coupling) is free parameter~~ | ⚫ **CERRADO POR DISOLUCIÓN 2026-08-01** | ξ vivía en el sector φ-DM retirado |
+| OP-12 | P6 | ~~Ω_φ-DM h² not computed ab initio~~ | ⚫ **CERRADO POR DISOLUCIÓN 2026-08-01** | Ω_φDM no era una densidad: era el residuo de una resta mal planteada |
 | OP-13 | P8 | ~~Contradicción interna §3-4 vs §4.5~~ | ✅ RESUELTO | Opción A aplicada: framing dos-límites, retirado claim "MIRA en lensing", $\sqrt{\AURA}$ ≠ $\MIRA$ aclarado, canonical prediction = GR-with-DM (2026-05-23) |
 | OP-14 | P4 | ~~Σm_ν Type P; offset 22 ad hoc~~ → canónico Type A | ✅ RESUELTO | $\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.9530$ eV $=0.0685$ eV con $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})=0.07188$; offset 22 eliminado, Σm_ν promovido Type P→Type A (2026-06-04) |
 | OP-15 | P1 | Bullet offset κ(θ) desde KAL(x) no calculado | Medium-High | Computar Σ_SSEE(θ)=∫ρ_bar·KAL(x)dℓ del Bala; mostrar pico κ sobre galaxias, no gas (falsable vs Clowe+2006). Distinto de OP-13 (amplitud); esto es distribución espacial (2026-06-14) |

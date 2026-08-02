@@ -132,3 +132,21 @@ paquete de envío (revista/Zenodo); se mueven fuera de la raíz para dejar el sn
 - `auditoria_reporte.mp3` → reporte de auditoría en audio (4.2 MB). Movido desde la raíz
   del repo por recomendación de auditoría externa (M-4): un snapshot Zenodo no debe llevar
   binarios de audio en la raíz.
+
+### `codigo/p06_phiDM_RETIRADO_2026-08-01/` — el sector φ-DM y su partícula
+**Archivado:** 2026-08-01 · **Razón:** doble fallo independiente, cada uno suficiente.
+(1) La resta que definía la partícula, Ω_φDM = Ω_m,CMB − Ω_m,dyn = 0.308881 − 0.160,
+restaba una densidad medida menos un número de la **ecuación de estado** (0.160 = 1+w₀):
+bien formada aritméticamente, vacía de física ⟹ la partícula no tenía de qué estar hecha.
+(2) La tensión S₈ que motivaba el sector no existe en el dato crudo — se medía contra el
+estadístico comprimido S₈ (reducido bajo ΛCDM) y con A_s fijado a Planck. Con un solo
+sector y A_s libre, el MCMC contra los 225 puntos de ξ± de KiDS-1000 da
+**S₈ = 0.7555 ± 0.0192 → 0.11σ**.
+**Reemplazado por:** `src/p06_growth/` (código vigente) y
+`manuscript/SSEE_Paper6_Growth.tex` (paper reescrito).
+**Cierra por disolución:** OP-9, OP-10, OP-11, OP-12 — ninguno resuelto; todos dejaron de
+ser preguntas al retirarse el objeto del que trataban. Ver el README del cajón.
+- `ssee_paper6_verification.py`, `ssee_paper6_sterile_neutrino.py`,
+  `ssee_paper6_canonical_particle.py`, `ssee_paper6_particle_scan.py`,
+  `ssee_paper6_mcmc_v2.py`, `ssee_paper6_mcmc_grid.py`, `p6_canonical_table.py`,
+  `p6_complete_matrix.py` → toda la cadena m_φ → k_fs → α → σ₈/S₈ del sector retirado.

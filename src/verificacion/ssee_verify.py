@@ -1182,8 +1182,12 @@ try:
                         _h.append(f"OP-{_n} citado como abierto — «{_m.group(0)[:58].strip()}»")
         return _h
 
+    # El caso NEGATIVO debe usar OPs que sigan ABIERTOS de verdad. Usaba
+    # OP-9/OP-11, que se cerraron por disolución el 2026-08-01 al retirarse el
+    # sector φ-DM: el fixture pasó a afirmar algo falso y el auto-test lo cazó.
+    # Es el mismo defecto que R45 vigila, cometido dentro de R45.
     _t45 = [("with the remaining open problems OP-9/11/14 for the dark-matter sector", True),
-            ("with the remaining open problems OP-9 and OP-11 for the dark sector", False)]
+            ("with the remaining open problems OP-15 and OP-16 for the dark sector", False)]
     _f45 = [c for c, esp in _t45 if bool(_r45(c)) != esp]
     check("R45 el detector cruza la prosa con el registro de OPs",
           not _f45, "; ".join(_f45) if _f45

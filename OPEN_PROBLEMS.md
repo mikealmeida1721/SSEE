@@ -249,7 +249,13 @@ Todo objeto astrofísico tiene r_km ≪ 1 kpc → quinta fuerza DM activa a esca
 
 ---
 
-## OP-5 — S₈ Weak-Lensing Tension (Papers 5–6) ✅ PARCIALMENTE RESUELTO (Nivel 1)
+## OP-5 — S₈ Weak-Lensing Tension (Papers 5–6) — ⚫ **DISUELTO 2026-08-01**
+
+> **No hay tensión que resolver.** El «3.5σ» se medía con A_s FIJADO al valor de
+> Planck (o sea importando la discrepancia Planck–cizalla) y contra el
+> estadístico comprimido S₈, cuya reducción asume ΛCDM. Ajustando A_s al dato
+> **crudo** de KiDS-1000 con un solo sector: **S₈ = 0.7555 ± 0.0192 → 0.11σ**.
+> El OP no se resolvió: dejó de ser una pregunta. Lo de abajo es histórico.
 
 **Location:** Paper 5, Table 3; Paper 6, Table 2 — **revisado 2026-05-16**
 

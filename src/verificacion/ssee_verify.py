@@ -1169,6 +1169,35 @@ try:
     # «abierto» en prosa: el OP aparece dentro de una frase que lo declara pendiente.
     _ABRE = (r"(?:remaining open problems?|open problems?|still open|remains? open"
              r"|currently a free parameter|tracked as open|unresolved)")
+    # Caso SIMÉTRICO (2026-08-02): un OP marcado ADOPTADO/RESUELTO que después
+    # se REVIRTIÓ. OP-17 decía «✅ ADOPTADA 2026-06-19» durante todo el día
+    # siguiente a retirarse la partícula, y NADA lo marcó: memory_sync compara
+    # contra la lista de NÚMEROS retirados, y un encabezado que sólo dice
+    # «ADOPTADA» no cita ninguna cifra. Ni drift ni incoherencia ⟹ invisible.
+    _REVERT = _re.compile(r"^#+\s*OP-(\d+)[^\n]*", _re.M)
+    _revertidos = []
+    for _m in _REVERT.finditer(_op_txt):
+        _cab = _m.group(0)
+        _pos = bool(_re.search(r"✅|ADOPTAD|RESUELT", _cab, _re.I))
+        _neg = bool(_re.search(r"RETIRAD|REVERTID|DISUELT|DISSOLV|withdraw", _cab, _re.I))
+        if _pos and _neg:
+            continue          # el encabezado ya narra la reversión: correcto
+        if not _pos:
+            continue
+        # encabezado positivo: ¿el CUERPO lo desmiente?
+        _ini = _m.end()
+        _fin = _op_txt.find("\n## OP-", _ini)
+        _cuerpo = _op_txt[_ini:_fin if _fin > 0 else len(_op_txt)][:1200]
+        # OJO: buscar "RETIRAD" a secas da FALSOS POSITIVOS — casi todo cuerpo
+        # menciona algún CONTENIDO retirado (una fórmula vieja, un baseline).
+        # Lo probé: OP-1 («el viejo 3(π−φ)/200 quedó retirado» — habla de una
+        # fórmula, no de su propio estado) y OP-5. La señal INEQUÍVOCA de que se
+        # revierte el estado DEL PROPIO OP es la palabra REVERTID, que es la que
+        # se escribe al hacerlo.
+        _revierte = bool(_re.search(r"REVERTID", _cuerpo, _re.I))
+        if _revierte:
+            _revertidos.append(f"OP-{_m.group(1)}: encabezado dice adoptado/resuelto "
+                               f"pero el cuerpo lo revierte")
 
     def _r45(tx: str):
         _h = []
@@ -1198,6 +1227,31 @@ try:
                       + list((_REPO / "submission_PRD").glob("*.tex"))):
         _todos45 += [f"{_tx.name}: {x}" for x in _r45(_tx.read_text(errors="ignore"))]
     _l45, _deuda45 = _particiona(_todos45)
+    # Auto-test contra el estado REAL de OP-17 antes del arreglo del 2026-08-02
+    # (encabezado «✅ ADOPTADA» + cuerpo que la revierte) y contra los dos falsos
+    # positivos que este detector dio en su primera versión.
+    _t45b = [("## OP-17 — Partícula canónica — ✅ ADOPTADA 2026-06-19",
+              "> DECISIÓN REVERTIDA. El 2026-08-01 se retira la partícula.", True),
+             ("## OP-1 — Derivation of ω_b ✅ PARCIALMENTE RESUELTO",
+              "> El viejo 3(π−φ)/200 quedó retirado; φ¹¹≈199 mostró que...", False),
+             ("## OP-5 — S₈ Tension — ⚫ DISUELTO 2026-08-01",
+              "> El OP no se resolvió: dejó de ser una pregunta.", False)]
+    _f45b = []
+    for _cab, _cpo, _esp in _t45b:
+        _p = bool(_re.search(r"✅|ADOPTAD|RESUELT", _cab, _re.I))
+        _n = bool(_re.search(r"RETIRAD|REVERTID|DISUELT|DISSOLV|withdraw", _cab, _re.I))
+        _visto = _p and not _n and bool(_re.search(r"REVERTID", _cpo, _re.I))
+        if _visto != _esp:
+            _f45b.append(_cab[:44])
+    check("R45 el detector de reversión distingue estado-del-OP de contenido-retirado",
+          not _f45b, "; ".join(_f45b) if _f45b
+          else "3 casos: OP-17 pre-arreglo marcado; OP-1 («fórmula retirada») y OP-5 exentos")
+
+    check("R45 ningún OP adoptado/resuelto en el título que el cuerpo revierte",
+          not _revertidos,
+          "; ".join(_revertidos) if _revertidos
+          else f"encabezados y cuerpos concuerdan en los {len(_RESUELTOS)} OPs cerrados")
+
     check("R45 documentos leídos — ningún OP resuelto citado como abierto",
           not _l45, "; ".join(_l45[:5]) if _l45
           else f"leídos limpios; {_deuda45} sitios de deuda en el resto")
@@ -2257,25 +2311,51 @@ try:
         m = _re20.search(rf"^\s*{key}:\s*([0-9.]+)", _yaml20, _re20.M)
         return m.group(1) if m else None
     # (variable observacional en código  →  clave del DATO en CANONICAL_VALUES.yaml)
-    _R20_MAP = [("kids_s8", "obs_KiDS_S8"),
-                ("kids_sig8", "obs_KiDS_sigma8"),
-                ("des_s8", "obs_DES_S8")]
-    _R20_FILES = sorted((_R20_ROOT / "src").rglob("*.py"))
-    for _var, _key in _R20_MAP:
+    # (2026-08-02) El mapa buscaba SÓLO el nombre exacto `kids_s8`. El bug H1/H2
+    # revivió en `src/ssee_resolution_figures.py` escrito como `S8_KIDS = 0.758`
+    # — la PREDICCIÓN de SSEE metida en el hueco de la OBSERVACIÓN de KiDS
+    # (0.759) — y R20 no lo vio porque el nombre no coincidía. Ahora cada ancla
+    # lleva sus ALIAS: basta que una variable se llame de cualquiera de esas
+    # formas para quedar vigilada.
+    _R20_MAP = [(("kids_s8", "s8_kids"), "obs_KiDS_S8"),
+                (("kids_sig8", "kids_sigma8", "sigma8_kids", "sig8_kids"), "obs_KiDS_sigma8"),
+                (("des_s8", "s8_des"), "obs_DES_S8")]
+    # El propio guardián queda FUERA del barrido: sus fixtures contienen a
+    # propósito la forma defectuosa («S8_KIDS = (0.758,…)») para probar que el
+    # detector la caza. Sin esta exclusión R20 se caza a sí mismo — pasó en la
+    # primera corrida tras generalizar los alias (2026-08-02).
+    _R20_FILES = [_f for _f in sorted((_R20_ROOT / "src").rglob("*.py"))
+                  if "verificacion" not in _f.parts and "__pycache__" not in str(_f)]
+    for _alias, _key in _R20_MAP:
         _canon = _anchor20(_key)
         if _canon is None:
             check(f"R20 ancla {_key} definida en YAML", False, "no encontrada en CANONICAL_VALUES.yaml")
             continue
         _bad = []
+        _pat = "|".join(_re20.escape(_a) for _a in _alias)
         for _pf in _R20_FILES:
-            for _m in _re20.finditer(rf"\b{_re20.escape(_var)}\b\s*=\s*([0-9.]+)",
-                                     _pf.read_text(errors="ignore")):
+            # tolera `X = 0.759` y `X = (0.759, 0.024)` — la forma que usan las figuras
+            for _m in _re20.finditer(rf"\b(?:{_pat})\b\s*=\s*\(?\s*([0-9.]+)",
+                                     _pf.read_text(errors="ignore"), _re20.I):
                 if not _m.group(1).startswith(_canon):
-                    _bad.append(f"{_pf.name}:{_var}={_m.group(1)}")
-        check(f"R20 {_var} == {_key}={_canon} (dato, no predicción)",
+                    _bad.append(f"{_pf.name}:{_m.group(0).strip()[:28]}")
+        check(f"R20 {_alias[0]} == {_key}={_canon} (dato, no predicción)",
               not _bad,
-              "coincide con el ancla observacional" if not _bad
+              f"coincide con el ancla observacional ({len(_alias)} alias vigilados)" if not _bad
               else "DESAJUSTE (predicción metida como dato?): " + "; ".join(_bad))
+    # Auto-test: el detector DEBE cazar la forma exacta que se le escapó.
+    _t20 = [("S8_KIDS   = (0.758, 0.024)", "0.759", True),    # el bug real
+            ("S8_KIDS   = (0.759, 0.024)", "0.759", False),   # su forma corregida
+            ("kids_s8 = 0.759", "0.759", False)]
+    _f20 = []
+    for _c, _can, _esp in _t20:
+        _m = _re20.search(r"\b(?:kids_s8|s8_kids)\b\s*=\s*\(?\s*([0-9.]+)", _c, _re20.I)
+        _visto = bool(_m) and not _m.group(1).startswith(_can)
+        if _visto != _esp:
+            _f20.append(_c)
+    check("R20 el detector caza el bug H1/H2 en la forma de los scripts de figuras",
+          not _f20, "; ".join(_f20) if _f20
+          else "3 casos: «S8_KIDS = (0.758,…)» marcado, su forma corregida y el nombre viejo exentos")
 except Exception as e:
     check("R20 capa operable", False, str(e))
 
@@ -2880,7 +2960,7 @@ except Exception as _e:
     check("R47 escaneo de supuestos", False, str(_e))
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 194          # 192 (2026-07-29) + 2 de R47 (2026-08-02); sólo puede SUBIR
+_PISO_CHECKS = 197          # 192 (07-29) +2 R47 +2 R45-reversión +1 R20-alias (08-02); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,
       f"{checks + 1} ejecutadas (piso {_PISO_CHECKS})"

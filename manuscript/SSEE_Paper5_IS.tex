@@ -927,12 +927,14 @@ significance, pointing to new physics in the matter sector.
 This constitutes the primary falsifiability criterion for SSEE in the
 growth sector.
 
-\paragraph{Note on two-sector and baryonic feedback corrections (Paper~6).}
-Paper~6 extends the model with a $\phi$-DM two-sector split
-($m_\phi = 40.70\,\mathrm{eV}$, $k_{\rm fs} = 0.754\,h/\mathrm{Mpc}$).
-The two-sector effective transfer function suppresses power at $k > k_{\rm fs}$,
-reducing $\sigma_8$ to $0.747$ and yielding $S_8^{\rm WDM} = 0.758$
-(below both DES-Y3 and KiDS-1000 at $<0.1\sigma$).
+\paragraph{Note on the amplitude convention, and on Paper~6.}
+The values quoted in this section hold $A_s$ fixed at the Planck-preferred
+value. That is a convention, not a prediction: $A_s$ is one of the model's two
+free CMB-level parameters, and fixing it imports the Planck--KiDS tension.
+Paper~6 instead fits $A_s$ to the \emph{raw} KiDS-1000 $\xi_\pm$ data with this
+same background held fixed and a \emph{single} matter sector, obtaining
+$\sigma_8=0.7446\pm0.0189$ and $S_8=0.7555\pm0.0192$ --- $0.11\sigma$ from
+KiDS-1000. The $\phi$-DM two-sector split once described here is retracted.
 An additional HMcode-2020 baryonic feedback suppression ($B_{\rm eff} = 0.9447$)
 gives $S_8^{\rm bar} = 0.758$ ($0.06\sigma$ DES-Y3; Paper~6, eq.~12).
 The single-sector ceiling of this paper ($S_8 = 0.846$) is the upper bound;
@@ -945,14 +947,12 @@ of Paper~6.
   \centering
   \includegraphics[width=0.92\textwidth]{fig_s8_resolution.pdf}
   \caption{$S_8$: from the single-sector challenge to the two-sector
-    resolution. The single-sector IS prediction of this paper
-    ($S_8 = 0.846 \pm 0.006$, red) sits $3.5\sigma$ above KiDS-1000 ---
-    the honest baseline tension reported in Table~\ref{tab:S8}. The
-    two-sector $\phi$-DM extension of Paper~6 (green), in which
-    free-streaming below $k_{\rm fs} = 0.754\,h/\mathrm{Mpc}$
-    ($m_\phi = 40.70$\,eV, forward prediction with no parameter fitted to
-    lensing data) suppresses small-scale power, lands at $S_8 = 0.758$ ---
-    $0.04\sigma$ from KiDS-1000 (green band). Grey points: Planck 2018,
+    resolution. The prediction of this paper \emph{with $A_s$ held at the
+    Planck value} ($S_8 = 0.846 \pm 0.006$, red) sits $3.5\sigma$ above
+    KiDS-1000 --- but that offset is inherited from fixing $A_s$, not derived.
+    Paper~6 (green) fits $A_s$ to the raw shear data with the same background
+    and a single matter sector, landing at $S_8 = 0.7555\pm0.0192$ ---
+    $0.11\sigma$ from KiDS-1000 (green band). Grey points: Planck 2018,
     KiDS-1000, and DES-Y3 measurements with $1\sigma$ errors.}
   \label{fig:s8_resolution}
 \end{figure}
@@ -1019,9 +1019,9 @@ extra tension — well below the precision of current surveys.
 This result implies that $f\sigma_8$ measurements by Stage IV surveys
 (DESI full shape, Euclid) cannot distinguish SSEE from $\Lambda$CDM at
 the linear-growth level alone; distinguishing power must come from the
-background $H(z)$ (already tested in Paper~2) or from the two-sector
-$\phi$-DM transfer function break at $k_{\rm fs} = 0.754\,h/\mathrm{Mpc}$
-(Paper~6).
+background $H(z)$, already tested in Paper~2. (A transfer-function break at a
+$\phi$-DM free-streaming scale was previously offered here as a second
+discriminant; it is withdrawn with the particle, Paper~6.)
 The DESI Year-1 full-shape power spectrum analysis \citep{DESI2024FS}
 measurements at $z\in[0.3,1.3]$ are consistent with both $\Lambda$CDM and
 SSEE at this level of precision.
@@ -1287,7 +1287,7 @@ $\mathrm{MIRA}_{\mathrm{alg}} = 1.9989$ at all sub-horizon scales.
 The discrepancy is $50\%$, establishing that the MIRA factor is not a
 perturbative phenomenon.
 Furthermore, numerical integration of the background IS Friedmann equations yields an effective ratio of $3.04$, failing to reproduce MIRA at the background level.
-We conclude that the MIRA factor does not emerge from classical Israel-Stewart fluid mechanics. Paper~6 proposes that the physical basis is instead a two-sector dark matter structure (CDM + $\phi$-DM with $m_\phi=40.70\,\mathrm{eV}$), whose near-equal densities produce $\mathrm{MIRA}\approx2$ algebraically; a first-principles derivation from quantum field theory remains open.
+We conclude that the MIRA factor does not emerge from classical Israel--Stewart fluid mechanics. A two-sector dark matter structure was once proposed (Paper~6) as its physical basis, on the grounds that two near-equal densities would produce $\mathrm{MIRA}\approx2$ algebraically; that proposal is retracted, so MIRA has no proposed carrier at present and survives only as the algebraic invariant entering $f_{\rm screen}$ (Paper~9).
 
 \paragraph{Q3 — Growth rate and $S_8$ (SSEE tracks $\Lambda$CDM closely).}
 The IS growth index $\gamma_{\mathrm{IS}} = 0.5504 \pm 0.0003$

@@ -184,10 +184,9 @@ $H_0 = 3(\varphi+\pi)^2\,\kmsu$ & $67.962\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$ & Plan
 $\gamma_{\mathrm{IS}}$ & $0.550$ & RSD surveys ($\gamma_{\Lambda\mathrm{CDM}}=0.55$) & Retrodiction \\
 $f\sigma_8(z{=}0.5)$ & $0.70\sigma$ mean tension & 6 RSD surveys, single-sector (BOSS/eBOSS/6dFGS) & Retrodiction \\
 \midrule
-\multicolumn{4}{l}{\textit{Paper 6 — $\varphi$-Dark Matter, two-sector}} \\
-$m_\phi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)$ & $40.70\,\mathrm{eV}$ & Matter $P(k)$ via $k_{\mathrm{fs}}$ (no SM portal) & Prediction \\
-$k_{\mathrm{fs}}$ (Dodelson-Widrow from $m_\phi$) & $0.754\,h\,\mathrm{Mpc}^{-1}$ & DESI\,Y3 / Euclid $P(k)$, 2026--2028 & Prediction \\
-$S_8^{\mathrm{eff}}=\sigma_8\sqrt{\Omega_m/0.3}$ (two-sector, forward CLASS) & $0.758$ & KiDS-1000 $S_8=0.759\pm0.024$ ($0.04\sigma$) & Retrodiction \\
+\multicolumn{4}{l}{\textit{Paper 6 — growth sector, single component}} \\
+$S_8=\sigma_8\sqrt{\Omega_m/0.3}$ (MCMC vs.\ raw KiDS-1000 $\xi_\pm$) & $0.7555\pm0.0192$ & KiDS-1000 $S_8=0.759\pm0.024$ ($0.11\sigma$) & Retrodiction \\
+\multicolumn{4}{l}{\quad\footnotesize\textit{($m_\phi$, $k_{\mathrm{fs}}$ and the two-sector $S_8$ are retracted; see \S\ref{sec:two_omega_m}.)}} \\
 \midrule
 \multicolumn{4}{l}{\textit{Paper 7 — Canonical EFT, Bellini-Sawicki $\alpha$-functions}} \\
 $\alpha_T=\alpha_M=\alpha_B=0$ (minimal coupling) & $0$ exact & GW170817 $|\alpha_T|<10^{-15}$ & Retrodiction \\
@@ -220,7 +219,9 @@ Euclid weak lensing will constrain, though its forecast error bar
 $\sigma(\alpha_{K,0})\!\approx\!0.1$ still exceeds the predicted value, so the entry is
 recorded as \emph{below sensitivity} rather than as a falsifier), versus the \emph{effective background} value
 $\alpha_K^{\rm eff}=3\Omega_{\rm DE}(1+w_0)=0.403302$ (with $w_0=-0.839950$) used for the
-hi\_class/EFTCAMB cross-check in Table~\ref{tab:two_omega}. Both are derived; see
+hi\_class/EFTCAMB cross-check. Note this is pure equation-of-state algebra in
+$w_0$: it is unaffected by the retraction of the second matter sector
+(\S\ref{sec:two_omega_m}). Both are derived; see
 Paper~7 for the full $\alpha_K(a)$ derivation distinguishing them.
 
 \subsection{Axiomatic Principles}
@@ -432,11 +433,10 @@ retired, $\Omega_{m,\rm CMB}=\omega_m/h^2$ is derived from the algebraic
 $\omega_b$ (OP-1) and the forward identity
 $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ (OP-8 closed). What remains is:
 \begin{itemize}\itemsep1pt
-  \item The $\varphi$-DM mass $m_\phi=40.70$\,eV in Paper~6 follows from the
-        free-scalar mass term $m_\phi=\Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)$;
-        the residual open question (OP-9) is the UV origin of the pure
-        $(\varphi,\pi)$ multiplier $\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.279999$,
-        not the dimensional consistency of the relation. The neutrino input
+  \item \emph{Retracted (see \S\ref{sec:two_omega_m}).} The $\varphi$-DM mass
+        of Paper~6, and with it OP-9, no longer exist as open questions: the
+        particle was withdrawn, so there is no multiplier whose UV origin needs
+        deriving. Its neutrino input survives on its own: 
         $\Sigma m_\nu^{\rm active}=0.0685$\,eV now derives from the clean ratio
         $\mathcal{R}_2=\Omega/(\mathrm{KAL}\cdot\mathrm{TRIAL})$, removing the
         former \emph{ad hoc} integer offset within the structural formula
@@ -460,129 +460,76 @@ quantities tracked as open problems, \emph{not} counted among the fit
 parameters; resolving OP-9/11 removes them. See \texttt{OPEN\_PROBLEMS.md} for
 the dependency chain.
 
-\subsection{The Two-$\Omega_m$ Criterion}
+\subsection{One matter density, and one equation-of-state parameter}
 \label{sec:two_omega_m}
 
-A persistent question — both internal and from referees — is the use of two
-distinct matter density values across the suite: $\Omega_{m,\rm dyn}=0.160050$
-and $\Omega_{m,\rm CMB}=0.308881$. These are not free parameters and, since the
-retirement of Postulate~M, they are not even linked by a factor: each is an
-\emph{independent} algebraic prediction. The dynamical value is the background
-identity $\Omega_{m,\rm dyn}=1+w_0$ (DESI); the CMB value is the standard
-physical matter density $\Omega_{m,\rm CMB}=\omega_m/h^2$ with
-$\omega_m=\omega_b+\omega_c+\omega_\nu$ algebraic (Postulate~M, retired).
-They describe the same physical content evaluated on either side of a single
-free-streaming scale, $k_{\rm fs}$, derived in Paper~6 from the
-$\phi$-DM mass $m_\phi=40.70$~eV via the Dodelson--Widrow relation. The
-criterion for which value enters a given observable is therefore physical and
-pre-registered (Table~\ref{tab:two_omega}).
+Earlier versions of this suite presented a ``Two-$\Omega_m$ criterion'': the
+claim that two distinct matter densities, $\Omega_{m,\rm dyn}=0.160050$ and
+$\Omega_{m,\rm CMB}=0.308881$, each entered different observables, with the
+selection rule given by a free-streaming scale $k_{\rm fs}$ derived from the
+$\varphi$-DM particle of Paper~6. \textbf{That criterion is withdrawn.} Two
+independent failures, either one sufficient:
 
-\begin{table}[p]
-\centering
-\caption{The Two-$\Omega_m$ criterion: which matter density enters each
-  observable across the suite, and why. The two values
-  ($\Omega_{m,\rm dyn}=0.160050$, $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$)
-  are independent algebraic predictions (no matter factor; Postulate~M retired);
-  the selection rule is the free-streaming scale $k_{\rm fs}$ derived from
-  $m_\phi=40.70$~eV.}
-\label{tab:two_omega}
-\small
-\begin{tabular}{p{5.8cm}cp{6cm}}
-\toprule
-\textbf{Observable / context}                                       & \textbf{$\Omega_m$} & \textbf{Reason} \\
-\midrule
-\multicolumn{3}{l}{\textit{Paper 2 — late-time geometry, BAO, clusters:}} \\
-DESI DR2 BAO chain, low-$z$ $E(z)$                                  & $0.160050$ & local geometry, $k\gg k_{\rm fs}$. \\
-$r_d$ inside the BAO chain                                          & $0.160050$ & enters $E(z)$-consistent late-time mapping. \\
-Galaxy-cluster dynamical mass                                       & $0.160050$ & non-linear scales, $\phi$-DM unbound. \\
-\midrule
-\multicolumn{3}{l}{\textit{Paper 3 — CMB Boltzmann:}} \\
-CMB peak positions $\ell_n$                                         & $0.308881$ & $D_A(z_*)$ integrates $\phi$-DM, non-rel.\ at $z_*$. \\
-$r_d$ from full CAMB Boltzmann                                      & $0.308881$ & $\phi$-DM non-rel.\ at recomb. \\
-\midrule
-\multicolumn{3}{l}{\textit{Paper 4 — algebraic identities:}} \\
-$\Omega_{m,\rm CMB}=\omega_m/h^2$, $\omega_m=\omega_b{+}\omega_c{+}\omega_\nu$ & $0.308881$ & CMB matter density, algebraic (no factor). \\
-$\Omega_{m,\rm dyn}=(\pi-\varphi)/[2(\varphi+\pi)]=1{+}w_0$         & $0.160050$ & dyn-sector identity (independent of CMB). \\
-Tensor-to-scalar $r=\varphi^{-10}$                                  & --      & primordial, no $\Omega_m$ dependence. \\
-\midrule
-\multicolumn{3}{l}{\textit{Paper 5 — Israel--Stewart growth:}} \\
-SSEE Friedmann background $E(z)$                                    & $0.160050$ & dynamical sector, $1+w_0=\Omega_{m,\rm dyn}$. \\
-Poisson source in linear growth ODE                                 & $0.308881$ & full matter on $k<k_{\rm fs}$ scales. \\
-$\Omega_{m,\rm eff}=\Omega_{m,\rm dyn}+\Omega_{\rm DE}r$ (clustering)& $0.160050$+ & DE clustering deviation, $r\ll1$. \\
-\midrule
-\multicolumn{3}{l}{\textit{Paper 6 — two-sector dark matter:}} \\
-$\Omega_{\rm CDM}$ (always active)                                  & $0.160050$ & dynamical CDM, all $k$. \\
-$\Omega_{\phi\mathrm{DM}}=\Omega_{m,\rm CMB}-\Omega_{m,\rm dyn}$    & $0.149$ & active only $k<k_{\rm fs}$ (difference). \\
-$\Omega_{m,\rm growth}=\Omega_{\rm CDM}+\Omega_{\phi\mathrm{DM}}$    & $0.308881$ & sum on clustering scales $=\Omega_{m,\rm CMB}$. \\
-\midrule
-\multicolumn{3}{l}{\textit{Paper 7 — EFT canonical:}} \\
-EFT slope $\lambda=\sqrt{3\,\Omega_{m,\rm dyn}}\approx 0.693$        & $0.160050$ & background scalar dynamics. \\
-$\alpha_K(0)=3\Omega_{\rm DE}(1+w_0)$                                & $0.160050$ & $1+w_0=\Omega_{m,\rm dyn}$ identity. \\
-Growth ratio $G_{2s}=D_1^{\rm SSEE}(\Omega_m{=}0.308881)/D_1^{\Lambda\rm CDM}$ & $0.308881$ & two-sector growth comparison. \\
-\midrule
-\multicolumn{3}{l}{\textit{Paper 8 — strong gravity, lensing:}} \\
-Small-scale photon deflection, CDM only                              & $0.160050$ & only CDM clusters at $k\gg k_{\rm fs}$. \\
-Cluster/LSS lensing total, $\Omega_{m,\rm eff}=\Omega_{\rm CDM}+\Omega_{\phi\mathrm{DM}}$ & $0.308881$ & both sectors on $k<k_{\rm fs}$. \\
-\midrule
-\multicolumn{3}{l}{\textit{Paper 9 — Hubble tension:}} \\
-Late-time local CPL background $E(z)$                                & $0.160050$ & local dynamical sector. \\
-AURA cancellation identity $f_{\rm scr}=(\pi-\varphi)/(\varphi+\pi)^2$ & --      & algebraic, no $\Omega_m$ argument. \\
-\midrule
-\multicolumn{3}{l}{\textit{Paper 10 — UV completion:}} \\
-$\alpha_K^{\rm full}/(3\,\mathrm{MIRA})$, $r_V \propto 1/M^2$        & --      & uses MIRA ratio only; background $\Omega_m$ unchanged. \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{enumerate}\itemsep2pt
+  \item \textbf{$\Omega_{m,\rm dyn}$ was never a density.} It is defined as
+        $1+w_0$, i.e.\ minus the dark-energy equation of state --- an algebraic
+        identity of the background sector's $w_0=-T_R/M_V$. It is
+        dimensionless, as a density fraction also is, so arithmetic involving
+        it is always well formed; but an equation-of-state parameter enters
+        the Friedmann equations through the pressure term, never as a matter
+        density. Calling it $\Omega_{m,\rm dyn}$ named it into a category it
+        never belonged to.
+  \item \textbf{The selection rule no longer exists.} $k_{\rm fs}$ was derived
+        from $m_\phi$, and both are retracted in Paper~6 together with the
+        second sector: the subtraction
+        $\Omega_{\phi\rm DM}=\Omega_{m,\rm CMB}-\Omega_{m,\rm dyn}$ that
+        defined the particle's density mixed a measured density with an
+        equation-of-state number, so the particle had nothing to be made of.
+\end{enumerate}
 
-The criterion is therefore: any observable whose relevant comoving scales lie
-\emph{below} $k_{\rm fs}^{-1}$ (i.e.\ probing $k>k_{\rm fs}$) at low redshift uses
-$\Omega_{m,\rm dyn}=0.160050$; any observable that integrates over scales
-$k<k_{\rm fs}$ \emph{or} originates in the early universe where $\phi$-DM is
-already non-relativistic and contributes to the matter density uses
-$\Omega_{m,\rm CMB}=0.308881$. The two values are not tied by a factor; each is
-an independent algebraic prediction, and the selection rule is purely the
-free-streaming scale.
+The corrected statement is simpler, and has one fewer moving part:
 
-The dual appearance of $r_d$ in the table reflects the consistent application
-of this rule, not a duplication. The BAO chain in Paper~2 tests the late-time
-$E(z)$ geometry with $\Omega_{m,\rm dyn}=0.160050$ and uses an $r_d$ value
-consistent with that background; the CAMB Boltzmann integration in Paper~3
-computes the sound horizon from the recombination physics where $\phi$-DM is
-already non-relativistic and therefore enters with the full
-$\Omega_{m,\rm CMB}\,h^2=\omega_m$. Matching the Planck-measured
-$r_d\simeq 147$~Mpc in \emph{both} contexts is a non-trivial consistency test.
+\begin{quote}
+\textbf{There is one matter density,}
+$\Omega_m = \omega_m/h^2 = 0.308881$, entering every observable that requires a
+matter density --- background geometry $E(z)$, the sound horizon $r_d$, the CMB
+acoustic scale, the Poisson source of linear growth, and lensing alike.
+\textbf{There is separately one equation-of-state parameter,} $w_0=-0.839950$,
+entering wherever an equation of state enters, and nowhere else.
+\end{quote}
+
+Two consequences are worth stating explicitly, because they run in opposite
+directions and honesty requires both.
+
+\paragraph{What is lost.} The $\varphi$-DM sector, the particle
+$m_\phi$, the free-streaming scale $k_{\rm fs}$, and the pre-registered
+$P(k)$-suppression prediction that depended on them. That prediction was
+genuinely falsifiable and is genuinely gone --- not falsified by data, but
+withdrawn because the construction generating it was not physical. The
+surviving pre-registered falsifiers of this suite are the tensor-to-scalar
+ratio $r=\varphi^{-10}=0.008131$ (LiteBIRD, CMB-S4) and the fixed
+$(w_0,w_a)$ point against successive DESI releases.
+
+\paragraph{What is gained.} One postulate fewer, and four open problems closed
+by dissolution rather than by resolution: OP-9 (UV origin of the mass
+multiplier), OP-10 (unification of $\varphi$ and $\chi$ into a single field),
+OP-11 (the free non-minimal coupling $\xi$), and OP-12. None of them was
+solved; all four ceased to be questions once the object they were about was
+withdrawn. The suite is also freed of a documented internal inconsistency:
+a quantity explicitly annotated in the source as ``not a matter density'' was
+being summed with one.
+
+\paragraph{A note on how this was found.} The error was not proposing a
+two-sector construction --- that is ordinary model-building, and it was
+falsifiable. The error was accepting the published $S_8$ as a raw target to fit
+without first asking whether its data-reduction pipeline already assumed a
+$\Lambda$CDM background. It did. A published number carrying an error bar can
+still be the output of fitting a fiducial template to the actual measurement;
+before treating one as a target, the question ``raw observable, or
+model-conditioned summary?'' has to be asked explicitly. Paper~6 develops this
+point and re-does both growth measurements on raw data products.
 
 \paragraph{The CMB-sector matter density under the single global anchor.}
-With a single background anchor $H_0=3(\varphi+\pi)^2\,\kmsu\simeq 67.962\,\kmsu$, the CMB
-matter density is the standard physical $\omega_m$, built from algebraic
-register pieces (Postulate~M, retired):
-\begin{equation}
-  \omega_m = \omega_b + \omega_c + \omega_\nu
-  = \frac{\pi-\varphi}{3\Omega^2} + \mathrm{KAL}_0\,\omega_b\,n_s
-  + \frac{\Sigma m_\nu}{93.14} = 0.14267 ,
-  \qquad
-  \Omega_{m,\rm CMB} = \frac{\omega_m}{h^2} = 0.308881 .
-\end{equation}
-A direct Planck \texttt{plik\_lite} TTTEEE evaluation at this configuration
-($H_0=67.962$, $\Omega_{m,\rm CMB}=0.308881$, $\omega_b$ algebraic) gives
-$\chi^2_{\rm SSEE}=1005.4$ versus $\chi^2_{\Lambda\rm CDM}=1003.8$, i.e.\
-$\Delta\mathrm{BIC}=-24.0$ in favour of SSEE ($k=2$ vs $k=6$); the full
-\texttt{plik} MCMC (off-diagonal TTTEEE\,$+$\,lowl\,$+$\,lensing, Paper~3) gives the
-canonical $\Delta\mathrm{BIC}=-32.9$. The earlier
-register recorded $\sim0.32$ expressions --- the geometric
-$(\pi-\varphi)/(\pi+\varphi)=0.32010$ and the MIRA mapping
-$\mathrm{MIRA}\cdot\Omega_{m,\rm dyn}=0.31993$ --- and an intermediate
-$\pi/\varphi$ factor giving $0.31076$; all are superseded as the canonical CMB
-density by the $\omega_m$-direct construction, which carries no matter factor
-and closes OP-8.
-
-Because $k_{\rm fs}$ is itself derived from $m_\phi$ (Paper~6), which is currently a
-phenomenological ansatz (OP-9; its neutrino input OP-14 is now closed), the \emph{value} of
-$k_{\rm fs}$ inherits the same status. The \emph{criterion}, however --- the
-physical principle that a free-streaming scale separates the two regimes ---
-is structural, not adjustable: it would hold for any species whose
-free-streaming length lies between the BAO and the CMB acoustic scales.
-
 \subsection{The \SSEE\ Effective Action}
 \label{sec:action}
 
@@ -979,16 +926,21 @@ all four papers and cannot be re-interpreted post-hoc.
 \textbf{Dynamic sector} is falsified if:
 \begin{itemize}[nosep,leftmargin=*]
   \item DESI~DR5+ posterior excludes $(-0.840,-0.670)$ at $>3\sigma$; or
-  \item $\chi^2_r(H(z)) > 2.5$ with full systematic covariance and $\Omega_{m,\rm dyn}=0.160050$.
+  \item $\chi^2_r(H(z)) > 2.5$ with full systematic covariance and the
+        background matter density $\Omega_m=0.308881$ (the geometry takes the
+        \emph{total} matter density; $1+w_0$ enters as an equation of state,
+        never in $E(z)$ --- see \S\ref{sec:two_omega_m}).
 \end{itemize}
 \textbf{Observational sector} is falsified if:
 \begin{itemize}[nosep,leftmargin=*]
-  \item Euclid/KiDS/DES require $\Omega_m < 0.25$ at $z < 1$
-        (excludes the dynamical-sector value $\Omega_{m,\rm dyn}=0.160050$); or
-  \item the free-streaming scale $k_{\rm fs}$ predicted from $m_\phi=40.70$~eV
-        (Paper~6) is excluded by DESI~Y3/Euclid $P(k)$ at $>3\sigma$, removing
-        the two-sector structure that separates
-        $\Omega_{m,\rm dyn}=0.160050$ from $\Omega_{m,\rm CMB}=0.308881$.
+  \item Euclid/KiDS/DES require $\Omega_m<0.25$ or $\Omega_m>0.36$ at $z<1$,
+        excluding the single algebraic matter density
+        $\Omega_m=\omega_m/h^2=0.308881$; or
+  \item cosmic shear requires $S_8$ outside $0.7555\pm3\times0.0192$ once the
+        primordial amplitude is fitted to the raw $\xi_\pm$ data with the
+        \SSEE{} background held fixed (Paper~6).
+        \emph{(The former $k_{\rm fs}$ falsifier is withdrawn with the particle;
+        see \S\ref{sec:two_omega_m}.)}
 \end{itemize}
 \textbf{What is NOT a falsification:}
 \begin{itemize}[nosep,leftmargin=*]

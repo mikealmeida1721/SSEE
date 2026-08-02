@@ -66,12 +66,12 @@ are \emph{two independent predictions}; the earlier mapping
 $\Omega_{m,\mathrm{CMB}}=\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$ is retired (the open
 problem OP-8 of requiring a matter factor is thereby dissolved), and the MIRA scalar
 $(3\varphi+\pi)/4=1.999$ now enters only the Hubble screening of Paper~9.
-Paper~6 supplies the physical carrier of the difference via a two-sector dark matter
-structure $\Omega_{m}^{\rm CMB}=\Omega_{\rm CDM}+\Omega_{\phi\text{-DM}}$, where
-$\Omega_{\phi\text{-DM}}=\Omega_{m,\mathrm{CMB}}-\Omega_{m,\rm dyn}=0.149$ is carried by a
-second dark matter component with algebraic mass $m_\phi=40.70\,\mathrm{eV}$
-(Section~\ref{sec:mira}).
-Running CAMB with this two-sector background reproduces acoustic peaks at
+No ``difference'' requires a physical carrier: there is a single matter
+density $\Omega_m=\omega_m/h^2=0.308881$, and the quantity once written
+$\Omega_{m,\rm dyn}=0.160$ is $1+w_0$, an equation-of-state parameter rather
+than a density. The two-sector structure formerly invoked here is retracted
+(Paper~6; Paper~1 \S1.4).
+Running CAMB with this single-sector background reproduces acoustic peaks at
 $\ell=220,\,536,\,813$ (Planck: $220,\,{\sim}540,\,{\sim}810$).
 In a full posterior evaluation with the official off-diagonal \texttt{plik} TTTEEE
 + low-$\ell$ + lensing likelihood via Cobaya, sampling the $k=2=\{A_s,\tau\}$ SSEE
@@ -987,12 +987,13 @@ each of which would \textbf{falsify} the framework if violated:
     Any joint fit requiring $\Omega_m>0.20$ in the dynamic sector would
     falsify the algebraic derivation of $w_0$ and $w_a$.
 
-  \item \textbf{Two-sector free-streaming:} the $\phi$-DM free-streaming scale
-    $k_{\rm fs}=0.754\,h\,\mathrm{Mpc}^{-1}$, predicted from the algebraic mass
-    $m_\phi=40.70$~eV (Paper~6), should imprint on the matter power spectrum.
-    A DESI~Y3 / Euclid $P(k)$ excluding this $k_{\rm fs}$ at $>3\sigma$ would
-    falsify the two-sector reconciliation of $\Omega_{m,\mathrm{dyn}}=0.160$ and
-    $\Omega_{m,\mathrm{CMB}}=0.308881$ (independent predictions, no matter factor).
+  \item \textbf{Cosmic-shear amplitude:} with the background fixed by the
+    algebra and only the primordial amplitude free, the model predicts
+    $S_8=0.7555\pm0.0192$ against the raw KiDS-1000 $\xi_\pm$ data (Paper~6).
+    A shear measurement placing $S_8$ more than $3\sigma$ from this value
+    would falsify the growth sector. \emph{(The former free-streaming
+    falsifier at $k_{\rm fs}$ is withdrawn together with the $\phi$-DM
+    particle; see Paper~6.)}
 
   \item \textbf{Growth index:} The algebraic prediction is $\gamma_\mathrm{alg}=\phi^{-1}=0.618$
     ($S_8=0.828$, Table~\ref{tab:sigma8}).

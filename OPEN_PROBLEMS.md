@@ -1539,7 +1539,11 @@ contradicción interna**. Retirado; el problema real queda declarado aquí.
    fijada por el ansatz, así que el $+4.41$ no se mueve. Mi nota al pie quedaba
    además contradiciendo al párrafo siguiente. Retirada.
 
-### 🔎 LA FUENTE APARECIÓ — y no dice lo que Paper 5 le atribuye (2026-08-02)
+### 🔎 LA FUENTE APARECIÓ — y el número de Paper 5 SÍ sale de ella (2026-08-02)
+
+> ⚠️ **Esta sección corrige una afirmación mía anterior del mismo día.** Primero
+> escribí «la fuente no dice lo que Paper 5 le atribuye». **Parcialmente falso**:
+> el NÚMERO sí sale; la ETIQUETA no. Ver «corrección» abajo.
 
 Mike: *«¿por qué no buscas en archive a qué Paper 1 apuntaba? … lo que yo
 recuerdo de viscosidad es KAL»*. **Tenía razón en las dos cosas.** La
@@ -1569,6 +1573,58 @@ vale 1 y
 
 Positivo, estable, subluminal, y sale limpio. **Pero no es el 0 que publica
 Paper 5.**
+
+### ⚠️ Corrección: el número de Paper 5 SÍ está derivado
+
+Adimensionalizar $\zeta = \mathrm{KAL_0}H/(8\pi G) = \mathrm{KAL_0}\rho_{\rm crit}/(3H)$
+admite **dos** normalizaciones, y yo probé sólo una:
+
+| normalización | resultado |
+|---|---|
+| $\tilde\zeta\equiv\zeta H/\rho_{\rm crit}$ | $\mathrm{KAL_0}/3 = 1.840469$ ← **el de Paper 5** |
+| $\tilde\zeta\equiv\zeta H/\rho_{\rm DE}$ | $\mathrm{KAL_0}/(3\Omega_{\rm DE}) = 2.191165$ ← el que usé yo |
+
+⟹ **El valor $\tilde\zeta = \mathrm{KAL_0}/3$ de Paper 5 está derivado de la
+fuente archivada**, normalizando a $\rho_{\rm crit}$. Lo que está mal es la
+*etiqueta* del texto de Paper 5, que dice $\rho_{\rm DE}$. Error de escritura,
+no de número.
+
+Mike tenía razón al desconfiar de mi diagnóstico: *«si el problema fuera tan
+simple ya lo hubieras visto cuando se hizo esto en primer lugar»*. La pieza no
+era arbitraria; estaba derivada, sólo mal etiquetada.
+
+### Lo que SÍ sigue en pie, y es lo que importa
+
+**1. El problema de la entalpía es independiente de la etiqueta.** La inercia
+sale de la física de la onda, no de cómo se llame $\tilde\zeta$:
+$c^2_{s,\rm eff} = +5.41$ con inercia $(\rho+p)$, en cualquier normalización.
+
+**2. La pieza que de verdad falta es $\tau_\Pi$, no $\tilde\zeta$:**
+
+| cantidad | estado |
+|---|---|
+| $\tilde\zeta = \mathrm{KAL_0}/3$ | ✅ **DERIVADA** (`archive/codigo/SSEE_appendix_Friedmann.tex`) |
+| $\tau_\Pi H_0 = \mathrm{KAL_0}/(3\Omega_{\rm DE})$ | ❌ **NO derivada en ningún documento del repo** |
+
+Papers 4 y 5 la **usan**; Paper 1 apunta a un «App. A» que no existe. Paper 5
+la describe como *«derived from background IS steady state»*, pero el estado
+estacionario ($\Pi=-3\zeta H$) **no fija $\tau_\Pi$** — es el límite de
+Navier-Stokes, donde $\tau_\Pi$ ha desaparecido de la ecuación.
+
+**3. Σm_ν depende de $\tau_\Pi$.**
+$\Sigma m_\nu = \mathcal{R}_2\,\omega_b\,93.14/(\tau_\Pi H_0) = 0.068490$ eV.
+Si $\tau_\Pi$ fuese $\mathrm{KAL_0}/3$ en vez de $\mathrm{KAL_0}/(3\Omega_{\rm DE})$,
+$\Sigma m_\nu$ subiría **+19.1%** a 0.0815 eV, arrastrando $\omega_\nu$,
+$\omega_m$ y $\Omega_{m,\rm CMB}$.
+
+### Por qué esto pasó todas las auditorías (la pregunta de Mike)
+
+Porque **no hay ningún número mal**. $\tilde\zeta$ está derivada, $\tau_\Pi$ es
+consistente con todo lo que la usa, y el guardián compara valores contra el
+Registro — que los tiene. Lo que falta es una **derivación**, y ninguna capa
+verificaba «¿existe la derivación que este documento dice que existe?».
+Es el mismo hueco que R47 abrió para los supuestos: coherente consigo mismo,
+por eso invisible.
 
 ### Los tres valores en circulación
 
@@ -1668,7 +1724,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-15 | P1 | Bullet offset κ(θ) desde KAL(x) no calculado | Medium-High | Computar Σ_SSEE(θ)=∫ρ_bar·KAL(x)dℓ del Bala; mostrar pico κ sobre galaxias, no gas (falsable vs Clowe+2006). Distinto de OP-13 (amplitud); esto es distribución espacial (2026-06-14) |
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
 | OP-21 | P5 | ~~ζ̃ hipótesis no derivada~~ → ζ̃ = KAL₀·Ω/M_v, **hermana de τ_Π = KAL₀·Ω/T_r** | 🟡 **REDUCIDO 2026-08-02** | No es número libre: lo fijan τ_Π (P4) + w₀ (P1) + minimalidad. Queda abierto el PRINCIPIO (minimalidad) y derivar τ_Π del Lagrangiano. Look-elsewhere intentado y RETIRADO (valor forzado por identidad) |
-| OP-22 | P5, P1 | Ansatz IS: la FUENTE (`archive/.../SSEE_appendix_Friedmann.tex`) dice Π=−KAL₀·ρ_**crit**, Paper 5 dice Π=−KAL₀·ρ_**DE**·H. Tres valores de ζ̃ en circulación (2.191 / 1.840 / 0.295) | 🔴 **ABIERTO 2026-08-02** | La fuente da c²_s = 1+w₀ = 0.160050 (estable y subluminal), NO el 0 publicado. Con la inercia correcta (ρ+p) ninguna versión del registro da un c²_s causal. Encontrada gracias a Mike: «busca en archive; la viscosidad es KAL» |
+| OP-22 | P5, P4, P1 | **τ_Π H₀ = KAL₀/(3Ω_DE) no está derivada en ningún documento** (P4 y P5 la usan; P1 apunta a un App.A inexistente). ζ̃=KAL₀/3 SÍ está derivada (archive/…Friedmann.tex, normalizando a ρ_crit; P5 la etiqueta mal como ρ_DE). Y con la inercia correcta (ρ+p) c²_s sale superlumínico | 🔴 **ABIERTO 2026-08-02** | **Σm_ν depende de τ_Π** (+19.1% si cambiara). Pasó las auditorías porque NINGÚN número está mal: falta una DERIVACIÓN, y ninguna capa verificaba que exista la derivación que un documento dice tener |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.

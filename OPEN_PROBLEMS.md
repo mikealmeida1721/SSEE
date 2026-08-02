@@ -1354,7 +1354,73 @@ distribution in a merging cluster.
 
 ---
 
-## OP-21 — La viscosidad estructural ζ̃ = KAL₀/3 es una hipótesis no derivada (Paper 5) — 🔴 ABIERTO (2026-08-02)
+## OP-21 — La viscosidad estructural ζ̃ (Paper 5) — 🟡 **REDUCIDO 2026-08-02**: no es un número libre, es un principio de selección
+
+> **Estado tras el ataque del 2026-08-02.** Se abrió como «ζ̃ = KAL₀/3 es una
+> hipótesis no derivada». Ya **no es eso**. ζ̃ no tiene libertad: queda
+> determinada por dos resultados independientes ya existentes más un principio.
+> Lo que queda abierto es el principio, no el número.
+
+### Lo que se estableció
+
+**1. La otra mitad SÍ tenía origen independiente.** `τ_Π H₀ = KAL₀·Ω/T_r`
+viene de Paper 4 (tiempo de relajación Israel-Stewart), construida con tres
+soberanías, y **no** se eligió para producir estabilidad.
+
+**2. La condición de estabilidad, escrita en la gramática, cancela T_r:**
+
+    ζ̃ = |w₀|·(τ_Π H₀) = (T_r/M_v)·(KAL₀·Ω/T_r) = KAL₀·Ω/M_v
+
+usando `w₀ = −T_r/M_v` (Paper 1). El `T_r` se cancela **siempre**.
+
+**3. ζ̃ y τ_Π son la MISMA construcción con el denominador cambiado:**
+
+| | forma | valor |
+|---|---|---|
+| τ_Π H₀ | KAL₀·Ω / **T_r** (TRIAL) | 2.191165 |
+| ζ̃ | KAL₀·Ω / **M_v** (ATLAS) | 1.840469 |
+| razón | T_r/M_v = **Ω_DE** = \|w₀\| | 0.839950 |
+
+El «3» de `KAL₀/3`, que parecía arbitrario, es sólo **M_v = 3Ω**. Escrita como
+`KAL₀/3` parece ad hoc; escrita como `KAL₀·Ω/M_v` es una construcción de
+linaje, hermana de τ_Π.
+
+**4. La estabilidad marginal es el MÍNIMO, no una elección de gusto.**
+`c²_s,bare = w₀ < 0` es inestabilidad de gradiente (fatal). Medido:
+
+| ζ̃ | c²_s,eff | estado |
+|---|---|---|
+| 1.500000 | −0.155382 | inestable |
+| **1.840469** | **+0.000000** | **marginal — el mínimo** |
+| 2.200000 | +0.164082 | estable, viscosidad de sobra |
+
+Menos viscosidad rompe la teoría; más sobra sin razón. **«Viscosidad mínima
+compatible con estabilidad»** es un principio de selección —como
+«acoplamiento mínimo»— y fija ζ̃ **unívocamente**.
+
+### Lo que NO se estableció (honestidad)
+
+- **La forma hermana NO es evidencia independiente.** Es consecuencia
+  algebraica de (τ_Π, w₀, estabilidad). Dado esos tres, el resultado **no podía
+  ser otro**.
+- **Se intentó un test look-elsewhere y se RETIRÓ**: contar «aciertos» sobre un
+  valor forzado por identidad es auto-engaño. (Daba 1-de-25 y 1-de-1570; ambos
+  sin significado aquí.)
+- **Sigue abierto:** derivar `τ_Π H₀ = KAL₀·Ω/T_r` del Lagrangiano, y
+  justificar el principio de minimalidad desde primeros principios.
+
+### Consecuencia para los papers
+
+`c²_s = 0` puede llamarse **consecuencia de la minimalidad**, no «hipótesis».
+Pero **no** «predicción sin supuestos»: el supuesto es la minimalidad, y hay
+que declararlo.
+
+**Severidad:** bajada de Media a **Baja-Media**. No hay número ajustado.
+
+---
+
+<details><summary>Registro histórico (cómo se abrió el 2026-08-02)</summary>
+
 
 **Cómo se encontró.** Mike preguntó, sobre el resultado `c²_s = 0` de Paper 5:
 *«si está ahí tiene su origen y puedes rastrearlo»*. Al rastrearlo apareció que
@@ -1392,6 +1458,8 @@ activo etiquete como hypothesis/ansatz debe estar registrado en este documento
 o llevar puntero a su derivación. Antes no existía ninguna regla para esta clase
 de fallo: no es drift (ningún número está mal) ni incoherencia (todo concuerda
 consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
+
+</details>
 
 ---
 ## OP-16 — ¿Coincide $(\pi-\varphi)/(\pi+\varphi)=0.3201$ con una fracción medida de la descomposición masa-energía del protón? (origen génesis) — ABIERTO / ESPECULATIVO
@@ -1450,7 +1518,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-14 | P4 | ~~Σm_ν Type P; offset 22 ad hoc~~ → canónico Type A | ✅ RESUELTO | $\Sigma m_\nu^{\rm active}=\mathcal{R}_2\times 0.9530$ eV $=0.0685$ eV con $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})=0.07188$; offset 22 eliminado, Σm_ν promovido Type P→Type A (2026-06-04) |
 | OP-15 | P1 | Bullet offset κ(θ) desde KAL(x) no calculado | Medium-High | Computar Σ_SSEE(θ)=∫ρ_bar·KAL(x)dℓ del Bala; mostrar pico κ sobre galaxias, no gas (falsable vs Clowe+2006). Distinto de OP-13 (amplitud); esto es distribución espacial (2026-06-14) |
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
-| OP-21 | P5 | ζ̃=KAL₀/3 es hipótesis no derivada (de ella sale c²_s=0) | 🔴 **ABIERTO 2026-08-02** | Encontrado tirando del hilo, no por el guardián. Contramedida: regla R47. Único ingrediente con la época correcta para la veta de A_s |
+| OP-21 | P5 | ~~ζ̃ hipótesis no derivada~~ → ζ̃ = KAL₀·Ω/M_v, **hermana de τ_Π = KAL₀·Ω/T_r** | 🟡 **REDUCIDO 2026-08-02** | No es número libre: lo fijan τ_Π (P4) + w₀ (P1) + minimalidad. Queda abierto el PRINCIPIO (minimalidad) y derivar τ_Π del Lagrangiano. Look-elsewhere intentado y RETIRADO (valor forzado por identidad) |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.

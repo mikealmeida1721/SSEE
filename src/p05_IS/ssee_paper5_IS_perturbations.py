@@ -59,14 +59,25 @@ tau_Pi_H0 = KAL0 / (3.0 * OmDE)   # ≈ 2.191
 cs2_bare = w0                       # = -0.8399
 
 # Bulk viscosity (dimensionless: ζ̃ = ζ/(ρ_DE H₀))
-# SSEE hypothesis: ζ̃ = KAL₀/3 (structural viscosity normalized to DE density)
 #
-# ⚠ NO DERIVADA — rastreada como OP-21 en OPEN_PROBLEMS.md (2026-08-02).
-# De este supuesto sale el c²_s = 0 exacto de más abajo: el álgebra es limpia,
-# pero el 0 es CONDICIONAL a esta línea. Llamarlo "predicción" sería
-# sobre-afirmar. Falta: derivar KAL₀/3 del Lagrangiano, o mostrar que la
-# estabilidad marginal lo exige (en cuyo caso deja de ser hipótesis).
-zeta_tilde = KAL0 / 3.0            # ≈ 1.8405
+# ζ̃ = KAL₀·Ω/M_v  (= KAL₀/3, porque M_v = 3Ω)
+#
+# NO es un número libre (OP-21, reducido 2026-08-02). Queda DETERMINADA por:
+#   1. τ_Π H₀ = KAL₀·Ω/T_r          (Paper 4, independiente)
+#   2. w₀     = −T_r/M_v            (Paper 1, independiente)
+#   3. estabilidad marginal c²_s,eff = 0
+# porque  ζ̃ = |w₀|·(τ_Π H₀) = (T_r/M_v)(KAL₀Ω/T_r) = KAL₀Ω/M_v  — T_r se cancela.
+#
+# ζ̃ y τ_Π son la MISMA construcción con el denominador cambiado de una
+# soberanía a la otra (T_r=TRIAL -> M_v=ATLAS), y su razón ES Ω_DE = |w₀|.
+# El "3" que parecía arbitrario es sólo M_v = 3Ω.
+#
+# El único supuesto que queda es (3), y es MINIMALIDAD, no un ajuste:
+# c²_s,bare = w₀ < 0 es inestabilidad de gradiente; menos viscosidad rompe la
+# teoría, más sobra sin razón. Declararlo así en el paper: c²_s=0 es
+# CONSECUENCIA DE LA MINIMALIDAD, no "predicción sin supuestos".
+# Sigue abierto: derivar τ_Π del Lagrangiano y justificar la minimalidad.
+zeta_tilde = KAL0 / 3.0            # ≈ 1.8405  = KAL₀·Ω/M_v
 
 # ── 2. PRINT HEADER ─────────────────────────────────────────────────────────
 print("=" * 68)

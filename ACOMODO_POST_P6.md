@@ -49,7 +49,9 @@
 
 | # | Qué | Estado |
 |---|---|---|
-| 3.1 | **OP-21** — derivar `ζ̃/(τ_Π H₀) = Ω_DE` del Lagrangiano, o descartarlo. Diana **única**: la hipótesis `ζ̃=KAL₀/3` y el resultado `c²_s=0` son algebraicamente **la misma afirmación** (verificado: diferencia 0.00e+00), así que derivar una de la otra es circular | 🔴 abierto |
+| ~~3.1a~~ | **OP-21 REDUCIDO** — ζ̃ ya no es un número libre: la fijan τ_Π (P4) + w₀ (P1) + minimalidad. `ζ̃ = KAL₀·Ω/M_v` es **hermana** de `τ_Π = KAL₀·Ω/T_r`; el «3» era M_v=3Ω. Medido que la estabilidad marginal es el **mínimo** (menos rompe, más sobra) | 🟡 reducido |
+| 3.1b | Derivar `τ_Π H₀ = KAL₀·Ω/T_r` del Lagrangiano, y justificar el principio de minimalidad | 🔴 abierto |
+| 3.1c | **Papers**: cambiar «c²_s=0 exacto» por «c²_s=0 por minimalidad» donde se presente como predicción sin supuestos (P5, P7, Unified, Sealed, PRD) | ⬜ pendiente |
 | 3.2 | **Veta A_s** — las tres determinaciones (CMB / cizalla / clustering). Requiere R1/R2 | ⏳ bloqueado por corridas |
 | 3.3 | **OP-18** — derivar A_s. Bloqueado *por* 3.2: no se puede validar una derivación contra un blanco que tiene dos valores | ⏳ bloqueado |
 

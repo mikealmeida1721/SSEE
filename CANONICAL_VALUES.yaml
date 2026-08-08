@@ -41,8 +41,47 @@ canonical:
   # KiDS-1000. Cobaya 4 cadenas MPI, converged, R−1=0.0189, N_eff=42033.
   # log: results/logs/growth_2026-07/R3_ssee_kids_S8.json
   sigma8_kids_mcmc:    0.7446     # ±0.0189 — un sector, A_s libre, dato crudo
-  S8_kids_mcmc:        0.7555     # ±0.0192 → 0.11σ KiDS-1000 (0.759±0.024): NO hay tensión
-  chi2_min_kids_mcmc:  265.4      # 225 puntos, 9 libres → 216 dof, χ²/dof=1.23
+  S8_kids_mcmc:        0.7555     # ±0.0192 — un sector, A_s libre, dato crudo
+  chi2_min_kids_mcmc:  265.4      # 225 puntos, 9 libres → 216 dof, χ²/dof=1.229
+
+  # ── Control metodológico ΛCDM (R4, 2026-08-06) ────────────────────────
+  # MISMO código, MISMOS 225 puntos crudos, MISMA máscara y priors que R3.
+  # Fondo LIBRE (ω_b, ω_c, h, n_s ajustados) → 13 parámetros libres vs 9.
+  # Cobaya 4 cadenas MPI, converged: R−1(medias)=0.0256, R−1(colas)=0.1155.
+  # log: results/logs/growth_2026-07/R4_lcdm_kids_S8.json
+  #
+  # PARA QUÉ SIRVE — y para qué NO. El S8 publicado por KiDS (0.759±0.024)
+  # es un número DE ΛCDM: sale de ajustar ΛCDM a estos datos. Que nuestro
+  # ΛCDM lo reproduzca NO mide ninguna tensión física: certifica que el
+  # PIPELINE es sano (máscara, covarianza, priors, modelo de cizalla).
+  # Comparar «nuestro ΛCDM vs KiDS» como si fuera una tensión es falla de
+  # categoría — corregido 2026-08-07 tras que Mike lo señalara.
+  # La comparación que SÍ es física es SSEE vs este control: mismo dato,
+  # mismo código, 9 parámetros contra 13 y el fondo fijado por álgebra.
+  S8_kids_lcdm:        0.7571     # ±0.0194 — control ΛCDM, 13 libres
+  sigma8_kids_lcdm:    0.8752     # ±0.0890 — σ8 y Ω_m sueltos están mal
+  Omega_m_kids_lcdm:   0.2310     # ±0.0458   determinados: la cizalla sólo
+                                  # restringe bien su COMBINACIÓN S8. No citar
+                                  # ninguno de los dos por separado.
+  chi2_min_kids_lcdm:  262.75     # 225 puntos, 13 libres → 212 dof, χ²/dof=1.239
+  # DÓNDE SE PRUEBA EL MODELO (corregido 2026-08-07, señalado por Mike):
+  # NO en S8 — S8 es SALIDA de un ajuste, o sea producto del propio modelo;
+  # comparar dos S8 es comparar dos productos. La prueba es la VEROSIMILITUD
+  # de los 225 puntos ξ± CRUDOS, que ninguno de los dos modelos fabricó.
+  delta_chi2_ssee_lcdm:  2.65      # 265.40 − 262.75, con Δk=4 params MENOS
+  delta_k_ssee_lcdm:        4      # 4 params nulos ya darían ⟨Δχ²⟩=4 por azar
+  p_delta_chi2:          0.618     # p(Δχ²≥2.65 | los 4 no aportan nada)
+  delta_AIC_ssee_lcdm:   5.35      # a favor de SSEE
+  delta_BIC_ssee_lcdm:  19.01      # a favor de SSEE — «fuerte» en Jeffreys
+  # ⟹ las 4 libertades extra de ΛCDM son indistinguibles de no existir.
+  # ΔS8 = 0.0016 es el MISMO hecho redicho en cantidades derivadas.
+  #
+  # TENSIÓN REAL que sí hay que declarar (y es COMPARTIDA, no de SSEE):
+  PTE_kids_ssee:         0.0123    # χ²=265.40 vs 216±20.8 → 2.38σ alto
+  PTE_kids_lcdm:         0.0101    # χ²=262.75 vs 212±20.6 → 2.46σ alto
+  chi2_kids_publicado: 260.32      # el mejor ajuste PUBLICADO por KiDS da p~0.01–0.03
+  # ⟹ el exceso vive en el vector de datos ξ±, no en ninguna cosmología.
+  # Nuestro control lo reproduce (262.75 vs 260.32, 0.9%): no lo introduce el código.
   sigma8_single_ceiling: 0.8335   # σ8 con A_s FIJADO a Planck (techo CLASS)
   S8_single_ceiling:   0.8458     # el viejo "3.5σ KiDS" — artefacto de fijar A_s
                                   # a Planck, o sea de IMPORTAR la tensión Planck–KiDS.

@@ -65,11 +65,25 @@ measured density with a dimensionless equation-of-state number, and the
 result carried no physical content despite being dimensionally well formed.
 Second, the $S_8$ tension that motivated the second sector was measured
 against the compressed $S_8$ summary statistic, which is itself derived
-under a $\Lambda$CDM background assumption. Evaluated instead directly
-against the \emph{raw} KiDS-1000 $\xi_\pm$ correlation functions, with the
-primordial amplitude free (as it is in both models), \SSEE{} yields
-$S_8=0.7555\pm0.0192$, in agreement with the KiDS-1000 published value
-$S_8=0.759\pm0.024$ at $0.11\sigma$. We are explicit about what this does not
+under a $\Lambda$CDM background assumption. We therefore test the model
+where the data are model-independent: in the fit quality against the
+\emph{raw} 225 KiDS-1000 $\xi_\pm$ correlation-function points. \SSEE{},
+with 9 free parameters and an algebraically fixed background, gives
+$\chi^2_{\rm min}=265.40$; $\Lambda$CDM, run through the identical pipeline
+with its background free (13 parameters), gives $262.75$. The four extra
+degrees of freedom thus buy $\Delta\chi^2=2.65$, \emph{less} than the value
+$4$ they would return by chance alone if they carried no information
+($p=0.62$); the information criteria penalise them accordingly,
+$\Delta\mathrm{AIC}=5.35$ and $\Delta\mathrm{BIC}=19.0$ in favour of
+\SSEE{}. The derived amplitudes follow rather than lead: $S_8=0.7555\pm0.0192$
+(\SSEE{}) against $0.7571\pm0.0194$ ($\Lambda$CDM). We report one real
+tension, and it is shared: both fits sit $\approx2.4\sigma$ above their own
+$\chi^2$ expectation ($p\approx0.01$), as does the published KiDS-1000
+best fit itself ($\chi^2=260.32$) --- a property of the $\xi_\pm$ dataset,
+not of either cosmology. (That $\Lambda$CDM run also reproduces the published
+KiDS-1000 $S_8=0.759\pm0.024$, which is what certifies the pipeline --- the
+published number being itself $\Lambda$CDM-derived, its agreement tests the
+code, not the cosmology.) We are explicit about what this does not
 claim: the model has one free amplitude, and asking the CMB rather than the
 shear data to fix it gives $S_8=0.8262\pm0.0054$, $3.4\sigma$ away. That
 separation is a disagreement between the datasets --- present in
@@ -325,12 +339,54 @@ that carry astrophysical meaning land in unremarkable places
 ($A_{\rm baryon}=2.57\pm0.31$, $A_{\rm IA}=0.55\pm0.29$), so the fit is not
 being rescued by a nuisance parameter running to the edge of its prior.
 
-Compared against the KiDS-1000 published value $S_8=0.759\pm0.024$, this is a
-$0.11\sigma$ agreement.
+\paragraph{Where the model is actually tested: the fit to the raw data.}
+$S_8$ is an output of a fit, not a measurement: quoting one model's $S_8$
+against another's compares two \emph{products} of two analyses. The
+quantity that confronts \SSEE{} with something the model did not produce is
+the likelihood of the 225 raw $\xi_\pm$ points, so that is where we put the
+comparison (Table~\ref{tab:s8}). Against the $\Lambda$CDM control run
+through the same pipeline, same mask, same covariance and same nuisance
+treatment,
+\begin{equation}
+\Delta\chi^2 \;\equiv\; \chi^2_{\SSEE{}}-\chi^2_{\Lambda\rm CDM}
+\;=\; 265.40-262.75 \;=\; 2.65 ,
+\qquad \Delta k = 4 ,
+\label{eq:dchi2}
+\end{equation}
+where $\Delta k$ counts the parameters $\Lambda$CDM has and \SSEE{} does not.
+Four additional free parameters that carried no information would still
+lower $\chi^2$ by $\langle\Delta\chi^2\rangle=\Delta k=4$ on average; here
+they lower it by $2.65$, and $p(\Delta\chi^2\ge 2.65\,|\,\Delta k=4)=0.62$.
+The extra background freedom of $\Lambda$CDM is therefore not merely
+unnecessary on this dataset --- it is statistically indistinguishable from
+absent. Penalising it explicitly gives $\Delta\mathrm{AIC}=5.35$ and
+$\Delta\mathrm{BIC}=19.0$, both favouring \SSEE{}, the latter in the
+\emph{strong} range on the Jeffreys scale.
+
+The derived amplitudes are then a consequence rather than the test:
+$\Delta S_8 = 0.0016$, under a tenth of either error bar. Against the
+\emph{published} KiDS-1000 value $S_8=0.759\pm0.024$ the offset is
+$0.11\sigma$, but that published number is itself $\Lambda$CDM-derived, so
+this second comparison is informative about the pipeline rather than about
+the cosmology, and we do not rest any claim on it.
+
+\paragraph{The one tension we do report, and it is shared.} Both fits are
+formally poor in absolute terms: $\chi^2=265.40$ against an expectation of
+$216\pm20.8$ for \SSEE{} and $262.75$ against $212\pm20.6$ for
+$\Lambda$CDM, i.e.\ $2.4\sigma$ and $2.5\sigma$ high, with probabilities to
+exceed of $0.012$ and $0.010$. This is not a feature of either cosmology:
+the KiDS-1000 published best fit on these same points has
+$\chi^2=260.32$, which under any of the plausible effective-parameter counts
+gives a comparable $p\sim0.01$--$0.03$. The excess is a property of the
+$\xi_\pm$ data vector --- plausibly residual small-scale modelling or
+covariance calibration --- and it is inherited identically by every model
+fitted to it. We flag it rather than absorb it, and note that our control's
+reproduction of the official value ($262.75$ vs.\ $260.32$, $0.9\%$) is what
+demonstrates the excess is not introduced by our implementation.
 
 \paragraph{What this does and does not claim.} It would be wrong to read this
-as \SSEE{} having carried a $3.5\sigma$ tension and then reduced it to
-$0.11\sigma$. \SSEE{} never carried that tension. At this level the model has
+as \SSEE{} having carried a $3.5\sigma$ tension and then removing it.
+\SSEE{} never carried that tension. At this level the model has
 exactly \emph{one} free quantity, the primordial amplitude $A_s$; the
 background is fixed by the algebra and is identical in every fit reported here.
 What varies between determinations is only \emph{which dataset is asked to fix
@@ -339,7 +395,7 @@ $A_s$}, and the datasets do not agree with each other:
 \begin{center}
 \begin{tabular}{lccc}
 \toprule
-$A_s$ determined by & $\log(10^{10}A_s)$ & $S_8$ & vs.\ KiDS-1000 \\
+$A_s$ determined by & $\log(10^{10}A_s)$ & $S_8$ & vs.\ published KiDS-1000$^\dagger$ \\
 \midrule
 raw KiDS-1000 $\xi_\pm$ (this work) & $2.863\pm0.051$ & $0.7555\pm0.0192$ & $0.11\sigma$ \\
 \SSEE{} fit to raw Planck \texttt{plik\_lite} & $3.042\pm0.013$ & $0.8262\pm0.0054$ & $2.73\sigma$ \\
@@ -349,11 +405,13 @@ $\Lambda$CDM-fitted Planck value (borrowed) & $3.045$ & $0.8229\pm0.0059$ & $2.5
 
 \smallskip
 \footnotesize
-The last column compares each row against the \emph{published} KiDS-1000
-value. The quantity that matters for the argument below is different: the
-internal disagreement between rows~1 and~2, which are the same model with the
-same background. In $\log(10^{10}A_s)$ that separation is
-$3.042-2.863=0.179\pm0.053$, i.e.\ $\mathbf{3.4\sigma}$.
+$^\dagger$The last column compares each row against the \emph{published}
+KiDS-1000 value, which is a $\Lambda$CDM-derived number; it is given for
+orientation only and no claim here rests on it. The quantity that matters for
+the argument below is different: the internal disagreement between rows~1
+and~2, which are the same model with the same background. In
+$\log(10^{10}A_s)$ that separation is $3.042-2.863=0.179\pm0.053$, i.e.\
+$\mathbf{3.4\sigma}$.
 \normalsize
 \end{center}
 
@@ -374,18 +432,23 @@ between early- and late-time probes or specific to cosmic shear.
 
 \begin{table}[h]
 \centering
-\caption{$S_8$ against raw KiDS-1000 $\xi_\pm$, primordial amplitude free in
-both models, 9 (\SSEE{}) vs.\ 13 ($\Lambda$CDM) parameters, MCMC-marginalized.
-$\chi^2$ is quoted at the best-fit point over 225 data points.}
+\caption{Fit to the \emph{raw} KiDS-1000 $\xi_\pm$ data vector (225 points),
+primordial amplitude free in both models, MCMC-marginalized. The test is the
+left block: the likelihood of data neither model produced. The $S_8$ block is
+derived output, shown for continuity with the literature. $p$ is the
+probability to exceed of $\chi^2_{\rm min}$ at the stated dof.}
 \label{tab:s8}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccccc}
 \toprule
- & $\log A$ & $\sigma_8$ & $S_8$ & $\chi^2_{\rm min}$ (225 pts) \\
+ & $k$ & dof & $\chi^2_{\rm min}$ & $\chi^2/$dof & $p$ & $\sigma_8$ & $S_8$ \\
 \midrule
-$\Lambda$CDM (background free) & \TODO{logA} & \TODO{s8} & \TODO{S8} & \TODO{chi2} \\
-\SSEE{} (background fixed) & $2.863\pm0.051$ & $0.7446\pm0.0189$ & $0.7555\pm0.0192$ & $265.4$ \\
+$\Lambda$CDM (background free)  & 13 & 212 & $262.75$ & $1.239$ & $0.010$ & $0.875\pm0.089$ & $0.7571\pm0.0194$ \\
+\SSEE{} (background fixed)      &  9 & 216 & $265.40$ & $1.229$ & $0.012$ & $0.7446\pm0.0189$ & $0.7555\pm0.0192$ \\
 \midrule
-KiDS-1000 published & --- & --- & $0.759\pm0.024$ & --- \\
+\multicolumn{8}{l}{\footnotesize $\Delta\chi^2=2.65$ for $\Delta k=4$ (expected $4$ if the extra parameters carry no information, $p=0.62$);} \\
+\multicolumn{8}{l}{\footnotesize $\Delta\mathrm{AIC}=5.35$, $\Delta\mathrm{BIC}=19.0$, both favouring \SSEE{}.} \\
+\midrule
+KiDS-1000 published & --- & --- & $260.32$ & --- & --- & --- & $0.759\pm0.024$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -395,8 +458,33 @@ the same raw data, the same nuisance treatment, with the four background
 parameters $\omega_b,\omega_c,h,n_s$ additionally free. Its purpose is not to
 provide a new measurement --- KiDS-1000 has already published theirs --- but
 to demonstrate that this pipeline reproduces the published $\Lambda$CDM
-result, which is what licenses the \SSEE{} row above it. That run is in
-progress at the time of writing.
+result, which is what licenses the \SSEE{} row above it. It does:
+$S_8=0.7571\pm0.0194$ against the published $0.759\pm0.024$. We stress that
+this agreement is \emph{not} a physical measurement of consistency. The
+published KiDS-1000 value is itself a $\Lambda$CDM number --- it is what one
+obtains by fitting $\Lambda$CDM to these data --- so a $\Lambda$CDM run
+reproducing it tests the code path, not the cosmology. Reading it as a
+``tension'' would be a category error.
+
+What the control licenses is the comparison in Table~\ref{tab:s8} between the
+two rows above the rule, which is like for like: identical data, identical
+code, identical nuisance treatment. The comparison that carries the weight is
+the $\chi^2$ block, Eq.~\eqref{eq:dchi2}: \SSEE{} pays $2.65$ in $\chi^2$ for
+giving up four parameters, where four uninformative parameters would have been
+worth $4$. The $\Delta S_8 = 0.0016$ in the right-hand block is a restatement
+of the same fact in derived quantities --- under a tenth of either error bar,
+and, since both fits are to the \emph{same} data, with strongly correlated
+uncertainties that make the true discrepancy smaller still. \SSEE{} therefore
+describes the raw shear data as well as $\Lambda$CDM does, using four fewer
+free parameters and with its background fixed algebraically rather than
+fitted.
+
+Two entries in the $\Lambda$CDM row must not be quoted in isolation:
+$\sigma_8=0.875\pm0.089$ and $\Omega_m=0.231\pm0.046$ (and correspondingly the
+broad $\log A$) are individually poorly determined, because cosmic shear
+constrains essentially only their combination $S_8$ --- which is why that
+combination is the reported statistic. The published KiDS-1000 analysis shows
+the same degeneracy.
 
 \subsection{Historical note: the particle's exclusion, for the record}
 
@@ -454,15 +542,23 @@ entering both the background and the growth of structure with no partition,
 no additional particle, and no non-minimal coupling parameter. Four open
 problems close by dissolution rather than by resolution. Measured directly
 against raw survey data --- rather than against $\Lambda$CDM-conditioned
-summary statistics --- the model has no $S_8$ tension of its own: against the
-225 raw KiDS-1000 $\xi_\pm$ points, with the background fixed by algebra and
-only the primordial amplitude free, \SSEE{} gives $S_8=0.7555\pm0.0192$,
-agreeing with the KiDS-1000 published value at $0.11\sigma$. The residual
-$3.4\sigma$ between the amplitude preferred by the CMB and the amplitude
-preferred by cosmic shear is a disagreement between those datasets, which this
-work reports but does not claim to resolve. The
+summary statistics --- the model has no $S_8$ tension of its own. The test is
+the likelihood of the 225 raw KiDS-1000 $\xi_\pm$ points, which neither model
+produced: with the background fixed by algebra and only the primordial
+amplitude free, \SSEE{} attains $\chi^2_{\rm min}=265.40$ against $262.75$ for
+$\Lambda$CDM run through the same pipeline with four more free parameters ---
+a $\Delta\chi^2$ of $2.65$ where four uninformative parameters would already
+have been worth $4$ ($p=0.62$; $\Delta\mathrm{BIC}=19.0$ favouring \SSEE{}).
+The derived amplitudes follow: $S_8=0.7555\pm0.0192$ against
+$0.7571\pm0.0194$. One tension is real and we report it rather than absorb it:
+both fits, and the published KiDS-1000 fit alike, sit $\approx2.4\sigma$ above
+their $\chi^2$ expectation, which locates the excess in the $\xi_\pm$ data
+vector rather than in any of the cosmologies fitted to it. The residual
+$3.4\sigma$ between the amplitude preferred by the CMB and
+the amplitude preferred by cosmic shear is a disagreement between those
+datasets, which this work reports but does not claim to resolve. The
 $f\sigma_8$ result is reported in \S\ref{sec:fsigma8}. \TODO{cerrar esta
-frase con la conclusion conjunta cuando esten R1/R2 (fsigma8) y R4.}
+frase con la conclusion conjunta cuando este R1/R2 (fsigma8).}
 
 The methodological point (\S\ref{sec:method}) is offered as a general caution
 independent of \SSEE{}: any model without background-level free parameters

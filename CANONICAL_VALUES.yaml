@@ -236,6 +236,12 @@ retired:
   - {pattern: "67.159",    reason: "H0 posterior DR1-era (variante decimal de 67.16) → 66.412±0.385 DR2"}
   - {pattern: "0.59536",   reason: "θ* evaluado en posterior DR1-era 67.159 → 100θ*=1.03693 (13.9σ) @ 66.412"}
   - {pattern: "66.533",    reason: "H0 posterior MCMC viejo (prior MIRA)"}
+  # 2026-08-07: faltaba pese a estar NOMBRADO en la razón de "67.16" desde el 07-25.
+  # Vivió 13 días en 8 manuscritos por no tener patrón propio.
+  - {pattern: "67.95", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "congelad", "frozen", "sesgad", "biased"],
+     reason: "H0 posterior con Ω_m CONGELADO en E(z): el modelo sólo se evaluaba fielmente en el ancla 67.962, sesgando el posterior hacia ella → 67.79±0.35 (fix R25, 2026-07-25)"}
+  - {pattern: "67.9475", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "congelad", "frozen"],
+     reason: "variante de precisión del H0 con Ω_m congelado → 67.79±0.35"}
   - {pattern: "67.037",    reason: "H_MIRA ancla CMB vieja → H_alg=67.962 (ω_m-directo; CMB minimiza ahí)"}
   # ── reframe ω_m-directo + partícula SOLAR (2026-06-18/19) ──────────────
   # Densidad de materia CMB: factor π/φ y factor MIRA RETIRADOS (OP-8 disuelto)
@@ -274,9 +280,16 @@ retired:
   # el Paper 6 DEBE poder narrar qué retira y por qué.
   - {pattern: "0.7470", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ^2"],
      reason: "σ8 two-sector RETIRADO (no hay partícula) → canónico un-sector 0.7446 (MCMC crudo KiDS)"}
+  # PRECISIÓN 2026-08-07: el patrón sólo traía "0.7580"; Papers 3/5/7 y EFT_section
+  # escriben "0.758" con 3 decimales y se escapaban todos. Se añade la variante.
+  - {pattern: "0.758", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ^2", "0.7580"],
+     reason: "S8 two-sector RETIRADO (3 dec) → canónico un-sector 0.7555 ± 0.0192"}
   - {pattern: "0.7580", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ^2"],
      reason: "S8 two-sector RETIRADO → canónico un-sector 0.7555 ± 0.0192 (0.11σ KiDS)"}
-  - {pattern: "40.70", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "excluid", "exclud", "bound", "cota"],
+  # excludes AFINADOS 2026-08-07: "bound"/"cota" pelados suprimían cualquier línea
+  # con "strictly bounded" — Paper 5 L1395 citaba m_φ=40.70 como base física vigente
+  # de MIRA y el guardián lo dejaba pasar. Ahora se exige la frase de la COTA real.
+  - {pattern: "40.70", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "excluid", "exclud", "lower bound", "upper bound", "cota inferior", "cota superior", "70.3"],
      reason: "m_φ RETIRADO: la partícula no existe (la resta que la definía no era física)"}
   - {pattern: "594.28", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "techo", "ceiling", "grammar", "gramática"],
      reason: "multiplicador SOLAR²·KRYSTOS de la partícula retirada"}
@@ -307,6 +320,14 @@ retired:
   - {pattern: "0.659\\,h", reason: "k_fs @36.95 — RETIRADO"}
   - {pattern: "0.762\\,h", reason: "k_fs @41.02 — RETIRADO"}
   - {pattern: "0.762 h",   reason: "k_fs @41.02 (variante) — RETIRADO"}
+  # ── PROSA (2026-08-07): la construcción de dos sectores se retiró ENTERA el
+  # 2026-08-01, no sólo sus números. Ningún patrón numérico caza una frase como
+  # "the two-sector φ-DM framework remains the physical account". Estos patrones
+  # de texto cierran ese hueco: legítimos SÓLO en contexto de retracción/historia.
+  - {pattern: "two-sector", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "no longer", "formerly", "previously", "was listed", "appeared here", "withdraw", "abandon"],
+     reason: "construcción φ-DM de dos sectores RETIRADA 2026-08-01 — sólo citable como historia/retracción"}
+  - {pattern: "two sector", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "no longer", "formerly", "previously", "withdraw"],
+     reason: "variante ortográfica de two-sector (RETIRADA)"}
   - {pattern: "0.754\\,h", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed"],
      reason: "k_fs @40.70 — RETIRADO (era el canónico hasta 2026-08-01)"}
   - {pattern: "147.156", reason: "r_d CAMB viejo (P3) → 147.17 canónico (0.32σ; log p3_rd_reframe); era outlier vs P2/Ledger"}

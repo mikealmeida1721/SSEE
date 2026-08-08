@@ -969,8 +969,12 @@ $\sigma_8^{\mathrm{SSEE}} = 0.8335$:
 This single-sector ceiling is $1.1\sigma$ above Planck~2018, $3.5\sigma$ above
 KiDS-1000, and $4.1\sigma$ above DES-Y3 ($S_8 = 0.776\pm0.017$, 3$\times$2pt).
 The all-cold limit therefore predicts \emph{more} structure than the data
-require --- ``the challenge'' that the $\varphi$-DM two-sector of Paper~6
-resolves by free-streaming ($S_8^{\rm eff}=0.758$, $0.04\sigma$ KiDS).
+require. A $\varphi$-DM two-sector was once proposed to resolve this; it is
+retracted in Paper~6. The ceiling quoted here is computed with $A_s$
+\emph{fixed} to Planck, which imports the Planck--shear discrepancy; with
+$A_s$ free, as it is in the model, the same single sector fits the raw
+KiDS-1000 $\xi_\pm$ at $S_8=0.7555\pm0.0192$ and there is no challenge to
+resolve.
 
 \begin{table}[h!]
 \centering
@@ -1012,15 +1016,15 @@ free CMB-level parameters. Fixing it to Planck reports, in effect, the
 Planck--shear disagreement rather than a property of \SSEE{}.
 Paper~6 instead fits $A_s$ to the \emph{raw} KiDS-1000 $\xi_\pm$ data with this
 same background held fixed and a \emph{single} matter sector, obtaining
-$\sigma_8=0.7446\pm0.0189$ and $S_8=0.7555\pm0.0192$ --- $0.11\sigma$ from
+$\sigma_8=0.7446\pm0.0189$ and $S_8=0.7555\pm0.0192$ (the $\Lambda$CDM control on the same raw data gives $0.7571\pm0.0194$) --- $0.11\sigma$ from
 KiDS-1000. The $\phi$-DM two-sector split once described here is retracted.
 An additional HMcode-2020 baryonic feedback suppression ($B_{\rm eff} = 0.9447$)
 gives $S_8^{\rm bar} = 0.758$ ($0.06\sigma$ DES-Y3; Paper~6, eq.~12).
-The single-sector ceiling of this paper ($S_8 = 0.846$) is the upper bound;
-the full two-sector treatment is the nominal SSEE prediction and substantially
-reduces the lensing tension. Figure~\ref{fig:s8_resolution} visualises both
-states: the single-sector challenge derived here and the two-sector resolution
-of Paper~6.
+The single-sector ceiling of this paper ($S_8 = 0.846$) is an upper bound
+obtained with $A_s$ fixed to Planck; the nominal SSEE prediction is the
+single-sector fit with $A_s$ free, $S_8 = 0.7555\pm0.0192$ (Paper~6).
+Figure~\ref{fig:s8_resolution} visualises both states: the ceiling derived here
+and the raw-data fit of Paper~6.
 
 \begin{figure}[h!]
   \centering
@@ -1035,7 +1039,7 @@ of Paper~6.
     KiDS-1000 --- but that offset is inherited from fixing $A_s$, not derived.
     Paper~6 (green) fits $A_s$ to the raw shear data with the same background
     and a single matter sector, landing at $S_8 = 0.7555\pm0.0192$ ---
-    $0.11\sigma$ from KiDS-1000 (green band). Grey points: Planck 2018,
+    $0.11\sigma$ from KiDS-1000 (green band); the $\Lambda$CDM control on the same raw data lands at $0.7571\pm0.0194$. Grey points: Planck 2018,
     KiDS-1000, and DES-Y3 measurements with $1\sigma$ errors.}
   \label{fig:s8_resolution}
 \end{figure}
@@ -1282,10 +1286,12 @@ $w(z)$ with $w_0=-0.839950$, $w_a=-0.669975$.
 This drives a $\sim$0.3\% enhancement of $\mathcal{G}$ and $\sigma_8$, which
 translates to a marginally different $S_8$.
 
-The path to resolving the weak-lensing tension lies in Paper~6's two-sector
-$\phi$-DM construction: the WDM free-streaming suppression at $k > k_{\rm fs}$
-reduces $\sigma_8$ from $0.8335$ to $0.747$, recovering $S_8 \approx 0.758$
-($<0.1\sigma$ of DES-Y3).
+The apparent weak-lensing tension does not survive contact with the raw data.
+A two-sector $\phi$-DM construction was once proposed to remove it by
+free-streaming suppression; Paper~6 retracts that construction and shows the
+tension was an artefact of holding $A_s$ at its Planck value. With $A_s$ free,
+the single sector fits the 225 raw KiDS-1000 $\xi_\pm$ points at
+$S_8 = 0.7555\pm0.0192$.
 
 \subsection{The $H_0$ tension and SSEE}
 \label{subsec:H0}
@@ -1333,7 +1339,7 @@ $\gamma_{\rm IS} = 0.5504$ & $0.5504 \pm 0.0003$ & $\gamma$ degenerate with $\La
 $f\sigma_8(z=0.5) = 0.4714$ & $0.4714 \pm 0.010$ & $0.3\sigma$ BOSS; mean $0.70\sigma$ (6 surveys) & DESI full-shape / 2026 \\
 $D_1$ ratio $\mathcal{G} = 1.0032$ & $1.0032 \pm 0.005$ & $0.3\%$ enhancement; below near-term ($\gtrsim 1\%$) sensitivity & Euclid weak lensing / 2027 \\
 No DE clustering ($|\delta_{\mathrm{DE}}/\delta_m| < 10^{-3}$) & $< 10^{-3}$ at $k > 20\,H_0/c$ & cosmic variance & Future 21cm surveys / 2030+ \\
-MIRA $= (3\varphi+\pi)/4$ (two-sector $\phi$-DM basis, Paper~6) & $1.998924$ & $\Omega_m$ direct measurement & Stage IV CMB / 2030 \\
+MIRA $= (3\varphi+\pi)/4$ (algebraic; the two-sector basis is retracted, Paper~6 --- see OP-8) & $1.998924$ & $\Omega_m$ direct measurement & Stage IV CMB / 2030 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1392,10 +1398,12 @@ Together, these results establish that SSEE dark energy is:
 (ii) predictive of a growth history essentially identical to $\Lambda$CDM
     once $\Omega_{m,\mathrm{cosm}}=0.308881$ governs the growth equation (Q3),
     with $f\sigma_8$ tension of $0.70\sigma$ (vs.\ $0.73\sigma$ for $\Lambda$CDM), and
-(iii) strictly bounded: the MIRA factor cannot be derived from IS dynamics (Q2); the physical basis is provided by Paper~6's two-sector $\phi$-dark matter construction ($\Omega_{\phi\text{-DM}}\approx\Omega_{m,\mathrm{dyn}}$ gives MIRA$\approx2$; exact value from the algebraic mass $m_\phi=40.70\,\mathrm{eV}$), with a first-principles QFT derivation remaining open.
+(iii) strictly bounded: the MIRA factor cannot be derived from IS dynamics (Q2); the physical basis previously attributed to Paper~6's two-sector $\phi$-dark matter construction is \textbf{withdrawn}: that construction and its particle are retracted (Paper~6). MIRA's algebraic value $(3\varphi+\pi)/4$ is unchanged and it survives in the model only through the screening fraction $f_{\rm screen}$ (Paper~9); \textbf{what remains open is what, if anything, provides its physical basis} --- an explicitly declared gap, not a filled one.
 The primary falsifiable prediction in the growth sector is
-$S_8 = 0.846$ (single-sector CLASS upper bound), with the two-sector WDM
-correction bringing it to $S_8 \approx 0.758$ (Paper~6).
+$S_8 = 0.846$, the ceiling obtained with $A_s$ held at its Planck value; with
+$A_s$ free the model gives $S_8 = 0.7555\pm0.0192$ against the raw KiDS-1000
+$\xi_\pm$ (Paper~6). The two-sector WDM correction once quoted here is
+retracted.
 A future confirmed measurement $S_8 > 0.86$ would favour SSEE over $\Lambda$CDM;
 $S_8 < 0.73$ would disfavour both at comparable significance.
 

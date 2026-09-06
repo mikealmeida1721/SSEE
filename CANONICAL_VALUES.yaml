@@ -147,7 +147,13 @@ canonical:
   sigma8_posterior_plik_full: 0.8142  # ±0.0053 (ΛCDM 0.8110±0.0058, mismo dato)
 
   # EFT / UV completion
-  alpha_K:             0.4033     # Paper 7 (Bellini-Sawicki)
+  # s_K NO es alpha_K. s_K = 3(-w0)(1+w0) = -(dp/dN)/rho:
+  # la tasa de dilucion de la PRESION de la DE, por e-fold.
+  # Puro EoS, sin H ni densidad -> por eso f_screen es invariante.
+  # alpha_K (kineticidad Bellini-Sawicki) es otra cantidad y
+  # depende del K(X) elegido. Verificado 2026-09-06, dif 0.00e+00.
+  s_K:                 0.403302   # entra en f_screen (Paper 9)
+  alpha_K:             0.4033     # [ETIQUETA HEREDADA] = s_K; ver R54
   alpha_K_full:        0.41691    # Paper 10 (con corrección UV)
   M_cutoff_meV:        9.68       # Λ_SSEE = (5φ⁸ρ_crit)^(1/4) @ ρ_crit(H_alg=67.962)
   # reframe: ρ_crit=3H²M_Pl² usa H_alg=67.962 (H de fondo del modelo) → M=9.6811 meV.

@@ -3457,6 +3457,63 @@ try:
 except Exception as _e:
     check("R52 capa operable", False, str(_e))
 
+print("\nCapa R54 — 0.403302 es s_K, jamás alpha_K")
+try:
+    # LA REGLA. s_K = 3(-w0)(1+w0) = -(dp/dN)/rho es puro EoS.
+    # alpha_K (kineticidad Bellini-Sawicki) es OTRA cantidad.
+    # Probado 2026-09-06: s_K = -(dp/dN)/rho con dif 0.00e+00.
+    _ETIQ = re.compile(r"alpha_?K|alphaK|\u03b1_?K|\u03b1_\{?K")
+    _VAL  = re.compile(r"0\.4033")
+    _EX54 = re.compile(r"s_K|s_k|mal llamado|NO es alpha|etiqueta|R54")
+
+    def _escanea_r54(_ls):
+        _m = []
+        for _i, _l in enumerate(_ls):
+            if not _VAL.search(_l):
+                continue
+            if not _ETIQ.search(_l):
+                continue
+            if _EX54.search(_l):
+                continue
+            _m.append(_i)
+        return _m
+
+    _r54 = []
+    _objetivo = []
+    for _pat in ("src/**/*.py", "manuscript/*.tex",
+                 "submission_PRD/*.tex", "*.yaml", "*.md"):
+        _objetivo += sorted(_REPO.glob(_pat))
+    for _f in _objetivo:
+        if "archive" in str(_f) or "__pycache__" in str(_f):
+            continue
+        _ls = _f.read_text(errors="ignore").splitlines()
+        for _i in _escanea_r54(_ls):
+            _r54.append(f"{_f.relative_to(_REPO)}:{_i+1}")
+
+    _DEUDA_R54 = 64
+    check("R54 la deuda de etiquetas alpha_K/s_K no crece",
+          len(_r54) <= _DEUDA_R54,
+          f"{len(_r54)} sitios (tope {_DEUDA_R54}): "
+          + "; ".join(_r54[:4]))
+    check("R54 el tope está apretado",
+          len(_r54) >= _DEUDA_R54 or len(_r54) == 0,
+          f"tope {_DEUDA_R54} = cuenta real {len(_r54)}")
+
+    # Control de los DOS lados (R53).
+    _malo = ["  alpha_K: 0.4033  # Bellini-Sawicki"]
+    _bien = ["  s_K: 0.403302  # -(dp/dN)/rho"]
+    _otro = ["  alpha_K: 15.591335  # kineticidad"]
+    check("R54 el detector distingue etiqueta de valor",
+          len(_escanea_r54(_malo)) == 1
+          and len(_escanea_r54(_bien)) == 0
+          and len(_escanea_r54(_otro)) == 0,
+          "3 casos: 0.4033 rotulado alpha_K marcado; "
+          "el mismo valor como s_K y otro valor "
+          "como alpha_K, limpios")
+
+except Exception as _e:
+    check("R54 capa operable", False, str(_e))
+
 print("\nCapa R53 — toda regla trae su control del otro lado")
 try:
     # LA REGLA (formulada por Mike, 2026-09-05). Una comprobación que sólo

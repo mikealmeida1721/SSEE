@@ -58,7 +58,7 @@
 | 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 26 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
 | 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 24 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
 | 4 | Algebraic Derivation of the CMB Background from φ and π | 16 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
-| 5 | Israel-Stewart Causal Viscous Perturbations — Exact Marginal Stability, ΛCDM-Consistent Structure Growth, Two-Sector Matter Structure | 25 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
+| 5 | Israel-Stewart Causal Viscous Perturbations — Exact Marginal Stability, ΛCDM-Consistent Structure Growth (the two-sector matter section is RETIRED, 2026-08-01) | 25 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
 | 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 24 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
 | 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 16 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
 | 8 | Strong Gravity Regime — Two-limit analysis (alt MOND-like vs canonical EFT B-S) | 20 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
@@ -192,13 +192,17 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | γ_IS | 0.5504 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
 | G = D₁_SSEE/D₁_ΛCDM | 1.0032 ± 0.005 | ~0.3% enhancement (Poisson source Ω_m,CMB = 0.30889) |
 | σ₈_SSEE (single-sector ceiling) | 0.8335 ± 0.006 | ODE linear growth gives 0.8136 |
-| **S₈_SSEE (single-sector ceiling)** | **0.846** | **3.5σ KiDS — the challenge the Paper 6 two-sector resolves** |
-| Mean fσ₈ tension (6 surveys, single-sector) | 0.70σ | → 0.93σ with the Paper 6 two-sector (free-streaming lowers σ₈, reaching RSD scales); still <1σ, close to ΛCDM (0.73σ) |
+| **S₈_SSEE (ceiling, A_s FIXED to Planck)** | **0.846** | the old "3.5σ KiDS challenge" — an artefact of fixing A_s. The two-sector answer is RETIRED (2026-08-01); with A_s free: 0.7555, 0.11σ |
+| Mean fσ₈ tension (6 surveys, single-sector) | 0.70σ | the two-sector variant (0.93σ) is RETIRED with the particle (2026-08-01); canonical fσ₈ vs raw BOSS is pending (R1/R2) |
 
-**Diagnostic:** the single-sector model predicts an S₈ *above* weak-lensing surveys (3.5σ KiDS).
-This is the open challenge that motivates the Paper 6 two-sector φ-DM extension, which resolves it (S₈ = 0.758, 0.04σ KiDS).
+**Diagnostic:** with A_s *fixed* to Planck the model predicts an S₈ above weak-lensing surveys.
+That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of the model (k=2), and with A_s free the MCMC against raw KiDS-1000 ξ± gives S₈ = 0.7555 ± 0.0192 — **0.11σ, no tension**. The two-sector φ-DM extension that formerly closed it (S₈ = 0.758) is RETIRED.
 
-### Paper 6 (φ-Dark Matter, Two-Sector Model)
+### Paper 6 (Growth against raw data — single sector)
+
+> The two-sector φ-DM rows below are RETIRED (2026-08-01) and kept only as history.
+> The subtraction defining Ω_φDM mixed a measured density with a number from the
+> equation of state (0.160 = 1+w₀), so the particle had nothing to be made of.
 
 | Result | Value | Status |
 |---|---|---|
@@ -209,7 +213,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | m_φ = Σm_ν × (SOLAR²·KRYSTOS_V) | 40.70 eV | Forward-prediction — no fitting (multiplier 594.28 is a pure number; mechanism g²·v) |
 | α (Viel fit to particle/cold P(k) ratio) | 1.117 Mpc/h | CLASS output — not imposed |
 | k_fs (free-streaming) | 0.754 h/Mpc | From m_φ, CLASS-derived |
-| σ₈_eff (two-sector particle) | 0.747 | — |
+| σ₈_eff (two-sector particle) | 0.747 | RETIRED 2026-08-01 |
 | **σ₈, S₈ (single sector, A_s free, MCMC vs raw KiDS-1000 ξ±)** | **0.7446±0.0189, 0.7555±0.0192** | **0.11σ — no S₈ tension.** Converged Cobaya+CAMB run, R−1=0.019, N_eff=4.2×10⁴, χ²=265.4/216 dof |
 | Same background with A_s **fixed** to Planck | σ₈=0.8335, S₈=0.846 | the old "3.5σ challenge" — an artefact of fixing A_s, i.e. of importing the Planck–KiDS tension |
 | fσ₈ vs raw BOSS DR12 multipoles | pending (R1/R2) | single-sector baseline 0.70σ |
@@ -252,7 +256,7 @@ This is the open challenge that motivates the Paper 6 two-sector φ-DM extension
 | CMB peak 3 (ℓ) | **814** | 922 | 814 | full ω_m necessary |
 | RMS vs ΛCDM | **0.14%** | 31.5% | — | ~220× degradation with bare Ω_m,dyn |
 | α free-streaming (CLASS output, canonical particle) | **1.117 Mpc/h** | — | — | Yields k_fs = 0.754 h/Mpc |
-| S₈ (two-sector, canonical particle) | **0.758** | — | ~0.83 | 0.04σ KiDS-1000 |
+| S₈ (two-sector, canonical particle) — RETIRED 2026-08-01 | **0.758** | — | ~0.83 | superseded by 0.7555±0.0192 (0.11σ), single sector, A_s free |
 | IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
 
 *CLASS confirms the full algebraic matter density ω_m (Ω_m,CMB=0.30889) is physically necessary: using the bare dynamical Ω_m,dyn=0.160 instead, all three CMB peaks shift ~10% and the RMS residual jumps from 0.14% to 31.5% (~220×).*

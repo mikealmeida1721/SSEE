@@ -62,3 +62,32 @@ Omega_DE con los neutrinos dentro.
 
 La inestabilidad la causa w_a, no
 alpha_K: con alpha_K pequeno es PEOR.
+
+## Falsabilidad de alpha_K (2026-09-06)
+
+Control corrido con x_k = 1, 22.559548, 100
+(fondo w = w_phi constante):
+
+    sigma8   x_k=1     0.769916
+             x_k=22.6  0.769929
+             x_k=100   0.769973
+
+x100 en alpha_K mueve sigma8 un 0.007%.
+**alpha_K NO afecta S8, y S8 no restringe
+alpha_K.** El S8=0.7555 canonico queda
+intacto.
+
+En TT el efecto existe pero solo en l<10:
+
+    l=2   -9.14%   var.cosmica 63.2%
+    l=5   -4.96%               42.6%
+    l=10  -1.83%               30.9%
+    l>=30 <0.1%
+
+El ruido irreducible es ~7x el efecto.
+
+**Conclusion honesta:** alpha_K = 15.591335
+es una prediccion NO FALSABLE con datos
+existentes. hi_class la valida solo como
+CONSISTENCIA INTERNA (c_s^2, dif 0.000%),
+no como contraste con dato.

@@ -50,10 +50,11 @@
 \begin{abstract}
 Within the Structural Self-Energy Expansion (SSEE), the infrared (IR) kinetic
 Lagrangian $K(X) = X/\KAL$ produces a local Hubble correction
-$H_0^{\rm local} = H_0/(1-f_{\rm scr})$ with $f_{\rm scr}\approx 0.06725$ (Paper~9).
-Applied to the global background anchor $H_0=3(\phiG+\pi)^2=67.962$ (Postulate~D,
-Paper~1) this gives $H_0^{\rm IR}=72.86$ km/s/Mpc ($0.17\sigma$ from SH0ES); the
-earlier MIRA-mapped anchor $67.037$ (giving $71.87$, $1.12\sigma$) is superseded
+$H_0^{\rm glob} = H_0^{\rm local}(1-f_{\rm scr})$ with $f_{\rm scr}\approx 0.06725$
+(Paper~9). Run on the only directly measured rate, $H_0^{\rm SH0ES}=73.04\pm1.04$,
+this gives $H_0^{\rm glob,IR}=68.13$ km/s/Mpc, $0.17\sigma$ from the dimensionless
+algebraic number $3(\phiG+\pi)^2=67.96214$ (Postulate~D, Paper~1); the
+earlier MIRA-mapped anchor $67.037$ is superseded
 by the 2026 reframe.
 We extend the EFT to include the leading higher-derivative operator
 $K(X) = X/\KAL + X^2/M^4$ and identify the unique algebraic value of the
@@ -69,19 +70,19 @@ inflationary tensor-to-scalar ratio $r = 12\alpha/N^2 \approx 0.00813$
 where the identity $45\alpha^2 = 5\phiG^8$ follows exactly from the definition
 $\alpha = \phiG^4/3$ (not a numerical coincidence, but an algebraic consequence).
 With this cutoff, the full screening rate becomes
-$\sK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value). Applied to the
-global anchor $H_0=67.962$, the UV prediction is
-$H_0^{\rm UV} = 73.040$ km/s/Mpc ($0.00\sigma$ from SH0ES), matching the SH0ES
-central value $73.04\pm1.04$ km/s/Mpc \citep{Riess2022} --- the headline UV
-value of this paper, refining the IR cascade $72.86$ ($0.17\sigma$).
+$\sK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value). Run on the SH0ES
+datum $73.04\pm1.04$ km/s/Mpc \citep{Riess2022}, the cascade returns
+$H_0^{\rm glob,UV} = 67.96214$ km/s/Mpc, which differs from the pure number
+$3(\phiG+\pi)^2 = 67.96214$ by $4.2\times10^{-6}$ --- the headline UV
+result of this paper, refining the IR residual $0.166$ ($0.17\sigma$).
 \textbf{The UV value is conditional on Postulate~C.1 (UV-IR $\varphi/\pi$
 separability; §\ref{sec:theorem})}, which fixes $\sK^{\rm full}$ via the
-cutoff $M$; the IR value $72.86$ is independent of it.
+cutoff $M$; the IR value is independent of it.
 The same $\alpha$ that governs inflation at $z \sim 10^{60}$ thus fixes the
 dark-energy UV scale today, providing a falsifiable cross-epoch consistency test:
 if LiteBIRD measures $r \neq 0.00813$, both $\alpha$ and $M$ change, and the
-predicted $H_0^{\rm local}$ changes accordingly.  The IR prediction
-$H_0^{\rm IR} = 72.86$ km/s/Mpc ($0.17\sigma$ SH0ES; Paper~9) is
+predicted $H_0^{\rm glob}$ changes accordingly.  The IR result
+$H_0^{\rm glob,IR} = 68.13$ km/s/Mpc ($0.17\sigma$; Paper~9) is
 independent of this postulate and stands on its own.
 \end{abstract}
 
@@ -109,20 +110,19 @@ $\MIRA = \AURA/2$ combine to produce an algebraic screening fraction
        \;=\; \frac{\pi - \phiG}{(\phiG+\pi)^2}
        \;=\; 0.06725\,,
 \end{equation}
-which corrects the algebraic Hubble constant $H_0^{\rm alg} = 3(\phiG+\pi)^2
-= 67.962$ km/s/Mpc to
+which converts the measured local rate into a global one,
 \begin{equation}
-  H_0^{\rm IR} \;=\; \frac{H_0^{\rm alg}}{1 - \fsc} \;=\; 72.86 \text{ km/s/Mpc}
-  \quad (0.17\sigma \text{ from SH0ES}).
+  H_0^{\rm glob,IR} \;=\; H_0^{\rm SH0ES}\,(1 - \fsc) \;=\; 68.13 \text{ km/s/Mpc}\,,
 \end{equation}
-The $0.17\sigma$ agreement uses the global background anchor
-$H_0 = 3(\phiG+\pi)^2 = 67.962$ (Postulate~D, Paper~1), the single dimensionful
-input shared by every sector of the suite under the 2026 reframe. The earlier
+to be compared with $3(\phiG+\pi)^2 = 67.96214$ --- a residual of $0.166$,
+i.e.\ $0.17\sigma$ on the propagated uncertainty $1.04\times(1-\fsc)=0.970$.
+The comparison target is a pure number and carries no units; it is therefore
+never the input of the cascade, only its benchmark. The earlier
 register used the MIRA-mapped CMB anchor $H_0^{\rm MIRA} = 67.037$ ($\to 71.87$,
 $1.12\sigma$); this is now superseded. Under the $\omega_m$-direct reframe the
 CMB matter density is the standard $\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.308881$
 (no matter factor; OP-8 dissolved), built from algebraic $\omega_b,\omega_c$, and
-the single anchor $67.962$ is both the background $H$ and the CMB-preferred value
+the single number $67.96214$ matches both the cascade output and the CMB-preferred value
 (Paper~3).
 
 That IR result uses the kinetic Lagrangian $K(X) = X/\KAL$ (the leading term),
@@ -138,10 +138,10 @@ We show that the unique algebraically consistent value of $M$ is
 where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
 Paper~1~\citep{SSEE1}, and the equality $45\alpha^2 = 5\phiG^8$ is an exact algebraic identity
 following from the definition of $\alpha$.
-With this value, the corrected Hubble constant on the global anchor is
-$H_0^{\rm UV} = 73.040$ km/s/Mpc ($0.00\sigma$ from SH0ES) --- the headline UV
-prediction, coincident with the SH0ES central value $73.04 \pm 1.04$ km/s/Mpc
-\citep{Riess2022}, refining the IR cascade $72.86$ ($0.17\sigma$). The UV value
+With this value, the global rate returned from the SH0ES datum
+$73.04\pm1.04$ km/s/Mpc \citep{Riess2022} is
+$H_0^{\rm glob,UV} = 67.96214$ km/s/Mpc, coincident with $3(\phiG+\pi)^2$ to
+$4.2\times10^{-6}$ and refining the IR residual $0.166$ ($0.17\sigma$). The UV value
 is conditional on Postulate~C.1 (see §\ref{sec:theorem}), which fixes
 $\sK^{\rm full}$ via the cutoff $M$; the IR value is independent of it.
 
@@ -204,7 +204,7 @@ Equivalently,
   \label{eq:Mmev}
 \end{equation}
 where $\rhoc^{1/4} \approx 2.47$ meV is the SSEE critical-density scale today,
-evaluated at the model's physical Hubble rate $H_0 = 67.962$~km/s/Mpc
+evaluated at the model's physical Hubble rate $H_0 = 67.96214$~km/s/Mpc
 (the CMB-anchored value of Paper~III).\footnote{Convention note: in the
 dimensionless formulation of §\ref{sec:EFT} we work in units $\rhoc = 1$, where
 $M^4 = 5\phiG^8$ is a pure number ($\approx 234.89$) and all downstream
@@ -216,7 +216,7 @@ scale $\rho_\Lambda^{1/4}\approx 2.25$~meV (which would give the inconsistent
 $M\approx 8.81$~meV). Crucially, the meV value of $M$ is a display scale only:
 the Hubble cascade of §\ref{sec:hubble} runs on the dimensionless ratio
 $M^4/\rhoc = 5\phiG^8 = 234.89$, so the UV Hubble prediction
-($H_0^{\rm UV}=73.040$ on the global anchor $67.962$) is
+($H_0^{\rm glob,UV}=67.96214$ from the SH0ES datum) is
 unchanged under any choice of reference density.}
 
 Table~\ref{tab:identity} summarises the equivalent forms of the identity.
@@ -418,53 +418,65 @@ The screening fraction (Paper~9) generalises in the UV to
 a $+3.37\%$ increase over the IR value $\fsc^{\rm IR} = 0.06725$.
 The local Hubble constant is
 \begin{equation}
-  H_0^{\rm UV}
-  \;=\; \frac{H_0}{1 - \fsc^{\rm UV}}
-  \;=\; \frac{67.962}{1 - 0.06952}
-  \;=\; 73.040 \text{ km/s/Mpc}\,,
+  H_0^{\rm glob,UV}
+  \;=\; H_0^{\rm SH0ES}\,(1 - \fsc^{\rm UV})
+  \;=\; 73.04\times(1 - 0.0695216)
+  \;=\; 67.96214 \text{ km/s/Mpc}\,,
   \label{eq:H0UV}
 \end{equation}
-the headline UV prediction ($0.00\sigma$ from SH0ES), refining the IR cascade
-$72.86$ ($0.17\sigma$) on the same global anchor $H_0=3(\phiG+\pi)^2$.
+the headline UV result: it differs from the pure number
+$3(\phiG+\pi)^2 = 67.96214$ by $4.2\times10^{-6}$, refining the IR residual
+$0.166$ ($0.17\sigma$) by a factor of $4\times10^4$ with the same input.
+
+\paragraph{What this agreement does and does not constrain.}
+The SH0ES uncertainty propagates to $\pm0.970$ km/s/Mpc on the output, which is
+far larger than the $4.2\times10^{-6}$ residual. Varying the cutoff over
+$M^4 \in [0.2, \infty)\times 45\alpha^2\rhoc$ moves the output by at most
+$0.57$ km/s/Mpc, so the cascade is compatible with that entire range: it
+\emph{excludes} a cutoff ten times smaller, but it does not measure $M^4$.
+Nor does it fix the pair $(1/\KAL, 1/M^4)$ separately --- a $1\%$ increase in
+$\KAL$ is compensated by a $2.01\%$ increase in $M^4$. The value
+$M^4 = 45\alpha^2\rhoc$ is therefore an input from the inflationary sector
+($\alpha=\phiG^4/3$, Paper~1), tested for consistency here and not derived
+from the Hubble cascade.
 
 \subsection{Comparison with SH0ES}
 
 \begin{table}[ht]
 \centering
 \caption{%
-  IR vs.\ UV Hubble constant predictions on the global background anchor
-  $H_0=3(\phiG+\pi)^2=67.962$ (Postulate~D). The UV completion with
-  $M^4 = 45\alpha^2\rhoc$ sharpens the residual tension from $0.17\sigma$ (IR)
-  to $0.00\sigma$ (UV), conditional on Postulate~C.1 (see §\ref{sec:theorem}).
-  The superseded MIRA-mapped anchor $67.037$ gave $71.87\!\to\!72.05$
-  ($1.12\!\to\!0.96\sigma$), retired under the 2026 reframe.
+IR vs.\ UV global rate returned by the cascade from the measured local
+  rate, compared with the dimensionless $3(\phiG+\pi)^2 = 67.96214$
+  (Postulate~D). The UV completion with $M^4 = 45\alpha^2\rhoc$ sharpens the
+  residual from $0.17\sigma$ (IR) to $4.3\times10^{-6}\sigma$ (UV),
+  conditional on Postulate~C.1 (see §\ref{sec:theorem}). The propagated SH0ES
+  uncertainty is $\pm0.970$ km/s/Mpc and dominates both.
 }
 \label{tab:H0}
 \begin{tabular}{lllll}
 \toprule
-Regime & $\sK$ & $\fsc$ & $H_0^{\rm local}$ [km/s/Mpc] & Tension SH0ES \\
+Regime & $\sK$ & $\fsc$ & $H_0^{\rm glob}$ [km/s/Mpc] & vs.\ $3(\phiG+\pi)^2$ \\
 \midrule
-IR ($M\to\infty$, Papers 1--9) & 0.40330 & 0.06725 & 72.86 & $0.17\sigma$ \\
-UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{73.040} & $0.00\sigma$ (cond.$^{a}$) \\
+IR ($M\to\infty$, Papers 1--9) & 0.40330 & 0.06725 & 68.13 & $0.17\sigma$ \\
+UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{67.96214} & $4.3{\times}10^{-6}\sigma$ (cond.$^{a}$) \\
 \midrule
-SH0ES \citep{Riess2022}       & --- & --- & $73.04 \pm 1.04$  & --- \\
-Freedman et al.\ \citep{Freedman2024} & --- & --- & $69.96 \pm 1.54$ & $2.0\sigma$ (UV) \\
+SH0ES \citep{Riess2022} (\emph{input}) & --- & --- & $73.04 \pm 1.04$  & --- \\
+Freedman et al.\ \citep{Freedman2024} (input) & --- & --- & $69.96 \pm 1.54$ & $1.9\sigma$ (UV) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Table~\ref{tab:H0} compares the IR and UV results.
-Under Postulate~C.1 (§\ref{sec:theorem}), $M^4 = 45\alpha^2\rhoc$ gives, on the
-global anchor $H_0=67.962$, $H_0^{\rm UV} = 73.040$ km/s/Mpc ($0.00\sigma$ from
-SH0ES) --- the headline UV prediction, refining the IR value $72.86$
-($0.17\sigma$), and matching the SH0ES central value $73.04$ to the last digit.
+Under Postulate~C.1 (§\ref{sec:theorem}), $M^4 = 45\alpha^2\rhoc$ gives, from
+the SH0ES datum, $H_0^{\rm glob,UV} = 67.96214$ km/s/Mpc --- the headline UV
+result, refining the IR residual $0.166$ ($0.17\sigma$) to
+$4.2\times10^{-6}$, and reproducing $3(\phiG+\pi)^2$ to the seventh digit.
 
 \paragraph{Comparison with TRGB/JWST.}
 The TRGB+JWST measurement of Freedman et al.\ \citep{Freedman2024} yields
-$H_0 = 69.96\pm1.54$\,km/s/Mpc.  The canonical SSEE UV prediction
-$H_0^{\rm UV}=73.040$\,km/s/Mpc lies $\sim2.0\sigma$ above this anchor; the
-canonical IR prediction $H_0^{\rm IR}=72.86$\,km/s/Mpc lies $\sim1.9\sigma$
-above it.
+$H_0 = 69.96\pm1.54$\,km/s/Mpc. Running the same lens on that datum instead of
+SH0ES returns $H_0^{\rm glob} = 65.11$ (UV) and $65.26$ (IR) km/s/Mpc, i.e.\
+$\sim2.0\sigma$ and $\sim1.9\sigma$ \emph{below} $3(\phiG+\pi)^2$.
 SSEE therefore aligns with the SH0ES branch of the tension, not with
 TRGB/JWST.  Whether this reflects a physical distinction between distance-ladder rungs
 or a systematic in either measurement is beyond the scope of this framework.
@@ -491,8 +503,9 @@ UV cutoff & $M^4 = 45\alpha^2\rhoc$ & $234.89\,\rhoc$ & Eq.~\eqref{eq:M4main} \\
 $M$ in meV & $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4}$ & 9.68 meV & Eq.~\eqref{eq:Mmev} \\
 $\sK^{\rm full}$ & quadratic + cutoff & 0.41691 & Eq.~\eqref{eq:sKfullform} \\
 $\fsc^{\rm UV}$ & $\sK^{\rm full}/(3\MIRA)$ & 0.06952 & this paper \\
-$H_0^{\rm UV}$ & $H_0/(1-\fsc^{\rm UV})$ & \textbf{73.040} & Eq.~\eqref{eq:H0UV} \\
-SH0ES & $73.04 \pm 1.04$ km/s/Mpc & (obs.) & Riess 2022 \\
+SH0ES (\emph{input}) & $73.04 \pm 1.04$ km/s/Mpc & (obs.) & Riess 2022 \\
+$H_0^{\rm glob,UV}$ & $H_0^{\rm SH0ES}(1-\fsc^{\rm UV})$ & \textbf{67.96214} & Eq.~\eqref{eq:H0UV} \\
+$3(\phiG+\pi)^2$ (pure, target) & --- & $67.96214$ & Paper~1 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -509,8 +522,9 @@ simultaneously:
 \begin{enumerate}
   \item LiteBIRD (2032) should measure $r \approx 0.00813$
         [from Eq.~\eqref{eq:r}].
-  \item The local Hubble constant should be $H_0^{\rm local} = 73.040$
-        km/s/Mpc (global anchor $H_0=67.962$; Type-P $73.040$) [Eq.~\eqref{eq:H0UV}].
+  \item The cascade run on the measured local rate should return
+        $H_0^{\rm glob} = 67.96214$ km/s/Mpc, reproducing $3(\phiG+\pi)^2$
+        [Eq.~\eqref{eq:H0UV}].
 \end{enumerate}
 
 These are \emph{independent observables} at vastly different epochs
@@ -537,14 +551,16 @@ the UV-completion proposal is falsified at $1\sigma$.
     as the inflationary curvature $\alpha$ varies.
     At $\alpha = \varphi^4/3 = 2.284701$ (green dashed), $s_K^{\rm full}=0.41691$
     (green dot); the IR limit $0.40330$ is shown dash-dotted blue.
-    \textit{Bottom:} Predicted local Hubble constant $H_0^{\rm local}(\alpha)$
-    from the canonical cascade Eq.~(\ref{eq:Hpred}) with base
-    $H_0=67.962$ km/s/Mpc (solid green), with the SH0ES band
-    $73.04\pm1.04$ km/s/Mpc (red) and Planck $67.36\pm0.54$ km/s/Mpc (blue).
+    \textit{Bottom:} Global background rate $H_0^{\rm glob}(\alpha)$ returned by
+    the cascade Eq.~(\ref{eq:Hpred}) from the measured
+    $H_0^{\rm SH0ES}=73.04\pm1.04$ km/s/Mpc (solid green); the dotted blue line
+    is the dimensionless target $3(\varphi+\pi)^2=67.96214$ and the shaded band
+    is the propagated SH0ES uncertainty $\pm0.970$ km/s/Mpc.
     If LiteBIRD measures $r_{\rm obs}$, one reads off $\alpha_{\rm obs}=r_{\rm obs}N^2/12$
-    and the $x$-axis gives the falsifiable $H_0$ prediction.
-    At $\alpha=\varphi^4/3$ the canonical value is $73.040$ km/s/Mpc
-    ($0.00\sigma$ from SH0ES), inside the SH0ES band.
+    and the $x$-axis gives the falsifiable output.
+    At $\alpha=\varphi^4/3$ the cascade returns $67.96214$ km/s/Mpc, i.e.\
+    $4.2\times10^{-6}$ from the target. Note that the band is far wider than
+    that residual: the agreement is not a measurement of $\alpha$.
   }
   \label{fig:cross_epoch}
 \end{figure}
@@ -651,13 +667,15 @@ then closes within the SSEE algebraic structure:
 \begin{equation}
   \phiG \;\xrightarrow{\alpha = \phiG^4/3}\; \alpha
         \;\xrightarrow{M^4 = 45\alpha^2\rhoc}\; M
-        \;\xrightarrow{\sK^{\rm full}}\; H_0^{\rm local}
-  \;=\; 73.040\;\text{km/s/Mpc}\,.
+        \;\xrightarrow{\sK^{\rm full}}\; \fsc
+        \;\xrightarrow{\times H_0^{\rm SH0ES}}\; H_0^{\rm glob}
+  \;=\; 67.96214\;\text{km/s/Mpc}\,.
 \end{equation}
-Conditional on that postulate, the canonical UV prediction is
-$H_0^{\rm UV}=73.040$ km/s/Mpc ($0.00\sigma$ from SH0ES). On the Type-P
-anchor the same chain gives $73.040$ km/s/Mpc, agreeing with SH0ES to
-$<0.001\sigma$ as a numerical coincidence; neither is an unconditional result.
+Conditional on that postulate, the cascade reproduces $3(\phiG+\pi)^2$ to
+$4.2\times10^{-6}$. The agreement is a coincidence of central values and not a
+measurement of the cutoff: the propagated SH0ES uncertainty is $\pm0.970$
+km/s/Mpc, which covers $M^4$ from $0.2\times$ its nominal value upwards. The
+result is not unconditional.
 
 \paragraph{Diagnosing the Route~A discrepancy.}
 Route~A matches $K(X)/\KAL$ to the Taylor expansion of $K_\alpha(X)/\KAL$

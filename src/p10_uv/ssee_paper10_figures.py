@@ -21,9 +21,10 @@ AURA  = (3*phi + pi) / 2
 MIRA  = AURA / 2
 KAL0  = (phi + 3*pi) / 2  # ≈ 5.5214
 alpha_att = phi**4 / 3     # ≈ 2.2847  (alpha-attractor)
-H0_alg  = 3*Omega**2       # ≈ 67.96  (global background anchor, Postulate D)
-H0_global = H0_alg         # reframe 2026-06-17: H global de fondo = H_alg
-H0_MIRA = 67.037           # km/s/Mpc — ancla CMB-mapeada VIEJA (superada)
+# 3*Omega**2 es un NUMERO PURO: blanco de comparacion, NO entrada
+NUM_ALG   = 3*Omega**2     # ≈ 67.9621  puro, sin unidades
+H0_SHOES  = 73.04          # km/s/Mpc  MEDIDO -> unica entrada legitima
+SIG_SHOES = 1.04
 # UV cutoff: M^4 = 45 alpha^2 rho_c  (Paper 10 Postulate C.1)
 # alphaK_IR = (phi+pi-Omega) already ≈ 0 … use Bellini-Sawicki definition
 alphaK_IR  = 3*AURA*(pi - phi) / (2*Omega**2)   # ≈ 0.40330
@@ -31,12 +32,18 @@ alphaK_IR  = 3*AURA*(pi - phi) / (2*Omega**2)   # ≈ 0.40330
 # alphaK_full = alphaK_IR * (1 + delta), where delta = 3/(45*alpha_att^2) * (X_bg/rho_c)
 # For background X_bg/rho_c ≈ 2*KAL0*(1+w0)*Omega_DE*H0^2/(3*H0^2) ... algebraic route:
 # alphaK_full = alphaK_IR + (3/M^4) * X_bg^2  → Paper 10 gives 0.41691
-alphaK_UV = 0.41691
+# s_K^full CALCULADO (no hardcodeado): raiz de la cuadratica
+#   4 X^2/M4 + 2 X/KAL - rho_phi(1+w0) = 0,  rho_c = 1
+_M4  = 45*alpha_att**2
+_rhs = alphaK_IR/3.0
+_X   = (-2/KAL0 + (4/KAL0**2 + 16*_rhs/_M4)**0.5)/(8/_M4)
+alphaK_UV = alphaK_IR + 24*_X*_X/_M4
 
 fscreen_IR = alphaK_IR / (3*MIRA)    # 0.06725
 fscreen_UV = alphaK_UV / (3*MIRA)    # 0.06952
-H0_UV      = H0_global / (1 - fscreen_UV)  # 73.040 — CANONICAL (via H_alg global)
-H0_UV_old  = H0_MIRA / (1 - fscreen_UV)    # 72.05 — superseded (via H_MIRA viejo)
+# SH0ES ENTRA, H_global SALE
+H0_UV    = H0_SHOES * (1 - fscreen_UV)   # ≈ 67.96214
+SIG_GLOB = SIG_SHOES * (1 - fscreen_UV)  # ≈ 0.970
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Figure 1: K(X)/X vs X/M^4
@@ -102,7 +109,7 @@ alpha_range = np.linspace(0.5, 6, 400)
 delta_alpha = delta_IR * (alpha_att / alpha_range)**2
 alphaK_full_arr = alphaK_IR + delta_alpha
 fscreen_arr = alphaK_full_arr / (3*MIRA)
-H0_arr = H0_global / (1 - fscreen_arr)   # canonical cascade via H_alg global
+H0_arr = H0_SHOES * (1 - fscreen_arr)   # SH0ES entra, H_global sale
 
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(7, 6), sharex=True)
 
@@ -112,7 +119,7 @@ ax1.axvline(alpha_att, color='#1a9641', ls='--', lw=1.3, alpha=0.8,
 ax1.axhline(alphaK_UV, color='gray', ls=':', lw=1, alpha=0.7)
 ax1.axhline(alphaK_IR, color='#2166ac', ls='-.', lw=1, alpha=0.7,
             label=fr'IR limit $\alpha_K^{{IR}}={alphaK_IR:.5f}$')
-ax1.set_ylabel(r'$\alpha_K^{\rm full}(\alpha)$', fontsize=10)
+ax1.set_ylabel(r'$s_K^{\rm full}(\alpha)$', fontsize=10)
 ax1.legend(fontsize=8.5, loc='upper right')
 ax1.grid(lw=0.4, alpha=0.4)
 ax1.annotate(fr'UV value: {alphaK_UV:.5f}',
@@ -120,25 +127,23 @@ ax1.annotate(fr'UV value: {alphaK_UV:.5f}',
              fontsize=8, arrowprops=dict(arrowstyle='->', lw=0.8), color='#1a9641')
 
 ax2.plot(alpha_range, H0_arr, color='#1a9641', lw=2,
-         label=r'$H_0^{\rm local}(\alpha)$ (canonical, via $H_0^{\rm alg}$)')
+         label=r'$H_0^{\rm glob}(\alpha)=H_0^{\rm SH0ES}(1-f)$')
 ax2.axvline(alpha_att, color='#1a9641', ls='--', lw=1.3, alpha=0.8)
-ax2.axhline(73.04, color='#d6604d', ls='-.', lw=1.2,
-            label=r'SH0ES $73.04\pm1.04$')
-ax2.fill_between(alpha_range, 73.04-1.04, 73.04+1.04, color='#d6604d', alpha=0.10)
-ax2.axhline(67.36, color='#2166ac', ls=':', lw=1.2,
-            label=r'Planck $67.36\pm0.54$')
-ax2.fill_between(alpha_range, 67.36-0.54, 67.36+0.54, color='#2166ac', alpha=0.10)
+ax2.fill_between(alpha_range, NUM_ALG-SIG_GLOB, NUM_ALG+SIG_GLOB,
+                 color='#d6604d', alpha=0.10)
+ax2.axhline(NUM_ALG, color='#2166ac', ls=':', lw=1.2,
+            label=r'$3(\varphi+\pi)^2=67.9621$ (pure target)')
 ax2.set_xlabel(r'$\alpha$-attractor curvature parameter', fontsize=11)
-ax2.set_ylabel(r'$H_0^{\rm local}$ [km s$^{-1}$ Mpc$^{-1}$]', fontsize=10)
-ax2.set_ylim(65, 78)
+ax2.set_ylabel(r'$H_0^{\rm glob}$ [km s$^{-1}$ Mpc$^{-1}$]', fontsize=10)
+ax2.set_ylim(65.5, 70.5)
 ax2.legend(fontsize=8.5, loc='upper right')
 ax2.grid(lw=0.4, alpha=0.4)
-ax2.annotate(fr'$H_0^{{UV}}={H0_UV:.3f}$',
+ax2.annotate(fr'$H_0^{{\rm glob,UV}}={H0_UV:.5f}$',
              xy=(alpha_att, H0_UV), xytext=(alpha_att+0.3, H0_UV+0.6),
              fontsize=8.5, color='#1a9641',
              arrowprops=dict(arrowstyle='->', lw=0.8, color='#1a9641'))
 
-fig.suptitle(r'Cross-epoch falsification: $H_0^{\rm local}$ vs inflationary $\alpha$'
+fig.suptitle(r'Cross-epoch falsification: $H_0^{\rm glob}$ vs inflationary $\alpha$'
              r' (LiteBIRD measures $r \Rightarrow \alpha$; this shifts the UV prediction)',
              fontsize=9.5)
 fig.tight_layout()
@@ -155,7 +160,7 @@ print(f"  alphaK_IR    = {alphaK_IR:.5f}")
 print(f"  alphaK_UV    = {alphaK_UV:.5f}")
 print(f"  fscreen_IR   = {fscreen_IR:.6f}")
 print(f"  fscreen_UV   = {fscreen_UV:.6f}")
-print(f"  H0_UV (canonical, via H_alg) = {H0_UV:.4f}")
-print(f"  H0_UV (superseded, via MIRA) = {H0_UV_old:.4f}")
+print(f"  H0_glob UV (from SH0ES) = {H0_UV:.6f} +/- {SIG_GLOB:.4f}")
+print(f"  residual vs NUM_ALG     = {H0_UV-NUM_ALG:+.3e}")
 print(f"  u_bg = X_bg/M^4               = {u_bg:.4e}")
 print(f"  eps  = X_bg^2/M^4             = {X_bg**2/M4:.4e}")

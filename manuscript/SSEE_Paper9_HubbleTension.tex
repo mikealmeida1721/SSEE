@@ -65,19 +65,27 @@ background equation of state, and $\MIRA = \bc/2 = (3\phiG+\pi)/4 \approx 1.9989
 is the effective optical coupling derived from the disformal null geodesic.
 The two structural constants $\AURA = 2\MIRA$ cancel exactly in the ratio,
 leaving a pure function of $\phiG$ and $\pi$.
-Applied as a local correction to the global background anchor
-$H_0 = 3(\phiG+\pi)^2 = 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$ (Postulate~D, Paper~1),
+The lens is applied in the direction set by what is measured. The only
+directly measured expansion rate is the local one,
+$H_0^{\rm SH0ES} = 73.04\pm1.04$\,km\,s$^{-1}$\,Mpc$^{-1}$
+(Riess et al.\ 2022); it enters, and the global background rate comes out,
 \[
-  H_0^{\rm local} \;=\; \frac{H_0}{1-\fsc}
-                  \;=\; \frac{67.962}{1-0.06725}
-                  \;\approx\; 72.86 \text{ km/s/Mpc}\,,
+  H_0^{\rm glob} \;=\; H_0^{\rm SH0ES}\,(1-\fsc)
+                 \;=\; 73.04\times(1-0.06725)
+                 \;=\; 68.13 \text{ km/s/Mpc}\,,
 \]
-which lies $0.17\sigma$ from SH0ES (Riess et al.\ 2022) with \emph{zero free parameters}.
-This adopts the single global anchor $H_0=3(\phiG+\pi)^2$ shared by every sector
+to be compared with the dimensionless algebraic number
+$3(\phiG+\pi)^2 = 67.96214$ (Postulate~D, Paper~1): a residual of $0.166$,
+i.e.\ $0.17\sigma$, with \emph{zero free parameters}. The comparison is a
+coincidence of value, not an identity: $3(\phiG+\pi)^2$ is a pure number and
+carries no units, whereas $H_0^{\rm glob}$ inherits km\,s$^{-1}$\,Mpc$^{-1}$
+from the measurement. The agreement is therefore an output of the cascade,
+never its input.
+This adopts the single algebraic target $3(\phiG+\pi)^2$ shared by every sector
 of the suite (2026 reframe). The earlier register used the CMB-mapped value
 $H_0^{\rm MIRA}=67.037$, giving $H_0^{\rm local}=71.87$ ($1.12\sigma$); this is now
 superseded. The 2026 $\omega_m$-direct reframe adopts the single algebraic anchor
-$H_0^{\rm alg}=3(\varphi+\pi)^2=67.962$ as the global background shared by all
+$3(\varphi+\pi)^2=67.96214$ as the algebraic target shared by all
 sectors --- with \emph{no} matter factor, the CMB density following as
 $\Omega_{m,\rm CMB}=\omega_m/h^2$ (Paper~1).
 The correction operates at late times ($z < 0.15$) through the scalar kinetic
@@ -114,7 +122,7 @@ rate obtained by two independent methods:
 The SSEE framework \citep{Paper1,Paper2,Paper3,Paper7} derives the
 cosmological expansion rate algebraically:
 \begin{equation}
-  \Hzero^{\rm alg} \;=\; 3(\phiG+\pi)^2 \;\approx\; 67.962\;\text{km/s/Mpc}\,,
+  \Hzero^{\rm alg} \;=\; 3(\phiG+\pi)^2 \;\approx\; 67.96214\;\text{km/s/Mpc}\,,
   \label{eq:H0alg}
 \end{equation}
 which agrees with Planck at the $1.1\sigma$ level
@@ -122,9 +130,10 @@ which agrees with Planck at the $1.1\sigma$ level
 
 In this paper we show that the same algebraic structure that produces
 $\Hzero^{\rm alg}$ also produces a local kinematic correction
-$\fsc \approx 0.06725$ from the SSEE algebra. Applied to the
-global background anchor $H_0 = 3(\phiG+\pi)^2 = 67.962$~km/s/Mpc,
-this predicts $H_0^{\rm local} = 72.86$ km/s/Mpc ($0.17\sigma$ from SH0ES).
+$\fsc \approx 0.06725$ from the SSEE algebra. Applied to the measured
+local rate $H_0^{\rm SH0ES} = 73.04\pm1.04$~km/s/Mpc, this returns a global
+background rate $H_0^{\rm glob} = 68.13$ km/s/Mpc, to be compared with the
+algebraic number $3(\phiG+\pi)^2 = 67.96214$ ($0.17\sigma$).
 The derivation combines two results already established in this series:
 \begin{enumerate}
   \item From Paper~7 \citep{Paper7}: the pressure-dilution rate
@@ -373,7 +382,7 @@ $H_{\rm local} \approx H_{\rm global}(1 + \fsc)$, i.e.\ the \emph{multiplicative
 form at leading order.  The exact form $H_{\rm global}/(1-\fsc)$ follows from
 the disformal-path compression of Appendix~\ref{app:hubble_integral}.
 
-The additive form $H_0^{\rm alg} + \Delta H$ would correspond to a peculiar-velocity
+The additive form $H_0^{\rm glob} + \Delta H$ would correspond to a peculiar-velocity
 bias $\Delta v = c\,\Delta H/H$ rather than a genuine dark-energy density correction;
 these are physically distinct quantities and should not be conflated.
 
@@ -403,10 +412,10 @@ $\sK$    & $3\AURA(\pi-\phiG)/(2\Omega^2)$ & $0.403302$ & Eq.~\eqref{eq:alphaK_a
 $3\MIRA$     & $3\AURA/2$             & $5.9967$       & Eq.~\eqref{eq:3MIRA} \\
 $\fsc = \sK/(3\MIRA)$ & $(\pi-\phiG)/\Omega^2$ & $0.067253$ & Eq.~\eqref{eq:fscreen_identity} \\
 \midrule
-$H_0 = \Hzero^{\rm alg}$ (global anchor) & $3\Omega^2$ & $67.962$ km/s/Mpc & Paper~1 (Post.~D) \\
-$H_0^{\rm local}$ (canonical, mult.) & $H_0/(1-\fsc)$  & $72.86$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
-$H_0^{\rm local}$ (canonical, add.)  & $H_0(1+\fsc)$   & $72.53$ km/s/Mpc & --- \\
-$H_0^{\rm SH0ES}$            & ---            & $73.04\pm1.04$ km/s/Mpc & \citet{Riess2022} \\
+$H_0^{\rm SH0ES}$ (\emph{input}, measured) & --- & $73.04\pm1.04$ km/s/Mpc & \citet{Riess2022} \\
+$H_0^{\rm glob}$ (canonical, mult.) & $H_0^{\rm SH0ES}(1-\fsc)$ & $68.13$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
+$H_0^{\rm glob}$ (canonical, add.)  & $H_0^{\rm SH0ES}/(1+\fsc)$ & $68.44$ km/s/Mpc & --- \\
+$3\Omega^2$ (pure number, target) & $3(\phiG+\pi)^2$ & $67.96214$ & Paper~1 (Post.~D) \\
 $H_0^{\rm Freedman}$         & ---            & $69.96\pm1.54$ km/s/Mpc & \citet{Freedman2024} \\
 Tension vs SH0ES (canonical) & ---            & $0.17\sigma$   & --- \\
 Tension vs Freedman (canonical) & ---         & $1.88\sigma$   & --- \\
@@ -422,9 +431,10 @@ Tension vs Freedman (canonical) & ---         & $1.88\sigma$   & --- \\
   \caption{%
     Hubble constant measurements from early-universe probes (blue), local
     distance-ladder probes (red), and the SSEE algebraic predictions (green).
-    The SSEE canonical multiplicative IR prediction (applied to the global
-    anchor $H_0=3(\phiG+\pi)^2=67.962$) is $H_0^{\rm local}=72.86$ km/s/Mpc,
-    $0.17\sigma$ from SH0ES and $1.88\sigma$ from Freedman 2024 \citep{Freedman2024}.
+    The SSEE canonical multiplicative IR cascade takes the measured local
+    rate as input and returns $H_0^{\rm glob}=68.13$ km/s/Mpc from SH0ES
+    ($0.17\sigma$ from $3(\phiG+\pi)^2$) and $65.26$ km/s/Mpc from
+    Freedman 2024 \citep{Freedman2024} ($1.88\sigma$).
     The superseded MIRA-mapped value ($H_0^{\rm MIRA}=67.037 \to 71.87$,
     $1.12\sigma$) is shown for reference.
     Error bars show $\pm1\sigma$ uncertainties.
@@ -436,14 +446,15 @@ Tension vs Freedman (canonical) & ---         & $1.88\sigma$   & --- \\
   \centering
   \includegraphics[width=0.85\textwidth]{../results/figures/fig_paper9_fscreen_z.pdf}
   \caption{%
-    \textit{Top:} Screening fraction $f_{\rm screen}(z)=\alpha_K(z)/(3\mathcal{M})$
+    \textit{Top:} Screening fraction $f_{\rm screen}(z)=\sK(z)/(3\mathcal{M})$
+    (with $\sK$, not the Bellini--Sawicki $\alpha_K$)
     as a function of redshift, computed from the CPL dark energy density evolving
     with $w_0=-0.839950$, $w_a=-0.669975$.  At $z=0$, $f_{\rm screen}=0.06725$
     (dashed line); at $z\gtrsim2$ the scalar kinetic energy is negligible.
-    \textit{Bottom:} Corresponding effective local Hubble constant
-    $H_0^{\rm local}(z)=H_0^{\rm alg}/(1-f_{\rm screen}(z))$ (solid green),
-    with the SH0ES band $73.04\pm1.04$ km/s/Mpc (dash-dot red)
-    and the algebraic background value $H_0^{\rm alg}=67.962$ km/s/Mpc (dotted blue).
+    \textit{Bottom:} Corresponding global background rate
+    $H_0^{\rm glob}(z)=H_0^{\rm SH0ES}\,(1-f_{\rm screen}(z))$ (solid green),
+    with the SH0ES input band $73.04\pm1.04$ km/s/Mpc (dash-dot red)
+    and the dimensionless algebraic target $3(\phiG+\pi)^2=67.96214$ (dotted blue).
   }
   \label{fig:fscreen_z}
 \end{figure}
@@ -462,7 +473,7 @@ different epochs:
   \item The CMB infers $H_0$ via the angular scale $\theta_* = r_d/D_A(z_*)$
         at $z_* \approx 1100$, where the SSEE dark energy density is
         $\Omde(z_*) \sim 10^{-9}$ and the scalar kinetic energy is negligible.
-        The inferred value is $H_0^{\rm alg} = 3(\phiG+\pi)^2$.
+        The inferred value is $H_0^{\rm glob} = 3(\phiG+\pi)^2$.
   \item SH0ES measures $H_0$ via the distance ladder at $z < 0.15$, where
         $\sDE \approx 0.840$ and the scalar field is kinetically active.
 \end{itemize}
@@ -487,43 +498,63 @@ Depending on whether this contribution is treated as multiplicative
 (geometric correction to the expansion rate) or additive (linear
 superposition), the inferred local Hubble constant takes one of two values:
 
-Applied to the global background anchor
-$H_0=3(\phiG+\pi)^2=67.962$~km/s/Mpc (Postulate~D, the single dimensionful
-input shared by every sector of the suite):
+\paragraph{Which end is the input.}
+The lens is a pure number: $\fsc$ is built from $\sK$ and $\MIRA$, both fixed
+by the equation of state and by $\phiG,\pi$ alone, so it contains no factor of
+$H$ and no density. It does not ask which $H$ enters --- it converts one
+measured rate into the other. The direction is therefore set by what is
+actually measured, and only one expansion rate is: the local one. The SH0ES
+distance ladder \citep{Riess2022} yields $H_0^{\rm SH0ES}=73.04\pm1.04$~km/s/Mpc
+from Cepheid-calibrated supernovae. The Planck value is not an alternative
+input of the same kind: it is inferred rather than measured, and inferred
+within $\Lambda$CDM, whose free parameters are adjusted to the data --- so the
+$H_0$ it reports is where those free parameters land, not an independent
+determination. We therefore take SH0ES as the input throughout:
 \begin{equation}
-  H_0^{\rm local} \;=\; \frac{H_0}{1-\fsc}
-  \;=\; \frac{67.962}{1 - (\pi-\phiG)/(\phiG+\pi)^2}
-  \;\approx\; 72.86\;\text{km/s/Mpc}
+  H_0^{\rm glob} \;=\; H_0^{\rm SH0ES}\,(1-\fsc)
+  \;=\; 73.04\times\left[1 - \frac{\pi-\phiG}{(\phiG+\pi)^2}\right]
+  \;=\; 68.13\;\text{km/s/Mpc}
   \quad[\text{multiplicative}]\,,
   \label{eq:H0local}
 \end{equation}
 \begin{equation}
-  H_0^{\rm local} \;=\; H_0\,(1+\fsc)
-  \;\approx\; 72.53\;\text{km/s/Mpc}
+  H_0^{\rm glob} \;=\; \frac{H_0^{\rm SH0ES}}{1+\fsc}
+  \;=\; 68.44\;\text{km/s/Mpc}
   \quad[\text{additive}]\,.
   \label{eq:H0local_add}
 \end{equation}
 
-The difference between the two forms is of order $\fsc^2 \approx 0.33$ km/s/Mpc.
-Tension against SH0ES \citep{Riess2022} ($73.04\pm1.04$):
+The difference between the two forms is of order $\fsc^2 \approx 0.31$ km/s/Mpc.
+The output is then compared with the dimensionless algebraic number
+$3(\phiG+\pi)^2 = 67.96214$ (Postulate~D, Paper~1). The residual is $0.166$ in
+the multiplicative form and $0.475$ in the additive one, i.e.\ in units of the
+propagated SH0ES uncertainty $1.04\times(1-\fsc) = 0.970$:
 \begin{equation}
   \Delta_{\rm mult} = 0.17\sigma\,, \qquad \Delta_{\rm add} = 0.49\sigma\,.
   \label{eq:tensions}
 \end{equation}
+These are the same two numbers reported in earlier versions of this paper,
+which ran the cascade in the opposite direction; the tensions are invariant
+under the inversion because the lens is multiplicative. What changes is the
+epistemic status of the comparison. A pure number cannot serve as the input of
+a dimensionful cascade, so $3(\phiG+\pi)^2$ is not an anchor that the model
+assumes: it is a target the model either hits or misses, and the hit is the
+result.
 
 \paragraph{Superseded MIRA-mapped value.}
 The earlier register applied the same mechanism to the CMB-mapped value
 $H_0^{\rm MIRA}=67.037$, giving $H_0^{\rm local}=71.87$ ($1.12\sigma$). Under
 the 2026 $\omega_m$-direct reframe the suite adopts the single algebraic anchor
-$H_0^{\rm alg}=3(\varphi+\pi)^2=67.962$ as the global background --- with no
+$3(\varphi+\pi)^2=67.96214$ as the algebraic target --- with no
 matter factor ($\Omega_{m,\rm CMB}=\omega_m/h^2$; Paper~1) --- so the cascade is
-anchored on $67.962$ and the MIRA-mapped value is retired as canonical.
+anchored on $67.96214$ and the MIRA-mapped value is retired as canonical.
 
 \paragraph{Comparison with TRGB/JWST.}
 The TRGB+JWST measurement of \citet{Freedman2024} yields
 $H_0 = 69.96\pm1.54$\,km/s/Mpc, placing the canonical SSEE multiplicative
-prediction $H_0^{\rm local} = 72.86$\,km/s/Mpc at $\sim 1.88\sigma$ from this
-anchor.
+cascade at $\sim 1.88\sigma$: run on the Freedman datum the lens returns
+$H_0^{\rm glob} = 69.96\times(1-\fsc) = 65.26$\,km/s/Mpc, low by $2.70$
+against $3(\phiG+\pi)^2$.
 The discrepancy relative to Freedman suggests that, while the kinematic
 screening mechanism is consistent with resolving the SH0ES tension, the full picture of
 local $H_0$ measurements remains internally inconsistent at the $\sim 2\sigma$
@@ -540,14 +571,14 @@ measures the luminosity distance $d_L(z) = (1+z)\!\int_0^z \!dz'/H(z')$ via
 Cepheid-calibrated Type~Ia supernovae at $z \lesssim 0.15$.
 In the SSEE background, the scalar kinetic energy density contributes a fraction
 $\fsc$ to the local Friedmann equation, boosting $H(z)$ by a factor
-$(1-\fsc)^{-1}$ relative to $H_0^{\rm alg}$.
+$(1-\fsc)^{-1}$ relative to $H_0^{\rm glob}$.
 The integrand $1/H(z')$ is therefore reduced by $(1-\fsc)$, compressing $d_L$,
 and a standard FLRW analysis that fits a single $H_0$ to the compressed $d_L$
-recovers $H_0^{\rm local} = H_0^{\rm alg}/(1-\fsc)$.
+recovers $H_0^{\rm local} = H_0^{\rm glob}/(1-\fsc)$.
 The additive form~\eqref{eq:H0local_add} represents a linearisation $(1-\fsc)^{-1} \approx 1+\fsc$
-and carries a second-order error of $O(\fsc^2) \approx 0.33$\,km/s/Mpc.
+and carries a second-order error of $O(\fsc^2) \approx 0.31$\,km/s/Mpc.
 Appendix~\ref{app:hubble_integral} provides the explicit derivation: the
-disformal path compression of Paper~8 gives $d_L^{\rm obs}(z) = (1-\fsc)\,d_L^{\rm alg}(z)$,
+disformal path compression of Paper~8 gives $d_L^{\rm obs}(z) = (1-\fsc)\,d_L^{\rm glob}(z)$,
 from which the multiplicative form follows exactly at $O(z)$.
 The $z$-variation of $\fsc$ over $[0, 0.15]$ shifts $H_0^{\rm local}$ by
 $< 0.05$\,km/s/Mpc, confirming that the multiplicative form~\eqref{eq:H0local} is the one to adopt.
@@ -606,14 +637,14 @@ at $z < 0.15$ through the scalar kinetic energy, a physically distinct sector.
 \toprule
 Paper & Key result & Affected by $\fsc$? \\
 \midrule
-1 (Framework) & $H_0^{\rm alg} = 3(\phiG+\pi)^2$ & No — $H_0^{\rm alg}=67.962$ is
-               the global background anchor (Postulate~D); the superseded
+1 (Framework) & $3(\phiG+\pi)^2$ & No --- a pure number, the target the
+               cascade output is compared against (Postulate~D); the superseded
                MIRA-mapped $67.037$ is retired \\
-2 (MCMC DESI) & MCMC posterior $\Hzero = 67.79 \pm 0.35$ (prior $H_0^{\rm alg}$) & No —
+2 (MCMC DESI) & MCMC posterior $\Hzero = 67.79 \pm 0.35$ (prior $H_0^{\rm glob}$) & No —
                MCMC measures the global background, not local \\
 3 (CMB)       & $r_d = 147.2$ Mpc, peaks at $\ell=220,540,810$ & No —
                $\fsc$ does not shift $r_d$ or $\theta_*$ \\
-4 (Sovereignties) & $H_0^{\rm alg}$ as first sovereignty & No —
+4 (Sovereignties) & $H_0^{\rm glob}$ as first sovereignty & No —
                $H_0^{\rm local}$ is a new sector \\
 5 (IS viscosity) & $\sigma_8 = 0.8136$, $G = D_1^{\rm SSEE}/D_1^{\Lambda{\rm CDM}} = 1.0032$ & No \\
 6 (growth) & $S_8=0.7555\pm0.0192$ vs.\ raw KiDS-1000 & No \\
@@ -643,12 +674,13 @@ We therefore register the following pre-committed prediction:
 \begin{quote}
 \textbf{SSEE predicts:}
 \begin{equation}
-  H_0^{\rm local} = \frac{H_0}{1-(\pi-\phiG)/(\phiG+\pi)^2}
-  = \frac{67.962}{1-0.06725} = 72.86\;\text{km/s/Mpc}\,,
+  H_0^{\rm glob} = H_0^{\rm SH0ES}\left[1-\frac{\pi-\phiG}{(\phiG+\pi)^2}\right]
+  = 73.04\times(1-0.06725) = 68.13\;\text{km/s/Mpc}\,,
   \label{eq:prediction}
 \end{equation}
-where $H_0=3(\phiG+\pi)^2=67.962$~km/s/Mpc is the global background anchor
-(Postulate~D, Paper~1), shared with the CMB sector as the same global value---the
+where the output is compared against the pure number
+$3(\phiG+\pi)^2=67.96214$ (Postulate~D, Paper~1), the same value the CMB sector
+recovers---the
 CMB matter density is the $\omega_m$-direct forward identity
 $\Omega_{m,\rm CMB}=\omega_m/h^2$, with \emph{no} matter factor (OP-8 dissolved).
 \textit{Current status}: $0.17\sigma$ from SH0ES \citep{Riess2022}.
@@ -726,7 +758,10 @@ referee would use to discriminate the proposals.
 EDE, SIDR, and late-DE transitions are representative ranges from the
 literature \citep{Poulin2019,Smith2020,Hill2020,Kreisch2020,Aloni2022,Schoneberg2022};
 the SSEE row is the result of this paper.  ``Free params'' counts parameters
-\emph{beyond} the six of $\Lambda$CDM.}
+\emph{beyond} the six of $\Lambda$CDM.  The other proposals raise a
+\emph{predicted} local $H_0$ towards SH0ES; SSEE instead takes the measured
+local rate as input and predicts the global one, so its residual is that of
+$H_0^{\rm SH0ES}(1-\fsc)$ against the algebraic $3(\phiG+\pi)^2$.}
 \label{tab:comparison}
 \begin{tabular}{lccccc}
 \toprule
@@ -735,8 +770,8 @@ Axis & $\Lambda$CDM & EDE & SIDR & Late-DE & \textbf{SSEE} \\
 Mechanism epoch        & ---       & $z\sim 3000$ & $z\gtrsim 1000$ & $z<0.1$ & $z<0.15$ \\
 Modifies $r_d$?        & ---       & Yes ($-$few\%) & Yes (via $\Delta N_{\rm eff}$) & No & \textbf{No} \\
 Free parameters        & 0         & 3            & 1--3            & 2+      & \textbf{0} \\
-$H_0$ (km/s/Mpc)       & $67.4$    & $71$--$72.5$ & $70$--$71.8$    & $\sim 72$ & $\mathbf{72.86}$ \\
-Residual vs SH0ES      & $5\sigma$ & $1.6$--$2\sigma$ & $2$--$3\sigma$ & $\sim 1\sigma$ & $\mathbf{0.17\sigma}$ \\
+Local $H_0$ (km/s/Mpc) & $67.4$    & $71$--$72.5$ & $70$--$71.8$    & $\sim 72$ & \textbf{input} \\
+Residual                & $5\sigma$ & $1.6$--$2\sigma$ & $2$--$3\sigma$ & $\sim 1\sigma$ & $\mathbf{0.17\sigma}$ \\
 $S_8$ side-effect      & ---       & Worsens      & Mild            & Variable & \textbf{None} \\
 CMB peak shift         & ---       & Yes          & Yes             & No       & \textbf{No} \\
 \bottomrule
@@ -803,7 +838,7 @@ mutually reinforcing arguments:
 \begin{enumerate}[label=(\roman*),itemsep=0pt]
   \item \textbf{Disformal path compression} (Appendix~\ref{app:hubble_integral}):
     the MIRA lensing factor compresses the apparent comoving distance by $(1-\fsc)$,
-    giving $H_0^{\rm local} = H_0^{\rm alg}/(1-\fsc)$ exactly at leading order in~$z$.
+    giving $H_0^{\rm local} = H_0^{\rm glob}/(1-\fsc)$ exactly at leading order in~$z$.
   \item \textbf{Separate-universe k-essence} (\S\,\ref{sec:sep_universe}):
     the local Hubble rate in an overdense region satisfies
     $H_{\rm local}^2 = H_{\rm global}^2(1 + \fsc\,\delta_{\rm local})$
@@ -815,7 +850,7 @@ mutually reinforcing arguments:
     and is reproduced identically by both the pressure-dilution rate and the disformal-sector
     computations.
 \end{enumerate}
-The additive form carries a residual $\fsc^2\,H_0^{\rm alg} \approx 0.33$\,km/s/Mpc
+The additive form carries a residual $\fsc^2\,H_0^{\rm glob} \approx 0.31$\,km/s/Mpc
 second-order error, negligible at current SH0ES precision but physically incorrect.
 The variation of $\fsc(z)$ over $z\in[0,0.15]$ shifts $H_0^{\rm local}$ by less
 than $0.05$\,km/s/Mpc (Appendix, Step~4).
@@ -823,7 +858,7 @@ than $0.05$\,km/s/Mpc (Appendix, Step~4).
 \paragraph{UV completion of $M$ (addressed in Paper~10).}
 The algebraic identity $\fsc = \sK/(3\MIRA) = (\pi-\phiG)/(\Omega^2)$ does not
 depend on $M$ (it cancels in the ratio), so the canonical prediction
-$H_0^{\rm local} = 72.86$\,km/s/Mpc ($0.17\sigma$, global anchor $H_0=3(\phiG+\pi)^2$) is robust.
+$H_0^{\rm glob} = 68.13$\,km/s/Mpc ($0.17\sigma$ from $3(\phiG+\pi)^2$) is robust.
 Paper~10 of this series \citep{Paper10} derives $M^4 = 45\alpha^2\rho_{\rm crit} = 5\phiG^8\rho_{\rm crit}$
 from the same $\alpha$-attractor that governs inflation (Paper~1), yielding
 $\sK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value) and the UV value
@@ -846,15 +881,15 @@ disformal null geodesic.
 The structural constant $\AURA = 2\MIRA$ cancels exactly in the ratio,
 leaving a pure function of the two fundamental constants $\phiG$ and $\pi$.
 
-Applied as a local correction to the global background anchor
-$H_0=3(\phiG+\pi)^2=67.962$\,km/s/Mpc, this gives the canonical prediction
+Applied to the measured local rate, the lens gives the canonical result
 \begin{equation}
-  H_0^{\rm local} = \frac{H_0}{1-(\pi-\phiG)/(\phiG+\pi)^2}
-  \approx 72.86\;\text{km/s/Mpc}\,,
+  H_0^{\rm glob} = H_0^{\rm SH0ES}\left[1-\frac{\pi-\phiG}{(\phiG+\pi)^2}\right]
+  \approx 68.13\;\text{km/s/Mpc}\,,
 \end{equation}
-which is $0.17\sigma$ from SH0ES \citep{Riess2022} with zero free parameters.
+which is $0.17\sigma$ from the algebraic $3(\phiG+\pi)^2$ with zero free
+parameters, the SH0ES datum \citep{Riess2022} being the input.
 The earlier MIRA-mapped value $67.037\to71.87$ ($1.12\sigma$) is superseded by
-the single global anchor under the 2026 reframe (Paper~1).
+the single algebraic target under the 2026 reframe (Paper~1).
 The correction is a late-time effect ($z < 0.15$) driven by the scalar
 kinetic energy of the dark energy field; it does not modify the sound
 horizon $r_d$, the CMB peak structure, or the growth factor $\sigma_8$
@@ -867,7 +902,7 @@ this prediction.
 
 \paragraph{Age of the universe cross-check.}
 As an independent consistency test, we compute the age of the SSEE universe
-using the canonical value $H_0^{\rm local} = 72.86$\,km/s/Mpc, the dynamical-sector matter density
+using the measured local rate $H_0^{\rm SH0ES} = 73.04$\,km/s/Mpc, the dynamical-sector matter density
 $\Omega_m = \Omega_{m,\rm dyn} = 0.160$ (Paper~1, Sec.~1.4, Two-$\Omega_m$
 Criterion: late-time $E(z)$ in CPL form uses the dynamical value), and the CPL
 dark energy equation of state \citep{Chevallier2001,Linder2003}
@@ -900,15 +935,15 @@ at this level.
 \label{app:postulateP}
 %% ─────────────────────────────────────────────────────────────────────────────
 
-The body reports the canonical prediction anchored on the global background
-$H_0=3(\phiG+\pi)^2=67.962$~km/s/Mpc: applying the derived screening gives
-$H_0^{\rm local}=72.86$ (IR, $0.17\sigma$) and, with the UV completion of
-Paper~10, $73.040$~km/s/Mpc ($0.00\sigma$ from SH0ES) --- reducing the
+The body reports the canonical cascade run on the measured local rate
+$H_0^{\rm SH0ES}=73.04\pm1.04$~km/s/Mpc: applying the derived screening gives
+$H_0^{\rm glob}=68.13$ (IR, $0.17\sigma$) and, with the UV completion of
+Paper~10, $67.96214$~km/s/Mpc ($4.3\times10^{-6}\sigma$) --- reducing the
 $\sim 5\sigma$ Planck--SH0ES discrepancy to below the percent level with zero
 free parameters.
 
 This appendix supplies the independent self-consistency check that motivates
-adopting $67.962$ as the global anchor: it works the screening chain
+adopting $67.96214$ as the algebraic target: it works the screening chain
 \emph{backwards} from the SH0ES datum, assuming no algebraic value in advance,
 and recovers exactly the same number.
 
@@ -925,20 +960,20 @@ exactly?} With $\fsc^{\rm UV}=0.069522$ from the $X^2/M^4$ correction of
 Paper~10,
 \begin{equation}
   H_0^{\rm base} \;=\; 73.040 \times (1 - 0.069522)
-                 \;=\; 67.962\;\text{km/s/Mpc}\,.
+                 \;=\; 67.96214\;\text{km/s/Mpc}\,.
   \label{eq:Hbase_value}
 \end{equation}
 This number is obtained by deducing \emph{backwards} from the data; $\phiG$ and
 $\pi$ have not yet been invoked.
 
 \paragraph{Step P2: the recovered value carries a double algebraic identity.}
-Only now do we ask whether $67.962$~km/s/Mpc has structure in the closed
+Only now do we ask whether $67.96214$~km/s/Mpc has structure in the closed
 $(\phiG,\pi)$ dictionary. It does, in two independent ways:
 \begin{equation}
   H_0^{\rm base}
   \;=\; \underbrace{3(\pi+\phiG)^2}_{\text{algebraic expression}}
   \;=\; \underbrace{\textsc{mikael}\times\Omega_{\rm DNAV}}_{\text{SSEE expression}}
-  \;=\; 67.962\;\text{km/s/Mpc}\,,
+  \;=\; 67.96214\;\text{km/s/Mpc}\,,
   \label{eq:double_identity}
 \end{equation}
 where $\Omega_{\rm DNAV}=\pi+\phiG=4.759627$ is the Stability Metric and
@@ -948,12 +983,12 @@ the lineage from $\textsc{mika}+\pi$ with $\textsc{mika}=K_v+\phiG=11.1373$. The
 the inverse-chain value~\eqref{eq:Hbase_value} is $-0.0001\%$.
 
 \paragraph{Status.}
-The background that SH0ES requires for exact closure ($67.962$) coincides, to
+The background that SH0ES requires for exact closure ($67.96214$) coincides, to
 five figures, with the algebraic anchor $3(\phiG+\pi)^2$ already present in the
 SSEE dictionary (and independently with $\textsc{mikael}\times\Omega_{\rm DNAV}$).
 This double identity --- recognised a posteriori, not fitted --- is the
 self-consistency evidence that, under the 2026 reframe, justifies adopting
-$67.962$ as the single global background anchor of the suite rather than the
+$67.96214$ as the single algebraic target of the suite rather than the
 CMB-mapped $67.037$ of the earlier register. The dimensional origin of the
 absolute scale (Postulate~D) remains an open problem, as in $\Lambda$CDM.
 
@@ -961,7 +996,7 @@ absolute scale (Postulate~D) remains an open problem, as in $\Lambda$CDM.
 \label{app:hubble_integral}
 %% ─────────────────────────────────────────────────────────────────────────────
 
-We derive $H_0^{\rm local} = H_0^{\rm alg}/(1-\fsc)$ directly from the distance
+We derive $H_0^{\rm local} = H_0^{\rm glob}/(1-\fsc)$ directly from the distance
 integral, resolving the ambiguity between equations~\eqref{eq:H0local}
 and~\eqref{eq:H0local_add}.
 
@@ -1010,7 +1045,7 @@ Photons with speed $\tilde{c} = c/(1-\fsc)$ travel a comoving interval
 $d\chi = \tilde{c}\,dt/a = (c/a)\,dt\,(1+\fsc)$ instead of $c\,dt/a$.
 The apparent comoving distance to a source at redshift $z$ is therefore
 \begin{equation}
-  \chi^{\rm SSEE}(z) \;=\; (1-\fsc)\,\chi^{\rm alg}(z)\,,
+  \chi^{\rm SSEE}(z) \;=\; (1-\fsc)\,\chi^{\rm glob}(z)\,,
   \label{eq:chi_compress}
 \end{equation}
 because the MIRA lensing factor compresses the total path length.
@@ -1018,24 +1053,33 @@ Equation~\eqref{eq:chi_compress} is the same suppression that Paper~8
 identifies as responsible for the lensing amplification
 $\theta_E^{\rm SSEE} \approx \MIRA\,\theta_E^{\rm GR}$.
 
-\paragraph{Step 3: the observed $H_0$ is the algebraic value boosted by $(1-\fsc)^{-1}$.}
+\paragraph{Step 3: the observed $H_0$ is the global value boosted by $(1-\fsc)^{-1}$.}
 
 Substituting~\eqref{eq:chi_compress} into $d_L^{\rm obs} = (1+z)\chi^{\rm SSEE}(z)$:
 \begin{equation}
-  d_L^{\rm obs}(z) \;=\; (1-\fsc)\,d_L^{\rm alg}(z)
-                   \;=\; (1-\fsc)\,\frac{z}{H_0^{\rm alg}}
+  d_L^{\rm obs}(z) \;=\; (1-\fsc)\,d_L^{\rm glob}(z)
+                   \;=\; (1-\fsc)\,\frac{z}{H_0^{\rm glob}}
                          + \mathcal{O}(z^2)\,.
   \label{eq:dL_SSEE}
 \end{equation}
 A standard FLRW fit to $d_L^{\rm obs} = z/H_0^{\rm local}$ therefore returns
 \begin{equation}
-  \boxed{H_0^{\rm local} \;=\; \frac{H_0^{\rm alg}}{1-\fsc}}\,.
+  \boxed{H_0^{\rm local} \;=\; \frac{H_0^{\rm glob}}{1-\fsc}}\,.
   \label{eq:H0mult_derived}
 \end{equation}
 This is the multiplicative form, derived from the separate-universe analysis.
-The additive approximation $H_0^{\rm alg}(1+\fsc)$ follows from the
+The additive approximation $H_0^{\rm glob}(1+\fsc)$ follows from the
 Taylor expansion $(1-\fsc)^{-1}\approx 1+\fsc$ and carries a residual
-error $\fsc^2\,H_0^{\rm alg} \approx 0.33$\,km/s/Mpc.
+error $\fsc^2\,H_0^{\rm glob} \approx 0.31$\,km/s/Mpc.
+
+\paragraph{Which end is measured.}
+Eq.~\eqref{eq:H0mult_derived} is a relation between two dimensionful rates,
+and the derivation above says nothing about which of the two is known. That is
+supplied by observation, not by the model: the distance ladder measures
+$H_0^{\rm local}$, so the relation is used in the form
+$H_0^{\rm glob} = H_0^{\rm local}(1-\fsc)$ throughout this paper. The
+dimensionless $3(\phiG+\pi)^2$ never enters the cascade; it is what the output
+is compared against.
 
 \paragraph{Step 4: $\fsc$ is exactly constant.}
 \label{sec:step4}

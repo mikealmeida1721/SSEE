@@ -5,12 +5,12 @@ M⁴ = 45α² × ρ_crit = 5φ⁸ × ρ_crit
 Verifies, step by step:
   Step 1: Algebraic identity 45α² = 5φ⁸  (α = φ⁴/3, Paper 1 α-attractor)
   Step 2: Self-consistent X_bg from full K(X) = X/KAL + X²/M⁴
-  Step 3: αK_full from Bellini-Sawicki with K_X and K_XX contributions
-  Step 4: f_screen_full = αK_full / (3·MIRA)  →  H₀,local
+  Step 3: s_K_full from Bellini-Sawicki with K_X and K_XX contributions
+  Step 4: f_screen_full = s_K_full / (3·MIRA)  →  H₀,local
 
 The UV ladder:
   φ  →  α = φ⁴/3  →  M⁴ = 45α² ρ_crit = 5φ⁸ ρ_crit
-  →  αK_full = 0.41691  →  f_screen = 0.06952
+  →  s_K_full = 0.41691  →  f_screen = 0.06952
   →  H₀,local CANÓNICO = H_alg/(1−f_UV) = 73.040 km/s/Mpc (0.00σ SH0ES)
      [reframe ω_m-directo: H_alg es la base canónica; era H_MIRA 67.037 → 72.05]
 """
@@ -29,14 +29,22 @@ from ssee_core import (
 # ── Physical anchor: the ONE critical density ρ_crit of the model ─────────────
 # ρ_crit = 3 H₀² M_Pl²  (reduced Planck mass). There is a SINGLE critical density
 # in SSEE; it enters every dimensionful quantity (X_bg, M⁴, ρ_DE) as a common
-# scale and cancels exactly in αK, f_screen and the H₀ boost (all of these are
+# scale and cancels exactly in s_K, f_screen and the H₀ boost (all of these are
 # ratios). We pin ρ_crit to its canonical model value so X_bg and M⁴ carry real
 # meV⁴ units — no implicit ρ_crit = 1 (which would leave them ambiguous to a
 # referee even though the observable chain is invariant). Anchor (reframe
 # ω_m-directo 2026-06-19): H_alg = 67.962 = global background H = CMB anchor.
 H_ANCHOR     = 67.962              # km/s/Mpc — H_alg = 3(φ+π)² (reframe; era H_MIRA 67.037)
 M_PL_eV      = 2.435323e27         # reduced Planck mass [eV]
-H0_PER_h_eV  = 2.1331951e-33       # 100 km/s/Mpc expressed in eV
+# FIX 2026-08-10: decia 2.1331951e-33 (error relativo 3.54e-5 -> 7.07e-5 en
+# rho_crit, que va al cuadrado). DERIVADO, no copiado:
+#   hbar = 6.582119569e-16 eV*s          (CODATA 2018)
+#   Mpc  = 3.0856775814913673e22 m       (IAU: 648000/pi UA)
+#   100 km/s/Mpc = 1e5/Mpc = 3.240779289444365e-18 1/s
+#   x hbar       = 2.133119677986167e-33 eV
+# No afecta Omega_m ni Omega_DE (el factor cancela en el cociente); si afecta
+# rho_crit en meV^4 y por tanto M = (5 phi^8 rho_crit)^(1/4).
+H0_PER_h_eV  = 2.133119677986167e-33   # 100 km/s/Mpc en eV (derivado arriba)
 H_ANCHOR_eV  = (H_ANCHOR / 100.0) * H0_PER_h_eV
 RHO_CRIT_eV4 = 3.0 * H_ANCHOR_eV**2 * M_PL_eV**2   # eV⁴
 RHO          = RHO_CRIT_eV4 * 1e12               # meV⁴ ≈ 36.41  (1 meV⁴ = 1e-12 eV⁴)
@@ -54,13 +62,15 @@ M4_UV    = M4_ratio * RHO         # meV⁴ — physical UV cutoff⁴ (= 5φ⁸ �
 identity = abs(45 * alpha_attr**2 - 5 * phi**8)
 
 # ── Step 2: IR (Paper 9) reference values ────────────────────────────────────
-# αK_IR from K(X) = X/KAL + Friedmann (Papers 7 + 9)
-alpha_K_IR = 3 * Omega_DE * (1 + w0)          # = 3AURA(π−φ)/(2Ω²)  [dimensionless]
-rho_DE_1pw = (alpha_K_IR / 3) * RHO            # = Ω_DE·(1+w₀)·ρ_crit  [meV⁴]
-X_bg_IR    = alpha_K_IR * KAL / 6 * RHO        # self-consistent X, IR limit  [meV⁴]
+# s_K_IR — RENOMBRADA 2026-08-10: NO es s_K (kineticidad Bellini-Sawicki,
+# que es 3*v^2/KAL, evoluciona, hoy 0.150703). s_K es puro EoS y no evoluciona.
+# Omega_DE aqui es ALIAS de S_DE = 0.839950 (saturacion, NO densidad).
+s_K_IR = 3 * Omega_DE * (1 + w0)          # = 3AURA(π−φ)/(2Ω²)  [dimensionless]
+rho_DE_1pw = (s_K_IR / 3) * RHO            # = Ω_DE·(1+w₀)·ρ_crit  [meV⁴]
+X_bg_IR    = s_K_IR * KAL / 6 * RHO        # self-consistent X, IR limit  [meV⁴]
 
 # f_screen_IR from Paper 9 (AURA cancels)
-f_screen_IR = (pi - phi) / Omega**2            # = αK_IR / (3·MIRA) exactly
+f_screen_IR = (pi - phi) / Omega**2            # = s_K_IR / (3·MIRA) exactly
 
 # ── Step 3: self-consistent X_bg from full K(X) = X/KAL + X²/M⁴ ─────────────
 # Background EOM:  2X K_X = ρ_DE(1+w₀)
@@ -73,18 +83,18 @@ X_bg_UV = (-b + np.sqrt(disc)) / (2*a)        # physical (positive) root
 
 X_ratio = X_bg_UV / X_bg_IR                   # should be close to 1 for M⁴ >> X²
 
-# ── Step 4: αK_full (Bellini-Sawicki, full K) ─────────────────────────────────
-# αK = 2(X K_X + 2X² K_XX) / (M²_Pl H²),  with M²_Pl H² = ρ_crit/3.
-# Both numerator and denominator scale with ρ_crit → αK is invariant (anchor-free).
+# ── Step 4: s_K_full (Bellini-Sawicki, full K) ─────────────────────────────────
+# s_K = 2(X K_X + 2X² K_XX) / (M²_Pl H²),  with M²_Pl H² = ρ_crit/3.
+# Both numerator and denominator scale with ρ_crit → s_K is invariant (anchor-free).
 MplH2   = RHO / 3.0                            # M²_Pl H² = ρ_crit/3  [meV⁴]
 K_X_UV  = 1.0/KAL + 2*X_bg_UV/M4_UV            # dimensionless (X/M⁴ is a ratio)
 K_XX_UV = 2.0/M4_UV                            # meV⁻⁴
-alpha_K_UV = 2 * (X_bg_UV*K_X_UV + 2*X_bg_UV**2*K_XX_UV) / MplH2
+s_K_UV = 2 * (X_bg_UV*K_X_UV + 2*X_bg_UV**2*K_XX_UV) / MplH2
 
-UV_correction = alpha_K_UV / alpha_K_IR - 1.0  # fractional increase
+UV_correction = s_K_UV / s_K_IR - 1.0  # fractional increase
 
 # ── Step 5: f_screen_full and H₀,local ──────────────────────────────────────
-f_screen_UV = alpha_K_UV / (3 * MIRA)
+f_screen_UV = s_K_UV / (3 * MIRA)
 H0_UV       = H0_alg / (1 - f_screen_UV)
 
 # Observational comparison
@@ -122,9 +132,9 @@ print(f"    φ²×5^(1/4)       = {phi**2 * 5**0.25:.8f}  ← algebraic form ✓
 
 print(f"\n── Step 2: IR (Paper 9) baseline ────────────────────────────────────")
 print(f"  w₀            = −AURA/Ω     = {w0:.8f}")
-print(f"  αK_IR         = 3Ω_DE(1+w₀) = {alpha_K_IR:.8f}  [Paper 7 + Friedmann]")
-print(f"  ρ_DE(1+w₀)    = αK_IR/3    = {rho_DE_1pw:.8f}")
-print(f"  X_bg_IR       = αK_IR×KAL/6 = {X_bg_IR:.8f}")
+print(f"  s_K_IR         = 3Ω_DE(1+w₀) = {s_K_IR:.8f}  [Paper 7 + Friedmann]")
+print(f"  ρ_DE(1+w₀)    = s_K_IR/3    = {rho_DE_1pw:.8f}")
+print(f"  X_bg_IR       = s_K_IR×KAL/6 = {X_bg_IR:.8f}")
 print(f"  f_screen_IR   = (π−φ)/Ω²  = {f_screen_IR:.8f}  [AURA cancels exactly]")
 print(f"  H₀,IR         = {H0_alg/(1-f_screen_IR):.4f} km/s/Mpc  →  {tension_IR:.2f}σ SH0ES")
 
@@ -136,16 +146,16 @@ print(f"  X_UV/X_IR        = {X_ratio:.8f}  (small suppression from UV term)")
 print(f"  X_bg_UV/M⁴       = {X_bg_UV/M4_UV:.8f}  ← dimensionless invariant (anchor-free)")
 print(f"  ε = X_bg_UV²/M⁴ = {X_bg_UV**2/M4_UV:.4e} meV⁴  (perturbative UV correction)")
 
-print(f"\n── Step 4: αK_full (Bellini-Sawicki) ───────────────────────────────")
+print(f"\n── Step 4: s_K_full (Bellini-Sawicki) ───────────────────────────────")
 print(f"  K_X  = 1/KAL + 2X/M⁴ = {K_X_UV:.10f}")
 print(f"  K_XX = 2/M⁴           = {K_XX_UV:.10f}")
-print(f"  αK_IR (K(X)=X/KAL)    = {alpha_K_IR:.8f}")
-print(f"  αK_UV (K full)        = {alpha_K_UV:.8f}")
-print(f"  αK_UV/αK_IR           = {alpha_K_UV/alpha_K_IR:.8f}  (+{UV_correction*100:.2f}%)")
-print(f"  Δ αK = +{(alpha_K_UV-alpha_K_IR):.6f}  (UV correction)")
+print(f"  s_K_IR (K(X)=X/KAL)    = {s_K_IR:.8f}")
+print(f"  s_K_UV (K full)        = {s_K_UV:.8f}")
+print(f"  s_K_UV/s_K_IR           = {s_K_UV/s_K_IR:.8f}  (+{UV_correction*100:.2f}%)")
+print(f"  Δ s_K = +{(s_K_UV-s_K_IR):.6f}  (UV correction)")
 
 print(f"\n── Step 5: f_screen_full and H₀,local ──────────────────────────────")
-print(f"  f_screen_UV = αK_full/(3·MIRA) = {f_screen_UV:.8f}")
+print(f"  f_screen_UV = s_K_full/(3·MIRA) = {f_screen_UV:.8f}")
 print(f"  f_screen_IR = (π−φ)/Ω²        = {f_screen_IR:.8f}")
 print(f"  Δf = +{(f_screen_UV-f_screen_IR):.6f}  (+{(f_screen_UV/f_screen_IR-1)*100:.2f}%)")
 print(f"")
@@ -156,25 +166,25 @@ print(f"  SH0ES (Riess 2022)  =              {H0_SH0ES:.4f} km/s/Mpc  ±{sigma_S
 print(f"")
 
 # ── UV ladder summary ─────────────────────────────────────────────────────────
-print(f"── UV ladder: φ → α → M⁴ → αK_full → H₀ ────────────────────────────")
+print(f"── UV ladder: φ → α → M⁴ → s_K_full → H₀ ────────────────────────────")
 print(f"  φ = {phi:.8f}")
 print(f"  α = φ⁴/3 = {alpha_attr:.8f}  (inflaton curvature → r=0.00813)")
 # ρ_crit^(1/4) = RHO_qrt meV con H_anchor=67.962 km/s/Mpc (H_alg, reframe)
 print(f"  M⁴ = 45α² = 5φ⁸ ρ_crit = {M4_UV:.4f} meV⁴  →  M = {M4_UV**0.25:.3f} meV")
-print(f"  αK_full = {alpha_K_UV:.5f}  (+{UV_correction*100:.2f}% over αK_IR={alpha_K_IR:.5f})")
+print(f"  s_K_full = {s_K_UV:.5f}  (+{UV_correction*100:.2f}% over s_K_IR={s_K_IR:.5f})")
 print(f"  f_screen = {f_screen_UV:.5f}")
 print(f"  H₀,local = {H0_UV:.4f} km/s/Mpc  ← {tension_UV:.4f}σ from SH0ES")
 
 print(f"\n── Cross-check: AURA cancellation at UV ──────────────────────────────")
-# At UV, AURA does NOT cancel in f_screen_full because αK_full ≠ αK_IR.
+# At UV, AURA does NOT cancel in f_screen_full because s_K_full ≠ s_K_IR.
 # But the numerical result still rounds to SH0ES.
 # The cancellation f_screen_UV = exact function of φ,π would require:
-# αK_full / (3·MIRA) = (π-φ)/Ω² × (1 + UV_corr)
-# The UV correction IS a function of AURA through αK_IR.
-AURA_check = alpha_K_UV / (3 * (pi - phi) / Omega**2)
-print(f"  αK_full / [(π−φ)/Ω²]  = {AURA_check:.8f}  (= 3·MIRA × αK_full/αK_full×...)")
-print(f"  Effective MIRA needed  = {alpha_K_UV/(3*f_screen_IR):.8f}  (vs MIRA={MIRA:.8f})")
-print(f"  ΔMIRA_eff              = +{alpha_K_UV/(3*f_screen_IR)-MIRA:.8f}  (UV correction to Paper 8 sector)")
+# s_K_full / (3·MIRA) = (π-φ)/Ω² × (1 + UV_corr)
+# The UV correction IS a function of AURA through s_K_IR.
+AURA_check = s_K_UV / (3 * (pi - phi) / Omega**2)
+print(f"  s_K_full / [(π−φ)/Ω²]  = {AURA_check:.8f}  (= 3·MIRA × s_K_full/s_K_full×...)")
+print(f"  Effective MIRA needed  = {s_K_UV/(3*f_screen_IR):.8f}  (vs MIRA={MIRA:.8f})")
+print(f"  ΔMIRA_eff              = +{s_K_UV/(3*f_screen_IR)-MIRA:.8f}  (UV correction to Paper 8 sector)")
 
 print(f"\n{sep}")
 print("VERDICT")
@@ -182,7 +192,7 @@ print(f"{sep}")
 print(f"""
   Step 1: M⁴ = 5φ⁸ ρ_crit = {M4_UV:.4f} meV⁴  [ratio 5φ⁸={M4_ratio:.4f}, |diff|={identity:.1e}]
   Step 2: X_bg_UV = {X_bg_UV:.6f} meV⁴  (X/M⁴ = {X_bg_UV/M4_UV:.2e} — perturbative ✓)
-  Step 3: αK_full = {alpha_K_UV:.6f}  = αK_IR × {alpha_K_UV/alpha_K_IR:.6f}  (+{UV_correction*100:.2f}%)
+  Step 3: s_K_full = {s_K_UV:.6f}  = s_K_IR × {s_K_UV/s_K_IR:.6f}  (+{UV_correction*100:.2f}%)
   Step 4: f_screen_UV = {f_screen_UV:.6f}  (+{(f_screen_UV/f_screen_IR-1)*100:.2f}% over Paper 9)
 
   CANÓNICO (reframe ω_m-directo 2026-06-19, base H_alg={H0_alg} km/s/Mpc):

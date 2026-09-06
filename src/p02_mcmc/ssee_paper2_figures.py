@@ -6,6 +6,7 @@ Fig 3: Omega_DE SSEE vs Lambda con contexto estructural
 Fig 4: KAL(x) interpolation — límites Newtoniano y MONDiano
 """
 
+import os
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -14,6 +15,15 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import Ellipse
 from matplotlib import gridspec
 from scipy import stats
+
+# Ancla a results/figures/ del repo, sin importar desde dónde se ejecute.
+_OUTDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       "..", "..", "results", "figures")
+os.makedirs(_OUTDIR, exist_ok=True)
+
+
+def _outpath(name):
+    return os.path.join(_OUTDIR, name)
 
 # ── Estilo global ──────────────────────────────────────────────
 plt.rcParams.update({
@@ -118,8 +128,8 @@ ax1.set_xlim(-1.35, -0.45)
 ax1.set_ylim(-1.6, 0.8)
 ax1.legend(loc="upper left", framealpha=0.9, fontsize=9)
 fig1.tight_layout()
-fig1.savefig("fig1_w0wa_plane.pdf")
-fig1.savefig("fig1_w0wa_plane.png")
+fig1.savefig(_outpath("fig1_w0wa_plane.pdf"))
+fig1.savefig(_outpath("fig1_w0wa_plane.png"))
 print("Fig 1 guardada: fig1_w0wa_plane.pdf/.png")
 
 
@@ -191,8 +201,8 @@ for i, (label, c2r) in enumerate(chi2s.items()):
                        edgecolor=color, alpha=0.7))
 
 fig2.tight_layout()
-fig2.savefig("fig2_cluster_sensitivity.pdf")
-fig2.savefig("fig2_cluster_sensitivity.png")
+fig2.savefig(_outpath("fig2_cluster_sensitivity.pdf"))
+fig2.savefig(_outpath("fig2_cluster_sensitivity.png"))
 print("Fig 2 guardada: fig2_cluster_sensitivity.pdf/.png")
 
 
@@ -287,8 +297,8 @@ ax3b.legend(handles=legend_handles, loc="lower center",
 ax3b.set_title("Descomposición energética\n(externo=SSEE, interno=ΛCDM)", fontsize=10)
 
 fig3.tight_layout()
-fig3.savefig("fig3_omega_de.pdf")
-fig3.savefig("fig3_omega_de.png")
+fig3.savefig(_outpath("fig3_omega_de.pdf"))
+fig3.savefig(_outpath("fig3_omega_de.png"))
 print("Fig 3 guardada: fig3_omega_de.pdf/.png")
 
 
@@ -349,8 +359,8 @@ ax4b.annotate(
 )
 
 fig4.tight_layout()
-fig4.savefig("fig4_KAL_interpolation.pdf")
-fig4.savefig("fig4_KAL_interpolation.png")
+fig4.savefig(_outpath("fig4_KAL_interpolation.pdf"))
+fig4.savefig(_outpath("fig4_KAL_interpolation.png"))
 print("Fig 4 guardada: fig4_KAL_interpolation.pdf/.png")
 
 print("\nTodas las figuras generadas exitosamente.")

@@ -123,9 +123,20 @@ check("L1 canónico   Om_m,CMB = ω_m/h² = 0.308881 (ω_m-directo, sin factor)"
 print("\nCapa 2 — parámetros cosmológicos derivados")
 
 Psc = Omega + phi
-Om_DE = Tr / Mv
-Om_m_dyn = 1 + w0
-alpha_K = 3 * Om_DE * Om_m_dyn
+# SATURACIONES (Postulado S) — no llevan H. Renombradas 2026-08-10: los nombres
+# Om_* sugerian densidad y NINGUNA de las dos lo es.
+s_DE = Tr / Mv                   # 0.839950 = |w0|
+s_M = 1 + w0                     # 0.160050
+Om_DE = s_DE                     # [ALIAS DEPRECADO]
+Om_m_dyn = s_M                   # [ALIAS DEPRECADO]
+# s_K — la cantidad que entra en f_screen. NO es alpha_K.
+# alpha_K (kineticidad Bellini-Sawicki) = 3*v^2/KAL con v = dphi/d(ln a): EVOLUCIONA
+# (hoy 0.150703, tiende a 0.480148). Probado 2026-08-10 que no hay ninguna epoca
+# donde el campo tenga a la vez las dos ranuras de s_K (ranura 1 en a=1.3654,
+# ranura 2 solo en a->infinito). s_K es puro EoS: 3*(-w0)*(1+w0). Sin densidad,
+# sin H. El VALOR nunca estuvo en duda; la etiqueta si.
+s_K = 3 * s_DE * s_M
+alpha_K = s_K                    # [ALIAS DEPRECADO] nombre incorrecto
 
 L2 = {
     "V-L2-01 w0":        (-Tr / Mv,                      -0.8399497713),
@@ -139,7 +150,7 @@ L2 = {
     "V-L2-05e MIRA·dyn [RETIRADO]": (MIRA * Om_m_dyn,        0.3199281880),
     "V-L2-06 H0^alg":    (3 * Omega ** 2,                 67.9621373234),
     "V-L2-07 n_s":       (1 - phi ** -7,                  0.9655581463),
-    "V-L2-08 alpha_K":   (alpha_K,                        0.4033024589),
+    "V-L2-08 s_K":       (s_K,                            0.4033024589),
     "V-L2-09 beta_c":    (-AURA,                         -3.9978473099),
     # El literal decía 0.0081306227 y el exacto es 0.0081306188: MAL en la 9ª
     # cifra. La tolerancia de 1e-6 lo tapaba (era 256× el peor residuo real).
@@ -242,8 +253,8 @@ check("V-L2-11c cierre ν: C_nu univaluada = 93.14 PDG en toda la cadena",
 n_kess = (Tr - Mv) / (2 * Tr)
 check("L2 identidad  w0 = 1/(2n-1)  (ruta k-essence)",
       abs(1 / (2 * n_kess - 1) - (-Tr / Mv)) < 1e-10)
-check("L2 identidad  f_screen = alpha_K/(3*MIRA) = (pi-phi)/Om^2",
-      abs(alpha_K / (3 * MIRA) - (pi - phi) / Omega ** 2) < 1e-10)
+check("L2 identidad  f_screen = s_K/(3*MIRA) = (pi-phi)/Om^2",
+      abs(s_K / (3 * MIRA) - (pi - phi) / Omega ** 2) < 1e-10)
 
 # Problemas ABIERTOS detectados en Capa 2 — comprobación dimensional.
 track_open("V-L2-06 H0^alg dimensional",
@@ -1901,6 +1912,35 @@ try:
           if not _nu_9407 else "94.07 SIN contexto explicativo en: "
           + ", ".join(_nu_9407) + " — o se explica, o se usa 93.14")
 
+    # Control de dos lados (R53, 2026-09-05). Esta regla ya se equivocó una vez
+    # por mirar sólo la PRIMERA aparición y con mayúsculas (marcó un Paper 6 que
+    # sí traía la explicación). Sin control, su «OK» no distingue «todos los
+    # 94.07 están explicados» de «el barrido no encuentra ninguno».
+    def _r17_marca(_txt):
+        """True si el texto usaría 94.07 sin su explicación cerca."""
+        # _CTX_OK y no _ctx: aquel se define DENTRO del bucle de archivos y no
+        # existe si todos cayeron en el `continue`. Usarlo aquí reventaba el
+        # try entero y se llevaba por delante _texs2/_prd, y con ellos R27,
+        # R29 y R30 — un control que rompe tres capas vecinas.
+        _ctx = tuple(_k.lower() for _k in _CTX_OK)
+        _b = _txt.lower()
+        _pos = _b.find("94.07")
+        while _pos != -1:
+            _v = _b[max(0, _pos - 2500): _pos + 2500]
+            if not any(_k in _v for _k in _ctx):
+                return True
+            _pos = _b.find("94.07", _pos + 1)
+        return False
+    _r17_desnudo = "El valor C_nu = 94.07 se usa en el calculo."
+    _r17_explic = ("Instantaneous decoupling gives 94.07; " * 1) + "C_nu cancels."
+    _r17_dos = _r17_explic + (" " * 6000) + " y ademas 94.07 aqui suelto."
+    check("R17 el detector distingue 94.07 explicado de 94.07 desnudo",
+          _r17_marca(_r17_desnudo) and not _r17_marca(_r17_explic)
+          and _r17_marca(_r17_dos) and not _r17_marca("solo 93.14 aqui"),
+          "4 casos: desnudo marcado; explicado limpio; SEGUNDA aparición lejos "
+          "de su contexto marcada (el bug histórico de mirar sólo la primera); "
+          "texto sin 94.07 limpio")
+
     # ── R18 — sin narrativa H0-posterior stale del reframe Ω_m-geometría ──
     # Remache forjado en la auditoría de Paper 2 (2026-07-10): el fix V-L4-DESI
     # (2026-07-09, sector frío 0.160 fuera de E(z)) se propagó al abstract/§2.4/§6.3
@@ -2433,6 +2473,25 @@ try:
           "ω_m = ω_b+ω_c+ω_ν algebraico; Ω_m se deriva por muestra"
           if not _R25_HITS else
           "PARAMETRIZACIÓN INVERTIDA en: " + "; ".join(_R25_HITS[:6]))
+
+    # Control de dos lados (R53, 2026-09-05). El barrido de arriba recorre el
+    # repo: si hoy no hay ningún sitio malo, su «OK» no distingue «no hay bug»
+    # de «el detector no mira». Estos casos fabricados lo separan.
+    def _r25_marca(_txt):
+        """True si el pase (b) marcaría este archivo."""
+        if not (_R25_CONST.search(_txt) and _R25_MAKE.search(_txt)):
+            return False
+        return not ("NO congelar" in _txt or "R25-control" in _txt
+                    or "R25-ok" in _txt)
+    _r25_bug = "Om = 0.308881\nom_m = Om * (H0/100)**2\n"
+    _r25_exento = "# R25-control\nOm = 0.308881\nom_m = Om * (H0/100)**2\n"
+    _r25_sano1 = "Om = 0.308881\nom_m = ob + oc + onu\n"     # constante, sin fabricar
+    _r25_sano2 = "Om = rho_m/rho_c\nom_m = Om * (H0/100)**2\n"  # derivada por muestra
+    check("R25 el detector distingue Ω_m congelado de Ω_m derivado",
+          _r25_marca(_r25_bug) and not _r25_marca(_r25_exento)
+          and not _r25_marca(_r25_sano1) and not _r25_marca(_r25_sano2),
+          "4 casos: bug marcado; anotado exento; Ω_m constante sin fabricar "
+          "y Ω_m derivada por muestra, ambos limpios")
 except Exception as e:
     check("R25 capa operable", False, str(e))
 
@@ -2806,6 +2865,22 @@ try:
           f"{len(_ANCLAS)} cantidades ancladas a su símbolo en {len(_texs2)} documentos "
           f"(política: álgebra 12 dec, modelo 6 dec)"
           if not _mal_red else f"MAL REDONDEADOS: {'; '.join(_mal_red[:6])}")
+
+    # Control de dos lados (R53, 2026-09-05). La detección de falsa precisión
+    # es: al literal medido le siguen dígitos que son TODOS ceros ⇒ relleno.
+    # Sin control, un «OK» no distingue «nadie rellena» de «no se busca».
+    def _r30_falsa(_txt, _lit):
+        for _m in _re2.finditer(_re2.escape(_lit) + r"(\d+)", _txt):
+            if _m.group(1) and _m.group(1).strip("0") == "":
+                return True
+        return False
+    check("R30 el detector distingue relleno de ceros de dígito significativo",
+          _r30_falsa("S_8 = 0.75900", "0.759")
+          and _r30_falsa("S_8 = 0.7590", "0.759")
+          and not _r30_falsa("S_8 = 0.759", "0.759")
+          and not _r30_falsa("S_8 = 0.7592", "0.759"),
+          "4 casos: 0.75900 y 0.7590 marcados (ceros de relleno); "
+          "0.759 exacto y 0.7592 (dígito real) limpios")
 except Exception as e:
     check("R30 capa operable", False, str(e))
 
@@ -3102,8 +3177,375 @@ try:
 except Exception as _e:
     check("R50 capa operable", False, str(_e))
 
+# ═══════════════════════════════════════════════════════════════════════════
+# R51 — LA ETIQUETA DE UNA CURVA GRAFICADA TIENE QUE NOMBRAR EL MISMO ANCLA
+# H0 QUE LA EXPRESIÓN QUE LA CALCULÓ (2026-08-06)
+#
+# POR QUÉ EXISTE. `fig_paper10_alphaK_vs_alpha.pdf` (Paper 10) graficaba
+# H0_arr = H0_global/(1-fscreen_arr) — el cálculo canónico correcto, vía
+# H_alg — pero su propio label decía "via H_0^{\rm MIRA}": texto que sobrevivió
+# al reframe del 17-jun-2026 (H_MIRA→H_alg) sin que nadie actualizara el
+# rótulo cuando sí se corrigió la fórmula. El NÚMERO en la figura era
+# correcto; el RÓTULO mentía sobre su origen. Ninguna capa existente lo veía:
+# R20/R48/R49 verifican que un VALOR sea correcto o rastreable, no que el
+# TEXTO junto a una curva nombre la misma ancla que la calculó. Hallado por
+# revisión manual pedida por Mike ("entre las figuras hay muchas que todavía
+# usan MIRA"), cerrando el hueco aquí.
+#
+# QUÉ HACE. Barre todo script bajo src/ que genere figuras (contiene
+# "savefig"). En cada línea con una llamada a plot/errorbar/scatter/axhline/
+# axvline que lleve label=, si el label nombra una de las dos anclas H0 en
+# pugna (MIRA vs alg/global) sin ambigüedad, busca hacia atrás en el mismo
+# archivo la asignación de la variable graficada y compara: si esa asignación
+# nombra la OTRA ancla (o ninguna de las dos claramente, no se evalúa para
+# evitar falsos positivos), es el mismo desfase etiqueta-vs-cálculo.
+print("\nCapa R51 — etiqueta de figura vs variable graficada: ¿misma ancla?")
+try:
+    _MIRA_RE = re.compile(r"MIRA", re.IGNORECASE)
+    _ALG_RE  = re.compile(r"H0_global|H0_alg\b|H_alg\b|\\rm\s*alg", re.IGNORECASE)
+
+    def _ancla_de_r51(texto):
+        _m, _a = bool(_MIRA_RE.search(texto)), bool(_ALG_RE.search(texto))
+        if _m and not _a:
+            return "mira"
+        if _a and not _m:
+            return "alg"
+        return None  # ambas, ninguna, o ambigua: no se evalúa
+
+    def _escanea_r51(scripts):
+        """scripts: lista de (ruta, [líneas]). Devuelve (evaluadas, desfases).
+        La llamada .plot(...) y su label= suelen partirse en líneas distintas
+        (matplotlib multilínea) — se evalúa una VENTANA de 4 líneas desde la
+        que abre la llamada, no una sola línea."""
+        _evaluadas, _desfases = 0, []
+        for _ruta, _lineas in scripts:
+            for _i, _linea in enumerate(_lineas):
+                if not re.search(r"\.(plot|errorbar|scatter|axhline|axvline)\(", _linea):
+                    continue
+                _ventana = "\n".join(_lineas[_i:_i + 4])
+                if "label" not in _ventana:
+                    continue
+                _marca_label = _ancla_de_r51(_ventana)
+                if _marca_label is None:
+                    continue
+                _call = re.search(
+                    r"\.(plot|errorbar|scatter|axhline|axvline)\(\s*([\w.]+)"
+                    r"(?:\s*,\s*([\w.]+))?", _linea)
+                if not _call:
+                    continue
+                _metodo = _call.group(1)
+                _var = _call.group(2) if _metodo in ("axhline", "axvline") \
+                    else _call.group(3)
+                if not _var:
+                    continue
+                _asign = None
+                for _prev in reversed(_lineas[:_i]):
+                    _mm = re.match(rf"\s*{re.escape(_var)}\s*=\s*(.+)", _prev)
+                    if _mm:
+                        _asign = _mm.group(1)
+                        break
+                if _asign is None:
+                    continue
+                _evaluadas += 1
+                _marca_asign = _ancla_de_r51(_asign)
+                if _marca_asign is not None and _marca_asign != _marca_label:
+                    _desfases.append(
+                        f"{_ruta}:{_i + 1} label='{_marca_label}' pero "
+                        f"{_var} viene de '{_marca_asign}': {_asign.strip()[:70]}")
+        return _evaluadas, _desfases
+
+    _REPO_R51 = pathlib.Path(__file__).resolve().parents[2]
+    _scripts_r51 = []
+    for _p in (_REPO_R51 / "src").rglob("*.py"):
+        try:
+            _txt = _p.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            continue
+        if "savefig" in _txt:
+            _scripts_r51.append((str(_p.relative_to(_REPO_R51)), _txt.splitlines()))
+
+    _eval_r51, _desfases_r51 = _escanea_r51(_scripts_r51)
+    check("R51 el detector evaluó al menos una etiqueta real de figura",
+          _eval_r51 >= 1, f"{_eval_r51} etiquetas evaluadas en "
+          f"{len(_scripts_r51)} scripts con savefig")
+    check("R51 ninguna etiqueta de figura nombra un ancla H0 distinta a su cálculo",
+          not _desfases_r51,
+          "; ".join(_desfases_r51[:4]) if _desfases_r51 else "0 desfases")
+
+    # Auto-test: reproduce el bug REAL de fig_paper10_alphaK_vs_alpha.pdf
+    # (línea previa al arreglo de 2026-08-06) y confirma que se marca; y que
+    # el par ya corregido (mismo archivo, hoy) NO se marca.
+    _lineas_bug = [
+        "H0_arr = H0_global / (1 - fscreen_arr)   # canonical cascade via H_alg global",
+        "ax2.plot(alpha_range, H0_arr, color='#1a9641', lw=2,",
+        "         label=r'$H_0^{\\rm local}(\\alpha)$ (canonical, via $H_0^{\\rm MIRA}$)')",
+    ]
+    _lineas_arreglada = [
+        "H0_arr = H0_global / (1 - fscreen_arr)   # canonical cascade via H_alg global",
+        "ax2.plot(alpha_range, H0_arr, color='#1a9641', lw=2,",
+        "         label=r'$H_0^{\\rm local}(\\alpha)$ (canonical, via $H_0^{\\rm alg}$)')",
+    ]
+    _ev_bug, _d_bug = _escanea_r51([("test_bug.py", _lineas_bug)])
+    _ev_ok, _d_ok = _escanea_r51([("test_ok.py", _lineas_arreglada)])
+    check("R51 el detector marca el bug real pre-arreglo de Paper 10",
+          len(_d_bug) == 1, f"{len(_d_bug)} desfases (esperado 1)")
+    check("R51 el detector NO marca la misma línea ya corregida",
+          _ev_ok >= 1 and len(_d_ok) == 0,
+          f"{_ev_ok} evaluadas, {len(_d_ok)} desfases (esperado 0)")
+except Exception as _e:
+    check("R51 capa operable", False, str(_e))
+
+# ═══════════════════════════════════════════════════════════════════════════
+# R52 — UNA SATURACIÓN NUNCA SE MULTIPLICA POR ρ_crit (2026-08-10)
+#
+# POR QUÉ EXISTE. S_DE = T_r/M_v = 0.839950 es una SATURACIÓN (Postulado S):
+# vive en la ecuación de estado (w0 = -S_DE), NO en el reparto de densidades.
+# La fracción de densidad de energía oscura es OTRO número, 0.691119 = 1-Ω_m.
+# Multiplicar S_DE por ρ_crit produce una «densidad» que no existe.
+#
+# El caso real, encontrado a mano el 2026-08-10 tirando de un hilo:
+#   ssee_eft_verification.py:59   rho_DE0 = Om_DE * rho_crit   -> 0.840
+#   h0_cascade_audit.py:44        rho_DE  = OMEGA_DE * rho_crit
+#   ssee_paper3_hiclass_check.py  Om_DE_z = Om_DE * ratio/E^2
+# El último es el peor: mete la saturación en la ranura de DENSIDAD de CLASS y
+# luego compara el resultado contra el mismo álgebra — «Δ = 0.005%» que no es
+# verificación independiente sino la misma sustitución hecha dos veces.
+#
+# CÓMO SE SUPO CUÁL VA. Dos vías independientes:
+#  (a) estructural: f_screen no puede llevar H (si lo lleva, H = H_SH0ES(1-f(H))
+#      tiene dos H). Medido: con S_DE, f_screen es idéntico AL ÚLTIMO BIT para
+#      anclas de 60 a 100; con 1-ω_m/h² se mueve (0.0561 -> 0.0584).
+#  (b) Planck crudo: 0.839950 pasa a 0.91σ; 0.691119 falla a 9.82σ.
+#
+# La regla: ningún símbolo de saturación puede aparecer multiplicando a ρ_crit
+# en la misma expresión. Si de verdad hace falta una densidad ahí, va
+# OMEGA_M_TOTAL / (1 - OMEGA_M_TOTAL), que sí llevan H.
+print("\nCapa R52 — ninguna saturación se usa como densidad")
+try:
+    _SAT = ("S_DE", "S_M", "S_K", "OMEGA_DE", "OMEGA_CDM_SECTOR", "OMEGA_M_DYN",
+            "Om_DE", "Om_m_dyn", "s_DE", "s_M", "s_K")
+    # Sólo la MULTIPLICACIÓN explícita. Basta que la saturación esté en la
+    # misma línea que ρ_crit para tener falsos positivos: en los integradores
+    # acoplados `Om_DE` es una variable local calculada como rho_phi/rho_tot,
+    # que SÍ es una fracción de densidad legítima y no debe marcarse.
+    _RHOSYM = r"(?:rho_crit|RHO_CRIT|RHO|ρ_crit)"
+    _SATSYM = r"(?:S_DE|S_M|S_K|OMEGA_DE|OMEGA_CDM_SECTOR|OMEGA_M_DYN|Om_DE|Om_m_dyn|s_DE|s_M|s_K)"
+    _MULT = _re.compile(rf"{_SATSYM}\s*\*\s*{_RHOSYM}|{_RHOSYM}\s*\*\s*{_SATSYM}")
+    # Exento: la línea dice explícitamente que NO debe usarse así, o es la
+    # definición de un alias deprecado que sólo se conserva documentada.
+    _EXENTO = _re.compile(r"NO usarla|NO debe|no es una densidad|DEPRECADO|"
+                          r"R52|OJO|FIX 2026-08-10", _re.I)
+
+    def _escanea_r52(lineas):
+        _malas = []
+        for _i, _ln in enumerate(lineas):
+            _cod = _ln.split("#")[0]          # sólo código, no comentario
+            if not _MULT.search(_cod):
+                continue
+            _win = "\n".join(lineas[max(0, _i - 8):_i + 2])
+            if _EXENTO.search(_win):
+                continue
+            _malas.append(_i)
+        return _malas
+
+    _r52 = []
+    for _py in sorted((_REPO / "src").rglob("*.py")):
+        if "__pycache__" in str(_py) or "verificacion" in str(_py):
+            continue
+        _ls = _py.read_text(errors="ignore").splitlines()
+        for _i in _escanea_r52(_ls):
+            _r52.append(f"{_py.relative_to(_REPO)}:{_i+1} «{_ls[_i].strip()[:52]}»")
+
+    check("R52 ninguna saturación multiplica a ρ_crit en código activo",
+          not _r52,
+          "; ".join(_r52[:4]) + (f" … (+{len(_r52)-4})" if len(_r52) > 4 else "")
+          if _r52 else "0 usos de saturación como densidad")
+
+    # Auto-test: reproduce el bug REAL y confirma que se marca; y que la línea
+    # ya anotada (misma forma, con la advertencia encima) NO se marca.
+    _bug52 = ["rho_DE0  = Om_DE * rho_crit"]
+    _ok52 = ["# OJO: OMEGA_DE es alias de una saturación, NO usarla como densidad",
+             "rho_DE0  = Om_DE * rho_crit"]
+    _lim52 = ["rho_m0 = OMEGA_M_TOTAL * rho_crit"]        # ésta SÍ es densidad
+    check("R52 el detector distingue saturación-por-ρ_crit de densidad legítima",
+          len(_escanea_r52(_bug52)) == 1
+          and len(_escanea_r52(_ok52)) == 0
+          and len(_escanea_r52(_lim52)) == 0,
+          "3 casos: bug pelado marcado; bug anotado exento; "
+          "OMEGA_M_TOTAL·ρ_crit (densidad real) exento")
+    # ── R52b — LA CLASE COMPLETA, y a prueba de renombres ────────────────
+    # AÑADIDO 2026-09-05. R52 llevaba desde el 08-10 en verde sobre
+    # `ssee_paper5_IS_perturbations.py`, que corría su E(a) y su fuente de
+    # Poisson con las saturaciones. DOS cegueras independientes, no una:
+    #
+    #  (1) DE FORMA: R52 sólo miraba «saturación × ρ_crit». El bug de Paper 5
+    #      era `sqrt(Omm_dyn*a**-3 + OmDE*rDE)` y `Omm_dyn*δm + OmDE*δDE`.
+    #      Misma clase —saturación en ranura que lleva H— otra sintaxis.
+    #  (2) DE NOMBRE, y ésta es la peor: Paper 5 hacía
+    #          from ssee_core import OMEGA_CDM_SECTOR as Omm_dyn
+    #      El alias BORRA el nombre que el detector busca. Una regla que mira
+    #      nombres se derrota con un `import X as Y`, y ninguna cantidad de
+    #      formas nuevas la habría salvado. Por eso R52b resuelve los alias
+    #      por archivo antes de buscar.
+    #
+    # Firmas, ambas inequívocas:
+    #  DILUCIÓN: sólo una densidad se diluye como a⁻³ o (1+z)³. Una saturación
+    #    es un número de la ecuación de estado; no tiene ley de dilución.
+    #  POISSON: una saturación multiplicando una perturbación (δ) es una
+    #    fuente gravitacional, y la fuente lleva la densidad.
+    _SAT_BASE = ("S_DE", "S_M", "S_K", "OMEGA_DE",
+                 "OMEGA_CDM_SECTOR", "OMEGA_M_DYN")
+    _IMP_AS = _re.compile(r"\b(" + "|".join(_SAT_BASE) + r")\s+as\s+(\w+)")
+
+    def _sat_visibles(_texto):
+        """Nombres de saturación visibles EN ESTE archivo, alias incluidos."""
+        _s = set(_SAT_BASE) | {"Om_DE", "Om_m_dyn", "s_DE", "s_M", "s_K"}
+        _s |= {_m.group(2) for _m in _IMP_AS.finditer(_texto)}
+        return _s
+
+    def _rx_r52b(_simbolos):
+        _sat = "(?:" + "|".join(sorted((_re.escape(_x) for _x in _simbolos),
+                                       key=len, reverse=True)) + ")"
+        _dil = _re.compile(
+            rf"{_sat}\s*\*\s*[A-Za-z_][\w\[\]\.]*\s*\*\*\s*\(?\s*-\s*3"
+            rf"|{_sat}\s*\*\s*\(\s*1\s*\+\s*z\s*\)\s*\*\*\s*3")
+        _poi = _re.compile(rf"{_sat}\s*\*\s*(?:[\w\.]+\s*\*\s*)*"
+                           rf"(?:\u03b4|delta)")
+        return _dil, _poi
+
+    def _escanea_r52b(_lineas):
+        _texto = "\n".join(_lineas)
+        _dil, _poi = _rx_r52b(_sat_visibles(_texto))
+        _malas = []
+        for _i, _ln in enumerate(_lineas):
+            _cod = _ln.split("#")[0]
+            if not (_dil.search(_cod) or _poi.search(_cod)):
+                continue
+            _win = "\n".join(_lineas[max(0, _i - 8):_i + 2])
+            if _EXENTO.search(_win):
+                continue
+            _malas.append(_i)
+        return _malas
+
+    _r52b = []
+    for _py in sorted((_REPO / "src").rglob("*.py")):
+        if "__pycache__" in str(_py) or "verificacion" in str(_py):
+            continue
+        _ls = _py.read_text(errors="ignore").splitlines()
+        for _i in _escanea_r52b(_ls):
+            _r52b.append(f"{_py.relative_to(_REPO)}:{_i+1} «{_ls[_i].strip()[:52]}»")
+
+    check("R52b ninguna saturación se diluye ni alimenta un Poisson",
+          not _r52b,
+          "; ".join(_r52b[:4]) + (f" … (+{len(_r52b)-4})" if len(_r52b) > 4 else "")
+          if _r52b else "0 saturaciones en ranura de densidad evolutiva")
+
+    # Control de los DOS lados (R53), y sobre el caso REAL: los fixtures
+    # llevan el mismo `import ... as ...` de Paper 5, así que si la
+    # resolución de alias se rompe, el control cae.
+    _impP5 = "from ssee_core import OMEGA_CDM_SECTOR as Omm_dyn, OMEGA_DE as OmDE"
+    _bugA = [_impP5, "    return np.sqrt(Omm_dyn * a**(-3) + OmDE * rDE)"]
+    _bugB = [_impP5, "    Phi = -1.5 * (Omm_dyn * \u03b4m + OmDE * fDE * \u03b4DE)"]
+    _okA  = ["    return np.sqrt(Omm * a**(-3) + OmDE_dens * rDE)"]
+    _okB  = ["    Phi = -1.5 * (Omm * \u03b4m + OmDE_dens * fDE * \u03b4DE)"]
+    check("R52b el detector ve la saturación aunque venga renombrada",
+          len(_escanea_r52b(_bugA)) == 1 and len(_escanea_r52b(_bugB)) == 1
+          and len(_escanea_r52b(_okA)) == 0 and len(_escanea_r52b(_okB)) == 0,
+          "4 casos: E(a) y Poisson con saturación ALIASADA marcados; "
+          "los mismos dos con densidad, limpios")
+
+except Exception as _e:
+    check("R52 capa operable", False, str(_e))
+
+print("\nCapa R53 — toda regla trae su control del otro lado")
+try:
+    # LA REGLA (formulada por Mike, 2026-09-05). Una comprobación que sólo
+    # puede devolver un resultado NO es una comprobación:
+    #
+    #   digo "PASA"  -> hace falta un caso que FALLE,
+    #                   o mi detector podría decir siempre que sí
+    #   digo "CAE"   -> hace falta un caso que PASE,
+    #                   o mi detector podría estar simplemente roto
+    #
+    # POR QUÉ EXISTE. El 2026-09-05 se encontró que Paper 3/7/9 afirmaban
+    # «hi_class confirma alpha_K = 0.403302 con acuerdo del 0.005%». Esa
+    # comparación era `abs(aK_z[0] - aK_alg)/aK_alg`, y en z=0 los tres
+    # factores de aK_z valen 1 por construcción: era el MISMO número contra
+    # sí mismo. El residuo de 0.005% resultó ser exactamente el redondeo de
+    # c = 2.998e5 en vez de 299792.458 km/s (verificado: da 0.005%). O sea
+    # una comprobación estructuralmente incapaz de fallar, viva meses.
+    # El caso contrario, la validación EFTCAMB del mismo Paper 7, SÍ quedó
+    # en pie el mismo día — porque se le pudo añadir el control: EFTCAMB
+    # acepta alpha_K=+0.4033 y RECHAZA 0, -1.0 y -5.0.
+    # La diferencia entre lo que cae y lo que queda es el control, no el
+    # código. De ahí esta capa.
+    #
+    # QUÉ MIDE. Sobre el propio fuente del guardián: para cada regla R<n>,
+    # si existe al menos una comprobación que ponga a prueba AL DETECTOR y
+    # no al repositorio. La convención ya establecida en R20/R38/R40-R52 es
+    # nombrarlas «R<n> el detector ...». La forma plena es la de dos lados
+    # (marca el bug real Y no marca el caso sano, como en R51 y R52); esta
+    # capa exige por ahora el piso —tener control— y el trinquete de abajo
+    # obliga a que la deuda sólo baje.
+    _CHECKNAME = _re.compile(r'check\(\s*f?"([^"]*\bR(\d+)\b[^"]*)"')
+    _ESCONTROL = _re.compile(r"el detector|auto-?test", _re.I)
+
+    def _escanea_r53(texto):
+        """-> (reglas_con_control, reglas_sin_control) leyendo un fuente."""
+        _todas, _con = set(), set()
+        for _m in _CHECKNAME.finditer(texto):
+            _nombre, _num = _m.group(1), int(_m.group(2))
+            _todas.add(_num)
+            if _ESCONTROL.search(_nombre):
+                _con.add(_num)
+        return _con, (_todas - _con)
+
+    # El guardián se lee a sí mismo desde disco (no desde el bytecode:
+    # ver la lección del .pyc rancio) para no depender de su propio
+    # estado en memoria.
+    _SRC_GUARDIAN = pathlib.Path(__file__).resolve().read_text(errors="ignore")
+    _con53, _sin53 = _escanea_r53(_SRC_GUARDIAN)
+    # 31 al abrir la capa (2026-09-05). Baja a 28 el mismo día con los
+    # controles de R17, R25 y R30 — las tres que vigilan números
+    # canónicos, por eso primero. SÓLO puede BAJAR.
+    _DEUDA_R53 = 28
+    _lista53 = " ".join("R%d" % _r for _r in sorted(_sin53))
+
+    check("R53 la deuda de reglas sin control no crece",
+          len(_sin53) <= _DEUDA_R53,
+          f"{len(_sin53)} sin control de {len(_con53) + len(_sin53)} "
+          f"(tope {_DEUDA_R53}): {_lista53}"
+          if _sin53 else "todas las reglas tienen control")
+
+    check("R53 el tope de deuda está apretado",
+          len(_sin53) >= _DEUDA_R53 - 0 or len(_sin53) == 0,
+          f"tope {_DEUDA_R53} = cuenta real {len(_sin53)}"
+          if len(_sin53) == _DEUDA_R53 else
+          f"BAJAR el tope a {len(_sin53)}: sobran {_DEUDA_R53 - len(_sin53)}")
+
+    # Auto-control de dos lados de esta misma capa: la regla se obedece a sí
+    # misma. Un fuente con una regla CON control y otra SIN él tiene que
+    # separarlas; si el detector no distingue, esta capa no vale nada.
+    # Los literales van PARTIDOS a proposito: si en este fuente apareciera
+    # tal cual `check("R99 ...`, el propio escaneo de arriba contaria R98 y
+    # R99 como reglas reales del guardian. El detector no debe verse a si
+    # mismo en el material que analiza.
+    _q = 'check("' + 'R'
+    _fuente_ok = (_q + '99 algo del repo", x)\n'
+                  + _q + '99 el detector distingue", y)')
+    _fuente_coja = _q + '98 algo del repo", x)'
+    _c1, _s1 = _escanea_r53(_fuente_ok)
+    _c2, _s2 = _escanea_r53(_fuente_coja)
+    check("R53 el detector distingue regla con control de regla coja",
+          _c1 == {99} and _s1 == set() and _c2 == set() and _s2 == {98},
+          "2 casos: R99 (con auto-test) contada como cubierta; "
+          "R98 (sin auto-test) contada como deuda")
+except Exception as _e:
+    check("R53 capa operable", False, str(_e))
+
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 204          # 202 + 2 de R50 (2026-08-02); sólo SUBE
+_PISO_CHECKS = 218          # 216 +2 R52b (clase completa, no sólo ×ρ_crit)
+                            # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,
       f"{checks + 1} ejecutadas (piso {_PISO_CHECKS})"

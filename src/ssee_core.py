@@ -36,7 +36,41 @@ W0          = -T_R / M_V        # ≈ -0.840
 IGNIS       = PI + P_SC         # IGNIS = π+PYROS         ≈ 9.5192
 WA          = -P_SC / IGNIS     # ≈ -0.670  (denominador IGNIS, NUNCA el
                                 #  scaffold K_V: mismo valor 2Ω, otra entidad)
-OMEGA_DE    = T_R / M_V         # ≈ 0.840  (= |w0|; es la EoS, NO la fracción de densidad)
+# ── SATURACIONES (Postulado S) — NO llevan H ─────────────────────────────────
+# s = T_r/M_v es la fracción de SATURACIÓN, no una fracción de densidad. Vive en
+# la ECUACIÓN DE ESTADO (w0 = -s), no en el reparto de densidades.
+#
+# ¿POR QUE s_DE ES IGUAL A |w0|? No es coincidencia ni descubrimiento: es UN
+# SOLO numero. w0 se define como -T_r/M_v y s_DE como +T_r/M_v; el mismo
+# cociente con el signo cambiado. Y T_r/M_v = AURA/Omega es una IDENTIDAD, no
+# un parecido: T_r = 3*AURA y M_v = 3*Omega, el 3 se cancela (verificado a 40
+# digitos, diferencia 0.0). Dos caminos de construccion, un numero.
+#
+# LO QUE SATURA ES w, NO UNA DENSIDAD. Corrida del fondo acoplado
+# (results/logs/fondo_acoplado.npz), hoy y hacia el futuro:
+#     a      w_eff      Om_DE
+#   0.100  -0.117356  0.045301
+#   0.500  -0.782020  0.308746
+#   0.999  -0.839923  0.690471   <- hoy
+#   1.499  -0.843395  0.853353
+#   3.000  -0.841630  0.967397
+# w_eff se planta en -0.8399 y ahi se queda: ESO es la saturacion. Om_DE pasa
+# de largo por 0.839950 sin detenerse (entre a=1.5 y a=2) camino a 1. O sea:
+# 0.839950 NO es la fraccion de densidad en NINGUNA epoca -- ni hoy (0.691119)
+# ni en el futuro (-> 1). Es un numero de la ecuacion de estado y nada mas.
+#
+# REGLA PRACTICA: si lleva H, es densidad (OMEGA_M_TOTAL, 1-OMEGA_M_TOTAL). Si
+# no lleva H, es saturacion (S_DE, S_M, S_K). Por eso S_DE nunca debe
+# multiplicar a rho_crit ni diluirse como a^-3: vigilado por R52 y R52b.
+#
+# REGLA: donde una fórmula no puede llevar H adentro (f_screen es el caso
+# canónico: H = H_SH0ES*(1 - f_screen) tendría dos H), va S_DE / S_M. Donde sí
+# se reparte densidad real, va OMEGA_DE_DENS / OMEGA_M_TOTAL (ésas sí llevan H:
+# Omega_m = omega_m/h²). Medido: con S_DE, f_screen es idéntico al último bit
+# para anclas de 60 a 100; con la fracción de densidad se mueve.
+S_DE        = T_R / M_V         # ≈ 0.839950  saturación DE (= |w0|)
+OMEGA_DE    = S_DE              # [ALIAS DEPRECADO] usar S_DE; el nombre Omega_
+                                #  sugiere densidad y ésta NO lo es
 #
 # ⚠️ REGLA DE Ω_m (2026-07-09, tras el hallazgo del χ²=726, V-L4-DESI):
 #   La GEOMETRÍA de fondo — E(z), distancias BAO, H(z), r_d, cualquier E²(z) —
@@ -45,8 +79,16 @@ OMEGA_DE    = T_R / M_V         # ≈ 0.840  (= |w0|; es la EoS, NO la fracción
 #   componente de perturbaciones (Paper 6: 0.160 + φ-DM 0.149 = 0.308) y factor
 #   de la fórmula EFT α_K = 3|w0|·0.160. NUNCA va en un E(z).
 #   Meter el sector (0.160) en la geometría fue el bug que dio χ²=726 en DESI DR2.
-OMEGA_CDM_SECTOR = 1.0 + W0      # ≈ 0.160  sector frío dinámico (Paper 6 + α_K); NO es materia total
-OMEGA_M_DYN      = OMEGA_CDM_SECTOR   # [ALIAS DEPRECADO] usar OMEGA_CDM_SECTOR o, si es geometría, OMEGA_M_TOTAL
+S_M              = 1.0 + W0      # ≈ 0.160050  saturación complementaria (S_DE + S_M = 1)
+OMEGA_CDM_SECTOR = S_M           # [ALIAS DEPRECADO] usar S_M; no es una densidad
+OMEGA_M_DYN      = S_M           # [ALIAS DEPRECADO] si es geometría, usar OMEGA_M_TOTAL
+
+# s_K — la cantidad que entra en f_screen. OJO: NO es alpha_K.
+# alpha_K (kineticidad de Bellini-Sawicki) es 3*v²/KAL con v = dphi/d(ln a):
+# EVOLUCIONA, hoy vale 0.150703 y tiende a 0.480148. Probado 2026-08-10 que no
+# existe ninguna época donde el campo tenga a la vez las dos ranuras de s_K.
+# s_K es PURO EoS: 3*(-w0)*(1+w0), sin ninguna densidad y sin H.
+S_K = 3.0 * S_DE * S_M           # ≈ 0.403302  (antes mal llamado alpha_K_IR)
 
 # ── MIRA / AURA ──────────────────────────────────────────────────────────────
 # MIRA persiste como ENTIDAD (= AURA/2, valor 1.9989); conserva su rol en
@@ -62,12 +104,29 @@ H0_MIRA    = 67.037                  # ancla CMB-fit del escenario VIEJO (cascad
 N_S        = 1.0 - PHI**(-7)         # ≈ 0.96556
 R_TENSOR   = PHI**(-10)              # ≈ 0.00813
 OMEGA_B_H2 = (PI - PHI) / (3.0 * OMEGA**2)   # ≈ 0.02242  (OP-1)
-# Σm_ν^active = R₂·ω_b·C_ν/(τ_Π·H₀) con C_ν=93.14 eV PDG (N_eff=3.046).
-# 2026-07-25: era 0.06902, residuo de C_ν=94.07. El cambio C_ν 94.07→93.14
-# (2026-07-10) propagó a m_φ (41.02→40.70) pero NO a esta constante ni a sus
-# consumidores. Σm_ν es UNA sola cantidad: la misma que da m_φ y la que da ω_ν.
-# Coherencia vigilada por V-L2-11a/b/c en ssee_verify.py.
-SUM_MNU_EV = 0.06849                          # Σm_ν activos (canónico; = 40.70/594.28)
+# ── Σm_ν activos — PREDICCIÓN ALGEBRAICA (Paper 4 §Neutrino Mass Sum) ────────
+# Σm_ν = R₂·ω_b·C_ν/(τ_Π H₀), con C_ν=93.14 eV PDG (N_eff=3.046).
+# 2026-09-05: el comentario de esta constante decía «= 40.70/594.28», es decir
+# declaraba como procedencia la PARTÍCULA RETIRADA el 2026-08-01. El número es
+# correcto, la atribución no: Σm_ν no cuelga de la partícula, cierra sola por
+# álgebra. Quien siguiera la procedencia declarada aterrizaba en algo retirado.
+#
+# τ_Π H₀ = KAL₀/(3·S_DE) usa la SATURACIÓN (no lleva H), no la densidad
+# Ω_DE=0.691119. No es cosmético: con la densidad daría Σm_ν=0.056354 eV,
+# por DEBAJO del piso de oscilaciones 0.058 ⟹ la predicción quedaría falsada.
+R2_STABILITY = OMEGA / (KAL0 * T_R)            # ≈ 0.071875  (razón de estabilidad)
+TAU_PI_H0    = KAL0 / (3.0 * S_DE)             # ≈ 2.191  (tiempo de relajación IS)
+SUM_MNU_EV = 0.06849                          # Σm_ν activos (canónico, 5 dec)
+# CONTROL (R53): el álgebra tiene que reproducir el literal, y tiene que
+# RECHAZAR la lectura de densidad. Si sólo comprobáramos lo primero, un cambio
+# de símbolo pasaría inadvertido.
+_smnu_alg = R2_STABILITY * OMEGA_B_H2 * 93.14 / TAU_PI_H0
+_smnu_dens = R2_STABILITY * OMEGA_B_H2 * 93.14 / (KAL0 / (3.0 * 0.691119))
+assert abs(_smnu_alg - SUM_MNU_EV) < 1e-5, (
+    f"Sigma m_nu algebraico {_smnu_alg} != literal {SUM_MNU_EV}")
+assert _smnu_dens < 0.058, (
+    "el control se rompio: la lectura de densidad deberia caer bajo el "
+    f"piso de oscilaciones 0.058, y da {_smnu_dens}")
 
 # ── Densidad de materia CMB — ω_m DIRECTO (reframe 2026-06-18) ────────────────
 # OP-8 CERRADO: no hay "factor materia" que derivar. Ω_m,CMB es el observable
@@ -144,7 +203,10 @@ def load_fsigma8():
 def _sanity_checks():
     assert abs(PHI**2 - (PHI + 1.0)) < 1e-12, "identidad áurea phi^2=phi+1 rota"
     assert abs(AURA - 2.0*MIRA) < 1e-12,      "AURA debe ser 2*MIRA"
-    assert abs(OMEGA_CDM_SECTOR + OMEGA_DE - 1.0) < 1e-12, "sector frío + Omega_DE(|w0|) != 1"
+    assert abs(S_M + S_DE - 1.0) < 1e-12, "las dos saturaciones deben sumar 1"
+    assert abs(S_K - 3.0 * S_DE * S_M) < 1e-15, "s_K debe ser 3*S_DE*S_M"
+    assert abs(S_K / (3.0 * MIRA) - (PI - PHI) / OMEGA**2) < 1e-12, \
+        "f_screen = s_K/(3*MIRA) debe ser (pi-phi)/Omega^2 exacto"
     assert round(W0, 3) == -0.840,  f"w0 fuera de rango: {W0}"
     assert round(WA, 3) == -0.670,  f"wa fuera de rango: {WA}"
     assert round(OMEGA_CDM_SECTOR, 3) == 0.160, f"sector frío fuera de rango: {OMEGA_CDM_SECTOR}"
@@ -177,8 +239,8 @@ def check():
     print("ssee_core.py — constantes canónicas SSEE")
     print("=" * 64)
     for name in ('PHI', 'PI', 'OMEGA', 'BETA', 'KAL0', 'P_SC', 'K_V', 'T_R',
-                 'M_V', 'W0', 'WA', 'OMEGA_DE', 'OMEGA_CDM_SECTOR', 'OMEGA_M_TOTAL',
-                 'OMEGA_M_DYN', 'MIRA', 'AURA',
+                 'M_V', 'W0', 'WA', 'S_DE', 'S_M', 'S_K', 'OMEGA_M_TOTAL',
+                 'MIRA', 'AURA',
                  'OMEGA_B_H2', 'OMEGA_C_H2', 'OMEGA_NU_H2', 'OMEGA_M_H2',
                  'OMEGA_M_CMB', 'OMEGA_M_CMB_PIPHI', 'OMEGA_M_CMB_MIRA',
                  'OMEGA_M_CMB_GEOMETRIC', 'H0_ALG', 'H0_GLOBAL', 'N_S',

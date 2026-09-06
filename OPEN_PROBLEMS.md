@@ -1773,6 +1773,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
 | OP-21 | P5 | ~~ζ̃ hipótesis no derivada~~ → ζ̃ = KAL₀·Ω/M_v, **hermana de τ_Π = KAL₀·Ω/T_r** | 🟡 **REDUCIDO 2026-08-02** | No es número libre: lo fijan τ_Π (P4) + w₀ (P1) + minimalidad. Queda abierto el PRINCIPIO (minimalidad) y derivar τ_Π del Lagrangiano. Look-elsewhere intentado y RETIRADO (valor forzado por identidad) |
 | OP-22 | P5, P4, P1 | **τ_Π H₀ = KAL₀/(3Ω_DE) no está derivada en ningún documento** (P4 y P5 la usan; P1 apunta a un App.A inexistente). ζ̃=KAL₀/3 SÍ está derivada (archive/…Friedmann.tex, normalizando a ρ_crit; P5 la etiqueta mal como ρ_DE). Y con la inercia correcta (ρ+p) c²_s sale superlumínico | 🔴 **ABIERTO 2026-08-02** | **Σm_ν depende de τ_Π** (+19.1% si cambiara). Pasó las auditorías porque NINGÚN número está mal: falta una DERIVACIÓN, y ninguna capa verificaba que exista la derivación que un documento dice tener |
+| OP-23 | P7, P8 | **Dentro del acoplamiento CONFORMAL no existe $\beta_c$ que reproduzca $w_0$ sin pasar el límite de energía oscura temprana** (barrido fino de 31 puntos, con control que reproduce el grueso). Lo mejor dentro del límite: $w_{\rm eff}=-0.862144$, a 0.0222 de $w_0$ | 🔴 **ABIERTO 2026-09-05** | **Premisa nombrada: el acoplamiento es conformal** — y Paper 8 ya usa disformal. Si lo es, OP-23 se DISUELVE. Retira $\beta_c=-$AURA: el «0.199%» era el bug de saturación-como-densidad (R52) |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.
@@ -2096,3 +2097,202 @@ trazable.
 **Lección de método.** El valor sobrevivió porque su efecto era invisible
 (0.004% en ω_m) y porque quien lo revisó aceptó una explicación plausible
 —«es C_ν viejo»— sin comprobar la aritmética. Comprobarla toma una división.
+
+---
+
+## OP-23 — Dentro del acoplamiento conformal, ningún $\beta_c$ da $w_0$ sin pasarse de energía oscura temprana — 🔴 ABIERTO (2026-09-05)
+
+> ## ✅ SUSPENSIÓN LEVANTADA EL MISMO DÍA — el barrido SÍ usaba el Lagrangiano correcto
+>
+> **Mike, de memoria:** *«estoy seguro que los dos M no son lo mismo… esos dos
+> Lagrangianos se usaban para derivar H global con SH0ES y f_screen completo,
+> IR y UV»*. **Tenía razón en las dos cosas, y mi suspensión estaba mal.**
+>
+> No hay colisión de símbolo: hay una **jerarquía declarada**.
+> ```
+> P7  IR   M^4 = rho_crit    CONVENCION
+>          (P7 tex L169-173 lo dice: "a working
+>           convention, NOT an algebraic
+>           determination of M")
+> P10 UV   M^4 = 5phi^8 rho_c = 234.8936
+>          el valor FISICO, derivado (L66, L135)
+> P8       M ~ M_Pl, otro regimen
+> ```
+> **El bug era usar la CONVENCIÓN para calcular un β_c FÍSICO.** Con
+> $M^4=1$ el término $X^2/M^4$ pesa 20.5 % del lineal; con el $M^4$ físico pesa
+> **0.34 %** — despreciable, tal como afirma Paper 7. *(Corregido: primero cité
+> 0.087 %, calculado con la solución vieja; con la solución del $M$ físico
+> —$\dot\phi=0.540727$, $X=0.146193$— sale 0.34 %.)* Medido:
+> ```
+> M4 = 1 (convencion)  w -0.972562  b_c -2.194210
+> M4 = 5phi^8 (fisico) w -0.922851  b_c -0.691265
+> fondos K = X/KAL     w -0.927318
+> ```
+> La brecha de 0.045 cae a **0.0045**. ⟹ `fondo_acoplado` y `fondo_disparo`, que
+> implementan $K(X)=X/\KAL$ a secas, **son correctos**, porque a $M$ físico el
+> término no lineal no cuenta. **El barrido fino probaba el Lagrangiano bueno y
+> OP-23 sigue en pie.** Corregido en `ssee_eft_verification.py:84`.
+>
+> Y la conexión que Mike recordaba es real: los dos Lagrangianos son el IR y el
+> UV, y son los que dan $\alpha_K=0.4033$ / $\alpha_K^{\rm full}=0.41691$, de ahí
+> $f_{\rm screen}$ IR/UV y los dos $H_{\rm local}$ (72.86 / 73.040). La corrección
+> UV es del 3.4 % — subdominante, coherente con todo lo anterior.
+>
+> <details><summary>Texto de la suspensión errónea (conservado)</summary>
+>
+> 🟠 **SUSPENDIDO HORAS DESPUÉS DE ABRIRSE. LA EVIDENCIA NO LO SOSTIENE.**
+> Mike preguntó de dónde salía cada uno de los tres valores de $w$ que yo le
+> daba, *«porque puede que se parezcan y no sea lo que señala»*. Tenía razón.
+>
+> **El barrido corrió con el Lagrangiano equivocado.** `fondo_acoplado.py` y
+> `fondo_disparo.py` implementan $K(X)=X/\KAL$ **y nada más** — no contienen el
+> término $X^2/M^4$ en ninguna línea. Paper 7 declara
+> $K(X)=X/\KAL+X^2/M^4$ (tex L55, L162). El barrido probó una **truncación IR**,
+> no el modelo de Paper 7.
+>
+> **Y el término que falta NO es despreciable para el fondo.** Medido apagándolo
+> en `ssee_eft_verification.py` (el único de los tres que sí lo implementa):
+> ```
+> con X^2/M^4   w_phi = -0.972562   beta_c = -2.194210
+> sin X^2/M^4   w_phi = -0.921054   beta_c = -0.666255
+> ```
+> Mueve $w$ en **0.0515**, y la brecha que este OP intenta cerrar es 0.087. Es el
+> 59 % de lo que está en juego. En $K_X$ —que fija $\rho+p$ y por tanto $1+w$—
+> el término no lineal pesa **41 %** ($X=0.037128$, $X/\KAL=0.006724$,
+> $X^2/M^4=0.001378$).
+>
+> **Nótese además que $\beta_c$ pasa de $-2.194$ a $-0.666$**, o sea **entra en
+> la región $|\beta_c|\le0.8$ donde el barrido sí encuentra solución.** La
+> conclusión «no hay ningún punto bueno» podría invertirse con el Lagrangiano
+> correcto. No se sabe: no se ha corrido.
+>
+> **Colisión de símbolo detectada de paso:** Paper 7 L170 declara
+> $M^4\equiv\rhocrit$ (normalización de fondo), y L177 afirma que $X^2/M^4$ es
+> «subdominante» — pero hablando del régimen de gravedad fuerte con
+> $M\approx\Mpl$. **El mismo símbolo $M$ con dos valores en el mismo paper.**
+> Con $M\approx\Mpl$ el término es nulo; con $M^4=\rhocrit$ pesa el 41 %.
+>
+> **PARA LEVANTAR LA SUSPENSIÓN:** añadir $X^2/M^4$ a `fondo_acoplado.py` y
+> repetir el barrido fino. Sólo entonces se sabrá si el problema existe.
+>
+> </details>
+>
+> **Lo que SÍ queda establecido:** $\beta_c=-\mathrm{AURA}$
+> está retirado (ver «Lo que este OP RETIRA» abajo, que se apoya en el bug R52,
+> no en el barrido); y las tres implementaciones quedaron reconciliadas —
+> `fondo_disparo` interpolado a $a=1$ da $-0.927316$ contra $-0.927318$ de
+> `fondo_acoplado` con $\beta_c=0$, diferencia $2\times10^{-6}$: **el integrador
+> acoplado se reduce correctamente al no acoplado.** El «0.045 sin explicar»
+> del 2026-08-10 queda **explicado: era el término $X^2/M^4$.**
+
+### Contenido original del OP (evidencia con el Lagrangiano truncado)
+
+**Anatomía.** Este OP se abre siguiendo el criterio que Mike formuló el
+2026-09-05: un problema no se declara abierto hasta que se ha comprobado que
+*hoy* no se puede cerrar. Las cinco piezas obligatorias van explícitas abajo.
+La segunda —**la premisa**— es la que faltaba en OPs anteriores: OP-8, OP-9 y
+OP-14 no se resolvieron, se **disolvieron**, porque su premisa era falsa. Un OP
+sin premisa nombrada no se puede disolver, sólo se puede chocar contra él.
+
+### 1. POR QUÉ se abre — el hecho medido  ⭐ **RAZÓN DEFINITIVA (2026-09-05)**
+
+> **El $\beta_c$ que da $w_0$ parte por la mitad la materia en recombinación.**
+> ```
+> omega_m ACOPLADO (b_c=+0.235068)  0.06900
+> omega_m SSEE algebraico           0.14267
+>                                    -51.6%
+> ```
+> La vara es **la propia predicción de SSEE**: $\omega_m=\omega_b+\omega_c+\omega_\nu
+> =0.14267$, la que da $\chi^2_{\rm CMB}=1005.41$ y $\Delta$BIC$=-24.02$ en Paper 3.
+> Medido sobre `results/logs/fondo_acoplado.npz` en $a=0.001$:
+> $\rho_m/\rho_{c,0}$ acoplado $=1.4939\times10^8$ vs estándar $3.0888\times10^8$,
+> razón $0.4837$. Equivalente: $E(z{=}999)$ va **−30.5 %** por debajo.
+>
+> **Física:** para arreglar $w_0$ hoy, el acoplamiento tiene que haber drenado
+> materia oscura hacia el campo toda la historia ⟹ temprano había mucha menos.
+> El CMB ve cuánta había. **El acoplamiento conformal arregla Paper 7 rompiendo
+> Paper 3.**
+>
+> ⚠️ **ESTO REEMPLAZA EL CRITERIO ORIGINAL, QUE ERA INVÁLIDO.** El
+> `LIM_EDE = 0.03` de `barrido_beta_c_fino.py:39` **no tiene fuente: lo escribí
+> yo**, no está en `CANONICAL_VALUES.yaml`, ningún paper lo cita, y compara la
+> cantidad equivocada en la época equivocada (lo comparable en la suite es
+> Paper 9 L677, $f_{\rm EDE}\sim0.1$ cerca de la igualdad $z\sim3000$–5000; yo
+> usaba $\Omega_{\rm DE}(z{=}9)$, en plena dominación de materia). Contra H(z)
+> crudo (Moresco+2022, 23 puntos) el fondo acoplado **NO se excluye**:
+> $\chi^2=13.07$ vs $13.28$ del estándar. El umbral inventado hacía todo el
+> trabajo. Mike lo cazó preguntando de dónde salía. Ver
+> `memory/project_op23_measuring_stick.md`.
+
+### 1b. El hecho original (criterio inválido, conservado por trazabilidad)
+
+El fondo acoplado tiene que cumplir dos cosas a la vez: reproducir
+$w_0=-0.839950$ hoy, y no dejar más de $\sim3\%$ de energía oscura en $z=9$.
+Barrido fino de 31 puntos en $\beta_c\in[+0.100,+0.245]$
+(`results/logs/barrido_beta_c_fino.log`, script
+`src/p07_eft/barrido_beta_c_fino.py`):
+
+| $\beta_c$ | $w_{\rm eff}(a{=}1)$ | $\lvert w-w_0\rvert$ | $\Omega_{\rm DE}(z{=}9)$ |
+|---|---|---|---|
+| 0.1000 | $-0.892879$ | 0.052929 | 1.19 % |
+| 0.1800 | $-0.862144$ | 0.022200 | **2.99 %** ← frontera |
+| 0.2351 | $-0.839949$ | **0.000001** | **4.53 %** |
+
+**Ningún punto cumple las dos.** Las dos condiciones se mueven en sentidos
+opuestos y se cruzan en el lado prohibido. Lo mejor que se consigue dentro del
+límite observacional es $w_{\rm eff}=-0.862144$, a $0.0222$ de $w_0$.
+
+*Control del barrido:* incluye $\beta_c=0.1000$ y $0.235068$, que ya tenían
+respuesta del barrido grueso, y los **reproduce** ambos. Sin eso, las 29 filas
+nuevas no valdrían nada.
+
+### 2. LA PREMISA que sostiene el problema
+
+> **El acoplamiento campo↔materia oscura es CONFORMAL.**
+
+Es lo único que hace falta que sea cierto para que este problema exista. Y es
+**testeable, y puede ser falsa**: Paper 8 ya usa acoplamiento **disformal**
+mientras Paper 7 usa conformal — la suite no es coherente en este punto. Si el
+acoplamiento correcto es disformal, OP-23 no se resuelve: **se disuelve**, como
+OP-8 y OP-9.
+
+### 3. QUÉ PRUEBA lo resolvería
+
+Rehacer el fondo acoplado con acoplamiento disformal y repetir el barrido. Si
+aparece un punto que cumpla las dos, el OP cierra por disolución de su premisa.
+
+### 4. QUÉ HERRAMIENTA falta hoy
+
+El integrador disformal. `src/p07_eft/fondo_acoplado.py` implementa **sólo** el
+conformal ($\beta_c$ entra en Klein–Gordon y en la conservación de la materia
+oscura). El término disformal cambia la estructura de las ecuaciones, no un
+coeficiente: no se obtiene ajustando nada de lo que hay.
+
+*Por eso es un OP y no una tarea.* La alternativa barata —el barrido fino— **ya
+se corrió**, y por eso este OP se abre con el hueco cerrado detrás.
+
+### 5. CÓMO SE SABRÁ que cerró
+
+Un punto con $\lvert w_{\rm eff}-w_0\rvert<0.005$ y $\Omega_{\rm DE}(z{=}9)<3\%$
+simultáneamente. Si el barrido disformal tampoco lo encuentra, el resultado deja
+de ser un OP y pasa a ser una **predicción falsable**: SSEE no admite
+acoplamiento oscuro, $\beta_c=0$.
+
+### Qué NO dice este OP
+
+- **No dice que $\beta_c$ sea desconocido.** Dice que el conformal no cierra.
+- **No compromete la estabilidad.** $c^2_s\in[0.632,0.980]$, positivo en todo el
+  rango, tras el fix R52 de 2026-09-05.
+- **No compromete $w_0$ ni $\alpha_K$.** $w_0=-T_r/M_v=-\mathrm{AURA}/\Omega$ es
+  identidad algebraica exacta (diferencia $0.0$ a 40 dígitos) y no pasa por
+  $\beta_c$. Con $\beta_c=0$ el fondo da $\alpha_K=0.150696$, que coincide con
+  el $0.150703$ algebraico por vía independiente.
+
+### Lo que este OP RETIRA
+
+$\beta_c=-\mathrm{AURA}$ (Paper 7). Ese valor venía de un despeje **en un solo
+punto** que además metía saturaciones en ranuras de densidad. Corregido el bug
+(R52, 2026-09-05) el mismo despeje da $-2.194210$, a **45 %** de $-\mathrm{AURA}$:
+el «acuerdo al 0.199 %» era el bug. Y el barrido muestra que no hay solución para
+$\lvert\beta_c\rvert\ge1.0$, así que $-3.997847$ está cinco veces fuera de la
+región donde el fondo acoplado admite solución.

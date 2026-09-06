@@ -1,0 +1,31 @@
+========================================================================================================
+  BARRIDO EN beta_c — ¿limite numerico o ausencia de solucion fisica?
+========================================================================================================
+  objetivos en a=1:  Om_DE=0.691119   rho_c=0.258753
+  -AURA = -3.997847     Paper 7 (orden dominante) = -3.989910
+
+      beta_c   w_eff(a=1)   w_phi(a=1)   Om_DE(z=9)    alpha_K    seg  estado
+  --------------------------------------------------------------------------------------------------
+      1.0000            —            —            —          —    2.8  SIN SOLUCION (no converge)
+      0.5000            —            —            —          —   38.2  SIN SOLUCION (no converge)
+      0.2351    -0.839949    -0.815322     0.045301   0.331843    5.2  EXCLUIDO: DE temprana 4.5%
+      0.1000    -0.892879    -0.884597     0.011928   0.222100    3.9  OK
+      0.0000    -0.927318    -0.927318     0.002487   0.150696    5.1  OK
+     -0.1000    -0.955979    -0.960805     0.010224   0.091272    4.6  OK
+     -0.2000    -0.977961    -0.984108     0.032518   0.045695    4.7  EXCLUIDO: DE temprana 3.3%
+     -0.3000    -0.992881    -0.996932     0.060826   0.014760    5.2  EXCLUIDO: DE temprana 6.1%
+     -0.4000    -1.001034    -0.999853     0.083554  -0.002144    7.1  EXCLUIDO: DE temprana 8.4%
+     -0.4940    -1.003510    -0.994959     0.093622  -0.007277    8.7  EXCLUIDO: DE temprana 9.4%
+     -0.6000    -1.002011    -0.982863     0.092961  -0.004170    7.4  EXCLUIDO: DE temprana 9.3%
+     -0.8000    -0.993308    -0.949466     0.075680   0.013874   21.6  EXCLUIDO: DE temprana 7.6%
+     -1.0000            —            —            —          —   33.9  SIN SOLUCION (no converge)
+     -1.5000            —            —            —          —   23.4  SIN SOLUCION (no converge)
+     -2.0000            —            —            —          —   35.7  SIN SOLUCION (no converge)
+     -2.5000            —            —            —          —   15.0  SIN SOLUCION (no converge)
+
+  [CANCELADO A MANO 2026-09-05] Las filas -3.0, -3.5, -3.9978 y -5.0 no se
+  corrieron. No es un crash: la respuesta ya estaba completa en las filas de
+  arriba. Hay solucion para |beta_c| <= 0.8 y deja de haberla desde |beta_c|
+  >= 1.0, asi que -AURA = -3.997847 queda muy fuera de la region donde el
+  fondo acoplado admite solucion. Las filas que faltan solo habrian repetido
+  "SIN SOLUCION" a coste creciente (el solver tarda mas cuanto mas lejos).

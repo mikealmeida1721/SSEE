@@ -1,0 +1,37 @@
+{
+  "corrida": "R4 — LCDM control metodologico, KiDS-1000",
+  "muestreador": "Cobaya mcmc, 4 cadenas MPI, reanudada tras corte de luz",
+  "n_parametros_libres": 13,
+  "burn_in_frac": 0.3,
+  "thin_every": 8,
+  "n_muestras_usadas": 5872,
+  "n_filas_por_cadena": [
+    1469,
+    1471,
+    1476,
+    1456
+  ],
+  "convergencia": {
+    "Rminus1_medias": 0.02557,
+    "Rminus1_colas": 0.115482,
+    "converged": true
+  },
+  "Omega_m": {
+    "media": 0.231034222322688,
+    "sigma": 0.045787736544540436
+  },
+  "sigma8": {
+    "media": 0.8751755678831248,
+    "sigma": 0.08900932197580154
+  },
+  "S8": {
+    "media": 0.757104620038561,
+    "sigma": 0.019354474399087586
+  },
+  "comparacion_KiDS": {
+    "S8_publicado": 0.759,
+    "err_publicado": 0.024,
+    "tension_sigma": 0.06147497585397447
+  },
+  "tiempo_analisis_seg": 4620.548850774765
+}

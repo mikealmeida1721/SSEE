@@ -120,8 +120,36 @@ try:
     kh_ssee, z_ssee, P_ssee = results_ssee.get_matter_power_spectrum(minkh=1e-3, maxkh=2.0, npoints=200)
     dp_ssee = results_ssee.get_derived_params()
     print(f"   SSEE RPH OK — rdrag={dp_ssee['rdrag']:.3f} Mpc")
-    print(f"   ✅ Ghost-free:       passed (ghost_stability=True, run completed)")
-    print(f"   ✅ Gradient-stable:  passed (gradient_stability=True, run completed)")
+    # El veredicto de estabilidad NO se imprime a mano: se DERIVA de que EFTCAMB
+    # haya aceptado correr con EFT_ghost_stability y EFT_gradient_stability en
+    # True. Para que eso sea evidencia y no tautologia hace falta el control de
+    # abajo: un modelo deliberadamente inestable tiene que ser RECHAZADO. Si el
+    # control no rechaza, el chequeo no estaba activo y el "passed" no vale.
+    # (Anadido 2026-09-05 tras auditar la version que imprimia el string fijo.)
+    ghost_on = stability['EFT_ghost_stability']
+    grad_on  = stability['EFT_gradient_stability']
+
+    def _corre(aK):
+        """True si EFTCAMB acepta este alpha_K; False si lo rechaza."""
+        try:
+            q = camb.set_params(**dict(cosmo_base, **{**SSEE_RPH,
+                                                      'RPHkineticity0': aK}))
+            q.set_for_lmax(1000); q.Want_CMB = True
+            camb.get_results(q)
+            return True
+        except Exception:
+            return False
+
+    ctrl = {aK: _corre(aK) for aK in (-1.0, -5.0)}
+    control_ok = not any(ctrl.values())
+    print(f"   control (aK<0 debe ser RECHAZADO): "
+          f"{ {k: ('corrio' if v else 'rechazado') for k, v in ctrl.items()} }")
+    if control_ok and ghost_on and grad_on:
+        print("   Ghost-free / gradient-stable: PASSED "
+              "(EFTCAMB acepto aK=+0.4033 y rechazo los controles)")
+    else:
+        print("   Ghost-free / gradient-stable: NO CONCLUYENTE "
+              f"(control_ok={control_ok}, ghost={ghost_on}, grad={grad_on})")
 except Exception as e:
     print(f"   SSEE RPH ERROR: {e}")
     Cl_TT_ssee = None

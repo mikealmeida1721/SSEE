@@ -94,3 +94,8 @@ results/chains/
 
 # cerrojo de las suites de mutación (efímero)
 .mutacion.lock
+
+# Motor 3D (proyecto Godot) — NO es parte de la investigación SSEE,
+# vive aquí solo por conveniencia de entorno; se moverá a su propio
+# repo cuando corresponda. Nunca se sube junto con los papers.
+motor3d/

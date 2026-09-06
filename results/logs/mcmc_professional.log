@@ -1088,3 +1088,36 @@ Figuras guardadas en results/figures/
 [ 104.7m] Cadenas guardadas en /mnt/datos/SSEE_data/mcmc/paper2_3models/mcmc_chains_professional.npz
 [ 104.7m] Tiempo total: 1.75h
 [ 104.7m] FIN MCMC PROFESIONAL
+[   0.0m] =================================================================
+[   0.0m] SSEE — MCMC PROFESIONAL (overnight)
+[   0.0m] =================================================================
+[   0.0m] w0=-0.8399  wa=-0.6700  Om_total=0.30888 (geometría)  Om_sector_frío=0.1601  KAL0=5.5214
+[   0.0m] Cadena SSEE encontrada. Cargando desde checkpoint...
+[   0.7m] 
+[SSEE] Cargado desde checkpoint: 63750000 muestras
+[   0.7m]   ln P_MAP ≈ -5.47  (evaluado en primeras 50k muestras)
+[   0.8m] 
+[ΛCDM]  ndim=3  100w × 25000s  (guardado cada 500)
+[   0.8m]   Burn-in: 5000 pasos...
+[   4.6m]   Burn-in completo. Iniciando producción...
+[   4.9m]   ΛCDM: 500/25000 pasos  aceptación=0.643
+[   5.3m]   ΛCDM: 1000/25000 pasos  aceptación=0.644
+[   5.7m]   ΛCDM: 1500/25000 pasos  aceptación=0.646
+[   6.1m]   ΛCDM: 2000/25000 pasos  aceptación=0.646
+[   6.4m]   ΛCDM: 2500/25000 pasos  aceptación=0.646
+[   6.8m]   ΛCDM: 3000/25000 pasos  aceptación=0.646
+[   7.2m]   ΛCDM: 3500/25000 pasos  aceptación=0.646
+[   7.6m]   ΛCDM: 4000/25000 pasos  aceptación=0.646
+[   7.9m]   ΛCDM: 4500/25000 pasos  aceptación=0.646
+[   8.3m]   ΛCDM: 5000/25000 pasos  aceptación=0.646
+[   8.7m]   ΛCDM: 5500/25000 pasos  aceptación=0.646
+[   9.1m]   ΛCDM: 6000/25000 pasos  aceptación=0.646
+[   9.5m]   ΛCDM: 6500/25000 pasos  aceptación=0.646
+[   9.8m]   ΛCDM: 7000/25000 pasos  aceptación=0.646
+[  10.2m]   ΛCDM: 7500/25000 pasos  aceptación=0.646
+[  10.6m]   ΛCDM: 8000/25000 pasos  aceptación=0.646
+[  11.0m]   ΛCDM: 8500/25000 pasos  aceptación=0.646
+[  11.4m]   ΛCDM: 9000/25000 pasos  aceptación=0.647
+[  11.8m]   ΛCDM: 9500/25000 pasos  aceptación=0.647
+[  12.2m]   ΛCDM: 10000/25000 pasos  aceptación=0.646
+[  12.6m]   ΛCDM: 10500/25000 pasos  aceptación=0.646

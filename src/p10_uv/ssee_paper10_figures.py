@@ -120,7 +120,7 @@ ax1.annotate(fr'UV value: {alphaK_UV:.5f}',
              fontsize=8, arrowprops=dict(arrowstyle='->', lw=0.8), color='#1a9641')
 
 ax2.plot(alpha_range, H0_arr, color='#1a9641', lw=2,
-         label=r'$H_0^{\rm local}(\alpha)$ (canonical, via $H_0^{\rm MIRA}$)')
+         label=r'$H_0^{\rm local}(\alpha)$ (canonical, via $H_0^{\rm alg}$)')
 ax2.axvline(alpha_att, color='#1a9641', ls='--', lw=1.3, alpha=0.8)
 ax2.axhline(73.04, color='#d6604d', ls='-.', lw=1.2,
             label=r'SH0ES $73.04\pm1.04$')

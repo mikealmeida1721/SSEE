@@ -46,13 +46,27 @@ _reloc_sys.path.insert(0, _reloc_os.path.dirname(_reloc_os.path.dirname(_reloc_o
 from ssee_core import (
     PHI as phi, PI as pi_, BETA as beta, KAL0, P_SC as P_sc,
     K_V as Kv, T_R as Tr, M_V as Mv, W0 as w0, WA as wa,
-    H0_ALG as H0_kms, OMEGA_CDM_SECTOR as Omm_dyn, OMEGA_DE as OmDE,
-    MIRA as MIRA_alg, OMEGA_M_TOTAL as Omm_CMB,   # 0.308881 materia total (growth canónico usa ESTE)
+    H0_ALG as H0_kms, S_M as s_M, S_DE as s_DE,
+    MIRA as MIRA_alg, OMEGA_M_TOTAL as Omm_CMB,   # 0.308881 materia total
 )
 
-# IS relaxation time (dimensionless: τ_Π × H₀)
-# Derived from background IS steady state: τ_Π = KAL₀/(3 Ω_DE H₀)
-tau_Pi_H0 = KAL0 / (3.0 * OmDE)   # ≈ 2.191
+# IS relaxation time (dimensionless: τ_Π × H₀).
+# Usa la SATURACIÓN s_DE = |w₀| = 0.839950, que NO lleva H — por eso es
+# legítima aquí. NO es la fracción de densidad Ω_DE = 0.691119.
+tau_Pi_H0 = KAL0 / (3.0 * s_DE)   # ≈ 2.191
+
+# ── Densidades para GEOMETRÍA y fuente de POISSON ────────────────────────
+# Corregido 2026-09-05. Antes este bloque corría con las SATURACIONES
+# (0.160050 / 0.839950) metidas en E(a) y en la fuente de Poisson — el mismo
+# error que dio χ²=726 en DESI DR2. Era invisible porque las dos parejas
+# suman 1.0 exacto, así que un chequeo de planitud lo aprueba; pero E(a)
+# difiere 18.5% en a=0.5. Una E(a) y un Poisson LLEVAN H ⟹ va la densidad.
+# Medido antes/después: MIRA_num 0.989394 → 0.989737 (ambos 0.989±0.017,
+# la conclusión de Q2 no se movía), y Q1/Q3 idénticos bit a bit. O sea: el
+# resultado publicado no dependía del error. Se corrige igual, porque usar
+# una saturación donde va una densidad es mal uso de lo que tenemos.
+Omm  = Omm_CMB           # 0.308881  materia total (= ω_m/h²)
+OmDE = 1.0 - Omm_CMB     # 0.691119  fracción de densidad de energía oscura
 
 # Bare k-essence sound speed: for L ∝ X^n both w and c²_s equal 1/(2n-1),
 # so c²_s,bare = w₀ (standard k-essence identity, Hu 1998). See Paper 5 §cs2_bare.
@@ -89,10 +103,12 @@ print(f"\n  φ               = {phi:.8f}")
 print(f"  KAL₀            = {KAL0:.8f}")
 print(f"  w₀              = {w0:.8f}")
 print(f"  wₐ              = {wa:.8f}")
-print(f"  Ω_m,dyn         = {Omm_dyn:.8f}")
-print(f"  Ω_m,CMB (target)= {Omm_CMB:.8f}")
+print(f"  s_M  (saturación, sin H) = {s_M:.8f}")
+print(f"  s_DE (saturación, sin H) = {s_DE:.8f}")
+print(f"  Ω_m  (densidad, con H)   = {Omm:.8f}")
+print(f"  Ω_DE (densidad, con H)   = {OmDE:.8f}")
 print(f"  MIRA (algebraic)= {MIRA_alg:.8f}")
-print(f"  τ_Π H₀         = KAL₀/(3 Ω_DE) = {tau_Pi_H0:.8f}")
+print(f"  τ_Π H₀         = KAL₀/(3|w₀|) = {tau_Pi_H0:.8f}")
 print(f"  c²_s (bare)     = {cs2_bare:.8f}  ← gradient instability")
 print(f"  ζ̃ = KAL₀/3     = {zeta_tilde:.8f}")
 
@@ -171,14 +187,14 @@ def cs2_eff_IS(k_H0, a=1.0, H_val=None):
 def H_over_H0_approx(a):
     """Fast H(a)/H₀ using CPL analytic approximation."""
     rDE = a**(-3*(1+w0+wa)) * np.exp(-3*wa*(1-a))
-    return np.sqrt(Omm_dyn * a**(-3) + OmDE * rDE)
+    return np.sqrt(Omm * a**(-3) + OmDE * rDE)
 
 # Precompute ρ_DE(a) on fine grid to avoid repeated quadrature in ODE
 _a_grid_rDE   = np.linspace(0.001, 1.0, 2000)
 _rDE_grid     = _a_grid_rDE**(-3*(1+w0+wa)) * np.exp(-3*wa*(1-_a_grid_rDE))
 # Normalize so ρ_DE(1) = 1
 _rDE_grid    /= _rDE_grid[-1]
-_H_grid       = np.sqrt(Omm_dyn * _a_grid_rDE**(-3) + OmDE * _rDE_grid)
+_H_grid       = np.sqrt(Omm * _a_grid_rDE**(-3) + OmDE * _rDE_grid)
 
 def rho_de_interp(a):
     """ρ_DE(a)/ρ_DE(1) via precomputed grid interpolation (fast)."""
@@ -232,7 +248,7 @@ def rhs_QS(x, Y, k_H0):
     δm, vm, δDE, vDE = Y
     one_plus_w = max(1.0 + w, 1e-6)   # guard against 1+w → 0
 
-    Phi = -(1.5 / (k_H0**2 * a * H**2)) * (Omm_dyn * δm + OmDE * fDE * δDE)
+    Phi = -(1.5 / (k_H0**2 * a * H**2)) * (Omm * δm + OmDE * fDE * δDE)
     kH  = k_H0 / (a * H)
 
     # Matter (pressureless CDM)
@@ -288,7 +304,7 @@ print("Q2 — MIRA TEST: DE perturbation growth vs matter")
 print("─" * 68)
 print(f"  MIRA (algebraic) = {MIRA_alg:.6f}  →  Ω_m,CMB = {Omm_CMB:.6f}")
 print(f"  Required δ_DE/δ_m at z=0 for MIRA: r* = (MIRA-1)×Ω_m/Ω_DE = "
-      f"{(MIRA_alg-1)*Omm_dyn/OmDE:.4f}")
+      f"{(MIRA_alg-1)*Omm/OmDE:.4f}")
 print()
 print(f"  {'k [H₀/c]':>10}  {'δ_m(z=0)':>12}  {'δ_DE(z=0)':>12}  "
       f"{'r=δ_DE/δ_m':>12}  {'Ω_m,eff':>10}  {'MIRA_num':>10}  status")
@@ -315,8 +331,8 @@ for k_H0 in k_values:
 
     # Effective matter density: Poisson → both m and DE contribute
     # Ω_m,eff δ_eff = Ω_m δ_m + Ω_DE δ_DE = Ω_m(1 + r × Ω_DE/Ω_m)
-    Om_eff   = Omm_dyn + OmDE * r
-    MIRA_num = Om_eff / Omm_dyn
+    Om_eff   = Omm + OmDE * r
+    MIRA_num = Om_eff / Omm
 
     status = ""
     if abs(MIRA_num - MIRA_alg) < 0.05:
@@ -629,7 +645,7 @@ for idx, (k_H0, res) in enumerate(sorted(results.items())):
             label=rf'$k={k_H0}\,H_0/c$  ($r_{{z=0}}={res["r"]:.3f}$)')
 
 # Target MIRA line
-r_MIRA = (MIRA_alg - 1) * Omm_dyn / OmDE
+r_MIRA = (MIRA_alg - 1) * Omm / OmDE
 ax.axhline(r_MIRA, color='k', ls='--', lw=1.5,
            label=rf'$r^*={r_MIRA:.3f}$ (MIRA target)')
 
@@ -669,8 +685,8 @@ if len(results) >= 3:
     ax2.axhline(MIRA_alg, color='r', ls='--', lw=2,
                 label=rf'MIRA$=(3\varphi+\pi)/4={MIRA_alg:.4f}$ (algebraic)')
     ax2.axhline(1.0, color='gray', ls=':', lw=1, label=r'no DE clustering')
-    ax2.axhline(1.0/Omm_dyn, color='gray', ls='-.', lw=1,
-                label=rf'full clustering ($1/\Omega_m={1/Omm_dyn:.2f}$)')
+    ax2.axhline(1.0/Omm, color='gray', ls='-.', lw=1,
+                label=rf'full clustering ($1/\Omega_m={1/Omm:.2f}$)')
     ax2.axvline(k_crit_H0, color='purple', ls=':', lw=1.5,
                 label=rf'$k_{{\rm crit}}={k_crit_H0:.3f}\,H_0/c$')
 
@@ -745,7 +761,7 @@ if _q3_ok:
     fig3.suptitle(
         r'SSEE Paper 5 (Q3): Linear Growth — IS Suppression'
         '\n'
-        rf'$\Omega_{{m,\rm dyn}}={Omm_dyn:.3f}$,  '
+        rf'$\Omega_m={Omm:.3f}$,  '
         rf'$G={G_factor:.4f}$,  '
         rf'$\gamma_{{\rm IS}}={gamma_IS_val:.4f}$',
         fontsize=11

@@ -39,6 +39,7 @@ from ssee_core import (
     PHI as phi, PI as pi_, BETA as beta, KAL0, K_V as Kv, T_R as Tr,
     M_V as Mv, MIRA, AURA, W0 as w0, WA as wa, OMEGA_DE as Om_DE,
     OMEGA_M_DYN as Om_m_dyn, H0_ALG as H0_alg_kms,
+    OMEGA_M_TOTAL, OMEGA_C_H2, OMEGA_B_H2, OMEGA_NU_H2,
 )
 DUAL      = 2 * AURA   # ≈ 7.9957
 TRIAL_dim = 3 * AURA   # ≈ 11.9935  (= Tr ✓)
@@ -55,21 +56,46 @@ Mpl_SI = 2.435e18                            # GeV → convertir a unidades úti
 
 rho_crit = 1.0        # normalización: densidad crítica hoy = 1
 
-# Densidades iniciales (a=1)
-rho_DE0  = Om_DE * rho_crit        # ≈ 0.840
-rho_m0   = Om_m_dyn * rho_crit     # materia oscura activa (sector CDM) ≈ 0.160
-rho_b0   = 0.049 * rho_crit        # bariones ≈ 0.049 (para background)
+# ── Densidades iniciales (a=1) — DENSIDADES, no saturaciones ─────────────────
+# CORREGIDO 2026-09-05 (R52). Estas tres lineas metian las SATURACIONES
+# (0.839950 / 0.160050) en ranuras de densidad. Una densidad lleva H
+# (Omega = omega/h^2); una saturacion no. Medido en la corrida del fondo:
+# 0.839950 no es la fraccion de densidad en NINGUNA epoca -- hoy es 0.691119
+# y en el futuro tiende a 1. Ver ssee_core.py y R52/R52b del guardian.
+# Estos son los mismos numeros que ya usaba el integrador acoplado
+# (src/p07_eft/fondo_acoplado.py: OM_C=0.258753, OM_PHI=0.691119).
+_h2      = (H0_alg_kms / 100.0) ** 2
+Om_DE_dens = 1.0 - OMEGA_M_TOTAL               # 0.691119  FRACCION DE DENSIDAD
+rho_DE0  = Om_DE_dens * rho_crit              # 0.691119  energia oscura
+rho_m0   = (OMEGA_C_H2 / _h2) * rho_crit      # 0.258753  materia OSCURA
+                                              #   (es a ella a la que acopla beta_c)
+rho_b0   = ((OMEGA_B_H2 + OMEGA_NU_H2) / _h2) * rho_crit   # 0.050127 bariones+nu
 
 # Potencial: V = V₀ exp(-α φ)
 # Emparejamiento estructural: w_attr = -1 + α²·KAL₀/3 = w₀  →  α = λ/√KAL₀
 lam      = np.sqrt(3 * Om_m_dyn)   # ≈ 0.6929  (λ canónico)
 alpha_pot = lam / np.sqrt(KAL0)    # ≈ 0.2948  (pendiente estructural correcta)
 
-# Amplitud del potencial: V₀ = Ω_DE · ρ_crit = 0.840
-V0 = Om_DE * rho_crit              # ≈ 0.840
+# Amplitud del potencial: V0 = Omega_DE (densidad) x rho_crit
+# CORREGIDO 2026-09-05 (R52): era Om_DE=0.839950, una saturacion.
+V0 = (1.0 - OMEGA_M_TOTAL) * rho_crit         # 0.691119
 
-# Escala M⁴ = ρ_crit (identificación algebraica)
-M4 = rho_crit                      # = 1.0
+# ── Escala M⁴ — el valor FISICO, no la convencion ────────────────────────────
+# CORREGIDO 2026-09-05. Estaba M4 = rho_crit = 1.0. Ese numero es la
+# CONVENCION DE UNIDADES que declara Paper 7 (tex L169-173), y el propio Paper 7
+# dice textualmente que es "a working convention for the EFT expansion, NOT an
+# algebraic determination of M", y remite a la completacion UV.
+# Paper 10 SI la determina (tex L66, L135, L210):
+#     M^4 = 45*alpha^2*rho_crit = 5*phi^8*rho_crit = 234.8936 rho_crit
+# Usar la convencion (M^4=1) para derivar un beta_c FISICO infla el termino
+# X^2/M^4 en un factor 235: pesa 20.5% del termino lineal en vez de 0.087%.
+# Medido: con M^4=1 sale w_phi=-0.972562 y beta_c=-2.194210; con el M fisico,
+# w_phi=-0.922851 y beta_c=-0.691265. El segundo cae a 0.0045 de los
+# integradores de fondo (fondo_acoplado/fondo_disparo, -0.927318), que usan
+# K(X)=X/KAL a secas -- lo cual es correcto justamente porque a M fisico el
+# termino no lineal es despreciable. Esto explica la discrepancia de 0.045
+# que estaba sin explicar desde el 2026-08-10.
+M4 = 5.0 * phi**8 * rho_crit       # = 234.8936  (Paper 10, valor fisico)
 
 # ── §3 Ecuaciones del campo escalar ──────────────────────────────────────────
 # Variable canónica: X = -g^μν ∂_μφ ∂_νφ / 2 = φ̇²/2 (métrica FLRW, +−−−)
@@ -302,26 +328,27 @@ print(f"    KAL₀   = {KAL0:.6f}  (β+π)")
 print(f"    α_pot  = {alpha_pot:.6f}  (λ/√KAL₀ — emparejamiento estructural)")
 print(f"    w₀     = {w0:.6f}  (−Tr/Mv)")
 print(f"    wₐ     = {wa:.6f}  (−Psc/IGNIS)")
-print(f"    Ω_DE   = {Om_DE:.6f}")
-print(f"    Ω_m,dyn= {Om_m_dyn:.6f}")
+print(f"    s_DE   = {Om_DE:.6f}   (saturacion, = |w0|)")
+print(f"    s_M    = {Om_m_dyn:.6f}   (saturacion, = 1+w0)")
+print(f"    Ω_DE   = {Om_DE_dens:.6f}   (densidad, objetivo del shooting)")
 print(f"    λ      = {lam:.6f}  (√(3Ω_m,dyn))")
 print(f"    V₀     = {V0:.6f}  (Ω_DE · ρ_crit)")
 print(f"    M⁴     = {M4:.6f}  (ρ_crit)")
-print(f"\n  ── Shooting: buscando φ_i tal que Ω_φ(a=1) = {Om_DE:.4f} ──")
+print(f"\n  ── Shooting: buscando φ_i tal que Ω_φ(a=1) = {Om_DE_dens:.4f} ──")
 
 # Importar brentq aquí para usarlo en shooting
 phi_i_scan = np.linspace(-5.0, 3.0, 50)
 Om_scan    = np.array([get_Om_phi_at_a1(p) for p in phi_i_scan])
 
 # Encontrar intervalo de cruce con Ω_DE
-target = Om_DE
+target = Om_DE_dens
 valid  = np.isfinite(Om_scan)
 phi_valid = phi_i_scan[valid]
 Om_valid  = Om_scan[valid]
 
 phi_i_best = 1.0  # fallback
 try:
-    # Buscar cruce Om_scan - Om_DE = 0
+    # Buscar cruce Om_scan - Om_DE_dens = 0
     f_cross = Om_valid - target
     sign_changes = np.where(np.diff(np.sign(f_cross)))[0]
     if len(sign_changes) > 0:
@@ -432,8 +459,8 @@ else:
 print("\n  VERIFICACIÓN 5: ρ_φ(a=1) ≈ Ω_DE")
 Om_phi_num = rho_phi_arr[-1] / rho_crit
 print(f"    Ω_φ numérico (a=1) = {Om_phi_num:.4f}")
-print(f"    Ω_DE algebraico    = {Om_DE:.4f}")
-print(f"    Δ                  = {abs(Om_phi_num - Om_DE):.2e}  {'✅' if abs(Om_phi_num-Om_DE)<0.05 else '⚠️ Ajuste φ_i necesario'}")
+print(f"    Ω_DE (densidad)    = {Om_DE_dens:.4f}")
+print(f"    Δ                  = {abs(Om_phi_num - Om_DE_dens):.2e}  {'✅' if abs(Om_phi_num-Om_DE_dens)<0.05 else '⚠️ Ajuste φ_i necesario'}")
 
 # ── §6 Cálculo de β_c requerido (acoplamiento covariante) ────────────────────
 # w_eff = w_φ + Q/(3H ρ_φ),  Q = -(β_c/Mpl) ρ_DM φ̇
@@ -629,11 +656,11 @@ def pipeline_ai(test_ai, n_scan=30, verbose=False):
     valid = np.isfinite(om_sc) & (om_sc > 0)
     if not np.any(valid): return np.nan, np.nan, np.nan
     ps, os_ = scan[valid], om_sc[valid]
-    crosses = np.where(np.diff(np.sign(os_ - Om_DE)))[0]
+    crosses = np.where(np.diff(np.sign(os_ - Om_DE_dens)))[0]
     if len(crosses) == 0: return np.nan, np.nan, np.nan
     i0 = crosses[0]
     try:
-        phi_opt = brentq(lambda p: omega_at_a1(p)-Om_DE, ps[i0], ps[i0+1], xtol=1e-6)
+        phi_opt = brentq(lambda p: omega_at_a1(p)-Om_DE_dens, ps[i0], ps[i0+1], xtol=1e-6)
     except Exception:
         return np.nan, np.nan, np.nan
 

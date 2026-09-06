@@ -21,6 +21,7 @@ import numpy as np
 import sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from ssee_core import (PHI, PI, OMEGA, BETA, KAL0, OMEGA_DE, OMEGA_M_DYN,
+                       OMEGA_M_TOTAL,
                        MIRA, AURA, H0_ALG, N_S)
 
 # ── H₀ candidates ────────────────────────────────────────────────────────────
@@ -41,11 +42,23 @@ def rho_crit(h):
     return RHO_CRIT_OVER_H2_EV4 * h**2
 
 def rho_DE(h):
+    """OJO (fix 2026-08-10): OMEGA_DE es el ALIAS de S_DE = T_r/M_v = 0.839950,
+    que es una SATURACION, no una fraccion de densidad. Multiplicarla por rho_crit
+    NO da la densidad de energia oscura (esa es 0.691119*rho_crit). Se conserva
+    la funcion porque el resto de este script de auditoria la reporta como ratio
+    adimensional en unidades rho_crit=1, donde el numero 0.840 es lo declarado en
+    Paper 7 — pero NO usarla como densidad fisica."""
     return OMEGA_DE * rho_crit(h)
 
 def M_UV(h):
-    """P10 UV cutoff: M⁴ = 5φ⁸ ρ_DE  (note: paper writes ρ_crit but means ρ_DE)"""
-    return (5 * PHI**8 * rho_DE(h))**0.25
+    """P10 UV cutoff: M⁴ = 5φ⁸ ρ_crit.
+
+    FIX 2026-08-10: antes usaba rho_DE (= 0.840*rho_crit) con la nota "el paper
+    escribe rho_crit pero quiere decir rho_DE". Es al reves: el canonico es
+    rho_crit. Comprobado — con M⁴ = 5φ⁸ rho_crit, la cuadratica del UV reproduce
+    alpha_K_full = 0.4169052 y f_screen = 0.0695216, que son EXACTAMENTE los
+    valores de ssee_paper10_verification.py y de los papers. Con rho_DE no."""
+    return (5 * PHI**8 * rho_crit(h))**0.25
 
 def H0_eV(H0_kmsmpc):
     return HBAR_EVS * H0_kmsmpc * KMSMPC_TO_INVS
@@ -121,11 +134,19 @@ record('P6', 'k_fs (DW)', '∝ m_φ^(4/3)',
 # ────────────────────────────────────────────────────────────────────────────
 # Paper 7 — EFT canonical
 # ────────────────────────────────────────────────────────────────────────────
-v0_alg  = OMEGA_DE * rho_crit(h_alg)
-v0_mira = OMEGA_DE * rho_crit(h_mira)
-record('P7', 'V₀ = Ω_DE × ρ_crit', 'unidades ρ_crit=1; V₀=0.840',
-       0.840, 0.840, '(ρ_crit)', True, '✅ invariante por diseño',
-       'P7 lo declara como ratio adimensional en unidades ρ_crit=1. Solo cosmético si se reporta en eV⁴.')
+# CORREGIDO 2026-09-05 (R52). Esta fila anotaba V₀ = 0.840, que es la
+# SATURACIÓN s_DE metida en ranura de densidad. V₀ es la amplitud de un
+# potencial: es una DENSIDAD, y le toca Ω_DE = 1-Ω_m = 0.691119. El script
+# de P7 (ssee_eft_verification.py) ya se corrigió el mismo día; esta fila
+# registraba la afirmación vieja. La conclusión de la fila NO cambia: sigue
+# siendo un ratio puro en unidades ρ_crit=1, luego invariante ante el ancla.
+_om_de_dens = 1.0 - OMEGA_M_TOTAL              # 0.691119 densidad, no 0.839950
+v0_alg  = _om_de_dens * rho_crit(h_alg)
+v0_mira = _om_de_dens * rho_crit(h_mira)
+record('P7', 'V₀ = Ω_DE × ρ_crit', 'unidades ρ_crit=1; V₀=0.691119',
+       0.691119, 0.691119, '(ρ_crit)', True, '✅ invariante por diseño',
+       'Ratio adimensional en unidades ρ_crit=1 ⟹ invariante ante el ancla. '
+       'Era 0.840 (saturación) hasta el fix R52 del 2026-09-05.')
 
 record('P7', 'λ = √(3 Ω_m,dyn)', 'adimensional',
        np.sqrt(3*0.160), np.sqrt(3*0.160), '—', True, '✅ independiente',

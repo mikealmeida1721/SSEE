@@ -91,3 +91,30 @@ es una prediccion NO FALSABLE con datos
 existentes. hi_class la valida solo como
 CONSISTENCIA INTERNA (c_s^2, dif 0.000%),
 no como contraste con dato.
+
+## Viabilidad de c_s^2 = 0.021284 (2026-09-06)
+
+CLASS, fluido CLP con el fondo SSEE,
+aislando SOLO c_s^2:
+
+    sigma8   c_s^2=1.0        0.828445
+             c_s^2=0.021284   0.828453
+             c_s^2=0.0        0.825006
+
+TT, desviacion vs el caso liso:
+
+    l=2    +3.10%   var.cosmica 63.2%
+    l=5    +2.64%               42.6%
+    l=10   +0.93%               30.9%
+    l>=30  <0.03%
+
+**c_s^2 = 0.021284 NO esta excluido.**
+Es indistinguible de energia oscura lisa:
+c_s = 0.146 => horizonte sonoro ~600 Mpc,
+muy por encima de las escalas medidas.
+
+Igual que alpha_K: consistente, no
+excluido, y NO falsable con dato actual.
+Lo que SI esta medido es w0 (0.24 sigma
+vs DESI DR2), que es lo que el condensado
+produce.

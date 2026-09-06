@@ -32,11 +32,25 @@ constante de z=0 a z=1093. El codigo
 ACEPTA el modelo (sin ghost ni
 inestabilidad de gradiente).
 
-    alpha_K(z=0) = 15.589647
-    prediccion   = 15.591335  (0.0011%)
+    alpha_K(z=0) = 15.589549
+    prediccion   = 15.591335  (0.011%)
 
 La diferencia es que hi_class calcula
-Omega_DE con los neutrinos dentro.
+Omega_DE con los neutrinos dentro:
+Omega_smg = 0.691040 vs 1-Om_m = 0.691119.
+
+CORRECCION 2026-09-06: la primera version
+de este README decia 0.0011%. Era un
+factor 10 de menos. El valor correcto es
+0.011%, y proviene de correr con omega_b
+y omega_c a 6 decimales (0.022418 y
+0.119514, antes 0.02242 y 0.11951).
+
+CONTROL DE FONDO: el presupuesto de
+hi_class devuelve Omega_m = 0.308882
+habiendole dado solo omega_b, omega_c y h
+-- nunca Omega_m. Reproduce el 0.308881
+algebraico del Paper 1.
 
 ## Lo que esta corrida NO prueba
 

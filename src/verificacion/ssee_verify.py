@@ -1156,8 +1156,8 @@ _LEIDOS = ("SSEE_Paper1_",)
 # endurecer el detector de 1 a 2 decimales: razón legítima, pero nadie lo
 # volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
 # Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
-_DEUDA_MAX = {"R42": 49, "R43": 22, "R44": 79,
-               "R45": 8}
+_DEUDA_MAX = {"R42": 49, "R43": 22, "R44": 77,
+               "R45": 7}
 # Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
 # compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
 _DEUDA_REAL = {}
@@ -3490,7 +3490,7 @@ try:
         for _i in _escanea_r54(_ls):
             _r54.append(f"{_f.relative_to(_REPO)}:{_i+1}")
 
-    _DEUDA_R54 = 64
+    _DEUDA_R54 = 61
     check("R54 la deuda de etiquetas alpha_K/s_K no crece",
           len(_r54) <= _DEUDA_R54,
           f"{len(_r54)} sitios (tope {_DEUDA_R54}): "

@@ -206,7 +206,7 @@ sector requires the physical matter density set \emph{forward} by the SSEE
 algebra — the $\omega_m$-direct construction (Section~\ref{sec:mira}).
 
 % ===========================================================================
-\section{The Two-Sector CMB Matter Density}
+\section{The CMB Matter Density as a Forward Identity}
 \label{sec:mira}
 % ===========================================================================
 
@@ -247,134 +247,109 @@ DESI measurements: the point is structural---both densities are set by the const
 before any comparison, so the agreement below is a constraint the framework had to
 satisfy, not a fit it was granted.
 
-\subsection{Two-sector matter density}
-
-The two matter densities being independent, their difference defines a second dark
-matter component (Paper~6):
-
-\begin{description}
-  \item[Dynamic sector] governs low-redshift evolution (BAO, cluster dynamics,
-    dark energy equation of state):
-    \begin{equation}
-      \Omega_{m,\mathrm{dyn}} = 1 - T_r/M_v = 0.1601.
-    \end{equation}
-  \item[CMB sector] governs the high-redshift background geometry, with the deficit
-    carried by the $\phi$-DM relic of Paper~6:
-    \begin{equation}
-      \Omega_{m,\mathrm{CMB}} = \frac{\omega_m}{h^2} = 0.3089, \qquad
-      \Omega_{\phi\text{-DM}} = \Omega_{m,\mathrm{CMB}} - \Omega_{m,\mathrm{dyn}} = 0.149.
-    \end{equation}
-\end{description}
-
-Comparing with the Planck 2018 best-fit value $\Omega_m^{\mathrm{Planck}}=0.3153\pm0.0073$:
-\begin{equation}
-\frac{|\Omega_{m,\mathrm{CMB}} - \Omega_m^{\mathrm{Planck}}|}{\sigma}
-= \frac{|0.3089-0.3153|}{0.0073} = 0.88\sigma.
-\end{equation}
-The forward CMB matter density is within $1\sigma$ of Planck with no tuning.
-
-\subsection{Physical interpretation of the two-sector model}
+\subsection{The two-sector reading, and why it is withdrawn}
 \label{sec:two_sector_physics}
 
-The two-sector structure is not an \textit{ad hoc} device.
-It arises naturally from the distinction between two physically different
-modes of probing the matter content of the Universe:
-
-\paragraph{Dynamic sector — local causal structure.}
-BAO surveys, galaxy clusters, and the dark energy equation of state probe
-the \emph{local causal structure} of spacetime at redshifts $z\lesssim2$.
-At these scales, the relevant Friedmann equation involves the matter density
-that actively participates in the late-time gravitational dynamics driving
-the accelerated expansion:
+An earlier version of this section read the two densities as a \emph{partition}:
+their difference,
 \begin{equation}
-  H^2(a) = H_0^2\!\left[\Omega_{m,\mathrm{dyn}}\,a^{-3}
-  + \Omega_\mathrm{DE}\,\exp\!\!\int_1^a
-  \frac{3[1+w(a')]}{a'}\,\mathrm{d}a'\right].
+  \Omega_{\phi\text{-DM}}
+    \;=\; \Omega_{m,\mathrm{CMB}} - \Omega_{m,\mathrm{dyn}}
+    \;=\; 0.3089 - 0.1601 \;=\; 0.149 ,
+  \label{eq:withdrawn_subtraction}
 \end{equation}
-In SSEE, $\Omega_{m,\mathrm{dyn}}=0.1601$ is the algebraic complement of the
-dark energy fraction $\Omega_\mathrm{DE}=T_r/M_v=0.839950$.
-Baryons ($\Omega_b h^2=0.02237$) account for approximately $0.050/h^2\approx0.111$
-of this total at $H_0=67.962$~km/s/Mpc, leaving the remainder as a structural
-background without the need for cold dark matter.
+was taken to define a second, warm dark-matter component (Paper~6).
+That reading is \textbf{withdrawn} (2026-08-01), for a reason internal to
+the algebra rather than to any measurement.
 
-\paragraph{Observational sector — integrated line of sight.}
+The subtracted quantity is not a density. In SSEE,
+$\Omega_{m,\mathrm{dyn}} \equiv 1+w_0 = (M_v-T_r)/M_v = 0.160050$ is a
+\emph{saturation}: it is the complement of the equation-of-state ratio
+$-w_0 = T_r/M_v$, and it carries no factor of $H$. Equation
+(\ref{eq:withdrawn_subtraction}) therefore subtracts a number belonging to the
+equation of state from a measured mass density. The result is dimensionally
+well formed and physically empty: there was nothing for the inferred component
+to be made of. Paper~6 gives the full retraction; the particle mass
+$m_\phi$, the free-streaming scale $k_{\rm fs}$, and the two-sector
+$\sigma_8$/$S_8$ values that followed from
+Eq.~(\ref{eq:withdrawn_subtraction}) are withdrawn with it.
+
+Two consequences for the present paper. First, the tension the partition was
+introduced to relieve does not exist: measured against the \emph{raw}
+KiDS-1000 $\xi_\pm$ data with $A_s$ free, a single matter sector gives
+$S_8 = 0.7555 \pm 0.0192$, i.e.\ $0.11\sigma$ from KiDS-1000
+($0.759\pm0.024$). Second, and more importantly for what follows, nothing in
+the CMB confrontation of this paper rested on the subtraction. The forward
+identity of Eq.~(\ref{eq:omega_m_direct}) and its comparison with Planck are
+untouched; they are restated below without it.
+
+\paragraph{A mechanism withdrawn with the partition.}
+The same earlier reading proposed a dissipative source
+$\propto \mathrm{KAL}_0 H^3/8\pi G$ in the SSEE continuity equation as the
+``geometric retention'' that linked the two sectors. It is withdrawn on two
+counts: it links two sectors that are no longer claimed to exist, and its
+normalisation is wrong. Friedmann fixes $8\pi G$ through
+$\rho_{\rm crit}=3H^2/8\pi G$, leaving no free convention, and the resulting
+viscous pressure is $\Pi_0 = -\mathrm{KAL}_0\,\rho_{\rm crit}$, i.e.\
+$\Pi_0/\rho_{\rm DE} \simeq -8$ where $w_0=-0.84$ is required --- too large by a
+factor $9.5$. The bulk-viscosity sector that does survive is the
+scale-factor-dependent one of Paper~1, $\zeta(a)\propto(1-a)\rho_{\rm DE}/H$,
+which delivers $w_a$ and is normalised to $\rho_{\rm DE}$ rather than to
+$\rho_{\rm crit}$.
+
+\subsection{What the CMB actually probes}
+
 The CMB photons probe the \emph{integrated gravitational potential}
 along the full line of sight from last scattering ($z_*\approx1089$) to today.
 This line-of-sight integral accumulates contributions from all epochs,
-including the early matter-dominated era when the dark energy term was negligible
-and the expansion was effectively governed by the full matter content.
-The acoustic peaks encode $\Omega_m$ as it appears in the \emph{conformal
-distance to last scattering}:
+including the early matter-dominated era when the dark energy term was
+negligible and the expansion was effectively governed by the full matter
+content. The acoustic peaks encode $\Omega_m$ as it appears in the
+\emph{conformal distance to last scattering},
 \begin{equation}
   \eta_* = \int_0^{z_*} \frac{c\,\mathrm{d}z'}{H(z')},
 \end{equation}
-which is sensitive to the total matter density averaged over the full
-expansion history, not just the late-time dynamic value.
+which is sensitive to the total matter density over the full expansion
+history. In SSEE that total is a single quantity, $\Omega_m=0.308881$,
+and it is the same quantity that enters the background geometry at every
+redshift. In particular, the saturation $1+w_0=0.160$ never occupies a density
+slot in $H(z)$: it is a property of the dark-energy equation of state, and the
+matter term in $E(a)$ is always the total $\omega_m/h^2$.
 
-\paragraph{Two independent densities, not a factor.}
-Under the $\omega_m$-direct accounting, the CMB and dynamic matter densities are
-\emph{two independent forward predictions} of the $(\varphi,\pi)$ dictionary:
-$\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.3089$ (Eq.~\ref{eq:omega_m_direct}) and
-$\Omega_{m,\mathrm{dyn}}=1+w_0=0.1601$. They are not related by a structural factor;
-the earlier ``$\times\,\mathrm{MIRA}$'' depth-ratio analogy is superseded. The physical
-carrier of the difference $\Omega_{m,\mathrm{CMB}}-\Omega_{m,\mathrm{dyn}}=0.149$ is the
-two-sector $\phi$-dark matter construction of Paper~6 (Section~\ref{sec:mira}): a warm
-relic that clusters as cold matter for the CMB but free-streams below
-$k_{\rm fs}$ in the late-time growth sector. Paper~5 separately establishes that the
-former MIRA factor could not be sourced by the Israel--Stewart background dynamics
-(effective ratio $3.04$); the present forward accounting removes the need for such a
-factor altogether (the open problem OP-8; see \S\ref{sec:falsifiability}).
+\subsection{Forward prediction and comparison with Planck}
 
-\paragraph{Dynamical mechanism: geometric retention at high $H$.}
-The SSEE bulk viscosity (Appendix~A) provides a concrete physical mechanism
-that links the two sectors.
-The dissipative source term in the SSEE conservation equation,
-\begin{equation}
-  \dot{\rho}_{\mathrm{SSEE}}
-    + 3H\,\rho_{\mathrm{SSEE}}(1+w_0)
-    = \frac{9\,\mathrm{KAL}_0\,H^3}{8\pi G},
-  \label{eq:continuity_paper3}
-\end{equation}
-is negligible at low redshift ($H\approx H_0$, DESI regime) but dominant at
-early times ($H\gg H_0$, CMB regime).
-In the limit $H\to\infty$, the $\propto H^3$ source injects energy into the dark
-sector at a rate that partially replaces cold dark matter, allowing the effective
-matter density to be higher at recombination than at late times. This is the
-qualitative picture; the \emph{quantitative} CMB matter density is fixed forward,
-not by a factor, but by the physical observable $\omega_m=\Omega_m h^2$ of
-Eq.~(\ref{eq:omega_m_direct}).
-Crucially, the coefficient $\mathrm{KAL}_0=\beta+\pi\approx5.521$ that sets
-$\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ is fixed algebraically before any CMB data
-are consulted; no parameter is tuned to achieve this result.
-The CMB matter density is therefore a closed-form forward prediction:
+The CMB matter density is a closed-form forward prediction:
 \begin{equation}
   \Omega_{m,\mathrm{CMB}} = \frac{\omega_m}{h^2}
     = \frac{\omega_b + \mathrm{KAL}_0\,\omega_b\,n_s + \omega_\nu}{h^2}
     = 0.3089,
   \label{eq:om_cmb_algebraic}
 \end{equation}
-with every ingredient an algebraic identity of Paper~1.
-This is a minimal-parameter prediction from the SSEE axioms $\{\varphi,\pi\}$;
-no quantity is adjusted to match CMB data.
+with every ingredient an algebraic identity of Paper~1. The coefficient
+$\mathrm{KAL}_0=\beta+\pi\approx5.521$ that sets
+$\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s$ is fixed algebraically before any CMB
+data are consulted; no quantity is adjusted to match the measurement.
 Compared with $\Omega_m^{\mathrm{Planck}}=0.3153\pm0.0073$
-\citep{Planck2018}, the tension is $0.88\sigma$.
-The dynamic value $\Omega_{m,\mathrm{dyn}}=0.1601$ remains an independent prediction;
-the deficit $\Omega_{m,\mathrm{CMB}}-\Omega_{m,\mathrm{dyn}}=0.149$ is carried by the
-$\phi$-DM relic of Paper~6. The numerical solution of
-Eq.~(\ref{eq:continuity_paper3}) tracing the full epoch-by-epoch evolution of
-$\Omega_{m,\mathrm{eff}}(z)$ from today to recombination remains an avenue for future
-work.
+\citep{Planck2018}, the tension is
+\begin{equation}
+\frac{|\Omega_{m,\mathrm{CMB}} - \Omega_m^{\mathrm{Planck}}|}{\sigma}
+= \frac{|0.3089-0.3153|}{0.0073} = 0.88\sigma .
+\end{equation}
+This result is what survives the withdrawal of the partition: it never used
+Eq.~(\ref{eq:withdrawn_subtraction}), and it is unchanged by it.
 
-\paragraph{Consistency check.}
-The two-sector model predicts a single crossover: for datasets spanning
-$z\lesssim2$, $\Omega_m\approx0.160$; for datasets integrating to $z\gtrsim100$,
-$\Omega_m\approx0.309$.
-Intermediate datasets (e.g., weak lensing surveys at $z\sim0.5$--$1.5$) should
-show a smooth interpolation between these limits.
-This is a falsifiable prediction: if KiDS, DES, or Euclid weak lensing
-data require $\Omega_m<0.25$ at $z<1$, the two-sector model would require revision.
+\paragraph{Falsifiability.}
+The withdrawn two-sector reading predicted a crossover --- $\Omega_m\approx0.160$
+for datasets confined to $z\lesssim2$, $\Omega_m\approx0.309$ for datasets
+integrating to $z\gtrsim100$, with a smooth interpolation between them. That
+prediction is withdrawn, and what replaces it is stronger because it has no
+free joint: SSEE now predicts a \emph{single} matter density,
+$\Omega_m=0.308881$, at every redshift and for every probe. A weak-lensing or
+BAO analysis that required a background matter density significantly different
+from $0.3089$ --- in either direction, at any redshift --- would falsify the
+framework, with no partition available to absorb the discrepancy.
 
-% ===========================================================================
+
 \section{CAMB Implementation and Results}
 \label{sec:results}
 % ===========================================================================
@@ -907,7 +882,8 @@ the Poisson source. Paper~5
 performs this analysis with $\Omega_{m,\mathrm{CMB}}=0.308881$, $\gamma_\mathrm{IS}=0.554$,
 $\sigma_8=0.8136$, finding a mean $f\sigma_8$ tension of $0.70\sigma$ (Paper~5,
 $\approx\Lambda$CDM $0.73\sigma$).
-Paper~6 two-sector gives $0.93\sigma$: the free-streaming that lowers $\sigma_8$
+The withdrawn Paper~6 two-sector variant gave $0.93\sigma$ (retired 2026-08-01,
+together with the $\phi$-DM particle): the free-streaming that lowered $\sigma_8$
 to $0.747$ reaches inside the $\sigma_8(R{=}8)$ window probed by RSD (half-mode
 $k_{1/2}\simeq0.35\,h/$Mpc), raising the growth-rate tension modestly from the
 $0.70\sigma$ single-sector baseline while it \emph{resolves} the
@@ -972,7 +948,7 @@ $\omega_m$-direct CMB matter density $\Omega_{m,\rm CMB}=\omega_m/h^2=0.3089$
 \label{sec:falsifiability}
 % ===========================================================================
 
-The SSEE two-sector model makes the following testable predictions,
+SSEE makes the following testable predictions,
 each of which would \textbf{falsify} the framework if violated:
 
 \begin{enumerate}
@@ -982,12 +958,17 @@ each of which would \textbf{falsify} the framework if violated:
 
   \item \textbf{CMB $\chi^2_r$:} Must remain $<2$ when tested against future
     CMB datasets \citep{CMBS4_2016,SimonsObs2019}. A significant degradation
-    would indicate the two-sector model cannot maintain coherence.
+    would indicate the framework cannot maintain coherence.
 
-  \item \textbf{BAO consistency:} The dynamic sector ($\Omega_{m,\mathrm{dyn}}=0.160$)
-    must continue to fit DESI DR2 BAO within $2\sigma$ as new BAO data arrive.
-    Any joint fit requiring $\Omega_m>0.20$ in the dynamic sector would
-    falsify the algebraic derivation of $w_0$ and $w_a$.
+  \item \textbf{BAO consistency:} the BAO geometry is governed by the total
+    matter density $\Omega_m=0.308881$, not by the saturation
+    $1+w_0=0.160$; SSEE must continue to fit DESI DR2 BAO within $2\sigma$
+    as new data arrive. The algebraic content being tested is the
+    equation of state: a joint fit requiring $w_0$ more than $2\sigma$
+    from $-0.839950$, or $w_a$ from $-0.669975$, would falsify the
+    algebraic derivation. \emph{(An earlier version of this item placed
+    $\Omega_{m,\mathrm{dyn}}=0.160$ in the geometry slot; that is a
+    saturation, not a density, and the reading is withdrawn.)}
 
   \item \textbf{Cosmic-shear amplitude:} with the background fixed by the
     algebra and only the primordial amplitude free, the model predicts

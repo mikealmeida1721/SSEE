@@ -21,13 +21,15 @@
 \newcommand{\MIRA}{\mathcal{M}}
 \newcommand{\AURA}{\mathcal{A}}
 \newcommand{\Mpl}{M_{\mathrm{Pl}}}
-\newcommand{\Omde}{\Omega_{\mathrm{DE}}}
+\newcommand{\Omde}{\Omega_{\mathrm{DE}}}  % fraccion de densidad (solo en z_*)
 \newcommand{\Omm}{\Omega_{m}}
 \newcommand{\half}{\tfrac{1}{2}}
 \newcommand{\Hzero}{H_0}
 \newcommand{\bc}{\beta_c}
 \newcommand{\fsc}{f_{\mathrm{screen}}}
-\newcommand{\alphaK}{\alpha_K}
+\newcommand{\sK}{s_K}          % dilucion de PRESION; NO es alpha_K
+\newcommand{\sDE}{s_{\mathrm{DE}}} % saturacion = |w_0|; NO es 1-Omega_m
+\newcommand{\alphaK}{\alpha_K}     % kineticidad Bellini-Sawicki (P7)
 \renewcommand{\Omega}{\varOmega}
 % ─────────────────────────────────────────────────────────────────────────────
 
@@ -53,11 +55,12 @@ free parameters.
 We derive algebraically that the dark-energy EFT of Paper~7 and the disformal
 geodesic of Paper~8 together imply a \emph{local screening fraction}
 \[
-  \fsc \;=\; \frac{\alphaK}{3\,\MIRA}
+  \fsc \;=\; \frac{\sK}{3\,\MIRA}
        \;=\; \frac{\pi - \phiG}{(\phiG+\pi)^2}
        \;\approx\; 0.06725\,,
 \]
-where $\alphaK = 3\,\Omde(1+w_0)$ is the EFT kineticity derived from the
+where $\sK = 3\,\sDE(1+w_0) = -3w_0(1+w_0)$ is the pressure-dilution rate
+derived from the
 background equation of state, and $\MIRA = \bc/2 = (3\phiG+\pi)/4 \approx 1.9989$
 is the effective optical coupling derived from the disformal null geodesic.
 The two structural constants $\AURA = 2\MIRA$ cancel exactly in the ratio,
@@ -124,14 +127,14 @@ global background anchor $H_0 = 3(\phiG+\pi)^2 = 67.962$~km/s/Mpc,
 this predicts $H_0^{\rm local} = 72.86$ km/s/Mpc ($0.17\sigma$ from SH0ES).
 The derivation combines two results already established in this series:
 \begin{enumerate}
-  \item From Paper~7 \citep{Paper7}: the EFT kineticity
-        $\alphaK = 3\,\Omde(1+w_0)$, which follows from the background
+  \item From Paper~7 \citep{Paper7}: the pressure-dilution rate
+        $\sK = 3\,\sDE(1+w_0)$, which follows from the background
         Friedmann equations and the $k$-essence action $K(X) = X/\KAL$.
   \item From Paper~8 \citep{Paper8}: the effective optical coupling
         $\MIRA = \bc/2 = (3\phiG+\pi)/4$, which emerges from the disformal
         null geodesic of dark matter.
 \end{enumerate}
-Together these give the exact algebraic identity $\fsc = \alphaK/(3\MIRA)$.
+Together these give the exact algebraic identity $\fsc = \sK/(3\MIRA)$.
 
 \bigskip
 
@@ -180,19 +183,31 @@ All parameters are algebraically fixed; no fitting is performed.
 The dark-energy equation-of-state parameters derived in Paper~1 are
 \begin{align}
   w_0 &= -\frac{\AURA}{\phiG+\pi} \approx -0.840\,, \label{eq:w0}\\
-  \Omde &= -w_0 = \frac{\AURA}{\phiG+\pi} \approx 0.840\,. \label{eq:OmDE}
+  \sDE &= -w_0 = \frac{\AURA}{\phiG+\pi} = 0.839950\,. \label{eq:OmDE}
 \end{align}
 
-The EFT kineticity in the Bellini--Sawicki classification \citep{Bellini2015},
-part of the broader effective field theory of dark energy
-\citep{Gubitosi2013,Gleyzes2013}, is defined as
+The quantity entering the screening fraction is the fractional dilution rate
+of the dark-energy \emph{pressure} per e-fold,
 \begin{equation}
-  \alphaK \;\equiv\; \frac{2X\,K_X}{\Mpl^2 H^2}\,,
-  \label{eq:alphaK_def}
+  \sK \;\equiv\; -\frac{1}{\rho_\phi}\frac{dp_\phi}{dN}
+      \;=\; -3w_0(1+w_0)\,, \qquad N = \ln a,
+  \label{eq:sK_def}
 \end{equation}
-where $K_X = \partial K/\partial X$.
-Paper~7 derives $\alphaK = 0.403302$ numerically from CLASS/EFTCAMB; in
-Section~\ref{sec:identity} we provide its exact algebraic expression.
+which carries only the equation of state: no factor of $H$, no density, and
+no kinetic function.  Section~\ref{sec:identity} gives its exact algebraic
+form.
+
+\paragraph{A label corrected.}
+Earlier versions of this paper called this quantity $\alphaK$ and defined it
+as the Bellini--Sawicki kineticity $2XK_X/(\Mpl^2H^2)$
+\citep{Bellini2015,Gubitosi2013,Gleyzes2013}.  That identification was wrong,
+and it matters here rather than being a matter of notation.  The kineticity of
+the SSEE action is $\alphaK = 3(1-\Omega_m)(5-3w_0) = 15.591335$ (Paper~7,
+verified against \textsc{hi\_class}); it depends on $K(X)$ and it evolves.
+The constant $0.403302$ is $\sK$, and the distinction is what makes
+$\fsc$ well defined: a screening fraction built from a kineticity would
+inherit that kineticity's dependence on the expansion history, while one built
+from $\sK$ cannot, because $\sK$ contains no $H$ (§\ref{sec:step4}).
 
 \subsection{The disformal coupling and MIRA (Paper 8)}
 \label{sec:p8recap}
@@ -226,7 +241,7 @@ it is fixed algebraically by $\bc=\AURA$ and realised physically as the
 Hubble screening amplitude derived below.
 
 %% ─────────────────────────────────────────────────────────────────────────────
-\section{Algebraic Derivation: $\fsc = \alphaK/(3\MIRA)$}
+\section{Algebraic Derivation: $\fsc = \sK/(3\MIRA)$}
 \label{sec:identity}
 %% ─────────────────────────────────────────────────────────────────────────────
 
@@ -236,30 +251,26 @@ relations.  Scalar screening mechanisms of this type were introduced by
 realisation is a kinematic analogue arising from the k-essence EFT rather
 than from massive-gravity or Galileon operators.
 
-\subsection{Step 1: Exact expression for $\alphaK$}
+\subsection{Step 1: Exact expression for $\sK$}
 \label{sec:step1}
 
-The background Friedmann equations give
-\begin{align}
-  \rho_\phi &= \frac{X}{\KAL} + V = 3\Mpl^2 H^2\,\Omde\,, \label{eq:rho}\\
-  p_\phi    &= \frac{X}{\KAL} - V = w_0\,\rho_\phi\,. \label{eq:p}
-\end{align}
-Subtracting: $V = \rho_\phi(1-w_0)/2$; adding:
-$X/\KAL = \rho_\phi(1+w_0)/2 = 3\Mpl^2 H^2\,\Omde(1+w_0)/2$.
-
-For the IR kinetic term $K(X) = X/\KAL$ (EFT regime, $X \ll M^4/\KAL$):
-$K_X = 1/\KAL$.
-Substituting into equation~\eqref{eq:alphaK_def}:
+With $p_\phi = w_0\rho_\phi$ and $w_0$ constant, the continuity equation
+$\rho_\phi' = -3(1+w_0)\rho_\phi$ gives
 \begin{equation}
-  \alphaK = \frac{2X}{\KAL\,\Mpl^2 H^2}
-           = \frac{2\cdot\KAL\,\rho_\phi(1+w_0)/2}{\KAL\,\Mpl^2 H^2}
-           = \frac{\rho_\phi(1+w_0)}{\Mpl^2 H^2}
-           = 3\,\Omde\,(1+w_0)\,.
-  \label{eq:alphaK_exact}
+  \frac{1}{\rho_\phi}\frac{dp_\phi}{dN}
+    = w_0\,\frac{\rho_\phi'}{\rho_\phi}
+    = -3w_0(1+w_0)\cdot(-1)\,,
+  \qquad\text{hence}\qquad
+  \sK = -3w_0(1+w_0)\,.
+  \label{eq:sK_exact}
 \end{equation}
+Writing $\sDE \equiv |w_0| = T_r/M_v$ for the saturation and
+$s_m \equiv 1+w_0$ for its complement ($\sDE + s_m = 1$ exactly), this is
+$\sK = 3\,\sDE\,s_m$.  Nothing but the equation of state enters.
+
 Using the SSEE algebraic values~\eqref{eq:w0}--\eqref{eq:OmDE},
 \begin{equation}
-  \Omde(1+w_0) = \frac{\AURA}{\phiG+\pi}\cdot\frac{\phiG+\pi-\AURA}{\phiG+\pi}
+  \sDE\,(1+w_0) = \frac{\AURA}{\phiG+\pi}\cdot\frac{\phiG+\pi-\AURA}{\phiG+\pi}
   = \frac{\AURA(\pi-\phiG)/2}{(\phiG+\pi)^2}\,,
   \label{eq:OmDE_1pw0}
 \end{equation}
@@ -273,12 +284,11 @@ the definitions~\eqref{eq:bc} and $\phiG+\pi = \Omega$):
 Therefore,
 \begin{equation}
   \boxed{
-    \alphaK = \frac{3\AURA(\pi-\phiG)}{2(\phiG+\pi)^2}\,.
+    \sK = \frac{3\AURA(\pi-\phiG)}{2(\phiG+\pi)^2} = 0.403302458888\,.
   }
   \label{eq:alphaK_algebraic}
 \end{equation}
-Numerically: $\alphaK = 3\times3.998\times1.524/(2\times22.65) = 0.403302$,
-in agreement with the EFTCAMB result of Paper~7 to $0.001\%$.
+The closed form and $-3w_0(1+w_0)$ agree to $1.1\times10^{-16}$, machine zero.
 
 \subsection{Step 2: Exact expression for $3\MIRA$}
 \label{sec:step2}
@@ -299,7 +309,7 @@ Therefore,
 
 Dividing equation~\eqref{eq:alphaK_algebraic} by equation~\eqref{eq:3MIRA}:
 \begin{align}
-  \frac{\alphaK}{3\MIRA}
+  \frac{\sK}{3\MIRA}
   &= \frac{3\AURA(\pi-\phiG)}{2(\phiG+\pi)^2}
      \cdot \frac{2}{3\AURA} \nonumber\\
   &= \frac{\pi-\phiG}{(\phiG+\pi)^2}\,.
@@ -310,21 +320,21 @@ The result is a pure algebraic function of the two fundamental constants
 $\phiG$ and $\pi$:
 \begin{equation}
   \boxed{
-    \fsc \;\equiv\; \frac{\alphaK}{3\MIRA}
+    \fsc \;\equiv\; \frac{\sK}{3\MIRA}
          \;=\; \frac{\pi-\phiG}{(\phiG+\pi)^2}
          \;\approx\; 0.06725\,.
   }
   \label{eq:fscreen_identity}
 \end{equation}
 This is the central result of the paper.
-No parameters are adjusted: $\alphaK$ is fixed by the background equation
+No parameters are adjusted: $\sK$ is fixed by the background equation
 of state and the IR kinetic structure; $\MIRA$ is fixed by the disformal
 null geodesic; their ratio is fixed by~$\phiG$ and~$\pi$.
 
 \subsection{Physical justification: separate-universe k-essence}
 \label{sec:sep_universe}
 
-The algebraic steps above establish the \emph{value} $\fsc = \alphaK/(3\MIRA)$.
+The algebraic steps above establish the \emph{value} $\fsc = \sK/(3\MIRA)$.
 We now show, from the separate-universe approximation, that the correction is \emph{multiplicative},
 resolving the ambiguity between equations~\eqref{eq:H0local} and~\eqref{eq:H0local_add}.
 
@@ -334,7 +344,7 @@ with a perturbed energy density.  For k-essence, the local scalar density
 fluctuation at leading order in $\delta_{\rm local}$ is
 \begin{equation}
   \frac{\delta\rho_\phi}{\rho_{\rm crit}}
-  = \frac{\alphaK}{3\,c_s^2}
+  = \frac{\sK}{3\,c_s^2}
     \cdot \frac{\Omm}{\mathcal{M}\,(1+w_0)}
     \cdot \delta_{\rm local}\,,
   \label{eq:drho_phi}
@@ -346,7 +356,7 @@ coupling (Paper~6).  The local Hubble rate then satisfies
 \begin{equation}
   \frac{H_{\rm local}^2}{H_{\rm global}^2}
   = 1 + \frac{8\pi G}{3H^2}\,\delta\rho_\phi
-  = 1 + \frac{\alphaK}{3\MIRA}\,\frac{\Omm}{1+w_0}\,\delta_{\rm local}\,.
+  = 1 + \frac{\sK}{3\MIRA}\,\frac{\Omm}{1+w_0}\,\delta_{\rm local}\,.
   \label{eq:H2ratio}
 \end{equation}
 The SSEE algebraic identity (Table~\ref{tab:numbers}, row $1+w_0$):
@@ -387,11 +397,11 @@ $\Omega=\phiG+\pi$ & ---             & $4.7596266423$ & --- \\
 $\AURA$      & $(3\phiG+\pi)/2$       & $3.9978473099$ & Eq.~\eqref{eq:bc} \\
 $\MIRA$      & $\AURA/2$              & $1.9989236550$ & Eq.~\eqref{eq:MIRA_exact} \\
 $w_0$        & $-\AURA/\Omega$        & $-0.83994977$  & Eq.~\eqref{eq:w0} \\
-$\Omde$      & $\AURA/\Omega$         & $0.83994977$   & Eq.~\eqref{eq:OmDE} \\
+$\sDE$      & $\AURA/\Omega$         & $0.83994977$   & Eq.~\eqref{eq:OmDE} \\
 $1+w_0$      & $(\pi-\phiG)/(2\Omega)$& $0.16005023$   & Eq.~\eqref{eq:Omega_minus_AURA} \\
-$\alphaK$    & $3\AURA(\pi-\phiG)/(2\Omega^2)$ & $0.403302$ & Eq.~\eqref{eq:alphaK_algebraic} \\
+$\sK$    & $3\AURA(\pi-\phiG)/(2\Omega^2)$ & $0.403302$ & Eq.~\eqref{eq:alphaK_algebraic} \\
 $3\MIRA$     & $3\AURA/2$             & $5.9967$       & Eq.~\eqref{eq:3MIRA} \\
-$\fsc = \alphaK/(3\MIRA)$ & $(\pi-\phiG)/\Omega^2$ & $0.067253$ & Eq.~\eqref{eq:fscreen_identity} \\
+$\fsc = \sK/(3\MIRA)$ & $(\pi-\phiG)/\Omega^2$ & $0.067253$ & Eq.~\eqref{eq:fscreen_identity} \\
 \midrule
 $H_0 = \Hzero^{\rm alg}$ (global anchor) & $3\Omega^2$ & $67.962$ km/s/Mpc & Paper~1 (Post.~D) \\
 $H_0^{\rm local}$ (canonical, mult.) & $H_0/(1-\fsc)$  & $72.86$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
@@ -454,15 +464,15 @@ different epochs:
         $\Omde(z_*) \sim 10^{-9}$ and the scalar kinetic energy is negligible.
         The inferred value is $H_0^{\rm alg} = 3(\phiG+\pi)^2$.
   \item SH0ES measures $H_0$ via the distance ladder at $z < 0.15$, where
-        $\Omde \approx 0.840$ and the scalar field is kinetically active.
+        $\sDE \approx 0.840$ and the scalar field is kinetically active.
 \end{itemize}
 
 The kinetic energy density of the scalar field at $z < 0.15$ is
 \begin{equation}
   \rho_{\rm kin} = \frac{X_{\rm bg}}{\KAL}
   = \frac{\rho_\phi(1+w_0)}{2}
-  = \frac{3\Mpl^2 H^2\,\Omde(1+w_0)}{2}
-  = \frac{\Mpl^2 H^2\,\alphaK}{2}\,.
+  = \frac{3\Mpl^2 H^2\,\sDE(1+w_0)}{2}
+  = \frac{\Mpl^2 H^2\,\sK}{2}\,.
   \label{eq:rhokin}
 \end{equation}
 This kinetic energy is absent in the CMB era and contributes to the local
@@ -472,7 +482,7 @@ Friedmann equation at late times.
 \label{sec:localH0}
 
 The scalar kinetic energy density at $z < 0.15$ contributes a fraction
-$\fsc = \alphaK/(3\MIRA)$ of the total dark-energy budget.
+$\fsc = \sK/(3\MIRA)$ of the total dark-energy budget.
 Depending on whether this contribution is treated as multiplicative
 (geometric correction to the expansion rate) or additive (linear
 superposition), the inferred local Hubble constant takes one of two values:
@@ -548,7 +558,7 @@ The factor $\MIRA = \AURA/2$ in the denominator of $\fsc$ originates from
 the disformal null geodesic of Paper~8: it quantifies how the dark matter
 sector couples optically to the scalar gradient.
 Its appearance here, through the algebraic cancellation of $\AURA$ in
-$\alphaK/(3\MIRA)$, connects the lensing amplification derived in Paper~8
+$\sK/(3\MIRA)$, connects the lensing amplification derived in Paper~8
 to the local Hubble bias --- without any additional assumptions.
 
 \subsection{Why the CMB is unaffected}
@@ -559,7 +569,7 @@ that is negligible at $z \gg 1$.
 Specifically:
 \begin{enumerate}
   \item \textbf{Sound horizon} $r_d$: not modified.
-        The correction enters through $w_0$ and $\Omde$ at $z \sim 0$,
+        The correction enters through $w_0$ and $\sDE$ at $z \sim 0$,
         long after decoupling.
         Papers~2 and~3 established $r_d = 147.2$\,Mpc, consistent with Planck,
         and this result is unchanged.
@@ -617,7 +627,7 @@ Paper & Key result & Affected by $\fsc$? \\
 
 Table~\ref{tab:consistency} confirms that the correction $\fsc$ does not
 retroactively modify any result in Papers~1--8.
-The two inputs---$\alphaK$ from Paper~7 and $\MIRA$ from Paper~8---are
+The two inputs---$\sK$ from Paper~7 and $\MIRA$ from Paper~8---are
 already established; Paper~9 derives their ratio as a prediction for
 the distance-ladder measurement.
 
@@ -652,7 +662,7 @@ $\Omega_{m,\rm CMB}=\omega_m/h^2$, with \emph{no} matter factor (OP-8 dissolved)
   \item If the CMB+BAO inference of $H_0$ shifts above $69$ km/s/Mpc
         (closing the tension from the early-universe side), the two-epoch
         mechanism of Section~\ref{sec:mechanism} would require revision.
-  \item If the SSEE EFT is found to require $\alphaK \neq 3\Omde(1+w_0)$
+  \item If the SSEE EFT is found to require $\sK \neq 3\sDE(1+w_0)$
         (e.g., from a non-standard UV completion), the identity~\eqref{eq:fscreen_identity}
         would be modified proportionally.
 \end{enumerate}
@@ -802,7 +812,7 @@ mutually reinforcing arguments:
     correspond to a velocity bias $\Delta v$, not a density correction.
   \item \textbf{Algebraic consistency} (\S\,\ref{sec:identity}):
     the exact identity $\fsc = (\pi-\phiG)/(\phiG+\pi)^2$ has no free parameters
-    and is reproduced identically by both the kineticity and the disformal-sector
+    and is reproduced identically by both the pressure-dilution rate and the disformal-sector
     computations.
 \end{enumerate}
 The additive form carries a residual $\fsc^2\,H_0^{\rm alg} \approx 0.33$\,km/s/Mpc
@@ -811,12 +821,12 @@ The variation of $\fsc(z)$ over $z\in[0,0.15]$ shifts $H_0^{\rm local}$ by less
 than $0.05$\,km/s/Mpc (Appendix, Step~4).
 
 \paragraph{UV completion of $M$ (addressed in Paper~10).}
-The algebraic identity $\fsc = \alphaK/(3\MIRA) = (\pi-\phiG)/(\Omega^2)$ does not
+The algebraic identity $\fsc = \sK/(3\MIRA) = (\pi-\phiG)/(\Omega^2)$ does not
 depend on $M$ (it cancels in the ratio), so the canonical prediction
 $H_0^{\rm local} = 72.86$\,km/s/Mpc ($0.17\sigma$, global anchor $H_0=3(\phiG+\pi)^2$) is robust.
 Paper~10 of this series \citep{Paper10} derives $M^4 = 45\alpha^2\rho_{\rm crit} = 5\phiG^8\rho_{\rm crit}$
 from the same $\alpha$-attractor that governs inflation (Paper~1), yielding
-$\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value) and the UV value
+$\sK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value) and the UV value
 $H_0^{\rm UV} = 73.040$\,km/s/Mpc ($0.00\sigma$ from SH0ES), the small-scale
 refinement of the same cascade that lands on the SH0ES central value.
 
@@ -828,9 +838,9 @@ refinement of the same cascade that lands on the SH0ES central value.
 We have shown that the SSEE effective field theory, as formulated in
 Papers~7 and~8, contains an algebraically exact identity:
 \begin{equation}
-  \fsc = \frac{\alphaK}{3\,\MIRA} = \frac{\pi-\phiG}{(\phiG+\pi)^2} \approx 0.06725\,,
+  \fsc = \frac{\sK}{3\,\MIRA} = \frac{\pi-\phiG}{(\phiG+\pi)^2} \approx 0.06725\,,
 \end{equation}
-where $\alphaK = 3\,\Omde(1+w_0)$ is the EFT kineticity and
+where $\sK = 3\,\sDE(1+w_0)$ is the pressure-dilution rate and
 $\MIRA = \bc/2$ is the effective optical coupling derived from the
 disformal null geodesic.
 The structural constant $\AURA = 2\MIRA$ cancels exactly in the ratio,
@@ -989,11 +999,11 @@ On the homogeneous background $\partial_\mu\phi = (\dot\phi,\mathbf{0})$, the
 disformal modification shifts the effective photon speed by
 \begin{equation}
   \tilde{c}^2 \;=\; c^2\!\left(1 - \frac{\bc\,\dot\phi^2}{M^4\,a^2}\right)^{-1}
-               \;\approx\; c^2\!\left(1 + \frac{\alphaK}{3\MIRA}\right)
+               \;\approx\; c^2\!\left(1 + \frac{\sK}{3\MIRA}\right)
                \;=\; c^2(1 + \fsc)^{}\,,
 \end{equation}
 at leading order in $\dot\phi^2/M^4$, where the last step uses
-$\bc\,\dot\phi^2/(M^4 a^2) \approx -\alphaK/(3\MIRA) = -\fsc$ (Paper~8,
+$\bc\,\dot\phi^2/(M^4 a^2) \approx -\sK/(3\MIRA) = -\fsc$ (Paper~8,
 eq.~(17)--(18)).
 
 Photons with speed $\tilde{c} = c/(1-\fsc)$ travel a comoving interval
@@ -1027,20 +1037,29 @@ The additive approximation $H_0^{\rm alg}(1+\fsc)$ follows from the
 Taylor expansion $(1-\fsc)^{-1}\approx 1+\fsc$ and carries a residual
 error $\fsc^2\,H_0^{\rm alg} \approx 0.33$\,km/s/Mpc.
 
-\paragraph{Step 4: constancy of $\fsc$ over $z\in[0,0.15]$.}
+\paragraph{Step 4: $\fsc$ is exactly constant.}
+\label{sec:step4}
 
-The compression~\eqref{eq:chi_compress} uses a $z$-independent $\fsc$.
-We verify this is consistent: from~\eqref{eq:alphaK_exact},
-$\alphaK(z) = 3\Omde(z)(1+w(z))$ where $\Omde(z)$ and $w(z)$ vary slowly
-for $z < 0.15$.
-At $z = 0.15$, with $w(0.15) \approx w_0 + w_a \times 0.130 \approx -0.927$
-and $\Omde(0.15) \approx 0.812$ (from the Friedmann constraint):
-\begin{equation}
-  \alphaK(0.15) \;\approx\; 3 \times 0.812 \times 0.073 \;\approx\; 0.178\,,
-\end{equation}
-a $56\%$ change, but the \emph{ratio} $\fsc = \alphaK/(3\MIRA)$ tracks
-$\alphaK$ directly; since $\MIRA$ is a structural constant, the
-$z$-variation of $\fsc$ over $[0, 0.15]$ is formally of order $w_a z_{\max}$.
+The compression~\eqref{eq:chi_compress} uses a $z$-independent $\fsc$.  With
+the corrected identification this needs no approximation: $\sK = -3w_0(1+w_0)$
+is built from $w_0$ alone, and $w_0$ is a constant of the model, so $\sK$ is a
+number and not a function of redshift.  Since $\MIRA$ is a structural
+constant, $\fsc = \sK/(3\MIRA)$ is constant \emph{exactly}, at all $z$.
+
+Earlier versions of this paragraph read $\alphaK(z) = 3\Omde(z)(1+w(z))$ and
+found a $56\%$ variation over $z\in[0,0.15]$, which had then to be argued away
+as formally of order $w_a z_{\max}$.  That variation belonged to the
+kineticity, which does evolve; it never belonged to $\sK$.  The correction
+removes the caveat rather than weakening it.
+
+A structural check makes the same point from the other side.  Replacing $\sDE
+= T_r/M_v$ by the density fraction $1-\omega_m/h^2$ in
+Eq.~\eqref{eq:alphaK_algebraic} makes $\fsc$ depend on the expansion anchor:
+sweeping that anchor from $60$ to $100$~km\,s$^{-1}$Mpc$^{-1}$ moves the
+result.  With $\sDE$ it is invariant to the last digit, because no $H$ enters.
+A screening fraction that moved with the anchor used to derive $H_0$ would be
+circular; this one cannot be.
+
 The mean value of $\fsc(z)$ over this interval is approximately
 \begin{equation}
   \bar\fsc \;\approx\; \fsc(0)\left[1 + \frac{3w_a\,z_{\max}}{4}\right]

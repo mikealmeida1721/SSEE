@@ -25,7 +25,7 @@
 \newcommand{\Hzero}{H_0}
 \newcommand{\bc}{\beta_c}
 \newcommand{\fsc}{f_{\mathrm{screen}}}
-\newcommand{\alphaK}{\alpha_K}
+\newcommand{\sK}{s_K}
 \renewcommand{\Omega}{\varOmega}
 \newcommand{\Mcuv}{M^4_{\rm UV}}
 \newcommand{\rhoc}{\rho_{\rm crit}}
@@ -68,14 +68,14 @@ inflationary tensor-to-scalar ratio $r = 12\alpha/N^2 \approx 0.00813$
 \end{equation*}
 where the identity $45\alpha^2 = 5\phiG^8$ follows exactly from the definition
 $\alpha = \phiG^4/3$ (not a numerical coincidence, but an algebraic consequence).
-With this cutoff, the full Bellini--Sawicki parameter becomes
-$\alphaK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value). Applied to the
+With this cutoff, the full screening rate becomes
+$\sK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value). Applied to the
 global anchor $H_0=67.962$, the UV prediction is
 $H_0^{\rm UV} = 73.040$ km/s/Mpc ($0.00\sigma$ from SH0ES), matching the SH0ES
 central value $73.04\pm1.04$ km/s/Mpc \citep{Riess2022} --- the headline UV
 value of this paper, refining the IR cascade $72.86$ ($0.17\sigma$).
 \textbf{The UV value is conditional on Postulate~C.1 (UV-IR $\varphi/\pi$
-separability; §\ref{sec:theorem})}, which fixes $\alphaK^{\rm full}$ via the
+separability; §\ref{sec:theorem})}, which fixes $\sK^{\rm full}$ via the
 cutoff $M$; the IR value $72.86$ is independent of it.
 The same $\alpha$ that governs inflation at $z \sim 10^{60}$ thus fixes the
 dark-energy UV scale today, providing a falsifiable cross-epoch consistency test:
@@ -101,11 +101,11 @@ The Hubble tension---the $\sim4$--$5\sigma$ discrepancy between CMB-inferred
 $H_0 = 67.36 \pm 0.54$ km/s/Mpc \citep{Planck2018} and local distance-ladder
 measurements \citep{Verde2019,Kamionkowski2023}---has
 resisted resolution through conventional extensions of $\Lambda$CDM.
-Paper~9 of this series~\citep{SSEE9} showed that within SSEE, the EFT
-kineticity parameter $\alphaK = 0.403302$ \citep{SSEE7,SSEE8} and the lensing factor
+Paper~9 of this series~\citep{SSEE9} showed that within SSEE, the dark-energy
+pressure-dilution rate $\sK = -3w_0(1+w_0) = 0.403302$ \citep{SSEE7,SSEE8} and the lensing factor
 $\MIRA = \AURA/2$ combine to produce an algebraic screening fraction
 \begin{equation}
-  \fsc \;=\; \frac{\alphaK}{3\,\MIRA}
+  \fsc \;=\; \frac{\sK}{3\,\MIRA}
        \;=\; \frac{\pi - \phiG}{(\phiG+\pi)^2}
        \;=\; 0.06725\,,
 \end{equation}
@@ -143,7 +143,7 @@ $H_0^{\rm UV} = 73.040$ km/s/Mpc ($0.00\sigma$ from SH0ES) --- the headline UV
 prediction, coincident with the SH0ES central value $73.04 \pm 1.04$ km/s/Mpc
 \citep{Riess2022}, refining the IR cascade $72.86$ ($0.17\sigma$). The UV value
 is conditional on Postulate~C.1 (see §\ref{sec:theorem}), which fixes
-$\alphaK^{\rm full}$ via the cutoff $M$; the IR value is independent of it.
+$\sK^{\rm full}$ via the cutoff $M$; the IR value is independent of it.
 
 The physical picture is intriguing: the \emph{same curvature parameter $\alpha$
 that shaped the inflationary plateau at $z \sim 10^{60}$} provides the speed
@@ -208,7 +208,7 @@ evaluated at the model's physical Hubble rate $H_0 = 67.962$~km/s/Mpc
 (the CMB-anchored value of Paper~III).\footnote{Convention note: in the
 dimensionless formulation of §\ref{sec:EFT} we work in units $\rhoc = 1$, where
 $M^4 = 5\phiG^8$ is a pure number ($\approx 234.89$) and all downstream
-observables ($\alpha_K$, $f_{\rm screen}$, $\varepsilon$) are dimensionless
+observables ($s_K$, $f_{\rm screen}$, $\varepsilon$) are dimensionless
 ratios. The conversion to physical units in Eq.~\eqref{eq:Mmev} uses the SSEE
 $\rho_{\rm crit}$ consistently with the identity $M^4 = 5\phiG^8\,\rhoc$ of
 Table~\ref{tab:identity}; we do \emph{not} borrow the external $\Lambda$CDM
@@ -239,7 +239,7 @@ $(2\phiG{-}1)^2$ form & $M^4 = (2\phiG{-}1)^2 \phiG^8\,\rhoc$ & $234.89\,\rhoc$ 
 
 
 % ═══════════════════════════════════════════════════════════════════════════════
-\section{Full K(X) EFT and the Corrected $\alphaK$}
+\section{Full K(X) EFT and the Corrected $\sK$}
 \label{sec:EFT}
 % ═══════════════════════════════════════════════════════════════════════════════
 
@@ -280,7 +280,7 @@ The physical (positive) root is
              {4/M^4}\,.
 \end{equation}
 With $M^4 = 45\alpha^2\rhoc = 234.89\rhoc$ and the SSEE background
-$\rho_\phi(1+w_0) = \alphaK^{\rm IR}/3 = 0.13443$ (in units $\rhoc = 1$),
+$\rho_\phi(1+w_0) = \sK^{\rm IR}/3 = 0.13443$ (in units $\rhoc = 1$),
 we find
 \begin{equation}
   X_{\rm bg}^{\rm UV} \;=\; 0.36487\,\rhoc\,,
@@ -291,19 +291,27 @@ a 1.7\% reduction from the IR value $X_{\rm bg}^{\rm IR} = 0.37113\,\rhoc$.
 The UV correction is perturbative: $\varepsilon \equiv X_{\rm bg}^2/M^4
 \approx 5.7\times10^{-4}$.
 
-\subsection{Full Bellini--Sawicki $\alphaK$}
+\subsection{The Screening Rate $\sK$ and its UV Correction}
 
-The Bellini--Sawicki kineticity \citep{BelliniSawicki2014,Cheung2008,Gubitosi2013}
-with both $K_X$ and $K_{XX}$ contributions is
+The screening rate $\sK$ is the fractional dilution of the dark-energy
+\emph{pressure} per e-fold. It follows from the continuity equation and is
+fixed by the equation of state alone,
 \begin{equation}
-  \alphaK \;=\; \frac{2\left(X K_X + 2X^2 K_{XX}\right)}{\Mpl^2 H^2}\,,
+  \sK \;=\; -3w_0(1+w_0) \;=\; 3\,s_{\rm DE}\,s_m \;=\; 0.403302\,,
+  \label{eq:sKdef}
 \end{equation}
-where in units $\rhoc = 1$ one has $\Mpl^2 H^2 = 1/3$, so $\alphaK
-= 3\times 2(X K_X + 2X^2 K_{XX}) = 6(X K_X + 2X^2 K_{XX})$.
+with $s_{\rm DE} = |w_0| = 0.839950$ and $s_m = 1+w_0 = 0.160050$. It contains
+no factor of $H$ and no density, which is why the screening fraction built from
+it is a purely geometric lens (Paper~9). It is \emph{not} the Bellini--Sawicki
+kineticity $\alpha_K$ \citep{BelliniSawicki2014,Cheung2008,Gubitosi2013}, which
+for the SSEE action has the distinct value $\alpha_K = 15.591335$
+\citep{SSEE7}. In units $\rhoc = 1$ the same number $\sK$ is reproduced by
+$6\left(X K_X + 2X^2 K_{XX}\right)$ evaluated on the saturated background, and
+that form is what propagates the UV correction below.
 With $K_{XX} = 2/M^4$ and the self-consistent $X_{\rm bg}^{\rm UV}$:
 \begin{equation}
-  \alphaK^{\rm full}
-  \;=\; \alphaK^{\rm IR}
+  \sK^{\rm full}
+  \;=\; \sK^{\rm IR}
         + \underbrace{\frac{24\,(X_{\rm bg}^{\rm UV})^2}{M^4}}_{\rm UV\;corr.}
   \;=\; 0.40330 + 0.01361
   \;=\; 0.41691\,.
@@ -374,7 +382,7 @@ below the UV cutoff $M^4$.
 The screening fraction (Paper~9) generalises in the UV to
 \begin{equation}
   \fsc^{\rm UV}
-  \;=\; \frac{\alphaK^{\rm full}}{3\,\MIRA}
+  \;=\; \frac{\sK^{\rm full}}{3\,\MIRA}
   \;=\; \frac{0.41691}{3\times 1.99892}
   \;=\; 0.06952\,,
 \end{equation}
@@ -405,7 +413,7 @@ $72.86$ ($0.17\sigma$) on the same global anchor $H_0=3(\phiG+\pi)^2$.
 \label{tab:H0}
 \begin{tabular}{lllll}
 \toprule
-Regime & $\alphaK$ & $\fsc$ & $H_0^{\rm local}$ [km/s/Mpc] & Tension SH0ES \\
+Regime & $\sK$ & $\fsc$ & $H_0^{\rm local}$ [km/s/Mpc] & Tension SH0ES \\
 \midrule
 IR ($M\to\infty$, Papers 1--9) & 0.40330 & 0.06725 & 72.86 & $0.17\sigma$ \\
 UV ($M^4=45\alpha^2\rhoc$, this paper) & 0.41691 & 0.06952 & \textbf{73.040} & $0.00\sigma$ (cond.$^{a}$) \\
@@ -442,7 +450,7 @@ value is summarised in Table~\ref{tab:ladder}.
 
 \begin{table}[ht]
 \centering
-\caption{The UV ladder: $\phiG \to \alpha \to M \to \alphaK^{\rm full} \to H_0$.}
+\caption{The UV ladder: $\phiG \to \alpha \to M \to \sK^{\rm full} \to H_0$.}
 \label{tab:ladder}
 \begin{tabular}{llll}
 \toprule
@@ -452,8 +460,8 @@ Seed & $\phiG = (1+\sqrt{5})/2$ & 1.61803399 & --- \\
 $\alpha$-attractor & $\alpha = \phiG^4/3$ & 2.28470066 & Paper 1 \\
 UV cutoff & $M^4 = 45\alpha^2\rhoc$ & $234.89\,\rhoc$ & Eq.~\eqref{eq:M4main} \\
 $M$ in meV & $M = \phiG^2\,5^{1/4}\,\rhoc^{1/4}$ & 9.68 meV & Eq.~\eqref{eq:Mmev} \\
-$\alphaK^{\rm full}$ & quadratic + B-S & 0.41691 & Eq.~\eqref{eq:aKfull} \\
-$\fsc^{\rm UV}$ & $\alphaK^{\rm full}/(3\MIRA)$ & 0.06952 & this paper \\
+$\sK^{\rm full}$ & quadratic + B-S & 0.41691 & Eq.~\eqref{eq:aKfull} \\
+$\fsc^{\rm UV}$ & $\sK^{\rm full}/(3\MIRA)$ & 0.06952 & this paper \\
 $H_0^{\rm UV}$ & $H_0/(1-\fsc^{\rm UV})$ & \textbf{73.040} & Eq.~\eqref{eq:H0UV} \\
 SH0ES & $73.04 \pm 1.04$ km/s/Mpc & (obs.) & Riess 2022 \\
 \bottomrule
@@ -485,7 +493,7 @@ If LiteBIRD measures $r_{\rm obs}$, the implied $\alpha_{\rm obs}
 = r_{\rm obs} N^2/12$, and one predicts
 \begin{equation}
   H_0^{\rm local}(\alpha_{\rm obs})
-  \;=\; \frac{H_0}{1 - \alphaK^{\rm full}(\alpha_{\rm obs})\,/\,(3\MIRA)}\,.
+  \;=\; \frac{H_0}{1 - \sK^{\rm full}(\alpha_{\rm obs})\,/\,(3\MIRA)}\,.
   \label{eq:Hpred}
 \end{equation}
 If this differs from SH0ES by more than $1\sigma$ (i.e., if
@@ -496,9 +504,9 @@ the UV-completion proposal is falsified at $1\sigma$.
   \centering
   \includegraphics[width=0.85\textwidth]{../results/figures/fig_paper10_alphaK_vs_alpha.pdf}
   \caption{%
-    \textit{Top:} Full Bellini--Sawicki parameter $\alpha_K^{\rm full}(\alpha)$
+    \textit{Top:} Full screening rate $s_K^{\rm full}(\alpha)$
     as the inflationary curvature $\alpha$ varies.
-    At $\alpha = \varphi^4/3 = 2.284701$ (green dashed), $\alpha_K^{\rm full}=0.41691$
+    At $\alpha = \varphi^4/3 = 2.284701$ (green dashed), $s_K^{\rm full}=0.41691$
     (green dot); the IR limit $0.40330$ is shown dash-dotted blue.
     \textit{Bottom:} Predicted local Hubble constant $H_0^{\rm local}(\alpha)$
     from the canonical cascade Eq.~(\ref{eq:Hpred}) with base
@@ -558,25 +566,25 @@ to the $\alpha$-attractor sector.
 
 An EFT argument based on technical naturalness \citep{tHooft1980} demands
 that the UV operator $X^2/M^4$ does not destabilise the IR physics.
-Requiring that the UV correction to $\alphaK$ is of order $\alphaK^{\rm IR}$
+Requiring that the UV correction to $\sK$ is of order $\sK^{\rm IR}$
 itself gives a naturalness scale
 \begin{equation}
-  \delta\alphaK \;\sim\; \alphaK^{\rm IR}
+  \delta\sK \;\sim\; \sK^{\rm IR}
   \;\Rightarrow\;
-  \frac{24\,X_{\rm bg}^2}{M^4} \;\sim\; \alphaK^{\rm IR}
+  \frac{24\,X_{\rm bg}^2}{M^4} \;\sim\; \sK^{\rm IR}
   \;\Rightarrow\;
-  M^4 \;\sim\; \frac{24\,X_{\rm bg}^2}{\alphaK^{\rm IR}}\,.
+  M^4 \;\sim\; \frac{24\,X_{\rm bg}^2}{\sK^{\rm IR}}\,.
 \end{equation}
-Evaluating with the IR background: $X_{\rm bg}^{\rm IR} = \alphaK^{\rm IR}\KAL/6$,
+Evaluating with the IR background: $X_{\rm bg}^{\rm IR} = \sK^{\rm IR}\KAL/6$,
 \begin{equation}
   M^4_{\rm B}
-  \;\sim\; \frac{24\,(\alphaK^{\rm IR}\KAL/6)^2}{\alphaK^{\rm IR}}
-  \;=\; \frac{2\,\alphaK^{\rm IR}\,\KAL^2}{3}
+  \;\sim\; \frac{24\,(\sK^{\rm IR}\KAL/6)^2}{\sK^{\rm IR}}
+  \;=\; \frac{2\,\sK^{\rm IR}\,\KAL^2}{3}
   \;=\; M^4_{\rm r2} \;\approx\; 4.1\,\rhoc\,.
 \end{equation}
 Route~B gives the self-coupling scale $M^4_{\rm r2}$, not $5\phiG^8\rhoc$.
 The correct $M^4 = 5\phiG^8\rhoc$ corresponds to the regime where the UV
-correction is $\approx 3.37\%$ of $\alphaK^{\rm IR}$---a \emph{sub-unit}
+correction is $\approx 3.37\%$ of $\sK^{\rm IR}$---a \emph{sub-unit}
 naturalness condition.
 
 \subsection{Route~C: Full $P(X,\phi)$ Lagrangian and Conjecture~C.1}
@@ -610,7 +618,7 @@ then closes within the SSEE algebraic structure:
 \begin{equation}
   \phiG \;\xrightarrow{\alpha = \phiG^4/3}\; \alpha
         \;\xrightarrow{M^4 = 45\alpha^2\rhoc}\; M
-        \;\xrightarrow{\alphaK^{\rm full}}\; H_0^{\rm local}
+        \;\xrightarrow{\sK^{\rm full}}\; H_0^{\rm local}
   \;=\; 73.040\;\text{km/s/Mpc}\,.
 \end{equation}
 Conditional on that postulate, the canonical UV prediction is
@@ -756,7 +764,7 @@ $\alpha$-attractor $K_\alpha$ is
 \end{equation}
 The UV ladder closes:
 $\phiG \to \alpha = \phiG^4/3 \to M^4 = 5\phiG^8\rhoc
-\to \alphaK^{\rm full} = 0.41691
+\to \sK^{\rm full} = 0.41691
 \to H_0^{\rm UV} = 73.040\;\mathrm{km/s/Mpc}$ ($0.00\sigma$ from SH0ES;
 conditional on Postulate C.1),
 entirely within the $\{\phiG,\pi\}$ algebraic structure of SSEE.}
@@ -777,11 +785,11 @@ This is deferred to Paper~B of the SSEE series.
 Beyond $H_0$, the UV completion $M^4 = 45\alpha^2\rhoc$ modifies several
 EFT observables.
 
-\paragraph{Kineticity $\alphaK$.}
-The UV-corrected kineticity $\alphaK^{\rm full} = 0.41691$ is in principle
-measurable by spectroscopic surveys that probe modified-gravity EFT parameters.
+\paragraph{Screening rate $\sK$.}
+The UV-corrected screening rate $\sK^{\rm full} = 0.41691$ is measurable
+through the equation of state, since $\sK^{\rm IR} = -3w_0(1+w_0)$.
 Current constraints from DESI DR2 BAO \citep{AbdulKarim2025} set the background
-context; forthcoming Euclid and DESI~Y5 data will probe $\alphaK$ at the
+context; forthcoming Euclid and DESI~Y5 data will probe $w_0$, and hence $\sK$, at the
 $\sim1\%$ level, distinguishing the UV-completed theory from the IR limit by
 $3.4\,\sigma_{\rm syst}$.
 
@@ -807,7 +815,7 @@ first-order estimate is
 Either way, $|\Delta w_0| \lesssim 0.002$ lies well below the projected
 Euclid sensitivity ($\sigma_{w_0} \approx 0.01$): the UV term leaves the
 background equation of state observationally indistinguishable from the
-IR limit, and the discriminating observable remains $\alphaK$.
+IR limit, and the discriminating observable remains $\sK$.
 
 \paragraph{Sound speed.}
 The adiabatic sound speed of scalar-field excitations around the homogeneous
@@ -850,10 +858,10 @@ Paper & Result used & UV impact \\
 \midrule
 Paper 1 & $\alpha = \phiG^4/3$ → $r = 0.008131$ & \textbf{Direct input:} $M^4 = 45\alpha^2\rhoc$ \\
 Paper 5 & IS: $c_s^2 \approx 0$ (bulk-viscosity mode) & Compatible: distinct from $c_{s,\rm ad}^2 \approx 0.967$ (field mode) \\
-Paper 7 & $\alphaK^{\rm IR} = 0.403302$ & Base for UV correction (+3.37\%) \\
+Paper 7 & $\sK^{\rm IR} = 0.403302$ & Base for UV correction (+3.37\%) \\
 Paper 8 & $\MIRA = \AURA/2$; Vainshtein $r_V \propto 1/M^2$ & $r_V$ enlarged to $\sim 10^{44}$ m at UV; double GR protection \\
 Paper 9 & $H_0^{\rm IR} = 72.86$ (1.12$\sigma$) & UV closes to $73.040$ ($0.00\sigma$; conditional$^{a}$) \\
-Papers 2--4,6 & CMB, MCMC, $\sigma_8$, $f\sigma_8$ & $M$ only modifies $\alphaK$; the algebraic constant $\MIRA = (3\phiG+\pi)/4$ is scale-invariant and unchanged by UV flow \\
+Papers 2--4,6 & CMB, MCMC, $\sigma_8$, $f\sigma_8$ & $M$ only modifies $\sK$; the algebraic constant $\MIRA = (3\phiG+\pi)/4$ is scale-invariant and unchanged by UV flow \\
 \bottomrule
 \end{tabular}%
 }
@@ -862,8 +870,8 @@ conditional on Postulate C.1 (UV-IR separability, §\ref{sec:theorem}). It agree
 central value $73.04$ to rounding; the absolute-scale origin (Postulate~D) remains open, as in $\Lambda$CDM.}
 \end{table}
 
-The AURA cancellation of Paper~9 ($\AURA$ drops out of $\alphaK/(3\MIRA)$
-in the IR limit) is technically broken in the UV because $\alphaK^{\rm full}$
+The AURA cancellation of Paper~9 ($\AURA$ drops out of $\sK/(3\MIRA)$
+in the IR limit) is technically broken in the UV because $\sK^{\rm full}$
 acquires an AURA-dependent correction.
 The canonical UV result $H_0^{\rm UV} = 73.040$ km/s/Mpc ($0.00\sigma$ from
 SH0ES), conditional on Postulate~C.1, indicates that the UV correction is a
@@ -885,8 +893,8 @@ admits a unique algebraically consistent UV cutoff
 \end{equation}
 where $\alpha = \phiG^4/3$ is the inflationary $\alpha$-attractor parameter of
 Paper~1.
-With this cutoff, the full Bellini--Sawicki kineticity is
-$\alphaK^{\rm full} = 0.41691$ and the canonical local Hubble constant is
+With this cutoff, the full screening rate is
+$\sK^{\rm full} = 0.41691$ and the canonical local Hubble constant is
 $H_0^{\rm UV} = 73.040$ km/s/Mpc ($0.00\sigma$ from SH0ES), conditional on
 Postulate~C.1, matching the SH0ES central value $73.04$ to rounding.
 
@@ -894,8 +902,8 @@ The key conclusions are:
 \begin{enumerate}
   \item The algebraic identity $45\alpha^2 = 5\phiG^8$ (exact, $|{\rm diff}|=0$)
         connects the inflationary curvature $\alpha$ to the dark-energy UV scale.
-  \item The UV correction to $\alphaK$ is perturbative
-        ($\varepsilon \approx 5.7\times10^{-4}$) and shifts $\alphaK$ by $+3.37\%$.
+  \item The UV correction to $\sK$ is perturbative
+        ($\varepsilon \approx 5.7\times10^{-4}$) and shifts $\sK$ by $+3.37\%$.
   \item The canonical IR Hubble residual of Paper~9
         ($H_0^{\rm IR}=72.86$, $0.17\sigma$) is reduced to
         $H_0^{\rm UV}=73.040$ ($0.00\sigma$ from SH0ES) by the UV
@@ -924,7 +932,7 @@ SSEE Paper~1 (2026).
 
 \bibitem{SSEE7}
 M.~E.~Almeida Vallejo,
-\emph{Canonical EFT of SSEE: $\beta_c = -\AURA$, $\alphaK = 0.403302$},
+\emph{Canonical EFT of SSEE: $\beta_c = -\AURA$, $\sK = 0.403302$},
 SSEE Paper~7 (2026).
 
 \bibitem{SSEE8}
@@ -935,7 +943,7 @@ SSEE Paper~8 (2026).
 \bibitem{SSEE9}
 M.~E.~Almeida Vallejo,
 \emph{Hubble Tension via Algebraic Screening Fraction:
-$\fsc = \alphaK/(3\MIRA) = (\pi-\phiG)/(\phiG+\pi)^2$},
+$\fsc = \sK/(3\MIRA) = (\pi-\phiG)/(\phiG+\pi)^2$},
 SSEE Paper~9 (2026).
 
 \bibitem{Riess2022}

@@ -3504,7 +3504,7 @@ try:
         for _i in _escanea_r54(_ls):
             _r54.append(f"{_f.relative_to(_REPO)}:{_i+1}")
 
-    _DEUDA_R54 = 58
+    _DEUDA_R54 = 55
     check("R54 la deuda de etiquetas alpha_K/s_K no crece",
           len(_r54) <= _DEUDA_R54,
           f"{len(_r54)} sitios (tope {_DEUDA_R54}): "

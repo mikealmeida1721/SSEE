@@ -177,7 +177,7 @@ punto, pero no es necesario para que la afirmación sea honesta.
 **Regla:** ninguna constante **observacional** (el DATO medido: KiDS S₈, DES S₈, KiDS σ₈…)
 hardcodeada en `src/` puede diferir del ancla en `CANONICAL_VALUES.yaml §observational_anchors`.
 **Por qué existe:** punto ciego cazado por auditoría externa (2026-07-13, H2). El script
-`ssee_paper6_verification.py` tenía `kids_s8 = 0.758` — pero 0.758 es la **predicción SSEE**,
+`ssee_paper6_verification.py` tenía `kids_s8 = 0.758` — pero 0.758 era la **predicción SSEE** de entonces (retirada 2026-08-01),
 no la observación KiDS (**0.759**). Metía la predicción en el hueco del dato, imprimiendo
 **0.00σ** en vez del **0.04σ** real. Ningún patrón "retirado" lo cazaba porque 0.758 es un valor
 vigente legítimo; la falla era **semántica** (dato vs predicción), no un valor obsoleto.

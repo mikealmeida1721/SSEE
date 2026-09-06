@@ -791,16 +791,31 @@ the phantom boundary $w = -1$ is crossed at $z \simeq 0.31$.
 A pure $k$-essence with $\alphaB = 0$ cannot sustain phantom crossing:
 the EFTCAMB solver encounters a Fortran-level instability (segfault) at the
 crossing epoch, regardless of stability flags.
-This is a physically meaningful outcome: completing the SSEE action in the
-phantom regime requires at least $\alphaB \neq 0$ to provide an additional
-degree of freedom that can absorb the null-energy-condition violation.
-This constitutes a \textit{discriminating prediction}: future EFT surveys
-(DESI~Y3 weak lensing, Euclid) that constrain $\alphaB \simeq 0$ would
-place SSEE in tension with phantom crossing, while a detection of
-$\alphaB \neq 0$ at $z < 0.31$ would support the two-sector picture.
-The $\alphaK$ validation reported here is performed at constant
-$w = \wz = -0.839950$, which is the physically relevant regime at $z \simeq 0$
-where the EFTCAMB run uses the fluid-approximation input $\alphaK^{\rm eff} = 0.403302$; the theoretical bare-field value derived in Paper~7 is $\alphaK = 0.072567$.
+Earlier versions read this as evidence that completing the SSEE action in the
+phantom regime requires $\alphaB \neq 0$, to supply a degree of freedom able
+to absorb the null-energy-condition violation.  That reading is superseded,
+and the reason is that the phantom regime itself is gone.  In the revised
+action of Paper~7 the field is minimally coupled and its equation of state is
+constant at $\wz = -0.839950 > -1$: the null energy condition holds at all
+times and there is no crossing for $\alphaB$ to absorb.  The phantom crossing
+of earlier versions was produced by the conformal dark-sector coupling, which
+is withdrawn.
+
+The prediction survives, with its sign reversed and its status improved.
+SSEE now predicts $\alphaB = \alphaM = 0$ \emph{exactly and
+unconditionally}, so a detection of $\alphaB \neq 0$ above $2\sigma$ by
+DESI~Y3 or Euclid ($\sigma \simeq 0.05$) would \emph{falsify} the sector
+rather than support it.  What was a discriminating prediction conditional on
+a two-sector picture is now an unconditional one.
+
+A note on the kineticity is required here, because the label was wrong.  The
+constant $0.403302$ used as an EFTCAMB input is not $\alphaK$: it is
+$s_K = -3\wz(1+\wz)$, the fractional dilution rate of the dark-energy
+pressure per e-fold, which carries only the equation of state.  The
+Bellini--Sawicki kineticity of the revised action is
+$\alphaK = 3\,\Omega_{\rm DE}(5-3\wz) = 15.591335$, verified against an
+independent \textsc{hi\_class} integration to $0.011\%$.  The two are
+unrelated quantities; $f_{\rm screen}$ below uses $s_K$.
 
 
 % ─────────────────────────────────────────────────────────────────────────────
@@ -850,9 +865,10 @@ solar system ($\rho_{\rm DM}\approx 0$) the field is locally unsourced and the
 disformal metric modification is negligible; equivalently, $K(X)$ is of
 $k$-mouflage type \citep{BraxValageas2014} with a screening radius
 $r_{\rm km}(\odot)\approx 0.022\,R_\odot$.
-\emph{In the canonical two-sector limit} (Paper~6 with real DM
-$\Omega_{\rm CDM}=\Omega_{\phi\rm DM}=0.160$ plus EFT Bellini--Sawicki
-structure $\alpha_B=\alpha_M=\alpha_T=0$, Paper~7) the residual fifth-force is
+\emph{In the canonical limit} --- a single cold matter sector with
+$\omega_c = \mathrm{KAL}_0\,\omega_b\,n_s$ (Paper~1, OP-8 closed) plus the
+Bellini--Sawicki structure $\alpha_B=\alpha_M=\alpha_T=0$ of Paper~7, which
+gives $\mu-1=0$ --- the residual fifth-force is
 suppressed to $F_\phi/F_N\sim(H/k)^2\sim 10^{-15}$ at kpc scales and the
 canonical observable lensing reduces to $\thetaE^{\rm SSEE}\approx
 \thetaE^{\rm GR-with-DM}$. Current SLACS/BELLS samples (mean total slope
@@ -867,7 +883,7 @@ particle (\S\ref{sec:growth_raw}).
 The dark-energy EFT of Paper~7 and the disformal geodesic of Paper~8 together
 imply a late-time \emph{local screening fraction}
 \begin{equation}
-\fscr = \frac{\alphaK}{3\,\MIRA}
+\fscr = \frac{s_K}{3\,\MIRA}
       = \frac{\pi-\phiG}{(\phiG+\pi)^2}
       \approx 0.0673 ,
 \end{equation}

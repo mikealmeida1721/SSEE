@@ -94,9 +94,22 @@ dark-energy density equals the SSEE prediction:
 %
 \begin{equation}
   \rho_{\mathrm{DE},0}
-    = \frac{3H_{0}^{2}}{8\pi G}\,\frac{T_{r}}{M_{v}},
+    = \frac{3H_{0}^{2}}{8\pi G}\,\bigl(1-\Omega_m\bigr),
+  \qquad 1-\Omega_m = 0.691119,
   \label{eq:rho_de0}
 \end{equation}
+%
+where $\Omega_m = \omega_m/h^2 = 0.308881$.  Earlier versions of this
+equation carried the saturation $T_{r}/M_{v} = 0.839950$ in this slot.  That
+quantity is $|w_0|$, a number belonging to the equation of state, and it does
+not multiply a critical density; the amplitude error is $21.5\%$.  Since
+$\rho_{\mathrm{DE},0}$ enters only the overall normalisation
+$\mathcal{A}$ of $P(X)$ and not any dimensionless prediction, no published
+observable moves; the correction is made because using a saturation where a
+density belongs is a misuse of both.\footnote{The two are easy to confuse
+because $T_r/M_v$ and $1-\Omega_m$ are both dimensionless and both near
+$0.7$--$0.8$.  The discriminator is whether the slot carries a factor of
+$H$: a density does, an equation of state does not.}
 %
 with $H_{0}$ constrained observationally to
 $67.79^{+0.35}_{-0.35}$~km\,s$^{-1}$\,Mpc$^{-1}$ by the MCMC analysis of
@@ -182,11 +195,15 @@ $|w_0|$.  The only independent dimensionless ratio remaining among the
 SSEE structural constants is $P_{sc}/I_g$, where
 $P_{sc} = 2\varphi+\pi\approx6.378$ (Dynamical Evolution Scalar) and
 $I_g$ (IGNIS) $= \pi+P_{sc}\approx9.519$ (Disruptive convergence, the $w_a$ denominator).
-The sign is determined by the physical requirement that dark-energy density
-decreases with time in the observationally favoured phantom-crossing regime:
+The amplitude follows from the viscous pressure itself.  With
+$\Pi = -3\zeta H$ and $\zeta$ of the form~(\ref{eq:zeta_general}), the
+viscous contribution to the equation of state is $\Pi/\rho_{\mathrm{DE}} =
+-3\Gamma(1-a)$, which must reproduce the CPL term $w_a(1-a)$.  Hence
+$\Gamma = -w_a/3$, and with the ratio identified above,
 %
 \begin{equation}
-  \Gamma = -\frac{P_{sc}}{I_g} = -\frac{P_{sc}}{\pi+P_{sc}},
+  \Gamma = \frac{P_{sc}}{3\,I_g} = \frac{P_{sc}}{3(\pi+P_{sc})}
+         = +0.223324961891,
   \label{eq:Gamma_ssee}
 \end{equation}
 %
@@ -195,10 +212,18 @@ yielding the unique SSEE-admissible viscosity:
 \begin{equation}
   \boxed{%
     \zeta(a)
-      = -\frac{2\varphi+\pi}{2(\varphi+\pi)}\,
+      = \frac{2\varphi+\pi}{6(\varphi+\pi)}\,
         \frac{(1-a)\,\rho_{\mathrm{DE}}(a)}{H}.}
   \label{eq:zeta_ssee}
 \end{equation}
+%
+Earlier versions set $\Gamma = -P_{sc}/I_g$, that is $\Gamma = w_a$ rather
+than $-w_a/3$.  Propagated through $\Pi = -3\zeta H$ that choice returns
+$w_a = +2.009925$: wrong in sign and by a factor of three.  The
+\emph{identification} of the ratio $P_{sc}/I_g$ is unaffected --- it is
+Eq.~(\ref{eq:wa_ssee}) that the construction fixes, and it is unchanged ---
+but the intermediate amplitude was misreported, and with the corrected
+$\Gamma$ the closure $w_a = -3\Gamma$ holds to $0.00\times10^{0}$.
 
 \paragraph{Algebraic consistency with CPL.}
 The CPL parametrisation $w(a) = w_0 + w_a(1-a)$ is the standard

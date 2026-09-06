@@ -297,14 +297,28 @@ check(f"R32 unicidad N_*: solo m=2,n=7 da n_s y r potencia pura de phi en [50,60
 track_open("V-L3-OP2  N_* = 2phi^7",
            "Conjecture B.1 no derivada; falta el puente de reheating gravitacional")
 
-# OP-7 — beta_c = -AURA (acoplamiento EFT). La dualidad Z2 es álgebra exacta;
-# la identificacion beta_c=-AURA es coincidencia numerica al 0.2% (ABIERTO).
+# OP-7 — la dualidad Z2 es álgebra exacta y se queda. Lo que NO se queda es el
+# acoplamiento que decía explicar: beta_c = -AURA quedó RETIRADO el 2026-09-06
+# (OP-23 disuelto). El «acuerdo al 0.199%» era el bug de normalizar el disparo a
+# la saturación 0.839950 = |w0| en vez de a la fracción 1-Om_m = 0.691119.
 check("V-L3-OP7  dualidad Z2: KAL0(phi<->pi) = AURA",
       abs((pi + 3 * phi) / 2 - AURA) < 1e-12)
-bc_num = -3.990  # extraído numéricamente en P7 §6 (shooting)
-track_open("V-L3-OP7  beta_c = -AURA",
-           f"numerico {bc_num} vs -AURA {-AURA:.4f}: "
-           f"brecha {abs(bc_num + AURA) / AURA * 100:.2f}%, identificacion no derivada")
+# Control del otro lado: el disparo mal normalizado da -3.990 (0.199% de AURA);
+# el bien normalizado da +0.235068, que NO se parece a -AURA en signo ni escala.
+_bc_bug, _bc_ok = -3.990, +0.235068
+check("V-L3-OP7  el «0.199%» sólo aparece con la normalización mala",
+      abs(_bc_bug + AURA) / AURA < 0.005
+      and abs(_bc_ok + AURA) / AURA > 1.0,
+      f"mal normalizado {_bc_bug} → {abs(_bc_bug + AURA) / AURA * 100:.3f}% de "
+      f"-AURA; bien normalizado {_bc_ok:+.6f} → "
+      f"{abs(_bc_ok + AURA) / AURA * 100:.1f}% (signo contrario)")
+check("V-L3-OP7  ningún .tex presenta beta_c = -AURA como vigente",
+      not any(
+          "\\bc = -\\AURA" in _t and "withdraw" not in _t.lower()
+          and "previously" not in _t.lower()
+          for _t in [_p.read_text(errors="ignore")
+                     for _p in (ROOT.parent / "manuscript").glob("*.tex")]),
+      "P7 lo declara retirado en su §3; P1 lo declara retirado en §5.3")
 
 # alpha = phi^4/3 — consecuencia exacta de los axiomas n_s=1-phi^-7, r=phi^-10.
 alpha_attr = phi ** 4 / 3
@@ -3490,7 +3504,7 @@ try:
         for _i in _escanea_r54(_ls):
             _r54.append(f"{_f.relative_to(_REPO)}:{_i+1}")
 
-    _DEUDA_R54 = 61
+    _DEUDA_R54 = 60
     check("R54 la deuda de etiquetas alpha_K/s_K no crece",
           len(_r54) <= _DEUDA_R54,
           f"{len(_r54)} sitios (tope {_DEUDA_R54}): "

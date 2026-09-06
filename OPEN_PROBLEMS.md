@@ -1773,7 +1773,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
 | OP-21 | P5 | ~~ζ̃ hipótesis no derivada~~ → ζ̃ = KAL₀·Ω/M_v, **hermana de τ_Π = KAL₀·Ω/T_r** | 🟡 **REDUCIDO 2026-08-02** | No es número libre: lo fijan τ_Π (P4) + w₀ (P1) + minimalidad. Queda abierto el PRINCIPIO (minimalidad) y derivar τ_Π del Lagrangiano. Look-elsewhere intentado y RETIRADO (valor forzado por identidad) |
 | OP-22 | P5, P4, P1 | **τ_Π H₀ = KAL₀/(3Ω_DE) no está derivada en ningún documento** (P4 y P5 la usan; P1 apunta a un App.A inexistente). ζ̃=KAL₀/3 SÍ está derivada (archive/…Friedmann.tex, normalizando a ρ_crit; P5 la etiqueta mal como ρ_DE). Y con la inercia correcta (ρ+p) c²_s sale superlumínico | 🔴 **ABIERTO 2026-08-02** | **Σm_ν depende de τ_Π** (+19.1% si cambiara). Pasó las auditorías porque NINGÚN número está mal: falta una DERIVACIÓN, y ninguna capa verificaba que exista la derivación que un documento dice tener |
-| OP-23 | P7, P8 | **Dentro del acoplamiento CONFORMAL no existe $\beta_c$ que reproduzca $w_0$ sin pasar el límite de energía oscura temprana** (barrido fino de 31 puntos, con control que reproduce el grueso). Lo mejor dentro del límite: $w_{\rm eff}=-0.862144$, a 0.0222 de $w_0$ | 🔴 **ABIERTO 2026-09-05** | **Premisa nombrada: el acoplamiento es conformal** — y Paper 8 ya usa disformal. Si lo es, OP-23 se DISUELVE. Retira $\beta_c=-$AURA: el «0.199%» era el bug de saturación-como-densidad (R52) |
+| OP-23 | P7 | ~~Dentro del acoplamiento conformal no existe $\beta_c$ que reproduzca $w_0$~~ | ⚫ **CERRADO POR DISOLUCIÓN 2026-09-06** | Su premisa era «el acoplamiento es conformal». Ya no hay acoplamiento de ningún tipo: la acción de Paper 7 es un condensado fantasma mínimamente acoplado. El OP nombró él mismo esta salida en su §5 — «SSEE no admite acoplamiento oscuro, $\beta_c=0$» — y es la que ocurrió, por vía independiente |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;
 Medium = requires acknowledgment and discussion; Low = cosmetic or presentational.
@@ -2100,7 +2100,51 @@ trazable.
 
 ---
 
-## OP-23 — Dentro del acoplamiento conformal, ningún $\beta_c$ da $w_0$ sin pasarse de energía oscura temprana — 🔴 ABIERTO (2026-09-05)
+## OP-23 — Dentro del acoplamiento conformal, ningún $\beta_c$ da $w_0$ sin pasarse de energía oscura temprana — ⚫ CERRADO POR DISOLUCIÓN (2026-09-06)
+
+> ## ⚫ DISUELTO AL DÍA SIGUIENTE — cayó su premisa, y cayó entera
+>
+> **La premisa nombrada en §2 era: «el acoplamiento campo↔materia oscura es
+> CONFORMAL».** El OP anticipaba que podría ser disformal, y que entonces se
+> disolvería. Lo que pasó es más fuerte: **no hay acoplamiento de ningún tipo.**
+> La acción de Paper 7 quedó en
+> ```
+> S = int [ Mpl^2/2 R + c1 X + c2 X^2 + L_m ]
+> ```
+> sin potencial y sin acoplamiento. Tres resultados independientes lo forzaron:
+>
+> 1. **El «0.199 % de acuerdo con AURA» era el bug de normalización.** El
+>    disparo calibraba $\Omega_\phi(a{=}1)$ a **0.839950**, que es $|w_0|$ —una
+>    cantidad de la ecuación de estado— donde va la fracción de densidad
+>    **0.691119**. Con el objetivo correcto sale $\beta_c=+0.235068$: signo
+>    contrario y factor 17.
+> 2. **Cota independiente del sector frío.** Cualquier $|\beta_c|\gtrsim0.027$
+>    aparta $\omega_c$ de su identidad forward $\mathrm{KAL}_0\,\omega_b\,n_s$
+>    más que su error de Planck. AURA es **151×** esa cota.
+> 3. **Ningún número publicado dependía de $\beta_c$:** no está en
+>    `CANONICAL_VALUES.yaml` ni lo usa ningún script de producción.
+>
+> **Lo que ocupó su lugar es más de lo que se fue.** Sin potencial ni
+> acoplamiento, $K(X)$ tiene que sostener $w_0$ solo, y eso deja ver un
+> **teorema**: para $K=A X^n$ se cumple $w_\phi=c_s^2=1/(2n-1)$ *idénticamente*,
+> así que acelerar implica $c_s^2<0$. Ningún k-essence de un término puede
+> acelerar y ser estable. Con dos términos, $u=c_2X/c_1$ queda fijo por $w_0$:
+> ```
+> u     = -(M_v+T_r)/(3T_r+M_v) = -0.522735380747
+> c_s^2 = (M_v-T_r)/(5M_v+3T_r) = +0.021283701571
+> ```
+> y los signos exigen $c_1<0$, $c_2>0$: **condensado fantasma**, estabilizado en
+> $X/X_{\min}=1.045471$. Verificado con `hi_class` (commit `0009f51`):
+> $c_s^2$ a **0.000 %**, $\alpha_K$ a **0.011 %**, acepta el modelo y rechaza
+> los cuatro controles.
+>
+> **Lo que este cierre NO resuelve:** de dónde sale $w_a$. En el punto del
+> condensado $w_\phi$ es constante, así que la acción da $w_a=0$. El
+> $w_a=-P_{sc}/I_g$ viene de la viscosidad IS, cuya amplitud quedó cerrada el
+> mismo día ($\Gamma=P_{sc}/(3I_g)$, dif $0.00\mathrm{e}{+}00$) pero cuyo
+> *ansatz* sigue siendo **OP-22**. Es ahí donde vive ahora el hueco.
+>
+> <details><summary>Texto del OP mientras estuvo abierto (conservado)</summary>
 
 > ## ✅ SUSPENSIÓN LEVANTADA EL MISMO DÍA — el barrido SÍ usaba el Lagrangiano correcto
 >
@@ -2296,3 +2340,5 @@ punto** que además metía saturaciones en ranuras de densidad. Corregido el bug
 el «acuerdo al 0.199 %» era el bug. Y el barrido muestra que no hay solución para
 $\lvert\beta_c\rvert\ge1.0$, así que $-3.997847$ está cinco veces fuera de la
 región donde el fondo acoplado admite solución.
+
+</details>

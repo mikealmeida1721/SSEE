@@ -427,7 +427,7 @@ dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
 
 ## V-L3-OP5 — tensión S₈ weak-lensing / HMcode bariónico — **ABIERTO (anclado en rama secundaria)**
 
-*Claim CLAUDE.md (canónico 2026-06-19):* titular two-sector S₈_eff=0.758 (0.04σ KiDS).
+*Claim CLAUDE.md (canónico 2026-06-19, RETIRADO 2026-08-01):* titular two-sector S₈_eff=0.758 (0.04σ KiDS). Canónico vigente: un sector, A_s libre, S₈=0.7555±0.0192 (0.11σ).
 
 1. **✓ definición:** S₈ = σ₈(Ω_m/0.3)^½ con Ω_m,CMB=0.308881 (√(Ω_m/0.3)=1.0147).
 2. **✓ single-sector (el desafío):** σ₈=0.8335 → S₈=0.846 — **3.5σ KiDS**.
@@ -1075,7 +1075,7 @@ Re-corridos los tres pipelines (CAMB r_d, CAMB CMB, emcee MCMC) el
 | **ABIERTO — tensión grave (enmascarada)** | r_d 4.47σ, θ* 5.62σ — al usar el H₀ canónico |
 | **ABIERTO — deriva de valor (resuelta)** | H₀ MCMC 66.75→67.76 — re-anclado a 67.756 |
 | **ABIERTO — tensión física** | Ω_b h² −1.2σ vs OP-1 |
-| **ABIERTO — inconsistencia de referencia** | DES-Y3 (0.776 vs 0.758) |
+| **ABIERTO — inconsistencia de referencia** | DES-Y3 (0.776 vs 0.758; el 0.758 es valor RETIRADO 2026-08-01) |
 
 **Lo que reprodujo es sólido**: el ajuste al CMB (χ²_r) y la preferencia
 estadística por SSEE (ΔBIC negativo en P2 y P3) se sostienen al re-correr.

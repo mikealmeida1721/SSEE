@@ -325,7 +325,7 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 |----|---------|---------------------|
 | OP-1 | Baryon density Ω_b h² | **Partial** — formula (π−φ)/(3Ω²) = 0.32σ Planck; ab-initio baryogenesis → Paper B |
 | OP-2 | n_s = 1−φ⁻⁷ exponent | **Resolved** (conditional) — α-attractor universality + N_*=2φ⁷; new prediction r=φ⁻¹⁰ |
-| OP-3 | UV-IR separability | **Resolved** — EFT hierarchy (H₀/M)²≈10⁻⁶²; KALeff=φ²√(5/2) unique |
+| OP-3 | Origin of the `5/2` in `M⁴ = 5φ⁸ρ_c` | **Partial** — reopened 2026-09-06; `KAL_eff` is solved FROM `M⁴`, not derived independently |
 | OP-4 | Solar Vainshtein radius | **Resolved** — k-mouflage (not Galileon) + αB=αM=αT=0 EFT suppression |
 | OP-5 | S₈ weak-lensing tension | **Partial (Level 1)** — two-sector φ-DM resolves it (S₈ = 0.758, 0.04σ KiDS); full non-linear N-body → future |
 | OP-6 | Screening form (mult. vs add.) | **Resolved** — separate-universe k-essence + identity 1+w₀=Ω_m,dyn |

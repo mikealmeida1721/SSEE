@@ -262,6 +262,16 @@ The IR limit $M \to \infty$ recovers $K(X) = X/\KAL$, which reproduces
 $\sK^{\rm IR} = 0.403302$ exactly and is the description used in
 Papers~1--9.
 
+\paragraph{Units.}
+Throughout this section we work in units $\rhoc = 1$. In those units $X$,
+$K$ and $M^4$ all carry dimensions of energy density, so every UV correction
+below is the dimensionless ratio $X^2/(M^4\rhoc)$ and \emph{not} $X^2/M^4$.
+The distinction matters: with $\rhoc$ restored explicitly, the screening
+fraction of Eq.~\eqref{eq:fUV} is invariant under a rescaling of $\rhoc$ over
+$58$ orders of magnitude, returning $\fsc = 0.069521611144$ at
+$\rhoc = 1$, $10^{-47}$ and $3.7\times10^{11}$ alike. The cutoff therefore
+enters only as a ratio, and no factor of $H_0$ reaches $\fsc$ through $M$.
+
 \paragraph{This is not the dark-energy action of Paper~7.}
 Paper~7 describes the dark-energy field as a ghost condensate,
 $K = c_1 X + c_2 X^2$ with no potential and $c_2 X/c_1 = -0.522735$; in
@@ -330,7 +340,7 @@ With $K_{XX} = 2/M^4$ and the self-consistent $X_{\rm bg}^{\rm UV}$:
 \begin{equation}
   \sK^{\rm full}
   \;=\; \sK^{\rm IR}
-        + \underbrace{\frac{24\,(X_{\rm bg}^{\rm UV})^2}{M^4}}_{\rm UV\;corr.}
+        + \underbrace{\frac{24\,(X_{\rm bg}^{\rm UV})^2}{M^4\,\rhoc}}_{\rm UV\;corr.}
   \;=\; 0.40330 + 0.01361
   \;=\; 0.41691\,.
   \label{eq:sKfullform}
@@ -403,6 +413,7 @@ The screening fraction (Paper~9) generalises in the UV to
   \;=\; \frac{\sK^{\rm full}}{3\,\MIRA}
   \;=\; \frac{0.41691}{3\times 1.99892}
   \;=\; 0.06952\,,
+  \label{eq:fUV}
 \end{equation}
 a $+3.37\%$ increase over the IR value $\fsc^{\rm IR} = 0.06725$.
 The local Hubble constant is
@@ -756,8 +767,11 @@ and the empirically established $M^4 = 5\phiG^8\,\rhoc$ is
   \KALeff \;=\; \phiG^2\sqrt{\tfrac{5}{2}}\,.
   \label{eq:KALeff_result}
 \end{equation}
-Note that $\KALeff^2 = (5/2)\phiG^4$ is indeed purely a power of $\phiG$
-(no $\pi$), confirming the postulate is self-consistent.
+Note that $\KALeff^2 = (5/2)\phiG^4\,\rhoc$ is indeed a power of $\phiG$ times
+a rational, with no $\pi$, confirming the postulate is self-consistent. The
+factor $\rhoc$ is carried by $\KALeff^2$ and not by the rational: the
+dimensionless content of the whole construction is the single number
+$M^4/(2\phiG^4\rhoc) = 5/2$.
 Substituting back into Eq.~\eqref{eq:M4_KALeff}:
 \begin{equation}
   M^4 \;=\; 6\alpha \times \tfrac{15}{2}\,\alpha
@@ -767,10 +781,17 @@ Substituting back into Eq.~\eqref{eq:M4_KALeff}:
 \end{equation}
 This is precisely Conjecture~C.1.
 
-The Route~A discrepancy is now transparent: $\KAL/\KALeff = [(\phiG+3\pi)/2]/[\phiG^2\sqrt{5/2}]$,
-which involves $\pi$ and equals $\sqrt{1.779} \approx 1.334$ numerically.
-This ratio is the field-redefinition factor --- the ``missing'' $\pi$-dependent
-normalisation between the inflationary and dark-energy kinematic bases.
+The Route~A discrepancy is now transparent. Since $M^4 \propto \KALeff^2$, a
+ratio $r$ in the normalisation appears as $r^2$ in the cutoff:
+$\KAL/\KALeff = 1.333842$ and $(\KAL/\KALeff)^2 = 1.779135$, which is exactly
+the factor by which Route~A overshoots ($417.91\,\rhoc$ against
+$234.89\,\rhoc$). The discrepancy is thus $33\%$ in the normalisation and
+$78\%$ in the cutoff: the same discrepancy seen at two powers. This ratio is
+the field-redefinition factor --- the ``missing'' $\pi$-dependent normalisation
+between the inflationary and dark-energy kinematic bases. It is taken in units
+$\rhoc = 1$; $\KAL$ is dimensionless while $\KALeff$ carries $\rhoc^{1/2}$, so
+the two are not like-dimensioned objects and $1.333842$ must not be read as a
+comparison between them.
 
 \medskip
 \begin{quote}

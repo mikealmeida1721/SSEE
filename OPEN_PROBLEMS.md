@@ -186,34 +186,60 @@ de producción de φ-DM (m_φ=40.70 eV) que reproduce Ω_φDM h²=0.0688.
 
 ---
 
-## OP-3 — UV-IR Separability Conjecture (Paper 10 / future work) ✅ RESUELTO
+## OP-3 — Separabilidad UV-IR / el origen del `5/2` en `M⁴ = 5φ⁸ρ_c` (Paper 10) — 🟡 **PARCIAL (reabierto 2026-09-06, alineado con el Registro)**
 
-**Location:** Paper 10, Postulate C.1 — **revisado 2026-05-16**
+**Location:** Paper 10, Postulate C.1 / Conditional Theorem C.1.
 
-**Resolución (cota de supresión EFT):**
+> **Por qué se reabre.** No es una decisión nueva: `VERIFICATION_LEDGER.md`
+> §V-L3-OP3 lo tiene **ABIERTO** desde la campaña de verificación, con tres
+> defectos nombrados, mientras esta ficha y el README decían RESUELTO. El
+> Registro manda. Esto alinea los tres documentos.
 
-**Argumento primario — jerarquía Coleman-Weinberg:**
-La jerarquía de escalas (H₀/M)² = (1.45×10⁻³³ eV / 9.62×10⁻³ eV)² ≈ 2.3×10⁻⁶² suprime
-el mezclado φ-π en el jacobiano ∂φ/∂χ|_transition por un factor ~10⁶², convirtiendo el
-Postulate C.1 en un Theorem C.1 con cota de corrección explícita.
+**La premisa (lo que hay que vigilar):** que `KAL_eff` se puede *elegir* sin π
+y que eso basta. El teorema condicional despeja `KAL_eff` **a partir de** `M⁴`
+—su propio texto dice «Dada M⁴ = 5φ⁸ρ_crit, establecido independientemente»—
+así que no puede darse la vuelta y derivar `M⁴`. Es consistencia, no
+derivación.
 
-**Unicidad de KALeff:**
-Dada M⁴ = 5φ⁸ρ_crit (Paper 10, establecido independientemente) y separabilidad φ/π:
-$$K_{\rm ALeff}^2 = \frac{M^4}{6\alpha} = \frac{5\varphi^8\rho_c}{2\varphi^4\rho_c} = \frac{5\varphi^4}{2} \quad\Rightarrow\quad K_{\rm ALeff} = \varphi^2\sqrt{5/2}$$
-(única solución monomial en φ — no contiene π).
+**Lo que SÍ está establecido:**
 
-**Factorización:**
-KAL₀ = KALeff × F(φ,π), donde F = KAL₀/KALeff = 1.3338. El factor F transporta π
-exclusivamente a través del sector IR (w₀), ausente en el régimen de transición UV.
+1. La jerarquía `(H₀/M)² ≈ 2.3×10⁻⁶²` es un hecho (M = 9.68 meV ≫ H₀).
+2. `M⁴ = 2φ⁴·KAL_eff²` es exacto, y con `KAL_eff² = (5/2)φ⁴ρ_c` da
+   `M⁴ = 5φ⁸ρ_c = 234.893569`, dif `0.0e+00`.
+3. `ρ_crit` se cancela en `f_screen`: barrido de `ρ_c` por 58 órdenes de
+   magnitud devuelve `f = 0.069521611144` invariante. **`M` se usa y no mete
+   `H`.** (Arreglado en Paper 10 §Units, 2026-09-06.)
+4. Ruta A (`KAL_eff = KAL`) queda excluida: `417.91ρ_c` vs `234.89ρ_c`. Es
+   **33% en la normalización y 78% en el corte** — la misma discrepancia a dos
+   potencias, porque `M⁴ ∝ KAL_eff²`.
+5. Regularidad de linaje que apoya el postulado: **todo el sector
+   inflacionario de SSEE es φ puro** (`α = φ⁴/3`, `n_s = 1−φ⁻⁷`, `r = φ⁻¹⁰`,
+   `N_* = 2φ⁷`), y π aparece sólo de BBN en adelante (`ω_b`, `Ω`, `H_alg`,
+   `w₀`, `KAL`, `MIRA`). El corte `M` se fija en la transición inflacionaria.
 
-**Resultado:** H₀^UV = 73.040 km/s/Mpc (< 0.001σ SH0ES). Las correcciones al Theorem C.1
-son O(10⁻⁶²) — efectivamente exacto en la práctica cosmológica.
+**Las tres piezas que faltan, con su dependencia:**
 
-**Límite:** La derivación completa del jacobiano desde P(X,φ) quintaesencial requiere
-especificar el modelo de reheating exacto (Paper B futura). La cota EFT garantiza
-KALeff = φ²√(5/2) × [1 + O(10⁻⁶²)].
+| Pieza | Estado | Si llega el `5/2` |
+|---|---|---|
+| El `5/2` — `KAL_eff` de fuente propia | **falta** | — |
+| `ρ_crit` en la contabilidad | ✅ **hecho 2026-09-06** | ya está |
+| Jacobiano `∂φ/∂χ` en la transición | diferido a un Paper B inexistente | **deja de hacer falta** (el postulado se disuelve) |
 
-**Script:** `src/ssee_op3_separability.py` (cálculo completo, todos los asserts pasan)
+**Criterio de cierre (pre-registrado):** una derivación del número **`5/2`**
+—equivalentemente de `KAL_eff² = (5/2)φ⁴ρ_c`, o de `M⁴ = 5φ⁸ρ_c`— que
+**no use el valor de `M⁴` ni SH0ES**, y que cierre en `0.0e+00`. Un parecido
+no cuenta. Si eso llega, el postulado de separabilidad pasa de suposición a
+resultado y el jacobiano deja de ser necesario.
+
+**Lo que NO está en juego:** el `H₀^IR = 72.86` (0.17σ SH0ES) de Paper 9 no
+usa `M⁴` y no es condicional. Aunque OP-3 nunca cierre, esa predicción hacia
+adelante queda en pie.
+
+**Parecido registrado, NO usado como argumento:** `KAL/KAL_eff = 1.333842`
+contra `4/3 = 1.333333` (dif 0.0382%). No es cero.
+
+**Script:** `archive/codigo/investigacion/open_problems/ssee_op3_separability.py`
+(contiene una autocorrección sin cerrar, `√(6α)=φ²` → «corrección: `=φ²√2`»).
 
 ---
 
@@ -1757,7 +1783,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 |----|-------|---------|----------|--------------------|
 | OP-1 | P4 | ~~Factor 200 in Ω_b h²~~ | ✅ PARCIAL | (π−φ)/H₀_SSEE=0.32σ Planck; BBN derivation → Paper B/C; script op1 |
 | OP-2 | P4 | ~~n_s exponent 7 not derived from V(φ)~~ | ✅ RESUELTO | α-attractor universality + N_*=2φ⁷; r=φ⁻¹⁰ nueva predicción; script op2 |
-| OP-3 | P10 | ~~UV-IR separability unproven~~ | ✅ RESUELTO | Jerarquía EFT (H₀/M)²≈10⁻⁶² + KALeff=φ²√(5/2) único; Paper 10 TC.1; script op3 |
+| OP-3 | P10 | Origen del `5/2` en `M⁴ = 5φ⁸ρ_c` | 🟡 PARCIAL | Reabierto 2026-09-06 (Registro V-L3-OP3). `KAL_eff` se despeja DE `M⁴`, no al revés. Falta el `5/2` sin usar `M⁴` ni SH0ES |
 | OP-4 | P8 | ~~r_V > r_Hubble para Vainshtein~~ | ✅ RESUELTO | k-mouflage + αB=αM=αT=0 EFT; Paper 8 §4.2/§4.4 revisados |
 | OP-5 | P5-6 | ~~S₈ weak-lensing tension~~ | ✅ **DISUELTO 2026-08-01** | No hay tensión: con un sector y A_s libre, MCMC contra ξ± crudo da S₈=0.7555±0.0192 (0.11σ KiDS). El 3.5σ era artefacto de fijar A_s a Planck |
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |

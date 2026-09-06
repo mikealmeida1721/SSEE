@@ -360,6 +360,11 @@ context_markers:
   - "ω_m,dyn"
   - "sin re-correr"
   - "sin recorrer"
+  # «ceiling»/«techo»: un valor calculado con A_s FIJADO a Planck no es la
+  # predicción del modelo sino una cota superior bajo normalización importada.
+  # Anotar así un número no lo revive; lo declara cota. Añadido 2026-09-06.
+  - "ceiling"
+  - "techo"
   - stale
   - obsolet
   # marcadores en inglés (cajón papers .tex)

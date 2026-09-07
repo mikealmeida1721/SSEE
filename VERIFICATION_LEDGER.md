@@ -533,7 +533,7 @@ modelo físico de dos sectores hereda la apertura del Lagrangiano de m_φ
    ya verificadas — λ²=3·Ω_m,dyn (λ=0.6929), α_pot=λ/√KAL₀ (=0.2949),
    V₀=Ω_DE·ρ_crit (=0.8400). No son parámetros libres: re-enuncian
    Ω_m,dyn (V-L2-04), KAL₀ (V-L1-07) y Ω_DE (V-L2-03).
-2. **✗ M⁴ inconsistente entre papers:** `ssee_eft_verification.py` (L70)
+2. **✗ M⁴ inconsistente entre papers:** `archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/ssee_eft_verification.py` (L70, RETIRADO 2026-09-07)
    fija **M⁴ = ρ_crit = 1**; `ssee_paper10_verification.py` (L30) fija
    **M⁴ = 5φ⁸·ρ_crit = 234.9**. Factor ~235 de diferencia en el mismo
    término X²/M⁴ del mismo Lagrangiano K(X). Con M⁴=1 el término UV no es

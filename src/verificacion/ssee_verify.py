@@ -653,6 +653,41 @@ check("V-L3-IS  tau_Pi SI esta anclado: por Sigma m_nu, no por c2_eff",
       f"oscilaciones 0.058 (x1 da {_smnu_k(1.0):.6f}) => la cancelacion "
       "de KAL_0 es LOCAL a c2_eff; el rol de viscosidad no esta ocioso "
       "en el marco, solo en ese observable")
+# --- R59: ninguna ruta de script citada en la prosa apunta al vacio ---
+# POR QUE EXISTE. Al mover 6 scripts de beta_c a archive/ quedaron 10
+# referencias colgando en AUDIT.md, VERIFICATION_LEDGER.md y
+# OPEN_PROBLEMS.md — incluida una LINEA DE COMANDO en AUDIT.md que ya
+# no corre. Limpiar es mover a su cajon, y mover exige repuntar quien
+# apuntaba. Ninguna regla vigilaba eso: R33/R35/R36 miran logs y
+# figuras, ninguna miraba las RUTAS citadas en la prosa.
+_R59_RUTA = re.compile(r"(?<![\w/])((?:src|archive|results)/[\w./-]+\.py)")
+_r59 = []
+for _f in sorted(list(ROOT.parent.glob("*.md"))
+                 + list((ROOT.parent/"manuscript").rglob("*.tex"))):
+    if "archive" in str(_f) or _f.name == "CHANGELOG.md":   # CHANGELOG es historia
+        continue
+    _txt = _f.read_text(errors="ignore")
+    for _m in _R59_RUTA.finditer(_txt):
+        _r = _m.group(1)
+        if not (ROOT.parent / _r).exists():
+            _r59.append(f"{_f.name}: {_r}")
+check("R59 ninguna ruta de script citada en la prosa apunta al vacio",
+      not _r59, "; ".join(sorted(set(_r59))[:4]) if _r59
+      else "todas las rutas .py citadas en .md/.tex vivos existen "
+           "(CHANGELOG.md exento: es historia, cita rutas de su epoca)")
+_c59 = [("corre `src/p07_eft/ssee_eft_verification.py` para verificar", True),
+        ("corre `src/verificacion/ssee_verify.py` para verificar", False)]
+_f59 = []
+for _tx, _esp in _c59:
+    _vis = any(not (ROOT.parent / _m.group(1)).exists()
+               for _m in _R59_RUTA.finditer(_tx))
+    if _vis != _esp:
+        _f59.append(_tx[:44])
+check("R59 el detector distingue una ruta muerta de una viva",
+      not _f59, "; ".join(_f59) if _f59
+      else "2 casos: la ruta del script movido a archive marcada, la del "
+           "guardian limpia")
+
 # --- R58: beta_c = -AURA no puede figurar como prediccion viva -------
 # POR QUE EXISTE. beta_c fue RETIRADO de P7 (§withdrawn, L80) junto con
 # el potencial y el acoplamiento conformal: el Lagrangiano vigente
@@ -4056,7 +4091,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 241          # +2 R58 (beta_c=-AURA como prediccion viva) + control; solo SUBE
+_PISO_CHECKS = 243          # +2 R59 (rutas .py citadas que no existen) + control; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

@@ -61,7 +61,7 @@ Tensión con Planck 2018: **0.32σ** (mejora de factor 10×).
 no un parámetro libre. El factor φ¹¹ ≈ 199.005 explica por qué 200 era una aproximación.
 
 **Scan de unicidad:** (π−φ)/(3Ω²) es el único candidato SSEE con tensión < 1σ
-(7 candidatos evaluados en `src/ssee_op1_baryon_density.py`).
+(7 candidatos evaluados en `archive/codigo/investigacion/open_problems/ssee_op1_baryon_density.py`).
 
 **Interpretación física:** (π−φ) = asimetría CP del sector bariogénico; 3Ω² = H₀_SSEE =
 escala de expansión cosmológica. El ratio expresa la fracción bariónica como violación CP / expansión.
@@ -69,11 +69,11 @@ escala de expansión cosmológica. El ratio expresa la fracción bariónica como
 **Límite residual:** La derivación desde primera principios requiere calcular Γ_sph en el
 background SSEE y demostrar η_B ∝ (π−φ)/Ω³ — programa de Paper B/C (bariogénesis SSEE).
 
-**Script:** `src/ssee_op1_baryon_density.py` (cálculo completo, todos los asserts pasan)
+**Script:** `archive/codigo/investigacion/open_problems/ssee_op1_baryon_density.py` (cálculo completo, todos los asserts pasan)
 
 **Argumento de bariogénesis Sakharov (refuerzo formal — 2026-05-16):**
 
-El script `src/ssee_op1_baryogenesis.py` establece la estructura Sakharov que sustenta
+El script `archive/codigo/investigacion/open_problems/ssee_op1_baryogenesis.py` establece la estructura Sakharov que sustenta
 la fórmula (π−φ)/H₀_SSEE:
 
 **Condición 1 — Violación de número bariónico:** Esfalerón electroweak con tasa
@@ -111,7 +111,7 @@ revisado en consecuencia (commit de la sesión).
 4. Resolver la ecuación de Boltzmann para η_B sin f_dil retro-calculado y demostrar
    que el producto reproduce η_B = 6.12×10⁻¹⁰ (BBN observacional) ab initio
 
-**Scripts:** `src/ssee_op1_baryon_density.py` + `src/ssee_op1_baryogenesis.py`
+**Scripts:** `archive/codigo/investigacion/open_problems/ssee_op1_baryon_density.py` + `archive/codigo/investigacion/open_problems/ssee_op1_baryogenesis.py`
 
 ---
 
@@ -148,7 +148,7 @@ SSEE (potencial V(φ_inf) con α=φ⁴/3) cierra OP-2 incondicionalmente — pro
 
 **Resultado numérico Paper B (ssee_paperB_Nstar.py):**
 
-Script `src/ssee_paperB_Nstar.py` verifica la Conjetura B.1 numéricamente:
+Script `src/pB_inflation/ssee_paperB_Nstar.py` verifica la Conjetura B.1 numéricamente:
 - V_end^(1/4) = 2.27×10¹⁶ GeV  (φ_end = 1.382 Mpl, ε(φ_end) = 1.000 ✓)
 - T_rh que produce N_* = 2φ⁷ exacto: **9.345×10¹⁵ GeV**
 - Este T_rh corresponde a ρ_rh ≈ V_end → T_rh ≈ (30/π²g*)^(1/4) × V_end^(1/4) ≈ 0.41 × V_end^(1/4)
@@ -159,11 +159,11 @@ Script `src/ssee_paperB_Nstar.py` verifica la Conjetura B.1 numéricamente:
 distinta de T_bary ~ 10⁻⁴ GeV del argumento Sakharov (OP-1), que corresponde al
 epoch de bariogénesis. Estas son dos temperaturas físicamente distintas.
 
-**Script:** `src/ssee_op2_spectral_index.py` (n_s, r) + `src/ssee_paperB_Nstar.py` (T_rh completo)
+**Script:** `archive/codigo/investigacion/open_problems/ssee_op2_spectral_index.py` (n_s, r) + `src/pB_inflation/ssee_paperB_Nstar.py` (T_rh completo)
 
 **Resultado numérico Paper B (ssee_paperB_DW.py) — RESULTADO NEGATIVO:**
 
-Script `src/ssee_paperB_DW.py` evalúa el segundo problema de Paper B: el mecanismo
+Script `src/pB_inflation/ssee_paperB_DW.py` evalúa el segundo problema de Paper B: el mecanismo
 de producción de φ-DM (m_φ=40.70 eV) que reproduce Ω_φDM h²=0.0688.
 
 - Mecanismo Dodelson-Widrow (mezcla activo-estéril): el ángulo requerido es
@@ -182,7 +182,7 @@ de producción de φ-DM (m_φ=40.70 eV) que reproduce Ω_φDM h²=0.0688.
   estimación de orden de magnitud del script sale corta por un factor grande
   (solo prefactor); requiere la integral de producción completa con α=φ⁴/3.
 
-**Script:** `src/ssee_paperB_DW.py` (DW scan + producción gravitacional preliminar)
+**Script:** `src/pB_inflation/ssee_paperB_DW.py` (DW scan + producción gravitacional preliminar)
 
 ---
 
@@ -283,9 +283,9 @@ Todo objeto astrofísico tiene r_km ≪ 1 kpc → quinta fuerza DM activa a esca
 - §4.2: Reemplazado fórmula Galileon con fórmula k-mouflage + Tabla revisada
 - §4.4: "Double GR protection" (Vainshtein) → "EFT suppression" (αB=αM=αT=0)
 - Bibitem `brax2014` añadido
-- `src/ssee_paper8_figures.py`: figura regenerada con fórmula k-mouflage
+- `src/p08_stronggrav/ssee_paper8_figures.py`: figura regenerada con fórmula k-mouflage
 
-**Scripts:** `src/ssee_op4_vainshtein.py` (cálculo completo), `src/ssee_paper8_figures.py` (figura)
+**Scripts:** `archive/codigo/investigacion/open_problems/ssee_op4_vainshtein.py` (cálculo completo), `src/p08_stronggrav/ssee_paper8_figures.py` (figura)
 
 ---
 
@@ -314,7 +314,7 @@ Nivel 2). El cierre lineal/forward de S₈ ya está hecho (0.758).
 
 **Nivel 1 — HMcode-2020 baryonic feedback (CLASS, laptop) — COMPLETADO 2026-05-16:**
 
-Script `src/ssee_op5_hmcode.py` implementa retroalimentación bariónica AGN via
+Script `archive/codigo/investigacion/open_problems/ssee_op5_hmcode.py` implementa retroalimentación bariónica AGN via
 HMcode-2020_baryonic_feedback en CLASS (Mead et al. 2020, log10T_heat=7.8):
 
 Resultados CLASS HMcode-2020 con parámetros SSEE (H₀=66.75 — input de la corrida 2026-05-16, anterior al posterior canónico 66.53 km/s/Mpc; Ω_m=0.30889, w₀=−0.840, wₐ=−0.670):
@@ -359,7 +359,7 @@ Tensión DES proyectada:
 **Recursos Nivel 2:** BAHAMAS-SSEE: ~5,000–10,000 CPU-horas (~USD 500–1,000);
 IllustrisTNG-SSEE: ~10,000–20,000 CPU-horas (~USD 1,000–2,000).
 
-**Script:** `src/ssee_op5_hmcode.py` (HMcode-2020 completo en CLASS, todos los pasos documentados)
+**Script:** `archive/codigo/investigacion/open_problems/ssee_op5_hmcode.py` (HMcode-2020 completo en CLASS, todos los pasos documentados)
 
 ---
 
@@ -387,7 +387,7 @@ $$f_{\rm screen} = \frac{\alpha_K}{3\,c_s^2\,\mathcal{M}} = \frac{\alpha_K}{3\,\
 (usando c²_s = 1 del Paper 5, Q1). La forma aditiva correspondería a un sesgo de velocidad
 peculiar (Δv/c), no a una corrección de densidad de energía oscura — físicamente distinto.
 
-**Verificación numérica** (`src/ssee_op6_screening_form.py`):
+**Verificación numérica** (`archive/codigo/investigacion/open_problems/ssee_op6_screening_form.py`):
 - f_screen (universo separado) = 0.067253
 - f_screen (algebraico (π−φ)/Ω²) = 0.067253
 - |diferencia| = 4.1×10⁻⁷ < 10⁻⁴ ✓
@@ -399,7 +399,7 @@ peculiar (Δv/c), no a una corrección de densidad de energía oscura — físic
 - §3: Identidad 1+w₀ = Ω_m,dyn explicitada como justificación de la cancelación
 - Bibitem `wands2000` y `brax2014` añadidos
 
-**Script:** `src/ssee_op6_screening_form.py` (verificación completa)
+**Script:** `archive/codigo/investigacion/open_problems/ssee_op6_screening_form.py` (verificación completa)
 
 ---
 
@@ -597,7 +597,7 @@ gives MIRA a concrete root as $\mathrm{AURA}/2$ (half of the first dimensional
 ceiling $\mathrm{AURA}=(3\varphi+\pi)/2$), which propagates the dimensional reading
 to the **entire AURA branch** (the copy-law ladder MIRA·1, AURA·1, DUAL·2,
 TRIAL·3, … spaced by exactly one AURA — the "dimensional ceilings"). The dual
-exists *because* $\mathrm{AURA}\neq4$ exactly. Verification: `src/op8_mira_aura_dimensional.py`.
+exists *because* $\mathrm{AURA}\neq4$ exactly. Verification: `archive/codigo/investigacion/op8_mira_aura_dimensional.py`.
 
 **Status of this finding (audit phase 2 — honest residue):** the identity is
 **internal** (everything follows from the $\varphi,\pi$ definitions of $K_v$,
@@ -856,7 +856,7 @@ resolved (pure-number multiplier + written Lagrangian, dimensionally consistent)
 remains is the *derivation* of the multiplier from first principles, which is
 incompleteness on the natural OP-10 path.
 
-**Search file:** `src/op9_phi_dm_formula_search.py` — historical inventory of mass
+**Search file:** `archive/codigo/investigacion/open_problems/op9_phi_dm_formula_search.py` — historical inventory of mass
 combinations (now superseded by the canonical Vía-2 chain).
 
 ---
@@ -1034,7 +1034,7 @@ than a free input.
 <details><summary>Registro histórico (la pregunta tal como estaba planteada)</summary>
 
 
-**Location:** Paper 6, §4.2; pipeline CLASS `src/ssee_paper6_canonical_particle.py`.
+**Location:** Paper 6, §4.2; pipeline CLASS `archive/codigo/p06_phiDM_RETIRADO_2026-08-01/ssee_paper6_canonical_particle.py`.
 
 **Problem (actualizado):** la partícula canónica φ-DM ($m_\phi=\mathrm{SOLAR}^2\cdot
 \mathrm{KRYSTOS}_V\cdot\Sigma m_\nu=40.70$ eV; antes 36.95) entra en CLASS como especie
@@ -1301,7 +1301,7 @@ es ahora **forward-prediction sin parámetros libres**. El antiguo eslabón más
 > $\mathcal{R}=4\cdot\mathrm{KAL}-22$ era frágil y por qué se descartó en favor del
 > cociente limpio $\mathcal{R}_2=\Omega_{\rm DNAV}/(\mathrm{KAL}\cdot\mathrm{TRIAL})$.
 
-### Ataque ejecutado (2026-05-23) — script `src/ssee_op14_neutrino_mass.py`
+### Ataque ejecutado (2026-05-23) — script `archive/codigo/investigacion/open_problems/ssee_op14_neutrino_mass.py`
 
 Tres hipótesis testadas:
 
@@ -2389,14 +2389,14 @@ trazable.
 > Mike preguntó de dónde salía cada uno de los tres valores de $w$ que yo le
 > daba, *«porque puede que se parezcan y no sea lo que señala»*. Tenía razón.
 >
-> **El barrido corrió con el Lagrangiano equivocado.** `fondo_acoplado.py` y
+> **El barrido corrió con el Lagrangiano equivocado.** `archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/fondo_acoplado.py` y
 > `fondo_disparo.py` implementan $K(X)=X/\KAL$ **y nada más** — no contienen el
 > término $X^2/M^4$ en ninguna línea. Paper 7 declara
 > $K(X)=X/\KAL+X^2/M^4$ (tex L55, L162). El barrido probó una **truncación IR**,
 > no el modelo de Paper 7.
 >
 > **Y el término que falta NO es despreciable para el fondo.** Medido apagándolo
-> en `ssee_eft_verification.py` (el único de los tres que sí lo implementa):
+> en `archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/ssee_eft_verification.py` (el único de los tres que sí lo implementa):
 > ```
 > con X^2/M^4   w_phi = -0.972562   beta_c = -2.194210
 > sin X^2/M^4   w_phi = -0.921054   beta_c = -0.666255
@@ -2417,7 +2417,7 @@ trazable.
 > $M\approx\Mpl$. **El mismo símbolo $M$ con dos valores en el mismo paper.**
 > Con $M\approx\Mpl$ el término es nulo; con $M^4=\rhocrit$ pesa el 41 %.
 >
-> **PARA LEVANTAR LA SUSPENSIÓN:** añadir $X^2/M^4$ a `fondo_acoplado.py` y
+> **PARA LEVANTAR LA SUSPENSIÓN:** añadir $X^2/M^4$ a `archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/fondo_acoplado.py` y
 > repetir el barrido fino. Sólo entonces se sabrá si el problema existe.
 >
 > </details>
@@ -2475,7 +2475,7 @@ El fondo acoplado tiene que cumplir dos cosas a la vez: reproducir
 $w_0=-0.839950$ hoy, y no dejar más de $\sim3\%$ de energía oscura en $z=9$.
 Barrido fino de 31 puntos en $\beta_c\in[+0.100,+0.245]$
 (`results/logs/barrido_beta_c_fino.log`, script
-`src/p07_eft/barrido_beta_c_fino.py`):
+`archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/barrido_beta_c_fino.py`):
 
 | $\beta_c$ | $w_{\rm eff}(a{=}1)$ | $\lvert w-w_0\rvert$ | $\Omega_{\rm DE}(z{=}9)$ |
 |---|---|---|---|
@@ -2508,7 +2508,7 @@ aparece un punto que cumpla las dos, el OP cierra por disolución de su premisa.
 
 ### 4. QUÉ HERRAMIENTA falta hoy
 
-El integrador disformal. `src/p07_eft/fondo_acoplado.py` implementa **sólo** el
+El integrador disformal. `archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/fondo_acoplado.py` implementa **sólo** el
 conformal ($\beta_c$ entra en Klein–Gordon y en la conservación de la materia
 oscura). El término disformal cambia la estructura de las ecuaciones, no un
 coeficiente: no se obtiene ajustando nada de lo que hay.

@@ -158,9 +158,9 @@ S₈ tension SSEE vs DES-Y3 = 2.74σ  [single-sector baseline; Paper 6 two-secto
 
 ### Paper 6 — φ-DM two-sector
 ```bash
-python3 src/p06_phiDM/ssee_paper6_verification.py
-python3 src/p06_phiDM/ssee_paper6_mcmc_grid.py   # grilla CLASS (Ω_φDM, m_φ)
-python3 src/p06_phiDM/ssee_paper6_mcmc_v2.py     # emulador; reemplaza al toy archivado
+python3 archive/codigo/p06_phiDM_RETIRADO_2026-08-01/ssee_paper6_verification.py
+python3 archive/codigo/p06_phiDM_RETIRADO_2026-08-01/ssee_paper6_mcmc_grid.py   # grilla CLASS (Ω_φDM, m_φ)
+python3 archive/codigo/p06_phiDM_RETIRADO_2026-08-01/ssee_paper6_mcmc_v2.py     # emulador; reemplaza al toy archivado
 ```
 Expected output (verification):
 ```
@@ -183,7 +183,7 @@ S₈    = 0.782
 
 ### Paper 7 — Canonical EFT βc plateau test
 ```bash
-python3 src/p07_eft/ssee_eft_verification.py
+python3 archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/ssee_eft_verification.py
 ```
 Expected output:
 ```

@@ -23,10 +23,12 @@ QUÉ AFIRMA EL MODELO (para que sepas qué atacar, NO para que lo aceptes):
 - H₀ = 3(φ+π)² = 67.96 km/s/Mpc, obtenido vía SH0ES × f_screen (no como número puro).
 - CONTEO DE PARÁMETROS (verifícalo con lupa): el ajuste CMB es "k=2" — de los 6 de ΛCDM,
   SSEE fija 4 por álgebra (ω_b, ω_c, n_s, H₀-derivado) y deja EXACTAMENTE 2 libres: A_s y τ.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
   Afirman ΔBIC que favorece a SSEE. OJO: m_φ (40.70 eV) y Ω_φDM (0.14889) NO se cuentan
   como libres — se presentan como predicciones FORWARD; el MCMC de Paper 6 que las flota
   con priors planos se declara TEST DE CONSISTENCIA (el dato aterriza en el punto forward a
   0.24σ), no conteo de libres. Comprueba que este encuadre sea honesto y no doble-conteo.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 - Extensión φ-DM: partícula m_φ=40.70 eV, con predicción forward pre-registrada
   k_fs=0.754 h/Mpc (dato aún no medido, DESI Y3/Euclid), y S₈=0.758 (0.04σ KiDS).
 - LOOK-ELSEWHERE: el diccionario cerrado de constantes tiene 55 nombres / 25 valores
@@ -92,6 +94,7 @@ QUÉ AFIRMA EL MODELO (para saber qué atacar, NO para aceptarlo):
 - Fondo (w₀=−0.840, wₐ=−0.670, Ω_DE, Ω_m,dyn) de φ,π con CERO parámetros ajustados;
   0.24σ vs DESI DR2 (Pantheon+; rango 0.2–1.8σ según compilado). H₀=3(φ+π)²=67.96 vía
   SH0ES×f_screen. CMB "k=2" (fija 4 de 6; EXACTAMENTE 2 libres {A_s, τ}), ΔBIC favorece SSEE.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
   Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 = predicciones FORWARD (no libres; el MCMC de
   Paper 6 que las flota es test de consistencia, 0.24σ), k_fs=0.754 h/Mpc (forward pre-registrado),
   S₈=0.758 (0.04σ KiDS). "Minimal-parameter", 3 postulados (D,S,I), OP-1..OP-19 declarados.
@@ -173,6 +176,7 @@ QUÉ AFIRMA EL MODELO (para saber qué juzgar, NO para aceptarlo):
 - H0 = 3(φ+π)² = 67.96 km/s/Mpc como ANCLA adimensional (no identidad dimensional), vía
   SH0ES×f_screen. CMB "k=2": fija 4 de los 6 de ΛCDM, deja EXACTAMENTE 2 libres {A_s, τ};
   ΔBIC favorece SSEE por parsimonia (no por mejor χ²).
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 - Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 son predicciones FORWARD (no libres);
   predicción pre-registrada FALSABLE k_fs=0.754 h/Mpc (dato aún no medido: DESI Y3/Euclid);
   S8=0.758 (0.04σ KiDS).

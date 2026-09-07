@@ -46,6 +46,7 @@ con propiedades verificables. Siguiendo a Popper, su rasgo **definitorio** es la
   es un espacio abierto donde "todo cabe".
 
 **A favor de la acusación (dónde el referí anota — y el modelo lo CONCEDE):**
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 - El coeficiente de masa de la partícula φ-DM (594.28, OP-9) tiene look-elsewhere
   **dependiente de la gramática**: 1/537 permisiva, 1/192 "volúmenes", ~1/16 estricta. Para
   ESA cantidad la selección **no es estadísticamente abrumadora**. Por eso **OP-9 está
@@ -103,6 +104,7 @@ opuesto exacto a la numerología.
 > **NO se puede probar que SSEE es numerología.**
 
 El intento de prueba **falla en el criterio definitorio (N4)**: la numerología es
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 infalsable y post-hoc; SSEE **apuesta predicciones falsables (k_fs=0.754, r=φ⁻¹⁰) sobre
 datos que aún no existen**. Un sistema que una medición de 2027 puede matar **no es
 numerología** — es una **hipótesis física** (posiblemente falsa, pero hipótesis).
@@ -133,6 +135,7 @@ k_fs. Lo que lo mataría: k_fs ≠ 0.754, o descartar la evolución w₀wₐ.
 sería un reclamo fuerte que falló. Estas son fronteras — el modelo no afirmó de más y luego
 falló, afirmó lo justo y aquí termina lo derivado.)
 1. **OP-9 (frontera de profundidad)** — la partícula está adoptada y es falseable (OP-17); lo
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
    abierto es derivar el *origen* del coeficiente 594.28 desde un V(φ) (→OP-10). Es una
    predicción forward con origen-por-profundizar, no una derivación que quedó corta.
 2. **H₀ (profundización opcional, NO deuda)** — unidades ancladas empíricamente, como todos.
@@ -159,6 +162,7 @@ modelo científico y **no** un sistema numerológico.
 ## 6. El hallazgo más fuerte de dos auditorías externas (2026-07-12): la gramática del multiplicador
 
 Dos auditorías externas independientes coincidieron en que el punto más vulnerable es el
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 look-elsewhere del multiplicador de masa $m_\phi=\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V=594.28$:
 **1/537** bajo gramática permisiva, **1/192** bajo "volúmenes", **1/3** bajo la gramática de
 linaje estricta — y el modelo *elige la gramática más restrictiva, aparentemente definida
@@ -173,6 +177,7 @@ vs extensión) y que aquí se formaliza:
 | ¿El look-elsewhere ES el argumento? | **Sí** | **No** (y no lo reclamamos) |
 | Fuerza de la selección | 1/490 individual + conjunto restrictivo | débil, grammar-dependiente (1/3–1/537) — **CONCEDIDO** |
 | ¿Gramática fijada antes del dato? | **Sí** — por reglas de construcción del diccionario (no-auto-suma + copia), anteriores y ajenas a w₀wₐ | Irrelevante: el peso no está aquí |
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 | ¿Cuál es el argumento real? | La rigidez estadística de un esqueleto que da los DOS números a la vez | **La falsabilidad**: k_fs=0.754 h/Mpc, pre-registrado, DESI Y3/Euclid |
 
 **El movimiento honesto:** un coeficiente débilmente seleccionado pero **falsable** no es

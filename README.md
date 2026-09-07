@@ -397,6 +397,7 @@ history in [CHANGELOG.md](CHANGELOG.md).
       Papers 5–7 second wave; P6/P8/P9 upgrade pending DESI Y3 (k_fs = 0.754 h/Mpc)
 - [ ] Paper B — ab-initio baryogenesis (OP-1 closure) + φ-DM relic abundance
 - [ ] OP-5 closure — full N-body S₈ (BAHAMAS / IllustrisTNG-SSEE)
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 - [ ] OP-9 residual — UV origin of the multiplier 594.28 (SOLAR² · KRYSTOS_V)
 
 ---

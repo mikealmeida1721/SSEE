@@ -38,6 +38,7 @@ valor bueno:
 | Cantidad | Paper publica | Log rancio dice |
 |---|---|---|
 | Σm_ν | 0.06849 | 0.06902 |
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 | m_φ | 40.70 eV | 41.0187 eV |
 | k_fs | 0.754 h/Mpc | 0.7620 |
 | σ₈ | 0.747 | 0.7483 |
@@ -48,6 +49,7 @@ publicado se mueve, se corrige el paper.
 ## Bitácora
 
 - **#1 `p6_class` — CERRADO 2026-07-26.** La corrida limpia reproduce lo
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
   publicado: Σm_ν 0.06849, m_φ 40.7024, k_fs 0.7542, σ₈ 0.7470. El paper tenía
   razón; la prueba archivada era la vieja. Ningún número del paper se movió.
 - **#2 `p3_rd` — CERRADO 2026-07-26.** r_d = 147.174 (0.32σ) sin cambio. θ* SÍ

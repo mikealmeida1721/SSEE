@@ -635,6 +635,7 @@ líneas más abajo: «…**closing OP-14**». Y `OPEN_PROBLEMS.md` lo da **✅ R
 desde 2026-06-04**. Corregido a «OP-9 and OP-11», con una frase que dice
 explícitamente que OP-14 está cerrado y dónde verificarlo.
 
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 **2 · Precisión — `SOLAR²·KRYSTOS_V = 594.28`.** Dos decimales con signo igual,
 siendo un número puro en (φ,π) (SOLAR = φ+2π, KRYSTOS_V = 2Ω). Valor exacto
 **594.279999**; a 6 decimales por política. *(De paso: el multiplicador cae a

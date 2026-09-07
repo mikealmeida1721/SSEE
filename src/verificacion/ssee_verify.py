@@ -427,7 +427,7 @@ _RETRACTADOS = ("40.70", "594.28", "0.14889", "0.14888",
 # Sin ellas la guarda contaba como vivas fichas que ya narran su muerte.
 _EXENTO_RETR = ("retract", "withdraw", "supersed", "retirad", "previously",
                 "no longer", "historic", "RETIRED", "archive",
-                "disuelt", "dissolv", "~~", "\U0001f534", "ya no",
+                "disuelt", "dissolv", "disoluci", "~~", "\U0001f534", "ya no",
                 "dej\u00f3 de", "en cuesti\u00f3n", "hist\u00f3ric")
 
 
@@ -446,10 +446,17 @@ def _presenta_como_vigente(_txt, _tokens):
     # encabezado o el banner que las cubre lo declara. Si no lo declara,
     # entonces si es una afirmacion viva.
     def _cabecera_retirada(_j):
+        # Sube por TODA la cadena de encabezados hasta el h2 que la cubre.
+        # Antes paraba en el mas cercano, asi que un «### Registro de rutas»
+        # dentro de «## OP-9 — CERRADO POR DISOLUCION» tapaba la marca del
+        # padre y el bloque contaba como vivo.
         for _k in range(_j, -1, -1):
             _l = _lns[_k]
             if _l.startswith(("#", "\\section", "\\subsection", "|---")):
-                return any(_e.lower() in _l.lower() for _e in _EXENTO_RETR)
+                if any(_e.lower() in _l.lower() for _e in _EXENTO_RETR):
+                    return True
+                if _l.startswith("## ") or _l.startswith("\\section"):
+                    return False
         return False
     for _i, _ln in enumerate(_lns):
         if not any(_tk in _ln for _tk in _tokens):
@@ -490,7 +497,7 @@ _n_md = sum(len(_v) for _v in _md_part.values())
 # El trinquete vive aqui (no en _DEUDA_MAX, que se define mas abajo):
 # 49 el 2026-09-07, el dia que la guarda dejo de mirar solo los .tex.
 # SOLO BAJA.
-_TOPE_PART_MD = 57
+_TOPE_PART_MD = 0
 check("V-L3-mphi  la deuda de particula en los .md no crece",
       _n_md <= _TOPE_PART_MD,
       f"{_n_md} sitios (tope {_TOPE_PART_MD}): "
@@ -902,7 +909,7 @@ for _id, _e in sorted(_retr.items()):
         _r60[_id] = _viv
 _n60 = sum(len(_v) for _v in _r60.values())
 # Trinquete: 2026-09-07 arranca en la cuenta real. SOLO BAJA.
-_TOPE_R60 = 120
+_TOPE_R60 = 64
 check("R60 la deuda del registro de retracciones no crece",
       _n60 <= _TOPE_R60,
       f"{_n60} sitios (tope {_TOPE_R60}) en {len(_r60)}/{len(_retr)} "

@@ -828,6 +828,52 @@ check("R57 el detector distingue la ruta rota de la correcta y respeta la profun
       "el mismo un-solo-'..' a profundidad 1 (src/ directo) exento, que "
       "ahi SI apunta a la raiz")
 
+# --- R61: comparar con el numero puro exige el f_screen COMPLETO -------
+# POR QUE EXISTE. Al enunciar la cascada frente a 3(phi+pi)^2 hay que usar
+# el f_screen COMPLETO (IR+UV, 0.069522), que da 67.962142 y un residuo de
+# +4.2e-06. Con el IR solo (0.067253) sale 68.13, a 0.17 sigma: un
+# resultado PARCIAL, no la forma canonica. Lo he escrito mal tres veces en
+# una sola sesion; Mike: «ya te lo he dicho como tres veces en esta sesion,
+# solo me estas haciendo gastar creditos porque lo terminas olvidando».
+# Una regla no se olvida. Marca 68.13 cuando esta PEGADO a la comparacion
+# con el numero puro; el 68.13 por si solo es correcto y no se toca.
+_R61_MAL = re.compile(
+    r"68\.1[23]\d*[^.\n]{0,90}(?:3\s*\(\s*(?:\\varphi|\\phiG|\u03c6)\s*\+\s*"
+    r"(?:\\pi|\u03c0)\s*\)|67\.96214|numero puro|n\u00famero puro|pure number)"
+    r"|(?:67\.96214|numero puro|n\u00famero puro|pure number)[^.\n]{0,90}68\.1[23]")
+_EX61 = ("parcial", "IR solo", "solo IR", "s\u00f3lo IR", "no canonic",
+         "no can\u00f3nic", "0.17", "IR-only", "partial")
+def _r61_sitios(_txt):
+    _h = []
+    for _m in _R61_MAL.finditer(_txt):
+        _ctx = _txt[max(0, _m.start() - 160):_m.end() + 160]
+        if any(_e.lower() in _ctx.lower() for _e in _EX61):
+            continue
+        _h.append(_m.group(0).replace("\n", " ")[:64])
+    return _h
+_SUP61 = []
+for _pat61 in ("manuscript/*.tex", "submission_PRD/*.tex", "*.md"):
+    _SUP61 += [_q for _q in sorted(ROOT.parent.glob(_pat61))
+               if _q.name not in ("CHANGELOG.md", "MEMORY.md")]
+_SUP61 += [_q for _q in sorted(ROOT.rglob("*.py"))
+           if "archive" not in str(_q) and _q.name != "ssee_verify.py"]
+_r61 = []
+for _f in _SUP61:
+    _r61 += [f"{_f.name}: {x}" for x in _r61_sitios(_f.read_text(errors="ignore"))]
+check("R61 la comparacion con el numero puro usa el f_screen COMPLETO",
+      not _r61, "; ".join(_r61[:3]) if _r61
+      else "f_screen^full = 0.069522 -> 73.04*(1-f) = 67.962142, residuo "
+           "+4.2e-06 vs 3(phi+pi)^2. El IR solo (0.067253 -> 68.13, 0.17 "
+           "sigma) es resultado PARCIAL y solo vale rotulado como tal")
+_c61 = [("H_glob = 68.13, a 0.17 sigma de 67.96214", False),   # rotulado
+        ("H_glob = 68.13 se compara con 3(\\varphi+\\pi)^2", True),
+        ("H_glob^UV = 67.962142 vs el numero puro 3(\\varphi+\\pi)^2", False)]
+_f61 = [t[:40] for t, esp in _c61 if bool(_r61_sitios(t)) != esp]
+check("R61 el detector distingue el parcial rotulado del enunciado canonico",
+      not _f61, "; ".join(_f61) if _f61
+      else "3 casos: el 68.13 pegado a la comparacion marcado; el mismo "
+           "rotulado como 0.17 sigma exento; el UV completo limpio")
+
 # --- R60: registro UNICO de retracciones, barrido de TODAS las capas --
 # POR QUE EXISTE. Cada retirada traia su guarda propia, y cada una miraba
 # una superficie distinta: la de la particula solo manuscript/*.tex (57
@@ -1907,8 +1953,13 @@ except Exception as e:
 # número puro y ponerle unidades y decir que son lo mismo». La dirección de
 # cascada (2026-09-06) ya dejó la forma correcta, y es una COMPARACIÓN:
 #
-#     H_glob = H_SH0ES·(1−f_screen) = 68.13 km/s/Mpc,                    ✓
-#     que se compara con el número puro 3(φ+π)² = 67.96214  →  0.17σ
+#     H_glob = H_SH0ES·(1−f_screen^full) = 73.04·(1−0.069522) = 67.962142
+#     que se compara con el número puro 3(φ+π)² = 67.96214 → residuo +4.2e-06
+#
+# Y el f_screen es el COMPLETO, IR+UV (0.069522), NO el IR solo (0.067253).
+# Con el IR sale 68.13, a 0.17σ — que es un resultado parcial, no la forma
+# canónica. Mike lo ha corregido TRES veces; queda escrito aquí y con regla
+# (R61) para que deje de depender de que yo me acuerde.
 #
 # El número puro es el BLANCO, nunca el valor. Que la igualdad dimensional no
 # esté cerrada es justo lo que V-L2-06 lleva ABIERTO, así que escribirla como
@@ -4213,7 +4264,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 247          # +3 R60 (registro unico de retracciones); solo SUBE
+_PISO_CHECKS = 249          # +2 R61 (f_screen completo en la comparacion); solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

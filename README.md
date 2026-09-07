@@ -384,7 +384,9 @@ history in [CHANGELOG.md](CHANGELOG.md).
 - [x] Hostile-referee overclaim sweep across all 10 papers
 - [x] Zenodo v6 — Papers 1–7 archived (DOI 10.5281/zenodo.20093447)
 - [x] Canonical φ-DM particle (m_φ = 40.70 eV, forward prediction) + self-consistent
-      Hubble cascade (SH0ES 73.04 → global 68.13 / 67.962142 km/s/Mpc)
+      Hubble cascade: SH0ES 73.04 × (1 − f_screen^full = 0.069522) =
+      67.962142 km/s/Mpc, residuo +4.2e-06 vs 3(φ+π)². Con el f_screen IR
+      solo (0.067253) sale 68.13, 0.17σ — resultado parcial
 - [x] Internal hostile-referee audit — guardian fully green; figure-level
       pdftotext sweep across all compiled PDFs; arXiv source tarballs (10/10)
 

@@ -391,7 +391,9 @@ peculiar (Δv/c), no a una corrección de densidad de energía oscura — físic
 - f_screen (universo separado) = 0.067253
 - f_screen (algebraico (π−φ)/Ω²) = 0.067253
 - |diferencia| = 4.1×10⁻⁷ < 10⁻⁴ ✓
-- H₀,glob = 73.04 × (1 − 0.06725) = 68.13 km/s/Mpc (0.17σ vs 3(φ+π)²=67.96214)
+- H₀,glob con el `f_screen` **IR solo** (0.067253) = 68.13 km/s/Mpc — 0.17σ,
+  resultado **parcial**. El enunciado canónico usa el `f_screen` **completo**
+  (IR+UV, 0.069522): 73.04 × (1 − 0.069522) = **67.962142**, residuo **+4.2e-06**
 - Con la corrección UV (Paper 10, condicional a Postulate C.1): 67.962142, residuo +4.2e-06 — pero σ propagado ±0.970 lo domina
 
 **Cambios aplicados en Paper 9:**
@@ -2419,7 +2421,8 @@ integrado es exactamente el tipo de cosa que un referee llama ajuste.
 >
 > Y la conexión que Mike recordaba es real: los dos Lagrangianos son el IR y el
 > UV, y son los que dan $\alpha_K=0.4033$ / $\alpha_K^{\rm full}=0.41691$, de ahí
-> $f_{\rm screen}$ IR/UV y los dos $H_{\rm glob}$ (68.13 / 67.962142). La corrección
+> $f_{\rm screen}$ IR/UV y los dos $H_{\rm glob}$ (68.13 con el IR solo, que es
+> el resultado **parcial**; 67.962142 con el completo, que es el canónico). La corrección
 > UV es del 3.4 % — subdominante, coherente con todo lo anterior.
 >
 > <details><summary>Texto de la suspensión errónea (conservado)</summary>

@@ -653,6 +653,61 @@ check("V-L3-IS  tau_Pi SI esta anclado: por Sigma m_nu, no por c2_eff",
       f"oscilaciones 0.058 (x1 da {_smnu_k(1.0):.6f}) => la cancelacion "
       "de KAL_0 es LOCAL a c2_eff; el rol de viscosidad no esta ocioso "
       "en el marco, solo en ese observable")
+# --- R58: beta_c = -AURA no puede figurar como prediccion viva -------
+# POR QUE EXISTE. beta_c fue RETIRADO de P7 (§withdrawn, L80) junto con
+# el potencial y el acoplamiento conformal: el Lagrangiano vigente
+# K = c1 X + c2 X^2 no lleva ninguno de los dos. Pero la ficha de OP-7
+# seguia diciendo «la prediccion beta_c=-AURA es correcta (verificada
+# por CAMB, CLASS, DESI a <0.2%)» — y ese 0.2% era el bug de
+# normalizacion de la saturacion (corregido da -2.194210, a 45% de
+# AURA). Lo vio Mike: si se retiro, lo que quede no es una tension,
+# es residuo. R56 vigila un rotulo; esta vigila una AFIRMACION.
+_R58_MAL = re.compile(
+    # La beta GRIEGA cuenta: el sitio real («La predicción βc=−AURA es
+    # correcta … <0.2%») usa «\u03b2c», no «beta_c». La primera version
+    # de este patron NO lo veia y la regla pasaba en VERDE contra el
+    # commit anterior — una regla que aprueba por ciega. Lo caza el
+    # auto-test contra el prefijo, no la lectura del patron.
+    r"(?:prediccion|predicci\u00f3n|prediction)[^.\n]{0,60}"
+    r"(?:\\?beta_?c|\u03b2\s?_?c|\\bc\b)[^.\n]{0,40}AURA"
+    r"|(?:\\?beta_?c|\u03b2\s?_?c|\\bc\b)\s*=\s*[-\u2212]?\s*(?:\\)?AURA[^.\n]{0,80}"
+    r"(?:0\.2\s?%|0\.199|correcta|correct|verificad|identidad|identity)",
+    re.I)
+_EX58 = ("retirad", "withdraw", "supersed", "earlier version", "bug",
+         "~~", "RETIRADO", "no longer", "artefact", "artefacto")
+def _r58_sitios(_txt):
+    _h = []
+    for _m in _R58_MAL.finditer(_txt):
+        _i = max(0, _txt.rfind("\n", 0, _m.start(), ) )
+        _ini = _txt.rfind("\n", 0, _i) + 1 if _i else 0
+        _fin = _txt.find("\n", _m.end())
+        _ctx = _txt[_ini:_fin if _fin > 0 else len(_txt)]
+        if any(_t.lower() in _ctx.lower() for _t in _EX58):
+            continue
+        _h.append(_ctx.strip()[:70])
+    return _h
+_r58 = []
+for _f in sorted(list((ROOT.parent/"manuscript").rglob("*.tex"))
+                 + list((ROOT.parent/"submission_PRD").rglob("*.tex"))
+                 + [ROOT.parent/"OPEN_PROBLEMS.md",
+                    ROOT.parent/"VERIFICATION_LEDGER.md"]):
+    if "archive" in str(_f) or not _f.exists():
+        continue
+    _r58 += [f"{_f.name}: {x}" for x in _r58_sitios(_f.read_text(errors="ignore"))]
+check("R58 beta_c = -AURA no figura como prediccion viva",
+      not _r58, "; ".join(_r58[:3]) if _r58
+      else "0 sitios; beta_c retirado de P7 §withdrawn, el 0.2% era el bug "
+           "de saturacion (corregido: -2.194210, a 45% de AURA)")
+_t58 = [("La prediccion beta_c=-AURA es correcta (verificada a <0.2%)", True),
+        ("beta_c = -AURA, identidad algebraica del sector", True),
+        ("beta_c = -AURA fue RETIRADO de P7 en 2026-09-07", False),
+        ("el coupled background da beta_c = +0.235068", False)]
+_f58 = [c for c, esp in _t58 if bool(_r58_sitios(c)) != esp]
+check("R58 el detector distingue la afirmacion viva de la narrada como retirada",
+      not _f58, "; ".join(_f58) if _f58
+      else "4 casos: 2 formas vivas marcadas; la narrada como retirada y "
+           "el valor corregido, limpios")
+
 # --- R57: ninguna figura se escribe fuera de results/figures (2026-09-07)
 # POR QUE EXISTE. ssee_paper5_IS_perturbations.py y ssee_eft_verification.py
 # viven en src/pNN/ pero unian OUTDIR con UN SOLO '..', asi que escribian a
@@ -4001,7 +4056,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 239          # +2 R57 (figuras al vacio) + su control; solo SUBE
+_PISO_CHECKS = 241          # +2 R58 (beta_c=-AURA como prediccion viva) + control; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

@@ -474,10 +474,26 @@ Específicamente, falta demostrar:
    π-dominada (KAL₀), el sector fotónico debe usar la φ-dominada (AURA). Esta es una
    restricción estructural plausible, pero no un teorema de QFT.
 
-2. **Por qué βc = −AURA es la única solución:** Paper 7 establece αT=αM=αB=0 y deriva βc
-   desde el Lagrangian P(X)=X/KAL₀+X²/M⁴. La derivación D=−P_{XX}/P_X²|_{X→0}=−2KAL₀²/M⁴
-   requiere que βc = −AURA para satisfacer la dualidad — pero la dualidad misma no está
-   derivada desde un principio de simetría de la acción.
+2. ~~**Por qué βc = −AURA es la única solución**~~ — 🔴 **PREGUNTA RETIRADA
+   2026-09-07.** Ya no hay que explicar por qué `βc = −AURA`: **`βc` fue
+   retirado de Paper 7** junto con el potencial y el acoplamiento conformal
+   (P7 §withdrawn, L80), y el nuevo Lagrangiano `K = c₁X + c₂X²` **no lleva
+   ni acoplamiento ni potencial**. La pregunta presuponía un ingrediente que
+   ya no existe. Además arrastraba tres errores independientes:
+   - el «`βc = −AURA` verificado a <0.2%» era el **bug de normalización de la
+     saturación** (el shooting calibraba `Ω_φ(a=1)` a `0.839950` en vez de
+     `0.691119`); corregido da `−2.194210`, a **45%** de AURA, no a 0.2%;
+   - `P(X) = X/KAL₀ + X²/M⁴` **no es la acción de energía oscura** — es el
+     funcional de apantallamiento de Paper 10 (cuarta aparición de la
+     confusión de las dos `K(X)`);
+   - y la brecha `Δw` que `βc` cerraba **no era física**: `w = −1 + λ²/3` con
+     `λ = √(3(1+w₀))` devuelve `w₀` con diferencia `0.000e+00`, o sea es
+     tautología.
+
+   Lo que queda de verdad en pie es **OP-23**, y es otra pregunta: **ningún
+   fondo reproduce `wₐ = −0.670`** (atractor `−0.093`, `λ=1.0205` da `−0.211`,
+   acoplado `+0.406` con el signo contrario). El problema es la **forma del
+   potencial**, no `βc`.
 
 3. **La conexión escala Planck → escala cosmológica:** El sistema Genesis 5.12 es
    adimensional. La dimensional weight se asigna vía cosmología (Papers 1–10). Falta el
@@ -486,10 +502,14 @@ Específicamente, falta demostrar:
 
 **Consecuencia si permanece abierto:**
 
-La predicción βc=−AURA es correcta (verificada por CAMB, CLASS, DESI a <0.2%) pero el
-argumento de unicidad descansa en la dualidad estructural φ↔π, no en una simetría explícita
-de la acción. Un referee podría aceptarlo como condición de consistencia pero no como
-derivación. Es el gap más profundo del modelo.
+~~La predicción βc=−AURA es correcta (verificada por CAMB, CLASS, DESI a <0.2%)~~
+🔴 **RETIRADO 2026-09-07** — ese «<0.2%» era el bug de saturación, y `βc` ya no
+está en la acción. Lo que sí sigue en pie de OP-7 es el punto 1 (por qué el
+sector disformal se acopla con AURA y no con KAL₀) y el punto 3 (el puente
+escala de Planck → escala cosmológica): el argumento de unicidad descansa en la
+dualidad estructural φ↔π, no en una simetría explícita de la acción. Un referee
+podría aceptarlo como condición de consistencia pero no como derivación. Ese
+sigue siendo el gap más profundo del modelo.
 
 **Programa de cierre (largo plazo):**
 

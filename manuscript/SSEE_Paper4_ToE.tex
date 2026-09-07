@@ -53,10 +53,10 @@ a theorem rather than an independent axiom; no free parameter is introduced at t
 Phenomenological extensions (notably the neutrino mass sum $\Sigma m_\nu$, classified as Type~P later in the paper) were tracked as open problem OP-14 in \texttt{OPEN\_PROBLEMS.md}, resolved on 2026-06-04.
 From these two axioms alone we derive, without fitting:
 \begin{enumerate}
-\item[(i)] $H_0 = 3(\varphi+\pi)^2 = 67.96214$~km\,s$^{-1}$\,Mpc$^{-1}$ ($1.1\sigma$ from Planck~2018),
+\item[(i)] $H_0/(\mathrm{km\,s^{-1}\,Mpc^{-1}}) = 3(\varphi+\pi)^2 = 67.96214$ ($1.1\sigma$ from Planck~2018),
 where $M_v=3\Omega$ is the maximal structural invariant of the dictionary, reached by twenty distinct additive routes under the no-self-sum construction law (Appendix~\ref{app:independence}); this multiplicity is consistent with, but does not by itself prove, the absence of post-hoc tuning;
 \item[(ii)] the physical baryon density
-$\Omega_b h^2 = (\pi-\varphi)/(3\Omega^2) = (\pi-\varphi)/H_0^{\rm SSEE} = 0.022418$ ($0.32\sigma$ from Planck~2018);
+$\Omega_b h^2 = (\pi-\varphi)/(3\Omega^2) = (\pi-\varphi)/[3(\varphi+\pi)^2] = 0.022418$ ($0.32\sigma$ from Planck~2018);
 \item[(iii)] the primordial spectral index
 $n_s = 1-\varphi^{-7} = 0.965558$ ($0.16\sigma$ from Planck~2018),
 where the exponent~7 equals the number of primary structural registers in the \SSEE\ hierarchy;
@@ -191,7 +191,7 @@ $K_v$ & $2\varphi+2\pi$                          & $\varphi+\pi+\Omega$ & 9.5192
 $\pi+\mathrm{KAL}$ & $(\varphi+5\pi)/2$         & —              & 8.663001 \\
 $\varphi+\pi+\mathrm{KAL}$ & $(3\varphi+5\pi)/2$ & —             & 10.281034 \\
 $2\Omega+\varphi$ & $3\varphi+2\pi$              & —              & 11.137287 \\
-$\Omega_b h^2$ (BBN) & $(\pi-\varphi)/H_0^{\rm SSEE}$      & —              & 0.022420 \\
+$\Omega_b h^2$ (BBN) & $(\pi-\varphi)/[3(\varphi+\pi)^2]$      & —              & 0.022420 \\
 $M_v$ & $3(\varphi+\pi)$           & $\varphi+\pi+K_v$ & 14.278880 \\
 \bottomrule
 \end{tabular}
@@ -277,7 +277,7 @@ From Section~\ref{sec:sovereigns}, the maximal structural invariant is $M_v = 3(
 The Hubble constant is the product of this convergent sum and the base unit
 $\Omega = \varphi+\pi$:
 \begin{equation}
-\boxed{H_0 = M_v \times \Omega = 3(\varphi+\pi)^2 = 67.96214}
+\boxed{\frac{H_0}{\mathrm{km\,s^{-1}\,Mpc^{-1}}} = M_v \times \Omega = 3(\varphi+\pi)^2 = 67.96214}
 \label{eq:H0}
 \end{equation}
 \textbf{Dimensional note.} The number 67.96214 is compared to $H_0$ as measured
@@ -306,9 +306,11 @@ correction is applied, and the two agree to $0.50\sigma$.
 \label{sec:baryons}
 
 The \SSEE\ algebraic structure yields the physical baryon density directly from
-the CP asymmetry $(\pi-\varphi)$ normalized to the Hubble scale $H_0^{\rm SSEE} = 3\Omega^2 = 3(\varphi+\pi)^2$:
+the CP asymmetry $(\pi-\varphi)$ normalized to the pure algebraic combination
+$3\Omega^2 = 3(\varphi+\pi)^2$, whose value read in km\,s$^{-1}$\,Mpc$^{-1}$ is
+the SSEE Hubble anchor:
 \begin{align}
-\Omega_b h^2 &= \frac{\pi-\varphi}{3\Omega^2} = \frac{\pi-\varphi}{H_0^{\rm SSEE}} = 0.022418
+\Omega_b h^2 &= \frac{\pi-\varphi}{3\Omega^2} = \frac{\pi-\varphi}{3(\varphi+\pi)^2} = 0.022418
 \label{eq:Obh2} \\[4pt]
 \Omega_b     &= \frac{\Omega_b h^2}{h^2}
               = \frac{100(\pi-\varphi)}{6(\varphi+\pi)^4}
@@ -669,7 +671,7 @@ A null detection $r<0.001$ at $>5\sigma$ confidence would be a decisive falsific
 The baryon-to-photon ratio follows from the SSEE physical baryon density via the
 standard BBN proportionality $\eta \approx 2.74\times10^{-8}\,\Omega_b h^2$:
 \begin{equation}
-  \eta_{\rm SSEE} = 2.74\times10^{-8}\times\frac{\pi-\varphi}{H_0^{\rm SSEE}}
+  \eta_{\rm SSEE} = 2.74\times10^{-8}\times\frac{\pi-\varphi}{3(\varphi+\pi)^2}
     = 2.74\times10^{-8}\times0.02242 = 6.14\times10^{-10}.
 \end{equation}
 Measured value: $\eta = 6.1\times10^{-10}$ (Planck~2018); deviation $<3\%$.
@@ -747,10 +749,10 @@ with gravitational reheating is reserved for Paper~B.
 \paragraph{Objection B-3 — Factor of~200 in the original formula.}
 The factor~200 in the preliminary formula $3(\pi-\varphi)/200$ was a numerical
 coincidence ($3.2\sigma$ from Planck) that has been superseded.
-The correct algebraic formula is $\Omega_b h^2 = (\pi-\varphi)/H_0^{\rm SSEE}
-= (\pi-\varphi)/[3(\varphi+\pi)^2] = 0.022418$ ($0.32\sigma$ from Planck~2018).
-The denominator is the SSEE algebraic Hubble scale, eliminating any free numerical
-factor; the physical baryon density $\Omega_b = 0.0495$ is a pure $\varphi,\pi$
+The correct algebraic formula is $\Omega_b h^2 = (\pi-\varphi)/[3(\varphi+\pi)^2] = 0.022418$ ($0.32\sigma$ from Planck~2018).
+The denominator is the pure algebraic combination whose value, read in
+km\,s$^{-1}$\,Mpc$^{-1}$, is the SSEE Hubble anchor; no free numerical factor
+remains; the physical baryon density $\Omega_b = 0.0495$ is a pure $\varphi,\pi$
 prediction (Section~\ref{sec:baryons}).
 
 \paragraph{Remaining open problems.}
@@ -767,7 +769,7 @@ The $\delta_c$ prediction and $A_s,\tau$ derivation are reserved for Paper~5.
 
 We have presented a two-axiom ($\varphi$, $\pi$) algebraic system that predicts:
 \begin{itemize}
-  \item $H_0 = 3(\varphi+\pi)^2 = 67.96214$ ($1.1\sigma$ from Planck)
+  \item $H_0/(\mathrm{km\,s^{-1}\,Mpc^{-1}}) = 3(\varphi+\pi)^2 = 67.96214$ ($1.1\sigma$ from Planck)
   \item $\Omega_b = 0.0495$ ($<0.4\%$ from Planck)
   \item $n_s = 1-\varphi^{-7} = 0.965558$ ($0.16\sigma$ from Planck)
   \item $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s = 0.119514$ ($0.41\sigma$ from Planck, forward)

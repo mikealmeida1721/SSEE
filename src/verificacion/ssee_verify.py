@@ -1701,7 +1701,7 @@ _LEIDOS = ("SSEE_Paper1_",)
 # endurecer el detector de 1 a 2 decimales: razón legítima, pero nadie lo
 # volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
 # Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
-_DEUDA_MAX = {"R42": 26, "R43": 0, "R44": 0,
+_DEUDA_MAX = {"R42": 0, "R43": 0, "R44": 0,
                "R45": 0}
 # Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
 # compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
@@ -2011,10 +2011,15 @@ except Exception as e:
 # esté cerrada es justo lo que V-L2-06 lleva ABIERTO, así que escribirla como
 # igualdad —con unidad o sin ella— es afirmar de más.
 #
-# CONSECUENCIA PRÁCTICA: los 26 sitios de deuda de R42 NO se arreglan pegando
-# la unidad. Se arreglan reescribiéndolos como comparación. Hasta que eso se
-# haga, el detector se queda como está (marca el «=» pelado, que sigue siendo
-# peor), pero su remedio documentado es el de arriba.
+# FORMA CANÓNICA ADOPTADA (2026-09-07). La que ya usaban el PRD y el Sealed:
+# se divide la cantidad física por su unidad, y ASÍ los dos lados son números.
+#
+#     H_0/(km s^-1 Mpc^-1) = 3(φ+π)² = 67.96214          ✓
+#     \frac{H_0}{km s^-1 Mpc^-1}  = 3(φ+π)²             ✓
+#
+# El detector ahora exige esa forma y RECHAZA las dos malas: el «=» pelado y el
+# parche de julio con la unidad pegada. Los 26 sitios se reescribieron así, más
+# 6 del parche en Paper 1 que antes pasaban.
 #
 # POR QUÉ EXISTE. La prosa de la suite lo dice bien desde hace tiempo — Postulado D:
 # «the *dimensionless* value is fixed algebraically, while the *absolute* scale is
@@ -2029,46 +2034,64 @@ except Exception as e:
 # de la unidad elegida para H_0.
 print("\nCapa R42 — tipo dimensional: número puro vs cantidad física")
 try:
-    _UNID = r"(?:\\kmsu|\\kms\b|km\s*\\,?\s*s|\\mathrm\{km|\\text\{km)"
+    # La unidad ACEPTADA sólo cuenta si divide a H_0 (H_0/unidad), porque eso
+    # deja un número a cada lado. Pegada tras el «=» NO cuenta: sigue afirmando
+    # que una tasa medida ES un irracional con unidades encima.
+    _RAT = (r"(?:\s*/\s*(?:\\kmsu|\\kms\b|\(\s*\\mathrm\{km.{0,40}?\)"
+            r"|\{?\\mathrm\{km.{0,40}?\}\}?))")
+    _COMB = r"3\s*\(\s*\\(?:varphi|phiG)\s*\+\s*\\pi\s*\)\s*\^\s*\{?2\}?"
+    _ANC = (r"(?:\\frac\{\s*H_0[^}]*\}\s*\{[^}]*\}[^=]{0,4}"
+            r"|H_0(?:\^\{?\\rm\s*\w+\}?)?(?P<rat>" + _RAT + r")?)"
+            r"\s*(?:&\s*)?=\s*(?:[^=$]{0,30}=\s*)?" + _COMB)
+    _NIEGA = r"\b(?:not|rather than|instead of|never)\b"
 
     def _r42(tx: str):
         _h = []
-        # (a) «H_0 = 3(φ+π)^2» sin unidad PEGADA a la combinación.
-        # «Pegada» = sólo espaciado en medio (\, ~ espacio). Una unidad que aparece
-        # tras un «&» (columna siguiente de una tabla) o tras un «\approx 67.962»
-        # NO cuenta: no se distribuye hacia atrás, y deja la igualdad desnuda.
-        for _m in _re.finditer(
-                r"H_0(?:\^\{?\\rm\s*\w+\}?)?\s*(?:&\s*)?[=]\s*"
-                r"3\s*\(\s*\\(?:varphi|phiG)\s*\+\s*\\pi\s*\)\s*\^\s*\{?2\}?"
-                r"(?P<cola>.{0,28})", tx):
-            if not _re.match(r"\s*(?:\\,|~|\\;|\\quad)?\s*" + _UNID, _m.group("cola")):
-                _h.append(("igualdad sin unidad", _m.group(0).replace("\n", " ")[:62]))
+        # (a) H_0 (cantidad física) igualado a la combinación pura.
+        for _m in _re.finditer(_ANC, tx):
+            if _m.group(0).startswith("\\frac"):
+                continue                       # ya es un cociente: los dos lados son números
+            if _m.group("rat"):
+                continue                       # H_0/unidad = número puro: correcto
+            if _re.search(_NIEGA, tx[max(0, _m.start() - 90):_m.start()], _re.I):
+                continue                       # el texto la escribe para rechazarla
+            _h.append(("igualdad tasa = número puro",
+                       _m.group(0).replace("\n", " ")[:62]))
         # (b) adimensional dividido por una cantidad FÍSICA (H_0 con unidades).
-        # Exención de MENCIÓN: un texto que explica por qué esa forma es incorrecta
-        # tiene que poder escribirla. Se reconoce por la negación que la precede.
-        for _m in _re.finditer(r"\(\s*\\pi\s*-\s*\\(?:varphi|phiG)\s*\)\s*/\s*H_0", tx):
-            if _re.search(r"\b(?:not|rather than|instead of|never)\b",
-                          tx[max(0, _m.start() - 90):_m.start()], _re.I):
+        _DIV = (r"(?:\(\s*\\pi\s*-\s*\\(?:varphi|phiG)\s*\)\s*/\s*H_0"
+                r"|\\frac\{\s*\\pi\s*-\s*\\(?:varphi|phiG)\s*\}\s*\{\s*H_0)")
+        for _m in _re.finditer(_DIV, tx):
+            if _re.search(_NIEGA, tx[max(0, _m.start() - 90):_m.start()], _re.I):
                 continue
             _h.append(("adimensional / cantidad física", _m.group(0)[:62]))
         return _h
 
-    # Auto-test: los dos casos REALES que la originaron, y sus formas corregidas.
-    _t42 = [(r"anchor $H_0=3(\varphi+\pi)^2$ (derived, Paper~9) --- leaving", True),
-            (r"anchor $H_0=3(\varphi+\pi)^2\,\kmsu$ (derived, Paper~9)", False),
-            (r"$H_0 = 3(\varphi+\pi)^2 \approx 67.962$ and nothing else here", True),
-            (r"$H_0 = 3(\varphi+\pi)^2\,\kmsu \approx 67.962\,\kmsu$", False),
-            (r"expression $(\pi-\varphi)/H_0^{\rm SSEE}$ gives", True),
-            (r"expression $(\pi-\varphi)/[3(\varphi+\pi)^2]$ gives", False),
-            (r"we do not write it as $(\pi-\varphi)/H_0^{\rm SSEE}$: that would", False),
-            # Falsos negativos REALES que la primera versión de R42 dejó pasar:
-            # la unidad estaba cerca, pero no pegada a la combinación.
-            (r"$H_0 = 3(\varphi+\pi)^2$ & $67.962\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$", True),
-            (r"$H_0 = 3(\varphi+\pi)^2 \approx 67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$", True)]
+    # Auto-test: cada forma MALA con su forma BUENA al lado (control R53).
+    _t42 = [
+        # (a) las dos formas rechazadas...
+        (r"anchor $H_0=3(\varphi+\pi)^2$ (derived, Paper~9) --- leaving", True),
+        (r"$H_0 = 3(\varphi+\pi)^2\,\kmsu \approx 67.962\,\kmsu$", True),
+        (r"$H_0 = 3(\varphi+\pi)^2 = 67.96214$~km\,s$^{-1}$\,Mpc$^{-1}$", True),
+        (r"$H_0 = 3(\varphi+\pi)^2 \approx 67.962$ and nothing else here", True),
+        # ...y las tres aceptadas: el cociente por la unidad.
+        (r"anchor $H_0/\kmsu=3(\varphi+\pi)^2\simeq67.962$ (derived)", False),
+        (r"$H_0^{\rm alg}/(\mathrm{km\,s^{-1}\,Mpc^{-1}}) = 3(\varphi+\pi)^2 = 67.962$",
+         False),
+        (r"\boxed{\frac{H_0}{\mathrm{km\,s^{-1}\,Mpc^{-1}}} = M_v \times \Omega"
+         r" = 3(\varphi+\pi)^2 = 67.96214}", False),
+        # la cadena intermedia no puede servir de escondite
+        (r"$H_0 = M_v\times\Omega = 3(\varphi+\pi)^2 = 67.96214$", True),
+        # (b) y su forma corregida, más la mención negada
+        (r"expression $(\pi-\varphi)/H_0^{\rm SSEE}$ gives", True),
+        (r"$\eta = A\times\frac{\pi-\varphi}{H_0^{\rm SSEE}}$ follows", True),
+        (r"$\eta = A\times\frac{\pi-\varphi}{3(\varphi+\pi)^2}$ follows", False),
+        (r"expression $(\pi-\varphi)/[3(\varphi+\pi)^2]$ gives", False),
+        (r"we do not write it as $(\pi-\varphi)/H_0^{\rm SSEE}$: that would", False)]
     _f42 = [c for c, esp in _t42 if bool(_r42(c)) != esp]
     check("R42 el detector distingue número puro de cantidad física",
           not _f42, "; ".join(_f42) if _f42
-          else "7 casos reales: «=» sin unidad, adimensional/H_0 físico y su mención negada")
+          else "13 casos: «=» pelado, unidad pegada y cadena intermedia se marcan; "
+               "H_0/unidad y \\frac{H_0}{unidad} pasan; mención negada exenta")
 
     _mal42 = []
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))

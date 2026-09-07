@@ -184,9 +184,9 @@ _SOLAR = phi + 2 * pi
 _KRYSTOS_V = phi + pi + Omega          # padres {φ,π,Ω} — NO 2Ω (colapso convencional)
 _mult_mphi = _SOLAR ** 2 * _KRYSTOS_V
 _m_phi_canon = _mnu_active * _mult_mphi
-check("V-L2-10 m_phi canónico = Sigma_m_nu^active * (SOLAR^2*KRYSTOS_V) = 40.70 eV",
+check("V-L2-10 [RETIRADO 2026-08-01] aritmética histórica m_phi = 40.70 eV",
       abs(_m_phi_canon - 40.7024) < 1e-2,
-      f"m_phi = {_m_phi_canon:.4f} eV (R2={_R2:.6f}, mult={_mult_mphi:.4f})")
+      f"m_phi = {_m_phi_canon:.4f} eV (R2={_R2:.6f}, mult={_mult_mphi:.4f}) — RETIRADO: su densidad salía de restar Ω_m,CMB−(1+w₀), densidad menos ecuación de estado. Se conserva sólo como aritmética verificable, NO como entidad vigente")
 
 # V-L2-11 CIERRE DEL SECTOR ν (regla nueva 2026-07-25, a raíz de un fallo de auditoría).
 # HISTORIA: el cambio C_ν 94.07→93.14 (2026-07-10) propagó a m_phi (41.02→40.70) pero
@@ -369,13 +369,19 @@ track_open("V-L3-OP3  separabilidad UV-IR no probada",
 Om_cosm_op5 = _omm / _h ** 2                         # 0.30888  Om_m,CMB (omega_m-directo)
 S8_challenge = 0.8335 * (Om_cosm_op5 / 0.3) ** 0.5  # single-sector techo CLASS (el desafio)
 S8_resolved = 0.7470 * (Om_cosm_op5 / 0.3) ** 0.5   # two-sector forward CLASS (resuelve)
-check("V-L3-OP5  S8 single = sigma8(0.8335)(Om/0.3)^0.5 = 0.846  (el desafio)",
-      abs(S8_challenge - 0.846) < 2e-3, f"S8 = {S8_challenge:.4f}")
-check("V-L3-OP5  S8_eff two-sector = sigma8(0.7470)(Om/0.3)^0.5 = 0.758  (resuelve, forward)",
-      abs(S8_resolved - 0.758) < 2e-3, f"S8 = {S8_resolved:.4f}")
-track_open("V-L3-OP5  S8 forward resuelto; cierre no-lineal pleno diferido",
-           "el two-sector LINEAL forward (CLASS, sigma8 OUTPUT no-fit) resuelve S8 a "
-           "0.758 (0.04sigma KiDS) con m_phi=40.70 (SOLAR²·KRYSTOS); FALSABLE por k_fs=0.754 (DESI/Euclid). "
+check("V-L3-OP5  S8 con A_s FIJADO a Planck = 0.846  (artefacto, no desafio)",
+      abs(S8_challenge - 0.846) < 2e-3,
+      f"S8 = {S8_challenge:.4f} — el viejo «3.5sigma KiDS» era artefacto de fijar A_s, "
+      f"o sea de importar la tension Planck-KiDS. A_s es LIBRE en el modelo (k=2)")
+check("V-L3-OP5  [RETIRADO] aritmetica two-sector = 0.758",
+      abs(S8_resolved - 0.758) < 2e-3,
+      f"S8 = {S8_resolved:.4f} — RETIRADO con la particula (2026-08-01). "
+      f"CANONICO: MCMC R3 con A_s libre sobre 225 puntos xi+- KiDS crudos da "
+      f"S8 = 0.7555 +- 0.0192 (0.11sigma): NO hay tension que resolver")
+track_open("V-L3-OP5  S8 sin tension con A_s libre; cierre no-lineal pleno diferido",
+           "CANONICO 2026-08-01: MCMC R3 convergido (Cobaya+CAMB, R-1=0.0189, N_eff=42033), "
+           "UN SOLO SECTOR, A_s libre, 225 puntos xi+- KiDS crudos: S8=0.7555+-0.0192 -> "
+           "0.11sigma de KiDS. NO hay tension. El two-sector 0.758 y m_phi=40.70 quedan RETIRADOS. "
            "El cierre no-lineal con feedback barionico (N-body, ~5k-20k CPU-h) es Nivel 2, "
            "diferido. Ramas viejas 0.737/0.794, 0.702/0.725, 0.742/0.766, 0.7536/0.765 y "
            "0.7483/0.7593 (rama con C_ν instantáneo 94.07 como operativo) retiradas")
@@ -403,13 +409,59 @@ SOLAR = phi + 2 * pi
 KRYSTOS_V = phi + pi + Omega            # padres {φ,π,Ω} — NO 2Ω (colapso convencional)
 mult_p6 = SOLAR ** 2 * KRYSTOS_V
 m_phi = mnu_active * mult_p6
-check("V-L3-mphi  cadena m_phi = Sigma_m_nu^active * (SOLAR^2*KRYSTOS_V) = 40.70 eV",
-      abs(m_phi - 40.7024) < 2e-2, f"m_phi = {m_phi:.4f} eV")
-track_open("V-L3-mphi  coeficiente SOLAR²·KRYSTOS_V no derivado del transporte (OP-9)",
-           "el valor 40.70 eV es forward-prediction dimensionalmente consistente, escrito "
-           "como termino de masa g²·v de un Lagrangiano escalar libre; lo abierto (OP-9) es "
-           "derivar el coeficiente SOLAR²·KRYSTOS_V del transporte disipativo (KAL), no la "
-           "dimensionalidad ni un fiteo. SOLAR=BIAL+KAL, KRYSTOS_V=φ+π+Ω (padres, NO 2Ω) por linaje")
+check("V-L3-mphi  [RETIRADO 2026-08-01] cadena historica m_phi = 40.70 eV",
+      abs(m_phi - 40.7024) < 2e-2,
+      f"m_phi = {m_phi:.4f} eV — la cadena cierra unidades, pero la particula no "
+      f"tenia de que estar hecha: Om_phiDM salia de una resta mal planteada. "
+      f"Ademas EXCLUIDA por la cizalla cruda (cota m_phi > 70.3 eV)")
+# OP-9 NO se resolvio: se DISOLVIO al caerse su premisa (2026-08-01). Ya no hay
+# coeficiente que derivar porque ya no hay particula. En su lugar va una GUARDA:
+# ningun .tex puede volver a presentar la particula ni el segundo sector como
+# vigentes. Es la contramedida de la retraccion — sin ella, la suite podria
+# revertir sola y el guardian seguiria en verde (paso con la direccion de
+# cascada, ver R55).
+_RETRACTADOS = ("40.70", "594.28", "0.14889", "0.14888",
+                "k_{\\rm fs}=0.754", "k_fs=0.754")
+_EXENTO_RETR = ("retract", "withdraw", "supersed", "retirad", "previously",
+                "no longer", "historic", "RETIRED", "archive")
+
+
+def _presenta_como_vigente(_txt, _tokens):
+    """Lineas con un valor retractado y sin marca de retraccion EN SU VENTANA.
+    La ventana es +-1 linea porque en prosa LaTeX el «retracted» que califica
+    al valor cae con frecuencia en la linea anterior (el .tex va justificado a
+    ~72 columnas, no por frase)."""
+    _lns = _txt.split("\n")
+    _malas = []
+    for _i, _ln in enumerate(_lns):
+        if not any(_tk in _ln for _tk in _tokens):
+            continue
+        _vent = " ".join(_lns[max(0, _i - 1):_i + 2]).lower()
+        if not any(_e.lower() in _vent for _e in _EXENTO_RETR):
+            _malas.append(_ln.strip()[:70])
+    return _malas
+
+
+_tex_vivos = [(_p.name, _p.read_text(errors="ignore"))
+              for _p in sorted((ROOT.parent / "manuscript").glob("*.tex"))]
+_viv_part = {_n: _presenta_como_vigente(_t, _RETRACTADOS)
+             for _n, _t in _tex_vivos}
+_viv_part = {_n: _v for _n, _v in _viv_part.items() if _v}
+check("V-L3-mphi  ningun .tex presenta la particula como vigente",
+      not _viv_part,
+      f"{len(_tex_vivos)} .tex barridos, 0 sitios sin marcar"
+      if not _viv_part else
+      "sin marca de retraccion en " + "; ".join(
+          f"{_n}:{len(_v)}" for _n, _v in sorted(_viv_part.items())[:5]))
+
+# Control (R53): el detector debe MARCAR una linea que presente el valor como
+# vigente y DEJAR PASAR la misma linea declarada retirada.
+_c_viva = "the particle mass is $m_\\phi = 40.70$ eV"
+_c_muerta = "the retracted value $m_\\phi = 40.70$ eV (withdrawn 2026-08-01)"
+check("V-L3-mphi  el detector distingue vigente de retractado",
+      bool(_presenta_como_vigente(_c_viva, _RETRACTADOS))
+      and not _presenta_como_vigente(_c_muerta, _RETRACTADOS),
+      "1 forma viva marcada, 1 declarada retirada eximida")
 
 # Dos sectores phi-DM (P6) — tras el reframe omega_m-directo (2026-06-18) la
 # particion sale SOLA, sin factor: Om_CDM (=Om_m,dyn=0.160, DESI) + Om_phiDM =
@@ -418,11 +470,12 @@ track_open("V-L3-mphi  coeficiente SOLAR²·KRYSTOS_V no derivado del transporte
 # de m_phi (ABIERTO) y k_fs (pendiente Fase B).
 Om_m_CMB = _omm / _h ** 2
 Om_phiDM = Om_m_CMB - Om_m_dyn               # ≈ 0.149 (era (MIRA-1)*dyn=0.160)
-check("V-L3-2sec  identidad Om_CDM + Om_phiDM = Om_m,CMB (omega_m/h²)",
-      abs((Om_m_dyn + Om_phiDM) - Om_m_CMB) < 1e-12)
-track_open("V-L3-2sec  split fisico de dos sectores no cerrado",
-           "la suma es identidad (= V-L2-05); Om_phiDM=0.149 sale de omega_m-directo; "
-           "la separacion fisica en k_fs depende de m_phi (ABIERTO) y k_fs (pendiente)")
+check("V-L3-2sec  [RETIRADO] la resta Om_m,CMB - 0.160 no era fisica",
+      abs((Om_m_dyn + Om_phiDM) - Om_m_CMB) < 1e-12,
+      "la suma cierra por construccion, pero 0.160 es 1+w0 (ECUACION DE ESTADO), "
+      "no una densidad: restar una densidad medida menos un numero de la EoS esta "
+      "dimensionalmente bien formado y VACIO de contenido fisico. Sector unico: "
+      "Om_m = 0.308881 sin particion (2026-08-01)")
 
 # ── REFRAME 2026-06-19 — DEPENDIENTES PENDIENTES DE RECOMPUTE (cajon scripts) ──
 # Inputs FIJADOS (algebra pura): Om_m,CMB=0.30888 (omega_m/h², OP-8 CERRADO, sin
@@ -431,14 +484,16 @@ track_open("V-L3-2sec  split fisico de dos sectores no cerrado",
 # Los siguientes valores DEPENDEN de esos inputs; algunos checks pueden mostrar
 # numeros viejos hasta correr cada codigo. NO se actualizan hasta recomputar:
 track_open("REFRAME-FaseB  dependientes pendientes de recompute con canonicos nuevos",
-           "HECHO: (a) cascada Hubble IR=72.86 (0.17sigma) / UV=73.040 (0.00sigma) "
-           "con H global=67.962 (P9/P10). (b) CMB chi2=1005.41, Delta-BIC=-24.02 (SSEE favorecido) "
-           "omega_m-directo @ H=67.962 (P3, plik_lite). (c) P6 CLASS forward m_phi=40.70 "
-           "(SOLAR²·KRYSTOS, C_ν=93.14), Om_phiDM=0.14888: k_fs=0.754, alpha=1.117, sigma8_two=0.7470 -> "
-           "S8=0.758 (0.04sigma KiDS, RESUELVE forward). (d) fsigma8 two-sector recomputado "
-           "Om_m=0.30888: media 0.82sigma (LCDM 0.73sigma). PENDIENTE aun: (1) r_d con "
-           "Om_m=0.30888 (P3); (2) posterior MCMC con prior H_alg (P2). Marcado falsable por "
-           "k_fs=0.754 (DESI/Euclid)")
+           "HECHO: (a) cascada Hubble en direccion canonica (SH0ES ENTRA, H_global SALE, "
+           "2026-09-06): IR = 73.04x(1-f) = 68.13 (0.17sigma vs 3(phi+pi)^2=67.96214), "
+           "UV = 67.962142 (residuo +4.2e-06; sigma propagado +-0.970 lo domina) (P9/P10). (b) CMB chi2=1005.41, Delta-BIC=-24.02 (SSEE favorecido) "
+           "omega_m-directo @ H=67.962 (P3, plik_lite). (c) P6 REESCRITO 2026-08-01: "
+           "un solo sector, MCMC R3 sobre KiDS crudo con A_s libre da "
+           "S8=0.7555+-0.0192 (0.11sigma). m_phi=40.70, Om_phiDM=0.14888, k_fs=0.754, "
+           "alpha=1.117 y sigma8_two=0.7470 quedan TODOS RETIRADOS. "
+           "(d) fsigma8 contra BOSS crudo: PENDIENTE (R1/R2). PENDIENTE aun: (1) r_d "
+           "con Om_m=0.30888 (P3); (2) posterior MCMC con prior H_alg (P2); "
+           "(3) control metodologico LCDM (R4)")
 
 # EFT canónico (P7) — los parámetros lambda, alpha_pot, V0 son consecuencias
 # algebraicas de constantes ya verificadas (Om_m,dyn, KAL0, Om_DE).
@@ -564,7 +619,7 @@ check("V-L4-02 P6  S8 single = sigma8 sqrt(Om/0.3) = 0.846  (el desafio)",
 
 sig8_eff = 0.7470            # two-sector titular Paper 6 (forward CLASS, no fit)
 S8_eff = sig8_eff * (Om_cosm / 0.3) ** 0.5
-check("V-L4-02b P6  S8_eff two-sector = 0.758  (TITULAR, resuelve, forward)",
+check("V-L4-02b P6  [RETIRADO] aritmetica S8_eff two-sector = 0.758",
       abs(S8_eff - 0.758) < 2e-3, f"S8_eff = {S8_eff:.4f}")
 
 # Tensiones S8 — error en cuadratura modelo + observacional.
@@ -573,9 +628,12 @@ G_growth = 1.0032            # D1_SSEE/D1_LCDM (Paper 5 ODE @ Om_cosm=0.308881; 
 S8_single_err = 0.006 * G_growth * (Om_cosm / 0.3) ** 0.5
 t_KIDS_single = abs(S8_single - 0.759) / (S8_single_err ** 2 + 0.024 ** 2) ** 0.5
 t_KIDS_twosec = abs(S8_eff - 0.759) / 0.024
-check("V-L4-03 P6  tension S8 single vs KiDS-1000 = 3.5 sigma  (el desafio)",
-      abs(t_KIDS_single - 3.5) < 0.2, f"{t_KIDS_single:.2f} sigma")
-check("V-L4-04 P6  tension S8_eff two-sector vs KiDS-1000 = 0.04 sigma  (resuelto, forward)",
+check("V-L4-03 P6  [ARTEFACTO] 3.5 sigma vs KiDS con A_s FIJADO a Planck",
+      abs(t_KIDS_single - 3.5) < 0.2,
+      f"{t_KIDS_single:.2f} sigma — NO era un desafio del modelo: fijar A_s a "
+      f"Planck importa la tension Planck-KiDS. Con A_s libre (k=2) el MCMC R3 "
+      f"sobre KiDS crudo da S8=0.7555+-0.0192, a 0.11 sigma")
+check("V-L4-04 P6  [RETIRADO] tension two-sector vs KiDS = 0.04 sigma",
       t_KIDS_twosec < 0.2, f"{t_KIDS_twosec:.3f} sigma")
 
 # CMB Planck PR4 (P3) — re-corrida con CAMB 1.6.5 (2026-05-22): chi2_r

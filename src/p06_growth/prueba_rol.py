@@ -42,7 +42,7 @@ COPIAS = {"MIRA": "½·AURA (pared ½; rol fisico f_screen)",
 
 # Rol ACOPLAMIENTO (radiativo/disipativo) — con procedencia
 ACOPL = {"BIAL": "Base Coupling Scalar; primer pulso radiativo",
-         "KAL": "Structural Viscosity; retencion, ζ̃=KAL₀/3 (Paper 5 IS)",
+         "KAL": "Structural Retention (ley de retener); en fluido se ve como viscosidad, ζ̃=KAL₀/3 (Paper 5 IS)",
          "SOLAR": "BIAL+KAL: hijo de dos termicos (radiativo-disipativo)",
          "AURA": "βc acoplamiento conforme (Papers 7/8)"}
 

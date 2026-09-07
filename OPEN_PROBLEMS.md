@@ -439,7 +439,7 @@ Los papers cosmológicos dan peso dimensional a estos roles vía observables:
 
 - Paper 7: βc = −AURA para el acoplamiento disformal del fotón
 - Paper 8: geodésicas disformales del fotón usan AURA
-- Papers 1–6: el sector cinético escalar usa KAL₀ como constante de viscosidad estructural
+- Papers 1–6: el sector cinético escalar usa KAL₀ como constante de retención estructural (en la capa de fluido esa retención se manifiesta como viscosidad)
 
 **La dualidad φ↔π (establecida en esta sesión, 2026-05-19):**
 
@@ -1659,9 +1659,27 @@ consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
 > ⟹ falsado**. El rol de viscosidad no está ocioso en el marco: está ocioso en
 > *ese* observable.
 >
-> El nombre heredado «Structural Viscosity» sigue siendo el eslabón más flojo
-> del rótulo. *(Se deja constancia; no se renombra — ver la regla de
-> estabilidad de símbolos.)*
+> **Rótulo unificado 2026-09-07 (formulación de Mike): `KAL₀` es la ley de
+> retener.** No eran dos nombres compitiendo: en un fluido, retener *es* lo que
+> se llama viscosidad. Medido en las cuatro dependencias, todas apuntan al mismo
+> lado — `KAL₀` mayor ⟹ el sistema **cede menos**:
+>
+> | | `×1` | `×1.2` | |
+> |---|---|---|---|
+> | `ω_c` | `0.119514` | `0.143417` | más materia retenida |
+> | `τ_Π H₀` | `2.191165` | `2.629398` | responde más lento |
+> | `R₂` | `0.071875` | `0.059896` | se desvía menos |
+> | `X/KAL₀` | `0.181113` | `0.150928` | campo más costoso de mover |
+>
+> Y «retención» **ya estaba en la suite**: Paper 1 §EFT L138 dice literalmente
+> *«the retention constant KAL₀ ≡ β+π»*; la ley de linaje de la rama π la
+> fabrica como retención (`look_elsewhere_full.py:56`); `prueba_rol.py:45`
+> llevaba los dos nombres en la misma línea. No fue un renombre sino retirar un
+> préstamo: se le había puesto a toda la constante el nombre de su instancia de
+> fluido — justo el uso en que `KAL₀` se cancela.
+>
+> **El símbolo `KAL₀` no cambia.** Se unificó la etiqueta en 13 sitios vivos;
+> `archive/` no se toca, y `ζ̃` sigue llamándose viscosidad porque ahí sí lo es.
 >
 > **Lo que queda abierto (OP-22b, ahora más estrecho):** el mapa de los
 > parámetros del campo a los del fluido efectivo `(ζ̃, τ_Π)` **no está
@@ -2129,7 +2147,7 @@ difícil:
    necesita el cálculo de producción (freeze-out / freeze-in / misalignment / producción
    gravitacional): un escenario cosmológico en el que la abundancia relic del $\varphi$-DM
    salga proporcional a la bariónica **con coeficiente $\mathrm{KAL_0}\cdot n_s$**, sin
-   insertarlo a mano. $\mathrm{KAL_0}=\beta+\pi$ es la viscosidad estructural (transporte);
+   insertarlo a mano. $\mathrm{KAL_0}=\beta+\pi$ es la retención estructural (transporte);
    $n_s$ es el índice espectral (la inclinación del espectro primordial). Que el transporte
    $\times$ la inclinación fijen la abundancia oscura es una hipótesis de mecanismo, no una
    identidad de simetría de la acción.

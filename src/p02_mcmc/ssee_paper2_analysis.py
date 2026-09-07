@@ -16,7 +16,7 @@ PI   = np.pi                          # π ≈ 3.1416
 
 OMEGA  = PI + PHI                     # Stability Metric         ≈ 4.7596
 BETA   = (PI + PHI) / 2              # Base Coupling Scalar     ≈ 2.3798
-KAL0   = BETA + PI                   # Structural Viscosity     ≈ 5.5214
+KAL0   = BETA + PI                   # Structural Retention     ≈ 5.5214
 P_sc   = OMEGA + PHI                  # Dynamical Scalar         ≈ 6.3776
 KV     = PHI + PI + OMEGA            # KRYSTOS_V (scaffold)     ≈ 9.5192
 IGNIS  = PI + P_sc                    # IGNIS = π+PYROS          ≈ 9.5192

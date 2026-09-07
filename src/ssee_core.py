@@ -25,7 +25,7 @@ PI  = math.pi
 # ── Registros estructurales derivados (Paper 1) ──────────────────────────────
 OMEGA = PHI + PI                # Stability Metric        ≈ 4.7596
 BETA  = (PHI + PI) / 2.0        # Base Coupling Scalar    ≈ 2.3798
-KAL0  = BETA + PI               # Structural Viscosity    ≈ 5.5214
+KAL0  = BETA + PI               # Structural Retention    ≈ 5.5214
 P_SC  = OMEGA + PHI             # Dynamical Evolution     ≈ 6.3776
 K_V   = PHI + PI + OMEGA        # Structural Constraint   ≈ 9.5192
 T_R   = 3.0 * (PHI + BETA)      # 3D Saturation Horizon   ≈ 11.9935

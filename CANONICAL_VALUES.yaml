@@ -577,7 +577,7 @@ provenance:
     formula:    "BIAL + pi   con BIAL = (phi+pi)/2"
     value:      5.5214060
     origin:     algebraico
-    source:     "Paper 1 (viscosidad estructural); src/ssee_core.py:KAL0"
+    source:     "Paper 1 (retención estructural); src/ssee_core.py:KAL0"
     depends_on: [phi, pi]
     affects:    [omega_c, R2, tau_Pi_H0]
 

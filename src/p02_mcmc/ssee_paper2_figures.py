@@ -332,7 +332,7 @@ ax4a.axvspan(1.0, 1e2,  alpha=0.06, color="#2166AC",  label="Newtonian")
 
 ax4a.set_xlabel(r"$x = |\nabla\Phi| / a_0$")
 ax4a.set_ylabel(r"$\mathrm{KAL}(x)$")
-ax4a.set_title(r"Viscosidad estructural $\mathrm{KAL}(x)$ — SSEE")
+ax4a.set_title(r"Retención estructural $\mathrm{KAL}(x)$ — SSEE")
 ax4a.set_ylim(0.8, KAL0 + 0.5)
 ax4a.legend(fontsize=9, loc="center right")
 

@@ -653,6 +653,50 @@ check("V-L3-IS  tau_Pi SI esta anclado: por Sigma m_nu, no por c2_eff",
       f"oscilaciones 0.058 (x1 da {_smnu_k(1.0):.6f}) => la cancelacion "
       "de KAL_0 es LOCAL a c2_eff; el rol de viscosidad no esta ocioso "
       "en el marco, solo en ese observable")
+# --- R56: el rotulo de KAL_0 es RETENCION, no viscosidad (2026-09-07) --
+# POR QUE EXISTE. KAL_0 llevaba el nombre de su instancia de FLUIDO —
+# justo el unico uso en que se cancela del observable. «Retencion» ya
+# estaba en la suite (P1 §EFT L138, ley de linaje de la rama pi), asi
+# que no fue renombre sino retirar un prestamo. La ley es RETENER; en
+# un fluido eso se llama viscosidad. El simbolo KAL_0 no cambia.
+_R56_MAL = re.compile(r"(?:Structural|Asymptotic\s+Structural)\s+Viscosity"
+                      r"|viscosidad\s+estructural", re.I)
+def _r56_sitios(_txt):
+    _h = []
+    for _m in _R56_MAL.finditer(_txt):
+        _ini = _txt.rfind("\n", 0, _m.start()) + 1
+        _fin = _txt.find("\n", _m.end())
+        _linea = _txt[_ini:_fin if _fin > 0 else len(_txt)]
+        # EXENTO: zeta_tilde SI es una viscosidad (es la del fluido), y
+        # las menciones que narran el cambio de rotulo.
+        if re.search(r"ztilde|zeta_tilde|ζ̃|unificad|earlier version|heredado",
+                     _linea, re.I):
+            continue
+        _h.append(_linea.strip()[:70])
+    return _h
+_r56_todos = []
+for _f in sorted(list((ROOT.parent/"manuscript").rglob("*.tex"))
+                 + list((ROOT.parent/"src").rglob("*.py"))
+                 + [ROOT.parent/"CANONICAL_VALUES.yaml"]):
+    # El propio guardian queda exento: sus fixtures CONTIENEN la forma
+    # prestada a proposito. Es el mismo defecto que R45 documenta haber
+    # cometido dentro de si misma.
+    if "archive" in str(_f) or _f.name == "ssee_verify.py":
+        continue
+    _r56_todos += [f"{_f.name}: {x}" for x in _r56_sitios(_f.read_text(errors="ignore"))]
+check("R56 el rotulo general de KAL_0 es retencion, no viscosidad",
+      not _r56_todos, "; ".join(_r56_todos[:4]) if _r56_todos
+      else "0 sitios con el rotulo prestado (archive/ exento; zeta_tilde "
+           "sigue siendo viscosidad, que ahi si lo es)")
+_t56 = [("KAL0 = BETA + PI   # Structural Viscosity  ~ 5.5214", True),
+        ("KAL_0 es la viscosidad estructural (transporte)", True),
+        ("KAL0 = BETA + PI   # Structural Retention  ~ 5.5214", False),
+        ("la viscosidad de volumen ztilde = KAL0/3 del fluido", False)]
+_f56 = [c for c, esp in _t56 if bool(_r56_sitios(c)) != esp]
+check("R56 el detector distingue el rotulo general de la viscosidad del fluido",
+      not _f56, "; ".join(_f56) if _f56
+      else "4 casos: 2 formas prestadas marcadas, el rotulo nuevo y "
+           "el ztilde del fluido limpios")
 track_open("V-L3-IS  OP-22b: el mapa campo -> fluido (zeta,tau_Pi) no derivado",
            "OP-22 cerrado (normalizacion = entalpia; el 0 es resultado). El "
            "conteo de grados de libertad (2026-09-07) cierra la parte de 'dos "
@@ -3898,7 +3942,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 235          # +1 V-L3-IS (tau_Pi anclado por Sigma m_nu); solo SUBE
+_PISO_CHECKS = 237          # +2 R56 (rotulo de KAL_0 = retencion) + su control; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

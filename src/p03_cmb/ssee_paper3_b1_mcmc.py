@@ -95,7 +95,7 @@ Omm_dyn    = 1.0 - OmDE_ssee          # 0.16011
 # Reframe ω_m-DIRECTO (OP-8 cerrado, 2026-06-18): NO hay factor materia.
 # ω_b y ω_c son densidades físicas FIJAS algebraicamente; Ω_m,CMB = ω_m/h² es DERIVADO.
 ns_ssee    = 1.0 - (1.0 / phi) ** 7   # 0.96556 — algebraic spectral index
-KAL0       = beta + pi                 # 5.5214 — Structural Viscosity
+KAL0       = beta + pi                 # 5.5214 — Structural Retention
 ombh2_ssee = (pi - phi) / (3.0 * Omega_ssee**2)   # 0.022423 — ω_b directo
 omch2_ssee = KAL0 * ombh2_ssee * ns_ssee          # 0.11951 — ω_c forward (KAL₀·ω_b·n_s)
 mnu_ssee   = 0.06849                   # Σm_ν canónico (C_ν=93.14 PDG; era 0.0690); ω_ν = Σm_ν/C_ν

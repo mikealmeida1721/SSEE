@@ -1702,7 +1702,7 @@ _LEIDOS = ("SSEE_Paper1_",)
 # volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
 # Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
 _DEUDA_MAX = {"R42": 26, "R43": 0, "R44": 0,
-               "R45": 7}
+               "R45": 0}
 # Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
 # compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
 _DEUDA_REAL = {}
@@ -1766,7 +1766,18 @@ try:
 
     def _r45(tx: str):
         _h = []
+        # EXENCION DE NARRACION (2026-09-07). «retiring the former open
+        # problem, OP-8» y «was tracked as open problem OP-8; that bridge
+        # is now dissolved» son prosa CORRECTA: cuentan que estuvo abierto.
+        # El detector las marcaba como si lo afirmaran. 4 de sus 7 sitios
+        # eran esto — en el PRD y el Sealed, o sea en lo que se envia.
+        _NARRA = (r"former|formerly|earlier|was tracked|now dissolved|"
+                  r"dissolved|retir|no longer|previously|superseded|"
+                  r"has since|used to|were tracked|\bresolved\b|closed")
         for _m in _re.finditer(_ABRE + r"[^.]{0,80}", tx, _re.I):
+            _ctx = tx[max(0, _m.start() - 120):_m.end() + 120]
+            if _re.search(_NARRA, _ctx, _re.I):
+                continue
             # «OP-9/11/14» escribe tres OPs y sólo el primero lleva prefijo.
             # La primera versión leía OP-(\d+) y se perdía el 11 y el 14 — que era
             # justamente el defecto buscado. Lo probó el auto-test, no yo.
@@ -1785,6 +1796,10 @@ try:
     # sector φ-DM: el fixture pasó a afirmar algo falso y el auto-test lo cazó.
     # Es el mismo defecto que R45 vigila, cometido dentro de R45.
     _t45 = [("with the remaining open problems OP-9/11/14 for the dark-matter sector", True),
+            # CONTROL de la exencion de narracion (2026-09-07): la misma
+            # frase, una afirmando y otra contando que estuvo abierto.
+            ("tracked as open problem OP-14 in the register", True),
+            ("was tracked as open problem OP-14; now resolved", False),
             ("with the remaining open problems OP-15 and OP-16 for the dark sector", False),
             # CONTROL del sufijo: el padre cerrado se marca, el hijo abierto no.
             ("what remains open is OP-22, the IS normalisation", True),

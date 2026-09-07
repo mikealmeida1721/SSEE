@@ -711,8 +711,16 @@ _gap = (bc_arr[finite][-1] + AURA) / AURA * 100
 print(f"  Plateau: β_c varía {_spread:.4f}% en 4 órdenes de a_i — NO converge a −AURA.")
 print(f"  Se estabiliza en {bc_arr[finite][-1]:.5f}, a {_gap:+.3f}% de −AURA, y ahí se queda.")
 print(f"  Lectura honesta: la brecha NO es un artefacto de condiciones iniciales")
-print(f"  (si lo fuera, se cerraría al bajar a_i). β_c = −AURA es una COINCIDENCIA")
-print(f"  cercana al 0.2%, no una identidad algebraica. Así se declara en el paper.")
+print(f"  (si lo fuera, se cerraría al bajar a_i).")
+# 2026-09-07: estas dos líneas decían «β_c = −AURA es una COINCIDENCIA
+# cercana al 0.2%, así se declara en el paper». Contradecían a la línea
+# de arriba (que reporta +83.5% de −AURA) Y al paper, que RETIRÓ β_c
+# junto con el potencial y el acoplamiento (P7 §withdrawn, L80). El
+# 0.2% era el texto de antes del arreglo del bug de saturación.
+print(f"  β_c fue RETIRADO de P7 junto con el potencial y el acoplamiento")
+print(f"  conformal (§withdrawn, L80). Este script integra ese fondo")
+print(f"  retirado: sigue vivo como línea base de la investigación OP-23,")
+print(f"  no como respaldo de ningún número publicado.")
 
 # ── Figura β_c vs a_i: plateau = la discrepancia NO es artefacto de IC ──────
 fig2, axes2 = plt.subplots(1, 2, figsize=(12, 4.5))

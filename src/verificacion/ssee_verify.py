@@ -1648,7 +1648,7 @@ _LEIDOS = ("SSEE_Paper1_",)
 # endurecer el detector de 1 a 2 decimales: razón legítima, pero nadie lo
 # volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
 # Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
-_DEUDA_MAX = {"R42": 26, "R43": 22, "R44": 76,
+_DEUDA_MAX = {"R42": 26, "R43": 22, "R44": 0,
                "R45": 7}
 # Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
 # compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
@@ -1806,6 +1806,14 @@ try:
             for _d in range(2, 6):
                 for _m in _re.finditer(r"=\s*" + _re.escape(f"{_v44:.{_d}f}")
                                        + r"(?![0-9])", tx):
+                    # EXENCION DE RETRACCION (2026-09-07). Un valor narrado
+                    # como retirado no se «arregla» dandole mas decimales:
+                    # escribir «594.281...» para una cantidad retractada es
+                    # precision sobre algo que ya no se afirma. Unico sitio:
+                    # P6 L175, «(retracted: SOLAR^2·KRYSTOS_V=594.28)».
+                    _ctx = tx[max(0, _m.start() - 120):_m.end() + 40].lower()
+                    if any(_e.lower() in _ctx for _e in _EXENTO_RETR):
+                        continue
                     _h.append(f"{_k44}: «{_m.group(0).strip()}» → {_v44:.6f}")
         return _h
 
@@ -1890,7 +1898,26 @@ except Exception as e:
 # R42 — TIPO DIMENSIONAL: un número puro nunca IGUALA una cantidad física (2026-07-28).
 #
 #     H_0 = 3(φ+π)²            ✗  una tasa en km/s/Mpc igualada a un irracional puro
-#     H_0 = 3(φ+π)² km/s/Mpc   ✓  el número puro MULTIPLICA la unidad
+#     H_0 = 3(φ+π)² km/s/Mpc   ~  PARCHE de julio: mejor que el «=» pelado,
+#                                 pero NO es la forma correcta. Ver abajo.
+#
+# ⚠️ EL REMEDIO DE ESTA REGLA ESTÁ SUPERADO (2026-09-07, lo señaló Mike).
+# Pegarle la unidad al número puro sigue afirmando que una tasa medida ES un
+# irracional multiplicado por km/s/Mpc. Sus palabras: «no puedes meter un
+# número puro y ponerle unidades y decir que son lo mismo». La dirección de
+# cascada (2026-09-06) ya dejó la forma correcta, y es una COMPARACIÓN:
+#
+#     H_glob = H_SH0ES·(1−f_screen) = 68.13 km/s/Mpc,                    ✓
+#     que se compara con el número puro 3(φ+π)² = 67.96214  →  0.17σ
+#
+# El número puro es el BLANCO, nunca el valor. Que la igualdad dimensional no
+# esté cerrada es justo lo que V-L2-06 lleva ABIERTO, así que escribirla como
+# igualdad —con unidad o sin ella— es afirmar de más.
+#
+# CONSECUENCIA PRÁCTICA: los 26 sitios de deuda de R42 NO se arreglan pegando
+# la unidad. Se arreglan reescribiéndolos como comparación. Hasta que eso se
+# haga, el detector se queda como está (marca el «=» pelado, que sigue siendo
+# peor), pero su remedio documentado es el de arriba.
 #
 # POR QUÉ EXISTE. La prosa de la suite lo dice bien desde hace tiempo — Postulado D:
 # «the *dimensionless* value is fixed algebraically, while the *absolute* scale is

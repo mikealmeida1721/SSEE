@@ -1592,11 +1592,31 @@ consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
 > | fluido viscoso | IS, `w₀+Ω_DE` | `0` |
 > | campo, adiabático | condensado fantasma P7 | `0.021284` |
 >
-> No chocan en **carácter** —ambos son energía oscura **agrupada**, `c²_s ≪ 1`—
-> pero no son el mismo número, y que sean canales genuinamente distintos y no
-> dos estimaciones de lo mismo sigue **afirmado, no derivado**. La brecha
-> `0.021284` es *toda* la predicción de Paper 7: una medida de `c²_s`
-> discrimina. **OP-22b.**
+> No chocan en **carácter** —ambos son energía oscura **agrupada**, `c²_s ≪ 1`.
+>
+> **Actualización 2026-09-07 — NO son dos canales (conteo de grados de
+> libertad).** Un escalar k-essence lleva **exactamente un** modo escalar
+> propagante (P7, matriz cinética `K_X + 2X·K_XX`), y en el fluido IS la
+> presión viscosa `Π` es un auxiliar que relaja, esclavo de la perturbación de
+> densidad, no un segundo modo que viaje. Las dos descripciones cuentan
+> **una** onda ⟹ los dos números describen **la misma**, y la del campo es la
+> fundamental de las dos: sale de la acción.
+>
+> Y se ve *cuál* es la aproximada:
+>
+> | | velocidad de base | rescate | total |
+> |---|---|---|---|
+> | fluido | `c²_ad = w₀ = −0.839950` (inestable) | `+Ω_DE` | `0` |
+> | campo | `+0.021284` (estable) | ninguno | `0.021284` |
+>
+> El fluido toma prestado `c² = w₀`, que por sí solo es inestable a gradientes,
+> y la viscosidad entra exactamente a rescatarlo. El campo no necesita rescate.
+>
+> **Lo que queda abierto (OP-22b, ahora más estrecho):** el mapa de los
+> parámetros del campo a los del fluido efectivo `(ζ̃, τ_Π)` **no está
+> derivado**, así que *por qué* el límite de fluido cae exactamente en `0` y no
+> en `0.021284` sigue sin establecerse. La brecha `0.021284` es *toda* la
+> predicción de Paper 7: una medida de `c²_s` discrimina.
 
 <details><summary>Diagnóstico original (2026-08-02), conservado</summary>
 

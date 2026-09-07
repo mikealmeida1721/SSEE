@@ -559,14 +559,31 @@ check("V-L3-IS  el modo campo sale de la accion de P7, no del K de P10",
       abs(_cs2_campo - 0.021283701571) < 1e-9,
       f"c2_s,ad = (1+2u)/(1+6u) = {_cs2_campo:.12f} con u = c2X/c1 de P7; "
       f"el 0.96737 del K de P10 es otro funcional (razon +0.008577)")
-track_open("V-L3-IS  OP-22b: modo fluido (0) vs modo campo (0.021284)",
-           "OP-22 cerrado (normalizacion = entalpia; el 0 es resultado). Queda "
-           "que el modo viscoso de fluido (c2_eff = w0+Om_DE = 0) y el modo de "
-           "campo de la accion de P7 (c2_s,ad = 0.021284) sean canales "
-           "genuinamente distintos y no dos estimaciones de lo mismo: esta "
-           "AFIRMADO, no derivado. Ambos son DE agrupada (c2_s << 1), asi que "
-           "no chocan en caracter, pero difieren en 0.021284 — que es toda la "
-           "prediccion de P7, o sea que una medida de c2_s discrimina. "
+# --- OP-22b, conteo de grados de libertad (2026-09-07) -----------------
+# Un escalar k-essence lleva UN modo propagante; en el fluido IS la
+# presion viscosa Pi relaja y queda esclava de delta, no viaja sola.
+# Las dos descripciones cuentan UNA onda => son la MISMA, y la del
+# campo es la fundamental (sale de la accion).
+# CONTROL (R53): apagar el rescate viscoso. El fluido se cae solo
+# (c2_ad = w0 < 0, inestable a gradientes); el campo no lo necesita.
+_cs2_fluido_sin_visc = w0                   # -0.839950
+_cs2_campo_sin_visc  = _cs2_campo           # +0.021284
+check("V-L3-IS  el rescate viscoso es del FLUIDO, no del campo",
+      _cs2_fluido_sin_visc < 0.0 < _cs2_campo_sin_visc,
+      f"sin viscosidad: fluido c2_ad = w0 = {_cs2_fluido_sin_visc:.6f} "
+      f"(inestable) vs campo c2_s = {_cs2_campo_sin_visc:.6f} (estable). "
+      "La viscosidad tapa un agujero propio del fluido; el campo no "
+      "tiene ese agujero => el campo es la descripcion fundamental")
+track_open("V-L3-IS  OP-22b: el mapa campo -> fluido (zeta,tau_Pi) no derivado",
+           "OP-22 cerrado (normalizacion = entalpia; el 0 es resultado). El "
+           "conteo de grados de libertad (2026-09-07) cierra la parte de 'dos "
+           "canales': ambos cuentan UNA onda, luego el 0 del fluido y el "
+           "0.021284 del campo describen LA MISMA, y la del campo es la "
+           "fundamental. Queda ESTRECHO: el mapa de los parametros del campo "
+           "a los del fluido efectivo (zeta_tilde, tau_Pi) NO esta derivado, "
+           "asi que por que el limite de fluido cae exactamente en 0 y no en "
+           "0.021284 sigue sin establecerse. La brecha 0.021284 es toda la "
+           "prediccion de P7 => una medida de c2_s discrimina. "
            "Ademas queda RETIRADA la derivacion de tau_Pi por saturacion de "
            "causalidad (apendice EFT de P1): usaba rho en vez de rho+p, daba 0.2946")
 
@@ -1291,7 +1308,7 @@ try:
     _op_txt = (_REPO / "OPEN_PROBLEMS.md").read_text(errors="ignore")
     # Un OP está RESUELTO si su encabezado de sección lo declara así.
     _RESUELTOS = set()
-    for _m in _re.finditer(r"^#+\s*OP-(\d+)[^\n]*", _op_txt, _re.M):
+    for _m in _re.finditer(r"^#+\s*OP-(\d+[a-z]?)[^\n]*", _op_txt, _re.M):
         if _re.search(r"✅|RESUELT|CERRAD", _m.group(0), _re.I):
             _RESUELTOS.add(_m.group(1))
     # «abierto» en prosa: el OP aparece dentro de una frase que lo declara pendiente.
@@ -1333,7 +1350,11 @@ try:
             # «OP-9/11/14» escribe tres OPs y sólo el primero lleva prefijo.
             # La primera versión leía OP-(\d+) y se perdía el 11 y el 14 — que era
             # justamente el defecto buscado. Lo probó el auto-test, no yo.
-            for _run in _re.findall(r"OP-([\d/]+)", _m.group(0)):
+            # SUFIJO DE LETRA (2026-09-07). El .tex decia «remains open ...
+            # OP-22b» y el detector leia «OP-22», que SI esta cerrado ⟹ falso
+            # positivo. Un sub-OP es un OP distinto de su padre: OP-22 cerrado
+            # no dice nada del estado de OP-22b.
+            for _run in _re.findall(r"OP-(\d+[a-z]?(?:/\d+[a-z]?)*)", _m.group(0)):
                 for _n in _run.split("/"):
                     if _n in _RESUELTOS:
                         _h.append(f"OP-{_n} citado como abierto — «{_m.group(0)[:58].strip()}»")
@@ -1344,7 +1365,10 @@ try:
     # sector φ-DM: el fixture pasó a afirmar algo falso y el auto-test lo cazó.
     # Es el mismo defecto que R45 vigila, cometido dentro de R45.
     _t45 = [("with the remaining open problems OP-9/11/14 for the dark-matter sector", True),
-            ("with the remaining open problems OP-15 and OP-16 for the dark sector", False)]
+            ("with the remaining open problems OP-15 and OP-16 for the dark sector", False),
+            # CONTROL del sufijo: el padre cerrado se marca, el hijo abierto no.
+            ("what remains open is OP-22, the IS normalisation", True),
+            ("what remains open is OP-22b, the field-to-fluid map", False)]
     _f45 = [c for c, esp in _t45 if bool(_r45(c)) != esp]
     check("R45 el detector cruza la prosa con el registro de OPs",
           not _f45, "; ".join(_f45) if _f45
@@ -3795,7 +3819,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 228          # +1 V-L3-IS (modo campo = accion de P7); solo SUBE
+_PISO_CHECKS = 229          # +1 V-L3-IS (rescate viscoso es del fluido); solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

@@ -639,6 +639,20 @@ check("V-L3-IS  control: KAL_0 SI hace trabajo en omega_c",
       f"x1.1 -> {_wc_kal[2]:.6f} contra Planck 0.1200+-0.0012 (~10 sigma "
       "por cada 10%) => KAL_0 se MIDE, pero por la materia oscura, "
       "no por la viscosidad")
+# La cancelacion es LOCAL a c2_eff. tau_Pi si esta anclado, por
+# Sigma m_nu = R2 wb (93.14)/(tau_Pi H0), donde KAL0 entra AL CUADRADO
+# (R2 = Om/(KAL0 T_r) y tau_Pi = KAL0/(3 Om_DE)): +10% en KAL0 hunde
+# Sigma m_nu bajo el piso de oscilaciones 0.058 eV => falsado.
+def _smnu_k(_f):
+    _K = _f*KAL0
+    return (Omega/(_K*Tr))*_wb_k*93.14/(_K/(3.0*Om_DE))
+_smnu_hi = _smnu_k(1.1)
+check("V-L3-IS  tau_Pi SI esta anclado: por Sigma m_nu, no por c2_eff",
+      _smnu_hi < 0.058 < _smnu_k(1.0),
+      f"KAL0 x1.1 -> Sigma m_nu = {_smnu_hi:.6f} eV, BAJO el piso de "
+      f"oscilaciones 0.058 (x1 da {_smnu_k(1.0):.6f}) => la cancelacion "
+      "de KAL_0 es LOCAL a c2_eff; el rol de viscosidad no esta ocioso "
+      "en el marco, solo en ese observable")
 track_open("V-L3-IS  OP-22b: el mapa campo -> fluido (zeta,tau_Pi) no derivado",
            "OP-22 cerrado (normalizacion = entalpia; el 0 es resultado). El "
            "conteo de grados de libertad (2026-09-07) cierra la parte de 'dos "
@@ -3884,7 +3898,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 234          # +2 V-L3-IS (KAL_0 se cancela + su control); solo SUBE
+_PISO_CHECKS = 235          # +1 V-L3-IS (tau_Pi anclado por Sigma m_nu); solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

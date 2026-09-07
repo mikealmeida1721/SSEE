@@ -1645,13 +1645,23 @@ consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
 >
 > | rol | ¿mueve un observable? |
 > |---|---|
-> | `ζ̃ = KAL₀/3` (viscosidad, P5) | **no** — se cancela |
+| `ζ̃ = KAL₀/3` → `c²_eff` (P5) | **no** — se cancela |
 > | `ω_c = KAL₀·ω_b·n_s` (P1) | **sí** — ~10σ por cada 10% |
+> | `Σm_ν` vía `R₂` y `τ_Π` (P1) | **sí** — `KAL₀` entra **al cuadrado** |
+> | `X/KAL₀` apantallamiento (P10) | **sí**, pero degenerado con `M⁴` |
 >
-> `KAL₀` **se mide, pero por la materia oscura, no por la viscosidad**. El
-> nombre heredado «Structural Viscosity» viene precisamente del rol que resulta
-> vacío; el rol que lo ancla es `ω_c`. *(Se deja constancia; no se renombra —
-> ver la regla de estabilidad de símbolos.)*
+> **Corrección dentro de la misma sesión:** primero escribí que `KAL₀` se mide
+> «por la materia oscura, no por la viscosidad». Es demasiado fuerte. La
+> cancelación es **local a `c²_eff`**. `τ_Π` sí está anclado, y precisamente por
+> la cadena de viscosidad: `Σm_ν = R₂·ω_b·93.14/(τ_Π H₀)` con
+> `R₂ = Ω/(KAL₀T_r)` y `τ_Π H₀ = KAL₀/(3Ω_DE)`, o sea `KAL₀` al cuadrado. Con
+> `KAL₀ ×1.1` sale `Σm_ν = 0.056604 eV`, **bajo el piso de oscilaciones 0.058
+> ⟹ falsado**. El rol de viscosidad no está ocioso en el marco: está ocioso en
+> *ese* observable.
+>
+> El nombre heredado «Structural Viscosity» sigue siendo el eslabón más flojo
+> del rótulo. *(Se deja constancia; no se renombra — ver la regla de
+> estabilidad de símbolos.)*
 >
 > **Lo que queda abierto (OP-22b, ahora más estrecho):** el mapa de los
 > parámetros del campo a los del fluido efectivo `(ζ̃, τ_Π)` **no está

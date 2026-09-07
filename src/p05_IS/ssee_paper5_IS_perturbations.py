@@ -31,7 +31,7 @@ import matplotlib.pyplot as plt
 import os
 
 OUTDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                      '..', 'results', 'figures')
+                      '..', '..', 'results', 'figures')
 os.makedirs(OUTDIR, exist_ok=True)
 
 plt.rcParams.update({

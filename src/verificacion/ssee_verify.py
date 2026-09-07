@@ -653,6 +653,43 @@ check("V-L3-IS  tau_Pi SI esta anclado: por Sigma m_nu, no por c2_eff",
       f"oscilaciones 0.058 (x1 da {_smnu_k(1.0):.6f}) => la cancelacion "
       "de KAL_0 es LOCAL a c2_eff; el rol de viscosidad no esta ocioso "
       "en el marco, solo en ese observable")
+# --- R57: ninguna figura se escribe fuera de results/figures (2026-09-07)
+# POR QUE EXISTE. ssee_paper5_IS_perturbations.py y ssee_eft_verification.py
+# viven en src/pNN/ pero unian OUTDIR con UN SOLO '..', asi que escribian a
+# src/results/figures/ — un directorio GITIGNORADO. Resultado: cada vez que
+# se regeneraban esas 7 figuras, el archivo caia al vacio y la copia de
+# results/figures/ seguia rancia. Explicaba 7 de las 15 figuras rancias, y
+# no era descuido sino una ruta rota. El sintoma es invisible: el script
+# imprime «figura guardada» y termina en 0.
+_R57_MAL = re.compile(r"abspath\(__file__\)\)\s*,\s*\n\s*['\"]\.\.['\"]\s*,"
+                      r"\s*['\"]results['\"]")
+def _r57_sitios(_txt, _prof):
+    # Solo es defecto si el script vive a 2+ niveles bajo src/: desde src/
+    # un unico '..' SI apunta a la raiz y es correcto.
+    return list(_R57_MAL.finditer(_txt)) if _prof >= 2 else []
+_r57 = []
+for _f in sorted(ROOT.rglob("*.py")):
+    if "archive" in str(_f) or _f.name == "ssee_verify.py":
+        continue
+    _prof = len(_f.relative_to(ROOT).parts)
+    if _r57_sitios(_f.read_text(errors="ignore"), _prof):
+        _r57.append(str(_f.relative_to(ROOT.parent)))
+check("R57 ninguna figura se escribe fuera de results/figures",
+      not _r57 and not (ROOT / "results").exists(),
+      "; ".join(_r57) if _r57
+      else ("src/results/ no existe y ningun script anidado usa un solo '..' "
+            "antes de results/")
+      if not (ROOT / "results").exists()
+      else "existe src/results/ — un script esta escribiendo al vacio")
+_c57 = "OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),\n    '..', 'results', 'figures')"
+_b57 = "OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),\n    '..', '..', 'results', 'figures')"
+check("R57 el detector distingue la ruta rota de la correcta y respeta la profundidad",
+      bool(_r57_sitios(_c57, 2)) and not _r57_sitios(_b57, 2)
+      and not _r57_sitios(_c57, 1),
+      "3 casos: un solo '..' a profundidad 2 marcado; el '..','..' limpio; "
+      "el mismo un-solo-'..' a profundidad 1 (src/ directo) exento, que "
+      "ahi SI apunta a la raiz")
+
 # --- R56: el rotulo de KAL_0 es RETENCION, no viscosidad (2026-09-07) --
 # POR QUE EXISTE. KAL_0 llevaba el nombre de su instancia de FLUIDO —
 # justo el unico uso en que se cancela del observable. «Retencion» ya
@@ -3964,7 +4001,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 237          # +2 R56 (rotulo de KAL_0 = retencion) + su control; solo SUBE
+_PISO_CHECKS = 239          # +2 R57 (figuras al vacio) + su control; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

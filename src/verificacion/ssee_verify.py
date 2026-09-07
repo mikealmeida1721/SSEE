@@ -550,13 +550,25 @@ check("V-L3-IS  el ansatz viejo Pi ~ rho_DE es superluminico (por eso cae)",
       w0 + _cb_rhoDE > 1.0,
       f"c2_eff = {w0 + _cb_rhoDE:.4f} > 1 con Pi = -KAL0*rho_DE*H; "
       f"con Pi = -KAL0*(rho+p)*H da {w0 + zeta_tilde / tau_Pi_H0:.2e}")
-track_open("V-L3-IS  OP-22b: modo fluido vs modo campo sigue asertado",
+# El "modo campo" de P5 estaba calculado con la K EQUIVOCADA: usaba
+# K = X/KAL + X^2/M^4, que es el funcional de APANTALLAMIENTO de P10, no la
+# accion de energia oscura (el condensado fantasma de P7). Corregido en P5.
+_u_p7 = -0.522735380747
+_cs2_campo = (1 + 2 * _u_p7) / (1 + 6 * _u_p7)
+check("V-L3-IS  el modo campo sale de la accion de P7, no del K de P10",
+      abs(_cs2_campo - 0.021283701571) < 1e-9,
+      f"c2_s,ad = (1+2u)/(1+6u) = {_cs2_campo:.12f} con u = c2X/c1 de P7; "
+      f"el 0.96737 del K de P10 es otro funcional (razon +0.008577)")
+track_open("V-L3-IS  OP-22b: modo fluido (0) vs modo campo (0.021284)",
            "OP-22 cerrado (normalizacion = entalpia; el 0 es resultado). Queda "
-           "que el modo viscoso de fluido (c2_bare = w0) y el modo de campo "
-           "(c2_s,ad in [0.60,1] del Lagrangiano K(X)) sean canales "
-           "genuinamente distintos: esta afirmado, no derivado. Y la "
-           "derivacion de tau_Pi por saturacion de causalidad (apendice EFT de "
-           "P1) queda RETIRADA: usaba rho en vez de rho+p y daba 0.2946")
+           "que el modo viscoso de fluido (c2_eff = w0+Om_DE = 0) y el modo de "
+           "campo de la accion de P7 (c2_s,ad = 0.021284) sean canales "
+           "genuinamente distintos y no dos estimaciones de lo mismo: esta "
+           "AFIRMADO, no derivado. Ambos son DE agrupada (c2_s << 1), asi que "
+           "no chocan en caracter, pero difieren en 0.021284 — que es toda la "
+           "prediccion de P7, o sea que una medida de c2_s discrimina. "
+           "Ademas queda RETIRADA la derivacion de tau_Pi por saturacion de "
+           "causalidad (apendice EFT de P1): usaba rho en vez de rho+p, daba 0.2946")
 
 # c_s^2 del sector k-essence — extraccion T_munu^ef (2026-05-22). Para
 # K(X)=X/KAL0+X^2/M^4, Garriga-Mukhanov da c_s^2=(A+2BX)/(A+6BX) con
@@ -3783,7 +3795,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 227          # +2 V-L3-IS (testigos OP-22, 2026-09-06); solo SUBE
+_PISO_CHECKS = 228          # +1 V-L3-IS (modo campo = accion de P7); solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

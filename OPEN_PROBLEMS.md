@@ -1577,9 +1577,26 @@ consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
 > escrito así, y `Σm_ν = 0.06849` queda intacto. Lo que cae es la afirmación de
 > que la causalidad lo *deriva*.
 >
-> **OP-22b (abierto):** que el modo viscoso de fluido (`c²_bare = w₀`) y el
-> modo de campo (`c²_s,ad ∈ [0.60, 1]` del Lagrangiano `K(X)`) sean canales
-> genuinamente distintos sigue **asertado, no derivado**.
+> **OP-22b (abierto), y de paso una atribución corregida.** Paper 5 citaba el
+> «modo campo» como `c²_s,ad ∈ [0.60, 1]`, atribuyendo el Lagrangiano a
+> «Papers 7 y 10». Ese número está calculado con `K = X/KAL + X²/M⁴`, que es el
+> **funcional de apantallamiento de Paper 10**, no la acción de energía oscura.
+> La acción es el condensado fantasma de Paper 7, y su velocidad es
+> `c²_s,ad = (1+2u)/(1+6u) = 0.021284` con `u = c₂X/c₁ = −0.522735`.
+> *(Es la misma confusión de las dos `K(X)` que ya se separó entre P7 y P10.)*
+>
+> Con la atribución correcta, los dos valores del sector son:
+>
+> | modo | fuente | `c²_s` |
+> |---|---|---|
+> | fluido viscoso | IS, `w₀+Ω_DE` | `0` |
+> | campo, adiabático | condensado fantasma P7 | `0.021284` |
+>
+> No chocan en **carácter** —ambos son energía oscura **agrupada**, `c²_s ≪ 1`—
+> pero no son el mismo número, y que sean canales genuinamente distintos y no
+> dos estimaciones de lo mismo sigue **afirmado, no derivado**. La brecha
+> `0.021284` es *toda* la predicción de Paper 7: una medida de `c²_s`
+> discrimina. **OP-22b.**
 
 <details><summary>Diagnóstico original (2026-08-02), conservado</summary>
 

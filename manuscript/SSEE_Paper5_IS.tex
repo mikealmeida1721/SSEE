@@ -224,10 +224,23 @@ inconsistent with data \citep{Calabrese2011}.
 
 We stress that this bare instability is an artefact of the \emph{effective-fluid}
 (constant-$w$) closure $c^2_s = w$, \emph{not} a property of the fundamental SSEE
-field: the canonical Lagrangian $K(X) = X/\KALz$ (Papers~7 and~10) is independently
-ghost-free and gradient-stable, with adiabatic sound speed
-$c^2_{s,\mathrm{ad}} \in [0.60,\,1]$ (the IR limit $X^2/M^4 \to 0$ gives
-$c^2_{s,\mathrm{ad}} = 1$; the UV term lowers it to $\sim 0.60$).
+field. The dark-energy action is the ghost condensate of Paper~7,
+$K = c_1X + c_2X^2$ with $c_2X/c_1 = -0.522735$, which is independently
+ghost-free and gradient-stable with adiabatic sound speed
+\begin{equation}
+  c^2_{s,\mathrm{ad}} = \frac{1+2u}{1+6u} = \frac{M_v-T_r}{5M_v+3T_r}
+  = 0.021284 ,
+  \qquad u \equiv c_2X/c_1 ,
+\end{equation}
+a clustered rather than smooth dark energy.
+%
+\emph{Correction (2026-09-06).} Earlier versions of this paragraph quoted
+$c^2_{s,\mathrm{ad}}\in[0.60,1]$ and attributed the Lagrangian to ``Papers~7
+and~10''. That value was computed from $K(X)=X/\KALz+X^2/M^4$, which is
+Paper~10's \emph{screening} functional and not the dark-energy action: the two
+carry different coefficient ratios ($+0.008577$ against $-0.522735$) and do
+different jobs \citep{SSEE_Paper10}. The sound speed of the dark-energy sector
+is the one above.
 The IS analysis below addresses the \emph{hydrodynamic} (fluid) description used
 by Boltzmann codes, where dark energy is parametrised by $(w, c^2_s)$ and the
 naive closure $c^2_s = w$ would be catastrophic.
@@ -417,11 +430,24 @@ numerical moves --- $\tauPi H_0 = \KALz\Omega/T_r$ is algebra, and was already
 stated in that form in Eq.~\eqref{eq:IS_params} --- but causality does not
 \emph{derive} it, and Paper~1 no longer claims that it does.
 
-\emph{Residual, still open.} The bare fluid value $c^2_{s,\rm bare}=\wz$ is the
-constant-$w$ effective-fluid closure, not the field's adiabatic speed
-($c^2_{s,\rm ad}\in[0.60,1]$, \S\ref{subsec:instability}). That the viscous
-fluid mode and the field mode are genuinely distinct channels remains asserted
-rather than derived; it is carried forward as \textbf{OP-22b}.
+\emph{Residual, still open --- and smaller than it looked.} The framework
+carries two sound speeds for the dark-energy sector:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+mode & source & $c^2_s$ \\
+\midrule
+viscous fluid (this paper) & IS, $\wz+\OmDE$ & $0$ \\
+field, adiabatic & Paper~7 ghost condensate & $0.021284$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+They are not in conflict in character --- both describe a \emph{clustered}
+dark energy, $c^2_s \ll 1$ --- but they are not the same number, and that the
+two are genuinely distinct channels rather than two estimates of one quantity
+remains asserted rather than derived. That is \textbf{OP-22b}. We note that
+the gap, $0.021284$, is the whole of Paper~7's prediction, so the question is
+sharp and not academic: a measurement of $c^2_s$ discriminates.
 \end{tcolorbox}
 
 \noindent With the steady-state condition as currently written, and combined

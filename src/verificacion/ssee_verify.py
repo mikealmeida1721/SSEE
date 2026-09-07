@@ -614,6 +614,31 @@ check("V-L3-IS  KAL_0 no normaliza la accion de energia oscura",
       "P7: K(X) = c1 X + c2 X^2 (sin KAL_0). El X/KAL_0 es el funcional "
       "de apantallamiento de P10 => la recurrencia de KAL_0 en zeta_tilde "
       "es un PARECIDO entre dos objetos distintos, no una derivacion")
+# --- KAL_0 se CANCELA en la capa de fluido (2026-09-07) ----------------
+# zeta_tilde = KAL0/3 y tau_Pi H0 = KAL0/(3 Om_DE) comparten KAL0, asi
+# que en la razon —que es lo unico que entra en el observable— se va:
+#   c2_eff = w0 + zeta/tau = -Om_DE + Om_DE = 0  para CUALQUIER constante.
+# El 0 es solido (sale de Om_DE = |w0|, algebra), pero KAL0 no hace
+# trabajo ahi. CONTROL (R53): en omega_c = KAL0 wb n_s SI lo hace.
+_c2_kal = []
+for _f in (0.5, 1.0, 2.0, 7.3):
+    _z = _f*KAL0/3.0
+    _t = _f*KAL0/(3.0*Om_DE)
+    _c2_kal.append(w0 + _z/_t)
+_wb_k = (pi - phi)/(3*(pi + phi)**2)      # omega_b algebraico
+_ns_k = 1 - phi**-7                        # n_s algebraico
+_wc_kal = [_f*KAL0*_wb_k*_ns_k for _f in (0.9, 1.0, 1.1)]
+check("V-L3-IS  KAL_0 se cancela en la capa de fluido: el 0 no lo usa",
+      all(abs(_v) < 1e-12 for _v in _c2_kal),
+      "c2_eff = w0 + zeta/tau = 0 para KAL0 x0.5, x1, x2, x7.3 — la razon "
+      "zeta/tau = Om_DE no lleva KAL0. El 0 sale de Om_DE = |w0|, no de "
+      "KAL0; la particion zeta_tilde = KAL0/3 no esta determinada")
+check("V-L3-IS  control: KAL_0 SI hace trabajo en omega_c",
+      abs(_wc_kal[0] - _wc_kal[1]) > 0.01 and abs(_wc_kal[2] - _wc_kal[1]) > 0.01,
+      f"omega_c = KAL0 wb n_s: x0.9 -> {_wc_kal[0]:.6f}, x1 -> {_wc_kal[1]:.6f}, "
+      f"x1.1 -> {_wc_kal[2]:.6f} contra Planck 0.1200+-0.0012 (~10 sigma "
+      "por cada 10%) => KAL_0 se MIDE, pero por la materia oscura, "
+      "no por la viscosidad")
 track_open("V-L3-IS  OP-22b: el mapa campo -> fluido (zeta,tau_Pi) no derivado",
            "OP-22 cerrado (normalizacion = entalpia; el 0 es resultado). El "
            "conteo de grados de libertad (2026-09-07) cierra la parte de 'dos "
@@ -3859,7 +3884,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 232          # +3 V-L3-IS (adiabaticidad, su control, KAL fuera de la accion); solo SUBE
+_PISO_CHECKS = 234          # +2 V-L3-IS (KAL_0 se cancela + su control); solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

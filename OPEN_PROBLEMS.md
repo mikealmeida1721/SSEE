@@ -1634,6 +1634,25 @@ consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
 > es la del campo, `c²_s = 0.021284`. El `0` es lo que se escribe en un código,
 > no un número rival.
 >
+> **Actualización 2026-09-07 (tercera) — `KAL₀` se cancela; ¿entonces qué es?**
+> En el observable sólo entra la **razón** `ζ̃/(τ_Π H₀) = Ω_DE`, y como `ζ̃` y
+> `τ_Π` comparten el factor `KAL₀`, **se cancela**. Comprobado con `KAL₀`
+> ×0.5, ×1, ×2, ×7.3: `c²_eff = 0` en los cuatro. El `0` sale de la identidad
+> `Ω_DE = |w₀|`, no de `KAL₀`. Luego **la partición `ζ̃ = KAL₀/3` no está
+> determinada por nada de esta capa** — y no se reclama que lo esté.
+>
+> **Pero `KAL₀` no es decorativo en el marco.** Su rol medible es otro:
+>
+> | rol | ¿mueve un observable? |
+> |---|---|
+> | `ζ̃ = KAL₀/3` (viscosidad, P5) | **no** — se cancela |
+> | `ω_c = KAL₀·ω_b·n_s` (P1) | **sí** — ~10σ por cada 10% |
+>
+> `KAL₀` **se mide, pero por la materia oscura, no por la viscosidad**. El
+> nombre heredado «Structural Viscosity» viene precisamente del rol que resulta
+> vacío; el rol que lo ancla es `ω_c`. *(Se deja constancia; no se renombra —
+> ver la regla de estabilidad de símbolos.)*
+>
 > **Lo que queda abierto (OP-22b, ahora más estrecho):** el mapa de los
 > parámetros del campo a los del fluido efectivo `(ζ̃, τ_Π)` **no está
 > derivado** —y por lo anterior no puede estarlo dentro de la acción actual—, así que *por qué* el límite de fluido cae exactamente en `0` y no

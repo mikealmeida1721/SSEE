@@ -17,7 +17,7 @@ muerta por lanzar primero y verificar después.
 
 | # | Log | Script | Alimenta | Estado |
 |---|---|---|---|---|
-| 1 | `p6_class_reframe_omega_m.log` | `archive/codigo/p06_phiDM_RETIRADO_2026-08-01/ssee_paper6_canonical_particle.py` | m_φ, k_fs, σ₈, S₈ (Paper 6) | ✅ **HECHO** — reproduce lo publicado |
+| 1 | `p6_class_reframe_omega_m.log` | `archive/codigo/p06_phiDM_RETIRADO_2026-08-01/ssee_paper6_canonical_particle.py` | ~~m_φ, k_fs, σ₈, S₈~~ | 🔴 **RETIRADO 2026-08-01** — alimentaba la partícula. «Reproduce lo publicado» dejó de ser cierto al reescribirse Paper 6: `m_φ` y `k_fs` ya no se publican. Canónico: `R3_ssee_kids_S8.json` (S₈=0.7555±0.0192) |
 | 2 | `p3_rd_reframe_omega_m.log` | `src/p03_cmb/run_p3_rd_reframe.py` | r_d, θ* (Paper 3) | ✅ **HECHO** — Registro actualizado (θ*) |
 | 3 | `p3_cmb_reframe_omega_m.log` | `src/p03_cmb/run_p3_reframe.py` | χ², ΔBIC (Paper 3) | ✅ **HECHO** — χ²=1005.409, ΔBIC=−24.024 |
 | 4 | `p3_h0anchor_reframe.log` | `src/p03_cmb/scan_omega_m.py` | ancla H₀ (Paper 3) | ✅ **HECHO** — el SCRIPT estaba rancio |

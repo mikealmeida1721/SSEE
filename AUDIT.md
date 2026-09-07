@@ -156,11 +156,21 @@ S₈_SSEE = 0.8256 ± 0.006           [single-sector; ceiling 0.846 — 3.5σ Ki
 S₈ tension SSEE vs DES-Y3 = 2.74σ  [single-sector baseline; Paper 6 two-sector → S₈=0.758, 0.04σ KiDS]
 ```
 
-### Paper 6 — φ-DM two-sector
-```bash
-python3 archive/codigo/p06_phiDM_RETIRADO_2026-08-01/ssee_paper6_verification.py
-python3 archive/codigo/p06_phiDM_RETIRADO_2026-08-01/ssee_paper6_mcmc_grid.py   # grilla CLASS (Ω_φDM, m_φ)
-python3 archive/codigo/p06_phiDM_RETIRADO_2026-08-01/ssee_paper6_mcmc_v2.py     # emulador; reemplaza al toy archivado
+### Paper 6 — 🔴 **RETIRADO 2026-08-01: NO forma parte de la auditoría**
+
+El sector φ-DM y la partícula `m_φ = 40.70 eV` fueron **retirados**. Los tres
+scripts que estaban aquí (`ssee_paper6_verification.py`, `..._mcmc_grid.py`,
+`..._mcmc_v2.py`) viven en `archive/codigo/p06_phiDM_RETIRADO_2026-08-01/` y
+**no se corren como parte de la auditoría**: modelan un sector que ya no existe.
+
+Lo que **sí** se audita de Paper 6 es el resultado canónico contra dato crudo,
+un solo sector y `A_s` libre:
+
+```
+S₈ = 0.7555 ± 0.0192   →  0.11σ vs KiDS-1000 (0.759 ± 0.024)
+σ₈ = 0.7446 ± 0.0189
+χ²_min = 265.4 / 216 dof
+log: results/logs/growth_2026-07/R3_ssee_kids_S8.json
 ```
 Expected output (verification):
 ```
@@ -181,10 +191,16 @@ S₈    = 0.782
 ΔBIC = −14.3  [SSEE favoured]
 ```
 
-### Paper 7 — Canonical EFT βc plateau test
-```bash
-python3 archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/ssee_eft_verification.py
-```
+### Paper 7 — 🔴 **βc RETIRADO 2026-09-07: NO forma parte de la auditoría**
+
+`βc` fue retirado de Paper 7 junto con el potencial y el acoplamiento conformal
+(§withdrawn, L80): el Lagrangiano vigente `K = c₁X + c₂X²` no lleva ninguno de
+los dos. El script del test de meseta está en
+`archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/` con el README que
+explica los tres errores que arrastraba. **No se corre.**
+
+Lo que sigue abierto es **OP-23**, y es otra pregunta: ningún fondo reproduce
+`wₐ = −0.670`. Su investigación viva está en `src/p07_eft/`.
 Expected output:
 ```
 βc = −3.990 ± 0.001  (8 initial conditions)

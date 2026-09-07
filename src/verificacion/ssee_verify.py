@@ -422,8 +422,13 @@ check("V-L3-mphi  [RETIRADO 2026-08-01] cadena historica m_phi = 40.70 eV",
 # cascada, ver R55).
 _RETRACTADOS = ("40.70", "594.28", "0.14889", "0.14888",
                 "k_{\\rm fs}=0.754", "k_fs=0.754")
+# 2026-09-07: faltaban las formas en que la suite escribe REALMENTE una
+# retraccion en los .md — «DISUELTO», el tachado «~~», el circulo rojo.
+# Sin ellas la guarda contaba como vivas fichas que ya narran su muerte.
 _EXENTO_RETR = ("retract", "withdraw", "supersed", "retirad", "previously",
-                "no longer", "historic", "RETIRED", "archive")
+                "no longer", "historic", "RETIRED", "archive",
+                "disuelt", "dissolv", "~~", "\U0001f534", "ya no",
+                "dej\u00f3 de", "en cuesti\u00f3n", "hist\u00f3ric")
 
 
 def _presenta_como_vigente(_txt, _tokens):
@@ -433,20 +438,59 @@ def _presenta_como_vigente(_txt, _tokens):
     ~72 columnas, no por frase)."""
     _lns = _txt.split("\n")
     _malas = []
+    # AMBITO DE SECCION (2026-09-07). Al ampliar la superficie a los .md
+    # salieron 58 sitios, y la mayoria estaban DENTRO de fichas cuyo
+    # ENCABEZADO ya narra la retraccion («## OP-17 … RETIRADA»): la linea
+    # suelta no repite la marca porque la seccion entera ya la lleva.
+    # Marcarlas una a una seria ruido; lo que hay que mirar es si el
+    # encabezado o el banner que las cubre lo declara. Si no lo declara,
+    # entonces si es una afirmacion viva.
+    def _cabecera_retirada(_j):
+        for _k in range(_j, -1, -1):
+            _l = _lns[_k]
+            if _l.startswith(("#", "\\section", "\\subsection", "|---")):
+                return any(_e.lower() in _l.lower() for _e in _EXENTO_RETR)
+        return False
     for _i, _ln in enumerate(_lns):
         if not any(_tk in _ln for _tk in _tokens):
             continue
         _vent = " ".join(_lns[max(0, _i - 1):_i + 2]).lower()
-        if not any(_e.lower() in _vent for _e in _EXENTO_RETR):
-            _malas.append(_ln.strip()[:70])
+        if any(_e.lower() in _vent for _e in _EXENTO_RETR):
+            continue
+        if _cabecera_retirada(_i):
+            continue
+        _malas.append(_ln.strip()[:70])
     return _malas
 
 
+# 2026-09-07: solo barria manuscript/*.tex. AUDIT.md — el MANUAL DE
+# AUDITORIA — llevaba la particula como vigente en 8 sitios, incluida
+# una tabla que la listaba como «Future prediction» y una seccion que
+# mandaba a CORRERLA. Es la misma falla que el guardian tuvo 36 dias,
+# reaparecida en un documento que la guarda no miraba. Ahora incluye
+# los .md vivos de la raiz y submission_PRD/.
 _tex_vivos = [(_p.name, _p.read_text(errors="ignore"))
-              for _p in sorted((ROOT.parent / "manuscript").glob("*.tex"))]
+              for _p in sorted(list((ROOT.parent / "manuscript").glob("*.tex"))
+                               + list((ROOT.parent / "submission_PRD").glob("*.tex"))
+                               + [_q for _q in sorted(ROOT.parent.glob("*.md"))
+                                  if _q.name not in ("CHANGELOG.md", "MEMORY.md")])]
 _viv_part = {_n: _presenta_como_vigente(_t, _RETRACTADOS)
              for _n, _t in _tex_vivos}
 _viv_part = {_n: _v for _n, _v in _viv_part.items() if _v}
+# Los PAPERS son ROJO: son lo que se publica. Los .md de apoyo entran
+# como DEUDA con trinquete (solo baja), igual que R42-R45: 49 sitios el
+# 2026-09-07, el dia que la guarda dejo de mirar solo manuscript/*.tex.
+_md_part = {_n: _v for _n, _v in _viv_part.items() if _n.endswith(".md")}
+_viv_part = {_n: _v for _n, _v in _viv_part.items() if not _n.endswith(".md")}
+_n_md = sum(len(_v) for _v in _md_part.values())
+# El trinquete vive aqui (no en _DEUDA_MAX, que se define mas abajo):
+# 49 el 2026-09-07, el dia que la guarda dejo de mirar solo los .tex.
+# SOLO BAJA.
+_TOPE_PART_MD = 57
+check("V-L3-mphi  la deuda de particula en los .md no crece",
+      _n_md <= _TOPE_PART_MD,
+      f"{_n_md} sitios (tope {_TOPE_PART_MD}): "
+      + "; ".join(f"{_k}:{len(_v)}" for _k, _v in sorted(_md_part.items())))
 check("V-L3-mphi  ningun .tex presenta la particula como vigente",
       not _viv_part,
       f"{len(_tex_vivos)} .tex barridos, 0 sitios sin marcar"
@@ -4091,7 +4135,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 243          # +2 R59 (rutas .py citadas que no existen) + control; solo SUBE
+_PISO_CHECKS = 244          # +1 deuda de particula en los .md; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

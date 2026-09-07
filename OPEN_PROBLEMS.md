@@ -2301,6 +2301,45 @@ trazable.
 
 ---
 
+## OP-24 — Ningún fondo reproduce $w_a = -0.669975$ — 🟡 **ABIERTO (2026-09-07)**
+
+**Por qué se abre ahora.** OP-23 preguntaba si algún `β_c` del acoplamiento
+conformal daba `w₀` sin exceso de energía oscura temprana, y quedó **cerrado
+por disolución** al retirarse el acoplamiento de Paper 7. Pero al disolverse
+se llevó por delante la etiqueta de una pregunta **distinta** que sigue viva y
+que se venía citando como «OP-23» sin serlo. Se le da número propio.
+
+**La premisa** (lo que habría que tumbar para disolverlo): que `wₐ` deba salir
+del fondo escalar. Si `wₐ` fuera un parámetro de *ajuste* del observador —una
+propiedad de la parametrización CPL y no del campo— la pregunta desaparece.
+Mientras se sostenga que SSEE **predice** `wₐ = -P_sc/K_v = -0.669975`, hay
+que enseñar el fondo que lo produce.
+
+**Lo medido, no lo argumentado:**
+
+| fondo | `wₐ` |
+|---|---|
+| atractor | `-0.093` |
+| `λ = 1.0205` | `-0.211` |
+| acoplado | `+0.406` (signo contrario) |
+| **objetivo algebraico** | **`-0.669975`** |
+
+Ninguno se acerca, y el acoplado va en dirección opuesta.
+
+**Por qué no se cierra con la prueba barata:** ya se corrió. El barrido en
+`β_c` y el fondo autoconsistente están en
+`archive/codigo/investigacion/beta_c_RETIRADO_2026-09-07/`; el resultado fue
+que el problema **no es el acoplamiento** sino la **forma del potencial**.
+
+**Qué lo cerraría:** un `V(φ)` derivado de `φ,π` cuyo fondo integrado devuelva
+`wₐ = -0.669975`; o la demostración de que `wₐ` no es una predicción del
+fondo. Investigación viva: `src/p07_eft/busca_lambda.py`,
+`fondo_viscoso.py`, `resuelve_op23.py`.
+
+**Riesgo si permanece abierto:** `wₐ` es la mitad del titular `w₀wₐ` frente a
+DESI DR2. Que el valor cuadre con el dato pero no salga de ningún fondo
+integrado es exactamente el tipo de cosa que un referee llama ajuste.
+
 ## OP-23 — Dentro del acoplamiento conformal, ningún $\beta_c$ da $w_0$ sin pasarse de energía oscura temprana — ⚫ CERRADO POR DISOLUCIÓN (2026-09-06)
 
 > ## ⚫ DISUELTO AL DÍA SIGUIENTE — cayó su premisa, y cayó entera

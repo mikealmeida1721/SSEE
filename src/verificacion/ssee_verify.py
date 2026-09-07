@@ -454,7 +454,11 @@ def _presenta_como_vigente(_txt, _tokens):
     for _i, _ln in enumerate(_lns):
         if not any(_tk in _ln for _tk in _tokens):
             continue
-        _vent = " ".join(_lns[max(0, _i - 1):_i + 2]).lower()
+        # +-3 (2026-09-07): en LaTeX justificado a ~72 columnas el
+        # «withdrawn» que califica al valor cae 2-3 lineas mas abajo.
+        # Con +-1 daba 3 falsos positivos (P8:882, Unified:596/809),
+        # todos parrafos que SI narran la retirada.
+        _vent = " ".join(_lns[max(0, _i - 3):_i + 4]).lower()
         if any(_e.lower() in _vent for _e in _EXENTO_RETR):
             continue
         if _cabecera_retirada(_i):
@@ -823,6 +827,53 @@ check("R57 el detector distingue la ruta rota de la correcta y respeta la profun
       "3 casos: un solo '..' a profundidad 2 marcado; el '..','..' limpio; "
       "el mismo un-solo-'..' a profundidad 1 (src/ directo) exento, que "
       "ahi SI apunta a la raiz")
+
+# --- R60: registro UNICO de retracciones, barrido de TODAS las capas --
+# POR QUE EXISTE. Cada retirada traia su guarda propia, y cada una miraba
+# una superficie distinta: la de la particula solo manuscript/*.tex (57
+# sitios en los .md sobrevivieron 37 dias); R55 .tex y .py; R58 .tex y
+# dos .md. Tres guardas, tres agujeros. Aqui la fuente es RETRACCIONES.yaml
+# y el barrido es el MISMO para todas: retirar algo nuevo es añadir una
+# entrada, no escribir una regla nueva ni acordarse de que superficies mirar.
+import yaml as _yaml
+_RETR_YAML = ROOT.parent / "RETRACCIONES.yaml"
+_retr = _yaml.safe_load(_RETR_YAML.read_text(errors="ignore"))
+_SUP_VIVA = []
+for _pat in ("manuscript/*.tex", "submission_PRD/*.tex", "*.md"):
+    _SUP_VIVA += [_q for _q in sorted(ROOT.parent.glob(_pat))
+                  if _q.name not in ("CHANGELOG.md", "MEMORY.md",
+                                     "RETRACCIONES.yaml")]
+_SUP_VIVA += [_q for _q in sorted(ROOT.rglob("*.py"))
+              if "archive" not in str(_q) and _q.name != "ssee_verify.py"]
+_r60 = {}
+for _id, _e in sorted(_retr.items()):
+    _tok = tuple(_e["tokens"])
+    _viv = []
+    for _f in _SUP_VIVA:
+        for _l in _presenta_como_vigente(_f.read_text(errors="ignore"), _tok):
+            _viv.append(f"{_f.name}: {_l[:44]}")
+    if _viv:
+        _r60[_id] = _viv
+_n60 = sum(len(_v) for _v in _r60.values())
+# Trinquete: 2026-09-07 arranca en la cuenta real. SOLO BAJA.
+_TOPE_R60 = 120
+check("R60 la deuda del registro de retracciones no crece",
+      _n60 <= _TOPE_R60,
+      f"{_n60} sitios (tope {_TOPE_R60}) en {len(_r60)}/{len(_retr)} "
+      "retracciones: "
+      + ", ".join(f"{_k}={len(_v)}" for _k, _v in sorted(_r60.items())))
+check("R60 los PAPERS estan limpios de todo lo retirado",
+      not any(_s.endswith(".tex") or ".tex:" in _s
+              for _v in _r60.values() for _s in _v),
+      f"{len([f for f in _SUP_VIVA if f.suffix == '.tex'])} .tex barridos "
+      f"contra las {len(_retr)} retracciones declaradas")
+_c60v = "el modelo predice m_phi = 40.70 eV, falsable con Euclid"
+_c60m = "m_phi = 40.70 eV quedo RETIRADO el 2026-08-01"
+check("R60 el detector distingue lo vigente de lo narrado como retirado",
+      bool(_presenta_como_vigente(_c60v, ("40.70",)))
+      and not _presenta_como_vigente(_c60m, ("40.70",)),
+      "2 casos sobre la misma cifra: presentada como prediccion viva "
+      "marcada; declarada retirada, exenta")
 
 # --- R56: el rotulo de KAL_0 es RETENCION, no viscosidad (2026-09-07) --
 # POR QUE EXISTE. KAL_0 llevaba el nombre de su instancia de FLUIDO —
@@ -4135,7 +4186,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 244          # +1 deuda de particula en los .md; solo SUBE
+_PISO_CHECKS = 247          # +3 R60 (registro unico de retracciones); solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

@@ -1,0 +1,62 @@
+# Registro de retracciones — UNA entrada por cosa retirada.
+#
+# POR QUE EXISTE (2026-09-07). Cada retirada tenia su guarda ad-hoc, y
+# cada una miraba una superficie distinta: la de la particula solo veia
+# manuscript/*.tex, asi que 57 sitios en los .md sobrevivieron 37 dias.
+# La de la cascada (R55) veia .tex y .py. La de beta_c (R58) veia .tex y
+# dos .md. Tres guardas, tres agujeros distintos.
+#
+# Aqui se declara UNA vez que algo esta retirado y el guardian barre
+# TODAS las superficies por todas las entradas. Retirar algo nuevo es
+# añadir una entrada, no escribir una regla.
+#
+# Campos:
+#   tokens     literales que delatan la cosa retirada
+#   exentos    literales que, en la ventana, la marcan como narrada
+#   porque     por que se retiro (una linea, va en el mensaje de fallo)
+#   reemplazo  que se cita HOY en su lugar
+#   desde      fecha de la retirada
+
+particula_phi_dm:
+  desde: 2026-08-01
+  porque: >
+    Om_phiDM salia de restar una densidad medida menos 1+w0, que es un
+    numero de la ECUACION DE ESTADO. Ademas la tension S8 que la
+    motivaba no existe contra el dato crudo.
+  reemplazo: "un solo sector, Om_m=0.308881; S8=0.7555+-0.0192 (0.11 sigma KiDS)"
+  tokens: ["40.70", "594.28", "0.14889", "0.14888", "k_fs=0.754",
+           "k_{\\rm fs}=0.754"]
+
+beta_c_aura:
+  desde: 2026-09-07
+  porque: >
+    beta_c fue retirado de P7 con el potencial y el acoplamiento
+    conformal; el Lagrangiano vigente K=c1X+c2X^2 no lleva ninguno. El
+    «verificado a <0.2%» era el bug de normalizacion de la saturacion.
+  reemplazo: "OP-23: ningun fondo reproduce wa=-0.670 — es la FORMA del potencial"
+  tokens: ["beta_c = -AURA", "beta_c=-AURA", "βc=−AURA",
+           "βc = −AURA", "-3.9899", "0.199%"]
+
+cascada_invertida:
+  desde: 2026-09-06
+  porque: >
+    3(phi+pi)^2 es un NUMERO PURO, sin unidades: no puede ser la entrada
+    de una cascada dimensional. El unico H que se mide es SH0ES.
+  reemplazo: "H_glob = H_SH0ES*(1-f_screen): IR 68.13 (0.17 sigma), UV 67.962142"
+  tokens: ["72.86", "72.8624", "73.040 = H", "H_alg/(1-f"]
+
+dos_sectores:
+  desde: 2026-08-01
+  porque: >
+    La particion Om_m = Om_dyn + Om_phiDM mezclaba una densidad con un
+    numero de la ecuacion de estado.
+  reemplazo: "Om_m = 0.308881 sin particion"
+  tokens: ["two-sector", "dos sectores", "second cold sector"]
+
+factor_materia_mira:
+  desde: 2026-06-18
+  porque: >
+    OP-8 disuelto: no hay factor materia que derivar. Om_m,CMB = w_m/h^2
+    es DERIVADO, con w_c = KAL0*w_b*n_s.
+  reemplazo: "w_m directo: Om_m,CMB = w_m/h^2 = 0.308881"
+  tokens: ["0.31993", "0.31076", "MIRA*dyn", "MIRA·dyn"]

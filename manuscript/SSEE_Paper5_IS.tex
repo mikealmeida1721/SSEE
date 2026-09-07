@@ -244,10 +244,23 @@ is the one above.
 The IS analysis below addresses the \emph{hydrodynamic} (fluid) description used
 by Boltzmann codes, where dark energy is parametrised by $(w, c^2_s)$ and the
 naive closure $c^2_s = w$ would be catastrophic.
-Remarkably, the same structural constant $\KALz$ that normalises $K(X)$ also fixes
-the IS bulk viscosity ($\ztilde = \KALz/3$), so the fluid-level regularisation
-introduces no new parameter --- the field-mode and fluid-mode descriptions are
-governed by a single algebraic constant.
+The IS bulk viscosity is $\ztilde = \KALz/3$, so the fluid-level regularisation
+introduces no new parameter.
+
+\emph{Correction (2026-09-07).} Earlier versions of this passage read
+``the same structural constant $\KALz$ that normalises $K(X)$ also fixes the IS
+bulk viscosity''. That is wrong about \emph{which} $K(X)$: $\KALz$ does not
+appear in the dark-energy action at all --- Paper~7's kinetic function is
+$K = c_1X + c_2X^2$, and the $X/\KALz$ form belongs to Paper~10's screening
+functional. Worse, the dark-energy action \emph{cannot} supply a bulk
+viscosity: for shift-symmetric $K(X)$ the pressure perturbation is exactly
+adiabatic, $\delta p - c^2_s\,\delta\rho = 0$ identically in $(c_1,c_2,X)$, so
+the entropy production of Eq.~\eqref{eq:entropy_prod} vanishes and $\zeta = 0$.
+The IS layer is therefore a repair of the $(w,c^2_s)$ \emph{parametrisation}
+imposed by Boltzmann codes, not a property of the field; the sector's own
+prediction is the field value $c^2_s = 0.021284$. The recurrence of $\KALz$ in
+$\ztilde$ is a resemblance across two different objects, not a derivation of one
+from the other, and is not claimed as one. See \textbf{OP-22b}.
 
 \subsection{The Israel-Stewart resolution}
 \label{subsec:IS_intro}

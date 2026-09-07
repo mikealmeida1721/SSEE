@@ -1612,9 +1612,31 @@ consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
 > El fluido toma prestado `c² = w₀`, que por sí solo es inestable a gradientes,
 > y la viscosidad entra exactamente a rescatarlo. El campo no necesita rescate.
 >
+> **Actualización 2026-09-07 (segunda) — de dónde saldría `ζ`: de ningún
+> lado.** Dos verificaciones, ambas corridas:
+>
+> 1. **`KAL₀` no está en la acción de energía oscura.** P7 es
+>    `K = c₁X + c₂X²`; `KAL₀` sólo aparece allí en el potencial *retirado*, en
+>    `ω_c` y en la tabla de constantes. El `X/KAL₀` es el funcional de
+>    **apantallamiento de P10**. La frase de P5 «la misma `KAL₀` que normaliza
+>    `K(X)` fija la viscosidad» señalaba el objeto equivocado — es la tercera
+>    aparición de la confusión de las dos `K(X)`. Corregida en P5.
+> 2. **La acción de P7 es exactamente adiabática.** Con simetría de shift
+>    (sin potencial, sin acoplamiento), `δp − c²_s·δρ = 0` **idénticamente** en
+>    `(c₁,c₂,X)`. Control: el mismo `K` con un potencial `V₀e^{−αφ}` devuelve
+>    coeficiente no nulo, o sea el detector sí ve la parte no adiabática cuando
+>    la hay. Sin producción de entropía **no hay viscosidad de volumen: `ζ = 0`
+>    desde la acción**.
+>
+> ⟹ La capa IS de Paper 5 **no es una propiedad del campo**: es una reparación
+> de la parametrización `(w, c²_s)` que imponen los códigos de Boltzmann, donde
+> el cierre ingenuo `c²_s = w₀ < 0` reventaría. La predicción propia del sector
+> es la del campo, `c²_s = 0.021284`. El `0` es lo que se escribe en un código,
+> no un número rival.
+>
 > **Lo que queda abierto (OP-22b, ahora más estrecho):** el mapa de los
 > parámetros del campo a los del fluido efectivo `(ζ̃, τ_Π)` **no está
-> derivado**, así que *por qué* el límite de fluido cae exactamente en `0` y no
+> derivado** —y por lo anterior no puede estarlo dentro de la acción actual—, así que *por qué* el límite de fluido cae exactamente en `0` y no
 > en `0.021284` sigue sin establecerse. La brecha `0.021284` es *toda* la
 > predicción de Paper 7: una medida de `c²_s` discrimina.
 

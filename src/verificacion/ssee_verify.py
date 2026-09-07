@@ -574,6 +574,46 @@ check("V-L3-IS  el rescate viscoso es del FLUIDO, no del campo",
       f"(inestable) vs campo c2_s = {_cs2_campo_sin_visc:.6f} (estable). "
       "La viscosidad tapa un agujero propio del fluido; el campo no "
       "tiene ese agujero => el campo es la descripcion fundamental")
+# --- OP-22b, de donde saldria zeta (2026-09-07) ------------------------
+# La accion de P7 es K = c1 X + c2 X^2, SIN potencial y SIN acoplamiento
+# (simetria de shift). Un campo asi es exactamente ADIABATICO:
+# delta_p - c_s^2 delta_rho = 0 identicamente => no produce entropia
+# => zeta = 0. La viscosidad de P5 NO puede salir de la accion.
+# CONTROL (R53): un campo CON potencial si tiene parte no adiabatica.
+# La parte NO adiabatica vive en la variacion de phi, no en la de X:
+#   delta_p - c_s^2 delta_rho = [K_phi - c_s^2 (2X K_Xphi - K_phi)] delta_phi
+# Variar solo X da 0 SIEMPRE (lo probe: un potencial constante tambien
+# daba 0) — ese primer control no probaba nada. Hay que variar phi.
+import sympy as _sp
+_X, _ph, _c1, _c2, _V0, _al = _sp.symbols('X phi c1 c2 V0 al', real=True)
+def _no_adiab(_K):
+    _Kx  = _sp.diff(_K, _X)
+    _Kxx = _sp.diff(_K, _X, 2)
+    _Kp  = _sp.diff(_K, _ph)
+    _Kxp = _sp.diff(_K, _X, _ph)
+    _cs2 = _Kx/(_Kx + 2*_X*_Kxx)
+    return _sp.simplify(_Kp - _cs2*(2*_X*_Kxp - _Kp))
+_ad_p7 = _no_adiab(_c1*_X + _c2*_X**2)             # P7: shift-symmetric
+_ad_pot = _no_adiab(_c1*_X + _c2*_X**2 - _V0*_sp.exp(-_al*_ph))
+check("V-L3-IS  la accion de P7 es exactamente adiabatica => zeta = 0",
+      _ad_p7 == 0,
+      f"coef. no adiabatico = {_ad_p7} identicamente en (c1,c2,X); "
+      "sin produccion de entropia no hay viscosidad de volumen: la capa IS "
+      "repara la PARAMETRIZACION (w,c_s^2) de los codigos, no el campo")
+check("V-L3-IS  el detector de adiabaticidad distingue shift-simetrico de potencial",
+      _ad_p7 == 0 and _sp.simplify(_ad_pot) != 0,
+      "control: el mismo K con un potencial V0 exp(-al phi) devuelve un "
+      f"coeficiente NO nulo => el detector si ve la parte no adiabatica "
+      "cuando la hay; el 0 de P7 es propiedad de la simetria de shift, "
+      "no de la cuenta")
+# KAL0 no aparece en la accion de energia oscura (es de P10)
+_p7src = (ROOT.parent/"manuscript"/"SSEE_Paper7_EFT.tex").read_text(errors="ignore")
+_kal_accion = re.search(r"K\(X\)\s*=\s*[^\n]*KAL", _p7src)
+check("V-L3-IS  KAL_0 no normaliza la accion de energia oscura",
+      _kal_accion is None,
+      "P7: K(X) = c1 X + c2 X^2 (sin KAL_0). El X/KAL_0 es el funcional "
+      "de apantallamiento de P10 => la recurrencia de KAL_0 en zeta_tilde "
+      "es un PARECIDO entre dos objetos distintos, no una derivacion")
 track_open("V-L3-IS  OP-22b: el mapa campo -> fluido (zeta,tau_Pi) no derivado",
            "OP-22 cerrado (normalizacion = entalpia; el 0 es resultado). El "
            "conteo de grados de libertad (2026-09-07) cierra la parte de 'dos "
@@ -3819,7 +3859,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 229          # +1 V-L3-IS (rescate viscoso es del fluido); solo SUBE
+_PISO_CHECKS = 232          # +3 V-L3-IS (adiabaticidad, su control, KAL fuera de la accion); solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

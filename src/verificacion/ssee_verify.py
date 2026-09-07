@@ -1701,7 +1701,7 @@ _LEIDOS = ("SSEE_Paper1_",)
 # endurecer el detector de 1 a 2 decimales: razón legítima, pero nadie lo
 # volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
 # Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
-_DEUDA_MAX = {"R42": 26, "R43": 22, "R44": 0,
+_DEUDA_MAX = {"R42": 26, "R43": 0, "R44": 0,
                "R45": 7}
 # Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
 # compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
@@ -1917,6 +1917,30 @@ try:
             _ex = _c * phi ** int(_m.group("exp"))
             _mo = _m.group("val")
             _d = len(_mo.split(".")[1])
+            # DOS CEGUERAS DEL DETECTOR (2026-09-07). De sus 22 sitios de
+            # deuda, 20 eran texto CORRECTO que la regla no sabia leer:
+            #   «n_s = 1-\varphi^{-7} = 0.965558»  -> no veia el «1-»
+            #   «r = \varphi^{-10} = 8.1\times10^{-3}» -> no veia la
+            #     notacion cientifica, y comparaba 8.1 contra 0.008131.
+            # Una regla que marca lo correcto como deuda es peor que no
+            # tenerla: manda a «arreglar» lo que ya esta bien.
+            _pre = tx[max(0, _m.start() - 24):_m.start()]   # 24: cabe «1 - \frac{1}{»
+            if _re.search(r"1\s*-\s*$", _pre):
+                _ex = 1 - _ex
+            # Tercera y cuarta ceguera: la DIVISION «3/\varphi^{14}» y la
+            # fraccion «\frac{1}{\varphi^7}». En ambas el detector leia el
+            # denominador como si fuera el termino entero.
+            _div = _re.search(r"(\d+)\s*/\s*$", _pre)
+            if _div:
+                _ex = int(_div.group(1)) / _ex
+            if _re.search(r"\\frac\{\s*1\s*\}\{\s*$", _pre):
+                _ex = 1 / _ex
+                if _re.search(r"1\s*-\s*\\frac\{\s*1\s*\}\{\s*$", _pre):
+                    _ex = 1 - _ex
+            _post = tx[_m.end():_m.end() + 22]
+            _sci = _re.match(r"\s*(?:\\times|\\cdot)\s*10\^\{?(-?\d+)\}?", _post)
+            if _sci:
+                _ex = _ex / (10 ** int(_sci.group(1)))
             if f"{_ex:.{_d}f}" != _mo:            # ni siquiera es el redondeo correcto
                 _h.append(("valor incorrecto", f"{_m.group(0)} → {_ex:.6f}"))
             elif _m.group("rel") == "=" and _d < 6:   # «=» exige 6 decimales (R37)

@@ -758,12 +758,17 @@ check("V-L3-2Om  Om_m,dyn != Om_m,CMB  (dos predicciones independientes)",
       abs(Om_m_dyn - _omm / _h ** 2) > 0.12)
 check("V-L3-2Om  Om_m,CMB = ω_m/h² (forward, sin factor) = 0.308881",
       abs(_omm / _h ** 2 - 0.3088808856) < 1e-6)
-track_open("V-L3-2Om  OP-8 DISUELTO: residuo = ω_b (OP-1) e identidad ω_c",
-           "ya NO hay factor materia que derivar (era el problema central). "
-           "Om_m,CMB descansa ahora en que ω_b=(π−φ)/(3Ω²) (OP-1) y la identidad "
-           "forward ω_c=KAL0·ω_b·n_s (0.41σ Planck) sean correctos -- no es perilla "
-           "nueva. Las relaciones viejas MIRA·dyn=0.31993 y π/φ·dyn=0.31076 quedan "
-           "como aritmetica RETIRADA (cross-checks historicos V-L2-05d/e)")
+# OP-8 DISUELTO (no abierto): ya NO hay factor materia que derivar. Lo
+# que queda es la identidad forward, y ESO se comprueba, no se anota.
+# Estuvo en track_open desde que se disolvio: track_open se habia usado
+# como «apuntar esto» en vez de «no se resolverlo». Convertido 2026-09-07.
+_wc_fwd = KAL0 * _wb_k * (1 - phi**-7)
+check("V-L3-2Om  OP-8 disuelto: la identidad forward w_c = KAL0 w_b n_s se sostiene",
+      abs(abs(_wc_fwd - 0.1200)/0.0012 - 0.40) < 0.05,
+      f"w_c = {_wc_fwd:.6f} -> {abs(_wc_fwd - 0.1200)/0.0012:.2f} sigma de Planck "
+      "0.1200+-0.0012. Om_m,CMB = w_m/h^2 descansa en esta identidad y en "
+      "w_b (OP-1), no en una perilla nueva. MIRA*dyn=0.31993 y pi/phi*dyn="
+      "0.31076 son aritmetica RETIRADA")
 
 # ─────────────────────────────────────────────────────────────────────
 # CAPA 4 — Confrontaciones con datos
@@ -828,20 +833,36 @@ check("V-L4-05 P3  ΔBIC CMB = -20.8 consistente con chi2_r (re-run 2026-05-22)"
 #   anchor    67.962  -> r_d=147.17 Mpc (0.32sigma), theta*=0.59668 (100th*=1.04140, 1.05sigma)
 #   posterior 67.9475 -> r_d=147.17 Mpc (0.32sigma), theta*=0.59666 (100th*=1.04136, 0.91sigma)
 # vs Planck 147.09+-0.26 Mpc / 100theta*=1.04109+-0.00030.
-track_open("V-L4  r_d coherente en ambos H0 canonicos (anchor/post 0.32 sigma)",
-           "run_p3_rd_reframe.py 2026-07-09: anchor 67.962 y posterior 67.9475 dan "
-           "ambos r_d=147.17 Mpc (0.32sigma) vs Planck 147.09+-0.26 (r_d es "
-           "H0-invariante a omega fijo). Anclas viejas 67.037/66.531/67.159 superadas")
-track_open("V-L4  theta* posterior COINCIDE con anchor: 0.91sigma (era 6.66sigma con bug 0.160)",
-           "run_p3_rd_reframe.py 2026-07-09: anchor 67.962 da theta*=0.59668 (1.05sigma); "
-           "posterior 67.9475 (geometria total corregida) da 0.59666 (0.91sigma) vs "
-           "100theta*=1.04109. La tension 6.66sigma era el bug del sector 0.160 en E(z): "
-           "al coincidir posterior y anchor, el CMB es sano en ambos y ya no hay parche")
+check("V-L4  r_d coherente en ambos H0 canonicos (0.31 sigma)",
+      abs(abs(147.17 - 147.09)/0.26 - 0.31) < 0.02,
+      f"anchor 67.962 y posterior 67.9475 dan ambos r_d=147.17 Mpc -> "
+      f"{abs(147.17 - 147.09)/0.26:.2f} sigma vs Planck 147.09+-0.26 (r_d es "
+      "H0-invariante a omega fijo). run_p3_rd_reframe.py 2026-07-09; anclas "
+      "viejas 67.037/66.531/67.159 superadas")
+check("V-L4  theta* posterior coincide con el anchor (0.90 sigma)",
+      abs(abs(1.04136 - 1.04109)/0.00030 - 0.90) < 0.02,
+      f"posterior 67.9475 da 100theta*=1.04136 -> "
+      f"{abs(1.04136 - 1.04109)/0.00030:.2f} sigma vs Planck 1.04109+-0.00030; "
+      "anchor 67.962 da 1.04140 (1.05 sigma). La tension de 6.66 sigma era el "
+      "bug del sector 0.160 en E(z): al coincidir posterior y anchor el CMB "
+      "es sano en ambos y no hay parche")
 
-track_open("V-L4  valor de referencia DES-Y3 inconsistente entre scripts",
-           "ssee_paper5 usa S8_DES = 0.776+-0.017 (3x2pt, Abbott 2022); "
-           "ssee_op5_hmcode usa S8_DES = 0.759+-0.023 (cosmic shear, Amon 2022); "
-           "elegir una referencia DES unica para toda la suite")
+# La «inconsistencia DES-Y3» ya no existe: el script del 0.759+-0.023
+# (ssee_op5_hmcode.py) se archivo, y en src/ vivo solo queda 0.776+-0.017
+# (3x2pt, Abbott 2022) en dos sitios, coherentes entre si. El apunte
+# sobrevivio al archivado del script. Verificado y convertido 2026-09-07.
+_des_vivos = set()
+for _f in (ROOT).rglob("*.py"):
+    if "archive" in str(_f) or _f.name in ("ssee_verify.py", "test_guardian.py"):
+        continue
+    for _m in re.finditer(r"S8_DES\s*(?:=|,)\s*\(?\s*(0[.]\d+)", _f.read_text(errors="ignore")):
+        _des_vivos.add(_m.group(1))
+check("V-L4  una sola referencia DES-Y3 en src/ vivo",
+      _des_vivos == {"0.776"},
+      f"S8_DES en src/ (sin archive): {sorted(_des_vivos) or 'ninguno'} — "
+      "3x2pt Abbott+2022. El 0.759+-0.023 (cosmic shear, Amon 2022) estaba "
+      "en ssee_op5_hmcode.py, hoy en archive/; el apunte de inconsistencia "
+      "sobrevivio al archivado del script")
 
 # MCMC DESI+Planck (P2) — re-corrido 2026-05-22 (100w x 25000s x 3, 1.52h).
 # lnP_MAP: SSEE -13.22 (k=2), LCDM -15.79 (k=3). N_DATA = 16.
@@ -857,10 +878,11 @@ H0_mcmc = 66.531   # posterior canonico, prior MIRA 67.037 (re-run 2026-06-09); 
 t_H0 = abs(H0_mcmc - 67.36) / (0.442 ** 2 + 0.54 ** 2) ** 0.5
 check("V-L4-08 P2  tension H0 SSEE vs Planck = 1.19 sigma",
       abs(t_H0 - 1.19) < 0.03, f"{t_H0:.2f} sigma")
-track_open("V-L4  Omega_b h^2: posterior MCMC vs prediccion algebraica",
-           "MCMC re-run 2026-06-09 (prior MIRA 67.037) da Om_b h^2 = 0.02260+-0.00048; "
-           "OP-1 algebraico da 0.02242 -> 0.4sigma, compatible. "
-           "(El 0.02183 previo era de la cadena pre-canonica)")
+check("V-L4  Omega_b h^2 posterior compatible con la prediccion algebraica",
+      abs(abs(0.02260 - 0.02242)/0.00048 - 0.375) < 0.02,
+      f"MCMC 2026-06-09 da 0.02260+-0.00048; OP-1 algebraico da 0.02242 -> "
+      f"{abs(0.02260 - 0.02242)/0.00048:.2f} sigma, compatible. El 0.02183 "
+      "previo era de la cadena pre-canonica")
 
 # ─────────────────────────────────────────────────────────────────────
 # SELLOS — integridad de los papers sellados.

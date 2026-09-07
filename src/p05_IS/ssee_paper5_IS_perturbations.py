@@ -74,24 +74,35 @@ cs2_bare = w0                       # = -0.8399
 
 # Bulk viscosity, adimensional.
 #
-# ⚠ OP-22 (2026-08-02) — CONDICIONAL, no resuelto.
+# ✅ OP-22 CERRADO 2026-09-06 (queda OP-22b, ver abajo).
 #
-# El valor KAL0/3 sale de la condición de estado estacionario Π = −KAL₀·ρ_DE·H
-# (atribuida a Paper 1, que NO la contiene: su glosario apunta a un apéndice
-# que no la deriva). Con Π = −3ζH eso da ζ = KAL₀·ρ_DE/3.
+# La pregunta era: ζ̃ = KAL₀/3, ¿adimensional respecto a QUÉ? Una sola cantidad
+# ζ/(ρ·τ_Π) toma tres valores según el divisor:
+#     / ρ_crit      0.839950
+#     / ρ_DE        1.000000
+#     / (ρ+p)       6.248039     ← la inercia física
 #
-# PROBLEMA: la inercia de una onda de sonido relativista es la ENTALPÍA ρ+p,
-# no ρ — está en la ecuación de Euler del propio Apéndice A. Con ella:
-#     c²_s,eff = w₀ + ζ/((ρ+p)τ_Π) = −0.840 + 5.248 = +4.41   SUPERLUMÍNICO
-# El c²_s = 0 que imprime este script usa ρ en vez de ρ+p en ese denominador.
+# RESUELTO a favor de la ENTALPÍA, Π = −KAL₀·(ρ+p)·H. El argumento decisivo es
+# un test de límite, independiente de SSEE: con w→−1 exacto, ρ+p→0 y una
+# constante cosmológica NO tiene grados de libertad de fluido, así que su
+# presión viscosa debe anularse. Π∝(ρ+p) lo da solo; Π∝ρ_DE deja presión
+# viscosa finita para una constante cosmológica — no es un límite viable.
+# Dos testigos internos concuerdan: el apéndice de dispersión escribe
+# ζ/[τ_Π(ρ̄+p̄)], y el de autovalores usa F=(1−3c²_s)+ζ̃(k/H)²≈186 en k=10,
+# que la entalpía reproduce (185.05) y ρ_crit no (1370).
 #
-# CERRARÍA (OP-22) si el ansatz fuera Π = −KAL₀·(ρ+p)·H ⟹ c²_s,eff = 0 idéntico.
-# Hay argumento independiente: con w=−1 exacto, ρ+p=0 y una constante
-# cosmológica no tiene grados de libertad de fluido, así que su presión viscosa
-# debe anularse — lo que Π∝(ρ+p) da y Π∝ρ no.
+# CONSECUENCIA: c²_s,eff = w₀ + ζ̃/(τ_Π H₀) = w₀ + Ω_DE = 0 ES un resultado,
+# marginal y subluminal. NO es artefacto (la caja naranja que decía lo
+# contrario está corregida en el .tex).
 #
-# NO se adopta esa resolución aquí: cambia un ansatz estructural del marco, no
-# una convención. Ver OP-22. Lo que este script imprime es CONDICIONAL a ello.
+# LO QUE SE RETIRA: la JUSTIFICACIÓN de τ_Π en el apéndice EFT de Paper 1, que
+# decía derivar τ_Π H₀=KAL₀/(3Ω_DE) saturando ζ/(ρ_DE τ_Π)≤1. Con la inercia
+# correcta esa saturación da 0.2946, no 2.191 — el acuerdo era el factor
+# (1+w₀)⁻¹=6.248 que faltaba. El VALOR no se mueve: τ_Π H₀=KAL₀·Ω/T_r es
+# álgebra, y ya estaba escrito así. Σm_ν=0.06849 intacto.
+#
+# OP-22b (abierto): que el modo viscoso de fluido y el modo de campo
+# (c²_s,ad∈[0.60,1]) sean canales genuinamente distintos sigue ASERTADO.
 #
 zeta_tilde = KAL0 / 3.0            # ≈ 1.8405  = KAL₀·Ω/M_v
 
@@ -133,13 +144,16 @@ print(f"  Difference               = {abs(IS_correction - abs(w0)):.2e}  (round-
 print(f"\n  c²_s,eff (k→∞)  = {cs2_bare:.6f} + {IS_correction:.6f} = {cs2_eff_highk:.2e}")
 
 if abs(cs2_eff_highk) < 1e-12:
-    print("\n  *** c²_s,eff = 0  —  CONDICIONAL A OP-22, no identidad exacta ***")
-    print("  ATENCION: este 0 sale de dividir zeta_tilde (normalizada a rho_crit)")
-    print("  por el tau_Pi que SSEE_EFT_section.tex derivo normalizando a rho_DE.")
-    print("  La MISMA cantidad zeta/(rho*tau_Pi) vale 1 alli (asi se fijo tau_Pi,")
-    print("  poniendo c2_s=1 en la frontera de causalidad) y 0.8399 aqui.")
-    print("  Con una sola normalizacion:  c2_s,eff = w0 + 1 = 1+w0 = 0.160050.")
-    print("  Ver OP-22 en OPEN_PROBLEMS.md. NO citar este 0 como resultado firme.")
+    print("\n  *** c2_s,eff = 0  —  RESULTADO (OP-22 cerrado 2026-09-06) ***")
+    print("  zeta~ esta normalizada a la ENTALPIA rho+p, no a rho_crit ni rho_DE.")
+    print("  Decisivo: con w->-1, rho+p->0 y una constante cosmologica no tiene")
+    print("  grados de libertad de fluido => su presion viscosa DEBE anularse.")
+    print("  Pi propto (rho+p) lo da solo; Pi propto rho_DE no.")
+    print("  Testigos internos: apendice de dispersion (zeta/[tau(rho+p)]) y")
+    print("  apendice de autovalores (F=186 -> entalpia 185.05, rho_crit 1370).")
+    print("  Retirado: la derivacion de tau_Pi por saturacion de causalidad")
+    print("  en el apendice EFT de Paper 1 (usaba rho en vez de rho+p).")
+    print("  Queda OP-22b: modo fluido vs modo campo, aun asertado.")
 elif cs2_eff_highk > 0:
     print(f"\n  IS stabilizes gradient: c²_s,eff = +{cs2_eff_highk:.2e} > 0")
 else:

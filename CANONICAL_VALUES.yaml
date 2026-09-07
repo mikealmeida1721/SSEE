@@ -438,18 +438,24 @@ historical_sections:
 # ════════════════════════════════════════════════════════════════════════
 cross_document:
   - id: IS_viscous_correction
-    que_es: "zeta/(rho*tau_Pi) — la correccion viscosa que se suma a c2_s_bare"
+    que_es: "zeta/((rho+p)*tau_Pi) — la correccion viscosa que se suma a c2_s_bare.
+             OP-22 CERRADO 2026-09-06: el divisor es la ENTALPIA rho+p (test de
+             limite w->-1: una constante cosmologica no puede tener presion
+             viscosa). Testigo: F~186 del apendice de autovalores de P5 sale
+             185.05 con entalpia y 1370 con rho_crit."
     tolerancia: 1.0e-4
     documentos:
       - archivo: "manuscript/SSEE_EFT_section.tex"
-        ancla:   "eq:IS_causality"
-        valor:   1.000000
-        nota:    "c2_s=1 en la frontera de causalidad; ASI SE DERIVO tau_Pi"
+        ancla:   "eq:tau_IS"
+        valor:   0.839950
+        nota:    "tau_Pi H0 = KAL0*Omega/T_r es ALGEBRA; la derivacion por
+                  saturacion de causalidad queda RETIRADA (usaba rho, daba 0.2946)"
       - archivo: "manuscript/SSEE_Paper5_IS.tex"
         ancla:   "eq:ratio_identity"
         valor:   0.839950
-        nota:    "zeta_tilde/(tau_Pi H0) = Omega_DE; difiere por normalizar zeta a rho_crit"
-    op_abierto: "OP-22"
+        nota:    "zeta_tilde/(tau_Pi H0) = Omega_DE, con zeta_tilde normalizada
+                  a la entalpia — misma cantidad, mismo valor"
+    op_abierto: "OP-22b"
 
 # ════════════════════════════════════════════════════════════════════════
 # PROCEDENCIA — la CADENA de cada canónico (añadido 2026-07-25)

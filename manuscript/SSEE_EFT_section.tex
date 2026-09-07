@@ -389,29 +389,40 @@ all densities are normalised to $\rho_{\mathrm{crit},0}$.  In the
 limit $\tau_{\Pi} \to 0$, Eq.~(\ref{eq:IS_transport}) reduces to the
 Eckart result $\tilde{\Pi} = -\mathrm{KAL}_{0}\tilde{h}^{2}$.
 
-\paragraph{Causality constraint.}
-The bulk-viscous sound speed in IS theory is \citep{HiscockLindblom1985}
-%
-\begin{equation}
-  c_{s}^{2}
-    = \frac{\zeta}{\rho_{\mathrm{DE}}\,\tau_{\Pi}}
-    = \frac{\mathrm{KAL}_{0}}{3\,\Omega_{\mathrm{DE}}\,(\tau_{\Pi} H_{0})}
-    \leq 1.
-  \label{eq:IS_causality}
-\end{equation}
-%
-Setting $c_{s}^{2} = 1$ (the causality boundary) uniquely fixes the
-IS relaxation time as an algebraic combination of SSEE constants:
+\paragraph{The relaxation time.}
+The IS relaxation time is fixed algebraically, from the same parents
+$(\mathrm{KAL}_{0},\Omega)$ that fix the viscosity, differing only in which
+sovereignty sits in the denominator:
 %
 \begin{equation}
   \tau_{\Pi} H_{0}
+    \;=\; \frac{\mathrm{KAL}_{0}\,\Omega}{T_{r}}
     \;=\; \frac{\mathrm{KAL}_{0}}{3\,\Omega_{\mathrm{DE}}}
-    \;=\; \frac{\mathrm{KAL}_{0}\,M_{v}}{3\,T_{r}}
     \;\approx\; 2.191,
   \label{eq:tau_IS}
 \end{equation}
 %
 with no free parameters.
+
+\paragraph{A withdrawn justification (2026-09-06).}
+Earlier versions of this appendix presented Eq.~(\ref{eq:tau_IS}) as
+\emph{derived} by saturating the Israel--Stewart causality bound written as
+$\zeta/(\rho_{\mathrm{DE}}\tau_{\Pi}) \le 1$. That argument is withdrawn: the
+inertia of a sound wave is the enthalpy $\rho+p$, not $\rho$
+\citep{Maartens1996,HiscockLindblom1985}, as the dispersion relation of
+Paper~5 (Appendix~C) shows explicitly. With the correct inertia the same
+saturation condition returns $\tau_{\Pi}H_{0} = \tilde\zeta\,(1+w_{0}) =
+0.2946$, not $2.191$; the agreement with Eq.~(\ref{eq:tau_IS}) was an artefact
+of the missing factor $(1+w_{0})^{-1} = 6.248$.
+%
+Nothing numerical changes: $\tau_{\Pi}H_{0} = \mathrm{KAL}_{0}\Omega/T_{r}$ is
+algebra, on the same footing as every other structural constant of the
+framework, and it was already stated in that form. What is withdrawn is the
+claim that causality \emph{derives} it. The bound itself is satisfied with
+room to spare: with $\tilde\zeta$ normalised to the enthalpy --- the
+normalisation both appendices of Paper~5 actually use --- the effective sound
+speed is $c^{2}_{s,\mathrm{eff}} = w_{0} + \tilde\zeta/(\tau_{\Pi}H_{0}) = 0$,
+marginally stable and manifestly subluminal.
 
 \paragraph{Growth index.}
 Coupling Eq.~(\ref{eq:IS_transport}) to the conservation

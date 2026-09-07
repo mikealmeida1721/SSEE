@@ -529,10 +529,34 @@ check("V-L3-IS  identidad zeta/tau_Pi = Om_DE  (KAL0/3 se cancela)",
       abs(IS_corr - Om_DE) < 1e-12, f"IS_corr = {IS_corr:.8f}")
 check("V-L3-IS  c2_s,eff = w0 + Om_DE = 0  (estabilidad marginal)",
       abs(w0 + IS_corr) < 1e-12)
-track_open("V-L3-IS  c2_s,eff = 0 depende de tau_Pi no derivado en script",
-           "zeta/tau_Pi = Om_DE porque tau_Pi = zeta/Om_DE comparten KAL0/3; "
-           "el resultado se reduce a w0 = -Om_DE (V-L2). La derivacion de "
-           "tau_Pi (steady-state IS) esta asertada, no mostrada")
+# OP-22 CERRADO 2026-09-06. El c2_s,eff = 0 ES un resultado, no un artefacto:
+# zeta~ esta normalizada a la ENTALPIA (rho+p). Testigo decisivo, un test de
+# limite independiente de SSEE: con w->-1, rho+p->0 y una constante cosmologica
+# no tiene grados de libertad de fluido => su presion viscosa DEBE anularse.
+# Pi propto (rho+p) lo da solo; Pi propto rho_DE deja presion viscosa finita.
+# Testigo interno REPRODUCIBLE: el apendice de autovalores de P5 reporta
+# F = (1-3 c2_s) + zeta~(k/H)^2 ~= 186 en k=10. Solo una normalizacion lo da.
+_h_ent = Om_DE * (1 + w0)                 # (rho+p)/rho_c = 0.13443415
+_F_ent = 1 + zeta_tilde * 100             # entalpia   -> ~185.0
+_F_rhc = 1 + zeta_tilde / _h_ent * 100    # rho_crit   -> ~1370
+check("V-L3-IS  el F~186 de P5 solo sale con la normalizacion de ENTALPIA",
+      abs(_F_ent - 186) < 2 and abs(_F_rhc - 186) > 100,
+      f"entalpia {_F_ent:.2f} (P5 dice ~186) / rho_crit {_F_rhc:.2f} "
+      f"(un orden de magnitud fuera)")
+# Control (R53): la lectura rho_DE del ansatz viejo da SUPERLUMINICO, y por eso
+# queda superada. Si el detector no marcara esto, el 0 seria indistinguible.
+_cb_rhoDE = (KAL0 / 3.0) / ((1 + w0) * tau_Pi_H0)
+check("V-L3-IS  el ansatz viejo Pi ~ rho_DE es superluminico (por eso cae)",
+      w0 + _cb_rhoDE > 1.0,
+      f"c2_eff = {w0 + _cb_rhoDE:.4f} > 1 con Pi = -KAL0*rho_DE*H; "
+      f"con Pi = -KAL0*(rho+p)*H da {w0 + zeta_tilde / tau_Pi_H0:.2e}")
+track_open("V-L3-IS  OP-22b: modo fluido vs modo campo sigue asertado",
+           "OP-22 cerrado (normalizacion = entalpia; el 0 es resultado). Queda "
+           "que el modo viscoso de fluido (c2_bare = w0) y el modo de campo "
+           "(c2_s,ad in [0.60,1] del Lagrangiano K(X)) sean canales "
+           "genuinamente distintos: esta afirmado, no derivado. Y la "
+           "derivacion de tau_Pi por saturacion de causalidad (apendice EFT de "
+           "P1) queda RETIRADA: usaba rho en vez de rho+p y daba 0.2946")
 
 # c_s^2 del sector k-essence — extraccion T_munu^ef (2026-05-22). Para
 # K(X)=X/KAL0+X^2/M^4, Garriga-Mukhanov da c_s^2=(A+2BX)/(A+6BX) con
@@ -3759,7 +3783,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 225          # +3 R55 (direccion de cascada, 2026-09-06); solo SUBE
+_PISO_CHECKS = 227          # +2 V-L3-IS (testigos OP-22, 2026-09-06); solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

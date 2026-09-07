@@ -1549,7 +1549,40 @@ consigo mismo), así que **ausencia de alarma no era ausencia de problema**.
 </details>
 
 ---
-## OP-22 — La forma del ansatz de estado estacionario IS: ¿Π ∝ ρ o Π ∝ (ρ+p)? — 🔴 ABIERTO (2026-08-02)
+## OP-22 — La forma del ansatz de estado estacionario IS: ¿Π ∝ ρ o Π ∝ (ρ+p)? — ✅ **CERRADO 2026-09-06** (queda OP-22b)
+
+> **Cierre.** Es **Π ∝ (ρ+p)**. El argumento decisivo es un **test de límite,
+> independiente de SSEE**: con `w → −1` exacto, `ρ+p → 0`, y una constante
+> cosmológica **no tiene grados de libertad de fluido**, así que su presión
+> viscosa debe anularse. `Π ∝ (ρ+p)` lo da solo; `Π ∝ ρ_DE` deja presión
+> viscosa finita para una constante cosmológica — no es un límite viable.
+> *(El argumento ya estaba escrito en `ssee_paper5_IS_perturbations.py`; lo que
+> faltaba era correrlo contra las alternativas.)*
+>
+> **Testigo interno reproducible:** el apéndice de autovalores de Paper 5
+> reporta `F = (1−3c²_s) + ζ̃(k/H)² ≈ 186` en `k=10`. La normalización de
+> entalpía da **185.05**; la de `ρ_crit` da **1370**, un orden de magnitud
+> fuera. Sólo una de las tres lecturas reproduce el número que el paper ya
+> tenía impreso.
+>
+> **Consecuencia:** `c²_s,eff = w₀ + Ω_DE = 0` **es un resultado**, marginal y
+> subluminal — no el artefacto que la caja naranja de Paper 5 declaraba el
+> 2026-08-02. Esa caja está corregida.
+>
+> **Lo que se retira:** la *justificación* de `τ_Π` en el apéndice EFT de
+> Paper 1, que decía derivar `τ_Π H₀ = KAL₀/(3Ω_DE)` saturando
+> `ζ/(ρ_DE τ_Π) ≤ 1`. Con la inercia correcta esa saturación da **0.2946**, no
+> 2.191; el acuerdo era exactamente el factor `(1+w₀)⁻¹ = 6.248` que faltaba.
+> **Ningún número se mueve:** `τ_Π H₀ = KAL₀·Ω/T_r` es álgebra y ya estaba
+> escrito así, y `Σm_ν = 0.06849` queda intacto. Lo que cae es la afirmación de
+> que la causalidad lo *deriva*.
+>
+> **OP-22b (abierto):** que el modo viscoso de fluido (`c²_bare = w₀`) y el
+> modo de campo (`c²_s,ad ∈ [0.60, 1]` del Lagrangiano `K(X)`) sean canales
+> genuinamente distintos sigue **asertado, no derivado**.
+
+<details><summary>Diagnóstico original (2026-08-02), conservado</summary>
+
 
 **Cómo se encontró.** Mike pidió *«primero dale una leída y revisa todo que esté
 bien, si se aplicaron los cambios bien»* antes de seguir. El repaso encontró que
@@ -1755,6 +1788,8 @@ cambió; cambió lo que se afirma de ellos.
 
 ---
 
+</details>
+
 ## OP-16 — ¿Coincide $(\pi-\varphi)/(\pi+\varphi)=0.3201$ con una fracción medida de la descomposición masa-energía del protón? (origen génesis) — ABIERTO / ESPECULATIVO
 
 **Origen.** El sistema fenomenológico génesis (`SSEE_UNIFICADO`, "Resolución Física de
@@ -1812,7 +1847,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-15 | P1 | Bullet offset κ(θ) desde KAL(x) no calculado | Medium-High | Computar Σ_SSEE(θ)=∫ρ_bar·KAL(x)dℓ del Bala; mostrar pico κ sobre galaxias, no gas (falsable vs Clowe+2006). Distinto de OP-13 (amplitud); esto es distribución espacial (2026-06-14) |
 | OP-16 | — (génesis) | ¿0.3201=(π−φ)/(π+φ) casa con fracción medida de la masa-energía del protón? | Baja/especulativa | Retirado de P4 (P4-A, era circular+materia total mal-etiquetada). Test: comparar vs descomposición lattice-QCD (quark 9%/gluón 37%/anomalía 23%) con barras, forward, anclado a (φ,π). Cero impacto en cosmología; dirección de investigación post-auditoría (2026-06-15) |
 | OP-21 | P5 | ~~ζ̃ hipótesis no derivada~~ → ζ̃ = KAL₀·Ω/M_v, **hermana de τ_Π = KAL₀·Ω/T_r** | 🟡 **REDUCIDO 2026-08-02** | No es número libre: lo fijan τ_Π (P4) + w₀ (P1) + minimalidad. Queda abierto el PRINCIPIO (minimalidad) y derivar τ_Π del Lagrangiano. Look-elsewhere intentado y RETIRADO (valor forzado por identidad) |
-| OP-22 | P5, P4, P1 | **τ_Π H₀ = KAL₀/(3Ω_DE) no está derivada en ningún documento** (P4 y P5 la usan; P1 apunta a un App.A inexistente). ζ̃=KAL₀/3 SÍ está derivada (archive/…Friedmann.tex, normalizando a ρ_crit; P5 la etiqueta mal como ρ_DE). Y con la inercia correcta (ρ+p) c²_s sale superlumínico | 🔴 **ABIERTO 2026-08-02** | **Σm_ν depende de τ_Π** (+19.1% si cambiara). Pasó las auditorías porque NINGÚN número está mal: falta una DERIVACIÓN, y ninguna capa verificaba que exista la derivación que un documento dice tener |
+| OP-22 | P5, P4, P1 | ✅ **CERRADO 2026-09-06**: es Π ∝ (ρ+p) (test de límite w→−1; testigo F≈186). El `0` es resultado. Se retira la *derivación* de τ_Π por causalidad (usaba ρ, daba 0.2946). Queda OP-22b. — *diagnóstico viejo:* **τ_Π H₀ = KAL₀/(3Ω_DE) no está derivada en ningún documento** (P4 y P5 la usan; P1 apunta a un App.A inexistente). ζ̃=KAL₀/3 SÍ está derivada (archive/…Friedmann.tex, normalizando a ρ_crit; P5 la etiqueta mal como ρ_DE). Y con la inercia correcta (ρ+p) c²_s sale superlumínico | ✅ **CERRADO 2026-09-06** | **Σm_ν depende de τ_Π** y NO se mueve: τ_Π no cambia. Pasó las auditorías porque NINGÚN número está mal: falta una DERIVACIÓN, y ninguna capa verificaba que exista la derivación que un documento dice tener |
 | OP-23 | P7 | ~~Dentro del acoplamiento conformal no existe $\beta_c$ que reproduzca $w_0$~~ | ⚫ **CERRADO POR DISOLUCIÓN 2026-09-06** | Su premisa era «el acoplamiento es conformal». Ya no hay acoplamiento de ningún tipo: la acción de Paper 7 es un condensado fantasma mínimamente acoplado. El OP nombró él mismo esta salida en su §5 — «SSEE no admite acoplamiento oscuro, $\beta_c=0$» — y es la que ocurrió, por vía independiente |
 
 **Severity legend:** High = referee would likely request resolution before acceptance;

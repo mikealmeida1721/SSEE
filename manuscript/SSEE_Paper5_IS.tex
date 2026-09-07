@@ -345,54 +345,84 @@ factor multiplying the pressure gradient in the standard fluid perturbation
 equations. Normalising this way makes $\ztilde/(\tauPi H_0)$ directly a squared
 sound speed, with no residual factors.
 
-\begin{tcolorbox}[colback=orange!5,colframe=orange!60!black,
-  title={\textbf{Open issue: the form of the steady-state ansatz (OP-22)}}]
-The $c^2_{s,\mathrm{eff}}=0$ reported below is \textbf{not an exact identity}.
-It is the result of a normalisation mismatch \emph{between documents}, found on
-review (2026-08-02) and stated here rather than papered over.
+\begin{tcolorbox}[colback=green!4,colframe=green!45!black,
+  title={\textbf{Resolved: the normalisation of $\ztilde$ (OP-22, closed 2026-09-06)}}]
+A previous version of this box reported $c^2_{s,\mathrm{eff}}=0$ as an artefact
+of a normalisation mismatch between documents. That diagnosis was wrong, and we
+correct it here rather than leave it standing.
 
-\emph{Where $\tauPi$ comes from.} It is derived --- in the EFT appendix of
-Paper~1 \citep{SSEE_Paper1}, not here --- by imposing the Israel--Stewart
-causality bound at its boundary:
-\begin{equation*}
-  c^2_s = \frac{\zeta}{\rho_{\rm DE}\,\tauPi} \le 1
-  \;\;\xrightarrow{\;=\,1\;}\;\;
-  \tauPi H_0 = \frac{\KALz}{3\,\OmDE} \simeq 2.191 .
-\end{equation*}
-Note what this means: \emph{by construction}, the quantity
-$\zeta/(\rho_{\rm DE}\tauPi)$ equals $1$.
-
-\emph{The mismatch.} This paper computes the same quantity as
-$\ztilde/(\tauPi H_0) = \OmDE = 0.839950$, because its $\ztilde=\KALz/3$ is
-normalised to $\rho_{\rm crit}$ while $\tauPi$ was derived normalising to
-$\rho_{\rm DE}$. One physical quantity, two values, differing by exactly
-$\OmDE$:
+\emph{The question.} $\ztilde=\KALz/3$ is a dimensionless viscosity, but
+dimensionless \emph{with respect to what}? The candidates differ by large
+factors, because one physical quantity $\zeta/(\rho\,\tauPi)$ takes three values
+depending on the divisor:
 \begin{center}
 \begin{tabular}{lc}
 \toprule
-document & $\zeta/(\rho\,\tauPi)$ \\
+divisor & $\zeta/(\rho\,\tauPi)$ \\
 \midrule
-Paper~1, EFT appendix (where $\tauPi$ is fixed) & $1.000000$ \\
-this paper & $0.839950$ \\
+$\rho_{\rm crit}$ (total)         & $0.839950$ \\
+$\rho_{\rm DE}$                   & $1.000000$ \\
+$\rho_{\rm DE}+p_{\rm DE}$ (enthalpy) & $6.248039$ \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\emph{Consequence.} Carrying one normalisation throughout gives
-\begin{equation*}
-  c^2_{s,\mathrm{eff}} = \wz + 1 = 1+\wz = 0.160050 ,
-\end{equation*}
-positive, subluminal, and equal to a quantity that already appears elsewhere in
-the framework as an equation-of-state combination (it is the same $1+\wz$ that
-enters $\alpha_K$ and $\lambda$ in Paper~7). \textbf{The $0$ is the artefact};
-it comes from dividing by $\OmDE$ once too often.
+\emph{The evidence, and it is not unanimous.} Three places in the framework fix
+the normalisation, and one of them points the other way. The steady-state
+ansatz as originally written, $\Pi = -\KALz\,\rho_{\rm DE}H$, gives
+$\zeta = \KALz\rho_{\rm DE}/3$ and hence
+$c^2_{s,\mathrm{eff}} = \wz + 5.248 = +4.41$: superluminal, and therefore not
+an option. The two operative appendices of this paper both require the other
+convention.
 
-\emph{A separate issue, still open.} Independently of the normalisation, the
-relativistic inertia of a sound wave is the enthalpy $\rho+p$, not $\rho$
-(Appendix~\ref{app:dispersion}). Using it changes the numbers again. Resolving
-which combination of ansatz, normalisation and inertia is correct is
-\textbf{OP-22}; we do not settle it here, and the stability results of this
-section are to be read as conditional on it.\end{tcolorbox}
+\emph{The answer, from two independent witnesses inside this paper.}
+The relativistic inertia of a sound wave is the enthalpy, so the dispersion
+relation of Appendix~\ref{app:dispersion} carries
+$\zeta/[\tauPi(\bar\rho+\bar p)]$; it reduces to $\ztilde/(\tauPi H_0)$
+\emph{only if} $\ztilde$ is enthalpy-normalised, $\zeta =
+\ztilde\,(\rho_{\rm DE}+p_{\rm DE})H_0$, which is what that appendix states.
+Independently, the eigenvalue analysis of Appendix~\ref{app:eigenvalues} uses
+$\mathcal{F}=(1-3c^2_s)+\ztilde(k/H)^2 \approx 186$ at $k=10$: the
+enthalpy normalisation returns $185.05$, whereas normalising to $\rho_{\rm crit}$
+returns $1370$, an order of magnitude off. Both appendices therefore use the
+same convention, and it is the enthalpy one.
+
+\emph{The resolution, and why it is not merely a choice.} We adopt the
+enthalpy form of the steady-state condition,
+$\Pi = -\KALz\,(\bar\rho+\bar p)\,H$. The decisive argument is a limit test,
+independent of anything in SSEE. Take $w \to -1$ exactly. Then
+$\bar\rho+\bar p \to 0$: a cosmological constant carries no fluid degrees of
+freedom, so its bulk viscous pressure \emph{must} vanish. The enthalpy form
+gives $\Pi \to 0$ automatically; the $\rho_{\rm DE}$ form gives a finite
+viscous pressure for a cosmological constant, which is not a viable
+hydrodynamic limit. Two further reasons agree: it is what both appendices of
+this paper already use, and it is the form consistent with relativistic
+dissipative hydrodynamics, where the enthalpy is the inertia in the Euler
+equation and in the bulk-viscous transport alike
+\citep{Maartens1996,HiscockLindblom1985}. That the alternative is superluminal
+is then a consequence, not the reason for choosing. The archived note in which
+the $\rho_{\rm DE}$ form was first written is superseded by this.
+
+\emph{Consequence.} $c^2_{s,\mathrm{eff}} = \wz + \ztilde/(\tauPi H_0)
+= \wz + \OmDE = 0$ stands: marginally stable, manifestly subluminal, and
+\textbf{not} an artefact. The $0$ is a result.
+
+\emph{What \emph{is} withdrawn.} The \emph{justification} of $\tauPi$ given in
+the EFT appendix of Paper~1 \citep{SSEE_Paper1}, which claimed to derive
+$\tauPi H_0 = \KALz/(3\OmDE)$ by saturating the causality bound written as
+$\zeta/(\rho_{\rm DE}\tauPi)\le 1$. That bound uses $\rho$ where the enthalpy
+belongs; imposed correctly it returns $\tauPi H_0 = \ztilde(1+\wz) = 0.2946$,
+not $2.191$. The factor between them is exactly $(1+\wz)^{-1}=6.248$. Nothing
+numerical moves --- $\tauPi H_0 = \KALz\Omega/T_r$ is algebra, and was already
+stated in that form in Eq.~\eqref{eq:IS_params} --- but causality does not
+\emph{derive} it, and Paper~1 no longer claims that it does.
+
+\emph{Residual, still open.} The bare fluid value $c^2_{s,\rm bare}=\wz$ is the
+constant-$w$ effective-fluid closure, not the field's adiabatic speed
+($c^2_{s,\rm ad}\in[0.60,1]$, \S\ref{subsec:instability}). That the viscous
+fluid mode and the field mode are genuinely distinct channels remains asserted
+rather than derived; it is carried forward as \textbf{OP-22b}.
+\end{tcolorbox}
 
 \noindent With the steady-state condition as currently written, and combined
 with the IS equation, one obtains \citep{SSEE_Paper1}:

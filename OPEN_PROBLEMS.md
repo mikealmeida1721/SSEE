@@ -217,11 +217,25 @@ derivación.
    `N_* = 2φ⁷`), y π aparece sólo de BBN en adelante (`ω_b`, `Ω`, `H_alg`,
    `w₀`, `KAL`, `MIRA`). El corte `M` se fija en la transición inflacionaria.
 
+**Rutas cerradas por medición (2026-09-05/06). El fracaso también es dato:**
+
+| Ruta | Cómo falla | Medido |
+|---|---|---|
+| **A** — el atractor produce `M⁴` vía `K_DE(X)=K_α(X/N)` | **sobredeterminada**: 2 condiciones, 1 botón | lineal pide `N=KAL ⟹ M⁴=417.91`; cuadrática pide `M⁴=5φ⁸ ⟹ N=4.139475=KAL_eff`, y entonces el término lineal pide `0.241577` donde el paper usa `0.181113`, razón `1.333842` |
+| **C** — aterrizaje sobre la acción de Paper 7 | **subdeterminada Y la serie no trunca** | con `A=0.206293212819` fijo y `N` libre: `M⁴ = 66.45 / 910.91 / 6645 / 664500` según `N`; y `X₃/X₂ = −0.6970` independiente de `N` |
+| **Hubble** — que la cascada *mida* el corte | **sin poder de restricción** | σ propagado de SH0ES `±0.970` km/s/Mpc vs residuo `+4.2e-06`: `M⁴` compatible de `0.2×` a `∞` (sólo se excluye `0.1×`). Degeneración: `+1% KAL ↔ +2.01% M⁴` |
+
+Consecuencia para el método de ingredientes: `c₂ = 1/M⁴` es un ingrediente
+**libre que ningún dato disponible determina**. Tiene que venir de la teoría
+(sector inflacionario, `α = φ⁴/3`), y el aterrizaje de Hubble sólo lo testea
+por consistencia. **No buscarlo ahí.**
+
 **Las tres piezas que faltan, con su dependencia:**
 
 | Pieza | Estado | Si llega el `5/2` |
 |---|---|---|
 | El `5/2` — `KAL_eff` de fuente propia | **falta** | — |
+| Sobre qué objeto aterriza el inflatón | **nuevo bloqueo** (rutas A y C cerradas) | — |
 | `ρ_crit` en la contabilidad | ✅ **hecho 2026-09-06** | ya está |
 | Jacobiano `∂φ/∂χ` en la transición | diferido a un Paper B inexistente | **deja de hacer falta** (el postulado se disuelve) |
 
@@ -231,7 +245,7 @@ derivación.
 no cuenta. Si eso llega, el postulado de separabilidad pasa de suposición a
 resultado y el jacobiano deja de ser necesario.
 
-**Lo que NO está en juego:** el `H₀^IR = 72.86` (0.17σ SH0ES) de Paper 9 no
+**Lo que NO está en juego:** el `H₀^glob,IR = 68.13` (0.17σ vs 3(φ+π)²) de Paper 9 no
 usa `M⁴` y no es condicional. Aunque OP-3 nunca cierre, esa predicción hacia
 adelante queda en pie.
 
@@ -377,8 +391,8 @@ peculiar (Δv/c), no a una corrección de densidad de energía oscura — físic
 - f_screen (universo separado) = 0.067253
 - f_screen (algebraico (π−φ)/Ω²) = 0.067253
 - |diferencia| = 4.1×10⁻⁷ < 10⁻⁴ ✓
-- H₀,local = 67.96 / (1 − 0.06725) = 72.86 km/s/Mpc (0.17σ SH0ES)
-- Con H₀^UV = 73.040 (Paper 10, condicional a Postulate C.1): 0.00σ SH0ES
+- H₀,glob = 73.04 × (1 − 0.06725) = 68.13 km/s/Mpc (0.17σ vs 3(φ+π)²=67.96214)
+- Con la corrección UV (Paper 10, condicional a Postulate C.1): 67.962142, residuo +4.2e-06 — pero σ propagado ±0.970 lo domina
 
 **Cambios aplicados en Paper 9:**
 - §3: Derivación desde universo separado k-essence (primer principios)
@@ -1783,7 +1797,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 |----|-------|---------|----------|--------------------|
 | OP-1 | P4 | ~~Factor 200 in Ω_b h²~~ | ✅ PARCIAL | (π−φ)/H₀_SSEE=0.32σ Planck; BBN derivation → Paper B/C; script op1 |
 | OP-2 | P4 | ~~n_s exponent 7 not derived from V(φ)~~ | ✅ RESUELTO | α-attractor universality + N_*=2φ⁷; r=φ⁻¹⁰ nueva predicción; script op2 |
-| OP-3 | P10 | Origen del `5/2` en `M⁴ = 5φ⁸ρ_c` | 🟡 PARCIAL | Reabierto 2026-09-06 (Registro V-L3-OP3). `KAL_eff` se despeja DE `M⁴`, no al revés. Falta el `5/2` sin usar `M⁴` ni SH0ES |
+| OP-3 | P10 | Origen del `5/2` en `M⁴ = 5φ⁸ρ_c` | 🟡 PARCIAL | Reabierto 2026-09-06 (Registro V-L3-OP3). `KAL_eff` se despeja DE `M⁴`, no al revés. **3 rutas cerradas por medición**: A sobredeterminada, C subdeterminada + serie no trunca, y la cascada de Hubble NO mide `M⁴` (banda ±0.970 vs residuo 4.2e-06). Falta el `5/2` sin usar `M⁴` ni SH0ES |
 | OP-4 | P8 | ~~r_V > r_Hubble para Vainshtein~~ | ✅ RESUELTO | k-mouflage + αB=αM=αT=0 EFT; Paper 8 §4.2/§4.4 revisados |
 | OP-5 | P5-6 | ~~S₈ weak-lensing tension~~ | ✅ **DISUELTO 2026-08-01** | No hay tensión: con un sector y A_s libre, MCMC contra ξ± crudo da S₈=0.7555±0.0192 (0.11σ KiDS). El 3.5σ era artefacto de fijar A_s a Planck |
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
@@ -2205,7 +2219,7 @@ trazable.
 >
 > Y la conexión que Mike recordaba es real: los dos Lagrangianos son el IR y el
 > UV, y son los que dan $\alpha_K=0.4033$ / $\alpha_K^{\rm full}=0.41691$, de ahí
-> $f_{\rm screen}$ IR/UV y los dos $H_{\rm local}$ (72.86 / 73.040). La corrección
+> $f_{\rm screen}$ IR/UV y los dos $H_{\rm glob}$ (68.13 / 67.962142). La corrección
 > UV es del 3.4 % — subdominante, coherente con todo lo anterior.
 >
 > <details><summary>Texto de la suspensión errónea (conservado)</summary>

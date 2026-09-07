@@ -171,11 +171,15 @@ record('P9', 'f_screen = (π−φ)/Ω²', 'adimensional',
        f_screen, f_screen, '—', True, '✅ independiente',
        'Pura combinación algebraica. Sin cambio.')
 
-h_local_alg  = H0_ALG_KMSMPC  / (1 - f_screen)
-h_local_mira = H0_MIRA_KMSMPC / (1 - f_screen)
-record('P9', 'H_local = H₀/(1−f_screen)', 'lineal en H₀',
-       h_local_alg, h_local_mira, 'km/s/Mpc', True, '✅ ya cascadado',
-       'P9 actualizado esta mañana: 72.86 → 71.90. SH0ES: 0.17σ → 1.10σ.')
+# Dirección canónica (2026-09-06): SH0ES ENTRA, H_global SALE. El número
+# puro 3(φ+π)² no es entrada de la cascada — es el blanco. Por eso esta fila
+# ya NO depende de qué ancla se elija: no hay ancla de entrada. Ver R55.
+H0_SHOES = 73.04
+h_glob = H0_SHOES * (1 - f_screen)
+record('P9', 'H_glob = H_SH0ES·(1−f_screen)', 'no depende de ancla',
+       h_glob, h_glob, 'km/s/Mpc', True, '✅ inmune por construcción',
+       f'La entrada es el dato medido, no un ancla: {h_glob:.4f} para cualquier '
+       f'elección de ancla. Se compara con 3(φ+π)²=67.96214 (0.17σ).')
 
 # ────────────────────────────────────────────────────────────────────────────
 # Paper 10 — UV Completion
@@ -199,9 +203,12 @@ record('P10', 'αK_full UV', 'unidades ρ_crit=1; ratio puro',
        0.41691, 0.41691, '—', True, '✅ invariante por diseño',
        'Verificado: cálculo en unidades ρ_crit=1, todos los ratios son adimensionales.')
 
-record('P10', 'H_local^UV', 'H₀/(1−f_screen^UV); lineal en H₀',
-       73.040, 72.079, 'km/s/Mpc', True, '✅ ya cascadado',
-       'Cascada lineal correcta: f_screen^UV=0.06952 invariante. H_UV(H_alg)=73.040, H_UV(H_MIRA)=72.079.')
+_h_glob_uv = H0_SHOES * (1 - 0.0695216111441)
+record('P10', 'H_glob^UV = H_SH0ES·(1−f^UV)', 'no depende de ancla',
+       _h_glob_uv, _h_glob_uv, 'km/s/Mpc', True, '✅ inmune por construcción',
+       f'f_screen^UV=0.069522 invariante y la entrada es el dato: '
+       f'{_h_glob_uv:.6f} para cualquier ancla. Residuo vs 3(φ+π)²: '
+       f'{_h_glob_uv-67.962137:+.2e}.')
 
 # ────────────────────────────────────────────────────────────────────────────
 # Postulados

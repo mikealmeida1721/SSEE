@@ -246,7 +246,7 @@ dimensional pasa.
   H_dS=H_MIRA·√Ω_DE=61.44 < H_MIRA, signo invertido; Friedmann ata H₀ al
   contenido total. Es decir: H_alg es el **anchor GLOBAL de fondo** (H₀ de hoy:
   prior del MCMC, ancla del fit CMB, normalización del background; aplicarle
-  f_screen da el valor LOCAL 72.86). NO es la tasa dinámica H(z) "bare-sheet" a
+  f_screen relaciona con el valor LOCAL medido). NO es la tasa dinámica H(z) "bare-sheet" a
   todo z — eso es lo refutado. Las dos lecturas (anchor global derivado por
   de-screening de SH0ES vs. tasa dinámica) conviven sin contradicción. La veta
   abierta restante es el origen dimensional de la escala Mpc↔Planck (roadmap #1),
@@ -451,9 +451,15 @@ Sólo el refinamiento no-lineal Nivel 2 queda ABIERTO.
 1. **✓ valor:** f_screen = α_K/(3·MIRA) = (π−φ)/Ω² = 0.067253 — álgebra
    exacta, ya verificada en V-L2-13 y en la identidad cruzada de Capa 2.
    **Canónico (reframe ω_m-directo, espeja Paper 9):**
-   H₀,local = H₀^alg/(1−f_screen) = 67.962/0.93275 = **72.86 km/s/Mpc**
-   (0.17σ SH0ES). La vieja ruta H₀^MIRA/(1−f_screen) = 71.87 (1.12σ) queda
-   **superada** (el anchor pasó de H_MIRA a H_alg en el reframe; Paper 9 Tabla H0local).
+   **Dirección canónica (2026-09-06): SH0ES ENTRA, H_global SALE.**
+   H₀,glob = H₀^SH0ES·(1−f_screen) = 73.04×0.93275 = **68.13 km/s/Mpc**,
+   a 0.17σ del NÚMERO PURO 3(φ+π)²=67.96214. La escritura anterior
+   67.962/(1−f)=72.86 metía un número sin unidades como entrada de una
+   cascada dimensional: mismo enunciado leído al revés (los σ son
+   invariantes bajo la inversión porque la lente es multiplicativa), pero
+   con la carga de prueba invertida. Control del otro lado: la misma lente
+   sobre Freedman+2024 (69.96) da 65.26, a 1.88σ. Las rutas H₀^MIRA
+   (71.87/72.05) quedan **superadas** por partida doble.
    H_alg es un anchor **DERIVADO** (de-screened SH0ES × f_screen; el cargo Type-P
    quedó disuelto, ver V-L2-06 arriba), no una coincidencia.
 2. **✓ forma:** que la corrección sea **multiplicativa** sí sigue de la
@@ -538,7 +544,7 @@ M⁴ tiene dos valores incompatibles según el paper. **PARCIAL.**
 
 ## V-L3-KX — completación UV K(X) (Paper 10) — **ABIERTO (M⁴=5φ⁸ subdeterminado; anchor-free, NO calibrado a SH0ES)**
 
-*Claim CLAUDE.md:* "Paper 10: M⁴=5φ⁸ρ_crit exacto; H₀^UV canónico=73.040 (0.00σ SH0ES) vía H_alg=67.962; condicional C.1. Viejo 72.05 vía MIRA=67.037/0.96σ superado".
+*Claim CLAUDE.md:* "Paper 10: M⁴=5φ⁸ρ_crit exacto; H₀^UV: la cascada devuelve 67.96214 desde SH0ES (residuo +4.2e-06); condicional C.1. Viejo 72.05 vía MIRA=67.037/0.96σ superado".
 
 1. **✓ identidad 45α² = 5φ⁸:** exacta a precisión de máquina (α=φ⁴/3 →
    45α²=45φ⁸/9=5φ⁸=234.89). El *valor numérico* de M⁴/ρ_crit cierra.
@@ -556,7 +562,7 @@ M⁴ tiene dos valores incompatibles según el paper. **PARCIAL.**
    no puede ser identidad exacta). Ver [[project_m4_field_redefinition]].
 4. **subdeterminación honesta (lo que sigue ABIERTO):** la normalización exacta
    no está cerrada — Ruta A (K(X) Taylor) da M⁴=6αKAL²≈418 ≠ 234.9; la redefinición
-   de campo da 5φ⁸ a 0.076% pero no exacto. αK_full=0.41691 y H₀^UV=73.040 son
+   de campo da 5φ⁸ a 0.076% pero no exacto. s_K_full=0.41691 y H₀^glob,UV=67.96214 son
    aguas abajo de este M⁴ **subdeterminado** (no circular, sí incompleto).
 
 **Veredicto:** la forma 5φ⁸=45α² es exacta en álgebra y tiene near-derivación

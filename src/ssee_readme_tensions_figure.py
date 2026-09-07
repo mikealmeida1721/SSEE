@@ -20,7 +20,7 @@ entries = [
     (r'$\Omega_b h^2 = (\pi-\varphi)/3\Omega^2$', 0.32, 'Planck 2018'),
     (r'$\Omega_{m,\rm CMB} = \omega_m/h^2 = 0.308881$', 0.88, 'Planck 2018'),
     (r'mean $f\sigma_8$ (6 RSD surveys)',        0.93, r'ties $\Lambda$CDM (0.73$\sigma$)'),
-    (r'$H_0^{\rm local}$ = 72.86 km/s/Mpc',      0.17, 'SH0ES'),
+    (r'$H_0^{\rm glob}$ = 68.13 km/s/Mpc',       0.17, r'$3(\varphi+\pi)^2$'),
 ]
 entries = entries[::-1]  # smallest tension on top
 

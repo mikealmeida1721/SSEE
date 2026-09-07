@@ -54,14 +54,18 @@ f_screen_direct   = (pi - phi) / Omega**2
 # Percentage discrepancy between formula and direct
 discrepancy_pct = abs(f_screen_identity - f_screen_direct) / f_screen_direct * 100
 
-# ── H0 predictions ───────────────────────────────────────────────────────────
-H0_multiplicative = H0_alg / (1 - f_screen_direct)   # H₀/(1−f)
-H0_additive       = H0_alg * (1 + f_screen_direct)   # H₀(1+f)
+# ── Cascada: SH0ES ENTRA, H_global SALE ──────────────────────────────────────
+# H0_alg = 3(phi+pi)^2 es un NUMERO PURO, sin unidades: NO es entrada de la
+# cascada, es el blanco contra el que se compara la salida. El unico H medido
+# es SH0ES; el de Planck se infiere dentro de LCDM. Ver guardian R55.
 H0_SH0ES          = 73.04
 sigma_SH0ES       = 1.04
+H0_glob_mult = H0_SH0ES * (1 - f_screen_direct)   # H_SH0ES(1-f)
+H0_glob_add  = H0_SH0ES / (1 + f_screen_direct)   # H_SH0ES/(1+f)
+sigma_glob   = sigma_SH0ES * (1 - f_screen_direct)
 
-tension_mult = abs(H0_multiplicative - H0_SH0ES) / sigma_SH0ES
-tension_add  = abs(H0_additive       - H0_SH0ES) / sigma_SH0ES
+tension_mult = abs(H0_glob_mult - H0_alg) / sigma_glob
+tension_add  = abs(H0_glob_add  - H0_alg) / sigma_glob
 
 # ── Print verification ───────────────────────────────────────────────────────
 sep = "=" * 68
@@ -96,14 +100,15 @@ print(f"  (π−φ)/Ω²       = {f_screen_direct:.10f}")
 print(f"  Discrepancy    = {discrepancy_pct:.8f}%  ← AURA cancels exactly")
 
 print(f"\n── H₀ predictions ───────────────────────────────────────────────")
-print(f"  H₀,alg (Paper 1)    = {H0_alg:.6f} km/s/Mpc")
+print(f"  3(φ+π)² PURO        = {H0_alg:.6f}   (blanco, sin unidades)")
 print(f"  f_screen            = {f_screen_direct:.6f}  ({f_screen_direct:.4%})")
 print(f"")
-print(f"  H₀,local (mult.)    = H₀/(1−f)  = {H0_multiplicative:.4f} km/s/Mpc  →  {tension_mult:.2f}σ from SH0ES")
-print(f"  H₀,local (add.)     = H₀·(1+f)  = {H0_additive:.4f} km/s/Mpc  →  {tension_add:.2f}σ from SH0ES")
-print(f"  H₀,SH0ES (Riess22)  =             {H0_SH0ES:.4f} km/s/Mpc  ± {sigma_SH0ES:.2f}")
+print(f"  H₀,SH0ES (ENTRADA)  =             {H0_SH0ES:.4f} km/s/Mpc  ± {sigma_SH0ES:.2f}")
+print(f"  H₀,glob (mult.)     = SH0ES(1−f) = {H0_glob_mult:.4f} km/s/Mpc  →  {tension_mult:.2f}σ vs 3(φ+π)²")
+print(f"  H₀,glob (add.)      = SH0ES/(1+f)= {H0_glob_add:.4f} km/s/Mpc  →  {tension_add:.2f}σ vs 3(φ+π)²")
+print(f"  σ propagado         =             {sigma_glob:.4f} km/s/Mpc")
 print(f"")
-diff_mult_add = H0_multiplicative - H0_additive
+diff_mult_add = H0_glob_add - H0_glob_mult
 print(f"  Difference (mult − add) = {diff_mult_add:.4f} km/s/Mpc  ≈ f²·H₀  [{diff_mult_add:.4f}]")
 
 print(f"\n── Key identity (exact) ─────────────────────────────────────────")
@@ -126,7 +131,7 @@ print(f"""
   with {discrepancy_pct:.1e}% discrepancy — limited only by floating-point
   precision. AURA cancels analytically; the result depends only on φ and π.
 
-  Both H₀ corrections (mult: {H0_multiplicative:.2f}, add: {H0_additive:.2f} km/s/Mpc)
+  Both H₀ corrections (mult: {H0_glob_mult:.2f}, add: {H0_glob_add:.2f} km/s/Mpc)
   are consistent with SH0ES ({H0_SH0ES} ± {sigma_SH0ES}):
     Multiplicative: {tension_mult:.2f}σ
     Additive:       {tension_add:.2f}σ

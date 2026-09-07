@@ -95,13 +95,18 @@ UV_correction = s_K_UV / s_K_IR - 1.0  # fractional increase
 
 # ── Step 5: f_screen_full and H₀,local ──────────────────────────────────────
 f_screen_UV = s_K_UV / (3 * MIRA)
-H0_UV       = H0_alg / (1 - f_screen_UV)
 
-# Observational comparison
+# Cascada: SH0ES ENTRA, H_global SALE. H0_alg = 3(phi+pi)^2 es un NUMERO PURO
+# (sin unidades) y por eso NO puede ser la entrada de una cascada dimensional:
+# es el blanco de comparacion. El unico H medido es SH0ES; el de Planck se
+# infiere dentro de LCDM. Ver guardian R55.
 H0_SH0ES   = 73.04
 sigma_SH0ES = 1.04
-tension_UV  = abs(H0_UV - H0_SH0ES) / sigma_SH0ES
-tension_IR  = abs(H0_alg / (1 - f_screen_IR) - H0_SH0ES) / sigma_SH0ES
+H0_glob_UV  = H0_SH0ES * (1 - f_screen_UV)
+H0_glob_IR  = H0_SH0ES * (1 - f_screen_IR)
+sigma_glob  = sigma_SH0ES * (1 - f_screen_UV)
+tension_UV  = abs(H0_glob_UV - H0_alg) / sigma_glob
+tension_IR  = abs(H0_glob_IR - H0_alg) / sigma_glob
 
 # ── Print verification ────────────────────────────────────────────────────────
 sep = "=" * 72
@@ -116,7 +121,7 @@ print(f"  Ω=φ+π   = {Omega:.10f}")
 print(f"  AURA    = (3φ+π)/2 = {AURA:.10f}")
 print(f"  MIRA    = AURA/2   = {MIRA:.10f}")
 print(f"  KAL     = (φ+π)/2+π = {KAL:.10f}")
-print(f"  H₀,alg  = 3Ω² = {H0_alg:.6f} km/s/Mpc")
+print(f"  3(φ+π)² = 3Ω² = {H0_alg:.6f}   (número PURO, blanco)")
 
 print(f"\n── Step 1: α-attractor parameter and UV identity ────────────────────")
 print(f"  α = φ⁴/3            = {alpha_attr:.10f}   (Paper 1 inflaton curvature)")
@@ -136,7 +141,7 @@ print(f"  s_K_IR         = 3Ω_DE(1+w₀) = {s_K_IR:.8f}  [Paper 7 + Friedmann]"
 print(f"  ρ_DE(1+w₀)    = s_K_IR/3    = {rho_DE_1pw:.8f}")
 print(f"  X_bg_IR       = s_K_IR×KAL/6 = {X_bg_IR:.8f}")
 print(f"  f_screen_IR   = (π−φ)/Ω²  = {f_screen_IR:.8f}  [AURA cancels exactly]")
-print(f"  H₀,IR         = {H0_alg/(1-f_screen_IR):.4f} km/s/Mpc  →  {tension_IR:.2f}σ SH0ES")
+print(f"  H₀,glob IR    = {H0_glob_IR:.4f} km/s/Mpc  →  {tension_IR:.2f}σ vs 3(φ+π)²")
 
 print(f"\n── Step 3: self-consistent X_bg with full K(X) ──────────────────────")
 print(f"  Quadratic: 4X²/M⁴ + 2X/KAL − ρ_DE(1+w₀) = 0")
@@ -159,10 +164,11 @@ print(f"  f_screen_UV = s_K_full/(3·MIRA) = {f_screen_UV:.8f}")
 print(f"  f_screen_IR = (π−φ)/Ω²        = {f_screen_IR:.8f}")
 print(f"  Δf = +{(f_screen_UV-f_screen_IR):.6f}  (+{(f_screen_UV/f_screen_IR-1)*100:.2f}%)")
 print(f"")
-print(f"  H₀,alg (Paper 1)    = {H0_alg:.6f} km/s/Mpc")
-print(f"  H₀,local IR         = H₀/(1−f_IR) = {H0_alg/(1-f_screen_IR):.4f} km/s/Mpc  →  {tension_IR:.2f}σ SH0ES")
-print(f"  H₀,local UV         = H₀/(1−f_UV) = {H0_UV:.4f} km/s/Mpc  →  {tension_UV:.4f}σ SH0ES")
-print(f"  SH0ES (Riess 2022)  =              {H0_SH0ES:.4f} km/s/Mpc  ±{sigma_SH0ES:.2f}")
+print(f"  3(φ+π)² PURO        = {H0_alg:.6f}  (blanco, sin unidades)")
+print(f"  SH0ES (ENTRADA)     =              {H0_SH0ES:.4f} km/s/Mpc  ±{sigma_SH0ES:.2f}")
+print(f"  H₀,glob IR          = SH0ES(1−f_IR) = {H0_glob_IR:.4f} km/s/Mpc  →  {tension_IR:.2f}σ")
+print(f"  H₀,glob UV          = SH0ES(1−f_UV) = {H0_glob_UV:.6f} km/s/Mpc  →  {tension_UV:.2e}σ")
+print(f"  residuo UV          = {H0_glob_UV-H0_alg:+.3e} km/s/Mpc   (σ propagado {sigma_glob:.4f})")
 print(f"")
 
 # ── UV ladder summary ─────────────────────────────────────────────────────────
@@ -173,7 +179,7 @@ print(f"  α = φ⁴/3 = {alpha_attr:.8f}  (inflaton curvature → r=0.00813)")
 print(f"  M⁴ = 45α² = 5φ⁸ ρ_crit = {M4_UV:.4f} meV⁴  →  M = {M4_UV**0.25:.3f} meV")
 print(f"  s_K_full = {s_K_UV:.5f}  (+{UV_correction*100:.2f}% over s_K_IR={s_K_IR:.5f})")
 print(f"  f_screen = {f_screen_UV:.5f}")
-print(f"  H₀,local = {H0_UV:.4f} km/s/Mpc  ← {tension_UV:.4f}σ from SH0ES")
+print(f"  H₀,glob  = {H0_glob_UV:.6f} km/s/Mpc  ← residuo {H0_glob_UV-H0_alg:+.2e} vs 3(φ+π)²")
 
 print(f"\n── Cross-check: AURA cancellation at UV ──────────────────────────────")
 # At UV, AURA does NOT cancel in f_screen_full because s_K_full ≠ s_K_IR.
@@ -195,9 +201,11 @@ print(f"""
   Step 3: s_K_full = {s_K_UV:.6f}  = s_K_IR × {s_K_UV/s_K_IR:.6f}  (+{UV_correction*100:.2f}%)
   Step 4: f_screen_UV = {f_screen_UV:.6f}  (+{(f_screen_UV/f_screen_IR-1)*100:.2f}% over Paper 9)
 
-  CANÓNICO (reframe ω_m-directo 2026-06-19, base H_alg={H0_alg} km/s/Mpc):
-    IR:  H₀,local = H_alg/(1−f_IR) = {H0_alg/(1-f_screen_IR):.4f} km/s/Mpc  ({tension_IR:.2f}σ SH0ES)  ← titular Paper 9
-    UV:  H₀,local = H_alg/(1−f_UV) = {H0_UV:.4f} km/s/Mpc  ({tension_UV:.4f}σ SH0ES)  ← titular Paper 10  [M⁴=5φ⁸]
+  CANÓNICO (2026-09-06): SH0ES ENTRA, H_global SALE. Blanco 3(φ+π)²={H0_alg:.6f} (PURO):
+    IR:  H₀,glob = SH0ES(1−f_IR) = {H0_glob_IR:.4f} km/s/Mpc  ({tension_IR:.2f}σ)  ← titular Paper 9
+    UV:  H₀,glob = SH0ES(1−f_UV) = {H0_glob_UV:.6f} km/s/Mpc  (residuo {H0_glob_UV-H0_alg:+.2e})  ← titular Paper 10  [M⁴=5φ⁸]
+    σ propagado de SH0ES = {sigma_glob:.4f} km/s/Mpc — DOMINA sobre el residuo UV:
+    la cascada NO mide M⁴ (compatible desde 0.2× hasta ∞).
 
   The same α that fixes the inflationary tensor-to-scalar ratio r = 12α/N² ≈ 0.00813
   (testable by LiteBIRD 2032) also fixes the dark-energy UV cutoff M = φ²×5^(1/4)×ρ_crit^(1/4).

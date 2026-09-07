@@ -100,10 +100,15 @@ canonical:
   obs_KiDS_sigma8:     0.737   # KiDS-1000 σ8; ±0.020
   obs_DES_S8:          0.776   # DES-Y3 S8; ±0.017
 
-  # Cascada Hubble (reframe 2026-06-17: H global = H_alg = 67.962; Fase B VERIFICADO)
-  H_global_km_s_Mpc:   67.962     # H global de fondo = H_alg (base de la cascada)
-  H0_local_IR_km_s_Mpc: 72.86     # Paper 9 — 0.17σ SH0ES (script ssee_paper9_verification, Fase B)
-  H0_local_UV_km_s_Mpc: 73.040    # Paper 10 — 0.00σ SH0ES (script ssee_paper10_verification, Fase B)
+  # Cascada Hubble — DIRECCIÓN CANÓNICA (2026-09-06): SH0ES ENTRA, H_global SALE.
+  # 3(φ+π)² es un NÚMERO PURO (sin unidades): NO es entrada de la cascada,
+  # es el blanco contra el que se compara la salida. El único H medido es SH0ES;
+  # el de Planck se INFIERE dentro de ΛCDM (sus libres se acomodan al dato).
+  H0_SH0ES_km_s_Mpc:    73.04     # ENTRADA — medido (Riess+2022, ±1.04)
+  num_alg_3Omega2:      67.96214  # blanco de comparación, PURO (sin unidades)
+  H0_glob_IR_km_s_Mpc:  68.13     # SALIDA IR  = 73.04×(1−0.067253) — 0.17σ vs num_alg
+  H0_glob_UV_km_s_Mpc:  67.96214  # SALIDA UV  = 73.04×(1−0.069522) — residuo +4.2e-06
+  sigma_glob_propagado: 0.970     # 1.04×(1−f) — DOMINA sobre el residuo UV
   f_screen_IR:         0.06725    # (π−φ)/Ω² = αK/(3·MIRA)  [INVARIANTE]
   f_screen_UV:         0.06952    # αK_full/(3·MIRA)        [INVARIANTE]
   # Posterior MCMC reframe: prior H_alg=67.962 (ancla CMB ω_m-directo) + DESI DR2 REAL.
@@ -217,8 +222,10 @@ retired:
   - {pattern: "0.737",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ₈_eff = fit de α_WDM a KiDS (no forward)"}
   - {pattern: "0.702",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ₈ IS-ODE fuente Ω_m,dyn — retirada"}
   - {pattern: "0.725",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S₈ IS-ODE fuente Ω_m,dyn — retirada"}
-  - {pattern: "71.87",     reason: "H0_local IR cascada H_MIRA viejo (1.12σ) — reframe usa H_alg→72.86"}
-  - {pattern: "72.05",     reason: "H0_local UV cascada H_MIRA viejo (0.96σ) — reframe usa H_alg→73.04"}
+  - {pattern: "71.87",     reason: "H0_local cascada H_MIRA viejo — dirección invertida, retirada 2026-09-06"}
+  - {pattern: "72.05",     reason: "H0_local UV cascada H_MIRA viejo — dirección invertida, retirada 2026-09-06"}
+  - {pattern: "72.86",     reason: "H0_local IR = 3(φ+π)²/(1−f): usaba el NÚMERO PURO como entrada dimensional. Dirección invertida 2026-09-06 → la salida es H0_glob=68.13"}
+  - {pattern: "73.040",    reason: "H0_local UV = 3(φ+π)²/(1−f): mismo defecto. Dirección invertida 2026-09-06 → la salida es H0_glob=67.96214"}
   - {pattern: "8.81 meV",  reason: "M cutoff viejo (normalización ρ_crit anterior)"}
   - {pattern: "8.82 meV",  reason: "M cutoff viejo"}
   - {pattern: "9.62 meV",  reason: "M cutoff @ρ_crit(H=67.037) → 9.68 @H_alg=67.962 (reframe)"}

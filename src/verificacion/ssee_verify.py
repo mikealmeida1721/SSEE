@@ -2972,7 +2972,7 @@ _PREF_NIVEL = [
     (("R37", "R38", "R40", "R41", "R42", "R43", "R44", "R45",
       "R1 ", "R2 ", "R9", "R10", "R11", "R13", "R14", "R15", "R17", "R18",
       "R19", "R21", "R22", "R23", "R24", "R27", "R28", "R29", "R30",
-      "diccionario", "sello"), 5),
+      "R55", "diccionario", "sello"), 5),
     (("memoria", "archivo", "R12", "R39", "R46"), 6),
 ]
 
@@ -3614,8 +3614,94 @@ try:
 except Exception as _e:
     check("R53 capa operable", False, str(_e))
 
+print("\nCapa R55 — la cascada de Hubble no invierte su dirección")
+# POR QUÉ EXISTE. 3(φ+π)² es un NÚMERO PURO, sin unidades. Escribir
+# H_local = 3(φ+π)²/(1−f_screen) lo usa como ENTRADA de una cascada
+# dimensional: dimensionar álgebra a mano. El único H que se MIDE es
+# SH0ES (el de Planck se INFIERE, y dentro de ΛCDM, cuyos libres se
+# acomodan al dato). Por eso la dirección canónica es
+#   SH0ES ENTRA  ->  H_global SALE:   H_glob = H_SH0ES · (1 − f).
+# La suite vivió 8 documentos con la dirección invertida y el guardián
+# dio VERDE 222/222 sin verla: ninguna regla preguntaba por el SENTIDO
+# de la operación, sólo por los valores. Esta regla cierra ese hueco.
+# Los σ son invariantes bajo la inversión (la lente es multiplicativa),
+# así que un chequeo de VALOR nunca lo habría detectado.
+try:
+    _R55_MAL = re.compile(
+        r"(?:67\.962\d*|3\s*\(\s*\\?(?:phiG|varphi|phi)\s*\+\s*\\?pi\s*\)\s*\^?\s*\{?2\}?"
+        r"|H_?0?\^?\{?\\?rm\s*alg\}?|H0_alg|H0_global)"
+        r"\s*(?:[/}{]|\s)+\(?\s*1\s*[-−]\s*"
+        r"(?:\\fsc|\\fscr|f_?\{?\\?rm\s*scr\}?|f_screen|fscreen|fsc"
+        r"|0\.0672\d*|0\.0695\d*)")
+
+    def _r55_sitios(texto):
+        """Devuelve las coincidencias de 'número puro / (1 - f)'."""
+        return _R55_MAL.findall(texto.replace("\\frac{", "").replace("\n", " "))
+
+    _R55_REPO = pathlib.Path(__file__).resolve().parents[2]
+    _r55_docs, _r55_malos = 0, []
+    _r55_yo = pathlib.Path(__file__).resolve()
+    for _sub in ("manuscript", "submission_PRD", "src"):
+        _rp = _R55_REPO / _sub
+        if not _rp.is_dir():
+            continue
+        for _ext in ("*.tex", "*.py"):
+            for _f in sorted(_rp.rglob(_ext)):
+                _sp = str(_f)
+                if "archive" in _sp or "superseded" in _sp:
+                    continue
+                if _f.resolve() == _r55_yo:
+                    continue
+                try:
+                    _t = _f.read_text(encoding="utf-8", errors="ignore")
+                except OSError:
+                    continue
+                _a = _f.name
+                _r55_docs += 1
+                # una línea que se declara superada/retirada no cuenta
+                _lineas_malas = [
+                    _ln for _ln in _t.split("\n")
+                    if _r55_sitios(_ln)
+                    and not re.search(r"supersed|retirad|superad|viej|old register"
+                                      r"|no quote|do not quote|invertida", _ln, re.I)]
+                if _lineas_malas:
+                    _r55_malos.append(f"{_a}:{len(_lineas_malas)}")
+
+    check("R55 ningún documento usa el número puro como entrada de la cascada",
+          not _r55_malos,
+          f"{_r55_docs} archivos escaneados, 0 sitios invertidos"
+          if not _r55_malos else
+          "dirección invertida en " + "; ".join(sorted(_r55_malos)[:6]))
+
+    check("R55 el guardián escaneó una superficie real",
+          _r55_docs >= 30, f"{_r55_docs} archivos .tex/.py escaneados (piso 30)")
+
+    # CONTROL (R53): el detector debe MARCAR la forma invertida y DEJAR PASAR
+    # la correcta. Sin este control la regla podría estar siempre en verde.
+    _c_mal_1 = r"H_0^{\rm local} = \frac{H_0^{\rm alg}}{1 - \fsc} = 72.86"
+    _c_mal_2 = r"H0_local = H0_alg / (1 - fscreen)"
+    _c_mal_3 = r"= \frac{67.962}{1-0.06725} \approx 72.86"
+    _c_bien_1 = r"H_0^{\rm glob} = H_0^{\rm SH0ES}\,(1-\fsc) = 68.13"
+    _c_bien_2 = r"H0_glob = H0_SHOES * (1 - fscreen)"
+    _c_bien_3 = r"el 67.962/(1-f)=72.86 es la forma superada, retirada 2026-09-06"
+    _marca = [bool(_r55_sitios(_c)) for _c in (_c_mal_1, _c_mal_2, _c_mal_3)]
+    _pasa  = [not _r55_sitios(_c) for _c in (_c_bien_1, _c_bien_2)]
+    _exime = not [
+        _ln for _ln in (_c_bien_3,)
+        if _r55_sitios(_ln)
+        and not re.search(r"supersed|retirad|superad|viej|old register"
+                          r"|no quote|do not quote|invertida", _ln, re.I)]
+    check("R55 el detector distingue la dirección correcta de la invertida",
+          all(_marca) and all(_pasa) and _exime,
+          f"3 formas invertidas marcadas ({sum(_marca)}/3), "
+          f"2 correctas limpias ({sum(_pasa)}/2), "
+          f"1 mención histórica eximida ({'sí' if _exime else 'NO'})")
+except Exception as _e:            # noqa: BLE001
+    check("R55 la capa de dirección de cascada corrió", False,
+          f"excepción: {_e}", nivel=5)
+
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 218          # 216 +2 R52b (clase completa, no sólo ×ρ_crit)
+_PISO_CHECKS = 225          # +3 R55 (direccion de cascada, 2026-09-06); solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

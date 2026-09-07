@@ -4158,8 +4158,38 @@ if fails:
         print(f"   x  {_f}")
     print("\nNo commitear ni sellar hasta resolverlo.")
     sys.exit(1)
-linea = f"VERDE — sin regresiones, {checks} comprobaciones."
-if opens:
-    linea += f"  {len(opens)} problema(s) ABIERTO(s) rastreado(s) — ver Registro."
-print(linea)
+# ─────────────────────────────────────────────────────────────────────
+# VEREDICTO — dos preguntas distintas, y antes se respondia solo una.
+#
+# POR QUE CAMBIA (2026-09-07, lo dijo Mike). «VERDE» respondia «¿empeoro
+# algo?» — una prueba de REGRESION. Pero se lee como «¿esta el modelo en
+# orden?», y esas dos cosas se separan cada vez que se abre un track_open
+# o se sube un tope de deuda. El resultado es un VERDE que se puede
+# FORZAR: basta declarar el defecto y ponerle techo. Y eso fue pasando:
+# 18 problemas abiertos, 57 sitios con la particula retirada presentada
+# como vigente, 76 de R44, 55 de R54... todos «declarados», todos verdes.
+#
+# Su frase exacta: «que el guardian este en verde parece mas como si
+# fuera forzado a estar en verde que lo que realmente refleja el modelo».
+# Tenia razon, y la prueba es que los ultimos tres hallazgos los encontro
+# el, o los encontre yo leyendo — no el guardian.
+#
+# Ahora el veredicto dice las DOS cosas, y la segunda manda en el titular.
+_deuda_total = sum(_DEUDA_REAL.get(_k, 0) for _k in _DEUDA_MAX) + _n_md
+_en_orden = not opens and _deuda_total == 0
+print()
+print(f"REGRESION : sin regresiones, {checks} comprobaciones pasan.")
+if _en_orden:
+    print("MODELO    : EN ORDEN — 0 abiertos, 0 deuda declarada.")
+    print("\nVERDE")
+else:
+    print(f"MODELO    : EN DEUDA — {len(opens)} problema(s) abierto(s), "
+          f"{_deuda_total} sitio(s) de deuda declarada.")
+    _top = sorted(((_DEUDA_REAL.get(_k, 0), _k) for _k in _DEUDA_MAX),
+                  reverse=True)[:4]
+    print("            mayores: "
+          + ", ".join(f"{_k}={_v}" for _v, _k in _top if _v)
+          + (f", particula_md={_n_md}" if _n_md else ""))
+    print("\nAMARILLO — no hay regresiones, pero el modelo NO esta en orden.")
+    print("Un VERDE aqui seria forzado: la deuda esta declarada, no resuelta.")
 sys.exit(0)

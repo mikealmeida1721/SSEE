@@ -47,6 +47,11 @@ def main():
     t0 = time.time()
     todas_w, todas_om, todas_s8 = [], [], []
     n_por_cadena = []
+    # chi2_min por cadena. Se guarda porque Paper 6 lo PUBLICA (fila LCDM de la
+    # tabla S8 y el Delta chi2 de la Eq. dchi2) y la primera version de este
+    # script no lo escribia: el numero vivia solo en la cadena, y el log no lo
+    # respaldaba. Recuperado a mano el 2026-09-07; desde aqui sale solo.
+    chi2_min_cad = []
 
     for i in range(1, 5):
         path = f'{CHAINS_DIR}/lcdm.{i}.txt'
@@ -55,6 +60,7 @@ def main():
         i0 = int(n * BURN_IN_FRAC)
         idx = np.arange(i0, n, THIN_EVERY)
         n_por_cadena.append(len(idx))
+        chi2_min_cad.append(float(cols['chi2'][i0:].min()))
         print(f'cadena {i}: {n} filas, burn-in {i0}, {len(idx)} submuestreadas')
 
         for j in idx:
@@ -101,6 +107,10 @@ def main():
             'Rminus1_colas': 0.115482,
             'converged': True,
         },
+        'dof': 212,
+        'chi2_min': round(min(chi2_min_cad), 5),
+        'chi2_min_por_dof': min(chi2_min_cad) / 212.0,
+        'chi2_min_por_cadena': [round(c, 3) for c in chi2_min_cad],
         'Omega_m': {'media': wmean(todas_om, todas_w), 'sigma': wstd(todas_om, todas_w)},
         'sigma8': {'media': wmean(sigma8_arr, todas_w), 'sigma': wstd(sigma8_arr, todas_w)},
         'S8': {'media': wmean(S8_arr, todas_w), 'sigma': wstd(S8_arr, todas_w)},

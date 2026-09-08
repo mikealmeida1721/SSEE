@@ -1,4 +1,4 @@
-# Gemelo ΛCDM del perfil de `ω_c` — el desplazamiento es del DATO, y hay una cara mala
+# Gemelo ΛCDM del perfil de `ω_c` — el desplazamiento es del DATO
 
 **Corrida:** `perfil_wc_boss_lcdm.py`, terminada 2026-09-08 06:38.
 **Coste medido:** 18 puntos × ~51 s = **16 min**.

@@ -57,6 +57,9 @@ logs:
   boss_cobaya_lcdm:           src/p06_growth/cobaya_boss.py
   boss_cobaya_ssee:           src/p06_growth/cobaya_boss.py
   kids_lcdm_fondofijo:        src/p06_growth/cobaya_kids.py
+  # 2026-09-08: el script vivia en el scratchpad; se sube al repo porque su
+  # resultado es publicable y un log sin fuente versionada no vale.
+  perfil_wc_boss:             src/p06_growth/perfil_wc_boss.py
 
 historicos:
   # ── Retirados 2026-09-07 — su script está en archive/, no se re-corren ──

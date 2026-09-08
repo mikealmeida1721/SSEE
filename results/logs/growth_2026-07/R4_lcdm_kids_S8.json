@@ -1,5 +1,5 @@
 {
-  "corrida": "R4 \u2014 LCDM control metodologico, KiDS-1000",
+  "corrida": "R4 — LCDM control metodologico, KiDS-1000",
   "muestreador": "Cobaya mcmc, 4 cadenas MPI, reanudada tras corte de luz",
   "n_parametros_libres": 13,
   "burn_in_frac": 0.3,
@@ -16,6 +16,15 @@
     "Rminus1_colas": 0.115482,
     "converged": true
   },
+  "dof": 212,
+  "chi2_min": 262.7462,
+  "chi2_min_por_dof": 1.2393688679245283,
+  "chi2_min_por_cadena": [
+    262.746,
+    262.918,
+    262.813,
+    262.756
+  ],
   "Omega_m": {
     "media": 0.231034222322688,
     "sigma": 0.045787736544540436
@@ -33,15 +42,5 @@
     "err_publicado": 0.024,
     "tension_sigma": 0.06147497585397447
   },
-  "tiempo_analisis_seg": 4620.548850774765,
-  "chi2_min": 262.7462,
-  "chi2_min_por_dof": 1.239368868,
-  "dof": 212,
-  "chi2_min_por_cadena": [
-    262.746,
-    262.918,
-    262.813,
-    262.756
-  ],
-  "chi2_min_procedencia": "columna chi2 de las 4 cadenas Cobaya en /mnt/datos/SSEE_data/chains_p6/kids/lcdm.{1..4}.txt; recuperado 2026-09-07 porque analiza_lcdm_R4.py no lo habia guardado y Paper 6 ya lo publicaba"
+  "tiempo_analisis_seg": 36099.32732915878
 }

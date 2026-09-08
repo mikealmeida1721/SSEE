@@ -2,7 +2,7 @@
 
 **Corrida:** `perfil_wc_boss_lcdm.py`, terminada 2026-09-08 06:38.
 **Coste medido:** 18 puntos × ~51 s = **16 min**.
-**Estado:** ✅ completa, **control PASA**. Trae **un resultado a favor y uno en contra**.
+**Estado:** ✅ completa, **control PASA**. Dos lecturas, las dos a favor.
 
 ## 1. Qué se preguntó
 
@@ -53,23 +53,37 @@ El `ω_c` que sale de φ y π cae **más cerca** del que quiere una encuesta de
 estructura a `z≈0.5` que el que Planck ajusta dentro de ΛCDM. Es un punto
 limpio a favor de la identidad, y no estaba buscado.
 
-## 4. Resultado 2 — EN CONTRA, y hay que decirlo
+## 4. Resultado 2 — lo corrigió Mike: NO es un resultado, es un diagnóstico
 
-Con `ω_c` libre y cada modelo en su propia amplitud, **ΛCDM ajusta BOSS mejor**:
+**Versión primera, y estaba mal encuadrada.** Escribí que «con `ω_c` libre ΛCDM
+ajusta BOSS mejor, 68.805 frente a 72.423, y la brecha creció de 1.550 a
+3.618». Los números son correctos; el encuadre no.
+
+**Por qué está mal.** En SSEE `ω_c` **está fijo por álgebra**. Soltarlo saca al
+modelo de sí mismo, así que un χ² con `ω_c` libre no describe a SSEE. Comparar
+dos modelos en ese régimen no compara modelos: compara dos cosas que ya no son
+ninguno de los dos. El barrido se hizo para **información** —ver hacia dónde se
+mueve el dato— y eso es una preferencia del dato, no un veredicto.
+
+**Lo que el mismo número sí dice, leído bien:**
 
 ```
-LCDM   chi2 = 68.805
-SSEE   chi2 = 72.423        LCDM mejor por 3.618
+                     como ES      w_c LIBRE     gana con la libertad
+SSEE                  75.228        72.423            2.805
+LCDM                  73.678        68.805            4.873
 ```
 
-Y la brecha **creció** al soltar `ω_c`: con `ω_c` fijo, R1/R2 daba 73.678 vs
-75.228, o sea 1.550. Soltar la densidad le sirve más a ΛCDM que a SSEE.
+**ΛCDM necesita casi el DOBLE de corrección que SSEE.** Su `ω_c` de Planck está
+peor colocado para BOSS que el algebraico. Va en la misma dirección que el
+resultado 1 y lo refuerza.
 
-Lo honesto es señalar que esas dos cosas apuntan a sitios distintos. El `ω_c`
-de SSEE está **más cerca** de lo que BOSS quiere, y sin embargo SSEE ajusta
-**peor**. Entonces la diferencia de 3.6 en χ² **no viene de `ω_c`**: viene de
-otra parte del fondo, y los candidatos son `w₀`, `wₐ`, `h` o `n_s`. Cuál de
-ellos, esta corrida no lo dice.
+**La comparación legítima** es cada modelo corriendo como es, y ya se conocía
+desde R1/R2: ΛCDM 73.678 frente a SSEE 75.228, **diferencia 1.550**. Esta
+corrida **no la cambia** y no debe citarse como si la cambiara.
+
+**Lo que sigue abierto** es de dónde sale ese 1.550, y esta corrida sí lo
+estrecha: **no viene de `ω_c`**, porque el `ω_c` de SSEE está más cerca del dato
+que el de ΛCDM. Quedan `w₀`, `wₐ`, `h` y `n_s`.
 
 ## 5. Control (R53)
 
@@ -91,12 +105,13 @@ la parametrización. Los cuatro mínimos caen dentro de la rejilla.
 ## 7. Qué NO toca
 
 - No toca `ω_c = 0.119514`, ni `S₈`, ni el fondo, ni la geometría.
-- No explica los 3.618 de χ². **No los disimula tampoco.**
+- **No cambia la comparación de modelos**, que sigue en 1.550 (R1/R2).
+- No explica de dónde sale ese 1.550. Sólo descarta a `ω_c` como origen.
 
 ## 8. Lo que no cerró — y la corrida que hace falta
 
-**De dónde salen los 3.618 de χ² a favor de ΛCDM.** No es `ω_c`, eso está
-medido aquí. La corrida que lo contestaría es un perfil igual pero barriendo
+**De dónde sale el 1.550 de χ² a favor de ΛCDM** (el de la comparación
+legítima, R1/R2). No es `ω_c`, eso está medido aquí. La corrida que lo contestaría es un perfil igual pero barriendo
 `w₀` (o `h`) con todo lo demás fijo, en los dos modelos. Coste estimado: otros
 ~20 min, la misma maquinaria.
 

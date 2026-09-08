@@ -2708,3 +2708,53 @@ $\lvert\beta_c\rvert\ge1.0$, así que $-3.997847$ está cinco veces fuera de la
 región donde el fondo acoplado admite solución.
 
 </details>
+
+---
+
+## OP-24 — R44 no mira las celdas de tabla — ⚪ ABIERTO (2026-09-08)
+
+**Severidad:** baja para la física, media para la presentación.
+
+### El hueco
+
+R44 exige *«constante de la lectura con `=` a 6 decimales»*. En una tabla el
+valor va solo en su celda, sin signo igual, así que **R44 no ve ninguna tabla**.
+Lo destapó un caso de mutación cuyo ancla caía justo ahí: `$9.519253$` cambiado
+a `$9.52$` dentro de una celda pasaba VERDE.
+
+### Medida
+
+Barriendo `manuscript/*.tex` y `submission_PRD/*.tex` con el patrón de celda
+`& $valor$ &` y el mismo rango de 2 a 5 decimales que usa R44:
+
+| Documento | Sitios | Ejemplo |
+|---|---|---|
+| Unified Journal | 10 | `& $-0.840$ &` (w₀ a 3 dec) |
+| Paper 1 | 8 | `& 4.7596 &` (Ω a 4 dec) |
+| Paper 3 | 8 | `& $-0.66997$ &` (wₐ a 5 dec) |
+| Paper 4 | 8 | `& 67.96214 &` |
+| Paper 5 | 4 | `& 0.309 &` (Ω_m a 3 dec) |
+| Papers 10, 2, 9, Sealed, PRD | 3+3+2+2+2 | — |
+| **Total** | **50** | — |
+
+### Por qué NO se ensanchó sin decidirlo
+
+Ensanchar R44 a celdas pondría 50 rojos en **diez documentos publicables**, y la
+mayoría son tablas de resumen donde redondear es la convención tipográfica, no
+un error. La política de redondeo del proyecto (álgebra 12 decimales, modelo 6)
+no dice qué precisión debe llevar una tabla de resumen, y decidirlo cambia la
+presentación de la suite entera. Es una decisión de autor, no del guardián.
+
+### Las tres salidas
+
+1. **Declarar la precisión en el encabezado de cada tabla** (*«values quoted to
+   4 decimals»*) y que R44 lea esa declaración. Es lo que ya hace R41 con
+   *«to three decimals»*. Coste: tocar ~14 tablas; ganancia: la regla se vuelve
+   universal sin falsas alarmas.
+2. **Llevar las 50 celdas a 6 decimales.** Coherente con la política, pero
+   ensucia tablas cuyo propósito es leerse de un vistazo.
+3. **Dejarlo como punto ciego declarado**, que es el estado de hoy.
+
+**Recomendación:** la 1. Conserva la legibilidad de las tablas, cierra el hueco
+de verdad, y la infraestructura para leer una precisión declarada ya existe en
+R41. Pendiente de la decisión de Mike.

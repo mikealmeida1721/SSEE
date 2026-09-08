@@ -37,3 +37,11 @@ after crop  : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
 0.119800    1004.1454   [457s]
 0.120000    1005.1150   [472s]
 0.120200    1007.2851   [536s]
+0.120400    1010.7761   [532s]
+0.120600    1015.5318   [443s]
+0.120800    1021.5507   [561s]
+  parabola: w_c = 0.119748 +- 0.000252
+
+CONTROL (R53): sigma_SSEE / sigma_LCDM = 0.977
+  cerca de 1 => la barra la pone el DATO, no el algebra.
+  muy < 1     => SSEE sale artificialmente estrecho: el +-0.000248 seria artefacto y el 0.08 sigma habria que retirarlo.

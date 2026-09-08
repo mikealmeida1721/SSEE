@@ -819,9 +819,19 @@ that SSEE predicts forward, $\omega_c=\KAL\,\omega_b\,n_s$
 % materia COMPLETA, Omega_m = 0.308881 (Sec. double_protection), que es
 % exactamente lo que sostiene omega_c = KAL_0 . omega_b . n_s. Medido el
 % 2026-09-07 contra plik_lite TTTEEE + lowT + lowE crudo con el fondo
-% algebraico y (A_s, tau) libres: el CMB pide omega_c = 0.119534 +/-
-% 0.000248 y la identidad da 0.119514, es decir 0.08 sigma. Se sustituye
+% algebraico y (A_s, tau) libres: el CMB pide omega_c = 0.119334 +/-
+% 0.000246 y la identidad da 0.119514, es decir 0.73 sigma. Se sustituye
 % por tanto un ancla muerta por una viva y medida.
+% CORREGIDO 2026-09-08. Aqui decia 0.119534 +/- 0.000248 y "0.08 sigma", y
+% ese valor central NO se reproduce: dos medidas independientes sobre el
+% mismo dato y el mismo likelihood dan 0.11933 --- el perfil de chi2(omega_c)
+% con (logA,tau) minimizados (results/logs/cmb_perfil_wc.json) y el ajuste
+% conjunto con n_s libre (results/logs/cmb_ajuste_conjunto_wc_ns.json). El
+% error si coincide (0.000246 vs 0.000248), o sea el metodo era el mismo y
+% lo que estaba mal era el numero. El argumento NO cambia: 0.73 sigma sigue
+% siendo acuerdo, solo que menos espectacular que el 0.08 que se cito.
+% El control del perfil (R53) sale limpio: la anchura de SSEE dividida por la
+% de LCDM es 0.977, o sea la barra la pone el DATO, no el algebra.
 This example also demonstrates that Eq.~\eqref{eq:alpha_ssee} produces
 physically reasonable deflection angles, not merely formal algebraic
 expressions.

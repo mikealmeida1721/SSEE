@@ -63,6 +63,19 @@ def _prosa_tex(_t):
     return re.sub(r"(?<!\n)[ \t]*\n[ \t]*(?!\n)(?![\\%])", " ", _t)
 
 
+# TOPES APRETADOS 2026-08-02. Un trinquete sólo sirve si se aprieta: R44 tenía
+# tope 112 con 79 sitios reales — 33 de holgura por la que podían colarse 33
+# violaciones nuevas en verde. (El 112 venía de subir el tope 100→112 al
+# endurecer el detector de 1 a 2 decimales: razón legítima, pero nadie lo
+# volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
+# Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
+_DEUDA_MAX = {
+    "R66": 0,            # constantes del nucleo re-tecleadas (2026-09-08)
+    "R42": 0, "R43": 0, "R44": 0, "R45": 0}
+# Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
+# compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
+_DEUDA_REAL = {}
+
 fails = []
 checks = 0
 
@@ -1064,8 +1077,12 @@ def _tex_sin_comentarios(_t):
     # El .rstrip() no es cosmetico: sin el, quitar «  % nota» deja los dos
     # espacios que precedian al comentario y el texto sale distinto. Lo cazo
     # el propio control de la regla al escribirla.
-    return "\n".join(re.sub(r"(?<!\\)%.*$", "", _l).rstrip()
-                     for _l in _t.split("\n"))
+    _out = []
+    for _l in _t.split("\n"):
+        if _l.lstrip().startswith("%"):
+            continue          # linea que es SOLO comentario: LaTeX no la ve
+        _out.append(re.sub(r"(?<!\\)%.*$", "", _l).rstrip())
+    return "\n".join(_out)
 
 
 def _ts68(_rel):
@@ -1110,6 +1127,8 @@ for _tex68 in sorted((ROOT.parent / "manuscript").glob("*.tex")):
         # No se traga el fallo: un except mudo aqui daria VERDE por vacio.
         _r68.append(f"{_tex68.stem} (no comparable: {type(_e68).__name__})")
 _TOPE_R68 = 0                       # 14 -> 0: los 14 recompilados; SOLO BAJA
+_DEUDA_REAL["R68"] = len(_r68)
+_DEUDA_MAX["R68"] = _TOPE_R68
 check("R68 la deuda de PDF publicados sin recompilar no crece",
       len(_r68) <= _TOPE_R68,
       f"{len(_r68)} de {_n68} PDF de docs/ ya no corresponden a su .tex "
@@ -1122,6 +1141,12 @@ check("R68 el tope de PDF sin recompilar esta apretado",
       else f"BAJAR el tope a {len(_r68)}: sobran {_TOPE_R68 - len(_r68)}")
 # CONTROL (R53): el cambio de CONTENIDO se marca; el de un comentario LaTeX no.
 _c68 = [("\\section{A}\ntexto viejo\n", "\\section{A}\ntexto NUEVO\n", True),
+        # CONTROL que faltaba (2026-09-08): ANADIR lineas de comentario. La
+        # primera version las vaciaba en vez de quitarlas, asi que quedaban
+        # lineas en blanco de mas y el texto salia distinto: marcaba Paper 8
+        # por un cambio que solo tocaba comentarios. Lo cazo en vivo, no el
+        # control, porque ningun caso cambiaba el NUMERO de lineas.
+        ("\\section{A}\ntexto\n", "% nota\n% otra nota\n\\section{A}\ntexto\n", False),
         ("\\section{A}\ntexto viejo\n", "\\section{A}  % nota al margen\ntexto viejo\n",
          False),
         ("\\section{A}\n50\\%% de la muestra\n", "\\section{A}\n50\\%% de la muestra\n",
@@ -1130,8 +1155,8 @@ _f68 = [f"caso {_i}" for _i, (_a, _b, _esp) in enumerate(_c68)
         if (_tex_sin_comentarios(_a) != _tex_sin_comentarios(_b)) is not _esp]
 check("R68 el detector distingue el cambio de contenido del comentario LaTeX",
       not _f68, "; ".join(_f68) if _f68
-      else "3 casos: el texto cambiado se marca; el comentario anadido y el "
-           "signo de porcentaje escapado, exentos")
+      else "4 casos: el texto cambiado se marca; el comentario anadido (en la "
+           "linea y como linea nueva) y el porcentaje escapado, exentos")
 
 # --- R65: si un script declara su log fuente, sus numeros deben estar ahi
 # POR QUE EXISTE (2026-09-08). regenerate_fig8_bao_residuals.py llevaba los
@@ -1529,7 +1554,11 @@ for _id, _e in sorted(_retr.items()):
         _r60[_id] = _viv
 _n60 = sum(len(_v) for _v in _r60.values())
 # Trinquete: 2026-09-07 arranca en la cuenta real. SOLO BAJA.
-_TOPE_R60 = 64
+# 64 -> 61 el 2026-09-08: llevaba 3 de holgura y nadie lo veia, porque R50
+# solo miraba los trinquetes registrados en _DEUDA_REAL y este no estaba.
+_TOPE_R60 = 61
+_DEUDA_REAL["R60"] = _n60
+_DEUDA_MAX["R60"] = _TOPE_R60
 check("R60 la deuda del registro de retracciones no crece",
       _n60 <= _TOPE_R60,
       f"{_n60} sitios (tope {_TOPE_R60}) en {len(_r60)}/{len(_retr)} "
@@ -2392,18 +2421,6 @@ except Exception as e:
 #   2. el recuento sólo puede BAJAR — si sube, algo se escribió mal después.
 # Al cerrar un documento se añade aquí y su deuda debe ser cero.
 _LEIDOS = ("SSEE_Paper1_",)
-# TOPES APRETADOS 2026-08-02. Un trinquete sólo sirve si se aprieta: R44 tenía
-# tope 112 con 79 sitios reales — 33 de holgura por la que podían colarse 33
-# violaciones nuevas en verde. (El 112 venía de subir el tope 100→112 al
-# endurecer el detector de 1 a 2 decimales: razón legítima, pero nadie lo
-# volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
-# Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
-_DEUDA_MAX = {
-    "R66": 0,            # constantes del nucleo re-tecleadas (2026-09-08)
-    "R42": 0, "R43": 0, "R44": 0, "R45": 0}
-# Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
-# compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
-_DEUDA_REAL = {}
 # R66 se calcula arriba (capa de constantes), antes de existir este dict.
 _DEUDA_REAL["R66"] = _n66
 
@@ -2677,6 +2694,8 @@ try:
                     continue
                 break
     _TOPE_R44B = 20                 # 14 -> 0: los 14 recompilados; SOLO BAJA
+    _DEUDA_REAL["R44b"] = len(_r44b)
+    _DEUDA_MAX["R44b"] = _TOPE_R44B
     check("R44b la deuda de constantes redondeadas en TABLAS no crece",
           len(_r44b) <= _TOPE_R44B,
           f"{len(_r44b)} celdas (tope {_TOPE_R44B}): " + "; ".join(_r44b[:3])

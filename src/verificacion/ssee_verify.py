@@ -1078,33 +1078,41 @@ def _ts68(_rel):
 
 
 import subprocess as _sp68
+# COMO SE COMPARA (rehecho 2026-09-08). La primera version miraba FECHAS de
+# commit. Funcionaba, pero tenia dos defectos: solo veia el atraso un commit
+# DESPUES de causarlo, y una vez saldada la deuda su caso de mutacion dejaba de
+# valer —no se puede aflojar un trinquete vacio—. Ahora compara el CONTENIDO:
+# el .tex de disco contra el .tex tal como estaba en el commit del PDF. Si
+# difieren en algo que no sean comentarios de LaTeX, el PDF publicado ya no
+# corresponde a su fuente, sin importar fechas. Se caza en el momento, y editar
+# un .tex basta para probarlo.
 _r68, _n68 = [], 0
 for _tex68 in sorted((ROOT.parent / "manuscript").glob("*.tex")):
     _pdf68 = _R68_DOCS / f"{_tex68.stem}.pdf"
     if not _pdf68.exists():
         continue
     _n68 += 1
-    _ta, _tb = _ts68(f"manuscript/{_tex68.name}"), _ts68(f"docs/{_pdf68.name}")
-    if not (_ta and _tb and _ta > _tb):
-        continue
-    # ¿cambio de verdad, o solo comentarios? Se compara el .tex de entonces.
     try:
         _sha68 = _sp68.run(["git", "log", "-1", "--format=%H", "--",
                             f"docs/{_pdf68.name}"], cwd=ROOT.parent,
                            capture_output=True, text=True, timeout=20).stdout.strip()
+        if not _sha68:
+            continue                      # PDF nunca commiteado: nada que comparar
         _viejo68 = _sp68.run(["git", "show", f"{_sha68}:manuscript/{_tex68.name}"],
                              cwd=ROOT.parent, capture_output=True, text=True,
                              timeout=20).stdout
-        if _viejo68 and (_tex_sin_comentarios(_viejo68)
-                         == _tex_sin_comentarios(_tex68.read_text(errors="ignore"))):
-            continue                      # solo cambiaron comentarios de LaTeX
-    except Exception:
-        pass
-    _r68.append(f"{_tex68.stem} ({(_ta - _tb) // 86400}d)")
+        if not _viejo68:
+            continue                      # el .tex no existia entonces
+        if (_tex_sin_comentarios(_viejo68)
+                != _tex_sin_comentarios(_tex68.read_text(errors="ignore"))):
+            _r68.append(_tex68.stem)
+    except Exception as _e68:
+        # No se traga el fallo: un except mudo aqui daria VERDE por vacio.
+        _r68.append(f"{_tex68.stem} (no comparable: {type(_e68).__name__})")
 _TOPE_R68 = 0                       # 14 -> 0: los 14 recompilados; SOLO BAJA
 check("R68 la deuda de PDF publicados sin recompilar no crece",
       len(_r68) <= _TOPE_R68,
-      f"{len(_r68)} de {_n68} PDF de docs/ mas viejos que su .tex "
+      f"{len(_r68)} de {_n68} PDF de docs/ ya no corresponden a su .tex "
       f"(tope {_TOPE_R68}): " + "; ".join(_r68[:4])
       + (" …" if len(_r68) > 4 else "")
       if _r68 else f"{_n68} PDF de docs/ al dia con su fuente")

@@ -657,14 +657,19 @@ REGLAS = {
         capa="R68 — el PDF publicado vs el .tex que lo produce",
         intencion="documento-publicado-al-dia",
         ambito="docs/*.pdf contra manuscript/*.tex",
-        archivo="src/verificacion/ssee_verify.py",
+        archivo="manuscript/SSEE_Paper7_EFT.tex",
         exenciones=[("cambios que solo tocan comentarios de LaTeX (%): no "
                      "pueden mover una pagina", None)],
         # El trinquete de 14 es la deuda medida el dia que se abrio la regla.
         # Aflojarlo es la unica forma de que un PDF atrasado pase inadvertido,
         # asi que eso es lo que se muta.
-        mutacion=[("el trinquete de PDF sin recompilar, aflojado",
-                   "_TOPE_R68 = 0", "_TOPE_R68 = 3")],
+        # Se muta el .tex, que es el defecto REAL: tocar la fuente sin
+        # recompilar deja el PDF publicado diciendo otra cosa. El caso
+        # anterior aflojaba el trinquete y dejo de valer al llegar la
+        # deuda a 0 — un trinquete vacio no se puede aflojar.
+        mutacion=[("el .tex cambia y el PDF publicado se queda atras",
+                   "\\section{Conclusions}",
+                   "The screening fraction is now 0.5.\n\\section{Conclusions}")],
     ),
     "R31": dict(
         capa="R31 — bytecode: lo importado == el fuente",

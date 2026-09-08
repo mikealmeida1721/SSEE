@@ -23,9 +23,16 @@ hay que **decidir** cuál corre, no lanzarlas según van saliendo.
 
 | corrida | núcleos | lanzada | coste medido/estimado | qué desbloquea |
 |---|---|---|---|---|
-| `cobaya_kids lcdmfijo` | 4 (mal, ver regla 2) | 19:43 | ~6–10 h (R3 análogo tardó similar) | la casilla que falta de la tabla 2×2: ¿ΛCDM con fondo fijo también muestra la tensión en `A_s`? |
-| `ajuste_conjunto_wc_ns` | 1 | 19:43 | ~1–2 h | si `n_s` libre, elegido por el CMB, reproduce `w_c` por la identidad → prueba de si `n_s` es el agente |
-| `analiza_lcdm_R4` | 1 | 19:42 | 8.6 h (medido: 30 973 s) | cierra R35; regenera el log que borré por error |
+| `cobaya_kids lcdmfijo` | 4 (mal, ver regla 2) | 07-09 19:43 | **12 h y sigue**; `R−1 = 0.226` a las 06:51, para en 0.03 → ~2 días más | la casilla que falta de la tabla 2×2: ¿ΛCDM con fondo fijo también muestra la tensión en `A_s`? |
+
+## Terminadas 2026-09-08 (madrugada, sin Mike delante)
+
+| corrida | coste medido | resultado |
+|---|---|---|
+| `analiza_lcdm_R4` | 10 h 02 min | reproduce lo publicado (`S₈=0.757105±0.019354`, `χ²=262.7462/212`); cierra R35 |
+| `ajuste_conjunto_wc_ns` | ~1 h | SSEE y ΛCDM ajustan el CMB igual (χ² 1002.77 vs 1002.75); el `ω_c` que pide el CMB queda a 0.3% del que da la identidad |
+| `perfil_wc_boss` | 18 min | **la brecha de amplitud NO es `ω_c` disfrazado**; traspasado a Paper 6 |
+| `perfil_wc_boss_lcdm` | 16 min | el desplazamiento es del DATO; el `ω_c` algebraico cae más cerca del dato que el de Planck |
 
 ## En cola — ordenadas por (valor / coste)
 
@@ -33,7 +40,7 @@ hay que **decidir** cuál corre, no lanzarlas según van saliendo.
 |---|---|---|---|---|
 | 1 | **ΔBIC de Paper 3 con `τ` ajustado** | ~1 h | si el `ΔBIC=−24.02` mejora al no prestarle el `τ` fiducial de ΛCDM. Medido aparte: SSEE gana 1.84, ΛCDM 0.47 ⟹ podría mejorar ~1.4, pero hay que rehacerlo con la precisión de lente y el `Σm_ν` del paper, no con los míos | — |
 | 2 | **perfil de `w_c`, control ΛCDM** | ~40 min | la mitad que faltó al morir con el reinicio. Sin él no se puede afirmar que el `±0.000248` de SSEE lo pone el dato y no el álgebra | — |
-| 3 | **pendiente `d ln w_c / d ln n_s`** | ~1 h | complementa la #2 de la cola de arriba: impone `n_s` y mide si `w_c` responde con pendiente +1 | — |
+| ~~3~~ | ~~**pendiente `d ln w_c / d ln n_s`**~~ ✅ **HECHA** — `results/logs/cmb_ns_forzado.json`, pendiente medida **−0.042** (la identidad predice +1). Y su gemela `cmb_wb_forzado.json`: pendiente **+0.430**, con el mínimo de χ² justo en el `ω_b` algebraico. Forzar un ingrediente algebraico saca al modelo de sí mismo, así que esto mide la verosimilitud, no la fórmula | ~1 h | complementa la #2 de la cola de arriba: impone `n_s` y mide si `w_c` responde con pendiente +1 | — |
 | 4 | **BOSS ΛCDM con fondo LIBRE** | **cientos de horas** | la única versión publicable de R1/R2: hoy ΛCDM corrió con el fondo fijo, lo que le impide mostrar sus propias tensiones. Requiere reconstruir las tablas LPT por muestra (~18 s/llamada) | rediseño previo: emulador o templates precalculados |
 | 5 | **`b1_*` de Paper 3** | horas–día | las 4 figuras rancias (41 días) que R36 marca | — |
 | 6 | **`fuga2` — punto de fuga con `τ` libre** | ~1 h | con `A_s` clavado donde lo ponen KiDS+BOSS, qué ingrediente quiere moverse. La v1 tenía `τ` congelado y dio una base absurda (Δχ²=13 618) | — |

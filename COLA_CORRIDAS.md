@@ -112,7 +112,7 @@ alguna vez se estrecha.
 | # | corrida | coste | qué contesta | depende de |
 |---|---|---|---|---|
 | ~~8~~ | ~~**techo σ₈ con el fondo canónico y sus neutrinos**~~ ✅ **HECHA** — sale **0.814854 / S₈=0.826827**, un 2.3% por debajo del `0.8335 / 0.846` publicado; control ΛCDM pasa a 0.04σ del criterio previo. Informe: `BANDEJA/2026-09-08_techo_sigma8_neutrinos.md` | 1 min | si el techo publicado es el del modelo canónico o el de una variante sin neutrinos masivos | — |
-| 9 | **auditoría de las configuraciones rescatadas** | ~1 h | los `.ini` de `config/class/` rescatados el 08-09 (`ssee_v36*`) **no llevan neutrinos masivos**. Cualquier número citado que salga de ellos hereda el mismo sesgo del 2.3% que se acaba de encontrar. Hay que ver cuáles alimentan un número publicado | la #8, que ya dio el método y el control |
+| 9 | **auditoría de las configuraciones rescatadas** | ~1 h | los `.ini` de `config/class/` rescatados el 08-09 **no llevan neutrinos masivos**: medido, `ncdm` aparece en 0 de 5 (`ssee_v36`, `_canonical`, `_IS`, `_nomira`, `lcdm_planck2018_ref`). El único con `ncdm` es `_twosector`, y ahí es la **partícula retirada**, no un neutrino. Sus salidas alimentan números publicados: los picos `ℓ = 220, 535, 811` del Unified Journal y el **31.5% sin MIRA** (Unified L110/504/534). Falta ver si el `ℓ=220, 536, 813` de Paper 3 sale de CLASS o de CAMB | la #8, que ya dio el método y el control |
 
 ## Regla 7 (2026-09-08) — la configuración se versiona o el número no existe
 

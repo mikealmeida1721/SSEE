@@ -37,7 +37,7 @@ AHORA (post-ataque OP-14, ver OPEN_PROBLEMS.md §OP-14):
 ```
 
 **Por qué cambió la flecha OP-14 → OP-9:** El ataque directo a OP-14 (script
-`src/ssee_op14_neutrino_mass.py`, 2026-05-23) reveló que:
+`archive/codigo/investigacion/open_problems/ssee_op14_neutrino_mass.py`, 2026-05-23) reveló que:
 - La forma $\mathcal{R}=4\cdot\text{KAL}-22$ es **estructuralmente frágil**
   (perturbación 10⁻³ en φ,π → 25% drift en Σm_ν).
 - Scan algebraico de ~150 monomios no halla identidad exacta (mejor candidato
@@ -113,7 +113,7 @@ Candidatos a explorar:
 
 **OP-13 ✅ resuelto** (Opción A: P8 → DRAFT pending OP-9, 2026-05-23, commit 89710b3).
 
-**OP-14 ✅ atacado y archivado** (script `src/ssee_op14_neutrino_mass.py`,
+**OP-14 ✅ atacado y archivado** (script `archive/codigo/investigacion/open_problems/ssee_op14_neutrino_mass.py`,
 2026-05-23): no derivable directamente, blocked-by-OP-10. Ver OPEN_PROBLEMS.md
 §OP-14 para evidencia (fragilidad H1, no DoF match H2, scan sin identidad H3).
 

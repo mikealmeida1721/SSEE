@@ -15,7 +15,7 @@ Si no cae en eV: aceptar lo que dé SSEE, ajustar fenomenología P6.
 ## Lo que YA exploramos (sesión 2026-05-25)
 
 ```
-src/op10_principled_search.py — 3 familias probadas:
+archive/codigo/investigacion/open_problems/op10_principled_search.py — 3 familias probadas:
 ─────────────────────────────────────────────────────
 C1: ΔV = c·V₀·(αφ)²·exp(-αφ)         → m_φ ≈ 1-2 μeV   (loop corr.)
 C2: V = V₀·tanh²(βφ/√6) α-attractor   → m_φ ≈ 1.7 μeV
@@ -185,7 +185,7 @@ OP-10 abierta → P6 declarado fenomenológico
 
 ## Próxima sesión — primer paso
 
-1. Construir `src/op10_systematic_search.py`:
+1. Construir `archive/codigo/investigacion/open_problems/op10_systematic_search.py`:
    - Inventario completo de escalas y combinaciones
    - Test cada mecanismo 2-6
    - Reporte estructurado: m_φ, parámetros usados, status principios

@@ -716,9 +716,18 @@ check("V-L3-IS  tau_Pi SI esta anclado: por Sigma m_nu, no por c2_eff",
 # apuntaba. Ninguna regla vigilaba eso: R33/R35/R36 miran logs y
 # figuras, ninguna miraba las RUTAS citadas en la prosa.
 _R59_RUTA = re.compile(r"(?<![\w/])((?:src|archive|results)/[\w./-]+\.py)")
+# ENSANCHADA 2026-09-08 (lo pidio Mike): miraba 33 documentos —los .md de la
+# raiz y los .tex de manuscript— y su titulo dice «la prosa», sin mas. Faltaban
+# el PRD y los .md de subcarpetas (BANDEJA, docs, informes), que citan rutas
+# igual que los demas. Un enunciado universal debe barrer lo que pueda barrer.
 _r59, _SUP59 = [], []
 for _f in sorted(list(ROOT.parent.glob("*.md"))
-                 + list((ROOT.parent/"manuscript").rglob("*.tex"))):
+                 + [_q for _q in ROOT.parent.rglob("*.md")
+                    if _q.parent != ROOT.parent
+                    and not {"archive", "sandbox_unificado", ".git",
+                             "node_modules", "motor3d"} & set(_q.parts)]
+                 + list((ROOT.parent/"manuscript").rglob("*.tex"))
+                 + list((ROOT.parent/"submission_PRD").glob("*.tex"))):
     if "archive" in str(_f) or _f.name == "CHANGELOG.md":   # CHANGELOG es historia
         continue
     _txt = _f.read_text(errors="ignore")
@@ -1533,6 +1542,24 @@ for relpath, expected in SEALS.items():
           else "ROTO — el archivo cambió después de sellarse")
 
 # ─────────────────────────────────────────────────────────────────────
+# REGLA DE ALCANCE (2026-09-08, tambien de Mike, y va ANTES que la de abajo)
+#
+# Su objecion: «si eran universales era porque esperaban ver TODO lo que su
+# universalidad queria; lo unico que hiciste fue decir lo que si ve y lo que
+# no. No seria mejor que la regla SI sea universal, al menos en lo que se
+# pueda aplicar?». Tiene razon: declarar el limite es honesto pero es el
+# segundo mejor. Primero se ensancha hasta donde el enunciado alcanza; solo
+# lo que quede fuera por imposibilidad se declara.
+#
+# Ensanchado el 2026-09-08:
+#   R34   89 -> 130 .py    (le faltaba class_ssee/ entero, 41 ficheros)
+#   R40   17 -> 34 docs    (le faltaban los .md de la raiz)
+#   R41   17 -> 34 docs    (idem)
+#   R59   33 -> 87 docs    (le faltaban el PRD y los .md de subcarpetas)
+# Solo R59 encontro algo al ensanchar, y encontro 6 rutas muertas en 5
+# documentos: scripts que existen pero se habian movido a archive/ o a
+# src/p02_mcmc/ y nadie repunto la cita. Corregidas.
+#
 # REGLA DE REDACCION DE LOS MENSAJES VERDES (2026-09-08, la pidio Mike)
 #
 # «un verde puede ser correcto y aun asi mentir, si su mensaje promete mas de
@@ -2010,9 +2037,14 @@ try:
     _DIM = {"H_0^alg (=3(φ+π)²)": (3 * (phi + pi) ** 2,
                                    r"3\s*\(\\(?:varphi|phiG)\s*\+\s*\\pi\)\s*\^?\{?2\}?"
                                    r"[^0-9]{0,40}?(\d+\.\d+)")}
+    # ENSANCHADA 2026-09-08: miraba 17 .tex y su titulo habla de
+    # «un documento» / «la suite». Los .md de la raiz (CLAUDE.md, el
+    # Registro, OPEN_PROBLEMS...) son documentos vivos y quedaban fuera.
     _mal41, _ndoc41 = [], 0
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
-                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+                      + list((_REPO / "submission_PRD").glob("*.tex"))
+                      + [_q for _q in _REPO.glob("*.md")
+                         if _q.name not in ("CHANGELOG.md", "MEMORY.md")]):
         _ndoc41 += 1
         _cont = _tx.read_text(errors="ignore")
         for _n41, (_e41, _pat41) in _DIM.items():
@@ -2538,9 +2570,14 @@ try:
           not _f40, "; ".join(_f40) if _f40
           else "4 casos reales: paréntesis que oculta la igualdad y «≈» sobre fórmula exacta")
 
+    # ENSANCHADA 2026-09-08: miraba 17 .tex y su titulo habla de
+    # «un documento» / «la suite». Los .md de la raiz (CLAUDE.md, el
+    # Registro, OPEN_PROBLEMS...) son documentos vivos y quedaban fuera.
     _mal40, _ndoc40 = [], 0
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
-                      + list((_REPO / "submission_PRD").glob("*.tex"))):
+                      + list((_REPO / "submission_PRD").glob("*.tex"))
+                      + [_q for _q in _REPO.glob("*.md")
+                         if _q.name not in ("CHANGELOG.md", "MEMORY.md")]):
         _ndoc40 += 1
         for _por, _frag in _r40(_tx.read_text(errors="ignore")):
             _mal40.append(f"{_tx.name}: {_por} — «{_frag}»")
@@ -2598,8 +2635,12 @@ try:
     _pat34 = _re.compile(
         r"(?:mnu|Smnu|SUM_MNU_EV|sigma_m_nu|m_nu|C_nu|C_NU)\s*=\s*"
         r"(0\.069(?:0[0-9]*)?|94\.07[0-9]*)\s*(?:[^0-9.]|$)")
+    # ENSANCHADA 2026-09-08 (lo pidio Mike): miraba solo src/ y su titulo dice
+    # «ningun .py activo». class_ssee/ tambien es codigo activo — 41 ficheros
+    # que quedaban fuera. R25 ya barria los dos; esta no.
     _malos, _npy34 = [], 0
-    for _py in sorted((_REPO / "src").rglob("*.py")):
+    for _py in sorted(list((_REPO / "src").rglob("*.py"))
+                      + list((_REPO / "class_ssee").rglob("*.py"))):
         if _py.name in _EXCL or "archive" in _py.parts:
             continue
         _npy34 += 1

@@ -91,7 +91,7 @@ Cada tier **incluye** los anteriores. Ante la duda, sube de tier.
 
 ## Pendientes conocidos para este sistema
 
-- `src/ssee_audit_consistency.py` es el auditor viejo basado en regex con valores
+- `archive/codigo/ssee_audit_consistency.py` es el auditor viejo basado en regex con valores
   canónicos hardcodeados (algunos ya obsoletos, p.ej. busca `m_φ=5.71`). Debe
   reescribirse para importar de `ssee_core` y comparar, o retirarse.
 - `AUDIT.md` arrastra números fσ₈ desactualizados (Paper 6); su pasada Tier 1

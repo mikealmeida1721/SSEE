@@ -129,5 +129,5 @@ Esto baja una de las "vulnerabilidades pendientes" de "esperanza de derivación"
 
 ## Archivos
 
-- `src/h_alg_vs_mira_investigation.py` — script ejecutable de auditoría
+- `archive/codigo/investigacion/h_alg_vs_mira_investigation.py` — script ejecutable de auditoría
 - Esta nota: `H_ALG_VS_MIRA_INVESTIGATION.md`

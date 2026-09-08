@@ -356,23 +356,29 @@ REGLAS = {
         exenciones=[("documentos aún no leídos (deuda contada, sólo baja)", None)],
         mutacion=[("Ω_m,dyn a 3 decimales",
                    "$\\Omega_{m,\\rm dyn}=0.160050$ (DESI)",
-                   "$\\Omega_{m,\\rm dyn}=0.160$ (DESI)"),
-                  # El ancla debe llevar el «=»: R44 declara su ambito como «constantes de
-        # la lectura CON = a 6 decimales», y en una celda de tabla el valor va
-        # solo, sin igual. Un ancla en tabla no probaba la regla, probaba su
-        # punto ciego — que queda medido aparte (50 sitios, OP nuevo).
-        ("K_v a 2 decimales, con el signo igual delante",
-                   "$2(\\varphi+\\pi)=9.519253$",
-                   "$2(\\varphi+\\pi)=9.52$")],
+                   "$\\Omega_{m,\\rm dyn}=0.160$ (DESI)")],
+        # SEGUNDO CASO RETIRADO (2026-09-08). Vigilaba SOLAR2_KRYSTOS_V, que
+        # es (phi+2pi)^2 * 2Omega = 594.28 — el multiplicador de la particula.
+        # Al retirarse esta el 2026-08-01 sus sitios quedaron EXENTOS por la
+        # regla de valores retirados, asi que el caso ya no prueba nada. Mi
+        # intento de reapuntarlo a «2(varphi+pi)=9.519253» fue un error mio:
+        # ese numero es 2Omega, no SOLAR2_KRYSTOS_V, y lo cazaba R37.
     ),
     "R45": dict(
         capa="R45 — estado de los OP: la prosa concuerda con OPEN_PROBLEMS.md",
         intencion="coherencia-con-registro",
         ambito="prosa .tex, menciones OP-N",
         exenciones=[("documentos aún no leídos (deuda contada)", None)],
-        mutacion=[("OP resuelto citado como abierto",
-                   "(OP-9 through OP-12) close by dissolution",
-                   "with the remaining open problems OP-9/11/14")],
+        mutacion=[# El ancla vieja estaba rodeada de narracion legitima («not solved,
+        # but no longer questions»), asi que la exencion la eximia CON RAZON:
+        # el caso probaba la exencion, no la regla. Reapuntada a una frase
+        # neutra, y con el OP DELANTE de la afirmacion, que es la forma que el
+        # detector no veia hasta el ensanchamiento del 2026-09-08. Se inserta al
+        # abrir una seccion, lejos de la prosa de retracciones: dentro de
+        # ella la exencion actua CON RAZON y el caso probaria la exencion.
+        ("OP resuelto citado como abierto, con el OP delante",
+                   "\\section{Dark Energy Evolution}",
+                   "OP-9 is still open. \\section{Dark Energy Evolution}")],
     ),
     "R46": dict(
         capa="R46 — el guardián hizo todo el trabajo que dice hacer",

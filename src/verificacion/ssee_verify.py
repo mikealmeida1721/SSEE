@@ -2398,10 +2398,19 @@ try:
             # OP-22b» y el detector leia «OP-22», que SI esta cerrado ⟹ falso
             # positivo. Un sub-OP es un OP distinto de su padre: OP-22 cerrado
             # no dice nada del estado de OP-22b.
-            for _run in _re.findall(r"OP-(\d+[a-z]?(?:/\d+[a-z]?)*)", _m.group(0)):
+            # ENSANCHADO 2026-09-08: el campo donde se buscan los OPs es la
+            # ORACION entera, no solo lo que sigue a la afirmacion. El ingles
+            # pone el OP a los dos lados —«open problems OP-9» pero tambien
+            # «OP-9 is still open»— y mirando solo adelante la segunda forma
+            # era invisible. Medido antes de aplicar: hoy no destapa ningun
+            # sitio real, o sea ningun documento se mueve; es preventivo.
+            _ini45 = tx.rfind(".", 0, _m.start()) + 1
+            _campo45 = tx[max(_ini45, _m.start() - 80):_m.end()]
+            for _run in _re.findall(r"OP-(\d+[a-z]?(?:/\d+[a-z]?)*)", _campo45):
                 for _n in _run.split("/"):
                     if _n in _RESUELTOS:
-                        _h.append(f"OP-{_n} citado como abierto — «{_m.group(0)[:58].strip()}»")
+                        _h.append(f"OP-{_n} citado como abierto — "
+                                  f"«{' '.join(_campo45.split())[:58]}»")
         return _h
 
     # El caso NEGATIVO debe usar OPs que sigan ABIERTOS de verdad. Usaba
@@ -2416,7 +2425,12 @@ try:
             ("with the remaining open problems OP-15 and OP-16 for the dark sector", False),
             # CONTROL del sufijo: el padre cerrado se marca, el hijo abierto no.
             ("what remains open is OP-22, the IS normalisation", True),
-            ("what remains open is OP-22b, the field-to-fluid map", False)]
+            ("what remains open is OP-22b, the field-to-fluid map", False),
+            # CONTROL del ensanchamiento hacia atras (2026-09-08): el OP
+            # DELANTE de la afirmacion se marca igual que detras...
+            ("OP-9 is still open for the dark-matter sector", True),
+            # ...pero sin cruzar el punto: la oracion anterior no cuenta.
+            ("OP-9 closed by dissolution. OP-16 remains open", False)]
     _f45 = [c for c, esp in _t45 if bool(_r45(c)) != esp]
     check("R45 el detector cruza la prosa con el registro de OPs",
           not _f45, "; ".join(_f45) if _f45
@@ -2475,7 +2489,16 @@ except Exception as e:
 #   SOLAR²·K_v  (pág. 8) — el multiplicador de la masa φ-DM se escribía
 #               «= 594.28»: dos decimales con signo igual, siendo un número puro
 #               en (φ,π) — SOLAR = φ+2π, KRYSTOS_V = 2Ω.
-print("\nCapa R44 — constantes de la lectura con «=» a 6 decimales")
+# ALCANCE, medido 2026-09-08 (lo pidio Mike: ensanchar hasta donde el
+# enunciado alcance). R44 vigila DOS constantes, no las ~20 del nucleo, y eso
+# es DELIBERADO, no estrechez: se midio que mirarlas todas da 300 sitios en 14
+# documentos, y la mayoria son legitimos —«$3(\varphi+\pi)^2 = 67.96214$» a 5
+# decimales es la forma canonica de la suite, y «$\pi=3.142$» es prosa normal.
+# Ensancharla seria cambiar 300 sitios correctos por ruido. Las dos que vigila
+# son las que tuvieron DERIVA historica de precision. El nombre del check dice
+# eso ahora; el anterior prometia una universalidad que la regla no tiene, y
+# fue lo que me hizo escribir un caso de mutacion contra su punto ciego.
+print("\nCapa R44 — las dos constantes con deriva historica, con «=» a 6 decimales")
 try:
     _C44 = {"Omega_m_dyn": (pi - phi) / (2 * (phi + pi)),
             "SOLAR2_KRYSTOS_V": (phi + 2 * pi) ** 2 * 2 * (pi + phi)}
@@ -2515,7 +2538,7 @@ try:
                       + list((_REPO / "submission_PRD").glob("*.tex"))):
         _todos44 += [f"{_tx.name}: {x}" for x in _r44(_tx.read_text(errors="ignore"))]
     _l44, _deuda44 = _particiona(_todos44)
-    check("R44 documentos leídos — constantes de la lectura a 6 decimales",
+    check("R44 documentos leídos — las dos constantes con deriva, a 6 decimales",
           not _l44, "; ".join(_l44[:5]) if _l44
           else f"leídos limpios; {_deuda44} sitios de deuda en el resto")
     _DEUDA_REAL["R44"] = _deuda44

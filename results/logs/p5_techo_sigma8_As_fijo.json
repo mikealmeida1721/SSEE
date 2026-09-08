@@ -1,18 +1,29 @@
 {
  "corrida": "techo sigma8/S8 con A_s FIJADO a Planck (diagnostico, NO prediccion)",
  "que_contesta": "cuanta estructura da el fondo de SSEE si A_s se hereda de Planck en vez de ajustarse; A_s es libre en el modelo",
- "fuente_Pk": "class_ssee/output/can_cold__pk.dat",
+ "fuente_Pk": "results/logs/p5_techo_evidencia/can_cold__pk.dat",
  "metodo": "top-hat R=8 Mpc/h, Peebles 1980; interp log-log a 4000 puntos",
  "sigma8_techo": 0.8333684597622903,
  "Omega_m_CMB": 0.3088808787787524,
  "S8_techo": 0.8456135716768318,
- "control_LCDM": {
-  "estado": "NO CONCLUYENTE",
-  "fuente_Pk": "class_ssee/output/ref_lcdm__pk.dat",
-  "sigma8": 0.8527579579483949,
-  "sigma8_Planck2018": 0.8111,
-  "nota": "sale 1.4% alto. Causa identificada y ajena al integrador: las corridas LCDM guardadas no llevan neutrinos masivos, y sin ellos sobra poder a 8 Mpc/h en ese orden. Para cerrarlo hay que correr CLASS con la baseline de Planck (Sum m_nu = 0.06 eV) y comprobar que da 0.811."
+ "control_SSEE_vs_LCDM_mismo_metodo": {
+  "fuente_Pk": "results/logs/p5_techo_evidencia/lcdm_planck2018__pk.dat",
+  "sigma8_LCDM": 0.8220682881876473,
+  "razon_SSEE_sobre_LCDM": 1.0137460254056943,
+  "nota": "ESTE es el control que dice algo: el mismo integrador y el mismo tratamiento en los dos. SSEE da 1.4% mas estructura."
  },
+ "diagnostico_del_metodo": {
+  "estado": "NO CONCLUYENTE",
+  "sigma8_Planck2018_publicado": 0.8111,
+  "nota": "la referencia sale 1.4% alta contra el valor publicado, porque ninguna de las dos corridas guardadas lleva neutrinos masivos. Al faltar en las DOS, la razon de arriba no se ve afectada; el valor absoluto de cada una si."
+ },
+ "lo_que_NO_esta_establecido": [
+  "can_cold__pk.dat no tiene .ini: no se puede certificar con que se corrio",
+  "estaba fuera del repo (class_ssee/output/ esta en .gitignore); copiado a results/logs/p5_techo_evidencia/ para que exista",
+  "su gemelo can_part__pk.dat, del mismo minuto, es la corrida de dos sectores con la particula, retirada el 2026-08-01",
+  "el fondo canonico de SSEE lleva Sum m_nu = 0.06849 eV; si esta corrida no los lleva, 0.8335 no es el techo del modelo canonico"
+ ],
+ "pendiente_para_cerrarlo": ".ini versionado con el fondo canonico y sus neutrinos + la misma referencia LCDM con la baseline de Planck",
  "superado_por": {
   "valor": "S8 = 0.7555 +/- 0.0192 (0.11 sigma vs KiDS-1000)",
   "log": "results/logs/growth_2026-07/R3_ssee_kids_S8.json",

@@ -1,0 +1,71 @@
+{
+ "corrida": "punto de fuga v2 \u2014 tau LIBRE en la base y en cada variante",
+ "logA_tarde": 2.8418,
+ "referencia": {
+  "chi2": 1003.5860397789045,
+  "logA": 3.0448340130228546,
+  "tau": 0.0554590468914248
+ },
+ "base": {
+  "chi2": 5662.884390968898,
+  "tau": 0.010000003051757855,
+  "castigo": 4659.298351189993
+ },
+ "ingredientes": {
+  "ombh2": {
+   "valor": 0.02161838717536175,
+   "algebraico": 0.02241775678109985,
+   "sigmas": -5.329130704920665,
+   "chi2": 5558.602830623113,
+   "recupera": 104.28156034578478,
+   "pct_del_castigo": 2.2381387171557945,
+   "tau": 0.010000005503039647
+  },
+  "omch2": {
+   "valor": 0.11261542079170321,
+   "algebraico": 0.11951440843160877,
+   "sigmas": -5.749156366587963,
+   "chi2": 4730.6150980576585,
+   "recupera": 932.2692929112391,
+   "pct_del_castigo": 20.008791509844734,
+   "tau": 0.010000005042049672
+  },
+  "H0": {
+   "valor": 66.87515328086315,
+   "algebraico": 67.96213732340931,
+   "sigmas": -2.0129334121225244,
+   "chi2": 5556.566669312077,
+   "recupera": 106.31772165682105,
+   "pct_del_castigo": 2.281839745885071,
+   "tau": 0.01000000000647877
+  },
+  "ns": {
+   "valor": 1.043411044786989,
+   "algebraico": 0.9655581462513669,
+   "sigmas": 18.53640441324337,
+   "chi2": 5061.373815828181,
+   "recupera": 601.5105751407164,
+   "pct_del_castigo": 12.909896078818166,
+   "tau": 0.010000000209316288
+  },
+  "logA": {
+   "valor": 3.0448340130228546,
+   "algebraico": 3.044,
+   "sigmas": 0.059572358775326704,
+   "chi2": 1003.5860397789045,
+   "recupera": 4659.298351189993,
+   "pct_del_castigo": 100.0,
+   "tau": 0.0554590468914248
+  }
+ },
+ "control": {
+  "criterio": "logA suelto recupera >95% del castigo",
+  "pasa": true,
+  "recupera_pct": 100.0
+ },
+ "v1_invalidada": {
+  "log": "results/logs/cmb_punto_de_fuga.json",
+  "razon": "tau congelado en la base: chi2_base=14622 frente a 1005 de referencia. Sobre una base rota el reparto no significa nada"
+ },
+ "segundos": 4807.432122468948
+}

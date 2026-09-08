@@ -845,6 +845,65 @@ check("R57 el detector distingue la ruta rota de la correcta y respeta la profun
       "el mismo un-solo-'..' a profundidad 1 (src/ directo) exento, que "
       "ahi SI apunta a la raiz")
 
+# --- R66: nadie re-teclea un valor que el NUCLEO calcula ---------------
+# POR QUE EXISTE (2026-09-08). R34 ya hacia esta comprobacion, pero solo para
+# DOS constantes (Sigma m_nu y C_nu), porque nacio de un drift concreto. La
+# pregunta de Mike —«no seria mejor que la regla si sea universal, al menos en
+# lo que se pueda aplicar»— aplica igual aqui: el enunciado vale para TODAS
+# las constantes del nucleo, no para dos.
+# Medido al generalizarla: 136 ocurrencias en 45 scripts. Cada una es un valor
+# que se quedara rancio en silencio el dia que el nucleo cambie — que es
+# justo como sobrevivio 15 dias el drift de Sigma m_nu.
+# NO bloquea: 136 rojos pararian todo el trabajo. Va con trinquete, como
+# R44/R60: el tope SOLO BAJA, y baja segun cada script se toque y pase a
+# importar del nucleo.
+# el nucleo se carga aqui (R63, mas abajo, reusa este objeto)
+import importlib.util as _ilu63
+_spec63 = _ilu63.spec_from_file_location("_core63", ROOT / "ssee_core.py")
+_core63 = _ilu63.module_from_spec(_spec63)
+_spec63.loader.exec_module(_core63)
+_R66_CONS = {_k: _v for _k, _v in vars(_core63).items()
+             if _k.isupper() and isinstance(_v, float) and abs(_v) > 1e-6}
+_R66_LIT = [(f"%.{_d}f" % _v, _k)
+            for _k, _v in _R66_CONS.items() for _d in range(5, 10)]
+def _r66_sitios(_txt):
+    _cuerpo = "\n".join(_l for _l in _txt.split("\n")
+                        if not _l.lstrip().startswith("#"))
+    return sorted({f"{_k}={_lit}" for _lit, _k in _R66_LIT
+                   if re.search(r"(?<![\w.])" + re.escape(_lit) + r"(?![\d])",
+                                _cuerpo)})
+_r66 = {}
+for _f66 in sorted(ROOT.rglob("*.py")):
+    if ("archive" in str(_f66)
+            or _f66.name in ("ssee_core.py", "ssee_verify.py",
+                             "test_guardian.py")):
+        continue
+    _s66 = _r66_sitios(_f66.read_text(errors="ignore"))
+    if _s66:
+        _r66[_f66.name] = _s66
+_n66 = sum(len(_v) for _v in _r66.values())
+_TOPE_R66 = 136                     # trinquete 2026-09-08; SOLO BAJA
+check("R66 la deuda de constantes re-tecleadas no crece",
+      _n66 <= _TOPE_R66,
+      f"{_n66} ocurrencias en {len(_r66)} scripts (tope {_TOPE_R66}); "
+      f"mayores: " + ", ".join(f"{_k}={len(_v)}" for _k, _v in
+                               sorted(_r66.items(), key=lambda x: -len(x[1]))[:3]))
+check("R66 el tope de constantes re-tecleadas está apretado",
+      _n66 >= _TOPE_R66 or _n66 == 0,
+      f"tope {_TOPE_R66} = cuenta real {_n66}" if _n66 == _TOPE_R66
+      else f"BAJAR el tope a {_n66}: sobran {_TOPE_R66 - _n66}")
+# CONTROL (R53): marca el literal del nucleo y deja pasar el import y un
+# numero ajeno de la misma forma.
+_c66 = [(f"OM = {_core63.OMEGA_M_CMB:.6f}", True),
+        ("OM = S.OMEGA_M_CMB", False),
+        ("frac = 0.123456", False),
+        (f"# comentario: OM vale {_core63.OMEGA_M_CMB:.6f}", False)]
+_f66 = [_t[:38] for _t, _esp in _c66 if bool(_r66_sitios(_t)) != _esp]
+check("R66 el detector distingue el literal del import",
+      not _f66, "; ".join(_f66) if _f66
+      else "4 casos: el literal del nucleo marcado; el import, un numero "
+           "ajeno y el literal dentro de un comentario, exentos")
+
 # --- R65: si un script declara su log fuente, sus numeros deben estar ahi
 # POR QUE EXISTE (2026-09-08). regenerate_fig8_bao_residuals.py llevaba los
 # MAP de las cadenas escritos a mano con el rotulo "(paper2_3models, jul-9,
@@ -1016,12 +1075,7 @@ check("R64 el detector distingue el literal clavado del argumento",
 _DR2_W0, _DR2_S0 = -0.838, 0.055      # DESI DR2 + Pantheon+, w0waCDM
 _DR2_WA, _DR2_SA = -0.620, 0.220      # 2503.14738
 _CHI2_2D = 0.42                       # Paper 2, covarianza COMPLETA (ecs. 25-28)
-# el nucleo se carga mas abajo, asi que aqui se importa aparte (mismo
-# patron que la guarda de bytecode rancio: se ejecuta el FUENTE en disco).
-import importlib.util as _ilu63
-_spec63 = _ilu63.spec_from_file_location("_core63", ROOT / "ssee_core.py")
-_core63 = _ilu63.module_from_spec(_spec63)
-_spec63.loader.exec_module(_core63)
+# el nucleo ya viene cargado por R66, arriba.
 # COMO se obtiene el 0.24 (y como NO). No es una cuadratura: es el chi2 2D
 # con la covarianza completa, convertido a sigma de UNA dimension por su
 # probabilidad de exceder. La cuadratura sin correlacion da 0.2299 y se
@@ -2115,11 +2169,14 @@ _LEIDOS = ("SSEE_Paper1_",)
 # endurecer el detector de 1 a 2 decimales: razón legítima, pero nadie lo
 # volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
 # Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
-_DEUDA_MAX = {"R42": 0, "R43": 0, "R44": 0,
-               "R45": 0}
+_DEUDA_MAX = {
+    "R66": 136,          # constantes del nucleo re-tecleadas (2026-09-08)
+    "R42": 0, "R43": 0, "R44": 0, "R45": 0}
 # Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
 # compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
 _DEUDA_REAL = {}
+# R66 se calcula arriba (capa de constantes), antes de existir este dict.
+_DEUDA_REAL["R66"] = _n66
 
 
 def _particiona(hallazgos):
@@ -4795,7 +4852,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 261          # +2 R65 (numeros vs su log + deuda); solo SUBE
+_PISO_CHECKS = 264          # +3 R66 (constantes re-tecleadas); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",

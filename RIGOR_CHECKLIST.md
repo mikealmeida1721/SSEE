@@ -255,3 +255,31 @@ por la transcripción.
 Y el diagnóstico condicionado **nunca** se cuela como si fuera el resultado
 publicable: el techo de σ₈ con `A_s` fijo es diagnóstico; el `S₈` con `A_s`
 libre contra dato crudo es el resultado.
+
+## R24 — El control va PRIMERO, no al final 🔴 ⛔
+**Regla (objeción de M. Almeida, 2026-09-08):** en un barrido que mide cuánto
+aporta cada pieza, **el control se corre antes que las piezas**. Si el control
+falla, todo lo medido después se tira, así que medirlo primero no es orden: es
+no gastar la corrida. Y mientras el control no haya pasado, **ningún número
+intermedio se reporta como resultado**, ni siquiera de paso.
+**Por qué (caso real):** `punto_de_fuga2.py` dejaba su control —soltar el
+parámetro que está clavado, que debe recuperar >95% del castigo— para el
+**último** de cinco. Se estuvo una hora midiendo ingredientes sin saber si la
+máquina hacía lo que decía. Corregido con `fuga2_control.py`, que lo corre
+primero y **aborta** si no pasa.
+**Verificación:** en todo script de barrido, el caso de control aparece antes
+del bucle, y hay una salida temprana si no pasa.
+
+## R25 — De uno en uno no ve las combinaciones 🟠 ⛔
+**Regla (objeción de M. Almeida, 2026-09-08):** soltar las piezas **de una en
+una** supone que el efecto se reparte entre culpables individuales. Puede no ser
+así: dos que por separado aportan poco pueden aportar mucho **juntas**, porque
+entre ellas hay degeneración. Todo barrido de uno en uno lleva al lado su
+**versión conjunta**, y se compara la suma de los individuales con lo que
+consiguen todos a la vez. Si el conjunto recupera bastante más, **el reparto de
+uno en uno está contando de menos** y hay que decirlo al reportarlo.
+**Por qué (caso real):** el punto de fuga medía `ω_b` 2.2% y `ω_c` 20.0% por
+separado, y de ahí se leía «ninguno explica la protesta». Esa lectura sólo vale
+si los cuatro juntos tampoco la explican, y eso **no estaba medido**.
+**Verificación:** el log del barrido incluye la fila «todos a la vez» y la suma
+de las individuales, las dos.

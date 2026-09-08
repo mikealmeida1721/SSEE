@@ -1046,6 +1046,85 @@ check("R67 el detector distingue la lista suelta de la constante comun",
       else "3 casos: la lista tecleada a mano se marca; el uso de _FIXTURES y "
            "un fichero cualquiera, exentos")
 
+# --- R68: ningun PDF publicado es mas viejo que el .tex que lo produce
+# POR QUE EXISTE (2026-09-08, lo pidio Mike al ver el hueco). Habia regla para
+# los LOGS contra su script (R35) y para las FIGURAS contra el suyo (R36), pero
+# ninguna para el documento contra su fuente. Y `docs/` es lo que se LEE y lo
+# que se ENVIA: el trabajo de seis semanas —la propagacion de s_K, el banner de
+# la direccion de la cascada, el cierre de OP-11— vivia en el .tex mientras el
+# PDF publicado seguia diciendo lo anterior. Medido al abrirla: 14 documentos
+# atrasados, hasta 41 dias; solo Paper 6 al dia.
+# Se compara por fecha de COMMIT, no del disco, para no gritar por el trabajo en
+# curso; y un cambio que solo toca COMENTARIOS de LaTeX (%) no cuenta, porque no
+# puede mover una pagina. Mismo criterio que R35 con el AST.
+_R68_DOCS = ROOT.parent / "docs"
+
+
+def _tex_sin_comentarios(_t):
+    # El .rstrip() no es cosmetico: sin el, quitar «  % nota» deja los dos
+    # espacios que precedian al comentario y el texto sale distinto. Lo cazo
+    # el propio control de la regla al escribirla.
+    return "\n".join(re.sub(r"(?<!\\)%.*$", "", _l).rstrip()
+                     for _l in _t.split("\n"))
+
+
+def _ts68(_rel):
+    try:
+        _o = _sp68.run(["git", "log", "-1", "--format=%at", "--", _rel],
+                       cwd=ROOT.parent, capture_output=True, text=True, timeout=20)
+        return int(_o.stdout.strip()) if _o.stdout.strip() else None
+    except Exception:
+        return None
+
+
+import subprocess as _sp68
+_r68, _n68 = [], 0
+for _tex68 in sorted((ROOT.parent / "manuscript").glob("*.tex")):
+    _pdf68 = _R68_DOCS / f"{_tex68.stem}.pdf"
+    if not _pdf68.exists():
+        continue
+    _n68 += 1
+    _ta, _tb = _ts68(f"manuscript/{_tex68.name}"), _ts68(f"docs/{_pdf68.name}")
+    if not (_ta and _tb and _ta > _tb):
+        continue
+    # ¿cambio de verdad, o solo comentarios? Se compara el .tex de entonces.
+    try:
+        _sha68 = _sp68.run(["git", "log", "-1", "--format=%H", "--",
+                            f"docs/{_pdf68.name}"], cwd=ROOT.parent,
+                           capture_output=True, text=True, timeout=20).stdout.strip()
+        _viejo68 = _sp68.run(["git", "show", f"{_sha68}:manuscript/{_tex68.name}"],
+                             cwd=ROOT.parent, capture_output=True, text=True,
+                             timeout=20).stdout
+        if _viejo68 and (_tex_sin_comentarios(_viejo68)
+                         == _tex_sin_comentarios(_tex68.read_text(errors="ignore"))):
+            continue                      # solo cambiaron comentarios de LaTeX
+    except Exception:
+        pass
+    _r68.append(f"{_tex68.stem} ({(_ta - _tb) // 86400}d)")
+_TOPE_R68 = 14                      # medido 2026-09-08; trinquete, SOLO BAJA
+check("R68 la deuda de PDF publicados sin recompilar no crece",
+      len(_r68) <= _TOPE_R68,
+      f"{len(_r68)} de {_n68} PDF de docs/ mas viejos que su .tex "
+      f"(tope {_TOPE_R68}): " + "; ".join(_r68[:4])
+      + (" …" if len(_r68) > 4 else "")
+      if _r68 else f"{_n68} PDF de docs/ al dia con su fuente")
+check("R68 el tope de PDF sin recompilar esta apretado",
+      len(_r68) >= _TOPE_R68 or not _r68,
+      f"tope {_TOPE_R68} = cuenta real {len(_r68)}" if len(_r68) == _TOPE_R68
+      else f"BAJAR el tope a {len(_r68)}: sobran {_TOPE_R68 - len(_r68)}")
+# CONTROL (R53): el cambio de CONTENIDO se marca; el de un comentario LaTeX no.
+_c68 = [("\\section{A}\ntexto viejo\n", "\\section{A}\ntexto NUEVO\n", True),
+        ("\\section{A}\ntexto viejo\n", "\\section{A}  % nota al margen\ntexto viejo\n",
+         False),
+        ("\\section{A}\n50\\%% de la muestra\n", "\\section{A}\n50\\%% de la muestra\n",
+         False)]
+_f68 = [f"caso {_i}" for _i, (_a, _b, _esp) in enumerate(_c68)
+        if (_tex_sin_comentarios(_a) != _tex_sin_comentarios(_b)) is not _esp]
+check("R68 el detector distingue el cambio de contenido del comentario LaTeX",
+      not _f68, "; ".join(_f68) if _f68
+      else "3 casos: el texto cambiado se marca; el comentario anadido y el "
+           "signo de porcentaje escapado, exentos")
+
 # --- R65: si un script declara su log fuente, sus numeros deben estar ahi
 # POR QUE EXISTE (2026-09-08). regenerate_fig8_bao_residuals.py llevaba los
 # MAP de las cadenas escritos a mano con el rotulo "(paper2_3models, jul-9,
@@ -5122,7 +5201,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 267          # +2 R67 (lista unica de fixtures); solo SUBE
+_PISO_CHECKS = 271          # +3 R68 (PDF publicado vs su fuente); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",

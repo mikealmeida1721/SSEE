@@ -653,6 +653,19 @@ REGLAS = {
                    "        _k = -_math.log(1 - (1 - 2 / _N)) / _math.log(phi)",
                    "        _k = -_math.log(1 - (1 - 3 / _N)) / _math.log(phi)")],
     ),
+    "R68": dict(
+        capa="R68 — el PDF publicado vs el .tex que lo produce",
+        intencion="documento-publicado-al-dia",
+        ambito="docs/*.pdf contra manuscript/*.tex",
+        archivo="src/verificacion/ssee_verify.py",
+        exenciones=[("cambios que solo tocan comentarios de LaTeX (%): no "
+                     "pueden mover una pagina", None)],
+        # El trinquete de 14 es la deuda medida el dia que se abrio la regla.
+        # Aflojarlo es la unica forma de que un PDF atrasado pase inadvertido,
+        # asi que eso es lo que se muta.
+        mutacion=[("el trinquete de PDF sin recompilar, aflojado",
+                   "_TOPE_R68 = 14", "_TOPE_R68 = 30")],
+    ),
     "R31": dict(
         capa="R31 — bytecode: lo importado == el fuente",
         intencion="artefacto-compilado-al-dia", ambito="src/ssee_core.py y su __pycache__",

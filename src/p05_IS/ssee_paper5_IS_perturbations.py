@@ -153,7 +153,7 @@ if abs(cs2_eff_highk) < 1e-12:
     print("  apendice de autovalores (F=186 -> entalpia 185.05, rho_crit 1370).")
     print("  Retirado: la derivacion de tau_Pi por saturacion de causalidad")
     print("  en el apendice EFT de Paper 1 (usaba rho en vez de rho+p).")
-    print("  Queda OP-22b: modo fluido vs modo campo, aun asertado.")
+    print("  Queda OP-22b: modo fluido vs modo campo, aun afirmado sin derivar.")
 elif cs2_eff_highk > 0:
     print(f"\n  IS stabilizes gradient: c²_s,eff = +{cs2_eff_highk:.2e} > 0")
 else:

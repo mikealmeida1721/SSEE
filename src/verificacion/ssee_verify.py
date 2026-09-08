@@ -835,6 +835,100 @@ check("R57 el detector distingue la ruta rota de la correcta y respeta la profun
       "el mismo un-solo-'..' a profundidad 1 (src/ directo) exento, que "
       "ahi SI apunta a la raiz")
 
+# --- R62: un veredicto sobre un RANGO no puede mirar un solo extremo ---
+# POR QUE EXISTE (2026-09-08). El argumento Sakharov de OP-1 despejaba una
+# temperatura de recalentamiento, citaba el rango «10^-2 a 10^4 GeV» y la
+# validaba asi:
+#       if T_rh_required < 1e4:
+#           print("  OK ... CONSISTENTE con reheating gravitacional")
+# Solo el techo. Nunca el piso. Estampo el visto bueno a 1.031e-04 GeV, que
+# esta 97 veces POR DEBAJO del piso que el propio print citaba dos lineas
+# antes — y ademas 40 veces bajo la cota de BBN y 10^6 bajo la del
+# esfaleron que el mismo mecanismo necesita. Todo lo demas del argumento se
+# retro-calcula (el f_dil se despeja exigiendo el eta_B observado), asi que
+# ESTE era el UNICO sitio donde podia fallar, y estaba tapado por un
+# chequeo de una cara. Sobrevivio del 2026-05-16 al 2026-09-08.
+# Lo pidio Mike: «no seria mejor decirme antes de buscar el puente
+# probemos la maquina». Se probo y no arranca. Ver [[feedback_green_can_be_forced]].
+# QUE MARCA: un `if <var> <op> <numero>:` de UNA sola comparacion cuyo
+# cuerpo estampa un veredicto de rango (CONSISTENTE / OK / dentro de...).
+# Dos comparaciones (and/or, o `a <= x <= b`) estan exentas: eso ya es
+# una cota de dos lados.
+_R62_VEREDICTO = re.compile(
+    r"CONSISTENTE|consistente con|dentro del rango|dentro de rango"
+    r"|compatible con el rango|in range|within range", re.I)
+_R62_IF = re.compile(r"^([ \t]*)if\s+([^\n:]+):[ \t]*(?:#[^\n]*)?$", re.M)
+# AFINADO en el mismo dia: la primera version marcaba `if err < tol`, que
+# es legitimo — un error tiene UNA sola cota por construccion (err >= 0).
+# Lo que hace al caso de OP-1 un defecto no es la comparacion sola, es que
+# valida contra un RANGO de dos extremos que el propio texto acaba de
+# citar. Asi que se exige rango citado en las lineas de arriba.
+_R62_RANGO = re.compile(
+    # `range(` es el builtin de Python, no un rango citado: no cuenta.
+    r"rango|\brange\b(?!\s*\()|típic|tipic|typical"
+    r"|[0-9)⁴²³⁰-⁹]\s*[−–—-]\s*10", re.I)
+def _r62_sitios(_txt):
+    _h = []
+    _lineas = _txt.split("\n")
+    for _m in _R62_IF.finditer(_txt):
+        _cond = _m.group(2)
+        _nl = _txt.count("\n", 0, _m.start())
+        if not _R62_RANGO.search("\n".join(_lineas[max(0, _nl - 10):_nl])):
+            continue
+        # dos lados ya: and/or, o encadenado a <= x <= b
+        if re.search(r"\b(?:and|or)\b", _cond):
+            continue
+        if len(re.findall(r"[<>]=?", _cond)) >= 2:
+            continue
+        if not re.search(r"[<>]=?", _cond):
+            continue
+        _sang = len(_m.group(1))
+        _cuerpo, _i = [], _m.end()
+        for _ln in _txt[_i:].split("\n")[1:9]:
+            if _ln.strip() and (len(_ln) - len(_ln.lstrip())) <= _sang:
+                break
+            _cuerpo.append(_ln)
+        if _R62_VEREDICTO.search("\n".join(_cuerpo)):
+            _h.append(_cond.strip()[:56])
+    return _h
+_SUP62 = [_q for _q in sorted(ROOT.rglob("*.py"))
+          if _q.name != "ssee_verify.py"]
+# los scripts de open_problems son ARCHIVO por ruta pero PRUEBA citada por
+# OPEN_PROBLEMS.md: si un .md los cita como evidencia, se miran igual.
+_SUP62 += sorted((ROOT.parent / "archive" / "codigo" / "investigacion"
+                  / "open_problems").glob("*.py"))
+_r62 = []
+for _f in _SUP62:
+    _r62 += [f"{_f.name}: if {x}"
+             for x in _r62_sitios(_f.read_text(errors="ignore"))]
+check("R62 ningun veredicto de rango se decide mirando un solo extremo",
+      not _r62, "; ".join(_r62[:3]) if _r62
+      else "un rango tiene DOS cotas; validar contra una sola convierte el "
+           "unico punto falsable en un verde automatico (caso OP-1 Sakharov, "
+           "2026-05-16 a 2026-09-08: T_rh 97x bajo su propio piso)")
+# CONTROL (R53): marcar la forma coja y DEJAR PASAR las dos sanas.
+_R62_CTX = "print('  T_rh tipica: 1e-2 - 1e4 GeV, rango citado')\n"
+_c62_mal = (_R62_CTX + "if T_rh < 1e4:\n"
+            "    print('  CONSISTENTE con reheating gravitacional')\n")
+_c62_dos = (_R62_CTX + "if 1e-2 <= T_rh <= 1e4:\n"
+            "    print('  CONSISTENTE con reheating gravitacional')\n")
+_c62_and = (_R62_CTX + "if T_rh > 1e-2 and T_rh < 1e4:\n"
+            "    print('  CONSISTENTE con reheating gravitacional')\n")
+_c62_otro = (_R62_CTX + "if n_pts < 10:\n"
+             "    print('  pocos puntos para el ajuste')\n")
+_c62_err = ("if err < tol:\n"
+            "    print('  CONSISTENTE: dentro de tolerancia')\n")
+_f62 = [n for n, (t, esp) in
+        {"coja": (_c62_mal, True), "encadenada": (_c62_dos, False),
+         "con and": (_c62_and, False), "sin veredicto": (_c62_otro, False),
+         "err<tol sin rango": (_c62_err, False)}.items()
+        if bool(_r62_sitios(t)) != esp]
+check("R62 el detector distingue la cota de un lado de la de dos",
+      not _f62, "; ".join(_f62) if _f62
+      else "5 casos: la de un solo lado CON rango citado marcada; la "
+           "encadenada, la del and, el if sin veredicto y el err<tol sin "
+           "rango (una cota es legitima ahi) exentos")
+
 # --- R61: comparar con el numero puro exige el f_screen COMPLETO -------
 # POR QUE EXISTE. Al enunciar la cascada frente a 3(phi+pi)^2 hay que usar
 # el f_screen COMPLETO (IR+UV, 0.069522), que da 67.962142 y un residuo de
@@ -952,7 +1046,12 @@ def _r56_sitios(_txt):
 _r56_todos = []
 for _f in sorted(list((ROOT.parent/"manuscript").rglob("*.tex"))
                  + list((ROOT.parent/"src").rglob("*.py"))
-                 + [ROOT.parent/"CANONICAL_VALUES.yaml"]):
+                 + [ROOT.parent/"CANONICAL_VALUES.yaml"]
+                 # 2026-09-08: los .md de la raiz NO se miraban, y el rotulo
+                 # prestado sobrevivio ahi 37 dias despues de corregirse en
+                 # papers y codigo. CLAUDE.md es lo primero que se lee cada
+                 # sesion, asi que era el peor sitio donde dejarlo.
+                 + sorted((ROOT.parent).glob("*.md"))):
     # El propio guardian queda exento: sus fixtures CONTIENEN la forma
     # prestada a proposito. Es el mismo defecto que R45 documenta haber
     # cometido dentro de si misma.
@@ -1004,17 +1103,39 @@ track_open("V-L3-cs2  el sector geometrico de SSEE no puede agruparse [CENTRAL]"
            "agrupamiento. El CMB exige materia que se agrupe -> la k-essence "
            "actual no puede ser la '0.320'. MIRA no esta en la accion vigente")
 
-# Ruta B (gravedad disformal de P8) — auditada 2026-05-22. La accion de
-# P8 incluye un campo de materia oscura psi_DM: el mecanismo MIRA/lensing
-# se sostiene en rho_DM. Choca con el postulado no-DM de P1.
-track_open("V-L3-disf  mecanismo disformal de P8 presupone materia oscura",
-           "P8 accion eq.(1) incluye S_DM[g~;psi_DM]: campo de materia "
-           "oscura acoplado disformalmente. Todo el mecanismo MIRA/lensing "
-           "se sostiene en rho_DM (P8 L221,238,271). P1 prohibe DM (L51 "
-           "'without dark-matter particles'; L278 detectar DM falsa el "
-           "modelo) -> contradiccion interna P1<->P8. Ademas P8 L69 admite "
-           "sqrt(beta_c)/MIRA=1.00030 'near-coincidence, not an identity'. "
-           "Ruta B disformal NO deriva MIRA sin materia oscura")
+# Ruta B (gravedad disformal de P8) — RE-ENUNCIADA 2026-09-07.
+#
+# LO QUE DECIA ANTES: «P1 prohibe DM (L51 "without dark-matter particles";
+# L278 detectar DM falsa el modelo) -> contradiccion interna P1<->P8».
+#
+# ESO ERA UNA CITA MUTILADA, y la contradiccion desaparece al leer el texto
+# entero. P1 no prohibe la materia oscura:
+#   L55  «no WIMP, QCD-axion, or SUSY dark-matter particles»  <- tres familias
+#        de candidatos CONCRETAS, no la materia oscura en general
+#   L572 «direct detection of a COLLISIONLESS dark-matter particle»  <- el
+#        criterio de falsacion lleva el adjetivo, y la psi_DM de P8 esta
+#        acoplada disformalmente, o sea NO es colisional-mente libre: siente
+#        una quinta fuerza. No es el objeto que P1 nombra.
+# Barrido de la suite entera: no hay ningun «no dark matter» absoluto en los
+# .tex (la unica coincidencia, EFT_section:510, dice que la ACELERACION no
+# necesita materia oscura, que es otra cosa).
+# Y SSEE SI tiene materia fria: omega_c = KAL0*omega_b*n_s, forward, OP-8
+# cerrado. Una densidad necesita quien la lleve.
+#
+# LO QUE QUEDA, que no es contradiccion sino HUECO: psi_DM aparece en la
+# accion de P8 y en ningun otro sitio de la suite. No tiene lagrangiano, ni
+# masa, ni mecanismo de produccion, ni relacion con phi y pi. SSEE predice
+# CUANTA materia fria hay y no dice DE QUE esta hecha.
+track_open("V-L3-disf  psi_DM entra en la accion de P8 sin estar definida",
+           "P8 accion eq.(1) incluye S_DM[g~;psi_DM], acoplada al disformal "
+           "(P8 L211), y la seccion canonica la usa (quinta fuerza DM activa, "
+           "P8 L615-619). NO es contradiccion con P1: P1 solo excluye WIMP/"
+           "axion-QCD/SUSY (L55) y la deteccion de una particula COLISIONAL-"
+           "MENTE LIBRE (L572), y psi_DM no es ninguna de esas. El hueco real: "
+           "psi_DM no tiene lagrangiano, masa ni origen en phi,pi — SSEE "
+           "predice omega_c=KAL0*omega_b*n_s (cuanta hay) y no dice de que "
+           "esta hecha. Ademas P8 L69 admite sqrt(beta_c)/MIRA=1.00030 "
+           "'near-coincidence, not an identity'")
 
 # Mecanismo de retencion conformal (Ruta B) — probado 2026-05-22 en
 # src/ssee_mira_mechanism.py. Acoplamiento beta_c=-AURA: negativo limpio.
@@ -1905,8 +2026,12 @@ try:
           not _l44, "; ".join(_l44[:5]) if _l44
           else f"leídos limpios; {_deuda44} sitios de deuda en el resto")
     _DEUDA_REAL["R44"] = _deuda44
+    # 2026-09-08: la deuda decia solo CUANTOS. Un numero sin sitio no se
+    # puede arreglar; ahora nombra los tres primeros.
+    _d44 = [x for x in _todos44 if x not in _l44]
     check("R44 la deuda no crece", _deuda44 <= _DEUDA_MAX["R44"],
-          f"{_deuda44} sitios (tope {_DEUDA_MAX['R44']})")
+          f"{_deuda44} sitios (tope {_DEUDA_MAX['R44']})"
+          + (": " + "; ".join(_d44[:3]) if _d44 else ""))
 except Exception as e:
     check("R44 capa operable", False, str(e))
 
@@ -2621,16 +2746,33 @@ try:
     _dr1_bao = {"20.08": "LRG DH DR1 (DR2=21.863)", "30.21": "QSO DM DR1 (DR2=30.512)",
                 "39.71": "Lya DM DR1 (DR2=38.988)", "8.52": "Lya DH DR1 (DR2=8.632)",
                 "16.85": "LRG2 DM DR1 (DR2=17.351)", "1.491": "z_QSO DR1 (DR2 z=1.484)"}
+    # FIX 2026-09-08: el `pat in txt` era substring pelado y marcaba «8.52»
+    # dentro de «38.52» (fila de tabla de Paper 5, valor ajeno al BAO). Un
+    # numero se busca con frontera de NUMERO: ni digito ni punto pegados a
+    # los lados. Control abajo.
+    _dr1_rx = {p: re.compile(r"(?<![\d.])" + re.escape(p) + r"(?![\d])")
+               for p in _dr1_bao}
+    def _r19_sitios(txt, nombre="?"):
+        return [f"{nombre}«{p}»={_dr1_bao[p]}"
+                for p, rx in _dr1_rx.items() if rx.search(txt)]
     _bao_hits = []
     for t in _texs:
-        txt = t.read_text(errors="ignore")
-        for pat, why in _dr1_bao.items():
-            if pat in txt:
-                _bao_hits.append(f"{t.name}«{pat}»={why}")
+        _bao_hits += _r19_sitios(t.read_text(errors="ignore"), t.name)
     check("manuscritos  R19 sin valores BAO DR1-mislabeled (datos mostrados = usados)",
           not _bao_hits,
           "manuscritos muestran DR2 (data/raw/desi_dr2_bao.csv, la que usan las cadenas)"
           if not _bao_hits else "; ".join(_bao_hits[:5]))
+    # CONTROL (R53): marca el DR1 suelto y deja pasar el que es parte de
+    # otro numero. El falso positivo real que motivo el fix va incluido.
+    _c19 = [(r"$D_H/r_d = 8.52$ (Lya)", True),          # DR1 suelto
+            (r"9 & 0.100 & 17.58 & 38.52 & excellent", False),  # el real
+            (r"$D_H/r_d = 8.632$ (Lya, DR2)", False),
+            (r"z = 1.4915", False)]                     # 1.491 pegado a un 5
+    _f19 = [t[:34] for t, esp in _c19 if bool(_r19_sitios(t)) != esp]
+    check("R19 el detector distingue el DR1 suelto del digito dentro de otro numero",
+          not _f19, "; ".join(_f19) if _f19
+          else "4 casos: el 8.52 suelto marcado; el 38.52 de la tabla, el "
+               "8.632 de DR2 y el 1.4915 exentos")
 
     # Las R21-R24 también vigilan el PRD (submission_PRD), no solo manuscript/.
     _prd = _REPO2 / "submission_PRD" / "SSEE_PRD.tex"
@@ -4211,7 +4353,7 @@ try:
     # 31 al abrir la capa (2026-09-05). Baja a 28 el mismo día con los
     # controles de R17, R25 y R30 — las tres que vigilan números
     # canónicos, por eso primero. SÓLO puede BAJAR.
-    _DEUDA_R53 = 28
+    _DEUDA_R53 = 27   # 28 -> 27: R19 gano control (2026-09-08)
     _lista53 = " ".join("R%d" % _r for _r in sorted(_sin53))
 
     check("R53 la deuda de reglas sin control no crece",
@@ -4333,7 +4475,8 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 249          # +2 R61 (f_screen completo en la comparacion); solo SUBE
+_PISO_CHECKS = 251          # +2 R62 (cota de rango de un solo lado) y +1 R19
+                            # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",
       checks + 1 >= _PISO_CHECKS,

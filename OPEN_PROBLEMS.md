@@ -104,6 +104,45 @@ algún f_dil. La fórmula Ω_b h²=(π−φ)/(3Ω²) es un ansatz algebraico (Ty
 de Paper 1); el mecanismo Sakharov motiva su FORMA, no deriva su valor. Paper 4 §3.2
 revisado en consecuencia (commit de la sesión).
 
+**EL MECANISMO SAKHAROV QUEDA EXCLUIDO (2026-09-08) — la fórmula NO se mueve.**
+
+Lo pidió Mike, con el orden correcto: *antes de buscar el puente al sector oscuro,
+probar la máquina con bariones*. Se probó, y no arranca. La temperatura de
+recalentamiento que el propio argumento exige, `T_rh = 1.031×10⁻⁴ GeV`, choca con
+**tres** cotas, y dos de ellas no dependen de SSEE:
+
+| cota | piso | T_rh exigida está |
+|---|---|---|
+| rango quintaesencial que el propio script cita | 10⁻² GeV | 97× por debajo |
+| BBN — el helio primordial que SÍ se observa (de Salas+2015, 95% CL) | 4.1×10⁻³ GeV | 40× por debajo |
+| esfalerón activo (d'Onofrio+2014); `T_rh` es la T **máxima** tras la inflación | 131.7 GeV | 10⁶× por debajo |
+
+La tercera es la letal: si el universo nunca alcanzó `131.7 GeV` después de inflar,
+el esfalerón **nunca corrió**, y no pudo producir los bariones que este mismo
+mecanismo dice que produjo. El argumento se contradice a sí mismo entre su
+condición (i) y su condición (iii).
+
+**Por qué sobrevivió cuatro meses.** El `η_B` se retro-calcula (ver ESTATUS HONESTO
+arriba), así que se ajusta siempre y no puede fallar. El **único** sitio donde el
+argumento podía romperse era el rango de `T_rh` — y ese chequeo estaba escrito
+`if T_rh_required < 1e4`, mirando sólo el techo, nunca el piso. Un verde de una
+sola cara sobre el único punto falsable. Corregido a tres cotas en el script;
+regla **R62** instalada para que ningún chequeo de rango vuelva a mirar un solo
+extremo.
+
+**QUÉ NO SE MUEVE.** `ω_b = (π−φ)/(3Ω²) = 0.022418` sigue intacto: 0.32σ de Planck,
+y el barrido `fuerza_wb` del 2026-09-08 pone el mínimo de χ² del CMB **exactamente
+en el valor algebraico** (χ²=1003.00; los vecinos suben a 1225.85 y 1301.56). La
+fórmula nunca se apoyó en este mecanismo — el documento ya declaraba que Sakharov
+motivaba su FORMA, no derivaba su valor. Lo que cae es el relato de respaldo.
+Ningún número de ningún paper se mueve.
+
+**Consecuencia para OP-19.** El puente al sector oscuro (`n_c = n_b`) se apoyaba en
+que `δ_CP` fuera única y llegara tanto al sector visible como al oscuro. Es única y es estructural (no
+está pegada a ninguna especie), pero la ruta que la convierte en materia es
+esfalerónica, y el esfalerón sólo actúa sobre el Modelo Estándar. Con el mecanismo
+excluido, **la ruta ni siquiera llega a los bariones**. Ver OP-19.
+
 **Límite residual de OP-1 — la derivación genuina (programa Paper B/C):**
 1. Calcular T_rh exacto desde V(φ_inf) con α = φ⁴/3 (quintessential inflation)
 2. Integrar g*(T) desde T_rh hasta T_EW para obtener el factor de dilución exacto
@@ -2164,12 +2203,12 @@ difícil:
    $\omega_c/\omega_b = \mathrm{KAL_0}\cdot n_s\approx5.33$. Esto es una afirmación física
    **real y no trivial** sobre la razón barión–materia oscura. Requiere un **origen
    compartido**: el proceso que fija la abundancia de bariones (bariogénesis, OP-1) debe
-   ser el mismo que fija la abundancia del $\varphi$-DM. La proporcionalidad **es** el
+   ser el mismo que fija la abundancia de la materia oscura fría. La proporcionalidad **es** el
    contenido físico.
 
 2. **¿Por qué la constante es exactamente $\mathrm{KAL_0}\cdot n_s$?** Esta es la parte que
    necesita el cálculo de producción (freeze-out / freeze-in / misalignment / producción
-   gravitacional): un escenario cosmológico en el que la abundancia relic del $\varphi$-DM
+   gravitacional): un escenario cosmológico en el que la abundancia relic de la materia oscura fría
    salga proporcional a la bariónica **con coeficiente $\mathrm{KAL_0}\cdot n_s$**, sin
    insertarlo a mano. $\mathrm{KAL_0}=\beta+\pi$ es la retención estructural (transporte);
    $n_s$ es el índice espectral (la inclinación del espectro primordial). Que el transporte
@@ -2181,7 +2220,7 @@ escala de Planck reproduce las **asignaciones de rol** ($\mathrm{KAL_0}$ vs AURA
 $\varphi\leftrightarrow\pi$); OP-8 quedó **disuelto** (la $\Omega_m$ del CMB sale directa,
 sin factor materia). OP-19 es más específica y más física: el **mecanismo de abundancia
 relic** que produce el coeficiente. Liga fuerte a **OP-1** (origen de $\omega_b$ /
-bariogénesis, $\delta_{CP}=(\pi-\varphi)/\Omega$, $T_{\rm rh}\sim10^{-4}$ GeV) porque un
+bariogénesis, $\delta_{CP}=(\pi-\varphi)/\Omega$, $T_{\rm rh}\sim10^{-4}$ GeV — **ese mecanismo quedó EXCLUIDO 2026-09-08**) porque un
 origen compartido barión–DM es el camino natural a la capa 1.
 
 **Su garantía HOY (falsabilidad, como OP-9 con $k_{fs}$).** La relación ya es una
@@ -2198,10 +2237,62 @@ forward), pero **tampoco es una derivación desde una acción**. Un referee de P
 aceptarlo como relación fenomenológica predictiva y falsable, no como primeros principios.
 
 **Programa de cierre (largo plazo, no garantizado).** (a) Proponer el canal de producción
-del $\varphi$-DM ligado a la asimetría bariónica de OP-1; (b) mostrar que la abundancia relic
+de la materia oscura fría ligado a la asimetría bariónica de OP-1; (b) mostrar que la abundancia relic
 resultante lleva el prefactor $\mathrm{KAL_0}\cdot n_s$; (c) conectar con la
 UV-completion (OP-10) y la dualidad de transporte (OP-7). Es frontera abierta de la misma
 clase que OP-1/OP-9: puede no cerrar con los recursos actuales, y eso está declarado.
+
+**ANOTACIÓN FECHADA 2026-09-08 — la premisa de números iguales y su masa.**
+
+La vio Mike razonando en voz alta, y llega al mismo sitio que un programa publicado
+(*asymmetric dark matter*). Si en vez de leer $\omega_c/\omega_b=5.3312$ como «hay 5.33
+veces más», se lee como «hay **la misma cantidad** y cada una pesa 5.33 veces más»,
+entonces la razón de pesos deja de ser una abundancia y **es una razón de masas**:
+
+$$m_{\rm DM} = \mathrm{KAL_0}\cdot n_s\cdot m_{\rm barión} = 5.331239\times0.937112\ \mathrm{GeV} = \mathbf{4.996\ GeV}$$
+
+La densidad crítica, el $h^2$ y todas las unidades **se cancelan** en el cociente: la
+fórmula final tiene tres factores y nada más. `m_barión = 0.937112 GeV` es la masa media
+por barión del universo (75% H + 25% He + electrones), **no** la del protón (0.938272,
+0.12% distinta). Control de la cadena de conteo: $n_b=2.5208\times10^{-7}\,\mathrm{cm^{-3}}$
+da $\eta=n_b/n_\gamma=6.137\times10^{-10}$ contra el publicado $6.12\times10^{-10}$
+(+0.28%, que es el +0.21% al que nuestro $\omega_b$ está de Planck). Script:
+`scratchpad/cuenta_particulas.py`.
+
+**Qué es de SSEE y qué no, en ese 4.996:**
+
+| pieza | origen |
+|---|---|
+| $\mathrm{KAL_0}$, $n_s$ | SSEE, algebraicos |
+| $m_{\rm barión}$ | externo, **medido** en laboratorio (entra limpio: escala medida, no ajuste) |
+| $n_{\rm DM}=n_b$ | **PREMISA** — ni medida ni derivada |
+
+**Lo que la premisa vale y lo que no.** Explica la coincidencia cósmica de un golpe: sin
+ella, que el cociente caiga cerca de la unidad queda medido pero sin explicar. Pero incluso
+dentro del programa asimétrico la predicción es $n_{\rm DM}/n_b=\mathcal{O}(1)$, no
+exactamente 1, así que la predicción honesta de esta línea es **«unos pocos GeV»**; el
+cuarto decimal es precisión falsa mientras el cociente de cantidades no esté fijado. Toda
+la tarea se reduce entonces a **un solo número adimensional**, que es exactamente la clase
+de objeto que SSEE produce.
+
+**Estado del puente (revisado 2026-09-08).** $\delta_{CP}=(\pi-\varphi)/\Omega=0.3201$ es
+**única y estructural** — no está pegada a ninguna especie, es la proyección de la
+separación $\pi-\varphi$ sobre $\Omega$. Esa mitad sirve. La otra mitad **no existe**: la
+ruta que convierte esa asimetría en materia es esfalerónica, y el esfalerón sólo actúa
+sobre partículas del Modelo Estándar. Haría falta un **operador de transferencia** entre
+sectores, que SSEE no tiene y que no puede tener mientras el sector oscuro no tenga ningún
+objeto al que colgárselo. Y por encima de todo eso: el mecanismo Sakharov de OP-1 quedó
+**EXCLUIDO por tres cotas** el mismo día (ver OP-1), así que la ruta ni siquiera llega a
+los bariones. Construir el puente ahora sería construir sobre una máquina que no arranca.
+
+**Qué mediría esto.** La cizalla es **ciega** a una partícula de esta masa: su escala de
+free-streaming caería en $k_{\rm fs}\sim9\times10^{7}\,h/$Mpc, unas $10^{7}$ veces más allá
+de lo que KiDS mide ($k\sim0.1$–5). Eso es bueno (no hay conflicto con $S_8$, $f\sigma_8$ ni
+con R3) y es malo (la prueba que mató a la partícula **retirada** de 40.70 eV — histórica,
+no vigente desde 2026-08-01 — no puede testear ésta). La
+única prueba real es un detector directo. **Y esto NO reabre la retracción del 2026-08-01:**
+aquélla era un sector EXTRA definido por una resta no física; ésta no añade materia a nada,
+dice de qué está hecho el $\omega_c$ que el CMB **ya** confirma a 0.08σ.
 
 **Cómo atacarlo — plan concreto para retomar EN FRÍO (imagen mental primero).**
 La relación se lee: *materia oscura = bariones × (transporte $\mathrm{KAL_0}$) × (inclinación

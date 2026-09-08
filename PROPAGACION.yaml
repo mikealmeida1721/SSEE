@@ -43,7 +43,28 @@ logs:
 
 # Logs SUPERADOS a propósito: se conservan como registro histórico y no se
 # re-corren. Declararlos aquí los saca del conteo de deuda (no del repo).
+  # ── Añadidos 2026-09-07 (deuda R35: 12 logs sin fuente declarada) ───────
+  # Ninguno era un log huérfano: todos tenían script, sólo que nadie lo había
+  # escrito aquí. Localizados por el texto de su propia cabecera.
+  analiza_lcdm_R4:            src/p06_growth/analiza_lcdm_R4.py
+  R4_lcdm_resume_20260805:    src/p06_growth/cobaya_kids.py
+  dic_from_chains:            src/estadistica/ssee_dic_from_chains.py
+  look_elsewhere_full:        src/estadistica/look_elsewhere_full.py
+  phase_d_savage_cv_wmfix:    src/estadistica/ssee_phase_d_savage_cv.py
+  h0_four_priors_wmfix:       src/p09_hubble/ssee_h0_prior_experiment.py
+  mcmc_paper2_lcdm_baseline:  src/p02_mcmc/ssee_paper2_mcmc_lcdm_baseline.py
+  # ── Añadidos 2026-09-07 (tarde): las tres corridas de la sesión R1/R2 ──
+  boss_cobaya_lcdm:           src/p06_growth/cobaya_boss.py
+  boss_cobaya_ssee:           src/p06_growth/cobaya_boss.py
+  kids_lcdm_fondofijo:        src/p06_growth/cobaya_kids.py
+
 historicos:
+  # ── Retirados 2026-09-07 — su script está en archive/, no se re-corren ──
+  - barrido_beta_c            # β_c: artefacto del bug de saturación (2026-09-05)
+  - barrido_beta_c_fino       #   scripts en archive/codigo/investigacion/
+  - bc_autoconsistente_20260808  #   beta_c_RETIRADO_2026-09-07/
+  - op9_multiplier_search     # partícula φ-DM retirada 2026-08-01
+  - op9_particle_existence    #   scripts en archive/codigo/investigacion/
   - p6_class_reframe_omega_m   # sector φ-DM retirado 2026-08-01 (script en archive/)
   - mcmc_paper2_3models_om308
   - mcmc_paper2_reframe_om308

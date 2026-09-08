@@ -36,15 +36,38 @@ h_L    = H0_L / 100
 sig8_L = 0.811
 gamma_L= 0.55
 
-# SSEE Parameters (Paper 1 & Paper 3)
-H0_S   = 66.75
-Omm_S  = 0.1601
-OmDE_S = 0.8399
+# SSEE Parameters
+# ── CORRECCION 2026-09-07 ────────────────────────────────────────────────
+# Cuatro valores estaban rancios y el primero era un BUG de categoria:
+#
+#   Omm_S = 0.1601  ->  0.308881
+#       0.160050 es 1+w_0, la ecuacion de estado, NO una densidad. Entra en
+#       Friedmann por la presion. Aqui alimentaba D_gamma() como densidad de
+#       materia, que es el mismo bug que inflaba chi2_BAO a 726 antes del fix
+#       de geometria (2026-07-09). Paper 1 Sec. two_omega_m lo declara
+#       imposible: "There is one matter density, Omega_m = omega_m/h^2 =
+#       0.308881, entering every observable that requires a matter density".
+#
+#   H0_S = 66.75  ->  67.962137
+#       66.75 era el posterior MCMC con prior Planck-LCDM, superado por el
+#       reframe omega_m-directo. El ancla algebraica es 3(phi+pi)^2.
+#
+#   sig8_S = 0.792  ->  0.7446
+#       0.792 venia de la epoca two-sector, RETIRADA el 2026-08-01 (historico,
+#       no vigente). Canonico (Registro linea 126):
+#       MCMC R3 contra KiDS crudo, sigma_8 = 0.7446 +/- 0.0189.
+#
+#   gamma_S = 0.657  ->  0.5504
+#       Paper 5 mide gamma_IS = 0.5504 +/- 0.0003 (linea 978). El 0.657 no
+#       corresponde a ninguna medicion vigente.
+H0_S   = 67.962137
+Omm_S  = 0.308881
+OmDE_S = 1 - Omm_S
 w0_S   = -0.8399
 wa_S   = -0.6699
 h_S    = H0_S / 100
-sig8_S = 0.792   # IS corrected SSEE sig8 (Paper 3)
-gamma_S= 0.657
+sig8_S = 0.7446  # MCMC R3 contra KiDS crudo (Paper 6, canonico)
+gamma_S= 0.5504  # gamma_IS medido en Paper 5
 
 # ── Linear growth factor D(z) — IS and LCDM integrations ──────────────────────
 def D_gamma(z, gamma, Omm, OmDE, w0, wa):

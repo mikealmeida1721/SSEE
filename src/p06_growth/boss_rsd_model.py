@@ -153,19 +153,85 @@ def _mix(x0, x2, x4, W):
     return y0, y2, y4
 
 
-class Window:
-    """Convolucion con la ventana, precalculando los splines de W_ell."""
+# Indices de la ley de potencias con que se rellena el modelo fuera de su
+# rejilla, ANTES de la transformada. Ver la NOTA CRITICA de Window.
+N_LO = 1.0        # k -> 0 : P ~ k^n_s, medido +0.56/+1.00/+0.96 en P0/P2/P4
+N_HI = -2.0       # k -> oo: cola amortiguada; medido +0.33..-1.09, que es el
+                  # regimen de los contraterminos y no una ley fisica
 
-    def __init__(self, s, RR, integral_constraint=True):
+
+class Window:
+    """Convolucion con la ventana, precalculando los splines de W_ell.
+
+    NOTA CRITICA (2026-09-07) --- POR QUE EL RELLENO LLEVA INDICE FIJO.
+
+    Hasta hoy las tres transformadas se llamaban con `extrap=True`, que en
+    mcfit rellena el vector hasta la longitud de la convolucion con una ley de
+    potencias cuyo INDICE SE MIDE DEL PROPIO VECTOR DE ENTRADA. Eso tiene dos
+    consecuencias, ambas medidas:
+
+      1. La ventana deja de ser un OPERADOR LINEAL. Con el modelo evaluado en
+         el mejor punto de la cadena, la identidad
+             m(a0,a2,sn) = m(0,0,0) + a0*T0 + a2*T2 + sn*Tn
+         fallaba con error relativo 0.2 a 1.2, pese a que los multipolos
+         CRUDOS que salen de velocileptors la cumplen a 1.8e-14. Toda la no
+         linealidad la metia el relleno.
+      2. Con contraterminos grandes la cola cambia de indice y el FFTLog
+         devuelve valores de hasta 1e80 (medido con th=[1.2,0,0,0,0,-3000]).
+         Eso son precipicios reales del modelo, no del optimizador.
+
+    Con indice FIJO el relleno es `F[0]*(x/x0)^N_LO` y `F[-1]*(x/x1)^N_HI`,
+    o sea LINEAL en F: la ventana entera vuelve a ser un operador lineal
+    (verificado a 4e-12) y desaparecen los precipicios. Eso habilita
+    marginalizar analiticamente los 18 parametros que entran lineales.
+
+    Alternativas descartadas, con su medida en el mejor punto de la cadena
+    (chi2 de referencia 268.13, y el modelo NO se re-ajusto):
+        extrap=False (relleno con ceros)      chi2 = 690.86   lineal
+        extrap='const' (valor del extremo)    chi2 = 170058   lineal
+        extrap=True   (el que habia)          chi2 = 268.13   NO lineal
+
+    LIMITACION CONOCIDA: el chi2 al MISMO punto depende de N_HI
+    (-1 -> 247.5, -1.5 -> 298.2, -2 -> 366.6, -3 -> 483.1). El indice es por
+    tanto una eleccion de modelado que hay que declarar, y que se controla
+    re-ajustando con varios valores: lo que tiene que ser estable no es el
+    chi2 a parametros congelados sino logA ajustado. Se aplica IDENTICA a los
+    dos fondos, asi que en la diferencia entre modelos se cancela en gran parte.
+    """
+
+    def __init__(self, s, RR, integral_constraint=True,
+                 n_lo=N_LO, n_hi=N_HI):
         self.W = window_normalised(s, RR)
         self.s_grid = s
         self.ic = integral_constraint
+        self.n_lo = float(n_lo)
+        self.n_hi = float(n_hi)
         self._spl = [Spline(s, self.W[:, i], k=1, ext=1) for i in range(5)]
+        self._pad = {}
+
+    def _relleno(self, tr):
+        """Factores de relleno de esta transformada. Se cachean por (rejilla,
+        multipolo): la clave lleva la rejilla, NO el id() del objeto, porque
+        mcfit crea uno nuevo en cada llamada y los id() se reciclan."""
+        x = tr.x
+        cl = (len(x), float(x[0]), float(x[-1]), tr.N)
+        if cl not in self._pad:
+            X = tr._x_
+            n = (tr.N - len(x)) // 2
+            self._pad[cl] = ((X[:n] / x[0]) ** self.n_lo,
+                             (X[len(x) + n:] / x[-1]) ** self.n_hi)
+        return self._pad[cl]
+
+    def _a_xi(self, k_model, P, ell):
+        tr = P2xi(k_model, l=ell, lowring=False)
+        fl, fh = self._relleno(tr)
+        F = np.concatenate([P[0] * fl, P, P[-1] * fh])
+        return tr(F, extrap=False)
 
     def __call__(self, k_model, P0, P2, P4):
-        xs, x0 = P2xi(k_model, l=0, lowring=False)(P0, extrap=True)
-        _, x2 = P2xi(k_model, l=2, lowring=False)(P2, extrap=True)
-        _, x4 = P2xi(k_model, l=4, lowring=False)(P4, extrap=True)
+        xs, x0 = self._a_xi(k_model, P0, 0)
+        _, x2 = self._a_xi(k_model, P2, 2)
+        _, x4 = self._a_xi(k_model, P4, 4)
         Wg = [sp(xs) for sp in self._spl]
 
         y0, y2, y4 = _mix(x0, x2, x4, Wg)

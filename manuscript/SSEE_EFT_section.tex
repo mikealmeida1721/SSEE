@@ -489,13 +489,29 @@ density $\Omega_{m,\mathrm{CMB}} = \omega_m/h^2 = 0.308881$
 \end{equation}
 %
 the all-cold single-sector ceiling, $1.1\sigma$ above the Planck-2018 value $0.832 \pm 0.013$~\citep{PlanckVI2020}.
-Using the dynamic sector $\Omega_{m,\mathrm{dyn}} = 0.160050$ instead gives
-$S_{8} \approx 0.59$ ($6\sigma$ tension); per the pre-registered
-two-$\Omega_m$ criterion (Paper~1 \S\ref{sec:two_omega_m}), the $S_8$ Poisson
-source lives on clustering scales $k<k_{\rm fs}$ and therefore takes
-$\Omega_{m,\mathrm{CMB}}=0.308881$, not the dynamical value. The full
+Substituting $0.160050$ into the Poisson source instead would give
+$S_{8}\approx0.59$ (a $6\sigma$ tension), but that substitution is not a
+choice the model ever had: $0.160050$ is $1+w_0$, minus the dark-energy
+equation of state, and an equation-of-state parameter enters the Friedmann
+equations through the \emph{pressure} term, never as a matter density. There
+is one matter density, $\Omega_m=\omega_m/h^2=0.308881$, and it enters every
+observable that requires one --- $E(z)$, $r_d$, the acoustic scale, the
+Poisson source of linear growth, and lensing alike (Paper~1
+\S\ref{sec:two_omega_m}). The full
 two-sector resolution once developed in Paper~6 is retracted there; with the
-primordial amplitude free, a single sector matches the raw shear data.
+primordial amplitude free, a single sector matches the raw shear data.%
+% 2026-09-07: este parrafo justificaba el uso de Omega_m,CMB en la fuente de
+% Poisson invocando "the pre-registered two-Omega_m criterion" y la escala de
+% free-streaming k_fs. Las dos patas estaban muertas y la seccion citada dice
+% exactamente lo contrario de lo que se le atribuia: Paper 1 Sec.
+% two_omega_m declara "That criterion is withdrawn" y da dos razones, o sea
+% que este texto apelaba como AUTORIDAD a un criterio que su propia fuente
+% retira. La conclusion (Omega_m = 0.308881 en la Poisson) era correcta; lo
+% que fallaba era el argumento, que colgaba de k_fs, escala derivada de una
+% particula retirada el 2026-08-01. Se sustituye por el argumento vigente de
+% Paper 1: no hace falta regla de seleccion porque nunca hubo dos densidades
+% entre las que elegir --- 0.160050 es 1+w_0, un numero de la ecuacion de
+% estado, y entra por la presion, no por la densidad.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \subsection{Physical Regimes}

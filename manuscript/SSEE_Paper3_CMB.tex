@@ -375,10 +375,23 @@ $w_0$ & $-0.8399$ & $-T_r/M_v$ \\
 $w_a$ & $-0.66997$ & $-P_{sc}/I_g$ \\
 $n_s$ & $1-\varphi^{-7}=0.965558$ & SSEE algebraic (Paper~4) \\
 $\ln(10^{10}A_s)$ & 3.044 & Planck 2018 \\
-$\tau$ & 0.054 & Planck 2018 \\
+$\tau$ & 0.054 & Planck 2018\footnotemark{} \\
 \bottomrule
 \end{tabularx}
 \end{table}
+\footnotetext{%
+  $A_s$ and $\tau$ are the two parameters SSEE leaves free at CMB level
+  ($k=2$); the values in this table are the \emph{fiducial} inputs used for
+  the fixed-point evaluations of \S\ref{sec:results}, not fitted results. They
+  are fitted in the Phase-B chain of \S\ref{sec:b1_mcmc}. A direct
+  check of how much that fiducial choice costs (2026-09-07): minimising
+  $\chi^2$ over $(\ln 10^{10}A_s,\tau)$ against
+  \texttt{plik\_lite} TTTEEE + lowT + lowE, with the remaining background
+  fixed by the algebra, moves $\tau$ to $0.05546$ and $\ln(10^{10}A_s)$ to
+  $3.04484$ and lowers $\chi^2$ by only $1.84$. The recovered $\tau$ sits
+  $0.24\sigma$ from the Phase-B posterior $0.054\pm0.006$, so the fiducial
+  choice is doing no work. The same exercise on the $\Lambda$CDM background
+  ($w=-1$, $w_a=0$) gains $0.47$.}
 
 The baryon density is fixed to the Planck~2018 prior $\Omega_b h^2 = 0.02237$.
 The SSEE algebraic value derived in Paper~4, $\Omega_b h^2 = (\pi-\varphi)/[3(\varphi+\pi)^2]

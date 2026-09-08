@@ -15,6 +15,7 @@ Dos criterios independientes del conteo-k para la comparación de modelos:
 Prerrequisito: results/logs/mcmc_chains_professional.npz (generado por ssee_paper2_mcmc.py)
 """
 
+import os as _os
 import numpy as np
 from scipy.stats import gaussian_kde, norm
 from scipy.optimize import minimize
@@ -109,7 +110,16 @@ def savage_dickey():
     print("=" * 60)
 
     # Cargar cadenas CPL
-    data = np.load("results/logs/mcmc_chains_professional.npz")
+    # Ruta anclada a __file__ y con el enlace RESUELTO. Antes era relativa y
+    # pelada: el script solo corria si el cwd era la raiz del repo, y ademas
+    # results/logs/*.npz es un enlace a /mnt/datos, que algunos entornos no
+    # atraviesan. El resto de la suite ya ancla a __file__ (ver p02_mcmc);
+    # esta era la excepcion. Encontrado 2026-09-07 al re-correr el log por R35.
+    _raiz = _os.path.dirname(_os.path.dirname(_os.path.dirname(
+        _os.path.abspath(__file__))))
+    _npz = _os.path.realpath(_os.path.join(
+        _raiz, "results", "logs", "mcmc_chains_professional.npz"))
+    data = np.load(_npz)
     cpl_flat = data["cpl_flat"]   # (2500000, 5) — H0, Om, w0, wa, ob_h2
     cpl_lp   = data["cpl_lp"]
 

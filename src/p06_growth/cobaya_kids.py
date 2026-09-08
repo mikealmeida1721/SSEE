@@ -148,6 +148,39 @@ def info_ssee(chains_dir):
         output=chains_dir + '/ssee', force=True, resume=False)
 
 
+def loglike_lcdm_fijo(logA, halo_A, A_IA, dz1, dz2, dz3, dz4, dz5,
+                      delta_c):
+    """LCDM con el fondo CLAVADO en Planck 2018 --- la CELDA QUE FALTABA.
+
+    Por que existe. La comparacion R3/R4 no es simetrica: SSEE corre con el
+    fondo fijo por algebra y LCDM con el fondo libre, que es lo justo si se
+    pregunta "cuantos libres gasta cada modelo". Pero para preguntar "de
+    quien es la tension en A_s" hay que igualar la RIGIDEZ, no la libertad:
+    si LCDM tambien clava su fondo, cuanto se aleja SU A_s del de Planck?
+
+    La respuesta decide algo concreto. Si LCDM-fijo tambien sale en tension,
+    la tension esta en el DATO y ninguno de los dos modelos la fabrica. Si
+    solo SSEE sale en tension, entonces su fondo algebraico es el sospechoso.
+    En BOSS, donde los DOS ya iban con fondo fijo, salio 2.83 sigma (SSEE) y
+    2.67 sigma (LCDM) --- practicamente lo mismo. Esto lo comprueba en la
+    otra sonda.
+    """
+    return loglike_lcdm(0.02237, 0.1200, 0.6736, 0.9649, logA, halo_A, A_IA,
+                        dz1, dz2, dz3, dz4, dz5, delta_c)
+
+
+def info_lcdm_fijo(chains_dir):
+    p = dict(logA=dict(prior=dict(min=1.5, max=4.5), ref=3.04, proposal=0.05,
+                       latex='\\log(10^{10}A_s)'))
+    p.update(NUISANCE_PARAMS)
+    return dict(
+        likelihood={'p06_growth.cobaya_kids.loglike_lcdm_fijo': {
+            'external': loglike_lcdm_fijo, 'input_params': list(p.keys())}},
+        params=p,
+        sampler={'mcmc': {'Rminus1_stop': 0.03, 'max_tries': 10000}},
+        output=chains_dir + '/lcdmfijo', force=True, resume=False)
+
+
 def info_lcdm(chains_dir):
     p = dict(
         ombh2=dict(prior=dict(min=0.019, max=0.026), ref=0.02237,
@@ -174,7 +207,11 @@ if __name__ == '__main__':
     model_name = sys.argv[1] if len(sys.argv) > 1 else 'ssee'
     chains_dir = sys.argv[2] if len(sys.argv) > 2 else \
         '/mnt/datos/SSEE_data/chains_p6/kids'
-    info = info_ssee(chains_dir) if model_name == 'ssee' else info_lcdm(chains_dir)
+    if model_name == 'lcdmfijo':
+        info = info_lcdm_fijo(chains_dir)
+    else:
+        info = (info_ssee(chains_dir) if model_name == 'ssee'
+                else info_lcdm(chains_dir))
     t0 = time.time()
     updated_info, sampler = run(info)
     print(f'\nTERMINADO en {(time.time()-t0)/3600:.2f} h', flush=True)

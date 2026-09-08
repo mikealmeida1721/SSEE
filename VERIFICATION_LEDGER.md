@@ -85,7 +85,7 @@ contra esa recomputación — si el módulo se edita mal, el guardián → ROJO.
 | π | 3.1415926536 | — | Axioma generador |
 | Ω | 4.7596266423 | φ+π | Métrica de Estabilidad |
 | β | 2.3798133212 | (φ+π)/2 | Escalar de Acoplamiento Base |
-| KAL₀ | 5.5214059748 | β+π | Viscosidad Estructural |
+| KAL₀ | 5.5214059748 | β+π | Retención Estructural |
 | P_sc | 6.3776606311 | Ω+φ | Escalar de Evolución Dinámica |
 | K_v | 9.5192532847 | φ+π+Ω | Restricción Estructural |
 | T_r | 11.9935419298 | 3(φ+β) | Horizonte de Saturación 3D |
@@ -170,7 +170,7 @@ son axiomas; el resto son definiciones algebraicas de φ y π.
 | V-L1-04 | β | (φ+π)/2 | 2.3798133212 | Escalar de acoplamiento base | re-verificado |
 | V-L1-05 | AURA | (3φ+π)/2 | 3.9978473099 | Acoplamiento EFT βc; genera MIRA | re-verificado |
 | V-L1-06 | MIRA | AURA/2 | 1.9989236550 | Razón Ω_m,cosm / Ω_m,dyn | re-verificado |
-| V-L1-07 | KAL₀ | (φ+3π)/2 | 5.5214059748 | Viscosidad estructural; fija τ_Π | re-verificado |
+| V-L1-07 | KAL₀ | (φ+3π)/2 | 5.5214059748 | Retención estructural; fija τ_Π | re-verificado |
 | V-L1-08 | T_r | 3(φ+β) | 11.9935419298 | Horizonte de saturación 3D; numerador de w₀ | re-verificado |
 | V-L1-09 | K_v | 2(φ+π) | 9.5192532847 | Invariante de restricción estructural | re-verificado |
 | V-L1-10 | M_v | φ+π+K_v | 14.2788799270 | Invariante dimensional máximo; denominador de w₀ | re-verificado |
@@ -467,7 +467,7 @@ Sólo el refinamiento no-lineal Nivel 2 queda ABIERTO.
 2. **✓ forma:** que la corrección sea **multiplicativa** sí sigue de la
    aproximación de universo separado para k-essence (Wands 2000; Brax &
    Valageas 2014) — ese paso es una derivación legítima.
-3. **✗ paso δρ_φ asertado:** `ssee_op6_screening_form.py` (L68) escribe
+3. **✗ paso δρ_φ afirmado sin derivar:** `ssee_op6_screening_form.py` (L68) escribe
    δρ_φ/ρ_crit = (α_K/3)(Ω_m,dyn/MIRA)δ_local/(1+w₀) sin derivarla; el
    factor 1/MIRA se justifica con un argumento de plausibilidad, no un
    cálculo. El c²_s aparece y desaparece entre L65 y L73.
@@ -572,7 +572,7 @@ estructural (field-redef, 0.076%); la cascada H₀ es **anchor-free** (no usa SH
 Lo ABIERTO no es circularidad sino la *selección* única de 45α² entre rutas
 (A≈418 vs field-redef 5φ⁸). **ABIERTO (subdeterminado, no calibrado).**
 
-## V-L3-IS — perturbaciones Israel-Stewart (Paper 5) — **PARCIAL (c²_s,eff=0 sí, mecanismo asertado)**
+## V-L3-IS — perturbaciones Israel-Stewart (Paper 5) — **PARCIAL (c²_s,eff=0 sí, mecanismo afirmado sin derivar)**
 
 *Claim CLAUDE.md:* "Paper 5: c²_s,eff = 0 (exacto algebraico) — todos los modos estables".
 

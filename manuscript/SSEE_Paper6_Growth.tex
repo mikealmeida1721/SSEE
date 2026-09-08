@@ -267,7 +267,7 @@ per probe, joint-fit ingredients vs.\ probe-dedicated fit.}
 \toprule
  & CMB (Planck) & shear (KiDS-1000) & clustering (BOSS) \\
 \midrule
-$\Lambda$CDM, $\Delta\chi^2$ & \TODO{R7 LCDM CMB} & \TODO{R7 LCDM KiDS} & \TODO{R7 LCDM BOSS} \\
+$\Lambda$CDM, $\Delta\chi^2$ & \TODO{joint fit} & \TODO{joint fit} & \TODO{joint fit + free-background BOSS} \\
 \SSEE{}, $\Delta\chi^2$ & 0 (by construction) & 0 (by construction) & 0 (by construction) \\
 \bottomrule
 \end{tabular}
@@ -508,16 +508,92 @@ constrain does not exist in the current model.
 \label{sec:fsigma8}
 % ============================================================================
 
-\TODO{Insertar aqui la tabla de resultados R1/R2: fsigma8 SSEE por bin de z,
-fsigma8 LCDM por bin de z, comparacion con Alam et al. 2017 consenso, y control
-negativo de la maquinaria (tension media 0.92 sigma, chi2/dof=1.048, tasa de
-crecimiento libre).}
+The clustering counterpart of \S\ref{sec:s8} asks the same question of the
+other growth probe: with the background held fixed --- algebraically in
+\SSEE{}, at Planck 2018 in $\Lambda$CDM --- what amplitude does the raw
+galaxy clustering prefer, and at what $\chi^2$? The test is the $\chi^2$ over
+the 222 multipole points, \emph{not} $f\sigma_8$: $f\sigma_8$ is an output of
+the fit, and therefore a product of the model, the same lesson $S_8$ taught in
+\S\ref{sec:retraction}.
 
-\subsection{Limitation: linear Kaiser at this stage of the analysis}
+Both models carry identical freedom here: one shared amplitude
+$\ln(10^{10}A_s)$ plus $(b_1,b_2,b_s,\alpha_0,\alpha_2,{\rm SN_0})$ per
+$(z\text{-bin},\text{hemisphere})$, $37$ in total, of which the $18$ that
+enter the model linearly are marginalised in closed form
+(\S\ref{sec:boss-method}) and $19$ are sampled. So $\Delta k=0$: this
+comparison carries no parsimony credit in either direction. \SSEE{}'s
+advantage in parameter count lives at the CMB ($k=2$ against $6$) and in the
+shear likelihood ($9$ against $13$), not here. What this run answers is
+narrower and cleaner: \emph{with the same nuisance freedom, does the algebraic
+background fit raw clustering as well as Planck's?}
+
+\begin{table}[h]
+\centering
+\caption{$f\sigma_8$ against raw BOSS DR12 multipoles (R1/R2), LPT to
+$k_{\max}=0.20\,h\,$Mpc$^{-1}$. Both backgrounds fixed; $222$ data points,
+$37$ free parameters, $185$ degrees of freedom. Published values are the
+BOSS DR12 consensus of \citet{Alam2017}.}
+\label{tab:fsigma8}
+\begin{tabular}{lccc}
+\toprule
+ & $z=0.38$ & $z=0.51$ & $z=0.61$ \\
+\midrule
+\SSEE{}                    & $0.4114\pm0.0201$ & $0.4129\pm0.0202$ & $0.4106\pm0.0201$ \\
+$\Lambda$CDM               & $0.4208\pm0.0198$ & $0.4191\pm0.0197$ & $0.4145\pm0.0195$ \\
+\citet{Alam2017}           & $0.497\pm0.045$   & $0.458\pm0.038$   & $0.436\pm0.034$ \\
+\midrule
+\SSEE{} vs.\ published     & $1.74\sigma$ & $1.05\sigma$ & $0.64\sigma$ \\
+$\Lambda$CDM vs.\ published& $1.55\sigma$ & $0.91\sigma$ & $0.55\sigma$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The fit quality is the headline, and it is a tie:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+ & $\ln(10^{10}A_s)$ & $\chi^2$ & $\chi^2/{\rm dof}$ \\
+\midrule
+$\Lambda$CDM & $2.7898\pm0.0943$ & $207.58$ & $1.122$ \\
+\SSEE{}      & $2.7636\pm0.0981$ & $207.64$ & $1.122$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+$\Delta\chi^2 = +0.06$ in favour of $\Lambda$CDM over $222$ points with the
+same $37$ free parameters. That is not a marginal preference; it is
+indistinguishable from zero. The algebraic background describes raw galaxy
+clustering exactly as well as Planck's fitted one.
+
+\paragraph{Method control.} Our own $\Lambda$CDM row is the control: if the
+pipeline is sound, it must reproduce what BOSS published. It does, within
+$1.55\sigma$, $0.91\sigma$ and $0.55\sigma$ at the three redshifts. We flag
+two caveats rather than let the reader infer agreement we have not earned.
+First, $z=0.38$ at $1.55\sigma$ is the weakest of the three and we do not
+claim it as clean. Second, our uncertainties ($\pm0.020$) are less than half
+the published ones ($\pm0.034$ to $\pm0.045$), because we hold the background
+\emph{fixed} whereas \citet{Alam2017} marginalise over it: the smaller error
+bar buys its precision by not asking a question, and the two are therefore
+not the same quantity. A $\Lambda$CDM run with the background free --- the
+version that would make the error bars comparable --- is the outstanding item
+for this section.
+
+\paragraph{Amplitude.} Both models place the clustering amplitude below the
+CMB value: $2.7636\pm0.0981$ (\SSEE{}) and $2.7898\pm0.0943$
+($\Lambda$CDM), against $3.0438\pm0.0151$ measured on raw Planck data with
+the algebraic background. Two independent low-redshift probes with almost no
+shared systematics --- cosmic shear in \S\ref{sec:s8} and galaxy clustering
+here --- agree with each other and sit below the CMB. That displacement is
+reported, not resolved.
+
+\subsection{Why the exploratory linear-Kaiser stage does not publish}
 \label{sec:limitation-kaiser}
 
-The multipole model used for the results in this section is linear Kaiser
-redshift-space distortions. Measured against the published BOSS DR12
+An earlier, exploratory pass over the same data used linear Kaiser
+redshift-space distortions rather than the one-loop model reported above.%
+% 2026-09-07: la frase decia "The multipole model used for the results in
+% this section IS linear Kaiser", en presente, y el ultimo parrafo de la
+% misma subseccion dice que la corrida de produccion usa velocileptors. Las
+% dos no podian ser ciertas a la vez. La segunda es la correcta. Measured against the published BOSS DR12
 consensus values (Alam et al.~2017 \citep{Alam2017}) with the growth rate left free, as in the
 official analysis, the pipeline reproduces the published values within
 0.92$\sigma$ on average ($\chi^2$/dof$=1.048$; \S\ref{sec:boss-method}),
@@ -557,8 +633,14 @@ vector rather than in any of the cosmologies fitted to it. The residual
 $3.4\sigma$ between the amplitude preferred by the CMB and
 the amplitude preferred by cosmic shear is a disagreement between those
 datasets, which this work reports but does not claim to resolve. The
-$f\sigma_8$ result is reported in \S\ref{sec:fsigma8}. \TODO{cerrar esta
-frase con la conclusion conjunta cuando este R1/R2 (fsigma8).}
+$f\sigma_8$ result of \S\ref{sec:fsigma8} closes the pair rather than
+softening it: raw galaxy clustering places the amplitude at
+$\ln(10^{10}A_s)=2.7636\pm0.0981$, below the CMB by the same sign and a
+comparable amount as cosmic shear, with $\Delta\chi^2=+0.06$ between the two
+cosmologies over $222$ points at equal parameter count. Shear and clustering
+are two low-redshift probes sharing almost no systematics; that they agree
+with each other, and both sit below the CMB, locates the displacement in the
+epoch rather than in either measurement's instrument.
 
 The methodological point (\S\ref{sec:method}) is offered as a general caution
 independent of \SSEE{}: any model without background-level free parameters

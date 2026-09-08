@@ -156,10 +156,44 @@ print(f"    T_rh,req ≈ {T_rh_required:.3e} GeV")
 print(f"\n  Temperaturas de reheating típicas para inflación quintaesencial")
 print(f"  con reheating gravitacional: T_rh ~ 10⁻² − 10⁴ GeV")
 
-if T_rh_required < 1e4:
-    print(f"  ✓ T_rh,req = {T_rh_required:.1e} GeV — CONSISTENTE con reheating gravitacional")
+# FIX 2026-09-08: el chequeo miraba SOLO el techo (`< 1e4`) y estampaba
+# «CONSISTENTE» a un valor 97 veces por DEBAJO del piso que el propio
+# print de arriba cita. Era el unico sitio donde este mecanismo podia
+# fallar —todo lo demas se retro-calcula, asi que se ajusta siempre— y
+# estaba tapado por un chequeo de una sola cara. Ahora son tres cotas, y
+# dos de ellas no dependen de SSEE:
+#   piso citado    1e-2  GeV   reheating gravitacional quintaesencial
+#   BBN            4.1e-3 GeV  de Salas+2015 95% CL: por debajo no hay
+#                              nucleosintesis, y el helio primordial SI
+#                              se observa
+#   esfaleron      131.7 GeV   T_rh es la temperatura MAXIMA tras la
+#                              inflacion; por debajo el esfaleron nunca
+#                              corrio y no pudo producir los bariones
+#                              que este mismo mecanismo dice que produjo
+T_RH_PISO_QI = 1e-2      # GeV — piso del rango citado arriba
+T_RH_PISO_BBN = 4.1e-3   # GeV — de Salas et al. 2015, 95% CL
+T_SPH_GeV = 131.7        # GeV — d'Onofrio, Rummukainen & Tranberg 2014
+_cotas = [
+    ("rango quintaesencial citado", T_RH_PISO_QI <= T_rh_required <= 1e4,
+     f"piso {T_RH_PISO_QI:.0e} — techo 1e+04"),
+    ("BBN (helio primordial observado)", T_rh_required >= T_RH_PISO_BBN,
+     f"piso {T_RH_PISO_BBN:.1e}"),
+    ("esfaleron activo (T_max >= T_sph)", T_rh_required >= T_SPH_GeV,
+     f"piso {T_SPH_GeV:.1f}"),
+]
+print(f"\n  T_rh,req = {T_rh_required:.3e} GeV contra sus tres cotas:")
+for _nombre, _pasa, _detalle in _cotas:
+    print(f"    {'PASA  ' if _pasa else 'FALLA '} {_nombre:34s} {_detalle}")
+if all(_p for _, _p, _ in _cotas):
+    print("  ✓ mecanismo consistente con las tres cotas")
 else:
-    print(f"  ⚠ T_rh,req = {T_rh_required:.1e} GeV — requiere análisis del modelo completo")
+    _n_falla = sum(1 for _, _p, _ in _cotas if not _p)
+    print(f"  ✗ EXCLUIDO — falla {_n_falla} de 3 cotas. El argumento Sakharov"
+          f"\n    de OP-1 NO sostiene la forma de w_b. La formula algebraica"
+          f"\n    w_b=(pi-phi)/(3 Om^2) NO se mueve (0.32 sigma Planck, y el"
+          f"\n    barrido fuerza_wb 2026-09-08 pone el minimo de chi2 justo"
+          f"\n    ahi): nunca se apoyo en este mecanismo. Lo que cae es el"
+          f"\n    relato de respaldo, no el numero.")
 
 # ── [6] Conexión estructural con Ω_b h² = (π−φ)/H₀_SSEE ─────────────────────
 print("\n[6] Conexión estructural: η_B ~ δ_CP/H₀ ≡ (π−φ)/H₀_SSEE")

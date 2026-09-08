@@ -1,0 +1,21 @@
+{
+ "SSEE": {
+  "logA": 3.0448382322728635,
+  "tau": 0.05545549840182065,
+  "chi2": 1003.5238060690147,
+  "sigma8": 0.8154827807780182,
+  "chi2_fijo": 1005.3599532951348,
+  "sigma8_fijo": 0.8151420213659033,
+  "n_eval": 51
+ },
+ "LCDM": {
+  "logA": 3.044261985290051,
+  "tau": 0.055057570204138755,
+  "chi2": 1010.5916485609356,
+  "sigma8": 0.815558888050108,
+  "chi2_fijo": 1012.1692401023631,
+  "sigma8_fijo": 0.8154527494944406,
+  "n_eval": 62,
+  "INVALIDO": "NO USAR. Esta fila corrio con w0=-0.840015 y wa=-0.670141, o sea con la energia oscura de SSEE, por un bug del evaluador: no es LCDM. El control correcto (w=-1, wa=0) esta en cmb_tau_flotado_lcdm.json. Detectado y rehecho el 2026-09-07."
+ }
+}

@@ -608,8 +608,19 @@ standard Runge-Kutta methods.
 \begin{table}[h!]
 \centering
 \caption{Background cosmology and IS relaxation parameters across cosmic history.
-  $H/H_0$ is computed from the SSEE CPL Friedmann equation with $\Omega_{m,\mathrm{dyn}}=0.160050$
-  and CPL dark energy.
+  $H/H_0$ is computed from the SSEE CPL Friedmann equation with the matter
+  density $\Omega_m=0.308881$ and CPL dark energy.%
+% 2026-09-07: esta tabla se calculaba con Omega_m,dyn = 0.160050 en la ranura
+% de DENSIDAD de la ecuacion de Friedmann. Ese numero es 1+w_0, la ecuacion de
+% estado, y entra por la presion, nunca como densidad de materia (Paper 1
+% Sec. two_omega_m, donde el criterio de dos Omega_m se declara retirado; y es
+% el mismo bug que inflaba chi2_BAO a 726 antes del fix de geometria del
+% 2026-07-09). Recalculada con Omega_m = 0.308881: H/H_0 sube hasta un 38.9%
+% a alto z (400.1 -> 555.8 en z=99; 1.441 -> 1.768 en z=1; sin cambio en z=0,
+% donde E=1 por definicion), y tau_Pi H sube en la misma proporcion. La
+% CONCLUSION de la tabla no cambia: los valores corregidos son MAYORES, o sea
+% que la aproximacion cuasi-estatica es aun mejor de lo que se publicaba. Las
+% etiquetas de validez se conservan.
   $\tauPi H$ shows that the quasi-static approximation ($\tauPi H \gg 1$) is
   excellent at all redshifts.}
 \label{tab:background}
@@ -617,12 +628,12 @@ standard Runge-Kutta methods.
 \toprule
 $z$ & $a$ & $H/H_0$ & $\tauPi H$ & QS validity \\
 \midrule
-99   & 0.010 & 400.1 & 876.6  & $\gg 1$ \\
-19   & 0.050 & 35.80 & 78.43  & excellent \\
-9    & 0.100 & 12.66 & 27.73  & excellent \\
-4    & 0.200 & 4.513 & 9.888  & very good \\
-1    & 0.500 & 1.441 & 3.156  & adequate \\
-0.25 & 0.800 & 1.098 & 2.405  & marginal \\
+99   & 0.010 & 555.8 & 1218   & $\gg 1$ \\
+19   & 0.050 & 49.71 & 108.9  & excellent \\
+9    & 0.100 & 17.58 & 38.52  & excellent \\
+4    & 0.200 & 6.237 & 13.67  & very good \\
+1    & 0.500 & 1.768 & 3.873  & adequate \\
+0.25 & 0.800 & 1.157 & 2.534  & marginal \\
 0    & 1.000 & 1.000 & 2.191  & marginal \\
 \bottomrule
 \end{tabular}
@@ -839,7 +850,7 @@ and the numerical MIRA is $\mathrm{MIRA}_{\mathrm{num}} = \Omega_{m,\mathrm{eff}
 Reproducing the algebraic $\mathrm{MIRA} = 1.9989$ would require
 \begin{equation}
   r^* = \frac{(\mathrm{MIRA}-1)\,\Omega_{m,\mathrm{dyn}}}{\OmDE}
-  = \frac{0.9989 \times 0.1601}{0.8399}
+  = \frac{0.9989 \times 0.160050}{0.839950}
   \simeq 0.1904.
   \label{eq:r_required}
 \end{equation}
@@ -1369,27 +1380,56 @@ none of them uses the second sector.
 \subsection{Implications for JWST early galaxy counts}
 \label{subsec:JWST}
 
-The marginal-stability condition $c^2_{s,\mathrm{eff}} = 0$ has a specific prediction
-for structure formation: DE perturbations at sub-horizon scales effectively
-vanish, leaving matter to cluster in a background with effective matter density
-$\Omega_{m,\mathrm{dyn}} = 0.160050$.
-The lower matter density delays structure formation relative to $\Lambda$CDM
-in one sense (less matter to cluster), but the reduced Jeans mass from the
-pressureless DE sector ($c^2_s = 0$) and the modified collapse threshold
-$\delta_c^{\mathrm{SSEE}} = 1.6284$ \citep{SSEE_Paper4} (compared to the
-EdS value $1.686$) boost the halo mass function at high mass and high redshift.
+The marginal-stability condition $c^2_{s,\mathrm{eff}} = 0$ does have a
+consequence for structure formation: DE perturbations at sub-horizon scales
+effectively vanish, and the collapse threshold is modified to
+$\delta_c^{\mathrm{SSEE}} = 1.6284$ \citep{SSEE_Paper4} against the EdS value
+$1.686$, which by itself raises the halo mass function at high mass. Matter
+clusters in a background with $\Omega_m = 0.308881$ --- the one matter density
+of the model; the number $0.160050$ that earlier versions of this subsection
+placed here is $1+w_0$, an equation-of-state parameter, and never was a
+density (Paper~1, \S\emph{One matter density}).
 
-Using the Press-Schechter formalism with the SSEE collapse threshold
-\citep{SSEE_Paper4}, the excess of massive halos ($M > 10^{11}\,M_\odot$)
-at $z > 10$ relative to $\Lambda$CDM is
-\begin{equation}
-  \frac{n_{\mathrm{SSEE}}(M,z)}{n_{\Lambda\mathrm{CDM}}(M,z)}
-  \approx 1.4\text{--}2.0 \quad (M > 10^{11}\,M_\odot,\; z > 10),
-\end{equation}
-potentially explaining the excess of bright galaxies reported by
-\citet{BoylanKolchin2023} in JWST observations at $z > 10$.
-This prediction will be quantitatively testable when JWST halo mass functions
-at $z \gtrsim 12$ become available at the $\lesssim 20\%$ level.
+\paragraph{Recomputed, with the amplitude convention made explicit.}
+Earlier versions of this subsection reported
+$n_{\mathrm{SSEE}}/n_{\Lambda\mathrm{CDM}}\approx1.4$--$2.0$ for
+$M>10^{11}\,M_\odot$ at $z>10$ from a Press--Schechter calculation whose
+growth factor was fed $\Omega_m=0.160050$ as a matter density. That input was a
+category error --- $0.160050$ is $1+w_0$ --- and the calculation has been
+redone (\texttt{src/p02\_mcmc/ssee\_press\_schechter.py}, 2026-09-07) with
+$\Omega_m=0.308881$, the measured growth index $\gamma_{\rm IS}=0.5504$
+(\S\ref{subsec:gamma_IS}) and the algebraic anchor $H_0=67.962$. With both
+cosmologies evaluated at their \emph{own} CMB-fitted amplitude
+($\sigma_8=0.81506$ for SSEE, $0.811$ for $\Lambda$CDM):
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$z$ & $M=10^{11}M_\odot$ & $M=10^{12}M_\odot$ \\
+\midrule
+10 & 1.051 & 1.332 \\
+12 & 1.085 & 1.507 \\
+15 & 1.148 & 1.887 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The enhancement survives and grows with redshift, driven by the modified
+collapse threshold $\delta_c^{\mathrm{SSEE}}=1.6284$ against the EdS $1.686$.
+The previously quoted $1.4$--$2.0$ is recovered in the high-mass,
+high-redshift corner ($M\sim10^{12}M_\odot$, $z\gtrsim12$), but not across the
+whole range the earlier text claimed: at $10^{11}M_\odot$ and $z=10$ the
+effect is a few per cent.
+
+\paragraph{The amplitude convention is not a detail.} This ratio compares two
+cosmologies and is only meaningful if both are evaluated at the same epoch's
+amplitude. Giving SSEE the amplitude it prefers when fitted to raw KiDS-1000
+shear ($\sigma_8=0.7446$, Paper~6) while leaving $\Lambda$CDM at Planck's
+$0.811$ inverts the result to a deficit ($0.887$ and $0.517$ at $z=10$). That
+inversion is not a statement about collapse physics: it is the
+CMB-versus-late-time amplitude disagreement entering through the back door,
+and it would affect $\Lambda$CDM identically if the same mismatch were imposed
+on it. High-redshift abundance comparisons must therefore state which
+amplitude each cosmology is given; matched-amplitude is what is reported
+above.
 
 \subsection{The $S_8$--$f\sigma_8$ alignment and the role of $\Omega_{m,\mathrm{cosm}}$}
 \label{subsec:S8_fsigma8_split}

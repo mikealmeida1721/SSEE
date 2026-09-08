@@ -99,6 +99,33 @@ if not verde:
     sys.exit(1)
 
 problemas = []
+# CASOS DE ESTADO. Algunas reglas no vigilan texto sino una condicion del
+# sistema de ficheros —R31 vigila un `.pyc` rancio con el fuente INTACTO— y no
+# caben en (archivo, viejo, nuevo). En vez de declararlas «no mutables», que es
+# como se acumulan los puntos ciegos, la regla declara `estado` y aqui se
+# prepara y se restaura llamando a mutacion_estado.py.
+_EST = _AQUI / "mutacion_estado.py"
+for regla, info in _reg.REGLAS.items():
+    if not info.get("estado"):
+        continue
+    etiqueta = f"{regla} · estado: {info['estado']}"
+    subprocess.run([sys.executable, str(_EST), info["estado"], "prepara"],
+                   cwd=REPO, check=True)
+    try:
+        _, fallos, salida = corre()
+    finally:
+        subprocess.run([sys.executable, str(_EST), info["estado"], "restaura"],
+                       cwd=REPO, check=True)
+    if not fallos and "comprobaciones" not in salida:
+        problemas.append(f"{etiqueta}: el guardian se CAYO")
+        print(f"  [  CAIDA  ] {etiqueta}")
+    elif not any(f.startswith(tuple(info.get("prefijos", [regla]))) for f in fallos):
+        problemas.append(f"{etiqueta}: no lo detecta {regla}"
+                         + (f" (lo caza {fallos[0]})" if fallos else " — nadie"))
+        print(f"  [ {'OTRA    ' if fallos else ' PASA   '} ] {etiqueta}")
+    else:
+        print(f"  [ DETECTA ] {etiqueta}")
+
 for regla, info in _reg.REGLAS.items():
     for caso in info["mutacion"]:
         # Un caso puede declarar el archivo que muta. Sin declararlo, es el .tex.

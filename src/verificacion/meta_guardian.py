@@ -116,7 +116,11 @@ def _en_tg(k):
     return any(p in cubiertas_tg for p in pref)
 
 
-sin_mut = [k for k, v in _reg.REGLAS.items() if not v["mutacion"] and not _en_tg(k)]
+# Un caso de ESTADO (R31: un .pyc rancio con el fuente intacto) es una prueba
+# igual que un reemplazo de texto; simplemente no cabe en (archivo, viejo,
+# nuevo). Contarlo como «sin caso» lo empujaria a la deuda por su FORMA.
+sin_mut = [k for k, v in _reg.REGLAS.items()
+           if not v["mutacion"] and not v.get("estado") and not _en_tg(k)]
 chk("M3 toda regla registrada declara un caso de mutación",
     not sin_mut, "; ".join(sin_mut) if sin_mut
     else f"{sum(len(v['mutacion']) for v in _reg.REGLAS.values())} casos "
@@ -193,13 +197,18 @@ chk("M6 la deuda de capas sin cobertura no crece",
 # corren y a las que nadie ha probado rompiendo algo a propósito.
 _en_codigo = {int(_m.group(1))
               for _m in re.finditer(r'check\(\s*f?"R(\d+)\b', src)} - {99}
+# Una regla puede estar cubierta bajo OTRA clave: R17 y R19 viven en la
+# entrada «manuscritos», cuyos checks se rotulan «manuscritos  R17 …». Se
+# leen los PREFIJOS ademas de la clave, o M9 las cuenta como deuda cuando
+# estan probadas — que es contar por la FORMA del registro, no por el hecho.
 _en_registro = set()
-for _k in _reg.REGLAS:
-    _m = re.search(r"R(\d+)", str(_k))
-    if _m:
-        _en_registro.add(int(_m.group(1)))
+for _k, _v in _reg.REGLAS.items():
+    for _s in [str(_k)] + [str(_p) for _p in _v.get("prefijos", [])]:
+        _m = re.search(r"R(\d+)", _s)
+        if _m:
+            _en_registro.add(int(_m.group(1)))
 _sin_mut = sorted(_en_codigo - _en_registro)
-DEUDA_MUT_MAX = 24      # 28 -> 24 al probar R52/R56/R59/R60/R66; SÓLO BAJA
+DEUDA_MUT_MAX = 0       # 28 -> 0 el 2026-09-08: las 46 probadas; SÓLO BAJA
 chk("M9 toda regla del código tiene caso de mutación",
     len(_sin_mut) <= DEUDA_MUT_MAX,
     f"{len(_sin_mut)} de {len(_en_codigo)} reglas sin caso de mutación "

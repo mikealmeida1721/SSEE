@@ -220,8 +220,13 @@ REGLAS = {
         intencion="prosa-sin-cronologia-ni-multidominio",
         ambito="manuscript/*.tex y README.md",
         exenciones=[],
-        prefijos=["R1 ", "R2 ", "manuscritos"],
+        prefijos=["R1 ", "R2 ", "manuscritos", "R17", "R19"],
         probada_en="test_guardian.py",
+        # R17 y R19 viven bajo esta entrada y test_guardian.py YA las
+        # prueba (lineas 152 y 164). Escribi casos propios para ambas y
+        # los verifique antes de descubrirlo: eran duplicados. M7 los
+        # cazo. La deuda real de M9 era 22, no 24 — los contaba como
+        # descubiertos por leer la CLAVE del registro y no sus prefijos.
         mutacion=[],
     ),
     "R25": dict(
@@ -451,6 +456,213 @@ REGLAS = {
         mutacion=[("la partícula retirada presentada como vigente",
                    "\\section{Introduction: why",
                    "The particle mass is 40.70 eV.\n\\section{Introduction: why")],
+    ),
+
+    # ── Lote 2026-09-08 (2/2) · las 24 que corrian sin prueba de mutacion ──
+    # Cada caso se verifico UNO A UNO antes de escribirlo aqui: se inyecta el
+    # defecto, se corre el guardian y se comprueba a QUE regla se atribuye el
+    # fallo. Los que primero cayeron en otra regla o pasaron desapercibidos
+    # estan corregidos, no apuntados como estaban.
+    "R54": dict(
+        capa="R54 — 0.403302 es s_K, jamás alpha_K",
+        intencion="etiqueta-vs-valor", ambito="src/**.py, .tex, .yaml, .md",
+        archivo="manuscript/SSEE_Paper7_EFT.tex", exenciones=[],
+        mutacion=[("el valor de s_K rotulado como alpha_K",
+                   "\\section{", "The EFT gives $\\alpha_K = 0.4033$ today.\n\\section{")],
+    ),
+    "R58": dict(
+        capa="R58 — beta_c = -AURA no figura como prediccion viva",
+        intencion="retractado-no-vigente", ambito="manuscript/ y submission_PRD/ .tex",
+        archivo="manuscript/SSEE_Paper7_EFT.tex",
+        exenciones=[("texto que lo narra como retirado o como bug", None)],
+        mutacion=[("beta_c = -AURA presentado como correcto al 0.2%",
+                   "\\section{",
+                   "The conformal coupling is beta_c = -AURA, correct to 0.2\\%.\n\\section{")],
+    ),
+    "R63": dict(
+        capa="R63 — el 0.09 sigma rancio de w0wa",
+        intencion="valor-rancio-no-reaparece", ambito="*.md de la raiz y manuscript/*.tex",
+        archivo="manuscript/SSEE_Paper7_EFT.tex", exenciones=[],
+        mutacion=[("el 0.09 sigma retirado, junto a w0wa",
+                   "\\section{",
+                   "The w0wa point sits at 0.09 sigma from DESI DR2.\n\\section{")],
+    ),
+    "R61": dict(
+        capa="R61 — la comparacion con el numero puro usa el f_screen COMPLETO",
+        intencion="comparacion-con-el-valor-canonico",
+        ambito="manuscript/, submission_PRD/, *.md y src/**.py",
+        archivo="manuscript/SSEE_Paper7_EFT.tex",
+        exenciones=[("el texto rotula el valor como parcial o IR-only", None)],
+        mutacion=[("el 68.13 parcial comparado con el numero puro sin rotularlo",
+                   "\\section{",
+                   "The cascade returns 68.13, compared with the pure number.\n\\section{")],
+    ),
+    "R55": dict(
+        capa="R55 — la cascada de Hubble no invierte su dirección",
+        intencion="direccion-de-la-cascada", ambito="manuscript/, submission_PRD/, src/",
+        archivo="manuscript/SSEE_Paper7_EFT.tex",
+        exenciones=[("linea que lo narra como superado o invertido", None)],
+        mutacion=[("el numero puro usado como ENTRADA de la cascada",
+                   "\\section{",
+                   "The global value follows as 67.962 / (1 - f_screen).\n\\section{")],
+    ),
+    "R64": dict(
+        capa="R64 — ningun evaluador clava w0/wa de SSEE como literal",
+        intencion="ecuacion-de-estado-como-argumento", ambito="src/**.py",
+        archivo="src/p03_cmb/cmb_eval.py",
+        exenciones=[("la cabecera que EXPLICA el bug cita el literal", None)],
+        mutacion=[("la ecuacion de estado de SSEE clavada en el dict del modelo",
+                   "'mnu': _MNU, 'omk': 0.0,",
+                   "'w': -0.8399, 'wa': -0.6700, 'mnu': _MNU, 'omk': 0.0,")],
+    ),
+    "R67": dict(
+        capa="R67 — ninguna regla teclea su propia lista de fixtures",
+        intencion="exencion-en-un-solo-sitio", ambito="src/verificacion/ssee_verify.py",
+        archivo="src/verificacion/ssee_verify.py",
+        exenciones=[("la linea marcada # R67-OK, que es el control de la regla", None)],
+        mutacion=[("una regla que vuelve a teclear la lista suelta",
+                   'if "archive" in str(_f66) or _f66.name in (_FIXTURES | {"ssee_core.py"}):',
+                   'if "archive" in str(_f66) or _f66.name in ("ssee_core.py", "test_guardian.py"):')],
+    ),
+    "R50": dict(
+        capa="R50 — el trinquete de deuda está apretado",
+        intencion="tope-sin-holgura", ambito="los topes _DEUDA_MAX del guardian",
+        archivo="src/verificacion/ssee_verify.py", exenciones=[],
+        mutacion=[("un tope de deuda con holgura sobre la cuenta real",
+                   '    "R66": 0,            # constantes del nucleo re-tecleadas (2026-09-08)',
+                   '    "R66": 9,            # constantes del nucleo re-tecleadas (2026-09-08)')],
+    ),
+    "R53": dict(
+        capa="R53 — toda regla trae su control del otro lado",
+        intencion="regla-con-control", ambito="los checks del propio guardian",
+        archivo="src/verificacion/ssee_verify.py", exenciones=[],
+        mutacion=[("el tope de reglas sin control, aflojado",
+                   "_DEUDA_R53 = 26", "_DEUDA_R53 = 31")],
+    ),
+    "R47": dict(
+        capa="R47 — piezas declaradas como supuesto: ¿rastreadas?",
+        intencion="supuesto-con-rastro", ambito="src/**.py fuera de verificacion/",
+        archivo="src/p06_growth/prueba_rol.py",
+        exenciones=[("la linea dice que NO se asume, o que se mide para saberlo", None)],
+        mutacion=[("un supuesto en codigo activo sin OP ni derivacion cerca",
+                   "SMNU = _MNU", "# SSEE hypothesis: zeta = KAL0/3\nSMNU = _MNU")],
+    ),
+    "R48": dict(
+        capa="R48 — misma cantidad en dos documentos: ¿mismo valor?",
+        intencion="cantidad-cruzada-coherente", ambito="cross_document de CANONICAL_VALUES.yaml",
+        archivo="CANONICAL_VALUES.yaml",
+        exenciones=[("la entrada declara un op_abierto que explica la discrepancia", None)],
+        mutacion=[("dos documentos con valores distintos y sin OP que lo declare",
+                   '        valor:   0.839950\n        nota:    "zeta_tilde/(tau_Pi H0) = Omega_DE, con zeta_tilde normalizada\n                  a la entalpia — misma cantidad, mismo valor"\n    op_abierto: "OP-22b"',
+                   '        valor:   0.700000\n        nota:    "zeta_tilde/(tau_Pi H0) = Omega_DE, con zeta_tilde normalizada\n                  a la entalpia — misma cantidad, mismo valor"')],
+    ),
+    "R49": dict(
+        capa="R49 — el `source` declarado apunta a un documento real",
+        intencion="source-verificable", ambito="los `source:` de CANONICAL_VALUES.yaml",
+        archivo="CANONICAL_VALUES.yaml", exenciones=[],
+        mutacion=[("un source que cita un paper que no contiene el valor",
+                   '    source:     "Paper 1 (registro estructural); src/ssee_core.py:OMEGA"',
+                   '    source:     "Paper 8 (registro estructural); src/ssee_core.py:OMEGA"')],
+    ),
+    "R51": dict(
+        capa="R51 — etiqueta de figura vs variable graficada: ¿misma ancla?",
+        intencion="etiqueta-concuerda-con-lo-graficado", ambito="src/**.py con matplotlib",
+        archivo="src/p09_hubble/ssee_paper9_figures.py", exenciones=[],
+        mutacion=[("la etiqueta nombra un ancla distinta de la que se grafica",
+                   "ax1.plot(z, fscreen_z, 'k-', lw=2, label=r'$f_{\\rm screen}(z)$')",
+                   "curva = H0_alg * fscreen_z\nax1.plot(z, curva, 'k-', lw=2, "
+                   "label=r'MIRA anchor $f(z)$')")],
+    ),
+    "R57": dict(
+        capa="R57 — ninguna figura se escribe fuera de results/figures",
+        intencion="ruta-de-salida-correcta", ambito="src/**.py a 2+ niveles",
+        archivo="src/p06_growth/prueba_rol.py",
+        exenciones=[("scripts en src/ directo, donde un solo '..' SI es la raiz", None)],
+        mutacion=[("un solo '..' desde un script anidado: la figura cae fuera",
+                   "SMNU = _MNU",
+                   "import os\nSAL = os.path.join(os.path.dirname(os.path.abspath(__file__)),\n"
+                   "    '..',\n    'results', 'figures')\nSMNU = _MNU")],
+    ),
+    "R62": dict(
+        capa="R62 — ningun veredicto de rango con una sola cota",
+        intencion="rango-con-sus-dos-cotas", ambito="src/**.py y los scripts citados por OPEN_PROBLEMS",
+        archivo="src/p06_growth/prueba_rol.py",
+        exenciones=[("un error contra su tolerancia: tiene UNA cota por construccion", None)],
+        mutacion=[("un rango de dos extremos validado mirando solo uno",
+                   "SMNU = _MNU",
+                   "# el rango tipico va de 1e-2 a 10 GeV\nT_rh = 1e-4\nif T_rh < 10:\n"
+                   "    print('T_rh dentro del rango')\nSMNU = _MNU")],
+    ),
+    "R65": dict(
+        capa="R65 — los numeros de un script coinciden con su log fuente",
+        intencion="numero-respaldado-por-su-log", ambito="src/**.py que declaran `FUENTE: results/logs/`",
+        archivo="src/p02_mcmc/regenerate_fig8_bao_residuals.py",
+        exenciones=[("identificadores de arXiv y DOI, que no son resultados", None)],
+        mutacion=[("un numero que el log declarado como fuente no contiene",
+                   "H0=67.52954", "H0=67.51111")],
+    ),
+    "R36": dict(
+        capa="R36 — figura del PRD vs el script que la produce",
+        intencion="artefacto-no-mas-viejo-que-su-fuente", ambito="results/figures/*.pdf citadas por el PRD",
+        archivo="src/estadistica/ssee_phase_d_savage_cv.py",
+        exenciones=[("cambios que solo tocan prosa: se compara el AST", None)],
+        mutacion=[("la figura del PRD se atribuye a un script mas nuevo que ella",
+                   "import warnings", "import warnings\n_FIG36 = 'fig_cmb_spectrum'")],
+    ),
+    "R27": dict(
+        capa="R27 — look-elsewhere: lo afirmado == lo recomputado",
+        intencion="titular-estadistico-recomputado", ambito="manuscript/ y submission_PRD/ .tex",
+        archivo="manuscript/SSEE_Paper7_EFT.tex",
+        exenciones=[("rangos con «$\\sim$», que son otra cuenta declarada sin privilegio", None)],
+        # CEDIDO a test_guardian.py, que ya la prueba (M7 prohibe que las
+        # DOS suites lleven caso del mismo punto: cuando una se actualiza y
+        # la otra no, el guardian «demuestra» dos cosas y nadie sabe cual
+        # manda). El caso propio quedo verificado antes de cederlo.
+        probada_en="test_guardian.py",
+        mutacion=[],
+    ),
+    "R28": dict(
+        capa="R28 — espejo del diccionario citable",
+        intencion="dos-copias-no-derivan", ambito="src/estadistica/look_elsewhere_full.py vs el citable",
+        archivo="src/estadistica/look_elsewhere_full.py",
+        exenciones=[("el diccionario citable esta gitignoreado: en un clon limpio no aplica", None)],
+        # CEDIDO a test_guardian.py, que ya la prueba (M7 prohibe que las
+        # DOS suites lleven caso del mismo punto: cuando una se actualiza y
+        # la otra no, el guardian «demuestra» dos cosas y nadie sabe cual
+        # manda). El caso propio quedo verificado antes de cederlo.
+        probada_en="test_guardian.py",
+        mutacion=[],
+    ),
+    "R29": dict(
+        capa="R29 — símbolo↔entidad biyectivo",
+        intencion="un-simbolo-por-entidad", ambito="manuscript/ y submission_PRD/ .tex",
+        archivo="manuscript/SSEE_Paper7_EFT.tex",
+        exenciones=[("Paper 6 retirado y Paper 9, declarados aparte", None)],
+        # CEDIDO a test_guardian.py, que ya la prueba (M7 prohibe que las
+        # DOS suites lleven caso del mismo punto: cuando una se actualiza y
+        # la otra no, el guardian «demuestra» dos cosas y nadie sabe cual
+        # manda). El caso propio quedo verificado antes de cederlo.
+        probada_en="test_guardian.py",
+        mutacion=[],
+    ),
+    "R32": dict(
+        capa="R32 — unicidad de N_* = 2 phi^7",
+        intencion="unicidad-de-la-solucion", ambito="el barrido m·phi^n del guardian",
+        archivo="src/verificacion/ssee_verify.py", exenciones=[],
+        mutacion=[("la condicion de pureza alterada: la solucion deja de ser unica",
+                   "        _k = -_math.log(1 - (1 - 2 / _N)) / _math.log(phi)",
+                   "        _k = -_math.log(1 - (1 - 3 / _N)) / _math.log(phi)")],
+    ),
+    "R31": dict(
+        capa="R31 — bytecode: lo importado == el fuente",
+        intencion="artefacto-compilado-al-dia", ambito="src/ssee_core.py y su __pycache__",
+        archivo="src/ssee_core.py", exenciones=[],
+        # Caso de ESTADO, no de texto: lo que vigila es un .pyc rancio con el
+        # fuente INTACTO byte a byte, y eso no cabe en (archivo, viejo, nuevo).
+        # Lo prepara src/verificacion/mutacion_estado.py, que ademas explica la
+        # sutileza del mtime que hizo fallar el primer intento.
+        estado="r31_pyc_rancio",
+        mutacion=[],
     ),
 }
 

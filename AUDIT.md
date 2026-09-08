@@ -153,15 +153,15 @@ c²_s,eff = 0 (exact algebraic)
 MIRA_num (k≥10) = 0.989 ± 0.017   [background effect, not perturbative]
 γ_IS = 0.5504 ± 0.0003             [≈ γ_ΛCDM = 0.55]
 G = D₁_SSEE/D₁_ΛCDM = 1.0032       [~0.3% enhancement; Poisson source Ω_m,CMB=0.30889]
-σ₈_SSEE = 0.8136 ± 0.006           [single-sector ODE; CLASS top-hat ceiling 0.8335]
-S₈_SSEE = 0.8256 ± 0.006           [single-sector; ceiling 0.846 — see note below]
+σ₈_SSEE = 0.8136 ± 0.006           [single-sector ODE; CLASS top-hat ceiling 0.8149]
+S₈_SSEE = 0.8256 ± 0.006           [single-sector; ceiling 0.827 — see note below]
 S₈ tension SSEE vs DES-Y3 = 2.74σ  [single-sector baseline; see note below]
 ```
 > **Nota (2026-09-08).** Estas dos líneas decían «resolved by Paper 6
 > two-sector» y «Paper 6 two-sector → S₈=0.758». Ese sector se **retiró el
 > 2026-08-01** junto con la partícula, así que el documento citaba como
 > vigente una solución muerta. Y no hacía falta ninguna solución: el techo
-> 0.846 y su «3.5σ» salen de **fijar A_s al valor de Planck**, y A_s es uno
+> 0.827 y su «2.7σ» salen de **fijar A_s al valor de Planck**, y A_s es uno
 > de los dos libres del modelo. Con A_s libre contra el ξ± crudo de KiDS-1000
 > el mismo sector único da **S₈ = 0.7555 ± 0.0192, 0.11σ** (Paper 6, R3;
 > log `results/logs/growth_2026-07/R3_ssee_kids_S8.json`). El techo se

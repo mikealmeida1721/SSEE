@@ -1123,7 +1123,13 @@ The $S_8 \equiv \sigma_8\sqrt{\Omega_m/0.3}$ constraint depends critically on
 which matter sector is used.  With the $\omega_m$-direct CMB density
 $\Omega_{m,\mathrm{CMB}}=0.308881$ ($=\omega_m/h^2$, no matter factor; OP-8
 dissolved), the all-cold single sector reaches a ceiling
-$\sigma_8=0.8335$, $S_8=0.846$, a $3.5\sigma$ tension with KiDS-1000
+% ACTUALIZADO 2026-09-08: era sigma_8=0.8335 / S_8=0.846 (tensiones 1.1/3.5/3.9
+% sigma). Ese numero salia de una corrida CLASS sin .ini, fuera del repo y SIN
+% neutrinos masivos; el fondo canonico si los lleva (Sum m_nu = 0.06849 eV) y sin
+% ellos sobra un 2.3% de grumo. Re-corrido con config/class/techo_ssee_canonico.ini;
+% control con criterio previo (baseline Planck debe dar 0.8111+/-0.006) da 0.810851.
+% Log: results/logs/p5_techo_sigma8_As_fijo.json
+$\sigma_8=0.8149$, $S_8=0.827$, a $2.7\sigma$ tension with KiDS-1000
 \citep{Heymans2021} and DES~Y3 \citep{Abbott2022}.
 (Substituting $1+w_0=0.160050$ for a matter density here would give
 $S_8\approx0.59$; that substitution is a category error and is not part of the
@@ -1138,7 +1144,7 @@ and constitutes a falsifiable prediction (Paper~3 §5.4).
 \textbf{Note:} Paper~5 performs the full causal Israel--Stewart analysis at
 $\Omega_{m,\mathrm{CMB}}=0.308881$ and finds the single-sector ceiling
 $\gamma_{\rm IS}=0.5504$ and, \emph{with $A_s$ fixed to the Planck value},
-$\sigma_8=0.8335$, $S_8=0.846$ --- a number that reports the Planck--shear
+$\sigma_8=0.8149$, $S_8=0.827$ --- a number that reports the Planck--shear
 disagreement, not a property of \SSEE{}, since $A_s$ is free in the model.
 Fitted to the raw shear data instead, Paper~6 obtains $S_8=0.7555\pm0.0192$
 (matching the $\Lambda$CDM control, $0.7571\pm0.0194$) with a single matter sector; the $3.4\sigma$ gap between

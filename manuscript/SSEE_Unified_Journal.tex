@@ -612,7 +612,13 @@ resulting quantity had no physical content. The particle built on it had
 nothing to be made of.
 
 \paragraph{The tension was an artefact of the comparison.} Two separate issues
-compounded. First, the quoted $S_8=0.846$ held the primordial amplitude $A_s$
+% ACTUALIZADO 2026-09-08: era sigma_8=0.8335 / S_8=0.846 (tensiones 1.1/3.5/3.9
+% sigma). Ese numero salia de una corrida CLASS sin .ini, fuera del repo y SIN
+% neutrinos masivos; el fondo canonico si los lleva (Sum m_nu = 0.06849 eV) y sin
+% ellos sobra un 2.3% de grumo. Re-corrido con config/class/techo_ssee_canonico.ini;
+% control con criterio previo (baseline Planck debe dar 0.8111+/-0.006) da 0.810851.
+% Log: results/logs/p5_techo_sigma8_As_fijo.json
+compounded. First, the quoted $S_8=0.827$ held the primordial amplitude $A_s$
 fixed at the Planck-preferred value; $A_s$ is one of the two free parameters
 this framework retains at CMB level, so that number reports the Planck--shear
 disagreement rather than a property of the model. That disagreement is real,
@@ -997,7 +1003,7 @@ $r_d$ (CAMB, $\omega_m$-direct) & $147.17$ Mpc & Planck 2018 $r_d$ ($0.32\sigma$
 $\gamma_{\rm IS} = 0.5504$ & $\approx \gamma_{\Lambda\rm CDM} = 0.55$ & RSD surveys & Retrodiction \\
 $\alphaT = \alphaM = \alphaB = 0$ & exact & GW170817 $|\alphaT|<10^{-15}$ & Retrodiction \\
 $S_8$ (MCMC vs.\ raw KiDS-1000 $\xi_\pm$) & $0.7555\pm0.0192$ & $\Lambda$CDM control: $0.7571\pm0.0194$ & Retrodiction \\
-$\sigma_8$ ($A_s$ fixed to Planck; ceiling) & $0.8335$ & convention, not a prediction & --- \\
+$\sigma_8$ ($A_s$ fixed to Planck; ceiling) & $0.8149$ & convention, not a prediction & --- \\
 $H_0^{\rm glob} = H_0^{\rm SH0ES}(1-\fscr^{\rm IR})$ & $68.13$ km/s/Mpc & $3(\phiG+\pi)^2=67.96214$ ($0.17\sigma$; IR only, partial) & Retrodiction \\
 $H_0^{\rm glob} = H_0^{\rm SH0ES}(1-\fscr^{\rm full})$ & $67.962142$ km/s/Mpc & $3(\phiG+\pi)^2$ (residual $+4.2{\times}10^{-6}$) & Retrodiction \\
 \midrule
@@ -1033,7 +1039,7 @@ correct---a dependency chain, not an undetermined parameter.
 
 \textbf{(ii) $S_8$ and the dark-matter sector.}
 With $A_s$ held at the Planck value the Israel--Stewart ceiling gives
-$\sigma_8 = 0.8335$, $S_8 = 0.846$ --- but that configuration imports the
+$\sigma_8 = 0.8149$, $S_8 = 0.827$ --- but that configuration imports the
 Planck--KiDS discrepancy, since $A_s$ is free in this framework. Fitted to raw
 KiDS-1000 $\xi_\pm$ data with a single matter sector (Paper~6), the result is
 $\sigma_8=0.7446\pm0.0189$, $S_8=0.7555\pm0.0192$ ($\Lambda$CDM control: $0.7571\pm0.0194$) --- $0.11\sigma$ from

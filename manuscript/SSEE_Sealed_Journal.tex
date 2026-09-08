@@ -858,7 +858,13 @@ $G\equiv D_1^{\rm SSEE}/D_1^{\Lambda\rm CDM}=1.0032\pm0.005$, and the
 single-sector amplitude ceiling (CLASS forward) is
 \begin{equation}
   \label{eq:s8}
-  \sigma_8=0.8335\pm0.006 , \qquad S_8=0.846
+% ACTUALIZADO 2026-09-08: era sigma_8=0.8335 / S_8=0.846 (tensiones 1.1/3.5/3.9
+% sigma). Ese numero salia de una corrida CLASS sin .ini, fuera del repo y SIN
+% neutrinos masivos; el fondo canonico si los lleva (Sum m_nu = 0.06849 eV) y sin
+% ellos sobra un 2.3% de grumo. Re-corrido con config/class/techo_ssee_canonico.ini;
+% control con criterio previo (baseline Planck debe dar 0.8111+/-0.006) da 0.810851.
+% Log: results/logs/p5_techo_sigma8_As_fijo.json
+  \sigma_8=0.8149\pm0.006 , \qquad S_8=0.827
 \end{equation}
 when the primordial amplitude $A_s$ is held at the Planck-preferred value.
 That configuration was previously reported as a $3.5\sigma$ tension with
@@ -899,7 +905,7 @@ particle had nothing to be made of.
   \centering
   \includegraphics[width=0.9\textwidth]{fig_s8_resolution.pdf}
   \caption{$S_8$ with the primordial amplitude fixed versus fitted. Red
-  ($S_8=0.846\pm0.006$): $A_s$ held at the Planck value, which imports the
+  ($S_8=0.827\pm0.006$): $A_s$ held at the Planck value, which imports the
   Planck--KiDS discrepancy. Green ($S_8=0.7555\pm0.0192$): $A_s$ fitted to the
   raw KiDS-1000 $\xi_\pm$ data with a single matter sector and the background
   fixed by the algebra --- $0.11\sigma$ from KiDS-1000 (green band); the $\Lambda$CDM control on the same raw data lands at $0.7571\pm0.0194$. Grey
@@ -1142,7 +1148,7 @@ derivation of the role assignments.
 \end{itemize}
 
 The growth-of-structure status of \S\ref{sec:growth} no longer mirrors this
-structure. The $S_8$ ``tension'' at $0.846$ was an artefact of holding $A_s$ at
+structure. The $S_8$ ``tension'' at $0.827$ was an artefact of holding $A_s$ at
 the Planck value while comparing against a $\Lambda$CDM-conditioned summary
 statistic; fitted to raw shear data with a single sector it is
 $0.7555\pm0.0192$, matching the $\Lambda$CDM control on the same data ($0.7571\pm0.0194$) with four fewer free parameters. No extension sector is required, and the one

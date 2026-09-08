@@ -342,7 +342,7 @@ retired:
   - {pattern: "1.117 mpc",   reason: "alpha @40.70 (variante) — RETIRADO"}
   # Crecimiento single-sector ODE Paper 5 (reframe Poisson 0.31983→0.308881)
   - {pattern: "1.0109",    reason: "G_growth ODE viejo @Ω_m=0.31983 → 1.0032 @0.308881"}
-  - {pattern: "0.8466",    reason: "S8 ODE single-sector viejo @0.320 → 0.8256 @0.308881 (techo CLASS 0.846 se mantiene)"}
+  - {pattern: "0.8466",    reason: "S8 ODE single-sector viejo @0.320 → 0.8256 @0.308881 (el techo CLASS pasó de 0.846 a 0.826827 el 2026-09-08, al incluir los neutrinos masivos)"}
   - {pattern: "0.798\\,h", reason: "k_fs @42.47 — el free-streaming entero está RETIRADO"}
   - {pattern: "0.659\\,h", reason: "k_fs @36.95 — RETIRADO"}
   - {pattern: "0.762\\,h", reason: "k_fs @41.02 — RETIRADO"}

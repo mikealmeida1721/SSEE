@@ -179,7 +179,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | Metric | SSEE | ΛCDM |
 |---|---|---|
 | Growth index γ_IS (Paper 5, supersedes App.A) | 0.5504 ± 0.001 | 0.55 |
-| S₈ (IS, single-sector ceiling) | 0.846 | 0.830 |
+| S₈ (IS, single-sector ceiling) | 0.827 | 0.830 |
 | fσ8 χ²/N (6 canonical RSD surveys) | **0.766** | 0.860 |
 
 ### Paper 5 (Israel-Stewart Causal Perturbations)
@@ -191,8 +191,8 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | MIRA (numerical, k≥10) | 0.989 ± 0.017 | Background IS origin confirmed |
 | γ_IS | 0.5504 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
 | G = D₁_SSEE/D₁_ΛCDM | 1.0032 ± 0.005 | ~0.3% enhancement (Poisson source Ω_m,CMB = 0.30889) |
-| σ₈_SSEE (single-sector ceiling) | 0.8335 ± 0.006 | ODE linear growth gives 0.8136 |
-| **S₈_SSEE (ceiling, A_s FIXED to Planck)** | **0.846** | the old "3.5σ KiDS challenge" — an artefact of fixing A_s. The two-sector answer is RETIRED (2026-08-01); with A_s free: 0.7555, 0.11σ |
+| σ₈_SSEE (single-sector ceiling) | 0.8149 ± 0.006 | ODE linear growth gives 0.8136 |
+| **S₈_SSEE (ceiling, A_s FIXED to Planck)** | **0.827** | the old "3.5σ KiDS challenge" — an artefact of fixing A_s (now 2.7σ). The two-sector answer is RETIRED (2026-08-01); with A_s free: 0.7555, 0.11σ |
 | Mean fσ₈ tension (6 surveys, single-sector) | 0.70σ | the two-sector variant (0.93σ) is RETIRED with the particle (2026-08-01); canonical fσ₈ vs raw BOSS is pending (R1/R2) |
 
 **Diagnostic:** with A_s *fixed* to Planck the model predicts an S₈ above weak-lensing surveys.
@@ -215,7 +215,15 @@ That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of th
 | k_fs (free-streaming) | 0.754 h/Mpc | From m_φ, CLASS-derived |
 | σ₈_eff (two-sector particle) | 0.747 | RETIRED 2026-08-01 |
 | **σ₈, S₈ (single sector, A_s free, MCMC vs raw KiDS-1000 ξ±)** | **0.7446±0.0189, 0.7555±0.0192** | **0.11σ — no S₈ tension.** Converged Cobaya+CAMB run, R−1=0.019, N_eff=4.2×10⁴, χ²=265.4/216 dof |
-| Same background with A_s **fixed** to Planck | σ₈=0.8335, S₈=0.846 | the old "3.5σ challenge" — an artefact of fixing A_s, i.e. of importing the Planck–KiDS tension |
+| Same background with A_s **fixed** to Planck | σ₈=0.8149, S₈=0.827 | the old "3.5σ challenge" — an artefact of fixing A_s, i.e. of importing the Planck–KiDS tension (2.7σ with the corrected ceiling) |
+> **Actualizado 2026-09-08.** Estos dos valores eran `σ₈=0.8335 / S₈=0.846`, con
+> tensiones 1.1σ / 3.5σ / 3.9σ. Salían de una corrida de CLASS **sin `.ini`**, fuera
+> del repositorio y **sin neutrinos masivos**; el fondo canónico sí los lleva
+> (Σm_ν=0.06849 eV) y sin ellos sobra un 2.3% de grumo. Re-corrido con
+> `config/class/techo_ssee_canonico.ini`; su control, con criterio escrito antes de
+> correr, exige que la línea base de Planck dé σ₈=0.8111±0.006 y da **0.810851**.
+> Log: `results/logs/p5_techo_sigma8_As_fijo.json`
+
 | fσ₈ vs raw BOSS DR12 multipoles | pending (R1/R2) | single-sector baseline 0.70σ |
 
 > **Note (2026-08-01):** there is **one** matter sector, Ω_m = 0.308881, with no

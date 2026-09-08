@@ -345,7 +345,7 @@ Todo objeto astrofísico tiene r_km ≪ 1 kpc → quinta fuerza DM activa a esca
   (0.73σ). A escalas RSD (k≪k_fs) el φ-DM agrupa como frío, sin firma two-sector en fσ₈.
   (El viejo "2.56σ→0.50σ" usaba datos fσ₈ erróneos y/o el baseline no-canónico Ω_m=0.160;
   el "0.74/0.76σ" usaba Ω_m=0.30889 vía MIRA — ambos retirados.)
-- **S₈ (weak-lensing) — el desafío REAL:** single-sector S₈=0.846 (3.5σ KiDS). El
+- **S₈ (weak-lensing) — el desafío REAL:** single-sector S₈=0.827 (2.7σ KiDS; era 0.846/3.5σ antes de incluir los neutrinos masivos, 2026-09-08). El
   two-sector free-streaming lo baja a **S₈_eff=0.758 (0.00σ KiDS) — RESUELVE** a nivel
   lineal/forward (m_φ=40.70 eV, cero fiteo; el viejo 0.761 era la rama WDM fiteada).
 
@@ -875,7 +875,7 @@ numbers only — no Hubble rate enters. The dimensionally-inconsistent
 **Canonical CLASS verification (zero fitting, SOLAR²·KRYSTOS_V adopted 2026-06-19):** the
 forward-predicted particle ($m_\phi=40.70$ eV, $\Omega_{\phi{\rm DM}}=0.14889$) yields
 $\sigma_8^{\rm eff} = 0.747$, $S_8 = 0.758$ ($0.04\sigma$ KiDS-1000 $0.759\pm0.024$ —
-**resolves** the lensing tension), single-sector ceiling $S_8=0.846$ ($3.5\sigma$, "the
+**resolves** the lensing tension), single-sector ceiling $S_8=0.827$ ($2.7\sigma$, "the
 challenge"). $\sigma_8$ is a **direct CLASS output** (top-hat on the two-sector $P(k)$),
 not the retired $\alpha_{\rm WDM}$ fit; the Viel $\alpha = 1.108$ Mpc/h is a CLASS
 diagnostic output. log: `results/logs/p6_class_reframe_omega_m.log`.

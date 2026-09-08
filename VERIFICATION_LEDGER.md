@@ -432,8 +432,10 @@ dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
 *Claim CLAUDE.md (canónico 2026-06-19, RETIRADO 2026-08-01):* titular two-sector S₈_eff=0.758 (0.04σ KiDS). Canónico vigente: un sector, A_s libre, S₈=0.7555±0.0192 (0.11σ).
 
 1. **✓ definición:** S₈ = σ₈(Ω_m/0.3)^½ con Ω_m,CMB=0.308881 (√(Ω_m/0.3)=1.0147).
-2. **✓ single-sector (el desafío):** σ₈=0.8335 → S₈=0.846 — **3.5σ KiDS**.
-   Es el baseline que el modelo debe resolver.
+2. **✓ single-sector, A_s FIJO:** σ₈=0.814854 → S₈=0.826827 — **2.74σ KiDS**.
+   *(Actualizado 2026-09-08: era 0.8335 → 0.846 → 3.5σ. Aquella corrida de CLASS
+   no llevaba neutrinos masivos; con ellos sobra un 2.3% menos de grumo. Y NO es
+   un baseline que el modelo deba resolver: el 2.74σ es artefacto de fijar A_s.)*
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
 3. **✓ two-sector φ-DM (TITULAR, forward):** el free-streaming en k_fs=0.754
    h/Mpc (de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo) baja σ₈_eff a 0.7470 → **S₈_eff=0.758
@@ -919,9 +921,11 @@ verifica que los números encajen entre ellos, no re-corre los pipelines.
 
 Usa Ω_m,CMB=0.308881 → √(Ω_m,CMB/0.3)=1.0147 (S₈ es amplitud gravitacional).
 
-1. **✓ single-sector ("el desafío"):** σ₈ = 0.8335 (techo CLASS todo-frío,
-   fuente Poisson Ω_m,CMB=0.308881).
-   S₈ = 0.8335·1.0147 = 0.846 → **3.5σ KiDS-1000** (DES-Y3 ≈ 3.5σ).
+1. **✓ single-sector con A_s FIJO:** σ₈ = 0.814854 (techo CLASS todo-frío
+   **con Σm_ν=0.06849 eV**, fuente Poisson Ω_m,CMB=0.308881).
+   S₈ = 0.814854·1.0147 = 0.826827 → **2.74σ KiDS-1000** (DES-Y3 2.82σ).
+   *(2026-09-08: era σ₈=0.8335 → S₈=0.846 → 3.5σ, de una corrida sin `.ini`,
+   fuera del repo y sin neutrinos masivos. Ver la fila del techo en §B.)*
 2. **✓ two-sector φ-DM (TITULAR, forward):** σ₈_eff = 0.7470 (free-streaming
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
    CLASS, k_fs=0.754 de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo). S₈_eff = 0.7470·1.0147 =

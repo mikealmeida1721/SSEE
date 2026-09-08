@@ -42,6 +42,27 @@ _FIXTURES = frozenset({
     "test_guardian.py",      # la otra suite de mutación
     "derive_nu_closure.py",  # deriva el 93.14 partiendo de los valores viejos
 })
+def _prosa_tex(_t):
+    """El .tex con los saltos de linea DENTRO de un parrafo vueltos espacio.
+
+    POR QUE (2026-09-08, lo destapo una mutacion). En LaTeX una frase se parte
+    en varias lineas, asi que cualquier patron de mas de dos palabras falla en
+    cuanto cae en un salto. Paper 1 decia
+
+        is currently a free
+        parameter (OP-11).
+
+    y R45 —que persigue exactamente «currently a free parameter» junto a un OP
+    ya cerrado— no lo veia: buscaba la frase con espacios simples. El defecto
+    llevaba 38 dias en el manuscrito, con la regla en VERDE. Una regla que solo
+    mira dentro de una linea se queda chica frente a su propio enunciado.
+
+    Se respeta la linea en blanco (separa parrafos) y la linea que empieza por
+    comando o comentario, porque ahi el salto SI es estructura y no relleno.
+    """
+    return re.sub(r"(?<!\n)[ \t]*\n[ \t]*(?!\n)(?![\\%])", " ", _t)
+
+
 fails = []
 checks = 0
 
@@ -2404,7 +2425,8 @@ try:
     _todos45 = []
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
                       + list((_REPO / "submission_PRD").glob("*.tex"))):
-        _todos45 += [f"{_tx.name}: {x}" for x in _r45(_tx.read_text(errors="ignore"))]
+        _todos45 += [f"{_tx.name}: {x}"
+                     for x in _r45(_prosa_tex(_tx.read_text(errors="ignore")))]
     _l45, _deuda45 = _particiona(_todos45)
     # Auto-test contra el estado REAL de OP-17 antes del arreglo del 2026-08-02
     # (encabezado «✅ ADOPTADA» + cuerpo que la revierte) y contra los dos falsos

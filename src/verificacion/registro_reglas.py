@@ -385,6 +385,63 @@ REGLAS = {
                    "## B. Valores de pipeline",
                    "## B2. Valores de pipeline")],
     ),
+
+    # ── Lote 2026-09-08 · reglas nuevas que corrían SIN prueba de mutación ──
+    # Las 28 reglas de R47 en adelante tenían su auto-test INTERNO (el control
+    # de dos polos de R53) pero ninguna había sido probada por fuera: romper el
+    # artefacto real y exigir que enrojezca ESA regla y no otra. Un auto-test
+    # comprueba el detector contra casos que escribe el propio detector; la
+    # mutación lo comprueba contra el repositorio de verdad.
+    "R66": dict(
+        capa="R66 — constantes del núcleo re-tecleadas como literal",
+        intencion="literal-vs-simbolo",
+        ambito="todo src/**.py salvo núcleo, guardián y suites",
+        archivo="src/p06_growth/prueba_rol.py",
+        exenciones=["líneas marcadas # R66-OK: el literal es deliberado "
+                    "(valor citado de un paper, MAP de una cadena, centro de "
+                    "una rejilla)"],
+        mutacion=[("una constante del núcleo vuelta a teclear como literal",
+                   "SMNU = _MNU", "SMNU = 0.06849")],
+    ),
+    "R56": dict(
+        capa="R56 — el rótulo general de KAL_0 es retención, no viscosidad",
+        intencion="rotulo-vs-entidad",
+        ambito="núcleo, guardián y prosa",
+        archivo="src/ssee_core.py",
+        exenciones=[],
+        mutacion=[("KAL_0 rotulado otra vez como viscosidad",
+                   "# Structural Retention", "# Structural Viscosity")],
+    ),
+    "R52": dict(
+        capa="R52 — ninguna saturación multiplica a ρ_crit en código activo",
+        intencion="saturacion-no-es-densidad",
+        ambito="src/**.py fuera de verificacion/",
+        archivo="src/p07_eft/fondo_disparo.py",
+        exenciones=["línea que dice explícitamente que NO debe usarse así"],
+        mutacion=[("una saturación usada como densidad, el bug de β_c",
+                   "OM_M = S.OMEGA_M_TOTAL",
+                   "OM_M = S.OMEGA_DE * rho_crit")],
+    ),
+    "R59": dict(
+        capa="R59 — ninguna ruta de script citada en la prosa apunta al vacío",
+        intencion="ruta-viva",
+        ambito=".md de la raíz y subcarpetas, .tex de manuscript y PRD",
+        archivo="VERIFICATION_LEDGER.md",
+        exenciones=[],
+        mutacion=[("una ruta de script que ya no existe",
+                   "src/p06_growth/perfil_wc_boss.py",
+                   "src/p06_growth/perfil_wc_boss_VIEJO.py")],
+    ),
+    "R60": dict(
+        capa="R60 — los papers están limpios de todo lo retirado",
+        intencion="retractado-no-vigente",
+        ambito="manuscript/*.tex, submission_PRD/*.tex, *.md, src/**.py",
+        archivo="manuscript/SSEE_Paper6_Growth.tex",
+        exenciones=["texto que lo narra explícitamente como retirado"],
+        mutacion=[("la partícula retirada presentada como vigente",
+                   "\\section{Introduction: why",
+                   "The particle mass is 40.70 eV.\n\\section{Introduction: why")],
+    ),
 }
 
 # Capas que EXISTEN en el código y todavía NO tienen entrada arriba. No es una

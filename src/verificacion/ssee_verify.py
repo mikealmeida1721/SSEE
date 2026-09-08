@@ -22,6 +22,26 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+
+# LA INFRAESTRUCTURA DE VERIFICACIÓN, en un solo sitio. Estos ficheros llevan
+# los defectos A PROPÓSITO: son las fixtures con que se prueba al guardián, las
+# mutaciones del registro y los valores retirados que hay que reconocer. Toda
+# regla que escanee .py debe eximirlos, o se dispara con su propia munición.
+#
+# POR QUÉ ESTÁ AQUÍ Y NO EN CADA REGLA (2026-09-08, lo pidió Mike: «que la
+# regla sea universal en lo que se pueda aplicar»). Cada regla se escribía su
+# propia lista y salían todas distintas: unas eximían siete ficheros, otras dos,
+# R56 sólo uno. Esa incoherencia da las DOS patologías a la vez — R56 saltó con
+# la fixture de su propio caso de mutación (falsa alarma), y una lista de más
+# habría tapado un defecto real (verde falso). La vigila R67.
+_FIXTURES = frozenset({
+    "ssee_verify.py",        # el guardián: sus autotests llevan el defecto
+    "registro_reglas.py",    # las mutaciones son texto defectuoso a propósito
+    "mutacion_guardian.py",  # idem
+    "meta_guardian.py",      # idem
+    "test_guardian.py",      # la otra suite de mutación
+    "derive_nu_closure.py",  # deriva el 93.14 partiendo de los valores viejos
+})
 fails = []
 checks = 0
 
@@ -908,9 +928,7 @@ def _r66_sitios(_txt):
                                 _cuerpo)})
 _r66 = {}
 for _f66 in sorted(ROOT.rglob("*.py")):
-    if ("archive" in str(_f66)
-            or _f66.name in ("ssee_core.py", "ssee_verify.py",
-                             "test_guardian.py")):
+    if "archive" in str(_f66) or _f66.name in (_FIXTURES | {"ssee_core.py"}):
         continue
     _s66 = _r66_sitios(_f66.read_text(errors="ignore"))
     if _s66:
@@ -937,6 +955,50 @@ check("R66 el detector distingue el literal del import",
       not _f66, "; ".join(_f66) if _f66
       else "4 casos: el literal del nucleo marcado; el import, un numero "
            "ajeno y el literal dentro de un comentario, exentos")
+
+# --- R67: ninguna regla se escribe su propia lista de fixtures exentas
+# POR QUE EXISTE (2026-09-08). Siete reglas eximian la infraestructura de
+# verificacion y las siete listas eran DISTINTAS: R56 eximia un fichero, R34
+# siete, otras dos. Esa deriva da las dos patologias a la vez — R56 salto con
+# la fixture de su propio caso de mutacion (falsa alarma) y una lista de mas
+# habria tapado un defecto real (verde falso). Ahora la lista vive en
+# `_FIXTURES` y esta regla impide que alguien vuelva a teclearla suelta.
+_SRC_R67 = pathlib.Path(__file__).resolve().read_text(errors="ignore")
+_R67_NOMBRES = [_n for _n in _FIXTURES if _n != "ssee_verify.py"]
+_L67 = _SRC_R67.split("\n")
+# El bloque donde se DECLARA la lista queda fuera, claro: ahi los nombres van
+# sueltos porque es su definicion. Se delimita por la llave de cierre, no por
+# un numero de linea, que se desplazaria al editar el fichero.
+_ini67 = next(_i for _i, _l in enumerate(_L67) if _l.startswith("_FIXTURES"))
+_fin67 = next(_i for _i, _l in enumerate(_L67) if _i > _ini67 and _l.startswith("})"))
+_r67 = []
+for _i67, _l67 in enumerate(_L67):
+    _cod67 = _l67.split("#")[0]
+    if _ini67 <= _i67 <= _fin67 or "_FIXTURES" in _cod67 or "R67" in _l67 \
+            or "R67-OK" in _l67:
+        continue
+    for _n67 in _R67_NOMBRES:
+        if f'"{_n67}"' in _cod67:
+            _r67.append(f"linea {_i67+1}: «{_l67.strip()[:56]}»")
+check("R67 ninguna regla teclea su propia lista de fixtures exentas",
+      not _r67, "; ".join(_r67[:4]) if _r67
+      else f"{len(_FIXTURES)} fixtures declaradas en un solo sitio; ninguna "
+           f"regla las repite suelta")
+# CONTROL (R53): marca la lista tecleada suelta y deja pasar la que usa la
+# constante comun. Sin este control la regla podria estar mirando al vacio.
+_c67 = [('if _f.name in ("test_guardian.py", "meta_guardian.py"):', True),  # R67-OK
+        ('if _f.name in _FIXTURES:', False),
+        ('if _f.name == "ssee_paper3_cmb.py":', False)]
+_f67 = []
+for _txt67, _debe in _c67:
+    _visto = any(f'"{_n}"' in _txt67.split("#")[0] and "_FIXTURES" not in _txt67
+                 for _n in _R67_NOMBRES)
+    if _visto is not _debe:
+        _f67.append(f"«{_txt67[:40]}» esperaba {_debe}")
+check("R67 el detector distingue la lista suelta de la constante comun",
+      not _f67, "; ".join(_f67) if _f67
+      else "3 casos: la lista tecleada a mano se marca; el uso de _FIXTURES y "
+           "un fichero cualquiera, exentos")
 
 # --- R65: si un script declara su log fuente, sus numeros deben estar ahi
 # POR QUE EXISTE (2026-09-08). regenerate_fig8_bao_residuals.py llevaba los
@@ -1386,7 +1448,7 @@ for _f in sorted(list((ROOT.parent/"manuscript").rglob("*.tex"))
     # El propio guardian queda exento: sus fixtures CONTIENEN la forma
     # prestada a proposito. Es el mismo defecto que R45 documenta haber
     # cometido dentro de si misma.
-    if "archive" in str(_f) or _f.name == "ssee_verify.py":
+    if "archive" in str(_f) or _f.name in _FIXTURES:
         continue
     _r56_todos += [f"{_f.name}: {x}" for x in _r56_sitios(_f.read_text(errors="ignore"))]
 check("R56 el rotulo general de KAL_0 es retencion, no viscosidad",
@@ -1580,7 +1642,7 @@ check("V-L4  theta* posterior coincide con el anchor (0.90 sigma)",
 # sobrevivio al archivado del script. Verificado y convertido 2026-09-07.
 _des_vivos = set()
 for _f in (ROOT).rglob("*.py"):
-    if "archive" in str(_f) or _f.name in ("ssee_verify.py", "test_guardian.py"):
+    if "archive" in str(_f) or _f.name in _FIXTURES:
         continue
     for _m in re.finditer(r"S8_DES\s*(?:=|,)\s*\(?\s*(0[.]\d+)", _f.read_text(errors="ignore")):
         _des_vivos.add(_m.group(1))
@@ -2720,9 +2782,7 @@ try:
     # el núcleo los define, el guardián los busca y el registro de reglas los
     # usa como payload de mutación. R34 cazó `registro_reglas.py` en cuanto se
     # escribió — true positive contra el propio andamio, no contra el modelo.
-    _EXCL = {"test_guardian.py", "derive_nu_closure.py", "ssee_verify.py",
-             "ssee_core.py", "registro_reglas.py", "meta_guardian.py",
-             "mutacion_guardian.py"}
+    _EXCL = set(_FIXTURES) | {"ssee_core.py"}
     _pat34 = _re.compile(
         r"(?:mnu|Smnu|SUM_MNU_EV|sigma_m_nu|m_nu|C_nu|C_NU)\s*=\s*"
         r"(0\.069(?:0[0-9]*)?|94\.07[0-9]*)\s*(?:[^0-9.]|$)")
@@ -3298,7 +3358,7 @@ try:
     for _py in sorted(_REPO2.glob("src/**/*.py")) + sorted(_REPO2.glob("class_ssee/*.py")):
         # test_guardian.py queda fuera: sus mutaciones CONTIENEN a propósito la
         # forma prohibida (es su trabajo escribirla para probar que duele).
-        if "archive" in _py.parts or _py.name in ("ssee_verify.py", "test_guardian.py"):
+        if "archive" in _py.parts or _py.name in _FIXTURES:
             continue
         for _ln, _line in enumerate(_py.read_text(errors="ignore").splitlines(), 1):
             # Se mira CÓDIGO, no prosa: un comentario que NOMBRA la forma prohibida
@@ -3719,7 +3779,7 @@ try:
         # test_guardian.py contiene la cadena del error A PROPÓSITO (es la mutación
         # que prueba que R25 dispara); marcarla sería morderse la cola.
         if ("superseded" in str(_pf) or "archive" in str(_pf)
-                or _pf.name == "test_guardian.py"):
+                or _pf.name in _FIXTURES):
             continue
         _npy25 += 1
         for _i, _ln in enumerate(_pf.read_text(errors="ignore").splitlines(), 1):
@@ -3737,7 +3797,7 @@ try:
     _R25_MAKE = re.compile(r"\*\s*\(\s*H0\s*/\s*100\s*\)\s*\*\*\s*2")
     for _pf in sorted((_R25_ROOT / "src").rglob("*.py")):
         if ("superseded" in str(_pf) or "archive" in str(_pf)
-                or _pf.name == "test_guardian.py"):
+                or _pf.name in _FIXTURES):
             continue
         _txt = _pf.read_text(errors="ignore")
         if not (_R25_CONST.search(_txt) and _R25_MAKE.search(_txt)):
@@ -4969,7 +5029,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 264          # +3 R66 (constantes re-tecleadas); solo SUBE
+_PISO_CHECKS = 267          # +2 R67 (lista unica de fixtures); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",

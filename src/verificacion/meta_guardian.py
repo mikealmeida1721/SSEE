@@ -178,6 +178,32 @@ chk("M6 la deuda de capas sin cobertura no crece",
     len(_reg.SIN_COBERTURA) <= DEUDA_MAX,
     f"{len(_reg.SIN_COBERTURA)} capas sin demostrar (tope {DEUDA_MAX})")
 
+# ── M9 · toda regla del CÓDIGO tiene caso de mutación ────────────────────────
+# POR QUÉ (2026-09-08). M6 medía `len(SIN_COBERTURA)`, una lista escrita a mano
+# en el registro: la deuda era lo que uno declarara que era, así que su verde
+# estaba garantizado por construcción. Daba «0 capas sin demostrar» mientras 29
+# de las 45 reglas reales no tenían ni un caso de mutación. M9 mide contra el
+# CÓDIGO, que es lo que no se puede declarar: cuenta las reglas que existen y
+# corren y a las que nadie ha probado rompiendo algo a propósito.
+_en_codigo = {int(_m.group(1))
+              for _m in re.finditer(r'check\(\s*f?"R(\d+)\b', src)} - {99}
+_en_registro = set()
+for _k in _reg.REGLAS:
+    _m = re.search(r"R(\d+)", str(_k))
+    if _m:
+        _en_registro.add(int(_m.group(1)))
+_sin_mut = sorted(_en_codigo - _en_registro)
+DEUDA_MUT_MAX = 28      # medida 2026-09-08; trinquete, SÓLO BAJA
+chk("M9 toda regla del código tiene caso de mutación",
+    len(_sin_mut) <= DEUDA_MUT_MAX,
+    f"{len(_sin_mut)} de {len(_en_codigo)} reglas sin caso de mutación "
+    f"(tope {DEUDA_MUT_MAX}): " + " ".join(f"R{_r}" for _r in _sin_mut))
+chk("M9 el tope de reglas sin mutación está apretado",
+    len(_sin_mut) >= DEUDA_MUT_MAX or not _sin_mut,
+    f"tope {DEUDA_MUT_MAX} = cuenta real {len(_sin_mut)}"
+    if len(_sin_mut) == DEUDA_MUT_MAX
+    else f"BAJAR el tope a {len(_sin_mut)}: sobran {DEUDA_MUT_MAX - len(_sin_mut)}")
+
 if "--mutacion" in sys.argv:
     print("\n— prueba de mutación —")
     import subprocess

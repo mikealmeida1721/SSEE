@@ -35,11 +35,19 @@ GUARDIAN = _AQUI / "ssee_verify.py"
 
 
 def corre():
-    """(verde?, [nombres de los checks que fallaron])."""
+    """(sin regresiones?, [nombres de los checks que fallaron]).
+
+    Se mira el eje REGRESIÓN, no el titular. Desde que el veredicto separa
+    «regresión» de «modelo» (2026-09-07), un repo sano titula AMARILLO mientras
+    queden problemas abiertos, y esta suite —que sólo pregunta si el guardián
+    enrojece ante un defecto inyectado— se quedaba abortando en la línea base
+    con «el guardián ya está en rojo». Inutilizada sin que nada lo dijera: el
+    fallo era silencioso porque salía por la puerta de un caso legítimo.
+    """
     r = subprocess.run([sys.executable, str(GUARDIAN)],
                        capture_output=True, text=True, cwd=REPO)
     fallos = re.findall(r"^\s*x\s+(\S+)", r.stdout, re.M)
-    return ("VERDE" in r.stdout.split("=" * 40)[-1]), fallos
+    return ("sin regresiones" in r.stdout), fallos
 
 
 # El árbol debe estar LIMPIO antes de mutar. Si una corrida anterior murió a

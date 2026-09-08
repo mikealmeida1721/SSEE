@@ -1,6 +1,17 @@
 """Perfil de chi2(w_c) contra Planck crudo — la mitad que faltaba (cola #2).
 
-QUE CONTESTA. El Registro cita w_c = 0.119534 +/- 0.000248 del CMB. Ese error
+DE DONDE VIENE EL NUMERO QUE SE COMPARA (rastreado 2026-09-08). El
+w_c = 0.119534 +/- 0.000248 NO esta en el Registro: esta frase lo atribuia mal.
+Sale de una corrida real del 2026-09-07 (scratchpad/perfil_wc.py), que imprimio
+su resultado y MURIO antes de guardarlo — tenia `import ssee_core` una linea
+ANTES del `sys.path.insert` que lo hace importable, y esa linea ni se usaba.
+Su valor central esta SESGADO: ajustaba una parabola sobre una rejilla de paso
+0.0020 y ancho +-0.007, donde chi2 sube de 1006 a 1900, asi que las alas mandan
+sobre el vertice. Este script usa paso 0.0002 y ancho +-0.0008. Por eso el
+centro se mueve (0.119534 -> 0.119334) y la anchura no (0.000248 -> 0.000246):
+la curvatura estaba bien, el vertice no.
+
+QUE CONTESTA. Ese error
 es la barra que hace que la identidad KAL0*w_b*n_s quede a 0.08 sigma. Pero
 hasta ahora nadie habia comprobado que la barra la ponga EL DATO y no la
 parametrizacion: si el ajuste estuviera sobre-restringido por como esta

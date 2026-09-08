@@ -1979,6 +1979,32 @@ try:
     def _norm(s):
         return s.replace("−", "-").replace("–", "-")
 
+    def _cotejo_log(_v, _txt):
+        """El valor del Registro, ¿está en el log — como texto o como número?
+
+        SEGUNDA CEGUERA (2026-09-08). El cotejo era `_val in texto`, puro
+        string. Un log JSON guarda la media cruda (0.7445921790951743) y el
+        Registro publica el redondeo (0.7446): la subcadena NO aparece y el
+        respaldo REAL salía marcado como mala anotación. Ahora, si el texto
+        falla, se compara número a número al mismo número de decimales que
+        publica el Registro. El ROJO tipo F1 (valor que el log no contiene)
+        sigue saltando: lo que se acepta es el redondeo, no otra cifra.
+        """
+        if _v in _txt:
+            return True
+        _dec = len(_v.split(".")[1]) if "." in _v else 0
+        try:
+            _obj = float(_v)
+        except ValueError:
+            return False
+        for _c in _re.findall(r"-?\d+\.\d+(?:[eE][-+]?\d+)?", _txt):
+            try:
+                if round(float(_c), _dec) == _obj:
+                    return True
+            except (ValueError, OverflowError):
+                continue
+        return False
+
     _lines = (_REPO / "VERIFICATION_LEDGER.md").read_text(errors="ignore").splitlines()
     # Escaneo de TODA la sección B: cada valor de pipeline cuya Fuente cite un
     # log committeado (results/logs/*.log) se verifica contra él. Cobertura
@@ -2003,7 +2029,14 @@ try:
         if not _m:
             continue
         _val = _m.group(0)
-        _logm = _re.search(r"results/logs/\S+?\.log", _src)
+        # CEGUERA CORREGIDA 2026-09-08. Esto decia `\.log` a secas, asi que un
+        # valor respaldado por un log JSON contaba como SIN RESPALDO. Marcaba
+        # como grieta el titular de Paper 6 (S8=0.7555, MCMC R3 convergido, log
+        # results/logs/growth_2026-07/R3_ssee_kids_S8.json) y su control LCDM.
+        # Falsa alarma del peor tipo: la que dice que no hay prueba donde SI la
+        # hay. Es la 4a patologia — el NOMBRE del check prometia "sin log" y el
+        # codigo comprobaba "sin log .log". Ahora acepta las dos extensiones.
+        _logm = _re.search(r"results/logs/\S+?\.(?:log|json)", _src)
         if not _logm:
             _gaps.append(f"{_label[:22]}={_val}")
             continue
@@ -2013,7 +2046,7 @@ try:
             check(f"procedencia  {_label[:30]}={_val}", False,
                   f"log referenciado no existe: {_rel}")
             continue
-        _hit = _val in _norm(_logf.read_text(errors="ignore"))
+        _hit = _cotejo_log(_val, _norm(_logf.read_text(errors="ignore")))
         check(f"procedencia  {_label[:30]}={_val}", _hit,
               f"coincide con {_rel}" if _hit
               else f"Registro={_val} NO aparece en {_rel} (mala anotación tipo F1)")
@@ -2021,6 +2054,26 @@ try:
         track_open(f"procedencia  {len(_gaps)} valores de pipeline sin log committeado",
                    "; ".join(_gaps[:8]) + (" …" if len(_gaps) > 8 else "")
                    + "  (generar log → results/logs/ para verificarlos)")
+    # CONTROL (R53). Las dos cegueras corregidas hoy eran del tipo «digo que no
+    # hay prueba donde sí la hay». El control tiene que probar los DOS lados:
+    # que el redondeo legítimo pasa, y que una cifra distinta sigue en ROJO.
+    _c_ok = [("0.7446", '{"sigma8": {"media": 0.7445921790951743}}', True,
+              "el redondeo del Registro contra la media cruda del JSON"),
+             ("0.7555", '{"S8": {"media": 0.7555328554033626}}', True,
+              "idem, el titular de Paper 6"),
+             ("262.746", '{"chi2_min": 262.7462}', True,
+              "el chi2 del control LCDM"),
+             ("0.7446", '{"sigma8": {"media": 0.7521}}', False,
+              "otra cifra: NO se acepta, el ROJO tipo F1 sigue vivo"),
+             ("0.7446", '{"nota": "sin numeros"}', False,
+              "log que no contiene el valor"),
+             ("262.746", '{"chi2_min": 265.4399}', False,
+              "el chi2 del OTRO modelo: no cuela por parecerse")]
+    _c_mal = [d for v, t, esp, d in _c_ok if _cotejo_log(v, t) is not esp]
+    check("procedencia  el cotejo acepta el redondeo pero no otra cifra",
+          not _c_mal,
+          f"{len(_c_ok)} casos: 3 redondeos legítimos aceptados, 3 impostores "
+          f"rechazados" if not _c_mal else "fallan: " + "; ".join(_c_mal))
 except Exception as e:
     check("procedencia  capa de procedencia operable", False, str(e))
 
@@ -5299,7 +5352,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 274          # +3 R44b (tablas, OP-24); solo SUBE
+_PISO_CHECKS = 278          # +4 procedencia (JSON + redondeo + control); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",

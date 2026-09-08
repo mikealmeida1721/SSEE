@@ -2627,6 +2627,77 @@ try:
     check("R44 la deuda no crece", _deuda44 <= _DEUDA_MAX["R44"],
           f"{_deuda44} sitios (tope {_DEUDA_MAX['R44']})"
           + (": " + "; ".join(_d44[:3]) if _d44 else ""))
+
+    # ── R44b · las TABLAS, que la forma «= valor» no alcanza (OP-24) ──────────
+    # POR QUE (2026-09-08). R44 exige el signo igual y en una celda el valor va
+    # solo, asi que no veia ninguna tabla. Al medirlo la primera vez conte 50
+    # sitios y estaba MAL: emparejaba por coincidencia numerica sin comprobar de
+    # que habla la fila. Asi «p_D = 2.00» —el numero efectivo de parametros del
+    # DIC— salia como si fuera MIRA (1.998924), y un DeltaBIC de «0.00» como si
+    # fuera omega_nu. Exigiendo que el SIMBOLO de la constante este en la misma
+    # fila quedan 20, y todos son redondeo tipografico honesto de una tabla de
+    # constantes. La leccion es la de R44 entera: un numero sin su entidad al
+    # lado no identifica nada, y contar coincidencias produce ruido, no deuda.
+    _SIM44 = {
+        "OMEGA": r"\\Omega\b|OMEGA", "BETA": r"\\beta\b|BIAL", "KAL0": r"KAL",
+        "P_SC": r"P_\{?\\rm sc|PYROS", "K_V": r"K_v|KRYSTOS", "T_R": r"T_r|TRIAL",
+        "M_V": r"M_v|ATLAS", "MIRA": r"MIRA", "AURA": r"AURA", "S_K": r"s_K",
+        "N_S": r"n_s", "W0": r"w_0", "WA": r"w_a", "H0_ALG": r"H_0",
+        "OMEGA_M_TOTAL": r"\\Omega_m", "OMEGA_B_H2": r"\\omega_b",
+        "OMEGA_C_H2": r"\\omega_c", "SUM_MNU_EV": r"m_\\nu",
+    }
+    _r44b = []
+    for _tx44b in sorted(list((_REPO / "manuscript").glob("*.tex"))
+                         + list((_REPO / "submission_PRD").glob("*.tex"))):
+        for _ln44 in _tx44b.read_text(errors="ignore").split("\n"):
+            if "&" not in _ln44:
+                continue
+            for _k44b, _pat44b in _SIM44.items():
+                _v44b = getattr(_core63, _k44b, None)
+                if _v44b is None or not _re.search(_pat44b, _ln44):
+                    continue
+                for _d44b in range(2, 6):
+                    _s44b = f"{_v44b:.{_d44b}f}"
+                    if abs(float(_s44b) - _v44b) < 5e-7:
+                        continue          # ya esta a precision suficiente
+                    if _re.search(r"&\s*\$?" + _re.escape(_s44b) + r"\$?\s*(&|\\\\)",
+                                  _ln44):
+                        _r44b.append(f"{_tx44b.stem}: {_k44b}={_s44b} "
+                                     f"(vale {_v44b:.6f})")
+                        break
+                else:
+                    continue
+                break
+    _TOPE_R44B = 20                 # medido 2026-09-08; trinquete, SOLO BAJA
+    check("R44b la deuda de constantes redondeadas en TABLAS no crece",
+          len(_r44b) <= _TOPE_R44B,
+          f"{len(_r44b)} celdas (tope {_TOPE_R44B}): " + "; ".join(_r44b[:3])
+          + (" …" if len(_r44b) > 3 else "")
+          if _r44b else "ninguna celda de tabla con la constante redondeada")
+    check("R44b el tope de tablas redondeadas esta apretado",
+          len(_r44b) >= _TOPE_R44B or not _r44b,
+          f"tope {_TOPE_R44B} = cuenta real {len(_r44b)}"
+          if len(_r44b) == _TOPE_R44B
+          else f"BAJAR el tope a {len(_r44b)}: sobran {_TOPE_R44B - len(_r44b)}")
+    # CONTROL (R53): la fila que NOMBRA la constante se marca; la que solo trae
+    # el mismo numero por casualidad, no. Es el falso positivo que se corrigio.
+    _c44b = [(r"$w_a$ & $-P_{\rm sc}/K_v$ & $-0.670$ & \\", "WA", True),
+             (r"$p_D$ & $2.00$ & $3.00$ \\", "MIRA", False),
+             (r"$w_a$ & $-P_{\rm sc}/K_v$ & $-0.669975$ & \\", "WA", False)]
+    _f44b = []
+    for _ln, _k, _esp in _c44b:
+        _v = getattr(_core63, _k)
+        _visto = bool(_re.search(_SIM44[_k], _ln)) and any(
+            abs(float(f"{_v:.{_d}f}") - _v) >= 5e-7
+            and _re.search(r"&\s*\$?" + _re.escape(f"{_v:.{_d}f}") + r"\$?\s*(&|\\\\)",
+                           _ln)
+            for _d in range(2, 6))
+        if _visto is not _esp:
+            _f44b.append(f"«{_ln[:34]}» esperaba {_esp}")
+    check("R44b el detector exige la constante NOMBRADA en la fila",
+          not _f44b, "; ".join(_f44b) if _f44b
+          else "3 casos: la fila que nombra w_a con 3 decimales se marca; la "
+               "de p_D con «2.00» —que solo coincide con MIRA— y la ya exacta, no")
 except Exception as e:
     check("R44 capa operable", False, str(e))
 
@@ -5201,7 +5272,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 271          # +3 R68 (PDF publicado vs su fuente); solo SUBE
+_PISO_CHECKS = 274          # +3 R44b (tablas, OP-24); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",

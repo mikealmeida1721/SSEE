@@ -881,7 +881,32 @@ check("R57 el detector distingue la ruta rota de la correcta y respeta la profun
 import importlib.util as _ilu63
 _spec63 = _ilu63.spec_from_file_location("_core63", ROOT / "ssee_core.py")
 _core63 = _ilu63.module_from_spec(_spec63)
-_spec63.loader.exec_module(_core63)
+# El nucleo NO se carga a pelo. Si no importa —sus propios _sanity_checks
+# abortan cuando una constante se altera— el guardian se caia con traceback a
+# las 80 comprobaciones de 267, sin veredicto, y la suite de mutacion leia esa
+# caida como «nadie lo detecta (VERDE por vacio)». Dos cosas distintas: un
+# guardian que no ve el defecto y un guardian que no llego a mirar.
+# Lo destapo la mutacion `canon` el 2026-09-08.
+try:
+    _spec63.loader.exec_module(_core63)
+    _ERR_CORE = None
+except BaseException as _e63:          # AssertionError incluida
+    _ERR_CORE = f"{type(_e63).__name__}: {_e63}"
+check("canon el nucleo se puede importar y pasa sus propios sanity checks",
+      _ERR_CORE is None,
+      _ERR_CORE or "ssee_core.py importado; sus asserts internos pasan")
+if _ERR_CORE is not None:
+    # Sin nucleo no hay nada que comprobar: seguir produciria una lista de
+    # verdes por vacio, que es peor que parar. Se sale con veredicto, no con
+    # traceback, para que quien lea la salida sepa POR QUE se detuvo.
+    print("\n" + "=" * 40)
+    print("ROJO — el nucleo no carga; el resto de comprobaciones NO se corrio.")
+    # Con el formato que lee la suite de mutacion, para que pueda ATRIBUIR el
+    # fallo a `canon` en vez de verlo como una caida muda.
+    print("   x  canon el nucleo se puede importar y pasa sus sanity checks")
+    print(f"  causa: {_ERR_CORE}")
+    print("  Arreglar src/ssee_core.py y volver a correr.")
+    raise SystemExit(1)
 _R66_CONS = {_k: _v for _k, _v in vars(_core63).items()
              if _k.isupper() and isinstance(_v, float) and abs(_v) > 1e-6}
 _R66_LIT = [(f"%.{_d}f" % _v, _k)

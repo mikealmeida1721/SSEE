@@ -47,7 +47,7 @@ def corre():
     r = subprocess.run([sys.executable, str(GUARDIAN)],
                        capture_output=True, text=True, cwd=REPO)
     fallos = re.findall(r"^\s*x\s+(\S+)", r.stdout, re.M)
-    return ("sin regresiones" in r.stdout), fallos
+    return ("sin regresiones" in r.stdout), fallos, r.stdout
 
 
 # El árbol debe estar LIMPIO antes de mutar. Si una corrida anterior murió a
@@ -92,7 +92,7 @@ if _sucio:
     sys.exit(1)
 
 orig = TEX.read_text()
-verde, _ = corre()
+verde, _, _ = corre()
 print(f"línea base: {'VERDE' if verde else 'ROJO'}")
 if not verde:
     print("  el guardián ya está en rojo: arréglalo antes de mutar.")
@@ -115,9 +115,19 @@ for regla, info in _reg.REGLAS.items():
             continue
         destino.write_text(base.replace(viejo, nuevo, 1))
         try:
-            _, fallos = corre()
+            _, fallos, salida = corre()
         finally:
             destino.write_text(base)      # restaurar SIEMPRE
+        # CAIDA != NO DETECTADO. Si el guardian ni siquiera llego al veredicto
+        # —el nucleo mutado no importa, por ejemplo— no hay lista de fallos, y
+        # la version anterior lo contaba como «nadie lo detecta (VERDE por
+        # vacio)». Es un diagnostico FALSO, y del peor tipo: describe como
+        # ceguera lo que fue una interrupcion. Se separan (2026-09-08).
+        if not fallos and "comprobaciones" not in salida:
+            problemas.append(f"{etiqueta}: el guardian se CAYO, no llego a "
+                             f"veredicto — no se puede concluir nada")
+            print(f"  [  CAIDA  ] {etiqueta}")
+            continue
         if not fallos:
             problemas.append(f"{etiqueta}: nadie lo detecta (VERDE por vacío)")
             print(f"  [  PASA   ] {etiqueta}")
@@ -130,7 +140,7 @@ for regla, info in _reg.REGLAS.items():
 # Control negativo: sin defecto, nadie debe disparar. Una regla que se queja del
 # documento correcto es tan inútil como una que no se queja del roto.
 TEX.write_text(orig)
-verde, _ = corre()
+verde, _, _ = corre()
 print(f"  [{' CONTROL ' if verde else ' FALLA   '}] documento intacto → "
       f"{'VERDE, nadie dispara' if verde else 'ALGUIEN DISPARA SIN DEFECTO'}")
 if not verde:

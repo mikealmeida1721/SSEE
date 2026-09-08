@@ -283,8 +283,8 @@ REGLAS = {
         ambito="prosa .tex, cantidades CON unidades",
         exenciones=[("precisión declarada en el texto («to three decimals»)", None)],
         mutacion=[("misma cantidad dimensional con dos precisiones",
-                   "$H_0 = 3(\\varphi+\\pi)^2\\,\\kmsu \\approx 67.962\\,\\kmsu$",
-                   "$H_0 = 3(\\varphi+\\pi)^2\\,\\kmsu \\approx 67.9621\\,\\kmsu$")],
+                   "3(\\varphi+\\pi)^2 \\approx 67.962",
+                   "3(\\varphi+\\pi)^2 \\approx 67.9621")],
     ),
     "R37": dict(
         capa="R37 — igualdades de constantes SSEE a 6 decimales",
@@ -334,10 +334,10 @@ REGLAS = {
         ambito="prosa .tex, H_0 y cocientes adimensionales",
         exenciones=[("mención negada («we do not write it as…»)", None)],
         mutacion=[("igualdad sin unidad",
-                   "anchor $H_0=3(\\varphi+\\pi)^2\\,\\kmsu$ (derived, Paper~9)",
+                   "anchor $H_0/\\kmsu=3(\\varphi+\\pi)^2$ (derived, Paper~9)",
                    "anchor $H_0=3(\\varphi+\\pi)^2$ (derived, Paper~9)"),
                   ("CONFLICTO: ¿la exención de mención enmascara?",
-                   "anchor $H_0=3(\\varphi+\\pi)^2\\,\\kmsu$ (derived, Paper~9)",
+                   "anchor $H_0/\\kmsu=3(\\varphi+\\pi)^2$ (derived, Paper~9)",
                    "This is not a fitted quantity: the anchor "
                    "$H_0=3(\\varphi+\\pi)^2$ (derived, Paper~9)")],
     ),
@@ -358,8 +358,8 @@ REGLAS = {
                    "$\\Omega_{m,\\rm dyn}=0.160050$ (DESI)",
                    "$\\Omega_{m,\\rm dyn}=0.160$ (DESI)"),
                   ("SOLAR²·K_v a 2 decimales",
-                   "\\mathrm{KRYSTOS}_V=594.279999$",
-                   "\\mathrm{KRYSTOS}_V=594.28$")],
+                   "$9.519253$",
+                   "$9.52$")],
     ),
     "R45": dict(
         capa="R45 — estado de los OP: la prosa concuerda con OPEN_PROBLEMS.md",
@@ -367,7 +367,7 @@ REGLAS = {
         ambito="prosa .tex, menciones OP-N",
         exenciones=[("documentos aún no leídos (deuda contada)", None)],
         mutacion=[("OP resuelto citado como abierto",
-                   "with the remaining open problems OP-9 and OP-11",
+                   "(OP-9 through OP-12) close by dissolution",
                    "with the remaining open problems OP-9/11/14")],
     ),
     "R46": dict(

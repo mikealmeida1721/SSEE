@@ -186,11 +186,32 @@ vigente legítimo; la falla era **semántica** (dato vs predicción), no un valo
 predicción como dato → ROJO. Los papers ya eran correctos (0.04σ); el error vivía solo en código.
 **Estado:** ✅ corregido + automatizado.
 
-## R21 — Ningún modelo se evalúa con el ingrediente del otro 🔴 ⛔
-**Regla:** cada modelo entra en un cálculo **con sus propios ingredientes**, leídos
-de su propia fuente. Si un parámetro se toma prestado del otro modelo, hay que
-declararlo en el sitio donde se reporta el número, y decir en qué dirección
-sesga. Lo que está fijo y lo que está libre se elige **por lo que se pregunta**,
+## R21 — Un préstamo se declara y se CUENTA como libre 🔴 ⛔
+**Regla (formulada por M. Almeida, 2026-09-08):** cada modelo entra en un cálculo
+con **el ingrediente que ese modelo tiene**, leído de su propia fuente. Si el
+modelo **no lo tiene**, tomarlo prestado del otro es legítimo —al principio no
+estaban derivados todos, y no se puede afirmar lo que no se tiene—, pero
+entonces:
+
+  1. **se declara** en el sitio donde se reporta el número, con su origen;
+  2. **cuenta como parámetro libre**, porque no lo produce el modelo. Prestado y
+     libre valen lo mismo en el conteo `k`;
+  3. **se devuelve** en cuanto exista el propio, y el número se re-corre.
+
+Un préstamo es eso: se pide, se anota de quién, y se devuelve. Lo que **no** vale
+es el préstamo silencioso: usar el ingrediente ajeno, no declararlo, y además
+contar `k` como si el modelo lo hubiera derivado. Eso es cobrarse una perilla
+que no se ha pagado.
+
+**Hoy SSEE tiene casi todos**, así que la regla actúa sobre todo como prohibición
+del préstamo silencioso; queda escrita para cuando aparezca un ingrediente que
+el modelo no derive y ΛCDM sí mida con precisión.
+
+**Además:** lo que está fijo y lo que está libre se elige **por lo que se
+pregunta**, no por comodidad. Para SSEE, el fondo por álgebra y libres sólo sus
+dos; para ΛCDM, el fondo libre, que es como lo hace su propia comunidad.
+**Los dos casos reales de hoy NO eran préstamos legítimos, eran silenciosos:**
+en los dos, SSEE **sí tenía** su propio valor y aun así se usó el ajeno. Lo que está fijo y lo que está libre se elige **por lo que se pregunta**,
 no por comodidad: para SSEE, el fondo por álgebra y libres sólo sus dos; para
 ΛCDM, el fondo libre, que es como lo hace su propia comunidad.
 **Por qué (dos casos reales, el mismo día 2026-09-08):**

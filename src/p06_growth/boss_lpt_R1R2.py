@@ -56,14 +56,26 @@ KMAX = float(sys.argv[1]) if len(sys.argv) > 1 else 0.20
 KMIN = 0.01
 OUT = '/home/mike/Proyectos/SSEE/results/logs/growth_2026-07'
 AS_REF = 2.1e-9
-MNU = 0.06
+# FIX 2026-09-08 — SSEE LLEVABA LA MASA DE NEUTRINO DE LCDM. Aqui habia un
+# `MNU = 0.06` suelto que se usaba para LOS DOS modelos. 0.06 eV es el fiducial
+# de Planck; la de SSEE es Sum m_nu = 0.06849 eV, derivada de la clausura
+# nu = 93.14 y presente en omega_m = 0.142668. Es el mismo patron del `tau`
+# prestado que se corrigio hoy: un modelo evaluado con el ingrediente del otro.
+# MEDIDO antes de arreglarlo, mismo fondo, CAMB, z=0.51:
+#     sigma8(0)      0.817411 -> 0.815158   -0.276%
+#     fsigma8(0.51)  0.474540 -> 0.473366   -0.247%  =  0.058 sigma de la barra
+# Pequeno, pero es un sesgo con signo, no ruido. Ahora cada modelo lleva la
+# suya y la de SSEE se LEE del nucleo, no se re-teclea (R66).
+MNU = {'SSEE': S.SUM_MNU_EV, 'LCDM': 0.06}
 
 # Fondos FIJOS. Ninguno de estos numeros se ajusta.
 COSMO = {
     'SSEE': dict(Om=S.OMEGA_M_TOTAL, h=S.H0_GLOBAL / 100.0,
-                 ombh2=S.OMEGA_B_H2, ns=S.N_S, w0=S.W0, wa=S.WA),
+                 ombh2=S.OMEGA_B_H2, ns=S.N_S, w0=S.W0, wa=S.WA,
+                 mnu=MNU['SSEE']),
     'LCDM': dict(Om=0.3153, h=0.6736,
-                 ombh2=0.02237, ns=0.9649, w0=-1.0, wa=0.0),
+                 ombh2=0.02237, ns=0.9649, w0=-1.0, wa=0.0,
+                 mnu=MNU['LCDM']),
 }
 
 
@@ -71,9 +83,9 @@ def camb_lin(c, z):
     """P_lin(k) y f(z) del fondo fijo, a A_s de referencia. A_s entra despues
     como factor exacto, asi que CAMB se corre una sola vez por (modelo, z)."""
     p = camb.CAMBparams()
-    omch2 = c['Om'] * c['h'] ** 2 - c['ombh2'] - MNU / 93.14
+    omch2 = c['Om'] * c['h'] ** 2 - c['ombh2'] - c['mnu'] / 93.14
     p.set_cosmology(H0=c['h'] * 100.0, ombh2=c['ombh2'], omch2=omch2,
-                    mnu=MNU, omk=0.0)
+                    mnu=c['mnu'], omk=0.0)
     p.set_dark_energy(w=c['w0'], wa=c['wa'], dark_energy_model='ppf')
     p.InitPower.set_params(As=AS_REF, ns=c['ns'])
     p.set_matter_power(redshifts=[z], kmax=3.0)

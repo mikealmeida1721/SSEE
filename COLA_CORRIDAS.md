@@ -121,3 +121,16 @@ ignora `*.ini` y `output/`. Consecuencia medida: **ninguna configuración de
 CLASS de este proyecto estaba en el repositorio**, así que ningún número salido
 de CLASS se podía certificar. No era un caso aislado, era el estado normal.
 Desde hoy viven en `config/class/`, versionadas, y se corren desde ahí.
+
+## Añadido 2026-09-08 (tarde) — lo vio Mike preguntando por σ₈
+
+| # | corrida | coste | qué contesta | depende de |
+|---|---|---|---|---|
+| 10 | **re-correr R1/R2 de BOSS con la masa de neutrino correcta** | ~1 h (LPT, 222 pts) | `boss_lpt_R1R2.py` tenía `MNU = 0.06` suelto **usado para los dos modelos**. 0.06 eV es el fiducial de Planck; la de SSEE es 0.06849 eV. Mismo patrón del `τ` prestado: un modelo evaluado con el ingrediente del otro. **Medido antes de arreglar** (mismo fondo, CAMB, z=0.51): σ₈(0) −0.276%, fσ₈(0.51) −0.247% = **0.058σ** de la barra. Pequeño pero con signo, no ruido. El código ya está arreglado y lee del núcleo; falta re-correr | — |
+
+**Comprobado al mismo tiempo, y sale limpio:** `cobaya_kids.py`, que produce el
+S₈ canónico de Paper 6 (R3 y su control R4), **sí** pasa `mnu = S.SUM_MNU_EV`
+para SSEE y `0.06` para ΛCDM. El titular `S₈ = 0.7555 ± 0.0192` **no** está
+afectado. El evaluador del CMB `cmb_eval.py` también lo lee del núcleo. El
+agujero de los neutrinos era **sólo** de las corridas de CLASS y de esta línea
+de BOSS.

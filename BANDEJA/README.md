@@ -30,4 +30,11 @@ Un archivo por corrida, `AAAA-MM-DD_<corrida>.md`, con:
 
 | informe | corrida | estado | listo para traspaso |
 |---|---|---|---|
-| *(vacío)* | — | — | — |
+| `2026-09-08_R4_lcdm_kids.md` | `analiza_lcdm_R4` | ✅ completa, control PASA | **no hace falta** — ningún número se mueve; sólo repone el log |
+
+## Corriendo mientras Mike duerme (2026-09-08)
+
+| corrida | lanzada | qué contesta |
+|---|---|---|
+| `cobaya_kids lcdmfijo` | 07-09 19:43 | la casilla que falta: ¿ΛCDM con fondo fijo también muestra la tensión en `A_s`? |
+| `perfil_wc_boss` | 08-09 06:05 | con `A_s` clavado al del CMB, ¿qué `ω_c` pide BOSS? Trae su control a `logA` de BOSS |

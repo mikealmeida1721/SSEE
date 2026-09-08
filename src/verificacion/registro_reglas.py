@@ -407,9 +407,9 @@ REGLAS = {
         intencion="literal-vs-simbolo",
         ambito="todo src/**.py salvo núcleo, guardián y suites",
         archivo="src/p06_growth/prueba_rol.py",
-        exenciones=["líneas marcadas # R66-OK: el literal es deliberado "
-                    "(valor citado de un paper, MAP de una cadena, centro de "
-                    "una rejilla)"],
+        exenciones=[("líneas marcadas # R66-OK: el literal es deliberado "
+                     "(valor citado de un paper, MAP de una cadena, centro "
+                     "de una rejilla)", None)],
         mutacion=[("una constante del núcleo vuelta a teclear como literal",
                    "SMNU = _MNU", "SMNU = 0.06849")],
     ),
@@ -427,7 +427,7 @@ REGLAS = {
         intencion="saturacion-no-es-densidad",
         ambito="src/**.py fuera de verificacion/",
         archivo="src/p07_eft/fondo_disparo.py",
-        exenciones=["línea que dice explícitamente que NO debe usarse así"],
+        exenciones=[("línea que dice explícitamente que NO debe usarse así", None)],
         mutacion=[("una saturación usada como densidad, el bug de β_c",
                    "OM_M = S.OMEGA_M_TOTAL",
                    "OM_M = S.OMEGA_DE * rho_crit")],
@@ -447,7 +447,7 @@ REGLAS = {
         intencion="retractado-no-vigente",
         ambito="manuscript/*.tex, submission_PRD/*.tex, *.md, src/**.py",
         archivo="manuscript/SSEE_Paper6_Growth.tex",
-        exenciones=["texto que lo narra explícitamente como retirado"],
+        exenciones=[("texto que lo narra explícitamente como retirado", None)],
         mutacion=[("la partícula retirada presentada como vigente",
                    "\\section{Introduction: why",
                    "The particle mass is 40.70 eV.\n\\section{Introduction: why")],
@@ -458,4 +458,17 @@ REGLAS = {
 # lista de perdón: es la deuda visible, y sólo puede bajar. Mientras una capa
 # esté aquí, su VERDE no está demostrado — puede ser verde por vacío.
 SIN_COBERTURA = [
+    # DECLARADAS, no perdonadas (2026-09-08). Existen, corren y tienen su
+    # control de dos polos, pero NADIE las ha visto enrojecer rompiendo el
+    # artefacto real. Estar aqui no las exime de nada: M9 del meta-guardian
+    # cuenta la deuda contra el CODIGO, no contra esta lista, precisamente
+    # para que declararla no la haga desaparecer.
+    "Capa R47 — piezas declaradas como supuesto: ¿rastreadas?",
+    "Capa R48 — misma cantidad en dos documentos: ¿mismo valor?",
+    "Capa R49 — el `source` declarado apunta a un documento real",
+    "Capa R50 — el trinquete de deuda está apretado",
+    "Capa R51 — etiqueta de figura vs variable graficada: ¿misma ancla?",
+    "Capa R53 — toda regla trae su control del otro lado",
+    "Capa R54 — 0.403302 es s_K, jamás alpha_K",
+    "Capa R55 — la cascada de Hubble no invierte su dirección",
 ]

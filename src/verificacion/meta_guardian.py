@@ -30,7 +30,13 @@ import registro_reglas as _reg   # noqa: E402
 
 REPO = _AQUI.parent.parent
 GUARDIAN = _AQUI / "ssee_verify.py"
-DEUDA_MAX = 0          # medida 2026-07-29; sólo puede BAJAR
+# 0 -> 8 el 2026-09-08. NO es un aflojamiento: la deuda no crecio, se hizo
+# VISIBLE. Esas 8 capas ya existian sin caso de mutacion; estaban contadas como
+# fallo de M1 («capa sin entrada en el registro») y M6 daba 0 porque su lista
+# estaba vacia. Dos reglas contando el mismo hecho con umbrales incompatibles.
+# El trinquete que manda ahora es M9, que mide contra el CODIGO y no contra una
+# lista escrita a mano: mientras M6 cuenta lo declarado, M9 cuenta lo real (24).
+DEUDA_MAX = 8
 
 _fallos, _avisos = [], []
 
@@ -193,7 +199,7 @@ for _k in _reg.REGLAS:
     if _m:
         _en_registro.add(int(_m.group(1)))
 _sin_mut = sorted(_en_codigo - _en_registro)
-DEUDA_MUT_MAX = 28      # medida 2026-09-08; trinquete, SÓLO BAJA
+DEUDA_MUT_MAX = 24      # 28 -> 24 al probar R52/R56/R59/R60/R66; SÓLO BAJA
 chk("M9 toda regla del código tiene caso de mutación",
     len(_sin_mut) <= DEUDA_MUT_MAX,
     f"{len(_sin_mut)} de {len(_en_codigo)} reglas sin caso de mutación "

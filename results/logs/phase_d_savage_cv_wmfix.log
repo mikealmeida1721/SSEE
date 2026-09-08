@@ -1,3 +1,6 @@
+# regenerado 2026-09-08 tras anclar la ruta del .npz a __file__
+# (src/estadistica/ssee_phase_d_savage_cv.py). Salida IDENTICA byte a
+# byte a la anterior: el fix de ruta no movio ningun numero.
 ============================================================
 PARTE 1: SAVAGE-DICKEY DENSITY RATIO
 ============================================================

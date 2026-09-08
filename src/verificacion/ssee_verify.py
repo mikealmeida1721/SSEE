@@ -866,9 +866,43 @@ _R66_CONS = {_k: _v for _k, _v in vars(_core63).items()
              if _k.isupper() and isinstance(_v, float) and abs(_v) > 1e-6}
 _R66_LIT = [(f"%.{_d}f" % _v, _k)
             for _k, _v in _R66_CONS.items() for _d in range(5, 10)]
+# AFINADO el mismo dia: la primera version contaba 136 y estaba inflada por
+# DOS cegueras propias. (a) solo quitaba los comentarios de linea entera, no
+# los de final de linea — `phi_ = (1+5**0.5)/2   # 1.61803` es documentacion,
+# no un valor re-tecleado. (b) contaba los literales dentro de CADENAS, y
+# registro_reglas.py los lleva a proposito: son las mutaciones con las que se
+# prueba al propio guardian; sustituirlas romperia las pruebas.
+# Se quitan las dos con el tokenizador de Python, que sabe donde acaba un
+# comentario y donde empieza una cadena. Nada de regex sobre el texto crudo.
 def _r66_sitios(_txt):
-    _cuerpo = "\n".join(_l for _l in _txt.split("\n")
-                        if not _l.lstrip().startswith("#"))
+    # TRES CEGUERAS que tuvo este detector, todas halladas midiendo y las tres
+    # inflando la cuenta (136 medidos -> 47 reales):
+    #   (1) COMMENT   — un valor documentado al lado del codigo que si lo calcula.
+    #   (2) STRING    — las cadenas-fixture con que se prueban las reglas del
+    #                   propio guardian; sustituirlas romperia esas pruebas.
+    #   (3) FSTRING_MIDDLE — desde 3.12 una f-string ya no es un STRING, asi que
+    #                   su NARRACION entraba como codigo. Lo que va entre llaves
+    #                   si es codigo y se sigue mirando: no se pierde alcance.
+    # Y una excepcion declarada: la linea marcada "# R66-OK" es un literal
+    # citado a proposito (p.ej. lo que dice el paper, para contrastarlo contra
+    # el nucleo); importarlo del nucleo volveria tautologica la comprobacion.
+    import io as _io66, tokenize as _tk66
+    _saltar = {_tk66.COMMENT, _tk66.STRING}
+    for _nom in ("FSTRING_MIDDLE", "FSTRING_START", "FSTRING_END"):
+        if hasattr(_tk66, _nom):
+            _saltar.add(getattr(_tk66, _nom))
+    _ok66 = {_i + 1 for _i, _l in enumerate(_txt.split("\n")) if "R66-OK" in _l}
+    _trozos = []
+    try:
+        for _tok in _tk66.generate_tokens(_io66.StringIO(_txt).readline):
+            if _tok.type in _saltar or _tok.start[0] in _ok66:
+                continue
+            _trozos.append(_tok.string)
+    except Exception:
+        # si no tokeniza (fichero roto), se cae al texto sin comentarios
+        _trozos = [_l for _l in _txt.split("\n")
+                   if not _l.lstrip().startswith("#")]
+    _cuerpo = " ".join(_trozos)
     return sorted({f"{_k}={_lit}" for _lit, _k in _R66_LIT
                    if re.search(r"(?<![\w.])" + re.escape(_lit) + r"(?![\d])",
                                 _cuerpo)})
@@ -882,7 +916,7 @@ for _f66 in sorted(ROOT.rglob("*.py")):
     if _s66:
         _r66[_f66.name] = _s66
 _n66 = sum(len(_v) for _v in _r66.values())
-_TOPE_R66 = 136                     # trinquete 2026-09-08; SOLO BAJA
+_TOPE_R66 = 0                       # trinquete 2026-09-08; SOLO BAJA
 check("R66 la deuda de constantes re-tecleadas no crece",
       _n66 <= _TOPE_R66,
       f"{_n66} ocurrencias en {len(_r66)} scripts (tope {_TOPE_R66}); "
@@ -2170,7 +2204,7 @@ _LEIDOS = ("SSEE_Paper1_",)
 # volvió a bajar cuando se arreglaron sitios.) R43 tenía 2 de holgura.
 # Vigilado ahora por R50: si la cuenta real baja del tope, hay que bajar el tope.
 _DEUDA_MAX = {
-    "R66": 136,          # constantes del nucleo re-tecleadas (2026-09-08)
+    "R66": 0,            # constantes del nucleo re-tecleadas (2026-09-08)
     "R42": 0, "R43": 0, "R44": 0, "R45": 0}
 # Cuenta REAL de cada regla, rellenada por cada capa al calcularla. R50 la
 # compara contra _DEUDA_MAX para exigir que el trinquete esté apretado.
@@ -2741,6 +2775,80 @@ try:
         except Exception:
             return None
 
+    # NORMALIZACIÓN del AST antes de comparar. Se quitan dos clases de cambio
+    # que NO pueden mover un número, para que la alarma no grite por ellas:
+    #   (a) docstrings — prosa.
+    #   (b) un literal sustituido por el SÍMBOLO del núcleo que vale eso mismo
+    #       (la deuda que persigue R66). Cada nombre importado de ssee_core se
+    #       resuelve a su valor y se compara el valor, no el nombre: si el
+    #       símbolo valiera otra cosa, los dumps difieren y la alarma suena.
+    #       También se descartan los import de ssee_core y el sys.path que hace
+    #       falta para llegar a él, que son fontanería de ese mismo cambio.
+    _CORE35 = {_k: _v for _k, _v in vars(_core63).items()
+               if _k.isupper() and isinstance(_v, (int, float))}
+
+    def _norm35(_txt):
+        _t = ast.parse(_txt)
+        _alias = {}                     # nombre local -> valor del núcleo
+        _mods = set()                   # `import ssee_core as X` -> {"X"}
+        for _nd in ast.walk(_t):
+            if isinstance(_nd, ast.ImportFrom) and _nd.module == "ssee_core":
+                for _a in _nd.names:
+                    if _a.name in _CORE35:
+                        _alias[_a.asname or _a.name] = _CORE35[_a.name]
+            elif isinstance(_nd, ast.Import):
+                for _a in _nd.names:
+                    if _a.name == "ssee_core":
+                        _mods.add(_a.asname or _a.name)
+
+        class _T35(ast.NodeTransformer):
+            def visit_Name(self, _n):
+                if _n.id in _alias:
+                    return ast.copy_location(ast.Constant(_alias[_n.id]), _n)
+                return _n
+
+            def visit_Attribute(self, _n):
+                self.generic_visit(_n)
+                if (isinstance(_n.value, ast.Name) and _n.value.id in _mods
+                        and _n.attr in _CORE35):
+                    return ast.copy_location(ast.Constant(_CORE35[_n.attr]), _n)
+                return _n
+
+            # Fontanería del propio cambio: el import del núcleo y el sys.path
+            # que hace falta para alcanzarlo. Se identifica por FORMA, no por el
+            # alias, porque el alias es libre (`import sys as _s66` esquivaba la
+            # versión anterior de esta condición).
+            _FONT = ("ssee_core", "os", "sys")
+
+            def visit_Import(self, _n):
+                return None if all(_a.name in self._FONT
+                                   for _a in _n.names) else _n
+
+            def visit_ImportFrom(self, _n):
+                return None if _n.module in self._FONT else _n
+
+            def visit_Expr(self, _n):
+                self.generic_visit(_n)
+                _c = _n.value
+                if (isinstance(_c, ast.Call)
+                        and isinstance(_c.func, ast.Attribute)
+                        and _c.func.attr == "insert"
+                        and isinstance(_c.func.value, ast.Attribute)
+                        and _c.func.value.attr == "path"):
+                    return None                 # <lo-que-sea>.path.insert(...)
+                return _n
+
+        _t = _T35().visit(_t)
+        for _nd in ast.walk(_t):
+            if isinstance(_nd, (ast.Module, ast.FunctionDef,
+                                ast.AsyncFunctionDef, ast.ClassDef)):
+                _b = _nd.body
+                if (_b and isinstance(_b[0], ast.Expr)
+                        and isinstance(_b[0].value, ast.Constant)
+                        and isinstance(_b[0].value.value, str)):
+                    _nd.body = _b[1:]                   # fuera el docstring
+        return ast.dump(ast.fix_missing_locations(_t))
+
     _rancios, _sinmapa = [], []
     for _lg in sorted((_REPO / "results" / "logs").glob("*.log")):
         _nm = _lg.stem
@@ -2770,19 +2878,8 @@ try:
             _viejo = _sp.run(["git", "show", f"{_sha_log}:{_script}"], cwd=_REPO,
                              capture_output=True, text=True, timeout=20).stdout
             _nuevo = (_REPO / _script).read_text(errors="ignore")
-            def _sin_docstrings(_txt):
-                _t = ast.parse(_txt)
-                for _nd in ast.walk(_t):
-                    if isinstance(_nd, (ast.Module, ast.FunctionDef,
-                                        ast.AsyncFunctionDef, ast.ClassDef)):
-                        _b = _nd.body
-                        if (_b and isinstance(_b[0], ast.Expr)
-                                and isinstance(_b[0].value, ast.Constant)
-                                and isinstance(_b[0].value.value, str)):
-                            _nd.body = _b[1:]           # fuera el docstring
-                return ast.dump(_t)
-            if _viejo and _sin_docstrings(_viejo) == _sin_docstrings(_nuevo):
-                continue                      # sólo cambió la prosa
+            if _viejo and _norm35(_viejo) == _norm35(_nuevo):
+                continue     # sólo cambió la prosa, o un literal por su símbolo
         except Exception as _e35:
             # NUNCA tragarse el fallo: un `except: pass` aquí escondió un
             # NameError propio (ast no estaba importado) y R35 reportó rancios
@@ -2794,6 +2891,26 @@ try:
           not _rancios,
           "; ".join(_rancios) if _rancios
           else f"{len(_mapa)} logs mapeados al día, {len(_hist35)} históricos")
+    # CONTROL (R53) del ensanchamiento de _norm35. Lo que se exime tiene que ser
+    # SÓLO el cambio que no puede mover un número. Si la normalización fuera
+    # laxa de más, R35 daría verdes falsos justo donde importa: un log rancio.
+    _base35 = "import sys\nsys.path.insert(0, '..')\nx = 0.06849\ny = x * 2\n"
+    _c35 = [
+        # (variante, ¿debe verse IGUAL que la base?)
+        ("import sys\nfrom ssee_core import SUM_MNU_EV as _m\n"
+         "sys.path.insert(0, '..')\nx = _m\ny = x * 2\n", True),   # mismo valor
+        ("import sys\nfrom ssee_core import OMEGA_B_H2 as _m\n"
+         "sys.path.insert(0, '..')\nx = _m\ny = x * 2\n", False),  # OTRO valor
+        ("import sys\nsys.path.insert(0, '..')\nx = 0.06849\n"
+         "y = x * 3\n", False),                                    # cambio real
+    ]
+    _mal35 = [_i for _i, (_v, _igual) in enumerate(_c35)
+              if (_norm35(_v) == _norm35(_base35)) is not _igual]
+    check("R35 el detector distingue re-etiquetar de re-calcular",
+          not _mal35,
+          "3 casos: el literal cambiado por el símbolo que vale lo mismo se "
+          "exime; el símbolo que vale OTRA cosa y un cambio de fórmula no"
+          if not _mal35 else f"casos mal clasificados: {_mal35}")
     if _sinmapa:
         track_open(f"R35 {len(_sinmapa)} logs sin fuente declarada en PROPAGACION.yaml",
                    ", ".join(_sinmapa[:10]) + (" …" if len(_sinmapa) > 10 else "")
@@ -4730,7 +4847,7 @@ try:
     # 31 al abrir la capa (2026-09-05). Baja a 28 el mismo día con los
     # controles de R17, R25 y R30 — las tres que vigilan números
     # canónicos, por eso primero. SÓLO puede BAJAR.
-    _DEUDA_R53 = 27   # 28 -> 27: R19 gano control (2026-09-08)
+    _DEUDA_R53 = 26   # 27 -> 26: R35 gano control al ensancharse (2026-09-08)
     _lista53 = " ".join("R%d" % _r for _r in sorted(_sin53))
 
     check("R53 la deuda de reglas sin control no crece",

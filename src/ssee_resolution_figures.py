@@ -19,6 +19,10 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import sys as _s66
+_s66.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ssee_core import OMEGA_M_TOTAL as _OMT
+
 
 OUT = os.path.join(os.path.dirname(__file__), '..', 'results', 'figures')
 os.makedirs(OUT, exist_ok=True)
@@ -96,7 +100,7 @@ plt.close(fig)
 # al modelo que se le ponga encima. Prueba: con el A_s del PROPIO CMB de SSEE
 # (0.8142, no el de Planck) la discrepancia sigue en ~2.7 sigma.
 # ─────────────────────────────────────────────────────────────────────────────
-OM = 0.308881
+OM = _OMT
 FAC = np.sqrt(OM / 0.3)
 
 # Determinaciones de A_s (expresadas via sigma8), TODAS con el mismo fondo SSEE

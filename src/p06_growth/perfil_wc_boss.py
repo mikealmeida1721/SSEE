@@ -31,7 +31,9 @@ LOGA_BOSS = 2.7636         # control: el que BOSS mismo prefiere
 WB = B.COSMO['SSEE']['ombh2']
 H = B.COSMO['SSEE']['h']
 WNU = B.MNU / 93.14
-WC_ID = 0.119514           # KAL0 * w_b * n_s
+WC_ID = 0.119514           # R66-OK: centro de la rejilla del barrido, no una
+# constante que entre en el calculo. Redondeado a proposito para que la
+# rejilla siga siendo la de la corrida ya hecha (ver perfil_wc_cmb.py).
 
 ESC = np.array([1.0, 1.0, 1.0])
 P0 = np.array([2.0, 0.0, 0.0])

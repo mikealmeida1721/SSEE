@@ -208,7 +208,7 @@ record('P10', 'H_glob^UV = H_SH0ES·(1−f^UV)', 'no depende de ancla',
        _h_glob_uv, _h_glob_uv, 'km/s/Mpc', True, '✅ inmune por construcción',
        f'f_screen^UV=0.069522 invariante y la entrada es el dato: '
        f'{_h_glob_uv:.6f} para cualquier ancla. Residuo vs 3(φ+π)²: '
-       f'{_h_glob_uv-67.962137:+.2e}.')
+       f'{_h_glob_uv-H0_ALG:+.2e}.')
 
 # ────────────────────────────────────────────────────────────────────────────
 # Postulados

@@ -19,9 +19,13 @@ Tres tests, en orden:
   T3  ROL DE Y (el que multiplica): debe ser escala / ancla de vacio.
 """
 import numpy as np
+import os as _o66, sys as _s66
+_s66.path.insert(0, _o66.path.dirname(_o66.path.dirname(_o66.path.abspath(__file__))))
+from ssee_core import SUM_MNU_EV as _MNU
+
 
 PHI = 1.618033988749895; PI = 3.141592653589793; OMEGA = PHI+PI
-SMNU = 0.06849
+SMNU = _MNU
 BIAL = OMEGA/2; KAL = BIAL+PI; SOLAR = BIAL+KAL; MAR = OMEGA+PI
 VITA = PI+KAL; ANMA = BIAL+VITA; PYROS = OMEGA+PHI; IGNIS = PI+PYROS
 KRYSTOS_V = PHI+PI+OMEGA; MIKA = KRYSTOS_V+PHI; AURA = PHI+BIAL

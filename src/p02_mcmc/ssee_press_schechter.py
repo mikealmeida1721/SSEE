@@ -9,6 +9,10 @@ Provides quantitative predictions for JWST z>10 galaxy excess.
 
 import numpy as np
 from scipy.integrate import quad
+import os as _o66, sys as _s66
+_s66.path.insert(0, _o66.path.dirname(_o66.path.dirname(_o66.path.abspath(__file__))))
+import ssee_core as _C
+
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -60,8 +64,8 @@ gamma_L= 0.55
 #   gamma_S = 0.657  ->  0.5504
 #       Paper 5 mide gamma_IS = 0.5504 +/- 0.0003 (linea 978). El 0.657 no
 #       corresponde a ninguna medicion vigente.
-H0_S   = 67.962137
-Omm_S  = 0.308881
+H0_S   = _C.H0_ALG
+Omm_S  = _C.OMEGA_M_TOTAL
 OmDE_S = 1 - Omm_S
 w0_S   = -0.8399
 wa_S   = -0.6699

@@ -11,8 +11,9 @@ import ssee_paper3_cobaya_unified as P3
 # Ahora se toma del núcleo, para que no pueda volver a divergir.
 import sys as _sys, os as _os
 _sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
-from ssee_core import SUM_MNU_EV as _MNU                      # noqa: E402
-H0=67.962; ombh2=0.02242; mnu=_MNU
+from ssee_core import (SUM_MNU_EV as _MNU, OMEGA_B_H2 as _OMB,   # noqa: E402
+                       OMEGA_M_CMB_PIPHI as _OM_PIPHI, H0_ALG as _H0)
+H0=_H0; ombh2=_OMB; mnu=_MNU
 phi=(1+5**0.5)/2; pi=math.pi
 f_piphi = pi/phi                 # 1.94161 -> 0.31076
 f_alma  = phi + 0.1*pi           # 1.93216 -> 0.30915
@@ -20,7 +21,7 @@ f_alma  = phi + 0.1*pi           # 1.93216 -> 0.30915
 print(f"factor pi/phi      = {f_piphi:.5f} -> Om = {0.160*f_piphi:.5f}")
 print(f"factor phi+0.1*pi  = {f_alma:.5f} -> Om = {0.160*f_alma:.5f}\n")
 
-grid = [0.3000, 0.3050, 0.3070, 0.30915, 0.31076, 0.3130, 0.3160, 0.3200]
+grid = [0.3000, 0.3050, 0.3070, 0.30915, _OM_PIPHI, 0.3130, 0.3160, 0.3200]
 print(f"{'Om_cmb':>8} {'omch2':>9} {'omega_m':>9} {'chi2':>10}")
 print("-"*40)
 best=(None,1e9)
@@ -31,7 +32,7 @@ for Om in grid:
                           P3.As_ssee, P3.ns_ssee, P3.tau_ssee, mnu=mnu, quiet=True)
     tag=""
     if abs(Om-0.30915)<1e-4: tag=" <- phi+0.1pi"
-    if abs(Om-0.31076)<1e-4: tag=" <- pi/phi (actual)"
+    if abs(Om-_OM_PIPHI)<1e-4: tag=" <- pi/phi (actual)"
     print(f"{Om:8.5f} {omch2:9.5f} {om_m:9.5f} {c:10.3f}{tag}")
     if c<best[1]: best=(Om,c)
 print(f"\nMIN CMB en Om = {best[0]:.5f}  (chi2 = {best[1]:.3f})")

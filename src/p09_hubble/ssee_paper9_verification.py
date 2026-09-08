@@ -37,7 +37,10 @@ s_K_exact  = 3 * Omega_DE * (1 + w0)   # from background equations
 s_K_formula = 3 * AURA * (pi - phi) / (2 * Omega**2)  # substituted
 
 # Cross-check: should match EFTCAMB value from Paper 7
-s_K_papers = 0.40330         # valor citado en los papers.
+s_K_papers = 0.40330   # R66-OK: literal citado de los papers A PROPOSITO.
+# Es el numero que esta ESCRITO en el .tex; se contrasta contra el que sale
+# del algebra. Importarlo del nucleo compararia el nucleo consigo mismo y la
+# comprobacion pasaria siempre, aunque el paper dijera otra cosa (R53).
 # OJO 2026-08-10: se atribuia a 'CLASS/EFTCAMB'. El script que lo avalaba
 # (ssee_paper3_hiclass_check.py) corre CLASS NORMAL, no hi_class, y en z=0 su
 # formula colapsa al mismo algebra que compara. No es aval independiente.

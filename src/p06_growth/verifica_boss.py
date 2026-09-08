@@ -118,8 +118,9 @@ for z in (0.38, 0.51, 0.61):
     ds = max(abs(ps_ - 1), abs(pq_ - 1)) * 100
     check(f'V5 AP z={z}', dl < 0.5 and ds > dl,
           f'LCDM se desvia {dl:.3f}%  ·  SSEE {ds:.3f}%  (SSEE debe torcer mas)')
-check('V5 Om_total SSEE', abs(om_ssee - 0.308881) < 1e-5,
-      f'{om_ssee:.6f} (canonico 0.308881, regla del banner: geometria usa la total)')
+check('V5 Om_total SSEE', abs(om_ssee - S.OMEGA_M_TOTAL) < 1e-5,
+      f'{om_ssee:.6f} (canonico {S.OMEGA_M_TOTAL:.6f}, regla del banner: '
+      f'geometria usa la total)')
 
 # ---------------- V6 ----------------
 print('\n V6 — la resolucion numerica NO es un lujo')

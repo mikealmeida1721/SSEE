@@ -15,10 +15,14 @@ Verificación de datos (Mike: "siempre verifica los datos con que se calcula"):
 """
 import numpy as np
 from scipy.integrate import solve_ivp
+import os as _o66, sys as _s66
+_s66.path.insert(0, _o66.path.dirname(_o66.path.dirname(_o66.path.abspath(__file__))))
+import ssee_core as _C
+
 
 PHI = (1+np.sqrt(5))/2; PI = np.pi
 w0, wa = -0.8399, -0.6699
-Omm_CMB = 0.308881          # ω_m-directo (fondo gravitacional + fuente Poisson)
+Omm_CMB = _C.OMEGA_M_TOTAL  # ω_m-directo (fondo gravitacional + fuente Poisson)
 Omm_LCDM = 0.3153
 sigma8_LCDM = 0.811        # Planck 2018
 

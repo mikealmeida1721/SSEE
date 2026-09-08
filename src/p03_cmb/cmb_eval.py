@@ -16,6 +16,10 @@ Vigilado por R64.
 """
 import os, logging
 import numpy as np
+import sys as _s66
+_s66.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from ssee_core import SUM_MNU_EV as _MNU
+
 
 logging.getLogger('cobaya').setLevel(logging.ERROR)
 PK = os.environ.get('COBAYA_PACKAGES_PATH',
@@ -47,7 +51,7 @@ def modelo(w, wa):
                 'As': {'value': lambda logA: 1e-10 * np.exp(logA),
                        'derived': False},
                 'tau':   {'prior': {'min': 0.010, 'max': 0.200}},
-                'mnu': 0.06849, 'omk': 0.0,
+                'mnu': _MNU, 'omk': 0.0,
                 'w': cl[0], 'wa': cl[1],
                 'A_planck': 1.0,
                 'sigma8': None},

@@ -49,7 +49,10 @@ def E(z, Om, w0, wa):
 # Si estos numeros vuelven a moverse, la fuente es ese log: se leen de la
 # seccion final, no se re-teclean de memoria.
 models = {
-    "SSEE":  dict(H0=67.52954, Om=0.30888, w0=-0.8399, wa=-0.6700, ob=0.02187, c="#c0392b"),
+    # R66-OK: no son constantes del nucleo sino el MAP de la cadena citada
+    # arriba; que Om coincida con el algebraico es RESULTADO del ajuste.
+    "SSEE":  dict(H0=67.52954, Om=0.30888, w0=-0.8399, wa=-0.6700,   # R66-OK
+                  ob=0.02187, c="#c0392b"),
     r"$\Lambda$CDM": dict(H0=68.27099, Om=0.30338, w0=-1.0, wa=0.0, ob=0.02233, c="#2c6fbb"),
     "CPL":   dict(H0=67.25676, Om=0.31664, w0=-0.82568, wa=-0.55689, ob=0.02238, c="#27ae60"),
 }

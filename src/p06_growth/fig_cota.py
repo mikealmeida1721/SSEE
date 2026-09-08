@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Figura: donde queda el borde y cuanto suprime, contra la masa del sector phi."""
 import numpy as np
+import os as _o66, sys as _s66
+_s66.path.insert(0, _o66.path.dirname(_o66.path.dirname(_o66.path.abspath(__file__))))
+from ssee_core import SUM_MNU_EV as _MNU
+
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -66,5 +70,5 @@ print(f'  k_50   = {np.exp(bk[1]):.5f} * m^{bk[0]:.3f}')
 print(f'  ds8(%) = {np.exp(bd[1]):.4f} * m^{bd[0]:.3f}')
 print(f'  cota inferior de la masa      = {m_min:.1f} eV')
 print(f'  factor vs 40.70 eV            = {m_min/40.702:.2f}x')
-print(f'  multiplicador que exigiria    = {m_min/0.06849:.0f}   (canonico 594.28)')
+print(f'  multiplicador que exigiria    = {m_min/_MNU:.0f}   (canonico 594.28)')
 print(f'  k del borde en la cota        = {k_min:.2f} h/Mpc')

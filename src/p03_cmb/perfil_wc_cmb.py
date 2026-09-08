@@ -38,10 +38,14 @@ from cmb_eval import chi2_y_s8
 # fondo de cada modelo: todo fijo salvo el w_c que se barre
 FONDOS = {
     'SSEE': dict(ombh2=S.OMEGA_B_H2, H0=S.H0_GLOBAL, ns=S.N_S,
-                 w=S.W0, wa=S.WA, centro=0.119514),
+                 w=S.W0, wa=S.WA, centro=0.119514),   # R66-OK
     'LCDM': dict(ombh2=0.02237, H0=67.36, ns=0.9649,
                  w=-1.0, wa=0.0, centro=0.1200),
 }
+# R66-OK arriba: `centro` NO entra en el calculo, dice DONDE se pone la
+# rejilla. Se deja al valor redondeado a proposito, para que la rejilla sea
+# la misma que la de la corrida ya hecha; moverlo 4e-07 no cambia la fisica
+# pero si dejaria el log sin corresponder con su fuente.
 PASO, N = 0.0002, 9          # +-0.0008 alrededor del centro
 
 

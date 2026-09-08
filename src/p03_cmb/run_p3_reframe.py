@@ -10,6 +10,9 @@ Compara chi2 vs LCDM y reporta DeltaBIC. Marca claramente que As/tau son EXTERNO
 """
 import time, math, numpy as np
 import ssee_paper3_cobaya_unified as P3
+import sys as _s, os as _o
+_s.path.insert(0, _o.path.dirname(_o.path.dirname(_o.path.abspath(__file__))))
+from ssee_core import SUM_MNU_EV as _MNU, OMEGA_M_CMB_PIPHI as _OM_PIPHI
 
 # --- ingredientes SSEE (reframe omega_m-directo) ---
 phi = (1+5**0.5)/2; pi = math.pi
@@ -19,7 +22,7 @@ n_s   = 1 - phi**-7
 H0      = 3*Omega**2                 # 67.962  H global = H_alg
 ombh2   = (pi-phi)/(3*Omega**2)      # 0.02242  SSEE algebraico (OP-1)
 omch2   = KAL0 * ombh2 * n_s         # 0.11951  forward (Paper 1)
-mnu     = 0.06849                    # Sigma_m_nu activos (C_nu=93.14; era 0.06902)
+mnu     = _MNU                       # Sigma_m_nu activos del nucleo (C_nu=93.14)
 omega_m = ombh2 + omch2 + mnu/93.14  # 0.14267  omega_m fisico
 Omm_cmb = omega_m / (H0/100)**2      # 0.308881  DERIVADO, sin factor
 
@@ -33,10 +36,10 @@ chi2_ssee = P3.evaluate_model(H0, ombh2, omch2, P3.w0_ssee, P3.wa_ssee,
 print(f"SSEE omega_m-directo chi2_eff = {chi2_ssee:.3f}   ({time.time()-t0:.1f}s)")
 
 # comparacion: factor pi/phi (0.31076) con MISMO H/omega_b para aislar el efecto
-omch2_piphi = 0.31076*(H0/100)**2 - ombh2
+omch2_piphi = _OM_PIPHI*(H0/100)**2 - ombh2
 chi2_piphi = P3.evaluate_model(H0, ombh2, omch2_piphi, P3.w0_ssee, P3.wa_ssee,
                                P3.As_ssee, P3.ns_ssee, P3.tau_ssee, mnu=mnu, quiet=True)
-print(f"SSEE factor pi/phi(0.31076)@H=67.962 chi2_eff = {chi2_piphi:.3f}  (superado)")
+print(f"SSEE factor pi/phi({_OM_PIPHI:.5f})@H={H0:.3f} chi2_eff = {chi2_piphi:.3f}  (superado)")
 
 t0=time.time()
 chi2_lcdm = P3.evaluate_model(P3.H0_lcdm, P3.ombh2_lcdm, P3.omch2_lcdm, -1.0, 0.0,

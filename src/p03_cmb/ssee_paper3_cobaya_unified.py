@@ -21,14 +21,14 @@ from ssee_core import (
     P_SC as P_sc, K_V as Kv, T_R as Tr, M_V as Mv,
     W0 as w0_ssee, WA as wa_ssee, OMEGA_DE as OmDE,
     OMEGA_M_DYN as Omm_dyn, AURA, MIRA, OMEGA_M_CMB_MIRA as Omm_cmb,
-    N_S as ns_ssee,
+    N_S as ns_ssee, SUM_MNU_EV as _MNU,
 )
 
 ombh2_ssee = 0.02237                # Planck 2018 prior (no algebraico)
 # ns_ssee = 1 - phi^-7 = 0.96556 — importado de ssee_core
 As_ssee    = np.exp(3.044) * 1e-10
 tau_ssee   = 0.054
-mnu_ssee   = 0.06849                 # Σm_ν canónico (C_ν=93.14 PDG; era 0.0690, factor sin fuente)
+mnu_ssee   = _MNU                    # Σm_ν canónico del nucleo (C_ν=93.14 PDG)
 
 # ΛCDM Planck 2018 best-fit (TT+TE+EE+lowE, Table 2)
 H0_lcdm    = 67.36

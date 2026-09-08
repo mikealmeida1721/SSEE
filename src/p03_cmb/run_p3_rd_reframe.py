@@ -9,6 +9,8 @@ con Planck 2018 (r_d=147.09±0.26 Mpc, 100θ*=1.04109±0.00030).
 import sys, os, time
 import numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from ssee_core import SUM_MNU_EV as _MNU
 from ssee_paper3_cmb import _run_camb
 
 # ── ingredientes SSEE (reframe ω_m-directo) ──────────────────────────────
@@ -20,7 +22,7 @@ ombh2 = (pi - phi) / (3 * Omega**2)   # 0.02242  SSEE algebraico (OP-1)
 ns    = 1 - phi**-7
 KAL0  = (pi + phi)/2 + pi             # 5.5214
 omch2 = KAL0 * ombh2 * ns            # 0.11951  forward (ya en Paper 1)
-mnu   = 0.06849                       # Σm_ν canónico (C_ν=93.14 PDG; era 0.0690)
+mnu   = _MNU                          # Σm_ν canónico del nucleo (C_ν=93.14 PDG)
 omega_m = ombh2 + omch2 + mnu/93.14  # 0.14267
 h = H0/100.0
 Omm_cmb = omega_m / h**2             # 0.308881  DERIVADO, sin factor

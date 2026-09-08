@@ -20,6 +20,10 @@ import numpy as np
 from scipy.stats import gaussian_kde, norm
 from scipy.optimize import minimize
 import warnings
+import os as _o66, sys as _s66
+_s66.path.insert(0, _o66.path.dirname(_o66.path.dirname(_o66.path.abspath(__file__))))
+import ssee_core as _C
+
 warnings.filterwarnings("ignore")
 
 # ─────────────────────────────────────────────────────────────
@@ -31,8 +35,8 @@ PI    = 3.14159265358979
 W0_SSEE = -0.840                   # = −Tr/Mv algebraico
 WA_SSEE = -0.670                   # = −P_sc/IGNIS algebraico (IGNIS=π+PYROS)
 OM_DYN  = 0.160        # sector frío (NO geometría)
-OM_TOTAL = 0.308881     # Ω_m EN EL ANCLA (diagnóstico) — NO congelar en ajustes
-WM_ALG   = 0.1426675   # ω_m = ω_b+ω_c+ω_ν ALGEBRAICO — lo que SSEE realmente fija.
+OM_TOTAL = _C.OMEGA_M_TOTAL   # Ω_m EN EL ANCLA (diagnóstico) — NO congelar en ajustes
+WM_ALG   = _C.OMEGA_M_H2      # ω_m = ω_b+ω_c+ω_ν ALGEBRAICO — lo que SSEE realmente fija.
 # R25 (2026-07-25): SSEE predice el ABSOLUTO ω_m; Ω_m = ω_m/h² es DERIVADO. Congelar
 # Ω_m y derivar ω_m=Ω_m·h² despega el ω_m implícito hasta ±1.8% de la predicción y
 # sólo coincide en H₀=67.962 (el ancla), sesgando cualquier ajuste hacia ella.

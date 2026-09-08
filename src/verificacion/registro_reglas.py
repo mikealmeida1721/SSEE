@@ -670,17 +670,8 @@ REGLAS = {
 # lista de perdón: es la deuda visible, y sólo puede bajar. Mientras una capa
 # esté aquí, su VERDE no está demostrado — puede ser verde por vacío.
 SIN_COBERTURA = [
-    # DECLARADAS, no perdonadas (2026-09-08). Existen, corren y tienen su
-    # control de dos polos, pero NADIE las ha visto enrojecer rompiendo el
-    # artefacto real. Estar aqui no las exime de nada: M9 del meta-guardian
-    # cuenta la deuda contra el CODIGO, no contra esta lista, precisamente
-    # para que declararla no la haga desaparecer.
-    "Capa R47 — piezas declaradas como supuesto: ¿rastreadas?",
-    "Capa R48 — misma cantidad en dos documentos: ¿mismo valor?",
-    "Capa R49 — el `source` declarado apunta a un documento real",
-    "Capa R50 — el trinquete de deuda está apretado",
-    "Capa R51 — etiqueta de figura vs variable graficada: ¿misma ancla?",
-    "Capa R53 — toda regla trae su control del otro lado",
-    "Capa R54 — 0.403302 es s_K, jamás alpha_K",
-    "Capa R55 — la cascada de Hubble no invierte su dirección",
+    # VACIA desde el 2026-09-08. Las 8 que estaban aqui —R47 a R55— quedaron
+    # registradas y PROBADAS en la tanda de casos de mutacion de ese dia. Una
+    # lista de deuda que no se vacia al saldarla miente igual que una que se
+    # llena para tapar: el numero deja de decir lo que dice decir.
 ]

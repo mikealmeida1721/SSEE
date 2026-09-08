@@ -79,7 +79,32 @@ if _LOCK.exists():
     sys.exit(1)
 _LOCK.write_text(f"mutacion_guardian.py pid={__import__('os').getpid()}\n")
 import atexit as _atexit
+import signal as _signal
 _atexit.register(lambda: _LOCK.exists() and _LOCK.unlink())
+
+# RESTAURACION ANTE MUERTE. El `finally` de cada caso devuelve el archivo, pero
+# no corre si al proceso lo matan a mitad —un timeout, un Ctrl-C—, y entonces el
+# defecto inyectado se queda escrito en el disco. Paso el 2026-09-08: una corrida
+# cortada a los 280 s dejo la mutacion de R57 en prueba_rol.py, y el arbol
+# amanecio con un defecto que no estaba en ningun sitio.
+# Dos contramedidas: (a) el cerrojo ANOTA que archivo esta mutado ahora mismo,
+# para que quien lo encuentre sepa exactamente que restaurar; (b) se atienden
+# SIGTERM y SIGINT restaurando antes de salir. Contra SIGKILL no hay defensa
+# posible — para eso queda (a).
+_EN_CURSO = {"archivo": None, "base": None}
+
+
+def _restaura_en_curso(*_a):
+    if _EN_CURSO["archivo"] is not None:
+        (REPO / _EN_CURSO["archivo"]).write_text(_EN_CURSO["base"])
+        print(f"\nrestaurado {_EN_CURSO['archivo']} antes de salir")
+    if _LOCK.exists():
+        _LOCK.unlink()
+    sys.exit(1)
+
+
+for _sig in (_signal.SIGTERM, _signal.SIGINT):
+    _signal.signal(_sig, _restaura_en_curso)
 
 _sucio = subprocess.run(["git", "status", "--porcelain", "--"] + _objetivos,
                         capture_output=True, text=True, cwd=REPO).stdout.strip()
@@ -140,11 +165,17 @@ for regla, info in _reg.REGLAS.items():
             problemas.append(f"{etiqueta}: el ancla ya no existe en {arch}")
             print(f"  [ ANCLA?  ] {etiqueta}")
             continue
+        _EN_CURSO.update(archivo=arch, base=base)
+        _LOCK.write_text(f"mutacion_guardian.py pid={__import__('os').getpid()}\n"
+                         f"MUTANDO AHORA: {arch}\n"
+                         f"si esta corrida murio, restaura ese archivo con "
+                         f"`git checkout -- {arch}` antes de nada\n")
         destino.write_text(base.replace(viejo, nuevo, 1))
         try:
             _, fallos, salida = corre()
         finally:
             destino.write_text(base)      # restaurar SIEMPRE
+            _EN_CURSO.update(archivo=None, base=None)
         # CAIDA != NO DETECTADO. Si el guardian ni siquiera llego al veredicto
         # —el nucleo mutado no importa, por ejemplo— no hay lista de fallos, y
         # la version anterior lo contaba como «nadie lo detecta (VERDE por

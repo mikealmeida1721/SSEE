@@ -36,7 +36,7 @@ GUARDIAN = _AQUI / "ssee_verify.py"
 # estaba vacia. Dos reglas contando el mismo hecho con umbrales incompatibles.
 # El trinquete que manda ahora es M9, que mide contra el CODIGO y no contra una
 # lista escrita a mano: mientras M6 cuenta lo declarado, M9 cuenta lo real (24).
-DEUDA_MAX = 8
+DEUDA_MAX = 0          # 8 -> 0: las 8 quedaron registradas y probadas
 
 _fallos, _avisos = [], []
 

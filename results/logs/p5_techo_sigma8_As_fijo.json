@@ -1,32 +1,46 @@
 {
- "corrida": "techo sigma8/S8 con A_s FIJADO a Planck (diagnostico, NO prediccion)",
+ "corrida": "techo sigma8/S8 con A_s FIJADO a Planck \u2014 DIAGNOSTICO, no prediccion",
  "que_contesta": "cuanta estructura da el fondo de SSEE si A_s se hereda de Planck en vez de ajustarse; A_s es libre en el modelo",
- "fuente_Pk": "results/logs/p5_techo_evidencia/can_cold__pk.dat",
+ "ini": "config/class/techo_ssee_canonico.ini",
+ "fuente_Pk": "results/logs/p5_techo_evidencia/techo_ssee_canonico__pk.dat",
  "metodo": "top-hat R=8 Mpc/h, Peebles 1980; interp log-log a 4000 puntos",
- "sigma8_techo": 0.8333684597622903,
+ "lleva_neutrinos_masivos": "si \u2014 Sum m_nu = 0.06849 eV",
+ "sigma8_techo": 0.8148536973812308,
  "Omega_m_CMB": 0.3088808787787524,
- "S8_techo": 0.8456135716768318,
- "control_SSEE_vs_LCDM_mismo_metodo": {
-  "fuente_Pk": "results/logs/p5_techo_evidencia/lcdm_planck2018__pk.dat",
-  "sigma8_LCDM": 0.8220682881876473,
-  "razon_SSEE_sobre_LCDM": 1.0137460254056943,
-  "nota": "ESTE es el control que dice algo: el mismo integrador y el mismo tratamiento en los dos. SSEE da 1.4% mas estructura."
+ "S8_techo": 0.8268267623581046,
+ "tensiones_S8_sigmas": {
+  "KiDS-1000": 2.7417343671189527,
+  "DES-Y3": 2.819361505353369,
+  "Planck 2018": 0.3613145896315297
  },
- "diagnostico_del_metodo": {
-  "estado": "NO CONCLUYENTE",
-  "sigma8_Planck2018_publicado": 0.8111,
-  "nota": "la referencia sale 1.4% alta contra el valor publicado, porque ninguna de las dos corridas guardadas lleva neutrinos masivos. Al faltar en las DOS, la razon de arriba no se ve afectada; el valor absoluto de cada una si."
+ "control": {
+  "criterio": "el mismo integrador sobre la baseline de Planck 2018 debe dar sigma8 = 0.8111 +/- 0.006; escrito en el .ini ANTES de correr",
+  "ini": "config/class/techo_lcdm_referencia.ini",
+  "sigma8_LCDM": 0.8108512349136148,
+  "desvio_sigmas": 0.04146084773087866,
+  "pasa": true,
+  "razon_SSEE_sobre_LCDM": 1.0049361242793722
  },
- "lo_que_NO_esta_establecido": [
-  "can_cold__pk.dat no tiene .ini: no se puede certificar con que se corrio",
-  "estaba fuera del repo (class_ssee/output/ esta en .gitignore); copiado a results/logs/p5_techo_evidencia/ para que exista",
-  "su gemelo can_part__pk.dat, del mismo minuto, es la corrida de dos sectores con la particula, retirada el 2026-08-01",
-  "el fondo canonico de SSEE lleva Sum m_nu = 0.06849 eV; si esta corrida no los lleva, 0.8335 no es el techo del modelo canonico"
- ],
- "pendiente_para_cerrarlo": ".ini versionado con el fondo canonico y sus neutrinos + la misma referencia LCDM con la baseline de Planck",
+ "retirado_2026_09_08": {
+  "publicado_como": [
+   0.8335,
+   0.846
+  ],
+  "sigma8_recomputado_del_Pk_viejo": 0.8333684597622903,
+  "sigma8_LCDM_viejo": 0.8220682881876473,
+  "fuente_Pk": "results/logs/p5_techo_evidencia/can_cold__pk.dat",
+  "razon": "corrida SIN .ini, FUERA del repo y SIN neutrinos masivos; sin ellos sobra grumo a 8 Mpc/h. Su gemela del mismo minuto es la corrida de dos sectores con la particula retirada",
+  "desvio_pct": 2.2721578659533836,
+  "tensiones_que_citaba": {
+   "KiDS-1000": 3.5,
+   "DES-Y3": 3.9,
+   "Planck 2018": 1.1
+  }
+ },
+ "no_establece": "la barra +/- 0.006 de los papers viene de antes y no se ha recomputado aqui",
  "superado_por": {
   "valor": "S8 = 0.7555 +/- 0.0192 (0.11 sigma vs KiDS-1000)",
   "log": "results/logs/growth_2026-07/R3_ssee_kids_S8.json",
-  "razon": "A_s libre contra el dato crudo; el 3.5 sigma que salia del techo era artefacto de fijar A_s"
+  "razon": "A_s libre contra el dato crudo; el 3.5 sigma del techo era artefacto de fijar A_s"
  }
 }

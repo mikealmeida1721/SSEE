@@ -421,10 +421,12 @@ track_open("V-L3-OP3  separabilidad UV-IR no probada",
 # al titular S8_eff=0.758 (0.04sigma KiDS). sigma8 es OUTPUT directo de CLASS (no fit alpha_WDM).
 # script: src/ssee_paper6_canonical_particle.py
 Om_cosm_op5 = _omm / _h ** 2                         # 0.30888  Om_m,CMB (omega_m-directo)
-S8_challenge = 0.8335 * (Om_cosm_op5 / 0.3) ** 0.5  # single-sector techo CLASS (el desafio)
+# 2026-09-08: era 0.8335, de una corrida CLASS SIN .ini y SIN neutrinos masivos.
+# Con el fondo canonico y sus neutrinos: 0.814854 (config/class/techo_ssee_canonico.ini).
+S8_challenge = 0.814854 * (Om_cosm_op5 / 0.3) ** 0.5  # techo CLASS con A_s fijo
 S8_resolved = 0.7470 * (Om_cosm_op5 / 0.3) ** 0.5   # two-sector forward CLASS (resuelve)
-check("V-L3-OP5  S8 con A_s FIJADO a Planck = 0.846  (artefacto, no desafio)",
-      abs(S8_challenge - 0.846) < 2e-3,
+check("V-L3-OP5  S8 con A_s FIJADO a Planck = 0.8268  (artefacto, no desafio)",
+      abs(S8_challenge - 0.826827) < 2e-3,
       f"S8 = {S8_challenge:.4f} — el viejo «3.5sigma KiDS» era artefacto de fijar A_s, "
       f"o sea de importar la tension Planck-KiDS. A_s es LIBRE en el modelo (k=2)")
 check("V-L3-OP5  [RETIRADO] aritmetica two-sector = 0.758",
@@ -1731,7 +1733,9 @@ print("\nCapa 4 — confrontaciones con datos")
 
 # S8 weak-lensing — CANÓNICO ω_m-directo (CLASS forward, m_phi=40.70 SOLAR²·KRYSTOS).
 #   Om_m,CMB = omega_m/h² = 0.30888 (sin factor). Dos ramas (CLASS OUTPUT, no fit):
-#   single-sector techo (el desafío): sigma8 = 0.8335 -> S8 = 0.846 (3.5sigma KiDS).
+#   single-sector techo con A_s FIJO: sigma8 = 0.814854 -> S8 = 0.8268 (2.74sigma
+#   KiDS). Era 0.8335/0.846/3.5sigma hasta el 2026-09-08: aquella corrida no
+#   llevaba neutrinos masivos y sobraba un 2.3% de grumo.
 #   two-sector phi-DM (TITULAR Paper 6, forward): sigma8_eff = 0.7470 ->
 #     S8_eff = 0.758 (0.04sigma KiDS), free-streaming k_fs=0.754, m_phi=40.70 (C_ν=93.14).
 # script: src/ssee_paper6_canonical_particle.py
@@ -1743,11 +1747,11 @@ _s8_yaml = re.search(r"sigma8_single_ceiling:\s*([\d.]+)",
                        / "CANONICAL_VALUES.yaml").read_text(errors="ignore"))
 sig8_single = float(_s8_yaml.group(1)) if _s8_yaml else float("nan")  # techo todo-frío (CLASS)
 S8_single = sig8_single * (Om_cosm / 0.3) ** 0.5
-check("V-L4-01 P6  sigma8 single (techo CLASS) = 0.8335",
-      _s8_yaml is not None and abs(sig8_single - 0.8335) < 1e-2,
+check("V-L4-01 P6  sigma8 single (techo CLASS, A_s fijo) = 0.814854",
+      _s8_yaml is not None and abs(sig8_single - 0.814854) < 1e-2,
       f"sigma8 = {sig8_single:.4f} (leído de CANONICAL_VALUES.yaml)")
-check("V-L4-02 P6  S8 single = sigma8 sqrt(Om/0.3) = 0.846  (el desafio)",
-      abs(S8_single - 0.846) < 2e-3, f"S8 = {S8_single:.4f}")
+check("V-L4-02 P6  S8 single = sigma8 sqrt(Om/0.3) = 0.8268  (A_s fijo)",
+      abs(S8_single - 0.826827) < 2e-3, f"S8 = {S8_single:.4f}")
 
 sig8_eff = 0.7470            # two-sector titular Paper 6 (forward CLASS, no fit)
 S8_eff = sig8_eff * (Om_cosm / 0.3) ** 0.5
@@ -1760,8 +1764,11 @@ G_growth = 1.0032            # D1_SSEE/D1_LCDM (Paper 5 ODE @ Om_cosm=0.308881; 
 S8_single_err = 0.006 * G_growth * (Om_cosm / 0.3) ** 0.5
 t_KIDS_single = abs(S8_single - 0.759) / (S8_single_err ** 2 + 0.024 ** 2) ** 0.5
 t_KIDS_twosec = abs(S8_eff - 0.759) / 0.024
-check("V-L4-03 P6  [ARTEFACTO] 3.5 sigma vs KiDS con A_s FIJADO a Planck",
-      abs(t_KIDS_single - 3.5) < 0.2,
+# 2026-09-08: era 3.5 sigma. Con los neutrinos masivos del fondo canonico el
+# techo baja de 0.846 a 0.8268 y la tension con el, a 2.74 sigma. Sigue siendo
+# artefacto de fijar A_s; lo que cambia es su tamano.
+check("V-L4-03 P6  [ARTEFACTO] 2.74 sigma vs KiDS con A_s FIJADO a Planck",
+      abs(t_KIDS_single - 2.74) < 0.2,
       f"{t_KIDS_single:.2f} sigma — NO era un desafio del modelo: fijar A_s a "
       f"Planck importa la tension Planck-KiDS. Con A_s libre (k=2) el MCMC R3 "
       f"sobre KiDS crudo da S8=0.7555+-0.0192, a 0.11 sigma")

@@ -82,10 +82,24 @@ canonical:
   chi2_kids_publicado: 260.32      # el mejor ajuste PUBLICADO por KiDS da p~0.01–0.03
   # ⟹ el exceso vive en el vector de datos ξ±, no en ninguna cosmología.
   # Nuestro control lo reproduce (262.75 vs 260.32, 0.9%): no lo introduce el código.
-  sigma8_single_ceiling: 0.8335   # σ8 con A_s FIJADO a Planck (techo CLASS)
-  S8_single_ceiling:   0.8458     # el viejo "3.5σ KiDS" — artefacto de fijar A_s
-                                  # a Planck, o sea de IMPORTAR la tensión Planck–KiDS.
-                                  # A_s es libre en el modelo (k=2); fijarlo no es rigor.
+  sigma8_single_ceiling: 0.814854  # σ8 con A_s FIJADO a Planck (techo CLASS)
+  S8_single_ceiling:   0.826827    # el viejo "3.5σ KiDS" — artefacto de fijar A_s
+                                   # a Planck, o sea de IMPORTAR la tensión Planck–KiDS.
+                                   # A_s es libre en el modelo (k=2); fijarlo no es rigor.
+  # ── RETIRADOS 2026-09-08: 0.8335 / 0.846 ────────────────────────────────
+  # Salían de `class_ssee/output/can_cold__pk.dat`: SIN .ini (no constaba con qué
+  # se corrió), FUERA del repo (class_ssee/output/ está en .gitignore) y del mismo
+  # minuto que la corrida de dos sectores con la partícula retirada. Le faltaban
+  # los NEUTRINOS MASIVOS que el fondo canónico sí lleva (Σm_ν=0.06849 eV), y sin
+  # ellos sobra grumo a 8 Mpc/h: +2.3%.
+  # Recorrido con `config/class/techo_ssee_canonico.ini` (versionado, con sus
+  # neutrinos). CONTROL con criterio escrito ANTES de correr,
+  # `config/class/techo_lcdm_referencia.ini`: la línea base de Planck 2018 tiene
+  # que dar σ8 = 0.8111 ± 0.006 y da 0.810851, o sea 0.04σ. PASA.
+  # Tensiones del S₈: KiDS 3.5σ→2.74σ · DES-Y3 3.9σ→2.82σ · Planck 1.1σ→0.36σ.
+  # Log: results/logs/p5_techo_sigma8_As_fijo.json · informe:
+  # BANDEJA/2026-09-08_techo_sigma8_neutrinos.md
+  # La barra ±0.006 viene de antes y NO se ha recomputado.
   gamma_IS:             0.5504     # Paper 5 índice de crecimiento IS (fit ODE; ±0.0003; ≈ΛCDM 0.55)
   G_growth:            1.0032     # D₁_SSEE/D₁_ΛCDM (Paper 5 ODE @ Ω_m,cosm=0.308881; era 1.011 @0.31983 — SÍ depende del fondo, que bajó en el reframe ω_m-directo)
   fsigma8_single_sigma:     0.70  # P5 single-sector σ8=0.8136 SIN free-streaming

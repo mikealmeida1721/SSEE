@@ -889,6 +889,31 @@ check("R65 los numeros de un script coinciden con el log que declara como fuente
       else "todo script con `FUENTE: results/logs/...` escribe numeros que "
            "estan en ese log (cazado 2026-09-08: fig8 llevaba 45 dias con los "
            "MAP de una cadena superada por el fix R25)")
+# EL PUNTO CIEGO DE R65, MEDIDO Y DECLARADO (2026-09-08). La regla solo ve
+# los ficheros que declaran `FUENTE:`. Un script que no lo declare es
+# invisible para ella — se evade por OMISION, que es la misma clase de hueco
+# que acaba de cerrarse. Medido hoy: 2 scripts declaran su fuente y 80 no,
+# con 575 numeros de 4+ decimales escritos a mano. La mayoria son legitimos
+# (constantes fisicas, rejillas, priors), y no se puede separar barato el
+# "reteclado de una corrida" del coincidente: el subconjunto que ademas vive
+# en algun log son 213 numeros en 59 scripts, y ahi dentro hay ruido como
+# 0.3000. Una alarma de 213 entradas se ignora — la leccion esta escrita en
+# R35. Asi que NO se convierte en un check ruidoso: se declara como deuda
+# VISIBLE, que baja sola segun cada script vaya declarando su fuente al
+# tocarlo. Lo que no se puede es dejarla invisible.
+_R65_NDECL = sum(
+    1 for _q in sorted(ROOT.rglob("*.py"))
+    if "archive" not in str(_q) and _q.name != "ssee_verify.py"
+    and "FUENTE: results/logs/" not in _q.read_text(errors="ignore")
+    and _R65_NUM.search("\n".join(
+        _l for _l in _q.read_text(errors="ignore").split("\n")
+        if not _l.lstrip().startswith("#"))))
+track_open(f"R65 {_R65_NDECL} scripts con numeros a mano sin declarar su log",
+           "R65 solo ve los que declaran `FUENTE: results/logs/...`; el resto "
+           "se le escapa por omision. Baja al declarar la fuente en cada "
+           "script cuando se toque. Medido 2026-09-08: 80 sin declarar, "
+           "2 declarados")
+
 # CONTROL (R53): marca el numero ausente, deja pasar el presente y el que no
 # declara fuente. Log simulado, sin tocar disco.
 _fake65 = {"x.log": "H0 = 67.52954 +0.35211 ob = 0.02187\n"}
@@ -2703,10 +2728,19 @@ try:
                 continue
         (_fig_prd if _nm36 in _prd_figs else _fig_otras).append(
             f"{_nm36} ({(_ts36 - _tf) // 86400}d)")
+    # 2026-09-08: el mensaje decia «N figuras del PRD al día» y eso promete
+    # mas de lo que mide. R36 compara la figura con SU SCRIPT, y nada mas: una
+    # figura regenerada ayer desde un script que lleva dentro los MAP de una
+    # cadena retirada pasa este check con razon y esta rancia igual. Paso con
+    # fig8 (45 dias). Ese hueco lo cubre R65, y solo donde el script declara
+    # su log. El mensaje ahora dice lo que hizo.
     check("R36 ninguna figura DEL PRD es más vieja que el script que la produce",
           not _fig_prd,
           "; ".join(_fig_prd) if _fig_prd
-          else f"{len(_prd_figs)} figuras del PRD al día")
+          else f"{len(_prd_figs)} figuras del PRD no son más viejas que su "
+               f"script. NO dice que su CONTENIDO esté al día: si el script "
+               f"lleva números rancios dentro, esto pasa igual (caso fig8, "
+               f"2026-09-08) — eso lo mira R65")
     if _fig_otras:
         track_open(f"R36 {len(_fig_otras)} figuras rancias fuera del PRD",
                    ", ".join(_fig_otras[:8]) + (" …" if len(_fig_otras) > 8 else ""))

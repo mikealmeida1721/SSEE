@@ -835,6 +835,78 @@ check("R57 el detector distingue la ruta rota de la correcta y respeta la profun
       "el mismo un-solo-'..' a profundidad 1 (src/ directo) exento, que "
       "ahi SI apunta a la raiz")
 
+# --- R65: si un script declara su log fuente, sus numeros deben estar ahi
+# POR QUE EXISTE (2026-09-08). regenerate_fig8_bao_residuals.py llevaba los
+# MAP de las cadenas escritos a mano con el rotulo "(paper2_3models, jul-9,
+# DR2)". Esa cadena quedo SUPERADA el 2026-07-25 por el fix R25, y la figura
+# siguio 45 dias construida sobre valores retirados. No lo cazaba nadie:
+# R35 compara fechas de commit y el script no habia cambiado; R36 mira si la
+# figura es mas vieja que su script. El agujero es el tercero: el script esta
+# al dia consigo mismo y rancio respecto al LOG del que dice venir.
+# Efecto medido: chi2_BAO(SSEE) 11.9 -> 11.6 y la figura sale distinta.
+# QUE HACE: si un fichero declara `FUENTE: results/logs/<x>.log`, cada numero
+# de 5+ cifras significativas que escriba debe aparecer en ese log. Asi el
+# valor no puede quedarse rancio en silencio: o se actualiza, o falla.
+_R65_FUENTE = re.compile(r"FUENTE:\s*results/logs/([\w./-]+\.log)")
+_R65_NUM = re.compile(r"(?<![\w.])(\d+\.\d{4,})(?![\w])")
+def _r65_sitios(_txt, _leelog):
+    _m = _R65_FUENTE.search(_txt)
+    if not _m:
+        return []
+    _log = _leelog(_m.group(1))
+    if _log is None:
+        return [f"el log declarado no existe: {_m.group(1)}"]
+    # solo los numeros del cuerpo, no los de la cabecera que narra el cambio
+    _cuerpo = _txt[_m.end():]
+    _cuerpo = "\n".join(_l for _l in _cuerpo.split("\n")
+                        if not _l.lstrip().startswith("#"))
+    # un identificador de arXiv (AAMM.NNNNN) no es una medida: se exime por
+    # su forma Y por su contexto. Cazado el mismo dia: 2503.14738, el paper
+    # de DESI DR2, aparecia como si fuera un numero rancio.
+    _fuera = []
+    for x in sorted(set(_R65_NUM.findall(_cuerpo))):
+        if x in _log:
+            continue
+        _pos = _cuerpo.find(x)
+        _ctx = _cuerpo[max(0, _pos - 70):_pos + len(x) + 20].lower()
+        if re.fullmatch(r"\d{4}\.\d{5}", x) and (
+                "arxiv" in _ctx or "doi" in _ctx or "et al" in _ctx
+                or "desi" in _ctx or "20" == x[:2]):
+            continue
+        _fuera.append(f"{x} no esta en {_m.group(1)}")
+    return _fuera
+def _leelog65(_n):
+    _p = ROOT.parent / "results" / "logs" / _n
+    return _p.read_text(errors="ignore") if _p.exists() else None
+_r65 = []
+for _f65 in sorted(ROOT.rglob("*.py")):
+    if "archive" in str(_f65) or _f65.name == "ssee_verify.py":
+        continue
+    _r65 += [f"{_f65.name}: {x}"
+             for x in _r65_sitios(_f65.read_text(errors="ignore"), _leelog65)]
+check("R65 los numeros de un script coinciden con el log que declara como fuente",
+      not _r65, "; ".join(_r65[:3]) if _r65
+      else "todo script con `FUENTE: results/logs/...` escribe numeros que "
+           "estan en ese log (cazado 2026-09-08: fig8 llevaba 45 dias con los "
+           "MAP de una cadena superada por el fix R25)")
+# CONTROL (R53): marca el numero ausente, deja pasar el presente y el que no
+# declara fuente. Log simulado, sin tocar disco.
+_fake65 = {"x.log": "H0 = 67.52954 +0.35211 ob = 0.02187\n"}
+_c65 = [("# FUENTE: results/logs/x.log\nH0=67.52954", False),
+        ("# FUENTE: results/logs/x.log\nH0=67.62055", True),
+        ("H0=67.62055  # sin declarar fuente", False),
+        ("# FUENTE: results/logs/x.log\n# narra 67.62055 en un comentario", False),
+        ("# FUENTE: results/logs/nohay.log\nH0=67.52954", True),
+        # el identificador de arXiv que salio el 2026-09-08
+        ("# FUENTE: results/logs/x.log\nDESI DR2 arXiv:2503.14738", False)]
+_f65 = [t[:46].replace("\n", " ") for t, esp in _c65
+        if bool(_r65_sitios(t, _fake65.get)) != esp]
+check("R65 el detector distingue el numero rancio del vigente",
+      not _f65, "; ".join(_f65) if _f65
+      else "6 casos: el numero ausente del log marcado; el presente, el que "
+           "no declara fuente, el que solo aparece en un comentario y un "
+           "identificador de arXiv, exentos; y el log inexistente marcado")
+
 # --- R64: nadie clava la ecuacion de estado de SSEE en un evaluador ----
 # POR QUE EXISTE (2026-09-08). El evaluador del CMB traia dentro del modelo
 #     'w': -0.840015, 'wa': -0.670141
@@ -4611,7 +4683,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 259          # +4 R63 (w0wa recalculado) +4 R64 (w/wa clavados); solo SUBE
+_PISO_CHECKS = 260          # +4 R63 +4 R64 +2 R65 (numeros vs su log); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",

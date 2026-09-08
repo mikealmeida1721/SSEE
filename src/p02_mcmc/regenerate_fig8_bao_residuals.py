@@ -34,11 +34,24 @@ def E(z, Om, w0, wa):
     de = 1.0 if (w0 == -1 and wa == 0) else f_de(z, w0, wa)
     return np.sqrt(Om * (1 + z) ** 3 + (1 - Om) * de)
 
-# ── MAP de las 3 cadenas (paper2_3models, jul-9, DR2) ──
+# ── MAP de las 3 cadenas ──────────────────────────────────────────────
+# FUENTE: results/logs/mcmc_paper2_3models_wmfix.log (2026-07-25).
+#
+# ACTUALIZADO 2026-09-08. Antes decia "jul-9" y usaba la cadena del 9 de
+# julio, que quedo SUPERADA el 25 por el fix R25 (Omega_m ya no se congela
+# dentro de E(z), se deriva por muestra). La figura llevaba 45 dias
+# construida sobre una cadena retirada. Solo la fila de SSEE se movia --- el
+# fix era de su prior---, pero se movia en dos sitios:
+#     H0  67.62   -> 67.52954     -0.13 %
+#     ob  0.02221 -> 0.02187      -1.5 %   (y ob entra en r_d)
+# LCDM y CPL cambian en el quinto decimal, o sea nada.
+#
+# Si estos numeros vuelven a moverse, la fuente es ese log: se leen de la
+# seccion final, no se re-teclean de memoria.
 models = {
-    "SSEE":  dict(H0=67.62, Om=0.308881, w0=-0.840,  wa=-0.670,  ob=0.02221, c="#c0392b"),
-    r"$\Lambda$CDM": dict(H0=68.27, Om=0.3034, w0=-1.0, wa=0.0, ob=0.02233, c="#2c6fbb"),
-    "CPL":   dict(H0=67.26, Om=0.3167, w0=-0.8255, wa=-0.5576, ob=0.02237, c="#27ae60"),
+    "SSEE":  dict(H0=67.52954, Om=0.30888, w0=-0.8399, wa=-0.6700, ob=0.02187, c="#c0392b"),
+    r"$\Lambda$CDM": dict(H0=68.27099, Om=0.30338, w0=-1.0, wa=0.0, ob=0.02233, c="#2c6fbb"),
+    "CPL":   dict(H0=67.25676, Om=0.31664, w0=-0.82568, wa=-0.55689, ob=0.02238, c="#27ae60"),
 }
 
 def predict(z, quantity, m):

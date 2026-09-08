@@ -1101,7 +1101,7 @@ for _tex68 in sorted((ROOT.parent / "manuscript").glob("*.tex")):
     except Exception:
         pass
     _r68.append(f"{_tex68.stem} ({(_ta - _tb) // 86400}d)")
-_TOPE_R68 = 14                      # medido 2026-09-08; trinquete, SOLO BAJA
+_TOPE_R68 = 0                       # 14 -> 0: los 14 recompilados; SOLO BAJA
 check("R68 la deuda de PDF publicados sin recompilar no crece",
       len(_r68) <= _TOPE_R68,
       f"{len(_r68)} de {_n68} PDF de docs/ mas viejos que su .tex "
@@ -2668,7 +2668,7 @@ try:
                 else:
                     continue
                 break
-    _TOPE_R44B = 20                 # medido 2026-09-08; trinquete, SOLO BAJA
+    _TOPE_R44B = 20                 # 14 -> 0: los 14 recompilados; SOLO BAJA
     check("R44b la deuda de constantes redondeadas en TABLAS no crece",
           len(_r44b) <= _TOPE_R44B,
           f"{len(_r44b)} celdas (tope {_TOPE_R44B}): " + "; ".join(_r44b[:3])

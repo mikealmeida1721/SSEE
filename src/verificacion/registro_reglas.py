@@ -664,7 +664,7 @@ REGLAS = {
         # Aflojarlo es la unica forma de que un PDF atrasado pase inadvertido,
         # asi que eso es lo que se muta.
         mutacion=[("el trinquete de PDF sin recompilar, aflojado",
-                   "_TOPE_R68 = 14", "_TOPE_R68 = 30")],
+                   "_TOPE_R68 = 0", "_TOPE_R68 = 3")],
     ),
     "R31": dict(
         capa="R31 — bytecode: lo importado == el fuente",

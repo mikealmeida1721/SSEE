@@ -357,9 +357,13 @@ REGLAS = {
         mutacion=[("Ω_m,dyn a 3 decimales",
                    "$\\Omega_{m,\\rm dyn}=0.160050$ (DESI)",
                    "$\\Omega_{m,\\rm dyn}=0.160$ (DESI)"),
-                  ("SOLAR²·K_v a 2 decimales",
-                   "$9.519253$",
-                   "$9.52$")],
+                  # El ancla debe llevar el «=»: R44 declara su ambito como «constantes de
+        # la lectura CON = a 6 decimales», y en una celda de tabla el valor va
+        # solo, sin igual. Un ancla en tabla no probaba la regla, probaba su
+        # punto ciego — que queda medido aparte (50 sitios, OP nuevo).
+        ("K_v a 2 decimales, con el signo igual delante",
+                   "$2(\\varphi+\\pi)=9.519253$",
+                   "$2(\\varphi+\\pi)=9.52$")],
     ),
     "R45": dict(
         capa="R45 — estado de los OP: la prosa concuerda con OPEN_PROBLEMS.md",

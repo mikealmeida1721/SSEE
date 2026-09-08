@@ -2661,7 +2661,18 @@ try:
     _ANC = (r"(?:\\frac\{\s*H_0[^}]*\}\s*\{[^}]*\}[^=]{0,4}"
             r"|H_0(?:\^\{?\\rm\s*\w+\}?)?(?P<rat>" + _RAT + r")?)"
             r"\s*(?:&\s*)?=\s*(?:[^=$]{0,30}=\s*)?" + _COMB)
-    _NIEGA = r"\b(?:not|rather than|instead of|never)\b"
+    # ESTRECHADA 2026-09-08 (lo destapo la mutacion «CONFLICTO»). Era
+    # `\b(?:not|rather than|instead of|never)\b`, o sea CUALQUIER «not» en los
+    # 90 caracteres previos apagaba la regla — y «not» es de las palabras mas
+    # comunes de la prosa cientifica. Con «This is not a fitted quantity: the
+    # anchor $H_0=3(varphi+pi)^2$» el defecto pasaba VERDE, y ese «not» niega
+    # otra cosa (que sea ajustado), no la FORMA de la igualdad. Ahora la
+    # negacion tiene que ir pegada a un verbo de escritura, que es lo que la
+    # exencion queria decir. Medido: hoy no tapaba ningun sitio real, asi que
+    # el estrechamiento no mueve ningun documento; es preventivo.
+    _NIEGA = (r"\b(?:rather than|instead of)\b"
+              r"|\b(?:not|never|cannot|must not)\b[^.]{0,24}"
+              r"\b(?:writ|express|stat|read|render|present|equat|set|put)\w*")
 
     def _r42(tx: str):
         _h = []
@@ -2704,12 +2715,15 @@ try:
         (r"$\eta = A\times\frac{\pi-\varphi}{H_0^{\rm SSEE}}$ follows", True),
         (r"$\eta = A\times\frac{\pi-\varphi}{3(\varphi+\pi)^2}$ follows", False),
         (r"expression $(\pi-\varphi)/[3(\varphi+\pi)^2]$ gives", False),
-        (r"we do not write it as $(\pi-\varphi)/H_0^{\rm SSEE}$: that would", False)]
+        (r"we do not write it as $(\pi-\varphi)/H_0^{\rm SSEE}$: that would", False),
+        # CONTROL del estrechamiento: un «not» que niega OTRA cosa ya no exime.
+        (r"This is not a fitted quantity: the anchor $H_0=3(\varphi+\pi)^2$",
+         True)]
     _f42 = [c for c, esp in _t42 if bool(_r42(c)) != esp]
     check("R42 el detector distingue número puro de cantidad física",
           not _f42, "; ".join(_f42) if _f42
-          else "13 casos: «=» pelado, unidad pegada y cadena intermedia se marcan; "
-               "H_0/unidad y \\frac{H_0}{unidad} pasan; mención negada exenta")
+          else "14 casos: «=» pelado, unidad pegada y cadena intermedia se marcan; "
+               "H_0/unidad y \\frac{H_0}{unidad} pasan; la mención negada exenta y un «not» que niega otra cosa, NO")
 
     _mal42 = []
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))

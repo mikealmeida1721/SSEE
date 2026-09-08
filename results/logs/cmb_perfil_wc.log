@@ -1,0 +1,16 @@
+
+=== SSEE  (w=-0.839950, wa=-0.669975) ===
+ w_c          chi2
+[camb] `camb` module loaded successfully from /home/mike/Proyectos/SSEE/eftcamb_ssee/camb
+[planck_2018_highl_plik.ttteee_lite] `clipy` module loaded successfully from /home/mike/cobaya_packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/mike/cobaya_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik' on test data. got -292.286 expected -292.286 (diff -3.86245e-09)
+----
+before crop : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+after crop  : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+0.118714    1009.4159   [602s]
+0.118914    1005.9241   [539s]
+0.119114    1003.7913   [515s]
+0.119314    1003.0123   [838s]
+0.119514    1003.5836   [490s]

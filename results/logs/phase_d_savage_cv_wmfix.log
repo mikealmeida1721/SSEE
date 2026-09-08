@@ -1,6 +1,7 @@
-# regenerado 2026-09-08 tras anclar la ruta del .npz a __file__
-# (src/estadistica/ssee_phase_d_savage_cv.py). Salida IDENTICA byte a
-# byte a la anterior: el fix de ruta no movio ningun numero.
+# regenerado 2026-09-08 tras sustituir los literales redondeados por los
+# simbolos del nucleo (R66). OMEGA_M_TOTAL cambia -1.2e-07 y OMEGA_M_H2
+# +9.9e-09 respecto de los literales; la salida sale IDENTICA numero a
+# numero a la anterior, o sea el redondeo no alcanzaba a mover nada aqui.
 ============================================================
 PARTE 1: SAVAGE-DICKEY DENSITY RATIO
 ============================================================

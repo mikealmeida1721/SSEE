@@ -23,7 +23,8 @@ hay que **decidir** cuál corre, no lanzarlas según van saliendo.
 
 | corrida | núcleos | lanzada | coste medido/estimado | qué desbloquea |
 |---|---|---|---|---|
-| `cobaya_kids lcdmfijo` | 4 (mal, ver regla 2) | 07-09 19:43 | **12 h y sigue**; `R−1 = 0.226` a las 06:51, para en 0.03 → ~2 días más | la casilla que falta de la tabla 2×2: ¿ΛCDM con fondo fijo también muestra la tensión en `A_s`? |
+| `cobaya_kids lcdmfijo` | 4 (mal, ver regla 2) | 07-09 19:43 | **15 h y sigue**; `R−1` 0.226 (06:51) → **0.165** (10:57), para en 0.03 | la casilla que falta de la tabla 2×2: ¿ΛCDM con fondo fijo también muestra la tensión en `A_s`? |
+| `dbic_tau_ajustado` | 1 | 08-09 11:47 | est. ~1–2 h (Nelder-Mead 6D, cada χ² es un CAMB) | si el `ΔBIC=−24.02` de Paper 3 cambia al ajustar `τ` en los dos modelos en vez de prestarle a SSEE el fiducial de ΛCDM |
 
 ## Terminadas 2026-09-08 (madrugada, sin Mike delante)
 
@@ -38,8 +39,8 @@ hay que **decidir** cuál corre, no lanzarlas según van saliendo.
 
 | # | corrida | coste | qué contesta | depende de |
 |---|---|---|---|---|
-| 1 | **ΔBIC de Paper 3 con `τ` ajustado** | ~1 h | si el `ΔBIC=−24.02` mejora al no prestarle el `τ` fiducial de ΛCDM. Medido aparte: SSEE gana 1.84, ΛCDM 0.47 ⟹ podría mejorar ~1.4, pero hay que rehacerlo con la precisión de lente y el `Σm_ν` del paper, no con los míos | — |
-| 2 | **perfil de `w_c`, control ΛCDM** | ~40 min | la mitad que faltó al morir con el reinicio. Sin él no se puede afirmar que el `±0.000248` de SSEE lo pone el dato y no el álgebra | — |
+| ~~1~~ | ~~**ΔBIC de Paper 3 con `τ` ajustado**~~ 🔄 **LANZADA 08-09 11:47** | ~1 h | si el `ΔBIC=−24.02` mejora al no prestarle el `τ` fiducial de ΛCDM. Medido aparte: SSEE gana 1.84, ΛCDM 0.47 ⟹ podría mejorar ~1.4, pero hay que rehacerlo con la precisión de lente y el `Σm_ν` del paper, no con los míos | — |
+| ~~2~~ | ~~**perfil de `w_c`, control ΛCDM**~~ ✅ **HECHA** — `results/logs/cmb_perfil_wc.json`. SSEE `ω_c = 0.119334 ± 0.000246`, ΛCDM `0.119748 ± 0.000252`; **razón de anchuras 0.977** ⟹ la barra la pone el DATO, no el álgebra. De paso mostró que el `0.119534` publicado en Paper 8 estaba sesgado por la rejilla (paso 0.0020 sobre un tramo donde χ² sube 900: mandan las alas sobre el vértice) | ~40 min | la mitad que faltó al morir con el reinicio. Sin él no se puede afirmar que el `±0.000248` de SSEE lo pone el dato y no el álgebra | — |
 | ~~3~~ | ~~**pendiente `d ln w_c / d ln n_s`**~~ ✅ **HECHA** — `results/logs/cmb_ns_forzado.json`, pendiente medida **−0.042** (la identidad predice +1). Y su gemela `cmb_wb_forzado.json`: pendiente **+0.430**, con el mínimo de χ² justo en el `ω_b` algebraico. Forzar un ingrediente algebraico saca al modelo de sí mismo, así que esto mide la verosimilitud, no la fórmula | ~1 h | complementa la #2 de la cola de arriba: impone `n_s` y mide si `w_c` responde con pendiente +1 | — |
 | 4 | **BOSS ΛCDM con fondo LIBRE** | **cientos de horas** | la única versión publicable de R1/R2: hoy ΛCDM corrió con el fondo fijo, lo que le impide mostrar sus propias tensiones. Requiere reconstruir las tablas LPT por muestra (~18 s/llamada) | rediseño previo: emulador o templates precalculados |
 | 5 | **`b1_*` de Paper 3** | horas–día | las 4 figuras rancias (41 días) que R36 marca | — |
@@ -105,3 +106,18 @@ fondo libre, `H₀ = 73.15 ± 4.96`, que cae a **0.02σ de SH0ES** (73.04±1.04)
 a 1.16σ de Planck. Con esa barra cabe cualquiera de los dos, así que es una
 coincidencia sugerente, no una medición — pero conviene volver a mirarla si
 alguna vez se estrecha.
+
+## Añadido 2026-09-08 (tanda autónoma)
+
+| # | corrida | coste | qué contesta | depende de |
+|---|---|---|---|---|
+| ~~8~~ | ~~**techo σ₈ con el fondo canónico y sus neutrinos**~~ ✅ **HECHA** — sale **0.814854 / S₈=0.826827**, un 2.3% por debajo del `0.8335 / 0.846` publicado; control ΛCDM pasa a 0.04σ del criterio previo. Informe: `BANDEJA/2026-09-08_techo_sigma8_neutrinos.md` | 1 min | si el techo publicado es el del modelo canónico o el de una variante sin neutrinos masivos | — |
+| 9 | **auditoría de las configuraciones rescatadas** | ~1 h | los `.ini` de `config/class/` rescatados el 08-09 (`ssee_v36*`) **no llevan neutrinos masivos**. Cualquier número citado que salga de ellos hereda el mismo sesgo del 2.3% que se acaba de encontrar. Hay que ver cuáles alimentan un número publicado | la #8, que ya dio el método y el control |
+
+## Regla 7 (2026-09-08) — la configuración se versiona o el número no existe
+
+`class_ssee/` es un fork de CLASS y trae **el `.gitignore` de CLASS**, que
+ignora `*.ini` y `output/`. Consecuencia medida: **ninguna configuración de
+CLASS de este proyecto estaba en el repositorio**, así que ningún número salido
+de CLASS se podía certificar. No era un caso aislado, era el estado normal.
+Desde hoy viven en `config/class/`, versionadas, y se corren desde ahí.

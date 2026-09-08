@@ -185,3 +185,52 @@ vigente legítimo; la falla era **semántica** (dato vs predicción), no un valo
 `kids_s8`, `kids_sig8`, `des_s8` en todo `src/**.py` coincidan. Si alguien vuelve a meter la
 predicción como dato → ROJO. Los papers ya eran correctos (0.04σ); el error vivía solo en código.
 **Estado:** ✅ corregido + automatizado.
+
+## R21 — Ningún modelo se evalúa con el ingrediente del otro 🔴 ⛔
+**Regla:** cada modelo entra en un cálculo **con sus propios ingredientes**, leídos
+de su propia fuente. Si un parámetro se toma prestado del otro modelo, hay que
+declararlo en el sitio donde se reporta el número, y decir en qué dirección
+sesga. Lo que está fijo y lo que está libre se elige **por lo que se pregunta**,
+no por comodidad: para SSEE, el fondo por álgebra y libres sólo sus dos; para
+ΛCDM, el fondo libre, que es como lo hace su propia comunidad.
+**Por qué (dos casos reales, el mismo día 2026-09-08):**
+1. El `ΔBIC = −24.02` de Paper 3 evaluaba SSEE con el `τ` fiducial de ΛCDM. Con
+   `τ` ajustado en los dos, SSEE gana 1.82 en χ² y el ΔBIC pasa a **−22.59**.
+2. `boss_lpt_R1R2.py` tenía `MNU = 0.06` suelto para **los dos** modelos. Ése es
+   el fiducial de Planck; el de SSEE es `Σm_ν = 0.06849 eV`. Medido:
+   σ₈ −0.276%, fσ₈ −0.247% = **0.058σ**.
+**Verificación:** por cada constante de un evaluador, preguntar *¿de qué modelo
+es este número?* Si la respuesta es «del fiducial» y el modelo evaluado no es
+ése, es préstamo. Los ingredientes de SSEE se **leen del núcleo**, nunca se
+re-teclean (R66 del guardián).
+**Lección de fondo (M. Almeida, 2026-09-08):** *«no tenemos los ingredientes de
+adorno; son para que den el modelo».* Un ingrediente algebraico que existe y no
+se usa en la corrida es un ingrediente que no se ha probado.
+
+## R22 — Un desvío pequeño sigue siendo un desvío 🟠 ⛔
+**Regla:** que un error no mueva la conclusión **no** es razón para dejarlo. Se
+corrige, se mide cuánto valía, y la medida queda escrita. Un sesgo con signo no
+es ruido: varios pequeños del mismo signo se suman.
+**Por qué (caso real):** el `MNU` prestado valía 0.058σ y por eso era invisible.
+Llevaba ahí desde que se escribió el archivo. En el mismo día aparecieron el `τ`
+prestado (1.82 en χ²) y el techo de σ₈ sin neutrinos (2.3%): tres del mismo
+signo, todos «demasiado pequeños para importar» por separado.
+**Verificación:** todo arreglo de este tipo lleva su número medido **antes** de
+arreglarlo, en el comentario del propio código. Sin la medida no se sabe si era
+pequeño; se supone.
+
+## R23 — Al reemplazar un número, no se pierde el que había 🔴
+**Regla:** cuando una corrida nueva sustituye a un número publicado, y sobre todo
+cuando **sólo cambian los decimales**, el reemplazo lleva las cuatro cosas:
+**(a)** de qué modelo es · **(b)** qué estaba fijo y qué libre · **(c)** su log y
+su control · **(d)** el número viejo, con la razón por la que se retira. Sin (d)
+no se puede volver atrás si el nuevo resulta peor.
+**Por qué (advertencia de M. Almeida, 2026-09-08):** *«si sólo cambian los
+decimales es muy probable que dejes algún resultado bueno por uno nuevo y
+después no puedas encontrar de dónde lo sacaste».* Ya pasó en pequeño con el
+`ω_c` de Paper 8: el `0.119534` publicado quedó sin log y hubo que rastrearlo
+por la transcripción.
+**Verificación:** la fila del Registro y la nota del `.tex` contienen las cuatro.
+Y el diagnóstico condicionado **nunca** se cuela como si fuera el resultado
+publicable: el techo de σ₈ con `A_s` fijo es diagnóstico; el `S₈` con `A_s`
+libre contra dato crudo es el resultado.

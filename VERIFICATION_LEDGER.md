@@ -1053,10 +1053,31 @@ fuente única (reemplazado por el QSO oficial DR2).
 
 **Impacto en el titular w₀wₐ (FASE 0, recomputado):** con DR2 real la tensión
 del punto algebraico (−0.840, −0.670) depende del compilado SN del contraste
-w0waCDM: **0.09σ (Pantheon+, verificado: −0.838±0.055/−0.62⁺⁰·²²)**, ~1.06σ
+w0waCDM: **0.24σ (Pantheon+: −0.838±0.055 / −0.62⁺⁰·²²)**, ~1.06σ
 (DES-Y5, lit.), ~1.62σ (Union3, lit.). El "0.05σ" histórico era DR1+Pantheon+.
-Titular honesto nuevo: *consistente con DR2 en 0.1–1.6σ según compilado SN,
+Titular honesto nuevo: *consistente con DR2 en 0.2–1.6σ según compilado SN,
 con w₀ casi exacto*. DESY5/Union3 exactos: pinnear de 2503.14738 §VII en F3.
+
+> **CORRECCIÓN 2026-09-08 — aquí ponía 0.09σ y no reproducía.** Lo cazó Mike:
+> *«verifica eso bien porque yo también recuerdo 0.24 sigmas en DR2 y 0.05 en
+> DR1»*. Tenía razón. Con los números que esta misma línea cita:
+> ```
+> chi2_2D = 0.42 con 2 g.l. (covarianza COMPLETA, Paper 2 ecs. 25-28)
+>   -> P(exceder) = 0.81058  ->  0.2397 sigma equivalente  ->  0.24
+> ```
+> **Y una trampa que hay que dejar escrita**: la cuadratura *sin* correlación
+> da 0.2299 y **se parece por casualidad**. No es la vía. Yo mismo derivé el
+> 0.24 así el 2026-09-08 y salió bien de chiripa; creer esa vía llevaría a
+> exigir 0.23 y a «corregir» un valor que está bien. La vía correcta es χ²
+> bidimensional convertido a σ de una dimensión por su probabilidad de
+> exceder.
+> Ninguna lectura da 0.09: por w₀ solo sale 0.036, por wₐ solo 0.227, la
+> cuadratura 0.230 y el χ² 2D 0.240. El 0.24σ es
+> además lo que ya decían Paper 7 (3 sitios), CLAUDE.md, LECTURA_PAPERS.md y
+> FUENTES_PENDIENTES.md. El sitio rancio era el Registro, o sea **el archivo
+> que manda en caso de discrepancia** — el peor lugar donde tenerlo.
+> Vigilado por **R63**, que recalcula la cuadratura en vez de comparar un
+> literal.
 
 **Corrección estructural (anti-recurrencia):**
 1. `data/raw/desi_dr2_bao.csv` = fuente única: 13 valores DR2 Tabla 4 +

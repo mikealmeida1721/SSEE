@@ -835,6 +835,82 @@ check("R57 el detector distingue la ruta rota de la correcta y respeta la profun
       "el mismo un-solo-'..' a profundidad 1 (src/ directo) exento, que "
       "ahi SI apunta a la raiz")
 
+# --- R63: la tension w0wa se RECALCULA, no se copia -------------------
+# POR QUE EXISTE (2026-09-08). El Registro decia 0.09 sigma para la distancia
+# del punto algebraico (w0,wa) al contorno DESI DR2 + Pantheon+, y NO
+# reproducia con los numeros que el mismo renglon citaba. Lo cazo Mike de
+# memoria: «yo tambien recuerdo 0.24 sigmas en DR2 y 0.05 en DR1».
+# Los papers (P7, 3 sitios), CLAUDE.md, LECTURA_PAPERS y FUENTES_PENDIENTES
+# decian 0.24 y SI reproduce. El sitio rancio era el Registro — el archivo que
+# manda en caso de discrepancia, o sea el peor sitio donde tenerlo.
+# QUE HACE: no compara literales. RECALCULA la cuadratura desde W0/WA del
+# nucleo y el contorno publicado, y exige que lo escrito coincida. Si manana
+# W0 cambia, el numero esperado cambia solo.
+_DR2_W0, _DR2_S0 = -0.838, 0.055      # DESI DR2 + Pantheon+, w0waCDM
+_DR2_WA, _DR2_SA = -0.620, 0.220      # 2503.14738
+_CHI2_2D = 0.42                       # Paper 2, covarianza COMPLETA (ecs. 25-28)
+# el nucleo se carga mas abajo, asi que aqui se importa aparte (mismo
+# patron que la guarda de bytecode rancio: se ejecuta el FUENTE en disco).
+import importlib.util as _ilu63
+_spec63 = _ilu63.spec_from_file_location("_core63", ROOT / "ssee_core.py")
+_core63 = _ilu63.module_from_spec(_spec63)
+_spec63.loader.exec_module(_core63)
+# COMO se obtiene el 0.24 (y como NO). No es una cuadratura: es el chi2 2D
+# con la covarianza completa, convertido a sigma de UNA dimension por su
+# probabilidad de exceder. La cuadratura sin correlacion da 0.2299 y se
+# parece por CASUALIDAD — creerla llevaria a exigir 0.23 y a "corregir" un
+# valor que esta bien. Anotado porque yo mismo cai en eso el 2026-09-08.
+_p63 = _math.exp(-_CHI2_2D / 2.0)                 # sf de chi2 con 2 g.l.
+_z63 = _math.sqrt(2.0) * _erfinv63 if False else None
+from statistics import NormalDist as _ND63
+_z63 = _ND63().inv_cdf(1.0 - _p63 / 2.0)
+check("R63 el 0.24 sigma de w0wa sale del chi2_2D, no de una cuadratura",
+      abs(_z63 - 0.24) < 0.005,
+      f"chi2_2D = {_CHI2_2D} (2 g.l.) -> P(exceder) = {_p63:.5f} -> "
+      f"{_z63:.4f} sigma equivalente. La cuadratura sin correlacion da "
+      f"{_math.hypot((_core63.W0-_DR2_W0)/_DR2_S0, (_core63.WA-_DR2_WA)/_DR2_SA):.4f}: "
+      f"parecido casual, NO es la via"
+      if abs(_z63 - 0.24) < 0.005 else
+      f"da {_z63:.4f}, no 0.24: cambio el chi2_2D documentado")
+_dq63 = _math.hypot((_core63.W0 - _DR2_W0) / _DR2_S0,
+                    (_core63.WA - _DR2_WA) / _DR2_SA)
+check("R63 el punto algebraico sigue dentro del contorno DESI DR2",
+      _dq63 < 1.0,
+      f"w0 a {abs((_core63.W0-_DR2_W0)/_DR2_S0):.4f} sigma y wa a "
+      f"{abs((_core63.WA-_DR2_WA)/_DR2_SA):.4f}; ninguno se acerca a 1")
+# el 0.09 rancio no puede volver a ningun documento
+_R63_MAL = re.compile(r"0\.09\s*(?:\\?sigma|σ)", re.I)
+_r63 = []
+for _f63 in ([_q for _q in sorted(ROOT.parent.glob("*.md"))
+              if _q.name not in ("CHANGELOG.md", "MEMORY.md")]
+             + sorted((ROOT.parent / "manuscript").glob("*.tex"))):
+    _t63 = _f63.read_text(errors="ignore")
+    for _m63 in _R63_MAL.finditer(_t63):
+        _ctx = _t63[max(0, _m63.start() - 200):_m63.end() + 200].lower()
+        if ("w_0" in _ctx or "w0wa" in _ctx or "pantheon" in _ctx
+                or "desi" in _ctx) and "no reproduc" not in _ctx:
+            _r63.append(f"{_f63.name}: {_m63.group(0)}")
+check("R63 el 0.09 sigma rancio no reaparece junto a w0wa/DESI",
+      not _r63, "; ".join(_r63[:3]) if _r63
+      else "0.09 sigma no reproduce desde el contorno citado; el valor es 0.24")
+# CONTROL (R53): el detector marca el 0.09 en contexto w0wa y deja pasar
+# el mismo 0.09 en cualquier otro contexto (p.ej. S8 vs DES en OPEN_PROBLEMS).
+_c63 = [("el punto (w_0,w_a) queda a 0.09 sigma de DESI DR2 + Pantheon+", True),
+        ("S8 = 0.761 esta a 0.09 sigma de DES-Y3", False),
+        ("el punto (w_0,w_a) queda a 0.24 sigma de DESI DR2 + Pantheon+", False)]
+def _r63_marca(_t):
+    for _m in _R63_MAL.finditer(_t):
+        _c = _t[max(0, _m.start() - 200):_m.end() + 200].lower()
+        if ("w_0" in _c or "w0wa" in _c or "pantheon" in _c or "desi" in _c) \
+                and "no reproduc" not in _c:
+            return True
+    return False
+_f63 = [t[:40] for t, esp in _c63 if _r63_marca(t) != esp]
+check("R63 el detector distingue el 0.09 de w0wa del 0.09 de otra cosa",
+      not _f63, "; ".join(_f63) if _f63
+      else "3 casos: el 0.09 junto a w0wa marcado; el 0.09 de S8 vs DES y el "
+           "0.24 correcto exentos")
+
 # --- R62: un veredicto sobre un RANGO no puede mirar un solo extremo ---
 # POR QUE EXISTE (2026-09-08). El argumento Sakharov de OP-1 despejaba una
 # temperatura de recalentamiento, citaba el rango «10^-2 a 10^4 GeV» y la
@@ -4475,7 +4551,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 251          # +2 R62 (cota de rango de un solo lado) y +1 R19
+_PISO_CHECKS = 255          # +4 R63 (w0wa recalculado); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",

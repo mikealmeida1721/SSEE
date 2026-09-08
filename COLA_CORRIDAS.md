@@ -134,3 +134,14 @@ para SSEE y `0.06` para ΛCDM. El titular `S₈ = 0.7555 ± 0.0192` **no** está
 afectado. El evaluador del CMB `cmb_eval.py` también lo lee del núcleo. El
 agujero de los neutrinos era **sólo** de las corridas de CLASS y de esta línea
 de BOSS.
+
+## Añadido 2026-09-08 (noche) — deuda de la propagación del techo
+
+| # | corrida | coste | qué contesta | depende de |
+|---|---|---|---|---|
+| 11 | **recomputar la barra ±0.006 del techo de σ₈** | ~30 min | al propagar el techo (0.8335→0.814854) se recomputó el **valor** pero **no su incertidumbre**: el `±0.006` que imprimen Papers 2, 3, 5, los dos Journals, el PRD y el README viene de antes y nadie sabe de dónde sale. Con esa barra se calculan las tres tensiones publicadas (2.7σ / 2.8σ / 0.4σ), así que **no es cosmética**. Hay que decidir de qué es esa barra (¿precisión del integrador? ¿banda de A_s? ¿de Ω_m?) y medirla, o retirarla | la #8, que ya dejó el `.ini` y el método |
+
+**Por qué está aquí y no como nota (regla de Mike, 2026-09-08):** *«dejar una
+nota por ahí sólo hace que te des cuenta cuando vuelves a pasar por ahí; si no
+lo hacemos en meses, queda anotado sin que nadie lo vea».* Toda deuda que deje
+una propagación entra en esta cola el mismo día, o no existe.

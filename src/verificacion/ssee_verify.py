@@ -4456,7 +4456,7 @@ _NIVEL = {1: "FUENTE — dato crudo, núcleo y procedencia",
 _PREF_NIVEL = [
     (("DESI", "canon", "R26", "R31", "R32", "R20"), 1),
     (("V-L2", "V-L3", "L1 ", "L2 ", "V-L3"), 2),
-    (("R33", "R34", "R35", "R36", "R52", "R65", "R66",
+    (("R33", "R34", "R35", "R36", "R52", "R65", "R66", "R68",
       "procedencia", "Procedencia"), 3),
     (("V-L4", "R25"), 4),
     (("R37", "R38", "R40", "R41", "R42", "R43", "R44", "R45",

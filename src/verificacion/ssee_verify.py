@@ -1176,7 +1176,7 @@ def _r64_sitios(_txt):
     return _h
 _r64 = []
 for _f64 in sorted(ROOT.rglob("*.py")):
-    if "archive" in str(_f64) or _f64.name == "ssee_verify.py":
+    if "archive" in str(_f64) or _f64.name in _FIXTURES:
         continue
     _t64 = _f64.read_text(errors="ignore")
     # ssee_core es la FUENTE de W0/WA: ahi el literal es su sitio
@@ -3096,7 +3096,8 @@ try:
     for _fg in sorted((_REPO / "results" / "figures").glob("*.pdf")):
         _nm36 = _fg.stem
         _hits = [str(_p.relative_to(_REPO)) for _p in (_REPO / "src").rglob("*.py")
-                 if "archive" not in _p.parts and _nm36 in _p.read_text(errors="ignore")]
+                 if "archive" not in _p.parts and _p.name not in _FIXTURES
+                 and _nm36 in _p.read_text(errors="ignore")]
         if not _hits:
             continue
         _scr = _hits[0]
@@ -4916,13 +4917,14 @@ try:
                  "submission_PRD/*.tex", "*.yaml", "*.md"):
         _objetivo += sorted(_REPO.glob(_pat))
     for _f in _objetivo:
-        if "archive" in str(_f) or "__pycache__" in str(_f):
+        if ("archive" in str(_f) or "__pycache__" in str(_f)
+                or _f.name in _FIXTURES):
             continue
         _ls = _f.read_text(errors="ignore").splitlines()
         for _i in _escanea_r54(_ls):
             _r54.append(f"{_f.relative_to(_REPO)}:{_i+1}")
 
-    _DEUDA_R54 = 55
+    _DEUDA_R54 = 51   # 55 -> 51 al eximir las fixtures del registro (R67)
     check("R54 la deuda de etiquetas alpha_K/s_K no crece",
           len(_r54) <= _DEUDA_R54,
           f"{len(_r54)} sitios (tope {_DEUDA_R54}): "
@@ -5066,7 +5068,8 @@ try:
         for _ext in ("*.tex", "*.py"):
             for _f in sorted(_rp.rglob(_ext)):
                 _sp = str(_f)
-                if "archive" in _sp or "superseded" in _sp:
+                if ("archive" in _sp or "superseded" in _sp
+                        or _f.name in _FIXTURES):
                     continue
                 if _f.resolve() == _r55_yo:
                     continue

@@ -716,20 +716,21 @@ check("V-L3-IS  tau_Pi SI esta anclado: por Sigma m_nu, no por c2_eff",
 # apuntaba. Ninguna regla vigilaba eso: R33/R35/R36 miran logs y
 # figuras, ninguna miraba las RUTAS citadas en la prosa.
 _R59_RUTA = re.compile(r"(?<![\w/])((?:src|archive|results)/[\w./-]+\.py)")
-_r59 = []
+_r59, _SUP59 = [], []
 for _f in sorted(list(ROOT.parent.glob("*.md"))
                  + list((ROOT.parent/"manuscript").rglob("*.tex"))):
     if "archive" in str(_f) or _f.name == "CHANGELOG.md":   # CHANGELOG es historia
         continue
     _txt = _f.read_text(errors="ignore")
+    _SUP59.append(_f.name)
     for _m in _R59_RUTA.finditer(_txt):
         _r = _m.group(1)
         if not (ROOT.parent / _r).exists():
             _r59.append(f"{_f.name}: {_r}")
 check("R59 ninguna ruta de script citada en la prosa apunta al vacio",
       not _r59, "; ".join(sorted(set(_r59))[:4]) if _r59
-      else "todas las rutas .py citadas en .md/.tex vivos existen "
-           "(CHANGELOG.md exento: es historia, cita rutas de su epoca)")
+      else f"{len(_SUP59)} documentos barridos; todas las rutas .py que citan "
+           f"existen (CHANGELOG.md exento: es historia, cita rutas de su epoca)")
 _c59 = [("corre `src/p07_eft/ssee_eft_verification.py` para verificar", True),
         ("corre `src/verificacion/ssee_verify.py` para verificar", False)]
 _f59 = []
@@ -1532,6 +1533,25 @@ for relpath, expected in SEALS.items():
           else "ROTO — el archivo cambió después de sellarse")
 
 # ─────────────────────────────────────────────────────────────────────
+# REGLA DE REDACCION DE LOS MENSAJES VERDES (2026-09-08, la pidio Mike)
+#
+# «un verde puede ser correcto y aun asi mentir, si su mensaje promete mas de
+# lo que midio». Paso con R36: comparaba la figura con SU SCRIPT por fecha,
+# verde correcto, y el mensaje decia «N figuras del PRD al dia» — que se lee
+# como contenido vigente. fig8 llevaba 45 dias con los MAP de una cadena
+# retirada y pasaba.
+#
+# Por eso, todo mensaje de exito debe decir SOBRE CUANTO miro (cuantos
+# documentos, cuantas lineas, cuantos .py) y, si su alcance es parcial, ese
+# limite va en el mismo mensaje, no en un comentario del codigo. Un «ninguno»
+# sin superficie declarada se lee como universal y casi nunca lo es.
+#
+# Barrido del 2026-09-08: 9 mensajes afirmaban universalidad sin cuantificar;
+# los 9 corregidos. Y al hacerlo salio otro: el contador de R38 contaba los
+# FALLOS en vez de lo inspeccionado, asi que decia «0 filas barridas» — el
+# verde vacio exacto que este barrido buscaba. Ahora dice 17230 lineas en 17
+# documentos.
+# ─────────────────────────────────────────────────────────────────────
 # FUENTE CANÓNICA — chequeo de src/ssee_core.py
 # ssee_core.py es el módulo del que TODOS los demás scripts importan sus
 # constantes algebraicas. Aquí se verifica que ese módulo coincide con la
@@ -1952,19 +1972,25 @@ try:
           else "8 filas reales: «=» en col.1 y fórmula en col.2; «≈», unidad y "
                "\\ldots exentos; distingue mal-redondeo de política")
 
-    _mal38 = []
+    _mal38, _n38, _ndoc38 = [], 0, 0
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
                       + list((_REPO / "submission_PRD").glob("*.tex"))):
+        _ndoc38 += 1
         for _i, _l in enumerate(_tx.read_text(errors="ignore").split("\n"), 1):
+            _n38 += 1                      # LINEAS inspeccionadas, no fallos:
+            # la primera version contaba los hits y el mensaje decia "0 filas
+            # barridas", que es el verde vacio exacto que se queria evitar.
             for _k, _txt, _por in _r38(_l, _C37):
                 _mal38.append(f"{_tx.name}:{_i} {_k}={_txt} [{_por}]")
     _grave = [m for m in _mal38 if "MAL REDONDEADO" in m]
     check("R38 ninguna fila de tabla con valor MAL REDONDEADO",
           not _grave, "; ".join(_grave[:6]) if _grave
-          else "todas las filas símbolo|fórmula|valor reproducen su redondeo")
+          else f"{_n38} líneas inspeccionadas en {_ndoc38} documentos; toda "
+               f"fila símbolo|fórmula|valor reproduce su redondeo")
     check("R38 ninguna fila de tabla con igualdad a menos de 6 decimales",
           not _mal38, "; ".join(_mal38[:6]) if _mal38
-          else "política de 6 decimales cumplida en las tablas de la suite")
+          else f"política de 6 decimales cumplida en las {_n38} líneas de "
+               f"{_ndoc38} documentos (sólo filas con forma símbolo|fórmula|valor)")
 except Exception as e:
     check("R38 capa operable", False, str(e))
 
@@ -1984,9 +2010,10 @@ try:
     _DIM = {"H_0^alg (=3(φ+π)²)": (3 * (phi + pi) ** 2,
                                    r"3\s*\(\\(?:varphi|phiG)\s*\+\s*\\pi\)\s*\^?\{?2\}?"
                                    r"[^0-9]{0,40}?(\d+\.\d+)")}
-    _mal41 = []
+    _mal41, _ndoc41 = [], 0
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
                       + list((_REPO / "submission_PRD").glob("*.tex"))):
+        _ndoc41 += 1
         _cont = _tx.read_text(errors="ignore")
         for _n41, (_e41, _pat41) in _DIM.items():
             _vistos = set()
@@ -2035,7 +2062,8 @@ try:
                "y precisión declarada («to four decimals») exenta")
     check("R41 ninguna cantidad dimensional con dos precisiones en un documento",
           not _mal41, "; ".join(_mal41[:5]) if _mal41
-          else "el ancla H₀ se muestra con una sola precisión en cada documento")
+          else f"{_ndoc41} documentos barridos; el ancla H₀ se muestra con una "
+               f"sola precisión en cada uno (sólo se vigila el ancla)")
 except Exception as e:
     check("R41 capa operable", False, str(e))
 
@@ -2510,14 +2538,16 @@ try:
           not _f40, "; ".join(_f40) if _f40
           else "4 casos reales: paréntesis que oculta la igualdad y «≈» sobre fórmula exacta")
 
-    _mal40 = []
+    _mal40, _ndoc40 = [], 0
     for _tx in sorted(list((_REPO / "manuscript").glob("*.tex"))
                       + list((_REPO / "submission_PRD").glob("*.tex"))):
+        _ndoc40 += 1
         for _por, _frag in _r40(_tx.read_text(errors="ignore")):
             _mal40.append(f"{_tx.name}: {_por} — «{_frag}»")
     check("R40 ninguna igualdad exacta presentada como aproximación",
           not _mal40, "; ".join(_mal40[:5]) if _mal40
-          else "símbolo↔fórmula con «=» y decimal truncado con «≈» en toda la suite")
+          else f"{_ndoc40} documentos barridos: símbolo↔fórmula con «=» y "
+               f"decimal truncado con «≈»")
 except Exception as e:
     check("R40 capa operable", False, str(e))
 
@@ -2568,10 +2598,11 @@ try:
     _pat34 = _re.compile(
         r"(?:mnu|Smnu|SUM_MNU_EV|sigma_m_nu|m_nu|C_nu|C_NU)\s*=\s*"
         r"(0\.069(?:0[0-9]*)?|94\.07[0-9]*)\s*(?:[^0-9.]|$)")
-    _malos = []
+    _malos, _npy34 = [], 0
     for _py in sorted((_REPO / "src").rglob("*.py")):
         if _py.name in _EXCL or "archive" in _py.parts:
             continue
+        _npy34 += 1
         for _i, _ln in enumerate(_py.read_text(errors="ignore").splitlines(), 1):
             _code = _ln.split("#")[0]
             _m34 = _pat34.search(_code)
@@ -2580,7 +2611,8 @@ try:
     check("R34 ningún .py activo hardcodea Σm_ν/C_ν retirados",
           not _malos,
           "; ".join(_malos) if _malos
-          else "constantes leídas del núcleo, no re-tecleadas")
+          else f"{_npy34} .py activos barridos; leen Σm_ν/C_ν del núcleo en vez "
+               f"de re-teclearlas (sólo esas dos constantes)")
 except Exception as e:
     check("R34 capa fuentes-vs-núcleo operable", False, str(e))
 
@@ -3466,7 +3498,7 @@ try:
     _R25_ROOT = pathlib.Path(__file__).resolve().parents[2]
     _R25_PAT = re.compile(
         r"(OMEGA_M_TOTAL|OM_GEOM|OMEGA_M_CMB|0\.3088\d*|0\.30889)\s*\*\s*\(\s*H0\s*/\s*100")
-    _R25_HITS = []
+    _R25_HITS, _npy25 = [], 0
     for _pf in sorted((_R25_ROOT / "src").rglob("*.py")) + \
                sorted((_R25_ROOT / "class_ssee").rglob("*.py")):
         # test_guardian.py contiene la cadena del error A PROPÓSITO (es la mutación
@@ -3474,6 +3506,7 @@ try:
         if ("superseded" in str(_pf) or "archive" in str(_pf)
                 or _pf.name == "test_guardian.py"):
             continue
+        _npy25 += 1
         for _i, _ln in enumerate(_pf.read_text(errors="ignore").splitlines(), 1):
             if _ln.lstrip().startswith("#") or "R25-control" in _ln:
                 continue   # comentarios explicativos y el modo-control declarado
@@ -3500,7 +3533,8 @@ try:
         _R25_HITS.append(f"{_pf.name} (Ω_m constante + ω_m=Ω_m·h² en el archivo)")
     check("R25 ningún ω_m fabricado como Ω_m·h² con Ω_m constante (SSEE)",
           not _R25_HITS,
-          "ω_m = ω_b+ω_c+ω_ν algebraico; Ω_m se deriva por muestra"
+          f"{_npy25} .py activos barridos; ω_m = ω_b+ω_c+ω_ν algebraico y "
+          f"Ω_m se deriva por muestra"
           if not _R25_HITS else
           "PARAMETRIZACIÓN INVERTIDA en: " + "; ".join(_R25_HITS[:6]))
 
@@ -4039,10 +4073,11 @@ try:
     # apunta a dónde se deriva.
     _RASTRO = _re.compile(r"OP-\d+|OPEN_PROBLEMS|deriv|demostr|proof|teorema|theorem",
                           _re.I)
-    _sueltas = []
+    _sueltas, _npy47 = [], 0
     for _py in sorted((_REPO / "src").rglob("*.py")):
         if "__pycache__" in str(_py) or "verificacion" in str(_py):
             continue
+        _npy47 += 1
         _ls = _py.read_text(errors="ignore").splitlines()
         for _i, _ln in enumerate(_ls):
             _low = _ln.lower()
@@ -4073,7 +4108,9 @@ try:
     check("R47 ningún supuesto del código activo sin OP ni derivación",
           not _sueltas,
           "; ".join(_sueltas[:4]) + (f" … (+{len(_sueltas)-4})" if len(_sueltas) > 4 else "")
-          if _sueltas else f"todos los supuestos declarados llevan OP o puntero a derivación")
+          if _sueltas else f"los supuestos DECLARADOS en {_npy47} .py llevan "
+               f"OP o puntero "
+               f"a derivación; no dice nada de los supuestos sin declarar")
 except Exception as _e:
     check("R47 escaneo de supuestos", False, str(_e))
 
@@ -4717,7 +4754,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 260          # +4 R63 +4 R64 +2 R65 (numeros vs su log); solo SUBE
+_PISO_CHECKS = 261          # +2 R65 (numeros vs su log + deuda); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",

@@ -61,6 +61,7 @@ logs:
   # resultado es publicable y un log sin fuente versionada no vale.
   perfil_wc_boss:             src/p06_growth/perfil_wc_boss.py
   perfil_wc_boss_lcdm:        src/p06_growth/perfil_wc_boss_lcdm.py
+  cmb_perfil_wc:              src/p03_cmb/perfil_wc_cmb.py
 
 historicos:
   # ── Retirados 2026-09-07 — su script está en archive/, no se re-corren ──

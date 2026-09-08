@@ -835,6 +835,66 @@ check("R57 el detector distingue la ruta rota de la correcta y respeta la profun
       "el mismo un-solo-'..' a profundidad 1 (src/ directo) exento, que "
       "ahi SI apunta a la raiz")
 
+# --- R64: nadie clava la ecuacion de estado de SSEE en un evaluador ----
+# POR QUE EXISTE (2026-09-08). El evaluador del CMB traia dentro del modelo
+#     'w': -0.840015, 'wa': -0.670141
+# como literales, para TODAS las corridas. Cualquier fila rotulada LCDM que
+# pasara por ahi no era LCDM: no fallaba, devolvia un numero plausible y
+# equivocado. Ya invalido una fila real (LCDM en cmb_tau_flotado.json, que
+# quedo marcada "NO USAR" a mano) y la nota protegia esa fila pero no la
+# siguiente — que era justo la corrida #2 de la cola, un control LCDM.
+# Declarado y no resuelto: el patron de [[feedback_green_can_be_forced]].
+# QUE MARCA: un fichero que escriba w0 o wa de SSEE como LITERAL en una
+# asignacion de parametro. La forma sana es importarlos de ssee_core (asi el
+# valor no se puede quedar rancio) o recibirlos como argumento.
+# AFINADO el mismo dia: la primera version marcaba tambien `w0=-0.840` en
+# forma de argumento, y ahi salieron dos falsos positivos legitimos — la
+# narracion dentro de un print (savage_cv) y los MAP de las cadenas en un
+# guion de figuras (regenerate_fig8), que NO son constantes del modelo. El
+# fallo real tiene una forma concreta: CLAVE ENTRECOMILLADA dentro del dict
+# que construye el modelo de CAMB/Cobaya, que es como se le pasa la ecuacion
+# de estado a la teoria. Esa es la que se vigila.
+_R64_MAL = re.compile(
+    r"['\"](?:w|w0|dark_energy_w)['\"]\s*:\s*-0\.840\d*"
+    r"|['\"]wa['\"]\s*:\s*-0\.670\d*")
+def _r64_sitios(_txt):
+    _h = []
+    for _m in _R64_MAL.finditer(_txt):
+        # la cabecera que EXPLICA el bug cita el literal: no cuenta
+        _lin = _txt[_txt.rfind("\n", 0, _m.start()) + 1:_m.end()]
+        if _lin.lstrip().startswith("#") or _lin.lstrip().startswith("traia"):
+            continue
+        _h.append(_m.group(0)[:40])
+    return _h
+_r64 = []
+for _f64 in sorted(ROOT.rglob("*.py")):
+    if "archive" in str(_f64) or _f64.name == "ssee_verify.py":
+        continue
+    _t64 = _f64.read_text(errors="ignore")
+    # ssee_core es la FUENTE de W0/WA: ahi el literal es su sitio
+    if _f64.name == "ssee_core.py":
+        continue
+    _r64 += [f"{_f64.name}: {x}" for x in _r64_sitios(_t64)]
+check("R64 ningun evaluador clava w0/wa de SSEE como literal",
+      not _r64, "; ".join(_r64[:3]) if _r64
+      else "w0/wa se importan de ssee_core o se reciben como argumento; "
+           "asi una corrida LCDM no puede heredar la energia oscura de SSEE "
+           "en silencio (paso el 2026-09-08 en cmb_eval)")
+# CONTROL (R53): marca la forma clavada, deja pasar la sana y la narrada.
+_c64 = [("info['params'] = {'w': -0.840015, 'wa': -0.670141}", True),
+        ("info['params'] = {'w': cl[0], 'wa': cl[1]}", False),
+        ("info['params'] = {'w': S.W0, 'wa': S.WA}", False),
+        ("# traia 'w': -0.840015 clavado, por eso se arreglo", False),
+        # los dos falsos positivos reales del 2026-09-08
+        ('models = {"SSEE": dict(H0=67.62, w0=-0.840, wa=-0.670)}', False),
+        ("print(f'  CPL posterior en (w0=-0.840, wa=-0.670): {d}')", False)]
+_f64 = [t[:44] for t, esp in _c64 if bool(_r64_sitios(t)) != esp]
+check("R64 el detector distingue el literal clavado del argumento",
+      not _f64, "; ".join(_f64) if _f64
+      else "6 casos: el literal en clave de dict marcado; el argumento, el "
+           "import de ssee_core, el comentario que narra el bug, los MAP de "
+           "cadena de una figura y la narracion en un print, exentos")
+
 # --- R63: la tension w0wa se RECALCULA, no se copia -------------------
 # POR QUE EXISTE (2026-09-08). El Registro decia 0.09 sigma para la distancia
 # del punto algebraico (w0,wa) al contorno DESI DR2 + Pantheon+, y NO
@@ -4551,7 +4611,7 @@ except Exception as _e:            # noqa: BLE001
           f"excepción: {_e}", nivel=5)
 
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
-_PISO_CHECKS = 255          # +4 R63 (w0wa recalculado); solo SUBE
+_PISO_CHECKS = 259          # +4 R63 (w0wa recalculado) +4 R64 (w/wa clavados); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE
                             # (2026-09-05); sólo SUBE
 check(f"R46 se ejecutaron al menos {_PISO_CHECKS} comprobaciones",

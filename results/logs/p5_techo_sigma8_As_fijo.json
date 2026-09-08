@@ -1,0 +1,21 @@
+{
+ "corrida": "techo sigma8/S8 con A_s FIJADO a Planck (diagnostico, NO prediccion)",
+ "que_contesta": "cuanta estructura da el fondo de SSEE si A_s se hereda de Planck en vez de ajustarse; A_s es libre en el modelo",
+ "fuente_Pk": "class_ssee/output/can_cold__pk.dat",
+ "metodo": "top-hat R=8 Mpc/h, Peebles 1980; interp log-log a 4000 puntos",
+ "sigma8_techo": 0.8333684597622903,
+ "Omega_m_CMB": 0.3088808787787524,
+ "S8_techo": 0.8456135716768318,
+ "control_LCDM": {
+  "estado": "NO CONCLUYENTE",
+  "fuente_Pk": "class_ssee/output/ref_lcdm__pk.dat",
+  "sigma8": 0.8527579579483949,
+  "sigma8_Planck2018": 0.8111,
+  "nota": "sale 1.4% alto. Causa identificada y ajena al integrador: las corridas LCDM guardadas no llevan neutrinos masivos, y sin ellos sobra poder a 8 Mpc/h en ese orden. Para cerrarlo hay que correr CLASS con la baseline de Planck (Sum m_nu = 0.06 eV) y comprobar que da 0.811."
+ },
+ "superado_por": {
+  "valor": "S8 = 0.7555 +/- 0.0192 (0.11 sigma vs KiDS-1000)",
+  "log": "results/logs/growth_2026-07/R3_ssee_kids_S8.json",
+  "razon": "A_s libre contra el dato crudo; el 3.5 sigma que salia del techo era artefacto de fijar A_s"
+ }
+}

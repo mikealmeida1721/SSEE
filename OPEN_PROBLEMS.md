@@ -2242,6 +2242,34 @@ resultante lleva el prefactor $\mathrm{KAL_0}\cdot n_s$; (c) conectar con la
 UV-completion (OP-10) y la dualidad de transporte (OP-7). Es frontera abierta de la misma
 clase que OP-1/OP-9: puede no cerrar con los recursos actuales, y eso está declarado.
 
+**REFUERZO 2026-09-08 — la identidad cae MÁS CERCA del dato de estructura que
+el valor de Planck.**
+
+El perfil de `ω_c` en BOSS DR12 (§`par:wc-profile` de Paper 6) pregunta lo
+simétrico de lo ya sabido: con la amplitud clavada, ¿qué `ω_c` pide una
+encuesta de galaxias a `z≈0.5`? Con cada modelo en su propia amplitud:
+
+| modelo | `ω_c` que pide BOSS | su referencia | distancia |
+|---|---|---|---|
+| SSEE | 0.117524 ± 0.003933 | `KAL₀·ω_b·n_s` = 0.119514 | **0.51σ** |
+| ΛCDM | 0.114726 ± 0.003714 | Planck 0.1200 | 1.42σ |
+
+**El `ω_c` que sale de φ y π queda más cerca de lo que pide el dato de
+estructura que el que Planck ajusta dentro de ΛCDM.** No estaba buscado, y es
+un argumento **independiente del CMB**: hasta ahora la identidad sólo se había
+confrontado con Planck (0.08σ). Ahora también con clustering de galaxias, que
+es otra época, otro sistemático y otro instrumento.
+
+Control (R53) pre-registrado en el script y pasa: al devolverle a cada modelo
+su propia amplitud, `ω_c` vuelve hacia su referencia (SSEE 1.74σ→0.51σ; ΛCDM
+2.27σ→1.42σ), luego el perfil mide el dato y no el borde de la
+parametrización. Logs: `results/logs/perfil_wc_boss.log` y
+`perfil_wc_boss_lcdm.log`. Informes: `BANDEJA/2026-09-08_perfil_wc_boss*.md`.
+
+**Lo que NO dice.** No es una derivación, sigue siendo una identidad observada
+que ajusta. Y el χ² con `ω_c` libre **no se cita**: en SSEE ese parámetro está
+fijo por álgebra, así que soltarlo saca al modelo de sí mismo.
+
 **ANOTACIÓN FECHADA 2026-09-08 — la premisa de números iguales y su masa.**
 
 La vio Mike razonando en voz alta, y llega al mismo sitio que un programa publicado

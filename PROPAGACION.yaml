@@ -107,3 +107,9 @@ figuras_verificadas:
 muestreo_certificado:
   b1_full_run: 2026-07-27
   b1_lcdm_run: 2026-07-27
+  # 2026-09-08: cobaya_kids.py cambio, pero SOLO por adicion — se anadieron
+  # loglike_lcdm_fijo/info_lcdm_fijo y una rama de despacho para el variante
+  # 'lcdmfijo'. Las rutas 'ssee' y 'lcdm' quedan identicas (la unica linea
+  # borrada es el despacho de dos ramas, reescrito a tres). La cadena de
+  # agosto no se invalida: no se toco nada de lo que la muestreo.
+  R4_lcdm_resume_20260805: 2026-09-08

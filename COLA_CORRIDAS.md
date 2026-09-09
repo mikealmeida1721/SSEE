@@ -268,3 +268,23 @@ Informe: `BANDEJA/2026-09-09_p8_radio_kmouflage.md`.
 **Medida inmediata recomendada (decisión de Mike):** retirar tabla y figura del
 paper y dejar el radio como pendiente declarado, mientras se deriva el bueno. Un
 paper no puede sostener tres números que no salen de su propia ecuación.
+
+## Añadido 2026-09-09 (noche) — la deuda que deja el aislamiento de neutrinos
+
+Informe: `BANDEJA/2026-09-09_aisla_neutrinos_vs_metodo.md`. Medido: el
+desplazamiento del A_s de BOSS fue **98% método, 2% neutrinos** (0.03σ). Y la
+cadena vieja **nunca alcanzó el mínimo**: su mejor χ² queda 10.2 unidades por
+encima del real, con la misma verosimilitud.
+
+| # | corrida | coste | qué contesta | depende de |
+|---|---|---|---|---|
+| 22 | **perfil contra perfil: medir el A_s del fondo cósmico con la MISMA regla que BOSS** | ~1 día | hoy no hay ningún número de tensión BOSS–CMB que sea citable. El «2.87σ» salía de una cadena que no llegó al fondo; el «0.81σ» enfrenta un **mínimo de perfil** (BOSS) contra una **media marginal** (Planck). Para un parámetro degenerado —y el de BOSS lo es, D=4.01— esos dos estadísticos se separan justo por lo que aquí se midió: **1.8σ**. Hasta que las dos mitades se midan igual, la tensión no tiene valor | ninguna |
+
+**Bloquea a #17 y a la cadena de KiDS**, porque ambas clavan el A_s de BOSS y la
+cifra 2.7636 que usan viene de la cadena que no tocó fondo. **No sustituirla por
+2.9448 sin la #22**: cambiar un número por otro medido con otra regla repite el
+error, no lo arregla.
+
+**Lo que la #22 NO toca:** el empate en fσ₈. Ese es una *diferencia* entre dos
+modelos medidos con la misma regla (Δχ² = +0.062 con el método viejo, +0.402 con
+el nuevo — cero estadístico con ambos), así que el error de regla se cancela.

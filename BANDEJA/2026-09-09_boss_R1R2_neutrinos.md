@@ -53,6 +53,15 @@ No se puede atribuir el desplazamiento a una sola causa:
 Separar las dos causas pediría una tercera corrida. **No lo he hecho**, y por
 eso no digo cuál pesó más.
 
+> **CORREGIDO 2026-09-09 (más tarde).** Ya se hizo, y la respuesta es
+> **el método, al 98%**. La masa de neutrino aporta +0.0030 = **0.03σ**, o sea
+> nada. Y la cadena vieja nunca alcanzó el mínimo: su mejor χ² queda 10.2
+> unidades por encima del real. Ver
+> `BANDEJA/2026-09-09_aisla_neutrinos_vs_metodo.md`. Con eso, **la caída de
+> 2.87σ a 0.81σ de la §2 NO es una reconciliación física** — enfrenta un mínimo
+> de perfil contra una media marginal. Ningún número de tensión de este informe
+> es citable hasta la cola #22.
+
 ## 5. Qué NO cambia
 
 **El veredicto de anoche sobre el A_s no se mueve.** Aquel se construyó sobre

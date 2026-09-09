@@ -209,3 +209,24 @@ medición (sigue valiendo como comprobación de consistencia), y el promedio
 2.8418 queda desaconsejado por mezclar una medición con un número dominado por
 degeneración. La deriva canónica a probar pasa de **4.50σ (promedio)** a
 **3.59σ (KiDS sola)**.
+
+## Añadido 2026-09-09 — la hipótesis de Mike: materia que está pero no se agrupa
+
+| # | corrida | coste | qué contesta | depende de |
+|---|---|---|---|---|
+| 19 | **¿la supresión es plana o depende de la escala?** | ~1 día | **la prueba que decide, y no hay que postular nada.** Bajar A_s suprime TODAS las escalas por igual. Que parte de la materia no se agrupe suprime **solo por debajo de su escala de fuga**, y deja las grandes intactas. KiDS mide ξ± en un rango de escalas, así que **el dato puede distinguirlas**. Se ajusta KiDS dos veces: (a) A_s libre, supresión plana — es lo que ya está; (b) A_s **clavado en el del fondo cósmico** (3.0448) más una supresión con escala de corte libre. Gana quien dé menor χ². Si gana (b), la hipótesis de Mike es correcta y además queda medida la escala | nada; los ingredientes ya están |
+
+**Los números que la motivan (medidos 2026-09-09):** el modelo YA cuenta materia
+que no se agrupa — los neutrinos, 0.52% del presupuesto, que ya suprimen σ₈ un
+2.06%. Para cubrir el 8.7% que falta haría falta que **otro 2.18%** no se
+agrupara, 4.2 veces más que los neutrinos actuales. Si fueran neutrinos serían
+Σm_ν = 0.358 eV, muy por encima del límite habitual de 0.12 eV: **no cabe**.
+
+**AVISO, y va en mayúsculas.** Esta hipótesis tiene **la misma forma** que la
+partícula φ-DM retirada el 2026-08-01. Lo que ha cambiado es que la tensión que
+la motivaba **ahora sí está medida** (3.46σ, con las dos escapatorias cerradas)
+en vez de venir de un estadístico comprimido. Lo que NO ha cambiado es la
+lección que dejó su retirada: la densidad tiene que salir de algo real, no de
+una resta. La #19 no postula ninguna partícula: pregunta si la **forma** de la
+supresión es la de una fuga de escala o la de una amplitud plana. Eso lo decide
+el dato, y si sale que no, se cierra otra vez y ya está.

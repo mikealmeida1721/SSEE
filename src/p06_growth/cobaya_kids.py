@@ -169,15 +169,48 @@ def loglike_lcdm_fijo(logA, halo_A, A_IA, dz1, dz2, dz3, dz4, dz5,
                         dz1, dz2, dz3, dz4, dz5, delta_c)
 
 
-def info_lcdm_fijo(chains_dir):
+# ── REPARTO RAPIDO/LENTO (2026-09-08, lo destapo Mike) ─────────────────────
+# SOLO `logA` y `halo_A` entran en `_camb_cached`. Los otros siete libres
+# (A_IA, dz1..dz5, delta_c) actuan DESPUES, sobre el espectro ya calculado, y
+# la cache les acierta el 100% de las veces. Medido en esta maquina:
+#     paso que toca CAMB      8.965 s
+#     paso que NO lo toca     0.491 s      -> 18x
+# Pero la verosimilitud es UNA funcion externa con los nueve parametros, asi
+# que Cobaya los pone en un solo bloque y paga CAMB en los nueve. Peor aun: el
+# diagnostico por parametro de la cadena sin reparto (archivada en
+# `sin_reparto_2026-09-08/`) mostro que los que FRENAN la convergencia son
+# justo los baratos — logA 0.0044 y halo_A 0.0087 ya convergidos, contra
+# dz1/dz2 0.0235. O sea que se pagaba el precio caro exactamente donde no
+# hacia falta.
+#
+# El reparto NO aproxima nada: el bloqueo con sobremuestreo es MCMC exacto
+# (es lo que usa Planck). La unica aproximacion del montaje es que la clave de
+# la cache redondea `halo_A` a 1e-6, cincuenta mil veces menos que su paso de
+# propuesta (0.05).
+#
+# `oversample_power` = 0.7 en vez del 0.4 por defecto: con razon de velocidad
+# 18 da factor ~7.7, que compra ~5.7x mas muestras en el bloque que frena a
+# cambio de ~0.74x en el lento — y el lento ya iba sobrado.
+VELOCIDADES = [[1, ['logA', 'halo_A']],
+               [18, ['A_IA', 'dz1', 'dz2', 'dz3', 'dz4', 'dz5', 'delta_c']]]
+
+
+def info_lcdm_fijo(chains_dir, covmat=None):
     p = dict(logA=dict(prior=dict(min=1.5, max=4.5), ref=3.04, proposal=0.05,
                        latex='\\log(10^{10}A_s)'))
     p.update(NUISANCE_PARAMS)
+    mcmc = {'Rminus1_stop': 0.03, 'max_tries': 10000,
+            'blocking': VELOCIDADES, 'oversample_power': 0.7,
+            'measure_speeds': False}
+    if covmat:
+        # semilla: la matriz de propuesta que APRENDIO la corrida sin reparto.
+        # Es la parte cara de lo ya hecho, y no se tira.
+        mcmc['covmat'] = covmat
     return dict(
         likelihood={'p06_growth.cobaya_kids.loglike_lcdm_fijo': {
             'external': loglike_lcdm_fijo, 'input_params': list(p.keys())}},
         params=p,
-        sampler={'mcmc': {'Rminus1_stop': 0.03, 'max_tries': 10000}},
+        sampler={'mcmc': mcmc},
         output=chains_dir + '/lcdmfijo', force=True, resume=False)
 
 
@@ -208,7 +241,9 @@ if __name__ == '__main__':
     chains_dir = sys.argv[2] if len(sys.argv) > 2 else \
         '/mnt/datos/SSEE_data/chains_p6/kids'
     if model_name == 'lcdmfijo':
-        info = info_lcdm_fijo(chains_dir)
+        # tercer argumento opcional: covmat de semilla
+        info = info_lcdm_fijo(chains_dir,
+                              sys.argv[3] if len(sys.argv) > 3 else None)
     else:
         info = (info_ssee(chains_dir) if model_name == 'ssee'
                 else info_lcdm(chains_dir))

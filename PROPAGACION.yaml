@@ -56,7 +56,13 @@ logs:
   # ── Añadidos 2026-09-07 (tarde): las tres corridas de la sesión R1/R2 ──
   boss_cobaya_lcdm:           src/p06_growth/cobaya_boss.py
   boss_cobaya_ssee:           src/p06_growth/cobaya_boss.py
-  kids_lcdm_fondofijo:        src/p06_growth/cobaya_kids.py
+  kids_lcdm_fondofijo_SIN_REPARTO_20260908:  src/p06_growth/cobaya_kids.py
+  kids_lcdm_fondofijo_reparto:               src/p06_growth/cobaya_kids.py
+  # 2026-09-09: la corrida sin reparto rapido/lento se archivo (cadenas en
+  # chains_p6/kids/sin_reparto_2026-09-08/) y se relanzo declarandole a Cobaya
+  # que 7 de los 9 libres NO tocan CAMB. Los DOS logs quedan declarados: el
+  # viejo porque su cadena sigue en disco y es reanudable, el nuevo porque es
+  # el que produce el resultado.
   # 2026-09-08: el script vivia en el scratchpad; se sube al repo porque su
   # resultado es publicable y un log sin fuente versionada no vale.
   perfil_wc_boss:             src/p06_growth/perfil_wc_boss.py

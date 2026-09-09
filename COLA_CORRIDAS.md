@@ -155,3 +155,14 @@ Informe: `BANDEJA/2026-09-08_dos_campos_phi_pi.md`.
 | 12 ✅ | ~~dos campos genéricos de w constante~~ CERRADA 2026-09-08 | minutos | la prueba de hoy mató la pareja *(campo de Paper 7) + (w constante)*: el campo de Paper 7 no ayuda, estorba, y pasado el 8% pediría densidad negativa. Queda sin probar la pareja **genérica**: un campo normal (w>−1) más uno fantasma (w<−1), los dos de w constante. Tres números libres contra 400 puntos, así que **puede fallar** | ninguna |
 | 14 | **par de campos ACOPLADO (término de intercambio Q)** | ~1 h | la #12 cerró la vía sin acoplar: dos fluidos de w constante siempre mueven su w **hacia abajo**, y SSEE lo pide **hacia arriba** (−1.309 → −0.840). Es fallo de sentido, no de precisión, así que ningún par de valores lo arregla. Sobrevive una sola puerta: que los dos sectores **se pasen energía**. Hay que probar un Q y ver si el sentido se invierte. Es la primera prueba que puede salir que SÍ | la #12, ya cerrada |
 | 13 | **los TRES wₐ que conviven en la suite** | lectura | −0.669975 (álgebra, el que se compara con DESI), 0 (lo que se le entrega a hi_class en Paper 7) y +0.4135 (lo que de verdad hace el campo de Paper 7 al evolucionar). No es un error de cálculo: son tres cosas distintas mal etiquetadas con el mismo símbolo. Hay que decidir qué nombre lleva cada uno y dónde se dice | la #12 |
+
+## Añadido 2026-09-08 (noche) — lo vio Mike preguntando por qué el fondo fijo tarda
+
+| # | corrida | coste | qué contesta | depende de |
+|---|---|---|---|---|
+| 15 | **separar rápido/lento en `cobaya_kids.py` y `cobaya_boss.py`** | 1 h de código | **7 de los 9 libres NO tocan CAMB** (A_IA, dz1..dz5, delta_c): sólo `logA` y `halo_A` entran en `_camb_cached`. Pero la verosimilitud es UNA función externa con los 9 parámetros en un solo bloque, así que Cobaya recomputa CAMB también cuando mueve los 7 baratos. **Medido: 8.965 s el paso que toca CAMB, 0.491 s el que no — 18x.** La caché ya existe y acierta el 100% en los pasos baratos; lo único que falta es declararle a Cobaya el `blocking` con velocidades para que los oversamplee | ninguna |
+
+**Por qué NO se reinicia `lcdmfijo` con esto:** lleva 7284 pasos (25 h) y le
+faltan ~25–35 h. Reiniciar tira las 25 h y la ganancia realista en el conjunto
+de la cadena es 2–4x, no 18x, porque los pasos lentos siguen costando lo mismo.
+Se arregla para las corridas que vienen (la #10 de BOSS y la #4), no para ésta.

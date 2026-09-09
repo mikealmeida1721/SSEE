@@ -1,0 +1,66 @@
+{
+ "corrida": "cola #14 \u2014 dos campos ACOPLADOS contra el (w0, wa) algebraico",
+ "idea": "M. Almeida \u2014 dos opuestos que se TOCAN, no que solo conviven",
+ "intercambio": "Q = lam \u00b7 H \u00b7 rho_tot; el total se conserva",
+ "objetivo": {
+  "w0": -0.839949771344779,
+  "wa": -0.6699748856723895,
+  "rango_a": [
+   0.3,
+   1.0
+  ]
+ },
+ "criterio": {
+  "cumple": 0.01,
+  "aproxima": 0.05,
+  "sobre": "desvio maximo de w(a), escrito antes de correr"
+ },
+ "control": {
+  "lam_cero": {
+   "desvio": 6.31494856406789e-13,
+   "pasa": true
+  },
+  "recupera_conocido": {
+   "verdad": {
+    "w_1": -0.6,
+    "w_2": -1.3,
+    "lam": 0.25,
+    "f_1": 0.4
+   },
+   "recuperado": {
+    "w_1": -0.6,
+    "w_2": -1.3,
+    "lam": 0.25,
+    "f_1": 0.4,
+    "max_dw": 0.0,
+    "rms": 0.0
+   },
+   "pasa": true
+  }
+ },
+ "escenarios": {
+  "LIBRE": {
+   "w_1": -0.8588730214785436,
+   "w_2": -1.2457421524119046,
+   "lam": 0.7847915044506146,
+   "f_1": 0.6727126457246088,
+   "max_dw": 0.14554062444776417,
+   "rms": 0.06949699548053435,
+   "veredicto": "NO",
+   "hay_fantasma": true
+  },
+  "SIN_GHOST": {
+   "w_1": -0.9960530845021478,
+   "w_2": -0.9998468563252226,
+   "lam": 0.4082189132388528,
+   "f_1": 0.4892237099037798,
+   "max_dw": 0.30908533504530167,
+   "rms": 0.15496116906452118,
+   "veredicto": "NO",
+   "hay_fantasma": false
+  }
+ },
+ "fantasma_necesario": false,
+ "pendiente": "si algun escenario CUMPLE, comparar lam, w_1, w_2 y f_1 contra el diccionario, con tolerancia declarada y look-elsewhere (1/490 a +-0.0005). NO se busca aqui",
+ "alcance": "no toca el acuerdo con DESI, que es del par algebraico"
+}

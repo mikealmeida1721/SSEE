@@ -1,0 +1,86 @@
+{
+ "corrida": "cola #12 \u2014 dos campos genericos de w constante contra (w0, wa)",
+ "idea": "M. Almeida \u2014 dos opuestos; aqui uno normal y uno fantasma",
+ "objetivo": {
+  "w0": -0.839949771344779,
+  "wa": -0.6699748856723895,
+  "rango_a": [
+   0.3,
+   1.0
+  ]
+ },
+ "criterio": {
+  "igual": 0.01,
+  "aproxima": 0.05,
+  "sobre": "desvio maximo de w(a), escrito antes de correr"
+ },
+ "control": {
+  "verdad": {
+   "wA": -0.7,
+   "wB": -1.4,
+   "fA": 0.35
+  },
+  "recuperado": {
+   "wA": -0.7,
+   "wB": -1.4,
+   "fA": 0.35
+  },
+  "max_dw": 0.0,
+  "pasa": true
+ },
+ "resultado": {
+  "w_A": -1.0744409793240224,
+  "w_B": -1.0744409845525247,
+  "f_A": 0.7272908104771616,
+  "f_B": 0.2727091895228384,
+  "max_dw": 0.23449121056556876,
+  "rms": 0.13572244624896132,
+  "veredicto": "NO \u2014 la forma CPL no sale de dos fluidos de w constante",
+  "nota": "el ajuste COLAPSA a w_A = w_B, o sea a un solo fluido con el w medio: no es que ajuste mal, es que la mezcla no puede moverse en el sentido que hace falta"
+ },
+ "direccion": {
+  "mezclas_probadas": [
+   {
+    "w_A": -0.7,
+    "w_B": -1.4,
+    "f_A": 0.35,
+    "w_ini": -0.7903413701453239,
+    "w_fin": -1.1549999999999998,
+    "sentido": "decrece"
+   },
+   {
+    "w_A": -0.5,
+    "w_B": -1.2,
+    "f_A": 0.6,
+    "w_ini": -0.5353551759466246,
+    "w_fin": -0.78,
+    "sentido": "decrece"
+   },
+   {
+    "w_A": -0.9,
+    "w_B": -1.9,
+    "f_A": 0.2,
+    "w_ini": -0.9974729241877257,
+    "w_fin": -1.7,
+    "sentido": "decrece"
+   },
+   {
+    "w_A": -0.2,
+    "w_B": -1.05,
+    "f_A": 0.8,
+    "w_ini": -0.2097500691005072,
+    "w_fin": -0.37,
+    "sentido": "decrece"
+   }
+  ],
+  "todas_decrecen": true,
+  "ssee_pide": {
+   "w_en_a030": -1.3089321913154517,
+   "w_hoy": -0.839949771344779,
+   "sentido": "crece"
+  },
+  "lectura": "una mezcla de dos fluidos de w constante siempre se corre hacia el mas negativo, porque diluye mas despacio; su w total DECRECE con a. SSEE pide que CREZCA. El fallo es de sentido, no de precision, y por eso ningun par de valores lo arregla"
+ },
+ "pendiente": "si PASA, comparar w_A, w_B y f_A contra el diccionario, con tolerancia declarada y look-elsewhere (1/490 a +-0.0005). NO se busca aqui: primero el numero, despues la busqueda",
+ "alcance": "no toca el acuerdo con DESI, que es del par algebraico"
+}

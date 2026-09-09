@@ -1,0 +1,66 @@
+{
+ "corrida": "dos campos: se DESPEJA el segundo, no se ajusta",
+ "idea": "M. Almeida \u2014 un solo campo no cruza w=-1; \u00bfel segundo esta en el algebra?",
+ "objetivo": {
+  "w0": -0.839949771344779,
+  "wa": -0.6699748856723895,
+  "cruce_z": 0.3139
+ },
+ "campo1": {
+  "lagrangiano": "k-esencia Paper 7, K = c1 X + c2 X^2",
+  "u_algebraico": -0.522735,
+  "w0_que_da": -0.83995,
+  "wa_que_da": 0.4135
+ },
+ "control": {
+  "criterio": "recuperar un total sintetico con f1=0.6, w2=-1.3",
+  "f1": 0.5999999971975282,
+  "w2": -1.299999968966805,
+  "dispersion": 4.519251030803387e-08,
+  "pasa": true
+ },
+ "resultado": {
+  "f1": 0.0001,
+  "f2": 0.9999,
+  "w2_medio": -1.0746584445725693,
+  "w2_dispersion": 0.13597935840207326,
+  "w2_constante": false,
+  "w2_en": {
+   "a030": -1.3106460641697473,
+   "a065": -1.073921784560883,
+   "a100": -0.8399497711088946
+  }
+ },
+ "diagnostico": {
+  "forma_dispersion": [
+   {
+    "f1": 0.0001,
+    "dispersion": 0.13597935840207326
+   },
+   {
+    "f1": 0.01,
+    "dispersion": 0.16548485924684594
+   },
+   {
+    "f1": 0.05,
+    "dispersion": 0.44833269675411586
+   },
+   {
+    "f1": 0.1,
+    "dispersion": 1000000.0
+   },
+   {
+    "f1": 0.3,
+    "dispersion": 1000000.0
+   },
+   {
+    "f1": 0.6,
+    "dispersion": 1000000.0
+   }
+  ],
+  "f1_donde_rho2_se_vuelve_negativa": 0.08021228070175439,
+  "lectura": "la dispersion CRECE con f1 desde el borde: el campo de Paper 7 no ayuda nada, y pasado ese tope el sobrante tendria densidad negativa. El f1 en el borde no es un fallo del barrido, es la respuesta"
+ },
+ "pendiente": "comparar f1, f2 y w2 contra el diccionario, con la tolerancia declarada y el riesgo look-elsewhere (1/490 a +-0.0005). NO se ha hecho aqui a proposito: primero el numero, despues la busqueda",
+ "alcance": "no toca el acuerdo con DESI, que es del par algebraico"
+}

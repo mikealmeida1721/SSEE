@@ -323,3 +323,39 @@ los 3.46σ mezclan reglas igual que lo hacía el 0.81σ de BOSS. Hay que medir u
 de las dos mitades con la regla de la otra.
 
 **Y sigue detrás de la #23**, que es la única que dice cuál regla es la insesgada.
+
+---
+
+## ESTADO AL CERRAR EL 2026-09-09 (para retomar)
+
+**Corriendo (nada más se lanza hasta que Mike lo diga):**
+
+| corrida | progreso | recursos |
+|---|---|---|
+| `fuga3_por_As.py kids` (#17) | 7 de 15 subconjuntos | 1 núcleo, 0.2 GB |
+
+**Terminadas hoy, informe en `BANDEJA/`, ninguna propagada a papers:**
+
+| corrida | resultado en una línea |
+|---|---|
+| `boss_lpt_R1R2.py` (#10) | fσ₈ SSEE≡ΛCDM, Δχ²=+0.402 sobre 222 puntos — empate |
+| `boss_aisla_neutrinos.py` | el A_s de BOSS se movió **98% por método**, 2% por neutrinos |
+| `mide_termino_volumen.py` | el efecto de volumen es `ln det F`; pendiente 32.75 de techo 36; explica el 75% |
+| `fuga2_combinaciones.py` | 15 subconjuntos con el A_s promedio: hasta 76.6%, comprado a ±30σ |
+| `fuga3_por_As.py fondo` | **CONTROL**: con el A_s del propio fondo, todo se mueve **<0.6σ** y gana Δχ²=1.1 |
+| `cobaya_kids.py lcdmfijo` | con la misma rigidez, **ΛCDM 4.65σ vs SSEE 3.63σ** — la tensión es del DATO |
+| `marginal_vs_perfil.py` | control FALLA (a propósito informativo): el desplazamiento no es media-contra-moda |
+
+**Bloqueos vigentes, en orden:**
+
+1. **#23** — dato sintético con la verdad conocida. Decide cuál estimador es
+   insesgado. **Va primero**: sin esto no se sabe con qué regla medir.
+2. **#22** — perfil contra perfil. Empareja las reglas de las dos mitades de
+   cada tensión (CMB es perfil, KiDS y BOSS son marginales).
+3. **#20 🔴** — el radio k-mouflage de Paper 8. Mike lo dejó para retomar con
+   energía.
+4. El resto de la cola, sin orden forzado: #4, #5, #7, #9, #11, #13, #14, #16,
+   #18, #19.
+
+**Nada de lo de arriba entra en un paper hasta que Mike lea el informe de
+`BANDEJA/` correspondiente y lo apruebe.**

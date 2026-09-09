@@ -1,0 +1,51 @@
+{
+ "corrida": "medir el termino de volumen ln det F de la cadena de BOSS",
+ "mecanismo": "boss_lpt_R1R2.chi2_marg_set L262-291 devuelve c + ln det F; F = T^T Cinv T + Lambda con T \u221d e^logA (L277), asi que el volumen de las molestias lineales depende de A_s",
+ "control": {
+  "criterio": "0 < pendiente <= 36 (techo algebraico: F es 3x3, T \u221d e^logA, 6 conjuntos)",
+  "pendiente": 32.75267008401426,
+  "residuo_recta": 0.06107465892040409,
+  "pasa": true
+ },
+ "rejilla": [
+  2.7,
+  2.75,
+  2.8000000000000003,
+  2.85,
+  2.9000000000000004,
+  2.95,
+  3.0,
+  3.0500000000000003,
+  3.1
+ ],
+ "ln_det_F": [
+  -134.363629252922,
+  -132.77339145562388,
+  -131.1682405614066,
+  -129.5489463640782,
+  -127.91627460028639,
+  -126.27098258009833,
+  -124.61381510327244,
+  -122.94550072391013,
+  -121.26674841375858
+ ],
+ "c": [
+  402.2898482323053,
+  328.93121857594525,
+  274.1448993124546,
+  238.11871993170772,
+  221.11943458258455,
+  223.52210890018085,
+  245.84022371287867,
+  288.75635558331055,
+  353.1533853946991
+ ],
+ "alcance": "mide de donde sale el desplazamiento. NO dice cual estimador es insesgado \u2014 eso es la cola #23, con dato sintetico",
+ "prediccion": {
+  "curvatura_perfil": 130.38846682798967,
+  "sigma_perfil": 0.12384982819806273,
+  "desplazamiento_predicho": 0.25119299950985735,
+  "desplazamiento_observado": 0.18114711949770612,
+  "razon": 1.3866795133501322
+ }
+}

@@ -306,3 +306,20 @@ es Δχ² = 2.96, y el observado 10.20 — 3.4× mayor, bandera amarilla de
 convergencia (`Rminus1_stop=0.05` es flojo), **no prueba de fallo**. La #22
 sigue en pie por la otra razón, que es sólida: perfil contra marginal no se
 comparan.
+
+**Añadido 2026-09-09 (madrugada) — y la #22 cambia de motivo**
+
+Medido (`BANDEJA/2026-09-09_termino_volumen_medido.md`): el desplazamiento de
+BOSS sale de que el χ² de su cadena lleva `+ ln det F` con `T ∝ e^logA`
+(`boss_lpt_R1R2.py` L262-291) — el **volumen** de las molestias lineales depende
+de A_s. Pendiente medida **32.75** de un techo algebraico de 36; explica el
+**75%** del desplazamiento. **KiDS no tiene ese término** (sus 9 libres se
+muestrean todos, sin marginalización en cerrado): verificado.
+
+**La #22 sigue viva pero por OTRA razón.** Ya no por «la cadena no llegó al
+mínimo» (retractado) ni por el `ln det` (KiDS no lo tiene), sino porque está
+verificado que **el CMB (3.0448) es un perfil y KiDS (2.8627) es una marginal**:
+los 3.46σ mezclan reglas igual que lo hacía el 0.81σ de BOSS. Hay que medir una
+de las dos mitades con la regla de la otra.
+
+**Y sigue detrás de la #23**, que es la única que dice cuál regla es la insesgada.

@@ -80,7 +80,10 @@ def bg_key_to_dict(bg_key):
     return dict(ombh2=ombh2, omch2=omch2, h0=h0, ns=ns, mnu=0.06, w0=-1.0, wa=0.0)
 
 
-def loglike_ssee_wc_h(omch2, h0, logA, halo_A, A_IA, dz1, dz2, dz3, dz4, dz5,
+LOGA_CMB_SSEE = 3.0448340130228546     # SSEE.mejor.logA de cmb_dbic_tau_ajustado
+
+
+def loglike_ssee_wc_h(omch2, h0, halo_A, A_IA, dz1, dz2, dz3, dz4, dz5,
                       delta_c):
     """SSEE con el fondo clavado EXCEPTO omega_c y H --- lo pidio Mike.
 
@@ -105,8 +108,8 @@ def loglike_ssee_wc_h(omch2, h0, logA, halo_A, A_IA, dz1, dz2, dz3, dz4, dz5,
     Priores: los MISMOS que usa la version libre de LCDM, para que la comparacion
     sea de fondo y no de priores.
     """
-    return loglike(('SSEEwch', round(omch2, 8), round(h0, 8)), logA, halo_A,
-                   A_IA, dz1, dz2, dz3, dz4, dz5, delta_c)
+    return loglike(('SSEEwch', round(omch2, 8), round(h0, 8)), LOGA_CMB_SSEE,
+                   halo_A, A_IA, dz1, dz2, dz3, dz4, dz5, delta_c)
 
 
 def loglike(bg_key, logA, halo_A, A_IA, dz1, dz2, dz3, dz4, dz5, delta_c):
@@ -258,12 +261,10 @@ def info_ssee_wc_h(chains_dir, covmat=None):
         omch2=dict(prior=dict(min=0.051, max=0.255), ref=float(S.OMEGA_C_H2),
                    proposal=0.005, latex=r'\Omega_c h^2'),
         h0=dict(prior=dict(min=0.64, max=0.82), ref=float(S.H0_ALG / 100.0),
-                proposal=0.02, latex='h'),
-        logA=dict(prior=dict(min=1.5, max=4.5), ref=2.90, proposal=0.05,
-                  latex='\\log(10^{10}A_s)'))
+                proposal=0.02, latex='h'))
     p.update(NUISANCE_PARAMS)
     mcmc = {'Rminus1_stop': 0.03, 'max_tries': 10000,
-            'blocking': [[1, ['omch2', 'h0', 'logA', 'halo_A']],
+            'blocking': [[1, ['omch2', 'h0', 'halo_A']],
                          [18, ['A_IA', 'dz1', 'dz2', 'dz3', 'dz4', 'dz5',
                                'delta_c']]],
             'oversample_power': 0.7, 'measure_speeds': False}

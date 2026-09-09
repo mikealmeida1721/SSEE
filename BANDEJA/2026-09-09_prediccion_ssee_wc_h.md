@@ -1,6 +1,11 @@
 # PREDICCIÓN REGISTRADA — antes de que la cadena `ssee_wc_h` converja
 
 **Escrito:** 2026-09-09, con la cadena recién lanzada (0 pasos aceptados).
+**CORREGIDO el mismo día, antes de ningún resultado:** la primera versión dejaba
+`A_s` LIBRE. Error mío — Mike pidió el fondo fijo *a excepción de* ω_c y H, y A_s
+no estaba en esa lista. Con A_s suelto se lo lleva él y la prueba no mide nada:
+muy probablemente lo subiría hasta donde lo lleva KiDS con ΛCDM de fondo libre.
+**A_s va CLAVADO en 3.0448**, el que pide el CMB de SSEE. k = 10, no 11.
 **Autor de la predicción:** Mike. **Yo solo la anoto y la mido después.**
 
 ## El enunciado que se pone a prueba
@@ -40,7 +45,7 @@ KiDS debe:
 |---|---|---|
 | 1 | **ω_c BAJA** de 0.119514 | que salga igual o por encima |
 | 2 | **h SUBE** de 0.679621 | que salga igual o por debajo |
-| 3 | **logA SUBE** desde el 2.8633 de la versión rígida, hacia el 3.0448 del CMB | que se quede en 2.86 o baje |
+| 3 | el **χ² baja** desde ~283.7 (todo clavado) hacia el ~265.4 que da soltar A_s: ω_c y H **solos** absorben el déficit | que se quede cerca de 283 |
 | 4 | la bajada de ω_c es **parecida** al −17% de ΛCDM, no exacta | una fracción de signo contrario, o compatible con cero |
 
 **«Parecida» quiere decir:** la fracción de cambio de ω_c compatible con el

@@ -72,3 +72,50 @@ ve menos, y eso sigue pidiendo explicación.
 - El `halo_A` de KiDS (r = −0.39 con logA) es el único acompañante que queda.
   Conviene ver cuánto de la deriva sobrevive si se le pone el prior de
   retroalimentación bariónica más estrecho.
+
+---
+
+## 7. Añadido 2026-09-09 — el veredicto, con las dos escapatorias cerradas
+
+**El fondo cósmico tampoco mide A_s a solas: D = 9.07**, enredado con la niebla
+de reionización a +0.994. Lo que mide con barra 0.00069 es la combinación
+`0.49·logA − 1.00·τ`, que es `A_s` entre la niebla al cuadrado. Esa proporción
+no se le impuso: sale del ajuste, y es la que la teoría predice.
+
+| | fondo cósmico | KiDS |
+|---|---|---|
+| barra en logA | 0.0141 | 0.0508 |
+| factor de niebla D | 9.07 | 1.16 |
+
+Mide con barra más estrecha el fondo cósmico. Mide **más limpio** KiDS.
+**Tensión: 3.46σ.**
+
+**Escapatoria 1, la niebla: CERRADA.** Para que el fondo cósmico bajara su
+amplitud hasta la de KiDS haría falta `τ = −0.034`. Negativa, no existe. Con
+`τ = 0`, un universo que nunca se reionizó, solo se cubre el 62%. El suelo
+físico convierte la degeneración en un límite duro.
+
+**Escapatoria 2, el fondo rígido: CERRADA.** El logA alto del fondo cósmico no
+es artefacto de clavar el fondo de SSEE: ΛCDM con el fondo **entero libre**
+pide 3.0451 contra 3.0448. Difieren en 2 diezmilésimas.
+
+### El veredicto
+
+`A_s` es primordial y **no puede cambiar**. Así que el 2.8627 no es «el A_s de
+KiDS»: es *el A_s que haría falta si la ley de crecimiento del modelo fuera
+correcta*. Como el fondo cósmico fija A_s en 3.0448 y eso resiste el cambio de
+fondo, el déficit cae entero sobre el **crecimiento**:
+
+| | |
+|---|---|
+| déficit en logA | −0.1821 |
+| razón de amplitudes | 0.8335 |
+| razón en σ₈ | 0.9130 |
+| **crecimiento que sobra en el modelo** | **8.7%** |
+
+Coincide con el 8.6% que ya había salido por otra ruta en el veto del A_s
+(`project_as_drift_growth_veta`). Dos caminos distintos, el mismo número.
+
+**Lo único que sigue vivo como alternativa** es la retroalimentación bariónica
+de KiDS (`halo_A`, r = −0.39 con logA). Es el último acompañante que le queda.
+Cola #18.

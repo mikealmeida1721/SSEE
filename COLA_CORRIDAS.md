@@ -160,9 +160,37 @@ Informe: `BANDEJA/2026-09-08_dos_campos_phi_pi.md`.
 
 | # | corrida | coste | qué contesta | depende de |
 |---|---|---|---|---|
-| 15 | **separar rápido/lento en `cobaya_kids.py` y `cobaya_boss.py`** | 1 h de código | **7 de los 9 libres NO tocan CAMB** (A_IA, dz1..dz5, delta_c): sólo `logA` y `halo_A` entran en `_camb_cached`. Pero la verosimilitud es UNA función externa con los 9 parámetros en un solo bloque, así que Cobaya recomputa CAMB también cuando mueve los 7 baratos. **Medido: 8.965 s el paso que toca CAMB, 0.491 s el que no — 18x.** La caché ya existe y acierta el 100% en los pasos baratos; lo único que falta es declararle a Cobaya el `blocking` con velocidades para que los oversamplee | ninguna |
+| 15 ✅ | ~~separar rápido/lento en `cobaya_kids.py`~~ **HECHO 2026-09-08** (commit c201945) | 1 h de código | **7 de los 9 libres NO tocan CAMB** (A_IA, dz1..dz5, delta_c): sólo `logA` y `halo_A` entran en `_camb_cached`. Pero la verosimilitud es UNA función externa con los 9 parámetros en un solo bloque, así que Cobaya recomputa CAMB también cuando mueve los 7 baratos. **Medido: 8.965 s el paso que toca CAMB, 0.491 s el que no — 18x.** La caché ya existe y acierta el 100% en los pasos baratos; lo único que falta es declararle a Cobaya el `blocking` con velocidades para que los oversamplee | ninguna |
 
-**Por qué NO se reinicia `lcdmfijo` con esto:** lleva 7284 pasos (25 h) y le
-faltan ~25–35 h. Reiniciar tira las 25 h y la ganancia realista en el conjunto
-de la cadena es 2–4x, no 18x, porque los pasos lentos siguen costando lo mismo.
-Se arregla para las corridas que vienen (la #10 de BOSS y la #4), no para ésta.
+**Cómo se cerró, y por qué se relanzó después de todo.** Mi primera
+recomendación fue dejarla correr, y el argumento era **coste hundido**: «ya
+esperamos 25 h». Mike lo tumbó con el criterio correcto — *¿esperar da datos que
+no se verían de otro modo?* No: las dos cadenas persiguen la MISMA distribución,
+así que esperar no compra información, sólo horas. Diagnóstico por parámetro que
+lo decidió: los caros ya iban convergidos (logA 0.0044, halo_A 0.0087) y los que
+frenaban eran los baratos (dz1/dz2 0.0235). Se relanzó con `blocking` 1/18 y
+`oversample_power` 0.7, **sembrada con la covmat aprendida** por la corrida
+vieja, que se archivó entera en `chains_p6/kids/sin_reparto_2026-09-08/`.
+Medido tras relanzar: **5531 pasos/h contra 379 = 14.6x** (ventana de 3 min).
+
+**`cobaya_boss.py` NO lo necesita, comprobado:** sus tablas LPT se calculan una
+vez por conjunto y viven en `st['lpt'][name]['L']`; no hay CAMB en el bucle y
+todos sus libres (logA y los sesgos) recorren el mismo camino. No hay caro y
+barato que separar.
+
+**Lección para el guardián:** una verosimilitud externa de un solo bloque
+esconde su propia estructura rápido/lento. Cada vez que se escriba una, hay que
+preguntar qué parámetros entran de verdad en la parte cara.
+
+## Añadido 2026-09-08 (noche) — lo señaló Mike leyendo el barrido a medias
+
+| # | corrida | coste | qué contesta | depende de |
+|---|---|---|---|---|
+| 16 | **recuperación DENTRO de rango (±3σ de Planck)** | ~4 h | el barrido de combinaciones deja a cada ingrediente libre entre cotas **numéricas** (`LIM`), no físicas, así que el optimizador se va a −21.3σ en ω_c y +20.5σ en H₀ para recuperar el 58.4%. **Una recuperación comprada a 20σ no dice que el dato prefiera nada**: dice que hay una degeneración por la que A_s se puede canjear. Hay que repetirlo acotando cada ingrediente a ±3σ de Planck y volver a medir. Sólo ese número contesta «cuánto del castigo se absorbe **sin salirse de lo que el propio dato permite**» | el barrido en curso, para comparar |
+
+**Por qué está aquí (lo dijo Mike, 2026-09-08):** *«lo único que señala es que
+A_s está absorbiendo la discrepancia de dos o más ingredientes; y si esos
+tuvieran que ser corregidos fuera de su rango, no estaría señalando algo más que
+la preferencia del dato»*. Yo leí la columna de porcentajes y pasé por alto la
+de σ, que estaba en la misma tabla. **Regla que deja: un porcentaje de
+recuperación no se lee nunca sin el desplazamiento que lo compró.**

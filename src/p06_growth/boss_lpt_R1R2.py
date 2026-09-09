@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 R1/R2 — fsigma8 de SSEE y LCDM contra los multipolos CRUDOS de BOSS DR12,
 con modelado LPT (velocileptors) en vez de Kaiser.
@@ -33,6 +34,8 @@ Correccion de Hartlap aplicada (2045/2048 mocks PATCHY).
 
 Fondo: NO se ajusta. SSEE lo trae del algebra (Omega_m=0.308881, w0, wa);
 LCDM de Planck. Esa es toda la diferencia entre las dos corridas.
+
+FUENTE: results/logs/growth_2026-07/R1R2_boss_lpt_kmax0.200.json
 """
 import json
 import os

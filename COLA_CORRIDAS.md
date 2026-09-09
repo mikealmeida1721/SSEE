@@ -254,3 +254,16 @@ lección que dejó su retirada: la densidad tiene que salir de algo real, no de
 una resta. La #19 no postula ninguna partícula: pregunta si la **forma** de la
 supresión es la de una fuga de escala o la de una amplitud plana. Eso lo decide
 el dato, y si sale que no, se cierra otra vez y ya está.
+
+## Añadido 2026-09-09 — ROJO en Paper 8, hallado al reclasificar la deuda
+
+Informe: `BANDEJA/2026-09-09_p8_radio_kmouflage.md`.
+
+| # | corrida | coste | qué contesta | depende de |
+|---|---|---|---|---|
+| 20 🔴 | **derivar r_km desde K(X) y rehacer tabla+figura de P8** | días | la tabla `tab:vainshtein` publica tres radios con **tres defectos**: el exponente 1/3 sobre un corchete GeV⁻² da GeV^−0.667 (no es longitud); los números no salen de la propia fórmula (factor ~10³ con cualquier convención de M_pl); y al reparar el exponente a 1/2 **dos de las tres filas cambian de veredicto** (el Sol pasa de «dentro del cuerpo estelar» a 823 AU, la Vía Láctea de «≪1 kpc» a 4 kpc). Es el contenido real de OP-4 | ninguna |
+| 21 | **¿la predicción de lente de P8 depende del radio k-mouflage?** | lectura | CLAUDE.md dice que el titular de P8 se apoya en `ω_c` y en `α_B=α_M=0`, no en el radio. **No está comprobado.** Hasta comprobarlo no se puede asegurar que el defecto de la #20 no toque el resultado principal | la #20 |
+
+**Medida inmediata recomendada (decisión de Mike):** retirar tabla y figura del
+paper y dejar el radio como pendiente declarado, mientras se deriva el bueno. Un
+paper no puede sostener tres números que no salen de su propia ecuación.

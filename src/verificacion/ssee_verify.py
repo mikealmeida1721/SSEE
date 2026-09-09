@@ -597,7 +597,7 @@ check("V-L3-2sec  [RETIRADO] la resta Om_m,CMB - 0.160 no era fisica",
 track_open("REFRAME-FaseB  dependientes pendientes de recompute con canonicos nuevos",
            "HECHO: (a) cascada Hubble en direccion canonica (SH0ES ENTRA, H_global SALE, "
            "2026-09-06): IR = 73.04x(1-f) = 68.13 (0.17sigma vs 3(phi+pi)^2=67.96214), "
-           "UV = 67.962142 (residuo +4.2e-06; sigma propagado +-0.970 lo domina) (P9/P10). (b) CMB chi2=1005.41, Delta-BIC=-24.02 (SSEE favorecido) "
+           "UV = 67.962142 (residuo +4.2e-06; sigma propagado +-0.970 lo domina) (P9/P10). (b) CMB chi2=1003.586, Delta-BIC=-26.21 (SSEE favorecido) "
            "omega_m-directo @ H=67.962 (P3, plik_lite). (c) P6 REESCRITO 2026-08-01: "
            "un solo sector, MCMC R3 sobre KiDS crudo con A_s libre da "
            "S8=0.7555+-0.0192 (0.11sigma). m_phi=40.70, Om_phiDM=0.14888, k_fs=0.754, "

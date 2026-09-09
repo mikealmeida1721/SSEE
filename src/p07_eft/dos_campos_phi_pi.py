@@ -169,7 +169,7 @@ def main():
         idea="M. Almeida — un solo campo no cruza w=-1; ¿el segundo esta en el algebra?",
         objetivo=dict(w0=W0, wa=WA, cruce_z=0.3139),
         campo1=dict(lagrangiano="k-esencia Paper 7, K = c1 X + c2 X^2",
-                    u_algebraico=U0, w0_que_da=-0.839950, wa_que_da=0.4135),
+                    u_algebraico=U0, w0_que_da=S.W0, wa_que_da=0.4135),
         control=dict(criterio="recuperar un total sintetico con f1=0.6, w2=-1.3",
                      f1=f1c, w2=w2c, dispersion=sdc, pasa=True),
         resultado=dict(f1=f1, f2=1 - f1, w2_medio=w2, w2_dispersion=sd,

@@ -92,6 +92,8 @@ CLUSTERS = [
 # Ancla CMB del reframe: con ω_b y ω_c FIJOS por álgebra SSEE, la
 # verosimilitud plik_lite TTTEEE se minimiza en H₀ = 3(φ+π)² = 67.962
 # (scan: results/logs/p3_h0anchor_reframe.log; χ²=1005.41 mín, ΔBIC=−24.02).
+# NOTA 2026-09-09: ese ΔBIC quedó superado por −26.21 (A_s y τ ajustados,
+# N=669 medido); ver results/logs/cmb_dbic_tau_ajustado.json.
 # El H global de fondo y el ancla CMB coinciden — no son dos números.
 # σ = 0.54 (error Planck H₀ propagado, conservador).
 # (prior MIRA 67.037 RETIRADO: usaba Ω_m,CMB=MIRA×Ω_m,dyn, factor disuelto OP-8)

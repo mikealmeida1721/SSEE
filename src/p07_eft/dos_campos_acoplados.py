@@ -9,7 +9,7 @@ DE DONDE VIENE. Dos corridas anteriores cerraron la via sin acoplar:
     negativo, asi que w_tot SIEMPRE DECRECE. SSEE lo pide CRECIENTE
     (-1.3089 -> -0.8399). Es fallo de SENTIDO, no de precision.
 
-Queda una sola puerta: que los dos sectores se pasen energia. Si el flujo va
+Queda una sola puerta: que los dos campos se pasen energia. Si el flujo va
 hacia el componente MENOS negativo, su peso crece con el tiempo y w_tot puede
 SUBIR. Eso es lo que aqui se mide.
 

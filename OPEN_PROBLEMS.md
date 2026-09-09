@@ -584,7 +584,7 @@ desde primeros principios (necesario para aspirar a nivel de premio).
 > independientes**, ya no ligadas por ningún factor (ni MIRA ni π/φ).
 > Verificación CMB Fase B (Planck plik_lite, $H=67.962$, $\Omega_m=0.30889$):
 > $\chi^2_{\rm SSEE}=1005.41$ vs $\chi^2_{\Lambda{\rm CDM}}=1003.76$,
-> $\Delta\mathrm{BIC}=-24.02$ → SSEE favorecido
+> $\Delta\mathrm{BIC}=-26.21$ → SSEE favorecido (era −24.02 con $A_s,\tau$ clavados y $N=613$; corregido 2026-09-09)
 > (`results/logs/p3_cmb_reframe_omega_m.log`).
 >
 > **Residuo honesto (no es perilla nueva):** $\Omega_{m,{\rm CMB}}$ ahora descansa
@@ -2007,7 +2007,7 @@ Abordar SOLO después de las auditorías. Relacionado con la advertencia [[proje
 | OP-5 | P5-6 | ~~S₈ weak-lensing tension~~ | ✅ **DISUELTO 2026-08-01** | No hay tensión: con un sector y A_s libre, MCMC contra ξ± crudo da S₈=0.7555±0.0192 (0.11σ KiDS). El 3.5σ era artefacto de fijar A_s a Planck |
 | OP-6 | P9 | ~~Screening form ambiguity~~ | ✅ RESUELTO | Universo separado k-essence + identidad 1+w₀=Ω_m; Paper 9 §3 revisado |
 | OP-7 | P4/7/8 | QFT derivation of Genesis role assignments | ✅ PARCIAL | EFT uniqueness formalizado P7 §5.2 + P1 §5.3; QFT desde primeros principios → largo plazo |
-| OP-8 | Transv. | ~~MIRA dynamical mechanism~~ → factor-materia DISUELTO | ✅ DISUELTO 2026-06-18 | Reframe ω_m-directo: Ω_m,CMB=ω_m/h²=0.30889 sin factor (ω_c=KAL₀·ω_b·n_s forward); MIRA persiste solo en f_screen; CMB χ²=1005.41/ΔBIC=−24.02 |
+| OP-8 | Transv. | ~~MIRA dynamical mechanism~~ → factor-materia DISUELTO | ✅ DISUELTO 2026-06-18 | Reframe ω_m-directo: Ω_m,CMB=ω_m/h²=0.30889 sin factor (ω_c=KAL₀·ω_b·n_s forward); MIRA persiste solo en f_screen; CMB χ²=1003.586/ΔBIC=−26.21 |
 | OP-9 | P6 | ~~UV origin of mass multiplier~~ | ⚫ **CERRADO POR DISOLUCIÓN 2026-08-01** | La partícula fue retirada (la resta que definía Ω_φDM mezclaba densidad con ecuación de estado); no queda multiplicador que derivar. No resuelto: dejó de ser pregunta |
 | OP-10 | P6/P7 | ~~Unify χ into φ via richer V(φ)~~ | ⚫ **CERRADO POR DISOLUCIÓN 2026-08-01** | No hay segundo campo χ que unificar |
 | OP-11 | P6 | ~~ξ (non-minimal coupling) is free parameter~~ | ⚫ **CERRADO POR DISOLUCIÓN 2026-08-01** | ξ vivía en el sector φ-DM retirado |
@@ -2614,7 +2614,7 @@ sin premisa nombrada no se puede disolver, sólo se puede chocar contra él.
 >                                    -51.6%
 > ```
 > La vara es **la propia predicción de SSEE**: $\omega_m=\omega_b+\omega_c+\omega_\nu
-> =0.14267$, la que da $\chi^2_{\rm CMB}=1005.41$ y $\Delta$BIC$=-24.02$ en Paper 3.
+> =0.14267$, la que da $\chi^2_{\rm CMB}=1003.586$ y $\Delta$BIC$=-26.21$ en Paper 3.
 > Medido sobre `results/logs/fondo_acoplado.npz` en $a=0.001$:
 > $\rho_m/\rho_{c,0}$ acoplado $=1.4939\times10^8$ vs estándar $3.0888\times10^8$,
 > razón $0.4837$. Equivalente: $E(z{=}999)$ va **−30.5 %** por debajo.

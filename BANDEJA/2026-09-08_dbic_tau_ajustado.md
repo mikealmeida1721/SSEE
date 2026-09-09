@@ -76,6 +76,24 @@ parámetros menos**. Recomiendo el cambio, porque el ΔBIC depende de cómo
 cuentes N —hoy mismo se ha visto— y la comparación de χ² a igual dato no
 depende de nada.
 
-**Riesgo de no tocarlo:** el número publicado se obtuvo prestándole a SSEE el
-`τ` de ΛCDM y contando 613 puntos donde el χ² usaba 669. Las dos cosas las
-encuentra un referee que intente reproducirlo.
+**Riesgo de no tocarlo:** el número publicado clavaba `A_s` y `τ` en Planck
+mientras los contaba como libres, y usaba 613 puntos donde el χ² abarca 669.
+Las dos cosas las encuentra un referee que intente reproducirlo.
+
+---
+
+## 7. CORRECCIÓN a este informe (2026-09-09)
+
+En la versión anterior escribí que Paper 3 **no declaraba** el préstamo. **Es
+falso, y lo digo yo antes de que lo diga nadie.** Paper 3 lo declara
+explícitamente: dice que `A_s` y `τ` se toman de Planck, los llama *borrowed
+inputs*, y por eso cuenta `k=2`. O sea que la regla que Mike formuló —prestado
+y libre valen lo mismo— **ya se estaba cumpliendo**.
+
+El defecto real es otro y sigue siendo defecto: los contaba como libres pero
+**no los ajustaba**. Si un parámetro se paga como libre, lo coherente es
+usarlo. Al ajustarlos, el χ² de SSEE baja de 1005.409 a 1003.586.
+
+**PROPAGADO el 2026-09-09** a: `CANONICAL_VALUES.yaml`, Paper 3 (6 sitios,
+incluida la fórmula y la tabla), Sealed Journal, PRD, `CLAUDE.md` (2),
+`VERIFICATION_LEDGER.md`, el guardián y `OPEN_PROBLEMS.md` (3). 17 de 17.

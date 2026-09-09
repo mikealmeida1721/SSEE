@@ -202,7 +202,12 @@ canonical:
   # log: results/logs/p3_cmb_reframe_omega_m.log  (script run_p3_reframe.py)
   chi2_CMB_SSEE:       1005.41    # SSEE ω_m-directo (vs ΛCDM 1003.76; Δχ²=+1.65) — plik_lite point est.
                                  # re-corrido 2026-07-25 con Σm_ν=0.06849 (era 1005.50 con 0.06902)
-  Delta_BIC_CMB:       -24.02     # plik_lite TTTEEE, k2 vs k6 (cross-check; era -23.93 con Σm_ν stale)
+  Delta_BIC_CMB:       -26.21     # plik_lite TTTEEE+lowT+lowE, k2 vs k6, tau AJUSTADO y N=669 MEDIDO
+                                  # (2026-09-09). Historia: -24.02 tenia DOS defectos — A_s y tau se
+                                  # contaban como libres (k=2) pero se CLAVABAN en Planck en vez de
+                                  # ajustarse, y el BIC usaba N=613 (solo plik_lite) cuando el chi2
+                                  # abarca TTTEEE+lowT+lowE = 669. Con N bien contado y tau prestado
+                                  # habria sido -24.37. Log: results/logs/cmb_dbic_tau_ajustado.json
   Delta_BIC_cobaya:    -32.2      # plik_lite Cobaya legacy (escenario viejo; PENDIENTE re-confirmar)
   # ── TITULAR canónico CMB: full plik MCMC (off-diagonal TTTEEE + lowl + lensing) ──
   # Cobaya+clipy, SSEE k=2 (H₀ FIJO 67.962) vs ΛCDM k=6. Chains: src/results/chains/ssee_cmb_k2.{1-4}, lcdm_cmb.{1-4}

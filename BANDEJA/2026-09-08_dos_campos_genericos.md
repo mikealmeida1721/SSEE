@@ -61,7 +61,7 @@ la misma vista de dos lados:
 
 Dicho en tu lenguaje: tus dos opuestos no bastan con **coexistir**. Tienen que
 **tocarse**. El término que hoy no está en el lagrangiano de Paper 7 es el de
-intercambio entre los dos sectores.
+intercambio entre los dos campos.
 
 Eso ya no es una corazonada suelta: es la única forma que sobrevive después de
 haber cerrado las otras con prueba y control.
@@ -78,5 +78,5 @@ haber cerrado las otras con prueba y control.
 ## 6. Deuda que deja
 
 Va a la cola: probar un par **acoplado**, con un término de intercambio
-Q entre los dos sectores, y ver si el sentido se invierte. Ésa es la primera
+Q entre los dos campos, y ver si el sentido se invierte. Ésa es la primera
 prueba que puede salir que **sí**.

@@ -53,15 +53,84 @@ presta su propio KMAX. **Lo único que cambia es el estimador.**
 | viejo | **media marginal** de una cadena de 104 272 muestras | 2.7636 | **207.638** |
 | nuevo | **mínimo del perfil** | 2.9448 | **197.438** |
 
-Y ahí está lo que no esperaba: **la cadena vieja nunca encontró el fondo.** Su
-mejor punto está **10.2 unidades de χ² por encima** del mínimo real, con la
-misma verosimilitud. No es que las dos lecturas señalen dos puntos legítimos de
-un mismo valle: es que una de ellas **no llegó al valle**.
+> 🔻 **RETRACTADO 2026-09-09 (noche) — lo pidió Mike, y tenía razón.**
+> Aquí escribí *«la cadena vieja nunca encontró el fondo»* apoyándome en ese
+> hueco de 10.2. **Era una acusación sin vara.** Una cadena nunca toca su
+> mínimo: muestrea el bulto, no la punta, y el hueco esperado crece con las
+> dimensiones. Sin calcular cuánto hueco es el normal, el número no dice nada.
+>
+> Calculado ahora. La cadena muestrea **19** dimensiones (logA + b1,b2,bs × 6
+> conjuntos; las otras 18 se integran en cerrado, así que están en su óptimo por
+> construcción — `cobaya_boss.py` L80-82).
+>
+> | | Δχ² del mejor de 104 272 muestras |
+> |---|---|
+> | esperado con d = 19 | **2.96** |
+> | observado | **10.20** |
+>
+> Es **3.4× mayor de lo normal** — bandera amarilla de convergencia, con
+> `Rminus1_stop = 0.05`, que es flojo. Pero **no es prueba de fallo**, y
+> presentarlo como tal fue afirmar de más. El hueco de 10.2 sería justo el
+> esperado si la cadena explorara 37 dimensiones; no las explora.
 
-La explicación está en la estructura del problema: a logA fijo, la
-verosimilitud de BOSS **factoriza** en seis problemas independientes de 6
-molestias cada uno. El perfil explota esa factorización; la cadena no, y se
-pasea por 36 dimensiones sin tocar fondo en 104 mil muestras.
+Lo que sí queda establecido es que **el desacuerdo es de estimador**, y hay una
+explicación de manual que además predice el signo — la de **volumen**, en §4bis.
+
+## 4bis. ¿Cuál de los dos es el correcto? (lo preguntó Mike)
+
+**No es que uno sea inválido. Contestan preguntas distintas.**
+
+| | qué pregunta | de qué depende |
+|---|---|---|
+| **mínimo del perfil** | *«a cada A_s, ¿cuál es lo mejor que puede hacer el modelo?»* | sólo del **dato** |
+| **media marginal** | *«¿cuánta probabilidad total se acumula en cada A_s?»* | del dato **y del espacio que les queda a las molestias** |
+
+La marginal integra sobre las 36 molestias. Si a A_s bajo las molestias tienen
+**más sitio donde caber** que a A_s alto, la marginal se desplaza hacia abajo
+**aunque en ningún punto de ahí el ajuste sea mejor**. Eso es el *efecto de
+volumen*, y es un problema conocido y documentado justo en este análisis: los
+ajustes de forma completa de BOSS sesgan la amplitud **hacia abajo**.
+
+**El signo medido es el que predice esa explicación:** la marginal está
+0.1811 **por debajo** del perfil.
+
+### La pista que lo delata: la barra se ENSANCHÓ
+
+| | logA | barra |
+|---|---|---|
+| marginal | 2.7636 | ± 0.0981 |
+| perfil | 2.9448 | ± **0.1238** |
+
+**La barra del perfil es 26% más ancha.** Mike preguntaba si uno se reconcilia
+«por tener menos información». Es al revés de como suena: **el estrecho es el
+sospechoso.** Un método que promedia sobre volumen puede fabricar una barra
+estrecha sin que el dato haya aportado más; el perfil no puede — su anchura
+sale de la curvatura de la verosimilitud y de nada más. La precisión extra de
+la cadena no era información, era geometría.
+
+### Y hay que corregir la premisa: el perfil se acerca a LOS DOS
+
+| | contra el CMB (3.0448) | contra KiDS (2.8627 ± 0.0508) |
+|---|---|---|
+| marginal (2.7636) | 2.87σ | 0.90σ |
+| perfil (2.9448) | **0.81σ** | **0.61σ** |
+
+No es que un método lo acerque al CMB y el otro a KiDS. **El perfil lo acerca a
+ambos.** Que un solo cambio de estimador reduzca las dos distancias a la vez es
+lo que se espera si el estimador viejo tenía un sesgo, no si los datos se
+contradijeran.
+
+### Pero nada de esto lo DEMUESTRA — y hay una prueba que sí
+
+Todo lo anterior es un argumento coherente, con el signo correcto y una pista
+que encaja. **No es una medición.** La prueba que decide es barata y no depende
+de ninguna teoría estadística: **dato sintético con la verdad conocida.**
+
+Se fabrica un BOSS falso a partir de un logA que yo elijo (2.90, digamos), con
+la misma covarianza y las mismas molestias. Se le pasan **los dos estimadores**.
+El que devuelva 2.90 es el correcto **para esta verosimilitud**, y el otro
+quedará con su sesgo medido en σ. Es cola **#23**, y hasta que se corra, «cuál
+es el bueno» sigue siendo argumento y no dato.
 
 ## 5. Qué se salva, y esto es lo importante
 

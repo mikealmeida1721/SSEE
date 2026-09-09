@@ -288,3 +288,21 @@ error, no lo arregla.
 **Lo que la #22 NO toca:** el empate en fσ₈. Ese es una *diferencia* entre dos
 modelos medidos con la misma regla (Δχ² = +0.062 con el método viejo, +0.402 con
 el nuevo — cero estadístico con ambos), así que el error de regla se cancela.
+
+**Añadido más tarde el 2026-09-09 — la pregunta de Mike: ¿cuál método es el bueno?**
+
+| # | corrida | coste | qué contesta | depende de |
+|---|---|---|---|---|
+| 23 | **dato sintético con la verdad conocida: perfil contra marginal** | ~1 día | hoy tengo un *argumento* de por qué el perfil sería el bueno (efecto de volumen, signo correcto, y la barra del perfil 26% MÁS ANCHA — el estrecho es el sospechoso), pero **no una medición**. Se fabrica un BOSS falso desde un logA elegido por mí (2.90), misma covarianza, mismas molestias, y se le pasan LOS DOS estimadores. El que devuelva 2.90 es el correcto **para esta verosimilitud**; el otro queda con su sesgo medido en σ. Sin esto, «cuál es el bueno» es filosofía | ninguna |
+
+**Ordena a la #22:** la #23 va **primero**. No tiene sentido medir el A_s del
+fondo por perfil para emparejar reglas si todavía no está medido cuál de las dos
+reglas recupera la verdad.
+
+**Retractado aquí también:** la #22 nació apoyada en que «la cadena vieja nunca
+alcanzó el mínimo». Ese argumento **se cae**: el hueco esperado del mejor punto
+de 104 272 muestras en las **19** dimensiones que la cadena muestrea de verdad
+es Δχ² = 2.96, y el observado 10.20 — 3.4× mayor, bandera amarilla de
+convergencia (`Rminus1_stop=0.05` es flojo), **no prueba de fallo**. La #22
+sigue en pie por la otra razón, que es sólida: perfil contra marginal no se
+comparan.

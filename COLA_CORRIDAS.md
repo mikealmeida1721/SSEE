@@ -21,9 +21,10 @@ hay que **decidir** cuál corre, no lanzarlas según van saliendo.
    línea del A_s depende de su respuesta.
 2. **#18 — apretar `halo_A`.** Única escapatoria observacional que queda en KiDS.
    Barata y puede cerrar la pregunta antes que la #19.
-3. **#17 — barrido con el A_s de KiDS.** Ya no urge: se sabe que la moneda
-   (amplitud contra materia) es convencional, así que el reparto de ingredientes
-   informa pero no decide.
+3. **#17 — barrido con el A_s de KiDS. SUBE, lanzada 2026-09-09.** Los dos
+   resultados de hoy apuntan a ella: el barrido viejo clavaba el promedio
+   2.8418, cuya mitad de BOSS acaba de moverse 1.85σ. El único A_s que se
+   sostiene como medición es el de KiDS.
 4. **#14 — par de campos acoplado.** Línea distinta (el wₐ), sigue viva.
 5. Lo demás (#4, #5, #7, #9, #10, #11, #13, #16) sin cambio de prioridad.
 
@@ -150,7 +151,7 @@ Desde hoy viven en `config/class/`, versionadas, y se corren desde ahí.
 
 | # | corrida | coste | qué contesta | depende de |
 |---|---|---|---|---|
-| 10 | **re-correr R1/R2 de BOSS con la masa de neutrino correcta** | ~1 h (LPT, 222 pts) | `boss_lpt_R1R2.py` tenía `MNU = 0.06` suelto **usado para los dos modelos**. 0.06 eV es el fiducial de Planck; la de SSEE es 0.06849 eV. Mismo patrón del `τ` prestado: un modelo evaluado con el ingrediente del otro. **Medido antes de arreglar** (mismo fondo, CAMB, z=0.51): σ₈(0) −0.276%, fσ₈(0.51) −0.247% = **0.058σ** de la barra. Pequeño pero con signo, no ruido. El código ya está arreglado y lee del núcleo; falta re-correr | — |
+| 10 ✅ | ~~re-correr R1/R2 de BOSS con la masa de neutrino correcta~~ **CERRADA 2026-09-09** (`BANDEJA/2026-09-09_boss_R1R2_neutrinos.md`): Δχ²=+0.402, empatan; y el logA de BOSS se movió **1.85σ**, confirmando que no mide A_s** | ~1 h (LPT, 222 pts) | `boss_lpt_R1R2.py` tenía `MNU = 0.06` suelto **usado para los dos modelos**. 0.06 eV es el fiducial de Planck; la de SSEE es 0.06849 eV. Mismo patrón del `τ` prestado: un modelo evaluado con el ingrediente del otro. **Medido antes de arreglar** (mismo fondo, CAMB, z=0.51): σ₈(0) −0.276%, fσ₈(0.51) −0.247% = **0.058σ** de la barra. Pequeño pero con signo, no ruido. El código ya está arreglado y lee del núcleo; falta re-correr | — |
 
 **Comprobado al mismo tiempo, y sale limpio:** `cobaya_kids.py`, que produce el
 S₈ canónico de Paper 6 (R3 y su control R4), **sí** pasa `mnu = S.SUM_MNU_EV`

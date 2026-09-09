@@ -1,4 +1,23 @@
-# La celda que faltaba: con la MISMA rigidez, ΛCDM está MÁS tenso que SSEE
+# Con el fondo clavado, KiDS pide el MISMO A_s en los dos modelos: 0.45σ
+
+> 🔧 **REESCRITO 2026-09-09 tras la corrección de Mike.** La primera versión
+> titulaba *«ΛCDM está más tenso que SSEE»* y sacaba al frente 3.63σ contra
+> 4.65σ. **Ese encuadre está mal, por tres razones que él señaló:**
+>
+> 1. **Que ΛCDM rígido salga tenso ya se sabe** — es la tensión S₈ publicada.
+>    No hacían falta 15 horas para eso.
+> 2. **Compara como si el fondo de SSEE pudiera ser libre.** No puede: está
+>    fijado por álgebra. La fila de ΛCDM-libre no es una alternativa que SSEE
+>    tenga; es otro modelo.
+> 3. **No son la misma tensión.** La de SSEE está **localizada en A_s**, porque
+>    con todo lo demás fijo A_s es el único sitio donde puede aparecer. La del
+>    modelo estándar se reporta en **S₈**, un estadístico comprimido que **no
+>    puede decir dónde** está el problema. Llamarlas «la misma» borra justo lo
+>    que hace informativa a la nuestra.
+>
+> **Para lo que se lanzó esta corrida** era para ver **dónde cae el A_s de ΛCDM**
+> cuando se le clava su fondo y se le suelta solo la amplitud — y si cae cerca
+> del que saca SSEE con el suyo. Eso es lo que mide, y es lo que va arriba.
 
 **Corrida:** `src/p06_growth/cobaya_kids.py lcdmfijo` · 4 cadenas MPI ·
 **14.91 h** · convergió (R−1 medias = **0.025014**, criterio 0.03; bordes
@@ -33,6 +52,46 @@ n_s=0.9649) — verificado en el código, L167.
 
 (El fondo cósmico pide 3.0448 en SSEE y 3.0451 en ΛCDM — el mismo número.)
 
+## 2bis. EL RESULTADO — que en la primera versión quedó enterrado
+
+**Con el fondo clavado y solo la amplitud suelta, KiDS pide lo mismo en los dos
+modelos:**
+
+| | logA que pide KiDS |
+|---|---|
+| SSEE, fondo fijo por álgebra | 2.8633 ± 0.0500 |
+| ΛCDM, fondo fijo en Planck | 2.8327 ± 0.0456 |
+| **diferencia** | **0.0306 = 0.45σ — coinciden** |
+
+Y el déficit contra el A_s que pide **su propio** fondo cósmico es el mismo
+agujero:
+
+| | pide el CMB | pide KiDS | déficit | en σ₈ |
+|---|---|---|---|---|
+| SSEE | 3.0448 | 2.8633 | 0.1815 | **−9.1%** |
+| ΛCDM | 3.0451 | 2.8327 | 0.2124 | **−10.6%** |
+
+Los dos déficits difieren en **0.46σ**: es **el mismo agujero**.
+
+### El veredicto que esto da
+
+**El fondo está bien — el de los dos.** Si le clavas a KiDS el fondo que su
+propio CMB prefiere y le sueltas solo la amplitud, **siempre pide esta cantidad
+de A_s**, y da igual de qué modelo venga el fondo. El número que sale es una
+propiedad de **KiDS**, no del modelo que se le ponga delante.
+
+Por tanto el agujero **no lo fabrica ningún fondo**. Lo que hay es que **el CMB
+y KiDS no perciben la misma cantidad de materia**. Y eso ya no es cuestión de
+amplitud: es cuestión de **cómo mira cada uno**. Uno pesa el total en un
+instante temprano; el otro ve cómo se cae la materia a lo largo del camino. Si
+hay materia que no se agrupa, el primero la cuenta y el segundo no la ve.
+
+**Eso es una hipótesis, no un resultado, y tiene su prueba: la cola #19** —
+distinguir si la supresión es **plana** (amplitud, todas las escalas por igual)
+o **con escala** (una fuga por debajo de cierto corte). KiDS mide ξ± en un rango
+de escalas, así que el dato puede decidirlo. **Verificado: la #19 NO está
+lanzada, ni escrita.** La conclusión estaba, la prueba no.
+
 ## 3. Tres lecturas, y la primera desinfla algo que me habría gustado decir
 
 **(a) La rigidez es la causa, no SSEE.** ΛCDM con el fondo clavado da **D = 1.13**,
@@ -42,14 +101,15 @@ modelo cuyo fondo esté fijo.** Lo específico de SSEE es que el suyo está fijo
 **por álgebra** y no por decreto — pero la mejora en la medición es genérica.
 Esto había que decirlo antes que lo siguiente.
 
-**(b) Con el mismo protocolo, la brecha de SSEE es MENOR.** Mismos datos, mismos
-9 libres, mismo canal, mismos priors: **3.63σ contra 4.65σ.** Y el ajuste
-empata (Δχ²_min = 0.151 a favor de SSEE, que es cero sobre 225 puntos). SSEE no
-ajusta mejor; **necesita estirar menos la amplitud.**
+**(b) El criterio pre-registrado se cumple: la tensión está en el DATO.** El
+fondo algebraico de SSEE **no la fabrica**, porque el fondo de Planck produce el
+mismo agujero (0.46σ de diferencia entre los dos déficits).
 
-Por el criterio pre-registrado, esto responde la pregunta que lo motivó:
-**la tensión está en el DATO. El fondo algebraico de SSEE no la fabrica** — y de
-hecho la deja más pequeña que el fondo de Planck.
+⚠️ **Lo que NO hay que leer aquí es «SSEE gana 3.63 contra 4.65».** Los dos
+números salen del mismo agujero visto con barras algo distintas, y esa
+diferencia de 0.45σ es ruido, no mérito. Además compararlos así insinúa que
+SSEE podría haber salido con el fondo libre, y no puede: el suyo está fijado por
+álgebra. **La lectura correcta es la coincidencia, no la carrera.**
 
 **(c) Soltar el fondo no resuelve nada: apaga el instrumento.** Con ΛCDM libre no
 hay tensión (−0.88σ)… porque la barra es **diez veces más ancha** (0.49 contra

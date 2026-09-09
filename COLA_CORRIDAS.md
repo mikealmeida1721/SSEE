@@ -359,3 +359,19 @@ de las dos mitades con la regla de la otra.
 
 **Nada de lo de arriba entra en un paper hasta que Mike lea el informe de
 `BANDEJA/` correspondiente y lo apruebe.**
+
+**Corrección 2026-09-09 (Mike) — la #19 sube al primer puesto**
+
+Verificado: **la #19 no está lanzada NI escrita**. No existe script. Y es la
+prueba que decide la única pregunta que queda viva del bloque de A_s.
+
+Motivo, ya medido (`BANDEJA/2026-09-09_kids_lcdm_fondo_fijo.md`): con el fondo
+clavado y solo la amplitud suelta, **KiDS pide el mismo A_s en los dos modelos**
+—SSEE 2.8633±0.0500, ΛCDM 2.8327±0.0456, **0.45σ**— y el déficit contra el CMB
+de cada uno es **el mismo agujero** (−9.1% y −10.6% de σ₈, a 0.46σ). El fondo no
+lo fabrica. Lo que queda es que **el CMB y KiDS no perciben la misma materia**, y
+la #19 es la que distingue si la supresión es **plana** (amplitud) o **con
+escala** (fuga bajo un corte).
+
+**Nuevo orden:** #19 primero. Luego #23 y #22, que son de método y no cambian la
+física. El rojo de Paper 8 (#20) sigue aparte, esperando a Mike.

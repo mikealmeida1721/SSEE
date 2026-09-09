@@ -375,3 +375,42 @@ escala** (fuga bajo un corte).
 
 **Nuevo orden:** #19 primero. Luego #23 y #22, que son de método y no cambian la
 física. El rojo de Paper 8 (#20) sigue aparte, esperando a Mike.
+
+**#19 — CÓMO SE LEE (corregido por Mike ANTES de ver el resultado)**
+
+Mi criterio original era *«si hace falta la misma supresión en los dos fondos es
+física; si solo en SSEE es parche»*. **Demasiado tosco**, y Mike lo corrigió con
+la lógica de `f_screen`: ese mecanismo funciona en los dos modelos pero **no
+igual de bien**, y no por el mecanismo sino por la estructura — SSEE clava H
+desde una **medición** (SH0ES) y ΛCDM lo **determina** desde ingredientes
+libres, así que ΛCDM no puede saber si su H está bien, solo que su combinación
+describe el universo.
+
+Aquí igual, pero con la materia: **ΛCDM no tiene la misma cantidad de materia
+que SSEE**, así que la corrección no puede salir igual — y eso **no es evidencia
+en contra**.
+
+**Criterio correcto: comparar `k_c`, NO `A_sup`.**
+
+| | qué es | debe |
+|---|---|---|
+| `A_sup` | **cuánta** materia no se agrupa | **diferir** — depende del presupuesto de cada modelo |
+| `k_c` | **a qué escala** deja de agruparse | **coincidir** — es propiedad de la física |
+
+Mismo corte con amplitudes distintas = fenómeno real visto por dos
+contabilidades. Cortes distintos = cada uno tapando su agujero con lo que tiene.
+
+**Y en SSEE la prueba es MÁS dura:** con el fondo rígido, la amplitud está
+impuesta en el valor del CMB y la supresión tiene que cerrar la brecha ella
+sola. No hay otro parámetro que ayude. En ΛCDM-libre no habría prueba: el fondo
+se acomodaría.
+
+**Defecto declarado del control C2, antes de ver el resultado:** compara un A_s
+efectivo de **perfil** contra el valor **marginal** de la cadena — el mismo
+desemparejamiento de reglas que la cola #22. El criterio de 2σ es holgado y
+sigue valiendo como comprobación de que la maquinaria suprime lo que dice, pero
+**no se lee como acuerdo de precisión**.
+
+**Procedencia del número de C2, verificada:** 2.8633±0.0500 (SSEE) y
+2.8327±0.0456 (ΛCDM) salen de `chains_p6/kids/ssee.*.txt` y `.../lcdmfijo.*.txt`.
+**No interviene BOSS.** El promedio 2.8418 de `fuga2`/`fuga3` está retirado.

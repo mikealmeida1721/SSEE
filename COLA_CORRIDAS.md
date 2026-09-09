@@ -5,6 +5,30 @@ significa que se vaya a hacer».* Una corrida que no está en esta cola con su
 coste no existe — se olvida. Y como la máquina no puede con todas a la vez,
 hay que **decidir** cuál corre, no lanzarlas según van saliendo.
 
+## ORDEN DE ATAQUE (reordenado 2026-09-09 — lo pidió Mike)
+
+> El número de cada corrida es un **identificador**, no un puesto en la fila:
+> es el orden en que se abrió, no el orden en que se hace. Se reordena cuando
+> cambia lo que sabemos, y hoy cambió.
+
+**Corriendo ahora:** barrido de combinaciones (viejo, 12/15) · cadena KiDS
+ΛCDM-fijo · control `fuga3 fondo`.
+
+**Siguiente, por orden real de valor:**
+
+1. **#19 — ¿la supresión es plana o depende de la escala?** Es la que decide si
+   el déficit del 8.7% es amplitud o materia que se fuga. Todo lo demás de la
+   línea del A_s depende de su respuesta.
+2. **#18 — apretar `halo_A`.** Única escapatoria observacional que queda en KiDS.
+   Barata y puede cerrar la pregunta antes que la #19.
+3. **#17 — barrido con el A_s de KiDS.** Ya no urge: se sabe que la moneda
+   (amplitud contra materia) es convencional, así que el reparto de ingredientes
+   informa pero no decide.
+4. **#14 — par de campos acoplado.** Línea distinta (el wₐ), sigue viva.
+5. Lo demás (#4, #5, #7, #9, #10, #11, #13, #16) sin cambio de prioridad.
+
+---
+
 ## Reglas de la casa
 
 1. **Nada se lanza sin `preflight.py` verde en la misma línea de comando.**

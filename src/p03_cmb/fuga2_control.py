@@ -46,6 +46,20 @@ SALIDA = REPO / "results" / "logs" / "cmb_fuga2_control.json"
 BASE = dict(ombh2=S.OMEGA_B_H2, omch2=S.OMEGA_C_H2,
             H0=S.H0_ALG, ns=S.N_S, logA=3.044, tau=0.054)
 W, WA = S.W0, S.WA
+# 2.8418 = combinacion inversa-varianza de las DOS sondas tardias, con el
+# fondo de SSEE en las dos:
+#     KiDS R3   logA = 2.8627 +- 0.0508  (growth_2026-07/R3_ssee_kids_S8.json)
+#     BOSS R1R2 logA = 2.7636 +- 0.0981  (growth_2026-07/R1R2_boss_lpt_cobaya.json)
+#     combinada      = 2.841783 +- 0.0451   -> difiere 1.7e-05 del valor clavado
+# Reproducido el 2026-09-08 desde esos dos logs. Antes aqui ponia solo "ajuste
+# conjunto KiDS+BOSS previo (v1, mismo valor)", sin decir cual ni con que barra:
+# imposible de comprobar sin rehacerlo.
+#
+# IMPORTA CUAL SE CLAVA (lo pregunto Mike): este es el A_s TARDIO. Si se clavara
+# el que preferiria el propio CMB (logA = 3.0448, de cmb_dbic_tau_ajustado.json)
+# NO habria castigo ninguno, por construccion. La deriva entre los dos es
+# -0.2031, o sea 4.50 sigma de la barra tardia. Todo lo que mide esta corrida es
+# quien puede absorber ESA deriva.
 LOGA_TARDE = 2.8418
 
 LIM = {"ombh2": (0.005, 0.100), "omch2": (0.001, 0.300),

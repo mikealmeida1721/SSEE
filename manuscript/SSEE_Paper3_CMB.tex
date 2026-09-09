@@ -635,7 +635,7 @@ The diagonal approximation neglects bin-to-bin covariances in the Planck PR4 ban
 \subsection{Cobaya \texttt{plik\_lite} unified evaluation}
 \label{sec:cobaya}
 
-To establish a definitive baseline for model comparison that fully accounts for off-diagonal covariances, we evaluate the SSEE framework against the official Planck 2018 \texttt{plik\_lite} TTTEEE likelihood via \texttt{clik}/\texttt{clipy} \citep{Torrado2021}, over its $N=613$ compressed bandpowers.
+To establish a definitive baseline for model comparison that fully accounts for off-diagonal covariances, we evaluate the SSEE framework against the official Planck 2018 \texttt{plik\_lite} TTTEEE likelihood via \texttt{clik}/\texttt{clipy} \citep{Torrado2021}, over its $613$ compressed bandpowers, together with the low-$\ell$ TT and EE likelihoods ($28+28$ bins), for $N=669$ data points in total. The three pieces are all included in the $\chi^2$ quoted below, so all three are counted in $N$.
 
 \paragraph{Parameter counting ($\omega_m$-direct).}
 All SSEE dark energy parameters ($w_0, w_a$), the spectral index $n_s$, and --- under the 2026 $\omega_m$-direct reframe --- the baryon and cold-matter densities $\omega_b=(\pi-\varphi)/(3\Omega^2)=0.022418$ and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.119514$ are algebraically fixed. The dimensional anchor $H_0/(\mathrm{km\,s^{-1}\,Mpc^{-1}}) = 3(\varphi+\pi)^2 = 67.96214$ is itself \emph{derived} from the SH0ES--$f_{\rm screen}$ inversion (Paper~9), not fitted to the CMB; the amplitude $A_s$ and reionization $\tau$ are borrowed inputs, not derived from $\{\varphi,\pi\}$, and are \emph{fitted} here (earlier versions of this work held them at their external Planck values while still counting them as free; fitting them is the self-consistent choice and is what we do below). The two quantities the framework borrows rather than derives are therefore $A_s$ and $\tau$, and we conservatively assign $k=2=\{A_s,\tau\}$. The standard $\Lambda$CDM baseline has $k=6$: $H_0$, $\Omega_b h^2$, $\Omega_c h^2$, $n_s$, $A_s$, and $\tau$ \citep{Planck2018}, all six free in the CMB fit. (The companion full MCMC of \S\ref{sec:b1_mcmc} additionally lets $H_0$ \emph{float} as a validation check: the chain recovers $H_0$ at the algebraic anchor, confirming that fixing it costs no fit quality and that the $k=2$ count is sound.)
@@ -1026,7 +1026,7 @@ The key results are:
   \item TT: $\chi^2_r=1.042$ over 1971 multipoles ($\Lambda$CDM: $1.043$).
   \item TE/EE: $\chi^2_r=1.040/1.040$, essentially matching $\Lambda$CDM.
   \item Lensing (PP): $\chi^2_r=0.720$ vs.\ $0.757$ for $\Lambda$CDM — SSEE marginally better (both $\chi^2_r<1$).
-  \item \textbf{\texttt{plik\_lite} TTTEEE ($\omega_m$-direct):} $\chi^2_{\mathrm{eff}} = 1005.41$ at $H_0 = 67.96214$ km\,s$^{-1}$\,Mpc$^{-1}$ (the CMB-minimising value with SSEE-fixed $\omega_b,\omega_c$).
+  \item \textbf{\texttt{plik\_lite} TTTEEE${}+{}$low-$\ell$ ($\omega_m$-direct):} $\chi^2_{\mathrm{eff}} = 1003.586$ with $\{A_s,\tau\}$ minimized, at $H_0 = 67.96214$ km\,s$^{-1}$\,Mpc$^{-1}$ (the CMB-minimising value with SSEE-fixed $\omega_b,\omega_c$); $\Lambda$CDM gives $1003.769$ with six free parameters.
   \item $\Delta\mathrm{BIC}=-26.21$ ($k=2$ vs $k=6$, $N=669$), decisively favouring SSEE over $\Lambda$CDM at equal fit quality ($\Delta\chi^2=-0.183$).
   \item $\Omega_{m,\mathrm{CMB}}=0.308881$ within $0.88\sigma$ of Planck 2018.
   \item The sound horizon $r_d=147.17$ Mpc matches $\Lambda$CDM to $0.03\%$.

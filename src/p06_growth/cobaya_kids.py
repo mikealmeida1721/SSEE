@@ -70,9 +70,43 @@ def _camb_cached(bg_key, As, halo_A):
 
 
 def bg_key_to_dict(bg_key):
+    # ('SSEEwch', omch2, h0): fondo de SSEE con SOLO esos dos sueltos (lo pidio Mike)
+    if bg_key[0] == 'SSEEwch':
+        d = dict(SSEE_BG)
+        d['omch2'], d['h0'] = float(bg_key[1]), float(bg_key[2])
+        return d
     # bg_key para LCDM: tupla (ombh2, omch2, h0, ns) redondeada -> dict completo
     ombh2, omch2, h0, ns = bg_key
     return dict(ombh2=ombh2, omch2=omch2, h0=h0, ns=ns, mnu=0.06, w0=-1.0, wa=0.0)
+
+
+def loglike_ssee_wc_h(omch2, h0, logA, halo_A, A_IA, dz1, dz2, dz3, dz4, dz5,
+                      delta_c):
+    """SSEE con el fondo clavado EXCEPTO omega_c y H --- lo pidio Mike.
+
+    QUE PREGUNTA. Con LCDM de fondo libre, KiDS pide 17% menos omega_c y empuja
+    H hasta 0.7308 (SH0ES mide 0.7304), y con eso su A_s ya no se aparta del
+    del CMB. La lectura de Mike: **es el MISMO deficit puesto donde haya sitio**
+    --- con la materia clavada lo paga A_s, con la materia libre lo paga la
+    materia. Pero en LCDM se movian CUATRO ingredientes a la vez, asi que no se
+    puede saber cuales dos mandaban.
+
+    Aqui se sueltan SOLO omega_c y H sobre el fondo rigido de SSEE. Si KiDS los
+    lleva en la MISMA direccion (materia abajo, H arriba) y con eso su A_s sube
+    hacia el del CMB, entonces la direccion es del DATO y no del modelo, y esta
+    aislada a dos ingredientes en vez de cuatro.
+
+    PRESTAMO DECLARADO (regla de Mike). omega_c y H NO son libres en SSEE: son
+    algebraicos (omega_c = KAL0*omega_b*n_s, H = 3(phi+pi)^2 por el lado UV).
+    Esto es un DIAGNOSTICO, no una version del modelo: se sueltan para ver hacia
+    donde tira el dato, se cuentan como libres (k pasa de 9 a 11) y se devuelven.
+    Ningun numero de aqui entra en un paper como prediccion de SSEE.
+
+    Priores: los MISMOS que usa la version libre de LCDM, para que la comparacion
+    sea de fondo y no de priores.
+    """
+    return loglike(('SSEEwch', round(omch2, 8), round(h0, 8)), logA, halo_A,
+                   A_IA, dz1, dz2, dz3, dz4, dz5, delta_c)
 
 
 def loglike(bg_key, logA, halo_A, A_IA, dz1, dz2, dz3, dz4, dz5, delta_c):
@@ -214,6 +248,35 @@ def info_lcdm_fijo(chains_dir, covmat=None):
         output=chains_dir + '/lcdmfijo', force=True, resume=False)
 
 
+def info_ssee_wc_h(chains_dir, covmat=None):
+    """SSEE con el fondo rigido EXCEPTO omega_c y H. Ver `loglike_ssee_wc_h`.
+
+    Reparto rapido/lento: omega_c y H entran en CAMB igual que logA y halo_A, asi
+    que van en el bloque LENTO. Los otros siete siguen en el rapido.
+    """
+    p = dict(
+        omch2=dict(prior=dict(min=0.051, max=0.255), ref=float(S.OMEGA_C_H2),
+                   proposal=0.005, latex=r'\Omega_c h^2'),
+        h0=dict(prior=dict(min=0.64, max=0.82), ref=float(S.H0_ALG / 100.0),
+                proposal=0.02, latex='h'),
+        logA=dict(prior=dict(min=1.5, max=4.5), ref=2.90, proposal=0.05,
+                  latex='\\log(10^{10}A_s)'))
+    p.update(NUISANCE_PARAMS)
+    mcmc = {'Rminus1_stop': 0.03, 'max_tries': 10000,
+            'blocking': [[1, ['omch2', 'h0', 'logA', 'halo_A']],
+                         [18, ['A_IA', 'dz1', 'dz2', 'dz3', 'dz4', 'dz5',
+                               'delta_c']]],
+            'oversample_power': 0.7, 'measure_speeds': False}
+    if covmat:
+        mcmc['covmat'] = covmat
+    return dict(
+        likelihood={'p06_growth.cobaya_kids.loglike_ssee_wc_h': {
+            'external': loglike_ssee_wc_h, 'input_params': list(p.keys())}},
+        params=p,
+        sampler={'mcmc': mcmc},
+        output=chains_dir + '/ssee_wc_h', force=True, resume=False)
+
+
 def info_lcdm(chains_dir):
     p = dict(
         ombh2=dict(prior=dict(min=0.019, max=0.026), ref=0.02237,
@@ -240,10 +303,12 @@ if __name__ == '__main__':
     model_name = sys.argv[1] if len(sys.argv) > 1 else 'ssee'
     chains_dir = sys.argv[2] if len(sys.argv) > 2 else \
         '/mnt/datos/SSEE_data/chains_p6/kids'
+    cov = sys.argv[3] if len(sys.argv) > 3 else None
     if model_name == 'lcdmfijo':
         # tercer argumento opcional: covmat de semilla
-        info = info_lcdm_fijo(chains_dir,
-                              sys.argv[3] if len(sys.argv) > 3 else None)
+        info = info_lcdm_fijo(chains_dir, cov)
+    elif model_name == 'ssee_wc_h':
+        info = info_ssee_wc_h(chains_dir, cov)
     else:
         info = (info_ssee(chains_dir) if model_name == 'ssee'
                 else info_lcdm(chains_dir))

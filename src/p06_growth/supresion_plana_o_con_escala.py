@@ -64,7 +64,8 @@ sys.path.insert(0, str(REPO / "src" / "p06_growth"))
 import cobaya_kids as C                                        # noqa: E402
 import kids_shear as K                                         # noqa: E402
 
-SALIDA = REPO / "results" / "logs" / "growth_2026-07" / "supresion_plana_o_escala.json"
+SALIDA = REPO / "results" / "logs" / "growth_2026-07" / (
+    "supresion_plana_o_escala_%s.json" % "_".join(sys.argv[1:] or ["todo"]).lower())
 
 # El A_s que pide cada fondo cosmico (results/logs/cmb_dbic_tau_ajustado.json)
 LOGA_CMB = dict(SSEE=3.0448340130228546, LCDM=3.0450790027403647)
@@ -137,11 +138,20 @@ def corre_modelo(nombre, bg):
     lA = LOGA_CMB[nombre]
 
     # ── CONTROL 1: supresion apagada ────────────────────────────────────
-    c0, arg0 = perfila(bg, lA, 0.0, 1.0)
-    c0b, _ = perfila(bg, lA, 0.0, 5.0)          # otro k_c, misma respuesta
-    ok1 = abs(c0 - c0b) < 1e-6
-    print("  C1 · supresion apagada: chi2 = %.4f  (con otro k_c: %.4f)  -> %s"
+    # ARREGLADO 2026-09-09: antes comparaba dos PERFILES, y fallo con LCDM por
+    # 1e-4 contra un criterio de 1e-6. No era fisico: el perfil arranca tibio
+    # desde la solucion anterior y con tope de 40 iteraciones no converge a esa
+    # cifra — el criterio quedaba POR DEBAJO del ruido de mi propio minimizador.
+    # Lo que C1 tiene que comprobar es la FUNCION `suprime`, no el minimizador:
+    # con las molestias en el MISMO punto, A_sup=0 da el mismo chi2 exactamente.
+    # Corregido con la rejilla de LCDM aun sin ver.
+    e = np.array([0.55, 0.0])
+    c0 = chi2_de(bg, lA, HALO[1], 0.0, 1.0, e)
+    c0b = chi2_de(bg, lA, HALO[1], 0.0, 5.0, e)
+    ok1 = bool(c0 == c0b)
+    print("  C1 · supresion apagada, molestias fijas: %.6f vs %.6f  -> %s"
           % (c0, c0b, "PASA" if ok1 else "FALLA"), flush=True)
+    c0, _ = perfila(bg, lA, 0.0, 1.0)           # el perfil, para la referencia
 
     # ── CONTROL 2: supresion PLANA equivale a bajar la amplitud ─────────
     # con k_c minusculo la supresion es plana; el A_s efectivo tiene que caer
@@ -152,13 +162,13 @@ def corre_modelo(nombre, bg):
     logA_ef = lA + np.log(1.0 - a_best) if a_best < 1 else float('nan')
     med, sig = LOGA_KIDS[nombre]
     desv = abs(logA_ef - med) / sig
-    ok2 = desv < 2.0
+    ok2 = bool(desv < 2.0)
     print("  C2 · plana: A_sup=%.3f -> logA efectivo %.4f  vs cadena %.4f+-%.4f"
           "  = %.2f sigma  -> %s" % (a_best, logA_ef, med, sig, desv,
                                      "PASA" if ok2 else "FALLA"), flush=True)
 
     if not (ok1 and ok2):
-        return dict(controles=dict(C1=ok1, C2=ok2, pasa=False),
+        return dict(controles=dict(C1=bool(ok1), C2=bool(ok2), pasa=False),
                     veredicto="la maquinaria no reproduce lo que ya se sabe")
 
     # ── LA MEDIDA ───────────────────────────────────────────────────────
@@ -173,7 +183,7 @@ def corre_modelo(nombre, bg):
 
     i, j = np.unravel_index(np.nanargmin(Z), Z.shape)
     return dict(
-        controles=dict(C1=ok1, C2=ok2, chi2_sin_supresion=c0,
+        controles=dict(C1=bool(ok1), C2=bool(ok2), chi2_sin_supresion=float(c0),
                        A_plana=float(a_best), logA_efectivo=float(logA_ef),
                        desv_sigmas=float(desv), pasa=True),
         logA_clavado=lA, rejilla_kc=REJILLA_KC.tolist(),
@@ -185,7 +195,10 @@ def corre_modelo(nombre, bg):
 def main():
     t0 = time.time()
     res = {}
+    cuales = sys.argv[1:] or ['SSEE', 'LCDM']
     for nombre, bg in (("SSEE", 'SSEE'), ("LCDM", LCDM_BG)):
+        if nombre not in cuales:
+            continue
         res[nombre] = corre_modelo(nombre, bg)
 
     SALIDA.parent.mkdir(parents=True, exist_ok=True)

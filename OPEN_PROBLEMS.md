@@ -450,7 +450,8 @@ peculiar (Δv/c), no a una corrección de densidad de energía oscura — físic
 **Location:** Transversal — Papers 4, 7, 8 principalmente; también Papers 1, 9, 10
 
 **Añadido:** 2026-05-19  
-**Actualizado:** 2026-05-21
+**Actualizado:** 2026-09-07 (el punto 2 se retiró; la cabecera decía 2026-05-21
+mientras el cuerpo ya llevaba la corrección — arreglado el 2026-09-08)
 
 **Resolución parcial (2026-05-21):**
 

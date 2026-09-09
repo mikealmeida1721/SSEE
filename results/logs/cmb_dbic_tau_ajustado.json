@@ -1,11 +1,18 @@
 {
  "corrida": "\u0394BIC Paper 3 con tau AJUSTADO en los dos modelos",
- "N_datos": 271,
- "ln_N": 5.602118820879701,
+ "N_datos": 669,
+ "ln_N": 6.505784060128229,
+ "N_desglose": {
+  "plik_lite_TTTEEE": 613,
+  "lowl_TT": 28,
+  "lowl_EE": 28,
+  "medido_en": "/home/mike/cobaya_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik/clik/lkl_0/_external/cl_cmb_plik_v22.dat",
+  "nota": "antes se declaraba 271 con '215 bandas TTTEEE'; 215 es TT solo. Medido: 613"
+ },
  "SSEE": {
   "k": 2,
   "chi2_min": 1003.5860397789045,
-  "BIC": 1014.7902774206639,
+  "BIC": 1016.597607899161,
   "libres": [
    "logA",
    "tau"
@@ -26,7 +33,7 @@
  "LCDM": {
   "k": 6,
   "chi2_min": 1003.7685561616213,
-  "BIC": 1037.3812690868995,
+  "BIC": 1042.8032605223907,
   "libres": [
    "ombh2",
    "omch2",
@@ -48,7 +55,7 @@
    "tau": 0.05487411916205905
   }
  },
- "delta_BIC": -22.590991666235595,
+ "delta_BIC": -26.205652623229753,
  "publicado_con_tau_prestado": -24.02,
  "control": {
   "criterio": "cada parametro de LCDM a < 2 sigma de Planck 2018",
@@ -76,5 +83,5 @@
    }
   }
  },
- "segundos": 2612.1729249954224
+ "segundos": 2615.2141466140747
 }

@@ -1,99 +1,81 @@
-# ΔBIC de Paper 3 con τ ajustado: −22.59, no mejora — y el porqué es interesante
+# ΔBIC de Paper 3 con τ ajustado: **−26.21**, mejora — y el titular cambia
 
-**Corrida:** `src/p03_cmb/dbic_tau_ajustado.py`, terminada 2026-09-08 ~12:31.
-**Coste medido:** 2612 s = **43 min**.
-**Estado:** ✅ completa, **control PASA**.
+**Corrida:** `src/p03_cmb/dbic_tau_ajustado.py`, re-corrida 2026-09-08 tras
+corregir el conteo de datos. **Coste:** 44 min. **Control PASA.**
 
-## 1. Qué se preguntó
+> ⚠️ **Este informe ANULA la versión anterior**, que decía −22.59 y «no mejora».
+> Aquélla estaba mal por dos cosas, las dos mías, y las dos las destapó Mike al
+> pedir que se verificara antes de decidir sobre el título.
 
-Paper 3 publica **ΔBIC = −24.02** sobre el dato de Planck, comparando SSEE
-contra ΛCDM. Ese número se obtuvo con `τ` (profundidad óptica, el parámetro que
-mide cuánta niebla dejó la reionización) **puesto al valor que prefiere ΛCDM**,
-no al que prefiere SSEE.
+## 1. Los dos errores de la versión anterior
 
-Prestarle a un modelo el parámetro de otro no es neutral: puede favorecerlo o
-perjudicarlo, y no se sabe cuál sin medirlo. Aquí se ajusta `τ` **en los dos**.
+**(a) Dije que ΛCDM también mejoraba y se comía la ganancia. Falso.** ΛCDM va de
+1003.760 a 1003.769: nueve milésimas, ruido del optimizador. **El único que
+mejora es SSEE**, y mejora 1.82 al recuperar su propio `τ`.
+
+**(b) Conté 271 puntos donde hay 669.** Escribí «215 bandas de plik_lite
+TTTEEE», pero 215 son las de TT **solo**. Contadas en el propio `.clik`
+(`cl_cmb_plik_v22.dat`): TTTEEE tiene **613**. Con lowT (28) y lowE (28),
+**N = 669**. El BIC lleva `4·ln(N)`: 22.41 declarado contra **26.02** real.
+El script ahora **mide** N del likelihood y aborta si no lo encuentra.
 
 ## 2. Qué está fijo y qué libre
 
 | | SSEE | ΛCDM |
 |---|---|---|
-| ω_b (densidad de bariones) | álgebra, 0.0224178 | **libre** |
-| ω_c (densidad de materia oscura fría) | álgebra, 0.1195144 | **libre** |
-| H₀ (constante de Hubble) | álgebra, 67.9621 | **libre** |
-| n_s (índice espectral) | álgebra, 0.9655581 | **libre** |
-| w₀, wₐ (ecuación de estado) | álgebra, −0.8399 / −0.6700 | fijos en −1 / 0 |
-| **A_s (amplitud primordial)** | **libre** | **libre** |
-| **τ (profundidad óptica)** | **libre** | **libre** |
-| **cuenta de libres, k** | **2** | **6** |
-
-Dato: Planck `plik_lite` TTTEEE + lowT + lowE, **N = 271** bandas.
-`BIC = χ²_min + k·ln(N)`, con `ln(271) = 5.6021`.
+| ω_b · ω_c · H₀ · n_s | álgebra (leídos del núcleo) | **libres** |
+| w₀ · wₐ | álgebra (−0.8399 / −0.6700) | fijos en −1 / 0 |
+| A_s · τ | **libres** | **libres** |
+| **k** | **2** | **6** |
 
 ## 3. Los números
 
-| | χ²_min | k | BIC |
-|---|---|---|---|
-| SSEE | **1003.586** | 2 | 1014.790 |
-| ΛCDM | **1003.769** | 6 | 1037.381 |
-| | | | **ΔBIC = −22.59** |
+| | publicado (τ prestado) | ahora (τ ajustado) |
+|---|---|---|
+| χ² SSEE, k=2 | 1005.409 | **1003.586** |
+| χ² ΛCDM, k=6 | 1003.760 | **1003.769** |
+| diferencia | +1.649 | **−0.183** |
+| ΔBIC con N=669 | −24.37 | **-26.21** |
 
-Publicado con `τ` prestado: **−24.02**. Negativo favorece a SSEE en los dos
-casos.
+**Mejora 1.84.** Y la fila de la diferencia **cambia de signo**: con el `τ`
+prestado SSEE perdía por 1.65; con el suyo **gana por 0.18**.
 
-## 4. Por qué NO mejoró, que es lo que se preguntaba
+Aviso de honestidad: 0.18 sobre 669 puntos es **cero estadístico**. Lo correcto
+es decir que **ajustan igual**, no que SSEE ajuste mejor. Lo que no es cero es
+la cuenta de perillas.
 
-Se esperaba que mejorara porque SSEE gana al recuperar su propio `τ`:
-**1005.41 → 1003.586, gana 1.82**. Pero ΛCDM también se movió, y la resta se
-come casi toda la ganancia. El resultado neto es **1.43 peor** que el publicado.
+## 4. Hallazgo colateral: el −24.02 publicado tampoco está bien contado
 
-Lo interesante no es el ΔBIC sino la fila de arriba: **SSEE ajusta el dato
-igual de bien que ΛCDM (1003.586 contra 1003.769, diferencia 0.18 sobre 271
-puntos) usando cuatro perillas menos.** Todo el ΔBIC sale de esa diferencia de
-perillas, no de que un modelo ajuste mejor. Eso es más honesto de contar que un
-número grande.
+Su χ² de 1005.409 incluye **las tres piezas** del likelihood — medido en el
+punto nuevo: plik_lite 584.170 + lowT 23.206 + lowE 396.210 = 1003.586 — pero
+su N contaba **sólo la grande**. Con el conteo completo, el número publicado
+debería haber dicho **−24.37**, no −24.02.
 
 ## 5. El control
 
-Criterio escrito en el script **antes** de correr: el mínimo de ΛCDM tiene que
-caer a menos de 2σ de la línea base de Planck 2018 en sus cuatro parámetros de
-fondo. Si el optimizador aterrizara lejos, estaría midiendo su propia
-convergencia y no el modelo.
+Criterio escrito en el script **antes** de correr: el mínimo de ΛCDM debe caer a
+menos de 2σ de Planck 2018 en sus cuatro parámetros de fondo.
 
-| | encontrado | Planck 2018 | desvío |
+| | encontrado | Planck | desvío |
 |---|---|---|---|
 | ω_b | 0.022349 | 0.02237 | 0.14σ |
 | ω_c | 0.120314 | 0.1200 | 0.26σ |
 | H₀ | 67.1208 | 67.36 | 0.44σ |
 | n_s | 0.964678 | 0.9649 | 0.05σ |
 
-**PASA con holgura.** El optimizador reencuentra Planck por su cuenta, así que
-la comparación es limpia.
+**PASA con holgura.** El optimizador reencuentra Planck por su cuenta.
 
-## 6. Qué NO establece
+## 6. Qué propagar y qué decidir
 
-- No es un ΔBIC bayesiano completo: usa el mínimo de χ², no la evidencia
-  integrada. Es la misma aproximación que usa el número publicado, así que la
-  comparación entre los dos es válida; el valor absoluto arrastra esa
-  aproximación en los dos casos.
-- El `N = 271` es una cuenta declarada (215 bandas de la parte de alta escala
-  más 28 y 28 de las dos de baja). Si esa cuenta cambiara, el ΔBIC cambia por
-  su `ln(N)`. Está anotada en el log para que se pueda discutir.
+**Propagar (no es decisión, es lo que toca):** −24.02 → **−26.21** en Paper 3,
+`CLAUDE.md` y el Registro, con la nota de que el viejo estaba mal contado.
 
-## 7. Qué habría que propagar, si Mike aprueba
-
-| dónde | qué dice hoy | qué diría |
-|---|---|---|
-| `manuscript/SSEE_Paper3_CMB.tex` | ΔBIC = −24.02 | −22.59, con `τ` ajustado en los dos |
-| `CLAUDE.md`, tabla de Paper 3 | −24.02 | ídem |
-| `VERIFICATION_LEDGER.md` | fila con log `p3_cmb_reframe_nu_fix.log` | añadir esta corrida al lado |
-
-**Recomendación: cambiarlo, y además cambiar cómo se cuenta.** El número nuevo
-es más defendible (nadie le presta nada a nadie) y va en dirección
-desfavorable, lo cual quita cualquier sospecha de haberlo buscado. Y el
-titular debería dejar de ser el ΔBIC y pasar a ser: *el mismo ajuste con cuatro
-parámetros menos*. Un referee acepta eso mucho mejor que un número de
-selección de modelos que depende de cómo cuentes N.
+**Decidir (esto sí es tuyo):** el titular. Hoy Paper 3 vende el ΔBIC. La
+alternativa es vender la fila de arriba: **el mismo ajuste con cuatro
+parámetros menos**. Recomiendo el cambio, porque el ΔBIC depende de cómo
+cuentes N —hoy mismo se ha visto— y la comparación de χ² a igual dato no
+depende de nada.
 
 **Riesgo de no tocarlo:** el número publicado se obtuvo prestándole a SSEE el
-`τ` de ΛCDM, y eso es justo la clase de detalle que un referee pregunta.
+`τ` de ΛCDM y contando 613 puntos donde el χ² usaba 669. Las dos cosas las
+encuentra un referee que intente reproducirlo.

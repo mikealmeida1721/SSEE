@@ -44,9 +44,23 @@ from cmb_eval import chi2_y_s8                          # noqa: E402
 
 SALIDA = REPO / "results" / "logs" / "cmb_dbic_tau_ajustado.json"
 
-# N de plik_lite TTTEEE (215 bandas) + lowT (2..29) + lowE (2..29).
-# Se declara aqui y se anota en el log: el BIC depende de el por su ln(N).
-N_DATOS = 215 + 28 + 28
+# ── N: SE MIDE, NO SE DECLARA (fix 2026-09-08, lo pidio Mike) ──────────
+# Aqui decia `N_DATOS = 215 + 28 + 28 = 271`, con "215 bandas de plik_lite
+# TTTEEE". FALSO: 215 son las bandas de TT SOLO. TTTEEE tiene 613, y se
+# comprueba contando las lineas de cl_cmb_plik_v22.dat dentro del propio
+# .clik. Con 271 el termino 4*ln(N) del BIC valia 22.41 en vez de 26.02, y
+# ese unico error hacia que el dBIC pareciera EMPEORAR (-22.59) cuando en
+# realidad MEJORA. El N se mide del likelihood o la corrida no corre.
+_CLIK = pathlib.Path(os.path.expanduser(
+    os.environ.get("COBAYA_PACKAGES_PATH", "~/cobaya_packages"))) / (
+    "data/planck_2018/baseline/plc_3.0/hi_l/plik_lite/"
+    "plik_lite_v22_TTTEEE.clik/clik/lkl_0/_external/cl_cmb_plik_v22.dat")
+if not _CLIK.exists():
+    raise SystemExit("no encuentro %s: N no se puede medir, no se corre" % _CLIK)
+N_PLIK = sum(1 for _ in _CLIK.open())      # bandas TTTEEE de plik_lite
+N_LOWT = 28                                # lowl.TT, ell = 2..29
+N_LOWE = 28                                # lowl.EE (SimAll), ell = 2..29
+N_DATOS = N_PLIK + N_LOWT + N_LOWE
 
 FONDO_SSEE = dict(ombh2=S.OMEGA_B_H2, omch2=S.OMEGA_C_H2,
                   H0=S.H0_ALG, ns=S.N_S)
@@ -123,6 +137,10 @@ def main():
     out = dict(
         corrida="ΔBIC Paper 3 con tau AJUSTADO en los dos modelos",
         N_datos=N_DATOS, ln_N=lnN,
+        N_desglose=dict(plik_lite_TTTEEE=N_PLIK, lowl_TT=N_LOWT, lowl_EE=N_LOWE,
+                        medido_en=str(_CLIK),
+                        nota="antes se declaraba 271 con '215 bandas TTTEEE'; "
+                             "215 es TT solo. Medido: %d" % N_PLIK),
         SSEE=dict(k=2, chi2_min=chi2_s, BIC=bic_s, libres=["logA", "tau"],
                   fondo_fijo_por_algebra=dict(FONDO_SSEE, w0=W_SSEE, wa=WA_SSEE),
                   mejor=par_s),

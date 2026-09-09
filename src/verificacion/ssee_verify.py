@@ -2713,7 +2713,7 @@ try:
           f"{_deuda44} sitios (tope {_DEUDA_MAX['R44']})"
           + (": " + "; ".join(_d44[:3]) if _d44 else ""))
 
-    # ── R44b · las TABLAS, que la forma «= valor» no alcanza (OP-24) ──────────
+    # ── R44b · las TABLAS, que la forma «= valor» no alcanza (OP-25) ──────────
     # POR QUE (2026-09-08). R44 exige el signo igual y en una celda el valor va
     # solo, asi que no veia ninguna tabla. Al medirlo la primera vez conte 50
     # sitios y estaba MAL: emparejaba por coincidencia numerica sin comprobar de

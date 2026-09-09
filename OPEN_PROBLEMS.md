@@ -2711,7 +2711,9 @@ región donde el fondo acoplado admite solución.
 
 ---
 
-## OP-24 — R44 no mira las celdas de tabla — ⚪ ABIERTO (2026-09-08)
+## OP-25 — R44 no mira las celdas de tabla — ⚪ ABIERTO (2026-09-08)
+
+> *(Renumerado de OP-24 a OP-25 el 2026-09-08: el 24 ya estaba ocupado por «ningún fondo reproduce $w_a$», abierto el día anterior. La colisión la creé yo al abrir éste sin mirar la lista.)*
 
 **Severidad:** baja para la física, media para la presentación.
 

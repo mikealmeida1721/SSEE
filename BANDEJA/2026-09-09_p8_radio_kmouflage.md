@@ -71,12 +71,71 @@ conservando el corchete, pero **el radio k-mouflage depende de la forma de
 K(X)** y derivarlo bien es el contenido de OP-4. Lo que sí está establecido sin
 ninguna hipótesis es que **la fórmula publicada no puede ser un radio**.
 
-## Qué NO toca
+## De dónde salió — la arqueología (lo pidió Mike)
 
-La predicción de lente de Paper 8 se apoya en `ω_c = KAL₀·ω_b·n_s` y en
-`α_B = α_M = 0` de Paper 7, no en este radio (CLAUDE.md, entrada de Paper 8).
-Hay que **comprobarlo explícitamente** antes de asegurar que el titular del
-paper no se mueve. No lo he comprobado todavía.
+**No dejó de ser coherente al cambiar otra cosa. Nació roto, en un solo
+commit**: `295ed6e`, del 2026-05-15, titulado *«fix(paper8): OP-4 resolved —
+replace Galileon Vainshtein with k-mouflage»*.
+
+Lo que había antes era **peor y evidente**: la fórmula de Galileon daba
+`r_V ≈ 1.8×10⁴⁴ m`, mayor que el radio de Hubble. Un número absurdo a simple
+vista. Eso era OP-4.
+
+El arreglo lo sustituyó por la fórmula k-mouflage con **exponente 1/3**, y el
+propio mensaje del commit la llama *«Correct radius»* y marca OP-4 como
+RESUELTO. `CLAUDE.md` todavía dice «OP-4 ✅ RESUELTO 2026-05-15».
+
+**Y ahí está la lección, que es incómoda:** el arreglo de un problema de
+unidades introdujo otro problema de unidades. Y lo empeoró en un sentido
+concreto — cambió un número **absurdo** (10⁴⁴ m, que cualquiera caza) por uno
+**plausible** (10⁷ m, que nadie mira dos veces). Un número absurdo se detecta
+solo; uno plausible sobrevive meses.
+
+## El exponente correcto SÍ se puede derivar, y es 1/2
+
+No hace falta buscar en la literatura. El radio k-mouflage es donde el término
+cinético no lineal alcanza al lineal, o sea donde `X ~ M⁴`, es decir
+`φ' ~ M²`. En régimen lineal, alrededor de una fuente,
+`φ' = M_obj/(4π M_pl r²)`. Igualando:
+
+```
+M_obj / (4π M_pl r²) = M²   ⟹   r² = M_obj/(4π M_pl M²)
+```
+
+Es decir **exponente 1/2**, que es justo el que cierra unidades. El paper puso
+un cubo donde va un cuadrado.
+
+## Qué NO toca — VERIFICADO 2026-09-09
+
+**El titular de Paper 8 NO depende de este radio.** Comprobado leyendo los tres
+sitios que lo usan:
+
+- L621: *«Baryonic matter is independently protected by selective coupling
+  **regardless of $r_{\rm km}$**»* — el cumplimiento con GR no cuelga de él.
+- L697: el radio *«provides **supplementary** non-linear screening… but the EFT
+  suppression … is the **dominant** mechanism for all solar-system tests»*.
+
+O sea que la predicción de lente se sostiene sobre la pata EFT
+(`α_B = α_M = 0`), y esa pata está intacta. **Lo que dice `CLAUDE.md` sobre
+Paper 8 queda confirmado, ya no es una afirmación sin comprobar.**
+
+**Lo que sí se cae** son tres cosas de §4.2, todas locales:
+1. los tres números de la tabla y la figura;
+2. la frase *«r_km ≪ 1 kpc para todos los objetos»* — con 1/2, la Vía Láctea da
+   4 kpc;
+3. la frase de que el radio da apantallamiento *«dentro de los cuerpos
+   estelares»* — con 1/2 son 823 AU, muy fuera.
+
+Nótese la dirección: el error corregido da **más** apantallamiento, no menos.
+Eso hace **más fácil** pasar las pruebas del sistema solar, no más difícil. Lo
+que se debilita es el argumento secundario de que la quinta fuerza opera a
+escala galáctica.
+
+## Reclasificación tras verificar
+
+Sigue siendo **ROJO, pero acotado a §4.2**: hay tres números publicados que
+están mal y dos veredictos de tabla que se invierten. No es rojo a nivel de
+modelo: el titular del paper no se mueve.
 
 ## Decisión que es de Mike
 

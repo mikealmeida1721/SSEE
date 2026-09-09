@@ -262,7 +262,7 @@ Informe: `BANDEJA/2026-09-09_p8_radio_kmouflage.md`.
 | # | corrida | coste | qué contesta | depende de |
 |---|---|---|---|---|
 | 20 🔴 | **derivar r_km desde K(X) y rehacer tabla+figura de P8** | días | la tabla `tab:vainshtein` publica tres radios con **tres defectos**: el exponente 1/3 sobre un corchete GeV⁻² da GeV^−0.667 (no es longitud); los números no salen de la propia fórmula (factor ~10³ con cualquier convención de M_pl); y al reparar el exponente a 1/2 **dos de las tres filas cambian de veredicto** (el Sol pasa de «dentro del cuerpo estelar» a 823 AU, la Vía Láctea de «≪1 kpc» a 4 kpc). Es el contenido real de OP-4 | ninguna |
-| 21 | **¿la predicción de lente de P8 depende del radio k-mouflage?** | lectura | CLAUDE.md dice que el titular de P8 se apoya en `ω_c` y en `α_B=α_M=0`, no en el radio. **No está comprobado.** Hasta comprobarlo no se puede asegurar que el defecto de la #20 no toque el resultado principal | la #20 |
+| 21 ✅ | ~~¿la predicción de lente de P8 depende del radio k-mouflage?~~ **NO, verificado 2026-09-09** | lectura | Comprobado en las tres menciones: L621 dice que los bariones están protegidos por acoplamiento selectivo **«regardless of r_km»**, y L697 que el radio es **«supplementary»** frente a la supresión EFT, que es **«the dominant mechanism»**. El titular se sostiene sobre `α_B=α_M=0`. La #20 queda acotada a §4.2 | — |
 
 **Medida inmediata recomendada (decisión de Mike):** retirar tabla y figura del
 paper y dejar el radio como pendiente declarado, mientras se deriva el bueno. Un

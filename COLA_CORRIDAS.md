@@ -414,3 +414,22 @@ sigue valiendo como comprobación de que la maquinaria suprime lo que dice, pero
 **Procedencia del número de C2, verificada:** 2.8633±0.0500 (SSEE) y
 2.8327±0.0456 (ΛCDM) salen de `chains_p6/kids/ssee.*.txt` y `.../lcdmfijo.*.txt`.
 **No interviene BOSS.** El promedio 2.8418 de `fuga2`/`fuga3` está retirado.
+
+## #24 ✅ — qué partícula prefiere KiDS con el fondo de SSEE fijo (CERRADA 2026-09-09)
+
+`src/p06_growth/particula_que_prefiere_kids.py` · 0.77 h · informe en
+`BANDEJA/2026-09-09_particula_que_prefiere_kids.md` · predicción registrada
+antes en `BANDEJA/2026-09-09_prediccion_particula_kids.md`.
+
+Sustituye la familia inventada de la #19 por una especie térmica masiva
+integrada por CAMB. Controles C0/C1/C2 pasan; C2 cazó un fallo mío
+(`num_massive_neutrinos=3` convertía el neutrino masivo en tres ligeros, 0.6%
+plano). Mejor: m_x=0.80 eV, ω_x=0.0030 (2.10% de ω_m), ΔN_eff=0.249, χ²=265.73
+contra 282.17 sin partícula. **Mi predicción de que Planck la mataría FALLÓ.**
+
+**DEUDA que deja, para hoy mismo:**
+- rejilla pegada al borde ω_x=0.005 para m_x ≥ 2.2 eV: el valle sigue fuera
+- 3 de los 8 mejores pegados a halo_A=3.130 (borde de arriba del prior)
+- halo_A tiene que ir al minimizador, no en rejilla
+- falta el CMB con la misma partícula dentro (ahora la cota N_eff es a mano)
+

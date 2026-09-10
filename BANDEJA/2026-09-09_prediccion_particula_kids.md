@@ -97,3 +97,42 @@ rejilla entera habría salido con ese sesgo dentro y yo no lo habría visto.
 - **No decide que la partícula exista.** Mide qué prefiere KiDS. Lo que Planck
   permite se cruza después.
 - **Ninguna cifra entra en ningún paper.**
+
+
+---
+
+# PREDICCIÓN DE MIKE sobre la #25 — registrada 2026-09-10, antes del resultado
+
+**Autor: Mike.** Enunciado suyo, textual:
+
+> «si la partícula es como se supone que debe ser no debería afectar al CMB
+> porque no es que le sume materia, es parte de ella»
+
+**Es correcto en el fondo, y la corrida lo comprueba.** `ω_m` no se mueve
+(control C1 de la #24: 2.78e−17), así que la gravedad que el CMB pesa en
+z=1100 es idéntica con y sin partícula.
+
+**La única rendija por la que el CMB puede notarla** es la ventana anterior a
+que se frenara: mientras iba rápida no era materia todavía, contaba como
+radiación, y eso corre la igualdad materia-radiación. El tamaño de esa ventana
+lo pone la masa.
+
+| `m_x` | se frenó en | ventana |
+|---|---|---|
+| 0.3 eV | z ≈ 580 | enorme, aún relativista en la recombinación |
+| 0.8 eV | z ≈ 2160 | mediana |
+| 2.2 eV | z ≈ 7300 | pequeña |
+
+## El enunciado, en números
+
+> **El precio en χ² que el CMB le cobre a la partícula debe BAJAR
+> monótonamente al subir `m_x`, y hacerse despreciable (Δχ² ≲ 2) en la parte
+> pesada del valle.**
+
+| qué lo confirmaría | qué lo falsaría |
+|---|---|
+| Δχ²_CMB decrece con `m_x` y queda ≲ 2 en 2.2 eV | que el CMB cobre caro también a las pesadas |
+| el mínimo conjunto cae en la parte pesada del valle | que cobre lo mismo a todas: entonces toca algo que no es la ventana |
+
+Si sale lo segundo, la partícula le está afectando por una vía que ninguno de
+los dos ha identificado, y hay que entender cuál antes de seguir.

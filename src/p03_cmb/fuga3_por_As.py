@@ -49,6 +49,8 @@ import pathlib
 import sys
 import time
 
+import numpy as np
+
 from scipy.optimize import minimize
 
 REPO = pathlib.Path(__file__).resolve().parents[2]
@@ -90,8 +92,24 @@ def cotas(n, modo):
     return LIM[n]
 
 
+def paso_simplex(n, modo):
+    """Paso de cada arista del simplex INICIAL.
+
+    ARREGLADO 2026-09-10. Nelder-Mead, si no le das simplex, perturba cada
+    coordenada un 5% de SU VALOR. Para estos ingredientes ese 5% vale entre 5 y
+    11 sigma de Planck (ns: 11.5), o sea que en modo `3sig` TODOS los vertices
+    menos x0 caen FUERA de la caja, donde `f` devuelve 1e30: el simplex nace
+    degenerado y el minimizador devuelve basura. Se vio porque cinco filas
+    daban un chi2 PEOR que el punto de partida, y un minimizador con cotas que
+    arranca dentro de la caja no puede hacer eso nunca.
+    """
+    if modo == "3sig" and n in SIG:
+        return SIG[n]                      # 1 sigma: holgado dentro de la de 3
+    return 0.05 * abs(BASE[n]) if BASE[n] else 2.5e-4
+
+
 def optimiza(fijos, libres, modo):
-    x0 = [BASE[n] for n in libres]
+    x0 = np.array([BASE[n] for n in libres], float)
     lim = [cotas(n, modo) for n in libres]
     it = 600 + 700 * len(libres)
 
@@ -100,9 +118,19 @@ def optimiza(fijos, libres, modo):
             return 1e30
         return chi2_y_s8(dict(fijos, **{n: v for n, v in zip(libres, u)}),
                          W, WA)[0]
+
+    pasos = np.array([paso_simplex(n, modo) for n in libres])
+    sim = np.vstack([x0] + [x0 + np.eye(len(x0))[i] * pasos[i]
+                            for i in range(len(x0))])
     r = minimize(f, x0, method="Nelder-Mead",
-                 options=dict(xatol=1e-6, fatol=1e-3, maxiter=it))
-    return float(r.fun), {n: float(v) for n, v in zip(libres, r.x)}
+                 options=dict(xatol=1e-6, fatol=1e-3, maxiter=it,
+                              initial_simplex=sim))
+    # CONTROL GRATIS (R53): un minimizador que arranca DENTRO de la caja no
+    # puede devolver algo peor que su punto de partida. Si lo hace, fallo.
+    f0 = float(f(x0))
+    if not np.isfinite(r.fun) or r.fun > f0:
+        return f0, {n: float(v) for n, v in zip(libres, x0)}, False
+    return float(r.fun), {n: float(v) for n, v in zip(libres, r.x)}, True
 
 
 def main():
@@ -118,8 +146,8 @@ def main():
     print("=== A_s clavado: %s   logA = %.6f" % (etq.upper(), loga))
     print("    procedencia: %s\n" % proc, flush=True)
 
-    chi2_ref, _ = optimiza(fondo, ["logA", "tau"], "libre")
-    chi2_base, _ = optimiza(dict(fondo, logA=loga), ["tau"], "libre")
+    chi2_ref, _, _ = optimiza(fondo, ["logA", "tau"], "libre")
+    chi2_base, _, _ = optimiza(dict(fondo, logA=loga), ["tau"], "libre")
     castigo = chi2_base - chi2_ref
     print("referencia (logA y tau libres) = %.3f" % chi2_ref)
     print("base (logA clavado)            = %.3f" % chi2_base)
@@ -135,7 +163,7 @@ def main():
 
     # ── CONTROL PRIMERO (R24) ───────────────────────────────────────────
     if en_pct:
-        c_ctrl, _ = optimiza(fondo, ["tau", "logA"], "libre")
+        c_ctrl, _, _ = optimiza(fondo, ["tau", "logA"], "libre")
         pct = 100.0 * (castigo - (c_ctrl - chi2_ref)) / castigo
         print("\nCONTROL: soltar solo logA recupera %.2f%% (criterio >95%%) -> %s"
               % (pct, "PASA" if pct > 95.0 else "FALLA"), flush=True)
@@ -160,10 +188,10 @@ def main():
         for modo in ("libre", "3sig"):
             fj = dict(logA=loga)
             fj.update({k: BASE[k] for k in ING if k not in cb})
-            c, p = optimiza(fj, ["tau"] + list(cb), modo)
+            c, p, ok = optimiza(fj, ["tau"] + list(cb), modo)
             gana = castigo - (c - chi2_ref)
             fila[modo] = dict(
-                chi2=c, gana=gana,
+                chi2=c, gana=gana, minimizador_ok=bool(ok),
                 gana_pct=(100.0 * gana / castigo) if en_pct else None,
                 valores={n: p[n] for n in cb},
                 sigmas={n: (p[n] - BASE[n]) / SIG[n] for n in cb},

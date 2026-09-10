@@ -28,9 +28,19 @@ LIB = ['ombh2', 'omch2', 'H0', 'ns', 'logA', 'tau']
 _M = {}          # cache por (w, wa)
 
 
-def modelo(w, wa):
-    """w y wa son OBLIGATORIOS: sin defecto no se hereda el fondo ajeno."""
+def modelo(w, wa, dneff=0.0, meffsterile=0.0):
+    """w y wa son OBLIGATORIOS: sin defecto no se hereda el fondo ajeno.
+
+    `dneff`/`meffsterile` anaden una especie termica masiva extra (canal
+    `meffsterile` de CAMB). Con los dos en 0 —el defecto— la CLAVE de cache y
+    el `info` son EXACTAMENTE los de antes: el modelo sin particula es el mismo
+    objeto de siempre, bit a bit. Vigilado por el control C0 de la cola #25.
+    Ver `src/p06_growth/particula_que_prefiere_kids.py` para la traduccion
+    (masa, temperatura) -> (dneff, meffsterile).
+    """
     cl = (round(float(w), 12), round(float(wa), 12))
+    if meffsterile > 0.0:
+        cl = cl + (round(float(dneff), 12), round(float(meffsterile), 12))
     if cl not in _M:
         from cobaya.model import get_model
         info = {
@@ -56,8 +66,28 @@ def modelo(w, wa):
                 'A_planck': 1.0,
                 'sigma8': None},
             'debug': False}
+        if meffsterile > 0.0:
+            info['params']['nnu'] = 3.044 + float(dneff)
+            info['params']['meffsterile'] = float(meffsterile)
         _M[cl] = get_model(info)
     return _M[cl]
+
+
+def chi2_particula(p, w, wa, dneff=0.0, meffsterile=0.0):
+    """Como `chi2_y_s8`, pero con una especie termica masiva extra dentro.
+
+    Con dneff = meffsterile = 0 devuelve EXACTAMENTE lo mismo que `chi2_y_s8`:
+    usa el mismo objeto de modelo. Eso es el control C0 de la cola #25."""
+    m = modelo(w, wa, dneff, meffsterile)
+    try:
+        ll, der = m.loglikes({k: float(p[k]) for k in LIB})
+    except Exception:
+        return 1e30, np.nan
+    c = -2.0 * float(np.sum(ll))
+    if not np.isfinite(c):
+        return 1e30, np.nan
+    s8 = float(der[list(m.parameterization.derived_params()).index('sigma8')])
+    return c, s8
 
 
 def chi2_y_s8(p, w, wa):

@@ -86,11 +86,25 @@ def shift_nz(z, nofz, deltaz):
 
 
 def run_camb(omch2, ombh2, h0, ns, As, mnu=0.06, w=-1.0, wa=0.0,
-             halo_A=2.6, zmax=6.0, kmax=20.0, nz_pk=100):
+             halo_A=2.6, zmax=6.0, kmax=20.0, nz_pk=100,
+             dneff=0.0, meffsterile=0.0):
     """P(k,z) no lineal con HMcode-2015 en la variante de 1 parametro de KiDS:
-       c_min = halo_A ; eta_0 = 0.98 - 0.12*c_min  (Mead+2015 ec.30, valores KiDS)."""
+       c_min = halo_A ; eta_0 = 0.98 - 0.12*c_min  (Mead+2015 ec.30, valores KiDS).
+
+    `dneff`/`meffsterile` anaden una especie termica masiva extra (canal
+    `meffsterile` de CAMB). Con los dos en 0 —el defecto— esta funcion es
+    IDENTICA a como estaba: `set_cosmology` no recibe ningun argumento nuevo.
+    Ver `src/p06_growth/particula_que_prefiere_kids.py` para la traduccion
+    (masa, temperatura) -> (dneff, meffsterile) y su control."""
     p = camb.CAMBparams()
-    p.set_cosmology(H0=h0 * 100.0, ombh2=ombh2, omch2=omch2, mnu=mnu, omk=0.0)
+    # OJO: NO se pasa `num_massive_neutrinos`. Este pipeline lleva UN solo
+    # autoestado masivo cargando todo Sum m_nu (degeneracion 1.0147); pasar 3
+    # lo convierte en tres neutrinos ligeros, que escapan mas, y mueve el P(k)
+    # un 0.6% PLANO. Lo caso el control C2 de la cola #24.
+    extra = (dict(nnu=3.044 + dneff, meffsterile=meffsterile)
+             if meffsterile > 0.0 else {})
+    p.set_cosmology(H0=h0 * 100.0, ombh2=ombh2, omch2=omch2, mnu=mnu, omk=0.0,
+                    **extra)
     p.set_dark_energy(w=w, wa=wa, dark_energy_model='ppf')
     p.InitPower.set_params(As=As, ns=ns)
     zs = np.linspace(0.0, zmax, nz_pk)[::-1]

@@ -1,0 +1,24 @@
+{
+ "corrida": "vara: KiDS con A_s libre en el MISMO perfil que la particula",
+ "motivo": "Mike \u2014 cuanto se mueve la particula respecto de lo que el modelo presenta con A_s libre. El 265.44 de la cadena R3 NO es comparable: es marginal con 9 libres contra perfil con 3.",
+ "control_logA_clavado": {
+  "chi2": 282.17573483160413,
+  "esperado": 282.1758,
+  "err": 6.516839584946865e-05,
+  "pasa": true
+ },
+ "libres": [
+  "logA",
+  "halo_A",
+  "A_IA",
+  "delta_c"
+ ],
+ "dz": "clavados en su media, igual que en la corrida de la particula",
+ "chi2": 266.5594483224416,
+ "logA": 2.857871430984229,
+ "logA_del_CMB": 3.0448340130228546,
+ "halo_A": 2.5855533369444297,
+ "A_IA": 0.5656830129990623,
+ "delta_c": 7.804074355550698e-08,
+ "segundos": 3411.514440536499
+}

@@ -86,9 +86,15 @@ def camb_lin(c, z):
     """P_lin(k) y f(z) del fondo fijo, a A_s de referencia. A_s entra despues
     como factor exacto, asi que CAMB se corre una sola vez por (modelo, z)."""
     p = camb.CAMBparams()
-    omch2 = c['Om'] * c['h'] ** 2 - c['ombh2'] - c['mnu'] / 93.14
+    # Particula termica extra (cola #27). Con om_x = 0 —el defecto— `omch2` y
+    # `set_cosmology` son EXACTAMENTE los de antes: el fondo sin particula no
+    # se mueve ni un bit. Vigilado por el control C0 de `boss_con_particula.py`.
+    om_x = c.get('om_x', 0.0)
+    omch2 = c['Om'] * c['h'] ** 2 - c['ombh2'] - c['mnu'] / 93.14 - om_x
+    kw = (dict(nnu=3.044 + c['dneff'], meffsterile=c['meffsterile'])
+          if om_x > 0.0 else {})
     p.set_cosmology(H0=c['h'] * 100.0, ombh2=c['ombh2'], omch2=omch2,
-                    mnu=c['mnu'], omk=0.0)
+                    mnu=c['mnu'], omk=0.0, **kw)
     p.set_dark_energy(w=c['w0'], wa=c['wa'], dark_energy_model='ppf')
     p.InitPower.set_params(As=AS_REF, ns=c['ns'])
     p.set_matter_power(redshifts=[z], kmax=3.0)

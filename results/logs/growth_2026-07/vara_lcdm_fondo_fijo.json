@@ -1,0 +1,31 @@
+{
+ "corrida": "LCDM con el fondo de Planck clavado, logA incluido, contra KiDS",
+ "motivo": "Mike \u2014 la tabla comparaba SSEE con fondo fijo contra LCDM con fondo libre. Este es el analogo exacto del 282.18 de SSEE.",
+ "control_ssee": {
+  "chi2": 282.17726824237553,
+  "esperado": 282.1758,
+  "err": 0.0014682423755516538,
+  "pasa": true
+ },
+ "libres": [
+  "halo_A",
+  "A_IA",
+  "delta_c"
+ ],
+ "dz": "clavados en su media",
+ "fondo_lcdm": {
+  "ombh2": 0.02237,
+  "omch2": 0.12,
+  "h0": 0.6736,
+  "ns": 0.9649,
+  "mnu": 0.06,
+  "w0": -1.0,
+  "wa": 0.0,
+  "logA": 3.0450790027403647
+ },
+ "chi2_kids": 288.22994572296005,
+ "halo_A": 2.000002642133639,
+ "A_IA": 0.7063669514961337,
+ "delta_c": 1.3832013392687227e-05,
+ "segundos": 1462.1420633792877
+}

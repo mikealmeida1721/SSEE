@@ -94,6 +94,18 @@ def main():
             "   <-- MINIMIZADOR FALLA" if not ok else ""), flush=True)
 
     mejor = max(res.items(), key=lambda t: t[1]['gana_pct'])
+
+    # CONTROL DE ANIDAMIENTO (R53): un conjunto no puede absorber menos que un
+    # subconjunto suyo. Si lo hace, fallo el minimizador y esas filas NO se leen.
+    anid = F.revisa_anidamiento(res)
+    rotas = sorted({v['conjunto'] for v in anid})
+    print("\n  CONTROL DE ANIDAMIENTO -> %s" % (
+        "PASA" if not anid else "FALLA en %d filas de %d (%d pares)"
+        % (len(rotas), len(res), len(anid))), flush=True)
+    for v in anid:
+        print("    x %-22s %7.1f%%  <  %-16s %7.1f%%" % (
+            v['conjunto'], v['gana_pct'], v['subconjunto'],
+            v['gana_pct_subconjunto']), flush=True)
     salida.write_text(json.dumps(dict(
         corrida="rehace la columna 3sig de fuga3 con el simplex arreglado",
         etiqueta=etq, logA_clavado=loga, chi2_referencia=chi2_ref,
@@ -104,6 +116,11 @@ def main():
         arreglo="paso_simplex = 1 sigma en modo 3sig + control de no-empeorar",
         control_simplex_cabe=bool(ok0),
         filas_con_minimizador_fallando=fallos,
+        control_anidamiento=dict(
+            regla="un conjunto de libres no puede absorber menos que un "
+                  "subconjunto suyo: puede dejar los extras quietos y repetirlo",
+            pasa=bool(not anid), filas_rotas=rotas,
+            violaciones=anid),
         subconjuntos_3sig=res,
         mejor=dict(nombre=mejor[0], gana_pct=mejor[1]['gana_pct'],
                    chi2=mejor[1]['chi2']),

@@ -133,6 +133,44 @@ def optimiza(fijos, libres, modo):
     return float(r.fun), {n: float(v) for n, v in zip(libres, r.x)}, True
 
 
+def revisa_anidamiento(res, tol=0.05):
+    """CONTROL DE ANIDAMIENTO (R53) — instalado 2026-09-11, lo pidio Mike.
+
+    LA REGLA. Un conjunto de ingredientes libres NO PUEDE absorber menos que un
+    subconjunto suyo. Siempre puede dejar los ingredientes de mas en su valor de
+    partida y repetir exactamente lo que consiguio el subconjunto. Si sale
+    menos, el que fallo es el MINIMIZADOR, no la fisica.
+
+    POR QUE HACIA FALTA OTRO CONTROL. El control gratis de `optimiza()` compara
+    `r.fun` contra `f(x0)`, su propio punto de partida. Pero el `chi2_base` con
+    el que se calcula `gana` se midio con `tau` YA ajustado, asi que
+    `f(x0) > chi2_base` y un resultado peor que `chi2_base` pasaba igual. Este
+    control no necesita ninguna vara externa: compara las filas ENTRE SI, y la
+    aritmetica sola delata el fallo.
+
+    PROBADO CONTRA EL DATO DEFECTUOSO: sobre
+    `results/logs/cmb_fuga3_kids_3sig_rehecho.json` caza 8 de 15 filas que el
+    control anterior dejo pasar (p.ej. `omch2+H0` absorbe -13.9% cuando `H0`
+    solo absorbe 2.4%).
+
+    res : dict {"omch2+H0": {"gana_pct": ...}, ...}
+    tol : margen de ruido del optimizador, en puntos porcentuales.
+    Devuelve la lista de violaciones, la peor primero. Lista vacia = PASA.
+    """
+    viol = []
+    for nom, d in res.items():
+        cj = frozenset(nom.split("+"))
+        for otro, e in res.items():
+            so = frozenset(otro.split("+"))
+            if so < cj and e["gana_pct"] > d["gana_pct"] + tol:
+                viol.append(dict(conjunto=nom, gana_pct=float(d["gana_pct"]),
+                                 subconjunto=otro,
+                                 gana_pct_subconjunto=float(e["gana_pct"]),
+                                 deficit=float(e["gana_pct"] - d["gana_pct"])))
+    viol.sort(key=lambda v: -v["deficit"])
+    return viol
+
+
 def main():
     etq = sys.argv[1] if len(sys.argv) > 1 else "boss"
     if etq not in LOGA:

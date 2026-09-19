@@ -34,6 +34,7 @@ logs:
   equivalencia_kids_lcdm:     src/verificacion/prueba_equivalencia_kids_lcdm.py
   equivalencia_kids_cache:    src/verificacion/prueba_equivalencia_kids_cache.py
   formula_rd_exponentes:      src/p02_mcmc/verifica_formula_rd.py
+  h0_lente_fondo_ssee:        src/p09_hubble/h0_lente_fondo_ssee.py
   desi_dr2_w0wa_momentos:     src/p02_mcmc/momentos_desi_dr2_w0wa.py
 
   # ── Paper 3 — CMB ───────────────────────────────────────────────────────

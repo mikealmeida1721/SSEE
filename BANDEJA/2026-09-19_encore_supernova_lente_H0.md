@@ -56,3 +56,25 @@ usarlos.)
 Nota de interés. No se toca ningún paper ni número. Pendiente, si Mike lo
 decide: registrar en P9 la predicción «H₀ de Requiem = 67.96 ± su σ; 73 lo
 falsa» con fecha anterior al dato.
+
+## Actualización (mismo día, tras el intercambio con Max)
+
+Max corrigió su lectura («invertí la conclusión») y aportó TDCOSMO IV
+(Birrer+2020): 74.5 (+5.6/−6.1) solo, 67.4 (+4.1/−3.2) con SLACS — verificados.
+Hay uno más reciente, **TDCOSMO-2025** (arXiv:2506.03023): **71.6 (+3.9/−3.3)**
+en ΛCDM plano, con SLACS y SL2S en acuerdo.
+
+**Lo que faltaba en la conversación:** todas esas H₀ se infieren con la FORMA de
+expansión de ΛCDM. Con el fondo de SSEE (w₀, wₐ del núcleo) la misma medición
+da una H₀ un **1.6–1.9 % más baja**. Medido en
+`src/p09_hubble/h0_lente_fondo_ssee.py` → `results/logs/h0_lente_fondo_ssee.log`
+(aproximación declarada: Ω_m igual en los dos, efecto de forma a primer orden).
+Distancias a H_global, leída en ΛCDM → leída con el fondo SSEE: TDCOSMO-2025
+1.10σ → 0.70σ; H0LiCOW 2.97σ → 2.24σ (sigue siendo el más incómodo).
+
+**Consecuencia para la predicción de Requiem:** hay que fecharla con las dos
+lecturas, porque el corrimiento (~1.6 %) es del tamaño de su error (2–3 %):
+- analizada con el fondo de SSEE: H₀ = H_global;
+- analizada en ΛCDM plano (como se publicará): H_global / 0.9838 — el valor
+  exacto está en el log (`H_global_leido_en_LCDM` del sistema MACS J0138).
+Falsación: un análisis ΛCDM de Requiem cerca de 73 (al 2–3 %).

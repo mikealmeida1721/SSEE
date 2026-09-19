@@ -78,3 +78,24 @@ lecturas, porque el corrimiento (~1.6 %) es del tamaño de su error (2–3 %):
 - analizada en ΛCDM plano (como se publicará): H_global / 0.9838 — el valor
   exacto está en el log (`H_global_leido_en_LCDM` del sistema MACS J0138).
 Falsación: un análisis ΛCDM de Requiem cerca de 73 (al 2–3 %).
+
+## Segunda actualización: la FECHA de Requiem ya es la prueba
+
+Max verificó el factor de forma por su cuenta (0.9834 con Ω_m = 0.300; el mío
+0.9838 con Ω_m = 0.3089 — la diferencia es Ω_m, no ruido: 0.300 → 0.98341,
+0.3089 → 0.98370, 0.315 → 0.98391). Y confirmó en el paper que los siete
+modelos de lente se hicieron a cosmología fija: la cosmología entra SOLO por
+D_Δt, que es donde se aplica el factor. Sin doble conteo.
+
+arXiv:2509.12319 predice la reaparición de Requiem según H₀: con 73, abril–
+diciembre de 2026; con 67, marzo–noviembre de 2027. Bazzanini et al. 2026
+(arXiv:2606.25205, junio) dan H₀ = 67.0 (+9.3/−7.8) con Encore+Requiem y
+predicen febrero–julio de 2027; **no es detección**.
+
+**Predicción fechada (2026-09-19)** — interpolación en 1/H₀ entre los centros
+publicados, en `h0_lente_fondo_ssee.py` → log, clave `requiem_fecha`:
+- SSEE (H_global, leído en ΛCDM como 69.08) → centro hacia **2027-03**;
+- SH0ES → centro hacia **2026-08** (ventana ya abierta).
+Cada una con ±4 meses de modelo de lente. **Si la imagen aparece en lo que
+queda de 2026, favorece a SH0ES; si no aparece antes de 2027, favorece a SSEE.**
+Y la H₀ medida después decide con precisión (2–3 %).

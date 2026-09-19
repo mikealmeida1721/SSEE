@@ -78,5 +78,19 @@
    "sigma_Hglobal_leida_SSEE": -2.236537034296373,
    "sigma_SH0ES": -0.14444444444443938
   }
- ]
+ ],
+ "requiem_fecha": {
+  "fuente": "arXiv:2509.12319 (ventanas 1 sigma); interpolacion en 1/H0 entre centros",
+  "centro_H73": "2026-08",
+  "centro_H67": "2027-07",
+  "SSEE_leida_LCDM": {
+   "H0": 69.08461570801755,
+   "fecha": "2027-03"
+  },
+  "SH0ES": {
+   "H0": 73.04,
+   "fecha": "2026-08"
+  },
+  "nota": "la ventana de cada centro es de ~+-4 meses (incertidumbre del modelo de lente)"
+ }
 }

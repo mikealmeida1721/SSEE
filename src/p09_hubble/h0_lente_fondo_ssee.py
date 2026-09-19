@@ -113,6 +113,29 @@ def main():
         print(f"  {nom:20s} {h:5.1f} -> con fondo SSEE {hs:6.2f}   "
               f"H_global a {abs(d_lcdm):.2f}s (LCDM) / {abs(d_ssee):.2f}s (SSEE);  "
               f"SH0ES a {abs(d_sh0es):.2f}s")
+    # FECHA de reaparicion de Requiem. arXiv:2509.12319 (resumen), cuatro mejores
+    # modelos, 1 sigma: H0=73 -> abril-diciembre 2026; H0=67 -> marzo-noviembre
+    # 2027. A modelo de lente fijo el retraso escala como 1/H0, asi que se
+    # interpola en 1/H0 entre los CENTROS de las dos ventanas (ano decimal, mitad
+    # de mes). Es una lectura de la prediccion publicada, no un modelo propio.
+    VENT = {73.0: (2026 + 3.5 / 12, 2026 + 11.5 / 12),     # abr..dic 2026
+            67.0: (2027 + 2.5 / 12, 2027 + 10.5 / 12)}     # mar..nov 2027
+    c73, c67 = (sum(VENT[73.0]) / 2, sum(VENT[67.0]) / 2)
+    def fecha(h):
+        f = (1 / h - 1 / 73.0) / (1 / 67.0 - 1 / 73.0)
+        return c73 + f * (c67 - c73)
+    def mes(t):
+        a = int(t); m = int((t - a) * 12) + 1
+        return f"{a}-{m:02d}"
+    h_lcdm = out["sistemas"][0]["H_global_leido_en_LCDM"]
+    out["requiem_fecha"] = dict(
+        fuente="arXiv:2509.12319 (ventanas 1 sigma); interpolacion en 1/H0 entre centros",
+        centro_H73=mes(c73), centro_H67=mes(c67),
+        SSEE_leida_LCDM=dict(H0=h_lcdm, fecha=mes(fecha(h_lcdm))),
+        SH0ES=dict(H0=H_SH0ES, fecha=mes(fecha(H_SH0ES))),
+        nota="la ventana de cada centro es de ~+-4 meses (incertidumbre del modelo de lente)")
+    print(f"\n  Requiem, centro de la ventana: SSEE (LCDM-leido {h_lcdm:.2f}) -> "
+          f"{mes(fecha(h_lcdm))};  SH0ES ({H_SH0ES}) -> {mes(fecha(H_SH0ES))}")
     SALIDA.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"\n  escrito en {SALIDA.relative_to(REPO)}")
 

@@ -1611,6 +1611,70 @@ check("R60 el detector distingue lo vigente de lo narrado como retirado",
       "2 casos sobre la misma cifra: presentada como prediccion viva "
       "marcada; declarada retirada, exenta")
 
+# ── R60 · LAS FIGURAS TAMBIEN SON SUPERFICIE (2026-09-19) ───────────────────
+#
+# POR QUE SE AMPLIA. El barrido miraba .tex, .md y .py. Una FIGURA no es
+# ninguna de las tres, y ahi sobrevivio la particula 49 dias despues de
+# retirarla: `fig_s8_resolution.pdf` del paquete de PRD seguia dibujando
+# «3.5 sigma vs KiDS» y «m = 40.70 eV, forward», con un pie de figura que ya
+# contaba la historia nueva. Texto y dibujo decian cosas distintas, y ningun
+# grep de .tex podia verlo porque la cadena no esta en ningun .tex.
+#
+# Y hay una asimetria que hace esto mas estricto que el barrido de prosa: un
+# documento PUEDE nombrar lo retirado, porque tiene que retractarlo. Una
+# figura no retracta nada. Cualquier token retirado dentro de una figura es un
+# resto, sin excepcion.
+_FIGS60 = [_q for _d in ("results/figures", "submission_PRD/figures")
+           for _q in sorted((ROOT.parent / _d).glob("*.pdf"))]
+_sucias60, _texto60 = [], 0
+try:
+    import subprocess as _sp60
+    for _fg in _FIGS60:
+        _t = _sp60.run(["pdftotext", str(_fg), "-"], capture_output=True,
+                       text=True, timeout=30).stdout
+        _texto60 += len(_t)
+        for _id, _e in sorted(_retr.items()):
+            for _tk in _e["tokens"]:
+                if _tk in _t:
+                    _sucias60.append(f"{_fg.parent.name}/{_fg.name}: «{_tk}» ({_id})")
+    check("R60 ninguna figura publicada lleva dentro algo retirado",
+          not _sucias60,
+          "; ".join(_sucias60[:6]) if _sucias60
+          else f"{len(_FIGS60)} figuras barridas contra las {len(_retr)} retracciones")
+    # CONTROL (R53): que el barrido haya leido TEXTO de verdad. Si `pdftotext`
+    # devolviera vacio —figuras rasterizadas, binario ausente— la comprobacion
+    # daria verde sin mirar nada, que es la cuarta patologia: el verde por vacio.
+    check("R60 el barrido de figuras leyo una superficie real",
+          _texto60 > 500 and len(_FIGS60) >= 4,
+          f"{len(_FIGS60)} figuras, {_texto60} caracteres de capa de texto "
+          f"(piso 500)")
+except FileNotFoundError:
+    track_open("R60 figuras sin barrer: falta `pdftotext`",
+               "instalar poppler-utils; mientras tanto las figuras son un "
+               "punto ciego declarado")
+
+# ── R60 · UNA FIGURA COPIADA A UN PAQUETE NO PUEDE DERIVAR DE SU FUENTE ─────
+#
+# El paquete de PRD lleva su propia copia de cada figura. Las cinco estaban
+# congeladas el 2026-07-19 mientras sus fuentes se regeneraban hasta el
+# 2026-09-08: el .tex y el .pdf del paquete SI se recompilaron en septiembre,
+# pero contra las figuras viejas. Una copia que no se compara es una copia que
+# se queda atras en silencio.
+_dupes60 = []
+for _pq in sorted((ROOT.parent / "submission_PRD" / "figures").glob("*")):
+    _fuente = ROOT.parent / "results" / "figures" / _pq.name
+    if _fuente.exists() and _fuente.read_bytes() != _pq.read_bytes():
+        _dupes60.append(_pq.name)
+check("R60 ninguna figura del paquete difiere de su fuente",
+      not _dupes60,
+      ", ".join(_dupes60) if _dupes60
+      else f"{len(list((ROOT.parent / 'submission_PRD' / 'figures').glob('*')))} "
+           "figuras del paquete identicas a results/figures")
+_a60 = (ROOT.parent / "RETRACCIONES.yaml").read_bytes()
+check("R60 el detector de copias derivadas sabe distinguir",
+      (_a60 == _a60) and (_a60 != _a60 + b"x"),
+      "2 casos: bytes identicos se eximen; un byte de diferencia no")
+
 # --- R56: el rotulo de KAL_0 es RETENCION, no viscosidad (2026-09-07) --
 # POR QUE EXISTE. KAL_0 llevaba el nombre de su instancia de FLUIDO —
 # justo el unico uso en que se cancela del observable. «Retencion» ya

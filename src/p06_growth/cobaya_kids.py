@@ -63,8 +63,16 @@ def _camb_cached(bg_key, As, halo_A):
         r, p, kh, zpk, pk, gr = K.run_camb(
             omch2=bg['omch2'], ombh2=bg['ombh2'], h0=bg['h0'], ns=bg['ns'],
             As=As, mnu=bg['mnu'], w=bg['w0'], wa=bg['wa'], halo_A=halo_A)
-        if len(_CACHE) > 300:
-            _CACHE.clear()
+        # CACHE ACOTADA A 3 (2026-09-19). Antes guardaba hasta 300 espectros de
+        # CAMB, y cada uno ocupa ~11 MB (medido): hasta ~3.3 GB por proceso. Con
+        # dos corridas MPI (8 procesos) crecieron de 0.8 a 1.7 GB cada uno en una
+        # hora, la maquina se quedo sin memoria, el kernel mato VS Code cuatro
+        # veces y a las 09:23 se corto en seco. No hacian falta 300: con el
+        # reparto rapido/lento Cobaya mueve los parametros rapidos con los lentos
+        # FIJOS, asi que solo se reusa el punto lento actual (y el anterior si se
+        # rechaza el paso). Se descarta el MAS VIEJO, no se vacia todo.
+        while len(_CACHE) >= 3:
+            _CACHE.pop(next(iter(_CACHE)))
         _CACHE[key] = (r, p, kh, zpk, pk, gr)
     return _CACHE[key]
 

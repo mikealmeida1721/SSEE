@@ -28,10 +28,13 @@ export OMP_NUM_THREADS=1
 export MKL_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
 export PYTHONPATH=$ROOT/src:${PYTHONPATH:-}
+# KIDS_REANUDAR=1 retoma las cadenas desde su checkpoint (sin esto, se borran
+# y se empieza de cero). Uso: KIDS_REANUDAR=1 lanzar_kids_legacy.sh ssee
+export KIDS_REANUDAR=${KIDS_REANUDAR:-0}
 
 cd "$ROOT"
 "$ROOT/.venv/bin/python3" src/verificacion/preflight.py
 
-echo "$(date '+%F %T')  lanzando kids_legacy/$MODELO  (4 cadenas MPI)"
+echo "$(date '+%F %T')  lanzando kids_legacy/$MODELO  (4 cadenas MPI, reanudar=$KIDS_REANUDAR)"
 exec mpirun -np 4 "$ROOT/.venv/bin/python3" \
      src/p06_growth/cobaya_kids_legacy.py "$MODELO" "$BASE" $COVMAT

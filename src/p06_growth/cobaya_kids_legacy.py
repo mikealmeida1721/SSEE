@@ -109,8 +109,16 @@ def _camb_cached(bg_key, As, logT_AGN):
     key = (bg_key, round(As, 15), round(logT_AGN, 6))
     if key not in _CACHE:
         bg = _bg(bg_key)
-        if len(_CACHE) > 300:
-            _CACHE.clear()
+        # CACHE ACOTADA A 3 (2026-09-19). Antes guardaba hasta 300 espectros de
+        # CAMB, y cada uno ocupa ~11 MB (medido): hasta ~3.3 GB por proceso. Con
+        # dos corridas MPI (8 procesos) crecieron de 0.8 a 1.7 GB cada uno en una
+        # hora, la maquina se quedo sin memoria, el kernel mato VS Code cuatro
+        # veces y a las 09:23 se corto en seco. No hacian falta 300: con el
+        # reparto rapido/lento Cobaya mueve los parametros rapidos con los lentos
+        # FIJOS, asi que solo se reusa el punto lento actual (y el anterior si se
+        # rechaza el paso). Se descarta el MAS VIEJO, no se vacia todo.
+        while len(_CACHE) >= 3:
+            _CACHE.pop(next(iter(_CACHE)))
         _CACHE[key] = K.run_camb(
             omch2=bg['omch2'], ombh2=bg['ombh2'], h0=bg['h0'], ns=bg['ns'],
             As=As, mnu=bg['mnu'], w=bg['w0'], wa=bg['wa'], logT_AGN=logT_AGN)
@@ -180,6 +188,8 @@ LOGA = dict(prior=dict(min=1.5, max=4.5), ref=3.04, proposal=0.05,
 # 15, y el trozo barato (C_ell + xi_pm) crece mientras CAMB no.
 _RAPIDOS = ['A_scale'] + [f'dz{i}' for i in range(1, 7)]
 _RAZON = 5
+import os as _os
+_REANUDAR = _os.environ.get('KIDS_REANUDAR') == '1'
 _MCMC = dict(Rminus1_stop=0.03, max_tries=10000, oversample_power=0.7,
              measure_speeds=False)
 
@@ -197,7 +207,11 @@ def _info(nombre, like, extra_params, lentos, chains_dir, covmat=None):
         params=p,
         sampler={'mcmc': mcmc},
         output=f'{chains_dir}/{nombre.replace("loglike_", "")}',
-        force=True, resume=False)
+        # REANUDAR (2026-09-19). Con force=True y resume=False, relanzar tras
+        # un corte BORRABA las cadenas: el 2026-09-19 la maquina se corto con
+        # ~680 pasos aceptados por cadena y dos horas de covmat aprendida.
+        # `KIDS_REANUDAR=1` retoma desde el checkpoint; sin ella, arranque limpio.
+        force=not _REANUDAR, resume=_REANUDAR)
 
 
 def info_ssee(chains_dir, covmat=None):

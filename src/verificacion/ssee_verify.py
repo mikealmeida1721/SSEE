@@ -935,13 +935,45 @@ if _ERR_CORE is not None:
     # Sin nucleo no hay nada que comprobar: seguir produciria una lista de
     # verdes por vacio, que es peor que parar. Se sale con veredicto, no con
     # traceback, para que quien lea la salida sepa POR QUE se detuvo.
+    # ¿QUIEN MIENTE, EL FUENTE O LA CACHE? (2026-09-19)
+    #
+    # Hasta hoy este camino decia siempre «Arreglar src/ssee_core.py». Pero
+    # cuando la causa es un `.pyc` rancio, el fuente esta PERFECTO y el mensaje
+    # manda al operador a corregir el fichero equivocado — que es exactamente
+    # la confusion que el 2026-07-25 costo un MCMC de produccion de 35 min.
+    # R31 existia para esto, pero vive al final del guardian y este `SystemExit`
+    # lo dejaba inalcanzable: la unica situacion en que R31 hace falta era la
+    # unica en que no llegaba a correr. Lo destapo su auto-prueba.
+    #
+    # El diagnostico es directo: si el fuente compilado EN ESTE INSTANTE se
+    # ejecuta limpio, el fuente no es el problema; lo es el bytecode que el
+    # import trajo de `__pycache__`.
+    _RUTA_CORE = ROOT / "ssee_core.py"
+    _sano_de_fuente = False
+    try:
+        _ns31 = {"__name__": "_core_recien_compilado", "__file__": str(_RUTA_CORE)}
+        exec(compile(_RUTA_CORE.read_text(encoding="utf-8"), str(_RUTA_CORE), "exec"), _ns31)
+        _sano_de_fuente = True
+    except BaseException:
+        _sano_de_fuente = False
+
     print("\n" + "=" * 40)
     print("ROJO — el nucleo no carga; el resto de comprobaciones NO se corrio.")
     # Con el formato que lee la suite de mutacion, para que pueda ATRIBUIR el
     # fallo a `canon` en vez de verlo como una caida muda.
     print("   x  canon el nucleo se puede importar y pasa sus sanity checks")
     print(f"  causa: {_ERR_CORE}")
-    print("  Arreglar src/ssee_core.py y volver a correr.")
+    if _sano_de_fuente:
+        print("   x  R31 bytecode: la CACHE miente, el fuente esta bien")
+        print("  R31 — el mismo fuente compilado ahora se ejecuta limpio, asi que")
+        print("        el fallo lo trae un `.pyc` rancio de __pycache__, no el .py.")
+        print("        NO toques src/ssee_core.py. Haz esto:")
+        print("          1) rm -rf src/__pycache__")
+        print("          2) vuelve a correr el guardian")
+        print("          3) RE-CORRE todo lo que se haya ejecutado en este estado:")
+        print("             cualquier resultado producido asi es sospechoso.")
+    else:
+        print("  Arreglar src/ssee_core.py y volver a correr.")
     raise SystemExit(1)
 _R66_CONS = {_k: _v for _k, _v in vars(_core63).items()
              if _k.isupper() and isinstance(_v, float) and abs(_v) > 1e-6}
@@ -3168,8 +3200,77 @@ try:
     _CORE35 = {_k: _v for _k, _v in vars(_core63).items()
                if _k.isupper() and isinstance(_v, (int, float))}
 
-    def _norm35(_txt):
+    def _cierre35(_arbol, _entrada):
+        """Las funciones por las que pasa `_entrada`, en cascada."""
+        _defs = {_n.name: _n for _n in _arbol.body
+                 if isinstance(_n, (ast.FunctionDef, ast.AsyncFunctionDef))}
+        if _entrada not in _defs:
+            return None                     # entrada declarada que no existe
+        _vistas, _cola = set(), [_entrada]
+        while _cola:
+            _f = _cola.pop()
+            if _f in _vistas:
+                continue
+            _vistas.add(_f)
+            for _nd in ast.walk(_defs[_f]):
+                if isinstance(_nd, ast.Call) and isinstance(_nd.func, ast.Name):
+                    if _nd.func.id in _defs:
+                        _cola.append(_nd.func.id)
+        return _vistas
+
+    def _norm35(_txt, _entrada=None):
         _t = ast.parse(_txt)
+        if _entrada:
+            _cierre = _cierre35(_t, _entrada)
+            if _cierre is not None:
+                # nombres que el camino realmente usa
+                _usa = set()
+                for _nm35 in _cierre:
+                    for _d in _t.body:
+                        if (isinstance(_d, (ast.FunctionDef, ast.AsyncFunctionDef))
+                                and _d.name == _nm35):
+                            _usa |= {_x.id for _x in ast.walk(_d)
+                                     if isinstance(_x, ast.Name)}
+                _nombres35 = _usa | set(_cierre)
+
+                def _rama_ajena(_nodo):
+                    """¿Esta rama del despachador lanza OTRA corrida?"""
+                    for _x in ast.walk(_nodo):
+                        if isinstance(_x, ast.Name) and _x.id in _nombres35:
+                            return False
+                        if isinstance(_x, ast.Attribute) and _x.attr in _nombres35:
+                            return False
+                    return True
+
+                def _poda_ifs(_nodo):
+                    """En un `if/elif` de módulo —el despachador de `__main__`—
+                    las ramas que no nombran nada de este camino son otras
+                    corridas. Se les vacía el cuerpo para que cambiar una no
+                    ensucie el log de otra. El `test` se conserva: si alguien
+                    renombra o reordena las ramas, eso SÍ se ve."""
+                    for _h in ast.walk(_nodo):
+                        if isinstance(_h, ast.If) and _rama_ajena(
+                                ast.Module(body=_h.body, type_ignores=[])):
+                            _h.body = [ast.Pass()]
+                    return _nodo
+
+                _cuerpo = []
+                for _st in _t.body:
+                    if isinstance(_st, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                        if _st.name in _cierre:
+                            _cuerpo.append(_st)
+                        continue
+                    if isinstance(_st, ast.Assign):
+                        # una constante de módulo que este camino no nombra no
+                        # puede moverle un número: se poda
+                        _dianas = {_x.id for _t2 in _st.targets
+                                   for _x in ast.walk(_t2) if isinstance(_x, ast.Name)}
+                        if _dianas and not (_dianas & _usa):
+                            continue
+                    if isinstance(_st, ast.If):
+                        _st = _poda_ifs(_st)
+                    _cuerpo.append(_st)
+                _t.body = _cuerpo
         _alias = {}                     # nombre local -> valor del núcleo
         _mods = set()                   # `import ssee_core as X` -> {"X"}
         for _nd in ast.walk(_t):
@@ -3239,6 +3340,24 @@ try:
         if not _script:
             _sinmapa.append(_nm)
             continue
+        # EL CAMINO, NO EL FICHERO (2026-09-19).
+        #
+        # R35 comparaba el script ENTERO, así que cualquier edición en
+        # cualquier parte de un script multiuso ensuciaba TODOS sus logs. Caso
+        # real: el commit 8f49b48 arregló `loglike_ssee_wc_h` y con eso marcó
+        # como rancios los dos logs de ΛCDM fondo-fijo, que salen de
+        # `loglike_lcdm_fijo` — otra función, otro camino, ningún número
+        # tocado. Una alarma que suena por algo que no puede haber pasado
+        # termina ignorándose, y entonces deja de avisar cuando sí pasa.
+        #
+        # Ahora el mapa puede declarar de qué FUNCIÓN sale un log:
+        #     nombre_del_log:  ruta/al/script.py::funcion_de_entrada
+        # y la comparación mira sólo esa función, las que ella llama (en
+        # cascada), y el código de módulo del que dependen. Sigue siendo una
+        # medida contra el CÓDIGO, no una lista de excepciones a mano.
+        _entrada = None
+        if "::" in _script:
+            _script, _entrada = _script.split("::", 1)
         # Muestreo certificado por postflight: un cambio en el bloque de
         # ANÁLISIS del script no invalida la cadena ya muestreada.
         if _nm in (_prop.get("muestreo_certificado") or {}):
@@ -3259,8 +3378,9 @@ try:
             _viejo = _sp.run(["git", "show", f"{_sha_log}:{_script}"], cwd=_REPO,
                              capture_output=True, text=True, timeout=20).stdout
             _nuevo = (_REPO / _script).read_text(errors="ignore")
-            if _viejo and _norm35(_viejo) == _norm35(_nuevo):
-                continue     # sólo cambió la prosa, o un literal por su símbolo
+            if _viejo and _norm35(_viejo, _entrada) == _norm35(_nuevo, _entrada):
+                continue     # sólo cambió la prosa, un literal por su símbolo,
+                             # o una función por la que este log no pasa
         except Exception as _e35:
             # NUNCA tragarse el fallo: un `except: pass` aquí escondió un
             # NameError propio (ast no estaba importado) y R35 reportó rancios
@@ -3287,6 +3407,45 @@ try:
     ]
     _mal35 = [_i for _i, (_v, _igual) in enumerate(_c35)
               if (_norm35(_v) == _norm35(_base35)) is not _igual]
+    # CONTROL (R53) de la poda por camino. Lo que se poda tiene que ser SÓLO
+    # aquello por lo que el log no pasa. Si la poda fuera laxa, R35 daría verde
+    # a un log cuyo propio código cambió — el fallo exacto que la regla existe
+    # para ver.
+    _modulo35 = ("K = 2.0\n"
+                 "AJENA = 9.0\n"
+                 "def aux(z):\n    return z * K\n"
+                 "def mia(x):\n    return aux(x) + 1\n"
+                 "def otra(y):\n    return y * AJENA\n")
+    _cc35 = [
+        # (variante, ¿debe verse IGUAL mirando sólo el camino de `mia`?)
+        (_modulo35.replace("return y * AJENA", "return y * AJENA + 7"), True),   # otra función
+        (_modulo35.replace("AJENA = 9.0", "AJENA = 11.0"), True),                # constante ajena
+        (_modulo35.replace("return aux(x) + 1", "return aux(x) + 2"), False),     # la propia
+        (_modulo35.replace("return z * K", "return z * K * 2"), False),           # la que llama
+        (_modulo35.replace("K = 2.0", "K = 3.0"), False),                         # constante suya
+        # el despachador de `__main__`: tocar la rama de OTRA corrida se exime,
+        # tocar la que lanza la nuestra no
+        (_modulo35 + "if __name__ == '__main__':\n    if q == 'a':\n        mia(1)\n"
+         "    elif q == 'b':\n        otra(2)\n", None),
+    ]
+    _disp35 = ("if __name__ == '__main__':\n    if q == 'a':\n        mia(1)\n"
+               "    elif q == 'b':\n        otra(2)\n")
+    _cc35 = _cc35[:-1] + [
+        (_modulo35 + _disp35.replace("otra(2)", "otra(3)"), True),    # rama ajena
+        (_modulo35 + _disp35.replace("mia(1)", "mia(9)"), False),     # nuestra rama
+    ]
+    _base_disp35 = _modulo35 + _disp35
+    _malc35 = []
+    for _i, (_v, _igual) in enumerate(_cc35):
+        _ref35 = _base_disp35 if "__main__" in _v else _modulo35
+        if (_norm35(_v, "mia") == _norm35(_ref35, "mia")) is not _igual:
+            _malc35.append(_i)
+    check("R35 la poda por camino no exime lo que sí toca al log",
+          not _malc35,
+          "7 casos: cambiar otra función, una constante ajena o la rama del "
+          "despachador de otra corrida se exime; cambiar la propia función, la "
+          "que ella llama, su constante o su propia rama, no"
+          if not _malc35 else f"casos mal clasificados: {_malc35}")
     check("R35 el detector distingue re-etiquetar de re-calcular",
           not _mal35,
           "3 casos: el literal cambiado por el símbolo que vale lo mismo se "

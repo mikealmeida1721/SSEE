@@ -1,0 +1,65 @@
+{
+ "pregunta": "el cambio de cobaya_kids.py mueve el camino de LCDM fondo-fijo?",
+ "respuesta": "no",
+ "control_puede_fallar": true,
+ "casos": [
+  {
+   "log": "kids_lcdm_fondofijo_reparto",
+   "commit_del_log": "62bf28453719",
+   "clave": [
+    0.02237,
+    0.12,
+    0.6736,
+    0.9649
+   ],
+   "antes": {
+    "ombh2": 0.02237,
+    "omch2": 0.12,
+    "h0": 0.6736,
+    "ns": 0.9649,
+    "mnu": 0.06,
+    "w0": -1.0,
+    "wa": 0.0
+   },
+   "ahora": {
+    "ombh2": 0.02237,
+    "omch2": 0.12,
+    "h0": 0.6736,
+    "ns": 0.9649,
+    "mnu": 0.06,
+    "w0": -1.0,
+    "wa": 0.0
+   },
+   "identico": true
+  },
+  {
+   "log": "kids_lcdm_fondofijo_SIN_REPARTO_20260908",
+   "commit_del_log": "415cfc35ea74",
+   "clave": [
+    0.02237,
+    0.12,
+    0.6736,
+    0.9649
+   ],
+   "antes": {
+    "ombh2": 0.02237,
+    "omch2": 0.12,
+    "h0": 0.6736,
+    "ns": 0.9649,
+    "mnu": 0.06,
+    "w0": -1.0,
+    "wa": 0.0
+   },
+   "ahora": {
+    "ombh2": 0.02237,
+    "omch2": 0.12,
+    "h0": 0.6736,
+    "ns": 0.9649,
+    "mnu": 0.06,
+    "w0": -1.0,
+    "wa": 0.0
+   },
+   "identico": true
+  }
+ ]
+}

@@ -56,8 +56,21 @@ logs:
   # ── Añadidos 2026-09-07 (tarde): las tres corridas de la sesión R1/R2 ──
   boss_cobaya_lcdm:           src/p06_growth/cobaya_boss.py
   boss_cobaya_ssee:           src/p06_growth/cobaya_boss.py
-  kids_lcdm_fondofijo_SIN_REPARTO_20260908:  src/p06_growth/cobaya_kids.py
-  kids_lcdm_fondofijo_reparto:               src/p06_growth/cobaya_kids.py
+  # Con PUNTO DE ENTRADA (2026-09-19): `cobaya_kids.py` sirve a cuatro
+  # corridas distintas, así que comparar el fichero entero marcaba estos dos
+  # logs como rancios cada vez que se tocaba OTRA de las cuatro. Declarando de
+  # qué función sale cada uno, R35 compara sólo ese camino y las funciones que
+  # él llama. Caso que lo motivó: el commit 8f49b48 arregló `loglike_ssee_wc_h`
+  # y ensució estos dos, que salen de `loglike_lcdm_fijo`.
+  kids_lcdm_fondofijo_SIN_REPARTO_20260908:  src/p06_growth/cobaya_kids.py::loglike_lcdm_fijo
+  kids_lcdm_fondofijo_reparto:               src/p06_growth/cobaya_kids.py::loglike_lcdm_fijo
+  kids_ssee_wc_h:                            src/p06_growth/cobaya_kids.py::loglike_ssee_wc_h
+
+  # ── Añadidos 2026-09-19: la cola #28 (tres sondas, un solo A_s) ──
+  base_sin_particula:           src/p06_growth/base_sin_particula.py::main
+  rejilla_extendida:            src/p06_growth/rejilla_extendida.py::main
+  ruido_minimizador_kids:       src/p06_growth/ruido_minimizador_kids.py::main
+  precio_cmb_rejilla_extendida: src/p03_cmb/precio_cmb_rejilla_extendida.py::main
   # 2026-09-09: la corrida sin reparto rapido/lento se archivo (cadenas en
   # chains_p6/kids/sin_reparto_2026-09-08/) y se relanzo declarandole a Cobaya
   # que 7 de los 9 libres NO tocan CAMB. Los DOS logs quedan declarados: el
@@ -124,3 +137,20 @@ muestreo_certificado:
   # borrada es el despacho de dos ramas, reescrito a tres). La cadena de
   # agosto no se invalida: no se toco nada de lo que la muestreo.
   R4_lcdm_resume_20260805: 2026-09-08
+  # 2026-09-19: el commit 8f49b48 volvio a tocar `cobaya_kids.py`, esta vez SI
+  # dentro del camino de LCDM fondo-fijo: `bg_key_to_dict` gano una guarda de
+  # retorno temprano `if bg_key[0] == 'SSEEwch'`. R35 hizo bien en marcarlo.
+  #
+  # Pero `loglike_lcdm_fijo` entra con bg_key = (0.02237, 0.1200, 0.6736,
+  # 0.9649) — cuatro FLOTANTES — y la guarda compara contra un TEXTO: la rama
+  # es inalcanzable para estos dos logs.
+  #
+  # Y eso no se queda en razonamiento. Se PRUEBA ejecutando las dos versiones
+  # del fichero (la del commit de cada log y la de hoy) sobre la clave real:
+  #     src/verificacion/prueba_equivalencia_kids_lcdm.py
+  #     results/logs/equivalencia_kids_lcdm.log
+  # Salida: identico en los dos casos. Y con su control del otro lado (R53):
+  # con la clave del OTRO modelo las versiones SI difieren, asi que la prueba
+  # puede fallar y por tanto mide algo.
+  kids_lcdm_fondofijo_reparto: 2026-09-19
+  kids_lcdm_fondofijo_SIN_REPARTO_20260908: 2026-09-19

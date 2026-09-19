@@ -466,7 +466,7 @@ Convención verificada: CosmoSIS reporta `loglike = −0.5·χ²`, **sin**
 |---|---|---|---|---|
 | `ssee` | **fijo** por álgebra | 9 (logA, log_T_AGN, A_scale, dz1..dz6) | 4 | 🔄 lanzada 07:17 |
 | `lcdmfijo` | clavado en Planck 2018 | 9 | 4 | 🔄 lanzada 07:18 |
-| `lcdm` | libre | 13 | 4 | 🕓 **EN COLA con vigilante** (ver abajo) |
+| `lcdm` | libre | 13 | 4 | 🕓 **EN COLA — tras REINICIAR** (decisión de Mike, 2026-09-19) |
 
 **Aproximaciones declaradas** (no hay ninguna oculta):
 - IA: el oficial es NLA-M con 8 parámetros cuya matriz de priors vive fuera de
@@ -504,4 +504,12 @@ de lanzar la siguiente»): el vigilante lanza `lcdm` en cuanto se libera un
 hueco, quizá antes de que yo escriba el resultado de la que terminó. No se pierde
 nada —la cadena terminada queda en disco—, pero su resultado se escribe en la
 sesión siguiente, no antes del lanzamiento.
+
+**Cambio 2026-09-19 08:55 (decisión de Mike):** el vigilante se **detiene**. La
+secuencia es: terminan `ssee` y `lcdmfijo` → se **reinicia** la máquina (el driver
+NVIDIA cargado es 580.173.02 y las librerías ya son 580.178.04; sólo un reinicio lo
+iguala, y reiniciar con corridas vivas las mataría) → se lanza `lcdm` a mano con
+`lanzar_kids_legacy.sh lcdm`. Así además se cumple la regla 5: los resultados de las
+dos primeras se escriben antes de lanzar la tercera. El vigilante queda en el repo
+para la próxima vez que haga falta esperar un hueco sin reinicio de por medio.
 

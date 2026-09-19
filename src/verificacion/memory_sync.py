@@ -51,6 +51,10 @@ def _targets(vault_only=False):
         out.append(("Guardián (Ledger)", [ROOT / "VERIFICATION_LEDGER.md"]))
         out.append(("CLAUDE.md", [ROOT / "CLAUDE.md"]))
         out.append(("Papers (cajón)", sorted((ROOT / "manuscript").glob("*.tex"))))
+        # El PRD de envío vive FUERA de manuscript/ y por eso nadie lo barría
+        # (hallazgo 2026-09-19, auditoría Zenodo): es el documento que se manda
+        # a la revista, o sea el de mayor consecuencia si queda rancio.
+        out.append(("PRD (envío)", sorted((ROOT / "submission_PRD").glob("*.tex"))))
         # Docs de ESTADO VIVO en la raíz (sin fecha, cara pública vigente).
         # NO se incluyen los de REGISTRO/FECHADOS: CHANGELOG.md y
         # AUDIT.md (deliverable fechado 2026-05-17, con banner de superación),

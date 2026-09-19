@@ -237,15 +237,17 @@ retired:
   - {pattern: "0.493",     reason: "k_fs viejo (de m_φ=5.6)"}
   # `excludes`: decimal pelado ambiguo → NO es drift si la línea (±1) lo etiqueta
   # como χ²/goodness-of-fit. Un χ²/N=0.766 NO es el S₈ retirado 0.766, aunque la
+  # (2026-09-19: se anadio "χ2" sin superindice — asi lee PyMuPDF el \chi^2 del
+  #  texto impreso de un PDF, y sin el los tres χ²/N de Paper 3 salian vivos.)
   # sección sea sobre σ8 (requires fallaría: hay tokens σ8 por todos lados).
-  - {pattern: "0.737",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ₈_eff = fit de α_WDM a KiDS (no forward)"}
-  - {pattern: "0.702",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "σ₈ IS-ODE fuente Ω_m,dyn — retirada"}
-  - {pattern: "0.725",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2"], reason: "S₈ IS-ODE fuente Ω_m,dyn — retirada"}
+  - {pattern: "0.737",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2"], reason: "σ₈_eff = fit de α_WDM a KiDS (no forward)"}
+  - {pattern: "0.702",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2"], reason: "σ₈ IS-ODE fuente Ω_m,dyn — retirada"}
+  - {pattern: "0.725",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2"], reason: "S₈ IS-ODE fuente Ω_m,dyn — retirada"}
   - {pattern: "71.87",     reason: "H0_local cascada H_MIRA viejo — dirección invertida, retirada 2026-09-06"}
   - {pattern: "72.05",     reason: "H0_local UV cascada H_MIRA viejo — dirección invertida, retirada 2026-09-06"}
   - {pattern: "72.86",     reason: "H0_local IR = 3(φ+π)²/(1−f): usaba el NÚMERO PURO como entrada dimensional. Dirección invertida 2026-09-06 → la salida es H0_glob=68.13"}
   - {pattern: "73.040",    reason: "H0_local UV = 3(φ+π)²/(1−f): mismo defecto. Dirección invertida 2026-09-06 → la salida es H0_glob=67.96214"}
-  - {pattern: "8.81 meV",  reason: "M cutoff viejo (normalización ρ_crit anterior)"}
+  - {pattern: "8.81 meV",  excludes: ["inconsistent", "would give", "not borrow"], reason: "M cutoff viejo (normalización ρ_crit anterior). Paper 10 lo cita para RECHAZARLO — la negación es su marca de contexto"}
   - {pattern: "8.82 meV",  reason: "M cutoff viejo"}
   - {pattern: "9.62 meV",  reason: "M cutoff @ρ_crit(H=67.037) → 9.68 @H_alg=67.962 (reframe)"}
   - {pattern: "9.62~meV",  reason: "M cutoff viejo (LaTeX nbsp)"}
@@ -310,13 +312,13 @@ retired:
   # es drift, incluidos los que hasta ayer eran canónicos.
   # Sólo se permiten con calificativo explícito de retracción/histórico, porque
   # el Paper 6 DEBE poder narrar qué retira y por qué.
-  - {pattern: "0.7470", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ^2"],
+  - {pattern: "0.7470", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2"],
      reason: "σ8 two-sector RETIRADO (no hay partícula) → canónico un-sector 0.7446 (MCMC crudo KiDS)"}
   # PRECISIÓN 2026-08-07: el patrón sólo traía "0.7580"; Papers 3/5/7 y EFT_section
   # escriben "0.758" con 3 decimales y se escapaban todos. Se añade la variante.
-  - {pattern: "0.758", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ^2", "0.7580"],
+  - {pattern: "0.758", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2", "0.7580"],
      reason: "S8 two-sector RETIRADO (3 dec) → canónico un-sector 0.7555 ± 0.0192"}
-  - {pattern: "0.7580", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ^2"],
+  - {pattern: "0.7580", excludes: ["retract", "retir", "histór", "histor", "superseded", "supersed", "chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2"],
      reason: "S8 two-sector RETIRADO → canónico un-sector 0.7555 ± 0.0192 (0.11σ KiDS)"}
   # excludes AFINADOS 2026-08-07: "bound"/"cota" pelados suprimían cualquier línea
   # con "strictly bounded" — Paper 5 L1395 citaba m_φ=40.70 como base física vigente
@@ -331,12 +333,12 @@ retired:
      reason: "Ω_φDM RETIRADO (variante de redondeo)"}
   # Valores viejos de la partícula (pre-40.70): siguen siendo drift, con destino
   # actualizado — ya no apuntan al canónico @40.70, apuntan a la retracción.
-  - {pattern: "0.7536",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "σ8 two-sector @42.47 — cadena entera RETIRADA"}
-  - {pattern: "0.7483",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "σ8 two-sector @41.02 — cadena entera RETIRADA"}
-  - {pattern: "0.766",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "S8_eff two-sector viejo — cadena entera RETIRADA"}
-  - {pattern: "0.765",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "S8_eff variante vieja — cadena entera RETIRADA"}
-  - {pattern: "0.7593",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "S8 two-sector @41.02 — cadena entera RETIRADA"}
-  - {pattern: "0.742",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ^2", "retract", "retir", "histor"], reason: "σ8_eff two-sector viejo — cadena entera RETIRADA"}
+  - {pattern: "0.7536",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2", "retract", "retir", "histor"], reason: "σ8 two-sector @42.47 — cadena entera RETIRADA"}
+  - {pattern: "0.7483",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2", "retract", "retir", "histor"], reason: "σ8 two-sector @41.02 — cadena entera RETIRADA"}
+  - {pattern: "0.766",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2", "retract", "retir", "histor"], reason: "S8_eff two-sector viejo — cadena entera RETIRADA"}
+  - {pattern: "0.765",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2", "retract", "retir", "histor"], reason: "S8_eff variante vieja — cadena entera RETIRADA"}
+  - {pattern: "0.7593",  excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2", "retract", "retir", "histor"], reason: "S8 two-sector @41.02 — cadena entera RETIRADA"}
+  - {pattern: "0.742",   excludes: ["chi^2", "\\chi", "chi2", "χ²", "χ2", "χ^2", "retract", "retir", "histor"], reason: "σ8_eff two-sector viejo — cadena entera RETIRADA"}
   - {pattern: "1.243\\,mpc", reason: "alpha free-streaming — el free-streaming entero está RETIRADO"}
   - {pattern: "1.243 mpc",   reason: "alpha free-streaming (variante) — RETIRADO"}
   - {pattern: "1.072 mpc",   reason: "alpha free-streaming — RETIRADO"}

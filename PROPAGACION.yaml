@@ -88,6 +88,15 @@ logs:
   perfil_wc_boss_lcdm:        src/p06_growth/perfil_wc_boss_lcdm.py
   cmb_perfil_wc:              src/p03_cmb/perfil_wc_cmb.py
 
+  # ── KiDS-Legacy (2026-09-19) ────────────────────────────────────────────
+  # Las dos cadenas salen del MISMO modulo, con el argumento de linea de
+  # comandos decidiendo la configuracion (`ssee` = fondo fijo por algebra,
+  # `lcdmfijo` = fondo clavado en Planck). Se declaran las dos al mismo
+  # script: es su fuente real, y asi R35 vigila ambas.
+  control_legacy:             src/p06_growth/control_legacy.py
+  kids_legacy_ssee:           src/p06_growth/cobaya_kids_legacy.py
+  kids_legacy_lcdmfijo:       src/p06_growth/cobaya_kids_legacy.py
+
 historicos:
   # ── Retirados 2026-09-07 — su script está en archive/, no se re-corren ──
   - barrido_beta_c            # β_c: artefacto del bug de saturación (2026-09-05)

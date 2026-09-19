@@ -62,11 +62,15 @@ print(f"  ratio = {C_instant/C_precise:.4f}  (~1%: calentamiento e⁺e⁻ no-ins
 phi = (1+5**0.5)/2; pi = math.pi
 Om = phi+pi; KAL = (phi+pi)/2 + pi; TRIAL = 3*(phi+(phi+pi)/2)
 R2 = Om/(KAL*TRIAL); wb = (pi-phi)/(3*(phi+pi)**2); tau = KAL/(3*(3*(phi+(phi+pi)/2)/(3*(phi+pi))))
-mult = 594.28
-print(f"\nImpacto (Σm_ν = R₂·ω_b·C/τ_Π H₀,  m_φ = Σm_ν·{mult}):")
+# RETIRADO 2026-09-19: aqui iba `mult = 594.28` y la columna `m_phi = Sum m_nu
+# * mult`. Ese multiplicador y la masa que producia (40.70 eV) son de la
+# particula phi-DM, retirada el 2026-08-01. Lo que esta seccion mide —como
+# cambia Sum m_nu al elegir una C u otra— NO depende de la particula y se
+# conserva entero: es justo el punto del script (la clausura 93.14).
+print(f"\nImpacto (Σm_ν = R₂·ω_b·C/τ_Π H₀):")
 for C in (C_instant, C_precise):
     S = R2 * wb * C / 2.191
-    print(f"  C={C}: Σm_ν={S:.5f} eV | m_φ={S*mult:.2f} eV | ω_ν=Σ/93.14={S/93.14:.6f}")
+    print(f"  C={C}: Σm_ν={S:.5f} eV | ω_ν=Σ/93.14={S/93.14:.6f}")
 print("\nσ(Σm_ν) esperado DESI DR5/Euclid ≈ 0.015 eV (22%): el ~1% de C es RUIDO frente")
 print("a la barra de error. Pero como es la MISMA C, lo sólido es usar la PRECISA (93.14)")
 print("en todo, y así no hay dos valores que un referí pueda picar.")

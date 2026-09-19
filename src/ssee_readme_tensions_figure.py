@@ -12,17 +12,37 @@ OUT = os.path.join(os.path.dirname(__file__), '..', 'results', 'figures')
 os.makedirs(OUT, exist_ok=True)
 
 # (label, tension_sigma, reference dataset)
+#
+# CORREGIDO 2026-09-19. Esta figura es la PORTADA del README y llevaba dos
+# filas retiradas el 2026-08-01 con la particula:
+#   - «S_8 (two-sector phi-DM) 0.04 sigma»: el sector phi-DM esta retirado, y
+#     ese 0.04 se medira contra el estadistico COMPRIMIDO con A_s fijado a
+#     Planck. El canonico es el MCMC R3 contra el dato CRUDO, un solo sector
+#     y A_s libre: S_8 = 0.7555 +- 0.0192 -> 0.11 sigma de KiDS-1000
+#     (0.759 +- 0.024). Fuente: CANONICAL_VALUES.yaml `S8_kids_mcmc`.
+#   - «mean f sigma_8 0.93 sigma»: ese 0.93 era la variante two-sector CON
+#     free-streaming, retirada con la particula. El vigente es el de un solo
+#     sector, 0.70 sigma (Paper 5, sigma_8 = 0.8136). Y hay que decir lo que
+#     todavia NO esta: el f sigma_8 canonico contra BOSS crudo esta PENDIENTE
+#     (R1/R2 con LPT). Fuente: CANONICAL_VALUES.yaml `fsigma8_single_sigma`.
+# La fila del S_8 sobrevivio porque la barre R60 en el CODIGO, pero la figura
+# es un .png y el barrido de figuras lee capa de texto de PDF: un .png no
+# tiene. El agujero queda anotado aparte.
 entries = [
-    (r'$S_8$ (two-sector $\varphi$-DM)',        0.04, 'KiDS-1000'),
+    (r'$S_8 = 0.7555 \pm 0.0192$ (one sector, $A_s$ free)', 0.11, 'KiDS-1000 (raw)'),
     (r'$n_s = 1-\varphi^{-7}$',                  0.16, 'Planck 2018'),
     (r'$w_0$–$w_a$ plane',                       0.24, 'DESI DR2 (Pantheon+)'),
     (r'$r_d$ (joint posterior)',                 0.32, 'MCMC multi-probe'),
     (r'$\Omega_b h^2 = (\pi-\varphi)/3\Omega^2$', 0.32, 'Planck 2018'),
     (r'$\Omega_{m,\rm CMB} = \omega_m/h^2 = 0.308881$', 0.88, 'Planck 2018'),
-    (r'mean $f\sigma_8$ (6 RSD surveys)',        0.93, r'ties $\Lambda$CDM (0.73$\sigma$)'),
+    (r'mean $f\sigma_8$ (6 RSD surveys)',        0.70, 'one sector; raw BOSS pending'),
     (r'$H_0^{\rm glob}$ = 68.13 km/s/Mpc',       0.17, r'$3(\varphi+\pi)^2$'),
 ]
-entries = entries[::-1]  # smallest tension on top
+# Ordenado POR sigma, no a mano. Antes la lista se escribia ordenada y se
+# invertia; con eso el H_0 (0.17) llevaba tiempo al fondo fuera de sitio, y al
+# bajar f sigma_8 de 0.93 a 0.70 se descolocaba tambien. Que lo ordene el
+# codigo: la figura promete «smallest tension on top» y ahora lo cumple.
+entries = sorted(entries, key=lambda e: e[1], reverse=True)
 
 labels = [e[0] for e in entries]
 sig    = [e[1] for e in entries]

@@ -76,14 +76,12 @@ def _targets(vault_only=False):
     return out
 
 
-def _marked(lines_low, idx, markers):
-    """¿La línea idx (o sus vecinas ±1) contiene una marca de contexto?
-    La ventana ±1 cubre el caso de notas que parten valor y marca en
-    líneas contiguas (p. ej. «…da 72.86» / «(0.17σ) — coincidencia Type-P»)."""
-    for j in (idx - 1, idx, idx + 1):
-        if 0 <= j < len(lines_low) and any(mk in lines_low[j] for mk in markers):
-            return True
-    return False
+# `_marked` (ventana ±1 línea) vivía aquí y se BORRÓ el 2026-09-19. Dos
+# razones, y la segunda es la que importa: ya no la llamaba nadie —la
+# sustituyó `_marked_parrafo` el mismo día—, y su docstring ilustraba la
+# ventana con «72.86», un valor de la cascada invertida retirado el
+# 2026-09-06. Un ejemplo no necesita un número retirado para explicar una
+# ventana, y usarlo lo vuelve indistinguible de una afirmación viva.
 
 
 def _parrafo(lines, i):

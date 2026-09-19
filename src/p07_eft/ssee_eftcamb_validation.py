@@ -255,7 +255,11 @@ if Cl_TT_gr is not None and Cl_TT_ssee is not None:
     bx1.loglog(kh_gr,   P_gr0,   'k-',  lw=2.0, label='GR')
     bx1.loglog(kh_ssee, P_ssee0, 'r--', lw=2.0,
                label=rf'SSEE RPH ($\alpha_K={alphaK_ssee:.4f}$, $w={w0}$)')
-    bx1.axvline(0.754, ls=':', color='orange', lw=1.5, label=r'$k_{\rm fs}=0.754$ h/Mpc')
+    # RETIRADA 2026-09-19: aqui iba una vertical en k_fs = 0.754 h/Mpc, la
+    # escala de free-streaming de la particula phi-DM retirada el 2026-08-01.
+    # Esta figura ENTRA en SSEE_Unified_Journal.tex, asi que el numero estaba
+    # impreso y vivo dentro de un documento. El resto de la figura (P(k) de
+    # GR contra SSEE RPH) no depende de la particula y se conserva entera.
     bx1.set_ylabel(r'$P(k)$ [$(h^{-1}$ Mpc$)^3$]', fontsize=12)
     bx1.set_title(r'SSEE EFTCAMB — Matter $P(k)$: EFT kineticity effect', fontsize=12)
     bx1.legend(fontsize=10)
@@ -264,7 +268,6 @@ if Cl_TT_gr is not None and Cl_TT_ssee is not None:
     ratio_pk = P_ssee_i / P_gr0
     bx2.semilogx(kh_gr, ratio_pk, 'r-', lw=1.8)
     bx2.axhline(1.0, color='k', lw=0.8)
-    bx2.axvline(0.754, ls=':', color='orange', lw=1.5)
     bx2.set_xlabel(r'$k$ [$h$ Mpc$^{-1}$]', fontsize=12)
     bx2.set_ylabel(r'$P_{\rm SSEE}/P_{\rm GR}$', fontsize=11)
     bx2.set_ylim(1.0, 1.7)

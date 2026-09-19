@@ -11,8 +11,13 @@ Verifies, step by step:
 The UV ladder:
   φ  →  α = φ⁴/3  →  M⁴ = 45α² ρ_crit = 5φ⁸ ρ_crit
   →  s_K_full = 0.41691  →  f_screen = 0.06952
-  →  H₀,local CANÓNICO = H_alg/(1−f_UV) = 73.040 km/s/Mpc (0.00σ SH0ES)
-     [reframe ω_m-directo: H_alg es la base canónica; era H_MIRA 67.037 → 72.05]
+  →  H₀,glob CANÓNICO = SH0ES·(1−f_UV) = 67.962142 km/s/Mpc
+     (residuo +4.2e-06 contra el NÚMERO PURO 3(φ+π)² = 67.96214)
+     [corregido 2026-09-19: esta línea decía «H_alg/(1−f_UV) = 73.040», que
+      es la cascada AL REVÉS — metía un número sin unidades como entrada de
+      una cadena dimensional. La dirección canónica desde el 2026-09-06 es
+      SH0ES ENTRA, H_global SALE, y es la que el código ya calculaba en la
+      línea 105: el texto contradecía a su propio cálculo.]
 """
 
 import numpy as np
@@ -210,8 +215,9 @@ print(f"""
   The same α that fixes the inflationary tensor-to-scalar ratio r = 12α/N² ≈ 0.00813
   (testable by LiteBIRD 2032) also fixes the dark-energy UV cutoff M = φ²×5^(1/4)×ρ_crit^(1/4).
   The reframe makes H_alg = 67.962 both the global background H and the CMB anchor
-  (with ω_b,ω_c fixed by algebra, plik_lite minimises there), so the H_alg-based
-  ladder (72.86 / 73.040) is now the canonical prediction (era H_MIRA 67.037 → 72.05).
+  (with ω_b,ω_c fixed by algebra, plik_lite minimises there). The cascade runs
+  SH0ES IN, H_global OUT: the pure number is the TARGET the output is compared
+  against, never the seed.
   The UV step remains CONDITIONAL on Postulate C.1 (Theorem C.1, Paper 10).
 
   PENDING (Paper 10): first-principles derivation of M⁴ = 45α² without using SH0ES as input.

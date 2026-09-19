@@ -728,6 +728,32 @@ def _forma(_x):
     return re.sub(r"\s*([=])\s*", r"\1", _x)
 
 
+# FORMA RENDERIZADA (2026-09-19). Un token vive en el .py como LaTeX
+# (`k_{\rm fs}=0.754`) y dentro del PDF como GLIFOS: `pdftotext` devuelve
+# `kfs = 0.754` —sin `$`, sin la orden `\rm`, sin llaves, sin el subrayado y
+# con espacios alrededor del `=`. Comparar la una con la otra da VERDE
+# siempre, mire lo que mire.
+# Lo cazo asi: el barrido de figuras de R60 daba verde con
+# `results/figures/ssee_eftcamb_Pk.pdf` —que ENTRA en SSEE_Unified_Journal—
+# llevando dentro la linea rotulada `k_fs = 0.754 h/Mpc`, de la particula
+# retirada el 2026-08-01. pdftotext SI leia el numero; lo que no casaba era
+# la forma del token. Misma clase de fallo que el `%3D` de la insignia: no
+# es que no se mirara, es que se comparaba una forma contra otra.
+_RENDER_CMD = re.compile(r"\\(?:rm|mathrm|mathit|text|textrm|bf|it)\b")
+
+
+def _forma_render(_x):
+    """Normaliza a la forma en que un PDF devuelve el texto de una figura."""
+    _x = _RENDER_CMD.sub("", _x)
+    for _c in "${}_\\":
+        _x = _x.replace(_c, "")
+    # TODO el espacio fuera, no solo el del `=`. Al quitar la orden `\rm` de
+    # `k_{\rm fs}` queda un hueco (`k fs`) que el PDF no tiene (`kfs`), y el
+    # espaciado que devuelve pdftotext no es fiable de por si. Aprieta la
+    # comparacion, asi que el control de abajo comprueba las dos direcciones.
+    return re.sub(r"\s+", "", _x).lower()
+
+
 def _presenta_como_vigente(_txt, _tokens):
     """Lineas con un valor retractado y sin marca de retraccion EN SU VENTANA.
     La ventana es +-1 linea porque en prosa LaTeX el «retracted» que califica
@@ -1990,7 +2016,28 @@ _n60 = sum(len(_v) for _v in _r60.values())
 # `M_PHI = 40.70` escritas como valores en uso. Ninguno era importado por codigo
 # vivo. Se archivan y no se borran: son la prueba de la que sale la retirada,
 # incluida la medicion que la excluyo (la cizalla cruda pide m_phi > 70.3 eV).
-_TOPE_R60 = 34
+# 34 -> 23 el 2026-09-19 (tarde-2): la particula desaparece ENTERA de la
+# superficie viva (particula_phi_dm pasa de 8 a 0) y la cascada invertida de
+# 6 a 4. Lo que se limpio, y de donde salio cada cosa:
+#   - `fig_readme_tensions.png`, la PORTADA del README, llevaba dos filas
+#     retiradas: «S_8 (two-sector phi-DM) 0.04 sigma» y el f sigma_8 de 0.93
+#     (variante two-sector con free-streaming). Ahora llevan los canonicos.
+#   - `ssee_eftcamb_Pk.pdf`, que ENTRA en SSEE_Unified_Journal.tex, tenia
+#     dibujada dentro la vertical `k_fs = 0.754 h/Mpc`. La vio el detector
+#     solo despues de que R60 aprendiera la FORMA RENDERIZADA: el token es
+#     `k_{\rm fs}=0.754` y pdftotext devuelve `kfs = 0.754`. Antes daba
+#     verde mirandolo de frente.
+#   - `fig_paper8_lensing_ratio`: figura construida entera sobre la particula
+#     y que ningun .tex incluia. Borrada con su PDF y su PNG.
+#   - `m_phi=40.70` en pB_inflation, `mult=594.28` en derive_nu_closure, y la
+#     prosa de Paper 10 que decia `H_alg/(1-f_UV)` contradiciendo al calculo
+#     de su propia linea 105.
+#   - `_marked` en memory_sync: codigo muerto cuyo docstring usaba 72.86 de
+#     ejemplo.
+# Los 23 que quedan viven TODOS en documentos de registro (OPEN_PROBLEMS,
+# VERIFICATION_LEDGER, AUDIT, CLAUDE, FUENTES_PENDIENTES), que es donde una
+# retraccion TIENE que nombrarse para retractarse.
+_TOPE_R60 = 23
 _DEUDA_REAL["R60"] = _n60
 _DEUDA_MAX["R60"] = _TOPE_R60
 check("R60 la deuda del registro de retracciones no crece",
@@ -2033,10 +2080,12 @@ try:
         _t = _sp60.run(["pdftotext", str(_fg), "-"], capture_output=True,
                        text=True, timeout=30).stdout
         _texto60 += len(_t)
+        _tr = _forma_render(_t)
         for _id, _e in sorted(_retr.items()):
             for _tk in _e["tokens"]:
-                if _tk in _t:
+                if _tk in _t or _forma_render(_tk) in _tr:
                     _sucias60.append(f"{_fg.parent.name}/{_fg.name}: «{_tk}» ({_id})")
+                    break
     check("R60 ninguna figura publicada lleva dentro algo retirado",
           not _sucias60,
           "; ".join(_sucias60[:6]) if _sucias60
@@ -2048,6 +2097,31 @@ try:
           _texto60 > 500 and len(_FIGS60) >= 4,
           f"{len(_FIGS60)} figuras, {_texto60} caracteres de capa de texto "
           f"(piso 500)")
+
+    # CONTROL (R53) de la forma renderizada. Sin el, apretar la comparacion
+    # quitando TODO el espacio podria pegar palabras vecinas y ensuciar
+    # figuras limpias. Se comprueban las dos direcciones sobre texto simulado
+    # con la forma EXACTA que devuelve pdftotext.
+    _pdf_sucio = "SSEE EFTCAMB GR SSEE RPH ( K = 0.4032, w = 0.84) kfs = 0.754 h/Mpc"
+    _pdf_limpio = "SSEE EFTCAMB GR SSEE RPH ( K = 0.4032, w = 0.84) kfs = 0.812 h/Mpc"
+    _tok_fig = "k_{\\rm fs}=0.754"
+    _c60r = [
+        # (texto de la figura, token, debe marcarse)
+        (_pdf_sucio, _tok_fig, True),          # el caso real, verde en falso hasta hoy
+        (_pdf_limpio, _tok_fig, False),        # otro valor: no se marca
+        ("kfs = 0.754", "k_fs=0.754", True),   # la otra forma del mismo token
+        ("alpha K = 0.4032 w = 0.84", _tok_fig, False),   # figura limpia
+        # que quitar el espacio no pegue palabras vecinas en algo retirado:
+        ("two sector", "two-sector", False),
+    ]
+    _f60r = [f"{_tk} vs {_tx[:28]!r}" for _tx, _tk, _esp in _c60r
+             if ((_tk in _tx) or (_forma_render(_tk) in _forma_render(_tx)))
+             != _esp]
+    check("R60 el detector ve el token aunque el PDF lo devuelva aplanado",
+          not _f60r,
+          "5 casos: `k_{\\rm fs}=0.754` casa con el `kfs = 0.754` que devuelve "
+          "pdftotext; otro valor, figura limpia y dos palabras sueltas NO"
+          if not _f60r else f"casos mal clasificados: {_f60r}")
 except FileNotFoundError:
     track_open("R60 figuras sin barrer: falta `pdftotext`",
                "instalar poppler-utils; mientras tanto las figuras son un "

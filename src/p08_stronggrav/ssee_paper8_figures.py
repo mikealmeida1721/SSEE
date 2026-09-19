@@ -84,42 +84,23 @@ print(f"  r_km(Sun)       = {r_sun_m:.3e} m  (R_sun = 6.96e8 m)")
 print(f"  r_km(MW 1e12)   = {r_sun_m * 1e4:.3e} m  (~1 AU = 1.50e11 m)")
 print(f"  r_km(cluster 1e15) = {r_sun_m * 1e5:.3e} m")
 
-# ── Figure 2: Lensing ratio theta_E^SSEE / theta_E^GR vs k/k_fs ─────────────
-# From Paper 8: the disformal correction amplifies lensing for k < k_fs.
-# Simple model: ratio = 1 + MIRA * T_WDM(k)  (qualitative illustration)
-# T_WDM(k) = [1 + (alpha_WDM * k)^{2mu}]^{-5/mu}, mu=1.12, alpha=1.117 Mpc/h
-# k_fs = 0.754 h/Mpc (Paper 6 canonical particle: m_phi=40.70 eV SOLAR²·KRYSTOS, forward-prediction)
+# ── Figure 2 RETIRADA 2026-09-19 ───────────────────────────────────────────
+# Aqui se dibujaba `fig_paper8_lensing_ratio`: la razon theta_E^SSEE/theta_E^GR
+# construida como `1 + (MIRA-1)*T_WDM(k)` con k_fs = 0.754 h/Mpc,
+# alpha_WDM = 1.117 Mpc/h y m_phi = 40.70 eV. Los tres son de la particula
+# phi-DM, retirada el 2026-08-01, asi que la figura entera colgaba de una
+# entidad que ya no existe.
+#
+# Por que se quita y no se rehace: la prediccion de lensing de Paper 8 SI
+# sobrevive —se rescato el 2026-08-02 sobre omega_c = KAL0*omega_b*n_s (OP-8)
+# y alpha_B = alpha_M = 0 de Paper 7— pero esta figura NO era esa prediccion:
+# era una ilustracion cualitativa del corte por free-streaming, que es
+# justamente la parte que murio. Y el .tex de Paper 8 nunca la incluyo: solo
+# incluye `fig_paper8_vainshtein.pdf` (linea 602). Era huerfana ademas de
+# rancia.
+#
+# El PDF y el PNG que quedaban en results/figures se borran con ella.
 
-k_fs = 0.754  # h/Mpc  (Paper 6 canonical, m_phi=40.70 eV)
-alpha_wdm = 1.117  # Mpc/h  (Paper 6 canonical CLASS output, m_phi=40.70 eV)
-mu = 1.12
-k = np.logspace(-3, 1, 500)  # h/Mpc
-
-T_sq = (1 + (alpha_wdm * k)**(2*mu))**(-5/mu)
-# Lensing ratio: sub-k_fs modes feel extra SSEE contribution
-# Qualitative: ratio = 1 + (MIRA-1) * T_sq  (MIRA ~ 1.999, so +1 * T_sq)
-ratio = 1 + (MIRA - 1) * T_sq
-
-fig, ax = plt.subplots(figsize=(7, 4.5))
-ax.semilogx(k, ratio, 'k-', lw=2)
-ax.axvline(k_fs, color='#2166ac', lw=1.2, ls='--', label=fr'$k_{{fs}}={k_fs}\ h/\mathrm{{Mpc}}$')
-ax.axhline(1.0, color='gray', lw=0.8, ls=':', alpha=0.6, label='GR baseline')
-ax.axhline(MIRA, color='#1a9641', lw=0.8, ls='-.', alpha=0.7,
-           label=fr'$\mathcal{{M}}={MIRA:.4f}$ (k→0 limit)')
-ax.fill_betweenx([0.9, 2.1], 1e-3, k_fs, alpha=0.07, color='#1a9641',
-                 label=r'$k < k_{fs}$: $\phi$-DM active')
-ax.set_xlabel(r'Wavenumber $k$ [$h$ Mpc$^{-1}$]', fontsize=11)
-ax.set_ylabel(r'$\theta_E^{\rm SSEE}/\theta_E^{\rm GR}$', fontsize=11)
-ax.set_title(r'Disformal lensing enhancement vs scale', fontsize=10)
-ax.set_ylim(0.9, 2.15)
-ax.legend(fontsize=8.5, loc='lower left')
-ax.grid(which='both', lw=0.4, alpha=0.4)
-fig.tight_layout()
-out2 = os.path.join(OUT, 'fig_paper8_lensing_ratio.pdf')
-fig.savefig(out2, bbox_inches='tight')
-fig.savefig(out2.replace('.pdf', '.png'), dpi=150, bbox_inches='tight')
-plt.close(fig)
-print(f"Saved: {out2}")
 
 print(f"\nPaper 8 constants check:")
 print(f"  AURA = {AURA:.6f}")

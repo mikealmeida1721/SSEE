@@ -303,6 +303,35 @@ contra `4/3 = 1.333333` (dif 0.0382%). No es cero.
 
 ## OP-4 — Vainshtein Radius Exceeds Observable Universe (Paper 8) — 🔴 **REABIERTO 2026-09-19**
 
+> **Verificación independiente de la auditoría externa (Max, commit 17acccd) — 2026-09-19.**
+> Los dos hallazgos son REALES. Se miden, no se discuten:
+>
+> **H1 — `eq:rkm` no cierra dimensiones.** `r³ = M_obj/(4π·Mpl·M²)`: el lado derecho es
+> E/(E·E²) = E⁻² = longitud², el izquierdo longitud³. Prueba de fuego: evaluada toda en GeV
+> da r☉ = 1.44×10⁴ m; toda en eV da 1.44×10⁷ m. **Un factor 1000 según la unidad elegida**:
+> una fórmula bien formada no depende de eso. Los números impresos (1.45×10⁷, 10¹¹, 10¹² m)
+> salen de evaluarla en eV (script `ssee_paper8_figures.py`), y la figura `fig_paper8_vainshtein`
+> cuelga de ella.
+> Forma que cierra: `r² = M_obj/(4π·Mpl·M²)` (Brax & Valageas 2014, que además lleva el
+> acople). Da el MISMO radio en GeV y en eV: Sol 1.23×10¹⁴ m (823 AU), Vía Láctea 1.23×10²⁰ m
+> (**4.0 kpc**), cúmulo 3.89×10²¹ m (126 kpc).
+> Derivada desde la ecuación de campo del propio paper (ec. 260, Gauss + cruce
+> X²/M⁴ = X/KAL): `r*² = (KAL^{3/2}/√2)·βc·M_obj/(4π·Mpl·M²)`, factor 9.17·βc sobre la
+> forma de Brax. Vía Láctea: **12 kpc** (βc=1), **18 kpc** (|βc|=2.194210), 24 kpc (|βc|=AURA).
+>
+> **H2 — `eq:grad_vainshtein` tiene dimensión E⁴ para un gradiente (E²).** Con
+> X = −½g^{μν}∂φ∂φ (ec. 202), el cruce da X* = M⁴/KAL y `|∇φ|* = √(2/KAL)·M²`.
+>
+> **La física se invierte.** La tabla dice «r_km ≪ 1 kpc: la quinta fuerza está activa a
+> escala galáctica». Corregido, el apantallamiento de la Vía Láctea mide 4–24 kpc: cubre
+> la galaxia interior, y con los factores del propio paper llega más allá del radio solar
+> (8 kpc). A cambio, el Sistema Solar queda apantallado (823 AU), que antes NO lo estaba.
+>
+> **Tercer problema, que la auditoría no ve.** Toda la §4 (ec. 260, `eq:grad_closure`)
+> descansa en el acople βc, y βc **salió de la acción de Paper 7 el 2026-09-07** con el
+> potencial. Sin acople no hay quinta fuerza que apantallar. Lo que NO cae: la predicción
+> de lensing (α_B = α_M = α_T = 0 ⟹ μ−1 = 0), que no usa βc ni esta sección.
+
 > **Por qué se reabre.** El cierre de 2026-05-15 sustituyó la fórmula Galileon por una
 > fórmula k-mouflage (Brax & Valageas 2014) en §4.2 y regeneró la figura con ella. El
 > guardián mide que **esa fórmula está dimensionalmente rota**: `r_km` sale con dimensión

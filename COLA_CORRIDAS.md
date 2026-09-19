@@ -433,3 +433,51 @@ contra 282.17 sin partícula. **Mi predicción de que Planck la mataría FALLÓ.
 - halo_A tiene que ir al minimizador, no en rejilla
 - falta el CMB con la misma partícula dentro (ahora la cota N_eff es a mano)
 
+## Añadido 2026-09-19 — KiDS-Legacy, la prueba que retira la partícula por innecesaria
+
+**Qué contesta.** Con el fondo de SSEE **clavado por álgebra**, ¿qué
+`log(10¹⁰A_s)` pide la cizalla de KiDS-Legacy (Wright et al. 2025, A&A 703,
+A158)? Si pide el **mismo que el CMB** — `LOGA_CMB_SSEE = 3.0448340130228546` —
+dentro de ~1σ, entonces el fondo único basta y la partícula se retira por
+**innecesaria** (no por refutada: ya estaba retirada desde 2026-08-01 por otras
+dos razones). `S₈ = 0.815` NO entra como entrada por ningún lado; sólo se usa
+al final como contraste del posterior.
+
+**Control negativo hecho ANTES de creer nada (R53).**
+`src/p06_growth/control_legacy.py`, log
+`results/logs/growth_2026-07/control_legacy.json`:
+
+| lado | modelo no lineal | χ² | vs 407.647 oficial |
+|---|---|---|---|
+| **titular** | HMCode-2020 en el `log_T_AGN` **oficial** (8.21185), sin ningún libre de traducción | **410.269** | **+0.64%** |
+| control del otro lado | HMcode-2015, donde la traducción SÍ es libre | 406.529 (halo_A≈1.8) | −0.27% |
+| control hacia atrás | KiDS-1000 con el mismo código tocado | 261.2667 | idéntico al de antes |
+
+La referencia son los `-2 × (−203.823490) = 407.647` del punto de máxima
+verosimilitud de `output_nautilus_xipm_Fiducial.txt`, 357 puntos, 20 libres.
+Convención verificada: CosmoSIS reporta `loglike = −0.5·χ²`, **sin**
+`−0.5·ln|2πC|` (lo confirma KiDS-1000: `−2×(−130.157) = 260.31` contra el
+`260.32` publicado).
+
+**Tres configuraciones**, `src/p06_growth/cobaya_kids_legacy.py`, lanzadas con
+`src/p06_growth/lanzar_kids_legacy.sh` (regla 6: desde disco, `exec mpirun`):
+
+| corrida | fondo | libres | núcleos | estado |
+|---|---|---|---|---|
+| `ssee` | **fijo** por álgebra | 9 (logA, log_T_AGN, A_scale, dz1..dz6) | 4 | 🔄 lanzada 07:17 |
+| `lcdmfijo` | clavado en Planck 2018 | 9 | 4 | 🔄 lanzada 07:18 |
+| `lcdm` | libre | 13 | 4 | ⏸ espera hueco (presupuesto 12) |
+
+**Aproximaciones declaradas** (no hay ninguna oculta):
+- IA: el oficial es NLA-M con 8 parámetros cuya matriz de priors vive fuera de
+  este release. Aquí se toma la **forma por bin** que ese modelo produce en el
+  posterior oficial y se deja libre **una** amplitud global que la reescala
+  (`A_scale = 1` es el IA oficial). Es 1 libre en vez de 8.
+- Limber extendido y binning en θ sin los pesos `npairs` medidos.
+- El no lineal **ya no es una aproximación**: es el modelo del pipeline oficial.
+
+**Ojo con el 68.13.** El informe de traspaso dice que «el 68.13 rotulado como
+`H_global` es la cascada parcial sólo-IR — no usarlo». Eso es **impreciso** y no
+se propaga al repo: `CLAUDE.md` declara canónicos los DOS, IR 68.13 (0.17σ) y
+UV 67.962142 (residuo +4.2e-06). Para este pipeline el fondo entra con
+H₀ = 67.962, así que en la práctica coinciden.

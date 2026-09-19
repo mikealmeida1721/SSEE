@@ -95,9 +95,16 @@ REGLAS = {
         # asignaba «= 0.8335» y se comprobaba «abs(σ8 − 0.8335) < 1e-2» — una
         # tautología imposible de fallar. La mutación es la única forma en que
         # eso salía a la luz: el check estaba VERDE y no miraba nada.
+        # El ancla NO lleva el valor (2026-09-19). Lo llevaba —«0.8335»— y se
+        # quedo rancia el 2026-09-08, cuando la propagacion del techo S8 lo
+        # movio a 0.814854: desde entonces este caso no mutaba nada y la suite
+        # lo reportaba como ANCLA?. Mismo error que el de los .md, en el
+        # cajon de al lado: un literal copiado se queda atras en silencio.
+        # Anclando a la CLAVE y comentando el resto de la linea, la mutacion
+        # sobrevive a cualquier futuro cambio de valor.
         mutacion=[("el techo σ8 del YAML alterado",
-                   "sigma8_single_ceiling: 0.8335",
-                   "sigma8_single_ceiling: 0.7000")],
+                   "sigma8_single_ceiling:",
+                   "sigma8_single_ceiling: 0.7000  #")],
     ),
     "DESI": dict(
         capa="DESI — procedencia BAO: csv == DR2 Tabla 4 oficial",

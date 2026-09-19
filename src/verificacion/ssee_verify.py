@@ -711,6 +711,23 @@ def _afirma_vigencia(_uni, _tokens):
     return None
 
 
+# LA FORMA TIPOGRAFICA NO PUEDE DECIDIR SI SE CAZA UN RESTO (2026-09-19).
+# Los tokens se escribieron pegados («k_fs=0.754») y el README los escribe con
+# espacios («k_fs = 0.754»), en una celda de tabla («| 0.754 h/Mpc») o
+# URL-codificados dentro de un badge («k__fs_%3D_0.754»). Resultado: cuatro
+# restos de la particula vivos en la portada del repositorio, y el barrido
+# pasando limpio — lo encontro una auditoria externa el 2026-09-19.
+# Se normaliza la superficie ANTES de comparar, en vez de ir anadiendo
+# variantes a la lista, que es justo lo que se queda rancio.
+_MOJI = {"%3D": "=", "%2F": "/", "%20": " ", "__": "_", "\\,": "", "\\ ": " "}
+
+
+def _forma(_x):
+    for _k, _v in _MOJI.items():
+        _x = _x.replace(_k, _v)
+    return re.sub(r"\s*([=])\s*", r"\1", _x)
+
+
 def _presenta_como_vigente(_txt, _tokens):
     """Lineas con un valor retractado y sin marca de retraccion EN SU VENTANA.
     La ventana es +-1 linea porque en prosa LaTeX el «retracted» que califica
@@ -738,8 +755,9 @@ def _presenta_como_vigente(_txt, _tokens):
                 if _l.startswith("## ") or _l.startswith("\\section"):
                     return False
         return False
+    _tokn = [_forma(_t) for _t in _tokens]
     for _i, _ln in enumerate(_lns):
-        if not any(_tk in _ln for _tk in _tokens):
+        if not any(_tk in _forma(_ln) for _tk in _tokn):
             continue
         # UNA FILA DE TABLA ES UNA AFIRMACION ENTERA (2026-09-19).
         #

@@ -445,10 +445,19 @@ dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
    con feedback bariónico (N-body SSEE, ~5k–20k CPU-h) queda pendiente; HMcode-2020
    da una corrección ~0.4% (B_σ₈≈0.996). No altera el resultado lineal forward.
 
-**Veredicto:** la tensión S₈ la **resuelve el two-sector lineal forward**
-(0.766, 0.01σ). Las ramas viejas σ₈=0.737/0.794 → S₈=0.761/0.820 (HMcode,
-internamente inconsistentes) y 0.702/0.725 (G=0.866, Ω_m,dyn) están **retiradas**.
-Sólo el refinamiento no-lineal Nivel 2 queda ABIERTO.
+**Veredicto (reescrito 2026-09-19).** ~~La tensión S₈ la resuelve el two-sector
+lineal forward (0.766, 0.01σ).~~ **RETIRADO**: no hay tensión que resolver. El
+«3.5σ» se medía con A_s FIJADO a Planck —o sea importando la discrepancia
+Planck–cizalla— y contra el estadístico comprimido S₈, cuya reducción asume ΛCDM.
+Contra el dato **crudo** de KiDS-1000 con un solo sector y A_s libre:
+**S₈ = 0.7555 ± 0.0192 → 0.11σ** (MCMC R3), con control ΛCDM sobre el mismo dato
+en 0.7571 ± 0.0194. Las ramas viejas σ₈=0.737/0.794 → S₈=0.761/0.820 (HMcode,
+internamente inconsistentes) y 0.702/0.725 (G=0.866, Ω_m,dyn) siguen **retiradas**.
+Queda ABIERTO sólo el refinamiento no-lineal Nivel 2 (ficha OP-5b).
+
+*(Este veredicto llevaba el 0.766 —patrón retirado— bajo un cartel que ya decía
+RETIRADO. Lo encontró una auditoría externa el 2026-09-19: el cartel de arriba no
+alcanza al párrafo de abajo, que es el mismo defecto del vecino que exonera.)*
 
 ## V-L3-OP6 — forma de screening f_screen / universo separado — **PARCIAL (forma derivada, valor con insumo)**
 

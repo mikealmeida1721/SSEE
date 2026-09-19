@@ -1,4 +1,8 @@
-numpy>=1.24
+# numpy>=2.0, no 1.24 (2026-09-19): src/p06_growth/boss_rsd_model.py usa
+# np.trapezoid, que solo existe desde numpy 2.0. Con el piso anterior una
+# instalacion limpia segun este mismo fichero reproducia el fallo — lo
+# encontro una auditoria externa montando el entorno desde cero.
+numpy>=2.0
 scipy>=1.10
 matplotlib>=3.7
 emcee>=3.1

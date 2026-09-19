@@ -86,6 +86,38 @@ def _marked(lines_low, idx, markers):
     return False
 
 
+def _parrafo(lines, i):
+    """Limites del parrafo que contiene la linea i (bloques entre lineas en
+    blanco). Para .md se respetan ademas los items de lista: un item es una
+    afirmacion propia y no lo exonera su vecino."""
+    import re as _r
+    _item = _r.compile(r"^\s*(?:[-*+]\s|\d+[.)]\s)")
+    ini = i
+    while ini > 0:
+        if _item.match(lines[ini]):
+            break
+        if not lines[ini - 1].strip():
+            break
+        if _item.match(lines[ini - 1]) and not lines[ini].startswith((" ", "\t")):
+            break
+        ini -= 1
+    fin = i
+    while fin + 1 < len(lines):
+        s = lines[fin + 1]
+        if not s.strip():
+            break
+        if _item.match(s) and not s.startswith((" ", "\t")):
+            break
+        fin += 1
+    return ini, fin
+
+
+def _marked_parrafo(lines, lines_low, i, markers):
+    a, b = _parrafo(lines, i)
+    ventana = " ".join(lines_low[a:b + 1])
+    return any(mk in ventana for mk in markers)
+
+
 def scan(vault_only=False):
     """Devuelve (drifts, scanned). drifts = lista de (memoria, archivo, lineno, patrón, texto)."""
     cfg = _load()
@@ -115,7 +147,20 @@ def scan(vault_only=False):
                         in_hist, hist_level = True, level
                     elif in_hist and level <= hist_level:
                         in_hist, hist_level = False, 0
-                if in_hist or _marked(low, i, markers):
+                # LA MARCA VALE EN SU UNIDAD, NO EN LA LINEA DE AL LADO
+                # (2026-09-19). `_marked` mira la linea i y sus vecinas +-1, y
+                # con eso Paper 5 mantuvo VIVO el S8=0.758 retirado: la frase
+                # «The phi-DM two-sector split once described here is
+                # retracted» estaba en la linea ANTERIOR y eximia a la
+                # siguiente, que afirmaba el 0.758 como resultado. memory_sync
+                # salia VERDE. Lo encontro una auditoria externa.
+                #
+                # Es el mismo defecto que se cerro esa manana en el guardian
+                # (R60: la unidad de afirmacion), y este era el componente al
+                # que no se llevo el arreglo. Aqui la unidad es el PARRAFO:
+                # un .tex justificado parte las frases por ancho de columna,
+                # asi que la linea no significa nada, pero el parrafo si.
+                if in_hist or _marked_parrafo(lines, low, i, markers):
                     continue
                 for item in retired:
                     pat = item["pattern"]

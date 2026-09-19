@@ -360,12 +360,15 @@ Todo objeto astrofísico tiene r_km ≪ 1 kpc → quinta fuerza DM activa a esca
   (0.73σ). A escalas RSD (k≪k_fs) el φ-DM agrupa como frío, sin firma two-sector en fσ₈.
   (El viejo "2.56σ→0.50σ" usaba datos fσ₈ erróneos y/o el baseline no-canónico Ω_m=0.160;
   el "0.74/0.76σ" usaba Ω_m=0.30889 vía MIRA — ambos retirados.)
-- **S₈ (weak-lensing) — el desafío REAL:** single-sector S₈=0.827 (2.7σ KiDS; era 0.846/3.5σ antes de incluir los neutrinos masivos, 2026-09-08). El
+- ~~**S₈ (weak-lensing) — el desafío REAL:** single-sector S₈=0.827 (2.7σ KiDS). El
   two-sector free-streaming lo baja a **S₈_eff=0.758 (0.00σ KiDS) — RESUELVE** a nivel
-  lineal/forward (m_φ=40.70 eV, cero fiteo; el viejo 0.761 era la rama WDM fiteada).
+  lineal/forward (m_φ=40.70 eV, cero fiteo).~~ **RETIRADO 2026-08-01.** El 0.827 es un
+  **techo** medido con A_s FIJADO a Planck, no una predicción; y el 0.758 salía del
+  baseline two-sector, retirado con la partícula. Con A_s libre contra el dato crudo:
+  **S₈ = 0.7555 ± 0.0192, 0.11σ**. No había desafío.
 
 **Residual abierto:** solo el refinamiento NO LINEAL pleno (N-body con feedback bariónico,
-Nivel 2). El cierre lineal/forward de S₈ ya está hecho (0.758).
+Nivel 2) — ficha **OP-5b**, severidad Baja. Ya no es la vía de rescate de ninguna tensión.
 
 **Nivel 1 — HMcode-2020 baryonic feedback (CLASS, laptop) — COMPLETADO 2026-05-16:**
 
@@ -385,14 +388,19 @@ Resultados CLASS HMcode-2020 con parámetros SSEE (H₀=66.75 — input de la co
 B_eff (lensing k=0.03–2 h/Mpc, peso k) = **0.9447** (supresión 5.53% en P(k))
 B_sigma8 (top-hat integral, k<2 h/Mpc) = **0.9956** (supresión 0.44% en σ₈_eff)
 
-Tensiones S₈ (aplicando supresión al baseline Paper 6 S₈=0.761):
+> 🔴 **Tabla HISTÓRICA (retirada 2026-08-01).** Toda ella cuelga del baseline
+> two-sector S₈=0.761, que se retiró con la partícula. Se conserva como registro de
+> lo que se calculó entonces; **ninguna de sus filas es citable como vigente**.
+> Además, la fila «DES Y3 (observado) = 0.758» debe cotejarse con la publicación
+> antes de reutilizarse: el valor 3×2pt publicado por DES Y3 es 0.776 ± 0.017, y el
+> 0.758 parece ser de otra combinación.
 
-| Escenario | S₈ | DES Y3 | KiDS-1000 |
+| ~~Escenario~~ | ~~S₈~~ | ~~DES Y3~~ | ~~KiDS-1000~~ |
 |---|---|---|---|
-| Paper 6 baseline (φ-DM + WDM) | 0.761 | 0.09σ | −0.25σ |
-| + HMcode-2020 baryonic (Mead+20) | 0.758 | −0.06σ | −0.42σ |
-| DES Y3 (observado) | 0.758 | 0.00σ | — |
-| KiDS-1000 (observado) | 0.759 | — | 0.00σ |
+| ~~Paper 6 baseline (φ-DM + WDM)~~ | ~~0.761~~ | ~~0.09σ~~ | ~~−0.25σ~~ |
+| ~~+ HMcode-2020 baryonic (Mead+20)~~ | ~~0.758~~ | ~~−0.06σ~~ | ~~−0.42σ~~ |
+| ~~DES Y3 (observado)~~ | ~~0.758~~ | ~~0.00σ~~ | — |
+| ~~KiDS-1000 (observado)~~ | ~~0.759~~ | — | ~~0.00σ~~ |
 
 **El baseline Paper 6 ya está dentro de 1σ DES** (0.09σ). HMcode añade Δσ = 0.03σ de mejora.
 
@@ -405,11 +413,12 @@ suave adicional, principalmente a k > 0.5 h/Mpc.
 HMcode-2020 captura ~60–70% de la supresión bariónica real (McCarthy+2017, Chisari+2019).
 Rango adicional N-body: ΔB_sigma8 ~ 0.03–0.07, llevando S₈^N-body ≈ 0.705–0.735.
 
-Tensión DES proyectada:
-- Optimista: (0.705 − 0.758)/0.023 = −2.36σ
-- Conservador: (0.735 − 0.758)/0.023 = −1.05σ
+~~Tensión DES proyectada:~~
+- ~~Optimista: (0.705 − 0.758)/0.023 = −2.36σ~~
+- ~~Conservador: (0.735 − 0.758)/0.023 = −1.05σ~~
 
-**Falsificación:** Si N-body produce S₈ < 0.785 → OP-5 resuelto (<1.2σ DES).
+~~**Falsificación:** Si N-body produce S₈ < 0.785 → OP-5 resuelto (<1.2σ DES).~~
+**RETIRADO**: la proyección se medía contra el 0.758 del baseline two-sector.
 
 **Recursos Nivel 2:** BAHAMAS-SSEE: ~5,000–10,000 CPU-horas (~USD 500–1,000);
 IllustrisTNG-SSEE: ~10,000–20,000 CPU-horas (~USD 1,000–2,000).

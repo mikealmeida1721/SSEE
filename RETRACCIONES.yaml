@@ -24,7 +24,10 @@ particula_phi_dm:
     numero de la ECUACION DE ESTADO. Ademas la tension S8 que la
     motivaba no existe contra el dato crudo.
   reemplazo: "un solo sector, Om_m=0.308881; S8=0.7555+-0.0192 (0.11 sigma KiDS)"
-  tokens: ["40.70", "594.28", "0.14889", "0.14888", "k_fs=0.754",
+  # "1.117" (alpha de free-streaming, salida CLASS de la particula) anadido el
+  # 2026-09-19: estaba vivo en el README como «canonical particle» y ningun
+  # token lo delataba.
+  tokens: ["40.70", "594.28", "0.14889", "0.14888", "1.117", "k_fs=0.754",
            "k_{\\rm fs}=0.754"]
 
 beta_c_aura:

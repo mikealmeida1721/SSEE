@@ -63,7 +63,8 @@ con look-elsewhere conjunto restrictivo). El coeficiente de OP-9 es débilmente 
   §B1 explícito). El match a w₀≈−0.84, wₐ≈−0.6 es **consistencia**, no pre-dicción probada.
   Honesto: aquí NO hay crédito de predicción.
 - **Predicciones genuinamente FORWARD (dato aún inexistente):**
-  - **k_fs = 0.754 h/Mpc** (imprint de m_φ en P(k)) → **DESI Y3 / Euclid, 2026–2028**.
+  - ~~**k_fs = 0.754 h/Mpc** (imprint de m_φ en P(k)) → **DESI Y3 / Euclid, 2026–2028**.~~
+    **RETIRADA 2026-08-01** con la partícula que la producía.
   - **r = φ⁻¹⁰** (tensor-a-escalar) → CMB-S4 / LiteBIRD.
   - Estas **no pueden ser post-hoc**: el dato no existe todavía. Un sistema numerológico
     **no apuesta** sobre cantidades no medidas.
@@ -155,7 +156,9 @@ falló, afirmó lo justo y aquí termina lo derivado.)
 El modelo se declara FALSO si:
 - **DESI Y3 / Euclid** miden k_fs fuera de [0.70, 0.81] h/Mpc → mata la partícula φ-DM.
 - La evolución **w₀wₐ** se descarta (phantom crossing excluido a >3σ) → mata el sector DE.
-- **S₈** two-sector se aleja >3σ de KiDS/DES con feedback bariónico controlado.
+- ~~**S₈** two-sector se aleja >3σ de KiDS/DES con feedback bariónico controlado.~~
+  **RETIRADO 2026-08-01**: el two-sector cayó, y contra el dato crudo con A_s libre
+  no hay tensión (S₈ = 0.7555 ± 0.0192, 0.11σ).
 - **r** (tensor-a-escalar) se mide y excluye φ⁻¹⁰.
 
 Si alguno ocurre, este documento se cierra con veredicto FALSO — que es lo que hace un

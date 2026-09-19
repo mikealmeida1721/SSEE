@@ -11,7 +11,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-yellow.svg)](requirements.txt)
 [![Papers](https://img.shields.io/badge/Papers-10_+_2_consolidated-8A2BE2.svg)](docs/)
 [![Status](https://img.shields.io/badge/Audit-guardian_green-success.svg)](VERIFICATION_LEDGER.md)
-[![Prediction](https://img.shields.io/badge/Pre--registered-k__fs_%3D_0.754_h%2FMpc-critical.svg)](OPEN_PROBLEMS.md)
+[![Prediction](https://img.shields.io/badge/Pre--registered-r_%3D_%CF%86%E2%81%BB%C2%B9%E2%81%B0_%3D_0.00813-critical.svg)](OPEN_PROBLEMS.md)
 
 <img src="results/figures/fig1_w0wa_plane.png" width="520" alt="SSEE algebraic point (w0, wa) vs DESI DR2 contours — 0.24σ (Pantheon+)"/>
 
@@ -211,8 +211,8 @@ That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of th
 | Ω_m = ωm/h² (~~two-sector total~~ — **single sector since 2026-08-01**) | 0.308881 = Ω_m,CMB | ωm-direct (OP-8 dissolved). The value stands; only the name «total of two sectors» is retracted — there is one sector |
 | Σm_ν = R₂ × 0.9530 eV | 0.0685 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 (ν-closure C=93.14) |
 | ~~m_φ = Σm_ν × (SOLAR²·KRYSTOS_V)~~ | ~~40.70 eV~~ | **RETRACTED 2026-08-01** — the particle had nothing to be made of once the subtraction fell; also excluded by the raw shear (m_φ > 70.3 eV) |
-| α (Viel fit to particle/cold P(k) ratio) | 1.117 Mpc/h | CLASS output — not imposed |
-| k_fs (free-streaming) | 0.754 h/Mpc | From m_φ, CLASS-derived |
+| ~~α (Viel fit to particle/cold P(k) ratio)~~ | ~~1.117 Mpc/h~~ | **RETIRED 2026-08-01** with the particle |
+| ~~k_fs (free-streaming)~~ | ~~0.754 h/Mpc~~ | **RETIRED 2026-08-01** with the particle |
 | σ₈_eff (two-sector particle) | 0.747 | RETIRED 2026-08-01 |
 | **σ₈, S₈ (single sector, A_s free, MCMC vs raw KiDS-1000 ξ±)** | **0.7446±0.0189, 0.7555±0.0192** | **0.11σ — no S₈ tension.** Converged Cobaya+CAMB run, R−1=0.019, N_eff=4.2×10⁴, χ²=265.4/216 dof |
 | Same background with A_s **fixed** to Planck | σ₈=0.8149, S₈=0.827 | the old "3.5σ challenge" — an artefact of fixing A_s, i.e. of importing the Planck–KiDS tension (2.7σ with the corrected ceiling) |
@@ -263,7 +263,7 @@ That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of th
 | CMB peak 2 (ℓ) | **537** | 597 | 537 | full ω_m necessary |
 | CMB peak 3 (ℓ) | **814** | 922 | 814 | full ω_m necessary |
 | RMS vs ΛCDM | **0.14%** | 31.5% | — | ~220× degradation with bare Ω_m,dyn |
-| α free-streaming (CLASS output, canonical particle) | **1.117 Mpc/h** | — | — | Yields k_fs = 0.754 h/Mpc |
+| ~~α free-streaming (CLASS output, φ-DM particle)~~ | ~~**1.117 Mpc/h**~~ | — | — | **RETIRED 2026-08-01**: there is no canonical particle |
 | S₈ (two-sector, canonical particle) — RETIRED 2026-08-01 | **0.758** | — | ~0.83 | superseded by 0.7555±0.0192 (0.11σ), single sector, A_s free |
 | IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
 
@@ -374,10 +374,16 @@ pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1
 
 **Status (2026-09-19):** all 10 papers + consolidated journal documents complete and
 compile clean (0 LaTeX errors, 0 orphan bibitems, 0 undefined citations). The
-verification guardian runs 284 checks with no regressions; its own 30 self-tests and
-the 55 meta-guardian layers are green. It reports **AMBER, not green** — 18 open
-problems and 79 declared debt sites remain, and a green with debt outstanding would
-be a forced one.
+verification guardian runs 288 checks with no regressions; its own 30 self-tests, the
+55 meta-guardian layers and the 51 injected-defect mutation tests are green.
+
+Its verdict is reported on three separate lines, and only the last one paints the
+colour: **regressions** (none), **unsolved physics** (14 fronts across 12 declared
+OPEN_PROBLEMS entries, each with its own severity — these do not paint the semaphore,
+they are declared), and **pending work** (what is finishable and still unfinished).
+Mixing the last two is what used to pin the semaphore at amber for ever: "nobody has
+derived H from first principles" is not the same kind of thing as "12 figures need
+regenerating".
 
 > The previous Status block, dated 2026-07-10, announced a canonical φ-DM particle
 > m_φ = 40.70 eV as a forward prediction. **That particle was retracted on
@@ -411,7 +417,8 @@ Full development history in [CHANGELOG.md](CHANGELOG.md).
 - [ ] Zenodo v7 — Papers 1–10 + Unified + Sealed + OPEN_PROBLEMS.md +
       VERIFICATION_LEDGER.md + arXiv source tarballs (in progress, 2026-06-12)
 - [ ] Journal submission — Sealed Journal (late-DE core) → JCAP / Universe;
-      Papers 5–7 second wave; P6/P8/P9 upgrade pending DESI Y3 (k_fs = 0.754 h/Mpc)
+      Papers 5–7 second wave; P6/P8/P9 upgrade pending DESI Y3 (the k_fs = 0.754 h/Mpc
+      target was retired on 2026-08-01 with the particle)
 - [ ] Paper B — ab-initio baryogenesis (OP-1 closure) + φ-DM relic abundance
 - [ ] OP-5 closure — full N-body S₈ (BAHAMAS / IllustrisTNG-SSEE)
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.

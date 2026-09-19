@@ -14,6 +14,7 @@ CONTROL OBLIGATORIO (R53): con la Gamma del paper (-P_sc/I_g) el
 ajuste debe FALLAR dando wa = +2.01; solo con la corregida
 (+P_sc/(3 I_g)) debe pasar. Si las dos pasan, la prueba no mide.
 """
+# ORIGEN-VALOR: 0.3139 — cruce_z = 0.3139 de results/logs/eft_dos_campos_phi_pi.json
 import sys
 
 import numpy as np

@@ -30,6 +30,7 @@ D=4.01). Si el diagnostico no ve nada en BOSS, no sirve para absolver a KiDS.
 
 FUENTE: results/logs/growth_2026-07/marginal_vs_perfil.json
 """
+# ORIGEN-VALOR: 0.1811 — desplazamiento marginal-perfil, results/logs/growth_2026-07/marginal_vs_perfil.json
 import json
 import pathlib
 

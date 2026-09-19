@@ -34,7 +34,9 @@ alpha_K = 12*phi**4 / (3*(2*phi**7)**2)  # αK=0.4033 (Paper 7)
 Omm_dyn  = 0.160                   # Ω_m,dyn
 Om_CDM   = Omm_dyn                 # = Ω_φDM (unificación algebraica)
 Om_phiDM = (MIRA - 1) * Omm_dyn   # ≈ 0.15987
-h_ssee   = 0.6796                  # H₀/100 (Paper 2 MCMC best-fit)
+# ORIGEN-VALOR: 0.6796 — H_alg/100 = 3(phi+pi)^2/100 = 0.679621. El comentario de al lado lo atribuia al MCMC de Paper 2, que da 0.6779: atribucion equivocada (script RETIRADO)
+# ORIGEN-VALOR: 0.0739 — (MIRA-1)*0.160*0.6796^2 = 0.07382 (el 0.0739 del texto esta corrido en la 4a cifra), de la particula RETIRADA
+h_ssee   = 0.6796                  # H₀/100 = H_alg/100 (NO el MCMC de P2; corregido 2026-09-19)
 Om_phiDM_h2 = Om_phiDM * h_ssee**2  # ≈ 0.0739
 
 m_phi_eV = 5.60                    # eV — derivado algebraicamente (Paper 6)

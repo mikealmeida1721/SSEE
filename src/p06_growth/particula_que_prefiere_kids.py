@@ -107,6 +107,15 @@ BG = dict(C.SSEE_BG)                    # fondo algebraico de SSEE
 
 # --- la rejilla ---
 MASAS = np.array([0.3, 0.5, 0.8, 1.3, 2.2, 4.0, 10.0, 50.0, 3000.0])   # eV
+# ORIGEN de los numeros (R65, 2026-09-19)
+# ORIGEN-VALOR: 0.002960 — A_sup/8 * omega_m = 0.1660/8 * 0.1426675 = 0.0029604; regla dP/P=-8f de la cola #19, que CAMB corrigio (BANDEJA/2026-09-09_prediccion_particula_kids.md). Aqui solo es un punto de prueba de C1/C2
+# ORIGEN-VALOR: 0.0029600 — el mismo 0.002960 de arriba, escrito con un cero mas
+# ORIGEN-VALOR: 0.1426683 — omega_m que calcula CAMB con el fondo SSEE (ombh2+omch2+omnuh2 = 0.14266828); difiere del nucleo 0.1426675 porque CAMB convierte Sum m_nu con su factor (~93.04, no 93.14)
+# ORIGEN-VALOR: 0.0010 — nodo de rejilla elegido: omega_x de 0 a 0.005 en pasos de 0.001, abarca el 0.00296
+# ORIGEN-VALOR: 0.0020 — nodo de rejilla elegido (ver 0.0010)
+# ORIGEN-VALOR: 0.0030 — nodo de rejilla elegido (ver 0.0010)
+# ORIGEN-VALOR: 0.0040 — nodo de rejilla elegido (ver 0.0010)
+# ORIGEN-VALOR: 0.0050 — nodo de rejilla elegido (ver 0.0010)
 OMEGAS = np.array([0.0, 0.0010, 0.0020, 0.0030, 0.0040, 0.0050])
 # halo_A cubre el prior ENTERO U(2.0, 3.13) — en la #19 puse 3 puntos y dos
 # filas se pegaron al 2.15, que era el borde de MI rejilla y no el del prior.

@@ -69,12 +69,23 @@ RAIZ = ('/mnt/datos/SSEE_data/kids_legacy/'
 # devuelve  bias = L @ uncorr,  con L la cholesky INFERIOR de la covarianza.
 # Comprobado: L @ uncorr_medio reproduce las medias posteriores de la cadena
 # oficial dentro de ~1 sigma en cada bin (la diferencia es el tiron del dato).
+# ORIGEN: /mnt/datos/SSEE_data/kids_legacy/KiDS_Legacy_cosmic_shear_data_release/chains_and_config_files/xipm/KiDS_Legacy_values.ini
 NZ_COV = np.loadtxt(RAIZ + 'data/Nz_covariance.txt')
 NZ_INV = np.linalg.inv(NZ_COV)
 _UNCORR = np.array([2.5374, -2.44484, -1.37982, -0.494275, 1.40234, 6.26323])
 DZ_MEAN = np.linalg.cholesky(NZ_COV) @ _UNCORR
 
 # --- forma por bin del IA, evaluada en el posterior oficial ---------------
+# ORIGEN-VALOR: 5.70591 — media posterior ponderada de INTRINSIC_ALIGNMENT_PARAMETERS--A en output_nautilus_xipm_Fiducial.txt (1069 filas NaN fuera)
+# ORIGEN-VALOR: 0.44424 — media posterior ponderada de INTRINSIC_ALIGNMENT_PARAMETERS--BETA, misma cadena
+# ORIGEN-VALOR: 11.57762 — media posterior de LOG10_M_MEAN_1, misma cadena
+# ORIGEN-VALOR: 12.30926 — media posterior de LOG10_M_MEAN_2, misma cadena
+# ORIGEN-VALOR: 12.61513 — media posterior de LOG10_M_MEAN_3, misma cadena
+# ORIGEN-VALOR: 12.80061 — media posterior de LOG10_M_MEAN_4, misma cadena
+# ORIGEN-VALOR: 12.96842 — media posterior de LOG10_M_MEAN_5, misma cadena
+# ORIGEN-VALOR: 13.12889 — media posterior de LOG10_M_MEAN_6, misma cadena
+# (Se dejan escritas y no se leen de la cadena para no cambiar la verosimilitud
+#  de dos corridas que estan en marcha y se reanudan con este modulo.)
 _IA_A = 5.70591                      # posterior medio de la cadena oficial
 _IA_BETA = 0.44424
 _LOG10_M_PIV = 13.5                                        # values.ini
@@ -227,6 +238,7 @@ def info_lcdmfijo(chains_dir, covmat=None):
 def info_lcdm(chains_dir, covmat=None):
     extra = dict(
         ombh2=dict(prior=dict(min=0.019, max=0.026), ref=0.02237,
+                   # ORIGEN-VALOR: 0.0005 — paso inicial de propuesta de Cobaya para ombh2, no es una medida
                    proposal=0.0005, latex=r'\Omega_b h^2'),
         omch2=dict(prior=dict(min=0.051, max=0.255), ref=0.1157,
                    proposal=0.005, latex=r'\Omega_c h^2'),

@@ -49,6 +49,7 @@ de antemano:
 
 FUENTE: results/logs/growth_2026-07/supresion_plana_o_escala.json
 """
+# ORIGEN-VALOR: 0.6736 — h de Planck 2018 (arXiv:1807.06209)
 import json
 import pathlib
 import sys

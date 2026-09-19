@@ -18,6 +18,14 @@ la cascada anterior fue LINEAL (solo donde H₀ aparece literalmente) y no
 NO-LINEAL (donde H₀ aparece dentro de ρ_crit, M, etc.).
 """
 import numpy as np
+# ORIGEN de los numeros (R65, 2026-09-19). Script HISTORICO: la auditoria de
+# la era H_MIRA (2026-05-24); no produce ningun log vigente.
+# ORIGEN-VALOR: 0.4169052 — s_K_UV = 0.41690518 que imprime src/p10_uv/ssee_paper10_verification.py (Step 4)
+# ORIGEN-VALOR: 0.0695216 — f_screen_UV = 0.06952161 que imprime src/p10_uv/ssee_paper10_verification.py (Step 4)
+# ORIGEN-VALOR: 0.0695216111441 — f_screen_UV = 0.06952161114406 de src/p10_uv/ssee_paper10_verification.py, a 13 decimales
+# ORIGEN-VALOR: 0.02261 — omega_b h^2 posterior del MCMC con prior MIRA, results/logs/mcmc_paper2_mira.log linea 67
+# ORIGEN-VALOR: 0.0824 — Sum m_nu VIEJO de Paper 4, RETIRADO (contaminado OP-14; archive/codigo/investigacion/open_problems/ssee_op14_neutrino_mass.py). El vigente es 0.06849. Fila de registro historico
+# ORIGEN-VALOR: 0.01361 — 0.41691 - 0.4033 = 0.01361 (s_K_UV menos s_K_IR, los dos de Paper 10)
 import sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from ssee_core import (PHI, PI, OMEGA, BETA, KAL0, OMEGA_DE, OMEGA_M_DYN,

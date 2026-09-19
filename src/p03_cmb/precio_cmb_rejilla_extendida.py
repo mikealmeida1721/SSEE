@@ -9,7 +9,7 @@ La `rejilla_extendida` (#28b) encontro su minimo en m_x=7.5 eV, om_x=0.0080,
 dchi2 = -11.45 contra la base. Pero lo hizo con DOS aproximaciones:
 
   A1 · logA se eligio sobre una malla DISCRETA de 9 puntos, paso 0.0275.
-       El CMB mide logA con sigma = 0.01455, asi que ese paso vale
+       El CMB mide logA con sigma = 0.01454, asi que ese paso vale
        **1.89 sigma**. El salto de -1.77sig a +0.12sig entre casillas
        vecinas es resolucion de malla, no fisica.
 
@@ -104,6 +104,14 @@ X0 = np.array([3.044, 0.054])
 PASO = np.array([0.02, 0.005])
 NPROC = 3
 TOPE_OM_X = 0.10 * S.OMEGA_C_H2
+# ORIGEN de los numeros (R65, 2026-09-19)
+# ORIGEN-VALOR: 0.0080 — minimo de la #28b en m_x=7.5 eV, results/logs/growth_2026-07/rejilla_extendida.json
+# ORIGEN-VALOR: 0.0275 — paso de la malla de logA de la #28b (9 puntos, 2.88 a 3.10), results/logs/growth_2026-07/rejilla_extendida.json
+# ORIGEN-VALOR: 0.01454 — 0.0145437 = sigma(logA) del CMB de SSEE, results/logs/growth_2026-07/quien_mide_As.json (decia 0.01455, errata de redondeo corregida 2026-09-19; el 1.89 sigma no cambia: 0.0275/0.0145437 = 1.891)
+# ORIGEN-VALOR: 0.0050 — borde de la rejilla de la #25: sus 20 puntos llegan a m_x=4.0 y omega_x=0.005, results/logs/precio_cmb_de_la_particula.json
+# ORIGEN-VALOR: 0.0125 — nodo FUERA del tope heredado de la #28b (rejilla_extendida.py)
+# ORIGEN-VALOR: 0.0291 — 2 * 0.0145437 = 0.029087, redondeado a 4 decimales
+# ORIGEN-VALOR: 0.02908 — 2 * 0.0145437 = 0.029087 TRUNCADO (redondeado seria 0.02909). Ninguna de las 51 casillas con dlogA en los logs cae en [0.0290, 0.0292], asi que no movio ningun veredicto
 LIM_DLOGA = 0.02908
 SIG_LOGA = LIM_DLOGA / 2.0
 

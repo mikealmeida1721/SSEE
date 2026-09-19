@@ -5,6 +5,7 @@ Fig 2: Sensibilidad de masas por escenario
 Fig 3: Omega_DE SSEE vs Lambda con contexto estructural
 Fig 4: KAL(x) interpolation — límites Newtoniano y MONDiano
 """
+# ORIGEN-VALOR: 0.6847 — Omega_Lambda de Planck 2018 (arXiv:1807.06209)
 
 import os
 import numpy as np

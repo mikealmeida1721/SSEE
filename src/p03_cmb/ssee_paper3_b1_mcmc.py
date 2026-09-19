@@ -21,7 +21,7 @@ SSEE fixed (algebraically — ω_m-directo reframe):
   w0    = -Tr/Mv   ≈ -0.8399
   wa    = -P_sc/IGNIS ≈ -0.6700   (IGNIS = π+PYROS; NO K_v)
   ns    = 1 − (1/φ)^7 ≈ 0.96556
-  ombh2 = (π−φ)/(3Ω²)        = 0.022423  (ω_b directo)
+  ombh2 = (π−φ)/(3Ω²)        = 0.022418  (ω_b directo)
   omch2 = KAL₀·ombh2·ns      = 0.11951   (ω_c forward, NOT derived from H0)
 
 ΛCDM free parameters (k=6):
@@ -90,17 +90,17 @@ BIAL       = (phi + pi) / 2
 AURA       = phi + BIAL
 MIRA       = AURA / 2                  # 1.998924
 
-w0_ssee    = -Tr / Mv                  # −0.83989
+w0_ssee    = -Tr / Mv                  # −0.83995  (errata corregida 2026-09-19)
 IGNIS      = pi + P_sc                 # IGNIS = π+PYROS (R21)
-wa_ssee    = -P_sc / IGNIS             # −0.66990  (denominador IGNIS, no K_v)
-OmDE_ssee  = Tr / Mv                   # 0.83989
-Omm_dyn    = 1.0 - OmDE_ssee          # 0.16011
+wa_ssee    = -P_sc / IGNIS             # −0.66997  (errata del comentario corregida 2026-09-19; IGNIS = π+P_sc vale lo mismo que K_v = 9.51925)
+OmDE_ssee  = Tr / Mv                   # 0.83995  (errata corregida 2026-09-19)
+Omm_dyn    = 1.0 - OmDE_ssee          # 0.16005  (errata corregida 2026-09-19)
 
 # Reframe ω_m-DIRECTO (OP-8 cerrado, 2026-06-18): NO hay factor materia.
 # ω_b y ω_c son densidades físicas FIJAS algebraicamente; Ω_m,CMB = ω_m/h² es DERIVADO.
 ns_ssee    = 1.0 - (1.0 / phi) ** 7   # 0.96556 — algebraic spectral index
 KAL0       = beta + pi                 # 5.5214 — Structural Retention
-ombh2_ssee = (pi - phi) / (3.0 * Omega_ssee**2)   # 0.022423 — ω_b directo
+ombh2_ssee = (pi - phi) / (3.0 * Omega_ssee**2)   # 0.022418 — ω_b directo (errata corregida 2026-09-19)
 omch2_ssee = KAL0 * ombh2_ssee * ns_ssee          # 0.11951 — ω_c forward (KAL₀·ω_b·n_s)
 mnu_ssee   = _MNU                      # Σm_ν canónico del nucleo (C_ν=93.14 PDG); ω_ν = Σm_ν/C_ν
 # Ω_m,CMB derivado: (ω_b+ω_c+ω_ν)/h² → 0.308881 @ H_alg=67.962 (era 0.31993 vía MIRA, retirado)
@@ -112,7 +112,7 @@ ombh2_lcdm = 0.02237
 omch2_lcdm = 0.1200
 ns_lcdm    = 0.9649
 logA_lcdm  = 3.044
-tau_lcdm   = 0.0544
+tau_lcdm   = 0.0544   # Planck 2018 TT,TE,EE+lowE (arXiv:1807.06209)
 
 # ---------------------------------------------------------------------------
 # Shared likelihoods + theory block
@@ -243,6 +243,7 @@ def _lcdm_info(output_prefix, Rminus1_stop=0.02, burn_in=500):
             },
             "ombh2": {
                 "prior": {"min": 0.019, "max": 0.026},
+                # ORIGEN-VALOR: 0.0002 — ancho del punto de arranque de Cobaya, elegido (~1.3 sigma de Planck en omega_b), no es medida
                 "ref":  {"dist": "norm", "loc": ombh2_lcdm, "scale": 0.0002},
                 "proposal": 0.0002,
                 "latex": r"\Omega_b h^2",

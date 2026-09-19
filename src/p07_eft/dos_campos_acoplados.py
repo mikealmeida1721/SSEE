@@ -47,6 +47,7 @@ y con el riesgo look-elsewhere declarado (490 razones: 1/490 a +-0.0005).
 
 FUENTE: results/logs/eft_dos_campos_acoplados.json
 """
+# ORIGEN-VALOR: 0.0005 — tolerancia DECLARADA de la busqueda look-elsewhere (1 de 490 razones), no es medida
 import json
 import pathlib
 import sys

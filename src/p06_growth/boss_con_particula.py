@@ -44,6 +44,9 @@ C_NU = 94.0641
 LOGA_CMB = 3.0448340130228546
 REF = dict(logA=2.94479, sig=0.12385, chi2=197.43784)   # publicado, kmax=0.20
 
+# ORIGEN-VALOR: 0.0030 — mejor punto de la #25 (m=4.0 eV), results/logs/precio_cmb_de_la_particula.json
+# ORIGEN-VALOR: 0.0050 — punto intermedio ELEGIDO entre el de la #25 y el de la #28 (m=5.5 eV), no es medida
+# ORIGEN-VALOR: 0.0065 — mejor punto de la #28 (m=7.5 eV), results/logs/growth_2026-07/conjunta_tres_sondas.json
 PUNTOS = [(None, 0.0), (4.0, 0.0030), (5.5, 0.0050), (7.5, 0.0065)]
 
 

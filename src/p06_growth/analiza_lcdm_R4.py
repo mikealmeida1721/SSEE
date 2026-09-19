@@ -14,6 +14,7 @@ Carlo, que con miles de puntos queda pequeña).
 Mismo criterio de burn-in que R3 (30% por cadena) para comparar manzanas
 con manzanas.
 """
+# ORIGEN-VALOR: 0.025570 — R-1 de las medias de R4, results/logs/R4_lcdm_resume_20260805.log
 import json
 import time
 import numpy as np

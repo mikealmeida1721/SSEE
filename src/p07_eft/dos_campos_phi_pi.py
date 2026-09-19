@@ -39,6 +39,8 @@ metodo no despeja nada y se aborta.
 
 FUENTE: results/logs/eft_dos_campos_phi_pi.json
 """
+# ORIGEN: results/logs/eft_dos_campos_phi_pi.json   (cruce_z 0.3139, wa_que_da 0.4135)
+# ORIGEN-VALOR: 0.0005 — tolerancia DECLARADA para comparar contra el diccionario de 490 razones (la eleccion fija el riesgo 1/490)
 import json
 import pathlib
 import sys

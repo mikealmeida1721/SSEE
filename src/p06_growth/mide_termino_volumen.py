@@ -33,6 +33,7 @@ el techo algebraico (o algo esta mal leido). Si sale fuera, se aborta.
 
 FUENTE: results/logs/growth_2026-07/termino_volumen_boss.json
 """
+# ORIGEN-VALOR: 0.1811 — desplazamiento marginal-perfil, results/logs/growth_2026-07/marginal_vs_perfil.json
 import json
 import pathlib
 import sys

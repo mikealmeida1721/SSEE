@@ -26,6 +26,7 @@ preguntamos si CON ESA MISMA BASE existen numeradores enteros que den
 ~0.840 (sobre k1*D) y ~0.670 (sobre k2*D). Solo cuentan las bases que
 aciertan AMBOS objetivos. Ese es el denominador correcto del look-elsewhere.
 """
+# ORIGEN-VALOR: 0.0005 — tolerancia DECLARADA de la busqueda look-elsewhere (1 de 490 razones), no es medida
 import math
 
 PHI = (1.0 + math.sqrt(5.0)) / 2.0

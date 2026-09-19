@@ -27,6 +27,10 @@ _s66.path.insert(0, _o66.path.dirname(_o66.path.dirname(_o66.path.abspath(__file
 import ssee_core as _C
 
 
+# ORIGEN de los numeros (R65, 2026-09-19)
+# ORIGEN-VALOR: 0.4032 — 3*0.840*0.160 con los valores redondeados; exacto 3*(Tr/Mv)*(1-Tr/Mv) = 0.403302
+# ORIGEN-VALOR: 0.04854 — omega_b/h^2 = 0.0224178/0.679621^2 = 0.048535 (ssee_core)
+# ORIGEN-VALOR: 0.26035 — (omega_m - omega_b)/h^2 = 0.260346 (ssee_core); incluye neutrinos, no es solo CDM
 # ── Constantes algebraicas SSEE ──────────────────────────────────────────────
 phi   = (1 + 5**0.5) / 2
 pi    = np.pi

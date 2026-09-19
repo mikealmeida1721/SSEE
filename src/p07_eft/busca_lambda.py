@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """
+# ORIGEN-VALOR: 0.927316 — w(a=1) que imprime src/p07_eft/fondo_disparo.py («PREDICCION w(a=1) = -0.927316», corrido 2026-09-19); el barrido de beta_c=0 da -0.927318 con otra integracion
 PREGUNTA: existe una pendiente del potencial
 que, INTEGRADA de verdad (no con la formula
 asintotica del atractor), aterrice en

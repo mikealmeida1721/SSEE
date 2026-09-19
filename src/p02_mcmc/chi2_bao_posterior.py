@@ -22,6 +22,7 @@ Se reportan tres puntos para que la comparación sea legible:
 
 Uso:  .venv/bin/python3 src/p02_mcmc/chi2_bao_posterior.py
 """
+# ORIGEN-VALOR: 0.1432 — pivote omega_m h^2 de la eq. rd de Paper 2 (Planck 2018 TT,TE,EE+lowE); cita EH98 en FUENTES_PENDIENTES.md FP-7
 import os
 import sys
 

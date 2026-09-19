@@ -18,6 +18,7 @@ No opinamos: contamos. Buscamos sobre razones (a*phi+b*pi)/(c*phi+d*pi)
 con coeficientes enteros pequenos, y reportamos cuantas caen cerca de
 cada objetivo a varias tolerancias.
 """
+# ORIGEN-VALOR: 0.0005 — tolerancia DECLARADA de la busqueda look-elsewhere (1 de 490 razones), no es medida
 import math
 from fractions import Fraction
 

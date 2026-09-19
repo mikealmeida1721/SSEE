@@ -40,10 +40,10 @@ Kv_   = phi_ + pi_ + pi_ + phi_ # KRYSTOS (pi_+phi_+pi_+phi_ = 2*(pi_+phi_))
 Omega_ = pi_ + phi_              # OMEGA 4.75963
 Kv_    = phi_ + pi_ + Omega_    # KRYSTOS 9.51926
 Tr_    = 3*(phi_ + beta_)        # TRIAL 11.99354
-Mv_    = phi_ + pi_ + Kv_        # MIKAEL_V 14.27880
+Mv_    = phi_ + pi_ + Kv_        # MIKAEL_V 14.27888  (decia 14.27880: errata del comentario, corregida 2026-09-19)
 AURA_  = phi_ + beta_            # 3.99785
 MIRA_  = AURA_ / 2               # 1.99892
-BUFFER_= Mv_ - Tr_               # 2.28526
+BUFFER_= Mv_ - Tr_               # 2.28534  (decia 2.28526: errata del comentario, corregida 2026-09-19)
 
 w0_     = -Tr_ / Mv_             # -0.8400
 wa_     = -(Omega_ + phi_) / Kv_ # -0.6699
@@ -51,9 +51,11 @@ Om_DE   = Tr_ / Mv_              # 0.8400
 Om_dyn  = BUFFER_ / Mv_          # 0.1600
 Om_b    = 0.049                  # baryonic (Planck 2018)
 H0_     = 3*(phi_ + pi_)**2      # 67.96 km/s/Mpc
-h_      = H0_ / 100              # 0.6796
+# ORIGEN-VALOR: 0.6796 — H_alg/100 = 3(phi+pi)^2/100 = 0.679621, a 4 decimales
+h_      = H0_ / 100              # 0.6796 = H_alg/100 = 3(phi+pi)^2/100
 
 # Bellini-Sawicki αK prediction (Paper 7, algebraic)
+# ORIGEN-VALOR: 0.4032 — 3*0.840*0.160 con los valores redondeados; exacto 3*(Tr/Mv)*(1-Tr/Mv) = 0.403302
 aK_alg  = 3 * Om_DE * (1 + w0_)   # at z=0: 3×0.840×0.160 = 0.4032
 
 print("=" * 60)
@@ -137,7 +139,7 @@ try:
     Dl_lcdm, der_lcdm = run_class("LCDM", {
         'omega_cdm'  : 0.1200,
         'omega_b'    : 0.02237,
-        'h'          : 0.6736,
+        'h'          : 0.6736,   # Planck 2018 (arXiv:1807.06209)
         'n_s'        : 0.9649,
         'w0_fld'     : -1.0,
         'wa_fld'     : 0.0,

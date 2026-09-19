@@ -61,6 +61,8 @@ KX_over_X = 1/KAL0 + u   # K(X)/X = 1/KAL0 + X/M^4
 #   u_bg = X_bg/M^4 = 1.553e-3   (NOTE: the perturbativity parameter of the
 #   paper is eps = X_bg^2/M^4 = 5.67e-4 — a DIFFERENT quantity, not this axis)
 M4   = 5 * phi**8            # = 45*alpha_att^2 = 234.887 (rho_crit units)
+# ORIGEN-VALOR: 0.36490 — X_bg_UV/rho_crit = 13.643945/37.393588 meV^4 = 0.364874 (src/p10_uv/ssee_paper10_verification.py, Step 3). El literal difiere en 3e-5; figura ilustrativa
+# ORIGEN-VALOR: 0.01361 — s_K_UV - s_K_IR = 0.41690518 - 0.40330246 = 0.01360 (ssee_paper10_verification.py); 0.41691 - 0.40330 = 0.01361 con los redondeados
 X_bg = 0.36490               # background X (rho_crit units, Paper 10 §4)
 u_bg = X_bg / M4             # = 1.553e-3
 

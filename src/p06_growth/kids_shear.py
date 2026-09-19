@@ -5,7 +5,7 @@ Pipeline de cizalla cosmica KiDS-1000 xi_pm — evaluador de likelihood independ
 OBJETIVO: evaluar chi^2 de un modelo cosmologico arbitrario (incluido SSEE)
 contra los 225 puntos de xi_pm de KiDS-1000, SIN pasar por un posterior LCDM.
 
-CONTROL NEGATIVO OBLIGATORIO: reproducir like = -130.157350 en el punto de
+CONTROL NEGATIVO OBLIGATORIO: reproducir like = -130.15735 en el punto de
 maxima posterior de la cadena oficial (chain/maxpost_multinest_start_C.txt).
 Hasta que eso pase, ningun resultado de este script es utilizable.
 
@@ -16,6 +16,7 @@ Referencias:
   Mead et al. 2015, MNRAS 454, 1958 — HMcode
   Bridle & King 2007, NJP 9, 444 — alineamiento intrinseco NLA
 """
+# ORIGEN: /mnt/datos/SSEE_data/kids1000/KiDS1000_cosmis_shear_data_release/chains_and_config_files/main_chains_iterative_covariance/xipm/chain/maxpost_multinest_start_C.txt
 import numpy as np
 from astropy.io import fits
 from scipy.integrate import simpson
@@ -63,7 +64,7 @@ def set_dataset(nombre):
 
 DATASET = 'k1000'
 # NLA: C1 * rho_crit en unidades de h^2 Msol/Mpc^3 -> adimensional (Bridle & King)
-C1_RHOCRIT = 0.0134
+C1_RHOCRIT = 0.0134   # Bridle & King 2007 (NJP 9, 444), valor KiDS
 
 
 def load_data():

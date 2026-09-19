@@ -88,6 +88,12 @@ def corre(phi_i, phip_i, a_fin=3.0, n=3000):
                 K=X / KAL, V=V)
 
 
+# ORIGEN de los numeros (R65, 2026-09-19)
+# ORIGEN-VALOR: 0.9987 — fila de la rejilla de integracion mas cercana a a=1 (muestreo, no fisica)
+# ORIGEN-VALOR: 0.971200 — w_phi de Paper 7 = -0.971202 (manuscript/SSEE_Unified_Journal.tex:716), aqui truncado a 4 cifras
+# ORIGEN-VALOR: 0.9712 — el mismo w_phi = -0.971202 a 4 decimales
+# ORIGEN-VALOR: 1.52103 — a* con la recta CPL: Omega_DE(a) = T_r/M_v, sale 1.521028 (src/p07_eft/fondo_real_futuro.py)
+# ORIGEN-VALOR: 1.3769 — a* con el FONDO REAL = 1.37680 (src/p07_eft/fondo_real_futuro.py); aqui solo es punto de muestreo de la tabla (se toma la fila mas cercana)
 def _en_a1(r):
     """Interpolado a a = 1 EXACTO. Leer la fila mas cercana de la rejilla
     (a = 0.9987) metia 1.5e-3 de error puramente de muestreo y rompia la

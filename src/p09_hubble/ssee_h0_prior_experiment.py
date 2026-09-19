@@ -71,6 +71,7 @@ def DC(z_max, Om, n=300):
     zz = np.linspace(0, z_max, n)
     return np.trapezoid(1.0/E_ssee(zz, Om), zz)
 
+# ORIGEN-VALOR: 0.1432 — pivote omega_m h^2 de la eq. rd de Paper 2 (Planck 2018 TT,TE,EE+lowE); cita EH98 pendiente en FUENTES_PENDIENTES.md FP-7
 def sound_horizon_rd(ob_h2, om_h2):
     return 147.27 * (om_h2/0.1432)**(-0.255) * (ob_h2/0.02237)**(-0.134)
 
@@ -108,7 +109,7 @@ def lpost_factory(prior_kind):
             if not (40 < H0 < 100): return -np.inf
             if not (0.015 < ob_h2 < 0.030): return -np.inf
             lp_H0  = -0.5*((H0-mu)/sig)**2
-            lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
+            lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2   # prior BBN de DESI (Schöneberg 2024)
             om_h2  = OMEGA_M_H2                    # ω_m algebraico FIJO (R25)
             Om     = OMEGA_M_H2/(H0/100)**2        # Ω_m DERIVADO por muestra
             return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2, Om) + LLC_CLUSTERS_CONST
@@ -120,7 +121,7 @@ def lpost_factory(prior_kind):
             if not (40 < H0 < 100): return -np.inf
             if not (0.015 < ob_h2 < 0.030): return -np.inf
             lp_H0  = -0.5*((H0-mu)/sig)**2
-            lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
+            lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2   # prior BBN de DESI (Schöneberg 2024)
             om_h2  = OMEGA_M_H2                    # ω_m algebraico FIJO (R25)
             Om     = OMEGA_M_H2/(H0/100)**2        # Ω_m DERIVADO por muestra
             return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2, Om) + LLC_CLUSTERS_CONST
@@ -132,7 +133,7 @@ def lpost_factory(prior_kind):
             if not (40 < H0 < 100): return -np.inf
             if not (0.015 < ob_h2 < 0.030): return -np.inf
             lp_H0  = -0.5*((H0-mu)/sig)**2
-            lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
+            lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2   # prior BBN de DESI (Schöneberg 2024)
             om_h2  = OMEGA_M_H2                    # ω_m algebraico FIJO (R25)
             Om     = OMEGA_M_H2/(H0/100)**2        # Ω_m DERIVADO por muestra
             return lp_H0 + lp_bbn + ll_bao(H0, om_h2, ob_h2, Om) + LLC_CLUSTERS_CONST
@@ -142,7 +143,7 @@ def lpost_factory(prior_kind):
             H0, ob_h2 = theta
             if not (50 < H0 < 90): return -np.inf
             if not (0.015 < ob_h2 < 0.030): return -np.inf
-            lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2  # BBN se mantiene
+            lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2  # BBN se mantiene (prior BBN de DESI, Schöneberg 2024)
             om_h2  = OMEGA_M_H2                    # ω_m algebraico FIJO (R25)
             Om     = OMEGA_M_H2/(H0/100)**2        # Ω_m DERIVADO por muestra
             return lp_bbn + ll_bao(H0, om_h2, ob_h2, Om) + LLC_CLUSTERS_CONST
@@ -157,6 +158,7 @@ def run_mcmc(label, prior_kind):
     print(f"\n[{label}] arrancando ({N_WALKERS}w × {N_STEPS}s)...", flush=True)
     t0 = time.time()
     rng = np.random.default_rng(42)
+    # ORIGEN-VALOR: 0.0005 — dispersion inicial de los walkers en omega_b, elegida (~1/3 del sigma BBN), no es medida
     pos = np.array([65.0, 0.02237]) + rng.standard_normal((N_WALKERS, 2)) * np.array([3.0, 0.0005])
     sampler = emcee.EnsembleSampler(N_WALKERS, 2, lpost_factory(prior_kind))
     pos, _, _ = sampler.run_mcmc(pos, N_BURN, progress=False)

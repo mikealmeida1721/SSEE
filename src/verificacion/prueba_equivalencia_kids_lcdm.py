@@ -12,7 +12,7 @@ Pero lo que se anadio es una GUARDA de retorno temprano para otro modelo:
 
 y el camino de LCDM fondo-fijo llama con
 
-    bg_key = (0.02237, 0.1200, 0.6736, 0.9649)     # <- cuatro flotantes
+    bg_key = (0.02237, 0.1200, 0.6736, 0.9649)     # <- cuatro flotantes (Planck 2018)
 
 asi que `bg_key[0]` es un float y la comparacion con un str es False SIEMPRE.
 La rama es inalcanzable para este log.
@@ -23,6 +23,7 @@ de hoy), las corre sobre la clave real de LCDM fondo-fijo, y compara.
 
 Se corre solo:  python3 src/verificacion/prueba_equivalencia_kids_lcdm.py
 """
+# ORIGEN-VALOR: 0.6736 — h de Planck 2018 (arXiv:1807.06209) dentro de una clave de control
 import ast
 import json
 import pathlib
@@ -33,7 +34,7 @@ REPO = pathlib.Path(__file__).resolve().parents[2]
 SCRIPT = "src/p06_growth/cobaya_kids.py"
 LOGS = ("kids_lcdm_fondofijo_reparto", "kids_lcdm_fondofijo_SIN_REPARTO_20260908")
 # La clave con la que `loglike_lcdm_fijo` entra a `loglike` (Planck 2018 clavado)
-CLAVE = (0.02237, 0.1200, 0.6736, 0.9649)
+CLAVE = (0.02237, 0.1200, 0.6736, 0.9649)   # Planck 2018 (arXiv:1807.06209)
 SALIDA = REPO / "results" / "logs" / "equivalencia_kids_lcdm.log"
 
 

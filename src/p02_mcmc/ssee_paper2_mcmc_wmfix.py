@@ -56,7 +56,7 @@ args = ap.parse_args()
 # Prior en H₀. 'anchor' = el ancla algebraica (test de CONSISTENCIA: ¿tira DESI?).
 # 'planck' = independiente del ancla (¿hacia dónde empujan los datos por sí solos?).
 PRIOR_H0 = (H0_ALG, 0.54) if args.prior == "anchor" else (67.36, 0.54)
-BBN_OBH2 = (0.02218, 0.00055)
+BBN_OBH2 = (0.02218, 0.00055)  # prior BBN de DESI (Schöneberg 2024)
 
 _d = load_desi_dr2()          # dict de arrays (fuente única data/raw/desi_dr2_bao.csv)
 DESI_Z = np.asarray(_d["z"])
@@ -96,7 +96,7 @@ def DC(z_max, Om, n=300):
 
 
 def sound_horizon_rd(ob_h2, om_h2):
-    return 147.27 * (om_h2 / 0.1432) ** (-0.255) * (ob_h2 / 0.02237) ** (-0.134)
+    return 147.27 * (om_h2 / 0.1432) ** (-0.255) * (ob_h2 / 0.02237) ** (-0.134)  # Planck 2018 pivote, eq. rd de Paper 2 (cita EH98 en FP-7)
 
 
 def predict_desi(H0, Om, rd):

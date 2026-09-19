@@ -1,0 +1,27 @@
+{
+ "pivote": {
+  "w_m": 0.1432,
+  "w_b": 0.02237
+ },
+ "paper2": {
+  "r_d_pivote": 147.27,
+  "exp_wm": -0.255,
+  "exp_wb": -0.134
+ },
+ "aubourg2015_desi": {
+  "r_d_pivote": 147.05,
+  "exp_wm": -0.23,
+  "exp_wb": -0.13
+ },
+ "eh98_local": {
+  "r_d_pivote": 150.8591002053423,
+  "exp_wm": -0.26118924989178116,
+  "exp_wb": -0.13173220315304726
+ },
+ "camb_local": {
+  "r_d_pivote": 147.052232845037,
+  "exp_wm": -0.256642148313386,
+  "exp_wb": -0.12887662952175016
+ },
+ "lectura": "los exponentes de Paper 2 son las derivadas LOCALES en el pivote (EH98 y CAMB coinciden a ~0.005); la normalizacion es la de Boltzmann, no la de EH98 (que da ~2.6 % mas). No es 'la formula de EH98' sino una expansion en ley de potencias alrededor de Planck."
+}

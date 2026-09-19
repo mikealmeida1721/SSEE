@@ -1830,6 +1830,17 @@ if _n65:
                "; ".join(f"{k} ({len(v)}: {v[0][0]})" for k, v in _may65)
                + " — rastrear cada uno: algebra, `# ORIGEN: <ruta>`, log, "
                  "cita en la linea o `# ORIGEN-VALOR: <n> — <razon>`")
+# TRINQUETE (R50), 2026-09-19. R65 solo pintaba AMBAR: el numero podia volver
+# a crecer sin que nada lo frenara. 223 -> 175 -> 10 en el dia, rastreando
+# cada numero a su algebra, log, dato o cita. Los 10 que quedan son los que
+# NO se pudieron rastrear (valores impresos por corridas que no dejaron log, o
+# sin fuente localizada): siguen contados a proposito, no se les invento origen.
+_TOPE_R65 = 10
+_DEUDA_REAL["R65"] = _n65
+_DEUDA_MAX["R65"] = _TOPE_R65
+check("R65 la deuda de numeros sin origen no crece",
+      _n65 <= _TOPE_R65,
+      f"{_n65} numeros (tope {_TOPE_R65}) en {len(_sin65)} scripts")
 if _ileg65:
     print(f"  [INFO] R65 origenes declarados que no se pudieron leer (disco "
           f"sin montar o ruta rota): {_ileg65}")
@@ -3944,6 +3955,16 @@ try:
         except Exception:
             return None
 
+    def _cert35_cubre(_fecha, _ts):
+        """¿El certificado (una fecha) cubre un script committeado en _ts?
+        Cubre hasta el FINAL de ese día, hora local. Sin fecha válida o sin
+        commit del script, no cubre: ante la duda, R35 compara."""
+        import datetime as _dt
+        if _ts is None or not isinstance(_fecha, _dt.date):
+            return False
+        _fin = _dt.datetime.combine(_fecha, _dt.time(23, 59, 59)).timestamp()
+        return _ts <= _fin
+
     # NORMALIZACIÓN del AST antes de comparar. Se quitan dos clases de cambio
     # que NO pueden mover un número, para que la alarma no grite por ellas:
     #   (a) docstrings — prosa.
@@ -4114,11 +4135,13 @@ try:
         _entrada = None
         if "::" in _script:
             _script, _entrada = _script.split("::", 1)
-        # Muestreo certificado por postflight: un cambio en el bloque de
-        # ANÁLISIS del script no invalida la cadena ya muestreada.
-        if _nm in (_prop.get("muestreo_certificado") or {}):
-            continue
         _tl, _ts35 = _commit_ts(f"results/logs/{_nm}.log"), _commit_ts(_script)
+        # Muestreo certificado: un cambio YA PROBADO inocuo no invalida la
+        # cadena. Pero el certificado cubre SÓLO los cambios hasta su fecha
+        # (2026-09-19): antes eximía el log para siempre, y un cambio real que
+        # llegara después al mismo camino habría pasado callado.
+        if _cert35_cubre((_prop.get("muestreo_certificado") or {}).get(_nm), _ts35):
+            continue
         if not (_tl and _ts35 and _ts35 > _tl):
             continue
         # El script es posterior — pero ¿cambió el CÓDIGO o sólo la prosa?
@@ -4202,6 +4225,25 @@ try:
           "despachador de otra corrida se exime; cambiar la propia función, la "
           "que ella llama, su constante o su propia rama, no"
           if not _malc35 else f"casos mal clasificados: {_malc35}")
+    # CONTROL (R53) del certificado con fecha: cubre lo de antes, NO lo de
+    # después, y sin fecha no cubre nada.
+    import datetime as _dt35
+    _d35 = _dt35.date(2026, 9, 19)
+    _t35 = lambda *a: _dt35.datetime(*a).timestamp()
+    _ccert35 = [
+        (_d35, _t35(2026, 9, 19, 10, 0), True),     # mismo día: cubre
+        (_d35, _t35(2026, 9, 1, 10, 0), True),      # antes: cubre
+        (_d35, _t35(2026, 9, 20, 0, 30), False),    # día siguiente: NO
+        (None, _t35(2026, 9, 1, 10, 0), False),     # sin fecha: NO
+        ("2026-09-19", _t35(2026, 9, 1), False),    # texto, no fecha: NO
+    ]
+    _malcert35 = [_i for _i, (_f, _t, _e) in enumerate(_ccert35)
+                  if _cert35_cubre(_f, _t) is not _e]
+    check("R35 un certificado de muestreo no exime cambios posteriores a su fecha",
+          not _malcert35,
+          "5 casos: cubre el mismo día y antes; no cubre el día siguiente, "
+          "ni sin fecha, ni con la fecha escrita como texto"
+          if not _malcert35 else f"casos mal clasificados: {_malcert35}")
     check("R35 el detector distingue re-etiquetar de re-calcular",
           not _mal35,
           "3 casos: el literal cambiado por el símbolo que vale lo mismo se "
@@ -5890,7 +5932,7 @@ except Exception as _e:
 #
 # El caso real, encontrado a mano el 2026-08-10 tirando de un hilo:
 #   ssee_eft_verification.py:59   rho_DE0 = Om_DE * rho_crit   -> 0.840
-#   h0_cascade_audit.py:44        rho_DE  = OMEGA_DE * rho_crit
+#   h0_cascade_audit.py:44        rho_DE  = OMEGA_DE * rho_crit   (archivado 2026-09-19, era H_MIRA)
 #   ssee_paper3_hiclass_check.py  Om_DE_z = Om_DE * ratio/E^2
 # El último es el peor: mete la saturación en la ranura de DENSIDAD de CLASS y
 # luego compara el resultado contra el mismo álgebra — «Δ = 0.005%» que no es
@@ -6076,7 +6118,7 @@ try:
         for _i in _escanea_r54(_ls):
             _r54.append(f"{_f.relative_to(_REPO)}:{_i+1}")
 
-    _DEUDA_R54 = 51   # 55 -> 51 al eximir las fixtures del registro (R67)
+    _DEUDA_R54 = 49   # 55 -> 51 al eximir las fixtures del registro (R67); 51 -> 49 (2026-09-19): cuenta real medida tras archivar h0_cascade_audit.py y las anotaciones R65
     check("R54 la deuda de etiquetas alpha_K/s_K no crece",
           len(_r54) <= _DEUDA_R54,
           f"{len(_r54)} sitios (tope {_DEUDA_R54}): "

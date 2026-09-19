@@ -7,6 +7,8 @@ Diccionario, parentescos y roles: copiados literalmente de
 archive/codigo/investigacion/open_problems/op9_lineage_grammar_scan.py (2026-06-20)
 para que la gramatica sea LA MISMA que produjo el 594.28. Nada anadido.
 """
+# ORIGEN-VALOR: 0.00603 — ajuste k50 = 0.00603 m^1.087 PRE-DECLARADO en results/logs/growth_2026-07/PREDECLARACION_ventana_frio.md
+# ORIGEN-VALOR: 52087.9358 — ajuste dsigma8 = 52.088 mil * m^-2.283 PRE-DECLARADO en results/logs/growth_2026-07/PREDECLARACION_ventana_frio.md
 import numpy as np, sys
 import os as _o66, sys as _s66
 _s66.path.insert(0, _o66.path.dirname(_o66.path.dirname(_o66.path.abspath(__file__))))

@@ -30,6 +30,7 @@ tiene que devolver esos tres numeros. Si no, no esta midiendo nada.
 
 FUENTE: results/logs/eft_dos_campos_genericos.json
 """
+# ORIGEN-VALOR: 0.0005 — tolerancia DECLARADA de la busqueda look-elsewhere (1 de 490 razones), no es medida
 import json
 import pathlib
 import sys

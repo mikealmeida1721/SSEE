@@ -32,6 +32,9 @@ logs:
   # (ver la nota en `muestreo_certificado`). Declarada aqui para que R35 la
   # vigile como a cualquier otro log: si su script cambia, el log envejece.
   equivalencia_kids_lcdm:     src/verificacion/prueba_equivalencia_kids_lcdm.py
+  equivalencia_kids_cache:    src/verificacion/prueba_equivalencia_kids_cache.py
+  formula_rd_exponentes:      src/p02_mcmc/verifica_formula_rd.py
+  desi_dr2_w0wa_momentos:     src/p02_mcmc/momentos_desi_dr2_w0wa.py
 
   # ── Paper 3 — CMB ───────────────────────────────────────────────────────
   p3_cmb_reframe_omega_m:     src/p03_cmb/run_p3_reframe.py
@@ -144,14 +147,27 @@ figuras_verificadas:
 #   lcdm_cmb  R−1=0.0187 · 95760 muestras · χ² coherente 1.5e-4 · mínimo al 75%
 # El resultado del análisis vigente vive en b1_analyse.log, que SÍ vigila R35.
 muestreo_certificado:
-  b1_full_run: 2026-07-27
-  b1_lcdm_run: 2026-07-27
+  # 2026-09-19: R35 ahora respeta la FECHA del certificado (antes eximia para
+  # siempre). Eso destapo dos cambios posteriores al 07-27 en
+  # ssee_paper3_b1_mcmc.py, y se revisaron:
+  #   b982aba (09-07) solo un comentario: «Viscosity» -> «Retention».
+  #   d1ea327 (09-08) el literal `mnu_ssee = 0.06849` pasa a `SUM_MNU_EV` del
+  #           nucleo, mas las 2 lineas de sys.path para importarlo.
+  #           SUM_MNU_EV == 0.06849 da True (mismo float, bit a bit).
+  # Ninguno cambia un numero de la cadena: se renueva la fecha.
+  b1_full_run: 2026-09-19
+  b1_lcdm_run: 2026-09-19
   # 2026-09-08: cobaya_kids.py cambio, pero SOLO por adicion — se anadieron
   # loglike_lcdm_fijo/info_lcdm_fijo y una rama de despacho para el variante
   # 'lcdmfijo'. Las rutas 'ssee' y 'lcdm' quedan identicas (la unica linea
   # borrada es el despacho de dos ramas, reescrito a tres). La cadena de
   # agosto no se invalida: no se toco nada de lo que la muestreo.
-  R4_lcdm_resume_20260805: 2026-09-08
+  # 2026-09-19: R35 con fecha destapo los cambios posteriores (d103770
+  # anade ssee_wc_h, 8f49b48 guarda en bg_key_to_dict, 8a41450 cache de 300 a
+  # 3). Probado por EJECUCION de loglike_lcdm, version del log vs hoy:
+  # src/verificacion/prueba_equivalencia_kids_cache.py -> 0.000e+00 en 9
+  # evaluaciones (con desalojo y vuelta), y una cache ROTA si se detecta (4.6).
+  R4_lcdm_resume_20260805: 2026-09-19
   # 2026-09-19: el commit 8f49b48 volvio a tocar `cobaya_kids.py`, esta vez SI
   # dentro del camino de LCDM fondo-fijo: `bg_key_to_dict` gano una guarda de
   # retorno temprano `if bg_key[0] == 'SSEEwch'`. R35 hizo bien en marcarlo.
@@ -169,3 +185,8 @@ muestreo_certificado:
   # puede fallar y por tanto mide algo.
   kids_lcdm_fondofijo_reparto: 2026-09-19
   kids_lcdm_fondofijo_SIN_REPARTO_20260908: 2026-09-19
+  # 2026-09-19: la cache acotada a 3 (8a41450) toca `_camb_cached`, en el
+  # camino de los dos de arriba y de `kids_ssee_wc_h`. Misma prueba por
+  # ejecucion (results/logs/equivalencia_kids_cache.log): 0.000e+00 en los
+  # tres, control de cache rota 4.08 / 4.50. Cubre tambien a los dos de arriba.
+  kids_ssee_wc_h: 2026-09-19

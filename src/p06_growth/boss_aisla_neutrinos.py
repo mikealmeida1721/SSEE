@@ -42,6 +42,8 @@ SALIDA = REPO / "results" / "logs" / "growth_2026-07" / "boss_aisla_neutrinos.js
 
 # El valor que traia la version con el prestamo, y el de la cadena MCMC vieja.
 MNU_PRESTADA = 0.06
+# ORIGEN: results/logs/growth_2026-07/R1R2_boss_lpt_cobaya.json      (el viejo, 2.7636 +- 0.0981)
+# ORIGEN: results/logs/growth_2026-07/R1R2_boss_lpt_kmax0.200.json   (el nuevo, 2.9448 +- 0.1238)
 VIEJO_MCMC = dict(logA=2.763639661108589, sig=0.09813161759644874,
                   fuente="results/logs/growth_2026-07/R1R2_boss_lpt_cobaya.json")
 

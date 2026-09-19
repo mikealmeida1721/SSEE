@@ -210,7 +210,8 @@ def loglike_lcdm_fijo(logA, halo_A, A_IA, dz1, dz2, dz3, dz4, dz5,
     2.67 sigma (LCDM) --- practicamente lo mismo. Esto lo comprueba en la
     otra sonda.
     """
-    return loglike_lcdm(0.02237, 0.1200, 0.6736, 0.9649, logA, halo_A, A_IA,
+    # fondo Planck 2018 (TT,TE,EE+lowE+lensing), arXiv:1807.06209
+    return loglike_lcdm(0.02237, 0.1200, 0.6736, 0.9649, logA, halo_A, A_IA,  # Planck 2018
                         dz1, dz2, dz3, dz4, dz5, delta_c)
 
 
@@ -289,10 +290,12 @@ def info_ssee_wc_h(chains_dir, covmat=None):
 def info_lcdm(chains_dir):
     p = dict(
         ombh2=dict(prior=dict(min=0.019, max=0.026), ref=0.02237,
+                   # ORIGEN-VALOR: 0.0005 — paso inicial de propuesta de Cobaya para ombh2, no es una medida
                    proposal=0.0005, latex=r'\Omega_b h^2'),
         omch2=dict(prior=dict(min=0.051, max=0.255), ref=0.12,
                   proposal=0.005, latex=r'\Omega_c h^2'),
-        h0=dict(prior=dict(min=0.64, max=0.82), ref=0.6736, proposal=0.02,
+        # punto de arranque = h de Planck 2018 (arXiv:1807.06209)
+        h0=dict(prior=dict(min=0.64, max=0.82), ref=0.6736, proposal=0.02,  # Planck 2018
                latex='h'),
         ns=dict(prior=dict(min=0.84, max=1.1), ref=0.9649, proposal=0.02,
                latex='n_s'),

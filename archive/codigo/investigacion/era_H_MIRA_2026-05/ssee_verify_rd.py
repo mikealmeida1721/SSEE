@@ -11,6 +11,8 @@ Casos evaluados:
   B) SSEE + MIRA + IS (Ωb h² derivado algebraicamente en Paper 4)
   C) SSEE dinámico puro (Ωm = 0.160, sin MIRA) — muestra por qué falla
 """
+# ORIGEN-VALOR: 0.596506 — grados(1.04110e-2 rad) = 0.5965064, calculado en la linea misma
+# ORIGEN-VALOR: 0.000178 — grados(0.00031e-2 rad) = 0.0001776, calculado en la linea misma
 
 import numpy as np
 
@@ -45,8 +47,13 @@ Ombh2_std = 0.02237   # Ωb h² prior Planck 2018 (Planck Collaboration 2020, A&
 # Estos son los árbitros — no ΛCDM
 RD_OBS   = 147.09   # Mpc  (valor central)
 RD_SIGMA =   0.26   # Mpc  (1σ)
-THETA_OBS   = 0.59668  # grados (100θ_* = 1.04110 → θ_* = 0.010411 rad = 0.59668°)
-THETA_SIGMA = 0.00046  # grados
+# θ* de Planck 2018 (TT,TE,EE+lowE+lensing, arXiv:1807.06209 Tabla 2):
+# 100θ* = 1.04110 ± 0.00031. Se pasa a grados AQUI, no a mano: hasta el
+# 2026-09-19 decia 0.59668 ± 0.00046°, que es 100θ* = 1.04140 ± 0.00080 —
+# centro corrido 1σ y sigma inflado x2.6. Lo destapo R65 al pedir el origen.
+THETA100_OBS, THETA100_SIGMA = 1.04110, 0.00031   # Planck 2018
+THETA_OBS   = np.degrees(THETA100_OBS / 100)      # grados = 0.596506
+THETA_SIGMA = np.degrees(THETA100_SIGMA / 100)    # grados = 0.000178
 
 
 def run_camb_case(H0_val, ombh2, Omm_val, w0_val, wa_val, ns_val,

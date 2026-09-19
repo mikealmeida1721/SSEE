@@ -10,6 +10,7 @@ el .npz profesional en el HDD y reproduce las dos figuras con los valores canón
 Uso: python src/p02_mcmc/regenerate_fig7_fig8_p2.py
 Salida: results/figures/fig7_Hz_comparison.{pdf,png}, fig8_tension_summary.{pdf,png}
 """
+# ORIGEN-VALOR: 0.1432 — pivote omega_m h^2 de la eq. rd de Paper 2 (Planck 2018 TT,TE,EE+lowE); cita EH98 en FUENTES_PENDIENTES.md FP-7
 import os, sys
 import numpy as np
 import matplotlib

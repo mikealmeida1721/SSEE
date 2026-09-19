@@ -36,22 +36,43 @@ import numpy as np
 sys.path.insert(0, '/home/mike/Proyectos/SSEE/src/p06_growth')
 import kids_shear as K                                          # noqa: E402
 
-CHI2_REF = 407.6470                # -2 * max loglike de la cadena oficial
-LOGLIKE_REF = -203.823490
+# --- punto de maxima verosimilitud, LEIDO de la cadena oficial ---
+# (2026-09-19) Antes iba tecleado y redondeado a 5-6 cifras. Ahora sale de la
+# fuente: la fila de mayor loglike (= post - prior) de la cadena Nautilus,
+# por nombre de columna. Se descartan las filas con NaN (1069 de 128160) y las
+# dos columnas que la cadena deja enteras en NaN (S_8 y cosmomc_theta).
+_CADENA = ('/mnt/datos/SSEE_data/kids_legacy/KiDS_Legacy_cosmic_shear_data_'
+           'release/chains_and_config_files/xipm/output_nautilus_xipm_Fiducial.txt')
+with open(_CADENA) as _f:
+    _col = _f.readline().lstrip('#').split()
+_d = np.loadtxt(_CADENA)
+_uso = [k for k, c in enumerate(_col)
+        if c not in ('COSMOLOGICAL_PARAMETERS--S_8',
+                     'COSMOLOGICAL_PARAMETERS--COSMOMC_THETA')]
+_d = _d[np.isfinite(_d[:, _uso]).all(axis=1)]
+_ll = _d[:, _col.index('post')] - _d[:, _col.index('prior')]
+_v = dict(zip(_col, _d[np.argmax(_ll)]))
+LOGLIKE_REF = float(_ll.max())
+CHI2_REF = -2.0 * LOGLIKE_REF            # CosmoSIS: loglike = -0.5*chi2
 
-# --- punto de maxima verosimilitud de la cadena oficial (xipm Fiducial) ---
-MP = dict(omch2=0.095019, ombh2=0.0191914, h0=0.769441, ns=1.01013,
-          logA=3.7431053611421596, log_t_agn=8.21185,
-          S8_ref=0.84347, sigma8_ref=1.0518473627303115,
-          Om_ref=0.193999174888498)
-DZ = np.array([0.031198, 0.025115, -0.008245, -0.007295, 0.024564, 0.026880])
+MP = dict(omch2=_v['cosmological_parameters--omch2'],
+          ombh2=_v['cosmological_parameters--ombh2'],
+          h0=_v['cosmological_parameters--h0'],
+          ns=_v['cosmological_parameters--n_s'],
+          logA=_v['COSMOLOGICAL_PARAMETERS--A_S'],
+          log_t_agn=_v['halo_model_parameters--log_t_agn'],
+          S8_ref=_v['cosmological_parameters--s_8_input'],
+          sigma8_ref=_v['COSMOLOGICAL_PARAMETERS--SIGMA_8'],
+          Om_ref=_v['COSMOLOGICAL_PARAMETERS--OMEGA_M'])
+DZ = np.array([_v[f'NOFZ_SHIFTS--BIAS_{i}'] for i in range(1, 7)])
 
 # --- NLA-M evaluado en ese mismo punto -> amplitud efectiva por bin ---
-IA_A = 5.78122
-IA_BETA = 0.476046
+IA_A = _v['INTRINSIC_ALIGNMENT_PARAMETERS--A']
+IA_BETA = _v['INTRINSIC_ALIGNMENT_PARAMETERS--BETA']
+LOG10_M = np.array([_v[f'INTRINSIC_ALIGNMENT_PARAMETERS--LOG10_M_MEAN_{i}']
+                    for i in range(1, 7)])
 LOG10_M_PIV = 13.5                                  # values.ini
 F_R = np.array([0.158, 0.198, 0.206, 0.258, 0.207, 0.026])       # values.ini
-LOG10_M = np.array([11.4971, 12.1786, 12.4623, 12.6081, 12.7464, 12.8492])
 A_EFF = IA_A * F_R * 10.0 ** (IA_BETA * (LOG10_M - LOG10_M_PIV))
 
 # HMcode-2015 no tiene log_T_AGN: se barre su unico parametro y se reporta

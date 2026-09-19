@@ -20,6 +20,7 @@ Piezas, en el orden en que actuan:
 
 Unidades: TODO en h/Mpc y (Mpc/h)^3, como los ficheros de BOSS.
 """
+# ORIGEN-VALOR: 2997.92458 — c/(100 km/s/Mpc) = 299792.458/100 Mpc/h
 import numpy as np
 from numpy.polynomial.legendre import leggauss
 from scipy.interpolate import InterpolatedUnivariateSpline as Spline
@@ -47,7 +48,7 @@ def _E(z, Om, w0=-1.0, wa=0.0):
 
 
 def _DM(z, Om, w0=-1.0, wa=0.0, n=2000):
-    """distancia comovil transversa en Mpc/h (c/H0 = 2997.92458 Mpc/h)."""
+    """distancia comovil transversa en Mpc/h (c/H0 = c/(100 h km/s/Mpc) = 299792.458/100 = 2997.92458 Mpc/h)."""
     zz = np.linspace(0.0, z, n)
     return 2997.92458 * np.trapezoid(1.0 / _E(zz, Om, w0, wa), zz)
 

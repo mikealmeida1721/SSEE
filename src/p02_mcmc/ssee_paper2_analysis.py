@@ -69,6 +69,9 @@ print(f"  w0+wa = {W0_SSEE + WA_SSEE:.4f}")
 # etiquetado "DR2 Tabla 3" — eran valores de DESI DR1 (2404.03002). El titular
 # 0.05σ era DR1+SN. Ver VERIFICATION_LEDGER.md § V-L4-DESI y guardián R14.
 
+# ORIGEN: results/logs/desi_dr2_w0wa_momentos.log
+# (lo reproduce src/p02_mcmc/momentos_desi_dr2_w0wa.py: los 20 numeros de abajo
+#  salen identicos al redondeo escrito — rehecho 2026-09-19)
 RHO_SENS = [-0.70, -0.85, -0.92]   # sensibilidad (verificación; los ρ vigentes son los medidos)
 
 datasets = {
@@ -300,7 +303,7 @@ print("=" * 60)
 
 omega_constraints = {
     "Planck 2018": {
-        "omega_de": 0.6847,
+        "omega_de": 0.6847,   # Planck 2018 (arXiv:1807.06209) Omega_Lambda
         "sigma":    0.0073,
         "source":   "TT+TE+EE+lowE+lensing",
     },

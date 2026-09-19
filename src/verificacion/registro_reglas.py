@@ -32,6 +32,19 @@ pueden compartir una de las dos, nunca las dos.
 # Si un ancla deja de existir, la prueba avisa en vez de pasar en silencio.
 TEX_MUTACION = "manuscript/SSEE_Paper1_Framework.tex"
 
+# ORIGEN de los numeros de los casos de `mutacion` (R65, 2026-09-19). Casi
+# todos son DEFECTOS INYECTADOS A PROPOSITO: su origen es que alguien los
+# invento para ver si la regla enrojece. Uno es el texto real del ancla.
+# ORIGEN-VALOR: 0.8399497813 — defecto inyectado (canon): -Tr/Mv con la ultima cifra movida
+# ORIGEN-VALOR: 0.7000 — defecto inyectado (yaml): techo sigma8 alterado a proposito
+# ORIGEN-VALOR: 66.1234 — defecto inyectado (procedencia): H0 que ningun log respalda
+# ORIGEN-VALOR: 0.965123 — defecto inyectado (precision): n_s con error 4e-4
+# ORIGEN-VALOR: 0.965548 — defecto inyectado (precision): n_s con error 1e-5
+# ORIGEN-VALOR: 0.935558 — defecto inyectado (precision): n_s con error 3e-2
+# ORIGEN-VALOR: 0.812340 — defecto inyectado (precision): w0 alterado en otra fila
+# ORIGEN-VALOR: 58.068884 — ancla REAL: 2*phi^7 = 58.0688837 redondeado a 6 decimales
+# ORIGEN-VALOR: 0.700000 — defecto inyectado (coherencia yaml): valor distinto sin OP
+# ORIGEN-VALOR: 67.51111 — defecto inyectado (log-respaldo): H0 que el log no contiene
 REGLAS = {
     # ── capas de FÍSICA ──────────────────────────────────────────────────────
     # No viven en un manuscrito: afirman identidades algebraicas. Se prueban

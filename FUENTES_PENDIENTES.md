@@ -333,3 +333,43 @@ Ninguna de las dos se distribuye hacia atrás. Ahora la unidad debe ir **pegada*
 (sólo `\,`, `~`, `\;` o espacio en medio). Con el arreglo, la versión previa del
 Paper 1 arroja **8** hallazgos en vez de 5, e incluye la fila de tabla de la
 **página 4**, que ya estaba dada por cerrada.
+
+## ✅ FP-7 · La fórmula de r_d de Paper 2 va citada a Eisenstein & Hu 1998 — CERRADA 2026-09-19
+
+**Dónde:** `manuscript/SSEE_Paper2_MCMC.tex`, ec. `eq:rd`; se usa en
+`src/p02_mcmc/regenerate_fig8_bao_residuals.py` (`rd_EH`).
+
+**Qué dice:** `r_d = 147.27 (Ω_m h²/0.1432)^−0.255 (Ω_b h²/0.02237)^−0.134 Mpc`,
+«from the EisensteinHu1998 fitting formula».
+
+**Por qué se duda (hallado por R65 el 2026-09-19 al pedir el origen de 0.1432):**
+EH98 da r_s(z_d) con z_eq, z_d (con b₁, b₂) y R; no es una ley de potencias. Una
+ley de potencias con pivotes en valores de Planck (0.1432 = Ω_m h² de Planck 2018
+TT,TE,EE+lowE; 0.02237 = su Ω_b h²) es una aproximación posterior normalizada a
+Planck. Los exponentes −0.255 / −0.134 y la normalización 147.27 hay que
+encontrarlos en su fuente real, o derivarlos ajustando EH98 (o CAMB) alrededor de
+ese pivote y decirlo así.
+
+**Cómo se cierra:** localizar la referencia de esa forma exacta, o reproducir los
+tres números (147.27, −0.255, −0.134) con un ajuste declarado y cambiar la cita.
+El paper la usa «as an auxiliary approximation for model comparison»; el r_d
+canónico (148.2 / CAMB 147.17) no depende de ella.
+
+**Desenlace (2026-09-19, el mismo día).** Medido en
+`src/p02_mcmc/verifica_formula_rd.py` → `results/logs/formula_rd_exponentes.log`:
+
+| | r_d en el pivote | exp. ω_m | exp. ω_b |
+|---|---|---|---|
+| Paper 2 | 147.27 | −0.255 | −0.134 |
+| EH98, derivada local | 150.86 | −0.261 | −0.132 |
+| CAMB, derivada local | 147.05 | −0.257 | −0.129 |
+| Aubourg 2015 / DESI (ajuste global) | 147.05 | −0.23 | −0.13 |
+
+Es una **expansión en ley de potencias alrededor del punto de Planck**: los
+exponentes son las derivadas locales (EH98 y CAMB coinciden entre sí), y la
+normalización es la de Boltzmann (0.15 % de CAMB), no la de EH98 (+2.6 %). La
+cita decía «the EH98 fitting formula», que era inexacto. **Corregido en el
+.tex** (ahora: expansión alrededor de Planck, exponentes de EH98 local,
+normalización de Boltzmann, y se compara con Aubourg et al. 2015, añadido a la
+bibliografía). PDF recompilado, 0 citas sin resolver. Ningún número del paper
+cambia: la fórmula es la misma, sólo se dice bien de dónde sale.

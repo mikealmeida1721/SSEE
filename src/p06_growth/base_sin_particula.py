@@ -61,6 +61,7 @@ el proceso padre. O el Pool primero, o nada de Pool.
 R53: este archivo ES el control de conjunta_tres_sondas.json.
 FUENTE: results/logs/growth_2026-07/base_sin_particula.json
 """
+# ORIGEN-VALOR: 0.0065 — minimo de la #28 en m_x=7.5 eV, results/logs/growth_2026-07/conjunta_tres_sondas.json
 import json, pathlib, sys, time
 import numpy as np
 

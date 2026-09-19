@@ -32,6 +32,12 @@ de estado de SSEE clavada como literal, asi que la fila LCDM habria salido
 mal en silencio (ya paso una vez, ver cmb_tau_flotado.json). Ahora w y wa son
 argumentos obligatorios. Ver src/p03_cmb/cmb_eval.py y R64.
 """
+# ORIGEN de los numeros (R65, 2026-09-19)
+# ORIGEN: results/logs/cmb_perfil_wc.log
+# ORIGEN-VALOR: 0.119534 — impreso por la corrida MUERTA del 2026-09-07 (scratchpad/perfil_wc.py, nunca dejo log; memoria project_run_died_before_saving). Sesgado; el vigente es 0.119334 del log de arriba
+# ORIGEN-VALOR: 0.000248 — sigma de esa misma corrida muerta del 2026-09-07; el vigente es 0.000246 del log de arriba
+# ORIGEN-VALOR: 0.0002 — paso de rejilla elegido para este script (10x mas fino que el 0.0020 de la corrida muerta)
+
 import json
 import os
 import sys

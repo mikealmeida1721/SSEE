@@ -23,6 +23,7 @@ V = rho_phi(1-w)/2, y con ellas phi'(1) y V0.
 
 Unidades: rho_crit,0 = 1, H0 = 1  =>  H^2 = rho_tot. N = ln a.
 """
+# ORIGEN-VALOR: 1.52103 — a* con la recta CPL: Omega_DE(a) = T_r/M_v da 1.521028 (recalculado 2026-09-19)
 import sys
 
 import numpy as np

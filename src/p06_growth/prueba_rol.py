@@ -18,6 +18,7 @@ Tres tests, en orden:
   T2  ROL DE X (el que va al cuadrado): debe ser acoplamiento radiativo/disipativo.
   T3  ROL DE Y (el que multiplica): debe ser escala / ancla de vacio.
 """
+# ORIGEN-VALOR: 0.00603 — ajuste k50 = 0.00603 m^1.087 PRE-DECLARADO en results/logs/growth_2026-07/PREDECLARACION_ventana_frio.md
 import numpy as np
 import os as _o66, sys as _s66
 _s66.path.insert(0, _o66.path.dirname(_o66.path.dirname(_o66.path.abspath(__file__))))

@@ -56,6 +56,7 @@ CONTROLES (R53), PRIMERO (R24)
 NINGUNA cifra entra en ningún paper.
 FUENTE: results/logs/precio_cmb_de_la_particula.json
 """
+# ORIGEN-VALOR: 0.00296 — A_sup/8 * omega_m = 0.1660/8 * 0.1426675 = 0.0029604 (regla de la cola #19, BANDEJA/2026-09-09_prediccion_particula_kids.md)
 import json
 import multiprocessing as mp
 import pathlib

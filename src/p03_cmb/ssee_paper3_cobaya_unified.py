@@ -3,6 +3,7 @@ SSEE — CMB Unified Likelihood Evaluation via Cobaya
 Scans H0 to find the minimum chi2_eff against the full Planck 2018 plik_lite TTTEEE + lowT + lowE.
 Calculates Delta BIC correctly with k=2 for SSEE vs k=6 for LambdaCDM.
 """
+# ORIGEN-VALOR: 0.0544 — tau de Planck 2018 TT,TE,EE+lowE (arXiv:1807.06209)
 
 import numpy as np
 import os

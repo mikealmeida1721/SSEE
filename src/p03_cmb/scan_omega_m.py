@@ -19,11 +19,16 @@ from ssee_core import (SUM_MNU_EV as _MNU, OMEGA_B_H2 as _OMB,   # noqa: E402
 H0=_H0; ombh2=_OMB; mnu=_MNU
 phi=(1+5**0.5)/2; pi=math.pi
 f_piphi = pi/phi                 # 1.94161 -> 0.31076 (RETIRADO, control)
-f_alma  = phi + 0.1*pi           # 1.93216 -> 0.30915
+f_alma  = phi + 0.1*pi           # 1.93219 -> 0.30915  (decia 1.93216: errata del comentario, corregida 2026-09-19)
 
 print(f"factor pi/phi      = {f_piphi:.5f} -> Om = {0.160*f_piphi:.5f}")
 print(f"factor phi+0.1*pi  = {f_alma:.5f} -> Om = {0.160*f_alma:.5f}\n")
 
+# ORIGEN-VALOR: 0.3000 — nodo de barrido elegido a mano alrededor de Planck (0.3153), no es medida
+# ORIGEN-VALOR: 0.3050 — nodo de barrido elegido (ver 0.3000)
+# ORIGEN-VALOR: 0.3070 — nodo de barrido elegido (ver 0.3000)
+# ORIGEN-VALOR: 0.3130 — nodo de barrido elegido (ver 0.3000)
+# ORIGEN-VALOR: 0.3160 — nodo de barrido elegido (ver 0.3000)
 grid = [0.3000, 0.3050, 0.3070, 0.30915, _OM_PIPHI, 0.3130, 0.3160, 0.3200]
 print(f"{'Om_cmb':>8} {'omch2':>9} {'omega_m':>9} {'chi2':>10}")
 print("-"*40)

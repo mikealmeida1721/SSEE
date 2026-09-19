@@ -8,6 +8,7 @@ Para ΔBIC limpio vs SSEE-MIRA, corremos ΛCDM con:
   - Prior Planck 3D nativo (no MIRA — ΛCDM no usa MIRA)
   - 100w × 25k (mismo tamaño)
 """
+# ORIGEN-VALOR: 0.1432 — pivote omega_m h^2 de la eq. rd de Paper 2 (Planck 2018 TT,TE,EE+lowE); cita EH98 en FUENTES_PENDIENTES.md FP-7
 import numpy as np
 import time, os, sys, warnings
 _SSEE_DATA = os.environ.get("SSEE_DATA_DIR") or ("/mnt/datos/SSEE_data" if os.path.isdir("/mnt/datos") else "results/data")  # portable: HDD si existe, si no results/ local

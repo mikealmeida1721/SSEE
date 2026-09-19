@@ -4,6 +4,7 @@
 Forma minima de dos terminos:
    K(X) = c1 X + c2 X^2
 """
+# ORIGEN-VALOR: 0.403300 — s_K = 3 Omega_DE (1+w0) = 0.403302 (P7 lo escribe 0.4033)
 import sys, os
 import sympy as sp
 sys.path.insert(0, os.path.join(

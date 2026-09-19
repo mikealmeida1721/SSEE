@@ -74,6 +74,7 @@ LOGA = {
     "fondo": (3.0448, None,
               "results/logs/cmb_dbic_tau_ajustado.json (SSEE.mejor.logA) "
               "— CONTROL: castigo cero por construccion"),
+    # ORIGEN-VALOR: 0.0451 — inversa-varianza de boss (0.0981316) y kids (0.0507836) de arriba: 2.84178 +- 0.045102
     "promedio": (2.8418, 0.0451,
                  "combinacion inversa-varianza de los dos de arriba; se "
                  "conserva solo para comparar con la corrida vieja"),

@@ -16,6 +16,7 @@ carga conservada + Ω-once + completitud ≤TRIAL/tier-3Ω (sincronizado con zen
 v1.4, DOI 10.5281/zenodo.20684908). El core (245) sigue siendo valido como cota inferior;
 el headline es 1 de 490 a ±0.0005.
 """
+# ORIGEN-VALOR: 0.0005 — tolerancia DECLARADA de la busqueda look-elsewhere (1 de 490 razones), no es medida
 import math
 from itertools import permutations
 

@@ -223,6 +223,8 @@ def _sanity_checks():
     # Omitir ω_ν devuelve 0.30729 (no 0.308881) — el ν NO es opcional (Sealed §two-omega).
     _h2 = (H0_GLOBAL / 100.0) ** 2
     _om_sin_nu = (OMEGA_B_H2 + OMEGA_C_H2) / _h2
+    # ORIGEN-VALOR: 0.3073 — (omega_b + omega_c)/h^2 = 0.307289, calculado aqui mismo (_om_sin_nu), a 4 decimales
+    # ORIGEN-VALOR: 0.30729 — el mismo (omega_b + omega_c)/h^2 = 0.307289 a 5 decimales
     assert round(_om_sin_nu, 4) == 0.3073, \
         f"Ω_m,CMB sin ω_ν debe dar ~0.30729 (ν no opcional): {_om_sin_nu}"
     assert round((OMEGA_B_H2 + OMEGA_C_H2 + OMEGA_NU_H2) / _h2, 4) == 0.3089, \

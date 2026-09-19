@@ -17,6 +17,7 @@ Cadena:
   N_eff=3.046). Ese último paso NO se re-deriva aquí (requiere integrar la ec. de
   Boltzmann del desacople); se cita. Lo demostrable es que AMBOS son la misma C.
 """
+# ORIGEN-VALOR: 1.2020569 — zeta(3), constante de Apery = 1.2020569032
 import math
 
 # ── Constantes físicas (CODATA / PDG) ────────────────────────────────────────

@@ -40,7 +40,7 @@ WM_ALG   = _C.OMEGA_M_H2      # ω_m = ω_b+ω_c+ω_ν ALGEBRAICO — lo que SSE
 # R25 (2026-07-25): SSEE predice el ABSOLUTO ω_m; Ω_m = ω_m/h² es DERIVADO. Congelar
 # Ω_m y derivar ω_m=Ω_m·h² despega el ω_m implícito hasta ±1.8% de la predicción y
 # sólo coincide en H₀=67.962 (el ancla), sesgando cualquier ajuste hacia ella.
-MIRA    = (3*phi + PI) / 4         # 1.9988976...
+MIRA    = (3*phi + PI) / 4         # 1.9989237  (errata del comentario corregida 2026-09-19)
 
 # ─────────────────────────────────────────────────────────────
 # 1. DATOS DESI DR2 (idénticos al script MCMC principal)
@@ -71,7 +71,7 @@ RHO_H0_OM    = -0.85
 # 2. FUNCIONES DE APOYO
 # ─────────────────────────────────────────────────────────────
 def sound_horizon_rd(ob_h2, om_h2):
-    return 147.27 * (om_h2/0.1432)**(-0.255) * (ob_h2/0.02237)**(-0.134)
+    return 147.27 * (om_h2/0.1432)**(-0.255) * (ob_h2/0.02237)**(-0.134)  # Planck 2018 pivote, eq. rd de Paper 2 (cita EH98 en FP-7)
 
 def DC(z_max, E_func, n=500):
     zz = np.linspace(0, z_max, n)

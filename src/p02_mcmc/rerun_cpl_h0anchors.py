@@ -10,6 +10,7 @@ Corre CPL (5 params) con el prior de H0 centrado en cada ancla; el resto del
 likelihood (DESI BAO + Planck Om/Obh2 + priors w0,wa) es idéntico a
 ssee_paper2_mcmc.py.
 """
+# ORIGEN-VALOR: 0.1432 — pivote omega_m h^2 de la eq. rd de Paper 2 (Planck 2018 TT,TE,EE+lowE); cita EH98 en FUENTES_PENDIENTES.md FP-7
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np

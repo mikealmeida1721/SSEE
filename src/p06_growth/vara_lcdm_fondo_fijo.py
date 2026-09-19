@@ -9,6 +9,7 @@ dz clavados en su media, igual que en la corrida de la particula.
 
 CONTROL (R53): el mismo perfil con el fondo de SSEE tiene que devolver 282.1758.
 """
+# ORIGEN-VALOR: 0.6736 — h de Planck 2018 (arXiv:1807.06209)
 import json, pathlib, sys, time
 import numpy as np
 from scipy.optimize import minimize

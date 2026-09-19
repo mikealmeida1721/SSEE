@@ -20,6 +20,7 @@ R30 esperan «fórmula = valor» con el valor en la misma celda.
 
 Uso:  python3 src/verificacion/mutacion_guardian.py
 """
+# ORIGEN-VALOR: 0.965123 — defecto INYECTADO a proposito (n_s con error 4e-4), el mismo caso de registro_reglas.py
 import re
 import sys
 import pathlib

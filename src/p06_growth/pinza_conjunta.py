@@ -64,6 +64,14 @@ import precio_cmb_de_la_particula as P                     # noqa: E402
 SALIDA = REPO / "results" / "logs" / "growth_2026-07" / "pinza_conjunta.json"
 
 MASAS = np.array([2.2, 3.0, 4.0, 5.5, 7.5, 10.0, 15.0, 25.0])
+# ORIGEN de los numeros (R65, 2026-09-19)
+# ORIGEN-VALOR: 0.1426683 — omega_m que calcula CAMB con el fondo SSEE (0.14266828); el nucleo da 0.1426675 porque CAMB convierte Sum m_nu con su factor (~93.04, no 93.14)
+# ORIGEN-VALOR: 0.00296 — A_sup/8 * omega_m = 0.1660/8 * 0.1426675 = 0.0029604, punto de control heredado de particula_que_prefiere_kids.py
+# ORIGEN-VALOR: 0.0030 — punto (0.8 eV, 0.0030) ya medido en la cola #24, results/logs/growth_2026-07/particula_que_prefiere_kids.json
+# ORIGEN-VALOR: 0.0020 — nodo de rejilla elegido: 0.002 a 0.005 en pasos de 0.001 y 0.0065 para pasar el borde de la #24
+# ORIGEN-VALOR: 0.0040 — nodo de rejilla elegido (ver 0.0020)
+# ORIGEN-VALOR: 0.0050 — nodo de rejilla elegido (ver 0.0020)
+# ORIGEN-VALOR: 0.0065 — nodo de rejilla elegido (ver 0.0020)
 OMEGAS = np.array([0.0020, 0.0030, 0.0040, 0.0050, 0.0065])
 NPROC = 4
 

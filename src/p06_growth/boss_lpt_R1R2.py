@@ -37,6 +37,7 @@ LCDM de Planck. Esa es toda la diferencia entre las dos corridas.
 
 FUENTE: results/logs/growth_2026-07/R1R2_boss_lpt_kmax0.200.json
 """
+# ORIGEN-VALOR: 0.6736 — h de Planck 2018 (arXiv:1807.06209)
 import json
 import os
 import sys

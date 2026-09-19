@@ -20,6 +20,7 @@ mira la dispersion del chi2 devuelto.
 Ninguna cifra entra en ningun paper.
 SALIDA: results/logs/growth_2026-07/ruido_minimizador_kids.json
 """
+# ORIGEN-VALOR: 3.0450 — nodo de la malla de logA (2.88 + 6*0.0275) donde la rejilla de la #28 dio su minimo, results/logs/growth_2026-07/conjunta_tres_sondas.json
 import json, pathlib, sys, time
 import numpy as np
 from scipy.optimize import minimize

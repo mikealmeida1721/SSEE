@@ -24,6 +24,10 @@ c = 299792.458
 d = load_desi_dr2()                      # z, tracer, quantity, value, sigma
 OUT = os.path.join(ROOT, "results", "figures")
 
+# ORIGEN-VALOR: 0.1432 — pivote de omega_m h^2 de la eq. rd de Paper 2 (Planck 2018 TT,TE,EE+lowE: 0.1432); la cita EH98 de esa ecuacion esta en FUENTES_PENDIENTES.md
+# ORIGEN-VALOR: 0.02187 — omega_b h^2 del MAP de SSEE, results/logs/mcmc_paper2_3models_wmfix.log linea 187
+# ORIGEN-VALOR: 0.02233 — omega_b h^2 del MAP de LCDM, results/logs/mcmc_paper2_3models_wmfix.log linea 195
+# ORIGEN-VALOR: 0.02238 — omega_b h^2 del MAP de CPL, results/logs/mcmc_paper2_3models_wmfix.log linea 202
 def rd_EH(om_h2, ob_h2):                 # eq. 5 del paper
     return 147.27 * (om_h2 / 0.1432) ** -0.255 * (ob_h2 / 0.02237) ** -0.134
 

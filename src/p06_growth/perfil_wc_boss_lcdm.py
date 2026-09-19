@@ -24,6 +24,7 @@ LCDM mismo prefiere en BOSS (logA = 2.7898, medido en R1/R2). Ahi w_c debe
 volver hacia su valor de Planck; si no vuelve, el perfil mide el borde de la
 parametrizacion y no el dato.
 """
+# ORIGEN-VALOR: 0.003099 — sigma de w_c del perfil BOSS, results/logs/perfil_wc_boss.log
 import os
 import sys
 import time

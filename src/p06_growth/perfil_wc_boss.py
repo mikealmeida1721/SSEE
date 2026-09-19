@@ -14,6 +14,7 @@ CONTROL (R53): el mismo perfil con logA al valor que BOSS mismo prefiere
 (2.7636). Ahi w_c debe volver a ~la identidad; si no vuelve, el perfil esta
 midiendo el borde de la parametrizacion, no el dato.
 """
+# ORIGEN-VALOR: 0.0981 — sigma del logA viejo de BOSS, results/logs/growth_2026-07/R1R2_boss_lpt_cobaya.json (0.098131)
 import os
 import sys
 import time

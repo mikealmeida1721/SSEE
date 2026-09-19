@@ -98,7 +98,7 @@ CLUSTERS = [
 # σ = 0.54 (error Planck H₀ propagado, conservador).
 # (prior MIRA 67.037 RETIRADO: usaba Ω_m,CMB=MIRA×Ω_m,dyn, factor disuelto OP-8)
 MIRA_H0 = (67.962, 0.54)
-BBN_OBH2 = (0.02218, 0.00055)
+BBN_OBH2 = (0.02218, 0.00055)  # prior BBN de DESI (Schöneberg 2024)
 
 def f_de_cpl(z, w0, wa):
     a = 1.0/(1.0+z)
@@ -119,7 +119,7 @@ def DC(z_max, Om, n=300):
     return np.trapezoid(1.0/E_ssee(zz, Om), zz)
 
 def sound_horizon_rd(ob_h2, om_h2):
-    return 147.27 * (om_h2/0.1432)**(-0.255) * (ob_h2/0.02237)**(-0.134)
+    return 147.27 * (om_h2/0.1432)**(-0.255) * (ob_h2/0.02237)**(-0.134)  # Planck 2018 pivote, eq. rd de Paper 2 (cita EH98 en FP-7)
 
 def predict_desi(H0, rd, Om):
     preds = []

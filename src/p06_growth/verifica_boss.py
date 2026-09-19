@@ -18,6 +18,7 @@ Controles:
   V6  reproducibilidad numerica: bajar la resolucion CAMBIA el resultado, o sea
       que la resolucion elegida no es un lujo. Se declara cuanto.
 """
+# ORIGEN-VALOR: 0.6736 — h de Planck 2018 (arXiv:1807.06209)
 import sys
 
 import numpy as np

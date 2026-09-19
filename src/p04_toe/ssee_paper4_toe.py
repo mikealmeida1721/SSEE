@@ -19,9 +19,12 @@ from ssee_core import (
 )
 # Constantes intermedias (no presentes en ssee_core):
 MAR    = phi + 2*pi                 # 7.901219
-VITA   = (phi + 5*pi) / 2           # π + KAL = 8.663001
-PHITA  = (3*phi + 5*pi) / 2         # VITA + φ = 10.281034
+VITA   = (phi + 5*pi) / 2           # π + KAL = 8.662999  (errata del comentario corregida 2026-09-19)
+PHITA  = (3*phi + 5*pi) / 2         # VITA + φ = 10.281033  (errata del comentario corregida 2026-09-19)
 MIKA   = 3*phi + 2*pi               # 11.137287
+# ORIGEN-VALOR: 8.662999 — (phi + 5 pi)/2 = 8.6629986
+# ORIGEN-VALOR: 10.281033 — (3 phi + 5 pi)/2 = 10.2810326
+# ORIGEN-VALOR: 2.285338 — 3(pi - phi)/2 = 2.2853380 (= M_v - T_r)
 BUFFER = 3*(pi - phi) / 2           # 2.285338
 
 # ── Nine Sovereignties verification ─────────────────────────────────────────

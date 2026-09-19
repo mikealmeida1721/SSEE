@@ -114,6 +114,8 @@ expect_red("R21 wₐ/K_v: 'P_{sc}/K_v' → ROJO",
            lambda t: t + "\n$-P_{sc}/K_v$\n",
            ["R21", "ROJO"])
 
+# ORIGEN-VALOR: 0.67000 — defecto INYECTADO a proposito: wa con ceros de precision falsa (R22)
+# ORIGEN-VALOR: 0.0229999 — defecto INYECTADO a proposito: omega_b alterado en CANONICAL_VALUES (R26)
 # R22 — precisión falsa (wₐ = -0.67000)
 expect_red("R22 precisión: '-0.67000' → ROJO",
            "manuscript/SSEE_Paper7_EFT.tex",

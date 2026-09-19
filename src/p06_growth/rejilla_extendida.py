@@ -79,6 +79,15 @@ OMEGA_C = float(S.OMEGA_C_H2)
 TOPE_OMC = 0.10                      # fraccion maxima de omega_c
 TOPE = TOPE_OMC * OMEGA_C            # = 0.011951
 MASAS  = [4.0, 7.5]
+# ORIGEN de los numeros (R65, 2026-09-19)
+# ORIGEN-VALOR: 0.0065 — minimo de la cola #28 (ultimo nodo de su rejilla), results/logs/growth_2026-07/conjunta_tres_sondas.json
+# ORIGEN-VALOR: 0.0323 — dNeff = xi^4 = 0.3 => xi^3 = 0.40536; om_x = 0.40536*7.5/94.0641 = 0.032321
+# ORIGEN-VALOR: 0.0120 — 10 % de omega_c = 0.10 * 0.11951 = 0.011951, redondeado a 4 decimales (TOPE, abajo)
+# ORIGEN-VALOR: 0.0291 — 2 * 0.0145437 = 0.029087 (0.0145437 = sigma(logA) del CMB de SSEE, results/logs/growth_2026-07/quien_mide_As.json)
+# ORIGEN-VALOR: 0.0080 — nodo de rejilla elegido: de 0.0080 a 0.0125 en pasos de 0.0015, mas alla del borde 0.0065 de la #28
+# ORIGEN-VALOR: 0.0095 — nodo de rejilla elegido (ver 0.0080)
+# ORIGEN-VALOR: 0.0110 — nodo de rejilla elegido (ver 0.0080)
+# ORIGEN-VALOR: 0.0125 — nodo elegido FUERA del tope a proposito (10.46 % de omega_c) para ver la curva al cruzarlo
 OMEGAS = [0.0080, 0.0095, 0.0110, 0.0125]
 NPROC = 4
 

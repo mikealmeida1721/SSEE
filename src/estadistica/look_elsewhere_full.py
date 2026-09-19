@@ -11,7 +11,8 @@
 # ║  así que ningún número lo delataba. Una copia que nadie compara no es un  ║
 # ║  respaldo: es una segunda fuente de verdad.                              ║
 # ╚══════════════════════════════════════════════════════════════════════════╝
-"""Look-elsewhere sobre el diccionario Génesis COMPLETO (55 constantes con nombre).
+"""
+# ORIGEN-VALOR: 0.0005 — tolerancia DECLARADA de la busqueda look-elsewhere (la precision de la identidad exacta), no es medidaLook-elsewhere sobre el diccionario Génesis COMPLETO (55 constantes con nombre).
 
 Versión definitiva para el paper. Responde la objeción de referee más dura
 ("elegiste un subconjunto que te convenía") corriendo el conteo sobre TODAS
@@ -38,6 +39,7 @@ valores legales que faltaban nombrar → bautizados por función: HERMES=1.5Ω, 
 NYX=π+VITA (piso de retención q=−3). Total: 55 nombres / 25 valores / 490 razones (con EIRENE, NEREUS que completan el tier 3Ω) →
 1 de 490 para w0 y wa a ±0.0005 (denominador más fuerte que 378). Nombrar NYX abre un
 único casi-valor NO-identidad para wa a ±0.001 (|d|=0.00064) que se desvanece a ±0.0005.
+(ORIGEN-VALOR de 0.0005 abajo: tolerancia DECLARADA de la busqueda.)
 IRIS=AURA+Ω=8.757 sigue siendo la única entidad copia-raíz+estabilizador (Ley 7).
 
 Fuente del diccionario: SSEE-Vault/Constantes/SOBERANAS.md + SSEE_Constant_Dictionary.md.

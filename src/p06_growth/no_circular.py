@@ -64,6 +64,8 @@ for z, sv, fo, g, sp, se in zip(Z, SV, FS, g1, s8p, s8e):
 w = 1 / s8e**2
 m = np.sum(s8p * w) / np.sum(w); sm = 1 / np.sqrt(np.sum(w))
 print(f'\n  sigma8 que pide RSD (media ponderada) = {m:.4f} +- {sm:.4f}')
+# ORIGEN-VALOR: 0.7459 — sigma8 del perfil KiDS: parabola sobre los 7 puntos de results/logs/growth_2026-07/s8_barra_kids.json da 0.74592 +- 0.02029
+# ORIGEN-VALOR: 0.0203 — ancho de esa misma parabola (Delta chi2 = 1): 0.02029
 print(f'  [la ruta anterior via cociente dio 0.8243 — deben coincidir]')
 print(f'\n  sigma8 del CMB de SSEE      = {s1:.4f} +- 0.0058')
 print(f'  sigma8 que pide la cizalla  = 0.7459 +- 0.0203')

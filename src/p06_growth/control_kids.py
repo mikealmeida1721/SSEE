@@ -5,11 +5,31 @@ import numpy as np, time, sys
 import kids_shear as K
 
 # --- punto de maxima posterior de la cadena oficial ---
-MP = dict(omch2=0.079140, ombh2=0.019120, h0=0.666430, ns=0.926990,
-          halo_A=2.816460, A_IA=0.387120, delta_c=-0.000001,
-          sigma8_target=0.887050, S8_ref=0.764230, Om_ref=0.222680)
-DZ = np.array([0.002320, 0.008922, -0.018278, -0.014158, 0.006854])  # delta_z_out
-LIKE_REF = -130.157350
+# LEIDO DEL ARCHIVO, no tecleado (2026-09-19). Antes estos valores iban escritos
+# a mano y REDONDEADOS: `0.079140` donde el archivo dice `0.07914`, `0.002320`
+# donde dice `2.31956e-03`, y un delta_c de `-0.000001` donde el archivo dice
+# `-6.32757e-07`. R65 no podia rastrearlos porque no casaban letra a letra con
+# su fuente. Ahora salen de ella: la ultima fila del maxpost, por nombre de
+# columna.
+_MAXPOST = ('/mnt/datos/SSEE_data/kids1000/KiDS1000_cosmis_shear_data_release/'
+            'chains_and_config_files/main_chains_iterative_covariance/xipm/'
+            'chain/maxpost_multinest_start_C.txt')
+with open(_MAXPOST) as _f:
+    _col = _f.readline().lstrip('#').split()
+    _fila = [l for l in _f if l.strip() and not l.startswith('#')][-1].split()
+_v = {c: float(x) for c, x in zip(_col, _fila)}
+MP = dict(omch2=_v['cosmological_parameters--omch2'],
+          ombh2=_v['cosmological_parameters--ombh2'],
+          h0=_v['cosmological_parameters--h0'],
+          ns=_v['cosmological_parameters--n_s'],
+          halo_A=_v['halo_model_parameters--a'],
+          A_IA=_v['intrinsic_alignment_parameters--a'],
+          delta_c=_v['shear_c_bias--delta_c'],
+          sigma8_target=_v['cosmological_parameters--sigma_8'],
+          S8_ref=_v['cosmological_parameters--S_8'],
+          Om_ref=_v['cosmological_parameters--omega_m'])
+DZ = np.array([_v[f'delta_z_out--bin_{i}'] for i in range(1, 6)])
+LIKE_REF = _v['like']
 
 D = K.load_data(); m = K.scale_mask(D)
 print(f'puntos usados: {int(m.sum())} de {len(D["d"])}', flush=True)

@@ -65,6 +65,13 @@ BASE = dict(ombh2=S.OMEGA_B_H2, omch2=S.OMEGA_C_H2, H0=S.H0_ALG, ns=S.N_S)
 
 REJILLA_LOGA = np.linspace(2.88, 3.10, 9)
 MASAS  = np.array([2.2, 4.0, 7.5, 15.0])
+# ORIGEN de los numeros (R65, 2026-09-19)
+# ORIGEN-VALOR: 0.01454 — 0.0145437 = sigma(logA) del CMB de SSEE, results/logs/growth_2026-07/quien_mide_As.json, redondeado a 5 decimales
+# ORIGEN-VALOR: 0.0291 — 2 * 0.0145437 = 0.029087, redondeado a 4 decimales
+# ORIGEN-VALOR: 0.0020 — nodo de rejilla elegido: 0.002 a 0.0065 en pasos de 0.0015
+# ORIGEN-VALOR: 0.0035 — nodo de rejilla elegido (ver 0.0020)
+# ORIGEN-VALOR: 0.0050 — nodo de rejilla elegido (ver 0.0020)
+# ORIGEN-VALOR: 0.0065 — nodo de rejilla elegido (ver 0.0020)
 OMEGAS = np.array([0.0020, 0.0035, 0.0050, 0.0065])
 PUB = dict(CMB=1003.587, KiDS=266.559, BOSS=197.438)
 NPROC = 4

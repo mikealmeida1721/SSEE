@@ -90,7 +90,7 @@ def DC(z_max, E_func, n=300):
     return np.trapezoid(1.0/E_func(zz), zz)
 
 def sound_horizon_rd(ob_h2, om_h2):
-    return 147.27 * (om_h2/0.1432)**(-0.255) * (ob_h2/0.02237)**(-0.134)
+    return 147.27 * (om_h2/0.1432)**(-0.255) * (ob_h2/0.02237)**(-0.134)  # Planck 2018 pivote, eq. rd de Paper 2 (cita EH98 en FP-7)
 
 # ─────────────────────────────────────────────────────────────
 # 3. DATOS
@@ -177,7 +177,7 @@ def lpost_ssee(theta):
     H0, ob_h2 = theta
     if not (40 < H0 < 100): return -np.inf
     if not (0.015 < ob_h2 < 0.030): return -np.inf
-    lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2
+    lp_bbn = -0.5*((ob_h2-0.02218)/0.00055)**2  # prior BBN de DESI (Schöneberg 2024)
     lp_H0  = -0.5*((H0-PLANCK_H0[0])/PLANCK_H0[1])**2
     om_h2  = WM_ALG                # ω_m ALGEBRAICO fijo — la predicción de SSEE
     Om     = WM_ALG/(H0/100)**2    # Ω_m DERIVADO por muestra (no congelado)

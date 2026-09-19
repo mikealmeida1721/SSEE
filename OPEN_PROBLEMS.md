@@ -504,7 +504,9 @@ asigna roles funcionales a las constantes algebraicas:
 
 Los papers cosmológicos dan peso dimensional a estos roles vía observables:
 
-- Paper 7: βc = −AURA para el acoplamiento disformal del fotón
+- ~~Paper 7: βc = −AURA para el acoplamiento disformal del fotón~~ — **retirado
+  2026-09-07**: βc salió de la acción de Paper 7 con el potencial; el «<0.2%» era
+  el bug de saturación (valor real −2.194210)
 - Paper 8: geodésicas disformales del fotón usan AURA
 - Papers 1–6: el sector cinético escalar usa KAL₀ como constante de retención estructural (en la capa de fluido esa retención se manifiesta como viscosidad)
 
@@ -547,7 +549,7 @@ Específicamente, falta demostrar:
    (P7 §withdrawn, L80), y el nuevo Lagrangiano `K = c₁X + c₂X²` **no lleva
    ni acoplamiento ni potencial**. La pregunta presuponía un ingrediente que
    ya no existe. Además arrastraba tres errores independientes:
-   - el «`βc = −AURA` verificado a <0.2%» era el **bug de normalización de la
+   - el «`βc = −AURA` verificado a <0.2%» (retirado) era el **bug de normalización de la
      saturación** (el shooting calibraba `Ω_φ(a=1)` a `0.839950` en vez de
      `0.691119`); corregido da `−2.194210`, a **45%** de AURA, no a 0.2%;
    - `P(X) = X/KAL₀ + X²/M⁴` **no es la acción de energía oscura** — es el
@@ -582,7 +584,9 @@ sigue siendo el gap más profundo del modelo.
 
 Identificar la simetría en el espacio de parámetros de KAL₀ / AURA bajo φ↔π como una
 simetría discreta de la acción P(X,φ), y mostrar que esa simetría discreta — cuando se
-impone a nivel de QFT — fuerza βc=−AURA como valor único del acoplamiento disformal.
+impone a nivel de QFT — fuerza βc=−AURA como valor único del acoplamiento disformal
+(vía **retirada 2026-09-07**: βc ya no está en la acción, así que esta ruta de cierre
+queda sólo como registro).
 Esto conectaría el sistema Genesis 5.12 con la física de campos desde primeros principios.
 
 **Severidad:** Alta — es el gap conceptual más profundo. No falsifica SSEE a la precisión
@@ -1234,7 +1238,8 @@ presenta como predicción rígida falsable.
   a contaminación línea-de-vista y errores de modelo)
 
 **Veredicto:**
-1. La física correcta para el modelo real (two-sector con DM existente) es §4.5
+1. La física correcta para el modelo real (entonces two-sector con DM existente; el
+   segundo sector se retiró el 2026-08-01 y §4.5 quedó sobre un solo sector) es §4.5
 2. §3-4 describe un escenario MOND-like que NO corresponde al modelo SSEE canónico
 3. La identidad "$\sqrt{\beta_c}\approx$ MIRA al 0.03%" es una near-coincidence
    numérica entre dos cantidades de regímenes incompatibles, no derivación física
@@ -1251,7 +1256,7 @@ presenta como predicción rígida falsable.
    (consistente con datos). Reescribir narrativa MIRA↔lensing como "near-coincidence
    numérica" en lugar de "emergencia estructural".
 2. **Opción B (constructiva)**: Derivar consistentemente el lensing en el escenario
-   two-sector real (con DM existente + EFT B-S), determinar si hay alguna firma
+   two-sector real (retirado 2026-08-01; con DM existente + EFT B-S), determinar si hay alguna firma
    observable distinta de ΛCDM, reformular P8 alrededor de eso.
 3. **Opción C (radical)**: Aceptar que P8 §3-4 fue overclaim y reescribir el paper
    sin la afirmación factor 2.
@@ -1279,7 +1284,7 @@ esa identificación se retira.
 **Cambios aplicados (commit de la sesión):**
 
 1. **P8 abstract reescrito**: framing "dos límites" explícito (alternative MOND-like
-   vs canonical two-sector); $\sqrt{\AURA}$ en lugar de "√β_c ≈ MIRA"; canonical
+   vs canonical two-sector —éste retirado 2026-08-01—); $\sqrt{\AURA}$ en lugar de "√β_c ≈ MIRA"; canonical
    limit prediction declarada como $\thetaE^{\rm SSEE}\approx\thetaE^{\rm GR-with-DM}$.
 
 2. **P8 §1 (Introduction) reescrito**: dos limits identificados explícitamente;
@@ -1315,7 +1320,8 @@ Guardián: VERDE 102/102.
 
 **Estado del modelo tras resolución:**
 - $\MIRA$ aparece exactly en 2 sectores estructurales: CMB horizon mapping
-  (Paper 3) y two-sector mass ratio (Paper 6). Ambos: $\MIRA=\AURA/2$ exacto.
+  (Paper 3) y two-sector mass ratio (Paper 6, retirado 2026-08-01 con el segundo
+  sector). Ambos: $\MIRA=\AURA/2$ exacto.
 - $\sqrt{\AURA}$ aparece en lensing alternative-limit (P8 §3-4) — preservado como
   derivación válida pero marcado explícitamente como no canónico.
 - Canonical SSEE lensing prediction: $\thetaE^{\rm SSEE}\approx\thetaE^{\rm GR-with-DM}$

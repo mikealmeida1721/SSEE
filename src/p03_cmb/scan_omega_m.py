@@ -1,6 +1,9 @@
 """
 Scan chi2_CMB vs Omega_m a H=67.962 FIJO (todos los demas ingredientes SSEE).
-Compara factor pi/phi (0.31076) vs factor (phi+0.1*pi) (0.30915) y busca el minimo.
+Compara dos identidades RETIRADAS (2026-06-18, con el factor materia) contra
+el minimo real: factor pi/phi (0.31076, retirado) vs (phi+0.1*pi) (0.30915,
+retirado). Se evaluan para mostrar cual pierde, no como valores en uso;
+el canonico es Omega_m = omega_m/h^2 = 0.308881, derivado.
 """
 import numpy as np, math
 import ssee_paper3_cobaya_unified as P3
@@ -15,7 +18,7 @@ from ssee_core import (SUM_MNU_EV as _MNU, OMEGA_B_H2 as _OMB,   # noqa: E402
                        OMEGA_M_CMB_PIPHI as _OM_PIPHI, H0_ALG as _H0)
 H0=_H0; ombh2=_OMB; mnu=_MNU
 phi=(1+5**0.5)/2; pi=math.pi
-f_piphi = pi/phi                 # 1.94161 -> 0.31076
+f_piphi = pi/phi                 # 1.94161 -> 0.31076 (RETIRADO, control)
 f_alma  = phi + 0.1*pi           # 1.93216 -> 0.30915
 
 print(f"factor pi/phi      = {f_piphi:.5f} -> Om = {0.160*f_piphi:.5f}")

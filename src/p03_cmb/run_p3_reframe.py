@@ -35,7 +35,9 @@ chi2_ssee = P3.evaluate_model(H0, ombh2, omch2, P3.w0_ssee, P3.wa_ssee,
                               P3.As_ssee, P3.ns_ssee, P3.tau_ssee, mnu=mnu, quiet=True)
 print(f"SSEE omega_m-directo chi2_eff = {chi2_ssee:.3f}   ({time.time()-t0:.1f}s)")
 
-# comparacion: factor pi/phi (0.31076) con MISMO H/omega_b para aislar el efecto
+# CONTROL contra la identidad RETIRADA (2026-06-18, con el factor materia):
+# factor pi/phi (0.31076, retirado) con MISMO H/omega_b para aislar el efecto.
+# Se evalua para MOSTRAR que el canonico gana, no como valor en uso.
 omch2_piphi = _OM_PIPHI*(H0/100)**2 - ombh2
 chi2_piphi = P3.evaluate_model(H0, ombh2, omch2_piphi, P3.w0_ssee, P3.wa_ssee,
                                P3.As_ssee, P3.ns_ssee, P3.tau_ssee, mnu=mnu, quiet=True)

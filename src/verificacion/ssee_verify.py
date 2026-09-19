@@ -602,10 +602,18 @@ _RETRACTADOS = ("40.70", "594.28", "0.14889", "0.14888",
 # 2026-09-07: faltaban las formas en que la suite escribe REALMENTE una
 # retraccion en los .md — «DISUELTO», el tachado «~~», el circulo rojo.
 # Sin ellas la guarda contaba como vivas fichas que ya narran su muerte.
-_EXENTO_RETR = ("retract", "withdraw", "supersed", "retirad", "previously",
+# EL REPO ES BILINGUE Y LAS LISTAS ESTABAN SOLO EN INGLES (2026-09-19).
+# `retirad` cubria «retirada/retirado» pero NO «se retiro», que es como lo
+# escribe medio AUDIT.md; se acorta a `retir`. Y del lado del pasado faltaban
+# las formas castellanas del verbo ser/estar, que son justo las que usa la
+# prosa que NARRA una retirada: «`72.86` y `73.040` ERAN el mismo enunciado»,
+# «ese «<0.2%» ERA el bug de saturacion». La pregunta que no se hizo cuando se
+# escribieron estas listas fue en que idioma esta escrito lo que vigilan.
+_EXENTO_RETR = ("retract", "withdraw", "supersed", "retir", "previously",
                 "no longer", "historic", "RETIRED", "archive",
                 "disuelt", "dissolv", "disoluci", "~~", "\U0001f534", "ya no",
-                "dej\u00f3 de", "en cuesti\u00f3n", "hist\u00f3ric")
+                "dej\u00f3 de", "en cuesti\u00f3n", "hist\u00f3ric",
+                "el viejo", "la vieja", "lo viejo")
 
 
 _ITEM_R69 = re.compile(r"^\s*(?:[-*+]\s|\d+[.)]\s)")
@@ -613,7 +621,16 @@ _CITA_R69 = re.compile(r"^\s*>")
 # Corta por final de oracion. El lookahead pide que lo siguiente ABRA algo
 # (mayuscula, parentesis, macro LaTeX, negrita): asi «m_phi = 40.70 eV.» no
 # parte una lista de decimales ni una cita «Almeida et al.».
-_ORA_R69 = re.compile(r"(?<=[.;:])\s+(?=[A-Z(\\*«¿$])")
+#
+# EL PUNTO Y COMA CORTA SIEMPRE (2026-09-19). Un `;` separa dos afirmaciones
+# independientes, y da igual si la segunda empieza en minuscula. Sin esto, en
+# AUDIT.md la frase «The Hubble cascade is … 72.86 (0.17σ); the canonical DR2
+# posterior is H0 = 67.79» se leia como UNA sola: el «canonical» de la segunda
+# mitad —que habla del posterior de DESI— hacia que la PRIMERA contara como
+# afirmacion viva del 72.86 retirado. Un `;` nunca aparece dentro de un
+# decimal ni de una cita, asi que cortar ahi no reabre el caso que motivo el
+# lookahead.
+_ORA_R69 = re.compile(r"(?<=[.:])\s+(?=[A-Z(\\*«¿$])|(?<=;)\s+")
 # Palabras que AFIRMAN que algo esta en vigor. No son lo contrario de las
 # marcas: son de otro eje. Un texto puede llevar las dos, y cuando las lleva
 # en la MISMA oracion sobre el MISMO valor, se contradice a si mismo — y eso
@@ -623,7 +640,11 @@ _VIGENTE_R69 = ("canonical", "canónic", "status", "current", "vigente",
 # Verbos y adverbios que ponen la afirmacion en pasado. Sin esto, la frase que
 # NARRA como se anunciaba el valor se leeria como si lo anunciara ella.
 _PASADO_R69 = ("previous", "earlier", "former", "was ", "were ", "anterior",
-               "antes ", "se anunci", "announced")
+               "antes ", "se anunci", "announced",
+               # castellano: las formas que usa la prosa que narra la retirada
+               "era ", "eran ", "fue ", "fueron ", "estaba ", "estaban ",
+               "llevaba ", "decia ", "dec\u00eda ", "met\u00eda ", "sal\u00eda ",
+               "usaba ", "daba ", "el viejo", "la vieja")
 
 
 def _re_quita_cita(_l):
@@ -971,6 +992,40 @@ check("R60 una frase que AFIRMA vigencia no se exime por su parrafo",
       and not _presenta_como_vigente(_c69_narra, ("40.70",)),
       "«Canonical … 40.70 eV (forward prediction)» marcado pese al «retired» "
       "tres lineas mas abajo; «a canonical candidate … (now retracted)» exento")
+
+# CONTROL (R53) de lo que se ensancho el 2026-09-19: vocabulario castellano y
+# corte por punto y coma. Ensanchar una EXENCION es la via directa a ablandar
+# una regla, asi que por cada forma que ahora exime va una que NO debe eximir.
+_c60_es = [
+    # (texto, debe marcarse)
+    # OJO con lo que mide cada patrón. `_PASADO_R69` sólo actúa sobre P-B (el
+    # afirmador de vigencia); una frase en pasado SIN palabra de vigencia y
+    # SIN marca de retirada la sigue marcando P-A, y debe hacerlo: narrar en
+    # pasado no es retractar. Por eso este caso lleva las dos cosas.
+    ("`72.86` y `73.040` quedan RETIRADOS: eran el mismo enunciado.", False),
+    ("`72.86` y `73.040` eran el mismo enunciado leido al reves.", True),
+    ("El viejo «72.86 via H_alg» metia un numero sin unidades.", False),
+    ("Ese «<0.2%» era el bug de normalizacion de la saturacion.", False),
+    ("La cascada se retiro el 2026-09-06; el valor era 72.86.", False),
+    # …y las que TIENEN que seguir marcadas: afirman vigencia, en castellano
+    ("La cascada canonica da H_local = 72.86 km/s/Mpc.", True),
+    ("Valor vigente de la cascada: 72.86.", True),
+    ("El anclaje adoptado es 72.86, status canonico.", True),
+    # el punto y coma parte DOS afirmaciones: la primera no hereda el
+    # «canonical» de la segunda, pero tampoco lo pierde si es suyo
+    ("The cascade is H_local = 72.86; the canonical posterior is 67.79.", True),
+    ("> **Superseded.** The cascade is H_local = 72.86; the canonical "
+     "posterior is 67.79.", False),
+]
+_f60es = [f"{_tx[:40]!r}" for _tx, _esp in _c60_es
+          if bool(_presenta_como_vigente(_tx, ("72.86",))) != _esp]
+check("R60 el detector lee el castellano igual que el ingles",
+      not _f60es,
+      "10 casos: «el viejo», «era» y «se retiro» eximen; un pasado SIN marca "
+      "sigue marcado —narrar en pasado no es retractar—; «canonica», "
+      "«vigente» y «adoptado» NO; y el `;` separa dos afirmaciones sin que la "
+      "primera herede el «canonical» de la segunda"
+      if not _f60es else f"casos mal clasificados: {_f60es}")
 check("R60 el detector no se comio la superficie que dice mirar",
       len(_unidad(_c69_item.split("\n"), 1)) == 2
       and _unidad(_c69_item.split("\n"), 1) == (1, 2),
@@ -2037,7 +2092,20 @@ _n60 = sum(len(_v) for _v in _r60.values())
 # Los 23 que quedan viven TODOS en documentos de registro (OPEN_PROBLEMS,
 # VERIFICATION_LEDGER, AUDIT, CLAUDE, FUENTES_PENDIENTES), que es donde una
 # retraccion TIENE que nombrarse para retractarse.
-_TOPE_R60 = 23
+# 23 -> 16 el 2026-09-19 (noche): R60 aprende a leer CASTELLANO y a cortar por
+# punto y coma, y las dos cosas destaparon sobras reales.
+#   - El repo es bilingue y estas listas estaban solo en ingles: `retirad` no
+#     cubria «se retiro», y del lado del pasado faltaban «era/eran/metia/…»,
+#     que es justo como se escribe la prosa que NARRA una retirada.
+#   - Un `;` separa dos afirmaciones. En AUDIT.md, «The Hubble cascade is …
+#     72.86 (0.17σ); the canonical DR2 posterior is 67.79» se leia como UNA:
+#     el «canonical» del posterior de DESI hacia viva la cascada retirada.
+#     Al cortar ahi salieron DOS sobras que llevaban tapadas desde el
+#     2026-08-01: el LEDGER decia «vigente = Σm_ν·SOLAR²·KRYSTOS_V = 40.70 eV»
+#     y `ssee_paperB_DW.py` declaraba esa misma masa como «Valor canonico».
+# Detector MAS estricto y deuda MENOR a la vez: la senal de que lo limpiado
+# era real. `particula_phi_dm` y `cascada_invertida` quedan en CERO.
+_TOPE_R60 = 0   # 9 -> 0 el 2026-09-19 (noche): las ultimas 9 sobras (OP-7, OP-13 y dos lineas del Registro) marcadas donde viven. Trinquete a CERO: cualquier token retirado que vuelva a aparecer sin marca pone ROJO.
 _DEUDA_REAL["R60"] = _n60
 _DEUDA_MAX["R60"] = _TOPE_R60
 check("R60 la deuda del registro de retracciones no crece",

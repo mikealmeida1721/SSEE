@@ -262,7 +262,8 @@ is fixed algebraically, while the *absolute* scale is not claimed to be derived�
 
 **Por qué NO se barre automáticamente.** Se simuló con el criterio «¿lleva unidad
 detrás?» y clasificó **75 apariciones como adimensionales que no lo son**: son H₀
-físico con la unidad omitida por brevedad (la cascada `H_local=72.86`, la división
+físico con la unidad omitida por brevedad (la cascada `H_local=72.86` —RETIRADA
+2026-09-06, la dirección iba al revés—, la división
 `67.962/(1−0.0673)`, «the chain recovers the anchor»). El criterio sintáctico no
 distingue el *número* de la *cantidad*; hace falta leer. Forzarlo con una regex
 introduciría 75 errores para corregir uno. **Se separa documento por documento

@@ -257,8 +257,11 @@ dimensional pasa.
   `[eV]·(número puro)=[eV]`, dimensionalmente **consistente**. Con
   Σm_ν^active = (Ω/(KAL₀·T_r))·0.960318 eV = 0.069023 eV y multiplicador
   Ω⁴+AURA·KAL₀ = 535.2795 → m_φ = 36.9463 eV (cero fiteo). *(Cadena **RETIRADA**:
-  factor 0.960318 ⇒ C_ν≈93.86 SIN FUENTE, y multiplicador viejo; vigente = Σm_ν 0.06849 · SOLAR²·KRYSTOS_V
-  = 40.70 eV. Conservada para trazar el linaje.)* Reemplaza la vieja
+  factor 0.960318 ⇒ C_ν≈93.86 SIN FUENTE, y multiplicador viejo. La cadena que la
+  sucedió —Σm_ν 0.06849 · SOLAR²·KRYSTOS_V = 40.70 eV— **también está RETIRADA**
+  desde el 2026-08-01, con la partícula entera: su densidad salía de restar
+  0.308881 − 0.160, y ese 0.160 es 1+w₀, no una densidad. Las dos se conservan
+  para trazar el linaje, ninguna está vigente.)* Reemplaza la vieja
   cadena numerológica `Σm_ν·H₀^alg = 5.60 eV` (RETIRADA — sí era `[eV]·[km/s/Mpc]`).
   Lo que queda **ABIERTO** es el Lagrangiano φ-DM que justifique el multiplicador
   (OP-9), no la dimensión.
@@ -314,7 +317,13 @@ Cadena de derivación, paso a paso:
 **Veredicto:** dado N_*=2φ⁷, todo cierra exacto. Pero N_*=2φ⁷ es una conjetura
 no probada. OP-2 NO está "RESUELTO": es **condicional a la Conjecture B.1**.
 
-## V-L3-OP7 — βc = −AURA (acoplamiento EFT) — **PARCIAL**
+## V-L3-OP7 — βc = −AURA (acoplamiento EFT) — 🔴 **RETIRADO 2026-09-07 (histórico)**
+
+> El «<0.2%» de esta entrada era el **bug de normalización de la saturación**
+> (el shooting calibraba Ω_φ(a=1) a 0.839950 en vez de 0.691119). Corregido da
+> **−2.194210**, a 45% de −AURA. Y `βc` ya **no está en la acción**: Paper 7
+> retiró el acoplamiento conformal y el potencial. La entrada se conserva
+> entera para trazar el linaje; nada de lo que sigue está vigente.
 
 *Claim CLAUDE.md:* "PARCIALMENTE RESUELTO — unicidad EFT vía dualidad Z₂".
 
@@ -524,7 +533,13 @@ No es "RESUELTO" pleno. **PARCIAL.**
 parámetros libres), pero su justificación desde un Lagrangiano sigue abierta
 (OP-9). **PARCIAL** (era ABIERTO bajo la cadena 5.60 eV retirada).
 
-## V-L3-2sec — modelo dos sectores φ-DM — **PARCIAL (identidad sí, split físico no)**
+## V-L3-2sec — modelo dos sectores φ-DM — 🔴 **RETIRADO 2026-08-01 (histórico)**
+
+> Era «PARCIAL (identidad sí, split físico no)», y el split físico resultó no
+> existir: Ω_φDM salía de restar Ω_m,CMB − Ω_m,dyn = 0.308881 − 0.160, y ese
+> 0.160 es **1+w₀**, un número de la ecuación de estado, no una densidad. La
+> entrada se conserva entera para trazar el linaje; nada de lo que sigue está
+> vigente.
 
 *Claim CLAUDE.md:* "Ω_total (dos sectores) = 0.308881 ≈ Ω_m,CMB — unificación algebraica".
 
@@ -869,7 +884,8 @@ marcaba esto «verificado (regla)». **Era una sobreafirmación.** Lo único
 verificado es el *álgebra*; la *regla física* de uso no está derivada.
 
 1. **✓ álgebra:** Ω_m,dyn = 1+w₀ = 0.16005 **sí** se deriva de φ,π.
-   Ω_m,cosm = MIRA·Ω_m,dyn = 0.31993 — el número es algebraico, pero
+   Ω_m,cosm = MIRA·Ω_m,dyn = 0.31993 (factor materia retirado 2026-06-18;
+   hoy Ω_m = ω_m/h² = 0.308881, derivado) — el número es algebraico, pero
    **MIRA es hipótesis auxiliar no derivada** (lo dice `ssee_core.py` L41).
 2. **✗ la regla NO está derivada.** «Ω_m,dyn fija w₀ y no entra en E(z);
    Ω_m,cosm va en E(z)/Poisson/CMB» es una **aserción**, no un teorema.
@@ -905,7 +921,8 @@ modelo**. Todo lo demás (r_d, θ*, H₀) son síntomas de esta brecha. **ABIERT
 
 ## Estado final de Capa 3
 
-Re-verificados **15 elementos**: OP-1..OP-7, α=φ⁴/3, m_φ, dos sectores,
+Re-verificados **15 elementos**: OP-1..OP-7, α=φ⁴/3, m_φ, dos sectores (estos dos
+retirados después, el 2026-08-01),
 EFT, K(X), IS, c_s² (T_μν), dos-Ω_m.
 
 | Veredicto | Elementos |

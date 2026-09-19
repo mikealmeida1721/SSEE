@@ -27,6 +27,12 @@ logs:
   mcmc_paper2_3models_wmfix:  src/p02_mcmc/ssee_paper2_mcmc_wmfix.py
   chi2_bao_posterior:         src/p02_mcmc/chi2_bao_posterior.py
 
+  # ── Verificacion — pruebas que producen su propio log ───────────────────
+  # Prueba de equivalencia por EJECUCION del camino LCDM de cobaya_kids.py
+  # (ver la nota en `muestreo_certificado`). Declarada aqui para que R35 la
+  # vigile como a cualquier otro log: si su script cambia, el log envejece.
+  equivalencia_kids_lcdm:     src/verificacion/prueba_equivalencia_kids_lcdm.py
+
   # ── Paper 3 — CMB ───────────────────────────────────────────────────────
   p3_cmb_reframe_omega_m:     src/p03_cmb/run_p3_reframe.py
   p3_rd_reframe_omega_m:      src/p03_cmb/run_p3_rd_reframe.py

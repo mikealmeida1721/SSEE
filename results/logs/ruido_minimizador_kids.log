@@ -1,0 +1,26 @@
+============================================================================================
+  PASO 0 — ruido del minimizador de molestias de KiDS
+  mismo punto (fondo SSEE, om_x=0, logA=3.0450); solo cambia el arranque
+============================================================================================
+  produccion  x0=[2.6, 0.55, 0.0]       maxiter=110 -> chi2  282.2092  (halo_A 2.000 A_IA 0.705 dc -0.00000)  nit=93  7.5 min
+  alt1        x0=[2.1, 0.2, 0.0]        maxiter=110 -> chi2  287.5896  (halo_A 2.000 A_IA 0.210 dc -0.00001)  nit=41  2.8 min
+  alt2        x0=[3.05, 0.9, 0.0]       maxiter=110 -> chi2  283.7868  (halo_A 2.000 A_IA 0.967 dc -0.00004)  nit=61  4.3 min
+  alt3        x0=[2.35, 0.75, 0.0]      maxiter=110 -> chi2  282.4488  (halo_A 2.000 A_IA 0.808 dc -0.00001)  nit=49  3.8 min
+  alt4        x0=[2.85, 0.35, 0.0]      maxiter=110 -> chi2  282.2101  (halo_A 2.000 A_IA 0.712 dc +0.00000)  nit=75  6.0 min
+  alt5        x0=[2.6, 0.05, 0.0]       maxiter=110 -> chi2  291.3495  (halo_A 2.000 A_IA 0.060 dc +0.00002)  nit=50  3.5 min
+  alt6        x0=[2.6, 1.1, 0.0]        maxiter=110 -> chi2  282.2093  (halo_A 2.000 A_IA 0.706 dc +0.00000)  nit=73  5.6 min
+
+  --- el mismo arranque de produccion, pero SIN tope corto ---
+  produccion_largo maxiter=600 -> chi2  282.2092  nit=93  7.6 min
+
+============================================================================================
+  chi2 de produccion ..........  282.2092
+  mejor encontrado ............  282.2092   (arranque: produccion)
+  SESGO de produccion .........   +0.0000   <- cuanto sobra en TODA la rejilla
+  dispersion (max-min) ........    9.1403
+  desviacion tipica ...........    3.1951
+  tolerancia de la puerta 3 ...    2.3000   (1 sigma de Dk=2)
+  VEREDICTO: PISO >= tolerancia: la puerta 3 NO DISCRIMINA; hay que ajustar mejor antes
+============================================================================================
+
+escrito -> results/logs/growth_2026-07/ruido_minimizador_kids.json (0.69 h)

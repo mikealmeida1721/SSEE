@@ -1,0 +1,20 @@
+====================================================================================================
+  COLA #29 — el optimo de la #28b con logA y tau CONTINUOS
+  tope om_x <= 0.011951 (10 % de omega_c=0.11951) | L3 |dlogA| <= 0.0291
+====================================================================================================
+  C_nu del propio CAMB: 94.0641 eV
+
+  --- CONTROL R53: la casilla om_x=0, mismo minimizador ---
+[camb] `camb` module loaded successfully from /home/mike/Proyectos/SSEE/eftcamb_ssee/camb
+[planck_2018_highl_plik.ttteee_lite] `clipy` module loaded successfully from /home/mike/cobaya_packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/mike/cobaya_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik_lite/plik_lite_v22_TTTEEE.clik' on test data. got -292.286 expected -292.286 (diff -3.86217e-09)
+----
+before crop : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+after crop  : TT 30 -> 2508, TE 30 -> 1996, EE 30 -> 1996
+  BASE      m_x=   0.0 om_x=0.0000 | logA 3.02428 tau 0.04531 | CMB   1005.29 KiDS  278.32 BOSS  197.86 | TOT   1481.47  (1.9 min)
+    C_R53a · chi2_CMB 1005.289 vs 1003.586 -> FALLA
+    C_R53b · total 1481.47 <= 1481.70 (la malla no supera al continuo) -> OK
+
+  ABORTADO: el control de la base no cierra. Nada que leer.

@@ -123,17 +123,14 @@ def perfil_boss(m_x, om_x):
         c.update(om_x=om_x, dneff=dn, meffsterile=meff)
     B.COSMO['SSEE'] = c
     sets = B.build()
-    out = []
-    for lA in REJILLA_LOGA:
-        arr = [np.zeros(6) for _ in sets]
-        v = 0.0
-        for st, u in zip(sets, arr):
-            o = minimize(lambda t: B.chi2_marg_set(st,'SSEE',float(lA),t[:3]),
-                         np.zeros(3), method='Nelder-Mead',
-                         options=dict(maxiter=200,xatol=1e-3,fatol=1e-3))
-            v += float(o.fun)
-        out.append(v)
-    return np.array(out), sets
+    # ARREGLADO: la primera version llamaba a `chi2_marg_set`, que es la version
+    # MARGINAL — la que lleva dentro el termino de volumen `ln det F`, justo lo
+    # que descuadraba el logA de BOSS 1.85 sigma. Se usa `B.run`, que hace el
+    # PERFIL con las 6 molestias por conjunto ajustadas, que es la maquinaria
+    # validada y la que produjo el 197.438 publicado.
+    r = B.run('SSEE', sets)
+    g = np.array(r['perfil']['logA']); c2 = np.array(r['perfil']['chi2'])
+    return np.interp(REJILLA_LOGA, g, c2), sets
 
 
 def un_punto(a):

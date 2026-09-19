@@ -1,0 +1,289 @@
+{
+ "corrida": "rehace la columna 3sig de fuga3 con el simplex arreglado",
+ "etiqueta": "kids",
+ "logA_clavado": 2.8627107489,
+ "chi2_referencia": 1003.5860397789045,
+ "chi2_base": 4154.4865061361725,
+ "castigo": 3150.9004663572678,
+ "motivo": "el simplex inicial por defecto de Nelder-Mead (5% del valor) cae entre 5 y 11.5 sigma fuera de la caja de 3 sigma; la columna 3sig entera del JSON viejo se retira",
+ "arreglo": "paso_simplex = 1 sigma en modo 3sig + control de no-empeorar",
+ "control_simplex_cabe": true,
+ "filas_con_minimizador_fallando": [],
+ "subconjuntos_3sig": {
+  "ombh2": {
+   "chi2": 4090.7864266772012,
+   "gana": 63.70007945897123,
+   "gana_pct": 2.021646832043997,
+   "minimizador_ok": true,
+   "valores": {
+    "ombh2": 0.021967781139876692
+   },
+   "sigmas": {
+    "ombh2": -2.9998376081543747
+   },
+   "pegado_al_borde": [
+    "ombh2"
+   ],
+   "tau": 0.010000036913692015
+  },
+  "omch2": {
+   "chi2": 3603.4212044369424,
+   "gana": 551.0653016992301,
+   "gana_pct": 17.489137076307347,
+   "minimizador_ok": true,
+   "valores": {
+    "omch2": 0.11591440915135566
+   },
+   "sigmas": {
+    "omch2": -2.999999400210921
+   },
+   "pegado_al_borde": [
+    "omch2"
+   ],
+   "tau": 0.010000001002038532
+  },
+  "H0": {
+   "chi2": 4079.6647740360418,
+   "gana": 74.82173210013025,
+   "gana_pct": 2.3746142697624175,
+   "minimizador_ok": true,
+   "valores": {
+    "H0": 67.06515502252633
+   },
+   "sigmas": {
+    "H0": -1.6610783349684852
+   },
+   "pegado_al_borde": [],
+   "tau": 0.01000000002821629
+  },
+  "ns": {
+   "chi2": 4081.1244543454986,
+   "gana": 73.36205179067383,
+   "gana_pct": 2.3282884551249294,
+   "minimizador_ok": true,
+   "valores": {
+    "ns": 0.9715901370761448
+   },
+   "sigmas": {
+    "ns": 1.4361882916137858
+   },
+   "pegado_al_borde": [],
+   "tau": 0.010000000282098055
+  },
+  "ombh2+omch2": {
+   "chi2": 3816.5457498363826,
+   "gana": 337.9407562997894,
+   "gana_pct": 10.725212043606067,
+   "minimizador_ok": true,
+   "valores": {
+    "ombh2": 0.022835563720967147,
+    "omch2": 0.11591440947575557
+   },
+   "sigmas": {
+    "ombh2": 2.785379599115322,
+    "omch2": -2.999999129877663
+   },
+   "pegado_al_borde": [
+    "omch2"
+   ],
+   "tau": 0.010032894127707718
+  },
+  "ombh2+H0": {
+   "chi2": 4254.94239730784,
+   "gana": -100.45589117166764,
+   "gana_pct": -3.1881645340515608,
+   "minimizador_ok": true,
+   "valores": {
+    "ombh2": 0.022845789224168408,
+    "H0": 67.43714134012964
+   },
+   "sigmas": {
+    "ombh2": 2.8535496204570623,
+    "H0": -0.9722147838512337
+   },
+   "pegado_al_borde": [],
+   "tau": 0.010000001321757473
+  },
+  "ombh2+ns": {
+   "chi2": 4093.6695885258086,
+   "gana": 60.81691761036382,
+   "gana_pct": 1.9301440416705322,
+   "minimizador_ok": true,
+   "valores": {
+    "ombh2": 0.02230687825741201,
+    "ns": 0.9686834167877979
+   },
+   "sigmas": {
+    "ombh2": -0.7391901579189194,
+    "ns": 0.744112032483564
+   },
+   "pegado_al_borde": [],
+   "tau": 0.010000052016946826
+  },
+  "omch2+H0": {
+   "chi2": 4592.924914023119,
+   "gana": -438.43840788694615,
+   "gana_pct": -13.914701926266224,
+   "minimizador_ok": true,
+   "valores": {
+    "omch2": 0.11932385325217419,
+    "H0": 69.58213712943639
+   },
+   "sigmas": {
+    "omch2": -0.15879598286214447,
+    "H0": 2.9999996407908913
+   },
+   "pegado_al_borde": [
+    "H0"
+   ],
+   "tau": 0.01000000224453962
+  },
+  "omch2+ns": {
+   "chi2": 3492.0827972406746,
+   "gana": 662.4037088954974,
+   "gana_pct": 21.022679578999757,
+   "minimizador_ok": true,
+   "valores": {
+    "omch2": 0.11591441038450265,
+    "ns": 0.9767408877630439
+   },
+   "sigmas": {
+    "omch2": -2.999998372588432,
+    "ns": 2.662557502780232
+   },
+   "pegado_al_borde": [
+    "omch2"
+   ],
+   "tau": 0.010000001730122877
+  },
+  "H0+ns": {
+   "chi2": 3948.1724392791994,
+   "gana": 206.3140668569731,
+   "gana_pct": 6.547781152080987,
+   "minimizador_ok": true,
+   "valores": {
+    "H0": 67.14228799993941,
+    "ns": 0.9781581462348812
+   },
+   "sigmas": {
+    "H0": -1.5182394879072143,
+    "ns": 2.99999999607482
+   },
+   "pegado_al_borde": [
+    "ns"
+   ],
+   "tau": 0.0100040903680669
+  },
+  "ombh2+omch2+H0": {
+   "chi2": 3726.4886696347758,
+   "gana": 427.9978365013967,
+   "gana_pct": 13.583349936667524,
+   "minimizador_ok": true,
+   "valores": {
+    "ombh2": 0.022784257616498244,
+    "omch2": 0.11591440887744398,
+    "H0": 69.41599965787421
+   },
+   "sigmas": {
+    "ombh2": 2.443338902655967,
+    "omch2": -2.9999996284706585,
+    "H0": 2.692337656416483
+   },
+   "pegado_al_borde": [
+    "omch2"
+   ],
+   "tau": 0.010000000096313003
+  },
+  "ombh2+omch2+ns": {
+   "chi2": 3464.4180274819864,
+   "gana": 690.068478654186,
+   "gana_pct": 21.900675252111945,
+   "minimizador_ok": true,
+   "valores": {
+    "ombh2": 0.021967758830673034,
+    "omch2": 0.11591441557840115,
+    "ns": 0.9676940448311828
+   },
+   "sigmas": {
+    "ombh2": -2.999986336178762,
+    "omch2": -2.999994044339677,
+    "ns": 0.5085472809085445
+   },
+   "pegado_al_borde": [
+    "ombh2",
+    "omch2"
+   ],
+   "tau": 0.01039650693150981
+  },
+  "ombh2+H0+ns": {
+   "chi2": 4368.159786623429,
+   "gana": -213.6732804872563,
+   "gana_pct": -6.781340215874302,
+   "minimizador_ok": true,
+   "valores": {
+    "ombh2": 0.022864377284130266,
+    "H0": 68.20157518941247,
+    "ns": 0.9611637879087531
+   },
+   "sigmas": {
+    "ombh2": 2.9774700202027846,
+    "H0": 0.4434034555614032,
+    "ns": -1.0462757958604318
+   },
+   "pegado_al_borde": [],
+   "tau": 0.010000001732909719
+  },
+  "omch2+H0+ns": {
+   "chi2": 5244.116869405184,
+   "gana": -1089.6303632690115,
+   "gana_pct": -34.5815545398273,
+   "minimizador_ok": true,
+   "valores": {
+    "omch2": 0.11591441228576892,
+    "H0": 66.42310267420356,
+    "ns": 0.9781579346736713
+   },
+   "sigmas": {
+    "omch2": -2.9999967881998737,
+    "H0": -2.850064165195826,
+    "ns": 2.9999496243581807
+   },
+   "pegado_al_borde": [
+    "omch2",
+    "ns"
+   ],
+   "tau": 0.02114067723393505
+  },
+  "ombh2+omch2+H0+ns": {
+   "chi2": 4347.359791158151,
+   "gana": -192.87328502197852,
+   "gana_pct": -6.121211605422683,
+   "minimizador_ok": true,
+   "valores": {
+    "ombh2": 0.02286775676482425,
+    "omch2": 0.12089005037882224,
+    "H0": 66.87850251512774,
+    "ns": 0.9781525114259852
+   },
+   "sigmas": {
+    "ombh2": 2.999999891496001,
+    "omch2": 1.1463682893445595,
+    "H0": -2.0067311264473577,
+    "ns": 2.998658374909123
+   },
+   "pegado_al_borde": [
+    "ombh2",
+    "ns"
+   ],
+   "tau": 0.01000001057351163
+  }
+ },
+ "mejor": {
+  "nombre": "ombh2+omch2+ns",
+  "gana_pct": 21.900675252111945,
+  "chi2": 3464.4180274819864
+ },
+ "columna_libre": "sin tocar; vive en cmb_fuga3_kids.json y NO esta afectada",
+ "alcance": "informacion sobre que ingredientes se empujan entre si. NO senala culpables ni toca ningun paper",
+ "segundos": 31883.106990337372
+}

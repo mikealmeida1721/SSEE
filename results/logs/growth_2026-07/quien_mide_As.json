@@ -1,0 +1,27 @@
+{
+ "corrida": "quien mide mejor A_s \u2014 misma regla, dato crudo",
+ "regla": "se barre logA, se perfila el resto, sigma = anchura a dchi2=1",
+ "CMB": {
+  "npts": 669,
+  "logA": 3.0432036174108936,
+  "sigma": 0.014543683651408566,
+  "libres_ademas": [
+   "tau"
+  ]
+ },
+ "KiDS": {
+  "npts": 225,
+  "logA": 2.8558335690985075,
+  "sigma": 0.054358099433848305,
+  "libres_ademas": [
+   "halo_A",
+   "A_IA",
+   "delta_c"
+  ]
+ },
+ "razon_sigma_kids_sobre_cmb": 3.7375743818921476,
+ "separacion_logA": 0.18737004831238613,
+ "separacion_en_sigmas_de_kids": 3.446957312045249,
+ "separacion_en_sigmas_del_cmb": 12.88325934497614,
+ "segundos": 5579.707929849625
+}

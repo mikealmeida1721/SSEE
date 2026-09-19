@@ -1,0 +1,175 @@
+{
+ "corrida": "paso 0 \u2014 ruido del minimizador de molestias de KiDS",
+ "para_que": "saber si la puerta 3 de la cascada puede discriminar",
+ "logA": 3.045,
+ "arranque_de_produccion": [
+  2.6,
+  0.55,
+  0.0
+ ],
+ "maxiter_produccion": 110,
+ "maxiter_largo": 600,
+ "corridas": [
+  {
+   "x0": [
+    2.6,
+    0.55,
+    0.0
+   ],
+   "maxiter": 110,
+   "chi2": 282.20924396814445,
+   "x": [
+    2.0000023993239417,
+    0.7049082266097396,
+    -8.517375691972376e-09
+   ],
+   "nit": 93,
+   "nfev": 166,
+   "exito": true,
+   "minutos": 7.504226084550222,
+   "etiqueta": "produccion"
+  },
+  {
+   "x0": [
+    2.1,
+    0.2,
+    0.0
+   ],
+   "maxiter": 110,
+   "chi2": 287.58956229321797,
+   "x": [
+    2.0000106398316184,
+    0.2102852824503127,
+    -7.691080055702649e-06
+   ],
+   "nit": 41,
+   "nfev": 81,
+   "exito": true,
+   "minutos": 2.848440496126811,
+   "etiqueta": "alt1"
+  },
+  {
+   "x0": [
+    3.05,
+    0.9,
+    0.0
+   ],
+   "maxiter": 110,
+   "chi2": 283.78679248244845,
+   "x": [
+    2.000041512458611,
+    0.9671464453528884,
+    -3.833439243948921e-05
+   ],
+   "nit": 61,
+   "nfev": 113,
+   "exito": true,
+   "minutos": 4.294609932104747,
+   "etiqueta": "alt2"
+  },
+  {
+   "x0": [
+    2.35,
+    0.75,
+    0.0
+   ],
+   "maxiter": 110,
+   "chi2": 282.4487821191354,
+   "x": [
+    2.0000307944680404,
+    0.8083289446367674,
+    -1.2571202761813187e-05
+   ],
+   "nit": 49,
+   "nfev": 94,
+   "exito": true,
+   "minutos": 3.769962430000305,
+   "etiqueta": "alt3"
+  },
+  {
+   "x0": [
+    2.85,
+    0.35,
+    0.0
+   ],
+   "maxiter": 110,
+   "chi2": 282.2100535970407,
+   "x": [
+    2.0000024010020248,
+    0.7117556494612047,
+    7.658043804123421e-07
+   ],
+   "nit": 75,
+   "nfev": 143,
+   "exito": true,
+   "minutos": 6.022904102007548,
+   "etiqueta": "alt4"
+  },
+  {
+   "x0": [
+    2.6,
+    0.05,
+    0.0
+   ],
+   "maxiter": 110,
+   "chi2": 291.34949545351503,
+   "x": [
+    2.000002254949156,
+    0.05963821250451898,
+    1.5912704438666727e-05
+   ],
+   "nit": 50,
+   "nfev": 94,
+   "exito": true,
+   "minutos": 3.493847950299581,
+   "etiqueta": "alt5"
+  },
+  {
+   "x0": [
+    2.6,
+    1.1,
+    0.0
+   ],
+   "maxiter": 110,
+   "chi2": 282.209259419831,
+   "x": [
+    2.0000050850880147,
+    0.7062581952013782,
+    1.4465399735914902e-07
+   ],
+   "nit": 73,
+   "nfev": 133,
+   "exito": true,
+   "minutos": 5.646823875109354,
+   "etiqueta": "alt6"
+  },
+  {
+   "x0": [
+    2.6,
+    0.55,
+    0.0
+   ],
+   "maxiter": 600,
+   "chi2": 282.20924396814445,
+   "x": [
+    2.0000023993239417,
+    0.7049082266097396,
+    -8.517375691972376e-09
+   ],
+   "nit": 93,
+   "nfev": 166,
+   "exito": true,
+   "minutos": 7.591935543219249,
+   "etiqueta": "produccion_largo"
+  }
+ ],
+ "chi2_produccion": 282.20924396814445,
+ "chi2_mejor": 282.20924396814445,
+ "sesgo_produccion": 0.0,
+ "dispersion": 9.140251485370584,
+ "desviacion": 3.1951098092565204,
+ "tolerancia_puerta3": 2.3,
+ "veredicto": "PISO >= tolerancia: la puerta 3 NO DISCRIMINA; hay que ajustar mejor antes",
+ "alcance": "ninguna cifra entra en ningun paper",
+ "segundos": 2470.366315126419
+}

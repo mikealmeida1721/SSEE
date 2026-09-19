@@ -1,0 +1,23 @@
+{
+ "corrida": "cola #29",
+ "aborto": "el control R53 de la base no cierra",
+ "control": {
+  "chi2_total": 1481.4679210107408,
+  "chi2_cmb": 1005.288538987336,
+  "chi2_kids": 278.31649915887056,
+  "chi2_boss": 197.86288286453444,
+  "logA": 3.0242809332496234,
+  "tau": 0.045305908597660025,
+  "minimizador_ok": true,
+  "m_x": 0.0,
+  "omega_x": 0.0,
+  "xi": 0.0,
+  "dNeff": 0.0,
+  "etiqueta": "BASE",
+  "fuera_del_tope": false,
+  "pct_omega_c": 0.0,
+  "minutos": 1.8512352665265401
+ },
+ "ok_cmb": false,
+ "ok_tot": true
+}

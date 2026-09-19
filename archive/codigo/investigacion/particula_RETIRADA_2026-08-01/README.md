@@ -1,6 +1,6 @@
 # Sondeos de la partícula φ-DM — retirados el 2026-08-01
 
-Estos nueve scripts investigaban la partícula `m_φ = 40.70 eV` y el segundo
+Estos ocho scripts investigaban la partícula `m_φ = 40.70 eV` y el segundo
 sector φ-DM: su cota de masa, su free-streaming, su huella en KiDS, su papel en
 el cierre de Ω. **Todos ellos quedaron sin objeto** cuando la partícula se
 retiró: la resta que definía su densidad mezclaba una densidad medida con
@@ -16,7 +16,9 @@ justificada, y borrarlo dejaría la conclusión sin su prueba.
 **Por qué se archivan y no se marcan.** Seguían dentro de `src/`, que es la
 superficie viva que barre el guardián (R60), con líneas como `M_PHI = 40.70` y
 `OM_PHI = 0.14889` escritas como valores en uso — 24 sitios. Marcarlas una a
-una habría dejado nueve scripts muertos en el cajón de los vivos. `archive/`
+una habría dejado ocho scripts muertos en el cajón de los vivos. `archive/`
 es el cajón de lo retirado, y el barrido lo excluye por eso.
 
 Movidos el 2026-09-19. Ninguno era importado por código vivo (comprobado).
+
+**Uno volvió.** `prueba_rol.py` se archivó con los demás y hubo que devolverlo: no era sólo un sondeo, es el LIENZO sobre el que cuatro reglas (R47, R48, R66 y una más) inyectan su defecto de mutación. Al moverlo, esas cuatro pruebas dejaron de poder correr. Su única línea con el multiplicador retirado lleva ahora la marca de que es un control histórico.

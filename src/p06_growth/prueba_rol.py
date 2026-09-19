@@ -118,6 +118,10 @@ else:
 
 # control positivo: el canonico debe PASAR los tres tests (aunque este fuera de ventana)
 ok, mot = evalua('SOLAR', 'KRYSTOS_V')
+# El 594.28 de la linea siguiente es HISTORICO: el multiplicador quedo
+# RETIRADO con la particula el 2026-08-01. Se conserva porque es el control
+# positivo de esta prueba — el caso que TIENE que dar positivo para que el
+# resto signifique algo — y sustituirlo por otro numero invalidaria la prueba.
 print(f'\n  CONTROL POSITIVO — el canonico SOLAR²·KRYSTOS_V (M=594.28, fuera de')
 print(f'  ventana por el dato): rol {"correcto" if ok else "INCORRECTO"} — {mot}')
 print(f'  => el test no esta rechazando por capricho: acepta el linaje valido y')

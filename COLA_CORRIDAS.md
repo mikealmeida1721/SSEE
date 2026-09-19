@@ -466,7 +466,7 @@ Convención verificada: CosmoSIS reporta `loglike = −0.5·χ²`, **sin**
 |---|---|---|---|---|
 | `ssee` | **fijo** por álgebra | 9 (logA, log_T_AGN, A_scale, dz1..dz6) | 4 | 🔄 lanzada 07:17 |
 | `lcdmfijo` | clavado en Planck 2018 | 9 | 4 | 🔄 lanzada 07:18 |
-| `lcdm` | libre | 13 | 4 | ⏸ espera hueco (presupuesto 12) |
+| `lcdm` | libre | 13 | 4 | 🕓 **EN COLA con vigilante** (ver abajo) |
 
 **Aproximaciones declaradas** (no hay ninguna oculta):
 - IA: el oficial es NLA-M con 8 parámetros cuya matriz de priors vive fuera de
@@ -481,3 +481,27 @@ Convención verificada: CosmoSIS reporta `loglike = −0.5·χ²`, **sin**
 se propaga al repo: `CLAUDE.md` declara canónicos los DOS, IR 68.13 (0.17σ) y
 UV 67.962142 (residuo +4.2e-06). Para este pipeline el fondo entra con
 H₀ = 67.962, así que en la práctica coinciden.
+
+## Regla 8 (2026-09-19) — el presupuesto es de MEMORIA, no sólo de núcleos
+
+**Qué pasó.** A las 08:16:34, con `ssee` y `lcdmfijo` corriendo (8 procesos MPI,
+~1 GB cada uno), el kernel se quedó sin memoria y **mató a VS Code**. La máquina
+tiene 15 GB de RAM y sólo 2 GB de swap. VS Code se marca a sí mismo como primera
+víctima (`oom_score_adj 300`); las cadenas no, y por eso sobrevivieron. Ese día
+fue la tercera vez. La regla 4 contaba núcleos (12) y dejaba entrar una tercera
+corrida que la memoria no aguanta.
+
+**Regla:** como mucho **2 corridas MPI de 4 procesos a la vez**, y una nueva
+sólo entra con `MemAvailable ≥ 5.5 GB`.
+
+**Cómo se cumple sin depender de acordarse:** `src/p06_growth/encolar_kids_legacy_lcdm.sh`
+queda en espera (con `setsid`) y cada 5 minutos comprueba las dos condiciones;
+cuando se cumplen **las dos**, lanza `lcdm` con el lanzador de siempre. Cada
+decisión queda en `results/logs/cola_kids_legacy.log`. Encolada 2026-09-19 08:49.
+
+**Choque declarado con la regla 5** («escribir el resultado en el Registro antes
+de lanzar la siguiente»): el vigilante lanza `lcdm` en cuanto se libera un
+hueco, quizá antes de que yo escriba el resultado de la que terminó. No se pierde
+nada —la cadena terminada queda en disco—, pero su resultado se escribe en la
+sesión siguiente, no antes del lanzamiento.
+

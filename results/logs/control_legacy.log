@@ -5,9 +5,9 @@ As        : 4.222892e-09  (logA=3.743105)
 referencia: chi2 = 407.6470
 
 --- TITULAR: HMCode-2020, el MISMO modelo no lineal del oficial ---
-  logT_AGN=7.30000  chi2=  452.722  (+11.06% vs ref)  sigma8=1.05312
+  logT_AGN=7.30000  chi2=  452.721  (+11.06% vs ref)  sigma8=1.05312
   logT_AGN=7.80000  chi2=  425.847  ( +4.46% vs ref)  sigma8=1.05312
-  logT_AGN=8.00000  chi2=  415.907  ( +2.03% vs ref)  sigma8=1.05312
+  logT_AGN=8.00000  chi2=  415.906  ( +2.03% vs ref)  sigma8=1.05312
   logT_AGN=8.21185  chi2=  410.269  ( +0.64% vs ref)  sigma8=1.05312  <-- log_T_AGN OFICIAL
   logT_AGN=8.30000  chi2=  409.606  ( +0.48% vs ref)  sigma8=1.05312
 
@@ -17,9 +17,9 @@ referencia: chi2 = 407.6470
   halo_A=1.80  chi2=  406.529  ( -0.27% vs ref)  sigma8=1.05312
   halo_A=2.00  chi2=  408.577  ( +0.23% vs ref)  sigma8=1.05312
   halo_A=2.40  chi2=  418.465  ( +2.65% vs ref)  sigma8=1.05312
-  halo_A=2.80  chi2=  436.592  ( +7.10% vs ref)  sigma8=1.05312
+  halo_A=2.80  chi2=  436.591  ( +7.10% vs ref)  sigma8=1.05312
   halo_A=3.13  chi2=  458.280  (+12.42% vs ref)  sigma8=1.05312
-  halo_A=3.50  chi2=  490.495  (+20.32% vs ref)  sigma8=1.05312
+  halo_A=3.50  chi2=  490.494  (+20.32% vs ref)  sigma8=1.05312
 
 VEREDICTO  chi2 = 410.269 contra 407.647 -> +0.64%, con TODOS los ingredientes en su valor oficial y ningun libre de traduccion.
   control HMcode-2015: mas cerca en halo_A=1.5 (-0.18%) -- ahi la traduccion SI es libre, por eso no es el titular.

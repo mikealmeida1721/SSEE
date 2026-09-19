@@ -208,7 +208,7 @@ That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of th
 |---|---|---|
 | Ω_CDM | 0.160 | Active at all k |
 | ~~Ω_φDM = Ω_m,CMB − Ω_m,dyn~~ | ~~0.14889~~ | **RETRACTED 2026-08-01** — the subtraction mixed a measured density with 1+w₀, an equation-of-state number |
-| Ω_total (two-sector) = ωm/h² | 0.30889 = Ω_m,CMB | ωm-direct (OP-8 dissolved) |
+| Ω_m = ωm/h² (~~two-sector total~~ — **single sector since 2026-08-01**) | 0.308881 = Ω_m,CMB | ωm-direct (OP-8 dissolved). The value stands; only the name «total of two sectors» is retracted — there is one sector |
 | Σm_ν = R₂ × 0.9530 eV | 0.0685 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 (ν-closure C=93.14) |
 | ~~m_φ = Σm_ν × (SOLAR²·KRYSTOS_V)~~ | ~~40.70 eV~~ | **RETRACTED 2026-08-01** — the particle had nothing to be made of once the subtraction fell; also excluded by the raw shear (m_φ > 70.3 eV) |
 | α (Viel fit to particle/cold P(k) ratio) | 1.117 Mpc/h | CLASS output — not imposed |
@@ -388,8 +388,9 @@ Full development history in [CHANGELOG.md](CHANGELOG.md).
 
 **Done**
 - [x] Papers 1–10 — algebraic framework, Bayesian MCMC, CMB confrontation, algebraic
-      CMB derivation, IS causal perturbations, φ-DM two-sector, canonical EFT,
-      strong-gravity regime, Hubble-tension screening, UV completion
+      CMB derivation, IS causal perturbations, growth against raw data (Paper 6 —
+      rewritten 2026-08-01; the ~~φ-DM two-sector~~ version it replaced is retracted),
+      canonical EFT, strong-gravity regime, Hubble-tension screening, UV completion
 - [x] CLASS Boltzmann validation — MIRA necessity (RMS 1.4% vs 31.5%), σ₈, IS viscosity
 - [x] Multi-probe MCMC (corrected DESI DR2 + Planck + fσ8 + clusters, blind flat w0/wa) — SSEE algebraic point 1.31σ from joint w₀-wₐ posterior
 - [x] Bibliography brought to JCAP/PRD standard — all papers 36–42 refs, 0 orphans

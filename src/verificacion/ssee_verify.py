@@ -1627,7 +1627,7 @@ _n60 = sum(len(_v) for _v in _r60.values())
 # 10 filas que estaban ocultas —una fila retractada exoneraba a sus vecinas—
 # y se limpiaron 16. Detector MAS estricto y deuda MENOR: las dos cosas a la
 # vez, que es la senal de que lo que se limpio era real.
-_TOPE_R60 = 59
+_TOPE_R60 = 58
 _DEUDA_REAL["R60"] = _n60
 _DEUDA_MAX["R60"] = _TOPE_R60
 check("R60 la deuda del registro de retracciones no crece",

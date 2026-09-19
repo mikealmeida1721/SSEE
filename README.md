@@ -372,13 +372,19 @@ pre-registered axioms, not derived theorems — see OPEN_PROBLEMS.md and Paper 1
 
 ## 🗺️ Roadmap
 
-**Status (2026-07-10):** all 10 papers + consolidated journal documents complete and
-compile clean (0 LaTeX errors, 0 orphan bibitems, 0 undefined citations). Canonical
-φ-DM particle m_φ = 40.70 eV (forward prediction, zero fitting) with pre-registered
-free-streaming imprint k_fs = 0.754 h/Mpc (DESI Y3 / Euclid testable). Full
-hostile-referee audit closed: verification guardian fully green + figure-level
-pdftotext sweep (retired numbers purged from text AND figures). Full development
-history in [CHANGELOG.md](CHANGELOG.md).
+**Status (2026-09-19):** all 10 papers + consolidated journal documents complete and
+compile clean (0 LaTeX errors, 0 orphan bibitems, 0 undefined citations). The
+verification guardian runs 284 checks with no regressions; its own 30 self-tests and
+the 55 meta-guardian layers are green. It reports **AMBER, not green** — 18 open
+problems and 79 declared debt sites remain, and a green with debt outstanding would
+be a forced one.
+
+> The previous Status block, dated 2026-07-10, announced a canonical φ-DM particle
+> m_φ = 40.70 eV as a forward prediction. **That particle was retracted on
+> 2026-08-01** and this block was not updated with it — one of the leftovers the
+> 2026-09-19 audit found. See the retraction banner above.
+
+Full development history in [CHANGELOG.md](CHANGELOG.md).
 
 **Done**
 - [x] Papers 1–10 — algebraic framework, Bayesian MCMC, CMB confrontation, algebraic
@@ -391,10 +397,12 @@ history in [CHANGELOG.md](CHANGELOG.md).
 - [x] Paper 1 Postulates D (dimensional anchor) & S (saturation correspondence)
 - [x] Hostile-referee overclaim sweep across all 10 papers
 - [x] Zenodo v6 — Papers 1–7 archived (DOI 10.5281/zenodo.20093447)
-- [x] Canonical φ-DM particle (m_φ = 40.70 eV, forward prediction) + self-consistent
-      Hubble cascade: SH0ES 73.04 × (1 − f_screen^full = 0.069522) =
-      67.962142 km/s/Mpc, residuo +4.2e-06 vs 3(φ+π)². Con el f_screen IR
-      solo (0.067253) sale 68.13, 0.17σ — resultado parcial
+- [x] ~~Canonical φ-DM particle (m_φ = 40.70 eV, forward prediction)~~ — **RETRACTED
+      2026-08-01**. What survives is the Hubble cascade, and with its direction
+      corrected on 2026-09-06 (SH0ES is the input, the global H is the output):
+      73.04 × (1 − f_screen^full = 0.069522) = 67.962142 km/s/Mpc, residual
+      +4.2e-06 against the pure number 3(φ+π)²; with the IR f_screen alone
+      (0.067253) it gives 68.13, 0.17σ. Propagated σ = ±0.970 dominates
 - [x] Internal hostile-referee audit — guardian fully green; figure-level
       pdftotext sweep across all compiled PDFs; arXiv source tarballs (10/10)
 

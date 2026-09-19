@@ -538,6 +538,22 @@ def _presenta_como_vigente(_txt, _tokens):
         # «withdrawn» que califica al valor cae 2-3 lineas mas abajo.
         # Con +-1 daba 3 falsos positivos (P8:882, Unified:596/809),
         # todos parrafos que SI narran la retirada.
+        # PUNTO CIEGO DECLARADO (2026-09-19). La ventana exime si la marca
+        # aparece en cualquier parte de las siete lineas. Eso deja pasar un
+        # caso real: un parrafo que afirma algo retirado, con la palabra
+        # «retired» tres lineas mas abajo usada para OTRA cosa («retired
+        # numbers purged from text AND figures»). Paso en el README.
+        #
+        # Se intento acotar por CERCANIA y no sirve: medido, el falso positivo
+        # tenia su marca a 162 caracteres y dos retractaciones legitimas de los
+        # papers a 180 y 199. Tampoco sirve exigir la misma frase: en los dos
+        # casos legitimos el «withdrawn»/«retracted» va en la frase SIGUIENTE,
+        # igual que en el falso. La distincion es de referente, no de forma, y
+        # una regla textual no la ve.
+        #
+        # Asi que se declara y se mide en vez de fingir que no existe: el
+        # trinquete de deuda es el que vigila que esto no crezca, y la lectura
+        # a ojo de los .md de cara al lector sigue siendo necesaria.
         _vent = " ".join(_lns[max(0, _i - 3):_i + 4]).lower()
         if any(_e.lower() in _vent for _e in _EXENTO_RETR):
             continue

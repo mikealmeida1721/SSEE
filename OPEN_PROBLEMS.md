@@ -2892,3 +2892,27 @@ predicción de Paper 7, así que una medida discrimina.
 
 **Severidad: Media.** No mueve un número publicado, pero es el eslabón que sostiene la
 predicción propia del sector.
+
+
+---
+
+## OP-26 — fσ₈ contra el dato crudo de BOSS sigue sin medirse — 🟠 ABIERTO (2026-09-19)
+
+**De dónde viene.** Era el último punto vivo de la Fase B del reframe ω_m-directo. Los otros
+tres se cerraron y tienen log: r_d = 147.174 Mpc (0.32σ) con Ω_m = 0.308881
+(`p3_rd_reframe_omega_m.log`), el posterior H₀ = 67.787 ± 0.353 bajo prior H_alg
+(`mcmc_paper2_reframe.log`) y el control metodológico ΛCDM R4
+(`growth_2026-07/R4_lcdm_kids_S8.json`). Éste no.
+
+**Lo que falta.** R1/R2 con LPT (velocileptors, k ≤ 0.20, 222 puntos) contra el dato crudo.
+El barrido Kaiser del 2026-08-08 **fue un sondeo, no un resultado**: midió que Δχ² depende
+del corte (de +0.8 a −11.3 entre k = 0.06 y 0.12), y de ahí se sigue que Kaiser no publica.
+
+**Por qué importa.** Paper 6 tiene su fila de S₈ cerrada contra KiDS crudo (0.11σ) y la de
+fσ₈ vacía. Mientras siga vacía, el sector de crecimiento está medido a medias.
+
+**Criterio de cierre.** Una corrida R1/R2 con LPT y su control del otro lado, o la
+constatación medida de que el dato crudo no discrimina a las escalas accesibles.
+
+**Severidad: Media-Alta.** No invalida ningún número publicado, pero es la mitad que falta
+del titular de Paper 6.

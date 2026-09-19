@@ -95,6 +95,7 @@ def check(name, ok, detail=""):
 opens = []
 sin_resolver = []      # fisica declarada con ficha viva: informa, no pinta
 pendientes = []        # tareas terminables: pintan ambar hasta que se acaben
+archivados = []        # registro que se conserva: informa, no pinta
 
 
 # ── SIN RESOLVER NO ES LO MISMO QUE PENDIENTE (2026-09-19, lo dijo Mike) ─────
@@ -169,6 +170,29 @@ def _fichas_op():
 _FICHAS_OP = _fichas_op()
 _COLOR_SEV = {"alta": "\U0001f534", "media-alta": "\U0001f7e0",
               "media": "\U0001f7e1", "baja": "\U0001f7e2"}
+
+
+def track_archivo(name, detail="", declarados=(), fuente=()):
+    """Registro de algo que NO se arregla porque no hay nada que arreglar: un
+    log de una corrida ya hecha que imprimio un valor que despues se retiro.
+    Reescribirlo seria falsificar el registro; borrarlo, perderlo.
+
+    Informa y NO pinta — pero con el mismo candado que las fichas OP: solo
+    cuenta como archivo si CADA elemento esta declarado en su fuente (la
+    seccion `historicos:` de PROPAGACION.yaml). Lo que no este declarado cae
+    en PENDIENTE y pinta, para que no se pueda archivar algo por el
+    procedimiento de llamarlo archivo.
+    """
+    global checks
+    checks += 1
+    _sin = [_d for _d in declarados if _d not in set(fuente)]
+    if _sin or not declarados:
+        print(f"  [PENDIENTE] {name}" + (f"  — {detail}" if detail else ""))
+        pendientes.append(name + (f" (sin declarar: {', '.join(_sin)})" if _sin else ""))
+    else:
+        print(f"  [ARCHIVO] {name}" + (f"  — {detail}" if detail else ""))
+        archivados.append(name)
+    opens.append(name)
 
 
 def track_open(name, detail="", op=None):
@@ -929,17 +953,23 @@ check("V-L3-2sec  [RETIRADO] la resta Om_m,CMB - 0.160 no era fisica",
 # mecanismo g²·v adoptado; OP-17 cerrado; C_ν=93.14 unificada 2026-07-10).
 # Los siguientes valores DEPENDEN de esos inputs; algunos checks pueden mostrar
 # numeros viejos hasta correr cada codigo. NO se actualizan hasta recomputar:
-track_open("REFRAME-FaseB  dependientes pendientes de recompute con canonicos nuevos",
-           "HECHO: (a) cascada Hubble en direccion canonica (SH0ES ENTRA, H_global SALE, "
-           "2026-09-06): IR = 73.04x(1-f) = 68.13 (0.17sigma vs 3(phi+pi)^2=67.96214), "
-           "UV = 67.962142 (residuo +4.2e-06; sigma propagado +-0.970 lo domina) (P9/P10). (b) CMB chi2=1003.586, Delta-BIC=-26.21 (SSEE favorecido) "
-           "omega_m-directo @ H=67.962 (P3, plik_lite). (c) P6 REESCRITO 2026-08-01: "
-           "un solo sector, MCMC R3 sobre KiDS crudo con A_s libre da "
-           "S8=0.7555+-0.0192 (0.11sigma). m_phi=40.70, Om_phiDM=0.14888, k_fs=0.754, "
-           "alpha=1.117 y sigma8_two=0.7470 quedan TODOS RETIRADOS. "
-           "(d) fsigma8 contra BOSS crudo: PENDIENTE (R1/R2). PENDIENTE aun: (1) r_d "
-           "con Om_m=0.30888 (P3); (2) posterior MCMC con prior H_alg (P2); "
-           "(3) control metodologico LCDM (R4)")
+# FASE B DEL REFRAME — CERRADA salvo fsigma8 (2026-09-19). Los tres recomputes
+# que quedaban se verificaron contra su LOG, no contra la memoria:
+#   (1) r_d = 147.174 Mpc (0.32sigma) con Om_m=0.308881, theta*=0.59667
+#       -> results/logs/p3_rd_reframe_omega_m.log
+#   (2) H0 = 67.787 +- 0.353 bajo prior H_alg 67.962
+#       -> results/logs/mcmc_paper2_reframe.log
+#   (3) control metodologico LCDM R4, S8=0.7571+-0.0194
+#       -> results/logs/growth_2026-07/R4_lcdm_kids_S8.json
+# El texto de este track llevaba desde julio diciendo que estaban pendientes.
+# Lo unico que sigue vivo es fsigma8 contra BOSS crudo, y eso no es una tarea
+# de higiene: es una corrida de investigacion. Tiene ficha propia, OP-26.
+track_open("REFRAME-FaseB  fsigma8 contra BOSS crudo, lo ultimo que falta de la Fase B",
+           "los otros tres recomputes CERRADOS y verificados contra su log: "
+           "r_d=147.174 (0.32sigma) @ Om_m=0.308881 · H0=67.787+-0.353 bajo prior "
+           "H_alg · control LCDM R4 S8=0.7571+-0.0194. Queda R1/R2 con LPT "
+           "(velocileptors, k<=0.20, 222 pts); el barrido Kaiser fue sondeo",
+           op="OP-26")
 
 # EFT canónico (P7) — los parámetros lambda, alpha_pot, V0 son consecuencias
 # algebraicas de constantes ya verificadas (Om_m,dyn, KAL0, Om_DE).
@@ -2578,8 +2608,11 @@ try:
           else f"{len(list(_logdir.glob('*.log')))} logs barridos, "
                f"{len(_hist)} históricos declarados")
     if _hist:
-        track_open(f"R33 {len(_hist)} logs históricos con constante retirada",
-                   "; ".join(_hist) + "  (declarados en _LOGS_HISTORICOS)")
+        track_archivo(f"R33 {len(_hist)} logs históricos con constante retirada",
+                      "; ".join(_hist) + "  (conservados: reescribirlos "
+                      "falsificaria el registro de una corrida ya hecha)",
+                      declarados=[_h.split(":")[0] for _h in _hist],
+                      fuente=_LOGS_HISTORICOS)
 except Exception as e:
     check("R33 capa logs-vs-núcleo operable", False, str(e))
 
@@ -3191,8 +3224,26 @@ try:
                     _s44b = f"{_v44b:.{_d44b}f}"
                     if abs(float(_s44b) - _v44b) < 5e-7:
                         continue          # ya esta a precision suficiente
-                    if _re.search(r"&\s*\$?" + _re.escape(_s44b) + r"\$?\s*(&|\\\\)",
-                                  _ln44):
+                    _m44 = _re.search(r"&\s*\$?" + _re.escape(_s44b) + r"\$?\s*(&|\\\\)",
+                                      _ln44)
+                    if _m44:
+                        # UNA CIFRA QUE SE DECLARA APROXIMADA NO ES FALSA
+                        # PRECISION (2026-09-19). R44b nacio contra el numero
+                        # truncado que se presenta como si fuera exacto. Pero
+                        # «$\Omega$ & $\varphi+\pi$ & $4.75963\ldots$» y
+                        # «AURA ($\varphi+\beta\approx3.998$)» estan diciendo
+                        # con todas sus letras que ahi va un truncamiento — y el
+                        # detector los contaba igual. Es el mismo defecto que en
+                        # los .md: una marca que el detector no sabe leer.
+                        # Se exime SOLO si la marca esta en la MISMA CELDA que
+                        # la cifra, no en cualquier parte de la fila (una celda
+                        # vecina con \approx no dice nada de esta).
+                        _ini44 = _ln44.rfind("&", 0, _m44.start() + 1) + 1
+                        _fin44 = _m44.end()
+                        _celda44 = _ln44[_ini44:_fin44]
+                        if _re.search(r"\\approx|\\ldots|\\dots|\\sim|\u2248|\u2026",
+                                      _celda44):
+                            break
                         _r44b.append(f"{_tx44b.stem}: {_k44b}={_s44b} "
                                      f"(vale {_v44b:.6f})")
                         break

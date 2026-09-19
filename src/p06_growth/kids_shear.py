@@ -23,14 +23,45 @@ from scipy.interpolate import InterpolatedUnivariateSpline as IUS
 from scipy.special import jv
 import camb
 
-DATA = ('/mnt/datos/SSEE_data/kids1000/KiDS1000_cosmis_shear_data_release/'
-        'data_fits/xipm_KIDS1000_BlindC_with_m_bias_V1.0.0A_ugriZYJHKs_photoz_'
-        'SG_mask_LF_svn_309c_2Dbins_v2_goldclasses_Flag_SOM_Fid.fits')
+DATA_K1000 = ('/mnt/datos/SSEE_data/kids1000/KiDS1000_cosmis_shear_data_release/'
+              'data_fits/xipm_KIDS1000_BlindC_with_m_bias_V1.0.0A_ugriZYJHKs_photoz_'
+              'SG_mask_LF_svn_309c_2Dbins_v2_goldclasses_Flag_SOM_Fid.fits')
+DATA_LEGACY = ('/mnt/datos/SSEE_data/kids_legacy/'
+               'KiDS_Legacy_cosmic_shear_data_release/data/KiDS_Legacy_xipm.fits')
 
+# ---------------------------------------------------------------- datasets
+# Un solo evaluador de fisica, dos conjuntos de datos. Los cortes de xi+/xi-
+# y el numero de bins tomograficos salen del .ini fiducial de cada release:
+#   KiDS-1000  K1K_CorrelationFunctions.data      -> 5 bins, xi+ 0.5', xi- 4'
+#   KiDS-Legacy chains_and_config_files/xipm/     -> 6 bins, xi+ 2.0', xi- 4'
+#               KiDS_Legacy_xipm_pipeline.ini [scale_cuts]
+_DATASETS = {
+    'k1000':  dict(DATA=DATA_K1000,  NZBINS=5, KEEP_XIP=(0.5, 300.0),
+                   KEEP_XIM=(4.0, 300.0)),
+    'legacy': dict(DATA=DATA_LEGACY, NZBINS=6, KEEP_XIP=(2.0, 300.0),
+                   KEEP_XIM=(4.0, 300.0)),
+}
+
+DATA = DATA_K1000
 NZBINS = 5
 # cortes de escala del analisis fiducial (K1K_CorrelationFunctions.data)
 KEEP_XIP = (0.5, 300.0)
 KEEP_XIM = (4.0, 300.0)
+
+
+def set_dataset(nombre):
+    """Conmuta el release de cizalla. Por defecto queda KiDS-1000, de modo
+    que todo script que ya importaba este modulo no cambia de comportamiento.
+    Devuelve la configuracion aplicada para que quede escrita en el log."""
+    if nombre not in _DATASETS:
+        raise ValueError(f'dataset desconocido: {nombre!r}; '
+                         f'validos {sorted(_DATASETS)}')
+    globals().update(_DATASETS[nombre])
+    globals()['DATASET'] = nombre
+    return dict(_DATASETS[nombre], DATASET=nombre)
+
+
+DATASET = 'k1000'
 # NLA: C1 * rho_crit en unidades de h^2 Msol/Mpc^3 -> adimensional (Bridle & King)
 C1_RHOCRIT = 0.0134
 
@@ -87,7 +118,7 @@ def shift_nz(z, nofz, deltaz):
 
 def run_camb(omch2, ombh2, h0, ns, As, mnu=0.06, w=-1.0, wa=0.0,
              halo_A=2.6, zmax=6.0, kmax=20.0, nz_pk=100,
-             dneff=0.0, meffsterile=0.0):
+             dneff=0.0, meffsterile=0.0, logT_AGN=None):
     """P(k,z) no lineal con HMcode-2015 en la variante de 1 parametro de KiDS:
        c_min = halo_A ; eta_0 = 0.98 - 0.12*c_min  (Mead+2015 ec.30, valores KiDS).
 
@@ -110,9 +141,19 @@ def run_camb(omch2, ombh2, h0, ns, As, mnu=0.06, w=-1.0, wa=0.0,
     zs = np.linspace(0.0, zmax, nz_pk)[::-1]
     p.set_matter_power(redshifts=zs, kmax=kmax, nonlinear=True)
     p.NonLinearModel = camb.nonlinear.Halofit()
-    p.NonLinearModel.set_params(halofit_version='mead2015',
-                                HMCode_A_baryon=halo_A,
-                                HMCode_eta_baryon=0.98 - 0.12 * halo_A)
+    if logT_AGN is None:
+        # HMcode-2015, variante de 1 parametro de KiDS-1000:
+        #   c_min = halo_A ; eta_0 = 0.98 - 0.12*c_min (Mead+2015 ec.30)
+        p.NonLinearModel.set_params(halofit_version='mead2015',
+                                    HMCode_A_baryon=halo_A,
+                                    HMCode_eta_baryon=0.98 - 0.12 * halo_A)
+    else:
+        # HMCode-2020 con retroalimentacion, parametrizada por log10(T_AGN/K).
+        # Es el MISMO modelo no lineal del pipeline fiducial de KiDS-Legacy
+        # (alli servido por el emulador CosmoPower entrenado sobre CAMB), asi
+        # que con esta rama no hay traduccion que declarar: es el de ellos.
+        p.NonLinearModel.set_params(halofit_version='mead2020_feedback',
+                                    HMCode_logT_AGN=logT_AGN)
     r = camb.get_results(p)
     kh, z_pk, pk = r.get_matter_power_spectrum(minkh=1e-4, maxkh=kmax, npoints=400)
     # crecimiento D(z)/D(0) desde el P(k) LINEAL a k grande (escala segura)
@@ -164,9 +205,20 @@ def cl_shear(D, res, pars, kh, z_pk, pk, growth, A_IA, deltaz, nell=60,
 
     # factor de alineamiento intrinseco NLA (Bridle & King 2007):
     #   F(z) = -A_IA * C1*rho_crit * Om / D(z),  D normalizado a D(0)=1
+    # A_IA puede ser un escalar (NLA clasico, un solo amplitud para todos los
+    # bines) o un vector de NZBINS amplitudes. Lo segundo es como se comporta
+    # el modelo NLA-M de KiDS-Legacy una vez evaluado: su amplitud efectiva por
+    # bin es A * f_r,i * (M_i/M_piv)^beta, distinta en cada bin tomografico.
     zg, Dg = growth
     Dz_spl = IUS(zg, Dg, k=3)
-    F_IA = -A_IA * C1_RHOCRIT * Om / np.maximum(Dz_spl(z), 1e-6)
+    _base = -C1_RHOCRIT * Om / np.maximum(Dz_spl(z), 1e-6)
+    _A = np.atleast_1d(np.asarray(A_IA, float))
+    if _A.size == 1:
+        _A = np.repeat(_A, NZBINS)
+    elif _A.size != NZBINS:
+        raise ValueError(f'A_IA debe ser escalar o vector de {NZBINS}; '
+                         f'llego de tamano {_A.size}')
+    F_IA = _A[:, None] * _base[None, :]          # (NZBINS, nz)
 
     ells = np.logspace(np.log10(ell_min), np.log10(ell_max), nell)
     npair = NZBINS * (NZBINS + 1) // 2
@@ -187,8 +239,8 @@ def cl_shear(D, res, pars, kh, z_pk, pk, growth, A_IA, deltaz, nell=60,
         for i in range(NZBINS):
             for j in range(i, NZBINS):
                 # GG + GI + IG + II con el kernel NLA
-                W_i = q[i] + F_IA * n_chi_all[i]
-                W_j = q[j] + F_IA * n_chi_all[j]
+                W_i = q[i] + F_IA[i] * n_chi_all[i]
+                W_j = q[j] + F_IA[j] * n_chi_all[j]
                 integ = W_i * W_j / np.maximum(chi, 1e-3)**2 * Pk
                 Cl[idx[(i + 1, j + 1)], a] = simpson(integ[good], x=chi[good])
     return ells, Cl, idx

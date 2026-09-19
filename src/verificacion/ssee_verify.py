@@ -1712,30 +1712,152 @@ check("R65 los numeros de un script coinciden con el log que declara como fuente
       else "todo script con `FUENTE: results/logs/...` escribe numeros que "
            "estan en ese log (cazado 2026-09-08: fig8 llevaba 45 dias con los "
            "MAP de una cadena superada por el fix R25)")
-# EL PUNTO CIEGO DE R65, MEDIDO Y DECLARADO (2026-09-08). La regla solo ve
-# los ficheros que declaran `FUENTE:`. Un script que no lo declare es
-# invisible para ella — se evade por OMISION, que es la misma clase de hueco
-# que acaba de cerrarse. Medido hoy: 2 scripts declaran su fuente y 80 no,
-# con 575 numeros de 4+ decimales escritos a mano. La mayoria son legitimos
-# (constantes fisicas, rejillas, priors), y no se puede separar barato el
-# "reteclado de una corrida" del coincidente: el subconjunto que ademas vive
-# en algun log son 213 numeros en 59 scripts, y ahi dentro hay ruido como
-# 0.3000. Una alarma de 213 entradas se ignora — la leccion esta escrita en
-# R35. Asi que NO se convierte en un check ruidoso: se declara como deuda
-# VISIBLE, que baja sola segun cada script vaya declarando su fuente al
-# tocarlo. Lo que no se puede es dejarla invisible.
-_R65_NDECL = sum(
-    1 for _q in sorted(ROOT.rglob("*.py"))
-    if "archive" not in str(_q) and _q.name != "ssee_verify.py"
-    and "FUENTE: results/logs/" not in _q.read_text(errors="ignore")
-    and _R65_NUM.search("\n".join(
-        _l for _l in _q.read_text(errors="ignore").split("\n")
-        if not _l.lstrip().startswith("#"))))
-track_open(f"R65 {_R65_NDECL} scripts con numeros a mano sin declarar su log",
-           "R65 solo ve los que declaran `FUENTE: results/logs/...`; el resto "
-           "se le escapa por omision. Baja al declarar la fuente en cada "
-           "script cuando se toque. Medido 2026-09-08: 80 sin declarar, "
-           "2 declarados")
+# R65 CRECE (2026-09-19): de «¿declara su log?» a «¿de donde sale CADA numero?».
+#
+# La version anterior contaba scripts que no escribian `FUENTE:` y lo dejaba
+# como deuda: «77 scripts sin declarar su log». Medido ese dia, la cuenta
+# mezclaba cosas que no tienen nada que ver entre si. De 542 numeros:
+#   263 reproducen un valor del NUCLEO (algebra tecleada a mano),
+#   132 estan en algun log, 18 en data/, 16 junto a una cita, 3 constantes
+#   fisicas, y 110 sin origen a la vista.
+# Y `FUENTE:` significa «mis numeros SALEN de este log»: para el script que
+# PRODUCE su log, o cuyos numeros son algebra o literatura, escribirlo seria
+# falso. La deuda solo se podia cerrar mintiendo. Lo dijo Mike: «no es
+# mentir, es sacarle de donde viene».
+#
+# Asi que ahora se RASTREA cada numero, y cada tipo de origen tiene su control:
+#   algebra   el numero reproduce un float del nucleo a la precision escrita
+#             (o esta en CANONICAL_VALUES.yaml). Una errata en un comentario
+#             —«KRYSTOS 9.51926» cuando phi+pi+Omega = 9.519173— NO pasa.
+#   ORIGEN:   `# ORIGEN: <ruta>` en el script declara un archivo (del repo o
+#             del HDD, p. ej. la cadena oficial de KiDS); el numero debe
+#             ESTAR dentro. Si el disco no esta montado, se informa aparte.
+#   log       aparece en un log de results/, con 5+ cifras significativas
+#             (con menos, la coincidencia es demasiado facil: 0.3000).
+#   datos     aparece en data/.
+#   cita      la propia linea cita de donde sale (arXiv, et al, Planck, …).
+#   ORIGEN-VALOR  `# ORIGEN-VALOR: <numero> — <razon>`: el numero no se puede
+#             rastrear (una rejilla, una tolerancia, un dato sintetico de un
+#             test) y se dice POR QUE, por escrito y a la vista. Razon de 10+
+#             caracteres; no se verifica el contenido, se exige que exista.
+# Lo que no encuentra origen por ninguna via es PENDIENTE, numero a numero.
+_ORIGEN65 = re.compile(r"#\s*ORIGEN:\s*(\S+)")
+_ORIGEN_VALOR65 = re.compile(r"#\s*ORIGEN-VALOR:\s*(\d+\.\d+)\s*(?:—|--|-)\s*(\S.{9,})")
+_CITA65 = re.compile(
+    r"arxiv|et al|doi|planck|desi|kids|sh0es|riess|asgari|\bboss\b|eboss|"
+    r"pantheon|freedman|mangano|mead|bridle|\bpdg\b|codata|cobe|firas|"
+    r"hildebrandt|heymans|aghanim|wright|\b(?:19|20)\d\d\b", re.I)
+_FLOATS65 = sorted({abs(float(_v)) for _k, _v in vars(_core63).items()
+                    if isinstance(_v, float) and _v == _v and abs(_v) < 1e12}) \
+    if _ERR_CORE is None else []
+_CANON65 = (ROOT.parent / "CANONICAL_VALUES.yaml").read_text(errors="ignore")
+
+
+def _r65_es_algebra(_x, _floats, _canon):
+    if _x in _canon:
+        return True
+    _d = len(_x.split(".")[1])
+    _v = float(_x)
+    _tol = 10.0 ** -_d                 # redondeo o truncado a lo escrito
+    return any(abs(_a - _v) < _tol for _a in _floats)
+
+
+def _r65_origen(_txt, _leer, _floats, _canon, _logs, _datos):
+    """Numeros de 4+ decimales del codigo sin origen hallado.
+    Devuelve (sin_origen, rutas_declaradas_ilegibles)."""
+    _valores = {m.group(1) for m in _ORIGEN_VALOR65.finditer(_txt)}
+    _decl, _ilegibles = "", []
+    for _m in _ORIGEN65.finditer(_txt):
+        _t = _leer(_m.group(1))
+        if _t is None:
+            _ilegibles.append(_m.group(1))
+        else:
+            _decl += _t
+    _sin = []
+    for _l in _txt.split("\n"):
+        if _l.lstrip().startswith("#"):
+            continue
+        for _x in _R65_NUM.findall(_l):
+            if (_x in _valores
+                    or _r65_es_algebra(_x, _floats, _canon)
+                    or (_decl and _x in _decl)
+                    # cifras SIGNIFICATIVAS: sin ceros a ninguno de los dos
+                    # lados. «0.30000» tiene una sola, no cinco.
+                    or (len(_x.replace(".", "").strip("0")) >= 5 and _x in _logs)
+                    or _x in _datos
+                    or _CITA65.search(_l)):
+                continue
+            if _x not in {_y for _y, _ in _sin}:      # numeros DISTINTOS
+                _sin.append((_x, _l.strip()[:60]))
+    return _sin, _ilegibles
+
+
+def _leer65(_r):
+    _p = pathlib.Path(_r) if _r.startswith("/") else ROOT.parent / _r
+    try:
+        if _p.is_file() and _p.stat().st_size < 120_000_000:
+            return _p.read_text(errors="ignore")
+    except OSError:
+        pass
+    return None
+
+
+_LOGS65 = ""
+for _q in sorted((ROOT.parent / "results").rglob("*")):
+    if _q.is_file() and _q.suffix in (".log", ".json", ".txt", ".csv", ".dat"):
+        _LOGS65 += _q.read_text(errors="ignore")[:3_000_000]
+_DATOS65 = ""
+for _q in sorted((ROOT.parent / "data").rglob("*")):
+    if _q.is_file() and _q.stat().st_size < 20_000_000:
+        try:
+            _DATOS65 += _q.read_text(errors="ignore")
+        except OSError:
+            pass
+_sin65, _ileg65 = {}, {}
+for _q in sorted(ROOT.rglob("*.py")):
+    if "archive" in str(_q) or _q.name == "ssee_verify.py":
+        continue
+    _s, _il = _r65_origen(_q.read_text(errors="ignore"), _leer65,
+                          _FLOATS65, _CANON65, _LOGS65, _DATOS65)
+    if _s:
+        _sin65[str(_q.relative_to(ROOT))] = _s
+    if _il:
+        _ileg65[str(_q.relative_to(ROOT))] = _il
+_n65 = sum(len(_v) for _v in _sin65.values())
+if _n65:
+    _may65 = sorted(_sin65.items(), key=lambda kv: -len(kv[1]))[:4]
+    track_open(f"R65 {_n65} numeros sin origen en {len(_sin65)} scripts",
+               "; ".join(f"{k} ({len(v)}: {v[0][0]})" for k, v in _may65)
+               + " — rastrear cada uno: algebra, `# ORIGEN: <ruta>`, log, "
+                 "cita en la linea o `# ORIGEN-VALOR: <n> — <razon>`")
+if _ileg65:
+    print(f"  [INFO] R65 origenes declarados que no se pudieron leer (disco "
+          f"sin montar o ruta rota): {_ileg65}")
+
+# CONTROL (R53): cada via de origen, en las dos direcciones. Sin datos reales:
+# nucleo, logs y archivos simulados.
+_fl65 = [0.839950, 9.519173, 67.962137]
+_arch65 = {"/mnt/x/cadena.txt": "row 0.095019 0.0191914 0.769441\n"}
+_c65b = [
+    ("w0 = 0.839950", False),                     # algebra exacta
+    ("Kv = 9.51926  # KRYSTOS", True),            # errata: no reproduce 9.519173
+    ("# ORIGEN: /mnt/x/cadena.txt\nomch2 = 0.095019", False),
+    ("# ORIGEN: /mnt/x/cadena.txt\nomch2 = 0.095020", True),   # no esta dentro
+    ("# ORIGEN-VALOR: 0.0008 — ancho de la rejilla en w_c\npaso = 0.0008", False),
+    ("# ORIGEN-VALOR: 0.0008 — x\npaso = 0.0008", True),       # razon vacia
+    ("theta = 1.04110  # Planck 2018, arXiv:1807.06209", False),
+    ("x = 0.30000", True),                         # 1 cifra: el log no basta
+    ("y = 0.74467", False),                        # 5 cifras y esta en el log
+]
+_f65b = [t[:40] for t, esp in _c65b
+         if bool(_r65_origen(t, _arch65.get, _fl65, "", "0.30000 0.74467", "")[0])
+         != esp]
+check("R65 el rastreador distingue origen hallado de numero sin origen",
+      not _f65b,
+      "9 casos: algebra exacta, archivo declarado, razon escrita, cita y log de "
+      "5 cifras dan origen; la errata de algebra, el numero ausente del "
+      "archivo declarado, la razon vacia y el 0.30000 que solo coincide con "
+      "un log, NO" if not _f65b else f"casos mal clasificados: {_f65b}")
 
 # CONTROL (R53): marca el numero ausente, deja pasar el presente y el que no
 # declara fuente. Log simulado, sin tocar disco.

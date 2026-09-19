@@ -93,18 +93,108 @@ def check(name, ok, detail=""):
 
 
 opens = []
+sin_resolver = []      # fisica declarada con ficha viva: informa, no pinta
+pendientes = []        # tareas terminables: pintan ambar hasta que se acaben
 
 
-def track_open(name, detail=""):
-    """Problema abierto, conocido y documentado en VERIFICATION_LEDGER.md.
+# ── SIN RESOLVER NO ES LO MISMO QUE PENDIENTE (2026-09-19, lo dijo Mike) ─────
+#
+# «Las de OP no cuentan, porque esas ya se marcan de manera individual segun su
+#  importancia. Si no, toda la vida se vera ambar porque el modelo cosmologico
+#  no pudo encontrar H desde primeros principios. Los OP estan ahi para que yo y
+#  cualquiera que vea el trabajo sepa que es lo que esta SIN RESOLVER — no sin
+#  duda, sino sin resolver. Lo que esta en duda son cosas de "no se si esto va
+#  aqui o alla".»
+#
+# Tenia razon y el defecto era de diseno mio. `track_open` se estaba usando para
+# DOS cosas que no se parecen:
+#
+#   · fisica SIN RESOLVER — omega_b sin cadena BBN, MIRA sin mecanismo, el
+#     sector geometrico que no se agrupa. Tiene ficha propia en
+#     OPEN_PROBLEMS.md, con severidad, y su honestidad es que este declarada.
+#     Puede no cerrarse nunca, y eso NO es un defecto del repositorio.
+#   · tareas PENDIENTES — figuras rancias, logs sin fuente declarada, falta
+#     `pdftotext`. Terminables, y mientras esten sin terminar el repositorio no
+#     esta en orden.
+#
+# Mezcladas, el semaforo quedaba clavado en ambar para siempre y dejaba de
+# informar: no distinguia «faltan 12 figuras por regenerar» de «nadie ha
+# derivado H desde primeros principios». Ahora SOLO lo pendiente pinta.
+#
+# EL CONTROL, que es lo que impide que esto reabra el agujero del VERDE FORZADO
+# (2026-09-07): un abierto solo cuenta como SIN RESOLVER si declara un `op=` con
+# ficha VIVA y severidad legible en OPEN_PROBLEMS.md. Sin ficha, con ficha ya
+# cerrada o sin severidad declarada, cae en PENDIENTE y pinta. O sea: no se
+# puede esconder una tarea llamandola «problema abierto» — hay que abrirle
+# ficha, ponerle severidad y firmarla en el documento que lee cualquiera.
+_OPEN_PROBLEMS = ROOT.parent / "OPEN_PROBLEMS.md"
+_SEV_MAPA = {"alta": "alta", "high": "alta", "media-alta": "media-alta",
+             "medium-high": "media-alta", "media": "media", "medium": "media",
+             "baja": "baja", "low": "baja"}
 
-    No es una regresión: se lista en CADA corrida para no olvidarlo nunca,
-    pero no pone el guardián en rojo. Sale del registro de abiertos solo
-    cuando una derivación real lo resuelve y se actualiza el Registro.
+
+def _fichas_op():
+    """{OP-N: (estado, severidad)} leido de OPEN_PROBLEMS.md.
+
+    Dos detalles que costaron una pasada y por eso van escritos:
+      · «PARCIALMENTE RESUELTO» contiene «resuelto» pero NO esta cerrado. Lo
+        parcial manda sobre lo resuelto.
+      · la severidad aparece en dos formatos, «**Severity:** X» y
+        «**Severidad: X**» (los dos puntos dentro de los asteriscos). Leyendo
+        solo el primero, OP-16 heredaba por error la severidad de otra ficha.
+    """
+    try:
+        _t = _OPEN_PROBLEMS.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return {}
+    _cabs = [(_m.start(), _m.group(1), _m.group(0))
+             for _m in re.finditer(r"^## (OP-\d+b?)[^\n]*", _t, re.M)]
+    _out = {}
+    for _k, (_pos, _op, _cab) in enumerate(_cabs):
+        _fin = _cabs[_k + 1][0] if _k + 1 < len(_cabs) else len(_t)
+        _cuerpo = _t[_pos:_fin]
+        _m = re.search(r"\*\*Sever(?:ity|idad)[^:*]*:\*{0,2}\s*\*{0,2}"
+                       r"([A-Za-zÁÉÍÓÚáéíóúñ\- ]{2,20})", _cuerpo)
+        _crudo = (_m.group(1).strip().lower().rstrip(".").strip() if _m else "")
+        _sev = _SEV_MAPA.get(_crudo) or _SEV_MAPA.get(_crudo.split()[0] if _crudo else "", "")
+        _cl = _cab.lower()
+        _abierto = ("parcial" in _cl or "abierto" in _cl or
+                    not any(_c in _cl for _c in ("resuelto", "resolved", "disuelto",
+                                                 "dissolved", "cerrado", "closed",
+                                                 "retirada")))
+        _out[_op] = ("abierto" if _abierto else "cerrado", _sev)
+    return _out
+
+
+_FICHAS_OP = _fichas_op()
+_COLOR_SEV = {"alta": "\U0001f534", "media-alta": "\U0001f7e0",
+              "media": "\U0001f7e1", "baja": "\U0001f7e2"}
+
+
+def track_open(name, detail="", op=None):
+    """Registra algo que no esta hecho. Adonde va lo decide su ficha:
+
+      op="OP-N" con ficha VIVA y severidad  → SIN RESOLVER (informa, no pinta)
+      todo lo demas                          → PENDIENTE (pinta ambar)
+
+    No es una regresion en ningun caso: se lista en CADA corrida para no
+    olvidarlo nunca, y no pone el guardian en rojo.
     """
     global checks
     checks += 1
-    print(f"  [ABIERTO] {name}" + (f"  — {detail}" if detail else ""))
+    _est, _sev = _FICHAS_OP.get(op or "", ("", ""))
+    _vale = bool(op) and _est == "abierto" and bool(_sev)
+    if _vale:
+        _marca = f"[SIN RESOLVER {_COLOR_SEV.get(_sev, '')} {op} {_sev}]"
+        sin_resolver.append((op, _sev, name))
+    else:
+        _porque = ("" if not op else
+                   f" (ficha {op} " +
+                   ("no existe" if op not in _FICHAS_OP else
+                    "cerrada" if _est == "cerrado" else "sin severidad") + ")")
+        _marca = "[PENDIENTE]"
+        pendientes.append(name + _porque)
+    print(f"  {_marca} {name}" + (f"  — {detail}" if detail else ""))
     opens.append(name)
 
 
@@ -312,7 +402,8 @@ check("L2 identidad  f_screen = s_K/(3*MIRA) = (pi-phi)/Om^2",
 
 # Problemas ABIERTOS detectados en Capa 2 — comprobación dimensional.
 track_open("V-L2-06 H0^alg dimensional",
-           "3*Omega^2 es adimensional; H0 tiene unidades km/s/Mpc (Postulado D)")
+           "3*Omega^2 es adimensional; H0 tiene unidades km/s/Mpc (Postulado D)",
+           op="OP-7")
 # V-L2-10: la fórmula CANÓNICA (forward-prediction 40.70 eV SOLAR²·KRYSTOS) es dimensionalmente
 # consistente — [eV]*(número puro) = [eV]. El antiguo ansatz Sigma_m_nu*H0^alg
 # (5.60 eV) está retirado. Lo abierto es el Lagrangiano φ-DM (OP-9), no la dimensión.
@@ -349,7 +440,8 @@ check(f"R32 unicidad N_*: solo m=2,n=7 da n_s y r potencia pura de phi en [50,60
       f"{len(_cands)} candidatos m·phi^n en ventana, puros: {_puros}")
 
 track_open("V-L3-OP2  N_* = 2phi^7",
-           "Conjecture B.1 no derivada; falta el puente de reheating gravitacional")
+           "Conjecture B.1 no derivada; falta el puente de reheating gravitacional",
+           op="OP-2b")
 
 # OP-7 — la dualidad Z2 es álgebra exacta y se queda. Lo que NO se queda es el
 # acoplamiento que decía explicar: beta_c = -AURA quedó RETIRADO el 2026-09-06
@@ -390,7 +482,8 @@ check("V-L3-alpha  curvatura Kahler R = -2/(3 alpha) = -2 phi^-4",
 dim_rkm = (1 - 1 - 2) / 3   # dimensión GeV de r_km según la fórmula de P8
 track_open("V-L3-OP4  formula k-mouflage de P8 dimensionalmente rota",
            f"r_km tiene dimension GeV^{dim_rkm:.3f}; una longitud es GeV^-1. "
-           "Introducida en commit 295ed6e; requiere re-derivacion")
+           "Introducida en commit 295ed6e; requiere re-derivacion",
+           op="OP-4")
 
 # OP-1 — densidad bariónica (P4/Paper B). La cadena algebraica cierra exacto;
 # el insumo Omega_b h^2 = (pi-phi)/(3 Omega^2) es coincidencia hallada por scan
@@ -401,7 +494,8 @@ check("V-L3-OP1  identidad (pi-phi)/(3 Om^2) = 0.0224178",
       f"computado {Omb_h2_alg:.7f}")
 track_open("V-L3-OP1  Omega_b h^2 no derivado",
            "coincidencia a 0.32sigma de Planck hallada por scan de 7 candidatos; "
-           "falta cadena BBN (eta_B -> Omega_b) — diferida a Paper B")
+           "falta cadena BBN (eta_B -> Omega_b) — diferida a Paper B",
+           op="OP-1")
 
 # OP-3 — separabilidad UV-IR (P10). Las identidades algebraicas cierran exacto;
 # la jerarquia (H0/M)^2 es real, pero la prueba de separabilidad (jacobiano
@@ -413,7 +507,8 @@ check("V-L3-OP3  identidad sqrt(6*alpha) = phi^2 sqrt(2)",
       abs((6 * alpha_op3) ** 0.5 - phi ** 2 * 2 ** 0.5) < 1e-12)
 track_open("V-L3-OP3  separabilidad UV-IR no probada",
            "jerarquia (H0/M)^2~3e-62 real; prueba via jacobiano d phi/d chi "
-           "diferida a Paper B; KALeff^2 = M^4/(6 alpha) dropea rho_crit")
+           "diferida a Paper B; KALeff^2 = M^4/(6 alpha) dropea rho_crit",
+           op="OP-3")
 
 # OP-5 — tensión S8 weak-lensing (P5/P6). CANÓNICO (ω_m-directo, CLASS forward con
 # m_phi=40.70 eV mecanismo SOLAR²·KRYSTOS, Om_m=0.30888): el two-sector phi-DM
@@ -440,7 +535,8 @@ track_open("V-L3-OP5  S8 sin tension con A_s libre; cierre no-lineal pleno difer
            "0.11sigma de KiDS. NO hay tension. El two-sector 0.758 y m_phi=40.70 quedan RETIRADOS. "
            "El cierre no-lineal con feedback barionico (N-body, ~5k-20k CPU-h) es Nivel 2, "
            "diferido. Ramas viejas 0.737/0.794, 0.702/0.725, 0.742/0.766, 0.7536/0.765 y "
-           "0.7483/0.7593 (rama con C_ν instantáneo 94.07 como operativo) retiradas")
+           "0.7483/0.7593 (rama con C_ν instantáneo 94.07 como operativo) retiradas",
+           op="OP-5b")
 
 # OP-6 — forma de screening (P9). El valor f_screen es algebra exacta (ver
 # V-L2-13); la forma multiplicativa sigue del universo separado. El paso
@@ -453,7 +549,8 @@ check("V-L3-OP6  H0_local = H0^alg/(1-f_screen) = 72.86",
 track_open("V-L3-OP6  forma multiplicativa: insumo delta_local = 2 no derivado",
            "la forma multiplicativa sigue del universo separado, pero el valor "
            "f_screen requiere delta_local=2 (sobredensidad Grupo Local) y una "
-           "expresion delta_rho_phi asertada, no derivada de phi,pi")
+           "expresion delta_rho_phi asertada, no derivada de phi,pi",
+           op="OP-6b")
 
 # m_phi — masa del campo phi-DM (P6, CANÓNICO forward-prediction; SOLAR²·KRYSTOS 2026-06-19).
 #   Sigma_m_nu^active = R2·ω_b·C_ν/(τ_Π H0), C_ν=93.14 eV PDG,  R2 = Omega/(KAL0*Tr)
@@ -749,6 +846,30 @@ check("V-L3-mphi  el detector distingue vigente de retractado",
       and not _presenta_como_vigente(_c_muerta, _RETRACTADOS),
       "1 forma viva marcada, 1 declarada retirada eximida")
 
+# ── CONTROL DE LA SEPARACION SIN-RESOLVER / PENDIENTE (R53) ────────────────
+# El riesgo de separarlas es evidente: si «abierto» deja de pintar, basta con
+# llamar «problema abierto» a una tarea para que el semaforo no la vea — que es
+# exactamente el VERDE FORZADO que Mike detecto el 2026-09-07. Lo que lo impide
+# es que la etiqueta no la pongo yo al escribir el track_open: la pone la FICHA.
+# Sin ficha, con ficha cerrada o sin severidad, cae en PENDIENTE y pinta.
+_c53a = _FICHAS_OP.get("OP-7", ("", ""))
+_c53b = _FICHAS_OP.get("OP-5", ("", ""))
+check("R53 una ficha viva con severidad es lo unico que saca algo del semaforo",
+      _c53a == ("abierto", "alta") and _c53b[0] == "cerrado",
+      f"OP-7 {_c53a} entra como fisica sin resolver; OP-5 {_c53b} esta cerrada, "
+      f"asi que su resto tuvo que abrir ficha propia (OP-5b) para contar")
+check("R53 el lector de fichas distingue parcial de resuelto y lee los dos formatos",
+      _FICHAS_OP.get("OP-1", ("", ""))[0] == "abierto"
+      and _FICHAS_OP.get("OP-16", ("", ""))[1] == "baja"
+      and _FICHAS_OP.get("OP-13", ("", ""))[0] == "cerrado",
+      "«PARCIALMENTE RESUELTO» cuenta como abierto (OP-1); «**Severidad: Baja / "
+      "especulativa.**», con los dos puntos dentro de los asteriscos, se lee "
+      "(OP-16 = baja, antes heredaba la de otra ficha); «RESUELTO» cierra (OP-13)")
+check("R53 ninguna ficha citada por el guardian se quedo sin severidad",
+      not [_o for _o, _, _ in sin_resolver if not _FICHAS_OP.get(_o, ("", ""))[1]],
+      f"{len({_o for _o, _, _ in sin_resolver})} fichas citadas, todas con "
+      "severidad declarada en OPEN_PROBLEMS.md")
+
 # ── CONTROL DEL ALCANCE NUEVO DE R60 (R53: toda regla trae su control del otro lado) ──────────
 # Los dos casos son REALES, tomados del README en el commit 1f05380^ — el
 # anterior al arreglo. La regla se prueba contra el estado sucio, que es la
@@ -839,10 +960,12 @@ check("V-L3-KX  identidad 45 alpha^2 = 5 phi^8  (M^4/rho_crit)",
       f"M^4/rho_crit = {5 * phi ** 8:.4f}")
 track_open("V-L3-KX  M^4 = 5 phi^8 rho_crit calibrado a SH0ES",
            "ssee_paper10_verification.py admite: normalizacion fisica de M^4 "
-           "calibrada a SH0ES, no derivada; Ruta A da M^4~418 != 234.9")
+           "calibrada a SH0ES, no derivada; Ruta A da M^4~418 != 234.9",
+           op="OP-3")
 track_open("V-L3-EFT  M^4 inconsistente entre P7 y P10",
            "ssee_eft_verification.py usa M^4 = rho_crit (=1); "
-           "ssee_paper10_verification.py usa M^4 = 5 phi^8 rho_crit (=234.9)")
+           "ssee_paper10_verification.py usa M^4 = 5 phi^8 rho_crit (=234.9)",
+           op="OP-10b")
 
 # Israel-Stewart (P5) — c²_s,eff = 0. La corrección IS zeta/tau_Pi se reduce
 # a Om_DE porque el factor KAL0/3 se cancela (zeta = KAL0/3, tau_Pi =
@@ -1958,7 +2081,8 @@ track_open("V-L3-IS  OP-22b: el mapa campo -> fluido (zeta,tau_Pi) no derivado",
            "0.021284 sigue sin establecerse. La brecha 0.021284 es toda la "
            "prediccion de P7 => una medida de c2_s discrimina. "
            "Ademas queda RETIRADA la derivacion de tau_Pi por saturacion de "
-           "causalidad (apendice EFT de P1): usaba rho en vez de rho+p, daba 0.2946")
+           "causalidad (apendice EFT de P1): usaba rho en vez de rho+p, daba 0.2946",
+           op="OP-22b")
 
 # c_s^2 del sector k-essence — extraccion T_munu^ef (2026-05-22). Para
 # K(X)=X/KAL0+X^2/M^4, Garriga-Mukhanov da c_s^2=(A+2BX)/(A+6BX) con
@@ -1977,7 +2101,8 @@ track_open("V-L3-cs2  el sector geometrico de SSEE no puede agruparse [CENTRAL]"
            "nunca baja de 1/3, no clusteriza como materia fria. El sector "
            "geometrico tiene peso de FONDO (rho_phi existe) pero NO peso de "
            "agrupamiento. El CMB exige materia que se agrupe -> la k-essence "
-           "actual no puede ser la '0.320'. MIRA no esta en la accion vigente")
+           "actual no puede ser la '0.320'. MIRA no esta en la accion vigente",
+           op="OP-7")
 
 # Ruta B (gravedad disformal de P8) — RE-ENUNCIADA 2026-09-07.
 #
@@ -2011,7 +2136,8 @@ track_open("V-L3-disf  psi_DM entra en la accion de P8 sin estar definida",
            "psi_DM no tiene lagrangiano, masa ni origen en phi,pi — SSEE "
            "predice omega_c=KAL0*omega_b*n_s (cuanta hay) y no dice de que "
            "esta hecha. Ademas P8 L69 admite sqrt(beta_c)/MIRA=1.00030 "
-           "'near-coincidence, not an identity'")
+           "'near-coincidence, not an identity'",
+           op="OP-19")
 
 # Mecanismo de retencion conformal (Ruta B) — probado 2026-05-22 en
 # src/ssee_mira_mechanism.py. Acoplamiento beta_c=-AURA: negativo limpio.
@@ -2021,7 +2147,8 @@ track_open("V-L3-mira  retencion conformal beta_c=AURA NO reproduce MIRA",
            "invertido (drena la materia en vez de cargarla, R(z=2)~0.016), y "
            "timing invertido (campo thawing). Cuarto mecanismo descartado "
            "para el '0.320' tras cs2, Poisson-mu y disformal. MIRA sin "
-           "derivacion en el marco vigente por los 4 mecanismos naturales")
+           "derivacion en el marco vigente por los 4 mecanismos naturales",
+           op="OP-8b")
 
 # dos-Ω_m — OP-8 DISUELTO (reframe ω_m-directo 2026-06-18). Ya NO hay factor
 # materia: Om_m,dyn=1+w0=0.160 (DESI) y Om_m,CMB=ω_m/h²=0.308881 (ω_c=KAL0·ω_b·n_s)
@@ -5846,21 +5973,44 @@ if fails:
 # el, o los encontre yo leyendo — no el guardian.
 #
 # Ahora el veredicto dice las DOS cosas, y la segunda manda en el titular.
+# EL COLOR LO PINTA LO TERMINABLE, NO LA FISICA (2026-09-19). Ver la nota
+# larga en `track_open`: un problema de fisica declarado con ficha y severidad
+# NO ensucia el semaforo, porque puede no cerrarse nunca y eso no es un
+# defecto del repositorio. Lo que lo ensucia es lo que SI se puede terminar.
 _deuda_total = sum(_DEUDA_REAL.get(_k, 0) for _k in _DEUDA_MAX) + _n_md
-_en_orden = not opens and _deuda_total == 0
+_en_orden = not pendientes and _deuda_total == 0
 print()
-print(f"REGRESION : sin regresiones, {checks} comprobaciones pasan.")
+print(f"REGRESION  : sin regresiones, {checks} comprobaciones pasan.")
+
+_por_sev = {}
+for _op, _sev, _ in sin_resolver:
+    _por_sev.setdefault(_sev, set()).add(_op)
+if sin_resolver:
+    print(f"SIN RESOLVER: {len(sin_resolver)} frente(s) de fisica en "
+          f"{len({_o for _o, _, _ in sin_resolver})} fichas declaradas — "
+          "no pintan el semaforo, se declaran")
+    print("             " + " · ".join(
+        f"{_COLOR_SEV.get(_s, '')} {_s} {' '.join(sorted(_v, key=lambda x: (int(x[3:].rstrip("b")), x)))}"
+        for _s in ("alta", "media-alta", "media", "baja") if (_v := _por_sev.get(_s))))
+
 if _en_orden:
-    print("MODELO    : EN ORDEN — 0 abiertos, 0 deuda declarada.")
-    print("\nVERDE")
+    print("PENDIENTE  : nada — 0 tareas, 0 sitios de deuda.")
+    print("\nVERDE — sin regresiones y sin nada terminable a medias.")
+    if sin_resolver:
+        print("La fisica sin resolver sigue arriba, con su severidad: "
+              "un VERDE aqui no dice que el modelo este completo, "
+              "dice que el repositorio esta en orden.")
 else:
-    print(f"MODELO    : EN DEUDA — {len(opens)} problema(s) abierto(s), "
-          f"{_deuda_total} sitio(s) de deuda declarada.")
+    print(f"PENDIENTE  : {len(pendientes)} tarea(s) + {_deuda_total} sitio(s) "
+          "de deuda declarada — ESTO es lo que pinta")
+    for _t in pendientes:
+        print(f"             · {_t}")
     _top = sorted(((_DEUDA_REAL.get(_k, 0), _k) for _k in _DEUDA_MAX),
                   reverse=True)[:4]
-    print("            mayores: "
+    print("             mayores: "
           + ", ".join(f"{_k}={_v}" for _v, _k in _top if _v)
           + (f", particula_md={_n_md}" if _n_md else ""))
-    print("\nAMARILLO — no hay regresiones, pero el modelo NO esta en orden.")
-    print("Un VERDE aqui seria forzado: la deuda esta declarada, no resuelta.")
+    print("\nAMARILLO — no hay regresiones, pero queda trabajo TERMINABLE sin "
+          "terminar.")
+    print("Un VERDE aqui seria forzado: esa deuda esta declarada, no resuelta.")
 sys.exit(0)

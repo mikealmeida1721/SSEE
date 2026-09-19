@@ -37,6 +37,8 @@ abierto. No encadenar la publicación al mecanismo (OP-9/OP-10) — ver [[projec
 
 ## OP-1 — First-Principles Derivation of ω_b = (π−φ)/(3Ω²) (Paper 4 / baryogenesis) ✅ PARCIALMENTE RESUELTO
 
+**Severidad: Media-Alta.** ω_b es la raíz de la que cuelgan ω_c (identidad forward de Paper 1) y Ω_m,CMB; mientras la cadena BBN no esté hecha, la coincidencia a 0.32σ es resultado de un barrido de 7 candidatos, no una derivación.
+
 > **El "factor 200" YA NO EXISTE en el modelo (corregido en el título 2026-06-24).**
 > El ω_b canónico es la fórmula algebraica `(π−φ)/(3Ω²) = 0.02242` (0.32σ Planck),
 > sin ningún 200. El viejo `3(π−φ)/200` (3.2σ) quedó retirado; φ¹¹≈199 mostró que 200
@@ -228,6 +230,8 @@ mecanismo de producción de la φ-DM **retirada** (m_φ=40.70 eV) que reproducí
 
 ## OP-3 — Separabilidad UV-IR / el origen del `5/2` en `M⁴ = 5φ⁸ρ_c` (Paper 10) — 🟡 **PARCIAL (reabierto 2026-09-06, alineado con el Registro)**
 
+**Severidad: Media.** No mueve ningún número publicado —la cascada UV ya declara que no mide M⁴, con σ propagado ±0.970— pero deja sin fundamentar el corte sobre el que se reformuló el Postulado C.1.
+
 **Location:** Paper 10, Postulate C.1 / Conditional Theorem C.1.
 
 > **Por qué se reabre.** No es una decisión nueva: `VERIFICATION_LEDGER.md`
@@ -297,7 +301,18 @@ contra `4/3 = 1.333333` (dif 0.0382%). No es cero.
 
 ---
 
-## OP-4 — Vainshtein Radius Exceeds Observable Universe (Paper 8) ✅ RESUELTO
+## OP-4 — Vainshtein Radius Exceeds Observable Universe (Paper 8) — 🔴 **REABIERTO 2026-09-19**
+
+> **Por qué se reabre.** El cierre de 2026-05-15 sustituyó la fórmula Galileon por una
+> fórmula k-mouflage (Brax & Valageas 2014) en §4.2 y regeneró la figura con ella. El
+> guardián mide que **esa fórmula está dimensionalmente rota**: `r_km` sale con dimensión
+> GeV^(−0.667) y una longitud es GeV^(−1). Introducida en el commit `295ed6e`. El argumento
+> primario (α_B = α_M = α_T = 0 ⟹ μ−1 = 0) **sigue en pie** y no depende de la fórmula; lo
+> que hay que rehacer es la expresión del radio y la tabla que cuelga de ella.
+>
+> **Severidad: Alta.** Es una fórmula publicada en Paper 8, no una nota interna.
+
+**Resolución previa (conservada — su argumento primario sigue válido):**
 
 **Location:** Paper 8, §4.2 (solar system screening) — **revisado 2026-05-15**
 
@@ -2763,3 +2778,117 @@ presentación de la suite entera. Es una decisión de autor, no del guardián.
 **Recomendación:** la 1. Conserva la legibilidad de las tablas, cierra el hueco
 de verdad, y la infraestructura para leer una precisión declarada ya existe en
 R41. Pendiente de la decisión de Mike.
+
+
+---
+
+# Residuos de problemas cerrados
+
+Un OP puede cerrarse y dejar algo detrás. Hasta el 2026-09-19 esos restos vivían sólo
+dentro del guardián, que los listaba como «abiertos» mientras su ficha decía RESUELTO o
+DISUELTO — una contradicción entre las dos fuentes que nadie veía porque cada una se leía
+por separado. Ahora cada resto tiene su ficha, su severidad y su criterio de cierre. El
+sufijo `b` dice de qué problema es resto.
+
+---
+
+## OP-2b — La Conjetura B.1 (N_* = 2φ⁷) no está derivada — 🟡 ABIERTO (resto de OP-2)
+
+**De dónde viene.** OP-2 cerró el exponente 7 de `n_s = 1 − φ⁻⁷` como **corolario** de la
+universalidad α-attractor con `N_* = 2φ⁷`: es la única solución entera en la ventana
+[50,60] e-folds. Lo que no cerró es **por qué** `N_*` toma esa forma.
+
+**Lo que falta.** El puente de reheating gravitacional que fije `N_*` sin postular su forma.
+
+**Criterio de cierre.** Una derivación de `N_*` desde la historia de reheating del propio
+campo, que no meta `2φ⁷` como entrada.
+
+**Severidad: Media.** `n_s` está confrontado y encaja; lo que falta es el origen, no el valor.
+
+---
+
+## OP-5b — El cierre no lineal pleno de S₈ sigue diferido — 🟢 ABIERTO (resto de OP-5)
+
+**De dónde viene.** OP-5 se **disolvió** el 2026-08-01: con A_s libre no hay tensión S₈ que
+resolver (MCMC R3 sobre KiDS crudo, S₈ = 0.7555 ± 0.0192, 0.11σ). Lo que queda no es una
+tensión, es un refinamiento.
+
+**Lo que falta.** El régimen no lineal pleno con feedback bariónico (N-body tipo
+BAHAMAS / IllustrisTNG adaptadas a SSEE), ~5.000–20.000 horas de CPU.
+
+**Criterio de cierre.** Una corrida N-body propia, o la constatación de que HMcode-2020
+basta a la precisión de la próxima generación de datos.
+
+**Severidad: Baja.** No afecta a ningún número publicado y ya no es la vía de rescate de
+ninguna tensión — ese encuadre murió con la partícula.
+
+---
+
+## OP-6b — El insumo δ_local = 2 de f_screen no está derivado — 🟡 ABIERTO (resto de OP-6)
+
+**De dónde viene.** OP-6 cerró la **forma** multiplicativa del screening (sigue del universo
+separado k-essence). El **valor** de `f_screen` necesita además dos cosas que no salen de
+φ y π.
+
+**Lo que falta.** `δ_local = 2` (sobredensidad del Grupo Local) es un insumo observacional, y
+la expresión de `δρ_φ` está asertada, no derivada.
+
+**Criterio de cierre.** Derivar δρ_φ del Lagrangiano y mostrar la dependencia de H_glob con
+δ_local, para saber cuánto del 0.17σ es predicción y cuánto es ese insumo.
+
+**Severidad: Media.** Toca el titular de Paper 9.
+
+---
+
+## OP-8b — MIRA sigue sin mecanismo dinámico — 🔴 ABIERTO (resto de OP-8)
+
+**De dónde viene.** OP-8 se **disolvió** el 2026-06-18 en su forma original: con el reframe
+ω_m-directo ya no hay «factor materia» que derivar, y Ω_m,CMB = ω_m/h² es derivada. Pero
+MIRA no desapareció con él: sigue siendo una entidad del modelo (`MIRA = AURA/2`), y sigue
+sin salir de la acción.
+
+**Lo que falta.** Cuatro mecanismos naturales probados y **los cuatro descartados por
+medición**, no por opinión: c²_s, Poisson-μ, disformal, y retención conformal β_c = −AURA
+(esta última da excursión ×18 excesiva, signo invertido y timing invertido —
+`ssee_mira_mechanism.py`).
+
+**Criterio de cierre.** Un mecanismo que produzca MIRA desde la acción vigente, o la
+declaración explícita de que MIRA es un valor algebraico sin dinámica asociada.
+
+**Severidad: Alta.** Es el problema abierto más profundo que queda del sector.
+
+---
+
+## OP-10b — P7 y P10 usan el mismo símbolo M⁴ para dos cosas — 🟡 ABIERTO (resto de OP-10)
+
+**De dónde viene.** OP-10 cerró por disolución. Pero `ssee_eft_verification.py` usa
+`M⁴ = ρ_crit` (= 1 en sus unidades) y `ssee_paper10_verification.py` usa `M⁴ = 5φ⁸ρ_crit`
+(= 234.9). **La separación está entendida** —son dos K(X) distintas y eso es correcto, el
+factor al cruzarlas es 45.5— pero el símbolo es el mismo en los dos sitios.
+
+**Lo que falta.** Notación distinta para cada uno, o una nota en ambos scripts que diga cuál
+es cuál. Mientras tanto, cualquiera que cruce los dos ficheros obtiene un número sin sentido.
+
+**Criterio de cierre.** Símbolos separados en código y en los dos papers.
+
+**Severidad: Media.** No mueve ningún resultado; es una trampa de lectura ya activada una vez.
+
+---
+
+## OP-22b — El mapa campo → fluido (ζ̃, τ_Π) no está derivado — 🟡 ABIERTO (resto de OP-22)
+
+**De dónde viene.** OP-22 **cerró** el 2026-09-06: la viscosidad va con la entalpía ρ+p,
+cerrado por test de límite. Y el conteo de grados de libertad (2026-09-07) cerró la parte
+de «dos canales»: ambos cuentan UNA onda, luego el 0 del fluido y el 0.021284 del campo
+describen la misma, y la del campo es la fundamental.
+
+**Lo que falta.** El mapa de los parámetros del campo a los del fluido efectivo (ζ̃, τ_Π) no
+está derivado, así que **por qué el límite de fluido cae exactamente en 0 y no en 0.021284
+sigue sin establecerse**. Queda además RETIRADA la derivación de τ_Π por saturación de
+causalidad del apéndice EFT de Paper 1 (usaba ρ en vez de ρ+p; daba 0.2946).
+
+**Criterio de cierre.** Derivar el mapa, o medir c²_s: la brecha 0.021284 es toda la
+predicción de Paper 7, así que una medida discrimina.
+
+**Severidad: Media.** No mueve un número publicado, pero es el eslabón que sostiene la
+predicción propia del sector.

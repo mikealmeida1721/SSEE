@@ -52,11 +52,11 @@ Ver [[project-0160-is-eos-not-density]].
 | valor canónico | estado |
 |---|---|
 | S₈ = 0,758 «0,04σ KiDS, RESUELVE» | **en cuestión**: sale de A_s fijado a Planck; con A_s libre y un sector da 0,757 |
-| σ₈ = 0,747 (two-sector) | **en cuestión**: depende del sector caliente |
+| ~~σ₈ = 0,747 (two-sector)~~ | **RETIRADO 2026-08-01** con el sector doble; el canónico es σ₈ = 0,7446 ± 0,0189, un solo sector |
 | m_φ = 40,70 eV · mult 594,28 | **excluido por el dato** (cota > 70,3 eV) |
 | k_fs = 0,754 h/Mpc | **en cuestión**: es la predicción que el dato contradice |
 | Ω_φDM = 0,14889 | **en cuestión**: la resta que lo define mezcla magnitudes |
-| fσ₈ 0,70σ (single) y 0,93σ (two-sector) | **ninguno fiable**: los fσ₈ publicados llevan fiducial ΛCDM (AP) cocido, igual que el S₈ de KiDS |
+| fσ₈ 0,70σ (un sector); ~~0,93σ (two-sector)~~ **RETIRADO 2026-08-01** | **ninguno fiable**: los fσ₈ publicados llevan fiducial ΛCDM (AP) cocido, igual que el S₈ de KiDS |
 
 **Intactos y no afectados:** geometría E(z)/BAO/r_d/H(z) (usa Ω_m = 0,308881),
 w₀ = −0,840, wₐ = −0,670, H_alg = 67,962, α_K = 0,403302 (adimensional×adimensional,

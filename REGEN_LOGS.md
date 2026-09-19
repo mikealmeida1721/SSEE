@@ -39,7 +39,7 @@ valor bueno:
 |---|---|---|
 | Σm_ν | 0.06849 | 0.06902 |
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-| m_φ | 40.70 eV | 41.0187 eV |
+| ~~m_φ~~ (**RETIRADO 2026-08-01**) | ~~40.70 eV~~ | ~~41.0187 eV~~ |
 | k_fs | 0.754 h/Mpc | 0.7620 |
 | σ₈ | 0.747 | 0.7483 |
 

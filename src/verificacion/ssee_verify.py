@@ -517,6 +517,23 @@ def _presenta_como_vigente(_txt, _tokens):
     for _i, _ln in enumerate(_lns):
         if not any(_tk in _ln for _tk in _tokens):
             continue
+        # UNA FILA DE TABLA ES UNA AFIRMACION ENTERA (2026-09-19).
+        #
+        # La ventana de +-3 lineas nacio para prosa LaTeX justificada, donde el
+        # «retracted» que califica a un valor cae dos o tres lineas mas abajo.
+        # En una TABLA eso se vuelve al reves: las filas son vecinas por
+        # construccion, asi que una fila retractada exonera a las de al lado.
+        # Caso real: en la tabla de OPs del README, la fila de OP-8
+        # («Dissolved 2026-06-18») tapaba la de OP-5, que seguia afirmando que
+        # el sector doble resuelve S8 — retirado el 2026-08-01. Un lector la
+        # leia como vigente, y el guardian no la contaba.
+        # En una fila, la marca tiene que estar EN LA FILA.
+        if _ln.lstrip().startswith("|") and not _ln.lstrip().startswith("|---"):
+            if any(_e.lower() in _ln.lower() for _e in _EXENTO_RETR):
+                continue
+            if not _cabecera_retirada(_i):
+                _malas.append(_ln.strip())
+            continue
         # +-3 (2026-09-07): en LaTeX justificado a ~72 columnas el
         # «withdrawn» que califica al valor cae 2-3 lineas mas abajo.
         # Con +-1 daba 3 falsos positivos (P8:882, Unified:596/809),
@@ -1590,7 +1607,11 @@ _n60 = sum(len(_v) for _v in _r60.values())
 # Trinquete: 2026-09-07 arranca en la cuenta real. SOLO BAJA.
 # 64 -> 61 el 2026-09-08: llevaba 3 de holgura y nadie lo veia, porque R50
 # solo miraba los trinquetes registrados en _DEUDA_REAL y este no estaba.
-_TOPE_R60 = 61
+# 61 -> 59 el 2026-09-19: al acotar la ventana dentro de las tablas salieron
+# 10 filas que estaban ocultas —una fila retractada exoneraba a sus vecinas—
+# y se limpiaron 16. Detector MAS estricto y deuda MENOR: las dos cosas a la
+# vez, que es la senal de que lo que se limpio era real.
+_TOPE_R60 = 59
 _DEUDA_REAL["R60"] = _n60
 _DEUDA_MAX["R60"] = _TOPE_R60
 check("R60 la deuda del registro de retracciones no crece",

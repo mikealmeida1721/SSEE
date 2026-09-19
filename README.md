@@ -207,10 +207,10 @@ That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of th
 | Result | Value | Status |
 |---|---|---|
 | Ω_CDM | 0.160 | Active at all k |
-| Ω_φDM = Ω_m,CMB − Ω_m,dyn | 0.14889 | Difference (no matter factor); active for k < k_fs only |
+| ~~Ω_φDM = Ω_m,CMB − Ω_m,dyn~~ | ~~0.14889~~ | **RETRACTED 2026-08-01** — the subtraction mixed a measured density with 1+w₀, an equation-of-state number |
 | Ω_total (two-sector) = ωm/h² | 0.30889 = Ω_m,CMB | ωm-direct (OP-8 dissolved) |
 | Σm_ν = R₂ × 0.9530 eV | 0.0685 eV | R₂ = Ω/(KAL·TRIAL) = 0.071875 (ν-closure C=93.14) |
-| m_φ = Σm_ν × (SOLAR²·KRYSTOS_V) | 40.70 eV | Forward-prediction — no fitting (multiplier 594.28 is a pure number; mechanism g²·v) |
+| ~~m_φ = Σm_ν × (SOLAR²·KRYSTOS_V)~~ | ~~40.70 eV~~ | **RETRACTED 2026-08-01** — the particle had nothing to be made of once the subtraction fell; also excluded by the raw shear (m_φ > 70.3 eV) |
 | α (Viel fit to particle/cold P(k) ratio) | 1.117 Mpc/h | CLASS output — not imposed |
 | k_fs (free-streaming) | 0.754 h/Mpc | From m_φ, CLASS-derived |
 | σ₈_eff (two-sector particle) | 0.747 | RETIRED 2026-08-01 |
@@ -246,7 +246,7 @@ That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of th
 |---|---|---|
 | Action | S = ∫d⁴x√(−g)[−X + V₀e^{β_c φ}] | Canonical, minimal coupling |
 | β_c | −AURA = −3.9978 | Algebraic exact |
-| β_c (plateau test, 8 ICs) | −3.98991 ± 0.00001 | Δ = 0.199% (systematic: Ω_b+Ω_r excluded) |
+| ~~β_c (plateau test, 8 ICs)~~ | ~~−3.98991 ± 0.00001~~ | **RETRACTED 2026-09-07** — the «verified to <0.2%» was the saturation normalisation bug; the real value is −2.194210, and β_c itself left P7 with the potential |
 | αT | 0 exact | GW170817 \|αT\| < 10⁻¹⁵ satisfied ✓ |
 | αM | 0 exact | Euclid forecast < 0.05 satisfied ✓ |
 | αB | 0 exact | Euclid forecast < 0.05 satisfied ✓ |
@@ -335,19 +335,19 @@ Disclosed honestly in the papers. Editorial limitations in [AUDIT.md](AUDIT.md).
 | OP-2 | n_s = 1−φ⁻⁷ exponent | **Resolved** (conditional) — α-attractor universality + N_*=2φ⁷; new prediction r=φ⁻¹⁰ |
 | OP-3 | Origin of the `5/2` in `M⁴ = 5φ⁸ρ_c` | **Partial** — reopened 2026-09-06; `KAL_eff` is solved FROM `M⁴`, not derived independently |
 | OP-4 | Solar Vainshtein radius | **Resolved** — k-mouflage (not Galileon) + αB=αM=αT=0 EFT suppression |
-| OP-5 | S₈ weak-lensing tension | **Partial (Level 1)** — two-sector φ-DM resolves it (S₈ = 0.758, 0.04σ KiDS); full non-linear N-body → future |
+| OP-5 | ~~S₈ weak-lensing tension~~ | **Dissolved (2026-08-01)** — there is no tension to resolve: with a single sector and A_s free, the MCMC against raw KiDS-1000 ξ± gives S₈ = 0.7555 ± 0.0192 (0.11σ). The 3.5σ was an artefact of fixing A_s to Planck; the two-sector answer is retracted. Full non-linear N-body remains desirable, but no longer as a rescue |
 | OP-6 | Screening form (mult. vs add.) | **Resolved** — separate-universe k-essence + identity 1+w₀=Ω_m,dyn |
 | OP-7 | QFT derivation of genesis role assignments | **Partial** |
 | OP-8 | MIRA/matter-factor mechanism | **Dissolved (2026-06-18)** — ωm-direct: Ω_m,CMB = ωm/h² = 0.30889 is the standard physical observable, no matter factor to derive; MIRA survives only in f_screen |
 | OP-9 | ~~UV origin of the mass multiplier~~ | **Closed by dissolution (2026-08-01)** — no multiplier to derive: the particle is retracted |
 | OP-10 | ~~Unification of φ and χ into a single field~~ | **Closed by dissolution (2026-08-01)** — there is no second field χ to unify |
 | OP-11 | ~~Free non-minimal coupling ξ~~ | **Closed by dissolution (2026-08-01)** — ξ lived in the retracted φ-DM sector |
-| OP-12 | Relic abundance Ω_φDM h² ab initio | **Open** |
+| OP-12 | ~~Relic abundance Ω_φDM h² ab initio~~ | **Closed by dissolution (2026-08-01)** — Ω_φDM came from a subtraction that mixed a density with an equation-of-state number; there is no relic abundance to derive |
 | OP-13 | Paper 8 internal consistency (√AURA vs B-S) | **Resolved (2026-05-23)** — Option A |
 | OP-14 | Σm_ν phenomenological derivation | **Resolved (2026-06-04)** — Σm_ν = 0.0685 eV self-consistent cascade (ν-closure C=93.14 demonstrated) |
 | OP-15 | Bullet-cluster offset κ(θ) from KAL(x) | **Open** — not yet computed (Paper 1) |
 | OP-16 | (π−φ)/(π+φ)=0.3201 vs proton mass-energy fraction | **Open / speculative** (genesis; retired from Paper 4, zero cosmological impact) |
-| OP-17 | Canonical φ-DM particle SOLAR²·KRYSTOS_V | **Adopted (2026-06-19)** — m_φ = 40.70 eV, S₈ = 0.04σ KiDS; UV origin of multiplier = OP-9 |
+| OP-17 | ~~Canonical φ-DM particle SOLAR²·KRYSTOS_V~~ | **Closed by dissolution (2026-08-01)** — the particle is retracted; there is no canonical mass to adopt |
 | OP-18 | Primordial amplitude A_s from (φ,π) | **Open (2026-06-20)** — inflation-scale residue (Paper 3) |
 | OP-19 | Production mechanism behind ω_c = KAL₀·ω_b·n_s | **Open (2026-07-12)** — forward relation (0.4σ Planck) works; deriving why *this* combination = relic-abundance mechanism (links OP-1). n_s is the leading candidate, not a certainty (identity window [0.960, 0.979]) |
 

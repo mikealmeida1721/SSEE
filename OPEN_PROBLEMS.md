@@ -966,7 +966,7 @@ m_φ = 40.70 eV). Requisitos declarados ANTES de calcular. Scripts en
 |---|---|---|---|
 | F1 (pozo local) | mínimo cuadrático añadido al exponencial | ❌ | el pozo contamina el plateau DE — w₀ se aleja de −0.840 |
 | F2 (tanh²) | doble-escala suave | ❌ | jerarquía DE/DM exige 33 órdenes de magnitud en el parámetro de forma |
-| F3 (axion-like) | V₀e^(−λφ) + M_UV⁴[1−cos(φ/f)] | ❌ | atrapamiento topológico: si el axion engancha, φ se fija → w = −1; si no engancha, m_φ ≈ H₀ ≠ 40.70 eV (`ssee_op10_family3_axion.py`) |
+| F3 (axion-like) | V₀e^(−λφ) + M_UV⁴[1−cos(φ/f)] | ❌ | atrapamiento topológico: si el axion engancha, φ se fija → w = −1; si no engancha, m_φ ≈ H₀ ≠ 40.70 eV — masa **RETIRADA 2026-08-01**, la fila se conserva como historia de la búsqueda (`ssee_op10_family3_axion.py`) |
 | F4 (see-saw escalas) | m_φ² = m_h·m_l con escalas SSEE | ❌ | predicción off por ~10³³ (`ssee_op10_seesaw_search.py`) |
 | Opción A (UV-inducido) | corrección de loop de K(X) genera el mínimo | ❌ | K(X) es φ-independiente a nivel árbol; curvatura de loop ~ M = 9.68 meV, factor ~4 238 bajo m_φ (`ssee_op10_uv_induced_minimum.py`) |
 | 2c (K-essence boost) | K_X renormaliza la masa efectiva | ❌ analítico | K_X ≥ 1/KAL acota el boost a √KAL ≈ 2.35× — insuficiente para 10³⁻⁴ |

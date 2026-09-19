@@ -901,7 +901,7 @@ EFT, K(X), IS, c_s² (T_μν), dos-Ω_m.
 | Veredicto | Elementos |
 |---|---|
 | **verificado** | α=φ⁴/3 |
-| **PARCIAL** (álgebra/forma cierra, insumo físico no) | OP-2, OP-6, OP-7, dos sectores, EFT, IS, m_φ (cadena dim. consistente; Lagrangiano OP-9) |
+| **PARCIAL** (álgebra/forma cierra, insumo físico no) | OP-2, OP-6, OP-7, EFT, IS — ~~dos sectores~~ y ~~m_φ~~ **RETIRADOS 2026-08-01** (la cadena cerraba unidades, pero la partícula no tenía de qué estar hecha) |
 | **ABIERTO** | OP-1, OP-3, OP-4, OP-5, K(X), c_s² (T_μν), **dos-Ω_m (central)** |
 
 2 bugs corregidos/detectados de paso: curvatura de Kähler (P1, **corregido**)

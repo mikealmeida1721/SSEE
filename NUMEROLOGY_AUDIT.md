@@ -178,7 +178,7 @@ vs extensión) y que aquí se formaliza:
 | Fuerza de la selección | 1/490 individual + conjunto restrictivo | débil, grammar-dependiente (1/3–1/537) — **CONCEDIDO** |
 | ¿Gramática fijada antes del dato? | **Sí** — por reglas de construcción del diccionario (no-auto-suma + copia), anteriores y ajenas a w₀wₐ | Irrelevante: el peso no está aquí |
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-| ¿Cuál es el argumento real? | La rigidez estadística de un esqueleto que da los DOS números a la vez | **La falsabilidad**: k_fs=0.754 h/Mpc, pre-registrado, DESI Y3/Euclid |
+| ¿Cuál es el argumento real? | La rigidez estadística de un esqueleto que da los DOS números a la vez | ~~**La falsabilidad**: k_fs=0.754 h/Mpc, pre-registrado~~ — **RETIRADO 2026-08-01** con la partícula. Y la lección que dejó: la falsabilidad es requisito mínimo de una hipótesis, **no evidencia de que la entidad exista** |
 
 **El movimiento honesto:** un coeficiente débilmente seleccionado pero **falsable** no es
 numerología — es una **conjetura falsable**. Numerología sería reclamar que el 1/3 *prueba* la

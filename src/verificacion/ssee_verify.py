@@ -1966,7 +1966,13 @@ _n60 = sum(len(_v) for _v in _r60.values())
 # ventana de +-3 lineas venia tapando; se limpiaron los 29. El tope se queda
 # donde estaba porque un trinquete solo baja, pero el 58 de esta tarde se
 # mide con un detector que ve mas que el de esta manana.
-_TOPE_R60 = 58
+# 58 -> 34 el 2026-09-19 (tarde): los nueve scripts de sondeo de la particula
+# —24 sitios— movidos a archive/codigo/investigacion/particula_RETIRADA_2026-08-01/
+# con su bitacora. Estaban en src/, el cajon de los vivos, con lineas como
+# `M_PHI = 40.70` escritas como valores en uso. Ninguno era importado por codigo
+# vivo. Se archivan y no se borran: son la prueba de la que sale la retirada,
+# incluida la medicion que la excluyo (la cizalla cruda pide m_phi > 70.3 eV).
+_TOPE_R60 = 34
 _DEUDA_REAL["R60"] = _n60
 _DEUDA_MAX["R60"] = _TOPE_R60
 check("R60 la deuda del registro de retracciones no crece",
@@ -3250,7 +3256,10 @@ try:
                 else:
                     continue
                 break
-    _TOPE_R44B = 20                 # 14 -> 0: los 14 recompilados; SOLO BAJA
+    # 20 -> 0 el 2026-09-19: las 19 celdas subidas a 6 decimales con la misma
+    # logica que las mide, mas la ultima (Sigma m_nu en Paper 3). El detector
+    # ademas dejo de contar lo que se declara aproximado.
+    _TOPE_R44B = 0                  # 14 -> 0 -> 20 -> 0; SOLO BAJA
     _DEUDA_REAL["R44b"] = len(_r44b)
     _DEUDA_MAX["R44b"] = _TOPE_R44B
     check("R44b la deuda de constantes redondeadas en TABLAS no crece",

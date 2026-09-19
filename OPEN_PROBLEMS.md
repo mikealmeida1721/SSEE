@@ -202,9 +202,9 @@ epoch de bariogénesis. Estas son dos temperaturas físicamente distintas.
 
 **Resultado numérico Paper B (ssee_paperB_DW.py) — RESULTADO NEGATIVO:**
 
-Script `src/pB_inflation/ssee_paperB_DW.py` evalúa el segundo problema de Paper B: el mecanismo
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-de producción de φ-DM (m_φ=40.70 eV) que reproduce Ω_φDM h²=0.0688.
+Script `src/pB_inflation/ssee_paperB_DW.py` evalúa el segundo problema de Paper B: el
+mecanismo de producción de la φ-DM **retirada** (m_φ=40.70 eV) que reproducía Ω_φDM h²=0.0688.
 
 - Mecanismo Dodelson-Widrow (mezcla activo-estéril): el ángulo requerido es
   sin²(2θ)_DW = 4.7846×10⁻⁵ (fórmula Boyarsky-Ruchayskiy-Shaposhnikov 2009).
@@ -1336,9 +1336,10 @@ sustracción de enteros, no hay offset 22.
    que cualquier predicción dimensional de SSEE usa una escala física fija.
 
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-**Cascada (actualizada):** Σm_ν alimenta a $m_\varphi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)=40.70$ eV
+**Cascada (retirada 2026-08-01):** ~~Σm_ν alimenta a $m_\varphi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)=40.70$ eV
 en P6 (ver OP-9). Con OP-14 resuelto y OP-9 refinado, la cadena $\varphi,\pi \to \Sigma m_\nu \to m_\varphi$
-es ahora **forward-prediction sin parámetros libres**. El antiguo eslabón más débil queda cerrado.
+es forward-prediction sin parámetros libres.~~ La cadena cerraba unidades, pero su destino
+—la partícula— no tenía de qué estar hecho. Σm_ν sigue vigente; lo que colgaba de ella, no.
 
 > **Nota histórica (lo de abajo precede a la resolución 2026-06-04).** El registro
 > del ataque 2026-05-23 se conserva por honestidad: muestra por qué la forma antigua
@@ -2330,8 +2331,9 @@ que si aparece en la abundancia de DM es porque esa abundancia **hereda las mism
 que todo lo demás → **origen compartido** (cogénesis), no dos procesos separados.
 
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-El truco que lo hace atacable (misma jugada que OP-17/$k_{fs}$): **$m_\phi=40.70$ eV ya está
-fijo** (forward), así que casi no queda libertad. Cada mecanismo de producción tiene una
+~~El truco que lo hace atacable (misma jugada que OP-17/$k_{fs}$): **$m_\phi=40.70$ eV ya
+está fijo** (forward), así que casi no queda libertad.~~ *(Histórico: retirada la partícula,
+la palanca que lo hacía atacable ya no existe; el blanco ω_c/ω_b = 5.331 sí sigue en pie.)* Cada mecanismo de producción tiene una
 fórmula de abundancia $\Omega_{\rm DM}(\text{params})$; con los params ya clavados, **cada
 mecanismo predice un número** para $\omega_c/\omega_b$, y solo hay UNO que valga:
 $$\omega_c/\omega_b = \mathrm{KAL_0}\cdot n_s = 5.5214\times0.96556 = 5.331.$$
@@ -2342,7 +2344,7 @@ Pasos (papel + `op19_omega_c_mechanism.py`, factible en hardware actual):
 2. **Mapa:** las ~4 rutas de producción de un bosón ligero — *misalignment* (tipo ALP/axión),
    *freeze-in*, *producción gravitacional*, *cogénesis/ADM* — con su fórmula de abundancia.
 > 🔴 **Histórico:** el filtro descrito usaba `m_φ=40.70 eV`, retirado el 2026-08-01. El método (fijar una cantidad y ver qué predice cada fórmula) sigue siendo válido; la cantidad concreta, no.
-3. **Filtro:** meter $m_\phi=40.70$ eV fijo en cada fórmula → cada una predice un
+3. **Filtro** *(histórico)*: meter el retirado $m_\phi=40.70$ eV fijo en cada fórmula → cada una predice un
    $\omega_c/\omega_b$; comparar con 5.331. Los que fallan por órdenes de magnitud mueren.
 4. **Veredicto:** si sobrevive uno → derivar $\mathrm{KAL_0}\cdot n_s$ de su Lagrangiano (= el
    paper). Si ninguno → resultado igual: no es relic estándar → empuja al origen primordial

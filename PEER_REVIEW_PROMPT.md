@@ -63,8 +63,10 @@ resolve it** (a fixable path, not just a rejection). Evaluate at minimum:
   check the distinction holds.
 - The two-Ω_m structure (dynamic 0.160 vs CMB 0.320) and whether its usage is
   internally consistent and clearly justified where it appears.
-- Treatment of tensions: S₈ (claimed resolved at 0.04σ vs KiDS via the
-  two-sector extension), mean fσ₈ (claimed to tie ΛCDM), H₀ (two-stage
+- Treatment of tensions: S₈ — ~~claimed resolved at 0.04σ vs KiDS via the
+  two-sector extension~~ **retired 2026-08-01**; the live claim is that there
+  was no tension to resolve once A_s is left free (S₈ = 0.7555 ± 0.0192 against
+  raw KiDS-1000, 0.11σ) — mean fσ₈ (claimed to tie ΛCDM), H₀ (two-stage
   screening cascade). Are the claims proportionate to the evidence?
 - Whether the open-problems catalog honestly covers the real weaknesses, or
   whether you find gaps the author has not declared.

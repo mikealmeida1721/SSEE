@@ -453,9 +453,24 @@ REGLAS = {
         ambito="manuscript/*.tex, submission_PRD/*.tex, *.md, src/**.py",
         archivo="manuscript/SSEE_Paper6_Growth.tex",
         exenciones=[("texto que lo narra explícitamente como retirado", None)],
+        # 2026-09-19: dos casos mas, y NO son de una regla nueva — son el
+        # alcance que le falto a esta. Los dos son defectos REALES del commit
+        # 1f05380^, uno por cada pregunta que cerro el punto ciego: el item
+        # eximido por el «archived» de su vecino, y la frase que afirma
+        # vigencia pese a llevar la marca tres lineas mas abajo.
         mutacion=[("la partícula retirada presentada como vigente",
                    "\\section{Introduction: why",
-                   "The particle mass is 40.70 eV.\n\\section{Introduction: why")],
+                   "The particle mass is 40.70 eV.\n\\section{Introduction: why"),
+                  ("un item eximido por la marca del item de al lado",
+                   "\\section{Introduction: why",
+                   "\\begin{itemize}\n\\item Papers archived (Zenodo).\n"
+                   "\\item Canonical particle m_phi = 40.70 eV, forward.\n"
+                   "\\end{itemize}\n\\section{Introduction: why"),
+                  ("una frase que AFIRMA vigencia dentro de un parrafo marcado",
+                   "\\section{Introduction: why",
+                   "Canonical phi-DM particle m_phi = 40.70 eV (forward "
+                   "prediction, zero fitting).\nRetired numbers purged from "
+                   "text and figures.\n\\section{Introduction: why")],
     ),
 
     # ── Lote 2026-09-08 (2/2) · las 24 que corrian sin prueba de mutacion ──

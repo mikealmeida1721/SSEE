@@ -379,7 +379,7 @@ from the gravitational-production integral is deferred to Paper B.
 
 1. CMB peak ℓ₁ outside 221 ± 3 by more than 2σ in a new measurement
 2. DESI DR2+ requiring Ωm > 0.20 in the dynamic BAO sector
-3. S₈ measured above 0.85 by Euclid weak-lensing (two-sector φ-DM predicts S₈ ≈ 0.76)
+3. ~~S₈ measured above 0.85 by Euclid weak-lensing (two-sector φ-DM predicts S₈ ≈ 0.76)~~ — **retired 2026-08-01** with the second sector; the live single-sector figure is S₈ = 0.7555 ± 0.0192
 4. k_fs cutoff absent or at significantly different scale in Euclid/DESI Y3 P(k) (2026–28)
 5. Tensor-to-scalar ratio r ≠ φ⁻¹⁰ = 0.00813 measured by LiteBIRD (~2032)
 6. |w₀ + 0.840| > 3σ confirmed by DESI DR5 or Euclid

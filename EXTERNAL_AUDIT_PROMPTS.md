@@ -24,13 +24,15 @@ QUÉ AFIRMA EL MODELO (para que sepas qué atacar, NO para que lo aceptes):
 - CONTEO DE PARÁMETROS (verifícalo con lupa): el ajuste CMB es "k=2" — de los 6 de ΛCDM,
   SSEE fija 4 por álgebra (ω_b, ω_c, n_s, H₀-derivado) y deja EXACTAMENTE 2 libres: A_s y τ.
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-  Afirman ΔBIC que favorece a SSEE. OJO: m_φ (40.70 eV) y Ω_φDM (0.14889) NO se cuentan
+  Afirman ΔBIC que favorece a SSEE. ~~OJO: m_φ (40.70 eV) y Ω_φDM (0.14889) NO se cuentan
   como libres — se presentan como predicciones FORWARD; el MCMC de Paper 6 que las flota
   con priors planos se declara TEST DE CONSISTENCIA (el dato aterriza en el punto forward a
-  0.24σ), no conteo de libres. Comprueba que este encuadre sea honesto y no doble-conteo.
+  0.24σ), no conteo de libres.~~ **RETIRADO 2026-08-01** — ya no hay partícula que contar:
+  no era el conteo lo que fallaba, era que la entidad no tenía de qué estar hecha.
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-- Extensión φ-DM: partícula m_φ=40.70 eV, con predicción forward pre-registrada
-  k_fs=0.754 h/Mpc (dato aún no medido, DESI Y3/Euclid), y S₈=0.758 (0.04σ KiDS).
+- ~~Extensión φ-DM: partícula m_φ=40.70 eV, con predicción forward pre-registrada
+  k_fs=0.754 h/Mpc (dato aún no medido, DESI Y3/Euclid), y S₈=0.758 (0.04σ KiDS).~~
+  **RETIRADO 2026-08-01** (ver el aviso de arriba): un solo sector, S₈=0.7555±0.0192.
 - LOOK-ELSEWHERE: el diccionario cerrado de constantes tiene 55 nombres / 25 valores
   distintos / 490 razones; afirman que w₀ y wₐ son identidades EXACTAS (|d|=0) y cada una
   1 de 490 a ±0.0005. Declaran ABIERTAMENTE un competidor near-miss para wₐ (SOLAR/NYX,
@@ -95,9 +97,10 @@ QUÉ AFIRMA EL MODELO (para saber qué atacar, NO para aceptarlo):
   0.24σ vs DESI DR2 (Pantheon+; rango 0.2–1.8σ según compilado). H₀=3(φ+π)²=67.96 vía
   SH0ES×f_screen. CMB "k=2" (fija 4 de 6; EXACTAMENTE 2 libres {A_s, τ}), ΔBIC favorece SSEE.
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-  Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 = predicciones FORWARD (no libres; el MCMC de
+  ~~Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 = predicciones FORWARD (no libres; el MCMC de
   Paper 6 que las flota es test de consistencia, 0.24σ), k_fs=0.754 h/Mpc (forward pre-registrado),
-  S₈=0.758 (0.04σ KiDS). "Minimal-parameter", 3 postulados (D,S,I), OP-1..OP-19 declarados.
+  S₈=0.758 (0.04σ KiDS).~~ **RETIRADO 2026-08-01.**
+  "Minimal-parameter", 3 postulados (D,S,I), OP-1..OP-19 declarados.
 - Diccionario cerrado de constantes: 55 nombres / 25 valores / 490 razones, regido por ley de
   carga q(φ)=+1,q(π)=−1 + copia/no-auto-suma/Ω-once; look-elsewhere w₀,wₐ = 1 de 490 a ±0.0005
   (identidades exactas |d|=0); competidor wₐ (SOLAR/NYX) declarado abiertamente. Repo del
@@ -177,9 +180,9 @@ QUÉ AFIRMA EL MODELO (para saber qué juzgar, NO para aceptarlo):
   SH0ES×f_screen. CMB "k=2": fija 4 de los 6 de ΛCDM, deja EXACTAMENTE 2 libres {A_s, τ};
   ΔBIC favorece SSEE por parsimonia (no por mejor χ²).
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-- Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 son predicciones FORWARD (no libres);
+- ~~Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 son predicciones FORWARD (no libres);
   predicción pre-registrada FALSABLE k_fs=0.754 h/Mpc (dato aún no medido: DESI Y3/Euclid);
-  S8=0.758 (0.04σ KiDS).
+  S8=0.758 (0.04σ KiDS).~~ **RETIRADO 2026-08-01** — ver el aviso de arriba.
 - "Minimal-parameter framework", 3 postulados (D,S,I), problemas abiertos OP-1..OP-19
   DECLARADOS explícitamente. Diccionario algebraico cerrado (55 nombres/25 valores/490
   razones); look-elsewhere w0,wa = 1 de 490 a ±0.0005 (identidades exactas), con el único

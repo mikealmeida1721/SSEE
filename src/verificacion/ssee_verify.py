@@ -487,6 +487,109 @@ _EXENTO_RETR = ("retract", "withdraw", "supersed", "retirad", "previously",
                 "dej\u00f3 de", "en cuesti\u00f3n", "hist\u00f3ric")
 
 
+_ITEM_R69 = re.compile(r"^\s*(?:[-*+]\s|\d+[.)]\s)")
+_CITA_R69 = re.compile(r"^\s*>")
+# Corta por final de oracion. El lookahead pide que lo siguiente ABRA algo
+# (mayuscula, parentesis, macro LaTeX, negrita): asi «m_phi = 40.70 eV.» no
+# parte una lista de decimales ni una cita «Almeida et al.».
+_ORA_R69 = re.compile(r"(?<=[.;:])\s+(?=[A-Z(\\*«¿$])")
+# Palabras que AFIRMAN que algo esta en vigor. No son lo contrario de las
+# marcas: son de otro eje. Un texto puede llevar las dos, y cuando las lleva
+# en la MISMA oracion sobre el MISMO valor, se contradice a si mismo — y eso
+# es un error aunque el valor no estuviera retirado.
+_VIGENTE_R69 = ("canonical", "canónic", "status", "current", "vigente",
+                "adopted", "adoptad", "[x]", "in force", "en vigor")
+# Verbos y adverbios que ponen la afirmacion en pasado. Sin esto, la frase que
+# NARRA como se anunciaba el valor se leeria como si lo anunciara ella.
+_PASADO_R69 = ("previous", "earlier", "former", "was ", "were ", "anterior",
+               "antes ", "se anunci", "announced")
+
+
+def _re_quita_cita(_l):
+    return _CITA_R69.sub("", _l, count=1)
+
+
+def _unidad(_lns, _i):
+    """P-A: el bloque que un lector lee como UNA sola afirmacion.
+    Un item de lista (con sus lineas de continuacion indentadas), una linea de
+    cita, o un parrafo entre lineas en blanco.
+
+    El detalle que costo una vuelta: dos items CONSECUTIVOS no son la misma
+    unidad aunque sean vecinos y de la misma clase. Si no se corta ahi, el
+    «archived» de «- [x] Zenodo v6 — Papers 1-7 archived» vuelve a eximir al
+    item de abajo, que es justamente el caso que abrio esta regla."""
+    def _cl(_l):
+        if not _l.strip(): return "vacio"
+        if _CITA_R69.match(_l): return "cita"
+        if _ITEM_R69.match(_l): return "item"
+        return "prosa"
+    # Dos items consecutivos son DOS afirmaciones; dos lineas de cita
+    # consecutivas son UN SOLO bloque citado. La diferencia importa: los
+    # banners de este repo son blockquotes de diez lineas cuya marca vive en
+    # la primera («> BANNER PARTICULA RETIRADA»), y tratarlas por separado
+    # producia 74 falsos positivos de golpe. Un item DENTRO de la cita
+    # («> - [x] …») si abre unidad propia.
+    _es_item_cita = lambda _l: bool(_ITEM_R69.match(_re_quita_cita(_l)))
+    _ini = _i
+    while _ini > 0:
+        _cc = _cl(_lns[_ini])
+        if _cc == "item":
+            break                                   # esta linea ABRE la unidad
+        if _cc == "cita" and _es_item_cita(_lns[_ini]) and _ini != _i:
+            break
+        _ant = _lns[_ini - 1]
+        if not _ant.strip():
+            break
+        if _cl(_ant) == "item" and _lns[_ini].startswith((" ", "\t")):
+            _ini -= 1; break                        # continuacion de ese item
+        if _cl(_ant) != _cl(_lns[_ini]):
+            break
+        _ini -= 1
+        if _cl(_lns[_ini]) == "cita" and _es_item_cita(_lns[_ini]):
+            break
+    # Hacia adelante la unidad crece mientras la linea siguiente NO abra otra
+    # afirmacion. Y «abrir otra» se decide por SANGRIA, no solo por el
+    # marcador: una continuacion como «      + self-consistent Hubble cascade»
+    # empieza por «+» y parece una vinena, pero esta mas indentada que el item
+    # que abre la unidad, asi que le pertenece. (Sin esto, la unidad se
+    # quedaba en la primera linea y una marca escrita en la segunda no
+    # contaba. Lo encontro el propio control de la regla, que es para lo que
+    # esta.) Un sub-item anidado cae del mismo lado a proposito: forma parte
+    # de la afirmacion de su padre.
+    _sang = len(_lns[_ini]) - len(_lns[_ini].lstrip())
+    _fin = _i
+    while _fin + 1 < len(_lns):
+        _s = _lns[_fin + 1]
+        if not _s.strip():
+            break
+        _cs = _cl(_s)
+        _ss = len(_s) - len(_s.lstrip())
+        if _ss > _sang:                             # mas indentada: es suya
+            _fin += 1
+            continue
+        if _cs == "item" or (_cs == "cita" and _es_item_cita(_s)):
+            break                                   # empieza OTRA afirmacion
+        if _cs != _cl(_lns[_fin]):
+            break
+        _fin += 1
+    return _ini, _fin
+
+
+def _afirma_vigencia(_uni, _tokens):
+    """P-B: devuelve la oracion que afirma el valor como vigente, o None.
+    Exige las tres cosas a la vez EN LA MISMA ORACION: el valor retirado, una
+    palabra que afirme vigencia, y ninguna marca ni verbo en pasado."""
+    for _o in _ORA_R69.split(_uni.replace("\n", " ")):
+        if not any(_t in _o for _t in _tokens):
+            continue
+        _ol = _o.lower()
+        if any(_e.lower() in _ol for _e in _EXENTO_RETR): continue
+        if any(_v in _ol for _v in _PASADO_R69): continue
+        if any(_v in _ol for _v in _VIGENTE_R69):
+            return " ".join(_o.split())
+    return None
+
+
 def _presenta_como_vigente(_txt, _tokens):
     """Lineas con un valor retractado y sin marca de retraccion EN SU VENTANA.
     La ventana es +-1 linea porque en prosa LaTeX el «retracted» que califica
@@ -534,32 +637,71 @@ def _presenta_como_vigente(_txt, _tokens):
             if not _cabecera_retirada(_i):
                 _malas.append(_ln.strip())
             continue
-        # +-3 (2026-09-07): en LaTeX justificado a ~72 columnas el
-        # «withdrawn» que califica al valor cae 2-3 lineas mas abajo.
-        # Con +-1 daba 3 falsos positivos (P8:882, Unified:596/809),
-        # todos parrafos que SI narran la retirada.
-        # PUNTO CIEGO DECLARADO (2026-09-19). La ventana exime si la marca
-        # aparece en cualquier parte de las siete lineas. Eso deja pasar un
-        # caso real: un parrafo que afirma algo retirado, con la palabra
-        # «retired» tres lineas mas abajo usada para OTRA cosa («retired
-        # numbers purged from text AND figures»). Paso en el README.
+        # ── R60 CRECE · LA UNIDAD DE AFIRMACION, Y EL AFIRMADOR DE VIGENCIA ──────
         #
-        # Se intento acotar por CERCANIA y no sirve: medido, el falso positivo
-        # tenia su marca a 162 caracteres y dos retractaciones legitimas de los
-        # papers a 180 y 199. Tampoco sirve exigir la misma frase: en los dos
-        # casos legitimos el «withdrawn»/«retracted» va en la frase SIGUIENTE,
-        # igual que en el falso. La distincion es de referente, no de forma, y
-        # una regla textual no la ve.
+        # Historia de este sitio, porque es la leccion:
+        #   +-1  (2026-09-07) → 3 falsos positivos en prosa LaTeX justificada.
+        #   +-3  (2026-09-07) → los arreglo, y abre el agujero de abajo.
+        #   R60+ (2026-09-19) → se sustituye la ventana por la UNIDAD.
         #
-        # Asi que se declara y se mide en vez de fingir que no existe: el
-        # trinquete de deuda es el que vigila que esto no crezca, y la lectura
-        # a ojo de los .md de cara al lector sigue siendo necesaria.
-        _vent = " ".join(_lns[max(0, _i - 3):_i + 4]).lower()
-        if any(_e.lower() in _vent for _e in _EXENTO_RETR):
-            continue
+        # Con +-3 un parrafo quedaba exento si la palabra «retired» aparecia en
+        # cualquiera de las siete lineas, aunque calificara a OTRA COSA. Lo
+        # declare punto ciego tras medir UNA sola dimension —la distancia— y
+        # ver que no separaba: el falso positivo tenia su marca a 162
+        # caracteres y dos retractaciones legitimas a 180 y 199.
+        #
+        # Medir la distancia era la pregunta equivocada. Al interrogar el
+        # error de verdad (banco de las 43 exenciones que la ventana concedia
+        # sobre el arbol vivo mas el README del commit anterior al arreglo)
+        # salieron DOS preguntas que si separan, y un segundo caso del mismo
+        # error que yo no habia visto: un item «- [x] Canonical phi-DM
+        # particle (m_phi = 40.70 eV…)» eximido por la palabra «archived» del
+        # item de ARRIBA, que hablaba de Zenodo.
+        #
+        # P-A · LA UNIDAD DE AFIRMACION. La exencion no vale «cerca»: vale
+        #   DENTRO de lo que un lector lee como una sola afirmacion — un item
+        #   de lista, una linea de cita, un parrafo. Es la generalizacion de
+        #   lo que ya se habia arreglado para las filas de tabla: un vecino no
+        #   exonera. Caza el caso del «archived», y con el 22 sitios mas que
+        #   la ventana venia tapando en los .md.
+        #
+        # P-B · EL AFIRMADOR DE VIGENCIA. Una unidad puede llevar su marca de
+        #   retraccion y aun asi AFIRMAR el valor como vigente en una de sus
+        #   frases («Canonical phi-DM particle m_phi = 40.70 eV (forward
+        #   prediction, zero fitting)»). Si una oracion junta el valor con una
+        #   palabra que afirma vigencia y no lleva ninguna marca ni verbo en
+        #   pasado, es una afirmacion viva aunque el parrafo la retracte tres
+        #   lineas mas abajo. Esta es la que caza el caso que declare
+        #   incerrable.
+        #   Se mide a nivel ORACION a proposito: a nivel parrafo mataba 6 de
+        #   los 41 casos legitimos, porque la narracion de una retraccion cita
+        #   necesariamente la palabra con que el valor se anunciaba
+        #   («announced a canonical particle… that particle was retracted»).
+        #
+        # HASTA DONDE VE, dicho en voz alta: las dos son reglas de FORMA. La
+        # pregunta del REFERENTE —si la marca gobierna este valor o el de al
+        # lado— se interrogo y no hizo falta para separar este banco; queda
+        # sin implementar, y por tanto sin probar. Si algun dia aparece un
+        # resto que P-A y P-B no vean, es ahi donde hay que mirar primero, y
+        # esta regla tendra que crecer otra vez. No es absoluta: es la que da
+        # la talla con lo que hoy sabemos preguntar.
+        # El ambito de seccion manda sobre las dos: si la ficha entera va bajo
+        # un encabezado que ya narra la retraccion, sus lineas no tienen que
+        # repetir la marca — eso ya se decidio el 2026-09-07 y sigue siendo
+        # cierto. (En la primera version puse P-A ANTES de esta comprobacion y
+        # marque 28 lineas de fichas OP-9/OP-17 que su propio titulo declara
+        # cerradas por disolucion.)
         if _cabecera_retirada(_i):
             continue
-        _malas.append(_ln.strip()[:70])
+        _a, _b = _unidad(_lns, _i)
+        _uni = "\n".join(_lns[_a:_b + 1])
+        if not any(_e.lower() in _uni.lower() for _e in _EXENTO_RETR):
+            _malas.append(_ln.strip()[:70])          # P-A
+            continue
+        _viva = _afirma_vigencia(_uni, _tokens)      # P-B
+        if _viva:
+            _malas.append(_viva[:70])
+            continue
     return _malas
 
 
@@ -606,6 +748,45 @@ check("V-L3-mphi  el detector distingue vigente de retractado",
       bool(_presenta_como_vigente(_c_viva, _RETRACTADOS))
       and not _presenta_como_vigente(_c_muerta, _RETRACTADOS),
       "1 forma viva marcada, 1 declarada retirada eximida")
+
+# ── CONTROL DEL ALCANCE NUEVO DE R60 (R53: toda regla trae su control del otro lado) ──────────
+# Los dos casos son REALES, tomados del README en el commit 1f05380^ — el
+# anterior al arreglo. La regla se prueba contra el estado sucio, que es la
+# unica manera de saber que habria servido: correrla solo contra el arbol ya
+# limpio prueba que no molesta, no que detecta.
+_c69_item = "\n".join((
+    "- [x] Zenodo v6 — Papers 1-7 archived (DOI 10.5281/zenodo.20093447)",
+    "- [x] Canonical phi-DM particle (m_phi = 40.70 eV, forward prediction)",
+    "      + self-consistent Hubble cascade"))
+_c69_frase = ("**Status (2026-07-10):** all 10 papers compile clean. Canonical "
+              "phi-DM particle m_phi = 40.70 eV (forward prediction, zero "
+              "fitting) with pre-registered free-streaming imprint.\n"
+              "Full hostile-referee audit closed: verification guardian fully "
+              "green + figure-level pdftotext sweep (retired numbers purged "
+              "from text AND figures).")
+# Y los dos del otro lado: narracion legitima que NO se puede marcar.
+_c69_narra = ("An earlier version introduced a canonical particle candidate of "
+              "mass $m_\\phi=40.70$~eV (now retracted), motivated by an "
+              "apparent $S_8$ tension.")
+_c69_banner = "\n".join((
+    "> **BANNER PARTICULA RETIRADA (2026-08-01).**",
+    "> Se retiran el segundo sector y la particula m_phi=40.70 eV, por dos",
+    "> razones independientes."))
+check("R60 un vecino no exonera: la exencion vale dentro de la unidad, no cerca",
+      bool(_presenta_como_vigente(_c69_item, ("40.70",)))
+      and not _presenta_como_vigente(_c69_banner, ("40.70",)),
+      "el item eximido por el «archived» del item de ARRIBA queda marcado; "
+      "el banner de cita multilinea, que SI es una sola unidad, exento")
+check("R60 una frase que AFIRMA vigencia no se exime por su parrafo",
+      bool(_presenta_como_vigente(_c69_frase, ("40.70",)))
+      and not _presenta_como_vigente(_c69_narra, ("40.70",)),
+      "«Canonical … 40.70 eV (forward prediction)» marcado pese al «retired» "
+      "tres lineas mas abajo; «a canonical candidate … (now retracted)» exento")
+check("R60 el detector no se comio la superficie que dice mirar",
+      len(_unidad(_c69_item.split("\n"), 1)) == 2
+      and _unidad(_c69_item.split("\n"), 1) == (1, 2),
+      "el item de dos lineas se delimita en (1,2): no absorbe al de arriba "
+      "ni se queda corto en su continuacion indentada")
 
 # Dos sectores phi-DM (P6) — tras el reframe omega_m-directo (2026-06-18) la
 # particion sale SOLA, sin factor: Om_CDM (=Om_m,dyn=0.160, DESI) + Om_phiDM =
@@ -1627,6 +1808,11 @@ _n60 = sum(len(_v) for _v in _r60.values())
 # 10 filas que estaban ocultas —una fila retractada exoneraba a sus vecinas—
 # y se limpiaron 16. Detector MAS estricto y deuda MENOR: las dos cosas a la
 # vez, que es la senal de que lo que se limpio era real.
+# 58 -> 58 el 2026-09-19 (tarde), con el alcance nuevo: el numero NO se movio, y por eso
+# hay que decir que no significa lo mismo. El alcance nuevo destapo 29 sitios que la
+# ventana de +-3 lineas venia tapando; se limpiaron los 29. El tope se queda
+# donde estaba porque un trinquete solo baja, pero el 58 de esta tarde se
+# mide con un detector que ve mas que el de esta manana.
 _TOPE_R60 = 58
 _DEUDA_REAL["R60"] = _n60
 _DEUDA_MAX["R60"] = _TOPE_R60

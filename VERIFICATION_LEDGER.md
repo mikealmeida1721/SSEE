@@ -437,9 +437,10 @@ dropeado. OP-3 NO está "RESUELTO". **ABIERTO.**
    no llevaba neutrinos masivos; con ellos sobra un 2.3% menos de grumo. Y NO es
    un baseline que el modelo deba resolver: el 2.74σ es artefacto de fijar A_s.)*
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-3. **✓ two-sector φ-DM (TITULAR, forward):** el free-streaming en k_fs=0.754
+3. ~~**✓ two-sector φ-DM (TITULAR, forward):** el free-streaming en k_fs=0.754
    h/Mpc (de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo) baja σ₈_eff a 0.7470 → **S₈_eff=0.758
-   = 0.04σ KiDS-1000**. RESUELVE la tensión S₈, sin parámetros libres.
+   = 0.04σ KiDS-1000**. RESUELVE la tensión S₈, sin parámetros libres.~~
+   **RETIRADO 2026-08-01** — y la tensión que resolvía tampoco existía.
 4. **○ refinamiento no-lineal (Nivel 2, diferido):** el cierre no-lineal pleno
    con feedback bariónico (N-body SSEE, ~5k–20k CPU-h) queda pendiente; HMcode-2020
    da una corrección ~0.4% (B_σ₈≈0.996). No altera el resultado lineal forward.
@@ -926,10 +927,10 @@ Usa Ω_m,CMB=0.308881 → √(Ω_m,CMB/0.3)=1.0147 (S₈ es amplitud gravitacion
    S₈ = 0.814854·1.0147 = 0.826827 → **2.74σ KiDS-1000** (DES-Y3 2.82σ).
    *(2026-09-08: era σ₈=0.8335 → S₈=0.846 → 3.5σ, de una corrida sin `.ini`,
    fuera del repo y sin neutrinos masivos. Ver la fila del techo en §B.)*
-2. **✓ two-sector φ-DM (TITULAR, forward):** σ₈_eff = 0.7470 (free-streaming
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+2. ~~**✓ two-sector φ-DM (TITULAR, forward):** σ₈_eff = 0.7470 (free-streaming
    CLASS, k_fs=0.754 de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo). S₈_eff = 0.7470·1.0147 =
-   **0.758 → 0.04σ KiDS-1000**. RESUELVE la tensión.
+   **0.758 → 0.04σ KiDS-1000**. RESUELVE la tensión.~~ **RETIRADO 2026-08-01.**
 
 **Veredicto:** la cadena S₈ es aritméticamente correcta y usa la Ω_m correcta.
 El titular es el two-sector (0.758, 0.01σ). La cadena vieja G=0.866 →

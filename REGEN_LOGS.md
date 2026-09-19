@@ -48,9 +48,9 @@ publicado se mueve, se corrige el paper.
 
 ## Bitácora
 
-- **#1 `p6_class` — CERRADO 2026-07-26.** La corrida limpia reproduce lo
 > 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
-  publicado: Σm_ν 0.06849, m_φ 40.7024, k_fs 0.7542, σ₈ 0.7470. El paper tenía
+- **#1 `p6_class` — CERRADO 2026-07-26.** La corrida limpia reproducía lo entonces
+  publicado: Σm_ν 0.06849, y los hoy retirados m_φ 40.7024, k_fs 0.7542, σ₈ 0.7470. El paper tenía
   razón; la prueba archivada era la vieja. Ningún número del paper se movió.
 - **#2 `p3_rd` — CERRADO 2026-07-26.** r_d = 147.174 (0.32σ) sin cambio. θ* SÍ
   se movió y el Registro se actualizó: anchor 0.59668/1.05σ → **0.59667/1.00σ**;

@@ -1865,6 +1865,38 @@ _f69 = []
 if _r69_sitios(_c69a, "0.8273"):     _f69.append("el banner AL DIA se marco")
 if not _r69_sitios(_c69b, "0.8273"): _f69.append("el banner RANCIO no se marco")
 if _r69_sitios(_c69c, "0.8273"):     _f69.append("marco prosa que no se declara canonica")
+# R69b — LO MISMO EN LOS PAPERS, que es donde R69 no llegaba.
+#
+# R69 nacio mirando los cajones .md porque ahi se midio el problema (21 copias
+# del banner). Pero el 2026-09-20, media hora despues, Mike pregunto si Max
+# encontraria mas cosas y la respuesta estaba en los .tex: SIETE papers (1, 2,
+# 3, 5, 7, 8, 9) citaban S8=0.7555 sin una sola mencion de KiDS-Legacy. Ninguno
+# MIENTE —el 0.7555 es correcto y va atribuido a KiDS-1000— pero un referee que
+# lea Paper 5 y luego Paper 6 ve dos titulares distintos para el mismo sector y
+# pregunta cual es. Lo que se exige no es prohibir el valor viejo: es que el
+# documento no deje al lector sin el vigente.
+_S8_VIEJO69 = "0.7555"
+_r69b = []
+for _f in (sorted((ROOT.parent / "manuscript").glob("*.tex"))
+           + sorted((ROOT.parent / "submission_PRD").glob("*.tex"))):
+    _txt = _f.read_text(errors="ignore")
+    if _S8_VIEJO69 in _txt and _S8_CANON69 and _S8_CANON69 not in _txt:
+        _r69b.append(_f.name)
+check("R69b ningun paper cita el S8 superado sin dar tambien el vigente",
+      not _r69b, ", ".join(_r69b) if _r69b
+      else f"todos los .tex que citan {_S8_VIEJO69} citan tambien "
+           f"{_S8_CANON69}; el lector nunca se queda con el titular viejo")
+_f69b = []
+if not ("0.7555" in "S8=0.7555 solo" and "0.8273" not in "S8=0.7555 solo"):
+    _f69b.append("no detecta el documento que solo trae el viejo")
+if ("0.7555" in "S8=0.7555 y hoy 0.8273" and "0.8273" not in "S8=0.7555 y hoy 0.8273"):
+    _f69b.append("marca un documento que SI trae los dos")
+check("R69b el detector distingue citar-el-viejo de dejar-al-lector-sin-el-vigente",
+      not _f69b, "; ".join(_f69b) if _f69b
+      else "2 casos: el texto que solo trae 0.7555 se marca; el que trae los "
+           "dos valores, no — citar el resultado de KiDS-1000 es legitimo, "
+           "dejarlo como unico titular no")
+
 check("R69 el detector distingue el banner al dia del rancio",
       not _f69, "; ".join(_f69) if _f69
       else "3 casos reales: el banner del 2026-09-20 pasa; el de agosto, que "

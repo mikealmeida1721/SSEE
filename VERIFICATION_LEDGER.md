@@ -965,6 +965,23 @@ presente**, bajo su propio cartel de RETIRADO y bajo la línea 2 ya tachada, y
 además mezclaba el 0.01σ (que era del viejo 0.766) con el 0.758 (que era 0.04σ).
 Ese titular murió con la partícula el 2026-08-01.
 
+**Propagación completa (2026-09-20), por niveles y en orden.** La primera vez
+que se metió este resultado se hizo al revés —tomando el número y escribiéndolo
+a mano en los documentos según se iban descubriendo— y el síntoma fue el de
+siempre: documentos llamando canon a un valor ya superado. Rehecha siguiendo
+`project_propagation_order`:
+
+| nivel | artefacto | estado |
+|---|---|---|
+| N6 | `src/ssee_core.py` | n/a — S₈ es RESULTADO de corrida, no constante algebraica |
+| N7 | `CANONICAL_VALUES.yaml` | ✅ fuente: `S8_ssee_unif: 0.8273` |
+| N8 | `results/logs/` | ✅ 2 logs con 0.7555 verificados: son artefactos legítimos de SU corrida (R3, 2026-08-01, con fecha dentro). Nada que re-correr |
+| N9 | `results/figures/` | ✅ 0 de 42 figuras muestran el valor |
+| N10 | `manuscript/*.tex` | ✅ 7 papers (1,2,3,5,7,8,9): nota al sitio que cita a P6; fila nueva en las tablas de registro de P1 y P9; **criterio de falsación de P1 reescrito** |
+| N11 | `docs/*.pdf` | ✅ 7 recompilados (bibtex + 2 pasadas), 0 refs rotas, verificado en la capa de texto |
+| N12 | este Registro | ✅ esta entrada |
+| N13 | guardián + memorias | ✅ R69 y R69b; memoria del método |
+
 **Titular vigente:** un solo sector, Ω_m=0.308881. Contra KiDS-1000 crudo con
 A_s libre, S₈=0.7555±0.0192 (0.11σ). Contra KiDS-Legacy con A_s **clavado** al
 del CMB —cero libres cosmológicos— S₈=0.8273 predicho contra 0.8265±0.0176

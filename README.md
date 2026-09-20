@@ -439,7 +439,7 @@ Full development history in [CHANGELOG.md](CHANGELOG.md).
       target was retired on 2026-08-01 with the particle)
 - [ ] Paper B — ab-initio baryogenesis (OP-1 closure) + φ-DM relic abundance
 - [ ] OP-5 closure — full N-body S₈ (BAHAMAS / IllustrisTNG-SSEE)
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
 - [x] ~~OP-9 residual — UV origin of the multiplier 594.28 (SOLAR² · KRYSTOS_V)~~ —
       **closed by dissolution 2026-08-01**: with the particle retracted there is no
       multiplier left whose UV origin to derive.

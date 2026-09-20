@@ -1,9 +1,24 @@
 # Estado de la revisión del sector de crecimiento (S₈, fσ₈, φ-DM)
 
-> **Abierto 2026-07-30. NO propagado al canon a propósito.** Este documento existe
-> para que nadie —incluida una sesión futura de Claude— use como vivos unos números
-> que están bajo revisión con evidencia en contra. `CANONICAL_VALUES.yaml` y los
-> papers siguen intactos hasta que Mike decida y el análisis esté completo.
+> ⬛ **CERRADO 2026-09-20 — la decisión se tomó y la propagación se hizo.**
+> Este cajón se abrió el 2026-07-30 diciendo «NO propagado al canon a propósito
+> … hasta que Mike decida y el análisis esté completo». Las dos condiciones se
+> cumplieron hace tiempo y el cajón se quedó abierto: Mike decidió el
+> **2026-08-01** (se retiran la partícula y el segundo sector) y el
+> **2026-09-19** (se clava `A_s` al valor del CMB), y las dos cosas están
+> propagadas a `CANONICAL_VALUES.yaml`, a Paper 6 y al guardián. Así que su
+> aviso —«no uséis estos números como vivos»— ya **no** describe la situación:
+> hoy son los canónicos.
+>
+> **Canónico hoy:** un solo sector, `Ω_m=0.308881`; contra KiDS-1000 con `A_s`
+> libre `S₈=0.7555±0.0192` (0.11σ), y contra **KiDS-Legacy con `A_s` clavado
+> —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido
+> (0.05σ)**. Lo de abajo se conserva como el registro de cómo se llegó ahí:
+> es la mesa de trabajo de aquella revisión, no el estado del modelo.
+>
+> **Lo único que sigue vivo de este documento es el «Pendiente» del final:**
+> el modelo de RSD contra BOSS crudo (R1/R2 con LPT). Eso NO se ha hecho.
+> Ficha viva: OP-26.
 
 ## Qué se midió (contra datos CRUDOS, no contra valores publicados)
 
@@ -96,4 +111,8 @@ Beutler reporta que su fσ₈ en z=0,61 ya se desvía ~1,4σ de Planck ΛCDM.
 Orden obligatorio (ver [[project-propagation-order]]): `ssee_core` → yaml →
 **logs** → figuras → tex → docs → Registro → guardián. El nivel de los logs es el
 que siempre se olvida: un `.log` es un artefacto congelado y hay que re-correrlo.
-**Nada de esto se toca hasta que BOSS esté cerrado y Mike decida el alcance.**
+~~**Nada de esto se toca hasta que BOSS esté cerrado y Mike decida el alcance.**~~
+🔴 **Superado 2026-09-20:** Mike decidió el alcance el 2026-08-01 y el
+2026-09-19, y la propagación se hizo en ese orden. Lo que sigue sin tocarse,
+y a propósito, es **sólo BOSS** (OP-26): el barrido Kaiser fue sondeo, no
+resultado, y el fσ₈ canónico espera a R1/R2 con LPT.

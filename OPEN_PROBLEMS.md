@@ -207,7 +207,7 @@ epoch de bariogénesis. Estas son dos temperaturas físicamente distintas.
 
 **Resultado numérico Paper B (ssee_paperB_DW.py) — RESULTADO NEGATIVO:**
 
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
 Script `src/pB_inflation/ssee_paperB_DW.py` evalúa el segundo problema de Paper B: el
 mecanismo de producción de la φ-DM **retirada** (m_φ=40.70 eV) que reproducía Ω_φDM h²=0.0688.
 
@@ -1400,7 +1400,7 @@ sustracción de enteros, no hay offset 22.
    $0.9530$ eV (constante de normalización fija del Modelo Estándar relíquica↔masa), igual
    que cualquier predicción dimensional de SSEE usa una escala física fija.
 
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
 **Cascada (retirada 2026-08-01):** ~~Σm_ν alimenta a $m_\varphi = \Sigma m_\nu^{\rm active}\,(\mathrm{SOLAR}^2\cdot\mathrm{KRYSTOS}_V)=40.70$ eV
 en P6 (ver OP-9). Con OP-14 resuelto y OP-9 refinado, la cadena $\varphi,\pi \to \Sigma m_\nu \to m_\varphi$
 es forward-prediction sin parámetros libres.~~ La cadena cerraba unidades, pero su destino
@@ -2395,7 +2395,7 @@ del espectro $n_s$)*. El $n_s$ es la pista: es una propiedad del **espectro prim
 que si aparece en la abundancia de DM es porque esa abundancia **hereda las mismas semillas**
 que todo lo demás → **origen compartido** (cogénesis), no dos procesos separados.
 
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
 ~~El truco que lo hace atacable (misma jugada que OP-17/$k_{fs}$): **$m_\phi=40.70$ eV ya
 está fijo** (forward), así que casi no queda libertad.~~ *(Histórico: retirada la partícula,
 la palanca que lo hacía atacable ya no existe; el blanco ω_c/ω_b = 5.331 sí sigue en pie.)* Cada mecanismo de producción tiene una

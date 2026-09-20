@@ -34,7 +34,7 @@ Falsifiable predictions — fixed by algebraic construction, not fitted (Structu
 | CMB peak ℓ₁ | 221 | Planck PR4: ~220 | Δℓ = 1 |
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.16σ |
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
 | ~~m_φ (φ-DM mass)~~ | ~~40.70 eV algebraic~~ | — | **RETRACTED 2026-08-01** |
 | k_fs | 0.754 h/Mpc algebraic | DESI Y3/Euclid P(k): 2026–2028 | Future prediction |
 | (w₀, wₐ) vs DESI DR3 | same fixed point (−0.840, −0.670) | DR3 w₀wₐCDM (2027): trajectory 0.05σ (DR1) → 0.24σ (DR2, errors −40%); expect ~0.5σ if centrals persist; >3σ joint exclusion falsifies | **Pre-registered prediction** |
@@ -63,7 +63,7 @@ SSEE/
 ├── class_ssee/                      — CLASS Boltzmann fork — SSEE .ini configs + plots
 │   ├── ssee_v36.ini                 — SSEE MIRA sector (Ω_m=0.3199)
 │   ├── ssee_v36_nomira.ini          — SSEE dynamic sector only (Ω_m=0.160)
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
 │   ├── ssee_v36_twosector.ini       — φ-DM two-sector (ncdm m=40.70 eV)
 │   └── ssee_v36_IS.ini              — IS viscosity (cs2_fld=0.001)
 ├── data/                            — observational data (DESI DR2, Planck PR4, clusters)
@@ -178,12 +178,27 @@ Lo que **sí** se audita de Paper 6 es el resultado canónico contra dato crudo,
 un solo sector y `A_s` libre:
 
 ```
-S₈ = 0.7555 ± 0.0192   →  0.11σ vs KiDS-1000 (0.759 ± 0.024)
-σ₈ = 0.7446 ± 0.0189
-χ²_min = 265.4 / 216 dof
-log: results/logs/growth_2026-07/R3_ssee_kids_S8.json
+KiDS-1000 (A_s libre, 225 puntos):
+  S₈ = 0.7555 ± 0.0192   →  0.11σ vs KiDS-1000 (0.759 ± 0.024)
+  σ₈ = 0.7446 ± 0.0189
+  χ²_min = 265.4 / 216 dof
+  log: results/logs/growth_2026-07/R3_ssee_kids_S8.json
+
+KiDS-Legacy (A_s CLAVADO al del CMB — CERO libres cosmologicos, 357 puntos)
+  — este es el TITULAR vigente desde 2026-09-20:
+  S₈ = 0.8273 predicho  vs  0.8265 ± 0.0176 medido  →  0.05σ
+  χ²_min = 417.971 / 357 puntos, 8 libres (todos nuisance)
+  logA de la cizalla = 3.0255 ± 0.0396  →  0.49σ del 3.04483 que fija el CMB
+  control con fondo Planck igual de rigido: 1.01σ · χ²=418.955
+  log: results/logs/kids_legacy_sseefijo.log
+  CAUTELA que el auditor debe verificar: los tres χ² caben en 1.0 sobre 357
+  puntos ⟹ la cizalla NO discrimina entre los modelos. Lo que separa es el
+  conteo de parametros. Y KiDS-Legacy es de 2025-03-25: NO hay prioridad temporal.
 ```
-Expected output (verification):
+~~Expected output (verification):~~ 🔴 **HISTÓRICO — los dos bloques de abajo
+son la salida esperada de la partícula RETIRADA el 2026-08-01. NO se verifican:
+describen un sector que ya no existe. Se conservan para que quien audite
+reconozca estos números si los encuentra en un documento viejo.**
 ```
 m_φ = 40.70 eV = Σm_ν × (SOLAR²·KRYSTOS_V)  (algebraic, zero free parameters)
 k_fs = 0.754 h/Mpc  (falsable DESI Y3/Euclid 2026–2028)
@@ -403,7 +418,7 @@ the closed dictionary. Genuine pre-committed predictions concern **unreleased** 
 | n_s | 1 − φ⁻⁷ | 0.96556 | Planck 2018 | Postdiction |
 | H₀ | 3(φ+π)² | 67.962 | Planck 2018 | Postdiction |
 | r_d | CAMB, ω_m-direct Ω_m,CMB=0.30889 | 147.17 Mpc | Planck 2018: 147.09 ± 0.26 Mpc | 0.3σ postdiction |
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
 | ~~m_φ~~ | ~~Σm_ν × SOLAR²·KRYSTOS_V~~ | ~~40.70 eV~~ | — | **RETRACTED 2026-08-01** — no longer a prediction of the model |
 | k_fs | free-streaming (m_φ) | 0.754 h/Mpc | DESI Y3/Euclid 2026–28 | Future prediction (cond. OP-9) |
 | r | φ⁻¹⁰ | 0.00813 | LiteBIRD (~2032) | Future prediction |

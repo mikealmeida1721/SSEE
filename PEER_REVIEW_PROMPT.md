@@ -66,7 +66,14 @@ resolve it** (a fixable path, not just a rejection). Evaluate at minimum:
 - Treatment of tensions: S₈ — ~~claimed resolved at 0.04σ vs KiDS via the
   two-sector extension~~ **retired 2026-08-01**; the live claim is that there
   was no tension to resolve once A_s is left free (S₈ = 0.7555 ± 0.0192 against
-  raw KiDS-1000, 0.11σ) — mean fσ₈ (claimed to tie ΛCDM), H₀ (two-stage
+  raw KiDS-1000, 0.11σ). **Updated 2026-09-20:** against the KiDS-Legacy release
+  the author goes further and fixes A_s to the CMB value, leaving *no* free
+  cosmological parameter, and predicts S₈ = 0.8273 against 0.8265 ± 0.0176
+  measured. Scrutinise two things in particular: (a) the three χ² compared span
+  1.0 over 357 points, so the shear does not discriminate between models — check
+  the author does not overclaim that it does; (b) KiDS-Legacy is arXiv:2503.19441,
+  March 2025, sixteen months *before* this analysis — verify no temporal priority
+  is claimed anywhere. — mean fσ₈ (claimed to tie ΛCDM), H₀ (two-stage
   screening cascade). Are the claims proportionate to the evidence?
 - Whether the open-problems catalog honestly covers the real weaknesses, or
   whether you find gaps the author has not declared.

@@ -1789,6 +1789,89 @@ check("R68 el detector distingue el cambio de contenido del comentario LaTeX",
       else "4 casos: el texto cambiado se marca; el comentario anadido (en la "
            "linea y como linea nueva) y el porcentaje escapado, exentos")
 
+# --- R69: los CAJONES no pueden declarar un titular que el canonico ya movio
+#
+# POR QUE EXISTE (2026-09-20). Lo dijo Mike, y describe un mecanismo, no un
+# descuido: la auditoria tiene DOS mitades —los CAJONES de la mesa de trabajo
+# (los .md de la raiz, que es con lo que se trabaja) y DOCS (los papers, que es
+# lo que se publica)— y «cuando solo revisas los papers los corriges, pero se
+# deja de lado los cajones, que se quedan desactualizados». Medido ese dia:
+# VEINTIUNA copias identicas del mismo banner, repartidas en 8 cajones, todas
+# diciendo «Canonico hoy: ... S8=0.7555±0.0192», seis semanas despues de que
+# eso dejara de ser el titular. Entre ellas, EXTERNAL_AUDIT_PROMPTS.md —el
+# documento que se le manda a un auditor externo— con fecha de julio: quien
+# audita desde ahi audita un modelo que ya no existe, y sus hallazgos llegan
+# contra criterios muertos sin culpa suya.
+#
+# R60 no lo veia y no tenia por que: vigila lo RETIRADO, y el 0.7555 no esta
+# retirado — es correcto, solo que ya no es el titular. Esto es otra cosa:
+# deriva de TITULAR. La fuente unica es CANONICAL_VALUES.yaml, asi que la
+# regla es que quien diga «canonico hoy» cite lo que el canonico dice hoy.
+import yaml as _y69
+_S8_CANON69 = None
+try:
+    _cv69 = _y69.safe_load((ROOT.parent / "CANONICAL_VALUES.yaml")
+                           .read_text(errors="ignore"))
+    for _blq in (_cv69.values() if isinstance(_cv69, dict) else []):
+        if isinstance(_blq, dict) and "S8_ssee_unif" in _blq:
+            _S8_CANON69 = str(_blq["S8_ssee_unif"])
+except Exception:
+    _S8_CANON69 = None
+_MARCA69 = re.compile(r"[Cc]an[oó]nico hoy|[Tt]itular vigente", re.I)
+
+
+# narraciones de lo que un documento DECIA antes: citan el titular viejo a
+# proposito, para explicar que se quedo rancio. No son declaraciones vivas.
+_PASADO69 = re.compile(r"\bdec[ií]a\b|\bllevaba\b|\bdijo\b|\bpas[oó]\b|"
+                       r"\bera\b|v1\.4|hist[oó]ric", re.I)
+
+
+def _r69_sitios(_txt, _s8):
+    """Unidades que se declaran canonicas y NO citan el S8 canonico.
+
+    Por UNIDAD (parrafo), no por linea: en AUDIT.md el rotulo «este es el
+    TITULAR vigente» encabeza un bloque y el valor viene debajo. Medir por
+    linea marcaba ese sitio, que esta bien."""
+    _mal = []
+    for _p in re.split(r"\n\s*\n", _txt):
+        if not _MARCA69.search(_p) or not _s8:
+            continue
+        if _PASADO69.search(_p):            # narra lo que decia, no lo declara
+            continue
+        if _s8 not in _p:
+            _mal.append(" ".join(_p.split())[:70])
+    return _mal
+
+
+_r69 = []
+if _S8_CANON69:
+    for _f in sorted(ROOT.parent.glob("*.md")):
+        if _f.name in ("CHANGELOG.md", "MEMORY.md"):      # historia: cita su epoca
+            continue
+        _r69 += [f"{_f.name}: {_x}" for _x in _r69_sitios(
+            _f.read_text(errors="ignore"), _S8_CANON69)]
+check("R69 ningun cajon declara un titular que el canonico ya movio",
+      not _r69, "; ".join(_r69[:3]) if _r69
+      else f"todas las declaraciones de «canonico hoy» en los cajones citan "
+           f"S8={_S8_CANON69}, el valor de CANONICAL_VALUES.yaml")
+# CONTROL (R53): tiene que distinguir el banner al dia del rancio, que es el
+# caso REAL del 2026-09-20 — no un ejemplo inventado.
+_c69a = ("> RETIRADO. **Canonico hoy:** un solo sector. Contra KiDS-Legacy con "
+         "A_s clavado, S8=0.8273 predicho vs 0.8265 medido.")
+_c69b = ("> RETIRADO. Canonico hoy: un solo sector, y contra KiDS crudo con "
+         "A_s libre S8=0.7555±0.0192 (0.11 sigma).")
+_c69c = "Un parrafo cualquiera que menciona S8=0.7555 sin declararse canonico."
+_f69 = []
+if _r69_sitios(_c69a, "0.8273"):     _f69.append("el banner AL DIA se marco")
+if not _r69_sitios(_c69b, "0.8273"): _f69.append("el banner RANCIO no se marco")
+if _r69_sitios(_c69c, "0.8273"):     _f69.append("marco prosa que no se declara canonica")
+check("R69 el detector distingue el banner al dia del rancio",
+      not _f69, "; ".join(_f69) if _f69
+      else "3 casos reales: el banner del 2026-09-20 pasa; el de agosto, que "
+           "decia «canonico hoy S8=0.7555» en 21 copias, se marca; y la prosa "
+           "que cita el 0.7555 sin declararlo canonico queda exenta (es un "
+           "valor correcto, solo que ya no es el titular)")
+
 # --- R65: si un script declara su log fuente, sus numeros deben estar ahi
 # POR QUE EXISTE (2026-09-08). regenerate_fig8_bao_residuals.py llevaba los
 # MAP de las cadenas escritos a mano con el rotulo "(paper2_3models, jul-9,

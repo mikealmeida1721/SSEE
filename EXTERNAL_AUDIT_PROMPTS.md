@@ -1,9 +1,28 @@
-# Prompts de Auditoría Externa — SSEE (2026-07-18, v1.4)
+# Prompts de Auditoría Externa — SSEE (2026-09-20, v1.5)
 
 Dos auditores independientes. **Auditor A** revisa solo los papers (PDFs).
 **Auditor B** revisa el ZIP completo del repositorio (código + datos + docs + papers).
 Ambos: hostiles pero justos, verifican contra el contenido, no inventan. Los dos deben
 revisar **narrativa, física y matemática** por igual.
+
+> ⬛ **ANTES DE MANDAR ESTE PROMPT: comprueba la fecha de arriba contra
+> `CANONICAL_VALUES.yaml` y contra el último commit.** Este documento describe
+> el estado del modelo, así que envejece igual que cualquier otro número
+> escrito a mano. Pasó el 2026-09-20: la v1.4 llevaba fecha de **julio** y
+> decía «canónico hoy: S₈=0.7555», seis semanas después de que ese dejara de
+> ser el titular. Un auditor que reciba esto desactualizado audita un modelo
+> que ya no existe, y sus hallazgos llegan contra criterios muertos — no por
+> culpa suya.
+>
+> **Titular vigente (2026-09-20):** sector de crecimiento con `A_s` clavado al
+> valor que el CMB da bajo el fondo algebraico ⟹ **cero libres cosmológicos**;
+> `S₈ = 0.8273` predicho vs `0.8265 ± 0.0176` medido (KiDS-Legacy).
+> **Y las dos cautelas que el auditor DEBE verificar que no se sobrevenden:**
+> (a) los tres χ² comparados caben en 1.0 sobre 357 puntos ⟹ **la cizalla NO
+> discrimina** entre los modelos; lo que separa es el conteo de parámetros.
+> (b) KiDS-Legacy es arXiv:2503.19441, de **marzo de 2025**, dieciséis meses
+> ANTERIOR a este análisis: no puede reclamarse prioridad temporal en ningún
+> sitio. Si encuentras que se reclama, es un hallazgo.
 
 ---
 
@@ -23,13 +42,13 @@ QUÉ AFIRMA EL MODELO (para que sepas qué atacar, NO para que lo aceptes):
 - H₀ = 3(φ+π)² = 67.96 km/s/Mpc, obtenido vía SH0ES × f_screen (no como número puro).
 - CONTEO DE PARÁMETROS (verifícalo con lupa): el ajuste CMB es "k=2" — de los 6 de ΛCDM,
   SSEE fija 4 por álgebra (ω_b, ω_c, n_s, H₀-derivado) y deja EXACTAMENTE 2 libres: A_s y τ.
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
   Afirman ΔBIC que favorece a SSEE. ~~OJO: m_φ (40.70 eV) y Ω_φDM (0.14889) NO se cuentan
   como libres — se presentan como predicciones FORWARD; el MCMC de Paper 6 que las flota
   con priors planos se declara TEST DE CONSISTENCIA (el dato aterriza en el punto forward a
   0.24σ), no conteo de libres.~~ **RETIRADO 2026-08-01** — ya no hay partícula que contar:
   no era el conteo lo que fallaba, era que la entidad no tenía de qué estar hecha.
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
 - ~~Extensión φ-DM: partícula m_φ=40.70 eV, con predicción forward pre-registrada
   k_fs=0.754 h/Mpc (dato aún no medido, DESI Y3/Euclid), y S₈=0.758 (0.04σ KiDS).~~
   **RETIRADO 2026-08-01** (ver el aviso de arriba): un solo sector, S₈=0.7555±0.0192.
@@ -96,7 +115,7 @@ QUÉ AFIRMA EL MODELO (para saber qué atacar, NO para aceptarlo):
 - Fondo (w₀=−0.840, wₐ=−0.670, Ω_DE, Ω_m,dyn) de φ,π con CERO parámetros ajustados;
   0.24σ vs DESI DR2 (Pantheon+; rango 0.2–1.8σ según compilado). H₀=3(φ+π)²=67.96 vía
   SH0ES×f_screen. CMB "k=2" (fija 4 de 6; EXACTAMENTE 2 libres {A_s, τ}), ΔBIC favorece SSEE.
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
   ~~Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 = predicciones FORWARD (no libres; el MCMC de
   Paper 6 que las flota es test de consistencia, 0.24σ), k_fs=0.754 h/Mpc (forward pre-registrado),
   S₈=0.758 (0.04σ KiDS).~~ **RETIRADO 2026-08-01.**
@@ -179,7 +198,7 @@ QUÉ AFIRMA EL MODELO (para saber qué juzgar, NO para aceptarlo):
 - H0 = 3(φ+π)² = 67.96 km/s/Mpc como ANCLA adimensional (no identidad dimensional), vía
   SH0ES×f_screen. CMB "k=2": fija 4 de los 6 de ΛCDM, deja EXACTAMENTE 2 libres {A_s, τ};
   ΔBIC favorece SSEE por parsimonia (no por mejor χ²).
-> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. Canónico hoy: un solo sector, `Ω_m=0.308881`, y contra KiDS crudo con `A_s` libre `S₈=0.7555±0.0192` (0.11σ). Lo de abajo es histórico.
+> 🔴 **RETIRADO 2026-08-01.** La partícula φ-DM y el segundo sector fueron retirados: `Ω_φDM` salía de restar una densidad medida menos `1+w₀`, que es un número de la ecuación de estado. **Canónico hoy:** un solo sector, `Ω_m=0.308881`. Contra KiDS-1000 crudo con `A_s` libre, `S₈=0.7555±0.0192` (0.11σ). Y contra **KiDS-Legacy con `A_s` CLAVADO al del CMB** —cero libres cosmológicos— `S₈=0.8273` predicho vs `0.8265±0.0176` medido (0.05σ), χ²=417.97/357 (2026-09-20; KiDS-Legacy es de 2025-03-25, dieciséis meses anterior: no se reclama prioridad). Lo de abajo es histórico.
 - ~~Extensión φ-DM: m_φ=40.70 eV y Ω_φDM=0.14889 son predicciones FORWARD (no libres);
   predicción pre-registrada FALSABLE k_fs=0.754 h/Mpc (dato aún no medido: DESI Y3/Euclid);
   S8=0.758 (0.04σ KiDS).~~ **RETIRADO 2026-08-01** — ver el aviso de arriba.

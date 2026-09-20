@@ -222,7 +222,7 @@ dimensional pasa.
 | V-L2-08 | αK | 3·Ω_DE·Ω_m,dyn | 0.4033024589 | ✓ | verificado |
 | V-L2-09 | βc | −AURA | −3.9978473099 | ✓ | verificado |
 | V-L2-10 | m_φ | Σm_ν^act·(Ω⁴+AURA·KAL₀) — forward-pred | 36.9463 eV | ✓ | verificado (dim.) |
-| V-L2-11 | k_fs | free-streaming de m_φ (output CLASS) | 0.754 h/Mpc | — | pendiente L3 |
+| V-L2-11 | ~~k_fs~~ | ~~free-streaming de m_φ (output CLASS)~~ | ~~0.754 h/Mpc~~ | — | 🔴 **RETIRADO 2026-08-01, antes de L3** (no «pendiente»: no hay trabajo que hacer, no hay free-streaming que caracterizar) |
 | V-L2-12 | r | 12α/N²  (α=φ⁴/3, N=2φ⁷) | 0.00813062 | ✓ | verificado |
 | V-L2-13 | f_screen | αK/(3·MIRA) = (π−φ)/Ω² | 0.0672532703 | ✓ | verificado |
 
@@ -281,7 +281,7 @@ apoya en mecanismos de Capa 3 aún no verificados — no pueden pasar de
 - ~~**k_fs** (V-L2-11)~~: **RETIRADO 2026-08-01** junto con la partícula — no hay free-streaming que caracterizar.
 
 **Estado Capa 2:** 11/13 `verificado` (numérica + dimensional + identidades);
-1 `ABIERTO` (H₀^alg — adimensional vs km/s/Mpc); 1 `pendiente L3` (k_fs).
+1 `ABIERTO` (H₀^alg — adimensional vs km/s/Mpc); 1 `RETIRADO antes de L3` (k_fs, 2026-08-01).
 m_φ pasa a `verificado (dim.)` tras la cadena forward-prediction canónica; su
 derivación del multiplicador alcanza la Capa 3 (OP-9). Ninguno pasa a
 `resuelto` todavía: la comprobación 3 (derivación) de varios alcanza la Capa 3.
@@ -958,9 +958,18 @@ Usa Ω_m,CMB=0.308881 → √(Ω_m,CMB/0.3)=1.0147 (S₈ es amplitud gravitacion
    CLASS, k_fs=0.754 de m_φ=40.70 eV SOLAR²·KRYSTOS, cero fiteo). S₈_eff = 0.7470·1.0147 =
    **0.758 → 0.04σ KiDS-1000**. RESUELVE la tensión.~~ **RETIRADO 2026-08-01.**
 
-**Veredicto:** la cadena S₈ es aritméticamente correcta y usa la Ω_m correcta.
-El titular es el two-sector (0.758, 0.01σ). La cadena vieja G=0.866 →
-σ₈=0.7023 → S₈=0.7253 (fuente Ω_m,dyn) está **retirada**. **Verificado.**
+**Veredicto (reescrito 2026-09-20):** la cadena S₈ es aritméticamente correcta
+y usa la Ω_m correcta — eso sigue en pie. Lo que **ya no** se sostiene es a qué
+llamaba titular: decía «el titular es el two-sector (0.758, 0.01σ)» **en
+presente**, bajo su propio cartel de RETIRADO y bajo la línea 2 ya tachada, y
+además mezclaba el 0.01σ (que era del viejo 0.766) con el 0.758 (que era 0.04σ).
+Ese titular murió con la partícula el 2026-08-01.
+
+**Titular vigente:** un solo sector, Ω_m=0.308881. Contra KiDS-1000 crudo con
+A_s libre, S₈=0.7555±0.0192 (0.11σ). Contra KiDS-Legacy con A_s **clavado** al
+del CMB —cero libres cosmológicos— S₈=0.8273 predicho contra 0.8265±0.0176
+medido (0.05σ). Las dos cadenas viejas, la two-sector (0.758) y la G=0.866 →
+σ₈=0.7023 → S₈=0.7253 (fuente Ω_m,dyn), están **retiradas**. **Verificado.**
 
 ## V-L4-DES — referencia DES-Y3 inconsistente entre scripts — **ABIERTO**
 

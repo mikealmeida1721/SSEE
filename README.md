@@ -32,7 +32,8 @@
 | Ωm,CMB | 0.30889 (= ωm/h², ωm-direct) | Planck 2018: 0.3153 | 0.88σ | ✅ |
 | n_s | 1 − φ⁻⁷ = 0.96556 | Planck 2018: 0.9649 | 0.16σ | ✅ |
 | αT (GW speed) | 0 exact | GW170817: \|αT\| < 10⁻¹⁵ | exact match | ✅ |
-| **S₈ (single sector, A_s free, MCMC vs raw ξ±)** | **0.7555 ± 0.0192** | KiDS-1000: 0.759±0.024 | **0.11σ** | ✅ |
+| **S₈ (single sector, A_s FIXED by the CMB — no free cosmological parameter)** | **0.8273 predicted** | KiDS-Legacy: 0.8265±0.0176 | **0.05σ** | ✅ |
+| S₈ (single sector, A_s free, MCMC vs raw ξ±) | 0.7555 ± 0.0192 | KiDS-1000: 0.759±0.024 | 0.11σ | ✅ |
 | αK (kineticity, z=0) | 0.4033 algebraic | Euclid forecast: < 0.1 | testable 2026–2028 | ⏳ |
 | **(w₀, wₐ) vs DESI DR3** | **same fixed point (−0.840, −0.670)** | **DR3 w₀wₐCDM (2027)** — trajectory 0.05σ (DR1) → 0.24σ (DR2, errors −40%, still inside 68%); ~0.5σ expected if DR2 centrals persist; >3σ joint exclusion falsifies | **pre-registered** | ⏳ |
 
@@ -47,6 +48,23 @@
 > against the *compressed* S₈ statistic (itself derived under ΛCDM) with A_s fixed
 > to Planck. Fitted directly to the 225 raw KiDS-1000 ξ± points with A_s free and a
 > **single** matter sector, SSEE gives S₈ = 0.7555 ± 0.0192 — **0.11σ**. See Paper 6.
+>
+> **Closed 2026-09-20 against KiDS-Legacy** (357 raw ξ± points; Wright et al.
+> 2025, [arXiv:2503.19441](https://arxiv.org/abs/2503.19441) — published sixteen
+> months before this analysis, **no temporal priority is claimed**). The shear
+> asks for log(10¹⁰A_s) = 3.0255 ± 0.0396 against the 3.04483 the CMB fixes
+> *under the same algebraic background*: **0.49σ** (Planck background, held
+> equally rigid: 1.01σ). So A_s need not be refitted at all — fixing it costs
+> nothing (χ² = 417.97 with **eight free parameters, all nuisance, none
+> cosmological**, vs 418.34 with A_s free; ΔBIC = +6.24), and S₈ = 0.8273
+> becomes a *prediction* against 0.8265 ± 0.0176 measured. **Two cautions, in
+> the open:** the three χ² compared span 1.0 over 357 points, so the shear does
+> **not** discriminate between these models — what separates them is the
+> parameter count; and KiDS-1000 had asked for log(10¹⁰A_s) = 2.863 ± 0.051,
+> 3.5σ away, with the two releases differing from each other by 2.5σ. What
+> changed is the data (the n(z) calibration, by the collaboration's own
+> Appendix I), not the model. A future release returning to the lower
+> amplitude would reopen the sector.
 
 ---
 
@@ -196,7 +214,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 | Mean fσ₈ tension (6 surveys, single-sector) | 0.70σ | the two-sector variant (0.93σ) is RETIRED with the particle (2026-08-01); canonical fσ₈ vs raw BOSS is pending (R1/R2) |
 
 **Diagnostic:** with A_s *fixed* to Planck the model predicts an S₈ above weak-lensing surveys.
-That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of the model (k=2), and with A_s free the MCMC against raw KiDS-1000 ξ± gives S₈ = 0.7555 ± 0.0192 — **0.11σ, no tension**. The two-sector φ-DM extension that formerly closed it (S₈ = 0.758) is RETIRED.
+That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of the model (k=2), and with A_s free the MCMC against raw KiDS-1000 ξ± gives S₈ = 0.7555 ± 0.0192 — **0.11σ, no tension**. The two-sector φ-DM extension that formerly closed it (S₈ = 0.758) is RETIRED. **Update 2026-09-20:** against KiDS-Legacy the amplitude the shear asks for lands 0.49σ from the one the CMB fixes under the same background, so A_s need not be free either — fixed, the sector predicts S₈ = 0.8273 against 0.8265 ± 0.0176 measured, with **no free cosmological parameter**.
 
 ### Paper 6 (Growth against raw data — single sector)
 
@@ -264,7 +282,7 @@ That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of th
 | CMB peak 3 (ℓ) | **814** | 922 | 814 | full ω_m necessary |
 | RMS vs ΛCDM | **0.14%** | 31.5% | — | ~220× degradation with bare Ω_m,dyn |
 | ~~α free-streaming (CLASS output, φ-DM particle)~~ | ~~**1.117 Mpc/h**~~ | — | — | **RETIRED 2026-08-01**: there is no canonical particle |
-| S₈ (two-sector, canonical particle) — RETIRED 2026-08-01 | **0.758** | — | ~0.83 | superseded by 0.7555±0.0192 (0.11σ), single sector, A_s free |
+| ~~S₈ (two-sector, canonical particle)~~ — RETIRED 2026-08-01 | ~~**0.758**~~ | — | ~0.83 | superseded: single sector gives 0.7555±0.0192 (0.11σ, KiDS-1000, A_s free) and 0.8273 predicted vs 0.8265±0.0176 (0.05σ, KiDS-Legacy, A_s fixed by the CMB) |
 | IS cs² effect on σ₈ | 0.03% | — | — | Negligible ✓ |
 
 *CLASS confirms the full algebraic matter density ω_m (Ω_m,CMB=0.30889) is physically necessary: using the bare dynamical Ω_m,dyn=0.160 instead, all three CMB peaks shift ~10% and the RMS residual jumps from 0.14% to 31.5% (~220×).*

@@ -25,8 +25,11 @@ debilidad**. Una debilidad es algo que ya *afirmamos como cerrado* y que **falla
 referí**. El TEST para saber si un OP es debilidad: *¿alguna afirmación titular del modelo
 depende en secreto de que ese OP esté resuelto?* Si **no** → es frontera (el modelo se para sin
 él). Si **sí** → es carga, y hay que reclasificarla. **A hoy SSEE tiene 0 debilidades:** ningún
-titular (w₀wₐ validado por DESI, k_fs falseable, cascada H con unidades ancladas
-empíricamente) depende de un OP sin resolver. Los OPs son profundizaciones, no huecos que
+titular (w₀wₐ validado por DESI, r=φ⁻¹⁰=0.008131 falseable por LiteBIRD/CMB-S4,
+cascada H con unidades ancladas empíricamente) depende de un OP sin resolver.
+*(Corregido 2026-09-20: aquí decía «k_fs falseable», y k_fs está retirado desde
+el 2026-08-01 con la partícula. El falsificador vivo es r, como ya decía el
+README — los dos documentos de entrada se contradecían.)* Los OPs son profundizaciones, no huecos que
 sostengan lo publicado.
 
 **Readiness para Zenodo:** publicable = **(0 debilidades) + (OPs declarados con honestidad)**.
@@ -433,9 +436,12 @@ B_sigma8 (top-hat integral, k<2 h/Mpc) = **0.9956** (supresión 0.44% en σ₈_e
 
 **El baseline Paper 6 ya está dentro de 1σ DES** (0.09σ). HMcode añade Δσ = 0.03σ de mejora.
 
-**Por qué el baseline está tan bien:** El two-sector φ-DM (m_φ=40.70 eV, k_fs=0.754 h/Mpc)
+~~**Por qué el baseline está tan bien:** El two-sector φ-DM (m_φ=40.70 eV, k_fs=0.754 h/Mpc)
 ya suprime P(k) en k > k_fs, sobre Ω_m,CMB=0.30889 (ω_m-directo). El HMcode añade supresión bariónica
-suave adicional, principalmente a k > 0.5 h/Mpc.
+suave adicional, principalmente a k > 0.5 h/Mpc.~~ 🔴 **RETIRADO 2026-08-01**
+junto con la partícula: no hay segundo sector que suprima P(k), así que esta
+explicación del baseline ya no explica nada. La supresión que queda es la
+bariónica de HMcode sola, sobre un único sector Ω_m=0.308881.
 
 **Nivel 2 — N-body completo (proyección):**
 

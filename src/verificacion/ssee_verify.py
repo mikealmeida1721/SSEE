@@ -609,6 +609,10 @@ _RETRACTADOS = ("40.70", "594.28", "0.14889", "0.14888",
 # prosa que NARRA una retirada: «`72.86` y `73.040` ERAN el mismo enunciado»,
 # «ese «<0.2%» ERA el bug de saturacion». La pregunta que no se hizo cuando se
 # escribieron estas listas fue en que idioma esta escrito lo que vigilan.
+# Lineas que DICTAN el estado actual de una entrada, no narran el pasado:
+# una cabecera de retirada no las autoriza a afirmar en presente (P-C).
+_HISTORICO60 = re.compile(r"hist[oó]ric|en su momento|historical|status change|de la época|de la epoca", re.I)
+_VEREDICTO60 = re.compile(r"[>\s]*\**\s*(veredicto|estado|titular|conclusi[oó]n|verdict|status|headline)\b", re.I)
 _EXENTO_RETR = ("retract", "withdraw", "supersed", "retir", "previously",
                 "no longer", "historic", "RETIRED", "archive",
                 "disuelt", "dissolv", "disoluci", "~~", "\U0001f534", "ya no",
@@ -877,9 +881,64 @@ def _presenta_como_vigente(_txt, _tokens):
         # cierto. (En la primera version puse P-A ANTES de esta comprobacion y
         # marque 28 lineas de fichas OP-9/OP-17 que su propio titulo declara
         # cerradas por disolucion.)
-        if _cabecera_retirada(_i):
-            continue
+        # P-C · EL AMBITO NO CUBRE UNA AFIRMACION EN PRESENTE (2026-09-20).
+        #
+        # Aqui estaba escrito, arriba, que si algun dia aparecia un resto que
+        # P-A y P-B no vieran habria que volver a este sitio. Aparecio, y lo
+        # encontro una auditoria externa (Max): cuatro sitios bajo cabeceras
+        # que YA narran la retraccion y que aun asi afirmaban en presente.
+        # El peor, el veredicto de V-L4-S8 en el Registro: bajo su propio
+        # cartel «🔴 RETIRADO» y con la linea de arriba tachada, remataba «El
+        # titular ES el two-sector (0.758, 0.01sigma)». Tambien OPEN_PROBLEMS
+        # §OP-5, donde bajo una tabla tachada seguia «El two-sector phi-DM
+        # (m_phi=40.70 eV, k_fs=0.754) YA SUPRIME P(k)».
+        #
+        # El fallo no era el ambito: eximir a la ficha de repetir la marca en
+        # cada linea sigue siendo correcto —se decidio el 2026-09-07 y lo
+        # sigue siendo—. El fallo era que el `continue` se llevaba por
+        # delante TAMBIEN a P-B. Una cabecera dice «esto se retiro»; no puede
+        # decir «y ademas lo que escriba debajo en presente es cierto».
+        # Asi que el ambito exime de P-A (no repetir la marca) y NO de P-B
+        # (no afirmar vigencia). Es la misma leccion que R58 el mismo dia: la
+        # exencion vale para lo que calla, no para lo que afirma.
         _a, _b = _unidad(_lns, _i)
+        if _cabecera_retirada(_i):
+            # Sólo las líneas de VEREDICTO. Medido: aplicar P-B a toda unidad
+            # bajo cabecera retirada marca 15 sitios, y 14 son fichas OP-9 /
+            # OP-17 que narran legítimamente lo que el modelo afirmaba
+            # entonces («Canonical particle is now 594.28»). Eso ya se midió
+            # el 2026-09-19 —28 líneas— y por eso el ámbito exime. Un
+            # detector con 93% de falsos positivos obligaría a tachar fichas
+            # históricas enteras: no separa, así que no se aplica.
+            #
+            # Lo que SÍ separa es el TIPO DE LÍNEA. Un «**Veredicto:**» o un
+            # «**Estado:**» no narran el pasado: dictan el estado de la
+            # entrada AHORA, y una cabecera de retirada no puede autorizarlos
+            # a afirmar en presente algo retirado. Ahí estaba el caso real
+            # (V-L4-S8: bajo su cartel 🔴 RETIRADO remataba «El titular ES el
+            # two-sector (0.758, 0.01σ)»).
+            #
+            # HASTA DÓNDE VE: no cubre la prosa corriente bajo cabecera
+            # retirada. El otro sitio que halló la auditoría —OPEN_PROBLEMS
+            # §OP-5, «El two-sector φ-DM … ya suprime P(k)»— no es un
+            # veredicto y esta regla NO lo habría cazado; se corrigió a mano.
+            # Cubrirlo pide la pregunta del REFERENTE que sigue sin
+            # implementar tres párrafos más arriba. Queda dicho.
+            # ... y sólo si NI la línea NI su cabecera se declaran HISTÓRICAS.
+            # Los dos únicos falsos positivos que quedaban lo estaban, por
+            # escrito: «### Contenido histórico (la adopción, tal como se
+            # decidió en su momento)» y «**Status change (2026-06-04)**», que
+            # narra un cambio de estado de junio, no el de hoy. Un veredicto
+            # que dice ser de otra época no pretende ser el vigente.
+            if not _VEREDICTO60.match(_lns[_a].strip()):
+                continue
+            _cab = "\n".join(_lns[max(0, _a - 12):_b + 1])
+            if _HISTORICO60.search(_cab):
+                continue
+            _viva = _afirma_vigencia("\n".join(_lns[_a:_b + 1]), _tokens)
+            if _viva:
+                _malas.append(_viva[:70])
+            continue
         _uni = "\n".join(_lns[_a:_b + 1])
         if not any(_e.lower() in _uni.lower() for _e in _EXENTO_RETR):
             _malas.append(_ln.strip()[:70])          # P-A
@@ -987,6 +1046,28 @@ check("R60 un vecino no exonera: la exencion vale dentro de la unidad, no cerca"
       and not _presenta_como_vigente(_c69_banner, ("40.70",)),
       "el item eximido por el «archived» del item de ARRIBA queda marcado; "
       "el banner de cita multilinea, que SI es una sola unidad, exento")
+# P-C, del otro lado. Los dos casos son REALES: el primero es el veredicto de
+# V-L4-S8 en el Registro tal como estaba antes del 2026-09-20 —lo encontro una
+# auditoria externa (Max)— y el segundo es el sitio de OP-17 que SI debe
+# eximirse porque se declara historico por escrito. Un veredicto dicta el
+# estado de AHORA; si dice ser de otra epoca, no pretende ser el vigente.
+_c70_veredicto = "\n".join((
+    "> 🔴 **RETIRADO 2026-08-01.** La particula phi-DM fue retirada.",
+    "2. ~~two-sector phi-DM (TITULAR): S8_eff = 0.758~~ **RETIRADO.**",
+    "",
+    "**Veredicto:** la cadena S8 es aritmeticamente correcta.",
+    "El titular es el two-sector (0.758, 0.01 sigma). **Verificado.**"))
+_c70_historico = "\n".join((
+    "### Contenido historico (la adopcion, tal como se decidio en su momento)",
+    "",
+    "**Status:** CERRADO / ADOPTADO (Mike, 2026-06-19). CLASS forward real",
+    "@ 40.70 eV propagado a CANONICAL_VALUES.yaml."))
+check("R60 P-C: un VEREDICTO bajo cabecera retirada no se exime, salvo que se declare historico",
+      bool(_presenta_como_vigente(_c70_veredicto, ("two-sector", "0.758")))
+      and not _presenta_como_vigente(_c70_historico, ("40.70",)),
+      "2 casos reales: el veredicto de V-L4-S8 que remataba «el titular ES el "
+      "two-sector» bajo su propio cartel de RETIRADO queda marcado; el "
+      "«Contenido historico» de OP-17, que dice serlo, exento")
 check("R60 una frase que AFIRMA vigencia no se exime por su parrafo",
       bool(_presenta_como_vigente(_c69_frase, ("40.70",)))
       and not _presenta_como_vigente(_c69_narra, ("40.70",)),

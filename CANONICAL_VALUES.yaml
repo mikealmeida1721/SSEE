@@ -35,11 +35,64 @@ canonical:
   # Ver: archive/manuscript_superseded/SSEE_Paper6_phiDM_TWOSECTOR_RETIRED.tex
   # ══════════════════════════════════════════════════════════════════════
 
-  # Amplitud de estructura — CANÓNICO 2026-08-01: MCMC R3 contra dato CRUDO.
-  # SSEE un sector, fondo FIJO por álgebra (Ω_m=0.308881), 9 parámetros libres
-  # (logA + 8 nuisance KiDS) marginalizados contra los 225 puntos de ξ± de
-  # KiDS-1000. Cobaya 4 cadenas MPI, converged, R−1=0.0189, N_eff=42033.
-  # log: results/logs/growth_2026-07/R3_ssee_kids_S8.json
+  # ══════════════════════════════════════════════════════════════════════
+  # AMPLITUD DE ESTRUCTURA — CANÓNICO 2026-09-19: KiDS-LEGACY.
+  # Supersede los valores de KiDS-1000 de más abajo, que NO dejan de ser
+  # correctos (siguen siendo el resultado contra ESE dato) pero ya no son el
+  # canónico de «la cizalla»: la colaboración recalibró n(z) y el dato subió.
+  #
+  # ⚠️ TRAMPA A EVITAR: citar el S8 VIEJO del modelo (0.7555) junto al dato
+  # NUEVO (0.8265) da una tensión APARENTE de 2.73σ que NO existe — son dos
+  # datos distintos, no predicción contra dato. Lo correcto es 0.8193 vs
+  # 0.8265 = 0.30σ. Ver [[project-as-clavado-k1]].
+  #
+  # ── EL TITULAR: MODELO UNIFICADO, CERO LIBRES COSMOLÓGICOS ────────────
+  # Fondo FIJO por álgebra Y A_s FIJO en el valor que el CMB da con ese mismo
+  # fondo. A_s se paga UNA vez, en el CMB, y no se vuelve a cobrar en el
+  # crecimiento. Libres aquí: sólo los 8 nuisance del instrumento.
+  # S8 deja de ser un ajuste y pasa a ser una PREDICCIÓN.
+  logA_cmb_ssee:       3.0448340130228546   # EL BLANCO, y aquí la ENTRADA.
+  sigma8_ssee_unif:    0.8153     # predicción, sin barra propia
+  S8_ssee_unif:        0.8273     # predicción → 0.05σ del dato oficial
+  S8_kids_legacy_dato: 0.8265     # ±0.0176 — posterior oficial ξ± fiducial,
+                                  # calculado de sus muestras (σ8·√(Ωm/0.3))
+  chi2_min_ssee_unif:  417.971   # 357 puntos, 8 libres (todos nuisance)
+                                  # → 349 dof, χ²/dof = 1.1976
+  # CERRADO 2026-09-20, corrida `sseefijo`, 5.71 h, R−1=0.0152 (bounds 0.1134),
+  # 14510 pasos aceptados. log: results/logs/kids_legacy_sseefijo.log
+  # Clavar A_s NO CUESTA NADA: Δχ² = −0.365 frente a dejarlo libre. El signo
+  # negativo es RUIDO de muestreo (el MCMC de 8 dim encontró mejor punto que el
+  # de 9; un mínimo con un parámetro fijo no puede ser menor que con él libre).
+  # Lo que demuestra: el coste de clavarlo es indistinguible de cero.
+  # BIC = 464.99, contra 471.24 (A_s libre) y 471.85 (fondo Planck):
+  #   ΔBIC = +6.24 y +6.86 a favor del unificado — un parámetro MENOS y ajusta
+  #   igual. En la escala de Jeffreys, evidencia fuerte.
+  # NOTA sobre la barra: σ8 se define sobre el espectro LINEAL, así que
+  # log T_AGN (retroalimentación, no lineal) no la mueve. No es un fallo.
+
+  # ── INFORMATIVO, NO TITULAR: la misma corrida con A_s LIBRE ───────────
+  # Sirve para una sola cosa: enseñar que al soltar A_s el dato lo lleva
+  # prácticamente al mismo sitio, o sea que clavarlo no es una imposición.
+  # 9 libres (logA + 8 nuisance) contra los 357 puntos de ξ± de KiDS-Legacy
+  # (Wright+2025, A&A 703, A158, arXiv:2503.19441). R−1=0.0206, 7.73 h.
+  # log: results/logs/kids_legacy_ssee.log
+  sigma8_kids_legacy:  0.8075     # ±0.0160 — propagando ±1σ de logA por CAMB
+  S8_kids_legacy:      0.8193     # ±0.0163 — 0.30σ del posterior oficial
+  chi2_min_kids_legacy: 418.336   # 357 puntos, 9 libres → 348 dof, χ²/dof=1.202
+  logA_kids_legacy:    3.0255     # ±0.0396 — a 0.49σ del blanco del CMB
+  # ⚠️ Los dos resultados NO SE SUMAN: el 0.05σ del titular y el 0.49σ de aquí
+  # son el MISMO hecho visto en dos variables, no dos aciertos independientes.
+
+  # Control con fondo Planck clavado, misma rigidez (9 libres):
+  chi2_min_kids_legacy_lcdmfijo: 418.955    # Δχ²=0.62 — NO distingue modelos
+  logA_kids_legacy_lcdmfijo:     3.0069     # ±0.0368 — 1.03σ de su propio blanco
+  # ══════════════════════════════════════════════════════════════════════
+
+  # ── HISTÓRICO: KiDS-1000 (R3, canónico hasta 2026-09-19) ──────────────
+  # Mismo montaje sobre los 225 puntos de ξ± de KiDS-1000. R−1=0.0189,
+  # N_eff=42033. log: results/logs/growth_2026-07/R3_ssee_kids_S8.json
+  # Pedía logA = 2.863 ± 0.051 = 3.5σ del blanco. Ésa era la tensión que
+  # motivaba la partícula ligera. Los dos releases difieren ENTRE SÍ a 2.5σ.
   sigma8_kids_mcmc:    0.7446     # ±0.0189 — un sector, A_s libre, dato crudo
   S8_kids_mcmc:        0.7555     # ±0.0192 — un sector, A_s libre, dato crudo
   chi2_min_kids_mcmc:  265.4      # 225 puntos, 9 libres → 216 dof, χ²/dof=1.229

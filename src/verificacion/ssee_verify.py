@@ -1835,7 +1835,13 @@ if _n65:
 # cada numero a su algebra, log, dato o cita. Los 10 que quedan son los que
 # NO se pudieron rastrear (valores impresos por corridas que no dejaron log, o
 # sin fuente localizada): siguen contados a proposito, no se les invento origen.
-_TOPE_R65 = 10
+# 2026-09-20: los 10 ultimos rastreados uno a uno. Ocho eran narrativos
+# (numeros de metodos RETIRADOS que el texto conserva como evidencia de por
+# que se retiraron) y se declararon con ORIGEN-VALOR; uno era el sigma(logA)
+# del CMB tecleado a mano (0.014375, que ninguna cadena reproduce) y ahora se
+# RECALCULA de results/chains/ssee_cmb.*.txt; el blanco que lo acompanaba se
+# lee de CANONICAL_VALUES.yaml. Tope a CERO: ya no hay deuda que tolerar.
+_TOPE_R65 = 0
 _DEUDA_REAL["R65"] = _n65
 _DEUDA_MAX["R65"] = _TOPE_R65
 check("R65 la deuda de numeros sin origen no crece",

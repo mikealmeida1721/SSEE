@@ -205,9 +205,11 @@ _MCMC = dict(Rminus1_stop=0.03, max_tries=10000, oversample_power=0.7,
              measure_speeds=False)
 
 
-def _info(nombre, like, extra_params, lentos, chains_dir, covmat=None):
+def _info(nombre, like, extra_params, lentos, chains_dir, covmat=None,
+          loga_fijo=None, salida=None):
     p = dict(extra_params)
-    p['logA'] = dict(LOGA)
+    # loga_fijo != None -> logA deja de ser parametro y entra como constante.
+    p['logA'] = float(loga_fijo) if loga_fijo is not None else dict(LOGA)
     p.update(NUISANCE)
     mcmc = dict(_MCMC, blocking=[[1, lentos], [_RAZON, _RAPIDOS]])
     if covmat:
@@ -217,7 +219,7 @@ def _info(nombre, like, extra_params, lentos, chains_dir, covmat=None):
             'external': like, 'input_params': list(p.keys())}},
         params=p,
         sampler={'mcmc': mcmc},
-        output=f'{chains_dir}/{nombre.replace("loglike_", "")}',
+        output=f'{chains_dir}/{salida or nombre.replace("loglike_", "")}',
         # REANUDAR (2026-09-19). Con force=True y resume=False, relanzar tras
         # un corte BORRABA las cadenas: el 2026-09-19 la maquina se corto con
         # ~680 pasos aceptados por cadena y dos horas de covmat aprendida.
@@ -228,6 +230,23 @@ def _info(nombre, like, extra_params, lentos, chains_dir, covmat=None):
 def info_ssee(chains_dir, covmat=None):
     return _info('loglike_ssee', loglike_ssee, {}, ['logA', 'logT_AGN'],
                  chains_dir, covmat)
+
+
+def info_sseefijo(chains_dir, covmat=None):
+    """LA CONFIGURACION QUE SE PRESENTA (2026-09-19, decision de Mike).
+
+    Fondo de SSEE clavado por algebra Y logA clavado en el valor que el CMB
+    fija con ese mismo fondo (LOGA_CMB_SSEE). El crecimiento NO vuelve a
+    cobrar un parametro que ya se pago en el CMB: A_s se cuenta UNA vez, y
+    solo hasta que OP-18 lo derive de V_0.
+
+    Libres aqui: los 8 nuisance (logT_AGN, A_scale, dz1..dz6). Cero libres
+    cosmologicos. La version con logA suelto (`ssee`) queda como informacion
+    adicional: al soltarlo se va a 0.49 sigma de este valor, o sea a nada.
+    """
+    return _info('loglike_ssee', loglike_ssee, {}, ['logT_AGN'],
+                 chains_dir, covmat, loga_fijo=LOGA_CMB_SSEE,
+                 salida='sseefijo')
 
 
 def info_lcdmfijo(chains_dir, covmat=None):
@@ -258,7 +277,8 @@ if __name__ == '__main__':
                   else '/mnt/datos/SSEE_data/chains_p6/kids_legacy')
     cov = sys.argv[3] if len(sys.argv) > 3 else None
     info = {'ssee': info_ssee, 'lcdm': info_lcdm,
-            'lcdmfijo': info_lcdmfijo}[modelo](chains_dir, cov)
+            'lcdmfijo': info_lcdmfijo,
+            'sseefijo': info_sseefijo}[modelo](chains_dir, cov)
     t0 = time.time()
     run(info)
     print(f'\nTERMINADO en {(time.time()-t0)/3600:.2f} h', flush=True)

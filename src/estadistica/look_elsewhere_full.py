@@ -44,6 +44,9 @@ IRIS=AURA+Ω=8.757 sigue siendo la única entidad copia-raíz+estabilizador (Ley
 
 Fuente del diccionario: SSEE-Vault/Constantes/SOBERANAS.md + SSEE_Constant_Dictionary.md.
 """
+# ORIGEN-VALOR: 0.00064 — distancia |d| del unico casi-valor NO-identidad
+# que abre NYX para wa a +-0.001; lo PRODUCE esta misma busqueda al correr,
+# y el docstring lo cita para que el lector sepa que se desvanece a +-0.0005.
 import math
 from itertools import permutations
 

@@ -90,7 +90,7 @@ cosmo_base = dict(
     omch2  = Omcdm_CMB * (H0/100)**2,   # ω_m-direct canónico: Ω_m,CMB=0.308881
     ns     = _C.N_S,
     As     = 2.1e-9,
-    tau    = 0.0543,
+    tau    = 0.0543,   # Planck 2018 TT,TE,EE+lowE+lensing (Aghanim et al. 2020)
     lmax   = 2500,
 )
 

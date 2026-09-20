@@ -92,7 +92,12 @@ if __name__ == '__main__':
     print(f'\n  S8 minimo (perfil) = {S8_min:.5f}')
     print(f'  sigma(S8) lado KiDS bajo SSEE = {sig:.5f}')
     print(f'  [KiDS publica +-0.024 bajo LCDM]')
-    S8_cmb, sig_cmb = 0.82639, 0.00564
+    # ORIGEN: results/logs/precio_cmb_de_la_particula.json — S8 del lado
+    # CMB. Estaba tecleado 0.82639: un error de tecleo de 0.82640, que es
+    # lo que da ese log al redondear. Una diferencia de 1e-5 que no
+    # corresponde a ningun calculo, y la razon exacta por la que nada se
+    # teclea a mano: escrito a mano no deja registro de donde salio.
+    S8_cmb, sig_cmb = 0.8264026996688869, 0.00564
     tot = np.sqrt(sig**2 + sig_cmb**2)
     print(f'\n  tension receta-literatura SSEE = '
           f'({S8_cmb:.5f}-{S8_min:.5f})/{tot:.5f} = '

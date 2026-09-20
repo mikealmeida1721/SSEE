@@ -37,6 +37,9 @@ y NO se ha recomputado aqui.
 
 FUENTE: results/logs/p5_techo_sigma8_As_fijo.json
 """
+# ORIGEN-VALOR: 0.8221 — sigma8 del intento PREVIO, con la referencia LCDM
+# sin neutrinos masivos. Numero de una corrida retirada, sin log propio: se
+# conserva en el texto porque es la evidencia de cual era el fallo.
 import json
 import pathlib
 

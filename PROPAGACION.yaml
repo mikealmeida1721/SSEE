@@ -100,8 +100,21 @@ logs:
   control_legacy:             src/p06_growth/control_legacy.py
   kids_legacy_ssee:           src/p06_growth/cobaya_kids_legacy.py
   kids_legacy_lcdmfijo:       src/p06_growth/cobaya_kids_legacy.py
+  # 2026-09-20: la tercera configuracion, `sseefijo` — fondo algebraico Y
+  # logA clavado en el del CMB (8 libres, TODOS nuisance, cero cosmologicos).
+  # Misma fuente que las otras dos: la eligen los argumentos del lanzador.
+  kids_legacy_sseefijo:       src/p06_growth/cobaya_kids_legacy.py
+  # El registro de la COLA (que corrida entra y cuando) no lo escribe el
+  # muestreador sino el lanzador que lo invoca; ahi vive su fuente.
+  cola_kids_legacy:           src/p06_growth/lanzar_kids_legacy.sh
 
 historicos:
+  # ── Corte del 2026-09-19 — la maquina se reinicio por el driver NVIDIA y
+  #    las dos corridas vivas se reanudaron con KIDS_REANUDAR=1. Lo de antes
+  #    del corte queda congelado: no se re-corre, se conserva como registro
+  #    de que la cadena continuo y no empezo de cero.
+  - kids_legacy_ssee_antes_corte
+  - kids_legacy_lcdmfijo_antes_corte
   # ── Retirados 2026-09-07 — su script está en archive/, no se re-corren ──
   - barrido_beta_c            # β_c: artefacto del bug de saturación (2026-09-05)
   - barrido_beta_c_fino       #   scripts en archive/codigo/investigacion/

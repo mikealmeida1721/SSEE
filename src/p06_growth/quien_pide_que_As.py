@@ -20,8 +20,32 @@ sys.path.insert(0, '/home/mike/Proyectos/SSEE/src')
 import ssee_core as S
 import camb
 
-LOGA_CMB = 3.040704
-SIG_LOGA_CMB = 0.014375
+# El blanco del CMB NO se teclea: se lee del canonico. Antes estaba escrito
+# a mano como 3.040704 +- 0.014375, valores del ajuste de julio de 2026 que
+# el reframe dejo atras — la cadena results/chains/ssee_cmb.*.txt da
+# 3.044335 +- 0.013872, y el canonico vigente es logA_cmb_ssee. Un literal
+# no se entera de que su fuente cambio; una lectura si.
+import yaml as _yaml
+_CV = _yaml.safe_load(open('/home/mike/Proyectos/SSEE/CANONICAL_VALUES.yaml'))
+
+
+def _canon(clave):
+    for _blq in _CV.values():
+        if isinstance(_blq, dict) and clave in _blq:
+            return float(_blq[clave])
+    raise KeyError(f'{clave} no esta en CANONICAL_VALUES.yaml')
+
+
+LOGA_CMB = _canon('logA_cmb_ssee')
+# ORIGEN: results/chains/ssee_cmb.*.txt — sigma de logA de la cadena del CMB
+# con el fondo de SSEE, recalculada al vuelo para que no pueda quedar rancia.
+import numpy as _np, glob as _glob
+_f = sorted(_glob.glob('/home/mike/Proyectos/SSEE/results/chains/ssee_cmb.[0-9].txt'))
+_c = open(_f[0]).readline().lstrip('#').split()
+_a = _np.vstack([_np.loadtxt(x) for x in _f])
+_x, _w = _a[:, _c.index('logA')], _a[:, 0]
+_m = _np.average(_x, weights=_w)
+SIG_LOGA_CMB = float(_np.sqrt(_np.average((_x - _m) ** 2, weights=_w)))
 AS = 1e-10 * np.exp(LOGA_CMB)
 
 d = list(csv.DictReader(

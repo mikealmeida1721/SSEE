@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Lanza UNA configuracion de KiDS-Legacy con 4 cadenas MPI.
 #
-#   uso:  lanzar_kids_legacy.sh {ssee|lcdmfijo|lcdm} [covmat_semilla]
+#   uso:  lanzar_kids_legacy.sh {ssee|sseefijo|lcdmfijo|lcdm} [covmat_semilla]
 #
 # Reglas de la casa que este script cumple por construccion:
 #   1. preflight.py verde en la MISMA linea de comando (&&).
@@ -13,11 +13,11 @@
 set -eu
 
 if [ $# -lt 1 ]; then
-  echo "uso: $0 {ssee|lcdmfijo|lcdm} [covmat_semilla]" >&2; exit 2
+  echo "uso: $0 {ssee|sseefijo|lcdmfijo|lcdm} [covmat_semilla]" >&2; exit 2
 fi
 MODELO="$1"
 COVMAT="${2:-}"
-case "$MODELO" in ssee|lcdmfijo|lcdm) ;; *) echo "modelo desconocido: $MODELO" >&2; exit 2 ;; esac
+case "$MODELO" in ssee|sseefijo|lcdmfijo|lcdm) ;; *) echo "modelo desconocido: $MODELO" >&2; exit 2 ;; esac
 
 ROOT=/home/mike/Proyectos/SSEE
 BASE=/mnt/datos/SSEE_data/chains_p6/kids_legacy      # HDD, nunca el SSD

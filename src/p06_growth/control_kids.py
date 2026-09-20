@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """CONTROL NEGATIVO: reproducir like = -130.157350 de la cadena oficial KiDS-1000 xi_pm.
 Punto de maxima posterior, Blind C (maxpost_multinest_start_C.txt)."""
-import numpy as np, time, sys
+import numpy as np, time, sys, pathlib
 import kids_shear as K
 
 # --- punto de maxima posterior de la cadena oficial ---
@@ -70,4 +70,9 @@ print(f'REFERENCIA      = {-2*LIKE_REF:.4f}   (= -2 * {LIKE_REF:.6f})')
 print(f'   -> desvio    = {100*(c2 + 2*LIKE_REF)/(-2*LIKE_REF):+.2f}%')
 print()
 print(f'[informativo, NO es la comparacion] -0.5*ln|2piC| = {-0.5*logdet:.4f}')
-np.save('control_theory.npy', th)
+# Ruta ABSOLUTA, no relativa: con `control_theory.npy` a secas el artefacto
+# caia en el directorio desde el que se lanzara — el 2026-09-19 aterrizo
+# dentro de src/. Un resultado vive en results/, lo lance quien lo lance.
+_SAL = pathlib.Path(__file__).resolve().parents[2] / 'results' / 'control_theory.npy'
+np.save(_SAL, th)
+print(f'  vector teorico -> {_SAL}')

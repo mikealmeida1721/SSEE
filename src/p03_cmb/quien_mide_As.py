@@ -53,6 +53,11 @@ def chi2(logA, tau):
     return chi2_y_s8(dict(FONDO, logA=logA, tau=tau), W, WA)[0]
 
 
+# ORIGEN-VALOR: 0.01364 — sigma(logA) que daba el metodo VIEJO (diferencias
+# finitas, paso h) el 2026-09-08. No tiene log porque es el numero de un
+# metodo RETIRADO: se conserva en el texto para explicar por que se retiro.
+# ORIGEN-VALOR: 0.01232 — el mismo control con h/2, la otra mitad de esa
+# comparacion (10.7% de diferencia contra un criterio del 5%).
 def hessiana(x0, radio, n=5):
     """Hessiana 2x2 por AJUSTE de parabola sobre una rejilla n x n.
 

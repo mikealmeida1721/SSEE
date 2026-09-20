@@ -119,11 +119,14 @@ def window_normalised(s, RR, s_fit=(2.0, 20.0)):
        CRITERIO (medido, no elegido a ojo): el rango bueno es el que deja W_0
        valiendo 1 cerca del origen. Medido sobre los 6 conjuntos:
 
-           [2,20] -> W_0(8) = 1.0005 +- 0.0057   <-- elegido
+           [2,20] -> W_0(8) = 1.0005 +- 0.0057   <-- elegido   (ver ORIGEN-VALOR abajo)
            [3,30] -> W_0(8) = 1.0069
            [5,50] -> W_0(8) = 1.0192
            [2,60] -> W_0(8) = 1.0123
 
+       # ORIGEN-VALOR: 0.0057 — dispersion de W_0(8) sobre los 6 conjuntos
+       # de BOSS con el rango [2,20], MEDIDA por este mismo script al correr;
+       # es el criterio que selecciona el rango, no una entrada.
        Se probo tambien extrapolar con un ajuste pesado g = A + B s^2: sale PEOR
        (dispersion 2-3.8% y W_0 > 1 donde ya deberia bajar), porque el peso de
        Poisson carga en los pares lejanos y la caida no es cuadratica. Retirado.

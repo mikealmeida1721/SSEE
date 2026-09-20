@@ -894,6 +894,35 @@ i.e.\ $0.11\sigma$ from the KiDS-1000 value $0.759\pm0.024$ --- and, in the like
 $\chi^2_{\rm min}=265.4$ over $216$ degrees of freedom. \textbf{There is no
 $S_8$ tension to resolve, and therefore nothing for a second sector to do.}
 
+\paragraph{The same test against KiDS-Legacy.}
+The measurement above uses KiDS-1000.  Repeating it against the KiDS-Legacy
+release---357 raw $\xi_\pm$ points, Wright et al.\ (2025) (arXiv:2503.19441),
+published sixteen months before the present analysis, over which we claim no
+temporal priority---closes the sector.  With the same algebraic background and
+$A_s$ free, the shear asks for $\log(10^{10}A_s)=3.0255\pm0.0396$, against the
+$3.04483$ that the CMB fixes \emph{under that same background}: a distance of
+$0.49\sigma$.  The control with the Planck background held equally rigid gives
+$1.01\sigma$.  Fixing $A_s$ to the CMB value therefore costs nothing:
+\begin{equation}
+  \chi^2 = 417.97 \ \ (\text{8 free, all nuisance, \emph{none} cosmological})
+  \quad\text{vs.}\quad
+  418.34 \ \ (A_s \text{ free}),
+\end{equation}
+over the same 357 points, giving $\Delta\mathrm{BIC}=+6.24$ in favour of the
+fixed-amplitude model, and $+6.86$ against the $\Lambda$CDM-background control
+($418.95$).  With no free cosmological parameter left, $S_8=0.8273$ is a
+prediction rather than a fit, against $0.8265\pm0.0176$ measured---$0.05\sigma$.
+
+Two cautions belong with this result.  The three $\chi^2$ values span $1.0$
+over 357 points: \textbf{the shear does not discriminate between these
+models}, and we do not claim that it does.  What separates them is the number
+of parameters each had to spend and whether $A_s$ stays consistent between the
+CMB and the growth epoch.  And the earlier KiDS-1000 release asked for
+$\log(10^{10}A_s)=2.863\pm0.051$, $3.5\sigma$ from the same target; the two
+releases differ from each other by $2.5\sigma$.  What changed is the data---the
+$n(z)$ calibration, by the collaboration's own Appendix~I---not the model.  A
+future release returning to the lower amplitude would reopen the sector.
+
 The $\varphi$-DM component and its particle are retracted independently of
 this: the subtraction that defined the second sector's density,
 $\Omega_{\varphi\rm DM}=\Omega_{m,\rm CMB}-\Omega_{m,\rm dyn}$, took a measured
@@ -976,7 +1005,8 @@ $\gamma_{\rm IS}$ (Israel--Stewart) & Growth      & $0.550$                     
 $f\sigma_8$ (single-sector)   & Growth            & $0.70\sigma$ (6 RSD)            & P5     & Retrodiction \\
 \midrule
 \multicolumn{5}{l}{\textit{Extension tier --- depends on the $\varphi$-dark-matter sector}} \\
-$S_8$ (MCMC vs.\ raw $\xi_\pm$) & growth  & $0.7555\pm0.0192$ ($\Lambda$CDM ctrl $0.7571$) & P6 & Retrodiction \\
+$S_8$ (KiDS-Legacy, $A_s$ fixed by CMB) & growth & $0.8273$ predicted vs.\ $0.8265\pm0.0176$ ($0.05\sigma$) & P6 & \textbf{Prediction} \\
+$S_8$ (KiDS-1000, $A_s$ free) & growth  & $0.7555\pm0.0192$ ($\Lambda$CDM ctrl $0.7571$) & P6 & Retrodiction \\
 $M=(5\varphi^8\rho_{\rm crit})^{1/4}$ & UV compl.  & $9.68\,$meV                    & P10    & Derived (UV) \\
 Lensing (canonical EFT)       & Strong gravity    & GR$+$DM (uncond.)              & P8     & Retrodiction \\
 \midrule
@@ -1153,7 +1183,7 @@ derivation of the role assignments.
 The growth-of-structure status of \S\ref{sec:growth} mirrors this structure:
 the single-sector core inherits an $S_8$ tension at the single-sector ceiling
 ($S_8=0.827$ with $A_s$ fixed to Planck) is not a tension once $A_s$ is fitted
-to raw shear data ($S_8=0.7555\pm0.0192$; $\Lambda$CDM control on the same data: $0.7571\pm0.0194$; $\Delta\chi^2=2.65$ on the raw $\xi_\pm$ for four fewer parameters, $\Delta\mathrm{BIC}=19.0$); the two-sector
+to raw shear data ($S_8=0.7555\pm0.0192$; $\Lambda$CDM control on the same data: $0.7571\pm0.0194$; $\Delta\chi^2=2.65$ on the raw $\xi_\pm$ for four fewer parameters, $\Delta\mathrm{BIC}=19.0$). Against the later KiDS-Legacy release the amplitude the shear asks for sits $0.49\sigma$ from the one the CMB fixes under the same background, so $A_s$ need not be refitted at all: with \emph{no} free cosmological parameter the growth sector predicts $S_8=0.8273$ against $0.8265\pm0.0176$ measured, at a $\chi^2$ indistinguishable from the $A_s$-free fit. The two-sector
 extension that appeared to resolve it is retracted. The non-linear treatment required to settle the matter
 definitively demands $N$-body simulations beyond this work's scope. We record
 the core-level tension as an open challenge and the extension as falsifiable

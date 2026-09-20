@@ -29,8 +29,8 @@
 \subsection*{Core idea in one sentence}
 
 The core cosmological background — $w_0$, $w_a$, $H_0$, $\Omega_m$, $n_s$ — is derived \emph{algebraically} from the
-golden ratio $\varphi=(1+\sqrt{5})/2$ and $\pi$ with \textbf{zero fitted dimensionless parameters at the background level}. Dark-matter sector observables
-($\alpha_K$) is formulated as a working EFT proposal subject to full Boltzmann validation. The dark-sector ans\"atze that previously appeared here ($m_\varphi$, $\xi$) were retracted in 2026-08 together with the second matter sector, and their register entries (OP-9 through OP-12) close by dissolution; the MIRA matter mechanism (OP-8) had already dissolved under the $\omega_m$-direct reframe. The remaining open entries are listed in \texttt{OPEN\_PROBLEMS.md}.
+golden ratio $\varphi=(1+\sqrt{5})/2$ and $\pi$ with \textbf{zero fitted dimensionless parameters at the background level}. The kineticity $\alpha_K^{\rm field}$ of the dark-energy sector is a working
+EFT proposal, subject to full Boltzmann validation. The dark-sector ans\"atze that previously appeared here ($m_\varphi$, $\xi$) were retracted in 2026-08 together with the second matter sector, and their register entries (OP-9 through OP-12) close by dissolution; the MIRA matter mechanism (OP-8) had already dissolved under the $\omega_m$-direct reframe. The remaining open entries are listed in \texttt{OPEN\_PROBLEMS.md}.
 
 \subsection*{Key algebraic predictions}
 
@@ -47,8 +47,8 @@ $r_d$ & CAMB ($\omega_m$-direct): $147.17$ Mpc & Planck 2018: $147.09\pm0.26$ Mp
 $H_0^{\rm glob}$ & $H_0^{\rm SH0ES}(1-f_{\rm scr}) = 68.13$ km/s/Mpc & $3(\varphi+\pi)^2 = 67.96214$ & $0.17\sigma$ \\
 $n_s$ & $1-\varphi^{-7} = 0.965558$ & Planck PR4: $0.9649\pm0.0042$ & $0.16\sigma$ \\
 $r$ & $\varphi^{-10} = 0.008131$ & BK18: $r<0.036$ & Prediction \\
-$\alpha_K(0)$ & $3\Omega_{\rm DE}(1+w_\phi) = 0.072567$ & Euclid forecast sensitivity & $<0.1$ \\
-$S_8$ & $0.7555\pm0.0192$ (MCMC vs.\ raw KiDS-1000 $\xi_\pm$) & $\Lambda$CDM control, same pipeline: $0.7571\pm0.0194$ & $\Delta S_8=0.0016$ \\
+$\alpha_K^{\rm field}$ & $3\Omega_{\rm DE}(1+w_\varphi) = 0.072567$ & Euclid forecast sensitivity & $<0.1$ \\
+$S_8$ & $0.8273$ (predicted; \emph{no} free cosmological parameter) & KiDS-Legacy: $0.8265\pm0.0176$ & $0.05\sigma$ \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -57,21 +57,50 @@ $S_8$ & $0.7555\pm0.0192$ (MCMC vs.\ raw KiDS-1000 $\xi_\pm$) & $\Lambda$CDM con
 
 \subsubsection*{I. Derived Algebraic Background}
 \begin{itemize}
-  \item \textbf{Paper 1 (Framework)}: Algebraic derivation of geometric constants; $\alpha$-attractor embedding ($\alpha=\varphi^4/3$). [25 pp]
-  \item \textbf{Paper 4 (Nine Sovereignties)}: CMB observables ($\ell_1$, $\ell_2$, $\ell_3$, $\theta_*$, $A_s$, $n_s$, $\tau$, $r$) bounded algebraically. [17 pp]
+  \item \textbf{Paper 1 (Framework)}: Algebraic derivation of geometric constants; $\alpha$-attractor embedding ($\alpha=\varphi^4/3$). [35 pp]
+  \item \textbf{Paper 4 (Nine Sovereignties)}: CMB observables ($\ell_1$, $\ell_2$, $\ell_3$, $\theta_*$, $A_s$, $n_s$, $\tau$, $r$) bounded algebraically. [19 pp]
 \end{itemize}
 
 \subsubsection*{II. Tested Against Data}
 \begin{itemize}
-  \item \textbf{Paper 2 (MCMC)}: 100 walkers $\times$ 25\,000 steps vs.\ DESI DR2 + Planck + 7 clusters; $\Delta\text{BIC}=-6.43$ (SSEE favoured, $k_{\rm SSEE}=2$ vs.\ $k_{\Lambda\rm CDM}=3$), total matter density in the background geometry. [26 pp]
-  \item \textbf{Paper 3 (CMB Confrontation)}: CAMB $\omega_m$-direct ($\Omega_m=0.308881$); Cobaya full \texttt{plik} MCMC; $\Delta\mathrm{BIC}=-32.9$ (canonical; $-24.0$ in the \texttt{plik\_lite} point estimate), SSEE favoured under $k=2$ vs $k=6$ model comparison. [24 pp]
+  \item \textbf{Paper 2 (MCMC)}: 100 walkers $\times$ 25\,000 steps vs.\ DESI DR2 + Planck + 7 clusters; $\Delta\text{BIC}=-6.43$ (SSEE favoured, $k_{\rm SSEE}=2$ vs.\ $k_{\Lambda\rm CDM}=3$), total matter density in the background geometry. [31 pp]
+  \item \textbf{Paper 3 (CMB Confrontation)}: CAMB $\omega_m$-direct ($\Omega_m=0.308881$); Cobaya full \texttt{plik} MCMC; $\Delta\mathrm{BIC}=-32.9$ (canonical; $-26.21$ in the \texttt{plik\_lite} point estimate with $\{A_s,\tau\}$ fitted and $N=669$ measured from the likelihood), SSEE favoured under $k=2$ vs $k=6$ model comparison. [26 pp]
+  \item \textbf{Paper 6 (Growth sector, against raw $\xi_\pm$)}: retracts an
+  earlier two-sector $\varphi$-DM proposal and its particle --- the subtraction
+  defining the second sector mixed a measured density with an
+  equation-of-state number, and the $S_8$ tension motivating it exists only in
+  the compressed statistic, whose reduction assumes $\Lambda$CDM. Against the
+  \textbf{KiDS-Legacy} release (357 raw points; Wright et al.\ 2025,
+  arXiv:2503.19441 --- \emph{published sixteen months before this analysis: no
+  temporal priority is claimed}) the shear asks for
+  $\log(10^{10}A_s)=3.0255\pm0.0396$ against the $3.04483$ that the CMB fixes
+  under the \emph{same} algebraic background: $0.49\sigma$ (Planck background,
+  held equally rigid: $1.01\sigma$). Fixing $A_s$ to that CMB value therefore
+  costs nothing --- $\chi^2=417.97$ with \textbf{eight free parameters, all
+  nuisance, none cosmological}, against $418.34$ with $A_s$ free
+  ($\Delta\mathrm{BIC}=+6.24$) and $418.95$ for the $\Lambda$CDM-background
+  control ($+6.86$). $S_8=0.8273$ is then predicted, not fitted, against
+  $0.8265\pm0.0176$ measured: $0.05\sigma$. The three $\chi^2$ span $1.0$, so
+  the shear does \emph{not} discriminate between the models; what separates
+  them is the parameter count. (Earlier, against KiDS-1000: $S_8=0.7555\pm0.0192$
+  with $A_s$ free, matching the $\Lambda$CDM control $0.7571\pm0.0194$ run
+  through the same pipeline with four more free parameters.) [17 pp]
 \end{itemize}
 
 \subsubsection*{III. Phenomenological Extensions \& Open Directions}
 \begin{itemize}
-  \item \textbf{Paper 5 (Israel--Stewart Perturbations)}: Causal bulk viscosity; $c_s^2=0$ as the minimal-viscosity solution (OP-21); $\gamma_{\rm IS}=0.5504\approx\gamma_{\Lambda\rm CDM}$. [27 pp]
-  \item \textbf{Paper 6 (Growth sector on raw data)}: retracts an earlier two-sector $\varphi$-DM proposal and its particle, on two independent grounds --- the subtraction defining the second sector mixed a measured density with an equation-of-state number, and the $S_8$ tension that motivated it exists only in the compressed statistic, whose reduction pipeline assumes $\Lambda$CDM. Re-measured against the 225 raw KiDS-1000 $\xi_\pm$ points with a single matter sector and only the primordial amplitude free: $S_8=0.7555\pm0.0192$, statistically indistinguishable from the $\Lambda$CDM control run through the same pipeline on the same raw data ($0.7571\pm0.0194$) with four more free parameters. On the raw data themselves $\Delta\chi^2=2.65$ for four fewer parameters --- less than the $4$ four uninformative parameters would return by chance --- giving $\Delta\mathrm{BIC}=19.0$ in favour of \SSEE{}. No $S_8$ tension. [13 pp]
-  \item \textbf{Paper 7 (Canonical EFT Proposal)}: $\beta_c=-\text{AURA}$ (numerical $-3.998$); $\alpha_K=0.072567$ algebraic; fundamental parameters $\lambda, V_0, M$ proposed. [16 pp]
+  \item \textbf{Paper 5 (Israel--Stewart Perturbations)}: Causal bulk viscosity; $c_s^2=0$ as the minimal-viscosity solution (OP-21); $\gamma_{\rm IS}=0.5504\approx\gamma_{\Lambda\rm CDM}$. [31 pp]
+  \item \textbf{Paper 7 (Canonical EFT Proposal)}: the action is a minimally
+  coupled phantom condensate, $K(X)=c_1X+c_2X^2$, with
+  $\alpha_T=\alpha_M=\alpha_B=0$ and bare-field
+  $\alpha_K^{\rm field}=3\,\Omega_{\rm DE}(1+w_\varphi)=0.072567$ algebraic.
+  \emph{Two structures that earlier versions carried were withdrawn in
+  2026-09}, with the reasons recorded in the paper because they are themselves
+  results: the exponential potential (its exponent was a
+  tautology of the tracker relation) and the conformal dark coupling
+  $\beta_c=-\text{AURA}$, whose apparent $0.2\%$ agreement was an artefact of a
+  normalisation error in the saturation --- corrected, the value is $-2.194210$,
+  some $45\%$ away. Neither structure appears in the action. [17 pp]
 \end{itemize}
 
 \subsubsection*{IV. Strong-Field Regime, Hubble Tension \& UV Completion}
@@ -82,27 +111,36 @@ $S_8$ & $0.7555\pm0.0192$ (MCMC vs.\ raw KiDS-1000 $\xi_\pm$) & $\Lambda$CDM con
   distinct) and the canonical limit with EFT $\alpha_B=\alpha_M=\alpha_T=0$
   (residual fifth-force $\sim 10^{-15}$ at kpc, observable lensing recovers GR);
   selective coupling satisfies solar-system tests. Current SLACS/BELLS data
-  favour the canonical limit (OPEN\_PROBLEMS.md OP-13). [17 pp]
+  favour the canonical limit (OPEN\_PROBLEMS.md OP-13). A dimensional defect in
+  the Vainshtein-radius equation of this paper is open and under repair
+  (OP-4, reopened 2026-09); it does not enter the canonical-limit prediction,
+  which rests on $\omega_c$ and on $\alpha_B=\alpha_M=0$. [19 pp]
   \item \textbf{Paper 9 (Hubble Tension)}: Algebraic local screening fraction
   $f_{\rm scr}=(\pi-\varphi)/(\varphi+\pi)^2\approx0.067$ applied to the
   measured SH0ES rate $73.04\pm1.04$ returns a global background
   $H_0^{\rm glob}=68.13$ km/s/Mpc, $0.17\sigma$ from the pure algebraic number
   $3(\varphi+\pi)^2=67.96214$ --- an algebraic
   prediction with no fitted parameters (2026 reframe; the earlier CMB-mapped
-  $H_0^{\rm MIRA}=67.04$ is superseded). [18 pp]
+  $H_0^{\rm MIRA}=67.04$ is superseded). [20 pp]
   \item \textbf{Paper 10 (UV Completion)}: Higher-derivative operator
   $K(X)=X/\mathrm{KAL}_0+X^2/M^4$ with algebraic cutoff $M=9.68$ meV; connects
-  the dark-energy EFT to the inflationary $\alpha$-attractor. [14 pp]
+  the dark-energy EFT to the inflationary $\alpha$-attractor. [16 pp]
 \end{itemize}
 
 \subsection*{Falsifiability (explicit)}
 
 \begin{itemize}
-  \item $S_8=0.7555\pm0.0192$ — with the background fixed by the algebra and
-    only $A_s$ free, cosmic shear placing $S_8$ more than $3\sigma$ away
-    falsifies the growth sector (KiDS, DES, Euclid).
-  \item $r=\varphi^{-10}=0.008131$ — LiteBIRD / CMB-S4.
-  \item $\alpha_K \approx 0.073$ — Euclid weak lensing will probe this kineticity limit.
+  \item $S_8=0.8273$ — with the background fixed by the algebra \emph{and}
+    $A_s$ fixed to the value the CMB gives under that same background, the
+    growth sector has no free cosmological parameter left: cosmic shear
+    placing $S_8$ more than $3\sigma$ away falsifies it outright, with nowhere
+    to absorb the discrepancy (KiDS, DES, Euclid).
+  \item $\log(10^{10}A_s)$ — the amplitude the shear asks for must keep
+    agreeing with the one the CMB fixes. KiDS-1000 asked for $2.863\pm0.051$
+    ($3.5\sigma$ away) and KiDS-Legacy for $3.0255\pm0.0396$ ($0.49\sigma$);
+    the two releases differ from each other by $2.5\sigma$. A future release
+    returning to the lower value reopens the sector.
+  \item $\alpha_K^{\rm field} \approx 0.073$ — Euclid weak lensing will probe this kineticity limit.
   \item $r=\varphi^{-10}=0.008131$ — LiteBIRD ($\sim$2032) will confirm or refute the tensor-to-scalar ratio.
   \item A $>3\sigma$ deviation of $w_0$ from $-0.840$ would falsify the corresponding background sector of the framework.
 \end{itemize}
@@ -120,6 +158,7 @@ Thank you for considering this request.
 \vspace{6pt}
 \hrule
 {\small \textbf{Code:} Python (emcee, CAMB, CLASS), all reproducible in $<$30 min.
-\quad \textbf{Data:} DESI DR2 (public), Planck PR4 (public), KiDS-1000 (public).}
+\quad \textbf{Data:} DESI DR2 (public), Planck PR4 (public), KiDS-1000 and
+KiDS-Legacy (public).}
 
 \end{document}

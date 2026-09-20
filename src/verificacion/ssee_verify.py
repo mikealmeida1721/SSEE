@@ -1293,17 +1293,54 @@ _R58_MAL = re.compile(
     r"(?:prediccion|predicci\u00f3n|prediction)[^.\n]{0,60}"
     r"(?:\\?beta_?c|\u03b2\s?_?c|\\bc\b)[^.\n]{0,40}AURA"
     r"|(?:\\?beta_?c|\u03b2\s?_?c|\\bc\b)\s*=\s*[-\u2212]?\s*(?:\\)?AURA[^.\n]{0,80}"
-    r"(?:0\.2\s?%|0\.199|correcta|correct|verificad|identidad|identity)",
+    r"(?:0\.2\s?%|0\.199|correcta|correct|verificad|identidad|identity)"
+    # ENSANCHADA 2026-09-20. Las dos alternativas de arriba exigen que cerca
+    # aparezca «prediccion», «correcta», «verificad» o «0.2%». El sitio real
+    # del Endorser Summary no tenia ninguna: «$\beta_c=-\text{AURA}$
+    # (numerical $-3.998$); $\alpha_K=...$ algebraic». Enunciado pelado
+    # —simbolo, igual, valor— presentado como vigente, y la regla lo dejo
+    # pasar 13 dias en EL documento que va al avalista. Ahora se caza el
+    # enunciado SIEMPRE y es _EX58 quien decide: narrar que se retiro exime,
+    # no decir nada no. Una regla no debe pedirle al texto que confiese.
+    r"|(?:\\?beta_?c|\u03b2\s?_?c|\\bc\b)\s*=\s*[-\u2212]\s*(?:\\text\{)?(?:\\)?AURA",
     re.I)
+# AMPLIADA 2026-09-20 junto con el patron pelado. Al dejar de exigir que el
+# texto "confiese", la regla empezo a marcar dos sitios que SI estan bien
+# narrados y que el patron viejo no alcanzaba: OPEN_PROBLEMS §OP-8b, donde
+# beta_c=-AURA es uno de «los cuatro DESCARTADOS por medicion», y el Registro,
+# donde la identificacion lleva «✗» y «lo presenta como exacto — no lo es».
+# Son negaciones explicitas, no afirmaciones vivas: se eximen por lo que
+# dicen, no ensanchando el agujero por el que se colo el Endorser.
 _EX58 = ("retirad", "withdraw", "supersed", "earlier version", "bug",
-         "~~", "RETIRADO", "no longer", "artefact", "artefacto")
+         "~~", "RETIRADO", "no longer", "artefact", "artefacto",
+         "descartad", "descartó", "descarto", "✗", "no lo es", "ruled out",
+         "falla", "no una derivaci", "coincidencia numérica", "ABIERTO",
+         # el Registro narra TESTS y CANDIDATOS: «El test (beta_c=-AURA fijo,
+         # sin ajustar nada)» introduce un experimento cuyo resultado es ✗ una
+         # tabla mas abajo, y «Candidato ... pendiente test dinamico» marca algo
+         # no aplicado en ningun paper. Nombrar lo que se pone a prueba no es
+         # afirmarlo — es, de hecho, lo contrario.
+         "el test", "candidato", "pendiente")
 def _r58_sitios(_txt):
     _h = []
+    _ls = _txt.split("\n")
+    _off, _pos = [], 0
+    for _l in _ls:                       # offset de inicio de cada linea
+        _off.append(_pos)
+        _pos += len(_l) + 1
     for _m in _R58_MAL.finditer(_txt):
-        _i = max(0, _txt.rfind("\n", 0, _m.start(), ) )
-        _ini = _txt.rfind("\n", 0, _i) + 1 if _i else 0
-        _fin = _txt.find("\n", _m.end())
-        _ctx = _txt[_ini:_fin if _fin > 0 else len(_txt)]
+        # DOS lineas a cada lado (2026-09-20): antes solo miraba hacia ATRAS,
+        # y en P7 §withdrawn la exencion («Both are withdrawn.») va DESPUES
+        # del enunciado. Con el patron pelado eso daria un falso positivo en
+        # el unico sitio que SI esta bien narrado.
+        _n = max(i for i, _o in enumerate(_off) if _o <= _m.start())
+        # CUATRO lineas a cada lado, no dos: en el Registro la marca que
+        # desactiva la afirmacion («✗» en la tabla del test, el veredicto
+        # «coincidencia numerica, no una derivacion») vive un parrafo mas
+        # abajo, no pegada. Cuatro alcanza esas narraciones y sigue sin
+        # alcanzar el caso del Endorser, cuyos vecinos eran otros items de
+        # la lista — lo prueba el auto-test contra el prefijo.
+        _ctx = "\n".join(_ls[max(0, _n - 4):_n + 5])
         if any(_t.lower() in _ctx.lower() for _t in _EX58):
             continue
         _h.append(_ctx.strip()[:70])
@@ -1323,12 +1360,25 @@ check("R58 beta_c = -AURA no figura como prediccion viva",
 _t58 = [("La prediccion beta_c=-AURA es correcta (verificada a <0.2%)", True),
         ("beta_c = -AURA, identidad algebraica del sector", True),
         ("beta_c = -AURA fue RETIRADO de P7 en 2026-09-07", False),
-        ("el coupled background da beta_c = +0.235068", False)]
+        ("el coupled background da beta_c = +0.235068", False),
+        # EL AGUJERO REAL (Endorser Summary, 2026-09-06 a 09-20): enunciado
+        # pelado, sin una sola palabra que lo confirme ni que lo retire.
+        ("Paper 7: $\\beta_c=-\\text{AURA}$ (numerical $-3.998$); algebraic", True),
+        # y el sitio bien narrado de P7, cuya exencion va en la linea SIGUIENTE
+        ("a conformal dark-matter coupling with\n"
+         "$\\bc = -\\AURA = -(3\\phiG+\\pi)/2 \\approx -3.998$.\n"
+         "Both are withdrawn.  We record why.", False),
+        # narradas como DESCARTADAS o NEGADAS: tampoco son afirmaciones vivas
+        ("cuatro mecanismos y los cuatro descartados por medicion:\n"
+         "retencion conformal beta_c = -AURA (excursion x18 excesiva)", False),
+        ("2. **✗** Identificacion `beta_c = -AURA`: el valor extraido\n"
+         "-3.990 esta a 0.2 %. P7 lo presenta como exacto — no lo es.", False)]
 _f58 = [c for c, esp in _t58 if bool(_r58_sitios(c)) != esp]
 check("R58 el detector distingue la afirmacion viva de la narrada como retirada",
       not _f58, "; ".join(_f58) if _f58
-      else "4 casos: 2 formas vivas marcadas; la narrada como retirada y "
-           "el valor corregido, limpios")
+      else "8 casos: 3 formas vivas marcadas (incluido el enunciado PELADO "
+           "que se colo 13 dias); la narrada como retirada, el valor "
+           "corregido y P7 §withdrawn (exencion en la linea siguiente), limpios")
 
 # --- R57: ninguna figura se escribe fuera de results/figures (2026-09-07)
 # POR QUE EXISTE. ssee_paper5_IS_perturbations.py y ssee_eft_verification.py

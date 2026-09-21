@@ -133,7 +133,7 @@ The \SSEE\ framework \citep{SSEE_paperI} is a
 \textbf{minimal-parameter phenomenological framework} that encodes the
 cosmological background as algebraic combinations of $\pi$ and
 $\varphi=(1+\sqrt{5})/2$.
-The background sector $(w_0,w_a,\Omega_{\rm DE},\Omega_{m,\rm dyn})$ tested in this
+The background sector $(w_0,w_a,\Omega_{\rm DE},\Omega_m)$ tested in this
 paper carries zero dimensionless fitted parameters, and no WIMP, QCD-axion, or SUSY
 dark-matter particle is introduced; phenomenological extensions in the dark-matter
 sector (Paper~6) introduce ans\"atze tracked as open problems
@@ -157,8 +157,10 @@ full Bayesian MCMC evaluation with four aims:
   \item Quantify whether \SSEE\ remains competitive under formal
     Bayesian inference against \LCDM\ and free CPL alternatives.
   \item Identify which physical ingredients reproduce cluster masses.
-  \item Characterise the $\OmDE^{\SSEE}\approx0.840$ vs
-    $\Omega_\Lambda\approx0.685$ background tension and localise its origin.
+  \item Document why the naive $\OmDE^{\SSEE}\approx0.840$ vs
+    $\Omega_\Lambda\approx0.685$ comparison is a category error
+    ($s_{\rm DE}$ vs.\ density fraction) and localise its origin in the
+    retired two-sector framing (see \S\ref{sec:folding}).
   \item Provide a roadmap for the modified Friedmann CMB analysis
     and semi-linear transfer function required in Paper~3.
 \end{enumerate}
@@ -189,37 +191,45 @@ not as the fundamental dynamics.  In the \SSEE\ framework, the dark-energy
 density saturates at the finite $T_r/M_v$ boundary of the action at
 $a\to\infty$, guaranteeing universal stability; see Paper~1 \S3.4
 \citep{SSEE_paperI} for the full stability argument.
-The dark-energy density fraction is similarly fixed:
-$\OmDE^{\SSEE}=T_r/M_v\approx0.840$, leaving an effective matter
-fraction fixed algebraically:
+The equation-of-state-sector saturation quantity is similarly fixed:
+$s_{\rm DE}^{\SSEE}=T_r/M_v\approx0.840$ (not a density fraction), with the
+algebraic matter-sector complement
 \begin{equation}
-  \Omega_{m,\mathrm{eff}} = 1-\OmDE^{\SSEE} \approx 0.160.
+  s_m = 1-s_{\rm DE}^{\SSEE} \approx 0.160.
   \label{eq:om_eff}
 \end{equation}
 The fixed-geometry model is effectively parameter-free at the geometric
 level; only $H_0$ and $\Omega_b h^2$ are inferred from data.
 
-\subsection{Modified Friedmann background}
+\subsection{Friedmann background ($\omega_m$-direct)}
 
 \begin{equation}
-  H^2(z) = H_0^2\!\left[\Omega_{m,\mathrm{eff}}(1+z)^3
-  + \OmDE^{\SSEE}\,f_{\rm DE}(z)\right],
+  H^2(z) = H_0^2\!\left[\Omega_m(1+z)^3
+  + \Omega_{\rm DE}\,f_{\rm DE}(z)\right],
   \label{eq:Hssee}
 \end{equation}
 where $f_{\rm DE}(z)=(1+z)^{3(1+\wz+\wa)}\exp[-3\wa z/(1+z)]$ is the
 standard CPL dark-energy evolution, here used solely to translate the
 fixed \SSEE\ geometric parameters into observable distances.
-The only sampled cosmological parameter is $H_0$; all geometric
-quantities ($\wz,\wa,\OmDE^{\SSEE},\Omega_{m,\mathrm{eff}}$) are
-fixed algebraically as described in Section~\ref{sec:model}.
+There is one matter density, $\Omega_m=\omega_m/h^2=0.308881$
+(\S\ref{sec:folding}; no matter factor, OP-8 dissolved), hence
+$\Omega_{\rm DE}=1-\Omega_m=0.691119$.
+The only sampled cosmological parameter is $H_0$; the algebraic
+quantities ($\wz,\wa,s_{\rm DE}^{\SSEE},\KALz$) are fixed by geometry
+as described in Section~\ref{sec:model}. The equation-of-state-sector
+quantities $s_{\rm DE}^{\SSEE}=T_r/M_v\approx0.840$ and
+$s_m=1-s_{\rm DE}^{\SSEE}\approx0.160$ do not enter the background
+densities (see \S\ref{sec:folding}).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.82\textwidth]{fig3_omega_de.pdf}
-  \caption{\textit{Left}: $\OmDE^{\SSEE}=T_r/M_v\approx0.840$ (red line)
-  compared with Planck~2018 $\Omega_\Lambda\approx0.685$ (blue) and
-  DESI~DR2 $1\sigma$/$2\sigma$ bands. \textit{Right}: Structural context
-  showing the algebraic origin of $\OmDE$ from the $\pi$--$\varphi$ invariants.}
+  \caption{\textit{Left}: $s_{\rm DE}^{\SSEE}=T_r/M_v\approx0.840$ (red line),
+  the equation-of-state-sector saturation quantity (not a density fraction;
+  the physical density is $\Omega_{\rm DE}=0.691119$), shown against
+  Planck~2018 $\Omega_\Lambda\approx0.685$ (blue) and
+  DESI~DR2 $1\sigma$/$2\sigma$ bands for scale. \textit{Right}: Structural context
+  showing the algebraic origin of $s_{\rm DE}$ from the $\pi$--$\varphi$ invariants.}
   \label{fig:omega_de}
 \end{figure}
 
@@ -359,8 +369,8 @@ The only sampled parameters in the SSEE chain are $H_0$ and $\Omega_b h^2$.
 The matter density is not sampled. The background geometry --- $E(z)$, the
 sound horizon $r_d$, and every BAO distance --- uses the \emph{total} algebraic
 matter density $\Omega_{m,\mathrm{CMB}}=\omega_m/h^2=0.308881$
-(\S\ref{sec:folding}, \S\ref{sec:results_cosmo}); the dynamical value
-$\Omega_{m,\mathrm{dyn}}=(\pi-\varphi)/[2(\varphi+\pi)]=1+w_0=0.160050$ labels the
+(\S\ref{sec:folding}, \S\ref{sec:results_cosmo}); the value
+$s_m=(\pi-\varphi)/[2(\varphi+\pi)]=1+w_0=0.160050$ labels the
 cold sector that clusters in the perturbations (Paper~6) and does \emph{not}
 enter $E(z)$. Thus $r_d$ is computed from
 $\omega_m = \Omega_{m,\mathrm{CMB}}(H_0/100)^2$ self-consistently.
@@ -454,7 +464,7 @@ sensitivity test of Table~\ref{tab:cluster_sensitivity}.
 \toprule
 Model & Free parameters & Fixed & $k$ \\
 \midrule
-\SSEE & $H_0,\;\Omega_b h^2$ & $\wz,\wa,\OmDE,\KALz$ (algebraic) & 2 \\
+\SSEE & $H_0,\;\Omega_b h^2$ & $\wz,\wa,s_{\rm DE},\KALz$ (algebraic) & 2 \\
 \LCDM      & $H_0,\;\Omega_m,\;\Omega_b h^2$ & $\wz=-1,\wa=0$ & 3 \\
 CPL        & $H_0,\;\Omega_m,\;\wz,\;\wa,\;\Omega_b h^2$ & --- & 5 \\
 \bottomrule
@@ -486,7 +496,7 @@ sampled values; \textbf{Mapped} = structural hypothesis (acoustic-scale mapping)
 Parameter & Category & Origin/Value & Notes \\
 \midrule
 $\wz,\,\wa$          & \textbf{Fixed by geometry} & Eqs.~\eqref{eq:ssee_pars} & $\pi,\varphi$ invariants; not fitted \\
-$\OmDE,\,\KALz$      & \textbf{Fixed by geometry} & $T_r/M_v;\ \beta+\pi$     & Algebraically closed \\
+$s_{\rm DE},\,\KALz$  & \textbf{Fixed by geometry} & $T_r/M_v;\ \beta+\pi$     & Algebraically closed \\
 $H_0$                & \textbf{Sampled}           & $\mathcal{U}[60,80]$      & Only cosmological free parameter \\
 $\Omega_b h^2$       & \textbf{Sampled}           & BBN prior                 & Shared with \LCDM, CPL \\
 $r_d$                & \textbf{Derived}           & Friedmann background      & Eq.~\eqref{eq:rd}; carries background mismatch \\
@@ -1161,9 +1171,10 @@ Four ordered tests for \SSEE\ to survive a full CMB analysis:
   \item \textbf{Acoustic peak positions.} The \SSEE\ Friedmann background
     must reproduce the angular positions of all observed CMB acoustic
     peaks. Failure here would immediately falsify the background geometry.
-  \item \textbf{Damping tail.} $\Omega_{m,\mathrm{eff}}=0.160050$ must be
-    compatible with the Silk-damping scale \citep{Silk1968} and the third acoustic peak
-    height. This is the most constraining test for the low-matter fraction.
+  \item \textbf{Damping tail.} The $\omega_m$-direct background
+    ($\Omega_m=0.308881$) must be compatible with the Silk-damping scale \citep{Silk1968}
+    and the third acoustic peak height. This is the most constraining test
+    of the background geometry (Paper~3).
   \item \textbf{Joint posterior consistency.} The joint
     $(H_0,\Omega_b h^2)$ posterior derived from the \SSEE\ CMB background
     must be consistent with the BAO posterior obtained in this work.
@@ -1186,7 +1197,7 @@ would constitute decisive falsification:
   \item \textbf{If Ly-$\alpha$ forest observations exclude}
     $\sum m_\nu^{\rm active}=0.0685$\,eV at $>3\sigma$, the neutrino bridge in the
     cluster-mass formula breaks and \SSEE\ loses its only mechanism
-    for reconciling $\Omega_{m,\mathrm{eff}}$ with cluster observations.
+    for reconciling the cluster-mass predictions with observations.
   \item \textbf{If future high-$z$ BAO or CMB measure} $r_d$ outside
     $147\pm3$\,Mpc, the $\omega_m$-direct construction
     ($r_d=147.17$\,Mpc from the algebraic $\omega_m$) is falsified ---
@@ -1416,8 +1427,8 @@ the residual pattern is a DESI~DR2 feature rather than an \SSEE-specific failure
 \paragraph{Implication.}
 Eqs.~\eqref{eq:lya_raw}--\eqref{eq:lya_mira} show that the high-$z$ expansion
 requires the full CMB-sector matter density $\Omega_{m,\mathrm{CMB}}=0.308881$,
-where $\phi$-DM counts as non-relativistic matter, rather than the dynamical
-$0.160$: retaining $\Omega_m=0.160050$ in $E(z)$ with $r_d=147.17$ would predict
+where the cold sector counts as non-relativistic matter, rather than the
+EoS-sector $s_m=0.160$: retaining $\Omega_m=0.160050$ in $E(z)$ with $r_d=147.17$ would predict
 $D_H/r_d=11.8$ (a $31\sigma$ discrepancy).  This is the same total-versus-
 dynamical distinction that sets the low-$z$ sound horizon
 (\S\ref{sec:folding}), now with \emph{no} matter factor (OP-8 dissolved) and

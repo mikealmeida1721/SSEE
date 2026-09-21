@@ -358,7 +358,7 @@ The two endpoints are physically forced and require no assumption:
 \end{itemize}
 An immediate consequence is the much-used identity
 \begin{equation}
-  1 + w_0 \;=\; 1 - s \;=\; \Omega_{m,\rm dyn},
+  1 + w_0 \;=\; 1 - s \;=\; s_m,
   \label{eq:1pw0_identity}
 \end{equation}
 which is therefore \emph{not} an independent assumption but the content of
@@ -389,10 +389,11 @@ is auditable rather than silent:
         matching Planck at $0.41\sigma$), and $\omega_\nu=\Sigma m_\nu/93.14$.
         The CMB matter fraction is then \emph{derived},
         $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ at the global anchor
-        $H_0/\kmsu=3(\varphi+\pi)^2\simeq67.962$, and the dynamical fraction
-        $\Omega_{m,\rm dyn}=0.160050$ (DESI) and $\omega_m$ (CMB) are two
-        \emph{independent} algebraic predictions rather than a postulated pair.
-        This \textbf{closes OP-8}: there is no factor whose dynamical mechanism
+        $H_0/\kmsu=3(\varphi+\pi)^2\simeq67.962$ (no matter factor; OP-8
+        dissolved; the former two-$\Omega_m$ criterion is withdrawn,
+        \S\ref{sec:two_omega_m}). The equation-of-state-sector identity
+        $s_m=1+w_0=0.160050$ is not a density. This \textbf{closes OP-8}:
+        there is no factor whose dynamical mechanism
         must be derived. The structural quantity
         $\mathrm{MIRA}=(3\varphi+\pi)/4=\mathrm{AURA}/2\simeq1.9989$ persists in
         the register \emph{only} as the screening amplitude in
@@ -436,7 +437,7 @@ $\varphi$-DM sector, so the budget is now smaller, not larger. (OP-14 is likewis
 
 \paragraph{Honest accounting of effective parameters.}
 The zero-parameter status established above applies strictly to the
-\emph{background} sector $(w_0,w_a,\Omega_{\rm DE},\Omega_{m,\rm dyn})$ and to
+\emph{background} sector $(w_0,w_a,\Omega_{\rm DE},\Omega_m)$ and to
 the dimensionless EFT functions of Paper~7. Phenomenological extensions
 introduce a small number of effective parameters that, while assigned
 algebraic values in the current version, do not yet possess a derivation from
@@ -804,7 +805,8 @@ applies uniformly to Papers~1--4.
 \begin{description}
 
   \item[\textbf{Dynamic sector} (low redshift, $z\lesssim2.3$).]
-  Governed by $\Omega_{m,\rm dyn}=0.160050$, $w_0=-0.839950$, $w_a=-0.669975$.
+  Governed by $w_0=-0.839950$, $w_a=-0.669975$ ($s_m=1+w_0=0.160050$ is an
+  EoS-sector identity, not a density).
   Validated against: DESI~DR2 BAO (13 measurements, $0.295\leq z\leq2.33$),
   galaxy-cluster mass data (IGIMF baseline, Paper~2).
   \textit{Result}: $\Delta\mathrm{BIC}=-6.43$ favouring SSEE (Paper~2),
@@ -969,10 +971,10 @@ all four papers and cannot be re-interpreted post-hoc.
 \begin{itemize}[nosep,leftmargin=*]
   \item A $\chi^2_r > 1$ under a non-equivalent cosmological background
         (i.e.\ evaluating SSEE with $\Lambda$CDM-calibrated priors it does not assume).
-  \item The $\Omega_m$ difference between sectors: $\Omega_{m,\rm dyn}=0.160050$ and
-        $\Omega_{m,\rm CMB}=0.308881$ are two \emph{independent} algebraic predictions
-        separated by the free-streaming scale $k_{\rm fs}$ (no matter factor;
-        OP-8 closed, Table~\ref{tab:derivation_chain}).
+  \item Invoking the withdrawn two-$\Omega_m$ criterion: $\Omega_{m,\rm dyn}=0.160050$
+        ($=1+w_0$, i.e.\ $s_m$) was never a matter density, and the free-streaming
+        scale $k_{\rm fs}$ belonged to the retracted $\varphi$-DM sector; neither is
+        a live prediction (see \S\ref{sec:two_omega_m}).
 \end{itemize}
 \end{tcolorbox}
 
@@ -998,7 +1000,7 @@ Sector & Validated by & Falsified by ($>3\sigma$) & Not a falsification \\
   A $\chi^2>1$ from \LCDM-calibrated priors the model does not assume \\[4pt]
 \textbf{Observational} &
   Planck~PR4 $\Delta\mathrm{BIC}=-32.9$ (full \texttt{plik} MCMC, $\omega_m$-direct canonical, $k=2$); $r_d^{\rm SSEE}=147.17$~Mpc ($0.32\sigma$) &
-  Euclid/KiDS $\Omega_m<0.25$ at $z<1$; or $k_{\rm fs}(m_\phi)$ excluded by DESI~Y3/Euclid $P(k)$ at $>3\sigma$ &
+  Euclid/KiDS $\Omega_m<0.25$ at $z<1$ &
   $\chi^2_r=1.044$ vs \LCDM's $1.043$ (non-equivalent background) \\
 \bottomrule
 \end{tabularx}
@@ -1091,7 +1093,7 @@ $w_0$     & $-T_r/M_v$ & $-0.839950$ & DESI DR2 & A \\
 $w_a$     & $-P_{sc}/I_g$ & $-0.669975$ & DESI DR2 & A \\
 $H_0^{\rm alg}$ & $3(\varphi+\pi)^2$ & $67.962$ km/s/Mpc & Planck 2018 & P$^\dagger$ \\
 $H_0^{\rm MCMC}$ & CMB fit at fixed anchor (Paper~3) & $67.962$ (anchor, fixed) & Planck PR4 & M \\
-$\Omega_{m,\rm dyn}$ & $(\pi-\varphi)/[2(\varphi+\pi)]$ & $0.160050$ & Dynamic sector; $1+w_0$ exact & A \\
+$s_m$ & $(\pi-\varphi)/[2(\varphi+\pi)]$ & $0.160050$ & EoS sector; $1+w_0$ exact & A \\
 $\Omega_m^{\rm CMB}$ & $\omega_m/h^2=(\Omega_b h^2{+}\Omega_c h^2{+}\omega_\nu)/h^2$ & $0.308881^\S$ & Planck 2018 & A \\
 $n_s$     & $1-\varphi^{-7}$ & $0.965558$ & Planck 2018 & A \\
 $\Omega_b h^2$ & $(\pi-\varphi)/[3(\varphi+\pi)^2]$ & $0.022418$ ($0.32\sigma$) & Planck 2018 & A$^\ddagger$ \\
@@ -1110,8 +1112,9 @@ enters $f_{\rm screen}=\alpha_K^{\rm eff}/(3\,\mathrm{MIRA})$, Paper~9), consist
 its name (Mirror Ratio). It is no longer the sector-mapping operator: after the
 2026 $\omega_m$-direct reframe there is \emph{no} matter factor. The CMB matter
 density is the algebraic physical $\omega_m=\Omega_b h^2+\Omega_c h^2+\omega_\nu$,
-giving $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ independently of
-$\Omega_{m,\rm dyn}=0.160050$ (OP-8 closed).
+giving $\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$; the EoS-sector identity
+$s_m=0.160050$ ($=1+w_0$) is not a density (OP-8 closed; the former
+two-$\Omega_m$ criterion is withdrawn, \S\ref{sec:two_omega_m}).
 Similarly, $\mathrm{KAL}_0$ is both a derived constant (Level~2) and
 a dynamical viscosity operator scaling cluster masses.
 
@@ -1281,7 +1284,7 @@ $P_{sc}$ & Dynamical evolution scalar ($\Omega+\varphi$) & Paper 1 §1 \\
 $K_v$ & Structural constraint invariant & Paper 1 §1 \\
 $T_r$ & 3D saturation horizon ($3(\varphi+\beta)$) & Paper 1 §1 \\
 $M_v$ & Maximal dimensional invariant ($\varphi+\pi+K_v$) & Paper 1 §1 \\
-$\Omega_{m,\rm dyn}$ & Dynamic matter density (SSEE sector) & Paper 2 §2 \\
+$s_m$ & EoS-sector identity $1+w_0$ (not a density) & Paper 1 §1 \\
 $\Omega_{m,\rm CMB}$ & CMB-observed matter density ($\omega_m/h^2$, $\omega_m$-direct; no matter factor) & Paper 3 §2.4 \\
 $\gamma_{\rm IS}$ & Israel--Stewart growth index ($0.5504\pm0.001$) & Paper 5 §6.1 \\
 $\tau_\Pi H_0$ & IS relaxation time (dimensionless, $\approx2.191$) & Paper 1 App.A \\
@@ -1395,9 +1398,11 @@ the 2026 $\omega_m$-direct reframe MIRA is the \emph{screening amplitude}
 (entering $f_{\rm screen}=\alpha_K^{\rm eff}/(3\,\mathrm{MIRA})$, Paper~9), consistent with
 its name (Mirror Ratio). There is no longer any CMB/dynamical matter ratio: the
 CMB matter density is the algebraic physical $\omega_m$, giving
-$\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$ independently of $\Omega_{m,\rm dyn}$
-(OP-8 closed). The earlier near-equality
-$\mathrm{MIRA}\approx\Omega_{m,\rm CMB}/\Omega_{m,\rm dyn}\approx2$ (and the
+$\Omega_{m,\rm CMB}=\omega_m/h^2=0.308881$; the EoS-sector identity
+$s_m=0.160050$ ($=1+w_0$) is not a density (OP-8 closed; the former
+two-$\Omega_m$ criterion is withdrawn, \S\ref{sec:two_omega_m}).
+The earlier near-equality
+$\mathrm{MIRA}\approx\Omega_{m,\rm CMB}/s_m\approx2$ (and the
 intermediate factor $\pi/\varphi$) are retired as the matter mapping; we make no
 claim of temporal priority over Planck~2018.
 
@@ -1408,8 +1413,8 @@ verified to machine precision ($<10^{-16}$ relative error):
 \begin{align}
   w_0 &= -\frac{\mathrm{AURA}}{\Omega}
        = -\frac{T_r}{M_v} \label{eq:id_w0} \\
-  \Omega_{m,\rm dyn} &= \frac{\pi-\varphi}{2(\varphi+\pi)}
-       = 1 + w_0 \label{eq:id_Omdyn} \\
+  s_m &= \frac{\pi-\varphi}{2(\varphi+\pi)}
+       = 1 + w_0 \label{eq:id_sm} \\
   \mathrm{MIRA} &= |w_0|\cdot\beta \label{eq:id_mira} \\
   \mathrm{KAL}_0\big|_{\varphi\leftrightarrow\pi} &= \mathrm{AURA} \label{eq:id_kal} \\
   \mathrm{AURA}\big|_{\varphi\leftrightarrow\pi} &= \mathrm{KAL}_0 \label{eq:id_aura}

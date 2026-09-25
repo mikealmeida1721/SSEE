@@ -92,7 +92,7 @@ A Bayesian MCMC analysis under the $\omega_m$-direct CMB anchor as prior
 ($H_0^{\rm prior,SSEE}=67.96214\pm0.54$~km\,s$^{-1}$\,Mpc$^{-1}$, the value at
 which Planck~\texttt{plik\_lite} is minimised with SSEE-fixed $\omega_b,\omega_c$; Paper~3) yields
 $H_0 = 67.79^{+0.35}_{-0.35}$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.66\sigma$ from Planck,
-$0.50\sigma$ from the algebraic anchor) and $\Delta\mathrm{BIC}=6.43$ favouring
+$0.50\sigma$ from the algebraic anchor) and $\Delta\mathrm{BIC}=-6.43$ favouring
 \SSEE\ over \LCDM\ ($6.35$ over CPL).
 A complementary full-likelihood multi-probe MCMC (CAMB $+$ Planck
 \texttt{plik\_lite} $+$ lensing $+$ DESI~DR2 $+$ $f\sigma_8$, $w_0,w_a$ free and
@@ -318,7 +318,8 @@ Table~\ref{tab:mcmc_results} summarises the key posteriors and information crite
 \centering
 \caption{Bayesian MCMC results (three-model run, DESI DR2 + common Planck prior,
          total matter density in the background geometry). $N_{\rm eff}$:
-         effective independent samples. Positive $\Delta$ favours SSEE.}
+         effective independent samples. $\Delta\equiv\mathrm{SSEE}-\mathrm{model}$;
+         negative $\Delta$ favours SSEE.}
 \label{tab:mcmc_results}
 \begin{tabular}{p{0.4\textwidth} c c c}
 \toprule
@@ -327,8 +328,8 @@ Quantity & \SSEE & \LCDM & CPL \\
 $H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.53\pm0.35$ & $68.27\pm0.28$ & $67.26\pm0.51$ \\
 Free parameters $k$ & 2 & 3 & 5 \\
 $N_{\rm eff}$ & 78\,750 & 64\,505 & 44\,627 \\
-$\Delta\mathrm{BIC}$ relative to SSEE & ref & $+6.43$ & $+6.35$ \\
-$\Delta\mathrm{DIC}$ relative to SSEE & ref & $+5.66$ & $+4.02$ \\
+$\Delta\mathrm{BIC}$ & ref & $-6.43$ & $-6.35$ \\
+$\Delta\mathrm{DIC}$ & ref & $-5.66$ & $-4.02$ \\
 $\chi^2_r$ clusters & $0.126$ & $0.081$ & — \\
 $(w_0, w_a)$ vs DESI DR2 $w_0w_a$CDM (Pantheon+) & $0.24\sigma$ & $0.7\sigma$ & — \\
 \bottomrule
@@ -337,8 +338,8 @@ $(w_0, w_a)$ vs DESI DR2 $w_0w_a$CDM (Pantheon+) & $0.24\sigma$ & $0.7\sigma$ & 
 
 With the total gravitating matter density $\Omega_m=\omega_m/h^2=0.308881$ in the
 background geometry, \SSEE\ is favoured on every information criterion:
-$\Delta\mathrm{BIC}=6.43$ over \LCDM\ and $6.35$ over CPL, $\Delta\mathrm{DIC}=
-4.91$ and $3.27$. The \SSEE\ sound horizon then matches \LCDM\
+$\Delta\mathrm{BIC}=-6.43$ over \LCDM\ and $-6.35$ over CPL, $\Delta\mathrm{DIC}=
+-4.91$ and $-3.27$. The \SSEE\ sound horizon then matches \LCDM\
 ($r_d=148.2$~Mpc vs $147.8$~Mpc) and the $H_0$ posterior sits $0.39\sigma$ from
 Planck, so no background-structure penalty arises. An earlier ``$+206$''
 full-background penalty was an artefact of placing the cold sector
@@ -501,7 +502,7 @@ Model & $\ell_1$ & $\ell_2$ & $\ell_3$ & RMS residual \\
 \midrule
 \LCDM\ (Planck 2018)    & 221 & 537 & 814 & reference \\
 \textbf{SSEE ($\Omega_{m,\rm CMB}=0.308881$)}    & \textbf{221} & \textbf{537} & \textbf{814} & \textbf{0.14\%} \\
-SSEE ($\Omega_{m,\rm dyn}=0.160050$)             & 240 & 597 & 922 & 31.5\% \\
+SSEE ($s_m=0.160050$)             & 240 & 597 & 922 & 31.5\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1091,7 +1092,7 @@ across four observational tiers.
   $0.24\sigma$ of the official DESI~DR2 $w_0w_a$CDM posterior (Pantheon+).
   A Bayesian MCMC yields
   $H_0 = 67.79\pm0.35$~km\,s$^{-1}$\,Mpc$^{-1}$ under the $\omega_m$-direct
-  CMB anchor as prior ($0.50\sigma$ from the anchor), and $\Delta\mathrm{BIC} = 6.43$ favouring \SSEE\ over \LCDM.
+  CMB anchor as prior ($0.50\sigma$ from the anchor), and $\Delta\mathrm{BIC} = -6.43$ favouring \SSEE\ over \LCDM.
   A complementary full-likelihood multi-probe MCMC ($w_0,w_a$ free, $H_0$
   free under the uncompressed CMB likelihood) recovers the CMB combinations
   $\omega_b,\omega_c,r_{\rm drag}$ to $\le0.2\sigma$ and places \SSEE\ at

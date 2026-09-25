@@ -629,20 +629,20 @@ for. On the identical DESI~DR2 vector, the information criteria are:
 \begin{table}[h]
 \centering
 \caption{Bayesian model comparison on DESI~DR2 ($100$ walkers $\times\,25{,}000$
-steps). $\Delta$ values are relative to SSEE; positive favours SSEE.}
+steps). $\Delta\equiv\mathrm{SSEE}-\mathrm{model}$; negative $\Delta$ favours SSEE.}
 \label{tab:modelcomp}
 \begin{tabular}{lccccc}
 \toprule
 Model & $k$ & $\ln P_{\rm MAP}$ & BIC & $\Delta$BIC & $\Delta$AIC \\
 \midrule
 SSEE          & 2 & $-5.47$ & $16.49$ & $0.00$  & $0.00$  \\
-$\Lambda$CDM  & 3 & $-7.30$ & $22.92$ & $+6.43$ & $+5.65$ \\
-CPL           & 5 & $-4.49$ & $22.85$ & $+6.35$ & $+4.04$ \\
+$\Lambda$CDM  & 3 & $-7.30$ & $22.92$ & $-6.43$ & $-5.65$ \\
+CPL           & 5 & $-4.49$ & $22.85$ & $-6.35$ & $-4.04$ \\
 \bottomrule
 \end{tabular}
 \end{table}
-SSEE is favoured over both $\Lambda$CDM ($\Delta\mathrm{BIC}=6.43$) and CPL
-($6.35$) by parsimony, with $\Delta\mathrm{DIC}=-5.66$ and a Savage--Dickey factor
+SSEE is favoured over both $\Lambda$CDM ($\Delta\mathrm{BIC}=-6.43$) and CPL
+($-6.35$) by parsimony, with $\Delta\mathrm{DIC}=-5.66$ and a Savage--Dickey factor
 $\ln B=2.90$ (substantial on the Jeffreys scale); a leave-one-out
 cross-validation at $z\ge1$ ranks SSEE ahead of both ($\chi^2_r=0.21$ versus
 $0.71$ for $\Lambda$CDM and $39.6$ for CPL). The preference is driven by fewer

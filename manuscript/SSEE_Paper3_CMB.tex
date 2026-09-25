@@ -41,12 +41,12 @@ Acoustic Peak Reproduction via the $\omega_m$-Direct CMB Matter Density}}
 \begin{abstract}
 The Structural Self-Energy Expansion model (SSEE) proposes a minimal-parameter
 dark energy framework algebraically derived from the golden ratio $\varphi$ and $\pi$;
-the background sector $(w_0, w_a, \Omega_{m,\rm dyn})$ carries zero fitted
+the background sector $(w_0, w_a, s_m)$ carries zero fitted
 dimensionless parameters, while $H_0$ and $\Omega_b h^2$ are treated as $k=2$ in
 the BIC analysis below (\textit{``On the parameter count''} paragraph) following the
 conservative accounting policy established in Paper~1 \S1.3.
 Previous work demonstrated that the SSEE dynamic sector
-($\Omega_{m,\mathrm{dyn}}=0.160050$, $w_0=-0.839950$, $w_a=-0.669975$) fits DESI~DR2 BAO data
+($s_m=0.160050$, $w_0=-0.839950$, $w_a=-0.669975$) fits DESI~DR2 BAO data
 at $0.24\sigma$ (DESI+CMB+Pantheon+; $0.2$--$1.8\sigma$ across SN compilations) \citep{DESI_DR2} and galaxy-cluster mass ratios with $\chi^2_r=0.122$.
 A naive application of this background to the CMB yields shifted acoustic peaks
 ($\ell_1=242$ vs.\ $220$) and $\chi^2_r=97.7$, apparently falsifying the model.
@@ -61,14 +61,14 @@ and $\omega_c=\mathrm{KAL}_0\,\omega_b\,n_s=0.119514$ are forward identities of 
   = \frac{0.14267}{0.6796^2} = 0.3089,
 \end{equation*}
 within $0.6\sigma$ of the Planck~2018 value ($0.3153\pm0.0073$). The dynamic value
-$\Omega_{m,\mathrm{dyn}}=0.160050$ (DESI) and the CMB value $\Omega_{m,\mathrm{CMB}}=0.3089$
+$s_m=0.160050$ (DESI EoS sector) and the CMB value $\Omega_{m,\mathrm{CMB}}=0.3089$
 are \emph{two independent predictions}; the earlier mapping
 $\Omega_{m,\mathrm{CMB}}=\Omega_{m,\mathrm{dyn}}\times\mathrm{MIRA}$ is retired (the open
 problem OP-8 of requiring a matter factor is thereby dissolved), and the MIRA scalar
 $(3\varphi+\pi)/4=1.999$ now enters only the Hubble screening of Paper~9.
 No ``difference'' requires a physical carrier: there is a single matter
 density $\Omega_m=\omega_m/h^2=0.308881$, and the quantity once written
-$\Omega_{m,\rm dyn}=0.160050$ is $1+w_0$, an equation-of-state parameter rather
+$s_m=0.160050$ is $1+w_0$, an equation-of-state parameter rather
 than a density. The two-sector structure formerly invoked here is retracted
 (Paper~6; Paper~1 \S1.4).
 Running CAMB with this single-sector background reproduces acoustic peaks at
@@ -92,7 +92,7 @@ SSEE predicts \emph{two} matter densities by independent routes, with no factor
 relating them. The CMB claim (``SSEE is not falsified by Planck PR4'') applies to the
 forward CMB density $\Omega_{m,\rm CMB}=\omega_m/h^2=0.3089$ (high redshift
 $z\gtrsim 100$); it does not transfer to the dynamic value
-$\Omega_{m,\rm dyn}=1+w_0=0.160050$ ($z\lesssim2.3$), validated independently in
+$s_m=1+w_0=0.160050$ ($z\lesssim2.3$), validated independently in
 Paper~2 (\citealt{AlmeidaSSEE2026a}). The scalar
 $\mathrm{MIRA}\equiv(3\varphi+\pi)/4=1.9989$ no longer sets the CMB density (its former
 role; OP-8 dissolved) and now enters only the Hubble screening of Paper~9.
@@ -155,8 +155,8 @@ closed forms in $\varphi$ and $\pi$ alone:
 \begin{align}
 w_0 &= -\frac{T_r}{M_v} = -\frac{3\varphi+\pi}{2(\varphi+\pi)} = -0.839950, \label{eq:w0}\\
 w_a &= -\frac{P_{sc}}{I_g} = -\frac{P_{sc}}{\pi+P_{sc}} = -0.669975, \label{eq:wa}\\
-\Omega_{\mathrm{DE}} &= \frac{T_r}{M_v} = \frac{3\varphi+\pi}{2(\varphi+\pi)} = 0.839950, \label{eq:OmDE}\\
-\Omega_{m,\mathrm{dyn}} &= 1 - \Omega_{\mathrm{DE}} = 0.160050. \label{eq:Omm}
+s_{\mathrm{DE}} &= \frac{T_r}{M_v} = \frac{3\varphi+\pi}{2(\varphi+\pi)} = 0.839950, \label{eq:OmDE}\\
+s_m &= 1 - s_{\mathrm{DE}} = 0.160050. \label{eq:Omm}
 \end{align}
 The Hubble constant is the derived dimensional anchor
 $H_0/(\mathrm{km\,s^{-1}\,Mpc^{-1}}) = 3(\varphi+\pi)^2 = M_v\times\Omega = 67.96214$
@@ -183,7 +183,7 @@ The first peak falls at $\ell_1 \approx \pi/\theta_*$ \citep{HuSugiyama1996,Dode
 Diffusion damping suppresses power at small angular scales
 $\ell\gtrsim1000$ through photon mean-free-path effects \citep{Silk1968}.
 
-With $\Omega_m=0.160050$, the Hubble parameter at recombination scales as
+With $s_m=0.160050$, the Hubble parameter at recombination scales as
 $H(z\sim1000)\propto\sqrt{\Omega_m}$, reducing $H$ by $\sim40\%$ relative to
 $\Lambda$CDM ($\Omega_m=0.315$).
 This inflates $D_A(z_*)$ by $\sim32\%$, shifting all peaks to higher multipoles.
@@ -197,7 +197,7 @@ This constitutes a prima facie falsification.
 
 \subsection{Why the naive application fails}
 
-The naive background uses $\Omega_m=0.160050$, which inflates both the comoving
+The naive background uses $s_m=0.160050$, which inflates both the comoving
 sound horizon $r_d$ and the angular diameter distance $D_A(z_*)$ relative to
 their observed values.  The Folding Symmetry factor $|w_0|$ introduced in
 Paper~1 belongs to the dark-energy sector and does \emph{not} directly correct
@@ -233,7 +233,7 @@ $0.41\sigma$ from the Planck value. Hence
 \subsection{No matter factor: two independent predictions}
 \label{sec:mira_timeline}
 
-The dynamic value $\Omega_{m,\mathrm{dyn}}=1+w_0=0.160050$ (DESI) and the CMB value
+The sector value $s_m=1+w_0=0.160050$ (DESI) and the CMB value
 $\Omega_{m,\mathrm{CMB}}=0.3089$ (Eq.~\ref{eq:omega_m_direct}) are \emph{two
 independent forward predictions} of the same $(\varphi,\pi)$ dictionary; neither is
 tuned to data, and \emph{no factor} relates them. An earlier version of this paper
@@ -263,7 +263,7 @@ That reading is \textbf{withdrawn} (2026-08-01), for a reason internal to
 the algebra rather than to any measurement.
 
 The subtracted quantity is not a density. In SSEE,
-$\Omega_{m,\mathrm{dyn}} \equiv 1+w_0 = (M_v-T_r)/M_v = 0.160050$ is a
+$s_m \equiv 1+w_0 = (M_v-T_r)/M_v = 0.160050$ is a
 \emph{saturation}: it is the complement of the equation-of-state ratio
 $-w_0 = T_r/M_v$, and it carries no factor of $H$. Equation
 (\ref{eq:withdrawn_subtraction}) therefore subtracts a number belonging to the
@@ -440,7 +440,7 @@ Model & $\ell_1$ & $\ell_2$ & $\ell_3$ \\
 \midrule
 Planck PR4 (observed) & $\sim220$ & $\sim540$ & $\sim810$ \\
 $\Lambda$CDM ($\Omega_m=0.315$) & 220 & 538 & 812 \\
-SSEE naive ($\Omega_m=0.160050$) & 242 & 601 & 930 \\
+SSEE naive ($s_m=0.160050$) & 242 & 601 & 930 \\
 \textbf{SSEE} ($\Omega_{m,\mathrm{CMB}}=0.309$) & \textbf{220} & \textbf{536} & \textbf{812} \\
 \bottomrule
 \end{tabular}
@@ -954,9 +954,9 @@ or gravitational-wave speed excess~\citep{GW170817}. Together with
 Eq.~\eqref{eq:alphak_pred} this specifies the full set of Bellini--Sawicki EFT
 functions $(\alpha_K,\alpha_B,\alpha_M,\alpha_T)$, validated against CLASS independently of CAMB.
 
-Note that the raw SSEE \emph{dynamical} background ($\Omega_{m,\rm dyn}=0.160050$)
+Note that the raw SSEE \emph{dynamical} background ($s_m=0.160050$)
 fed directly to CLASS gives $\chi^2_r=90.3$ against Planck PR4 TT.
-This is expected: the dynamical-sector density is not the CMB matter density.
+This is expected: the dynamical-sector fraction is not the CMB matter density.
 The good fit ($\chi^2_r\approx 1.06$, \S\ref{sec:stats}) is recovered with the
 $\omega_m$-direct CMB matter density $\Omega_{m,\rm CMB}=\omega_m/h^2=0.3089$
 (no matter factor; OP-8 dissolved), as implemented with CAMB in

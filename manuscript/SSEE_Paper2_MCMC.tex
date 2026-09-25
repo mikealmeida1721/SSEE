@@ -83,7 +83,7 @@ obtained with the $\omega_m$-direct CMB anchor as the $H_0$ prior
 The cluster-mass sector achieves $\chi^2_r=0.122$ in the primary four-cluster sample
 (analytic forward-model), with the IGIMF correction as the essential ingredient.
 With $(w_0,w_a)$ fixed algebraically and one free parameter $H_0$, SSEE is
-favoured by $\Delta\mathrm{BIC}=6.43$ over \LCDM\ and $6.35$ over CPL, and
+favoured by $\Delta\mathrm{BIC}=-6.43$ over \LCDM\ and $-6.35$ over CPL, and
 predicts the DESI~DR2 test set better in leave-one-out cross-validation ---
 so the $\wz$--$\wa$ prediction is genuinely preferred by current BAO data.
 The background geometry uses the \emph{total} gravitating matter density
@@ -113,7 +113,7 @@ and the EFT coupling $\alpha_K$, never $E(z)$. (An earlier two-sector
 $\phi$-DM reading of that split is retracted in Paper~6; nothing below depends
 on it.) With the total density the SSEE sound horizon matches
 $\Lambda$CDM and model selection yields a single, unambiguous figure:
-$\Delta\mathrm{BIC}=6.43$ favouring SSEE over $\Lambda$CDM and $6.35$ over CPL
+$\Delta\mathrm{BIC}=-6.43$ favouring SSEE over $\Lambda$CDM and $-6.35$ over CPL
 (Section~\ref{sec:bic}).
 
 
@@ -755,7 +755,7 @@ density $\Omega_m=0.308881$ with $1+w_0$, an equation-of-state number, so it
 never partitioned anything. The matter density is single and unpartitioned.
 With OP-8 dissolved (no matter factor to derive; the residue is only that
 $\omega_b$ and the forward identity for $\omega_c$ hold), model selection
-favours SSEE by $\Delta\mathrm{BIC}=6.43$ over \LCDM\ and $6.35$ over CPL, with
+favours SSEE by $\Delta\mathrm{BIC}=-6.43$ over \LCDM\ and $-6.35$ over CPL, with
 SSEE the most economical model (Section~\ref{sec:bic}).
 
 
@@ -964,22 +964,22 @@ not contingent on specific choices of $\sigma_{M_{\rm obs}}$.
 \caption{BIC \citep{Schwarz1978}, AIC, and DIC at MAP ($N_{\rm data}=16$), from
 the joint three-model MCMC (DESI~DR2 + common Planck prior, total matter density
 $\Omega_m=0.308881$ in the background geometry). Jeffreys scale
-\citep{Jeffreys1961}. \SSEE\ is the reference; positive $\Delta$ favours \SSEE.}
+\citep{Jeffreys1961}. $\Delta\equiv\mathrm{SSEE}-\Lambda\mathrm{CDM}$; negative $\Delta$ favours \SSEE.}
 \label{tab:model_comp}
 \begin{tabular}{lrrrrrr}
 \toprule
 Model & $k$ & $\ln P_{\rm MAP}$ & BIC & $\Delta$BIC & $\Delta$AIC & DIC \\
 \midrule
 \SSEE & 2 & $-5.85$ & 17.24 & $0.00$  & $0.00$  & 15.69 \\
-\LCDM      & 3 & $-7.30$ & 22.92 & $+6.43$ & $+5.65$ & 20.61 \\
-CPL        & 5 & $-4.49$ & 22.85 & $+6.35$ & $+4.04$ & 18.97 \\
+\LCDM      & 3 & $-7.30$ & 22.92 & $-6.43$ & $-5.65$ & 20.61 \\
+CPL        & 5 & $-4.49$ & 22.85 & $-6.35$ & $-4.04$ & 18.97 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 With the total gravitating matter density in the background geometry, \SSEE\ is
-the preferred model on every information criterion: $\Delta\mathrm{BIC}=6.43$
-over \LCDM\ and $6.35$ over CPL, $\Delta\mathrm{AIC}=5.65$ and $4.04$, and
+the preferred model on every information criterion: $\Delta\mathrm{BIC}=-6.43$
+over \LCDM\ and $-6.35$ over CPL, $\Delta\mathrm{AIC}=-5.65$ and $-4.04$, and
 $\Delta\mathrm{DIC}=-5.66$ relative to \LCDM\ (Appendix~\ref{app:dic}). This is
 the parsimony gain of a two-parameter model ($H_0$ and $\Omega_b h^2$;
 $w_0,w_a$ fixed algebraically) that fits DESI~DR2 as well as the three- and
@@ -1102,7 +1102,7 @@ The results reveal a sharp bifurcation:
 
   \item \textbf{Background structure}: with the total matter density
     $\Omega_m=0.308881$ the sound horizon matches \LCDM\ and \SSEE\ is favoured
-    at $\Delta\mathrm{BIC}=+6.43$. Both $\Omega_m$ ($0.34\sigma$) and $H_0$
+    at $\Delta\mathrm{BIC}=-6.43$. Both $\Omega_m$ ($0.34\sigma$) and $H_0$
     ($<1\sigma$) agree with Planck.
 \end{itemize}
 
@@ -1223,8 +1223,8 @@ a sharp bifurcation: the dynamical sector passes; the background sector fails un
 
   \item With the total matter density $\Omega_m=0.308881$ in the background,
     the \SSEE\ sound horizon matches \LCDM\ ($r_d=148.2$\,Mpc) and \SSEE\ is
-    favoured on model selection by $\Delta\mathrm{BIC}=+6.43$ over \LCDM\ and
-    $+6.35$ over CPL, predicting the held-out BAO data better in
+    favoured on model selection by $\Delta\mathrm{BIC}=-6.43$ over \LCDM\ and
+    $-6.35$ over CPL, predicting the held-out BAO data better in
     cross-validation.
 
   \item Under the $\omega_m$-direct reframe the sound horizon falls out
@@ -1310,20 +1310,20 @@ main text.
 \centering
 \caption{%
   Bayesian model comparison from the three-model MCMC (total matter density in
-  the background). $N_{\rm data}=16$ (13 BAO + 3 Planck). $\Delta>0$ (BIC, AIC)
-  and $\Delta<0$ (DIC) favour \SSEE\ relative to \LCDM.
+  the background). $N_{\rm data}=16$ (13 BAO + 3 Planck). Negative $\Delta$
+  (BIC, AIC, DIC) favours \SSEE\ relative to \LCDM.
   Jeffreys criterion: $|\Delta| > 5$ = strong.
 }
 \label{tab:bic_dic_rigorous}
 \begin{tabular}{lrrrr}
 \toprule
 \textbf{Criterion} & \textbf{SSEE} & \textbf{\LCDM} & \textbf{CPL}
-  & $\boldsymbol{\Delta_{\rm \Lambda CDM-SSEE}}$ \\
+  & $\boldsymbol{\Delta_{\rm SSEE-\Lambda CDM}}$ \\
 \midrule
 $p_D$   & $2.00$  & $3.00$  & $4.99$  & — \\
-DIC     & $14.95$ & $20.61$ & $18.97$ & $+5.66$ \\
-BIC     & $16.49$ & $22.92$ & $22.85$ & $+6.43$ \\
-AIC     & $14.95$ & $20.60$ & $18.99$ & $+5.65$ \\
+DIC     & $14.95$ & $20.61$ & $18.97$ & $-5.66$ \\
+BIC     & $16.49$ & $22.92$ & $22.85$ & $-6.43$ \\
+AIC     & $14.95$ & $20.60$ & $18.99$ & $-5.65$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1384,9 +1384,9 @@ product $H_0\,E(z)\,r_d$.  We evaluate this quantity under two
 $D_H/r_d = 8.632\pm0.101$ (Table~\ref{tab:bao_data}).
 
 \paragraph{Scenario A — raw \SSEE\ background
-($\Omega_{m,\rm dyn}=0.160050$, $r_d=175.6$\,Mpc).}
+($s_m=0.160050$, $r_d=175.6$\,Mpc).}
 With the algebraic $H_0=67.962$\,km\,s$^{-1}$\,Mpc$^{-1}$ and
-$\Omega_m=0.160050$, the CPL dark-energy fraction at $z=2.33$ is
+$s_m=0.160050$, the CPL dark-energy fraction at $z=2.33$ is
 $f_{\rm DE}(2.33)=0.648$, giving $E(2.33)=2.540$ and
 $D_H(2.33)=1737$\,Mpc.  The predicted ratio is:
 \begin{equation}
@@ -1396,7 +1396,7 @@ $D_H(2.33)=1737$\,Mpc.  The predicted ratio is:
   \label{eq:lya_raw}
 \end{equation}
 demonstrating the category error directly: using the cold sector
-$\Omega_m=0.160050$ in $E(z)$ reduces matter domination at high $z$, lowers
+$s_m=0.160050$ in $E(z)$ reduces matter domination at high $z$, lowers
 $H(z)$, and enlarges $D_H$ to a $12.5\sigma$ discrepancy. This is the same
 misplacement that produced the spurious background tensions in superseded
 drafts; the correct total density (Scenario~B) resolves it.
@@ -1428,7 +1428,7 @@ the residual pattern is a DESI~DR2 feature rather than an \SSEE-specific failure
 Eqs.~\eqref{eq:lya_raw}--\eqref{eq:lya_mira} show that the high-$z$ expansion
 requires the full CMB-sector matter density $\Omega_{m,\mathrm{CMB}}=0.308881$,
 where the cold sector counts as non-relativistic matter, rather than the
-EoS-sector $s_m=0.160$: retaining $\Omega_m=0.160050$ in $E(z)$ with $r_d=147.17$ would predict
+EoS-sector $s_m=0.160$: retaining $s_m=0.160050$ in $E(z)$ with $r_d=147.17$ would predict
 $D_H/r_d=11.8$ (a $31\sigma$ discrepancy).  This is the same total-versus-
 dynamical distinction that sets the low-$z$ sound horizon
 (\S\ref{sec:folding}), now with \emph{no} matter factor (OP-8 dissolved) and

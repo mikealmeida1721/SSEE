@@ -613,10 +613,22 @@ Lo ABIERTO no es circularidad sino la *selección* única de 45α² entre rutas
    derivación de τ_Π (estado estacionario IS) está **asertada, no mostrada**
    en el script. Si τ_Π se deriva de verdad independientemente, el resultado
    es no-trivial; tal como está, es la tautología w₀+|w₀|=0.
-3. **✓ Q2 reportado con honestidad:** el test MIRA perturbativo da
-   MIRA_num=0.989 (k≥10) vs MIRA_alg=1.999 — **no coinciden**. Paper 5
-   concluye correctamente que MIRA es un efecto de fondo, no perturbativo.
-   Es un resultado negativo bien reportado, no un problema.
+3. **✓ Q2 — REENCUADRADO 2026-09-26:** el test daba
+   R = Ω_m,eff/Ω_m = 0.9897 ± 0.0167 (k≥10) vs el blanco 1.999, y de ahí
+   concluía «discrepancia del 50%». Pero ese blanco era el factor materia
+   Ω_m,CMB = MIRA×Ω_m,dyn = 0.3199, **retirado el 2026-06-18** al cerrarse
+   OP-8: ya no hay factor de dos que derivar, así que una discrepancia contra
+   él no es un resultado. Lo que el número mide sí lo es, enunciado como
+   **cota**: |r| = |δ_DE/δ_m| ≤ 0.0175 en k≥10 H₀/c, cayendo a 2e-5 en k=100
+   — a lo sumo el 3.9% del r*=0.4464 que una duplicación habría exigido. La
+   energía oscura de este modelo NO se agrupa donde opera la supresión IS, y
+   medir δ_DE/δ_m por encima del 1% a z=0 y k≳10 lo falsaría.
+   La tabla del paper llevaba además Ω_m,eff≈0.15, del run viejo con
+   Ω_m=0.160050; el script ya se había corregido a 0.308881 el 2026-09-05 y
+   nadie rehízo la tabla, porque el script no dejaba log. Ahora lo deja:
+   `results/logs/p5_IS_perturbations_Q2.json`.
+   MIRA sigue viva como entidad de apantallamiento en Paper 9; nada de esto
+   la toca.
 
 **Veredicto:** c²_s,eff=0 es cierto pero se reduce a w₀=−Ω_DE; el aparato
 IS (ζ̃, τ_Π) está construido para reproducir esa identidad y su parte

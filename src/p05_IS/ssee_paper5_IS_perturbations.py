@@ -383,6 +383,30 @@ if results:
     if k_IS_keys:
         MIRA_mean = np.mean([results[k]['MIRA_num'] for k in k_IS_keys])
         MIRA_std  = np.std( [results[k]['MIRA_num'] for k in k_IS_keys])
+        # 2026-09-26: el script se corrigio a las densidades reales el 2026-09-05
+        # pero la TABLA de Paper 5 nunca se rehizo: seguia con Om_eff ~= 0.15,
+        # que solo tiene sentido con Om = 0.160050. Nadie lo vio porque el
+        # script no dejaba log y R35/R65 no tenian contra que comparar. Ahora
+        # lo deja, y la tabla del .tex se genera de aqui.
+        import json as _json, os as _os
+        _log = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)),
+                             '..', '..', 'results', 'logs',
+                             'p5_IS_perturbations_Q2.json')
+        _os.makedirs(_os.path.dirname(_log), exist_ok=True)
+        with open(_os.path.abspath(_log), 'w') as _fh:
+            _json.dump(dict(
+                Omega_m=Omm, Omega_DE=OmDE,
+                filas=[dict(k=float(_k), delta_m=float(results[_k]['δm']),
+                            r=float(results[_k]['r']),
+                            Omega_m_eff=float(results[_k]['Om_eff']),
+                            R=float(results[_k]['MIRA_num']))
+                       for _k in sorted(results)],
+                R_media_k10=float(MIRA_mean), R_sd_k10=float(MIRA_std),
+                nota=('R = Omega_m,eff/Omega_m con las DENSIDADES reales. '
+                      'El blanco 1.998924 era el factor materia retirado el '
+                      '2026-06-18 (OP-8); se conserva solo como registro.')),
+                _fh, indent=1)
+        print(f"    -> log: {_os.path.abspath(_log)}")
         delta_MIRA = abs(MIRA_mean - MIRA_alg)
         frac_MIRA  = delta_MIRA / MIRA_alg * 100
 

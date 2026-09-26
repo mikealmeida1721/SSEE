@@ -150,7 +150,8 @@ python3 src/p05_IS/ssee_paper5_IS_perturbations.py
 Expected output:
 ```
 c²_s,eff = 0 (exact algebraic)
-MIRA_num (k≥10) = 0.989 ± 0.017   [background effect, not perturbative]
+R = Om_m,eff/Om_m (k≥10) = 0.9897 ± 0.0167   [cota: la EO no se agrupa;
+                                    antes «MIRA_num», contra un blanco retirado]
 γ_IS = 0.5504 ± 0.0003             [≈ γ_ΛCDM = 0.55]
 G = D₁_SSEE/D₁_ΛCDM = 1.0032       [~0.3% enhancement; Poisson source Ω_m,CMB=0.30889]
 σ₈_SSEE = 0.8136 ± 0.006           [single-sector ODE; CLASS top-hat ceiling 0.8149]

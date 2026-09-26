@@ -110,7 +110,7 @@ note this as an extension question rather than a current limitation.
 For Q2, integrating the full linear IS perturbation ODE from $z=19$ to $z=0$
 yields $\delta_{\mathrm{DE}}/\delta_m \to 0^-$ at all sub-horizon scales.
 Consequently the numerical enhancement ratio is
-$\Omega_{m,\mathrm{eff}}/s_m = 0.989\pm 0.017 \to 1$, not~$\approx2$:
+$\Omega_{m,\mathrm{eff}}/\Omega_m = 0.9897\pm 0.0167 \to 1$, not~$\approx2$:
 linear IS perturbations generate no such link --- and there is no second matter
 sector for them to link to.
 A background IS viscous calculation also fails to generate the factor (yielding
@@ -845,10 +845,17 @@ $10^{-12}$, verifying energy conservation to $10^{-6}$.
 The effective matter density measured by an observer using the gravitational
 Poisson equation is
 \begin{equation}
-  \Omega_{m,\mathrm{eff}} = \Omega_{m,\mathrm{dyn}} + \OmDE\,r,
+  \Omega_{m,\mathrm{eff}} = \Omega_m + \Omega_{\mathrm{DE}}\,r,
   \quad r \equiv \frac{\delta_{\mathrm{DE}}}{\delta_m}\bigg|_{z=0},
+  \qquad \Omega_m = 0.308881,\ \ \Omega_{\mathrm{DE}} = 0.691119,
   \label{eq:Omeff}
 \end{equation}
+with the \emph{densities} in both slots. Until 2026-09-26 this equation carried
+$\Omega_{m,\mathrm{dyn}}=0.160050$ and $\Omega_{\mathrm{DE}}=0.839950$, which are the
+saturations $s_m=1+w_0$ and $s_{\rm DE}=|w_0|$ --- equation-of-state numbers in a
+density slot, inside a Poisson source. The substitution does not move the
+measured $r$, which is the output of the perturbation integration and never
+touched these two constants; it moves only the normalisation of the ratio below.
 and we write $\mathcal{R} \equiv \Omega_{m,\mathrm{eff}}/\Omega_{m,\mathrm{dyn}}$ for the
 enhancement this clustering would produce.
 
@@ -863,16 +870,16 @@ longer a factor of two for the perturbations to supply, and a
 ``$50\%$ discrepancy'' from a withdrawn target is not a result.
 What the integration measures is unchanged and stands on its own: the level of
 dark-energy clustering, reported below as a \emph{bound}. The figure
-$r^*=0.1904$ is retained only as the scale that a two-fold enhancement would
+$r^*=0.4464$ is retained only as the scale that a two-fold enhancement would
 have demanded, which is what makes the smallness of the measured $r$ meaningful:
 \begin{equation}
-  r^* = \frac{(\mathrm{MIRA}-1)\,\Omega_{m,\mathrm{dyn}}}{\OmDE}
-  = \frac{0.9989 \times 0.160050}{0.839950}
-  \simeq 0.1904.
+  r^* = \frac{(\mathrm{MIRA}-1)\,\Omega_m}{\Omega_{\mathrm{DE}}}
+  = \frac{0.998924 \times 0.308881}{0.691119}
+  \simeq 0.4464.
   \label{eq:r_required}
 \end{equation}
-This corresponds to DE perturbations $\delta_{\mathrm{DE}} \approx 0.19\,\delta_m$
-at $z=0$ — a $19\%$-level DE clustering signal, which is in principle
+This corresponds to DE perturbations $\delta_{\mathrm{DE}} \approx 0.45\,\delta_m$
+at $z=0$ — a $45\%$-level DE clustering signal, which would be plainly
 detectable in the matter power spectrum via the Poisson
 equation~\eqref{eq:Poisson}.
 
@@ -885,40 +892,48 @@ equation~\eqref{eq:Poisson}.
   $\delta_m(z=0)$ is normalised to the growing mode; $r = \delta_{\mathrm{DE}}/\delta_m$;
   $\Omega_{m,\mathrm{eff}}$ via Eq.~\eqref{eq:Omeff}; $D_1 = \delta_m(z=0)/\delta_m(z_{\rm ini})$
   is the linear growth factor normalised to $a_{\rm ini} = 0.05$.
-  The column ``IS regime'' marks whether $k > k_\mathrm{crit}$ throughout integration.}
+  The column ``IS regime'' marks the modes on which the bound is quoted,
+  $k \geq 10\,H_0/c$ --- well inside both the IS-stabilised and the sub-horizon
+  regimes. The three modes below it are listed for completeness and are
+  \emph{excluded} from the bound: their $|r|$ is large and the quasi-static
+  reduction used here does not hold there.}
 \label{tab:MIRA}
 \begin{tabular}{cccccc}
 \toprule
 $k\,[H_0/c]$ & $\delta_m(z=0)$ & $r = \delta_{\mathrm{DE}}/\delta_m$
   & $\Omega_{m,\mathrm{eff}}$ & $\mathcal{R}$ & IS regime \\
 \midrule
-2   & 0.152 & $-0.0121$ & 0.1499 & 0.937 & partial \\
-3   & 0.226 & $-0.0098$ & 0.1517 & 0.948 & yes \\
-5   & 0.301 & $-0.0082$ & 0.1532 & 0.957 & yes \\
-10  & 0.369 & $-0.0076$ & 0.1537 & 0.960 & yes \\
-20  & 0.699 & $-0.0004$ & 0.1597 & 0.998 & yes \\
-50  & 1.688 & $-0.00005$ & 0.1600 & 1.000 & yes \\
-100 & 3.337 & $-0.00001$ & 0.1600 & 1.000 & yes \\
+2   & 0.2105 & $-41.05$   & $-28.0595$ & $-90.8425$ & no  \\
+3   & 0.1537 & $-11.63$   & $-7.7321$  & $-25.0326$ & no  \\
+5   & 0.1711 & $-0.88612$ & $-0.3035$  & $-0.9827$  & no  \\
+10  & 0.2918 & $-0.01753$ & $0.2968$   & $0.9608$   & yes \\
+20  & 0.5426 & $-0.00072$ & $0.3084$   & $0.9984$   & yes \\
+50  & 1.2958 & $-0.00008$ & $0.3088$   & $0.9998$   & yes \\
+100 & 2.5510 & $-0.00002$ & $0.3089$   & $1.0000$   & yes \\
 \midrule
 \multicolumn{4}{l}{Mean ($k \geq 10\,H_0/c$, IS-stabilised):}
-  & $0.989 \pm 0.017$ & \\
-\multicolumn{4}{l}{Would require ($r = r^* = 0.1904$):}
+  & $0.9897 \pm 0.0167$ & \\
+\multicolumn{4}{l}{Would require ($r = r^* = 0.4464$):}
   & $1.9989$ & \\
-\multicolumn{4}{l}{$\Rightarrow$ bound: $|r| < 0.013$ for $k\geq2$, i.e.\ $<7\%$ of $r^*$}
+\multicolumn{4}{l}{$\Rightarrow$ bound: $|r| \leq 0.0175$ for $k\geq10$, i.e.\ $3.9\%$ of $r^*$}
   &  & \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The measured enhancement is $\mathcal{R} = 0.989 \pm 0.017$ at $k \geq 10\,H_0/c$:
+The measured enhancement is $\mathcal{R} = 0.9897 \pm 0.0167$ at $k \geq 10\,H_0/c$:
 consistent with unity, i.e.\ \emph{no} enhancement. The content of that number is
-a bound on dark-energy clustering. The ratio $r = \delta_{\mathrm{DE}}/\delta_m$
-is small and \emph{negative} at all scales, $|r| < 0.013$ already at
-$k = 2\,H_0/c$ and falling as $k^{-2}$, with $|r| \to 0$ as $k$ increases ---
-below $7\%$ of the $r^*=0.1904$ that a two-fold enhancement would have needed.
-Dark energy in this model does not cluster at any scale probed here, and a
-measurement of $\delta_{\rm DE}/\delta_m$ above the percent level at $z=0$ would
-falsify it.
+a bound on dark-energy clustering. Inside the IS-stabilised sub-horizon regime
+the ratio $r = \delta_{\mathrm{DE}}/\delta_m$ is small and \emph{negative},
+$|r| \leq 0.0175$ at $k = 10\,H_0/c$ and falling as $k^{-2}$ to
+$2\times10^{-5}$ by $k = 100\,H_0/c$ --- at most $3.9\%$ of the $r^*=0.4464$
+that a two-fold enhancement would have needed. The restriction to
+$k \geq 10\,H_0/c$ is deliberate: the three lowest modes of
+Table~\ref{tab:MIRA} lie outside that regime and their $|r|$ is \emph{not}
+small, so folding them into the bound would overstate it.
+Dark energy in this model does not cluster at the scales where the IS
+suppression operates, and a measurement of $\delta_{\rm DE}/\delta_m$ above the
+percent level at $z=0$ and $k \gtrsim 10\,H_0/c$ would falsify it.
 This reflects the IS suppression mechanism: the effective friction
 $\mathcal{F}(k,a) = (1-3c^2_s) + \ztilde(k/aH)^2$ grows as $k^2$,
 preventing DE from clustering at sub-horizon scales.
@@ -1611,7 +1626,7 @@ consistent with thermodynamic stability.
 
 \paragraph{Q2 — MIRA factor (pure algebraic axiom).}
 Linear IS perturbations yield
-$\mathcal{R} = 0.989 \pm 0.017$ versus the former target
+$\mathcal{R} = 0.9897 \pm 0.0167$ versus the former target
 $\mathrm{MIRA}_{\mathrm{alg}} = 1.9989$ at all sub-horizon scales.
 The discrepancy is $50\%$, establishing that the MIRA factor is not a
 perturbative phenomenon.

@@ -6756,14 +6756,25 @@ try:
               r"|Omega_\{m,\s?dyn\}|Om\^\{?\\?mathrm\{dyn\}\}?"
               r"|Om\^\{\\mathrm\{dyn\}\}|0\.160050|0\.839950)")
     # Ranuras de densidad: dilución, fondo de Friedmann, fuente de Poisson.
-    _RANURA72 = _re.compile(
-        _SAT72 + r"\s*(?:\\,|\;|~|\s)*"
-        r"(?:a\^\{?-3\}?|a\^\{-3\}|\(1\+z\)\^\{?3\}?)"
-        r"|(?:E\^\{?2\}?|H\^\{?2\}?|\\tilde\{h\}\^\{?2\}?|h\^\{?2\}?)"
-        r"[^\n]{0,40}" + _SAT72
-        + r"|(?:matter density|densidad de materia|matter fraction)"
-          r"[^\n]{0,60}" + _SAT72
-        + r"|" + _SAT72 + r"[^\n]{0,60}(?:matter density|densidad de materia)")
+    # 2026-09-26, AMPLIADA con la forma aditiva. La v1 no marcaba
+    #   Omega_{m,eff} = Omega_{m,dyn} + Omega_DE * r
+    # de Paper 5, y eso es exactamente la saturación en ranura de densidad
+    # dentro del Poisson: no tenía forma de dilución ni el rótulo «matter
+    # density», así que se colaba. La regla cubría menos de lo que el error
+    # abarca, y eso lo encontró un hallazgo del manuscrito, no la regla.
+    _RANURA72 = _re.compile("|".join([
+        # (1) diluyéndose como materia
+        _SAT72 + r"\s*(?:\\,|\\;|~|\s)*(?:a\^\{?-3\}?|\(1\+z\)\^\{?3\}?)",
+        # (2) dentro de un E^2 / H^2 / h~^2
+        r"(?:E\^\{?2\}?|H\^\{?2\}?|\\tilde\{h\}\^\{?2\}?|h\^\{?2\}?)"
+        r"[^\n]{0,40}" + _SAT72,
+        # (3) rotulada como densidad de materia, en cualquiera de los dos órdenes
+        r"(?:matter density|densidad de materia|matter fraction)[^\n]{0,60}" + _SAT72,
+        _SAT72 + r"[^\n]{0,60}(?:matter density|densidad de materia)",
+        # (4) SUMADA dentro de una Omega efectiva (la forma que se colaba)
+        r"Omega_\{m,\s?\\?mathrm\{eff\}\}[^\n]{0,40}=[^\n]{0,60}" + _SAT72,
+        _SAT72 + r"\s*\+\s*\\?Om(?:de|ega)",
+    ]))
     # Exento: la frase dice que NO es una densidad, o es registro histórico.
     _EX72 = _re.compile(
         r"NO es una densidad|not a density|equation of state|ecuaci[oó]n de estado"
@@ -6807,9 +6818,16 @@ try:
     # la buena. Sin esto la regla podría estar verde por no mirar nada.
     _mal72 = [r"  = \frac{3}{2}\,\frac{\Ommdyn\,a^{-3}}{\tilde{h}^{2}(a)}\,\delta,",
               r"the background $\tilde{h}^{2}(a) = \Omega_{m,\mathrm{dyn}}\,a^{-3}+\rho$",
-              r"the dynamical matter density $\Ommdyn = 0.160050$ governs BAO"]
+              r"the dynamical matter density $\Ommdyn = 0.160050$ governs BAO",
+              # el sitio que la v1 NO veia: la saturacion SUMADA dentro de una
+              # Omega efectiva, en la fuente de Poisson de Paper 5. Lo encontro
+              # un hallazgo del manuscrito, no la regla; entra al control para
+              # que la ampliacion quede probada y no se pueda volver a estrechar.
+              r"  \Omega_{m,\mathrm{eff}} = \Omega_{m,\mathrm{dyn}} + \OmDE\,r,"]
     _bien72 = [r"  = \frac{3}{2}\,\frac{\Omega_{m}\,a^{-3}}{\tilde{h}^{2}(a)}\,\delta,",
-               r"the background $\tilde{h}^{2}(a) = \Omega_{m}\,a^{-3}+\rho$"]
+               r"the background $\tilde{h}^{2}(a) = \Omega_{m}\,a^{-3}+\rho$",
+               # la misma de Paper 5 ya corregida a densidades
+               r"  \Omega_{m,\mathrm{eff}} = \Omega_m + \Omega_{\mathrm{DE}}\,r,"]
     _hist72 = ["% nota: superseded — el 0.160050 es 1+w_0, no una densidad",
                r"the dynamical matter density $\Ommdyn = 0.160050$ governs BAO"]
     _cm = [bool(_sitios_r72(_x)) for _x in _mal72]
@@ -6817,8 +6835,8 @@ try:
     _ch = not _sitios_r72("\n".join(_hist72))
     check("R72 el detector distingue la ranura de densidad de la mención",
           all(_cm) and all(_cb) and _ch,
-          f"3 formas malas marcadas ({sum(_cm)}/3), "
-          f"2 con Ω_m real limpias ({sum(_cb)}/2), "
+          f"4 formas malas marcadas ({sum(_cm)}/4), "
+          f"3 con Ω_m real limpias ({sum(_cb)}/3), "
           f"1 mención negada eximida ({'sí' if _ch else 'NO'})")
 
     # ── R72b — el signo de Δ dice lo mismo en los diez papers ──────────────

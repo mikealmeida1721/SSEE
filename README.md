@@ -206,7 +206,7 @@ See [AUDIT.md](AUDIT.md) for expected outputs and known limitations.
 |---|---|---|
 | c²_s,eff | 0 (exact algebraic) | Q1: all modes stable |
 | k_crit / (H₀/c) | 0.456 < 1 | Sub-Hubble stability window |
-| MIRA (numerical, k≥10) | 0.989 ± 0.017 | Background IS origin confirmed |
+| R = Ω_m,eff/Ω_m (k≥10) | 0.9897 ± 0.0167 | Cota a la agrupación de EO: |r| ≤ 0.0175, 3.9% de r*=0.4464 |
 | γ_IS | 0.5504 ± 0.001 | ≈ γ_ΛCDM = 0.55 |
 | G = D₁_SSEE/D₁_ΛCDM | 1.0032 ± 0.005 | ~0.3% enhancement (Poisson source Ω_m,CMB = 0.30889) |
 | σ₈_SSEE (single-sector ceiling) | 0.8149 ± 0.006 | ODE linear growth gives 0.8136 |

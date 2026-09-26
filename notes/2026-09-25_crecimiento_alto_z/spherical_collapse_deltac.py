@@ -3,8 +3,20 @@
 Ruta 1: δc desde la dinámica del modelo (colapso esférico), sin postular n_s.
 
 Integra la ecuación EXACTA no lineal del top-hat esférico con DE suave
-(no se agrupa: consistente con Paper 5, c²_s,eff=0, perturbaciones de DE
-nulas a escalas sub-horizonte) y en relatividad general:
+(no se agrupa) y en relatividad general:
+
+    OJO CON LA JUSTIFICACIÓN (corregido 2026-09-25, Claude). La versión
+    anterior de este docstring decía «no se agrupa: consistente con Paper 5,
+    c²_s,eff=0». Esa razón está INVERTIDA: c_s²=0 anula el horizonte sonoro y
+    es justamente la condición para que un fluido de DE SÍ se agrupe a toda
+    escala sub-horizonte. Si esa fuera la razón, el supuesto de DE suave
+    estaría mal y δc se movería.
+    La razón CORRECTA, y que sí sostiene el supuesto, es la fricción viscosa
+    IS del propio Paper 5 (§«IS damping hierarchy», l.900-905):
+        F(k,a) = (1 − 3c_s²) + z̃·(k/aH)²      con c_s²=0  ⟹  F = 1 + z̃(k/aH)²
+    crece como k² y suprime las perturbaciones de DE; medido en el mismo
+    paper, δ_DE/δ_m → 0⁻ a toda escala sub-horizonte (l.111).
+    O sea: la DE de este modelo no se agrupa A PESAR de c_s²=0, no POR c_s²=0.
 
     δ'' + (2 + H'/H) δ' − (4/3)(δ')²/(1+δ) = (3/2) Ω_m(a) δ (1+δ)
 

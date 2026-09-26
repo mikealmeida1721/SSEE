@@ -32,7 +32,10 @@
 \newcommand{\fscr}{f_{\mathrm{scr}}}
 \newcommand{\Omde}{\Omega_{\mathrm{DE}}}
 \newcommand{\Omm}{\Omega_{m}}
-\newcommand{\Ommdyn}{\Omega_{m,\mathrm{dyn}}}
+% 2026-09-26: era \newcommand{\sm}{\Omega_{m,\mathrm{dyn}}}. El nombre del
+% macro decia «densidad de materia» de un numero que es $1+w_0$, y la prosa
+% de abajo lo repetia. Pasa a $s_m$, el simbolo que ya usan Papers 1, 7 y 10.
+\newcommand{\sm}{s_m}
 \newcommand{\OmmCMB}{\Omega_{m,\mathrm{CMB}}}
 \newcommand{\wz}{w_0}
 \newcommand{\wa}{w_a}
@@ -103,9 +106,10 @@ likelihood $H_0$ relaxes to $65.87\pm1.17$ ($1.79\sigma$ below the anchor).
 The CMB-sector matter density is the standard physical observable
 $\OmmCMB = \omega_m/h^2 = 0.308881$ (Planck: $0.3153\pm 0.0073$), built
 piece-by-piece from SSEE algebra ($\omega_m$-direct; OP-8 dissolved, no matter
-factor) and distinct from the dynamical $\Ommdyn = 0.160050$ that governs DESI BAO.
+factor) and distinct from the saturation $\sm = 1+w_0 = 0.160050$, which fixes
+the DESI BAO equation of state and is not a density at all.
 Full-sky CLASS Boltzmann runs confirm that the \emph{full} matter density is
-physically necessary: using only $\Ommdyn=0.160050$ as the CMB matter density
+physically necessary: using only $\sm=0.160050$ as the CMB matter density
 shifts the peak positions by $\sim 10\%$ and raises the RMS residual
 from $1.4\%$ to $31.5\%$.
 
@@ -262,7 +266,8 @@ with no adjustment.
 
 The framework predicts two independent matter densities.
 The dark energy EoS predicts $\Omde = |{\wz}| = 0.839950$, which implies a
-\textit{dynamical} matter density $\Ommdyn = 1 - \Omde = 0.160050$.
+matter saturation $\sm = 1 - \Omde = 1 + w_0 = 0.160050$ --- a number of the
+equation of state, \emph{not} a matter density.
 However, the CMB angular-diameter distance is sensitive to the
 \textit{total} matter density, which under the $\omega_m$-direct reframe
 (OP-8 dissolved) is the standard physical observable built from SSEE algebra:
@@ -273,9 +278,9 @@ However, the CMB angular-diameter distance is sensitive to the
   \label{eq:omega_m_direct}
 \end{equation}
 in agreement with Planck~2018 ($0.3153\pm 0.0073$) at $0.88\sigma$. There is
-\emph{no} matter factor: $\Ommdyn=0.160050$ (DESI) and $\omega_m$ (CMB) are two
+\emph{no} matter factor: $\sm=0.160050$ (DESI) and $\omega_m$ (CMB) are two
 independent SSEE predictions. (The earlier, now superseded MIRA mapping
-$\MIRA=(3\phiG+\pi)/4\simeq1.9989$ gave $\OmmCMB=\MIRA\times\Ommdyn=0.3199$, superseded;
+$\MIRA=(3\phiG+\pi)/4\simeq1.9989$ gave $\OmmCMB=\MIRA\times\sm=0.3199$, superseded;
 $\MIRA$ now enters only the Hubble screening fraction, Paper~9.)
 The physical interpretation of these two independent predictions --- the
 earlier reading as a ``two-sector split'' is superseded by the
@@ -479,7 +484,7 @@ configurations to isolate the effect of the full CMB matter density.
     $w_a = -0.669975$, $n_s = 0.965558$, $h = 0.67962$. The full matter density is
     set directly as a CLASS background input.
   \item[SSEE dynamical-only:] same EoS and $h$, but $\Omega_b = 0.048432$,
-    $\Omega_{\rm cdm} = 0.111568$ (total $\Ommdyn = 0.160050$), using only the
+    $\Omega_{\rm cdm} = 0.111568$ (total $\sm = 0.160050$), using only the
     dynamical sector as CMB matter.
 \end{description}
 A fiducial \LCDM\ run with Planck~2018 best-fit parameters serves as reference.
@@ -534,7 +539,7 @@ and \LCDM.
          The SSEE dynamical-only run ($\OmmCMB = 0.160050$) is omitted from this panel;
          it produces peaks at $\ell = 240, 597, 922$ with RMS $= 31.5\%$
          relative to \LCDM, confirming that the \emph{full} matter density
-         (not the dynamical $\Ommdyn = 0.160050$) is needed to reproduce the acoustic scale.}
+         (not the dynamical $\sm = 0.160050$) is needed to reproduce the acoustic scale.}
 \label{fig:cmb_tt}
 \end{figure}
 
@@ -604,7 +609,7 @@ resolve it. \textbf{Both the tension and the extension are withdrawn.} The
 reasons are independent, and either alone is sufficient.
 
 \paragraph{The subtraction was not physical.} The second sector was defined by
-$\Omega_{\phi\mathrm{DM}}=\OmmCMB-\Ommdyn$. The first term is a measured density
+$\Omega_{\phi\mathrm{DM}}=\OmmCMB-\sm$. The first term is a measured density
 fraction; the second is $1+w_0$, i.e.\ minus the dark-energy equation of state,
 an algebraic identity of the background sector. Both are dimensionless, so the
 subtraction is arithmetically well formed --- but subtracting an
@@ -1100,7 +1105,7 @@ across four observational tiers.
 
 \item \textbf{CMB Boltzmann.} CLASS confirms that the full $\omega_m$-direct
   matter density ($\OmmCMB=0.308881$) is physically necessary: with only the
-  dynamical $\Ommdyn=0.160050$, the CMB RMS residual jumps by a factor of 22 and
+  dynamical $\sm=0.160050$, the CMB RMS residual jumps by a factor of 22 and
   all three acoustic peaks shift by $\sim 10\%$.
   With the full $\omega_m$-direct density, peak positions agree with \LCDM\ to
   within $\Delta\ell \le 1$ (RMS $= 0.14\%$).
@@ -1170,7 +1175,7 @@ $H_0$ & $3(\phiG+\pi)^2$ & $67.96214$ km/s/Mpc & $67.36\pm0.54$ (Planck) \\
 $n_s$ & $1-\phiG^{-7}$ & $0.965558$ & $0.9649\pm0.0042$ (Planck) \\
 $\OmmCMB$ & $\omega_m/h^2$ ($\omega_m$-direct) & $0.308881$ & $0.3153\pm0.0073$ (Planck) \\
 $\Omde$ & $T_r/M_v$ & $0.839950$ & $0.6847$ (\LCDM) \\
-$\Ommdyn$ & $1 - \Omde$ & $0.160$ & --- \\
+$\sm$ & $1 - \Omde = 1+w_0$ (saturation, not a density) & $0.160$ & --- \\
 $\MIRA$ & $(3\phiG+\pi)/4$ (Mirror Ratio; enters $\fscr$) & $1.998924$ & --- \\
 \midrule
 $\KAL$ & $\beta + \pi = (\phiG+3\pi)/2$ & $5.521406$ & --- \\

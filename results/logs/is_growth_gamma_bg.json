@@ -1,0 +1,31 @@
+{
+ "buggy_s_m_como_densidad": {
+  "Omega_m": 0.160050228655221,
+  "w0": -0.839949771344779,
+  "wa": -0.6699748856723895,
+  "gamma": 0.5421959648903386,
+  "gamma_sd": 0.006453420039490677,
+  "nota": "Omega_m = s_m = 1+w0 = 0.160050 (la ranura mal llenada del .tex)"
+ },
+ "correcto_omega_m_total": {
+  "Omega_m": 0.30888087877875237,
+  "w0": -0.839949771344779,
+  "wa": -0.6699748856723895,
+  "gamma": 0.541019397213307,
+  "gamma_sd": 0.0049772538975867454,
+  "nota": "Omega_m = omega_m/h^2 = 0.308881 (la densidad de verdad)"
+ },
+ "control_lcdm": {
+  "Omega_m": 0.3153,
+  "w0": -1.0,
+  "wa": 0.0,
+  "gamma": 0.547118790715822,
+  "gamma_sd": 0.0022855596736405786,
+  "nota": "Planck 2018; gamma de libro ~0.55"
+ },
+ "control": {
+  "buggy_reproduce_el_0657": false,
+  "lcdm_da_el_055_de_libro": true,
+  "veredicto": "NO concluyente: revisar antes de tocar el .tex"
+ }
+}

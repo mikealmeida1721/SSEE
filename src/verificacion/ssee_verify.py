@@ -6739,6 +6739,160 @@ except Exception as _e:            # noqa: BLE001
     check("R55 la capa de dirección de cascada corrió", False,
           f"excepción: {_e}", nivel=5)
 
+print("\nCapa R72 — ninguna saturación ocupa ranura de densidad en los MANUSCRITOS")
+# Por qué existe. R52/R52b vigilan lo mismo pero SÓLO en código .py. El error de
+# categoría vive igual —y más tiempo— en los .tex, donde nadie lo ejecuta:
+#   · fig3_omega_de graficaba T_R/M_V = 0.839950 (que es s_DE = |w0|) en el eje
+#     de densidad, contra el Ω_Λ de Planck. Corregido 2026-09-26.
+#   · SSEE_EFT_section.tex mete Ω_{m,dyn}·a^{-3} en Friedmann y en la fuente de
+#     Poisson — misma forma que el bug Ω_m-geometría de 2026-07-09.
+#   · SSEE_Unified_Journal.tex define \Ommdyn y lo llama «matter density».
+# Lo que se marca NO es mencionar la saturación: es ponerla donde va una
+# densidad — diluyéndose como a^{-3} o (1+z)^3, dentro de E²/h̃², en la fuente
+# de Poisson, o rotulada «matter density». Mencionarla para decir que NO es una
+# densidad es justamente lo que se quiere que digan los papers, y queda exento.
+try:
+    _SAT72 = (r"(?:\\Ommdyn|\\Omde|Omega_\{m,\\?\s?\\?mathrm\{dyn\}\}"
+              r"|Omega_\{m,\s?dyn\}|Om\^\{?\\?mathrm\{dyn\}\}?"
+              r"|Om\^\{\\mathrm\{dyn\}\}|0\.160050|0\.839950)")
+    # Ranuras de densidad: dilución, fondo de Friedmann, fuente de Poisson.
+    _RANURA72 = _re.compile(
+        _SAT72 + r"\s*(?:\\,|\;|~|\s)*"
+        r"(?:a\^\{?-3\}?|a\^\{-3\}|\(1\+z\)\^\{?3\}?)"
+        r"|(?:E\^\{?2\}?|H\^\{?2\}?|\\tilde\{h\}\^\{?2\}?|h\^\{?2\}?)"
+        r"[^\n]{0,40}" + _SAT72
+        + r"|(?:matter density|densidad de materia|matter fraction)"
+          r"[^\n]{0,60}" + _SAT72
+        + r"|" + _SAT72 + r"[^\n]{0,60}(?:matter density|densidad de materia)")
+    # Exento: la frase dice que NO es una densidad, o es registro histórico.
+    _EX72 = _re.compile(
+        r"NO es una densidad|not a density|equation of state|ecuaci[oó]n de estado"
+        r"|1\s*\+\s*w_?0|1\+w_\{?0\}?|supersed|retirad|superad|RETIRED|deprecat"
+        r"|category error|error de categor|R52|R72|historical|hist[oó]rico"
+        r"|saturation|saturaci[oó]n", _re.I)
+
+    def _sitios_r72(_txt):
+        _out = []
+        _ls = _txt.splitlines()
+        for _i, _ln in enumerate(_ls):
+            if _ln.lstrip().startswith("%"):
+                continue                      # comentario LaTeX
+            if not _RANURA72.search(_ln):
+                continue
+            _win = "\n".join(_ls[max(0, _i - 4):_i + 3])
+            if _EX72.search(_win):
+                continue
+            _out.append((_i + 1, _ln.strip()[:60]))
+        return _out
+
+    _r72, _n72 = [], 0
+    for _tx in sorted((_REPO / "manuscript").rglob("*.tex")):
+        if "archive" in _tx.parts or "superseded" in str(_tx):
+            continue
+        _n72 += 1
+        for _l, _s in _sitios_r72(_tx.read_text(errors="ignore")):
+            _r72.append(f"{_tx.name}:{_l} «{_s}»")
+
+    check("R72 el guardián escaneó una superficie real de manuscritos",
+          _n72 >= 8, f"{_n72} .tex escaneados (piso 8)")
+
+    if _r72:
+        track_open(f"R72 {len(_r72)} sitios con saturación en ranura de densidad",
+                   "; ".join(_r72[:6]) + (" …" if len(_r72) > 6 else ""))
+    else:
+        check("R72 ningún manuscrito pone una saturación donde va una densidad",
+              True, f"{_n72} .tex limpios")
+
+    # Control (R53): el detector tiene que marcar la forma mala y dejar pasar
+    # la buena. Sin esto la regla podría estar verde por no mirar nada.
+    _mal72 = [r"  = \frac{3}{2}\,\frac{\Ommdyn\,a^{-3}}{\tilde{h}^{2}(a)}\,\delta,",
+              r"the background $\tilde{h}^{2}(a) = \Omega_{m,\mathrm{dyn}}\,a^{-3}+\rho$",
+              r"the dynamical matter density $\Ommdyn = 0.160050$ governs BAO"]
+    _bien72 = [r"  = \frac{3}{2}\,\frac{\Omega_{m}\,a^{-3}}{\tilde{h}^{2}(a)}\,\delta,",
+               r"the background $\tilde{h}^{2}(a) = \Omega_{m}\,a^{-3}+\rho$"]
+    _hist72 = ["% nota: superseded — el 0.160050 es 1+w_0, no una densidad",
+               r"the dynamical matter density $\Ommdyn = 0.160050$ governs BAO"]
+    _cm = [bool(_sitios_r72(_x)) for _x in _mal72]
+    _cb = [not _sitios_r72(_x) for _x in _bien72]
+    _ch = not _sitios_r72("\n".join(_hist72))
+    check("R72 el detector distingue la ranura de densidad de la mención",
+          all(_cm) and all(_cb) and _ch,
+          f"3 formas malas marcadas ({sum(_cm)}/3), "
+          f"2 con Ω_m real limpias ({sum(_cb)}/2), "
+          f"1 mención negada eximida ({'sí' if _ch else 'NO'})")
+
+    # ── R72b — el signo de Δ dice lo mismo en los diez papers ──────────────
+    # CANONICAL_VALUES.yaml declara Δ ≡ SSEE − ΛCDM, negativo favorece a SSEE.
+    # De no tenerlo declarado en un solo sitio salieron los signos opuestos
+    # entre Paper 1/2 y Paper 6/Sealed/Unified. Se marca la línea que afirma
+    # «favorece a SSEE» con un Δ de signo POSITIVO sin decir que va al revés.
+    _CLAIM72 = _re.compile(r"favou?r\w*\s+SSEE|SSEE\s+(?:is\s+)?favou?r"
+                           r"|favorece\w*\s+(?:a\s+)?SSEE|SSEE\s+favorecid",
+                           _re.I)
+    # El número tiene que venir DESPUÉS de un «=», no de un subíndice: la
+    # primera versión leía el «2» de \Delta\mathrm{BIC}_{k2} como el valor y
+    # marcaba Paper 3, que está bien escrito. Lo cazó su propio control.
+    _DELTA72 = _re.compile(r"\\Delta\$?\s*(?:\\mathrm\{)?\s*(?:BIC|AIC|DIC)\}?"
+                           r"(?:_\{[^}]*\})?\s*(?:\$?\s*=|\\simeq|\\approx)"
+                           r"\s*\$?\s*([+-−]?\s?\d+\.?\d*)")
+    # Exento: la línea/entorno declara la dirección invertida, o es histórico.
+    _EXS72 = _re.compile(r"Lambda\s*CDM\s*[-−]\s*SSEE|LCDM\s*[-−]\s*SSEE"
+                         r"|lcdm_minus_ssee|\\LCDM\s*[-−]\s*\\?SSEE"
+                         r"|supersed|retirad|superad|RETIRED|hist[oó]ric"
+                         r"|convention|convenci[oó]n", _re.I)
+
+    def _sitios_r72b(_txt):
+        _out, _ls = [], _txt.splitlines()
+        for _i, _ln in enumerate(_ls):
+            if _ln.lstrip().startswith("%") or not _CLAIM72.search(_ln):
+                continue
+            _vs = [_x.replace(" ", "") for _x in _DELTA72.findall(_ln)]
+            if not _vs:
+                continue
+            # Una línea puede llevar varios Δ (p. ej. k=2 y k=4). Basta que UNO
+            # sea negativo para que la afirmación esté respaldada.
+            if any(_x.startswith("-") or _x.startswith("−") for _x in _vs):
+                continue
+            if _EXS72.search("\n".join(_ls[max(0, _i - 3):_i + 2])):
+                continue
+            _out.append((_i + 1, _ln.strip()[:60]))
+        return _out
+
+    _r72b = []
+    for _tx in sorted((_REPO / "manuscript").rglob("*.tex")):
+        if "archive" in _tx.parts or "superseded" in str(_tx):
+            continue
+        for _l, _s in _sitios_r72b(_tx.read_text(errors="ignore")):
+            _r72b.append(f"{_tx.name}:{_l} «{_s}»")
+
+    if _r72b:
+        track_open(f"R72b {len(_r72b)} sitios con Δ de signo contrario a la convención",
+                   "; ".join(_r72b[:5]) + (" …" if len(_r72b) > 5 else ""))
+    else:
+        check("R72b ningún paper afirma «favorece SSEE» con un Δ positivo",
+              True, "convención Δ ≡ SSEE − ΛCDM coherente en los .tex")
+
+    # Control (R53): la forma mala se marca, la correcta y la que declara la
+    # dirección invertida pasan.
+    _mb = [r"giving $\Delta\mathrm{BIC} = +6.43$, which favours SSEE.",
+           r"we find $\Delta$BIC $= 19.01$ and SSEE is favoured."]
+    _bb = [r"giving $\Delta\mathrm{BIC} = -6.43$, which favours SSEE.",
+           r"$\Delta\mathrm{BIC}(\Lambda CDM - SSEE) = +6.43$ favours SSEE.",
+           # el caso real de Paper 3 que la v1 marcaba mal: el «2» del
+           # subíndice _{k2} no es el valor del Δ.
+           r"$\Delta\mathrm{BIC}_{k2}=-32.9$ ... $\Delta\mathrm{BIC}_{k4}"
+           r"=\Delta\chi^2+(4-6)\ln(2354)=-17.3$, favouring SSEE."]
+    _cmb_ = [bool(_sitios_r72b(_x)) for _x in _mb]
+    _cbb  = [not _sitios_r72b(_x) for _x in _bb]
+    check("R72b el detector distingue el signo de la dirección declarada",
+          all(_cmb_) and all(_cbb),
+          f"2 signos invertidos marcados ({sum(_cmb_)}/2), "
+          f"3 limpios de 3: negativo, dirección declarada y el subíndice "
+          f"_{{k2}} de Paper 3 ({sum(_cbb)}/3)")
+except Exception as _e:            # noqa: BLE001
+    check("R72 la capa de saturación-en-manuscritos corrió", False,
+          f"excepción: {_e}", nivel=5)
+
 print("\nCapa R46 — el guardián hizo todo el trabajo que dice hacer")
 _PISO_CHECKS = 278          # +4 procedencia (JSON + redondeo + control); solo SUBE
                             # control, -1 R53; +2 R61 antes; solo SUBE

@@ -138,9 +138,9 @@ Expected output:
 δc(SSEE) = 1.67634  (colapso esférico; el 1.6284 = δc,EdS × n_s está RETIRADO, OP-27)
 δc(ΛCDM) = 1.67599
 M [M☉]      σ_M(z=10)    n_SSEE/n_ΛCDM
-1.00e+11      1.0050       0.990
-3.00e+11      0.7267       1.159
-1.00e+12      0.5064       1.406
+1.00e+11      1.0104       0.990
+3.00e+11      0.7267       0.976
+1.00e+12      0.5064       0.945
 ```
 
 ### Paper 5 — Israel-Stewart causal perturbations

@@ -17,7 +17,7 @@ ORIGEN: results/logs/deltac_spherical_collapse.json   (de ahi se LEEN, abajo)
 
 CONSECUENCIA, y no es que el efecto se anule — se INVIERTE. Con el delta_c
 derivado, SSEE predice MENOS halos masivos tempranos que LCDM, no mas:
-0.998 a 3e10 Msol (z=10), 0.894 a 3e12 (z=10), 0.778 a 3e12 (z=15). La causa
+0.998 a 3e10 Msol (z=10), 0.892 a 3e12 (z=10), 0.778 a 3e12 (z=15). La causa
 no es sigma8 (SSEE 0.8153 > LCDM 0.811) sino D(z): Omega_m menor y fondo CPL
 hacen crecer menos hasta z alto.
 

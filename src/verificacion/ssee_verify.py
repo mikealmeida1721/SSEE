@@ -1461,6 +1461,78 @@ check("R58 el detector distingue la afirmacion viva de la narrada como retirada"
            "que se colo 13 dias); la narrada como retirada, el valor "
            "corregido y P7 §withdrawn (exencion en la linea siguiente), limpios")
 
+# --- R70: H_global tiene UN valor, y el regimen IR no se llama canonico ----
+#
+# POR QUE EXISTE (2026-09-25). Mike, enfadado y con razon: «es algo que ya se
+# supone que deberia estar bien y sigue asi... los errores no son ni de fisica
+# ni de matematica sino de GRAMATICA», y «es como si solo me confirmaras en el
+# chat y no haces nada». Las dos cosas ciertas. En una sola sesion alinee tres
+# H_glob (67.79, 67.962142, 68.13) como si fueran opciones del modelo, y llame
+# «numero puro» a una salida con unidades para meterla en una integral.
+#
+# Pero la fuente no me desmintio: me lo confirmo. CANONICAL_VALUES.yaml tenia
+# `H0_glob_IR_km_s_Mpc` y `H0_glob_UV_km_s_Mpc` como DOS claves «SALIDA» en
+# paralelo, Paper 9 rotulaba su 68.13 como «canonical» y Paper 4 igual. Con eso
+# escrito, cualquiera —humano o sesion futura— lee dos H y se equivoca.
+# R55 ya vigila la DIRECCION de la cascada (que el numero puro no sea entrada).
+# Lo que faltaba es la CARDINALIDAD: hay UN H_global.
+#
+# La gramatica, escrita para que no haya que recordarla:
+#   s_K^full = s_K^IR + UV_corr = 0.40330 + 0.01361 = 0.41691   (P10 eq:sKfullform)
+#   f_screen = s_K^full/(3·MIRA) = 0.069522
+#   H_glob   = H_SH0ES·(1 − f_screen) = 73.04×(1−0.069522) = 67.96214  [UNICO]
+# El 68.13 es esa misma cascada con el termino IR SOLO: regimen M→inf de los
+# Papers 1-9, historico. No es «el H_global IR»: es el H_global incompleto.
+_R70_CANON = re.compile(
+    # «canonical»/«canónico» a menos de 80 caracteres de un 68.13 o un 68.44
+    # OJO: NO se puede excluir el punto aqui. El sitio real era una fila de
+    # tabla LaTeX —«(canonical, mult.) & ... & $68.13$»— y «mult.» lleva punto,
+    # asi que un [^.\n] no casaba ni con el caso que la regla existe para ver.
+    # Lo destapo el auto-test, no la lectura del patron.
+    r"(?:canonical|can[oó]nico)[^\n]{0,80}68\.(?:13|44)"
+    r"|68\.(?:13|44)[^\n]{0,80}(?:canonical|can[oó]nico)", re.I)
+_EX70 = ("regimen", "régimen", "regime", "IR ", "hist", "supersed", "M\to\infty",
+         "incomplet", "~~", "no canónico", "not canonical")
+_r70 = []
+for _f in (sorted((ROOT.parent / "manuscript").glob("*.tex"))
+           + sorted((ROOT.parent / "submission_PRD").glob("*.tex"))
+           + [_q for _q in sorted(ROOT.parent.glob("*.md"))
+              if _q.name not in ("CHANGELOG.md", "MEMORY.md")]
+           + [ROOT.parent / "CANONICAL_VALUES.yaml"]):
+    if not _f.exists():
+        continue
+    _lns = _f.read_text(errors="ignore").split("\n")
+    for _i, _l in enumerate(_lns):
+        if not _R70_CANON.search(_l):
+            continue
+        _ctx = "\n".join(_lns[max(0, _i - 2):_i + 3])
+        if any(_e.lower() in _ctx.lower() for _e in _EX70):
+            continue
+        _r70.append(f"{_f.name}:{_i+1}")
+check("R70 el regimen IR (68.13) no se presenta como el H_global canonico",
+      not _r70, ", ".join(_r70[:4]) if _r70
+      else "ningun documento llama canonico al 68.13 sin declararlo regimen IR; "
+           "el H_global del modelo es 67.96214 (f_screen completo IR+UV)")
+# y la fuente unica no puede volver a ofrecer DOS H_glob en paralelo
+_cv70 = (ROOT.parent / "CANONICAL_VALUES.yaml").read_text(errors="ignore")
+_claves70 = re.findall(r"^\s*(H0_glob[\w]*)\s*:", _cv70, re.M)
+_canon70 = [_k for _k in _claves70 if "historico" not in _k and "regimen" not in _k]
+check("R70 CANONICAL_VALUES declara UN solo H_global canonico",
+      len(_canon70) == 1,
+      f"claves H_glob canonicas: {_canon70} (debe ser exactamente 1; las de "
+      f"regimen historico llevan 'regimen'/'historico' en el nombre)")
+# CONTROL (R53): los dos casos son REALES, del arbol antes del arreglo
+_c70_mal = "$H_0^{\\rm glob}$ (canonical, mult.) & ... & $68.13$ km/s/Mpc"
+_c70_ok  = "$H_0^{\\rm glob}$ (\\emph{IR regime}, mult.) & ... & $68.13$ km/s/Mpc"
+_f70 = []
+if not _R70_CANON.search(_c70_mal):
+    _f70.append("no ve el rotulo «canonical» junto al 68.13")
+if _R70_CANON.search(_c70_ok):
+    _f70.append("marca la fila ya rotulada como regimen IR")
+check("R70 el detector distingue «canonical» de «IR regime» sobre el mismo 68.13",
+      not _f70, "; ".join(_f70) if _f70
+      else "2 casos reales de Paper 9 antes y despues del arreglo del 2026-09-25")
+
 # --- R57: ninguna figura se escribe fuera de results/figures (2026-09-07)
 # POR QUE EXISTE. ssee_paper5_IS_perturbations.py y ssee_eft_verification.py
 # viven en src/pNN/ pero unian OUTDIR con UN SOLO '..', asi que escribian a

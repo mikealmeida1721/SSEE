@@ -70,13 +70,27 @@ directly measured expansion rate is the local one,
 $H_0^{\rm SH0ES} = 73.04\pm1.04$\,km\,s$^{-1}$\,Mpc$^{-1}$
 (Riess et al.\ 2022); it enters, and the global background rate comes out,
 \[
-  H_0^{\rm glob} \;=\; H_0^{\rm SH0ES}\,(1-\fsc)
+  H_0^{\rm glob,IR} \;=\; H_0^{\rm SH0ES}\,(1-\fsc^{\rm IR})
                  \;=\; 73.04\times(1-0.06725)
                  \;=\; 68.13 \text{ km/s/Mpc}\,,
 \]
 to be compared with the dimensionless algebraic number
 $3(\phiG+\pi)^2 = 67.96214$ (Postulate~D, Paper~1): a residual of $0.166$,
-i.e.\ $0.17\sigma$, with \emph{zero free parameters}. The comparison is a
+i.e.\ $0.17\sigma$, with \emph{zero free parameters}.
+\footnote{\label{fn:regime}\textbf{Regime, stated once for the whole paper.} This paper works
+in the \emph{infrared} regime ($M\to\infty$), where $\sK=\sK^{\rm IR}=0.403302$
+and hence $\fsc=0.06725$.  The screening fraction of the full theory is not a
+separate quantity but the \emph{sum} of this term and the ultraviolet
+correction supplied by Paper~10, $\sK^{\rm full}=\sK^{\rm IR}+0.013608=0.416910$,
+giving $\fsc^{\rm full}=0.069522$ and the single model value
+$H_0^{\rm glob}=73.04\times(1-0.069522)=67.96214$~km/s/Mpc.  There is
+therefore \emph{one} $H_0^{\rm glob}$, not an infrared one and an ultraviolet
+one: the $68.13$ used throughout this paper is the same cascade evaluated with
+the infrared term alone, and it is superseded by the complete value once the
+ultraviolet completion is included.  In either case the propagated uncertainty
+$\pm0.970$, inherited from the SH0ES input, dominates over the residual
+against the pure number.}
+The comparison is a
 coincidence of value, not an identity: $3(\phiG+\pi)^2$ is a pure number and
 carries no units, whereas $H_0^{\rm glob}$ inherits km\,s$^{-1}$\,Mpc$^{-1}$
 from the measurement. The agreement is therefore an output of the cascade,
@@ -133,8 +147,9 @@ In this paper we show that the same algebraic structure that produces
 $\Hzero^{\rm alg}$ also produces a local kinematic correction
 $\fsc \approx 0.06725$ from the SSEE algebra. Applied to the measured
 local rate $H_0^{\rm SH0ES} = 73.04\pm1.04$~km/s/Mpc, this returns a global
-background rate $H_0^{\rm glob} = 68.13$ km/s/Mpc, to be compared with the
-algebraic number $3(\phiG+\pi)^2 = 67.96214$ ($0.17\sigma$).
+background rate $H_0^{\rm glob,IR} = 68.13$ km/s/Mpc in the IR regime, to be
+compared with the algebraic number $3(\phiG+\pi)^2 = 67.96214$ ($0.17\sigma$);
+the model value, with the complete $\fsc$, is $67.96214$ km/s/Mpc (footnote~\ref{fn:regime}).
 The derivation combines two results already established in this series:
 \begin{enumerate}
   \item From Paper~7 \citep{Paper7}: the pressure-dilution rate
@@ -414,12 +429,13 @@ $3\MIRA$     & $3\AURA/2$             & $5.9967$       & Eq.~\eqref{eq:3MIRA} \\
 $\fsc = \sK/(3\MIRA)$ & $(\pi-\phiG)/\Omega^2$ & $0.067253$ & Eq.~\eqref{eq:fscreen_identity} \\
 \midrule
 $H_0^{\rm SH0ES}$ (\emph{input}, measured) & --- & $73.04\pm1.04$ km/s/Mpc & \citet{Riess2022} \\
-$H_0^{\rm glob,IR}$ (Paper-9 IR result, mult.) & $H_0^{\rm SH0ES}(1-\fsc)$ & $68.13$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
-$H_0^{\rm glob,IR}$ (Paper-9 IR result, add.)  & $H_0^{\rm SH0ES}/(1+\fsc)$ & $68.44$ km/s/Mpc & --- \\
+$H_0^{\rm glob,IR}$ (Paper-9 IR regime, mult.) & $H_0^{\rm SH0ES}(1-\fsc^{\rm IR})$ & $68.13$ km/s/Mpc & Eq.~\eqref{eq:H0local} \\
+$H_0^{\rm glob}$ (\textbf{model value}, mult.) & $H_0^{\rm SH0ES}(1-\fsc^{\rm full})$ & $\mathbf{67.96214}$ km/s/Mpc & Paper~10, Eq.~(sKfullform) \\
+$H_0^{\rm glob,IR}$ (additive variant) & $H_0^{\rm SH0ES}/(1+\fsc^{\rm IR})$ & $68.44$ km/s/Mpc & --- \\
 $3\Omega^2$ (pure number, target) & $3(\phiG+\pi)^2$ & $67.96214$ & Paper~1 (Post.~D) \\
 $H_0^{\rm Freedman}$         & ---            & $69.96\pm1.54$ km/s/Mpc & \citet{Freedman2024} \\
-Tension vs SH0ES (canonical) & ---            & $0.17\sigma$   & --- \\
-Tension vs Freedman (canonical) & ---         & $1.88\sigma$   & --- \\
+Tension vs SH0ES (IR regime) & ---            & $0.17\sigma$   & --- \\
+Tension vs Freedman (IR regime) & ---         & $1.88\sigma$   & --- \\
 \textit{superseded:} $H_0^{\rm MIRA}{=}67.037 \to 71.87$ & MIRA mapping & $1.12\sigma$ & old register \\
 \bottomrule
 \end{tabular}%
@@ -432,8 +448,8 @@ Tension vs Freedman (canonical) & ---         & $1.88\sigma$   & --- \\
   \caption{%
     Hubble constant measurements from early-universe probes (blue), local
     distance-ladder probes (red), and the SSEE algebraic predictions (green).
-    The SSEE canonical multiplicative IR cascade takes the measured local
-    rate as input and returns $H_0^{\rm glob}=68.13$ km/s/Mpc from SH0ES
+    The SSEE multiplicative cascade in its IR regime takes the measured local
+    rate as input and returns $H_0^{\rm glob,IR}=68.13$ km/s/Mpc from SH0ES
     ($0.17\sigma$ from $3(\phiG+\pi)^2$) and $65.26$ km/s/Mpc from
     Freedman 2024 \citep{Freedman2024} ($1.88\sigma$).
     The superseded MIRA-mapped value ($H_0^{\rm MIRA}=67.037 \to 71.87$,
@@ -552,9 +568,9 @@ anchored on $67.96214$ and the MIRA-mapped value is retired as canonical.
 
 \paragraph{Comparison with TRGB/JWST.}
 The TRGB+JWST measurement of \citet{Freedman2024} yields
-$H_0 = 69.96\pm1.54$\,km/s/Mpc, placing the canonical SSEE multiplicative
-cascade at $\sim 1.88\sigma$: run on the Freedman datum the lens returns
-$H_0^{\rm glob} = 69.96\times(1-\fsc) = 65.26$\,km/s/Mpc, low by $2.70$
+$H_0 = 69.96\pm1.54$\,km/s/Mpc, placing the SSEE multiplicative
+cascade (IR regime) at $\sim 1.88\sigma$: run on the Freedman datum the lens returns
+$H_0^{\rm glob,IR} = 69.96\times(1-\fsc^{\rm IR}) = 65.26$\,km/s/Mpc, low by $2.70$
 against $3(\phiG+\pi)^2$.
 The discrepancy relative to Freedman suggests that, while the kinematic
 screening mechanism is consistent with resolving the SH0ES tension, the full picture of
@@ -817,7 +833,7 @@ Table~\ref{tab:comparison}:
         late-time ($z<0.15$) kinematic effect: $r_d$, $\theta_*$, and the
         growth factor $\sigma_8$ are untouched (Section~\ref{sec:CMBsafe}),
         so the $S_8$ results of Papers~5--6 are preserved.
-  \item \textbf{Sub-sigma residual, zero added parameters.}  The canonical
+  \item \textbf{Sub-sigma residual, zero added parameters.}  The
         SSEE prediction, anchored on the global background
         $H_0/(\mathrm{km\,s^{-1}\,Mpc^{-1}})=3(\phiG+\pi)^2$, sits at $0.17\sigma$
         from that pure number when the IR cascade is applied to SH0ES --- better than every finalist of the
@@ -878,13 +894,13 @@ than $0.05$\,km/s/Mpc (Appendix, Step~4).
 
 \paragraph{UV completion of $M$ (addressed in Paper~10).}
 The algebraic identity $\fsc = \sK/(3\MIRA) = (\pi-\phiG)/(\Omega^2)$ does not
-depend on $M$ (it cancels in the ratio), so the canonical prediction
-$H_0^{\rm glob} = 68.13$\,km/s/Mpc ($0.17\sigma$ from $3(\phiG+\pi)^2$) is robust.
+depend on $M$ (it cancels in the ratio), so the IR-regime prediction
+$H_0^{\rm glob,IR} = 68.13$\,km/s/Mpc ($0.17\sigma$ from $3(\phiG+\pi)^2$) is robust.
 Paper~10 of this series \citep{Paper10} derives $M^4 = 45\alpha^2\rho_{\rm crit} = 5\phiG^8\rho_{\rm crit}$
 from the same $\alpha$-attractor that governs inflation (Paper~1), yielding
 $\sK^{\rm full} = 0.41691$ ($+3.37\%$ over the IR value) and the UV output
-$H_0^{\rm glob,UV} = 67.96214$\,km/s/Mpc, the small-scale
-refinement of the same cascade.
+the model value $H_0^{\rm glob} = 67.96214$\,km/s/Mpc --- not a second
+$H_0^{\rm glob}$, but the same cascade with $\fsc$ complete.
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \section{Conclusions}
@@ -902,9 +918,9 @@ disformal null geodesic.
 The structural constant $\AURA = 2\MIRA$ cancels exactly in the ratio,
 leaving a pure function of the two fundamental constants $\phiG$ and $\pi$.
 
-Applied to the measured local rate, the lens gives the canonical result
+Applied to the measured local rate, the lens gives, in the IR regime,
 \begin{equation}
-  H_0^{\rm glob} = H_0^{\rm SH0ES}\left[1-\frac{\pi-\phiG}{(\phiG+\pi)^2}\right]
+  H_0^{\rm glob,IR} = H_0^{\rm SH0ES}\left[1-\frac{\pi-\phiG}{(\phiG+\pi)^2}\right]
   \approx 68.13\;\text{km/s/Mpc}\,,
 \end{equation}
 which is $0.17\sigma$ from the algebraic $3(\phiG+\pi)^2$ with zero free
@@ -956,12 +972,15 @@ at this level.
 \label{app:postulateP}
 %% ─────────────────────────────────────────────────────────────────────────────
 
-The body reports the canonical cascade run on the measured local rate
-$H_0^{\rm SH0ES}=73.04\pm1.04$~km/s/Mpc: applying the derived screening gives
-$H_0^{\rm glob}=68.13$ (IR, $0.17\sigma$) and, with the UV completion of
-Paper~10, $67.96214$~km/s/Mpc ($4.3\times10^{-6}\sigma$) --- reducing the
-$\sim 5\sigma$ Planck--SH0ES discrepancy to below the percent level with zero
-free parameters.
+The body reports the cascade run on the measured local rate
+$H_0^{\rm SH0ES}=73.04\pm1.04$~km/s/Mpc: with the IR term alone it gives
+$H_0^{\rm glob,IR}=68.13$ ($0.17\sigma$), and with $\fsc$ complete (IR${+}$UV,
+Paper~10) the single model value $H_0^{\rm glob}=67.96214$~km/s/Mpc, whose
+residual against $3(\phiG+\pi)^2$ is $+4.2\times10^{-6}$~km/s/Mpc. That residual
+is \emph{not} a significance: the uncertainty propagated from
+$H_0^{\rm SH0ES}$ is $\pm0.970$~km/s/Mpc and dominates it by five orders of
+magnitude. The cascade reduces the $\sim 5\sigma$ Planck--SH0ES discrepancy to
+below the percent level with zero free parameters.
 
 This appendix supplies the independent self-consistency check that motivates
 adopting $67.96214$ as the algebraic target: it works the screening chain

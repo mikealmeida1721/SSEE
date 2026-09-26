@@ -172,9 +172,32 @@ canonical:
   # es el blanco contra el que se compara la salida. El único H medido es SH0ES;
   # el de Planck se INFIERE dentro de ΛCDM (sus libres se acomodan al dato).
   H0_SH0ES_km_s_Mpc:    73.04     # ENTRADA — medido (Riess+2022, ±1.04)
-  num_alg_3Omega2:      67.96214  # blanco de comparación, PURO (sin unidades)
-  H0_glob_IR_km_s_Mpc:  68.13     # SALIDA IR  = 73.04×(1−0.067253) — 0.17σ vs num_alg
-  H0_glob_UV_km_s_Mpc:  67.96214  # SALIDA UV  = 73.04×(1−0.069522) — residuo +4.2e-06
+  num_alg_3Omega2:      67.96214  # blanco de comparación, PURO (SIN UNIDADES).
+                                  # NUNCA es entrada de la cascada ni se integra
+                                  # como un H: no tiene unidades. Coincide con
+                                  # H0_glob a 4.2e-06 y eso habla de la geometría
+                                  # de SSEE — NO es una identidad, porque uno de
+                                  # los dos lados no lleva unidades. Ver R55.
+  # ─────────────────────────────────────────────────────────────────────────
+  # HAY UN SOLO H_global. (Corregido 2026-09-25 — lo exigió Mike, y esta
+  # ambigüedad es la que venía induciendo el error: dos claves «SALIDA» en
+  # paralelo se leen como dos H alternativos del modelo, y no lo son.)
+  #
+  # f_screen NO se aplica por regímenes separados: el s_K completo es la SUMA
+  # del IR más la corrección UV (Paper 10, eq:sKfullform):
+  #     s_K^full = s_K^IR + UV_corr = 0.40330 + 0.01361 = 0.41691
+  #     f_screen = s_K^full/(3·MIRA) = 0.41691/(3×1.99892) = 0.069522
+  #     H_glob   = H_SH0ES·(1−f_screen) = 73.04×(1−0.069522) = 67.96214
+  # Aplicar sólo el IR da 68.13, que NO es «el H_global IR» sino esta misma
+  # cuenta INCOMPLETA — el régimen M→∞ de Papers 1–9, anterior a que Paper 10
+  # cerrara la completación UV. Es histórico, no canónico.
+  H0_glob_km_s_Mpc:     67.96214  # ÚNICO H_global del modelo. SALIDA de la
+                                  # cascada con f_screen COMPLETO (IR+UV).
+                                  # Tiene UNIDADES: es lo que se usa y se cita.
+  H0_glob_regimen_IR_historico: 68.13   # NO canónico. f_screen sólo-IR
+                                  # (M→∞, Papers 1–9). Se conserva porque
+                                  # Paper 9 razona en ese régimen y hay que
+                                  # poder trazar su número.
   sigma_glob_propagado: 0.970     # 1.04×(1−f) — DOMINA sobre el residuo UV
   f_screen_IR:         0.06725    # (π−φ)/Ω² = αK/(3·MIRA)  [INVARIANTE]
   f_screen_UV:         0.06952    # αK_full/(3·MIRA)        [INVARIANTE]

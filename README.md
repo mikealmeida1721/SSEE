@@ -72,18 +72,18 @@
 
 | # | Title | Pages | Status | PDF |
 |---|---|---|---|---|
-| 1 | Minimal-Parameter Framework (φ, π → w₀, wₐ, EFT) + Predictive Register + Two-Ω_m Criterion | 28 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
-| 2 | Bayesian MCMC Validation — DESI DR2 + Planck + clusters | 26 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
-| 3 | CMB Confrontation — Planck PR4 TT+TE+EE+lensing | 24 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
-| 4 | Algebraic Derivation of the CMB Background from φ and π | 16 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
-| 5 | Israel-Stewart Causal Viscous Perturbations — Exact Marginal Stability, ΛCDM-Consistent Structure Growth (the two-sector matter section is RETIRED, 2026-08-01) | 25 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
-| 6 | φ-Dark Matter in SSEE-V3.6: Algebraic Mass Derivation and Resolution of the fσ₈ Tension | 24 | Preprint | [docs/](docs/SSEE_Paper6_phiDM.pdf) |
-| 7 | Canonical EFT of SSEE-V3.6: Action, β_c = −AURA, and Bellini-Sawicki α-Functions | 16 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
-| 8 | Strong Gravity Regime — Two-limit analysis (alt MOND-like vs canonical EFT B-S) | 20 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
-| 9 | Hubble Tension via Algebraic Screening Fraction: f_screen = αK/(3·MIRA) | 18 | Preprint | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
-| 10 | UV Completion of SSEE: K(X) = X/KAL + X²/M⁴, M = φ²·5^(1/4)·ρ_crit^(1/4) = 9.68 meV | 14 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
-| — | **Unified Journal Paper** (consolidation of Papers 1–10 + CLASS + MCMC Fase 4) | 25 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |
-| ★ | **Sealed Journal** — consolidated late-universe dark-energy paper (φ → w₀, wₐ; closed-dictionary look-elsewhere; two-stage H₀; honest accounting of ~3 vs 6 parameters) | 10 | **Sealed — external-audit candidate** | [docs/](docs/SSEE_Sealed_Journal.pdf) |
+| 1 | A Minimal-Parameter Framework for Cosmological Dynamics and Galaxy Cluster Mass Discrepancies via Structural Self-Energy Expansion (SSEE) | 35 | arXiv-ready | [docs/](docs/SSEE_Paper1_Framework.pdf) |
+| 2 | Bayesian MCMC Validation of SSEE — Model Comparison against ΛCDM and CPL using DESI DR2, Planck 2018 and Galaxy-Cluster Mass Data | 31 | arXiv-ready | [docs/](docs/SSEE_Paper2_MCMC.pdf) |
+| 3 | SSEE and the CMB Power Spectrum — Acoustic Peak Reproduction via the ω_m-Direct CMB Matter Density | 26 | arXiv-ready | [docs/](docs/SSEE_Paper3_CMB.pdf) |
+| 4 | SSEE as a Two-Axiom Cosmology — Algebraic Derivation of the CMB Background from φ and π | 19 | Preprint | [docs/](docs/SSEE_Paper4_ToE.pdf) |
+| 5 | Israel-Stewart Causal Viscous Perturbations in the SSEE Dark Energy Framework — Exact Marginal Stability, ΛCDM-Consistent Structure Growth, and the Amplitude Ceiling *(the two-sector matter section is RETIRED, 2026-08-01)* | 31 | Preprint | [docs/](docs/SSEE_Paper5_IS.pdf) |
+| 6 | SSEE and the Growth Sector Re-examined — No Second Matter Component, and No S₈ Tension, on Raw Survey Data *(rewritten 2026-08-01; the φ-DM version is retired to `archive/`)* | 17 | Preprint | [docs/](docs/SSEE_Paper6_Growth.pdf) |
+| 7 | The SSEE Dark-Energy Sector as a Ghost Condensate — Two-Term K-essence, Algebraic Sound Speed, and Bellini-Sawicki Classification *(β_c = −AURA RETIRED 2026-09-07; real value −2.194210)* | 17 | Preprint | [docs/](docs/SSEE_Paper7_EFT.pdf) |
+| 8 | SSEE in the Strong-Gravity Regime — Disformal Geodesics, MIRA Emergence, and k-mouflage Screening | 19 | Preprint | [docs/](docs/SSEE_Paper8_StrongGravity.pdf) |
+| 9 | SSEE and the Hubble Tension — An Algebraic Local Screening Fraction | 22 | Preprint | [docs/](docs/SSEE_Paper9_HubbleTension.pdf) |
+| 10 | UV Extension of SSEE Dark Energy: M⁴ = 45α²ρ_crit = 5φ⁸ρ_crit, and a Conditional Self-Consistency Check on the Hubble Tension | 16 | Preprint | [docs/](docs/SSEE_Paper10_UVCompletion.pdf) |
+| — | **Unified Journal Paper** (consolidation of Papers 1–10 + CLASS + MCMC Phase 4) | 24 | Journal submission candidate | [docs/](docs/SSEE_Unified_Journal.pdf) |
+| ★ | **Sealed Journal** — consolidated late-universe dark-energy paper (φ → w₀, wₐ; closed-dictionary look-elsewhere; two-stage H₀; honest accounting of ~3 vs 6 parameters) | 21 | **Sealed — external-audit candidate** | [docs/](docs/SSEE_Sealed_Journal.pdf) |
 
 ---
 

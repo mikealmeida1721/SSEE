@@ -70,7 +70,18 @@ OmDE_S = 1 - Omm_S
 w0_S   = -0.8399
 wa_S   = -0.6699
 h_S    = H0_S / 100
-sig8_S = 0.7446  # MCMC R3 contra KiDS crudo (Paper 6, canonico)
+# ── CORRECCION 2026-09-25 ────────────────────────────────────────────────
+# sig8_S = 0.7446  ->  0.8153
+#     0.7446 era el MCMC R3 contra KiDS-1000 (A_s libre). SUPERADO el
+#     2026-09-19 por KiDS-Legacy: la colaboracion recalibro n(z) y el dato
+#     subio (los dos releases difieren ENTRE SI a 2.5σ). Canonico vigente
+#     (CANONICAL_VALUES.yaml): sigma8_ssee_unif = 0.8153, PREDICCION del
+#     modelo unificado con A_s FIJO en el valor del CMB — A_s se paga una
+#     vez en el CMB y no se vuelve a cobrar en el crecimiento. Para la
+#     pregunta "¿acomoda SSEE halos masivos tempranos?" el ancla correcta
+#     es la prediccion propia del modelo, no lo que preferia un dato
+#     ya recalibrado. (Con A_s libre en Legacy: 0.8075 ± 0.0160.)
+sig8_S = 0.8153  # prediccion unificada, A_s fijado al CMB (canonico)
 gamma_S= 0.5504  # gamma_IS medido en Paper 5
 
 # ── Linear growth factor D(z) — IS and LCDM integrations ──────────────────────

@@ -849,8 +849,22 @@ Poisson equation is
   \quad r \equiv \frac{\delta_{\mathrm{DE}}}{\delta_m}\bigg|_{z=0},
   \label{eq:Omeff}
 \end{equation}
-and the numerical MIRA is $\mathrm{MIRA}_{\mathrm{num}} = \Omega_{m,\mathrm{eff}}/\Omega_{m,\mathrm{dyn}}$.
-Reproducing the algebraic $\mathrm{MIRA} = 1.9989$ would require
+and we write $\mathcal{R} \equiv \Omega_{m,\mathrm{eff}}/\Omega_{m,\mathrm{dyn}}$ for the
+enhancement this clustering would produce.
+
+\paragraph{What this section does and does not test (reframed 2026-09-26).}
+Earlier versions posed $\mathcal{R}$ as a test of whether the perturbations
+\emph{reproduce} the algebraic $\mathrm{MIRA}=1.9989$, under the mapping
+$\Omega_{m,\mathrm{CMB}} = \mathrm{MIRA}\times\Omega_{m,\mathrm{dyn}} = 0.3199$ then in force.
+That mapping was withdrawn on 2026-06-18 when OP-8 closed: there is no matter
+factor in the model, $\Omega_{m,\mathrm{CMB}}=\omega_m/h^{2}=0.308881$ is derived, and
+$\Omega_{m,\mathrm{dyn}}=1+w_0$ is a saturation rather than a density. So there is no
+longer a factor of two for the perturbations to supply, and a
+``$50\%$ discrepancy'' from a withdrawn target is not a result.
+What the integration measures is unchanged and stands on its own: the level of
+dark-energy clustering, reported below as a \emph{bound}. The figure
+$r^*=0.1904$ is retained only as the scale that a two-fold enhancement would
+have demanded, which is what makes the smallness of the measured $r$ meaningful:
 \begin{equation}
   r^* = \frac{(\mathrm{MIRA}-1)\,\Omega_{m,\mathrm{dyn}}}{\OmDE}
   = \frac{0.9989 \times 0.160050}{0.839950}
@@ -876,7 +890,7 @@ equation~\eqref{eq:Poisson}.
 \begin{tabular}{cccccc}
 \toprule
 $k\,[H_0/c]$ & $\delta_m(z=0)$ & $r = \delta_{\mathrm{DE}}/\delta_m$
-  & $\Omega_{m,\mathrm{eff}}$ & MIRA$_{\mathrm{num}}$ & IS regime \\
+  & $\Omega_{m,\mathrm{eff}}$ & $\mathcal{R}$ & IS regime \\
 \midrule
 2   & 0.152 & $-0.0121$ & 0.1499 & 0.937 & partial \\
 3   & 0.226 & $-0.0098$ & 0.1517 & 0.948 & yes \\
@@ -888,18 +902,23 @@ $k\,[H_0/c]$ & $\delta_m(z=0)$ & $r = \delta_{\mathrm{DE}}/\delta_m$
 \midrule
 \multicolumn{4}{l}{Mean ($k \geq 10\,H_0/c$, IS-stabilised):}
   & $0.989 \pm 0.017$ & \\
-\multicolumn{4}{l}{Required ($r = r^* = 0.1904$):}
+\multicolumn{4}{l}{Would require ($r = r^* = 0.1904$):}
   & $1.9989$ & \\
-\multicolumn{4}{l}{Discrepancy from algebraic MIRA:}
-  & $50.2\%$ & \\
+\multicolumn{4}{l}{$\Rightarrow$ bound: $|r| < 0.013$ for $k\geq2$, i.e.\ $<7\%$ of $r^*$}
+  &  & \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The numerical MIRA is $0.989 \pm 0.017$ at $k \geq 10\,H_0/c$,
-against the algebraic target $1.9989$: a discrepancy of $50\%$.
-The ratio $r = \delta_{\mathrm{DE}}/\delta_m$ is small and \emph{negative}
-at all scales, with $|r| \to 0$ as $k$ increases.
+The measured enhancement is $\mathcal{R} = 0.989 \pm 0.017$ at $k \geq 10\,H_0/c$:
+consistent with unity, i.e.\ \emph{no} enhancement. The content of that number is
+a bound on dark-energy clustering. The ratio $r = \delta_{\mathrm{DE}}/\delta_m$
+is small and \emph{negative} at all scales, $|r| < 0.013$ already at
+$k = 2\,H_0/c$ and falling as $k^{-2}$, with $|r| \to 0$ as $k$ increases ---
+below $7\%$ of the $r^*=0.1904$ that a two-fold enhancement would have needed.
+Dark energy in this model does not cluster at any scale probed here, and a
+measurement of $\delta_{\rm DE}/\delta_m$ above the percent level at $z=0$ would
+falsify it.
 This reflects the IS suppression mechanism: the effective friction
 $\mathcal{F}(k,a) = (1-3c^2_s) + \ztilde(k/aH)^2$ grows as $k^2$,
 preventing DE from clustering at sub-horizon scales.
@@ -924,20 +943,25 @@ confirming the power-law decrease seen in Table~\ref{tab:MIRA}.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\textwidth]{fig_paper5_MIRA_test.pdf}
-\caption{$\mathrm{MIRA}_\mathrm{num}(k)$ (blue points with error bars) versus
-  $k/(H_0/c)$.
-  The algebraic target $\mathrm{MIRA} = (3\varphi+\pi)/4 \simeq 1.999$ (red dashed)
-  is not approached: IS suppression drives $\mathrm{MIRA}_\mathrm{num} \to 1$
+\caption{$\mathcal{R}(k) \equiv \Omega_{m,\mathrm{eff}}/\Omega_{m,\mathrm{dyn}}$
+  (blue points with error bars) versus $k/(H_0/c)$; the figure axis and earlier
+  versions of this text write this quantity $\mathrm{MIRA}_\mathrm{num}$.
+  The former target $\mathrm{MIRA} = (3\varphi+\pi)/4 \simeq 1.999$ (red dashed)
+  is not approached: IS suppression drives $\mathcal{R} \to 1$
   for $k \gg H_0/c$.
   The grey region marks full DE clustering ($1/\Omega_{m,\mathrm{dyn}} \simeq 6.25$),
   ruled out by all current observations.
   The required perturbation amplitude $r^* = 0.190$ (Eq.~\ref{eq:r_required})
   would require DE clustering at the $19\%$ level — \emph{not} produced by IS dynamics.
-  The conclusion is that MIRA is \emph{not} reproduced by IS dynamics: linear
-  perturbations yield $\mathrm{MIRA}_\mathrm{num} \approx 1$, not $1.9989$;
-  and the background IS Friedmann integration gives a ratio $\approx 3.04$,
-  also failing to recover $1.9989$. The MIRA factor remains a pure algebraic
-  postulate; see Section~\ref{subsec:MIRA_background}.}
+  The conclusion stands: MIRA is \emph{not} reproduced by IS dynamics, at either
+  level --- linear perturbations give $\mathcal{R}\approx1$ and the background
+  IS Friedmann integration a ratio $\approx3.04$, neither of them $1.9989$.
+  Both figures are recorded here as the \emph{historical} closing of a route
+  that is no longer open: the target $1.9989$ was the matter factor
+  $\Omega_{m,\mathrm{CMB}} = \mathrm{MIRA}\times\Omega_{m,\mathrm{dyn}}$, withdrawn on
+  2026-06-18 when OP-8 closed. MIRA survives as the screening entity of
+  Paper~9, where it is not a matter factor and nothing here bears on it.
+  See Section~\ref{subsec:MIRA_background}.}
 \label{fig:MIRA_test}
 \end{figure}
 
@@ -1372,7 +1396,7 @@ equations as \citep{Zimdahl1996,Maartens1996}:
 where in the SSEE steady state $\Pi_{\mathrm{bulk}} = -3\zeta H = -\KALz\,\rho_{\mathrm{DE}}H$.
 This viscous term effectively shifts the observed matter density. However, numerical integration of the background IS transport equations reveals that fitting an effective $\Omega_m$ to the resulting $H(z)$ evolution yields $\Omega_{m,\mathrm{fit}} / \Omega_{m,\mathrm{dyn}} \approx 3.04$ when using the SSEE viscous constant $\zeta = \KALz/3$. 
 
-This is $52\%$ higher than the algebraic MIRA factor ($1.9989$). We therefore establish that $\mathrm{MIRA}$ \emph{cannot} be derived from the background Israel-Stewart viscous pressure; the classical IS route is ruled out at both the linear-perturbation and background levels.
+This is $52\%$ higher than the algebraic MIRA factor ($1.9989$). We therefore establish that $\mathrm{MIRA}$ \emph{cannot} be derived from the background Israel--Stewart viscous pressure; the classical IS route is ruled out at both the linear-perturbation and background levels. \textbf{Historical note (2026-09-26).} The quantity being chased here, the matter factor $\Omega_{m,\mathrm{CMB}} = \mathrm{MIRA}\times\Omega_{m,\mathrm{dyn}}=0.3199$, was withdrawn on 2026-06-18 when OP-8 closed: $\Omega_{m,\mathrm{CMB}}=\omega_m/h^{2}=0.308881$ is derived with no factor, and $\Omega_{m,\mathrm{dyn}}=1+w_0$ is a saturation, not a density. The $3.04$ and the $52\%$ are therefore the record of a route closing, not a live tension --- there is no longer a factor of two to derive. The negative result is kept because it is what shut the route.
 
 The physical basis once attributed to Paper~6 is withdrawn, and the reason is
 worth recording because it is a result rather than a change of opinion.
@@ -1587,11 +1611,11 @@ consistent with thermodynamic stability.
 
 \paragraph{Q2 — MIRA factor (pure algebraic axiom).}
 Linear IS perturbations yield
-$\mathrm{MIRA}_{\mathrm{num}} = 0.989 \pm 0.017$ versus
+$\mathcal{R} = 0.989 \pm 0.017$ versus the former target
 $\mathrm{MIRA}_{\mathrm{alg}} = 1.9989$ at all sub-horizon scales.
 The discrepancy is $50\%$, establishing that the MIRA factor is not a
 perturbative phenomenon.
-Furthermore, numerical integration of the background IS Friedmann equations yields an effective ratio of $3.04$, failing to reproduce MIRA at the background level.
+Furthermore, numerical integration of the background IS Friedmann equations yields an effective ratio of $3.04$, failing to reproduce the matter factor at the background level --- a figure retained as the historical record of that route closing, since the factor it targeted was itself withdrawn in 2026-06 (OP-8).
 We conclude that the MIRA factor does not emerge from classical Israel--Stewart fluid mechanics. A two-sector dark matter structure was once proposed (Paper~6) as its physical basis, on the grounds that two near-equal densities would produce $\mathrm{MIRA}\approx2$ algebraically; that proposal is retracted, so MIRA has no proposed carrier at present and survives only as the algebraic invariant entering $f_{\rm screen}$ (Paper~9).
 
 \paragraph{Q3 — Growth rate and $S_8$ (SSEE tracks $\Lambda$CDM closely).}

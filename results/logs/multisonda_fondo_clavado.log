@@ -49,6 +49,22 @@ EJE AMPLITUD — cada sonda mide logA con el MISMO fondo clavado
        proyeccion (la tabla de arriba).
 ------------------------------------------------------------------------------
 
+------------------------------------------------------------------------------
+PUERTA DE VOTO — ¿es el logA de esta sonda una MEDIDA de A_s?
+  Criterio: que su valor central NO dependa del estimador. Medido antes
+  de esta corrida, no decidido aqui.
+  CMB (plik_lite TTTEEE+lowl+lensing)    D= 11.09   VOTA
+  KiDS-Legacy xi_pm                      D=  1.42   VOTA
+  BOSS DR12 P(k) LPT                     D=  4.00   NO VOTA — se desplazo 1.85 sigma de su propia barra
+                                                  2.7636 (media marginal) -> 2.9448 (minimo de perfil); 98% metodo, 2% neutrinos
+  Lo de BOSS no es un juicio de esta corrida: esta medido en
+  mide_As_o_producto.py y escrito como regla — «nunca promediar KiDS con
+  BOSS para el A_s: mezcla una medicion con un numero degenerado».
+  La D del CMB es alta (11.1) pero su companera es tau, que SI esta medida
+  por lowE; la de BOSS es un sesgo que se desliza con ella. Por eso D sola
+  no sirve de puerta.
+------------------------------------------------------------------------------
+
 TIRONES respecto del clavo (el SIGNO es lo que informa)
   sonda                                      delta   sigmas  direccion
   CMB (plik_lite TTTEEE+lowl+lensing)     -0.00259    -0.20  abajo
@@ -57,13 +73,18 @@ TIRONES respecto del clavo (el SIGNO es lo que informa)
 
 ------------------------------------------------------------------------------
 ESTADISTICO 1 — DISCORDIA ENTRE SONDAS   (esto es lo que se pidio)
-  logA comun = 3.03625 +- 0.01236   (media pesada)
-  T_sondas = 7.880  con 2 g.l.   p = 0.0194   ->  2.34 sigma
+  Sondas que votan: CMB (plik_lite TTTEEE+lowl+lensing), KiDS-Legacy xi_pm
+  logA comun = 3.04059 +- 0.01246   (media pesada)
+  T_sondas = 0.161  con 1 g.l.   p = 0.6886   ->  0.40 sigma
   Quita el modo comun: NO puede castigar al modelo. Mide SOLO si las
   sondas se contradicen entre ellas.
 
+  [para ver el dano] metiendo tambien a BOSS: T = 7.880 (2 g.l.) -> 2.34 sigma.
+  Ese numero NO se publica: es lo que sale de promediar una medicion con
+  un numero degenerado, y es justo lo que la regla del repo prohibe.
+
 ESTADISTICO 2 — el modo comun contra el clavo  [PRUEBA DEL MODELO]
-  T_modelo = 0.482 (1 g.l.)  ->  0.69 sigma
+  T_modelo = 0.116 (1 g.l.)  ->  0.34 sigma
   Va aparte y etiquetado: NO es la prueba que se pidio.
 ------------------------------------------------------------------------------
 
@@ -76,10 +97,20 @@ BONDAD DE AJUSTE con logA EN EL CLAVO, sonda por sonda
   sonda                                       chi2     N  libres  g.l.  chi2/gl      LCDM    Delta
   CMB (plik_lite TTTEEE+lowl+lensing)     2771.499  2354      24  2330   1.1895  2772.917   -1.418
   KiDS-Legacy xi_pm                        417.971   357       8   349   1.1976   418.955   -0.984
-  BOSS DR12 P(k) LPT                        87.680   222      18   204   0.4298    73.678  +14.002
+  BOSS DR12 P(k) LPT                        87.680   222      18   204   0.4298    84.266   +3.414
   BAO DESI DR2                              10.859    13       0    13   0.8353         —        —
   TOTAL (4 sondas)                        3288.009  2946      50  2896   1.1354         —        —
-  Delta total (solo las 3 con referencia)                                                   +11.600
+  Delta total (solo las 3 con referencia)                                                    +1.012
+
+
+  LO QUE BOSS SI PUEDE DECIR, ya que no vota en amplitud: cuanto le
+  CUESTA que la amplitud vaya clavada, y si ese coste depende del fondo.
+    BOSS con fondo SSEE : min libre   75.228   con logA clavado   87.680   coste +12.452
+    BOSS con fondo LCDM : min libre   73.678   con logA clavado   84.266   coste +10.588
+    El coste es parecido con los dos fondos (+12.45 contra +10.59): BOSS quiere menos
+    amplitud de la que el CMB fija, y la quiere igual en los dos. Eso
+    NO es un problema del fondo unificado, y tampoco es una medida de
+    A_s: es el sintoma conocido de su degeneracion con el sesgo.
 
   COMO SE LEE, que es la pregunta literal de Mike:
   Con el fondo clavado NO hay libres cosmologicos en ninguna sonda: estos
@@ -89,12 +120,16 @@ BONDAD DE AJUSTE con logA EN EL CLAVO, sonda por sonda
   de Planck da ~1.19 en plik, asi que 1.0 marcaria como malo al estado
   del arte. Y el chi2 conjunto es la SUMA de los individuales por
   construccion —cada sonda tiene sus nuisances y el fondo no se mueve—,
-  asi que la suma no es un dato nuevo. El dato nuevo esta en el reparto:
-  CMB y KiDS-Legacy prefieren el fondo de SSEE (Delta negativo) y BOSS
-  prefiere el de LCDM por +14.0 con EXACTAMENTE los mismos libres (logA
-  y 18 sesgos en las dos corridas), asi que no es un efecto de rigidez.
-  Y es la MISMA sonda que tira de la amplitud 2.84 sigma hacia abajo:
-  los dos estadisticos, que son independientes, senalan el mismo sitio.
+  asi que la suma no es un dato nuevo. El reparto si: CMB y KiDS-Legacy
+  prefieren el fondo de SSEE (Delta negativo) y BOSS el de LCDM por +3.4,
+  con los mismos libres y LA MISMA REGLA en los dos lados (los dos chi2
+  leidos con logA clavado). Nada de eso es grande.
+
+  CORRECCION DE ESTA MISMA CORRIDA. La primera version dio +14.0 para
+  BOSS. Era una mezcla de reglas: comparaba el chi2 de SSEE CON logA
+  clavado contra el de LCDM en su minimo LIBRE, regalandole al segundo
+  toda la libertad de la amplitud. Con la misma regla en los dos lados el
+  numero es +3.414 clavado, o +1.550 si se dejan libres los dos.
 
 ==============================================================================
 CONTROLES R53 — dos, porque hacen falta dos cosas distintas

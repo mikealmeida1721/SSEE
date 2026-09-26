@@ -31,16 +31,16 @@
     }
   ],
   "estadisticos": {
-    "logA_comun": 3.036250512263957,
-    "sigma_comun": 0.012360106887625686,
-    "T_sondas": 7.880442008606083,
-    "gl_sondas": 2,
-    "p_sondas": 0.019443917081158817,
-    "sigmas_sondas": 2.3369089846046713,
-    "T_modelo": 0.4822635590180232,
+    "logA_comun": 3.040590663214685,
+    "sigma_comun": 0.012458423685176214,
+    "T_sondas": 0.16064500481920524,
+    "gl_sondas": 1,
+    "p_sondas": 0.688563369640537,
+    "sigmas_sondas": 0.40080544509675164,
+    "T_modelo": 0.11600894510849517,
     "gl_modelo": 1,
-    "p_modelo": 0.4873988024803436,
-    "sigmas_modelo": 0.6944519846742633
+    "p_modelo": 0.733404082734759,
+    "sigmas_modelo": 0.3406008589368136
   },
   "estadisticos_perfil": {
     "logA_comun": 3.0503984576102385,
@@ -221,8 +221,8 @@
       "chi2_red": 0.429804568627451,
       "PTE": 0.9999999999999514,
       "procedencia": "N: 222 puntos P(k) k<=0.20; libres = 18 sesgos (b1,b2,bs x 3z x 2 hemisferios); logA CLAVADO",
-      "chi2_lcdm": 73.677763,
-      "delta_vs_lcdm": 14.002369000000002
+      "chi2_lcdm": 84.26621,
+      "delta_vs_lcdm": 3.4139219999999995
     },
     {
       "sonda": "BAO DESI DR2",

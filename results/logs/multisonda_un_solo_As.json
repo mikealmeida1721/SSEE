@@ -58,9 +58,29 @@
  "coste_total": 1.3069321772683224,
  "libres_retirados": 3,
  "coste_esperado_por_azar": 3.0,
- "veredicto": "Imponer el A_s del CMB a las cuatro cuesta +1.307 en chi2 habiendo quitado 3 libres. Por azar costaria ~3. El fondo unificado con un solo A_s NO tensiona a ninguna sonda.",
+ "veredicto": "Las cuatro sondas caben en UN SOLO A_s, el del CMB, por menos de lo que costaria el azar: +1.307 como cota superior (el termino del CMB, +1.056, esta dentro del ruido de su propia cadena) habiendo quitado libres. Eso es CONSISTENCIA de amplitud entre sondas, y es lo que licencia meter mas sondas como confirmacion o negacion. NO es «no hay degeneracion en el conjunto»: con el fondo y A_s clavados no queda nada que pueda degenerar.",
  "RETRACTADO": {
   "que": "el coste +12.452 de BOSS y el chi2 total 3288.009 del informe anterior",
   "por_que": "el +12.452 salia de leer el perfil en la CADENA de BOSS, en una banda de +-0.0148 donde solo caen 146 muestras: el MCMC nunca visito el optimo cerca del clavo, asi que esa cota superior estaba 12 unidades de mas. El perfil del OPTIMIZADOR, que si minimiza los 36 nuisance en cada logA, da +0.616. Ademas la cadena de BOSS devuelve el chi2 MARGINALIZADO (75.23 en su minimo) y no el real (197.44), asi que el total 3288.009 sumaba dos escalas distintas."
+ },
+ "auditoria_2026-09-26": {
+  "motivo": "El resultado favorece al modelo, asi que se le aplica el mismo escrutinio que a uno malo (feedback_asymmetric_skepticism). Tres hallazgos.",
+  "hallazgo_1": {
+   "titulo": "El test NO PUEDE ver degeneracion entre sondas: es aritmetica, no medicion",
+   "prueba": "suma de las cuatro por separado = 3398.385 ; chi2 'conjunto' = 3398.384 ; diferencia +0.0008",
+   "por_que": "Con el fondo fijo por algebra Y A_s fijo, no queda NINGUN parametro compartido: cada sonda tiene sus nuisance privados (CMB tau+23, KiDS 8, BOSS 36, BAO 0). El log-verosimil conjunto es la suma exacta de los individuales, asi que el chi2 de cada sonda es identico sola o acompanada POR CONSTRUCCION. Decir «la multisonda no degenera ningun chi2» es cierto pero trivial.",
+   "lo_que_si_mide": "si las cuatro pueden vivir en UN SOLO A_s -el del CMB- sin que ninguna empeore. Eso si es un resultado, y sale que si."
+  },
+  "hallazgo_2": {
+   "titulo": "El +1.056 del CMB no es medible con esa cadena",
+   "prueba": "perfil de cadena en logA 3.030-3.065, 8 nodos: salto tipico entre nodos contiguos 0.647, maximo 1.478, sd 0.789. El coste declarado (+1.056) cae dentro de ese ruido.",
+   "consecuencia": "el coste total +1.307 es una COTA SUPERIOR ruidosa; el verdadero es menor. No cambia el veredicto, lo refuerza, pero no se puede citar +1.056 como medido."
+  },
+  "hallazgo_3": {
+   "titulo": "El clavo y el chi2 del CMB vienen de DOS corridas distintas",
+   "prueba": "el clavo 3.0448340130228546 es SSEE/mejor/logA de cmb_dbic_tau_ajustado.json, que es plik_lite TTTEEE+lowl con N=669 y chi2=1003.586. El chi2 que se tabula (2770-2771) es de la cadena full plik con N=2354. Son likelihoods distintos.",
+   "atenuante": "no es incoherencia: el clavo cae a +0.197 sigma de la media marginal de la cadena full plik (3.0422466541 +- 0.013126), o sea las dos versiones del CMB coinciden. Pero hay que declararlo, porque parte del +1.056 es ese desfase entre likelihoods y no un coste de unificar."
+  },
+  "que_vigilar_al_anadir_sondas": "Como el conjunto es la suma, al meter una sonda nueva lo que hay que mirar NO es si el chi2 conjunto se mueve (no puede). Son dos cosas: (a) su chi2 en el clavo contra su propio objetivo, y (b) donde cae su A_s preferido respecto del clavo, y con que D. Una sonda con D grande -BOSS tiene D=4.0- puede estar de acuerdo sin que eso cuente como confirmacion: no mide A_s. Las que votan de verdad hoy son el CMB (D=11.09 pero su tau lo fija lowE) y KiDS (D=1.42)."
  }
 }

@@ -63,7 +63,7 @@ def log(msg):
 log("=" * 70)
 log("SSEE — MCMC PRODUCCIÓN bajo prior H_alg (67.962, reframe ω_m-directo)")
 log("=" * 70)
-log(f"  Ω_m,total (geometría) = {OMEGA_M_TOTAL:.8f}  |  Ω_cdm,sector = {OMEGA_CDM_SECTOR:.8f}")
+log(f"  Ω_m,total (geometría, ÚNICA densidad) = {OMEGA_M_TOTAL:.8f}  |  s_m = 1+w0 = {OMEGA_CDM_SECTOR:.8f} (ecuación de estado)")
 log(f"  Ω_m,CMB (ω_m/h², reframe) = 0.308881  (sin factor; OP-8 cerrado)")
 log(f"  w0 = {W0:.10f},  wa = {WA:.10f}")
 log(f"  H0_alg = {H0_ALG:.6f}")

@@ -52,11 +52,14 @@ from ssee_core import (
     W0 as W0_SSEE, WA as WA_SSEE, OMEGA_DE as OMDE_SSEE,
     OMEGA_M_TOTAL as OM_GEOM,      # 0.308881 — Ω_m en el ancla (diagnóstico; NO congelar en el MCMC)
     OMEGA_M_H2 as WM_ALG,          # 0.14267 — ω_m algebraico: lo que SSEE realmente fija
-    OMEGA_CDM_SECTOR as OM_SECTOR, # 0.160 — sector frío (Paper 6 + α_K); NUNCA en geometría
+    OMEGA_CDM_SECTOR as OM_SECTOR, # 0.160050 = 1+w0, número de la ECUACIÓN DE ESTADO.
+                                   # NO es una densidad y NUNCA entra en geometría. La
+                                   # etiqueta «sector frío (Paper 6)» era del sector
+                                   # retirado el 2026-08-01; corregida 2026-09-26.
 )
 FNU_SSEE = 0.020   # fracción de neutrinos — no algebraico, queda local
 
-log(f"w0={W0_SSEE:.4f}  wa={WA_SSEE:.4f}  Om_total={OM_GEOM:.5f} (geometría)  Om_sector_frío={OM_SECTOR:.4f}  KAL0={KAL0:.4f}")
+log(f"w0={W0_SSEE:.4f}  wa={WA_SSEE:.4f}  Om_total={OM_GEOM:.5f} (geometría, ÚNICA densidad)  s_m=1+w0={OM_SECTOR:.6f} (ecuación de estado, NO densidad)  KAL0={KAL0:.4f}")
 
 # ─────────────────────────────────────────────────────────────
 # 2. FÍSICA DEL FONDO
@@ -340,7 +343,7 @@ for r in models:
         log(f"    {nm:<12} = {med:.5f}  +{p84-med:.5f}/-{med-p16:.5f}")
     if r["label"] == "SSEE":
         log(f"    {'Ω_m,total':<12} = {OM_GEOM:.5f}  [geometría; ω_m/h²]")
-        log(f"    {'Ω_cdm,sector':<12} = {OM_SECTOR:.4f}  [sector frío; Paper 6 + α_K]")
+        log(f"    {'s_m = 1+w0':<12} = {OM_SECTOR:.6f}  [ecuación de estado, NO densidad]")
         log(f"    {'w₀,wₐ':<12} = {W0_SSEE:.4f}, {WA_SSEE:.4f}  [algebraico]")
 
 # Tensiones

@@ -151,7 +151,38 @@ historicos:
 # script contra el que se comprobó. Si el script vuelve a cambiar, R36 la marca
 # otra vez — que es lo correcto.
 figuras_verificadas:
-  fig1_w0wa_plane: 2026-07-26   # regenerada con preflight; PDF idéntico al de 07-18
+  fig1_w0wa_plane: 2026-09-26   # 07-26 regenerada con preflight; 09-26 RE-verificada:
+                                #   21efb8d sólo añadió un comentario ORIGEN-VALOR
+                                #   (0.6847 = Omega_Lambda Planck). Regenerada hoy:
+                                #   texto extraído idéntico al de HEAD.
+  # 2026-09-26 — los cuatro corners de Paper 2. R36 los marcaba rancios porque el
+  # script cambió DESPUÉS del commit de la figura, pero el cambio que dispara la
+  # alarma (21efb8d, 09-19) añadió SÓLO comentarios en línea: procedencia del
+  # pivote de r_d y del prior BBN. Verificado REGENERANDO desde la cadena
+  # declarada, no leyendo el diff:
+  #   ssee/lcdm/cpl_professional ← mcmc_chains_professional.npz — el PDF nuevo
+  #     difiere del commiteado en 8 bytes, todos dentro de /CreationDate.
+  #   ssee_halg_prior ← mcmc_paper2_reframe_ckpt.npz — texto extraído IDÉNTICO
+  #     (H0 = 67.79 +0.35 -0.35), pero los píxeles NO: el PDF commiteado se
+  #     dibujó del objeto sampler post-burn-in y éste del checkpoint. Se instaló
+  #     el render del checkpoint, que es la fuente que el repo declara; así la
+  #     próxima regeneración sí sale byte-idéntica. El número no se movió.
+  # Los cuatro coinciden con CANONICAL_VALUES: 67.53 / 68.27 / 67.26 / 67.79.
+  fig_corner_ssee_professional: 2026-09-26
+  fig_corner_lcdm_professional: 2026-09-26
+  fig_corner_cpl_professional: 2026-09-26
+  fig_corner_ssee_halg_prior: 2026-09-26
+  # 2026-09-26 — fig2/fig3/fig4 de ssee_paper2_figures.py. La alarma de 12d la
+  # dispara 21efb8d, que en ESTE script añadió una sola línea de comentario
+  # (ORIGEN-VALOR: 0.6847 = Ω_Λ de Planck 2018). Regeneradas hoy con el script
+  # vigente: fig2 y fig4 salen con el texto extraído IDÉNTICO al de HEAD.
+  # fig3 NO: cambió a propósito, y no por el comentario — llevaba un error de
+  # CATEGORÍA (graficaba T_R/M_V = 0.839950, que es s_DE = |w₀|, en el eje de
+  # densidad, contra el Ω_Λ de Planck). Ahora grafica Ω_DE = 1 − Ω_m = 0.691119
+  # y dice en la anotación que s_DE no vive en ese eje.
+  fig2_cluster_sensitivity: 2026-09-26
+  fig3_omega_de: 2026-09-26
+  fig4_KAL_interpolation: 2026-09-26
 
 # Logs de MUESTREO cuya validez NO depende del post-procesado. Un cambio en el
 # bloque de análisis del script (cómo se lee la cadena, cómo se calcula el χ²)
@@ -205,3 +236,14 @@ muestreo_certificado:
   # ejecucion (results/logs/equivalencia_kids_cache.log): 0.000e+00 en los
   # tres, control de cache rota 4.08 / 4.50. Cubre tambien a los dos de arriba.
   kids_ssee_wc_h: 2026-09-19
+  # 2026-09-26: mcmc_paper2_reframe.log (07-26) contra su script, que cambió dos
+  # veces después. Los dos cambios son SÓLO comentarios, y no se declara por
+  # leer el diff sino por EJECUCIÓN: se redibujó el posterior desde la cadena
+  # que el propio script declara (mcmc_paper2_reframe_ckpt.npz) y sale
+  # H₀ = 67.788 +0.350/-0.351 contra el 67.7869 +0.3508/-0.3516 del log —
+  # la diferencia (0.001) es el burn-in, tres órdenes bajo la σ, y ambos
+  # publican 67.79 ± 0.35, el valor canónico.
+  #   415cfc3 (09-09): nota de que el ΔBIC −24.02 quedó superado por −26.21.
+  #   21efb8d (09-19): procedencia del pivote de r_d y del prior BBN de DESI.
+  # Ninguno toca la verosimilitud ni el muestreo.
+  mcmc_paper2_reframe: 2026-09-26

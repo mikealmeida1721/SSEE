@@ -53,12 +53,20 @@ KAL0 = BETA + PI
 P_sc = PI + PHI + PHI          # P = Ω + Φ = (π+Φ) + Φ
 KV   = PHI + PI + (PI + PHI)   # Kv = Φ+π+Ω  (scaffold: solo como sumando de M_v)
 IGNIS = PI + P_sc              # IGNIS = π+PYROS — denominador de wₐ (R21)
+OMEGA_M_TOTAL = 0.30888087877875237   # ORIGEN: ssee_core.OMEGA_M_TOTAL = omega_m/h^2
 TR   = 3 * (PHI + BETA)
 MV   = PHI + PI + KV
 
 W0_SSEE       = -TR / MV
 WA_SSEE       = -P_sc / IGNIS   # denominador IGNIS, no el scaffold K_v: mismo valor, entidad distinta
-OMEGA_DE_SSEE = TR / MV
+# CORREGIDO 2026-09-26 — ERROR DE CATEGORIA en la figura 3.
+# TR/MV = 0.839950 NO es una densidad: es s_DE = |w0|, un numero de la ECUACION
+# DE ESTADO. La figura lo ponia en un eje de Omega_DE frente a Planck y anotaba
+# la diferencia «ΔΩ ≈ +0.155» como si fuera una prediccion del modelo. No lo es:
+# es el mismo error que mato a la particula phi-DM (restar una densidad menos un
+# 1+w0). La densidad de energia oscura del modelo es 1 − Omega_m.
+S_DE_SSEE     = TR / MV                       # |w0| — ecuacion de estado, NO densidad
+OMEGA_DE_SSEE = 1.0 - OMEGA_M_TOTAL           # 0.691119 — la densidad de verdad
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # FIGURA 1 — Plano w0-wa
@@ -235,29 +243,31 @@ for i, (dname, (om, sig)) in enumerate(omega_obs.items()):
               label=f"{dname.replace(chr(10), ' ')} (±3σ)")
 
 ax3a.axvline(OMEGA_DE_SSEE, color="#E6002B", lw=2.0, ls="-",
-             label=fr"$\Omega_{{DE,SSEE}} = {OMEGA_DE_SSEE:.4f}$")
+             label=fr"$\Omega_{{DE,SSEE}} = 1-\Omega_m = {OMEGA_DE_SSEE:.4f}$")
+ax3a.axvline(S_DE_SSEE, color="#7A5C9E", lw=1.6, ls="--",
+             label=fr"$s_{{DE}}=|w_0|={S_DE_SSEE:.4f}$ — NO es densidad")
 ax3a.axvline(0.6847, color="black", lw=1.0, ls=":",
              label=r"$\Omega_\Lambda$ Planck 2018")
 
 ax3a.set_yticks(x3)
 ax3a.set_yticklabels([k.replace("\n", " ") for k in omega_obs.keys()], fontsize=10)
 ax3a.set_xlabel(r"$\Omega_{DE}$")
-ax3a.set_title(r"$\Omega_{DE,SSEE}$ vs restricciones observacionales")
+ax3a.set_title(r"$\Omega_{DE,SSEE}=1-\Omega_m$ vs restricciones observacionales")
 ax3a.set_xlim(0.63, 0.88)
 ax3a.legend(fontsize=9, loc="upper left")
 
 # Anotación de la diferencia estructural
 ax3a.annotate(
-    r"$\Delta\Omega \approx +0.155$" + "\n(presión geométrica\n" + r"$T_r/M_v$)",
-    xy=(OMEGA_DE_SSEE, 2), xytext=(0.815, 1.5),
-    fontsize=8.5, color="#E6002B",
-    arrowprops=dict(arrowstyle="->", color="#E6002B", lw=1.0),
-    bbox=dict(boxstyle="round", facecolor="white", edgecolor="#E6002B", alpha=0.8)
+    "$s_{DE}=T_r/M_v$ es $|w_0|$,\nun número de la ecuación\nde estado. No vive en\neste eje.",
+    xy=(S_DE_SSEE, 2), xytext=(0.700, 2.55),
+    fontsize=8.0, color="#7A5C9E",
+    arrowprops=dict(arrowstyle="->", color="#7A5C9E", lw=1.0),
+    bbox=dict(boxstyle="round", facecolor="white", edgecolor="#7A5C9E", alpha=0.85)
 )
 
 # Panel derecho: descomposición energética SSEE vs ΛCDM
-labels_pie = [r"$\rho_{bar}$ efectiva\n(KAL$_0$ amplificada)", r"Presión geométrica\n$T_r/M_v$"]
-sizes_ssee = [1 - OMEGA_DE_SSEE, OMEGA_DE_SSEE]   # ≈ [0.160, 0.840]
+labels_pie = [r"$\Omega_m$", r"$\Omega_{DE}=1-\Omega_m$"]
+sizes_ssee = [OMEGA_M_TOTAL, OMEGA_DE_SSEE]   # [0.308881, 0.691119] — UNA densidad de materia
 
 labels_lcdm = [r"$\Omega_m$", r"$\Omega_\Lambda$"]
 sizes_lcdm  = [1 - 0.6847, 0.6847]                 # ≈ [0.315, 0.685]
@@ -288,8 +298,8 @@ ax3b.text(0, 0, "SSEE\nvs\nΛCDM", ha="center", va="center", fontsize=9,
           fontweight="bold")
 
 legend_handles = [
-    mpatches.Patch(color=colors_ssee[0], label=fr"SSEE: $\rho_{{bar}}$ eff. ({sizes_ssee[0]:.3f})"),
-    mpatches.Patch(color=colors_ssee[1], label=fr"SSEE: geom. pressure ({sizes_ssee[1]:.3f})"),
+    mpatches.Patch(color=colors_ssee[0], label=fr"SSEE: $\Omega_m$ ({sizes_ssee[0]:.3f})"),
+    mpatches.Patch(color=colors_ssee[1], label=fr"SSEE: $\Omega_{{DE}}$ ({sizes_ssee[1]:.3f})"),
     mpatches.Patch(color=colors_lcdm[0], label=fr"ΛCDM: $\Omega_m$ ({sizes_lcdm[0]:.3f})"),
     mpatches.Patch(color=colors_lcdm[1], label=fr"ΛCDM: $\Omega_\Lambda$ ({sizes_lcdm[1]:.3f})"),
 ]

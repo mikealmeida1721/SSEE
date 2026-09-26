@@ -25,6 +25,7 @@ logs:
   # ── Paper 2 — MCMC / BAO ────────────────────────────────────────────────
   mcmc_paper2_reframe:        src/p02_mcmc/ssee_paper2_mcmc_reframe.py
   is_growth_gamma_bg:         src/p05_is/is_growth_gamma_bg.py
+  datos_crudos_T2:            src/verificacion/manifiesto_datos_T2.py
   ssee_is_growth:             src/p05_is/ssee_is_growth.py
   mcmc_paper2_3models_wmfix:  src/p02_mcmc/ssee_paper2_mcmc_wmfix.py
   chi2_bao_posterior:         src/p02_mcmc/chi2_bao_posterior.py

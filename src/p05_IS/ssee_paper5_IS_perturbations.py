@@ -719,7 +719,7 @@ if len(results) >= 3:
     MIRA_arr  = np.array([results[k]['MIRA_num'] for k in k_arr])
     Om_eff_arr = np.array([results[k]['Om_eff']  for k in k_arr])
 
-    ax2.semilogx(k_arr, MIRA_arr, 'bo-', lw=2, ms=7, label=r'$\Omega_{m,\rm eff}/\Omega_{m,\rm dyn}$ (IS)')
+    ax2.semilogx(k_arr, MIRA_arr, 'bo-', lw=2, ms=7, label=r'$\mathcal{R}=\Omega_{m,\rm eff}/\Omega_m$ (IS)')
     ax2.axhline(MIRA_alg, color='r', ls='--', lw=2,
                 label=rf'MIRA$=(3\varphi+\pi)/4={MIRA_alg:.4f}$ (algebraic)')
     ax2.axhline(1.0, color='gray', ls=':', lw=1, label=r'no DE clustering')
@@ -733,7 +733,9 @@ if len(results) >= 3:
                      alpha=0.15, color='red', label='±5% MIRA band')
 
     ax2.set_xlabel(r'$k\,[H_0/c]$')
-    ax2.set_ylabel(r'MIRA$_{\rm num} = \Omega_{m,\rm eff}/\Omega_{m,\rm dyn}$')
+    # 2026-09-26: el eje decia Omega_{m,dyn}, pero el codigo divide por Omm =
+    # 0.308881 desde el 2026-09-05. Etiqueta fosil, como las de Paper 2.
+    ax2.set_ylabel(r'$\mathcal{R} = \Omega_{m,\rm eff}/\Omega_m$')
     ax2.set_title(r'MIRA Test: IS Growth $\to$ Effective Matter Density'
                   '\n(SSEE Paper 5)')
     ax2.legend(fontsize=9, loc='upper right')
@@ -853,7 +855,7 @@ if _q3_ok:
 
     z_plot_fsig = z_g <= 2.0
     ax5.plot(z_g[z_plot_fsig], fsig8_ssee_arr[z_plot_fsig],
-             'b-', lw=2.5, label=r'SSEE IS  ($\Omega_{m,\rm dyn}=0.160$)')
+             'b-', lw=2.5, label=r'SSEE IS  ($\Omega_m=0.309$)')
     ax5.plot(z_g[z_plot_fsig], fsig8_lcdm_arr[z_plot_fsig],
              'r--', lw=2, label=r'$\Lambda$CDM  ($\Omega_m=0.315$)')
 

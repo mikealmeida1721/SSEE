@@ -1,0 +1,45 @@
+{
+  "fecha": "2026-09-25",
+  "script": "notes/2026-09-25_crecimiento_alto_z/spherical_collapse_deltac.py",
+  "metodo": "top-hat esferico, ec. no lineal exacta, shooting sobre delta_i, DE suave",
+  "supuesto_DE_suave_justificado_por": "friccion viscosa IS de Paper 5 (F ~ k^2), NO por c_s^2=0",
+  "control_EdS_analitico": 1.686470199841145,
+  "z_c": [
+    0,
+    1,
+    2,
+    5,
+    10
+  ],
+  "deltac": {
+    "EdS": [
+      1.68645895311602,
+      1.686458982808377,
+      1.686459094167901,
+      1.6864604601145299,
+      1.686469595156612
+    ],
+    "LCDM": [
+      1.6759874166016457,
+      1.6843837593799378,
+      1.6857983210611487,
+      1.6863754496779118,
+      1.6864557583352848
+    ],
+    "SSEE": [
+      1.6763371193651224,
+      1.6849588171261811,
+      1.6861286915814404,
+      1.6864417607935522,
+      1.686468251353048
+    ]
+  },
+  "deltac_SSEE_zc0": 1.6763371193651224,
+  "deltac_LCDM_zc0": 1.6759874166016457,
+  "postulado_retirado_OP27": 1.6284138136529305,
+  "citado_deltac_SSEE_zc0": 1.67634,
+  "citado_deltac_LCDM_zc0": 1.67599,
+  "citado_deltac_SSEE_zc10": 1.68647,
+  "citado_deltac_LCDM_zc10": 1.68646,
+  "citado_deltac_EdS": 1.68647
+}

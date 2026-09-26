@@ -1151,6 +1151,22 @@ track_open("REFRAME-FaseB  fsigma8 contra BOSS crudo, lo ultimo que falta de la 
            "(velocileptors, k<=0.20, 222 pts); el barrido Kaiser fue sondeo",
            op="OP-26")
 
+# delta_c (OP-27, abierto 2026-09-25). El Paper 4 postulaba
+# delta_c = delta_c,EdS * n_s = 1.6284 y el Paper 5 colgaba de el un
+# enhancement JWST de 1.05x-1.89x. El colapso esferico top-hat sobre el fondo
+# del PROPIO modelo da 1.67634 (z_c=0) y 1.68647 (z_c=10), o sea LCDM-like; el
+# postulado esta a 2.9% y la dinamica no lo produce. Lo que queda abierto es el
+# MECANISMO: n_s no es solo la inclinacion primordial, es cantidad algebraica
+# del sector materia (omega_c = KAL0*omega_b*n_s), asi que el vinculo no es
+# absurdo a priori — pero ese n_s ya esta dentro del calculo via Omega_m.
+track_open("DELTAC  el factor n_s sobre el umbral de colapso no esta derivado",
+           "medido: delta_c(SSEE)=1.67634 @z_c=0 y 1.68647 @z_c=10 contra LCDM "
+           "1.67599/1.68646 (0.02%/0.001%); control EdS reproduce 3/20(12pi)^(2/3). "
+           "El postulado 1.6284 queda retirado como prediccion y vive como "
+           "conjetura. Consecuencia medida: el conteo de halos NO se anula, se "
+           "INVIERTE (0.892 a 3e12 Msol z=10; 0.99 a las masas que ve JWST)",
+           op="OP-27")
+
 # EFT canónico (P7) — los parámetros lambda, alpha_pot, V0 son consecuencias
 # algebraicas de constantes ya verificadas (Om_m,dyn, KAL0, Om_DE).
 lam_eft = (3 * Om_m_dyn) ** 0.5
@@ -1532,6 +1548,90 @@ if _R70_CANON.search(_c70_ok):
 check("R70 el detector distingue «canonical» de «IR regime» sobre el mismo 68.13",
       not _f70, "; ".join(_f70) if _f70
       else "2 casos reales de Paper 9 antes y despues del arreglo del 2026-09-25")
+
+# --- R71: el delta_c retirado no vuelve como resultado vivo (OP-27) --------
+#
+# POR QUE EXISTE (2026-09-25). El postulado delta_c = delta_c,EdS * n_s = 1.6284
+# estaba vivo en SIETE sitios y el reporte de auditoria solo vio TRES: los de
+# manuscript/. Los otros cuatro eran CAJONES y CODIGO — README.md (la portada,
+# que lo daba como resultado en una tabla), AUDIT.md, CHANGELOG.md y
+# ssee_press_schechter.py, que ademas CALCULABA con el. Es la mitad de la
+# auditoria que se queda fuera cuando solo se miran los papers.
+# Y no basta con vigilar el numero: lo que se retira no es solo 1.6284, es la
+# AFIRMACION de que el modelo explica el exceso de galaxias tempranas de JWST.
+# Medido, el conteo de halos no se anula: se INVIERTE (0.892 a 3e12 Msol, z=10).
+# Asi que la regla tiene dos patas: el valor y el reclamo.
+_R71_VAL = re.compile(r"1\.6284")
+# La lista incluye NEGACIONES y PASADO, no solo la palabra «retirado». Se
+# amplio el 2026-09-25 porque la regla marcaba tres textos MIOS que decian
+# justo lo contrario del reclamo («el modelo no explica el exceso JWST»,
+# «offers no explanation», «usaba ese valor»). Una alarma falsa no se archiva:
+# se busca que la disparo. El control de abajo verifica que la ampliacion NO
+# exime tambien al caso real — si lo eximiera, habria forzado el verde.
+_R71_EXENTO = ("retir", "withdraw", "OP-27", "falsific", "postulado", "postulate",
+               "earlier version", "previous version", "ya no", "no lo produce",
+               "RETIRADO", "conjetur", "conject",
+               # negaciones del reclamo
+               "no explica", "offers no explanation", "no account", "does not explain",
+               "no hay enhancement", "there is no enhancement", "reverses sign",
+               "cambia de signo", "se invierte", "apunta ligeramente en contra",
+               "fewer", "menos halos", "indistinguishable", "indistinguible",
+               # pasado: narra lo que se hacia, no lo que se afirma
+               "usaba", "used that value", "carried by earlier", "claimed",
+               "artefact", "artefacto")
+_R71_JWST = re.compile(r"(enhancement|exceso|excess)[^.\n]{0,120}JWST|"
+                       r"JWST[^.\n]{0,120}(enhancement|exceso|excess)", re.I)
+_r71_val, _r71_claim = [], []
+for _f71 in sorted(list((ROOT.parent / "manuscript").glob("*.tex"))
+                   + list(ROOT.parent.glob("*.md"))
+                   + list((ROOT.parent / "src").rglob("*.py"))):
+    try:
+        _ls71 = _f71.read_text(encoding="utf-8", errors="ignore").split("\n")
+    except OSError:
+        continue
+    for _i71, _l71 in enumerate(_ls71):
+        _ctx = " ".join(_ls71[max(0, _i71 - 3):_i71 + 4]).lower()
+        if _R71_VAL.search(_l71) and not any(_e.lower() in _ctx for _e in _R71_EXENTO):
+            _r71_val.append(f"{_f71.name}:{_i71 + 1}")
+        # el reclamo JWST solo pinta si NO viene acompanado del retiro
+        if _R71_JWST.search(_l71) and not any(_e.lower() in _ctx for _e in _R71_EXENTO):
+            _r71_claim.append(f"{_f71.name}:{_i71 + 1}")
+_TOPE_R71 = 0
+_DEUDA_REAL["R71"] = len(_r71_val) + len(_r71_claim)
+_DEUDA_MAX["R71"] = _TOPE_R71
+check("R71 ningun documento presenta el delta_c 1.6284 como vigente",
+      len(_r71_val) <= _TOPE_R71,
+      f"{len(_r71_val)} sitios (tope {_TOPE_R71}): " + "; ".join(_r71_val[:5])
+      if _r71_val else "0 sitios — donde aparece, aparece declarado retirado")
+check("R71 ningun documento reclama el exceso JWST sin declarar el retiro",
+      len(_r71_claim) <= _TOPE_R71,
+      f"{len(_r71_claim)} sitios (tope {_TOPE_R71}): " + "; ".join(_r71_claim[:5])
+      if _r71_claim else "0 sitios — el reclamo JWST siempre viene con su retiro")
+
+# CONTROL DEL OTRO LADO (R53): la regla tiene que marcar el caso REAL de antes
+# del arreglo y NO marcar el texto que declara el retiro.
+_c71_mal = ("modulates the collapse criterion:\n"
+            "delta_c = delta_EdS x n_s = 1.6865 x 0.96556 = 1.6284.\n"
+            "this gives a halo-count enhancement explaining the JWST excess")
+_c71_ok = ("Earlier versions postulated delta_c = 1.6284; that value is\n"
+           "withdrawn as a prediction (OP-27) and the JWST enhancement\n"
+           "reverses sign with the derived threshold.")
+def _r71_marca(_txt):
+    _ls = _txt.split("\n")
+    for _i, _l in enumerate(_ls):
+        _c = " ".join(_ls[max(0, _i - 3):_i + 4]).lower()
+        if (_R71_VAL.search(_l) or _R71_JWST.search(_l)) and \
+           not any(_e.lower() in _c for _e in _R71_EXENTO):
+            return True
+    return False
+_f71c = []
+if not _r71_marca(_c71_mal):
+    _f71c.append("no marca el postulado vivo con su reclamo JWST")
+if _r71_marca(_c71_ok):
+    _f71c.append("marca el texto que YA declara el retiro")
+check("R71 el detector distingue el postulado vivo del retiro declarado",
+      not _f71c, "; ".join(_f71c) if _f71c
+      else "2 casos reales de Paper 4/5 antes y despues del arreglo del 2026-09-25")
 
 # --- R57: ninguna figura se escribe fuera de results/figures (2026-09-07)
 # POR QUE EXISTE. ssee_paper5_IS_perturbations.py y ssee_eft_verification.py

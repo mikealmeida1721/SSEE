@@ -1,10 +1,28 @@
 #!/usr/bin/env python3
 """
 Task 2B: Press-Schechter halo mass function — SSEE vs ΛCDM
-δc_SSEE = δc_EdS × n_s = 1.6865 × 0.96556 = 1.6284
 
-Key result: lower δc increases halo abundance exponentially.
-Provides quantitative predictions for JWST z>10 galaxy excess.
+CORRECCION 2026-09-25 — el delta_c postulado quedo FALSIFICADO (OP-27).
+Este script calculaba con  dc_SSEE = dc_EdS * n_s = 1.6284,  postulado del
+Paper 4. El colapso esferico top-hat corrido sobre el fondo del PROPIO modelo
+(ecuacion no lineal exacta, DE suave — justificada por la friccion viscosa IS
+de Paper 5, que crece como k^2, NO por c_s^2=0, que haria lo contrario) da:
+
+    z_c = 0   ->  dc_SSEE = 1.67634   (LCDM 1.67599)
+    z_c = 10  ->  dc_SSEE = 1.68647   (LCDM 1.68646)
+
+o sea indistinguible de LCDM. Control: EdS reproduce 3/20 (12pi)^(2/3).
+Script: notes/2026-09-25_crecimiento_alto_z/spherical_collapse_deltac.py
+ORIGEN: results/logs/deltac_spherical_collapse.json   (de ahi se LEEN, abajo)
+
+CONSECUENCIA, y no es que el efecto se anule — se INVIERTE. Con el delta_c
+derivado, SSEE predice MENOS halos masivos tempranos que LCDM, no mas:
+0.998 a 3e10 Msol (z=10), 0.894 a 3e12 (z=10), 0.778 a 3e12 (z=15). La causa
+no es sigma8 (SSEE 0.8153 > LCDM 0.811) sino D(z): Omega_m menor y fondo CPL
+hacen crecer menos hasta z alto.
+
+Este script conserva AMBOS umbrales: el derivado (el que vale) y el postulado
+(para poder dibujar de que tamano era la apuesta). USE_POSTULADO lo elige.
 """
 
 import numpy as np
@@ -22,12 +40,27 @@ from matplotlib.ticker import LogLocator
 PHI    = (1 + np.sqrt(5)) / 2          # golden ratio ≈ 1.6180
 n_s    = 1 - PHI**(-7)                 # spectral index  ≈ 0.96556 (SSEE algebraic)
 dc_EdS = (3/20) * (12*np.pi)**(2/3)   # EdS collapse threshold ≈ 1.6865
-dc_SSEE = dc_EdS * n_s                 # SSEE threshold ≈ 1.6284
-dc_LCDM = dc_EdS                       # ΛCDM (EdS limit) ≈ 1.6865
+# ── umbral de colapso: DERIVADO por defecto, postulado sólo para comparar ────
+# Los dos delta_c NO se teclean: se LEEN del log del colapso esferico, que es
+# su origen. Si ese calculo cambia, este script se entera; un literal no.
+#   ORIGEN: results/logs/deltac_spherical_collapse.json
+#   lo produce notes/2026-09-25_crecimiento_alto_z/spherical_collapse_deltac.py
+import json as _json66
+_LOG66 = _o66.path.join(_o66.path.dirname(_o66.path.dirname(_o66.path.dirname(
+         _o66.path.abspath(__file__)))), "results", "logs",
+         "deltac_spherical_collapse.json")
+with open(_LOG66) as _f66:
+    _DC66 = _json66.load(_f66)
+USE_POSTULADO = False                  # True reproduce la figura vieja (OP-27)
+dc_SSEE_POST  = dc_EdS * n_s           # postulado Paper 4 ≈ 1.6284 — FALSIFICADO
+dc_SSEE_DERIV = _DC66["deltac_SSEE_zc0"]   # colapso esférico, z_c=0
+dc_LCDM       = _DC66["deltac_LCDM_zc0"]   # mismo cálculo, fondo ΛCDM
+dc_SSEE = dc_SSEE_POST if USE_POSTULADO else dc_SSEE_DERIV
 
 print(f"n_s       = {n_s:.7f}  (1 − φ⁻⁷, Planck: 0.9649)")
 print(f"δc(EdS)   = {dc_EdS:.7f}")
-print(f"δc(SSEE)  = {dc_SSEE:.7f}")
+print(f"δc(SSEE)  = {dc_SSEE:.7f}"
+      f"   [{'POSTULADO 1.6284 — FALSIFICADO, OP-27' if USE_POSTULADO else 'derivado, colapso esférico'}]")
 print(f"δc(ΛCDM)  = {dc_LCDM:.7f}")
 print(f"Δδc/δc    = {(dc_LCDM - dc_SSEE)/dc_LCDM*100:.2f}%")
 
@@ -222,8 +255,9 @@ for M, lab in [(1e11, r'$10^{11}\,M_\odot$'), (3e11, r'$3\times10^{11}\,M_\odot$
 
 ax.set_xlabel(r'$\sigma_{M}^{\Lambda{\rm CDM}}$ (at $z=10$)', fontsize=12)
 ax.set_ylabel(r'Halo-count enhancement', fontsize=12)
-ax.set_title(r'$\delta_c^{\rm SSEE}=1.6284$ vs $\delta_c^{\Lambda{\rm CDM}}=1.6865$', fontsize=11)
-ax.set_ylim(0.9, 5.5)
+ax.set_title(rf'$\delta_c^{{\rm SSEE}}={dc_SSEE:.5f}$ vs $\delta_c^{{\Lambda{{\rm CDM}}}}={dc_LCDM:.5f}$'
+             + ('  (postulado, OP-27)' if USE_POSTULADO else '  (derivado)'), fontsize=11)
+ax.set_ylim(0.7, 5.5) if USE_POSTULADO else ax.set_ylim(0.70, 1.10)
 ax.legend(fontsize=8.5, loc='upper right')
 ax.grid(True, alpha=0.3)
 

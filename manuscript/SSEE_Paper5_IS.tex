@@ -1405,11 +1405,17 @@ none of them uses the second sector.
 \subsection{Implications for JWST early galaxy counts}
 \label{subsec:JWST}
 
-The marginal-stability condition $c^2_{s,\mathrm{eff}} = 0$ does have a
-consequence for structure formation: DE perturbations at sub-horizon scales
-effectively vanish, and the collapse threshold is modified to
-$\delta_c^{\mathrm{SSEE}} = 1.6284$ \citep{SSEE_Paper4} against the EdS value
-$1.686$, which by itself raises the halo mass function at high mass. Matter
+Dark-energy perturbations effectively vanish at sub-horizon scales in this
+model --- not because $c^2_{s,\mathrm{eff}}=0$, which alone would make the
+fluid cluster everywhere, but because the IS friction
+$\mathcal{F}(k,a)=(1-3c_s^2)+\tilde z\,(k/aH)^2$ grows as $k^2$
+(\S\ref{subsec:damping}) and drives $\delta_{\rm DE}/\delta_m\to0^-$.
+On that smooth background the spherical-collapse threshold is
+$\delta_c^{\mathrm{SSEE}} = 1.67634$ at $z_c=0$ and $1.68647$ at $z_c=10$,
+against $\Lambda$CDM's $1.67599 \to 1.68646$: the two are the same to
+$0.02\%$. The value $\delta_c^{\mathrm{SSEE}}=1.6284$ carried by earlier
+versions was a postulate of Paper~4, now \textbf{withdrawn} (OP-27); the
+model's own dynamics do not produce it. Matter
 clusters in a background with $\Omega_m = 0.308881$ --- the one matter density
 of the model; the number $0.160050$ that earlier versions of this subsection
 placed here is $1+w_0$, an equation-of-state parameter, and never was a
@@ -1425,24 +1431,31 @@ redone (\texttt{src/p02\_mcmc/ssee\_press\_schechter.py}, 2026-09-07) with
 $\Omega_m=0.308881$, the measured growth index $\gamma_{\rm IS}=0.5504$
 (\S\ref{subsec:gamma_IS}) and the algebraic anchor $H_0=67.962$. With both
 cosmologies evaluated at their \emph{own} CMB-fitted amplitude
-($\sigma_8=0.81506$ for SSEE, $0.811$ for $\Lambda$CDM):
+($\sigma_8=0.81530$ for SSEE, $0.811$ for $\Lambda$CDM) and with the
+\emph{derived} collapse threshold:
 \begin{center}
 \begin{tabular}{ccc}
 \toprule
 $z$ & $M=10^{11}M_\odot$ & $M=10^{12}M_\odot$ \\
 \midrule
-10 & 1.051 & 1.332 \\
-12 & 1.085 & 1.507 \\
-15 & 1.148 & 1.887 \\
+10 & 0.990 & 0.945 \\
+12 & 0.984 & 0.921 \\
+15 & 0.972 & 0.878 \\
 \bottomrule
 \end{tabular}
 \end{center}
-The enhancement survives and grows with redshift, driven by the modified
-collapse threshold $\delta_c^{\mathrm{SSEE}}=1.6284$ against the EdS $1.686$.
-The previously quoted $1.4$--$2.0$ is recovered in the high-mass,
-high-redshift corner ($M\sim10^{12}M_\odot$, $z\gtrsim12$), but not across the
-whole range the earlier text claimed: at $10^{11}M_\odot$ and $z=10$ the
-effect is a few per cent.
+\textbf{There is no enhancement, and the sign is the opposite of what earlier
+versions claimed.} With the threshold the model actually produces, \SSEE\
+forms marginally \emph{fewer} massive early haloes than $\Lambda$CDM. The
+deficit grows with mass and redshift, reaching $0.892$ at
+$3\times10^{12}M_\odot$, $z=10$ and $0.778$ at the same mass at $z=15$, and it
+is not an amplitude effect: \SSEE\ carries the \emph{larger} $\sigma_8$. It is
+the growth history --- a smaller $\Omega_m$ ($0.308881$ against $0.3153$) and
+the CPL background grow less between $z\sim10$ and today. At the masses JWST
+actually probes ($M\sim10^{10.8}M_\odot$) the ratio is $0.99$: indistinguishable
+from $\Lambda$CDM. \SSEE\ offers no account of the JWST excess, and the
+$1.4$--$2.0$ of earlier versions was an artefact of the withdrawn
+$\delta_c$.
 
 \paragraph{The amplitude convention is not a detail.} This ratio compares two
 cosmologies and is only meaningful if both are evaluated at the same epoch's

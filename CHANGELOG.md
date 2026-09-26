@@ -305,7 +305,7 @@ la fuente antes de tocar nada.
 - **Paper 2**: added "Two ΔBIC values — two physical questions" paragraph (ΔBIC=+218 background vs ΔBIC=−5.55 dynamic sector)
 - **Paper 3**: added asymmetry paragraph (k=1 SSEE predictions vs k=6 ΛCDM fits; Zenodo timestamp)
 - **Paper 1**: added Predictive Register table (w₀, wₐ, MIRA pre-DESI; Ωm, n_s, H₀ retrodictions; r future)
-- **Paper 4**: Y_p BBN = 0.2473 (AlterBBN, Ωb h²=0.02285, 0.7σ); Ωc h² IS = 0.11926 (−0.6σ); δc = 1.6284
+- **Paper 4**: Y_p BBN = 0.2473 (AlterBBN, Ωb h²=0.02285, 0.7σ); Ωc h² IS = 0.11926 (−0.6σ); δc = 1.6284 *(RETIRADO 2026-09-25 — OP-27: el colapso esférico sobre el fondo del modelo da 1.67634, ΛCDM-like)*
 - **EFT section**: fixed 3 broken refs (eq:Pi→eq:zeta, DESI2025DR2→AbdulKarim2025, sec:constants→sec:axioms)
 - **Paper 4 bib**: added Pisanti2008 (AlterBBN, doi:10.1016/j.cpc.2007.11.013)
 
@@ -315,7 +315,7 @@ la fuente antes de tocar nada.
 - Nine Sovereignties: 9 independent algebraic paths to 3(φ+π)
 - Ωb h² derived: 3(π−φ)/200 = 0.02285 (3.2σ; Paper 4 §sec:baryons)
 - Ωc h² IS: KAL₀ × Ωb h² × n_s = 0.11926 (−0.6σ)
-- δc SSEE: δc,EdS × n_s = 1.6284 (linked to JWST early galaxy excess)
+- δc SSEE: δc,EdS × n_s = 1.6284 (linked to JWST early galaxy excess) *(RETIRADO 2026-09-25 — OP-27; el enlace JWST no sólo se cae, cambia de signo)*
 - Y_p BBN: 0.2473 (AlterBBN, 0.7σ)
 - Title revised to "Algebraic Derivation of CMB Background from φ and π"
 

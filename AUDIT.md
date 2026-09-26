@@ -135,10 +135,10 @@ python3 src/p02_mcmc/ssee_press_schechter.py
 ```
 Expected output:
 ```
-δc(SSEE) = 1.6284  (= δc,EdS × n_s)
-δc(ΛCDM) = 1.6865
+δc(SSEE) = 1.67634  (colapso esférico; el 1.6284 = δc,EdS × n_s está RETIRADO, OP-27)
+δc(ΛCDM) = 1.67599
 M [M☉]      σ_M(z=10)    n_SSEE/n_ΛCDM
-1.00e+11      1.0103       1.061
+1.00e+11      1.0050       0.990
 3.00e+11      0.7267       1.159
 1.00e+12      0.5064       1.406
 ```

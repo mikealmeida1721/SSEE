@@ -480,23 +480,50 @@ Planck~2018: $n_s = 0.9649\pm0.0042$; deviation $= 0.157\sigma$.
 
 The critical overdensity for spherical collapse in an Einstein--de~Sitter universe is
 $\delta_{c,\rm EdS} = \tfrac{3}{20}(12\pi)^{2/3} \approx 1.6865$.
-In \SSEE, the same inflationary factor $n_s$ that tilts the primordial spectrum
-modulates the gravitational collapse criterion:
+Evaluated on the \SSEE\ background, the spherical-collapse threshold is
+obtained by integrating the exact non-linear top-hat equation with smooth dark
+energy---the perturbation sector of Paper~5, where the Israel--Stewart viscous
+friction $\mathcal{F}(k,a) = (1-3c_s^2) + \tilde z\,(k/aH)^2$ grows as $k^2$ and
+drives $\delta_{\rm DE}/\delta_m \to 0^-$ on all sub-horizon
+scales.\footnote{The smoothness follows from the IS friction, \emph{not} from
+$c_s^2=0$: a vanishing sound speed alone would make the dark-energy fluid
+cluster on every sub-horizon scale. The dark energy of this model stays smooth
+\emph{despite} $c_s^2=0$, not because of it.}
+The result is
 \begin{equation}
-\boxed{\delta_c^{\rm SSEE} = \delta_{c,\rm EdS}\times n_s
-       = 1.6865\times 0.96556 = 1.6284}.
+\delta_c^{\rm SSEE} = 1.67634\ (z_c{=}0) \;\longrightarrow\; 1.68647\ (z_c{=}10),
 \label{eq:deltac}
 \end{equation}
-A lower $\delta_c$ lowers the threshold for halo formation; at fixed initial
-power spectrum, the comoving abundance of collapsed haloes scales as
-$n(M) \propto \exp\!\bigl[-\delta_c^2/(2\sigma_M^2)\bigr]$, so a 3.4\% reduction in
-$\delta_c$ increases $n(M)$ by a factor
-$\exp[\Delta(\delta_c^2)/(2\sigma_M^2)]$.
-For galaxy-scale perturbations ($\sigma_M\approx 0.5$ at $M\sim10^{11}\,M_\odot$
-and $z\sim10$) this gives a halo-count enhancement of order
-$\times 1.2$--$1.5$ relative to \LCDM, providing a qualitative explanation
-for the anomalously massive galaxies detected by JWST at $z\gtrsim10$.
-A quantitative halo-mass-function calculation is deferred to Paper~5.
+against $\Lambda$CDM's $1.67599 \to 1.68646$ on the same integrator: the two
+agree to $0.02\%$ at $z_c=0$ and to $0.001\%$ at $z_c=10$. The calculation
+reproduces the analytic Einstein--de~Sitter value to one part in $10^{5}$.
+
+\paragraph{The $n_s$ relation is withdrawn as a derived result.}
+Earlier versions of this section postulated that the same inflationary factor
+$n_s$ that tilts the primordial spectrum also modulates the collapse criterion,
+giving $\delta_c^{\rm SSEE} = \delta_{c,\rm EdS}\times n_s = 1.6284$. The
+model's own dynamics do not produce that value, which sits $2.9\%$ away, so it
+is retired as a prediction and retained only as a \emph{motivated conjecture}
+(OP-27): $n_s = 1-\varphi^{-7}$ is an algebraic matter-sector quantity entering
+the forward identity $\omega_c = \mathrm{KAL}_0\,\omega_b\,n_s$, so a link to
+collapse is not \emph{a priori} absurd---but the $n_s$ inside $\omega_c$ is
+already accounted for in the background through $\Omega_m$, and no mechanism
+derives the extra factor. Closing OP-27 requires that mechanism; what would
+falsify the conjecture is a halo count at $z\sim10$ and $M>10^{12}M_\odot$
+measured to $10$--$20\%$ and consistent with unity.
+
+\paragraph{What this costs, stated plainly.}
+The claimed $\times1.2$--$1.5$ halo-count enhancement at $z\gtrsim10$ does not
+merely vanish: with the derived threshold it \emph{reverses sign}. A
+Press--Schechter count on the two backgrounds gives $n_{\rm SSEE}/n_{\Lambda\rm CDM}
+= 0.998$ at $3\times10^{10}M_\odot$, $0.945$ at $10^{12}M_\odot$ and $0.892$ at
+$3\times10^{12}M_\odot$ (all at $z=10$). The driver is not the amplitude---\SSEE\
+has the \emph{larger} $\sigma_8$ ($0.8153$ versus $0.811$)---but the growth
+history: a smaller $\Omega_m$ and the CPL background grow less between $z\sim10$
+and today. \SSEE\ therefore predicts marginally \emph{fewer} massive early
+haloes than $\Lambda$CDM, and is indistinguishable from it at the masses JWST
+actually probes. The model offers no explanation of the JWST excess; the
+quantitative mass function is in Paper~5.
 
 \subsection{Big Bang Nucleosynthesis: Helium-4 Fraction}
 \label{sec:bbn}
@@ -769,7 +796,10 @@ We have presented a two-axiom ($\varphi$, $\pi$) algebraic system that predicts:
   \item $n_s = 1-\varphi^{-7} = 0.965558$ ($0.16\sigma$ from Planck)
   \item $\Omega_c h^2 = K_{\rm AL}\,\Omega_b h^2\,n_s = 0.119514$ ($0.41\sigma$ from Planck, forward)
   \item $Y_p = 0.2472$ ($0.2\sigma$ from Planck CMB, $0.6\sigma$ from HII — no fit)
-  \item $\delta_c = \delta_{c,\rm EdS}\times n_s = 1.6284$ (qualitative JWST link)
+  \item $\delta_c^{\rm SSEE} = 1.67634$ ($z_c{=}0$) from spherical collapse on the
+        model background, i.e.\ $\Lambda$CDM-like to $0.02\%$; the earlier
+        $\delta_{c,\rm EdS}\times n_s = 1.6284$ and its JWST link are
+        \textbf{withdrawn} (OP-27, \S\ref{sec:deltac})
   \item $H_0^{\rm glob,IR} = H_0^{\rm SH0ES}(1-f_{\rm scr}^{\rm IR}) = 68.13$ ($0.17\sigma$ from $3(\varphi+\pi)^2$, with Riess~2022 as the input; the MIRA register is superseded)
   \item $r = \varphi^{-10} = 0.008131$ (falsifiable by LiteBIRD~2032)
 \end{itemize}

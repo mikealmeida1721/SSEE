@@ -311,17 +311,19 @@ That gap was RETIRED as an artefact on 2026-08-01: A_s is a free parameter of th
 | Ωb h² | (π−φ)/(3Ω²) = 0.02242 | 0.02237 ± 0.00015 | 0.32σ |
 | Ωc h² (IS) | KAL₀ × Ωb h² × n_s = 0.11926 | 0.1200 ± 0.0012 | **−0.6σ** |
 | Y_p (BBN) | AlterBBN(Ωb h²=0.02242) = 0.2476 | 0.2449 ± 0.0040 | 0.7σ |
-| δc | δc,EdS × n_s = 1.6284 | 1.6865 (EdS) | — |
+| δc | **1.67634** (z=0) — colapso esférico sobre el fondo del modelo | 1.67599 (ΛCDM, mismo integrador) | 0.02 % — indistinguible. *(El δc,EdS × n_s = 1.6284 está RETIRADO 2026-09-25: OP-27)* |
 
-**Press-Schechter halo-count enhancement** at z=10 (`src/p02_mcmc/ssee_press_schechter.py`):
+**Press-Schechter halo counts** at z=10 (`src/p02_mcmc/ssee_press_schechter.py`), con el δc **derivado**:
 
 | Halo mass | σ_M(z=10) | n_SSEE/n_ΛCDM |
 |---|---|---|
-| 10^11 M☉ | 1.010 | ×1.01 |
-| 3×10^11 M☉ | 0.727 | ×1.04 |
-| 10^12 M☉ | 0.506 | ×1.09 |
+| 3×10^10 M☉ | 1.442 | 0.998 |
+| 10^11 M☉ | 1.005 | 0.990 |
+| 3×10^11 M☉ | 0.723 | 0.976 |
+| 10^12 M☉ | 0.504 | 0.945 |
+| 3×10^12 M☉ | 0.362 | 0.892 |
 
-*Partially alleviates the JWST z>10 galaxy excess (ΛCDM deficit: ~10–100×); residual tension points to IS perturbation physics.*
+*No hay enhancement, y el signo es el contrario del que se publicó antes: con el umbral que el modelo realmente produce, SSEE forma **algo menos** de halos masivos tempranos que ΛCDM. La causa no es la amplitud —SSEE tiene σ₈ MAYOR (0.8153 vs 0.811)— sino D(z): Ω_m menor y fondo CPL crecen menos hasta z alto. A las masas que JWST mide (~10^10.8 M☉) el cociente es 0.99, indistinguible. **El modelo no explica el exceso JWST.** Ver OP-27.*
 
 **Inflationary embedding (Paper 1 App.A §A.5):**
 

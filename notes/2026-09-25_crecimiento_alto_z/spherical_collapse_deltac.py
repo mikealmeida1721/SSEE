@@ -129,6 +129,34 @@ print(f"\nValidación EdS(z=0): {eds0:.5f} (esperado 1.68647) → "
       f"{'PASA' if abs(eds0-1.68647) < 1e-4 else 'FALLA'}")
 print(f"Postulado Paper 4: δc_SSEE = 1.6284; dinámica Ruta 1 (z=0): {res['SSEE'][0]:.5f}")
 
+# ── LOG: este es el ORIGEN de los δc que consumen los demás scripts ─────────
+import json as _json, os as _os, datetime as _dt
+_log = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.dirname(
+        _os.path.abspath(__file__)))), "results", "logs", "deltac_spherical_collapse.json")
+_os.makedirs(_os.path.dirname(_log), exist_ok=True)
+with open(_log, "w") as _f:
+    _json.dump({
+        "fecha": _dt.date.today().isoformat(),
+        "script": "notes/2026-09-25_crecimiento_alto_z/spherical_collapse_deltac.py",
+        "metodo": "top-hat esferico, ec. no lineal exacta, shooting sobre delta_i, DE suave",
+        "supuesto_DE_suave_justificado_por": "friccion viscosa IS de Paper 5 (F ~ k^2), NO por c_s^2=0",
+        "control_EdS_analitico": 3/20 * (12*np.pi)**(2/3),
+        "z_c": list(zcs),
+        "deltac": {k: [float(x) for x in v] for k, v in res.items()},
+        "deltac_SSEE_zc0": float(res["SSEE"][0]),
+        "deltac_LCDM_zc0": float(res["LCDM"][0]),
+        "postulado_retirado_OP27": 1.6865 * (1 - ((1+5**0.5)/2)**-7),
+        # Redondeos A 5 CIFRAS: son los que se IMPRIMEN en los papers y en los
+        # cajones. Van en el log para que sean rastreables tal como se citan,
+        # no solo como float completo (lo pidio R65 al marcarlos sin origen).
+        "citado_deltac_SSEE_zc0":  round(float(res["SSEE"][0]), 5),
+        "citado_deltac_LCDM_zc0":  round(float(res["LCDM"][0]), 5),
+        "citado_deltac_SSEE_zc10": round(float(res["SSEE"][-1]), 5),
+        "citado_deltac_LCDM_zc10": round(float(res["LCDM"][-1]), 5),
+        "citado_deltac_EdS":       round(float(res["EdS"][-1]), 5),
+    }, _f, indent=2)
+print(f"Log → {_log}")
+
 # ── figura ────────────────────────────────────────────────────────────────
 fig, ax = plt.subplots(figsize=(7, 4.5))
 for name, sty in [("EdS", "k:"), ("LCDM", "b-"), ("SSEE", "r-")]:

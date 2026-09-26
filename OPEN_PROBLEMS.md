@@ -2966,3 +2966,67 @@ constatación medida de que el dato crudo no discrimina a las escalas accesibles
 
 **Severidad: Media-Alta.** No invalida ningún número publicado, pero es la mitad que falta
 del titular de Paper 6.
+
+
+---
+
+## OP-27 — La relación δc = δc,EdS × n_s no está derivada, y su consecuencia cambia de signo — 🟡 ABIERTO (2026-09-25)
+
+**De dónde viene.** Paper 4 §«Linear Collapse Threshold δc» postulaba
+δc_SSEE = δc_EdS × n_s = 1.6865 × 0.96556 = 1.6284, con el argumento de que «el mismo
+factor inflacionario n_s que inclina el espectro primordial modula el criterio de colapso
+gravitacional». Paper 5 §JWST usaba ese valor para un enhancement de 1.05×–1.89× en la
+función de masa de halos a z ≳ 10.
+
+**Qué se midió.** Colapso esférico top-hat, ecuación no lineal exacta con *shooting* sobre
+δ_i, sobre el fondo del propio modelo:
+
+| z_c | EdS | ΛCDM | SSEE | SSEE vs ΛCDM |
+|---|---|---|---|---|
+| 0  | 1.68646 | 1.67599 | **1.67634** | +0.021 % |
+| 10 | 1.68647 | 1.68646 | **1.68647** | +0.001 % |
+
+Control del otro lado (R53): EdS reproduce el analítico 3/20·(12π)^(2/3) = 1.68647 a una
+parte en 10⁵. El postulado 1.6284 está a 2.9 % y **la dinámica del modelo no lo produce**.
+Script: `notes/2026-09-25_crecimiento_alto_z/spherical_collapse_deltac.py`.
+
+**El supuesto, y por qué se sostiene por la puerta correcta.** El cálculo asume DE suave.
+La justificación NO es c²_s,eff = 0 —un horizonte sonoro nulo es justamente la condición
+para que un fluido de DE **sí** se agrupe a toda escala sub-horizonte— sino la fricción
+viscosa IS del propio Paper 5 (§«IS damping hierarchy»):
+`F(k,a) = (1 − 3c_s²) + z̃·(k/aH)²`, que con c_s²=0 vale `1 + z̃(k/aH)²` y crece como k²,
+con δ_DE/δ_m → 0⁻ medido a toda escala. La DE de este modelo no se agrupa **a pesar** de
+c_s²=0, no **por** c_s²=0. Si algún día el sector IS modificara el colapso no lineal más
+allá de DE suave, este cálculo no lo captura y la carga de especificarlo es del modelo.
+
+**Por qué sigue siendo conjetura MOTIVADA y no ocurrencia.** n_s no es sólo la inclinación
+primordial: es cantidad algebraica del sector materia, n_s = 1 − φ⁻⁷, y entra en la
+identidad forward ω_c = KAL₀·ω_b·n_s (OP-19). Que el mismo número que construye la densidad
+de materia module también su colapso no es descabellado *a priori*. Pero **el n_s de ω_c ya
+está dentro del cálculo**, vía Ω_m = 0.308881; el factor extra sobre δc necesita mecanismo
+propio.
+
+**Lo que cuesta, y no es que el efecto se anule — se INVIERTE.** Press-Schechter sobre los
+dos fondos, con el δc derivado (`src/p02_mcmc/ssee_press_schechter.py`):
+
+| z | 3×10¹⁰ M☉ | 10¹¹ M☉ | 10¹² M☉ | 3×10¹² M☉ |
+|---|---|---|---|---|
+| 10 | 0.998 | 0.990 | 0.945 | 0.892 |
+| 15 | — | 0.972 | 0.878 | 0.778 |
+
+SSEE forma **menos** halos masivos tempranos que ΛCDM, no más. La causa no es la amplitud
+—SSEE tiene σ₈ **mayor**, 0.8153 contra 0.811— sino D(z): Ω_m menor (0.308881 vs 0.3153) y
+el fondo CPL crecen menos entre z ~ 10 y hoy. A las masas que JWST realmente mide
+(~10^10.8 M☉) el cociente es 0.99. **El modelo no explica el exceso JWST, y en el extremo
+de masa alta apunta ligeramente en contra.**
+
+**Criterio de cierre.** Una derivación del factor n_s en el criterio de colapso: o bien un
+rol dinámico de n_s en la ecuación de colapso no lineal, o bien una modificación
+especificada del colapso desde el sector IS que produzca δc ≈ 1.63.
+**Qué lo falsaría como predicción:** conteos de halos a z ~ 10 con precisión 10–20 % a
+M > 10¹² M☉ compatibles con 1.00×.
+
+**Severidad: Media.** No mueve ningún ajuste de fondo —DESI, CMB y BAO no usan δc— pero
+retira un resultado publicado en dos papers y convierte una firma que estaba anotada a
+favor del modelo en una levemente en contra. Eso hay que asentarlo con el signo correcto
+antes de cruzarlo con la literatura.

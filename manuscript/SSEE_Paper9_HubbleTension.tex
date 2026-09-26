@@ -941,12 +941,12 @@ Future SH0ES measurements and upcoming DESI \citep{DESI2025} data will test
 this prediction.
 
 \paragraph{Age of the universe cross-check.}
-As an independent consistency test, we compute the age of the SSEE universe
-using the measured local rate $H_0^{\rm SH0ES} = 73.04$\,km/s/Mpc, the dynamical-sector matter density
-$\Omega_m = \Omega_{m,\rm dyn} = 0.160050$ (Paper~1, Sec.~1.4, Two-$\Omega_m$
-Criterion: late-time $E(z)$ in CPL form uses the dynamical value), and the CPL
-dark energy equation of state \citep{Chevallier2001,Linder2003}
-$(w_0, w_a) = (-0.840, -0.670)$:
+As an independent consistency test, we compute the age of the SSEE universe.
+The age is a \emph{global} quantity, so the rate that enters is the global one,
+$H_0^{\rm glob}=67.962$\,km/s/Mpc---the output of the cascade, not the local
+$H_0^{\rm SH0ES}$ that is its input---and the density that enters is the one
+matter density of the model, $\Omega_m = 0.308881$, with the CPL equation of
+state \citep{Chevallier2001,Linder2003} $(w_0, w_a) = (-0.840, -0.670)$:
 \begin{equation}
   t_0 = \frac{1}{H_0}\int_0^\infty \frac{dz}{(1+z)\,E(z)}\,,
   \quad
@@ -955,19 +955,32 @@ $(w_0, w_a) = (-0.840, -0.670)$:
 where $f_{\rm DE}(z) = (1+z)^{3(1+w_0+w_a)}\exp\!\bigl(-3w_a z/(1+z)\bigr)$.
 Numerical integration gives
 \begin{equation}
-  t_0^{\rm SSEE} = 15.52\;\text{Gyr}
-  \qquad (\Lambda\text{CDM}: 13.80\;\text{Gyr})\,.
+  t_0^{\rm SSEE} = 13.733\;\text{Gyr}
+  \qquad (\Lambda\text{CDM at Planck parameters}: 13.796\;\text{Gyr})\,.
 \end{equation}
-The SSEE universe is $1.72$\,Gyr \emph{older} than $\Lambda$CDM, a direct
-consequence of the phantom crossing at $z_{\rm cross}\approx 0.314$
-(Section~\ref{sec:mechanism}) suppressing the recent expansion rate.
-This is more accommodating of the oldest globular clusters and the oldest
-known halo stars ($t_{\rm GC} \gtrsim 12.5$\,Gyr, e.g.\ \citealt{Valcin2021,Bond2013})
-and of the \citet{Cimatti2023} red-galaxy age constraint
-($t \approx 13.5$\,Gyr at $z \approx 0.55$), which create mild tension
-with $\Lambda$CDM.
-A measurement of $t_0 > 14$\,Gyr would favour SSEE over $\Lambda$CDM
-at this level.
+The two are indistinguishable: $0.063$\,Gyr apart, well inside the uncertainty
+of any current age determination. Both sit comfortably above the oldest
+globular clusters and halo stars ($t_{\rm GC} \gtrsim 12.5$\,Gyr,
+e.g.\ \citealt{Valcin2021,Bond2013}) and above the \citet{Cimatti2023}
+red-galaxy constraint ($t \approx 13.5$\,Gyr at $z \approx 0.55$), so the age
+does not discriminate between the models in either direction.
+
+\paragraph{An earlier version of this cross-check, withdrawn.}
+Previous versions reported $t_0^{\rm SSEE} = 15.52$\,Gyr, ``$1.72$\,Gyr older
+than $\Lambda$CDM'', presented that as more accommodating of old stellar
+populations, and committed to the criterion ``a measurement of
+$t_0 > 14$\,Gyr would favour SSEE''. Three inputs were wrong, and they
+compounded. The integral was fed $\Omega_m = \Omega_{m,\rm dyn} = 0.160050$ as
+a matter density, but that number is $1+w_0$, a quantity of the equation of
+state, and never was a density (Paper~1); it used the \emph{local}
+$H_0^{\rm SH0ES}=73.04$ for a global quantity; and it cited the Two-$\Omega_m$
+Criterion as its justification, which Paper~1 has since withdrawn. Correcting
+only the density gives $12.78$\,Gyr and correcting both gives the value above;
+the intermediate number is a diagnostic, not a prediction. The stated $15.52$
+is not even reproducible from the recipe printed alongside it, which returns
+$15.28$. The falsification criterion built on it is withdrawn with it: the
+model predicts $13.733$\,Gyr, so a measurement of $t_0>14$\,Gyr would count
+\emph{against} SSEE, not for it.
 
 %% ─────────────────────────────────────────────────────────────────────────────
 \appendix

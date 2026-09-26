@@ -1,7 +1,14 @@
 # Edad del universo — Paper 9: qué cambia con Ω_m=0.308881
 
-Fecha: 2026-09-25. Estado: **investigación — NO propagado al manuscrito.**
-Pregunta de Mike: con s_m sale un universo más viejo, con Ω_m uno más joven — ¿por cuánto? ¿y cómo se calcula, para ver si falta algo?
+Fecha: 2026-09-25. Corregida 2026-09-25 noche (reclamo de Mike — ver "Corrección"
+abajo). Estado: **investigación — NO propagado al manuscrito.**
+Pregunta de Mike: con s_m sale un universo más viejo, con Ω_m uno más joven — ¿por cuánto?
+
+## Framework H del modelo (fijado por Mike 2026-09-25)
+
+SSEE tiene **dos** H, conectadas por el f_screen completo: **H_local** (medida
+SH0ES, 73.04) y **H_global** (inferida, 67.962). La edad del universo es una
+cantidad **global** → se calcula con **H_global**. Punto. No hay menú de H.
 
 ## Método (reproducible, córrelo tú mismo)
 
@@ -12,45 +19,46 @@ f_DE(z) = (1+z)^{3(1+w_0+w_a)} · exp(−3w_a·z/(1+z)),  (w_0,w_a) = (−0.840,
 1/H_0 [Gyr] = 977.8 / H_0[km/s/Mpc]
 ```
 
-Código: `edad_paper9.py` (numpy + scipy.integrate.quad). Radiación omitida: aporta ~0.01% a t_0.
+Código: `edad_paper9.py` (numpy + scipy.integrate.quad). Radiación omitida: ~0.01% en t_0.
 
-## Resultados
-
-Comparación honesta: **cada modelo con sus parámetros propios** (la fila híbrida
-era solo análisis de sensibilidad — ver punto 2).
+## Resultados — modelo vs modelo, cada uno con sus parámetros propios
 
 | Configuración | Ω_m en E(z) | H_0 | t_0 |
 |---|---|---|---|
-| Paper 9 actual (s_m como densidad) | 0.160050 | 73.04 | 15.52 (paper) / 15.28 (repro) |
-| **SSEE corregida** (parámetros propios) | 0.308881 | 73.04 | **12.78** |
-| SSEE corregida, H_global del framework | 0.308881 | 67.962 | **13.73** |
-| ΛCDM (parámetros Planck: Ω_m=0.315) | 0.315 | 67.4 | 13.80 |
+| Paper 9 original (s_m como densidad) | 0.160050 | 73.04 (local) | 15.52 (paper) / 15.28 (repro) |
+| **SSEE corregida — predicción del modelo** | 0.308881 | **67.962 (H_global)** | **13.73** |
+| ΛCDM (parámetros Planck) | 0.315 | 67.4 | 13.80 |
 
-Sensibilidad (no es comparación entre modelos): a H_0=73.04 y Ω_m=0.308881 fijos,
-ΛCDM da 12.80 Gyr vs SSEE 12.78 Gyr — la dinámica (w_0,w_a)≠(−1,0) aporta **−0.02 Gyr**,
-irrelevante. Todo el "universo más viejo" era el artefacto de s_m en E(z).
+Diagnóstico intermedio (**no** es predicción del modelo): si se corrige solo la
+densidad y se mantiene el H del paper → 12.78 Gyr. Sirve únicamente para aislar
+el bug de s_m en E(z) (−2.74 Gyr del error de densidad).
+
+Diagnóstico de forma (**no** es edad de ningún modelo): a parámetros fijos, la
+dinámica (w_0,w_a)≠(−1,0) aporta −0.02 Gyr frente a ΛCDM. Irrelevante.
 
 ## Lectura honesta
 
-1. **Modelo vs modelo, cada uno con lo suyo:** ΛCDM 13.80 vs SSEE 12.78 (H_0=73.04)
-   → SSEE **1.02 Gyr más joven**; con H_global=67.962 → 13.73, indistinguible de ΛCDM.
-   El "+1.72 Gyr más viejo" del paper muere en ambos casos.
-2. La comparación original del paper mezclaba **dos** inconsistencias: densidad
-   equivocada (s_m como Ω_m) **y** H_0 distintos entre modelos (73.04 vs 67.4).
-3. Con H_0=73.04, la edad corregida (12.78) deja el argumento de cúmulos globulares
-   (≳12.5 Gyr) en un margen de 0.3 Gyr: **el selling point se invierte**.
-4. Con H_global=67.962 (el consistente con el framework SSEE) da 13.73 Gyr, sin
-   tensión — pero es puro escalado 1/H_0, no física nueva.
-5. Brecha repro 15.28 vs 15.52 (1.5%): detalle de integración/redondeo de (w_0,w_a).
+1. **SSEE 13.73 vs ΛCDM 13.80: indistinguibles (0.07 Gyr).** El "+1.72 Gyr más
+   viejo" del paper muere por completo.
+2. El paper mezclaba **dos** inconsistencias: densidad equivocada (s_m como Ω_m)
+   **y** H_local en una cantidad global.
+3. Con la edad corregida no hay tensión con cúmulos globulares (≳12.5 Gyr) en
+   ningún sentido: el selling point "more accommodating" se retira, no se invierte.
+4. Brecha repro 15.28 vs 15.52 (1.5%): detalle de integración/redondeo de (w_0,w_a).
    No mueve la conclusión.
 
-## Qué NO está incluido (revisado)
+## Corrección 2026-09-25 noche (reclamo de Mike, fundado)
 
-- Radiación Ω_r: ~0.01% en t_0, despreciable. Curvatura: plano, como el paper. Neutrinos: despreciables para t_0.
-- Lo que **sí** falta por decidir (no es cálculo, es modelado): **¿qué H_0 debe entrar en la edad del universo dentro del framework SSEE?** El paper usó el local SH0ES (73.04) sin justificarlo; el global del framework es 67.962. La edad es una cantidad global. Decide Mike.
+La primera versión de esta nota presentaba "SSEE 12.78 (H_0=73.04)" como
+candidata a la edad del modelo y evaluaba ΛCDM a H_0=73.04 en la sensibilidad.
+Ambos son cruces de categoría: el modelo tiene H_local y H_global (f_screen
+completo) y la edad global usa H_global; ΛCDM se evalúa con sus parámetros
+Planck, no con H ajenos. Corregido arriba: la predicción del modelo es **13.73**.
 
-## Cambio neto si se corrige
+## Qué falta
 
-- t_0: 15.52 → 12.78 Gyr (**−2.74 Gyr**).
-- vs ΛCDM: de +1.72 (más viejo) a −1.02 (más joven) a H_0=73.04; a H_0 común la diferencia es −0.02 Gyr (nula).
-- El párrafo "more accommodating of the oldest globular clusters" debe reescribirse o retirarse.
+- El "adelante" de Mike para editar `manuscript/SSEE_Paper9_HubbleTension.tex`
+  l.924–946 (retirar/reescribir el párrafo de 15.52 Gyr y el argumento de
+  cúmulos globulares).
+- Radiación Ω_r (~0.01%), curvatura (plano, como el paper) y neutrinos:
+  despreciables para t_0, ya revisado.

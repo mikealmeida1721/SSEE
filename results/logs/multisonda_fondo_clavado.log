@@ -1,0 +1,123 @@
+==============================================================================
+MULTISONDA CON EL FONDO UNIFICADO CLAVADO
+Prueba de la COMBINACION de sondas, NO del modelo (encargo de Mike)
+==============================================================================
+  clavo: logA = 3.0448340130   (CANONICAL_VALUES: logA_cmb_ssee)
+  burn-in descartado: 30% de cada cadena
+
+EJE AMPLITUD — cada sonda mide logA con el MISMO fondo clavado
+  sonda                                        logA    sigma  muestras
+  CMB (plik_lite TTTEEE+lowl+lensing)       3.04225  0.01313     53872
+  KiDS-Legacy xi_pm                         3.02553  0.03958     10312
+  BOSS DR12 P(k) LPT                        2.76452  0.09858    113878
+
+------------------------------------------------------------------------------
+¿MIDE CADA SONDA EL logA, O UNA COMBINACION?  (hay que saberlo ANTES)
+  D = anchura marginal / anchura condicional.  D~1 lo mide;  D>>1 no.
+  sonda                                      marg     cond       D  enredado con
+  CMB (plik_lite TTTEEE+lowl+lensing)     0.01313  0.00118   11.09  tau r=+0.93, A_planck r=+0.22
+  KiDS-Legacy xi_pm                       0.03958  0.02782    1.42  logT_AGN r=+0.55, A_scale r=+0.33
+  BOSS DR12 P(k) LPT                      0.09858  0.02466    4.00  b1_z1NGC r=-0.89, b1_z2NGC r=-0.86
+
+  LO QUE ESTO OBLIGA A CAMBIAR. El CMB es la MAS degenerada de las tres
+  (D=11 con tau, la degeneracion A_s e^-2tau de siempre), no BOSS. Con
+  degeneraciones tan distintas, comparar MEDIAS MARGINALES compara cosas
+  que no son la misma: la media se desplaza hacia donde hay volumen de
+  prior. Por eso abajo se calcula tambien por PERFIL, que no tiene ese
+  efecto, y el titular es el del perfil.
+
+  sonda                                    marginal     perfil  desplaz.
+  CMB (plik_lite TTTEEE+lowl+lensing)       3.04225    3.05046    -0.63s
+  KiDS-Legacy xi_pm                         3.02553    3.03893    -0.34s
+  BOSS DR12 P(k) LPT                        2.76452    2.76211    +0.02s
+  Un desplazamiento grande = la media marginal NO es donde el dato
+  prefiere: es donde el volumen de los nuisances la empuja.
+
+  ¿sirve la anchura del PERFIL? (tiene que ser >= la condicional)
+    CMB (plik_lite TTTEEE+lowl+lensing)  sig_perfil=0.00066  sig_cond=0.00118   IMPOSIBLE
+    KiDS-Legacy xi_pm                    sig_perfil=0.01312  sig_cond=0.02782   IMPOSIBLE
+    BOSS DR12 P(k) LPT                   sig_perfil=0.06681  sig_cond=0.02466   ok
+    -> El perfil LEIDO DE LA CADENA no sirve para anchuras: el minimo
+       por bin baja mas donde hay mas muestras, o sea justo en el modo,
+       y eso afila el perfil artificialmente. Sacarlo de aqui daria un
+       sigma demasiado estrecho y una discordia inflada.
+       SE DESCARTA el estadistico por perfil. El titular es el MARGINAL,
+       que ademas es el tratamiento estandar: marginalizar sobre los
+       nuisances PROPIOS de cada sonda es lo correcto, y su sigma ya
+       lleva dentro el castigo de la degeneracion.
+       Del perfil se conserva SOLO la posicion, como diagnostico de
+       proyeccion (la tabla de arriba).
+------------------------------------------------------------------------------
+
+TIRONES respecto del clavo (el SIGNO es lo que informa)
+  sonda                                      delta   sigmas  direccion
+  CMB (plik_lite TTTEEE+lowl+lensing)     -0.00259    -0.20  abajo
+  KiDS-Legacy xi_pm                       -0.01930    -0.49  abajo
+  BOSS DR12 P(k) LPT                      -0.28032    -2.84  abajo
+
+------------------------------------------------------------------------------
+ESTADISTICO 1 — DISCORDIA ENTRE SONDAS   (esto es lo que se pidio)
+  logA comun = 3.03625 +- 0.01236   (media pesada)
+  T_sondas = 7.880  con 2 g.l.   p = 0.0194   ->  2.34 sigma
+  Quita el modo comun: NO puede castigar al modelo. Mide SOLO si las
+  sondas se contradicen entre ellas.
+
+ESTADISTICO 2 — el modo comun contra el clavo  [PRUEBA DEL MODELO]
+  T_modelo = 0.482 (1 g.l.)  ->  0.69 sigma
+  Va aparte y etiquetado: NO es la prueba que se pidio.
+------------------------------------------------------------------------------
+
+BONDAD DE AJUSTE con logA EN EL CLAVO, sonda por sonda
+  sonda                                        chi2  procedencia
+  CMB (plik_lite TTTEEE+lowl+lensing)      2771.499  perfil leido de la cadena, banda +-0.0020  [cota superior]
+  KiDS-Legacy xi_pm                         417.971  logA fijo en la corrida
+  BOSS DR12 P(k) LPT                         87.680  perfil leido de la cadena, banda +-0.0148  [cota superior]
+  BAO DESI DR2                               10.859  fondo clavado H0=67.962137, Om derivado=0.308881
+  sonda                                       chi2     N  libres  g.l.  chi2/gl      LCDM    Delta
+  CMB (plik_lite TTTEEE+lowl+lensing)     2771.499  2354      24  2330   1.1895  2772.917   -1.418
+  KiDS-Legacy xi_pm                        417.971   357       8   349   1.1976   418.955   -0.984
+  BOSS DR12 P(k) LPT                        87.680   222      18   204   0.4298    73.678  +14.002
+  BAO DESI DR2                              10.859    13       0    13   0.8353         —        —
+  TOTAL (4 sondas)                        3288.009  2946      50  2896   1.1354         —        —
+  Delta total (solo las 3 con referencia)                                                   +11.600
+
+  COMO SE LEE, que es la pregunta literal de Mike:
+  Con el fondo clavado NO hay libres cosmologicos en ninguna sonda: estos
+  chi2 son bondad de ajuste PURA, sin ajustar nada del modelo. La columna
+  que manda es Delta = chi2(SSEE) - chi2(LCDM) SOBRE EL MISMO DATO. El
+  chi2 reducido contra 1.0 NO sirve de juez aqui: el propio mejor ajuste
+  de Planck da ~1.19 en plik, asi que 1.0 marcaria como malo al estado
+  del arte. Y el chi2 conjunto es la SUMA de los individuales por
+  construccion —cada sonda tiene sus nuisances y el fondo no se mueve—,
+  asi que la suma no es un dato nuevo. El dato nuevo esta en el reparto:
+  CMB y KiDS-Legacy prefieren el fondo de SSEE (Delta negativo) y BOSS
+  prefiere el de LCDM por +14.0 con EXACTAMENTE los mismos libres (logA
+  y 18 sesgos en las dos corridas), asi que no es un efecto de rigidez.
+  Y es la MISMA sonda que tira de la amplitud 2.84 sigma hacia abajo:
+  los dos estadisticos, que son independientes, senalan el mismo sitio.
+
+==============================================================================
+CONTROLES R53 — dos, porque hacen falta dos cosas distintas
+==============================================================================
+
+CONTROL A — POSITIVO: ¿sabe el estadistico VER una discordia?
+  Se le inyecta a KiDS-Legacy un desplazamiento CONOCIDO en logA y se
+  comprueba que T_sondas sube como debe. Si no subiera, un T pequeno no
+  significaria «concuerdan», significaria «el estadistico esta ciego».
+   inyectado en KiDS  T_sondas   sigma
+                0.00     7.880    2.34
+                0.05     8.637    2.48
+                0.10    12.273    3.07
+                0.20    28.189    4.95
+  -> monotono creciente: SI, el estadistico ve
+
+CONTROL B — el MISMO estadistico con el fondo LCDM clavado
+  Las mismas sondas, la misma rigidez, otro fondo. Si la discordia sale
+  igual con los dos fondos, entonces NO la causa el fondo: es de las
+  sondas. Que es exactamente lo que se venia a averiguar.
+  CMB (fondo LCDM)                          3.04452  0.01415
+  KiDS-Legacy (fondo LCDM)                  3.00685  0.03681
+  BOSS (fondo LCDM)                         2.79018  0.09454
+  T_sondas(LCDM) = 7.743 (2 g.l.)  p = 0.0208  -> 2.31 sigma
+
+Log -> /home/mike/Proyectos/SSEE/results/logs/multisonda_fondo_clavado.json

@@ -1,0 +1,276 @@
+{
+  "clavo_logA": 3.0448340130228546,
+  "burn_in": 0.3,
+  "eje_amplitud": [
+    {
+      "sonda": "CMB (plik_lite TTTEEE+lowl+lensing)",
+      "logA": 3.042246654116871,
+      "sigma": 0.013125658689892638,
+      "chi2_min": 2770.443,
+      "n_muestras": 53872,
+      "n_cadenas": 1,
+      "logA_en_min": 3.0505846
+    },
+    {
+      "sonda": "KiDS-Legacy xi_pm",
+      "logA": 3.025533766478688,
+      "sigma": 0.03957854912064725,
+      "chi2_min": 418.33606,
+      "n_muestras": 10312,
+      "n_cadenas": 4,
+      "logA_en_min": 3.0409284
+    },
+    {
+      "sonda": "BOSS DR12 P(k) LPT",
+      "logA": 2.7645155630527634,
+      "sigma": 0.09857877757225299,
+      "chi2_min": 75.227863,
+      "n_muestras": 113878,
+      "n_cadenas": 4,
+      "logA_en_min": 2.7575637
+    }
+  ],
+  "estadisticos": {
+    "logA_comun": 3.036250512263957,
+    "sigma_comun": 0.012360106887625686,
+    "T_sondas": 7.880442008606083,
+    "gl_sondas": 2,
+    "p_sondas": 0.019443917081158817,
+    "sigmas_sondas": 2.3369089846046713,
+    "T_modelo": 0.4822635590180232,
+    "gl_modelo": 1,
+    "p_modelo": 0.4873988024803436,
+    "sigmas_modelo": 0.6944519846742633
+  },
+  "estadisticos_perfil": {
+    "logA_comun": 3.0503984576102385,
+    "sigma_comun": 0.0006583174661281372,
+    "T_sondas": 19.391368384419582,
+    "gl_sondas": 2,
+    "p_sondas": 6.154855439975981e-05,
+    "sigmas_sondas": 4.006793789305936,
+    "T_modelo": 71.4451723787728,
+    "gl_modelo": 1,
+    "p_modelo": 2.8507042940016527e-17,
+    "sigmas_modelo": 8.452524615685705
+  },
+  "perfil_sirve": false,
+  "degeneracion": [
+    {
+      "sonda": "CMB (plik_lite TTTEEE+lowl+lensing)",
+      "marginal": 0.0131258192271367,
+      "condicional": 0.0011840162468865346,
+      "D": 11.085843848555365,
+      "enredado_con": [
+        [
+          "tau",
+          0.9288664834921557
+        ],
+        [
+          "A_planck",
+          0.21884763225720394
+        ]
+      ]
+    },
+    {
+      "sonda": "KiDS-Legacy xi_pm",
+      "marginal": 0.03958096462368073,
+      "condicional": 0.027816818803033015,
+      "D": 1.422914852483599,
+      "enredado_con": [
+        [
+          "logT_AGN",
+          0.5543444603394994
+        ],
+        [
+          "A_scale",
+          0.33316087177599346
+        ]
+      ]
+    },
+    {
+      "sonda": "BOSS DR12 P(k) LPT",
+      "marginal": 0.09857961333015411,
+      "condicional": 0.024662163796876,
+      "D": 3.9972004947368553,
+      "enredado_con": [
+        [
+          "b1_z1NGC",
+          -0.8906572833982875
+        ],
+        [
+          "b1_z2NGC",
+          -0.8644889189876749
+        ]
+      ]
+    }
+  ],
+  "perfiles": [
+    {
+      "sonda": "CMB (plik_lite TTTEEE+lowl+lensing)",
+      "logA": 3.0504554576923075,
+      "chi2_min": 2770.443,
+      "sigma": 0.0006591796586923326,
+      "lados": 2
+    },
+    {
+      "sonda": "KiDS-Legacy xi_pm",
+      "logA": 3.0389333320512826,
+      "chi2_min": 418.33606,
+      "sigma": 0.013121418222542092,
+      "lados": 2
+    },
+    {
+      "sonda": "BOSS DR12 P(k) LPT",
+      "logA": 2.7621068383333336,
+      "chi2_min": 75.227863,
+      "sigma": 0.06680936627627498,
+      "lados": 2
+    }
+  ],
+  "tirones": [
+    {
+      "sonda": "CMB (plik_lite TTTEEE+lowl+lensing)",
+      "logA": 3.042246654116871,
+      "sigma": 0.013125658689892638,
+      "delta": -0.0025873589059837165,
+      "sigmas": -0.19712221436750463,
+      "direccion": "abajo"
+    },
+    {
+      "sonda": "KiDS-Legacy xi_pm",
+      "logA": 3.025533766478688,
+      "sigma": 0.03957854912064725,
+      "delta": -0.019300246544166733,
+      "sigmas": -0.48764411462718893,
+      "direccion": "abajo"
+    },
+    {
+      "sonda": "BOSS DR12 P(k) LPT",
+      "logA": 2.7645155630527634,
+      "sigma": 0.09857877757225299,
+      "delta": -0.28031844997009125,
+      "sigmas": -2.8435983573100487,
+      "direccion": "abajo"
+    }
+  ],
+  "bondad_en_el_clavo": [
+    {
+      "sonda": "CMB (plik_lite TTTEEE+lowl+lensing)",
+      "chi2": 2771.4994,
+      "modo": "perfil leido de la cadena, banda +-0.0020",
+      "exacto": false,
+      "n_en_banda": 7105
+    },
+    {
+      "sonda": "KiDS-Legacy xi_pm",
+      "chi2": 417.9706,
+      "modo": "logA fijo en la corrida",
+      "exacto": true,
+      "n_en_banda": 10158
+    },
+    {
+      "sonda": "BOSS DR12 P(k) LPT",
+      "chi2": 87.680132,
+      "modo": "perfil leido de la cadena, banda +-0.0148",
+      "exacto": false,
+      "n_en_banda": 146
+    },
+    {
+      "sonda": "BAO DESI DR2",
+      "chi2": 10.858822657229455,
+      "n_datos": 13,
+      "modo": "fondo clavado H0=67.962137, Om derivado=0.308881",
+      "exacto": true
+    }
+  ],
+  "chi2_total": 3288.00895465723,
+  "gl_total": 2896,
+  "PTE_total": 3.8283275743822773e-07,
+  "tabla_gl": [
+    {
+      "sonda": "CMB (plik_lite TTTEEE+lowl+lensing)",
+      "chi2": 2771.4994,
+      "N": 2354,
+      "libres": 24,
+      "gl": 2330,
+      "chi2_red": 1.189484721030043,
+      "PTE": 5.026042906242625e-10,
+      "procedencia": "N: plik TTTEEE 2289 + lowT 28 + lowE 28 + lensing 9; libres = tau + 23 nuisances Planck (logA CLAVADO)",
+      "chi2_lcdm": 2772.9172,
+      "delta_vs_lcdm": -1.4177999999997155
+    },
+    {
+      "sonda": "KiDS-Legacy xi_pm",
+      "chi2": 417.9706,
+      "N": 357,
+      "libres": 8,
+      "gl": 349,
+      "chi2_red": 1.1976234957020058,
+      "PTE": 0.0065524665870625555,
+      "procedencia": "N: 357 puntos xi_pm; libres = logT_AGN, A_scale, dz1..dz6",
+      "chi2_lcdm": 418.95467,
+      "delta_vs_lcdm": -0.9840700000000311
+    },
+    {
+      "sonda": "BOSS DR12 P(k) LPT",
+      "chi2": 87.680132,
+      "N": 222,
+      "libres": 18,
+      "gl": 204,
+      "chi2_red": 0.429804568627451,
+      "PTE": 0.9999999999999514,
+      "procedencia": "N: 222 puntos P(k) k<=0.20; libres = 18 sesgos (b1,b2,bs x 3z x 2 hemisferios); logA CLAVADO",
+      "chi2_lcdm": 73.677763,
+      "delta_vs_lcdm": 14.002369000000002
+    },
+    {
+      "sonda": "BAO DESI DR2",
+      "chi2": 10.858822657229455,
+      "N": 13,
+      "libres": 0,
+      "gl": 13,
+      "chi2_red": 0.8352940505561119,
+      "PTE": 0.6226432612825843,
+      "procedencia": "N: 13 puntos DESI DR2; CERO libres, el fondo va clavado",
+      "chi2_lcdm": null,
+      "delta_vs_lcdm": null
+    }
+  ],
+  "control_lcdm": {
+    "logA_comun": 3.034890423032873,
+    "sigma_comun": 0.013082033873318712,
+    "T_sondas": 7.7427637618822835,
+    "gl_sondas": 2,
+    "p_sondas": 0.02082956554839058,
+    "sigmas_sondas": 2.3110595555398175,
+    "T_modelo": 0.577744577874826,
+    "gl_modelo": 1,
+    "p_modelo": 0.4471977347804752,
+    "sigmas_modelo": 0.7600951110715198
+  },
+  "control_disponible": true,
+  "control_positivo": [
+    {
+      "inyectado": 0.0,
+      "T": 7.880442008606083,
+      "sigmas": 2.3369089846046713
+    },
+    {
+      "inyectado": 0.05,
+      "T": 8.636609950462748,
+      "sigmas": 2.4750313982045182
+    },
+    {
+      "inyectado": 0.1,
+      "T": 12.273388124277005,
+      "sigmas": 3.0670178509989077
+    },
+    {
+      "inyectado": 0.2,
+      "T": 28.188775167778203,
+      "sigmas": 4.9462332390201444
+    }
+  ],
+  "control_positivo_ve": true
+}

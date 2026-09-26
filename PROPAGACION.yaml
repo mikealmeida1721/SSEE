@@ -107,6 +107,7 @@ logs:
   # El registro de la COLA (que corrida entra y cuando) no lo escribe el
   # muestreador sino el lanzador que lo invoca; ahi vive su fuente.
   cola_kids_legacy:           src/p06_growth/lanzar_kids_legacy.sh
+  multisonda_fondo_clavado:   src/p06_growth/multisonda_fondo_clavado.py
 
 historicos:
   # ── Corte del 2026-09-19 — la maquina se reinicio por el driver NVIDIA y

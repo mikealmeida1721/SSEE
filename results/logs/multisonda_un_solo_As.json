@@ -1,0 +1,66 @@
+{
+ "fecha": "2026-09-26",
+ "pregunta": "Con UN SOLO A_s -el del CMB- clavado en todas: se mueve el chi2 de cada sonda respecto de su corrida individual?",
+ "logA_clavado": 3.0448340130228546,
+ "fuente_del_clavo": "CANONICAL_VALUES.yaml: logA_cmb_ssee",
+ "sondas": [
+  {
+   "sonda": "CMB plik_lite TTTEEE+lowl+lensing",
+   "N": 2354,
+   "libres": 23,
+   "chi2_min_propio": 2770.443,
+   "chi2_en_clavo": 2771.4994,
+   "chi2_lcdm_en_clavo": 2772.9172,
+   "exacto": false,
+   "fuente": "perfil leido de la cadena ssee_cmb, 7105 muestras en banda +-0.0020",
+   "coste": 1.0563999999999396
+  },
+  {
+   "sonda": "KiDS-Legacy xi_pm",
+   "N": 357,
+   "libres": 8,
+   "chi2_min_propio": 418.33606,
+   "chi2_en_clavo": 417.9706,
+   "chi2_lcdm_en_clavo": 418.95467,
+   "exacto": true,
+   "fuente": "corrida sseefijo: logA CLAVADO en la propia corrida",
+   "coste": -0.3654599999999846
+  },
+  {
+   "sonda": "BOSS DR12 P(k) LPT",
+   "N": 222,
+   "libres": 36,
+   "chi2_min_propio": 197.439616239943,
+   "chi2_en_clavo": 198.05560841721137,
+   "chi2_lcdm_en_clavo": 197.43236284835444,
+   "exacto": false,
+   "fuente": "perfil del OPTIMIZADOR (R1R2_boss_lpt_kmax0.200.json), parabola local en 3 nodos",
+   "coste": 0.6159921772683674
+  },
+  {
+   "sonda": "BAO DESI DR2",
+   "N": 13,
+   "libres": 0,
+   "chi2_min_propio": 10.858822657229455,
+   "chi2_en_clavo": 10.858822657229455,
+   "chi2_lcdm_en_clavo": null,
+   "exacto": true,
+   "fuente": "cero libres, no tiene A_s: identico solo y acompanado",
+   "coste": 0.0
+  }
+ ],
+ "chi2_total": 3398.384431074441,
+ "N_total": 2946,
+ "libres_total": 67,
+ "gl_total": 2879,
+ "chi2_red": 1.1804044567816745,
+ "PTE": 4.5779380412400646e-11,
+ "coste_total": 1.3069321772683224,
+ "libres_retirados": 3,
+ "coste_esperado_por_azar": 3.0,
+ "veredicto": "Imponer el A_s del CMB a las cuatro cuesta +1.307 en chi2 habiendo quitado 3 libres. Por azar costaria ~3. El fondo unificado con un solo A_s NO tensiona a ninguna sonda.",
+ "RETRACTADO": {
+  "que": "el coste +12.452 de BOSS y el chi2 total 3288.009 del informe anterior",
+  "por_que": "el +12.452 salia de leer el perfil en la CADENA de BOSS, en una banda de +-0.0148 donde solo caen 146 muestras: el MCMC nunca visito el optimo cerca del clavo, asi que esa cota superior estaba 12 unidades de mas. El perfil del OPTIMIZADOR, que si minimiza los 36 nuisance en cada logA, da +0.616. Ademas la cadena de BOSS devuelve el chi2 MARGINALIZADO (75.23 en su minimo) y no el real (197.44), asi que el total 3288.009 sumaba dos escalas distintas."
+ }
+}

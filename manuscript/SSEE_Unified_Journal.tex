@@ -139,7 +139,7 @@ OPEN\_PROBLEMS.md OP-13). A late-time local screening fraction
 $f_{\rm scr}^{\rm IR}=\alphaK/(3\MIRA)=(\pi-\phiG)/(\phiG+\pi)^2\simeq0.067$ relates
 the locally measured rate to the global background. The measured datum is the
 input and the global rate is the output:
-$H_0^{\rm glob}=H_0^{\rm SH0ES}(1-f_{\rm scr}^{\rm IR})=68.13$~km\,s$^{-1}$\,Mpc$^{-1}$,
+$H_0^{\rm glob,IR}=H_0^{\rm SH0ES}(1-f_{\rm scr}^{\rm IR})=68.13$~km\,s$^{-1}$\,Mpc$^{-1}$,
 which sits $0.17\sigma$ from the pure number $3(\phiG+\pi)^2=67.96214$; with the
 full infrared-plus-ultraviolet fraction $f_{\rm scr}^{\rm full}=0.069522$ the same
 operation returns $67.962142$, a residual of $+4.2\times10^{-6}$ against that
@@ -912,8 +912,8 @@ expansion rate is the local one, $H_0^{\rm SH0ES}=73.04\pm1.04$
 \citep{Riess2022}; Planck's is inferred within $\Lambda$CDM rather than
 measured, so SH0ES is the input and the global rate is the output,
 \begin{equation}
-H_0^{\rm glob} = H_0^{\rm SH0ES}\,(1-\fscr)
-                = 73.04\times(1-0.0673)
+H_0^{\rm glob,IR} = H_0^{\rm SH0ES}\,(1-\fscr^{\rm IR})
+                = 73.04\times(1-0.06725)
                 \approx 68.13~{\rm km\,s^{-1}\,Mpc^{-1}} ,
 \end{equation}
 which lies $0.17\sigma$ from the pure algebraic number
@@ -949,8 +949,8 @@ We state the epistemic status of these figures plainly: the UV value is
 \emph{conditional on Postulate~C.1} (UV--IR $\phiG/\pi$ separability) and is
 \emph{not independent of SH0ES}, since the postulate was formulated with the
 SH0ES central value as its target. It is a self-consistency check, not a
-prediction. The independent prediction remains the IR value $H_0^{\rm glob}
-=68.13$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.17\sigma$) of \S\ref{sec:ext-ht}, which does
+prediction. The independent prediction remains the IR-regime value
+$H_0^{\rm glob,IR}=68.13$~km\,s$^{-1}$\,Mpc$^{-1}$ ($0.17\sigma$) of \S\ref{sec:ext-ht}, which does
 not rely on the postulate. The construction does, however, supply a falsifiable
 cross-epoch consistency test: the same $\alpha$ governs inflation at $z\sim10^{60}$
 and the dark-energy UV scale today, so a LiteBIRD measurement of $r\neq0.00813$
@@ -1011,7 +1011,7 @@ $\alphaT = \alphaM = \alphaB = 0$ & exact & GW170817 $|\alphaT|<10^{-15}$ & Retr
 $S_8$ (KiDS-Legacy, $A_s$ fixed by the CMB) & $0.8273$ predicted & measured $0.8265\pm0.0176$ ($0.05\sigma$) & \textbf{Prediction} \\
 $S_8$ (MCMC vs.\ raw KiDS-1000 $\xi_\pm$) & $0.7555\pm0.0192$ & $\Lambda$CDM control: $0.7571\pm0.0194$ & Retrodiction \\
 $\sigma_8$ ($A_s$ fixed to Planck; ceiling) & $0.8149$ & convention, not a prediction & --- \\
-$H_0^{\rm glob} = H_0^{\rm SH0ES}(1-\fscr^{\rm IR})$ & $68.13$ km/s/Mpc & $3(\phiG+\pi)^2=67.96214$ ($0.17\sigma$; IR only, partial) & Retrodiction \\
+$H_0^{\rm glob,IR} = H_0^{\rm SH0ES}(1-\fscr^{\rm IR})$ & $68.13$ km/s/Mpc & $3(\phiG+\pi)^2=67.96214$ ($0.17\sigma$; IR only, partial) & Retrodiction \\
 $H_0^{\rm glob} = H_0^{\rm SH0ES}(1-\fscr^{\rm full})$ & $67.962142$ km/s/Mpc & $3(\phiG+\pi)^2$ (residual $+4.2{\times}10^{-6}$) & Retrodiction \\
 \midrule
 \multicolumn{4}{l}{\textit{Predictions (not yet observationally accessible)}} \\
@@ -1110,7 +1110,7 @@ across four observational tiers.
   with mean $f\sigma_8$ tension $0.70\sigma$ (Paper~5) --- statistically identical
   to $\Lambda$CDM ($0.73\sigma$). In the lensing amplitude, fitting $A_s$ to raw
   KiDS-1000 $\xi_\pm$ data with a single matter sector gives
-  $S_8 = 0.7555\pm0.0192$, matching the $\Lambda$CDM control on the same raw data ($0.7571\pm0.0194$) with four fewer free parameters, and on the raw $\xi_\pm$ themselves $\Delta\chi^2=2.65$ with $\Delta\mathrm{BIC}=19.0$ in \SSEE{}'s favour (Paper~6); the
+  $S_8 = 0.7555\pm0.0192$, matching the $\Lambda$CDM control on the same raw data ($0.7571\pm0.0194$) with four fewer free parameters, and on the raw $\xi_\pm$ themselves $\Delta\chi^2=2.65$ with $\Delta\mathrm{BIC}=-19.0$ in \SSEE{}'s favour (Paper~6); the
   $\phi$DM two-sector extension previously reported here is retracted.
 
 \item \textbf{EFT stability.} EFTCAMB confirms ghost-freedom and gradient
@@ -1128,7 +1128,7 @@ across four observational tiers.
   HST/JWST strong lensing (Paper~8). An algebraic late-time screening fraction
   $\fscr^{\rm IR}=(\pi-\phiG)/(\phiG+\pi)^2\approx0.067$ takes the measured SH0ES
   rate as input and returns the global background
-  $H_0^{\rm glob}=H_0^{\rm SH0ES}(1-\fscr^{\rm IR})=68.13$~km\,s$^{-1}$\,Mpc$^{-1}$,
+  $H_0^{\rm glob,IR}=H_0^{\rm SH0ES}(1-\fscr^{\rm IR})=68.13$~km\,s$^{-1}$\,Mpc$^{-1}$,
   $0.17\sigma$ from the pure number $3(\phiG+\pi)^2=67.96214$, with
   zero free parameters (Paper~9). A UV completion $K(X)=X/\KAL+X^2/M^4$ with
   algebraic cutoff $M=9.68$~meV connects the dark-energy EFT to the inflationary

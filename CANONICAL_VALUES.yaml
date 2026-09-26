@@ -124,8 +124,15 @@ canonical:
   delta_chi2_ssee_lcdm:  2.65      # 265.40 − 262.75, con Δk=4 params MENOS
   delta_k_ssee_lcdm:        4      # 4 params nulos ya darían ⟨Δχ²⟩=4 por azar
   p_delta_chi2:          0.618     # p(Δχ²≥2.65 | los 4 no aportan nada)
-  delta_AIC_ssee_lcdm:   5.35      # a favor de SSEE
-  delta_BIC_ssee_lcdm:  19.01      # a favor de SSEE — «fuerte» en Jeffreys
+  # CONVENCION DE SIGNO, declarada una sola vez para TODA la suite
+  # (2026-09-25): Delta = SSEE − LCDM.  NEGATIVO favorece a SSEE.
+  # Estas dos claves llevaban el nombre de una direccion y el signo de la
+  # OTRA (+5.35 y +19.01 son LCDM − SSEE), que es de donde salian los signos
+  # opuestos entre Paper 1/2 y Paper 6/Sealed/Unified. Comprobado por
+  # aritmetica, no por lectura: con delta_chi2 = +2.65 y delta_k = 4 sobre
+  # N=225 puntos,  AIC: 2.65 − 2·4 = −5.35  y  BIC: 2.65 − 4·ln(225) = −19.01.
+  delta_AIC_ssee_lcdm:  -5.35      # SSEE − LCDM, <0 favorece SSEE
+  delta_BIC_ssee_lcdm: -19.01      # SSEE − LCDM, <0 favorece SSEE — «fuerte» Jeffreys
   # ⟹ las 4 libertades extra de ΛCDM son indistinguibles de no existir.
   # ΔS8 = 0.0016 es el MISMO hecho redicho en cantidades derivadas.
   #
@@ -227,7 +234,10 @@ canonical:
   #   (lnB10=7.42 RETIRADO: era Laplace de una tabla huérfana, sin script vivo)
   #   Cross-val LOO-z (z≥1.0): SSEE χ²_r=0.197 < ΛCDM 0.711 < CPL 39.64 (SSEE predice mejor)
   H0_posterior_planckprior_km_s_Mpc: 67.53   # 3-modelos, prior Planck (para ΔBIC justo; R25)
-  deltaBIC_lcdm_minus_ssee: 6.43   # >0 favorece SSEE (k=2 vs k=3); CPL−SSEE=6.35
+  deltaBIC_lcdm_minus_ssee: 6.43   # OJO: esta clave SI es LCDM − SSEE (lo dice
+                                   # su nombre), por eso >0 favorece SSEE. En los
+                                   # papers se cita con la convencion comun:
+                                   # Delta(SSEE−LCDM) = −6.43 (CPL: −6.35).
   deltaDIC_ssee_minus_lcdm: -5.66  # <0 favorece SSEE (DIC 14.95 vs 20.61); log dic_from_chains.log
 
   # ── Fase B / B1 — likelihood COMPLETA de Planck ───────────────────────

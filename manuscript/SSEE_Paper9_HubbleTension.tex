@@ -208,7 +208,7 @@ All parameters are algebraically fixed; no fitting is performed.
 The dark-energy equation-of-state parameters derived in Paper~1 are
 \begin{align}
   w_0 &= -\frac{\AURA}{\phiG+\pi} \approx -0.840\,, \label{eq:w0}\\
-  \sDE &= -w_0 = \frac{\AURA}{\phiG+\pi} = 0.839950\,. \label{eq:OmDE}
+  \sDE &= -w_0 = \frac{\AURA}{\phiG+\pi} = 0.839950\,. \label{eq:sDE}
 \end{align}
 
 The quantity entering the screening fraction is the fractional dilution rate
@@ -261,7 +261,10 @@ The constant $\MIRA$ encodes the effective optical coupling of the disformal
 sector; it is not a fitted parameter but derived from $\bc = \AURA$.
 Following the 2026 $\omega_m$-direct reframe (OP-8 dissolved), $\MIRA$ is
 \emph{not} identified with the CMB-to-dynamical matter ratio (which is
-$\Omega_{m,\rm CMB}/\Omega_{m,\rm dyn}\approx1.93$, a numerical near-coincidence);
+it is not identified with any matter ratio: there is one matter density,
+$\Omega_m=0.308881$, and $s_m=0.160050$ is a number of the equation of state,
+so the $\approx1.93$ that earlier drafts formed between them divided objects of
+different kinds);
 it is fixed algebraically by $\bc=\AURA$ and realised physically as the
 Hubble screening amplitude derived below.
 
@@ -293,7 +296,7 @@ Writing $\sDE \equiv |w_0| = T_r/M_v$ for the saturation and
 $s_m \equiv 1+w_0$ for its complement ($\sDE + s_m = 1$ exactly), this is
 $\sK = 3\,\sDE\,s_m$.  Nothing but the equation of state enters.
 
-Using the SSEE algebraic values~\eqref{eq:w0}--\eqref{eq:OmDE},
+Using the SSEE algebraic values~\eqref{eq:w0}--\eqref{eq:sDE},
 \begin{equation}
   \sDE\,(1+w_0) = \frac{\AURA}{\phiG+\pi}\cdot\frac{\phiG+\pi-\AURA}{\phiG+\pi}
   = \frac{\AURA(\pi-\phiG)/2}{(\phiG+\pi)^2}\,,
@@ -422,7 +425,7 @@ $\Omega=\phiG+\pi$ & ---             & $4.7596266423$ & --- \\
 $\AURA$      & $(3\phiG+\pi)/2$       & $3.9978473099$ & Eq.~\eqref{eq:bc} \\
 $\MIRA$      & $\AURA/2$              & $1.9989236550$ & Eq.~\eqref{eq:MIRA_exact} \\
 $w_0$        & $-\AURA/\Omega$        & $-0.83994977$  & Eq.~\eqref{eq:w0} \\
-$\sDE$      & $\AURA/\Omega$         & $0.83994977$   & Eq.~\eqref{eq:OmDE} \\
+$\sDE$      & $\AURA/\Omega$         & $0.83994977$   & Eq.~\eqref{eq:sDE} \\
 $1+w_0$      & $(\pi-\phiG)/(2\Omega)$& $0.16005023$   & Eq.~\eqref{eq:Omega_minus_AURA} \\
 $\sK$    & $3\AURA(\pi-\phiG)/(2\Omega^2)$ & $0.403302$ & Eq.~\eqref{eq:alphaK_algebraic} \\
 $3\MIRA$     & $3\AURA/2$             & $5.9967$       & Eq.~\eqref{eq:3MIRA} \\
